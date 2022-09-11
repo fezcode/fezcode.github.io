@@ -1,0 +1,291 @@
+:root {
+    --background-color: #1d49a0;
+    --background-color-shaded: #000000bd;
+    /* --vertical-div-right-color: #38383b; */
+    /* : #3a7960; */
+    /* --vertical-div-left-bg-color: #355b41; */
+    --vertical-div-left-bg-color: black;
+    --vertical-div-left-fg-color: #6eca5d;
+    --vertical-div-right-bg-color: #AD1017;
+    --vertical-div-right-fg-color: #eea3a9;
+    --header-color: rgb(202, 118, 22);
+    --header2-color: rgb(15, 15, 15);
+    --sticky-header: #11283d
+}
+
+h1 {
+    color: var(--header-color);
+    font-size: 2em;
+}
+
+h2 {
+    font-family: hkgrotesk-bold;
+    color: var(--header2-color);
+    font-size: 1.25em;
+}
+
+.fancy-link {
+    text-decoration: none;
+    font-family: hkgrotesk-lightitalic;
+    color: wheat;
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+code {
+    color: rgb(27, 27, 27);
+    font-family: monospace;
+    border-radius: 5px;
+    background-color: rgb(220, 230, 152);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.tag {
+    background-color: #FFCC33;
+    color: black;
+    border-radius: 20px;
+    width: max-content;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 1px inset, rgba(0, 0, 0, 0.9) 0px 0px 0px 1px;
+    font-size: 0.75em;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    justify-content: flex-start;
+    /* margin-right: 10px; */
+    /* border: 2px solid #6e6e6ebd; */
+}
+
+
+/* html,
+body,
+.content {
+    height: 100% !important;
+    min-height: 100% !important;
+} */
+
+.application {
+    position: static;
+    height: 100%;
+    width: 100%;
+    background-color: var(--background-color);
+    font-family: 'hkgrotesk-regular', Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+}
+
+.header {
+    overflow: hidden;
+    /* padding-left: 20px; */
+    /* padding-right: 20px;/ */
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: var(--background-color-shaded);
+    transition: all 1s;
+    font-family: 'hkgrotesk-light', Arial, Helvetica, sans-serif;
+    font-size: 0.75em !important;
+    /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.header-right {
+    color: #4e9845;
+    margin-left: 15px;
+    margin-right: 35px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: right;
+    font-family: 'hkgrotesk-bold', Arial, Helvetica, sans-serif;
+    /* add transition */
+    transition: all 0.5s;
+}
+
+div.header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    float: left;
+}
+
+div.header ul li {
+    /* padding: 20px; */
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: left;
+    transition: all 0.25s;
+}
+
+div.header ul li a {
+    display: inline-block;
+    text-decoration: none;
+    color: aliceblue;
+    width: 60px;
+    height: 20px;
+    transition: all 0.25s;
+}
+
+div.header ul li a:hover {
+    color: #4c9f42;
+    font-family: 'hkgrotesk-bold', Arial, Helvetica, sans-serif;
+    font-size: 1.1em;
+}
+
+.content {
+    padding: 20px;
+}
+
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+
+.sticky-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: var( --sticky-header);
+    color: rgb(211, 211, 211);
+}
+
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+
+.sticky-header+.content {
+    padding-top: 102px;
+}
+
+.img-in-right {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 95%;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.text-in-right {
+    text-align: center;
+}
+
+.vertical-divs {
+    display: flex;
+    margin: 100px;
+    /* padding: 20px; */
+    flex-direction: row;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+}
+
+.vertical-divs>.vertical-div-left {
+    padding: 50px;
+    color: var(--vertical-div-left-fg-color);
+    background-color: var(--vertical-div-left-bg-color);
+    width: 40%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    /* add transition */
+    transition: all 0.5s;
+}
+
+.vertical-divs>.vertical-div-right {
+    padding: 50px;
+    color: var(--vertical-div-right-fg-color);
+    background-color: var(--vertical-div-right-bg-color);
+    width: 60%;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* add transition */
+    transition: all 0.5s;
+    /* centering */
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    .header {
+        padding-left: 0px;
+    }
+    .vertical-divs {
+        display: flex;
+        margin: 40px;
+        /* margin: 20px; */
+        /* margin: 20px; */
+        flex-direction: column;
+        box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    }
+    .vertical-divs>.vertical-div-left {
+        /* padding: 20px; */
+        padding: 50px;
+        width: auto;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
+        /* add transition */
+        transition: all 0.5s;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .vertical-divs>.vertical-div-right {
+        padding: 50px;
+        background-color: var(--vertical-div-right-bg-color);
+        width: auto;
+        border-top-left-radius: 0px;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        /* add transition */
+        transition: all 0.5s;
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    .header-right {
+        margin-left: 0px;
+        margin-right: 0px;
+        float: none;
+        text-align: center;
+        /* add transition */
+        transition: all 0.5s;
+    }
+    div.header ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        float: none;
+        display: flex;
+    }
+    div.header ul li {
+        /* padding: 20px; */
+        flex-basis: 100%;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        float: none;
+        transition: all 0.55s;
+    }
+    div.header ul li a {
+        float: none;
+        display: block;
+        width: 100%;
+        height: 20px;
+        text-align: center;
+        text-decoration: none;
+        color: aliceblue;
+        transition: all 0.55s;
+    }
+}

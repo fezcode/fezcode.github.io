@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "hkgrotesk-black";
+    src: url("../font/HKGrotesk-Black.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-blackitalic";
+    src: url("../font/HKGrotesk-BlackItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-bold";
+    src: url("../font/HKGrotesk-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-bolditalic";
+    src: url("../font/HKGrotesk-BoldItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-extrabold";
+    src: url("../font/HKGrotesk-ExtraBold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-extrabolditalic";
+    src: url("../font/HKGrotesk-ExtraBoldItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-extralight";
+    src: url("../font/HKGrotesk-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-italic";
+    src: url("../font/HKGrotesk-Italic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-light";
+    src: url("../font/HKGrotesk-Light.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-lightitalic";
+    src: url("../font/HKGrotesk-LightItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-medium";
+    src: url("../font/HKGrotesk-Medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-mediumitalic";
+    src: url("../font/HKGrotesk-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-regular";
+    src: url("../font/HKGrotesk-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-semibold";
+    src: url("../font/HKGrotesk-SemiBold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-semibolditalic";
+    src: url("../font/HKGrotesk-SemiBoldItalic.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-thin";
+    src: url("../font/HKGrotesk-Thin.woff") format("woff");
+}
+
+@font-face {
+    font-family: "hkgrotesk-thinitalic";
+    src: url("../font/HKGrotesk-ThinItalic.woff") format("woff");
+}
