@@ -13,6 +13,11 @@
     --sticky-header: #11283d
 }
 
+.imger {
+    margin-top: -4px;
+    width: 18px;
+    border-radius: 50%;
+}
 h1 {
     color: var(--header-color);
     font-size: 2em;
@@ -22,6 +27,10 @@ h2 {
     font-family: hkgrotesk-bold;
     color: var(--header2-color);
     font-size: 1.25em;
+}
+
+.overflow-wrapped {
+    word-wrap: break-word;
 }
 
 .fancy-link {
@@ -86,7 +95,7 @@ body,
     overflow: hidden;
     /* padding-left: 20px; */
     /* padding-right: 20px;/ */
-    padding-left: 20px;
+    /* padding-left: 20px; */
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: var(--background-color-shaded);
@@ -99,8 +108,8 @@ body,
 
 .header-right {
     color: #4e9845;
-    margin-left: 15px;
-    margin-right: 35px;
+    margin-left: 35px !important;
+    margin-right: 35px !important;
     margin-top: 5px;
     margin-bottom: 5px;
     float: right;
@@ -178,7 +187,7 @@ div.header ul li a:hover {
 
 .vertical-divs {
     display: flex;
-    margin: 100px;
+    margin: 50px;
     /* padding: 20px; */
     flex-direction: row;
     box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
@@ -221,7 +230,9 @@ div.header ul li a:hover {
     }
     .vertical-divs {
         display: flex;
-        margin: 40px;
+        margin: 0px;
+        margin-top: 20px;
+        margin-bottom: 40px;
         /* margin: 20px; */
         /* margin: 20px; */
         flex-direction: column;
@@ -288,4 +299,5 @@ div.header ul li a:hover {
         color: aliceblue;
         transition: all 0.55s;
     }
+
 }
