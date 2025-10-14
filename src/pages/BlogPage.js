@@ -14,7 +14,7 @@ const BlogPage = () => {
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
             From the Blog
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
@@ -22,7 +22,7 @@ const BlogPage = () => {
           </p>
         </div>
         <div className="mt-16">
-          <div className="divide-y divide-gray-700">
+          <div className="">
             {posts.map(slug => (
               <PostItem key={slug} slug={slug} />
             ))}

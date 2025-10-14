@@ -6,12 +6,12 @@ const PostItem = ({ slug }) => {
   const date = 'October 15, 2025'; // Placeholder date
 
   return (
-    <article className="py-8 border-b border-gray-700">
+    <article className="p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg">
       <div className="flex items-center">
         <p className="text-sm text-gray-400">{date}</p>
         <div className="ml-4 flex-grow flex items-center">
-          <h2 className="text-xl font-bold">
-            <Link to={`/blog/${slug}`} className="text-white hover:text-blue-400 transition-colors">
+          <h2 className="text-xl font-semibold">
+            <Link to={`/blog/${slug}`} className="text-white hover:text-teal-400 transition-colors">
               {title}
             </Link>
           </h2>

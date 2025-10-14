@@ -17,7 +17,7 @@ const HomePage = () => {
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
             Welcome to My Awesome Blog
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
@@ -26,7 +26,7 @@ const HomePage = () => {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-2xl font-bold tracking-tight text-white text-center">Pinned Projects</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-white text-center">Pinned Projects</h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             {pinnedProjects.map(project => (
               <ProjectCard key={project.slug} project={project} />
@@ -35,8 +35,8 @@ const HomePage = () => {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-2xl font-bold tracking-tight text-white text-center">Recent Blog Posts</h2>
-          <div className="mt-8 divide-y divide-gray-700">
+          <h2 className="text-2xl font-semibold tracking-tight text-white text-center">Recent Blog Posts</h2>
+          <div className="mt-8">
             {posts.slice(0, 5).map(slug => (
               <PostItem key={slug} slug={slug} />
             ))}

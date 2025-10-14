@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <header className="bg-gray-900/80 backdrop-blur-sm sticky top-0 z-40">
+    <header className="backdrop-blur-sm sticky top-0 z-40">
       <div className="container mx-auto flex justify-between items-center p-4 text-white">
-        <Link to="/" className="text-2xl font-bold tracking-tight">
+        <Link to="/" className="text-2xl font-semibold tracking-tight">
           My Awesome Blog
         </Link>
         <div className="flex items-center space-x-6">
