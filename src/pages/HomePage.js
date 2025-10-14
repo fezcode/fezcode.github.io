@@ -9,7 +9,7 @@ const HomePage = () => {
 
   useEffect(() => {
     // In a real app, you'd fetch this from a CMS or API
-    const postSlugs = ['first-post', 'second-post'];
+    const postSlugs = ['long-post', 'first-post', 'second-post'];
     setPosts(postSlugs);
   }, []);
 

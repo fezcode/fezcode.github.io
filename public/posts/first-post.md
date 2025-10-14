@@ -1,6 +1,7 @@
 ---
 title: My First Post
 date: 2025-10-14
+tags: ["react", "hello-world"]
 ---
 
 # My First Post

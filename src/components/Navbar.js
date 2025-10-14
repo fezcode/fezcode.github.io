@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,8 +18,9 @@ const Navbar = () => {
   return (
     <header className={`backdrop-blur-sm sticky top-0 z-40 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'}`}>
       <div className="container mx-auto flex justify-between items-center p-4 text-white">
-        <Link to="/" className="text-2xl font-semibold tracking-tight">
-          My Awesome Blog
+        <Link to="/" className="flex items-center space-x-2">
+          <Logo />
+          <span className="text-2xl font-semibold tracking-tight">fezcode</span>
         </Link>
         <div className="flex items-center space-x-6">
           <Link to="/" className="text-sm font-medium hover:text-gray-300 transition-colors">Home</Link>
