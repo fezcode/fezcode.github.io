@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import fm from 'front-matter';
@@ -8,6 +8,9 @@ const BlogPostPage = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true); // New state for tracking if at top
+  const contentRef = useRef(null);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -31,6 +34,21 @@ const BlogPostPage = () => {
     fetchPost();
   }, [slug]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (contentRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        const totalHeight = scrollHeight - clientHeight;
+        const currentProgress = (scrollTop / totalHeight) * 100;
+        setReadingProgress(currentProgress);
+        setIsAtTop(scrollTop === 0); // Update isAtTop based on scroll position
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [post]); // Re-attach scroll listener if post changes
+
   if (loading) {
     return <div className="text-center py-16">Loading...</div>;
   }
@@ -47,12 +65,12 @@ const BlogPostPage = () => {
             <Link to="/blog" className="text-primary-400 hover:text-primary-500 transition-colors mb-8 block">
               &larr; Back to Blog
             </Link>
-            <div className="prose prose-xl prose-dark max-w-none">
+            <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
               <ReactMarkdown>{post.body}</ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
-            <PostMetadata metadata={post.attributes} />
+            <PostMetadata metadata={post.attributes} readingProgress={readingProgress} isAtTop={isAtTop} />
           </div>
         </div>
       </div>

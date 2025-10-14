@@ -1,10 +1,18 @@
 import React from 'react';
 import Label from './Label';
 
-const PostMetadata = ({ metadata }) => {
+const PostMetadata = ({ metadata, readingProgress, isAtTop }) => {
   if (!metadata) {
     return null;
   }
+
+  const handleButtonClick = () => {
+    if (isAtTop) {
+      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
 
   return (
     <aside className="sticky top-24">
@@ -31,6 +39,20 @@ const PostMetadata = ({ metadata }) => {
               </div>
             </div>
           )}
+        </div>
+        <div className="mt-6">
+          <Label className="mb-1">Reading Progress</Label>
+          <div className="w-full bg-gray-700 rounded-full h-2.5 mt-2">
+            <div className="bg-primary-500 h-2.5 rounded-full" style={{width: `${readingProgress}%`}}></div>
+          </div>
+        </div>
+        <div className="mt-6 text-center">
+          <button
+            onClick={handleButtonClick}
+            className="text-primary-400 hover:text-primary-500 transition-colors text-sm font-medium flex items-center justify-center w-full py-2 rounded-md bg-gray-700/50 hover:bg-gray-700"
+          >
+            <span className="mr-1">{isAtTop ? '↓' : '↑'}</span> {isAtTop ? 'To the bottom' : 'To the top'}
+          </button>
         </div>
       </div>
     </aside>
