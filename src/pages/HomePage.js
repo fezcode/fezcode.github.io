@@ -41,7 +41,7 @@ const HomePage = () => {
           </h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             {pinnedProjects.map(project => (
-              <ProjectCard key={project.slug} project={project} />
+              <ProjectCard key={project.slug} project={{ ...project, description: project.shortDescription }} />
             ))}
           </div>
         </div>

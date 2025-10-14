@@ -1,7 +1,8 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useProjects } from '../utils/projectParser';
+import ProjectMetadata from '../components/ProjectMetadata';
 
 const ProjectPage = () => {
   const { slug } = useParams();
@@ -22,13 +23,22 @@ const ProjectPage = () => {
   }
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">{project.title}</h1>
-        {project.image && <img src={project.image} alt={project.title} className="mt-8 w-full rounded-lg" />}
-        {project.link && <p className="mt-4 text-lg leading-8 text-gray-300"><a href={project.link} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">View Project</a></p>}
-        <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-invert">
-          <ReactMarkdown>{project.description}</ReactMarkdown>
+    <div className="bg-gray-900 py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+          <div className="lg:col-span-3">
+            <Link to="/projects" className="text-primary-400 hover:text-primary-500 transition-colors mb-8 block">
+              &larr; Back to Projects
+            </Link>
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">{project.title}</h1>
+            {project.image && <img src={project.image} alt={project.title} className="mt-8 w-full rounded-lg text-gray-200" />}
+            <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-invert">
+              <ReactMarkdown>{project.fullContent}</ReactMarkdown>
+            </div>
+          </div>
+          <div className="hidden lg:block">
+            <ProjectMetadata project={project} />
+          </div>
         </div>
       </div>
     </div>

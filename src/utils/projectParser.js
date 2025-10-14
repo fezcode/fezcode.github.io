@@ -1,52 +1,5 @@
 import { useEffect, useState } from 'react';
-
-const parseProjectsMarkdown = (markdown) => {
-  const projects = [];
-  const projectSections = markdown.split('## ').slice(1); // Split by '## ' and remove the first empty element
-
-  projectSections.forEach(section => {
-    const lines = section.split('\n').filter(line => line.trim() !== '');
-    if (lines.length === 0) return;
-
-    const title = lines[0].trim();
-    const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-*|-*$/g, '');
-
-    let description = [];
-    let link = '';
-    let image = '';
-    let pinned = false;
-
-    for (let i = 1; i < lines.length; i++) {
-      const line = lines[i].trim();
-      if (line.startsWith('[Link to')) {
-        const match = line.match(/\[Link to .*?\]\((.*?)\)/);
-        if (match && match[1]) {
-          link = match[1];
-        }
-      } else if (line.startsWith('![') && line.includes('](')) {
-        const match = line.match(/!\[.*?\]\((.*?)\)/);
-        if (match && match[1]) {
-          image = match[1];
-        }
-      } else if (line.startsWith('Pinned:')) {
-        pinned = line.toLowerCase().includes('true');
-      } else {
-        description.push(line);
-      }
-    }
-
-    projects.push({
-      slug,
-      title,
-      description: description.join('\n'),
-      link,
-      image,
-      pinned,
-    });
-  });
-
-  return projects;
-};
+import fm from 'front-matter';
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -56,13 +9,33 @@ export const useProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/data/Projects.md');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const markdown = await response.text();
-        const parsedProjects = parseProjectsMarkdown(markdown);
-        setProjects(parsedProjects);
+        // Fetch the list of project markdown files
+        // In a real app, you might have an API endpoint that lists these files
+        // For now, we'll assume a fixed list or glob for them if possible
+        const projectSlugs = ['project-one', 'project-two', 'project-three']; // Manually list for now
+
+        const fetchedProjects = await Promise.all(
+          projectSlugs.map(async (slug) => {
+            const response = await fetch(`/projects/${slug}.md`);
+            if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status} for ${slug}.md`);
+            }
+            const text = await response.text();
+            const content = fm(text);
+
+            const parts = content.body.split('---');
+            const shortDescription = parts[0].trim();
+            const fullContent = parts.slice(1).join('---').trim();
+
+            return {
+              slug,
+              ...content.attributes,
+              shortDescription,
+              fullContent,
+            };
+          })
+        );
+        setProjects(fetchedProjects);
       } catch (e) {
         setError(e);
       } finally {

@@ -25,10 +25,9 @@ const ProjectsPage = () => {
           </p>
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map(project => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
+                      {projects.map(project => (
+                        <ProjectCard key={project.slug} project={{ ...project, description: project.shortDescription }} />
+                      ))}        </div>
       </div>
     </div>
   );
