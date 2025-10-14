@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import PostItem from '../components/PostItem';
 
 const BlogPage = () => {
   const [posts, setPosts] = useState([]);
@@ -11,21 +11,23 @@ const BlogPage = () => {
   }, []);
 
   return (
-    <div>
-      <h1 className="text-3xl font-bold mb-8">Blog Posts</h1>
-      <div className="grid gap-8">
-        {posts.map(slug => (
-          <div key={slug} className="bg-white p-6 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-2">
-              <Link to={`/blog/${slug}`} className="text-blue-500 hover:underline">
-                {slug.replace(/-/g, ' ')}
-              </Link>
-            </h2>
-            <p className="text-gray-600">
-              This is a short excerpt of the blog post...
-            </p>
+    <div className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl text-center">
+          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">
+            From the Blog
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-gray-300">
+            Catch up on the latest news and insights.
+          </p>
+        </div>
+        <div className="mt-16">
+          <div className="divide-y divide-gray-700">
+            {posts.map(slug => (
+              <PostItem key={slug} slug={slug} />
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
