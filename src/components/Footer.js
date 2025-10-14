@@ -26,10 +26,10 @@ const Footer = () => {
           </div>
           <div className="mt-8 border-t border-gray-700/50 pt-8 flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-400">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <Link to="/about" className="hover:text-white transition-colors">About</Link>
-              <Link to="/blog" className="hover:text-white transition-colors">Blog</Link>
-              <Link to="/projects" className="hover:text-white transition-colors">Projects</Link>
+              <Link to="/" className="hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Home</Link>
+              <Link to="/about" className="hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>
+              <Link to="/blog" className="hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Blog</Link>
+              <Link to="/projects" className="hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Projects</Link>
             </div>
             <p className="text-sm text-gray-500">
               &copy; {new Date().getFullYear()} fezcode. All rights reserved.
