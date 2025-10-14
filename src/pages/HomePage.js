@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PostItem from '../components/PostItem';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
-import { FaThumbtack, FaBlog } from 'react-icons/fa';
+import { FaThumbtack, FaBlog, FaArrowRight } from 'react-icons/fa';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -44,6 +45,11 @@ const HomePage = () => {
               <ProjectCard key={project.slug} project={{ ...project, description: project.shortDescription }} />
             ))}
           </div>
+          <div className="mt-8 text-center">
+            <Link to="/projects" className="text-primary-400 hover:underline flex items-center justify-center gap-2">
+              View All Projects <FaArrowRight />
+            </Link>
+          </div>
         </div>
 
         <div className="mt-8">
@@ -54,6 +60,11 @@ const HomePage = () => {
             {posts.slice(0, 5).map(slug => (
               <PostItem key={slug} slug={slug} />
             ))}
+          </div>
+          <div className="mt-8 text-center">
+            <Link to="/blog" className="text-primary-400 hover:underline flex items-center justify-center gap-2">
+              See All Blog Posts <FaArrowRight />
+            </Link>
           </div>
         </div>
 
