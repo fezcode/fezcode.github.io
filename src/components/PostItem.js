@@ -11,11 +11,11 @@ const PostItem = ({ slug }) => {
         <div className="flex items-center">
           <p className="text-sm text-gray-400">{date}</p>
           <div className="ml-4 flex-grow flex items-center">
-            <h2 className="text-xl font-semibold text-white hover:text-teal-400 transition-colors">
+            <h2 className="text-xl font-semibold text-white hover:text-primary-400 transition-colors">
               {title}
             </h2>
           </div>
-          <span className="ml-4 flex-shrink-0 text-sm font-medium text-teal-400 hover:text-teal-500 transition-colors">
+          <span className="ml-4 flex-shrink-0 text-sm font-medium text-primary-400 hover:text-primary-500 transition-colors">
             Read post &rarr;
           </span>
         </div>

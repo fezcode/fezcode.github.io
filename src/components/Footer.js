@@ -18,9 +18,9 @@ const Footer = () => {
             <div className="md:text-right">
               <h3 className="text-lg font-semibold text-white">Follow Us</h3>
               <div className="mt-4 flex md:justify-end gap-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://x.com/fezcoddy" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
+                <a href="https://github.com/fezcode" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US" className="text-gray-400 hover:text-white transition-colors">LinkedIn</a>
               </div>
             </div>
           </div>
@@ -31,7 +31,7 @@ const Footer = () => {
               <Link to="/projects" className="hover:text-white transition-colors">Projects</Link>
             </div>
             <p className="text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} My Awesome Blog. All rights reserved.
+              &copy; {new Date().getFullYear()} fezcode. All rights reserved.
             </p>
           </div>
         </div>
