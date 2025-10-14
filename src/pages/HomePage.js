@@ -34,7 +34,7 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div className="mt-16">
+        <div className="mt-8">
           <h2 className="text-2xl font-semibold tracking-tight text-white text-center">Recent Blog Posts</h2>
           <div className="mt-8">
             {posts.slice(0, 5).map(slug => (
@@ -42,6 +42,7 @@ const HomePage = () => {
             ))}
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -13,10 +13,10 @@ module.exports = {
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        teal: {
-          400: '#2dd4bf',
-          500: '#14b8a6',
-          600: '#0d9488',
+        primary: {
+          400: '#f87171',
+          500: '#ef4444',
+          600: '#dc2626',
         },
       },
       typography: (theme) => ({
@@ -24,9 +24,9 @@ module.exports = {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.teal.400'),
+              color: theme('colors.primary.400'),
               '&:hover': {
-                color: theme('colors.teal.600'),
+                color: theme('colors.primary.600'),
               },
             },
 

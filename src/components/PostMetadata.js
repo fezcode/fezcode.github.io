@@ -24,7 +24,7 @@ const PostMetadata = ({ metadata }) => {
               <Label>Tags</Label>
               <div className="flex flex-wrap gap-2 mt-2">
                 {metadata.tags.map(tag => (
-                  <span key={tag} className="bg-teal-400/10 text-teal-400 text-xs font-medium px-2.5 py-1 rounded-full">
+                  <span key={tag} className="bg-primary-400/10 text-primary-400 text-xs font-medium px-2.5 py-1 rounded-full">
                     {tag}
                   </span>
                 ))}

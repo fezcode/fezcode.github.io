@@ -12,7 +12,7 @@ const Footer = () => {
               <p className="mt-4 text-sm text-gray-400">Subscribe to our newsletter to get the latest updates straight to your inbox.</p>
               <form className="mt-4 flex gap-2">
                 <input type="email" placeholder="Enter your email" className="bg-gray-800 text-white px-4 py-2 rounded-md w-full" />
-                <button type="submit" className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-md transition-colors">Subscribe</button>
+                <button type="submit" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-md transition-colors">Subscribe</button>
               </form>
             </div>
             <div className="md:text-right">

@@ -44,7 +44,7 @@ const BlogPostPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link to="/blog" className="text-teal-400 hover:text-teal-500 transition-colors mb-8 block">
+            <Link to="/blog" className="text-primary-400 hover:text-primary-500 transition-colors mb-8 block">
               &larr; Back to Blog
             </Link>
             <div className="prose prose-xl prose-dark max-w-none">
