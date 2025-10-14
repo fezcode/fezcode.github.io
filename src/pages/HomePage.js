@@ -18,7 +18,7 @@ const HomePage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            Welcome to My Awesome Blog
+            Welcome to fez<span className="text-primary-400">codex</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
             Exploring the world of code, one post at a time.
