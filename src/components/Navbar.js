@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="backdrop-blur-sm sticky top-0 z-40">
+    <header className={`backdrop-blur-sm sticky top-0 z-40 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'}`}>
       <div className="container mx-auto flex justify-between items-center p-4 text-white">
         <Link to="/" className="text-2xl font-semibold tracking-tight">
           My Awesome Blog

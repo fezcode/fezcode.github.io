@@ -9,8 +9,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
+        sans: ['Space Mono', ...defaultTheme.fontFamily.sans],
+        mono: ['Inter', ...defaultTheme.fontFamily.mono],
       },
       colors: {
         teal: {
