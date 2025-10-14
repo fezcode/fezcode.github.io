@@ -16,7 +16,7 @@ const PostItem = ({ slug }) => {
             </Link>
           </h2>
         </div>
-        <Link to={`/blog/${slug}`} className="ml-4 flex-shrink-0 text-sm font-medium text-blue-400 hover:text-blue-500 transition-colors">
+        <Link to={`/blog/${slug}`} className="ml-4 flex-shrink-0 text-sm font-medium text-teal-400 hover:text-teal-500 transition-colors">
           Read post &rarr;
         </Link>
       </div>

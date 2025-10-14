@@ -11,7 +11,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-6">
           <Link to="/" className="text-sm font-medium hover:text-gray-300 transition-colors">Home</Link>
           <Link to="/blog" className="text-sm font-medium hover:text-gray-300 transition-colors">Blog</Link>
-          <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
+          <button className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
             Play Latest
           </button>
         </div>

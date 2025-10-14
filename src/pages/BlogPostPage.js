@@ -28,7 +28,7 @@ const BlogPostPage = () => {
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <Link to="/blog" className="text-blue-400 hover:text-blue-500 transition-colors mb-8 block">
+        <Link to="/blog" className="text-teal-400 hover:text-teal-500 transition-colors mb-8 block">
           &larr; Back to Blog
         </Link>
         <div className="prose prose-xl prose-dark max-w-none">

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
@@ -6,14 +8,25 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
+        mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
+      },
+      colors: {
+        teal: {
+          400: '#2dd4bf',
+          500: '#14b8a6',
+          600: '#0d9488',
+        },
+      },
       typography: (theme) => ({
         dark: {
           css: {
             color: theme('colors.gray.300'),
             a: {
-              color: theme('colors.blue.400'),
+              color: theme('colors.teal.400'),
               '&:hover': {
-                color: theme('colors.blue.600'),
+                color: theme('colors.teal.600'),
               },
             },
 
