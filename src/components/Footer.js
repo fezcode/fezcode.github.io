@@ -16,7 +16,7 @@ const Footer = () => {
               </form>
             </div>
             <div className="md:text-right">
-              <h3 className="text-lg font-semibold text-white">Follow Us</h3>
+              <h3 className="text-lg font-semibold text-white">Follow Me...</h3>
               <div className="mt-4 flex md:justify-end gap-4">
                 <a href="https://x.com/fezcoddy" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
                 <a href="https://github.com/fezcode" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
@@ -27,6 +27,7 @@ const Footer = () => {
           <div className="mt-8 border-t border-gray-700/50 pt-8 flex flex-wrap items-center justify-between gap-4">
             <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-400">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <Link to="/about" className="hover:text-white transition-colors">About</Link>
               <Link to="/blog" className="hover:text-white transition-colors">Blog</Link>
               <Link to="/projects" className="hover:text-white transition-colors">Projects</Link>
             </div>

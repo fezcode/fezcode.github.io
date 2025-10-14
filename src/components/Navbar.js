@@ -24,9 +24,9 @@ const Navbar = () => {
         </Link>
         <div className="flex items-center space-x-6">
           <Link to="/" className="text-sm font-medium hover:text-gray-300 transition-colors">Home</Link>
+          <Link to="/about" className="text-sm font-medium hover:text-gray-300 transition-colors">About</Link>
           <Link to="/blog" className="text-sm font-medium hover:text-gray-300 transition-colors">Blog</Link>
           <Link to="/projects" className="text-sm font-medium hover:text-gray-300 transition-colors">Projects</Link>
-          <Link to="/about" className="text-sm font-medium hover:text-gray-300 transition-colors">About</Link>
           <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
             Play Wordle
           </a>
