@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PostItem from '../components/PostItem';
+import ProjectCard from '../components/ProjectCard';
+import projects from '../data/projects';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
+  const pinnedProjects = projects.filter(p => p.pinned);
 
   useEffect(() => {
     // In a real app, you'd fetch this from a CMS or API
@@ -21,9 +24,20 @@ const HomePage = () => {
             Exploring the world of code, one post at a time.
           </p>
         </div>
+
         <div className="mt-16">
-          <div className="divide-y divide-gray-700">
-            {posts.map(slug => (
+          <h2 className="text-2xl font-bold tracking-tight text-white text-center">Pinned Projects</h2>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+            {pinnedProjects.map(project => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold tracking-tight text-white text-center">Recent Blog Posts</h2>
+          <div className="mt-8 divide-y divide-gray-700">
+            {posts.slice(0, 5).map(slug => (
               <PostItem key={slug} slug={slug} />
             ))}
           </div>

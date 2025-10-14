@@ -28,6 +28,7 @@ const Footer = () => {
             <div className="flex flex-wrap items-center gap-6 text-sm font-medium text-gray-400">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <Link to="/blog" className="hover:text-white transition-colors">Blog</Link>
+              <Link to="/projects" className="hover:text-white transition-colors">Projects</Link>
             </div>
             <p className="text-sm text-gray-500">
               &copy; {new Date().getFullYear()} My Awesome Blog. All rights reserved.
