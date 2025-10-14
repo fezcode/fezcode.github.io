@@ -1,8 +1,18 @@
 import React from 'react';
-import projects from '../data/projects';
 import ProjectCard from '../components/ProjectCard';
+import { useProjects } from '../utils/projectParser';
 
 const ProjectsPage = () => {
+  const { projects, loading, error } = useProjects();
+
+  if (loading) {
+    return <div className="py-16 sm:py-24 text-center text-white">Loading projects...</div>;
+  }
+
+  if (error) {
+    return <div className="py-16 sm:py-24 text-center text-red-500">Error loading projects: {error.message}</div>;
+  }
+
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

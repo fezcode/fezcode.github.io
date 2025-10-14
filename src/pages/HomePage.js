@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import PostItem from '../components/PostItem';
 import ProjectCard from '../components/ProjectCard';
-import projects from '../data/projects';
+import { useProjects } from '../utils/projectParser';
+import { FaThumbtack, FaBlog } from 'react-icons/fa';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
+  const { projects, loading, error } = useProjects();
   const pinnedProjects = projects.filter(p => p.pinned);
 
   useEffect(() => {
@@ -12,6 +14,14 @@ const HomePage = () => {
     const postSlugs = ['long-post', 'first-post', 'second-post'];
     setPosts(postSlugs);
   }, []);
+
+  if (loading) {
+    return <div className="py-16 sm:py-24 text-center text-white">Loading projects...</div>;
+  }
+
+  if (error) {
+    return <div className="py-16 sm:py-24 text-center text-red-500">Error loading projects: {error.message}</div>;
+  }
 
   return (
     <div className="py-16 sm:py-24">
@@ -26,7 +36,9 @@ const HomePage = () => {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-white text-center">Pinned Projects</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
+            <FaThumbtack className="text-primary-400" /> Pinned Projects
+          </h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             {pinnedProjects.map(project => (
               <ProjectCard key={project.slug} project={project} />
@@ -35,7 +47,9 @@ const HomePage = () => {
         </div>
 
         <div className="mt-8">
-          <h2 className="text-2xl font-semibold tracking-tight text-white text-center">Recent Blog Posts</h2>
+          <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
+            <FaBlog className="text-primary-400" /> Recent Blog Posts
+          </h2>
           <div className="mt-8">
             {posts.slice(0, 5).map(slug => (
               <PostItem key={slug} slug={slug} />
