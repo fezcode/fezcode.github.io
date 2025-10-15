@@ -3,6 +3,8 @@ import ReactMarkdown from 'react-markdown';
 import { FaArrowLeft, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
+
+
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
