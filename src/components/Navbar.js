@@ -33,6 +33,7 @@ const Navbar = () => {
           <Link to="/about" className="text-sm font-medium hover:text-gray-300 transition-colors">About</Link>
           <Link to="/blog" className="text-sm font-medium hover:text-gray-300 transition-colors">Blog</Link>
           <Link to="/projects" className="text-sm font-medium hover:text-gray-300 transition-colors">Projects</Link>
+          <Link to="/logs" className="text-sm font-medium hover:text-gray-300 transition-colors">Logs</Link>
           <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
             Play Wordle
           </a>
@@ -50,6 +51,7 @@ const Navbar = () => {
             <Link to="/about" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>About</Link>
             <Link to="/blog" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>Blog</Link>
             <Link to="/projects" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>Projects</Link>
+            <Link to="/logs" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>Logs</Link>
             <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-full transition-colors" onClick={toggleMenu}>
               Play Wordle
             </a>

@@ -1,0 +1,50 @@
+[
+  {
+    "title": "The Hitchhiker's Guide to the Galaxy",
+    "category": "Book",
+    "author": "Douglas Adams",
+    "date": "2025-10-15",
+    "rating": 5,
+    "link": "https://www.goodreads.com/book/show/386162.The_Hitchhiker_s_Guide_to_the_Galaxy"
+  },
+  {
+    "title": "The Matrix",
+    "category": "Movie",
+    "director": "The Wachowskis",
+    "date": "2025-10-14",
+    "rating": 5,
+    "link": "https://www.imdb.com/title/tt0133093/"
+  },
+  {
+    "title": "The Legend of Zelda: Breath of the Wild",
+    "category": "Game",
+    "platform": "Nintendo Switch",
+    "date": "2025-10-12",
+    "rating": 5,
+    "link": "https://www.zelda.com/breath-of-the-wild/"
+  },
+  {
+    "title": "The Go Programming Language",
+    "category": "Book",
+    "author": "Alan A. A. Donovan & Brian W. Kernighan",
+    "date": "2025-10-10",
+    "rating": 5,
+    "link": "https://www.gopl.io/"
+  },
+  {
+    "title": "How to build a mechanical keyboard",
+    "category": "Article",
+    "source": "PC Gamer",
+    "date": "2025-10-08",
+    "rating": 4,
+    "link": "https://www.pcgamer.com/how-to-build-a-mechanical-keyboard/"
+  },
+  {
+    "title": "In the Aeroplane Over the Sea",
+    "category": "Music",
+    "artist": "Neutral Milk Hotel",
+    "date": "2025-10-06",
+    "rating": 5,
+    "link": "https://www.youtube.com/watch?v=hD6_q5d4v-w"
+  }
+]

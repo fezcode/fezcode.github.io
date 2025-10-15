@@ -7,6 +7,7 @@ import BlogPostPage from '../pages/BlogPostPage';
 import ProjectsPage from '../pages/ProjectsPage';
 import ProjectPage from '../pages/ProjectPage';
 import AboutPage from '../pages/AboutPage';
+import LogsPage from '../pages/LogsPage';
 import NotFoundPage from '../pages/NotFoundPage';
 
 const pageVariants = {
@@ -39,6 +40,7 @@ function AnimatedRoutes() {
         <Route path="/projects" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><ProjectsPage /></motion.div>} />
         <Route path="/projects/:slug" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><ProjectPage /></motion.div>} />
         <Route path="/about" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><AboutPage /></motion.div>} />
+        <Route path="/logs" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><LogsPage /></motion.div>} />
         <Route path="*" element={<motion.div initial="initial" animate="in" exit="out" variants={pageVariants} transition={pageTransition}><NotFoundPage /></motion.div>} />
       </Routes>
     </AnimatePresence>
