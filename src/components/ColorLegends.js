@@ -41,7 +41,7 @@ const ColorLegends = ({ onLegendClick, hiddenLegends }) => {
               onClick={() => onLegendClick(category)}
             ></div>
             <span
-              className={`cursor-pointer ${
+              className={`cursor-pointer text-white font-light ${
                 hiddenLegends.includes(category) ? "opacity-50 line-through" : "opacity-100"
               }`}
               onClick={() => onLegendClick(category)}

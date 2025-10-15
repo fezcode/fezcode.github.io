@@ -35,7 +35,8 @@ const LogsPage = () => {
       try {
         const response = await fetch('/data/logs.json');
         const data = await response.json();
-        setLogs(data);
+        const logsWithId = data.map((log, index) => ({ ...log, id: `${log.title}-${log.date}-${index}`, originalIndex: index }));
+        setLogs(logsWithId);
       } catch (err) {
         console.error("Error fetching logs:", err);
       } finally {
@@ -92,8 +93,8 @@ const LogsPage = () => {
           </div>
         </div>
         {showLegends && (
-          <div className="mx-auto p-6 border border-gray-700 shadow-lg text-center bg-gray-900 mt-[-16px] mb-8">
-            <h2 className="mb-[-16px] text-2xl font-semibold tracking-tight text-white">Legends</h2>
+          <div className="mx-auto p-6 border border-gray-700 shadow-lg text-center bg-gray-900 opacity-80 mt-[-16px] mb-8" >
+            <h2 className="mb-[-16px] text-xl font-light tracking-tight text-white">Categories</h2>
             <ColorLegends
               onLegendClick={handleLegendClick}
               hiddenLegends={hiddenLegends}
@@ -101,8 +102,8 @@ const LogsPage = () => {
           </div>
         )}
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${!showLegends ? 'mt-8' : ''}`}>
-          {filteredLogs.map((log, index) => (
-            <LogCard key={index} log={log} index={index} totalLogs={logs.length} />
+          {filteredLogs.map((log) => (
+            <LogCard key={log.id} log={log} index={log.originalIndex} totalLogs={logs.length} />
           ))}
         </div>
 
