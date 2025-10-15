@@ -53,7 +53,7 @@ const AboutPage = () => {
 
   return (
     <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-5xl px-6 lg:px-8 text-gray-300">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
         <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
           <FaArrowLeft className="text-xl" /> Back to Home
         </Link>

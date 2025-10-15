@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ProjectCard = ({ project, size = 1 }) => {
-  const colSpanClass = size === 2 ? 'col-span-2' : 'col-span-1';
+  const colSpanClass = size === 2 ? 'md:col-span-2' : 'col-span-1';
 
   return (
     <Link to={`/projects/${project.slug}`} className={`block bg-gray-800/50 p-6 rounded-lg shadow-lg hover:bg-gray-800/80 transition-colors border border-gray-700/50 cursor-pointer flex flex-col ${colSpanClass}`}>

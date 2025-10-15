@@ -17,7 +17,7 @@ const ProjectsPage = () => {
 
   return (
     <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-8 lg:px-12">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
             <FaArrowLeft className="text-xl" /> Back to Home
