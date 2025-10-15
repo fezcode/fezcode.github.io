@@ -27,17 +27,27 @@ const categoryStyles = {
   },
 };
 
-const ColorLegends = () => {
+const ColorLegends = ({ onLegendClick, hiddenLegends }) => {
   return (
     <div className="flex justify-center mt-8">
       <div className="flex items-center flex-wrap justify-center space-x-4">
         {Object.keys(categoryStyles).map((category) => (
           <div key={category} className="flex items-center mb-2">
             <div
-              className="w-4 h-4 rounded-full mr-2"
+              className={`w-4 h-4 rounded-full mr-2 cursor-pointer ${
+                hiddenLegends.includes(category) ? "opacity-50" : "opacity-100"
+              }`}
               style={{ backgroundColor: categoryStyles[category].backgroundColor, border: `1px solid ${categoryStyles[category].borderColor}` }}
+              onClick={() => onLegendClick(category)}
             ></div>
-            <span>{category}</span>
+            <span
+              className={`cursor-pointer ${
+                hiddenLegends.includes(category) ? "opacity-50 line-through" : "opacity-100"
+              }`}
+              onClick={() => onLegendClick(category)}
+            >
+              {category}
+            </span>
           </div>
         ))}
       </div>

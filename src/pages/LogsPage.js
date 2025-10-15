@@ -10,6 +10,25 @@ const LogsPage = () => {
   const [logs, setLogs] = useState([]);
   const [showLegends, setShowLegends] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [hiddenLegends, setHiddenLegends] = useState([]);
+
+  const handleLegendClick = (legend) => {
+    setHiddenLegends((prevHiddenLegends) => {
+      if (prevHiddenLegends.includes(legend)) {
+        return prevHiddenLegends.filter((item) => item !== legend);
+      } else {
+        return [...prevHiddenLegends, legend];
+      }
+    });
+  };
+
+  const [filteredLogs, setFilteredLogs] = useState([]);
+
+  useEffect(() => {
+    setFilteredLogs(
+      logs.filter((log) => !hiddenLegends.includes(log.category))
+    );
+  }, [logs, hiddenLegends]);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -74,12 +93,15 @@ const LogsPage = () => {
         </div>
         {showLegends && (
           <div className="mx-auto p-6 border border-gray-700 shadow-lg text-center bg-gray-900 mt-[-16px] mb-8">
-            <h2 className="text-2xl font-semibold tracking-tight text-white">Legends</h2>
-            <ColorLegends />
+            <h2 className="mb-[-16px] text-2xl font-semibold tracking-tight text-white">Legends</h2>
+            <ColorLegends
+              onLegendClick={handleLegendClick}
+              hiddenLegends={hiddenLegends}
+            />
           </div>
         )}
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${!showLegends ? 'mt-8' : ''}`}>
-          {logs.map((log, index) => (
+          {filteredLogs.map((log, index) => (
             <LogCard key={index} log={log} index={index} totalLogs={logs.length} />
           ))}
         </div>
