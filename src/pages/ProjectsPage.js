@@ -32,9 +32,9 @@ const ProjectsPage = () => {
             <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {projects.length}</span>
           </div>
         </div>
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 grid-flow-row-dense">
                       {projects.map(project => (
-                        <ProjectCard key={project.slug} project={{ ...project, description: project.shortDescription }} />
+                        <ProjectCard key={project.slug} project={{ ...project, description: project.shortDescription }} size={project.size} />
                       ))}        </div>
       </div>
     </div>

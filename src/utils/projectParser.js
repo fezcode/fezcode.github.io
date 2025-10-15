@@ -12,10 +12,15 @@ export const useProjects = () => {
         // Fetch the list of project markdown files
         // In a real app, you might have an API endpoint that lists these files
         // For now, we'll assume a fixed list or glob for them if possible
-        const projectSlugs = ['project-one', 'project-two', 'project-three']; // Manually list for now
+        const response = await fetch('/data/shownProjects.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status} for shownProjects.json`);
+        }
+        const projectDataList = await response.json();
 
         const fetchedProjects = await Promise.all(
-          projectSlugs.map(async (slug) => {
+          projectDataList.map(async (projectData) => {
+            const slug = projectData.title; // Use title as slug
             const response = await fetch(`/projects/${slug}.md`);
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status} for ${slug}.md`);
@@ -29,9 +34,11 @@ export const useProjects = () => {
 
             return {
               slug,
+              title: projectData.title, // Include title
               ...content.attributes,
               shortDescription,
               fullContent,
+              size: projectData.size, // Include size
             };
           })
         );
