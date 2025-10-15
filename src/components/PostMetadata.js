@@ -6,6 +6,9 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop }) => {
     return null;
   }
 
+  const postDate = new Date(metadata.date);
+  const formattedDate = isNaN(postDate) ? 'Invalid Date' : postDate.toLocaleDateString();
+
   const handleButtonClick = () => {
     if (isAtTop) {
       window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
@@ -25,7 +28,7 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop }) => {
           </div>
           <div>
             <Label>Date</Label>
-            <p className="text-gray-300">{metadata.date.toLocaleDateString()}</p>
+            <p className="text-gray-300">{formattedDate}</p>
           </div>
           {metadata.tags && (
             <div>
