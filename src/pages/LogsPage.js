@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CaretDown, CaretUp } from '@phosphor-icons/react';
 import LogCard from '../components/LogCard';
 import ColorLegends from '../components/ColorLegends';
 import usePageTitle from "../utils/usePageTitle";
@@ -8,6 +8,7 @@ import usePageTitle from "../utils/usePageTitle";
 const LogsPage = () => {
     usePageTitle('Logs <?>');
   const [logs, setLogs] = useState([]);
+  const [showLegends, setShowLegends] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -58,12 +59,26 @@ const LogsPage = () => {
         <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-4 flex items-center">
           Logs
         </h1>
-        <hr className="border-gray-700 mb-8" />
-        <div className="mb-8 mx-auto p-6 border border-gray-700 rounded-lg shadow-lg text-center bg-gray-900">
+        <div
+          className="relative flex justify-center items-center w-full cursor-pointer"
+          onClick={() => setShowLegends(!showLegends)}
+        >
+          <hr className="border-gray-700 w-full absolute" />
+          <div className="relative bg-gray-900 px-4 z-10">
+            {showLegends ? (
+              <CaretUp size={32} className="text-primary-400" />
+            ) : (
+              <CaretDown size={32} className="text-primary-400" />
+            )}
+          </div>
+        </div>
+        {showLegends && (
+          <div className="mx-auto p-6 border border-gray-700 rounded-lg shadow-lg text-center bg-gray-900 mt-0 mb-8">
             <h2 className="text-2xl font-semibold tracking-tight text-white">Legends</h2>
             <ColorLegends />
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          </div>
+        )}
+        <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${!showLegends ? 'mt-8' : ''}`}>
           {logs.map((log, index) => (
             <LogCard key={index} log={log} index={index} totalLogs={logs.length} />
           ))}
