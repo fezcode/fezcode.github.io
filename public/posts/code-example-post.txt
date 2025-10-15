@@ -1,9 +1,3 @@
----
-title: "Code Example Post"
-date: "2023-10-27"
-description: "A blog post demonstrating code blocks in various languages."
-tags: ["code", "markdown", "example"]
----
 
 This post demonstrates how code blocks are rendered within our blog. We can include code snippets in various programming languages.
 

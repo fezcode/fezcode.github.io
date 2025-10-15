@@ -1,31 +1,38 @@
 [
   {
-    "file": "warning-post",
+    "slug": "warning-post",
+    "title": "My Second Post",
     "date": "2025-10-14",
-    "updated": "2025-10-15"
+    "updated": "2025-10-15",
+    "tags": ["writing", "updates"]
   },
-
   {
-    "file": "code-example-post",
+    "slug": "code-example-post",
+    "title": "Code Example Post",
     "date": "2025-10-15",
-    "updated": "2025-10-15"
+    "updated": "2025-10-15",
+    "description": "A blog post demonstrating code blocks in various languages.",
+    "tags": ["code", "markdown", "example"]
   },
-
   {
-    "file": "first-post",
+    "slug": "first-post",
+    "title": "My First Post",
     "date": "2025-10-14",
-    "updated": "2025-10-15"
+    "updated": "2025-10-15",
+    "tags": ["react", "hello-world"]
   },
-
   {
-    "file": "long-post",
+    "slug": "long-post",
+    "title": "The Art of Scrolling",
     "date": "2025-10-13",
-    "updated": "2025-10-14"
+    "updated": "2025-10-14",
+    "tags": ["css", "scrolling", "web-design"]
   },
-
   {
-    "file": "second-post",
+    "slug": "second-post",
+    "title": "My Second Post",
     "date": "2025-10-12",
-    "updated": "2025-10-13"
+    "updated": "2025-10-13",
+    "tags": ["writing", "updates"]
   }
 ]

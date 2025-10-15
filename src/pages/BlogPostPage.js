@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import fm from 'front-matter';
 import PostMetadata from '../components/PostMetadata';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
@@ -17,7 +16,6 @@ const LinkRenderer = ({ href, children }) => {
 const BlogPostPage = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
-  const [shownPostsData, setShownPostsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true); // New state for tracking if at top
@@ -27,24 +25,30 @@ const BlogPostPage = () => {
     const fetchPost = async () => {
       setLoading(true);
       try {
-        const [postResponse, shownPostsResponse] = await Promise.all([
+        const [postContentResponse, shownPostsResponse] = await Promise.all([
           fetch(`/posts/${slug}.txt`),
           fetch('/data/shownPosts.json')
         ]);
 
-        if (postResponse.ok) {
-          const text = await postResponse.text();
-          const content = fm(text);
-          setPost(content);
+        let postBody = '';
+        if (postContentResponse.ok) {
+          postBody = await postContentResponse.text();
         } else {
-          setPost({ attributes: { title: 'Post not found' }, body: '' });
+          // Handle case where post content is not found
         }
 
+        let postMetadata = null;
         if (shownPostsResponse.ok) {
           const data = await shownPostsResponse.json();
-          setShownPostsData(data);
+          postMetadata = data.find(item => item.slug === slug);
         } else {
           console.error('Failed to fetch shownPosts.json');
+        }
+
+        if (postMetadata && postContentResponse.ok) {
+            setPost({ attributes: postMetadata, body: postBody });
+        } else {
+            setPost({ attributes: { title: 'Post not found' }, body: '' });
         }
 
       } catch (error) {
@@ -80,10 +84,6 @@ const BlogPostPage = () => {
     return <div className="text-center py-16">Post not found</div>;
   }
 
-  const currentPostData = shownPostsData.find(item => item.file === slug);
-  const postDate = currentPostData ? currentPostData.date : null;
-  const updatedDate = currentPostData ? currentPostData.updated : null;
-
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -97,7 +97,7 @@ const BlogPostPage = () => {
             </div>
           </div>
           <div className="hidden lg:block">
-            <PostMetadata metadata={post.attributes} readingProgress={readingProgress} isAtTop={isAtTop} overrideDate={postDate} updatedDate={updatedDate} />
+            <PostMetadata metadata={post.attributes} readingProgress={readingProgress} isAtTop={isAtTop} overrideDate={post.attributes.date} updatedDate={post.attributes.updated} />
           </div>
         </div>
       </div>

@@ -1,18 +1,38 @@
 [
   {
-    "title": "project-one",
-    "size": 2
+    "slug": "project-one",
+    "title": "Project One",
+    "size": 2,
+    "link": "https://example.com/project-one",
+    "pinned": true,
+    "isActive": true,
+    "technologies": ["React", "Node.js", "MongoDB"]
   },
   {
-    "title": "project-two",
-    "size": 1
+    "slug": "project-two",
+    "title": "Project Two",
+    "size": 1,
+    "link": "https://example.com/project-two",
+    "pinned": true,
+    "isActive": true,
+    "technologies": ["Python", "Django", "PostgreSQL"]
   },
   {
-    "title": "project-three",
-    "size": 1
+    "slug": "project-three",
+    "title": "Project Three",
+    "size": 1,
+    "link": "https://example.com/project-three",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["JavaScript", "HTML", "CSS"]
   },
   {
-    "title": "project-four",
-    "size": 2
+    "slug": "project-four",
+    "title": "Project 4",
+    "size": 2,
+    "link": "https://example.com/project-three",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["JavaScript", "HTML", "CSS"]
   }
 ]

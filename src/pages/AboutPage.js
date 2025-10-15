@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { FaArrowLeft, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import fm from 'front-matter';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -19,15 +18,37 @@ const AboutPage = () => {
   const [title, setTitle] = useState('About Me');
 
   useEffect(() => {
-    fetch('/about.txt')
-      .then(res => res.text())
-      .then(text => {
-        const { attributes, body } = fm(text);
+    const fetchAboutContent = async () => {
+      try {
+        const [metaResponse, contentResponse] = await Promise.all([
+          fetch('/data/about.json'),
+          fetch('/about.txt')
+        ]);
+
+        let attributes = {};
+        if (metaResponse.ok) {
+          attributes = await metaResponse.json();
+        } else {
+          console.error('Failed to fetch about.json');
+        }
+
+        let body = '';
+        if (contentResponse.ok) {
+          body = await contentResponse.text();
+        } else {
+          console.error('Failed to fetch about.txt');
+        }
+
         setTitle(attributes.title || 'About Me');
         setEmail(attributes.email || '');
         setContent(body);
-      })
-      .catch(err => console.error("Error fetching about.md:", err));
+
+      } catch (err) {
+        console.error("Error fetching about page content:", err);
+      }
+    };
+
+    fetchAboutContent();
   }, []);
 
   return (

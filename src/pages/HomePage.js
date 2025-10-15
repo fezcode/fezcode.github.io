@@ -72,7 +72,7 @@ const HomePage = () => {
           </h2>
           <div className="mt-8">
             {posts.slice(0, 5).map(post => (
-              <PostItem key={post.file} slug={post.file} date={post.date} updatedDate={post.updated} />
+              <PostItem key={post.slug} slug={post.slug} title={post.title} date={post.date} updatedDate={post.updated} />
             ))}
           </div>
           <div className="mt-8 text-center">

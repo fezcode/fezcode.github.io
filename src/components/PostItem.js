@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PostItem = ({ slug, date, updatedDate }) => {
-  const title = slug.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+const PostItem = ({ slug, title, date, updatedDate }) => {
 
   // Format the date from YYYY-MM-DD to 'Month Day, Year'
   const formattedDate = new Date(date).toLocaleDateString('en-US', {

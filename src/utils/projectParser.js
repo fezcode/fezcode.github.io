@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import fm from 'front-matter';
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -9,9 +8,6 @@ export const useProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        // Fetch the list of project markdown files
-        // In a real app, you might have an API endpoint that lists these files
-        // For now, we'll assume a fixed list or glob for them if possible
         const response = await fetch('/data/shownProjects.json');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status} for shownProjects.json`);
@@ -20,25 +16,22 @@ export const useProjects = () => {
 
         const fetchedProjects = await Promise.all(
           projectDataList.map(async (projectData) => {
-            const slug = projectData.title; // Use title as slug
-            const response = await fetch(`/projects/${slug}.txt`);
-            if (!response.ok) {
-              throw new Error(`HTTP error! status: ${response.status} for ${slug}.md`);
+            const slug = projectData.slug; // Use slug from shownProjects.json
+            const contentResponse = await fetch(`/projects/${slug}.txt`);
+            if (!contentResponse.ok) {
+              throw new Error(`HTTP error! status: ${contentResponse.status} for ${slug}.txt`);
             }
-            const text = await response.text();
-            const content = fm(text);
+            const text = await contentResponse.text();
 
-            const parts = content.body.split('---');
+            // Now, the text only contains the body, no front-matter
+            const parts = text.split('---'); // Assuming shortDescription is separated by '---'
             const shortDescription = parts[0].trim();
             const fullContent = parts.slice(1).join('---').trim();
 
             return {
-              slug,
-              title: projectData.title, // Include title
-              ...content.attributes,
+              ...projectData, // All metadata from shownProjects.json
               shortDescription,
               fullContent,
-              size: projectData.size, // Include size
             };
           })
         );

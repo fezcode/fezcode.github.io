@@ -46,7 +46,7 @@ const BlogPage = () => {
         <div className="mt-16">
           <div className="">
             {posts.map(post => (
-              <PostItem key={post.file} slug={post.file} date={post.date} updatedDate={post.updated} />
+              <PostItem key={post.slug} slug={post.slug} title={post.title} date={post.date} updatedDate={post.updated} />
             ))}
           </div>
         </div>
