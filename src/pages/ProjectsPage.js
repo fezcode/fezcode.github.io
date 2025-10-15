@@ -17,7 +17,7 @@ const ProjectsPage = () => {
 
   return (
     <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-8 lg:px-12">
         <div className="mx-auto max-w-2xl text-center">
           <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
             <FaArrowLeft className="text-xl" /> Back to Home
@@ -28,6 +28,9 @@ const ProjectsPage = () => {
           <p className="mt-6 text-lg leading-8 text-gray-300">
             A collection of my work and experiments.
           </p>
+          <div className="mt-2 text-center">
+            <span className="ml-2 px-2 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {projects.length}</span>
+          </div>
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                       {projects.map(project => (

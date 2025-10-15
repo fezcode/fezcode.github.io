@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PostItem from '../components/PostItem';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
-import { FaThumbtack, FaBlog, FaArrowRight } from 'react-icons/fa';
+import { FaThumbtack, FaBook, FaArrowRight } from 'react-icons/fa';
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);
@@ -52,7 +52,7 @@ const HomePage = () => {
 
         <div className="mt-16">
           <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
-            <FaThumbtack className="text-primary-400" /> Pinned Projects
+            <FaThumbtack className="text-primary-400 text-lg" /> Pinned Projects
           </h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             {pinnedProjects.map(project => (
@@ -68,7 +68,7 @@ const HomePage = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
-            <FaBlog className="text-primary-400" /> Recent Blog Posts
+            <FaBook className="text-primary-400 text-lg" /> Recent Blog Posts
           </h2>
           <div className="mt-8">
             {posts.slice(0, 5).map(post => (
