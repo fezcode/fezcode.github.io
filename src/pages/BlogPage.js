@@ -39,8 +39,8 @@ const BlogPage = () => {
           <p className="mt-6 text-lg leading-8 text-gray-300">
             Catch up on the latest news and insights.
           </p>
-          <div className="mt-2 text-center">
-            <span className="ml-2 px-2 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {posts.length}</span>
+          <div className="mt-4 text-center">
+            <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {posts.length}</span>
           </div>
         </div>
         <div className="mt-16">

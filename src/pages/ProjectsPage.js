@@ -28,8 +28,8 @@ const ProjectsPage = () => {
           <p className="mt-6 text-lg leading-8 text-gray-300">
             A collection of my work and experiments.
           </p>
-          <div className="mt-2 text-center">
-            <span className="ml-2 px-2 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {projects.length}</span>
+          <div className="mt-4 text-center">
+            <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {projects.length}</span>
           </div>
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
