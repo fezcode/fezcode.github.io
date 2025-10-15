@@ -29,7 +29,7 @@ const LogsPage = () => {
         <hr className="border-gray-700 mb-8" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {logs.map((log, index) => (
-            <LogCard key={index} log={log} />
+            <LogCard key={index} log={log} index={index} totalLogs={logs.length} />
           ))}
         </div>
         <ColorLegends />

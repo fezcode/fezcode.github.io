@@ -32,16 +32,17 @@ const categoryStyles = {
   },
 };
 
-const LogCard = ({ log }) => {
+const LogCard = ({ log, index, totalLogs }) => {
   const { title, category, author, director, platform, source, artist, link, date, rating } = log;
 
   const cardStyle = categoryStyles[category] || {};
 
   return (
     <div
-      className="bg-transparent border rounded-lg shadow-lg p-6 flex flex-col justify-between"
+      className="bg-transparent border rounded-lg shadow-lg p-6 flex flex-col justify-between relative"
       style={cardStyle}
     >
+      <div className="absolute top-2 right-2 text-gray-400 text-lg font-semibold">#{totalLogs - index}</div>
       <div>
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center">
