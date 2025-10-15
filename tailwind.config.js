@@ -60,6 +60,17 @@ module.exports = {
             figcaption: {
               color: theme('colors.gray.500'),
             },
+
+            blockquote: {
+              color: theme('colors.gray.400'),
+              'border-left-color': theme('colors.primary.400'),
+              quotes: '"" ""' ,
+              lineHeight: '0.4',
+            },
+
+            li: {
+              lineHeight: '1.0',
+            },
           },
         },
       }),
