@@ -9,10 +9,10 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-lg font-semibold text-white">Newsletter</h3>
-              <p className="mt-4 text-sm text-gray-400">Subscribe to our newsletter to get the latest updates straight to your inbox.</p>
+              <p className="mt-4 text-sm text-gray-400">Our newsletter is currently under construction. We are working hard (not really) to bring it to you soon!</p>
               <form className="mt-4 flex gap-2">
-                <input type="email" placeholder="Enter your email" className="bg-gray-800 text-white px-4 py-2 rounded-md w-full" />
-                <button type="submit" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-md transition-colors">Subscribe</button>
+                <input type="email" placeholder="Coming soon, maybe..." className="bg-gray-800 text-white px-4 py-2 rounded-md w-full" disabled />
+                <button type="submit" className="bg-primary-500 text-white font-bold py-2 px-4 rounded-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>Subscribe</button>
               </form>
             </div>
             <div className="md:text-right">
