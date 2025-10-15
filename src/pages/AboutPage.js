@@ -19,7 +19,7 @@ const AboutPage = () => {
   const [title, setTitle] = useState('About Me');
 
   useEffect(() => {
-    fetch('/about.md')
+    fetch('/about.txt')
       .then(res => res.text())
       .then(text => {
         const { attributes, body } = fm(text);

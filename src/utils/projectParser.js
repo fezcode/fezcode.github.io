@@ -21,7 +21,7 @@ export const useProjects = () => {
         const fetchedProjects = await Promise.all(
           projectDataList.map(async (projectData) => {
             const slug = projectData.title; // Use title as slug
-            const response = await fetch(`/projects/${slug}.md`);
+            const response = await fetch(`/projects/${slug}.txt`);
             if (!response.ok) {
               throw new Error(`HTTP error! status: ${response.status} for ${slug}.md`);
             }
