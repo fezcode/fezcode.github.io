@@ -1,9 +1,3 @@
----
-title: The Art of Scrolling
-date: 2025-10-16
-tags: ["css", "scrolling", "web-design"]
----
-
 # The Art of Scrolling
 
 This is a very long blog post designed to demonstrate the scrolling behavior of the sticky metadata component. 
