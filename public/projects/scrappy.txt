@@ -1,0 +1,23 @@
+Scrappy.js is a simple command-line web scraper.
+---
+Scrappy.js is a simple command-line web scraper.
+
+## Commands:
+
+The tool operates via `node scrappy.js <command>` and offers three main commands:
+
+*   **`url`**: The primary scraping command.
+    *   **Parameters:**
+        *   `url`: The target URL to scrape.
+        *   `--root-element`: CSS selector for the parent element containing the data to be scraped.
+        *   `--json-object`: A JSON object (created using the `json` command) defining the elements to scrape.
+        *   `--time-interval`: (Optional) Scrapes in a loop with a given time interval.
+        *   `--first`: (Optional) Returns the first `n` number of elements.
+        *   `--help`: Displays help for the `url` command.
+*   **`json`**: An interactive command to help users create the JSON object required by the `url` command. It prompts for:
+    *   `field`: Name of the scraped tag.
+    *   `selector`: jQuery selector for the tag.
+    *   `type`: Specifies whether to get `text` or an `attr` (attribute) value.
+    *   `attr_selector`: (Required if `type` is `attr`) The specific attribute to scrape.
+    *   Users can quit the interactive prompt by entering `q` at any time.
+*   **`help`**: Prints the general help text for Scrappy.js.

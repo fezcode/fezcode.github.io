@@ -1,0 +1,14 @@
+These are themes created for Firefox.
+---
+
+# Firefox Themes
+
+Here are the links to the Firefox theme repositories:
+
+*   [Mulled Wine Firefox](https://github.com/fezcode/Mulled-Wine-Firefox)
+*   [Vivid Burgundy Firefox](https://github.com/fezcode/Vivid-Burgundy-Firefox)
+*   [Limed Ash Firefox](https://github.com/fezcode/Limed-Ash-Firefox)
+*   [Eucalyptus Bold Firefox](https://github.com/fezcode/Eucalyptus-Bold-Firefox)
+*   [Blue Charcoal Bold Firefox](https://github.com/fezcode/Blue-Charcoal-Bold-Firefox)
+*   [Purple Bold Firefox Theme](https://github.com/fezcode/purple-bold-firefox-theme)
+*   [Fall Beach Firefox](https://github.com/fezcode/Fall-Beach-Firefox)

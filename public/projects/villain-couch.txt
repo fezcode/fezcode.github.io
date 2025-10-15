@@ -1,0 +1,53 @@
+Villain Couch is a Windows application designed to track the status of VLC Media Player.
+---
+
+The VLC Tracker Agent, also known as Villain Couch, is a Windows application designed to track the status of VLC Media Player.
+
+## Building the Application:
+
+To build this Windows application, execute the `build.ps1` PowerShell script.
+
+```powershell
+.\build.ps1
+```
+
+## Directory Structure:
+
+The project is organized into the following key directories:
+
+*   **`agent`**: Contains the core source code for the agent application, handling interactions with VLC, data management, and user commands.
+*   **`bin`**: Stores the compiled binaries of the application after a successful build.
+*   **`common`**: Houses shared utility packages for logging, error handling, and other common functionalities used across the application.
+
+## Agent Details: VLC Tracker Agent
+
+The Villain Couch VLC Tracker Agent is a lightweight, command-line application that integrates with VLC Media Player to track media playback progress. It runs in the background, monitoring VLC's status and saving playback positions, allowing users to resume media from where they left off.
+
+### Features:
+
+*   **Automatic Playback Tracking:** Monitors VLC and saves media playback progress.
+*   **Seamless Resumption:** Enables users to continue watching from their last position.
+*   **Graceful Shutdown:** Ensures playback progress is saved even when the agent is closed with `Ctrl+C`.
+*   **Easy Configuration:** Utilizes a `config.json` file for settings.
+*   **Command-Line Interface:** Provides a simple CLI for interaction.
+
+### Installation:
+
+Requires Go to be installed.
+1.  Clone the repository.
+2.  Navigate to the `agent` directory.
+3.  Build the agent using `go build -o villain-couch ./src`.
+
+### Configuration:
+
+The agent uses a `config.json` file. A default file is created on first run in the user's configuration directory. Key configuration options include `web_url`, `status_endpoint`, `playlist_endpoint`, `http_port`, `extra_intf`, `http_password`, and `database_file_name`.
+
+### Usage:
+
+Run the agent using `./villain-couch [flags]`.
+*   **Flags:** `--verbose` (enable verbose logging), `--file <path>` (specify media file), `--ws <path>` (add workspace directory), `--find-next` (find next episode).
+*   **Examples:** `./villain-couch --file /path/to/your/media.mp4`, `./villain-couch --verbose --file /path/to/your/media.mp4`.
+
+### Development:
+
+Contribution steps include forking, creating a new branch, making changes, pushing to fork, and creating a pull request. For development builds, use `go run ./src [flags]`.

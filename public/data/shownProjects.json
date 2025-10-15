@@ -1,38 +1,93 @@
 [
   {
-    "slug": "project-one",
-    "title": "Project One",
+    "slug": "bm",
+    "title": "bm - bookmark manager",
     "size": 2,
-    "link": "https://example.com/project-one",
+    "link": "https://github.com/fezcode/bm",
     "pinned": true,
     "isActive": true,
-    "technologies": ["React", "Node.js", "MongoDB"]
+    "technologies": ["Rust", "TOML"]
   },
   {
-    "slug": "project-two",
-    "title": "Project Two",
+    "slug": "villain-couch",
+    "title": "Villain Couch",
     "size": 1,
-    "link": "https://example.com/project-two",
+    "link": "https://github.com/fezcode/Villain-Couch",
     "pinned": true,
     "isActive": true,
-    "technologies": ["Python", "Django", "PostgreSQL"]
+    "technologies": ["VLC", "Go", "SQLite"]
   },
   {
-    "slug": "project-three",
-    "title": "Project Three",
+    "slug": "doku",
+    "title": "doku.js",
     "size": 1,
-    "link": "https://example.com/project-three",
-    "pinned": false,
+    "link": "https://github.com/fezcode/doku.js",
+    "pinned": true,
     "isActive": true,
-    "technologies": ["JavaScript", "HTML", "CSS"]
+    "technologies": ["Node", "TUI", "npm"]
   },
   {
-    "slug": "project-four",
-    "title": "Project 4",
-    "size": 2,
-    "link": "https://example.com/project-three",
+    "slug": "stroque",
+    "title": "Stroque",
+    "size": 1,
+    "link": "https://github.com/fezcode/Stroque",
     "pinned": false,
     "isActive": true,
-    "technologies": ["JavaScript", "HTML", "CSS"]
+    "technologies": ["Rust", "SVG"]
+  },
+  {
+    "slug": "go-tournament-brackets",
+    "title": "Go Tournament Bracket Generator Lib",
+    "size": 1,
+    "link": "https://github.com/fezcode/go-tournament-brackets",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["Go"]
+  },
+  {
+    "slug": "scrappy",
+    "title": "Scrappy.js",
+    "size": 1,
+    "link": "https://github.com/fezcode/scrappy",
+    "pinned": false,
+    "isActive": false,
+    "technologies": ["JavaScript"]
+  },
+  {
+    "slug": "open-tab-with-respect",
+    "title": "Open Tab with Respect",
+    "size": 2,
+    "link": "https://github.com/fezcode/open-tab-with-respect",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
+  },
+
+  {
+    "slug": "clipboard-concat",
+    "title": "Clipboard Concat",
+    "size": 1,
+    "link": "https://github.com/fezcode/clipboard-concat",
+    "pinned": false,
+    "isActive": false,
+    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
+  },
+  {
+    "slug": "boxer",
+    "title": "Boxer",
+    "size": 1,
+    "link": "https://github.com/fezcode/boxer",
+    "pinned": true,
+    "isActive": false,
+    "technologies": ["Linux", "C++", "C", "Ninja", "CMake", "Archiver"]
+  },
+  {
+    "slug": "firefox-themes",
+    "title": "Firefox Themes",
+    "size": 1,
+    "link": "https://github.com/fezcode",
+    "pinned": false,
+    "isActive": false,
+    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
   }
 ]
