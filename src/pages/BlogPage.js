@@ -7,9 +7,23 @@ const BlogPage = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    // In a real app, you'd fetch this from a CMS or API
-    const postSlugs = ['long-post', 'first-post', 'second-post', 'code-example-post'];
-    setPosts(postSlugs);
+    const fetchPostSlugs = async () => {
+      try {
+        const response = await fetch('/data/shownPosts.json');
+        if (response.ok) {
+          const slugs = await response.json();
+          setPosts(slugs);
+        } else {
+          console.error('Failed to fetch post slugs');
+          setPosts([]);
+        }
+      } catch (error) {
+        console.error('Error fetching post slugs:', error);
+        setPosts([]);
+      }
+    };
+
+    fetchPostSlugs();
   }, []);
 
   return (
@@ -28,8 +42,8 @@ const BlogPage = () => {
         </div>
         <div className="mt-16">
           <div className="">
-            {posts.map(slug => (
-              <PostItem key={slug} slug={slug} />
+            {posts.map(post => (
+              <PostItem key={post.file} slug={post.file} date={post.date} updatedDate={post.updated} />
             ))}
           </div>
         </div>

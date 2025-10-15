@@ -17,6 +17,7 @@ const LinkRenderer = ({ href, children }) => {
 const BlogPostPage = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
+  const [shownPostsData, setShownPostsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true); // New state for tracking if at top
@@ -26,16 +27,28 @@ const BlogPostPage = () => {
     const fetchPost = async () => {
       setLoading(true);
       try {
-        const response = await fetch(`/posts/${slug}.md`);
-        if (response.ok) {
-          const text = await response.text();
+        const [postResponse, shownPostsResponse] = await Promise.all([
+          fetch(`/posts/${slug}.md`),
+          fetch('/data/shownPosts.json')
+        ]);
+
+        if (postResponse.ok) {
+          const text = await postResponse.text();
           const content = fm(text);
           setPost(content);
         } else {
           setPost({ attributes: { title: 'Post not found' }, body: '' });
         }
+
+        if (shownPostsResponse.ok) {
+          const data = await shownPostsResponse.json();
+          setShownPostsData(data);
+        } else {
+          console.error('Failed to fetch shownPosts.json');
+        }
+
       } catch (error) {
-        console.error('Error fetching post:', error);
+        console.error('Error fetching post or shownPosts.json:', error);
         setPost({ attributes: { title: 'Error loading post' }, body: '' });
       }
       setLoading(false);
@@ -67,6 +80,10 @@ const BlogPostPage = () => {
     return <div className="text-center py-16">Post not found</div>;
   }
 
+  const currentPostData = shownPostsData.find(item => item.file === slug);
+  const postDate = currentPostData ? currentPostData.date : null;
+  const updatedDate = currentPostData ? currentPostData.updated : null;
+
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -80,7 +97,7 @@ const BlogPostPage = () => {
             </div>
           </div>
           <div className="hidden lg:block">
-            <PostMetadata metadata={post.attributes} readingProgress={readingProgress} isAtTop={isAtTop} />
+            <PostMetadata metadata={post.attributes} readingProgress={readingProgress} isAtTop={isAtTop} overrideDate={postDate} updatedDate={updatedDate} />
           </div>
         </div>
       </div>

@@ -1,13 +1,12 @@
 import React from 'react';
 import Label from './Label';
 
-const PostMetadata = ({ metadata, readingProgress, isAtTop }) => {
+const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, updatedDate }) => {
   if (!metadata) {
     return null;
   }
 
-  const postDate = new Date(metadata.date);
-  const formattedDate = isNaN(postDate) ? 'Invalid Date' : postDate.toLocaleDateString();
+  const displayDate = overrideDate || (metadata.date ? new Date(metadata.date).toLocaleDateString() : 'Invalid Date');
 
   const handleButtonClick = () => {
     if (isAtTop) {
@@ -28,8 +27,14 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop }) => {
           </div>
           <div>
             <Label>Date</Label>
-            <p className="text-gray-300">{formattedDate}</p>
+            <p className="text-gray-300">{displayDate}</p>
           </div>
+          {updatedDate && (
+            <div>
+              <Label>Updated</Label>
+              <p className="text-gray-300">{updatedDate}</p>
+            </div>
+          )}
           {metadata.tags && (
             <div>
               <Label>Tags</Label>
@@ -60,6 +65,6 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop }) => {
       </div>
     </aside>
   );
-};
+}
 
 export default PostMetadata;

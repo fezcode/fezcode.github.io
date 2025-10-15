@@ -1,0 +1,25 @@
+[
+  {
+    "file": "code-example-post",
+    "date": "2025-10-15",
+    "updated": "2025-10-15"
+  },
+
+  {
+    "file": "first-post",
+    "date": "2025-10-14",
+    "updated": "2025-10-15"
+  },
+
+  {
+    "file": "long-post",
+    "date": "2025-10-13",
+    "updated": "2025-10-14"
+  },
+
+  {
+    "file": "second-post",
+    "date": "2025-10-12",
+    "updated": "2025-10-13"
+  }
+]

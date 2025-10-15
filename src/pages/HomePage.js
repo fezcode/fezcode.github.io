@@ -11,9 +11,23 @@ const HomePage = () => {
   const pinnedProjects = projects.filter(p => p.pinned);
 
   useEffect(() => {
-    // In a real app, you'd fetch this from a CMS or API
-    const postSlugs = ['long-post', 'first-post', 'second-post'];
-    setPosts(postSlugs);
+    const fetchPostSlugs = async () => {
+      try {
+        const response = await fetch('/data/shownPosts.json');
+        if (response.ok) {
+          const postsData = await response.json();
+          setPosts(postsData);
+        } else {
+          console.error('Failed to fetch post slugs');
+          setPosts([]);
+        }
+      } catch (error) {
+        console.error('Error fetching post slugs:', error);
+        setPosts([]);
+      }
+    };
+
+    fetchPostSlugs();
   }, []);
 
   if (loading) {
@@ -57,8 +71,8 @@ const HomePage = () => {
             <FaBlog className="text-primary-400" /> Recent Blog Posts
           </h2>
           <div className="mt-8">
-            {posts.slice(0, 5).map(slug => (
-              <PostItem key={slug} slug={slug} />
+            {posts.slice(0, 5).map(post => (
+              <PostItem key={post.file} slug={post.file} date={post.date} updatedDate={post.updated} />
             ))}
           </div>
           <div className="mt-8 text-center">
