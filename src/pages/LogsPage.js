@@ -55,16 +55,20 @@ const LogsPage = () => {
         <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
           <ArrowLeftIcon size={24} /> Back to Home
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-8 flex items-center">
+        <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-4 flex items-center">
           Logs
         </h1>
         <hr className="border-gray-700 mb-8" />
+        <div className="mb-8 mx-auto p-6 border border-gray-700 rounded-lg shadow-lg text-center bg-gray-900">
+            <h2 className="text-2xl font-semibold tracking-tight text-white">Legends</h2>
+            <ColorLegends />
+        </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {logs.map((log, index) => (
             <LogCard key={index} log={log} index={index} totalLogs={logs.length} />
           ))}
         </div>
-        <ColorLegends />
+
       </div>
     </div>
   );
