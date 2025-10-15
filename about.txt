@@ -1,16 +1,32 @@
+Hello there! I'm **A. Samil Bulbul**, a **senior software engineer** who just really enjoys building things for the web and beyond. 🚀
+I've been lucky enough to work on some cool projects over the past *8+ years*, from leading new products to diving deep into cloud technologies and security.
+I'm a big fan of open-source and love the challenge of solving tricky problems.
+When I'm not coding, you can probably find me exploring new tech or enjoying a good cup of coffee ☕.
+I'm always learning and excited to see what's next!
 
-Hello! I'm a passionate software engineer with a keen interest in web development, open-source projects, and creating engaging user experiences. I love exploring new technologies and continuously learning to build robust and scalable applications.
+
+
+## Experience
+
+1.  **Senior Software Engineer** at *Picus Security* (Oct 2022 - Sep 2025)
+2.  **Senior Software Engineer** at *Aselsan - Smart Cities* (Jan 2021 - Oct 2022)
+3.  **Software Engineer & DevOps Engineer** at *Aselsan - Toll Collection Systems* (Jan 2018 - Jan 2021)
 
 ## My Skills
-* React, JavaScript, TypeScript
-* Node.js, Express.js
-* Python, Django, Flask
-* HTML, CSS, Tailwind CSS
-* Database Management (SQL, NoSQL)
-* Cloud Platforms (AWS, GCP)
+
+*   **Programming Languages:** Go, C++, C, Java, JavaScript/TypeScript, Python, Rust, SQL
+*   **Cloud & DevOps:** Kubernetes (K8S), Docker, AWS, GCP, Azure, CI/CD, Jenkins, Terraform, GitLab
+*   **Databases:** PostgreSQL, MongoDB, Redis
+*   **Frameworks & Core Concepts:** System Design, Microservices, Distributed Systems, gRPC, Node.js, Ex-press.js, JavaFX,
+*   **Developer Tools:** Git, CMake, Conan, Nexus Repository Manager, Bitbucket, Linux, Docker
 
 ## Useful Links
-* [GitHub Profile](https://github.com/yourusername)
-* [LinkedIn Profile](https://linkedin.com/in/yourusername)
-* [Twitter](https://twitter.com/yourusername)
-* [My Blog Posts](/blog)
+
+*   [GitHub Profile](https://github.com/fezcode)
+*   [LinkedIn Profile](https://www.linkedin.com/in/ahmedsamilbulbul)
+
+## Currently...
+
+*   **🎵 Making Music:** I'm currently exploring the world of music production, creating some sick beats and melodies. It's a fun way to unwind and get creative, but my tracks are still top secret! 🤫
+*   **📚 Reading:** Trying to read all the books I purchase... It's a work in progress!
+*   **🤔 Thinking about:** How to build the perfect mechanical keyboard and create the best sound system.
