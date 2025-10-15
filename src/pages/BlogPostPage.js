@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import PostMetadata from '../components/PostMetadata';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
     <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
-      {children} {isExternal && <FaExternalLinkAlt className="text-xs" />}
+      {children} {isExternal && <ArrowLeftIcon className="text-xs" />}
     </a>
   );
 };
@@ -89,8 +89,8 @@ const BlogPostPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link to="/blog" className="text-primary-400 hover:text-primary-500 transition-colors mb-8 block">
-              &larr; Back to Blog
+            <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+              <ArrowLeftIcon size={24} /> Back to Home
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
               <ReactMarkdown components={{ a: LinkRenderer }}>{post.body}</ReactMarkdown>

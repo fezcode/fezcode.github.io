@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import LogCard from '../components/LogCard';
-
 import ColorLegends from '../components/ColorLegends';
+import usePageTitle from "../utils/usePageTitle";
 
 const LogsPage = () => {
+    usePageTitle('Logs <?>');
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
@@ -23,8 +26,11 @@ const LogsPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+        <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+          <ArrowLeftIcon size={24} /> Back to Home
+        </Link>
         <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-8 flex items-center">
-          <div className="bg-primary-400 h-12 w-1 mr-4"></div> Logs
+          Logs
         </h1>
         <hr className="border-gray-700 mb-8" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

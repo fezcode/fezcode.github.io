@@ -21,14 +21,18 @@ const categoryStyles = {
     backgroundColor: 'rgba(168, 85, 247, 0.1)',
     borderColor: 'rgba(168, 85, 247, 0.5)',
   },
+  Series: {
+    backgroundColor: 'rgba(236, 72, 153, 0.1)',
+    borderColor: 'rgba(236, 72, 153, 0.5)',
+  },
 };
 
 const ColorLegends = () => {
   return (
     <div className="flex justify-center mt-8">
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center flex-wrap justify-center space-x-4">
         {Object.keys(categoryStyles).map((category) => (
-          <div key={category} className="flex items-center">
+          <div key={category} className="flex items-center mb-2">
             <div
               className="w-4 h-4 rounded-full mr-2"
               style={{ backgroundColor: categoryStyles[category].backgroundColor, border: `1px solid ${categoryStyles[category].borderColor}` }}

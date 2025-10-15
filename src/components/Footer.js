@@ -30,6 +30,7 @@ const Footer = () => {
               <Link to="/about" className="hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>About</Link>
               <Link to="/blog" className="hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Blog</Link>
               <Link to="/projects" className="hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Projects</Link>
+              <Link to="/logs" className="text-primary-400 hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Logs</Link>
             </div>
             <p className="text-sm text-gray-500">
               &copy; {new Date().getFullYear()} fezcode. All rights reserved.

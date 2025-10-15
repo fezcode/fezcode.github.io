@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import PostItem from '../components/PostItem';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
-import { FaThumbtack, FaBook, FaArrowRight } from 'react-icons/fa';
+import { PushPin, Book, ArrowRight } from '@phosphor-icons/react';
+
+import usePageTitle from '../utils/usePageTitle';
 
 const HomePage = () => {
+  usePageTitle('Home');
   const [posts, setPosts] = useState([]);
   const { projects, loading, error } = useProjects();
   const pinnedProjects = projects.filter(p => p.pinned);
@@ -52,7 +55,7 @@ const HomePage = () => {
 
         <div className="mt-16">
           <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
-            <FaThumbtack className="text-primary-400 text-lg" /> Pinned Projects
+            <PushPin className="text-primary-400 text-lg" /> Pinned Projects
           </h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             {pinnedProjects.map(project => (
@@ -61,14 +64,14 @@ const HomePage = () => {
           </div>
           <div className="mt-8 text-center">
             <Link to="/projects" className="text-primary-400 hover:underline flex items-center justify-center gap-2">
-              View All Projects <FaArrowRight />
+              View All Projects <ArrowRight />
             </Link>
           </div>
         </div>
 
         <div className="mt-8">
           <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
-            <FaBook className="text-primary-400 text-lg" /> Recent Blog Posts
+            <Book className="text-primary-400 text-lg" /> Recent Blog Posts
           </h2>
           <div className="mt-8">
             {posts.slice(0, 5).map(post => (
@@ -77,7 +80,7 @@ const HomePage = () => {
           </div>
           <div className="mt-8 text-center">
             <Link to="/blog" className="text-primary-400 hover:underline flex items-center justify-center gap-2">
-              See All Blog Posts <FaArrowRight />
+              See All Blog Posts <ArrowRight />
             </Link>
           </div>
         </div>

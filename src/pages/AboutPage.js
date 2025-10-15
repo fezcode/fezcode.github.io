@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
-import { FaArrowLeft, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
-
+import { ArrowLeftIcon, Envelope } from '@phosphor-icons/react';
+import usePageTitle from '../utils/usePageTitle';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
     <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
-      {children} {isExternal && <FaExternalLinkAlt className="text-xs" />}
+      {children} {isExternal && <ArrowLeftIcon className="text-xs" />}
     </a>
   );
 };
 
 const AboutPage = () => {
+  usePageTitle('About Me');
   const [content, setContent] = useState('');
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState('About Me');
@@ -57,7 +57,7 @@ const AboutPage = () => {
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
         <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-          <FaArrowLeft className="text-xl" /> Back to Home
+          <ArrowLeftIcon className="text-xl" /> Back to Home
         </Link>
         <div className="border border-gray-700 p-8 rounded-lg shadow-xl flex">
           <div className="w-1 bg-gray-600 mr-1"></div>
@@ -76,7 +76,7 @@ const AboutPage = () => {
               <div className="mt-8">
                 <h2 className="text-3xl font-semibold tracking-tight text-white mb-4">Contact</h2>
                 <p className="flex items-center gap-2">
-                  <FaEnvelope className="text-primary-400" /> Feel free to reach out to me at <a href={`mailto:${email}`} className="text-primary-400 hover:text-primary-500 transition-colors">{email}</a>.
+                  <Envelope className="text-primary-400" /> Feel free to reach out to me at <a href={`mailto:${email}`} className="text-primary-400 hover:text-primary-500 transition-colors">{email}</a>.
                 </p>
               </div>
             )}

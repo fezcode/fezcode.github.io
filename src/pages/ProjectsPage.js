@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
-import { FaArrowLeft } from 'react-icons/fa';
+import usePageTitle from '../utils/usePageTitle';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const ProjectsPage = () => {
+  usePageTitle('Projects');
   const { projects, loading, error } = useProjects();
 
   if (loading) {
@@ -20,7 +22,7 @@ const ProjectsPage = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-            <FaArrowLeft className="text-xl" /> Back to Home
+            <ArrowLeftIcon className="text-xl" /> Back to Home
           </Link>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
             My Projects

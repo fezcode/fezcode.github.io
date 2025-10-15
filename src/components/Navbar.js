@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { List, X } from '@phosphor-icons/react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,14 +33,14 @@ const Navbar = () => {
           <Link to="/about" className="text-sm font-medium hover:text-gray-300 transition-colors">About</Link>
           <Link to="/blog" className="text-sm font-medium hover:text-gray-300 transition-colors">Blog</Link>
           <Link to="/projects" className="text-sm font-medium hover:text-gray-300 transition-colors">Projects</Link>
-          <Link to="/logs" className="text-sm font-medium hover:text-gray-300 transition-colors">Logs</Link>
+          <Link to="/logs" className="text-sm font-medium text-primary-400 hover:text-gray-300 transition-colors">Logs</Link>
           <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
             Play Wordle
           </a>
         </div>
         <div className="md:hidden">
           <button onClick={toggleMenu} className="text-white focus:outline-none">
-            {isMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+            {isMenuOpen ? <X size={24} /> : <List size={24} />}
           </button>
         </div>
       </div>

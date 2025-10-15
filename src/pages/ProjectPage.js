@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import { useProjects } from '../utils/projectParser';
 import ProjectMetadata from '../components/ProjectMetadata';
 
+import { ArrowLeftIcon } from '@phosphor-icons/react';
+
 const ProjectPage = () => {
   const { slug } = useParams();
   const { projects, loading, error } = useProjects();
@@ -27,8 +29,8 @@ const ProjectPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link to="/projects" className="text-primary-400 hover:text-primary-500 transition-colors mb-8 block">
-              &larr; Back to Projects
+            <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+              <ArrowLeftIcon size={24} /> Back to Home
             </Link>
             <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">{project.title}</h1>
             {project.image && <img src={project.image} alt={project.title} className="mt-8 w-full rounded-lg text-gray-200" />}

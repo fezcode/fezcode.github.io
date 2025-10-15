@@ -18,6 +18,15 @@ module.exports = {
           500: '#ef4444',
           600: '#dc2626',
         },
+        secondary: {
+          400: '#fb923c',
+        },
+        book: '#3b82f6',
+        movie: '#ef4444',
+        game: '#22c55e',
+        article: '#f97316',
+        music: '#a855f7',
+        series: '#ec4899',
       },
       typography: (theme) => ({
         dark: {

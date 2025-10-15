@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://fezcode.github.io",
   "dependencies": {
+    "@phosphor-icons/react": "^2.1.10",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
