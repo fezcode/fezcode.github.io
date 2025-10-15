@@ -1,53 +1,64 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import ReactMarkdown from 'react-markdown';
+import { FaArrowLeft, FaEnvelope, FaExternalLinkAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import fm from 'front-matter';
+
+const LinkRenderer = ({ href, children }) => {
+  const isExternal = href.startsWith('http') || href.startsWith('https');
+  return (
+    <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
+      {children} {isExternal && <FaExternalLinkAlt className="text-xs" />}
+    </a>
+  );
+};
 
 const AboutPage = () => {
+  const [content, setContent] = useState('');
+  const [email, setEmail] = useState('');
+  const [title, setTitle] = useState('About Me');
+
+  useEffect(() => {
+    fetch('/about.md')
+      .then(res => res.text())
+      .then(text => {
+        const { attributes, body } = fm(text);
+        setTitle(attributes.title || 'About Me');
+        setEmail(attributes.email || '');
+        setContent(body);
+      })
+      .catch(err => console.error("Error fetching about.md:", err));
+  }, []);
+
   return (
     <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-3xl px-6 lg:px-8 text-gray-300">
-        <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl mb-8">About Me</h1>
+      <div className="mx-auto max-w-5xl px-6 lg:px-8 text-gray-300">
+        <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+          <FaArrowLeft className="text-xl" /> Back to Home
+        </Link>
+        <div className="border border-gray-700 p-8 rounded-lg shadow-xl flex">
+          <div className="w-1 bg-gray-600 mr-1"></div>
+          <div className="w-1 bg-gray-700 mr-1"></div>
+          <div className="w-1 bg-gray-800 mr-8"></div>
+          <div className="flex-grow">
+            <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-8">{title}</h1>
 
-        <p className="mb-6 text-lg leading-8">
-          Hello! I'm a passionate software engineer with a keen interest in web development, open-source projects, and creating engaging user experiences. I love exploring new technologies and continuously learning to build robust and scalable applications.
-        </p>
+            <div className="prose prose-invert max-w-none leading-snug">
+              <ReactMarkdown components={{ a: LinkRenderer }}>
+                {content}
+              </ReactMarkdown>
+            </div>
 
-        <h2 className="text-3xl font-semibold tracking-tight text-white mb-4">My Skills</h2>
-        <ul className="list-disc list-inside mb-6 ml-4">
-          <li>React, JavaScript, TypeScript</li>
-          <li>Node.js, Express.js</li>
-          <li>Python, Django, Flask</li>
-          <li>HTML, CSS, Tailwind CSS</li>
-          <li>Database Management (SQL, NoSQL)</li>
-          <li>Cloud Platforms (AWS, GCP)</li>
-        </ul>
-
-        <h2 className="text-3xl font-semibold tracking-tight text-white mb-4">Useful Links</h2>
-        <ul className="list-disc list-inside mb-6 ml-4">
-          <li>
-            <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-500 transition-colors">
-              GitHub Profile
-            </a>
-          </li>
-          <li>
-            <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-500 transition-colors">
-              LinkedIn Profile
-            </a>
-          </li>
-          <li>
-            <a href="https://twitter.com/yourusername" target="_blank" rel="noopener noreferrer" className="text-primary-400 hover:text-primary-500 transition-colors">
-              Twitter
-            </a>
-          </li>
-          <li>
-            <a href="/blog" className="text-primary-400 hover:text-primary-500 transition-colors">
-              My Blog Posts
-            </a>
-          </li>
-        </ul>
-
-        <h2 className="text-3xl font-semibold tracking-tight text-white mb-4">Contact</h2>
-        <p>
-          Feel free to reach out to me at <a href="mailto:your.email@example.com" className="text-primary-400 hover:text-primary-500 transition-colors">your.email@example.com</a>.
-        </p>
+            {email && (
+              <div className="mt-8">
+                <h2 className="text-3xl font-semibold tracking-tight text-white mb-4">Contact</h2>
+                <p className="flex items-center gap-2">
+                  <FaEnvelope className="text-primary-400" /> Feel free to reach out to me at <a href={`mailto:${email}`} className="text-primary-400 hover:text-primary-500 transition-colors">{email}</a>.
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );

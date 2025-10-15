@@ -3,6 +3,16 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import fm from 'front-matter';
 import PostMetadata from '../components/PostMetadata';
+import { FaExternalLinkAlt } from 'react-icons/fa';
+
+const LinkRenderer = ({ href, children }) => {
+  const isExternal = href.startsWith('http') || href.startsWith('https');
+  return (
+    <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
+      {children} {isExternal && <FaExternalLinkAlt className="text-xs" />}
+    </a>
+  );
+};
 
 const BlogPostPage = () => {
   const { slug } = useParams();
@@ -66,7 +76,7 @@ const BlogPostPage = () => {
               &larr; Back to Blog
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
-              <ReactMarkdown>{post.body}</ReactMarkdown>
+              <ReactMarkdown components={{ a: LinkRenderer }}>{post.body}</ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
