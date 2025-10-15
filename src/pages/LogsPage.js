@@ -63,7 +63,7 @@ const LogsPage = () => {
           className="relative flex justify-center items-center w-full cursor-pointer"
           onClick={() => setShowLegends(!showLegends)}
         >
-          <hr className="border-gray-700 w-full absolute" />
+          <hr className="border-gray-700 w-full absolute top-1/2 -translate-y-1/2" />
           <div className="relative bg-gray-900 px-4 z-10">
             {showLegends ? (
               <CaretUp size={32} className="text-primary-400" />
@@ -73,7 +73,7 @@ const LogsPage = () => {
           </div>
         </div>
         {showLegends && (
-          <div className="mx-auto p-6 border border-gray-700 rounded-lg shadow-lg text-center bg-gray-900 mt-0 mb-8">
+          <div className="mx-auto p-6 border border-gray-700 rounded-lg shadow-lg text-center bg-gray-900 mt-[-16px] mb-8">
             <h2 className="text-2xl font-semibold tracking-tight text-white">Legends</h2>
             <ColorLegends />
           </div>
