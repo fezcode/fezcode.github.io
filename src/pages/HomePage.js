@@ -10,6 +10,7 @@ import usePageTitle from '../utils/usePageTitle';
 const HomePage = () => {
   usePageTitle('Home');
   const [posts, setPosts] = useState([]);
+  const [loadingPosts, setLoadingPosts] = useState(true);
   const { projects, loading, error } = useProjects();
   const pinnedProjects = projects.filter(p => p.pinned);
 
@@ -27,14 +28,50 @@ const HomePage = () => {
       } catch (error) {
         console.error('Error fetching post slugs:', error);
         setPosts([]);
+      } finally {
+        setLoadingPosts(false);
       }
     };
 
     fetchPostSlugs();
   }, []);
 
-  if (loading) {
-    return <div className="py-16 sm:py-24 text-center text-white">Loading projects...</div>;
+  if (loading || loadingPosts) {
+    // Skeleton loading screen for HomePage
+    return (
+      <div className="py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="h-10 bg-gray-800 rounded w-3/4 mx-auto mb-4"></div>
+            <div className="h-6 bg-gray-800 rounded w-1/2 mx-auto"></div>
+          </div>
+
+          <div className="mt-16">
+            <div className="h-8 bg-gray-800 rounded w-1/3 mx-auto mb-8"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6 animate-pulse">
+                  <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
+                  <div className="h-4 bg-gray-700 rounded w-1/2"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <div className="h-8 bg-gray-800 rounded w-1/3 mx-auto mb-8"></div>
+            <div className="space-y-4">
+              {[...Array(3)].map((_, i) => (
+                <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6 animate-pulse">
+                  <div className="h-6 bg-gray-700 rounded w-full mb-2"></div>
+                  <div className="h-4 bg-gray-700 rounded w-5/6"></div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {

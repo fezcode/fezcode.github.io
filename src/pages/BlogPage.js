@@ -7,6 +7,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 const BlogPage = () => {
   usePageTitle('Blog');
   const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchPostSlugs = async () => {
@@ -22,11 +23,36 @@ const BlogPage = () => {
       } catch (error) {
         console.error('Error fetching post slugs:', error);
         setPosts([]);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchPostSlugs();
   }, []);
+
+  if (loading) {
+    // Skeleton loading screen for BlogPage
+    return (
+      <div className="py-16 sm:py-24 animate-pulse">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="h-8 bg-gray-800 rounded w-1/4 mb-4 mx-auto"></div>
+            <div className="h-12 bg-gray-800 rounded w-3/4 mb-4 mx-auto"></div>
+            <div className="h-6 bg-gray-800 rounded w-1/2 mb-8 mx-auto"></div>
+          </div>
+          <div className="mt-16 space-y-8">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6">
+                <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
+                <div className="h-4 bg-gray-700 rounded w-1/2"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-16 sm:py-24">

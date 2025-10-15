@@ -13,11 +13,13 @@ const LinkRenderer = ({ href, children }) => {
   );
 };
 
+
 const AboutPage = () => {
   usePageTitle('About Me');
   const [content, setContent] = useState('');
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState('About Me');
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAboutContent = async () => {
@@ -47,11 +49,42 @@ const AboutPage = () => {
 
       } catch (err) {
         console.error("Error fetching about page content:", err);
-      }
-    };
+      } finally {
+        setLoading(false);
+        }
+      };
+      
 
     fetchAboutContent();
   }, []);
+
+  if (loading) {
+    // Skeleton loading screen for AboutPage
+    return (
+      <div className="py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+          <div className="border border-gray-700 p-8 rounded-lg shadow-xl flex">
+            <div className="w-1 bg-gray-600 mr-1"></div>
+            <div className="w-1 bg-gray-700 mr-1"></div>
+            <div className="w-1 bg-gray-800 mr-8"></div>
+            <div className="flex-grow">
+              <div className="h-10 bg-gray-800 rounded w-3/4 mb-8 animate-pulse"></div>
+              <div className="space-y-4">
+                <div className="h-6 bg-gray-800 rounded w-full animate-pulse"></div>
+                <div className="h-6 bg-gray-800 rounded w-5/6 animate-pulse"></div>
+                <div className="h-6 bg-gray-800 rounded w-full animate-pulse"></div>
+                <div className="h-6 bg-gray-800 rounded w-2/3 animate-pulse"></div>
+              </div>
+              <div className="mt-8">
+                <div className="h-8 bg-gray-800 rounded w-1/4 mb-4 animate-pulse"></div>
+                <div className="h-6 bg-gray-800 rounded w-1/2 animate-pulse"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-16 sm:py-24">

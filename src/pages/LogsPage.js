@@ -8,6 +8,7 @@ import usePageTitle from "../utils/usePageTitle";
 const LogsPage = () => {
     usePageTitle('Logs <?>');
   const [logs, setLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -17,11 +18,36 @@ const LogsPage = () => {
         setLogs(data);
       } catch (err) {
         console.error("Error fetching logs:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchLogs();
   }, []);
+
+  if (loading) {
+    // Skeleton loading screen for LogsPage
+    return (
+      <div className="py-16 sm:py-24 animate-pulse">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+          <div className="h-8 bg-gray-800 rounded w-1/4 mb-4"></div>
+          <hr className="border-gray-700 mb-8" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6">
+                <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
+                <div className="h-4 bg-gray-700 rounded w-1/2 mb-4"></div>
+                <div className="h-4 bg-gray-700 rounded w-full"></div>
+                <div className="h-4 bg-gray-700 rounded w-full"></div>
+                <div className="h-4 bg-gray-700 rounded w-1/3"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="py-16 sm:py-24">

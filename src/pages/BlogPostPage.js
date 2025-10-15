@@ -77,7 +77,35 @@ const BlogPostPage = () => {
   }, [post]); // Re-attach scroll listener if post changes
 
   if (loading) {
-    return <div className="text-center py-16">Loading...</div>;
+    // Skeleton loading screen for BlogPostPage
+    return (
+      <div className="bg-gray-900 py-16 sm:py-24 animate-pulse">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+            <div className="lg:col-span-3">
+              <div className="h-8 bg-gray-800 rounded w-1/4 mb-4"></div>
+              <div className="h-12 bg-gray-800 rounded w-3/4 mb-8"></div>
+              <div className="space-y-4">
+                <div className="h-6 bg-gray-800 rounded w-full"></div>
+                <div className="h-6 bg-gray-800 rounded w-5/6"></div>
+                <div className="h-6 bg-gray-800 rounded w-full"></div>
+                <div className="h-6 bg-gray-800 rounded w-2/3"></div>
+              </div>
+            </div>
+            <div className="hidden lg:block">
+              <div className="bg-gray-800 rounded-lg shadow-lg p-6">
+                <div className="h-8 bg-gray-700 rounded w-1/2 mb-4"></div>
+                <div className="space-y-2">
+                  <div className="h-4 bg-gray-700 rounded w-full"></div>
+                  <div className="h-4 bg-gray-700 rounded w-3/4"></div>
+                  <div className="h-4 bg-gray-700 rounded w-1/2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (!post) {

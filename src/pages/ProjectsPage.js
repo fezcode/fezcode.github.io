@@ -10,7 +10,27 @@ const ProjectsPage = () => {
   const { projects, loading, error } = useProjects();
 
   if (loading) {
-    return <div className="py-16 sm:py-24 text-center text-white">Loading projects...</div>;
+    // Skeleton loading screen for ProjectsPage
+    return (
+      <div className="py-16 sm:py-24 animate-pulse">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <div className="h-8 bg-gray-800 rounded w-1/4 mb-4 mx-auto"></div>
+            <div className="h-12 bg-gray-800 rounded w-3/4 mb-4 mx-auto"></div>
+            <div className="h-6 bg-gray-800 rounded w-1/2 mb-8 mx-auto"></div>
+          </div>
+          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6">
+                <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
+                <div className="h-4 bg-gray-700 rounded w-1/2 mb-4"></div>
+                <div className="h-4 bg-gray-700 rounded w-full"></div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
   }
 
   if (error) {
