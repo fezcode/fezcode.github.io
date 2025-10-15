@@ -16,7 +16,7 @@ const Footer = () => {
               </form>
             </div>
             <div className="md:text-right">
-              <h3 className="text-lg font-semibold text-white">Follow Me...</h3>
+              <h3 className="text-lg font-semibold text-white">Socials</h3>
               <div className="mt-4 flex md:justify-end gap-4">
                 <a href="https://x.com/fezcoddy" className="text-gray-400 hover:text-white transition-colors">Twitter</a>
                 <a href="https://github.com/fezcode" className="text-gray-400 hover:text-white transition-colors">GitHub</a>
