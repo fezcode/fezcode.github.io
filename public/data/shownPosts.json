@@ -8,6 +8,14 @@
     "tags": ["go", "lib", "pkg.go.dev"]
   },
   {
+    "slug": "hashrouter-vs-browserrouter",
+    "title": "HashRouter vs. BrowserRouter",
+    "date": "2025-10-15",
+    "updated": "2025-10-16",
+    "description": "Why am I using HashRouter for github pages",
+    "tags": ["react", "webdev", "gh-pages", "router"]
+  },
+  {
     "slug": "warning-post",
     "title": "My Second Post",
     "date": "2025-10-14",
