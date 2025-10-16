@@ -23,7 +23,7 @@
     "date": "2025-10-14",
     "updated": "2025-10-15",
     "tags": ["writing", "updates"],
-    "category": "life"
+    "category": "rant"
   },
   {
     "slug": "code-example-post",
@@ -51,11 +51,11 @@
     "category": "dev"
   },
   {
-    "slug": "second-post",
+  "slug": "second-post",
     "title": "My Second Post",
     "date": "2025-10-12",
     "updated": "2025-10-13",
     "tags": ["writing", "updates"],
-    "category": "life"
+    "category": "rant"
   }
 ]

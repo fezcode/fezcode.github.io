@@ -8,7 +8,10 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
 
   const displayDate = overrideDate || (metadata.date ? new Date(metadata.date).toLocaleDateString() : 'Invalid Date');
 
-  const categoryColorClass = metadata.category === 'dev' ? 'bg-blue-700' : 'bg-orange-700';
+  const categoryBadgeColorStyle = { backgroundColor: metadata.category === 'dev' ? 'var(--color-dev-badge)' : 'var(--color-takes-badge)' };
+  const postMetadataBackgroundColorStyle = {
+    backgroundColor: metadata.category === 'dev' ? 'var(--color-dev-card-bg)' : 'var(--color-takes-card-bg)',
+  };
 
   const handleButtonClick = () => {
     if (isAtTop) {
@@ -20,7 +23,7 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
 
   return (
     <aside className="sticky top-24">
-      <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700/50">
+      <div className="p-6 rounded-lg border border-gray-700/50" style={postMetadataBackgroundColorStyle}>
         <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">About Post</h3>
         <div className="space-y-4">
           <div>
@@ -30,7 +33,7 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
           {metadata.category && (
             <div>
               <Label>Category</Label>
-              <span className={`ml-1 px-2 py-1 text-xs font-medium text-white rounded-md ${categoryColorClass} w-16 text-center`}>
+              <span className={`ml-1 px-2 py-1 text-xs font-medium text-white rounded-md w-16 text-center`} style={categoryBadgeColorStyle}>
                 {metadata.category}
               </span>
             </div>
