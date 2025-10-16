@@ -64,9 +64,9 @@ const AboutPage = () => {
       <div className="py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
           <div className="border border-gray-700 p-8 rounded-lg shadow-xl flex">
-            <div className="w-1 bg-gray-600 mr-1"></div>
-            <div className="w-1 bg-gray-700 mr-1"></div>
-            <div className="w-1 bg-gray-800 mr-8"></div>
+            <div className="w-1 bg-gray-600 mr-1 hidden sm:block"></div>
+            <div className="w-1 bg-gray-700 mr-1 hidden sm:block"></div>
+            <div className="w-1 bg-gray-800 mr-8 hidden sm:block"></div>
             <div className="flex-grow">
               <div className="h-10 bg-gray-800 rounded w-3/4 mb-8 animate-pulse"></div>
               <div className="space-y-4">
@@ -93,9 +93,9 @@ const AboutPage = () => {
           <ArrowLeftIcon className="text-xl" /> Back to Home
         </Link>
         <div className="border border-gray-700 p-8 rounded-lg shadow-xl flex">
-          <div className="w-1 bg-gray-600 mr-1"></div>
-          <div className="w-1 bg-gray-700 mr-1"></div>
-          <div className="w-1 bg-gray-800 mr-8"></div>
+          <div className="w-1 bg-gray-600 mr-1 hidden sm:block"></div>
+          <div className="w-1 bg-gray-700 mr-1 hidden sm:block"></div>
+          <div className="w-1 bg-gray-800 mr-8 hidden sm:block"></div>
           <div className="flex-grow">
             <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-8">{title}</h1>
 
