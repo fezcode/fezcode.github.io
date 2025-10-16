@@ -31,7 +31,7 @@ const PostItem = ({ slug, title, date, updatedDate }) => {
             <span className="hidden sm:inline-block ml-4 px-2 py-1 text-xs font-medium text-blue-400 bg-blue-400/10 rounded-full">Updated: {formattedUpdatedDate}</span>
           )}
           <span className="ml-4 flex-shrink-0 text-sm font-medium text-primary-400 hover:text-primary-500 transition-colors">
-            Read post &rarr;
+            <span className="hidden sm:inline">Read post</span> &rarr;
           </span>
         </div>
       </article>
