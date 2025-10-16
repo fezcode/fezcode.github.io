@@ -30,10 +30,10 @@ module.exports = {
         'title-hover': '#fdd4a6', // orange-200
         'markdown-title-color': '#fed7aa', // orange-200
         'markdown-hx-color': '#ffedd5', // orange-100
-        'dev-card-bg': 'rgba(68, 64, 60, 0.1)', // stone-900/10
-        'dev-card-bg-hover': 'rgba(120, 113, 108, 0.2)', // stone-500/20
-        'takes-card-bg': 'rgba(6, 95, 70, 0.15)', // emerald-900/15
-        'takes-card-bg-hover': 'rgba(16, 185, 129, 0.2)', // emerald-500/20
+        'dev-card-bg': 'rgba(68, 64, 59, 0.3)', // stone-700
+        'dev-card-bg-hover': 'rgba(68, 64, 59, 0.55)', // stone-700/20
+        'takes-card-bg': 'rgba(6, 95, 70, 0.175)', // emerald-900/15
+        'takes-card-bg-hover': 'rgba(16, 185, 129, 0.275)', // emerald-500/20
       },
       typography: (theme) => ({
         dark: {
