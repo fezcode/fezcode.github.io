@@ -5,7 +5,7 @@ import AnimatedRoutes from './components/AnimatedRoutes';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/">
       <Layout>
         <AnimatedRoutes />
       </Layout>
