@@ -8,7 +8,7 @@ export const useProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/data/shownProjects.json');
+        const response = await fetch('/projects/shownProjects.json');
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status} for shownProjects.json`);
         }

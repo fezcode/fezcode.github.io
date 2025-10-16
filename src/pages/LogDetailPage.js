@@ -25,7 +25,7 @@ const LogDetailPage = () => {
       try {
         const [logContentResponse, logsResponse] = await Promise.all([
           fetch(`/logs/${slug}.txt`),
-          fetch('/data/logs.json')
+          fetch('/logs/logs.json')
         ]);
 
         let logBody = '';

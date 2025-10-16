@@ -27,7 +27,7 @@ const BlogPostPage = () => {
       try {
         const [postContentResponse, shownPostsResponse] = await Promise.all([
           fetch(`/posts/${slug}.txt`),
-          fetch('/data/shownPosts.json')
+          fetch('/posts/shownPosts.json')
         ]);
 
         let postBody = '';

@@ -12,7 +12,7 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchPostSlugs = async () => {
       try {
-        const response = await fetch('/data/shownPosts.json');
+        const response = await fetch('/posts/shownPosts.json');
         if (response.ok) {
           const slugs = await response.json();
           setPosts(slugs);

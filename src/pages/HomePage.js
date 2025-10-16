@@ -17,7 +17,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPostSlugs = async () => {
       try {
-        const response = await fetch('/data/shownPosts.json');
+        const response = await fetch('/posts/shownPosts.json');
         if (response.ok) {
           const postsData = await response.json();
           setPosts(postsData);

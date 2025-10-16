@@ -52,7 +52,7 @@ const LogsPage = () => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const response = await fetch('/data/logs.json');
+        const response = await fetch('/logs/logs.json');
         const data = await response.json();
         const logsWithId = data.map((log, index) => ({ ...log, id: `${log.title}-${log.date}-${index}`, originalIndex: index }));
         setLogs(logsWithId);
