@@ -20,6 +20,14 @@ code {
   font-size: 1.05rem !important; /* text-lg */
 }
 
+.prose img {
+  max-width: 25%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Styling for inline code blocks */
 .prose code:not(pre > code) {
   background-color: #242424; /* gray-600 */ /* Changed background color */

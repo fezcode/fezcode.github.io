@@ -1,5 +1,14 @@
 [
   {
+    "title": "The Flowers of Buffoonery",
+    "category": "Book",
+    "author": "Osamu Dazai",
+    "date": "2025-10-16",
+    "rating": 5,
+    "link": "https://www.goodreads.com/book/show/61340205-the-flowers-of-buffoonery",
+    "slug": "the-flowers-of-buffoonery"
+  },
+  {
     "title": "The Bear",
     "category": "Series",
     "creator": "Christopher Storer",
