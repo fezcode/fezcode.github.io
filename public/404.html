@@ -15,10 +15,19 @@
         var path = window.location.pathname;
         var query = window.location.search;
         var fragment = window.location.hash;
+
         // If the path is not / and doesn't end with .html, redirect to /index.html
-        if (path !== '/' && !path.endsWith('.html')) {
-          window.history.replaceState(null, null, path + query + fragment);
+        // This is a more robust check to ensure we only redirect when necessary
+        if (path !== '/' && !path.endsWith('.html') && !path.endsWith('/')) {
+          // Store the original path in sessionStorage
+          sessionStorage.setItem('redirectPath', path + query + fragment);
+          // Redirect to index.html
           window.location.replace('/index.html');
+        } else if (sessionStorage.getItem('redirectPath')) {
+          // If we are on index.html and there's a stored redirectPath,
+          // then replace the current history state with the stored path
+          window.history.replaceState(null, null, sessionStorage.getItem('redirectPath'));
+          sessionStorage.removeItem('redirectPath');
         }
       })();
     </script>
