@@ -4,24 +4,9 @@
     <meta charset="utf-8">
     <title>Redirecting...</title>
     <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
-      // This script takes the current URL and converts the path and query
-      // string into just a query string, and then redirects the browser
-      // to the new URL with the query string and hash fragment, but no
-      // path, to load the single page app's index.html root.
-      (function(){
-        var path = window.location.pathname;
-        var query = window.location.search;
-        var fragment = window.location.hash;
-
-        // Only redirect if not already on index.html and not a direct file request
-        if (path !== '/index.html' && !path.endsWith('.html')) {
-          window.history.replaceState(null, null, path + query + fragment);
-          window.location.replace('/index.html');
-        }
-      })();
+      // Redirect to the root of the application
+      // The React app's BrowserRouter will then handle the path
+      window.location.replace('/');
     </script>
   </head>
   <body>
