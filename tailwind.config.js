@@ -27,6 +27,9 @@ module.exports = {
         article: '#f97316',
         music: '#a855f7',
         series: '#ec4899',
+        'title-hover': '#fdd4a6',
+        'dev-card-bg': 'rgba(68, 64, 60, 0.1)',
+        'takes-card-bg': 'rgba(6, 95, 70, 0.15)',
       },
       typography: (theme) => ({
         dark: {

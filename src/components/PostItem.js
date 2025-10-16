@@ -18,13 +18,10 @@ const PostItem = ({ slug, title, date, updatedDate, category }) => {
   }) : null;
 
   const categoryBadgeColorStyle = { backgroundColor: category === 'dev' ? 'var(--color-dev-badge)' : 'var(--color-takes-badge)' };
-  const postBackgroundColorStyle = {
-    backgroundColor: category === 'dev' ? 'var(--color-dev-card-bg)' : 'var(--color-takes-card-bg)',
-    '--hover-bg': category === 'dev' ? 'var(--color-dev-card-bg-hover)' : 'var(--color-takes-card-bg-hover)',
-  };
+  const postBackgroundColorClass = category === 'dev' ? 'bg-dev-card-bg' : 'bg-takes-card-bg';
 
   return (
-    <Link to={`/blog/${slug}`} className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group`} style={postBackgroundColorStyle}>
+    <Link to={`/blog/${slug}`} className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group ${postBackgroundColorClass} hover:bg-red-500/10`}>
       <article>
         <div className="flex items-center">
           <p className="text-sm text-gray-400">{formattedDate}</p>
@@ -34,14 +31,14 @@ const PostItem = ({ slug, title, date, updatedDate, category }) => {
                 {category}
               </span>
             )}
-            <h2 className="text-xl font-semibold text-white group-hover:text-primary-400 transition-colors">
+            <h2 className="text-xl font-semibold text-white group-hover:text-title-hover group-hover:underline transition-colors">
               {title}
             </h2>
           </div>
           {formattedUpdatedDate && updatedDate !== date && (
             <span className="hidden sm:inline-block ml-4 px-2 py-1 text-xs font-medium text-orange-400 bg-orange-400/10 rounded-full">Updated: {formattedUpdatedDate}</span>
           )}
-          <span className="ml-4 flex-shrink-0 text-sm font-medium text-primary-400 hover:text-primary-500 transition-colors">
+          <span className="ml-4 flex-shrink-0 text-sm font-medium text-primary-400 group-hover:text-title-hover group-hover:underline transition-colors">
             <span className="hidden sm:inline">Read post</span> &rarr;
           </span>
         </div>

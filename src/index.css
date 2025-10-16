@@ -47,10 +47,7 @@ code {
 }
 
 :root {
-  --color-dev-badge: #4d7c0f; /* lime-800 */
+  --color-dev-badge: #44403c; /* stone-700 */
   --color-takes-badge: #065f46; /* emerald-800 */
-  --color-dev-card-bg: rgba(77, 124, 15, 0.2); /* lime-900/20 */
-  --color-dev-card-bg-hover: rgba(77, 124, 15, 0.4); /* lime-900/40 */
-  --color-takes-card-bg: rgba(6, 95, 70, 0.2); /* emerald-900/20 */
-  --color-takes-card-bg-hover: rgba(6, 95, 70, 0.4); /* emerald-900/40 */
+
 }
