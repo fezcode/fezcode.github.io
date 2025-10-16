@@ -21,7 +21,7 @@ This library aims to simplify the process of setting up and managing tournaments
 
 ## Ok, but why?
 
-The inspiration for `go-tournament-brackets` struck during a casual phone call with a friend. I was unwinding, listening to [Morcheeba's "Easier Said than Done,"](https://www.youtube.com/watch?v=27lPAUdE1ys)
+The inspiration for `go-tournament-brackets` struck during a casual phone call with a friend, Mustafa, (_he personally requested to be named directly_). I was unwinding, listening to [Morcheeba's "Easier Said than Done,"](https://www.youtube.com/watch?v=27lPAUdE1ys)
 when he posed a fun challenge: rank our favorite rappers. His idea was to create a bracket, share it, and play through it together. Simple enough, right?
 
 Not quite. As he started looking for online bracket makers, we quickly hit a wall. Most platforms demanded sign-ups,
