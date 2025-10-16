@@ -30,9 +30,10 @@ code {
   border-radius: 0.25rem; /* rounded corners */
 }
 
-@media (min-width: 700px) { /* md breakpoint */
+@media (min-width: 768px) { /* md breakpoint */
   .prose img {
-    max-width: 25%; /* 25% width on larger screens */
+    max-height: 500px;
+    /*max-width: 100%; !* 25% width on larger screens *!*/
   }
 }
 
