@@ -5,13 +5,15 @@
 body {
   margin: 0;
   background-color: #030712;
-  /*font-family: 'Space Mono', 'JetBrains Mono', monospace, sans-serif;*/
+  font-family: 'Space Mono', 'JetBrains Mono', monospace, sans-serif !important;
+  font-weight: 400 !important;
+  font-style: normal !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  /*font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;*/
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Styling for inline code blocks */
@@ -21,5 +23,5 @@ code {
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
   font-family: 'JetBrains Mono', monospace;
-  font-weight: 300; /* Lighter font weight */
+  font-weight: 400; /* Lighter font weight */
 }
