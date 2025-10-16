@@ -1,5 +1,14 @@
 [
   {
+    "title": "The Bear",
+    "category": "Series",
+    "creator": "Christopher Storer",
+    "date": "2025-10-16",
+    "rating": 5,
+    "link": "https://www.imdb.com/title/tt14452776/",
+    "slug": "the-bear"
+  },
+  {
     "title": "Relay",
     "category": "Movie",
     "director": "David Mackenzie",
@@ -59,7 +68,7 @@
     "artist": "Neutral Milk Hotel",
     "date": "2025-10-06",
     "rating": 5,
-    "link": "https://www.youtube.com/watch?v=hD6_q5d4v-w",
+    "link": "https://www.youtube.com/watch?v=0_5qaeIAl5E",
     "slug": "in-the-aeroplane-over-the-sea"
   },
   {
