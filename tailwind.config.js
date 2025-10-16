@@ -78,7 +78,7 @@ module.exports = {
             },
 
             li: {
-              lineHeight: '1.0',
+              lineHeight: '1.5',
             },
           },
         },

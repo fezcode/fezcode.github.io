@@ -2,13 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import PostMetadata from '../components/PostMetadata';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
     <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
-      {children} {isExternal && <ArrowLeftIcon className="text-xs" />}
+      {children} {isExternal && <ArrowSquareOutIcon className="text-xs" />}
     </a>
   );
 };

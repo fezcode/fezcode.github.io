@@ -1,0 +1,55 @@
+# Do I Need to Create a Lib For That?
+
+## My Journey into Go Libraries
+
+Creating my first Go library, [go-tournament-brackets](https://github.com/fezcode/go-tournament-brackets), has been a, _experience_...
+It's a project that allowed me to dive deep into Go's capabilities for building reusable and efficient code.
+The process of designing the data structures, handling edge cases like automatic bye calculations,
+and then building an interactive command-line interface on top of it was both challenging and immensely satisfying.
+There's a unique sense of accomplishment in seeing your code not just work, but also be easily consumable by others.
+
+## About `go-tournament-brackets`
+
+`go-tournament-brackets` is a versatile Go library designed for generating and managing single-elimination tournament brackets. It offers two primary components:
+
+*   **A Robust Go Library:** This provides a set of data models and functions that can be integrated into any Go application.
+It intelligently handles tournament logic, including the correct calculation of rounds, match-ups, and automatic byes for varying numbers of participants.
+*   **An Interactive Command-Line Interface (CLI):** Built on top of the library, this CLI allows users to run a tournament from start to finish.
+You can input participant names, visualize the bracket in ASCII art, and interactively determine match winners until a champion is crowned.
+
+This library aims to simplify the process of setting up and managing tournaments, whether you're integrating it into a larger application or running a quick tournament from your terminal.
+
+## Ok, but why?
+
+The inspiration for `go-tournament-brackets` struck during a casual phone call with a friend. I was unwinding, listening to [Morcheeba's "Easier Said than Done,"](https://www.youtube.com/watch?v=27lPAUdE1ys)
+when he posed a fun challenge: rank our favorite rappers. His idea was to create a bracket, share it, and play through it together. Simple enough, right?
+
+Not quite. As he started looking for online bracket makers, we quickly hit a wall. Most platforms demanded sign-ups,
+locked away certain tournament types behind paywalls, and generally overcomplicated what should have been a straightforward,
+enjoyable activity. For something so simple, the hoops we had to jump through felt entirely unnecessary.
+That's when the idea sparked: why not build my own? A bracket maker that was free, flexible, and didn't force you into a convoluted user experience.
+And so, the seed for `go-tournament-brackets` was planted.
+
+## How did I do that?
+
+The journey from idea to a working library began with a deep dive into the mechanics of tournament brackets.
+I found myself poring over Wikipedia articles, unraveling the intricacies of single-elimination formats, byes, and seeding.
+Once I had a solid grasp of the theoretical underpinnings, I turned to my trusty collaborator, Gemini 2.5-Pro.
+
+My first request to Gemini was simple: "Generate the necessary Go files for a tournament bracket library."
+It quickly scaffolded the basic project structure, providing the initial Go files. From there, I started defining the core data structures,
+translating the concepts from my research into Go structs. The `models.go` file, which you can see [here](https://raw.githubusercontent.com/fezcode/go-tournament-brackets/refs/heads/main/models.go), was born out of this phase.
+
+```go
+// Tournament is the root object that contains all data for a tournament event.
+type Tournament struct {
+	Name           string
+	Rounds         []Round
+	TournamentType TournamentType
+	Options        *Options
+}
+```
+
+With the foundational structs in place, Gemini and I embarked on implementing the core logic.
+This was where the real challenge and fun began. Handling the "bye" mechanism – __ensuring that teams or competitors who automatically advance in the first round are correctly placed__ – proved to be particularly tricky.
+It's not as straightforward as it might seem, but with Gemini's assistance, we iterated through various approaches, and it did its best to help navigate those complexities. It was a true collaborative effort, pushing both my understanding and Gemini's capabilities to deliver a robust solution.
