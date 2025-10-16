@@ -16,6 +16,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+.prose {
+  font-size: 1.05rem !important; /* text-lg */
+}
+
 /* Styling for inline code blocks */
 .prose code:not(pre > code) {
   background-color: #242424; /* gray-600 */ /* Changed background color */
