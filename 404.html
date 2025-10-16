@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      // This script takes the current URL and converts the path and query
+      // string into just a query string, and then redirects the browser
+      // to the new URL with the query string and hash fragment, but no
+      // path, to load the single page app's index.html root.
+      (function(){
+        var redirect = sessionStorage.getItem('redirect');
+        if (redirect) {
+          sessionStorage.removeItem('redirect');
+          window.location.replace(redirect);
+        } else {
+          var path = window.location.pathname;
+          var query = window.location.search;
+          var fragment = window.location.hash;
+          var newUrl = window.location.protocol + '//' + window.location.hostname + (window.location.port ? ':' + window.location.port : '') + '/?' +
+            (path.startsWith('/') ? path.substring(1) : path) + query + fragment;
+          sessionStorage.setItem('redirect', newUrl);
+          window.location.replace(newUrl);
+        }
+      })();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

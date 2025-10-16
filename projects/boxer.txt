@@ -1,0 +1,40 @@
+Boxer is a tool that creates archive files based on instructions provided in a `boxerfile`. It uses `CMake` and `Ninja` for its build system.
+---
+Boxer is a tool that creates archive files based on instructions provided in a `boxerfile`. It uses `CMake` and `Ninja` for its build system.
+
+## Building:
+
+To build Boxer, use `CMake` and `Ninja`. For the first time setup, run:
+```bash
+cmake -B build -GNinja
+ninja -C build
+```
+For subsequent compilations:
+```bash
+ninja -C build
+```
+
+## Commands:
+
+Boxer uses a `boxerfile` to define archiving operations with the following commands:
+
+*   **`ARCHIVE_NAME [NAME]`**: Sets the name of the archive, appending `.tar.gz`.
+*   **`ADD_DIR [AS <OUTPUT_DIR>]`**: Adds a directory to the archive, optionally renaming it.
+*   **`ADD_FILE [AS <OUTPUT_FILENAME>]`**: Adds a file to the archive, optionally renaming it.
+*   **`ADD_FILE_MATCHING <REGEX> IN <DIR> GET <OPTION> [AS <OUTPUT_FILENAME>] TO <DEST_DIR>`**: Adds files matching a regular expression.
+    *   `<REGEX>`: Regular expression to match files.
+    *   `<DIR>`: Directory to search in.
+    *   `<OPTION>`: Specifies which matching files to add (`ALL`, `LATEST`, `FIRST`, `LAST`).
+    *   `<DEST_DIR>`: Destination directory within the archive.
+    *   `<OUTPUT_FILENAME>`: Optional, renames the matched file.
+
+## Warnings:
+
+Users should be cautious of leading `/` in archive filenames (when using `AS`).
+
+## Tests:
+
+Example `boxerfile`s are located in the `test-files` directory. To run tests, execute:
+```bash
+build/boxer -f test-files/.boxerfile
+```

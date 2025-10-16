@@ -1,5 +1,13 @@
 [
   {
+    "slug": "do-i-need-to-create-a-lib-for-that",
+    "title": "Do I Need to Create a Lib For That?",
+    "date": "2025-10-16",
+    "updated": "2025-10-16",
+    "description": "a journey to create my first golang package",
+    "tags": ["go", "lib", "pkg.go.dev"]
+  },
+  {
     "slug": "warning-post",
     "title": "My Second Post",
     "date": "2025-10-14",
