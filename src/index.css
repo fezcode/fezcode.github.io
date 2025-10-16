@@ -14,3 +14,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Styling for inline code blocks */
+.prose code:not(pre > code) {
+  background-color: #242424; /* gray-600 */ /* Changed background color */
+  color: #f87171; /* primary-400 - Reverted color */
+  padding: 0.2em 0.4em;
+  border-radius: 0.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 300; /* Lighter font weight */
+}

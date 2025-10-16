@@ -53,3 +53,23 @@ type Tournament struct {
 With the foundational structs in place, Gemini and I embarked on implementing the core logic.
 This was where the real challenge and fun began. Handling the "bye" mechanism – __ensuring that teams or competitors who automatically advance in the first round are correctly placed__ – proved to be particularly tricky.
 It's not as straightforward as it might seem, but with Gemini's assistance, we iterated through various approaches, and it did its best to help navigate those complexities. It was a true collaborative effort, pushing both my understanding and Gemini's capabilities to deliver a robust solution.
+
+## Publishing Your Go Module
+
+Once you've developed your Go package, the next step is to make it available for others to use. This involves a few crucial steps to ensure your module is correctly versioned and discoverable.
+
+1.  **Define Your Module Path in `go.mod`:**
+    Your `go.mod` file must declare the correct module path, which typically corresponds to the repository where your code is hosted. For `go-tournament-brackets`, this should be `module github.com/fezcode/go-tournament-brackets`. This path is how other Go projects will import and reference your module.
+
+2.  **Create and Push a Version Tag (Release):**
+    Go modules rely on Git tags for versioning. To publish a specific version of your module, you need to:
+    *   **Tag your commit:** Use `git tag vX.Y.Z` (e.g., `git tag v0.1.0`) to mark a specific commit as a release. Semantic Versioning (SemVer) is highly recommended for your tags (e.g., `v0.1.0`, `v1.0.0`).
+    *   **Push the tag:** After creating the tag locally, push it to your remote repository: `git push origin vX.Y.Z`. This makes the version visible to module proxies.
+
+3.  **Module Discovery by Go Proxies (e.g., `proxy.golang.org`):**
+    Go module proxies (like `proxy.golang.org`) automatically discover new module versions when they are tagged and pushed to a public repository. While you don't strictly *need* to run a command to "publish" in the traditional sense, you can explicitly request a proxy to fetch a new version.
+    *   **Requesting a specific version:** You can use `go get github.com/fezcode/go-tournament-brackets@v0.1.0` (or `go list -m github.com/fezcode/go-tournament-brackets@v0.1.0`) from *any* Go project. I used `$env:GOPROXY="proxy.golang.org"; go list -m github.com/fezcode/go-tournament-brackets`. When this command is executed, if the proxy doesn't have that version, it will fetch it from your repository.
+    *   **Important Note:** The `GOPROXY=proxy.golang.org go list -m example.com/mymodule@v0.1.0` command is primarily used to *verify* that a module can be fetched from the proxy, or to *force* a proxy to fetch a new version if it hasn't discovered it yet. It's not a "publishing" command in itself, but rather a way to interact with the proxy.
+
+4.  **Visibility on `pkg.go.dev`:**
+    After your module is tagged and discoverable by Go module proxies, `pkg.go.dev` (the official Go package discovery site) will eventually index it. This process is not instantaneous and can take some time (from minutes to a few hours). You won't see your listing immediately, so patience is indeed key!
