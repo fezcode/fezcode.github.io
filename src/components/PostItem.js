@@ -19,9 +19,10 @@ const PostItem = ({ slug, title, date, updatedDate, category }) => {
 
   const categoryBadgeColorStyle = { backgroundColor: category === 'dev' ? 'var(--color-dev-badge)' : 'var(--color-takes-badge)' };
   const postBackgroundColorClass = category === 'dev' ? 'bg-dev-card-bg' : 'bg-takes-card-bg';
+  const postHoverBackgroundColorClass = category === 'dev' ? 'hover:bg-dev-card-bg-hover' : 'hover:bg-takes-card-bg-hover';
 
   return (
-    <Link to={`/blog/${slug}`} className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group ${postBackgroundColorClass} hover:bg-red-500/10`}>
+    <Link to={`/blog/${slug}`} className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group ${postBackgroundColorClass} ${postHoverBackgroundColorClass}`}>
       <article>
         <div className="flex items-center">
           <p className="text-sm text-gray-400">{formattedDate}</p>
