@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, Envelope } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowSquareOutIcon, EnvelopeIcon } from '@phosphor-icons/react';
 import usePageTitle from '../utils/usePageTitle';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
     <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
-      {children} {isExternal && <ArrowLeftIcon className="text-xs" />}
+      {children} {isExternal && <ArrowSquareOutIcon className="text-xs" />}
     </a>
   );
 };
@@ -109,7 +109,7 @@ const AboutPage = () => {
               <div className="mt-8">
                 <h2 className="text-3xl font-semibold tracking-tight text-white mb-4">Contact</h2>
                 <p className="flex items-center gap-2">
-                  <Envelope className="text-primary-400" /> Feel free to reach out to me at <a href={`mailto:${email}`} className="text-primary-400 hover:text-primary-500 transition-colors">{email}</a>.
+                  <EnvelopeIcon className="text-primary-400" /> Feel free to reach out to me at <a href={`mailto:${email}`} className="text-primary-400 hover:text-primary-500 transition-colors">{email}</a>.
                 </p>
               </div>
             )}
