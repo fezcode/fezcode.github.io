@@ -5,14 +5,13 @@
 body {
   margin: 0;
   background-color: #030712;
-  font-family: 'Space Mono', 'JetBrains Mono', monospace, sans-serif;
+  /*font-family: 'Space Mono', 'JetBrains Mono', monospace, sans-serif;*/
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /*font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;*/
 }
 
 /* Styling for inline code blocks */

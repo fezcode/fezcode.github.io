@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, FilmStrip, GameController, Article, MusicNote, Television, ArrowRight } from '@phosphor-icons/react';
+import { BookOpen, FilmStrip, GameController, Article, MusicNote, Television } from '@phosphor-icons/react';
 
 const categoryIcons = {
   Book: <BookOpen />,
@@ -38,7 +38,7 @@ const categoryStyles = {
 };
 
 const LogCard = ({ log, index, totalLogs }) => {
-  const { title, category, author, director, platform, source, artist, year, creator, link, date, rating, slug } = log;
+  const { title, category, author, director, platform, source, artist, year, creator, date, rating, slug } = log;
 
   const cardStyle = categoryStyles[category] || {};
 
