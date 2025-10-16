@@ -61,9 +61,9 @@ const ProjectPage = () => {
             <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
               <ArrowLeftIcon size={24} /> Back to Home
             </Link>
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-6xl">{project.title}</h1>
+            <h1 className="text-4xl font-bold tracking-tight text-markdown-hx-color sm:text-6xl">{project.title}</h1>
             {project.image && <img src={project.image} alt={project.title} className="mt-8 w-full rounded-lg text-gray-200" />}
-            <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-invert">
+            <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-dark">
               <ReactMarkdown>{project.fullContent}</ReactMarkdown>
             </div>
           </div>

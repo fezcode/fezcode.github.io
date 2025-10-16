@@ -14,20 +14,22 @@ module.exports = {
       },
       colors: {
         primary: {
-          400: '#f87171',
-          500: '#ef4444',
-          600: '#dc2626',
+          400: '#f87171', // red-400
+          500: '#ef4444', // red-500
+          600: '#dc2626', // red-600
         },
         secondary: {
-          400: '#fb923c',
+          400: '#fb923c', // orange-400
         },
-        book: '#3b82f6',
-        movie: '#ef4444',
-        game: '#22c55e',
-        article: '#f97316',
-        music: '#a855f7',
-        series: '#ec4899',
-        'title-hover': '#fdd4a6',
+        book: '#3b82f6', // blue-500
+        movie: '#ef4444', // red-500
+        game: '#22c55e', // green-500
+        article: '#f97316', // orange-500
+        music: '#a855f7', // purple-500
+        series: '#ec4899', // pink-500
+        'title-hover': '#fdd4a6', // orange-200
+        'markdown-title-color': '#fed7aa', // orange-200
+        'markdown-hx-color': '#ffedd5', // orange-100
         'dev-card-bg': 'rgba(68, 64, 60, 0.1)', // stone-900/10
         'dev-card-bg-hover': 'rgba(120, 113, 108, 0.2)', // stone-500/20
         'takes-card-bg': 'rgba(6, 95, 70, 0.15)', // emerald-900/15
@@ -45,22 +47,22 @@ module.exports = {
             },
 
             h1: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.markdown-hx-color'),
             },
             h2: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.markdown-hx-color'),
             },
             h3: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.markdown-hx-color'),
             },
             h4: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.markdown-hx-color'),
             },
             h5: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.markdown-hx-color'),
             },
             h6: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.markdown-hx-color'),
             },
 
             strong: {
