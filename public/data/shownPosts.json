@@ -5,7 +5,8 @@
     "date": "2025-10-16",
     "updated": "2025-10-16",
     "description": "a journey to create my first golang package",
-    "tags": ["go", "lib", "pkg.go.dev"]
+    "tags": ["go", "lib", "pkg.go.dev"],
+    "category": "dev"
   },
   {
     "slug": "hashrouter-vs-browserrouter",
@@ -13,14 +14,16 @@
     "date": "2025-10-15",
     "updated": "2025-10-16",
     "description": "Why am I using HashRouter for github pages",
-    "tags": ["react", "webdev", "gh-pages", "router"]
+    "tags": ["react", "webdev", "gh-pages", "router"],
+    "category": "dev"
   },
   {
     "slug": "warning-post",
-    "title": "My Second Post",
+    "title": "Warning Post",
     "date": "2025-10-14",
     "updated": "2025-10-15",
-    "tags": ["writing", "updates"]
+    "tags": ["writing", "updates"],
+    "category": "life"
   },
   {
     "slug": "code-example-post",
@@ -28,27 +31,31 @@
     "date": "2025-10-15",
     "updated": "2025-10-15",
     "description": "A blog post demonstrating code blocks in various languages.",
-    "tags": ["code", "markdown", "example"]
+    "tags": ["code", "markdown", "example"],
+    "category": "dev"
   },
   {
     "slug": "first-post",
     "title": "My First Post",
     "date": "2025-10-14",
     "updated": "2025-10-15",
-    "tags": ["react", "hello-world"]
+    "tags": ["react", "hello-world"],
+    "category": "dev"
   },
   {
     "slug": "long-post",
     "title": "The Art of Scrolling",
     "date": "2025-10-13",
     "updated": "2025-10-14",
-    "tags": ["css", "scrolling", "web-design"]
+    "tags": ["css", "scrolling", "web-design"],
+    "category": "dev"
   },
   {
     "slug": "second-post",
     "title": "My Second Post",
     "date": "2025-10-12",
     "updated": "2025-10-13",
-    "tags": ["writing", "updates"]
+    "tags": ["writing", "updates"],
+    "category": "life"
   }
 ]

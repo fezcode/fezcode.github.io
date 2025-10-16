@@ -8,6 +8,8 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
 
   const displayDate = overrideDate || (metadata.date ? new Date(metadata.date).toLocaleDateString() : 'Invalid Date');
 
+  const categoryColorClass = metadata.category === 'dev' ? 'bg-blue-700' : 'bg-orange-700';
+
   const handleButtonClick = () => {
     if (isAtTop) {
       window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
@@ -25,6 +27,14 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
             <Label>Title</Label>
             <p className="text-gray-300 ml-1 mt-1 ">{metadata.title}</p>
           </div>
+          {metadata.category && (
+            <div>
+              <Label>Category</Label>
+              <span className={`ml-1 px-2 py-1 text-xs font-medium text-white rounded-md ${categoryColorClass} w-16 text-center`}>
+                {metadata.category}
+              </span>
+            </div>
+          )}
           <div>
             <Label>Date</Label>
             <p className="text-gray-300 ml-1 mt-1">{displayDate}</p>
