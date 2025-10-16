@@ -23,16 +23,16 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
         <div className="space-y-4">
           <div>
             <Label>Title</Label>
-            <p className="text-gray-300">{metadata.title}</p>
+            <p className="text-gray-300 ml-1 mt-1 ">{metadata.title}</p>
           </div>
           <div>
             <Label>Date</Label>
-            <p className="text-gray-300">{displayDate}</p>
+            <p className="text-gray-300 ml-1 mt-1">{displayDate}</p>
           </div>
           {updatedDate && (
             <div>
               <Label>Updated</Label>
-              <p className="text-gray-300">{updatedDate}</p>
+              <p className="text-gray-300 ml-1 mt-1">{updatedDate}</p>
             </div>
           )}
           {metadata.tags && (

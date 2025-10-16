@@ -1,10 +1,23 @@
 import React from 'react';
 import Label from './Label';
+import { Star } from '@phosphor-icons/react';
 
 const LogMetadata = ({ metadata }) => {
   if (!metadata) {
     return null;
   }
+
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(<Star key={i} size={16} weight="fill" className="text-yellow-400" />);
+      } else {
+        stars.push(<Star key={i} size={16} weight="fill" className="text-gray-500" />);
+      }
+    }
+    return <div className="flex ml-1 mt-1">{stars}</div>;
+  };
 
   return (
     <aside className="sticky top-24">
@@ -13,66 +26,68 @@ const LogMetadata = ({ metadata }) => {
         <div className="space-y-4">
           <div>
             <Label>Title</Label>
-            <p className="text-gray-300">{metadata.title}</p>
+            <p className="text-gray-300 ml-1 mt-1">{metadata.title}</p>
           </div>
           <div>
             <Label>Category</Label>
-            <p className="text-gray-300">{metadata.category}</p>
+            <p className="text-gray-300 ml-1 mt-1">{metadata.category}</p>
           </div>
           {metadata.author && (
             <div>
               <Label>Author</Label>
-              <p className="text-gray-300">{metadata.author}</p>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.author}</p>
             </div>
           )}
           {metadata.director && (
             <div>
               <Label>Director</Label>
-              <p className="text-gray-300">{metadata.director}</p>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.director}</p>
             </div>
           )}
           {metadata.platform && (
             <div>
               <Label>Platform</Label>
-              <p className="text-gray-300">{metadata.platform}</p>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.platform}</p>
             </div>
           )}
           {metadata.source && (
             <div>
               <Label>Source</Label>
-              <p className="text-gray-300">{metadata.source}</p>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.source}</p>
             </div>
           )}
           {metadata.artist && (
             <div>
               <Label>Artist</Label>
-              <p className="text-gray-300">{metadata.artist}</p>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.artist}</p>
             </div>
           )}
           {metadata.year && (
             <div>
               <Label>Year</Label>
-              <p className="text-gray-300">{metadata.year}</p>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.year}</p>
             </div>
           )}
           {metadata.creator && (
             <div>
               <Label>Creator</Label>
-              <p className="text-gray-300">{metadata.creator}</p>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.creator}</p>
             </div>
           )}
           <div>
             <Label>Date</Label>
-            <p className="text-gray-300">{metadata.date}</p>
+            <p className="text-gray-300 ml-1 mt-1">{metadata.date}</p>
           </div>
-          <div>
-            <Label>Rating</Label>
-            <p className="text-gray-300">{metadata.rating}/5</p>
-          </div>
+          {metadata.rating !== undefined && metadata.rating !== null && (
+            <div>
+              <Label>Rating</Label>
+              {renderStars(metadata.rating)}
+            </div>
+          )}
           {metadata.link && (
             <div>
               <Label>Link</Label>
-              <p className="text-gray-300"><a href={metadata.link} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">View</a></p>
+              <p className="text-gray-300 ml-1 mt-1"><a href={metadata.link} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">View</a></p>
             </div>
           )}
         </div>

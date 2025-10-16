@@ -13,18 +13,18 @@ const ProjectMetadata = ({ project }) => {
         <div className="space-y-4">
           <div>
             <Label>Title</Label>
-            <p className="text-gray-300">{project.title}</p>
+            <p className="text-gray-300 ml-1 mt-1">{project.title}</p>
           </div>
           {project.link && (
             <div>
               <Label>Link</Label>
-              <p className="text-gray-300"><a href={project.link} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">View Project</a></p>
+              <p className="text-gray-300 ml-1 mt-1"><a href={project.link} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">View Project</a></p>
             </div>
           )}
           {project.pinned && (
             <div>
               <Label>Status</Label>
-              <p className="text-gray-300">Pinned</p>
+              <p className="text-gray-300 ml-1 mt-1">Pinned</p>
             </div>
           )}
           {project.technologies && project.technologies.length > 0 && (
