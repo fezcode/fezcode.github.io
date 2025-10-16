@@ -5,7 +5,8 @@
     "author": "Douglas Adams",
     "date": "2025-10-15",
     "rating": 5,
-    "link": "https://www.goodreads.com/book/show/386162.The_Hitchhiker_s_Guide_to_the_Galaxy"
+    "link": "https://www.goodreads.com/book/show/386162.The_Hitchhiker_s_Guide_to_the_Galaxy",
+    "slug": "the-hitchhikers-guide-to-the-galaxy"
   },
   {
     "title": "The Matrix",
@@ -13,7 +14,8 @@
     "director": "The Wachowskis",
     "date": "2025-10-14",
     "rating": 5,
-    "link": "https://www.imdb.com/title/tt0133093/"
+    "link": "https://www.imdb.com/title/tt0133093/",
+    "slug": "the-matrix"
   },
   {
     "title": "The Legend of Zelda: Breath of the Wild",
@@ -21,7 +23,8 @@
     "platform": "Nintendo Switch",
     "date": "2025-10-12",
     "rating": 5,
-    "link": "https://www.zelda.com/breath-of-the-wild/"
+    "link": "https://www.zelda.com/breath-of-the-wild/",
+    "slug": "the-legend-of-zelda-breath-of-the-wild"
   },
   {
     "title": "The Go Programming Language",
@@ -29,7 +32,8 @@
     "author": "Alan A. A. Donovan & Brian W. Kernighan",
     "date": "2025-10-10",
     "rating": 5,
-    "link": "https://www.gopl.io/"
+    "link": "https://www.gopl.io/",
+    "slug": "the-go-programming-language"
   },
   {
     "title": "How to build a mechanical keyboard",
@@ -37,7 +41,8 @@
     "source": "PC Gamer",
     "date": "2025-10-08",
     "rating": 4,
-    "link": "https://www.pcgamer.com/how-to-build-a-mechanical-keyboard/"
+    "link": "https://www.pcgamer.com/how-to-build-a-mechanical-keyboard/",
+    "slug": "how-to-build-a-mechanical-keyboard"
   },
   {
     "title": "In the Aeroplane Over the Sea",
@@ -45,7 +50,8 @@
     "artist": "Neutral Milk Hotel",
     "date": "2025-10-06",
     "rating": 5,
-    "link": "https://www.youtube.com/watch?v=hD6_q5d4v-w"
+    "link": "https://www.youtube.com/watch?v=hD6_q5d4v-w",
+    "slug": "in-the-aeroplane-over-the-sea"
   },
   {
     "title": "Breaking Bad",
@@ -54,6 +60,7 @@
     "year": "2008-2013",
     "date": "2025-10-04",
     "rating": 5,
-    "link": "https://www.imdb.com/title/tt0903747/"
+    "link": "https://www.imdb.com/title/tt0903747/",
+    "slug": "breaking-bad"
   }
 ]
