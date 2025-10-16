@@ -1,6 +1,7 @@
 import React from 'react';
 import Label from './Label';
 import { Star } from '@phosphor-icons/react';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const LogMetadata = ({ metadata }) => {
   if (!metadata) {
@@ -87,7 +88,7 @@ const LogMetadata = ({ metadata }) => {
           {metadata.link && (
             <div>
               <Label>Link</Label>
-              <p className="text-gray-300 ml-1 mt-1"><a href={metadata.link} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">View</a></p>
+              <p className="text-gray-300 ml-1 mt-1"><a href={metadata.link} target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400 flex items-center">View <FaExternalLinkAlt className="ml-1" size={12} /></a></p>
             </div>
           )}
         </div>

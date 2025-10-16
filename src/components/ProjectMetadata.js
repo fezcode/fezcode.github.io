@@ -1,5 +1,6 @@
 import React from 'react';
 import Label from './Label';
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const ProjectMetadata = ({ project }) => {
   if (!project) {
@@ -18,7 +19,7 @@ const ProjectMetadata = ({ project }) => {
           {project.link && (
             <div>
               <Label>Link</Label>
-              <p className="text-gray-300 ml-1 mt-1"><a href={project.link} target="_blank" rel="noopener noreferrer" className="text-indigo-400 hover:text-indigo-300">View Project</a></p>
+              <p className="text-gray-300 ml-1 mt-1"><a href={project.link} target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400 flex items-center">View Project <FaExternalLinkAlt className="ml-1" size={12} /></a></p>
             </div>
           )}
           {project.pinned && (
