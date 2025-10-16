@@ -1,6 +1,6 @@
 import React from 'react';
 
-const categoryStyles = {
+export const categoryStyles = {
   Book: {
     backgroundColor: 'rgba(59, 130, 246, 0.1)',
     borderColor: 'rgba(59, 130, 246, 0.5)',

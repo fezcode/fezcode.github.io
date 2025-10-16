@@ -1,5 +1,14 @@
 [
   {
+    "title": "Relay",
+    "category": "Movie",
+    "director": "David Mackenzie",
+    "date": "2025-10-16",
+    "rating": 4,
+    "link": "https://www.imdb.com/title/tt11539996/",
+    "slug": "relay-2024"
+  },
+  {
     "title": "The Hitchhiker's Guide to the Galaxy",
     "category": "Book",
     "author": "Douglas Adams",

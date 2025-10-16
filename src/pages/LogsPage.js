@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CaretDown, CaretUp } from '@phosphor-icons/react';
 import LogCard from '../components/LogCard';
-import ColorLegends from '../components/ColorLegends';
+import ColorLegends, { categoryStyles } from '../components/ColorLegends';
 import usePageTitle from "../utils/usePageTitle";
 
 const LogsPage = () => {
@@ -11,14 +11,33 @@ const LogsPage = () => {
   const [showLegends, setShowLegends] = useState(false);
   const [loading, setLoading] = useState(true);
   const [hiddenLegends, setHiddenLegends] = useState([]);
+  const [allCategoriesSelected, setAllCategoriesSelected] = useState(true);
+
+  const handleToggleAllCategories = () => {
+    if (allCategoriesSelected) {
+      setHiddenLegends(Object.keys(categoryStyles));
+    } else {
+      setHiddenLegends([]);
+    }
+    setAllCategoriesSelected(!allCategoriesSelected);
+  };
 
   const handleLegendClick = (legend) => {
     setHiddenLegends((prevHiddenLegends) => {
-      if (prevHiddenLegends.includes(legend)) {
-        return prevHiddenLegends.filter((item) => item !== legend);
+      const newHiddenLegends = prevHiddenLegends.includes(legend)
+        ? prevHiddenLegends.filter((item) => item !== legend)
+        : [...prevHiddenLegends, legend];
+
+      // Update allCategoriesSelected based on the new state of hiddenLegends
+      if (newHiddenLegends.length === 0) {
+        setAllCategoriesSelected(true);
+      } else if (newHiddenLegends.length === Object.keys(categoryStyles).length) {
+        setAllCategoriesSelected(false);
       } else {
-        return [...prevHiddenLegends, legend];
+        // If some are selected and some are not, it's neither all selected nor all deselected
+        setAllCategoriesSelected(false);
       }
+      return newHiddenLegends;
     });
   };
 
@@ -99,6 +118,25 @@ const LogsPage = () => {
               onLegendClick={handleLegendClick}
               hiddenLegends={hiddenLegends}
             />
+            <div className="flex items-center justify-center mt-4">
+              <span className="mr-2 text-white text-sm">Disable All</span>
+              <label htmlFor="toggle-all-categories" className="flex items-center cursor-pointer">
+                <div className="relative">
+                  <input
+                    type="checkbox"
+                    id="toggle-all-categories"
+                    className="sr-only"
+                    checked={allCategoriesSelected}
+                    onChange={handleToggleAllCategories}
+                  />
+                  <div className={`block w-10 h-6 rounded-full ${allCategoriesSelected ? 'bg-blue-500' : 'bg-gray-600'}`}></div>
+                  <div
+                    className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${allCategoriesSelected ? 'translate-x-4 bg-primary-500' : ''}`}
+                  ></div>
+                </div>
+              </label>
+              <span className="ml-2 text-white text-sm">Enable All</span>
+            </div>
           </div>
         )}
         <div className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${!showLegends ? 'mt-8' : ''}`}>
