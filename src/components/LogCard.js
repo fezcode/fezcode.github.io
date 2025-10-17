@@ -38,7 +38,7 @@ const categoryStyles = {
 };
 
 const LogCard = ({ log, index, totalLogs }) => {
-  const { title, category, author, director, platform, source, artist, year, creator, date, rating, slug } = log;
+  const { title, category, author, director, platform, source, artist, year, creator, date, rating, slug, updated } = log;
 
   const cardStyle = categoryStyles[category] || {};
 
@@ -79,7 +79,10 @@ const LogCard = ({ log, index, totalLogs }) => {
             </div>
             <div className="text-gray-400 ml-2">({rating}/5)</div>
           </div>
-          <div className="text-sm text-blue-400">{date}</div>
+          <div>
+            {updated && <div className="text-xs text-rose-300 text-right">(U): {updated}</div>}
+            <div className="text-sm text-blue-400 text-right">{date}</div>
+          </div>
         </div>
       </div>
     </Link>

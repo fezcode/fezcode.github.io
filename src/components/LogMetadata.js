@@ -91,6 +91,12 @@ const LogMetadata = ({ metadata }) => {
             <Label>Date</Label>
             <p className="text-gray-300 ml-1 mt-1">{metadata.date}</p>
           </div>
+          {metadata.updated && (
+            <div>
+              <Label>Updated</Label>
+              <p className="text-gray-300 ml-1 mt-1">{metadata.updated}</p>
+            </div>
+          )}
           {metadata.rating !== undefined && metadata.rating !== null && (
             <div>
               <Label>Rating</Label>
