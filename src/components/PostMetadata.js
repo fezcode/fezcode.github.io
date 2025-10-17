@@ -27,7 +27,7 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
         <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">About Post</h3>
         <div className="space-y-4">
           <div>
-            <Label>Title</Label>
+            <Label>Original Title</Label>
             <p className="text-gray-300 ml-1 mt-1 ">{metadata.title}</p>
           </div>
           {metadata.category && (

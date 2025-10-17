@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import LogMetadata from '../components/LogMetadata';
 import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
+import ImageModal from '../components/ImageModal';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -18,6 +19,7 @@ const LogDetailPage = () => {
   const [log, setLog] = useState(null);
   const [loading, setLoading] = useState(true);
   const contentRef = useRef(null);
+  const [modalImageSrc, setModalImageSrc] = useState(null);
 
   useEffect(() => {
     const fetchLog = async () => {
@@ -95,6 +97,15 @@ const LogDetailPage = () => {
     return <div className="text-center py-16">Log not found</div>;
   }
 
+  const ImageRenderer = ({ src, alt }) => (
+    <img
+      src={src}
+      alt={alt}
+      className="cursor-pointer max-w-full h-auto"
+      onClick={() => setModalImageSrc(src)}
+    />
+  );
+
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -104,7 +115,7 @@ const LogDetailPage = () => {
               <ArrowLeftIcon size={24} /> Back to Logs
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
-              <ReactMarkdown components={{ a: LinkRenderer }}>{log.body}</ReactMarkdown>
+              <ReactMarkdown components={{ a: LinkRenderer, img: ImageRenderer }}>{log.body}</ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
@@ -112,6 +123,7 @@ const LogDetailPage = () => {
           </div>
         </div>
       </div>
+      <ImageModal src={modalImageSrc} alt="Full size image" onClose={() => setModalImageSrc(null)} />
     </div>
   );
 };

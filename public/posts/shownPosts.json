@@ -1,5 +1,13 @@
 [
   {
+    "slug": "gemini-2-5-flash-explains-me-how-image-modal-works",
+    "title": "Gemini 2.5 Flash Explains me How Image Modal Works",
+    "date": "2025-10-17",
+    "description": "Gemini 2.5 Flash Explains me How Image Modal Works",
+    "tags": ["ai", "gemini", "gemini-2.5-flash"],
+    "category": "dev"
+  },
+  {
     "slug": "do-i-need-to-create-a-lib-for-that",
     "title": "Do I Need to Create a Lib For That?",
     "date": "2025-10-16",
@@ -47,11 +55,12 @@
     "title": "The Art of Scrolling",
     "date": "2025-10-13",
     "updated": "2025-10-14",
+    "description": "css",
     "tags": ["css", "scrolling", "web-design"],
     "category": "dev"
   },
   {
-  "slug": "second-post",
+    "slug": "second-post",
     "title": "My Second Post",
     "date": "2025-10-12",
     "updated": "2025-10-13",

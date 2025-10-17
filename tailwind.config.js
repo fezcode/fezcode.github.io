@@ -81,7 +81,7 @@ module.exports = {
               color: theme('colors.gray.400'),
               'border-left-color': theme('colors.primary.400'),
               quotes: '"" ""' ,
-              lineHeight: '1',
+              lineHeight: '1.6',
             },
 
             li: {
