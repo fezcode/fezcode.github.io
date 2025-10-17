@@ -32,7 +32,8 @@ code {
 
 @media (min-width: 768px) { /* md breakpoint */
   .prose img {
-    max-height: 500px;
+    /*max-width: 55%;*/
+    max-height: 600px;
     /*max-width: 100%; !* 25% width on larger screens *!*/
   }
 }

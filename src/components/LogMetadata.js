@@ -33,6 +33,18 @@ const LogMetadata = ({ metadata }) => {
             <Label>Category</Label>
             <p className="text-gray-300 ml-1 mt-1">{metadata.category}</p>
           </div>
+          {metadata.tags && metadata.tags.length > 0 && (
+            <div>
+              <Label>Tags</Label>
+              <div className="flex flex-wrap gap-2 mt-2">
+                {metadata.tags.map(tag => (
+                  <span key={tag} className="bg-primary-400/10 text-primary-400 text-xs font-medium px-2.5 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
           {metadata.author && (
             <div>
               <Label>Author</Label>
