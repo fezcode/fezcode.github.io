@@ -16,7 +16,9 @@
     "date": "2025-10-16",
     "rating": 5,
     "link": "https://www.goodreads.com/book/show/61340205-the-flowers-of-buffoonery",
-    "slug": "the-flowers-of-buffoonery"
+    "slug": "the-flowers-of-buffoonery",
+    "updated": "2025-10-17"
+
   },
   {
     "title": "The Bear",
@@ -25,7 +27,8 @@
     "date": "2025-10-16",
     "rating": 5,
     "link": "https://www.imdb.com/title/tt14452776/",
-    "slug": "the-bear"
+    "slug": "the-bear",
+    "updated": "2025-10-17"
   },
   {
     "title": "Relay",
