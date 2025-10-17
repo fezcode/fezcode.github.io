@@ -6,6 +6,7 @@ import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import Toast from '../components/Toast';
+import { AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, ArrowSquareOutIcon, ClipboardIcon, ArrowsOutSimpleIcon } from '@phosphor-icons/react';
 
 const LinkRenderer = ({ href, children }) => {
@@ -187,7 +188,9 @@ const BlogPostPage = () => {
       <CodeModal isOpen={isModalOpen} onClose={closeModal}>
         {modalContent}
       </CodeModal>
-      {toastMessage && <Toast title={toastMessage.title} message={toastMessage.message} duration={3000} onClose={() => setToastMessage(null)} />}
+      <AnimatePresence>
+        {toastMessage && <Toast title={toastMessage.title} message={toastMessage.message} duration={3000} onClose={() => setToastMessage(null)} />}
+      </AnimatePresence>
     </div>
   );
 };
