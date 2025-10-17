@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/PostMetadata';
 import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
 
@@ -10,6 +12,27 @@ const LinkRenderer = ({ href, children }) => {
     <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
       {children} {isExternal && <ArrowSquareOutIcon className="text-xs" />}
     </a>
+  );
+};
+
+
+
+const CodeBlock = ({ node, inline, className, children, ...props }) => {
+  const match = /language-(\w+)/.exec(className || '');
+  return !inline && match ? (
+    <SyntaxHighlighter
+      style={customTheme}
+      language={match[1]}
+      PreTag="div"
+      {...props}
+      codeTagProps={{ style: { fontFamily: "'JetBrains Mono', monospace" } }}
+    >
+      {String(children).replace(/\n$/, '')}
+    </SyntaxHighlighter>
+  ) : (
+    <code className={`${className} font-mono bg-gray-800`} {...props}>
+      {children}
+    </code>
   );
 };
 
@@ -121,7 +144,7 @@ const BlogPostPage = () => {
               <ArrowLeftIcon size={24} /> Back to Home
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
-              <ReactMarkdown components={{ a: LinkRenderer }}>{post.body}</ReactMarkdown>
+              <ReactMarkdown components={{ a: LinkRenderer, code: CodeBlock }}>{post.body}</ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">

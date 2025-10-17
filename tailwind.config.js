@@ -71,6 +71,7 @@ module.exports = {
 
             code: {
               color: theme('colors.gray.100'),
+              fontFamily: theme('fontFamily.mono'),
             },
 
             figcaption: {
