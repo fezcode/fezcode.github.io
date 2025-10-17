@@ -32,3 +32,4 @@ The `About Log` card displays the following fields:
 *   `date`
 *   `rating`
 *   `link`
+*   `updated`
