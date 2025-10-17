@@ -1,4 +1,4 @@
-# Gemini 2.5 Flash Explains me How Image Modal In My Project Works
+# Gemini Explains How Image Modal Works
 
 Ok, this is a first for me. I asked, as a _backend developer_ who knows nothing about **React**, Gemini to explain the `ImageModal.js` component.
 I gave the following prompt:

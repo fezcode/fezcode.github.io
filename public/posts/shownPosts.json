@@ -1,10 +1,18 @@
 [
   {
-    "slug": "gemini-2-5-flash-explains-me-how-image-modal-works",
+    "slug": "gemini-explains-how-hooks-work-with-toast-component",
+    "title": "Gemini Explains How Hooks Work with Toast Component",
+    "date": "2025-10-18",
+    "description": "An explanation of React Hooks, Context, Providers, and custom hooks, using the toast notification system as an example.",
+    "tags": ["react", "hooks", "toast", "explanation", "ai", "gemini", "gemini-2.5-flash"],
+    "category": "dev"
+  },
+  {
+    "slug": "gemini-explains-how-image-modal-works",
     "title": "Gemini 2.5 Flash Explains me How Image Modal Works",
     "date": "2025-10-17",
     "description": "Gemini 2.5 Flash Explains me How Image Modal Works",
-    "tags": ["ai", "gemini", "gemini-2.5-flash"],
+    "tags": ["react", "hooks", "toast", "explanation", "ai", "gemini", "gemini-2.5-flash"],
     "category": "dev"
   },
   {
