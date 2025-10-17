@@ -4,7 +4,9 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/PostMetadata';
-import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
+import CodeModal from '../components/CodeModal';
+import Toast from '../components/Toast';
+import { ArrowLeftIcon, ArrowSquareOutIcon, ClipboardIcon, ArrowsOutSimpleIcon } from '@phosphor-icons/react';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -15,22 +17,35 @@ const LinkRenderer = ({ href, children }) => {
   );
 };
 
-
-
-const CodeBlock = ({ node, inline, className, children, ...props }) => {
+const CodeBlock = ({ node, inline, className, children, openModal, showToast, ...props }) => {
   const match = /language-(\w+)/.exec(className || '');
+  const handleCopy = () => {
+    navigator.clipboard.writeText(String(children));
+    showToast('Success', 'Copied to clipboard!');
+  };
+
   return !inline && match ? (
-    <SyntaxHighlighter
-      style={customTheme}
-      language={match[1]}
-      PreTag="div"
-      {...props}
-      codeTagProps={{ style: { fontFamily: "'JetBrains Mono', monospace" } }}
-    >
-      {String(children).replace(/\n$/, '')}
-    </SyntaxHighlighter>
+    <div className="relative">
+      <div className="absolute top-2 right-2 flex gap-2">
+        <button onClick={() => openModal(String(children).replace(/\n$/, ''))} className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100">
+          <ArrowsOutSimpleIcon size={20} />
+        </button>
+        <button onClick={handleCopy} className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100">
+          <ClipboardIcon size={20} />
+        </button>
+      </div>
+      <SyntaxHighlighter
+        style={customTheme}
+        language={match[1]}
+        PreTag="div"
+        {...props}
+        codeTagProps={{ style: { fontFamily: "'JetBrains Mono', monospace" } }}
+      >
+        {String(children).replace(/\n$/, '')}
+      </SyntaxHighlighter>
+    </div>
   ) : (
-    <code className={`${className} font-mono bg-gray-800`} {...props}>
+    <code className={`${className} font-mono`} {...props}>
       {children}
     </code>
   );
@@ -43,6 +58,23 @@ const BlogPostPage = () => {
   const [readingProgress, setReadingProgress] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true); // New state for tracking if at top
   const contentRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalContent, setModalContent] = useState('');
+  const [toastMessage, setToastMessage] = useState('');
+
+  const openModal = (content) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalContent('');
+  };
+
+  const showToast = (title, message) => {
+    setToastMessage({ title, message });
+  };
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -144,7 +176,7 @@ const BlogPostPage = () => {
               <ArrowLeftIcon size={24} /> Back to Home
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
-              <ReactMarkdown components={{ a: LinkRenderer, code: CodeBlock }}>{post.body}</ReactMarkdown>
+              <ReactMarkdown components={{ a: LinkRenderer, code: (props) => <CodeBlock {...props} openModal={openModal} showToast={showToast} /> }}>{post.body}</ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
@@ -152,6 +184,10 @@ const BlogPostPage = () => {
           </div>
         </div>
       </div>
+      <CodeModal isOpen={isModalOpen} onClose={closeModal}>
+        {modalContent}
+      </CodeModal>
+      {toastMessage && <Toast title={toastMessage.title} message={toastMessage.message} duration={3000} onClose={() => setToastMessage(null)} />}
     </div>
   );
 };
