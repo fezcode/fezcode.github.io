@@ -190,8 +190,8 @@ const BlogPostPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-              <ArrowLeftIcon size={24} /> Back to Home
+            <Link to="/blog" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+              <ArrowLeftIcon size={24} /> Back to Blog
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
               <ReactMarkdown components={{ a: LinkRenderer, code: (props) => <CodeBlock {...props} openModal={openModal} /> }}>{post.body}</ReactMarkdown>
