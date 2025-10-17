@@ -5,7 +5,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/PostMetadata';
 import CodeModal from '../components/CodeModal';
-import Toast from '../components/Toast';
+import { useToast } from '../hooks/useToast';
 import { AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, ArrowSquareOutIcon, ClipboardIcon, ArrowsOutSimpleIcon } from '@phosphor-icons/react';
 
@@ -18,11 +18,33 @@ const LinkRenderer = ({ href, children }) => {
   );
 };
 
-const CodeBlock = ({ node, inline, className, children, openModal, showToast, ...props }) => {
+const CodeBlock = ({ node, inline, className, children, openModal, ...props }) => {
   const match = /language-(\w+)/.exec(className || '');
+  const { addToast } = useToast();
   const handleCopy = () => {
-    navigator.clipboard.writeText(String(children));
-    showToast('Success', 'Copied to clipboard!');
+    const textToCopy = String(children);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(textToCopy).then(() => {
+        addToast({ title: 'Success', message: 'Copied to clipboard!', duration: 3000 });
+      }, () => {
+        addToast({ title: 'Error', message: 'Failed to copy!', duration: 3000 });
+      });
+    } else {
+      const textArea = document.createElement('textarea');
+      textArea.value = textToCopy;
+      textArea.style.position = 'fixed';
+      textArea.style.left = '-9999px';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        addToast({ title: 'Success', message: 'Copied to clipboard!', duration: 3000 });
+      } catch (err) {
+        addToast({ title: 'Error', message: 'Failed to copy!', duration: 3000 });
+      }
+      document.body.removeChild(textArea);
+    }
   };
 
   return !inline && match ? (
@@ -61,7 +83,6 @@ const BlogPostPage = () => {
   const contentRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
-  const [toastMessage, setToastMessage] = useState('');
 
   const openModal = (content) => {
     setModalContent(content);
@@ -71,10 +92,6 @@ const BlogPostPage = () => {
   const closeModal = () => {
     setIsModalOpen(false);
     setModalContent('');
-  };
-
-  const showToast = (title, message) => {
-    setToastMessage({ title, message });
   };
 
   useEffect(() => {
@@ -177,7 +194,7 @@ const BlogPostPage = () => {
               <ArrowLeftIcon size={24} /> Back to Home
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
-              <ReactMarkdown components={{ a: LinkRenderer, code: (props) => <CodeBlock {...props} openModal={openModal} showToast={showToast} /> }}>{post.body}</ReactMarkdown>
+              <ReactMarkdown components={{ a: LinkRenderer, code: (props) => <CodeBlock {...props} openModal={openModal} /> }}>{post.body}</ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
@@ -188,9 +205,6 @@ const BlogPostPage = () => {
       <CodeModal isOpen={isModalOpen} onClose={closeModal}>
         {modalContent}
       </CodeModal>
-      <AnimatePresence>
-        {toastMessage && <Toast title={toastMessage.title} message={toastMessage.message} duration={3000} onClose={() => setToastMessage(null)} />}
-      </AnimatePresence>
     </div>
   );
 };
