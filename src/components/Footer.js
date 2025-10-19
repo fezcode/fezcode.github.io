@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { version } from '../version';
 
 const Footer = () => {
   return (
@@ -33,7 +34,7 @@ const Footer = () => {
               <Link to="/logs" className="text-primary-400 hover:text-white transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Logs</Link>
             </div>
             <p className="text-sm text-gray-500">
-              &copy; {new Date().getFullYear()} fezcode. All rights reserved. <code> v0.0.8 </code>
+              &copy; {new Date().getFullYear()} fezcode. All rights reserved. <code> v{version} </code>
             </p>
           </div>
         </div>

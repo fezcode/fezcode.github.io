@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { List, X } from '@phosphor-icons/react';
+import { List, User, BookOpen } from '@phosphor-icons/react';
 
-const Navbar = () => {
+const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,47 +16,45 @@ const Navbar = () => {
     };
   }, []);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className={`backdrop-blur-sm sticky top-0 z-40 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'}`}>
+    <header className={`backdrop-blur-sm sticky top-0 z-30 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'} relative`}>
+      <button onClick={toggleSidebar} className="absolute top-1/2 -translate-y-1/2 left-4 text-red-500 focus:outline-none hidden md:block">
+        <List size={24} />
+      </button>
       <div className="container mx-auto flex justify-between items-center p-4 text-white">
-        <Link to="/" className="flex items-center space-x-2">
-          <Fez />
-          <span className="text-2xl font-semibold tracking-tight">fez<span className="text-primary-400">codex</span></span>
-        </Link>
-        <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-sm font-medium hover:text-gray-300 transition-colors">Home</Link>
-          <Link to="/about" className="text-sm font-medium hover:text-gray-300 transition-colors">About</Link>
-          <Link to="/blog" className="text-sm font-medium hover:text-gray-300 transition-colors">Blog</Link>
-          <Link to="/projects" className="text-sm font-medium hover:text-gray-300 transition-colors">Projects</Link>
-          <Link to="/logs" className="text-sm font-medium text-primary-400 hover:text-gray-300 transition-colors">Logs</Link>
-          <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-full transition-colors">
-            Play Wordle
-          </a>
-        </div>
-        <div className="md:hidden">
-          <button onClick={toggleMenu} className="text-white focus:outline-none">
-            {isMenuOpen ? <X size={24} /> : <List size={24} />}
+        <div className="md:hidden flex items-center space-x-2">
+          <button onClick={toggleSidebar} className="text-white focus:outline-none">
+            <List size={24} />
           </button>
+          <Link to="/" className="flex items-center space-x-2">
+            <Fez />
+            <span className="text-2xl font-semibold tracking-tight">fez<span className="text-primary-400">codex</span></span>
+          </Link>
+        </div>
+        <div className="hidden md:flex items-center space-x-2 ml-16">
+          {!isSidebarOpen && (
+            <Link to="/" className="flex items-center space-x-2">
+              <Fez />
+              <span className="text-2xl font-semibold tracking-tight">fez<span className="text-primary-400">codex</span></span>
+            </Link>
+          )}
+        </div>
+        {isSidebarOpen && (
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+            <span className="text-lg font-semibold tracking-tight">A Fez of Code</span>
+          </div>
+        )}
+        <div className="hidden md:flex items-center space-x-6">
+          <Link to="/about" className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors">
+            <User size={24} />
+            <span>About</span>
+          </Link>
+          <Link to="/blog" className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors">
+            <BookOpen size={24} />
+            <span>Blog</span>
+          </Link>
         </div>
       </div>
-      {isMenuOpen && (
-        <div className="md:hidden bg-gray-900/90 backdrop-blur-sm">
-          <div className="container mx-auto flex flex-col items-center space-y-4 p-4">
-            <Link to="/" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>Home</Link>
-            <Link to="/about" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>About</Link>
-            <Link to="/blog" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>Blog</Link>
-            <Link to="/projects" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>Projects</Link>
-            <Link to="/logs" className="text-white text-sm font-medium hover:text-gray-300 transition-colors" onClick={toggleMenu}>Logs</Link>
-            <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className="bg-primary-500 hover:bg-primary-600 text-white font-bold py-2 px-4 rounded-full transition-colors" onClick={toggleMenu}>
-              Play Wordle
-            </a>
-          </div>
-        </div>
-      )}
     </header>
   );
 };
