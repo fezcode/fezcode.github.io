@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-
-import { X } from '@phosphor-icons/react';
+import { XIcon } from '@phosphor-icons/react';
+import colors from '../config/colors';
 
 const Toast = ({ id, title, message, duration, removeToast }) => {
   useEffect(() => {
@@ -21,14 +21,14 @@ const Toast = ({ id, title, message, duration, removeToast }) => {
         exit={{ opacity: 0 }}
         transition={{ type: 'spring', stiffness: 120, damping: 20 }}
         className="text-gray-300 py-4 px-10 rounded-lg shadow-lg border backdrop-blur-sm flex items-center justify-between w-96 mb-4"
-        style={{ backgroundColor: 'rgba(68, 64, 59, 0.8)', borderColor: '#5a5e64' }}
+        style={{ backgroundColor: colors['toast-background'], borderColor: colors['toast-border'] }}
       >
       <div className="flex flex-col text-sm">
         <span>{title}</span>
         <span>{message}</span>
       </div>
       <button onClick={() => removeToast(id)} className="pr-2">
-        <X size={24} weight="bold" />
+        <XIcon size={24} weight="bold" />
       </button>
     </motion.div>
   );

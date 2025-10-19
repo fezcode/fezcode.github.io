@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('./src/config/colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,29 +13,7 @@ module.exports = {
         sans: ['Space Mono', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
       },
-      colors: {
-        primary: {
-          400: '#f87171', // red-400
-          500: '#ef4444', // red-500
-          600: '#dc2626', // red-600
-        },
-        secondary: {
-          400: '#fb923c', // orange-400
-        },
-        book: '#3b82f6', // blue-500
-        movie: '#ef4444', // red-500
-        game: '#22c55e', // green-500
-        article: '#f97316', // orange-500
-        music: '#a855f7', // purple-500
-        series: '#ec4899', // pink-500
-        'title-hover': '#fdd4a6', // orange-200
-        'markdown-title-color': '#fed7aa', // orange-200
-        'markdown-hx-color': '#ffedd5', // orange-100
-        'dev-card-bg': 'rgba(68, 64, 59, 0.3)', // stone-700
-        'dev-card-bg-hover': 'rgba(68, 64, 59, 0.55)', // stone-700/20
-        'takes-card-bg': 'rgba(6, 95, 70, 0.175)', // emerald-900/15
-        'takes-card-bg-hover': 'rgba(16, 185, 129, 0.275)', // emerald-500/20
-      },
+      colors: colors,
       typography: (theme) => ({
         dark: {
           css: {

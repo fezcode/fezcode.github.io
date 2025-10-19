@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
-import Footer from './Footer';
 import Sidebar from './Sidebar';
-import { List } from '@phosphor-icons/react';
+import Footer from './Footer';
 
 const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);

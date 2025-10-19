@@ -132,14 +132,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                 )}
 
         <div className="flex-grow p-4">
-          <button
-            onClick={toggleAllSections}
-            className="flex items-center justify-center w-full text-sm font-medium uppercase tracking-wider mb-4 focus:outline-none bg-gray-700 text-white hover:bg-gray-600 rounded-md p-2"
-          >
-            <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
-            <List size={20} className={`transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`} />
-          </button>
-
           <div className="mt-8">
 
             <button
@@ -311,7 +303,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         </div>
 
                 <div className="p-4 text-xs text-gray-500">
-
+                  <button
+                    onClick={toggleAllSections}
+                    className="flex items-center justify-center w-full text-sm font-medium uppercase tracking-wider mb-4 focus:outline-none bg-gray-700 text-white hover:bg-gray-600 rounded-md p-2"
+                  >
+                    <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
+                    <List size={20} className={`transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`} />
+                  </button>
                   <hr className="border-gray-700 my-4" />
 
                   <div className="flex space-x-2">

@@ -1,6 +1,8 @@
+import colors from '../config/colors';
+
 export const customTheme = {
   "code[class*=\"language-\"]": {
-    "color": "#d1d5db",
+    "color": colors.codeTheme['text-default'],
     "background": "none",
     "fontFamily": "\"JetBrains Mono\", Consolas, Monaco, \"Andale Mono\", \"Ubuntu Mono\", monospace",
     "textAlign": "left",
@@ -19,8 +21,7 @@ export const customTheme = {
     "fontSize": "1.2em"
   },
   "pre[class*=\"language-\"]": {
-    "color": "#d1d5db",
-    "background": "#1f2937",
+    "background": colors.codeTheme['background'],
     "fontFamily": "\"JetBrains Mono\", Consolas, Monaco, \"Andale Mono\", \"Ubuntu Mono\", monospace",
     "textAlign": "left",
     "whiteSpace": "pre",
@@ -41,175 +42,175 @@ export const customTheme = {
     "fontSize": "1.2em"
   },
   "pre[class*=\"language-\"]::-moz-selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   "pre[class*=\"language-\"] ::-moz-selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   "code[class*=\"language-\"]::-moz-selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   "code[class*=\"language-\"] ::-moz-selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   "pre[class*=\"language-\"]::selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   "pre[class*=\"language-\"] ::selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   "code[class*=\"language-\"]::selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   "code[class*=\"language-\"] ::selection": {
-    "background": "#3c526d"
+    "background": colors.codeTheme['selection-background']
   },
   ":not(pre) > code[class*=\"language-\"]": {
-    "background": "#1f2937",
+    "background": colors.codeTheme['background'],
     "padding": "0.1em 0.3em",
     "borderRadius": "0.3em",
     "whiteSpace": "normal"
   },
   "comment": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "prolog": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "doctype": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "cdata": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "punctuation": {
-    "color": "#e3eaf2"
+    "color": colors.codeTheme['punctuation']
   },
   "delimiter.important": {
-    "color": "#66cccc",
+    "color": colors.codeTheme['keyword-important'],
     "fontWeight": "inherit"
   },
   "selector.parent": {
-    "color": "#66cccc"
+    "color": colors.codeTheme['keyword-important']
   },
   "tag": {
-    "color": "#66cccc"
+    "color": colors.codeTheme['tag']
   },
   "tag.punctuation": {
-    "color": "#66cccc"
+    "color": colors.codeTheme['tag']
   },
   "attr-name": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['attr-name']
   },
   "boolean": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['boolean']
   },
   "boolean.important": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['boolean']
   },
   "number": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['number']
   },
   "constant": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['constant']
   },
   "selector.attribute": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['attr-name']
   },
   "class-name": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['class-name']
   },
   "key": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['key']
   },
   "parameter": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['class-name']
   },
   "property": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['property']
   },
   "property-access": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['property']
   },
   "variable": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['class-name']
   },
   "attr-value": {
-    "color": "#91d076"
+    "color": colors.codeTheme['attr-value']
   },
   "inserted": {
-    "color": "#91d076"
+    "color": colors.codeTheme['inserted']
   },
   "color": {
-    "color": "#91d076"
+    "color": colors.codeTheme['inserted']
   },
   "selector.value": {
-    "color": "#91d076"
+    "color": colors.codeTheme['attr-value']
   },
   "string": {
-    "color": "#91d076"
+    "color": colors.codeTheme['string']
   },
   "string.url-link": {
-    "color": "#91d076"
+    "color": colors.codeTheme['string-url-link']
   },
   "builtin": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['builtin']
   },
   "keyword-array": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['builtin']
   },
   "package": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['builtin']
   },
   "regex": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['regex']
   },
   "function": {
-    "color": "#c699e3"
+    "color": colors.codeTheme['function']
   },
   "selector.class": {
-    "color": "#c699e3"
+    "color": colors.codeTheme['selector-class']
   },
   "selector.id": {
-    "color": "#c699e3"
+    "color": colors.codeTheme['selector-class']
   },
   "atrule.rule": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['atrule-rule']
   },
   "combinator": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['atrule-rule']
   },
   "keyword": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['keyword']
   },
   "operator": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['operator']
   },
   "pseudo-class": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['selector']
   },
   "pseudo-element": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['selector']
   },
   "selector": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['selector']
   },
   "unit": {
-    "color": "#e9ae7e"
+    "color": colors.codeTheme['selector']
   },
   "deleted": {
-    "color": "#cd6660"
+    "color": colors.codeTheme['deleted']
   },
   "important": {
-    "color": "#cd6660",
+    "color": colors.codeTheme['important'],
     "fontWeight": "bold"
   },
   "keyword-this": {
-    "color": "#6cb8e6",
+    "color": colors.codeTheme['class-name'],
     "fontWeight": "bold"
   },
   "this": {
-    "color": "#6cb8e6",
+    "color": colors.codeTheme['class-name'],
     "fontWeight": "bold"
   },
   "bold": {
@@ -222,167 +223,167 @@ export const customTheme = {
     "cursor": "help"
   },
   ".language-markdown .token.title": {
-    "color": "#6cb8e6",
+    "color": colors.codeTheme['function-markdown-title'],
     "fontWeight": "bold"
   },
   ".language-markdown .token.title .token.punctuation": {
-    "color": "#6cb8e6",
+    "color": colors.codeTheme['function-markdown-title'],
     "fontWeight": "bold"
   },
   ".language-markdown .token.blockquote.punctuation": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['brace-level-2']
   },
   ".language-markdown .token.code": {
-    "color": "#66cccc"
+    "color": colors.codeTheme['tag']
   },
   ".language-markdown .token.hr.punctuation": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['function-markdown-title']
   },
   ".language-markdown .token.url .token.content": {
-    "color": "#91d076"
+    "color": colors.codeTheme['string']
   },
   ".language-markdown .token.url-link": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['string-url-link']
   },
   ".language-markdown .token.list.punctuation": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['brace-level-2']
   },
   ".language-markdown .token.table-header": {
-    "color": "#e3eaf2"
+    "color": colors.codeTheme['punctuation']
   },
   ".language-json .token.operator": {
-    "color": "#e3eaf2"
+    "color": colors.codeTheme['punctuation']
   },
   ".language-scss .token.variable": {
-    "color": "#66cccc"
+    "color": colors.codeTheme['variable-scss']
   },
   "token.tab:not(:empty):before": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "token.cr:before": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "token.lf:before": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "token.space:before": {
-    "color": "#8da1b9"
+    "color": colors.codeTheme['comment']
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > a": {
-    "color": "#111b27",
-    "background": "#6cb8e6"
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['toolbar-background']
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > button": {
-    "color": "#111b27",
-    "background": "#6cb8e6"
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['toolbar-background']
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:hover": {
-    "color": "#111b27",
-    "background": "#6cb8e6da",
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['toolbar-hover-background'],
     "textDecoration": "none"
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > a:focus": {
-    "color": "#111b27",
-    "background": "#6cb8e6da",
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['toolbar-hover-background'],
     "textDecoration": "none"
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:hover": {
-    "color": "#111b27",
-    "background": "#6cb8e6da",
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['toolbar-hover-background'],
     "textDecoration": "none"
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > button:focus": {
-    "color": "#111b27",
-    "background": "#6cb8e6da",
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['toolbar-hover-background'],
     "textDecoration": "none"
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > span": {
-    "color": "#111b27",
-    "background": "#8da1b9"
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['comment']
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:hover": {
-    "color": "#111b27",
-    "background": "#8da1b9"
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['comment']
   },
   "div.code-toolbar > .toolbar.toolbar > .toolbar-item > span:focus": {
-    "color": "#111b27",
-    "background": "#8da1b9"
+    "color": colors.codeTheme['toolbar-text'],
+    "background": colors.codeTheme['comment']
   },
   ".line-highlight.line-highlight": {
-    "background": "linear-gradient(to right, #3c526d5f 70%, #3c526d55)"
+    "background": colors.codeTheme['line-highlight-gradient']
   },
   ".line-highlight.line-highlight:before": {
-    "backgroundColor": "#8da1b9",
-    "color": "#111b27",
-    "boxShadow": "0 1px #3c526d"
+    "backgroundColor": colors.codeTheme['comment'],
+    "color": colors.codeTheme['toolbar-text'],
+    "boxShadow": "0 1px " + colors.codeTheme['selection-background']
   },
   ".line-highlight.line-highlight[data-end]:after": {
-    "backgroundColor": "#8da1b9",
-    "color": "#111b27",
-    "boxShadow": "0 1px #3c526d"
+    "backgroundColor": colors.codeTheme['comment'],
+    "color": colors.codeTheme['toolbar-text'],
+    "boxShadow": "0 1px " + colors.codeTheme['selection-background']
   },
   "pre.linkable-line-numbers.linkable-line-numbers span.line-numbers-rows > span:hover:before": {
-    "backgroundColor": "#8da1b918"
+    "backgroundColor": colors.codeTheme['line-highlight-hover']
   },
   ".line-numbers.line-numbers .line-numbers-rows": {
-    "borderRight": "1px solid #0b121b",
-    "background": "#0b121b7a"
+    "borderRight": "1px solid " + colors.codeTheme['line-numbers-border'],
+    "background": colors.codeTheme['line-numbers-background']
   },
   ".line-numbers .line-numbers-rows > span:before": {
-    "color": "#8da1b9da"
+    "color": colors.codeTheme['line-numbers-text']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-1": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['brace-level-1']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-5": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['brace-level-1']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-9": {
-    "color": "#e6d37a"
+    "color": colors.codeTheme['brace-level-1']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-2": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['brace-level-2']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-6": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['brace-level-2']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-10": {
-    "color": "#f4adf4"
+    "color": colors.codeTheme['brace-level-2']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-3": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['brace-level-3']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-7": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['brace-level-3']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-11": {
-    "color": "#6cb8e6"
+    "color": colors.codeTheme['brace-level-3']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-4": {
-    "color": "#c699e3"
+    "color": colors.codeTheme['brace-level-4']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-8": {
-    "color": "#c699e3"
+    "color": colors.codeTheme['brace-level-4']
   },
   ".rainbow-braces .token.token.punctuation.brace-level-12": {
-    "color": "#c699e3"
+    "color": colors.codeTheme['brace-level-4']
   },
   "pre.diff-highlight > code .token.token.deleted:not(.prefix)": {
-    "backgroundColor": "#cd66601f"
+    "backgroundColor": colors.codeTheme['diff-deleted-background']
   },
   "pre > code.diff-highlight .token.token.deleted:not(.prefix)": {
-    "backgroundColor": "#cd66601f"
+    "backgroundColor": colors.codeTheme['diff-deleted-background']
   },
   "pre.diff-highlight > code .token.token.inserted:not(.prefix)": {
-    "backgroundColor": "#91d0761f"
+    "backgroundColor": colors.codeTheme['diff-inserted-background']
   },
   "pre > code.diff-highlight .token.token.inserted:not(.prefix)": {
-    "backgroundColor": "#91d0761f"
+    "backgroundColor": colors.codeTheme['diff-inserted-background']
   },
   ".command-line .command-line-prompt": {
-    "borderRight": "1px solid #0b121b"
+    "borderRight": "1px solid " + colors.codeTheme['line-numbers-border']
   },
   ".command-line .command-line-prompt > span:before": {
-    "color": "#8da1b9da"
+    "color": colors.codeTheme['line-numbers-text']
   }
 };

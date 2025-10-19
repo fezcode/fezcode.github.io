@@ -1,4 +1,6 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
+import colors from '../config/colors';
 import { BookOpen, FilmStrip, GameController, Article, MusicNote, Television } from '@phosphor-icons/react';
 
 const categoryIcons = {
@@ -12,28 +14,28 @@ const categoryIcons = {
 
 const categoryStyles = {
   Book: {
-    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-    borderColor: 'rgba(59, 130, 246, 0.5)',
+    backgroundColor: colors['book-alpha-10'],
+    borderColor: colors['book-alpha-50'],
   },
   Movie: {
-    backgroundColor: 'rgba(239, 68, 68, 0.1)',
-    borderColor: 'rgba(239, 68, 68, 0.5)',
+    backgroundColor: colors['movie-alpha-10'],
+    borderColor: colors['movie-alpha-50'],
   },
   Game: {
-    backgroundColor: 'rgba(34, 197, 94, 0.1)',
-    borderColor: 'rgba(34, 197, 94, 0.5)',
+    backgroundColor: colors['game-alpha-10'],
+    borderColor: colors['game-alpha-50'],
   },
   Article: {
-    backgroundColor: 'rgba(249, 115, 22, 0.1)',
-    borderColor: 'rgba(249, 115, 22, 0.5)',
+    backgroundColor: colors['article-alpha-10'],
+    borderColor: colors['article-alpha-50'],
   },
   Music: {
-    backgroundColor: 'rgba(168, 85, 247, 0.1)',
-    borderColor: 'rgba(168, 85, 247, 0.5)',
+    backgroundColor: colors['music-alpha-10'],
+    borderColor: colors['music-alpha-50'],
   },
   Series: {
-    backgroundColor: 'rgba(236, 72, 153, 0.1)',
-    borderColor: 'rgba(236, 72, 153, 0.5)',
+    backgroundColor: colors['series-alpha-10'],
+    borderColor: colors['series-alpha-50'],
   },
 };
 

@@ -2,18 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { ArrowSquareOut, ArrowsOutSimple, Clipboard, ArrowLeft } from '@phosphor-icons/react';
 import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
-import { AnimatePresence } from 'framer-motion';
-import { ArrowLeftIcon, ArrowSquareOutIcon, ClipboardIcon, ArrowsOutSimpleIcon } from '@phosphor-icons/react';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
     <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
-      {children} {isExternal && <ArrowSquareOutIcon className="text-xs" />}
+      {children} {isExternal && <ArrowSquareOut className="text-xs" />}
     </a>
   );
 };
@@ -51,10 +50,10 @@ const CodeBlock = ({ node, inline, className, children, openModal, ...props }) =
     <div className="relative">
       <div className="absolute top-2 right-2 flex gap-2">
         <button onClick={() => openModal(String(children).replace(/\n$/, ''))} className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100">
-          <ArrowsOutSimpleIcon size={20} />
+          <ArrowsOutSimple size={20} />
         </button>
         <button onClick={handleCopy} className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100">
-          <ClipboardIcon size={20} />
+          <Clipboard size={20} />
         </button>
       </div>
       <SyntaxHighlighter
@@ -191,7 +190,7 @@ const BlogPostPage = () => {
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
             <Link to="/blog" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-              <ArrowLeftIcon size={24} /> Back to Blog
+              <ArrowLeft size={24} /> Back to Blog
             </Link>
             <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
               <ReactMarkdown components={{ a: LinkRenderer, code: (props) => <CodeBlock {...props} openModal={openModal} /> }}>{post.body}</ReactMarkdown>
