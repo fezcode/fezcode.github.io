@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { NavLink, Link, useLocation } from 'react-router-dom';
 
@@ -15,15 +15,27 @@ import { version } from '../version';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
 
-  const [isContentOpen, setIsContentOpen] = useState(true);
-
   const [isMainOpen, setIsMainOpen] = useState(true);
+  const [isContentOpen, setIsContentOpen] = useState(true);
+  const [isGamesOpen, setIsGamesOpen] = useState(true);
+  const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(true);
+  const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
 
-    const [isGamesOpen, setIsGamesOpen] = useState(true);
+  const location = useLocation();
 
-    const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(true);
+  // Effect to update allSectionsOpen when individual sections change
+  useEffect(() => {
+    setAllSectionsOpen(isMainOpen && isContentOpen && isGamesOpen && isExternalLinksOpen);
+  }, [isMainOpen, isContentOpen, isGamesOpen, isExternalLinksOpen]);
 
-    const location = useLocation();
+  const toggleAllSections = () => {
+    const newState = !allSectionsOpen;
+    setAllSectionsOpen(newState);
+    setIsMainOpen(newState);
+    setIsContentOpen(newState);
+    setIsGamesOpen(newState);
+    setIsExternalLinksOpen(newState);
+  };
 
 
 
@@ -39,7 +51,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
 
 
-          ? 'text-blue-500 bg-gray-800 font-bold'
+          ? 'text-primary-400 bg-gray-800 font-bold'
 
 
 
@@ -99,7 +111,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 
-        className={`fixed top-0 left-0 h-screen bg-gray-900/90 backdrop-blur-sm text-white w-64 z-50 flex flex-col border-r border-gray-700/50`}
+        className={`fixed top-0 left-0 h-screen bg-black/30 backdrop-blur-sm text-white w-64 z-50 flex flex-col border-r border-gray-700/50`}
 
       >
 
@@ -120,6 +132,13 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                 )}
 
         <div className="flex-grow p-4">
+          <button
+            onClick={toggleAllSections}
+            className="flex items-center justify-center w-full text-sm font-medium uppercase tracking-wider mb-4 focus:outline-none bg-gray-700 text-white hover:bg-gray-600 rounded-md p-2"
+          >
+            <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
+            <List size={20} className={`transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`} />
+          </button>
 
           <div className="mt-8">
 
@@ -129,7 +148,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
               className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${
 
-                isMainActive ? 'text-white' : 'text-gray-400'
+                isMainActive ? 'text-red-400' : 'text-gray-300'
 
               }`}
 
@@ -175,7 +194,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
               className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${
 
-                isContentActive ? 'text-white' : 'text-gray-400'
+                isContentActive ? 'text-red-400' : 'text-gray-300'
 
               }`}
 
@@ -223,11 +242,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                     <div className="mt-8">
 
-                      <button
+                                            <button
 
-                        onClick={() => setIsGamesOpen(!isGamesOpen)}
+                                              onClick={() => setIsGamesOpen(!isGamesOpen)}
 
-                        className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none text-gray-400`}
+                                              className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-300' : 'text-gray-300'}`}
 
                       >
 
@@ -261,7 +280,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                         onClick={() => setIsExternalLinksOpen(!isExternalLinksOpen)}
 
-                        className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none text-gray-400`}
+                        className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-300' : 'text-gray-300'}`}
 
                       >
 
