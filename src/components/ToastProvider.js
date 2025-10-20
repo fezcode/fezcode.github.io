@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useCallback } from 'react';
 import Toast from './Toast';
 
@@ -23,7 +22,6 @@ export const ToastProvider = ({ children }) => {
   const removeToast = useCallback((id) => {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
   }, []);
-
 
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>

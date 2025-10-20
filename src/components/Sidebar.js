@@ -1,24 +1,20 @@
-
 import React, { useState, useEffect } from 'react';
 
 import { NavLink, Link, useLocation } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 
-import { House, User, BookOpen, Wrench, Article, CaretDown, GameController, List, GithubLogo } from '@phosphor-icons/react';
+import { House, User, BookOpen, Wrench, Article, CaretDown, GameControllerIcon, List, GithubLogo, GlobeSimple, ArrowSquareOutIcon } from '@phosphor-icons/react';
 
 import Fez from './Fez';
 
 import { version } from '../version';
 
-
-
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-
   const [isMainOpen, setIsMainOpen] = useState(true);
   const [isContentOpen, setIsContentOpen] = useState(true);
-  const [isGamesOpen, setIsGamesOpen] = useState(true);
-  const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(true);
+  const [isGamesOpen, setIsGamesOpen] = useState(false);
+  const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
 
   const location = useLocation();
@@ -37,41 +33,21 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     setIsExternalLinksOpen(newState);
   };
 
-
-
     const getLinkClass = ({ isActive }) =>
-
-
 
       `flex items-center space-x-3 px-3 py-1 rounded-md transition-colors ${
 
-
-
         isActive
-
-
 
           ? 'text-primary-400 bg-gray-800 font-bold'
 
-
-
           : 'text-gray-300 hover:text-white hover:bg-gray-800'
 
-
-
       }`;
-
-
-
-  
-
-
 
   const isMainActive = location.pathname === '/' || location.pathname === '/about';
 
   const isContentActive = location.pathname.startsWith('/blog') || location.pathname.startsWith('/projects') || location.pathname.startsWith('/logs');
-
-
 
   const variants = {
 
@@ -80,8 +56,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     closed: { x: '-100%' },
 
   };
-
-
 
   return (
 
@@ -96,8 +70,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         onClick={toggleSidebar}
 
       ></div>
-
-
 
       {/* Sidebar */}
 
@@ -138,7 +110,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
               onClick={() => setIsMainOpen(!isMainOpen)}
 
-              className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
 
                 isMainActive ? 'text-red-400' : 'text-gray-300'
 
@@ -146,11 +118,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             >
 
-              <span>Main</span>
+                                                        <span className="font-arvo">Main</span>
 
-              <CaretDown size={20} className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`} />
+                                                        <CaretDown size={20} className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`} />
 
-            </button>
+                                                      </button>
 
             {isMainOpen && (
 
@@ -184,7 +156,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
               onClick={() => setIsContentOpen(!isContentOpen)}
 
-              className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
 
                 isContentActive ? 'text-red-400' : 'text-gray-300'
 
@@ -192,11 +164,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             >
 
-              <span>Content</span>
+                                                        <span className="font-arvo">Content</span>
 
-              <CaretDown size={20} className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`} />
+                                                        <CaretDown size={20} className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`} />
 
-            </button>
+                                                      </button>
 
             {isContentOpen && (
 
@@ -234,35 +206,47 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                     <div className="mt-8">
 
-                                            <button
+                                                                                                                                    <button
+                                                                                        
+                                                                                                                                      onClick={() => setIsGamesOpen(!isGamesOpen)}
+                                                                                        
+                                                                                                                                      className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-300' : 'text-gray-300'}`}
+                                                                                        
+                                                                                                              >
+                                                                                                                                                                                      <span className="flex items-center gap-2 font-arvo">
+                                                                                            
+                                                                                                                                                                                        <span>Games</span>
+                                                                                            
+                                                                                                                                                                                        <ArrowSquareOutIcon size={16} />
+                                                                                            
+                                                                                                                                                                                      </span>
+                                                                                            
+                                                                                                                                                                                      <CaretDown size={20} className={`transition-transform ${isGamesOpen ? 'transform rotate-180' : ''}`} />
+                                                                                            
+                                                                                                                                                                                    </button>
+                                            {isGamesOpen && (
 
-                                              onClick={() => setIsGamesOpen(!isGamesOpen)}
+                                              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
 
-                                              className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-300' : 'text-gray-300'}`}
+                                                <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-300 hover:text-white hover:bg-gray-800`}>
 
-                      >
+                                                  <GameControllerIcon size={24} />
 
-                        <span>Games</span>
+                                                  <span>Wordle</span>
 
-                        <CaretDown size={20} className={`transition-transform ${isGamesOpen ? 'transform rotate-180' : ''}`} />
+                                                </a>
 
-                      </button>
+                                                <a href="https://openfront.io" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-300 hover:text-white hover:bg-gray-800`}>
 
-                      {isGamesOpen && (
+                                                  <GlobeSimple size={24} />
 
-                        <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+                                                  <span>Openfront.io</span>
 
-                          <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-300 hover:text-white hover:bg-gray-800`}>
+                                                </a>
 
-                            <GameController size={24} />
+                                              </nav>
 
-                            <span>Play Wordle</span>
-
-                          </a>
-
-                        </nav>
-
-                      )}
+                                            )}
 
                     </div>
 
@@ -272,11 +256,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                         onClick={() => setIsExternalLinksOpen(!isExternalLinksOpen)}
 
-                        className={`flex items-center justify-between w-full text-sm font-semibold uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-300' : 'text-gray-300'}`}
+                        className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-300' : 'text-gray-300'}`}
 
                       >
 
-                        <span>External Links</span>
+                        <span className="flex items-center gap-2 font-arvo">
+                          <span>External Links</span>
+                          <ArrowSquareOutIcon size={16} />
+                        </span>
 
                         <CaretDown size={20} className={`transition-transform ${isExternalLinksOpen ? 'transform rotate-180' : ''}`} />
 
@@ -302,7 +289,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         </div>
 
-                <div className="p-4 text-xs text-gray-500">
+                <div className="p-4 text-xs text-gray-500 text-left">
                   <button
                     onClick={toggleAllSections}
                     className="flex items-center justify-center w-full text-sm font-medium uppercase tracking-wider mb-4 focus:outline-none bg-gray-700 text-white hover:bg-gray-600 rounded-md p-2"
@@ -320,10 +307,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                   </div>
 
-                  <p className="mt-4">&copy; {new Date().getFullYear()} fezcode</p>
-
-                  <p>Version {version}</p>
-
+                  <div className="flex justify-between items-center mt-4">
+                    <p>&copy; {new Date().getFullYear()} fezcode</p>
+                    <p>Version {version}</p>
+                  </div>
                 </div>
 
       </motion.aside>
@@ -331,11 +318,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     </>
 
   );
-
 };
 
-
-
 export default Sidebar;
-
-

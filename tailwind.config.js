@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
 const colors = require('./src/config/colors');
+const fonts = require('./src/config/fonts'); // New import
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,6 +13,8 @@ module.exports = {
       fontFamily: {
         sans: ['Space Mono', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
+        arvo: fonts.arvo, // New custom font
+        playfairDisplay: fonts.playfairDisplay, // New custom font
       },
       colors: colors,
       typography: (theme) => ({

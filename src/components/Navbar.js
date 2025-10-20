@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { List, User, BookOpen } from '@phosphor-icons/react';
+import { Sidebar, User, BookOpen } from '@phosphor-icons/react';
 
 const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,12 +19,12 @@ const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
   return (
     <header className={`backdrop-blur-sm sticky top-0 z-30 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'} relative`}>
       <button onClick={toggleSidebar} className="absolute top-1/2 -translate-y-1/2 left-4 text-red-500 focus:outline-none hidden md:block">
-        <List size={24} />
+        <Sidebar size={24} />
       </button>
       <div className="container mx-auto flex justify-between items-center p-4 text-white">
         <div className="md:hidden flex items-center space-x-2">
           <button onClick={toggleSidebar} className="text-white focus:outline-none">
-            <List size={24} />
+            <Sidebar size={24} />
           </button>
           <Link to="/" className="flex items-center space-x-2">
             <Fez />
@@ -41,7 +41,12 @@ const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
         </div>
         {isSidebarOpen && (
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-            <span className="text-lg font-semibold tracking-tight">A Fez of Code</span>
+            <span
+              className="text-lg font-normal tracking-tight"
+              style={{ fontFamily: "'Arvo', 'Playfair Display', serif" }}
+            >
+              A Fez of Code
+            </span>
           </div>
         )}
         <div className="hidden md:flex items-center space-x-6">

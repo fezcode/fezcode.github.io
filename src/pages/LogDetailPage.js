@@ -50,7 +50,6 @@ const LogDetailPage = () => {
         } else {
             setLog({ attributes: { title: 'Log not found' }, body: '' });
         }
-
       } catch (error) {
         console.error('Error fetching log or logs.json:', error);
         setLog({ attributes: { title: 'Error loading log' }, body: '' });

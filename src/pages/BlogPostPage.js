@@ -122,7 +122,6 @@ const BlogPostPage = () => {
         } else {
             setPost({ attributes: { title: 'Post not found' }, body: '' });
         }
-
       } catch (error) {
         console.error('Error fetching post or shownPosts.json:', error);
         setPost({ attributes: { title: 'Error loading post' }, body: '' });

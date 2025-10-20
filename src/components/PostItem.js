@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const PostItem = ({ slug, title, date, updatedDate, category }) => {
-
   // Format the date to a shorter format: Month Day, Year
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     month: 'short',

@@ -13,7 +13,6 @@ const LinkRenderer = ({ href, children }) => {
   );
 };
 
-
 const AboutPage = () => {
   usePageTitle('About Me');
   const [content, setContent] = useState('');
@@ -46,14 +45,12 @@ const AboutPage = () => {
         setTitle(attributes.title || 'About Me');
         setEmail(attributes.email || '');
         setContent(body);
-
       } catch (err) {
         console.error("Error fetching about page content:", err);
       } finally {
         setLoading(false);
         }
       };
-      
 
     fetchAboutContent();
   }, []);
