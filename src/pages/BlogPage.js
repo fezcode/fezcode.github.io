@@ -58,7 +58,10 @@ const BlogPage = () => {
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+          <Link
+            to="/"
+            className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+          >
             <ArrowLeftIcon className="text-xl" /> Back to Home
           </Link>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
@@ -68,13 +71,22 @@ const BlogPage = () => {
             Catch up on the latest news and insights.
           </p>
           <div className="mt-4 text-center">
-            <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {posts.length}</span>
+            <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">
+              Total: {posts.length}
+            </span>
           </div>
         </div>
         <div className="mt-16">
           <div className="">
-            {posts.map(post => (
-              <PostItem key={post.slug} slug={post.slug} title={post.title} date={post.date} updatedDate={post.updated} category={post.category} />
+            {posts.map((post) => (
+              <PostItem
+                key={post.slug}
+                slug={post.slug}
+                title={post.title}
+                date={post.date}
+                updatedDate={post.updated}
+                category={post.category}
+              />
             ))}
           </div>
         </div>

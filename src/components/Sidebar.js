@@ -4,7 +4,19 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 
-import { House, User, BookOpen, Wrench, Article, CaretDown, GameControllerIcon, List, GithubLogo, GlobeSimple, ArrowSquareOutIcon } from '@phosphor-icons/react';
+import {
+  HouseIcon,
+  UserIcon,
+  BookOpenIcon,
+  WrenchIcon,
+  ArticleIcon,
+  CaretDownIcon,
+  GameControllerIcon,
+  ListIcon,
+  GithubLogoIcon,
+  GlobeSimpleIcon,
+  ArrowSquareOutIcon,
+} from '@phosphor-icons/react';
 
 import Fez from './Fez';
 
@@ -21,7 +33,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   // Effect to update allSectionsOpen when individual sections change
   useEffect(() => {
-    setAllSectionsOpen(isMainOpen && isContentOpen && isGamesOpen && isExternalLinksOpen);
+    setAllSectionsOpen(
+      isMainOpen && isContentOpen && isGamesOpen && isExternalLinksOpen,
+    );
   }, [isMainOpen, isContentOpen, isGamesOpen, isExternalLinksOpen]);
 
   const toggleAllSections = () => {
@@ -33,285 +47,232 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     setIsExternalLinksOpen(newState);
   };
 
-    const getLinkClass = ({ isActive }) =>
+  const getLinkClass = ({ isActive }) =>
+    `flex items-center space-x-3 px-3 py-1 rounded-md transition-colors ${
+      isActive
+        ? 'text-primary-400 bg-gray-800'
+        : 'text-gray-100 hover:text-white hover:bg-gray-800'
+    }`;
 
-      `flex items-center space-x-3 px-3 py-1 rounded-md transition-colors ${
+  const isMainActive =
+    location.pathname === '/' || location.pathname === '/about';
 
-        isActive
-
-          ? 'text-primary-400 bg-gray-800'
-
-          : 'text-gray-100 hover:text-white hover:bg-gray-800'
-
-      }`;
-
-  const isMainActive = location.pathname === '/' || location.pathname === '/about';
-
-  const isContentActive = location.pathname.startsWith('/blog') || location.pathname.startsWith('/projects') || location.pathname.startsWith('/logs');
+  const isContentActive =
+    location.pathname.startsWith('/blog') ||
+    location.pathname.startsWith('/projects') ||
+    location.pathname.startsWith('/logs');
 
   const variants = {
-
     open: { x: 0 },
 
     closed: { x: '-100%' },
-
   };
 
   return (
-
     <>
-
       {/* Overlay for mobile */}
 
       <div
-
         className={`fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden ${isOpen ? 'block' : 'hidden'}`}
-
         onClick={toggleSidebar}
-
       ></div>
 
       {/* Sidebar */}
 
       <motion.aside
-
         initial={false}
-
         animate={isOpen ? 'open' : 'closed'}
-
         variants={variants}
-
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-
         className={`fixed top-0 left-0 h-screen bg-black/30 backdrop-blur-sm text-white w-64 z-50 flex flex-col border-r border-gray-700/50 font-arvo`}
-
       >
+        {isOpen && (
+          <div className="p-4 flex justify-between items-center">
+            <Link to="/" className="flex items-center space-x-2">
+              <Fez />
 
-                                {isOpen && (
-
-                                  <div className="p-4 flex justify-between items-center">
-
-                                    <Link to="/" className="flex items-center space-x-2">
-
-                                      <Fez />
-
-                                      <span className="text-2xl font-normal tracking-tight">fez<span className="text-primary-400">codex</span></span>
-
-                                    </Link>
-
-                                  </div>
-
-                                )}
+              <span className="text-2xl font-normal tracking-tight">
+                fez<span className="text-primary-400">codex</span>
+              </span>
+            </Link>
+          </div>
+        )}
 
         <div className="flex-grow p-4">
           <div className="mt-8">
-
             <button
-
               onClick={() => setIsMainOpen(!isMainOpen)}
-
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
-
                 isMainActive ? 'text-red-400' : 'text-gray-100'
-
               }`}
-
             >
+              <span className="font-sans text-white">Main</span>
 
-                                                                                    <span className="font-sans text-white">Main</span>
-
-                                                                                    <CaretDown size={20} className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`} />
-
-                                                                                  </button>
+              <CaretDownIcon
+                size={20}
+                className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`}
+              />
+            </button>
 
             {isMainOpen && (
-
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
-
                 <NavLink to="/" className={getLinkClass}>
-
-                  <House size={24} />
+                  <HouseIcon size={24} />
 
                   <span>Home</span>
-
                 </NavLink>
 
                 <NavLink to="/about" className={getLinkClass}>
-
-                  <User size={24} />
+                  <UserIcon size={24} />
 
                   <span>About</span>
-
                 </NavLink>
-
               </nav>
-
             )}
-
           </div>
 
           <div className="mt-8">
-
             <button
-
               onClick={() => setIsContentOpen(!isContentOpen)}
-
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
-
                 isContentActive ? 'text-red-400' : 'text-gray-100'
-
               }`}
-
             >
+              <span className="font-sans text-white">Content</span>
 
-                                                                                    <span className="font-sans text-white">Content</span>
-
-                                                                                    <CaretDown size={20} className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`} />
-
-                                                                                  </button>
+              <CaretDownIcon
+                size={20}
+                className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`}
+              />
+            </button>
 
             {isContentOpen && (
-
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
-
                 <NavLink to="/blog" className={getLinkClass}>
-
-                  <BookOpen size={24} />
+                  <BookOpenIcon size={24} />
 
                   <span>Blog</span>
-
                 </NavLink>
 
                 <NavLink to="/projects" className={getLinkClass}>
-
-                  <Wrench size={24} />
+                  <WrenchIcon size={24} />
 
                   <span>Projects</span>
-
                 </NavLink>
 
                 <NavLink to="/logs" className={getLinkClass}>
-
-                  <Article size={24} />
+                  <ArticleIcon size={24} />
 
                   <span>Logs</span>
-
                 </NavLink>
-
               </nav>
-
             )}
-
           </div>
 
-                    <div className="mt-8">
+          <div className="mt-8">
+            <button
+              onClick={() => setIsGamesOpen(!isGamesOpen)}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-100' : 'text-gray-100'}`}
+            >
+              <span className="flex items-center gap-2 font-sans text-white">
+                <span>Games</span>
+                <ArrowSquareOutIcon size={16} />
+              </span>
+              <CaretDownIcon
+                size={20}
+                className={`transition-transform ${isGamesOpen ? 'transform rotate-180' : ''}`}
+              />
+            </button>
+            {isGamesOpen && (
+              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+                <a
+                  href="https://www.nytimes.com/games/wordle/index.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
+                >
+                  <GameControllerIcon size={24} />
 
-                                                                                                                                    <button
+                  <span>Wordle</span>
+                </a>
 
-                                                                                                                                      onClick={() => setIsGamesOpen(!isGamesOpen)}
+                <a
+                  href="https://openfront.io"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
+                >
+                  <GlobeSimpleIcon size={24} />
 
-                                                                                                                                      className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-100' : 'text-gray-100'}`}
+                  <span>Openfront.io</span>
+                </a>
+              </nav>
+            )}
+          </div>
 
-                                                                                                              >
-                                                                                                                                                                                                              <span className="flex items-center gap-2 font-sans text-white">
-                                                                                                                                                                                                                <span>Games</span>
-                                                                                                                                                                                                                <ArrowSquareOutIcon size={16} />
-                                                                                                                                                                                                              </span>
-                                                                                                                                                                                                              <CaretDown size={20} className={`transition-transform ${isGamesOpen ? 'transform rotate-180' : ''}`} />
-                                                                                                                                                                                                            </button>
-                                            {isGamesOpen && (
+          <div className="mt-8">
+            <button
+              onClick={() => setIsExternalLinksOpen(!isExternalLinksOpen)}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-100' : 'text-gray-100'}`}
+            >
+              <span className="flex items-center gap-2 font-sans text-white">
+                <span>External Links</span>
+                <ArrowSquareOutIcon size={16} />
+              </span>
 
-                                              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+              <CaretDownIcon
+                size={20}
+                className={`transition-transform ${isExternalLinksOpen ? 'transform rotate-180' : ''}`}
+              />
+            </button>
 
-                                                <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
+            {isExternalLinksOpen && (
+              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+                <a
+                  href="https://github.com/fezcode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
+                >
+                  <GithubLogoIcon size={24} />
 
-                                                  <GameControllerIcon size={24} />
-
-                                                  <span>Wordle</span>
-
-                                                </a>
-
-                                                <a href="https://openfront.io" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
-
-                                                  <GlobeSimple size={24} />
-
-                                                  <span>Openfront.io</span>
-
-                                                </a>
-
-                                              </nav>
-
-                                            )}
-
-                    </div>
-
-                    <div className="mt-8">
-
-                      <button
-
-                        onClick={() => setIsExternalLinksOpen(!isExternalLinksOpen)}
-
-                        className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-100' : 'text-gray-100'}`}
-
-                      >
-
-                        <span className="flex items-center gap-2 font-sans text-white">
-                          <span>External Links</span>
-                          <ArrowSquareOutIcon size={16} />
-                        </span>
-
-                        <CaretDown size={20} className={`transition-transform ${isExternalLinksOpen ? 'transform rotate-180' : ''}`} />
-
-                      </button>
-
-                      {isExternalLinksOpen && (
-
-                        <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
-
-                          <a href="https://github.com/fezcode" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
-
-                            <GithubLogo size={24} />
-
-                            <span>GitHub</span>
-
-                          </a>
-
-                        </nav>
-
-                      )}
-
-                    </div>
-
+                  <span>GitHub</span>
+                </a>
+              </nav>
+            )}
+          </div>
         </div>
 
-                <div className="p-4 text-xs text-gray-300 text-left">
-                  <button
-                    onClick={toggleAllSections}
-                    className="flex items-center justify-center w-full text-sm font-normal tracking-wider mb-4 focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
-                  >
-                    <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
-                    <List size={20} className={`ml-3 transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`} />
-                  </button>
-                  <hr className="border-gray-700 my-4" />
+        <div className="p-4 text-xs text-gray-300 text-left">
+          <button
+            onClick={toggleAllSections}
+            className="flex items-center justify-center w-full text-sm font-normal tracking-wider mb-4 focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
+          >
+            <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
+            <ListIcon
+              size={20}
+              className={`ml-3 transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`}
+            />
+          </button>
+          <hr className="border-gray-700 my-4" />
 
-                  <div className="flex space-x-2 font-sans">
+          <div className="flex space-x-2 font-sans">
+            <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">
+              Button 1
+            </button>
 
-                    <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">Button 1</button>
+            <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">
+              Button 2
+            </button>
+          </div>
 
-                    <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">Button 2</button>
-
-                  </div>
-
-                  <div className="flex justify-between items-center mt-4">
-                    <p>&copy; {new Date().getFullYear()} fezcode</p>
-                    <p>Version {version}</p>
-                  </div>
-                </div>
-
+          <div className="flex justify-between items-center mt-4">
+            <p>&copy; {new Date().getFullYear()} fezcode</p>
+            <p>Version {version}</p>
+          </div>
+        </div>
       </motion.aside>
-
     </>
-
   );
 };
 

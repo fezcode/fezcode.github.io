@@ -34,14 +34,21 @@ const ProjectsPage = () => {
   }
 
   if (error) {
-    return <div className="py-16 sm:py-24 text-center text-red-500">Error loading projects: {error.message}</div>;
+    return (
+      <div className="py-16 sm:py-24 text-center text-red-500">
+        Error loading projects: {error.message}
+      </div>
+    );
   }
 
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+          <Link
+            to="/"
+            className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+          >
             <ArrowLeftIcon className="text-xl" /> Back to Home
           </Link>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
@@ -51,13 +58,20 @@ const ProjectsPage = () => {
             A collection of my work and experiments.
           </p>
           <div className="mt-4 text-center">
-            <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">Total: {projects.length}</span>
+            <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">
+              Total: {projects.length}
+            </span>
           </div>
         </div>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 grid-flow-row-dense">
-                      {projects.map(project => (
-                        <ProjectCard key={project.slug} project={{ ...project, description: project.shortDescription }} size={project.size} />
-                      ))}        </div>
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.slug}
+              project={{ ...project, description: project.shortDescription }}
+              size={project.size}
+            />
+          ))}{' '}
+        </div>
       </div>
     </div>
   );

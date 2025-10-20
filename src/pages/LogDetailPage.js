@@ -8,7 +8,12 @@ import ImageModal from '../components/ImageModal';
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
-    <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
+    <a
+      href={href}
+      className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1"
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+    >
       {children} {isExternal && <ArrowSquareOutIcon className="text-xs" />}
     </a>
   );
@@ -27,7 +32,7 @@ const LogDetailPage = () => {
       try {
         const [logContentResponse, logsResponse] = await Promise.all([
           fetch(`/logs/${slug}.txt`),
-          fetch('/logs/logs.json')
+          fetch('/logs/logs.json'),
         ]);
 
         let logBody = '';
@@ -40,15 +45,15 @@ const LogDetailPage = () => {
         let logMetadata = null;
         if (logsResponse.ok) {
           const data = await logsResponse.json();
-          logMetadata = data.find(item => item.slug === slug);
+          logMetadata = data.find((item) => item.slug === slug);
         } else {
           console.error('Failed to fetch logs.json');
         }
 
         if (logMetadata && logContentResponse.ok) {
-            setLog({ attributes: logMetadata, body: logBody });
+          setLog({ attributes: logMetadata, body: logBody });
         } else {
-            setLog({ attributes: { title: 'Log not found' }, body: '' });
+          setLog({ attributes: { title: 'Log not found' }, body: '' });
         }
       } catch (error) {
         console.error('Error fetching log or logs.json:', error);
@@ -110,11 +115,21 @@ const LogDetailPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link to="/logs" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+            <Link
+              to="/logs"
+              className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+            >
               <ArrowLeftIcon size={24} /> Back to Logs
             </Link>
-            <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
-              <ReactMarkdown components={{ a: LinkRenderer, img: ImageRenderer }}>{log.body}</ReactMarkdown>
+            <div
+              ref={contentRef}
+              className="prose prose-xl prose-dark max-w-none"
+            >
+              <ReactMarkdown
+                components={{ a: LinkRenderer, img: ImageRenderer }}
+              >
+                {log.body}
+              </ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
@@ -122,7 +137,11 @@ const LogDetailPage = () => {
           </div>
         </div>
       </div>
-      <ImageModal src={modalImageSrc} alt="Full size image" onClose={() => setModalImageSrc(null)} />
+      <ImageModal
+        src={modalImageSrc}
+        alt="Full size image"
+        onClose={() => setModalImageSrc(null)}
+      />
     </div>
   );
 };

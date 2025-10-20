@@ -2,7 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { ArrowSquareOut, ArrowsOutSimple, Clipboard, ArrowLeft } from '@phosphor-icons/react';
+import {
+  ArrowSquareOut,
+  ArrowsOutSimple,
+  Clipboard,
+  ArrowLeft,
+} from '@phosphor-icons/react';
 import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/PostMetadata';
 import CodeModal from '../components/CodeModal';
@@ -11,23 +16,46 @@ import { useToast } from '../hooks/useToast';
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
-    <a href={href} className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1" target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined}>
+    <a
+      href={href}
+      className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1"
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+    >
       {children} {isExternal && <ArrowSquareOut className="text-xs" />}
     </a>
   );
 };
 
-const CodeBlock = ({ node, inline, className, children, openModal, ...props }) => {
+const CodeBlock = ({
+  node,
+  inline,
+  className,
+  children,
+  openModal,
+  ...props
+}) => {
   const match = /language-(\w+)/.exec(className || '');
   const { addToast } = useToast();
   const handleCopy = () => {
     const textToCopy = String(children);
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        addToast({ title: 'Success', message: 'Copied to clipboard!', duration: 3000 });
-      }, () => {
-        addToast({ title: 'Error', message: 'Failed to copy!', duration: 3000 });
-      });
+      navigator.clipboard.writeText(textToCopy).then(
+        () => {
+          addToast({
+            title: 'Success',
+            message: 'Copied to clipboard!',
+            duration: 3000,
+          });
+        },
+        () => {
+          addToast({
+            title: 'Error',
+            message: 'Failed to copy!',
+            duration: 3000,
+          });
+        },
+      );
     } else {
       const textArea = document.createElement('textarea');
       textArea.value = textToCopy;
@@ -38,9 +66,17 @@ const CodeBlock = ({ node, inline, className, children, openModal, ...props }) =
       textArea.select();
       try {
         document.execCommand('copy');
-        addToast({ title: 'Success', message: 'Copied to clipboard!', duration: 3000 });
+        addToast({
+          title: 'Success',
+          message: 'Copied to clipboard!',
+          duration: 3000,
+        });
       } catch (err) {
-        addToast({ title: 'Error', message: 'Failed to copy!', duration: 3000 });
+        addToast({
+          title: 'Error',
+          message: 'Failed to copy!',
+          duration: 3000,
+        });
       }
       document.body.removeChild(textArea);
     }
@@ -49,10 +85,16 @@ const CodeBlock = ({ node, inline, className, children, openModal, ...props }) =
   return !inline && match ? (
     <div className="relative">
       <div className="absolute top-2 right-2 flex gap-2">
-        <button onClick={() => openModal(String(children).replace(/\n$/, ''))} className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100">
+        <button
+          onClick={() => openModal(String(children).replace(/\n$/, ''))}
+          className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
+        >
           <ArrowsOutSimple size={20} />
         </button>
-        <button onClick={handleCopy} className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100">
+        <button
+          onClick={handleCopy}
+          className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
+        >
           <Clipboard size={20} />
         </button>
       </div>
@@ -99,7 +141,7 @@ const BlogPostPage = () => {
       try {
         const [postContentResponse, shownPostsResponse] = await Promise.all([
           fetch(`/posts/${slug}.txt`),
-          fetch('/posts/shownPosts.json')
+          fetch('/posts/shownPosts.json'),
         ]);
 
         let postBody = '';
@@ -112,15 +154,15 @@ const BlogPostPage = () => {
         let postMetadata = null;
         if (shownPostsResponse.ok) {
           const data = await shownPostsResponse.json();
-          postMetadata = data.find(item => item.slug === slug);
+          postMetadata = data.find((item) => item.slug === slug);
         } else {
           console.error('Failed to fetch shownPosts.json');
         }
 
         if (postMetadata && postContentResponse.ok) {
-            setPost({ attributes: postMetadata, body: postBody });
+          setPost({ attributes: postMetadata, body: postBody });
         } else {
-            setPost({ attributes: { title: 'Post not found' }, body: '' });
+          setPost({ attributes: { title: 'Post not found' }, body: '' });
         }
       } catch (error) {
         console.error('Error fetching post or shownPosts.json:', error);
@@ -135,7 +177,8 @@ const BlogPostPage = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (contentRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        const { scrollTop, scrollHeight, clientHeight } =
+          document.documentElement;
         const totalHeight = scrollHeight - clientHeight;
         const currentProgress = (scrollTop / totalHeight) * 100;
         setReadingProgress(currentProgress);
@@ -188,15 +231,36 @@ const BlogPostPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link to="/blog" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+            <Link
+              to="/blog"
+              className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+            >
               <ArrowLeft size={24} /> Back to Blog
             </Link>
-            <div ref={contentRef} className="prose prose-xl prose-dark max-w-none">
-              <ReactMarkdown components={{ a: LinkRenderer, code: (props) => <CodeBlock {...props} openModal={openModal} /> }}>{post.body}</ReactMarkdown>
+            <div
+              ref={contentRef}
+              className="prose prose-xl prose-dark max-w-none"
+            >
+              <ReactMarkdown
+                components={{
+                  a: LinkRenderer,
+                  code: (props) => (
+                    <CodeBlock {...props} openModal={openModal} />
+                  ),
+                }}
+              >
+                {post.body}
+              </ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
-            <PostMetadata metadata={post.attributes} readingProgress={readingProgress} isAtTop={isAtTop} overrideDate={post.attributes.date} updatedDate={post.attributes.updated} />
+            <PostMetadata
+              metadata={post.attributes}
+              readingProgress={readingProgress}
+              isAtTop={isAtTop}
+              overrideDate={post.attributes.date}
+              updatedDate={post.attributes.updated}
+            />
           </div>
         </div>
       </div>

@@ -36,14 +36,19 @@ const ColorLegends = ({ onLegendClick, hiddenLegends }) => {
           <div key={category} className="flex items-center mb-2">
             <div
               className={`w-4 h-4 rounded-full mr-2 cursor-pointer ${
-                hiddenLegends.includes(category) ? "opacity-50" : "opacity-100"
+                hiddenLegends.includes(category) ? 'opacity-50' : 'opacity-100'
               }`}
-              style={{ backgroundColor: categoryStyles[category].backgroundColor, border: `1px solid ${categoryStyles[category].borderColor}` }}
+              style={{
+                backgroundColor: categoryStyles[category].backgroundColor,
+                border: `1px solid ${categoryStyles[category].borderColor}`,
+              }}
               onClick={() => onLegendClick(category)}
             ></div>
             <span
               className={`cursor-pointer text-white font-light ${
-                hiddenLegends.includes(category) ? "opacity-50 line-through" : "opacity-100"
+                hiddenLegends.includes(category)
+                  ? 'opacity-50 line-through'
+                  : 'opacity-100'
               }`}
               onClick={() => onLegendClick(category)}
             >

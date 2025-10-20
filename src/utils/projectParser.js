@@ -10,7 +10,9 @@ export const useProjects = () => {
       try {
         const response = await fetch('/projects/shownProjects.json');
         if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status} for shownProjects.json`);
+          throw new Error(
+            `HTTP error! status: ${response.status} for shownProjects.json`,
+          );
         }
         const projectDataList = await response.json();
 
@@ -19,7 +21,9 @@ export const useProjects = () => {
             const slug = projectData.slug; // Use slug from shownProjects.json
             const contentResponse = await fetch(`/projects/${slug}.txt`);
             if (!contentResponse.ok) {
-              throw new Error(`HTTP error! status: ${contentResponse.status} for ${slug}.txt`);
+              throw new Error(
+                `HTTP error! status: ${contentResponse.status} for ${slug}.txt`,
+              );
             }
             const text = await contentResponse.text();
 
@@ -33,7 +37,7 @@ export const useProjects = () => {
               shortDescription,
               fullContent,
             };
-          })
+          }),
         );
         setProjects(fetchedProjects);
       } catch (e) {

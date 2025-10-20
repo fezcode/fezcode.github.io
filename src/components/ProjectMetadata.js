@@ -10,7 +10,9 @@ const ProjectMetadata = ({ project }) => {
   return (
     <aside className="sticky top-24">
       <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700/50">
-        <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">About Project</h3>
+        <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">
+          About Project
+        </h3>
         <div className="space-y-4">
           <div>
             <Label>Title</Label>
@@ -19,7 +21,16 @@ const ProjectMetadata = ({ project }) => {
           {project.link && (
             <div>
               <Label>Link</Label>
-              <p className="text-gray-300 ml-1 mt-1"><a href={project.link} target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:text-amber-400 flex items-center">View Project <FaExternalLinkAlt className="ml-1" size={12} /></a></p>
+              <p className="text-gray-300 ml-1 mt-1">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-amber-500 hover:text-amber-400 flex items-center"
+                >
+                  View Project <FaExternalLinkAlt className="ml-1" size={12} />
+                </a>
+              </p>
             </div>
           )}
           {project.pinned && (
@@ -32,8 +43,11 @@ const ProjectMetadata = ({ project }) => {
             <div>
               <Label>Technologies</Label>
               <div className="flex flex-wrap gap-2 mt-2">
-                {project.technologies.map(tech => (
-                  <span key={tech} className="bg-primary-400/10 text-primary-400 text-xs font-medium px-2.5 py-1 rounded-full">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="bg-primary-400/10 text-primary-400 text-xs font-medium px-2.5 py-1 rounded-full"
+                  >
                     {tech}
                   </span>
                 ))}

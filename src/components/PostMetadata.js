@@ -1,21 +1,42 @@
 import React from 'react';
 import Label from './Label';
 
-const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, updatedDate }) => {
+const PostMetadata = ({
+  metadata,
+  readingProgress,
+  isAtTop,
+  overrideDate,
+  updatedDate,
+}) => {
   if (!metadata) {
     return null;
   }
 
-  const displayDate = overrideDate || (metadata.date ? new Date(metadata.date).toLocaleDateString() : 'Invalid Date');
+  const displayDate =
+    overrideDate ||
+    (metadata.date
+      ? new Date(metadata.date).toLocaleDateString()
+      : 'Invalid Date');
 
-  const categoryBadgeColorStyle = { backgroundColor: metadata.category === 'dev' ? 'var(--color-dev-badge)' : 'var(--color-takes-badge)' };
+  const categoryBadgeColorStyle = {
+    backgroundColor:
+      metadata.category === 'dev'
+        ? 'var(--color-dev-badge)'
+        : 'var(--color-takes-badge)',
+  };
   const postMetadataBackgroundColorStyle = {
-    backgroundColor: metadata.category === 'dev' ? 'var(--color-dev-card-bg)' : 'var(--color-takes-card-bg)',
+    backgroundColor:
+      metadata.category === 'dev'
+        ? 'var(--color-dev-card-bg)'
+        : 'var(--color-takes-card-bg)',
   };
 
   const handleButtonClick = () => {
     if (isAtTop) {
-      window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+      window.scrollTo({
+        top: document.documentElement.scrollHeight,
+        behavior: 'smooth',
+      });
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -23,8 +44,13 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
 
   return (
     <aside className="sticky top-24">
-      <div className="p-6 rounded-lg border border-gray-700/50" style={postMetadataBackgroundColorStyle}>
-        <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">About Post</h3>
+      <div
+        className="p-6 rounded-lg border border-gray-700/50"
+        style={postMetadataBackgroundColorStyle}
+      >
+        <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">
+          About Post
+        </h3>
         <div className="space-y-4">
           <div>
             <Label>Original Title</Label>
@@ -33,7 +59,10 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
           {metadata.category && (
             <div>
               <Label>Category</Label>
-              <span className={`ml-1 px-2 py-1 text-xs font-medium text-white rounded-md w-16 text-center`} style={categoryBadgeColorStyle}>
+              <span
+                className={`ml-1 px-2 py-1 text-xs font-medium text-white rounded-md w-16 text-center`}
+                style={categoryBadgeColorStyle}
+              >
                 {metadata.category}
               </span>
             </div>
@@ -52,8 +81,11 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
             <div>
               <Label>Tags</Label>
               <div className="flex flex-wrap gap-2 mt-2">
-                {metadata.tags.map(tag => (
-                  <span key={tag} className="bg-primary-400/10 text-primary-400 text-xs font-medium px-2.5 py-1 rounded-full">
+                {metadata.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-primary-400/10 text-primary-400 text-xs font-medium px-2.5 py-1 rounded-full"
+                  >
                     {tag}
                   </span>
                 ))}
@@ -64,7 +96,10 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
         <div className="mt-6">
           <Label className="mb-1">Reading Progress</Label>
           <div className="w-full bg-gray-700 rounded-full h-2.5 mt-2">
-            <div className="bg-primary-500 h-2.5 rounded-full" style={{width: `${readingProgress}%`}}></div>
+            <div
+              className="bg-primary-500 h-2.5 rounded-full"
+              style={{ width: `${readingProgress}%` }}
+            ></div>
           </div>
         </div>
         <div className="mt-6 text-center">
@@ -72,12 +107,13 @@ const PostMetadata = ({ metadata, readingProgress, isAtTop, overrideDate, update
             onClick={handleButtonClick}
             className="text-primary-400 hover:text-primary-500 transition-colors text-sm font-medium flex items-center justify-center w-full py-2 rounded-md bg-gray-700/50 hover:bg-gray-700"
           >
-            <span className="mr-1">{isAtTop ? '↓' : '↑'}</span> {isAtTop ? 'To the bottom' : 'To the top'}
+            <span className="mr-1">{isAtTop ? '↓' : '↑'}</span>{' '}
+            {isAtTop ? 'To the bottom' : 'To the top'}
           </button>
         </div>
       </div>
     </aside>
   );
-}
+};
 
 export default PostMetadata;

@@ -26,7 +26,7 @@ const ImageModal = ({ src, alt, onClose }) => {
         >
           <motion.div
             className="relative"
-            onClick={e => e.stopPropagation()} // Prevent modal from closing when clicking on image
+            onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking on image
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
@@ -38,7 +38,11 @@ const ImageModal = ({ src, alt, onClose }) => {
             >
               <X size={24} weight="bold" />
             </button>
-            <img src={src} alt={alt} className="max-w-full max-h-[90vh] object-contain" />
+            <img
+              src={src}
+              alt={alt}
+              className="max-w-full max-h-[90vh] object-contain"
+            />
           </motion.div>
         </motion.div>
       )}

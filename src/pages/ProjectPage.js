@@ -44,13 +44,21 @@ const ProjectPage = () => {
   }
 
   if (error) {
-    return <div className="py-16 sm:py-24 text-center text-red-500">Error loading project: {error.message}</div>;
+    return (
+      <div className="py-16 sm:py-24 text-center text-red-500">
+        Error loading project: {error.message}
+      </div>
+    );
   }
 
-  const project = projects.find(p => p.slug === slug);
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
-    return <div className="py-16 sm:py-24 text-center text-white">Project not found</div>;
+    return (
+      <div className="py-16 sm:py-24 text-center text-white">
+        Project not found
+      </div>
+    );
   }
 
   return (
@@ -58,11 +66,22 @@ const ProjectPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link to="/projects" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+            <Link
+              to="/projects"
+              className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+            >
               <ArrowLeftIcon size={24} /> Back to Projects
             </Link>
-            <h1 className="text-4xl font-bold tracking-tight text-markdown-hx-color sm:text-6xl">{project.title}</h1>
-            {project.image && <img src={project.image} alt={project.title} className="mt-8 w-full rounded-lg text-gray-200" />}
+            <h1 className="text-4xl font-bold tracking-tight text-markdown-hx-color sm:text-6xl">
+              {project.title}
+            </h1>
+            {project.image && (
+              <img
+                src={project.image}
+                alt={project.title}
+                className="mt-8 w-full rounded-lg text-gray-200"
+              />
+            )}
             <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-dark">
               <ReactMarkdown>{project.fullContent}</ReactMarkdown>
             </div>

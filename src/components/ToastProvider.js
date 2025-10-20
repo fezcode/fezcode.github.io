@@ -27,16 +27,16 @@ export const ToastProvider = ({ children }) => {
     <ToastContext.Provider value={{ addToast, removeToast }}>
       {children}
       <div className="fixed top-28 right-10 z-50">
-          {toasts.map((toast) => (
-            <Toast
-              key={toast.id}
-              id={toast.id}
-              title={toast.title}
-              message={toast.message}
-              duration={toast.duration}
-              removeToast={removeToast}
-            />
-          ))}
+        {toasts.map((toast) => (
+          <Toast
+            key={toast.id}
+            id={toast.id}
+            title={toast.title}
+            message={toast.message}
+            duration={toast.duration}
+            removeToast={removeToast}
+          />
+        ))}
       </div>
     </ToastContext.Provider>
   );

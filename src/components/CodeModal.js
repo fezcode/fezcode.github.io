@@ -28,7 +28,7 @@ const CodeModal = ({ isOpen, onClose, children }) => {
         >
           <motion.div
             className="relative bg-gray-800 rounded-lg shadow-lg p-6 w-3/4 h-3/4"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
@@ -45,7 +45,9 @@ const CodeModal = ({ isOpen, onClose, children }) => {
               language="jsx"
               PreTag="pre"
               className="overflow-auto h-full"
-              codeTagProps={{ style: { fontFamily: "'JetBrains Mono', monospace" } }}
+              codeTagProps={{
+                style: { fontFamily: "'JetBrains Mono', monospace" },
+              }}
             >
               {children}
             </SyntaxHighlighter>

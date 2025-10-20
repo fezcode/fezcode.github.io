@@ -15,14 +15,17 @@ const Toast = ({ id, title, message, duration, removeToast }) => {
   }, [id, duration, removeToast]);
 
   return (
-      <motion.div
-        initial={{ x: '100%', opacity: 0 }}
-        animate={{ x: 0, opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-        className="text-gray-300 py-4 px-10 rounded-lg shadow-lg border backdrop-blur-sm flex items-center justify-between w-96 mb-4"
-        style={{ backgroundColor: colors['toast-background'], borderColor: colors['toast-border'] }}
-      >
+    <motion.div
+      initial={{ x: '100%', opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ type: 'spring', stiffness: 120, damping: 20 }}
+      className="text-gray-300 py-4 px-10 rounded-lg shadow-lg border backdrop-blur-sm flex items-center justify-between w-96 mb-4"
+      style={{
+        backgroundColor: colors['toast-background'],
+        borderColor: colors['toast-border'],
+      }}
+    >
       <div className="flex flex-col text-sm">
         <span>{title}</span>
         <span>{message}</span>
