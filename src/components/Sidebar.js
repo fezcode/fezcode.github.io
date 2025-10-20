@@ -118,7 +118,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             >
 
-                                                                                    <span className="font-arvo ">Main</span>
+                                                                                    <span className="font-sans text-white">Main</span>
 
                                                                                     <CaretDown size={20} className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`} />
 
@@ -164,7 +164,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             >
 
-                                                                                    <span className="font-arvo ">Content</span>
+                                                                                    <span className="font-sans text-white">Content</span>
 
                                                                                     <CaretDown size={20} className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`} />
 
@@ -213,7 +213,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                                                                                                                       className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-100' : 'text-gray-100'}`}
 
                                                                                                               >
-                                                                                                                                                                                                              <span className="flex items-center gap-2 font-arvo ">
+                                                                                                                                                                                                              <span className="flex items-center gap-2 font-sans text-white">
                                                                                                                                                                                                                 <span>Games</span>
                                                                                                                                                                                                                 <ArrowSquareOutIcon size={16} />
                                                                                                                                                                                                               </span>
@@ -255,7 +255,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                       >
 
-                        <span className="flex items-center gap-2 font-arvo ">
+                        <span className="flex items-center gap-2 font-sans text-white">
                           <span>External Links</span>
                           <ArrowSquareOutIcon size={16} />
                         </span>
