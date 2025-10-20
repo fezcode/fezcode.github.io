@@ -45,7 +45,7 @@ const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
               className="text-lg font-normal tracking-tight"
               style={{ fontFamily: "'Arvo', 'Playfair Display', serif" }}
             >
-                the Phase of Code
+                The Fez of <span className="text-primary-400">Code</span>
             </span>
           </div>
         )}
