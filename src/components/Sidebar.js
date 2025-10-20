@@ -41,7 +41,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
           ? 'text-primary-400 bg-gray-800'
 
-          : 'text-gray-300 hover:text-white hover:bg-gray-800'
+          : 'text-gray-100 hover:text-white hover:bg-gray-800'
 
       }`;
 
@@ -112,7 +112,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
 
-                isMainActive ? 'text-red-400' : 'text-gray-300'
+                isMainActive ? 'text-red-400' : 'text-gray-100'
 
               }`}
 
@@ -158,7 +158,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
 
-                isContentActive ? 'text-red-400' : 'text-gray-300'
+                isContentActive ? 'text-red-400' : 'text-gray-100'
 
               }`}
 
@@ -207,11 +207,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <div className="mt-8">
 
                                                                                                                                     <button
-                                                                                        
+
                                                                                                                                       onClick={() => setIsGamesOpen(!isGamesOpen)}
-                                                                                        
-                                                                                                                                      className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-300' : 'text-gray-300'}`}
-                                                                                        
+
+                                                                                                                                      className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-100' : 'text-gray-100'}`}
+
                                                                                                               >
                                                                                                                                                                                                               <span className="flex items-center gap-2 font-arvo ">
                                                                                                                                                                                                                 <span>Games</span>
@@ -223,7 +223,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                                               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
 
-                                                <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-300 hover:text-white hover:bg-gray-800`}>
+                                                <a href="https://www.nytimes.com/games/wordle/index.html" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
 
                                                   <GameControllerIcon size={24} />
 
@@ -231,7 +231,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                                                 </a>
 
-                                                <a href="https://openfront.io" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-300 hover:text-white hover:bg-gray-800`}>
+                                                <a href="https://openfront.io" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
 
                                                   <GlobeSimple size={24} />
 
@@ -251,7 +251,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                         onClick={() => setIsExternalLinksOpen(!isExternalLinksOpen)}
 
-                        className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-300' : 'text-gray-300'}`}
+                        className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-100' : 'text-gray-100'}`}
 
                       >
 
@@ -268,7 +268,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                         <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
 
-                          <a href="https://github.com/fezcode" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-300 hover:text-white hover:bg-gray-800`}>
+                          <a href="https://github.com/fezcode" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
 
                             <GithubLogo size={24} />
 
@@ -284,21 +284,21 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         </div>
 
-                <div className="p-4 text-xs text-gray-500 text-left">
+                <div className="p-4 text-xs text-gray-300 text-left">
                   <button
                     onClick={toggleAllSections}
-                    className="flex items-center justify-center w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none bg-gray-700 text-white hover:bg-gray-600 rounded-md p-2"
+                    className="flex items-center justify-center w-full text-sm font-normal tracking-wider mb-4 focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
                   >
                     <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
                     <List size={20} className={`ml-3 transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`} />
                   </button>
                   <hr className="border-gray-700 my-4" />
 
-                  <div className="flex space-x-2 font-arvo">
+                  <div className="flex space-x-2 font-sans">
 
-                    <button className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-md transition-colors w-full font-arvo">Button 1</button>
+                    <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">Button 1</button>
 
-                    <button className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-md transition-colors w-full font-arvo">Button 2</button>
+                    <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">Button 2</button>
 
                   </div>
 
