@@ -36,7 +36,7 @@ const PostItem = ({ slug, title, date, updatedDate, category }) => {
             </h2>
           </div>
           {formattedUpdatedDate && updatedDate !== date && (
-            <span className="hidden sm:inline-block ml-4 px-2 py-1 text-xs font-medium text-orange-400 bg-orange-400/10 rounded-full">Updated: {formattedUpdatedDate}</span>
+            <span className="hidden sm:inline-block ml-4 px-2 py-1 text-xs font-medium text-orange-400 bg-orange-400/10 rounded-full">Update: {formattedUpdatedDate}</span>
           )}
           <span className="ml-4 flex-shrink-0 text-sm font-medium text-primary-400 group-hover:text-title-hover group-hover:underline transition-colors">
             <span className="hidden sm:inline">Read post</span> &rarr;

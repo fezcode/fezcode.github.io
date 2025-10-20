@@ -82,7 +82,7 @@ const HomePage = () => {
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl font-inter">
             Welcome to fez<span className="text-primary-400">codex</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
@@ -91,7 +91,7 @@ const HomePage = () => {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
+          <h2 className="text-2xl tracking-tight text-white text-center flex items-center justify-center gap-2 font-arvo">
             <PushPin className="text-primary-400 text-lg" /> Pinned Projects
           </h2>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -107,7 +107,7 @@ const HomePage = () => {
         </div>
 
         <div className="mt-8">
-          <h2 className="text-2xl font-semibold tracking-tight text-white text-center flex items-center justify-center gap-2">
+          <h2 className="text-2xl tracking-tight text-white text-center flex items-center justify-center gap-2 font-arvo">
             <Book className="text-primary-400 text-lg" /> Recent Blog Posts
           </h2>
           <div className="mt-8">

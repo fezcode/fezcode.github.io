@@ -39,7 +39,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         isActive
 
-          ? 'text-primary-400 bg-gray-800 font-bold'
+          ? 'text-primary-400 bg-gray-800'
 
           : 'text-gray-300 hover:text-white hover:bg-gray-800'
 
@@ -83,7 +83,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
 
-        className={`fixed top-0 left-0 h-screen bg-black/30 backdrop-blur-sm text-white w-64 z-50 flex flex-col border-r border-gray-700/50`}
+        className={`fixed top-0 left-0 h-screen bg-black/30 backdrop-blur-sm text-white w-64 z-50 flex flex-col border-r border-gray-700/50 font-arvo`}
 
       >
 
@@ -95,7 +95,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                                       <Fez />
 
-                                      <span className="text-2xl font-semibold tracking-tight">fez<span className="text-primary-400">codex</span></span>
+                                      <span className="text-2xl font-normal tracking-tight">fez<span className="text-primary-400">codex</span></span>
 
                                     </Link>
 
@@ -118,11 +118,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             >
 
-                                                        <span className="font-arvo">Main</span>
+                                                                                    <span className="font-arvo ">Main</span>
 
-                                                        <CaretDown size={20} className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`} />
+                                                                                    <CaretDown size={20} className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`} />
 
-                                                      </button>
+                                                                                  </button>
 
             {isMainOpen && (
 
@@ -164,11 +164,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
             >
 
-                                                        <span className="font-arvo">Content</span>
+                                                                                    <span className="font-arvo ">Content</span>
 
-                                                        <CaretDown size={20} className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`} />
+                                                                                    <CaretDown size={20} className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`} />
 
-                                                      </button>
+                                                                                  </button>
 
             {isContentOpen && (
 
@@ -213,17 +213,12 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                                                                                                                                       className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-300' : 'text-gray-300'}`}
                                                                                         
                                                                                                               >
-                                                                                                                                                                                      <span className="flex items-center gap-2 font-arvo">
-                                                                                            
-                                                                                                                                                                                        <span>Games</span>
-                                                                                            
-                                                                                                                                                                                        <ArrowSquareOutIcon size={16} />
-                                                                                            
-                                                                                                                                                                                      </span>
-                                                                                            
-                                                                                                                                                                                      <CaretDown size={20} className={`transition-transform ${isGamesOpen ? 'transform rotate-180' : ''}`} />
-                                                                                            
-                                                                                                                                                                                    </button>
+                                                                                                                                                                                                              <span className="flex items-center gap-2 font-arvo ">
+                                                                                                                                                                                                                <span>Games</span>
+                                                                                                                                                                                                                <ArrowSquareOutIcon size={16} />
+                                                                                                                                                                                                              </span>
+                                                                                                                                                                                                              <CaretDown size={20} className={`transition-transform ${isGamesOpen ? 'transform rotate-180' : ''}`} />
+                                                                                                                                                                                                            </button>
                                             {isGamesOpen && (
 
                                               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
@@ -260,7 +255,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                       >
 
-                        <span className="flex items-center gap-2 font-arvo">
+                        <span className="flex items-center gap-2 font-arvo ">
                           <span>External Links</span>
                           <ArrowSquareOutIcon size={16} />
                         </span>
@@ -292,18 +287,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 <div className="p-4 text-xs text-gray-500 text-left">
                   <button
                     onClick={toggleAllSections}
-                    className="flex items-center justify-center w-full text-sm font-medium uppercase tracking-wider mb-4 focus:outline-none bg-gray-700 text-white hover:bg-gray-600 rounded-md p-2"
+                    className="flex items-center justify-center w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none bg-gray-700 text-white hover:bg-gray-600 rounded-md p-2"
                   >
                     <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
-                    <List size={20} className={`transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`} />
+                    <List size={20} className={`ml-3 transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`} />
                   </button>
                   <hr className="border-gray-700 my-4" />
 
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-2 font-arvo">
 
-                    <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md transition-colors w-full">Button 1</button>
+                    <button className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-md transition-colors w-full font-arvo">Button 1</button>
 
-                    <button className="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md transition-colors w-full">Button 2</button>
+                    <button className="bg-gray-800 hover:bg-gray-700 text-white py-2 px-4 rounded-md transition-colors w-full font-arvo">Button 2</button>
 
                   </div>
 

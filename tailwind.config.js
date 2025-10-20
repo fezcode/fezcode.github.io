@@ -15,6 +15,7 @@ module.exports = {
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
         arvo: fonts.arvo, // New custom font
         playfairDisplay: fonts.playfairDisplay, // New custom font
+        inter: fonts.inter, // New custom font
       },
       colors: colors,
       typography: (theme) => ({
