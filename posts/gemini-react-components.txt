@@ -1,0 +1,19 @@
+# Gemini's Guide to React - Understanding Components
+
+In this second part of Gemini's Guide to React, we'll focus on one of React's most fundamental concepts: Components.
+
+Components are independent, reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML via a render function. Components come in two types: Class Components and Functional Components. Modern React development primarily uses Functional Components with Hooks.
+
+Example of a Functional Component:
+
+```jsx
+import React from 'react';
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
+export default Welcome;
+```
+
+Next, we'll explore JSX and how it makes writing React components more intuitive.
