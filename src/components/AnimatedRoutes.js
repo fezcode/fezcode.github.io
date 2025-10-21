@@ -10,6 +10,7 @@ import AboutPage from '../pages/AboutPage';
 import LogsPage from '../pages/LogsPage';
 import LogDetailPage from '../pages/LogDetailPage';
 import NotFoundPage from '../pages/NotFoundPage';
+import SeriesPage from '../pages/SeriesPage';
 
 const pageVariants = {
   initial: {
@@ -60,6 +61,34 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <BlogPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/blog/series/:seriesSlug/:episodeSlug"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <BlogPostPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/blog/series/:seriesSlug"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <SeriesPage />
             </motion.div>
           }
         />

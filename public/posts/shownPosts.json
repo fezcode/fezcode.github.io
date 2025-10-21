@@ -74,5 +74,19 @@
     "updated": "2025-10-13",
     "tags": ["writing", "updates"],
     "category": "rant"
+  },
+  {
+    "slug": "gemini-react-intro",
+    "title": "Introduction",
+    "date": "2024-01-01",
+    "series": "Gemini's Guide to React",
+    "seriesIndex": 1
+  },
+  {
+    "slug": "gemini-react-components",
+    "title": "Understanding Components",
+    "date": "2024-01-05",
+    "series": "Gemini's Guide to React",
+    "seriesIndex": 2
   }
 ]

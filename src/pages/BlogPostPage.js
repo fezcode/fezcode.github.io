@@ -116,7 +116,8 @@ const CodeBlock = ({
 };
 
 const BlogPostPage = () => {
-  const { slug } = useParams();
+  const { slug, seriesSlug, episodeSlug } = useParams();
+  const currentSlug = episodeSlug || slug; // Use episodeSlug if present, otherwise use slug
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
@@ -138,41 +139,59 @@ const BlogPostPage = () => {
   useEffect(() => {
     const fetchPost = async () => {
       setLoading(true);
+      console.log('Fetching post for currentSlug:', currentSlug);
       try {
         const [postContentResponse, shownPostsResponse] = await Promise.all([
-          fetch(`/posts/${slug}.txt`),
+          fetch(`/posts/${currentSlug}.txt`),
           fetch('/posts/shownPosts.json'),
         ]);
+
+        console.log('postContentResponse:', postContentResponse);
+        console.log('shownPostsResponse:', shownPostsResponse);
 
         let postBody = '';
         if (postContentResponse.ok) {
           postBody = await postContentResponse.text();
         } else {
+          console.error('Failed to fetch post content for:', currentSlug);
           // Handle case where post content is not found
         }
 
         let postMetadata = null;
+        let seriesPosts = [];
         if (shownPostsResponse.ok) {
-          const data = await shownPostsResponse.json();
-          postMetadata = data.find((item) => item.slug === slug);
+          const allPosts = await shownPostsResponse.json();
+          postMetadata = allPosts.find((item) => item.slug === currentSlug);
+
+          if (postMetadata && postMetadata.series) {
+            seriesPosts = allPosts
+              .filter((item) => item.series === postMetadata.series)
+              .sort((a, b) => a.seriesIndex - b.seriesIndex);
+          }
         } else {
           console.error('Failed to fetch shownPosts.json');
         }
 
+        console.log('postMetadata:', postMetadata);
+        console.log('postBody length:', postBody.length);
+
         if (postMetadata && postContentResponse.ok) {
-          setPost({ attributes: postMetadata, body: postBody });
+          setPost({ attributes: postMetadata, body: postBody, seriesPosts });
+          console.log('Post set:', { attributes: postMetadata, body: postBody, seriesPosts });
         } else {
           setPost({ attributes: { title: 'Post not found' }, body: '' });
+          console.log('Post not found or content not fetched.');
         }
       } catch (error) {
         console.error('Error fetching post or shownPosts.json:', error);
         setPost({ attributes: { title: 'Error loading post' }, body: '' });
+      } finally {
+        setLoading(false);
       }
-      setLoading(false);
     };
 
     fetchPost();
-  }, [slug]);
+  }, [currentSlug]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -226,16 +245,27 @@ const BlogPostPage = () => {
     return <div className="text-center py-16">Post not found</div>;
   }
 
+  const currentPostIndex = post.seriesPosts ? post.seriesPosts.findIndex(
+    (item) => item.slug === currentSlug,
+  ) : -1;
+  const prevPost = currentPostIndex > 0 ? post.seriesPosts[currentPostIndex - 1] : null;
+  const nextPost = post.seriesPosts && currentPostIndex < post.seriesPosts.length - 1
+    ? post.seriesPosts[currentPostIndex + 1]
+    : null;
+
+  const backLink = seriesSlug ? `/blog/series/${seriesSlug}` : '/blog';
+  const backLinkText = seriesSlug ? 'Back to Series' : 'Back to Blog';
+
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
             <Link
-              to="/blog"
+              to={backLink}
               className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
             >
-              <ArrowLeft size={24} /> Back to Blog
+              <ArrowLeft size={24} /> {backLinkText}
             </Link>
             <div
               ref={contentRef}
@@ -252,6 +282,26 @@ const BlogPostPage = () => {
                 {post.body}
               </ReactMarkdown>
             </div>
+            {(prevPost || nextPost) && (
+              <div className="mt-8 flex justify-between items-center border-t border-gray-700 pt-8">
+                {prevPost && (
+                  <Link
+                    to={seriesSlug ? `/blog/series/${seriesSlug}/${prevPost.slug}` : `/blog/${prevPost.slug}`}
+                    className="text-primary-400 hover:underline flex items-center gap-2"
+                  >
+                    <ArrowLeft size={20} /> Previous: {prevPost.title}
+                  </Link>
+                )}
+                {nextPost && (
+                  <Link
+                    to={seriesSlug ? `/blog/series/${seriesSlug}/${nextPost.slug}` : `/blog/${nextPost.slug}`}
+                    className="text-primary-400 hover:underline flex items-center gap-2 ml-auto"
+                  >
+                    Next: {nextPost.title} <ArrowLeft size={20} className="rotate-180" />
+                  </Link>
+                )}
+              </div>
+            )}
           </div>
           <div className="hidden lg:block">
             <PostMetadata
@@ -260,6 +310,7 @@ const BlogPostPage = () => {
               isAtTop={isAtTop}
               overrideDate={post.attributes.date}
               updatedDate={post.attributes.updated}
+              seriesPosts={post.seriesPosts}
             />
           </div>
         </div>

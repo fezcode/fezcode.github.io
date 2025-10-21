@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const PostItem = ({ slug, title, date, updatedDate, category }) => {
+const PostItem = ({ slug, title, date, updatedDate, category, series, seriesIndex, isSeries }) => {
   // Format the date to a shorter format: Month Day, Year
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     month: 'short',
@@ -22,18 +22,26 @@ const PostItem = ({ slug, title, date, updatedDate, category }) => {
     backgroundColor:
       category === 'dev'
         ? 'var(--color-dev-badge)'
+        : category === 'series'
+        ? 'var(--color-series-badge)'
         : 'var(--color-takes-badge)',
   };
   const postBackgroundColorClass =
-    category === 'dev' ? 'bg-dev-card-bg' : 'bg-takes-card-bg';
+    category === 'dev'
+      ? 'bg-dev-card-bg'
+      : category === 'series'
+      ? 'bg-series-card-bg'
+      : 'bg-takes-card-bg';
   const postHoverBackgroundColorClass =
     category === 'dev'
       ? 'hover:bg-dev-card-bg-hover'
+      : category === 'series'
+      ? 'hover:bg-series-card-bg-hover'
       : 'hover:bg-takes-card-bg-hover';
 
   return (
     <Link
-      to={`/blog/${slug}`}
+      to={isSeries ? `/blog/${slug}` : `/blog/${slug}`}
       className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group ${postBackgroundColorClass} ${postHoverBackgroundColorClass}`}
     >
       <article>
@@ -48,6 +56,11 @@ const PostItem = ({ slug, title, date, updatedDate, category }) => {
                 {category}
               </span>
             )}
+            {series && !isSeries && (
+              <span className="mr-2 px-2 py-1 text-xs font-medium text-blue-400 bg-blue-400/10 rounded-full">
+                {series} - Part {seriesIndex}
+              </span>
+            )}
             <h2 className="text-xl font-semibold text-white group-hover:text-title-hover group-hover:underline transition-colors">
               {title}
             </h2>
@@ -58,7 +71,7 @@ const PostItem = ({ slug, title, date, updatedDate, category }) => {
             </span>
           )}
           <span className="ml-4 flex-shrink-0 text-sm font-medium text-primary-400 group-hover:text-title-hover group-hover:underline transition-colors">
-            <span className="hidden sm:inline">Read post</span> &rarr;
+            <span className="hidden sm:inline">{isSeries ? 'View Series' : 'Read post'}</span> &rarr;
           </span>
         </div>
       </article>

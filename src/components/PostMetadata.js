@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Label from './Label';
 
 const PostMetadata = ({
@@ -7,6 +8,7 @@ const PostMetadata = ({
   isAtTop,
   overrideDate,
   updatedDate,
+  seriesPosts,
 }) => {
   if (!metadata) {
     return null;
@@ -91,6 +93,34 @@ const PostMetadata = ({
                 ))}
               </div>
             </div>
+          )}
+
+          {metadata.series && seriesPosts && seriesPosts.length > 0 && (
+            <>
+              <div>
+                <Label>Series</Label>
+                <p className="text-gray-300 ml-1 mt-1">{metadata.series}</p>
+              </div>
+              <div>
+                <Label>Episodes</Label>
+                <ul className="list-disc list-inside ml-4 mt-2 text-gray-300">
+                  {seriesPosts.map((postInSeries) => {
+                    const currentSeriesSlug = metadata.series.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-series';
+                    const episodeLink = `/blog/series/${currentSeriesSlug}/${postInSeries.slug}`;
+                    return (
+                      <li key={postInSeries.slug}>
+                        <Link
+                          to={episodeLink}
+                          className={`hover:text-primary-400 ${postInSeries.slug === metadata.slug ? 'font-semibold text-primary-400' : ''}`}
+                        >
+                          {postInSeries.title}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </>
           )}
         </div>
         <div className="mt-6">

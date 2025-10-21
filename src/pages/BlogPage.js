@@ -6,7 +6,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const BlogPage = () => {
   usePageTitle('Blog');
-  const [posts, setPosts] = useState([]);
+  const [displayItems, setDisplayItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,15 +14,53 @@ const BlogPage = () => {
       try {
         const response = await fetch('/posts/shownPosts.json');
         if (response.ok) {
-          const slugs = await response.json();
-          setPosts(slugs);
+          const allPosts = await response.json();
+
+          const seriesMap = new Map();
+          const individualPosts = [];
+
+          allPosts.forEach(post => {
+            if (post.series) {
+              if (!seriesMap.has(post.series)) {
+                seriesMap.set(post.series, {
+                  title: post.series,
+                  slug: post.series.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-series', // Generate a slug for the series
+                  isSeries: true,
+                  posts: []
+                });
+              }
+              seriesMap.get(post.series).posts.push(post);
+            } else {
+              individualPosts.push(post);
+            }
+          });
+
+          // Sort series posts by seriesIndex
+          seriesMap.forEach(series => {
+            series.posts.sort((a, b) => a.seriesIndex - b.seriesIndex);
+          });
+
+          // Combine individual posts and series entries
+          const combinedItems = [
+            ...Array.from(seriesMap.values()),
+            ...individualPosts,
+          ];
+
+          // Sort combined items by date (newest first), series entries should appear based on the date of their latest post
+          combinedItems.sort((a, b) => {
+            const dateA = a.isSeries ? new Date(Math.max(...a.posts.map(p => new Date(p.date)))) : new Date(a.date);
+            const dateB = b.isSeries ? new Date(Math.max(...b.posts.map(p => new Date(p.date)))) : new Date(b.date);
+            return dateB - dateA;
+          });
+
+          setDisplayItems(combinedItems);
         } else {
           console.error('Failed to fetch post slugs');
-          setPosts([]);
+          setDisplayItems([]);
         }
       } catch (error) {
         console.error('Error fetching post slugs:', error);
-        setPosts([]);
+        setDisplayItems([]);
       } finally {
         setLoading(false);
       }
@@ -72,21 +110,34 @@ const BlogPage = () => {
           </p>
           <div className="mt-4 text-center">
             <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">
-              Total: {posts.length}
+              Total: {displayItems.length}
             </span>
           </div>
         </div>
         <div className="mt-16">
           <div className="">
-            {posts.map((post) => (
-              <PostItem
-                key={post.slug}
-                slug={post.slug}
-                title={post.title}
-                date={post.date}
-                updatedDate={post.updated}
-                category={post.category}
-              />
+            {displayItems.map((item) => (
+              item.isSeries ? (
+                <PostItem
+                  key={item.slug}
+                  slug={`series/${item.slug}`}
+                  title={item.title}
+                  date={item.posts[item.posts.length - 1].date} // Date of the latest post in the series
+                  category="series"
+                  isSeries={true}
+                />
+              ) : (
+                <PostItem
+                  key={item.slug}
+                  slug={item.slug}
+                  title={item.title}
+                  date={item.date}
+                  updatedDate={item.updated}
+                  category={item.category}
+                  series={item.series}
+                  seriesIndex={item.seriesIndex}
+                />
+              )
             ))}
           </div>
         </div>
