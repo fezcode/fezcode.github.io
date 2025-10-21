@@ -24,12 +24,16 @@ const PostMetadata = ({
     backgroundColor:
       metadata.category === 'dev'
         ? 'var(--color-dev-badge)'
+        : metadata.category === 'd&d'
+        ? 'var(--color-dnd-badge)'
         : 'var(--color-takes-badge)',
   };
   const postMetadataBackgroundColorStyle = {
     backgroundColor:
       metadata.category === 'dev'
         ? 'var(--color-dev-card-bg)'
+        : metadata.category === 'd&d'
+        ? 'var(--color-dnd-card-bg)'
         : 'var(--color-takes-card-bg)',
   };
 

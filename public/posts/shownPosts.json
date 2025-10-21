@@ -1,5 +1,13 @@
 [
   {
+    "slug": "my-first-dnd-post",
+    "title": "My First D&D Post",
+    "date": "2025-10-21",
+    "description": "An introduction to my D&D adventures.",
+    "tags": ["dnd", "rpg", "adventure"],
+    "category": "d&d"
+  },
+  {
     "slug": "gemini-explains-how-hooks-work-with-toast-component",
     "title": "Gemini Explains How Hooks Work with Toast Component",
     "date": "2025-10-18",

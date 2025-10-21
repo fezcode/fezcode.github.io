@@ -24,6 +24,8 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
         ? 'var(--color-dev-badge)'
         : category === 'series'
         ? 'var(--color-series-badge)'
+        : category === 'd&d'
+        ? 'var(--color-dnd-badge)'
         : 'var(--color-takes-badge)',
   };
   const postBackgroundColorClass =
@@ -31,12 +33,16 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
       ? 'bg-dev-card-bg'
       : category === 'series'
       ? 'bg-series-card-bg'
+      : category === 'd&d'
+      ? 'bg-dnd-card-bg'
       : 'bg-takes-card-bg';
   const postHoverBackgroundColorClass =
     category === 'dev'
       ? 'hover:bg-dev-card-bg-hover'
       : category === 'series'
       ? 'hover:bg-series-card-bg-hover'
+      : category === 'd&d'
+      ? 'hover:bg-dnd-card-bg-hover'
       : 'hover:bg-takes-card-bg-hover';
 
   return (

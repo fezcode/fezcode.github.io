@@ -22,8 +22,12 @@ module.exports = {
   'takes-card-bg-hover': 'rgba(16, 185, 129, 0.275)', // emerald-500/20
   'series-card-bg': 'rgba(225, 29, 72, 0.1)', // rose-600/10
   'series-card-bg-hover': 'rgba(225, 29, 72, 0.2)', // rose-600/20
-
-  // Category RGBA variations for ColorLegends and LogCard
+  'dnd-card-bg': 'rgba(139, 92, 246, 0.1)', // violet-500/10
+  'dnd-card-bg-hover': 'rgba(139, 92, 246, 0.2)', // violet-500/20
+  'color-dev-badge': '#10b981', // emerald-500
+  'color-takes-badge': '#f97316', // orange-500
+  'color-series-badge': '#ec4899', // pink-500
+  'color-dnd-badge': '#a78bfa', // violet-400
   'book-alpha-10': 'rgba(59, 130, 246, 0.1)',
   'book-alpha-50': 'rgba(59, 130, 246, 0.5)',
   'movie-alpha-10': 'rgba(239, 68, 68, 0.1)',
