@@ -98,7 +98,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           </div>
         )}
 
-        <div className="flex-grow p-4">
+        <div className="flex-grow p-4 overflow-y-auto">
           <div className="mt-8">
             <button
               onClick={() => setIsMainOpen(!isMainOpen)}
