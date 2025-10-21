@@ -80,13 +80,15 @@
     "title": "Introduction",
     "date": "2024-01-01",
     "series": "Gemini's Guide to React",
-    "seriesIndex": 1
+    "seriesIndex": 1,
+    "category": "dev"
   },
   {
     "slug": "gemini-react-components",
     "title": "Understanding Components",
     "date": "2024-01-05",
     "series": "Gemini's Guide to React",
-    "seriesIndex": 2
+    "seriesIndex": 2,
+    "category": "dev"
   }
 ]

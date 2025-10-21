@@ -20,6 +20,8 @@ module.exports = {
   'dev-card-bg-hover': 'rgba(68, 64, 59, 0.55)', // stone-700/20
   'takes-card-bg': 'rgba(6, 95, 70, 0.175)', // emerald-900/15
   'takes-card-bg-hover': 'rgba(16, 185, 129, 0.275)', // emerald-500/20
+  'series-card-bg': 'rgba(225, 29, 72, 0.1)', // rose-600/10
+  'series-card-bg-hover': 'rgba(225, 29, 72, 0.2)', // rose-600/20
 
   // Category RGBA variations for ColorLegends and LogCard
   'book-alpha-10': 'rgba(59, 130, 246, 0.1)',

@@ -114,6 +114,7 @@ const SeriesPage = () => {
                 category={post.category}
                 series={post.series}
                 seriesIndex={post.seriesIndex}
+                isSeries={false}
               />
             ))}
           </div>

@@ -46,7 +46,7 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
     >
       <article>
         <div className="flex items-center">
-          <p className="text-sm text-gray-400">{formattedDate}</p>
+          <p className="text-sm text-gray-400 w-28 flex-shrink-0">{formattedDate}</p>
           <div className="ml-4 flex-grow flex items-center">
             {category && (
               <span
@@ -56,7 +56,7 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
                 {category}
               </span>
             )}
-            {series && !isSeries && (
+            {series && isSeries === undefined && (
               <span className="mr-2 px-2 py-1 text-xs font-medium text-blue-400 bg-blue-400/10 rounded-full">
                 {series} - Part {seriesIndex}
               </span>
