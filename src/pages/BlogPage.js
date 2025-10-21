@@ -8,6 +8,7 @@ const BlogPage = () => {
   usePageTitle('Blog');
   const [displayItems, setDisplayItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeFilter, setActiveFilter] = useState('all'); // New state for active filter
 
   useEffect(() => {
     const fetchPostSlugs = async () => {
@@ -69,6 +70,12 @@ const BlogPage = () => {
     fetchPostSlugs();
   }, []);
 
+  const filteredItems = displayItems.filter(item => {
+    if (activeFilter === 'all') return true;
+    if (activeFilter === 'series') return item.isSeries;
+    return item.category === activeFilter && !item.isSeries;
+  });
+
   if (loading) {
     // Skeleton loading screen for BlogPage
     return (
@@ -110,13 +117,40 @@ const BlogPage = () => {
           </p>
           <div className="mt-4 text-center">
             <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">
-              Total: {displayItems.length}
+              Total: {filteredItems.length}
             </span>
+          </div>
+          {/* Filter Buttons */}
+          <div className="mt-8 flex justify-center space-x-4">
+            <button
+              onClick={() => setActiveFilter('all')}
+              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'all' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
+            >
+              All
+            </button>
+            <button
+              onClick={() => setActiveFilter('dev')}
+              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'dev' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
+            >
+              Dev
+            </button>
+            <button
+              onClick={() => setActiveFilter('rant')}
+              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'rant' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
+            >
+              Rant
+            </button>
+            <button
+              onClick={() => setActiveFilter('series')}
+              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'series' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
+            >
+              Series
+            </button>
           </div>
         </div>
         <div className="mt-16">
           <div className="">
-            {displayItems.map((item) => (
+            {filteredItems.map((item) => (
               item.isSeries ? (
                 <PostItem
                   key={item.slug}
