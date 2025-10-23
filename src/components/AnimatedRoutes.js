@@ -12,6 +12,7 @@ import LogDetailPage from '../pages/LogDetailPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import SeriesPage from '../pages/SeriesPage';
 import DndPage from '../pages/DndPage';
+import DndNotFoundPage from '../pages/DndNotFoundPage'; // New import
 
 const pageVariants = {
   initial: {
@@ -202,6 +203,21 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <DndPage />
+            </motion.div>
+          }
+        />
+        {/* D&D specific 404 page */}
+        <Route
+          path="/dnd/*"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <DndNotFoundPage />
             </motion.div>
           }
         />
