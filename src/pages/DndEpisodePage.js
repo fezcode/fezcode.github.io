@@ -171,21 +171,21 @@ function DndEpisodePage() {
           ))}
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', width: '90%', maxWidth: '800px', margin: '2rem auto', zIndex: 1 }}>
-          <div style={{ flex: 1, textAlign: 'left' }}>
+        <div className="flex flex-wrap justify-between w-[90%] max-w-[800px] mx-auto my-8 z-10 gap-4">
+          <div className="flex-1 text-left min-w-[200px]">
             {prevEpisode && (
-                          <Link to={`/dnd/books/${bookId}/pages/${prevEpisode.id}`} style={{ color: '#E09500', textDecoration: 'none', fontSize: '1.3rem', textShadow: '2px 2px 4px rgba(0, 0, 0, 1)', border: '1px solid #E09500', padding: '0.5rem 1rem', borderRadius: '5px', backgroundColor: 'rgba(100, 60, 0, 0.5)' }}>
+                          <Link to={`/dnd/books/${bookId}/pages/${prevEpisode.id}`} className="dnd-episode-nav-button">
                             &larr; Previous Episode
                           </Link>            )}
           </div>
-          <div style={{ flex: 1, textAlign: 'center' }}>
-            <Link to="/dnd/lore" style={{ color: '#E09500', textDecoration: 'none', fontSize: '1.3rem', textShadow: '2px 2px 4px rgba(0, 0, 0, 1)', border: '1px solid #E09500', padding: '0.5rem 1rem', borderRadius: '5px', backgroundColor: 'rgba(100, 60, 0, 0.5)' }}>
+          <div className="flex-1 text-center min-w-[200px]">
+            <Link to="/dnd/lore" className="dnd-episode-nav-button">
               Show All Episodes
             </Link>
           </div>
-          <div style={{ flex: 1, textAlign: 'right' }}>
+          <div className="flex-1 text-right min-w-[200px]">
             {nextEpisode && (
-                          <Link to={`/dnd/books/${bookId}/pages/${nextEpisode.id}`} style={{ color: '#E09500', textDecoration: 'none', fontSize: '1.3rem', textShadow: '2px 2px 4px rgba(0, 0, 0, 1)', border: '1px solid #E09500', padding: '0.5rem 1rem', borderRadius: '5px', backgroundColor: 'rgba(100, 60, 0, 0.5)' }}>
+                          <Link to={`/dnd/books/${bookId}/pages/${nextEpisode.id}`} className="dnd-episode-nav-button">
                             Next Episode &rarr;
                           </Link>            )}
           </div>

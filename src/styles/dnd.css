@@ -7,13 +7,10 @@
   background-position: center;
   color: #fff;
   font-family: 'MedievalSharp', cursive;
-  overflow: hidden;
-  min-height: 100vh; /* Ensure it takes full viewport height */
-  /*padding-bottom: 200px; !* Add padding for fixed footer *!*/
 }
 
 .dnd-hero {
-  min-height: 100vh;
+  min-height: calc(100vh - 12rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -275,9 +272,7 @@
   align-items: flex-start;
   font-family: 'MedievalSharp', cursive;
   color: #FFA500; /* Orange */
-  position: fixed; /* Change to fixed for a sticky footer */
-  bottom: 0;
-  width: 100%;
+  position: relative;
   z-index: 10;
   min-height: 200px; /* Make footer larger */
 }
@@ -323,4 +318,22 @@
   font-size: 0.8rem;
   color: #e0e0e0;
   margin-top: 0.5rem;
+}
+
+.dnd-episode-nav-button {
+  color: #E09500;
+  text-decoration: none;
+  font-size: 1.3rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
+  border: 1px solid #E09500;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: rgba(100, 60, 0, 0.5);
+  display: inline-block; /* To apply padding and border correctly */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.dnd-episode-nav-button:hover {
+  background-color: rgba(150, 90, 0, 0.7); /* Darker on hover */
+  color: #FFB03A; /* Lighter text on hover */
 }
