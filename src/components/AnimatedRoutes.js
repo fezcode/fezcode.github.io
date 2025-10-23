@@ -11,6 +11,7 @@ import LogsPage from '../pages/LogsPage';
 import LogDetailPage from '../pages/LogDetailPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import SeriesPage from '../pages/SeriesPage';
+import DndPage from '../pages/DndPage';
 
 const pageVariants = {
   initial: {
@@ -187,6 +188,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <NotFoundPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/dnd"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <DndPage />
             </motion.div>
           }
         />
