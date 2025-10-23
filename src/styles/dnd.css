@@ -7,10 +7,11 @@
   background-position: center;
   color: #fff;
   font-family: 'MedievalSharp', cursive;
+  padding-top: 5rem;
 }
 
 .dnd-hero {
-  min-height: calc(100vh - 12rem);
+  min-height: calc(100vh - 5rem);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -46,7 +47,7 @@
   background-color: rgba(50, 30, 30, 0.9); /* New background color, blacker with a pinch of red */
   padding: 5rem 2rem 4rem; /* Adjusted top padding */
   width: 90%;
-  max-width: 800px; /* Narrower for better readability */
+  max-width: 1200px; /* Narrower for better readability */
   margin: 2rem auto; /* Center the box */
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle light border */
   border-radius: 8px;
@@ -336,4 +337,15 @@
 .dnd-episode-nav-button:hover {
   background-color: rgba(150, 90, 0, 0.7); /* Darker on hover */
   color: #FFB03A; /* Lighter text on hover */
+}
+
+.dnd-list-item-link {
+  color: #E09500;
+  text-decoration: none;
+  font-size: 1.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.dnd-list-item-link:hover {
+  color: #FFB03A;
 }

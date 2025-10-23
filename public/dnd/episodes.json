@@ -5,7 +5,8 @@
     "episodes": [
       { "id": 1, "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
       { "id": 2, "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
-    ]
+    ],
+    "overlay": "red"
   },
 
   {
@@ -14,7 +15,8 @@
     "episodes": [
       { "id": 1,  "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
       { "id": 2,  "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
-    ]
+    ],
+    "overlay": "blue"
   },
 
   {
@@ -23,7 +25,8 @@
     "episodes": [
       { "id": 1,  "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
       { "id": 2,  "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
-    ]
+    ],
+    "overlay": "black"
   },
 
   {
@@ -32,6 +35,7 @@
     "episodes": [
       { "id": 1,  "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
       { "id": 2,  "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
-    ]
+    ],
+    "overlay": "green"
   }
 ]

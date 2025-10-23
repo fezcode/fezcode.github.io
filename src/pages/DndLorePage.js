@@ -6,6 +6,9 @@ import '../styles/dnd.css';
 import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
 import DndCard from '../components/DndCard'; // Import DndCard
+import Slider from 'react-slick'; // Import Slider
+import 'slick-carousel/slick/slick.css'; // Import slick-carousel CSS
+import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme CSS
 
 const pageVariants = {
   initial: {
@@ -56,6 +59,35 @@ function DndLorePage() {
     fetchEpisodes();
   }, []);
 
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          initialSlide: 1
+        }
+      }
+    ]
+  };
+
   return (
     <motion.div
       initial="initial"
@@ -65,24 +97,38 @@ function DndLorePage() {
       transition={pageTransition}
       className="dnd-page-container"
     >
-      <div className="dnd-hero" style={{ position: 'relative', minHeight: '100vh' }}>
+      <div className="dnd-hero" style={{ position: 'relative' }}>
         <h1 className="dnd-title-box">
           <span className="dnd-hero-title-white">The Lore</span>
         </h1>
         <div className="dnd-content-box" style={{ zIndex: 1 }}>
           <h2 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.8rem' }}>Books</h2>
-          <div className="dnd-cards-container" style={{ justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+          <Slider {...settings}>
             {episodes.map((book) => (
-              <DndCard
-                key={book.bookId}
-                title={book.bookTitle}
-                author={book.episodes && book.episodes.length > 0 ? `${book.episodes[0].author}` : "No author information"}
-                link={`/dnd/books/${book.bookId}`}
-                backgroundImage={`${process.env.PUBLIC_URL}/images/dnd/book-cover.png`}
-              />
+              <div key={book.bookId} className="px-12"> {/* Add padding for spacing between cards */}
+                <DndCard
+                  title={book.bookTitle}
+                  author={book.episodes && book.episodes.length > 0 ? `${book.episodes[0].author}` : "No author information"}
+                  link={`/dnd/books/${book.bookId}`}
+                  backgroundImage={`${process.env.PUBLIC_URL}/images/dnd/book-cover.png`}
+                  overlayColor={book.overlay}
+                />
+              </div>
             ))}
-          </div>
+          </Slider>
         </div>
+        <div className="dnd-content-box" style={{ zIndex: 1, marginTop: '2rem' }}>
+          <h2 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.8rem' }}>All Books</h2>
+            <ul style={{ listStyle: 'none', padding: 0 }}>
+              {episodes.map((book) => (
+                <li key={book.bookId} style={{ marginBottom: '1rem' }}>
+                  <Link to={`/dnd/books/${book.bookId}`} className="dnd-list-item-link">
+                    {book.bookTitle}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
       </div>
     </motion.div>
   );
