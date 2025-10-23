@@ -2,11 +2,14 @@
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
 .dnd-page-container {
-  background-color: rgb(255, 142, 142); /* New background color */
+  background: linear-gradient(rgba(40, 44, 52, 0.6), rgba(40, 44, 52, 0.6)), url('../../public/images/dnd/wallies/artem-sapegin-XGDBdSQ70O0-unsplash.jpg');
+  background-size: cover;
+  background-position: center;
   color: #fff;
   font-family: 'MedievalSharp', cursive;
   overflow: hidden;
   min-height: 100vh; /* Ensure it takes full viewport height */
+  /*padding-bottom: 200px; !* Add padding for fixed footer *!*/
 }
 
 .dnd-hero {
@@ -28,7 +31,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.3); /* More transparent dark overlay */
   backdrop-filter: blur(4px);
 }
 
@@ -43,14 +46,57 @@
 }
 
 .dnd-content-box {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  background-color: rgba(50, 30, 30, 0.9); /* New background color, blacker with a pinch of red */
+  padding: 5rem 2rem 4rem; /* Adjusted top padding */
   width: 90%;
-  max-width: 1200px;
+  max-width: 800px; /* Narrower for better readability */
+  margin: 2rem auto; /* Center the box */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle light border */
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4); /* More pronounced shadow */
+  color: #E8E0B0; /* Subtle yellow-gray text for contrast */
+  line-height: 1.6;
+  position: relative; /* Ensure pseudo-elements are positioned correctly */
+}
+
+.dnd-content-box::before,
+.dnd-content-box::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50px; /* Adjust height as needed */
+  background-image: url('../../public/images/dnd/border.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3; /* Make it semi-transparent */
+  z-index: 0; /* Place it behind content */
+}
+
+.dnd-content-box::before {
+  top: 0;
+}
+
+.dnd-content-box::after {
+  bottom: 0;
+}
+
+.dnd-content-box p {
+  font-size: 1.4rem; /* Make episode text bigger */
+  margin-bottom: 1rem; /* Add some spacing between paragraphs */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow */
 }
 
 .dnd-hero-title-white {
-  color: #fff;
+  color: #FFFACD;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  border: 1px solid #FFFACD;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  background-color: rgba(255, 250, 205, 0.3);
+  display: inline-block;
 }
 
 /* D&D Cards */
@@ -69,17 +115,22 @@
   box-sizing: border-box;
   background-image: url('../../public/images/dnd/parchment.png');
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
-  background-size: cover;
+  background-size: contain; /* Preserve image ratio */
+  background-repeat: no-repeat; /* Prevent image repetition */
   background-position: center;
   border: 2px solid #CD7F32; /* Bronze */
   border-radius: 10px;
   padding: 1.5rem;
   width: 300px;
+  height: 370px; /* Fixed height for 716x883 aspect ratio (300px width) */
   text-align: center;
   color: #000;
   text-decoration: none;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), inset 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .dnd-card:hover {
@@ -89,23 +140,36 @@
   filter: brightness(1.1) saturate(1.2) hue-rotate(0deg); /* Red tone effect */
 }
 
+.dnd-card-parchment {
+  background-image: url('../../public/images/dnd/parchment.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 300px; /* Example width */
+  height: auto; /* Allow height to adjust based on content */
+}
+
 .dnd-card h3 {
   font-family: 'UnifrakturCook', cursive;
   font-size: 2rem;
-  color: #8B0000; /* Maroon */
+  color: #F9AD50;
   margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  -webkit-text-stroke: 1px #000;
 }
 
 .dnd-card p {
   font-family: 'MedievalSharp', cursive;
-  font-size: 1rem;
+  font-size: 1.4rem;
+  color: #F9AD50;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 
 /* I will add more styles for the navbar and other components later */
 
 .dnd-navbar {
-  background-color: rgba(42, 10, 10, 0.8); /* Dark red with 80% opacity */
+  background-color: rgba(42, 10, 10, 0.6); /* Dark red with 60% opacity */
   backdrop-filter: blur(10px);
   border-bottom: 2px solid #ff4500; /* Fiery orange */
   padding: 1rem 2rem;
@@ -117,6 +181,19 @@
   top: 0;
   width: 100%;
   z-index: 10;
+}
+
+.dnd-navbar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20px; /* Adjust height as needed for the border */
+  background-size: auto 100%;
+  background-repeat: repeat-x;
+  background-position: center;
+  z-index: 11; /* Ensure it's above the navbar content if needed */
 }
 
 .dnd-navbar-left, .dnd-navbar-right {
@@ -150,6 +227,32 @@
   color: #ff8c00; /* DarkOrange */
 }
 
+.dnd-breadcrumbs {
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.dnd-breadcrumb-separator {
+    margin: 0 0.5rem;
+    color: #fbcfcf;
+}
+
+.dnd-breadcrumb-link {
+  color: #FFA500;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dnd-breadcrumb-link:hover {
+  color: #ff8c00;
+}
+
+.dnd-breadcrumb-current {
+  color: #F9AD50;
+  font-weight: bold;
+}
+
 .dnd-logo {
   font-family: 'UnifrakturCook', cursive;
   font-size: 2.5rem;
@@ -158,22 +261,66 @@
 }
 
 .dnd-logo-amp {
-  font-size: 1.5rem;
+  font-size: 2rem;
   margin: 0 0.2rem;
 }
 
 .dnd-footer {
-  background-color: rgba(42, 10, 10, 0.8); /* Dark red with 80% opacity */
+  background-color: rgba(42, 10, 10, 0.6); /* Dark red with 60% opacity */
   backdrop-filter: blur(10px);
   border-top: 2px solid #ff4500; /* Fiery orange */
-  padding: 1rem 2rem;
+  padding: 2rem 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-around;
+  align-items: flex-start;
   font-family: 'MedievalSharp', cursive;
   color: #FFA500; /* Orange */
-  position: fixed;
+  position: fixed; /* Change to fixed for a sticky footer */
   bottom: 0;
   width: 100%;
   z-index: 10;
+  min-height: 200px; /* Make footer larger */
+}
+
+.dnd-footer p {
+  color: #FFA500; /* Match navbar font color */
+}
+
+.dnd-footer-logo-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dnd-footer-column {
+  flex: 1;
+  padding: 0 1rem;
+  text-align: left;
+}
+
+.dnd-footer-column h3 {
+  color: #F9AD50;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.dnd-footer-column p {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+  margin-bottom: 0.5rem;
+}
+
+.dnd-footer .dnd-logo {
+  font-size: 5rem; /* Adjust size for footer */
+  color: #FFFACD;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9);
+  -webkit-text-stroke: 2px #000;
+}
+
+.dnd-footer-copyright {
+  font-size: 0.8rem;
+  color: #e0e0e0;
+  margin-top: 0.5rem;
 }

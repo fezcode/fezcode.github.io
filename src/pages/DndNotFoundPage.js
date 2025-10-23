@@ -33,7 +33,7 @@ function DndNotFoundPage() {
       transition={pageTransition}
       className="dnd-page-container" // Use D&D styling
     >
-      <div className="dnd-hero" style={{ backgroundColor: 'rgb(255, 142, 142)', position: 'relative' }}> {/* Adjust height for 404 */}
+      <div className="dnd-hero" style={{ backgroundColor: '#282c34', position: 'relative' }}> {/* Adjust height for 404 */}
         <img
           src={`${process.env.PUBLIC_URL}/images/dnd/dragon-left.png`}
           alt="Dragon Left"

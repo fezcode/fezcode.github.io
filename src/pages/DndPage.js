@@ -9,7 +9,7 @@ import DndCard from '../components/DndCard';
 const DndPage = () => {
   usePageTitle('From Serfs and Frauds');
   const [bgImage, setBgImage] = useState('');
-  const { setBgImageName } = useContext(DndContext);
+  const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
 
   useEffect(() => {
     const images = [
@@ -22,31 +22,26 @@ const DndPage = () => {
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
-  }, [setBgImageName]);
+    setBreadcrumbs([
+      { label: 'D&D Home', path: '/dnd' },
+    ]);
+  }, [setBgImageName, setBreadcrumbs]);
 
   return (
     <div className="dnd-page-container">
       <div className="dnd-hero" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})` }}>
         <h1 className="dnd-title-box">
-          <span className="dnd-hero-title-white">Welcome to the</span>
+          <span style={{ color: 'white' }}>Welcome to the</span>
           <br />
           <span>From Serfs and Frauds</span>
         </h1>
         <div className="dnd-cards-container">
           <DndCard
-            title="Characters"
-            description="Meet the heroes of our story."
-            link="/dnd/characters"
-          />
-          <DndCard
-            title="World Map"
-            description="Explore the world of Aerthos."
-            link="/dnd/world-map"
-          />
-          <DndCard
-            title="Session Recaps"
-            description="Catch up on the latest adventures."
-            link="/dnd/session-recaps"
+            title="Lore"
+            description="Explore the world's history and tales."
+            link="/dnd/lore"
+            backgroundImage={`${process.env.PUBLIC_URL}/images/dnd/parchment.png`}
+            className="dnd-card-parchment" // Add the new class
           />
         </div>
       </div>

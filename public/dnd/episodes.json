@@ -1,0 +1,37 @@
+[
+  {
+    "bookId": 1,
+    "bookTitle": "Book One: The Shadowed Path",
+    "episodes": [
+      { "id": 1, "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
+      { "id": 2, "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
+    ]
+  },
+
+  {
+    "bookId": 2,
+    "bookTitle": "Book Two: Separated Bitches",
+    "episodes": [
+      { "id": 1,  "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
+      { "id": 2,  "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
+    ]
+  },
+
+  {
+    "bookId": 3,
+    "bookTitle": "Book Three: Separated Bitches",
+    "episodes": [
+      { "id": 1,  "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
+      { "id": 2,  "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
+    ]
+  },
+
+  {
+    "bookId": 4,
+    "bookTitle": "Book Four: Separated Bitches",
+    "episodes": [
+      { "id": 1,  "filename": "episode1.txt", "title": "Episode 1: The Whispering Woods", "author": "fezcode" },
+      { "id": 2,  "filename": "episode2.txt", "title": "Episode 2: The Goblin Ambush", "author": "fezcode" }
+    ]
+  }
+]

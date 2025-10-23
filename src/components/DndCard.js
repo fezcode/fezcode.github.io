@@ -2,11 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/dnd.css';
 
-const DndCard = ({ title, description, link }) => {
+const DndCard = ({ title, author, link, backgroundImage, className }) => {
   return (
-    <Link to={link} className="dnd-card">
+    <Link to={link} className={`dnd-card ${className || ''}`} style={{ backgroundImage: `url(${backgroundImage})` }}>
       <h3>{title}</h3>
-      <p>{description}</p>
+      {author && <p className="author-text">{author}</p>}
     </Link>
   );
 };

@@ -13,6 +13,9 @@ import NotFoundPage from '../pages/NotFoundPage';
 import SeriesPage from '../pages/SeriesPage';
 import DndPage from '../pages/DndPage';
 import DndNotFoundPage from '../pages/DndNotFoundPage'; // New import
+import DndEpisodePage from '../pages/DndEpisodePage'; // New import
+import DndLorePage from '../pages/DndLorePage'; // New import
+import DndBookPage from '../pages/DndBookPage'; // New import
 
 const pageVariants = {
   initial: {
@@ -203,6 +206,51 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <DndPage />
+            </motion.div>
+          }
+        />
+        {/* D&D Lore Page */}
+        <Route
+          path="/dnd/lore"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <DndLorePage />
+            </motion.div>
+          }
+        />
+        {/* D&D Book Page */}
+        <Route
+          path="/dnd/books/:bookId"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <DndBookPage />
+            </motion.div>
+          }
+        />
+        {/* D&D Episode Page */}
+        <Route
+          path="/dnd/books/:bookId/pages/:episodeId"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <DndEpisodePage />
             </motion.div>
           }
         />
