@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import DndLogo from './DndLogo';
 import { DndContext } from '../context/DndContext'; // Import DndContext
 
 const DndNavbar = () => {
@@ -32,14 +31,16 @@ const DndNavbar = () => {
         )}
       </div>
       <div className="dnd-navbar-center">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-semibold tracking-tight text-white">
-            fez<span className="text-primary-400">codex</span>
-          </span>
-        </Link>
+        <span className="text-2xl font-semibold tracking-tight" style={{ color: '#FFFACD', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', WebkitTextStroke: '0.5px #99967B' }}>
+          From Serfs and Frauds
+        </span>
       </div>
         <div className="dnd-navbar-right">
-            <DndLogo />
+          <Link to="/" className="flex items-center space-x-2">
+            <span className="text-2xl font-semibold tracking-tight text-white">
+              fez<span className="text-primary-400">codex</span>
+            </span>
+          </Link>
         </div>
     </nav>
   );

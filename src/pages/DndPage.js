@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import '../styles/dnd.css';
 import { DndContext } from '../context/DndContext';
 import { parseWallpaperName } from '../utils/dndUtils';
+import dndWallpapers from '../utils/dndWallpapers';
 import usePageTitle from '../utils/usePageTitle';
 
 import DndCard from '../components/DndCard';
@@ -12,13 +13,7 @@ const DndPage = () => {
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
 
   useEffect(() => {
-    const images = [
-      '/images/dnd/wallies/artem-sapegin-XGDBdSQ70O0-unsplash.jpg',
-      '/images/dnd/wallies/ember-navarro-3q2TzsUUVIo-unsplash.jpg',
-      '/images/dnd/wallies/jr-korpa-RADGP_E2pBk-unsplash.jpg',
-      '/images/dnd/wallies/muhammad-haikal-sjukri--RMBf_xSf2U-unsplash.jpg',
-      '/images/dnd/wallies/vida-huang-XHiLiBfp7UM-unsplash.jpg',
-    ];
+    const images = dndWallpapers;
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));

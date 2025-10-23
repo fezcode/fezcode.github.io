@@ -170,7 +170,7 @@
   background-color: rgba(42, 10, 10, 0.6); /* Dark red with 60% opacity */
   backdrop-filter: blur(10px);
   border-bottom: 2px solid #ff4500; /* Fiery orange */
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;

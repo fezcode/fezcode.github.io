@@ -5,6 +5,7 @@ import usePageTitle from '../utils/usePageTitle';
 import '../styles/dnd.css';
 import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
+import dndWallpapers from '../utils/dndWallpapers';
 
 const pageVariants = {
   initial: {
@@ -77,13 +78,7 @@ function DndBookPage() {
   }, [bookId, setBreadcrumbs]);
 
   useEffect(() => {
-    const images = [
-      '/images/dnd/wallies/artem-sapegin-XGDBdSQ70O0-unsplash.jpg',
-      '/images/dnd/wallies/ember-navarro-3q2TzsUUVIo-unsplash.jpg',
-      '/images/dnd/wallies/jr-korpa-RADGP_E2pBk-unsplash.jpg',
-      '/images/dnd/wallies/muhammad-haikal-sjukri--RMBf_xSf2U-unsplash.jpg',
-      '/images/dnd/wallies/vida-huang-XHiLiBfp7UM-unsplash.jpg',
-    ];
+    const images = dndWallpapers;
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
