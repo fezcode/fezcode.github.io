@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const wallpapersDir = path.join(__dirname, '..' , 'public', 'images', 'dnd', 'wallies');
-const outputFile = path.join(__dirname, '..' , 'src', 'utils', 'dndWallpapers.js');
+const wallpapersDir = path.join(__dirname, '..', 'public', 'images', 'dnd', 'wallies');
+const outputFile = path.join(__dirname, '..', 'src', 'utils', 'dndWallpapers.js');
 
 fs.readdir(wallpapersDir, (err, files) => {
   if (err) {
@@ -15,11 +15,14 @@ fs.readdir(wallpapersDir, (err, files) => {
     return ext === '.jpg' || ext === '.png' || ext === '.jpeg' || ext === '.gif';
   });
 
-  const wallpaperPaths = imageFiles.map(file => `'/images/dnd/wallies/${file}'`);
+  // Construct each path string with quotes and indentation
+  const formattedPaths = imageFiles.map(file => `  '/images/dnd/wallies/${file}'`);
+
+  // Join them with a comma and newline
+  const arrayContent = formattedPaths.join(',\n');
 
   const content = `const dndWallpapers = [
-  ${wallpaperPaths.join(',
-  ')}
+${arrayContent}
 ];
 
 export default dndWallpapers;

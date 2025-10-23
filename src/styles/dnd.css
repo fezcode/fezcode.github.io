@@ -2,9 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap');
 
 .dnd-page-container {
-  background: linear-gradient(rgba(40, 44, 52, 0.6), rgba(40, 44, 52, 0.6)), url('../../public/images/dnd/wallies/artem-sapegin-XGDBdSQ70O0-unsplash.jpg');
-  background-size: cover;
-  background-position: center;
   color: #fff;
   font-family: 'MedievalSharp', cursive;
   padding-top: 5rem;
@@ -329,7 +326,7 @@
   border: 1px solid #E09500;
   padding: 0.5rem 1rem;
   border-radius: 5px;
-  background-color: rgba(100, 60, 0, 0.5);
+  background-color: rgba(90, 54, 0, 0.8);
   display: inline-block; /* To apply padding and border correctly */
   white-space: nowrap; /* Prevent text wrapping */
 }

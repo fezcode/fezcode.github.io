@@ -23,12 +23,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prestart": "node scripts/generateWallpapers.js",
     "start": "craco start",
     "prebuild": "node scripts/generateWallpapers.js",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "lint": "eslint src/**/*.{js,jsx} --fix",
+    "lint": "eslint \"src/**/*.{js,jsx}\" \"scripts/**/*.js\" --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b gh-pages"

@@ -5,6 +5,7 @@ import usePageTitle from '../utils/usePageTitle';
 import '../styles/dnd.css';
 import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
+import dndWallpapers from '../utils/dndWallpapers';
 import DndCard from '../components/DndCard'; // Import DndCard
 import Slider from 'react-slick'; // Import Slider
 import 'slick-carousel/slick/slick.css'; // Import slick-carousel CSS
@@ -31,9 +32,12 @@ const pageTransition = {
 function DndLorePage() {
   usePageTitle('The Lore');
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
+  const [bgImage, setBgImage] = useState(''); // State for background image
 
   useEffect(() => {
-    setBgImageName(parseWallpaperName('artem-sapegin-XGDBdSQ70O0-unsplash.jpg')); // Set parsed name for the static background
+    const randomImage = dndWallpapers[Math.floor(Math.random() * dndWallpapers.length)];
+    setBgImage(randomImage);
+    setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([
       { label: 'D&D Home', path: '/dnd' },
       { label: 'The Lore', path: '/dnd/lore' },
@@ -97,7 +101,7 @@ function DndLorePage() {
       transition={pageTransition}
       className="dnd-page-container"
     >
-      <div className="dnd-hero" style={{ position: 'relative' }}>
+      <div className="dnd-hero" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`, position: 'relative' }}>
         <h1 className="dnd-title-box">
           <span className="dnd-hero-title-white">The Lore</span>
         </h1>
