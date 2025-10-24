@@ -15,8 +15,9 @@ import {
   ListIcon,
   GithubLogoIcon,
   GlobeSimpleIcon,
-  ArrowSquareOutIcon,
   SwordIcon,
+  AlienIcon,
+  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -26,8 +27,8 @@ import { version } from '../version';
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
   const [isContentOpen, setIsContentOpen] = useState(true);
+  const [isExtrasOpen, setIsExtrasOpen] = useState(true);
   const [isGamesOpen, setIsGamesOpen] = useState(false);
-  const [isWorldBuildingOpen, setIsWorldBuildingOpen] = useState(false);
   const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
 
@@ -36,17 +37,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   // Effect to update allSectionsOpen when individual sections change
   useEffect(() => {
     setAllSectionsOpen(
-      isMainOpen && isContentOpen && isGamesOpen && isWorldBuildingOpen && isExternalLinksOpen,
+      isMainOpen && isContentOpen && isExtrasOpen && isGamesOpen && isExternalLinksOpen,
     );
-  }, [isMainOpen, isContentOpen, isGamesOpen, isWorldBuildingOpen, isExternalLinksOpen]);
+  }, [isMainOpen, isContentOpen, isGamesOpen, isExtrasOpen, isExternalLinksOpen]);
 
   const toggleAllSections = () => {
     const newState = !allSectionsOpen;
     setAllSectionsOpen(newState);
     setIsMainOpen(newState);
     setIsContentOpen(newState);
+    setIsExtrasOpen(newState);
     setIsGamesOpen(newState);
-    setIsWorldBuildingOpen(newState);
     setIsExternalLinksOpen(newState);
   };
 
@@ -109,7 +110,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 isMainActive ? 'text-red-400' : 'text-gray-100'
               }`}
             >
-              <span className="font-sans text-white">Main</span>
+              <span className="flex items-center gap-2 font-sans text-white">
+                <AsteriskSimpleIcon  size={16} />
+                <span>Main</span>
+              </span>
 
               <CaretDownIcon
                 size={20}
@@ -141,7 +145,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 isContentActive ? 'text-red-400' : 'text-gray-100'
               }`}
             >
-              <span className="font-sans text-white">Content</span>
+              <span className="flex items-center gap-2 font-sans text-white">
+                <BooksIcon size={16} />
+                <span>Content</span>
+              </span>
 
               <CaretDownIcon
                 size={20}
@@ -174,16 +181,20 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
           <div className="mt-8">
             <button
-              onClick={() => setIsWorldBuildingOpen(!isWorldBuildingOpen)}
-              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isWorldBuildingOpen ? 'text-gray-100' : 'text-gray-100'}`}
+              onClick={() => setIsExtrasOpen(!isExtrasOpen)}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExtrasOpen ? 'text-gray-100' : 'text-gray-100'}`}
             >
-              <span className="font-sans text-white">World Building</span>
+              <span className="flex items-center gap-2 font-sans text-white">
+                <AlienIcon size={16} />
+                <span>Extras</span>
+              </span>
+
               <CaretDownIcon
                 size={20}
-                className={`transition-transform ${isWorldBuildingOpen ? 'transform rotate-180' : ''}`}
+                className={`transition-transform ${isExtrasOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-            {isWorldBuildingOpen && (
+            {isExtrasOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/dnd" className={getLinkClass}>
                   <SwordIcon size={24} />
@@ -199,8 +210,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-100' : 'text-gray-100'}`}
             >
               <span className="flex items-center gap-2 font-sans text-white">
+                <JoystickIcon size={16} />
                 <span>Games</span>
-                <ArrowSquareOutIcon size={16} />
               </span>
               <CaretDownIcon
                 size={20}
@@ -240,8 +251,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-100' : 'text-gray-100'}`}
             >
               <span className="flex items-center gap-2 font-sans text-white">
+                <AnchorIcon size={16} />
                 <span>External Links</span>
-                <ArrowSquareOutIcon size={16} />
               </span>
 
               <CaretDownIcon

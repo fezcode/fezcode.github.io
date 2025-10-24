@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PostItem from '../components/PostItem';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
-import { PushPin, Book, ArrowRight } from '@phosphor-icons/react';
+import { PushPin, BookBookmarkIcon, ArrowRight } from '@phosphor-icons/react';
 
 import usePageTitle from '../utils/usePageTitle';
 
@@ -166,7 +166,7 @@ const HomePage = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl tracking-tight text-white text-center flex items-center justify-center gap-2 font-arvo">
-            <Book className="text-primary-400 text-lg" /> Recent Blog Posts
+            <BookBookmarkIcon className="text-primary-400 text-lg" /> Recent Blog Posts
           </h2>
           <div className="mt-8">
             {posts.slice(0, 5).map((item) => (

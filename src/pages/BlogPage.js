@@ -27,6 +27,8 @@ const BlogPage = () => {
                   series: {
                     slug: item.slug,
                     title: item.title,
+                    date: item.date,
+                    updated: item.updated,
                   },
                 });
               });
@@ -44,6 +46,8 @@ const BlogPage = () => {
                 seriesMap.set(post.series.slug, {
                   title: post.series.title,
                   slug: post.series.slug,
+                  date: post.series.date,
+                  updated: post.series.updated,
                   isSeries: true,
                   posts: []
                 });
@@ -208,7 +212,8 @@ const BlogPage = () => {
                   key={item.slug}
                   slug={`series/${item.slug}`}
                   title={item.title}
-                  date={item.posts[item.posts.length - 1].date} // Date of the latest post in the series
+                  date={item.date} // Date of the series
+                  updatedDate={item.updated} // Updated date of the series
                   category="series"
                   isSeries={true}
                 />
