@@ -39,7 +39,7 @@ The project follows a typical React application structure, with key directories 
 1.  **Entry Point (`src/index.js`):** The application starts by rendering the main `App` component into the `index.html` file.
 2.  **Main Application (`src/App.js`):** The `App` component sets up client-side routing using `HashRouter`, defines the overall layout, and manages global contexts like the `ToastProvider`.
 3.  **Routing (`react-router-dom`):** `AnimatedRoutes` (likely a component that uses `react-router-dom`'s `Routes` and `Route` components) handles mapping URLs to specific page components.
-4.  **Content Fetching:** Blog posts and other dynamic content are fetched from `.txt` files located in the `public/` directory. Metadata for these posts is often stored in corresponding `.json` files (e.g., `public/posts/shownPosts.json`).
+4.  **Content Fetching:** Blog posts and other dynamic content are fetched from `.txt` files located in the `public/` directory. Metadata for these posts is often stored in corresponding `.json` files (e.g., `public/posts/posts.json`). The blog page now includes a search functionality to easily find posts by title or slug.
 5.  **Styling (`Tailwind CSS`):** The UI is styled primarily using Tailwind CSS utility classes, with some custom CSS if needed.
 6.  **Deployment:** The application is built into static assets and deployed to GitHub Pages using the `gh-pages` package.
 

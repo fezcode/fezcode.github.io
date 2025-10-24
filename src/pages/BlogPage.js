@@ -9,6 +9,7 @@ const BlogPage = () => {
   const [displayItems, setDisplayItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all'); // New state for active filter
+  const [searchQuery, setSearchQuery] = useState(''); // New state for search query
 
   useEffect(() => {
     const fetchPostSlugs = async () => {
@@ -94,9 +95,21 @@ const BlogPage = () => {
   }, []);
 
   const filteredItems = displayItems.filter(item => {
-    if (activeFilter === 'all') return true;
-    if (activeFilter === 'series') return item.isSeries;
-    return item.category === activeFilter && !item.isSeries;
+    const matchesFilter = () => {
+      if (activeFilter === 'all') return true;
+      if (activeFilter === 'series') return item.isSeries;
+      return item.category === activeFilter && !item.isSeries;
+    };
+
+    const matchesSearch = () => {
+      if (searchQuery === '') return true;
+      const query = searchQuery.toLowerCase();
+      const title = item.title ? item.title.toLowerCase() : '';
+      const slug = item.slug ? item.slug.toLowerCase() : '';
+      return title.includes(query) || slug.includes(query);
+    };
+
+    return matchesFilter() && matchesSearch();
   });
 
   if (loading) {
@@ -142,6 +155,16 @@ const BlogPage = () => {
             <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">
               Total: {filteredItems.length}
             </span>
+          </div>
+          {/* Search Input */}
+          <div className="mt-8 mb-4 flex justify-center">
+            <input
+              type="text"
+              placeholder="Search posts..."
+              className="w-full max-w-md px-4 py-2 rounded-full bg-gray-800 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
           </div>
           {/* Filter Buttons */}
           <div className="mt-8 flex justify-center space-x-4">
