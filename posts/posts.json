@@ -148,6 +148,7 @@
         {
           "slug": "gemini-explains-how-image-modal-works",
           "title": "Gemini 2.5 Flash Explains me How Image Modal Works",
+          "filename": "gemini-explains-how-image-modal-works.txt",
           "description": "Gemini 2.5 Flash Explains me How Image Modal Works",
           "tags": [
             "react",
@@ -159,8 +160,7 @@
             "gemini-2.5-flash"
           ],
           "date": "2024-01-05",
-          "category": "dev",
-          "filename": "gemini-react-components.txt"
+          "category": "dev"
         }
       ]
     }
