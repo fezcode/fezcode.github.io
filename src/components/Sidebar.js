@@ -17,7 +17,7 @@ import {
   GlobeSimpleIcon,
   SwordIcon,
   AlienIcon,
-  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon
+  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon, LinkIcon, ArrowSquareOutIcon
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -110,8 +110,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 isMainActive ? 'text-red-400' : 'text-gray-100'
               }`}
             >
-              <span className="flex items-center gap-2 font-sans text-white">
-                <AsteriskSimpleIcon  size={16} />
+              <span className={`flex items-center gap-2 font-sans ${isMainActive ? 'text-rose-400' : 'text-white'}`}>
+                <AsteriskSimpleIcon size={16} />
                 <span>Main</span>
               </span>
 
@@ -145,7 +145,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                 isContentActive ? 'text-red-400' : 'text-gray-100'
               }`}
             >
-              <span className="flex items-center gap-2 font-sans text-white">
+               <span className={`flex items-center gap-2 font-sans ${isContentActive ? 'text-rose-400' : 'text-white'}`}>
                 <BooksIcon size={16} />
                 <span>Content</span>
               </span>
@@ -187,6 +187,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <AlienIcon size={16} />
                 <span>Extras</span>
+                <LinkIcon size={16} className="text-emerald-200"/>
+
               </span>
 
               <CaretDownIcon
@@ -212,6 +214,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <JoystickIcon size={16} />
                 <span>Games</span>
+                <ArrowSquareOutIcon size={16} className="text-emerald-200"/>
               </span>
               <CaretDownIcon
                 size={20}
@@ -253,6 +256,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <AnchorIcon size={16} />
                 <span>External Links</span>
+                <ArrowSquareOutIcon size={16} className="text-emerald-200"/>
               </span>
 
               <CaretDownIcon
