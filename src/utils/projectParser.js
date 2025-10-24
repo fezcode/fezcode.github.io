@@ -8,17 +8,17 @@ export const useProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/projects/shownProjects.json');
+        const response = await fetch('/projects/projects.json');
         if (!response.ok) {
           throw new Error(
-            `HTTP error! status: ${response.status} for shownProjects.json`,
+            `HTTP error! status: ${response.status} for projects.json`,
           );
         }
         const projectDataList = await response.json();
 
         const fetchedProjects = await Promise.all(
           projectDataList.map(async (projectData) => {
-            const slug = projectData.slug; // Use slug from shownProjects.json
+            const slug = projectData.slug; // Use slug from projects.json
             const contentResponse = await fetch(`/projects/${slug}.txt`);
             if (!contentResponse.ok) {
               throw new Error(
@@ -33,7 +33,7 @@ export const useProjects = () => {
             const fullContent = parts.slice(1).join('---').trim();
 
             return {
-              ...projectData, // All metadata from shownProjects.json
+              ...projectData, // All metadata from projects.json
               shortDescription,
               fullContent,
             };
