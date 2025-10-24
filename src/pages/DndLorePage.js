@@ -105,9 +105,9 @@ function DndLorePage() {
         <h1 className="dnd-title-box">
           <span className="dnd-hero-title-white">The Lore</span>
         </h1>
-        <div className="dnd-content-box" style={{ zIndex: 1 }}>
+        <div className="dnd-content-box dnd-books-section" style={{ zIndex: 1 }}>
           <h2 >Books</h2>
-          <Slider {...settings}>
+          <Slider {...settings} className="dnd-carousel">
             {episodes.map((book) => (
               <div key={book.bookId} className="px-12"> {/* Add padding for spacing between cards */}
                 <DndCard

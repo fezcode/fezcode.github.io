@@ -73,3 +73,9 @@ code {
   --color-series-badge: #e11d48; /* rose-600 */
   --color-dnd-badge: #583fa3; /* violet-400 */
 }
+
+@media (max-width: 768px) {
+  body {
+    font-family: serif !important;
+  }
+}
