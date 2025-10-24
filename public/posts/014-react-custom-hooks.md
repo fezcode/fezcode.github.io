@@ -1,0 +1,138 @@
+# 014 - React: Custom Hooks
+
+Custom Hooks are a powerful feature in React that allow you to extract reusable stateful logic from components. They are JavaScript functions whose names start with `use` and that can call other Hooks. Custom Hooks solve the problem of sharing logic between components without relying on prop drilling or complex patterns like render props or higher-order components.
+
+## Why Use Custom Hooks?
+
+1.  **Reusability**: Extract common logic (state, effects, context) into a single function that can be used across multiple components.
+2.  **Readability**: Components become cleaner and easier to understand as their logic is separated from their UI concerns.
+3.  **Maintainability**: Changes to shared logic only need to be made in one place.
+4.  **Testability**: Logic extracted into custom hooks can often be tested more easily in isolation.
+
+## How to Create a Custom Hook
+
+A custom Hook is a JavaScript function that:
+
+*   Starts with the word `use` (e.g., `useFriendStatus`, `useToast`). This naming convention is crucial for React to know that it's a Hook and to apply the rules of Hooks (e.g., only call Hooks at the top level of a React function).
+*   Can call other Hooks (e.g., `useState`, `useEffect`, `useContext`).
+*   Can return anything: stateful values, functions, or nothing.
+
+## Example: `useToast` Custom Hook (`src/hooks/useToast.js`)
+
+This project provides an excellent example of a custom hook: `useToast`. It encapsulates the logic for accessing the toast notification system's `addToast` and `removeToast` functions.
+
+### `src/hooks/useToast.js`
+
+```javascript
+import { useContext } from 'react';
+import { ToastContext } from '../components/ToastProvider';
+
+export const useToast = () => {
+  return useContext(ToastContext);
+};
+```
+
+**Explanation:**
+
+1.  **`import { useContext } from 'react';`**: The custom hook itself uses another built-in Hook, `useContext`, to access the value provided by the `ToastContext`.
+2.  **`import { ToastContext } from '../components/ToastProvider';`**: It imports the `ToastContext` object, which was created in `ToastProvider.js`.
+3.  **`export const useToast = () => { ... };`**: This defines the custom hook. Its name `useToast` clearly indicates its purpose and follows the naming convention.
+4.  **`return useContext(ToastContext);`**: The core of this hook. It retrieves the `value` (which contains `addToast` and `removeToast` functions) from the nearest `ToastContext.Provider` in the component tree and returns it. This means any component calling `useToast()` will receive these functions.
+
+### How `useToast` is Used in a Component (e.g., `BlogPostPage.js`)
+
+```javascript
+// Inside BlogPostPage.js (or any other component that needs toasts)
+import { useToast } from '../hooks/useToast';
+
+const CodeBlock = ({ /* ... */ }) => {
+  const { addToast } = useToast(); // Access addToast function
+
+  const handleCopy = () => {
+    // ... copy logic ...
+    addToast({
+      title: 'Success',
+      message: 'Copied to clipboard!',
+      duration: 3000,
+    });
+    // ...
+  };
+  // ...
+};
+```
+
+By calling `const { addToast } = useToast();`, the `CodeBlock` component (or any other component) gains direct access to the `addToast` function without needing to know where `ToastContext` is defined or how the toast state is managed. This makes the `CodeBlock` component cleaner and more focused on its primary responsibility.
+
+## Another Potential Custom Hook (Conceptual Example)
+
+Consider the scroll tracking logic in `BlogPostPage.js`:
+
+```javascript
+// src/pages/BlogPostPage.js - inside BlogPostPage component
+const [readingProgress, setReadingProgress] = useState(0);
+const [isAtTop, setIsAtTop] = useState(true);
+const contentRef = useRef(null);
+
+useEffect(() => {
+  const handleScroll = () => {
+    if (contentRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
+      const totalHeight = scrollHeight - clientClientHeight;
+      const currentProgress = (scrollTop / totalHeight) * 100;
+      setReadingProgress(currentProgress);
+      setIsAtTop(scrollTop === 0);
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [post]);
+```
+
+This logic could be extracted into a custom hook, for example, `useScrollProgress`:
+
+```javascript
+// src/hooks/useScrollProgress.js (Conceptual)
+import { useState, useEffect, useRef } from 'react';
+
+const useScrollProgress = (contentRef, dependency) => {
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (contentRef.current) {
+        const { scrollTop, scrollHeight, clientHeight } =
+          document.documentElement;
+        const totalHeight = scrollHeight - clientHeight;
+        const currentProgress = (scrollTop / totalHeight) * 100;
+        setReadingProgress(currentProgress);
+        setIsAtTop(scrollTop === 0);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [contentRef, dependency]); // Re-run if contentRef or dependency changes
+
+  return { readingProgress, isAtTop };
+};
+
+export default useScrollProgress;
+```
+
+Then, `BlogPostPage.js` would become cleaner:
+
+```javascript
+// src/pages/BlogPostPage.js - inside BlogPostPage component
+const contentRef = useRef(null);
+const { readingProgress, isAtTop } = useScrollProgress(contentRef, post);
+// ...
+```
+
+This demonstrates how custom hooks can abstract away complex logic, making components more focused and easier to read.
+
+## Summary
+
+Custom Hooks are a fundamental pattern in modern React development for sharing stateful logic. By following the `use` naming convention and leveraging other built-in Hooks, you can create highly reusable and maintainable code that enhances the overall architecture of your React applications.

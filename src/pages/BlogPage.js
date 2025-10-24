@@ -13,24 +13,41 @@ const BlogPage = () => {
   useEffect(() => {
     const fetchPostSlugs = async () => {
       try {
-        const response = await fetch('/posts/shownPosts.json');
+        const response = await fetch('/posts/posts.json');
         if (response.ok) {
-          const allPosts = await response.json();
+          const allPostsData = await response.json();
+
+          const processedPosts = [];
+          allPostsData.forEach((item) => {
+            if (item.series) {
+              item.series.posts.forEach((seriesPost) => {
+                processedPosts.push({
+                  ...seriesPost,
+                  series: {
+                    slug: item.slug,
+                    title: item.title,
+                  },
+                });
+              });
+            } else {
+              processedPosts.push(item);
+            }
+          });
 
           const seriesMap = new Map();
           const individualPosts = [];
 
-          allPosts.forEach(post => {
+          processedPosts.forEach(post => {
             if (post.series) {
-              if (!seriesMap.has(post.series)) {
-                seriesMap.set(post.series, {
-                  title: post.series,
-                  slug: post.series.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-series', // Generate a slug for the series
+              if (!seriesMap.has(post.series.slug)) {
+                seriesMap.set(post.series.slug, {
+                  title: post.series.title,
+                  slug: post.series.slug,
                   isSeries: true,
                   posts: []
                 });
               }
-              seriesMap.get(post.series).posts.push(post);
+              seriesMap.get(post.series.slug).posts.push(post);
             } else {
               individualPosts.push(post);
             }
@@ -47,10 +64,16 @@ const BlogPage = () => {
             ...individualPosts,
           ];
 
-          // Sort combined items by date (newest first), series entries should appear based on the date of their latest post
+          // Helper function to get the effective date for sorting
+          const getEffectiveDate = (item) => {
+            // For both series and individual posts, use updated or date from the top level
+            return new Date(item.updated || item.date);
+          };
+
+          // Sort combined items by effective date (newest first)
           combinedItems.sort((a, b) => {
-            const dateA = a.isSeries ? new Date(Math.max(...a.posts.map(p => new Date(p.date)))) : new Date(a.date);
-            const dateB = b.isSeries ? new Date(Math.max(...b.posts.map(p => new Date(p.date)))) : new Date(b.date);
+            const dateA = getEffectiveDate(a);
+            const dateB = getEffectiveDate(b);
             return dateB - dateA;
           });
 

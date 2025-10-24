@@ -16,6 +16,7 @@ import {
   GithubLogoIcon,
   GlobeSimpleIcon,
   ArrowSquareOutIcon,
+  SwordIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -26,6 +27,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
   const [isContentOpen, setIsContentOpen] = useState(true);
   const [isGamesOpen, setIsGamesOpen] = useState(false);
+  const [isWorldBuildingOpen, setIsWorldBuildingOpen] = useState(false);
   const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
 
@@ -34,9 +36,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   // Effect to update allSectionsOpen when individual sections change
   useEffect(() => {
     setAllSectionsOpen(
-      isMainOpen && isContentOpen && isGamesOpen && isExternalLinksOpen,
+      isMainOpen && isContentOpen && isGamesOpen && isWorldBuildingOpen && isExternalLinksOpen,
     );
-  }, [isMainOpen, isContentOpen, isGamesOpen, isExternalLinksOpen]);
+  }, [isMainOpen, isContentOpen, isGamesOpen, isWorldBuildingOpen, isExternalLinksOpen]);
 
   const toggleAllSections = () => {
     const newState = !allSectionsOpen;
@@ -44,6 +46,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     setIsMainOpen(newState);
     setIsContentOpen(newState);
     setIsGamesOpen(newState);
+    setIsWorldBuildingOpen(newState);
     setIsExternalLinksOpen(newState);
   };
 
@@ -164,6 +167,27 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                   <ArticleIcon size={24} />
 
                   <span>Logs</span>
+                </NavLink>
+              </nav>
+            )}
+          </div>
+
+          <div className="mt-8">
+            <button
+              onClick={() => setIsWorldBuildingOpen(!isWorldBuildingOpen)}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isWorldBuildingOpen ? 'text-gray-100' : 'text-gray-100'}`}
+            >
+              <span className="font-sans text-white">World Building</span>
+              <CaretDownIcon
+                size={20}
+                className={`transition-transform ${isWorldBuildingOpen ? 'transform rotate-180' : ''}`}
+              />
+            </button>
+            {isWorldBuildingOpen && (
+              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+                <NavLink to="/dnd" className={getLinkClass}>
+                  <SwordIcon size={24} />
+                  <span>From Serfs and Frauds</span>
                 </NavLink>
               </nav>
             )}

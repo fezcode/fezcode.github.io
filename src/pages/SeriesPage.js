@@ -16,19 +16,39 @@ const SeriesPage = () => {
   useEffect(() => {
     const fetchSeriesPosts = async () => {
       try {
-        const response = await fetch('/posts/shownPosts.json');
+        const response = await fetch('/posts/posts.json');
         if (response.ok) {
-          const allPosts = await response.json();
-          const filteredPosts = allPosts.filter(
-            (post) =>
-              post.series &&
-              post.series.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-series' === seriesSlug
-          ).sort((a, b) => a.seriesIndex - b.seriesIndex);
+          const allPostsData = await response.json();
+
+          const processedPosts = [];
+          allPostsData.forEach((item) => {
+            if (item.series) {
+              item.series.posts.forEach((seriesPost) => {
+                processedPosts.push({
+                  ...seriesPost,
+                  series: {
+                    slug: item.slug,
+                    title: item.title,
+                  },
+                });
+              });
+            } else {
+              processedPosts.push(item);
+            }
+          });
+
+          const filteredPosts = processedPosts.filter(
+            (post) => post.series && post.series.slug === seriesSlug
+          ).sort((a, b) => {
+            const dateA = new Date(a.updated || a.date);
+            const dateB = new Date(b.updated || b.date);
+            return dateB - dateA;
+          });
 
           if (filteredPosts.length > 0) {
             setSeriesPosts(filteredPosts);
-            setSeriesTitle(filteredPosts[0].series);
-            setPageTitle(`${filteredPosts[0].series} - Series`);
+            setSeriesTitle(filteredPosts[0].series.title);
+            setPageTitle(`${filteredPosts[0].series.title} - Series`);
           } else {
             // Handle series not found
             setSeriesPosts([]);
@@ -36,7 +56,7 @@ const SeriesPage = () => {
             setPageTitle('Series Not Found');
           }
         } else {
-          console.error('Failed to fetch shownPosts.json');
+          console.error('Failed to fetch posts.json');
           setSeriesPosts([]);
           setSeriesTitle('Error');
           setPageTitle('Error');

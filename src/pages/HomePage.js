@@ -17,10 +17,52 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPostSlugs = async () => {
       try {
-        const response = await fetch('/posts/shownPosts.json');
+        const response = await fetch('/posts/posts.json');
         if (response.ok) {
-          const postsData = await response.json();
-          setPosts(postsData);
+          const allPostsData = await response.json();
+
+          const seriesMap = new Map();
+          const individualPosts = [];
+
+          allPostsData.forEach((item) => {
+            if (item.series) {
+              // This is a series container
+              seriesMap.set(item.slug, {
+                ...item,
+                isSeries: true,
+                posts: item.series.posts, // Keep reference to child posts for date sorting
+              });
+            } else {
+              // This is an individual post
+              individualPosts.push(item);
+            }
+          });
+
+          // Combine individual posts and series entries
+          const combinedItems = [
+            ...Array.from(seriesMap.values()),
+            ...individualPosts,
+          ];
+
+          // Helper function to get the effective date for sorting
+          const getEffectiveDate = (item) => {
+            if (item.isSeries) {
+              // For a series, use its top-level updated or date
+              return new Date(item.updated || item.date);
+            } else {
+              // For an individual post, use updated or date
+              return new Date(item.updated || item.date);
+            }
+          };
+
+          // Sort combined items by effective date (newest first)
+          combinedItems.sort((a, b) => {
+            const dateA = getEffectiveDate(a);
+            const dateB = getEffectiveDate(b);
+            return dateB - dateA;
+          });
+
+          setPosts(combinedItems);
         } else {
           console.error('Failed to fetch post slugs');
           setPosts([]);
@@ -127,15 +169,29 @@ const HomePage = () => {
             <Book className="text-primary-400 text-lg" /> Recent Blog Posts
           </h2>
           <div className="mt-8">
-            {posts.slice(0, 5).map((post) => (
-              <PostItem
-                key={post.slug}
-                slug={post.slug}
-                title={post.title}
-                date={post.date}
-                updatedDate={post.updated}
-                category={post.category}
-              />
+            {posts.slice(0, 5).map((item) => (
+              item.isSeries ? (
+                <PostItem
+                  key={item.slug}
+                  slug={`series/${item.slug}`}
+                  title={item.title}
+                  date={item.date}
+                  updatedDate={item.updated}
+                  category="series"
+                  isSeries={true}
+                />
+              ) : (
+                <PostItem
+                  key={item.slug}
+                  slug={item.slug}
+                  title={item.title}
+                  date={item.date}
+                  updatedDate={item.updated}
+                  category={item.category}
+                  series={item.series}
+                  seriesIndex={item.seriesIndex}
+                />
+              )
             ))}
           </div>
           <div className="mt-8 text-center">

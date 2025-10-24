@@ -1,3 +1,8 @@
+# 005 - `src/pages/BlogPostPage.js` Component Explained
+
+`src/pages/BlogPostPage.js` is a critical component responsible for displaying individual blog posts. It handles fetching the post content and metadata, rendering Markdown, syntax highlighting code blocks, and managing UI interactivity like copying code or opening code in a modal. It also includes navigation for series posts and robust error handling for missing content.
+
+```javascript
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
@@ -13,107 +18,7 @@ import PostMetadata from '../components/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
 
-const LinkRenderer = ({ href, children }) => {
-  const isExternal = href.startsWith('http') || href.startsWith('https');
-  return (
-    <a
-      href={href}
-      className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1"
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-    >
-      {children} {isExternal && <ArrowSquareOut className="text-xs" />}
-    </a>
-  );
-};
-
-const CodeBlock = ({
-  node,
-  inline,
-  className,
-  children,
-  openModal,
-  ...props
-}) => {
-  const match = /language-(\w+)/.exec(className || '');
-  const { addToast } = useToast();
-  const handleCopy = () => {
-    const textToCopy = String(children);
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(textToCopy).then(
-        () => {
-          addToast({
-            title: 'Success',
-            message: 'Copied to clipboard!',
-            duration: 3000,
-          });
-        },
-        () => {
-          addToast({
-            title: 'Error',
-            message: 'Failed to copy!',
-            duration: 3000,
-          });
-        },
-      );
-    } else {
-      const textArea = document.createElement('textarea');
-      textArea.value = textToCopy;
-      textArea.style.position = 'fixed';
-      textArea.style.left = '-9999px';
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      try {
-        document.execCommand('copy');
-        addToast({
-          title: 'Success',
-          message: 'Copied to clipboard!',
-          duration: 3000,
-        });
-      } catch (err) {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy!',
-          duration: 3000,
-        });
-      }
-      document.body.removeChild(textArea);
-    }
-  };
-
-  return !inline && match ? (
-    <div className="relative">
-      <div className="absolute top-2 right-2 flex gap-2">
-        <button
-          onClick={() => openModal(String(children).replace(/\n$/, ''))}
-          className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
-        >
-          <ArrowsOutSimple size={20} />
-        </button>
-        <button
-          onClick={handleCopy}
-          className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
-        >
-          <Clipboard size={20} />
-        </button>
-      </div>
-      <SyntaxHighlighter
-        style={customTheme}
-        language={match[1]}
-        PreTag="div"
-        {...props}
-        codeTagProps={{ style: { fontFamily: "'JetBrains Mono', monospace" } }}
-      >
-        {String(children).replace(/\n$/, '')}
-      </SyntaxHighlighter>
-    </div>
-  ) : (
-    <code className={`${className} font-mono`} {...props}>
-      {children}
-    </code>
-  );
-};
+// ... LinkRenderer and CodeBlock components (explained below)
 
 const BlogPostPage = () => {
   const { slug, seriesSlug, episodeSlug } = useParams();
@@ -137,100 +42,69 @@ const BlogPostPage = () => {
     setModalContent('');
   };
 
-    useEffect(() => {
-      const fetchPost = async () => {
-        setLoading(true);
+  useEffect(() => {
+    const fetchPost = async () => {
+      setLoading(true);
+      console.log('Fetching post for currentSlug:', currentSlug);
+      try {
+        const [postContentResponse, shownPostsResponse] = await Promise.all([
+          fetch(`/posts/${currentSlug}.txt`),
+          fetch('/posts/shownPosts.json'),
+        ]);
 
-        console.log('Fetching post for currentSlug:', currentSlug);
+        console.log('postContentResponse:', postContentResponse);
+        console.log('shownPostsResponse:', shownPostsResponse);
 
-        try {
-          // Fetch shownPosts.json
-          const postsResponse = await fetch('/posts/posts.json');
-
-          let allPostsData = [];
-          if (postsResponse.ok) {
-            allPostsData = await postsResponse.json();
-          } else {
-            console.error('Failed to fetch posts.json');
-            navigate('/404');
-            return;
+        let postBody = '';
+        if (postContentResponse.ok) {
+          postBody = await postContentResponse.text();
+          // Check if the fetched content is actually HTML (indicating a fallback to index.html)
+          if (postBody.trim().startsWith('<!DOCTYPE html>')) {
+            console.error('Fetched content is HTML, not expected post content for:', currentSlug);
+            navigate('/404'); // Redirect to 404 page
+            return; // Stop further processing
           }
-
-          let allPosts = [];
-          allPostsData.forEach((item) => {
-            if (item.series) {
-              item.series.posts.forEach((seriesPost) => {
-                allPosts.push({
-                  ...seriesPost,
-                  series: {
-                    slug: item.slug,
-                    title: item.title,
-                  },
-                });
-              });
-            } else {
-              allPosts.push(item);
-            }
-          });
-
-          let postMetadata = allPosts.find((item) => item.slug === currentSlug);
-
-          if (!postMetadata) {
-            console.error('Post metadata not found for:', currentSlug);
-            navigate('/404');
-            return;
-          }
-
-          let postBody = '';
-          if (postMetadata.filename) {
-            const contentPath = postMetadata.filename.startsWith('public/')
-              ? postMetadata.filename.substring(7)
-              : postMetadata.filename;
-            const postContentResponse = await fetch(`/${contentPath}`);
-            if (postContentResponse.ok) {
-              postBody = await postContentResponse.text();
-              if (postBody.trim().startsWith('<!DOCTYPE html>')) {
-                console.error('Fetched content is HTML, not expected post content for:', currentSlug);
-                navigate('/404');
-                return;
-              }
-            } else {
-              console.error('Failed to fetch post content from filename:', postMetadata.filename);
-              navigate('/404');
-              return;
-            }
-          } else {
-            console.error('Post metadata missing filename for:', currentSlug);
-            navigate('/404');
-            return;
-          }
-
-          let seriesPosts = [];
-          let currentSeries = null;
-
-          if (postMetadata.series) {
-            currentSeries = postMetadata.series;
-            // Find the original series object from allPostsData to get all posts in the series
-            const originalSeries = allPostsData.find(
-              (item) => item.series && item.slug === currentSeries.slug,
-            );
-            if (originalSeries) {
-              seriesPosts = originalSeries.series.posts;
-            }
-          }
-
-          setPost({ attributes: postMetadata, body: postBody, seriesPosts, currentSeries });
-        } catch (error) {
-          console.error('Error fetching post or metadata:', error);
-
-          setPost({ attributes: { title: 'Error loading post' }, body: '' });
-        } finally {
-          setLoading(false);
+        } else {
+          console.error('Failed to fetch post content for:', currentSlug);
+          navigate('/404'); // Redirect to 404 page
+          return; // Stop further processing
         }
-      };
 
-      fetchPost();
-    }, [currentSlug, navigate]);
+        let postMetadata = null;
+        let seriesPosts = [];
+        if (shownPostsResponse.ok) {
+          const allPosts = await shownPostsResponse.json();
+          postMetadata = allPosts.find((item) => item.slug === currentSlug);
+
+          if (postMetadata && postMetadata.series) {
+            seriesPosts = allPosts
+              .filter((item) => item.series === postMetadata.series)
+              .sort((a, b) => a.seriesIndex - b.seriesIndex);
+          }
+        } else {
+          console.error('Failed to fetch shownPosts.json');
+        }
+
+        console.log('postMetadata:', postMetadata);
+        console.log('postBody length:', postBody.length);
+
+        if (postMetadata && postContentResponse.ok) {
+          setPost({ attributes: postMetadata, body: postBody, seriesPosts });
+          console.log('Post set:', { attributes: postMetadata, body: postBody, seriesPosts });
+        } else {
+          setPost({ attributes: { title: 'Post not found' }, body: '' });
+          console.log('Post not found or content not fetched.');
+        }
+      } catch (error) {
+        console.error('Error fetching post or shownPosts.json:', error);
+        setPost({ attributes: { title: 'Error loading post' }, body: '' });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [currentSlug]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -280,8 +154,22 @@ const BlogPostPage = () => {
     );
   }
 
-  if (!post) {
-    return <div className="text-center py-16">Post not found</div>;
+  // if (!post) { // This check is now mostly handled by the navigate('/404') above.
+  //   return <div className="text-center py-16">Post not found</div>;
+  // }
+
+  // Conditional rendering for post not found after loading or if attributes are missing
+  if (!post || !post.attributes || post.body === '') {
+    // If post is null, or attributes are missing (e.g., from shownPosts.json), or body is empty,
+    // it implies the post couldn't be fully loaded or found. Ideally, navigate would handle this.
+    // This serves as a fallback display.
+    return (
+      <div className="text-center py-16 text-gray-400">
+        <h2 className="text-3xl font-bold mb-4">Post Not Found</h2>
+        <p className="text-lg">The blog post you are looking for does not exist or could not be loaded.</p>
+        <Link to="/blog" className="text-primary-400 hover:underline mt-4 inline-block">Go back to Blog</Link>
+      </div>
+    );
   }
 
   const currentPostIndex = post.seriesPosts ? post.seriesPosts.findIndex(
@@ -292,8 +180,8 @@ const BlogPostPage = () => {
     ? post.seriesPosts[currentPostIndex + 1]
     : null;
 
-  const backLink = post.attributes.series ? `/blog/series/${post.attributes.series.slug}` : '/blog';
-  const backLinkText = post.attributes.series ? `Back to ${post.attributes.series.title}` : 'Back to Blog';
+  const backLink = seriesSlug ? `/blog/series/${seriesSlug}` : '/blog';
+  const backLinkText = seriesSlug ? 'Back to Series' : 'Back to Blog';
 
   return (
     <div className="bg-gray-900 py-16 sm:py-24">

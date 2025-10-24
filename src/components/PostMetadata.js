@@ -103,15 +103,13 @@ const PostMetadata = ({
             <>
               <div>
                 <Label>Series</Label>
-                <p className="text-gray-300 ml-1 mt-1">{metadata.series}</p>
+                <p className="text-gray-300 ml-1 mt-1">{metadata.series.title}</p>
               </div>
               <div>
                 <Label>Episodes</Label>
                 <ul className="list-disc list-inside ml-4 mt-2 text-gray-300">
                   {seriesPosts.map((postInSeries) => {
-                    const currentSeriesSlug = metadata.series.toLowerCase().replace(/[^a-z0-9]+/g, '-') + '-series';
-                    const episodeLink = `/blog/series/${currentSeriesSlug}/${postInSeries.slug}`;
-                    return (
+                    const episodeLink = `/blog/series/${metadata.series.slug}/${postInSeries.slug}`;                    return (
                       <li key={postInSeries.slug}>
                         <Link
                           to={episodeLink}
