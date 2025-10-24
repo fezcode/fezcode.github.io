@@ -31,7 +31,7 @@ const DndNavbar = () => {
         )}
       </div>
       <div className="dnd-navbar-center">
-        <span className="text-2xl font-semibold tracking-tight" style={{ color: '#FFFACD', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)', WebkitTextStroke: '0.5px #99967B' }}>
+        <span className="text-2xl font-semibold tracking-tight" style={{ color: '#FFFACD', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)' }}>
           From Serfs and Frauds
         </span>
       </div>

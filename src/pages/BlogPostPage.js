@@ -183,9 +183,7 @@ const BlogPostPage = () => {
 
           let postBody = '';
           if (postMetadata.filename) {
-            const contentPath = postMetadata.filename.startsWith('public/')
-              ? postMetadata.filename.substring(7)
-              : postMetadata.filename;
+            const contentPath = `posts/${postMetadata.filename}`;
             const postContentResponse = await fetch(`/${contentPath}`);
             if (postContentResponse.ok) {
               postBody = await postContentResponse.text();

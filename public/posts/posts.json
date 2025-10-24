@@ -9,112 +9,112 @@
         {
           "slug": "react-memoization-hooks",
           "title": "React Memoization Hooks",
-          "filename": "public/posts/016-react-memoization-hooks.md",
+          "filename": "/react-of-fezcode/016-react-memoization-hooks.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "react-refs-useref",
           "title": "React Refs Useref",
-          "filename": "public/posts/015-react-refs-useref.md",
+          "filename": "/react-of-fezcode/015-react-refs-useref.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "react-custom-hooks",
           "title": "React Custom Hooks",
-          "filename": "public/posts/014-react-custom-hooks.md",
+          "filename": "/react-of-fezcode/014-react-custom-hooks.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "document-fetching-api",
           "title": "Document Fetching Api",
-          "filename": "public/posts/013-document-fetching-api.md",
+          "filename": "/react-of-fezcode/013-document-fetching-api.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "html-structure",
           "title": "Html Structure",
-          "filename": "public/posts/012-html-structure.md",
+          "filename": "/react-of-fezcode/012-html-structure.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "javascript-fundamentals",
           "title": "Javascript Fundamentals",
-          "filename": "public/posts/011-javascript-fundamentals.md",
+          "filename": "/react-of-fezcode/011-javascript-fundamentals.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "css-and-tailwind-css",
           "title": "Css And Tailwind Css",
-          "filename": "public/posts/010-css-and-tailwind-css.md",
+          "filename": "/react-of-fezcode/010-css-and-tailwind-css.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "routing-with-react-router-dom",
           "title": "Routing With React Router Dom",
-          "filename": "public/posts/009-routing-with-react-router-dom.md",
+          "filename": "/react-of-fezcode/009-routing-with-react-router-dom.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "react-context-usecontext",
           "title": "React Context Usecontext",
-          "filename": "public/posts/008-react-context-usecontext.md",
+          "filename": "/react-of-fezcode/008-react-context-usecontext.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "react-hooks-usestate-useeffect",
           "title": "React Hooks Usestate Useeffect",
-          "filename": "public/posts/007-react-hooks-usestate-useeffect.md",
+          "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "react-basics-components-props",
           "title": "React Basics Components Props",
-          "filename": "public/posts/006-react-basics-components-props.md",
+          "filename": "/react-of-fezcode/006-react-basics-components-props.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "blog-post-page-component",
           "title": "Blog Post Page Component",
-          "filename": "public/posts/005-blog-post-page-component.md",
+          "filename": "/react-of-fezcode/005-blog-post-page-component.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "app-js-main-component",
           "title": "App Js Main Component",
-          "filename": "public/posts/004-app-js-main-component.md",
+          "filename": "/react-of-fezcode/004-app-js-main-component.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "index-js-entry-point",
           "title": "Index Js Entry Point",
-          "filename": "public/posts/003-index-js-entry-point.md",
+          "filename": "/react-of-fezcode/003-index-js-entry-point.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "package-json-explained",
           "title": "Package Json Explained",
-          "filename": "public/posts/002-package-json-explained.md",
+          "filename": "/react-of-fezcode/002-package-json-explained.md",
           "date": "2025-10-26",
           "category": "dev"
         },
         {
           "slug": "project-overview",
           "title": "Project Overview",
-          "filename": "public/posts/001-project-overview.md",
+          "filename": "/react-of-fezcode/001-project-overview.md",
           "date": "2025-10-26",
           "category": "dev"
         }
@@ -122,25 +122,44 @@
     }
   },
   {
-    "title": "Gemini's Guide to React",
+    "title": "Gemini Explains",
     "date": "2025-10-25",
     "updated": "2025-10-26",
-    "slug": "gemini-react",
+    "slug": "gemini-explains",
     "series": {
       "posts": [
         {
-          "slug": "gemini-react-intro",
-          "title": "Introduction",
-          "filename": "public/posts/gemini-react-intro.txt",
-          "date": "2024-01-01",
+          "slug": "gemini-explains-how-hooks-work-with-toast-component",
+          "title": "Gemini Explains How Hooks Work with Toast Component",
+          "filename": "gemini-explains-how-hooks-work-with-toast-component.md",
+          "tags": [
+            "react",
+            "hooks",
+            "toast",
+            "explanation",
+            "ai",
+            "gemini",
+            "gemini-2.5-flash"
+          ],
+          "date": "2025-10-18",
           "category": "dev"
         },
         {
-          "slug": "gemini-react-components",
-          "title": "Understanding Components",
+          "slug": "gemini-explains-how-image-modal-works",
+          "title": "Gemini 2.5 Flash Explains me How Image Modal Works",
+          "description": "Gemini 2.5 Flash Explains me How Image Modal Works",
+          "tags": [
+            "react",
+            "hooks",
+            "toast",
+            "explanation",
+            "ai",
+            "gemini",
+            "gemini-2.5-flash"
+          ],
           "date": "2024-01-05",
           "category": "dev",
-          "filename": "public/posts/gemini-react-components.txt"
+          "filename": "gemini-react-components.md"
         }
       ]
     }
@@ -156,42 +175,9 @@
       "adventure"
     ],
     "category": "d&d",
-    "filename": "public/posts/my-first-dnd-post.txt"
+    "filename": "my-first-dnd-post.md"
   },
-  {
-    "slug": "gemini-explains-how-hooks-work-with-toast-component",
-    "title": "Gemini Explains How Hooks Work with Toast Component",
-    "date": "2025-10-18",
-    "description": "An explanation of React Hooks, Context, Providers, and custom hooks, using the toast notification system as an example.",
-    "tags": [
-      "react",
-      "hooks",
-      "toast",
-      "explanation",
-      "ai",
-      "gemini",
-      "gemini-2.5-flash"
-    ],
-    "category": "dev",
-    "filename": "public/posts/gemini-explains-how-hooks-work-with-toast-component.txt"
-  },
-  {
-    "slug": "gemini-explains-how-image-modal-works",
-    "title": "Gemini 2.5 Flash Explains me How Image Modal Works",
-    "date": "2025-10-17",
-    "description": "Gemini 2.5 Flash Explains me How Image Modal Works",
-    "tags": [
-      "react",
-      "hooks",
-      "toast",
-      "explanation",
-      "ai",
-      "gemini",
-      "gemini-2.5-flash"
-    ],
-    "category": "dev",
-    "filename": "public/posts/gemini-explains-how-image-modal-works.txt"
-  },
+
   {
     "slug": "do-i-need-to-create-a-lib-for-that",
     "title": "Do I Need to Create a Lib For That?",
@@ -204,7 +190,7 @@
       "pkg.go.dev"
     ],
     "category": "dev",
-    "filename": "public/posts/do-i-need-to-create-a-lib-for-that.txt"
+    "filename": "do-i-need-to-create-a-lib-for-that.md"
   },
   {
     "slug": "hashrouter-vs-browserrouter",
@@ -219,7 +205,7 @@
       "router"
     ],
     "category": "dev",
-    "filename": "public/posts/hashrouter-vs-browserrouter.txt"
+    "filename": "hashrouter-vs-browserrouter.md"
   },
   {
     "slug": "warning-post",
@@ -231,58 +217,6 @@
       "updates"
     ],
     "category": "rant",
-    "filename": "public/posts/warning-post.txt"
-  },
-  {
-    "slug": "code-example-post",
-    "title": "Code Example Post",
-    "date": "2025-10-15",
-    "updated": "2025-10-15",
-    "description": "A blog post demonstrating code blocks in various languages.",
-    "tags": [
-      "code",
-      "markdown",
-      "example"
-    ],
-    "category": "dev",
-    "filename": "public/posts/code-example-post.txt"
-  },
-  {
-    "slug": "first-post",
-    "title": "My First Post",
-    "date": "2025-10-14",
-    "updated": "2025-10-15",
-    "tags": [
-      "react",
-      "hello-world"
-    ],
-    "category": "dev",
-    "filename": "public/posts/first-post.txt"
-  },
-  {
-    "slug": "long-post",
-    "title": "The Art of Scrolling",
-    "date": "2025-10-13",
-    "updated": "2025-10-14",
-    "description": "css",
-    "tags": [
-      "css",
-      "scrolling",
-      "web-design"
-    ],
-    "category": "dev",
-    "filename": "public/posts/long-post.txt"
-  },
-  {
-    "slug": "second-post",
-    "title": "My Second Post",
-    "date": "2025-10-12",
-    "updated": "2025-10-13",
-    "tags": [
-      "writing",
-      "updates"
-    ],
-    "category": "rant",
-    "filename": "public/posts/second-post.txt"
+    "filename": "warning-post.md"
   }
 ]
