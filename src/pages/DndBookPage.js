@@ -46,7 +46,7 @@ function DndBookPage() {
           setPageTitle(foundBook.bookTitle);
           setBreadcrumbs(
             [
-              { label: 'D&D Home', path: '/dnd' },
+              { label: 'S&F', path: '/dnd' },
               { label: 'The Lore', path: '/dnd/lore' },
               { label: foundBook.bookTitle, path: `/dnd/books/${foundBook.bookId}` },
             ]
@@ -55,7 +55,7 @@ function DndBookPage() {
           setPageTitle('Book Not Found');
           setBreadcrumbs(
             [
-              { label: 'D&D Home', path: '/dnd' },
+              { label: 'S&F', path: '/dnd' },
               { label: 'The Lore', path: '/dnd/lore' },
               { label: 'Book Not Found' },
             ]
@@ -66,7 +66,7 @@ function DndBookPage() {
         setPageTitle('Error Loading Book');
         setBreadcrumbs(
           [
-            { label: 'D&D Home', path: '/dnd' },
+            { label: 'S&F', path: '/dnd' },
             { label: 'The Lore', path: '/dnd/lore' },
             { label: 'Error Loading Book' },
           ]
@@ -119,7 +119,7 @@ function DndBookPage() {
           <span className="dnd-hero-title-white">{book.bookTitle}</span>
         </h1>
         <div className="dnd-content-box" style={{ zIndex: 1 }}>
-          <h2 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.8rem' }}>Episodes</h2>
+          <h2 >Episodes</h2>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {book.episodes.map((episode) => (
               <li key={episode.id} style={{ marginBottom: '1rem' }}>

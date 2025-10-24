@@ -39,7 +39,7 @@ function DndLorePage() {
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([
-      { label: 'D&D Home', path: '/dnd' },
+      { label: 'S&F', path: '/dnd' },
       { label: 'The Lore', path: '/dnd/lore' },
     ]);
   }, [setBgImageName, setBreadcrumbs]);
@@ -106,7 +106,7 @@ function DndLorePage() {
           <span className="dnd-hero-title-white">The Lore</span>
         </h1>
         <div className="dnd-content-box" style={{ zIndex: 1 }}>
-          <h2 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.8rem' }}>Books</h2>
+          <h2 >Books</h2>
           <Slider {...settings}>
             {episodes.map((book) => (
               <div key={book.bookId} className="px-12"> {/* Add padding for spacing between cards */}
@@ -122,7 +122,7 @@ function DndLorePage() {
           </Slider>
         </div>
         <div className="dnd-content-box" style={{ zIndex: 1, marginTop: '2rem' }}>
-          <h2 style={{ color: '#fff', marginBottom: '1.5rem', fontSize: '1.8rem' }}>All Books</h2>
+          <h2 >All Books</h2>
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {episodes.map((book) => (
                 <li key={book.bookId} style={{ marginBottom: '1rem' }}>

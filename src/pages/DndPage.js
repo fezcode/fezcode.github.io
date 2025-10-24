@@ -18,7 +18,7 @@ const DndPage = () => {
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([
-      { label: 'D&D Home', path: '/dnd' },
+      { label: 'S&F', path: '/dnd' },
     ]);
   }, [setBgImageName, setBreadcrumbs]);
 

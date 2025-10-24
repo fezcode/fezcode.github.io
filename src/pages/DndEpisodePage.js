@@ -100,7 +100,7 @@ function DndEpisodePage() {
           const currentEpisode = foundBook.episodes[currentEpisodeIndex];
           setEpisodeTitle(currentEpisode.title);
           setBreadcrumbs([
-            { label: 'D&D Home', path: '/dnd' },
+            { label: 'S&F', path: '/dnd' },
             { label: 'The Lore', path: '/dnd/lore' },
             { label: foundBook.bookTitle, path: `/dnd/books/${foundBook.bookId}` },
             { label: currentEpisode.title },
@@ -124,7 +124,7 @@ function DndEpisodePage() {
           setEpisodeTitle("Episode Not Found");
           setEpisodeContent("Episode not found in this book.");
           setBreadcrumbs([
-            { label: 'D&D Home', path: '/dnd' },
+            { label: 'S&F', path: '/dnd' },
             { label: 'The Lore', path: '/dnd/lore' },
             { label: 'Episode Not Found' },
           ]);
@@ -133,7 +133,7 @@ function DndEpisodePage() {
         setEpisodeTitle("Book Not Found");
         setEpisodeContent("Book not found.");
         setBreadcrumbs([
-          { label: 'D&D Home', path: '/dnd' },
+          { label: 'S&F', path: '/dnd' },
           { label: 'The Lore', path: '/dnd/lore' },
           { label: 'Book Not Found' },
         ]);
