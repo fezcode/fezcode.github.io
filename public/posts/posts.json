@@ -9,7 +9,7 @@
         {
           "slug": "react-memoization-hooks",
           "title": "React Memoization Hooks",
-          "filename": "/react-of-fezcode/016-react-memoization-hooks.md",
+          "filename": "/react-of-fezcode/016-react-memoization-hooks.txt",
           "date": "2025-10-25",
           "updated": "2025-10-26",
           "category": "dev"
@@ -17,105 +17,105 @@
         {
           "slug": "react-refs-useref",
           "title": "React Refs Useref",
-          "filename": "/react-of-fezcode/015-react-refs-useref.md",
+          "filename": "/react-of-fezcode/015-react-refs-useref.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "react-custom-hooks",
           "title": "React Custom Hooks",
-          "filename": "/react-of-fezcode/014-react-custom-hooks.md",
+          "filename": "/react-of-fezcode/014-react-custom-hooks.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "document-fetching-api",
           "title": "Document Fetching Api",
-          "filename": "/react-of-fezcode/013-document-fetching-api.md",
+          "filename": "/react-of-fezcode/013-document-fetching-api.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "html-structure",
           "title": "Html Structure",
-          "filename": "/react-of-fezcode/012-html-structure.md",
+          "filename": "/react-of-fezcode/012-html-structure.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "javascript-fundamentals",
           "title": "Javascript Fundamentals",
-          "filename": "/react-of-fezcode/011-javascript-fundamentals.md",
+          "filename": "/react-of-fezcode/011-javascript-fundamentals.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "css-and-tailwind-css",
           "title": "Css And Tailwind Css",
-          "filename": "/react-of-fezcode/010-css-and-tailwind-css.md",
+          "filename": "/react-of-fezcode/010-css-and-tailwind-css.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "routing-with-react-router-dom",
           "title": "Routing With React Router Dom",
-          "filename": "/react-of-fezcode/009-routing-with-react-router-dom.md",
+          "filename": "/react-of-fezcode/009-routing-with-react-router-dom.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "react-context-usecontext",
           "title": "React Context Usecontext",
-          "filename": "/react-of-fezcode/008-react-context-usecontext.md",
+          "filename": "/react-of-fezcode/008-react-context-usecontext.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "react-hooks-usestate-useeffect",
           "title": "React Hooks Usestate Useeffect",
-          "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.md",
+          "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "react-basics-components-props",
           "title": "React Basics Components Props",
-          "filename": "/react-of-fezcode/006-react-basics-components-props.md",
+          "filename": "/react-of-fezcode/006-react-basics-components-props.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "blog-post-page-component",
           "title": "Blog Post Page Component",
-          "filename": "/react-of-fezcode/005-blog-post-page-component.md",
+          "filename": "/react-of-fezcode/005-blog-post-page-component.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "app-js-main-component",
           "title": "App Js Main Component",
-          "filename": "/react-of-fezcode/004-app-js-main-component.md",
+          "filename": "/react-of-fezcode/004-app-js-main-component.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "index-js-entry-point",
           "title": "Index Js Entry Point",
-          "filename": "/react-of-fezcode/003-index-js-entry-point.md",
+          "filename": "/react-of-fezcode/003-index-js-entry-point.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "package-json-explained",
           "title": "Package Json Explained",
-          "filename": "/react-of-fezcode/002-package-json-explained.md",
+          "filename": "/react-of-fezcode/002-package-json-explained.txt",
           "date": "2025-10-25",
           "category": "dev"
         },
         {
           "slug": "project-overview",
           "title": "Project Overview",
-          "filename": "/react-of-fezcode/001-project-overview.md",
+          "filename": "/react-of-fezcode/001-project-overview.txt",
           "date": "2025-10-25",
           "category": "dev"
         }
@@ -132,7 +132,7 @@
         {
           "slug": "gemini-explains-how-hooks-work-with-toast-component",
           "title": "Gemini Explains How Hooks Work with Toast Component",
-          "filename": "gemini-explains-how-hooks-work-with-toast-component.md",
+          "filename": "gemini-explains-how-hooks-work-with-toast-component.txt",
           "tags": [
             "react",
             "hooks",
@@ -160,7 +160,7 @@
           ],
           "date": "2024-01-05",
           "category": "dev",
-          "filename": "gemini-react-components.md"
+          "filename": "gemini-react-components.txt"
         }
       ]
     }
@@ -170,13 +170,9 @@
     "title": "My First D&D Post",
     "date": "2025-10-21",
     "description": "An introduction to my D&D adventures.",
-    "tags": [
-      "dnd",
-      "rpg",
-      "adventure"
-    ],
+    "tags": ["dnd", "rpg", "adventure"],
     "category": "d&d",
-    "filename": "my-first-dnd-post.md"
+    "filename": "my-first-dnd-post.txt"
   },
 
   {
@@ -185,13 +181,9 @@
     "date": "2025-10-16",
     "updated": "2025-10-16",
     "description": "a journey to create my first golang package",
-    "tags": [
-      "go",
-      "lib",
-      "pkg.go.dev"
-    ],
+    "tags": ["go", "lib", "pkg.go.dev"],
     "category": "dev",
-    "filename": "do-i-need-to-create-a-lib-for-that.md"
+    "filename": "do-i-need-to-create-a-lib-for-that.txt"
   },
   {
     "slug": "hashrouter-vs-browserrouter",
@@ -199,25 +191,17 @@
     "date": "2025-10-15",
     "updated": "2025-10-16",
     "description": "Why am I using HashRouter for github pages",
-    "tags": [
-      "react",
-      "webdev",
-      "gh-pages",
-      "router"
-    ],
+    "tags": ["react", "webdev", "gh-pages", "router"],
     "category": "dev",
-    "filename": "hashrouter-vs-browserrouter.md"
+    "filename": "hashrouter-vs-browserrouter.txt"
   },
   {
     "slug": "warning-post",
     "title": "Warning Post",
     "date": "2025-10-14",
     "updated": "2025-10-15",
-    "tags": [
-      "writing",
-      "updates"
-    ],
+    "tags": ["writing", "updates"],
     "category": "rant",
-    "filename": "warning-post.md"
+    "filename": "warning-post.txt"
   }
 ]
