@@ -31,7 +31,7 @@ function DndEpisodePage() {
   const { bookId, episodeId } = useParams(); // Get bookId as well
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
   const [episodeContent, setEpisodeContent] = useState('');
-  const [episodeTitle, setEpisodeTitle] = useState('Loading Episode...');
+  const [episodeTitle, setEpisodeTitle] = useState('');
   const [book, setBook] = useState(null); // State to store the current book
   const [bgImage, setBgImage] = useState(''); // State for background image
 
@@ -41,33 +41,6 @@ function DndEpisodePage() {
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
   }, [setBgImageName]);
-
-  useEffect(() => {
-    const fetchEpisodeContent = async () => {
-      try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/dnd/episode${episodeId}.txt`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const text = await response.text();
-        setEpisodeContent(text);
-
-        // Extract title from the first line of the content
-        const firstLine = text.split('\n')[0];
-        if (firstLine) {
-          setEpisodeTitle(firstLine);
-        } else {
-          setEpisodeTitle(`Episode ${episodeId}`);
-        }
-      } catch (error) {
-        console.error("Failed to fetch episode content:", error);
-        setEpisodeContent("Failed to load episode content. Please check the URL.");
-        setEpisodeTitle("Episode Not Found");
-      }
-    };
-
-    fetchEpisodeContent();
-  }, [episodeId]);
 
   usePageTitle(episodeTitle);
 
