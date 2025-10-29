@@ -1,115 +1,140 @@
 [
   {
-    "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
-    "category": "Article",
-    "source": "datagubbe",
-    "date": "2025-10-18",
-    "rating": 4,
-    "link": "https://datagubbe.se/crt2",
-    "slug": "the-peach-meme-on-crts-pixels-and-signal-quality-again"
+    "artist": "Special Ed",
+    "category": "Music",
+    "date": "2025-10-06",
+    "link": "https://www.youtube.com/watch?v=2EQ08UW87BM",
+    "rating": 5,
+    "slug": "special-ed-neva-go-back",
+    "title": "Neva Go Back"
   },
   {
-    "title": "OpenFront.io",
     "category": "Game",
-    "platform": "Web",
+    "date": "2025-10-28",
+    "link": "https://store.steampowered.com/app/532790/Vampire_The_Masquerade__Bloodlines_2/",
+    "platform": "Steam",
+    "rating": 4,
+    "slug": "bloodlines-2",
+    "tags": [
+      "story",
+      "single-player",
+      "fps"
+    ],
+    "title": "Vampire: The Masquerade - Bloodlines 2"
+  },
+  {
+    "category": "Article",
+    "date": "2025-10-18",
+    "link": "https://datagubbe.se/crt2",
+    "rating": 4,
+    "slug": "the-peach-meme-on-crts-pixels-and-signal-quality-again",
+    "source": "datagubbe",
+    "title": "The Peach meme: On CRTs, pixels and signal quality (again)"
+  },
+  {
+    "category": "Game",
     "date": "2025-09-20",
-    "rating": 5,
     "link": "https://openfront.io",
-    "slug": "openfront-io",
-    "tags": ["rts", "multiplayer"]
-  },
-  {
-    "title": "The Flowers of Buffoonery",
-    "category": "Book",
-    "author": "Osamu Dazai",
-    "date": "2025-10-16",
+    "platform": "Web",
     "rating": 5,
-    "link": "https://www.goodreads.com/book/show/61340205-the-flowers-of-buffoonery",
-    "slug": "the-flowers-of-buffoonery",
-    "updated": "2025-10-17"
-
+    "slug": "openfront-io",
+    "tags": [
+      "rts",
+      "multiplayer"
+    ],
+    "title": "OpenFront.io"
   },
   {
-    "title": "The Bear",
+    "author": "Osamu Dazai",
+    "category": "Book",
+    "date": "2025-10-16",
+    "link": "https://www.goodreads.com/book/show/61340205-the-flowers-of-buffoonery",
+    "rating": 5,
+    "slug": "the-flowers-of-buffoonery",
+    "title": "The Flowers of Buffoonery",
+    "updated": "2025-10-17"
+  },
+  {
     "category": "Series",
     "creator": "Christopher Storer",
     "date": "2025-10-16",
-    "rating": 5,
     "link": "https://www.imdb.com/title/tt14452776/",
+    "rating": 5,
     "slug": "the-bear",
-    "updated": "2025-10-17"
+    "title": "The Bear",
+    "updated": "2025-10-25"
   },
   {
-    "title": "Relay",
     "category": "Movie",
-    "director": "David Mackenzie",
     "date": "2025-10-16",
-    "rating": 4,
+    "director": "David Mackenzie",
     "link": "https://www.imdb.com/title/tt11539996/",
-    "slug": "relay-2024"
-  },
-  {
-    "title": "The Hitchhiker's Guide to the Galaxy",
-    "category": "Book",
-    "author": "Douglas Adams",
-    "date": "2025-10-15",
-    "rating": 5,
-    "link": "https://www.goodreads.com/book/show/386162.The_Hitchhiker_s_Guide_to_the_Galaxy",
-    "slug": "the-hitchhikers-guide-to-the-galaxy"
-  },
-  {
-    "title": "The Matrix",
-    "category": "Movie",
-    "director": "The Wachowskis",
-    "date": "2025-10-14",
-    "rating": 5,
-    "link": "https://www.imdb.com/title/tt0133093/",
-    "slug": "the-matrix"
-  },
-  {
-    "title": "The Legend of Zelda: Breath of the Wild",
-    "category": "Game",
-    "platform": "Nintendo Switch",
-    "date": "2025-10-12",
-    "rating": 5,
-    "link": "https://www.zelda.com/breath-of-the-wild/",
-    "slug": "the-legend-of-zelda-breath-of-the-wild"
-  },
-  {
-    "title": "The Go Programming Language",
-    "category": "Book",
-    "author": "Alan A. A. Donovan & Brian W. Kernighan",
-    "date": "2025-10-10",
-    "rating": 5,
-    "link": "https://www.gopl.io/",
-    "slug": "the-go-programming-language"
-  },
-  {
-    "title": "How to build a mechanical keyboard",
-    "category": "Article",
-    "source": "PC Gamer",
-    "date": "2025-10-08",
     "rating": 4,
-    "link": "https://www.pcgamer.com/how-to-build-a-mechanical-keyboard/",
-    "slug": "how-to-build-a-mechanical-keyboard"
+    "slug": "relay-2024",
+    "title": "Relay"
   },
   {
-    "title": "In the Aeroplane Over the Sea",
-    "category": "Music",
-    "artist": "Neutral Milk Hotel",
-    "date": "2025-10-06",
+    "author": "Douglas Adams",
+    "category": "Book",
+    "date": "2025-10-15",
+    "link": "https://www.goodreads.com/book/show/386162.The_Hitchhiker_s_Guide_to_the_Galaxy",
     "rating": 5,
-    "link": "https://www.youtube.com/watch?v=0_5qaeIAl5E",
-    "slug": "in-the-aeroplane-over-the-sea"
+    "slug": "the-hitchhikers-guide-to-the-galaxy",
+    "title": "The Hitchhiker's Guide to the Galaxy"
   },
   {
-    "title": "Breaking Bad",
+    "category": "Movie",
+    "date": "2025-10-14",
+    "director": "The Wachowskis",
+    "link": "https://www.imdb.com/title/tt0133093/",
+    "rating": 5,
+    "slug": "the-matrix",
+    "title": "The Matrix"
+  },
+  {
+    "category": "Game",
+    "date": "2025-10-12",
+    "link": "https://www.zelda.com/breath-of-the-wild/",
+    "platform": "Nintendo Switch",
+    "rating": 5,
+    "slug": "the-legend-of-zelda-breath-of-the-wild",
+    "title": "The Legend of Zelda: Breath of the Wild"
+  },
+  {
+    "author": "Alan A. A. Donovan \u0026 Brian W. Kernighan",
+    "category": "Book",
+    "date": "2025-10-10",
+    "link": "https://www.gopl.io/",
+    "rating": 5,
+    "slug": "the-go-programming-language",
+    "title": "The Go Programming Language"
+  },
+  {
+    "category": "Article",
+    "date": "2025-10-08",
+    "link": "https://www.pcgamer.com/how-to-build-a-mechanical-keyboard/",
+    "rating": 4,
+    "slug": "how-to-build-a-mechanical-keyboard",
+    "source": "PC Gamer",
+    "title": "How to build a mechanical keyboard"
+  },
+  {
+    "artist": "Neutral Milk Hotel",
+    "category": "Music",
+    "date": "2025-10-06",
+    "link": "https://www.youtube.com/watch?v=0_5qaeIAl5E",
+    "rating": 5,
+    "slug": "in-the-aeroplane-over-the-sea",
+    "title": "In the Aeroplane Over the Sea"
+  },
+  {
     "category": "Series",
     "creator": "Vince Gilligan",
-    "year": "2008-2013",
     "date": "2025-10-04",
-    "rating": 5,
     "link": "https://www.imdb.com/title/tt0903747/",
-    "slug": "breaking-bad"
+    "rating": 5,
+    "slug": "breaking-bad",
+    "title": "Breaking Bad",
+    "year": "2008-2013"
   }
 ]
