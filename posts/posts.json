@@ -1,5 +1,15 @@
 [
   {
+    "slug": "ubuntu-once-more",
+    "title": "Ubuntu Once More",
+    "date": "2025-10-29",
+    "updated": "2025-10-29",
+    "description": "Ubuntu 25.10",
+    "tags": ["ubuntu", "linux", "gnome"],
+    "category": "dev",
+    "filename": "ubuntu-once-more.txt"
+  },
+  {
     "title": "React of Fezcodex",
     "date": "2025-10-25",
     "updated": "2025-10-26",
