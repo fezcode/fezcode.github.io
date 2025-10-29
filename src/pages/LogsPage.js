@@ -12,6 +12,7 @@ const LogsPage = () => {
   const [loading, setLoading] = useState(true);
   const [hiddenLegends, setHiddenLegends] = useState([]);
   const [allCategoriesSelected, setAllCategoriesSelected] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const handleToggleAllCategories = () => {
     if (allCategoriesSelected) {
@@ -47,9 +48,13 @@ const LogsPage = () => {
 
   useEffect(() => {
     setFilteredLogs(
-      logs.filter((log) => !hiddenLegends.includes(log.category)),
+      logs.filter(
+        (log) =>
+          !hiddenLegends.includes(log.category) &&
+          log.title.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
     );
-  }, [logs, hiddenLegends]);
+  }, [logs, hiddenLegends, searchQuery]);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -104,58 +109,66 @@ const LogsPage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Home
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-4 flex items-center">
-          Logs
-        </h1>
-        <div
-          className="relative flex justify-center items-center w-full cursor-pointer"
-          onClick={() => setShowLegends(!showLegends)}
-        >
-          <hr className="border-gray-700 w-full absolute top-1/2 -translate-y-1/2" />
-          <div className="relative border border-gray-700 bg-gray-900 px-4 z-10">
-            {showLegends ? (
-              <CaretUp size={32} className="text-primary-400" />
-            ) : (
-              <CaretDown size={32} className="text-primary-400" />
-            )}
-          </div>
-        </div>
-        {showLegends && (
-          <div className="mx-auto p-6 border border-gray-700 shadow-lg text-center bg-gray-900 opacity-80 mt-[-16px] mb-8">
-            <h2 className="mb-[-16px] text-xl font-light tracking-tight text-white">
-              Categories
-            </h2>
-            <ColorLegends
-              onLegendClick={handleLegendClick}
-              hiddenLegends={hiddenLegends}
-            />
-            <div className="flex items-center justify-center mt-4">
-              <span className="mr-2 text-white text-sm">Disable All</span>
-              <label
-                htmlFor="toggle-all-categories"
-                className="flex items-center cursor-pointer"
-              >
-                <div className="relative">
-                  <input
-                    type="checkbox"
-                    id="toggle-all-categories"
-                    className="sr-only"
-                    checked={allCategoriesSelected}
-                    onChange={handleToggleAllCategories}
-                  />
-                  <div
-                    className={`block w-10 h-6 rounded-full ${allCategoriesSelected ? 'bg-blue-500' : 'bg-gray-600'}`}
-                  ></div>
-                  <div
-                    className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${allCategoriesSelected ? 'translate-x-4 bg-primary-500' : ''}`}
-                  ></div>
+                <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-4 flex items-center">
+                  Logs
+                </h1>
+                <div
+                  className="relative flex justify-center items-center w-full cursor-pointer"
+                  onClick={() => setShowLegends(!showLegends)}
+                >
+                  <hr className="border-gray-700 w-full absolute top-1/2 -translate-y-1/2" />
+                  <div className="relative border border-gray-700 bg-gray-900 px-4 z-10">
+                    {showLegends ? (
+                      <CaretUp size={32} className="text-primary-400" />
+                    ) : (
+                      <CaretDown size={32} className="text-primary-400" />
+                    )}
+                  </div>
                 </div>
-              </label>
-              <span className="ml-2 text-white text-sm">Enable All</span>
-            </div>
-          </div>
-        )}
-        <div
+                {showLegends && (
+                  <div className="mx-auto p-6 border border-gray-700 shadow-lg text-center bg-gray-900 opacity-80 mt-[-16px] mb-8">
+                    <h2 className="mt-4 mb-[-16px] text-xl font-light tracking-tight text-white">
+                      Categories
+                    </h2>
+                    <ColorLegends
+                      onLegendClick={handleLegendClick}
+                      hiddenLegends={hiddenLegends}
+                    />
+                    <div className="flex items-center justify-center mt-4">
+                      <span className="mr-2 text-white text-sm">Disable All</span>
+                      <label
+                        htmlFor="toggle-all-categories"
+                        className="flex items-center cursor-pointer"
+                      >
+                        <div className="relative">
+                          <input
+                            type="checkbox"
+                            id="toggle-all-categories"
+                            className="sr-only"
+                            checked={allCategoriesSelected}
+                            onChange={handleToggleAllCategories}
+                          />
+                          <div
+                            className={`block w-10 h-6 rounded-full ${allCategoriesSelected ? 'bg-blue-500' : 'bg-gray-600'}`}
+                          ></div>
+                          <div
+                            className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition ${allCategoriesSelected ? 'translate-x-4 bg-primary-500' : ''}`}
+                          ></div>
+                        </div>
+                      </label>
+                      <span className="ml-2 text-white text-sm">Enable All</span>
+                    </div>
+                    <div className="flex items-center justify-center mt-8 mb-4 ml-4 mr-4">
+                      <input
+                        type="text"
+                        placeholder="Search logs by title..."
+                        className="w-full p-3 border border-gray-700 rounded-md bg-gray-800 text-white placeholder-gray-500 focus:outline-none focus:border-primary-400"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                )}        <div
           className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ${!showLegends ? 'mt-8' : ''}`}
         >
           {filteredLogs.map((log) => (
