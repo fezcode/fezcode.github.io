@@ -1,5 +1,14 @@
 [
   {
+    "artist": "De La Soul",
+    "category": "Music",
+    "date": "2025-10-29",
+    "link": "https://www.youtube.com/watch?v=radJQyaC5kY",
+    "rating": 5,
+    "slug": "de-la-soul-stakes-is-high",
+    "title": "Stakes Is High"
+  },
+  {
     "artist": "Special Ed",
     "category": "Music",
     "date": "2025-10-06",
@@ -101,7 +110,7 @@
     "title": "The Legend of Zelda: Breath of the Wild"
   },
   {
-    "author": "Alan A. A. Donovan \u0026 Brian W. Kernighan",
+    "author": "Alan A. A. Donovan, Brian W. Kernighan",
     "category": "Book",
     "date": "2025-10-10",
     "link": "https://www.gopl.io/",
