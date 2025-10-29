@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CaretDown, CaretUp } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CaretDown, CaretUp, X } from '@phosphor-icons/react';
 import LogCard from '../components/LogCard';
 import ColorLegends, { categoryStyles } from '../components/ColorLegends';
 import usePageTitle from '../utils/usePageTitle';
@@ -166,6 +166,12 @@ const LogsPage = () => {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                       />
+                      <button
+                        className="ml-2 p-3 border border-red-400 bg-primary-500 text-white rounded-md transition-colors duration-200 hover:bg-red-500 focus:outline-none flex items-center justify-center"
+                        onClick={() => setSearchQuery('')}
+                      >
+                        <X size={20} weight="bold" />
+                      </button>
                     </div>
                   </div>
                 )}        <div
