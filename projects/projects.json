@@ -36,10 +36,10 @@
     "technologies": ["Rust", "SVG"]
   },
   {
-    "slug": "go-tournament-brackets",
-    "title": "Go Tournament Bracket Generator Lib",
+    "slug": "go-homo-sapiens-time",
+    "title": "Go Homo Sapiens Time",
     "size": 1,
-    "link": "https://github.com/fezcode/go-tournament-brackets",
+    "link": "https://github.com/fezcode/go-homo-sapiens-time",
     "pinned": false,
     "isActive": true,
     "technologies": ["Go"]
@@ -54,15 +54,23 @@
     "technologies": ["JavaScript"]
   },
   {
+    "slug": "go-tournament-brackets",
+    "title": "Go Tournament Bracket Generator Lib",
+    "size": 2,
+    "link": "https://github.com/fezcode/go-tournament-brackets",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["Go"]
+  },
+  {
     "slug": "open-tab-with-respect",
     "title": "Open Tab with Respect",
-    "size": 2,
+    "size": 1,
     "link": "https://github.com/fezcode/open-tab-with-respect",
     "pinned": false,
     "isActive": true,
     "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
   },
-
   {
     "slug": "clipboard-concat",
     "title": "Clipboard Concat",
@@ -84,7 +92,7 @@
   {
     "slug": "firefox-themes",
     "title": "Firefox Themes",
-    "size": 1,
+    "size": 3,
     "link": "https://github.com/fezcode",
     "pinned": false,
     "isActive": false,
