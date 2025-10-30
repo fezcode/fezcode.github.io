@@ -86,7 +86,7 @@ const CodeBlock = ({
     <div className="relative">
       <div className="absolute top-2 right-2 flex gap-2">
         <button
-          onClick={() => openModal(String(children).replace(/\n$/, ''))}
+          onClick={() => openModal(String(children).replace(/\n$/, ''), match[1])}
           className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
         >
           <ArrowsOutSimple size={20} />
@@ -126,9 +126,11 @@ const BlogPostPage = () => {
   const contentRef = useRef(null);
   const [isModalOpen, setIsModalToOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
+  const [modalLanguage, setModalLanguage] = useState('jsx'); // Default to jsx
 
-  const openModal = (content) => {
+  const openModal = (content, language) => {
     setModalContent(content);
+    setModalLanguage(language);
     setIsModalToOpen(true);
   };
 
@@ -352,7 +354,7 @@ const BlogPostPage = () => {
           </div>
         </div>
       </div>
-      <CodeModal isOpen={isModalOpen} onClose={closeModal}>
+      <CodeModal isOpen={isModalOpen} onClose={closeModal} language={modalLanguage}>
         {modalContent}
       </CodeModal>
     </div>

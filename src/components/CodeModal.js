@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../utils/customTheme';
 
-const CodeModal = ({ isOpen, onClose, children }) => {
+const CodeModal = ({ isOpen, onClose, children, language }) => {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
@@ -27,7 +27,7 @@ const CodeModal = ({ isOpen, onClose, children }) => {
           exit={{ opacity: 0 }}
         >
           <motion.div
-            className="relative bg-gray-800 rounded-lg shadow-lg p-6 w-3/4 h-3/4"
+            className="relative bg-gray-800 rounded-lg shadow-lg p-6 w-3/4 h-3/4 prose prose-xl prose-dark max-w-none"
             onClick={(e) => e.stopPropagation()}
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -42,7 +42,7 @@ const CodeModal = ({ isOpen, onClose, children }) => {
             </button>
             <SyntaxHighlighter
               style={customTheme}
-              language="jsx"
+              language={language}
               PreTag="pre"
               className="overflow-auto h-full"
               codeTagProps={{
