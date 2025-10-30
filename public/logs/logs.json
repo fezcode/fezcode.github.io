@@ -1,5 +1,15 @@
 [
   {
+    "author": "Albert Camus",
+    "category": "Book",
+    "date": "2025-10-30",
+    "link": "https://www.goodreads.com/book/show/49552.The_Stranger",
+    "rating": 4,
+    "slug": "albert-camus-the-stranger",
+    "title": "The Stranger",
+    "updated": "2025-10-30"
+  },
+  {
     "artist": "Special Ed",
     "category": "Music",
     "date": "2025-10-06",
@@ -49,10 +59,10 @@
     "category": "Book",
     "date": "2025-10-16",
     "link": "https://www.goodreads.com/book/show/61340205-the-flowers-of-buffoonery",
-    "rating": 5,
+    "rating": 4,
     "slug": "the-flowers-of-buffoonery",
     "title": "The Flowers of Buffoonery",
-    "updated": "2025-10-17"
+    "updated": "2025-10-30"
   },
   {
     "category": "Series",
