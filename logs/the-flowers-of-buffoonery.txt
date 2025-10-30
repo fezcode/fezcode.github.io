@@ -3,7 +3,7 @@
 - **Category:** Book
 - **Author:** Osamu Dazai
 - **Date:** 2025-10-16
-- **Rating:** 5/5
+- **Rating:** 4/5
 - **Link:** [Goodreads](https://www.goodreads.com/book/show/61340205-the-flowers-of-buffoonery)
 
 ![The Flowers of Buffoonery](images/logs/osamu-dazai-the-flowers-of-buffoonery.jpg)
