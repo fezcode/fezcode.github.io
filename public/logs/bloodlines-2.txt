@@ -39,7 +39,7 @@ Some conversations were fun, but most of the time, it was just a waste of time.
 
 - **The potential**: It's clear that this game had ambition. It breaks your heart to see its flaws.
 
-- **Optimisation**: Not good. But, at least, it is not `Unreal Engine`*(TM)* `5`*(C)* stuff.
+- **Optimisation**: Not good. It is `Unreal Engine`*(TM)* `5`*(C)* stuff.
 
 - **Role-Playing**: Non-existent.
 
