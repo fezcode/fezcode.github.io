@@ -1,0 +1,92 @@
+Go Homo Sapiens Time is a Go package that provides utilities for converting human-readable time strings to milliseconds and vice-versa. It's a Go port of the popular JavaScript library homo-sapiens-time.
+---
+Go Homo Sapiens Time is a Go package that provides utilities for converting human-readable time strings to milliseconds and vice-versa. It's a Go port of the popular JavaScript library [homo-sapiens-time](https://github.com/fezcode/homo-sapiens-time).
+
+## Installation
+
+To install the package, use `go get`:
+
+```bash
+go get github.com/fezcode/go-homo-sapiens-time
+```
+
+## Usage
+
+Here's how to use the functions provided by the package:
+
+### Convert a time string to milliseconds
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/fezcode/go-homo-sapiens-time"
+)
+
+func main() {
+	ms := homo_sapiens_time.TimeStringToMs("1h 30m")
+	fmt.Println(ms) // Output: 5400000
+}
+```
+
+### Convert milliseconds to a time string
+
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/fezcode/go-homo-sapiens-time"
+)
+
+func main() {
+	timeString, err := homo_sapiens_time.MsToTimeString(5400000, nil)
+	if err != nil {
+		fmt.Println("Error:", err)
+		return
+	}
+	fmt.Println(timeString) // Output: 1h 30m
+}
+```
+
+### Add a duration to the current time
+
+```go
+package main
+
+import (
+	"fmt"
+	"time"
+	"github.com/fezcode/go-homo-sapiens-time"
+)
+
+func main() {
+	futureTime := homo_sapiens_time.ImpreciseDurationAddedToNow("1d 2h")
+	fmt.Println("Current time:", time.Now())
+	fmt.Println("Future time:", futureTime)
+}
+```
+
+## API
+
+### `TimeStringToMs(str string) int`
+
+Converts a human-readable time string (e.g., "1h 30m") into the equivalent number of milliseconds.
+
+### `MsToTimeString(ms int, opts *MsToTimeStringOptions) (string, error)`
+
+Converts a duration in milliseconds to a human-readable time string. The `opts` parameter allows for customization:
+
+- `Auto`: If `true`, the function will automatically determine the units to use.
+- `Units`: A slice of strings representing the units to use (e.g., `[]string{"h", "m", "s"}`).
+- `ShowEmpty`: If `true`, units with a value of 0 will be included in the output.
+- `SortUnits`: If `true`, the units in the output string will be sorted.
+
+### `ImpreciseDurationAddedToNow(str string) time.Time`
+
+Adds a duration specified in a human-readable time string to the current time and returns the resulting `time.Time`.
+
+### `GetMSEquivalent(unitType string, count int) int`
+
+A helper function that converts a given amount of a specific time unit to milliseconds.
