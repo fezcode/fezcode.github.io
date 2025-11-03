@@ -1,5 +1,16 @@
 [
   {
+    "artist": "frederic",
+    "category": "Music",
+    "date": "2025-11-03",
+    "link": "https://www.youtube.com/watch?v=PCp2iXA1uLE",
+    "rating": 5,
+    "slug": "frederic-oddloop",
+    "title": "oddloop",
+    "album": "Oddloop",
+    "releaseDate": "2014-09-23"
+  },
+  {
     "artist": "Morcheeba",
     "category": "Music",
     "date": "2025-11-03",
