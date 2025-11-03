@@ -81,6 +81,18 @@ code {
   --fzcdx-spanner: #e89b5d;
 }
 
+.codex-color {
+  color: #ff8fab !important; /* Placeholder color for 'codex' */
+}
+
+.separator-color {
+  color: #f4acb7 !important; /* Placeholder color for '::' */
+}
+
+.logs-color {
+  color: #bc4749 !important; /* Placeholder color for 'logs' */
+}
+
 @media (max-width: 768px) {
   body {
     font-family: serif !important;

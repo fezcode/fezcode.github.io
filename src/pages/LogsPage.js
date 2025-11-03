@@ -109,8 +109,10 @@ const LogsPage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Home
         </Link>
-                <h1 className="text-4xl font-bold tracking-tight text-primary-400 sm:text-6xl mb-4 flex items-center">
-                  Logs
+                <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+                  <span className="codex-color">codex</span>
+                  <span className="separator-color">::</span>
+                  <span className="logs-color">logs</span>
                 </h1>
                 <div
                   className="relative flex justify-center items-center w-full cursor-pointer"
