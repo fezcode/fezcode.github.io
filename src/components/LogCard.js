@@ -8,6 +8,7 @@ import {
   Article,
   MusicNote,
   Television,
+  ForkKnife,
 } from '@phosphor-icons/react';
 
 const categoryIcons = {
@@ -17,6 +18,7 @@ const categoryIcons = {
   Article: <Article />,
   Music: <MusicNote />,
   Series: <Television />,
+  Food: <ForkKnife />,
 };
 
 const categoryStyles = {
@@ -43,6 +45,10 @@ const categoryStyles = {
   Series: {
     backgroundColor: colors['series-alpha-10'],
     borderColor: colors['series-alpha-50'],
+  },
+  Food: {
+    backgroundColor: colors['food-alpha-10'],
+    borderColor: colors['food-alpha-50'],
   },
 };
 

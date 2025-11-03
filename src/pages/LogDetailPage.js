@@ -5,6 +5,8 @@ import LogMetadata from '../components/LogMetadata';
 import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
 import ImageModal from '../components/ImageModal';
 
+import remarkGfm from 'remark-gfm';
+
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
@@ -126,6 +128,7 @@ const LogDetailPage = () => {
               className="prose prose-xl prose-dark max-w-none"
             >
               <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
                 components={{ a: LinkRenderer, img: ImageRenderer }}
               >
                 {log.body}
