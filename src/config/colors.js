@@ -7,24 +7,24 @@ module.exports = {
   secondary: {
     400: '#fb923c', // orange-400
   },
-  book: '#3b82f6', // blue-500
-  movie: '#ef4444', // red-500
-  game: '#22c55e', // green-500
-  article: '#ff8934', // orange-500
-  music: '#a855f7', // purple-500
-  series: '#ec4899', // pink-500
-  food: '#84cc16', // lime-500
-  websites: '#f472b6', // pink-400
-  tools: '#facc15', // yellow-400
-  'book-light': '#93c5fd', // blue-300
-  'movie-light': '#fca5a5', // red-300
-  'game-light': '#86efac', // green-300
-  'article-light': '#fdba74', // orange-300
-  'music-light': '#d8b4fe', // purple-300
-  'series-light': '#fbcfe8', // pink-300
-  'food-light': '#bef264', // lime-300
-  'websites-light': '#f9a8d4', // pink-300
-  'tools-light': '#fde047', // yellow-300
+  book: '#9EC5AB',
+  movie: '#c75146',
+  game: '#80ed99',
+  article: '#FA8072', // Salmon
+  music: '#A07B90',
+  series: '#edc531',
+  food: '#F4A259',
+  websites: '#f5dd90',
+  tools: '#e0aaff',
+  'book-light': '#FFF8F00',
+  'movie-light': '#E08070',
+  'game-light': '#B2F5C2',
+  'article-light': '#FFB6C1', // Light Pink
+  'music-light': '#C0A0B0',
+  'series-light': '#F5E080',
+  'food-light': '#FFC780',
+  'websites-light': '#FFF8DC',
+  'tools-light': '#F0DFFF',
   'title-hover': '#fdd4a6', // orange-200
   'markdown-title-color': '#fed7aa', // orange-200
   'markdown-hx-color': '#ffedd5', // orange-100
@@ -40,24 +40,24 @@ module.exports = {
   'color-takes-badge': '#f97316', // orange-500
   'color-series-badge': '#ec4899', // pink-500
   'color-dnd-badge': '#a78bfa', // violet-400
-  'book-alpha-10': 'rgba(59, 130, 246, 0.1)',
-  'book-alpha-50': 'rgba(59, 130, 246, 0.5)',
-  'movie-alpha-10': 'rgba(239, 68, 68, 0.1)',
-  'movie-alpha-50': 'rgba(239, 68, 68, 0.5)',
-  'game-alpha-10': 'rgba(34, 197, 94, 0.1)',
-  'game-alpha-50': 'rgba(34, 197, 94, 0.5)',
-  'article-alpha-10': 'rgba(249, 115, 22, 0.1)',
-  'article-alpha-50': 'rgba(249, 115, 22, 0.5)',
-  'music-alpha-10': 'rgba(168, 85, 247, 0.1)',
-  'music-alpha-50': 'rgba(168, 85, 247, 0.5)',
-  'series-alpha-10': 'rgba(236, 72, 153, 0.1)',
-  'series-alpha-50': 'rgba(236, 72, 153, 0.5)',
-  'food-alpha-10': 'rgba(132, 204, 22, 0.1)',
-  'food-alpha-50': 'rgba(132, 204, 22, 0.5)',
-  'websites-alpha-10': 'rgba(244, 114, 182, 0.1)',
-  'websites-alpha-50': 'rgba(244, 114, 182, 0.5)',
-  'tools-alpha-10': 'rgba(250, 204, 21, 0.1)',
-  'tools-alpha-50': 'rgba(250, 204, 21, 0.5)',
+  'book-alpha-10': 'rgba(158, 197, 171, 0.1)',
+  'book-alpha-50': 'rgba(158, 197, 171, 0.5)',
+  'movie-alpha-10': 'rgba(199, 81, 70, 0.1)',
+  'movie-alpha-50': 'rgba(199, 81, 70, 0.5)',
+  'game-alpha-10': 'rgba(0, 255, 127, 0.1)',
+  'game-alpha-50': 'rgba(0, 255, 127, 0.5)',
+  'article-alpha-10': 'rgba(250, 128, 114, 0.1)',
+  'article-alpha-50': 'rgba(250, 128, 114, 0.5)',
+  'music-alpha-10': 'rgba(160, 123, 144, 0.1)',
+  'music-alpha-50': 'rgba(160, 123, 144, 0.5)',
+  'series-alpha-10': 'rgba(237, 197, 49, 0.1)',
+  'series-alpha-50': 'rgba(237, 197, 49, 0.5)',
+  'food-alpha-10': 'rgba(244, 162, 89, 0.1)',
+  'food-alpha-50': 'rgba(244, 162, 89, 0.5)',
+  'websites-alpha-10': 'rgba(245, 221, 144, 0.1)',
+  'websites-alpha-50': 'rgba(245, 221, 144, 0.5)',
+  'tools-alpha-10': 'rgba(224, 170, 255, 0.1)',
+  'tools-alpha-50': 'rgba(224, 170, 255, 0.5)',
 
   // Toast colors
   'toast-background': 'rgba(68, 64, 59, 0.8)',
