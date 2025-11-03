@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 
 import { DndProvider } from '../context/DndContext';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, toggleModal }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const location = useLocation();
 
@@ -44,7 +44,7 @@ const Layout = ({ children }) => {
 
   return (
     <div className="bg-gray-950 min-h-screen font-sans flex">
-      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+      <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} toggleModal={toggleModal} />
       <div
         className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}>
         <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />

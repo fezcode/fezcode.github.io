@@ -24,7 +24,7 @@ import Fez from './Fez';
 
 import { version } from '../version';
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
   const [isContentOpen, setIsContentOpen] = useState(true);
   const [isExtrasOpen, setIsExtrasOpen] = useState(true);
@@ -300,8 +300,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               Button 1
             </button>
 
-            <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">
-              Button 2
+            <button onClick={toggleModal} className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">
+              Contact Me
             </button>
           </div>
 
