@@ -2,6 +2,7 @@ import React from 'react';
 import Label from './Label';
 import { Star } from '@phosphor-icons/react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
+import colors from '../config/colors';
 
 const LogMetadata = ({ metadata }) => {
   if (!metadata) {
@@ -24,10 +25,23 @@ const LogMetadata = ({ metadata }) => {
     return <div className="flex ml-1 mt-1">{stars}</div>;
   };
 
+  const logMetadataBackgroundColorStyle = {
+    backgroundColor: colors[`${metadata.category.toLowerCase()}-alpha-10`],
+  };
+
   return (
     <aside className="sticky top-24">
-      <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700/50">
-        <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">
+      <div
+        className="p-6 rounded-lg border"
+        style={{
+          backgroundColor: colors[`${metadata.category.toLowerCase()}-alpha-10`],
+          borderColor: colors[`${metadata.category.toLowerCase()}-alpha-50`],
+        }}
+      >
+        <h3
+          className="text-lg font-semibold mb-4 border-b pb-2 border-gray-500"
+          style={{ color: colors[metadata.category.toLowerCase()] }}
+        >
           About Log
         </h3>
         <div className="space-y-4">

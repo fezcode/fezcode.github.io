@@ -9,6 +9,7 @@ import {
   MusicNote,
   Television,
   ForkKnife,
+  Star
 } from '@phosphor-icons/react';
 
 const categoryIcons = {
@@ -71,6 +72,22 @@ const LogCard = ({ log, index, totalLogs }) => {
 
   const cardStyle = categoryStyles[category] || {};
 
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(
+          <Star key={i} size={16} weight="fill" className="text-yellow-400" />,
+        );
+      } else {
+        stars.push(
+          <Star key={i} size={16} weight="fill" className="text-gray-500" />,
+        );
+      }
+    }
+    return <div className="flex ml-1 mt-1">{stars}</div>;
+  };
+
   return (
     <Link to={`/logs/${slug}`} className="block">
       <div
@@ -112,9 +129,7 @@ const LogCard = ({ log, index, totalLogs }) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <div className="text-yellow-400">
-              {[...Array(rating)].map((_, i) => (
-                <span key={i}>★</span>
-              ))}
+              {renderStars(rating)}
             </div>
             <div className="text-gray-400 ml-2">({rating}/5)</div>
           </div>
