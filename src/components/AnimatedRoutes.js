@@ -256,9 +256,8 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
-        {/* D&D specific 404 page */}
         <Route
-          path="/useful-links"
+          path="/random"
           element={
             <motion.div
               initial="initial"
@@ -271,6 +270,7 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+        {/* D&D specific 404 page */}
         <Route
           path="/dnd/*"
           element={

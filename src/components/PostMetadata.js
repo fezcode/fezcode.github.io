@@ -51,8 +51,7 @@ const PostMetadata = ({
   return (
     <aside className="sticky top-24">
       <div
-        className="p-6 rounded-lg border border-gray-700/50"
-        style={postMetadataBackgroundColorStyle}
+        className="p-6 bg-gray-800/50 rounded-lg border border-gray-700/50"
       >
         <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">
           About Post
