@@ -10,7 +10,7 @@ module.exports = {
   book: '#3b82f6', // blue-500
   movie: '#ef4444', // red-500
   game: '#22c55e', // green-500
-  article: '#f97316', // orange-500
+  article: '#ff8934', // orange-500
   music: '#a855f7', // purple-500
   series: '#ec4899', // pink-500
   food: '#84cc16', // lime-500
