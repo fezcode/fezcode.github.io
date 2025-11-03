@@ -30,6 +30,10 @@ export const categoryStyles = {
     backgroundColor: colors['food-alpha-10'],
     borderColor: colors['food-alpha-50'],
   },
+  Websites: {
+    backgroundColor: colors['websites-alpha-10'],
+    borderColor: colors['websites-alpha-50'],
+  },
 };
 
 const ColorLegends = ({ onLegendClick, hiddenLegends }) => {

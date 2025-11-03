@@ -125,5 +125,13 @@
     "rating": 5,
     "slug": "food-omelette",
     "title": "Omelette"
+  },
+  {
+    "category": "Websites",
+    "date": "2025-11-03",
+    "link": "https://missingdice.com/dice-roller/",
+    "rating": 5,
+    "slug": "website-missing-dice-dice-roller",
+    "title": "Missing Dice - Dice Roller"
   }
 ]

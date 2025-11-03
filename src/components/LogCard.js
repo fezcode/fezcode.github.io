@@ -9,6 +9,7 @@ import {
   MusicNote,
   Television,
   ForkKnife,
+  Globe,
   Star
 } from '@phosphor-icons/react';
 
@@ -20,6 +21,7 @@ const categoryIcons = {
   Music: <MusicNote />,
   Series: <Television />,
   Food: <ForkKnife />,
+  Websites: <Globe />,
 };
 
 const categoryStyles = {
@@ -50,6 +52,10 @@ const categoryStyles = {
   Food: {
     backgroundColor: colors['food-alpha-10'],
     borderColor: colors['food-alpha-50'],
+  },
+  Websites: {
+    backgroundColor: colors['websites-alpha-10'],
+    borderColor: colors['websites-alpha-50'],
   },
 };
 
