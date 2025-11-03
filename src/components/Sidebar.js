@@ -17,7 +17,7 @@ import {
   GlobeSimpleIcon,
   SwordIcon,
   AlienIcon,
-  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon, LinkIcon, ArrowSquareOutIcon
+  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon, LinkIcon, ArrowSquareOutIcon, ShuffleIcon, EnvelopeSimpleIcon
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -296,12 +296,14 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
           <hr className="border-gray-700 my-4" />
 
           <div className="flex space-x-2 font-sans">
-            <NavLink to="/random" className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans text-center">
-              Random
+            <NavLink to="/random" className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans text-center">
+              <ShuffleIcon size={20} />
+              <span>Random</span>
             </NavLink>
 
-            <button onClick={toggleModal} className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">
-              Contact Me
+            <button onClick={toggleModal} className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans">
+              <EnvelopeSimpleIcon size={20} />
+              <span>Contact</span>
             </button>
           </div>
 
