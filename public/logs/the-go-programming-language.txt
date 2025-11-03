@@ -1,7 +1,0 @@
-# The Go Programming Language
-
-- **Category:** Book
-- **Author:** Alan A. A. Donovan & Brian W. Kernighan
-- **Date:** 2025-10-10
-- **Rating:** 5/5
-- **Link:** [gopl.io](https://www.gopl.io/)

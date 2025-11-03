@@ -1,7 +1,0 @@
-# The Matrix
-
-- **Category:** Movie
-- **Director:** The Wachowskis
-- **Date:** 2025-10-14
-- **Rating:** 5/5
-- **Link:** [IMDb](https://www.imdb.com/title/tt0133093/)
