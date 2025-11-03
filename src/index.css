@@ -72,6 +72,13 @@ code {
   --color-takes-badge: #065f46; /* emerald-800 */
   --color-series-badge: #e11d48; /* rose-600 */
   --color-dnd-badge: #583fa3; /* violet-400 */
+  --fzcdx-background: #ffffff;
+  --fzcdx-text-primary: #2d2d2d;
+  --fzcdx-text-secondary: #4b5563;
+  --fzcdx-primary: #f87171;
+  --fzcdx-secondary: #fb923c;
+  --fzcdx-accent: #34d399;
+  --fzcdx-spanner: #e89b5d;
 }
 
 @media (max-width: 768px) {

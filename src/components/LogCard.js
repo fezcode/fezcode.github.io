@@ -30,38 +30,47 @@ const categoryStyles = {
   Book: {
     backgroundColor: colors['book-alpha-10'],
     borderColor: colors['book-alpha-50'],
+    textColor: colors.book,
   },
   Movie: {
     backgroundColor: colors['movie-alpha-10'],
     borderColor: colors['movie-alpha-50'],
+    textColor: colors.movie,
   },
   Game: {
     backgroundColor: colors['game-alpha-10'],
     borderColor: colors['game-alpha-50'],
+    textColor: colors.game,
   },
   Article: {
     backgroundColor: colors['article-alpha-10'],
     borderColor: colors['article-alpha-50'],
+    textColor: colors.article,
   },
   Music: {
     backgroundColor: colors['music-alpha-10'],
     borderColor: colors['music-alpha-50'],
+    textColor: colors.music,
   },
   Series: {
     backgroundColor: colors['series-alpha-10'],
     borderColor: colors['series-alpha-50'],
+    textColor: colors.series,
   },
   Food: {
     backgroundColor: colors['food-alpha-10'],
     borderColor: colors['food-alpha-50'],
+    textColor: colors.food,
   },
   Websites: {
     backgroundColor: colors['websites-alpha-10'],
     borderColor: colors['websites-alpha-50'],
+    textColor: colors.websites,
   },
   Tools: {
     backgroundColor: colors['tools-alpha-10'],
     borderColor: colors['tools-alpha-50'],
+    textColor: colors.tools,
   },
 };
 
@@ -83,6 +92,7 @@ const LogCard = ({ log, index, totalLogs }) => {
   } = log;
 
   const cardStyle = categoryStyles[category] || {};
+  const detailTextColor = colors[category.toLowerCase() + '-light'];
 
   const renderStars = (rating) => {
     const stars = [];
@@ -120,15 +130,16 @@ const LogCard = ({ log, index, totalLogs }) => {
         <div>
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center">
-              <div className="text-2xl mr-4">{categoryIcons[category]}</div>
+              <div className="text-2xl mr-4" style={{ color: detailTextColor }}>{categoryIcons[category]}</div>
               <h2
-                className={`text-xl font-normal group-hover:text-${category.toLowerCase()}`}
+                className={`text-xl font-normal`}
+                style={{ color: cardStyle.textColor }}
               >
                 {title}
               </h2>
             </div>
           </div>
-          <div className="text-sm text-gray-400 mb-4">
+          <div className="text-sm mb-4" style={{ color: detailTextColor }}>
             {author && <div>Author: {author}</div>}
             {director && <div>Director: {director}</div>}
             {platform && <div>Platform: {platform}</div>}

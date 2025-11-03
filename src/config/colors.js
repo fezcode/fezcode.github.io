@@ -16,6 +16,15 @@ module.exports = {
   food: '#84cc16', // lime-500
   websites: '#f472b6', // pink-400
   tools: '#facc15', // yellow-400
+  'book-light': '#93c5fd', // blue-300
+  'movie-light': '#fca5a5', // red-300
+  'game-light': '#86efac', // green-300
+  'article-light': '#fdba74', // orange-300
+  'music-light': '#d8b4fe', // purple-300
+  'series-light': '#fbcfe8', // pink-300
+  'food-light': '#bef264', // lime-300
+  'websites-light': '#f9a8d4', // pink-300
+  'tools-light': '#fde047', // yellow-300
   'title-hover': '#fdd4a6', // orange-200
   'markdown-title-color': '#fed7aa', // orange-200
   'markdown-hx-color': '#ffedd5', // orange-100

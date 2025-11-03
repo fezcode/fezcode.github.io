@@ -150,7 +150,7 @@ const BlogPage = () => {
             <ArrowLeftIcon className="text-xl" /> Back to Home
           </Link>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            From the Blog
+            From the <span style={{ color: 'var(--fzcdx-spanner)' }}>Blog</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
             Catch up on the latest news and insights.
