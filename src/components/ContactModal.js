@@ -1,6 +1,6 @@
 import React from 'react';
 import './ContactModal.css';
-import { X, Envelope, LinkedinLogo } from '@phosphor-icons/react';
+import {X, Envelope, LinkedinLogo, TwitterLogo} from '@phosphor-icons/react';
 
 const colorizeText = (text) => {
   return text.split(' ').map((word, index) => {
@@ -36,6 +36,10 @@ const ContactModal = ({ isOpen, onClose }) => {
             <a href="https://tr.linkedin.com/in/ahmed-samil-bulbul" target="_blank" rel="noopener noreferrer" className="contact-link">
               <LinkedinLogo size={24} />
               <span>{colorizeText('LinkedIn')}</span>
+            </a>
+            <a href="https://x.com/fezcoddy" target="_blank" rel="noopener noreferrer" className="contact-link">
+              <TwitterLogo size={24} />
+              <span>{colorizeText('Twitter (x.com)')}</span>
             </a>
           </div>
         </div>
