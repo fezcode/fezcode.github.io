@@ -1,11 +1,36 @@
 [
   {
+    "category": "Tools",
+    "date": "2025-11-03",
+    "link": "https://mastra.ai/",
+    "rating": 5,
+    "slug": "tool-mastra-ai",
+    "title": "Mastra AI"
+  },
+  {
+    "category": "Article",
+    "date": "2025-11-03",
+    "link": "https://blog.hyperknot.com/p/openfreemap-survived-100000-requests",
+    "rating": 3,
+    "slug": "openfreemap-survived-100000-requests",
+    "author": "Zsolt Ero",
+    "title": "OpenFreeMap survived 100,000 requests per second"
+  },
+  {
+    "category": "Websites",
+    "date": "2025-11-03",
+    "link": "https://wplace.live/",
+    "rating": 5,
+    "slug": "website-wplace-live",
+    "title": "wplace.live"
+  },
+  {
     "category": "Article",
     "date": "2025-11-03",
     "link": "https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/",
     "rating": 4,
     "slug": "why-your-website-should-be-under-14kb-in-size",
-    "source": "Nathaniel",
+    "author": "Nathaniel",
     "title": "Why your website should be under 14kB in size"
   },
   {

@@ -15,6 +15,7 @@ module.exports = {
   series: '#ec4899', // pink-500
   food: '#84cc16', // lime-500
   websites: '#f472b6', // pink-400
+  tools: '#facc15', // yellow-400
   'title-hover': '#fdd4a6', // orange-200
   'markdown-title-color': '#fed7aa', // orange-200
   'markdown-hx-color': '#ffedd5', // orange-100
@@ -46,6 +47,8 @@ module.exports = {
   'food-alpha-50': 'rgba(132, 204, 22, 0.5)',
   'websites-alpha-10': 'rgba(244, 114, 182, 0.1)',
   'websites-alpha-50': 'rgba(244, 114, 182, 0.5)',
+  'tools-alpha-10': 'rgba(250, 204, 21, 0.1)',
+  'tools-alpha-50': 'rgba(250, 204, 21, 0.5)',
 
   // Toast colors
   'toast-background': 'rgba(68, 64, 59, 0.8)',

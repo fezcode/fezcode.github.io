@@ -10,7 +10,8 @@ import {
   Television,
   ForkKnife,
   Globe,
-  Star
+  Star,
+  Wrench,
 } from '@phosphor-icons/react';
 
 const categoryIcons = {
@@ -22,6 +23,7 @@ const categoryIcons = {
   Series: <Television />,
   Food: <ForkKnife />,
   Websites: <Globe />,
+  Tools: <Wrench />,
 };
 
 const categoryStyles = {
@@ -56,6 +58,10 @@ const categoryStyles = {
   Websites: {
     backgroundColor: colors['websites-alpha-10'],
     borderColor: colors['websites-alpha-50'],
+  },
+  Tools: {
+    backgroundColor: colors['tools-alpha-10'],
+    borderColor: colors['tools-alpha-50'],
   },
 };
 

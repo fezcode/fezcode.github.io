@@ -34,6 +34,10 @@ export const categoryStyles = {
     backgroundColor: colors['websites-alpha-10'],
     borderColor: colors['websites-alpha-50'],
   },
+  Tools: {
+    backgroundColor: colors['tools-alpha-10'],
+    borderColor: colors['tools-alpha-50'],
+  },
 };
 
 const ColorLegends = ({ onLegendClick, hiddenLegends }) => {
