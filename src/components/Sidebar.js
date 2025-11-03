@@ -27,7 +27,7 @@ import { version } from '../version';
 const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
   const [isContentOpen, setIsContentOpen] = useState(true);
-  const [isExtrasOpen, setIsExtrasOpen] = useState(true);
+  const [isExtrasOpen, setIsExtrasOpen] = useState(false);
   const [isGamesOpen, setIsGamesOpen] = useState(false);
   const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
