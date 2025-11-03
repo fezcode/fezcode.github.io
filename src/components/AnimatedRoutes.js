@@ -17,6 +17,8 @@ import DndEpisodePage from '../pages/DndEpisodePage'; // New import
 import DndLorePage from '../pages/DndLorePage'; // New import
 import DndBookPage from '../pages/DndBookPage'; // New import
 
+import UsefulLinksPage from '../pages/UsefulLinksPage';
+
 const pageVariants = {
   initial: {
     opacity: 0,
@@ -255,6 +257,20 @@ function AnimatedRoutes() {
           }
         />
         {/* D&D specific 404 page */}
+        <Route
+          path="/useful-links"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <UsefulLinksPage />
+            </motion.div>
+          }
+        />
         <Route
           path="/dnd/*"
           element={

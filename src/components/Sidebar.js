@@ -296,9 +296,9 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
           <hr className="border-gray-700 my-4" />
 
           <div className="flex space-x-2 font-sans">
-            <button className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">
-              Button 1
-            </button>
+            <NavLink to="/useful-links" className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans text-center">
+              Random
+            </NavLink>
 
             <button onClick={toggleModal} className="bg-gray-900 hover:bg-gray-800 text-white py-2 px-4 rounded-md transition-colors w-full font-sans">
               Contact Me

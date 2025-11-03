@@ -176,13 +176,14 @@
     }
   },
   {
-    "slug": "my-first-dnd-post",
-    "title": "My First D&D Post",
+    "slug": "dnd-content",
+    "title": "The Necessary D&D Post",
     "date": "2025-10-21",
+    "updated": "2025-11-03",
     "description": "An introduction to my D&D adventures.",
     "tags": ["dnd", "rpg", "adventure"],
     "category": "d&d",
-    "filename": "my-first-dnd-post.txt"
+    "filename": "dnd-content.txt"
   },
 
   {
@@ -206,12 +207,12 @@
     "filename": "hashrouter-vs-browserrouter.txt"
   },
   {
-    "slug": "warning-post",
-    "title": "Warning Post",
+    "slug": "about-fezcodex",
+    "title": "About Fezcodex",
     "date": "2025-10-14",
-    "updated": "2025-10-15",
+    "updated": "2025-11-03",
     "tags": ["writing", "updates"],
     "category": "rant",
-    "filename": "warning-post.txt"
+    "filename": "about-fezcodex.txt"
   }
 ]
