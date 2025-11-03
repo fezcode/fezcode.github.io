@@ -12,6 +12,7 @@ import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
+import ImageModal from '../components/ImageModal';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
@@ -129,6 +130,7 @@ const BlogPostPage = () => {
   const [isModalOpen, setIsModalToOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx'); // Default to jsx
+  const [modalImageSrc, setModalImageSrc] = useState(null);
 
   const openModal = (content, language) => {
     setModalContent(content);
@@ -297,6 +299,15 @@ const BlogPostPage = () => {
   const backLink = post.attributes.series ? `/blog/series/${post.attributes.series.slug}` : '/blog';
   const backLinkText = post.attributes.series ? `Back to ${post.attributes.series.title}` : 'Back to Blog';
 
+  const ImageRenderer = ({ src, alt }) => (
+    <img
+      src={src}
+      alt={alt}
+      className="cursor-pointer max-w-full h-auto"
+      onClick={() => setModalImageSrc(src)}
+    />
+  );
+
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -320,6 +331,7 @@ const BlogPostPage = () => {
                   code: (props) => (
                     <CodeBlock {...props} openModal={openModal} />
                   ),
+                  img: ImageRenderer,
                 }}
               >
                 {post.body}
@@ -361,6 +373,11 @@ const BlogPostPage = () => {
       <CodeModal isOpen={isModalOpen} onClose={closeModal} language={modalLanguage}>
         {modalContent}
       </CodeModal>
+      <ImageModal
+        src={modalImageSrc}
+        alt="Full size image"
+        onClose={() => setModalImageSrc(null)}
+      />
     </div>
   );
 };
