@@ -1,5 +1,34 @@
 [
   {
+    "author": "needleful",
+    "category": "Article",
+    "date": "2025-11-03",
+    "link": "https://needleful.net/blog/2024/01/arthur_whitney.html",
+    "rating": 5,
+    "slug": "needleful-arthur-whitney-c-smart",
+    "title": "Learning to read Arthur Whitney's C to become Smart"
+  },
+  {
+    "artist": "frederic",
+    "category": "Music",
+    "date": "2025-11-03",
+    "link": "https://www.youtube.com/watch?v=PCp2iXA1uLE",
+    "rating": 5,
+    "slug": "frederic-oddloop",
+    "title": "oddloop",
+    "album": "Oddloop",
+    "releaseDate": "2014-09-23"
+  },
+  {
+    "artist": "Morcheeba",
+    "category": "Music",
+    "date": "2025-11-03",
+    "link": "https://www.youtube.com/watch?v=27lPAUdE1ys",
+    "rating": 5,
+    "slug": "morcheeba-easier-said-than-done",
+    "title": "Easier Said Than Done"
+  },
+  {
     "category": "Tools",
     "date": "2025-11-03",
     "link": "https://mastra.ai/",
