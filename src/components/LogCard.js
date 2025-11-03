@@ -116,7 +116,7 @@ const LogCard = ({ log, index, totalLogs }) => {
         className="group bg-transparent border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl overflow-hidden h-full"
         style={cardStyle}
       >
-        <div className="absolute top-2 right-2 text-lg font-semibold px-2 py-1 rounded-md border overflow-hidden whitespace-nowrap" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', color: cardStyle.textColor, borderColor: cardStyle.borderColor }}>
+        <div className="absolute top-3 right-3 text-lg font-semibold px-2 py-1 rounded-md border overflow-hidden whitespace-nowrap" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', color: cardStyle.textColor, borderColor: cardStyle.borderColor }}>
           #{totalLogs - index}
         </div>
         <div
@@ -128,7 +128,7 @@ const LogCard = ({ log, index, totalLogs }) => {
           }}
         ></div>
         <div>
-          <div className="flex items-center justify-between mb-4 pr-8">
+          <div className="flex items-center justify-between mb-4 pr-10">
             <div className="flex items-center">
               <div className="text-2xl mr-4" style={{ color: detailTextColor }}>{categoryIcons[category]}</div>
               <h2

@@ -1,5 +1,14 @@
 [
   {
+    "artist": "Morcheeba",
+    "category": "Music",
+    "date": "2025-11-03",
+    "link": "https://www.youtube.com/watch?v=27lPAUdE1ys",
+    "rating": 5,
+    "slug": "morcheeba-easier-said-than-done",
+    "title": "Easier Said Than Done"
+  },
+  {
     "category": "Tools",
     "date": "2025-11-03",
     "link": "https://mastra.ai/",
