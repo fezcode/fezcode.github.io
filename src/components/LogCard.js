@@ -94,22 +94,28 @@ const LogCard = ({ log, index, totalLogs }) => {
   const cardStyle = categoryStyles[category] || {};
   const detailTextColor = colors[category.toLowerCase() + '-light'];
 
-  const renderStars = (rating) => {
-    const stars = [];
-    for (let i = 0; i < 5; i++) {
-      if (i < rating) {
-        stars.push(
-          <Star key={i} size={16} weight="fill" className="text-yellow-400" />,
-        );
-      } else {
-        stars.push(
-          <Star key={i} size={16} weight="fill" className="text-gray-500" />,
-        );
+      const renderStars = (rating) => {
+      const stars = [];
+      const starColor = cardStyle.textColor;
+            const emptyStarColor = colors[category.toLowerCase() + '-alpha-50'];
+      for (let i = 0; i < 5; i++) {
+        if (i < rating) {
+          stars.push(
+            <Star key={i} size={16} weight="fill" style={{ color: starColor }} />,
+          );
+        } else {
+          stars.push(
+            <Star
+              key={i}
+              size={16}
+              weight="fill"
+              style={{ color: emptyStarColor }}
+            />,
+          );
+        }
       }
-    }
-    return <div className="flex ml-1 mt-1">{stars}</div>;
-  };
-
+      return <div className="flex ml-1 mt-1">{stars}</div>;
+    };
   return (
     <Link to={`/logs/${slug}`} className="block">
       <div
