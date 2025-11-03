@@ -48,6 +48,10 @@ module.exports = {
               color: theme('colors.markdown-hx-color'),
             },
 
+            th: {
+              color: theme('colors.gray.100'),
+            },
+
             strong: {
               color: theme('colors.gray.100'),
             },
