@@ -93,24 +93,6 @@
     "title": "Relay"
   },
   {
-    "author": "Douglas Adams",
-    "category": "Book",
-    "date": "2025-10-15",
-    "link": "https://www.goodreads.com/book/show/386162.The_Hitchhiker_s_Guide_to_the_Galaxy",
-    "rating": 5,
-    "slug": "the-hitchhikers-guide-to-the-galaxy",
-    "title": "The Hitchhiker's Guide to the Galaxy"
-  },
-  {
-    "category": "Movie",
-    "date": "2025-10-14",
-    "director": "The Wachowskis",
-    "link": "https://www.imdb.com/title/tt0133093/",
-    "rating": 5,
-    "slug": "the-matrix",
-    "title": "The Matrix"
-  },
-  {
     "category": "Game",
     "date": "2025-10-12",
     "link": "https://www.zelda.com/breath-of-the-wild/",
@@ -120,24 +102,6 @@
     "title": "The Legend of Zelda: Breath of the Wild"
   },
   {
-    "author": "Alan A. A. Donovan, Brian W. Kernighan",
-    "category": "Book",
-    "date": "2025-10-10",
-    "link": "https://www.gopl.io/",
-    "rating": 5,
-    "slug": "the-go-programming-language",
-    "title": "The Go Programming Language"
-  },
-  {
-    "category": "Article",
-    "date": "2025-10-08",
-    "link": "https://www.pcgamer.com/how-to-build-a-mechanical-keyboard/",
-    "rating": 4,
-    "slug": "how-to-build-a-mechanical-keyboard",
-    "source": "PC Gamer",
-    "title": "How to build a mechanical keyboard"
-  },
-  {
     "artist": "Neutral Milk Hotel",
     "category": "Music",
     "date": "2025-10-06",
@@ -145,15 +109,5 @@
     "rating": 5,
     "slug": "in-the-aeroplane-over-the-sea",
     "title": "In the Aeroplane Over the Sea"
-  },
-  {
-    "category": "Series",
-    "creator": "Vince Gilligan",
-    "date": "2025-10-04",
-    "link": "https://www.imdb.com/title/tt0903747/",
-    "rating": 5,
-    "slug": "breaking-bad",
-    "title": "Breaking Bad",
-    "year": "2008-2013"
   }
 ]
