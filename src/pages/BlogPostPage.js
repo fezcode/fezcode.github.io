@@ -291,10 +291,10 @@ const BlogPostPage = () => {
   const currentPostIndex = post.seriesPosts ? post.seriesPosts.findIndex(
     (item) => item.slug === currentSlug,
   ) : -1;
-  const prevPost = currentPostIndex > 0 ? post.seriesPosts[currentPostIndex - 1] : null;
-  const nextPost = post.seriesPosts && currentPostIndex < post.seriesPosts.length - 1
+  const prevPost = post.seriesPosts && currentPostIndex < post.seriesPosts.length - 1
     ? post.seriesPosts[currentPostIndex + 1]
     : null;
+  const nextPost = currentPostIndex > 0 ? post.seriesPosts[currentPostIndex - 1] : null;
 
   const backLink = post.attributes.series ? `/blog/series/${post.attributes.series.slug}` : '/blog';
   const backLinkText = post.attributes.series ? `Back to ${post.attributes.series.title}` : 'Back to Blog';
