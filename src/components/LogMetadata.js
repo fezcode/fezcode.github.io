@@ -25,10 +25,6 @@ const LogMetadata = ({ metadata }) => {
     return <div className="flex ml-1 mt-1">{stars}</div>;
   };
 
-  const logMetadataBackgroundColorStyle = {
-    backgroundColor: colors[`${metadata.category.toLowerCase()}-alpha-10`],
-  };
-
   return (
     <aside className="sticky top-24">
       <div
