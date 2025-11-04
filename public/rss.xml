@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[Fezcodex]]></title>
+        <description><![CDATA[A personal blog by Ahmed Samil Bulbul]]></description>
+        <link>https://fezcode.com</link>
+        <image>
+            <url>https://fezcode.com/logo512.png</url>
+            <title>Fezcodex</title>
+            <link>https://fezcode.com</link>
+        </image>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Tue, 04 Nov 2025 15:18:07 GMT</lastBuildDate>
+        <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Tue, 04 Nov 2025 15:18:06 GMT</pubDate>
+        <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
+        <language><![CDATA[en]]></language>
+        <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
+        <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
+        <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Weighted Quick-Union with Path Compression]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/wquwpc</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/wquwpc</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 04 Nov 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Ubuntu Once More]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/ubuntu-once-more</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/ubuntu-once-more</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[React Memoization Hooks]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-memoization-hooks</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/react-memoization-hooks</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[React Refs Useref]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-refs-useref</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/react-refs-useref</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[React Custom Hooks]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-custom-hooks</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/react-custom-hooks</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Document Fetching Api]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/document-fetching-api</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/document-fetching-api</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Html Structure]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/html-structure</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/html-structure</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Javascript Fundamentals]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/javascript-fundamentals</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/javascript-fundamentals</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Css And Tailwind Css]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/css-and-tailwind-css</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/css-and-tailwind-css</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Routing With React Router Dom]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/routing-with-react-router-dom</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/routing-with-react-router-dom</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[React Context Usecontext]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-context-usecontext</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/react-context-usecontext</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[React Hooks Usestate Useeffect]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-hooks-usestate-useeffect</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/react-hooks-usestate-useeffect</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[React Basics Components Props]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-basics-components-props</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/react-basics-components-props</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Blog Post Page Component]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/blog-post-page-component</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/blog-post-page-component</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[App Js Main Component]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/app-js-main-component</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/app-js-main-component</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Index Js Entry Point]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/index-js-entry-point</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/index-js-entry-point</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Package Json Explained]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/package-json-explained</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/package-json-explained</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Project Overview]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/project-overview</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/project-overview</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[The Necessary D&D Post]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/dnd-content</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/dnd-content</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Gemini Explains How Hooks Work with Toast Component]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/gemini-explains-how-hooks-work-with-toast-component</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/gemini-explains-how-hooks-work-with-toast-component</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Do I Need to Create a Lib For That?]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 16 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[HashRouter vs. BrowserRouter]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/hashrouter-vs-browserrouter</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/hashrouter-vs-browserrouter</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[About Fezcodex]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/about-fezcodex</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/about-fezcodex</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 14 Oct 2025 00:00:00 GMT</pubDate>
+        </item>
+        <item>
+            <title><![CDATA[Gemini 2.5 Flash Explains me How Image Modal Works]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/gemini-explains-how-image-modal-works</link>
+            <guid isPermaLink="false">
+                <url>https://fezcode.com/#/blog/gemini-explains-how-image-modal-works</url>
+            </guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 05 Jan 2024 00:00:00 GMT</pubDate>
+        </item>
+    </channel>
+</rss>
