@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './ContactModal.css';
-import {X, Envelope, LinkedinLogo, TwitterLogo} from '@phosphor-icons/react';
+import { X, Envelope, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
 
 const colorizeText = (text) => {
   return text.split(' ').map((word, index) => {
@@ -13,16 +13,38 @@ const colorizeText = (text) => {
 };
 
 const ContactModal = ({ isOpen, onClose }) => {
+  const [isClosing, setIsClosing] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setIsClosing(false);
+    }
+  }, [isOpen]);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+      setIsClosing(false);
+    }, 300); // Corresponds to animation duration
+  };
+
   if (!isOpen) {
     return null;
   }
 
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`modal-overlay ${isOpen && !isClosing ? 'fade-in' : 'fade-out'}`}
+      onClick={handleClose}
+    >
+      <div
+        className={`modal-content ${isOpen && !isClosing ? 'slide-up' : 'slide-down'}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="modal-header">
           <h2>{colorizeText('Contact Me')}</h2>
-          <button onClick={onClose} className="close-button">
+          <button onClick={handleClose} className="close-button">
             <X size={24} />
           </button>
         </div>
