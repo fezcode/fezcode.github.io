@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 04 Nov 2025 15:18:07 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 04 Nov 2025 15:28:42 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 04 Nov 2025 15:18:06 GMT</pubDate>
+        <pubDate>Tue, 04 Nov 2025 15:28:42 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -21,241 +21,490 @@
             <title><![CDATA[Weighted Quick-Union with Path Compression]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/wquwpc</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/wquwpc</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/wquwpc</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Tue, 04 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>A Deep Dive into Weighted Quick-Union with Path Compression</h1>
+<p><a href="https://fezcode.com/#/blog/wquwpc">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Ubuntu Once More]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/ubuntu-once-more</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/ubuntu-once-more</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/ubuntu-once-more</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Wed, 29 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Ubuntu Once More</h1>
+<h2>Trying Ubuntu 25.10</h2>
+<p>More than once a year, I get the itch to change the Linux distro I use daily. To make this easier, I bought a Lenovo IdeaPad Slim 3 to serve as my dedicated &quot;distrohopper&quot; laptop.</p>
+<p>This time, however, I took a bigger leap and installed it on my main desktop PC. I had a spare SSD full of video games, which I formatted for the occasion. I downloaded the ISO, ran <a href="https://etcher.balena.io/">balenaEtcher</a>, and hoped for the best.</p>
+<p>My current PC setup has two displays: one 4K and one 2K. The 2K monitor is connected via HDMI, so most Linux distros default to it as the main display. However, my 4K IPS display, connected via DisplayPort, is my actual primary. It has a 144Hz refresh rate and vibrant colors, making it perfect for my needs.</p>
+<p>Unfortunately, Linux installations often disagree. Whenever I tried to install Ubuntu with both displays connected, the installation would abruptly fail. I spent two hours debugging the issue, but error messages, error codes, and online forums offered no clear explanation.</p>
+<p>Finally, I spotted the word &quot;display&quot; in an error message. Drawing on past experiences with Linux distros, I decided to disconnect my 4K display. It worked! Ubuntu 25.10 installed successfully on my main PC.</p>
+<p>The NTFS support is fantastic, and the EXT4 support in WSL2 is also great. It&#39;s wonderful that Windows and Linux can finally read and write to each other&#39;s filesystems.</p>
+<p>GRUB, however, is currently a disaster. I can&#39;t edit the entries for some reason, and I don&#39;t want to risk breaking my setup, so I&#39;m leaving it alone for now. I might look into it tomorrow...</p>
+<h2>What to do after installation</h2>
+<p>The first thing I did was install <code>zsh</code>. For reasons I can&#39;t quite explain, I always install <code>oh-my-zsh</code> and <code>git</code> right away. Here&#39;s a list of my essential (not really) apps:</p>
+<ul>
+<li><strong>Zen Browser</strong> (my current favorite)</li>
+<li><strong>Zed</strong></li>
+<li><strong>CLion</strong> (Linux is the only platform I use for C++ development)</li>
+<li><strong>VSCode</strong></li>
+<li><strong>Sublime Text</strong> (Zed has mostly replaced it for now)</li>
+<li><strong>Insomnia</strong> (and Postman)</li>
+<li><strong>Spotify</strong></li>
+<li><strong>Youtube Music (pear)</strong></li>
+<li><strong>VLC</strong></li>
+<li><strong>Obsidian</strong></li>
+<li><strong>dotnet</strong></li>
+<li><strong>go + golangci-lint</strong></li>
+<li><strong>node.js runtime</strong></li>
+<li><strong>GH CLI</strong></li>
+<li><strong>Gemini CLI</strong></li>
+<li><strong>GNOME Tweak Tool</strong></li>
+<li><strong>GNOME Extensions</strong><ul>
+<li>Apps Menu</li>
+<li>ISO Clock</li>
+</ul>
+</li>
+<li><strong>Grub Customizer</strong> (which doesn&#39;t seem to be working)</li>
+</ul>
+<h2>Why</h2>
+<p>I&#39;m a <strong>Debian</strong> fan who loves using <strong>Fedora</strong>. I know it sounds weird, but it&#39;s true. Fedora has always been the only OS that works as seamlessly with my peripherals as Windows. I&#39;ve tried to install Debian on every machine I&#39;ve owned but could never get it to run properly. So, as a Debian enthusiast, I enjoy trying its different flavours. For some reason, Ubuntu just works. I&#39;m currently very happy with my setup. :yay:</p>
+<p><a href="https://fezcode.com/#/blog/ubuntu-once-more">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Memoization Hooks]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/react-memoization-hooks</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/react-memoization-hooks</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-memoization-hooks</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>016 - React: Memoization Hooks (<code>useCallback</code>, <code>useMemo</code>) and <code>React.memo</code></h1>
+<p><a href="https://fezcode.com/#/blog/react-memoization-hooks">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Refs Useref]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/react-refs-useref</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/react-refs-useref</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-refs-useref</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>015 - React: <code>useRef</code> Hook</h1>
+<p><a href="https://fezcode.com/#/blog/react-refs-useref">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Custom Hooks]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/react-custom-hooks</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/react-custom-hooks</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-custom-hooks</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>014 - React: Custom Hooks</h1>
+<p><a href="https://fezcode.com/#/blog/react-custom-hooks">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Document Fetching Api]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/document-fetching-api</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/document-fetching-api</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/document-fetching-api</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>013 - Document Fetching with the <code>fetch</code> API</h1>
+<p><a href="https://fezcode.com/#/blog/document-fetching-api">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Html Structure]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/html-structure</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/html-structure</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/html-structure</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>012 - HTML Structure (<code>public/index.html</code>)</h1>
+<p><a href="https://fezcode.com/#/blog/html-structure">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Javascript Fundamentals]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/javascript-fundamentals</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/javascript-fundamentals</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/javascript-fundamentals</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>011 - JavaScript Fundamentals in the Project</h1>
+<p><a href="https://fezcode.com/#/blog/javascript-fundamentals">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Css And Tailwind Css]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/css-and-tailwind-css</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/css-and-tailwind-css</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/css-and-tailwind-css</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>010 - CSS and Tailwind CSS</h1>
+<p><a href="https://fezcode.com/#/blog/css-and-tailwind-css">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Routing With React Router Dom]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/routing-with-react-router-dom</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/routing-with-react-router-dom</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/routing-with-react-router-dom</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>009 - Routing with <code>react-router-dom</code></h1>
+<p><a href="https://fezcode.com/#/blog/routing-with-react-router-dom">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Context Usecontext]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/react-context-usecontext</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/react-context-usecontext</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-context-usecontext</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>008 - React Context API and <code>useContext</code></h1>
+<p><a href="https://fezcode.com/#/blog/react-context-usecontext">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Hooks Usestate Useeffect]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/react-hooks-usestate-useeffect</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/react-hooks-usestate-useeffect</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-hooks-usestate-useeffect</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>007 - React Hooks: <code>useState</code> and <code>useEffect</code></h1>
+<p><a href="https://fezcode.com/#/blog/react-hooks-usestate-useeffect">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Basics Components Props]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/react-basics-components-props</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/react-basics-components-props</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-basics-components-props</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>006 - React Basics: Components and Props</h1>
+<p><a href="https://fezcode.com/#/blog/react-basics-components-props">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Blog Post Page Component]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/blog-post-page-component</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/blog-post-page-component</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/blog-post-page-component</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>005 - <code>src/pages/BlogPostPage.js</code> Component Explained</h1>
+<p><a href="https://fezcode.com/#/blog/blog-post-page-component">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[App Js Main Component]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/app-js-main-component</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/app-js-main-component</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/app-js-main-component</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>004 - <code>src/App.js</code> Main Component Explained</h1>
+<p><a href="https://fezcode.com/#/blog/app-js-main-component">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Index Js Entry Point]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/index-js-entry-point</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/index-js-entry-point</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/index-js-entry-point</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>003 - <code>src/index.js</code> Entry Point Explained</h1>
+<p><a href="https://fezcode.com/#/blog/index-js-entry-point">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Package Json Explained]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/package-json-explained</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/package-json-explained</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/package-json-explained</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>002 - package.json Explained</h1>
+<p><a href="https://fezcode.com/#/blog/package-json-explained">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Project Overview]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/project-overview</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/project-overview</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/project-overview</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>001 - Project Overview: Fezcode</h1>
+<p><a href="https://fezcode.com/#/blog/project-overview">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[The Necessary D&D Post]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/dnd-content</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/dnd-content</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/dnd-content</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Tue, 21 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>RPG and DnD Content</h1>
+<p><a href="https://fezcode.com/#/blog/dnd-content">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Gemini Explains How Hooks Work with Toast Component]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/gemini-explains-how-hooks-work-with-toast-component</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/gemini-explains-how-hooks-work-with-toast-component</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/gemini-explains-how-hooks-work-with-toast-component</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 18 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Gemini Explains How Hooks Work with Toast Component</h1>
+<p><a href="https://fezcode.com/#/blog/gemini-explains-how-hooks-work-with-toast-component">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Do I Need to Create a Lib For That?]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Thu, 16 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Do I Need to Create a Lib For That?</h1>
+<p><a href="https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[HashRouter vs. BrowserRouter]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/hashrouter-vs-browserrouter</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/hashrouter-vs-browserrouter</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/hashrouter-vs-browserrouter</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Wed, 15 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>HashRouter vs. BrowserRouter</h1>
+<p><a href="https://fezcode.com/#/blog/hashrouter-vs-browserrouter">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[About Fezcodex]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/about-fezcodex</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/about-fezcodex</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/about-fezcodex</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Tue, 14 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>My Warning Post (and what is this site about)</h1>
+<p><a href="https://fezcode.com/#/blog/about-fezcodex">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Gemini 2.5 Flash Explains me How Image Modal Works]]></title>
             <description><![CDATA[[object Object]]]></description>
             <link>https://fezcode.com/#/blog/gemini-explains-how-image-modal-works</link>
-            <guid isPermaLink="false">
-                <url>https://fezcode.com/#/blog/gemini-explains-how-image-modal-works</url>
-            </guid>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/gemini-explains-how-image-modal-works</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Fri, 05 Jan 2024 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Gemini Explains How Image Modal Works</h1>
+<p>Ok, this is a first for me. I asked, as a <em>backend developer</em> who knows nothing about <strong>React</strong>, Gemini to explain the <code>ImageModal.js</code> component.
+I gave the following prompt:</p>
+<blockquote>
+<p>can you explain to me everything done. Explain to me every word if necessary.
+I don&#39;t know anything about react so write it to text file called <code>explanation.md</code>.
+Write everything step by step to that file. As I said I don&#39;t know what <code>useEffect</code> is or what
+<code>[src]</code> does so explain everything in ImageModal.js and LogDetailPage.js files.</p>
+</blockquote>
+<p>And I believe it gave me a great starting point. Where is the result. Enjoy.</p>
+<hr>
+<h1>Explanation of Changes: Adding an Image Modal</h1>
+<p>This document explains the changes made to implement an image modal feature, allowing users to click on images within log entries to view them in full size with animations. This explanation is tailored for someone unfamiliar with React.js.</p>
+<hr>
+<h2>Core Concepts Explained</h2>
+<p>Before diving into the file-specific changes, let&#39;s understand some fundamental React concepts used:</p>
+<ul>
+<li><strong>Components:</strong> In React, a &quot;component&quot; is a self-contained, reusable piece of code that represents a part of your user interface. Think of it like a building block. For example, a button, a navigation bar, or an entire page can be a component. We created a new component called <code>ImageModal</code>.</li>
+<li><strong>Props (Properties):</strong> Props are how you pass data from a parent component to a child component. They are like arguments to a function. For example, our <code>ImageModal</code> component receives <code>src</code> (the image source) and <code>onClose</code> (a function to close the modal) as props.</li>
+<li><strong>State:</strong> State is data that a component manages internally and can change over time. When a component&#39;s state changes, React automatically re-renders that component to reflect the new data. We use <code>useState</code> to manage state.</li>
+<li><strong>Hooks:</strong> Hooks are special functions in React that let you &quot;hook into&quot; React features like state and lifecycle methods from functional components (components written as JavaScript functions).<ul>
+<li><strong><code>useState</code>:</strong> This hook lets you add React state to functional components. It returns a pair: the current state value and a function that lets you update it. For example, <code>const [modalImageSrc, setModalImageSrc] = useState(null);</code> means <code>modalImageSrc</code> holds the current image source for the modal (initially <code>null</code>, meaning no image is open), and <code>setModalImageSrc</code> is the function you call to change it.</li>
+<li><strong><code>useEffect</code>:</strong> This hook lets you perform &quot;side effects&quot; in functional components. Side effects are things like data fetching, subscriptions, or manually changing the DOM (Document Object Model, which is the structure of your web page).<ul>
+<li><code>useEffect(() =&gt; { /* code */ }, [dependencies])</code>: The first argument is a function containing your effect logic. The second argument, <code>[dependencies]</code>, is an array of values that the effect depends on. If any value in this array changes between renders, the effect function will run again. If the array is empty (<code>[]</code>), the effect runs only once after the initial render (like <code>componentDidMount</code> in class components). If you omit the array entirely, the effect runs after every render.</li>
+<li><strong><code>[src]</code> in <code>useEffect</code>:</strong> In our <code>ImageModal.js</code>, <code>useEffect(() =&gt; { ... }, [src]);</code> means that the code inside this <code>useEffect</code> will run whenever the <code>src</code> prop changes. This is crucial for controlling the body&#39;s scroll behavior: when <code>src</code> becomes available (modal opens), we hide the scrollbar; when <code>src</code> becomes <code>null</code> (modal closes), we restore it. The <code>return () =&gt; { ... };</code> part is a &quot;cleanup&quot; function that runs when the component unmounts or before the effect runs again, ensuring we always restore the scrollbar.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong><code>framer-motion</code>:</strong> This is a popular animation library for React. It provides components like <code>motion.div</code> and <code>AnimatePresence</code> to easily add animations.<ul>
+<li><strong><code>motion.div</code>:</strong> A special <code>div</code> component from <code>framer-motion</code> that accepts animation props like <code>initial</code> (starting state), <code>animate</code> (ending state), <code>exit</code> (state when component is removed), and <code>transition</code> (how long the animation takes).</li>
+<li><strong><code>AnimatePresence</code>:</strong> A component from <code>framer-motion</code> that enables components to animate when they are removed from the React tree (e.g., when <code>src</code> becomes <code>null</code> and the modal disappears). Without <code>AnimatePresence</code>, <code>exit</code> animations wouldn&#39;t work.</li>
+</ul>
+</li>
+<li><strong><code>ReactMarkdown</code>:</strong> A library used to render Markdown text (like the content of your log files) as HTML in a React application.<ul>
+<li><strong><code>components</code> prop:</strong> This prop allows you to override how <code>ReactMarkdown</code> renders specific HTML elements. For example, we tell it to use our custom <code>ImageRenderer</code> component whenever it encounters an <code>&lt;img&gt;</code> tag.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2><code>src/components/ImageModal.js</code> Explained</h2>
+<p>This file defines the <code>ImageModal</code> component, which is responsible for displaying a full-size image in an overlay and handling its opening/closing animations.</p>
+<pre><code class="language-javascript">import React, { useEffect } from &#39;react&#39;; // Import React and the useEffect hook
+import { X } from &#39;@phosphor-icons/react&#39;; // Import the &#39;X&#39; icon for the close button
+import { motion, AnimatePresence } from &#39;framer-motion&#39;; // Import motion and AnimatePresence for animations
+
+const ImageModal = ({ src, alt, onClose }) =&gt; { // Define the ImageModal component, receiving src, alt, and onClose as props
+  useEffect(() =&gt; { // This effect runs when src changes
+    if (src) { // If an image source is provided (modal is open)
+      document.body.style.overflow = &#39;hidden&#39;; // Prevent scrolling on the main page
+    } else { // If no image source (modal is closed)
+      document.body.style.overflow = &#39;unset&#39;; // Restore scrolling
+    }
+    return () =&gt; { // This cleanup function runs when the component unmounts or before the effect re-runs
+      document.body.style.overflow = &#39;unset&#39;; // Ensure scrolling is restored
+    };
+  }, [src]); // The effect re-runs whenever the &#39;src&#39; prop changes
+
+  // The modal is only rendered if &#39;src&#39; has a value (i.e., an image is to be displayed)
+  return (
+    &lt;AnimatePresence&gt; {/* AnimatePresence enables exit animations for components */}
+      {src &amp;&amp; ( // Conditionally render the modal only if &#39;src&#39; exists
+        &lt;motion.div // This is the main modal overlay, animated by framer-motion
+          className=&quot;fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4&quot;
+          onClick={onClose} // Clicking the overlay closes the modal
+          initial={{ opacity: 0 }} // Initial animation state (fully transparent)
+          animate={{ opacity: 1 }} // Animation to (fully opaque)
+          exit={{ opacity: 0 }} // Animation when component is removed (fade out)
+        &gt;
+          &lt;motion.div // This is the container for the image and close button, also animated
+            className=&quot;relative&quot;
+            onClick={e =&gt; e.stopPropagation()} // Prevent clicks on the image/button from closing the modal
+            initial={{ scale: 0.8, opacity: 0 }} // Initial state (smaller and transparent)
+            animate={{ scale: 1, opacity: 1 }} // Animation to (normal size, opaque)
+            exit={{ scale: 0.8, opacity: 0 }} // Animation when removed (shrink and fade out)
+            transition={{ duration: 0.2 }} // Animation duration
+          &gt;
+            &lt;button // The close button
+              onClick={onClose} // Closes the modal when clicked
+              className=&quot;absolute top-2 right-2 text-white text-2xl bg-gray-800 rounded-full p-2 hover:bg-gray-700 focus:outline-none&quot;
+            &gt;
+              &lt;X size={24} weight=&quot;bold&quot; /&gt; {/* The &#39;X&#39; icon */}
+            &lt;/button&gt;
+            &lt;img src={src} alt={alt} className=&quot;max-w-full max-h-[90vh] object-contain&quot; /&gt; {/* The actual image */}
+          &lt;/motion.div&gt;
+        &lt;/motion.div&gt;
+      )}
+    &lt;/AnimatePresence&gt;
+  );
+};
+
+export default ImageModal; // Export the component so it can be used in other files
+</code></pre>
+<p><strong>Key Changes in <code>ImageModal.js</code>:</strong></p>
+<ol>
+<li><strong>Imports:</strong> Added <code>motion</code> and <code>AnimatePresence</code> from <code>framer-motion</code>.</li>
+<li><strong>Conditional Rendering with <code>AnimatePresence</code>:</strong> The entire modal content is now wrapped in <code>&lt;AnimatePresence&gt;</code> and conditionally rendered using <code>{src &amp;&amp; (...) }</code>. This tells <code>framer-motion</code> to watch for when the <code>src</code> prop becomes <code>null</code> and the modal is about to disappear, allowing the <code>exit</code> animations to play.</li>
+<li><strong><code>motion.div</code> for Animations:</strong><ul>
+<li>The outer <code>div</code> (the dark overlay) is now a <code>motion.div</code> with <code>initial={{ opacity: 0 }}</code>, <code>animate={{ opacity: 1 }}</code>, and <code>exit={{ opacity: 0 }}</code> for a fade-in/fade-out effect.</li>
+<li>The inner <code>div</code> (containing the image and close button) is also a <code>motion.div</code> with <code>initial={{ scale: 0.8, opacity: 0 }}</code>, <code>animate={{ scale: 1, opacity: 1 }}</code>, and <code>exit={{ scale: 0.8, opacity: 0 }}</code>. This creates a subtle &quot;pop&quot; effect where the image scales up slightly as it appears and scales down as it disappears.</li>
+<li><code>transition={{ duration: 0.2 }}</code> sets the animation speed to 0.2 seconds.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2><code>src/pages/LogDetailPage.js</code> Explained</h2>
+<p>This file is responsible for displaying the detailed content of a single log entry. The changes here involve integrating the <code>ImageModal</code> and making images clickable.</p>
+<pre><code class="language-javascript">// ... (existing imports)
+import ImageModal from &#39;../components/ImageModal&#39;; // NEW: Import the ImageModal component
+
+// ... (LinkRenderer component)
+
+const LogDetailPage = () =&gt; {
+  // ... (existing useParams, useState, useRef)
+
+  // NEW: State to manage the image modal.
+  // modalImageSrc will hold the URL of the image to display in the modal, or null if no modal is open.
+  // setModalImageSrc is the function to update this state.
+  const [modalImageSrc, setModalImageSrc] = useState(null);
+
+  // ... (useEffect for fetching log data)
+
+  // ... (loading and not found states)
+
+  // NEW: Custom component to render &lt;img&gt; tags within ReactMarkdown.
+  // This allows us to add custom behavior (like opening a modal) to images.
+  const ImageRenderer = ({ src, alt }) =&gt; (
+    &lt;img
+      src={src} // The source URL of the image
+      alt={alt} // The alt text for accessibility
+      className=&quot;cursor-pointer max-w-full h-auto&quot; // Styling for the image, including making it look clickable
+      onClick={() =&gt; setModalImageSrc(src)} // When the image is clicked, set its source to modalImageSrc, which opens the modal
+    /&gt;
+  );
+
+  return (
+    &lt;div className=&quot;bg-gray-900 py-16 sm:py-24&quot;&gt;
+      &lt;div className=&quot;mx-auto max-w-7xl px-6 lg:px-8&quot;&gt;
+        &lt;div className=&quot;lg:grid lg:grid-cols-4 lg:gap-8&quot;&gt;
+          &lt;div className=&quot;lg:col-span-3&quot;&gt;
+            &lt;Link to=&quot;/logs&quot; className=&quot;text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4&quot;&gt;
+              &lt;ArrowLeftIcon size={24} /&gt; Back to Logs
+            &lt;/Link&gt;
+            &lt;div ref={contentRef} className=&quot;prose prose-xl prose-dark max-w-none&quot;&gt;
+              {/* MODIFIED: ReactMarkdown now uses our custom ImageRenderer for &lt;img&gt; tags */}
+              &lt;ReactMarkdown components={{ a: LinkRenderer, img: ImageRenderer }}&gt;{log.body}&lt;/ReactMarkdown&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div className=&quot;hidden lg:block&quot;&gt;
+            &lt;LogMetadata metadata={log.attributes} /&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      {/* NEW: The ImageModal component is rendered here. */}
+      {/* It receives the image source from modalImageSrc and a function to close itself. */}
+      &lt;ImageModal src={modalImageSrc} alt=&quot;Full size image&quot; onClose={() =&gt; setModalImageSrc(null)} /&gt;
+    &lt;/div&gt;
+  );
+};
+
+export default LogDetailPage;
+</code></pre>
+<p><strong>Key Changes in <code>LogDetailPage.js</code>:</strong></p>
+<ol>
+<li><strong>Import <code>ImageModal</code>:</strong> We added <code>import ImageModal from &#39;../components/ImageModal&#39;;</code> at the top of the file so we can use our new modal component.</li>
+<li><strong><code>useState</code> for <code>modalImageSrc</code>:</strong><ul>
+<li><code>const [modalImageSrc, setModalImageSrc] = useState(null);</code> was added. This creates a piece of state called <code>modalImageSrc</code>. Its initial value is <code>null</code>, meaning no image is currently open in the modal.</li>
+<li><code>setModalImageSrc</code> is the function we&#39;ll use to change <code>modalImageSrc</code>. When we call <code>setModalImageSrc(&#39;path/to/image.jpg&#39;)</code>, the modal will open with that image. When we call <code>setModalImageSrc(null)</code>, the modal will close.</li>
+</ul>
+</li>
+<li><strong><code>ImageRenderer</code> Component:</strong><ul>
+<li>This is a small, new component defined within <code>LogDetailPage</code>. Its job is to tell <code>ReactMarkdown</code> how to render <code>&lt;img&gt;</code> tags.</li>
+<li>Instead of just rendering a plain <code>&lt;img&gt;</code> tag, our <code>ImageRenderer</code> adds an <code>onClick</code> event handler.</li>
+<li><code>onClick={() =&gt; setModalImageSrc(src)}</code>: When a user clicks on an image, this function is called. It updates the <code>modalImageSrc</code> state with the <code>src</code> (source URL) of the clicked image. This change in state then triggers the <code>ImageModal</code> to appear.</li>
+</ul>
+</li>
+<li><strong><code>ReactMarkdown</code> <code>components</code> Prop Modification:</strong><ul>
+<li>The line <code>&lt;ReactMarkdown components={{ a: LinkRenderer }}&gt;{log.body}&lt;/ReactMarkdown&gt;</code> was changed to <code>&lt;ReactMarkdown components={{ a: LinkRenderer, img: ImageRenderer }}&gt;{log.body}&lt;/ReactMarkdown&gt;</code>.</li>
+<li>This tells <code>ReactMarkdown</code> to use our <code>LinkRenderer</code> for <code>&lt;a&gt;</code> (link) tags and our new <code>ImageRenderer</code> for <code>&lt;img&gt;</code> (image) tags. Any other HTML tags will be rendered by <code>ReactMarkdown</code>&#39;s default behavior.</li>
+</ul>
+</li>
+<li><strong>Rendering <code>ImageModal</code>:</strong><ul>
+<li><code>&lt;ImageModal src={modalImageSrc} alt=&quot;Full size image&quot; onClose={() =&gt; setModalImageSrc(null)} /&gt;</code> was added at the end of the <code>LogDetailPage</code>&#39;s return statement.</li>
+<li><code>src={modalImageSrc}</code>: This passes the current value of our <code>modalImageSrc</code> state to the <code>ImageModal</code>. If <code>modalImageSrc</code> is <code>null</code>, the <code>ImageModal</code> won&#39;t render (or will animate out if it was previously open). If it has an image URL, the modal will display that image.</li>
+<li><code>onClose={() =&gt; setModalImageSrc(null)}</code>: This passes a function to the <code>ImageModal</code>. When the <code>ImageModal</code>&#39;s close button is clicked, or the overlay is clicked, it calls this <code>onClose</code> function, which in turn sets <code>modalImageSrc</code> back to <code>null</code>, causing the modal to close.</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2>Step-by-Step Summary of Actions</h2>
+<ol>
+<li><p><strong>Created <code>src/components/ImageModal.js</code>:</strong></p>
+<ul>
+<li>A new file was created to house the <code>ImageModal</code> component.</li>
+<li>This component handles displaying the full-size image, the close button, and the overlay.</li>
+<li>It uses <code>useEffect</code> to control body scrolling when the modal is open/closed.</li>
+<li>It uses <code>framer-motion</code>&#39;s <code>motion.div</code> and <code>AnimatePresence</code> for animated transitions (fade and scale) when opening and closing.</li>
+</ul>
+</li>
+<li><p><strong>Modified <code>src/pages/LogDetailPage.js</code> (First <code>replace</code> call):</strong></p>
+<ul>
+<li>Added <code>import ImageModal from &#39;../components/ImageModal&#39;;</code> to bring the new modal component into <code>LogDetailPage</code>.</li>
+<li>Added <code>const [modalImageSrc, setModalImageSrc] = useState(null);</code> to manage the state of the modal (whether it&#39;s open and which image it should display).</li>
+</ul>
+</li>
+<li><p><strong>Modified <code>src/pages/LogDetailPage.js</code> (Second <code>replace</code> call):</strong></p>
+<ul>
+<li>Defined a new functional component <code>ImageRenderer</code> within <code>LogDetailPage</code>. This component is a custom renderer for <code>&lt;img&gt;</code> tags. It takes the <code>src</code> and <code>alt</code> of an image and renders it, but also adds an <code>onClick</code> handler that calls <code>setModalImageSrc(src)</code> to open the modal with the clicked image.</li>
+<li>Updated the <code>ReactMarkdown</code> component&#39;s <code>components</code> prop to include <code>img: ImageRenderer</code>. This tells <code>ReactMarkdown</code> to use our custom <code>ImageRenderer</code> whenever it encounters an image in the Markdown content.</li>
+<li>Added the <code>&lt;ImageModal&gt;</code> component to the <code>LogDetailPage</code>&#39;s render output. It receives <code>modalImageSrc</code> as its <code>src</code> prop and a function to close itself (<code>onClose={() =&gt; setModalImageSrc(null)}</code>).</li>
+</ul>
+</li>
+</ol>
+<p>These changes collectively enable the interactive image modal feature with smooth animations.</p>
+<p><a href="https://fezcode.com/#/blog/gemini-explains-how-image-modal-works">Read more...</a></p>]]></content:encoded>
         </item>
     </channel>
 </rss>

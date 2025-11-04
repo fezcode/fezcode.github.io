@@ -75,24 +75,29 @@ const generateRssFeed = () => {
     // The URL in the feed should be the canonical one, even if the site uses HashRouter
     const url = `https://fezcode.com/#/blog/${post.slug}`;
 
-    const description = post.description
-      ? stripMarkdown(post.description)
-      : stripMarkdown(postContent.substring(0, 250) + '...');
+    const itemDescription = stripMarkdown(post.description || post.title).substring(0, 250);
+
+    // Create a preview for content:encoded (first paragraph or ~250 chars)
+    const firstParagraph = postContent.split('\n\n')[0] || postContent.substring(0, 250);
+    const contentHtml = marked(firstParagraph) + `<p><a href="${url}">Read more...</a></p>`;
 
     feed.item({
       title: post.title,
-      description: { _cdata: description }, // Wrap description in CDATA
+      description: { _cdata: itemDescription + '...' }, // Short, plain-text summary
       url: url,
-      guid: { url: url, isPermaLink: true }, // Use full URL as guid with isPermaLink true
+      guid: url, // Use full URL as guid (isPermaLink defaults to true)
       date: new Date(post.date).toUTCString(),
       author: 'Ahmed Samil Bulbul',
+      custom_elements: [
+        { 'content:encoded': { _cdata: contentHtml } }
+      ]
     });
   });
 
   const rssXml = feed.xml({ indent: true });
 
   fs.writeFileSync(path.join(publicDirectory, 'rss.xml'), rssXml);
-  console.log('Plain RSS feed generated successfully without XML declaration!');
+  console.log('RSS feed generated successfully.');
 };
 
 generateRssFeed();
