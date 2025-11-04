@@ -17,7 +17,7 @@ import {
   GlobeSimpleIcon,
   SwordIcon,
   AlienIcon,
-  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon, LinkIcon, ArrowSquareOutIcon, ShuffleIcon, EnvelopeSimpleIcon
+  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon, LinkIcon, ArrowSquareOutIcon, ShuffleIcon, EnvelopeSimpleIcon, RssIcon
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -202,6 +202,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                   <SwordIcon size={24} />
                   <span>From Serfs and Frauds</span>
                 </NavLink>
+                <a href="/rss.xml" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
+                  <RssIcon size={24} />
+                  <span>RSS Feed</span>
+                </a>
               </nav>
             )}
           </div>
