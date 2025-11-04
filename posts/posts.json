@@ -8,13 +8,22 @@
     "series": {
       "posts": [
         {
+          "slug": "monotonic-stack",
+          "title": "Monotonic Stack with Daily Temperatures",
+          "date": "2025-11-05",
+          "description": "Monotonic Stack with Daily Temperatures",
+          "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
+          "category": "dev",
+          "filename": "/algos/monotonic-stack.txt"
+        },
+        {
           "slug": "wquwpc",
           "title": "Weighted Quick-Union with Path Compression",
           "date": "2025-11-04",
           "description": "Weighted Quick-Union with Path Compression",
           "tags": ["cs", "algorithms", "graphs"],
           "category": "dev",
-          "filename": "weighted-quick-union-with-path-compression.txt"
+          "filename": "/algos/weighted-quick-union-with-path-compression.txt"
         }
       ]
     }
