@@ -5,19 +5,28 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import {
-  House as HouseIcon,
-  User as UserIcon,
-  BookOpen as BookOpenIcon,
-  Wrench as WrenchIcon,
-  Article as ArticleIcon,
-  CaretDown as CaretDownIcon,
-  GameController as GameControllerIcon,
-  List as ListIcon,
-  GithubLogo as GithubLogoIcon,
-  GlobeSimple as GlobeSimpleIcon,
-  Sword as SwordIcon,
-  Alien as AlienIcon,
-  Anchor as AnchorIcon, Joystick as JoystickIcon, Books as BooksIcon, AsteriskSimple as AsteriskSimpleIcon, Link as LinkIcon, ArrowSquareOut as ArrowSquareOutIcon, Shuffle as ShuffleIcon, EnvelopeSimple as EnvelopeSimpleIcon, Rss as RssIcon, SquaresFour as SquaresFourIcon, ComputerTower as ComputerTowerIcon
+  HouseIcon,
+  UserIcon,
+  BookOpenIcon,
+  WrenchIcon,
+  ArticleIcon,
+  CaretDownIcon,
+  GameControllerIcon,
+  ListIcon,
+  GithubLogoIcon,
+  GlobeSimpleIcon,
+  SwordIcon,
+  AlienIcon,
+  AnchorIcon,
+  JoystickIcon,
+  BooksIcon,
+  AsteriskSimpleIcon,
+  LinkIcon,
+  ArrowSquareOutIcon,
+  ShuffleIcon,
+  EnvelopeSimpleIcon,
+  RssIcon,
+  SquaresFourIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
