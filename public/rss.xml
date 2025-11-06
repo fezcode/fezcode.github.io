@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 04 Nov 2025 18:55:10 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 04 Nov 2025 22:07:04 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 04 Nov 2025 18:55:10 GMT</pubDate>
+        <pubDate>Tue, 04 Nov 2025 22:07:04 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Monotonic Stack with Daily Temperatures]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/monotonic-stack</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/monotonic-stack</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 05 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Monotonic Stack &amp; LeetCode&#39;s &quot;Daily Temperatures&quot;</h1>
+<p><a href="https://fezcode.com/#/blog/monotonic-stack">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Weighted Quick-Union with Path Compression]]></title>
             <description><![CDATA[[object Object]]]></description>

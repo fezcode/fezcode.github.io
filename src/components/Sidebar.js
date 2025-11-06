@@ -5,19 +5,19 @@ import { NavLink, Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 import {
-  HouseIcon,
-  UserIcon,
-  BookOpenIcon,
-  WrenchIcon,
-  ArticleIcon,
-  CaretDownIcon,
-  GameControllerIcon,
-  ListIcon,
-  GithubLogoIcon,
-  GlobeSimpleIcon,
-  SwordIcon,
-  AlienIcon,
-  AnchorIcon, JoystickIcon, BooksIcon, AsteriskSimpleIcon, LinkIcon, ArrowSquareOutIcon, ShuffleIcon, EnvelopeSimpleIcon, RssIcon
+  House as HouseIcon,
+  User as UserIcon,
+  BookOpen as BookOpenIcon,
+  Wrench as WrenchIcon,
+  Article as ArticleIcon,
+  CaretDown as CaretDownIcon,
+  GameController as GameControllerIcon,
+  List as ListIcon,
+  GithubLogo as GithubLogoIcon,
+  GlobeSimple as GlobeSimpleIcon,
+  Sword as SwordIcon,
+  Alien as AlienIcon,
+  Anchor as AnchorIcon, Joystick as JoystickIcon, Books as BooksIcon, AsteriskSimple as AsteriskSimpleIcon, Link as LinkIcon, ArrowSquareOut as ArrowSquareOutIcon, Shuffle as ShuffleIcon, EnvelopeSimple as EnvelopeSimpleIcon, Rss as RssIcon, SquaresFour as SquaresFourIcon, ComputerTower as ComputerTowerIcon
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -27,6 +27,7 @@ import { version } from '../version';
 const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
   const [isContentOpen, setIsContentOpen] = useState(true);
+  const [isAppsOpen, setIsAppsOpen] = useState(true);
   const [isExtrasOpen, setIsExtrasOpen] = useState(false);
   const [isGamesOpen, setIsGamesOpen] = useState(false);
   const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
@@ -37,15 +38,16 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   // Effect to update allSectionsOpen when individual sections change
   useEffect(() => {
     setAllSectionsOpen(
-      isMainOpen && isContentOpen && isExtrasOpen && isGamesOpen && isExternalLinksOpen,
+      isMainOpen && isContentOpen && isAppsOpen && isExtrasOpen && isGamesOpen && isExternalLinksOpen,
     );
-  }, [isMainOpen, isContentOpen, isGamesOpen, isExtrasOpen, isExternalLinksOpen]);
+  }, [isMainOpen, isContentOpen, isAppsOpen, isGamesOpen, isExtrasOpen, isExternalLinksOpen]);
 
   const toggleAllSections = () => {
     const newState = !allSectionsOpen;
     setAllSectionsOpen(newState);
     setIsMainOpen(newState);
     setIsContentOpen(newState);
+    setIsAppsOpen(newState);
     setIsExtrasOpen(newState);
     setIsGamesOpen(newState);
     setIsExternalLinksOpen(newState);
@@ -65,6 +67,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
     location.pathname.startsWith('/blog') ||
     location.pathname.startsWith('/projects') ||
     location.pathname.startsWith('/logs');
+
+  const isAppsActive = location.pathname.startsWith('/apps');
 
   const variants = {
     open: { x: 0 },
@@ -174,6 +178,34 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                   <ArticleIcon size={24} />
 
                   <span>Logs</span>
+                </NavLink>
+              </nav>
+            )}
+          </div>
+
+          <div className="mt-8">
+            <button
+              onClick={() => setIsAppsOpen(!isAppsOpen)}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
+                isAppsActive ? 'text-red-400' : 'text-gray-100'
+              }`}
+            >
+              <span className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-rose-400' : 'text-white'}`}>
+                <SquaresFourIcon size={16} />
+                <span>Apps</span>
+              </span>
+
+              <CaretDownIcon
+                size={20}
+                className={`transition-transform ${isAppsOpen ? 'transform rotate-180' : ''}`}
+              />
+            </button>
+
+            {isAppsOpen && (
+              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+                <NavLink to="/apps" className={getLinkClass}>
+                  <SquaresFourIcon size={24} />
+                  <span>All Apps</span>
                 </NavLink>
               </nav>
             )}

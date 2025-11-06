@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { Sidebar, User, BookOpen } from '@phosphor-icons/react';
+import { Sidebar, User, BookOpen, RocketLaunch } from '@phosphor-icons/react';
 
 const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -75,6 +75,13 @@ const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
           >
             <BookOpen size={24} />
             <span>Blog</span>
+          </Link>
+          <Link
+            to="/apps"
+            className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors"
+          >
+            <RocketLaunch size={24} />
+            <span>Apps</span>
           </Link>
         </div>
       </div>

@@ -93,6 +93,14 @@ code {
   color: #bc4749 !important; /* Placeholder color for 'logs' */
 }
 
+.apps-color {
+  color: #f5dd90 !important; /* Placeholder color for 'apps' */
+}
+
+.single-app-color {
+  color: #A07B90 !important; /* Placeholder color for 'single-app' */
+}
+
 @media (max-width: 768px) {
   body {
     font-family: serif !important;

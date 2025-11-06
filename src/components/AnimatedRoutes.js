@@ -16,6 +16,8 @@ import DndNotFoundPage from '../pages/DndNotFoundPage'; // New import
 import DndEpisodePage from '../pages/DndEpisodePage'; // New import
 import DndLorePage from '../pages/DndLorePage'; // New import
 import DndBookPage from '../pages/DndBookPage'; // New import
+import AppPage from '../pages/AppPage';
+import IpPage from '../pages/apps/IpPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -267,6 +269,34 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <UsefulLinksPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <AppPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/ip"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <IpPage />
             </motion.div>
           }
         />
