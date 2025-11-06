@@ -1,5 +1,15 @@
 [
   {
+    "slug": "demystifying-tailwind-css",
+    "title": "Demystifying Tailwind CSS",
+    "date": "2025-11-07",
+    "updated": "2025-11-07",
+    "description": "Demystifying Tailwind CSS",
+    "tags": ["tailwind", "css", "fezcodex", "react"],
+    "category": "dev",
+    "filename": "demystifying-tailwind-css.txt"
+  },
+  {
     "slug": "ubuntu-once-more",
     "title": "Ubuntu Once More",
     "date": "2025-10-29",
@@ -19,7 +29,7 @@
         {
           "slug": "react-memoization-hooks",
           "title": "React Memoization Hooks",
-          "filename": "/react-of-fezcode/016-react-memoization-hooks.txt",
+          "filename": "/react-of-fezcode/017-react-memoization-hooks.txt",
           "date": "2025-10-25",
           "updated": "2025-10-26",
           "category": "dev"
@@ -27,8 +37,16 @@
         {
           "slug": "react-refs-useref",
           "title": "React Refs Useref",
-          "filename": "/react-of-fezcode/015-react-refs-useref.txt",
+          "filename": "/react-of-fezcode/016-react-refs-useref.txt",
           "date": "2025-10-25",
+          "category": "dev"
+        },
+        {
+          "slug": "react-toast-explanation-in-details",
+          "title": "How React Toasts Work in `fezcodex`",
+          "filename": "/react-of-fezcode/015-react-toast-explanation-in-details.txt",
+          "date": "2025-10-25",
+          "updated": "2025-10-25",
           "category": "dev"
         },
         {

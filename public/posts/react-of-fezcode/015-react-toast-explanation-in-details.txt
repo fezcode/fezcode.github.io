@@ -1,0 +1,64 @@
+
+# Deep Dive: How React Toasts Work in `fezcodex`
+
+Toast notifications are a staple of modern web applications. They provide non-intrusive feedback to users about the result of their actions. In the `fezcodex` project, we have a robust and reusable toast system. This article will break down how it works, from its architecture to the React magic that holds it all together.
+
+## Part 1: The Architecture - A Tale of Three Components
+
+The toast system is elegantly designed around three key parts that work in harmony:
+
+1.  **`ToastProvider.js` (The Brains):** This is the central manager. It wraps our entire application, creating a "context" that any component can plug into. It holds the list of all active toasts and provides the functions (`addToast`, `removeToast`) to modify that list. It's also responsible for rendering the container where the toasts appear.
+
+2.  **`useToast.js` (The Public API):** This is a custom React Hook that acts as a clean and simple gateway. Instead of components needing to know about the underlying context, they can just use this hook to get access to the `addToast` function. It's the "button" that other components press to request a toast.
+
+3.  **`Toast.js` (The Notification UI):** This component represents a single toast message. It's responsible for its own appearance, animations, and, most importantly, its own demise. It knows how long it should be on screen and contains the logic to remove itself after its time is up.
+
+## Part 2: The Magic of `useState` - Where Does the State Go?
+
+This is the crucial question. In `ToastProvider.js`, we have this line:
+
+```javascript
+const [toasts, setToasts] = useState([]);
+```
+
+When a component function runs, all its internal variables are created and then discarded when it's done. So how does the `toasts` array not just reset to `[]` every single time?
+
+**React Remembers.**
+
+The `useState` hook is a request to React to create and manage a piece of state *on behalf of* your component.
+
+1.  **First Render:** The very first time `ToastProvider` renders, React sees `useState([])`. It creates a "memory cell" for this specific component instance and puts an empty array `[]` inside it. It then returns that array to the component as the `toasts` variable.
+
+2.  **State Updates:** When you call `addToast`, it eventually calls `setToasts(...)`. This function doesn't change the state directly. Instead, it sends a message to React saying, "I have a new value for this state. Please update it and re-render the component."
+
+3.  **Subsequent Renders:** When React re-renders `ToastProvider`, it arrives at the `useState([])` line again. But this time, React knows it has already created a state for this component. It **ignores the initial value (`[]`)** and instead provides the *current* value from its internal memory—the updated array of toasts.
+
+This is the fundamental principle of React Hooks: they allow your function components to have stateful logic that persists across renders, managed by React itself.
+
+## Part 3: The Full Lifecycle of a Toast
+
+Let's tie it all together by following a single toast from birth to death.
+
+1.  **The Call:** A user performs an action in a component (e.g., the Word Counter). That component calls `addToast({ title: 'Success!', ... })`.
+
+2.  **The Context:** The `useToast` hook provides the `addToast` function from the `ToastProvider`'s context.
+
+3.  **The State Update:** The `addToast` function in `ToastProvider` runs. It creates a new toast object with a unique ID and calls `setToasts([newToast, ...otherToasts])`.
+
+4.  **The Re-render:** React receives the state update request and schedules a re-render for `ToastProvider`.
+
+5.  **The Render:** `ToastProvider` runs again. It calls `useState`, and React hands it the **new array** containing our new toast. The component's `return` statement is executed, and its `.map()` function now loops over an array that includes the new toast.
+
+6.  **The Birth:** A new `<Toast />` component is rendered on the screen. It receives its `id`, `title`, `message`, and `duration` as props.
+
+7.  **The Countdown:** Inside the new `<Toast />` component, a `useEffect` hook fires. It starts a `setTimeout` timer for the given `duration`.
+
+8.  **The End:** When the timer finishes, it calls the `removeToast(id)` function that was passed down as a prop.
+
+9.  **The Cleanup:** `removeToast` in the `ToastProvider` calls `setToasts(...)` again, this time with an array that *filters out* the toast with the matching ID.
+
+10. **The Final Re-render:** React processes the state update, re-renders the `ToastProvider`, and the toast is no longer in the array. It vanishes from the screen.
+
+## Conclusion
+
+The `fezcodex` toast system is a perfect microcosm of modern React development. It shows how to use **Context** to provide global functionality without cluttering components, and it relies on the magic of the **`useState` hook** to give components a memory that persists between renders. By letting React manage the state, we can write declarative UI that simply reacts to state changes.

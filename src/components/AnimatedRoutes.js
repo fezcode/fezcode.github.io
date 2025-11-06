@@ -18,6 +18,7 @@ import DndLorePage from '../pages/DndLorePage'; // New import
 import DndBookPage from '../pages/DndBookPage'; // New import
 import AppPage from '../pages/AppPage';
 import IpPage from '../pages/apps/IpPage';
+import WordCounterPage from '../pages/apps/WordCounterPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -297,6 +298,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/word-counter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <WordCounterPage />
             </motion.div>
           }
         />

@@ -49,12 +49,12 @@ function IpPage() {
   };
 
   const cardStyle = {
-    backgroundColor: colors['article-alpha-10'],
-    borderColor: colors['article-alpha-50'],
-    color: colors.article,
+    backgroundColor: colors['app-alpha-10'],
+    borderColor: colors['app-alpha-50'],
+    color: colors.app,
   };
 
-  const detailTextColor = colors['article-light'];
+  const detailTextColor = colors['app-light'];
 
   return (
     <div className="py-16 sm:py-24">

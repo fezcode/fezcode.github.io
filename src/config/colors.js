@@ -11,6 +11,7 @@ module.exports = {
   movie: '#c75146',
   game: '#80ed99',
   article: '#FA8072', // Salmon
+  app: '#9EC5AB', // Duplicated from book
   music: '#A07B90',
   series: '#edc531',
   food: '#F4A259',
@@ -20,11 +21,16 @@ module.exports = {
   'movie-light': '#E08070',
   'game-light': '#B2F5C2',
   'article-light': '#FFB6C1', // Light Pink
+  'app-light': '#FFF8F00', // Duplicated from book-light
   'music-light': '#C0A0B0',
   'series-light': '#F5E080',
   'food-light': '#FFC780',
   'websites-light': '#FFF8DC',
   'tools-light': '#F0DFFF',
+  'sidebar-highlight': '#FA8072', // Duplicated from article
+  'sidebar-highlight-light': '#FFB6C1', // Duplicated from article-light
+  'sidebar-highlight-alpha-10': 'rgba(250, 128, 114, 0.1)', // Duplicated from article-alpha-10
+  'sidebar-highlight-alpha-50': 'rgba(250, 128, 114, 0.5)', // Duplicated from article-alpha-50
   'title-hover': '#fdd4a6', // orange-200
   'markdown-title-color': '#fed7aa', // orange-200
   'markdown-hx-color': '#ffedd5', // orange-100
@@ -48,6 +54,8 @@ module.exports = {
   'game-alpha-50': 'rgba(0, 255, 127, 0.5)',
   'article-alpha-10': 'rgba(250, 128, 114, 0.1)',
   'article-alpha-50': 'rgba(250, 128, 114, 0.5)',
+  'app-alpha-10': 'rgba(158, 197, 171, 0.1)', // Duplicated from book-alpha-10
+  'app-alpha-50': 'rgba(158, 197, 171, 0.5)', // Duplicated from book-alpha-50
   'music-alpha-10': 'rgba(160, 123, 144, 0.1)',
   'music-alpha-50': 'rgba(160, 123, 144, 0.5)',
   'series-alpha-10': 'rgba(237, 197, 49, 0.1)',

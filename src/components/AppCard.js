@@ -7,17 +7,17 @@ const AppCard = ({ app }) => {
   const { to, title, description } = app;
 
   const cardStyle = {
-    backgroundColor: colors['article-alpha-10'],
-    borderColor: colors['article-alpha-50'],
-    color: colors.article,
+    backgroundColor: colors['app-alpha-10'],
+    borderColor: colors['app-alpha-50'],
+    color: colors.app,
   };
 
-  const detailTextColor = colors['article-light'];
+  const detailTextColor = colors['app-light'];
 
   return (
     <Link to={to} className="block h-full">
       <div
-        className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full"
+        className="group bg-transparent border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl overflow-hidden h-full"
         style={cardStyle}
       >
         <div
