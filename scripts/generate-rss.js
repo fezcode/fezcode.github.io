@@ -1,4 +1,3 @@
-
 const fs = require('fs');
 const RSS = require('rss');
 const path = require('path');
@@ -71,7 +70,6 @@ const generateRssFeed = () => {
     if (!fs.existsSync(postPath)) return; // Skip if file doesn't exist
 
     const postContent = fs.readFileSync(postPath, 'utf-8');
-    const postHtmlContent = marked(postContent); // Convert Markdown to HTML
     // The URL in the feed should be the canonical one, even if the site uses HashRouter
     const url = `https://fezcode.com/#/blog/${post.slug}`;
 

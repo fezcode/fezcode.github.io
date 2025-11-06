@@ -1,34 +1,5 @@
 [
   {
-    "slug": "algos",
-    "title": "Algorithms",
-    "date": "2025-11-04",
-    "description": "Algorithms",
-    "tags": ["cs", "algorithms", "graphs"],
-    "series": {
-      "posts": [
-        {
-          "slug": "monotonic-stack",
-          "title": "Monotonic Stack with Daily Temperatures",
-          "date": "2025-11-05",
-          "description": "Monotonic Stack with Daily Temperatures",
-          "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
-          "category": "dev",
-          "filename": "/algos/monotonic-stack.txt"
-        },
-        {
-          "slug": "wquwpc",
-          "title": "Weighted Quick-Union with Path Compression",
-          "date": "2025-11-04",
-          "description": "Weighted Quick-Union with Path Compression",
-          "tags": ["cs", "algorithms", "graphs"],
-          "category": "dev",
-          "filename": "/algos/weighted-quick-union-with-path-compression.txt"
-        }
-      ]
-    }
-  },
-  {
     "slug": "ubuntu-once-more",
     "title": "Ubuntu Once More",
     "date": "2025-10-29",
@@ -243,5 +214,43 @@
     "tags": ["writing", "updates"],
     "category": "rant",
     "filename": "about-fezcodex.txt"
+  },
+  {
+    "slug": "algos",
+    "title": "Algorithms",
+    "date": "2025-10-01",
+    "description": "Algorithms",
+    "tags": ["cs", "algorithms", "graphs"],
+    "series": {
+      "posts": [
+        {
+          "slug": "lca",
+          "title": "Lowest Common Ancestor with Binary Search Tree",
+          "date": "2025-11-07",
+          "description": "Lowest Common Ancestor with Binary Search Tree",
+          "tags": ["cs", "algorithms", "tree", "bst", "recursion", "iterative"],
+          "category": "dev",
+          "filename": "/algos/lowest-common-ancestor-of-a-binary-search-tree.txt"
+        },
+        {
+          "slug": "monotonic-stack",
+          "title": "Monotonic Stack with Daily Temperatures",
+          "date": "2025-11-05",
+          "description": "Monotonic Stack with Daily Temperatures",
+          "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
+          "category": "dev",
+          "filename": "/algos/monotonic-stack.txt"
+        },
+        {
+          "slug": "wquwpc",
+          "title": "Weighted Quick-Union with Path Compression",
+          "date": "2025-11-04",
+          "description": "Weighted Quick-Union with Path Compression",
+          "tags": ["cs", "algorithms", "graphs"],
+          "category": "dev",
+          "filename": "/algos/weighted-quick-union-with-path-compression.txt"
+        }
+      ]
+    }
   }
 ]
