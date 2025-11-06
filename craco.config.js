@@ -1,10 +1,10 @@
 module.exports = {
   devServer: {
     proxy: {
-      '/api': {
+      '/api/show-my-ip': {
         target: 'https://api.ipify.org',
         changeOrigin: true,
-        pathRewrite: { '^/api': '' },
+        pathRewrite: { '^/api/show-my-ip': '' },
       },
     },
   },

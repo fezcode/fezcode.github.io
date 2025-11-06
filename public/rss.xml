@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 06 Nov 2025 22:19:40 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 06 Nov 2025 22:37:00 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 06 Nov 2025 22:19:40 GMT</pubDate>
+        <pubDate>Thu, 06 Nov 2025 22:37:00 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Lowest Common Ancestor with Binary Search Tree]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/lca</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/lca</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 07 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Understanding Trees, Binary Search Trees, and Finding the Lowest Common Ancestor</h1>
+<p><a href="https://fezcode.com/#/blog/lca">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Monotonic Stack with Daily Temperatures]]></title>
             <description><![CDATA[[object Object]]]></description>

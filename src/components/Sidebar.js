@@ -65,7 +65,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const getLinkClass = ({ isActive }) =>
     `flex items-center space-x-3 px-3 py-1 rounded-md transition-colors ${
       isActive
-        ? 'text-primary-400 bg-gray-800'
+        ? 'text-article bg-article-alpha-10'
         : 'text-gray-100 hover:text-white hover:bg-gray-800'
     }`;
 
@@ -120,10 +120,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
             <button
               onClick={() => setIsMainOpen(!isMainOpen)}
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
-                isMainActive ? 'text-red-400' : 'text-gray-100'
+                isMainActive ? 'text-article' : 'text-gray-100'
               }`}
             >
-              <span className={`flex items-center gap-2 font-sans ${isMainActive ? 'text-rose-400' : 'text-white'}`}>
+              <span className={`flex items-center gap-2 font-sans ${isMainActive ? 'text-article' : 'text-white'}`}>
                 <AsteriskSimpleIcon size={16} />
                 <span>Main</span>
               </span>
@@ -155,10 +155,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
             <button
               onClick={() => setIsContentOpen(!isContentOpen)}
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
-                isContentActive ? 'text-red-400' : 'text-gray-100'
+                isContentActive ? 'text-article' : 'text-gray-100'
               }`}
             >
-               <span className={`flex items-center gap-2 font-sans ${isContentActive ? 'text-rose-400' : 'text-white'}`}>
+               <span className={`flex items-center gap-2 font-sans ${isContentActive ? 'text-article' : 'text-white'}`}>
                 <BooksIcon size={16} />
                 <span>Content</span>
               </span>
@@ -196,10 +196,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
             <button
               onClick={() => setIsAppsOpen(!isAppsOpen)}
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
-                isAppsActive ? 'text-red-400' : 'text-gray-100'
+                isAppsActive ? 'text-article' : 'text-gray-100'
               }`}
             >
-              <span className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-rose-400' : 'text-white'}`}>
+              <span className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-article' : 'text-white'}`}>
                 <SquaresFourIcon size={16} />
                 <span>Apps</span>
               </span>
