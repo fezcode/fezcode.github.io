@@ -1,0 +1,246 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
+import colors from '../../config/colors';
+import usePageTitle from '../../utils/usePageTitle';
+import { useToast } from '../../hooks/useToast';
+
+function AsciiConverterPage() {
+  usePageTitle('Text to ASCII Converter');
+  const [inputText, setInputText] = useState('');
+  const [asciiOutput, setAsciiOutput] = useState('');
+  const [binaryOutput, setBinaryOutput] = useState('');
+  const { addToast } = useToast();
+
+  const textToAscii = () => {
+    try {
+      const ascii = inputText.split('').map(char => char.charCodeAt(0)).join(' ');
+      setAsciiOutput(ascii);
+    } catch (error) {
+      addToast({
+        title: 'Error',
+        message: 'Failed to convert text to ASCII.',
+        duration: 3000,
+      });
+      setAsciiOutput('');
+    }
+  };
+
+  const asciiToText = () => {
+    try {
+      const text = inputText.split(' ').map(code => String.fromCharCode(parseInt(code, 10))).join('');
+      setAsciiOutput(text);
+    } catch (error) {
+      addToast({
+        title: 'Error',
+        message: 'Failed to convert ASCII to text. Invalid ASCII string.',
+        duration: 3000,
+      });
+      setAsciiOutput('');
+    }
+  };
+
+  const textToBinary = () => {
+    try {
+      const binary = inputText.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+      setBinaryOutput(binary);
+    } catch (error) {
+      addToast({
+        title: 'Error',
+        message: 'Failed to convert text to Binary.',
+        duration: 3000,
+      });
+      setBinaryOutput('');
+    }
+  };
+
+  const binaryToText = () => {
+    try {
+      const text = inputText.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
+      setBinaryOutput(text);
+    } catch (error) {
+      addToast({
+        title: 'Error',
+        message: 'Failed to convert Binary to text. Invalid Binary string.',
+        duration: 3000,
+      });
+      setBinaryOutput('');
+    }
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        addToast({
+          title: 'Success',
+          message: 'Copied to clipboard!',
+          duration: 2000,
+        });
+      })
+      .catch(() => {
+        addToast({
+          title: 'Error',
+          message: 'Failed to copy!',
+          duration: 2000,
+        });
+      });
+  };
+
+  const cardStyle = {
+    backgroundColor: colors['app-alpha-10'],
+    borderColor: colors['app-alpha-50'],
+    color: colors.app,
+  };
+
+  const detailTextColor = colors['app-light'];
+
+  return (
+    <div className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+        <Link
+          to="/apps"
+          className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon size={24} /> Back to Apps
+        </Link>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+          <span className="codex-color">fc</span>
+          <span className="separator-color">::</span>
+          <span className="apps-color">apps</span>
+          <span className="separator-color">::</span>
+          <span className="single-app-color">ascii</span>
+        </h1>
+        <hr className="border-gray-700" />
+        <div className="flex justify-center items-center mt-16">
+          <div
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
+            style={cardStyle}
+          >
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
+              }}
+            ></div>
+            <div className="relative z-10 p-1">
+              <div className="mb-4">
+                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>Input Text</label>
+                <textarea
+                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y border rounded-md focus:ring-0"
+                  style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  placeholder="Enter text or ASCII codes (space-separated) to convert..."
+                />
+              </div>
+              <div className="flex justify-center gap-4 mb-4">
+                <button
+                  onClick={textToAscii}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    color: cardStyle.color,
+                    borderColor: cardStyle.borderColor,
+                    border: '1px solid',
+                    '--hover-bg-color': colors['app-alpha-50'],
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
+                >
+                  Text to ASCII
+                </button>
+                <button
+                  onClick={asciiToText}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    color: cardStyle.color,
+                    borderColor: cardStyle.borderColor,
+                    border: '1px solid',
+                    '--hover-bg-color': colors['app-alpha-50'],
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
+                >
+                  ASCII to Text
+                </button>
+              </div>
+              <div className="flex justify-center gap-4 mb-4">
+                <button
+                  onClick={textToBinary}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    color: cardStyle.color,
+                    borderColor: cardStyle.borderColor,
+                    border: '1px solid',
+                    '--hover-bg-color': colors['app-alpha-50'],
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
+                >
+                  Text to Binary
+                </button>
+                <button
+                  onClick={binaryToText}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    color: cardStyle.color,
+                    borderColor: cardStyle.borderColor,
+                    border: '1px solid',
+                    '--hover-bg-color': colors['app-alpha-50'],
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
+                >
+                  Binary to Text
+                </button>
+              </div>
+              <div>
+                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>ASCII Output</label>
+                <div className="relative">
+                  <textarea
+                    readOnly
+                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md mb-4"
+                    style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                    value={asciiOutput}
+                    placeholder="Converted ASCII will appear here..."
+                  />
+                  <button
+                    onClick={() => copyToClipboard(asciiOutput)}
+                    className="absolute top-2 right-2 px-3 py-1 bg-gray-700 text-white text-sm rounded hover:bg-gray-600"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+              <div>
+                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>Binary Output</label>
+                <div className="relative">
+                  <textarea
+                    readOnly
+                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md"
+                    style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                    value={binaryOutput}
+                    placeholder="Converted Binary will appear here..."
+                  />
+                  <button
+                    onClick={() => copyToClipboard(binaryOutput)}
+                    className="absolute top-2 right-2 px-3 py-1 bg-gray-700 text-white text-sm rounded hover:bg-gray-600"
+                  >
+                    Copy
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default AsciiConverterPage;
