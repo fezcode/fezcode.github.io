@@ -23,6 +23,7 @@ function TournamentBracketPage() {
 
   const [competitors, setCompetitors] = useState([]);
   const [newCompetitor, setNewCompetitor] = useState('');
+  const [newCompetitorCharLimitError, setNewCompetitorCharLimitError] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState('');
   const [nameError, setNameError] = useState('');
@@ -30,16 +31,24 @@ function TournamentBracketPage() {
 
   const addCompetitor = () => {
     const trimmedCompetitor = newCompetitor.trim();
-    if (trimmedCompetitor && competitors.length < 64) {
+    if (trimmedCompetitor) {
+      if (trimmedCompetitor.length > 5) {
+        addToast({ title: 'Error', message: 'Competitor name cannot exceed 5 characters.', duration: 3000 });
+        return;
+      }
       if (competitors.includes(trimmedCompetitor)) {
         setNameError('Competitor names must be unique.');
         addToast({ title: 'Error', message: 'Competitor names must be unique.', duration: 3000 });
         return;
       }
-      setCompetitors([...competitors, trimmedCompetitor]);
-      setNewCompetitor('');
-      setNameError('');
-      newCompetitorInputRef.current.focus();
+      if (competitors.length < 64) {
+        setCompetitors([...competitors, trimmedCompetitor]);
+        setNewCompetitor('');
+        setNameError('');
+        newCompetitorInputRef.current.focus();
+      } else {
+        addToast({ title: 'Error', message: 'Maximum of 64 competitors reached.', duration: 3000 });
+      }
     }
   };
 
@@ -60,6 +69,10 @@ function TournamentBracketPage() {
 
   const saveEdit = (index) => {
     const trimmedName = editingText.trim();
+    if (trimmedName.length > 5) {
+      addToast({ title: 'Error', message: 'Competitor name cannot exceed 5 characters.', duration: 3000 });
+      return;
+    }
     if (competitors.includes(trimmedName) && competitors[index] !== trimmedName) {
       addToast({ title: 'Error', message: 'Competitor names must be unique.', duration: 3000 });
       return;
@@ -122,10 +135,10 @@ function TournamentBracketPage() {
 
   const [champion, setChampion] = useState(null);
 
-  const advanceWinner = (winner, roundIndex, matchIndex) => {
+  const advanceWinner = (winner, loser, roundIndex, matchIndex) => {
     if (!bracket || !winner) return;
 
-    setAdvancedMatches(prev => ({ ...prev, [`${roundIndex}-${matchIndex}`]: winner }));
+    setAdvancedMatches(prev => ({ ...prev, [`${roundIndex}-${matchIndex}`]: { winner, loser } }));
 
     if (roundIndex === bracket.length - 1) {
       setChampion(winner);
@@ -206,7 +219,7 @@ function TournamentBracketPage() {
   const [compactLayout, setCompactLayout] = useState(false);
 
   return (
-    <div className="py-16 sm:py-24">
+    <div className="py-16 sm:py-24 min-h-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
         <Link
           to="/apps"
@@ -222,9 +235,9 @@ function TournamentBracketPage() {
           <span className="single-app-color">tb</span>
         </h1>
         <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-8">
+        <div className="flex flex-col justify-center mt-8">
           <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-7xl"
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-start relative w-full max-w-7xl flex-grow"
             style={cardStyle}
           >
             <div
@@ -239,20 +252,24 @@ function TournamentBracketPage() {
               {!tournamentStarted ? (
                 <div>
                   <div className="mb-8">
-                    <h2 className="text-2xl font-arvo font-normal mb-4">Add Competitors</h2>
+                    <h2 className="text-2xl font-arvo font-normal mb-4">Add Competitors (max 64 competitors, 5 char limit)</h2>
                     <div className="flex gap-4">
                       <input
                         type="text"
                         value={newCompetitor}
-                        onChange={(e) => setNewCompetitor(e.target.value)}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          setNewCompetitor(value);
+                          setNewCompetitorCharLimitError(value.length > 5);
+                        }}
                         onKeyDown={handleNewCompetitorKeyDown}
                         placeholder="Enter competitor name"
-                        className="bg-gray-800 text-white p-2 rounded-lg flex-grow"
+                        className={`bg-gray-800 text-white p-2 rounded-lg flex-grow ${newCompetitorCharLimitError ? 'border-red-500 border-2' : ''}`}
                         ref={newCompetitorInputRef}
                       />
                       <button
                         onClick={addCompetitor}
-                        className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                        className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                           ${competitors.length >= 64
                             ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                             : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
@@ -263,11 +280,12 @@ function TournamentBracketPage() {
                         Add
                       </button>
                     </div>
+                    {newCompetitorCharLimitError && <p className="text-red-500 mt-2">Competitor name cannot exceed 5 characters.</p>}
                     {nameError && <p className="text-red-500 mt-2">{nameError}</p>}
                     {competitors.length >= 64 && <p className="text-red-500 mt-2">Maximum of 64 competitors reached.</p>}
                   </div>
 
-                  <div>
+                  <div className="flex-grow">
                     <h2 className="text-2xl font-arvo font-normal mb-4">Competitors ({competitors.length})</h2>
                     <ul className="space-y-2">
                       {competitors.map((competitor, index) => (
@@ -285,7 +303,7 @@ function TournamentBracketPage() {
                           <div className="flex gap-2">
                             {editingIndex === index ? (
                               <button onClick={() => saveEdit(index)}
-                                className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                                className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                                   ${false // Save button is never disabled based on current logic
                                     ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                                     : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
@@ -296,7 +314,7 @@ function TournamentBracketPage() {
                               </button>
                             ) : (
                               <button onClick={() => startEditing(index, competitor)}
-                                className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                                className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                                   ${false // Edit button is never disabled based on current logic
                                     ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                                     : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
@@ -307,7 +325,7 @@ function TournamentBracketPage() {
                               </button>
                             )}
                             <button onClick={() => deleteCompetitor(index)}
-                              className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                              className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                                 ${false // Delete button is never disabled based on current logic
                                   ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                                   : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
@@ -325,7 +343,7 @@ function TournamentBracketPage() {
                   <div className="mt-8">
                     <button
                       onClick={startTournament}
-                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                         ${competitors.length < 2
                           ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                           : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
@@ -361,7 +379,7 @@ function TournamentBracketPage() {
                       <div key={roundIndex} className={`flex flex-col ${compactLayout ? 'space-y-2' : 'space-y-4'} min-w-max flex-shrink-0`}>
                         <h3 className="text-xl font-bold">Round {roundIndex + 1}</h3>
                         {round.map((match, matchIndex) => (
-                          <div key={matchIndex} className={`group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden w-72 ${compactLayout ? '' : 'h-full'}`} style={cardStyle}>
+                          <div key={matchIndex} className={`group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden w-80 ${compactLayout ? 'min-h-[100px]' : 'h-full'}`} style={cardStyle}>
                             <div className="flex justify-between items-center mb-2">
                               <div className="flex items-center gap-2">
                                 <input
@@ -371,11 +389,11 @@ function TournamentBracketPage() {
                                   onChange={(e) => handleScoreChange(roundIndex, matchIndex, 0, e.target.value)}
                                   disabled={!match[0] || !match[1]}
                                 />
-                                <span>{match[0] || 'TBD'}</span>
+                                <span className={`break-words ${match[1] === null ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[0] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[0] ? 'text-gray-500 line-through' : ''}`}>{match[0] || 'TBD'}</span>
                               </div>
                               <span>vs</span>
                               <div className="flex items-center gap-2">
-                                <span>{match[1] || (roundIndex === 0 ? 'Bye' : 'TBD')}</span>
+                                <span className={`break-words ${match[1] === null ? 'text-gray-500 line-through' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[1] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[1] ? 'text-gray-500 line-through' : ''}`}>{match[1] || (roundIndex === 0 ? 'Bye' : 'TBD')}</span>
                                 <input
                                   type="number"
                                   className="bg-gray-700 text-white p-1 rounded-lg w-16"
@@ -392,9 +410,10 @@ function TournamentBracketPage() {
                                   const score2 = scores[roundIndex]?.[matchIndex]?.[1];
                                   if (score1 === undefined || score2 === undefined || score1 === '' || score2 === '' || score1 === score2) return;
                                   const winner = score1 > score2 ? match[0] : match[1];
-                                  advanceWinner(winner, roundIndex, matchIndex);
+                                  const loser = score1 > score2 ? match[1] : match[0];
+                                  advanceWinner(winner, loser, roundIndex, matchIndex);
                                 }}
-                                className={`flex items-center justify-center gap-2 text-lg font-mono font-normal px-4 py-1 rounded-md border transition-colors duration-300 ease-in-out w-full mb-4 
+                                className={`flex items-center justify-center gap-2 text-lg font-mono font-normal px-4 py-1 rounded-md border transition-colors duration-300 ease-in-out w-full mb-4
                                   ${advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]
                                     ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                                     : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
@@ -402,7 +421,7 @@ function TournamentBracketPage() {
                                 style={buttonStyle}
                                 disabled={advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]}
                               >
-                                {advancedMatches[`${roundIndex}-${matchIndex}`] ? `${advancedMatches[`${roundIndex}-${matchIndex}`]} advanced!` : (roundIndex === bracket.length - 1 ? 'Set Champion' : 'Set Winner')}
+                                {advancedMatches[`${roundIndex}-${matchIndex}`] ? `${advancedMatches[`${roundIndex}-${matchIndex}`].winner} advanced!` : (roundIndex === bracket.length - 1 ? 'Set Champion' : 'Set Winner')}
                               </button>
                             )}
                           </div>
@@ -412,25 +431,25 @@ function TournamentBracketPage() {
                   </div>
                   {champion && (
                     <div className="mt-8 text-center">
-                      <h2 className="text-3xl font-bold">Champion!</h2>
+                      <h2 className="text-3xl font-bold">🎉 Champion! 🎉</h2>
                       <p className="text-xl font-bold text-yellow-400">{champion}</p>
                     </div>
                   )}
                   <div className="mt-8 flex gap-4 justify-center">
                     <button
                       onClick={resetScores}
-                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                         ${false // Reset Scores button is never disabled based on current logic
                           ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                           : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
                         }`}
                       style={buttonStyle}
                     >
-                      Reset Scores
+                      Reset Matches
                     </button>
                     <button
                       onClick={resetTournament}
-                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                         ${false // Reset Tournament button is never disabled based on current logic
                           ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                           : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`

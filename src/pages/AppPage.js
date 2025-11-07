@@ -6,20 +6,20 @@ import usePageTitle from '../utils/usePageTitle';
 
 const apps = [
   {
-    to: '/apps/word-counter',
-    title: 'Word Counter',
-    description: 'Count words, characters, lines and paragraphs in a text.',
-  },
-  {
-    to: '/apps/ip',
-    title: 'Show my IP',
-    description: 'Display your public IP address.',
-  },
-  {
     to: '/apps/tournament-bracket',
     title: 'Tournament Bracket',
     description: 'Create and manage tournament brackets.',
   },
+  {
+    to: '/apps/word-counter',
+    title: 'Word Counter',
+    description: 'Count words, characters, lines and paragraphs in a text.',
+  },
+  // {
+  //   to: '/apps/ip',
+  //   title: 'Show my IP',
+  //   description: 'Display your public IP address.',
+  // },
 ];
 
 function AppPage() {
