@@ -1,10 +1,25 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import colors from '../../config/colors';
 
 function TournamentBracketPage() {
   usePageTitle('Tournament Bracket');
   const { addToast } = useToast();
+
+  const cardStyle = {
+    backgroundColor: colors['app-alpha-10'],
+    borderColor: colors['app-alpha-50'],
+    color: colors.app,
+  };
+
+  const detailTextColor = colors['app-light'];
+
+  const buttonStyle = {
+    borderColor: colors['app-alpha-50'],
+  };
 
   const [competitors, setCompetitors] = useState([]);
   const [newCompetitor, setNewCompetitor] = useState('');
@@ -188,157 +203,248 @@ function TournamentBracketPage() {
     }
   };
 
+  const [compactLayout, setCompactLayout] = useState(false);
+
   return (
-    <div className="py-16 sm:py-24 bg-gray-900 text-white min-h-screen">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4">
-          Tournament Bracket
+    <div className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+        <Link
+          to="/apps"
+          className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon size={24} /> Back to Apps
+        </Link>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+          <span className="codex-color">codex</span>
+          <span className="separator-color">::</span>
+          <span className="apps-color">apps</span>
+          <span className="separator-color">::</span>
+          <span className="single-app-color">tb</span>
         </h1>
-
-        {!tournamentStarted ? (
-          <div>
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-4">Add Competitors</h2>
-              <div className="flex gap-4">
-                <input
-                  type="text"
-                  value={newCompetitor}
-                  onChange={(e) => setNewCompetitor(e.target.value)}
-                  onKeyDown={handleNewCompetitorKeyDown}
-                  placeholder="Enter competitor name"
-                  className="bg-gray-800 text-white p-2 rounded-lg flex-grow"
-                  ref={newCompetitorInputRef}
-                />
-                <button
-                  onClick={addCompetitor}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                  disabled={competitors.length >= 64}
-                >
-                  Add
-                </button>
-              </div>
-              {nameError && <p className="text-red-500 mt-2">{nameError}</p>}
-              {competitors.length >= 64 && <p className="text-red-500 mt-2">Maximum of 64 competitors reached.</p>}
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold mb-4">Competitors ({competitors.length})</h2>
-              <ul className="space-y-2">
-                {competitors.map((competitor, index) => (
-                  <li key={index} className="flex items-center justify-between bg-gray-800 p-2 rounded-lg">
-                    {editingIndex === index ? (
+        <hr className="border-gray-700" />
+        <div className="flex justify-center items-center mt-8">
+          <div
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-7xl"
+            style={cardStyle}
+          >
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
+              }}
+            ></div>
+            <div className="relative z-10">
+              {!tournamentStarted ? (
+                <div>
+                  <div className="mb-8">
+                    <h2 className="text-2xl font-arvo font-normal mb-4">Add Competitors</h2>
+                    <div className="flex gap-4">
                       <input
                         type="text"
-                        value={editingText}
-                        onChange={(e) => setEditingText(e.target.value)}
-                        className="bg-gray-700 text-white p-1 rounded-lg flex-grow"
+                        value={newCompetitor}
+                        onChange={(e) => setNewCompetitor(e.target.value)}
+                        onKeyDown={handleNewCompetitorKeyDown}
+                        placeholder="Enter competitor name"
+                        className="bg-gray-800 text-white p-2 rounded-lg flex-grow"
+                        ref={newCompetitorInputRef}
                       />
-                    ) : (
-                      <span>{competitor}</span>
-                    )}
-                    <div className="flex gap-2">
-                      {editingIndex === index ? (
-                        <button onClick={() => saveEdit(index)} className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-2 rounded">
-                          Save
-                        </button>
-                      ) : (
-                        <button onClick={() => startEditing(index, competitor)} className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-1 px-2 rounded">
-                          Edit
-                        </button>
-                      )}
-                      <button onClick={() => deleteCompetitor(index)} className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded">
-                        Delete
+                      <button
+                        onClick={addCompetitor}
+                        className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                          ${competitors.length >= 64
+                            ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                            : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                          }`}
+                        style={buttonStyle}
+                        disabled={competitors.length >= 64}
+                      >
+                        Add
                       </button>
                     </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                    {nameError && <p className="text-red-500 mt-2">{nameError}</p>}
+                    {competitors.length >= 64 && <p className="text-red-500 mt-2">Maximum of 64 competitors reached.</p>}
+                  </div>
 
-            <div className="mt-8">
-              <button
-                onClick={startTournament}
-                className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                disabled={competitors.length < 2}
-                >
-                Start Tournament
-              </button>
-            </div>
-          </div>
-        ) : (
-          <div>
-            <h2 className="text-3xl font-bold mb-4">Bracket</h2>
-            <div className="flex space-x-4 overflow-x-auto pb-4">
-              {bracket && bracket.map((round, roundIndex) => (
-                <div key={roundIndex} className="flex flex-col space-y-4">
-                  <h3 className="text-xl font-bold">Round {roundIndex + 1}</h3>
-                  {round.map((match, matchIndex) => (
-                    <div key={matchIndex} className="bg-gray-800 p-4 rounded-lg w-72">
-                      <div className="flex justify-between items-center mb-2">
-                        <div className="flex items-center gap-2">
-                          <input
-                            type="number"
-                            className="bg-gray-700 text-white p-1 rounded-lg w-16"
-                            value={scores[roundIndex]?.[matchIndex]?.[0] || ''}
-                            onChange={(e) => handleScoreChange(roundIndex, matchIndex, 0, e.target.value)}
-                            disabled={!match[0] || !match[1]}
-                          />
-                          <span>{match[0] || 'TBD'}</span>
-                        </div>
-                        <span>vs</span>
-                        <div className="flex items-center gap-2">
-                          <span>{match[1] || (roundIndex === 0 ? 'Bye' : 'TBD')}</span>
-                          <input
-                            type="number"
-                            className="bg-gray-700 text-white p-1 rounded-lg w-16"
-                            value={scores[roundIndex]?.[matchIndex]?.[1] || ''}
-                            onChange={(e) => handleScoreChange(roundIndex, matchIndex, 1, e.target.value)}
-                            disabled={!match[0] || !match[1]}
-                          />
-                        </div>
-                      </div>
-                      {match[0] && match[1] && (
-                        <button
-                          onClick={() => {
-                            const score1 = scores[roundIndex]?.[matchIndex]?.[0];
-                            const score2 = scores[roundIndex]?.[matchIndex]?.[1];
-                            if (score1 === undefined || score2 === undefined || score1 === '' || score2 === '' || score1 === score2) return;
-                            const winner = score1 > score2 ? match[0] : match[1];
-                            advanceWinner(winner, roundIndex, matchIndex);
-                          }}
-                          className="bg-purple-500 hover:bg-purple-700 text-white font-bold py-1 px-2 rounded w-full disabled:bg-gray-600"
-                          disabled={advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]}
-                        >
-                          {advancedMatches[`${roundIndex}-${matchIndex}`] ? `${advancedMatches[`${roundIndex}-${matchIndex}`]} advanced!` : (roundIndex === bracket.length - 1 ? 'Set Champion' : 'Set Winner')}
-                        </button>
-                      )}
-                    </div>
-                  ))}
+                  <div>
+                    <h2 className="text-2xl font-arvo font-normal mb-4">Competitors ({competitors.length})</h2>
+                    <ul className="space-y-2">
+                      {competitors.map((competitor, index) => (
+                        <li key={index} className="flex items-center justify-between bg-gray-800 p-2 rounded-lg">
+                          {editingIndex === index ? (
+                            <input
+                              type="text"
+                              value={editingText}
+                              onChange={(e) => setEditingText(e.target.value)}
+                              className="bg-gray-700 text-white p-1 rounded-lg flex-grow"
+                            />
+                          ) : (
+                            <span>{competitor}</span>
+                          )}
+                          <div className="flex gap-2">
+                            {editingIndex === index ? (
+                              <button onClick={() => saveEdit(index)}
+                                className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                                  ${false // Save button is never disabled based on current logic
+                                    ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                    : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                                  }`}
+                                style={buttonStyle}
+                              >
+                                Save
+                              </button>
+                            ) : (
+                              <button onClick={() => startEditing(index, competitor)}
+                                className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                                  ${false // Edit button is never disabled based on current logic
+                                    ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                    : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                                  }`}
+                                style={buttonStyle}
+                              >
+                                Edit
+                              </button>
+                            )}
+                            <button onClick={() => deleteCompetitor(index)}
+                              className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                                ${false // Delete button is never disabled based on current logic
+                                  ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                  : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                                }`}
+                              style={buttonStyle}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="mt-8">
+                    <button
+                      onClick={startTournament}
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                        ${competitors.length < 2
+                          ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                          : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                        }`}
+                      style={buttonStyle}
+                      disabled={competitors.length < 2}
+                    >
+                      Start Tournament
+                    </button>
+                  </div>
                 </div>
-              ))}
-            </div>
-            {champion && (
-              <div className="mt-8 text-center">
-                <h2 className="text-3xl font-bold">Champion!</h2>
-                <p className="text-xl font-bold text-yellow-400">{champion}</p>
-              </div>
-            )}
-            <div className="mt-8 flex gap-4 justify-center">
-              <button
-                onClick={resetScores}
-                className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Reset Scores
-              </button>
-              <button
-                onClick={resetTournament}
-                className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Reset Tournament
-              </button>
+              ) : (
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <h2 className="text-3xl font-bold">Bracket</h2>
+                    <label htmlFor="compact-layout-toggle" className="flex items-center cursor-pointer">
+                      <div className="relative">
+                        <input
+                          id="compact-layout-toggle"
+                          type="checkbox"
+                          className="sr-only"
+                          checked={compactLayout}
+                          onChange={() => setCompactLayout(!compactLayout)}
+                        />
+                        <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
+                        <div className={`dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition transform ${compactLayout ? 'translate-x-full bg-primary-500' : ''}`}></div>
+                      </div>
+                      <div className="ml-3 text-gray-300">Compact Layout</div>
+                    </label>
+                  </div>
+                  <div className="flex space-x-4 overflow-x-auto pb-4">
+                    {bracket && bracket.map((round, roundIndex) => (
+                      <div key={roundIndex} className={`flex flex-col ${compactLayout ? 'space-y-2' : 'space-y-4'} min-w-max flex-shrink-0`}>
+                        <h3 className="text-xl font-bold">Round {roundIndex + 1}</h3>
+                        {round.map((match, matchIndex) => (
+                          <div key={matchIndex} className={`group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden w-72 ${compactLayout ? '' : 'h-full'}`} style={cardStyle}>
+                            <div className="flex justify-between items-center mb-2">
+                              <div className="flex items-center gap-2">
+                                <input
+                                  type="number"
+                                  className="bg-gray-700 text-white p-1 rounded-lg w-16"
+                                  value={scores[roundIndex]?.[matchIndex]?.[0] || ''}
+                                  onChange={(e) => handleScoreChange(roundIndex, matchIndex, 0, e.target.value)}
+                                  disabled={!match[0] || !match[1]}
+                                />
+                                <span>{match[0] || 'TBD'}</span>
+                              </div>
+                              <span>vs</span>
+                              <div className="flex items-center gap-2">
+                                <span>{match[1] || (roundIndex === 0 ? 'Bye' : 'TBD')}</span>
+                                <input
+                                  type="number"
+                                  className="bg-gray-700 text-white p-1 rounded-lg w-16"
+                                  value={scores[roundIndex]?.[matchIndex]?.[1] || ''}
+                                  onChange={(e) => handleScoreChange(roundIndex, matchIndex, 1, e.target.value)}
+                                  disabled={!match[0] || !match[1]}
+                                />
+                              </div>
+                            </div>
+                            {match[0] && match[1] && (
+                              <button
+                                onClick={() => {
+                                  const score1 = scores[roundIndex]?.[matchIndex]?.[0];
+                                  const score2 = scores[roundIndex]?.[matchIndex]?.[1];
+                                  if (score1 === undefined || score2 === undefined || score1 === '' || score2 === '' || score1 === score2) return;
+                                  const winner = score1 > score2 ? match[0] : match[1];
+                                  advanceWinner(winner, roundIndex, matchIndex);
+                                }}
+                                className={`flex items-center justify-center gap-2 text-lg font-mono font-normal px-4 py-1 rounded-md border transition-colors duration-300 ease-in-out w-full mb-4 
+                                  ${advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]
+                                    ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                    : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                                  }`}
+                                style={buttonStyle}
+                                disabled={advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]}
+                              >
+                                {advancedMatches[`${roundIndex}-${matchIndex}`] ? `${advancedMatches[`${roundIndex}-${matchIndex}`]} advanced!` : (roundIndex === bracket.length - 1 ? 'Set Champion' : 'Set Winner')}
+                              </button>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                  {champion && (
+                    <div className="mt-8 text-center">
+                      <h2 className="text-3xl font-bold">Champion!</h2>
+                      <p className="text-xl font-bold text-yellow-400">{champion}</p>
+                    </div>
+                  )}
+                  <div className="mt-8 flex gap-4 justify-center">
+                    <button
+                      onClick={resetScores}
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                        ${false // Reset Scores button is never disabled based on current logic
+                          ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                          : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                        }`}
+                      style={buttonStyle}
+                    >
+                      Reset Scores
+                    </button>
+                    <button
+                      onClick={resetTournament}
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out 
+                        ${false // Reset Tournament button is never disabled based on current logic
+                          ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                          : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
+                        }`}
+                      style={buttonStyle}
+                    >
+                      Reset Tournament
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
