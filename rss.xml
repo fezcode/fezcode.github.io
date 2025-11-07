@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 06 Nov 2025 22:37:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Nov 2025 10:44:37 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 06 Nov 2025 22:37:00 GMT</pubDate>
+        <pubDate>Fri, 07 Nov 2025 10:44:37 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Demystifying Tailwind CSS]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/demystifying-tailwind-css</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/demystifying-tailwind-css</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 07 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Demystifying Tailwind CSS in <code>fezcodex</code>: A Utility-First Approach</h1>
+<p><a href="https://fezcode.com/#/blog/demystifying-tailwind-css">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Lowest Common Ancestor with Binary Search Tree]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -112,6 +122,16 @@
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>015 - React: <code>useRef</code> Hook</h1>
 <p><a href="https://fezcode.com/#/blog/react-refs-useref">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[How React Toasts Work in `fezcodex`]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-toast-explanation-in-details</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-toast-explanation-in-details</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Deep Dive: How React Toasts Work in <code>fezcodex</code></h1>
+<p><a href="https://fezcode.com/#/blog/react-toast-explanation-in-details">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Custom Hooks]]></title>

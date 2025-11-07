@@ -7,7 +7,7 @@ This post will take you on a journey from the basics of trees to a specific type
 
 ## What is a Tree?
 
-In computer science, a **Tree** is a hierarchical data structure that consists of nodes connected by edges. 
+In computer science, a **Tree** is a hierarchical data structure that consists of nodes connected by edges.
 
 Unlike linear data structures like arrays or linked lists, trees are non-linear and are used to represent hierarchical relationships.
 
@@ -27,7 +27,7 @@ Trees are used in various applications, such as file systems, organization chart
 
 ## Binary Search Trees (BSTs)
 
-A **Binary Search Tree (BST)** is a special type of binary tree where the nodes are ordered in a specific way. 
+A **Binary Search Tree (BST)** is a special type of binary tree where the nodes are ordered in a specific way.
 
 This ordering makes operations like searching, insertion, and deletion very efficient.
 
@@ -60,7 +60,7 @@ Let's explore how to implement some of these fundamental tree algorithms in Go.
 
 ### Finding the Height/Depth of a Binary Tree
 
-The **height** of a binary tree is the number of edges on the longest path from the root node to a leaf node. A tree with only a root node has a height of 0. 
+The **height** of a binary tree is the number of edges on the longest path from the root node to a leaf node. A tree with only a root node has a height of 0.
 
 The concept is closely related to the **depth** of a node, which is its distance from the root. The height of the tree is, therefore, the maximum depth of any node in the tree.
 
@@ -138,7 +138,7 @@ func postOrderTraversal(node *TreeNode) {
 
 ## LeetCode 235: Lowest Common Ancestor of a Binary Search Tree
 
-Now, let's apply our knowledge to a classic problem. 
+Now, let's apply our knowledge to a classic problem.
 
 The **Lowest Common Ancestor (LCA)** of two nodes, `p` and `q`, in a tree is the lowest (i.e., deepest) node that has both `p` and `q` as descendants.
 
@@ -165,7 +165,7 @@ For example, consider the following BST:
 
 ### The Solution
 
-The properties of a BST make finding the LCA particularly efficient. 
+The properties of a BST make finding the LCA particularly efficient.
 
 We can start at the root of the tree and use the values of `p` and `q` to decide where to go next.
 
@@ -173,7 +173,7 @@ Let's consider the current node we are at, let's call it `current`.
 
 1.  If both `p` and `q` are **greater** than `current.val`, it means that the LCA must be in the **right** subtree. So, we move to the right child.
 2.  If both `p` and `q` are **less** than `current.val`, it means that the LCA must be in the **left** subtree. So, we move to the left child.
-3.  If one of `p` or `q` is greater than `current.val` and the other is less than `current.val` (or if one of them is equal to `current.val`), then `current` is the LCA. 
+3.  If one of `p` or `q` is greater than `current.val` and the other is less than `current.val` (or if one of them is equal to `current.val`), then `current` is the LCA.
 
 This is because `p` and `q` are on opposite sides of the current node, meaning it's the split point and thus the lowest common ancestor.
 
@@ -233,12 +233,57 @@ func lowestCommonAncestor(root, p, q *TreeNode) *TreeNode {
 }
 ```
 
-Both of these solutions are very efficient, with a time complexity of O(H), where H is the height of the tree. In a balanced BST, this is O(log N), where N is the number of nodes. 
+Both of these solutions are very efficient, with a time complexity of O(H), where H is the height of the tree. In a balanced BST, this is O(log N), where N is the number of nodes.
 
 The space complexity for the iterative solution is O(1), while the recursive solution has a space complexity of O(H) due to the call stack.
 
+### Alternative: Stack-Based Solution
+
+Another way to solve this problem is by finding the path from the root to each of the two nodes, `p` and `q`. Once we have both paths, we can compare them to find the last common node, which is the LCA.
+
+This method is more generic and would also work for a regular binary tree, but it's less efficient for a BST than the previous solutions because it requires traversing parts of the tree multiple times and uses extra space to store the paths.
+
+Here is the implementation in Go:
+
+```go
+// Helper function to find the path from the root to a target node
+func getPath(root, target *TreeNode) []*TreeNode {
+    path := []*TreeNode{}
+    current := root
+    for current != nil {
+        path = append(path, current)
+        if target.Val < current.Val {
+            current = current.Left
+        } else if target.Val > current.Val {
+            current = current.Right
+        } else {
+            break // Found the target
+        }
+    }
+    return path
+}
+
+func lowestCommonAncestorWithStacks(root, p, q *TreeNode) *TreeNode {
+    pathP := getPath(root, p)
+    pathQ := getPath(root, q)
+
+    var lca *TreeNode
+
+    // Iterate through both paths until they diverge
+    for i := 0; i < len(pathP) && i < len(pathQ); i++ {
+        if pathP[i] == pathQ[i] {
+            lca = pathP[i]
+        } else {
+            break
+        }
+    }
+
+    return lca
+}
+```
+
 ## Conclusion
 
-Trees and Binary Search Trees are powerful data structures that are essential for any programmer's toolkit. By understanding their properties and the algorithms that operate on them, you can solve a wide range of problems efficiently. 
+Trees and Binary Search Trees are powerful data structures that are essential for any programmer's toolkit. By understanding their properties and the algorithms that operate on them, you can solve a wide range of problems efficiently.
 
 The Lowest Common Ancestor problem is a perfect example of how the structure of a BST can be leveraged to find an elegant and optimal solution.
