@@ -15,6 +15,11 @@ const apps = [
     title: 'Word Counter',
     description: 'Count words, characters, lines and paragraphs in a text.',
   },
+  {
+    to: '/apps/case-converter',
+    title: 'Case Converter',
+    description: 'Convert text to different cases (e.g., uppercase, lowercase, camelCase).',
+  },
   // {
   //   to: '/apps/ip',
   //   title: 'Show my IP',

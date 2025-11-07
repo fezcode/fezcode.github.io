@@ -15,7 +15,7 @@ function TournamentBracketPage() {
     color: colors.app,
   };
 
-  const detailTextColor = colors['app-light'];
+  // const detailTextColor = colors['app-light'];
 
   const buttonStyle = {
     borderColor: colors['app-alpha-50'],

@@ -20,6 +20,7 @@ import AppPage from '../pages/AppPage';
 import IpPage from '../pages/apps/IpPage';
 import WordCounterPage from '../pages/apps/WordCounterPage';
 import TournamentBracketPage from '../pages/apps/TournamentBracketPage';
+import CaseConverterPage from '../pages/apps/CaseConverterPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -327,6 +328,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <TournamentBracketPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/case-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <CaseConverterPage />
             </motion.div>
           }
         />
