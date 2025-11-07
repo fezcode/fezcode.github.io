@@ -76,13 +76,6 @@ const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
             <BookOpen size={24} />
             <span>Blog</span>
           </Link>
-          <Link
-            to="/apps"
-            className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors"
-          >
-            <RocketLaunch size={24} />
-            <span>Apps</span>
-          </Link>
         </div>
       </div>
     </header>
