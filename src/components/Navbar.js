@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { Sidebar, User, BookOpen, RocketLaunch } from '@phosphor-icons/react';
+import { Sidebar, User, BookOpen } from '@phosphor-icons/react';
 
 const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);

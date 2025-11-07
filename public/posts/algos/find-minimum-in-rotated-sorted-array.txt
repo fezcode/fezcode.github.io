@@ -1,0 +1,57 @@
+# Find Minimum in Rotated Sorted Array
+
+## Problem Description
+
+Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+(i.e., `[0,1,2,4,5,6,7]` might become `[4,5,6,7,0,1,2]`).
+
+Find the minimum element.
+
+You may assume no duplicate exists in the array.
+
+## Solution
+
+This problem can be solved efficiently using a modified binary search approach.
+The key idea is to observe that if we pick an arbitrary element `mid`, one of the two halves (left or right) must be sorted.
+The minimum element will always be in the unsorted half.
+
+1.  Initialize `left` to 0 and `right` to `len(nums) - 1`.
+2.  While `left < right`:
+    a.  Calculate `mid = left + (right - left) / 2`.
+    b.  If `nums[mid] > nums[right]`, it means the minimum element is in the right half (from `mid + 1` to `right`), because the right part is unsorted. So, set `left = mid + 1`.
+    c.  Else (`nums[mid] < nums[right]`), it means the minimum element is in the left half (from `left` to `mid`), because the right part is sorted, and `nums[mid]` could be the minimum. So, set `right = mid`.
+3.  Return `nums[left]` (or `nums[right]`, as `left` and `right` will converge to the minimum element's index).
+
+## Code (GoLang)
+
+```go
+package main
+
+import "fmt"
+
+func findMin(nums []int) int {
+    left, right := 0, len(nums)-1
+
+    for left < right {
+        mid := left + (right-left)/2
+        if nums[mid] > nums[right] {
+            // Minimum is in the right half (mid+1 to right)
+            left = mid + 1
+        } else {
+            // Minimum is in the left half (left to mid)
+            // nums[mid] could be the minimum
+            right = mid
+        }
+    }
+
+    return nums[left]
+}
+
+func main() {
+    fmt.Println(findMin([]int{3, 4, 5, 1, 2})) // Output: 1
+    fmt.Println(findMin([]int{4, 5, 6, 7, 0, 1, 2})) // Output: 0
+    fmt.Println(findMin([]int{1})) // Output: 1
+    fmt.Println(findMin([]int{1, 2})) // Output: 1
+    fmt.Println(findMin([]int{2, 1})) // Output: 1
+}
+```
