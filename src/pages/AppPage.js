@@ -55,6 +55,11 @@ const apps = [
     title: 'CSS Unit Converter',
     description: 'Convert between px, em, rem, vw, vh, and % units.',
   },
+  {
+    to: '/apps/fantasy-name-generator',
+    title: 'Fantasy Name Generator',
+    description: 'Generate fantasy names for characters, places, and items.',
+  },
 ];
 
 function AppPage() {

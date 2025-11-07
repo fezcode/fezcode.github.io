@@ -1,0 +1,157 @@
+import React, { useState } from 'react';
+import usePageTitle from '../../utils/usePageTitle';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
+import colors from '../../config/colors';
+import { useToast } from '../../hooks/useToast';
+
+const FantasyNameGeneratorPage = () => {
+  usePageTitle('Fantasy Name Generator');
+
+  const [nameType, setNameType] = useState('human');
+  const [generatedName, setGeneratedName] = useState('');
+  const { addToast } = useToast();
+
+  const handleCopy = async () => {
+    if (generatedName) {
+      try {
+        await navigator.clipboard.writeText(generatedName);
+        addToast({title: 'Success', message: 'Name copied to clipboard!', duration: 3000});
+      } catch (err) {
+        addToast({title: 'Failure', message: 'Failed to copy name!', duration: 3000});
+        console.error('Failed to copy: ', err);
+      }
+    }
+  };
+
+  const generateName = () => {
+    const nameParts = {
+      human: {
+        prefixes: ['Ael', 'Bor', 'Cael', 'Dra', 'El', 'Fen', 'Gor', 'Hal', 'Isol', 'Jor', 'Kal', 'Lor', 'Mor', 'Nor', 'Orin', 'Per', 'Quinn', 'Roric', 'Ser', 'Thorn', 'Ulric', 'Val', 'Wyn'],
+        middles: ['an', 'den', 'ric', 'wyn', 'gar', 'lin', 'dor', 'mar', 'van', 'thar', 'mond', 'bert', 'fred', 'gorn', 'hald', 'kiel', 'land', 'morn', 'niel', 'rath', 'sian', 'tian', 'vyn'],
+        suffixes: ['us', 'a', 'on', 'en', 'or', 'yn', 'ia', 'eth', 'an', 'ar', 'da', 'el', 'is', 'ra', 'os', 'er', 'in', 'of', 'um', 'ald', 'ard', 'bert', 'mond', 'red', 'son', 'ton'],
+      },
+      elf: {
+        prefixes: ['Aer', 'Ael', 'El', 'Fael', 'Lae', 'Lir', 'Sil', 'Thran', 'Val', 'Xyl', 'Yl', 'Zyl'],
+        middles: ['an', 'ara', 'en', 'iel', 'ion', 'ith', 'or', 'wen', 'yn', 'dor', 'mar', 'van', 'thal', 'rion', 'syl', 'tir'],
+        suffixes: ['as', 'a', 'el', 'en', 'ia', 'ion', 'is', 'or', 'os', 'ra', 'us', 'wyn', 'ys', 'eth', 'iel', 'in', 'on', 'ril', 'wen'],
+      },
+      dwarf: {
+        prefixes: ['Bor', 'Dur', 'Gim', 'Kael', 'Thrain', 'Bal', 'Dwal', 'Fili', 'Kili', 'Oin', 'Gloin', 'Thor', 'Bif', 'Bof', 'Bomb'],
+        middles: ['in', 'grim', 'li', 'son', 'gar', 'rek', 'und', 'orn', 'rak', 'dal', 'mar', 'stone', 'beard', 'hammer', 'axe'],
+        suffixes: ['son', 'in', 'grim', 'li', 'rek', 'und', 'orn', 'rak', 'dal', 'mar', 'stone', 'beard', 'hammer', 'axe', 'foot', 'hand', 'shield'],
+      },
+      orc: {
+        prefixes: ['Grak', 'Thorg', 'Ur', 'Morg', 'Grish', 'Azog', 'Bolg', 'Drog', 'Grog', 'Karg', 'Maug', 'Snag'],
+        middles: ['ash', 'uk', 'og', 'nar', 'gul', 'rak', 'oth', 'fang', 'skull', 'blood', 'hide', 'tooth'],
+        suffixes: ['ak', 'ug', 'osh', 'uk', 'a', 'ar', 'da', 'er', 'ish', 'ok', 'or', 'oth', 'ra', 'rag', 'rot', 'ruk', 'um', 'un', 'ur'],
+      },
+    };
+
+    const getRandomElement = (arr) => arr[Math.floor(Math.random() * arr.length)];
+
+    const selectedParts = nameParts[nameType];
+    if (!selectedParts) {
+      setGeneratedName('Invalid name type');
+      return;
+    }
+
+    let name = getRandomElement(selectedParts.prefixes);
+    if (Math.random() > 0.3) { // 70% chance to add a middle part
+      name += getRandomElement(selectedParts.middles);
+    }
+    name += getRandomElement(selectedParts.suffixes);
+
+    // Simple capitalization
+    setGeneratedName(name.charAt(0).toUpperCase() + name.slice(1));
+  };
+
+  const cardStyle = {
+    backgroundColor: colors['app-alpha-10'],
+    borderColor: colors['app-alpha-50'],
+    color: colors.app,
+  };
+
+  return (
+    <div className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+        <Link
+          to="/apps"
+          className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon size={24} /> Back to Apps
+        </Link>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+          <span className="codex-color">fc</span>
+          <span className="separator-color">::</span>
+          <span className="apps-color">apps</span>
+          <span className="separator-color">::</span>
+          <span className="single-app-color">fantasy-names</span>
+        </h1>
+        <hr className="border-gray-700" />
+        <div className="flex justify-center items-center mt-16">
+          <div
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
+            style={cardStyle}
+          >
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
+              }}
+            ></div>
+            <div className="relative z-10 p-1">
+              <div className="mb-6">
+                <label htmlFor="nameType" className="block text-sm font-medium text-gray-300 mb-2">
+                  Name Type
+                </label>
+                <select
+                  id="nameType"
+                  className="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500"
+                  value={nameType}
+                  onChange={(e) => setNameType(e.target.value)}
+                >
+                  <option value="human">Human</option>
+                  <option value="elf">Elf</option>
+                  <option value="dwarf">Dwarf</option>
+                  <option value="orc">Orc</option>
+                </select>
+              </div>
+              <button
+                onClick={generateName}
+                className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"
+                style={{
+                  backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                  color: cardStyle.color,
+                  borderColor: cardStyle.borderColor,
+                  border: '1px solid',
+                  '--hover-bg-color': colors['app-alpha-50'],
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
+                onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
+              >
+                Generate Name
+              </button>
+              {generatedName && (
+                <div className="mt-6 p-4 bg-gray-700 rounded-md text-center flex items-center justify-center space-x-2">
+                  <p className="text-xl font-arvo font-normal text-blue-400">{generatedName}</p>
+                  <button
+                    onClick={handleCopy}
+                    className="p-2 rounded-full bg-gray-600 hover:bg-gray-500 transition-colors duration-200"
+                    title="Copy to clipboard"
+                  >
+                    <CopySimpleIcon size={20} color={colors.app} />
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default FantasyNameGeneratorPage;

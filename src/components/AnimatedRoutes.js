@@ -28,6 +28,7 @@ import HashGeneratorPage from '../pages/apps/HashGeneratorPage';
 import UuidGeneratorPage from '../pages/apps/UuidGeneratorPage';
 import ColorPaletteGeneratorPage from '../pages/apps/ColorPaletteGeneratorPage';
 import CssUnitConverterPage from '../pages/apps/CssUnitConverterPage';
+import FantasyNameGeneratorPage from '../pages/apps/FantasyNameGeneratorPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -447,6 +448,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <CssUnitConverterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/fantasy-name-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <FantasyNameGeneratorPage />
             </motion.div>
           }
         />
