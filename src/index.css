@@ -69,10 +69,10 @@ code {
 
 :root {
   /*dev card*/
-  --color-dev-badge: #3d3d75;
-  --bg-dev-card: rgba(74, 78, 105, 0.3);
-  --bg-dev-card-hover: rgba(69, 75, 115, 0.55);
-  --title-hover-dev: #7b88dc;
+  --color-dev-badge: #0b3e8f;
+  --bg-dev-card: rgba(0, 41, 107, 0.3);
+  --bg-dev-card-hover: rgba(0, 41, 107, 0.55);
+  --title-hover-dev: #81aff4;
 
 
   /*rant card*/
