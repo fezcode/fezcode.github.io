@@ -228,7 +228,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <AlienIcon size={16} />
                 <span>Extras</span>
-                <LinkIcon size={16} className="text-emerald-200"/>
+                <LinkIcon size={16} className="text-rose-400"/>
 
               </span>
 
@@ -259,7 +259,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <JoystickIcon size={16} />
                 <span>Games</span>
-                <ArrowSquareOutIcon size={16} className="text-emerald-200"/>
+                <ArrowSquareOutIcon size={16} className="text-rose-400"/>
               </span>
               <CaretDownIcon
                 size={20}
@@ -301,7 +301,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <AnchorIcon size={16} />
                 <span>External Links</span>
-                <ArrowSquareOutIcon size={16} className="text-emerald-200"/>
+                <ArrowSquareOutIcon size={16} className="text-rose-400"/>
               </span>
 
               <CaretDownIcon
