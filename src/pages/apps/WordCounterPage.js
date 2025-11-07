@@ -69,11 +69,18 @@ function WordCounterPage() {
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
-          >
-            <div className="relative z-10 p-1">
+                      <div
+                        className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
+                        style={cardStyle}
+                      >
+                        <div
+                          className="absolute top-0 left-0 w-full h-full opacity-10"
+                          style={{
+                            backgroundImage:
+                              'radial-gradient(circle, white 1px, transparent 1px)',
+                            backgroundSize: '10px 10px',
+                          }}
+                        ></div>            <div className="relative z-10 p-1">
               <div className="w-full h-64 resize-y overflow-auto border rounded-md" style={{ borderColor: cardStyle.borderColor }}>
                 <textarea
                   className="w-full h-full p-4 bg-gray-900/50 font-mono resize-none border-none focus:ring-0"
@@ -91,7 +98,7 @@ function WordCounterPage() {
                   <p>Paragraphs: {counts.paragraphs}</p>
                 </div>
                 <label
-                  className="flex items-center gap-2 text-lg font-semibold px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out cursor-pointer"
+                  className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out cursor-pointer"
                   style={{
                     backgroundColor: 'rgba(0, 0, 0, 0.2)',
                     color: cardStyle.color,
