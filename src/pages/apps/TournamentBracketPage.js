@@ -260,7 +260,7 @@ function TournamentBracketPage() {
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
           <span className="separator-color">::</span>
-          <span className="single-app-color">tournament-brackets</span>
+          <span className="single-app-color">tb</span>
         </h1>
         <hr className="border-gray-700" />
         <div className="flex flex-col justify-center mt-8">
@@ -280,6 +280,8 @@ function TournamentBracketPage() {
               {!tournamentStarted ? (
                 <>
                   <div>
+                    <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Tournament Brackets</h1>
+                    <hr className="border-gray-700 mb-4" />
                     <div className="mb-8">
                       <h2 className="text-2xl font-arvo font-normal mb-4">Add Competitors (max 64 competitors, 5 char limit)</h2>
                       <div className="flex gap-4">

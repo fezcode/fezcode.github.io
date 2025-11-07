@@ -8,4 +8,12 @@ module.exports = {
       },
     },
   },
+  // webpack: {
+  //   configure: (webpackConfig, { env, paths }) => {
+  //     if (env === 'production') {
+  //       webpackConfig.devtool = false; // Disable sourcemaps
+  //     }
+  //     return webpackConfig;
+  //   },
+  // },
 };

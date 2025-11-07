@@ -87,6 +87,8 @@ function UuidGeneratorPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> UUID Generator </h1>
+            <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="mb-4">
                 <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>Generated UUID v4</label>

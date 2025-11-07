@@ -81,7 +81,7 @@ const CssUnitConverterPage = () => {
               <span className="separator-color">::</span>
               <span className="apps-color">apps</span>
               <span className="separator-color">::</span>
-              <span className="single-app-color">css-units</span>
+              <span className="single-app-color">css</span>
             </h1>
             <hr className="border-gray-700" />
             <div className="flex justify-center items-center mt-16">
@@ -98,6 +98,8 @@ const CssUnitConverterPage = () => {
                   }}
                 ></div>
                 <div className="relative z-10 p-1">
+                  <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> CSS Unit Converter </h1>
+                  <hr className="border-gray-700 mb-4" />
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                     <div>
                       <label htmlFor="inputValue" className="block text-sm font-medium text-gray-300">

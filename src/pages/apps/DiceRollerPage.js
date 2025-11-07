@@ -59,7 +59,7 @@ const DiceRollerPage = () => {
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
           <span className="separator-color">::</span>
-          <span className="single-app-color">dice-roller</span>
+          <span className="single-app-color">dice</span>
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
@@ -76,6 +76,8 @@ const DiceRollerPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Dice Roller </h1>
+              <hr className="border-gray-700 mb-4" />
               <div className="mb-6 flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
                   <label htmlFor="diceType" className="block text-sm font-medium text-gray-300 mb-2">

@@ -58,7 +58,7 @@ function ColorPaletteGeneratorPage() {
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
           <span className="separator-color">::</span>
-          <span className="single-app-color">colors</span>
+          <span className="single-app-color">cpg</span>
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
@@ -74,6 +74,8 @@ function ColorPaletteGeneratorPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Color Palette Generator </h1>
+            <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="flex justify-center gap-4 mb-4">
                 <button

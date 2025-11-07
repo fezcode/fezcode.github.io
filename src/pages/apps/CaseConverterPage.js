@@ -73,6 +73,8 @@ function CaseConverterPage() {
                             backgroundSize: '10px 10px',
                           }}
                         ></div>            <div className="relative z-10 p-1">
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Case Converter </h1>
+              <hr className="border-gray-700 mb-4" />
               <div className="w-full h-48 resize-y overflow-auto border rounded-md" style={{ borderColor: cardStyle.borderColor }}>
                 <textarea
                   className="w-full h-full p-4 bg-gray-900/50 font-mono resize-none border-none focus:ring-0"

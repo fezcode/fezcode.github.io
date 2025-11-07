@@ -123,7 +123,7 @@ const FantasyNameGeneratorPage = () => {
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
           <span className="separator-color">::</span>
-          <span className="single-app-color">fantasy-names</span>
+          <span className="single-app-color">fng</span>
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
@@ -140,6 +140,8 @@ const FantasyNameGeneratorPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Fantasy Name Generator </h1>
+              <hr className="border-gray-700 mb-4" />
               <div className="mb-6">
                 <label htmlFor="nameType" className="block text-sm font-medium text-gray-300 mb-2">
                   Name Type

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import {Routes, Route, useLocation, Navigate} from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import HomePage from '../pages/HomePage';
 import BlogPage from '../pages/BlogPage';
@@ -298,6 +298,21 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+        {/* Hardcoded redirects for fc::apps:: paths */}
+        <Route path="/apps::ip" element={<Navigate to="/apps/ip" replace />} />
+        <Route path="/apps::wc" element={<Navigate to="/apps/word-counter" replace />} />
+        <Route path="/apps::tb" element={<Navigate to="/apps/tournament-bracket" replace />} />
+        <Route path="/apps::cc" element={<Navigate to="/apps/case-converter" replace />} />
+        <Route path="/apps::b64" element={<Navigate to="/apps/base64-converter" replace />} />
+        <Route path="/apps::url" element={<Navigate to="/apps/url-converter" replace />} />
+        <Route path="/apps::ascii" element={<Navigate to="/apps/ascii-converter" replace />} />
+        <Route path="/apps::hash" element={<Navigate to="/apps/hash-generator" replace />} />
+        <Route path="/apps::uuid" element={<Navigate to="/apps/uuid-generator" replace />} />
+        <Route path="/apps::cpg" element={<Navigate to="/apps/color-palette-generator" replace />} />
+        <Route path="/apps::css" element={<Navigate to="/apps/css-unit-converter" replace />} />
+        <Route path="/apps::fng" element={<Navigate to="/apps/fantasy-name-generator" replace />} />
+        <Route path="/apps::dice" element={<Navigate to="/apps/dice-roller" replace />} />
+        {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
           element={
@@ -326,6 +341,7 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+
         <Route
           path="/apps/tournament-bracket"
           element={
