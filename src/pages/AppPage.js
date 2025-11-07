@@ -15,6 +15,11 @@ const apps = [
     title: 'Show my IP',
     description: 'Display your public IP address.',
   },
+  {
+    to: '/apps/tournament-bracket',
+    title: 'Tournament Bracket',
+    description: 'Create and manage tournament brackets.',
+  },
 ];
 
 function AppPage() {

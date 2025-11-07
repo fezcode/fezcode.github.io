@@ -19,6 +19,7 @@ import DndBookPage from '../pages/DndBookPage'; // New import
 import AppPage from '../pages/AppPage';
 import IpPage from '../pages/apps/IpPage';
 import WordCounterPage from '../pages/apps/WordCounterPage';
+import TournamentBracketPage from '../pages/apps/TournamentBracketPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -312,6 +313,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <WordCounterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/tournament-bracket"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <TournamentBracketPage />
             </motion.div>
           }
         />
