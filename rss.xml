@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 07 Nov 2025 20:15:14 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 07 Nov 2025 21:29:36 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 07 Nov 2025 20:15:14 GMT</pubDate>
+        <pubDate>Fri, 07 Nov 2025 21:29:36 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Find Minimum in Rotated Sorted Array]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 08 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Find Minimum in Rotated Sorted Array</h1>
+<p><a href="https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Demystifying Tailwind CSS]]></title>
             <description><![CDATA[[object Object]]]></description>

@@ -242,6 +242,15 @@
     "series": {
       "posts": [
         {
+          "slug": "find-minimum-in-rotated-sorted-array",
+          "title": "Find Minimum in Rotated Sorted Array",
+          "date": "2025-11-08",
+          "description": "LeetCode problem: Find Minimum in Rotated Sorted Array",
+          "tags": ["cs", "algorithms", "binary-search", "array"],
+          "category": "dev",
+          "filename": "/algos/find-minimum-in-rotated-sorted-array.txt"
+        },
+        {
           "slug": "lca",
           "title": "Lowest Common Ancestor with Binary Search Tree",
           "date": "2025-11-07",
