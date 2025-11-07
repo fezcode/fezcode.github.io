@@ -45,6 +45,15 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
       ? 'hover:bg-dnd-card-bg-hover'
       : 'hover:bg-takes-card-bg-hover';
 
+  const postTitleHoverColorClass =
+    category === 'dev'
+      ? 'group-hover:text-[var(--title-hover-dev)]'
+      : category === 'series'
+      ? 'group-hover:text-[var(--title-hover-series)]'
+      : category === 'd&d'
+      ? 'group-hover:text-[var(--title-hover-dnd)]'
+      : 'group-hover:text-[var(--title-hover-takes)]';
+
   return (
     <Link
       to={isSeries ? `/blog/${slug}` : `/blog/${slug}`}
@@ -67,7 +76,7 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
                 {series} - Part {seriesIndex}
               </span>
             )}
-            <h2 className="text-xl font-semibold text-white group-hover:text-title-hover group-hover:underline transition-colors">
+            <h2 className={`text-xl font-semibold text-white ${postTitleHoverColorClass} group-hover:underline transition-colors`}>
               {title}
             </h2>
           </div>
@@ -76,7 +85,7 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
               Update: {formattedUpdatedDate}
             </span>
           )}
-          <span className="ml-4 flex-shrink-0 text-sm font-medium text-primary-400 group-hover:text-title-hover group-hover:underline transition-colors">
+          <span className={`ml-4 flex-shrink-0 text-sm font-medium text-primary-400 ${postTitleHoverColorClass} group-hover:underline transition-colors`}>
             <span className="hidden sm:inline">{isSeries ? 'View Series' : 'Read post'}</span> &rarr;
           </span>
         </div>

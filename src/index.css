@@ -69,24 +69,29 @@ code {
 
 :root {
   /*dev card*/
-  --color-dev-badge: #345995;
-  --bg-dev-card: rgba(52, 89, 149, 0.3);
-  --bg-dev-card-hover: rgba(52, 89, 149, 0.55);
+  --color-dev-badge: #3d3d75;
+  --bg-dev-card: rgba(74, 78, 105, 0.3);
+  --bg-dev-card-hover: rgba(69, 75, 115, 0.55);
+  --title-hover-dev: #7b88dc;
+
 
   /*rant card*/
   --color-takes-badge: #065f46; /* emerald-800 */
   --bg-takes-card: rgba(6, 95, 70, 0.175);
   --bg-takes-card-hover: rgba(16, 185, 129, 0.275);
+  --title-hover-takes: #3CB371;
 
   /*series card*/
   --color-series-badge: #e11d48; /* rose-600 */
   --bg-series-card: rgba(225, 29, 72, 0.1);
   --bg-series-card-hover: rgba(225, 29, 72, 0.2);
+  --title-hover-series: #FF6347;
 
   /*dnd card*/
-  --color-dnd-badge: #583fa3; /* violet-400 */
-  --bg-dnd-card: rgba(139, 92, 246, 0.1);
-  --bg-dnd-card-hover: rgba(139, 92, 246, 0.2);
+  --color-dnd-badge: #AA4465;
+  --bg-dnd-card: rgba(170, 68, 101, 0.1);
+  --bg-dnd-card-hover: rgba(170, 68, 101, 0.2);
+  --title-hover-dnd: #D48090;
 
   /*fezccode colors*/
   --fzcdx-background: #ffffff;
