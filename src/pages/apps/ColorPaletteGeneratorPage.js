@@ -1,0 +1,114 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
+import colors from '../../config/colors';
+import usePageTitle from '../../utils/usePageTitle';
+import { useToast } from '../../hooks/useToast';
+
+function ColorPaletteGeneratorPage() {
+  usePageTitle('Color Palette Generator');
+  const [palette, setPalette] = useState([]);
+  const { addToast } = useToast();
+
+  const generateRandomHexColor = () => {
+    return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+  };
+
+  const generatePalette = () => {
+    const newPalette = Array.from({ length: 5 }, generateRandomHexColor);
+    setPalette(newPalette);
+  };
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        addToast({
+          title: 'Success',
+          message: `Copied ${text} to clipboard!`,
+          duration: 2000,
+        });
+      })
+      .catch(() => {
+        addToast({
+          title: 'Error',
+          message: 'Failed to copy!',
+          duration: 2000,
+        });
+      });
+  };
+
+  const cardStyle = {
+    backgroundColor: colors['app-alpha-10'],
+    borderColor: colors['app-alpha-50'],
+    color: colors.app,
+  };
+
+  return (
+    <div className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+        <Link
+          to="/apps"
+          className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon size={24} /> Back to Apps
+        </Link>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+          <span className="codex-color">fc</span>
+          <span className="separator-color">::</span>
+          <span className="apps-color">apps</span>
+          <span className="separator-color">::</span>
+          <span className="single-app-color">colors</span>
+        </h1>
+        <hr className="border-gray-700" />
+        <div className="flex justify-center items-center mt-16">
+          <div
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
+            style={cardStyle}
+          >
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
+              }}
+            ></div>
+            <div className="relative z-10 p-1">
+              <div className="flex justify-center gap-4 mb-4">
+                <button
+                  onClick={generatePalette}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"
+                  style={{
+                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+                    color: cardStyle.color,
+                    borderColor: cardStyle.borderColor,
+                    border: '1px solid',
+                    '--hover-bg-color': colors['app-alpha-50'],
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
+                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
+                >
+                  Generate New Palette
+                </button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
+                {palette.map((color, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center p-4 rounded-md cursor-pointer transition-transform duration-200 hover:scale-105"
+                    style={{ backgroundColor: color }}
+                    onClick={() => copyToClipboard(color)}
+                  >
+                    <span className="text-white font-semibold text-shadow-sm" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>{color}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default ColorPaletteGeneratorPage;
