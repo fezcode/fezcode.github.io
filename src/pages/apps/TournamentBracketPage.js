@@ -301,7 +301,7 @@ function TournamentBracketPage() {
                         />
                         <button
                           onClick={addCompetitor}
-                          className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
+                          className={`flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                             ${competitors.length >= 64
                               ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                               : `bg-[${colors.app}] text-white hover:bg-[${colors.app}]`
