@@ -27,24 +27,60 @@ const FantasyNameGeneratorPage = () => {
   const generateName = () => {
     const nameParts = {
       human: {
-        prefixes: ['Ael', 'Bor', 'Cael', 'Dra', 'El', 'Fen', 'Gor', 'Hal', 'Isol', 'Jor', 'Kal', 'Lor', 'Mor', 'Nor', 'Orin', 'Per', 'Quinn', 'Roric', 'Ser', 'Thorn', 'Ulric', 'Val', 'Wyn'],
-        middles: ['an', 'den', 'ric', 'wyn', 'gar', 'lin', 'dor', 'mar', 'van', 'thar', 'mond', 'bert', 'fred', 'gorn', 'hald', 'kiel', 'land', 'morn', 'niel', 'rath', 'sian', 'tian', 'vyn'],
-        suffixes: ['us', 'a', 'on', 'en', 'or', 'yn', 'ia', 'eth', 'an', 'ar', 'da', 'el', 'is', 'ra', 'os', 'er', 'in', 'of', 'um', 'ald', 'ard', 'bert', 'mond', 'red', 'son', 'ton'],
+        prefixes: [
+          'Ael', 'Bor', 'Cael', 'Dra', 'El', 'Fen', 'Gor', 'Hal', 'Isol', 'Jor', 'Kal', 'Lor', 'Mor', 'Nor', 'Orin', 'Per', 'Quinn', 'Roric', 'Ser', 'Thorn', 'Ulric', 'Val', 'Wyn',
+          'Ald', 'Bran', 'Cor', 'Dain', 'Ed', 'Finn', 'Gareth', 'Haldor', 'Ivar', 'Kaelen', 'Leif', 'Magnus', 'Niall', 'Odin', 'Perrin', 'Ragnar', 'Sten', 'Torvin', 'Ulf', 'Vance', 'Wulf'
+        ],
+        middles: [
+          'an', 'den', 'ric', 'wyn', 'gar', 'lin', 'dor', 'mar', 'van', 'thar', 'mond', 'bert', 'fred', 'gorn', 'hald', 'kiel', 'land', 'morn', 'niel', 'rath', 'sian', 'tian', 'vyn',
+          'ard', 'ast', 'ber', 'dal', 'dred', 'eon', 'fyn', 'glen', 'hark', 'ing', 'kyn', 'lar', 'mond', 'nys', 'oth', 'pyr', 'quen', 'ryn', 'syl', 'tav', 'und', 'ver', 'wynn'
+        ],
+        suffixes: [
+          'us', 'a', 'on', 'en', 'or', 'yn', 'ia', 'eth', 'an', 'ar', 'da', 'el', 'is', 'ra', 'os', 'er', 'in', 'of', 'um', 'ald', 'ard', 'bert', 'mond', 'red', 'son', 'ton',
+          'born', 'brook', 'field', 'ford', 'ham', 'hurst', 'ley', 'mont', 'ridge', 'shire', 'stead', 'ton', 'vale', 'wood', 'wick', 'worth', 'stone', 'shield', 'blade', 'heart'
+        ],
       },
       elf: {
-        prefixes: ['Aer', 'Ael', 'El', 'Fael', 'Lae', 'Lir', 'Sil', 'Thran', 'Val', 'Xyl', 'Yl', 'Zyl'],
-        middles: ['an', 'ara', 'en', 'iel', 'ion', 'ith', 'or', 'wen', 'yn', 'dor', 'mar', 'van', 'thal', 'rion', 'syl', 'tir'],
-        suffixes: ['as', 'a', 'el', 'en', 'ia', 'ion', 'is', 'or', 'os', 'ra', 'us', 'wyn', 'ys', 'eth', 'iel', 'in', 'on', 'ril', 'wen'],
+        prefixes: [
+          'Aer', 'Ael', 'El', 'Fael', 'Lae', 'Lir', 'Sil', 'Thran', 'Val', 'Xyl', 'Yl', 'Zyl',
+          'Aen', 'Alat', 'Aran', 'Bael', 'Caelen', 'Dae', 'Eil', 'Fin', 'Gael', 'Hael', 'Ili', 'Jor', 'Kael', 'Loth', 'Mael', 'Nym', 'Olen', 'Pael', 'Quen', 'Riel', 'Sael', 'Tael', 'Ulen', 'Ven', 'Wyl'
+        ],
+        middles: [
+          'an', 'ara', 'en', 'iel', 'ion', 'ith', 'or', 'wen', 'yn', 'dor', 'mar', 'van', 'thal', 'rion', 'syl', 'tir',
+          'aen', 'al', 'ath', 'dar', 'dran', 'eon', 'fiel', 'glen', 'hian', 'ian', 'ith', 'lan', 'lin', 'mir', 'nys', 'oth', 'phyr', 'quel', 'ryn', 'sian', 'tian', 'und', 'vyn', 'wen'
+        ],
+        suffixes: [
+          'as', 'a', 'el', 'en', 'ia', 'ion', 'is', 'or', 'os', 'ra', 'us', 'wyn', 'ys', 'eth', 'iel', 'in', 'on', 'ril', 'wen',
+          'dore', 'fiel', 'las', 'mar', 'nys', 'ore', 'riel', 'sil', 'thas', 'van', 'wen', 'wyn', 'ys', 'aen', 'dar', 'ion', 'ith', 'lan', 'lin', 'mir'
+        ],
       },
       dwarf: {
-        prefixes: ['Bor', 'Dur', 'Gim', 'Kael', 'Thrain', 'Bal', 'Dwal', 'Fili', 'Kili', 'Oin', 'Gloin', 'Thor', 'Bif', 'Bof', 'Bomb'],
-        middles: ['in', 'grim', 'li', 'son', 'gar', 'rek', 'und', 'orn', 'rak', 'dal', 'mar', 'stone', 'beard', 'hammer', 'axe'],
-        suffixes: ['son', 'in', 'grim', 'li', 'rek', 'und', 'orn', 'rak', 'dal', 'mar', 'stone', 'beard', 'hammer', 'axe', 'foot', 'hand', 'shield'],
+        prefixes: [
+          'Bor', 'Dur', 'Gim', 'Kael', 'Thrain', 'Bal', 'Dwal', 'Fili', 'Kili', 'Oin', 'Gloin', 'Thor', 'Bif', 'Bof', 'Bomb',
+          'Bard', 'Brok', 'Dori', 'Farin', 'Flint', 'Gror', 'Haldor', 'Iron', 'Khard', 'Lodur', 'Mordin', 'Nain', 'Orik', 'Roric', 'Stone', 'Throk', 'Ulfgar', 'Volk'
+        ],
+        middles: [
+          'in', 'grim', 'li', 'son', 'gar', 'rek', 'und', 'orn', 'rak', 'dal', 'mar', 'stone', 'beard', 'hammer', 'axe',
+          'axe', 'beard', 'braid', 'breaker', 'delver', 'fist', 'forge', 'hand', 'heart', 'helm', 'hide', 'iron', 'rock', 'shield', 'stone', 'stride', 'tamer', 'thane', 'hammer'
+        ],
+        suffixes: [
+          'son', 'in', 'grim', 'li', 'rek', 'und', 'orn', 'rak', 'dal', 'mar', 'stone', 'beard', 'hammer', 'axe', 'foot', 'hand', 'shield',
+          'born', 'brook', 'delver', 'dottir', 'fist', 'forge', 'hand', 'heart', 'helm', 'hide', 'iron', 'rock', 'shield', 'son', 'stone', 'stride', 'tamer', 'thane', 'hammer'
+        ],
       },
       orc: {
-        prefixes: ['Grak', 'Thorg', 'Ur', 'Morg', 'Grish', 'Azog', 'Bolg', 'Drog', 'Grog', 'Karg', 'Maug', 'Snag'],
-        middles: ['ash', 'uk', 'og', 'nar', 'gul', 'rak', 'oth', 'fang', 'skull', 'blood', 'hide', 'tooth'],
-        suffixes: ['ak', 'ug', 'osh', 'uk', 'a', 'ar', 'da', 'er', 'ish', 'ok', 'or', 'oth', 'ra', 'rag', 'rot', 'ruk', 'um', 'un', 'ur'],
+        prefixes: [
+          'Grak', 'Thorg', 'Ur', 'Morg', 'Grish', 'Azog', 'Bolg', 'Drog', 'Grog', 'Karg', 'Maug', 'Snag',
+          'Blud', 'Drak', 'Frak', 'Gnar', 'Harg', 'Krag', 'Lurg', 'Mulg', 'Oog', 'Ragn', 'Skarg', 'Trog', 'Vorg', 'Zog'
+        ],
+        middles: [
+          'ash', 'uk', 'og', 'nar', 'gul', 'rak', 'oth', 'fang', 'skull', 'blood', 'hide', 'tooth',
+          'bash', 'bone', 'gut', 'head', 'jaw', 'maul', 'rend', 'rip', 'snarl', 'smash', 'spike', 'tusk', 'gore', 'flesh'
+        ],
+        suffixes: [
+          'ak', 'ug', 'osh', 'uk', 'a', 'ar', 'da', 'er', 'ish', 'ok', 'or', 'oth', 'ra', 'rag', 'rot', 'ruk', 'um', 'un', 'ur',
+          'blood', 'fang', 'fist', 'hide', 'killer', 'maul', 'ripper', 'scar', 'skull', 'smasher', 'tooth', 'axe', 'blade', 'gut', 'jaw'
+        ],
       },
     };
 
@@ -136,7 +172,7 @@ const FantasyNameGeneratorPage = () => {
               </button>
               {generatedName && (
                 <div className="mt-6 p-4 bg-gray-700 rounded-md text-center flex items-center justify-center space-x-2">
-                  <p className="text-xl font-arvo font-normal text-blue-400">{generatedName}</p>
+                  <p className="text-xl font-arvo font-normal text-rose-400">{generatedName}</p>
                   <button
                     onClick={handleCopy}
                     className="p-2 rounded-full bg-gray-600 hover:bg-gray-500 transition-colors duration-200"
