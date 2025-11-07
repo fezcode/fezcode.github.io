@@ -73,24 +73,6 @@
     "updated": "2025-10-30"
   },
   {
-    "artist": "De La Soul",
-    "category": "Music",
-    "date": "2025-10-29",
-    "link": "https://www.youtube.com/watch?v=radJQyaC5kY",
-    "rating": 5,
-    "slug": "de-la-soul-stakes-is-high",
-    "title": "Stakes Is High"
-  },
-  {
-    "artist": "Special Ed",
-    "category": "Music",
-    "date": "2025-10-06",
-    "link": "https://www.youtube.com/watch?v=2EQ08UW87BM",
-    "rating": 5,
-    "slug": "special-ed-neva-go-back",
-    "title": "Neva Go Back"
-  },
-  {
     "category": "Game",
     "date": "2025-10-28",
     "link": "https://store.steampowered.com/app/532790/Vampire_The_Masquerade__Bloodlines_2/",
