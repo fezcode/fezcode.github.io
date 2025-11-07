@@ -34,18 +34,14 @@ module.exports = {
   'title-hover': '#fdd4a6', // orange-200
   'markdown-title-color': '#fed7aa', // orange-200
   'markdown-hx-color': '#ffedd5', // orange-100
-  'dev-card-bg': 'rgba(68, 64, 59, 0.3)', // stone-700
-  'dev-card-bg-hover': 'rgba(68, 64, 59, 0.55)', // stone-700/20
-  'takes-card-bg': 'rgba(6, 95, 70, 0.175)', // emerald-900/15
-  'takes-card-bg-hover': 'rgba(16, 185, 129, 0.275)', // emerald-500/20
-  'series-card-bg': 'rgba(225, 29, 72, 0.1)', // rose-600/10
-  'series-card-bg-hover': 'rgba(225, 29, 72, 0.2)', // rose-600/20
-  'dnd-card-bg': 'rgba(139, 92, 246, 0.1)', // violet-500/10
-  'dnd-card-bg-hover': 'rgba(139, 92, 246, 0.2)', // violet-500/20
-  'color-dev-badge': '#10b981', // emerald-500
-  'color-takes-badge': '#f97316', // orange-500
-  'color-series-badge': '#ec4899', // pink-500
-  'color-dnd-badge': '#a78bfa', // violet-400
+  'dev-card-bg': 'var(--bg-dev-card)',
+  'dev-card-bg-hover': 'var(--bg-dev-card-hover)',
+  'takes-card-bg': 'var(--bg-takes-card)',
+  'takes-card-bg-hover': 'var(--bg-takes-card-hover)',
+  'series-card-bg': 'var(--bg-series-card)',
+  'series-card-bg-hover': 'var(--bg-series-card-hover)',
+  'dnd-card-bg': 'var(--bg-dnd-card)',
+  'dnd-card-bg-hover': 'var(--bg-dnd-card-hover)',
   'book-alpha-10': 'rgba(158, 197, 171, 0.1)',
   'book-alpha-50': 'rgba(158, 197, 171, 0.5)',
   'movie-alpha-10': 'rgba(199, 81, 70, 0.1)',

@@ -102,7 +102,7 @@ function IpPage() {
                       backgroundColor: 'rgba(0, 0, 0, 0.2)',
                       color: cardStyle.color,
                       borderColor: cardStyle.borderColor,
-                      '--hover-bg-color': colors['article-alpha-50'],
+                      '--hover-bg-color': colors['app-alpha-50'],
                     }}
                     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
                     onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}

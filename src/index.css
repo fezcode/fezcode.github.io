@@ -68,10 +68,27 @@ code {
 }
 
 :root {
-  --color-dev-badge: #44403c; /* stone-700 */
+  /*dev card*/
+  --color-dev-badge: #345995;
+  --bg-dev-card: rgba(52, 89, 149, 0.3);
+  --bg-dev-card-hover: rgba(52, 89, 149, 0.55);
+
+  /*rant card*/
   --color-takes-badge: #065f46; /* emerald-800 */
+  --bg-takes-card: rgba(6, 95, 70, 0.175);
+  --bg-takes-card-hover: rgba(16, 185, 129, 0.275);
+
+  /*series card*/
   --color-series-badge: #e11d48; /* rose-600 */
+  --bg-series-card: rgba(225, 29, 72, 0.1);
+  --bg-series-card-hover: rgba(225, 29, 72, 0.2);
+
+  /*dnd card*/
   --color-dnd-badge: #583fa3; /* violet-400 */
+  --bg-dnd-card: rgba(139, 92, 246, 0.1);
+  --bg-dnd-card-hover: rgba(139, 92, 246, 0.2);
+
+  /*fezccode colors*/
   --fzcdx-background: #ffffff;
   --fzcdx-text-primary: #2d2d2d;
   --fzcdx-text-secondary: #4b5563;
@@ -79,6 +96,7 @@ code {
   --fzcdx-secondary: #fb923c;
   --fzcdx-accent: #34d399;
   --fzcdx-spanner: #e89b5d;
+
 }
 
 .codex-color {
