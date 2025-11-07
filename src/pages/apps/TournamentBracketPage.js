@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
 import colors from '../../config/colors';
+import '../../styles/app-buttons.css';
 
 function TournamentBracketPage() {
   usePageTitle('Tournament Bracket');
@@ -16,10 +17,6 @@ function TournamentBracketPage() {
   };
 
   // const detailTextColor = colors['app-light'];
-
-  const buttonStyle = {
-    borderColor: colors['app-alpha-50'],
-  };
 
   const [competitors, setCompetitors] = useState([]);
   const [newCompetitor, setNewCompetitor] = useState('');

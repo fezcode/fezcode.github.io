@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import '../../styles/app-buttons.css';
 
 function UrlConverterPage() {
   usePageTitle('URL Encoder/Decoder');
@@ -107,31 +108,25 @@ function UrlConverterPage() {
               <div className="flex justify-center gap-4 mb-4">
                 <button
                   onClick={encodeUrl}
-                  className="px-6 py-2 rounded-md text-lg font-semibold transition-colors duration-300 ease-in-out"
+                  className="px-6 py-2 rounded-md text-lg font-semibold transition-colors duration-300 ease-in-out app-button-hover"
                   style={{
                     backgroundColor: 'rgba(0, 0, 0, 0.2)',
                     color: cardStyle.color,
                     borderColor: cardStyle.borderColor,
                     border: '1px solid',
-                    '--hover-bg-color': colors['app-alpha-50'],
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
                 >
                   Encode URL
                 </button>
                 <button
                   onClick={decodeUrl}
-                  className="px-6 py-2 rounded-md text-lg font-semibold transition-colors duration-300 ease-in-out"
+                  className="px-6 py-2 rounded-md text-lg font-semibold transition-colors duration-300 ease-in-out app-button-hover"
                   style={{
                     backgroundColor: 'rgba(0, 0, 0, 0.2)',
                     color: cardStyle.color,
                     borderColor: cardStyle.borderColor,
                     border: '1px solid',
-                    '--hover-bg-color': colors['app-alpha-50'],
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
                 >
                   Decode URL
                 </button>

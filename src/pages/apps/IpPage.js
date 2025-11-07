@@ -4,6 +4,7 @@ import { ArrowLeftIcon, Clipboard as ClipboardIcon } from '@phosphor-icons/react
 import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import '../../styles/app-buttons.css';
 
 function IpPage() {
   usePageTitle('Show my IP');
@@ -97,15 +98,12 @@ function IpPage() {
                 <div className="mt-6 flex justify-center">
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-2 text-lg font-semibold px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out"
+                    className="flex items-center gap-2 text-lg font-semibold px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover"
                     style={{
                       backgroundColor: 'rgba(0, 0, 0, 0.2)',
                       color: cardStyle.color,
                       borderColor: cardStyle.borderColor,
-                      '--hover-bg-color': colors['app-alpha-50'],
                     }}
-                    onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
-                    onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
                   >
                     <ClipboardIcon size={24} />
                     Copy

@@ -6,6 +6,7 @@ import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import Dice from '../../components/Dice';
 import './DiceRollerPage.css'; // Import the CSS for animations
+import '../../styles/app-buttons.css';
 
 const DiceRollerPage = () => {
   usePageTitle('Dice Roller');

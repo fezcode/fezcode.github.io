@@ -4,6 +4,7 @@ import { ArrowLeftIcon, UploadSimpleIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import '../../styles/app-buttons.css';
 
 function WordCounterPage() {
   usePageTitle('Word Counter');
@@ -98,15 +99,12 @@ function WordCounterPage() {
                   <p>Paragraphs: {counts.paragraphs}</p>
                 </div>
                 <label
-                  className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out cursor-pointer"
+                  className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover cursor-pointer"
                   style={{
                     backgroundColor: 'rgba(0, 0, 0, 0.2)',
                     color: cardStyle.color,
                     borderColor: cardStyle.borderColor,
-                    '--hover-bg-color': colors['article-alpha-50'],
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'var(--hover-bg-color)'}
-                  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.2)'}
                 >
                   <UploadSimpleIcon size={24} />
                   Upload File
