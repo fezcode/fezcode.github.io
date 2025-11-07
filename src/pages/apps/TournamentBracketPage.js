@@ -87,6 +87,29 @@ function TournamentBracketPage() {
   const [tournamentStarted, setTournamentStarted] = useState(false);
   const [bracket, setBracket] = useState(null);
   const [advancedMatches, setAdvancedMatches] = useState({});
+  const [currentRoundIndex, setCurrentRoundIndex] = useState(0);
+  const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
+
+  useEffect(() => {
+    if (!bracket) return;
+
+    let foundCurrent = false;
+    for (let r = 0; r < bracket.length; r++) {
+      for (let m = 0; m < bracket[r].length; m++) {
+        if (!advancedMatches[`${r}-${m}`]) {
+          setCurrentRoundIndex(r);
+          setCurrentMatchIndex(m);
+          foundCurrent = true;
+          return;
+        }
+      }
+    }
+    if (!foundCurrent) {
+      // Tournament is complete, or no matches to advance
+      setCurrentRoundIndex(-1); // Indicate no current round
+      setCurrentMatchIndex(-1); // Indicate no current match
+    }
+  }, [bracket, advancedMatches]);
 
   const startTournament = () => {
     setTournamentStarted(true);
@@ -194,10 +217,16 @@ function TournamentBracketPage() {
 
     const newBracket = JSON.parse(JSON.stringify(currentBracket));
     let changed = false;
+    let updatedAdvancedMatches = { ...advancedMatches }; // Create a mutable copy
 
     newBracket[0].forEach((match, matchIndex) => {
       if (match[0] && match[1] === null) {
         const winner = match[0];
+        const loser = 'Bye'; // Explicitly define 'Bye' as the loser
+
+        // Update advancedMatches for this bye match
+        updatedAdvancedMatches[`0-${matchIndex}`] = { winner, loser };
+
         if (0 + 1 < newBracket.length) {
           const nextRoundIndex = 0 + 1;
           const nextMatchIndex = Math.floor(matchIndex / 2);
@@ -214,6 +243,8 @@ function TournamentBracketPage() {
     if (changed) {
       setBracket(newBracket);
     }
+    // Only update advancedMatches once after the loop
+    setAdvancedMatches(updatedAdvancedMatches);
   };
 
   const [compactLayout, setCompactLayout] = useState(false);
@@ -376,10 +407,10 @@ function TournamentBracketPage() {
                   </div>
                   <div className="flex space-x-4 overflow-x-auto pb-4">
                     {bracket && bracket.map((round, roundIndex) => (
-                      <div key={roundIndex} className={`flex flex-col ${compactLayout ? 'space-y-2' : 'space-y-4'} min-w-max flex-shrink-0`}>
+                      <div key={roundIndex} className={`flex flex-col ${compactLayout ? 'space-y-2' : 'space-y-4'} min-w-max flex-shrink-0 ${roundIndex === currentRoundIndex ? 'border-2 border-yellow-400 p-2 rounded-lg' : ''}`}>
                         <h3 className="text-xl font-bold">Round {roundIndex + 1}</h3>
                         {round.map((match, matchIndex) => (
-                          <div key={matchIndex} className={`group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden w-80 ${compactLayout ? 'min-h-[100px]' : 'h-full'}`} style={cardStyle}>
+                          <div key={matchIndex} className={`group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden w-80 ${compactLayout ? 'min-h-[100px]' : 'h-full'} my-2 ${roundIndex === currentRoundIndex && matchIndex === currentMatchIndex ? 'border-2 border-yellow-400' : ''}`} style={cardStyle}>
                             <div className="flex justify-between items-center mb-2">
                               <div className="flex items-center gap-2">
                                 <input
@@ -389,11 +420,11 @@ function TournamentBracketPage() {
                                   onChange={(e) => handleScoreChange(roundIndex, matchIndex, 0, e.target.value)}
                                   disabled={!match[0] || !match[1]}
                                 />
-                                <span className={`break-words ${match[1] === null ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[0] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[0] ? 'text-gray-500 line-through' : ''}`}>{match[0] || 'TBD'}</span>
+                                <span className={`break-words ${match[0] && (match[1] === null ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[0] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[0] ? 'text-gray-500 line-through' : '')}`}>{match[0] || 'TBD'}</span>
                               </div>
                               <span>vs</span>
                               <div className="flex items-center gap-2">
-                                <span className={`break-words ${match[1] === null ? 'text-gray-500 line-through' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[1] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[1] ? 'text-gray-500 line-through' : ''}`}>{match[1] || (roundIndex === 0 ? 'Bye' : 'TBD')}</span>
+                                <span className={`break-words ${match[1] && (match[1] === null ? 'text-gray-500 line-through' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[1] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[1] ? 'text-gray-500 line-through' : '')}`}>{match[1] || (roundIndex === 0 ? 'Bye' : 'TBD')}</span>
                                 <input
                                   type="number"
                                   className="bg-gray-700 text-white p-1 rounded-lg w-16"
