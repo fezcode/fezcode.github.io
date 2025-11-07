@@ -1,0 +1,56 @@
+.dice-animation-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Changed to center for better aesthetics when fewer than 10 dice */
+  gap: 10px;
+  margin-top: 20px;
+  max-width: 710px; /* (60px width + 10px gap) * 10 dice - 10px (last gap) = 700px. Added 10px for padding/margin tolerance */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dice-face {
+  flex-shrink: 0; /* Prevent dice from shrinking */
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  background-color: #333;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.dice-face.rolling {
+  animation: roll 1s infinite linear;
+}
+
+@keyframes roll {
+  0% {
+    transform: rotate(0deg) scale(1);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(90deg) scale(1.1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: rotate(180deg) scale(1);
+    opacity: 1;
+  }
+  75% {
+    transform: rotate(270deg) scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+    opacity: 1;
+  }
+}
+
+.roll-button:not(:disabled):hover {
+  background-color: rgba(158, 197, 171, 0.5) !important;
+}

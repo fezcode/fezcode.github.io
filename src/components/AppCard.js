@@ -4,7 +4,7 @@ import { ArrowRight } from '@phosphor-icons/react';
 import colors from '../config/colors';
 
 const AppCard = ({ app }) => {
-  const { to, title, description } = app;
+  const { to, title, description, icon: Icon } = app;
 
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],
@@ -37,7 +37,10 @@ const AppCard = ({ app }) => {
           }}
         ></div>
         <div>
-          <h2 className="text-xl font-normal transition-colors" style={{ color: cardStyle.color }}>{title}</h2>
+          <h2 className="text-xl font-normal transition-colors flex items-center gap-2" style={{ color: cardStyle.color }}>
+            {Icon && <Icon size={24} />}
+            {title}
+          </h2>
           <p className="mt-2" style={{ color: detailTextColor }}>{description}</p>
         </div>
         <div className="flex justify-end items-center mt-4">
