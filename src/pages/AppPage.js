@@ -50,6 +50,11 @@ const apps = [
     title: 'Color Palette Generator',
     description: 'Generate random color palettes.',
   },
+  {
+    to: '/apps/css-unit-converter',
+    title: 'CSS Unit Converter',
+    description: 'Convert between px, em, rem, vw, vh, and % units.',
+  },
 ];
 
 function AppPage() {

@@ -15,6 +15,7 @@ function UuidGeneratorPage() {
       // RFC 4122 v4 UUID generation
       const uuidV4 = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
         const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16; // Use crypto.getRandomValues for better randomness
+        // eslint-disable-next-line no-mixed-operators
         const v = c === 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
       });

@@ -27,6 +27,7 @@ import AsciiConverterPage from '../pages/apps/AsciiConverterPage';
 import HashGeneratorPage from '../pages/apps/HashGeneratorPage';
 import UuidGeneratorPage from '../pages/apps/UuidGeneratorPage';
 import ColorPaletteGeneratorPage from '../pages/apps/ColorPaletteGeneratorPage';
+import CssUnitConverterPage from '../pages/apps/CssUnitConverterPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -432,6 +433,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <ColorPaletteGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/css-unit-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <CssUnitConverterPage />
             </motion.div>
           }
         />
