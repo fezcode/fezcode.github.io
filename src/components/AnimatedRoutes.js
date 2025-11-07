@@ -21,6 +21,12 @@ import IpPage from '../pages/apps/IpPage';
 import WordCounterPage from '../pages/apps/WordCounterPage';
 import TournamentBracketPage from '../pages/apps/TournamentBracketPage';
 import CaseConverterPage from '../pages/apps/CaseConverterPage';
+import Base64ConverterPage from '../pages/apps/Base64ConverterPage';
+import UrlConverterPage from '../pages/apps/UrlConverterPage';
+import AsciiConverterPage from '../pages/apps/AsciiConverterPage';
+import HashGeneratorPage from '../pages/apps/HashGeneratorPage';
+import UuidGeneratorPage from '../pages/apps/UuidGeneratorPage';
+import ColorPaletteGeneratorPage from '../pages/apps/ColorPaletteGeneratorPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -342,6 +348,90 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <CaseConverterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/base64-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Base64ConverterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/url-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <UrlConverterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/ascii-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <AsciiConverterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/hash-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <HashGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/uuid-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <UuidGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/color-palette-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <ColorPaletteGeneratorPage />
             </motion.div>
           }
         />

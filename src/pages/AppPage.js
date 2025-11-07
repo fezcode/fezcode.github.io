@@ -20,11 +20,36 @@ const apps = [
     title: 'Case Converter',
     description: 'Convert text to different cases (e.g., uppercase, lowercase, camelCase).',
   },
-  // {
-  //   to: '/apps/ip',
-  //   title: 'Show my IP',
-  //   description: 'Display your public IP address.',
-  // },
+  {
+    to: '/apps/base64-converter',
+    title: 'Base64 Converter',
+    description: 'Encode and decode text to and from Base64 format.',
+  },
+  {
+    to: '/apps/url-converter',
+    title: 'URL Encoder/Decoder',
+    description: 'Encode and decode URL strings.',
+  },
+  {
+    to: '/apps/ascii-converter',
+    title: 'Text to ASCII Converter',
+    description: 'Convert text to ASCII codes and vice-versa.',
+  },
+  {
+    to: '/apps/hash-generator',
+    title: 'Hash Generator',
+    description: 'Generate SHA1, SHA256, and SHA512 hashes from text.',
+  },
+  {
+    to: '/apps/uuid-generator',
+    title: 'UUID Generator',
+    description: 'Generate UUID v4.',
+  },
+  {
+    to: '/apps/color-palette-generator',
+    title: 'Color Palette Generator',
+    description: 'Generate random color palettes.',
+  },
 ];
 
 function AppPage() {
