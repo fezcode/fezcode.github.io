@@ -30,6 +30,7 @@ import ColorPaletteGeneratorPage from '../pages/apps/ColorPaletteGeneratorPage';
 import CssUnitConverterPage from '../pages/apps/CssUnitConverterPage';
 import FantasyNameGeneratorPage from '../pages/apps/FantasyNameGeneratorPage';
 import DiceRollerPage from '../pages/apps/DiceRollerPage';
+import PickerWheelPage from '../pages/apps/PickerWheelPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -312,6 +313,7 @@ function AnimatedRoutes() {
         <Route path="/apps::css" element={<Navigate to="/apps/css-unit-converter" replace />} />
         <Route path="/apps::fng" element={<Navigate to="/apps/fantasy-name-generator" replace />} />
         <Route path="/apps::dice" element={<Navigate to="/apps/dice-roller" replace />} />
+        <Route path="/apps::pw" element={<Navigate to="/apps/picker-wheel" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -493,6 +495,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <DiceRollerPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/picker-wheel"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <PickerWheelPage />
             </motion.div>
           }
         />

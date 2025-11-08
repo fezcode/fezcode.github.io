@@ -5,7 +5,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import Dice from '../../components/Dice';
-import './DiceRollerPage.css'; // Import the CSS for animations
+import '../../styles/DiceRollerPage.css'; // Import the CSS for animations
 import '../../styles/app-buttons.css';
 
 const DiceRollerPage = () => {

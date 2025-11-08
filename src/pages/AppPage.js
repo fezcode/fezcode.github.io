@@ -6,6 +6,12 @@ import usePageTitle from '../utils/usePageTitle';
 
 const apps = [
   {
+    to: '/apps/picker-wheel',
+    title: 'Picker Wheel',
+    description: 'A spinning wheel to pick a random winner from a list of entries.',
+    icon: DiceSix,
+  },
+  {
     to: '/apps/tournament-bracket',
     title: 'Tournament Bracket',
     description: 'Create and manage tournament brackets.',
