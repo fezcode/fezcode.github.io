@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed, ShieldCheck } from '@phosphor-icons/react';
 import AppCard from '../components/AppCard';
 import usePageTitle from '../utils/usePageTitle';
 
 const apps = [
+  {
+    to: '/apps/codename-generator',
+    title: 'Codename Generator',
+    description: 'Generate cool, spy-ish project names.',
+    icon: ShieldCheck,
+  },
   {
     to: '/apps/picker-wheel',
     title: 'Picker Wheel',

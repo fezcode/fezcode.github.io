@@ -2,6 +2,8 @@
 
 In this post, we'll take a deep dive into the implementation of the Picker Wheel app, a fun and interactive way to pick a random winner from a list of entries. We'll explore how it's built using React, the Canvas API, and Tailwind CSS, and we'll cover the key concepts and techniques used in its development.
 
+You can play with it here [apps::pw](/#/apps::pw)
+
 ## The Canvas Wheel
 
 The heart of the Picker Wheel is the wheel itself, which is drawn using the HTML5 Canvas API. The canvas provides a powerful and flexible way to draw graphics and animations, and it's perfect for creating the dynamic and interactive wheel we need.
@@ -209,4 +211,3 @@ The app uses a flexbox layout to arrange the wheel and the entry list side-by-si
 ## Conclusion
 
 The Picker Wheel app is a fun and interactive way to pick a random winner from a list of entries. It's built using a combination of React, the Canvas API, and Tailwind CSS, and it demonstrates a variety of concepts and techniques used in modern web development.
-
