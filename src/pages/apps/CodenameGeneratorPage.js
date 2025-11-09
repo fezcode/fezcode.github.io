@@ -80,7 +80,7 @@ const CodenameGeneratorPage = () => {
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
           <span className="separator-color">::</span>
-          <span className="single-app-color">codename-generator</span>
+          <span className="single-app-color">cg</span>
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
@@ -100,7 +100,20 @@ const CodenameGeneratorPage = () => {
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Codename Generator </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="flex flex-col items-center gap-8">
-                <div className="text-4xl text-app font-arvo font-bold text-center h-16 mt-12">{codename}</div>
+                <div className="relative text-4xl text-rose-600 font-bold text-center h-16 mt-12">
+                  <div
+                    className="absolute top-0 left-0 w-full h-full text-stone-950"
+                    style={{ fontFamily: 'Playfair Display, serif', transition: 'all 0.5s ease-in-out', transform: 'translate(4px, 4px)' }}
+                  >
+                    {codename}
+                  </div>
+                  <div
+                    className="relative"
+                    style={{ fontFamily: 'Playfair Display, serif', transition: 'all 0.5s ease-in-out' }}
+                  >
+                    {codename}
+                  </div>
+                </div>
                 <div className="flex gap-4">
                   <button
                     onClick={generateCodename}
