@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import '../styles/PickerWheel.css';
 import colors from '../config/colors';
 import { Trash } from '@phosphor-icons/react';
@@ -15,11 +15,11 @@ const PickerWheel = () => {
   const newEntryInputRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const colorPalette = [
+  const colorPalette = useMemo(() => [
     "#FDE2E4", "#E2ECE9", "#BEE1E6", "#F0EFEB", "#DFE7FD", "#CDDAFD", "#EAD5E6", "#F4C7C3", "#D6E2E9", "#B9E2E6",
     "#F9D8D6", "#D4E9E6", "#A8DADC", "#E9E4F2", "#D0D9FB", "#C0CFFB", "#E3C8DE", "#F1BDBD", "#C9D5DE", "#A1D5DB",
     "#F6C4C1", "#C1E0DA", "#92D2D2", "#E2DDF0", "#C3CEFA", "#B3C4FA", "#DBBBD1", "#EDB3B0", "#BCC8D3", "#8DCED1"
-  ];
+  ], []);
 
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],
@@ -27,21 +27,7 @@ const PickerWheel = () => {
     color: colors.app,
   };
 
-  useEffect(() => {
-    drawWheel();
-  }, [entries, rotation]);
-
-  const getColorData = (color) => {
-    const canvas = document.createElement('canvas');
-    canvas.width = 1;
-    canvas.height = 1;
-    const ctx = canvas.getContext('2d');
-    ctx.fillStyle = color;
-    ctx.fillRect(0, 0, 1, 1);
-    return ctx.getImageData(0, 0, 1, 1).data;
-  }
-
-  const drawWheel = () => {
+  const drawWheel = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -72,7 +58,21 @@ const PickerWheel = () => {
       ctx.restore();
     }
     ctx.restore();
-  };
+  }, [entries, rotation, colorPalette]);
+
+  useEffect(() => {
+    drawWheel();
+  }, [drawWheel]);
+
+  const getColorData = (color) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 1, 1);
+    return ctx.getImageData(0, 0, 1, 1).data;
+  }
 
   const addEntry = () => {
     if (newEntry.trim() && entries.length < 30) {
@@ -139,16 +139,6 @@ const PickerWheel = () => {
       animationFrameId.current = requestAnimationFrame(animate);
     }
   };
-
-  const reset = () => {
-    setWinner(null);
-  }
-
-  const clearEntries = () => {
-    setEntries([]);
-    setWinner(null);
-    setRotation(0);
-  }
 
   const handleSaveList = (list) => {
     const newEntries = list.split('\n').map(entry => entry.trim()).filter(entry => entry);
