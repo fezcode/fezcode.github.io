@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed } from '@phosphor-icons/react';
 import AppCard from '../components/AppCard';
 import usePageTitle from '../utils/usePageTitle';
 
@@ -9,7 +9,7 @@ const apps = [
     to: '/apps/picker-wheel',
     title: 'Picker Wheel',
     description: 'A spinning wheel to pick a random winner from a list of entries.',
-    icon: DiceSix,
+    icon: CircleDashed,
   },
   {
     to: '/apps/tournament-bracket',

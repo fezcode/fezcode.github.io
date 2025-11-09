@@ -1,5 +1,15 @@
 [
   {
+    "slug": "picker-wheel-deep-dive",
+    "title": "Picker Wheel Deep Dive",
+    "date": "2025-11-09",
+    "updated": "2025-11-09",
+    "description": "A deep dive into the implementation of the Picker Wheel app.",
+    "tags": ["canvas", "react", "css", "animation", "tailwind"],
+    "category": "dev",
+    "filename": "picker-wheel-deep-dive.txt"
+  },
+  {
     "slug": "demystifying-tailwind-css",
     "title": "Demystifying Tailwind CSS",
     "date": "2025-11-07",
