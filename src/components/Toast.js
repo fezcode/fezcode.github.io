@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
 import colors from '../config/colors';
 
-const Toast = ({ id, title, message, duration, removeToast }) => {
+const Toast = ({ id, title, message, duration = 3000, removeToast }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(id);

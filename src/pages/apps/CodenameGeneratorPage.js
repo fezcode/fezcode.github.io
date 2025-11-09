@@ -55,9 +55,14 @@ const CodenameGeneratorPage = () => {
     setCodename(`${prefix} ${noun}`);
   };
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(codename);
-    addToast('Copied to clipboard!', 'success');
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(codename);
+      addToast({title: 'Success', message: 'Codename is copied to clipboard!', duration: 3000});
+    } catch (err) {
+      addToast({title: 'Failure', message: 'Failed to copy name!', duration: 3000});
+      console.error('Failed to copy: ', err);
+    }
   };
 
   const cardStyle = {
@@ -100,16 +105,10 @@ const CodenameGeneratorPage = () => {
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Codename Generator </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="flex flex-col items-center gap-8">
-                <div className="relative text-4xl text-rose-600 font-bold text-center h-16 mt-12">
+                <div className="relative text-4xl text-lime-100 font-bold text-center h-16 mt-12">
                   <div
-                    className="absolute top-0 left-0 w-full h-full text-stone-950"
-                    style={{ fontFamily: 'Playfair Display, serif', transition: 'all 0.5s ease-in-out', transform: 'translate(4px, 4px)' }}
-                  >
-                    {codename}
-                  </div>
-                  <div
-                    className="relative"
-                    style={{ fontFamily: 'Playfair Display, serif', transition: 'all 0.5s ease-in-out' }}
+                    className="relative underline"
+                    style={{ fontFamily: 'Playfair Display', textDecorationThickness: '20px' }}
                   >
                     {codename}
                   </div>
