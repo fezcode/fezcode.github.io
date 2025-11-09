@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 07 Nov 2025 23:32:58 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 09 Nov 2025 00:30:01 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 07 Nov 2025 23:32:58 GMT</pubDate>
+        <pubDate>Sun, 09 Nov 2025 00:30:01 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Picker Wheel Deep Dive]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/picker-wheel-deep-dive</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/picker-wheel-deep-dive</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 09 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>A Deep Dive into the Picker Wheel: Canvas, React, and CSS</h1>
+<p><a href="https://fezcode.com/#/blog/picker-wheel-deep-dive">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Find Minimum in Rotated Sorted Array]]></title>
             <description><![CDATA[[object Object]]]></description>
