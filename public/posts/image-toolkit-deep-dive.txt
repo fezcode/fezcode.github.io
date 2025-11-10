@@ -90,6 +90,56 @@ The ASCII art filter converts the image to ASCII characters. We first convert th
 const ascii = asciiArt(imageData, '@%#*+=-:. ');
 ```
 
+## How It Works: A Deeper Look
+
+Here's a breakdown of how the Image Toolkit is built, covering the React structure, canvas manipulation, and the filter algorithms.
+
+### 1. React Component Structure
+
+The `ImageToolkitPage` is a functional React component that uses hooks to manage its state and behavior:
+
+*   **`useState`**: This hook manages the application's state:
+    *   `image`: Stores the uploaded image as a data URL.
+    *   `activeEffect`: Tracks the currently selected filter.
+    *   `blurAmount`: Holds the value for the blur filter's intensity.
+    *   `asciiArtOutput`: Stores the generated ASCII art string.
+*   **`useRef`**: This provides direct references to the `<canvas>` and the original `<img>` elements in the DOM.
+*   **`useEffect`**: This is the core of the image processing. It runs whenever the `image` or `activeEffect` state changes, triggering the drawing and filtering logic.
+*   **`useToast`**: This is a custom hook used to display toast notifications for actions like copying text.
+
+### 2. Image Upload
+
+When you click "Select Image," the `handleImageUpload` function is triggered. It uses the browser's `FileReader` API to read the selected image file and convert it into a data URL. This data URL is then stored in the `image` state, which causes the component to re-render and display the uploaded image.
+
+### 3. Canvas and `useEffect`
+
+The `useEffect` hook orchestrates the image manipulation:
+
+1.  It waits for an `image` to be present and for the `canvasRef` to be attached to the canvas element.
+2.  It gets the 2D rendering context of the canvas (`ctx`).
+3.  An `Image` object is created, and its `src` is set to the data URL of the uploaded image.
+4.  In the image's `onload` event, the original image is drawn onto the canvas using `ctx.drawImage()`.
+5.  A series of `if/else if` statements checks the `activeEffect` state. Based on which filter is active, it calls the corresponding function to manipulate the image on the canvas.
+
+### 4. Filter Implementation: Pixel-by-Pixel Manipulation
+
+The magic of the filters happens by directly manipulating the pixel data of the canvas.
+
+1.  **`getImageData()`**: To get the pixel data, we call `ctx.getImageData()`. This returns an `ImageData` object.
+2.  **`ImageData.data`**: This object contains a `data` property, which is a `Uint8ClampedArray`. This array is a flat list of RGBA (Red, Green, Blue, Alpha) values for every pixel in the image. For example, the first four values in the array (`data[0]` to `data[3]`) represent the RGBA of the very first pixel.
+3.  **Manipulation**: Each filter's algorithm iterates through this `data` array and modifies the R, G, and B values according to its logic.
+4.  **`putImageData()`**: After the `data` array has been modified, `ctx.putImageData()` is called to draw the new pixel data back onto the canvas, displaying the filtered image.
+
+For the **Blur** filter specifically, the `stackblur-canvas` library is used. It provides a highly optimized and performant blur algorithm that is much faster than a manual implementation.
+
+### 5. UI and Event Handling
+
+The user interface is built with standard React components and styled using **Tailwind CSS** for a clean and modern look.
+
+*   **Filter Buttons**: Each filter button has an `onClick` event handler (e.g., `handleConvertToMonochrome`). When clicked, this handler updates the `activeEffect` state with the name of the filter. This state change triggers the `useEffect` hook, which then applies the selected filter's logic to the canvas.
+*   **Download Button**: The "Download Image" button creates a temporary `<a>` (link) element. Its `href` is set to the canvas's current content as a data URL (`canvas.toDataURL()`), and the `download` attribute is set. The link is then programmatically "clicked" to initiate the download.
+*   **Copy Button**: The "Copy" button for the ASCII art uses the modern `navigator.clipboard.writeText()` API to easily copy the generated ASCII string to the user's clipboard.
+
 ## The `useCallback` and `useEffect` Dependency Array Error
 
 You might have encountered this warning while developing the Image Toolkit app:
