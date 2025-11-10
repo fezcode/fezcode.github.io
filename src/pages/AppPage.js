@@ -84,6 +84,12 @@ const apps = [
     icon: Key,
   },
   {
+    to: '/apps/password-generator',
+    title: 'Password Generator',
+    description: 'Generate strong, random passwords with customizable options.',
+    icon: Key,
+  },
+  {
     to: '/apps/color-palette-generator',
     title: 'Color Palette Generator',
     description: 'Generate random color palettes.',
