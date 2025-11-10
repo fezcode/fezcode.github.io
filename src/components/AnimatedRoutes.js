@@ -34,6 +34,7 @@ import PickerWheelPage from '../pages/apps/PickerWheelPage';
 import CodenameGeneratorPage from '../pages/apps/CodenameGeneratorPage';
 import ImageToolkitPage from '../pages/apps/ImageToolkitPage';
 import PasswordGeneratorPage from '../pages/apps/PasswordGeneratorPage';
+import JsonFormatterPage from '../pages/apps/JsonFormatterPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -320,6 +321,7 @@ function AnimatedRoutes() {
         <Route path="/apps::cg" element={<Navigate to="/apps/codename-generator" replace />} />
         <Route path="/apps::itk" element={<Navigate to="/apps/image-toolkit" replace />} />
         <Route path="/apps::pg" element={<Navigate to="/apps/password-generator" replace />} />
+        <Route path="/apps::jf" element={<Navigate to="/apps/json-formatter" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -557,6 +559,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <PasswordGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/json-formatter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <JsonFormatterPage />
             </motion.div>
           }
         />

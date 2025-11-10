@@ -90,6 +90,12 @@ const apps = [
     icon: Key,
   },
   {
+    to: '/apps/json-formatter',
+    title: 'JSON Formatter & Validator',
+    description: 'Format and validate JSON data for readability and correctness.',
+    icon: Code,
+  },
+  {
     to: '/apps/color-palette-generator',
     title: 'Color Palette Generator',
     description: 'Generate random color palettes.',
