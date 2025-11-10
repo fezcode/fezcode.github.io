@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { usePalette } from 'color-thief-react';
@@ -71,7 +71,7 @@ function ImageToolkitPage() {
     }
   };
 
-  const toGrayscale = (imageData) => {
+  const toGrayscale = useCallback((imageData) => {
     const data = new Uint8ClampedArray(imageData.data);
     for (let i = 0; i < data.length; i += 4) {
       const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
@@ -80,9 +80,9 @@ function ImageToolkitPage() {
       data[i + 2] = avg;
     }
     return data;
-  }
+  }, []);
 
-  const sobel = (imageData) => {
+  const sobel = useCallback((imageData) => {
     const width = imageData.width;
     const height = imageData.height;
     const grayscaleData = toGrayscale(imageData);
@@ -118,9 +118,9 @@ function ImageToolkitPage() {
       }
     }
     return new ImageData(sobelData, width, height);
-  };
+  }, [toGrayscale]);
 
-  const combine = (quantized, edges) => {
+  const combine = useCallback((quantized, edges) => {
     const quantizedData = quantized.data;
     const edgesData = edges.data;
     const finalData = new Uint8ClampedArray(quantizedData.length);
@@ -138,9 +138,9 @@ function ImageToolkitPage() {
       }
     }
     return new ImageData(finalData, quantized.width, quantized.height);
-  }
+  }, []);
 
-  const bayerDither = (imageData) => {
+  const bayerDither = useCallback((imageData) => {
     const pixels = new Uint8ClampedArray(imageData.data);
     const width = imageData.width;
     const height = imageData.height;
@@ -167,9 +167,9 @@ function ImageToolkitPage() {
       }
     }
     return new ImageData(pixels, width, height);
-  };
+  }, []);
 
-  const quantizeColors = (imageData, levels) => {
+  const quantizeColors = useCallback((imageData, levels) => {
     const data = new Uint8ClampedArray(imageData.data);
     const factor = 255 / (levels - 1);
     for (let i = 0; i < data.length; i += 4) {
@@ -178,9 +178,9 @@ function ImageToolkitPage() {
       data[i + 2] = Math.round(Math.round(data[i + 2] / factor) * factor);
     }
     return new ImageData(data, imageData.width, imageData.height);
-  };
+  }, []);
 
-  const halftone = (imageData, gridSize) => {
+  const halftone = useCallback((imageData, gridSize) => {
     const width = imageData.width;
     const height = imageData.height;
     const grayscaleData = toGrayscale(imageData);
@@ -212,9 +212,9 @@ function ImageToolkitPage() {
       }
     }
     return ctx.getImageData(0, 0, width, height);
-  }
+  }, [toGrayscale]);
 
-  const posterize = (imageData, levels) => {
+  const posterize = useCallback((imageData, levels) => {
     const data = new Uint8ClampedArray(imageData.data);
     const step = 255 / (levels - 1);
     for (let i = 0; i < data.length; i += 4) {
@@ -223,9 +223,9 @@ function ImageToolkitPage() {
       data[i + 2] = Math.round(Math.round(data[i + 2] / step) * step);
     }
     return new ImageData(data, imageData.width, imageData.height);
-  };
+  }, []);
 
-  const asciiArt = (imageData, characterRamp) => {
+  const asciiArt = useCallback((imageData, characterRamp) => {
     const data = toGrayscale(imageData);
     const { width, height } = imageData;
     let ascii = '';
@@ -239,7 +239,7 @@ function ImageToolkitPage() {
       ascii += '\n';
     }
     return ascii;
-  };
+  }, [toGrayscale]);
 
   useEffect(() => {
     if (!image || !canvasRef.current) return;
@@ -345,7 +345,7 @@ function ImageToolkitPage() {
         setAsciiArtOutput(ascii);
       }
     };
-  }, [image, activeEffect, blurAmount]);
+  }, [image, activeEffect, blurAmount, asciiArt, bayerDither, combine, halftone, posterize, quantizeColors, sobel]);
 
   const handleGetColorPalette = () => {
     if (image) {
