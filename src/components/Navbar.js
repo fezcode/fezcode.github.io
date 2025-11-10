@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { Sidebar, User, BookOpen } from '@phosphor-icons/react';
+import { Sidebar, User, BookOpen, MagnifyingGlass } from '@phosphor-icons/react';
 
-const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
+const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -61,21 +61,28 @@ const Navbar = ({ toggleSidebar, isSidebarOpen }) => {
             </span>
           </div>
         )}
-        <div className="hidden md:flex items-center space-x-6">
+        <div className="flex items-center space-x-3 md:space-x-6">
           <Link
             to="/about"
-            className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors"
+            className="flex items-center space-x-1 text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
           >
             <User size={24} />
-            <span>About</span>
+            <span className="md:hidden lg:inline">About</span>
           </Link>
           <Link
             to="/blog"
-            className="flex items-center space-x-3 text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-md transition-colors"
+            className="flex items-center space-x-1 text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
           >
             <BookOpen size={24} />
-            <span>Blog</span>
+            <span className="md:hidden lg:inline">Blog</span>
           </Link>
+          <button
+            onClick={toggleSearch}
+            className="text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
+            aria-label="Toggle Search"
+          >
+            <MagnifyingGlass size={24} />
+          </button>
         </div>
       </div>
     </header>

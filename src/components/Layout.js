@@ -5,10 +5,11 @@ import Footer from './Footer';
 import DndNavbar from './DndNavbar';
 import DndFooter from './DndFooter';
 import { useLocation } from 'react-router-dom';
+import Search from './Search'; // Import the Search component
 
 import { DndProvider } from '../context/DndContext';
 
-const Layout = ({ children, toggleModal }) => {
+const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const location = useLocation();
 
@@ -47,7 +48,8 @@ const Layout = ({ children, toggleModal }) => {
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} toggleModal={toggleModal} />
       <div
         className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}>
-        <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+        <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} toggleSearch={toggleSearch} />
+        {isSearchVisible && <Search isVisible={isSearchVisible} />}
         <main className="flex-grow">{children}</main>
         <Footer />
       </div>
