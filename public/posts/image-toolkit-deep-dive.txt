@@ -1,0 +1,109 @@
+# Image Toolkit Deep Dive
+
+In this blog post, we'll take a deep dive into the implementation of the Image Toolkit app. We'll explore the various image filters and their algorithms, and we'll also discuss a common React Hook-related warning and how to fix it.
+
+## The Filters
+
+The Image Toolkit app provides a variety of filters that you can apply to your images. Let's take a look at each one and the algorithm behind it.
+
+### Monochrome
+
+The monochrome filter converts an image to grayscale. The algorithm for this is quite simple. For each pixel in the image, we calculate the average of the red, green, and blue values. Then, we set the red, green, and blue values of the pixel to this average value.
+
+```javascript
+const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
+data[i] = avg; // red
+data[i + 1] = avg; // green
+data[i + 2] = avg; // blue
+```
+
+### Blur
+
+The blur filter applies a blur effect to the image. We use the `stackblur-canvas` library to achieve this effect. The `canvasRGBA` function from this library takes the canvas, the coordinates of the area to blur, and the blur radius as input.
+
+```javascript
+canvasRGBA(canvas, 0, 0, canvas.width, canvas.height, blurAmount);
+```
+
+### Dithering
+
+Dithering is a technique used to create the illusion of more colors than are actually available. We use the Bayer dithering algorithm. This algorithm uses a threshold map (the Bayer matrix) to determine whether a pixel should be black or white.
+
+```javascript
+const bayerMatrix = [
+  [1, 9, 3, 11],
+  [13, 5, 15, 7],
+  [4, 12, 2, 10],
+  [16, 8, 14, 6]
+];
+const threshold = bayerMatrix[y % matrixSize][x % matrixSize] * 16;
+const newValue = gray < threshold ? 0 : 255;
+```
+
+### Cel Shading
+
+Cel shading is a non-photorealistic rendering technique that makes 3D computer graphics appear to be flat. To achieve this effect, we first apply color quantization to reduce the number of colors in the image. Then, we use the Sobel operator to detect the edges in the image. Finally, we combine the quantized image and the edges to create the cel-shaded effect.
+
+### Halftone
+
+The halftone filter simulates the effect of printing an image with a series of dots. We first convert the image to grayscale. Then, for each grid of pixels, we calculate the average brightness and draw a circle with a radius proportional to the brightness.
+
+### Solarization
+
+Solarization is an effect where the image is partially reversed. We set a threshold and for each pixel, if the color component is less than the threshold, we invert it.
+
+```javascript
+if (r < threshold) data[i] = 255 - r;
+if (g < threshold) data[i + 1] = 255 - g;
+if (b < threshold) data[i + 2] = 255 - b;
+```
+
+### Posterization
+
+Posterization is a process in which the number of colors in an image is reduced. For each color component of a pixel, we round it to the nearest value in a smaller set of values.
+
+### Sepia
+
+The sepia filter gives the image a warm, brownish tone. We use a set of coefficients to calculate the new red, green, and blue values for each pixel.
+
+```javascript
+data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
+data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
+data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
+```
+
+### Pixelization
+
+The pixelization filter creates a blocky, pixelated effect. We divide the image into a grid of blocks and fill each block with the color of the top-left pixel in that block.
+
+### Duotone
+
+The duotone filter uses two colors to create a two-toned image. We first convert the image to grayscale. Then, we interpolate between a dark color and a light color based on the brightness of each pixel.
+
+### ASCII Art
+
+The ASCII art filter converts the image to ASCII characters. We first convert the image to grayscale. Then, for each pixel, we map its brightness to a character from a character ramp.
+
+```javascript
+const ascii = asciiArt(imageData, '@%#*+=-:. ');
+```
+
+## The `useCallback` and `useEffect` Dependency Array Error
+
+You might have encountered this warning while developing the Image Toolkit app:
+
+```
+The 'toGrayscale' function makes the dependencies of useEffect Hook (at line 348) change on every render. To fix this, wrap the definition of 'toGrayscale' in its own useCallback() Hook
+```
+
+This warning occurs because the `toGrayscale` function is defined inside the `ImageToolkitPage` component. This means that on every render of the component, a new `toGrayscale` function is created. Since `toGrayscale` is a dependency of the `useEffect` hook, the hook will run on every render, causing an infinite loop.
+
+To fix this, we can wrap the definition of `toGrayscale` in its own `useCallback` hook. The `useCallback` hook will memoize the function, so that it is not recreated on every render.
+
+```javascript
+const toGrayscale = useCallback((imageData) => {
+  // ...
+}, []);
+```
+
+By wrapping all the image processing functions in `useCallback`, we can prevent the `useEffect` hook from running on every render and fix the infinite loop.
