@@ -9,6 +9,7 @@
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^13.5.0",
+    "color-thief-react": "^2.1.0",
     "framer-motion": "^12.23.24",
     "front-matter": "^4.0.2",
     "marked": "^16.4.1",
@@ -24,6 +25,7 @@
     "remark-gfm": "^4.0.1",
     "rss": "^1.2.2",
     "slick-carousel": "^1.8.1",
+    "stackblur-canvas": "^2.7.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed, ShieldCheck } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed, ShieldCheck, Image } from '@phosphor-icons/react';
 import AppCard from '../components/AppCard';
 import usePageTitle from '../utils/usePageTitle';
 
 const apps = [
+  {
+    to: '/apps/image-toolkit',
+    title: 'Image Toolkit',
+    description: 'A toolkit for basic image manipulations.',
+    icon: Image,
+  },
   {
     to: '/apps/codename-generator',
     title: 'Codename Generator',

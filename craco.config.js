@@ -8,12 +8,24 @@ module.exports = {
       },
     },
   },
-  // webpack: {
-  //   configure: (webpackConfig, { env, paths }) => {
-  //     if (env === 'production') {
-  //       webpackConfig.devtool = false; // Disable sourcemaps
-  //     }
-  //     return webpackConfig;
-  //   },
-  // },
+  webpack: {
+    configure: (webpackConfig, { env, paths }) => {
+      // Disable sourcemaps for production if needed
+      // if (env === 'production') {
+      //   webpackConfig.devtool = false;
+      // }
+
+      // Add a rule to ignore source map warnings from node_modules
+      webpackConfig.module.rules.push({
+        test: /\.js$/,
+        enforce: 'pre',
+        use: ['source-map-loader'],
+        exclude: /node_modules/,
+      });
+      // Temporarily ignore all source map warnings
+      webpackConfig.ignoreWarnings = [/Failed to parse source map/];
+
+      return webpackConfig;
+    },
+  },
 };
