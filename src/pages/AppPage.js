@@ -96,6 +96,12 @@ const apps = [
     icon: Code,
   },
   {
+    to: '/apps/color-contrast-checker',
+    title: 'Color Contrast Checker',
+    description: 'Check WCAG color contrast ratios for accessibility.',
+    icon: Palette,
+  },
+  {
     to: '/apps/color-palette-generator',
     title: 'Color Palette Generator',
     description: 'Generate random color palettes.',
