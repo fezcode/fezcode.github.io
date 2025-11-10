@@ -108,7 +108,7 @@ const CodenameGeneratorPage = () => {
                 <div className="relative text-4xl text-lime-100 font-bold text-center h-16 mt-12">
                   <div
                     className="relative underline"
-                    style={{ fontFamily: 'Playfair Display', textDecorationThickness: '20px' }}
+                    style={{ fontFamily: 'Playfair Display', textDecorationThickness: '10px' }}
                   >
                     {codename}
                   </div>
