@@ -499,7 +499,7 @@ function ImageToolkitPage() {
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-6xl"
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative overflow-hidden h-full w-full max-w-6xl"
             style={cardStyle}
           >
             <div
@@ -572,7 +572,7 @@ function ImageToolkitPage() {
               {activeEffect === 'asciiArt' && asciiArtOutput && (
                 <div className="w-full border border-gray-500 p-2 rounded-lg mt-4">
                   <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-xl font-bold text-center">ASCII Art</h3>
+                    <h3 className="text-xl font-bold text-center ml-4">ASCII Art</h3>
                     <button onClick={handleCopyAsciiArt} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Copy</button>
                   </div>
                   <pre className="text-xs text-white bg-gray-900 p-4 rounded-lg overflow-x-auto whitespace-pre">{asciiArtOutput}</pre>
