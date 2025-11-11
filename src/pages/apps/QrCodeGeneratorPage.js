@@ -1,7 +1,7 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, QrCode, DownloadSimple } from '@phosphor-icons/react';
+import { ArrowLeftIcon, DownloadSimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import { QRCodeCanvas } from 'qrcode.react'; // Import the QRCodeCanvas component
