@@ -1,8 +1,17 @@
 [
   {
+    "slug": "piml",
+    "title": "piml - Parenthesis Intended Markup Language",
+    "size": 1,
+    "link": "https://github.com/fezcode/piml",
+    "pinned": true,
+    "isActive": true,
+    "technologies": ["markup-language"]
+  },
+  {
     "slug": "bm",
     "title": "bm - bookmark manager",
-    "size": 2,
+    "size": 1,
     "link": "https://github.com/fezcode/bm",
     "pinned": true,
     "isActive": true,

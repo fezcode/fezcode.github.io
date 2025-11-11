@@ -1,0 +1,317 @@
+PIML (Parenthesis Intended Markup Language) is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
+---
+## 1. Introduction
+
+PIML (Parenthesis Intended Markup Language) is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
+
+It uses `(key)` syntax and indentation-based nesting to create a clean and visually intuitive representation of data. It is intended as an alternative to formats like JSON, YAML, and TOML, striking a balance between machine-friendliness and human-friendliness.
+
+This document defines the PIML specification, version 1.0.
+
+## 2. Syntax Rules
+
+### 2.1. Keys
+
+Keys are enclosed in parentheses, e.g., `(my key)`. Keys can contain spaces and most characters.
+
+### 2.2. Indentation
+
+Consistent indentation is crucial for defining structure.
+
+* **Recommendation:** Use **2 spaces** for each level of indentation.
+* **Rule:** Mixing tabs and spaces for indentation is **not allowed**.
+
+### 2.3. Comments
+
+Comments are denoted by `#`. Everything from `#` to the end of the line is considered a comment and is ignored by parsers.
+
+```piml
+(key) value # This is a comment
+```
+
+### 2.4. Escaping
+
+Backslash (`\`) is used for escaping characters within string values.
+
+* Common escapes: `\n` (newline), `\t` (tab), `\\` (literal backslash).
+* If a string value needs to contain `(` or `#`, it can be escaped, e.g., `(title) My \(Awesome\) Title`.
+
+## 3. Data Types
+
+### 3.1. Primitive Types
+
+* **Single-line Strings:** Unquoted strings that fit on a single line.
+  ```piml
+  (greeting) Hello, World!
+  ```
+* **Integers:** Whole numbers.
+  ```piml
+  (age) 30
+  ```
+* **Floats:** Decimal numbers.
+  ```piml
+  (price) 99.99
+  ```
+* **Booleans:** Logical values.
+  ```piml
+  (is_active) true
+  (is_enabled) false
+  ```
+
+### 3.2. Null and Empty Representations
+
+PIML uses `nil` as a unified value to represent three distinct states:
+
+1.  **Null:** The absence of a value (equivalent to `null` in JSON).
+2.  **Empty Array:** An empty list (equivalent to `[]` in JSON).
+3.  **Empty Object:** An empty map (equivalent to `{}` in JSON).
+
+```piml
+(optional_field) nil
+(empty_list) nil
+(empty_config) nil
+```
+
+This is a deliberate design choice for simplicity, prioritizing a clean syntax over the ability to distinguish between empty collection types.
+
+### 3.3. Multi-line Strings
+
+Strings that span multiple lines. The content starts on the next indented line, and newlines are preserved.
+
+```piml
+(long_description)
+    This is a multi-line string.
+    It can contain several lines of text.
+```
+
+### 3.4. Arrays (Lists)
+
+A collection of ordered items, denoted by `>` at the start of each indented line.
+
+```piml
+(my_list)
+    > item1
+    > item2
+    > item3
+```
+
+### 3.5. Sets (Not Implemented)
+
+A collection of unique, unordered items, denoted by `>|`.
+
+```piml
+(unique_tags)
+    >| tag_a
+    >| tag_b
+    >| tag_c
+    >| tag_a # This duplicate will be ignored
+```
+
+**Note:** A parser should discard duplicate values. The order of items in a set is not guaranteed.
+
+### 3.6. Objects (Maps)
+
+A collection of unordered key-value pairs, defined by indentation.
+
+```piml
+(user_profile)
+    (name) Alice
+    (email) alice@example.com
+```
+
+#### 3.6.1. List of Objects
+
+A list containing objects follows a specific syntax combining the Array (`>`) and Key (`()`) markers.
+
+```piml
+(contributors)
+    > (contributor)
+        (id) 1
+        (name) Alice
+        (role) Developer
+    > (contributor)
+        (id) 2
+        (name) Bob
+        (role) Tester
+```
+
+**Rule:** The `(item_key)` (e.g., `(contributor)`) is considered **metadata for readability only**, similar to a comment. A parser must ignore this key and simply interpret the indented block as an object within the list.
+
+### 3.7. Specialized Types (by Convention)
+
+* **Dates/Times:** Represented as strings, conventionally in ISO 8601 format.
+  ```piml
+  (timestamp) 2023-10-27T10:30:00Z
+  ```
+* **Binary Data:** Represented as base64-encoded strings.
+  ```piml
+  (binary_data) SGVsbG8gV29ybGQ=
+  ```
+
+---
+
+## 4. Examples
+
+### 4.1. Comprehensive Example
+
+```piml
+(document_metadata)
+    (title) Project Configuration for My Awesome App
+    (version) 1.0.0
+    (author) Jane Doe
+    (creation_date) 2023-10-27T14:30:00Z # ISO 8601 format
+    (is_production_ready) false
+    (tags)
+        > configuration
+        > project
+        > example
+    (description)
+        This is a comprehensive example of a PIML document.
+        It demonstrates various data types and structural features.
+        The goal is to provide a clear illustration of PIML's syntax.
+    (contact_info)
+        (email) jane.doe@example.com
+        (website) [https://example.com/jane](https://example.com/jane)
+    (empty_settings) nil # An empty object
+    (feature_flags) nil # An empty object
+
+(database_config)
+    (type) PostgreSQL
+    (host) localhost
+    (port) 5432
+    (username) admin
+    (password) \!secureP@ssw0rd # Escaping special characters
+    (max_connections) 100
+    (ssl_enabled) true
+    (replica_hosts)
+        >| replica1.db.example.com
+        >| replica2.db.example.com
+        >| replica3.db.example.com
+        >| replica1.db.example.com # Duplicate, ignored by set
+    (backup_schedule) nil # Null value
+
+(application_settings)
+    (log_level) INFO
+    (allowed_origins)
+        > [https://app.example.com](https://app.example.com)
+        > [https://dev.example.com](https://dev.example.com)
+    (admin_users)
+        (primary)
+            (id) 101
+            (name) SuperAdmin
+        (secondary)
+            (id) 102
+            (name) BackupAdmin
+    (secret_key) SGVsbG8gV29ybGQ= # Base64 data
+    (empty_array_example) nil
+    (list_of_objects)
+        > (item)
+            (id) 1
+            (name) First
+        > (item)
+            (id) 2
+            (name) Second
+```
+
+### 4.2. Example: Keys with Spaces
+
+This example demonstrates the use of keys that contain spaces, enhancing readability.
+
+```piml
+(user profile)
+    (first name) John
+    (last name) Doe
+    (date of birth) 1990-05-15
+    (favorite colors)
+        > red
+        > blue
+        > green
+    (contact info)
+        (email address) john.doe@example.com
+        (phone number) +1-555-123-4567
+    (is active) true
+    (last login) 2023-10-27T15:00:00Z
+```
+
+### 4.3. Example: JSON to PIML Conversion
+
+This section illustrates how a typical JSON structure would be represented in PIML.
+
+#### Original JSON:
+
+```json
+{
+  "project": {
+    "name": "PIML Converter",
+    "version": "1.0.0",
+    "active": true,
+    "description": "A tool to convert JSON to PIML and vice versa. This description is quite long and spans multiple lines.",
+    "tags": ["parser", "converter", "data format"],
+    "contributors": [
+      { "id": 1, "name": "Alice", "role": "Developer" },
+      { "id": 2, "name": "Bob", "role": "Tester" }
+    ],
+    "settings": {},
+    "last_updated": null,
+    "release date": "2023-10-27T16:00:00Z"
+  }
+}
+```
+
+#### Equivalent PIML:
+
+```piml
+(project)
+    (name) PIML Converter
+    (version) 1.0.0
+    (active) true
+    (description)
+        A tool to convert JSON to PIML and vice versa.
+        This description is quite long and spans multiple lines.
+    (tags)
+        > parser
+        > converter
+        > data format
+    (contributors)
+        > (contributor)
+            (id) 1
+            (name) Alice
+            (role) Developer
+        > (contributor)
+            (id) 2
+            (name) Bob
+            (role) Tester
+    (settings) nil # Represents {}
+    (last_updated) nil # Represents null
+    (release date) 2023-10-27T16:00:00Z
+```
+
+---
+
+## 5. Comparison with Other Formats
+
+PIML is designed to offer a specific set of trade-offs compared to other popular formats.
+
+### 5.1. vs. JSON
+
+* **PIML Advantages:**
+    * **Readability:** Far less verbose for humans. No need for quotes on keys or single-line strings, and no trailing commas.
+    * **Comments:** Supports native `#` comments.
+    * **Multi-line Strings:** Cleaner, native multi-line string support without `\n`.
+* **PIML Trade-off:**
+    * **Ambiguity:** PIML's use of `nil` for null, `[]`, and `{}` is simpler to write but means it cannot perfectly round-trip all JSON data, as the distinction between empty collections is lost.
+
+### 5.2. vs. YAML
+
+* **PIML Advantages:**
+    * **Simplicity:** PIML has a much smaller, more constrained syntax, avoiding the "many ways to do one thing" complexity of YAML.
+    * **Explicit Keys:** The `(key)` syntax is unambiguous and easy for both humans and parsers to identify, avoiding YAML's "significant whitespace" pitfalls.
+* **PIML Trade-off:**
+    * **Advanced Features:** PIML lacks (by design) advanced YAML features like anchors, aliases, and document-start/end markers.
+
+### 5.3. vs. TOML
+
+* **PIML Advantages:**
+    * **Nesting:** PIML's indentation-based nesting is more natural for arbitrarily deep data structures than TOML's `[table]` and `[[array of tables]]` syntax.
+* **PIML Trade-off:**
+    * **Configuration Focus:** TOML is explicitly designed for configuration files and can be clearer for very flat "config" style data. PIML is a more general-purpose data model.
