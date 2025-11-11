@@ -36,6 +36,7 @@ import ImageToolkitPage from '../pages/apps/ImageToolkitPage';
 import PasswordGeneratorPage from '../pages/apps/PasswordGeneratorPage';
 import JsonFormatterPage from '../pages/apps/JsonFormatterPage';
 import ColorContrastCheckerPage from '../pages/apps/ColorContrastCheckerPage';
+import QrCodeGeneratorPage from '../pages/apps/QrCodeGeneratorPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -324,6 +325,7 @@ function AnimatedRoutes() {
         <Route path="/apps::pg" element={<Navigate to="/apps/password-generator" replace />} />
         <Route path="/apps::jf" element={<Navigate to="/apps/json-formatter" replace />} />
         <Route path="/apps::ccc" element={<Navigate to="/apps/color-contrast-checker" replace />} />
+        <Route path="/apps::qr" element={<Navigate to="/apps/qr-code-generator" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -589,6 +591,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <ColorContrastCheckerPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/qr-code-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <QrCodeGeneratorPage />
             </motion.div>
           }
         />

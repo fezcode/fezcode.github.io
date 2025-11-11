@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed, ShieldCheck, Image } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed, ShieldCheck, Image, QrCode } from '@phosphor-icons/react';
 import AppCard from '../components/AppCard';
 import usePageTitle from '../utils/usePageTitle';
 
@@ -100,6 +100,12 @@ const apps = [
     title: 'Color Contrast Checker',
     description: 'Check WCAG color contrast ratios for accessibility.',
     icon: Palette,
+  },
+  {
+    to: '/apps/qr-code-generator',
+    title: 'QR Code Generator',
+    description: 'Generate QR codes from text or URLs with customizable versions and error correction.',
+    icon: QrCode,
   },
   {
     to: '/apps/color-palette-generator',

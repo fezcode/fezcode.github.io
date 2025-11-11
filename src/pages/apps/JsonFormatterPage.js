@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, Code, CopySimple } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import '../../styles/app-buttons.css';

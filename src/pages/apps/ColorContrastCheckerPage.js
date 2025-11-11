@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, Palette, CheckCircle, XCircle } from '@phosphor-icons/react'; // Using Palette for now
+import { ArrowLeftIcon, CheckCircle, XCircle } from '@phosphor-icons/react'; // Using Palette for now
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import '../../styles/app-buttons.css';
