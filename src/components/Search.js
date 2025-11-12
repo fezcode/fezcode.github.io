@@ -6,7 +6,7 @@ const Search = ({ isVisible }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [data, setData] = useState({ posts: [], projects: [], logs: [] });
+  const [data, setData] = useState({ posts: [], projects: [], logs: [], routes: [] }); // Add routes to data
   const searchRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +26,20 @@ const Search = ({ isVisible }) => {
           item.series ? item.series.posts.map(p => ({ ...p, series: item.title })) : item
         );
 
-        setData({ posts: allPosts, projects, logs });
+        // Manually define common routes
+        const routes = [
+          { title: 'Home', slug: '/', type: 'route' },
+          { title: 'Blogs', slug: '/blog', type: 'route' },
+          { title: 'Projects', slug: '/projects', type: 'route' },
+          { title: 'About Me', slug: '/about', type: 'route' },
+          { title: 'Logs', slug: '/logs', type: 'route' },
+          { title: 'Settings', slug: '/settings', type: 'route' },
+          { title: 'Dungeons and Dragons', slug: '/dnd', type: 'route' },
+          { title: 'Apps', slug: '/apps', type: 'route' },
+          { title: 'Random', slug: '/random', type: 'route' },
+        ];
+
+        setData({ posts: allPosts, projects, logs, routes }); // Include routes in data
       } catch (error) {
         console.error('Failed to fetch search data:', error);
       }
@@ -63,7 +76,16 @@ const Search = ({ isVisible }) => {
         )
         .map((log) => ({ ...log, type: 'log' }));
 
-      setSearchResults([...posts, ...projects, ...logs]);
+      // Filter routes
+      const routes = data.routes
+        .filter(
+          (route) =>
+            route.title.toLowerCase().includes(lowerCaseSearchTerm) ||
+            route.slug.toLowerCase().includes(lowerCaseSearchTerm)
+        )
+        .map((route) => ({ ...route, type: 'route' }));
+
+      setSearchResults([...posts, ...projects, ...logs, ...routes]); // Include routes in search results
       setIsDropdownOpen(true);
     } else {
       setSearchResults([]);
@@ -92,6 +114,8 @@ const Search = ({ isVisible }) => {
         return `/projects/${result.slug}`;
       case 'log':
         return `/logs/${result.slug}`;
+      case 'route': // Handle routes
+        return result.slug;
       default:
         return '/';
     }
