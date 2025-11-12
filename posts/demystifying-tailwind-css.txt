@@ -137,6 +137,41 @@ Another way is to treat the `<hr>` as a block element with a specific height and
 
 Choose the method that best suits your design needs. The `border-color` method is generally more semantic for an `<hr>`, but the `background-color` method offers more flexibility for solid bars.
 
+## Part 6: Let's Put Two `<Span>` Element Next To Each Other
+
+When your parent `div` has the classes `flex flex-col text-sm group w-max flex-grow`, the `flex-col` class specifically instructs the flex container to arrange its direct children in a **column**, meaning they will stack vertically, one below the other.
+
+To put two `<span>` elements next to each other (horizontally) within this `flex-col` parent, you need to introduce a **nested flex container** that is configured for a row layout.
+
+Here's how you can do it:
+
+```html
+<div class="flex flex-col text-sm group w-max flex-grow">
+  <!-- Other content that might stack vertically due to parent's flex-col -->
+  <div>Other content 1</div>
+  <div>Other content 2</div>
+
+  <!-- This is the new nested flex container for your two spans -->
+  <div class="flex items-center space-x-2">
+    <span>Span 1</span>
+    <span>Span 2</span>
+  </div>
+
+  <!-- More content that might stack vertically -->
+  <div>More content 3</div>
+</div>
+```
+
+**Explanation:**
+
+1.  **`flex flex-col text-sm group w-max flex-grow`**: This is your existing parent `div`. It will arrange its direct children (like "Other content 1", "Other content 2", the new nested `div`, and "More content 3") in a vertical column.
+2.  **`<div class="flex items-center space-x-2">`**: This is the crucial part.
+    *   `flex`: This makes this new `div` a flex container. By default, a flex container arranges its items in a **row** (`flex-row`).
+    *   `items-center`: This vertically aligns the items (your `<span>`s) in the center of this nested flex container.
+    *   `space-x-2`: This Tailwind utility adds horizontal space between the direct children of this flex container (your two `<span>`s). You can adjust `2` to any spacing you need (e.g., `space-x-1`, `space-x-4`).
+
+By using this nested `div`, you create a horizontal layout context specifically for your two `<span>` elements, while the overall parent `div` still maintains its `flex-col` behavior for its other children.
+
 ## Conclusion
 
 Tailwind CSS provides a powerful and efficient way to build and maintain the UI of the `fezcodex` project. By embracing its utility-first philosophy and leveraging its extensive configuration options, we can rapidly develop consistent, responsive, and performant user interfaces. It streamlines the styling process, allowing developers to focus more on functionality and less on managing complex CSS stylesheets.
