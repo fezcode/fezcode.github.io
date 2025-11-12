@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from '@phosphor-icons/react';
 import colors from '../config/colors';
+import { appIcons } from '../utils/appIcons';
 
 const AppCard = ({ app }) => {
-  const { to, title, description, icon: Icon } = app;
+  const { to, title, description } = app;
+  const Icon = appIcons[app.icon];
 
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],

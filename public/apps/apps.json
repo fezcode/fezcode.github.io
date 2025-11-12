@@ -1,0 +1,135 @@
+[
+  {
+    "slug": "image-toolkit",
+    "to": "/apps/image-toolkit",
+    "title": "Image Toolkit",
+    "description": "A toolkit for basic image manipulations.",
+    "icon": "Image"
+  },
+  {
+    "slug": "codename-generator",
+    "to": "/apps/codename-generator",
+    "title": "Codename Generator",
+    "description": "Generate cool, spy-ish project names.",
+    "icon": "ShieldCheck"
+  },
+  {
+    "slug": "picker-wheel",
+    "to": "/apps/picker-wheel",
+    "title": "Picker Wheel",
+    "description": "A spinning wheel to pick a random winner from a list of entries.",
+    "icon": "CircleDashed"
+  },
+  {
+    "slug": "tournament-bracket",
+    "to": "/apps/tournament-bracket",
+    "title": "Tournament Bracket",
+    "description": "Create and manage tournament brackets.",
+    "icon": "ListNumbers"
+  },
+  {
+    "slug": "fantasy-name-generator",
+    "to": "/apps/fantasy-name-generator",
+    "title": "Fantasy Name Generator",
+    "description": "Generate fantasy names for characters, places, and items.",
+    "icon": "Sparkle"
+  },
+  {
+    "slug": "dice-roller",
+    "to": "/apps/dice-roller",
+    "title": "Dice Roller",
+    "description": "Roll various types of dice for your games and adventures.",
+    "icon": "DiceSix"
+  },
+  {
+    "slug": "word-counter",
+    "to": "/apps/word-counter",
+    "title": "Word Counter",
+    "description": "Count words, characters, lines and paragraphs in a text.",
+    "icon": "TextT"
+  },
+  {
+    "slug": "case-converter",
+    "to": "/apps/case-converter",
+    "title": "Case Converter",
+    "description": "Convert text to different cases (e.g., uppercase, lowercase, camelCase).",
+    "icon": "TextAa"
+  },
+  {
+    "slug": "base64-converter",
+    "to": "/apps/base64-converter",
+    "title": "Base64 Converter",
+    "description": "Encode and decode text to and from Base64 format.",
+    "icon": "Code"
+  },
+  {
+    "slug": "url-converter",
+    "to": "/apps/url-converter",
+    "title": "URL Encoder/Decoder",
+    "description": "Encode and decode URL strings.",
+    "icon": "LinkIcon"
+  },
+  {
+    "slug": "ascii-converter",
+    "to": "/apps/ascii-converter",
+    "title": "Text to ASCII Converter",
+    "description": "Convert text to ASCII codes and vice-versa.",
+    "icon": "Keyboard"
+  },
+  {
+    "slug": "hash-generator",
+    "to": "/apps/hash-generator",
+    "title": "Hash Generator",
+    "description": "Generate SHA1, SHA256, and SHA512 hashes from text.",
+    "icon": "Fingerprint"
+  },
+  {
+    "slug": "uuid-generator",
+    "to": "/apps/uuid-generator",
+    "title": "UUID Generator",
+    "description": "Generate UUID v4.",
+    "icon": "Key"
+  },
+  {
+    "slug": "password-generator",
+    "to": "/apps/password-generator",
+    "title": "Password Generator",
+    "description": "Generate strong, random passwords with customizable options.",
+    "icon": "Key"
+  },
+  {
+    "slug": "json-formatter",
+    "to": "/apps/json-formatter",
+    "title": "JSON Formatter & Validator",
+    "description": "Format and validate JSON data for readability and correctness.",
+    "icon": "Code"
+  },
+  {
+    "slug": "color-contrast-checker",
+    "to": "/apps/color-contrast-checker",
+    "title": "Color Contrast Checker",
+    "description": "Check WCAG color contrast ratios for accessibility.",
+    "icon": "Palette"
+  },
+  {
+    "slug": "qr-code-generator",
+    "to": "/apps/qr-code-generator",
+    "title": "QR Code Generator",
+    "description": "Generate QR codes from text or URLs with customizable versions and error correction.",
+    "icon": "QrCode"
+  },
+  {
+    "slug": "color-palette-generator",
+    "to": "/apps/color-palette-generator",
+    "title": "Color Palette Generator",
+    "description": "Generate random color palettes.",
+    "icon": "Palette"
+  },
+  {
+    "slug": "css-unit-converter",
+    "to": "/apps/css-unit-converter",
+    "title": "CSS Unit Converter",
+    "description": "Convert between px, em, rem, vw, vh, and % units.",
+    "icon": "Ruler"
+  }
+]

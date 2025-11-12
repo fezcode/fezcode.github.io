@@ -1,128 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ListNumbers, Sparkle, TextT, TextAa, Code, Link as LinkIcon, Keyboard, Fingerprint, Key, Palette, Ruler, DiceSix, CircleDashed, ShieldCheck, Image, QrCode } from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import AppCard from '../components/AppCard';
 import usePageTitle from '../utils/usePageTitle';
 
-const apps = [
-  {
-    to: '/apps/image-toolkit',
-    title: 'Image Toolkit',
-    description: 'A toolkit for basic image manipulations.',
-    icon: Image,
-  },
-  {
-    to: '/apps/codename-generator',
-    title: 'Codename Generator',
-    description: 'Generate cool, spy-ish project names.',
-    icon: ShieldCheck,
-  },
-  {
-    to: '/apps/picker-wheel',
-    title: 'Picker Wheel',
-    description: 'A spinning wheel to pick a random winner from a list of entries.',
-    icon: CircleDashed,
-  },
-  {
-    to: '/apps/tournament-bracket',
-    title: 'Tournament Bracket',
-    description: 'Create and manage tournament brackets.',
-    icon: ListNumbers,
-  },
-  {
-    to: '/apps/fantasy-name-generator',
-    title: 'Fantasy Name Generator',
-    description: 'Generate fantasy names for characters, places, and items.',
-    icon: Sparkle,
-  },
-  {
-    to: '/apps/dice-roller',
-    title: 'Dice Roller',
-    description: 'Roll various types of dice for your games and adventures.',
-    icon: DiceSix,
-  },
-  {
-    to: '/apps/word-counter',
-    title: 'Word Counter',
-    description: 'Count words, characters, lines and paragraphs in a text.',
-    icon: TextT,
-  },
-  {
-    to: '/apps/case-converter',
-    title: 'Case Converter',
-    description: 'Convert text to different cases (e.g., uppercase, lowercase, camelCase).',
-    icon: TextAa,
-  },
-  {
-    to: '/apps/base64-converter',
-    title: 'Base64 Converter',
-    description: 'Encode and decode text to and from Base64 format.',
-    icon: Code,
-  },
-  {
-    to: '/apps/url-converter',
-    title: 'URL Encoder/Decoder',
-    description: 'Encode and decode URL strings.',
-    icon: LinkIcon,
-  },
-  {
-    to: '/apps/ascii-converter',
-    title: 'Text to ASCII Converter',
-    description: 'Convert text to ASCII codes and vice-versa.',
-    icon: Keyboard,
-  },
-  {
-    to: '/apps/hash-generator',
-    title: 'Hash Generator',
-    description: 'Generate SHA1, SHA256, and SHA512 hashes from text.',
-    icon: Fingerprint,
-  },
-  {
-    to: '/apps/uuid-generator',
-    title: 'UUID Generator',
-    description: 'Generate UUID v4.',
-    icon: Key,
-  },
-  {
-    to: '/apps/password-generator',
-    title: 'Password Generator',
-    description: 'Generate strong, random passwords with customizable options.',
-    icon: Key,
-  },
-  {
-    to: '/apps/json-formatter',
-    title: 'JSON Formatter & Validator',
-    description: 'Format and validate JSON data for readability and correctness.',
-    icon: Code,
-  },
-  {
-    to: '/apps/color-contrast-checker',
-    title: 'Color Contrast Checker',
-    description: 'Check WCAG color contrast ratios for accessibility.',
-    icon: Palette,
-  },
-  {
-    to: '/apps/qr-code-generator',
-    title: 'QR Code Generator',
-    description: 'Generate QR codes from text or URLs with customizable versions and error correction.',
-    icon: QrCode,
-  },
-  {
-    to: '/apps/color-palette-generator',
-    title: 'Color Palette Generator',
-    description: 'Generate random color palettes.',
-    icon: Palette,
-  },
-  {
-    to: '/apps/css-unit-converter',
-    title: 'CSS Unit Converter',
-    description: 'Convert between px, em, rem, vw, vh, and % units.',
-    icon: Ruler,
-  },
-];
-
 function AppPage() {
   usePageTitle('Apps');
+  const [apps, setApps] = useState([]);
+
+  useEffect(() => {
+    fetch('/apps/apps.json')
+      .then((response) => response.json())
+      .then((data) => setApps(data))
+      .catch((error) => console.error('Error fetching apps:', error));
+  }, []);
 
   return (
     <div className="py-16 sm:py-24">

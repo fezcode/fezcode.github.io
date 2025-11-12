@@ -6,21 +6,23 @@ const Search = ({ isVisible }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [data, setData] = useState({ posts: [], projects: [], logs: [], routes: [] }); // Add routes to data
+  const [data, setData] = useState({ posts: [], projects: [], logs: [], routes: [], apps: [] }); // Add routes to data
   const searchRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [postsRes, projectsRes, logsRes] = await Promise.all([
+        const [postsRes, projectsRes, logsRes, appsRes] = await Promise.all([
           fetch('/posts/posts.json'),
           fetch('/projects/projects.json'),
           fetch('/logs/logs.json'),
+          fetch('/apps/apps.json'),
         ]);
 
         const posts = await postsRes.json();
         const projects = await projectsRes.json();
         const logs = await logsRes.json();
+        const apps = await appsRes.json();
 
         const allPosts = posts.flatMap(item =>
           item.series ? item.series.posts.map(p => ({ ...p, series: item.title })) : item
@@ -39,7 +41,7 @@ const Search = ({ isVisible }) => {
           { title: 'Random', slug: '/random', type: 'route' },
         ];
 
-        setData({ posts: allPosts, projects, logs, routes }); // Include routes in data
+        setData({ posts: allPosts, projects: projects, logs: logs, routes: routes, apps: apps }); // Include routes in data
       } catch (error) {
         console.error('Failed to fetch search data:', error);
       }
@@ -85,7 +87,16 @@ const Search = ({ isVisible }) => {
         )
         .map((route) => ({ ...route, type: 'route' }));
 
-      setSearchResults([...posts, ...projects, ...logs, ...routes]); // Include routes in search results
+      // Filter apps
+      const apps = data.apps
+        .filter(
+          (app) =>
+            app.title.toLowerCase().includes(lowerCaseSearchTerm) ||
+            app.slug.toLowerCase().includes(lowerCaseSearchTerm)
+        )
+        .map((app) => ({ ...app, type: 'app' }));
+
+      setSearchResults([...posts, ...projects, ...logs, ...routes, ...apps]); // Include routes in search results
       setIsDropdownOpen(true);
     } else {
       setSearchResults([]);
@@ -116,6 +127,8 @@ const Search = ({ isVisible }) => {
         return `/logs/${result.slug}`;
       case 'route': // Handle routes
         return result.slug;
+      case 'app': // Handle apps
+        return result.slug;
       default:
         return '/';
     }
@@ -136,7 +149,9 @@ const Search = ({ isVisible }) => {
           onFocus={() => setIsDropdownOpen(true)}
           className="bg-gray-800 text-white w-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-400 rounded-md"
         />
-        <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+        <MagnifyingGlassIcon
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+        />
         {isDropdownOpen && searchResults.length > 0 && (
           <div className="absolute mt-2 w-full max-w-md max-h-96 overflow-y-auto bg-gray-800 border border-gray-700 rounded-md shadow-lg z-50 left-1/2 -translate-x-1/2">
             <ul>
