@@ -4,7 +4,6 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
-import '../../styles/app-buttons.css';
 
 function AsciiConverterPage() {
   usePageTitle('Text to ASCII Converter');
@@ -87,12 +86,6 @@ function AsciiConverterPage() {
       });
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   const detailTextColor = colors['app-light'];
 
   return (
@@ -114,8 +107,7 @@ function AsciiConverterPage() {
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+            className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 hover:bg-app/15 text-app border-app"
           >
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
@@ -129,10 +121,10 @@ function AsciiConverterPage() {
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>Input Text</label>
+                <label className="block text-lg font-semibold mb-2 text-app" >Input Text</label>
                 <textarea
-                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y border rounded-md focus:ring-0"
-                  style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y focus:ring-0 border rounded-md border-app"
+                  style={{ color: detailTextColor }}
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   placeholder="Enter text or ASCII codes (space-separated) to convert..."
@@ -141,25 +133,13 @@ function AsciiConverterPage() {
               <div className="flex justify-center gap-4 mb-4">
                 <button
                   onClick={textToAscii}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out app-button-hover"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
                 >
                   Text to ASCII
                 </button>
                 <button
                   onClick={asciiToText}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out app-button-hover"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
                 >
                   ASCII to Text
                 </button>
@@ -167,36 +147,24 @@ function AsciiConverterPage() {
               <div className="flex justify-center gap-4 mb-4">
                 <button
                   onClick={textToBinary}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out app-button-hover"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
                 >
                   Text to Binary
                 </button>
                 <button
                   onClick={binaryToText}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out app-button-hover"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
                 >
                   Binary to Text
                 </button>
               </div>
               <div>
-                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>ASCII Output</label>
+                <label className="block text-lg font-semibold mb-2 text-app" >ASCII Output</label>
                 <div className="relative">
                   <textarea
                     readOnly
-                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md mb-4"
-                    style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md mb-4 border-app"
+                    style={{ color: detailTextColor }}
                     value={asciiOutput}
                     placeholder="Converted ASCII will appear here..."
                   />
@@ -209,12 +177,12 @@ function AsciiConverterPage() {
                 </div>
               </div>
               <div>
-                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>Binary Output</label>
+                <label className="block text-lg font-semibold mb-2 text-app" >Binary Output</label>
                 <div className="relative">
                   <textarea
                     readOnly
-                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md"
-                    style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md border-app"
+                    style={{ color: detailTextColor }}
                     value={binaryOutput}
                     placeholder="Converted Binary will appear here..."
                   />

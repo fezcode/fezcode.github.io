@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import '../../styles/app-buttons.css'; // Assuming general app button styles are here
+ // Assuming general app button styles are here
 
 const PasswordGeneratorPage = () => {
   usePageTitle('Password Generator');

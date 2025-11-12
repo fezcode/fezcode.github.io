@@ -6,7 +6,6 @@ import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
 import { canvasRGBA } from 'stackblur-canvas';
-import '../../styles/app-buttons.css';
 
 function Palette({ image }) {
   const { data: palette, loading, error } = usePalette(image, 5, 'hex', { crossOrigin: 'anonymous', quality: 10 });
@@ -480,6 +479,11 @@ function ImageToolkitPage() {
     color: colors.app,
   };
 
+  const prefilter = "flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out"
+  const filterButtonStyle = "border-blue-400 bg-blue-500/50 text-white hover:bg-blue-500/70"
+  const greenButtonStyle = "border-green-400 bg-green-500/50 text-white hover:bg-green-500/70"
+  const appButtonStyle = "border-app/100 bg-app/50 text-white hover:bg-app/70 cursor-pointer"
+
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
@@ -514,7 +518,7 @@ function ImageToolkitPage() {
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="flex justify-center mb-4">
-                <label htmlFor="image-upload" className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70 cursor-pointer">
+                <label htmlFor="image-upload" className={`${prefilter} ${appButtonStyle}`} >
                   Select Image
                   <input id="image-upload" type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
                 </label>
@@ -522,18 +526,18 @@ function ImageToolkitPage() {
               <hr className="border-gray-700 my-4" />
               <h2 className="text-2xl font-arvo font-normal mb-4 text-app text-center">Filters</h2>
               <div className="flex justify-center gap-4 mb-4 flex-wrap">
-                <button onClick={handleGetColorPalette} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Get Color Palette</button>
-                <button onClick={handleConvertToMonochrome} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Monochrome</button>
-                <button onClick={handleBlurImage} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Blur</button>
-                <button onClick={handleApplyDithering} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Dithering</button>
-                <button onClick={handleCelShading} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Cel Shading</button>
-                <button onClick={handleHalftone} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Halftone</button>
-                <button onClick={handleSolarization} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Solarization</button>
-                <button onClick={handlePosterization} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Posterization</button>
-                <button onClick={handleSepia} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Sepia</button>
-                <button onClick={handlePixelization} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Pixelization</button>
-                <button onClick={handleDuotone} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Duotone</button>
-                <button onClick={handleAsciiArt} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">ASCII Art</button>
+                <button onClick={handleGetColorPalette} className={`${prefilter} ${filterButtonStyle}`}> Get Color Palette </button>
+                <button onClick={handleConvertToMonochrome} className={`${prefilter} ${filterButtonStyle}`}> Monochrome </button>
+                <button onClick={handleBlurImage} className={`${prefilter} ${filterButtonStyle}`}>Blur</button>
+                <button onClick={handleApplyDithering} className={`${prefilter} ${filterButtonStyle}`}>Dithering</button>
+                <button onClick={handleCelShading} className={`${prefilter} ${filterButtonStyle}`}>Cel Shading</button>
+                <button onClick={handleHalftone} className={`${prefilter} ${filterButtonStyle}`}>Halftone</button>
+                <button onClick={handleSolarization} className={`${prefilter} ${filterButtonStyle}`}>Solarization</button>
+                <button onClick={handlePosterization} className={`${prefilter} ${filterButtonStyle}`}>Posterization</button>
+                <button onClick={handleSepia} className={`${prefilter} ${filterButtonStyle}`}>Sepia</button>
+                <button onClick={handlePixelization} className={`${prefilter} ${filterButtonStyle}`}>Pixelization</button>
+                <button onClick={handleDuotone} className={`${prefilter} ${filterButtonStyle}`}>Duotone</button>
+                <button onClick={handleAsciiArt} className={`${prefilter} ${filterButtonStyle}`}>ASCII Art</button>
               </div>
               {activeEffect === 'blur' && (
                 <div className="flex justify-center items-center gap-4 my-4">
@@ -573,14 +577,15 @@ function ImageToolkitPage() {
                 <div className="w-full border border-gray-500 p-2 rounded-lg mt-4">
                   <div className="flex justify-between items-center mb-2">
                     <h3 className="text-xl font-bold text-center ml-4">ASCII Art</h3>
-                    <button onClick={handleCopyAsciiArt} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-blue-500/50 text-white hover:bg-blue-500/70">Copy</button>
+                    <button onClick={handleCopyAsciiArt} className={`${prefilter} ${filterButtonStyle}`}
+                      style={{ borderColor: colors['app-alpha-50'] }}>Copy</button>
                   </div>
                   <pre className="text-xs text-white bg-gray-900 p-4 rounded-lg overflow-x-auto whitespace-pre">{asciiArtOutput}</pre>
                 </div>
               )}
               {activeEffect && activeEffect !== 'palette' && (
                 <div className="flex justify-center mt-4">
-                  <button onClick={handleDownload} className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-green-500/50 text-white hover:bg-green-500/70">Download Image</button>
+                  <button onClick={handleDownload} className={`${prefilter} ${greenButtonStyle}`}>Download Image</button>
                 </div>
               )}
             </div>

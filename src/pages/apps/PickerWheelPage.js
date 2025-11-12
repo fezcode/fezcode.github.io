@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import usePageTitle from '../../utils/usePageTitle';
 import PickerWheel from '../../components/PickerWheel';
-import '../../styles/app-buttons.css';
 
 function PickerWheelPage() {
   usePageTitle('Picker Wheel');

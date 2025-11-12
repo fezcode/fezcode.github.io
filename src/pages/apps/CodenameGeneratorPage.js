@@ -105,7 +105,7 @@ const CodenameGeneratorPage = () => {
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Codename Generator </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="flex flex-col items-center gap-8">
-                <div className="relative text-4xl text-lime-100 font-bold text-center h-16 mt-12">
+                <div className="relative text-4xl text-indigo-100 font-bold text-center h-16 mt-12">
                   <div
                     className="relative underline"
                     style={{ fontFamily: 'Playfair Display', textDecorationThickness: '10px' }}
@@ -117,6 +117,7 @@ const CodenameGeneratorPage = () => {
                   <button
                     onClick={generateCodename}
                     className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
+                    style={{ borderColor: colors['app-alpha-50'] }}
                   >
                     <Sparkle size={20} /> Generate
                   </button>
@@ -124,6 +125,7 @@ const CodenameGeneratorPage = () => {
                     onClick={handleCopy}
                     className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
                     disabled={!codename}
+                    style={{ borderColor: colors['app-alpha-50'] }}
                   >
                     <Copy size={20} /> Copy
                   </button>

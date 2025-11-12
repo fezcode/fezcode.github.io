@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import '../../styles/app-buttons.css';
 
 const JsonFormatterPage = () => {
   usePageTitle('JSON Formatter');

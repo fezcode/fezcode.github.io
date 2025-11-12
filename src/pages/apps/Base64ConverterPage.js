@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
-import '../../styles/app-buttons.css';
 
 function Base64ConverterPage() {
   usePageTitle('Base64 Converter');
@@ -56,14 +54,6 @@ function Base64ConverterPage() {
       });
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const detailTextColor = colors['app-light'];
-
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
@@ -83,8 +73,7 @@ function Base64ConverterPage() {
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
                       <div
-                        className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-                        style={cardStyle}
+                        className="group bg-app-alpha-10 hover:bg-app/15 text-app border-app border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
                       >
                         <div
                           className="absolute top-0 left-0 w-full h-full opacity-10"
@@ -97,10 +86,9 @@ function Base64ConverterPage() {
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Base64 Converter </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>Input Text</label>
+                <label className="block text-lg font-semibold mb-2 text-app">Input Text</label>
                 <textarea
-                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y border rounded-md focus:ring-0"
-                  style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y border rounded-md border-app-alpha-50 text-app-light"
                   value={inputText}
                   onChange={(e) => setInputText(e.target.value)}
                   placeholder="Enter text to encode or decode..."
@@ -109,36 +97,23 @@ function Base64ConverterPage() {
               <div className="flex justify-center gap-4 mb-4">
                 <button
                   onClick={encodeBase64}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out app-button-hover"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
                 >
                   Encode Base64
                 </button>
                 <button
                   onClick={decodeBase64}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out app-button-hover"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
                 >
                   Decode Base64
                 </button>
               </div>
               <div>
-                <label className="block text-lg font-semibold mb-2" style={{ color: cardStyle.color }}>Output Text</label>
+                <label className="block text-lg font-semibold mb-2 text-app" >Output Text</label>
                 <div className="relative">
                   <textarea
                     readOnly
-                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md"
-                    style={{ borderColor: cardStyle.borderColor, color: detailTextColor }}
+                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md border-app-alpha-50 text-app-light"
                     value={outputText}
                     placeholder="Converted text will appear here..."
                   />

@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
-import '../../styles/app-buttons.css';
 
 function ColorPaletteGeneratorPage() {
   usePageTitle('Color Palette Generator');
@@ -38,12 +36,6 @@ function ColorPaletteGeneratorPage() {
       });
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
@@ -63,8 +55,7 @@ function ColorPaletteGeneratorPage() {
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+            className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15"
           >
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
@@ -80,13 +71,7 @@ function ColorPaletteGeneratorPage() {
               <div className="flex justify-center gap-4 mb-4">
                 <button
                   onClick={generatePalette}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out app-button-hover"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
+                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
                 >
                   Generate New Palette
                 </button>

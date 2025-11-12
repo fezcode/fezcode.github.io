@@ -4,7 +4,6 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
 import colors from '../../config/colors';
-import '../../styles/app-buttons.css';
 
 function TournamentBracketPage() {
   usePageTitle('Tournament Bracket');
@@ -303,7 +302,7 @@ function TournamentBracketPage() {
                           className={`flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                             ${competitors.length >= 64
                               ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                              : 'bg-app/50 text-white hover:bg-app/70'
+                              : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                             }`}
                           disabled={competitors.length >= 64}
                         >
@@ -333,30 +332,30 @@ function TournamentBracketPage() {
                             <div className="flex gap-2">
                               {editingIndex === index ? (
                                 <button onClick={() => saveEdit(index)}
-                                  className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover
+                                  className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                                     ${false // Save button is never disabled based on current logic
                                       ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                      : 'bg-app/50 text-white hover:bg-app/70'
+                                      : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                                     }`}
                                 >
                                   Save
                                 </button>
                               ) : (
                                 <button onClick={() => startEditing(index, competitor)}
-                                  className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover
+                                  className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                                     ${false // Edit button is never disabled based on current logic
                                       ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                      : 'bg-app/50 text-white hover:bg-app/70'
+                                      : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                                     }`}
                                 >
                                   Edit
                                 </button>
                               )}
                                 <button onClick={() => deleteCompetitor(index)}
-                                  className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover
+                                  className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                                     ${false // Delete button is never disabled based on current logic
                                       ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                      : 'bg-app/50 text-white hover:bg-app/70'
+                                      : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                                     }`}
                                 >
                                 Delete
@@ -370,7 +369,7 @@ function TournamentBracketPage() {
                     <div className="mt-8">
                       <button
                         onClick={startTournament}
-                        className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover
+                        className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                           ${competitors.length < 2
                             ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                             : 'bg-app/50 text-white hover:bg-app/70'
@@ -456,7 +455,7 @@ function TournamentBracketPage() {
                                   const loser = score1 > score2 ? match[1] : match[0];
                                   advanceWinner(winner, loser, roundIndex, matchIndex);
                                 }}
-                                className={`flex items-center justify-center gap-2 text-lg font-mono font-normal px-4 py-1 rounded-md border transition-colors duration-300 ease-in-out w-full mb-4 app-button-hover
+                                className={`flex items-center justify-center gap-2 text-lg font-mono font-normal px-4 py-1 rounded-md border transition-colors duration-300 ease-in-out w-full mb-4
                                   ${advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]
                                     ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                                     : 'bg-app/50 text-white hover:bg-app/70'
@@ -480,14 +479,14 @@ function TournamentBracketPage() {
                   <div className="mt-8 flex gap-4 justify-center">
                     <button
                       onClick={resetScores}
-                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                         ${false // Reset Scores button is never disabled based on current logic
                           ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                           : 'bg-app/50 text-white hover:bg-app/70'
                         }`}> Reset Scores </button>
                     <button
                       onClick={resetTournament}
-                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover
+                      className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
                         ${false // Reset Tournament button is never disabled based on current logic
                           ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
                           : 'bg-app/50 text-white hover:bg-app/70'

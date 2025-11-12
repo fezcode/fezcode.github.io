@@ -7,11 +7,12 @@ module.exports = {
   secondary: {
     400: '#fb923c', // orange-400
   },
+  tb: '#00000033',
   book: '#9EC5AB',
   movie: '#c75146',
   game: '#80ed99',
   article: '#FA8072', // Salmon
-  app: '#9EC5AB', // Duplicated from book
+  app: '#fb8476', // Duplicated from article-ish
   music: '#A07B90',
   series: '#edc531',
   food: '#F4A259',
@@ -50,8 +51,8 @@ module.exports = {
   'game-alpha-50': 'rgba(0, 255, 127, 0.5)',
   'article-alpha-10': 'rgba(250, 128, 114, 0.1)',
   'article-alpha-50': 'rgba(250, 128, 114, 0.5)',
-  'app-alpha-10': 'rgba(158, 197, 171, 0.1)', // Duplicated from book-alpha-10
-  'app-alpha-50': 'rgba(158, 197, 171, 0.5)', // Duplicated from book-alpha-50
+  'app-alpha-10': 'rgba(160, 123, 144, 0.1)', // Duplicated from music
+  'app-alpha-50': 'rgba(160, 123, 144, 0.5)', // Duplicated from music
   'music-alpha-10': 'rgba(160, 123, 144, 0.1)',
   'music-alpha-50': 'rgba(160, 123, 144, 0.5)',
   'series-alpha-10': 'rgba(237, 197, 49, 0.1)',

@@ -190,7 +190,7 @@ const PickerWheel = () => {
               />
               <button
                 onClick={addEntry}
-                className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
+                className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out border-app/100 bg-app/50 text-white hover:bg-app/70"
                 disabled={entries.length >= 30}
               >
                 Add
@@ -198,7 +198,7 @@ const PickerWheel = () => {
             </div>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center justify-center w-full gap-2 text-lg font-arvo font-normal px-4 py-2 mt-4 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
+              className="flex items-center justify-center w-full gap-2 text-lg font-arvo font-normal px-4 py-2 mt-4 rounded-md border transition-colors duration-300 ease-in-out border-app/100 bg-app/50 text-white hover:bg-app/70"
             >
               Load from List
             </button>
@@ -210,7 +210,7 @@ const PickerWheel = () => {
                     <span className="flex-grow text-center">{entry}</span>
                     <button
                       onClick={() => deleteEntry(index)}
-                      className="flex items-center gap-2 text-lg font-mono font-normal px-2 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
+                      className="flex items-center gap-2 text-lg font-mono font-normal px-2 py-2 rounded-md border transition-colors duration-300 ease-in-out border-app/100 bg-app/50 text-white hover:bg-app/70"
                     >
                       <Trash size={20} />
                     </button>

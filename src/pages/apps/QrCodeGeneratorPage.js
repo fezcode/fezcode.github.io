@@ -5,7 +5,6 @@ import { ArrowLeftIcon, DownloadSimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import { QRCodeCanvas } from 'qrcode.react'; // Import the QRCodeCanvas component
-import '../../styles/app-buttons.css';
 
 const QrCodeGeneratorPage = () => {
   usePageTitle('QR Code Generator');

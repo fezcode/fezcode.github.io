@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, UploadSimpleIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
 import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
-import '../../styles/app-buttons.css';
 
 function WordCounterPage() {
   usePageTitle('Word Counter');
@@ -44,14 +42,6 @@ function WordCounterPage() {
     }
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const detailTextColor = colors['app-light'];
-
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
@@ -71,8 +61,7 @@ function WordCounterPage() {
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+            className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
           >
            <div className="absolute top-0 left-0 w-full h-full opacity-10"
                           style={{
@@ -84,29 +73,23 @@ function WordCounterPage() {
             <div className="relative z-10 p-1">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Word Counter </h1>
               <hr className="border-gray-700 mb-4" />
-              <div className="w-full h-64 resize-y overflow-auto border rounded-md" style={{ borderColor: cardStyle.borderColor }}>
+              <div className="w-full h-64 resize-y overflow-auto border rounded-md border-app-alpha-50">
                 <textarea
-                  className="w-full h-full p-4 bg-gray-900/50 font-mono resize-none border-none focus:ring-0"
-                  style={{ color: detailTextColor }}
+                  className="w-full h-full p-4 bg-gray-900/50 font-mono resize-none border-none focus:ring-0 text-app-light"
                   value={text}
                   onChange={(e) => handleTextChange(e.target.value)}
                   placeholder="Type or paste your text here, or upload a file..."
                 />
               </div>
               <div className="flex justify-between items-center mt-4">
-                <div className="text-lg font-semibold" style={{ color: cardStyle.color }}>
+                <div className="text-lg font-semibold text-app">
                   <p>Words: {counts.words}</p>
                   <p>Characters: {counts.characters}</p>
                   <p>Lines: {counts.lines}</p>
                   <p>Paragraphs: {counts.paragraphs}</p>
                 </div>
                 <label
-                  className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out app-button-hover cursor-pointer"
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                  }}
+                  className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out cursor-pointer bg-tb text-app border-app-alpha-50 hover:bg-app/15"
                 >
                   <UploadSimpleIcon size={24} />
                   Upload File
