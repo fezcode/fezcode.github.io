@@ -17,21 +17,18 @@ const Toast = ({ id, title, message, duration = 3000, removeToast }) => {
   return (
     <motion.div
       initial={{ x: '100%', opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
+      animate={{ x: 0, opacity: 0.99 }}
       exit={{ opacity: 0 }}
       transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-      className="text-gray-300 py-4 px-10 rounded-lg shadow-lg border backdrop-blur-sm flex items-center justify-between w-96 mb-4"
-      style={{
-        backgroundColor: colors['toast-background'],
-        borderColor: colors['toast-border'],
-      }}
+      className="text-gray-100 font-arvo py-4 px-10 rounded-lg shadow-lg border backdrop-blur-sm flex items-center justify-between w-96 mb-4
+       transition-colors bg-toast-background border-toast-border hover:bg-toast-background/90"
     >
-      <div className="flex flex-col text-sm">
-        <span>{title}</span>
-        <span>{message}</span>
+      <div className="flex flex-col text-sm group">
+        <span className="text-base text-red-100">{title}</span>
+        <span className="text-sm text-stone-200">{message}</span>
       </div>
-      <button onClick={() => removeToast(id)} className="pr-2">
-        <XIcon size={24} weight="bold" />
+      <button onClick={() => removeToast(id)} className="p-2 border rounded-sm shadow-2xl border-dashed rounded-xs hover:bg-toast-background/100 ">
+        <XIcon size={24} weight="bold" className="text-shadow-lg "/>
       </button>
     </motion.div>
   );

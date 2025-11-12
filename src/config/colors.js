@@ -65,8 +65,9 @@ module.exports = {
   'tools-alpha-50': 'rgba(224, 170, 255, 0.5)',
 
   // Toast colors
-  'toast-background': 'rgba(68, 64, 59, 0.8)',
-  'toast-border': '#5a5e64',
+  'toast-background': 'rgba(72,59,87,0.8)',
+  'toast-hover-background': 'rgba(102,84,122,0.8)',
+  'toast-border': '#514b68',
 
   // Code Theme Colors (from src/utils/customTheme.js)
   codeTheme: {
