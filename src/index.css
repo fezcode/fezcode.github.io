@@ -117,11 +117,13 @@ code {
 }
 
 .apps-color {
-  color: #f5dd90 !important; /* Placeholder color for 'apps' */
+  color: #bc4749 !important; /* Placeholder color for 'logs' */
+  /*color: #f5dd90 !important; !* Placeholder color for 'apps' *!*/
 }
 
 .single-app-color {
-  color: #A07B90 !important; /* Placeholder color for 'single-app' */
+  color: #e88211 !important; /* Placeholder color for 'single-app' */
+  /*color: #A07B90 !important; !* Placeholder color for 'single-app' *!*/
 }
 
 @media (max-width: 768px) {
