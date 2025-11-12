@@ -7,18 +7,18 @@ import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import Layout from './components/Layout';
 import AnimatedRoutes from './components/AnimatedRoutes';
-import { ToastProvider } from './components/ToastProvider';
+import { ToastContext } from './components/ToastContext';
 import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <ToastProvider>
+      <ToastContext>
         <Layout>
           <AnimatedRoutes />
         </Layout>
-      </ToastProvider>
+      </ToastContext>
     </Router>
   );
 }
@@ -51,9 +51,9 @@ import AnimatedRoutes from './components/AnimatedRoutes';
 *   **`import AnimatedRoutes from './components/AnimatedRoutes';`**: Imports the `AnimatedRoutes` component. This component is responsible for defining the application's routes and likely incorporates animation for page transitions, possibly using a library like `framer-motion`.
 
 ```javascript
-import { ToastProvider } from './components/ToastProvider';
+import { ToastContext } from './components/ToastContext';
 ```
-*   **`import { ToastProvider } from './components/ToastProvider';`**: Imports the `ToastProvider` component. This component is part of React's Context API pattern. It makes a `toast` (a small, temporary notification) functionality available to all its child components without having to pass props down manually at every level.
+*   **`import { ToastContext } from './components/ToastContext';`**: Imports the `ToastContext` component. This component is part of React's Context API pattern. It makes a `toast` (a small, temporary notification) functionality available to all its child components without having to pass props down manually at every level.
 
 ```javascript
 import ScrollToTop from './components/ScrollToTop';
@@ -67,11 +67,11 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <ToastProvider>
+      <ToastContext>
         <Layout>
           <AnimatedRoutes />
         </Layout>
-      </ToastProvider>
+      </ToastContext>
     </Router>
   );
 }
@@ -84,7 +84,7 @@ function App() {
 
     *   **`<ScrollToTop />`**: This component is rendered directly inside the `Router`. Its effect (scrolling to top on route change) will apply globally to the application.
 
-    *   **`<ToastProvider>`**: This component wraps the `Layout` and `AnimatedRoutes`. This means that any component rendered within the `Layout` or `AnimatedRoutes` will have access to the toast functionality provided by the `ToastProvider` via the `useContext` hook.
+    *   **`<ToastContext>`**: This component wraps the `Layout` and `AnimatedRoutes`. This means that any component rendered within the `Layout` or `AnimatedRoutes` will have access to the toast functionality provided by the `ToastContext` via the `useContext` hook.
 
     *   **`<Layout>`**: This component defines the common structure (e.g., header, footer, navigation) that will be present on most pages. It wraps the `AnimatedRoutes` component, meaning the routed content will be displayed within this layout.
 

@@ -25,7 +25,7 @@ This project provides an excellent example of a custom hook: `useToast`. It enca
 
 ```javascript
 import { useContext } from 'react';
-import { ToastContext } from '../components/ToastProvider';
+import { ToastContext } from '../components/ToastContext';
 
 export const useToast = () => {
   return useContext(ToastContext);
@@ -35,7 +35,7 @@ export const useToast = () => {
 **Explanation:**
 
 1.  **`import { useContext } from 'react';`**: The custom hook itself uses another built-in Hook, `useContext`, to access the value provided by the `ToastContext`.
-2.  **`import { ToastContext } from '../components/ToastProvider';`**: It imports the `ToastContext` object, which was created in `ToastProvider.js`.
+2.  **`import { ToastContext } from '../components/ToastContext';`**: It imports the `ToastContext` object, which was created in `ToastContext.js`.
 3.  **`export const useToast = () => { ... };`**: This defines the custom hook. Its name `useToast` clearly indicates its purpose and follows the naming convention.
 4.  **`return useContext(ToastContext);`**: The core of this hook. It retrieves the `value` (which contains `addToast` and `removeToast` functions) from the nearest `ToastContext.Provider` in the component tree and returns it. This means any component calling `useToast()` will receive these functions.
 

@@ -6,7 +6,7 @@
     "link": "https://github.com/fezcode/fezcode.github.io",
     "pinned": true,
     "isActive": true,
-    "technologies": ["blog", "personal-website","react", "tailwind", "blog", "personal-website", "webdev"]
+    "technologies": ["blog", "personal-website","react", "tailwind", "webdev"]
   },
   {
     "slug": "piml",
