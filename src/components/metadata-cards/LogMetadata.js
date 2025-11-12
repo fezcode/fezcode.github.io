@@ -1,8 +1,8 @@
 import React from 'react';
-import Label from './Label';
+import Label from '../Label';
 import { Star } from '@phosphor-icons/react';
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import colors from '../config/colors';
+import colors from '../../config/colors';
 
 const LogMetadata = ({ metadata }) => {
   if (!metadata) {

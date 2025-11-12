@@ -16,9 +16,9 @@ The Context API consists of three main parts:
 
 ## Example: Toast Notification System
 
-This project uses the Context API to manage and display toast notifications globally. Let's examine `src/components/ToastProvider.js` and `src/hooks/useToast.js`.
+This project uses the Context API to manage and display toast notifications globally. Let's examine `src/components/ToastContext.js` and `src/hooks/useToast.js`.
 
-### `src/components/ToastProvider.js` (The Provider)
+### `src/components/ToastContext.js` (The Provider)
 
 ```javascript
 import React, { createContext, useState, useCallback } from 'react';
@@ -28,7 +28,7 @@ export const ToastContext = createContext();
 
 let id = 0; // Simple counter for unique toast IDs
 
-export const ToastProvider = ({ children }) => {
+export const ToastContext = ({ children }) => {
   const [toasts, setToasts] = useState([]); // State to hold active toasts
 
   const addToast = useCallback((toast) => {
@@ -69,18 +69,18 @@ export const ToastProvider = ({ children }) => {
 **Explanation:**
 
 1.  **`export const ToastContext = createContext();`**: A Context object named `ToastContext` is created. This object will be used by both the Provider and the Consumer.
-2.  **`ToastProvider` Component**: This is a functional component that will wrap parts of your application (as seen in `App.js`).
+2.  **`ToastContext` Component**: This is a functional component that will wrap parts of your application (as seen in `App.js`).
     *   **`const [toasts, setToasts] = useState([]);`**: Manages the array of active toast notifications using `useState`.
     *   **`addToast` and `removeToast` functions**: These functions are responsible for adding new toasts to the `toasts` array and removing them. They are wrapped in `useCallback` to prevent unnecessary re-creations, which is an optimization for performance.
     *   **`<ToastContext.Provider value={{ addToast, removeToast }}>`**: This is the core of the Provider. It makes the `addToast` and `removeToast` functions available to any component that consumes `ToastContext` and is rendered within this Provider's tree. The `value` prop is crucial here.
-    *   **`{children}`**: This renders whatever components are passed as children to the `ToastProvider`. These children (and their descendants) will have access to the context value.
-    *   **Toast Rendering**: The `ToastProvider` also directly renders the actual `Toast` components based on the `toasts` state, positioning them in the top-right corner of the screen.
+    *   **`{children}`**: This renders whatever components are passed as children to the `ToastContext`. These children (and their descendants) will have access to the context value.
+    *   **Toast Rendering**: The `ToastContext` also directly renders the actual `Toast` components based on the `toasts` state, positioning them in the top-right corner of the screen.
 
 ### `src/hooks/useToast.js` (The Consumer Hook)
 
 ```javascript
 import { useContext } from 'react';
-import { ToastContext } from '../components/ToastProvider';
+import { ToastContext } from '../components/ToastContext';
 
 export const useToast = () => {
   return useContext(ToastContext);
@@ -90,7 +90,7 @@ export const useToast = () => {
 **Explanation:**
 
 1.  **`import { useContext } from 'react';`**: Imports the `useContext` Hook from React.
-2.  **`import { ToastContext } from '../components/ToastProvider';`**: Imports the `ToastContext` object that was created in `ToastProvider.js`.
+2.  **`import { ToastContext } from '../components/ToastContext';`**: Imports the `ToastContext` object that was created in `ToastContext.js`.
 3.  **`export const useToast = () => { ... };`**: This is a custom hook. Custom hooks are a powerful feature in React that allow you to extract reusable stateful logic from components. This `useToast` hook simplifies consuming the `ToastContext`.
 4.  **`return useContext(ToastContext);`**: This line is where the magic happens. When `useContext(ToastContext)` is called, React looks up the component tree for the closest `ToastContext.Provider` and returns its `value` prop. In this case, it returns `{ addToast, removeToast }`.
 

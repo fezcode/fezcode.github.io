@@ -36,15 +36,15 @@ This file defines a custom hook called `useToast`. It uses `useContext` to acces
 
 ```javascript
 import { useContext } from 'react';
-import { ToastContext } from '../components/ToastProvider';
+import { ToastContext } from '../components/ToastContext';
 
 export const useToast = () => {
   return useContext(ToastContext);
 };
 ```
 
-### `src/components/ToastProvider.js`
-This file defines the `ToastProvider` component, which manages the state of the toasts. It uses `useState` to hold the `toasts` array, and provides `addToast` and `removeToast` functions. It also renders the `Toast` components.
+### `src/components/ToastContext.js`
+This file defines the `ToastContext` component, which manages the state of the toasts. It uses `useState` to hold the `toasts` array, and provides `addToast` and `removeToast` functions. It also renders the `Toast` components.
 
 ```javascript
 import React, { createContext, useState, useCallback } from 'react';
@@ -54,7 +54,7 @@ export const ToastContext = createContext();
 
 let id = 0;
 
-export const ToastProvider = ({ children }) => {
+export const ToastContext = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   const addToast = useCallback((toast) => {
@@ -135,23 +135,23 @@ export default Toast;
 ```
 
 ### `src/App.js`
-The main component of the application. The `ToastProvider` wraps the entire application to make the toast functionality available everywhere.
+The main component of the application. The `ToastContext` wraps the entire application to make the toast functionality available everywhere.
 
 ```javascript
 import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import Layout from './components/Layout';
 import AnimatedRoutes from './components/AnimatedRoutes';
-import { ToastProvider } from './components/ToastProvider';
+import { ToastContext } from './components/ToastContext';
 
 function App() {
   return (
     <Router>
-      <ToastProvider>
+      <ToastContext>
         <Layout>
           <AnimatedRoutes />
         </Layout>
-      </ToastProvider>
+      </ToastContext>
     </Router>
   );
 }
@@ -261,21 +261,21 @@ This file defines a custom hook called `useToast`.
 
 ```javascript
 import { useContext } from 'react';
-import { ToastContext } from '../components/ToastProvider';
+import { ToastContext } from '../components/ToastContext';
 
 export const useToast = () => {
   return useContext(ToastContext);
 };
 ```
 
--   `useContext(ToastContext)`: This line uses the `useContext` hook to access the data provided by the `ToastContext`. The `ToastContext` is created in `ToastProvider.js`.
+-   `useContext(ToastContext)`: This line uses the `useContext` hook to access the data provided by the `ToastContext`. The `ToastContext` is created in `ToastContext.js`.
 -   `export const useToast`: This line exports the `useToast` hook so that it can be used in other components.
 
 This custom hook provides a simple way for any component to access the `addToast` and `removeToast` functions without having to pass them down as props.
 
-### `src/components/ToastProvider.js`
+### `src/components/ToastContext.js`
 
-This file defines the `ToastProvider` component, which is responsible for managing the state of the toasts.
+This file defines the `ToastContext` component, which is responsible for managing the state of the toasts.
 
 ```javascript
 import React, { createContext, useState, useCallback } from 'react';
@@ -285,7 +285,7 @@ export const ToastContext = createContext();
 
 let id = 0;
 
-export const ToastProvider = ({ children }) => {
+export const ToastContext = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   const addToast = useCallback((toast) => {
@@ -378,23 +378,23 @@ export default Toast;
 
 ### `src/App.js`
 
-This is the main component of the application. The only change here was to wrap the entire application with the `ToastProvider`.
+This is the main component of the application. The only change here was to wrap the entire application with the `ToastContext`.
 
 ```javascript
 import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import Layout from './components/Layout';
 import AnimatedRoutes from './components/AnimatedRoutes';
-import { ToastProvider } from './components/ToastProvider';
+import { ToastContext } from './components/ToastContext';
 
 function App() {
   return (
     <Router>
-      <ToastProvider>
+      <ToastContext>
         <Layout>
           <AnimatedRoutes />
         </Layout>
-      </ToastProvider>
+      </ToastContext>
     </Router>
   );
 }
@@ -402,7 +402,7 @@ function App() {
 export default App;
 ```
 
--   `<ToastProvider>`: By wrapping the `Layout` component with the `ToastProvider`, we make the `addToast` and `removeToast` functions available to all the components in the application.
+-   `<ToastContext>`: By wrapping the `Layout` component with the `ToastContext`, we make the `addToast` and `removeToast` functions available to all the components in the application.
 
 ### `src/pages/BlogPostPage.js`
 

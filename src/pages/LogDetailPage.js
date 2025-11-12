@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import LogMetadata from '../components/LogMetadata';
+import LogMetadata from '../components/metadata-cards/LogMetadata';
 import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
 import ImageModal from '../components/ImageModal';
 

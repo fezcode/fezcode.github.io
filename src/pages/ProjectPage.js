@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useProjects } from '../utils/projectParser';
-import ProjectMetadata from '../components/ProjectMetadata';
+import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
 
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 

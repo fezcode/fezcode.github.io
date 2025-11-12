@@ -1,5 +1,5 @@
 import React from 'react';
-import Label from './Label';
+import Label from '../Label';
 import { FaExternalLinkAlt } from 'react-icons/fa';
 
 const ProjectMetadata = ({ project }) => {

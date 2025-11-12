@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Label from './Label';
+import Label from '../Label';
 
 const PostMetadata = ({
   metadata,

@@ -19,14 +19,14 @@ const memoizedCallback = useCallback(
 
 *   The function `() => { doSomething(a, b); }` will only be re-created if `a` or `b` changes.
 
-### Example from `src/components/ToastProvider.js`
+### Example from `src/components/ToastContext.js`
 
 ```javascript
-// src/components/ToastProvider.js
+// src/components/ToastContext.js
 import React, { createContext, useState, useCallback } from 'react';
 // ...
 
-export const ToastProvider = ({ children }) => {
+export const ToastContext = ({ children }) => {
   const [toasts, setToasts] = useState([]);
 
   const addToast = useCallback((toast) => {
@@ -54,7 +54,7 @@ export const ToastProvider = ({ children }) => {
 
 **Explanation:**
 
-*   Both `addToast` and `removeToast` functions are wrapped in `useCallback` with an empty dependency array (`[]`). This means these functions are created only once when the `ToastProvider` component first renders and will not change on subsequent re-renders.
+*   Both `addToast` and `removeToast` functions are wrapped in `useCallback` with an empty dependency array (`[]`). This means these functions are created only once when the `ToastContext` component first renders and will not change on subsequent re-renders.
 *   This is important because `addToast` and `removeToast` are passed down as part of the `value` to `ToastContext.Provider`. If these functions were re-created on every render, any child component consuming this context and relying on reference equality (e.g., with `React.memo` or `useMemo`) might unnecessarily re-render.
 
 ## 2. `useMemo` Hook

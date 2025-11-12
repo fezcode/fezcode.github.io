@@ -9,7 +9,7 @@ import {
   ArrowLeft,
 } from '@phosphor-icons/react';
 import { customTheme } from '../utils/customTheme';
-import PostMetadata from '../components/PostMetadata';
+import PostMetadata from '../components/metadata-cards/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
 import ImageModal from '../components/ImageModal';
