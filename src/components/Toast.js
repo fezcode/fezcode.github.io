@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
-import colors from '../config/colors';
 
 const Toast = ({ id, title, message, duration = 3000, removeToast }) => {
   useEffect(() => {
