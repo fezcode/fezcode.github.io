@@ -131,12 +131,23 @@ code {
 }
 
 /* Hide arrows from number inputs */
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+@keyframes moveAndFade {
+  0% {
+    transform: translateY(0);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(calc(100% + 50px)); /* Move beyond the bottom edge */
+    opacity: 0;
+  }
 }
