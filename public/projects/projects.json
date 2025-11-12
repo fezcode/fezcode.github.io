@@ -1,7 +1,16 @@
 [
   {
+    "slug": "fezcodex",
+    "title": "fezcodex",
+    "size": 1,
+    "link": "https://github.com/fezcode/fezcode.github.io",
+    "pinned": true,
+    "isActive": true,
+    "technologies": ["blog", "personal-website","react", "tailwind", "blog", "personal-website", "webdev"]
+  },
+  {
     "slug": "piml",
-    "title": "piml - Parenthesis Intended Markup Language",
+    "title": "piml",
     "size": 1,
     "link": "https://github.com/fezcode/piml",
     "pinned": true,
@@ -20,7 +29,7 @@
   {
     "slug": "villain-couch",
     "title": "Villain Couch",
-    "size": 1,
+    "size": 2,
     "link": "https://github.com/fezcode/Villain-Couch",
     "pinned": true,
     "isActive": true,
@@ -47,8 +56,18 @@
   {
     "slug": "go-homo-sapiens-time",
     "title": "Go Homo Sapiens Time",
-    "size": 1,
+    "size": 2,
     "link": "https://github.com/fezcode/go-homo-sapiens-time",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["Go"]
+  },
+
+  {
+    "slug": "go-tournament-brackets",
+    "title": "Go Tournament Bracket Generator Lib",
+    "size": 2,
+    "link": "https://github.com/fezcode/go-tournament-brackets",
     "pinned": false,
     "isActive": true,
     "technologies": ["Go"]
@@ -61,15 +80,6 @@
     "pinned": false,
     "isActive": false,
     "technologies": ["JavaScript"]
-  },
-  {
-    "slug": "go-tournament-brackets",
-    "title": "Go Tournament Bracket Generator Lib",
-    "size": 2,
-    "link": "https://github.com/fezcode/go-tournament-brackets",
-    "pinned": false,
-    "isActive": true,
-    "technologies": ["Go"]
   },
   {
     "slug": "open-tab-with-respect",
@@ -86,7 +96,7 @@
     "size": 1,
     "link": "https://github.com/fezcode/clipboard-concat",
     "pinned": false,
-    "isActive": false,
+    "isActive": true,
     "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
   },
   {

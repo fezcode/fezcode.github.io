@@ -1,0 +1,35 @@
+This website... The app you are currently on. Personal website and blog, written in React.
+---
+# Overview
+
+[Development Series](/#/blog/series/react-of-fezcodex)
+
+**Fezcodex** is a _personal website_ and _blog_, serving as a digital hub for various content, including blog posts, personal projects, and D&D-related materials. It's built with a focus on modern web technologies, aiming for a clean, responsive, and performant user experience.
+
+## Key Features:
+
+*   **Blog:** A platform for sharing articles and insights on various topics, including software development, algorithms, and personal reflections.
+*   **Projects Showcase:** A dedicated section to display personal coding projects, complete with descriptions and links.
+*   **D&D Content:** A space for Dungeons & Dragons related content, such as campaign logs or lore.
+*   **Responsive Design:** Optimized for viewing across different devices and screen sizes.
+*   **Fast and Modern UI:** Built with contemporary frontend tools to ensure a smooth and engaging user interface.
+
+## Technologies Used:
+
+The Fezcodex project leverages a robust stack of modern web development technologies:
+
+*   **React:** The core JavaScript library for building the user interface, enabling a component-based and declarative approach to UI development.
+*   **Tailwind CSS:** A utility-first CSS framework used for rapid and consistent styling, allowing for highly customizable designs directly in the markup.
+*   **React Router DOM:** For declarative routing within the application, managing navigation between different pages and content sections.
+*   **Craco:** (Create React App Configuration Override) Used to extend and customize the Create React App configuration without ejecting, providing more control over the build process (e.g., integrating Tailwind CSS).
+*   **JavaScript (ES6+):** The primary programming language for frontend logic and interactivity.
+*   **HTML5 & CSS3:** The foundational languages for structuring and styling web content.
+*   **Markdown:** Used for writing blog posts and other textual content, offering a simple and readable format that is easily converted to HTML.
+*   **`@phosphor-icons/react` & `react-icons`:** Libraries for incorporating a wide range of vector icons, enhancing the visual appeal and usability of the interface.
+*   **`framer-motion`:** A production-ready motion library for React, used for animations and interactive elements to create a more dynamic user experience.
+*   **`marked` & `react-markdown`:** Libraries for parsing and rendering Markdown content into React components.
+*   **`gh-pages`:** A utility to publish the `build` directory to a `gh-pages` branch on GitHub, facilitating easy deployment to GitHub Pages.
+*   **`rss`:** A library used to generate an RSS feed for the blog, allowing users to subscribe to content updates.
+*   **`stackblur-canvas`:** Used in specific project implementations (like the Image Toolkit) for efficient image blurring directly on the canvas.
+
+This combination of technologies allows Fezcodex to be a dynamic, maintainable, and visually appealing platform for sharing content.

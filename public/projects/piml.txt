@@ -1,4 +1,4 @@
-PIML (Parenthesis Intended Markup Language) is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
+piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
 ---
 ## 1. Introduction
 
