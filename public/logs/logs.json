@@ -1,5 +1,27 @@
 [
   {
+    "artist": "Dhanush",
+    "category": "Music",
+    "date": "2025-11-12",
+    "link": "https://www.youtube.com/watch?v=Ja168gMpb3o",
+    "rating": 5,
+    "slug": "dhanush-why-this-kolaveri-di",
+    "title": "Why This Kolaveri Di",
+    "album": "3 (Soundtrack)",
+    "releaseDate": "2011-11-16"
+  },
+  {
+    "artist": "Yoo Se Yoon",
+    "category": "Music",
+    "date": "2025-11-12",
+    "link": "https://www.youtube.com/watch?v=esCNvfKV9Rc",
+    "rating": 5,
+    "slug": "yoo-se-yoon-dont-skip-the-interlude",
+    "title": "Don't Skip the Interlude",
+    "album": "Don't Skip the Interlude",
+    "releaseDate": "2025-08-29"
+  },
+  {
     "author": "needleful",
     "category": "Article",
     "date": "2025-11-03",
