@@ -57,7 +57,7 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
   return (
     <Link
       to={isSeries ? `/blog/${slug}` : `/blog/${slug}`}
-      className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group ${postBackgroundColorClass} ${postHoverBackgroundColorClass}`}
+      className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group relative overflow-hidden ${postBackgroundColorClass} ${postHoverBackgroundColorClass} animated-grid-bg`}
     >
       <article>
         <div className="flex items-center">
