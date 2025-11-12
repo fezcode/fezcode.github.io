@@ -17,6 +17,7 @@ function App() {
 
   const toggleSearch = () => {
     setIsSearchVisible(!isSearchVisible);
+    window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
   };
 
   return (
