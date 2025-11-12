@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Fez from './Fez';
 import { SidebarIcon, UserIcon, BookOpenIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 
-const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
+const Navbar = ({ toggleSidebar, isSidebarOpen, isSearchVisible, toggleSearch }) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
             className="text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
             aria-label="Toggle Search"
           >
-            <MagnifyingGlassIcon size={24} />
+            <MagnifyingGlassIcon size={24} className={ isSearchVisible ? `text-primary-400` : ``}/>
           </button>
         </div>
       </div>

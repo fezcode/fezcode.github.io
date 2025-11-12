@@ -48,7 +48,7 @@ const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch }) => {
       <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} toggleModal={toggleModal} />
       <div
         className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}>
-        <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} toggleSearch={toggleSearch} />
+        <Navbar toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} isSearchVisible={isSearchVisible} toggleSearch={toggleSearch} />
         {isSearchVisible && <Search isVisible={isSearchVisible} />}
         <main className="flex-grow">{children}</main>
         <Footer />
