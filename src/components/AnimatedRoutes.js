@@ -37,6 +37,7 @@ import PasswordGeneratorPage from '../pages/apps/PasswordGeneratorPage';
 import JsonFormatterPage from '../pages/apps/JsonFormatterPage';
 import ColorContrastCheckerPage from '../pages/apps/ColorContrastCheckerPage';
 import QrCodeGeneratorPage from '../pages/apps/QrCodeGeneratorPage';
+import SettingsPage from '../pages/SettingsPage'; // Import SettingsPage
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 
@@ -173,6 +174,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <AboutPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/settings" // New route for SettingsPage
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <SettingsPage />
             </motion.div>
           }
         />

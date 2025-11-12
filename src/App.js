@@ -5,6 +5,7 @@ import AnimatedRoutes from './components/AnimatedRoutes';
 import { ToastProvider } from './components/ToastProvider';
 import ScrollToTop from './components/ScrollToTop';
 import ContactModal from './components/ContactModal';
+import { AnimationProvider } from './context/AnimationContext'; // Import AnimationProvider
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,15 +20,17 @@ function App() {
   };
 
   return (
-    <Router>
-      <ScrollToTop />
-      <ToastProvider>
-        <Layout toggleModal={toggleModal} isSearchVisible={isSearchVisible} toggleSearch={toggleSearch}>
-          <AnimatedRoutes />
-        </Layout>
-        <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
-      </ToastProvider>
-    </Router>
+    <AnimationProvider> {/* Wrap the entire app with AnimationProvider */}
+      <Router>
+        <ScrollToTop />
+        <ToastProvider>
+          <Layout toggleModal={toggleModal} isSearchVisible={isSearchVisible} toggleSearch={toggleSearch}>
+            <AnimatedRoutes />
+          </Layout>
+          <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
+        </ToastProvider>
+      </Router>
+    </AnimationProvider>
   );
 }
 

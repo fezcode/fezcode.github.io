@@ -1,7 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
+import { useAnimation } from '../context/AnimationContext'; // Import useAnimation
 
 const PostItem = ({ slug, title, date, updatedDate, category, series, seriesIndex, isSeries }) => {
+  const { isAnimationEnabled, showAnimationsHomepage, showAnimationsInnerPages } = useAnimation(); // Use the animation context
+  const location = useLocation(); // Get current location
+
   // Format the date to a shorter format: Month Day, Year
   const formattedDate = new Date(date).toLocaleDateString('en-US', {
     month: 'short',
@@ -54,10 +58,12 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
       ? 'group-hover:text-[var(--title-hover-dnd)]'
       : 'group-hover:text-[var(--title-hover-takes)]';
 
+  const shouldAnimate = isAnimationEnabled && ((location.pathname === '/' && showAnimationsHomepage) || (location.pathname !== '/' && showAnimationsInnerPages));
+
   return (
     <Link
       to={isSeries ? `/blog/${slug}` : `/blog/${slug}`}
-      className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group relative overflow-hidden ${postBackgroundColorClass} ${postHoverBackgroundColorClass} animated-grid-bg`}
+      className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group relative overflow-hidden ${postBackgroundColorClass} ${postHoverBackgroundColorClass} ${shouldAnimate ? 'animated-grid-bg' : ''}`}
     >
       <article>
         <div className="flex items-center">

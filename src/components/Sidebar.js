@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
 
 import { motion } from 'framer-motion';
 
@@ -27,11 +27,13 @@ import {
   EnvelopeSimpleIcon,
   RssIcon,
   SquaresFourIcon,
+  GearSix, // Import GearSix icon
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
 
 import { version } from '../version';
+import { useAnimation } from '../context/AnimationContext'; // Import useAnimation
 
 const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
@@ -41,6 +43,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isGamesOpen, setIsGamesOpen] = useState(false);
   const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
+  const { isAnimationEnabled, toggleAnimation } = useAnimation(); // Use the animation context
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const location = useLocation();
 
@@ -60,6 +64,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
     setIsExtrasOpen(newState);
     setIsGamesOpen(newState);
     setIsExternalLinksOpen(newState);
+  };
+
+  const handleSettingsClick = () => {
+    navigate('/settings');
   };
 
   const getLinkClass = ({ isActive }) =>
@@ -337,6 +345,13 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               size={20}
               className={`ml-3 transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`}
             />
+          </button>
+          <button
+            onClick={handleSettingsClick}
+            className="flex items-center justify-center w-full text-sm font-normal tracking-wider mb-4 focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
+          >
+            <span>Settings</span>
+            <GearSix size={20} className="ml-3" />
           </button>
           <hr className="border-gray-700 my-4" />
 

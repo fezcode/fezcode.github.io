@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { FaExternalLinkAlt } from 'react-icons/fa';
-import Dot from './Dot'; // Import the Dot component
+import Dot from './Dot';
+import { useAnimation } from '../context/AnimationContext'; // Import useAnimation
 
 const ProjectCard = ({ project, size = 1 }) => {
   const colSpanClass =
@@ -10,31 +11,36 @@ const ProjectCard = ({ project, size = 1 }) => {
   const [dots, setDots] = useState([]);
   const cardRef = useRef(null);
   const dotIdRef = useRef(0);
+  const { isAnimationEnabled, showAnimationsHomepage, showAnimationsInnerPages } = useAnimation(); // Use the animation context
+  const location = useLocation(); // Get current location
 
   const handleAnimationEnd = useCallback((id) => {
     setDots((prevDots) => prevDots.filter((dot) => dot.id !== id));
   }, []);
 
   useEffect(() => {
-    const spawnDot = () => {
-      if (cardRef.current && dots.length < 20) {
-        const cardRect = cardRef.current.getBoundingClientRect();
-        const newDot = {
-          id: dotIdRef.current++,
-          size: Math.floor(Math.random() * 5) + 3,
-          color: `hsl(0, ${Math.floor(Math.random() * 30) + 70}%, ${Math.floor(Math.random() * 20) + 60}%)`, // Tones of red
-          initialX: Math.random() * cardRect.width,
-          initialY: -5, // Start slightly off-screen top
-          animationDuration: Math.random() * 3 + 2, // Duration between 2 and 5 seconds
-        };
-        setDots((prevDots) => [...prevDots, newDot]);
-      }
-    };
+    let interval;
+    if (isAnimationEnabled && ((location.pathname === '/' && showAnimationsHomepage) || (location.pathname !== '/' && showAnimationsInnerPages))) { // Only spawn dots if animations are enabled and on homepage or everywhere
+      const spawnDot = () => {
+        if (cardRef.current && dots.length < 10) {
+          const cardRect = cardRef.current.getBoundingClientRect();
+          const newDot = {
+            id: dotIdRef.current++,
+            size: Math.floor(Math.random() * 4) + 5, // Size between 5 and 8
+            color: `hsl(0, ${Math.floor(Math.random() * 30) + 70}%, ${Math.floor(Math.random() * 20) + 60}%)`, // Tones of red
+            initialX: Math.random() * cardRect.width,
+            initialY: -5, // Start slightly off-screen top
+            animationDuration: Math.random() * 3 + 2, // Duration between 2 and 5 seconds
+          };
+          setDots((prevDots) => [...prevDots, newDot]);
+        }
+      };
 
-    const interval = setInterval(spawnDot, 500); // Spawn a new dot every 0.5 seconds
+      interval = setInterval(spawnDot, 500); // Spawn a new dot every 0.5 seconds
+    }
 
     return () => clearInterval(interval);
-  }, [dots.length]);
+  }, [dots.length, isAnimationEnabled, location.pathname, showAnimationsHomepage, showAnimationsInnerPages]);
 
   return (
     <div
