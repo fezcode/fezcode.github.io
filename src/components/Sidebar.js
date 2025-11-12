@@ -33,7 +33,6 @@ import {
 import Fez from './Fez';
 
 import { version } from '../version';
-import { useAnimation } from '../context/AnimationContext'; // Import useAnimation
 
 const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
@@ -43,7 +42,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isGamesOpen, setIsGamesOpen] = useState(false);
   const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
-  const { isAnimationEnabled, toggleAnimation } = useAnimation(); // Use the animation context
   const navigate = useNavigate(); // Initialize useNavigate
 
   const location = useLocation();
