@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 11 Nov 2025 01:08:50 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 12 Nov 2025 01:31:44 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 11 Nov 2025 01:08:50 GMT</pubDate>
+        <pubDate>Wed, 12 Nov 2025 01:31:44 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Parenthesis Intended Markup Language]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/piml</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/piml</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>piml</h1>
+<p><a href="https://fezcode.com/#/blog/piml">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Image Toolkit Deep Dive]]></title>
             <description><![CDATA[[object Object]]]></description>
