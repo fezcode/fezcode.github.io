@@ -479,10 +479,10 @@ function ImageToolkitPage() {
     color: colors.app,
   };
 
-  const prefilter = "flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out"
+  const prefilter = "px-6 py-2 flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out"
   const filterButtonStyle = "border-blue-400 bg-blue-500/50 text-white hover:bg-blue-500/70"
   const greenButtonStyle = "border-green-400 bg-green-500/50 text-white hover:bg-green-500/70"
-  const appButtonStyle = "border-app/100 bg-app/50 text-white hover:bg-app/70 cursor-pointer"
+  const appButtonStyle = "border-app/100 bg-app/20 hover:bg-app/40 cursor-pointer text-app hover:text-white"
 
   return (
     <div className="py-16 sm:py-24">
