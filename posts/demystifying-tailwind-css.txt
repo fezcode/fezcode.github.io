@@ -86,6 +86,57 @@ Tailwind also makes responsive design easy with prefixes like `sm:`, `md:`, `lg:
 
 During development and when building for production, a tool like **Craco** (which sits on top of Create React App's Webpack configuration) processes your code. It uses **PostCSS** and the Tailwind plugin to scan all your files for Tailwind utility classes. It then generates a minimal CSS file containing *only* the styles corresponding to the classes you've actually used. This ensures that your final application bundle is as small and performant as possible.
 
+
+## Part 5: Let's Change the Color of Horizontal Rule
+You can change the color of an `<hr>` (horizontal rule) element in Tailwind CSS using a couple of common methods:
+
+### 1. Using `border-color` utilities (Most Common)
+
+By default, an `<hr>` element is rendered as a line using its `border-top` or `border-bottom` property. You can directly apply Tailwind's border color utilities to change its color.
+
+```html
+<!-- A simple gray HR -->
+<hr class="border-gray-300" />
+
+<!-- A red HR -->
+<hr class="border-red-500" />
+
+<!-- A thicker, blue HR -->
+<hr class="border-t-4 border-blue-500" />
+
+<!-- An HR with a custom color from your config (e.g., primary.400) -->
+<hr class="border-primary-400" />
+```
+
+**Explanation:**
+*   `border-gray-300`: Sets the border color to a light gray.
+*   `border-red-500`: Sets the border color to red.
+*   `border-t-4`: Makes the top border 4 pixels thick. You can use `border-t`, `border-b`, `border-l`, `border-r` or just `border` for all sides.
+*   `border-blue-500`: Sets the border color to blue.
+*   `border-primary-400`: Uses a custom color defined in your `tailwind.config.js` (like the `primary` color you have).
+
+### 2. Using `background-color` utilities with a defined height
+
+Another way is to treat the `<hr>` as a block element with a specific height and then apply a background color. This gives you more control over its appearance, especially if you want a solid block of color rather than just a border line.
+
+```html
+<!-- A red HR with a height of 1px -->
+<hr class="h-px bg-red-500 border-0" />
+
+<!-- A thicker, blue HR -->
+<hr class="h-2 bg-blue-500 border-0" />
+
+<!-- An HR with a custom color from your config -->
+<hr class="h-1 bg-primary-400 border-0" />
+```
+
+**Explanation:**
+*   `h-px`: Sets the height to 1 pixel. You can use any height utility (e.g., `h-1`, `h-2`, `h-4`, etc.).
+*   `bg-red-500`: Sets the background color to red.
+*   `border-0`: It's important to remove the default border of the `<hr>` when using this method, otherwise, you might see both the border and the background color.
+
+Choose the method that best suits your design needs. The `border-color` method is generally more semantic for an `<hr>`, but the `background-color` method offers more flexibility for solid bars.
+
 ## Conclusion
 
 Tailwind CSS provides a powerful and efficient way to build and maintain the UI of the `fezcodex` project. By embracing its utility-first philosophy and leveraging its extensive configuration options, we can rapidly develop consistent, responsive, and performant user interfaces. It streamlines the styling process, allowing developers to focus more on functionality and less on managing complex CSS stylesheets.
