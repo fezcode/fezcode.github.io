@@ -104,7 +104,9 @@ const CodeBlock = ({
       <SyntaxHighlighter
         style={customTheme}
         language={match[1]}
-        PreTag="div"
+        PreTag="pre"
+        CodeTag="code"
+        // className="not-prose"
         {...props}
         codeTagProps={{ style: { fontFamily: "'JetBrains Mono', monospace" } }}
       >

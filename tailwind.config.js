@@ -3,6 +3,17 @@ const colors = require('./src/config/colors');
 const fonts = require('./src/config/fonts'); // New import
 
 /** @type {import('tailwindcss').Config} */
+/**
+ * fezcode: important
+ * tailwind.config.js affects colors through the @tailwindcss/typography plugin, which styles markdown-generated HTML. Specifically, the typography
+ *   extension in tailwind.config.js allows customizing these styles. Our recent change modified the code element's color within the dark typography variant
+ *   to primary.400 (red).
+ *
+ * This change resolved a conflict where tailwind.config.js's prose-dark styles were overriding react-syntax-highlighter's customTheme.js base color for
+ *   the <code> element due to CSS specificity. By setting the code color directly in tailwind.config.js to red, we ensured the dominant styling rule for
+ *   the code block's base text color was the desired red, while customTheme.js still colors individual <span> tokens (comments, keywords) with more
+ *   specific rules.
+ */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -57,7 +68,7 @@ module.exports = {
             },
 
             code: {
-              color: theme('colors.gray.100'),
+              color: theme('colors.primary.400'), // fezcode: important default text color for codeblocks
               fontFamily: theme('fontFamily.mono'),
             },
 
