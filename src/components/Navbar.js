@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { Sidebar, User, BookOpen, MagnifyingGlass } from '@phosphor-icons/react';
+import { SidebarIcon, UserIcon, BookOpenIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 
 const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -24,7 +24,7 @@ const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
         onClick={toggleSidebar}
         className="absolute top-1/2 -translate-y-1/2 left-4 text-red-500 focus:outline-none hidden md:block"
       >
-        <Sidebar size={24} />
+        <SidebarIcon size={24} />
       </button>
       <div className="container mx-auto flex justify-between items-center p-4 text-white">
         <div className="md:hidden flex items-center space-x-2">
@@ -32,7 +32,7 @@ const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
             onClick={toggleSidebar}
             className="text-white focus:outline-none"
           >
-            <Sidebar size={24} />
+            <SidebarIcon size={24} />
           </button>
           <Link to="/" className="flex items-center space-x-2">
             <Fez />
@@ -66,14 +66,14 @@ const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
             to="/about"
             className="flex items-center space-x-1 text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
           >
-            <User size={24} />
+            <UserIcon size={24} />
             <span className="md:hidden lg:inline">About</span>
           </Link>
           <Link
             to="/blog"
             className="flex items-center space-x-1 text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
           >
-            <BookOpen size={24} />
+            <BookOpenIcon size={24} />
             <span className="md:hidden lg:inline">Blog</span>
           </Link>
           <button
@@ -81,7 +81,7 @@ const Navbar = ({ toggleSidebar, isSidebarOpen, toggleSearch }) => {
             className="text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
             aria-label="Toggle Search"
           >
-            <MagnifyingGlass size={24} />
+            <MagnifyingGlassIcon size={24} />
           </button>
         </div>
       </div>

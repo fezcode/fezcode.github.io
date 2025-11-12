@@ -6,8 +6,15 @@ const Search = ({ isVisible }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [data, setData] = useState({ posts: [], projects: [], logs: [], routes: [], apps: [] }); // Add routes to data
+  const [data, setData] = useState({ posts: [], projects: [], logs: [], routes: [], apps: [] });
   const searchRef = useRef(null);
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (isVisible && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [isVisible]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -142,6 +149,7 @@ const Search = ({ isVisible }) => {
     <div ref={searchRef} className="w-full bg-gray-900 py-3 px-4 border-b border-gray-700">
       <form onSubmit={(e) => e.preventDefault()} className="relative w-full max-w-md mx-auto">
         <input
+          ref={inputRef}
           type="text"
           placeholder="Search..."
           value={searchTerm}
