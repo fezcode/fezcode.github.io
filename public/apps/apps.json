@@ -7,6 +7,13 @@
     "icon": "Code"
   },
   {
+    "slug": "json-generator",
+    "to": "/apps/json-generator",
+    "title": "JSON Generator",
+    "description": "Generate random JSON objects with customizable structure and data types.",
+    "icon": "BracketsCurly"
+  },
+  {
     "slug": "image-toolkit",
     "to": "/apps/image-toolkit",
     "title": "Image Toolkit",

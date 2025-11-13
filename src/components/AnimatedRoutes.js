@@ -38,6 +38,7 @@ import JsonFormatterPage from '../pages/apps/JsonFormatterPage';
 import ColorContrastCheckerPage from '../pages/apps/ColorContrastCheckerPage';
 import QrCodeGeneratorPage from '../pages/apps/QrCodeGeneratorPage';
 import JsonPimlConverterPage from '../pages/apps/JsonPimlConverterPage';
+import JSONGeneratorPage from '../pages/apps/JSONGeneratorPage';
 import SettingsPage from '../pages/SettingsPage'; // Import SettingsPage
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -343,6 +344,7 @@ function AnimatedRoutes() {
         <Route path="/apps::ccc" element={<Navigate to="/apps/color-contrast-checker" replace />} />
         <Route path="/apps::qr" element={<Navigate to="/apps/qr-code-generator" replace />} />
         <Route path="/apps::jpc" element={<Navigate to="/apps/json-piml-converter" replace />} />
+        <Route path="/apps::jg" element={<Navigate to="/apps/json-generator" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -355,6 +357,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/json-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <JSONGeneratorPage />
             </motion.div>
           }
         />
