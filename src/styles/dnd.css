@@ -43,7 +43,7 @@
 
 .dnd-content-box {
   background-color: rgba(50, 30, 30, 0.9); /* New background color, blacker with a pinch of red */
-  padding: 5rem 2rem 4rem; /* Adjusted top padding */
+  padding: 5rem 3rem 4rem; /* Adjusted horizontal padding */
   width: 90%;
   max-width: 1200px; /* Narrower for better readability */
   margin: 2rem auto; /* Center the box */
@@ -81,6 +81,56 @@
   font-size: 1.4rem; /* Make episode text bigger */
   margin-bottom: 1rem; /* Add some spacing between paragraphs */
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow */
+}
+
+.dnd-content-box ul,
+.dnd-content-box ol {
+  margin-left: 3rem; /* Indent lists */
+  margin-bottom: 1rem;
+  padding-left: 0;
+  text-align: left; /* Ensure list items align left */
+}
+
+.dnd-content-box li {
+  font-size: 1.4rem; /* Match paragraph font size */
+  color: #E8E0B0; /* Match paragraph color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Match paragraph text shadow */
+  margin-bottom: 0.5rem; /* Spacing between list items */
+  line-height: 1.6;
+}
+
+.dnd-content-box ul {
+  list-style-type: disc; /* Default bullet style */
+}
+
+.dnd-content-box ol {
+  list-style-type: decimal; /* Default numbered style */
+}
+
+.dnd-content-box blockquote {
+  font-style: italic;
+  padding: 1.5rem 0.1rem 0.5rem 0; /* top, right, bottom, left */
+  margin: 2rem 1rem;
+  border: 1px solid #E8E0B0; /* Border matching text color */
+  color: #E8E0B0; /* Match paragraph color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Match paragraph text shadow */
+  border-radius: 4px;
+  line-height: 1.6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+}
+
+.dnd-content-box hr {
+  border: none; /* Remove default border */
+  height: 10px; /* Height of the wavy line */
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 191, 0, 0.7),
+    rgba(255, 191, 0, 0.7) 2px,
+    transparent 2px,
+    transparent 6px /* Increased transparent part and total repeat length */
+  ); /* Wavy pattern */
+  margin: 2rem auto; /* 1rem top/bottom, auto left/right for centering */
+  width: 90%; /* Make it a bit shorter than full width */
 }
 
 .dnd-hero-title-white {

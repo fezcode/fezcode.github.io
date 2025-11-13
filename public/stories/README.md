@@ -19,6 +19,12 @@ public/stories/
 *   `[book-directory-name]/`: Each book's individual episode content files are stored in their own dedicated subdirectories. For example, `book-one/` would contain episodes for "Book One".
 *   `episodeX.txt`: These are plain text files containing the actual narrative content for each episode.
 
+## Episode File Contents
+
+Every file should end with `.txt` format however you can write `markdown` in it (**highly recommended**).
+
+**Important**: Tables are not supported.
+
 ## Book and Author Structure (books.piml)
 
 The `books.piml` file is a PIML document that, when parsed, results in an object containing `authors` and `books` arrays.

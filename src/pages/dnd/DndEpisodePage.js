@@ -7,6 +7,8 @@ import { parseWallpaperName } from '../../utils/dndUtils'; // Import parseWallpa
 import dndWallpapers from '../../utils/dndWallpapers';
 import useSeo from "../../hooks/useSeo";
 import piml from 'piml';
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 
 const pageVariants = {
   initial: {
@@ -142,11 +144,9 @@ function DndEpisodePage() {
           <span className="dnd-hero-title-white">{episodeTitle}</span>
         </h1>
         <div className="dnd-content-box" style={{ zIndex: 1 }}>
-          {episodeContent.split('\n').map((paragraph, index) => (
-            <p key={index} style={{ marginBottom: '1rem', lineHeight: '1.6', textAlign: 'left' }}>
-              {paragraph}
-            </p>
-          ))}
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+            {episodeContent}
+          </ReactMarkdown>
         </div>
 
         <div className="flex flex-wrap justify-between w-[90%] max-w-[800px] mx-auto my-8 z-10 gap-4">
