@@ -1,5 +1,15 @@
 [
   {
+    "slug": "publish-to-npm",
+    "title": "Publishing to NPM",
+    "date": "2025-11-13",
+    "updated": "2025-11-13",
+    "description": "A short explanation of publishing NPM packages",
+    "tags": ["npm", "piml", "data-format", "serialization", "markup"],
+    "category": "dev",
+    "filename": "publishing-to-npm.txt"
+  },
+  {
     "slug": "piml",
     "title": "Parenthesis Intended Markup Language",
     "date": "2025-11-12",
