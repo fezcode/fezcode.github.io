@@ -36,6 +36,24 @@
     "technologies": ["VLC", "Go", "SQLite"]
   },
   {
+    "slug": "go-piml",
+    "title": "go-piml",
+    "size": 1,
+    "link": "https://github.com/fezcode/go-piml",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["piml", "markup-language", "go"]
+  },
+  {
+    "slug": "piml.js",
+    "title": "piml.js",
+    "size": 1,
+    "link": "https://github.com/fezcode/piml.js",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["piml", "markup-language", "js"]
+  },
+  {
     "slug": "doku",
     "title": "doku.js",
     "size": 1,
@@ -54,6 +72,15 @@
     "technologies": ["Rust", "SVG"]
   },
   {
+    "slug": "scrappy",
+    "title": "Scrappy.js",
+    "size": 1,
+    "link": "https://github.com/fezcode/scrappy",
+    "pinned": false,
+    "isActive": false,
+    "technologies": ["JavaScript"]
+  },
+  {
     "slug": "go-homo-sapiens-time",
     "title": "Go Homo Sapiens Time",
     "size": 2,
@@ -62,7 +89,6 @@
     "isActive": true,
     "technologies": ["Go"]
   },
-
   {
     "slug": "go-tournament-brackets",
     "title": "Go Tournament Bracket Generator Lib",
@@ -71,15 +97,6 @@
     "pinned": false,
     "isActive": true,
     "technologies": ["Go"]
-  },
-  {
-    "slug": "scrappy",
-    "title": "Scrappy.js",
-    "size": 1,
-    "link": "https://github.com/fezcode/scrappy",
-    "pinned": false,
-    "isActive": false,
-    "technologies": ["JavaScript"]
   },
   {
     "slug": "open-tab-with-respect",
@@ -111,7 +128,7 @@
   {
     "slug": "firefox-themes",
     "title": "Firefox Themes",
-    "size": 3,
+    "size": 1,
     "link": "https://github.com/fezcode",
     "pinned": false,
     "isActive": false,

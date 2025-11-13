@@ -1,5 +1,9 @@
 # piml
 
+[Available Libraries](https://github.com/fezcode/piml/blob/main/LIBRARIES.md)
+
+[JSON<->PIML Converter](/#/apps::jpc)
+
 ## Parenthesis Intended Markup Language
 
 In the ever-evolving landscape of data serialization formats, PIML (Parenthesis Intended Markup Language) emerges as a compelling alternative, prioritizing human readability and writability without compromising machine parseability. This post delves into the core tenets of PIML, exploring its syntax, data types, and how it stacks up against established formats like JSON, YAML, and TOML.
