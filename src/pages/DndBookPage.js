@@ -6,6 +6,7 @@ import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
 import dndWallpapers from '../utils/dndWallpapers';
 import useSeo from "../hooks/useSeo";
+import piml from 'piml';
 
 const pageVariants = {
   initial: {
@@ -48,11 +49,12 @@ function DndBookPage() {
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.json`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
+        const pimlText = await response.text();
+        const data = piml.parse(pimlText);
         const foundBook = data.books.find(b => b.bookId === parseInt(bookId));
         if (foundBook) {
           setBook(foundBook);

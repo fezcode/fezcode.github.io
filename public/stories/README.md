@@ -1,6 +1,6 @@
 # fezcodex.stories
 
-This directory contains the stories content for Fezcodex, structured to be easily consumed by the application.
+This directory contains the **stories** content for Fezcodex, structured to be easily consumed by the application.
 
 ## Directory Structure
 
@@ -8,45 +8,71 @@ The content is organized as follows:
 
 ```
 public/stories/
-├── books.json
+├── books.piml
 └── [book-directory-name]/
     ├── episode1.txt
     └── episode2.txt
     └── ...
 ```
 
-*   `books.json`: This JSON file serves as the main index for all D&D books and their respective episodes.
+*   `books.piml`: This PIML file serves as the main index for all story books, authors, and their respective episodes.
 *   `[book-directory-name]/`: Each book's individual episode content files are stored in their own dedicated subdirectories. For example, `book-one/` would contain episodes for "Book One".
 *   `episodeX.txt`: These are plain text files containing the actual narrative content for each episode.
 
-## Book Structure (books.json)
+## Book and Author Structure (books.piml)
 
-The `books.json` file is an array of book objects. Each book object defines a collection of episodes and their metadata.
+The `books.piml` file is a PIML document that, when parsed, results in an object containing `authors` and `books` arrays.
 
-```json
-[
-  {
-    "bookId": 1,
-    "bookTitle": "Book One: The Shadowed Path",
-    "episodes": [
-      {
-        "id": 1,
-        "filename": "book-one/episode1.txt",
-        "title": "Episode 1: The Whispering Woods",
-        "author": "fezcode"
-      },
-      {
-        "id": 2,
-        "filename": "book-one/episode2.txt",
-        "title": "Episode 2: The Goblin Ambush",
-        "author": "fezcode"
-      }
-    ],
-    "overlay": "red"
-  },
-  // ... more book objects
-]
+```piml
+(authors)
+  > (author)
+    (name) fezcode
+    (website) https://fezcode.com
+
+(books)
+  > (book)
+    (bookId) 1
+    (bookTitle) Book One: The Shadowed Path
+    (episodes)
+      > (item)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+      > (item)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+    (overlay) red
+
+  > (book)
+    (bookId) 2
+    (bookTitle) Book Two: Separated Riches
+    (episodes)
+      > (item)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+      > (item)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+    (overlay) blue
+  # ... more book objects
 ```
+
+### Root Object Properties:
+
+*   `authors` (Array): An array of author objects.
+*   `books` (Array): An array of book objects.
+
+### Author Object Properties:
+
+*   `name` (String): The name of the author.
+*   `website` (String, Optional): The website or URL associated with the author.
 
 ### Book Object Properties:
 
@@ -62,4 +88,4 @@ The `books.json` file is an array of book objects. Each book object defines a co
 *   `title` (String): The title of the episode.
 *   `author` (String): The author of the episode.
 
-This structure allows the application to dynamically load and display D&D campaign content, organizing it into books and episodes with associated metadata.
+This structure allows the application to dynamically load and display story content, organizing it into books and episodes with associated metadata, and also provides a central place for author information.

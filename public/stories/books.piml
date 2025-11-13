@@ -1,0 +1,69 @@
+(authors)
+  > (author)
+    (name) fezcode
+    (website) https://fezcode.com
+
+(books)
+  > (book)
+    (bookId) 1
+    (bookTitle) Book One: The Shadowed Path
+    (episodes)
+      > (item)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+      > (item)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+    (overlay) red
+
+  > (book)
+    (bookId) 2
+    (bookTitle) Book Two: Separated Riches
+    (episodes)
+      > (item)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+      > (item)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+    (overlay) blue
+
+  > (book)
+    (bookId) 3
+    (bookTitle) Book Three: Separated Riches
+    (episodes)
+      > (item)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+      > (item)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+    (overlay) black
+
+  > (book)
+    (bookId) 4
+    (bookTitle) Book Four: Separated Riches
+    (episodes)
+      > (item)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+      > (item)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+    (overlay) green

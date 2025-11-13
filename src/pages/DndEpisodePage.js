@@ -6,6 +6,7 @@ import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
 import dndWallpapers from '../utils/dndWallpapers';
 import useSeo from "../hooks/useSeo";
+import piml from 'piml';
 
 const pageVariants = {
   initial: {
@@ -58,11 +59,12 @@ function DndEpisodePage() {
   useEffect(() => {
     const fetchAllBooks = async () => { // Renamed function
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.json`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
+        const pimlText = await response.text();
+        const data = piml.parse(pimlText);
         setAllBooks(data.books);
       } catch (error) {
         console.error("Failed to fetch all books:", error);
@@ -90,7 +92,7 @@ function DndEpisodePage() {
           // Fetch episode content
           const fetchEpisodeContent = async () => {
             try {
-              const response = await fetch(`${process.env.PUBLIC_URL}/dnd/${currentEpisode.filename}`);
+              const response = await fetch(`${process.env.PUBLIC_URL}/stories/${currentEpisode.filename}`);
               if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
               }

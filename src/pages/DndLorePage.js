@@ -10,6 +10,7 @@ import Slider from 'react-slick'; // Import Slider
 import 'slick-carousel/slick/slick.css'; // Import slick-carousel CSS
 import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme CSS
 import useSeo from "../hooks/useSeo";
+import piml from 'piml';
 
 const pageVariants = {
   initial: {
@@ -60,11 +61,12 @@ function DndLorePage() {
   useEffect(() => {
     const fetchEpisodes = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.json`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const data = await response.json();
+        const pimlText = await response.text();
+        const data = piml.parse(pimlText);
         setEpisodes(data.books);
       } catch (error) {
         console.error("Failed to fetch episodes:", error);
