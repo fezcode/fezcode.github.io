@@ -31,11 +31,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "prestart": "node scripts/generateWallpapers.js",
-    "start": "craco start",
-    "prebuild": "node scripts/generateWallpapers.js",
-    "build": "npm run generate-rss && craco build",
     "generate-rss": "node scripts/generate-rss.js",
+    "generate-sitemap": "node scripts/generate-sitemap.js",
+    "generate-wallpapers": "node scripts/generateWallpapers.js",
+    "prestart": "npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap",
+    "start": "craco start",
+    "prebuild": "npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap",
+    "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.{js,jsx}\" \"scripts/**/*.js\" --fix",

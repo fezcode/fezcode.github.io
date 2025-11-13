@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { usePalette } from 'color-thief-react';
 import colors from '../../config/colors';
-import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 import { canvasRGBA } from 'stackblur-canvas';
+import useSeo from "../../hooks/useSeo";
 
 function Palette({ image }) {
   const { data: palette, loading, error } = usePalette(image, 5, 'hex', { crossOrigin: 'anonymous', quality: 10 });

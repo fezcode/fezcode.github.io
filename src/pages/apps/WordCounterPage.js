@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, UploadSimpleIcon } from '@phosphor-icons/react';
-import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 function WordCounterPage() {
   useSeo({

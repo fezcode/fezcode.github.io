@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, Clipboard as ClipboardIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
-import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 function IpPage() {
   useSeo({

@@ -118,7 +118,6 @@ function useSeo({ title, description, keywords, ogTitle, ogDescription, ogImage,
             document.head.appendChild(newMeta);
         }
     }
-
   }, [title, description, keywords, ogTitle, ogDescription, ogImage, twitterCard, twitterTitle, twitterDescription, twitterImage]);
 }
 
