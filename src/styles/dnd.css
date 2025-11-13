@@ -83,6 +83,41 @@
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); /* Add text shadow */
 }
 
+.dnd-about-card {
+  background-color: rgba(50, 30, 30, 0.8);
+  padding: 1.5rem 2rem;
+  width: 90%;
+  max-width: 800px; /* Smaller max-width than content box */
+  margin: 2rem auto;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  color: #E8E0B0;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1; /* Ensure it's above the background overlay */
+  text-align: center; /* Align text to the center */
+}
+
+.dnd-about-card h3 {
+  color: #FFFACD;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+
+.dnd-about-card p {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.dnd-author-label {
+  color: #ff6b6b; /* A tone of red */
+  font-weight: bold;
+}
+
 .dnd-content-box ul,
 .dnd-content-box ol {
   margin-left: 3rem; /* Indent lists */

@@ -16,6 +16,7 @@ import DndNotFoundPage from '../pages/dnd/DndNotFoundPage';
 import DndEpisodePage from '../pages/dnd/DndEpisodePage';
 import DndLorePage from '../pages/dnd/DndLorePage';
 import DndBookPage from '../pages/dnd/DndBookPage';
+import DndAuthorsPage from '../pages/dnd/DndAuthorsPage'; // Import DndAuthorsPage
 import AppPage from '../pages/AppPage';
 import IpPage from '../pages/apps/IpPage';
 import WordCounterPage from '../pages/apps/WordCounterPage';
@@ -291,6 +292,21 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <DndEpisodePage />
+            </motion.div>
+          }
+        />
+        {/* D&D Authors Page */}
+        <Route
+          path="/stories/authors"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <DndAuthorsPage />
             </motion.div>
           }
         />

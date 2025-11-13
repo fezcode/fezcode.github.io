@@ -48,6 +48,13 @@ const DndPage = () => {
             backgroundImage={`${process.env.PUBLIC_URL}/images/stories/parchment.png`}
             className="dnd-card-parchment" // Add the new class
           />
+          <DndCard
+            title="Authors"
+            description="Meet the creators of the tales."
+            link="/stories/authors"
+            backgroundImage={`${process.env.PUBLIC_URL}/images/stories/parchment.png`}
+            className="dnd-card-parchment"
+          />
         </div>
       </div>
     </div>

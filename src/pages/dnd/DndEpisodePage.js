@@ -34,6 +34,7 @@ function DndEpisodePage() {
   const [episodeContent, setEpisodeContent] = useState('');
   const [episodeTitle, setEpisodeTitle] = useState('');
   const [book, setBook] = useState(null); // State to store the current book
+  const [currentEpisode, setCurrentEpisode] = useState(null); // State to store the current episode
   const [bgImage, setBgImage] = useState(''); // State for background image
 
   useSeo({
@@ -84,6 +85,7 @@ function DndEpisodePage() {
         const currentEpisodeIndex = foundBook.episodes.findIndex(ep => ep.id === parseInt(episodeId));
         if (currentEpisodeIndex !== -1) {
           const currentEpisode = foundBook.episodes[currentEpisodeIndex];
+          setCurrentEpisode(currentEpisode); // Set the current episode
           setEpisodeTitle(currentEpisode.title);
           setBreadcrumbs([
             { label: 'S&F', path: '/stories' },
@@ -143,6 +145,16 @@ function DndEpisodePage() {
         <h1 className="dnd-title-box">
           <span className="dnd-hero-title-white">{episodeTitle}</span>
         </h1>
+
+        {book && currentEpisode && (
+          <div className="dnd-about-card">
+            <h3>About this Episode</h3>
+            <p><span className="dnd-author-label">Author:</span> {currentEpisode.author}</p>
+            <p><span className="dnd-author-label">Date:</span> {currentEpisode.date}</p>
+            {currentEpisode.updated && <p><span className="dnd-author-label">Updated:</span> {currentEpisode.updated}</p>}
+          </div>
+        )}
+
         <div className="dnd-content-box" style={{ zIndex: 1 }}>
           <ReactMarkdown rehypePlugins={[rehypeRaw]}>
             {episodeContent}

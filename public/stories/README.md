@@ -44,33 +44,23 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
     (bookId) 1
     (bookTitle) Book One: The Shadowed Path
     (episodes)
-      > (item)
+      > (episode)
         (id) 1
         (filename) book-one/episode1.txt
         (title) Episode 1: The Whispering Woods
         (author) fezcode
-      > (item)
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
         (id) 2
         (filename) book-one/episode2.txt
         (title) Episode 2: The Goblin Ambush
         (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
     (overlay) red
 
   > (book)
-    (bookId) 2
-    (bookTitle) Book Two: Separated Riches
-    (episodes)
-      > (item)
-        (id) 1
-        (filename) book-one/episode1.txt
-        (title) Episode 1: The Whispering Woods
-        (author) fezcode
-      > (item)
-        (id) 2
-        (filename) book-one/episode2.txt
-        (title) Episode 2: The Goblin Ambush
-        (author) fezcode
-    (overlay) blue
   # ... more book objects
 ```
 
@@ -97,5 +87,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 *   `filename` (String): The relative path to the plain text file containing the episode's content. This path is relative to the `public/stories/` directory (e.g., `book-one/episode1.txt`).
 *   `title` (String): The title of the episode.
 *   `author` (String): The author of the episode.
+*   `date` (String): The original release date of the episode.
+*   `updated` (String): The last update date of the episode.
 
 This structure allows the application to dynamically load and display story content, organizing it into books and episodes with associated metadata, and also provides a central place for author information.

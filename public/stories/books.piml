@@ -8,62 +8,78 @@
     (bookId) 1
     (bookTitle) Book One: The Shadowed Path
     (episodes)
-      > (item)
+      > (episode)
         (id) 1
         (filename) book-one/episode1.txt
         (title) Episode 1: The Whispering Woods
         (author) fezcode
-      > (item)
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
         (id) 2
         (filename) book-one/episode2.txt
         (title) Episode 2: The Goblin Ambush
         (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
     (overlay) red
 
   > (book)
     (bookId) 2
     (bookTitle) Book Two: Separated Riches
     (episodes)
-      > (item)
+      > (episode)
         (id) 1
         (filename) book-one/episode1.txt
         (title) Episode 1: The Whispering Woods
         (author) fezcode
-      > (item)
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
         (id) 2
         (filename) book-one/episode2.txt
         (title) Episode 2: The Goblin Ambush
         (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
     (overlay) blue
 
   > (book)
     (bookId) 3
     (bookTitle) Book Three: Separated Riches
     (episodes)
-      > (item)
+      > (episode)
         (id) 1
         (filename) book-one/episode1.txt
         (title) Episode 1: The Whispering Woods
         (author) fezcode
-      > (item)
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
         (id) 2
         (filename) book-one/episode2.txt
         (title) Episode 2: The Goblin Ambush
         (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
     (overlay) black
 
   > (book)
     (bookId) 4
     (bookTitle) Book Four: Separated Riches
     (episodes)
-      > (item)
+      > (episode)
         (id) 1
         (filename) book-one/episode1.txt
         (title) Episode 1: The Whispering Woods
         (author) fezcode
-      > (item)
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
         (id) 2
         (filename) book-one/episode2.txt
         (title) Episode 2: The Goblin Ambush
         (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
     (overlay) green
