@@ -135,7 +135,7 @@ const Search = ({ isVisible }) => {
       case 'route': // Handle routes
         return result.slug;
       case 'app': // Handle apps
-        return result.slug;
+        return `${result.to}`;
       default:
         return '/';
     }

@@ -13,6 +13,7 @@
     "framer-motion": "^12.23.24",
     "front-matter": "^4.0.2",
     "marked": "^16.4.1",
+    "piml": "^1.0.4",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",

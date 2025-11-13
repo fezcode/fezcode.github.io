@@ -1,5 +1,12 @@
 [
   {
+    "slug": "json-piml-converter",
+    "to": "/apps/json-piml-converter",
+    "title": "JSON - PIML Converter",
+    "description": "Convert JSON to PIML and vice-versa.",
+    "icon": "Code"
+  },
+  {
     "slug": "image-toolkit",
     "to": "/apps/image-toolkit",
     "title": "Image Toolkit",

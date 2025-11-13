@@ -12,10 +12,10 @@ import LogDetailPage from '../pages/LogDetailPage';
 import NotFoundPage from '../pages/NotFoundPage';
 import SeriesPage from '../pages/SeriesPage';
 import DndPage from '../pages/DndPage';
-import DndNotFoundPage from '../pages/DndNotFoundPage'; // New import
-import DndEpisodePage from '../pages/DndEpisodePage'; // New import
-import DndLorePage from '../pages/DndLorePage'; // New import
-import DndBookPage from '../pages/DndBookPage'; // New import
+import DndNotFoundPage from '../pages/DndNotFoundPage';
+import DndEpisodePage from '../pages/DndEpisodePage';
+import DndLorePage from '../pages/DndLorePage';
+import DndBookPage from '../pages/DndBookPage';
 import AppPage from '../pages/AppPage';
 import IpPage from '../pages/apps/IpPage';
 import WordCounterPage from '../pages/apps/WordCounterPage';
@@ -37,6 +37,7 @@ import PasswordGeneratorPage from '../pages/apps/PasswordGeneratorPage';
 import JsonFormatterPage from '../pages/apps/JsonFormatterPage';
 import ColorContrastCheckerPage from '../pages/apps/ColorContrastCheckerPage';
 import QrCodeGeneratorPage from '../pages/apps/QrCodeGeneratorPage';
+import JsonPimlConverterPage from '../pages/apps/JsonPimlConverterPage';
 import SettingsPage from '../pages/SettingsPage'; // Import SettingsPage
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -341,6 +342,7 @@ function AnimatedRoutes() {
         <Route path="/apps::jf" element={<Navigate to="/apps/json-formatter" replace />} />
         <Route path="/apps::ccc" element={<Navigate to="/apps/color-contrast-checker" replace />} />
         <Route path="/apps::qr" element={<Navigate to="/apps/qr-code-generator" replace />} />
+        <Route path="/apps::jpc" element={<Navigate to="/apps/json-piml-converter" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -620,6 +622,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <QrCodeGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/json-piml-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <JsonPimlConverterPage />
             </motion.div>
           }
         />

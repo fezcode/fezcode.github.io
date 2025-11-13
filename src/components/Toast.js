@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
 
-const Toast = ({ id, title, message, duration = 3000, removeToast }) => {
+const Toast = ({ id, title, message, duration = 3000, type, removeToast }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(id);
@@ -13,14 +13,16 @@ const Toast = ({ id, title, message, duration = 3000, removeToast }) => {
     };
   }, [id, duration, removeToast]);
 
+  const defaultStyle = "text-gray-100 font-arvo py-4 px-10 rounded-lg shadow-lg border backdrop-blur-sm flex items-center justify-between w-96 mb-4 transition-colors"
+  const successStyle = " bg-toast-background border-toast-border hover:bg-toast-background/90"
+  const errorStyle = " bg-toast-error-background border-toast-error-border hover:bg-toast-error-background/90"
   return (
     <motion.div
       initial={{ x: '100%', opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-      className="text-gray-100 font-arvo py-4 px-10 rounded-lg shadow-lg border backdrop-blur-sm flex items-center justify-between w-96 mb-4
-       transition-colors bg-toast-background border-toast-border hover:bg-toast-background/90"
+      className={ `${defaultStyle} ${type === "error" ? `${errorStyle}` : `${successStyle}` }` }
     >
       <div className="flex flex-col text-sm group w-max flex-grow">
         <span className="text-base text-red-100">{title}</span>
