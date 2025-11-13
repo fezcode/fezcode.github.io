@@ -25,6 +25,10 @@ Every file should end with `.txt` format however you can write `markdown` in it 
 
 **Important**: Tables are not supported.
 
+[A Markdown Example](./MarkdownExample.md) is added for to show you which elements are supported.
+
+When you don't have to show underline in a `h2` (`##`), use `h3` (`###`) header instead. Do not go under h3. (i.e. do not use h4 and below)
+
 ## Book and Author Structure (books.piml)
 
 The `books.piml` file is a PIML document that, when parsed, results in an object containing `authors` and `books` arrays.
