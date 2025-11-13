@@ -17,6 +17,7 @@
   text-align: center;
   background-size: cover;
   background-position: center;
+  background-attachment: fixed; /* Keep it fixed relative to viewport */
   position: relative;
 }
 
@@ -232,7 +233,7 @@
 
 .dnd-card h3 {
   font-family: 'Grenze Gotisch', cursive;
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: #ff9d7e;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
@@ -250,7 +251,7 @@
 
 .dnd-author-card {
   background-color: rgba(50, 30, 30, 0.7); /* Similar to about card */
-  padding: 1.5rem;
+  padding: 2.5rem 1.5rem;
   width: 350px; /* Fixed width for consistency with dnd-card */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 8px;
@@ -264,6 +265,28 @@
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+}
+
+.dnd-author-card::before,
+.dnd-author-card::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 30px; /* Adjusted height for author card */
+  background-image: url('../../public/images/stories/border.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.dnd-author-card::before {
+  top: 0px;
+}
+
+.dnd-author-card::after {
+  bottom: 0px;
 }
 
 .dnd-author-image {

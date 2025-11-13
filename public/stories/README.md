@@ -36,8 +36,16 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 ```piml
 (authors)
   > (author)
-    (name) fezcode
+    (name) Samil
+    (alias) fezcode
     (website) https://fezcode.com
+    (image) https://avatars.githubusercontent.com/u/49845895?v=4
+  > (author)
+    (name) Sabri
+    (alias) TheLastRoadRunner
+    (website) https://github.com/TheLastRoadRunner
+    (image) https://avatars.githubusercontent.com/u/99679216?v=4
+  # more authors.
 
 (books)
   > (book)
@@ -72,7 +80,9 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 ### Author Object Properties:
 
 *   `name` (String): The name of the author.
+*   `alias` (String): A unique alias for the author, used to link episodes to this author.
 *   `website` (String, Optional): The website or URL associated with the author.
+*   `image` (String): A URL to the author's profile picture.
 
 ### Book Object Properties:
 
@@ -86,7 +96,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 *   `id` (Number): A unique identifier for the episode within its book.
 *   `filename` (String): The relative path to the plain text file containing the episode's content. This path is relative to the `public/stories/` directory (e.g., `book-one/episode1.txt`).
 *   `title` (String): The title of the episode.
-*   `author` (String): The author of the episode.
+*   `author` (String): The alias of the author of the episode, matching an `alias` in the `authors` section.
 *   `date` (String): The original release date of the episode.
 *   `updated` (String): The last update date of the episode.
 
