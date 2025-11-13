@@ -34,6 +34,7 @@
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "pull-stories": "git subtree pull --prefix public/stories fezcodex-stories main --squash",
+    "push-stories": "git subtree push --prefix public/stories fezcodex-stories main",
     "generate-wallpapers": "node scripts/generateWallpapers.js",
     "prestart": "npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap",
     "start": "craco start",
