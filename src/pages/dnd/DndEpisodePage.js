@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import {Link, useParams} from 'react-router-dom';
 import { motion } from 'framer-motion';
-import '../styles/dnd.css';
-import { DndContext } from '../context/DndContext'; // Import DndContext
-import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
-import dndWallpapers from '../utils/dndWallpapers';
-import useSeo from "../hooks/useSeo";
+import '../../styles/dnd.css';
+import { DndContext } from '../../context/DndContext'; // Import DndContext
+import { parseWallpaperName } from '../../utils/dndUtils'; // Import parseWallpaperName
+import dndWallpapers from '../../utils/dndWallpapers';
+import useSeo from "../../hooks/useSeo";
 import piml from 'piml';
 
 const pageVariants = {

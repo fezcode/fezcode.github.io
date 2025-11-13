@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { DndContext } from '../context/DndContext';
+import { DndContext } from '../../context/DndContext';
 import DndLogo from './DndLogo'; // Import DndLogo
 
 const DndFooter = () => {

@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import '../styles/dnd.css';
-import { DndContext } from '../context/DndContext';
-import { parseWallpaperName } from '../utils/dndUtils';
-import dndWallpapers from '../utils/dndWallpapers';
-import DndCard from '../components/DndCard';
-import useSeo from "../hooks/useSeo";
+import '../../styles/dnd.css';
+import { DndContext } from '../../context/DndContext';
+import { parseWallpaperName } from '../../utils/dndUtils';
+import dndWallpapers from '../../utils/dndWallpapers';
+import DndCard from '../../components/dnd/DndCard';
+import useSeo from "../../hooks/useSeo";
 
 const DndPage = () => {
   useSeo({

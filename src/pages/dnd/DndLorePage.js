@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react'; // Added useState, useEffect, and useContext
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import '../styles/dnd.css';
-import { DndContext } from '../context/DndContext'; // Import DndContext
-import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
-import dndWallpapers from '../utils/dndWallpapers';
-import DndCard from '../components/DndCard'; // Import DndCard
+import '../../styles/dnd.css';
+import { DndContext } from '../../context/DndContext'; // Import DndContext
+import { parseWallpaperName } from '../../utils/dndUtils'; // Import parseWallpaperName
+import dndWallpapers from '../../utils/dndWallpapers';
+import DndCard from '../../components/dnd/DndCard'; // Import DndCard
 import Slider from 'react-slick'; // Import Slider
 import 'slick-carousel/slick/slick.css'; // Import slick-carousel CSS
 import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme CSS
-import useSeo from "../hooks/useSeo";
+import useSeo from "../../hooks/useSeo";
 import piml from 'piml';
 
 const pageVariants = {

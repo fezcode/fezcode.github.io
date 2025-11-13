@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/dnd.css';
+import '../../styles/dnd.css';
 
 const DndCard = ({ title, author, link, backgroundImage, className, overlayColor }) => {
   return (

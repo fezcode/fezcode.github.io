@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import '../styles/dnd.css'; // D&D styling is desired
-import useSeo from "../hooks/useSeo";
+import '../../styles/dnd.css'; // D&D styling is desired
+import useSeo from "../../hooks/useSeo";
 
 const pageVariants = {
   initial: {

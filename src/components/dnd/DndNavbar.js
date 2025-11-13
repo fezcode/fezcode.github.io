@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { DndContext } from '../context/DndContext'; // Import DndContext
+import { DndContext } from '../../context/DndContext'; // Import DndContext
 
 const DndNavbar = () => {
   const { breadcrumbs } = useContext(DndContext); // Get breadcrumbs from context

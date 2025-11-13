@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
-import DndNavbar from './DndNavbar';
-import DndFooter from './DndFooter';
+import DndNavbar from './dnd/DndNavbar';
+import DndFooter from './dnd/DndFooter';
 import { useLocation } from 'react-router-dom';
 import Search from './Search'; // Import the Search component
 

@@ -29,7 +29,8 @@ const Search = ({ isVisible }) => {
         const posts = await postsRes.json();
         const projects = await projectsRes.json();
         const logs = await logsRes.json();
-        const apps = await appsRes.json();
+        const appsData = await appsRes.json();
+        const allApps = Object.values(appsData).flatMap(category => category.apps);
 
         const allPosts = posts.flatMap(item =>
           item.series ? item.series.posts.map(p => ({ ...p, series: item.title })) : item
@@ -49,7 +50,7 @@ const Search = ({ isVisible }) => {
           { title: 'Random', slug: '/random', type: 'route' },
         ];
 
-        setData({ posts: allPosts, projects: projects, logs: logs, routes: routes, apps: apps }); // Include routes in data
+        setData({ posts: allPosts, projects: projects, logs: logs, routes: routes, apps: allApps }); // Include routes in data
       } catch (error) {
         console.error('Failed to fetch search data:', error);
       }
