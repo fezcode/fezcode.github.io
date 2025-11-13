@@ -1,0 +1,92 @@
+(authors)
+  > (author)
+    (name) Samil
+    (alias) fezcode
+    (website) https://fezcode.com
+    (image) https://avatars.githubusercontent.com/u/49845895?v=4
+  > (author)
+    (name) Sabri
+    (alias) TheLastRoadRunner
+    (website) https://github.com/TheLastRoadRunner
+    (image) https://avatars.githubusercontent.com/u/99679216?v=4
+
+(books)
+  > (book)
+    (bookId) 1
+    (bookTitle) Book One: The Shadowed Path
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+    (overlay) red
+
+  > (book)
+    (bookId) 2
+    (bookTitle) Book Two: Separated Riches
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+    (overlay) blue
+
+  > (book)
+    (bookId) 3
+    (bookTitle) Book Three: Separated Riches
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+    (overlay) black
+
+  > (book)
+    (bookId) 4
+    (bookTitle) Book Four: Separated Riches
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) book-one/episode1.txt
+        (title) Episode 1: The Whispering Woods
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+      > (episode)
+        (id) 2
+        (filename) book-one/episode2.txt
+        (title) Episode 2: The Goblin Ambush
+        (author) fezcode
+        (date) 2025-11-14
+        (updated) 2025-11-14
+    (overlay) green
