@@ -248,6 +248,107 @@
 
 }
 
+.dnd-author-card {
+  background-color: rgba(50, 30, 30, 0.7); /* Similar to about card */
+  padding: 1.5rem;
+  width: 350px; /* Fixed width for consistency with dnd-card */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  color: #E8E0B0;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dnd-author-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #CD7F32; /* Bronze border */
+  margin-bottom: 0.5rem;
+}
+
+.dnd-author-name {
+  font-family: 'Grenze Gotisch', cursive;
+  font-size: 1.8rem;
+  color: #ff9d7e;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  -webkit-text-stroke: 1px #000;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.dnd-author-alias {
+  font-size: 1.1rem;
+  color: #E8E0B0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.dnd-author-website a {
+  color: #FA8072; /* Salmon Red */
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.dnd-author-website a:hover {
+  color: #ff8c00; /* DarkOrange */
+  text-decoration: underline;
+}
+
+.dnd-author-books {
+  margin-top: 1rem;
+  text-align: left;
+  width: 100%;
+}
+
+.dnd-author-books h4 {
+  color: #FFFACD;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+
+.dnd-author-books-separator {
+  border: none;
+  height: 2px;
+  background-color: #CD7F32; /* Bronze color, similar to card border */
+  margin: 0.5rem auto 1rem auto;
+  width: 80%;
+}
+
+.dnd-author-books ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto; /* Center the list */
+  width: 80%; /* Match the width of the hr */
+}
+
+.dnd-author-books li {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.dnd-author-books li a {
+  color: #FA8072; /* Salmon Red */
+  text-decoration: none;
+}
+
+.dnd-author-books li a:hover {
+  color: #FFB03A;
+  text-decoration: underline;
+}
+
 .dnd-content-box h2 {
 
   color: #FFFACD;

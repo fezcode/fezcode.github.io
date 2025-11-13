@@ -1,7 +1,14 @@
 (authors)
   > (author)
-    (name) fezcode
+    (name) Samil
+    (alias) fezcode
     (website) https://fezcode.com
+    (image) https://avatars.githubusercontent.com/u/49845895?v=4
+  > (author)
+    (name) Sabri
+    (alias) TheLastRoadRunner
+    (website) https://github.com/TheLastRoadRunner
+    (image) https://avatars.githubusercontent.com/u/99679216?v=4
 
 (books)
   > (book)
