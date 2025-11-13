@@ -2,10 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import AppCard from '../components/AppCard';
-import usePageTitle from '../utils/usePageTitle';
+import useSeo from "../hooks/useSeo";
 
 function AppPage() {
-  usePageTitle('Apps');
+  useSeo({
+    title: 'Apps | Fezcodex',
+    description: 'All the available apps created within the Fezcodex.',
+    keywords: ['Fezcodex', 'apps', 'applications', 'blog', 'dev', 'rant', 'series', 'd&d'],
+    ogTitle: 'Apps | Fezcodex',
+    ogDescription: 'All the available apps created within the Fezcodex.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Apps | Fezcodex',
+    twitterDescription: 'All the available apps created within the Fezcodex.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
+
   const [apps, setApps] = useState([]);
 
   useEffect(() => {
