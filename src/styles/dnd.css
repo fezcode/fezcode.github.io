@@ -62,7 +62,7 @@
   left: 0;
   right: 0;
   height: 50px; /* Adjust height as needed */
-  background-image: url('../../public/images/dnd/border.jpg');
+  background-image: url('../../public/images/stories/border.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.3; /* Make it semi-transparent */
@@ -109,7 +109,7 @@
 
 .dnd-card {
   box-sizing: border-box;
-  background-image: url('../../public/images/dnd/parchment.png');
+  background-image: url('../../public/images/stories/parchment.png');
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark background */
   background-size: contain; /* Preserve image ratio */
   background-repeat: no-repeat; /* Prevent image repetition */
@@ -137,7 +137,7 @@
 }
 
 .dnd-card-parchment {
-  background-image: url('../../public/images/dnd/parchment.png');
+  background-image: url('../../public/images/stories/parchment.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

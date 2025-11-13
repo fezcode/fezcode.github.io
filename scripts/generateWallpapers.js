@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const wallpapersDir = path.join(__dirname, '..', 'public', 'images', 'dnd', 'wallies');
+const wallpapersDir = path.join(__dirname, '..', 'public', 'images', 'stories', 'wallies');
 const outputFile = path.join(__dirname, '..', 'src', 'utils', 'dndWallpapers.js');
 
 fs.readdir(wallpapersDir, (err, files) => {
@@ -16,7 +16,7 @@ fs.readdir(wallpapersDir, (err, files) => {
   });
 
   // Construct each path string with quotes and indentation
-  const formattedPaths = imageFiles.map(file => `  '/images/dnd/wallies/${file}'`);
+  const formattedPaths = imageFiles.map(file => `  '/images/stories/wallies/${file}'`);
 
   // Join them with a comma and newline
   const arrayContent = formattedPaths.join(',\n');

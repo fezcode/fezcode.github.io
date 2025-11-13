@@ -84,9 +84,9 @@ function DndEpisodePage() {
           const currentEpisode = foundBook.episodes[currentEpisodeIndex];
           setEpisodeTitle(currentEpisode.title);
           setBreadcrumbs([
-            { label: 'S&F', path: '/dnd' },
-            { label: 'The Lore', path: '/dnd/lore' },
-            { label: foundBook.bookTitle, path: `/dnd/books/${foundBook.bookId}` },
+            { label: 'S&F', path: '/stories' },
+            { label: 'The Lore', path: '/stories/lore' },
+            { label: foundBook.bookTitle, path: `/stories/books/${foundBook.bookId}` },
             { label: currentEpisode.title },
           ]);
           // Fetch episode content
@@ -108,8 +108,8 @@ function DndEpisodePage() {
           setEpisodeTitle("Episode Not Found");
           setEpisodeContent("Episode not found in this book.");
           setBreadcrumbs([
-            { label: 'S&F', path: '/dnd' },
-            { label: 'The Lore', path: '/dnd/lore' },
+            { label: 'S&F', path: '/stories' },
+            { label: 'The Lore', path: '/stories/lore' },
             { label: 'Episode Not Found' },
           ]);
         }
@@ -117,10 +117,9 @@ function DndEpisodePage() {
         setEpisodeTitle("Book Not Found");
         setEpisodeContent("Book not found.");
         setBreadcrumbs([
-          { label: 'S&F', path: '/dnd' },
-          { label: 'The Lore', path: '/dnd/lore' },
-          { label: 'Book Not Found' },
-        ]);
+                      { label: 'S&F', path: '/stories' },
+                      { label: 'The Lore', path: '/stories/lore' },
+                      { label: 'Book Not Found' },        ]);
       }
     }
   }, [allBooks, bookId, episodeId, setBreadcrumbs]); // Dependencies for this useEffect
@@ -153,18 +152,18 @@ function DndEpisodePage() {
         <div className="flex flex-wrap justify-between w-[90%] max-w-[800px] mx-auto my-8 z-10 gap-4">
           <div className="flex-1 text-left min-w-[200px]">
             {prevEpisode && (
-              <Link to={`/dnd/books/${bookId}/pages/${prevEpisode.id}`} className="dnd-episode-nav-button">
+              <Link to={`/stories/books/${bookId}/pages/${prevEpisode.id}`} className="dnd-episode-nav-button">
                 &larr; Previous Episode
               </Link>)}
           </div>
           <div className="flex-1 text-center min-w-[200px]">
-            <Link to="/dnd/lore" className="dnd-episode-nav-button">
+            <Link to="/stories/lore" className="dnd-episode-nav-button">
               Show All Episodes
             </Link>
           </div>
           <div className="flex-1 text-right min-w-[200px]">
             {nextEpisode && (
-              <Link to={`/dnd/books/${bookId}/pages/${nextEpisode.id}`} className="dnd-episode-nav-button">
+              <Link to={`/stories/books/${bookId}/pages/${nextEpisode.id}`} className="dnd-episode-nav-button">
                 Next Episode &rarr;
               </Link>)}
           </div>

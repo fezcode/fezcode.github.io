@@ -46,12 +46,12 @@ function DndNotFoundPage() {
     >
       <div className="dnd-hero" style={{ backgroundColor: '#282c34', position: 'relative' }}> {/* Adjust height for 404 */}
         <img
-          src={`${process.env.PUBLIC_URL}/images/dnd/dragon-left.png`}
+          src={`${process.env.PUBLIC_URL}/images/stories/dragon-left.png`}
           alt="Dragon Left"
           style={{ position: 'absolute', left: '10%', top: '50%', transform: 'translateY(-50%)', width: '400px', zIndex: 1 }}
         />
         <img
-          src={`${process.env.PUBLIC_URL}/images/dnd/dragon-left.png`}
+          src={`${process.env.PUBLIC_URL}/images/stories/dragon-left.png`}
           alt="Dragon Right Symmetrical"
           style={{ position: 'absolute', right: '10%', top: '50%', transform: 'translateY(-50%) scaleX(-1)', width: '400px', zIndex: 1 }}
         />

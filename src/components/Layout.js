@@ -31,7 +31,7 @@ const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch }) => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  if (location.pathname.startsWith('/dnd')) {
+  if (location.pathname.startsWith('/stories')) {
     return (
       <DndProvider>
         <div className="bg-gray-950 min-h-screen font-sans flex flex-col">

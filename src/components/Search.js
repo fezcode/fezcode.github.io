@@ -43,7 +43,8 @@ const Search = ({ isVisible }) => {
           { title: 'About Me', slug: '/about', type: 'route' },
           { title: 'Logs', slug: '/logs', type: 'route' },
           { title: 'Settings', slug: '/settings', type: 'route' },
-          { title: 'Dungeons and Dragons', slug: '/dnd', type: 'route' },
+          { title: 'Dungeons and Dragons', slug: '/stories', type: 'route' },
+          { title: 'Stories', slug: '/stories', type: 'route' },
           { title: 'Apps', slug: '/apps', type: 'route' },
           { title: 'Random', slug: '/random', type: 'route' },
         ];

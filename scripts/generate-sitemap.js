@@ -14,10 +14,10 @@ const generateSitemap = async () => {
     '/blog',
     '/projects',
     '/logs',
-    '/dnd',
+    '/stories',
     '/settings',
     '/apps',
-    '/dnd/lore',
+    '/stories/lore',
   ];
 
   staticRoutes.forEach(route => {
@@ -103,16 +103,17 @@ const generateSitemap = async () => {
     console.error('Error reading logs.json:', error);
   }
 
-  // Add dynamic routes from dnd/episodes.json
+  // Add dynamic routes from stories/books.piml
   try {
-    const dndEpisodesJsonPath = path.join(publicDirectory, 'dnd', 'episodes.json');
-    const dndEpisodesJson = fs.readFileSync(dndEpisodesJsonPath, 'utf-8');
-    const dndEpisodesData = JSON.parse(dndEpisodesJson);
+    const pimlPath = path.join(publicDirectory, 'stories', 'books.piml');
+    const pimlContent = fs.readFileSync(pimlPath, 'utf-8');
+    const piml = require('piml'); // Import piml here
+    const dndData = piml.parse(pimlContent);
 
-    dndEpisodesData.forEach(book => {
+    dndData.books.forEach(book => { // Access dndData.books
       // Add D&D book page
       urls.push({
-        loc: `${baseUrl}/#/dnd/books/${book.bookId}`,
+        loc: `${baseUrl}/#/stories/books/${book.bookId}`,
         lastmod: new Date().toISOString(), // Assuming book data doesn't have a specific lastmod
         changefreq: 'monthly',
         priority: '0.6',
@@ -120,7 +121,7 @@ const generateSitemap = async () => {
       // Add individual D&D episodes
       book.episodes.forEach(episode => {
         urls.push({
-          loc: `${baseUrl}/#/dnd/books/${book.bookId}/pages/${episode.id}`,
+          loc: `${baseUrl}/#/stories/books/${book.bookId}/pages/${episode.id}`,
           lastmod: new Date().toISOString(), // Assuming episode data doesn't have a specific lastmod
           changefreq: 'weekly',
           priority: '0.5',
@@ -128,7 +129,7 @@ const generateSitemap = async () => {
       });
     });
   } catch (error) {
-    console.error('Error reading dnd/episodes.json:', error);
+    console.error('Error reading stories/books.piml:', error);
   }
 
   // Construct XML sitemap content

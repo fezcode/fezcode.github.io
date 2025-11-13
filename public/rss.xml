@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 13 Nov 2025 18:57:36 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 13 Nov 2025 22:01:35 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 13 Nov 2025 18:57:36 GMT</pubDate>
+        <pubDate>Thu, 13 Nov 2025 22:01:35 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Fezcodex Stories with `git subtree`]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/fezcodex-stories-with-git-subtrees</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/fezcodex-stories-with-git-subtrees</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 14 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Fezcodex Stories with <code>git subtree</code></h1>
+<p><a href="https://fezcode.com/#/blog/fezcodex-stories-with-git-subtrees">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Publishing to NPM]]></title>
             <description><![CDATA[[object Object]]]></description>

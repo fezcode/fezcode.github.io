@@ -245,7 +245,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
             </button>
             {isExtrasOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
-                <NavLink to="/dnd" className={getLinkClass}>
+                <NavLink to="/stories" className={getLinkClass}>
                   <SwordIcon size={24} />
                   <span>From Serfs and Frauds</span>
                 </NavLink>

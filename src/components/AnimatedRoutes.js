@@ -236,7 +236,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/dnd"
+          path="/stories"
           element={
             <motion.div
               initial="initial"
@@ -251,7 +251,7 @@ function AnimatedRoutes() {
         />
         {/* D&D Lore Page */}
         <Route
-          path="/dnd/lore"
+          path="/stories/lore"
           element={
             <motion.div
               initial="initial"
@@ -266,7 +266,7 @@ function AnimatedRoutes() {
         />
         {/* D&D Book Page */}
         <Route
-          path="/dnd/books/:bookId"
+          path="/stories/books/:bookId"
           element={
             <motion.div
               initial="initial"
@@ -281,7 +281,7 @@ function AnimatedRoutes() {
         />
         {/* D&D Episode Page */}
         <Route
-          path="/dnd/books/:bookId/pages/:episodeId"
+          path="/stories/books/:bookId/pages/:episodeId"
           element={
             <motion.div
               initial="initial"
@@ -657,7 +657,7 @@ function AnimatedRoutes() {
         />
         {/* D&D specific 404 page */}
         <Route
-          path="/dnd/*"
+          path="/stories/*"
           element={
             <motion.div
               initial="initial"

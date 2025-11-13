@@ -61,17 +61,17 @@ function DndBookPage() {
           setPageTitle(foundBook.bookTitle);
           setBreadcrumbs(
             [
-              { label: 'S&F', path: '/dnd' },
-              { label: 'The Lore', path: '/dnd/lore' },
-              { label: foundBook.bookTitle, path: `/dnd/books/${foundBook.bookId}` },
+              { label: 'S&F', path: '/stories' },
+              { label: 'The Lore', path: '/stories/lore' },
+              { label: foundBook.bookTitle, path: `/stories/books/${foundBook.bookId}` },
             ]
           );
         } else {
           setPageTitle('Book Not Found');
           setBreadcrumbs(
             [
-              { label: 'S&F', path: '/dnd' },
-              { label: 'The Lore', path: '/dnd/lore' },
+              { label: 'S&F', path: '/stories' },
+              { label: 'The Lore', path: '/stories/lore' },
               { label: 'Book Not Found' },
             ]
           );
@@ -81,10 +81,9 @@ function DndBookPage() {
         setPageTitle('Error Loading Book');
         setBreadcrumbs(
           [
-            { label: 'S&F', path: '/dnd' },
-            { label: 'The Lore', path: '/dnd/lore' },
-            { label: 'Error Loading Book' },
-          ]
+                          { label: 'S&F', path: '/stories' },
+                          { label: 'The Lore', path: '/stories/lore' },
+                          { label: 'Error Loading Book' },          ]
         );
       }
     };
@@ -136,7 +135,7 @@ function DndBookPage() {
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {book.episodes.map((episode) => (
               <li key={episode.id} style={{ marginBottom: '1rem' }}>
-                <Link to={`/dnd/books/${book.bookId}/pages/${episode.id}`} style={{ color: '#E09500', textDecoration: 'none', fontSize: '1.5rem', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)' }}>
+                <Link to={`/stories/books/${book.bookId}/pages/${episode.id}`} style={{ color: '#E09500', textDecoration: 'none', fontSize: '1.5rem', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)' }}>
                   {episode.title}
                 </Link>
               </li>

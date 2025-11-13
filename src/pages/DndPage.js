@@ -28,7 +28,7 @@ const DndPage = () => {
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([
-      { label: 'S&F', path: '/dnd' },
+      { label: 'S&F', path: '/stories' },
     ]);
   }, [setBgImageName, setBreadcrumbs]);
 
@@ -44,8 +44,8 @@ const DndPage = () => {
           <DndCard
             title="Lore"
             description="Explore the world's history and tales."
-            link="/dnd/lore"
-            backgroundImage={`${process.env.PUBLIC_URL}/images/dnd/parchment.png`}
+            link="/stories/lore"
+            backgroundImage={`${process.env.PUBLIC_URL}/images/stories/parchment.png`}
             className="dnd-card-parchment" // Add the new class
           />
         </div>

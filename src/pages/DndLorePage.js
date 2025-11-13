@@ -51,8 +51,8 @@ function DndLorePage() {
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([
-      { label: 'S&F', path: '/dnd' },
-      { label: 'The Lore', path: '/dnd/lore' },
+      { label: 'S&F', path: '/stories' },
+      { label: 'The Lore', path: '/stories/lore' },
     ]);
   }, [setBgImageName, setBreadcrumbs]);
 
@@ -126,8 +126,8 @@ function DndLorePage() {
                 <DndCard
                   title={book.bookTitle}
                   author={book.episodes && book.episodes.length > 0 ? `${book.episodes[0].author}` : "No author information"}
-                  link={`/dnd/books/${book.bookId}`}
-                  backgroundImage={`${process.env.PUBLIC_URL}/images/dnd/book-cover.png`}
+                  link={`/stories/books/${book.bookId}`}
+                  backgroundImage={`${process.env.PUBLIC_URL}/images/stories/book-cover.png`}
                   overlayColor={book.overlay}
                 />
               </div>
@@ -139,7 +139,7 @@ function DndLorePage() {
             <ul style={{ listStyle: 'none', padding: 0 }}>
               {episodes.map((book) => (
                 <li key={book.bookId} style={{ marginBottom: '1rem' }}>
-                  <Link to={`/dnd/books/${book.bookId}`} className="dnd-list-item-link">
+                  <Link to={`/stories/books/${book.bookId}`} className="dnd-list-item-link">
                     {book.bookTitle}
                   </Link>
                 </li>
