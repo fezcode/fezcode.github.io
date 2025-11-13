@@ -107,7 +107,11 @@ function JsonPimlConverterPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">JSON - PIML Converter</h1>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">JSON &lt;&gt; PIML Converter</h1>
+            <div className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6" role="alert">
+              <strong className="font-bold">Beware:</strong>
+              <span className="block sm:inline ml-2">PIML is in beta. Do not forget that JSON and PIML are not completely compatible.</span>
+            </div>
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

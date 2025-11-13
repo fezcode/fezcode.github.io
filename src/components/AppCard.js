@@ -19,8 +19,7 @@ const AppCard = ({ app }) => {
   return (
     <Link to={to} className="block h-full">
       <div
-        className="group bg-transparent border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl overflow-hidden h-full"
-        style={cardStyle}
+        className="group border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden h-full bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-rose-900/30"
       >
         <div
           className="absolute top-0 left-0 w-full h-full opacity-10 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"
