@@ -33,10 +33,11 @@
   "scripts": {
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
+    "pull-stories": "git subtree pull --prefix public/stories fezcodex-stories main --squash",
     "generate-wallpapers": "node scripts/generateWallpapers.js",
     "prestart": "npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap",
     "start": "craco start",
-    "prebuild": "npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap",
+    "prebuild": "npm run pull-stories && npm run generate-wallpapers && npm run generate-rss && npm run generate-sitemap",
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",

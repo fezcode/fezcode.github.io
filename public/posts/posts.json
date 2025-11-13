@@ -1,5 +1,15 @@
 [
   {
+    "slug": "fezcodex-stories-with-git-subtrees",
+    "title": "Fezcodex Stories with `git subtree`",
+    "date": "2025-11-14",
+    "updated": "2025-11-14",
+    "description": "A short explanation of git subtrees",
+    "tags": ["git", "subtree", "dnd", "stories"],
+    "category": "dev",
+    "filename": "fezcodex-stories-with-git-subtrees.txt"
+  },
+  {
     "slug": "publish-to-npm",
     "title": "Publishing to NPM",
     "date": "2025-11-13",
