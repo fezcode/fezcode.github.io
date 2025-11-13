@@ -9,14 +9,74 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 06 Nov 2025 22:37:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 13 Nov 2025 01:37:01 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 06 Nov 2025 22:37:00 GMT</pubDate>
+        <pubDate>Thu, 13 Nov 2025 01:37:01 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Publishing to NPM]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/publish-to-npm</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/publish-to-npm</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 13 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>How to Publish a Node.js Library to npm</h1>
+<p><a href="https://fezcode.com/#/blog/publish-to-npm">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Parenthesis Intended Markup Language]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/piml</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/piml</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 12 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>piml</h1>
+<p><a href="https://fezcode.com/#/blog/piml">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Image Toolkit Deep Dive]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/image-toolkit-deep-dive</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/image-toolkit-deep-dive</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Image Toolkit Deep Dive</h1>
+<p><a href="https://fezcode.com/#/blog/image-toolkit-deep-dive">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Picker Wheel Deep Dive]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/picker-wheel-deep-dive</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/picker-wheel-deep-dive</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 09 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>A Deep Dive into the Picker Wheel: Canvas, React, and CSS</h1>
+<p><a href="https://fezcode.com/#/blog/picker-wheel-deep-dive">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Find Minimum in Rotated Sorted Array]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 08 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Find Minimum in Rotated Sorted Array</h1>
+<p><a href="https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Demystifying Tailwind CSS]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/demystifying-tailwind-css</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/demystifying-tailwind-css</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 07 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Demystifying Tailwind CSS in <code>fezcodex</code>: A Utility-First Approach</h1>
+<p><a href="https://fezcode.com/#/blog/demystifying-tailwind-css">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Lowest Common Ancestor with Binary Search Tree]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -112,6 +172,16 @@
             <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>015 - React: <code>useRef</code> Hook</h1>
 <p><a href="https://fezcode.com/#/blog/react-refs-useref">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[How React Toasts Work in `fezcodex`]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-toast-explanation-in-details</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-toast-explanation-in-details</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Oct 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Deep Dive: How React Toasts Work in <code>fezcodex</code></h1>
+<p><a href="https://fezcode.com/#/blog/react-toast-explanation-in-details">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[React Custom Hooks]]></title>

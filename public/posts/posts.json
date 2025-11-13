@@ -13,7 +13,7 @@
     "slug": "piml",
     "title": "Parenthesis Intended Markup Language",
     "date": "2025-11-12",
-    "updated": "2025-11-12",
+    "updated": "2025-11-13",
     "description": "A deep dive into PIML, a human-readable data serialization format, its syntax, data types, and comparison with JSON, YAML, and TOML.",
     "tags": ["piml", "data-format", "serialization", "markup", "dev"],
     "category": "dev",
