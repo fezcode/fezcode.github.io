@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import usePageTitle from '../utils/usePageTitle';
-import PostItem from '../components/PostItem';
+import PostItem from "../components/PostItem";
 import { ArrowLeftIcon } from '@phosphor-icons/react';
+import useSeo from "../hooks/useSeo";
 
 const SeriesPage = () => {
   const { seriesSlug } = useParams();
   const [seriesPosts, setSeriesPosts] = useState([]);
   const [seriesTitle, setSeriesTitle] = useState('');
   const [loading, setLoading] = useState(true);
-  const [pageTitle, setPageTitle] = useState('Loading Series...');
 
-  usePageTitle(pageTitle);
+  useSeo({
+    title: `${seriesTitle} | Fezcodex`,
+    description: `Explore the posts in the "${seriesTitle}" series on Fezcodex.`,
+    keywords: ['Fezcodex', 'blog', 'series', seriesTitle],
+    ogTitle: `${seriesTitle} | Fezcodex`,
+    ogDescription: `Explore the posts in the "${seriesTitle}" series on Fezcodex.`,
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: `${seriesTitle} | Fezcodex`,
+    twitterDescription: `Explore the posts in the "${seriesTitle}" series on Fezcodex.`,
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
   useEffect(() => {
     const fetchSeriesPosts = async () => {
@@ -48,24 +58,20 @@ const SeriesPage = () => {
           if (filteredPosts.length > 0) {
             setSeriesPosts(filteredPosts);
             setSeriesTitle(filteredPosts[0].series.title);
-            setPageTitle(`${filteredPosts[0].series.title} - Series`);
           } else {
             // Handle series not found
             setSeriesPosts([]);
             setSeriesTitle('Series Not Found');
-            setPageTitle('Series Not Found');
           }
         } else {
           console.error('Failed to fetch posts.json');
           setSeriesPosts([]);
           setSeriesTitle('Error');
-          setPageTitle('Error');
         }
       } catch (error) {
         console.error('Error fetching series posts:', error);
         setSeriesPosts([]);
         setSeriesTitle('Error');
-        setPageTitle('Error');
       } finally {
         setLoading(false);
       }

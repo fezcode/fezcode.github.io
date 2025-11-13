@@ -13,6 +13,7 @@ import PostMetadata from '../components/metadata-cards/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
 import ImageModal from '../components/ImageModal';
+import Seo from '../components/Seo';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
@@ -312,6 +313,18 @@ const BlogPostPage = () => {
 
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
+      <Seo
+        title={`${post.attributes.title} | Fezcodex`}
+        description={post.body.substring(0, 150)}
+        keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
+        ogTitle={`${post.attributes.title} | Fezcodex`}
+        ogDescription={post.body.substring(0, 150)}
+        ogImage={post.attributes.image || 'https://fezcode.github.io/logo512.png'}
+        twitterCard="summary_large_image"
+        twitterTitle={`${post.attributes.title} | Fezcodex`}
+        twitterDescription={post.body.substring(0, 150)}
+        twitterImage={post.attributes.image || 'https://fezcode.github.io/logo512.png'}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">

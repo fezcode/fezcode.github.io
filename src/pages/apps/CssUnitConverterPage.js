@@ -2,10 +2,21 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 
 const CssUnitConverterPage = () => {
-  usePageTitle('CSS Unit Converter');
+  useSeo({
+    title: 'CSS Unit Converter | Fezcodex',
+    description: 'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
+    keywords: ['Fezcodex', 'CSS unit converter', 'px to rem', 'em to px', 'vw to px', 'css tools'],
+    ogTitle: 'CSS Unit Converter | Fezcodex',
+    ogDescription: 'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'CSS Unit Converter | Fezcodex',
+    twitterDescription: 'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
   const [inputValue, setInputValue] = useState('');
   const [inputUnit, setInputUnit] = useState('px');

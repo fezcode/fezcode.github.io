@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import usePageTitle from '../utils/usePageTitle';
-import '../styles/dnd.css'; // Assuming D&D styling is desired
+import '../styles/dnd.css'; // D&D styling is desired
+import useSeo from "../hooks/useSeo";
 
 const pageVariants = {
   initial: {
@@ -22,7 +22,18 @@ const pageTransition = {
 };
 
 function DndNotFoundPage() {
-  usePageTitle('404 - Page Not Found (D&D)');
+  useSeo({
+    title: '404 - Lost in the Dungeon! | Fezcodex',
+    description: 'The page you are looking for does not exist in this D&D realm. Perhaps you took a wrong turn at the last crossroads.',
+    keywords: ['Fezcodex', 'd&d', 'dnd', '404', 'not found', 'lost', 'dungeon'],
+    ogTitle: '404 - Lost in the Dungeon! | Fezcodex',
+    ogDescription: 'The page you are looking for does not exist in this D&D realm. Perhaps you took a wrong turn at the last crossroads.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: '404 - Lost in the Dungeon! | Fezcodex',
+    twitterDescription: 'The page you are looking for does not exist in this D&D realm. Perhaps you took a wrong turn at the last crossroads.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
   return (
     <motion.div

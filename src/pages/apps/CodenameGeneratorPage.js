@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, Sparkle, Copy } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
-import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
+import colors from '../../config/colors';
 
 const prefixes = [
   'Operation', 'Project', 'Protocol', 'Directive', 'Initiative', 'Task Force', 'Unit', 'Division', 'Cell', 'Asset',
@@ -41,7 +41,18 @@ const nouns = [
 ];
 
 const CodenameGeneratorPage = () => {
-  usePageTitle('Codename Generator');
+  useSeo({
+    title: 'Codename Generator | Fezcodex',
+    description: 'Generate random codenames for your projects, games, or anything else.',
+    keywords: ['Fezcodex', 'codename generator', 'random name generator', 'project names'],
+    ogTitle: 'Codename Generator | Fezcodex',
+    ogDescription: 'Generate random codenames for your projects, games, or anything else.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Codename Generator | Fezcodex',
+    twitterDescription: 'Generate random codenames for your projects, games, or anything else.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [codename, setCodename] = useState('');
   const { addToast } = useToast();
 

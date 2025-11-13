@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 
 function UuidGeneratorPage() {
-  usePageTitle('UUID Generator');
+  useSeo({
+    title: 'UUID Generator | Fezcodex',
+    description: 'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
+    keywords: ['Fezcodex', 'UUID generator', 'GUID generator', 'unique ID', 'UUID v4'],
+    ogTitle: 'UUID Generator | Fezcodex',
+    ogDescription: 'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'UUID Generator | Fezcodex',
+    twitterDescription: 'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [uuid, setUuid] = useState('');
   const { addToast } = useToast();
 

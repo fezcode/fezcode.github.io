@@ -1,15 +1,26 @@
 import React, { useState, useCallback } from 'react';
-import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, DownloadSimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 import { QRCodeCanvas } from 'qrcode.react'; // Import the QRCodeCanvas component
 
 const QrCodeGeneratorPage = () => {
-  usePageTitle('QR Code Generator');
-  const { addToast } = useToast();
+  useSeo({
+    title: 'QR Code Generator | Fezcodex',
+    description: 'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
+    keywords: ['Fezcodex', 'QR code generator', 'QR code', 'generate QR', 'QR code online'],
+    ogTitle: 'QR Code Generator | Fezcodex',
+    ogDescription: 'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'QR Code Generator | Fezcodex',
+    twitterDescription: 'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
+  const { addToast } = useToast();
   const [text, setText] = useState('https://fezcode.com');
   const [version, setVersion] = useState(7); // Default QR code version
   const [errorCorrectionLevel, setErrorCorrectionLevel] = useState('M'); // L, M, Q, H

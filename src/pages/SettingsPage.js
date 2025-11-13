@@ -1,13 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Import Link
-import { ArrowLeft } from '@phosphor-icons/react'; // Import ArrowLeft icon
+import { Link } from 'react-router-dom';
+import { ArrowLeft } from '@phosphor-icons/react';
 import { useAnimation } from '../context/AnimationContext';
-import usePageTitle from '../utils/usePageTitle';
-import colors from '../config/colors'; // Import colors
-import CustomToggle from '../components/CustomToggle'; // Import CustomToggle
+import colors from '../config/colors';
+import CustomToggle from '../components/CustomToggle';
+import useSeo from "../hooks/useSeo";
 
 const SettingsPage = () => {
-  usePageTitle('Settings');
+  useSeo({
+    title: 'Settings | Fezcodex',
+    description: 'Manage your application preferences for Fezcodex.',
+    keywords: ['Fezcodex', 'settings', 'preferences', 'animation'],
+    ogTitle: 'Settings | Fezcodex',
+    ogDescription: 'Manage your application preferences for Fezcodex.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Settings | Fezcodex',
+    twitterDescription: 'Manage your application preferences for Fezcodex.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const {
     isAnimationEnabled,
     toggleAnimation,

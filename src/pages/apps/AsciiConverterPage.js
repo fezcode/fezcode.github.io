@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
-import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 function AsciiConverterPage() {
-  usePageTitle('Text to ASCII Converter');
+  useSeo({
+    title: 'Text to ASCII Converter | Fezcodex',
+    description: 'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
+    keywords: ['Fezcodex', 'ASCII converter', 'text to ASCII', 'binary converter', 'text to binary'],
+    ogTitle: 'Text to ASCII Converter | Fezcodex',
+    ogDescription: 'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Text to ASCII Converter | Fezcodex',
+    twitterDescription: 'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [inputText, setInputText] = useState('');
   const [asciiOutput, setAsciiOutput] = useState('');
   const [binaryOutput, setBinaryOutput] = useState('');

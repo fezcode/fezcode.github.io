@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useProjects } from '../utils/projectParser';
 import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
+import Seo from '../components/Seo';
 
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 
@@ -63,6 +64,18 @@ const ProjectPage = () => {
 
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
+      <Seo
+        title={`${project.title} | Fezcodex`}
+        description={project.shortDescription}
+        keywords={project.tags ? project.tags.join(', ') : ''}
+        ogTitle={`${project.title} | Fezcodex`}
+        ogDescription={project.shortDescription}
+        ogImage={project.image || 'https://fezcode.github.io/logo512.png'}
+        twitterCard="summary_large_image"
+        twitterTitle={`${project.title} | Fezcodex`}
+        twitterDescription={project.shortDescription}
+        twitterImage={project.image || 'https://fezcode.github.io/logo512.png'}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">

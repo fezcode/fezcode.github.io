@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'; // Added useState, useEffect, and useContext
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import usePageTitle from '../utils/usePageTitle';
 import '../styles/dnd.css';
 import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
@@ -10,6 +9,7 @@ import DndCard from '../components/DndCard'; // Import DndCard
 import Slider from 'react-slick'; // Import Slider
 import 'slick-carousel/slick/slick.css'; // Import slick-carousel CSS
 import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme CSS
+import useSeo from "../hooks/useSeo";
 
 const pageVariants = {
   initial: {
@@ -30,7 +30,18 @@ const pageTransition = {
 };
 
 function DndLorePage() {
-  usePageTitle('The Lore');
+  useSeo({
+    title: 'The Lore | From Serfs and Frauds',
+    description: 'Explore the world\'s history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.',
+    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'lore', 'history', 'tales'],
+    ogTitle: 'The Lore | From Serfs and Frauds',
+    ogDescription: 'Explore the world\'s history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'The Lore | From Serfs and Frauds',
+    twitterDescription: 'Explore the world\'s history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
   const [bgImage, setBgImage] = useState(''); // State for background image
 

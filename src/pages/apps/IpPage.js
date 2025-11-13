@@ -2,11 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, Clipboard as ClipboardIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 
 function IpPage() {
-  usePageTitle('Show my IP');
+  useSeo({
+    title: 'Show my IP | Fezcodex',
+    description: 'Quickly find and display your public IP address.',
+    keywords: ['Fezcodex', 'show my IP', 'what is my IP', 'IP address', 'public IP'],
+    ogTitle: 'Show my IP | Fezcodex',
+    ogDescription: 'Quickly find and display your public IP address.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Show my IP | Fezcodex',
+    twitterDescription: 'Quickly find and display your public IP address.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [ip, setIp] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import { motion } from 'framer-motion';
-import usePageTitle from '../utils/usePageTitle';
 import '../styles/dnd.css';
-// import dndEpisodes from '../utils/dndEpisodes'; // Removed import
-import { Link } from 'react-router-dom'; // Import Link for navigation
 import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
 import dndWallpapers from '../utils/dndWallpapers';
+import useSeo from "../hooks/useSeo";
 
 const pageVariants = {
   initial: {
@@ -35,14 +33,25 @@ function DndEpisodePage() {
   const [book, setBook] = useState(null); // State to store the current book
   const [bgImage, setBgImage] = useState(''); // State for background image
 
+  useSeo({
+    title: `${episodeTitle} | From Serfs and Frauds`,
+    description: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
+    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'episode', episodeTitle],
+    ogTitle: `${episodeTitle} | From Serfs and Frauds`,
+    ogDescription: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: `${episodeTitle} | From Serfs and Frauds`,
+    twitterDescription: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
+
   useEffect(() => {
     const images = dndWallpapers;
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
   }, [setBgImageName]);
-
-  usePageTitle(episodeTitle);
 
   const [allBooks, setAllBooks] = useState([]); // Renamed from allEpisodes to allBooks
 
@@ -142,9 +151,9 @@ function DndEpisodePage() {
         <div className="flex flex-wrap justify-between w-[90%] max-w-[800px] mx-auto my-8 z-10 gap-4">
           <div className="flex-1 text-left min-w-[200px]">
             {prevEpisode && (
-                          <Link to={`/dnd/books/${bookId}/pages/${prevEpisode.id}`} className="dnd-episode-nav-button">
-                            &larr; Previous Episode
-                          </Link>            )}
+              <Link to={`/dnd/books/${bookId}/pages/${prevEpisode.id}`} className="dnd-episode-nav-button">
+                &larr; Previous Episode
+              </Link>)}
           </div>
           <div className="flex-1 text-center min-w-[200px]">
             <Link to="/dnd/lore" className="dnd-episode-nav-button">
@@ -153,9 +162,9 @@ function DndEpisodePage() {
           </div>
           <div className="flex-1 text-right min-w-[200px]">
             {nextEpisode && (
-                          <Link to={`/dnd/books/${bookId}/pages/${nextEpisode.id}`} className="dnd-episode-nav-button">
-                            Next Episode &rarr;
-                          </Link>            )}
+              <Link to={`/dnd/books/${bookId}/pages/${nextEpisode.id}`} className="dnd-episode-nav-button">
+                Next Episode &rarr;
+              </Link>)}
           </div>
         </div>
       </div>

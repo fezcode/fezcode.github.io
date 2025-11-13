@@ -2,12 +2,23 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {ArrowLeftIcon, ClipboardIcon} from '@phosphor-icons/react';
 import colors from '../../config/colors';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 import piml from 'piml'; // Import the piml library
 
 function JsonPimlConverterPage() {
-  usePageTitle('JSON - PIML Converter');
+  useSeo({
+    title: 'JSON - PIML Converter | Fezcodex',
+    description: 'Convert JSON to PIML and PIML to JSON with this online tool.',
+    keywords: ['Fezcodex', 'JSON', 'PIML', 'converter', 'JSON to PIML', 'PIML to JSON'],
+    ogTitle: 'JSON - PIML Converter | Fezcodex',
+    ogDescription: 'Convert JSON to PIML and PIML to JSON with this online tool.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'JSON - PIML Converter | Fezcodex',
+    twitterDescription: 'Convert JSON to PIML and PIML to JSON with this online tool.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const { addToast } = useToast();
 
   const [jsonInput, setJsonInput] = useState('');

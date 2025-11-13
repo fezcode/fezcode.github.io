@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
-import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 function CaseConverterPage() {
-  usePageTitle('Case Converter');
+  useSeo({
+    title: 'Case Converter | Fezcodex',
+    description: 'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
+    keywords: ['Fezcodex', 'case converter', 'uppercase', 'lowercase', 'title case', 'camel case', 'snake case', 'kebab case'],
+    ogTitle: 'Case Converter | Fezcodex',
+    ogDescription: 'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Case Converter | Fezcodex',
+    twitterDescription: 'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [inputText, setInputText] = useState('');
   const { addToast } = useToast();
 

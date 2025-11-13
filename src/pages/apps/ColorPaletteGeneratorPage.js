@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 function ColorPaletteGeneratorPage() {
-  usePageTitle('Color Palette Generator');
+  useSeo({
+    title: 'Color Palette Generator | Fezcodex',
+    description: 'Generate random color palettes for your design projects.',
+    keywords: ['Fezcodex', 'color palette', 'color generator', 'design tools'],
+    ogTitle: 'Color Palette Generator | Fezcodex',
+    ogDescription: 'Generate random color palettes for your design projects.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Color Palette Generator | Fezcodex',
+    twitterDescription: 'Generate random color palettes for your design projects.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [palette, setPalette] = useState([]);
   const { addToast } = useToast();
 

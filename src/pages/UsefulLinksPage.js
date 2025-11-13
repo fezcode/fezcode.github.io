@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Seo from '../components/Seo';
 
 const UsefulLinksPage = () => {
   const navigate = useNavigate();
@@ -27,7 +28,23 @@ const UsefulLinksPage = () => {
   }, [navigate]);
 
   if (loading) {
-    return <div className="text-center py-16">Finding a random log for you...</div>;
+    return (
+      <>
+        <Seo
+          title="Redirecting... | Fezcodex"
+          description="Redirecting to a random log entry on Fezcodex."
+          keywords={['Fezcodex', 'redirect', 'random', 'log']}
+          ogTitle="Redirecting... | Fezcodex"
+          ogDescription="Redirecting to a random log entry on Fezcodex."
+          ogImage="https://fezcode.github.io/logo512.png"
+          twitterCard="summary_large_image"
+          twitterTitle="Redirecting... | Fezcodex"
+          twitterDescription="Redirecting to a random log entry on Fezcodex."
+          twitterImage="https://fezcode.github.io/logo512.png"
+        />
+        <div className="text-center py-16">Finding a random log for you...</div>
+      </>
+    );
   }
 
   return (

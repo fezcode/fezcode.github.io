@@ -2,11 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
-import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 function HashGeneratorPage() {
-  usePageTitle('Hash Generator');
+  useSeo({
+    title: 'Hash Generator | Fezcodex',
+    description: 'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
+    keywords: ['Fezcodex', 'hash generator', 'SHA-1', 'SHA-256', 'SHA-512', 'cryptography', 'hashing'],
+    ogTitle: 'Hash Generator | Fezcodex',
+    ogDescription: 'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Hash Generator | Fezcodex',
+    twitterDescription: 'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [inputText, setInputText] = useState('');
   const [hashes, setHashes] = useState({
     sha1: '',

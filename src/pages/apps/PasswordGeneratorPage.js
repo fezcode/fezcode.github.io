@@ -1,13 +1,24 @@
 import React, { useState, useCallback } from 'react';
-import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
- // Assuming general app button styles are here
+import useSeo from "../../hooks/useSeo";
 
 const PasswordGeneratorPage = () => {
-  usePageTitle('Password Generator');
+  useSeo({
+    title: 'Password Generator | Fezcodex',
+    description: 'Generate strong, random passwords with customizable length and character types for enhanced security.',
+    keywords: ['Fezcodex', 'password generator', 'random password', 'strong password', 'security', 'password tool'],
+    ogTitle: 'Password Generator | Fezcodex',
+    ogDescription: 'Generate strong, random passwords with customizable length and character types for enhanced security.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Password Generator | Fezcodex',
+    twitterDescription: 'Generate strong, random passwords with customizable length and character types for enhanced security.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
+
   const { addToast } = useToast();
 
   const [password, setPassword] = useState('');

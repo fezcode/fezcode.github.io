@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
-import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 const FantasyNameGeneratorPage = () => {
-  usePageTitle('Fantasy Name Generator');
+  useSeo({
+    title: 'Fantasy Name Generator | Fezcodex',
+    description: 'Generate random fantasy names for humans, elves, dwarves, and orcs for your stories and games.',
+    keywords: ['Fezcodex', 'fantasy name generator', 'random name', 'human names', 'elf names', 'dwarf names', 'orc names'],
+    ogTitle: 'Fantasy Name Generator | Fezcodex',
+    ogDescription: 'Generate random fantasy names for humans, elves, dwarves, and orcs for your stories and games.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Fantasy Name Generator | Fezcodex',
+    twitterDescription: 'Generate random fantasy names for humans, elves, dwarves, and orcs for your stories and games.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
   const [nameType, setNameType] = useState('human');
   const [generatedName, setGeneratedName] = useState('');

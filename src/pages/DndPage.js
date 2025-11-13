@@ -3,12 +3,22 @@ import '../styles/dnd.css';
 import { DndContext } from '../context/DndContext';
 import { parseWallpaperName } from '../utils/dndUtils';
 import dndWallpapers from '../utils/dndWallpapers';
-import usePageTitle from '../utils/usePageTitle';
-
 import DndCard from '../components/DndCard';
+import useSeo from "../hooks/useSeo";
 
 const DndPage = () => {
-  usePageTitle('From Serfs and Frauds');
+  useSeo({
+    title: 'From Serfs and Frauds | Fezcodex',
+    description: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
+    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'campaign'],
+    ogTitle: 'From Serfs and Frauds | Fezcodex',
+    ogDescription: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'From Serfs and Frauds | Fezcodex',
+    twitterDescription: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [bgImage, setBgImage] = useState('');
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
 

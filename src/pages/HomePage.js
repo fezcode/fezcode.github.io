@@ -5,10 +5,21 @@ import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
 import { PushPin, BookBookmarkIcon, ArrowRight } from '@phosphor-icons/react';
 
-import usePageTitle from '../utils/usePageTitle';
+import useSeo from '../hooks/useSeo';
 
 const HomePage = () => {
-  usePageTitle('Home');
+  useSeo({
+    title: 'Fezcodex | Home',
+    description: 'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
+    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'software engineer'],
+    ogTitle: 'Fezcodex | Home',
+    ogDescription: 'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Fezcodex | Home',
+    twitterDescription: 'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const { projects, loading, error } = useProjects();

@@ -2,11 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
-import usePageTitle from '../utils/usePageTitle';
+import useSeo from "../hooks/useSeo";
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const ProjectsPage = () => {
-  usePageTitle('Projects');
+  useSeo({
+    title: 'Projects | Fezcodex',
+    description: 'A collection of my work and experiments.',
+    keywords: ['Fezcodex', 'projects', 'portfolio', 'developer', 'software engineer'],
+    ogTitle: 'Projects | Fezcodex',
+    ogDescription: 'A collection of my work and experiments.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Projects | Fezcodex',
+    twitterDescription: 'A collection of my work and experiments.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const { projects, loading, error } = useProjects();
 
   if (loading) {

@@ -1,11 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
 import PickerWheel from '../../components/PickerWheel';
+import useSeo from "../../hooks/useSeo";
 
 function PickerWheelPage() {
-  usePageTitle('Picker Wheel');
+  useSeo({
+    title: 'Picker Wheel | Fezcodex',
+    description: 'A customizable picker wheel to make decisions or select random items from a list.',
+    keywords: ['Fezcodex', 'picker wheel', 'decision maker', 'random selector', 'wheel spinner'],
+    ogTitle: 'Picker Wheel | Fezcodex',
+    ogDescription: 'A customizable picker wheel to make decisions or select random items from a list.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Picker Wheel | Fezcodex',
+    twitterDescription: 'A customizable picker wheel to make decisions or select random items from a list.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
   return (
     <div className="py-16 sm:py-24">

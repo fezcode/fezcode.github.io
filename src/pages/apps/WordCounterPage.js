@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, UploadSimpleIcon } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 
 function WordCounterPage() {
-  usePageTitle('Word Counter');
+  useSeo({
+    title: 'Word Counter | Fezcodex',
+    description: 'Count words, characters, lines, and paragraphs in your text or uploaded files.',
+    keywords: ['Fezcodex', 'word counter', 'character counter', 'line counter', 'paragraph counter', 'text analysis'],
+    ogTitle: 'Word Counter | Fezcodex',
+    ogDescription: 'Count words, characters, lines, and paragraphs in your text or uploaded files.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Word Counter | Fezcodex',
+    twitterDescription: 'Count words, characters, lines, and paragraphs in your text or uploaded files.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [text, setText] = useState('');
   const [counts, setCounts] = useState({ words: 0, characters: 0, lines: 0, paragraphs: 0 });
   const { addToast } = useToast();

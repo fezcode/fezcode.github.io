@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import usePageTitle from '../utils/usePageTitle';
 import '../styles/dnd.css';
 import { DndContext } from '../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../utils/dndUtils'; // Import parseWallpaperName
 import dndWallpapers from '../utils/dndWallpapers';
+import useSeo from "../hooks/useSeo";
 
 const pageVariants = {
   initial: {
@@ -31,6 +31,19 @@ function DndBookPage() {
   const [pageTitle, setPageTitle] = useState('Loading Book...');
   const [bgImage, setBgImage] = useState(''); // State for background image
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
+
+  useSeo({
+    title: `${pageTitle} | From Serfs and Frauds`,
+    description: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
+    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'book', pageTitle],
+    ogTitle: `${pageTitle} | From Serfs and Frauds`,
+    ogDescription: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: `${pageTitle} | From Serfs and Frauds`,
+    twitterDescription: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -83,8 +96,6 @@ function DndBookPage() {
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
   }, [setBgImageName]);
-
-  usePageTitle(pageTitle);
 
   if (!book) {
     return (

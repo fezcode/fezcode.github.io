@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
-import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import Dice from '../../components/Dice';
 import '../../styles/DiceRollerPage.css'; // Import the CSS for animations
+import useSeo from "../../hooks/useSeo";
 
 const DiceRollerPage = () => {
-  usePageTitle('Dice Roller');
-  const { addToast } = useToast();
+  useSeo({
+    title: 'Dice Roller | Fezcodex',
+    description: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
+    keywords: ['Fezcodex', 'dice roller', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100', 'games', 'rpg'],
+    ogTitle: 'Dice Roller | Fezcodex',
+    ogDescription: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Dice Roller | Fezcodex',
+    twitterDescription: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
+  const { addToast } = useToast();
   const [diceType, setDiceType] = useState(6); // d6, d10, d20, etc.
   const [numDice, setNumDice] = useState(1);
   const [numDiceError, setNumDiceError] = useState(false);

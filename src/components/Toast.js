@@ -26,7 +26,12 @@ const Toast = ({ id, title, message, duration = 3000, type, removeToast }) => {
     >
       <div className="flex flex-col text-sm group w-max flex-grow">
         <span className="text-base text-red-100">{title}</span>
-        <hr className="mt-1 mb-1 min-w-max mr-5 border-red-200" />
+        <motion.hr
+          initial={{ width: 0 }}
+          animate={{ width: "100%" }}
+          transition={{ duration: duration / 1000 }}
+          className="mt-1 mb-1 min-w-max mr-5 border-red-200"
+        />
         <span className="text-sm text-stone-200">{message}</span>
       </div>
       <button onClick={() => removeToast(id)} className="p-2 border rounded-sm shadow-2xl border-dashed rounded-xs hover:bg-toast-background/100 ">

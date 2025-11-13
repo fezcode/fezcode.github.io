@@ -1,12 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 import colors from '../../config/colors';
 
 function TournamentBracketPage() {
-  usePageTitle('Tournament Bracket');
+  useSeo({
+    title: 'Tournament Bracket Generator | Fezcodex',
+    description: 'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
+    keywords: ['Fezcodex', 'tournament bracket', 'bracket generator', 'single elimination', 'tournament manager'],
+    ogTitle: 'Tournament Bracket Generator | Fezcodex',
+    ogDescription: 'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Tournament Bracket Generator | Fezcodex',
+    twitterDescription: 'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
+
   const { addToast } = useToast();
 
   const cardStyle = {

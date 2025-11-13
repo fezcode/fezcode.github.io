@@ -6,7 +6,7 @@ import {
   ArrowSquareOutIcon,
   EnvelopeIcon,
 } from '@phosphor-icons/react';
-import usePageTitle from '../utils/usePageTitle';
+import useSeo from '../hooks/useSeo';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -23,11 +23,23 @@ const LinkRenderer = ({ href, children }) => {
 };
 
 const AboutPage = () => {
-  usePageTitle('About Me');
   const [content, setContent] = useState('');
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState('About Me');
   const [loading, setLoading] = useState(true);
+
+  useSeo({
+    title: `${title} | Fezcodex`,
+    description: 'Learn more about Fezcodex, the developer behind this website.',
+    keywords: ['Fezcodex', 'about', 'portfolio', 'developer', 'software engineer'],
+    ogTitle: `${title} | Fezcodex`,
+    ogDescription: 'Learn more about Fezcodex, the developer behind this website.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: `${title} | Fezcodex`,
+    twitterDescription: 'Learn more about Fezcodex, the developer behind this website.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
 
   useEffect(() => {
     const fetchAboutContent = async () => {

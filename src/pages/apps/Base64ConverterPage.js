@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 function Base64ConverterPage() {
-  usePageTitle('Base64 Converter');
+  useSeo({
+    title: 'Base64 Converter | Fezcodex',
+    description: 'Encode and decode Base64 strings with this online tool.',
+    keywords: ['Fezcodex', 'Base64 converter', 'encode Base64', 'decode Base64'],
+    ogTitle: 'Base64 Converter | Fezcodex',
+    ogDescription: 'Encode and decode Base64 strings with this online tool.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Base64 Converter | Fezcodex',
+    twitterDescription: 'Encode and decode Base64 strings with this online tool.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const { addToast } = useToast();

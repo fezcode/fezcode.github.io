@@ -1,9 +1,9 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CheckCircle, XCircle } from '@phosphor-icons/react'; // Using Palette for now
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 // Helper function to convert hex to RGB
 const hexToRgb = (hex) => {
@@ -32,7 +32,18 @@ const getContrastRatio = (rgb1, rgb2) => {
 };
 
 const ColorContrastCheckerPage = () => {
-  usePageTitle('Color Contrast Checker');
+  useSeo({
+    title: 'Color Contrast Checker | Fezcodex',
+    description: 'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
+    keywords: ['Fezcodex', 'color contrast', 'accessibility', 'WCAG', 'color checker'],
+    ogTitle: 'Color Contrast Checker | Fezcodex',
+    ogDescription: 'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Color Contrast Checker | Fezcodex',
+    twitterDescription: 'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const { addToast } = useToast();
 
   const [foregroundColor, setForegroundColor] = useState('#FFFFFF'); // Default white

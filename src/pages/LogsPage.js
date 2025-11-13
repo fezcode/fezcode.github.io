@@ -3,10 +3,21 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CaretDown, CaretUp, X } from '@phosphor-icons/react';
 import LogCard from '../components/LogCard';
 import ColorLegends, { categoryStyles } from '../components/ColorLegends';
-import usePageTitle from '../utils/usePageTitle';
+import useSeo from "../hooks/useSeo";
 
 const LogsPage = () => {
-  usePageTitle('Logs <?>');
+  useSeo({
+    title: 'Logs <?> | Fezcodex',
+    description: 'A collection of logs, thoughts, and other miscellaneous writings.',
+    keywords: ['Fezcodex', 'logs', 'thoughts', 'writing'],
+    ogTitle: 'Logs | Fezcodex',
+    ogDescription: 'A collection of logs, thoughts, and other miscellaneous writings.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Logs | Fezcodex',
+    twitterDescription: 'A collection of logs, thoughts, and other miscellaneous writings.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [logs, setLogs] = useState([]);
   const [showLegends, setShowLegends] = useState(false);
   const [loading, setLoading] = useState(true);

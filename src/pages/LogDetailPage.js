@@ -5,6 +5,7 @@ import LogMetadata from '../components/metadata-cards/LogMetadata';
 import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
 import ImageModal from '../components/ImageModal';
 
+import Seo from '../components/Seo';
 import remarkGfm from 'remark-gfm';
 
 const LinkRenderer = ({ href, children }) => {
@@ -114,6 +115,18 @@ const LogDetailPage = () => {
 
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
+      <Seo
+        title={`${log.attributes.title} | Fezcodex`}
+        description={log.body.substring(0, 150)}
+        keywords={log.attributes.tags ? log.attributes.tags.join(', ') : ''}
+        ogTitle={`${log.attributes.title} | Fezcodex`}
+        ogDescription={log.body.substring(0, 150)}
+        ogImage={log.attributes.image || 'https://fezcode.github.io/logo512.png'}
+        twitterCard="summary_large_image"
+        twitterTitle={`${log.attributes.title} | Fezcodex`}
+        twitterDescription={log.body.substring(0, 150)}
+        twitterImage={log.attributes.image || 'https://fezcode.github.io/logo512.png'}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { usePalette } from 'color-thief-react';
 import colors from '../../config/colors';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 import { canvasRGBA } from 'stackblur-canvas';
 
@@ -49,7 +49,18 @@ function Palette({ image }) {
 }
 
 function ImageToolkitPage() {
-  usePageTitle('Image Toolkit');
+  useSeo({
+    title: 'Image Toolkit | Fezcodex',
+    description: 'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
+    keywords: ['Fezcodex', 'image toolkit', 'image editor', 'color palette', 'monochrome', 'blur', 'dithering', 'cel shading', 'halftone', 'solarization', 'posterization', 'sepia', 'pixelization', 'duotone', 'ascii art'],
+    ogTitle: 'Image Toolkit | Fezcodex',
+    ogDescription: 'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Image Toolkit | Fezcodex',
+    twitterDescription: 'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const { addToast } = useToast();
   const [image, setImage] = useState(null);
   const [activeEffect, setActiveEffect] = useState(null);

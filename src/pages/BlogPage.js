@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PostItem from '../components/PostItem';
-import usePageTitle from '../utils/usePageTitle';
+import useSeo from '../hooks/useSeo';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const BlogPage = () => {
-  usePageTitle('Blog');
+  useSeo({
+    title: 'Blog | Fezcodex',
+    description: 'Catch up on the latest news and insights from the Fezcodex blog.',
+    keywords: ['Fezcodex', 'blog', 'dev', 'rant', 'series', 'd&d'],
+    ogTitle: 'Blog | Fezcodex',
+    ogDescription: 'Catch up on the latest news and insights from the Fezcodex blog.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Blog | Fezcodex',
+    twitterDescription: 'Catch up on the latest news and insights from the Fezcodex blog.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [displayItems, setDisplayItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all'); // New state for active filter

@@ -1,11 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import usePageTitle from '../../utils/usePageTitle';
+import useSeo from "../../hooks/useSeo";
 import { useToast } from '../../hooks/useToast';
 
 function UrlConverterPage() {
-  usePageTitle('URL Encoder/Decoder');
+  useSeo({
+    title: 'URL Encoder/Decoder | Fezcodex',
+    description: 'Encode and decode URLs with this online tool for web development and data manipulation.',
+    keywords: ['Fezcodex', 'URL encoder', 'URL decoder', 'URL converter', 'web tools'],
+    ogTitle: 'URL Encoder/Decoder | Fezcodex',
+    ogDescription: 'Encode and decode URLs with this online tool for web development and data manipulation.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'URL Encoder/Decoder | Fezcodex',
+    twitterDescription: 'Encode and decode URLs with this online tool for web development and data manipulation.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const { addToast } = useToast();

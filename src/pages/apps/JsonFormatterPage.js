@@ -1,12 +1,24 @@
 import React, { useState, useCallback } from 'react';
-import usePageTitle from '../../utils/usePageTitle';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
+import useSeo from "../../hooks/useSeo";
 
 const JsonFormatterPage = () => {
-  usePageTitle('JSON Formatter');
+  useSeo({
+    title: 'JSON Formatter & Validator | Fezcodex',
+    description: 'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
+    keywords: ['Fezcodex', 'JSON formatter', 'JSON validator', 'JSON beautifier', 'JSON tool'],
+    ogTitle: 'JSON Formatter & Validator | Fezcodex',
+    ogDescription: 'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'JSON Formatter & Validator | Fezcodex',
+    twitterDescription: 'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
+    twitterImage: 'https://fezcode.github.io/logo512.png'
+  });
+
   const { addToast } = useToast();
 
   const [jsonInput, setJsonInput] = useState('');
