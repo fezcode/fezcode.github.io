@@ -48,12 +48,12 @@ function DndBookPage() {
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/dnd/episodes.json`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        const foundBook = data.find(b => b.bookId === parseInt(bookId));
+        const foundBook = data.books.find(b => b.bookId === parseInt(bookId));
         if (foundBook) {
           setBook(foundBook);
           setPageTitle(foundBook.bookTitle);

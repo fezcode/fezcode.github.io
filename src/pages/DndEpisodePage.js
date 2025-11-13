@@ -58,12 +58,12 @@ function DndEpisodePage() {
   useEffect(() => {
     const fetchAllBooks = async () => { // Renamed function
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/dnd/episodes.json`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setAllBooks(data);
+        setAllBooks(data.books);
       } catch (error) {
         console.error("Failed to fetch all books:", error);
       }

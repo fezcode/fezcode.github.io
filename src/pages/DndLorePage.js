@@ -60,12 +60,12 @@ function DndLorePage() {
   useEffect(() => {
     const fetchEpisodes = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/dnd/episodes.json`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.json`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const data = await response.json();
-        setEpisodes(data);
+        setEpisodes(data.books);
       } catch (error) {
         console.error("Failed to fetch episodes:", error);
       }
