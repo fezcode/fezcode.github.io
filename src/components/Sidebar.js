@@ -81,7 +81,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const isContentActive =
     location.pathname.startsWith('/blog') ||
     location.pathname.startsWith('/projects') ||
-    location.pathname.startsWith('/logs');
+    location.pathname.startsWith('/logs') ||
+    location.pathname.startsWith('/stories');
 
   const isAppsActive = location.pathname.startsWith('/apps');
 
@@ -179,20 +180,22 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/blog" className={getLinkClass}>
                   <BookOpenIcon size={24} />
-
                   <span>Blog</span>
                 </NavLink>
 
                 <NavLink to="/projects" className={getLinkClass}>
                   <WrenchIcon size={24} />
-
                   <span>Projects</span>
                 </NavLink>
 
                 <NavLink to="/logs" className={getLinkClass}>
                   <ArticleIcon size={24} />
-
                   <span>Logs</span>
+                </NavLink>
+
+                <NavLink to="/stories" className={getLinkClass}>
+                  <SwordIcon className="text-yellow-500" size={24} />
+                  <span>S<span className="text-yellow-500"> &amp; </span>F</span>
                 </NavLink>
               </nav>
             )}
@@ -245,10 +248,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
             </button>
             {isExtrasOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
-                <NavLink to="/stories" className={getLinkClass}>
-                  <SwordIcon size={24} />
-                  <span>From Serfs and Frauds</span>
-                </NavLink>
                 <a href="/rss.xml" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
                   <RssIcon size={24} />
                   <span>RSS Feed</span>

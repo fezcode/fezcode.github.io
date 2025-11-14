@@ -34,14 +34,14 @@ function DndAuthorsPage() {
 
   useSeo({
     title: 'Authors | From Serfs and Frauds',
-    description: 'Meet the authors behind the Dungeons & Dragons campaign, From Serfs and Frauds.',
+    description: 'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
     keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'authors'],
     ogTitle: 'Authors | From Serfs and Frauds',
-    ogDescription: 'Meet the authors behind the Dungeons & Dragons campaign, From Serfs and Frauds.',
+    ogDescription: 'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Authors | From Serfs and Frauds',
-    twitterDescription: 'Meet the authors behind the Dungeons & Dragons campaign, From Serfs and Frauds.',
+    twitterDescription: 'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
     twitterImage: 'https://fezcode.github.io/logo512.png'
   });
 
@@ -56,22 +56,31 @@ function DndAuthorsPage() {
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
 
-    const fetchAuthorData = async () => {
+    const fetchAllData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+        // Fetch authors from authors.piml
+        const authorsResponse = await fetch(`${process.env.PUBLIC_URL}/stories/authors.piml`);
+        if (!authorsResponse.ok) {
+          throw new Error(`HTTP error! status: ${authorsResponse.status}`);
         }
-        const pimlText = await response.text();
-        const data = piml.parse(pimlText);
-        setAuthors(data.authors);
-        setBooks(data.books);
+        const authorsPimlText = await authorsResponse.text();
+        const authorsData = piml.parse(authorsPimlText);
+        setAuthors(authorsData.authors);
+
+        // Fetch books from books.piml
+        const booksResponse = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        if (!booksResponse.ok) {
+          throw new Error(`HTTP error! status: ${booksResponse.status}`);
+        }
+        const booksPimlText = await booksResponse.text();
+        const booksData = piml.parse(booksPimlText);
+        setBooks(booksData.books);
       } catch (error) {
-        console.error("Failed to fetch author data:", error);
+        console.error("Failed to fetch data:", error);
       }
     };
 
-    fetchAuthorData();
+    fetchAllData();
   }, [setBreadcrumbs, setBgImageName]);
 
   const getBooksByAuthor = (authorName, authorAlias) => {

@@ -56,10 +56,10 @@ function DndLorePage() {
     ]);
   }, [setBgImageName, setBreadcrumbs]);
 
-  const [episodes, setEpisodes] = useState([]);
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    const fetchEpisodes = async () => {
+    const fetchBooks = async () => {
       try {
         const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
         if (!response.ok) {
@@ -67,13 +67,15 @@ function DndLorePage() {
         }
         const pimlText = await response.text();
         const data = piml.parse(pimlText);
-        setEpisodes(data.books);
+        // Sort books by bookId before setting the state
+        const sortedBooks = data.books.sort((a, b) => a.bookId - b.bookId);
+        setBooks(sortedBooks);
       } catch (error) {
-        console.error("Failed to fetch episodes:", error);
+        console.error("Failed to fetch books:", error);
       }
     };
 
-    fetchEpisodes();
+    fetchBooks();
   }, []);
 
   const settings = {
@@ -121,7 +123,7 @@ function DndLorePage() {
         <div className="dnd-content-box dnd-books-section" style={{ zIndex: 1 }}>
           <h2 >Books</h2>
           <Slider {...settings} className="dnd-carousel">
-            {episodes.map((book) => (
+            {books.map((book) => (
               <div key={book.bookId} className="px-12"> {/* Add padding for spacing between cards */}
                 <DndCard
                   title={book.bookTitle}
@@ -136,15 +138,13 @@ function DndLorePage() {
         </div>
         <div className="dnd-content-box" style={{ zIndex: 1, marginTop: '2rem' }}>
           <h2 >All Books</h2>
-            <ul style={{ listStyle: 'none', padding: 0 }}>
-              {episodes.map((book) => (
-                <li key={book.bookId} style={{ marginBottom: '1rem' }}>
-                  <Link to={`/stories/books/${book.bookId}`} className="dnd-list-item-link">
-                    {book.bookTitle}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {books.map((book) => (
+            <div key={book.bookId} className="px-12 mb-4 mt-4">
+              <Link to={`/stories/books/${book.bookId}`} className="border-1 p-2 transition transition-all text-2xl text-rose-600 hover:underline hover:text-amber-600">
+                {book.bookTitle}
+              </Link>
+            </div>
+          ))}
           </div>
       </div>
     </motion.div>

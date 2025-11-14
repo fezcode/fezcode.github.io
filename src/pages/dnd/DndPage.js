@@ -46,7 +46,7 @@ const DndPage = () => {
             description="Explore the world's history and tales."
             link="/stories/lore"
             backgroundImage={`${process.env.PUBLIC_URL}/images/stories/parchment.png`}
-            className="dnd-card-parchment" // Add the new class
+            className="dnd-card-parchment"
           />
           <DndCard
             title="Authors"

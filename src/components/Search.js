@@ -46,6 +46,7 @@ const Search = ({ isVisible }) => {
           { title: 'Settings', slug: '/settings', type: 'route' },
           { title: 'Dungeons and Dragons', slug: '/stories', type: 'route' },
           { title: 'Stories', slug: '/stories', type: 'route' },
+          { title: 'From Serfs and Frauds', slug: '/stories', type: 'route' },
           { title: 'Apps', slug: '/apps', type: 'route' },
           { title: 'Random', slug: '/random', type: 'route' },
         ];
