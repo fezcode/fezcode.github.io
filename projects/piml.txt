@@ -2,6 +2,8 @@ piml is a data serialization format designed to be exceptionally human-readable 
 ---
 ## 1. Introduction
 
+**Spec version**: v1.1.0
+
 ### 1.1 Apps
 
 - [JSON<->PIML Converter](/#/apps::jpc)
@@ -37,16 +39,26 @@ Consistent indentation is crucial for defining structure.
 
 Comments are denoted by `#`. Everything from `#` to the end of the line is considered a comment and is ignored by parsers.
 
+*   **Rule:** Only lines that *start* with `#` are treated as comments. Inline comments (e.g., `(key) value # comment`) are not supported and will be considered part of the value.
+
 ```piml
-(key) value # This is a comment
+# This is a comment
+(key) value # This entire line is the value, not a comment
 ```
 
 ### 2.4. Escaping
 
+
+
 Backslash (`\`) is used for escaping characters within string values.
 
-* Common escapes: `\n` (newline), `\t` (tab), `\\` (literal backslash).
-* If a string value needs to contain `(` or `#`, it can be escaped, e.g., `(title) My \(Awesome\) Title`.
+
+
+*   Common escapes: `\n` (newline), `\t` (tab), `\\` (literal backslash).
+
+*   If a string value needs to contain `(` or `#`, it can be escaped, e.g., `(title) My \(Awesome\) Title`.
+
+*   To include a `#` character at the beginning of a line within a multi-line string, escape it with a backslash (`\`), e.g., `\# This is not a comment`.
 
 ## 3. Data Types
 

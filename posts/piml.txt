@@ -1,5 +1,7 @@
 # piml
 
+**Spec version**: v1.1.0
+
 [Available Libraries](https://github.com/fezcode/piml/blob/main/LIBRARIES.md)
 
 [JSON<->PIML Converter](/#/apps::jpc)
@@ -36,8 +38,11 @@ Indentation is fundamental to PIML's structure, defining hierarchical relationsh
 
 PIML supports single-line comments using the `#` symbol. Anything from `#` to the end of the line is ignored by parsers, allowing for clear inline documentation.
 
+*   **Rule:** Only lines that *start* with `#` are treated as comments. Inline comments (e.g., `(key) value # comment`) are not supported and will be considered part of the value.
+
 ```piml
-(data) value # This explains the data
+# This explains the data
+(data) value # This entire line is the value, not a comment
 ```
 
 ### Escaping
@@ -45,7 +50,8 @@ PIML supports single-line comments using the `#` symbol. Anything from `#` to th
 The backslash (`\`) character is used to escape special characters within string values, ensuring that characters like `(` or `#` can be part of the data itself.
 
 *   Common escapes include `\n` (newline), `\t` (tab), and `\\` (literal backslash).
-*   Example: `(title) My \(Awesome\) Title
+*   Example: `(title) My \(Awesome\) Title`
+*   To include a `#` character at the beginning of a line within a multi-line string, escape it with a backslash (`\`), e.g., `\# This is not a comment`.
 
 ## Data Types: Representing Information in PIML
 

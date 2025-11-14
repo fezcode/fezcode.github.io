@@ -2,6 +2,8 @@ go-piml is a Go package that provides functionality to marshal and unmarshal dat
 ---
 # go-piml
 
+**Spec version**: v1.1.0
+
 `go-piml` is a Go package that provides functionality to marshal and unmarshal data to and from the PIML (Parenthesis Intended Markup Language) format. PIML is a human-readable, indentation-based data serialization format designed for configuration files and simple data structures.
 
 ## Features
@@ -12,7 +14,7 @@ go-piml is a Go package that provides functionality to marshal and unmarshal dat
 -   **Complex Types:** Handles structs, slices (arrays), and maps.
 -   **Nil Handling:** Explicitly represents `nil` for pointers, empty slices, and empty maps.
 -   **Multi-line Strings:** Supports multi-line string values with indentation.
--   **Comments:** Allows single-line and inline comments using `#`.
+-   **Comments:** Allows single-line comments using `#` (only lines starting with `#` are treated as comments).
 -   **Time Support:** Marshals and unmarshals `time.Time` values using RFC3339Nano format.
 
 ## PIML Format Overview
