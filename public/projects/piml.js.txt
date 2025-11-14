@@ -2,6 +2,8 @@ piml.js is a JavaScript library for parsing and stringifying data in the PIML fo
 ---
 # piml.js
 
+**Spec version**: v1.1.0
+
 `piml.js` is a JavaScript library for parsing and stringifying data in the PIML (Parenthesis Intended Markup Language) format. PIML is a human-readable, indentation-based data serialization format designed for configuration files and simple data structures.
 
 ## Features
@@ -10,7 +12,7 @@ piml.js is a JavaScript library for parsing and stringifying data in the PIML fo
 -   **Primitive Types:** Supports strings, numbers, booleans, and null.
 -   **Complex Types:** Handles objects and arrays.
 -   **Multi-line Strings:** Supports multi-line string values with indentation.
--   **Comments:** Allows single-line and inline comments using `#`.
+-   **Comments:** Allows single-line comments using `#` (only lines starting with `#` are treated as comments).
 
 ## PIML Format Overview
 
