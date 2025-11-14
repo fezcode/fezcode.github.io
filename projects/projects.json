@@ -81,9 +81,18 @@
     "technologies": ["JavaScript"]
   },
   {
+    "slug": "piml-highlighter",
+    "title": "PIML Syntax Highlighter for VS Code",
+    "size": 2,
+    "link": "https://github.com/fezcode/piml-highlighter/",
+    "pinned": false,
+    "isActive": true,
+    "technologies": ["VS Code", "PIML", "Syntax Highlighting", "Extension"]
+  },
+  {
     "slug": "go-homo-sapiens-time",
     "title": "Go Homo Sapiens Time",
-    "size": 2,
+    "size": 1,
     "link": "https://github.com/fezcode/go-homo-sapiens-time",
     "pinned": false,
     "isActive": true,
@@ -92,7 +101,7 @@
   {
     "slug": "go-tournament-brackets",
     "title": "Go Tournament Bracket Generator Lib",
-    "size": 2,
+    "size": 1,
     "link": "https://github.com/fezcode/go-tournament-brackets",
     "pinned": false,
     "isActive": true,
