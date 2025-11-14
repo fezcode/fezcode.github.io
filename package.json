@@ -45,7 +45,8 @@
     "lint": "eslint \"src/**/*.{js,jsx}\" \"scripts/**/*.js\" --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build -b gh-pages"
+    "deploy": "gh-pages -d build -b gh-pages",
+    "prod": "git push && npm run build && npm run deploy"
   },
   "eslintConfig": {
     "extends": [
