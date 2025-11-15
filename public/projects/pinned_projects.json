@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "fezcodex",
+    "title": "fezcodex",
+    "link": "https://github.com/fezcode/fezcode.github.io",
+    "shortDescription": "This website... The app you are currently on. Personal website and blog, written in React."
+  },
+  {
+    "slug": "piml",
+    "title": "piml",
+    "link": "https://github.com/fezcode/piml",
+    "shortDescription": "piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing."
+  },
+  {
+    "slug": "bm",
+    "title": "bm - bookmark manager",
+    "link": "https://github.com/fezcode/bm",
+    "shortDescription": "BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory."
+  },
+  {
+    "slug": "villain-couch",
+    "title": "Villain Couch",
+    "link": "https://github.com/fezcode/Villain-Couch",
+    "shortDescription": "Villain Couch is a Windows application designed to track the status of VLC Media Player."
+  },
+  {
+    "slug": "doku",
+    "title": "doku.js",
+    "link": "https://github.com/fezcode/doku.js",
+    "shortDescription": "Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`."
+  },
+  {
+    "slug": "boxer",
+    "title": "Boxer",
+    "link": "https://github.com/fezcode/boxer",
+    "shortDescription": "Boxer is a tool that creates archive files based on instructions provided in a boxerfile. Uses CMake and Ninja for its build system."
+  }
+]

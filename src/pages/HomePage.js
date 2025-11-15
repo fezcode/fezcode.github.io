@@ -22,8 +22,7 @@ const HomePage = () => {
   });
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
-  const { projects, loading, error } = useProjects();
-  const pinnedProjects = projects.filter((p) => p.pinned);
+  const { projects: pinnedProjects, loading, error } = useProjects(true);
 
   useEffect(() => {
     const fetchPostSlugs = async () => {

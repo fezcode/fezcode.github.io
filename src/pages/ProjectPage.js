@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { useProjects } from '../utils/projectParser';
+import { useProjectContent } from '../hooks/useProjectContent'; // Import the new hook
 import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
 import Seo from '../components/Seo';
 
@@ -9,9 +10,10 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const ProjectPage = () => {
   const { slug } = useParams();
-  const { projects, loading, error } = useProjects();
+  const { projects, loading: loadingProjects, error: errorProjects } = useProjects();
+  const { content, loading: loadingContent, error: errorContent } = useProjectContent(slug);
 
-  if (loading) {
+  if (loadingProjects || loadingContent) {
     // Skeleton loading screen for ProjectPage
     return (
       <div className="bg-gray-900 py-16 sm:py-24 animate-pulse">
@@ -44,17 +46,17 @@ const ProjectPage = () => {
     );
   }
 
-  if (error) {
+  if (errorProjects || errorContent) {
     return (
       <div className="py-16 sm:py-24 text-center text-red-500">
-        Error loading project: {error.message}
+        Error loading project: {errorProjects?.message || errorContent?.message}
       </div>
     );
   }
 
   const project = projects.find((p) => p.slug === slug);
 
-  if (!project) {
+  if (!project || !content) {
     return (
       <div className="py-16 sm:py-24 text-center text-white">
         Project not found
@@ -62,19 +64,22 @@ const ProjectPage = () => {
     );
   }
 
+  // Combine project metadata with fetched content
+  const fullProject = { ...project, ...content };
+
   return (
     <div className="bg-gray-900 py-16 sm:py-24">
       <Seo
-        title={`${project.title} | Fezcodex`}
-        description={project.shortDescription}
-        keywords={project.tags ? project.tags.join(', ') : ''}
-        ogTitle={`${project.title} | Fezcodex`}
-        ogDescription={project.shortDescription}
-        ogImage={project.image || 'https://fezcode.github.io/logo512.png'}
+        title={`${fullProject.title} | Fezcodex`}
+        description={fullProject.shortDescription}
+        keywords={fullProject.tags ? fullProject.tags.join(', ') : ''}
+        ogTitle={`${fullProject.title} | Fezcodex`}
+        ogDescription={fullProject.shortDescription}
+        ogImage={fullProject.image || 'https://fezcode.github.io/logo512.png'}
         twitterCard="summary_large_image"
-        twitterTitle={`${project.title} | Fezcodex`}
-        twitterDescription={project.shortDescription}
-        twitterImage={project.image || 'https://fezcode.github.io/logo512.png'}
+        twitterTitle={`${fullProject.title} | Fezcodex`}
+        twitterDescription={fullProject.shortDescription}
+        twitterImage={fullProject.image || 'https://fezcode.github.io/logo512.png'}
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
@@ -86,21 +91,21 @@ const ProjectPage = () => {
               <ArrowLeftIcon size={24} /> Back to Projects
             </Link>
             <h1 className="text-4xl font-bold tracking-tight text-markdown-hx-color sm:text-6xl">
-              {project.title}
+              {fullProject.title}
             </h1>
-            {project.image && (
+            {fullProject.image && (
               <img
-                src={project.image}
-                alt={project.title}
+                src={fullProject.image}
+                alt={fullProject.title}
                 className="mt-8 w-full rounded-lg text-gray-200"
               />
             )}
             <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-dark">
-              <ReactMarkdown>{project.fullContent}</ReactMarkdown>
+              <ReactMarkdown>{fullProject.fullContent}</ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
-            <ProjectMetadata project={project} />
+            <ProjectMetadata project={fullProject} />
           </div>
         </div>
       </div>

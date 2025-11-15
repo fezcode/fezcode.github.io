@@ -1,5 +1,3 @@
-piml.js is a JavaScript library for parsing and stringifying data in the PIML format.
----
 # piml.js
 
 **Spec version**: v1.1.0

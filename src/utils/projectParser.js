@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export const useProjects = () => {
+export const useProjects = (fetchPinnedOnly = false) => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -8,38 +8,15 @@ export const useProjects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/projects/projects.json');
+        const url = fetchPinnedOnly
+          ? '/projects/pinned_projects.json'
+          : '/projects/projects.json';
+        const response = await fetch(url);
         if (!response.ok) {
-          throw new Error(
-            `HTTP error! status: ${response.status} for projects.json`,
-          );
+          throw new Error(`HTTP error! status: ${response.status} for ${url}`);
         }
         const projectDataList = await response.json();
-
-        const fetchedProjects = await Promise.all(
-          projectDataList.map(async (projectData) => {
-            const slug = projectData.slug; // Use slug from projects.json
-            const contentResponse = await fetch(`/projects/${slug}.txt`);
-            if (!contentResponse.ok) {
-              throw new Error(
-                `HTTP error! status: ${contentResponse.status} for ${slug}.txt`,
-              );
-            }
-            const text = await contentResponse.text();
-
-            // Now, the text only contains the body, no front-matter
-            const parts = text.split('---'); // Assuming shortDescription is separated by '---'
-            const shortDescription = parts[0].trim();
-            const fullContent = parts.slice(1).join('---').trim();
-
-            return {
-              ...projectData, // All metadata from projects.json
-              shortDescription,
-              fullContent,
-            };
-          }),
-        );
-        setProjects(fetchedProjects);
+        setProjects(projectDataList);
       } catch (e) {
         setError(e);
       } finally {

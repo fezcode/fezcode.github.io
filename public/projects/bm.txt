@@ -1,6 +1,4 @@
 BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
----
-BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
 
 ## Key Features:
 
