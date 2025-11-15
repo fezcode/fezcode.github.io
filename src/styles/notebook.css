@@ -15,7 +15,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: min(98vw, 98vh);
     perspective: 1500px;
 }
 
@@ -51,11 +50,6 @@
     line-height: 1.6;
 }
 
-@media (min-width: 1200px) {
-    .page-content {
-        font-size: 1.2rem;
-    }
-}
 
 .notebook-header, .notebook-footer {
     text-align: center;
@@ -151,7 +145,7 @@
 
 .slider-container {
     position: absolute;
-    bottom: 6rem;
+    bottom: 4rem;
     left: 50%;
     transform: translateX(-50%);
     width: 50%;
@@ -202,10 +196,11 @@
     border: 1px solid #333;
 }
 
-@media (max-width: 768px) {
+
+@media (max-width: 1279px) {
     .book {
-        width: min(90vw, 63.6vh); /* 90vh / 1.414 */
-        height: calc(min(90vw, 63.6vh) * 1.414);
+        width: min(90vw, 90vh / 1.414);
+        height: calc(min(90vw, 90vh / 1.414) * 1.414);
     }
     .page, .notebook-cover {
         width: 100%;
@@ -214,4 +209,16 @@
     .slider-container {
         width: 80%;
     }
+
+  .page-content {
+    font-size: 1.2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+    .book {
+        width: min(80vw, 80vh * 1.414);
+        height: calc(min(80vw, 80vh * 1.414) / 1.414);
+    }
+
 }

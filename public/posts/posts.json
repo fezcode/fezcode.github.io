@@ -329,5 +329,15 @@
         }
       ]
     }
+  },
+  {
+    "slug": "decoding-the-digital-alphabet-base-xx-encodings",
+    "title": "Decoding the Digital Alphabet: A Comprehensive Guide to BaseXX Encodings",
+    "date": "2025-11-16",
+    "updated": "2025-11-16",
+    "description": "A deep dive into various BaseXX encoding methods, comparing their character sets, efficiency, and common use cases in modern computing.",
+    "tags": ["encoding", "base32", "base58", "base62", "base64", "base85", "data-representation", "webdev", "cryptocurrency"],
+    "category": "dev",
+    "filename": "decoding-the-digital-alphabet-base-xx-encodings.txt"
   }
 ]

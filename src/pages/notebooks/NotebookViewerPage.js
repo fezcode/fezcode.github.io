@@ -33,7 +33,7 @@ const NotebookViewerPage = () => {
     const { notebookId } = useParams();
     const [notebook, setNotebook] = useState(null);
     const [currentPage, setCurrentPage] = useState(0);
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile, setIsMobile] = useState(window.innerWidth <= 1279);
 
     useEffect(() => {
         fetch(`/notebooks/${notebookId}.json`)
