@@ -2,7 +2,7 @@
 
 .notebook-container {
     width: 100%;
-    height: 100vh;
+    height: 95vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,6 +45,7 @@
 }
 
 .page-content {
+    margin: 10px;
     flex-grow: 1;
     font-size: 1.2vw;
     line-height: 1.6;
@@ -145,7 +146,7 @@
 
 .slider-container {
     position: absolute;
-    bottom: 4rem;
+    bottom: 2rem;
     left: 50%;
     transform: translateX(-50%);
     width: 50%;
@@ -210,15 +211,19 @@
         width: 80%;
     }
 
-  .page-content {
-    font-size: 1.2rem;
-  }
+    .page-content {
+      font-size: 1.2rem;
+    }
 }
 
 @media (min-width: 1280px) {
     .book {
         width: min(80vw, 80vh * 1.414);
         height: calc(min(80vw, 80vh * 1.414) / 1.414);
+    }
+
+    .page-content {
+      font-size: 1.1rem;
     }
 
 }
