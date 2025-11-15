@@ -43,6 +43,8 @@ import JSONGeneratorPage from '../pages/apps/JSONGeneratorPage';
 import SettingsPage from '../pages/SettingsPage'; // Import SettingsPage
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
+import NotebooksPage from "../pages/notebooks/NotebooksPage";
+import NotebookViewerPage from "../pages/notebooks/NotebookViewerPage";
 
 const pageVariants = {
   initial: {
@@ -221,6 +223,34 @@ function AnimatedRoutes() {
               <LogDetailPage />
             </motion.div>
           }
+        />
+        <Route
+            path="/notebooks"
+            element={
+                <motion.div
+                    initial="initial"
+                    animate="in"
+                    exit="out"
+                    variants={pageVariants}
+                    transition={pageTransition}
+                >
+                    <NotebooksPage />
+                </motion.div>
+            }
+        />
+        <Route
+            path="/notebooks/:notebookId"
+            element={
+                <motion.div
+                    initial="initial"
+                    animate="in"
+                    exit="out"
+                    variants={pageVariants}
+                    transition={pageTransition}
+                >
+                    <NotebookViewerPage />
+                </motion.div>
+            }
         />
         <Route
           path="*"

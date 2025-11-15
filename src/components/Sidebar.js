@@ -28,6 +28,7 @@ import {
   RssIcon,
   SquaresFourIcon,
   GearSix, // Import GearSix icon
+  NotebookIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -196,6 +197,11 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <NavLink to="/stories" className={getLinkClass}>
                   <SwordIcon className="text-yellow-500" size={24} />
                   <span>S<span className="text-yellow-500"> &amp; </span>F</span>
+                </NavLink>
+
+                <NavLink to="/notebooks" className={getLinkClass}>
+                  <NotebookIcon size={24} />
+                  <span>Notebooks</span>
                 </NavLink>
               </nav>
             )}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import { SidebarIcon, UserIcon, BookOpenIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
+import { SidebarIcon, UserIcon, BookOpenIcon, MagnifyingGlassIcon, NotebookIcon } from '@phosphor-icons/react';
 
 const Navbar = ({ toggleSidebar, isSidebarOpen, isSearchVisible, toggleSearch }) => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -68,13 +68,6 @@ const Navbar = ({ toggleSidebar, isSidebarOpen, isSearchVisible, toggleSearch })
           >
             <UserIcon size={24} />
             <span className="md:hidden lg:inline">About</span>
-          </Link>
-          <Link
-            to="/blog"
-            className="flex items-center space-x-1 text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
-          >
-            <BookOpenIcon size={24} />
-            <span className="md:hidden lg:inline">Blog</span>
           </Link>
           <button
             onClick={toggleSearch}
