@@ -1,6 +1,11 @@
 [
   {
     "id": "my-first-notebook",
-    "title": "My First Notebook"
+    "title": "My First Notebook",
+    "backgroundColor": "#9EC5AB",
+    "fontFamily": "font-playfairDisplay",
+    "textColor": "#1f2937",
+    "hoverBackgroundColor": "#7a9e8a",
+    "hoverTextColor": "#ffffff"
   }
 ]

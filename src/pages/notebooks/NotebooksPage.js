@@ -77,9 +77,16 @@ const NotebooksPage = () => {
                 </div>
                 <div className="mt-16">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                        {notebooks.map(notebook => (
+                        {notebooks.map((notebook) => (
                             <Link key={notebook.id} to={`/notebooks/${notebook.id}`}>
-                                <NotebookCover title={notebook.title} />
+                                <NotebookCover
+                                    title={notebook.title}
+                                    backgroundColor={notebook.backgroundColor}
+                                    fontFamily={notebook.fontFamily}
+                                    textColor={notebook.textColor}
+                                    hoverBackgroundColor={notebook.hoverBackgroundColor}
+                                    hoverTextColor={notebook.hoverTextColor}
+                                />
                             </Link>
                         ))}
                     </div>
