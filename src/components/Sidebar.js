@@ -39,7 +39,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   const [isMainOpen, setIsMainOpen] = useState(true);
   const [isContentOpen, setIsContentOpen] = useState(true);
   const [isAppsOpen, setIsAppsOpen] = useState(true);
-  const [isExtrasOpen, setIsExtrasOpen] = useState(false);
+  const [isExtrasOpen, setIsExtrasOpen] = useState(true);
   const [isGamesOpen, setIsGamesOpen] = useState(false);
   const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
@@ -194,11 +194,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                   <span>Logs</span>
                 </NavLink>
 
-                <NavLink to="/stories" className={getLinkClass}>
-                  <SwordIcon className="text-yellow-500" size={24} />
-                  <span>S<span className="text-yellow-500"> &amp; </span>F</span>
-                </NavLink>
-
                 {/* <NavLink to="/notebooks" className={getLinkClass}>
                   <NotebookIcon size={24} />
                   <span>Notebooks</span>
@@ -254,6 +249,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
             </button>
             {isExtrasOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+                <NavLink to="/stories" className={getLinkClass}>
+                  <SwordIcon className="text-yellow-500" size={24} />
+                  <span>S<span className="text-yellow-500"> &amp; </span>F</span>
+                </NavLink>
                 <a href="/rss.xml" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
                   <RssIcon size={24} />
                   <span>RSS Feed</span>
