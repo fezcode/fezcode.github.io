@@ -1,5 +1,3 @@
-Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`.
----
 ![Doku.js Image](../images/projects/doku-image.png)
 
 Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`.

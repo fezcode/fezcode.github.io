@@ -1,6 +1,3 @@
-Villain Couch is a Windows application designed to track the status of VLC Media Player.
----
-
 The VLC Tracker Agent, also known as Villain Couch, is a Windows application designed to track the status of VLC Media Player.
 
 ## Building the Application:

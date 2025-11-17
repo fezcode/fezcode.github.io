@@ -1,5 +1,3 @@
-Go Tournament Bracket Generator Lib is a simple and flexible Go library for creating and managing single-elimination tournament brackets. It also includes a fully interactive command-line application to run a tournament from start to finish.
----
 This is a simple and flexible Go library for creating and managing single-elimination tournament brackets. It also includes a fully interactive command-line application to run a tournament from start to finish.
 
 ## Key Components:

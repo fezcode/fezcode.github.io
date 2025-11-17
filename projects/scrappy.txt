@@ -1,6 +1,4 @@
 Scrappy.js is a simple command-line web scraper.
----
-Scrappy.js is a simple command-line web scraper.
 
 ## Commands:
 

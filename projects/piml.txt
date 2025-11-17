@@ -1,5 +1,3 @@
-piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
----
 ## 1. Introduction
 
 **Spec version**: v1.1.0

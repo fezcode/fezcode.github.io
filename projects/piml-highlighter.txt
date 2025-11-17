@@ -1,7 +1,4 @@
 This extension provides comprehensive syntax highlighting for PIML (Parenthesis Intended Markup Language) files in Visual Studio Code.
----
-
-This extension provides comprehensive syntax highlighting for PIML (Parenthesis Intended Markup Language) files in Visual Studio Code.
 
 ## Features
 

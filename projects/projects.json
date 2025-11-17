@@ -6,7 +6,8 @@
     "link": "https://github.com/fezcode/fezcode.github.io",
     "pinned": true,
     "isActive": true,
-    "technologies": ["blog", "personal-website","react", "tailwind", "webdev"]
+    "technologies": ["blog", "personal-website","react", "tailwind", "webdev"],
+    "shortDescription": "This website... The app you are currently on. Personal website and blog, written in React."
   },
   {
     "slug": "piml",
@@ -15,7 +16,8 @@
     "link": "https://github.com/fezcode/piml",
     "pinned": true,
     "isActive": true,
-    "technologies": ["markup-language"]
+    "technologies": ["markup-language"],
+    "shortDescription": "piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing."
   },
   {
     "slug": "bm",
@@ -24,7 +26,8 @@
     "link": "https://github.com/fezcode/bm",
     "pinned": true,
     "isActive": true,
-    "technologies": ["Rust", "TOML"]
+    "technologies": ["Rust", "TOML"],
+    "shortDescription": "BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory."
   },
   {
     "slug": "villain-couch",
@@ -33,7 +36,8 @@
     "link": "https://github.com/fezcode/Villain-Couch",
     "pinned": true,
     "isActive": true,
-    "technologies": ["VLC", "Go", "SQLite"]
+    "technologies": ["VLC", "Go", "SQLite"],
+    "shortDescription": "Villain Couch is a Windows application designed to track the status of VLC Media Player."
   },
   {
     "slug": "go-piml",
@@ -42,7 +46,8 @@
     "link": "https://github.com/fezcode/go-piml",
     "pinned": false,
     "isActive": true,
-    "technologies": ["piml", "markup-language", "go"]
+    "technologies": ["piml", "markup-language", "go"],
+    "shortDescription": "go-piml is a Go package that provides functionality to marshal and unmarshal data to and from the PIML format."
   },
   {
     "slug": "piml.js",
@@ -51,7 +56,8 @@
     "link": "https://github.com/fezcode/piml.js",
     "pinned": false,
     "isActive": true,
-    "technologies": ["piml", "markup-language", "js"]
+    "technologies": ["piml", "markup-language", "js"],
+    "shortDescription": "piml.js is a JavaScript library for parsing and stringifying data in the PIML format."
   },
   {
     "slug": "doku",
@@ -60,7 +66,8 @@
     "link": "https://github.com/fezcode/doku.js",
     "pinned": true,
     "isActive": true,
-    "technologies": ["Node", "TUI", "npm"]
+    "technologies": ["Node", "TUI", "npm"],
+    "shortDescription": "Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`."
   },
   {
     "slug": "stroque",
@@ -69,7 +76,8 @@
     "link": "https://github.com/fezcode/Stroque",
     "pinned": false,
     "isActive": true,
-    "technologies": ["Rust", "SVG"]
+    "technologies": ["Rust", "SVG"],
+    "shortDescription": "Stroque is a project for procedural box art generation. It draws boxes on a `2000 x 2000` SVG canvas and utilizes a backtracking algorithm."
   },
   {
     "slug": "scrappy",
@@ -78,7 +86,8 @@
     "link": "https://github.com/fezcode/scrappy",
     "pinned": false,
     "isActive": false,
-    "technologies": ["JavaScript"]
+    "technologies": ["JavaScript"],
+    "shortDescription": "Scrappy.js is a simple command-line web scraper."
   },
   {
     "slug": "piml-highlighter",
@@ -87,7 +96,8 @@
     "link": "https://github.com/fezcode/piml-highlighter/",
     "pinned": false,
     "isActive": true,
-    "technologies": ["VS Code", "PIML", "Syntax Highlighting", "Extension"]
+    "technologies": ["VS Code", "PIML", "Syntax Highlighting", "Extension"],
+    "shortDescription": "This extension provides comprehensive syntax highlighting for PIML (Parenthesis Intended Markup Language) files in Visual Studio Code."
   },
   {
     "slug": "go-homo-sapiens-time",
@@ -96,7 +106,8 @@
     "link": "https://github.com/fezcode/go-homo-sapiens-time",
     "pinned": false,
     "isActive": true,
-    "technologies": ["Go"]
+    "technologies": ["Go"],
+    "shortDescription": "Go Homo Sapiens Time is a Go package that provides utilities for converting human-readable time strings to milliseconds and vice-versa. It's a Go port of the popular JavaScript library homo-sapiens-time."
   },
   {
     "slug": "go-tournament-brackets",
@@ -105,7 +116,8 @@
     "link": "https://github.com/fezcode/go-tournament-brackets",
     "pinned": false,
     "isActive": true,
-    "technologies": ["Go"]
+    "technologies": ["Go"],
+    "shortDescription": "Go Tournament Bracket Generator Lib is a simple and flexible Go library for creating and managing single-elimination tournament brackets. It also includes a fully interactive command-line application to run a tournament from start to finish."
   },
   {
     "slug": "open-tab-with-respect",
@@ -114,7 +126,8 @@
     "link": "https://github.com/fezcode/open-tab-with-respect",
     "pinned": false,
     "isActive": true,
-    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
+    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"],
+    "shortDescription": "\"Open Tab With Respect\" is a Firefox/WebExtension that allows users to open new tabs in specific positions relative to the current tab."
   },
   {
     "slug": "clipboard-concat",
@@ -123,7 +136,8 @@
     "link": "https://github.com/fezcode/clipboard-concat",
     "pinned": false,
     "isActive": true,
-    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
+    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"],
+    "shortDescription": "\"Clipboard Concat\" is a Firefox/WebExtension that allows users to concatenate copied links and selections into their clipboard."
   },
   {
     "slug": "boxer",
@@ -132,7 +146,8 @@
     "link": "https://github.com/fezcode/boxer",
     "pinned": true,
     "isActive": false,
-    "technologies": ["Linux", "C++", "C", "Ninja", "CMake", "Archiver"]
+    "technologies": ["Linux", "C++", "C", "Ninja", "CMake", "Archiver"],
+    "shortDescription": "Boxer is a tool that creates archive files based on instructions provided in a boxerfile. Uses CMake and Ninja for its build system."
   },
   {
     "slug": "firefox-themes",
@@ -141,6 +156,7 @@
     "link": "https://github.com/fezcode",
     "pinned": false,
     "isActive": false,
-    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"]
+    "technologies": ["WebExtension", "JavaScript", "Firefox", "HTML", "CSS"],
+    "shortDescription": "These are themes created for Firefox."
   }
 ]

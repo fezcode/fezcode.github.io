@@ -1,6 +1,4 @@
 "Clipboard Concat" is a Firefox/WebExtension that allows users to concatenate copied links and selections into their clipboard.
----
-"Clipboard Concat" is a Firefox/WebExtension that allows users to concatenate copied links and selections into their clipboard.
 
 ## Features:
 

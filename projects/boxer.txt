@@ -1,5 +1,3 @@
-Boxer is a tool that creates archive files based on instructions provided in a boxerfile. Uses CMake and Ninja for its build system.
----
 Boxer is a tool that creates archive files based on instructions provided in a `boxerfile`. It uses `CMake` and `Ninja` for its build system.
 
 ## Building:
