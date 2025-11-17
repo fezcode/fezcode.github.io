@@ -292,6 +292,15 @@
     "series": {
       "posts": [
         {
+          "slug": "minimum-number-of-steps-to-make-two-strings-anagram",
+          "title": "Minimum Number of Steps to Make Two Strings Anagram",
+          "date": "2025-11-17",
+          "description": "LeetCode problem: Minimum Number of Steps to Make Two Strings Anagram",
+          "tags": ["cs", "algorithms", "string", "frequency-array"],
+          "category": "dev",
+          "filename": "/algos/minimum-number-of-steps-to-make-two-strings-anagram.txt"
+        },
+        {
           "slug": "find-minimum-in-rotated-sorted-array",
           "title": "Find Minimum in Rotated Sorted Array",
           "date": "2025-11-08",
