@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import NotebookCover from "./NotebookCover";
 import useSeo from '../../hooks/useSeo';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
+import piml from 'piml';
 
 const NotebooksPage = () => {
     useSeo({
@@ -22,10 +23,11 @@ const NotebooksPage = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('/notebooks/notebooks.json')
-            .then(response => response.json())
-            .then(data => {
-                setNotebooks(data);
+        fetch('/notebooks/notebooks.piml')
+            .then(response => response.text())
+            .then(pimlText => {
+                const data = piml.parse(pimlText);
+                setNotebooks(data.notebooks);
                 setLoading(false);
             })
             .catch(error => {

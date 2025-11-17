@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 13 Nov 2025 23:51:29 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 17 Nov 2025 21:56:04 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 13 Nov 2025 23:51:29 GMT</pubDate>
+        <pubDate>Mon, 17 Nov 2025 21:56:04 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Minimum Number of Steps to Make Two Strings Anagram]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/minimum-number-of-steps-to-make-two-strings-anagram</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/minimum-number-of-steps-to-make-two-strings-anagram</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 17 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>LeetCode 1347: Minimum Number of Steps to Make Two Strings Anagram</h1>
+<p><a href="https://fezcode.com/#/blog/minimum-number-of-steps-to-make-two-strings-anagram">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Decoding the Digital Alphabet: A Comprehensive Guide to BaseXX Encodings]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/decoding-the-digital-alphabet-base-xx-encodings</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/decoding-the-digital-alphabet-base-xx-encodings</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 16 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>Introduction</h2>
+<p><a href="https://fezcode.com/#/blog/decoding-the-digital-alphabet-base-xx-encodings">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Fezcodex Stories with `git subtree`]]></title>
             <description><![CDATA[[object Object]]]></description>

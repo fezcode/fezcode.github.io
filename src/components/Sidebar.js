@@ -199,10 +199,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                   <span>S<span className="text-yellow-500"> &amp; </span>F</span>
                 </NavLink>
 
-                <NavLink to="/notebooks" className={getLinkClass}>
+                {/* <NavLink to="/notebooks" className={getLinkClass}>
                   <NotebookIcon size={24} />
                   <span>Notebooks</span>
-                </NavLink>
+                </NavLink> */}
               </nav>
             )}
           </div>

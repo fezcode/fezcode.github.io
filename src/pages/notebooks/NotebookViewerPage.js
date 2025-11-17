@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../styles/notebook.css';
 import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import piml from 'piml';
 
 const Page = ({ content, pageNumber, title }) => {
     return (
@@ -36,10 +37,17 @@ const NotebookViewerPage = () => {
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 1279);
 
     useEffect(() => {
-        fetch(`/notebooks/${notebookId}.json`)
-            .then(response => response.json())
-            .then(data => setNotebook(data))
-            .catch(error => console.error('Error fetching notebook:', error));
+        Promise.all([
+            fetch(`/notebooks/notebooks.piml`).then(res => res.text()),
+            fetch(`/notebooks/${notebookId}.txt`).then(res => res.text())
+        ])
+        .then(([pimlText, content]) => {
+            const data = piml.parse(pimlText);
+            const notebookInfo = data.notebooks.find(n => n.id === notebookId);
+            const pages = content.split('---page---');
+            setNotebook({ ...notebookInfo, pages });
+        })
+        .catch(error => console.error('Error fetching notebook:', error));
 
         const handleResize = () => {
             setIsMobile(window.innerWidth < 768);
@@ -50,14 +58,22 @@ const NotebookViewerPage = () => {
 
     const handleNextPage = () => {
         if (notebook) {
-            const pageIncrement = isMobile ? 1 : 2;
-            setCurrentPage(prev => Math.min(prev + pageIncrement, notebook.pages.length + 1));
+            if (currentPage === 0) {
+                setCurrentPage(1);
+            } else {
+                const pageIncrement = isMobile ? 1 : 2;
+                setCurrentPage(prev => Math.min(prev + pageIncrement, notebook.pages.length + 1));
+            }
         }
     };
 
     const handlePrevPage = () => {
-        const pageDecrement = isMobile ? 1 : 2;
-        setCurrentPage(prev => Math.max(prev - pageDecrement, 0));
+        if (isMobile) {
+            setCurrentPage(prev => Math.max(prev - 1, 0));
+        } else {
+            const pageDecrement = (currentPage % 2 === 0) ? 1 : 2;
+            setCurrentPage(prev => Math.max(prev - pageDecrement, 0));
+        }
     };
 
     if (!notebook) {

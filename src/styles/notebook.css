@@ -100,7 +100,7 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 10%;
+    width: 15%;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -130,11 +130,11 @@
 }
 
 .clickable-edge.left {
-    left: 0;
+    left: -5%;
 }
 
 .clickable-edge.right {
-    right: 0;
+    right: -5%;
 }
 
 
