@@ -7,6 +7,20 @@ module.exports = {
         pathRewrite: { '^/api/show-my-ip': '' },
       },
     },
+    setupMiddlewares: (middlewares, devServer) => {
+      if (!devServer) {
+        throw new Error('webpack-dev-server is not defined');
+      }
+
+      devServer.app.use((req, res, next) => {
+        if (req.path.endsWith('.piml')) {
+          res.set('Content-Type', 'text/plain');
+        }
+        next();
+      });
+
+      return middlewares;
+    },
   },
   webpack: {
     configure: (webpackConfig, { env, paths }) => {

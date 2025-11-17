@@ -4,8 +4,6 @@ I'm a big fan of open-source and love the challenge of solving tricky problems.
 When I'm not coding, you can probably find me exploring new tech or enjoying a good cup of coffee ☕.
 I'm always learning and excited to see what's next!
 
-
-
 ## Experience
 
 1.  **Senior Software Engineer** at *Picus Security* (Oct 2022 - Sep 2025)

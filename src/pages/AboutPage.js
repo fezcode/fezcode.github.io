@@ -7,6 +7,7 @@ import {
   EnvelopeIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
+import piml from 'piml';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -45,15 +46,16 @@ const AboutPage = () => {
     const fetchAboutContent = async () => {
       try {
         const [metaResponse, contentResponse] = await Promise.all([
-          fetch('/data/about.json'),
-          fetch('/about.txt'),
+          fetch('/about-me/about.piml'),
+          fetch('/about-me/about.txt'),
         ]);
 
         let attributes = {};
         if (metaResponse.ok) {
-          attributes = await metaResponse.json();
+          const pimlText = await metaResponse.text();
+          attributes = piml.parse(pimlText);
         } else {
-          console.error('Failed to fetch about.json');
+          console.error('Failed to fetch about.piml');
         }
 
         let body = '';
