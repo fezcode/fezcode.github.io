@@ -81,6 +81,13 @@
         "title": "Rock Paper Scissors",
         "description": "Play the classic game of Rock Paper Scissors against the computer.",
         "icon": "HandshakeIcon"
+      },
+      {
+        "slug": "tic-tac-toe",
+        "to": "/apps/tic-tac-toe",
+        "title": "Tic Tac Toe",
+        "description": "Play the classic game of Tic Tac Toe against another player or AI.",
+        "icon": "XCircleIcon"
       }
     ]
   },
