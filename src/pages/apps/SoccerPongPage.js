@@ -298,7 +298,7 @@ const SoccerPongPage = () => {
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
           <span className="separator-color">::</span>
-          <span className="single-app-color">soccer-pong</span>
+          <span className="single-app-color">sp</span>
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
