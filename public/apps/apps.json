@@ -46,6 +46,13 @@
         "title": "Excuse Generator",
         "description": "Generate funny and absurd excuses for any situation.",
         "icon": "SmileyWinkIcon"
+      },
+      {
+        "slug": "magic-8-ball",
+        "to": "/apps/magic-8-ball",
+        "title": "Magic 8-Ball",
+        "description": "Ask a yes/no question and let the Magic 8-Ball reveal your fate!",
+        "icon": "QuestionIcon"
       }
     ]
   },

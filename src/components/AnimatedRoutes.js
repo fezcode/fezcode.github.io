@@ -42,6 +42,7 @@ import JsonPimlConverterPage from '../pages/apps/JsonPimlConverterPage';
 import TextDiffCheckerPage from '../pages/apps/TextDiffCheckerPage';
 import CronJobGeneratorPage from '../pages/apps/CronJobGeneratorPage';
 import ExcuseGeneratorPage from '../pages/apps/ExcuseGeneratorPage';
+import MagicEightBallPage from '../pages/apps/MagicEightBallPage';
 import JSONGeneratorPage from '../pages/apps/JSONGeneratorPage';
 import SettingsPage from '../pages/SettingsPage'; // Import SettingsPage
 
@@ -397,6 +398,7 @@ function AnimatedRoutes() {
         <Route path="/apps::tdc" element={<Navigate to="/apps/text-diff-checker" replace />} />
         <Route path="/apps::cron" element={<Navigate to="/apps/cron-job-generator" replace />} />
         <Route path="/apps::excuse" element={<Navigate to="/apps/excuse-generator" replace />} />
+        <Route path="/apps::8ball" element={<Navigate to="/apps/magic-8-ball" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -437,6 +439,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <ExcuseGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/magic-8-ball"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <MagicEightBallPage />
             </motion.div>
           }
         />
