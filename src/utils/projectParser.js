@@ -25,7 +25,7 @@ export const useProjects = (fetchPinnedOnly = false) => {
     };
 
     fetchProjects();
-  }, []);
+  }, [fetchPinnedOnly]);
 
   return { projects, loading, error };
 };

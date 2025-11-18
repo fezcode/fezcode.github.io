@@ -22,10 +22,11 @@ function AppPage() {
 
   const [groupedApps, setGroupedApps] = useState({});
   const [collapsedCategories, setCollapsedCategories] = useState({});
-  const [isLoading, setIsLoading] = useState(true); // New loading state
+  const [isLoading, setIsLoading] = useState(true);
+  const [totalAppsCount, setTotalAppsCount] = useState(0); // New state for total app count
 
   useEffect(() => {
-    setIsLoading(true); // Set loading to true when fetch starts
+    setIsLoading(true);
     fetch('/apps/apps.json')
       .then((response) => response.json())
       .then((data) => {
@@ -35,10 +36,17 @@ function AppPage() {
           return acc;
         }, {});
         setCollapsedCategories(initialCollapsedState);
+
+        // Calculate total number of apps
+        let count = 0;
+        for (const categoryKey in data) {
+          count += data[categoryKey].apps.length;
+        }
+        setTotalAppsCount(count);
       })
       .catch((error) => console.error('Error fetching apps:', error))
       .finally(() => {
-        setIsLoading(false); // Set loading to false when fetch completes
+        setIsLoading(false);
       });
   }, []);
 
@@ -67,6 +75,8 @@ function AppPage() {
           <span className="codex-color">fc</span>
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
+          <span className="separator-color">::</span>
+          <span className="single-app-color">[{totalAppsCount}]</span>
         </h1>
         <hr className="border-gray-700" />
         {isLoading ? (

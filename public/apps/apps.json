@@ -175,6 +175,13 @@
         "title": "Color Contrast Checker",
         "description": "Check WCAG color contrast ratios for accessibility.",
         "icon": "Palette"
+      },
+      {
+        "slug": "text-diff-checker",
+        "to": "/apps/text-diff-checker",
+        "title": "Text Diff Checker",
+        "description": "Compare two texts and highlight the differences.",
+        "icon": "TextAa"
       }
     ]
   }

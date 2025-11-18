@@ -28,7 +28,6 @@ import {
   RssIcon,
   SquaresFourIcon,
   GearSix, // Import GearSix icon
-  NotebookIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
