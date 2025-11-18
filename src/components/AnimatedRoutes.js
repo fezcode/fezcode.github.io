@@ -40,6 +40,8 @@ import ColorContrastCheckerPage from '../pages/apps/ColorContrastCheckerPage';
 import QrCodeGeneratorPage from '../pages/apps/QrCodeGeneratorPage';
 import JsonPimlConverterPage from '../pages/apps/JsonPimlConverterPage';
 import TextDiffCheckerPage from '../pages/apps/TextDiffCheckerPage';
+import CronJobGeneratorPage from '../pages/apps/CronJobGeneratorPage';
+import ExcuseGeneratorPage from '../pages/apps/ExcuseGeneratorPage';
 import JSONGeneratorPage from '../pages/apps/JSONGeneratorPage';
 import SettingsPage from '../pages/SettingsPage'; // Import SettingsPage
 
@@ -393,6 +395,8 @@ function AnimatedRoutes() {
         <Route path="/apps::jpc" element={<Navigate to="/apps/json-piml-converter" replace />} />
         <Route path="/apps::jg" element={<Navigate to="/apps/json-generator" replace />} />
         <Route path="/apps::tdc" element={<Navigate to="/apps/text-diff-checker" replace />} />
+        <Route path="/apps::cron" element={<Navigate to="/apps/cron-job-generator" replace />} />
+        <Route path="/apps::excuse" element={<Navigate to="/apps/excuse-generator" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -405,6 +409,34 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/cron-job-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <CronJobGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/excuse-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <ExcuseGeneratorPage />
             </motion.div>
           }
         />
