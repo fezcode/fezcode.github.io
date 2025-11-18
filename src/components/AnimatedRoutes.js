@@ -47,6 +47,7 @@ import JSONGeneratorPage from '../pages/apps/JSONGeneratorPage';
 import CardGamePage from '../pages/apps/CardGamePage';
 import SoccerPongPage from '../pages/apps/SoccerPongPage';
 import MemoryGamePage from '../pages/apps/MemoryGamePage'; // Import MemoryGamePage
+import RockPaperScissorsPage from '../pages/apps/RockPaperScissorsPage'; // Import RockPaperScissorsPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -405,6 +406,7 @@ function AnimatedRoutes() {
         <Route path="/apps::card" element={<Navigate to="/apps/card-game" replace />} />
         <Route path="/apps::sp" element={<Navigate to="/apps/soccer-pong" replace />} />
         <Route path="/apps::mg" element={<Navigate to="/apps/memory-game" replace />} />
+        <Route path="/apps::rps" element={<Navigate to="/apps/rock-paper-scissors" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -417,6 +419,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/rock-paper-scissors"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <RockPaperScissorsPage />
             </motion.div>
           }
         />

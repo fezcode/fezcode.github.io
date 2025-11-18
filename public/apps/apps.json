@@ -74,6 +74,13 @@
         "title": "Memory Game",
         "description": "Test your memory by matching pairs of cards.",
         "icon": "BrainIcon"
+      },
+      {
+        "slug": "rock-paper-scissors",
+        "to": "/apps/rock-paper-scissors",
+        "title": "Rock Paper Scissors",
+        "description": "Play the classic game of Rock Paper Scissors against the computer.",
+        "icon": "HandshakeIcon"
       }
     ]
   },
