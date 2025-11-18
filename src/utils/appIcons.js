@@ -25,6 +25,7 @@ import {
   QuestionIcon,
   CardsThreeIcon,
   AtomIcon,
+  SoccerBallIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -54,4 +55,5 @@ export const appIcons = {
   QuestionIcon,
   CardsThreeIcon,
   AtomIcon,
+  SoccerBallIcon,
 };
