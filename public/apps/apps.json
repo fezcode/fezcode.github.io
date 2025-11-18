@@ -60,6 +60,13 @@
         "title": "Higher or Lower Card Game",
         "description": "Guess if the next card will be higher or lower than the current one.",
         "icon": "CardsThreeIcon"
+      },
+      {
+        "slug": "soccer-pong",
+        "to": "/apps/soccer-pong",
+        "title": "Soccer Pong",
+        "description": "A Pong-style game with a soccer twist. Player vs. AI.",
+        "icon": "SoccerBallIcon"
       }
     ]
   },

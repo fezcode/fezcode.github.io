@@ -24,6 +24,7 @@ import {
   SmileyWinkIcon,
   QuestionIcon,
   CardsThreeIcon,
+  AtomIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -52,4 +53,5 @@ export const appIcons = {
   SmileyWinkIcon,
   QuestionIcon,
   CardsThreeIcon,
+  AtomIcon,
 };
