@@ -11,6 +11,7 @@ const PostItem = ({
   series,
   seriesIndex,
   isSeries,
+  authors, // Change to authors array
 }) => {
   const {
     isAnimationEnabled,
@@ -85,6 +86,7 @@ const PostItem = ({
         <div className="flex items-center">
           <p className="text-sm text-gray-400 w-28 flex-shrink-0">
             {formattedDate}
+            {authors && authors.length > 0 && <span className="block text-xs text-gray-500">by {authors[0]}</span>}
           </p>
           <div className="ml-4 flex-grow flex items-center">
             {category && (

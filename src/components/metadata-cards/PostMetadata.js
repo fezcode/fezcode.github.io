@@ -51,6 +51,21 @@ const PostMetadata = ({
             <Label>Original Title</Label>
             <p className="text-gray-300 ml-1 mt-1 ">{metadata.title}</p>
           </div>
+          {metadata.authors && metadata.authors.length > 0 && (
+            <div>
+              <Label>Author(s)</Label>
+              <p className="ml-1 mt-1">
+                {metadata.authors.map((author, index) => (
+                  <React.Fragment key={author}>
+                    <span className="text-rose-400">{author}</span>
+                    {index < metadata.authors.length - 1 && (
+                      <span className="text-gray-300"> & </span>
+                    )}
+                  </React.Fragment>
+                ))}
+              </p>
+            </div>
+          )}
           {metadata.category && (
             <div>
               <Label>Category</Label>

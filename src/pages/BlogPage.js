@@ -43,6 +43,7 @@ const BlogPage = () => {
                     title: item.title,
                     date: item.date,
                     updated: item.updated,
+                    authors: item.authors, // Propagate authors array for series posts
                   },
                 });
               });
@@ -60,8 +61,9 @@ const BlogPage = () => {
                 seriesMap.set(post.series.slug, {
                   title: post.series.title,
                   slug: post.series.slug,
-                  date: post.series.date,
-                  updated: post.series.updated,
+                  date: post.date, // Use post.date for series date
+                  updated: post.updated, // Use post.updated for series updated date
+                  authors: post.series.authors, // Use authors array from series metadata
                   isSeries: true,
                   posts: [],
                 });
@@ -124,7 +126,8 @@ const BlogPage = () => {
       const query = searchQuery.toLowerCase();
       const title = item.title ? item.title.toLowerCase() : '';
       const slug = item.slug ? item.slug.toLowerCase() : '';
-      return title.includes(query) || slug.includes(query);
+      const authors = item.authors ? item.authors.map(a => a.toLowerCase()).join(' ') : ''; // Include authors in search
+      return title.includes(query) || slug.includes(query) || authors.includes(query);
     };
 
     return matchesFilter() && matchesSearch();
@@ -230,6 +233,7 @@ const BlogPage = () => {
                   updatedDate={item.updated} // Updated date of the series
                   category="series"
                   isSeries={true}
+                  authors={item.authors} // Pass authors array for series
                 />
               ) : (
                 <PostItem
@@ -241,6 +245,7 @@ const BlogPage = () => {
                   category={item.category}
                   series={item.series}
                   seriesIndex={item.seriesIndex}
+                  authors={item.authors} // Pass authors array for individual posts
                 />
               ),
             )}
