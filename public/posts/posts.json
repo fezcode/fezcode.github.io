@@ -1,5 +1,16 @@
 [
   {
+    "slug": "kaprekars-routine",
+    "title": "Kaprekar's Routine: A Curious Number Game",
+    "date": "2025-11-18",
+    "updated": "2025-11-18",
+    "description": "Explore Kaprekar's Routine, a fascinating number game that always leads to the constant 6174 for most four-digit numbers.",
+    "tags": ["mathematics", "number-theory", "kaprekar", "fun"],
+    "category": "rant",
+    "filename": "kaprekars-routine.txt",
+    "authors": ["fezcode"]
+  },
+  {
     "slug": "chaos-theory-philosophical-rant",
     "title": "The Inevitable Dance of Entropy: A Rant on Chaos",
     "date": "2025-11-18",

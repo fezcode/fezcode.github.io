@@ -79,7 +79,7 @@ const PostItem = ({
 
   return (
     <Link
-      to={isSeries ? `/blog/${slug}` : `/blog/${slug}`}
+      to={`/blog/${slug}`}
       className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group relative overflow-hidden ${postBackgroundColorClass} ${postHoverBackgroundColorClass} ${shouldAnimate ? 'animated-grid-bg' : ''}`}
     >
       <article>
