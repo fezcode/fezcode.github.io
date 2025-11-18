@@ -45,7 +45,8 @@ import ExcuseGeneratorPage from '../pages/apps/ExcuseGeneratorPage';
 import MagicEightBallPage from '../pages/apps/MagicEightBallPage';
 import JSONGeneratorPage from '../pages/apps/JSONGeneratorPage';
 import CardGamePage from '../pages/apps/CardGamePage';
-import SoccerPongPage from '../pages/apps/SoccerPongPage'; // Import SoccerPongPage
+import SoccerPongPage from '../pages/apps/SoccerPongPage';
+import MemoryGamePage from '../pages/apps/MemoryGamePage'; // Import MemoryGamePage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -403,6 +404,7 @@ function AnimatedRoutes() {
         <Route path="/apps::8ball" element={<Navigate to="/apps/magic-8-ball" replace />} />
         <Route path="/apps::card" element={<Navigate to="/apps/card-game" replace />} />
         <Route path="/apps::sp" element={<Navigate to="/apps/soccer-pong" replace />} />
+        <Route path="/apps::mg" element={<Navigate to="/apps/memory-game" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -443,6 +445,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <SoccerPongPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/memory-game"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <MemoryGamePage />
             </motion.div>
           }
         />

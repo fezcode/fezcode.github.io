@@ -67,6 +67,13 @@
         "title": "Soccer Pong",
         "description": "A Pong-style game with a soccer twist. Player vs. AI.",
         "icon": "SoccerBallIcon"
+      },
+      {
+        "slug": "memory-game",
+        "to": "/apps/memory-game",
+        "title": "Memory Game",
+        "description": "Test your memory by matching pairs of cards.",
+        "icon": "BrainIcon"
       }
     ]
   },
