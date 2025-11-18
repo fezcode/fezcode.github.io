@@ -88,6 +88,13 @@
         "title": "Tic Tac Toe",
         "description": "Play the classic game of Tic Tac Toe against another player or AI.",
         "icon": "XCircleIcon"
+      },
+      {
+        "slug": "connect-four",
+        "to": "/apps/connect-four",
+        "title": "Connect Four",
+        "description": "Play the classic game of Connect Four against another player or AI.",
+        "icon": "AtomIcon"
       }
     ]
   },

@@ -49,6 +49,7 @@ import SoccerPongPage from '../pages/apps/SoccerPongPage';
 import MemoryGamePage from '../pages/apps/MemoryGamePage'; // Import MemoryGamePage
 import RockPaperScissorsPage from '../pages/apps/RockPaperScissorsPage'; // Import RockPaperScissorsPage
 import TicTacToePage from '../pages/apps/TicTacToePage'; // Import TicTacToePage
+import ConnectFourPage from '../pages/apps/ConnectFourPage'; // Import ConnectFourPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -409,6 +410,7 @@ function AnimatedRoutes() {
         <Route path="/apps::mg" element={<Navigate to="/apps/memory-game" replace />} />
         <Route path="/apps::rps" element={<Navigate to="/apps/rock-paper-scissors" replace />} />
         <Route path="/apps::ttt" element={<Navigate to="/apps/tic-tac-toe" replace />} />
+        <Route path="/apps::c4" element={<Navigate to="/apps/connect-four" replace />} />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -421,6 +423,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/connect-four"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <ConnectFourPage />
             </motion.div>
           }
         />
