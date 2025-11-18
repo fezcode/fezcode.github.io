@@ -4,20 +4,23 @@ import { DndContext } from '../../context/DndContext';
 import { parseWallpaperName } from '../../utils/dndUtils';
 import dndWallpapers from '../../utils/dndWallpapers';
 import DndCard from '../../components/dnd/DndCard';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 const DndPage = () => {
   useSeo({
     title: 'From Serfs and Frauds | Fezcodex',
-    description: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
+    description:
+      'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
     keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'campaign'],
     ogTitle: 'From Serfs and Frauds | Fezcodex',
-    ogDescription: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
+    ogDescription:
+      'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'From Serfs and Frauds | Fezcodex',
-    twitterDescription: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [bgImage, setBgImage] = useState('');
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
@@ -27,14 +30,15 @@ const DndPage = () => {
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
-    setBreadcrumbs([
-      { label: 'S&F', path: '/stories' },
-    ]);
+    setBreadcrumbs([{ label: 'S&F', path: '/stories' }]);
   }, [setBgImageName, setBreadcrumbs]);
 
   return (
     <div className="dnd-page-container">
-      <div className="dnd-hero" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})` }}>
+      <div
+        className="dnd-hero"
+        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})` }}
+      >
         <h1 className="dnd-title-box">
           <span style={{ color: 'white' }}>Welcome to the</span>
           <br />

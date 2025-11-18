@@ -11,14 +11,20 @@ const MemoryGamePage = () => {
   useSeo({
     title: 'Memory Game | Fezcodex',
     description: 'A classic memory game to test your concentration.',
-    keywords: ['Fezcodex', 'memory game', 'match pairs', 'brain game', 'concentration'],
+    keywords: [
+      'Fezcodex',
+      'memory game',
+      'match pairs',
+      'brain game',
+      'concentration',
+    ],
     ogTitle: 'Memory Game | Fezcodex',
     ogDescription: 'A classic memory game to test your concentration.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Memory Game | Fezcodex',
     twitterDescription: 'A classic memory game to test your concentration.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const [cards, setCards] = useState([]);
@@ -44,7 +50,7 @@ const MemoryGamePage = () => {
 
   const shuffleCards = (values) => {
     let id = 0;
-    const initialCards = [...values, ...values].map(value => ({
+    const initialCards = [...values, ...values].map((value) => ({
       id: id++,
       value,
       isFlipped: false,
@@ -60,36 +66,46 @@ const MemoryGamePage = () => {
   };
 
   const handleCardClick = (clickedCard) => {
-    if (!gameStarted || gameOver || clickedCard.isFlipped || clickedCard.isMatched || flippedCards.length === 2) {
+    if (
+      !gameStarted ||
+      gameOver ||
+      clickedCard.isFlipped ||
+      clickedCard.isMatched ||
+      flippedCards.length === 2
+    ) {
       return;
     }
 
-    const newCards = cards.map(card =>
-      card.id === clickedCard.id ? { ...card, isFlipped: true } : card
+    const newCards = cards.map((card) =>
+      card.id === clickedCard.id ? { ...card, isFlipped: true } : card,
     );
     setCards(newCards);
-    setFlippedCards(prev => [...prev, clickedCard.id]);
+    setFlippedCards((prev) => [...prev, clickedCard.id]);
 
     if (flippedCards.length === 1) {
-      setMoves(prev => prev + 1);
-      const firstCard = cards.find(card => card.id === flippedCards[0]);
+      setMoves((prev) => prev + 1);
+      const firstCard = cards.find((card) => card.id === flippedCards[0]);
       const secondCard = clickedCard;
 
       if (firstCard.value === secondCard.value) {
         // Match found
         setTimeout(() => {
-          const matchedCards = newCards.map(card =>
-            card.id === firstCard.id || card.id === secondCard.id ? { ...card, isMatched: true } : card
+          const matchedCards = newCards.map((card) =>
+            card.id === firstCard.id || card.id === secondCard.id
+              ? { ...card, isMatched: true }
+              : card,
           );
           setCards(matchedCards);
-          setMatchesFound(prev => prev + 1);
+          setMatchesFound((prev) => prev + 1);
           setFlippedCards([]);
         }, 700);
       } else {
         // No match, flip back
         setTimeout(() => {
-          const flippedBackCards = newCards.map(card =>
-            card.id === firstCard.id || card.id === secondCard.id ? { ...card, isFlipped: false } : card
+          const flippedBackCards = newCards.map((card) =>
+            card.id === firstCard.id || card.id === secondCard.id
+              ? { ...card, isFlipped: false }
+              : card,
           );
           setCards(flippedBackCards);
           setFlippedCards([]);
@@ -187,8 +203,10 @@ const MemoryGamePage = () => {
                   </div>
                 )}
 
-                <div className={`cards-grid ${!gameStarted || gameOver ? 'blurred' : ''}`}>
-                  {cards.map(card => (
+                <div
+                  className={`cards-grid ${!gameStarted || gameOver ? 'blurred' : ''}`}
+                >
+                  {cards.map((card) => (
                     <div
                       key={card.id}
                       className={`card ${card.isFlipped || card.isMatched ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
@@ -196,9 +214,7 @@ const MemoryGamePage = () => {
                     >
                       <div className="card-inner">
                         <div className="card-face card-back"></div>
-                        <div className="card-face card-front">
-                          {card.value}
-                        </div>
+                        <div className="card-face card-front">{card.value}</div>
                       </div>
                     </div>
                   ))}

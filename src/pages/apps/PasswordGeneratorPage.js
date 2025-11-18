@@ -3,20 +3,30 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 const PasswordGeneratorPage = () => {
   useSeo({
     title: 'Password Generator | Fezcodex',
-    description: 'Generate strong, random passwords with customizable length and character types for enhanced security.',
-    keywords: ['Fezcodex', 'password generator', 'random password', 'strong password', 'security', 'password tool'],
+    description:
+      'Generate strong, random passwords with customizable length and character types for enhanced security.',
+    keywords: [
+      'Fezcodex',
+      'password generator',
+      'random password',
+      'strong password',
+      'security',
+      'password tool',
+    ],
     ogTitle: 'Password Generator | Fezcodex',
-    ogDescription: 'Generate strong, random passwords with customizable length and character types for enhanced security.',
+    ogDescription:
+      'Generate strong, random passwords with customizable length and character types for enhanced security.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Password Generator | Fezcodex',
-    twitterDescription: 'Generate strong, random passwords with customizable length and character types for enhanced security.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Generate strong, random passwords with customizable length and character types for enhanced security.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const { addToast } = useToast();
@@ -46,7 +56,13 @@ const PasswordGeneratorPage = () => {
       generatedPassword += charset[randomIndex];
     }
     setPassword(generatedPassword);
-  }, [length, includeUppercase, includeLowercase, includeNumbers, includeSymbols]);
+  }, [
+    length,
+    includeUppercase,
+    includeLowercase,
+    includeNumbers,
+    includeSymbols,
+  ]);
 
   // Generate password on initial load and whenever options change
   React.useEffect(() => {
@@ -56,9 +72,18 @@ const PasswordGeneratorPage = () => {
   const copyToClipboard = () => {
     if (password && password !== 'Select at least one character type.') {
       navigator.clipboard.writeText(password);
-      addToast({ title: 'Copied!', message: 'Password copied to clipboard.', duration: 2000 });
+      addToast({
+        title: 'Copied!',
+        message: 'Password copied to clipboard.',
+        duration: 2000,
+      });
     } else {
-      addToast({ title: 'Cannot Copy', message: 'No password to copy.', duration: 2000, type: 'error' });
+      addToast({
+        title: 'Cannot Copy',
+        message: 'No password to copy.',
+        duration: 2000,
+        type: 'error',
+      });
     }
   };
 
@@ -103,17 +128,30 @@ const PasswordGeneratorPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Password Generator </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Password Generator{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
 
               {/* Client-Side Notification */}
-              <div className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6" role="alert">
+              <div
+                className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
+                role="alert"
+              >
                 <strong className="font-bold">Client-Side Only:</strong>
-                <span className="block sm:inline ml-2">This password generator operates entirely within your browser. No data is sent to any server, ensuring maximum privacy for your generated passwords.</span>
+                <span className="block sm:inline ml-2">
+                  This password generator operates entirely within your browser.
+                  No data is sent to any server, ensuring maximum privacy for
+                  your generated passwords.
+                </span>
               </div>
 
               <div className="mb-6">
-                <label htmlFor="passwordOutput" className="block text-sm font-medium text-gray-300 mb-2">
+                <label
+                  htmlFor="passwordOutput"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
                   Generated Password
                 </label>
                 <div className="flex">
@@ -141,7 +179,10 @@ const PasswordGeneratorPage = () => {
               </div>
 
               <div className="mb-6">
-                <label htmlFor="length" className="block text-sm font-medium text-gray-300 mb-2">
+                <label
+                  htmlFor="length"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
                   Password Length: {length}
                 </label>
                 <input

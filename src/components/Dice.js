@@ -32,16 +32,30 @@ const Dice = ({ value, type, isRolling }) => {
 
     const getPipPosition = (position) => {
       switch (position) {
-        case 'top-left': return { top: offset, left: offset };
-        case 'top-center': return { top: offset, left: '50%', transform: 'translateX(-50%)' };
-        case 'top-right': return { top: offset, right: offset };
-        case 'middle-left': return { top: '50%', left: offset, transform: 'translateY(-50%)' };
-        case 'middle-center': return { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' };
-        case 'middle-right': return { top: '50%', right: offset, transform: 'translateY(-50%)' };
-        case 'bottom-left': return { bottom: offset, left: offset };
-        case 'bottom-center': return { bottom: offset, left: '50%', transform: 'translateX(-50%)' };
-        case 'bottom-right': return { bottom: offset, right: offset };
-        default: return {};
+        case 'top-left':
+          return { top: offset, left: offset };
+        case 'top-center':
+          return { top: offset, left: '50%', transform: 'translateX(-50%)' };
+        case 'top-right':
+          return { top: offset, right: offset };
+        case 'middle-left':
+          return { top: '50%', left: offset, transform: 'translateY(-50%)' };
+        case 'middle-center':
+          return {
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          };
+        case 'middle-right':
+          return { top: '50%', right: offset, transform: 'translateY(-50%)' };
+        case 'bottom-left':
+          return { bottom: offset, left: offset };
+        case 'bottom-center':
+          return { bottom: offset, left: '50%', transform: 'translateX(-50%)' };
+        case 'bottom-right':
+          return { bottom: offset, right: offset };
+        default:
+          return {};
       }
     };
 
@@ -50,8 +64,21 @@ const Dice = ({ value, type, isRolling }) => {
       2: ['top-left', 'bottom-right'],
       3: ['top-left', 'middle-center', 'bottom-right'],
       4: ['top-left', 'top-right', 'bottom-left', 'bottom-right'],
-      5: ['top-left', 'top-right', 'middle-center', 'bottom-left', 'bottom-right'],
-      6: ['top-left', 'top-right', 'middle-left', 'middle-right', 'bottom-left', 'bottom-right'],
+      5: [
+        'top-left',
+        'top-right',
+        'middle-center',
+        'bottom-left',
+        'bottom-right',
+      ],
+      6: [
+        'top-left',
+        'top-right',
+        'middle-left',
+        'middle-right',
+        'bottom-left',
+        'bottom-right',
+      ],
     };
 
     if (pipLayouts[num]) {
@@ -59,8 +86,13 @@ const Dice = ({ value, type, isRolling }) => {
         pips.push(
           <div
             key={index}
-            style={{ ...pipStyle, ...getPipPosition(pos), width: pipSize, height: pipSize }}
-          />
+            style={{
+              ...pipStyle,
+              ...getPipPosition(pos),
+              width: pipSize,
+              height: pipSize,
+            }}
+          />,
         );
       });
     }

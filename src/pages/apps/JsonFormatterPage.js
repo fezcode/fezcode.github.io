@@ -3,20 +3,29 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 const JsonFormatterPage = () => {
   useSeo({
     title: 'JSON Formatter & Validator | Fezcodex',
-    description: 'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
-    keywords: ['Fezcodex', 'JSON formatter', 'JSON validator', 'JSON beautifier', 'JSON tool'],
+    description:
+      'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
+    keywords: [
+      'Fezcodex',
+      'JSON formatter',
+      'JSON validator',
+      'JSON beautifier',
+      'JSON tool',
+    ],
     ogTitle: 'JSON Formatter & Validator | Fezcodex',
-    ogDescription: 'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
+    ogDescription:
+      'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'JSON Formatter & Validator | Fezcodex',
-    twitterDescription: 'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const { addToast } = useToast();
@@ -38,17 +47,31 @@ const JsonFormatterPage = () => {
     setValidationMessage('');
     if (!jsonInput.trim()) {
       setJsonOutput('');
-      addToast({ title: 'Input Empty', message: 'Please enter JSON to format.', duration: 3000, type: 'info' });
+      addToast({
+        title: 'Input Empty',
+        message: 'Please enter JSON to format.',
+        duration: 3000,
+        type: 'info',
+      });
       return;
     }
     try {
       const parsed = JSON.parse(jsonInput);
       setJsonOutput(JSON.stringify(parsed, null, 2)); // Pretty print with 2 spaces
-      addToast({ title: 'Formatted', message: 'JSON formatted successfully.', duration: 2000 });
+      addToast({
+        title: 'Formatted',
+        message: 'JSON formatted successfully.',
+        duration: 2000,
+      });
     } catch (error) {
       setJsonOutput('');
       setValidationMessage(`Invalid JSON: ${error.message}`);
-      addToast({ title: 'Error', message: 'Invalid JSON input.', duration: 3000, type: 'error' });
+      addToast({
+        title: 'Error',
+        message: 'Invalid JSON input.',
+        duration: 3000,
+        type: 'error',
+      });
     }
   }, [jsonInput, addToast]);
 
@@ -56,7 +79,12 @@ const JsonFormatterPage = () => {
     setJsonOutput('');
     if (!jsonInput.trim()) {
       setValidationMessage('Please enter JSON to validate.');
-      addToast({ title: 'Input Empty', message: 'Please enter JSON to validate.', duration: 3000, type: 'info' });
+      addToast({
+        title: 'Input Empty',
+        message: 'Please enter JSON to validate.',
+        duration: 3000,
+        type: 'info',
+      });
       return;
     }
     try {
@@ -65,7 +93,12 @@ const JsonFormatterPage = () => {
       addToast({ title: 'Valid', message: 'JSON is valid.', duration: 2000 });
     } catch (error) {
       setValidationMessage(`Invalid JSON: ${error.message}`);
-      addToast({ title: 'Error', message: 'Invalid JSON input.', duration: 3000, type: 'error' });
+      addToast({
+        title: 'Error',
+        message: 'Invalid JSON input.',
+        duration: 3000,
+        type: 'error',
+      });
     }
   }, [jsonInput, addToast]);
 
@@ -73,9 +106,18 @@ const JsonFormatterPage = () => {
     const textToCopy = jsonOutput || jsonInput; // Copy formatted if available, else raw input
     if (textToCopy.trim()) {
       navigator.clipboard.writeText(textToCopy);
-      addToast({ title: 'Copied!', message: 'Content copied to clipboard.', duration: 2000 });
+      addToast({
+        title: 'Copied!',
+        message: 'Content copied to clipboard.',
+        duration: 2000,
+      });
     } else {
-      addToast({ title: 'Cannot Copy', message: 'No content to copy.', duration: 2000, type: 'error' });
+      addToast({
+        title: 'Cannot Copy',
+        message: 'No content to copy.',
+        duration: 2000,
+        type: 'error',
+      });
     }
   }, [jsonInput, jsonOutput, addToast]);
 
@@ -110,17 +152,29 @@ const JsonFormatterPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> JSON Formatter & Validator </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                JSON Formatter & Validator{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
 
               {/* Client-Side Notification */}
-              <div className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6" role="alert">
+              <div
+                className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
+                role="alert"
+              >
                 <strong className="font-bold">Client-Side Only:</strong>
-                <span className="block sm:inline ml-2">This tool operates entirely within your browser. No JSON data is sent to any server, ensuring maximum privacy.</span>
+                <span className="block sm:inline ml-2">
+                  This tool operates entirely within your browser. No JSON data
+                  is sent to any server, ensuring maximum privacy.
+                </span>
               </div>
 
               <div className="mb-6">
-                <label htmlFor="jsonInput" className="block text-sm font-medium text-gray-300 mb-2">
+                <label
+                  htmlFor="jsonInput"
+                  className="block text-sm font-medium text-gray-300 mb-2"
+                >
                   JSON Input
                 </label>
                 <textarea
@@ -161,14 +215,20 @@ const JsonFormatterPage = () => {
               </div>
 
               {validationMessage && (
-                <div className={`px-4 py-3 rounded relative mb-6 ${validationMessage.startsWith('Valid') ? 'bg-green-900 bg-opacity-30 border border-green-700 text-green-300' : 'bg-red-900 bg-opacity-30 border border-red-700 text-red-300'}`} role="alert">
+                <div
+                  className={`px-4 py-3 rounded relative mb-6 ${validationMessage.startsWith('Valid') ? 'bg-green-900 bg-opacity-30 border border-green-700 text-green-300' : 'bg-red-900 bg-opacity-30 border border-red-700 text-red-300'}`}
+                  role="alert"
+                >
                   {validationMessage}
                 </div>
               )}
 
               {jsonOutput && (
                 <div className="mb-6">
-                  <label htmlFor="jsonOutput" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="jsonOutput"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Formatted JSON
                   </label>
                   <div className="flex">

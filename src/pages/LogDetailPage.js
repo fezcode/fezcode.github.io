@@ -121,11 +121,15 @@ const LogDetailPage = () => {
         keywords={log.attributes.tags ? log.attributes.tags.join(', ') : ''}
         ogTitle={`${log.attributes.title} | Fezcodex`}
         ogDescription={log.body.substring(0, 150)}
-        ogImage={log.attributes.image || 'https://fezcode.github.io/logo512.png'}
+        ogImage={
+          log.attributes.image || 'https://fezcode.github.io/logo512.png'
+        }
         twitterCard="summary_large_image"
         twitterTitle={`${log.attributes.title} | Fezcodex`}
         twitterDescription={log.body.substring(0, 150)}
-        twitterImage={log.attributes.image || 'https://fezcode.github.io/logo512.png'}
+        twitterImage={
+          log.attributes.image || 'https://fezcode.github.io/logo512.png'
+        }
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">

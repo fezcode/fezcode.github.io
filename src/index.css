@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body {
+html,
+body {
   height: 100%;
 }
 
@@ -74,12 +75,11 @@ code {
   --bg-dev-card-hover: rgba(0, 41, 107, 0.55);
   --title-hover-dev: #81aff4;
 
-
   /*rant card*/
   --color-takes-badge: #065f46; /* emerald-800 */
   --bg-takes-card: rgba(6, 95, 70, 0.175);
   --bg-takes-card-hover: rgba(16, 185, 129, 0.275);
-  --title-hover-takes: #3CB371;
+  --title-hover-takes: #3cb371;
 
   /*series card*/
   --color-series-badge: #e11d48; /* rose-600 */
@@ -88,10 +88,10 @@ code {
   --title-hover-series: #ff4747;
 
   /*dnd card*/
-  --color-dnd-badge: #AA4465;
+  --color-dnd-badge: #aa4465;
   --bg-dnd-card: rgba(170, 68, 101, 0.1);
   --bg-dnd-card-hover: rgba(170, 68, 101, 0.2);
-  --title-hover-dnd: #D48090;
+  --title-hover-dnd: #d48090;
 
   /*fezccode colors*/
   --fzcdx-background: #ffffff;
@@ -101,7 +101,6 @@ code {
   --fzcdx-secondary: #fb923c;
   --fzcdx-accent: #34d399;
   --fzcdx-spanner: #e89b5d;
-
 }
 
 .codex-color {
@@ -133,13 +132,13 @@ code {
 }
 
 /* Hide arrows from number inputs */
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
@@ -164,8 +163,9 @@ input[type=number] {
 }
 
 .animated-grid-bg {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
   animation: grid-animation 30s linear infinite;
 }

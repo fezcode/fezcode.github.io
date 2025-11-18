@@ -1,22 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import colors from '../../config/colors';
 
 function TournamentBracketPage() {
   useSeo({
     title: 'Tournament Bracket Generator | Fezcodex',
-    description: 'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
-    keywords: ['Fezcodex', 'tournament bracket', 'bracket generator', 'single elimination', 'tournament manager'],
+    description:
+      'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
+    keywords: [
+      'Fezcodex',
+      'tournament bracket',
+      'bracket generator',
+      'single elimination',
+      'tournament manager',
+    ],
     ogTitle: 'Tournament Bracket Generator | Fezcodex',
-    ogDescription: 'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
+    ogDescription:
+      'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Tournament Bracket Generator | Fezcodex',
-    twitterDescription: 'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const { addToast } = useToast();
@@ -31,7 +40,8 @@ function TournamentBracketPage() {
 
   const [competitors, setCompetitors] = useState([]);
   const [newCompetitor, setNewCompetitor] = useState('');
-  const [newCompetitorCharLimitError, setNewCompetitorCharLimitError] = useState(false);
+  const [newCompetitorCharLimitError, setNewCompetitorCharLimitError] =
+    useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingText, setEditingText] = useState('');
   const [nameError, setNameError] = useState('');
@@ -41,12 +51,20 @@ function TournamentBracketPage() {
     const trimmedCompetitor = newCompetitor.trim();
     if (trimmedCompetitor) {
       if (trimmedCompetitor.length > 5) {
-        addToast({ title: 'Error', message: 'Competitor name cannot exceed 5 characters.', duration: 3000 });
+        addToast({
+          title: 'Error',
+          message: 'Competitor name cannot exceed 5 characters.',
+          duration: 3000,
+        });
         return;
       }
       if (competitors.includes(trimmedCompetitor)) {
         setNameError('Competitor names must be unique.');
-        addToast({ title: 'Error', message: 'Competitor names must be unique.', duration: 3000 });
+        addToast({
+          title: 'Error',
+          message: 'Competitor names must be unique.',
+          duration: 3000,
+        });
         return;
       }
       if (competitors.length < 64) {
@@ -55,7 +73,11 @@ function TournamentBracketPage() {
         setNameError('');
         newCompetitorInputRef.current.focus();
       } else {
-        addToast({ title: 'Error', message: 'Maximum of 64 competitors reached.', duration: 3000 });
+        addToast({
+          title: 'Error',
+          message: 'Maximum of 64 competitors reached.',
+          duration: 3000,
+        });
       }
     }
   };
@@ -78,11 +100,22 @@ function TournamentBracketPage() {
   const saveEdit = (index) => {
     const trimmedName = editingText.trim();
     if (trimmedName.length > 5) {
-      addToast({ title: 'Error', message: 'Competitor name cannot exceed 5 characters.', duration: 3000 });
+      addToast({
+        title: 'Error',
+        message: 'Competitor name cannot exceed 5 characters.',
+        duration: 3000,
+      });
       return;
     }
-    if (competitors.includes(trimmedName) && competitors[index] !== trimmedName) {
-      addToast({ title: 'Error', message: 'Competitor names must be unique.', duration: 3000 });
+    if (
+      competitors.includes(trimmedName) &&
+      competitors[index] !== trimmedName
+    ) {
+      addToast({
+        title: 'Error',
+        message: 'Competitor names must be unique.',
+        duration: 3000,
+      });
       return;
     }
     const updatedCompetitors = [...competitors];
@@ -133,17 +166,19 @@ function TournamentBracketPage() {
     let initialRound = [];
     let competitorIndex = 0;
 
-    const shuffledCompetitors = [...competitors].sort(() => Math.random() - 0.5);
+    const shuffledCompetitors = [...competitors].sort(
+      () => Math.random() - 0.5,
+    );
 
     for (let i = 0; i < bracketSize / 2; i++) {
       const match = [null, null];
       if (i < byes) {
         match[0] = shuffledCompetitors[competitorIndex++];
       } else {
-        if(shuffledCompetitors[competitorIndex]) {
+        if (shuffledCompetitors[competitorIndex]) {
           match[0] = shuffledCompetitors[competitorIndex++];
         }
-        if(shuffledCompetitors[competitorIndex]) {
+        if (shuffledCompetitors[competitorIndex]) {
           match[1] = shuffledCompetitors[competitorIndex++];
         }
       }
@@ -169,7 +204,10 @@ function TournamentBracketPage() {
   const advanceWinner = (winner, loser, roundIndex, matchIndex) => {
     if (!bracket || !winner) return;
 
-    setAdvancedMatches(prev => ({ ...prev, [`${roundIndex}-${matchIndex}`]: { winner, loser } }));
+    setAdvancedMatches((prev) => ({
+      ...prev,
+      [`${roundIndex}-${matchIndex}`]: { winner, loser },
+    }));
 
     if (roundIndex === bracket.length - 1) {
       setChampion(winner);
@@ -208,7 +246,12 @@ function TournamentBracketPage() {
 
   const [scores, setScores] = useState({});
 
-  const handleScoreChange = (roundIndex, matchIndex, competitorIndex, score) => {
+  const handleScoreChange = (
+    roundIndex,
+    matchIndex,
+    competitorIndex,
+    score,
+  ) => {
     const newScores = { ...scores };
     if (!newScores[roundIndex]) {
       newScores[roundIndex] = {};
@@ -216,7 +259,10 @@ function TournamentBracketPage() {
     if (!newScores[roundIndex][matchIndex]) {
       newScores[roundIndex][matchIndex] = [null, null];
     }
-    newScores[roundIndex][matchIndex][competitorIndex] = score.replace(/\D/g, '');
+    newScores[roundIndex][matchIndex][competitorIndex] = score.replace(
+      /\D/g,
+      '',
+    );
     setScores(newScores);
   };
 
@@ -291,10 +337,15 @@ function TournamentBracketPage() {
               {!tournamentStarted ? (
                 <>
                   <div>
-                    <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Tournament Brackets</h1>
+                    <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                      {' '}
+                      Tournament Brackets
+                    </h1>
                     <hr className="border-gray-700 mb-4" />
                     <div className="mb-8">
-                      <h2 className="text-2xl font-arvo font-normal mb-4">Add Competitors (max 64 competitors, 5 char limit)</h2>
+                      <h2 className="text-2xl font-arvo font-normal mb-4">
+                        Add Competitors (max 64 competitors, 5 char limit)
+                      </h2>
                       <div className="flex gap-4">
                         <input
                           type="text"
@@ -312,25 +363,41 @@ function TournamentBracketPage() {
                         <button
                           onClick={addCompetitor}
                           className={`flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
-                            ${competitors.length >= 64
-                              ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                              : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
+                            ${
+                              competitors.length >= 64
+                                ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                             }`}
                           disabled={competitors.length >= 64}
                         >
                           Add
                         </button>
                       </div>
-                      {newCompetitorCharLimitError && <p className="text-red-500 mt-2">Competitor name cannot exceed 5 characters.</p>}
-                      {nameError && <p className="text-red-500 mt-2">{nameError}</p>}
-                      {competitors.length >= 64 && <p className="text-red-500 mt-2">Maximum of 64 competitors reached.</p>}
+                      {newCompetitorCharLimitError && (
+                        <p className="text-red-500 mt-2">
+                          Competitor name cannot exceed 5 characters.
+                        </p>
+                      )}
+                      {nameError && (
+                        <p className="text-red-500 mt-2">{nameError}</p>
+                      )}
+                      {competitors.length >= 64 && (
+                        <p className="text-red-500 mt-2">
+                          Maximum of 64 competitors reached.
+                        </p>
+                      )}
                     </div>
 
                     <div className="flex-grow">
-                      <h2 className="text-2xl font-arvo font-normal mb-4">Competitors ({competitors.length})</h2>
+                      <h2 className="text-2xl font-arvo font-normal mb-4">
+                        Competitors ({competitors.length})
+                      </h2>
                       <ul className="space-y-2">
                         {competitors.map((competitor, index) => (
-                          <li key={index} className="flex items-center justify-between bg-gray-800 p-2 rounded-lg">
+                          <li
+                            key={index}
+                            className="flex items-center justify-between bg-gray-800 p-2 rounded-lg"
+                          >
                             {editingIndex === index ? (
                               <input
                                 type="text"
@@ -343,33 +410,41 @@ function TournamentBracketPage() {
                             )}
                             <div className="flex gap-2">
                               {editingIndex === index ? (
-                                <button onClick={() => saveEdit(index)}
+                                <button
+                                  onClick={() => saveEdit(index)}
                                   className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
-                                    ${false // Save button is never disabled based on current logic
-                                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                      : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
+                                    ${
+                                      false // Save button is never disabled based on current logic
+                                        ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                        : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                                     }`}
                                 >
                                   Save
                                 </button>
                               ) : (
-                                <button onClick={() => startEditing(index, competitor)}
+                                <button
+                                  onClick={() =>
+                                    startEditing(index, competitor)
+                                  }
                                   className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
-                                    ${false // Edit button is never disabled based on current logic
-                                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                      : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
+                                    ${
+                                      false // Edit button is never disabled based on current logic
+                                        ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                        : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                                     }`}
                                 >
                                   Edit
                                 </button>
                               )}
-                                <button onClick={() => deleteCompetitor(index)}
-                                  className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
-                                    ${false // Delete button is never disabled based on current logic
-                                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                      : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
+                              <button
+                                onClick={() => deleteCompetitor(index)}
+                                className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
+                                    ${
+                                      false // Delete button is never disabled based on current logic
+                                        ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                        : 'border-app/100 bg-app/50 text-white hover:bg-app/70'
                                     }`}
-                                >
+                              >
                                 Delete
                               </button>
                             </div>
@@ -382,9 +457,10 @@ function TournamentBracketPage() {
                       <button
                         onClick={startTournament}
                         className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
-                          ${competitors.length < 2
-                            ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                            : 'bg-app/50 text-white hover:bg-app/70'
+                          ${
+                            competitors.length < 2
+                              ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                              : 'bg-app/50 text-white hover:bg-app/70'
                           }`}
                         disabled={competitors.length < 2}
                       >
@@ -394,18 +470,25 @@ function TournamentBracketPage() {
                   </div>
 
                   <div className="mt-8">
-                    <h2 className="text-2xl font-arvo font-normal mb-4">How it works</h2>
+                    <h2 className="text-2xl font-arvo font-normal mb-4">
+                      How it works
+                    </h2>
                     <p className="text-gray-400">
-                      ✦ This tournament bracket generator creates a single-elimination bracket. <br/>
-                      ✦ The number of rounds and BYEs are automatically calculated based on the number of competitors. <br/>
-                      ✦ Competitors are randomly seeded. <br/>
-                      ✦ Enter scores for each match to advance the winner to the next round. <br/>
-                      <br/>
-                      As an example, for 20 teams: <br/>
-                      ✦ The next power of 2 greater than or equal to 20 is 32 (2^5). <br/>
-                      ✦ The number of BYEs is calculated as bracketSize - numCompetitors. <br/>
-                      ✦ Therefore, 32 - 20 = 12 BYEs. <br/>
-                      ✦ There will be 12 BYEs for 20 teams. <br/>
+                      ✦ This tournament bracket generator creates a
+                      single-elimination bracket. <br />
+                      ✦ The number of rounds and BYEs are automatically
+                      calculated based on the number of competitors. <br />
+                      ✦ Competitors are randomly seeded. <br />
+                      ✦ Enter scores for each match to advance the winner to the
+                      next round. <br />
+                      <br />
+                      As an example, for 20 teams: <br />
+                      ✦ The next power of 2 greater than or equal to 20 is 32
+                      (2^5). <br />
+                      ✦ The number of BYEs is calculated as bracketSize -
+                      numCompetitors. <br />
+                      ✦ Therefore, 32 - 20 = 12 BYEs. <br />
+                      ✦ There will be 12 BYEs for 20 teams. <br />
                     </p>
                   </div>
                 </>
@@ -413,7 +496,10 @@ function TournamentBracketPage() {
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <h2 className="text-3xl font-bold">Bracket</h2>
-                    <label htmlFor="compact-layout-toggle" className="flex items-center cursor-pointer">
+                    <label
+                      htmlFor="compact-layout-toggle"
+                      className="flex items-center cursor-pointer"
+                    >
                       <div className="relative">
                         <input
                           id="compact-layout-toggle"
@@ -423,86 +509,190 @@ function TournamentBracketPage() {
                           onChange={() => setCompactLayout(!compactLayout)}
                         />
                         <div className="block bg-gray-600 w-14 h-8 rounded-full"></div>
-                        <div className={`dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition transform ${compactLayout ? 'translate-x-full bg-primary-500' : ''}`}></div>
+                        <div
+                          className={`dot absolute left-1 top-1 bg-white w-6 h-6 rounded-full transition transform ${compactLayout ? 'translate-x-full bg-primary-500' : ''}`}
+                        ></div>
                       </div>
                       <div className="ml-3 text-gray-300">Compact Layout</div>
                     </label>
                   </div>
                   <div className="flex space-x-4 overflow-x-auto pb-4 px-4">
-                    {bracket && bracket.map((round, roundIndex) => (
-                      <div key={roundIndex} className={`flex flex-col ${compactLayout ? 'space-y-2' : 'space-y-4'} min-w-max flex-shrink-0 ${roundIndex === currentRoundIndex ? 'border-2 border-yellow-400 p-2 rounded-lg' : ''}`}>
-                        <h3 className="text-xl font-bold">Round {roundIndex + 1}</h3>
-                        {round.map((match, matchIndex) => (
-                          <div key={matchIndex} className={`group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden w-80 ${compactLayout ? 'min-h-[100px]' : 'h-full'} my-2 ${roundIndex === currentRoundIndex && matchIndex === currentMatchIndex ? 'border-2 border-yellow-400' : ''}`} style={cardStyle}>
-                            <div className="flex justify-between items-center mb-2">
-                              <div className="flex items-center gap-2">
-                                <input
-                                  type="number"
-                                  className="bg-gray-700 text-white p-1 rounded-lg w-16"
-                                  value={scores[roundIndex]?.[matchIndex]?.[0] || ''}
-                                  onChange={(e) => handleScoreChange(roundIndex, matchIndex, 0, e.target.value)}
-                                  disabled={!match[0] || !match[1]}
-                                />
-                                <span className={`break-words ${match[0] && (match[1] === null ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[0] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[0] ? 'text-gray-500 line-through' : '')}`}>{match[0] || 'TBD'}</span>
+                    {bracket &&
+                      bracket.map((round, roundIndex) => (
+                        <div
+                          key={roundIndex}
+                          className={`flex flex-col ${compactLayout ? 'space-y-2' : 'space-y-4'} min-w-max flex-shrink-0 ${roundIndex === currentRoundIndex ? 'border-2 border-yellow-400 p-2 rounded-lg' : ''}`}
+                        >
+                          <h3 className="text-xl font-bold">
+                            Round {roundIndex + 1}
+                          </h3>
+                          {round.map((match, matchIndex) => (
+                            <div
+                              key={matchIndex}
+                              className={`group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden w-80 ${compactLayout ? 'min-h-[100px]' : 'h-full'} my-2 ${roundIndex === currentRoundIndex && matchIndex === currentMatchIndex ? 'border-2 border-yellow-400' : ''}`}
+                              style={cardStyle}
+                            >
+                              <div className="flex justify-between items-center mb-2">
+                                <div className="flex items-center gap-2">
+                                  <input
+                                    type="number"
+                                    className="bg-gray-700 text-white p-1 rounded-lg w-16"
+                                    value={
+                                      scores[roundIndex]?.[matchIndex]?.[0] ||
+                                      ''
+                                    }
+                                    onChange={(e) =>
+                                      handleScoreChange(
+                                        roundIndex,
+                                        matchIndex,
+                                        0,
+                                        e.target.value,
+                                      )
+                                    }
+                                    disabled={!match[0] || !match[1]}
+                                  />
+                                  <span
+                                    className={`break-words ${match[0] && (match[1] === null ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[0] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[0] ? 'text-gray-500 line-through' : '')}`}
+                                  >
+                                    {match[0] || 'TBD'}
+                                  </span>
+                                </div>
+                                <span>vs</span>
+                                <div className="flex items-center gap-2">
+                                  <span
+                                    className={`break-words ${match[1] && (match[1] === null ? 'text-gray-500 line-through' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[1] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[1] ? 'text-gray-500 line-through' : '')}`}
+                                  >
+                                    {match[1] ||
+                                      (roundIndex === 0 ? 'Bye' : 'TBD')}
+                                  </span>
+                                  <input
+                                    type="number"
+                                    className="bg-gray-700 text-white p-1 rounded-lg w-16"
+                                    value={
+                                      scores[roundIndex]?.[matchIndex]?.[1] ||
+                                      ''
+                                    }
+                                    onChange={(e) =>
+                                      handleScoreChange(
+                                        roundIndex,
+                                        matchIndex,
+                                        1,
+                                        e.target.value,
+                                      )
+                                    }
+                                    disabled={!match[0] || !match[1]}
+                                  />
+                                </div>
                               </div>
-                              <span>vs</span>
-                              <div className="flex items-center gap-2">
-                                <span className={`break-words ${match[1] && (match[1] === null ? 'text-gray-500 line-through' : advancedMatches[`${roundIndex}-${matchIndex}`]?.winner === match[1] ? 'text-article font-bold' : advancedMatches[`${roundIndex}-${matchIndex}`]?.loser === match[1] ? 'text-gray-500 line-through' : '')}`}>{match[1] || (roundIndex === 0 ? 'Bye' : 'TBD')}</span>
-                                <input
-                                  type="number"
-                                  className="bg-gray-700 text-white p-1 rounded-lg w-16"
-                                  value={scores[roundIndex]?.[matchIndex]?.[1] || ''}
-                                  onChange={(e) => handleScoreChange(roundIndex, matchIndex, 1, e.target.value)}
-                                  disabled={!match[0] || !match[1]}
-                                />
-                              </div>
-                            </div>
-                            {match[0] && match[1] && (
-                              <button
-                                onClick={() => {
-                                  const score1 = parseInt(scores[roundIndex]?.[matchIndex]?.[0], 10);
-                                  const score2 = parseInt(scores[roundIndex]?.[matchIndex]?.[1], 10);
-                                  if (isNaN(score1) || isNaN(score2) || score1 === score2) return;
-                                  const winner = score1 > score2 ? match[0] : match[1];
-                                  const loser = score1 > score2 ? match[1] : match[0];
-                                  advanceWinner(winner, loser, roundIndex, matchIndex);
-                                }}
-                                className={`flex items-center justify-center gap-2 text-lg font-mono font-normal px-4 py-1 rounded-md border transition-colors duration-300 ease-in-out w-full mb-4
-                                  ${advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]
-                                    ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                                    : 'bg-app/50 text-white hover:bg-app/70'
+                              {match[0] && match[1] && (
+                                <button
+                                  onClick={() => {
+                                    const score1 = parseInt(
+                                      scores[roundIndex]?.[matchIndex]?.[0],
+                                      10,
+                                    );
+                                    const score2 = parseInt(
+                                      scores[roundIndex]?.[matchIndex]?.[1],
+                                      10,
+                                    );
+                                    if (
+                                      isNaN(score1) ||
+                                      isNaN(score2) ||
+                                      score1 === score2
+                                    )
+                                      return;
+                                    const winner =
+                                      score1 > score2 ? match[0] : match[1];
+                                    const loser =
+                                      score1 > score2 ? match[1] : match[0];
+                                    advanceWinner(
+                                      winner,
+                                      loser,
+                                      roundIndex,
+                                      matchIndex,
+                                    );
+                                  }}
+                                  className={`flex items-center justify-center gap-2 text-lg font-mono font-normal px-4 py-1 rounded-md border transition-colors duration-300 ease-in-out w-full mb-4
+                                  ${
+                                    advancedMatches[
+                                      `${roundIndex}-${matchIndex}`
+                                    ] ||
+                                    scores[roundIndex]?.[matchIndex]?.[0] ===
+                                      undefined ||
+                                    scores[roundIndex]?.[matchIndex]?.[1] ===
+                                      undefined ||
+                                    scores[roundIndex]?.[matchIndex]?.[0] ===
+                                      '' ||
+                                    scores[roundIndex]?.[matchIndex]?.[1] ===
+                                      '' ||
+                                    scores[roundIndex]?.[matchIndex]?.[0] ===
+                                      scores[roundIndex]?.[matchIndex]?.[1]
+                                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                                      : 'bg-app/50 text-white hover:bg-app/70'
                                   }`}
-                                disabled={advancedMatches[`${roundIndex}-${matchIndex}`] || scores[roundIndex]?.[matchIndex]?.[0] === undefined || scores[roundIndex]?.[matchIndex]?.[1] === undefined || scores[roundIndex]?.[matchIndex]?.[0] === '' || scores[roundIndex]?.[matchIndex]?.[1] === '' || scores[roundIndex]?.[matchIndex]?.[0] === scores[roundIndex]?.[matchIndex]?.[1]}
-                              >
-                                {advancedMatches[`${roundIndex}-${matchIndex}`] ? `${advancedMatches[`${roundIndex}-${matchIndex}`].winner} advanced!` : (roundIndex === bracket.length - 1 ? 'Set Champion' : 'Set Winner')}
-                              </button>
-                            )}
-                          </div>
-                        ))}
-                      </div>
-                    ))}
+                                  disabled={
+                                    advancedMatches[
+                                      `${roundIndex}-${matchIndex}`
+                                    ] ||
+                                    scores[roundIndex]?.[matchIndex]?.[0] ===
+                                      undefined ||
+                                    scores[roundIndex]?.[matchIndex]?.[1] ===
+                                      undefined ||
+                                    scores[roundIndex]?.[matchIndex]?.[0] ===
+                                      '' ||
+                                    scores[roundIndex]?.[matchIndex]?.[1] ===
+                                      '' ||
+                                    scores[roundIndex]?.[matchIndex]?.[0] ===
+                                      scores[roundIndex]?.[matchIndex]?.[1]
+                                  }
+                                >
+                                  {advancedMatches[
+                                    `${roundIndex}-${matchIndex}`
+                                  ]
+                                    ? `${advancedMatches[`${roundIndex}-${matchIndex}`].winner} advanced!`
+                                    : roundIndex === bracket.length - 1
+                                      ? 'Set Champion'
+                                      : 'Set Winner'}
+                                </button>
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      ))}
                   </div>
                   {champion && (
                     <div className="mt-8 text-center">
                       <h2 className="text-3xl font-bold">🎉 Champion! 🎉</h2>
-                      <p className="text-xl font-bold text-yellow-400">{champion}</p>
+                      <p className="text-xl font-bold text-yellow-400">
+                        {champion}
+                      </p>
                     </div>
                   )}
                   <div className="mt-8 flex gap-4 justify-center">
                     <button
                       onClick={resetScores}
                       className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
-                        ${false // Reset Scores button is never disabled based on current logic
-                          ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                          : 'bg-app/50 text-white hover:bg-app/70'
-                        }`}> Reset Scores </button>
+                        ${
+                          false // Reset Scores button is never disabled based on current logic
+                            ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                            : 'bg-app/50 text-white hover:bg-app/70'
+                        }`}
+                    >
+                      {' '}
+                      Reset Scores{' '}
+                    </button>
                     <button
                       onClick={resetTournament}
                       className={`flex items-center gap-2 text-lg font-mono font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out
-                        ${false // Reset Tournament button is never disabled based on current logic
-                          ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
-                          : 'bg-app/50 text-white hover:bg-app/70'
-                        }`}> Reset Tournament </button>
+                        ${
+                          false // Reset Tournament button is never disabled based on current logic
+                            ? 'bg-gray-600 text-gray-400 cursor-not-allowed'
+                            : 'bg-app/50 text-white hover:bg-app/70'
+                        }`}
+                    >
+                      {' '}
+                      Reset Tournament{' '}
+                    </button>
                   </div>
                 </div>
               )}

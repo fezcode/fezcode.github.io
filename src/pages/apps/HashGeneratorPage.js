@@ -3,20 +3,31 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 function HashGeneratorPage() {
   useSeo({
     title: 'Hash Generator | Fezcodex',
-    description: 'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
-    keywords: ['Fezcodex', 'hash generator', 'SHA-1', 'SHA-256', 'SHA-512', 'cryptography', 'hashing'],
+    description:
+      'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
+    keywords: [
+      'Fezcodex',
+      'hash generator',
+      'SHA-1',
+      'SHA-256',
+      'SHA-512',
+      'cryptography',
+      'hashing',
+    ],
     ogTitle: 'Hash Generator | Fezcodex',
-    ogDescription: 'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
+    ogDescription:
+      'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Hash Generator | Fezcodex',
-    twitterDescription: 'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [inputText, setInputText] = useState('');
   const [hashes, setHashes] = useState({
@@ -28,7 +39,10 @@ function HashGeneratorPage() {
 
   const generateHash = async (algorithm) => {
     if (!inputText) {
-      setHashes(prev => ({ ...prev, [algorithm.toLowerCase().replace('sha-','sha')]: '' }));
+      setHashes((prev) => ({
+        ...prev,
+        [algorithm.toLowerCase().replace('sha-', 'sha')]: '',
+      }));
       return;
     }
 
@@ -37,15 +51,23 @@ function HashGeneratorPage() {
       const data = textEncoder.encode(inputText);
       const hashBuffer = await crypto.subtle.digest(algorithm, data);
       const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-      setHashes(prev => ({ ...prev, [algorithm.toLowerCase().replace('sha-','sha')]: hashHex }));
+      const hashHex = hashArray
+        .map((b) => b.toString(16).padStart(2, '0'))
+        .join('');
+      setHashes((prev) => ({
+        ...prev,
+        [algorithm.toLowerCase().replace('sha-', 'sha')]: hashHex,
+      }));
     } catch (error) {
       addToast({
         title: 'Error',
         message: `Failed to generate ${algorithm} hash.`,
         duration: 3000,
       });
-      setHashes(prev => ({ ...prev, [algorithm.toLowerCase().replace('sha-','sha')]: 'Error' }));
+      setHashes((prev) => ({
+        ...prev,
+        [algorithm.toLowerCase().replace('sha-', 'sha')]: 'Error',
+      }));
     }
   };
 
@@ -56,7 +78,8 @@ function HashGeneratorPage() {
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard
+      .writeText(text)
       .then(() => {
         addToast({
           title: 'Success',
@@ -93,9 +116,7 @@ function HashGeneratorPage() {
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="bg-app-alpha-10 border-app-alpha-50 text-app group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-          >
+          <div className="bg-app-alpha-10 border-app-alpha-50 text-app group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
@@ -104,11 +125,16 @@ function HashGeneratorPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Hash Generator </h1>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+              {' '}
+              Hash Generator{' '}
+            </h1>
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2 text-app" >Input Text</label>
+                <label className="block text-lg font-semibold mb-2 text-app">
+                  Input Text
+                </label>
                 <textarea
                   className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y rounded-md focus:ring-0 border border-app-alpha-50 text-app"
                   value={inputText}
@@ -125,9 +151,24 @@ function HashGeneratorPage() {
                 </button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <HashOutput title="SHA-1" value={hashes.sha1} onCopy={copyToClipboard} detailTextColor={detailTextColor} />
-                <HashOutput title="SHA-256" value={hashes.sha256} onCopy={copyToClipboard} detailTextColor={detailTextColor} />
-                <HashOutput title="SHA-512" value={hashes.sha512} onCopy={copyToClipboard} detailTextColor={detailTextColor} />
+                <HashOutput
+                  title="SHA-1"
+                  value={hashes.sha1}
+                  onCopy={copyToClipboard}
+                  detailTextColor={detailTextColor}
+                />
+                <HashOutput
+                  title="SHA-256"
+                  value={hashes.sha256}
+                  onCopy={copyToClipboard}
+                  detailTextColor={detailTextColor}
+                />
+                <HashOutput
+                  title="SHA-512"
+                  value={hashes.sha512}
+                  onCopy={copyToClipboard}
+                  detailTextColor={detailTextColor}
+                />
               </div>
             </div>
           </div>

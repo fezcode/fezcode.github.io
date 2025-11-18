@@ -1,9 +1,9 @@
 import { ArrowLeft, Handshake } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import colors from '../../config/colors';
-import {useEffect, useState} from "react";
-import {Link} from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const choices = [
   { name: 'Rock', emoji: '🪨' },
@@ -14,15 +14,18 @@ const choices = [
 const RockPaperScissorsPage = () => {
   useSeo({
     title: 'Rock Paper Scissors | Fezcodex',
-    description: 'Play the classic game of Rock Paper Scissors against the computer.',
+    description:
+      'Play the classic game of Rock Paper Scissors against the computer.',
     keywords: ['Fezcodex', 'rock paper scissors', 'game', 'fun app'],
     ogTitle: 'Rock Paper Scissors | Fezcodex',
-    ogDescription: 'Play the classic game of Rock Paper Scissors against the computer.',
+    ogDescription:
+      'Play the classic game of Rock Paper Scissors against the computer.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Rock Paper Scissors | Fezcodex',
-    twitterDescription: 'Play the classic game of Rock Paper Scissors against the computer.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Play the classic game of Rock Paper Scissors against the computer.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const [playerChoice, setPlayerChoice] = useState(null);
@@ -33,7 +36,8 @@ const RockPaperScissorsPage = () => {
 
   useEffect(() => {
     if (playerChoice !== null) {
-      const computerRandomChoice = choices[Math.floor(Math.random() * choices.length)];
+      const computerRandomChoice =
+        choices[Math.floor(Math.random() * choices.length)];
       setComputerChoice(computerRandomChoice);
       determineWinner(playerChoice, computerRandomChoice);
     }
@@ -41,17 +45,17 @@ const RockPaperScissorsPage = () => {
 
   const determineWinner = (pChoice, cChoice) => {
     if (pChoice.name === cChoice.name) {
-      setResult('It\'s a tie!');
+      setResult("It's a tie!");
     } else if (
       (pChoice.name === 'Rock' && cChoice.name === 'Scissors') ||
       (pChoice.name === 'Paper' && cChoice.name === 'Rock') ||
       (pChoice.name === 'Scissors' && cChoice.name === 'Paper')
     ) {
       setResult('You win!');
-      setPlayerScore(prevScore => prevScore + 1);
+      setPlayerScore((prevScore) => prevScore + 1);
     } else {
       setResult('Computer wins!');
-      setComputerScore(prevScore => prevScore + 1);
+      setComputerScore((prevScore) => prevScore + 1);
     }
   };
 
@@ -104,7 +108,10 @@ const RockPaperScissorsPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Rock Paper Scissors </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Rock Paper Scissors{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="flex flex-col items-center gap-8">
                 <div className="flex justify-center space-x-4 mb-8">
@@ -121,9 +128,16 @@ const RockPaperScissorsPage = () => {
 
                 {playerChoice && computerChoice && (
                   <div className="text-center mb-8">
-                    <p className="text-2xl mb-2">You chose: {playerChoice.emoji} {playerChoice.name}</p>
-                    <p className="text-2xl mb-4">Computer chose: {computerChoice.emoji} {computerChoice.name}</p>
-                    <p className="text-3xl font-semibold text-blue-400">{result}</p>
+                    <p className="text-2xl mb-2">
+                      You chose: {playerChoice.emoji} {playerChoice.name}
+                    </p>
+                    <p className="text-2xl mb-4">
+                      Computer chose: {computerChoice.emoji}{' '}
+                      {computerChoice.name}
+                    </p>
+                    <p className="text-3xl font-semibold text-blue-400">
+                      {result}
+                    </p>
                     <button
                       onClick={resetGame}
                       className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
@@ -134,8 +148,14 @@ const RockPaperScissorsPage = () => {
                 )}
 
                 <div className="flex justify-center space-x-8 text-2xl font-medium">
-                  <p>Player Score: <span className="text-green-400">{playerScore}</span></p>
-                  <p>Computer Score: <span className="text-red-400">{computerScore}</span></p>
+                  <p>
+                    Player Score:{' '}
+                    <span className="text-green-400">{playerScore}</span>
+                  </p>
+                  <p>
+                    Computer Score:{' '}
+                    <span className="text-red-400">{computerScore}</span>
+                  </p>
                 </div>
               </div>
             </div>

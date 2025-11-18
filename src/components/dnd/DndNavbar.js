@@ -17,31 +17,45 @@ const DndNavbar = () => {
           <div className="dnd-breadcrumbs">
             {breadcrumbs.map((crumb, index) => (
               <React.Fragment key={crumb.path || index}>
-                {index > 0 && <span className="dnd-breadcrumb-separator">&rarr;</span>}
+                {index > 0 && (
+                  <span className="dnd-breadcrumb-separator">&rarr;</span>
+                )}
                 {crumb.path ? (
-                  <Link to={crumb.path} className="dnd-breadcrumb-link">{formatBreadcrumbLabel(crumb.label)}</Link>
+                  <Link to={crumb.path} className="dnd-breadcrumb-link">
+                    {formatBreadcrumbLabel(crumb.label)}
+                  </Link>
                 ) : (
-                  <span className="dnd-breadcrumb-current">{formatBreadcrumbLabel(crumb.label)}</span>
+                  <span className="dnd-breadcrumb-current">
+                    {formatBreadcrumbLabel(crumb.label)}
+                  </span>
                 )}
               </React.Fragment>
             ))}
           </div>
         ) : (
-          <Link to="/" className="dnd-navbar-link">Back to Home</Link>
+          <Link to="/" className="dnd-navbar-link">
+            Back to Home
+          </Link>
         )}
       </div>
       <div className="dnd-navbar-center">
-        <span className="text-2xl font-semibold tracking-tight" style={{ color: '#FFFACD', textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)' }}>
+        <span
+          className="text-2xl font-semibold tracking-tight"
+          style={{
+            color: '#FFFACD',
+            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
+          }}
+        >
           From Serfs and Frauds
         </span>
       </div>
-        <div className="dnd-navbar-right">
-          <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-semibold tracking-tight text-white">
-              fez<span className="text-primary-400">codex</span>
-            </span>
-          </Link>
-        </div>
+      <div className="dnd-navbar-right">
+        <Link to="/" className="flex items-center space-x-2">
+          <span className="text-2xl font-semibold tracking-tight text-white">
+            fez<span className="text-primary-400">codex</span>
+          </span>
+        </Link>
+      </div>
     </nav>
   );
 };

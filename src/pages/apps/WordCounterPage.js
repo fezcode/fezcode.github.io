@@ -2,23 +2,38 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, UploadSimpleIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 function WordCounterPage() {
   useSeo({
     title: 'Word Counter | Fezcodex',
-    description: 'Count words, characters, lines, and paragraphs in your text or uploaded files.',
-    keywords: ['Fezcodex', 'word counter', 'character counter', 'line counter', 'paragraph counter', 'text analysis'],
+    description:
+      'Count words, characters, lines, and paragraphs in your text or uploaded files.',
+    keywords: [
+      'Fezcodex',
+      'word counter',
+      'character counter',
+      'line counter',
+      'paragraph counter',
+      'text analysis',
+    ],
     ogTitle: 'Word Counter | Fezcodex',
-    ogDescription: 'Count words, characters, lines, and paragraphs in your text or uploaded files.',
+    ogDescription:
+      'Count words, characters, lines, and paragraphs in your text or uploaded files.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Word Counter | Fezcodex',
-    twitterDescription: 'Count words, characters, lines, and paragraphs in your text or uploaded files.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Count words, characters, lines, and paragraphs in your text or uploaded files.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [text, setText] = useState('');
-  const [counts, setCounts] = useState({ words: 0, characters: 0, lines: 0, paragraphs: 0 });
+  const [counts, setCounts] = useState({
+    words: 0,
+    characters: 0,
+    lines: 0,
+    paragraphs: 0,
+  });
   const { addToast } = useToast();
 
   const handleTextChange = (newText) => {
@@ -26,8 +41,16 @@ function WordCounterPage() {
     const lineCount = newText.length === 0 ? 0 : newText.split('\n').length;
     const wordCount = newText.trim().split(/\s+/).filter(Boolean).length;
     const charCount = newText.length;
-    const paragraphCount = newText.trim().split(/\n\s*\n/).filter(Boolean).length;
-    setCounts({ words: wordCount, characters: charCount, lines: lineCount, paragraphs: paragraphCount });
+    const paragraphCount = newText
+      .trim()
+      .split(/\n\s*\n/)
+      .filter(Boolean).length;
+    setCounts({
+      words: wordCount,
+      characters: charCount,
+      lines: lineCount,
+      paragraphs: paragraphCount,
+    });
   };
 
   const handleFileChange = (event) => {
@@ -71,18 +94,20 @@ function WordCounterPage() {
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-          >
-           <div className="absolute top-0 left-0 w-full h-full opacity-10"
-                          style={{
-                            backgroundImage:
-                              'radial-gradient(circle, white 1px, transparent 1px)',
-                            backgroundSize: '10px 10px',
-                          }}
-           ></div>
+          <div className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
+              }}
+            ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Word Counter </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Word Counter{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="w-full h-64 resize-y overflow-auto border rounded-md border-app-alpha-50">
                 <textarea
@@ -99,12 +124,15 @@ function WordCounterPage() {
                   <p>Lines: {counts.lines}</p>
                   <p>Paragraphs: {counts.paragraphs}</p>
                 </div>
-                <label
-                  className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out cursor-pointer bg-tb text-app border-app-alpha-50 hover:bg-app/15"
-                >
+                <label className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out cursor-pointer bg-tb text-app border-app-alpha-50 hover:bg-app/15">
                   <UploadSimpleIcon size={24} />
                   Upload File
-                  <input type="file" className="hidden" onChange={handleFileChange} accept=".txt,.md,.html,.js,.css" />
+                  <input
+                    type="file"
+                    className="hidden"
+                    onChange={handleFileChange}
+                    accept=".txt,.md,.html,.js,.css"
+                  />
                 </label>
               </div>
             </div>

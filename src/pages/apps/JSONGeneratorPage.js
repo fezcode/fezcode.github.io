@@ -2,13 +2,13 @@ import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import {
   meaningfulKeys,
   generateMeaningfulString,
   generateRandomEmail,
   generateRandomUrl,
-  generateRandomDate
+  generateRandomDate,
 } from '../../utils/jsonGeneratorData';
 
 const generateRandomNumber = () => Math.floor(Math.random() * 1000);
@@ -17,15 +17,24 @@ const generateRandomBoolean = () => Math.random() > 0.5;
 function JSONGeneratorPage() {
   useSeo({
     title: 'JSON Generator | Fezcodex',
-    description: 'Generate random JSON objects with customizable depth, key count, and data types.',
-    keywords: ['Fezcodex', 'JSON generator', 'random JSON', 'JSON tool', 'developer tool'],
+    description:
+      'Generate random JSON objects with customizable depth, key count, and data types.',
+    keywords: [
+      'Fezcodex',
+      'JSON generator',
+      'random JSON',
+      'JSON tool',
+      'developer tool',
+    ],
     ogTitle: 'JSON Generator | Fezcodex',
-    ogDescription: 'Generate random JSON objects with customizable depth, key count, and data types.',
+    ogDescription:
+      'Generate random JSON objects with customizable depth, key count, and data types.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'JSON Generator | Fezcodex',
-    twitterDescription: 'Generate random JSON objects with customizable depth, key count, and data types.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Generate random JSON objects with customizable depth, key count, and data types.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const [jsonOutput, setJsonOutput] = useState('{}');
@@ -49,7 +58,9 @@ function JSONGeneratorPage() {
       return false;
     }
     if (max > 10) {
-      setValidationError('Max Depth cannot exceed 10 to prevent excessive recursion.');
+      setValidationError(
+        'Max Depth cannot exceed 10 to prevent excessive recursion.',
+      );
       return false;
     }
     setValidationError('');
@@ -63,64 +74,93 @@ function JSONGeneratorPage() {
 
   const getRandomStringValue = useCallback(() => {
     switch (stringType) {
-      case 'email': return generateRandomEmail();
-      case 'url': return generateRandomUrl();
-      case 'date': return generateRandomDate();
+      case 'email':
+        return generateRandomEmail();
+      case 'url':
+        return generateRandomUrl();
+      case 'date':
+        return generateRandomDate();
       case 'randomWords':
-      default: return generateMeaningfulString();
+      default:
+        return generateMeaningfulString();
     }
   }, [stringType]);
 
-  const generateValue = useCallback((currentDepth) => {
-    const availableTypes = [];
-    if (includeStrings) availableTypes.push('string');
-    if (includeNumbers) availableTypes.push('number');
-    if (includeBooleans) availableTypes.push('boolean');
-    if (includeNull) availableTypes.push('null');
+  const generateValue = useCallback(
+    (currentDepth) => {
+      const availableTypes = [];
+      if (includeStrings) availableTypes.push('string');
+      if (includeNumbers) availableTypes.push('number');
+      if (includeBooleans) availableTypes.push('boolean');
+      if (includeNull) availableTypes.push('null');
 
-    if (availableTypes.length === 0) {
-      return "NO_TYPES_SELECTED"; // Fallback if no types are selected
-    }
-
-    // Force complex type if currentDepth is less than minDepth
-    const forceComplex = currentDepth < minDepth;
-
-    // Decide if a primitive should be generated at this level
-    // Only consider primitiveProbability if not forcing complex and not already at max depth
-    const shouldGeneratePrimitive = !forceComplex && (currentDepth >= depth || Math.random() < primitiveProbability);
-
-    if (shouldGeneratePrimitive) {
-      const type = availableTypes[Math.floor(Math.random() * availableTypes.length)];
-      switch (type) {
-        case 'string': return getRandomStringValue();
-        case 'number': return generateRandomNumber();
-        case 'boolean': return generateRandomBoolean();
-        case 'null': return null;
-        default: return 'fallback_primitive';
+      if (availableTypes.length === 0) {
+        return 'NO_TYPES_SELECTED'; // Fallback if no types are selected
       }
-    }
 
-    // If not generating a primitive (either forced complex or decided not to be primitive),
-    // decide between object or array.
-    const isArray = Math.random() < arrayProbability;
+      // Force complex type if currentDepth is less than minDepth
+      const forceComplex = currentDepth < minDepth;
 
-    if (isArray) {
-      const arrLength = Math.floor(Math.random() * 3) + 2; // 2 to 4 elements
-      return Array.from({ length: arrLength }).map(() => generateValue(currentDepth + 1));
-    } else {
-      const obj = {};
-      const keysUsed = new Set();
-      for (let i = 0; i < numKeys; i++) {
-        let key;
-        do {
-          key = meaningfulKeys[Math.floor(Math.random() * meaningfulKeys.length)];
-        } while (keysUsed.has(key)); // Ensure unique keys within the same object
-        keysUsed.add(key);
-        obj[key] = generateValue(currentDepth + 1);
+      // Decide if a primitive should be generated at this level
+      // Only consider primitiveProbability if not forcing complex and not already at max depth
+      const shouldGeneratePrimitive =
+        !forceComplex &&
+        (currentDepth >= depth || Math.random() < primitiveProbability);
+
+      if (shouldGeneratePrimitive) {
+        const type =
+          availableTypes[Math.floor(Math.random() * availableTypes.length)];
+        switch (type) {
+          case 'string':
+            return getRandomStringValue();
+          case 'number':
+            return generateRandomNumber();
+          case 'boolean':
+            return generateRandomBoolean();
+          case 'null':
+            return null;
+          default:
+            return 'fallback_primitive';
+        }
       }
-      return obj;
-    }
-  }, [depth, minDepth, numKeys, arrayProbability, primitiveProbability, includeBooleans, includeNumbers, includeStrings, includeNull, getRandomStringValue]);
+
+      // If not generating a primitive (either forced complex or decided not to be primitive),
+      // decide between object or array.
+      const isArray = Math.random() < arrayProbability;
+
+      if (isArray) {
+        const arrLength = Math.floor(Math.random() * 3) + 2; // 2 to 4 elements
+        return Array.from({ length: arrLength }).map(() =>
+          generateValue(currentDepth + 1),
+        );
+      } else {
+        const obj = {};
+        const keysUsed = new Set();
+        for (let i = 0; i < numKeys; i++) {
+          let key;
+          do {
+            key =
+              meaningfulKeys[Math.floor(Math.random() * meaningfulKeys.length)];
+          } while (keysUsed.has(key)); // Ensure unique keys within the same object
+          keysUsed.add(key);
+          obj[key] = generateValue(currentDepth + 1);
+        }
+        return obj;
+      }
+    },
+    [
+      depth,
+      minDepth,
+      numKeys,
+      arrayProbability,
+      primitiveProbability,
+      includeBooleans,
+      includeNumbers,
+      includeStrings,
+      includeNull,
+      getRandomStringValue,
+    ],
+  );
 
   const handleGenerateJson = useCallback(() => {
     try {
@@ -137,12 +177,13 @@ function JSONGeneratorPage() {
         message: `Failed to generate JSON: ${error.message}`,
         duration: 3000,
       });
-      console.error("JSON generation error:", error);
+      console.error('JSON generation error:', error);
     }
   }, [generateValue, addToast]);
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(jsonOutput)
+    navigator.clipboard
+      .writeText(jsonOutput)
       .then(() => {
         addToast({
           title: 'Copied!',
@@ -150,7 +191,7 @@ function JSONGeneratorPage() {
           duration: 5000,
         });
       })
-      .catch(err => {
+      .catch((err) => {
         addToast({
           title: 'Error',
           message: 'Failed to copy JSON.',
@@ -178,10 +219,9 @@ function JSONGeneratorPage() {
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/10 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-          >
-            <div className="absolute top-0 left-0 w-full h-full opacity-10"
+          <div className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/10 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
                 backgroundImage:
                   'radial-gradient(circle, white 1px, transparent 1px)',
@@ -189,12 +229,20 @@ function JSONGeneratorPage() {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> JSON Generator </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                JSON Generator{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <label htmlFor="minDepth" className="block text-sm font-medium text-gray-400">Min Depth:</label>
+                  <label
+                    htmlFor="minDepth"
+                    className="block text-sm font-medium text-gray-400"
+                  >
+                    Min Depth:
+                  </label>
                   <input
                     type="number"
                     id="minDepth"
@@ -208,13 +256,21 @@ function JSONGeneratorPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="depth" className="block text-sm font-medium text-gray-400">Max Depth:</label>
+                  <label
+                    htmlFor="depth"
+                    className="block text-sm font-medium text-gray-400"
+                  >
+                    Max Depth:
+                  </label>
                   <input
                     type="number"
                     id="depth"
                     value={depth}
                     onChange={(e) => {
-                      const newDepth = Math.min(10, Math.max(1, parseInt(e.target.value)));
+                      const newDepth = Math.min(
+                        10,
+                        Math.max(1, parseInt(e.target.value)),
+                      );
                       setDepth(newDepth);
                     }}
                     min="1"
@@ -223,23 +279,39 @@ function JSONGeneratorPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="numKeys" className="block text-sm font-medium text-gray-400">Number of Keys per Object:</label>
+                  <label
+                    htmlFor="numKeys"
+                    className="block text-sm font-medium text-gray-400"
+                  >
+                    Number of Keys per Object:
+                  </label>
                   <input
                     type="number"
                     id="numKeys"
                     value={numKeys}
-                    onChange={(e) => setNumKeys(Math.max(1, parseInt(e.target.value)))}
+                    onChange={(e) =>
+                      setNumKeys(Math.max(1, parseInt(e.target.value)))
+                    }
                     min="1"
                     className="mt-1 block w-full rounded-md bg-gray-900/50 border-gray-700 shadow-sm focus:border-app focus:ring-app text-app-light"
                   />
                 </div>
                 <div>
-                  <label htmlFor="arrayProbability" className="block text-sm font-medium text-gray-400">Array Probability (0.0 - 1.0):</label>
+                  <label
+                    htmlFor="arrayProbability"
+                    className="block text-sm font-medium text-gray-400"
+                  >
+                    Array Probability (0.0 - 1.0):
+                  </label>
                   <input
                     type="number"
                     id="arrayProbability"
                     value={arrayProbability}
-                    onChange={(e) => setArrayProbability(Math.max(0, Math.min(1, parseFloat(e.target.value))))}
+                    onChange={(e) =>
+                      setArrayProbability(
+                        Math.max(0, Math.min(1, parseFloat(e.target.value))),
+                      )
+                    }
                     min="0"
                     max="1"
                     step="0.1"
@@ -247,12 +319,21 @@ function JSONGeneratorPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="primitiveProbability" className="block text-sm font-medium text-gray-400">Primitive Probability (0.0 - 1.0):</label>
+                  <label
+                    htmlFor="primitiveProbability"
+                    className="block text-sm font-medium text-gray-400"
+                  >
+                    Primitive Probability (0.0 - 1.0):
+                  </label>
                   <input
                     type="number"
                     id="primitiveProbability"
                     value={primitiveProbability}
-                    onChange={(e) => setPrimitiveProbability(Math.max(0, Math.min(1, parseFloat(e.target.value))))}
+                    onChange={(e) =>
+                      setPrimitiveProbability(
+                        Math.max(0, Math.min(1, parseFloat(e.target.value))),
+                      )
+                    }
                     min="0"
                     max="1"
                     step="0.1"
@@ -260,7 +341,12 @@ function JSONGeneratorPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="stringType" className="block text-sm font-medium text-gray-400">String Type:</label>
+                  <label
+                    htmlFor="stringType"
+                    className="block text-sm font-medium text-gray-400"
+                  >
+                    String Type:
+                  </label>
                   <select
                     id="stringType"
                     value={stringType}
@@ -276,7 +362,9 @@ function JSONGeneratorPage() {
               </div>
 
               <div className="mb-4">
-                <span className="block text-sm font-medium text-gray-400 mb-2">Include Data Types:</span>
+                <span className="block text-sm font-medium text-gray-400 mb-2">
+                  Include Data Types:
+                </span>
                 <div className="flex flex-wrap gap-4">
                   <label className="flex items-center">
                     <input
@@ -345,7 +433,12 @@ function JSONGeneratorPage() {
               </div>
 
               <div className="mt-4">
-                <label htmlFor="jsonOutput" className="block text-sm font-medium text-gray-400 mb-2">Generated JSON:</label>
+                <label
+                  htmlFor="jsonOutput"
+                  className="block text-sm font-medium text-gray-400 mb-2"
+                >
+                  Generated JSON:
+                </label>
                 <textarea
                   id="jsonOutput"
                   readOnly

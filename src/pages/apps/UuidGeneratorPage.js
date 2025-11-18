@@ -1,21 +1,30 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 
 function UuidGeneratorPage() {
   useSeo({
     title: 'UUID Generator | Fezcodex',
-    description: 'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
-    keywords: ['Fezcodex', 'UUID generator', 'GUID generator', 'unique ID', 'UUID v4'],
+    description:
+      'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
+    keywords: [
+      'Fezcodex',
+      'UUID generator',
+      'GUID generator',
+      'unique ID',
+      'UUID v4',
+    ],
     ogTitle: 'UUID Generator | Fezcodex',
-    ogDescription: 'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
+    ogDescription:
+      'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'UUID Generator | Fezcodex',
-    twitterDescription: 'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [uuid, setUuid] = useState('');
   const { addToast } = useToast();
@@ -23,12 +32,15 @@ function UuidGeneratorPage() {
   const generateUuidV4 = () => {
     try {
       // RFC 4122 v4 UUID generation
-      const uuidV4 = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-        const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16; // Use crypto.getRandomValues for better randomness
-        // eslint-disable-next-line no-mixed-operators
-        const v = c === 'x' ? r : (r & 0x3 | 0x8);
-        return v.toString(16);
-      });
+      const uuidV4 = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
+        /[xy]/g,
+        function (c) {
+          const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16; // Use crypto.getRandomValues for better randomness
+          // eslint-disable-next-line no-mixed-operators
+          const v = c === 'x' ? r : (r & 0x3) | 0x8;
+          return v.toString(16);
+        },
+      );
       setUuid(uuidV4);
     } catch (error) {
       addToast({
@@ -41,7 +53,8 @@ function UuidGeneratorPage() {
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard
+      .writeText(text)
       .then(() => {
         addToast({
           title: 'Success',
@@ -76,9 +89,7 @@ function UuidGeneratorPage() {
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-          >
+          <div className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
@@ -87,11 +98,16 @@ function UuidGeneratorPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> UUID Generator </h1>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+              {' '}
+              UUID Generator{' '}
+            </h1>
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2 text-app">Generated UUID v4</label>
+                <label className="block text-lg font-semibold mb-2 text-app">
+                  Generated UUID v4
+                </label>
                 <div className="relative">
                   <textarea
                     readOnly

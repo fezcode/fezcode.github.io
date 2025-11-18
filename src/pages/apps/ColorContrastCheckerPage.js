@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CheckCircle, XCircle } from '@phosphor-icons/react'; // Using Palette for now
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 // Helper function to convert hex to RGB
 const hexToRgb = (hex) => {
@@ -34,15 +34,24 @@ const getContrastRatio = (rgb1, rgb2) => {
 const ColorContrastCheckerPage = () => {
   useSeo({
     title: 'Color Contrast Checker | Fezcodex',
-    description: 'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
-    keywords: ['Fezcodex', 'color contrast', 'accessibility', 'WCAG', 'color checker'],
+    description:
+      'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
+    keywords: [
+      'Fezcodex',
+      'color contrast',
+      'accessibility',
+      'WCAG',
+      'color checker',
+    ],
     ogTitle: 'Color Contrast Checker | Fezcodex',
-    ogDescription: 'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
+    ogDescription:
+      'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Color Contrast Checker | Fezcodex',
-    twitterDescription: 'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const { addToast } = useToast();
 
@@ -77,7 +86,12 @@ const ColorContrastCheckerPage = () => {
     } catch (error) {
       setContrastRatio(0);
       setWcagStatus({ aa: false, aaa: false });
-      addToast({ title: 'Error', message: 'Invalid hex color format.', duration: 3000, type: 'error' });
+      addToast({
+        title: 'Error',
+        message: 'Invalid hex color format.',
+        duration: 3000,
+        type: 'error',
+      });
     }
   }, [foregroundColor, backgroundColor, addToast]);
 
@@ -116,19 +130,27 @@ const ColorContrastCheckerPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Color Contrast Checker </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Color Contrast Checker{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="foregroundColor" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="foregroundColor"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Foreground Color (Hex)
                   </label>
                   <input
                     type="color"
                     id="foregroundColorPicker"
                     value={foregroundColor}
-                    onChange={(e) => setForegroundColor(e.target.value.toUpperCase())}
+                    onChange={(e) =>
+                      setForegroundColor(e.target.value.toUpperCase())
+                    }
                     className="w-full h-10 mb-2 rounded-md cursor-pointer"
                     title="Pick Foreground Color"
                   />
@@ -136,20 +158,27 @@ const ColorContrastCheckerPage = () => {
                     type="text"
                     id="foregroundColor"
                     value={foregroundColor}
-                    onChange={(e) => setForegroundColor(e.target.value.toUpperCase())}
+                    onChange={(e) =>
+                      setForegroundColor(e.target.value.toUpperCase())
+                    }
                     className={inputStyle}
                     placeholder="#FFFFFF"
                   />
                 </div>
                 <div>
-                  <label htmlFor="backgroundColor" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="backgroundColor"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Background Color (Hex)
                   </label>
                   <input
                     type="color"
                     id="backgroundColorPicker"
                     value={backgroundColor}
-                    onChange={(e) => setBackgroundColor(e.target.value.toUpperCase())}
+                    onChange={(e) =>
+                      setBackgroundColor(e.target.value.toUpperCase())
+                    }
                     className="w-full h-10 mb-2 rounded-md cursor-pointer"
                     title="Pick Background Color"
                   />
@@ -157,7 +186,9 @@ const ColorContrastCheckerPage = () => {
                     type="text"
                     id="backgroundColor"
                     value={backgroundColor}
-                    onChange={(e) => setBackgroundColor(e.target.value.toUpperCase())}
+                    onChange={(e) =>
+                      setBackgroundColor(e.target.value.toUpperCase())
+                    }
                     className={inputStyle}
                     placeholder="#000000"
                   />
@@ -169,7 +200,7 @@ const ColorContrastCheckerPage = () => {
                 style={{
                   backgroundColor: backgroundColor,
                   color: foregroundColor,
-                  border: `1px solid ${colors['app-alpha-50']}`
+                  border: `1px solid ${colors['app-alpha-50']}`,
                 }}
               >
                 Aa
@@ -177,7 +208,8 @@ const ColorContrastCheckerPage = () => {
 
               <div className="mb-6">
                 <p className="text-lg font-medium text-gray-300 mb-2">
-                  Contrast Ratio: <span className="text-white">{contrastRatio}:1</span>
+                  Contrast Ratio:{' '}
+                  <span className="text-white">{contrastRatio}:1</span>
                 </p>
                 <div className="flex items-center gap-4">
                   <span className="text-base font-medium text-gray-300">

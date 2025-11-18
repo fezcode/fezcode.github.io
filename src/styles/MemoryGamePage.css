@@ -78,7 +78,8 @@
   transform: rotateY(180deg);
 }
 
-.game-over-message, .start-game-message {
+.game-over-message,
+.start-game-message {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -97,7 +98,8 @@
   text-align: center; /* Ensure text is centered within the message box */
 }
 
-.game-over-message button, .start-game-message button {
+.game-over-message button,
+.start-game-message button {
   margin-top: 20px;
   padding: 10px 20px;
   font-size: 1.2rem;
@@ -109,7 +111,8 @@
   transition: background-color 0.3s ease;
 }
 
-.game-over-message button:hover, .start-game-message button:hover {
+.game-over-message button:hover,
+.start-game-message button:hover {
   background-color: #3182ce;
 }
 

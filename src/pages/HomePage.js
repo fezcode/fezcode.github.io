@@ -10,15 +10,24 @@ import useSeo from '../hooks/useSeo';
 const HomePage = () => {
   useSeo({
     title: 'Fezcodex | Home',
-    description: 'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
-    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'software engineer'],
+    description:
+      'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
+    keywords: [
+      'Fezcodex',
+      'blog',
+      'portfolio',
+      'developer',
+      'software engineer',
+    ],
     ogTitle: 'Fezcodex | Home',
-    ogDescription: 'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
+    ogDescription:
+      'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Fezcodex | Home',
-    twitterDescription: 'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
@@ -176,33 +185,36 @@ const HomePage = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl tracking-tight text-white text-center flex items-center justify-center gap-2 font-arvo">
-            <BookBookmarkIcon className="text-primary-400 text-lg" /> Recent Blog Posts
+            <BookBookmarkIcon className="text-primary-400 text-lg" /> Recent
+            Blog Posts
           </h2>
           <div className="mt-8">
-            {posts.slice(0, 5).map((item) => (
-              item.isSeries ? (
-                <PostItem
-                  key={item.slug}
-                  slug={`series/${item.slug}`}
-                  title={item.title}
-                  date={item.date}
-                  updatedDate={item.updated}
-                  category="series"
-                  isSeries={true}
-                />
-              ) : (
-                <PostItem
-                  key={item.slug}
-                  slug={item.slug}
-                  title={item.title}
-                  date={item.date}
-                  updatedDate={item.updated}
-                  category={item.category}
-                  series={item.series}
-                  seriesIndex={item.seriesIndex}
-                />
-              )
-            ))}
+            {posts
+              .slice(0, 5)
+              .map((item) =>
+                item.isSeries ? (
+                  <PostItem
+                    key={item.slug}
+                    slug={`series/${item.slug}`}
+                    title={item.title}
+                    date={item.date}
+                    updatedDate={item.updated}
+                    category="series"
+                    isSeries={true}
+                  />
+                ) : (
+                  <PostItem
+                    key={item.slug}
+                    slug={item.slug}
+                    title={item.title}
+                    date={item.date}
+                    updatedDate={item.updated}
+                    category={item.category}
+                    series={item.series}
+                    seriesIndex={item.seriesIndex}
+                  />
+                ),
+              )}
           </div>
           <div className="mt-8 text-center">
             <Link

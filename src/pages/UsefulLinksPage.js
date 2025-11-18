@@ -15,7 +15,8 @@ const UsefulLinksPage = () => {
 
         const allLogUrls = logs.map((log) => `/logs/${log.slug}`);
 
-        const randomUrl = allLogUrls[Math.floor(Math.random() * allLogUrls.length)];
+        const randomUrl =
+          allLogUrls[Math.floor(Math.random() * allLogUrls.length)];
         navigate(randomUrl, { replace: true });
       } catch (error) {
         console.error('Error fetching content for redirection:', error);
@@ -49,7 +50,10 @@ const UsefulLinksPage = () => {
 
   return (
     <div className="text-center py-16">
-      <p>If you are not redirected, please click <a href="/">here</a> to go to the homepage.</p>
+      <p>
+        If you are not redirected, please click <a href="/">here</a> to go to
+        the homepage.
+      </p>
     </div>
   );
 };

@@ -1,22 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, Clipboard as ClipboardIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  Clipboard as ClipboardIcon,
+} from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 function IpPage() {
   useSeo({
     title: 'Show my IP | Fezcodex',
     description: 'Quickly find and display your public IP address.',
-    keywords: ['Fezcodex', 'show my IP', 'what is my IP', 'IP address', 'public IP'],
+    keywords: [
+      'Fezcodex',
+      'show my IP',
+      'what is my IP',
+      'IP address',
+      'public IP',
+    ],
     ogTitle: 'Show my IP | Fezcodex',
     ogDescription: 'Quickly find and display your public IP address.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Show my IP | Fezcodex',
     twitterDescription: 'Quickly find and display your public IP address.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [ip, setIp] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -25,17 +34,17 @@ function IpPage() {
 
   useEffect(() => {
     fetch('/api/show-my-ip?format=json')
-      .then(response => {
+      .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not OK!');
         }
         return response.json();
       })
-      .then(data => {
+      .then((data) => {
         setIp(data.ip);
         setLoading(false);
       })
-      .catch(error => {
+      .catch((error) => {
         setError(error.message);
         setLoading(false);
       });
@@ -43,19 +52,22 @@ function IpPage() {
 
   const handleCopy = () => {
     if (ip) {
-      navigator.clipboard.writeText(ip).then(() => {
-        addToast({
-          title: 'Success',
-          message: 'IP address copied to clipboard!',
-          duration: 3000,
-        });
-      }, () => {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy IP address!',
-          duration: 3000,
-        });
-      });
+      navigator.clipboard.writeText(ip).then(
+        () => {
+          addToast({
+            title: 'Success',
+            message: 'IP address copied to clipboard!',
+            duration: 3000,
+          });
+        },
+        () => {
+          addToast({
+            title: 'Error',
+            message: 'Failed to copy IP address!',
+            duration: 3000,
+          });
+        },
+      );
     }
   };
 
@@ -98,8 +110,16 @@ function IpPage() {
               }}
             ></div>
             <div className="relative z-10 text-center">
-              <h2 className="text-2xl font-normal" style={{ color: cardStyle.color }}>Your Public IP Address</h2>
-              <div className="mt-4 text-3xl font-mono select-text" style={{ color: detailTextColor }}>
+              <h2
+                className="text-2xl font-normal"
+                style={{ color: cardStyle.color }}
+              >
+                Your Public IP Address
+              </h2>
+              <div
+                className="mt-4 text-3xl font-mono select-text"
+                style={{ color: detailTextColor }}
+              >
                 {loading && <p>Loading...</p>}
                 {error && <p>Error: {error}</p>}
                 {ip && <p>{ip}</p>}

@@ -31,15 +31,24 @@ const AboutPage = () => {
 
   useSeo({
     title: `${title} | Fezcodex`,
-    description: 'Learn more about Fezcodex, the developer behind this website.',
-    keywords: ['Fezcodex', 'about', 'portfolio', 'developer', 'software engineer'],
+    description:
+      'Learn more about Fezcodex, the developer behind this website.',
+    keywords: [
+      'Fezcodex',
+      'about',
+      'portfolio',
+      'developer',
+      'software engineer',
+    ],
     ogTitle: `${title} | Fezcodex`,
-    ogDescription: 'Learn more about Fezcodex, the developer behind this website.',
+    ogDescription:
+      'Learn more about Fezcodex, the developer behind this website.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${title} | Fezcodex`,
-    twitterDescription: 'Learn more about Fezcodex, the developer behind this website.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Learn more about Fezcodex, the developer behind this website.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   useEffect(() => {

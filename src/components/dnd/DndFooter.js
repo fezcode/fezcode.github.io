@@ -13,7 +13,10 @@ const DndFooter = () => {
       </div>
       <div className="dnd-footer-column">
         <h3>About Us</h3>
-        <p>We are a group of adventurers and storytellers, dedicated to bringing you epic tales from the realms of fantasy.</p>
+        <p>
+          We are a group of adventurers and storytellers, dedicated to bringing
+          you epic tales from the realms of fantasy.
+        </p>
       </div>
       <div className="dnd-footer-column">
         <h3>Legal & Info</h3>

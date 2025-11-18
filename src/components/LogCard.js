@@ -94,35 +94,43 @@ const LogCard = ({ log, index, totalLogs }) => {
   const cardStyle = categoryStyles[category] || {};
   const detailTextColor = colors[category.toLowerCase() + '-light'];
 
-      const renderStars = (rating) => {
-      const stars = [];
-      const starColor = cardStyle.textColor;
-            const emptyStarColor = colors[category.toLowerCase() + '-alpha-50'];
-      for (let i = 0; i < 5; i++) {
-        if (i < rating) {
-          stars.push(
-            <Star key={i} size={16} weight="fill" style={{ color: starColor }} />,
-          );
-        } else {
-          stars.push(
-            <Star
-              key={i}
-              size={16}
-              weight="fill"
-              style={{ color: emptyStarColor }}
-            />,
-          );
-        }
+  const renderStars = (rating) => {
+    const stars = [];
+    const starColor = cardStyle.textColor;
+    const emptyStarColor = colors[category.toLowerCase() + '-alpha-50'];
+
+    for (let i = 0; i < 5; i++) {
+      if (i < rating) {
+        stars.push(
+          <Star key={i} size={16} weight="fill" style={{ color: starColor }} />,
+        );
+      } else {
+        stars.push(
+          <Star
+            key={i}
+            size={16}
+            weight="fill"
+            style={{ color: emptyStarColor }}
+          />,
+        );
       }
-      return <div className="flex ml-1 mt-1">{stars}</div>;
-    };
+    }
+    return <div className="flex ml-1 mt-1">{stars}</div>;
+  };
   return (
     <Link to={`/logs/${slug}`} className="block">
       <div
         className="group bg-transparent border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl overflow-hidden h-full"
         style={cardStyle}
       >
-        <div className="absolute top-3 right-3 text-lg font-semibold px-2 py-1 rounded-md border overflow-hidden whitespace-nowrap" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', color: cardStyle.textColor, borderColor: cardStyle.borderColor }}>
+        <div
+          className="absolute top-3 right-3 text-lg font-semibold px-2 py-1 rounded-md border overflow-hidden whitespace-nowrap"
+          style={{
+            backgroundColor: 'rgba(0, 0, 0, 0.2)',
+            color: cardStyle.textColor,
+            borderColor: cardStyle.borderColor,
+          }}
+        >
           #{totalLogs - index}
         </div>
         <div
@@ -136,7 +144,9 @@ const LogCard = ({ log, index, totalLogs }) => {
         <div>
           <div className="flex items-center justify-between mb-4 pr-10">
             <div className="flex items-center">
-              <div className="text-2xl mr-4" style={{ color: detailTextColor }}>{categoryIcons[category]}</div>
+              <div className="text-2xl mr-4" style={{ color: detailTextColor }}>
+                {categoryIcons[category]}
+              </div>
               <h2
                 className={`text-xl font-normal`}
                 style={{ color: cardStyle.textColor }}
@@ -157,9 +167,7 @@ const LogCard = ({ log, index, totalLogs }) => {
         </div>
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="text-yellow-400">
-              {renderStars(rating)}
-            </div>
+            <div className="text-yellow-400">{renderStars(rating)}</div>
             <div className="text-gray-400 ml-2">({rating}/5)</div>
           </div>
           <div>

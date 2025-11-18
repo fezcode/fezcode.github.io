@@ -49,9 +49,21 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
   // Effect to update allSectionsOpen when individual sections change
   useEffect(() => {
     setAllSectionsOpen(
-      isMainOpen && isContentOpen && isAppsOpen && isExtrasOpen && isGamesOpen && isExternalLinksOpen,
+      isMainOpen &&
+        isContentOpen &&
+        isAppsOpen &&
+        isExtrasOpen &&
+        isGamesOpen &&
+        isExternalLinksOpen,
     );
-  }, [isMainOpen, isContentOpen, isAppsOpen, isGamesOpen, isExtrasOpen, isExternalLinksOpen]);
+  }, [
+    isMainOpen,
+    isContentOpen,
+    isAppsOpen,
+    isGamesOpen,
+    isExtrasOpen,
+    isExternalLinksOpen,
+  ]);
 
   const toggleAllSections = () => {
     const newState = !allSectionsOpen;
@@ -130,7 +142,9 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 isMainActive ? 'text-sidebar-highlight' : 'text-gray-100'
               }`}
             >
-              <span className={`flex items-center gap-2 font-sans ${isMainActive ? 'text-sidebar-highlight' : 'text-white'}`}>
+              <span
+                className={`flex items-center gap-2 font-sans ${isMainActive ? 'text-sidebar-highlight' : 'text-white'}`}
+              >
                 <AsteriskSimpleIcon size={16} />
                 <span>Main</span>
               </span>
@@ -165,7 +179,9 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 isContentActive ? 'text-sidebar-highlight' : 'text-gray-100'
               }`}
             >
-               <span className={`flex items-center gap-2 font-sans ${isContentActive ? 'text-sidebar-highlight' : 'text-white'}`}>
+              <span
+                className={`flex items-center gap-2 font-sans ${isContentActive ? 'text-sidebar-highlight' : 'text-white'}`}
+              >
                 <BooksIcon size={16} />
                 <span>Content</span>
               </span>
@@ -208,7 +224,9 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 isAppsActive ? 'text-sidebar-highlight' : 'text-gray-100'
               }`}
             >
-              <span className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-sidebar-highlight' : 'text-white'}`}>
+              <span
+                className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-sidebar-highlight' : 'text-white'}`}
+              >
                 <SquaresFourIcon size={16} />
                 <span>Apps</span>
               </span>
@@ -237,8 +255,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <AlienIcon size={16} />
                 <span>Extras</span>
-                <LinkIcon size={16} className="text-rose-400"/>
-
+                <LinkIcon size={16} className="text-rose-400" />
               </span>
 
               <CaretDownIcon
@@ -250,9 +267,16 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/stories" className={getLinkClass}>
                   <SwordIcon className="text-yellow-500" size={24} />
-                  <span>S<span className="text-yellow-500"> &amp; </span>F</span>
+                  <span>
+                    S<span className="text-yellow-500"> &amp; </span>F
+                  </span>
                 </NavLink>
-                <a href="/rss.xml" target="_blank" rel="noopener noreferrer" className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}>
+                <a
+                  href="/rss.xml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
+                >
                   <RssIcon size={24} />
                   <span>RSS Feed</span>
                 </a>
@@ -268,7 +292,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <JoystickIcon size={16} />
                 <span>Games</span>
-                <ArrowSquareOutIcon size={16} className="text-rose-400"/>
+                <ArrowSquareOutIcon size={16} className="text-rose-400" />
               </span>
               <CaretDownIcon
                 size={20}
@@ -310,7 +334,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <span className="flex items-center gap-2 font-sans text-white">
                 <AnchorIcon size={16} />
                 <span>External Links</span>
-                <ArrowSquareOutIcon size={16} className="text-rose-400"/>
+                <ArrowSquareOutIcon size={16} className="text-rose-400" />
               </span>
 
               <CaretDownIcon
@@ -357,12 +381,18 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
           <hr className="border-gray-700 my-4" />
 
           <div className="flex space-x-2 font-sans">
-            <NavLink to="/random" className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans text-center">
+            <NavLink
+              to="/random"
+              className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans text-center"
+            >
               <ShuffleIcon size={20} />
               <span>Random</span>
             </NavLink>
 
-            <button onClick={toggleModal} className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans">
+            <button
+              onClick={toggleModal}
+              className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans"
+            >
               <EnvelopeSimpleIcon size={20} />
               <span>Contact</span>
             </button>

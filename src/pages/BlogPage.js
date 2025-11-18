@@ -7,15 +7,18 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 const BlogPage = () => {
   useSeo({
     title: 'Blog | Fezcodex',
-    description: 'Catch up on the latest news and insights from the Fezcodex blog.',
+    description:
+      'Catch up on the latest news and insights from the Fezcodex blog.',
     keywords: ['Fezcodex', 'blog', 'dev', 'rant', 'series', 'd&d'],
     ogTitle: 'Blog | Fezcodex',
-    ogDescription: 'Catch up on the latest news and insights from the Fezcodex blog.',
+    ogDescription:
+      'Catch up on the latest news and insights from the Fezcodex blog.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Blog | Fezcodex',
-    twitterDescription: 'Catch up on the latest news and insights from the Fezcodex blog.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Catch up on the latest news and insights from the Fezcodex blog.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [displayItems, setDisplayItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -51,7 +54,7 @@ const BlogPage = () => {
           const seriesMap = new Map();
           const individualPosts = [];
 
-          processedPosts.forEach(post => {
+          processedPosts.forEach((post) => {
             if (post.series) {
               if (!seriesMap.has(post.series.slug)) {
                 seriesMap.set(post.series.slug, {
@@ -60,7 +63,7 @@ const BlogPage = () => {
                   date: post.series.date,
                   updated: post.series.updated,
                   isSeries: true,
-                  posts: []
+                  posts: [],
                 });
               }
               seriesMap.get(post.series.slug).posts.push(post);
@@ -70,7 +73,7 @@ const BlogPage = () => {
           });
 
           // Sort series posts by seriesIndex
-          seriesMap.forEach(series => {
+          seriesMap.forEach((series) => {
             series.posts.sort((a, b) => a.seriesIndex - b.seriesIndex);
           });
 
@@ -109,7 +112,7 @@ const BlogPage = () => {
     fetchPostSlugs();
   }, []);
 
-  const filteredItems = displayItems.filter(item => {
+  const filteredItems = displayItems.filter((item) => {
     const matchesFilter = () => {
       if (activeFilter === 'all') return true;
       if (activeFilter === 'series') return item.isSeries;
@@ -217,7 +220,7 @@ const BlogPage = () => {
         </div>
         <div className="mt-16">
           <div className="">
-            {filteredItems.map((item) => (
+            {filteredItems.map((item) =>
               item.isSeries ? (
                 <PostItem
                   key={item.slug}
@@ -239,8 +242,8 @@ const BlogPage = () => {
                   series={item.series}
                   seriesIndex={item.seriesIndex}
                 />
-              )
-            ))}
+              ),
+            )}
           </div>
         </div>
       </div>

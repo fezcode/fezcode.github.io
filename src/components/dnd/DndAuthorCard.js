@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const DndAuthorCard = ({ authorName, authorWebsite, authorImage, authorAlias, booksWritten }) => {
+const DndAuthorCard = ({
+  authorName,
+  authorWebsite,
+  authorImage,
+  authorAlias,
+  booksWritten,
+}) => {
   return (
     <div className="dnd-author-card">
       <img src={authorImage} alt={authorName} className="dnd-author-image" />
@@ -25,7 +31,9 @@ const DndAuthorCard = ({ authorName, authorWebsite, authorImage, authorAlias, bo
           <ul>
             {booksWritten.map((book, index) => (
               <li key={index}>
-                <Link to={`/stories/books/${book.bookId}`}>{book.bookTitle}</Link>
+                <Link to={`/stories/books/${book.bookId}`}>
+                  {book.bookTitle}
+                </Link>
               </li>
             ))}
           </ul>

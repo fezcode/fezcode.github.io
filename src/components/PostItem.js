@@ -2,8 +2,21 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation
 import { useAnimation } from '../context/AnimationContext'; // Import useAnimation
 
-const PostItem = ({ slug, title, date, updatedDate, category, series, seriesIndex, isSeries }) => {
-  const { isAnimationEnabled, showAnimationsHomepage, showAnimationsInnerPages } = useAnimation(); // Use the animation context
+const PostItem = ({
+  slug,
+  title,
+  date,
+  updatedDate,
+  category,
+  series,
+  seriesIndex,
+  isSeries,
+}) => {
+  const {
+    isAnimationEnabled,
+    showAnimationsHomepage,
+    showAnimationsInnerPages,
+  } = useAnimation(); // Use the animation context
   const location = useLocation(); // Get current location
 
   // Format the date to a shorter format: Month Day, Year
@@ -27,38 +40,41 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
       category === 'dev'
         ? 'var(--color-dev-badge)'
         : category === 'series'
-        ? 'var(--color-series-badge)'
-        : category === 'd&d'
-        ? 'var(--color-dnd-badge)'
-        : 'var(--color-takes-badge)',
+          ? 'var(--color-series-badge)'
+          : category === 'd&d'
+            ? 'var(--color-dnd-badge)'
+            : 'var(--color-takes-badge)',
   };
   const postBackgroundColorClass =
     category === 'dev'
       ? 'bg-dev-card-bg'
       : category === 'series'
-      ? 'bg-series-card-bg'
-      : category === 'd&d'
-      ? 'bg-dnd-card-bg'
-      : 'bg-takes-card-bg';
+        ? 'bg-series-card-bg'
+        : category === 'd&d'
+          ? 'bg-dnd-card-bg'
+          : 'bg-takes-card-bg';
   const postHoverBackgroundColorClass =
     category === 'dev'
       ? 'hover:bg-dev-card-bg-hover'
       : category === 'series'
-      ? 'hover:bg-series-card-bg-hover'
-      : category === 'd&d'
-      ? 'hover:bg-dnd-card-bg-hover'
-      : 'hover:bg-takes-card-bg-hover';
+        ? 'hover:bg-series-card-bg-hover'
+        : category === 'd&d'
+          ? 'hover:bg-dnd-card-bg-hover'
+          : 'hover:bg-takes-card-bg-hover';
 
   const postTitleHoverColorClass =
     category === 'dev'
       ? 'group-hover:text-[var(--title-hover-dev)]'
       : category === 'series'
-      ? 'group-hover:text-[var(--title-hover-series)]'
-      : category === 'd&d'
-      ? 'group-hover:text-[var(--title-hover-dnd)]'
-      : 'group-hover:text-[var(--title-hover-takes)]';
+        ? 'group-hover:text-[var(--title-hover-series)]'
+        : category === 'd&d'
+          ? 'group-hover:text-[var(--title-hover-dnd)]'
+          : 'group-hover:text-[var(--title-hover-takes)]';
 
-  const shouldAnimate = isAnimationEnabled && ((location.pathname === '/' && showAnimationsHomepage) || (location.pathname !== '/' && showAnimationsInnerPages));
+  const shouldAnimate =
+    isAnimationEnabled &&
+    ((location.pathname === '/' && showAnimationsHomepage) ||
+      (location.pathname !== '/' && showAnimationsInnerPages));
 
   return (
     <Link
@@ -67,7 +83,9 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
     >
       <article>
         <div className="flex items-center">
-          <p className="text-sm text-gray-400 w-28 flex-shrink-0">{formattedDate}</p>
+          <p className="text-sm text-gray-400 w-28 flex-shrink-0">
+            {formattedDate}
+          </p>
           <div className="ml-4 flex-grow flex items-center">
             {category && (
               <span
@@ -82,7 +100,9 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
                 {series} - Part {seriesIndex}
               </span>
             )}
-            <h2 className={`text-xl font-semibold text-white ${postTitleHoverColorClass} group-hover:underline transition-colors`}>
+            <h2
+              className={`text-xl font-semibold text-white ${postTitleHoverColorClass} group-hover:underline transition-colors`}
+            >
               {title}
             </h2>
           </div>
@@ -91,8 +111,13 @@ const PostItem = ({ slug, title, date, updatedDate, category, series, seriesInde
               Update: {formattedUpdatedDate}
             </span>
           )}
-          <span className={`ml-4 flex-shrink-0 text-sm font-medium text-primary-400 ${postTitleHoverColorClass} group-hover:underline transition-colors`}>
-            <span className="hidden sm:inline">{isSeries ? 'View Series' : 'Read post'}</span> &rarr;
+          <span
+            className={`ml-4 flex-shrink-0 text-sm font-medium text-primary-400 ${postTitleHoverColorClass} group-hover:underline transition-colors`}
+          >
+            <span className="hidden sm:inline">
+              {isSeries ? 'View Series' : 'Read post'}
+            </span>{' '}
+            &rarr;
           </span>
         </div>
       </article>

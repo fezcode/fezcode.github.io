@@ -21,7 +21,8 @@ canvas {
   margin-bottom: 10px;
 }
 
-.game-over-message, .start-game-message {
+.game-over-message,
+.start-game-message {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -34,7 +35,8 @@ canvas {
   text-align: center;
 }
 
-.game-over-message button, .start-game-message button {
+.game-over-message button,
+.start-game-message button {
   margin-top: 15px;
   cursor: pointer;
 }
@@ -52,11 +54,11 @@ canvas {
 }
 
 .goal-animation.player-goal {
-  color: #FF4500; /* OrangeRed */
+  color: #ff4500; /* OrangeRed */
 }
 
 .goal-animation.ai-goal {
-  color: #4B0082; /* Indigo */
+  color: #4b0082; /* Indigo */
 }
 
 @keyframes goalFlash {

@@ -4,7 +4,7 @@ import { ArrowLeft } from '@phosphor-icons/react';
 import { useAnimation } from '../context/AnimationContext';
 import colors from '../config/colors';
 import CustomToggle from '../components/CustomToggle';
-import useSeo from "../hooks/useSeo";
+import useSeo from '../hooks/useSeo';
 
 const SettingsPage = () => {
   useSeo({
@@ -17,7 +17,7 @@ const SettingsPage = () => {
     twitterCard: 'summary_large_image',
     twitterTitle: 'Settings | Fezcodex',
     twitterDescription: 'Manage your application preferences for Fezcodex.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const {
     isAnimationEnabled,
@@ -66,16 +66,28 @@ const SettingsPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Application Settings </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Application Settings{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
 
               {/* Client-Side Notification */}
-              <div className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6" role="alert">
+              <div
+                className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
+                role="alert"
+              >
                 <strong className="font-bold">Client-Side Only:</strong>
-                <span className="block sm:inline ml-2">Your preferences are stored locally in your browser. No data is sent to any server.</span>
+                <span className="block sm:inline ml-2">
+                  Your preferences are stored locally in your browser. No data
+                  is sent to any server.
+                </span>
               </div>
 
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Animation Settings </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Animation Settings{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
 
               <div className="mb-6 ml-4 mr-4">
@@ -85,7 +97,9 @@ const SettingsPage = () => {
                   checked={isAnimationEnabled}
                   onChange={toggleAnimation}
                 />
-                <div className="ml-8 mt-4"> {/* Indent dependent options */}
+                <div className="ml-8 mt-4">
+                  {' '}
+                  {/* Indent dependent options */}
                   <CustomToggle
                     id="show-animations-homepage"
                     label=">> Show animations in homepage"
@@ -103,9 +117,15 @@ const SettingsPage = () => {
                   />
                 </div>
                 {!isAnimationEnabled && (
-                  <div className="bg-red-900 bg-opacity-30 border border-red-700 text-red-300 px-4 py-3 rounded relative mt-6" role="alert">
+                  <div
+                    className="bg-red-900 bg-opacity-30 border border-red-700 text-red-300 px-4 py-3 rounded relative mt-6"
+                    role="alert"
+                  >
                     <strong className="font-bold">Animations Disabled:</strong>
-                    <span className="block sm:inline ml-2">Animation options are disabled because "Enable Animations" is off.</span>
+                    <span className="block sm:inline ml-2">
+                      Animation options are disabled because "Enable Animations"
+                      is off.
+                    </span>
                   </div>
                 )}
               </div>

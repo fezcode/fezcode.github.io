@@ -2,21 +2,24 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, X, Circle } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import colors from '../../config/colors';
 
 const TicTacToePage = () => {
   useSeo({
     title: 'Tic Tac Toe | Fezcodex',
-    description: 'Play the classic game of Tic Tac Toe against another player or AI.',
+    description:
+      'Play the classic game of Tic Tac Toe against another player or AI.',
     keywords: ['Fezcodex', 'tic tac toe', 'game', 'fun app'],
     ogTitle: 'Tic Tac Toe | Fezcodex',
-    ogDescription: 'Play the classic game of Tic Tac Toe against another player or AI.',
+    ogDescription:
+      'Play the classic game of Tic Tac Toe against another player or AI.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Tic Tac Toe | Fezcodex',
-    twitterDescription: 'Play the classic game of Tic Tac Toe against another player or AI.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Play the classic game of Tic Tac Toe against another player or AI.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -38,10 +41,14 @@ const TicTacToePage = () => {
     const calculatedWinner = calculateWinner(board);
     if (calculatedWinner) {
       setWinner(calculatedWinner);
-      addToast({ title: 'Game Over', message: `${calculatedWinner} wins!`, duration: 3000 });
+      addToast({
+        title: 'Game Over',
+        message: `${calculatedWinner} wins!`,
+        duration: 3000,
+      });
     } else if (board.every(Boolean)) {
       setWinner('Draw');
-      addToast({ title: 'Game Over', message: 'It\'s a draw!', duration: 3000 });
+      addToast({ title: 'Game Over', message: "It's a draw!", duration: 3000 });
     }
   }, [board, addToast]);
 
@@ -67,7 +74,7 @@ const TicTacToePage = () => {
     const result = calculateWinner(currentBoard);
 
     if (result === 'X') return -10 + depth; // Player X (human) wins
-    if (result === 'O') return 10 - depth;  // Player O (AI) wins
+    if (result === 'O') return 10 - depth; // Player O (AI) wins
     if (currentBoard.every(Boolean)) return 0; // It's a draw
 
     if (isMaximizingPlayer) {
@@ -119,7 +126,9 @@ const TicTacToePage = () => {
       disabled={winner || board[i]}
     >
       {board[i] === 'X' && <X size={48} color={colors.red} />}
-      {board[i] === 'O' && <Circle size={40} color={colors.blue} weight="thin" />}
+      {board[i] === 'O' && (
+        <Circle size={40} color={colors.blue} weight="thin" />
+      )}
     </button>
   );
 
@@ -130,7 +139,9 @@ const TicTacToePage = () => {
   };
 
   const status = winner
-    ? winner === 'Draw' ? 'Draw!' : `Winner: ${winner}`
+    ? winner === 'Draw'
+      ? 'Draw!'
+      : `Winner: ${winner}`
     : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
   const cardStyle = {
@@ -170,12 +181,17 @@ const TicTacToePage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Tic Tac Toe </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Tic Tac Toe{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="flex flex-col items-center gap-8">
                 <div className="text-2xl font-medium mb-4">{status}</div>
                 <div className="grid grid-cols-3 gap-1">
-                  {Array(9).fill(null).map((_, i) => renderSquare(i))}
+                  {Array(9)
+                    .fill(null)
+                    .map((_, i) => renderSquare(i))}
                 </div>
                 <button
                   onClick={resetGame}

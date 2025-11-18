@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 function ColorPaletteGeneratorPage() {
   useSeo({
@@ -14,14 +14,20 @@ function ColorPaletteGeneratorPage() {
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Color Palette Generator | Fezcodex',
-    twitterDescription: 'Generate random color palettes for your design projects.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Generate random color palettes for your design projects.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [palette, setPalette] = useState([]);
   const { addToast } = useToast();
 
   const generateRandomHexColor = () => {
-    return '#' + Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+    return (
+      '#' +
+      Math.floor(Math.random() * 16777215)
+        .toString(16)
+        .padStart(6, '0')
+    );
   };
 
   const generatePalette = () => {
@@ -30,7 +36,8 @@ function ColorPaletteGeneratorPage() {
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard
+      .writeText(text)
       .then(() => {
         addToast({
           title: 'Success',
@@ -65,9 +72,7 @@ function ColorPaletteGeneratorPage() {
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15"
-          >
+          <div className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15">
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
@@ -76,7 +81,10 @@ function ColorPaletteGeneratorPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Color Palette Generator </h1>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+              {' '}
+              Color Palette Generator{' '}
+            </h1>
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="flex justify-center gap-4 mb-4">
@@ -95,7 +103,12 @@ function ColorPaletteGeneratorPage() {
                     style={{ backgroundColor: color }}
                     onClick={() => copyToClipboard(color)}
                   >
-                    <span className="text-white font-semibold text-shadow-sm" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>{color}</span>
+                    <span
+                      className="text-white font-semibold text-shadow-sm"
+                      style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}
+                    >
+                      {color}
+                    </span>
                   </div>
                 ))}
               </div>

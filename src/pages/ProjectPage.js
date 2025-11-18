@@ -10,8 +10,16 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const ProjectPage = () => {
   const { slug } = useParams();
-  const { projects, loading: loadingProjects, error: errorProjects } = useProjects();
-  const { content, loading: loadingContent, error: errorContent } = useProjectContent(slug);
+  const {
+    projects,
+    loading: loadingProjects,
+    error: errorProjects,
+  } = useProjects();
+  const {
+    content,
+    loading: loadingContent,
+    error: errorContent,
+  } = useProjectContent(slug);
 
   if (loadingProjects || loadingContent) {
     // Skeleton loading screen for ProjectPage
@@ -79,7 +87,9 @@ const ProjectPage = () => {
         twitterCard="summary_large_image"
         twitterTitle={`${fullProject.title} | Fezcodex`}
         twitterDescription={fullProject.shortDescription}
-        twitterImage={fullProject.image || 'https://fezcode.github.io/logo512.png'}
+        twitterImage={
+          fullProject.image || 'https://fezcode.github.io/logo512.png'
+        }
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">

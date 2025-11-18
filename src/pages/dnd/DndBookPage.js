@@ -5,7 +5,7 @@ import '../../styles/dnd.css';
 import { DndContext } from '../../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../../utils/dndUtils'; // Import parseWallpaperName
 import dndWallpapers from '../../utils/dndWallpapers';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import piml from 'piml';
 
 const pageVariants = {
@@ -36,55 +36,62 @@ function DndBookPage() {
   useSeo({
     title: `${pageTitle} | From Serfs and Frauds`,
     description: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'book', pageTitle],
+    keywords: [
+      'Fezcodex',
+      'd&d',
+      'dnd',
+      'from serfs and frauds',
+      'book',
+      pageTitle,
+    ],
     ogTitle: `${pageTitle} | From Serfs and Frauds`,
     ogDescription: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${pageTitle} | From Serfs and Frauds`,
     twitterDescription: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/stories/books.piml`,
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const pimlText = await response.text();
         const data = piml.parse(pimlText);
-        const foundBook = data.books.find(b => b.bookId === parseInt(bookId));
+        const foundBook = data.books.find((b) => b.bookId === parseInt(bookId));
         if (foundBook) {
           setBook(foundBook);
           setPageTitle(foundBook.bookTitle);
-          setBreadcrumbs(
-            [
-              { label: 'S&F', path: '/stories' },
-              { label: 'The Lore', path: '/stories/lore' },
-              { label: foundBook.bookTitle, path: `/stories/books/${foundBook.bookId}` },
-            ]
-          );
+          setBreadcrumbs([
+            { label: 'S&F', path: '/stories' },
+            { label: 'The Lore', path: '/stories/lore' },
+            {
+              label: foundBook.bookTitle,
+              path: `/stories/books/${foundBook.bookId}`,
+            },
+          ]);
         } else {
           setPageTitle('Book Not Found');
-          setBreadcrumbs(
-            [
-              { label: 'S&F', path: '/stories' },
-              { label: 'The Lore', path: '/stories/lore' },
-              { label: 'Book Not Found' },
-            ]
-          );
+          setBreadcrumbs([
+            { label: 'S&F', path: '/stories' },
+            { label: 'The Lore', path: '/stories/lore' },
+            { label: 'Book Not Found' },
+          ]);
         }
       } catch (error) {
-        console.error("Failed to fetch book data:", error);
+        console.error('Failed to fetch book data:', error);
         setPageTitle('Error Loading Book');
-        setBreadcrumbs(
-          [
-                          { label: 'S&F', path: '/stories' },
-                          { label: 'The Lore', path: '/stories/lore' },
-                          { label: 'Error Loading Book' },          ]
-        );
+        setBreadcrumbs([
+          { label: 'S&F', path: '/stories' },
+          { label: 'The Lore', path: '/stories/lore' },
+          { label: 'Error Loading Book' },
+        ]);
       }
     };
 
@@ -108,7 +115,14 @@ function DndBookPage() {
         transition={pageTransition}
         className="dnd-page-container"
       >
-        <div className="dnd-hero" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`, position: 'relative', minHeight: '100vh' }}>
+        <div
+          className="dnd-hero"
+          style={{
+            backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`,
+            position: 'relative',
+            minHeight: '100vh',
+          }}
+        >
           <h1 className="dnd-title-box">
             <span className="dnd-hero-title-white">{pageTitle}</span>
           </h1>
@@ -126,16 +140,31 @@ function DndBookPage() {
       transition={pageTransition}
       className="dnd-page-container"
     >
-      <div className="dnd-hero" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`, position: 'relative', minHeight: '100vh' }}>
+      <div
+        className="dnd-hero"
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`,
+          position: 'relative',
+          minHeight: '100vh',
+        }}
+      >
         <h1 className="dnd-title-box">
           <span className="dnd-hero-title-white">{book.bookTitle}</span>
         </h1>
         <div className="dnd-content-box" style={{ zIndex: 1 }}>
-          <h2 >Episodes</h2>
+          <h2>Episodes</h2>
           <ul style={{ listStyle: 'none', padding: 0 }}>
             {book.episodes.map((episode) => (
               <li key={episode.id} style={{ marginBottom: '1rem' }}>
-                <Link to={`/stories/books/${book.bookId}/pages/${episode.id}`} style={{ color: '#E09500', textDecoration: 'none', fontSize: '1.5rem', textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)' }}>
+                <Link
+                  to={`/stories/books/${book.bookId}/pages/${episode.id}`}
+                  style={{
+                    color: '#E09500',
+                    textDecoration: 'none',
+                    fontSize: '1.5rem',
+                    textShadow: '1px 1px 2px rgba(0, 0, 0, 0.8)',
+                  }}
+                >
                   {episode.title}
                 </Link>
               </li>

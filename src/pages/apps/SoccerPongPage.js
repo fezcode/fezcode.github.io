@@ -23,14 +23,21 @@ const SoccerPongPage = () => {
   useSeo({
     title: 'Soccer Pong | Fezcodex',
     description: 'A Pong-style game with a soccer twist. Player vs. AI.',
-    keywords: ['Fezcodex', 'soccer pong', 'arcade game', 'pong', 'soccer', 'AI game'],
+    keywords: [
+      'Fezcodex',
+      'soccer pong',
+      'arcade game',
+      'pong',
+      'soccer',
+      'AI game',
+    ],
     ogTitle: 'Soccer Pong | Fezcodex',
     ogDescription: 'A Pong-style game with a soccer twist. Player vs. AI.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Soccer Pong | Fezcodex',
     twitterDescription: 'A Pong-style game with a soccer twist. Player vs. AI.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const canvasRef = useRef(null);
@@ -39,7 +46,10 @@ const SoccerPongPage = () => {
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [winner, setWinner] = useState(null);
-  const [goalAnimation, setGoalAnimation] = useState({ active: false, scorer: null });
+  const [goalAnimation, setGoalAnimation] = useState({
+    active: false,
+    scorer: null,
+  });
   const [maxScore, setMaxScore] = useState(5); // New state for configurable max score
 
   // Game state (mutable for game loop)
@@ -65,11 +75,35 @@ const SoccerPongPage = () => {
   const initializeObstacles = useCallback(() => {
     gameState.current.obstacles = [
       // Left half obstacles
-      { x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2, y: GAME_HEIGHT / 4, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: OBSTACLE_SPEED },
-      { x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2, y: GAME_HEIGHT * 3 / 4 - OBSTACLE_HEIGHT, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: -OBSTACLE_SPEED },
+      {
+        x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2,
+        y: GAME_HEIGHT / 4,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: OBSTACLE_SPEED,
+      },
+      {
+        x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2,
+        y: (GAME_HEIGHT * 3) / 4 - OBSTACLE_HEIGHT,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: -OBSTACLE_SPEED,
+      },
       // Right half obstacles
-      { x: GAME_WIDTH * 3 / 4 - OBSTACLE_WIDTH / 2, y: GAME_HEIGHT / 4, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: -OBSTACLE_SPEED },
-      { x: GAME_WIDTH * 3 / 4 - OBSTACLE_WIDTH / 2, y: GAME_HEIGHT * 3 / 4 - OBSTACLE_HEIGHT, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: OBSTACLE_SPEED },
+      {
+        x: (GAME_WIDTH * 3) / 4 - OBSTACLE_WIDTH / 2,
+        y: GAME_HEIGHT / 4,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: -OBSTACLE_SPEED,
+      },
+      {
+        x: (GAME_WIDTH * 3) / 4 - OBSTACLE_WIDTH / 2,
+        y: (GAME_HEIGHT * 3) / 4 - OBSTACLE_HEIGHT,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: OBSTACLE_SPEED,
+      },
     ];
   }, []);
 
@@ -108,22 +142,38 @@ const SoccerPongPage = () => {
 
       // Draw player paddle
       ctx.fillStyle = '#FF4500'; // OrangeRed
-      ctx.fillRect(0, gameState.current.playerPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+      ctx.fillRect(
+        0,
+        gameState.current.playerPaddleY,
+        PADDLE_WIDTH,
+        PADDLE_HEIGHT,
+      );
 
       // Draw AI paddle
       ctx.fillStyle = '#4B0082'; // Indigo
-      ctx.fillRect(GAME_WIDTH - PADDLE_WIDTH, gameState.current.aiPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+      ctx.fillRect(
+        GAME_WIDTH - PADDLE_WIDTH,
+        gameState.current.aiPaddleY,
+        PADDLE_WIDTH,
+        PADDLE_HEIGHT,
+      );
 
       // Draw obstacles
       ctx.fillStyle = '#808080'; // Gray color for obstacles
-      gameState.current.obstacles.forEach(obstacle => {
+      gameState.current.obstacles.forEach((obstacle) => {
         ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
       });
 
       // Draw ball
       ctx.fillStyle = '#FFFFFF'; // White
       ctx.beginPath();
-      ctx.arc(gameState.current.ballX, gameState.current.ballY, BALL_SIZE / 2, 0, Math.PI * 2);
+      ctx.arc(
+        gameState.current.ballX,
+        gameState.current.ballY,
+        BALL_SIZE / 2,
+        0,
+        Math.PI * 2,
+      );
       ctx.fill();
     };
 
@@ -132,21 +182,39 @@ const SoccerPongPage = () => {
 
       // Player paddle movement
       if (gameState.current.playerMoveUp) {
-        gameState.current.playerPaddleY = Math.max(0, gameState.current.playerPaddleY - PADDLE_SPEED);
+        gameState.current.playerPaddleY = Math.max(
+          0,
+          gameState.current.playerPaddleY - PADDLE_SPEED,
+        );
       }
       if (gameState.current.playerMoveDown) {
-        gameState.current.playerPaddleY = Math.min(GAME_HEIGHT - PADDLE_HEIGHT, gameState.current.playerPaddleY + PADDLE_SPEED);
+        gameState.current.playerPaddleY = Math.min(
+          GAME_HEIGHT - PADDLE_HEIGHT,
+          gameState.current.playerPaddleY + PADDLE_SPEED,
+        );
       }
 
       // AI paddle movement (simple AI)
-      if (gameState.current.ballY < gameState.current.aiPaddleY + PADDLE_HEIGHT / 2) {
-        gameState.current.aiPaddleY = Math.max(0, gameState.current.aiPaddleY - PADDLE_SPEED * 0.8); // AI is a bit slower
-      } else if (gameState.current.ballY > gameState.current.aiPaddleY + PADDLE_HEIGHT / 2) {
-        gameState.current.aiPaddleY = Math.min(GAME_HEIGHT - PADDLE_HEIGHT, gameState.current.aiPaddleY + PADDLE_SPEED * 0.8);
+      if (
+        gameState.current.ballY <
+        gameState.current.aiPaddleY + PADDLE_HEIGHT / 2
+      ) {
+        gameState.current.aiPaddleY = Math.max(
+          0,
+          gameState.current.aiPaddleY - PADDLE_SPEED * 0.8,
+        ); // AI is a bit slower
+      } else if (
+        gameState.current.ballY >
+        gameState.current.aiPaddleY + PADDLE_HEIGHT / 2
+      ) {
+        gameState.current.aiPaddleY = Math.min(
+          GAME_HEIGHT - PADDLE_HEIGHT,
+          gameState.current.aiPaddleY + PADDLE_SPEED * 0.8,
+        );
       }
 
       // Obstacle movement
-      gameState.current.obstacles.forEach(obstacle => {
+      gameState.current.obstacles.forEach((obstacle) => {
         obstacle.y += obstacle.dy;
         // Reverse direction if hitting top or bottom
         if (obstacle.y < 0 || obstacle.y + obstacle.height > GAME_HEIGHT) {
@@ -159,15 +227,20 @@ const SoccerPongPage = () => {
       gameState.current.ballY += gameState.current.ballDy;
 
       // Ball collision with top/bottom walls
-      if (gameState.current.ballY - BALL_SIZE / 2 < 0 || gameState.current.ballY + BALL_SIZE / 2 > GAME_HEIGHT) {
+      if (
+        gameState.current.ballY - BALL_SIZE / 2 < 0 ||
+        gameState.current.ballY + BALL_SIZE / 2 > GAME_HEIGHT
+      ) {
         gameState.current.ballDy *= -1;
       }
 
       // Ball collision with player paddle
       if (
         gameState.current.ballX - BALL_SIZE / 2 < PADDLE_WIDTH &&
-        gameState.current.ballY + BALL_SIZE / 2 > gameState.current.playerPaddleY &&
-        gameState.current.ballY - BALL_SIZE / 2 < gameState.current.playerPaddleY + PADDLE_HEIGHT
+        gameState.current.ballY + BALL_SIZE / 2 >
+          gameState.current.playerPaddleY &&
+        gameState.current.ballY - BALL_SIZE / 2 <
+          gameState.current.playerPaddleY + PADDLE_HEIGHT
       ) {
         gameState.current.ballDx *= -1;
         // Add a slight random angle change for more dynamic play
@@ -178,7 +251,8 @@ const SoccerPongPage = () => {
       if (
         gameState.current.ballX + BALL_SIZE / 2 > GAME_WIDTH - PADDLE_WIDTH &&
         gameState.current.ballY + BALL_SIZE / 2 > gameState.current.aiPaddleY &&
-        gameState.current.ballY - BALL_SIZE / 2 < gameState.current.aiPaddleY + PADDLE_HEIGHT
+        gameState.current.ballY - BALL_SIZE / 2 <
+          gameState.current.aiPaddleY + PADDLE_HEIGHT
       ) {
         gameState.current.ballDx *= -1;
         // Add a slight random angle change
@@ -186,21 +260,32 @@ const SoccerPongPage = () => {
       }
 
       // Ball collision with obstacles
-      gameState.current.obstacles.forEach(obstacle => {
+      gameState.current.obstacles.forEach((obstacle) => {
         if (
           gameState.current.ballX + BALL_SIZE / 2 > obstacle.x &&
-          gameState.current.ballX - BALL_SIZE / 2 < obstacle.x + obstacle.width &&
+          gameState.current.ballX - BALL_SIZE / 2 <
+            obstacle.x + obstacle.width &&
           gameState.current.ballY + BALL_SIZE / 2 > obstacle.y &&
           gameState.current.ballY - BALL_SIZE / 2 < obstacle.y + obstacle.height
         ) {
           // Collision detected, reverse ball direction
           // Determine if collision is horizontal or vertical for more realistic bounce
-          const overlapX = Math.min(gameState.current.ballX + BALL_SIZE / 2, obstacle.x + obstacle.width) - Math.max(gameState.current.ballX - BALL_SIZE / 2, obstacle.x);
-          const overlapY = Math.min(gameState.current.ballY + BALL_SIZE / 2, obstacle.y + obstacle.height) - Math.max(gameState.current.ballY - BALL_SIZE / 2, obstacle.y);
+          const overlapX =
+            Math.min(
+              gameState.current.ballX + BALL_SIZE / 2,
+              obstacle.x + obstacle.width,
+            ) - Math.max(gameState.current.ballX - BALL_SIZE / 2, obstacle.x);
+          const overlapY =
+            Math.min(
+              gameState.current.ballY + BALL_SIZE / 2,
+              obstacle.y + obstacle.height,
+            ) - Math.max(gameState.current.ballY - BALL_SIZE / 2, obstacle.y);
 
-          if (overlapX < overlapY) { // Horizontal collision
+          if (overlapX < overlapY) {
+            // Horizontal collision
             gameState.current.ballDx *= -1;
-          } else { // Vertical collision
+          } else {
+            // Vertical collision
             gameState.current.ballDy *= -1;
           }
           // Add a slight random angle change
@@ -209,13 +294,15 @@ const SoccerPongPage = () => {
       });
 
       // Scoring
-      if (gameState.current.ballX - BALL_SIZE / 2 < 0) { // AI scores
+      if (gameState.current.ballX - BALL_SIZE / 2 < 0) {
+        // AI scores
         setGoalAnimation({ active: true, scorer: 'AI' });
         setTimeout(() => {
           setGoalAnimation({ active: false, scorer: null });
-          setAiScore(prev => {
+          setAiScore((prev) => {
             const newScore = prev + 1;
-            if (newScore >= maxScore) { // Use maxScore here
+            if (newScore >= maxScore) {
+              // Use maxScore here
               setGameOver(true);
               setWinner('AI');
             } else {
@@ -224,13 +311,15 @@ const SoccerPongPage = () => {
             return newScore;
           });
         }, 1000); // Animation duration
-      } else if (gameState.current.ballX + BALL_SIZE / 2 > GAME_WIDTH) { // Player scores
+      } else if (gameState.current.ballX + BALL_SIZE / 2 > GAME_WIDTH) {
+        // Player scores
         setGoalAnimation({ active: true, scorer: 'Player' });
         setTimeout(() => {
           setGoalAnimation({ active: false, scorer: null });
-          setPlayerScore(prev => {
+          setPlayerScore((prev) => {
             const newScore = prev + 1;
-            if (newScore >= maxScore) { // Use maxScore here
+            if (newScore >= maxScore) {
+              // Use maxScore here
               setGameOver(true);
               setWinner('Player');
             } else {
@@ -255,7 +344,14 @@ const SoccerPongPage = () => {
     return () => {
       cancelAnimationFrame(animationFrameId);
     };
-  }, [gameStarted, gameOver, resetBall, goalAnimation.active, maxScore, initializeObstacles]); // Add initializeObstacles to dependencies
+  }, [
+    gameStarted,
+    gameOver,
+    resetBall,
+    goalAnimation.active,
+    maxScore,
+    initializeObstacles,
+  ]); // Add initializeObstacles to dependencies
 
   // Keyboard controls
   useEffect(() => {
@@ -325,23 +421,25 @@ const SoccerPongPage = () => {
                   Player: {playerScore} - AI: {aiScore}
                 </div>
                 <div className="flex justify-center items-center gap-4 mb-2">
-                  <div className="controls-display text-sm">
-                    W: Up, S: Down
-                  </div>
+                  <div className="controls-display text-sm">W: Up, S: Down</div>
                   <div className="max-score-config text-sm">
                     Score to Win:
                     <input
                       type="number"
                       min="1"
                       value={maxScore}
-                      onChange={(e) => setMaxScore(Math.max(1, parseInt(e.target.value)))}
+                      onChange={(e) =>
+                        setMaxScore(Math.max(1, parseInt(e.target.value)))
+                      }
                       className="ml-2 w-16 bg-gray-800 text-white border border-gray-600 rounded px-2 py-1"
                       disabled={gameStarted} // Disable input when game has started
                     />
                   </div>
                 </div>
                 {goalAnimation.active && (
-                  <div className={`goal-animation ${goalAnimation.scorer === 'Player' ? 'player-goal' : 'ai-goal'}`}>
+                  <div
+                    className={`goal-animation ${goalAnimation.scorer === 'Player' ? 'player-goal' : 'ai-goal'}`}
+                  >
                     GOAL!
                   </div>
                 )}

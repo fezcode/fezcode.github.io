@@ -25,8 +25,8 @@ const PostMetadata = ({
       metadata.category === 'dev'
         ? 'var(--color-dev-badge)'
         : metadata.category === 'd&d'
-        ? 'var(--color-dnd-badge)'
-        : 'var(--color-takes-badge)',
+          ? 'var(--color-dnd-badge)'
+          : 'var(--color-takes-badge)',
   };
 
   const handleButtonClick = () => {
@@ -42,9 +42,7 @@ const PostMetadata = ({
 
   return (
     <aside className="sticky top-24">
-      <div
-        className="p-6 bg-gray-800/50 rounded-lg border border-gray-700/50"
-      >
+      <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700/50">
         <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">
           About Post
         </h3>
@@ -94,13 +92,16 @@ const PostMetadata = ({
             <>
               <div>
                 <Label>Series</Label>
-                <p className="text-gray-300 ml-1 mt-1">{metadata.series.title}</p>
+                <p className="text-gray-300 ml-1 mt-1">
+                  {metadata.series.title}
+                </p>
               </div>
               <div>
                 <Label>Episodes</Label>
                 <ul className="list-disc list-inside ml-4 mt-2 text-gray-300">
                   {seriesPosts.map((postInSeries) => {
-                    const episodeLink = `/blog/series/${metadata.series.slug}/${postInSeries.slug}`;                    return (
+                    const episodeLink = `/blog/series/${metadata.series.slug}/${postInSeries.slug}`;
+                    return (
                       <li key={postInSeries.slug}>
                         <Link
                           to={episodeLink}

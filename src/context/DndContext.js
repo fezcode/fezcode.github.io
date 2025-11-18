@@ -7,7 +7,9 @@ export const DndProvider = ({ children }) => {
   const [breadcrumbs, setBreadcrumbs] = useState([]); // Add breadcrumbs state
 
   return (
-    <DndContext.Provider value={{ bgImageName, setBgImageName, breadcrumbs, setBreadcrumbs }}>
+    <DndContext.Provider
+      value={{ bgImageName, setBgImageName, breadcrumbs, setBreadcrumbs }}
+    >
       {children}
     </DndContext.Provider>
   );

@@ -2,9 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/dnd.css';
 
-const DndCard = ({ title, author, link, backgroundImage, className, overlayColor }) => {
+const DndCard = ({
+  title,
+  author,
+  link,
+  backgroundImage,
+  className,
+  overlayColor,
+}) => {
   return (
-    <Link to={link} className={`dnd-card ${className || ''}`} style={{ backgroundImage: `url(${backgroundImage})`, position: 'relative' }}>
+    <Link
+      to={link}
+      className={`dnd-card ${className || ''}`}
+      style={{
+        backgroundImage: `url(${backgroundImage})`,
+        position: 'relative',
+      }}
+    >
       {overlayColor && (
         <div
           style={{
@@ -21,7 +35,11 @@ const DndCard = ({ title, author, link, backgroundImage, className, overlayColor
         ></div>
       )}
       <h3 style={{ zIndex: 2 }}>{title}</h3>
-      {author && <p className="author-text" style={{ zIndex: 2 }}>{author}</p>}
+      {author && (
+        <p className="author-text" style={{ zIndex: 2 }}>
+          {author}
+        </p>
+      )}
     </Link>
   );
 };

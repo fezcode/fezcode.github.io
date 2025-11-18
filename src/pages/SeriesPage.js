@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import PostItem from "../components/PostItem";
+import PostItem from '../components/PostItem';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import useSeo from "../hooks/useSeo";
+import useSeo from '../hooks/useSeo';
 
 const SeriesPage = () => {
   const { seriesSlug } = useParams();
@@ -20,7 +20,7 @@ const SeriesPage = () => {
     twitterCard: 'summary_large_image',
     twitterTitle: `${seriesTitle} | Fezcodex`,
     twitterDescription: `Explore the posts in the "${seriesTitle}" series on Fezcodex.`,
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   useEffect(() => {
@@ -47,13 +47,13 @@ const SeriesPage = () => {
             }
           });
 
-          const filteredPosts = processedPosts.filter(
-            (post) => post.series && post.series.slug === seriesSlug
-          ).sort((a, b) => {
-            const dateA = new Date(a.updated || a.date);
-            const dateB = new Date(b.updated || b.date);
-            return dateB - dateA;
-          });
+          const filteredPosts = processedPosts
+            .filter((post) => post.series && post.series.slug === seriesSlug)
+            .sort((a, b) => {
+              const dateA = new Date(a.updated || a.date);
+              const dateB = new Date(b.updated || b.date);
+              return dateB - dateA;
+            });
 
           if (filteredPosts.length > 0) {
             setSeriesPosts(filteredPosts);

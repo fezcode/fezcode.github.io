@@ -3,20 +3,29 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 function AsciiConverterPage() {
   useSeo({
     title: 'Text to ASCII Converter | Fezcodex',
-    description: 'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
-    keywords: ['Fezcodex', 'ASCII converter', 'text to ASCII', 'binary converter', 'text to binary'],
+    description:
+      'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
+    keywords: [
+      'Fezcodex',
+      'ASCII converter',
+      'text to ASCII',
+      'binary converter',
+      'text to binary',
+    ],
     ogTitle: 'Text to ASCII Converter | Fezcodex',
-    ogDescription: 'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
+    ogDescription:
+      'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Text to ASCII Converter | Fezcodex',
-    twitterDescription: 'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const [inputText, setInputText] = useState('');
   const [asciiOutput, setAsciiOutput] = useState('');
@@ -25,7 +34,10 @@ function AsciiConverterPage() {
 
   const textToAscii = () => {
     try {
-      const ascii = inputText.split('').map(char => char.charCodeAt(0)).join(' ');
+      const ascii = inputText
+        .split('')
+        .map((char) => char.charCodeAt(0))
+        .join(' ');
       setAsciiOutput(ascii);
     } catch (error) {
       addToast({
@@ -39,7 +51,10 @@ function AsciiConverterPage() {
 
   const asciiToText = () => {
     try {
-      const text = inputText.split(' ').map(code => String.fromCharCode(parseInt(code, 10))).join('');
+      const text = inputText
+        .split(' ')
+        .map((code) => String.fromCharCode(parseInt(code, 10)))
+        .join('');
       setAsciiOutput(text);
     } catch (error) {
       addToast({
@@ -53,7 +68,10 @@ function AsciiConverterPage() {
 
   const textToBinary = () => {
     try {
-      const binary = inputText.split('').map(char => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+      const binary = inputText
+        .split('')
+        .map((char) => char.charCodeAt(0).toString(2).padStart(8, '0'))
+        .join(' ');
       setBinaryOutput(binary);
     } catch (error) {
       addToast({
@@ -67,7 +85,10 @@ function AsciiConverterPage() {
 
   const binaryToText = () => {
     try {
-      const text = inputText.split(' ').map(bin => String.fromCharCode(parseInt(bin, 2))).join('');
+      const text = inputText
+        .split(' ')
+        .map((bin) => String.fromCharCode(parseInt(bin, 2)))
+        .join('');
       setBinaryOutput(text);
     } catch (error) {
       addToast({
@@ -80,7 +101,8 @@ function AsciiConverterPage() {
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard
+      .writeText(text)
       .then(() => {
         addToast({
           title: 'Success',
@@ -117,9 +139,7 @@ function AsciiConverterPage() {
         </h1>
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 hover:bg-app/15 text-app border-app"
-          >
+          <div className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 hover:bg-app/15 text-app border-app">
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
@@ -128,11 +148,16 @@ function AsciiConverterPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> ASCII Converter </h1>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+              {' '}
+              ASCII Converter{' '}
+            </h1>
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2 text-app" >Input Text</label>
+                <label className="block text-lg font-semibold mb-2 text-app">
+                  Input Text
+                </label>
                 <textarea
                   className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y focus:ring-0 border rounded-md border-app"
                   style={{ color: detailTextColor }}
@@ -170,7 +195,9 @@ function AsciiConverterPage() {
                 </button>
               </div>
               <div>
-                <label className="block text-lg font-semibold mb-2 text-app" >ASCII Output</label>
+                <label className="block text-lg font-semibold mb-2 text-app">
+                  ASCII Output
+                </label>
                 <div className="relative">
                   <textarea
                     readOnly
@@ -188,7 +215,9 @@ function AsciiConverterPage() {
                 </div>
               </div>
               <div>
-                <label className="block text-lg font-semibold mb-2 text-app" >Binary Output</label>
+                <label className="block text-lg font-semibold mb-2 text-app">
+                  Binary Output
+                </label>
                 <div className="relative">
                   <textarea
                     readOnly

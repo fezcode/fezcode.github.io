@@ -5,7 +5,10 @@ export const parseWallpaperName = (filename) => {
 
   if (dashes.length >= 2) {
     const lastIndex = nameWithoutExtension.lastIndexOf('-');
-    const secondLastIndex = nameWithoutExtension.lastIndexOf('-', lastIndex - 1);
+    const secondLastIndex = nameWithoutExtension.lastIndexOf(
+      '-',
+      lastIndex - 1,
+    );
     parsedName = nameWithoutExtension.substring(0, secondLastIndex);
   }
 

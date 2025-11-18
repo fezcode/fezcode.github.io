@@ -22,7 +22,9 @@ const ListInputModal = ({ isOpen, onClose, onSave }) => {
           onChange={(e) => setList(e.target.value)}
           placeholder="Paste your list here, each line is an entry (max 30 entries)"
         />
-        <p className="text-sm text-gray-400 mt-2">Only the first 30 entries will be added.</p>
+        <p className="text-sm text-gray-400 mt-2">
+          Only the first 30 entries will be added.
+        </p>
         <div className="flex justify-end gap-4 mt-4">
           <button
             onClick={onClose}

@@ -5,17 +5,22 @@ import { usePalette } from 'color-thief-react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import { canvasRGBA } from 'stackblur-canvas';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 function Palette({ image }) {
-  const { data: palette, loading, error } = usePalette(image, 5, 'hex', { crossOrigin: 'anonymous', quality: 10 });
+  const {
+    data: palette,
+    loading,
+    error,
+  } = usePalette(image, 5, 'hex', { crossOrigin: 'anonymous', quality: 10 });
   const { addToast } = useToast();
 
   if (loading) return <p>Loading palette...</p>;
   if (error) return <p>Error generating palette: {error.message}</p>;
 
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard
+      .writeText(text)
       .then(() => {
         addToast({
           title: 'Success',
@@ -34,16 +39,22 @@ function Palette({ image }) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
-      {palette && palette.map((color, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-center p-4 rounded-md cursor-pointer transition-transform duration-200 hover:scale-105"
-          style={{ backgroundColor: color }}
-          onClick={() => copyToClipboard(color)}
-        >
-          <span className="text-white font-semibold text-shadow-sm" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>{color}</span>
-        </div>
-      ))}
+      {palette &&
+        palette.map((color, index) => (
+          <div
+            key={index}
+            className="flex flex-col items-center p-4 rounded-md cursor-pointer transition-transform duration-200 hover:scale-105"
+            style={{ backgroundColor: color }}
+            onClick={() => copyToClipboard(color)}
+          >
+            <span
+              className="text-white font-semibold text-shadow-sm"
+              style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}
+            >
+              {color}
+            </span>
+          </div>
+        ))}
     </div>
   );
 }
@@ -51,15 +62,34 @@ function Palette({ image }) {
 function ImageToolkitPage() {
   useSeo({
     title: 'Image Toolkit | Fezcodex',
-    description: 'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
-    keywords: ['Fezcodex', 'image toolkit', 'image editor', 'color palette', 'monochrome', 'blur', 'dithering', 'cel shading', 'halftone', 'solarization', 'posterization', 'sepia', 'pixelization', 'duotone', 'ascii art'],
+    description:
+      'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
+    keywords: [
+      'Fezcodex',
+      'image toolkit',
+      'image editor',
+      'color palette',
+      'monochrome',
+      'blur',
+      'dithering',
+      'cel shading',
+      'halftone',
+      'solarization',
+      'posterization',
+      'sepia',
+      'pixelization',
+      'duotone',
+      'ascii art',
+    ],
     ogTitle: 'Image Toolkit | Fezcodex',
-    ogDescription: 'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
+    ogDescription:
+      'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Image Toolkit | Fezcodex',
-    twitterDescription: 'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const { addToast } = useToast();
   const [image, setImage] = useState(null);
@@ -92,50 +122,54 @@ function ImageToolkitPage() {
     return data;
   }, []);
 
-  const sobel = useCallback((imageData) => {
-    const width = imageData.width;
-    const height = imageData.height;
-    const grayscaleData = toGrayscale(imageData);
-    const sobelData = new Uint8ClampedArray(grayscaleData.length);
-    const sobelOperatorX = [
-      [-1, 0, 1],
-      [-2, 0, 2],
-      [-1, 0, 1]
-    ];
-    const sobelOperatorY = [
-      [-1, -2, -1],
-      [0, 0, 0],
-      [1, 2, 1]
-    ];
+  const sobel = useCallback(
+    (imageData) => {
+      const width = imageData.width;
+      const height = imageData.height;
+      const grayscaleData = toGrayscale(imageData);
+      const sobelData = new Uint8ClampedArray(grayscaleData.length);
+      const sobelOperatorX = [
+        [-1, 0, 1],
+        [-2, 0, 2],
+        [-1, 0, 1],
+      ];
+      const sobelOperatorY = [
+        [-1, -2, -1],
+        [0, 0, 0],
+        [1, 2, 1],
+      ];
 
-    for (let y = 1; y < height - 1; y++) {
-      for (let x = 1; x < width - 1; x++) {
-        let pixelX = 0;
-        let pixelY = 0;
-        for (let j = -1; j <= 1; j++) {
-          for (let i = -1; i <= 1; i++) {
-            const pixel = grayscaleData[((y + j) * width + (x + i)) * 4];
-            pixelX += pixel * sobelOperatorX[j + 1][i + 1];
-            pixelY += pixel * sobelOperatorY[j + 1][i + 1];
+      for (let y = 1; y < height - 1; y++) {
+        for (let x = 1; x < width - 1; x++) {
+          let pixelX = 0;
+          let pixelY = 0;
+          for (let j = -1; j <= 1; j++) {
+            for (let i = -1; i <= 1; i++) {
+              const pixel = grayscaleData[((y + j) * width + (x + i)) * 4];
+              pixelX += pixel * sobelOperatorX[j + 1][i + 1];
+              pixelY += pixel * sobelOperatorY[j + 1][i + 1];
+            }
           }
+          const magnitude = Math.sqrt(pixelX * pixelX + pixelY * pixelY);
+          const index = (y * width + x) * 4;
+          sobelData[index] = magnitude;
+          sobelData[index + 1] = magnitude;
+          sobelData[index + 2] = magnitude;
+          sobelData[index + 3] = 255;
         }
-        const magnitude = Math.sqrt(pixelX * pixelX + pixelY * pixelY);
-        const index = (y * width + x) * 4;
-        sobelData[index] = magnitude;
-        sobelData[index + 1] = magnitude;
-        sobelData[index + 2] = magnitude;
-        sobelData[index + 3] = 255;
       }
-    }
-    return new ImageData(sobelData, width, height);
-  }, [toGrayscale]);
+      return new ImageData(sobelData, width, height);
+    },
+    [toGrayscale],
+  );
 
   const combine = useCallback((quantized, edges) => {
     const quantizedData = quantized.data;
     const edgesData = edges.data;
     const finalData = new Uint8ClampedArray(quantizedData.length);
     for (let i = 0; i < quantizedData.length; i += 4) {
-      if (edgesData[i] > 128) { // Edge threshold
+      if (edgesData[i] > 128) {
+        // Edge threshold
         finalData[i] = 0;
         finalData[i + 1] = 0;
         finalData[i + 2] = 0;
@@ -158,7 +192,7 @@ function ImageToolkitPage() {
       [1, 9, 3, 11],
       [13, 5, 15, 7],
       [4, 12, 2, 10],
-      [16, 8, 14, 6]
+      [16, 8, 14, 6],
     ];
     const matrixSize = 4;
 
@@ -168,7 +202,7 @@ function ImageToolkitPage() {
         const r = pixels[i];
         const g = pixels[i + 1];
         const b = pixels[i + 2];
-        const gray = (r * 0.299 + g * 0.587 + b * 0.114);
+        const gray = r * 0.299 + g * 0.587 + b * 0.114;
         const threshold = bayerMatrix[y % matrixSize][x % matrixSize] * 16;
         const newValue = gray < threshold ? 0 : 255;
         pixels[i] = newValue;
@@ -190,39 +224,42 @@ function ImageToolkitPage() {
     return new ImageData(data, imageData.width, imageData.height);
   }, []);
 
-  const halftone = useCallback((imageData, gridSize) => {
-    const width = imageData.width;
-    const height = imageData.height;
-    const grayscaleData = toGrayscale(imageData);
-    const ctx = document.createElement('canvas').getContext('2d');
-    ctx.canvas.width = width;
-    ctx.canvas.height = height;
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, width, height);
-    ctx.fillStyle = 'black';
+  const halftone = useCallback(
+    (imageData, gridSize) => {
+      const width = imageData.width;
+      const height = imageData.height;
+      const grayscaleData = toGrayscale(imageData);
+      const ctx = document.createElement('canvas').getContext('2d');
+      ctx.canvas.width = width;
+      ctx.canvas.height = height;
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0, 0, width, height);
+      ctx.fillStyle = 'black';
 
-    for (let y = 0; y < height; y += gridSize) {
-      for (let x = 0; x < width; x += gridSize) {
-        let totalBrightness = 0;
-        let count = 0;
-        for (let j = 0; j < gridSize; j++) {
-          for (let i = 0; i < gridSize; i++) {
-            if (x + i < width && y + j < height) {
-              const index = ((y + j) * width + (x + i)) * 4;
-              totalBrightness += grayscaleData[index];
-              count++;
+      for (let y = 0; y < height; y += gridSize) {
+        for (let x = 0; x < width; x += gridSize) {
+          let totalBrightness = 0;
+          let count = 0;
+          for (let j = 0; j < gridSize; j++) {
+            for (let i = 0; i < gridSize; i++) {
+              if (x + i < width && y + j < height) {
+                const index = ((y + j) * width + (x + i)) * 4;
+                totalBrightness += grayscaleData[index];
+                count++;
+              }
             }
           }
+          const avgBrightness = totalBrightness / count;
+          const radius = (gridSize / 2) * (1 - avgBrightness / 255);
+          ctx.beginPath();
+          ctx.arc(x + gridSize / 2, y + gridSize / 2, radius, 0, Math.PI * 2);
+          ctx.fill();
         }
-        const avgBrightness = totalBrightness / count;
-        const radius = (gridSize / 2) * (1 - avgBrightness / 255);
-        ctx.beginPath();
-        ctx.arc(x + gridSize / 2, y + gridSize / 2, radius, 0, Math.PI * 2);
-        ctx.fill();
       }
-    }
-    return ctx.getImageData(0, 0, width, height);
-  }, [toGrayscale]);
+      return ctx.getImageData(0, 0, width, height);
+    },
+    [toGrayscale],
+  );
 
   const posterize = useCallback((imageData, levels) => {
     const data = new Uint8ClampedArray(imageData.data);
@@ -235,21 +272,24 @@ function ImageToolkitPage() {
     return new ImageData(data, imageData.width, imageData.height);
   }, []);
 
-  const asciiArt = useCallback((imageData, characterRamp) => {
-    const data = toGrayscale(imageData);
-    const { width, height } = imageData;
-    let ascii = '';
-    for (let y = 0; y < height; y += 8) {
-      for (let x = 0; x < width; x += 4) {
-        const i = (y * width + x) * 4;
-        const brightness = data[i] / 255;
-        const charIndex = Math.floor(brightness * (characterRamp.length - 1));
-        ascii += characterRamp[charIndex];
+  const asciiArt = useCallback(
+    (imageData, characterRamp) => {
+      const data = toGrayscale(imageData);
+      const { width, height } = imageData;
+      let ascii = '';
+      for (let y = 0; y < height; y += 8) {
+        for (let x = 0; x < width; x += 4) {
+          const i = (y * width + x) * 4;
+          const brightness = data[i] / 255;
+          const charIndex = Math.floor(brightness * (characterRamp.length - 1));
+          ascii += characterRamp[charIndex];
+        }
+        ascii += '\n';
       }
-      ascii += '\n';
-    }
-    return ascii;
-  }, [toGrayscale]);
+      return ascii;
+    },
+    [toGrayscale],
+  );
 
   useEffect(() => {
     if (!image || !canvasRef.current) return;
@@ -257,7 +297,7 @@ function ImageToolkitPage() {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     const img = new Image();
-    img.crossOrigin = "anonymous";
+    img.crossOrigin = 'anonymous';
     img.src = image;
 
     img.onload = () => {
@@ -317,9 +357,9 @@ function ImageToolkitPage() {
           const r = data[i];
           const g = data[i + 1];
           const b = data[i + 2];
-          data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
-          data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
-          data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
+          data[i] = Math.min(255, r * 0.393 + g * 0.769 + b * 0.189);
+          data[i + 1] = Math.min(255, r * 0.349 + g * 0.686 + b * 0.168);
+          data[i + 2] = Math.min(255, r * 0.272 + g * 0.534 + b * 0.131);
         }
         ctx.putImageData(imageData, 0, 0);
       } else if (activeEffect === 'pixelization') {
@@ -355,7 +395,18 @@ function ImageToolkitPage() {
         setAsciiArtOutput(ascii);
       }
     };
-  }, [image, activeEffect, blurAmount, asciiArt, bayerDither, combine, halftone, posterize, quantizeColors, sobel]);
+  }, [
+    image,
+    activeEffect,
+    blurAmount,
+    asciiArt,
+    bayerDither,
+    combine,
+    halftone,
+    posterize,
+    quantizeColors,
+    sobel,
+  ]);
 
   const handleGetColorPalette = () => {
     if (image) {
@@ -383,7 +434,7 @@ function ImageToolkitPage() {
   };
 
   const handleApplyDithering = () => {
-    if(image) {
+    if (image) {
       setActiveEffect('dithering');
     } else {
       addToast({ title: 'Info', message: 'Please upload an image first.' });
@@ -466,7 +517,8 @@ function ImageToolkitPage() {
 
   const handleCopyAsciiArt = () => {
     if (asciiArtOutput) {
-      navigator.clipboard.writeText(asciiArtOutput)
+      navigator.clipboard
+        .writeText(asciiArtOutput)
         .then(() => {
           addToast({
             title: 'Success',
@@ -490,10 +542,14 @@ function ImageToolkitPage() {
     color: colors.app,
   };
 
-  const prefilter = "px-6 py-2 flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out"
-  const filterButtonStyle = "border-blue-400 bg-blue-500/50 text-white hover:bg-blue-500/70"
-  const greenButtonStyle = "border-green-400 bg-green-500/50 text-white hover:bg-green-500/70"
-  const appButtonStyle = "border-app/100 bg-app/20 hover:bg-app/40 cursor-pointer text-app hover:text-white"
+  const prefilter =
+    'px-6 py-2 flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out';
+  const filterButtonStyle =
+    'border-blue-400 bg-blue-500/50 text-white hover:bg-blue-500/70';
+  const greenButtonStyle =
+    'border-green-400 bg-green-500/50 text-white hover:bg-green-500/70';
+  const appButtonStyle =
+    'border-app/100 bg-app/20 hover:bg-app/40 cursor-pointer text-app hover:text-white';
 
   return (
     <div className="py-16 sm:py-24">
@@ -525,34 +581,111 @@ function ImageToolkitPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">Image Toolkit</h1>
+            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+              Image Toolkit
+            </h1>
             <hr className="border-gray-700 mb-4" />
             <div className="relative z-10 p-1">
               <div className="flex justify-center mb-4">
-                <label htmlFor="image-upload" className={`${prefilter} ${appButtonStyle}`} >
+                <label
+                  htmlFor="image-upload"
+                  className={`${prefilter} ${appButtonStyle}`}
+                >
                   Select Image
-                  <input id="image-upload" type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
+                  <input
+                    id="image-upload"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                  />
                 </label>
               </div>
               <hr className="border-gray-700 my-4" />
-              <h2 className="text-2xl font-arvo font-normal mb-4 text-app text-center">Filters</h2>
+              <h2 className="text-2xl font-arvo font-normal mb-4 text-app text-center">
+                Filters
+              </h2>
               <div className="flex justify-center gap-4 mb-4 flex-wrap">
-                <button onClick={handleGetColorPalette} className={`${prefilter} ${filterButtonStyle}`}> Get Color Palette </button>
-                <button onClick={handleConvertToMonochrome} className={`${prefilter} ${filterButtonStyle}`}> Monochrome </button>
-                <button onClick={handleBlurImage} className={`${prefilter} ${filterButtonStyle}`}>Blur</button>
-                <button onClick={handleApplyDithering} className={`${prefilter} ${filterButtonStyle}`}>Dithering</button>
-                <button onClick={handleCelShading} className={`${prefilter} ${filterButtonStyle}`}>Cel Shading</button>
-                <button onClick={handleHalftone} className={`${prefilter} ${filterButtonStyle}`}>Halftone</button>
-                <button onClick={handleSolarization} className={`${prefilter} ${filterButtonStyle}`}>Solarization</button>
-                <button onClick={handlePosterization} className={`${prefilter} ${filterButtonStyle}`}>Posterization</button>
-                <button onClick={handleSepia} className={`${prefilter} ${filterButtonStyle}`}>Sepia</button>
-                <button onClick={handlePixelization} className={`${prefilter} ${filterButtonStyle}`}>Pixelization</button>
-                <button onClick={handleDuotone} className={`${prefilter} ${filterButtonStyle}`}>Duotone</button>
-                <button onClick={handleAsciiArt} className={`${prefilter} ${filterButtonStyle}`}>ASCII Art</button>
+                <button
+                  onClick={handleGetColorPalette}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  {' '}
+                  Get Color Palette{' '}
+                </button>
+                <button
+                  onClick={handleConvertToMonochrome}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  {' '}
+                  Monochrome{' '}
+                </button>
+                <button
+                  onClick={handleBlurImage}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Blur
+                </button>
+                <button
+                  onClick={handleApplyDithering}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Dithering
+                </button>
+                <button
+                  onClick={handleCelShading}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Cel Shading
+                </button>
+                <button
+                  onClick={handleHalftone}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Halftone
+                </button>
+                <button
+                  onClick={handleSolarization}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Solarization
+                </button>
+                <button
+                  onClick={handlePosterization}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Posterization
+                </button>
+                <button
+                  onClick={handleSepia}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Sepia
+                </button>
+                <button
+                  onClick={handlePixelization}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Pixelization
+                </button>
+                <button
+                  onClick={handleDuotone}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  Duotone
+                </button>
+                <button
+                  onClick={handleAsciiArt}
+                  className={`${prefilter} ${filterButtonStyle}`}
+                >
+                  ASCII Art
+                </button>
               </div>
               {activeEffect === 'blur' && (
                 <div className="flex justify-center items-center gap-4 my-4">
-                  <label htmlFor="blur-range" className="form-label">Blur Amount: {blurAmount}px</label>
+                  <label htmlFor="blur-range" className="form-label">
+                    Blur Amount: {blurAmount}px
+                  </label>
                   <input
                     id="blur-range"
                     type="range"
@@ -567,36 +700,64 @@ function ImageToolkitPage() {
               <div className="flex flex-col items-center gap-4 mt-4">
                 {image && (
                   <div className="w-full border border-gray-500 p-2 rounded-lg">
-                    <h3 className="text-xl font-bold mb-2 text-center">Original</h3>
-                    <img ref={imageRef} src={image} alt="Original" className="max-w-full h-auto rounded-lg mx-auto" />
+                    <h3 className="text-xl font-bold mb-2 text-center">
+                      Original
+                    </h3>
+                    <img
+                      ref={imageRef}
+                      src={image}
+                      alt="Original"
+                      className="max-w-full h-auto rounded-lg mx-auto"
+                    />
                   </div>
                 )}
                 {activeEffect && activeEffect !== 'palette' && (
                   <div className="w-full border border-gray-500 p-2 rounded-lg">
-                    <h3 className="text-xl font-bold mb-2 text-center">Modified</h3>
-                    <canvas ref={canvasRef} className="max-w-full h-auto rounded-lg mx-auto"></canvas>
+                    <h3 className="text-xl font-bold mb-2 text-center">
+                      Modified
+                    </h3>
+                    <canvas
+                      ref={canvasRef}
+                      className="max-w-full h-auto rounded-lg mx-auto"
+                    ></canvas>
                   </div>
                 )}
               </div>
               {activeEffect === 'palette' && image && (
                 <div>
-                  <h3 className="text-xl font-bold mb-2 mt-4 text-center">Color Palette</h3>
+                  <h3 className="text-xl font-bold mb-2 mt-4 text-center">
+                    Color Palette
+                  </h3>
                   <Palette image={image} />
                 </div>
               )}
               {activeEffect === 'asciiArt' && asciiArtOutput && (
                 <div className="w-full border border-gray-500 p-2 rounded-lg mt-4">
                   <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-xl font-bold text-center ml-4">ASCII Art</h3>
-                    <button onClick={handleCopyAsciiArt} className={`${prefilter} ${filterButtonStyle}`}
-                      style={{ borderColor: colors['app-alpha-50'] }}>Copy</button>
+                    <h3 className="text-xl font-bold text-center ml-4">
+                      ASCII Art
+                    </h3>
+                    <button
+                      onClick={handleCopyAsciiArt}
+                      className={`${prefilter} ${filterButtonStyle}`}
+                      style={{ borderColor: colors['app-alpha-50'] }}
+                    >
+                      Copy
+                    </button>
                   </div>
-                  <pre className="text-xs text-white bg-gray-900 p-4 rounded-lg overflow-x-auto whitespace-pre">{asciiArtOutput}</pre>
+                  <pre className="text-xs text-white bg-gray-900 p-4 rounded-lg overflow-x-auto whitespace-pre">
+                    {asciiArtOutput}
+                  </pre>
                 </div>
               )}
               {activeEffect && activeEffect !== 'palette' && (
                 <div className="flex justify-center mt-4">
-                  <button onClick={handleDownload} className={`${prefilter} ${greenButtonStyle}`}>Download Image</button>
+                  <button
+                    onClick={handleDownload}
+                    className={`${prefilter} ${greenButtonStyle}`}
+                  >
+                    Download Image
+                  </button>
                 </div>
               )}
             </div>

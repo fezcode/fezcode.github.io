@@ -7,7 +7,21 @@ import useSeo from '../../hooks/useSeo';
 import '../../styles/CardGamePage.css';
 
 const suits = ['♠', '♥', '♦', '♣'];
-const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+const ranks = [
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  'J',
+  'Q',
+  'K',
+  'A',
+];
 
 const getDeck = () => {
   const deck = [];
@@ -30,15 +44,24 @@ const shuffleDeck = (deck) => {
 const CardGamePage = () => {
   useSeo({
     title: 'Higher or Lower Card Game | Fezcodex',
-    description: 'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
-    keywords: ['Fezcodex', 'card game', 'higher or lower', 'game', 'react game'],
+    description:
+      'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
+    keywords: [
+      'Fezcodex',
+      'card game',
+      'higher or lower',
+      'game',
+      'react game',
+    ],
     ogTitle: 'Higher or Lower Card Game | Fezcodex',
-    ogDescription: 'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
+    ogDescription:
+      'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Higher or Lower Card Game | Fezcodex',
-    twitterDescription: 'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const { addToast } = useToast();
@@ -106,7 +129,12 @@ const CardGamePage = () => {
       setNextCard(null);
     } else {
       setGameOver(true);
-      addToast({ title: 'Game Over!', message: `It was a ${drawnNextCard.rank} of ${drawnNextCard.suit}. Final score: ${score}`, duration: 7500, type: 'error' });
+      addToast({
+        title: 'Game Over!',
+        message: `It was a ${drawnNextCard.rank} of ${drawnNextCard.suit}. Final score: ${score}`,
+        duration: 7500,
+        type: 'error',
+      });
     }
   };
 
@@ -117,11 +145,20 @@ const CardGamePage = () => {
   };
 
   const renderCard = (card, isNext = false) => {
-    if (!card) return <div className={`card-placeholder ${isNext ? 'next-card-placeholder' : ''}`}>?</div>;
+    if (!card)
+      return (
+        <div
+          className={`card-placeholder ${isNext ? 'next-card-placeholder' : ''}`}
+        >
+          ?
+        </div>
+      );
 
     const isRed = card.suit === '♥' || card.suit === '♦';
     return (
-      <div className={`card ${isRed ? 'red' : 'black'} ${isNext ? 'next-card' : ''}`}>
+      <div
+        className={`card ${isRed ? 'red' : 'black'} ${isNext ? 'next-card' : ''}`}
+      >
         <div className="card-corner top-left">
           <span className="rank">{card.rank}</span>
           <span className="suit">{card.suit}</span>
@@ -178,7 +215,9 @@ const CardGamePage = () => {
                   <span className="text-4xl font-bold text-gray-400">VS</span>
                   {renderCard(nextCard, true)}
                 </div>
-                <p className="text-sm text-gray-400">Cards left: {deck.length}</p>
+                <p className="text-sm text-gray-400">
+                  Cards left: {deck.length}
+                </p>
               </div>
 
               {!gameOver && currentCard && (
@@ -212,7 +251,9 @@ const CardGamePage = () => {
 
               {gameOver && (
                 <div className="text-center mt-6">
-                  <p className="text-2xl font-bold text-red-500 mb-4">Game Over! Final Score: {score}</p>
+                  <p className="text-2xl font-bold text-red-500 mb-4">
+                    Game Over! Final Score: {score}
+                  </p>
                   <button
                     onClick={startGame}
                     className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"

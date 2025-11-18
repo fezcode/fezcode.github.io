@@ -9,7 +9,10 @@ export const AnimationProvider = ({ children }) => {
       const storedValue = localStorage.getItem('isAnimationEnabled');
       return storedValue ? JSON.parse(storedValue) : true;
     } catch (error) {
-      console.error("Error reading 'isAnimationEnabled' from localStorage", error);
+      console.error(
+        "Error reading 'isAnimationEnabled' from localStorage",
+        error,
+      );
       return true; // Default to true if localStorage is not accessible
     }
   });
@@ -19,45 +22,71 @@ export const AnimationProvider = ({ children }) => {
       const storedValue = localStorage.getItem('showAnimationsHomepage');
       return storedValue ? JSON.parse(storedValue) : true; // Default to true
     } catch (error) {
-      console.error("Error reading 'showAnimationsHomepage' from localStorage", error);
+      console.error(
+        "Error reading 'showAnimationsHomepage' from localStorage",
+        error,
+      );
       return true; // Default to true if localStorage is not accessible
     }
   });
 
-  const [showAnimationsInnerPages, setShowAnimationsInnerPages] = useState(() => {
-    try {
-      const storedValue = localStorage.getItem('showAnimationsInnerPages');
-      return storedValue ? JSON.parse(storedValue) : false; // Default to false
-    } catch (error) {
-      console.error("Error reading 'showAnimationsInnerPages' from localStorage", error);
-      return false; // Default to false if localStorage is not accessible
-    }
-  });
+  const [showAnimationsInnerPages, setShowAnimationsInnerPages] = useState(
+    () => {
+      try {
+        const storedValue = localStorage.getItem('showAnimationsInnerPages');
+        return storedValue ? JSON.parse(storedValue) : false; // Default to false
+      } catch (error) {
+        console.error(
+          "Error reading 'showAnimationsInnerPages' from localStorage",
+          error,
+        );
+        return false; // Default to false if localStorage is not accessible
+      }
+    },
+  );
 
   // Update localStorage whenever isAnimationEnabled changes
   useEffect(() => {
     try {
-      localStorage.setItem('isAnimationEnabled', JSON.stringify(isAnimationEnabled));
+      localStorage.setItem(
+        'isAnimationEnabled',
+        JSON.stringify(isAnimationEnabled),
+      );
     } catch (error) {
-      console.error("Error writing 'isAnimationEnabled' to localStorage", error);
+      console.error(
+        "Error writing 'isAnimationEnabled' to localStorage",
+        error,
+      );
     }
   }, [isAnimationEnabled]);
 
   // Update localStorage whenever showAnimationsHomepage changes
   useEffect(() => {
     try {
-      localStorage.setItem('showAnimationsHomepage', JSON.stringify(showAnimationsHomepage));
+      localStorage.setItem(
+        'showAnimationsHomepage',
+        JSON.stringify(showAnimationsHomepage),
+      );
     } catch (error) {
-      console.error("Error writing 'showAnimationsHomepage' to localStorage", error);
+      console.error(
+        "Error writing 'showAnimationsHomepage' to localStorage",
+        error,
+      );
     }
   }, [showAnimationsHomepage]);
 
   // Update localStorage whenever showAnimationsInnerPages changes
   useEffect(() => {
     try {
-      localStorage.setItem('showAnimationsInnerPages', JSON.stringify(showAnimationsInnerPages));
+      localStorage.setItem(
+        'showAnimationsInnerPages',
+        JSON.stringify(showAnimationsInnerPages),
+      );
     } catch (error) {
-      console.error("Error writing 'showAnimationsInnerPages' to localStorage", error);
+      console.error(
+        "Error writing 'showAnimationsInnerPages' to localStorage",
+        error,
+      );
     }
   }, [showAnimationsInnerPages]);
 
@@ -74,7 +103,16 @@ export const AnimationProvider = ({ children }) => {
   };
 
   return (
-    <AnimationContext.Provider value={{ isAnimationEnabled, toggleAnimation, showAnimationsHomepage, toggleShowAnimationsHomepage, showAnimationsInnerPages, toggleShowAnimationsInnerPages }}>
+    <AnimationContext.Provider
+      value={{
+        isAnimationEnabled,
+        toggleAnimation,
+        showAnimationsHomepage,
+        toggleShowAnimationsHomepage,
+        showAnimationsInnerPages,
+        toggleShowAnimationsInnerPages,
+      }}
+    >
       {children}
     </AnimationContext.Provider>
   );

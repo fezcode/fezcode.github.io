@@ -9,7 +9,7 @@ import DndCard from '../../components/dnd/DndCard'; // Import DndCard
 import Slider from 'react-slick'; // Import Slider
 import 'slick-carousel/slick/slick.css'; // Import slick-carousel CSS
 import 'slick-carousel/slick/slick-theme.css'; // Import slick-carousel theme CSS
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import piml from 'piml';
 
 const pageVariants = {
@@ -33,21 +33,33 @@ const pageTransition = {
 function DndLorePage() {
   useSeo({
     title: 'The Lore | From Serfs and Frauds',
-    description: 'Explore the world\'s history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.',
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'lore', 'history', 'tales'],
+    description:
+      "Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.",
+    keywords: [
+      'Fezcodex',
+      'd&d',
+      'dnd',
+      'from serfs and frauds',
+      'lore',
+      'history',
+      'tales',
+    ],
     ogTitle: 'The Lore | From Serfs and Frauds',
-    ogDescription: 'Explore the world\'s history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.',
+    ogDescription:
+      "Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.",
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'The Lore | From Serfs and Frauds',
-    twitterDescription: 'Explore the world\'s history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      "Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.",
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
   const [bgImage, setBgImage] = useState(''); // State for background image
 
   useEffect(() => {
-    const randomImage = dndWallpapers[Math.floor(Math.random() * dndWallpapers.length)];
+    const randomImage =
+      dndWallpapers[Math.floor(Math.random() * dndWallpapers.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([
@@ -61,7 +73,9 @@ function DndLorePage() {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/stories/books.piml`,
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -71,7 +85,7 @@ function DndLorePage() {
         const sortedBooks = data.books.sort((a, b) => a.bookId - b.bookId);
         setBooks(sortedBooks);
       } catch (error) {
-        console.error("Failed to fetch books:", error);
+        console.error('Failed to fetch books:', error);
       }
     };
 
@@ -93,18 +107,18 @@ function DndLorePage() {
           slidesToShow: 2,
           slidesToScroll: 1,
           infinite: true,
-          dots: true
-        }
+          dots: true,
+        },
       },
       {
         breakpoint: 600,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
-          initialSlide: 1
-        }
-      }
-    ]
+          initialSlide: 1,
+        },
+      },
+    ],
   };
 
   return (
@@ -116,18 +130,33 @@ function DndLorePage() {
       transition={pageTransition}
       className="dnd-page-container"
     >
-      <div className="dnd-hero" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`, position: 'relative' }}>
+      <div
+        className="dnd-hero"
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`,
+          position: 'relative',
+        }}
+      >
         <h1 className="dnd-title-box">
           <span className="dnd-hero-title-white">The Lore</span>
         </h1>
-        <div className="dnd-content-box dnd-books-section" style={{ zIndex: 1 }}>
-          <h2 >Books</h2>
+        <div
+          className="dnd-content-box dnd-books-section"
+          style={{ zIndex: 1 }}
+        >
+          <h2>Books</h2>
           <Slider {...settings} className="dnd-carousel">
             {books.map((book) => (
-              <div key={book.bookId} className="px-12"> {/* Add padding for spacing between cards */}
+              <div key={book.bookId} className="px-12">
+                {' '}
+                {/* Add padding for spacing between cards */}
                 <DndCard
                   title={book.bookTitle}
-                  author={book.episodes && book.episodes.length > 0 ? `${book.episodes[0].author}` : "No author information"}
+                  author={
+                    book.episodes && book.episodes.length > 0
+                      ? `${book.episodes[0].author}`
+                      : 'No author information'
+                  }
                   link={`/stories/books/${book.bookId}`}
                   backgroundImage={`${process.env.PUBLIC_URL}/images/stories/book-cover.png`}
                   overlayColor={book.overlay}
@@ -136,16 +165,22 @@ function DndLorePage() {
             ))}
           </Slider>
         </div>
-        <div className="dnd-content-box" style={{ zIndex: 1, marginTop: '2rem' }}>
-          <h2 >All Books</h2>
+        <div
+          className="dnd-content-box"
+          style={{ zIndex: 1, marginTop: '2rem' }}
+        >
+          <h2>All Books</h2>
           {books.map((book) => (
             <div key={book.bookId} className="px-12 mb-4 mt-4">
-              <Link to={`/stories/books/${book.bookId}`} className="border-1 p-2 transition transition-all text-2xl text-rose-600 hover:underline hover:text-amber-600">
+              <Link
+                to={`/stories/books/${book.bookId}`}
+                className="border-1 p-2 transition transition-all text-2xl text-rose-600 hover:underline hover:text-amber-600"
+              >
                 {book.bookTitle}
               </Link>
             </div>
           ))}
-          </div>
+        </div>
       </div>
     </motion.div>
   );

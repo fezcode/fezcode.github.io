@@ -14,6 +14,7 @@ import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
 import ImageModal from '../components/ImageModal';
 import Seo from '../components/Seo';
+import ShareButtons from '../components/ShareButtons';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
@@ -90,7 +91,9 @@ const CodeBlock = ({
     <div className="relative">
       <div className="absolute top-2 right-2 flex gap-2">
         <button
-          onClick={() => openModal(String(children).replace(/\n$/, ''), match[1])}
+          onClick={() =>
+            openModal(String(children).replace(/\n$/, ''), match[1])
+          }
           className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
         >
           <ArrowsOutSimple size={20} />
@@ -146,98 +149,109 @@ const BlogPostPage = () => {
     setModalContent('');
   };
 
-    useEffect(() => {
-      const fetchPost = async () => {
-        setLoading(true);
+  useEffect(() => {
+    const fetchPost = async () => {
+      setLoading(true);
 
-        console.log('Fetching post for currentSlug:', currentSlug);
+      console.log('Fetching post for currentSlug:', currentSlug);
 
-        try {
-          // Fetch shownPosts.json
-          const postsResponse = await fetch('/posts/posts.json');
+      try {
+        // Fetch shownPosts.json
+        const postsResponse = await fetch('/posts/posts.json');
 
-          let allPostsData = [];
-          if (postsResponse.ok) {
-            allPostsData = await postsResponse.json();
-          } else {
-            console.error('Failed to fetch posts.json');
-            navigate('/404');
-            return;
-          }
+        let allPostsData = [];
+        if (postsResponse.ok) {
+          allPostsData = await postsResponse.json();
+        } else {
+          console.error('Failed to fetch posts.json');
+          navigate('/404');
+          return;
+        }
 
-          let allPosts = [];
-          allPostsData.forEach((item) => {
-            if (item.series) {
-              item.series.posts.forEach((seriesPost) => {
-                allPosts.push({
-                  ...seriesPost,
-                  series: {
-                    slug: item.slug,
-                    title: item.title,
-                  },
-                });
+        let allPosts = [];
+        allPostsData.forEach((item) => {
+          if (item.series) {
+            item.series.posts.forEach((seriesPost) => {
+              allPosts.push({
+                ...seriesPost,
+                series: {
+                  slug: item.slug,
+                  title: item.title,
+                },
               });
-            } else {
-              allPosts.push(item);
-            }
-          });
-
-          let postMetadata = allPosts.find((item) => item.slug === currentSlug);
-
-          if (!postMetadata) {
-            console.error('Post metadata not found for:', currentSlug);
-            navigate('/404');
-            return;
+            });
+          } else {
+            allPosts.push(item);
           }
+        });
 
-          let postBody = '';
-          if (postMetadata.filename) {
-            const contentPath = `posts/${postMetadata.filename}`;
-            const postContentResponse = await fetch(`/${contentPath}`);
-            if (postContentResponse.ok) {
-              postBody = await postContentResponse.text();
-              if (postBody.trim().startsWith('<!DOCTYPE html>')) {
-                console.error('Fetched content is HTML, not expected post content for:', currentSlug);
-                navigate('/404');
-                return;
-              }
-            } else {
-              console.error('Failed to fetch post content from filename:', postMetadata.filename);
+        let postMetadata = allPosts.find((item) => item.slug === currentSlug);
+
+        if (!postMetadata) {
+          console.error('Post metadata not found for:', currentSlug);
+          navigate('/404');
+          return;
+        }
+
+        let postBody = '';
+        if (postMetadata.filename) {
+          const contentPath = `posts/${postMetadata.filename}`;
+          const postContentResponse = await fetch(`/${contentPath}`);
+          if (postContentResponse.ok) {
+            postBody = await postContentResponse.text();
+            if (postBody.trim().startsWith('<!DOCTYPE html>')) {
+              console.error(
+                'Fetched content is HTML, not expected post content for:',
+                currentSlug,
+              );
               navigate('/404');
               return;
             }
           } else {
-            console.error('Post metadata missing filename for:', currentSlug);
+            console.error(
+              'Failed to fetch post content from filename:',
+              postMetadata.filename,
+            );
             navigate('/404');
             return;
           }
-
-          let seriesPosts = [];
-          let currentSeries = null;
-
-          if (postMetadata.series) {
-            currentSeries = postMetadata.series;
-            // Find the original series object from allPostsData to get all posts in the series
-            const originalSeries = allPostsData.find(
-              (item) => item.series && item.slug === currentSeries.slug,
-            );
-            if (originalSeries) {
-              seriesPosts = originalSeries.series.posts;
-            }
-          }
-
-          setPost({ attributes: postMetadata, body: postBody, seriesPosts, currentSeries });
-        } catch (error) {
-          console.error('Error fetching post or metadata:', error);
-
-          setPost({ attributes: { title: 'Error loading post' }, body: '' });
-        } finally {
-          setLoading(false);
+        } else {
+          console.error('Post metadata missing filename for:', currentSlug);
+          navigate('/404');
+          return;
         }
-      };
 
-      fetchPost();
-    }, [currentSlug, navigate]);
+        let seriesPosts = [];
+        let currentSeries = null;
+
+        if (postMetadata.series) {
+          currentSeries = postMetadata.series;
+          // Find the original series object from allPostsData to get all posts in the series
+          const originalSeries = allPostsData.find(
+            (item) => item.series && item.slug === currentSeries.slug,
+          );
+          if (originalSeries) {
+            seriesPosts = originalSeries.series.posts;
+          }
+        }
+
+        setPost({
+          attributes: postMetadata,
+          body: postBody,
+          seriesPosts,
+          currentSeries,
+        });
+      } catch (error) {
+        console.error('Error fetching post or metadata:', error);
+
+        setPost({ attributes: { title: 'Error loading post' }, body: '' });
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPost();
+  }, [currentSlug, navigate]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -291,16 +305,22 @@ const BlogPostPage = () => {
     return <div className="text-center py-16">Post not found</div>;
   }
 
-  const currentPostIndex = post.seriesPosts ? post.seriesPosts.findIndex(
-    (item) => item.slug === currentSlug,
-  ) : -1;
-  const prevPost = post.seriesPosts && currentPostIndex < post.seriesPosts.length - 1
-    ? post.seriesPosts[currentPostIndex + 1]
-    : null;
-  const nextPost = currentPostIndex > 0 ? post.seriesPosts[currentPostIndex - 1] : null;
+  const currentPostIndex = post.seriesPosts
+    ? post.seriesPosts.findIndex((item) => item.slug === currentSlug)
+    : -1;
+  const prevPost =
+    post.seriesPosts && currentPostIndex < post.seriesPosts.length - 1
+      ? post.seriesPosts[currentPostIndex + 1]
+      : null;
+  const nextPost =
+    currentPostIndex > 0 ? post.seriesPosts[currentPostIndex - 1] : null;
 
-  const backLink = post.attributes.series ? `/blog/series/${post.attributes.series.slug}` : '/blog';
-  const backLinkText = post.attributes.series ? `Back to ${post.attributes.series.title}` : 'Back to Blog';
+  const backLink = post.attributes.series
+    ? `/blog/series/${post.attributes.series.slug}`
+    : '/blog';
+  const backLinkText = post.attributes.series
+    ? `Back to ${post.attributes.series.title}`
+    : 'Back to Blog';
 
   const ImageRenderer = ({ src, alt }) => (
     <img
@@ -319,11 +339,15 @@ const BlogPostPage = () => {
         keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
         ogTitle={`${post.attributes.title} | Fezcodex`}
         ogDescription={post.body.substring(0, 150)}
-        ogImage={post.attributes.image || 'https://fezcode.github.io/logo512.png'}
+        ogImage={
+          post.attributes.image || 'https://fezcode.github.io/logo512.png'
+        }
         twitterCard="summary_large_image"
         twitterTitle={`${post.attributes.title} | Fezcodex`}
         twitterDescription={post.body.substring(0, 150)}
-        twitterImage={post.attributes.image || 'https://fezcode.github.io/logo512.png'}
+        twitterImage={
+          post.attributes.image || 'https://fezcode.github.io/logo512.png'
+        }
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
@@ -334,9 +358,16 @@ const BlogPostPage = () => {
             >
               <ArrowLeft size={24} /> {backLinkText}
             </Link>
+            <h1 className="text-4xl font-bold text-white mb-4">
+              {post.attributes.title}
+            </h1>
+            <ShareButtons
+              title={post.attributes.title}
+              url={window.location.href}
+            />
             <div
               ref={contentRef}
-              className="prose prose-xl prose-dark max-w-none"
+              className="prose prose-xl prose-dark max-w-none mt-8"
             >
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
@@ -356,7 +387,11 @@ const BlogPostPage = () => {
               <div className="mt-8 flex justify-between items-center border-t border-gray-700 pt-8">
                 {prevPost && (
                   <Link
-                    to={seriesSlug ? `/blog/series/${seriesSlug}/${prevPost.slug}` : `/blog/${prevPost.slug}`}
+                    to={
+                      seriesSlug
+                        ? `/blog/series/${seriesSlug}/${prevPost.slug}`
+                        : `/blog/${prevPost.slug}`
+                    }
                     className="text-primary-400 hover:underline flex items-center gap-2"
                   >
                     <ArrowLeft size={20} /> Previous: {prevPost.title}
@@ -364,10 +399,15 @@ const BlogPostPage = () => {
                 )}
                 {nextPost && (
                   <Link
-                    to={seriesSlug ? `/blog/series/${seriesSlug}/${nextPost.slug}` : `/blog/${nextPost.slug}`}
+                    to={
+                      seriesSlug
+                        ? `/blog/series/${seriesSlug}/${nextPost.slug}`
+                        : `/blog/${nextPost.slug}`
+                    }
                     className="text-primary-400 hover:underline flex items-center gap-2 ml-auto"
                   >
-                    Next: {nextPost.title} <ArrowLeft size={20} className="rotate-180" />
+                    Next: {nextPost.title}{' '}
+                    <ArrowLeft size={20} className="rotate-180" />
                   </Link>
                 )}
               </div>
@@ -385,7 +425,11 @@ const BlogPostPage = () => {
           </div>
         </div>
       </div>
-      <CodeModal isOpen={isModalOpen} onClose={closeModal} language={modalLanguage}>
+      <CodeModal
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        language={modalLanguage}
+      >
         {modalContent}
       </CodeModal>
       <ImageModal

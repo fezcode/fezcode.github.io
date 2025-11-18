@@ -1,6 +1,17 @@
 import useSeo from '../hooks/useSeo';
 
-const Seo = ({ title, description, keywords, ogTitle, ogDescription, ogImage, twitterCard, twitterTitle, twitterDescription, twitterImage }) => {
+const Seo = ({
+  title,
+  description,
+  keywords,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  twitterCard,
+  twitterTitle,
+  twitterDescription,
+  twitterImage,
+}) => {
   useSeo({
     title,
     description,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Routes, Route, useLocation, Navigate} from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import HomePage from '../pages/HomePage';
 import BlogPage from '../pages/BlogPage';
@@ -53,8 +53,8 @@ import ConnectFourPage from '../pages/apps/ConnectFourPage'; // Import ConnectFo
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
-import NotebooksPage from "../pages/notebooks/NotebooksPage";
-import NotebookViewerPage from "../pages/notebooks/NotebookViewerPage";
+import NotebooksPage from '../pages/notebooks/NotebooksPage';
+import NotebookViewerPage from '../pages/notebooks/NotebookViewerPage';
 
 const pageVariants = {
   initial: {
@@ -235,32 +235,32 @@ function AnimatedRoutes() {
           }
         />
         <Route
-            path="/notebooks"
-            element={
-                <motion.div
-                    initial="initial"
-                    animate="in"
-                    exit="out"
-                    variants={pageVariants}
-                    transition={pageTransition}
-                >
-                    <NotebooksPage />
-                </motion.div>
-            }
+          path="/notebooks"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <NotebooksPage />
+            </motion.div>
+          }
         />
         <Route
-            path="/notebooks/:notebookId"
-            element={
-                <motion.div
-                    initial="initial"
-                    animate="in"
-                    exit="out"
-                    variants={pageVariants}
-                    transition={pageTransition}
-                >
-                    <NotebookViewerPage />
-                </motion.div>
-            }
+          path="/notebooks/:notebookId"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <NotebookViewerPage />
+            </motion.div>
+          }
         />
         <Route
           path="*"
@@ -380,37 +380,130 @@ function AnimatedRoutes() {
         />
         {/* Hardcoded redirects for fc::apps:: paths */}
         <Route path="/apps::ip" element={<Navigate to="/apps/ip" replace />} />
-        <Route path="/apps::wc" element={<Navigate to="/apps/word-counter" replace />} />
-        <Route path="/apps::tb" element={<Navigate to="/apps/tournament-bracket" replace />} />
-        <Route path="/apps::cc" element={<Navigate to="/apps/case-converter" replace />} />
-        <Route path="/apps::b64" element={<Navigate to="/apps/base64-converter" replace />} />
-        <Route path="/apps::url" element={<Navigate to="/apps/url-converter" replace />} />
-        <Route path="/apps::ascii" element={<Navigate to="/apps/ascii-converter" replace />} />
-        <Route path="/apps::hash" element={<Navigate to="/apps/hash-generator" replace />} />
-        <Route path="/apps::uuid" element={<Navigate to="/apps/uuid-generator" replace />} />
-        <Route path="/apps::cpg" element={<Navigate to="/apps/color-palette-generator" replace />} />
-        <Route path="/apps::css" element={<Navigate to="/apps/css-unit-converter" replace />} />
-        <Route path="/apps::fng" element={<Navigate to="/apps/fantasy-name-generator" replace />} />
-        <Route path="/apps::dice" element={<Navigate to="/apps/dice-roller" replace />} />
-        <Route path="/apps::pw" element={<Navigate to="/apps/picker-wheel" replace />} />
-        <Route path="/apps::cg" element={<Navigate to="/apps/codename-generator" replace />} />
-        <Route path="/apps::itk" element={<Navigate to="/apps/image-toolkit" replace />} />
-        <Route path="/apps::pg" element={<Navigate to="/apps/password-generator" replace />} />
-        <Route path="/apps::jf" element={<Navigate to="/apps/json-formatter" replace />} />
-        <Route path="/apps::ccc" element={<Navigate to="/apps/color-contrast-checker" replace />} />
-        <Route path="/apps::qr" element={<Navigate to="/apps/qr-code-generator" replace />} />
-        <Route path="/apps::jpc" element={<Navigate to="/apps/json-piml-converter" replace />} />
-        <Route path="/apps::jg" element={<Navigate to="/apps/json-generator" replace />} />
-        <Route path="/apps::tdc" element={<Navigate to="/apps/text-diff-checker" replace />} />
-        <Route path="/apps::cron" element={<Navigate to="/apps/cron-job-generator" replace />} />
-        <Route path="/apps::excuse" element={<Navigate to="/apps/excuse-generator" replace />} />
-        <Route path="/apps::8ball" element={<Navigate to="/apps/magic-8-ball" replace />} />
-        <Route path="/apps::card" element={<Navigate to="/apps/card-game" replace />} />
-        <Route path="/apps::sp" element={<Navigate to="/apps/soccer-pong" replace />} />
-        <Route path="/apps::mg" element={<Navigate to="/apps/memory-game" replace />} />
-        <Route path="/apps::rps" element={<Navigate to="/apps/rock-paper-scissors" replace />} />
-        <Route path="/apps::ttt" element={<Navigate to="/apps/tic-tac-toe" replace />} />
-        <Route path="/apps::c4" element={<Navigate to="/apps/connect-four" replace />} />
+        <Route
+          path="/apps::wc"
+          element={<Navigate to="/apps/word-counter" replace />}
+        />
+        <Route
+          path="/apps::tb"
+          element={<Navigate to="/apps/tournament-bracket" replace />}
+        />
+        <Route
+          path="/apps::cc"
+          element={<Navigate to="/apps/case-converter" replace />}
+        />
+        <Route
+          path="/apps::b64"
+          element={<Navigate to="/apps/base64-converter" replace />}
+        />
+        <Route
+          path="/apps::url"
+          element={<Navigate to="/apps/url-converter" replace />}
+        />
+        <Route
+          path="/apps::ascii"
+          element={<Navigate to="/apps/ascii-converter" replace />}
+        />
+        <Route
+          path="/apps::hash"
+          element={<Navigate to="/apps/hash-generator" replace />}
+        />
+        <Route
+          path="/apps::uuid"
+          element={<Navigate to="/apps/uuid-generator" replace />}
+        />
+        <Route
+          path="/apps::cpg"
+          element={<Navigate to="/apps/color-palette-generator" replace />}
+        />
+        <Route
+          path="/apps::css"
+          element={<Navigate to="/apps/css-unit-converter" replace />}
+        />
+        <Route
+          path="/apps::fng"
+          element={<Navigate to="/apps/fantasy-name-generator" replace />}
+        />
+        <Route
+          path="/apps::dice"
+          element={<Navigate to="/apps/dice-roller" replace />}
+        />
+        <Route
+          path="/apps::pw"
+          element={<Navigate to="/apps/picker-wheel" replace />}
+        />
+        <Route
+          path="/apps::cg"
+          element={<Navigate to="/apps/codename-generator" replace />}
+        />
+        <Route
+          path="/apps::itk"
+          element={<Navigate to="/apps/image-toolkit" replace />}
+        />
+        <Route
+          path="/apps::pg"
+          element={<Navigate to="/apps/password-generator" replace />}
+        />
+        <Route
+          path="/apps::jf"
+          element={<Navigate to="/apps/json-formatter" replace />}
+        />
+        <Route
+          path="/apps::ccc"
+          element={<Navigate to="/apps/color-contrast-checker" replace />}
+        />
+        <Route
+          path="/apps::qr"
+          element={<Navigate to="/apps/qr-code-generator" replace />}
+        />
+        <Route
+          path="/apps::jpc"
+          element={<Navigate to="/apps/json-piml-converter" replace />}
+        />
+        <Route
+          path="/apps::jg"
+          element={<Navigate to="/apps/json-generator" replace />}
+        />
+        <Route
+          path="/apps::tdc"
+          element={<Navigate to="/apps/text-diff-checker" replace />}
+        />
+        <Route
+          path="/apps::cron"
+          element={<Navigate to="/apps/cron-job-generator" replace />}
+        />
+        <Route
+          path="/apps::excuse"
+          element={<Navigate to="/apps/excuse-generator" replace />}
+        />
+        <Route
+          path="/apps::8ball"
+          element={<Navigate to="/apps/magic-8-ball" replace />}
+        />
+        <Route
+          path="/apps::card"
+          element={<Navigate to="/apps/card-game" replace />}
+        />
+        <Route
+          path="/apps::sp"
+          element={<Navigate to="/apps/soccer-pong" replace />}
+        />
+        <Route
+          path="/apps::mg"
+          element={<Navigate to="/apps/memory-game" replace />}
+        />
+        <Route
+          path="/apps::rps"
+          element={<Navigate to="/apps/rock-paper-scissors" replace />}
+        />
+        <Route
+          path="/apps::ttt"
+          element={<Navigate to="/apps/tic-tac-toe" replace />}
+        />
+        <Route
+          path="/apps::c4"
+          element={<Navigate to="/apps/connect-four" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"

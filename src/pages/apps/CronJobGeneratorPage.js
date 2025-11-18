@@ -1,20 +1,26 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 const CronJobGeneratorPage = () => {
   useSeo({
     title: 'CRON Job Generator | Fezcodex',
     description: 'Generate CRON expressions visually.',
-    keywords: ['Fezcodex', 'cron job', 'cron generator', 'scheduler', 'automation'],
+    keywords: [
+      'Fezcodex',
+      'cron job',
+      'cron generator',
+      'scheduler',
+      'automation',
+    ],
     ogTitle: 'CRON Job Generator | Fezcodex',
     ogDescription: 'Generate CRON expressions visually.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'CRON Job Generator | Fezcodex',
     twitterDescription: 'Generate CRON expressions visually.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   // --- CRON Generator State ---
@@ -30,7 +36,9 @@ const CronJobGeneratorPage = () => {
   const generateCronExpression = useCallback(() => {
     const cronString = `${minute} ${hour} ${dayOfMonth} ${month} ${dayOfWeek}`;
     setGeneratedCron(cronString);
-    setGeneratedCronDescription(getHumanReadableDescription(minute, hour, dayOfMonth, month, dayOfWeek));
+    setGeneratedCronDescription(
+      getHumanReadableDescription(minute, hour, dayOfMonth, month, dayOfWeek),
+    );
   }, [minute, hour, dayOfMonth, month, dayOfWeek]);
 
   // Helper function to get human-readable description
@@ -64,7 +72,8 @@ const CronJobGeneratorPage = () => {
 
     // Month
     if (mon === '*') {
-      if (dom !== '*' || hr !== '*' || min !== '*') description += 'of every month ';
+      if (dom !== '*' || hr !== '*' || min !== '*')
+        description += 'of every month ';
     } else {
       const monthName = monthNames[parseInt(mon, 10)];
       description += `in ${monthName} `;
@@ -72,7 +81,8 @@ const CronJobGeneratorPage = () => {
 
     // Day of Week
     if (dow === '*') {
-      if (mon !== '*' || dom !== '*' || hr !== '*' || min !== '*') description += 'of every day of the week.';
+      if (mon !== '*' || dom !== '*' || hr !== '*' || min !== '*')
+        description += 'of every day of the week.';
     } else {
       const dayName = dayOfWeekNames[parseInt(dow, 10)];
       description += `on ${dayName}.`;
@@ -87,7 +97,8 @@ const CronJobGeneratorPage = () => {
 
   // --- Utility Functions ---
   const copyToClipboard = (text) => {
-    navigator.clipboard.writeText(text)
+    navigator.clipboard
+      .writeText(text)
       .then(() => {
         // addToast({ title: 'Success', message: 'Copied to clipboard!', duration: 2000 });
       })
@@ -101,10 +112,28 @@ const CronJobGeneratorPage = () => {
     for (let i = start; i <= end; i++) {
       options.push(i.toString());
     }
-    return options.map(opt => <option key={opt} value={opt}>{opt}</option>);
+    return options.map((opt) => (
+      <option key={opt} value={opt}>
+        {opt}
+      </option>
+    ));
   };
 
-  const monthNames = ['*', 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const monthNames = [
+    '*',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
   const dayOfWeekNames = ['*', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const inputStyle = `mt-1 block w-full p-2 border rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 border-gray-600`;
@@ -146,51 +175,101 @@ const CronJobGeneratorPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> CRON Job Generator </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                CRON Job Generator{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
 
               {/* CRON Generator Section */}
               <div className="mb-8">
-                <h2 className="text-2xl font-arvo font-normal mb-4 text-app">Generate CRON Expression</h2>
+                <h2 className="text-2xl font-arvo font-normal mb-4 text-app">
+                  Generate CRON Expression
+                </h2>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">Minute</label>
-                    <select value={minute} onChange={(e) => setMinute(e.target.value)} className={selectStyle}>
+                    <label className="block text-sm font-medium text-gray-300">
+                      Minute
+                    </label>
+                    <select
+                      value={minute}
+                      onChange={(e) => setMinute(e.target.value)}
+                      className={selectStyle}
+                    >
                       {renderOptions(0, 59)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">Hour</label>
-                    <select value={hour} onChange={(e) => setHour(e.target.value)} className={selectStyle}>
+                    <label className="block text-sm font-medium text-gray-300">
+                      Hour
+                    </label>
+                    <select
+                      value={hour}
+                      onChange={(e) => setHour(e.target.value)}
+                      className={selectStyle}
+                    >
                       {renderOptions(0, 23)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">Day of Month</label>
-                    <select value={dayOfMonth} onChange={(e) => setDayOfMonth(e.target.value)} className={selectStyle}>
+                    <label className="block text-sm font-medium text-gray-300">
+                      Day of Month
+                    </label>
+                    <select
+                      value={dayOfMonth}
+                      onChange={(e) => setDayOfMonth(e.target.value)}
+                      className={selectStyle}
+                    >
                       {renderOptions(1, 31)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">Month</label>
-                    <select value={month} onChange={(e) => setMonth(e.target.value)} className={selectStyle}>
-                      {monthNames.map((name, index) => <option key={name} value={index === 0 ? '*' : index}>{name}</option>)}
+                    <label className="block text-sm font-medium text-gray-300">
+                      Month
+                    </label>
+                    <select
+                      value={month}
+                      onChange={(e) => setMonth(e.target.value)}
+                      className={selectStyle}
+                    >
+                      {monthNames.map((name, index) => (
+                        <option key={name} value={index === 0 ? '*' : index}>
+                          {name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">Day of Week</label>
-                    <select value={dayOfWeek} onChange={(e) => setDayOfWeek(e.target.value)} className={selectStyle}>
-                      {dayOfWeekNames.map((name, index) => <option key={name} value={index === 0 ? '*' : index}>{name}</option>)}
+                    <label className="block text-sm font-medium text-gray-300">
+                      Day of Week
+                    </label>
+                    <select
+                      value={dayOfWeek}
+                      onChange={(e) => setDayOfWeek(e.target.value)}
+                      className={selectStyle}
+                    >
+                      {dayOfWeekNames.map((name, index) => (
+                        <option key={name} value={index === 0 ? '*' : index}>
+                          {name}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </div>
                 <div className="flex items-center justify-between bg-gray-800 p-3 rounded-md">
-                  <span className="font-mono text-lg text-green-400">{generatedCron}</span>
-                  <button onClick={() => copyToClipboard(generatedCron)} className="p-2 rounded-full hover:bg-gray-700">
+                  <span className="font-mono text-lg text-green-400">
+                    {generatedCron}
+                  </span>
+                  <button
+                    onClick={() => copyToClipboard(generatedCron)}
+                    className="p-2 rounded-full hover:bg-gray-700"
+                  >
                     <CopySimple size={20} className="text-gray-400" />
                   </button>
                 </div>
-                <p className="text-sm text-gray-400 mt-2">{generatedCronDescription}</p>
+                <p className="text-sm text-gray-400 mt-2">
+                  {generatedCronDescription}
+                </p>
               </div>
             </div>
           </div>

@@ -5,20 +5,35 @@ import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import Dice from '../../components/Dice';
 import '../../styles/DiceRollerPage.css'; // Import the CSS for animations
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 
 const DiceRollerPage = () => {
   useSeo({
     title: 'Dice Roller | Fezcodex',
-    description: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
-    keywords: ['Fezcodex', 'dice roller', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100', 'games', 'rpg'],
+    description:
+      'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
+    keywords: [
+      'Fezcodex',
+      'dice roller',
+      'd4',
+      'd6',
+      'd8',
+      'd10',
+      'd12',
+      'd20',
+      'd100',
+      'games',
+      'rpg',
+    ],
     ogTitle: 'Dice Roller | Fezcodex',
-    ogDescription: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
+    ogDescription:
+      'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Dice Roller | Fezcodex',
-    twitterDescription: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterDescription:
+      'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const { addToast } = useToast();
@@ -30,7 +45,12 @@ const DiceRollerPage = () => {
 
   const rollDice = () => {
     if (numDiceError) {
-      addToast({ title: 'Invalid Input', message: 'Please enter a number of dice between 1 and 1000.', duration: 3000, type: 'error' });
+      addToast({
+        title: 'Invalid Input',
+        message: 'Please enter a number of dice between 1 and 1000.',
+        duration: 3000,
+        type: 'error',
+      });
       return;
     }
 
@@ -45,7 +65,11 @@ const DiceRollerPage = () => {
     setTimeout(() => {
       setResults(newResults);
       setRolling(false);
-      addToast({ title: 'Roll Complete', message: `Rolled: ${newResults.join(', ')}`, duration: 3000 });
+      addToast({
+        title: 'Roll Complete',
+        message: `Rolled: ${newResults.join(', ')}`,
+        duration: 3000,
+      });
     }, 1000); // Simulate rolling animation duration
   };
 
@@ -86,11 +110,17 @@ const DiceRollerPage = () => {
               }}
             ></div>
             <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Dice Roller </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                {' '}
+                Dice Roller{' '}
+              </h1>
               <hr className="border-gray-700 mb-4" />
               <div className="mb-6 flex flex-col sm:flex-row gap-4">
                 <div className="flex-1">
-                  <label htmlFor="diceType" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="diceType"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Dice Type (dX)
                   </label>
                   <select
@@ -109,7 +139,10 @@ const DiceRollerPage = () => {
                   </select>
                 </div>
                 <div className="flex-1">
-                  <label htmlFor="numDice" className="block text-sm font-medium text-gray-300 mb-2">
+                  <label
+                    htmlFor="numDice"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
                     Number of Dice
                   </label>
                   <input
@@ -154,12 +187,18 @@ const DiceRollerPage = () => {
                 <div className="mt-6 p-4 bg-gray-700 rounded-md text-center">
                   <div className="dice-animation-container">
                     {results.map((result, index) => (
-                      <Dice key={index} value={result} type={diceType} isRolling={false} />
+                      <Dice
+                        key={index}
+                        value={result}
+                        type={diceType}
+                        isRolling={false}
+                      />
                     ))}
                   </div>
                   <p className="text-sm text-gray-400 mt-2">
                     Total: {results.reduce((sum, current) => sum + current, 0)}
-                    {results.length > 0 && ` | Average: ${(results.reduce((sum, current) => sum + current, 0) / results.length).toFixed(2)}`}
+                    {results.length > 0 &&
+                      ` | Average: ${(results.reduce((sum, current) => sum + current, 0) / results.length).toFixed(2)}`}
                   </p>
                 </div>
               )}

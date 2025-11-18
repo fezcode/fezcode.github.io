@@ -6,7 +6,13 @@ const Search = ({ isVisible }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [data, setData] = useState({ posts: [], projects: [], logs: [], routes: [], apps: [] });
+  const [data, setData] = useState({
+    posts: [],
+    projects: [],
+    logs: [],
+    routes: [],
+    apps: [],
+  });
   const searchRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -30,10 +36,14 @@ const Search = ({ isVisible }) => {
         const projects = await projectsRes.json();
         const logs = await logsRes.json();
         const appsData = await appsRes.json();
-        const allApps = Object.values(appsData).flatMap(category => category.apps);
+        const allApps = Object.values(appsData).flatMap(
+          (category) => category.apps,
+        );
 
-        const allPosts = posts.flatMap(item =>
-          item.series ? item.series.posts.map(p => ({ ...p, series: item.title })) : item
+        const allPosts = posts.flatMap((item) =>
+          item.series
+            ? item.series.posts.map((p) => ({ ...p, series: item.title }))
+            : item,
         );
 
         // Manually define common routes
@@ -51,7 +61,13 @@ const Search = ({ isVisible }) => {
           { title: 'Random', slug: '/random', type: 'route' },
         ];
 
-        setData({ posts: allPosts, projects: projects, logs: logs, routes: routes, apps: allApps }); // Include routes in data
+        setData({
+          posts: allPosts,
+          projects: projects,
+          logs: logs,
+          routes: routes,
+          apps: allApps,
+        }); // Include routes in data
       } catch (error) {
         console.error('Failed to fetch search data:', error);
       }
@@ -67,7 +83,9 @@ const Search = ({ isVisible }) => {
         .filter(
           (post) =>
             post.title.toLowerCase().includes(lowerCaseSearchTerm) ||
-            post.tags?.some((tag) => tag.toLowerCase().includes(lowerCaseSearchTerm))
+            post.tags?.some((tag) =>
+              tag.toLowerCase().includes(lowerCaseSearchTerm),
+            ),
         )
         .map((post) => ({ ...post, type: 'post' }));
 
@@ -75,7 +93,9 @@ const Search = ({ isVisible }) => {
         .filter(
           (project) =>
             project.title.toLowerCase().includes(lowerCaseSearchTerm) ||
-            project.technologies?.some((tech) => tech.toLowerCase().includes(lowerCaseSearchTerm))
+            project.technologies?.some((tech) =>
+              tech.toLowerCase().includes(lowerCaseSearchTerm),
+            ),
         )
         .map((project) => ({ ...project, type: 'project' }));
 
@@ -84,7 +104,9 @@ const Search = ({ isVisible }) => {
           (log) =>
             log.title.toLowerCase().includes(lowerCaseSearchTerm) ||
             log.category?.toLowerCase().includes(lowerCaseSearchTerm) ||
-            log.tags?.some((tag) => tag.toLowerCase().includes(lowerCaseSearchTerm))
+            log.tags?.some((tag) =>
+              tag.toLowerCase().includes(lowerCaseSearchTerm),
+            ),
         )
         .map((log) => ({ ...log, type: 'log' }));
 
@@ -93,7 +115,7 @@ const Search = ({ isVisible }) => {
         .filter(
           (route) =>
             route.title.toLowerCase().includes(lowerCaseSearchTerm) ||
-            route.slug.toLowerCase().includes(lowerCaseSearchTerm)
+            route.slug.toLowerCase().includes(lowerCaseSearchTerm),
         )
         .map((route) => ({ ...route, type: 'route' }));
 
@@ -102,7 +124,7 @@ const Search = ({ isVisible }) => {
         .filter(
           (app) =>
             app.title.toLowerCase().includes(lowerCaseSearchTerm) ||
-            app.slug.toLowerCase().includes(lowerCaseSearchTerm)
+            app.slug.toLowerCase().includes(lowerCaseSearchTerm),
         )
         .map((app) => ({ ...app, type: 'app' }));
 
@@ -149,8 +171,14 @@ const Search = ({ isVisible }) => {
   }
 
   return (
-    <div ref={searchRef} className="w-full bg-gray-900 py-3 px-4 border-b border-gray-700">
-      <form onSubmit={(e) => e.preventDefault()} className="relative w-full max-w-md mx-auto">
+    <div
+      ref={searchRef}
+      className="w-full bg-gray-900 py-3 px-4 border-b border-gray-700"
+    >
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="relative w-full max-w-md mx-auto"
+      >
         <input
           ref={inputRef}
           type="text"
@@ -160,9 +188,7 @@ const Search = ({ isVisible }) => {
           onFocus={() => setIsDropdownOpen(true)}
           className="bg-gray-800 text-white w-full py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-primary-400 rounded-md"
         />
-        <MagnifyingGlassIcon
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-        />
+        <MagnifyingGlassIcon className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
         {isDropdownOpen && searchResults.length > 0 && (
           <div className="absolute mt-2 w-full max-w-md max-h-96 overflow-y-auto bg-gray-800 border border-gray-700 rounded-md shadow-lg z-50 left-1/2 -translate-x-1/2">
             <ul>
@@ -177,7 +203,9 @@ const Search = ({ isVisible }) => {
                     className="block px-4 py-2 text-white hover:bg-gray-700"
                   >
                     <span className="font-bold">{result.title}</span>
-                    <span className="text-sm text-gray-400 ml-2">({result.type})</span>
+                    <span className="text-sm text-gray-400 ml-2">
+                      ({result.type})
+                    </span>
                   </Link>
                 </li>
               ))}

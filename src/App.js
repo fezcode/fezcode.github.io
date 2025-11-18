@@ -21,11 +21,17 @@ function App() {
   };
 
   return (
-    <AnimationProvider> {/* Wrap the entire app with AnimationProvider */}
+    <AnimationProvider>
+      {' '}
+      {/* Wrap the entire app with AnimationProvider */}
       <Router>
         <ScrollToTop />
         <ToastProvider>
-          <Layout toggleModal={toggleModal} isSearchVisible={isSearchVisible} toggleSearch={toggleSearch}>
+          <Layout
+            toggleModal={toggleModal}
+            isSearchVisible={isSearchVisible}
+            toggleSearch={toggleSearch}
+          >
             <AnimatedRoutes />
           </Layout>
           <ContactModal isOpen={isModalOpen} onClose={toggleModal} />

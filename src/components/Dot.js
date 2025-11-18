@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
-const Dot = ({ id, size, color, initialX, initialY, animationDuration, onAnimationEnd }) => {
+const Dot = ({
+  id,
+  size,
+  color,
+  initialX,
+  initialY,
+  animationDuration,
+  onAnimationEnd,
+}) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -31,9 +39,7 @@ const Dot = ({ id, size, color, initialX, initialY, animationDuration, onAnimati
   // Define keyframes dynamically or ensure they are globally available
   // For now, we'll assume keyframes are defined in index.css or similar
   // This is a placeholder for the actual CSS animation
-  return (
-    <div style={dotStyle} />
-  );
+  return <div style={dotStyle} />;
 };
 
 export default Dot;

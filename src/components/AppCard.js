@@ -18,9 +18,7 @@ const AppCard = ({ app }) => {
 
   return (
     <Link to={to} className="block h-full">
-      <div
-        className="group border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden h-full bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-rose-900/30"
-      >
+      <div className="group border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden h-full bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-rose-900/30">
         <div
           className="absolute top-0 left-0 w-full h-full opacity-10 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"
           style={{
@@ -38,14 +36,23 @@ const AppCard = ({ app }) => {
           }}
         ></div>
         <div>
-          <h2 className="text-xl font-normal transition-colors flex items-center gap-2" style={{ color: cardStyle.color }}>
+          <h2
+            className="text-xl font-normal transition-colors flex items-center gap-2"
+            style={{ color: cardStyle.color }}
+          >
             {Icon && <Icon size={24} />}
             {title}
           </h2>
-          <p className="mt-2" style={{ color: detailTextColor }}>{description}</p>
+          <p className="mt-2" style={{ color: detailTextColor }}>
+            {description}
+          </p>
         </div>
         <div className="flex justify-end items-center mt-4">
-          <ArrowRight size={24} className="transition-colors" style={{ color: detailTextColor }} />
+          <ArrowRight
+            size={24}
+            className="transition-colors"
+            style={{ color: detailTextColor }}
+          />
         </div>
       </div>
     </Link>

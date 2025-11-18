@@ -30,7 +30,8 @@ const LogMetadata = ({ metadata }) => {
       <div
         className="p-6 rounded-lg border"
         style={{
-          backgroundColor: colors[`${metadata.category.toLowerCase()}-alpha-10`],
+          backgroundColor:
+            colors[`${metadata.category.toLowerCase()}-alpha-10`],
           borderColor: colors[`${metadata.category.toLowerCase()}-alpha-50`],
         }}
       >

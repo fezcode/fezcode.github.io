@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import {Link, useParams} from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import '../../styles/dnd.css';
 import { DndContext } from '../../context/DndContext'; // Import DndContext
 import { parseWallpaperName } from '../../utils/dndUtils'; // Import parseWallpaperName
 import dndWallpapers from '../../utils/dndWallpapers';
-import useSeo from "../../hooks/useSeo";
+import useSeo from '../../hooks/useSeo';
 import piml from 'piml';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
@@ -40,14 +40,21 @@ function DndEpisodePage() {
   useSeo({
     title: `${episodeTitle} | From Serfs and Frauds`,
     description: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'episode', episodeTitle],
+    keywords: [
+      'Fezcodex',
+      'd&d',
+      'dnd',
+      'from serfs and frauds',
+      'episode',
+      episodeTitle,
+    ],
     ogTitle: `${episodeTitle} | From Serfs and Frauds`,
     ogDescription: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${episodeTitle} | From Serfs and Frauds`,
     twitterDescription: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
-    twitterImage: 'https://fezcode.github.io/logo512.png'
+    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   useEffect(() => {
@@ -60,9 +67,12 @@ function DndEpisodePage() {
   const [allBooks, setAllBooks] = useState([]); // Renamed from allEpisodes to allBooks
 
   useEffect(() => {
-    const fetchAllBooks = async () => { // Renamed function
+    const fetchAllBooks = async () => {
+      // Renamed function
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/stories/books.piml`,
+        );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -70,19 +80,22 @@ function DndEpisodePage() {
         const data = piml.parse(pimlText);
         setAllBooks(data.books);
       } catch (error) {
-        console.error("Failed to fetch all books:", error);
+        console.error('Failed to fetch all books:', error);
       }
     };
 
     fetchAllBooks();
   }, []);
 
-  useEffect(() => { // New useEffect to find the current book and episode
+  useEffect(() => {
+    // New useEffect to find the current book and episode
     if (allBooks.length > 0 && bookId && episodeId) {
-      const foundBook = allBooks.find(b => b.bookId === parseInt(bookId));
+      const foundBook = allBooks.find((b) => b.bookId === parseInt(bookId));
       if (foundBook) {
         setBook(foundBook);
-        const currentEpisodeIndex = foundBook.episodes.findIndex(ep => ep.id === parseInt(episodeId));
+        const currentEpisodeIndex = foundBook.episodes.findIndex(
+          (ep) => ep.id === parseInt(episodeId),
+        );
         if (currentEpisodeIndex !== -1) {
           const currentEpisode = foundBook.episodes[currentEpisodeIndex];
           setCurrentEpisode(currentEpisode); // Set the current episode
@@ -90,27 +103,34 @@ function DndEpisodePage() {
           setBreadcrumbs([
             { label: 'S&F', path: '/stories' },
             { label: 'The Lore', path: '/stories/lore' },
-            { label: foundBook.bookTitle, path: `/stories/books/${foundBook.bookId}` },
+            {
+              label: foundBook.bookTitle,
+              path: `/stories/books/${foundBook.bookId}`,
+            },
             { label: currentEpisode.title },
           ]);
           // Fetch episode content
           const fetchEpisodeContent = async () => {
             try {
-              const response = await fetch(`${process.env.PUBLIC_URL}/stories/${currentEpisode.filename}`);
+              const response = await fetch(
+                `${process.env.PUBLIC_URL}/stories/${currentEpisode.filename}`,
+              );
               if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
               }
               const text = await response.text();
               setEpisodeContent(text);
             } catch (error) {
-              console.error("Failed to fetch episode content:", error);
-              setEpisodeContent("Failed to load episode content. Please check the URL.");
+              console.error('Failed to fetch episode content:', error);
+              setEpisodeContent(
+                'Failed to load episode content. Please check the URL.',
+              );
             }
           };
           fetchEpisodeContent();
         } else {
-          setEpisodeTitle("Episode Not Found");
-          setEpisodeContent("Episode not found in this book.");
+          setEpisodeTitle('Episode Not Found');
+          setEpisodeContent('Episode not found in this book.');
           setBreadcrumbs([
             { label: 'S&F', path: '/stories' },
             { label: 'The Lore', path: '/stories/lore' },
@@ -118,19 +138,28 @@ function DndEpisodePage() {
           ]);
         }
       } else {
-        setEpisodeTitle("Book Not Found");
-        setEpisodeContent("Book not found.");
+        setEpisodeTitle('Book Not Found');
+        setEpisodeContent('Book not found.');
         setBreadcrumbs([
-                      { label: 'S&F', path: '/stories' },
-                      { label: 'The Lore', path: '/stories/lore' },
-                      { label: 'Book Not Found' },        ]);
+          { label: 'S&F', path: '/stories' },
+          { label: 'The Lore', path: '/stories/lore' },
+          { label: 'Book Not Found' },
+        ]);
       }
     }
   }, [allBooks, bookId, episodeId, setBreadcrumbs]); // Dependencies for this useEffect
 
-  const currentEpisodeIndex = book ? book.episodes.findIndex(ep => ep.id === parseInt(episodeId)) : -1;
-  const prevEpisode = (book && currentEpisodeIndex > 0) ? book.episodes[currentEpisodeIndex - 1] : null;
-  const nextEpisode = (book && currentEpisodeIndex < book.episodes.length - 1) ? book.episodes[currentEpisodeIndex + 1] : null;
+  const currentEpisodeIndex = book
+    ? book.episodes.findIndex((ep) => ep.id === parseInt(episodeId))
+    : -1;
+  const prevEpisode =
+    book && currentEpisodeIndex > 0
+      ? book.episodes[currentEpisodeIndex - 1]
+      : null;
+  const nextEpisode =
+    book && currentEpisodeIndex < book.episodes.length - 1
+      ? book.episodes[currentEpisodeIndex + 1]
+      : null;
 
   return (
     <motion.div
@@ -141,7 +170,14 @@ function DndEpisodePage() {
       transition={pageTransition}
       className="dnd-page-container"
     >
-      <div className="dnd-hero" style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`, position: 'relative', minHeight: '100vh' }}>
+      <div
+        className="dnd-hero"
+        style={{
+          backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})`,
+          position: 'relative',
+          minHeight: '100vh',
+        }}
+      >
         <h1 className="dnd-title-box">
           <span className="dnd-hero-title-white">{episodeTitle}</span>
         </h1>
@@ -149,9 +185,20 @@ function DndEpisodePage() {
         {book && currentEpisode && (
           <div className="dnd-about-card">
             <h3>About this Episode</h3>
-            <p><span className="dnd-author-label">Author:</span> {currentEpisode.author}</p>
-            <p><span className="dnd-author-label">Date:</span> {currentEpisode.date}</p>
-            {currentEpisode.updated && <p><span className="dnd-author-label">Updated:</span> {currentEpisode.updated}</p>}
+            <p>
+              <span className="dnd-author-label">Author:</span>{' '}
+              {currentEpisode.author}
+            </p>
+            <p>
+              <span className="dnd-author-label">Date:</span>{' '}
+              {currentEpisode.date}
+            </p>
+            {currentEpisode.updated && (
+              <p>
+                <span className="dnd-author-label">Updated:</span>{' '}
+                {currentEpisode.updated}
+              </p>
+            )}
           </div>
         )}
 
@@ -164,9 +211,13 @@ function DndEpisodePage() {
         <div className="flex flex-wrap justify-between w-[90%] max-w-[800px] mx-auto my-8 z-10 gap-4">
           <div className="flex-1 text-left min-w-[200px]">
             {prevEpisode && (
-              <Link to={`/stories/books/${bookId}/pages/${prevEpisode.id}`} className="dnd-episode-nav-button">
+              <Link
+                to={`/stories/books/${bookId}/pages/${prevEpisode.id}`}
+                className="dnd-episode-nav-button"
+              >
                 &larr; Previous Episode
-              </Link>)}
+              </Link>
+            )}
           </div>
           <div className="flex-1 text-center min-w-[200px]">
             <Link to="/stories/lore" className="dnd-episode-nav-button">
@@ -175,9 +226,13 @@ function DndEpisodePage() {
           </div>
           <div className="flex-1 text-right min-w-[200px]">
             {nextEpisode && (
-              <Link to={`/stories/books/${bookId}/pages/${nextEpisode.id}`} className="dnd-episode-nav-button">
+              <Link
+                to={`/stories/books/${bookId}/pages/${nextEpisode.id}`}
+                className="dnd-episode-nav-button"
+              >
                 Next Episode &rarr;
-              </Link>)}
+              </Link>
+            )}
           </div>
         </div>
       </div>
