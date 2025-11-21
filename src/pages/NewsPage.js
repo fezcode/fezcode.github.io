@@ -175,10 +175,10 @@ function NewsPage() {
               Latest
             </h2>
             <article className={`${getItemClasses(newsItems[0].type, true)} flex flex-col h-full`}>
-              <div className="relative h-72 sm:h-96 w-full overflow-hidden">
+              <Link to={newsItems[0].link} className="relative h-72 sm:h-96 w-full overflow-hidden block">
                 <img src={newsItems[0].image} alt={newsItems[0].title} className="absolute inset-0 w-full h-full object-cover"/>
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-              </div>
+              </Link>
               <div className="p-8 flex-grow flex flex-col">
                 <span className="block text-sm font-arvo text-primary-400 uppercase mb-3 tracking-wider">
                   {newsItems[0].type} &mdash; {new Date(newsItems[0].date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -206,14 +206,14 @@ function NewsPage() {
         {newsItems.length > 1 && (
           <section className="lg:col-span-1 flex flex-col space-y-8">
             <h2 className="text-4xl font-playfairDisplay font-bold text-gray-100 mb-6 border-b-2 border-gray-700 pb-3">
-              Top Stories
+              and More...
             </h2>
             {newsItems.slice(1, 3).map((item, index) => (
               <article key={`secondary-${index}`} className={`${getItemClasses(item.type)} flex flex-col`}>
-                <div className="relative h-48 w-full overflow-hidden">
+              <Link to={item.link} className="relative h-48 w-full overflow-hidden block">
                   <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover"/>
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-                </div>
+                </Link>
                 <div className="p-6 flex-grow flex flex-col">
                   <span className="block text-xs font-arvo text-primary-400 uppercase mb-2">
                     {item.type} &mdash; {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
@@ -252,10 +252,10 @@ function NewsPage() {
                     index % 5 === 0 ? 'md:col-span-2' : '' // A bit more varied
                   }`}
                 >
-                  <div className="relative h-48 w-full overflow-hidden">
+                  <Link to={item.link} className="relative h-48 w-full overflow-hidden block">
                     <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover"/>
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-                  </div>
+                  </Link>
                   <div className="p-6 flex-grow flex flex-col">
                     <span className="block text-xs font-arvo text-primary-400 uppercase mb-2">
                       {item.type} &mdash; {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
