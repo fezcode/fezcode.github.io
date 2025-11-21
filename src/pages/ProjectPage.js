@@ -103,13 +103,13 @@ const ProjectPage = () => {
             <h1 className="text-4xl font-bold tracking-tight text-markdown-hx-color sm:text-6xl">
               {fullProject.title}
             </h1>
-            {fullProject.image && (
-              <img
-                src={fullProject.image}
-                alt={fullProject.title}
-                className="mt-8 w-full rounded-lg text-gray-200"
-              />
-            )}
+            {/*{fullProject.image && (*/}
+            {/*  <img*/}
+            {/*    src={fullProject.image}*/}
+            {/*    alt={fullProject.title}*/}
+            {/*    className="mt-8 w-full rounded-lg text-gray-200"*/}
+            {/*  />*/}
+            {/*)}*/}
             <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-dark">
               <ReactMarkdown>{fullProject.fullContent}</ReactMarkdown>
             </div>
