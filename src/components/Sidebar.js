@@ -274,7 +274,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <NavLink to="/stories" className={getLinkClass}>
                   <SwordIcon className="text-yellow-500" size={24} />
                   <span>
-                    S<span className="text-yellow-500"> &amp; </span>F
+                    S<span className="text-yellow-500"> &amp; </span>F&nbsp;<sup className="text-blue-500"> (alpha) </sup>
                   </span>
                 </NavLink>
                 <a

@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 18 Nov 2025 00:23:58 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 21 Nov 2025 11:24:30 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 18 Nov 2025 00:23:58 GMT</pubDate>
+        <pubDate>Fri, 21 Nov 2025 11:24:29 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Kaprekar's Routine: A Curious Number Game]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/kaprekars-routine</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/kaprekars-routine</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Have you ever played with numbers and found a surprising pattern? One such fascinating pattern is hidden within <strong>Kaprekar&#39;s Routine</strong>, named after the Indian mathematician D.R. Kaprekar. It&#39;s a simple game that, for most four-digit numbers, always leads to the same result: <strong>6174</strong>.</p>
+<p><a href="https://fezcode.com/#/blog/kaprekars-routine">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Inevitable Dance of Entropy: A Rant on Chaos]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/chaos-theory-philosophical-rant</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/chaos-theory-philosophical-rant</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Oh, to be human! To crave <strong>order</strong>, to meticulously <strong>plan</strong>, to believe that if we just gather enough data, analyze enough variables, we can <strong>predict the future</strong>. What a <em>glorious, self-deceiving delusion</em>. Because lurking beneath our carefully constructed narratives of cause and effect, there&#39;s a mischievous, undeniable truth: <strong>Chaos Theory</strong>.</p>
+<p><a href="https://fezcode.com/#/blog/chaos-theory-philosophical-rant">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Minimum Number of Steps to Make Two Strings Anagram]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -94,7 +114,7 @@
             <guid isPermaLink="false">https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 08 Nov 2025 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h1>Find Minimum in Rotated Sorted Array</h1>
+            <content:encoded><![CDATA[<h2>Problem Description</h2>
 <p><a href="https://fezcode.com/#/blog/find-minimum-in-rotated-sorted-array">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
