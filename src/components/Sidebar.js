@@ -194,6 +194,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
 
             {isContentOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+
                 <NavLink to="/blog" className={getLinkClass}>
                   <BookOpenIcon size={24} />
                   <span>Blog</span>
@@ -207,6 +208,11 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <NavLink to="/logs" className={getLinkClass}>
                   <ArticleIcon size={24} />
                   <span>Logs</span>
+                </NavLink>
+
+                <NavLink to="/news" className={getLinkClass}>
+                  <GlobeSimpleIcon size={24} /> {/* Changed icon to GlobeSimpleIcon */}
+                  <span>News</span>
                 </NavLink>
 
                 {/* <NavLink to="/notebooks" className={getLinkClass}>

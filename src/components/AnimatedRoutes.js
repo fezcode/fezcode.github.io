@@ -55,6 +55,7 @@ import SettingsPage from '../pages/SettingsPage';
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 import NotebooksPage from '../pages/notebooks/NotebooksPage';
 import NotebookViewerPage from '../pages/notebooks/NotebookViewerPage';
+import NewsPage from '../pages/NewsPage'; // Import NewsPage
 
 const pageVariants = {
   initial: {
@@ -361,6 +362,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <UsefulLinksPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/news" // New route for NewsPage
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <NewsPage />
             </motion.div>
           }
         />

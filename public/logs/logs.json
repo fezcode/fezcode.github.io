@@ -7,7 +7,8 @@
     "rating": 5,
     "slug": "maxs-choice-duty-vs-passion",
     "title": "Max's Choice: Duty vs. Passion",
-    "album": "Max Payne 2: The Fall of Max Payne (Soundtrack)"
+    "album": "Max Payne 2: The Fall of Max Payne (Soundtrack)",
+    "image": "/images/defaults/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg"
   },
   {
     "artist": "Dhanush",
@@ -18,7 +19,8 @@
     "slug": "dhanush-why-this-kolaveri-di",
     "title": "Why This Kolaveri Di",
     "album": "3 (Soundtrack)",
-    "releaseDate": "2011-11-16"
+    "releaseDate": "2011-11-16",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "artist": "Yoo Se Yoon",
@@ -29,7 +31,8 @@
     "slug": "yoo-se-yoon-dont-skip-the-interlude",
     "title": "Don't Skip the Interlude",
     "album": "Don't Skip the Interlude",
-    "releaseDate": "2025-08-29"
+    "releaseDate": "2025-08-29",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "author": "needleful",
@@ -38,7 +41,8 @@
     "link": "https://needleful.net/blog/2024/01/arthur_whitney.html",
     "rating": 5,
     "slug": "needleful-arthur-whitney-c-smart",
-    "title": "Learning to read Arthur Whitney's C to become Smart"
+    "title": "Learning to read Arthur Whitney's C to become Smart",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "artist": "frederic",
@@ -49,7 +53,8 @@
     "slug": "frederic-oddloop",
     "title": "oddloop",
     "album": "Oddloop",
-    "releaseDate": "2014-09-23"
+    "releaseDate": "2014-09-23",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "artist": "Morcheeba",
@@ -58,7 +63,8 @@
     "link": "https://www.youtube.com/watch?v=27lPAUdE1ys",
     "rating": 5,
     "slug": "morcheeba-easier-said-than-done",
-    "title": "Easier Said Than Done"
+    "title": "Easier Said Than Done",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Tools",
@@ -66,7 +72,8 @@
     "link": "https://mastra.ai/",
     "rating": 5,
     "slug": "tool-mastra-ai",
-    "title": "Mastra AI"
+    "title": "Mastra AI",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Article",
@@ -75,7 +82,8 @@
     "rating": 3,
     "slug": "openfreemap-survived-100000-requests",
     "author": "Zsolt Ero",
-    "title": "OpenFreeMap survived 100,000 requests per second"
+    "title": "OpenFreeMap survived 100,000 requests per second",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Websites",
@@ -83,7 +91,8 @@
     "link": "https://wplace.live/",
     "rating": 5,
     "slug": "website-wplace-live",
-    "title": "wplace.live"
+    "title": "wplace.live",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Article",
@@ -92,7 +101,8 @@
     "rating": 4,
     "slug": "why-your-website-should-be-under-14kb-in-size",
     "author": "Nathaniel",
-    "title": "Why your website should be under 14kB in size"
+    "title": "Why your website should be under 14kB in size",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "author": "Albert Camus",
@@ -102,7 +112,8 @@
     "rating": 4,
     "slug": "albert-camus-the-stranger",
     "title": "The Stranger",
-    "updated": "2025-10-30"
+    "updated": "2025-10-30",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Game",
@@ -116,7 +127,8 @@
       "single-player",
       "fps"
     ],
-    "title": "Vampire: The Masquerade - Bloodlines 2"
+    "title": "Vampire: The Masquerade - Bloodlines 2",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Article",
@@ -125,7 +137,8 @@
     "rating": 4,
     "slug": "the-peach-meme-on-crts-pixels-and-signal-quality-again",
     "source": "datagubbe",
-    "title": "The Peach meme: On CRTs, pixels and signal quality (again)"
+    "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Game",
@@ -138,7 +151,8 @@
       "rts",
       "multiplayer"
     ],
-    "title": "OpenFront.io"
+    "title": "OpenFront.io",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "author": "Osamu Dazai",
@@ -148,7 +162,8 @@
     "rating": 4,
     "slug": "the-flowers-of-buffoonery",
     "title": "The Flowers of Buffoonery",
-    "updated": "2025-10-30"
+    "updated": "2025-10-30",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Series",
@@ -158,7 +173,8 @@
     "rating": 5,
     "slug": "the-bear",
     "title": "The Bear",
-    "updated": "2025-10-25"
+    "updated": "2025-10-25",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Movie",
@@ -167,7 +183,8 @@
     "link": "https://www.imdb.com/title/tt11539996/",
     "rating": 4,
     "slug": "relay-2024",
-    "title": "Relay"
+    "title": "Relay",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Game",
@@ -176,7 +193,8 @@
     "platform": "Nintendo Switch",
     "rating": 5,
     "slug": "the-legend-of-zelda-breath-of-the-wild",
-    "title": "The Legend of Zelda: Breath of the Wild"
+    "title": "The Legend of Zelda: Breath of the Wild",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "artist": "Neutral Milk Hotel",
@@ -185,14 +203,16 @@
     "link": "https://www.youtube.com/watch?v=0_5qaeIAl5E",
     "rating": 5,
     "slug": "in-the-aeroplane-over-the-sea",
-    "title": "In the Aeroplane Over the Sea"
+    "title": "In the Aeroplane Over the Sea",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Food",
     "date": "2025-11-03",
     "rating": 5,
     "slug": "food-omelette",
-    "title": "Omelette"
+    "title": "Omelette",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
     "category": "Websites",
@@ -200,6 +220,7 @@
     "link": "https://missingdice.com/dice-roller/",
     "rating": 5,
     "slug": "website-missing-dice-dice-roller",
-    "title": "Missing Dice - Dice Roller"
+    "title": "Missing Dice - Dice Roller",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   }
 ]

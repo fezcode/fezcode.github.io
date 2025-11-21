@@ -8,7 +8,8 @@
     "tags": ["mathematics", "number-theory", "kaprekar", "fun"],
     "category": "rant",
     "filename": "kaprekars-routine.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/elimende-inagella-4ApmfdVo32Q-unsplash.jpg"
   },
   {
     "slug": "chaos-theory-philosophical-rant",
@@ -19,7 +20,20 @@
     "tags": ["philosophy", "chaos-theory", "rant", "unpredictability"],
     "category": "rant",
     "filename": "chaos-theory-philosophical-rant.txt",
-    "authors": ["fezcode", "g2.5f"]
+    "authors": ["fezcode", "g2.5f"],
+    "image": "/images/defaults/pascal-meier-1uVCTVSn-2o-unsplash.jpg"
+  },
+  {
+    "slug": "decoding-the-digital-alphabet-base-xx-encodings",
+    "title": "Decoding the Digital Alphabet: A Comprehensive Guide to BaseXX Encodings",
+    "date": "2025-11-16",
+    "updated": "2025-11-16",
+    "description": "A deep dive into various BaseXX encoding methods, comparing their character sets, efficiency, and common use cases in modern computing.",
+    "tags": ["encoding", "base32", "base58", "base62", "base64", "base85", "data-representation", "webdev", "cryptocurrency"],
+    "category": "dev",
+    "filename": "decoding-the-digital-alphabet-base-xx-encodings.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/shreya-thomas-HyKOTe-gIkY-unsplash.jpg"
   },
   {
     "slug": "fezcodex-stories-with-git-subtrees",
@@ -30,7 +44,8 @@
     "tags": ["git", "subtree", "dnd", "stories"],
     "category": "dev",
     "filename": "fezcodex-stories-with-git-subtrees.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/joel-jasmin-forestbird-xzPMUMDDsfk-unsplash.jpg"
   },
   {
     "slug": "publish-to-npm",
@@ -41,7 +56,8 @@
     "tags": ["npm", "piml", "data-format", "serialization", "markup"],
     "category": "dev",
     "filename": "publishing-to-npm.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "piml",
@@ -52,7 +68,8 @@
     "tags": ["piml", "data-format", "serialization", "markup", "dev"],
     "category": "dev",
     "filename": "piml.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/piml.png"
   },
   {
     "slug": "image-toolkit-deep-dive",
@@ -63,7 +80,8 @@
     "tags": ["canvas", "react", "css", "image-processing", "tailwind"],
     "category": "dev",
     "filename": "image-toolkit-deep-dive.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "picker-wheel-deep-dive",
@@ -74,7 +92,8 @@
     "tags": ["canvas", "react", "css", "animation", "tailwind"],
     "category": "dev",
     "filename": "picker-wheel-deep-dive.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "demystifying-tailwind-css",
@@ -85,7 +104,8 @@
     "tags": ["tailwind", "css", "fezcodex", "react"],
     "category": "dev",
     "filename": "demystifying-tailwind-css.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "ubuntu-once-more",
@@ -96,7 +116,8 @@
     "tags": ["ubuntu", "linux", "gnome"],
     "category": "dev",
     "filename": "ubuntu-once-more.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg"
   },
   {
     "title": "React of Fezcodex",
@@ -112,7 +133,8 @@
           "date": "2025-10-25",
           "updated": "2025-10-26",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "react-refs-useref",
@@ -120,7 +142,8 @@
           "filename": "/react-of-fezcode/016-react-refs-useref.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "react-toast-explanation-in-details",
@@ -129,7 +152,8 @@
           "date": "2025-10-25",
           "updated": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "react-custom-hooks",
@@ -137,7 +161,8 @@
           "filename": "/react-of-fezcode/014-react-custom-hooks.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "document-fetching-api",
@@ -145,7 +170,8 @@
           "filename": "/react-of-fezcode/013-document-fetching-api.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "html-structure",
@@ -153,7 +179,8 @@
           "filename": "/react-of-fezcode/012-html-structure.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "javascript-fundamentals",
@@ -161,7 +188,8 @@
           "filename": "/react-of-fezcode/011-javascript-fundamentals.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "css-and-tailwind-css",
@@ -169,7 +197,8 @@
           "filename": "/react-of-fezcode/010-css-and-tailwind-css.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "routing-with-react-router-dom",
@@ -177,7 +206,8 @@
           "filename": "/react-of-fezcode/009-routing-with-react-router-dom.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "react-context-usecontext",
@@ -185,7 +215,8 @@
           "filename": "/react-of-fezcode/008-react-context-usecontext.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "react-hooks-usestate-useeffect",
@@ -193,7 +224,8 @@
           "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "react-basics-components-props",
@@ -201,7 +233,8 @@
           "filename": "/react-of-fezcode/006-react-basics-components-props.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "blog-post-page-component",
@@ -209,7 +242,8 @@
           "filename": "/react-of-fezcode/005-blog-post-page-component.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "app-js-main-component",
@@ -217,7 +251,8 @@
           "filename": "/react-of-fezcode/004-app-js-main-component.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "index-js-entry-point",
@@ -225,7 +260,8 @@
           "filename": "/react-of-fezcode/003-index-js-entry-point.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "package-json-explained",
@@ -233,7 +269,8 @@
           "filename": "/react-of-fezcode/002-package-json-explained.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
           "slug": "project-overview",
@@ -241,11 +278,13 @@
           "filename": "/react-of-fezcode/001-project-overview.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "title": "Gemini Explains",
@@ -269,7 +308,8 @@
           ],
           "date": "2025-10-18",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
           "slug": "gemini-explains-how-image-modal-works",
@@ -287,11 +327,13 @@
           ],
           "date": "2024-01-05",
           "category": "dev",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "dnd-content",
@@ -302,7 +344,8 @@
     "tags": ["dnd", "rpg", "adventure"],
     "category": "d&d",
     "filename": "dnd-content.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
 
   {
@@ -314,7 +357,8 @@
     "tags": ["go", "lib", "pkg.go.dev"],
     "category": "dev",
     "filename": "do-i-need-to-create-a-lib-for-that.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "hashrouter-vs-browserrouter",
@@ -325,7 +369,8 @@
     "tags": ["react", "webdev", "gh-pages", "router"],
     "category": "dev",
     "filename": "hashrouter-vs-browserrouter.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "about-fezcodex",
@@ -335,7 +380,8 @@
     "tags": ["writing", "updates"],
     "category": "rant",
     "filename": "about-fezcodex.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
     "slug": "algos",
@@ -353,7 +399,8 @@
           "tags": ["cs", "algorithms", "string", "frequency-array"],
           "category": "dev",
           "filename": "/algos/minimum-number-of-steps-to-make-two-strings-anagram.txt",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
         },
         {
           "slug": "find-minimum-in-rotated-sorted-array",
@@ -363,7 +410,8 @@
           "tags": ["cs", "algorithms", "binary-search", "array"],
           "category": "dev",
           "filename": "/algos/find-minimum-in-rotated-sorted-array.txt",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
           "slug": "lca",
@@ -373,7 +421,8 @@
           "tags": ["cs", "algorithms", "tree", "bst", "recursion", "iterative"],
           "category": "dev",
           "filename": "/algos/lowest-common-ancestor-of-a-binary-search-tree.txt",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
           "slug": "monotonic-stack",
@@ -383,7 +432,8 @@
           "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
           "category": "dev",
           "filename": "/algos/monotonic-stack.txt",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
           "slug": "wquwpc",
@@ -393,21 +443,12 @@
           "tags": ["cs", "algorithms", "graphs"],
           "category": "dev",
           "filename": "/algos/weighted-quick-union-with-path-compression.txt",
-          "authors": ["fezcode"]
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"]
-  },
-  {
-    "slug": "decoding-the-digital-alphabet-base-xx-encodings",
-    "title": "Decoding the Digital Alphabet: A Comprehensive Guide to BaseXX Encodings",
-    "date": "2025-11-16",
-    "updated": "2025-11-16",
-    "description": "A deep dive into various BaseXX encoding methods, comparing their character sets, efficiency, and common use cases in modern computing.",
-    "tags": ["encoding", "base32", "base58", "base62", "base64", "base85", "data-representation", "webdev", "cryptocurrency"],
-    "category": "dev",
-    "filename": "decoding-the-digital-alphabet-base-xx-encodings.txt",
-    "authors": ["fezcode"]
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   }
 ]
