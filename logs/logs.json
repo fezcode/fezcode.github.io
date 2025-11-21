@@ -8,7 +8,8 @@
     "slug": "maxs-choice-duty-vs-passion",
     "title": "Max's Choice: Duty vs. Passion",
     "album": "Max Payne 2: The Fall of Max Payne (Soundtrack)",
-    "image": "/images/defaults/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg"
+    "image": "/images/defaults/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg",
+    "description": "A powerful theme song from Max Payne 2 by Finnish composers Kärtsy Hatakka and Kimmo Kajasto. It masterfully evokes the game's dark, noir atmosphere with its melancholic cello, haunting piano, and electronic elements, creating a lasting sense of dread and despair."
   },
   {
     "artist": "Dhanush",
@@ -20,7 +21,8 @@
     "title": "Why This Kolaveri Di",
     "album": "3 (Soundtrack)",
     "releaseDate": "2011-11-16",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Why This Kolaveri Di\" is a Tamil-English (Tanglish) song by Dhanush about a heartbroken man's unrequited love. It became an internet sensation due to its catchy tune, relatable lyrics, and viral spread through social media, with Dhanush's unpolished vocals adding to its charm."
   },
   {
     "artist": "Yoo Se Yoon",
@@ -32,7 +34,8 @@
     "title": "Don't Skip the Interlude",
     "album": "Don't Skip the Interlude",
     "releaseDate": "2025-08-29",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Don't Skip the Interlude\" by Yoo Se Yoon is a comedic musical track that cleverly contrasts heartfelt lyrics about love with a deliberately long and humorous instrumental interlude. Known for its comedic intent and visual gags during performances, the song's prolonged interlude is central to its entertaining and funny experience."
   },
   {
     "author": "needleful",
@@ -42,7 +45,8 @@
     "rating": 5,
     "slug": "needleful-arthur-whitney-c-smart",
     "title": "Learning to read Arthur Whitney's C to become Smart",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Learning to read Arthur Whitney's C to become Smart\" is an in-depth article analyzing Arthur Whitney's highly compact and unconventional C coding style, particularly his 50-line K interpreter. It demystifies Whitney's use of macros, non-semantic types, and dense constructs, evaluating the strengths (composability, compactness) and weaknesses (readability, portability, code-golfing) of this approach. The article offers insights into high-performance programming and emphasizes the importance of deep problem understanding before coding."
   },
   {
     "artist": "frederic",
@@ -54,7 +58,8 @@
     "title": "oddloop",
     "album": "Oddloop",
     "releaseDate": "2014-09-23",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Oddloop\" is a popular song by Japanese rock band frederic, formed by twin brothers Kenji and Koji Mihara. Known for its upbeat, disco-funk inspired style and a music video with over 100 million views, the song's title combines \"dance\" (odoru) with \"odd loop.\" It was released as an EP in 2014, marking their major debut, and was featured as the ending theme for the *Yamada-kun and the Seven Witches* OVA."
   },
   {
     "artist": "Morcheeba",
@@ -64,7 +69,8 @@
     "rating": 5,
     "slug": "morcheeba-easier-said-than-done",
     "title": "Easier Said Than Done",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Easier Said Than Done\" is a song by British electronic band Morcheeba, featuring the return of lead singer Skye Edwards. From their commercially successful album \"Blood Like Lemonade,\" the track explores the common human struggle of knowing what to do but finding it difficult to act upon it."
   },
   {
     "category": "Tools",
@@ -73,7 +79,8 @@
     "rating": 5,
     "slug": "tool-mastra-ai",
     "title": "Mastra AI",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Mastra AI\" is an open-source AI Agent Framework for TypeScript. A demo and its GitHub repository are available, showcasing its capabilities."
   },
   {
     "category": "Article",
@@ -83,7 +90,8 @@
     "slug": "openfreemap-survived-100000-requests",
     "author": "Zsolt Ero",
     "title": "OpenFreeMap survived 100,000 requests per second",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "This article by Zsolt Ero details how OpenFreeMap, a free and open-source map service, unexpectedly handled a massive traffic spike of 100,000 requests per second, largely due to a collaborative drawing website. The narrative highlights OpenFreeMap's resilient architecture, Cloudflare's role, and offers insights into monitoring, rate limiting, and CDN benefits for developers and system administrators."
   },
   {
     "category": "Websites",
@@ -92,7 +100,8 @@
     "rating": 5,
     "slug": "website-wplace-live",
     "title": "wplace.live",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"wplace.live\" is a new collaborative drawing website built from scratch using OpenFreeMap. There is also a scripting website related to it called \"wplace.life\"."
   },
   {
     "category": "Article",
@@ -102,7 +111,8 @@
     "slug": "why-your-website-should-be-under-14kb-in-size",
     "author": "Nathaniel",
     "title": "Why your website should be under 14kB in size",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "This article advocates for keeping a website's initial load under 14kB to optimize performance, especially on slower networks. It explains that this size aligns with the TCP slow start algorithm's initial burst of data (14.6kB), thereby avoiding additional round trips and reducing latency for improved user experience."
   },
   {
     "author": "Albert Camus",
@@ -113,7 +123,8 @@
     "slug": "albert-camus-the-stranger",
     "title": "The Stranger",
     "updated": "2025-10-30",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"The Stranger\" by Albert Camus is an absurdist masterpiece exploring humanity's search for meaning against an indifferent universe. It follows Meursault, a detached Frenchman condemned for his emotional apathy rather than his crime, who ultimately finds freedom in accepting the \"benign indifference\" of existence. The novel critiques societal judgment and advocates for embracing the absurd with conscious defiance."
   },
   {
     "category": "Game",
@@ -128,7 +139,8 @@
       "fps"
     ],
     "title": "Vampire: The Masquerade - Bloodlines 2",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Vampire: The Masquerade - Bloodlines 2\" is an RPG praised for its good story, captivating environment, and well-developed characters, despite initial combat flaws and optimization issues. The reviewer highlights Ronan Summers' performance as Fabien and the intriguing plot twists, emphasizing the game's resilience in development and its overall engaging experience within the vampire lore."
   },
   {
     "category": "Article",
@@ -138,7 +150,8 @@
     "slug": "the-peach-meme-on-crts-pixels-and-signal-quality-again",
     "source": "datagubbe",
     "title": "The Peach meme: On CRTs, pixels and signal quality (again)",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "Carl Svensson's article, \"The Peach meme: On CRTs, pixels and signal quality (again),\" debunks misconceptions about CRTs and pixel art. It argues that while CRTs smooth pixel art, signal quality (e.g., composite vs. RGB) is paramount, not the CRT itself. The article highlights that poor composite signals, not CRT magic, cause effects like \"Sonic Waterfalls,\" and emphasizes that historical pixel art techniques were adapted to display limitations, remaining crucial for graphics quality across all screen types."
   },
   {
     "category": "Game",
@@ -152,7 +165,8 @@
       "multiplayer"
     ],
     "title": "OpenFront.io",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"OpenFront.io\" is a web-based, open-source real-time strategy game where players expand influence by building structures, forming alliances, trading, and conquering opponents. Known for its engaging gameplay that often leads to late-game \"armageddon\" and expected betrayals, it's currently in alpha, inviting community contributions. It offers various customization options for private lobbies and is praised as a great strategy game comparable to AAA titles."
   },
   {
     "author": "Osamu Dazai",
@@ -163,7 +177,8 @@
     "slug": "the-flowers-of-buffoonery",
     "title": "The Flowers of Buffoonery",
     "updated": "2025-10-30",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "Osamu Dazai's \"The Flowers of Buffoonery\" is a darkly humorous novel set in a seaside sanitarium, where Yozo Oba and his visitors adopt a clownish facade while grappling with youth, love, self-hatred, and depression. It offers a poignant glimpse into prewar Japan's outsiders, showcasing Dazai's exploration of dark human emotions through a blend of humor and sadness."
   },
   {
     "category": "Series",
@@ -174,7 +189,8 @@
     "slug": "the-bear",
     "title": "The Bear",
     "updated": "2025-10-25",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"The Bear\" is a brilliant series created by Christopher Storer, praised for its top-notch pacing, character development, and intense kitchen environment. The show, which follows a fine-dining chef returning to run his family's sandwich shop, is a must-watch for its great storytelling, raw intensity, and captivating acting, with specific episodes noted for their emotional depth."
   },
   {
     "category": "Movie",
@@ -184,7 +200,8 @@
     "rating": 4,
     "slug": "relay-2024",
     "title": "Relay",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Relay\" is a 2024 movie directed by David Mackenzie about a broker who typically facilitates payoffs between corrupt corporations and blackmailers, but breaks his own rules to protect a new client. Praised for its excellent plot twist, fantastic New York atmosphere, awesome music, and impressive cinematography with a great color palette, it's considered a \"vibe movie\" despite a polarizing performance by Riz Ahmed."
   },
   {
     "category": "Game",
@@ -194,7 +211,8 @@
     "rating": 5,
     "slug": "the-legend-of-zelda-breath-of-the-wild",
     "title": "The Legend of Zelda: Breath of the Wild",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"The Legend of Zelda: Breath of the Wild\" is a highly-rated Nintendo Switch game."
   },
   {
     "artist": "Neutral Milk Hotel",
@@ -204,7 +222,8 @@
     "rating": 5,
     "slug": "in-the-aeroplane-over-the-sea",
     "title": "In the Aeroplane Over the Sea",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"In the Aeroplane Over the Sea\" is a highly-rated song by Neutral Milk Hotel."
   },
   {
     "category": "Food",
@@ -212,7 +231,8 @@
     "rating": 5,
     "slug": "food-omelette",
     "title": "Omelette",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "This entry describes the omelette as a versatile culinary staple, offering a recipe for a classic French-style omelette with instructions and optional fillings. It also provides a brief history, tracing its origins to ancient Persia and its modern form to 16th-century France, highlighting its enduring popularity across all social classes."
   },
   {
     "category": "Websites",
@@ -221,6 +241,7 @@
     "rating": 5,
     "slug": "website-missing-dice-dice-roller",
     "title": "Missing Dice - Dice Roller",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Missing Dice - Dice Roller\" is a website designed for rolling dice, found at missingdice.com/dice-roller/."
   }
 ]
