@@ -34,9 +34,9 @@ const getItemClasses = (type, isFeatured = false) => {
       hoverBgColorClass = 'hover:bg-secondary-400/20'; // Hover with more orange transparency
       break;
     case 'Log Entry':
-      bgColorClass = 'bg-music/10'; // Purple with transparency
-      borderColorClass = 'border-green-500';
-      hoverBgColorClass = 'hover:bg-music/20'; // Hover with more purple transparency
+      bgColorClass = 'bg-violet-200/10'; // Purple with transparency
+      borderColorClass = 'border-violet-500';
+      hoverBgColorClass = 'hover:bg-violet-400/40'; // Hover with more purple transparency
       break;
     default:
       bgColorClass = 'bg-gray-800'; // Default background

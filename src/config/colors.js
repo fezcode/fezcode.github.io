@@ -28,6 +28,7 @@ module.exports = {
   'food-light': '#FFC780',
   'websites-light': '#FFF8DC',
   'tools-light': '#F0DFFF',
+  'newspaper-background': '#fdfdf5',
   'sidebar-highlight': '#FA8072', // Duplicated from article
   'sidebar-highlight-light': '#FFB6C1', // Duplicated from article-light
   'sidebar-highlight-alpha-10': 'rgba(250, 128, 114, 0.1)', // Duplicated from article-alpha-10
