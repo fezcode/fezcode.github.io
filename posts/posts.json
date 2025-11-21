@@ -1,5 +1,17 @@
 [
   {
+    "slug": "floating-point-precision-in-javascript",
+    "title": "4 Equals For Complete Equalness",
+    "date": "2025-11-21",
+    "updated": "2025-11-21",
+    "description": "Dive into the quirky world of JavaScript's floating-point math, where 0.1 + 0.2 isn't always 0.3. Discover why and then ponder the mythical `====` operator, designed for complete equalness beyond your wildest dreams!",
+    "tags": ["javascript", "floating-point", "precision", "ieee-754", "programming"],
+    "category": "rant",
+    "filename": "floating-point-precision-in-javascript.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg"
+  },
+  {
     "slug": "kaprekars-routine",
     "title": "Kaprekar's Routine: A Curious Number Game",
     "date": "2025-11-18",
