@@ -1,5 +1,17 @@
 [
   {
+    "slug": "fixing-grub",
+    "title": "Fixing GRUB Syntax Errors Caused by Grub Customizer",
+    "date": "2025-11-22",
+    "updated": "2025-11-22",
+    "description": "A quick fix for problems caused by Grub Customizer",
+    "tags": ["linux", "grub", "grub-customizer"],
+    "category": "dev",
+    "filename": "fixing-grub.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+  },
+  {
     "slug": "floating-point-precision-in-javascript",
     "title": "4 Equals For Complete Equalness",
     "date": "2025-11-21",
