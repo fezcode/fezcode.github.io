@@ -75,12 +75,12 @@ const useSearchableData = () => {
           { title: 'Show Version', type: 'command', commandId: 'showVersion' },
           { title: 'Go to Latest Post', type: 'command', commandId: 'latestPost' },
           { title: 'Go to Latest Log', type: 'command', commandId: 'latestLog' },
-          { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
           { title: 'Show Current Time', type: 'command', commandId: 'showTime' },
           { title: 'Toggle Digital Rain', type: 'command', commandId: 'digitalRain' },
           { title: 'Generate Art', type: 'command', commandId: 'generateArt' },
           { title: 'Leet Speak Transformer', type: 'command', commandId: 'leetTransformer' },
-          { title: 'Stopwatch', type: 'command', commandId: 'stopwatch' },
+          { title: 'Show Quick Stopwatch', type: 'command', commandId: 'stopwatch' },
+          { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);
