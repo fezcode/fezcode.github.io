@@ -166,6 +166,10 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                     localStorage.clear();
                     addToast({ title: 'Success', message: 'Local storage cleared!', duration: 3000 });
                     break;
+                case 'reloadPage':
+                    addToast({ title: 'Reloading', message: 'Page will reload shortly...', duration: 1500 });
+                    setTimeout(() => window.location.reload(), 1500);
+                    break;
                 default:
                     break;
             }
