@@ -1,94 +1,24 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext } from 'react';
+import usePersistentState from '../hooks/usePersistentState';
+import {
+  KEY_IS_ANIMATION_ENABLED,
+  KEY_SHOW_ANIMATIONS_HOMEPAGE,
+  KEY_SHOW_ANIMATIONS_INNER_PAGES,
+} from '../utils/LocalStorageManager';
 
 const AnimationContext = createContext();
 
 export const AnimationProvider = ({ children }) => {
-  // Initialize state from localStorage, or default to true
-  const [isAnimationEnabled, setIsAnimationEnabled] = useState(() => {
-    try {
-      const storedValue = localStorage.getItem('isAnimationEnabled');
-      return storedValue ? JSON.parse(storedValue) : true;
-    } catch (error) {
-      console.error(
-        "Error reading 'isAnimationEnabled' from localStorage",
-        error,
-      );
-      return true; // Default to true if localStorage is not accessible
-    }
-  });
-
-  const [showAnimationsHomepage, setShowAnimationsHomepage] = useState(() => {
-    try {
-      const storedValue = localStorage.getItem('showAnimationsHomepage');
-      return storedValue ? JSON.parse(storedValue) : true; // Default to true
-    } catch (error) {
-      console.error(
-        "Error reading 'showAnimationsHomepage' from localStorage",
-        error,
-      );
-      return true; // Default to true if localStorage is not accessible
-    }
-  });
-
-  const [showAnimationsInnerPages, setShowAnimationsInnerPages] = useState(
-    () => {
-      try {
-        const storedValue = localStorage.getItem('showAnimationsInnerPages');
-        return storedValue ? JSON.parse(storedValue) : false; // Default to false
-      } catch (error) {
-        console.error(
-          "Error reading 'showAnimationsInnerPages' from localStorage",
-          error,
-        );
-        return false; // Default to false if localStorage is not accessible
-      }
-    },
+  const [isAnimationEnabled, setIsAnimationEnabled] = usePersistentState(
+    KEY_IS_ANIMATION_ENABLED,
+    true,
   );
 
-  // Update localStorage whenever isAnimationEnabled changes
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        'isAnimationEnabled',
-        JSON.stringify(isAnimationEnabled),
-      );
-    } catch (error) {
-      console.error(
-        "Error writing 'isAnimationEnabled' to localStorage",
-        error,
-      );
-    }
-  }, [isAnimationEnabled]);
+  const [showAnimationsHomepage, setShowAnimationsHomepage] =
+    usePersistentState(KEY_SHOW_ANIMATIONS_HOMEPAGE, true);
 
-  // Update localStorage whenever showAnimationsHomepage changes
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        'showAnimationsHomepage',
-        JSON.stringify(showAnimationsHomepage),
-      );
-    } catch (error) {
-      console.error(
-        "Error writing 'showAnimationsHomepage' to localStorage",
-        error,
-      );
-    }
-  }, [showAnimationsHomepage]);
-
-  // Update localStorage whenever showAnimationsInnerPages changes
-  useEffect(() => {
-    try {
-      localStorage.setItem(
-        'showAnimationsInnerPages',
-        JSON.stringify(showAnimationsInnerPages),
-      );
-    } catch (error) {
-      console.error(
-        "Error writing 'showAnimationsInnerPages' to localStorage",
-        error,
-      );
-    }
-  }, [showAnimationsInnerPages]);
+  const [showAnimationsInnerPages, setShowAnimationsInnerPages] =
+    usePersistentState(KEY_SHOW_ANIMATIONS_INNER_PAGES, false);
 
   const toggleAnimation = () => {
     setIsAnimationEnabled((prev) => !prev);

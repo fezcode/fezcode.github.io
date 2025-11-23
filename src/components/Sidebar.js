@@ -34,13 +34,42 @@ import Fez from './Fez';
 
 import { version } from '../version';
 
+import usePersistentState from '../hooks/usePersistentState';
+import {
+  KEY_SIDEBAR_IS_MAIN_OPEN,
+  KEY_SIDEBAR_IS_CONTENT_OPEN,
+  KEY_SIDEBAR_IS_APPS_OPEN,
+  KEY_SIDEBAR_IS_EXTRAS_OPEN,
+  KEY_SIDEBAR_IS_GAMES_OPEN,
+  KEY_SIDEBAR_IS_EXTERNAL_LINKS_OPEN,
+} from '../utils/LocalStorageManager';
+
 const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
-  const [isMainOpen, setIsMainOpen] = useState(true);
-  const [isContentOpen, setIsContentOpen] = useState(true);
-  const [isAppsOpen, setIsAppsOpen] = useState(true);
-  const [isExtrasOpen, setIsExtrasOpen] = useState(true);
-  const [isGamesOpen, setIsGamesOpen] = useState(false);
-  const [isExternalLinksOpen, setIsExternalLinksOpen] = useState(false);
+  const [isMainOpen, setIsMainOpen] = usePersistentState(
+    KEY_SIDEBAR_IS_MAIN_OPEN,
+    true,
+  );
+  const [isContentOpen, setIsContentOpen] = usePersistentState(
+    KEY_SIDEBAR_IS_CONTENT_OPEN,
+    true,
+  );
+  const [isAppsOpen, setIsAppsOpen] = usePersistentState(
+    KEY_SIDEBAR_IS_APPS_OPEN,
+    true,
+  );
+  const [isExtrasOpen, setIsExtrasOpen] = usePersistentState(
+    KEY_SIDEBAR_IS_EXTRAS_OPEN,
+    false,
+  );
+  const [isGamesOpen, setIsGamesOpen] = usePersistentState(
+    KEY_SIDEBAR_IS_GAMES_OPEN,
+    false,
+  );
+  const [isExternalLinksOpen, setIsExternalLinksOpen] = usePersistentState(
+    KEY_SIDEBAR_IS_EXTERNAL_LINKS_OPEN,
+    false,
+  );
+
   const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
   const navigate = useNavigate(); // Initialize useNavigate
 

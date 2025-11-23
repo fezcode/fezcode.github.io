@@ -5,6 +5,9 @@ import { useAnimation } from '../context/AnimationContext';
 import colors from '../config/colors';
 import CustomToggle from '../components/CustomToggle';
 import useSeo from '../hooks/useSeo';
+import { useToast } from '../hooks/useToast';
+import { SIDEBAR_KEYS } from '../utils/LocalStorageManager';
+import { remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
 
 const SettingsPage = () => {
   useSeo({
@@ -27,6 +30,23 @@ const SettingsPage = () => {
     showAnimationsInnerPages,
     toggleShowAnimationsInnerPages,
   } = useAnimation();
+  const { addToast } = useToast();
+
+  const handleResetSidebarState = () => {
+    SIDEBAR_KEYS.forEach((key) => {
+      removeLocalStorageItem(key);
+    });
+
+    addToast({
+      title: 'Success',
+      message: 'Sidebar state has been reset. The page will now reload.',
+      duration: 3000,
+    });
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+  };
 
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],
@@ -67,8 +87,7 @@ const SettingsPage = () => {
             ></div>
             <div className="relative z-10 p-1">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Application Settings{' '}
+                Application Settings
               </h1>
               <hr className="border-gray-700 mb-4" />
 
@@ -85,8 +104,7 @@ const SettingsPage = () => {
               </div>
 
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Animation Settings{' '}
+                Animation Settings
               </h1>
               <hr className="border-gray-700 mb-4" />
 
@@ -128,6 +146,24 @@ const SettingsPage = () => {
                     </span>
                   </div>
                 )}
+              </div>
+
+              {/* Sidebar Stuff */}
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                Sidebar Settings
+              </h1>
+              <hr className="border-gray-700 mb-4" />
+              <div className="mb-6 ml-4 mr-4">
+                <p className="text-gray-300 mb-4">
+                  Reset the open/closed state of all sidebar sections to their
+                  default.
+                </p>
+                <button
+                  onClick={handleResetSidebarState}
+                  className="px-6 py-2 rounded-md font-arvo font-normal transition-colors duration-300 ease-in-out border bg-red-800/50 text-white hover:bg-red-700/50 border-red-700"
+                >
+                  Reset Sidebar State
+                </button>
               </div>
             </div>
           </div>
