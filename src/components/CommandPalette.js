@@ -170,6 +170,17 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                     addToast({ title: 'Reloading', message: 'Page will reload shortly...', duration: 1500 });
                     setTimeout(() => window.location.reload(), 1500);
                     break;
+                case 'randomApp': {
+                    const apps = items.filter(i => i.type === 'app');
+                    if (apps.length > 0) {
+                        const randomApp = apps[Math.floor(Math.random() * apps.length)];
+                        addToast({ title: 'Random App', message: `Navigating to ${randomApp.title}`, duration: 2000 });
+                        navigate(randomApp.path);
+                    } else {
+                        addToast({ title: 'Random App', message: 'No apps found to navigate to.', duration: 2000 });
+                    }
+                    break;
+                }
                 default:
                     break;
             }

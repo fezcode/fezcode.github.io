@@ -84,6 +84,7 @@ const useSearchableData = () => {
           { title: 'Copy Current URL', type: 'command', commandId: 'copyCurrentURL' },
           { title: 'Clear Local Storage', type: 'command', commandId: 'clearLocalStorage' },
           { title: 'Reload Page', type: 'command', commandId: 'reloadPage' },
+          { title: 'Go to Random App', type: 'command', commandId: 'randomApp' },
           { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
         ];
 
