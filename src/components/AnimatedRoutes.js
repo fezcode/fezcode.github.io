@@ -51,6 +51,7 @@ import RockPaperScissorsPage from '../pages/apps/RockPaperScissorsPage'; // Impo
 import TicTacToePage from '../pages/apps/TicTacToePage'; // Import TicTacToePage
 import ConnectFourPage from '../pages/apps/ConnectFourPage'; // Import ConnectFourPage
 import ImageCompressorPage from '../pages/apps/ImageCompressorPage'; // Import ImageCompressorPage
+import StopwatchAppPage from '../pages/StopwatchAppPage'; // Import StopwatchAppPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -985,6 +986,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <ImageCompressorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/stopwatch"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <StopwatchAppPage />
             </motion.div>
           }
         />

@@ -252,6 +252,13 @@
         "title": "CRON Job Generator",
         "description": "Generate CRON expressions visually and convert human-readable text to CRON.",
         "icon": "ClockIcon"
+      },
+      {
+        "slug": "stopwatch",
+        "to": "/apps/stopwatch",
+        "title": "Stopwatch",
+        "description": "A simple stopwatch with lap functionality.",
+        "icon": "TimerIcon"
       }
     ]
   }

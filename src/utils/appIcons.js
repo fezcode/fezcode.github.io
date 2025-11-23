@@ -30,6 +30,7 @@ import {
   HandshakeIcon,
   XCircleIcon,
   ArrowsInLineHorizontalIcon,
+  TimerIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -64,4 +65,5 @@ export const appIcons = {
   HandshakeIcon,
   XCircleIcon,
   ArrowsInLineHorizontalIcon,
+  TimerIcon,
 };
