@@ -1,26 +1,32 @@
 (books)
   > (book)
     (bookId) 1
-    (bookTitle) Book One: The Shadowed Path
+    (bookTitle) The Broken Path (EN)
     (episodes)
       > (episode)
         (id) 1
-        (filename) book-one/episode1.txt
-        (title) Episode 1: The Whispering Woods
-        (author) fezcode
-        (date) 2025-11-14
-        (updated) 2025-11-14
-      > (episode)
-        (id) 2
-        (filename) book-one/episode2.txt
-        (title) Episode 2: The Goblin Ambush
-        (author) fezcode
-        (date) 2025-11-14
-        (updated) 2025-11-14
-    (overlay) red
+        (filename) the-reflections/en/the-case-of-the-mirror-man.txt
+        (title) The Case of the Mirror Man
+        (author) Constellation
+        (date) 2025-11-23
+        (updated) 2025-11-23
+    (overlay) dodgerblue
 
   > (book)
     (bookId) 2
+    (bookTitle) Yarım Kalmış Patika (TR)
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-reflections/tr/the-case-of-the-mirror-man.txt
+        (title) Ayna Adam Davası
+        (author) Constellation
+        (date) 2025-11-23
+        (updated) 2025-11-23
+    (overlay) dodgerblue
+
+  > (book)
+    (bookId) 3
     (bookTitle) Book Two: Separated Riches
     (episodes)
       > (episode)
@@ -40,7 +46,7 @@
     (overlay) blue
 
   > (book)
-    (bookId) 3
+    (bookId) 4
     (bookTitle) Book Three: Separated Riches
     (episodes)
       > (episode)
@@ -60,7 +66,7 @@
     (overlay) black
 
   > (book)
-    (bookId) 4
+    (bookId) 5
     (bookTitle) Book Four: Separated Riches
     (episodes)
       > (episode)
