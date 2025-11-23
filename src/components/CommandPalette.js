@@ -7,7 +7,9 @@ import { useToast } from '../hooks/useToast';
 import { SIDEBAR_KEYS, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
 import { version } from '../version'; // Import the version
 import LiveClock from './LiveClock'; // Import LiveClock
-import DigitalRain from './DigitalRain'; // Import DigitalRain
+import GenerativeArt from './GenerativeArt'; // Import GenerativeArt
+import TextTransformer from './TextTransformer'; // Import TextTransformer
+import Stopwatch from './Stopwatch'; // Import Stopwatch
 import { filterItems } from '../utils/search'; // Import the search utility
 
 const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain }) => {
@@ -129,6 +131,15 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                 }
                 case 'digitalRain':
                     toggleDigitalRain();
+                    break;
+                case 'generateArt':
+                    openGenericModal('Generative Art', <GenerativeArt />);
+                    break;
+                case 'leetTransformer':
+                    openGenericModal('Leet Speak Transformer', <TextTransformer />);
+                    break;
+                case 'stopwatch':
+                    openGenericModal('Stopwatch', <Stopwatch />);
                     break;
                 default:
                     break;
