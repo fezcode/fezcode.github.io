@@ -116,6 +116,13 @@
         "title": "Lights Out",
         "description": "A classic logic puzzle where you turn off all the lights.",
         "icon": "LightbulbFilamentIcon"
+      },
+      {
+        "slug": "nonogram",
+        "to": "/apps/nonogram",
+        "title": "Nonogram",
+        "description": "Solve picture logic puzzles by filling cells according to numerical clues.",
+        "icon": "GridFourIcon"
       }
     ]
   },

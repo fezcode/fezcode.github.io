@@ -57,6 +57,7 @@ import MorseCodeTranslatorPage from '../pages/apps/MorseCodeTranslatorPage';
 import MastermindPage from '../pages/apps/MastermindPage';
 import WordLadderPage from '../pages/apps/WordLadderPage'; // Import WordLadderPage
 import LightsOutPage from '../pages/apps/LightsOutPage'; // Import LightsOutPage
+import NonogramPage from '../pages/apps/NonogramPage'; // Import NonogramPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -553,6 +554,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::lo"
           element={<Navigate to="/apps/lights-out" replace />}
+        />
+        <Route
+          path="/apps::ng"
+          element={<Navigate to="/apps/nonogram" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1099,6 +1104,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <LightsOutPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/nonogram"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <NonogramPage />
             </motion.div>
           }
         />

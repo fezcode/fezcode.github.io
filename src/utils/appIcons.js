@@ -35,6 +35,7 @@ import {
   PuzzlePieceIcon,
   LadderSimpleIcon,
   LightbulbFilamentIcon,
+  GridFourIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -74,4 +75,5 @@ export const appIcons = {
   PuzzlePieceIcon,
   LadderSimpleIcon,
   LightbulbFilamentIcon,
+  GridFourIcon,
 };
