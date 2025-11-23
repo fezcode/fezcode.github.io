@@ -56,6 +56,7 @@ import PomodoroTimerPage from '../pages/apps/PomodoroTimerPage';
 import MorseCodeTranslatorPage from '../pages/apps/MorseCodeTranslatorPage';
 import MastermindPage from '../pages/apps/MastermindPage';
 import WordLadderPage from '../pages/apps/WordLadderPage'; // Import WordLadderPage
+import LightsOutPage from '../pages/apps/LightsOutPage'; // Import LightsOutPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -548,6 +549,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::wl"
           element={<Navigate to="/apps/word-ladder" replace />}
+        />
+        <Route
+          path="/apps::lo"
+          element={<Navigate to="/apps/lights-out" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1080,6 +1085,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <WordLadderPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/lights-out"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <LightsOutPage />
             </motion.div>
           }
         />
