@@ -69,6 +69,10 @@ const useSearchableData = () => {
           { title: 'Open GitHub Profile', type: 'command', commandId: 'openGitHub' },
           { title: 'Open Twitter Profile', type: 'command', commandId: 'openTwitter' },
           { title: 'Open LinkedIn Profile', type: 'command', commandId: 'openLinkedIn' },
+          { title: 'Scroll to Top', type: 'command', commandId: 'scrollToTop' },
+          { title: 'Scroll to Bottom', type: 'command', commandId: 'scrollToBottom' },
+          { title: 'Show Site Stats', type: 'command', commandId: 'showSiteStats' },
+          { title: 'Show Version', type: 'command', commandId: 'showVersion' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

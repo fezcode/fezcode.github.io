@@ -5,8 +5,9 @@ import useSearchableData from '../hooks/useSearchableData';
 import { useAnimation } from '../context/AnimationContext';
 import { useToast } from '../hooks/useToast';
 import { SIDEBAR_KEYS, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
+import { version } from '../version'; // Import the version
 
-const CommandPalette = ({ isOpen, setIsOpen }) => {
+const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedIndex, setSelectedIndex] = useState(0);
     const { items, isLoading } = useSearchableData();
@@ -85,6 +86,29 @@ const CommandPalette = ({ isOpen, setIsOpen }) => {
                     break;
                 case 'openLinkedIn':
                     window.open('https://tr.linkedin.com/in/ahmed-samil-bulbul', '_blank', 'noopener,noreferrer');
+                    break;
+                case 'scrollToTop':
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    break;
+                case 'scrollToBottom':
+                    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+                    break;
+                case 'showSiteStats':
+                    const postCount = items.filter(i => i.type === 'post').length;
+                    const projectCount = items.filter(i => i.type === 'project').length;
+                    const logCount = items.filter(i => i.type === 'log').length;
+                    const appCount = items.filter(i => i.type === 'app').length;
+                    openGenericModal('Site Statistics', (
+                        <div>
+                            <p><strong>Posts:</strong> {postCount}</p>
+                            <p><strong>Projects:</strong> {projectCount}</p>
+                            <p><strong>Logs:</strong> {logCount}</p>
+                            <p><strong>Apps:</strong> {appCount}</p>
+                        </div>
+                    ));
+                    break;
+                case 'showVersion':
+                    openGenericModal('Application Version', <p>Version: <strong>v{version}</strong></p>);
                     break;
                 default:
                     break;
