@@ -52,6 +52,7 @@ import TicTacToePage from '../pages/apps/TicTacToePage'; // Import TicTacToePage
 import ConnectFourPage from '../pages/apps/ConnectFourPage'; // Import ConnectFourPage
 import ImageCompressorPage from '../pages/apps/ImageCompressorPage'; // Import ImageCompressorPage
 import StopwatchAppPage from '../pages/StopwatchAppPage'; // Import StopwatchAppPage
+import PomodoroTimerPage from '../pages/apps/PomodoroTimerPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -529,6 +530,10 @@ function AnimatedRoutes() {
           path="/apps::sw"
           element={<Navigate to="/apps/stopwatch" replace />}
         />
+        <Route
+          path="/apps::pomodoro"
+          element={<Navigate to="/apps/pomodoro-timer" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -1004,6 +1009,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <StopwatchAppPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/pomodoro-timer"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <PomodoroTimerPage />
             </motion.div>
           }
         />

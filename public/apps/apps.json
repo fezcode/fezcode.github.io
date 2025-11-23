@@ -259,6 +259,13 @@
         "title": "Stopwatch",
         "description": "A simple stopwatch with lap functionality.",
         "icon": "TimerIcon"
+      },
+      {
+        "slug": "pomodoro-timer",
+        "to": "/apps/pomodoro-timer",
+        "title": "Pomodoro Timer",
+        "description": "A simple and customizable Pomodoro timer to boost your productivity.",
+        "icon": "TimerIcon"
       }
     ]
   }
