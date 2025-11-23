@@ -102,6 +102,13 @@
         "title": "Mastermind",
         "description": "Play the classic code-breaking game of Mastermind (Bulls and Cows).",
         "icon": "PuzzlePieceIcon"
+      },
+      {
+        "slug": "word-ladder",
+        "to": "/apps/word-ladder",
+        "title": "Word Ladder",
+        "description": "Transform one word into another by changing one letter at a time.",
+        "icon": "LadderSimpleIcon"
       }
     ]
   },

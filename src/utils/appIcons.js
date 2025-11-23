@@ -33,6 +33,7 @@ import {
   TimerIcon,
   TranslateIcon,
   PuzzlePieceIcon,
+  LadderSimpleIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -70,4 +71,5 @@ export const appIcons = {
   TimerIcon,
   TranslateIcon,
   PuzzlePieceIcon,
+  LadderSimpleIcon,
 };

@@ -55,6 +55,7 @@ import StopwatchAppPage from '../pages/StopwatchAppPage'; // Import StopwatchApp
 import PomodoroTimerPage from '../pages/apps/PomodoroTimerPage';
 import MorseCodeTranslatorPage from '../pages/apps/MorseCodeTranslatorPage';
 import MastermindPage from '../pages/apps/MastermindPage';
+import WordLadderPage from '../pages/apps/WordLadderPage'; // Import WordLadderPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -543,6 +544,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::mm"
           element={<Navigate to="/apps/mastermind" replace />}
+        />
+        <Route
+          path="/apps::wl"
+          element={<Navigate to="/apps/word-ladder" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1061,6 +1066,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <MastermindPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/word-ladder"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <WordLadderPage />
             </motion.div>
           }
         />
