@@ -525,6 +525,10 @@ function AnimatedRoutes() {
           path="/apps::c4"
           element={<Navigate to="/apps/connect-four" replace />}
         />
+        <Route
+          path="/apps::sw"
+          element={<Navigate to="/apps/stopwatch" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
