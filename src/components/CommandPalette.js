@@ -162,6 +162,10 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                     navigator.clipboard.writeText(window.location.href);
                     addToast({ title: 'Copied', message: 'Current URL copied to clipboard!', duration: 3000 });
                     break;
+                case 'clearLocalStorage':
+                    localStorage.clear();
+                    addToast({ title: 'Success', message: 'Local storage cleared!', duration: 3000 });
+                    break;
                 default:
                     break;
             }

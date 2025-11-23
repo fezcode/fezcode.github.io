@@ -82,6 +82,7 @@ const useSearchableData = () => {
           { title: 'Show Quick Stopwatch', type: 'command', commandId: 'stopwatch' },
           { title: 'Show User/Browser Information', type: 'command', commandId: 'showOSInfo' },
           { title: 'Copy Current URL', type: 'command', commandId: 'copyCurrentURL' },
+          { title: 'Clear Local Storage', type: 'command', commandId: 'clearLocalStorage' },
           { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
         ];
 

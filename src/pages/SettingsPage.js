@@ -165,6 +165,33 @@ const SettingsPage = () => {
                   Reset Sidebar State
                 </button>
               </div>
+
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                Local Storage Management
+              </h1>
+              <hr className="border-gray-700 mb-4" />
+              <div className="mb-6 ml-4 mr-4">
+                <p className="text-gray-300 mb-4">
+                  Clear all local storage data for this site. This will reset
+                  all your preferences and cached data.
+                </p>
+                <button
+                  onClick={() => {
+                    localStorage.clear();
+                    addToast({
+                      title: 'Success',
+                      message: 'All local storage data has been cleared. The page will now reload.',
+                      duration: 3000,
+                    });
+                    setTimeout(() => {
+                      window.location.reload();
+                    }, 3000);
+                  }}
+                  className="px-6 py-2 rounded-md font-arvo font-normal transition-colors duration-300 ease-in-out border bg-red-800/50 text-white hover:bg-red-700/50 border-red-700"
+                >
+                  Clear All Local Storage
+                </button>
+              </div>
             </div>
           </div>
         </div>
