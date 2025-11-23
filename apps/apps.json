@@ -212,6 +212,13 @@
         "icon": "ImageIcon"
       },
       {
+        "slug": "image-compressor",
+        "to": "/apps/image-compressor",
+        "title": "Image Compressor",
+        "description": "Compress images to reduce file size while maintaining quality.",
+        "icon": "ArrowsInLineHorizontalIcon"
+      },
+      {
         "slug": "word-counter",
         "to": "/apps/word-counter",
         "title": "Word Counter",
