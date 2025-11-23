@@ -78,7 +78,7 @@ const DigitalRain = memo(({ isActive }) => {
         left: 0,
         width: '100vw',
         height: '100vh',
-        zIndex: 40,
+        zIndex: 50,
     };
 
     return <canvas ref={canvasRef} style={canvasStyle}></canvas>;

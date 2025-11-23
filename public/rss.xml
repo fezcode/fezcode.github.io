@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 23 Nov 2025 18:00:45 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 23 Nov 2025 18:08:48 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 23 Nov 2025 18:00:45 GMT</pubDate>
+        <pubDate>Sun, 23 Nov 2025 18:08:48 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -24,7 +24,7 @@
             <guid isPermaLink="false">https://fezcode.com/#/blog/gaussian-elimination</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sun, 23 Nov 2025 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h1>Gaussian Elimination: The Swiss Army Knife of Linear Systems in Computer Engineering</h1>
+            <content:encoded><![CDATA[<p>When you hear &quot;linear algebra,&quot; your mind might jump to complex math, but at its heart lies a powerful tool called Gaussian Elimination. Far from being just a theoretical concept, this method is a workhorse in various fields of computer engineering, helping us solve systems of linear equations efficiently. In simple terms, it&#39;s a systematic way to solve multiple equations with multiple unknowns.</p>
 <p><a href="https://fezcode.com/#/blog/gaussian-elimination">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
