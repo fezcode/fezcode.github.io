@@ -17,6 +17,7 @@ import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { calculateReadingTime } from '../utils/readingTime';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -131,6 +132,7 @@ const BlogPostPage = () => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
+  const [estimatedReadingTime, setEstimatedReadingTime] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true); // New state for tracking if at top
   const contentRef = useRef(null);
   const [isModalOpen, setIsModalToOpen] = useState(false);
@@ -241,6 +243,7 @@ const BlogPostPage = () => {
           seriesPosts,
           currentSeries,
         });
+        setEstimatedReadingTime(calculateReadingTime(postBody));
       } catch (error) {
         console.error('Error fetching post or metadata:', error);
 
@@ -421,6 +424,7 @@ const BlogPostPage = () => {
               overrideDate={post.attributes.date}
               updatedDate={post.attributes.updated}
               seriesPosts={post.seriesPosts}
+              estimatedReadingTime={estimatedReadingTime}
             />
           </div>
         </div>

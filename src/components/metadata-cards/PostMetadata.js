@@ -9,6 +9,7 @@ const PostMetadata = ({
   overrideDate,
   updatedDate,
   seriesPosts,
+  estimatedReadingTime,
 }) => {
   if (!metadata) {
     return null;
@@ -85,6 +86,12 @@ const PostMetadata = ({
             <div>
               <Label>Updated</Label>
               <p className="text-gray-300 ml-1 mt-1">{updatedDate}</p>
+            </div>
+          )}
+          {estimatedReadingTime > 0 && (
+            <div>
+              <Label>Reading Time</Label>
+              <p className="text-gray-300 ml-1 mt-1">{estimatedReadingTime} min read</p>
             </div>
           )}
           {metadata.tags && (
