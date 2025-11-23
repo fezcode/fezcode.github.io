@@ -1,5 +1,17 @@
 [
   {
+    "slug": "gaussian-elimination",
+    "title": "Gaussian Elimination: The Swiss Army Knife of Linear Systems in Computer Engineering",
+    "date": "2025-11-23",
+    "updated": "2025-11-23",
+    "description": "An explanation of Gaussian Elimination, a fundamental technique for solving linear systems, and its broad applications in computer engineering.",
+    "tags": ["linear-algebra", "gaussian-elimination", "computer-engineering", "math", "algorithms"],
+    "category": "dev",
+    "filename": "gaussian-elimination.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/maxim-ilian-x8J1g0R9B-8-unsplash.jpg"
+  },
+  {
     "slug": "fixing-grub",
     "title": "Fixing GRUB Syntax Errors Caused by Grub Customizer",
     "date": "2025-11-22",
