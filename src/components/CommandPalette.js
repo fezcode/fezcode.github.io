@@ -7,6 +7,7 @@ import { useToast } from '../hooks/useToast';
 import { SIDEBAR_KEYS, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
 import { version } from '../version'; // Import the version
 import LiveClock from './LiveClock'; // Import LiveClock
+import DigitalRain from './DigitalRain'; // Import DigitalRain
 import { filterItems } from '../utils/search'; // Import the search utility
 
 const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
@@ -124,6 +125,10 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
                     break;
                 case 'showTime': {
                     openGenericModal('Current Time', <LiveClock />);
+                    break;
+                }
+                case 'digitalRain': {
+                    openGenericModal('Digital Rain', <DigitalRain />);
                     break;
                 }
                 default:
