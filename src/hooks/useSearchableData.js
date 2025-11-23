@@ -86,6 +86,7 @@ const useSearchableData = () => {
           { title: 'Reload Page', type: 'command', commandId: 'reloadPage' },
           { title: 'Go to Random App', type: 'command', commandId: 'randomApp' },
           { title: 'Toggle Full Screen', type: 'command', commandId: 'toggleFullScreen' },
+          { title: 'Create Issue for This Page', type: 'command', commandId: 'openGitHubIssue' },
           { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
         ];
 

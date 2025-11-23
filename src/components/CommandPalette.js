@@ -190,6 +190,14 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                         addToast({ title: 'Full Screen', message: 'Exited full screen mode.', duration: 2000 });
                     }
                     break;
+                case 'openGitHubIssue': {
+                    const issueTitle = encodeURIComponent(`Issue on page: ${window.location.pathname}`);
+                    const issueBody = encodeURIComponent(`Found an issue on:\n${window.location.href}\n\n[Please describe the issue here]`);
+                    const githubIssueUrl = `https://github.com/fezcode/fezcode.github.io/issues/new?title=${issueTitle}&body=${issueBody}`;
+                    window.open(githubIssueUrl, '_blank', 'noopener,noreferrer');
+                    addToast({ title: 'GitHub Issue', message: 'Opening new GitHub issue tab!', duration: 3000 });
+                    break;
+                }
                 default:
                     break;
             }
