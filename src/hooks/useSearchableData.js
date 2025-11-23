@@ -81,6 +81,7 @@ const useSearchableData = () => {
           { title: 'Leet Speak Transformer', type: 'command', commandId: 'leetTransformer' },
           { title: 'Show Quick Stopwatch', type: 'command', commandId: 'stopwatch' },
           { title: 'Show User/Browser Information', type: 'command', commandId: 'showOSInfo' },
+          { title: 'Copy Current URL', type: 'command', commandId: 'copyCurrentURL' },
           { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
         ];
 

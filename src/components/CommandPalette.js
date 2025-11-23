@@ -158,6 +158,10 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                     openGenericModal('User/Browser Information', osInfo);
                     break;
                 }
+                case 'copyCurrentURL':
+                    navigator.clipboard.writeText(window.location.href);
+                    addToast({ title: 'Copied', message: 'Current URL copied to clipboard!', duration: 3000 });
+                    break;
                 default:
                     break;
             }
