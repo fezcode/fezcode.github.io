@@ -141,6 +141,23 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                 case 'stopwatch':
                     openGenericModal('Stopwatch', <Stopwatch />);
                     break;
+                case 'showOSInfo': {
+                    const osInfo = (
+                        <div>
+                            <p><strong>User Agent:</strong> {navigator.userAgent}</p>
+                            <br />
+                            <p><strong>Platform:</strong> {navigator.platform}</p>
+                            <br />
+                            <p><strong>App Version:</strong> {navigator.appVersion}</p>
+                            <br />
+                            <p><strong>Language:</strong> {navigator.language}</p>
+                            <br />
+                            <p><strong>Online:</strong> {navigator.onLine ? 'Yes' : 'No'}</p>
+                        </div>
+                    );
+                    openGenericModal('User/Browser Information', osInfo);
+                    break;
+                }
                 default:
                     break;
             }
