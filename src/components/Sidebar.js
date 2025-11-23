@@ -12,7 +12,6 @@ import {
   ArticleIcon,
   CaretDownIcon,
   GameControllerIcon,
-  ListIcon,
   GithubLogoIcon,
   GlobeSimpleIcon,
   SwordIcon,
@@ -27,7 +26,8 @@ import {
   EnvelopeSimpleIcon,
   RssIcon,
   SquaresFourIcon,
-  GearSix, // Import GearSix icon
+  GearSixIcon,
+  MagnifyingGlassIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -44,7 +44,7 @@ import {
   KEY_SIDEBAR_IS_EXTERNAL_LINKS_OPEN,
 } from '../utils/LocalStorageManager';
 
-const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
+const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
   const [isMainOpen, setIsMainOpen] = usePersistentState(
     KEY_SIDEBAR_IS_MAIN_OPEN,
     true,
@@ -70,41 +70,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
     false,
   );
 
-  const [allSectionsOpen, setAllSectionsOpen] = useState(true); // New state for collapse all
-  const navigate = useNavigate(); // Initialize useNavigate
-
+  const navigate = useNavigate();
   const location = useLocation();
-
-  // Effect to update allSectionsOpen when individual sections change
-  useEffect(() => {
-    setAllSectionsOpen(
-      isMainOpen &&
-        isContentOpen &&
-        isAppsOpen &&
-        isExtrasOpen &&
-        isGamesOpen &&
-        isExternalLinksOpen,
-    );
-  }, [
-    isMainOpen,
-    isContentOpen,
-    isAppsOpen,
-    isGamesOpen,
-    isExtrasOpen,
-    isExternalLinksOpen,
-  ]);
-
-  const toggleAllSections = () => {
-    const newState = !allSectionsOpen;
-    setAllSectionsOpen(newState);
-    setIsMainOpen(newState);
-    setIsContentOpen(newState);
-    setIsAppsOpen(newState);
-    setIsExtrasOpen(newState);
-    setIsGamesOpen(newState);
-    setIsExternalLinksOpen(newState);
-  };
-
   const handleSettingsClick = () => {
     navigate('/settings');
   };
@@ -129,21 +96,18 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
 
   const variants = {
     open: { x: 0 },
-
     closed: { x: '-100%' },
   };
 
   return (
     <>
       {/* Overlay for mobile */}
-
       <div
         className={`fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden ${isOpen ? 'block' : 'hidden'}`}
         onClick={toggleSidebar}
       ></div>
 
       {/* Sidebar */}
-
       <motion.aside
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
@@ -155,7 +119,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
           <div className="p-4 flex justify-between items-center">
             <Link to="/" className="flex items-center space-x-2">
               <Fez />
-
               <span className="text-2xl font-normal tracking-tight">
                 fez<span className="text-primary-400">codex</span>
               </span>
@@ -177,24 +140,19 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <AsteriskSimpleIcon size={16} />
                 <span>Main</span>
               </span>
-
               <CaretDownIcon
                 size={20}
                 className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-
             {isMainOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/" className={getLinkClass}>
                   <HouseIcon size={24} />
-
                   <span>Home</span>
                 </NavLink>
-
                 <NavLink to="/about" className={getLinkClass}>
                   <UserIcon size={24} />
-
                   <span>About</span>
                 </NavLink>
               </nav>
@@ -214,40 +172,29 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <BooksIcon size={16} />
                 <span>Content</span>
               </span>
-
               <CaretDownIcon
                 size={20}
                 className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-
             {isContentOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
-
                 <NavLink to="/blog" className={getLinkClass}>
                   <BookOpenIcon size={24} />
                   <span>Blog</span>
                 </NavLink>
-
                 <NavLink to="/projects" className={getLinkClass}>
                   <WrenchIcon size={24} />
                   <span>Projects</span>
                 </NavLink>
-
                 <NavLink to="/logs" className={getLinkClass}>
                   <ArticleIcon size={24} />
                   <span>Logs</span>
                 </NavLink>
-
                 <NavLink to="/news" className={getLinkClass}>
-                  <GlobeSimpleIcon size={24} /> {/* Changed icon to GlobeSimpleIcon */}
+                  <GlobeSimpleIcon size={24} />
                   <span>News</span>
                 </NavLink>
-
-                {/* <NavLink to="/notebooks" className={getLinkClass}>
-                  <NotebookIcon size={24} />
-                  <span>Notebooks</span>
-                </NavLink> */}
               </nav>
             )}
           </div>
@@ -265,13 +212,11 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <SquaresFourIcon size={16} />
                 <span>Apps</span>
               </span>
-
               <CaretDownIcon
                 size={20}
                 className={`transition-transform ${isAppsOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-
             {isAppsOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/apps" className={getLinkClass}>
@@ -292,7 +237,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <span>Extras</span>
                 <LinkIcon size={16} className="text-rose-400" />
               </span>
-
               <CaretDownIcon
                 size={20}
                 className={`transition-transform ${isExtrasOpen ? 'transform rotate-180' : ''}`}
@@ -343,10 +287,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                   className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
                 >
                   <GameControllerIcon size={24} />
-
                   <span>Wordle</span>
                 </a>
-
                 <a
                   href="https://openfront.io"
                   target="_blank"
@@ -354,7 +296,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                   className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
                 >
                   <GlobeSimpleIcon size={24} />
-
                   <span>Openfront.io</span>
                 </a>
               </nav>
@@ -371,13 +312,11 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                 <span>External Links</span>
                 <ArrowSquareOutIcon size={16} className="text-rose-400" />
               </span>
-
               <CaretDownIcon
                 size={20}
                 className={`transition-transform ${isExternalLinksOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-
             {isExternalLinksOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <a
@@ -387,7 +326,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
                   className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
                 >
                   <GithubLogoIcon size={24} />
-
                   <span>GitHub</span>
                 </a>
               </nav>
@@ -396,22 +334,21 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
         </div>
 
         <div className="p-4 text-xs text-gray-300 text-left">
-          <button
-            onClick={toggleAllSections}
-            className="flex items-center justify-center w-full text-sm font-normal tracking-wider mb-4 focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
-          >
-            <span>{allSectionsOpen ? 'Collapse All' : 'Expand All'}</span>
-            <ListIcon
-              size={20}
-              className={`ml-3 transition-transform ${allSectionsOpen ? 'transform rotate-180' : ''}`}
-            />
-          </button>
+          <div className="flex gap-2 mb-4">
+            <button
+              onClick={() => setIsPaletteOpen(true)}
+              className="flex items-center justify-center w-full text-sm font-normal tracking-wider focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
+            >
+              <span>Commands</span>
+              <MagnifyingGlassIcon size={20} className="ml-2" />
+            </button>
+          </div>
           <button
             onClick={handleSettingsClick}
             className="flex items-center justify-center w-full text-sm font-normal tracking-wider mb-4 focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
           >
             <span>Settings</span>
-            <GearSix size={20} className="ml-3" />
+            <GearSixIcon size={20} className="ml-3" />
           </button>
           <hr className="border-gray-700 my-4" />
 
@@ -423,7 +360,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal }) => {
               <ShuffleIcon size={20} />
               <span>Random</span>
             </NavLink>
-
             <button
               onClick={toggleModal}
               className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans"

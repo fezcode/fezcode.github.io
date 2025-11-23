@@ -5,12 +5,14 @@ import Footer from './Footer';
 import DndNavbar from './dnd/DndNavbar';
 import DndFooter from './dnd/DndFooter';
 import { useLocation } from 'react-router-dom';
-import Search from './Search'; // Import the Search component
+import Search from './Search';
+import CommandPalette from './CommandPalette';
 
 import { DndProvider } from '../context/DndContext';
 
 const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
+  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -20,10 +22,19 @@ const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch }) => {
       }
     };
 
+    const handleKeyDown = (event) => {
+      if (event.altKey && event.key === 'k') {
+        event.preventDefault();
+        setIsPaletteOpen((open) => !open);
+      }
+    };
+
     window.addEventListener('resize', handleResize);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
@@ -44,26 +55,29 @@ const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch }) => {
   }
 
   return (
-    <div className="bg-gray-950 min-h-screen font-sans flex">
-      <Sidebar
-        isOpen={isSidebarOpen}
-        toggleSidebar={toggleSidebar}
-        toggleModal={toggleModal}
-      />
-      <div
-        className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}
-      >
-        <Navbar
-          toggleSidebar={toggleSidebar}
-          isSidebarOpen={isSidebarOpen}
-          isSearchVisible={isSearchVisible}
-          toggleSearch={toggleSearch}
-        />
-        {isSearchVisible && <Search isVisible={isSearchVisible} />}
-        <main className="flex-grow">{children}</main>
-        <Footer />
+    <>
+      <CommandPalette isOpen={isPaletteOpen} setIsOpen={setIsPaletteOpen} />
+      <div className="bg-gray-950 min-h-screen font-sans flex">
+              <Sidebar
+                isOpen={isSidebarOpen}
+                toggleSidebar={toggleSidebar}
+                toggleModal={toggleModal}
+                setIsPaletteOpen={setIsPaletteOpen} // Pass setIsPaletteOpen to Sidebar
+              />        <div
+          className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}
+        >
+          <Navbar
+            toggleSidebar={toggleSidebar}
+            isSidebarOpen={isSidebarOpen}
+            isSearchVisible={isSearchVisible}
+            toggleSearch={toggleSearch}
+          />
+          {isSearchVisible && <Search isVisible={isSearchVisible} />}
+          <main className="flex-grow">{children}</main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

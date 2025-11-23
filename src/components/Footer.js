@@ -96,6 +96,9 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} fezcode. All rights reserved.{' '}
               <code> v{version} </code>
             </p>
+            <p className="text-xs text-gray-500 mt-1">
+              Hint: Press <kbd className="kbd kbd-sm">Alt</kbd>+<kbd className="kbd kbd-sm">K</kbd> for commands
+            </p>
           </div>
         </div>
       </div>
