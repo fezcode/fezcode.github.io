@@ -9,6 +9,22 @@ const GenericModal = ({ isOpen, onClose, title, children }) => {
     if (!isOpen) {
       setIsClosing(false);
     }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && isOpen) {
+        handleClose();
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+    } else {
+      document.removeEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, [isOpen]);
 
   const handleClose = () => {
