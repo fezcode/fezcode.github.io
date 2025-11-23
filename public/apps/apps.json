@@ -195,6 +195,13 @@
         "title": "CSS Unit Converter",
         "description": "Convert between px, em, rem, vw, vh, and % units.",
         "icon": "RulerIcon"
+      },
+      {
+        "slug": "morse-code-translator",
+        "to": "/apps/morse-code-translator",
+        "title": "Morse Code Translator",
+        "description": "Translate text to Morse code and vice-versa, with audio playback.",
+        "icon": "TranslateIcon"
       }
     ]
   },

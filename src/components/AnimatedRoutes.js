@@ -53,6 +53,7 @@ import ConnectFourPage from '../pages/apps/ConnectFourPage'; // Import ConnectFo
 import ImageCompressorPage from '../pages/apps/ImageCompressorPage'; // Import ImageCompressorPage
 import StopwatchAppPage from '../pages/StopwatchAppPage'; // Import StopwatchAppPage
 import PomodoroTimerPage from '../pages/apps/PomodoroTimerPage';
+import MorseCodeTranslatorPage from '../pages/apps/MorseCodeTranslatorPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -533,6 +534,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::pomodoro"
           element={<Navigate to="/apps/pomodoro-timer" replace />}
+        />
+        <Route
+          path="/apps::mct"
+          element={<Navigate to="/apps/morse-code-translator" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1023,6 +1028,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <PomodoroTimerPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/morse-code-translator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <MorseCodeTranslatorPage />
             </motion.div>
           }
         />

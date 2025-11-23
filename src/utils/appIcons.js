@@ -31,6 +31,7 @@ import {
   XCircleIcon,
   ArrowsInLineHorizontalIcon,
   TimerIcon,
+  TranslateIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -66,4 +67,5 @@ export const appIcons = {
   XCircleIcon,
   ArrowsInLineHorizontalIcon,
   TimerIcon,
+  TranslateIcon,
 };
