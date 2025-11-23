@@ -50,6 +50,7 @@ import MemoryGamePage from '../pages/apps/MemoryGamePage'; // Import MemoryGameP
 import RockPaperScissorsPage from '../pages/apps/RockPaperScissorsPage'; // Import RockPaperScissorsPage
 import TicTacToePage from '../pages/apps/TicTacToePage'; // Import TicTacToePage
 import ConnectFourPage from '../pages/apps/ConnectFourPage'; // Import ConnectFourPage
+import ImageCompressorPage from '../pages/apps/ImageCompressorPage'; // Import ImageCompressorPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -486,6 +487,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::cron"
           element={<Navigate to="/apps/cron-job-generator" replace />}
+        />
+        <Route
+          path="/apps::imc"
+          element={<Navigate to="/apps/image-compressor" replace />}
         />
         <Route
           path="/apps::excuse"
@@ -966,6 +971,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <JsonPimlConverterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/image-compressor"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <ImageCompressorPage />
             </motion.div>
           }
         />

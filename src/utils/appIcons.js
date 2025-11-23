@@ -29,6 +29,7 @@ import {
   BrainIcon,
   HandshakeIcon,
   XCircleIcon,
+  ArrowsInLineHorizontalIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -62,4 +63,5 @@ export const appIcons = {
   BrainIcon,
   HandshakeIcon,
   XCircleIcon,
+  ArrowsInLineHorizontalIcon,
 };
