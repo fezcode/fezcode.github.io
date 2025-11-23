@@ -85,6 +85,7 @@ const useSearchableData = () => {
           { title: 'Clear Local Storage', type: 'command', commandId: 'clearLocalStorage' },
           { title: 'Reload Page', type: 'command', commandId: 'reloadPage' },
           { title: 'Go to Random App', type: 'command', commandId: 'randomApp' },
+          { title: 'Toggle Full Screen', type: 'command', commandId: 'toggleFullScreen' },
           { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
         ];
 

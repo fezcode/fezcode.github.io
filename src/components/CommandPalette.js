@@ -181,6 +181,15 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                     }
                     break;
                 }
+                case 'toggleFullScreen':
+                    if (!document.fullscreenElement) {
+                        document.documentElement.requestFullscreen();
+                        addToast({ title: 'Full Screen', message: 'Entered full screen mode.', duration: 2000 });
+                    } else if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                        addToast({ title: 'Full Screen', message: 'Exited full screen mode.', duration: 2000 });
+                    }
+                    break;
                 default:
                     break;
             }
