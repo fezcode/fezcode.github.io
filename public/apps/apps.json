@@ -95,6 +95,13 @@
         "title": "Connect Four",
         "description": "Play the classic game of Connect Four against another player or AI.",
         "icon": "AtomIcon"
+      },
+      {
+        "slug": "mastermind",
+        "to": "/apps/mastermind",
+        "title": "Mastermind",
+        "description": "Play the classic code-breaking game of Mastermind (Bulls and Cows).",
+        "icon": "PuzzlePieceIcon"
       }
     ]
   },

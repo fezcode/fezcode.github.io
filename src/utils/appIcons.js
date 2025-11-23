@@ -32,6 +32,7 @@ import {
   ArrowsInLineHorizontalIcon,
   TimerIcon,
   TranslateIcon,
+  PuzzlePieceIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -68,4 +69,5 @@ export const appIcons = {
   ArrowsInLineHorizontalIcon,
   TimerIcon,
   TranslateIcon,
+  PuzzlePieceIcon,
 };

@@ -54,6 +54,7 @@ import ImageCompressorPage from '../pages/apps/ImageCompressorPage'; // Import I
 import StopwatchAppPage from '../pages/StopwatchAppPage'; // Import StopwatchAppPage
 import PomodoroTimerPage from '../pages/apps/PomodoroTimerPage';
 import MorseCodeTranslatorPage from '../pages/apps/MorseCodeTranslatorPage';
+import MastermindPage from '../pages/apps/MastermindPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -538,6 +539,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::mct"
           element={<Navigate to="/apps/morse-code-translator" replace />}
+        />
+        <Route
+          path="/apps::mm"
+          element={<Navigate to="/apps/mastermind" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1042,6 +1047,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <MorseCodeTranslatorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/mastermind"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <MastermindPage />
             </motion.div>
           }
         />
