@@ -6,6 +6,8 @@ import { useAnimation } from '../context/AnimationContext';
 import { useToast } from '../hooks/useToast';
 import { SIDEBAR_KEYS, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
 import { version } from '../version'; // Import the version
+import LiveClock from './LiveClock'; // Import LiveClock
+import { filterItems } from '../utils/search'; // Import the search utility
 
 const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -17,18 +19,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
     const { isAnimationEnabled, toggleAnimation } = useAnimation();
     const { addToast } = useToast();
 
-    const filteredItems = searchTerm
-        ? items.filter(item => {
-            const lowerCaseSearchTerm = searchTerm.toLowerCase();
-            const titleMatch = item.title.toLowerCase().includes(lowerCaseSearchTerm);
-            const typeMatch = item.type.toLowerCase().includes(lowerCaseSearchTerm);
-            const tagMatch = item.tags?.some(tag => tag.toLowerCase().includes(lowerCaseSearchTerm));
-            const techMatch = item.technologies?.some(tech => tech.toLowerCase().includes(lowerCaseSearchTerm));
-            const categoryMatch = item.category?.toLowerCase().includes(lowerCaseSearchTerm);
-
-            return titleMatch || typeMatch || tagMatch || techMatch || categoryMatch;
-        })
-        : items;
+    const filteredItems = filterItems(items, searchTerm);
 
     useEffect(() => {
         if (isOpen) {
@@ -131,6 +122,10 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
                 case 'herDaim':
                     openGenericModal('Her Daim', <img src="/images/herdaim.jpg" alt="Her Daim" className="max-w-full h-auto" />);
                     break;
+                case 'showTime': {
+                    openGenericModal('Current Time', <LiveClock />);
+                    break;
+                }
                 default:
                     break;
             }
