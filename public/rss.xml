@@ -9,14 +9,80 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 21 Nov 2025 11:24:30 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 23 Nov 2025 18:00:45 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 21 Nov 2025 11:24:29 GMT</pubDate>
+        <pubDate>Sun, 23 Nov 2025 18:00:45 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Gaussian Elimination: The Swiss Army Knife of Linear Systems in Computer Engineering]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/gaussian-elimination</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/gaussian-elimination</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 23 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Gaussian Elimination: The Swiss Army Knife of Linear Systems in Computer Engineering</h1>
+<p><a href="https://fezcode.com/#/blog/gaussian-elimination">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Fixing GRUB Syntax Errors Caused by Grub Customizer]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/fixing-grub</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/fixing-grub</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 22 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Fixing GRUB Syntax Errors Caused by Grub Customizer</h1>
+<p><a href="https://fezcode.com/#/blog/fixing-grub">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[4 Equals For Complete Equalness]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/floating-point-precision-in-javascript</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/floating-point-precision-in-javascript</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 21 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Behold, A New Operator <code>====</code></h1>
+<h2>About</h2>
+<p>When <code>0.1 + 0.2</code> in JavaScript yields <code>0.30000000000000004</code>, it highlights a <strong>common aspect of computer arithmetic</strong>,
+not a bug. This occurs because JavaScript, like most languages, uses the <strong>IEEE 754 standard</strong> for floating-point numbers,
+which relies on <strong>binary (base-2) representation</strong>.</p>
+<p><strong>Decimal fractions</strong> like 0.1 and 0.2 <strong>cannot be perfectly represented as finite binary fractions</strong>; they become infinitely repeating.
+When these are stored in a <strong>finite number of bits</strong>, a <strong>tiny truncation error</strong> is introduced. This <strong>slight imprecision</strong>
+in each number <strong>accumulates during addition</strong>, resulting in a sum that&#39;s marginally off from the <strong>exact mathematical total</strong>.</p>
+<h3>Solutions</h3>
+<p>For scenarios requiring <strong>precise decimal arithmetic</strong> (e.g., financial applications), direct floating-point calculations
+can be problematic. Consider these approaches:</p>
+<ol>
+<li><strong>Rounding:</strong> Use <code>toFixed()</code> to round results to a desired decimal precision. Remember to convert the string output
+back to a number if needed.<pre><code class="language-javascript">parseFloat((0.1 + 0.2).toFixed(1)); // 0.3
+</code></pre>
+</li>
+<li><strong>Integer Arithmetic:</strong> <strong>Scale numbers to integers</strong> before calculations and then scale the final result back down.<pre><code class="language-javascript">(0.1 * 10 + 0.2 * 10) / 10; // 0.3
+</code></pre>
+</li>
+<li><strong>Specialized Libraries:</strong> For <strong>advanced precision</strong>, utilize libraries like <code>Big.js</code> or <code>Decimal.js</code>.</li>
+</ol>
+<p>This behavior is a <strong>fundamental consequence of binary representation in computing</strong>, not a flaw in JavaScript,
+and <strong>understanding it is key</strong> to handling numerical precision effectively.</p>
+<h2>Introducing the <code>====</code> Operator: For When <code>===</code> Just Isn&#39;t Enough</h2>
+<p>Sometimes, <strong>strict equality</strong> (<code>===</code>) feels like it&#39;s trying <em>too hard</em> to be precise, yet still falls short of our
+deepest desires for perfect, unyielding truth. For those moments, when you need to compare not just value and type,
+but also the very <strong>essence</strong> of existence, I propose the <strong>Quadruple Equals Operator (<code>====</code>)</strong>!</p>
+<p>What does <code>====</code> do? Well, it&#39;s simple:</p>
+<ul>
+<li><code>0.1 + 0.2 ==== 0.3</code> would <em>(theoretically)</em> return <code>true</code>. Because in a world where <code>====</code> exists, numbers just <em>know</em> what they&#39;re supposed to be.</li>
+<li><code>&quot;hello&quot; ==== &quot;hello&quot;</code> would, naturally, be <code>true</code>.</li>
+<li><code>[] ==== []</code> might still be <code>false</code>, because even <code>====</code> respects the <strong>existential uniqueness</strong> of array instances. But I am working on it. ¯\_(ツ)_/¯</li>
+<li>The <code>====</code> operator is so powerful, it can detect <strong>deep existential equality</strong>, ensuring that not only values and types match,
+but also their <strong>historical context</strong>, their <strong>developer&#39;s intent</strong>, and their <strong>cosmic vibrational frequency</strong>.</li>
+</ul>
+<p>Alas, <code>====</code> is a mere dream, a <strong>mythical beast</strong> in the JavaScript ecosystem, born from the frustration of floating-point arithmetic.
+For now, we&#39;ll have to stick to our practical solutions. But one can dream of a world where <code>0.1 + 0.2 ==== 0.3</code> just <em>makes sense</em>.</p>
+<p><a href="https://fezcode.com/#/blog/floating-point-precision-in-javascript">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Kaprekar's Routine: A Curious Number Game]]></title>
             <description><![CDATA[[object Object]]]></description>
