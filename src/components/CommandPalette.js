@@ -10,7 +10,7 @@ import LiveClock from './LiveClock'; // Import LiveClock
 import DigitalRain from './DigitalRain'; // Import DigitalRain
 import { filterItems } from '../utils/search'; // Import the search utility
 
-const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
+const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedIndex, setSelectedIndex] = useState(0);
     const { items, isLoading } = useSearchableData();
@@ -127,10 +127,9 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
                     openGenericModal('Current Time', <LiveClock />);
                     break;
                 }
-                case 'digitalRain': {
-                    openGenericModal('Digital Rain', <DigitalRain />);
+                case 'digitalRain':
+                    toggleDigitalRain();
                     break;
-                }
                 default:
                     break;
             }

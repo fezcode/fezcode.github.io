@@ -77,7 +77,7 @@ const useSearchableData = () => {
           { title: 'Go to Latest Log', type: 'command', commandId: 'latestLog' },
           { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
           { title: 'Show Current Time', type: 'command', commandId: 'showTime' },
-          { title: 'Start Digital Rain', type: 'command', commandId: 'digitalRain' },
+          { title: 'Toggle Digital Rain', type: 'command', commandId: 'digitalRain' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

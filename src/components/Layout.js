@@ -10,7 +10,7 @@ import CommandPalette from './CommandPalette';
 
 import { DndProvider } from '../context/DndContext';
 
-const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch, openGenericModal }) => {
+const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch, openGenericModal, toggleDigitalRain }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
   const location = useLocation();
@@ -56,7 +56,7 @@ const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch, openGene
 
   return (
     <>
-      <CommandPalette isOpen={isPaletteOpen} setIsOpen={setIsPaletteOpen} openGenericModal={openGenericModal} />
+      <CommandPalette isOpen={isPaletteOpen} setIsOpen={setIsPaletteOpen} openGenericModal={openGenericModal} toggleDigitalRain={toggleDigitalRain} />
       <div className="bg-gray-950 min-h-screen font-sans flex">
               <Sidebar
                 isOpen={isSidebarOpen}

@@ -113,7 +113,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
         animate={isOpen ? 'open' : 'closed'}
         variants={variants}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className={`fixed top-0 left-0 h-screen bg-black/30 backdrop-blur-sm text-white w-64 z-50 flex flex-col border-r border-gray-700/50 font-arvo`}
+        className={`fixed top-0 left-0 h-screen bg-black/30 backdrop-blur-sm text-white w-64 z-20 flex flex-col border-r border-gray-700/50 font-arvo`}
       >
         {isOpen && (
           <div className="p-4 flex justify-between items-center">

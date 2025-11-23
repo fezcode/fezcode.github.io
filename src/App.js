@@ -6,6 +6,7 @@ import { ToastProvider } from './context/ToastContext';
 import ScrollToTop from './components/ScrollToTop';
 import ContactModal from './components/ContactModal';
 import GenericModal from './components/GenericModal';
+import DigitalRain from './components/DigitalRain';
 import { AnimationProvider } from './context/AnimationContext'; // Import AnimationProvider
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isGenericModalOpen, setIsGenericModalOpen] = useState(false);
   const [genericModalContent, setGenericModalContent] = useState({ title: '', content: null });
-
+    const [isRainActive, setIsRainActive] = useState(false); // State for Digital Rain
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -31,12 +32,14 @@ function App() {
     setIsSearchVisible(!isSearchVisible);
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
   };
+  const toggleDigitalRain = () => {
+    setIsRainActive(prev => !prev);
+  };
 
   return (
     <AnimationProvider>
-      {' '}
-      {/* Wrap the entire app with AnimationProvider */}
       <Router>
+        <DigitalRain isActive={isRainActive} />
         <ScrollToTop />
         <ToastProvider>
           <Layout
@@ -44,6 +47,7 @@ function App() {
             isSearchVisible={isSearchVisible}
             toggleSearch={toggleSearch}
             openGenericModal={openGenericModal}
+            toggleDigitalRain={toggleDigitalRain}
           >
             <AnimatedRoutes />
           </Layout>
@@ -60,5 +64,4 @@ function App() {
     </AnimationProvider>
   );
 }
-
 export default App;
