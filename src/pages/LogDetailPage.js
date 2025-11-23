@@ -7,6 +7,7 @@ import ImageModal from '../components/ImageModal';
 
 import Seo from '../components/Seo';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -146,6 +147,7 @@ const LogDetailPage = () => {
             >
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
                 components={{ a: LinkRenderer, img: ImageRenderer }}
               >
                 {log.body}

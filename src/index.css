@@ -36,12 +36,27 @@ code {
   border-radius: 0.25rem; /* rounded corners */
 }
 
+.prose iframe {
+  width: 100%; /* Make iframe responsive */
+  max-width: 75%; /* Same as images */
+  height: auto; /* Adjust height automatically */
+  aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #4b5563; /* subtle gray border, same as images */
+  border-radius: 0.25rem; /* rounded corners, same as images */
+}
+
 @media (min-width: 768px) {
   /* md breakpoint */
   .prose img {
     /*max-width: 55%;*/
     max-height: 600px;
     /*max-width: 100%; !* 25% width on larger screens *!*/
+  }
+  .prose iframe {
+    /*max-width: 55%;*/ /* If we want it smaller on desktop, consistent with images*/
   }
 }
 

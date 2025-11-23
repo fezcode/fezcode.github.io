@@ -14,11 +14,14 @@
 
 ## About
 
-![Ayyaaah](images/logs/dont-skip-the-interlude.png)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/esCNvfKV9Rc?si=eYqihTNkFkprbL4F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 Yoo Se Yoon's 'Don't Skip the Interlude' (간주점프는 안돼요) is a unique musical comedy track that blends seemingly
 heartfelt lyrics with an extended, humorous instrumental interlude. The song's title directly instructs listeners
 not to skip this interlude, as it is central to the piece's comedic intent and overall experience.
+
+![Ayyaaah](images/logs/dont-skip-the-interlude.png)
+
 
 The song features lyrics that appear serious and even heartfelt, discussing themes of love, memories,
 and not wanting to waste a single second with a loved one. However, this earnestness is juxtaposed with a

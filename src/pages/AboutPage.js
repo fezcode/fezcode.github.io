@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
@@ -134,7 +136,7 @@ const AboutPage = () => {
             </h1>
 
             <div className="prose prose-invert max-w-none leading-snug">
-              <ReactMarkdown components={{ a: LinkRenderer }}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={{ a: LinkRenderer }}>
                 {content}
               </ReactMarkdown>
             </div>

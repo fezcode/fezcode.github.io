@@ -5,3 +5,5 @@
 - **Date:** 2025-10-06
 - **Rating:** 5/5
 - **Link:** [YouTube](https://www.youtube.com/watch?v=0_5qaeIAl5E)
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/W6H8WcTPnWM?si=98myJ3oXnylD-0jG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

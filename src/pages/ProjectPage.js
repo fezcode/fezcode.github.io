@@ -1,6 +1,8 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import { useProjects } from '../utils/projectParser';
 import { useProjectContent } from '../hooks/useProjectContent'; // Import the new hook
 import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
@@ -111,7 +113,9 @@ const ProjectPage = () => {
             {/*  />*/}
             {/*)}*/}
             <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-dark">
-              <ReactMarkdown>{fullProject.fullContent}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {fullProject.fullContent}
+              </ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
