@@ -68,13 +68,14 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
                 case 'viewSource':
                     window.open('https://github.com/fezcode/fezcode.github.io', '_blank', 'noopener,noreferrer');
                     break;
-                case 'randomPost':
+                case 'randomPost': {
                     const posts = items.filter(i => i.type === 'post');
                     if (posts.length > 0) {
                         const randomPost = posts[Math.floor(Math.random() * posts.length)];
                         navigate(randomPost.path);
                     }
                     break;
+                }
                 case 'sendEmailFezcode':
                     window.open('mailto:samil.bulbul@gmail.com', '_blank', 'noopener,noreferrer');
                     break;
@@ -93,7 +94,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
                 case 'scrollToBottom':
                     window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
                     break;
-                case 'showSiteStats':
+                case 'showSiteStats': {
                     const postCount = items.filter(i => i.type === 'post').length;
                     const projectCount = items.filter(i => i.type === 'project').length;
                     const logCount = items.filter(i => i.type === 'log').length;
@@ -107,8 +108,28 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal }) => {
                         </div>
                     ));
                     break;
+                }
                 case 'showVersion':
                     openGenericModal('Application Version', <p>Version: <strong>v{version}</strong></p>);
+                    break;
+                case 'latestPost': {
+                    const posts = items.filter(i => i.type === 'post');
+                    if (posts.length > 0) {
+                        posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        navigate(posts[0].path);
+                    }
+                    break;
+                }
+                case 'latestLog': {
+                    const logs = items.filter(i => i.type === 'log');
+                    if (logs.length > 0) {
+                        logs.sort((a, b) => new Date(b.date) - new Date(a.date));
+                        navigate(logs[0].path);
+                    }
+                    break;
+                }
+                case 'herDaim':
+                    openGenericModal('Her Daim', <img src="/images/herdaim.jpg" alt="Her Daim" className="max-w-full h-auto" />);
                     break;
                 default:
                     break;
