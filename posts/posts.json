@@ -5,7 +5,13 @@
     "date": "2025-11-23",
     "updated": "2025-11-23",
     "description": "An explanation of Gaussian Elimination, a fundamental technique for solving linear systems, and its broad applications in computer engineering.",
-    "tags": ["linear-algebra", "gaussian-elimination", "computer-engineering", "math", "algorithms"],
+    "tags": [
+      "linear-algebra",
+      "gaussian-elimination",
+      "computer-engineering",
+      "math",
+      "algorithms"
+    ],
     "category": "dev",
     "filename": "gaussian-elimination.txt",
     "authors": ["fezcode"],
@@ -29,7 +35,13 @@
     "date": "2025-11-21",
     "updated": "2025-11-21",
     "description": "Dive into the quirky world of JavaScript's floating-point math, where 0.1 + 0.2 isn't always 0.3. Discover why and then ponder the mythical `====` operator, designed for complete equalness beyond your wildest dreams!",
-    "tags": ["javascript", "floating-point", "precision", "ieee-754", "programming"],
+    "tags": [
+      "javascript",
+      "floating-point",
+      "precision",
+      "ieee-754",
+      "programming"
+    ],
     "category": "rant",
     "filename": "floating-point-precision-in-javascript.txt",
     "authors": ["fezcode"],
@@ -65,7 +77,17 @@
     "date": "2025-11-16",
     "updated": "2025-11-16",
     "description": "A deep dive into various BaseXX encoding methods, comparing their character sets, efficiency, and common use cases in modern computing.",
-    "tags": ["encoding", "base32", "base58", "base62", "base64", "base85", "data-representation", "webdev", "cryptocurrency"],
+    "tags": [
+      "encoding",
+      "base32",
+      "base58",
+      "base62",
+      "base64",
+      "base85",
+      "data-representation",
+      "webdev",
+      "cryptocurrency"
+    ],
     "category": "dev",
     "filename": "decoding-the-digital-alphabet-base-xx-encodings.txt",
     "authors": ["fezcode"],
@@ -427,6 +449,25 @@
     "tags": ["cs", "algorithms", "graphs"],
     "series": {
       "posts": [
+        {
+          "slug": "leetcode-62-unique-paths",
+          "title": "LeetCode 62: Unique Paths - A Dynamic Programming Approach",
+          "date": "2025-11-24",
+          "updated": "2025-11-24",
+          "description": "Exploring LeetCode 62, Unique Paths, and solving it efficiently using dynamic programming in Go.",
+          "tags": [
+            "leetcode",
+            "algorithms",
+            "dynamic-programming",
+            "go",
+            "recursion",
+            "combination"
+          ],
+          "category": "dev",
+          "filename": "/algos/leetcode-62-unique-paths.txt",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
+        },
         {
           "slug": "minimum-number-of-steps-to-make-two-strings-anagram",
           "title": "Minimum Number of Steps to Make Two Strings Anagram",

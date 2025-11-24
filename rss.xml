@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 23 Nov 2025 18:19:49 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 24 Nov 2025 14:04:35 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 23 Nov 2025 18:19:49 GMT</pubDate>
+        <pubDate>Mon, 24 Nov 2025 14:04:35 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[LeetCode 62: Unique Paths - A Dynamic Programming Approach]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/leetcode-62-unique-paths</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/leetcode-62-unique-paths</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>LeetCode 62, &quot;Unique Paths,&quot; is a classic problem that often serves as an excellent introduction to dynamic programming. It challenges us to find the number of unique paths a robot can take to reach the bottom-right corner of a <code>m x n</code> grid, starting from the top-left corner. The robot can only move either down or right at any point in time.</p>
+<p><a href="https://fezcode.com/#/blog/leetcode-62-unique-paths">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Gaussian Elimination: The Swiss Army Knife of Linear Systems in Computer Engineering]]></title>
             <description><![CDATA[[object Object]]]></description>
