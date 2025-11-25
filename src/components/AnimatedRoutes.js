@@ -58,6 +58,7 @@ import MastermindPage from '../pages/apps/MastermindPage';
 import WordLadderPage from '../pages/apps/WordLadderPage'; // Import WordLadderPage
 import LightsOutPage from '../pages/apps/LightsOutPage'; // Import LightsOutPage
 import NonogramPage from '../pages/apps/NonogramPage'; // Import NonogramPage
+import WhackABugPage from '../pages/apps/WhackABugPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -558,6 +559,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::ng"
           element={<Navigate to="/apps/nonogram" replace />}
+        />
+        <Route
+          path="/apps::wab"
+          element={<Navigate to="/apps/whack-a-bug" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1118,6 +1123,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <NonogramPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/whack-a-bug"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <WhackABugPage />
             </motion.div>
           }
         />

@@ -123,6 +123,13 @@
         "title": "Nonogram",
         "description": "Solve picture logic puzzles by filling cells according to numerical clues.",
         "icon": "GridFourIcon"
+      },
+      {
+        "slug": "whack-a-bug",
+        "to": "/apps/whack-a-bug",
+        "title": "Whack-a-Bug",
+        "description": "Test your reflexes by fixing bugs as fast as you can!",
+        "icon": "BugIcon"
       }
     ]
   },
