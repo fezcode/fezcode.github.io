@@ -67,6 +67,7 @@ import PirateTranslatorPage from '../pages/apps/PirateTranslatorPage';
 import GalacticAgePage from '../pages/apps/GalacticAgePage';
 import BpmGuesserPage from '../pages/apps/BpmGuesserPage';
 import WhiteboardPage from '../pages/apps/WhiteboardPage';
+import FootballEmblemCreatorPage from '../pages/apps/FootballEmblemCreatorPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -603,6 +604,14 @@ function AnimatedRoutes() {
         <Route
           path="/apps::draw"
           element={<Navigate to="/apps/whiteboard" replace />}
+        />
+        <Route
+          path="/apps::emblem"
+          element={<Navigate to="/apps/football-emblem-creator" replace />}
+        />
+        <Route
+          path="/apps::fec"
+          element={<Navigate to="/apps/football-emblem-creator" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1289,6 +1298,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <WhiteboardPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/football-emblem-creator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <FootballEmblemCreatorPage />
             </motion.div>
           }
         />

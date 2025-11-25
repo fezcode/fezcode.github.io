@@ -44,6 +44,7 @@ import {
   PlanetIcon,
   MetronomeIcon,
   PencilSimpleIcon,
+  TrophyIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -92,4 +93,5 @@ export const appIcons = {
   PlanetIcon,
   MetronomeIcon,
   PencilSimpleIcon,
+  TrophyIcon,
 };
