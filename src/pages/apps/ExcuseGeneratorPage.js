@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CopySimple, DiceFive } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CopySimpleIcon, DiceFiveIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import CustomDropdown from '../../components/CustomDropdown';
 
@@ -213,13 +213,13 @@ const ExcuseGeneratorPage = () => {
                   onClick={generateExcuse}
                   className={`${buttonStyle} flex items-center gap-2`}
                 >
-                  <DiceFive size={24} /> Generate Excuse
+                  <DiceFiveIcon size={24} /> Generate Excuse
                 </button>
                 <button
                   onClick={copyToClipboard}
                   className={`${buttonStyle} flex items-center gap-2`}
                 >
-                  <CopySimple size={24} /> Copy
+                  <CopySimpleIcon size={24} /> Copy
                 </button>
               </div>
             </div>

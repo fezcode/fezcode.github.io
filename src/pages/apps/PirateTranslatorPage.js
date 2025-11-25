@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, SkullIcon, CopySimple} from '@phosphor-icons/react';
+import {ArrowLeftIcon, SkullIcon, CopySimpleIcon} from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import {useToast} from '../../hooks/useToast';
@@ -195,7 +195,7 @@ const PirateTranslatorPage = () => {
                       !translatedText ? 'opacity-50 cursor-not-allowed' : ''
                     }`}
                   >
-                    <CopySimple size={24} className="inline-block mr-2"/> Copy
+                    <CopySimpleIcon size={24} className="inline-block mr-2"/> Copy
                   </button>
                 </div>
               </div>

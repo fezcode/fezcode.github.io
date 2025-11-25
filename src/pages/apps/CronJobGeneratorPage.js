@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import CustomDropdown from '../../components/CustomDropdown';
 
@@ -262,7 +262,7 @@ const CronJobGeneratorPage = () => {
                     onClick={() => copyToClipboard(generatedCron)}
                     className="p-2 rounded-full hover:bg-gray-700"
                   >
-                    <CopySimple size={20} className="text-gray-400" />
+                    <CopySimpleIcon size={20} className="text-gray-400" />
                   </button>
                 </div>
                 <p className="text-sm text-gray-400 mt-2">

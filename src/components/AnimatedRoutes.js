@@ -66,6 +66,7 @@ import BananaConverterPage from '../pages/apps/BananaConverterPage';
 import PirateTranslatorPage from '../pages/apps/PirateTranslatorPage';
 import GalacticAgePage from '../pages/apps/GalacticAgePage';
 import BpmGuesserPage from '../pages/apps/BpmGuesserPage';
+import WhiteboardPage from '../pages/apps/WhiteboardPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -598,6 +599,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::bpm"
           element={<Navigate to="/apps/bpm-guesser" replace />}
+        />
+        <Route
+          path="/apps::draw"
+          element={<Navigate to="/apps/whiteboard" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1270,6 +1275,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <BpmGuesserPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/whiteboard"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <WhiteboardPage />
             </motion.div>
           }
         />

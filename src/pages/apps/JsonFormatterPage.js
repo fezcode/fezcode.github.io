@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
@@ -250,7 +250,7 @@ const JsonFormatterPage = () => {
                       }}
                       title="Copy to Clipboard"
                     >
-                      <CopySimple size={20} />
+                      <CopySimpleIcon size={20} />
                     </button>
                   </div>
                 </div>
