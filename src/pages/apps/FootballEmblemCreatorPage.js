@@ -52,6 +52,7 @@ import {
   LightbulbIcon,
   InfinityIcon,
   BrainIcon,
+  PercentIcon,
 } from '@phosphor-icons/react';
 import CustomDropdown from '../../components/CustomDropdown'; // Add this line
 import colors from '../../config/colors';
@@ -86,14 +87,7 @@ const FootballEmblemCreatorPage = () => {
   const [fontSize, setFontSize] = useState('10');
   const [foundedYearFontSize, setFoundedYearFontSize] = useState('6');
   const [showEstPrefix, setShowEstPrefix] = useState(true);
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const buttonStyle = `px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button`;
+  const [opacity, setOpacity] = useState("0.5");
 
   const icons = {
     soccer: <SoccerBallIcon weight="fill" />,
@@ -204,49 +198,49 @@ const FootballEmblemCreatorPage = () => {
             <g clipPath="url(#shieldClip)">
                 {pattern === 'stripes' && (
                     <React.Fragment>
-                        <rect x="30" y="0" width="10" height="100" fill={secondaryColor} opacity="0.5" />
-                        <rect x="60" y="0" width="10" height="100" fill={secondaryColor} opacity="0.5" />
+                        <rect x="30" y="11" width="10" height="100" fill={secondaryColor} opacity={opacity} />
+                        <rect x="60" y="11" width="10" height="100" fill={secondaryColor} opacity={opacity} />
                     </React.Fragment>
                 )}
                  {pattern === 'half' && (
-                    <rect x="50" y="0" width="50" height="100" fill={secondaryColor} opacity="0.5" />
+                    <rect x="50" y="0" width="50" height="100" fill={secondaryColor} opacity={opacity} />
                 )}
                  {pattern === 'cross' && (
                     <React.Fragment>
-                         <rect x="40" y="0" width="20" height="100" fill={secondaryColor} opacity="0.5" />
-                         <rect x="0" y="40" width="100" height="20" fill={secondaryColor} opacity="0.5" />
+                         <rect x="40" y="0" width="20" height="100" fill={secondaryColor} opacity={opacity} />
+                         <rect x="0" y="40" width="100" height="20" fill={secondaryColor} opacity={opacity} />
                     </React.Fragment>
                 )}
                  {pattern === 'diagonal' && (
-                     <path d="M0,0 L100,100 L100,80 L20,0 Z" fill={secondaryColor} opacity="0.5" />
+                     <path d="M0,0 L100,100 L100,80 L20,0 Z" fill={secondaryColor} opacity={opacity} />
                  )}
                  {pattern === 'hoops' && (
                      <React.Fragment>
-                         <rect x="0" y="20" width="100" height="10" fill={secondaryColor} opacity="0.5" />
-                         <rect x="0" y="40" width="100" height="10" fill={secondaryColor} opacity="0.5" />
-                         <rect x="0" y="60" width="100" height="10" fill={secondaryColor} opacity="0.5" />
-                         <rect x="0" y="80" width="100" height="10" fill={secondaryColor} opacity="0.5" />
+                         <rect x="0" y="20" width="100" height="10" fill={secondaryColor} opacity={opacity} />
+                         <rect x="0" y="40" width="100" height="10" fill={secondaryColor} opacity={opacity} />
+                         <rect x="0" y="60" width="100" height="10" fill={secondaryColor} opacity={opacity} />
+                         <rect x="0" y="80" width="100" height="10" fill={secondaryColor} opacity={opacity} />
                      </React.Fragment>
                  )}
                  {pattern === 'checkered' && (
                      <React.Fragment>
-                         <rect x="0" y="0" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="40" y="0" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="80" y="0" width="20" height="20" fill={secondaryColor} opacity="0.5" />
+                         <rect x="0" y="0" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="40" y="0" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="80" y="0" width="20" height="20" fill={secondaryColor} opacity={opacity} />
 
-                         <rect x="20" y="20" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="60" y="20" width="20" height="20" fill={secondaryColor} opacity="0.5" />
+                         <rect x="20" y="20" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="60" y="20" width="20" height="20" fill={secondaryColor} opacity={opacity} />
 
-                         <rect x="0" y="40" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="40" y="40" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="80" y="40" width="20" height="20" fill={secondaryColor} opacity="0.5" />
+                         <rect x="0" y="40" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="40" y="40" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="80" y="40" width="20" height="20" fill={secondaryColor} opacity={opacity} />
 
-                         <rect x="20" y="60" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="60" y="60" width="20" height="20" fill={secondaryColor} opacity="0.5" />
+                         <rect x="20" y="60" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="60" y="60" width="20" height="20" fill={secondaryColor} opacity={opacity} />
 
-                         <rect x="0" y="80" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="40" y="80" width="20" height="20" fill={secondaryColor} opacity="0.5" />
-                         <rect x="80" y="80" width="20" height="20" fill={secondaryColor} opacity="0.5" />
+                         <rect x="0" y="80" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="40" y="80" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+                         <rect x="80" y="80" width="20" height="20" fill={secondaryColor} opacity={opacity} />
                      </React.Fragment>
                  )}
                  {pattern === 'diamonds' && (
@@ -320,7 +314,7 @@ const FootballEmblemCreatorPage = () => {
                     </div>
                 </div>
                 <div>
-                  <div className="grid grid-cols-2 gap-2">
+                  <div className="grid grid-cols-3 gap-2">
                     <div className="col-span-1">
                       <label className="block text-sm font-medium text-gray-400 mb-1">Team Font Size</label>
                       <CustomDropdown
@@ -347,6 +341,21 @@ const FootballEmblemCreatorPage = () => {
                         onChange={setFoundedYearFontSize}
                         label="Select Year Size"
                         icon={TextAaIcon}
+                      />
+                    </div>
+                    <div className="col-span-1">
+                      <label className="block text-sm font-medium text-gray-400 mb-1">Sec. Color Opacity</label>
+                      <CustomDropdown
+                        options={[
+                          { label: '25%', value: "0.25" },
+                          { label: '50%', value: "0.5" },
+                          { label: '75%', value: "0.75" },
+                          { label: '100%', value: "1.0" },
+                        ]}
+                        value={opacity}
+                        onChange={setOpacity}
+                        label="Select Opacity"
+                        icon={PercentIcon}
                       />
                     </div>
                   </div>
