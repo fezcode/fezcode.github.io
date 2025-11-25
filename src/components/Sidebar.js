@@ -210,6 +210,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                   <SquaresFourIcon size={24} />
                   <span>All Apps</span>
                 </NavLink>
+                <NavLink to="/commands" className={getLinkClass}>
+                  <MagnifyingGlassIcon size={24} />
+                  <span>All Commands</span>
+                </NavLink>
               </nav>
             )}
           </div>

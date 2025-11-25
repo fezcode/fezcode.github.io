@@ -73,7 +73,8 @@ import SettingsPage from '../pages/SettingsPage';
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 import NotebooksPage from '../pages/notebooks/NotebooksPage';
 import NotebookViewerPage from '../pages/notebooks/NotebookViewerPage';
-import NewsPage from '../pages/NewsPage'; // Import NewsPage
+import NewsPage from '../pages/NewsPage';
+import CommandsPage from "../pages/CommandsPage";
 
 const pageVariants = {
   initial: {
@@ -408,6 +409,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <AppPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/commands"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <CommandsPage />
             </motion.div>
           }
         />
