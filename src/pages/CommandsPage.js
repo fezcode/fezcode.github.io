@@ -200,7 +200,7 @@ function CommandsPage() {
 
               <div className="bg-lime-900 bg-opacity-30 border border-lime-700 text-lime-300 px-4 py-3 rounded relative mb-6" role="alert">
                 <strong className="font-bold">Her Daim:</strong>
-                <span className="block sm:inline ml-2"> Show image of `Devir Abi`. </span>
+                <span className="block sm:inline ml-2"> Her Daim... </span>
               </div>
 
             </div>

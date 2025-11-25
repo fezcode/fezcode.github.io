@@ -79,7 +79,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
     location.pathname.startsWith('/logs') ||
     location.pathname.startsWith('/stories');
 
-  const isAppsActive = location.pathname.startsWith('/apps');
+  const isAppsActive = location.pathname.startsWith('/apps') || location.pathname.startsWith('/commands');
 
   const variants = {
     open: { x: 0 },
