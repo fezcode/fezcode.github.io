@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, SkullIcon} from '@phosphor-icons/react';
+import {ArrowLeftIcon, SkullIcon, CopySimple} from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
+import {useToast} from '../../hooks/useToast';
 
 const pirateDictionary = {
   "hello": "ahoy",
@@ -90,20 +91,7 @@ const pirateDictionary = {
   "forward": "fore",
 };
 
-const piratePhrases = [
-  " Arrr!",
-  " Shiver me timbers!",
-  " Walk the plank!",
-  " Yo ho ho!",
-  " Avast ye!",
-  " Dead men tell no tales.",
-  " By Blackbeard's ghost!",
-  " Blow me down!",
-  " Savvy?",
-  " ...and a bottle of rum!",
-  " Weigh anchor!",
-  " Batten down the hatches!",
-];
+const piratePhrases = [" Arrr!", " Shiver me timbers!", " Walk the plank!", " Yo ho ho!", " Avast ye!", " Dead men tell no tales.", " By Blackbeard's ghost!", " Blow me down!", " Savvy?", " ...and a bottle of rum!", " Weigh anchor!", " Batten down the hatches!",];
 
 const PirateTranslatorPage = () => {
   useSeo({
@@ -118,10 +106,9 @@ const PirateTranslatorPage = () => {
     twitterDescription: 'Translate yer landlubber words into proper Pirate speak!',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
-
+  const {addToast} = useToast();
   const [inputText, setInputText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
-
   const translate = () => {
     let text = inputText.toLowerCase();
     // Dictionary replacements
@@ -129,22 +116,24 @@ const PirateTranslatorPage = () => {
       const regex = new RegExp(`\\b${key}\\b`, 'g');
       text = text.replace(regex, pirateDictionary[key]);
     });
-
     // Grammar tweaks: replacing 'ing' at the end of words with "in'"
     text = text.replace(/ing\b/g, "in'");
-
     // Capitalize first letter of sentences
     text = text.replace(/(^\w|\.\s\w)/g, c => c.toUpperCase());
-
     // Add some pirate flair randomly
     if (text.length > 0) {
       const randomPhrase = piratePhrases[Math.floor(Math.random() * piratePhrases.length)];
       text += randomPhrase;
     }
-
     setTranslatedText(text);
   };
-
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(translatedText).then(() => {
+      addToast({title: 'Copied!', message: 'Translated text copied to clipboard.', duration: 2000});
+    }).catch(() => {
+      addToast({title: 'Error', message: 'Failed to copy translated text!', duration: 2000});
+    });
+  };
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],
     borderColor: colors['app-alpha-50'],
@@ -176,8 +165,7 @@ const PirateTranslatorPage = () => {
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
                 backgroundSize: '10px 10px',
               }}
             ></div>
@@ -186,7 +174,6 @@ const PirateTranslatorPage = () => {
                 <SkullIcon size={32}/> Pirate Speak Translator
               </h1>
               <hr className="border-gray-700 mb-6"/>
-
               <div className="flex flex-col gap-4 mb-6">
                 <textarea
                   value={inputText}
@@ -194,21 +181,30 @@ const PirateTranslatorPage = () => {
                   placeholder="Type yer message here, matey..."
                   className="w-full h-32 bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-red-500 transition-colors resize-none"
                 />
-                <button
-                  onClick={translate}
-                  className="px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 hover:bg-red-500/20 text-red-500 border-red-500"
-                >
-                  Translate, Yarr!
-                </button>
+                <div className="flex justify-center gap-4">
+                  <button
+                    onClick={translate}
+                    className="px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 hover:bg-red-500/20 text-red-500 border-red-500"
+                  >
+                    Translate, Yarr!
+                  </button>
+                  <button
+                    onClick={copyToClipboard}
+                    disabled={!translatedText}
+                    className={`px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 text-blue-500 border-blue-500 hover:bg-blue-500 hover:text-white ${
+                      !translatedText ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    <CopySimple size={24} className="inline-block mr-2"/> Copy
+                  </button>
+                </div>
               </div>
-
               {translatedText && (
                 <div
                   className="bg-black/30 p-4 rounded border border-gray-700 min-h-[80px] text-left font-serif italic text-lg text-gray-200">
                   {translatedText}
                 </div>
               )}
-
             </div>
           </div>
         </div>
