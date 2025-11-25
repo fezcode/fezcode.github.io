@@ -202,6 +202,13 @@
         "title": "Color Palette Generator",
         "description": "Generate random color palettes.",
         "icon": "PaletteIcon"
+      },
+      {
+        "slug": "lorem-ipsum-generator",
+        "to": "/apps/lorem-ipsum-generator",
+        "title": "Lorem Ipsum Generator",
+        "description": "Generate random placeholder text for your projects.",
+        "icon": "ArticleIcon"
       }
     ]
   },

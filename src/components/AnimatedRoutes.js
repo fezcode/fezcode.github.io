@@ -59,8 +59,9 @@ import WordLadderPage from '../pages/apps/WordLadderPage'; // Import WordLadderP
 import LightsOutPage from '../pages/apps/LightsOutPage'; // Import LightsOutPage
 import NonogramPage from '../pages/apps/NonogramPage'; // Import NonogramPage
 import WhackABugPage from '../pages/apps/WhackABugPage';
-import SimonSaysPage from '../pages/apps/SimonSaysPage';
 import BubbleWrapPage from '../pages/apps/BubbleWrapPage';
+import LoremIpsumGeneratorPage from '../pages/apps/LoremIpsumGeneratorPage';
+import SimonSaysPage from '../pages/apps/SimonSaysPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -573,6 +574,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::pop"
           element={<Navigate to="/apps/bubble-wrap" replace />}
+        />
+        <Route
+          path="/apps::lorem"
+          element={<Navigate to="/apps/lorem-ipsum-generator" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1175,6 +1180,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <BubbleWrapPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/lorem-ipsum-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <LoremIpsumGeneratorPage />
             </motion.div>
           }
         />
