@@ -304,20 +304,7 @@ const FootballEmblemCreatorPage = () => {
                                 maxLength={4}
                             />
                         </div>
-                        <div className="col-span-1">
-                            <label className="block text-sm font-medium text-gray-400 mb-1">Year Font Size</label>
-                             <CustomDropdown
-                                options={[
-                                  { label: 'Small', value: '4' },
-                                  { label: 'Medium', value: '6' },
-                                  { label: 'Large', value: '8' },
-                                ]}
-                                value={foundedYearFontSize}
-                                onChange={setFoundedYearFontSize}
-                                label="Select Year Size"
-                                icon={TextAaIcon}
-                             />
-                        </div>
+
                         <div className="flex items-center mt-2">
                             <input
                                 type="checkbox"
@@ -331,6 +318,38 @@ const FootballEmblemCreatorPage = () => {
                             </label>
                         </div>
                     </div>
+                </div>
+                <div>
+                  <div className="grid grid-cols-2 gap-2">
+                    <div className="col-span-1">
+                      <label className="block text-sm font-medium text-gray-400 mb-1">Team Font Size</label>
+                      <CustomDropdown
+                        options={[
+                          { label: 'Small', value: '6' },
+                          { label: 'Medium', value: '8' },
+                          { label: 'Large', value: '10' },
+                        ]}
+                        value={fontSize}
+                        onChange={setFontSize}
+                        label="Select Year Size"
+                        icon={TextAaIcon}
+                      />
+                    </div>
+                    <div className="col-span-1">
+                      <label className="block text-sm font-medium text-gray-400 mb-1">Year Font Size</label>
+                      <CustomDropdown
+                        options={[
+                          { label: 'Small', value: '4' },
+                          { label: 'Medium', value: '6' },
+                          { label: 'Large', value: '8' },
+                        ]}
+                        value={foundedYearFontSize}
+                        onChange={setFoundedYearFontSize}
+                        label="Select Year Size"
+                        icon={TextAaIcon}
+                      />
+                    </div>
+                  </div>
                 </div>
 
                 <div>
