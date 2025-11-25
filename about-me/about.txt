@@ -1,8 +1,13 @@
-Hello there! I'm **A. Samil Bulbul**, a **senior software engineer** who just really enjoys building things for the web and beyond. 🚀
-I've been lucky enough to work on some cool projects over the past *8+ years*, from leading new products to diving deep into cloud technologies and security.
-I'm a big fan of open-source and love the challenge of solving tricky problems.
-When I'm not coding, you can probably find me exploring new tech or enjoying a good cup of coffee ☕.
-I'm always learning and excited to see what's next!
+Hello! I'm **A. Samil Bulbul**, a **Senior Software Engineer** with a passion for constructing robust,
+high-performance systems. With over **8 years** of experience, I specialize in **Go** and **system design**,
+architecting scalable solutions that solve complex real-world problems. 🚀
+
+My journey has taken me from developing critical infrastructure for smart cities to leading product initiatives
+in the security sector. I thrive on the challenges of distributed systems and cloud-native technologies,
+always aiming for efficiency and reliability in every line of code.
+
+Beyond the terminal, I'm an open-source enthusiast and a lifelong learner. When I'm not optimizing backend services,
+you can find me exploring new tech or enjoying a good cup of coffee ☕.
 
 ## Experience
 
@@ -10,12 +15,12 @@ I'm always learning and excited to see what's next!
 2.  **Senior Software Engineer** at *Aselsan - Smart Cities* (Jan 2021 - Oct 2022)
 3.  **Software Engineer & DevOps Engineer** at *Aselsan - Toll Collection Systems* (Jan 2018 - Jan 2021)
 
-## My Skills
+## Technical Expertise
 
 *   **Programming Languages:** Go, C++, C, Java, JavaScript/TypeScript, Python, Rust, SQL
 *   **Cloud & DevOps:** Kubernetes (K8S), Docker, AWS, GCP, Azure, CI/CD, Jenkins, Terraform, GitLab
 *   **Databases:** PostgreSQL, MongoDB, Redis
-*   **Frameworks & Core Concepts:** System Design, Microservices, Distributed Systems, gRPC, Node.js, Ex-press.js, JavaFX,
+*   **Frameworks & Core Concepts:** System Design, Microservices, Distributed Systems, gRPC, Node.js, Express.js, JavaFX,
 *   **Developer Tools:** Git, CMake, Conan, Nexus Repository Manager, Bitbucket, Linux, Docker
 
 ## Useful Links
@@ -25,6 +30,15 @@ I'm always learning and excited to see what's next!
 
 ## Currently...
 
-*   **🎵 Making Music:** I'm currently exploring the world of music production, creating some sick beats and melodies. It's a fun way to unwind and get creative, but my tracks are still top secret! 🤫
+*   **🎵 Making Music:** I'm currently exploring the world of music production, creating some sick beats and melodies.
+It's a fun way to unwind and get creative, but my tracks are still top secret! 🤫
 *   **📚 Reading:** Trying to read all the books I purchase... It's a work in progress!
 *   **🤔 Thinking about:** How to build the perfect mechanical keyboard and create the best sound system.
+*   **🎮 Narrative Grooving:** Vibing with story-driven games. I'm letting the plot beats drop and the character arcs
+flow—it's my kind of interactive jam session! 🤘
+
+## More...
+
+| 🗂️ Some of my Work          | 📖 Articles written  | 🖼️ Stuff I Consume     | ✨ Some Small Apps |
+|:---------------------------:|:--------------------:|:----------------------:|:-------------------:|
+| [Projects](/#/projects)  | [Blogs](/#/blog) | [Logs](/#/logs)        | [ Apps](/#/apps)    |
