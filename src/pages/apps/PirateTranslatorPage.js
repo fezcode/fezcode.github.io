@@ -1,0 +1,167 @@
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import {ArrowLeftIcon, SkullIcon} from '@phosphor-icons/react';
+import colors from '../../config/colors';
+import useSeo from '../../hooks/useSeo';
+
+const pirateDictionary = {
+  "hello": "ahoy",
+  "hi": "ahoy",
+  "my": "me",
+  "friend": "matey",
+  "is": "be",
+  "are": "be",
+  "you": "ye",
+  "your": "yer",
+  "where": "whar",
+  "to": "t'",
+  "the": "th'",
+  "of": "o'",
+  "stop": "avast",
+  "yes": "aye",
+  "no": "nay",
+  "girl": "lass",
+  "boy": "lad",
+  "money": "booty",
+  "quickly": "smartly",
+  "captain": "cap'n",
+  "beer": "grog",
+  "water": "brine",
+  "happy": "jolly",
+  "good": "grand",
+  "bad": "scurvy",
+  "very": "mighty",
+  "wow": "blimey",
+  "there": "thar",
+  "mad": "addled",
+  "boss": "admiral",
+  "food": "grub",
+  "hotel": "inn",
+  "house": "shack",
+  "kill": "keelhaul",
+  "died": "walked the plank",
+  "old": "barnacle-covered",
+  "bathroom": "head",
+  "restroom": "head",
+  "toilet": "head",
+  "wife": "ball and chain",
+  "song": "shanty",
+  "music": "shanty",
+  "cheat": "swindle",
+  "rob": "pillage",
+  "steal": "plunder",
+  "take": "seize",
+  "gun": "pistol",
+  "sword": "cutlass",
+  "knife": "dagger",
+  "ship": "vessel",
+  "boat": "dinghy",
+};
+
+const PirateTranslatorPage = () => {
+  useSeo({
+    title: 'Pirate Speak Translator | Fezcodex',
+    description: 'Translate yer landlubber words into proper Pirate speak!',
+    keywords: ['Fezcodex', 'pirate translator', 'pirate speak', 'fun', 'converter'],
+    ogTitle: 'Pirate Speak Translator | Fezcodex',
+    ogDescription: 'Translate yer landlubber words into proper Pirate speak!',
+    ogImage: 'https://fezcode.github.io/logo512.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Pirate Speak Translator | Fezcodex',
+    twitterDescription: 'Translate yer landlubber words into proper Pirate speak!',
+    twitterImage: 'https://fezcode.github.io/logo512.png',
+  });
+
+  const [inputText, setInputText] = useState('');
+  const [translatedText, setTranslatedText] = useState('');
+
+  const translate = () => {
+    let text = inputText.toLowerCase();
+    Object.keys(pirateDictionary).forEach(key => {
+      const regex = new RegExp(`\b${key}\b`, 'g');
+      text = text.replace(regex, pirateDictionary[key]);
+    });
+    // Capitalize first letter of sentences
+    text = text.replace(/(^\w|\.\s\w)/g, c => c.toUpperCase());
+
+    // Add some pirate flair randomly
+    if (text.length > 0 && Math.random() > 0.5) {
+      text += " Arrr!";
+    }
+
+    setTranslatedText(text);
+  };
+
+  const cardStyle = {
+    backgroundColor: colors['app-alpha-10'],
+    borderColor: colors['app-alpha-50'],
+    color: colors.app,
+  };
+
+  return (
+    <div className="py-16 sm:py-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
+        <Link
+          to="/apps"
+          className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon size={24}/> Back to Apps
+        </Link>
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
+          <span className="codex-color">fc</span>
+          <span className="separator-color">::</span>
+          <span className="apps-color">apps</span>
+          <span className="separator-color">::</span>
+          <span className="single-app-color">pirate</span>
+        </h1>
+        <hr className="border-gray-700"/>
+        <div className="flex justify-center items-center mt-16">
+          <div
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-2xl"
+            style={cardStyle}
+          >
+            <div
+              className="absolute top-0 left-0 w-full h-full opacity-10"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
+              }}
+            ></div>
+            <div className="relative z-10 p-1 text-center">
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center justify-center gap-2">
+                <SkullIcon size={32}/> Pirate Speak Translator
+              </h1>
+              <hr className="border-gray-700 mb-6"/>
+
+              <div className="flex flex-col gap-4 mb-6">
+                <textarea
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  placeholder="Type yer message here, matey..."
+                  className="w-full h-32 bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-red-500 transition-colors resize-none"
+                />
+                <button
+                  onClick={translate}
+                  className="px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 hover:bg-red-500/20 text-red-500 border-red-500"
+                >
+                  Translate, Yarr!
+                </button>
+              </div>
+
+              {translatedText && (
+                <div
+                  className="bg-black/30 p-4 rounded border border-gray-700 min-h-[80px] text-left font-serif italic text-lg text-gray-200">
+                  {translatedText}
+                </div>
+              )}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PirateTranslatorPage;

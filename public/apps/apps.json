@@ -147,11 +147,25 @@
         "icon": "QuestionIcon"
       },
       {
-        "slug": "bubble-wrap",
-        "to": "/apps/bubble-wrap",
-        "title": "Bubble Wrap",
-        "description": "Pop some virtual bubble wrap to relieve stress.",
-        "icon": "CirclesFourIcon"
+        "slug": "banana-converter",
+        "to": "/apps/banana-converter",
+        "title": "Banana for Scale",
+        "description": "Convert real-world measurements into standard bananas.",
+        "icon": "PlantIcon"
+      },
+      {
+        "slug": "pirate-translator",
+        "to": "/apps/pirate-translator",
+        "title": "Pirate Speak Translator",
+        "description": "Translate your landlubber words into proper Pirate speak!",
+        "icon": "SkullIcon"
+      },
+      {
+        "slug": "galactic-age",
+        "to": "/apps/galactic-age",
+        "title": "Galactic Age Converter",
+        "description": "Calculate your age on other planets in our solar system.",
+        "icon": "PlanetIcon"
       }
     ]
   },
@@ -337,6 +351,13 @@
         "title": "Pomodoro Timer",
         "description": "A simple and customizable Pomodoro timer to boost your productivity.",
         "icon": "TimerIcon"
+      },
+      {
+        "slug": "bpm-guesser",
+        "to": "/apps/bpm-guesser",
+        "title": "BPM Guesser",
+        "description": "Tap the beat to guess the BPM of a song.",
+        "icon": "MetronomeIcon"
       }
     ]
   }

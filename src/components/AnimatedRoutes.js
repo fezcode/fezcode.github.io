@@ -62,6 +62,10 @@ import WhackABugPage from '../pages/apps/WhackABugPage';
 import BubbleWrapPage from '../pages/apps/BubbleWrapPage';
 import LoremIpsumGeneratorPage from '../pages/apps/LoremIpsumGeneratorPage';
 import SimonSaysPage from '../pages/apps/SimonSaysPage';
+import BananaConverterPage from '../pages/apps/BananaConverterPage';
+import PirateTranslatorPage from '../pages/apps/PirateTranslatorPage';
+import GalacticAgePage from '../pages/apps/GalacticAgePage';
+import BpmGuesserPage from '../pages/apps/BpmGuesserPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -578,6 +582,22 @@ function AnimatedRoutes() {
         <Route
           path="/apps::lorem"
           element={<Navigate to="/apps/lorem-ipsum-generator" replace />}
+        />
+        <Route
+          path="/apps::banana"
+          element={<Navigate to="/apps/banana-converter" replace />}
+        />
+        <Route
+          path="/apps::pirate"
+          element={<Navigate to="/apps/pirate-translator" replace />}
+        />
+        <Route
+          path="/apps::space"
+          element={<Navigate to="/apps/galactic-age" replace />}
+        />
+        <Route
+          path="/apps::bpm"
+          element={<Navigate to="/apps/bpm-guesser" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1194,6 +1214,62 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <LoremIpsumGeneratorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/banana-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <BananaConverterPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/pirate-translator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <PirateTranslatorPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/galactic-age"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <GalacticAgePage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/bpm-guesser"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <BpmGuesserPage />
             </motion.div>
           }
         />
