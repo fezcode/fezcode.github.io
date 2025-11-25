@@ -2,56 +2,56 @@ import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
-  Trophy,
-  Star,
-  Heart,
-  Skull,
-  PawPrint,
-  Atom,
-  Lightning,
-  SoccerBall,
-  Crown,
-  Fire,
-  Sword,
-  Anchor,
-  DownloadSimple,
-  TextAa,
-  Alien,
-  Ghost,
-  Robot,
-  Smiley,
-  Shield,
-  GameController,
-  Basketball,
-  Baseball,
-  Volleyball,
-  Football,
-  TennisBall,
-  Hockey,
-  Bird,
-  Cat,
-  Dog,
-  Fish,
-  Bug,
-  Tree,
-  Leaf,
-  Sun,
-  Moon,
-  Snowflake,
-  Rocket,
-  Boat,
-  Airplane,
-  Car,
-  Bicycle,
-  Pizza,
-  Hamburger,
-  Coffee,
-  MusicNote,
-  Headphones,
-  GlobeHemisphereWest,
-  Lightbulb,
-  Infinity,
-  Brain,
+  TrophyIcon,
+  StarIcon,
+  HeartIcon,
+  SkullIcon,
+  PawPrintIcon,
+  AtomIcon,
+  LightningIcon,
+  SoccerBallIcon,
+  CrownIcon,
+  FireIcon,
+  SwordIcon,
+  AnchorIcon,
+  DownloadSimpleIcon,
+  TextAaIcon,
+  AlienIcon,
+  GhostIcon,
+  RobotIcon,
+  SmileyIcon,
+  ShieldIcon,
+  GameControllerIcon,
+  BasketballIcon,
+  BaseballIcon,
+  VolleyballIcon,
+  FootballIcon,
+  TennisBallIcon,
+  HockeyIcon,
+  BirdIcon,
+  CatIcon,
+  DogIcon,
+  FishIcon,
+  BugIcon,
+  TreeIcon,
+  LeafIcon,
+  SunIcon,
+  MoonIcon,
+  SnowflakeIcon,
+  RocketIcon,
+  BoatIcon,
+  AirplaneIcon,
+  CarIcon,
+  BicycleIcon,
+  PizzaIcon,
+  HamburgerIcon,
+  CoffeeIcon,
+  MusicNoteIcon,
+  HeadphonesIcon,
+  GlobeHemisphereWestIcon,
+  LightbulbIcon,
+  InfinityIcon,
+  BrainIcon,
 } from '@phosphor-icons/react';
 import CustomDropdown from '../../components/CustomDropdown'; // Add this line
 import colors from '../../config/colors';
@@ -96,54 +96,54 @@ const FootballEmblemCreatorPage = () => {
   const buttonStyle = `px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button`;
 
   const icons = {
-    soccer: <SoccerBall weight="fill" />,
-    trophy: <Trophy weight="fill" />,
-    star: <Star weight="fill" />,
-    heart: <Heart weight="fill" />,
-    skull: <Skull weight="fill" />,
-    paw: <PawPrint weight="fill" />,
-    atom: <Atom weight="fill" />,
-    lightning: <Lightning weight="fill" />,
-    crown: <Crown weight="fill" />,
-    fire: <Fire weight="fill" />,
-    sword: <Sword weight="fill" />,
-    anchor: <Anchor weight="fill" />,
-    alien: <Alien weight="fill" />,
-    ghost: <Ghost weight="fill" />,
-    robot: <Robot weight="fill" />,
-    smiley: <Smiley weight="fill" />,
-    shield: <Shield weight="fill" />,
-    game: <GameController weight="fill" />,
-    basketball: <Basketball weight="fill" />,
-    baseball: <Baseball weight="fill" />,
-    volleyball: <Volleyball weight="fill" />,
-    football: <Football weight="fill" />,
-    tennis: <TennisBall weight="fill" />,
-    hockey: <Hockey weight="fill" />,
-    bird: <Bird weight="fill" />,
-    cat: <Cat weight="fill" />,
-    dog: <Dog weight="fill" />,
-    fish: <Fish weight="fill" />,
-    bug: <Bug weight="fill" />,
-    tree: <Tree weight="fill" />,
-    leaf: <Leaf weight="fill" />,
-    sun: <Sun weight="fill" />,
-    moon: <Moon weight="fill" />,
-    snowflake: <Snowflake weight="fill" />,
-    rocket: <Rocket weight="fill" />,
-    boat: <Boat weight="fill" />,
-    airplane: <Airplane weight="fill" />,
-    car: <Car weight="fill" />,
-    bicycle: <Bicycle weight="fill" />,
-    pizza: <Pizza weight="fill" />,
-    hamburger: <Hamburger weight="fill" />,
-    coffee: <Coffee weight="fill" />,
-    music: <MusicNote weight="fill" />,
-    headphones: <Headphones weight="fill" />,
-    globe: <GlobeHemisphereWest weight="fill" />,
-    lightbulb: <Lightbulb weight="fill" />,
-    infinity: <Infinity weight="fill" />,
-    brain: <Brain weight="fill" />,
+    soccer: <SoccerBallIcon weight="fill" />,
+    trophy: <TrophyIcon weight="fill" />,
+    star: <StarIcon weight="fill" />,
+    heart: <HeartIcon weight="fill" />,
+    skull: <SkullIcon weight="fill" />,
+    paw: <PawPrintIcon weight="fill" />,
+    atom: <AtomIcon weight="fill" />,
+    lightning: <LightningIcon weight="fill" />,
+    crown: <CrownIcon weight="fill" />,
+    fire: <FireIcon weight="fill" />,
+    sword: <SwordIcon weight="fill" />,
+    anchor: <AnchorIcon weight="fill" />,
+    alien: <AlienIcon weight="fill" />,
+    ghost: <GhostIcon weight="fill" />,
+    robot: <RobotIcon weight="fill" />,
+    smiley: <SmileyIcon weight="fill" />,
+    shield: <ShieldIcon weight="fill" />,
+    game: <GameControllerIcon weight="fill" />,
+    basketball: <BasketballIcon weight="fill" />,
+    baseball: <BaseballIcon weight="fill" />,
+    volleyball: <VolleyballIcon weight="fill" />,
+    football: <FootballIcon weight="fill" />,
+    tennis: <TennisBallIcon weight="fill" />,
+    hockey: <HockeyIcon weight="fill" />,
+    bird: <BirdIcon weight="fill" />,
+    cat: <CatIcon weight="fill" />,
+    dog: <DogIcon weight="fill" />,
+    fish: <FishIcon weight="fill" />,
+    bug: <BugIcon weight="fill" />,
+    tree: <TreeIcon weight="fill" />,
+    leaf: <LeafIcon weight="fill" />,
+    sun: <SunIcon weight="fill" />,
+    moon: <MoonIcon weight="fill" />,
+    snowflake: <SnowflakeIcon weight="fill" />,
+    rocket: <RocketIcon weight="fill" />,
+    boat: <BoatIcon weight="fill" />,
+    airplane: <AirplaneIcon weight="fill" />,
+    car: <CarIcon weight="fill" />,
+    bicycle: <BicycleIcon weight="fill" />,
+    pizza: <PizzaIcon weight="fill" />,
+    hamburger: <HamburgerIcon weight="fill" />,
+    coffee: <CoffeeIcon weight="fill" />,
+    music: <MusicNoteIcon weight="fill" />,
+    headphones: <HeadphonesIcon weight="fill" />,
+    globe: <GlobeHemisphereWestIcon weight="fill" />,
+    lightbulb: <LightbulbIcon weight="fill" />,
+    infinity: <InfinityIcon weight="fill" />,
+    brain: <BrainIcon weight="fill" />,
   };
 
   const handleDownload = () => {
@@ -315,7 +315,7 @@ const FootballEmblemCreatorPage = () => {
                                 value={foundedYearFontSize}
                                 onChange={setFoundedYearFontSize}
                                 label="Select Year Size"
-                                icon={TextAa}
+                                icon={TextAaIcon}
                              />
                         </div>
                         <div className="flex items-center mt-2">
@@ -367,7 +367,7 @@ const FootballEmblemCreatorPage = () => {
                                 value={shieldShape}
                                 onChange={setShieldShape}
                                 label="Select Shield Shape"
-                                icon={Trophy} // Reusing Trophy icon
+                                icon={TrophyIcon} // Reusing Trophy icon
                              />
                         </div>
                          <div>
@@ -386,7 +386,7 @@ const FootballEmblemCreatorPage = () => {
                                 value={pattern}
                                 onChange={setPattern}
                                 label="Select Pattern"
-                                icon={SoccerBall} // Reusing SoccerBall icon
+                                icon={SoccerBallIcon} // Reusing SoccerBall icon
                              />
                         </div>
                     </div>
@@ -460,7 +460,7 @@ const FootballEmblemCreatorPage = () => {
                     onClick={handleDownload}
                     className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
                  >
-                    <DownloadSimple size={20} className="inline-block mr-2" />
+                    <DownloadSimpleIcon size={20} className="inline-block mr-2" />
                     Download Emblem
                  </button>
 
