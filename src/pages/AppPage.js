@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CaretDown, CaretRight } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  CaretDown,
+  CaretRight,
+  FunnelIcon,
+} from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion'; // Import motion and AnimatePresence
 import AppCard from '../components/AppCard';
 import useSeo from '../hooks/useSeo';
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_APPS_COLLAPSED_CATEGORIES } from '../utils/LocalStorageManager';
 import { appIcons } from '../utils/appIcons'; // Import appIcons
+import CustomDropdown from '../components/CustomDropdown'; // Import CustomDropdown
 
 function AppPage() {
   useSeo({
@@ -38,6 +44,7 @@ function AppPage() {
   );
   const [isLoading, setIsLoading] = useState(true);
   const [totalAppsCount, setTotalAppsCount] = useState(0); // New state for total app count
+  const [sortOption, setSortOption] = useState('default'); // 'default', 'created_desc', 'created_asc'
 
   useEffect(() => {
     setIsLoading(true);
@@ -75,6 +82,22 @@ function AppPage() {
     }));
   };
 
+  const sortApps = (apps) => {
+    if (sortOption === 'default') return apps;
+
+    return [...apps].sort((a, b) => {
+      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+
+      if (sortOption === 'created_desc') {
+        return dateB - dateA;
+      } else if (sortOption === 'created_asc') {
+        return dateA - dateB;
+      }
+      return 0;
+    });
+  };
+
   const variants = {
     open: { opacity: 1, height: 'auto' },
     collapsed: { opacity: 0, height: 0 },
@@ -97,6 +120,21 @@ function AppPage() {
           <span className="single-app-color">[{totalAppsCount}]</span>
         </h1>
         <hr className="border-gray-700" />
+
+        <div className="flex justify-end mt-4 mb-2">
+          <CustomDropdown
+            options={[
+              { label: 'Default', value: 'default' },
+              { label: 'Newest First', value: 'created_desc' },
+              { label: 'Oldest First', value: 'created_asc' },
+            ]}
+            value={sortOption}
+            onChange={setSortOption}
+            icon={FunnelIcon}
+            label="Sort By"
+          />
+        </div>
+
         {isLoading ? (
           // Skeleton Loading State
           <div className="mt-8">
@@ -168,7 +206,7 @@ function AppPage() {
                         style={{ overflow: 'hidden' }}
                       >
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                          {category.apps.map((app, index) => (
+                          {sortApps(category.apps).map((app, index) => (
                             <AppCard key={index} app={app} />
                           ))}
                         </div>

@@ -3,9 +3,22 @@ import {Link} from 'react-router-dom';
 import {ArrowLeftIcon, PlantIcon} from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
+import CustomDropdown from '../../components/CustomDropdown'; // Import CustomDropdown
 
 const BANANA_LENGTH_CM = 18; // Average banana length
 const BANANA_WEIGHT_G = 120; // Average banana weight
+
+const unitOptions = [
+  { label: 'cm', value: 'cm' },
+  { label: 'm', value: 'm' },
+  { label: 'km', value: 'km' },
+  { label: 'in', value: 'in' },
+  { label: 'ft', value: 'ft' },
+  { label: 'g', value: 'g' },
+  { label: 'kg', value: 'kg' },
+  { label: 'lb', value: 'lb' },
+  { label: 'oz', value: 'oz' },
+];
 
 const BananaConverterPage = () => {
   useSeo({
@@ -106,11 +119,11 @@ const BananaConverterPage = () => {
         <hr className="border-gray-700"/>
         <div className="flex justify-center items-center mt-16">
           <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-2xl"
+            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform h-full w-full max-w-2xl"
             style={cardStyle}
           >
             <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
+              className="absolute top-0 left-0 w-full h-full opacity-10 rounded-lg overflow-hidden"
               style={{
                 backgroundImage:
                   'radial-gradient(circle, white 1px, transparent 1px)',
@@ -132,25 +145,12 @@ const BananaConverterPage = () => {
                     placeholder="Value"
                     className="w-full bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-yellow-500 transition-colors"
                   />
-                  <select
+                  <CustomDropdown
+                    options={unitOptions}
                     value={inputUnit}
-                    onChange={(e) => setInputUnit(e.target.value)}
-                    className="bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-yellow-500 transition-colors"
-                  >
-                    <optgroup label="Length">
-                      <option value="cm">cm</option>
-                      <option value="m">m</option>
-                      <option value="km">km</option>
-                      <option value="in">inches</option>
-                      <option value="ft">feet</option>
-                    </optgroup>
-                    <optgroup label="Weight">
-                      <option value="g">grams</option>
-                      <option value="kg">kg</option>
-                      <option value="lb">lbs</option>
-                      <option value="oz">oz</option>
-                    </optgroup>
-                  </select>
+                    onChange={setInputUnit}
+                    label="Unit"
+                  />
                 </div>
                 <button
                   onClick={handleConvert}

@@ -10,84 +10,96 @@
         "to": "/apps/card-game",
         "title": "Higher or Lower Card Game",
         "description": "Guess if the next card will be higher or lower than the current one.",
-        "icon": "CardsThreeIcon"
+        "icon": "CardsThreeIcon",
+        "created_at": "2025-11-18T03:57:42+03:00"
       },
       {
         "slug": "soccer-pong",
         "to": "/apps/soccer-pong",
         "title": "Soccer Pong",
         "description": "A Pong-style game with a soccer twist. Player vs. AI.",
-        "icon": "SoccerBallIcon"
+        "icon": "SoccerBallIcon",
+        "created_at": "2025-11-18T04:32:40+03:00"
       },
       {
         "slug": "memory-game",
         "to": "/apps/memory-game",
         "title": "Memory Game",
         "description": "Test your memory by matching pairs of cards.",
-        "icon": "BrainIcon"
+        "icon": "BrainIcon",
+        "created_at": "2025-11-18T04:47:04+03:00"
       },
       {
         "slug": "rock-paper-scissors",
         "to": "/apps/rock-paper-scissors",
         "title": "Rock Paper Scissors",
         "description": "Play the classic game of Rock Paper Scissors against the computer.",
-        "icon": "HandshakeIcon"
+        "icon": "HandshakeIcon",
+        "created_at": "2025-11-18T05:04:54+03:00"
       },
       {
         "slug": "tic-tac-toe",
         "to": "/apps/tic-tac-toe",
         "title": "Tic Tac Toe",
         "description": "Play the classic game of Tic Tac Toe against another player or AI.",
-        "icon": "XCircleIcon"
+        "icon": "XCircleIcon",
+        "created_at": "2025-11-18T05:08:44+03:00"
       },
       {
         "slug": "connect-four",
         "to": "/apps/connect-four",
         "title": "Connect Four",
         "description": "Play the classic game of Connect Four against another player or AI.",
-        "icon": "AtomIcon"
+        "icon": "AtomIcon",
+        "created_at": "2025-11-18T05:11:43+03:00"
       },
       {
         "slug": "mastermind",
         "to": "/apps/mastermind",
         "title": "Mastermind",
         "description": "Play the classic code-breaking game of Mastermind (Bulls and Cows).",
-        "icon": "PuzzlePieceIcon"
+        "icon": "PuzzlePieceIcon",
+        "created_at": "2025-11-23T18:28:07+03:00"
       },
       {
         "slug": "word-ladder",
         "to": "/apps/word-ladder",
         "title": "Word Ladder",
         "description": "Transform one word into another by changing one letter at a time.",
-        "icon": "LadderSimpleIcon"
+        "icon": "LadderSimpleIcon",
+        "created_at": "2025-11-23T19:45:46+03:00"
       },
       {
         "slug": "lights-out",
         "to": "/apps/lights-out",
         "title": "Lights Out",
         "description": "A classic logic puzzle where you turn off all the lights.",
-        "icon": "LightbulbFilamentIcon"
+        "icon": "LightbulbFilamentIcon",
+        "created_at": "2025-11-23T20:20:54+03:00"
       },
       {
         "slug": "nonogram",
         "to": "/apps/nonogram",
         "title": "Nonogram",
         "description": "Solve picture logic puzzles by filling cells according to numerical clues.",
-        "icon": "GridFourIcon"
+        "icon": "GridFourIcon",
+        "created_at": "2025-11-23T20:43:44+03:00"
       },
       {
         "slug": "whack-a-bug",
         "to": "/apps/whack-a-bug",
         "title": "Whack-a-Bug",
         "description": "Test your reflexes by fixing bugs as fast as you can!",
-        "icon": "BugIcon"
+        "icon": "BugIcon",
+        "created_at": "2025-11-25T15:25:02+03:00"
       },
       {
         "slug": "simon-says",
         "to": "/apps/simon-says",
         "title": "Simon Says",
         "description": "Test your memory by repeating the sequence of lights.",
-        "icon": "CirclesFourIcon"
+        "icon": "CirclesFourIcon",
+        "created_at": "2025-11-25T15:43:25+03:00"
       }
     ]
   },
@@ -102,70 +114,88 @@
         "to": "/apps/codename-generator",
         "title": "Codename Generator",
         "description": "Generate cool, spy-ish project names.",
-        "icon": "ShieldCheckIcon"
+        "icon": "ShieldCheckIcon",
+        "created_at": "2025-11-09T03:48:19+03:00"
       },
       {
         "slug": "fantasy-name-generator",
         "to": "/apps/fantasy-name-generator",
         "title": "Fantasy Name Generator",
         "description": "Generate fantasy names for characters, places, and items.",
-        "icon": "SparkleIcon"
+        "icon": "SparkleIcon",
+        "created_at": "2025-11-07T20:00:38+03:00"
       },
       {
         "slug": "picker-wheel",
         "to": "/apps/picker-wheel",
         "title": "Picker Wheel",
         "description": "A spinning wheel to pick a random winner from a list of entries.",
-        "icon": "CircleDashedIcon"
+        "icon": "CircleDashedIcon",
+        "created_at": "2025-11-09T02:43:25+03:00"
       },
       {
         "slug": "tournament-bracket",
         "to": "/apps/tournament-bracket",
         "title": "Tournament Bracket",
         "description": "Create and manage tournament brackets.",
-        "icon": "ListNumbersIcon"
+        "icon": "ListNumbersIcon",
+        "created_at": "2025-11-07T14:22:02+03:00"
       },
       {
         "slug": "dice-roller",
         "to": "/apps/dice-roller",
         "title": "Dice Roller",
         "description": "Roll various types of dice for your games and adventures.",
-        "icon": "DiceSixIcon"
+        "icon": "DiceSixIcon",
+        "created_at": "2025-11-07T20:18:31+03:00"
       },
       {
         "slug": "excuse-generator",
         "to": "/apps/excuse-generator",
         "title": "Excuse Generator",
         "description": "Generate funny and absurd excuses for any situation.",
-        "icon": "SmileyWinkIcon"
+        "icon": "SmileyWinkIcon",
+        "created_at": "2025-11-18T03:40:32+03:00"
       },
       {
         "slug": "magic-8-ball",
         "to": "/apps/magic-8-ball",
         "title": "Magic 8-Ball",
         "description": "Ask a yes/no question and let the Magic 8-Ball reveal your fate!",
-        "icon": "QuestionIcon"
+        "icon": "QuestionIcon",
+        "created_at": "2025-11-18T03:48:58+03:00"
       },
       {
         "slug": "banana-converter",
         "to": "/apps/banana-converter",
         "title": "Banana for Scale",
         "description": "Convert real-world measurements into standard bananas.",
-        "icon": "PlantIcon"
+        "icon": "PlantIcon",
+        "created_at": "2025-11-25T16:14:05+03:00"
       },
       {
         "slug": "pirate-translator",
         "to": "/apps/pirate-translator",
         "title": "Pirate Speak Translator",
         "description": "Translate your landlubber words into proper Pirate speak!",
-        "icon": "SkullIcon"
+        "icon": "SkullIcon",
+        "created_at": "2025-11-25T16:14:05+03:00"
       },
       {
         "slug": "galactic-age",
         "to": "/apps/galactic-age",
         "title": "Galactic Age Converter",
         "description": "Calculate your age on other planets in our solar system.",
-        "icon": "PlanetIcon"
+        "icon": "PlanetIcon",
+        "created_at": "2025-11-25T16:14:05+03:00"
+      },
+      {
+        "slug": "bubble-wrap",
+        "to": "/apps/bubble-wrap",
+        "title": "Bubble Wrap",
+        "description": "Pop some virtual bubble wrap to relieve stress.",
+        "icon": "CirclesFourIcon",
+        "created_at": "2025-11-25T16:01:56+03:00"
       }
     ]
   },
@@ -180,49 +210,56 @@
         "to": "/apps/json-generator",
         "title": "JSON Generator",
         "description": "Generate random JSON objects with customizable structure and data types.",
-        "icon": "BracketsCurlyIcon"
+        "icon": "BracketsCurlyIcon",
+        "created_at": "2025-11-13T22:58:37+03:00"
       },
       {
         "slug": "hash-generator",
         "to": "/apps/hash-generator",
         "title": "Hash Generator",
         "description": "Generate SHA1, SHA256, and SHA512 hashes from text.",
-        "icon": "FingerprintIcon"
+        "icon": "FingerprintIcon",
+        "created_at": "2025-11-07T19:33:40+03:00"
       },
       {
         "slug": "uuid-generator",
         "to": "/apps/uuid-generator",
         "title": "UUID Generator",
         "description": "Generate UUID v4.",
-        "icon": "KeyIcon"
+        "icon": "KeyIcon",
+        "created_at": "2025-11-07T19:33:40+03:00"
       },
       {
         "slug": "password-generator",
         "to": "/apps/password-generator",
         "title": "Password Generator",
         "description": "Generate strong, random passwords with customizable options.",
-        "icon": "KeyIcon"
+        "icon": "KeyIcon",
+        "created_at": "2025-11-11T02:37:54+03:00"
       },
       {
         "slug": "qr-code-generator",
         "to": "/apps/qr-code-generator",
         "title": "QR Code Generator",
         "description": "Generate QR codes from text or URLs with customizable versions and error correction.",
-        "icon": "QrCodeIcon"
+        "icon": "QrCodeIcon",
+        "created_at": "2025-11-11T03:04:03+03:00"
       },
       {
         "slug": "color-palette-generator",
         "to": "/apps/color-palette-generator",
         "title": "Color Palette Generator",
         "description": "Generate random color palettes.",
-        "icon": "PaletteIcon"
+        "icon": "PaletteIcon",
+        "created_at": "2025-11-07T19:33:40+03:00"
       },
       {
         "slug": "lorem-ipsum-generator",
         "to": "/apps/lorem-ipsum-generator",
         "title": "Lorem Ipsum Generator",
         "description": "Generate random placeholder text for your projects.",
-        "icon": "ArticleIcon"
+        "icon": "ArticleIcon",
+        "created_at": "2025-11-25T16:07:49+03:00"
       }
     ]
   },
@@ -237,49 +274,56 @@
         "to": "/apps/json-piml-converter",
         "title": "JSON - PIML Converter",
         "description": "Convert JSON to PIML and vice-versa.",
-        "icon": "CodeIcon"
+        "icon": "CodeIcon",
+        "created_at": "2025-11-13T04:36:09+03:00"
       },
       {
         "slug": "case-converter",
         "to": "/apps/case-converter",
         "title": "Case Converter",
         "description": "Convert text to different cases (e.g., uppercase, lowercase, camelCase).",
-        "icon": "TextAaIcon"
+        "icon": "TextAaIcon",
+        "created_at": "2025-11-07T19:10:17+03:00"
       },
       {
         "slug": "base64-converter",
         "to": "/apps/base64-converter",
         "title": "Base64 Converter",
         "description": "Encode and decode text to and from Base64 format.",
-        "icon": "CodeIcon"
+        "icon": "CodeIcon",
+        "created_at": "2025-11-07T19:33:40+03:00"
       },
       {
         "slug": "url-converter",
         "to": "/apps/url-converter",
         "title": "URL Encoder/Decoder",
         "description": "Encode and decode URL strings.",
-        "icon": "LinkIcon"
+        "icon": "LinkIcon",
+        "created_at": "2025-11-07T19:33:40+03:00"
       },
       {
         "slug": "ascii-converter",
         "to": "/apps/ascii-converter",
         "title": "Text to ASCII Converter",
         "description": "Convert text to ASCII codes and vice-versa.",
-        "icon": "KeyboardIcon"
+        "icon": "KeyboardIcon",
+        "created_at": "2025-11-07T19:33:40+03:00"
       },
       {
         "slug": "css-unit-converter",
         "to": "/apps/css-unit-converter",
         "title": "CSS Unit Converter",
         "description": "Convert between px, em, rem, vw, vh, and % units.",
-        "icon": "RulerIcon"
+        "icon": "RulerIcon",
+        "created_at": "2025-11-07T19:47:38+03:00"
       },
       {
         "slug": "morse-code-translator",
         "to": "/apps/morse-code-translator",
         "title": "Morse Code Translator",
         "description": "Translate text to Morse code and vice-versa, with audio playback.",
-        "icon": "TranslateIcon"
+        "icon": "TranslateIcon",
+        "created_at": "2025-11-23T18:16:28+03:00"
       }
     ]
   },
@@ -294,70 +338,80 @@
         "to": "/apps/image-toolkit",
         "title": "Image Toolkit",
         "description": "A toolkit for basic image manipulations.",
-        "icon": "ImageIcon"
+        "icon": "ImageIcon",
+        "created_at": "2025-11-10T23:58:16+03:00"
       },
       {
         "slug": "image-compressor",
         "to": "/apps/image-compressor",
         "title": "Image Compressor",
         "description": "Compress images to reduce file size while maintaining quality.",
-        "icon": "ArrowsInLineHorizontalIcon"
+        "icon": "ArrowsInLineHorizontalIcon",
+        "created_at": "2025-11-23T12:54:58+03:00"
       },
       {
         "slug": "word-counter",
         "to": "/apps/word-counter",
         "title": "Word Counter",
         "description": "Count words, characters, lines and paragraphs in a text.",
-        "icon": "TextTIcon"
+        "icon": "TextTIcon",
+        "created_at": "2025-11-07T02:36:56+03:00"
       },
       {
         "slug": "json-formatter",
         "to": "/apps/json-formatter",
         "title": "JSON Formatter & Validator",
         "description": "Format and validate JSON data for readability and correctness.",
-        "icon": "CodeIcon"
+        "icon": "CodeIcon",
+        "created_at": "2025-11-11T02:40:49+03:00"
       },
       {
         "slug": "color-contrast-checker",
         "to": "/apps/color-contrast-checker",
         "title": "Color Contrast Checker",
         "description": "Check WCAG color contrast ratios for accessibility.",
-        "icon": "PaletteIcon"
+        "icon": "PaletteIcon",
+        "created_at": "2025-11-11T02:44:51+03:00"
       },
       {
         "slug": "text-diff-checker",
         "to": "/apps/text-diff-checker",
         "title": "Text Diff Checker",
         "description": "Compare two texts and highlight the differences.",
-        "icon": "TextAaIcon"
+        "icon": "TextAaIcon",
+        "created_at": "2025-11-18T03:16:23+03:00"
       },
       {
         "slug": "cron-job-generator",
         "to": "/apps/cron-job-generator",
         "title": "CRON Job Generator",
         "description": "Generate CRON expressions visually and convert human-readable text to CRON.",
-        "icon": "ClockIcon"
+        "icon": "ClockIcon",
+        "created_at": "2025-11-18T03:40:32+03:00"
       },
       {
         "slug": "stopwatch",
         "to": "/apps/stopwatch",
         "title": "Stopwatch",
         "description": "A simple stopwatch with lap functionality.",
-        "icon": "TimerIcon"
+        "icon": "TimerIcon",
+        "created_at": "2025-11-23T17:30:23+03:00"
       },
       {
         "slug": "pomodoro-timer",
         "to": "/apps/pomodoro-timer",
         "title": "Pomodoro Timer",
         "description": "A simple and customizable Pomodoro timer to boost your productivity.",
-        "icon": "TimerIcon"
+        "icon": "TimerIcon",
+        "created_at": "2025-11-23T18:11:03+03:00"
       },
       {
         "slug": "bpm-guesser",
         "to": "/apps/bpm-guesser",
         "title": "BPM Guesser",
         "description": "Tap the beat to guess the BPM of a song.",
-        "icon": "MetronomeIcon"
+        "icon": "MetronomeIcon",
+        "created_at": "2025-11-25T16:14:05+03:00"
       }
     ]
   }
