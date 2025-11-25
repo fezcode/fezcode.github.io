@@ -5,6 +5,7 @@ import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import { QRCodeCanvas } from 'qrcode.react'; // Import the QRCodeCanvas component
+import CustomDropdown from '../../components/CustomDropdown';
 
 const QrCodeGeneratorPage = () => {
   useSeo({
@@ -144,18 +145,14 @@ const QrCodeGeneratorPage = () => {
                   >
                     QR Version (1-40)
                   </label>
-                  <select
-                    id="qrVersion"
-                    className={selectStyle}
+                  <CustomDropdown
+                    options={Array.from({ length: 40 }, (_, i) => i + 1).map(
+                      (v) => ({ label: `Version ${v}`, value: v }),
+                    )}
                     value={version}
-                    onChange={(e) => setVersion(Number(e.target.value))}
-                  >
-                    {Array.from({ length: 40 }, (_, i) => i + 1).map((v) => (
-                      <option key={v} value={v}>
-                        Version {v}
-                      </option>
-                    ))}
-                  </select>
+                    onChange={setVersion}
+                    label="Select Version"
+                  />
                 </div>
                 <div>
                   <label
@@ -164,17 +161,17 @@ const QrCodeGeneratorPage = () => {
                   >
                     Error Correction
                   </label>
-                  <select
-                    id="errorCorrection"
-                    className={selectStyle}
+                  <CustomDropdown
+                    options={[
+                      { label: 'L (Low ~7%)', value: 'L' },
+                      { label: 'M (Medium ~15%)', value: 'M' },
+                      { label: 'Q (Quartile ~25%)', value: 'Q' },
+                      { label: 'H (High ~30%)', value: 'H' },
+                    ]}
                     value={errorCorrectionLevel}
-                    onChange={(e) => setErrorCorrectionLevel(e.target.value)}
-                  >
-                    <option value="L">L (Low ~7%)</option>
-                    <option value="M">M (Medium ~15%)</option>
-                    <option value="Q">Q (Quartile ~25%)</option>
-                    <option value="H">H (High ~30%)</option>
-                  </select>
+                    onChange={setErrorCorrectionLevel}
+                    label="Error Correction"
+                  />
                 </div>
                 <div>
                   <label

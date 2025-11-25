@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple, DiceFive } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
+import CustomDropdown from '../../components/CustomDropdown';
 
 const excuses = {
   late: [
@@ -190,18 +191,15 @@ const ExcuseGeneratorPage = () => {
                 >
                   Select Category:
                 </label>
-                <select
-                  id="category-select"
+                <CustomDropdown
+                  options={Object.keys(excuses).map((category) => ({
+                    label: category.charAt(0).toUpperCase() + category.slice(1),
+                    value: category,
+                  }))}
                   value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500"
-                >
-                  {Object.keys(excuses).map((category) => (
-                    <option key={category} value={category}>
-                      {category.charAt(0).toUpperCase() + category.slice(1)}
-                    </option>
-                  ))}
-                </select>
+                  onChange={setSelectedCategory}
+                  label="Select Category"
+                />
               </div>
 
               <div className="flex flex-col items-center justify-center mb-6 p-4 bg-gray-800/50 rounded-md min-h-[120px]">

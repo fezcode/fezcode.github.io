@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
+import CustomDropdown from '../../components/CustomDropdown';
 import {
   meaningfulKeys,
   generateMeaningfulString,
@@ -347,17 +348,19 @@ function JSONGeneratorPage() {
                   >
                     String Type:
                   </label>
-                  <select
-                    id="stringType"
-                    value={stringType}
-                    onChange={(e) => setStringType(e.target.value)}
-                    className="mt-1 block w-full rounded-md bg-gray-900/50 border-gray-700 shadow-sm focus:border-app focus:ring-app text-app-light"
-                  >
-                    <option value="randomWords">Random Words</option>
-                    <option value="email">Email</option>
-                    <option value="url">URL</option>
-                    <option value="date">Date (YYYY-MM-DD)</option>
-                  </select>
+                  <div className="mt-1">
+                    <CustomDropdown
+                      options={[
+                        { label: 'Random Words', value: 'randomWords' },
+                        { label: 'Email', value: 'email' },
+                        { label: 'URL', value: 'url' },
+                        { label: 'Date (YYYY-MM-DD)', value: 'date' },
+                      ]}
+                      value={stringType}
+                      onChange={setStringType}
+                      label="String Type"
+                    />
+                  </div>
                 </div>
               </div>
 

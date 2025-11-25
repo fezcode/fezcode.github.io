@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
+import CustomDropdown from '../../components/CustomDropdown';
 
 const CssUnitConverterPage = () => {
   useSeo({
@@ -148,19 +149,21 @@ const CssUnitConverterPage = () => {
                   >
                     Unit
                   </label>
-                  <select
-                    id="inputUnit"
-                    className="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500"
-                    value={inputUnit}
-                    onChange={(e) => setInputUnit(e.target.value)}
-                  >
-                    <option value="px">px</option>
-                    <option value="em">em</option>
-                    <option value="rem">rem</option>
-                    <option value="vw">vw</option>
-                    <option value="vh">vh</option>
-                    <option value="percent">%</option>
-                  </select>
+                  <div className="mt-1">
+                    <CustomDropdown
+                      options={[
+                        { label: 'px', value: 'px' },
+                        { label: 'em', value: 'em' },
+                        { label: 'rem', value: 'rem' },
+                        { label: 'vw', value: 'vw' },
+                        { label: 'vh', value: 'vh' },
+                        { label: '%', value: 'percent' },
+                      ]}
+                      value={inputUnit}
+                      onChange={setInputUnit}
+                      label="Unit"
+                    />
+                  </div>
                 </div>
                 <div>
                   <label

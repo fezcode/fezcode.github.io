@@ -6,6 +6,7 @@ import { useToast } from '../../hooks/useToast';
 import Dice from '../../components/Dice';
 import '../../styles/DiceRollerPage.css'; // Import the CSS for animations
 import useSeo from '../../hooks/useSeo';
+import CustomDropdown from '../../components/CustomDropdown';
 
 const DiceRollerPage = () => {
   useSeo({
@@ -123,20 +124,20 @@ const DiceRollerPage = () => {
                   >
                     Dice Type (dX)
                   </label>
-                  <select
-                    id="diceType"
-                    className="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500"
+                  <CustomDropdown
+                    options={[
+                      { label: 'd4', value: 4 },
+                      { label: 'd6', value: 6 },
+                      { label: 'd8', value: 8 },
+                      { label: 'd10', value: 10 },
+                      { label: 'd12', value: 12 },
+                      { label: 'd20', value: 20 },
+                      { label: 'd100', value: 100 },
+                    ]}
                     value={diceType}
-                    onChange={(e) => setDiceType(Number(e.target.value))}
-                  >
-                    <option value={4}>d4</option>
-                    <option value={6}>d6</option>
-                    <option value={8}>d8</option>
-                    <option value={10}>d10</option>
-                    <option value={12}>d12</option>
-                    <option value={20}>d20</option>
-                    <option value={100}>d100</option>
-                  </select>
+                    onChange={setDiceType}
+                    label="Dice Type"
+                  />
                 </div>
                 <div className="flex-1">
                   <label

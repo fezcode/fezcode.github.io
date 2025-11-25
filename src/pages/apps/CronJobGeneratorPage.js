@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
+import CustomDropdown from '../../components/CustomDropdown';
 
 const CronJobGeneratorPage = () => {
   useSeo({
@@ -107,16 +108,12 @@ const CronJobGeneratorPage = () => {
       });
   };
 
-  const renderOptions = (start, end) => {
-    const options = ['*'];
+  const getNumericOptions = (start, end) => {
+    const options = [{ label: '*', value: '*' }];
     for (let i = start; i <= end; i++) {
-      options.push(i.toString());
+      options.push({ label: i.toString(), value: i.toString() });
     }
-    return options.map((opt) => (
-      <option key={opt} value={opt}>
-        {opt}
-      </option>
-    ));
+    return options;
   };
 
   const monthNames = [
@@ -135,6 +132,20 @@ const CronJobGeneratorPage = () => {
     'Dec',
   ];
   const dayOfWeekNames = ['*', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+  const getMonthOptions = () => {
+    return monthNames.map((name, index) => ({
+      label: name,
+      value: index === 0 ? '*' : index.toString(),
+    }));
+  };
+
+  const getDayOfWeekOptions = () => {
+    return dayOfWeekNames.map((name, index) => ({
+      label: name,
+      value: index === 0 ? '*' : index.toString(),
+    }));
+  };
 
   const inputStyle = `mt-1 block w-full p-2 border rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 border-gray-600`;
   const selectStyle = `mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500`;
@@ -188,72 +199,59 @@ const CronJobGeneratorPage = () => {
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Minute
                     </label>
-                    <select
+                    <CustomDropdown
+                      options={getNumericOptions(0, 59)}
                       value={minute}
-                      onChange={(e) => setMinute(e.target.value)}
-                      className={selectStyle}
-                    >
-                      {renderOptions(0, 59)}
-                    </select>
+                      onChange={setMinute}
+                      label="Minute"
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Hour
                     </label>
-                    <select
+                    <CustomDropdown
+                      options={getNumericOptions(0, 23)}
                       value={hour}
-                      onChange={(e) => setHour(e.target.value)}
-                      className={selectStyle}
-                    >
-                      {renderOptions(0, 23)}
-                    </select>
+                      onChange={setHour}
+                      label="Hour"
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Day of Month
                     </label>
-                    <select
+                    <CustomDropdown
+                      options={getNumericOptions(1, 31)}
                       value={dayOfMonth}
-                      onChange={(e) => setDayOfMonth(e.target.value)}
-                      className={selectStyle}
-                    >
-                      {renderOptions(1, 31)}
-                    </select>
+                      onChange={setDayOfMonth}
+                      label="Day"
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Month
                     </label>
-                    <select
+                    <CustomDropdown
+                      options={getMonthOptions()}
                       value={month}
-                      onChange={(e) => setMonth(e.target.value)}
-                      className={selectStyle}
-                    >
-                      {monthNames.map((name, index) => (
-                        <option key={name} value={index === 0 ? '*' : index}>
-                          {name}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={setMonth}
+                      label="Month"
+                    />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-300">
+                    <label className="block text-sm font-medium text-gray-300 mb-1">
                       Day of Week
                     </label>
-                    <select
+                    <CustomDropdown
+                      options={getDayOfWeekOptions()}
                       value={dayOfWeek}
-                      onChange={(e) => setDayOfWeek(e.target.value)}
-                      className={selectStyle}
-                    >
-                      {dayOfWeekNames.map((name, index) => (
-                        <option key={name} value={index === 0 ? '*' : index}>
-                          {name}
-                        </option>
-                      ))}
-                    </select>
+                      onChange={setDayOfWeek}
+                      label="Weekday"
+                    />
                   </div>
                 </div>
                 <div className="flex items-center justify-between bg-gray-800 p-3 rounded-md">

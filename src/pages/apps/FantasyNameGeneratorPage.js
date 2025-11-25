@@ -4,6 +4,7 @@ import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
+import CustomDropdown from '../../components/CustomDropdown';
 
 const FantasyNameGeneratorPage = () => {
   useSeo({
@@ -600,17 +601,17 @@ const FantasyNameGeneratorPage = () => {
                 >
                   Name Type
                 </label>
-                <select
-                  id="nameType"
-                  className="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500"
+                <CustomDropdown
+                  options={[
+                    { label: 'Human', value: 'human' },
+                    { label: 'Elf', value: 'elf' },
+                    { label: 'Dwarf', value: 'dwarf' },
+                    { label: 'Orc', value: 'orc' },
+                  ]}
                   value={nameType}
-                  onChange={(e) => setNameType(e.target.value)}
-                >
-                  <option value="human">Human</option>
-                  <option value="elf">Elf</option>
-                  <option value="dwarf">Dwarf</option>
-                  <option value="orc">Orc</option>
-                </select>
+                  onChange={setNameType}
+                  label="Name Type"
+                />
               </div>
               <button
                 onClick={generateName}
