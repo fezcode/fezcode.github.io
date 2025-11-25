@@ -6,8 +6,11 @@ import colors from '../config/colors';
 import CustomToggle from '../components/CustomToggle';
 import useSeo from '../hooks/useSeo';
 import { useToast } from '../hooks/useToast';
-import { SIDEBAR_KEYS } from '../utils/LocalStorageManager';
-import { remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
+import {
+  KEY_SIDEBAR_STATE,
+  KEY_APPS_COLLAPSED_CATEGORIES,
+  remove as removeLocalStorageItem,
+} from '../utils/LocalStorageManager';
 
 const SettingsPage = () => {
   useSeo({
@@ -33,13 +36,25 @@ const SettingsPage = () => {
   const { addToast } = useToast();
 
   const handleResetSidebarState = () => {
-    SIDEBAR_KEYS.forEach((key) => {
-      removeLocalStorageItem(key);
-    });
+    removeLocalStorageItem(KEY_SIDEBAR_STATE);
 
     addToast({
       title: 'Success',
       message: 'Sidebar state has been reset. The page will now reload.',
+      duration: 3000,
+    });
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+  };
+
+  const handleResetAppsState = () => {
+    removeLocalStorageItem(KEY_APPS_COLLAPSED_CATEGORIES);
+
+    addToast({
+      title: 'Success',
+      message: 'App categories state has been reset. The page will now reload.',
       duration: 3000,
     });
 
@@ -163,6 +178,23 @@ const SettingsPage = () => {
                   className="px-6 py-2 rounded-md font-arvo font-normal transition-colors duration-300 ease-in-out border bg-red-800/50 text-white hover:bg-red-700/50 border-red-700"
                 >
                   Reset Sidebar State
+                </button>
+              </div>
+
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                App Page Settings
+              </h1>
+              <hr className="border-gray-700 mb-4" />
+              <div className="mb-6 ml-4 mr-4">
+                <p className="text-gray-300 mb-4">
+                  Reset the open/closed state of all app categories to their
+                  default.
+                </p>
+                <button
+                  onClick={handleResetAppsState}
+                  className="px-6 py-2 rounded-md font-arvo font-normal transition-colors duration-300 ease-in-out border bg-red-800/50 text-white hover:bg-red-700/50 border-red-700"
+                >
+                  Reset App Categories State
                 </button>
               </div>
 

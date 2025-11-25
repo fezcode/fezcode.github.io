@@ -35,40 +35,27 @@ import Fez from './Fez';
 import { version } from '../version';
 
 import usePersistentState from '../hooks/usePersistentState';
-import {
-  KEY_SIDEBAR_IS_MAIN_OPEN,
-  KEY_SIDEBAR_IS_CONTENT_OPEN,
-  KEY_SIDEBAR_IS_APPS_OPEN,
-  KEY_SIDEBAR_IS_EXTRAS_OPEN,
-  KEY_SIDEBAR_IS_GAMES_OPEN,
-  KEY_SIDEBAR_IS_EXTERNAL_LINKS_OPEN,
-} from '../utils/LocalStorageManager';
+import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 
 const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
-  const [isMainOpen, setIsMainOpen] = usePersistentState(
-    KEY_SIDEBAR_IS_MAIN_OPEN,
-    true,
+  const [sidebarState, setSidebarState] = usePersistentState(
+    KEY_SIDEBAR_STATE,
+    {
+      isMainOpen: true,
+      isContentOpen: true,
+      isAppsOpen: true,
+      isExtrasOpen: false,
+      isGamesOpen: false,
+      isExternalLinksOpen: false,
+    },
   );
-  const [isContentOpen, setIsContentOpen] = usePersistentState(
-    KEY_SIDEBAR_IS_CONTENT_OPEN,
-    true,
-  );
-  const [isAppsOpen, setIsAppsOpen] = usePersistentState(
-    KEY_SIDEBAR_IS_APPS_OPEN,
-    true,
-  );
-  const [isExtrasOpen, setIsExtrasOpen] = usePersistentState(
-    KEY_SIDEBAR_IS_EXTRAS_OPEN,
-    false,
-  );
-  const [isGamesOpen, setIsGamesOpen] = usePersistentState(
-    KEY_SIDEBAR_IS_GAMES_OPEN,
-    false,
-  );
-  const [isExternalLinksOpen, setIsExternalLinksOpen] = usePersistentState(
-    KEY_SIDEBAR_IS_EXTERNAL_LINKS_OPEN,
-    false,
-  );
+
+  const toggleSection = (section) => {
+    setSidebarState((prevState) => ({
+      ...prevState,
+      [section]: !prevState[section],
+    }));
+  };
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -129,7 +116,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
         <div className="flex-grow p-4 overflow-y-auto">
           <div className="mt-8">
             <button
-              onClick={() => setIsMainOpen(!isMainOpen)}
+              onClick={() => toggleSection('isMainOpen')}
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
                 isMainActive ? 'text-sidebar-highlight' : 'text-gray-100'
               }`}
@@ -142,10 +129,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               </span>
               <CaretDownIcon
                 size={20}
-                className={`transition-transform ${isMainOpen ? 'transform rotate-180' : ''}`}
+                className={`transition-transform ${sidebarState.isMainOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-            {isMainOpen && (
+            {sidebarState.isMainOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/" className={getLinkClass}>
                   <HouseIcon size={24} />
@@ -161,7 +148,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
 
           <div className="mt-8">
             <button
-              onClick={() => setIsContentOpen(!isContentOpen)}
+              onClick={() => toggleSection('isContentOpen')}
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
                 isContentActive ? 'text-sidebar-highlight' : 'text-gray-100'
               }`}
@@ -174,10 +161,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               </span>
               <CaretDownIcon
                 size={20}
-                className={`transition-transform ${isContentOpen ? 'transform rotate-180' : ''}`}
+                className={`transition-transform ${sidebarState.isContentOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-            {isContentOpen && (
+            {sidebarState.isContentOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/blog" className={getLinkClass}>
                   <BookOpenIcon size={24} />
@@ -201,7 +188,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
 
           <div className="mt-8">
             <button
-              onClick={() => setIsAppsOpen(!isAppsOpen)}
+              onClick={() => toggleSection('isAppsOpen')}
               className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${
                 isAppsActive ? 'text-sidebar-highlight' : 'text-gray-100'
               }`}
@@ -214,10 +201,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               </span>
               <CaretDownIcon
                 size={20}
-                className={`transition-transform ${isAppsOpen ? 'transform rotate-180' : ''}`}
+                className={`transition-transform ${sidebarState.isAppsOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-            {isAppsOpen && (
+            {sidebarState.isAppsOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/apps" className={getLinkClass}>
                   <SquaresFourIcon size={24} />
@@ -229,8 +216,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
 
           <div className="mt-8">
             <button
-              onClick={() => setIsExtrasOpen(!isExtrasOpen)}
-              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExtrasOpen ? 'text-gray-100' : 'text-gray-100'}`}
+              onClick={() => toggleSection('isExtrasOpen')}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${sidebarState.isExtrasOpen ? 'text-gray-100' : 'text-gray-100'}`}
             >
               <span className="flex items-center gap-2 font-sans text-white">
                 <AlienIcon size={16} />
@@ -239,10 +226,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               </span>
               <CaretDownIcon
                 size={20}
-                className={`transition-transform ${isExtrasOpen ? 'transform rotate-180' : ''}`}
+                className={`transition-transform ${sidebarState.isExtrasOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-            {isExtrasOpen && (
+            {sidebarState.isExtrasOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <NavLink to="/stories" className={getLinkClass}>
                   <SwordIcon className="text-yellow-500" size={24} />
@@ -265,8 +252,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
 
           <div className="mt-8">
             <button
-              onClick={() => setIsGamesOpen(!isGamesOpen)}
-              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isGamesOpen ? 'text-gray-100' : 'text-gray-100'}`}
+              onClick={() => toggleSection('isGamesOpen')}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${sidebarState.isGamesOpen ? 'text-gray-100' : 'text-gray-100'}`}
             >
               <span className="flex items-center gap-2 font-sans text-white">
                 <JoystickIcon size={16} />
@@ -275,10 +262,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               </span>
               <CaretDownIcon
                 size={20}
-                className={`transition-transform ${isGamesOpen ? 'transform rotate-180' : ''}`}
+                className={`transition-transform ${sidebarState.isGamesOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-            {isGamesOpen && (
+            {sidebarState.isGamesOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <a
                   href="https://www.nytimes.com/games/wordle/index.html"
@@ -304,8 +291,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
 
           <div className="mt-8">
             <button
-              onClick={() => setIsExternalLinksOpen(!isExternalLinksOpen)}
-              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isExternalLinksOpen ? 'text-gray-100' : 'text-gray-100'}`}
+              onClick={() => toggleSection('isExternalLinksOpen')}
+              className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${sidebarState.isExternalLinksOpen ? 'text-gray-100' : 'text-gray-100'}`}
             >
               <span className="flex items-center gap-2 font-sans text-white">
                 <AnchorIcon size={16} />
@@ -314,10 +301,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               </span>
               <CaretDownIcon
                 size={20}
-                className={`transition-transform ${isExternalLinksOpen ? 'transform rotate-180' : ''}`}
+                className={`transition-transform ${sidebarState.isExternalLinksOpen ? 'transform rotate-180' : ''}`}
               />
             </button>
-            {isExternalLinksOpen && (
+            {sidebarState.isExternalLinksOpen && (
               <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
                 <a
                   href="https://github.com/fezcode"

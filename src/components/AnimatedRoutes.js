@@ -59,6 +59,7 @@ import WordLadderPage from '../pages/apps/WordLadderPage'; // Import WordLadderP
 import LightsOutPage from '../pages/apps/LightsOutPage'; // Import LightsOutPage
 import NonogramPage from '../pages/apps/NonogramPage'; // Import NonogramPage
 import WhackABugPage from '../pages/apps/WhackABugPage';
+import SimonSaysPage from '../pages/apps/SimonSaysPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -563,6 +564,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::wab"
           element={<Navigate to="/apps/whack-a-bug" replace />}
+        />
+        <Route
+          path="/apps::simon"
+          element={<Navigate to="/apps/simon-says" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1137,6 +1142,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <WhackABugPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/simon-says"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <SimonSaysPage />
             </motion.div>
           }
         />

@@ -4,6 +4,8 @@ import { ArrowLeftIcon, CaretDown, CaretRight } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion'; // Import motion and AnimatePresence
 import AppCard from '../components/AppCard';
 import useSeo from '../hooks/useSeo';
+import usePersistentState from '../hooks/usePersistentState';
+import { KEY_APPS_COLLAPSED_CATEGORIES } from '../utils/LocalStorageManager';
 import { appIcons } from '../utils/appIcons'; // Import appIcons
 
 function AppPage() {
@@ -30,7 +32,10 @@ function AppPage() {
   });
 
   const [groupedApps, setGroupedApps] = useState({});
-  const [collapsedCategories, setCollapsedCategories] = useState({});
+  const [collapsedCategories, setCollapsedCategories] = usePersistentState(
+    KEY_APPS_COLLAPSED_CATEGORIES,
+    {},
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [totalAppsCount, setTotalAppsCount] = useState(0); // New state for total app count
 
@@ -40,14 +45,15 @@ function AppPage() {
       .then((response) => response.json())
       .then((data) => {
         setGroupedApps(data);
-        const initialCollapsedState = Object.keys(data).reduce(
-          (acc, categoryKey) => {
-            acc[categoryKey] = false;
-            return acc;
-          },
-          {},
-        );
-        setCollapsedCategories(initialCollapsedState);
+        setCollapsedCategories((prevState) => {
+          const newState = { ...prevState };
+          Object.keys(data).forEach((key) => {
+            if (newState[key] === undefined) {
+              newState[key] = false; // Default to open
+            }
+          });
+          return newState;
+        });
 
         // Calculate total number of apps
         let count = 0;
@@ -60,7 +66,7 @@ function AppPage() {
       .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [setCollapsedCategories]);
 
   const toggleCategoryCollapse = (categoryKey) => {
     setCollapsedCategories((prevState) => ({

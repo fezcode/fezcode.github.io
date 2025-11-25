@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import useSearchableData from '../hooks/useSearchableData';
 import { useAnimation } from '../context/AnimationContext';
 import { useToast } from '../hooks/useToast';
-import { SIDEBAR_KEYS, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
+import { KEY_SIDEBAR_STATE, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
 import { version } from '../version'; // Import the version
 import LiveClock from './LiveClock'; // Import LiveClock
 import GenerativeArt from './GenerativeArt'; // Import GenerativeArt
@@ -47,9 +47,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                     });
                     break;
                 case 'resetSidebarState':
-                    SIDEBAR_KEYS.forEach((key) => {
-                        removeLocalStorageItem(key);
-                    });
+                    removeLocalStorageItem(KEY_SIDEBAR_STATE);
                     addToast({
                         title: 'Success',
                         message: 'Sidebar state has been reset. The page will now reload.',

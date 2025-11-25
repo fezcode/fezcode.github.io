@@ -1,59 +1,10 @@
 {
-  "Whimsical Tools": {
-    "name": "Whimsical Tools",
-    "description": "Playful generators and tools for creative and imaginative tasks.",
+  "Games": {
+    "name": "Games",
+    "description": "Playable games to test your skills, memory, and luck.",
     "icon": "GameControllerIcon",
     "order": 1,
     "apps": [
-      {
-        "slug": "codename-generator",
-        "to": "/apps/codename-generator",
-        "title": "Codename Generator",
-        "description": "Generate cool, spy-ish project names.",
-        "icon": "ShieldCheckIcon"
-      },
-      {
-        "slug": "fantasy-name-generator",
-        "to": "/apps/fantasy-name-generator",
-        "title": "Fantasy Name Generator",
-        "description": "Generate fantasy names for characters, places, and items.",
-        "icon": "SparkleIcon"
-      },
-      {
-        "slug": "picker-wheel",
-        "to": "/apps/picker-wheel",
-        "title": "Picker Wheel",
-        "description": "A spinning wheel to pick a random winner from a list of entries.",
-        "icon": "CircleDashedIcon"
-      },
-      {
-        "slug": "tournament-bracket",
-        "to": "/apps/tournament-bracket",
-        "title": "Tournament Bracket",
-        "description": "Create and manage tournament brackets.",
-        "icon": "ListNumbersIcon"
-      },
-      {
-        "slug": "dice-roller",
-        "to": "/apps/dice-roller",
-        "title": "Dice Roller",
-        "description": "Roll various types of dice for your games and adventures.",
-        "icon": "DiceSixIcon"
-      },
-      {
-        "slug": "excuse-generator",
-        "to": "/apps/excuse-generator",
-        "title": "Excuse Generator",
-        "description": "Generate funny and absurd excuses for any situation.",
-        "icon": "SmileyWinkIcon"
-      },
-      {
-        "slug": "magic-8-ball",
-        "to": "/apps/magic-8-ball",
-        "title": "Magic 8-Ball",
-        "description": "Ask a yes/no question and let the Magic 8-Ball reveal your fate!",
-        "icon": "QuestionIcon"
-      },
       {
         "slug": "card-game",
         "to": "/apps/card-game",
@@ -130,6 +81,70 @@
         "title": "Whack-a-Bug",
         "description": "Test your reflexes by fixing bugs as fast as you can!",
         "icon": "BugIcon"
+      },
+      {
+        "slug": "simon-says",
+        "to": "/apps/simon-says",
+        "title": "Simon Says",
+        "description": "Test your memory by repeating the sequence of lights.",
+        "icon": "CirclesFourIcon"
+      }
+    ]
+  },
+  "Whimsical Tools": {
+    "name": "Whimsical Tools",
+    "description": "Playful generators and tools for creative and imaginative tasks.",
+    "icon": "SparkleIcon",
+    "order": 2,
+    "apps": [
+      {
+        "slug": "codename-generator",
+        "to": "/apps/codename-generator",
+        "title": "Codename Generator",
+        "description": "Generate cool, spy-ish project names.",
+        "icon": "ShieldCheckIcon"
+      },
+      {
+        "slug": "fantasy-name-generator",
+        "to": "/apps/fantasy-name-generator",
+        "title": "Fantasy Name Generator",
+        "description": "Generate fantasy names for characters, places, and items.",
+        "icon": "SparkleIcon"
+      },
+      {
+        "slug": "picker-wheel",
+        "to": "/apps/picker-wheel",
+        "title": "Picker Wheel",
+        "description": "A spinning wheel to pick a random winner from a list of entries.",
+        "icon": "CircleDashedIcon"
+      },
+      {
+        "slug": "tournament-bracket",
+        "to": "/apps/tournament-bracket",
+        "title": "Tournament Bracket",
+        "description": "Create and manage tournament brackets.",
+        "icon": "ListNumbersIcon"
+      },
+      {
+        "slug": "dice-roller",
+        "to": "/apps/dice-roller",
+        "title": "Dice Roller",
+        "description": "Roll various types of dice for your games and adventures.",
+        "icon": "DiceSixIcon"
+      },
+      {
+        "slug": "excuse-generator",
+        "to": "/apps/excuse-generator",
+        "title": "Excuse Generator",
+        "description": "Generate funny and absurd excuses for any situation.",
+        "icon": "SmileyWinkIcon"
+      },
+      {
+        "slug": "magic-8-ball",
+        "to": "/apps/magic-8-ball",
+        "title": "Magic 8-Ball",
+        "description": "Ask a yes/no question and let the Magic 8-Ball reveal your fate!",
+        "icon": "QuestionIcon"
       }
     ]
   },
@@ -137,7 +152,7 @@
     "name": "Generators",
     "description": "Tools for generating various types of data and content.",
     "icon": "MagicWandIcon",
-    "order": 2,
+    "order": 3,
     "apps": [
       {
         "slug": "json-generator",
@@ -187,7 +202,7 @@
     "name": "Converters",
     "description": "Tools for converting data formats and types.",
     "icon": "ArrowsLeftRightIcon",
-    "order": 3,
+    "order": 4,
     "apps": [
       {
         "slug": "json-piml-converter",
@@ -244,7 +259,7 @@
     "name": "Utilities",
     "description": "General purpose tools and helpers for various tasks.",
     "icon": "ToolboxIcon",
-    "order": 4,
+    "order": 5,
     "apps": [
       {
         "slug": "image-toolkit",

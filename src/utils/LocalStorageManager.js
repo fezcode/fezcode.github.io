@@ -13,21 +13,8 @@ export const KEY_SHOW_ANIMATIONS_HOMEPAGE = 'showAnimationsHomepage';
 export const KEY_SHOW_ANIMATIONS_INNER_PAGES = 'showAnimationsInnerPages';
 
 // Sidebar Section States
-export const KEY_SIDEBAR_IS_MAIN_OPEN = 'sidebar_isMainOpen';
-export const KEY_SIDEBAR_IS_CONTENT_OPEN = 'sidebar_isContentOpen';
-export const KEY_SIDEBAR_IS_APPS_OPEN = 'sidebar_isAppsOpen';
-export const KEY_SIDEBAR_IS_EXTRAS_OPEN = 'sidebar_isExtrasOpen';
-export const KEY_SIDEBAR_IS_GAMES_OPEN = 'sidebar_isGamesOpen';
-export const KEY_SIDEBAR_IS_EXTERNAL_LINKS_OPEN = 'sidebar_isExternalLinksOpen';
-
-export const SIDEBAR_KEYS = [
-  KEY_SIDEBAR_IS_MAIN_OPEN,
-  KEY_SIDEBAR_IS_CONTENT_OPEN,
-  KEY_SIDEBAR_IS_APPS_OPEN,
-  KEY_SIDEBAR_IS_EXTRAS_OPEN,
-  KEY_SIDEBAR_IS_GAMES_OPEN,
-  KEY_SIDEBAR_IS_EXTERNAL_LINKS_OPEN,
-];
+export const KEY_SIDEBAR_STATE = 'sidebar_state';
+export const KEY_APPS_COLLAPSED_CATEGORIES = 'apps_collapsedCategories';
 
 // --- Utility Functions ---
 

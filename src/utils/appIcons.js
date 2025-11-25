@@ -37,6 +37,7 @@ import {
   LightbulbFilamentIcon,
   GridFourIcon,
   BugIcon,
+  CirclesFourIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -78,4 +79,5 @@ export const appIcons = {
   LightbulbFilamentIcon,
   GridFourIcon,
   BugIcon,
+  CirclesFourIcon,
 };
