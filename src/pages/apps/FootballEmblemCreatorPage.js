@@ -198,8 +198,8 @@ const FootballEmblemCreatorPage = () => {
             <g clipPath="url(#shieldClip)">
                 {pattern === 'stripes' && (
                     <React.Fragment>
-                        <rect x="30" y="11" width="10" height="100" fill={secondaryColor} opacity={opacity} />
-                        <rect x="60" y="11" width="10" height="100" fill={secondaryColor} opacity={opacity} />
+                        <rect x="30" y="0" width="10" height="100" fill={secondaryColor} opacity={opacity} />
+                        <rect x="60" y="0" width="10" height="100" fill={secondaryColor} opacity={opacity} />
                     </React.Fragment>
                 )}
                  {pattern === 'half' && (
