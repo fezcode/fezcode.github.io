@@ -68,6 +68,7 @@ import GalacticAgePage from '../pages/apps/GalacticAgePage';
 import BpmGuesserPage from '../pages/apps/BpmGuesserPage';
 import WhiteboardPage from '../pages/apps/WhiteboardPage';
 import FootballEmblemCreatorPage from '../pages/apps/FootballEmblemCreatorPage';
+import RoguelikeGamePage from '../pages/apps/RoguelikeGamePage'; // Import RoguelikeGamePage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -628,6 +629,10 @@ function AnimatedRoutes() {
           path="/apps::fec"
           element={<Navigate to="/apps/football-emblem-creator" replace />}
         />
+        <Route
+          path="/apps::rl"
+          element={<Navigate to="/apps/roguelike-game" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -640,6 +645,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/roguelike-game"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <RoguelikeGamePage />
             </motion.div>
           }
         />

@@ -45,6 +45,7 @@ import {
   MetronomeIcon,
   PencilSimpleIcon,
   TrophyIcon,
+  CubeIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -94,4 +95,5 @@ export const appIcons = {
   MetronomeIcon,
   PencilSimpleIcon,
   TrophyIcon,
+  CubeIcon,
 };
