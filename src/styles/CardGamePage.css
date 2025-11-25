@@ -1,6 +1,6 @@
 /* src/styles/CardGamePage.css */
 
-.card-placeholder {
+.playing-card-placeholder {
   width: 100px;
   height: 140px;
   border: 2px dashed #4a5568; /* gray-600 */
@@ -13,7 +13,7 @@
   background-color: #2d3748; /* gray-800 */
 }
 
-.card {
+.playing-card {
   width: 100px;
   height: 140px;
   background-color: #fff;
@@ -30,32 +30,32 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.card.red {
+.playing-card.red {
   color: #ef4444; /* red-500 */
 }
 
-.card.black {
+.playing-card.black {
   color: #1a202c; /* gray-900 */
 }
 
-.card-corner {
+.playing-card-corner {
   position: absolute;
   font-size: 1.2rem;
   line-height: 1;
 }
 
-.card-corner.top-left {
+.playing-card-corner.top-left {
   top: 5px;
   left: 5px;
 }
 
-.card-corner.bottom-right {
+.playing-card-corner.bottom-right {
   bottom: 5px;
   right: 5px;
   transform: rotate(180deg);
 }
 
-.card-suit-center {
+.playing-card-suit-center {
   font-size: 3rem;
   line-height: 1;
   position: absolute;
@@ -65,7 +65,7 @@
 }
 
 /* Animation for next card */
-.next-card-placeholder {
+.next-playing-card-placeholder {
   animation: pulse-border 1.5s infinite ease-in-out;
 }
 
@@ -81,6 +81,6 @@
   }
 }
 
-.next-card {
+.next-playing-card {
   transform: translateY(-10px); /* Slight lift for emphasis */
 }

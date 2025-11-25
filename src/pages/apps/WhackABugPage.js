@@ -140,7 +140,7 @@ const WhackABugPage = () => {
         >
           <ArrowLeftIcon size={24}/> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
           <span className="codex-color">fc</span>
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>

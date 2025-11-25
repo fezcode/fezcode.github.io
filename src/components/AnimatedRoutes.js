@@ -60,6 +60,7 @@ import LightsOutPage from '../pages/apps/LightsOutPage'; // Import LightsOutPage
 import NonogramPage from '../pages/apps/NonogramPage'; // Import NonogramPage
 import WhackABugPage from '../pages/apps/WhackABugPage';
 import SimonSaysPage from '../pages/apps/SimonSaysPage';
+import BubbleWrapPage from '../pages/apps/BubbleWrapPage';
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -568,6 +569,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::simon"
           element={<Navigate to="/apps/simon-says" replace />}
+        />
+        <Route
+          path="/apps::pop"
+          element={<Navigate to="/apps/bubble-wrap" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1156,6 +1161,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <SimonSaysPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/bubble-wrap"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <BubbleWrapPage />
             </motion.div>
           }
         />

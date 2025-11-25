@@ -145,6 +145,13 @@
         "title": "Magic 8-Ball",
         "description": "Ask a yes/no question and let the Magic 8-Ball reveal your fate!",
         "icon": "QuestionIcon"
+      },
+      {
+        "slug": "bubble-wrap",
+        "to": "/apps/bubble-wrap",
+        "title": "Bubble Wrap",
+        "description": "Pop some virtual bubble wrap to relieve stress.",
+        "icon": "CirclesFourIcon"
       }
     ]
   },

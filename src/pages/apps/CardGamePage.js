@@ -148,7 +148,7 @@ const CardGamePage = () => {
     if (!card)
       return (
         <div
-          className={`card-placeholder ${isNext ? 'next-card-placeholder' : ''}`}
+          className={`playing-card-placeholder ${isNext ? 'next-playing-card-placeholder' : ''}`}
         >
           ?
         </div>
@@ -157,14 +157,14 @@ const CardGamePage = () => {
     const isRed = card.suit === '♥' || card.suit === '♦';
     return (
       <div
-        className={`card ${isRed ? 'red' : 'black'} ${isNext ? 'next-card' : ''}`}
+        className={`playing-card ${isRed ? 'red' : 'black'} ${isNext ? 'next-playing-card' : ''}`}
       >
-        <div className="card-corner top-left">
+        <div className="playing-card-corner top-left">
           <span className="rank">{card.rank}</span>
           <span className="suit">{card.suit}</span>
         </div>
-        <div className="card-suit-center">{card.suit}</div>
-        <div className="card-corner bottom-right">
+        <div className="playing-card-suit-center">{card.suit}</div>
+        <div className="playing-card-corner bottom-right">
           <span className="rank">{card.rank}</span>
           <span className="suit">{card.suit}</span>
         </div>
@@ -181,7 +181,7 @@ const CardGamePage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
           <span className="codex-color">fc</span>
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>

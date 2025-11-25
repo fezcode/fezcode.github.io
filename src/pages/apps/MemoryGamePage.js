@@ -135,7 +135,7 @@ const MemoryGamePage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
           <span className="codex-color">fc</span>
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
@@ -209,12 +209,12 @@ const MemoryGamePage = () => {
                   {cards.map((card) => (
                     <div
                       key={card.id}
-                      className={`card ${card.isFlipped || card.isMatched ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
+                      className={`memory-card ${card.isFlipped || card.isMatched ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
                       onClick={() => handleCardClick(card)}
                     >
-                      <div className="card-inner">
-                        <div className="card-face card-back"></div>
-                        <div className="card-face card-front">{card.value}</div>
+                      <div className="memory-card-inner">
+                        <div className="memory-card-face memory-card-back"></div>
+                        <div className="memory-card-face memory-card-front">{card.value}</div>
                       </div>
                     </div>
                   ))}
