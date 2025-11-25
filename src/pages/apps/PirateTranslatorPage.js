@@ -7,26 +7,41 @@ import useSeo from '../../hooks/useSeo';
 const pirateDictionary = {
   "hello": "ahoy",
   "hi": "ahoy",
+  "hey": "ahoy",
   "my": "me",
   "friend": "matey",
+  "friends": "hearties",
   "is": "be",
   "are": "be",
+  "am": "be",
   "you": "ye",
   "your": "yer",
+  "yours": "yers",
   "where": "whar",
   "to": "t'",
   "the": "th'",
   "of": "o'",
+  "for": "fer",
   "stop": "avast",
   "yes": "aye",
   "no": "nay",
   "girl": "lass",
+  "girls": "lassies",
   "boy": "lad",
+  "boys": "laddies",
+  "guy": "lubber",
+  "man": "scallywag",
+  "woman": "wench",
   "money": "booty",
+  "cash": "doubloons",
   "quickly": "smartly",
+  "fast": "smartly",
   "captain": "cap'n",
   "beer": "grog",
+  "alcohol": "rum",
   "water": "brine",
+  "wine": "grog",
+  "drink": "swig",
   "happy": "jolly",
   "good": "grand",
   "bad": "scurvy",
@@ -34,20 +49,24 @@ const pirateDictionary = {
   "wow": "blimey",
   "there": "thar",
   "mad": "addled",
+  "crazy": "mad as a hatter",
   "boss": "admiral",
   "food": "grub",
   "hotel": "inn",
   "house": "shack",
+  "home": "port",
   "kill": "keelhaul",
   "died": "walked the plank",
+  "dead": "feeding the fish",
   "old": "barnacle-covered",
   "bathroom": "head",
   "restroom": "head",
   "toilet": "head",
   "wife": "ball and chain",
+  "husband": "old man",
   "song": "shanty",
   "music": "shanty",
-  "cheat": "swindle",
+  "cheat": "hornswaggle",
   "rob": "pillage",
   "steal": "plunder",
   "take": "seize",
@@ -56,7 +75,35 @@ const pirateDictionary = {
   "knife": "dagger",
   "ship": "vessel",
   "boat": "dinghy",
+  "sea": "big blue wet thing",
+  "ocean": "seven seas",
+  "treasure": "treasure",
+  "chest": "coffer",
+  "talk": "parley",
+  "speak": "parley",
+  "look": "spy",
+  "saw": "spied",
+  "find": "come across",
+  "run": "scamper",
+  "leave": "weigh anchor",
+  "after": "aft",
+  "forward": "fore",
 };
+
+const piratePhrases = [
+  " Arrr!",
+  " Shiver me timbers!",
+  " Walk the plank!",
+  " Yo ho ho!",
+  " Avast ye!",
+  " Dead men tell no tales.",
+  " By Blackbeard's ghost!",
+  " Blow me down!",
+  " Savvy?",
+  " ...and a bottle of rum!",
+  " Weigh anchor!",
+  " Batten down the hatches!",
+];
 
 const PirateTranslatorPage = () => {
   useSeo({
@@ -77,16 +124,22 @@ const PirateTranslatorPage = () => {
 
   const translate = () => {
     let text = inputText.toLowerCase();
+    // Dictionary replacements
     Object.keys(pirateDictionary).forEach(key => {
-      const regex = new RegExp(`\b${key}\b`, 'g');
+      const regex = new RegExp(`\\b${key}\\b`, 'g');
       text = text.replace(regex, pirateDictionary[key]);
     });
+
+    // Grammar tweaks: replacing 'ing' at the end of words with "in'"
+    text = text.replace(/ing\b/g, "in'");
+
     // Capitalize first letter of sentences
     text = text.replace(/(^\w|\.\s\w)/g, c => c.toUpperCase());
 
     // Add some pirate flair randomly
-    if (text.length > 0 && Math.random() > 0.5) {
-      text += " Arrr!";
+    if (text.length > 0) {
+      const randomPhrase = piratePhrases[Math.floor(Math.random() * piratePhrases.length)];
+      text += randomPhrase;
     }
 
     setTranslatedText(text);
