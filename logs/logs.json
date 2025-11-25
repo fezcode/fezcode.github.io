@@ -1,5 +1,17 @@
 [
   {
+    "artist": "EA Sports ft. Various Artist",
+    "category": "Music",
+    "date": "2025-11-25",
+    "link": "https://www.youtube.com/watch?v=TScsSJ6gyKg",
+    "rating": 5,
+    "slug": "fifa-99-ost",
+    "title": "Music from FIFA 99",
+    "album": "FIFA 99 (Soundtrack)",
+    "image": "/images/defaults/fifa99.jpg",
+    "description": "Songs from my favorite FIFA game, including Raincry by God Within, Rockafella Skank by Fatboy Slim, Gotta Learn by Danmass. Also a quick memorial, about John Motson... John Motson (1945-2023) was a renowned English football commentator for the BBC, easily recognizable by his distinctive voice and his iconic sheepskin coat. Over his extensive career, he commentated on more than 2000 games, which included 10 FIFA World Cups and 29 FA Cup finals. He retired from the BBC in 2018 and was honored with an OBE in 2001 for his outstanding services to sports broadcasting."
+  },
+  {
     "category": "Websites",
     "date": "2025-11-23",
     "link": "https://www.iloveimg.com/compress-image",
