@@ -1,5 +1,16 @@
 [
   {
+    "category": "Game",
+    "date": "2025-11-25",
+    "link": "https://store.steampowered.com/app/1669000/Age_of_Wonders_4/",
+    "platform": "Steam",
+    "rating": 5,
+    "slug": "age-of-wonders-4",
+    "title": "Age of Wonders 4",
+    "image": "/images/defaults/age-of-wonders-4.webp",
+    "description": "Age of Wonders 4 is a captivating 4X turn-based strategy game that immerses players in a vibrant high fantasy universe. As a ruler of a customizable fantasy realm, you embark on an epic journey to explore new magical realms, expand your empire, and engage in thrilling turn-based tactical combat."
+  },
+  {
     "artist": "EA Sports ft. Various Artist",
     "category": "Music",
     "date": "2025-11-25",
