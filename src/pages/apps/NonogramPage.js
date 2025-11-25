@@ -142,6 +142,88 @@ const PUZZLES = [
     [0, 1, 1, 1, 0],
     [0, 1, 0, 1, 0],
   ],
+  // 5x5 Letter 'A'
+  [
+    [0, 1, 1, 1, 0],
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 1],
+  ],
+  // 5x5 Star
+  [
+    [0, 0, 1, 0, 0],
+    [0, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1],
+    [0, 1, 0, 1, 0],
+    [1, 0, 0, 0, 1],
+  ],
+  // 5x5 Spiral
+  [
+    [1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 1],
+    [1, 0, 1, 0, 1],
+    [1, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1],
+  ],
+  // 5x5 Mushroom
+  [
+    [0, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 0],
+  ],
+  // 5x5 Rook (Chess Piece)
+  [
+    [1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 0],
+    [0, 1, 1, 1, 0],
+    [1, 1, 1, 1, 1],
+  ],
+  // 5x5 Hollow Diamond
+  [
+    [0, 0, 1, 0, 0],
+    [0, 1, 0, 1, 0],
+    [1, 0, 0, 0, 1],
+    [0, 1, 0, 1, 0],
+    [0, 0, 1, 0, 0],
+  ],
+  // 5x5 Simple Boat
+  [
+    [0, 0, 0, 0, 0],
+    [0, 1, 0, 1, 0],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [0, 1, 1, 1, 0],
+  ],
+];
+
+const PUZZLENAMES = [
+  "Heart",
+  "F for Fezcodex",
+  "Diamond",
+  "Cross",
+  "House",
+  "Smiley Face",
+  "Nonogram (N)",
+  "Checkerboard",
+  "Plus Sign",
+  "Arrow pointing up",
+  "Simple Tree",
+  "Fish",
+  "Letter U",
+  "Target",
+  "Stairs",
+  "Creeper Face",
+  "Letter 'A'",
+  "Star",
+  "Spiral",
+  "Mushroom",
+  "Rook (Chess Piece)",
+  "Hollow Diamond",
+  "Simple Boat",
 ];
 
 // Helper to generate clues from a solved puzzle
@@ -218,6 +300,7 @@ const NonogramPage = () => {
   const [gameWon, setGameWon] = useState(false);
   const [message, setMessage] = useState('');
   const [activeTool, setActiveTool] = useState('fill'); // 'fill' or 'mark'
+  const [puzzleName, setPuzzleName] = useState('');
 
   const NUM_ROWS = solvedPuzzle.length;
   const NUM_COLS = solvedPuzzle.length > 0 ? solvedPuzzle[0].length : 0;
@@ -225,6 +308,7 @@ const NonogramPage = () => {
   const initGame = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * PUZZLES.length);
     const newSolvedPuzzle = PUZZLES[randomIndex];
+    setPuzzleName(PUZZLENAMES[randomIndex]);
     setSolvedPuzzle(newSolvedPuzzle);
 
     const { rowClues: newRowClues, colClues: newColClues } = generateClues(newSolvedPuzzle);
@@ -267,11 +351,11 @@ const NonogramPage = () => {
     if (playerGrid.length > 0 && solvedPuzzle.length > 0) {
       if (checkWin()) {
         setGameWon(true);
-        setMessage('Congratulations! You solved the puzzle!');
-        addToast({ message: 'You solved the Nonogram!', type: 'success' });
+        setMessage(`Congratulations! You solved the '${puzzleName}' puzzle!`);
+        addToast({ title:'Congratz...', message: `You solved the Nonogram: ${puzzleName}!`, type: 'success' });
       }
     }
-  }, [playerGrid, solvedPuzzle, checkWin, addToast]);
+  }, [playerGrid, solvedPuzzle, checkWin, addToast, puzzleName]);
 
   const handleCellClick = (row, col, event) => {
     if (gameWon) return;
