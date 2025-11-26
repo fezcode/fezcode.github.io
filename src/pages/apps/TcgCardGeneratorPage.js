@@ -1,12 +1,12 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef, useCallback} from 'react';
 import {Link} from 'react-router-dom';
 import {
-  AcornIcon,
   ArrowLeftIcon,
   DownloadSimpleIcon,
   UploadSimpleIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
+import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -41,11 +41,15 @@ const TcgCardGeneratorPage = () => {
     ],
   });
 
+  const { addToast } = useToast();
+
   // --- State ---
   const [cardName, setCardName] = useState('Cyber Dragon');
   const [hp, setHp] = useState('250');
   const [background, setBackground] = useState('Techno 1');
   const [image, setImage] = useState(null);
+  const [imageDimensions, setImageDimensions] = useState(null); // Stores { width, height }
+  const [loadedImgElement, setLoadedImgElement] = useState(null); // Stores the actual Image object
 
   const [generation, setGeneration] = useState('Gen 5 - Neo Tokyo');
   const [type, setType] = useState('Machine / Dragon');
@@ -64,6 +68,17 @@ const TcgCardGeneratorPage = () => {
 
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
+
+  // Preload image object when image string changes
+  useEffect(() => {
+    if (image) {
+      const img = new Image();
+      img.src = image;
+      img.onload = () => setLoadedImgElement(img);
+    } else {
+      setLoadedImgElement(null);
+    }
+  }, [image]);
 
   // --- Canvas Drawing Helper Functions ---
   const drawRoundedRect = (ctx, x, y, width, height, radius) => {
@@ -101,22 +116,8 @@ const TcgCardGeneratorPage = () => {
     return currentY + lineHeight;
   };
 
-  // --- Main Draw Logic ---
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-
-    // High DPI scaling
-    const dpr = window.devicePixelRatio || 1;
-    const logicalWidth = 420;
-    const logicalHeight = 620; // Increased height slightly
-    canvas.width = logicalWidth * dpr;
-    canvas.height = logicalHeight * dpr;
-    ctx.scale(dpr, dpr);
-    canvas.style.width = `${logicalWidth}px`;
-    canvas.style.height = `${logicalHeight}px`;
-
+  // --- Main Draw Logic (Memoized) ---
+  const drawCard = useCallback((ctx, logicalWidth, logicalHeight) => {
     // --- Background ---
     const selectedBg = backgroundOptions.find(b => b.value === background) || backgroundOptions[0];
 
@@ -189,7 +190,7 @@ const TcgCardGeneratorPage = () => {
 
     // Text: Name
     ctx.fillStyle = '#00ffff';
-    ctx.font = 'bold 22px "Courier New", monospace';
+    ctx.font = 'bold 22px "Arvo", serif';
     ctx.textAlign = 'left';
     ctx.shadowColor = '#00ffff';
     ctx.shadowBlur = 8;
@@ -198,7 +199,7 @@ const TcgCardGeneratorPage = () => {
 
     // Text: HP
     ctx.fillStyle = '#ff0055';
-    ctx.font = 'bold 22px "Courier New", monospace';
+    ctx.font = 'bold 22px "Arvo", serif';
     ctx.textAlign = 'right';
     ctx.shadowColor = '#ff0055';
     ctx.shadowBlur = 8;
@@ -216,42 +217,29 @@ const TcgCardGeneratorPage = () => {
     ctx.fillRect(imgX - 2, imgY - 2, imgW + 4, imgH + 4);
 
     // Draw Image
-    if (image) {
-      const img = new Image();
-      img.src = image;
+    if (loadedImgElement) {
+      // Object-fit: cover logic
+      const srcRatio = loadedImgElement.width / loadedImgElement.height;
+      const destRatio = imgW / imgH;
+      let sx, sy, sWidth, sHeight;
 
-      const drawImageCover = (img) => {
-        const srcRatio = img.width / img.height;
-        const destRatio = imgW / imgH;
-        let sx, sy, sWidth, sHeight;
-
-        if (srcRatio > destRatio) {
-          // Image is wider than destination: crop width
-          sHeight = img.height;
-          sWidth = img.height * destRatio;
-          sx = (img.width - sWidth) / 2;
-          sy = 0;
-        } else {
-          // Image is taller than destination: crop height
-          sWidth = img.width;
-          sHeight = img.width / destRatio;
-          sx = 0;
-          sy = (img.height - sHeight) / 2;
-        }
-
-        ctx.drawImage(img, sx, sy, sWidth, sHeight, imgX, imgY, imgW, imgH);
-      };
-
-      if (img.complete) {
-        drawImageCover(img);
+      if (srcRatio > destRatio) {
+        sHeight = loadedImgElement.height;
+        sWidth = loadedImgElement.height * destRatio;
+        sx = (loadedImgElement.width - sWidth) / 2;
+        sy = 0;
       } else {
-        img.onload = () => drawImageCover(img);
+        sWidth = loadedImgElement.width;
+        sHeight = loadedImgElement.width / destRatio;
+        sx = 0;
+        sy = (loadedImgElement.height - sHeight) / 2;
       }
+      ctx.drawImage(loadedImgElement, sx, sy, sWidth, sHeight, imgX, imgY, imgW, imgH);
     } else {
       ctx.fillStyle = '#222';
       ctx.fillRect(imgX, imgY, imgW, imgH);
       ctx.fillStyle = '#555';
-      ctx.font = '16px "Courier New", monospace';
+      ctx.font = '16px "Arvo", serif';
       ctx.textAlign = 'center';
       ctx.fillText('UPLOAD IMAGE', logicalWidth / 2, imgY + imgH / 2);
     }
@@ -288,7 +276,7 @@ const TcgCardGeneratorPage = () => {
     // --- Content Fields ---
     let currentY = imgY + imgH + 20;
     const labelWidth = 100;
-    const valueX = 40 + labelWidth;
+    // const valueX = 40 + labelWidth;
 
     const drawField = (label, value, color = '#fff') => {
       // Label Box
@@ -351,7 +339,7 @@ const TcgCardGeneratorPage = () => {
 
     // Illustrator (Bottom Left)
     ctx.fillStyle = '#fff';
-    ctx.font = '10px "Courier New", monospace';
+    ctx.font = '10px "Arvo", serif';
     ctx.textAlign = 'left';
     ctx.fillText(`ILLUS: ${illustrator.toUpperCase()}`, 25, footerY);
 
@@ -359,7 +347,28 @@ const TcgCardGeneratorPage = () => {
     const date = new Date().toLocaleDateString();
     ctx.textAlign = 'right';
     ctx.fillText(`${date} | FEZCODEX | ${cardNumber}/${totalCards}`, logicalWidth - 25, footerY);
-  }, [cardName, hp, background, image, generation, type, attack, defense, cost, description, illustrator, cardNumber, totalCards]);
+  }, [cardName, hp, background, loadedImgElement, generation, type, attack, defense, cost, description, illustrator, cardNumber, totalCards]);
+
+  // --- useEffect to update canvas ---
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    const dpr = window.devicePixelRatio || 1;
+    const logicalWidth = 420;
+    const logicalHeight = 620;
+
+    canvas.width = logicalWidth * dpr;
+    canvas.height = logicalHeight * dpr;
+    canvas.style.width = `${logicalWidth}px`;
+    canvas.style.height = `${logicalHeight}px`;
+
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    drawCard(ctx, logicalWidth, logicalHeight);
+    ctx.restore();
+  }, [drawCard]); // Depend only on drawCard which already depends on all state
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -368,6 +377,7 @@ const TcgCardGeneratorPage = () => {
       reader.onload = (event) => {
         const img = new Image();
         img.onload = () => {
+          setImageDimensions({width: img.width, height: img.height});
           setImage(event.target.result);
         };
         img.src = event.target.result;
@@ -381,11 +391,23 @@ const TcgCardGeneratorPage = () => {
   };
 
   const downloadCard = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
+    addToast({ title: 'Downloading...', message: 'Generating high-resolution card.', duration: 3000 });
+    // High Resolution Download
+    const scaleFactor = 3; // 3x resolution (1260x1860)
+    const width = 420;
+    const height = 620;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = width * scaleFactor;
+    canvas.height = height * scaleFactor;
+    const ctx = canvas.getContext('2d');
+
+    ctx.scale(scaleFactor, scaleFactor);
+    drawCard(ctx, width, height);
+
     const link = document.createElement('a');
-    link.download = `${cardName.replace(/\s+/g, '_')}_card.png`;
-    link.href = canvas.toDataURL();
+    link.download = `${cardName.replace(/\s+/g, '_')}_card_HD.png`;
+    link.href = canvas.toDataURL('image/png');
     link.click();
   };
 
@@ -403,13 +425,13 @@ const TcgCardGeneratorPage = () => {
         {/* Header */}
         <div className="mb-10 text-center">
           <Link to="/apps" className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-            <ArrowLeftIcon size={24} /> Back to Apps
+            <ArrowLeftIcon size={24}/> Back to Apps
           </Link>
           <BreadcrumbTitle title="Techno TCG Maker" slug="tcg"/>
           <p className="text-gray-500 max-w-xl mx-auto mb-4">
             Design your own futuristic trading cards.
           </p>
-          <hr className="border-gray-700" />
+          <hr className="border-gray-700"/>
         </div>
         <div className="flex flex-col xl:flex-row gap-10 items-start justify-center">
           {/* --- Left Column: Editor --- */}
@@ -459,6 +481,11 @@ const TcgCardGeneratorPage = () => {
               <div className="flex items-center gap-4">
                 <div className="flex-1">
                   <p className="text-sm text-gray-400">Upload a cyberpunk or futuristic image for best results.</p>
+                  {imageDimensions && (
+                    <p className="text-xs text-gray-500 mt-1">
+                      Dimensions: {imageDimensions.width} x {imageDimensions.height} px
+                    </p>
+                  )}
                 </div>
                 <div className="flex-shrink-0">
                   <input
@@ -597,13 +624,13 @@ const TcgCardGeneratorPage = () => {
             <div className="mt-8 flex gap-4 w-full max-w-[420px]">
               <button
                 onClick={downloadCard}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-xl text-lg font-bold bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white shadow-lg hover:shadow-cyan-900/30 transition-all transform hover:-translate-y-0.5"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-md text-lg font-arvo transition-colors border bg-tb text-app border-app-alpha-50 hover:bg-app/15 "
               >
-                <DownloadSimpleIcon size={24} weight="bold"/> Download Card
+                <DownloadSimpleIcon size={24} weight="bold"/> Download HD
               </button>
             </div>
             <p className="mt-4 text-xs text-gray-500">
-              High-resolution PNG output.
+              High-resolution (3x) PNG output.
             </p>
           </div>
         </div>
