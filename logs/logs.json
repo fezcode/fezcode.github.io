@@ -29,7 +29,8 @@
     "slug": "iloveimg",
     "title": "ILoveImg.com",
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
-    "description": "An image editor website"
+    "description": "An image editor website",
+    "rating": 5
   },
   {
     "category": "Websites",
