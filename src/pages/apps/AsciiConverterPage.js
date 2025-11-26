@@ -125,13 +125,10 @@ function AsciiConverterPage() {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon size={24} /> Back to Apps
+        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
         </Link>
-          <BreadcrumbTitle title="ASCII Converter" slug="ascii" />
+        <BreadcrumbTitle title="ASCII Converter" slug="ascii" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 hover:bg-app/15 text-app border-app">

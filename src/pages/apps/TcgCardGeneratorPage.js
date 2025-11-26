@@ -431,8 +431,8 @@ const TcgCardGeneratorPage = () => {
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         {/* Header */}
         <div className="mb-10 text-center">
-          <Link to="/apps" className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-            <ArrowLeftIcon size={24}/> Back to Apps
+          <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
           </Link>
           <BreadcrumbTitle title="Techno TCG Maker" slug="tcg"/>
           <p className="text-gray-500 max-w-xl mx-auto mb-4">

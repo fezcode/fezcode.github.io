@@ -1,8 +1,8 @@
-import { ArrowLeft, Handshake } from '@phosphor-icons/react';
+import {ArrowLeft, ArrowLeftIcon, Handshake} from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import colors from '../../config/colors';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -81,11 +81,8 @@ const RockPaperScissorsPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeft size={24} /> Back to Apps
+        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
         </Link>
           <BreadcrumbTitle title="Rock Paper Scissors" slug="rps" />
         <hr className="border-gray-700" />

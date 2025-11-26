@@ -258,12 +258,9 @@ const FootballEmblemCreatorPage = () => {
   return (
     <div className="py-16 sm:py-24 text-gray-300">
        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link
-          to="/apps"
-          className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon size={24} /> Back to Apps
-        </Link>
+         <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+         </Link>
           <BreadcrumbTitle title="Football Emblem Creator" slug="emblem" />
         <hr className="border-gray-700 mb-8" />
 

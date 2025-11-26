@@ -1,8 +1,8 @@
 import React from 'react';
-import Stopwatch from '../components/Stopwatch';
-import useSeo from '../hooks/useSeo';
+import Stopwatch from '../../components/Stopwatch';
+import useSeo from '../../hooks/useSeo';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from '@phosphor-icons/react';
+import {ArrowLeft, ArrowLeftIcon} from '@phosphor-icons/react';
 
 const StopwatchAppPage = () => {
     useSeo({
@@ -13,11 +13,8 @@ const StopwatchAppPage = () => {
 
     return (
         <div className="py-16 sm:py-24 flex flex-col items-center justify-center">
-          <Link
-            to="/apps"
-            className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mt-12"
-          >
-            <ArrowLeft size={24} /> Back to Apps
+          <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
           </Link>
             <div className="text-center mb-12">
                 <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">

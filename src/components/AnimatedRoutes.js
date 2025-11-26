@@ -51,7 +51,7 @@ import RockPaperScissorsPage from '../pages/apps/RockPaperScissorsPage'; // Impo
 import TicTacToePage from '../pages/apps/TicTacToePage'; // Import TicTacToePage
 import ConnectFourPage from '../pages/apps/ConnectFourPage'; // Import ConnectFourPage
 import ImageCompressorPage from '../pages/apps/ImageCompressorPage'; // Import ImageCompressorPage
-import StopwatchAppPage from '../pages/StopwatchAppPage'; // Import StopwatchAppPage
+import StopwatchAppPage from '../pages/apps/StopwatchAppPage'; // Import StopwatchAppPage
 import PomodoroTimerPage from '../pages/apps/PomodoroTimerPage';
 import MorseCodeTranslatorPage from '../pages/apps/MorseCodeTranslatorPage';
 import MastermindPage from '../pages/apps/MastermindPage';

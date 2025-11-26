@@ -262,11 +262,8 @@ function RoguelikeGamePage() {
 
   return (
     <div className="flex flex-col items-center justify-center py-16 sm:py-24 text-gray-300">
-      <Link
-        to="/apps"
-        className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-      >
-        <ArrowLeftIcon size={24} /> Back to Apps
+      <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+        <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
       </Link>
       <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center">
         <CubeIcon size={48} className="mr-2" /> Roguelike Adventure
