@@ -219,10 +219,33 @@ const TcgCardGeneratorPage = () => {
     if (image) {
       const img = new Image();
       img.src = image;
+
+      const drawImageCover = (img) => {
+        const srcRatio = img.width / img.height;
+        const destRatio = imgW / imgH;
+        let sx, sy, sWidth, sHeight;
+
+        if (srcRatio > destRatio) {
+          // Image is wider than destination: crop width
+          sHeight = img.height;
+          sWidth = img.height * destRatio;
+          sx = (img.width - sWidth) / 2;
+          sy = 0;
+        } else {
+          // Image is taller than destination: crop height
+          sWidth = img.width;
+          sHeight = img.width / destRatio;
+          sx = 0;
+          sy = (img.height - sHeight) / 2;
+        }
+
+        ctx.drawImage(img, sx, sy, sWidth, sHeight, imgX, imgY, imgW, imgH);
+      };
+
       if (img.complete) {
-        ctx.drawImage(img, imgX, imgY, imgW, imgH);
+        drawImageCover(img);
       } else {
-        img.onload = () => ctx.drawImage(img, imgX, imgY, imgW, imgH);
+        img.onload = () => drawImageCover(img);
       }
     } else {
       ctx.fillStyle = '#222';
@@ -343,7 +366,11 @@ const TcgCardGeneratorPage = () => {
     if (file) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        setImage(event.target.result);
+        const img = new Image();
+        img.onload = () => {
+          setImage(event.target.result);
+        };
+        img.src = event.target.result;
       };
       reader.readAsDataURL(file);
     }
