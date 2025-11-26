@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CopySimple } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -22,6 +22,31 @@ function ColorPaletteGeneratorPage() {
   const [palette, setPalette] = useState([]);
   const { addToast } = useToast();
 
+  // Utility functions embedded directly as per user instruction
+  const hexToRgb = (hex) => {
+    let r = 0, g = 0, b = 0;
+    if (hex.length === 4) {
+      r = parseInt(hex[1] + hex[1], 16);
+      g = parseInt(hex[2] + hex[2], 16);
+      b = parseInt(hex[3] + hex[3], 16);
+    } else if (hex.length === 7) {
+      r = parseInt(hex.substring(1, 3), 16);
+      g = parseInt(hex.substring(3, 5), 16);
+      b = parseInt(hex.substring(5, 7), 16);
+    }
+    return [r, g, b];
+  };
+
+  const getLuminance = (r, g, b) => {
+    return (0.299 * r + 0.587 * g + 0.114 * b);
+  };
+
+  const getContrastTextColor = (hexColor) => {
+    const [r, g, b] = hexToRgb(hexColor);
+    const luminance = getLuminance(r, g, b);
+    return luminance > 128 ? 'black' : 'white';
+  };
+
   const generateRandomHexColor = () => {
     return (
       '#' +
@@ -36,13 +61,13 @@ function ColorPaletteGeneratorPage() {
     setPalette(newPalette);
   };
 
-  const copyToClipboard = (text) => {
+  const copyToClipboard = (text, type) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
         addToast({
           title: 'Success',
-          message: `Copied ${text} to clipboard!`,
+          message: `${type || text} copied to clipboard!`,
           duration: 2000,
         });
       })
@@ -87,22 +112,51 @@ function ColorPaletteGeneratorPage() {
                   Generate New Palette
                 </button>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
-                {palette.map((color, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-col items-center p-4 rounded-md cursor-pointer transition-transform duration-200 hover:scale-105"
-                    style={{ backgroundColor: color }}
-                    onClick={() => copyToClipboard(color)}
-                  >
-                    <span
-                      className="text-white font-semibold text-shadow-sm"
-                      style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}
+              <div className="flex flex-col gap-4 mt-4 font-mono">
+                {palette.map((color, index) => {
+                  const textColor = getContrastTextColor(color);
+                  const rgb = hexToRgb(color);
+                  const rgbString = `rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`;
+
+                  return (
+                    <div
+                      key={index}
+                      className="flex flex-col items-center justify-between p-4 rounded-md transition-transform duration-200 hover:scale-105 h-40 relative group"
+                      style={{ backgroundColor: color }}
                     >
-                      {color}
-                    </span>
-                  </div>
-                ))}
+                      <div className="flex flex-col items-center justify-center h-full">
+                        <div
+                          className="font-semibold text-lg flex items-center mb-2"
+                          style={{ color: textColor }}
+                        >
+                          {color}
+                          <CopySimple
+                            size={18}
+                            className="ml-2 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevent parent div's onClick
+                              copyToClipboard(color, 'Hex color');
+                            }}
+                          />
+                        </div>
+                        <div
+                          className="text-sm flex items-center"
+                          style={{ color: textColor }}
+                        >
+                          {rgbString}
+                          <CopySimple
+                            size={18}
+                            className="ml-2 cursor-pointer opacity-0 group-hover:opacity-100 transition-opacity"
+                            onClick={(e) => {
+                              e.stopPropagation(); // Prevent parent div's onClick
+                              copyToClipboard(rgbString, 'RGB color');
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
