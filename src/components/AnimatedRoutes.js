@@ -70,6 +70,7 @@ import WhiteboardPage from '../pages/apps/WhiteboardPage';
 import FootballEmblemCreatorPage from '../pages/apps/FootballEmblemCreatorPage';
 import RoguelikeGamePage from '../pages/apps/RoguelikeGamePage'; // Import RoguelikeGamePage
 import TcgCardGeneratorPage from '../pages/apps/TcgCardGeneratorPage'; // Import TcgCardGeneratorPage
+import KeyboardTypingSpeedTesterPage from '../pages/apps/KeyboardTypingSpeedTesterPage'; // Import KeyboardTypingSpeedTesterPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -638,6 +639,10 @@ function AnimatedRoutes() {
           path="/apps::tcg"
           element={<Navigate to="/apps/tcg-card-generator" replace />}
         />
+        <Route
+          path="/apps::ft"
+          element={<Navigate to="/apps/feztype" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -650,6 +655,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/feztype"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <KeyboardTypingSpeedTesterPage />
             </motion.div>
           }
         />
