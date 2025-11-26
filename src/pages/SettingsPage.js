@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft } from '@phosphor-icons/react';
+import {ArrowLeft, ArrowLeftIcon} from '@phosphor-icons/react';
 import { useAnimation } from '../context/AnimationContext';
 import colors from '../config/colors';
 import CustomToggle from '../components/CustomToggle';
@@ -72,11 +72,8 @@ const SettingsPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link
-          to="/"
-          className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeft size={24} /> Back to Home
+        <Link to="/" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Home
         </Link>
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">

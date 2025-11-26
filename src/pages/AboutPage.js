@@ -120,11 +120,8 @@ const AboutPage = () => {
   return (
     <div className="py-8 sm:py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/"
-          className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl" /> Back to Home
+        <Link to="/" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Home
         </Link>
         <div className="border border-gray-700 p-8 rounded-lg shadow-xl flex">
           <div className="w-1 bg-gray-600 mr-1 hidden sm:block"></div>

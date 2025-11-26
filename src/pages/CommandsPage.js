@@ -36,8 +36,8 @@ function CommandsPage() {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-          <ArrowLeftIcon size={24} /> Back to Home
+        <Link to="/" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Home
         </Link>
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl flex items-center justify-center">
