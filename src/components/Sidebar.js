@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom'; // Import useNavigate
-
 import { motion } from 'framer-motion';
 
 import {
@@ -31,9 +29,7 @@ import {
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
-
 import { version } from '../version';
-
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 
@@ -66,9 +62,11 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
   const getLinkClass = ({ isActive }) =>
     `flex items-center space-x-3 px-3 py-1 rounded-md transition-colors ${
       isActive
-        ? 'text-sidebar-highlight bg-sidebar-highlight-alpha-10'
+        ? 'text-sidebar-highlight bg-sidebar-highlight-alpha-10'  // border-l-4 border-red-500
         : 'text-gray-100 hover:text-white hover:bg-gray-800'
     }`;
+
+  const getGroupClass = ( isActive ) => { return `space-y-2 border-l-2 ml-3 pl-3 ${ isActive ? 'border-sidebar-highlight-alpha-50' : 'border-gray-700' }` };
 
   const isMainActive =
     location.pathname === '/' || location.pathname === '/about';
@@ -77,7 +75,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
     location.pathname.startsWith('/blog') ||
     location.pathname.startsWith('/projects') ||
     location.pathname.startsWith('/logs') ||
-    location.pathname.startsWith('/stories');
+    location.pathname.startsWith('/news');
 
   const isAppsActive = location.pathname.startsWith('/apps') || location.pathname.startsWith('/commands');
 
@@ -133,7 +131,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               />
             </button>
             {sidebarState.isMainOpen && (
-              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+              <nav className={getGroupClass(isMainActive)}>
                 <NavLink to="/" className={getLinkClass}>
                   <HouseIcon size={24} />
                   <span>Home</span>
@@ -165,7 +163,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               />
             </button>
             {sidebarState.isContentOpen && (
-              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+              <nav className={getGroupClass(isContentActive)}>
                 <NavLink to="/blog" className={getLinkClass}>
                   <BookOpenIcon size={24} />
                   <span>Blog</span>
@@ -205,7 +203,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               />
             </button>
             {sidebarState.isAppsOpen && (
-              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+              <nav className={getGroupClass(isAppsActive)}>
                 <NavLink to="/apps" className={getLinkClass}>
                   <SquaresFourIcon size={24} />
                   <span>All Apps</span>
@@ -234,7 +232,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               />
             </button>
             {sidebarState.isExtrasOpen && (
-              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+              <nav className={getGroupClass(false)}>
                 <NavLink to="/stories" className={getLinkClass}>
                   <SwordIcon className="text-yellow-500" size={24} />
                   <span>
@@ -270,7 +268,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               />
             </button>
             {sidebarState.isGamesOpen && (
-              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+              <nav className={getGroupClass(false)}>
                 <a
                   href="https://www.nytimes.com/games/wordle/index.html"
                   target="_blank"
@@ -309,7 +307,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               />
             </button>
             {sidebarState.isExternalLinksOpen && (
-              <nav className="space-y-2 border-l-2 border-gray-700 ml-3 pl-3">
+              <nav className={getGroupClass(false)}>
                 <a
                   href="https://github.com/fezcode"
                   target="_blank"
