@@ -78,7 +78,7 @@ const ProjectCard = ({ project, size = 1 }) => {
         to={`/projects/${project.slug}`}
         className="flex flex-col flex-grow relative z-10"
       >
-        <h3 className="text-xl font-semibold text-white">{project.title}</h3>
+        <h3 className="font-arvo text-xl text-orange-400">{project.title}</h3>
         <p className="mt-2 text-gray-400 flex-grow">{project.description}</p>
       </Link>
       {project.link && (

@@ -37,12 +37,17 @@ function CommandsPage() {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link
-          to="/"
-          className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
+        <Link to="/" className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
           <ArrowLeftIcon size={24} /> Back to Home
         </Link>
+        <div className="mx-auto max-w-2xl text-center">
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+            <span className="text-orange-300">Command</span> Palette
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-gray-300">
+            See all available commands in Command Palette.
+          </p>
+        </div>
         <div className="flex justify-center items-center mt-16">
           <div
             className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
@@ -61,8 +66,17 @@ function CommandsPage() {
 
               <div className="mb-6 ml-4 mr-4">
                 <p className="text-gray-200 mb-4">
-                  Press <kbd className="kbd kbd-sm">Alt</kbd>+<kbd className="kbd kbd-sm">K</kbd> to open Commands Palette.
-                  You can type <code> COMMAND </code> to see all available commands.
+                  Press <kbd className="kbd kbd-sm text-emerald-300">Alt</kbd>+<kbd className="kbd kbd-sm text-emerald-300">K</kbd> to open Commands Palette.
+                  It lists all available
+                  <code className="text-red-400"> PAGE</code>,
+                  <code className="text-red-400"> POST</code>,
+                  <code className="text-red-400"> PROJECT</code>,
+                  <code className="text-red-400"> LOG</code>,
+                  <code className="text-red-400"> APP</code> and
+                  <code className="text-red-400"> COMMAND</code> that can be used/consumed in Fezcodex.
+                  <br/>
+                  <br/>
+                  You can type <code className="text-emerald-300"> COMMAND </code> to see all available commands.
                 </p>
               </div>
 

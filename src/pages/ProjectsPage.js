@@ -69,10 +69,10 @@ const ProjectsPage = () => {
             <ArrowLeftIcon className="text-xl" /> Back to Home
           </Link>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            My Projects
+            My <span className="text-orange-300">Projects</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            A collection of my work and experiments.
+            A collection of my <span className="text-blue-400">work</span> and <span className="text-blue-400">experiments</span>.
           </p>
           <div className="mt-4 text-center">
             <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">

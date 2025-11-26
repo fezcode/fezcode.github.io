@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CaretDown, CaretUp, X } from '@phosphor-icons/react';
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import {ArrowLeftIcon, CaretDown, CaretUp, X} from '@phosphor-icons/react';
 import LogCard from '../components/LogCard';
-import ColorLegends, { categoryStyles } from '../components/ColorLegends';
+import ColorLegends, {categoryStyles} from '../components/ColorLegends';
 import useSeo from '../hooks/useSeo';
 
 const LogsPage = () => {
@@ -27,6 +27,7 @@ const LogsPage = () => {
   const [hiddenLegends, setHiddenLegends] = useState([]);
   const [allCategoriesSelected, setAllCategoriesSelected] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
+  const [filteredLogs, setFilteredLogs] = useState([]);
 
   const handleToggleAllCategories = () => {
     if (allCategoriesSelected) {
@@ -57,8 +58,6 @@ const LogsPage = () => {
       return newHiddenLegends;
     });
   };
-
-  const [filteredLogs, setFilteredLogs] = useState([]);
 
   useEffect(() => {
     setFilteredLogs(
@@ -97,7 +96,7 @@ const LogsPage = () => {
       <div className="py-16 sm:py-24 animate-pulse">
         <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
           <div className="h-8 bg-gray-800 rounded w-1/4 mb-4"></div>
-          <hr className="border-gray-700 mb-8" />
+          <hr className="border-gray-700 mb-8"/>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, i) => (
               <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6">
@@ -121,28 +120,31 @@ const LogsPage = () => {
           to="/"
           className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
         >
-          <ArrowLeftIcon size={24} /> Back to Home
+          <ArrowLeftIcon size={24}/> Back to Home
         </Link>
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
-          <span className="codex-color">codex</span>
+          <span className="codex-color">fc</span>
           <span className="separator-color">::</span>
           <span className="logs-color">logs</span>
+          <span className="separator-color">::</span>
+          <span className="single-app-color">[{logs.length}]</span>
         </h1>
         <div
           className="relative flex justify-center items-center w-full cursor-pointer"
           onClick={() => setShowLegends(!showLegends)}
         >
-          <hr className="border-gray-700 w-full absolute top-1/2 -translate-y-1/2" />
+          <hr className="border-gray-700 w-full absolute top-1/2 -translate-y-1/2"/>
           <div className="relative border border-gray-700 bg-gray-900 px-4 z-10">
             {showLegends ? (
-              <CaretUp size={32} className="text-primary-400" />
+              <CaretUp size={32} className="text-primary-400"/>
             ) : (
-              <CaretDown size={32} className="text-primary-400" />
+              <CaretDown size={32} className="text-primary-400"/>
             )}
           </div>
         </div>
         {showLegends && (
-          <div className="mx-auto p-6 border border-gray-700 shadow-lg text-center bg-gray-900 opacity-80 mt-[-16px] mb-8">
+          <div
+            className="mx-auto p-6 border border-gray-700 shadow-lg text-center bg-gray-900 opacity-80 mt-[-16px] mb-8">
             <h2 className="mt-4 mb-[-16px] text-xl font-light tracking-tight text-white">
               Categories
             </h2>
@@ -186,7 +188,7 @@ const LogsPage = () => {
                 className="ml-2 p-3 border border-red-400 bg-primary-500 text-white rounded-md transition-colors duration-200 hover:bg-red-500 focus:outline-none flex items-center justify-center"
                 onClick={() => setSearchQuery('')}
               >
-                <X size={20} weight="bold" />
+                <X size={20} weight="bold"/>
               </button>
             </div>
           </div>
