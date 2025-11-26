@@ -10,7 +10,8 @@ import LiveClock from './LiveClock'; // Import LiveClock
 import GenerativeArt from './GenerativeArt'; // Import GenerativeArt
 import TextTransformer from './TextTransformer'; // Import TextTransformer
 import Stopwatch from './Stopwatch'; // Import Stopwatch
-import { filterItems } from '../utils/search'; // Import the search utility
+import { filterItems } from '../utils/search';
+import {TerminalWindowIcon} from "@phosphor-icons/react"; // Import the search utility
 
 const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -262,16 +263,17 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                         className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-2xl w-full max-w-xl mx-4"
                         onClick={e => e.stopPropagation()}
                     >
-                        <div className="p-3">
-                            <input
-                                ref={inputRef}
-                                type="text"
-                                placeholder={isLoading ? "Loading data..." : "Search or type a command..."}
-                                className="w-full bg-transparent text-lg placeholder-gray-500 focus:outline-none"
-                                value={searchTerm}
-                                onChange={e => setSearchTerm(e.target.value)}
-                                disabled={isLoading}
-                            />
+                        <div className="p-3 flex items-center justify-center">
+                          <TerminalWindowIcon size={36} weight="duotone" className="mr-2 text-gray-200 "/>
+                          <input
+                              ref={inputRef}
+                              type="text"
+                              placeholder={isLoading ? "Loading data..." : "Search or type a command..."}
+                              className="w-full bg-transparent text-lg placeholder-gray-500 focus:outline-none"
+                              value={searchTerm}
+                              onChange={e => setSearchTerm(e.target.value)}
+                              disabled={isLoading}
+                          />
                         </div>
                         <div ref={resultsRef} className="border-t border-gray-200 dark:border-gray-700 p-2 max-h-[50vh] overflow-y-auto">
                             {filteredItems.length > 0 ? (

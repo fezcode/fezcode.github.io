@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  AxeIcon,
   ArrowLeftIcon,
   CaretDown,
   CaretRight,
@@ -113,6 +114,7 @@ function AppPage() {
           <ArrowLeftIcon size={24} /> Back to Home
         </Link>
         <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+          <AxeIcon size={48} weight="fill" className="mr-4 mt-2 text-gray-100 "/>
           <span className="codex-color">fc</span>
           <span className="separator-color">::</span>
           <span className="apps-color">apps</span>
