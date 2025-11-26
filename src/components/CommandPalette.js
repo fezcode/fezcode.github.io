@@ -13,6 +13,21 @@ import Stopwatch from './Stopwatch'; // Import Stopwatch
 import { filterItems } from '../utils/search';
 import {TerminalWindowIcon} from "@phosphor-icons/react"; // Import the search utility
 
+const categoryColorMap = {
+    'command': 'bg-indigo-400',
+    'page': 'bg-fuchsia-400',
+    'post': 'bg-blue-400',
+    'project': 'bg-orange-400',
+    'log': 'bg-rose-400',
+    'app': 'bg-cyan-400',
+    'story': 'bg-violet-400',
+    'notebook': 'bg-lime-400',
+};
+
+const getCategoryColorClass = (type) => {
+    return categoryColorMap[type] || 'bg-gray-500'; // Default gray for unmapped types
+};
+
 const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -269,7 +284,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                               ref={inputRef}
                               type="text"
                               placeholder={isLoading ? "Loading data..." : "Search or type a command..."}
-                              className="w-full bg-transparent text-lg placeholder-gray-500 focus:outline-none"
+                              className="w-full bg-transparent text-lg placeholder-gray-500 focus:outline-none font-mono"
                               value={searchTerm}
                               onChange={e => setSearchTerm(e.target.value)}
                               disabled={isLoading}
@@ -280,14 +295,14 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                                 filteredItems.map((item, index) => (
                                     <div
                                         key={`${item.type}-${item.slug || item.commandId}-${index}`}
-                                        className={`p-3 rounded-lg cursor-pointer flex justify-between items-center ${
+                                        className={`p-3 rounded-lg cursor-pointer flex justify-between items-center font-mono ${
                                             selectedIndex === index ? 'bg-gray-200 dark:bg-gray-700' : 'hover:bg-gray-200 dark:hover:bg-gray-700'
                                         }`}
                                         onClick={() => handleItemClick(item)}
                                         onMouseMove={() => setSelectedIndex(index)}
                                     >
                                         <span>{item.title}</span>
-                                        <span className="text-xs uppercase bg-gray-300 dark:bg-gray-600 px-2 py-1 rounded">{item.type}</span>
+                                        <span className={`text-xs uppercase text-gray-800 font-bold ${getCategoryColorClass(item.type)} px-2 py-1 rounded`}>{item.type}</span>
                                     </div>
                                 ))
                             ) : (

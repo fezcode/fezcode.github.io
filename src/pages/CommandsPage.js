@@ -60,7 +60,7 @@ function CommandsPage() {
                 backgroundSize: '10px 10px',
               }}
             ></div>
-            <div className="relative z-10 p-1">
+            <div className="relative z-10 p-1 font-mono">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Command Palette </h1>
               <hr className="border-gray-700 mb-4" />
 
