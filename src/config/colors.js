@@ -44,6 +44,8 @@ module.exports = {
   'series-card-bg-hover': 'var(--bg-series-card-hover)',
   'dnd-card-bg': 'var(--bg-dnd-card)',
   'dnd-card-bg-hover': 'var(--bg-dnd-card-hover)',
+  'gist-card-bg': 'var(--bg-gist-card)',
+  'gist-card-bg-hover': 'var(--bg-gist-card-hover)',
   'book-alpha-10': 'rgba(158, 197, 171, 0.1)',
   'book-alpha-50': 'rgba(158, 197, 171, 0.5)',
   'movie-alpha-10': 'rgba(199, 81, 70, 0.1)',

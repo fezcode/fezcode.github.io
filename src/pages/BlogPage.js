@@ -214,6 +214,12 @@ const BlogPage = () => {
               Series
             </button>
             <button
+              onClick={() => setActiveFilter('gist')}
+              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'gist' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
+            >
+              Gist
+            </button>
+            <button
               onClick={() => setActiveFilter('d&d')}
               className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'd&d' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
             >

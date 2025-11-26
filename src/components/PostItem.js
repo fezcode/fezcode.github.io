@@ -44,7 +44,9 @@ const PostItem = ({
           ? 'var(--color-series-badge)'
           : category === 'd&d'
             ? 'var(--color-dnd-badge)'
-            : 'var(--color-takes-badge)',
+            : category === 'gist'
+              ? 'var(--color-gist-badge)'
+              : 'var(--color-takes-badge)',
   };
   const postBackgroundColorClass =
     category === 'dev'
@@ -53,7 +55,9 @@ const PostItem = ({
         ? 'bg-series-card-bg'
         : category === 'd&d'
           ? 'bg-dnd-card-bg'
-          : 'bg-takes-card-bg';
+          : category === 'gist'
+            ? 'bg-gist-card-bg'
+            : 'bg-takes-card-bg';
   const postHoverBackgroundColorClass =
     category === 'dev'
       ? 'hover:bg-dev-card-bg-hover'
@@ -61,7 +65,9 @@ const PostItem = ({
         ? 'hover:bg-series-card-bg-hover'
         : category === 'd&d'
           ? 'hover:bg-dnd-card-bg-hover'
-          : 'hover:bg-takes-card-bg-hover';
+          : category === 'gist'
+            ? 'hover:bg-gist-card-bg-hover'
+            : 'hover:bg-takes-card-bg-hover';
 
   const postTitleHoverColorClass =
     category === 'dev'
@@ -70,7 +76,9 @@ const PostItem = ({
         ? 'group-hover:text-[var(--title-hover-series)]'
         : category === 'd&d'
           ? 'group-hover:text-[var(--title-hover-dnd)]'
-          : 'group-hover:text-[var(--title-hover-takes)]';
+          : category === 'gist'
+            ? 'group-hover:text-[var(--title-hover-gist)]'
+            : 'group-hover:text-[var(--title-hover-takes)]';
 
   const shouldAnimate =
     isAnimationEnabled &&

@@ -108,6 +108,12 @@ code {
   --bg-dnd-card-hover: rgba(170, 68, 101, 0.2);
   --title-hover-dnd: #d48090;
 
+  /*gist card*/
+  --color-gist-badge: #d97706; /* amber-600 */
+  --bg-gist-card: rgba(217, 119, 6, 0.1);
+  --bg-gist-card-hover: rgba(217, 119, 6, 0.2);
+  --title-hover-gist: #fbbf24; /* amber-400 */
+
   /*fezccode colors*/
   --fzcdx-background: #ffffff;
   --fzcdx-text-primary: #2d2d2d;
