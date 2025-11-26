@@ -14,6 +14,11 @@ const backgroundOptions = [
   {value: 'Techno 3', label: 'Synthwave (Purple/Orange)', colors: ['#833ab4', '#fd1d1d', '#fcb045']},
   {value: 'Techno 4', label: 'Industrial (Grey/Cyan)', colors: ['#2c3e50', '#4ca1af']},
   {value: 'Techno 5', label: 'Void (Dark Blue/Black)', colors: ['#000046', '#1cb5e0']},
+  {value: 'Techno 6', label: 'Neon Hazard (Green/Dark)', colors: ['#39ff14', '#222222']},
+  {value: 'Techno 7', label: 'Code Red (Red/Black)', colors: ['#8b0000', '#000000']},
+  {value: 'Techno 8', label: 'Electric Blue (Blue/Deep Blue)', colors: ['#0066ff', '#000033']},
+  {value: 'Techno 9', label: 'Digital Gold (Gold/Black)', colors: ['#ffd700', '#1a1a1a']},
+  {value: 'Techno 10', label: 'Dark Matter (Purple/Black)', colors: ['#240046', '#000000']},
 ];
 
 const TcgCardGeneratorPage = () => {
@@ -33,7 +38,7 @@ const TcgCardGeneratorPage = () => {
 
   // --- State ---
   const [cardName, setCardName] = useState('Cyber Dragon');
-  const [hp, setHp] = useState('2500');
+  const [hp, setHp] = useState('250');
   const [background, setBackground] = useState('Techno 1');
   const [image, setImage] = useState(null);
 
@@ -45,7 +50,7 @@ const TcgCardGeneratorPage = () => {
     'A mechanical dragon forged in the neon fires of the cybernetic underworld. It patrols the data streams, incinerating viruses with concentrated light.',
   );
 
-  const [illustrator, setIllustrator] = useState('Fezcode AI');
+  const [illustrator, setIllustrator] = useState('Fezcodex');
 
   // Derived state for card count/date (bottom right)
   const [cardNumber, setCardNumber] = useState('001');
@@ -264,7 +269,7 @@ const TcgCardGeneratorPage = () => {
       ctx.strokeRect(25, currentY, labelWidth, 25);
 
       ctx.fillStyle = color;
-      ctx.font = 'bold 12px "Courier New", monospace';
+      ctx.font = 'bold 12px "Arvo", serif';
       ctx.textAlign = 'center';
       ctx.fillText(label, 25 + (labelWidth / 2), currentY + 17);
 
@@ -272,11 +277,17 @@ const TcgCardGeneratorPage = () => {
       ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
       ctx.fillRect(25 + labelWidth + 5, currentY, logicalWidth - 55 - labelWidth, 25);
 
-      ctx.fillStyle = '#fff';
-      ctx.font = 'bold 14px Arial, sans-serif';
+      ctx.font = 'bold 14px "Arvo", serif';
       ctx.textAlign = 'left';
-      ctx.fillText(value, 25 + labelWidth + 15, currentY + 17);
 
+      // Contour
+      ctx.strokeStyle = '#000';
+      ctx.lineWidth = 3;
+      ctx.strokeText(value, 25 + labelWidth + 15, currentY + 17);
+
+      // Fill
+      ctx.fillStyle = color;
+      ctx.fillText(value, 25 + labelWidth + 15, currentY + 17);
       currentY += 35;
     };
 
@@ -300,10 +311,9 @@ const TcgCardGeneratorPage = () => {
     ctx.strokeRect(25, currentY, logicalWidth - 50, 80);
 
     ctx.fillStyle = '#ccc';
-    ctx.font = 'italic 12px Arial';
+    ctx.font = '12px "Arvo", serif';
     ctx.textAlign = 'left';
     wrapText(ctx, description, 35, currentY + 20, logicalWidth - 70, 16);
-
     // --- Footer ---
     const footerY = logicalHeight - 20;
 
