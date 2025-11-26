@@ -46,6 +46,7 @@ const TcgCardGeneratorPage = () => {
   const [type, setType] = useState('Machine / Dragon');
   const [attack, setAttack] = useState('Photon Blast');
   const [defense, setDefense] = useState('Titanium Plating');
+  const [cost, setCost] = useState('500 Credits');
   const [description, setDescription] = useState(
     'A mechanical dragon forged in the neon fires of the cybernetic underworld. It patrols the data streams, incinerating viruses with concentrated light.',
   );
@@ -303,6 +304,9 @@ const TcgCardGeneratorPage = () => {
     // Defense
     drawField('DEFENSE', defense, '#00aaff');
 
+    // Cost
+    drawField('COST', cost, '#ff9900');
+
     // Description Field
     currentY += 5;
     ctx.fillStyle = 'rgba(0, 0, 0, 0.5)';
@@ -327,7 +331,7 @@ const TcgCardGeneratorPage = () => {
     const date = new Date().toLocaleDateString();
     ctx.textAlign = 'right';
     ctx.fillText(`${date} | FEZCODEX | ${cardNumber}/${totalCards}`, logicalWidth - 25, footerY);
-  }, [cardName, hp, background, image, generation, type, attack, defense, description, illustrator, cardNumber, totalCards]);
+  }, [cardName, hp, background, image, generation, type, attack, defense, cost, description, illustrator, cardNumber, totalCards]);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -492,6 +496,15 @@ const TcgCardGeneratorPage = () => {
                       className={inputBaseClass}
                     />
                   </div>
+                </div>
+                <div>
+                  <label className={labelClass}>Cost</label>
+                  <input
+                    type="text"
+                    value={cost}
+                    onChange={(e) => setCost(e.target.value)}
+                    className={inputBaseClass}
+                  />
                 </div>
               </div>
             </div>
