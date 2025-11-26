@@ -99,18 +99,27 @@ const LogCard = ({log, index, totalLogs}) => {
           className="absolute top-0 bottom-0 left-0 w-1 transition-all duration-300 group-hover:w-1.5"
           style={{backgroundColor: accentColor}}
         />
+        {/* Dotted Background */}
+        <div
+          className="absolute inset-0 opacity-15 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none"
+          style={{
+            backgroundImage: `radial-gradient(circle, ${accentColor} 1px, transparent 1px)`,
+            backgroundSize: '15px 15px', // Adjust size for desired density
+          }}
+        ></div>
+
         <div className="p-5 flex flex-col h-full ml-1"> {/* ml-1 to account for border */}
           {/* Header: Icon, Index */}
           <div className="flex justify-between items-start mb-3">
-            <div className="p-2 rounded-lg bg-gray-800/80 text-white" style={{color: accentColor}}>
+            <div className="p-2 rounded-lg  text-white" style={{color: accentColor, backgroundColor: `${accentColor}30`}}>
               <span className="text-2xl">{Icon}</span>
             </div>
-            <span className="text-xs font-mono text-gray-600 group-hover:text-gray-400 transition-colors">
+            <span className="text-xs font-mono text-gray-400 group-hover:text-gray-400 transition-colors">
                 #{totalLogs - index}
              </span>
           </div>
           {/* Title */}
-          <h3 className="text-lg font-bold text-gray-100 mb-2 leading-snug group-hover:text-white transition-colors">
+          <h3 className="font-mono text-lg font-bold text-gray-100 mb-2 leading-snug group-hover:text-white transition-colors">
             {title}
           </h3>
           {/* Metadata Grid */}
@@ -125,17 +134,17 @@ const LogCard = ({log, index, totalLogs}) => {
           <div className="flex-grow"/>
 
           {/* Footer: Rating & Date */}
-          <div className="flex items-end justify-between mt-4 pt-4 border-t border-gray-800">
+          <div className={`flex items-end justify-between mt-4 pt-4 border-t`} style={{borderColor: `${accentColor}50`}}>
             <div className="flex flex-col gap-1">
               {renderStars(rating)}
-              {rating > 0 && <span className="text-xs text-gray-500 font-mono">({rating}/5)</span>}
+              {rating > 0 && <span className="text-xs text-gray-400 font-mono">({rating}/5)</span>}
             </div>
 
             <div className="text-right flex flex-col items-end">
               {updated && (
                 <span className="text-[10px] text-rose-400 font-mono mb-0.5">Updated</span>
               )}
-              <div className="flex items-center gap-1 text-xs text-gray-500 font-mono">
+              <div className="flex items-center gap-1 text-xs text-gray-400 font-mono">
                 <CalendarBlankIcon size={12}/>
                 {date}
               </div>
