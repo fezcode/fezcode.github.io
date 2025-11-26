@@ -4,6 +4,7 @@ import { ArrowLeftIcon, BrainIcon } from '@phosphor-icons/react'; // Using Brain
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import '../../styles/MemoryGamePage.css';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const cardValues = ['🍎', '🍌', '🍒', '🍇', '🍋', '🍊', '🍓', '🍉']; // Example card values
 
@@ -135,13 +136,7 @@ const MemoryGamePage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">mg</span>
-        </h1>
+          <BreadcrumbTitle title="Memory Game" slug="mg" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div

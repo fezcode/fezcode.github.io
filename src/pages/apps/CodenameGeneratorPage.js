@@ -4,6 +4,7 @@ import { ArrowLeftIcon, Sparkle, Copy } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import colors from '../../config/colors';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const prefixes = [
   'Operation',
@@ -287,13 +288,7 @@ const CodenameGeneratorPage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">cg</span>
-        </h1>
+          <BreadcrumbTitle title="Codename Generator" slug="cg" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div

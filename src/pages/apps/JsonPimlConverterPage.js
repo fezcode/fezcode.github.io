@@ -5,6 +5,7 @@ import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import piml from 'piml'; // Import the piml library
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function JsonPimlConverterPage() {
   useSeo({
@@ -124,13 +125,7 @@ function JsonPimlConverterPage() {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">jpc</span>
-        </h1>
+          <BreadcrumbTitle title="JSON &lt;&gt; PIML Converter" slug="jpc" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, LightbulbIcon, ArrowCounterClockwiseIcon, LightbulbFilamentIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { ToastContext } from '../../context/ToastContext';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const LightsOutPage = () => {
   useSeo({
@@ -100,13 +101,7 @@ const LightsOutPage = () => {
         <Link to="/apps" className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4">
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">lo</span>
-        </h1>
+          <BreadcrumbTitle title="Lights Out" slug="lo" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-2xl">

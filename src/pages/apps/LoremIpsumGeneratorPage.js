@@ -4,6 +4,7 @@ import {ArrowLeftIcon, ArticleIcon} from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import {useToast} from '../../hooks/useToast';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const LOREM_WORDS = [
   'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do',
@@ -94,13 +95,7 @@ const LoremIpsumGeneratorPage = () => {
         >
           <ArrowLeftIcon size={24}/> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">lorem</span>
-        </h1>
+          <BreadcrumbTitle title="Lorem Ipsum Generator" slug="lorem" />
         <hr className="border-gray-700"/>
         <div className="flex justify-center items-center mt-16">
           <div

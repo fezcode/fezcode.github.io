@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import colors from '../../config/colors';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function TournamentBracketPage() {
   useSeo({
@@ -312,13 +313,7 @@ function TournamentBracketPage() {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">tb</span>
-        </h1>
+          <BreadcrumbTitle title="Tournament Bracket" slug="tb" />
         <hr className="border-gray-700" />
         <div className="flex flex-col justify-center mt-8">
           <div

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function Base64ConverterPage() {
   useSeo({
@@ -81,13 +82,7 @@ function Base64ConverterPage() {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">b64</span>
-        </h1>
+          <BreadcrumbTitle title="Base64 Converter" slug="b64" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div className="group bg-app-alpha-10 hover:bg-app/15 text-app border-app border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">

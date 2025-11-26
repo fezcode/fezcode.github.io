@@ -7,6 +7,7 @@ import Dice from '../../components/Dice';
 import '../../styles/DiceRollerPage.css'; // Import the CSS for animations
 import useSeo from '../../hooks/useSeo';
 import CustomDropdown from '../../components/CustomDropdown';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const DiceRollerPage = () => {
   useSeo({
@@ -89,13 +90,7 @@ const DiceRollerPage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">dice</span>
-        </h1>
+          <BreadcrumbTitle title="Dice Roller" slug="dice" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div

@@ -268,7 +268,7 @@ function RoguelikeGamePage() {
       >
         <ArrowLeftIcon size={24} /> Back to Apps
       </Link>
-      <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+      <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center">
         <CubeIcon size={48} className="mr-2" /> Roguelike Adventure
       </h1>
       <p className="text-lg text-gray-400 mb-6 text-center">

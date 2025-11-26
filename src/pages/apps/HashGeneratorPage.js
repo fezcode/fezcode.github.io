@@ -4,6 +4,7 @@ import { ArrowLeftIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function HashGeneratorPage() {
   useSeo({
@@ -107,13 +108,7 @@ function HashGeneratorPage() {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">hash</span>
-        </h1>
+          <BreadcrumbTitle title="Hash Generator" slug="hash" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div className="bg-app-alpha-10 border-app-alpha-50 text-app group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">

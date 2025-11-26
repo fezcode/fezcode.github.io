@@ -4,6 +4,7 @@ import { ArrowLeftIcon, CheckCircle, XCircle } from '@phosphor-icons/react'; // 
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 // Helper function to convert hex to RGB
 const hexToRgb = (hex) => {
@@ -108,13 +109,7 @@ const ColorContrastCheckerPage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">ccc</span>
-        </h1>
+          <BreadcrumbTitle title="Color Contrast Checker" slug="ccc" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div

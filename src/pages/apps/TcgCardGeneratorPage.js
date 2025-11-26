@@ -8,6 +8,7 @@ import {
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import CustomDropdown from '../../components/CustomDropdown';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const backgroundOptions = [
   {value: 'Techno 1', label: 'Cyberpunk (Pink/Blue)', colors: ['#ff00cc', '#333399']},
@@ -20,6 +21,9 @@ const backgroundOptions = [
   {value: 'Techno 8', label: 'Electric Blue (Blue/Deep Blue)', colors: ['#0066ff', '#000033']},
   {value: 'Techno 9', label: 'Digital Gold (Gold/Black)', colors: ['#ffd700', '#1a1a1a']},
   {value: 'Techno 10', label: 'Dark Matter (Purple/Black)', colors: ['#240046', '#000000']},
+  {value: 'Techno 11', label: 'Lights (Light Blue/Lilac Ash)', colors: ['#96C3CE', '#A79AB2']},
+  {value: 'Techno 12', label: 'Holographic Rust (Oxidized Steel/Digital Amber)', colors: ['#2C3E50', '#F39C12']},
+  {value: 'Techno 13', label: 'Void Whisper (Abyssal Indigo/Ethereal Lavender)', colors: ['#0A031F', '#C6A5D6']},
 ];
 
 const TcgCardGeneratorPage = () => {
@@ -374,21 +378,12 @@ const TcgCardGeneratorPage = () => {
           <Link to="/apps" className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4">
             <ArrowLeftIcon size={24} /> Back to Apps
           </Link>
-          <div className="relative flex flex-col items-center justify-center mb-4">
-            <span className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 text-xl md:text-2xl font-mono font-normal text-gray-500 tracking-tight mb-2 md:mb-0 opacity-75">
-              fc<span className="text-gray-700">::</span>apps<span className="text-gray-700">::</span><span className="text-primary-400">tcg</span>
-            </span>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tighter">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">
-                Techno TCG Maker
-              </span>
-            </h1>
-          </div>
-          <p className="text-gray-500 max-w-xl mx-auto">
+          <BreadcrumbTitle title="Techno TCG Maker" slug="tcg"/>
+          <p className="text-gray-500 max-w-xl mx-auto mb-4">
             Design your own futuristic trading cards.
           </p>
+          <hr className="border-gray-700" />
         </div>
-
         <div className="flex flex-col xl:flex-row gap-10 items-start justify-center">
           {/* --- Left Column: Editor --- */}
           <div className="w-full xl:w-5/12 space-y-6">

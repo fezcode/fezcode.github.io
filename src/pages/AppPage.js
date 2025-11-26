@@ -45,7 +45,7 @@ function AppPage() {
   );
   const [isLoading, setIsLoading] = useState(true);
   const [totalAppsCount, setTotalAppsCount] = useState(0); // New state for total app count
-  const [sortOption, setSortOption] = useState('default'); // 'default', 'created_desc', 'created_asc'
+  const [sortOption, setSortOption] = useState('created_desc'); // 'default', 'created_desc', 'created_asc'
 
   useEffect(() => {
     setIsLoading(true);
@@ -113,7 +113,7 @@ function AppPage() {
         >
           <ArrowLeftIcon size={24} /> Back to Home
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center">
+        <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center">
           <AxeIcon size={48} weight="fill" className="mr-4 mt-2 text-gray-100 "/>
           <span className="codex-color">fc</span>
           <span className="separator-color">::</span>

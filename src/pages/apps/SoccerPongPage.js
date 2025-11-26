@@ -4,6 +4,7 @@ import { ArrowLeftIcon, SoccerBallIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import '../../styles/SoccerPongPage.css';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 // Game Constants
 const GAME_WIDTH = 800;
@@ -389,13 +390,7 @@ const SoccerPongPage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">sp</span>
-        </h1>
+          <BreadcrumbTitle title="Soccer Pong" slug="sp" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div

@@ -58,6 +58,7 @@ import CustomDropdown from '../../components/CustomDropdown'; // Add this line
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const FootballEmblemCreatorPage = () => {
   useSeo({
@@ -263,13 +264,7 @@ const FootballEmblemCreatorPage = () => {
         >
           <ArrowLeftIcon size={24} /> Back to Apps
         </Link>
-        <h1 className="text-4xl font-bold tracking-tight sm:text-6xl mb-4 flex items-center justify-center">
-          <span className="codex-color">fc</span>
-          <span className="separator-color">::</span>
-          <span className="apps-color">apps</span>
-          <span className="separator-color">::</span>
-          <span className="single-app-color">emblem</span>
-        </h1>
+          <BreadcrumbTitle title="Football Emblem Creator" slug="emblem" />
         <hr className="border-gray-700 mb-8" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
