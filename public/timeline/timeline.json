@@ -1,0 +1,128 @@
+[
+  {
+    "date": "2025-11-26",
+    "title": "Timeline Feature Introduced",
+    "description": "Implemented a chronological overview of project milestones and achievements.",
+    "type": "feature",
+    "icon": "TimerIcon",
+    "link": "/#/timeline"
+  },
+  {
+    "date": "2025-11-26",
+    "title": "Major Refactors and UI Improvements",
+    "description": "Significant refactoring of Logs and App pages, along with UI enhancements across the site.",
+    "type": "refactor",
+    "icon": "SparklesIcon",
+    "link": "/#/logs"
+  },
+  {
+    "date": "2025-11-23",
+    "title": "Command Palette and Games",
+    "description": "Introduced a command palette for navigation and new games like Nonogram and Lights Out.",
+    "type": "feature",
+    "icon": "GamepadIcon",
+    "link": "/#/commands"
+  },
+  {
+    "date": "2025-11-21",
+    "title": "News Feature Introduced",
+    "description": "Implemented a news section for updates and announcements.",
+    "type": "feature",
+    "icon": "ArticleIcon",
+    "link": "/#/news"
+  },
+  {
+    "date": "2025-11-18",
+    "title": "Wallpapers Script and New Apps",
+    "description": "Added a script for generating wallpapers and introduced new interactive apps.",
+    "type": "feature",
+    "icon": "ImageIcon",
+    "link": "/#/apps"
+  },
+  {
+    "date": "2025-11-14",
+    "title": "Stories Section Rework",
+    "description": "Reworked the stories section with PIML integration and new structure.",
+    "type": "content",
+    "icon": "BookIcon",
+    "link": "/#/stories"
+  },
+  {
+    "date": "2025-11-13",
+    "title": "PIML and SEO Implementation",
+    "description": "Integrated PIML for content management and enhanced SEO capabilities.",
+    "type": "project",
+    "icon": "SearchIcon"
+  },
+  {
+    "date": "2025-11-07",
+    "title": "Introduction of Apps Section",
+    "description": "Launched the interactive applications section with various tools and games.",
+    "type": "app",
+    "icon": "RocketLaunchIcon",
+    "link": "/#/apps"
+  },
+  {
+    "date": "2025-11-04",
+    "title": "RSS Feed and Contact Modal",
+    "description": "Implemented RSS feed generation and a contact modal.",
+    "type": "feature",
+    "icon": "RssFeedIcon",
+    "link": "/rss.xml"
+  },
+  {
+    "date": "2025-10-23",
+    "title": "DND Content Section Introduced",
+    "description": "Introduced the Dungeons & Dragons content section with the 'From Serfs and Frauds' series.",
+    "type": "content",
+    "icon": "ScrollIcon",
+    "link": "/#/dnd"
+  },
+  {
+    "date": "2025-10-17",
+    "title": "Toast Notifications and Markdown Theming",
+    "description": "Added toast notification system and custom markdown rendering with themes.",
+    "type": "feature",
+    "icon": "BellIcon"
+  },
+  {
+    "date": "2025-10-16",
+    "title": "Introduction of Blogposts and Projects",
+    "description": "Implemented initial blogpost and project display functionalities.",
+    "type": "content",
+    "icon": "ArticleIcon",
+    "link": "/#/posts"
+  },
+  {
+    "date": "2025-10-15",
+    "title": "Projects Page Introduced",
+    "description": "Initial implementation of the Projects page to showcase various works.",
+    "type": "project",
+    "icon": "CodeIcon",
+    "link": "/#/projects"
+  },
+  {
+    "date": "2025-10-15",
+    "title": "About Page Introduced",
+    "description": "Initial implementation of the About Me page.",
+    "type": "content",
+    "icon": "Briefcase",
+    "link": "/#/about-me"
+  },
+  {
+    "date": "2025-10-15",
+    "title": "Blog Page Introduced",
+    "description": "Initial setup and display of the blog section.",
+    "type": "content",
+    "icon": "ArticleIcon",
+    "link": "/#/posts"
+  },
+  {
+    "date": "2025-10-15",
+    "title": "Project Initialization",
+    "description": "Initialized project using Create React App and set up basic structure.",
+    "type": "project",
+    "icon": "CodeIcon",
+    "link": "/"
+  }
+]

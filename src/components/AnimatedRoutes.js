@@ -72,6 +72,7 @@ import RoguelikeGamePage from '../pages/apps/RoguelikeGamePage'; // Import Rogue
 import TcgCardGeneratorPage from '../pages/apps/TcgCardGeneratorPage'; // Import TcgCardGeneratorPage
 import KeyboardTypingSpeedTesterPage from '../pages/apps/KeyboardTypingSpeedTesterPage'; // Import KeyboardTypingSpeedTesterPage
 import SettingsPage from '../pages/SettingsPage';
+import TimelinePage from '../pages/TimelinePage'; // Import TimelinePage
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
 import NotebooksPage from '../pages/notebooks/NotebooksPage';
@@ -226,6 +227,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <SettingsPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/timeline" // New route for TimelinePage
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <TimelinePage />
             </motion.div>
           }
         />

@@ -54,6 +54,8 @@ const useSearchableData = () => {
           { title: 'Projects', slug: '/projects', type: 'page', path: '/projects' },
           { title: 'About Me', slug: '/about', type: 'page', path: '/about' },
           { title: 'Logs', slug: '/logs', type: 'page', path: '/logs' },
+          { title: 'News', slug: '/news', type: 'page', path: '/news' },
+          { title: 'Timeline', slug: '/timeline', type: 'page', path: '/timeline' },
           { title: 'Settings', slug: '/settings', type: 'page', path: '/settings' },
           { title: 'Stories', slug: '/stories', type: 'page', path: '/stories' },
           { title: 'Apps', slug: '/apps', type: 'page', path: '/apps' },

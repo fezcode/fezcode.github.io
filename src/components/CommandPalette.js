@@ -242,6 +242,16 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                 }
             } else if (event.key === 'Escape') {
                 handleClose();
+            } else if (event.key === 'PageUp') {
+                event.preventDefault();
+                setSelectedIndex((prevIndex) =>
+                  prevIndex <= 0 ? filteredItems.length - 1 : prevIndex - 10
+                );
+            } else if (event.key === 'PageDown') {
+              event.preventDefault();
+              setSelectedIndex((prevIndex) =>
+                prevIndex >= filteredItems.length - 10 ? 0 : prevIndex + 10
+              );
             }
         };
 
@@ -279,7 +289,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                         onClick={e => e.stopPropagation()}
                     >
                         <div className="p-3 flex items-center justify-center">
-                          <TerminalWindowIcon size={36} weight="duotone" className="mr-2 text-gray-200 "/>
+                          <TerminalWindowIcon size={36} weight="light" className="mr-2 text-gray-200 "/>
                           <input
                               ref={inputRef}
                               type="text"
@@ -315,7 +325,9 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                             <div className="flex items-center gap-2">
                                 <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">ESC</span> to close
                                 <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↑</span>
-                                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↓</span> to navigate
+                                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↓</span>
+                                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">PgUp</span>
+                                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">PgDown</span> to navigate
                                 <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↵</span> to select
                             </div>
                              <div className="font-semibold text-gray-400">

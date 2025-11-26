@@ -1,1 +1,2 @@
-export const version = '0.2.2';
+const pjson = require('../package.json');
+export const version = pjson.version;

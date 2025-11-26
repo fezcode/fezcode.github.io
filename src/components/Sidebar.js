@@ -26,6 +26,7 @@ import {
   SquaresFourIcon,
   GearSixIcon,
   MagnifyingGlassIcon,
+  TimerIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -75,7 +76,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
     location.pathname.startsWith('/blog') ||
     location.pathname.startsWith('/projects') ||
     location.pathname.startsWith('/logs') ||
-    location.pathname.startsWith('/news');
+    location.pathname.startsWith('/news') ||
+    location.pathname.startsWith('/timeline');
 
   const isAppsActive = location.pathname.startsWith('/apps') || location.pathname.startsWith('/commands');
 
@@ -179,6 +181,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                 <NavLink to="/news" className={getLinkClass}>
                   <GlobeSimpleIcon size={24} />
                   <span>News</span>
+                </NavLink>
+                <NavLink to="/timeline" className={getLinkClass}>
+                  <TimerIcon size={24} />
+                  <span>Timeline</span>
                 </NavLink>
               </nav>
             )}

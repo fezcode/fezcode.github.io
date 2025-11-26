@@ -25,6 +25,31 @@ const categories = [
   'Tools',
 ];
 
+const iconColors = [
+  "text-red-500",
+  "text-orange-500",
+  "text-amber-500",
+  "text-yellow-500",
+  "text-lime-500",
+  "text-green-500",
+  "text-emerald-500",
+  "text-teal-500",
+  "text-cyan-500",
+  "text-sky-500",
+  "text-blue-500",
+  "text-indigo-500",
+  "text-violet-500",
+  // "text-purple-500",
+  // "text-fuchsia-500",
+  // "text-pink-500",
+  // "text-rose-500",
+  // "text-slate-500",
+  // "text-gray-500",
+  // "text-zinc-500",
+  // "text-neutral-500",
+  // "text-stone-500",
+];
+
 const LogsPage = () => {
   useSeo({
     title: 'Logs | Fezcodex',
@@ -47,6 +72,7 @@ const LogsPage = () => {
   const [selectedCategories, setSelectedCategories] = useState([]); // Empty means all
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredLogs, setFilteredLogs] = useState([]);
+  const [iconColor, setIconColor] = useState('text-white');
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -65,7 +91,6 @@ const LogsPage = () => {
         setLoading(false);
       }
     };
-
     fetchLogs();
   }, []);
 
@@ -83,6 +108,8 @@ const LogsPage = () => {
         return matchesCategory && matchesSearch;
       }),
     );
+    const randomIconColor = iconColors[Math.floor(Math.random() * iconColors.length)]
+    setIconColor(randomIconColor);
   }, [logs, selectedCategories, searchQuery]);
 
   const toggleCategory = (category) => {
@@ -120,12 +147,13 @@ const LogsPage = () => {
               <LogIcon
                 size={48}
                 weight="fill"
-                className="mr-4 text-primary-500"
+                className={`mr-4 mt-2 ${iconColor}`}
               />
               <span className="text-gray-100">fc</span>
               <span className="text-gray-500">::</span>
               <span className="text-gray-100">logs</span>
-              <span className="text-gray-500">::[</span>
+              <span className="text-gray-500">::</span>
+              <span className="text-gray-500">[</span>
               <span className="text-gray-100">{logs.length}</span>
               <span className="text-gray-500">]</span>
               {/*<span className="ml-4 text-2xl text-gray-500 bg-gray-800 px-3 py-1 rounded-full font-mono align-middle">*/}
