@@ -1,5 +1,23 @@
 [
   {
+    "slug": "mastering-tailwind-centering",
+    "title": "Mastering Tailwind CSS: The \"Absolute Centering\" Trick",
+    "date": "2025-11-26",
+    "updated": "2025-11-26",
+    "description": "Learn how to perfectly center a title while keeping a side element positioned absolutely, ensuring a balanced layout regardless of content size.",
+    "tags": [
+      "tailwind",
+      "css",
+      "frontend",
+      "layout",
+      "tutorial"
+    ],
+    "category": "dev",
+    "filename": "mastering-tailwind-centering.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "gaussian-elimination",
     "title": "Gaussian Elimination: The Swiss Army Knife of Linear Systems in Computer Engineering",
     "date": "2025-11-23",

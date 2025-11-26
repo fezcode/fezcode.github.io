@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
 import {
+  AcornIcon,
   ArrowLeftIcon,
   DownloadSimpleIcon,
   UploadSimpleIcon,
@@ -370,17 +371,19 @@ const TcgCardGeneratorPage = () => {
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         {/* Header */}
         <div className="mb-10 text-center">
-          <Link
-            to="/apps"
-            className="inline-flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-primary-400 transition-colors mb-4"
-          >
-            <ArrowLeftIcon size={16}/> Back to Apps
+          <Link to="/apps" className="text-article hover:underline flex items-center justify-center gap-2 text-lg mb-4">
+            <ArrowLeftIcon size={24} /> Back to Apps
           </Link>
-          <h1 className="text-4xl md:text-6xl font-black tracking-tighter flex items-center justify-center gap-3 mb-4">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">
-              Techno TCG Maker
+          <div className="relative flex flex-col items-center justify-center mb-4">
+            <span className="md:absolute md:left-0 md:top-1/2 md:-translate-y-1/2 text-xl md:text-2xl font-mono font-normal text-gray-500 tracking-tight mb-2 md:mb-0 opacity-75">
+              fc<span className="text-gray-700">::</span>apps<span className="text-gray-700">::</span><span className="text-primary-400">tcg</span>
             </span>
-          </h1>
+            <h1 className="text-4xl md:text-6xl font-black tracking-tighter">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-secondary-400">
+                Techno TCG Maker
+              </span>
+            </h1>
+          </div>
           <p className="text-gray-500 max-w-xl mx-auto">
             Design your own futuristic trading cards.
           </p>
