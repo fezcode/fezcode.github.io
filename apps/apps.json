@@ -220,6 +220,14 @@
         "description": "Pop some virtual bubble wrap to relieve stress.",
         "icon": "CirclesFourIcon",
         "created_at": "2025-11-25T16:01:56+03:00"
+      },
+      {
+        "slug": "tcg-card-generator",
+        "to": "/apps/tcg-card-generator",
+        "title": "TCG Card Generator",
+        "description": "Create your own custom TCG cards with this generator.",
+        "icon": "CardsThreeIcon",
+        "created_at": "2025-11-26T12:00:00+03:00"
       }
     ]
   },
