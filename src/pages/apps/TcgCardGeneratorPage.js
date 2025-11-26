@@ -631,7 +631,7 @@ const TcgCardGeneratorPage = () => {
             <div className="mt-8 flex gap-4 w-full max-w-[420px]">
               <button
                 onClick={downloadCard}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-md text-lg font-arvo transition-colors border bg-tb text-app border-app-alpha-50 hover:bg-app/15 "
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-md text-lg font-arvo transition-colors border bg-app/15 text-app border-app-alpha-50 hover:bg-app/20 "
               >
                 <DownloadSimpleIcon size={24} weight="bold"/> Download HD
               </button>
