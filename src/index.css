@@ -97,7 +97,7 @@ code {
   --title-hover-takes: #3cb371;
 
   /*series card*/
-  --color-series-badge: #e11d48; /* rose-600 */
+  --color-series-badge: #b5163a; /* rose-600 */
   --bg-series-card: rgba(225, 29, 72, 0.1);
   --bg-series-card-hover: rgba(225, 29, 72, 0.2);
   --title-hover-series: #ff4747;

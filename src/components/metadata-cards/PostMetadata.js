@@ -25,10 +25,18 @@ const PostMetadata = ({
     backgroundColor:
       metadata.category === 'dev'
         ? 'var(--color-dev-badge)'
-        : metadata.category === 'd&d'
-          ? 'var(--color-dnd-badge)'
-          : 'var(--color-takes-badge)',
+        : metadata.category === 'series'
+          ? 'var(--color-series-badge)'
+          : metadata.category === 'd&d'
+            ? 'var(--color-dnd-badge)'
+            : metadata.category === 'gist'
+              ? 'var(--color-gist-badge)'
+              : 'var(--color-takes-badge)',
   };
+
+  const categoryBadgeFontColorStyle =
+    metadata.category === 'gist' || metadata.category === 'gist' ? 'text-black' : 'text-white'
+  ;
 
   const handleButtonClick = () => {
     if (isAtTop) {
@@ -71,7 +79,7 @@ const PostMetadata = ({
             <div>
               <Label>Category</Label>
               <span
-                className={`ml-1 px-2 py-1 text-xs font-medium text-white rounded-md w-16 text-center`}
+                className={`ml-1 px-2 py-1 font-arvo text-xs ${categoryBadgeFontColorStyle} rounded-md w-16 text-center`}
                 style={categoryBadgeColorStyle}
               >
                 {metadata.category}

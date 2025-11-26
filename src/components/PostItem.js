@@ -48,6 +48,7 @@ const PostItem = ({
               ? 'var(--color-gist-badge)'
               : 'var(--color-takes-badge)',
   };
+
   const postBackgroundColorClass =
     category === 'dev'
       ? 'bg-dev-card-bg'
@@ -58,6 +59,7 @@ const PostItem = ({
           : category === 'gist'
             ? 'bg-gist-card-bg'
             : 'bg-takes-card-bg';
+
   const postHoverBackgroundColorClass =
     category === 'dev'
       ? 'hover:bg-dev-card-bg-hover'
@@ -80,6 +82,10 @@ const PostItem = ({
             ? 'group-hover:text-[var(--title-hover-gist)]'
             : 'group-hover:text-[var(--title-hover-takes)]';
 
+  const categoryBadgeFontColorStyle =
+    category === 'gist' || category === 'gist' ? 'text-black' : 'text-white'
+  ;
+
   const shouldAnimate =
     isAnimationEnabled &&
     ((location.pathname === '/' && showAnimationsHomepage) ||
@@ -99,7 +105,7 @@ const PostItem = ({
           <div className="ml-4 flex-grow flex items-center">
             {category && (
               <span
-                className={`mr-2 px-2 py-1 text-xs font-medium text-white rounded-md hidden sm:inline-block w-16 text-center`}
+                className={`mr-2 px-2 py-1 font-arvo text-xs ${categoryBadgeFontColorStyle} rounded-md hidden sm:inline-block w-16 text-center`}
                 style={categoryBadgeColorStyle}
               >
                 {category}

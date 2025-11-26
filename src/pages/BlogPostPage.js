@@ -6,7 +6,7 @@ import {
   ArrowSquareOut,
   ArrowsOutSimple,
   Clipboard,
-  ArrowLeft,
+  ArrowLeft, ArrowLeftIcon,
 } from '@phosphor-icons/react';
 import { customTheme } from '../utils/customTheme';
 import PostMetadata from '../components/metadata-cards/PostMetadata';
@@ -355,11 +355,8 @@ const BlogPostPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-4 lg:gap-8">
           <div className="lg:col-span-3">
-            <Link
-              to={backLink}
-              className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-            >
-              <ArrowLeft size={24} /> {backLinkText}
+            <Link to={backLink} className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+              <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> {backLinkText}
             </Link>
             <h1 className="text-4xl font-bold text-white mb-4">
               {post.attributes.title}
