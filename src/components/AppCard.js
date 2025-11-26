@@ -1,58 +1,34 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from '@phosphor-icons/react';
-import colors from '../config/colors';
 import { appIcons } from '../utils/appIcons';
 
 const AppCard = ({ app }) => {
   const { to, title, description } = app;
   const Icon = appIcons[app.icon];
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const detailTextColor = colors['app-light'];
-
   return (
-    <Link to={to} className="block h-full">
-      <div className="group border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out overflow-hidden h-full bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-rose-900/30">
-        <div
-          className="absolute top-0 left-0 w-full h-full opacity-10 group-hover:opacity-0 transition-opacity duration-500 ease-in-out"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle, white 1px, transparent 1px)',
-            backgroundSize: '10px 10px',
-          }}
-        ></div>
-        <div
-          className="absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-10 transition-opacity duration-500 ease-in-out"
-          style={{
-            backgroundImage:
-              'linear-gradient(white 1px, transparent 1px), linear-gradient(to right, white 1px, transparent 1px)',
-            backgroundSize: '15px 15px',
-          }}
-        ></div>
-        <div>
-          <h2
-            className="text-xl font-normal transition-colors flex items-center gap-2"
-            style={{ color: cardStyle.color }}
-          >
-            {Icon && <Icon size={24} />}
-            {title}
-          </h2>
-          <p className="mt-2" style={{ color: detailTextColor }}>
+    <Link to={to} className="block h-full group">
+      <div className="relative h-full p-6 bg-gray-800/40 border border-gray-700 rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-primary-500/50 flex flex-col">
+        {/* Gradient Glow Effect */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-500 bg-gradient-to-br from-primary-500 to-transparent pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col h-full">
+          <div className="flex items-center gap-4 mb-4">
+            <div className="p-3 rounded-xl bg-gray-700/50 text-primary-400 group-hover:text-white group-hover:bg-primary-500 transition-colors duration-300">
+              {Icon && <Icon size={32} weight="duotone" />}
+            </div>
+            <h3 className="text-xl font-semilight font-mono text-gray-100 group-hover:text-white transition-colors">
+              {title}
+            </h3>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed flex-grow font-sans">
             {description}
           </p>
-        </div>
-        <div className="flex justify-end items-center mt-4">
-          <ArrowRight
-            size={24}
-            className="transition-colors"
-            style={{ color: detailTextColor }}
-          />
+
+          <div className="mt-6 flex items-center text-sm font-medium text-primary-400 group-hover:text-primary-300 transition-colors font-mono">
+            Launch App <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+          </div>
         </div>
       </div>
     </Link>

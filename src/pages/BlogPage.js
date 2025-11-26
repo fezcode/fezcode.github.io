@@ -162,9 +162,9 @@ const BlogPage = () => {
         <div className="mx-auto max-w-2xl text-center">
           <Link
             to="/"
-            className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+            className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
           >
-            <ArrowLeftIcon className="text-xl" /> Back to Home
+            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Home
           </Link>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
             From the <span style={{ color: 'var(--fzcdx-spanner)' }}>Blog</span>
