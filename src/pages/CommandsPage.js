@@ -1,11 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowLeftIcon, TerminalWindowIcon
-} from '@phosphor-icons/react';
-
+import { ArrowLeftIcon, TerminalWindowIcon } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
-
+import { useCommandPalette } from '../context/CommandPaletteContext';
 import colors from "../config/colors"; // Import CustomDropdown
 
 function CommandsPage() {
@@ -28,6 +25,8 @@ function CommandsPage() {
     twitterDescription: 'All the available commands that can be used in Fezcodex.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
+
+  const { togglePalette } = useCommandPalette();
 
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],
@@ -79,6 +78,13 @@ function CommandsPage() {
                   <br/>
                   You can type <code className="text-emerald-300"> COMMAND </code> to see all available commands.
                 </p>
+                <button
+                  onClick={togglePalette}
+                  className="border border-gray-200 bg-black/50 hover:bg-gray-50 text-white hover:text-black font-mono py-3 px-4 rounded w-full transition-colors duration-300 flex items-center justify-center gap-2"
+                >
+                  <TerminalWindowIcon size={24} />
+                  Open Command Palette
+                </button>
               </div>
 
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Available Commands </h1>

@@ -8,6 +8,7 @@ import ContactModal from './components/ContactModal';
 import GenericModal from './components/GenericModal';
 import DigitalRain from './components/DigitalRain';
 import { AnimationProvider } from './context/AnimationContext'; // Import AnimationProvider
+import { CommandPaletteProvider } from './context/CommandPaletteContext';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -42,15 +43,17 @@ function App() {
         <DigitalRain isActive={isRainActive} />
         <ScrollToTop />
         <ToastProvider>
-          <Layout
-            toggleModal={toggleModal}
-            isSearchVisible={isSearchVisible}
-            toggleSearch={toggleSearch}
-            openGenericModal={openGenericModal}
-            toggleDigitalRain={toggleDigitalRain}
-          >
-            <AnimatedRoutes />
-          </Layout>
+          <CommandPaletteProvider>
+            <Layout
+              toggleModal={toggleModal}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+              openGenericModal={openGenericModal}
+              toggleDigitalRain={toggleDigitalRain}
+            >
+              <AnimatedRoutes />
+            </Layout>
+          </CommandPaletteProvider>
           <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
           <GenericModal
             isOpen={isGenericModalOpen}

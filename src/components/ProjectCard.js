@@ -79,14 +79,15 @@ const ProjectCard = ({ project, size = 1 }) => {
         className="flex flex-col flex-grow relative z-10"
       >
         <h3 className="font-arvo text-xl text-orange-400">{project.title}</h3>
-        <p className="mt-2 text-gray-400 flex-grow">{project.description}</p>
+        <hr className="border-gray-700 -mx-6 mb-4 mt-4" />
+        <p className="text-gray-400 flex-grow">{project.description}</p>
       </Link>
       {project.link && (
         <a
           href={project.link}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-block text-red-500 hover:text-red-300 transition-colors mt-auto flex items-center relative z-10"
+          className="text-red-500 hover:text-red-300 transition-colors mt-auto flex items-center relative z-10"
         >
           View Project <FaExternalLinkAlt className="ml-1" size={12} />
         </a>

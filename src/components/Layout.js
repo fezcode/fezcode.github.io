@@ -7,12 +7,13 @@ import DndFooter from './dnd/DndFooter';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
+import { useCommandPalette } from '../context/CommandPaletteContext';
 
 import { DndProvider } from '../context/DndContext';
 
 const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch, openGenericModal, toggleDigitalRain }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
-  const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
   const location = useLocation();
 
   useEffect(() => {
@@ -22,19 +23,10 @@ const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch, openGene
       }
     };
 
-    const handleKeyDown = (event) => {
-      if (event.altKey && event.key === 'k') {
-        event.preventDefault();
-        setIsPaletteOpen((open) => !open);
-      }
-    };
-
     window.addEventListener('resize', handleResize);
-    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
