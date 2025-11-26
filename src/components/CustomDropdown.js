@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'; // Import ReactDOM
 import { CaretDown, Check } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const CustomDropdown = ({ options, value, onChange, icon: Icon, label }) => {
+const CustomDropdown = ({ options, value, onChange, icon: Icon, label, className = '' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null); // Ref for the button
   const menuRef = useRef(null); // Ref for the dropdown menu
@@ -89,15 +89,17 @@ const CustomDropdown = ({ options, value, onChange, icon: Icon, label }) => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div className={`relative inline-block text-left ${className}`}>
       <button
         type="button"
         ref={dropdownRef} // Attach ref to the button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-md text-sm font-medium text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500"
+        className="flex items-center justify-between w-full gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-md text-sm font-medium text-gray-200 transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500"
       >
-        {Icon && <Icon size={20} className="text-gray-400" />}
-        <span>{selectedOption ? selectedOption.label : label}</span>
+        <div className="flex items-center gap-2">
+            {Icon && <Icon size={20} className="text-gray-400" />}
+            <span>{selectedOption ? selectedOption.label : label}</span>
+        </div>
         <CaretDown
           size={16}
           className={`ml-2 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}

@@ -69,6 +69,7 @@ import BpmGuesserPage from '../pages/apps/BpmGuesserPage';
 import WhiteboardPage from '../pages/apps/WhiteboardPage';
 import FootballEmblemCreatorPage from '../pages/apps/FootballEmblemCreatorPage';
 import RoguelikeGamePage from '../pages/apps/RoguelikeGamePage'; // Import RoguelikeGamePage
+import TcgCardGeneratorPage from '../pages/apps/TcgCardGeneratorPage'; // Import TcgCardGeneratorPage
 import SettingsPage from '../pages/SettingsPage';
 
 import UsefulLinksPage from '../pages/UsefulLinksPage';
@@ -633,6 +634,10 @@ function AnimatedRoutes() {
           path="/apps::rl"
           element={<Navigate to="/apps/roguelike-game" replace />}
         />
+        <Route
+          path="/apps::tcg"
+          element={<Navigate to="/apps/tcg-card-generator" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -645,6 +650,20 @@ function AnimatedRoutes() {
               transition={pageTransition}
             >
               <IpPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/tcg-card-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <TcgCardGeneratorPage />
             </motion.div>
           }
         />
