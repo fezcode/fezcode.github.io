@@ -24,6 +24,13 @@ const backgroundOptions = [
   {value: 'Techno 11', label: 'Lights (Light Blue/Lilac Ash)', colors: ['#96C3CE', '#A79AB2']},
   {value: 'Techno 12', label: 'Holographic Rust (Oxidized Steel/Digital Amber)', colors: ['#2C3E50', '#F39C12']},
   {value: 'Techno 13', label: 'Void Whisper (Abyssal Indigo/Ethereal Lavender)', colors: ['#0A031F', '#C6A5D6']},
+  {value: 'Techno 14', label: 'Bio-Hazard (Dark Green/Neon Green)', colors: ['#1a2a1a', '#39ff14']},
+  {value: 'Techno 15', label: 'Plasma (Dark Red/Orange/Yellow)', colors: ['#800000', '#ff4500', '#ffff00']},
+  {value: 'Techno 16', label: 'Frozen Mainframe (Dark Blue/Ice Blue)', colors: ['#0f2027', '#203a43', '#2c5364']},
+  {value: 'Techno 17', label: 'Retrowave Grid (Blue/Pink)', colors: ['#3f5efb', '#fc466b']},
+  {value: 'Techno 18', label: 'Obsidian Glass (Black/Grey)', colors: ['#000000', '#434343']},
+  {value: 'Techno 19', label: 'Black', colors: ['#000000', '#000000']},
+  {value: 'Techno 20', label: 'Cyber Spectrum (6-Color)', colors: ['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff']},
 ];
 
 const TcgCardGeneratorPage = () => {
