@@ -111,7 +111,7 @@ const PostItem = ({
               </span>
             )}
             <h2
-              className={`text-xl font-semibold text-white ${postTitleHoverColorClass} group-hover:underline transition-colors`}
+              className={`text-lg font-mono text-white ${postTitleHoverColorClass} group-hover:underline transition-colors`}
             >
               {title}
             </h2>
