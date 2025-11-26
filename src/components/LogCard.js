@@ -1,80 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import colors from '../config/colors';
 import {
-  BookOpen,
-  FilmStrip,
-  GameController,
-  Article,
-  MusicNote,
-  Television,
-  ForkKnife,
-  Globe,
-  Star,
-  Wrench,
+  BookOpenIcon,
+  FilmStripIcon,
+  GameControllerIcon,
+  ArticleIcon,
+  MusicNoteIcon,
+  TelevisionIcon,
+  ForkKnifeIcon,
+  GlobeIcon,
+  StarIcon,
+  WrenchIcon,
+  CalendarBlankIcon,
 } from '@phosphor-icons/react';
 
 const categoryIcons = {
-  Book: <BookOpen />,
-  Movie: <FilmStrip />,
-  Game: <GameController />,
-  Article: <Article />,
-  Music: <MusicNote />,
-  Series: <Television />,
-  Food: <ForkKnife />,
-  Websites: <Globe />,
-  Tools: <Wrench />,
+  Book: <BookOpenIcon weight="duotone"/>,
+  Movie: <FilmStripIcon weight="duotone"/>,
+  Game: <GameControllerIcon weight="duotone"/>,
+  Article: <ArticleIcon weight="duotone"/>,
+  Music: <MusicNoteIcon weight="duotone"/>,
+  Series: <TelevisionIcon weight="duotone"/>,
+  Food: <ForkKnifeIcon weight="duotone"/>,
+  Websites: <GlobeIcon weight="duotone"/>,
+  Tools: <WrenchIcon weight="duotone"/>,
 };
 
-const categoryStyles = {
-  Book: {
-    backgroundColor: colors['book-alpha-10'],
-    borderColor: colors['book-alpha-50'],
-    textColor: colors.book,
-  },
-  Movie: {
-    backgroundColor: colors['movie-alpha-10'],
-    borderColor: colors['movie-alpha-50'],
-    textColor: colors.movie,
-  },
-  Game: {
-    backgroundColor: colors['game-alpha-10'],
-    borderColor: colors['game-alpha-50'],
-    textColor: colors.game,
-  },
-  Article: {
-    backgroundColor: colors['article-alpha-10'],
-    borderColor: colors['article-alpha-50'],
-    textColor: colors.article,
-  },
-  Music: {
-    backgroundColor: colors['music-alpha-10'],
-    borderColor: colors['music-alpha-50'],
-    textColor: colors.music,
-  },
-  Series: {
-    backgroundColor: colors['series-alpha-10'],
-    borderColor: colors['series-alpha-50'],
-    textColor: colors.series,
-  },
-  Food: {
-    backgroundColor: colors['food-alpha-10'],
-    borderColor: colors['food-alpha-50'],
-    textColor: colors.food,
-  },
-  Websites: {
-    backgroundColor: colors['websites-alpha-10'],
-    borderColor: colors['websites-alpha-50'],
-    textColor: colors.websites,
-  },
-  Tools: {
-    backgroundColor: colors['tools-alpha-10'],
-    borderColor: colors['tools-alpha-50'],
-    textColor: colors.tools,
-  },
+const categoryColors = {
+  Book: colors.book,
+  Movie: colors.movie,
+  Game: colors.game,
+  Article: colors.article,
+  Music: colors.music,
+  Series: colors.series,
+  Food: colors.food,
+  Websites: colors.websites,
+  Tools: colors.tools,
 };
 
-const LogCard = ({ log, index, totalLogs }) => {
+const LogCard = ({log, index, totalLogs}) => {
   const {
     title,
     category,
@@ -89,94 +54,92 @@ const LogCard = ({ log, index, totalLogs }) => {
     rating,
     slug,
     updated,
+    album, // Added album
+    releaseDate, // Added releaseDate
   } = log;
 
-  const cardStyle = categoryStyles[category] || {};
-  const detailTextColor = colors[category.toLowerCase() + '-light'];
+  const accentColor = categoryColors[category] || colors.primary[400];
+  const Icon = categoryIcons[category] || <ArticleIcon/>;
 
   const renderStars = (rating) => {
     const stars = [];
-    const starColor = cardStyle.textColor;
-    const emptyStarColor = colors[category.toLowerCase() + '-alpha-50'];
-
     for (let i = 0; i < 5; i++) {
-      if (i < rating) {
-        stars.push(
-          <Star key={i} size={16} weight="fill" style={{ color: starColor }} />,
-        );
-      } else {
-        stars.push(
-          <Star
-            key={i}
-            size={16}
-            weight="fill"
-            style={{ color: emptyStarColor }}
-          />,
-        );
-      }
+      stars.push(
+        <StarIcon
+          key={i}
+          size={14}
+          weight="fill"
+          className={i < rating ? '' : 'opacity-30'}
+          style={{color: i < rating ? accentColor : '#9ca3af'}}
+        />
+      );
     }
-    return <div className="flex ml-1 mt-1">{stars}</div>;
+    return <div className="flex gap-0.5">{stars}</div>;
   };
-  return (
-    <Link to={`/logs/${slug}`} className="block">
+
+  // Metadata helper to avoid rendering empty fields
+  const MetadataItem = ({label, value}) => (
+    value ? (
       <div
-        className="group bg-transparent border rounded-lg shadow-lg p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl overflow-hidden h-full"
-        style={cardStyle}
+        className="flex items-center gap-1 text-xs text-gray-400 bg-gray-800/50 px-2 py-1 rounded-md border border-gray-700/50">
+        <span className="font-semibold text-gray-500">{label}:</span>
+        <span className="truncate max-w-[150px]">{value}</span>
+      </div>
+    ) : null
+  );
+
+  return (
+    <Link to={`/logs/${slug}`} className="block h-full group">
+      <div
+        className="relative h-full border border-gray-800 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gray-700 flex flex-col"
+        style={{backgroundColor: `${accentColor}30`}}
       >
+        {/* Left Border Accent */}
         <div
-          className="absolute top-3 right-3 text-lg font-semibold px-2 py-1 rounded-md border overflow-hidden whitespace-nowrap"
-          style={{
-            backgroundColor: 'rgba(0, 0, 0, 0.2)',
-            color: cardStyle.textColor,
-            borderColor: cardStyle.borderColor,
-          }}
-        >
-          #{totalLogs - index}
-        </div>
-        <div
-          className="absolute top-0 left-0 w-full h-full opacity-0 group-hover:opacity-10 transition-opacity duration-500 ease-in-out"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle, white 1px, transparent 1px)',
-            backgroundSize: '10px 10px',
-          }}
-        ></div>
-        <div>
-          <div className="flex items-center justify-between mb-4 pr-10">
-            <div className="flex items-center">
-              <div className="text-2xl mr-4" style={{ color: detailTextColor }}>
-                {categoryIcons[category]}
-              </div>
-              <h2
-                className={`text-xl font-normal`}
-                style={{ color: cardStyle.textColor }}
-              >
-                {title}
-              </h2>
+          className="absolute top-0 bottom-0 left-0 w-1 transition-all duration-300 group-hover:w-1.5"
+          style={{backgroundColor: accentColor}}
+        />
+        <div className="p-5 flex flex-col h-full ml-1"> {/* ml-1 to account for border */}
+          {/* Header: Icon, Index */}
+          <div className="flex justify-between items-start mb-3">
+            <div className="p-2 rounded-lg bg-gray-800/80 text-white" style={{color: accentColor}}>
+              <span className="text-2xl">{Icon}</span>
             </div>
+            <span className="text-xs font-mono text-gray-600 group-hover:text-gray-400 transition-colors">
+                #{totalLogs - index}
+             </span>
           </div>
-          <div className="text-sm mb-4" style={{ color: detailTextColor }}>
-            {author && <div>Author: {author}</div>}
-            {director && <div>Director: {director}</div>}
-            {platform && <div>Platform: {platform}</div>}
-            {source && <div>Source: {source}</div>}
-            {artist && <div>Artist: {artist}</div>}
-            {year && <div>Year: {year}</div>}
-            {creator && <div>Creator: {creator}</div>}
+          {/* Title */}
+          <h3 className="text-lg font-bold text-gray-100 mb-2 leading-snug group-hover:text-white transition-colors">
+            {title}
+          </h3>
+          {/* Metadata Grid */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            <MetadataItem label="By" value={author || artist || creator || director}/>
+            <MetadataItem label="On" value={platform || source}/>
+            <MetadataItem label="Year" value={year || (releaseDate ? releaseDate.split('-')[0] : null)}/>
+            {album && <MetadataItem label="Album" value={album}/>}
           </div>
-        </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <div className="text-yellow-400">{renderStars(rating)}</div>
-            <div className="text-gray-400 ml-2">({rating}/5)</div>
-          </div>
-          <div>
-            {updated && (
-              <div className="text-xs text-rose-300 text-right">
-                (U): {updated}
+
+          {/* Spacer */}
+          <div className="flex-grow"/>
+
+          {/* Footer: Rating & Date */}
+          <div className="flex items-end justify-between mt-4 pt-4 border-t border-gray-800">
+            <div className="flex flex-col gap-1">
+              {renderStars(rating)}
+              {rating > 0 && <span className="text-xs text-gray-500 font-mono">({rating}/5)</span>}
+            </div>
+
+            <div className="text-right flex flex-col items-end">
+              {updated && (
+                <span className="text-[10px] text-rose-400 font-mono mb-0.5">Updated</span>
+              )}
+              <div className="flex items-center gap-1 text-xs text-gray-500 font-mono">
+                <CalendarBlankIcon size={12}/>
+                {date}
               </div>
-            )}
-            <div className="text-sm text-blue-400 text-right">{date}</div>
+            </div>
           </div>
         </div>
       </div>
