@@ -81,8 +81,10 @@ const LogCard = ({log, index, totalLogs}) => {
   const MetadataItem = ({label, value}) => (
     value ? (
       <div
-        className="flex items-center gap-1 text-xs text-gray-400 bg-gray-800/50 px-2 py-1 rounded-md border border-gray-700/50">
-        <span className="font-semibold text-gray-500">{label}:</span>
+        className="flex items-center gap-1 text-xs text-gray-300 px-2 py-1 rounded-md border border-gray-500/50"
+        style={{backgroundColor: `${accentColor}20`}}
+      >
+        <span className="font-semibold text-gray-400">{label}:</span>
         <span className="truncate max-w-[150px]">{value}</span>
       </div>
     ) : null
@@ -101,7 +103,7 @@ const LogCard = ({log, index, totalLogs}) => {
         />
         {/* Dotted Background */}
         <div
-          className="absolute inset-0 opacity-15 group-hover:opacity-30 transition-opacity duration-300 pointer-events-none"
+          className="absolute inset-0 opacity-10 group-hover:opacity-20 transition-opacity duration-300 pointer-events-none"
           style={{
             backgroundImage: `radial-gradient(circle, ${accentColor} 1px, transparent 1px)`,
             backgroundSize: '15px 15px', // Adjust size for desired density
