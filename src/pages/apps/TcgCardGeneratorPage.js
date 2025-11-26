@@ -206,7 +206,7 @@ const TcgCardGeneratorPage = () => {
 
     // Text: HP
     ctx.fillStyle = '#ff0055';
-    ctx.font = 'bold 22px "Arvo", serif';
+    ctx.font = 'bold 20px "Arvo", serif';
     ctx.textAlign = 'right';
     ctx.shadowColor = '#ff0055';
     ctx.shadowBlur = 8;
