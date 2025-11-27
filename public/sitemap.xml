@@ -2,57 +2,63 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fezcode.com/</loc>
-    <lastmod>2025-11-26T19:00:46.974Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.184Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fezcode.com/about</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/blog</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/projects</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/logs</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/settings</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/apps</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/lore</loc>
-    <lastmod>2025-11-26T19:00:46.975Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.185Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/blog/reducing-react-app-size</loc>
+    <lastmod>2025-11-27T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/blog/mastering-tailwind-centering</loc>
@@ -427,230 +433,500 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/age-of-wonders-4</loc>
-    <lastmod>2025-11-25T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/fifa-99-ost</loc>
-    <lastmod>2025-11-25T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/iloveimg</loc>
-    <lastmod>2025-11-23T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/accent-oracle</loc>
-    <lastmod>2025-11-21T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/maxs-choice-duty-vs-passion</loc>
-    <lastmod>2025-11-19T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/dhanush-why-this-kolaveri-di</loc>
-    <lastmod>2025-11-12T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/yoo-se-yoon-dont-skip-the-interlude</loc>
-    <lastmod>2025-11-12T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/needleful-arthur-whitney-c-smart</loc>
+    <loc>https://fezcode.com/#/logs/article/needleful-arthur-whitney-c-smart</loc>
     <lastmod>2025-11-03T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/frederic-oddloop</loc>
+    <loc>https://fezcode.com/#/logs/article/openfreemap-survived-100000-requests</loc>
     <lastmod>2025-11-03T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/morcheeba-easier-said-than-done</loc>
+    <loc>https://fezcode.com/#/logs/article/why-your-website-should-be-under-14kb-in-size</loc>
     <lastmod>2025-11-03T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/tool-mastra-ai</loc>
-    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/openfreemap-survived-100000-requests</loc>
-    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/website-wplace-live</loc>
-    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/why-your-website-should-be-under-14kb-in-size</loc>
-    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/albert-camus-the-stranger</loc>
-    <lastmod>2025-10-30T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/bloodlines-2</loc>
-    <lastmod>2025-10-28T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/the-peach-meme-on-crts-pixels-and-signal-quality-again</loc>
+    <loc>https://fezcode.com/#/logs/article/the-peach-meme-on-crts-pixels-and-signal-quality-again</loc>
     <lastmod>2025-10-18T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/openfront-io</loc>
-    <lastmod>2025-09-20T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/the-flowers-of-buffoonery</loc>
+    <loc>https://fezcode.com/#/logs/book/albert-camus-the-stranger</loc>
     <lastmod>2025-10-30T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/the-bear</loc>
-    <lastmod>2025-10-25T00:00:00.000Z</lastmod>
+    <loc>https://fezcode.com/#/logs/book/the-flowers-of_buffoonery</loc>
+    <lastmod>2025-10-30T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/relay-2024</loc>
-    <lastmod>2025-10-16T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/the-legend-of-zelda-breath-of-the-wild</loc>
-    <lastmod>2025-10-12T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/in-the-aeroplane-over-the-sea</loc>
-    <lastmod>2025-10-06T00:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://fezcode.com/#/logs/food-omelette</loc>
+    <loc>https://fezcode.com/#/logs/food/food-omelette</loc>
     <lastmod>2025-11-03T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://fezcode.com/#/logs/website-missing-dice-dice-roller</loc>
+    <loc>https://fezcode.com/#/logs/game/age-of-wonders-4</loc>
+    <lastmod>2025-11-25T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/bloodlines-2</loc>
+    <lastmod>2025-10-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/the-legend-of-zelda-breath-of-the-wild</loc>
+    <lastmod>2025-10-12T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/openfront-io</loc>
+    <lastmod>2025-09-20T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/prey-2017</loc>
+    <lastmod>2025-01-13T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/max-payne-trilogy</loc>
+    <lastmod>2024-08-29T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/resident-evil-4-remake</loc>
+    <lastmod>2023-11-11T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/fallout-4</loc>
+    <lastmod>2023-05-05T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/dying-light</loc>
+    <lastmod>2023-02-18T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/kingdoms-of-amalur-reckoning</loc>
+    <lastmod>2022-09-30T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/resident-evil-3-remake</loc>
+    <lastmod>2022-05-04T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/nier-automata-and-replicant</loc>
+    <lastmod>2022-04-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/the-outer-worlds</loc>
+    <lastmod>2021-08-20T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/loop-hero</loc>
+    <lastmod>2021-12-07T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/deus-ex-mankind-divided</loc>
+    <lastmod>2021-11-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/resident-evil-2-remake</loc>
+    <lastmod>2020-05-06T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/xcom-enemy-unknown</loc>
+    <lastmod>2016-12-09T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/hotline-miami</loc>
+    <lastmod>2016-06-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/game/deus-ex-human-revolution</loc>
+    <lastmod>2015-09-21T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/lucky-number-slevin-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/lock-stock-and-two-smoking-barrels-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/john-wick-chapter-4-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/john-wick-chapter-3-parabellum-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/john-wick-chapter-2-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/john-wick-chapter-1-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/heat-1995-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/decision-to-leave-2022-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/blade-1998-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/28-weeks-later-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/28-days-later-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/22-jump-street-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/21-jump-street-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/no-country-for-old-men-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/collateral-2004-movie</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/movie/relay-2024</loc>
+    <lastmod>2025-10-16T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/fifa-99-ost</loc>
+    <lastmod>2025-11-25T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/maxs-choice-duty-vs-passion</loc>
+    <lastmod>2025-11-19T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/dhanush-why-this-kolaveri-di</loc>
+    <lastmod>2025-11-12T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/yoo-se-yoon-dont-skip-the-interlude</loc>
+    <lastmod>2025-11-12T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/frederic-oddloop</loc>
+    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/morcheeba-easier-said-than-done</loc>
+    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/in-the-aeroplane-over-the-sea</loc>
+    <lastmod>2025-10-06T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/special-ed-neva-go-back</loc>
+    <lastmod>2025-09-25T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/music/de-la-soul-stakes-is-high</loc>
+    <lastmod>2025-09-24T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/halt-and-catch-fire-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/person-of-interest-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/community-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/black-bird-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/marvels-the-punisher-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/justice-league-unlimited-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/the-orville-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/invincible-tv-series</loc>
+    <lastmod>2025-11-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/tokyo-vice-tv-series</loc>
+    <lastmod>2025-11-27T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/shogun-tv-series</loc>
+    <lastmod>2025-10-27T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/the-bear</loc>
+    <lastmod>2025-10-25T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/midnight-mass-tv-series</loc>
+    <lastmod>2025-09-02T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/smiling-friends-tv-series</loc>
+    <lastmod>2025-08-30T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/series/the-expanse-tv-series</loc>
+    <lastmod>2025-07-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/tools/tool-mastra-ai</loc>
+    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/websites/iloveimg</loc>
+    <lastmod>2025-11-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/websites/accent-oracle</loc>
+    <lastmod>2025-11-21T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/websites/website-wplace-live</loc>
+    <lastmod>2025-11-03T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/#/logs/websites/website-missing-dice-dice-roller</loc>
     <lastmod>2025-11-03T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/1</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/1/pages/1</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/2</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/2/pages/1</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/3</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/3/pages/1</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/3/pages/2</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/4</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/4/pages/1</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/4/pages/2</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/5</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/5/pages/1</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/#/stories/books/5/pages/2</loc>
-    <lastmod>2025-11-26T19:00:46.980Z</lastmod>
+    <lastmod>2025-11-27T12:50:04.193Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

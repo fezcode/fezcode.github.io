@@ -1,5 +1,13 @@
 [
   {
+    "date": "2025-11-27",
+    "title": "Bundle Size Optimization",
+    "description": "Reduced main bundle size by ~70% via code splitting (React.lazy) and disabling production source maps.",
+    "type": "refactor",
+    "icon": "RocketLaunchIcon",
+    "link": "/#/blog/reducing-react-app-size"
+  },
+  {
     "date": "2025-11-26",
     "title": "Timeline Feature Introduced",
     "description": "Implemented a chronological overview of project milestones and achievements.",

@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 26 Nov 2025 19:00:46 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Nov 2025 12:50:03 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 26 Nov 2025 19:00:46 GMT</pubDate>
+        <pubDate>Thu, 27 Nov 2025 12:50:03 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Reducing React App Bundle Size: A Practical Guide]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/reducing-react-app-size</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/reducing-react-app-size</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Web performance is crucial for user experience. A slow-loading website can drive visitors away before they even see your content. Recently, I noticed that <strong>Fezcodex</strong> was taking a bit too long to load, so I decided to investigate and optimize the production build.</p>
+<p><a href="https://fezcode.com/#/blog/reducing-react-app-size">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Mastering Tailwind CSS: The "Absolute Centering" Trick]]></title>
             <description><![CDATA[[object Object]]]></description>

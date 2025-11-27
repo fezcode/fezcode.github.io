@@ -24,10 +24,10 @@ module.exports = {
   },
   webpack: {
     configure: (webpackConfig, { env, paths }) => {
-      // Disable sourcemaps for production if needed
-      // if (env === 'production') {
-      //   webpackConfig.devtool = false;
-      // }
+      // Disable sourcemaps for production
+      if (env === 'production') {
+        webpackConfig.devtool = false;
+      }
 
       // Add a rule to ignore source map warnings from node_modules
       webpackConfig.module.rules.push({

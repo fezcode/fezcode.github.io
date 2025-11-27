@@ -85,23 +85,34 @@ const generateSitemap = async () => {
     console.error('Error reading projects.json:', error);
   }
 
-  // Add dynamic routes from logs.json
-  try {
-    const logsJsonPath = path.join(publicDirectory, 'logs', 'logs.json');
-    const logsJson = fs.readFileSync(logsJsonPath, 'utf-8');
-    const logsData = JSON.parse(logsJson);
 
-    logsData.forEach(log => {
-      urls.push({
-        loc: `${baseUrl}/#/logs/${log.slug}`,
-        lastmod: new Date(log.updated || log.date).toISOString(),
-        changefreq: 'weekly',
-        priority: '0.7',
-      });
-    });
+  // Add dynamic routes from logs (category-based)
+  try {
+    const logsDirectory = path.join(publicDirectory, 'logs');
+    const logCategories = fs.readdirSync(logsDirectory, { withFileTypes: true })
+      .filter(dirent => dirent.isDirectory())
+      .map(dirent => dirent.name);
+
+    for (const category of logCategories) {
+      const categoryJsonPath = path.join(logsDirectory, category, `${category}.json`);
+      if (fs.existsSync(categoryJsonPath)) {
+        const logsJson = fs.readFileSync(categoryJsonPath, 'utf-8');
+        const logsData = JSON.parse(logsJson);
+
+        logsData.forEach(log => {
+          urls.push({
+            loc: `${baseUrl}/#/logs/${category.toLowerCase()}/${log.slug}`,
+            lastmod: new Date(log.updated || log.date || new Date()).toISOString(),
+            changefreq: 'weekly',
+            priority: '0.7',
+          });
+        });
+      }
+    }
   } catch (error) {
-    console.error('Error reading logs.json:', error);
+    console.error('Error reading log categories or JSON files:', error);
   }
+
 
   // Add dynamic routes from stories/books.piml
   try {
