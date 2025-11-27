@@ -9,6 +9,7 @@ import GenericModal from './components/GenericModal';
 import DigitalRain from './components/DigitalRain';
 import { AnimationProvider } from './context/AnimationContext'; // Import AnimationProvider
 import { CommandPaletteProvider } from './context/CommandPaletteContext';
+import { VisualSettingsProvider } from './context/VisualSettingsContext';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -39,31 +40,33 @@ function App() {
 
   return (
     <AnimationProvider>
-      <Router>
-        <DigitalRain isActive={isRainActive} />
-        <ScrollToTop />
-        <ToastProvider>
-          <CommandPaletteProvider>
-            <Layout
-              toggleModal={toggleModal}
-              isSearchVisible={isSearchVisible}
-              toggleSearch={toggleSearch}
-              openGenericModal={openGenericModal}
-              toggleDigitalRain={toggleDigitalRain}
+      <VisualSettingsProvider>
+        <Router>
+          <DigitalRain isActive={isRainActive} />
+          <ScrollToTop />
+          <ToastProvider>
+            <CommandPaletteProvider>
+              <Layout
+                toggleModal={toggleModal}
+                isSearchVisible={isSearchVisible}
+                toggleSearch={toggleSearch}
+                openGenericModal={openGenericModal}
+                toggleDigitalRain={toggleDigitalRain}
+              >
+                <AnimatedRoutes />
+              </Layout>
+            </CommandPaletteProvider>
+            <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
+            <GenericModal
+              isOpen={isGenericModalOpen}
+              onClose={closeGenericModal}
+              title={genericModalContent.title}
             >
-              <AnimatedRoutes />
-            </Layout>
-          </CommandPaletteProvider>
-          <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
-          <GenericModal
-            isOpen={isGenericModalOpen}
-            onClose={closeGenericModal}
-            title={genericModalContent.title}
-          >
-            {genericModalContent.content}
-          </GenericModal>
-        </ToastProvider>
-      </Router>
+              {genericModalContent.content}
+            </GenericModal>
+          </ToastProvider>
+        </Router>
+      </VisualSettingsProvider>
     </AnimationProvider>
   );
 }
