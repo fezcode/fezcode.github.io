@@ -30,31 +30,55 @@ const LogDetailPage = () => {
   const contentRef = useRef(null);
   const [modalImageSrc, setModalImageSrc] = useState(null);
 
+  const categories = [
+    'Book',
+    'Movie',
+    'Game',
+    'Article',
+    'Music',
+    'Series',
+    'Food',
+    'Websites',
+    'Tools',
+  ];
+
   useEffect(() => {
     const fetchLog = async () => {
       setLoading(true);
       try {
-        const [logContentResponse, logsResponse] = await Promise.all([
-          fetch(`/logs/${slug}.txt`),
-          fetch('/logs/logs.json'),
-        ]);
-
-        let logBody = '';
-        if (logContentResponse.ok) {
-          logBody = await logContentResponse.text();
-        } else {
-          // Handle case where log content is not found
-        }
-
         let logMetadata = null;
-        if (logsResponse.ok) {
-          const data = await logsResponse.json();
-          logMetadata = data.find((item) => item.slug === slug);
+        let logBody = '';
+        let logCategory = '';
+
+        // Fetch all category JSONs to find the logMetadata
+        const fetchMetadataPromises = categories.map(async (category) => {
+          const response = await fetch(`/logs/${category.toLowerCase()}/${category.toLowerCase()}.json`);
+          if (!response.ok) {
+            console.warn(`Category JSON not found for ${category}: ${response.statusText}`);
+            return [];
+          }
+          return response.json();
+        });
+
+        const allLogsArrays = await Promise.all(fetchMetadataPromises);
+        const combinedLogsMetadata = allLogsArrays.flat();
+
+        logMetadata = combinedLogsMetadata.find((item) => item.slug === slug);
+
+        if (logMetadata) {
+          logCategory = logMetadata.category.toLowerCase();
+          const logContentResponse = await fetch(`/logs/${logCategory}/${slug}.txt`);
+
+          if (logContentResponse.ok) {
+            logBody = await logContentResponse.text();
+          } else {
+            console.error(`Failed to fetch log content for ${slug}.txt: ${logContentResponse.statusText}`);
+          }
         } else {
-          console.error('Failed to fetch logs.json');
+          console.warn(`Log metadata not found for slug: ${slug}`);
         }
 
-        if (logMetadata && logContentResponse.ok) {
+        if (logMetadata && logBody) {
           setLog({ attributes: logMetadata, body: logBody });
         } else {
           setLog({ attributes: { title: 'Log not found' }, body: '' });

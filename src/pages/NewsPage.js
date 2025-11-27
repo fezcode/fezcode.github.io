@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { getPosts, getProjects, getLogs } from '../utils/dataUtils';
+import { getPosts, getProjects } from '../utils/dataUtils';
 import useSeo from '../hooks/useSeo';
 
 const pageVariants = {
@@ -33,11 +33,7 @@ const getItemClasses = (type, isFeatured = false) => {
       borderColorClass = 'border-blue-500';
       hoverBgColorClass = 'hover:bg-secondary-400/20'; // Hover with more orange transparency
       break;
-    case 'Log Entry':
-      bgColorClass = 'bg-violet-200/10'; // Purple with transparency
-      borderColorClass = 'border-violet-500';
-      hoverBgColorClass = 'hover:bg-violet-400/40'; // Hover with more purple transparency
-      break;
+
     default:
       bgColorClass = 'bg-gray-800'; // Default background
       borderColorClass = 'border-gray-500'; // Default border
@@ -80,10 +76,9 @@ function NewsPage() {
   useEffect(() => {
     async function fetchNews() {
       try {
-        const [blogPosts, projects, logs] = await Promise.all([
-          getPosts(), // Assuming getPosts returns an array of blog posts
-          getProjects(), // Assuming getProjects returns an array of projects
-          getLogs(), // Assuming getLogs returns an array of logs
+        const [blogPosts, projects] = await Promise.all([
+          getPosts(),
+          getProjects(),
         ]);
 
         const formattedBlogPosts = blogPosts.map(post => ({
@@ -92,7 +87,7 @@ function NewsPage() {
           date: post.date,
           link: `/blog/${post.slug}`,
           description: post.description || 'No description available.',
-          image: post.image, // Include image
+          image: post.image,
         }));
 
         const formattedProjects = projects.map(project => ({
@@ -101,19 +96,10 @@ function NewsPage() {
           date: project.date,
           link: `/projects/${project.slug}`,
           description: project.description || 'No description available.',
-          image: project.image, // Include image
+          image: project.image,
         }));
 
-        const formattedLogs = logs.map(log => ({
-          type: 'Log Entry',
-          title: log.title,
-          date: log.date,
-          link: `/logs/${log.slug}`,
-          description: log.description || 'No description available.',
-          image: log.image, // Include image
-        }));
-
-        const allNews = [...formattedBlogPosts, ...formattedProjects, ...formattedLogs];
+        const allNews = [...formattedBlogPosts, ...formattedProjects];
 
         // Sort by date, newest first
         allNews.sort((a, b) => new Date(b.date) - new Date(a.date));

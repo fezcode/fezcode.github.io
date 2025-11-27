@@ -142,7 +142,8 @@ function AppPage() {
               <span className="text-gray-100">fc</span>
               <span className="text-gray-500">::</span>
               <span className="text-gray-100">apps</span>
-              <span className="text-gray-500">::[</span>
+              <span className="text-gray-500">::</span>
+              <span className="text-gray-500">[</span>
               <span className="text-gray-100">{totalAppsCount}</span>
               <span className="text-gray-500">]</span>
               {/*<span className="ml-4 text-2xl text-gray-500 bg-gray-800 px-3 py-1 rounded-full font-mono align-middle">*/}

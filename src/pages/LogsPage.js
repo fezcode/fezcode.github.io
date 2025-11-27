@@ -77,13 +77,24 @@ const LogsPage = () => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const response = await fetch('/logs/logs.json');
-        const data = await response.json();
-        const logsWithId = data.map((log, index) => ({
+        const fetchPromises = categories.map(async (category) => {
+          const response = await fetch(`/logs/${category.toLowerCase()}/${category.toLowerCase()}.json`);
+          if (!response.ok) {
+            // If a category JSON file is not found, return an empty array for that category
+            console.warn(`Category JSON not found for ${category}: ${response.statusText}`);
+            return [];
+          }
+          return response.json();
+        });
+
+        const allLogsArrays = await Promise.all(fetchPromises);
+        const combinedLogs = allLogsArrays.flat(); // Flatten the array of arrays
+
+        const logsWithId = combinedLogs.map((log, index) => ({
           ...log,
           id: `${log.title}-${log.date}-${index}`,
           originalIndex: index,
-        }));
+        })).sort((a, b) => new Date(b.date) - new Date(a.date));
         setLogs(logsWithId);
       } catch (err) {
         console.error('Error fetching logs:', err);
