@@ -53,8 +53,10 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isInverted, toggleInvert,
     isRetro, toggleRetro,
     isParty, toggleParty,
-    isMirror, toggleMirror
+    isMirror, toggleMirror,
+    isNoir, toggleNoir
   } = useVisualSettings();
+
   const filteredItems = filterItems(items, searchTerm);
 
   useEffect(() => {
@@ -192,6 +194,14 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isMirror ? 'Mirror Mode On' : 'Mirror Mode Off',
             message: !isMirror ? 'Through the looking glass...' : 'Reflections normalized.',
+            duration: 2000
+          });
+          break;
+        case 'toggleNoirMode':
+          toggleNoir();
+          addToast({
+            title: !isNoir ? 'Noir Mode On' : 'Noir Mode Off',
+            message: !isNoir ? 'It was a dark and stormy night...' : 'Color returns to the world.',
             duration: 2000
           });
           break;

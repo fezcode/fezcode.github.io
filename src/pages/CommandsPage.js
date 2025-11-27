@@ -51,6 +51,7 @@ const commandsData = [
       { title: "Party Mode", description: "Cycles hue colors for a disco effect. (Easter Egg)", color: "amber" },
       { title: "Toggle Retro Mode", description: "Enables a retro CRT scanline effect. (Easter Egg)", color: "yellow" },
       { title: "Toggle Mirror Mode", description: "Mirrors the entire page horizontally. (Easter Egg)", color: "indigo" },
+      { title: "Toggle Noir Mode", description: "Enables a black and white noir film effect. (Easter Egg)", color: "gray" },
     ]
   },
   {

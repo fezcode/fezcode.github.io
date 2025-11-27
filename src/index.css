@@ -299,3 +299,8 @@ html.mirror-mode #root {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+/* Noir Mode */
+body.noir-mode {
+  filter: grayscale(100%) contrast(1.2);
+}

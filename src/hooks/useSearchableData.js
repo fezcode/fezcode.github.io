@@ -108,6 +108,7 @@ const useSearchableData = () => {
           { title: 'Party Mode', type: 'command', commandId: 'partyMode' },
           { title: 'Toggle Retro Mode', type: 'command', commandId: 'toggleRetroMode' },
           { title: 'Toggle Mirror Mode', type: 'command', commandId: 'toggleMirrorMode' },
+          { title: 'Toggle Noir Mode', type: 'command', commandId: 'toggleNoirMode' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

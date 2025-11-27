@@ -37,9 +37,9 @@ const SettingsPage = () => {
     isInverted, toggleInvert,
     isRetro, toggleRetro,
     isParty, toggleParty,
-    isMirror, toggleMirror
+    isMirror, toggleMirror,
+    isNoir, toggleNoir
   } = useVisualSettings();
-
   const {addToast} = useToast();
   const handleResetSidebarState = () => {
     removeLocalStorageItem(KEY_SIDEBAR_STATE);
@@ -48,11 +48,11 @@ const SettingsPage = () => {
       message: 'Sidebar state has been reset. The page will now reload.',
       duration: 3000,
     });
-
     setTimeout(() => {
       window.location.reload();
     }, 3000);
   };
+
   const handleResetAppsState = () => {
     removeLocalStorageItem(KEY_APPS_COLLAPSED_CATEGORIES);
     addToast({
@@ -80,8 +80,12 @@ const SettingsPage = () => {
           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/> Back to Home
         </Link>
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl"> Settings </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300"> Manage your application preferences. </p>
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
+            Settings
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-gray-300">
+            Manage your application preferences.
+          </p>
         </div>
         <div className="flex justify-center items-center mt-16">
           <div
@@ -110,9 +114,11 @@ const SettingsPage = () => {
                 <span className="block sm:inline ml-2">
                     Your preferences are stored locally in your browser. No data
                     is sent to any server.
-                </span>
+                  </span>
               </div>
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Animation Settings </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                Animation Settings
+              </h1>
               <hr className="border-gray-700 mb-4"/>
               <div className="mb-6 ml-4 mr-4">
                 <CustomToggle
@@ -187,6 +193,14 @@ const SettingsPage = () => {
                   checked={isMirror}
                   onChange={toggleMirror}
                 />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-noir-mode"
+                  label="> Noir Mode"
+                  checked={isNoir}
+                  onChange={toggleNoir}
+                />
+
               </div>
               {/* Sidebar Stuff */}
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
