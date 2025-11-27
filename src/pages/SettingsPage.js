@@ -38,8 +38,12 @@ const SettingsPage = () => {
     isRetro, toggleRetro,
     isParty, toggleParty,
     isMirror, toggleMirror,
-    isNoir, toggleNoir
+    isNoir, toggleNoir,
+    isTerminal, toggleTerminal,
+    isBlueprint, toggleBlueprint,
+    isSepia, toggleSepia
   } = useVisualSettings();
+
   const {addToast} = useToast();
   const handleResetSidebarState = () => {
     removeLocalStorageItem(KEY_SIDEBAR_STATE);
@@ -200,7 +204,27 @@ const SettingsPage = () => {
                   checked={isNoir}
                   onChange={toggleNoir}
                 />
-
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-terminal-mode"
+                  label="> Terminal Mode"
+                  checked={isTerminal}
+                  onChange={toggleTerminal}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-blueprint-mode"
+                  label="> Blueprint Mode"
+                  checked={isBlueprint}
+                  onChange={toggleBlueprint}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-sepia-mode"
+                  label="> Sepia Mode"
+                  checked={isSepia}
+                  onChange={toggleSepia}
+                />
               </div>
               {/* Sidebar Stuff */}
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">

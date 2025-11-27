@@ -13,6 +13,9 @@ export const VisualSettingsProvider = ({children}) => {
   const [isParty, setIsParty] = usePersistentState('is-party', false);
   const [isMirror, setIsMirror] = usePersistentState('is-mirror', false);
   const [isNoir, setIsNoir] = usePersistentState('is-noir', false);
+  const [isTerminal, setIsTerminal] = usePersistentState('is-terminal', false);
+  const [isBlueprint, setIsBlueprint] = usePersistentState('is-blueprint', false);
+  const [isSepia, setIsSepia] = usePersistentState('is-sepia', false);
 
   useEffect(() => {
     if (isInverted) {
@@ -54,11 +57,38 @@ export const VisualSettingsProvider = ({children}) => {
     }
   }, [isNoir]);
 
+  useEffect(() => {
+    if (isTerminal) {
+      document.body.classList.add('terminal-mode');
+    } else {
+      document.body.classList.remove('terminal-mode');
+    }
+  }, [isTerminal]);
+
+  useEffect(() => {
+    if (isBlueprint) {
+      document.body.classList.add('blueprint-mode');
+    } else {
+      document.body.classList.remove('blueprint-mode');
+    }
+  }, [isBlueprint]);
+
+  useEffect(() => {
+    if (isSepia) {
+      document.body.classList.add('sepia-mode');
+    } else {
+      document.body.classList.remove('sepia-mode');
+    }
+  }, [isSepia]);
+
   const toggleInvert = () => setIsInverted(prev => !prev);
   const toggleRetro = () => setIsRetro(prev => !prev);
   const toggleParty = () => setIsParty(prev => !prev);
   const toggleMirror = () => setIsMirror(prev => !prev);
   const toggleNoir = () => setIsNoir(prev => !prev);
+  const toggleTerminal = () => setIsTerminal(prev => !prev);
+  const toggleBlueprint = () => setIsBlueprint(prev => !prev);
+  const toggleSepia = () => setIsSepia(prev => !prev);
 
   return (
     <VisualSettingsContext.Provider value={{
@@ -66,7 +96,10 @@ export const VisualSettingsProvider = ({children}) => {
       isRetro, toggleRetro,
       isParty, toggleParty,
       isMirror, toggleMirror,
-      isNoir, toggleNoir
+      isNoir, toggleNoir,
+      isTerminal, toggleTerminal,
+      isBlueprint, toggleBlueprint,
+      isSepia, toggleSepia
     }}>
       {children}
     </VisualSettingsContext.Provider>);

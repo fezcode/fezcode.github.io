@@ -109,6 +109,9 @@ const useSearchableData = () => {
           { title: 'Toggle Retro Mode', type: 'command', commandId: 'toggleRetroMode' },
           { title: 'Toggle Mirror Mode', type: 'command', commandId: 'toggleMirrorMode' },
           { title: 'Toggle Noir Mode', type: 'command', commandId: 'toggleNoirMode' },
+          { title: 'Toggle Terminal Mode', type: 'command', commandId: 'toggleTerminalMode' },
+          { title: 'Toggle Blueprint Mode', type: 'command', commandId: 'toggleBlueprintMode' },
+          { title: 'Toggle Sepia Mode', type: 'command', commandId: 'toggleSepiaMode' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

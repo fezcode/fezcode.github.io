@@ -52,6 +52,9 @@ const commandsData = [
       { title: "Toggle Retro Mode", description: "Enables a retro CRT scanline effect. (Easter Egg)", color: "yellow" },
       { title: "Toggle Mirror Mode", description: "Mirrors the entire page horizontally. (Easter Egg)", color: "indigo" },
       { title: "Toggle Noir Mode", description: "Enables a black and white noir film effect. (Easter Egg)", color: "gray" },
+      { title: "Toggle Terminal Mode", description: "Switch to a green monochrome hacker aesthetic. (Easter Egg)", color: "green" },
+      { title: "Toggle Blueprint Mode", description: "Switch to a blueprint schematic look. (Easter Egg)", color: "blue" },
+      { title: "Toggle Sepia Mode", description: "Switch to an old-timey sepia tone. (Easter Egg)", color: "orange" },
     ]
   },
   {

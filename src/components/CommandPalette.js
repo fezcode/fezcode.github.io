@@ -54,7 +54,10 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isRetro, toggleRetro,
     isParty, toggleParty,
     isMirror, toggleMirror,
-    isNoir, toggleNoir
+    isNoir, toggleNoir,
+    isTerminal, toggleTerminal,
+    isBlueprint, toggleBlueprint,
+    isSepia, toggleSepia
   } = useVisualSettings();
 
   const filteredItems = filterItems(items, searchTerm);
@@ -202,6 +205,30 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isNoir ? 'Noir Mode On' : 'Noir Mode Off',
             message: !isNoir ? 'It was a dark and stormy night...' : 'Color returns to the world.',
+            duration: 2000
+          });
+          break;
+        case 'toggleTerminalMode':
+          toggleTerminal();
+          addToast({
+            title: !isTerminal ? 'Terminal Mode On' : 'Terminal Mode Off',
+            message: !isTerminal ? 'System Online.' : 'System Offline.',
+            duration: 2000
+          });
+          break;
+        case 'toggleBlueprintMode':
+          toggleBlueprint();
+          addToast({
+            title: !isBlueprint ? 'Blueprint Mode On' : 'Blueprint Mode Off',
+            message: !isBlueprint ? 'Entering Construction Mode.' : 'Blueprint Stored.',
+            duration: 2000
+          });
+          break;
+        case 'toggleSepiaMode':
+          toggleSepia();
+          addToast({
+            title: !isSepia ? 'Sepia Mode On' : 'Sepia Mode Off',
+            message: !isSepia ? 'Time travel initiated.' : 'Back to the present.',
             duration: 2000
           });
           break;
