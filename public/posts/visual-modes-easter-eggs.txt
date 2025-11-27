@@ -1,0 +1,45 @@
+Websites should be **fun**. While optimizing performance and fixing bugs is satisfying, sometimes you just want to flip the table -or in this case-, the entire viewport.
+
+Today, I'm excited to introduce a suite of new **Visual Modes** to Fezcodex. These are persistent, purely aesthetic toggles that let you experience the site in a completely different light (or lack thereof).
+
+## The New Modes
+
+### 1. Invert Colors (The Upside Down)
+Ever wondered what the site looks like in negative? This mode inverts all colors but cleverly rotates the hue by 180 degrees. This prevents photos from looking like scary X-rays and instead creates a cool, alternative color palette.
+
+### 2. Retro Mode (Cyberpunk 2077)
+Feeling nostalgic? Enable Retro Mode to overlay a CRT scanline effect and chromatic aberration (that red/blue text split). It gives the entire UI a gritty, 80s sci-fi terminal vibe.
+
+### 3. Party Mode (RGB Everywhere)
+Boots and cats and boots and cats. This mode continuously cycles the screen's hue through the entire rainbow. Warning: It's colorful. Very colorful.
+
+### 4. Mirror Mode (Through the Looking Glass)
+For those who want a challenge. This flips the entire website horizontally. Text is backwards, layouts are reversed, and your mouse muscle memory will be thoroughly confused. Good luck navigating!
+
+### 5. Noir Mode (Dramatic Effect)
+It was a dark and stormy night... This mode applies a high-contrast grayscale filter, turning the site into a scene from a classic detective film.
+
+## How to Access Them
+
+You can unlock these modes in two ways:
+
+### 1. The Command Palette (For the Power User)
+Press `Alt + K` (or click the "Commands" button in the sidebar) to open the Command Palette. Then, simply type:
+*   `Toggle Invert Colors`
+*   `Toggle Retro Mode`
+*   `Party Mode`
+*   `Toggle Mirror Mode`
+*   `Toggle Noir Mode`
+*   ...or try `Do a Barrel Roll` for a quick spin!
+
+### 2. The Settings Page (For the Clicker)
+Head over to the [Settings page](/#/settings) (accessible from the Sidebar). Scroll down to the new **Visual Effects** section, where you'll find toggle switches for all persistent modes.
+
+## Under the Hood
+
+Implementing these was a fun exercise in CSS filters and React context.
+*   **Persistence:** We use a custom `usePersistentState` hook (wrapper around `localStorage`) to remember your choices, so your Retro Mode stays on even after you refresh.
+*   **CSS Magic:** Most effects use `backdrop-filter` on a fixed pseudo-element (`body::after`). This was crucial to ensure that `position: fixed` elements (like the Sidebar) didn't break or scroll away when the filters were applied.
+*   **Global Context:** A new `VisualSettingsContext` manages the state application-wide, ensuring that the Settings page and Command Palette stay in sync.
+
+Go ahead, break the UI. It's a feature, not a bug.
