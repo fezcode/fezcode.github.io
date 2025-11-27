@@ -1,6 +1,6 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, DownloadSimple, Trash, CloudRain, FloppyDisk, FolderOpen, ArrowsOutLineHorizontal, ArrowsInLineHorizontal} from '@phosphor-icons/react';
+import {ArrowLeftIcon, DownloadSimple, Trash, CloudRain, FloppyDisk, FolderOpen, ArrowsOutLineVerticalIcon} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import {useToast} from '../../hooks/useToast';
 import ConfirmationModal from '../../components/ConfirmationModal';
@@ -141,15 +141,15 @@ const NotepadPage = () => {
 
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col relative z-10 max-w-4xl">
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex items-center mb-6 relative">
           <Link to="/apps"
                 className={`flex items-center gap-2 hover:underline ${isRainy ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
             <ArrowLeftIcon/> Back to Apps
           </Link>
-          <h1 className={`text-2xl font-serif font-bold tracking-wide ${isRainy ? 'text-gray-200' : 'text-gray-800'}`}>
+          <h1 className={`absolute left-1/2 -translate-x-1/2 text-2xl font-serif font-bold tracking-wide ${isRainy ? 'text-gray-200' : 'text-gray-800'}`}>
             Notepad
           </h1>
-          <div className="flex gap-2">
+          <div className="flex gap-2 ml-auto">
             <button
               onClick={handleSave}
               className={`p-2 rounded-full transition-colors ${isRainy ? 'text-cyan-400 hover:bg-cyan-900/30' : 'text-cyan-600 hover:bg-cyan-100'}`}
@@ -169,7 +169,7 @@ const NotepadPage = () => {
               className={`p-2 rounded-full transition-colors ${isFixedSize ? 'text-gray-500 hover:bg-gray-200' : 'text-blue-300 bg-blue-900/30 hover:bg-blue-900/50'}`}
               title={isFixedSize ? 'Expand Notepad' : 'Fix Notepad Height'}
             >
-              {isFixedSize ? <ArrowsOutLineHorizontal size={20} /> : <ArrowsInLineHorizontal size={20} />}
+              {isFixedSize ? <ArrowsOutLineVerticalIcon size={20} /> : <ArrowsOutLineVerticalIcon size={20} />}
             </button>
             <button
               onClick={toggleRain}
