@@ -106,6 +106,7 @@ const useSearchableData = () => {
           { title: 'Do a Barrel Roll', type: 'command', commandId: 'doBarrelRoll' },
           { title: 'Toggle Invert Colors', type: 'command', commandId: 'toggleInvertColors' },
           { title: 'Party Mode', type: 'command', commandId: 'partyMode' },
+          { title: 'Toggle Retro Mode', type: 'command', commandId: 'toggleRetroMode' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

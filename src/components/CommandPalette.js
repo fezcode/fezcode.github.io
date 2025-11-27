@@ -175,6 +175,15 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                         addToast({ title: 'Let\'s Party!', message: 'Boots and cats and boots and cats!', duration: 2000 });
                     }
                     break;
+                case 'toggleRetroMode':
+                    if (document.documentElement.classList.contains('retro-mode')) {
+                        document.documentElement.classList.remove('retro-mode');
+                        addToast({ title: 'Retro Mode Off', message: 'Back to the future!', duration: 2000 });
+                    } else {
+                        document.documentElement.classList.add('retro-mode');
+                        addToast({ title: 'Retro Mode On', message: '80s Vibes Initiated.', duration: 2000 });
+                    }
+                    break;
                 case 'showTime': {
                     openGenericModal('Current Time', <LiveClock />);
                     break;
