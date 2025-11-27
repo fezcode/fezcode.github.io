@@ -1,5 +1,269 @@
 [
   {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0427958/",
+    "director": "Paul McGuigan",
+    "rating": 5,
+    "slug": "lucky-number-slevin-movie",
+    "title": "Lucky Number Slevin (2006)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Lucky Number Slevin (2006) is a neo-noir crime thriller directed by Paul McGuigan. It follows Slevin, who finds himself caught in a war between two rival crime bosses, while also being hunted by a notorious assassin and investigated by a persistent detective. Praised for its intricate plot, witty dialogue, stylish visuals, and surprise twists."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0120735/",
+    "director": "Guy Ritchie",
+    "rating": 5,
+    "slug": "lock-stock-and-two-smoking-barrels-movie",
+    "title": "Lock, Stock and Two Smoking Barrels (1998)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Lock, Stock and Two Smoking Barrels (1998) is a crime comedy film directed by Guy Ritchie. It follows four friends who lose a large sum of money in a rigged card game and must find a way to pay it back within a week, leading them into a series of escalating criminal endeavors. Praised for its stylish direction, witty dialogue, and intricate interlocking plotlines."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt10366206/",
+    "director": "Chad Stahelski",
+    "rating": 5,
+    "slug": "john-wick-chapter-4-movie",
+    "title": "John Wick: Chapter 4 (2023)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "John Wick: Chapter 4 (2023) is an action thriller directed by Chad Stahelski. John Wick uncovers a path to defeating the High Table, but before he can earn his freedom, he must face a new enemy with powerful alliances across the globe. Praised for its groundbreaking action set pieces, epic scale, and a satisfying culmination of the franchise's mythology."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt6146586/",
+    "director": "Chad Stahelski",
+    "rating": 5,
+    "slug": "john-wick-chapter-3-parabellum-movie",
+    "title": "John Wick: Chapter 3 – Parabellum (2019)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "John Wick: Chapter 3 – Parabellum (2019) is an action thriller directed by Chad Stahelski. Picking up directly after Chapter 2, John Wick is excommunicado and on the run in New York City, targeted by the world's most ruthless assassins. Praised for its breathtaking action sequences, further expansion of the intricate world of the High Table, and unwavering commitment to Wick's desperate fight for survival."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt4425200/",
+    "director": "Chad Stahelski",
+    "rating": 5,
+    "slug": "john-wick-chapter-2-movie",
+    "title": "John Wick: Chapter 2 (2017)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "John Wick: Chapter 2 (2017) is an action thriller directed by Chad Stahelski, and the sequel to John Wick. It sees legendary hitman John Wick forced back into the criminal underworld to repay a debt, leading him to Rome and a global network of assassins. Praised for expanding the intricate world-building, escalating the action choreography, and deepening the mythology of the High Table."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt2911666/",
+    "director": "Chad Stahelski, David Leitch (uncredited)",
+    "rating": 5,
+    "slug": "john-wick-chapter-1-movie",
+    "title": "John Wick: Chapter 1 (2014)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "John Wick: Chapter 1 (2014) is an action thriller directed by Chad Stahelski. It follows a legendary hitman, John Wick, who is forced out of retirement after his car is stolen and his puppy, a final gift from his deceased wife, is killed. Praised for its stylish action choreography, minimalist storytelling, and unique world-building of an assassin underworld."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0113277/",
+    "director": "Michael Mann",
+    "rating": 5,
+    "slug": "heat-1995-movie",
+    "title": "Heat (1995)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Heat (1995) is a crime drama directed by Michael Mann, featuring the iconic first on-screen pairing of Al Pacino and Robert De Niro. It follows a meticulous professional thief, Neil McCauley, and the obsessive LAPD detective, Vincent Hanna, hunting him. Celebrated for its realistic action sequences, complex characterizations, and atmospheric portrayal of Los Angeles."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt12477480/",
+    "director": "Park Chan-wook",
+    "rating": 5,
+    "slug": "decision-to-leave-2022-movie",
+    "title": "Decision to Leave (2022)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Decision to Leave (2022) is a romantic mystery film directed by Park Chan-wook. It follows a detective who falls for a mysterious widow while investigating her husband's death. Praised for its intricate plot, stunning visuals, and the director's signature style that blends suspense, romance, and dark humor. Awarded Best Director at Cannes Film Festival."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0120611/",
+    "director": "Stephen Norrington",
+    "rating": 4,
+    "slug": "blade-1998-movie",
+    "title": "Blade (1998)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Blade (1998) is a superhero horror film based on the Marvel Comics character. Wesley Snipes stars as Eric Brooks, a half-human, half-vampire 'Daywalker' who hunts vampires to protect humanity. Credited with paving the way for the modern superhero film genre with its dark, gritty tone, stylish action, and innovative take on vampire lore."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0707680/",
+    "director": "Juan Carlos Fresnadillo",
+    "rating": 4,
+    "slug": "28-weeks-later-movie",
+    "title": "28 Weeks Later (2007)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "28 Weeks Later (2007) is a post-apocalyptic horror film directed by Juan Carlos Fresnadillo, and a sequel to 28 Days Later. It depicts the attempt to re-establish civilization in London after the Rage virus outbreak, which quickly goes awry. Praised for its intense action, bleak atmosphere, and terrifying portrayal of human nature under duress."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0289043/",
+    "director": "Danny Boyle",
+    "rating": 5,
+    "slug": "28-days-later-movie",
+    "title": "28 Days Later (2002)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "28 Days Later (2002) is a post-apocalyptic horror film directed by Danny Boyle. It follows a bicycle courier who awakens from a coma to find London deserted after a rapidly spreading 'Rage' virus has turned most of the population into bloodthirsty infected. Credited with revitalizing the zombie genre with its fast-moving infected and stark, unsettling atmosphere."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt2294449/",
+    "director": "Phil Lord, Christopher Miller",
+    "rating": 5,
+    "slug": "22-jump-street-movie",
+    "title": "22 Jump Street (2014)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "22 Jump Street (2014) is an action-comedy film directed by Phil Lord and Christopher Miller, and the sequel to 21 Jump Street. It stars Jonah Hill and Channing Tatum as undercover police officers who this time go undercover in a college to bust a new drug ring. Praised for its self-aware humor, continuation of the comedic chemistry, and clever deconstruction of sequel tropes."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt1232829/",
+    "director": "Phil Lord, Christopher Miller",
+    "rating": 5,
+    "slug": "21-jump-street-movie",
+    "title": "21 Jump Street (2012)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "21 Jump Street (2012) is an action-comedy film directed by Phil Lord and Christopher Miller, based on the TV series. It stars Jonah Hill and Channing Tatum as two incompetent police officers who go undercover as high school students to bust a drug ring. Praised for its unexpected humor, satirical take on high school tropes, and chemistry between the leads."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt6334354/",
+    "director": "James Gunn",
+    "rating": 5,
+    "slug": "the-suicide-squad-2021-movie",
+    "title": "The Suicide Squad (2021)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "The Suicide Squad (2021) is a superhero action-comedy directed by James Gunn. It features a new team of DC Comics supervillains sent on a dangerous mission to the island nation of Corto Maltese. Praised for its R-rated humor, over-the-top action, and unexpected heart."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0477348/",
+    "director": "Joel Coen, Ethan Coen",
+    "rating": 5,
+    "slug": "no-country-for-old-men-movie",
+    "title": "No Country for Old Men",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "No Country for Old Men (2007) is a neo-western thriller directed by the Coen Brothers. Set in 1980 rural Texas, it follows a hunter who stumbles upon a drug deal gone wrong, leading him into a relentless pursuit by a psychopathic killer. Critically acclaimed for its tense atmosphere, philosophical depth, and unflinching portrayal of violence."
+  },
+  {
+    "category": "Movie",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0369339/",
+    "director": "Michael Mann",
+    "rating": 5,
+    "slug": "collateral-2004-movie",
+    "title": "Collateral (2004)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Collateral (2004) is a neo-noir action thriller directed by Michael Mann. It follows a hitman, Vincent (Tom Cruise), who takes a Los Angeles taxi driver, Max (Jamie Foxx), hostage for a night of contract killings. Praised for its intense atmosphere, stunning cinematography of LA nights, and compelling performances from its leads."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt2543312/",
+    "platform": "AMC+",
+    "rating": 5,
+    "slug": "halt-and-catch-fire-tv-series",
+    "title": "Halt and Catch Fire (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Halt and Catch Fire (2014) is a drama series that chronicles the personal computing boom of the 1980s and the rise of the World Wide Web in the 1990s. It follows a visionary, an engineer, and a coding prodigy as they navigate the shifting tech landscape. Praised for its accurate portrayal of tech history, character-driven storytelling, and exploration of innovation and ambition."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt1839578/",
+    "platform": "Max",
+    "rating": 5,
+    "slug": "person-of-interest-tv-series",
+    "title": "Person of Interest (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Person of Interest (2011) is a sci-fi crime drama created by Jonathan Nolan. It follows an enigmatic billionaire and a former CIA agent who use an AI to prevent violent crimes before they happen. Praised for its complex serialized storytelling, exploration of AI ethics, and compelling character arcs."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt1439629/",
+    "platform": "Netflix, Hulu",
+    "rating": 5,
+    "slug": "community-tv-series",
+    "title": "Community (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Community (2009) is a sitcom created by Dan Harmon. It follows a diverse study group at a quirky community college in Colorado, known for its meta-humor, pop culture references, and innovative episode concepts that often parody film and television genres. Celebrated for its sharp writing and character development."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt13908274/",
+    "platform": "Apple TV+",
+    "rating": 5,
+    "slug": "black-bird-tv-series",
+    "title": "Black Bird (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Black Bird (2022) is a crime drama miniseries created by Dennis Lehane, based on the true-crime novel 'In with the Devil'. It stars Taron Egerton as Jimmy Keene, who is offered freedom from prison if he can elicit a confession from suspected serial killer Larry Hall. Praised for its intense psychological drama, stellar performances, and gripping narrative."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt5675620/",
+    "platform": "Disney+",
+    "rating": 5,
+    "slug": "marvels-the-punisher-tv-series",
+    "title": "Marvel's The Punisher (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Marvel's The Punisher (2017) is an American television series created by Steve Lightfoot for Netflix (now on Disney+), based on the Marvel Comics character. It follows Frank Castle, a vigilante who uses lethal methods to fight crime after the murder of his family. Known for its gritty realism, psychological depth, and intense action sequences."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt0348824/",
+    "platform": "Max",
+    "rating": 5,
+    "slug": "justice-league-unlimited-tv-series",
+    "title": "Justice League Unlimited (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Justice League Unlimited (2004) is an animated superhero series, a direct continuation of Justice League. It expands the roster to over 50 DC characters, focusing on a larger, more interconnected universe. Praised for its intricate storytelling, character development, and ambitious scope."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt5691552/",
+    "platform": "Hulu, Disney+",
+    "rating": 5,
+    "slug": "the-orville-tv-series",
+    "title": "The Orville (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "The Orville (2017) is a sci-fi comedy-drama created by Seth MacFarlane. Set 400 years in the future, it follows the crew of the USS Orville as they navigate the wonders and dangers of deep space, while also exploring contemporary social issues with a blend of humor and thoughtful storytelling, reminiscent of classic Star Trek."
+  },
+  {
+    "category": "Series",
+    "date": "2025-11-28",
+    "link": "https://www.imdb.com/title/tt6741278/",
+    "platform": "Amazon Prime Video",
+    "rating": 5,
+    "slug": "invincible-tv-series",
+    "title": "Invincible (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Invincible (2021) is an adult animated superhero series based on the comic book by Robert Kirkman. It follows Mark Grayson, a teenager who inherits superpowers from his alien father, Omni-Man. The series subverts superhero tropes, delivering brutal action, complex characters, and a compelling narrative about family, betrayal, and the cost of heroism."
+  },
+  {
     "category": "Series",
     "date": "2025-11-27",
     "link": "https://www.imdb.com/title/tt11847144/",
@@ -76,7 +340,7 @@
     "album": "3 (Soundtrack)",
     "releaseDate": "2011-11-16",
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
-    "description": "\"Why This Kolaveri Di\" is a Tamil-English (Tanglish) song by Dhanush about a heartbroken man's unrequited love. It became an internet sensation due to its catchy tune, relatable lyrics, and viral spread through social media, with Dhanush's unpolished vocals adding to its charm."
+    "description": "\"Why This Kolaveri Di\" is a Tamil-English (Tanglish) song by Dhanush about a heartbroken man's unrequited love. It became an internet sensation due2 to its catchy tune, relatable lyrics, and viral spread through social media, with Dhanush's unpolished vocals adding to its charm."
   },
   {
     "artist": "Yoo Se Yoon",
@@ -174,7 +438,7 @@
     "slug": "website-missing-dice-dice-roller",
     "title": "Missing Dice - Dice Roller",
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
-    "description": "\"Missing Dice - Dice Roller\" is a website designed for rolling dice, found at missingdice.com/dice-roller/."
+    "description": "\"Missing Dice - Dice Roller\" is is a website designed for rolling dice, found at missingdice.com/dice-roller/."
   },
   {
     "category": "Article",

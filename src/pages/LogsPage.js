@@ -221,11 +221,8 @@ const LogsPage = () => {
           })}
 
           {(selectedCategories.length > 0 || searchQuery) && (
-            <button
-              onClick={clearFilters}
-              className="ml-auto text-sm text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors"
-            >
-              <XCircle size={16}/> Clear
+            <button onClick={clearFilters} className="font-arvo ml-auto text-sm text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors">
+              <XCircle size={20}/> Clear
             </button>
           )}
         </div>
