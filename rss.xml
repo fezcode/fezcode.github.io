@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 27 Nov 2025 10:11:31 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 27 Nov 2025 16:07:34 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 27 Nov 2025 10:11:31 GMT</pubDate>
+        <pubDate>Thu, 27 Nov 2025 16:07:34 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Unlocking the Multiverse: New Visual Modes in Fezcodex]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/visual-modes-easter-eggs</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/visual-modes-easter-eggs</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Websites should be <strong>fun</strong>. While optimizing performance and fixing bugs is satisfying, sometimes you just want to flip the table -or in this case-, the entire viewport.</p>
+<p><a href="https://fezcode.com/#/blog/visual-modes-easter-eggs">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Reducing React App Bundle Size: A Practical Guide]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/reducing-react-app-size</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/reducing-react-app-size</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Web performance is crucial for user experience. A slow-loading website can drive visitors away before they even see your content. Recently, I noticed that <strong>Fezcodex</strong> was taking a bit too long to load, so I decided to investigate and optimize the production build.</p>
+<p><a href="https://fezcode.com/#/blog/reducing-react-app-size">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Mastering Tailwind CSS: The "Absolute Centering" Trick]]></title>
             <description><![CDATA[[object Object]]]></description>

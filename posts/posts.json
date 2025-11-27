@@ -1,5 +1,41 @@
 [
   {
+    "slug": "visual-modes-easter-eggs",
+    "title": "Unlocking the Multiverse: New Visual Modes in Fezcodex",
+    "date": "2025-11-27",
+    "updated": "2025-11-27",
+    "description": "Introducing Invert, Retro, Party, Mirror, and Noir modes. Discover how to access these hidden visual treats via the Command Palette and Settings.",
+    "tags": [
+      "feat",
+      "easter-eggs",
+      "css",
+      "design",
+      "fun"
+    ],
+    "category": "feat",
+    "filename": "visual-modes-easter-eggs.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+  },
+  {
+    "slug": "reducing-react-app-size",
+    "title": "Reducing React App Bundle Size: A Practical Guide",
+    "date": "2025-11-27",
+    "updated": "2025-11-27",
+    "description": "How I reduced the main bundle size by over 70% using code splitting and disabling source maps.",
+    "tags": [
+      "react",
+      "performance",
+      "optimization",
+      "lazy-loading",
+      "craco"
+    ],
+    "category": "dev",
+    "filename": "reducing-react-app-size.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+  },
+  {
     "slug": "mastering-tailwind-centering",
     "title": "Mastering Tailwind CSS: The \"Absolute Centering\" Trick",
     "date": "2025-11-26",
