@@ -4,21 +4,34 @@ const useSearchableData = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const categories = [
+    'Book', 'Movie', 'Game', 'Article', 'Music', 'Series', 'Food', 'Websites', 'Tools',
+  ];
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const [postsRes, projectsRes, logsRes, appsRes] = await Promise.all([
+        const fetchLogPromises = categories.map(async (category) => {
+          const response = await fetch(`/logs/${category.toLowerCase()}/${category.toLowerCase()}.json`);
+          if (!response.ok) {
+            console.warn(`Category JSON not found for ${category}: ${response.statusText}`);
+            return [];
+          }
+          return response.json();
+        });
+
+        const [postsRes, projectsRes, allLogsArrays, appsRes] = await Promise.all([
           fetch('/posts/posts.json'),
           fetch('/projects/projects.json'),
-          fetch('/logs/logs.json'),
+          Promise.all(fetchLogPromises), // Await all log category fetches
           fetch('/apps/apps.json'),
         ]);
 
         const postsData = await postsRes.json();
         const projectsData = await projectsRes.json();
-        const logsData = await logsRes.json();
         const appsData = await appsRes.json();
+        const combinedLogs = allLogsArrays.flat(); // Flatten the array of arrays from logs
 
         // Process Apps
         const allApps = Object.values(appsData)
@@ -45,7 +58,7 @@ const useSearchableData = () => {
         const allProjects = projectsData.map(p => ({ ...p, type: 'project', path: `/projects/${p.slug}` }));
 
         // Process Logs
-        const allLogs = logsData.map(l => ({ ...l, type: 'log', path: `/logs/${l.slug}` }));
+        const allLogs = combinedLogs.map(l => ({ ...l, type: 'log', path: `/logs/${l.category.toLowerCase()}/${l.slug}` }));
 
         // Define static routes and custom commands
         const staticRoutes = [

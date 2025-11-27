@@ -259,7 +259,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/logs/:slug"
+          path="/logs/:category/:slugId"
           element={
             <motion.div
               initial="initial"

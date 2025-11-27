@@ -91,7 +91,7 @@ const LogCard = ({log, index, totalLogs}) => {
   );
 
   return (
-    <Link to={`/logs/${slug}`} className="block h-full group">
+    <Link to={`/logs/${log.category.toLowerCase()}/${slug}`} className="block h-full group">
       <div
         className="relative h-full border border-gray-800 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gray-700 flex flex-col"
         style={{backgroundColor: `${accentColor}30`}}
