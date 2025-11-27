@@ -1,6 +1,14 @@
 [
   {
     "date": "2025-11-27",
+    "title": "Pinned Apps Hall of Fame",
+    "description": "Introduced a dedicated, techno-styled page for my most used and favorite tools.",
+    "type": "feature",
+    "icon": "PushPin",
+    "link": "/#/apps/pinned"
+  },
+  {
+    "date": "2025-11-27",
     "title": "New Blogpost Page",
     "description": "A new overhauled version of the blogposts page.",
     "type": "refactor",
