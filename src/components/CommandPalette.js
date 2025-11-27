@@ -166,6 +166,15 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                         addToast({ title: 'Colors Inverted', message: 'Welcome to the upside down!', duration: 2000 });
                     }
                     break;
+                case 'partyMode':
+                    if (document.body.classList.contains('party-mode')) {
+                        document.body.classList.remove('party-mode');
+                        addToast({ title: 'Party Over', message: 'Party\'s over...', duration: 2000 });
+                    } else {
+                        document.body.classList.add('party-mode');
+                        addToast({ title: 'Let\'s Party!', message: 'Boots and cats and boots and cats!', duration: 2000 });
+                    }
+                    break;
                 case 'showTime': {
                     openGenericModal('Current Time', <LiveClock />);
                     break;
