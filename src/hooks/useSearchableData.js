@@ -103,6 +103,8 @@ const useSearchableData = () => {
           { title: 'Toggle Full Screen', type: 'command', commandId: 'toggleFullScreen' },
           { title: 'Create Issue for This Page', type: 'command', commandId: 'openGitHubIssue' },
           { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
+          { title: 'Do a Barrel Roll', type: 'command', commandId: 'doBarrelRoll' },
+          { title: 'Toggle Invert Colors', type: 'command', commandId: 'toggleInvertColors' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

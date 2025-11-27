@@ -150,6 +150,22 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                 case 'herDaim':
                     openGenericModal('Her Daim', <img src="/images/herdaim.jpg" alt="Her Daim" className="max-w-full h-auto" />);
                     break;
+                case 'doBarrelRoll':
+                    document.body.classList.add('do-a-barrel-roll');
+                    addToast({ title: 'Wheeeee!', message: 'Do a Barrel Roll!', duration: 1000 });
+                    setTimeout(() => {
+                        document.body.classList.remove('do-a-barrel-roll');
+                    }, 1000);
+                    break;
+                case 'toggleInvertColors':
+                    if (document.body.classList.contains('invert-mode')) {
+                        document.body.classList.remove('invert-mode');
+                        addToast({ title: 'Colors Restored', message: 'Back to normal!', duration: 2000 });
+                    } else {
+                        document.body.classList.add('invert-mode');
+                        addToast({ title: 'Colors Inverted', message: 'Welcome to the upside down!', duration: 2000 });
+                    }
+                    break;
                 case 'showTime': {
                     openGenericModal('Current Time', <LiveClock />);
                     break;
@@ -208,11 +224,19 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                 }
                 case 'toggleFullScreen':
                     if (!document.fullscreenElement) {
-                        document.documentElement.requestFullscreen();
-                        addToast({ title: 'Full Screen', message: 'Entered full screen mode.', duration: 2000 });
-                    } else if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                        addToast({ title: 'Full Screen', message: 'Exited full screen mode.', duration: 2000 });
+                        document.documentElement.requestFullscreen().then(() => {
+                            addToast({ title: 'Full Screen', message: 'Entered full screen mode.', duration: 2000 });
+                        }).catch(err => {
+                            addToast({ title: 'Error', message: `Could not enter full screen: ${err.message}`, duration: 3000 });
+                        });
+                    } else {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen().then(() => {
+                                addToast({ title: 'Full Screen', message: 'Exited full screen mode.', duration: 2000 });
+                            }).catch(err => {
+                                addToast({ title: 'Error', message: `Could not exit full screen: ${err.message}`, duration: 3000 });
+                            });
+                        }
                     }
                     break;
                 case 'openGitHubIssue': {
