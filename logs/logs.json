@@ -1,5 +1,16 @@
 [
   {
+    "category": "Series",
+    "date": "2025-11-27",
+    "link": "https://www.imdb.com/title/tt11847144/",
+    "platform": "HBO Max",
+    "rating": 4,
+    "slug": "tokyo-vice-tv-series",
+    "title": "Tokyo Vice (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Tokyo Vice (2022) is an American crime drama based on Jake Adelstein's non-fiction book. It follows an American journalist in late 1990s Tokyo, navigating the yakuza underworld. Praised for its authentic portrayal of Japanese culture, gripping plot, and stylish direction."
+  },
+  {
     "category": "Game",
     "date": "2025-11-25",
     "link": "https://store.steampowered.com/app/1669000/Age_of_Wonders_4/",
@@ -20,7 +31,7 @@
     "title": "Music from FIFA 99",
     "album": "FIFA 99 (Soundtrack)",
     "image": "/images/defaults/fifa99.jpg",
-    "description": "Songs from my favorite FIFA game, including Raincry by God Within, Rockafella Skank by Fatboy Slim, Gotta Learn by Danmass. Also a quick memorial, about John Motson... John Motson (1945-2023) was a renowned English football commentator for the BBC, easily recognizable by his distinctive voice and his iconic sheepskin coat. Over his extensive career, he commentated on more than 2000 games, which included 10 FIFA World Cups and 29 FA Cup finals. He retired from the BBC in 2018 and was honored with an OBE in 2001 for his outstanding services to sports broadcasting."
+    "description": "Songs from my favorite FIFA game, including Raincry by God Within, Rockafella Skank by Fatboy Slim, Gotta Learn by Danmass. Also a quick memorial, about John Motson... John Motson (1945-2023) was a renowned English football commentator for the BBC, easily recognizable by his distinctive voice and his iconic sheepskin coat. Over his extensive career, he commented on more than 2000 games, which included 10 FIFA World Cups and 29 FA Cup finals. He retired from the BBC in 2018 and was honored with an OBE in 2001 for his outstanding services to sports broadcasting."
   },
   {
     "category": "Websites",
@@ -134,7 +145,16 @@
     "author": "Zsolt Ero",
     "title": "OpenFreeMap survived 100,000 requests per second",
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
-    "description": "This article by Zsolt Ero details how OpenFreeMap, a free and open-source map service, unexpectedly handled a massive traffic spike of 100,000 requests per second, largely due to a collaborative drawing website. The narrative highlights OpenFreeMap's resilient architecture, Cloudflare's role, and offers insights into monitoring, rate limiting, and CDN benefits for developers and system administrators."
+    "description": "This article by Zsolt Ero details how OpenFreeMap, a free and open-source map service, unexpectedly handled a massive traffic spike of 100,000 requests per second, largely due to a collaborative drawing website. The narrative highlights OpenFreemap's resilient architecture, Cloudflare's role, and offers insights into monitoring, rate limiting, and CDN benefits for developers and system administrators."
+  },
+  {
+    "category": "Food",
+    "date": "2025-11-03",
+    "rating": 5,
+    "slug": "food-omelette",
+    "title": "Omelette",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "This entry describes the omelette as a versatile culinary staple, offering a recipe for a classic French-style omelette with instructions and optional fillings. It also provides a brief history, tracing its origins to ancient Persia and its modern form to 16th-century France, highlighting its enduring popularity across all social classes."
   },
   {
     "category": "Websites",
@@ -145,6 +165,16 @@
     "title": "wplace.live",
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
     "description": "\"wplace.live\" is a new collaborative drawing website built from scratch using OpenFreeMap. There is also a scripting website related to it called \"wplace.life\"."
+  },
+  {
+    "category": "Websites",
+    "date": "2025-11-03",
+    "link": "https://missingdice.com/dice-roller/",
+    "rating": 5,
+    "slug": "website-missing-dice-dice-roller",
+    "title": "Missing Dice - Dice Roller",
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
+    "description": "\"Missing Dice - Dice Roller\" is a website designed for rolling dice, found at missingdice.com/dice-roller/."
   },
   {
     "category": "Article",
@@ -197,27 +227,12 @@
     "description": "Carl Svensson's article, \"The Peach meme: On CRTs, pixels and signal quality (again),\" debunks misconceptions about CRTs and pixel art. It argues that while CRTs smooth pixel art, signal quality (e.g., composite vs. RGB) is paramount, not the CRT itself. The article highlights that poor composite signals, not CRT magic, cause effects like \"Sonic Waterfalls,\" and emphasizes that historical pixel art techniques were adapted to display limitations, remaining crucial for graphics quality across all screen types."
   },
   {
-    "category": "Game",
-    "date": "2025-09-20",
-    "link": "https://openfront.io",
-    "platform": "Web",
-    "rating": 5,
-    "slug": "openfront-io",
-    "tags": [
-      "rts",
-      "multiplayer"
-    ],
-    "title": "OpenFront.io",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
-    "description": "\"OpenFront.io\" is a web-based, open-source real-time strategy game where players expand influence by building structures, forming alliances, trading, and conquering opponents. Known for its engaging gameplay that often leads to late-game \"armageddon\" and expected betrayals, it's currently in alpha, inviting community contributions. It offers various customization options for private lobbies and is praised as a great strategy game comparable to AAA titles."
-  },
-  {
     "author": "Osamu Dazai",
     "category": "Book",
     "date": "2025-10-16",
-    "link": "https://www.goodreads.com/book/show/61340205-the-flowers-of-buffoonery",
+    "link": "https://www.goodreads.com/book/show/61340205-the-flowers-of_buffoonery",
     "rating": 4,
-    "slug": "the-flowers-of-buffoonery",
+    "slug": "the-flowers-of_buffoonery",
     "title": "The Flowers of Buffoonery",
     "updated": "2025-10-30",
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
@@ -269,22 +284,194 @@
     "description": "\"In the Aeroplane Over the Sea\" is a highly-rated song by Neutral Milk Hotel."
   },
   {
-    "category": "Food",
-    "date": "2025-11-03",
+    "category": "Game",
+    "date": "2025-09-20",
+    "link": "https://openfront.io",
+    "platform": "Web",
     "rating": 5,
-    "slug": "food-omelette",
-    "title": "Omelette",
+    "slug": "openfront-io",
+    "tags": [
+      "rts",
+      "multiplayer"
+    ],
+    "title": "OpenFront.io",
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
-    "description": "This entry describes the omelette as a versatile culinary staple, offering a recipe for a classic French-style omelette with instructions and optional fillings. It also provides a brief history, tracing its origins to ancient Persia and its modern form to 16th-century France, highlighting its enduring popularity across all social classes."
+    "description": "\"OpenFront.io\" is a web-based, open-source real-time strategy game where players expand influence by building structures, forming alliances, trading, and conquering opponents. Known for its engaging gameplay that often leads to late-game \"armageddon\" and expected betrayals, it's currently in alpha, inviting community contributions. It offers various customization options for private lobbies and is praised as a great strategy game comparable to AAA titles."
   },
   {
-    "category": "Websites",
-    "date": "2025-11-03",
-    "link": "https://missingdice.com/dice-roller/",
+    "category": "Series",
+    "date": "2025-10-27",
+    "link": "https://www.imdb.com/title/tt8888060/",
+    "platform": "TV (FX, Hulu)",
     "rating": 5,
-    "slug": "website-missing-dice-dice-roller",
-    "title": "Missing Dice - Dice Roller",
-    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg",
-    "description": "\"Missing Dice - Dice Roller\" is a website designed for rolling dice, found at missingdice.com/dice-roller/."
+    "slug": "shogun-tv-series",
+    "title": "Shogun (TV Series)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Shogun (2024) is a historical drama miniseries based on James Clavell's novel, set in feudal Japan (1600). It follows John Blackthorne, Lord Yoshii Toranaga, and Lady Mariko through political intrigue and culture clashes. Renowned for historical detail, cinematography, and authentic portrayal of Japanese culture."
+  },
+  {
+    "category": "Game",
+    "date": "2025-01-13",
+    "link": "https://arkane-studios.com/game/prey/",
+    "platform": "PC (Steam), PlayStation 4, Xbox One",
+    "rating": 5,
+    "slug": "prey-2017",
+    "title": "Prey (2017)",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Prey (2017) is a first-person shooter action RPG by Arkane Studios, a spiritual successor to immersive sims. Set aboard the Talos I space station overrun by aliens (Typhon), players embody Morgan Yu, navigating a psychological sci-fi thriller with emphasis on player choice, emergent gameplay, and multiple endings."
+  },
+  {
+    "category": "Game",
+    "date": "2024-08-29",
+    "link": "https://www.rockstargames.com/maxpayne/",
+    "platform": "PC",
+    "rating": 5,
+    "slug": "max-payne-trilogy",
+    "title": "Max Payne Trilogy",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "The Max Payne Trilogy comprises three highly influential third-person shooter games, renowned for their neo-noir storytelling, 'bullet time' mechanic, and gritty atmosphere. It follows detective Max Payne through his brutal quest for revenge and later his struggles in São Paulo, blending innovative gameplay with a dark, psychological narrative."
+  },
+  {
+    "category": "Game",
+    "date": "2023-11-11",
+    "link": "https://www.residentevil.com/re4/en/",
+    "platform": "PC (Steam), PlayStation, Xbox",
+    "rating": 5,
+    "slug": "resident-evil-4-remake",
+    "title": "Resident Evil 4: Remake",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Resident Evil 4: Remake is a survival horror game by Capcom, a reimagined version of the 2005 original. It modernizes the classic with updated graphics, refined gameplay, and expanded storytelling, following Leon S. Kennedy's mission to rescue the President's daughter from a cult infected by Las Plagas."
+  },
+  {
+    "category": "Game",
+    "date": "2023-05-05",
+    "link": "https://fallout.bethesda.net/games/fallout-4",
+    "platform": "PC (Steam), PlayStation 4, Xbox One",
+    "rating": 4,
+    "slug": "fallout-4",
+    "title": "Fallout 4",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Fallout 4 is an action RPG by Bethesda Game Studios, set in a post-apocalyptic Boston after a nuclear war. Players emerge from Vault 111 to find their son, exploring a vast open world, building settlements, and engaging in real-time combat with the VATS system. It emphasizes exploration, crafting, and player choice."
+  },
+  {
+    "category": "Game",
+    "date": "2023-02-18",
+    "link": "https://store.steampowered.com/app/239140/Dying_Light/",
+    "platform": "PC (Steam)",
+    "rating": 5,
+    "slug": "dying-light",
+    "title": "Dying Light",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Dying Light is a first-person survival horror game known for its parkour mechanics, intense zombie combat, and a dynamic day-night cycle. Players navigate an infected city, adapting strategies as gameplay drastically shifts between day and night."
+  },
+  {
+    "category": "Game",
+    "date": "2022-09-30",
+    "link": "https://en.wikipedia.org/wiki/Kingdoms_of_Amalur:_Reckoning",
+    "platform": "PC",
+    "rating": 4,
+    "slug": "kingdoms-of-amalur-reckoning",
+    "title": "Kingdoms of Amalur: Reckoning",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Kingdoms of Amalur: Reckoning is a single-player action role-playing video game developed by 38 Studios and Big Huge Games. It features a high fantasy world, action-oriented combat, and extensive character customization. Players take on the role of the 'Fateless One,' a resurrected hero immune to destiny, tasked with stopping a plot to conquer the Faelands."
+  },
+  {
+    "category": "Game",
+    "date": "2022-05-04",
+    "link": "https://www.residentevil.com/re3/",
+    "platform": "PC (Steam), PlayStation, Xbox",
+    "rating": 4,
+    "slug": "resident-evil-3-remake",
+    "title": "Resident Evil 3: Remake",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Resident Evil 3: Remake is a survival horror game by Capcom, a reimagining of the 1999 original. It modernizes the game with updated graphics and controls, focusing on Jill Valentine's escape from Raccoon City while pursued by Nemesis. Praised for its action and visuals, it received some criticism for its shorter campaign and linearity."
+  },
+  {
+    "category": "Game",
+    "date": "2022-04-28",
+    "link": "https://www.niergame.com/",
+    "platform": "PC (Steam), PlayStation",
+    "rating": 5,
+    "slug": "nier-automata-and-replicant",
+    "title": "Nier Automata & Nier Replicant",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "The Nier series, particularly Nier Automata and Nier Replicant, are action role-playing games known for their profound philosophical narratives, unique gameplay structures, and emotionally impactful storytelling, often exploring themes of existentialism, humanity, and sacrifice. Both offer multiple playthroughs revealing different perspectives and true endings."
+  },
+  {
+    "category": "Game",
+    "date": "2021-08-20",
+    "link": "https://outerworlds.obsidian.net/",
+    "platform": "PC (Steam), PlayStation 4, Xbox One, Nintendo Switch",
+    "rating": 5,
+    "slug": "the-outer-worlds",
+    "title": "The Outer Worlds",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "The Outer Worlds is a single-player action RPG by Obsidian Entertainment, set in a corporate-controlled future. Players awaken on a lost colony ship and become embroiled in a conspiracy, exploring planets, recruiting companions, and making choices that shape the Halcyon colony's fate. Known for its satirical humor and player agency."
+  },
+  {
+    "category": "Game",
+    "date": "2021-12-07",
+    "link": "https://store.steampowered.com/app/1282730/Loop_Hero/",
+    "platform": "PC (Steam)",
+    "rating": 5,
+    "slug": "loop-hero",
+    "title": "Loop Hero",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Loop Hero is a roguelike deck-building game where players indirectly control a hero traversing an endless loop. Strategic card placement to build terrain and spawn enemies is key to progression, resource gathering, and camp upgrades. The game features minimalist pixel art, deep strategy, and a cryptic narrative about rebuilding a world consumed by chaos."
+  },
+  {
+    "category": "Game",
+    "date": "2021-11-23",
+    "link": "https://store.steampowered.com/app/337000/Deus_Ex_Mankind_Divided/",
+    "platform": "PC (Steam)",
+    "rating": 4,
+    "slug": "deus-ex-mankind-divided",
+    "title": "Deus Ex: Mankind Divided",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Deus Ex: Mankind Divided is a cyberpunk action role-playing game featuring augmented covert operative Adam Jensen in a world of 'mechanical apartheid.' It offers freedom in stealth, combat, and RPG elements, exploring themes of transhumanism and social inequality. Praised for immersive atmosphere and intricate level design."
+  },
+  {
+    "category": "Game",
+    "date": "2020-05-06",
+    "link": "https://www.residentevil.com/re2/",
+    "platform": "PC (Steam), PlayStation, Xbox",
+    "rating": 5,
+    "slug": "resident-evil-2-remake",
+    "title": "Resident Evil 2: Remake",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Resident Evil 2: Remake is a survival horror game by Capcom, a complete remake of the 1998 classic. It features stunning graphics, modernized controls, and a terrifying experience set in Raccoon City, with players navigating as Leon S. Kennedy or Claire Redfield while being hunted by the relentless Tyrant (Mr. X)."
+  },
+  {
+    "category": "Game",
+    "date": "2016-12-09",
+    "link": "https://xcom.com/",
+    "platform": "PC (Steam), PlayStation 3, Xbox 360, iOS, Android",
+    "rating": 5,
+    "slug": "xcom-enemy-unknown",
+    "title": "XCOM: Enemy Unknown",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "XCOM: Enemy Unknown is a turn-based tactical game by Firaxis Games, a reboot of the X-COM series. Players lead XCOM, an elite paramilitary organization, defending Earth from an alien invasion through strategic base management and intense turn-based combat with customizable soldiers and permadeath."
+  },
+  {
+    "category": "Game",
+    "date": "2016-06-28",
+    "link": "https://store.steampowered.com/app/219150/Hotline_Miami/",
+    "platform": "PC (Steam)",
+    "rating": 5,
+    "slug": "hotline-miami",
+    "title": "Hotline Miami",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Hotline Miami is a high-octane, top-down 2D action game renowned for its psychedelic visuals, pulsating synth-wave soundtrack, brutal difficulty, and disturbing narrative. Players engage in ultraviolent combat, clearing buildings of enemies while unraveling a surreal story exploring themes of violence and morality."
+  },
+  {
+    "category": "Game",
+    "date": "2015-09-21",
+    "link": "https://store.steampowered.com/app/238010/Deus_Ex_Human_Revolution__Directors_Cut/",
+    "platform": "PC (Steam)",
+    "rating": 5,
+    "slug": "deus-ex-human-revolution",
+    "title": "Deus Ex: Human Revolution",
+    "image": "/images/defaults/placeholder-log.svg",
+    "description": "Deus Ex: Human Revolution is a cyberpunk action RPG where Adam Jensen uncovers a conspiracy in a future grappling with human augmentation. Celebrated for multi-path gameplay, extensive augmentations, and deep philosophical themes, it's a genre masterpiece."
   }
 ]
