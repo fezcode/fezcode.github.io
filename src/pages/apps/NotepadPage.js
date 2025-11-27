@@ -1,0 +1,194 @@
+import React, {useState, useEffect, useRef} from 'react';
+import {Link} from 'react-router-dom';
+import {ArrowLeftIcon, DownloadSimple, Trash, CloudRain, FloppyDisk, FolderOpen} from '@phosphor-icons/react';
+import useSeo from '../../hooks/useSeo';
+import {useToast} from '../../hooks/useToast';
+
+const NotepadPage = () => {
+  useSeo({
+    title: 'Notepad | Fezcodex',
+    description: 'A simple, distraction-free notepad for your thoughts.',
+    keywords: ['notepad', 'writing', 'text editor', 'simple', 'rain'],
+  });
+
+  const [text, setText] = useState('');
+  const [isRainy, setIsRainy] = useState(false);
+  const textareaRef = useRef(null);
+  const {addToast} = useToast();
+
+  // Load saved text from local storage on mount
+  useEffect(() => {
+    const savedText = localStorage.getItem('fezcodex-notepad-content');
+    if (savedText) {
+      setText(savedText);
+    }
+  }, []);
+
+  // Save text to local storage whenever it changes (Autosave)
+  useEffect(() => {
+    localStorage.setItem('fezcodex-notepad-content', text);
+  }, [text]);
+
+  const handleSave = () => {
+    localStorage.setItem('fezcodex-notepad-content', text);
+    addToast({title: 'Saved', message: 'Note manually saved to local storage.', duration: 3000});
+  };
+
+  const handleLoad = () => {
+    const savedText = localStorage.getItem('fezcodex-notepad-content');
+    if (savedText) {
+      setText(savedText);
+      addToast({title: 'Loaded', message: 'Note loaded from local storage.', duration: 3000});
+    } else {
+      addToast({title: 'Info', message: 'No saved note found.', duration: 3000});
+    }
+  };
+
+  const handleDownload = () => {
+    const element = document.createElement('a');
+    const file = new Blob([text], {type: 'text/plain'});
+    element.href = URL.createObjectURL(file);
+    element.download = 'note.txt';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+    addToast({title: 'Downloaded', message: 'Your note has been saved.', duration: 3000});
+  };
+
+  const handleClear = () => {
+    if (window.confirm('Are you sure you want to clear your note?')) {
+      setText('');
+      addToast({title: 'Cleared', message: 'Notepad cleared.', duration: 3000});
+    }
+  };
+
+  const toggleRain = () => {
+    setIsRainy(!isRainy);
+    addToast({
+      title: isRainy ? 'Sunlight' : 'Rainy Mood',
+      message: isRainy ? 'Rain effect disabled.' : 'Rain effect enabled.',
+      duration: 2000
+    });
+  };
+
+  return (
+    <div
+      className={`min-h-screen flex flex-col transition-colors duration-500 ${isRainy ? 'bg-gray-900' : 'bg-[#fdfbf7]'}`}>
+      {/* Rain Effect Overlay */}
+      {isRainy && (
+        <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/80"></div>
+          {/* Simple CSS Rain */}
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-px bg-blue-400/30 animate-rain"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `-${Math.random() * 20}%`,
+                height: `${Math.random() * 20 + 10}%`,
+                animationDuration: `${Math.random() * 1 + 0.5}s`,
+                animationDelay: `${Math.random() * 2}s`
+              }}
+            />
+          ))}
+        </div>
+      )}
+
+      <div className="container mx-auto px-4 py-8 flex-grow flex flex-col relative z-10 max-w-4xl">
+        {/* Header */}
+        <div className="flex justify-between items-center mb-6">
+          <Link to="/apps"
+                className={`flex items-center gap-2 hover:underline ${isRainy ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
+            <ArrowLeftIcon/> Back to Apps
+          </Link>
+          <h1 className={`text-2xl font-serif font-bold tracking-wide ${isRainy ? 'text-gray-200' : 'text-gray-800'}`}>
+            Notepad
+          </h1>
+          <div className="flex gap-2">
+            <button
+              onClick={handleSave}
+              className={`p-2 rounded-full transition-colors ${isRainy ? 'text-cyan-400 hover:bg-cyan-900/30' : 'text-cyan-600 hover:bg-cyan-100'}`}
+              title="Save to Local Storage"
+            >
+              <FloppyDisk size={20} />
+            </button>
+            <button
+              onClick={handleLoad}
+              className={`p-2 rounded-full transition-colors ${isRainy ? 'text-amber-400 hover:bg-amber-900/30' : 'text-amber-600 hover:bg-amber-100'}`}
+              title="Load from Local Storage"
+            >
+              <FolderOpen size={20} />
+            </button>
+            <button
+              onClick={toggleRain}
+              className={`p-2 rounded-full transition-colors ${isRainy ? 'text-blue-300 bg-blue-900/30 hover:bg-blue-900/50' : 'text-gray-500 hover:bg-gray-200'}`}
+              title="Toggle Rain"
+            >
+              <CloudRain size={20} weight={isRainy ? "fill" : "regular"}/>
+            </button>
+            <button
+              onClick={handleClear}
+              className={`p-2 rounded-full transition-colors ${isRainy ? 'text-red-400 hover:bg-red-900/30' : 'text-red-500 hover:bg-red-100'}`}
+              title="Clear Text"
+            >
+              <Trash size={20}/>
+            </button>
+            <button
+              onClick={handleDownload}
+              className={`p-2 rounded-full transition-colors ${isRainy ? 'text-green-400 hover:bg-green-900/30' : 'text-green-600 hover:bg-green-100'}`}
+              title="Download Text"
+            >
+              <DownloadSimple size={20}/>
+            </button>
+          </div>
+        </div>
+
+        {/* Notepad Area */}
+        <div
+          className={`flex-grow rounded-lg shadow-lg relative overflow-hidden transition-all duration-500 ${isRainy ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}>
+          {/* Paper Lines Background */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-50"
+            style={{
+              backgroundImage: `linear-gradient(${isRainy ? '#374151' : '#e5e7eb'} 1px, transparent 1px)`,
+              backgroundSize: '100% 2rem',
+              marginTop: '2rem' // Offset for top padding
+            }}
+          ></div>
+
+          {/* Red Margin Line */}
+          <div
+            className={`absolute top-0 bottom-0 left-12 w-px ${isRainy ? 'bg-red-900/50' : 'bg-red-200'} pointer-events-none`}></div>
+
+          <textarea
+            ref={textareaRef}
+            className={`w-full h-full p-8 pl-16 text-lg font-mono leading-8 bg-transparent border-none resize-none focus:ring-0 focus:outline-none relative z-10 ${isRainy ? 'text-gray-300 placeholder-gray-600' : 'text-gray-800 placeholder-gray-400'}`}
+            placeholder="Start typing..."
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            spellCheck="false"
+          />
+        </div>
+
+        <div className={`mt-2 text-right text-sm font-mono ${isRainy ? 'text-gray-500' : 'text-gray-400'}`}>
+          {text.length} chars | {text.split(/\s+/).filter((w) => w.length > 0).length} words
+        </div>
+      </div>
+
+      <style>{`
+            @keyframes rain {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(100vh); }
+            }
+            .animate-rain {
+                animation-name: rain;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+            }
+        `}</style>
+    </div>
+  );
+};
+
+export default NotepadPage;

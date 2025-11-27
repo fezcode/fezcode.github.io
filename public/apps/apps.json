@@ -452,6 +452,14 @@
         "description": "Tap the beat to guess the BPM of a song.",
         "icon": "MetronomeIcon",
         "created_at": "2025-11-25T16:14:05+03:00"
+      },
+      {
+        "slug": "notepad",
+        "to": "/apps/notepad",
+        "title": "Notepad",
+        "description": "A simple, distraction-free text editor.",
+        "icon": "NotePencilIcon",
+        "created_at": "2025-11-27T14:00:00+03:00"
       }
     ]
   }

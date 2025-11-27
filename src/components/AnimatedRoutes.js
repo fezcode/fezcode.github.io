@@ -74,6 +74,7 @@ const FootballEmblemCreatorPage = lazy(() => import('../pages/apps/FootballEmble
 const RoguelikeGamePage = lazy(() => import('../pages/apps/RoguelikeGamePage'));
 const TcgCardGeneratorPage = lazy(() => import('../pages/apps/TcgCardGeneratorPage'));
 const KeyboardTypingSpeedTesterPage = lazy(() => import('../pages/apps/KeyboardTypingSpeedTesterPage'));
+const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));
 const UsefulLinksPage = lazy(() => import('../pages/UsefulLinksPage'));
@@ -1405,7 +1406,25 @@ function AnimatedRoutes() {
               </motion.div>
             }
           />
-          {/* D&D specific 404 page */}
+          <Route
+          path="/apps/notepad"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <NotepadPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps::np"
+          element={<Navigate to="/apps/notepad" replace />}
+        />
+        {/* D&D specific 404 page */}
           <Route
             path="/stories/*"
             element={

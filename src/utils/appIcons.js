@@ -46,6 +46,7 @@ import {
   PencilSimpleIcon,
   TrophyIcon,
   CubeIcon,
+  NotePencilIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -96,4 +97,5 @@ export const appIcons = {
   PencilSimpleIcon,
   TrophyIcon,
   CubeIcon,
+  NotePencilIcon,
 };
