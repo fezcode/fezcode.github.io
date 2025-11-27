@@ -14,14 +14,25 @@ import { filterItems } from '../utils/search';
 import {TerminalWindowIcon} from "@phosphor-icons/react"; // Import the search utility
 
 const categoryColorMap = {
-    'command': 'bg-indigo-400',
-    'page': 'bg-fuchsia-400',
-    'post': 'bg-blue-400',
-    'project': 'bg-orange-400',
-    'log': 'bg-rose-400',
-    'app': 'bg-cyan-400',
-    'story': 'bg-violet-400',
+    'page':     'bg-red-400',
+    'command':  'bg-amber-400',
+    'post':     'bg-blue-400',
+    'project':  'bg-orange-400',
+    'log':      'bg-rose-400',
+    'app':      'bg-teal-400',
+    'story':    'bg-violet-400',
     'notebook': 'bg-lime-400',
+};
+
+const categoryTextColorMap = {
+  'page':     'text-red-100',
+  'command':  'text-amber-100',
+  'post':     'text-blue-100',
+  'project':  'text-orange-100',
+  'log':      'text-rose-100',
+  'app':      'text-teal-100',
+  'story':    'text-violet-100',
+  'notebook': 'text-lime-100',
 };
 
 const getCategoryColorClass = (type) => {
@@ -277,7 +288,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
         <AnimatePresence>
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-start justify-center pt-16 md:pt-32"
+                    className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-start justify-center pt-16 md:pt-32 "
                     onClick={handleClose}
                 >
                     <motion.div
@@ -285,7 +296,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: -20 }}
                         transition={{ duration: 0.2, ease: 'easeOut' }}
-                        className="bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-2xl w-full max-w-xl mx-4"
+                        className="bg-gray-900  text-gray-100 rounded-lg shadow-2xl w-full max-w-xl mx-4"
                         onClick={e => e.stopPropagation()}
                     >
                         <div className="p-3 flex items-center justify-center">
@@ -300,19 +311,20 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                               disabled={isLoading}
                           />
                         </div>
-                        <div ref={resultsRef} className="border-t border-gray-200 dark:border-gray-700 p-2 max-h-[50vh] overflow-y-auto">
+                        <div ref={resultsRef} className="border-t border-gray-200 dark:border-gray-700 p-2 max-h-[50vh] overflow-y-auto scrollbar-hide">
                             {filteredItems.length > 0 ? (
                                 filteredItems.map((item, index) => (
                                     <div
                                         key={`${item.type}-${item.slug || item.commandId}-${index}`}
                                         className={`p-3 rounded-lg cursor-pointer flex justify-between items-center font-mono ${
-                                            selectedIndex === index ? 'bg-gray-200 dark:bg-gray-700' : 'hover:bg-gray-200 dark:hover:bg-gray-700'
+                                            selectedIndex === index ? 'bg-gray-800' : 'hover:bg-gray-800'
                                         }`}
                                         onClick={() => handleItemClick(item)}
                                         onMouseMove={() => setSelectedIndex(index)}
                                     >
-                                        <span>{item.title}</span>
-                                        <span className={`text-xs uppercase text-gray-800 font-bold ${getCategoryColorClass(item.type)} px-2 py-1 rounded`}>{item.type}</span>
+                                        <span className="mr-2 text-gray-500 "> » </span>
+                                        <span className={`w-5/6 text-gray-100`}>{item.title}</span>
+                                        <span className={`w-20 h-6 flex items-center justify-center text-xs uppercase text-gray-800 font-bold ${getCategoryColorClass(item.type)} rounded border-2 border-black`}>{item.type}</span>
                                     </div>
                                 ))
                             ) : (
@@ -327,7 +339,7 @@ const CommandPalette = ({ isOpen, setIsOpen, openGenericModal, toggleDigitalRain
                                 <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↑</span>
                                 <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↓</span>
                                 <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">PgUp</span>
-                                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">PgDown</span> to navigate
+                                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">PgDn</span> to navigate
                                 <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↵</span> to select
                             </div>
                              <div className="font-semibold text-gray-400">
