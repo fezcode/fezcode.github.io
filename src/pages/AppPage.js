@@ -7,6 +7,7 @@ import {
   MagnifyingGlassIcon,
   CaretRight,
   CaretDown,
+  Star,
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
 import AppCard from '../components/AppCard';
@@ -265,7 +266,14 @@ function AppPage() {
                           <div
                             className="p-6 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 border-t border-gray-800/50 mt-2 pt-6">
                             {sortedApps.map((app, index) => (
-                              <AppCard key={app.slug || index} app={app}/>
+                              <div key={app.slug || index} className="relative">
+                                <AppCard app={app}/>
+                                {app.pinned_order && (
+                                  <div className="absolute top-4 right-4 text-yellow-400 drop-shadow-md z-10 pointer-events-none">
+                                    <Star weight="fill" size={24} />
+                                  </div>
+                                )}
+                              </div>
                             ))}
                           </div>
                         </motion.div>

@@ -75,6 +75,7 @@ const RoguelikeGamePage = lazy(() => import('../pages/apps/RoguelikeGamePage'));
 const TcgCardGeneratorPage = lazy(() => import('../pages/apps/TcgCardGeneratorPage'));
 const KeyboardTypingSpeedTesterPage = lazy(() => import('../pages/apps/KeyboardTypingSpeedTesterPage'));
 const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
+const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));
 const UsefulLinksPage = lazy(() => import('../pages/UsefulLinksPage'));
@@ -1423,6 +1424,24 @@ function AnimatedRoutes() {
         <Route
           path="/apps::np"
           element={<Navigate to="/apps/notepad" replace />}
+        />
+        <Route
+          path="/apps/pinned"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <PinnedAppPage />
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps::pinned"
+          element={<Navigate to="/apps/pinned" replace />}
         />
         {/* D&D specific 404 page */}
           <Route
