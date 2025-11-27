@@ -44,8 +44,8 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+  backdrop-filter: blur(10px); /* Stronger blur */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,18 +55,19 @@
 }
 
 .modal-content {
-  background-color: #1a202c; /* Dark Blue */
-  padding: 20px;
-  border-radius: 8px;
+  background-color: rgba(17, 24, 39, 0.8); /* Semi-transparent dark gray */
+  backdrop-filter: blur(8px); /* Glassmorphism effect */
+  padding: 24px; /* Increased padding */
+  border-radius: 12px; /* More rounded */
   max-width: 500px;
   width: 100%;
   color: white;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  box-shadow: inset 0 0 0 4px #4a5568; /* Inner border */
-  font-family: 'Arvo', serif;
-  font-weight: 300;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Subtle glow shadow */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Thin light border */
+  /* font-family: 'Arvo', serif; removed */
   animation-duration: 0.3s;
   animation-fill-mode: forwards;
 }
@@ -95,43 +96,64 @@
 
 .modal-header h2 {
   font-size: 1.5rem;
-  font-weight: bold;
+  /* font-weight: bold; removed */
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  color: #f87171; /* Primary color for title */
 }
 
 .close-button {
-  background-color: #374151;
+  background-color: transparent;
   border: none;
-  color: white;
+  color: #9ca3af; /* gray-400 */
   cursor: pointer;
-  border-radius: 4px;
-  padding: 5px;
+  border-radius: 9999px; /* fully rounded */
+  padding: 8px; /* Bigger click area */
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.2s ease-in-out;
 }
 
 .close-button:hover {
-  background-color: #4b5563;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+  color: white;
 }
 
 .modal-body {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Increased gap */
 }
 
 .contact-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 15px; /* Increased gap */
 }
 
 .contact-link {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: white;
+  gap: 15px; /* Increased gap */
+  color: #e5e7eb; /* gray-200 */
+  background-color: rgba(26, 32, 44, 0.5); /* Semi-transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  padding: 12px 16px; /* Larger padding */
+  border-radius: 8px; /* Rounded corners */
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.contact-link:hover {
+  background-color: rgba(26, 32, 44, 0.8); /* Darker on hover */
+  color: white;
+  border-color: rgba(248, 113, 113, 0.4); /* Primary color accent */
+  transform: translateY(-2px); /* Subtle lift */
+}
+
+.contact-link span {
+  font-family: 'Space Mono', 'JetBrains Mono', monospace;
+  font-size: 0.95rem; /* Slightly smaller for balance */
 }
 
 .red-text {
