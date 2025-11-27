@@ -13,11 +13,3 @@
 In *Loop Hero*, players do not directly control the hero. Instead, the hero automatically walks along a looping path, fighting monsters and gathering resources. The core gameplay revolves around strategically placing cards (representing terrain, enemies, and buildings) onto the looping path and its surroundings. These cards alter the environment, spawn different types of monsters, and provide various benefits or challenges to the hero. The goal is to build an increasingly powerful world around the hero, defeat bosses, and gather resources to upgrade the camp, which provides permanent buffs for future expeditions.
 
 The narrative is minimalistic and unfolds through cryptic lore snippets and character dialogues. The world has been plunged into a chaotic void by the Lich, and the hero is tasked with rebuilding it from memory. Each "loop" and card placement contributes to piecing together the forgotten world. The game masterfully blends elements of roguelike progression, deck-building, and idle game mechanics, creating a unique and highly addictive experience.
-
-## My Thoughts
-
-*Loop Hero* is one of those rare games that completely redefines a genre. It sounds simple on paper—your hero walks in a loop, and you place cards—but the strategic depth that emerges from this concept is truly astonishing. Every decision, from which cards to place to where you place them, has a ripple effect on the difficulty and rewards. Do you create a strong monster spawn early for better gear, or build up resources for later? It's a constant balancing act.
-
-The pixel art is charming and atmospheric, and the chiptune soundtrack is perfectly melancholic and catchy, drawing you into the desolate, forgotten world. The progression system feels incredibly rewarding; even when you fail a run, you've usually brought back enough resources to make your next attempt stronger.
-
-What truly hooked me was the feeling of discovery and experimentation. Unlocking new cards, figuring out powerful synergies, and optimizing your loop is immensely satisfying. *Loop Hero* is a masterclass in elegant design, proving that innovative mechanics and deep strategy can shine even with indirect control. It's a game that respects your intelligence and rewards thoughtful play.
