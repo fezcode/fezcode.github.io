@@ -1,0 +1,26 @@
+# Stakes Is High
+
+- **Category:** Music
+- **Artist:** De La Soul
+- **Album:** Stakes Is High
+- **Release Date:** 1996-07-02
+- **Date:** 2025-10-29
+- **Rating:** 5/5
+- **Link:** [YouTube](https://www.youtube.com/watch?v=radJQyaC5kY)
+
+## De La Soul's "Stakes Is High": A Stand for Hip Hop's Soul
+
+In the mid-90s, as hip hop found itself increasingly dominated by the East Coast vs. West Coast rivalry and a growing emphasis on commercial success, De La Soul took a stand. Their 1996 track, "Stakes Is High," served as a powerful critique of the state of the genre and a call to return to its more conscious roots.
+
+The song, and the album of the same name, marked a significant shift for the group. Moving away from the lighter, more psychedelic vibes of their earlier work, "Stakes Is High" adopted a darker, more serious tone. The lyrics, delivered with a sense of urgency by Posdnuos and Dave, pull no punches. They express a deep frustration with the glorification of violence, materialism, and the overall decline in lyrical substance that they saw pervading hip hop culture.
+
+Lines like, "I'm sick of bitches shakin' asses / I'm sick of talkin' about blunts / Sick of Versace glasses," and the declaration that the "Native Tongues have officially been re-instated," made their position clear. De La Soul was drawing a line in the sand, reminding listeners that the cultural and artistic integrity of hip hop was at stake.
+
+## Trivia
+
+*   **J Dilla's Touch:** The iconic beat for "Stakes Is High" was produced by the legendary J Dilla (then known as Jay Dee), marking one of his earliest mainstream productions.
+*   **No Prince Paul:** This was the first De La Soul album not produced in collaboration with their longtime producer, Prince Paul.
+*   **Native Tongues Reunion:** The music video for the song featured members of the Native Tongues collective, including A Tribe Called Quest, visually reinforcing the song's call for unity and a return to their roots.
+*   **2Pac's Response:** The criticisms on the *Stakes Is High* album drew a response from 2Pac on the track "Against All Odds" from his posthumous album *The Don Killuminati: The 7 Day Theory*.
+
+"Stakes Is High" remains a pivotal track in hip hop history, a moment when one of the genre's most respected groups risked commercial success to make a statement about the music and culture they loved.
