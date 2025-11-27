@@ -33,7 +33,7 @@ const PostMetadata = ({
               ? 'var(--color-gist-badge)'
               : metadata.category === 'feat'
                 ? 'var(--color-feat-badge)'
-                : 'var(--color-takes-badge)',
+                : 'var(--color-rant-badge)',
   };
 
   const categoryBadgeFontColorStyle =

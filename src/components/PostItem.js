@@ -48,7 +48,7 @@ const PostItem = ({
               ? 'var(--color-gist-badge)'
               : category === 'feat'
                 ? 'var(--color-feat-badge)'
-                : 'var(--color-takes-badge)',
+                : 'var(--color-rant-badge)',
   };
 
   const postBackgroundColorClass =
@@ -62,7 +62,7 @@ const PostItem = ({
             ? 'bg-gist-card-bg'
             : category === 'feat'
               ? 'bg-feat-card-bg'
-              : 'bg-takes-card-bg';
+              : 'bg-rant-card-bg';
 
   const postHoverBackgroundColorClass =
     category === 'dev'
@@ -75,7 +75,7 @@ const PostItem = ({
             ? 'hover:bg-gist-card-bg-hover'
             : category === 'feat'
               ? 'hover:bg-feat-card-bg-hover'
-              : 'hover:bg-takes-card-bg-hover';
+              : 'hover:bg-rant-card-bg-hover';
 
   const postTitleHoverColorClass =
     category === 'dev'
@@ -88,7 +88,7 @@ const PostItem = ({
             ? 'group-hover:text-[var(--title-hover-gist)]'
             : category === 'feat'
               ? 'group-hover:text-[var(--title-hover-feat)]'
-              : 'group-hover:text-[var(--title-hover-takes)]';
+              : 'group-hover:text-[var(--title-hover-rant)]';
 
   const categoryBadgeFontColorStyle =
     category === 'gist' || category === 'gist' ? 'text-black' : 'text-white'

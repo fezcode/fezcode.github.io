@@ -2,8 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import PostItem from '../components/PostItem';
 import useSeo from '../hooks/useSeo';
-import {ArrowLeftIcon, ArticleIcon, MagnifyingGlassIcon, FunnelIcon, XCircle, X} from '@phosphor-icons/react';
-import colors from '../config/colors';
+import {ArrowLeftIcon, ArticleMediumIcon, MagnifyingGlassIcon, FunnelIcon, XCircle, X} from '@phosphor-icons/react';
 
 const iconColors = [
   "text-red-500",
@@ -198,7 +197,7 @@ const BlogPage = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center text-white">
-              <ArticleIcon
+              <ArticleMediumIcon
                 size={48}
                 weight="fill"
                 className={`mr-4 mt-2 ${iconColor}`}
@@ -212,7 +211,8 @@ const BlogPage = () => {
               <span className="text-gray-500">]</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-2xl font-mono">
-              Catch up on the latest news and insights.
+              From the <span style={{color: 'var(--fzcdx-spanner)'}}>Blog</span>: Catch up on the latest news and
+              insights.
             </p>
           </div>
 
@@ -265,27 +265,16 @@ const BlogPage = () => {
             {id: 'd&d', label: 'D&D'},
           ].map((filter) => {
             const isSelected = activeFilter === filter.id;
-
-            // Determine color key for mapping
-            let colorKey = filter.id;
-            if (filter.id === 'rant') colorKey = 'takes'; // 'rant' maps to 'takes' color vars
-
             // Resolve specific color using colors.js logic approximation or CSS vars
             // Since we are using style prop with vars in the previous version, let's stick to that pattern or use colors.js if available
             // Note: colors.js has keys like 'feat', 'series', etc.
             // Let's try to use the hex codes from colors.js if possible, or fallback to a default.
 
-            let categoryColor = colors.primary[400]; // Default
-            if (filter.id === 'all') categoryColor = '#9ca3af'; // gray-400
-            else if (filter.id === 'rant') categoryColor = '#065f46'; // hardcoded matching index.css roughly or use colors.js
-            // Actually, let's use the CSS variables for consistency with badges
-
             // Construct style object
             const activeColor = filter.id === 'all' ? '#4b5563' :
-              filter.id === 'rant' ? 'var(--color-takes-badge)' :
+              filter.id === 'rant' ? 'var(--color-rant-badge)' :
                 filter.id === 'd&d' ? 'var(--color-dnd-badge)' :
                   `var(--color-${filter.id}-badge)`;
-
             const style = isSelected ? {
               backgroundColor: activeColor,
               borderColor: activeColor,
@@ -316,7 +305,7 @@ const BlogPage = () => {
         </div>
 
         {/*mt-12 max-w-3xl mx-auto space-y-8*/}
-        <div className="mt-12 mx-auto space-y-8">
+        <div className="mt-12 mx-auto space-y-6">
           {filteredItems.map((item) =>
             item.isSeries ? (
               <PostItem

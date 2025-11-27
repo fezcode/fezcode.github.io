@@ -40,8 +40,8 @@ module.exports = {
   'markdown-hx-color': '#ffedd5', // orange-100
   'dev-card-bg': 'var(--bg-dev-card)',
   'dev-card-bg-hover': 'var(--bg-dev-card-hover)',
-  'takes-card-bg': 'var(--bg-takes-card)',
-  'takes-card-bg-hover': 'var(--bg-takes-card-hover)',
+  'rant-card-bg': 'var(--bg-rant-card)',
+  'rant-card-bg-hover': 'var(--bg-rant-card-hover)',
   'series-card-bg': 'var(--bg-series-card)',
   'series-card-bg-hover': 'var(--bg-series-card-hover)',
   'dnd-card-bg': 'var(--bg-dnd-card)',

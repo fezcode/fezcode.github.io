@@ -92,10 +92,10 @@ code {
   --title-hover-dev: #81aff4;
 
   /*rant card*/
-  --color-takes-badge: #065f46; /* emerald-800 */
-  --bg-takes-card: rgba(6, 95, 70, 0.175);
-  --bg-takes-card-hover: rgba(16, 185, 129, 0.275);
-  --title-hover-takes: #3cb371;
+  --color-rant-badge: #065f46; /* emerald-800 */
+  --bg-rant-card: rgba(6, 95, 70, 0.175);
+  --bg-rant-card-hover: rgba(16, 185, 129, 0.275);
+  --title-hover-rant: #3cb371;
 
   /*series card*/
   --color-series-badge: #b5163a; /* rose-600 */
