@@ -141,47 +141,78 @@ const PinnedAppPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-950 py-16 sm:py-24 relative">
-      {/* Decorative Background Elements */}
-      <div
-        className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent opacity-50"></div>
-      <div
-        className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent opacity-50"></div>
+    <div className="min-h-screen bg-gray-950 py-16 sm:py-24 relative overflow-hidden">
+      {/* Techno Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Grid */}
+        <div className="absolute inset-0 opacity-[0.05]"
+             style={{
+               backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px)',
+               backgroundSize: '40px 40px'
+             }}>
+        </div>
+
+        {/* Glows */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[500px] bg-primary-500/10 blur-[120px] rounded-full mix-blend-screen"/>
+        <div
+          className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-blue-600/10 blur-[120px] rounded-full mix-blend-screen"/>
+
+                {/* Scanline Animation */}
+
+                <div className="absolute inset-x-0 h-24 bg-gradient-to-b from-transparent via-primary-400/20 to-transparent opacity-40 animate-scanline"></div>
+
+              </div>
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10">
-        <div className="relative mb-16">
-          <div className="hidden md:block absolute left-0 top-2">
+        <div className="relative mb-16 text-center">
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block">
             <Link
               to="/"
-              className="group text-gray-500 hover:text-white hover:underline flex items-center gap-2 text-xs font-mono uppercase tracking-widest transition-colors"
+              className="group text-primary-400 hover:text-primary-300 hover:underline flex items-center gap-2 text-sm transition-colors"
             >
-              <ArrowLeftIcon size={14}/> sys_root
+              <ArrowLeftIcon size={18} className="transition-transform group-hover:-translate-x-1"/> Home
             </Link>
           </div>
 
           <motion.div
+
             initial={{opacity: 0, y: 20}}
+
             animate={{opacity: 1, y: 0}}
+
             transition={{duration: 0.5}}
+
             className="text-center"
+
           >
+
             <div
               className="inline-flex items-center justify-center p-3 mb-4 rounded-full bg-gray-900/50 border border-gray-800 backdrop-blur-sm">
+
               <TerminalWindow size={32} className="text-primary-500"/>
+
             </div>
+
             <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white font-mono mb-4">
+
               SYSTEM_CORE <span className="text-gray-600">//</span> PINNED
+
             </h1>
+
             <p className="text-sm md:text-base text-gray-400 max-w-2xl mx-auto font-mono tracking-wide">
+
               [ ACCESSING ESSENTIAL MODULES AND TOOLS ]
+
             </p>
+
           </motion.div>
         </div>
 
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-gray-900/50 border border-gray-800 rounded-2xl h-64 animate-pulse"></div>
+            {[...Array(8)].map((_, i) => (
+              <div key={i} className="bg-gray-900/30 border border-gray-800 rounded-3xl h-72 animate-pulse"></div>
             ))}
           </div>
         ) : (
@@ -199,6 +230,16 @@ const PinnedAppPage = () => {
           </div>
         )}
       </div>
+
+      <style>{`
+        @keyframes scanline {
+          0% { top: -10%; }
+          100% { top: 110%; }
+        }
+        .animate-scanline {
+          animation: scanline 8s linear infinite;
+        }
+      `}</style>
     </div>
   );
 };

@@ -29,6 +29,7 @@ import {
   TimerIcon,
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
+  PushPin,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -223,7 +224,11 @@ const Sidebar = ({isOpen, toggleSidebar, toggleModal, setIsPaletteOpen}) => {
                 />
               </button>
               {sidebarState.isAppsOpen && (<nav className={getGroupClass(isAppsActive)}>
-                  <NavLink to="/apps" className={getLinkClass}>
+                  <NavLink to="/apps/pinned" className={getLinkClass}>
+                    <PushPin size={24} />
+                    <span>Pinned Apps</span>
+                  </NavLink>
+                  <NavLink to="/apps" className={getLinkClass} end>
                     <SquaresFourIcon size={24}/>
                     <span>All Apps</span>
                   </NavLink>
