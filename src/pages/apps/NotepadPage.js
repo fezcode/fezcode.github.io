@@ -1,9 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, DownloadSimple, Trash, CloudRain, FloppyDisk, FolderOpen} from '@phosphor-icons/react';
+import {ArrowLeftIcon, DownloadSimple, Trash, CloudRain, FloppyDisk, FolderOpen, ArrowsOutLineHorizontal, ArrowsInLineHorizontal} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import {useToast} from '../../hooks/useToast';
 import ConfirmationModal from '../../components/ConfirmationModal';
+import usePersistentState from '../../hooks/usePersistentState';
 
 const NotepadPage = () => {
   useSeo({
@@ -15,6 +16,7 @@ const NotepadPage = () => {
   const [text, setText] = useState('');
   const [isRainy, setIsRainy] = useState(false);
   const [isClearModalOpen, setIsClearModalOpen] = useState(false);
+  const [isFixedSize, setIsFixedSize] = usePersistentState('fezcodex-notepad-fixed-size', true); // Default to true for fixed height
   const textareaRef = useRef(null);
   const fileInputRef = useRef(null);
   const {addToast} = useToast();
@@ -96,6 +98,15 @@ const NotepadPage = () => {
     });
   };
 
+  const toggleFixedSize = () => {
+    setIsFixedSize(prev => !prev);
+    addToast({
+        title: isFixedSize ? 'Expanded' : 'Fixed Height',
+        message: isFixedSize ? 'Notepad expanded to fill space.' : 'Notepad height is now fixed.',
+        duration: 2000
+    });
+  };
+
   return (
     <div
       className={`min-h-screen flex flex-col transition-colors duration-500 ${isRainy ? 'bg-gray-900' : 'bg-[#fdfbf7]'}`}>
@@ -154,6 +165,13 @@ const NotepadPage = () => {
               <FolderOpen size={20} />
             </button>
             <button
+              onClick={toggleFixedSize}
+              className={`p-2 rounded-full transition-colors ${isFixedSize ? 'text-gray-500 hover:bg-gray-200' : 'text-blue-300 bg-blue-900/30 hover:bg-blue-900/50'}`}
+              title={isFixedSize ? 'Expand Notepad' : 'Fix Notepad Height'}
+            >
+              {isFixedSize ? <ArrowsOutLineHorizontal size={20} /> : <ArrowsInLineHorizontal size={20} />}
+            </button>
+            <button
               onClick={toggleRain}
               className={`p-2 rounded-full transition-colors ${isRainy ? 'text-blue-300 bg-blue-900/30 hover:bg-blue-900/50' : 'text-gray-500 hover:bg-gray-200'}`}
               title="Toggle Rain"
@@ -179,7 +197,7 @@ const NotepadPage = () => {
 
         {/* Notepad Area */}
         <div
-          className={`flex-grow rounded-lg shadow-lg relative overflow-hidden transition-all duration-500 ${isRainy ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}>
+          className={`${isFixedSize ? 'h-[60vh]' : 'flex-grow'} rounded-lg shadow-lg relative overflow-hidden flex flex-col transition-all duration-500 ${isRainy ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}>
           {/* Paper Lines Background */}
           <div
             className="absolute inset-0 pointer-events-none opacity-50"
@@ -196,7 +214,8 @@ const NotepadPage = () => {
 
           <textarea
             ref={textareaRef}
-            className={`w-full h-full p-8 pl-16 text-lg font-mono leading-8 bg-transparent border-none resize-none focus:ring-0 focus:outline-none relative z-10 ${isRainy ? 'text-gray-300 placeholder-gray-600' : 'text-gray-800 placeholder-gray-400'}`}
+            rows={1}
+            className={`w-full p-8 pl-16 text-lg font-mono leading-8 bg-transparent border-none resize-none focus:ring-0 focus:outline-none relative z-10 min-h-0 flex-1 ${isRainy ? 'text-gray-300 placeholder-gray-600' : 'text-gray-800 placeholder-gray-400'}`}
             placeholder="Start typing..."
             value={text}
             onChange={(e) => setText(e.target.value)}
