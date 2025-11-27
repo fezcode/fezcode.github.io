@@ -14,6 +14,22 @@
         "created_at": "2025-11-10T14:00:00+03:00"
       },
       {
+        "slug": "mastermind",
+        "to": "/apps/mastermind",
+        "title": "Mastermind",
+        "description": "Play the classic code-breaking game of Mastermind (Bulls and Cows).",
+        "icon": "PuzzlePieceIcon",
+        "created_at": "2025-11-23T18:28:07+03:00"
+      },
+      {
+        "slug": "nonogram",
+        "to": "/apps/nonogram",
+        "title": "Nonogram",
+        "description": "Solve picture logic puzzles by filling cells according to numerical clues.",
+        "icon": "GridFourIcon",
+        "created_at": "2025-11-23T20:43:44+03:00"
+      },
+      {
         "slug": "card-game",
         "to": "/apps/card-game",
         "title": "Higher or Lower Card Game",
@@ -61,14 +77,7 @@
         "icon": "AtomIcon",
         "created_at": "2025-11-18T05:11:43+03:00"
       },
-      {
-        "slug": "mastermind",
-        "to": "/apps/mastermind",
-        "title": "Mastermind",
-        "description": "Play the classic code-breaking game of Mastermind (Bulls and Cows).",
-        "icon": "PuzzlePieceIcon",
-        "created_at": "2025-11-23T18:28:07+03:00"
-      },
+
       {
         "slug": "word-ladder",
         "to": "/apps/word-ladder",
@@ -84,14 +93,6 @@
         "description": "A classic logic puzzle where you turn off all the lights.",
         "icon": "LightbulbFilamentIcon",
         "created_at": "2025-11-23T20:20:54+03:00"
-      },
-      {
-        "slug": "nonogram",
-        "to": "/apps/nonogram",
-        "title": "Nonogram",
-        "description": "Solve picture logic puzzles by filling cells according to numerical clues.",
-        "icon": "GridFourIcon",
-        "created_at": "2025-11-23T20:43:44+03:00"
       },
       {
         "slug": "whack-a-bug",
@@ -126,6 +127,54 @@
     "order": 2,
     "apps": [
       {
+        "slug": "tcg-card-generator",
+        "to": "/apps/tcg-card-generator",
+        "title": "TCG Card Generator",
+        "description": "Create your own custom TCG cards with this generator.",
+        "icon": "CardsThreeIcon",
+        "created_at": "2025-11-26T12:00:00+03:00"
+      },
+      {
+        "slug": "football-emblem-creator",
+        "to": "/apps/football-emblem-creator",
+        "title": "Football Emblem Creator",
+        "description": "Create your own custom football team emblem.",
+        "icon": "TrophyIcon",
+        "created_at": "2025-11-25T18:00:00+03:00"
+      },
+      {
+        "slug": "tournament-bracket",
+        "to": "/apps/tournament-bracket",
+        "title": "Tournament Bracket",
+        "description": "Create and manage tournament brackets.",
+        "icon": "ListNumbersIcon",
+        "created_at": "2025-11-07T14:22:02+03:00"
+      },
+      {
+        "slug": "picker-wheel",
+        "to": "/apps/picker-wheel",
+        "title": "Picker Wheel",
+        "description": "A spinning wheel to pick a random winner from a list of entries.",
+        "icon": "CircleDashedIcon",
+        "created_at": "2025-11-09T02:43:25+03:00"
+      },
+      {
+        "slug": "dice-roller",
+        "to": "/apps/dice-roller",
+        "title": "Dice Roller",
+        "description": "Roll various types of dice for your games and adventures.",
+        "icon": "DiceSixIcon",
+        "created_at": "2025-11-07T20:18:31+03:00"
+      },
+      {
+        "slug": "whiteboard",
+        "to": "/apps/whiteboard",
+        "title": "Whiteboard",
+        "description": "A simple digital whiteboard for sketching and doodling.",
+        "icon": "PencilSimpleIcon",
+        "created_at": "2025-11-25T17:00:00+03:00"
+      },
+      {
         "slug": "codename-generator",
         "to": "/apps/codename-generator",
         "title": "Codename Generator",
@@ -142,30 +191,6 @@
         "created_at": "2025-11-07T20:00:38+03:00"
       },
       {
-        "slug": "picker-wheel",
-        "to": "/apps/picker-wheel",
-        "title": "Picker Wheel",
-        "description": "A spinning wheel to pick a random winner from a list of entries.",
-        "icon": "CircleDashedIcon",
-        "created_at": "2025-11-09T02:43:25+03:00"
-      },
-      {
-        "slug": "tournament-bracket",
-        "to": "/apps/tournament-bracket",
-        "title": "Tournament Bracket",
-        "description": "Create and manage tournament brackets.",
-        "icon": "ListNumbersIcon",
-        "created_at": "2025-11-07T14:22:02+03:00"
-      },
-      {
-        "slug": "dice-roller",
-        "to": "/apps/dice-roller",
-        "title": "Dice Roller",
-        "description": "Roll various types of dice for your games and adventures.",
-        "icon": "DiceSixIcon",
-        "created_at": "2025-11-07T20:18:31+03:00"
-      },
-      {
         "slug": "excuse-generator",
         "to": "/apps/excuse-generator",
         "title": "Excuse Generator",
@@ -180,22 +205,6 @@
         "description": "Ask a yes/no question and let the Magic 8-Ball reveal your fate!",
         "icon": "QuestionIcon",
         "created_at": "2025-11-18T03:48:58+03:00"
-      },
-      {
-        "slug": "whiteboard",
-        "to": "/apps/whiteboard",
-        "title": "Whiteboard",
-        "description": "A simple digital whiteboard for sketching and doodling.",
-        "icon": "PencilSimpleIcon",
-        "created_at": "2025-11-25T17:00:00+03:00"
-      },
-      {
-        "slug": "football-emblem-creator",
-        "to": "/apps/football-emblem-creator",
-        "title": "Football Emblem Creator",
-        "description": "Create your own custom football team emblem.",
-        "icon": "TrophyIcon",
-        "created_at": "2025-11-25T18:00:00+03:00"
       },
       {
         "slug": "banana-converter",
@@ -228,14 +237,6 @@
         "description": "Pop some virtual bubble wrap to relieve stress.",
         "icon": "CirclesFourIcon",
         "created_at": "2025-11-25T16:01:56+03:00"
-      },
-      {
-        "slug": "tcg-card-generator",
-        "to": "/apps/tcg-card-generator",
-        "title": "TCG Card Generator",
-        "description": "Create your own custom TCG cards with this generator.",
-        "icon": "CardsThreeIcon",
-        "created_at": "2025-11-26T12:00:00+03:00"
       }
     ]
   },
@@ -245,6 +246,14 @@
     "icon": "MagicWandIcon",
     "order": 3,
     "apps": [
+      {
+        "slug": "color-palette-generator",
+        "to": "/apps/color-palette-generator",
+        "title": "Color Palette Generator",
+        "description": "Generate random color palettes.",
+        "icon": "PaletteIcon",
+        "created_at": "2025-11-07T19:33:40+03:00"
+      },
       {
         "slug": "json-generator",
         "to": "/apps/json-generator",
@@ -286,14 +295,6 @@
         "created_at": "2025-11-11T03:04:03+03:00"
       },
       {
-        "slug": "color-palette-generator",
-        "to": "/apps/color-palette-generator",
-        "title": "Color Palette Generator",
-        "description": "Generate random color palettes.",
-        "icon": "PaletteIcon",
-        "created_at": "2025-11-07T19:33:40+03:00"
-      },
-      {
         "slug": "lorem-ipsum-generator",
         "to": "/apps/lorem-ipsum-generator",
         "title": "Lorem Ipsum Generator",
@@ -316,6 +317,14 @@
         "description": "Convert JSON to PIML and vice-versa.",
         "icon": "CodeIcon",
         "created_at": "2025-11-13T04:36:09+03:00"
+      },
+      {
+        "slug": "morse-code-translator",
+        "to": "/apps/morse-code-translator",
+        "title": "Morse Code Translator",
+        "description": "Translate text to Morse code and vice-versa, with audio playback.",
+        "icon": "TranslateIcon",
+        "created_at": "2025-11-23T18:16:28+03:00"
       },
       {
         "slug": "case-converter",
@@ -356,14 +365,6 @@
         "description": "Convert between px, em, rem, vw, vh, and % units.",
         "icon": "RulerIcon",
         "created_at": "2025-11-07T19:47:38+03:00"
-      },
-      {
-        "slug": "morse-code-translator",
-        "to": "/apps/morse-code-translator",
-        "title": "Morse Code Translator",
-        "description": "Translate text to Morse code and vice-versa, with audio playback.",
-        "icon": "TranslateIcon",
-        "created_at": "2025-11-23T18:16:28+03:00"
       }
     ]
   },
@@ -373,6 +374,14 @@
     "icon": "ToolboxIcon",
     "order": 5,
     "apps": [
+      {
+        "slug": "notepad",
+        "to": "/apps/notepad",
+        "title": "Notepad",
+        "description": "A simple, distraction-free text editor.",
+        "icon": "NotePencilIcon",
+        "created_at": "2025-11-27T14:00:00+03:00"
+      },
       {
         "slug": "image-toolkit",
         "to": "/apps/image-toolkit",
@@ -388,6 +397,22 @@
         "description": "Compress images to reduce file size while maintaining quality.",
         "icon": "ArrowsInLineHorizontalIcon",
         "created_at": "2025-11-23T12:54:58+03:00"
+      },
+      {
+        "slug": "stopwatch",
+        "to": "/apps/stopwatch",
+        "title": "Stopwatch",
+        "description": "A simple stopwatch with lap functionality.",
+        "icon": "TimerIcon",
+        "created_at": "2025-11-23T17:30:23+03:00"
+      },
+      {
+        "slug": "pomodoro-timer",
+        "to": "/apps/pomodoro-timer",
+        "title": "Pomodoro Timer",
+        "description": "A simple and customizable Pomodoro timer to boost your productivity.",
+        "icon": "TimerIcon",
+        "created_at": "2025-11-23T18:11:03+03:00"
       },
       {
         "slug": "word-counter",
@@ -430,36 +455,12 @@
         "created_at": "2025-11-18T03:40:32+03:00"
       },
       {
-        "slug": "stopwatch",
-        "to": "/apps/stopwatch",
-        "title": "Stopwatch",
-        "description": "A simple stopwatch with lap functionality.",
-        "icon": "TimerIcon",
-        "created_at": "2025-11-23T17:30:23+03:00"
-      },
-      {
-        "slug": "pomodoro-timer",
-        "to": "/apps/pomodoro-timer",
-        "title": "Pomodoro Timer",
-        "description": "A simple and customizable Pomodoro timer to boost your productivity.",
-        "icon": "TimerIcon",
-        "created_at": "2025-11-23T18:11:03+03:00"
-      },
-      {
         "slug": "bpm-guesser",
         "to": "/apps/bpm-guesser",
         "title": "BPM Guesser",
         "description": "Tap the beat to guess the BPM of a song.",
         "icon": "MetronomeIcon",
         "created_at": "2025-11-25T16:14:05+03:00"
-      },
-      {
-        "slug": "notepad",
-        "to": "/apps/notepad",
-        "title": "Notepad",
-        "description": "A simple, distraction-free text editor.",
-        "icon": "NotePencilIcon",
-        "created_at": "2025-11-27T14:00:00+03:00"
       }
     ]
   }

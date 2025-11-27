@@ -44,10 +44,7 @@ function AppPage() {
   const [totalAppsCount, setTotalAppsCount] = useState(0);
   const [sortOption, setSortOption] = useState('default'); // 'default', 'created_desc', 'created_asc'
   const [searchQuery, setSearchQuery] = useState('');
-  const [collapsedCategories, setCollapsedCategories] = usePersistentState(
-    KEY_APPS_COLLAPSED_CATEGORIES,
-    {},
-  );
+  const [collapsedCategories, setCollapsedCategories] = usePersistentState(KEY_APPS_COLLAPSED_CATEGORIES,{});
 
   useEffect(() => {
     setIsLoading(true);
@@ -57,7 +54,9 @@ function AppPage() {
         setGroupedApps(data);
         let count = 0;
         for (const categoryKey in data) {
-          count += data[categoryKey].apps.length;
+          if (categoryKey !== 'Bests') {
+            count += data[categoryKey].apps.length;
+          }
         }
         setTotalAppsCount(count);
 

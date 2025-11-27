@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import {ArrowLeftIcon, DownloadSimple, Trash, CloudRain, FloppyDisk, FolderOpen} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import {useToast} from '../../hooks/useToast';
+import ConfirmationModal from '../../components/ConfirmationModal';
 
 const NotepadPage = () => {
   useSeo({
@@ -13,7 +14,9 @@ const NotepadPage = () => {
 
   const [text, setText] = useState('');
   const [isRainy, setIsRainy] = useState(false);
+  const [isClearModalOpen, setIsClearModalOpen] = useState(false);
   const textareaRef = useRef(null);
+  const fileInputRef = useRef(null);
   const {addToast} = useToast();
 
   // Load saved text from local storage on mount
@@ -29,19 +32,38 @@ const NotepadPage = () => {
     localStorage.setItem('fezcodex-notepad-content', text);
   }, [text]);
 
+  // Memoize rain drops to prevent re-calculation on every render
+  const rainDrops = React.useMemo(() => {
+    return [...Array(20)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      top: `-${Math.random() * 20}%`,
+      height: `${Math.random() * 20 + 10}%`,
+      duration: `${Math.random() * 1 + 0.5}s`,
+      delay: `${Math.random() * 2}s`
+    }));
+  }, []);
+
   const handleSave = () => {
     localStorage.setItem('fezcodex-notepad-content', text);
     addToast({title: 'Saved', message: 'Note manually saved to local storage.', duration: 3000});
   };
 
   const handleLoad = () => {
-    const savedText = localStorage.getItem('fezcodex-notepad-content');
-    if (savedText) {
-      setText(savedText);
-      addToast({title: 'Loaded', message: 'Note loaded from local storage.', duration: 3000});
-    } else {
-      addToast({title: 'Info', message: 'No saved note found.', duration: 3000});
+    fileInputRef.current.click();
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setText(e.target.result);
+        addToast({title: 'Loaded', message: `Loaded content from ${file.name}`, duration: 3000});
+      };
+      reader.readAsText(file);
     }
+    // Reset input so the same file can be selected again if needed
+    event.target.value = null;
   };
 
   const handleDownload = () => {
@@ -56,10 +78,13 @@ const NotepadPage = () => {
   };
 
   const handleClear = () => {
-    if (window.confirm('Are you sure you want to clear your note?')) {
-      setText('');
-      addToast({title: 'Cleared', message: 'Notepad cleared.', duration: 3000});
-    }
+    setIsClearModalOpen(true);
+  };
+
+  const confirmClear = () => {
+    setText('');
+    setIsClearModalOpen(false);
+    addToast({title: 'Cleared', message: 'Notepad cleared.', duration: 3000});
   };
 
   const toggleRain = () => {
@@ -79,21 +104,29 @@ const NotepadPage = () => {
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/80"></div>
           {/* Simple CSS Rain */}
-          {[...Array(20)].map((_, i) => (
+          {rainDrops.map((drop, i) => (
             <div
               key={i}
               className="absolute w-px bg-blue-400/30 animate-rain"
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `-${Math.random() * 20}%`,
-                height: `${Math.random() * 20 + 10}%`,
-                animationDuration: `${Math.random() * 1 + 0.5}s`,
-                animationDelay: `${Math.random() * 2}s`
+                left: drop.left,
+                top: drop.top,
+                height: drop.height,
+                animationDuration: drop.duration,
+                animationDelay: drop.delay
               }}
             />
           ))}
         </div>
       )}
+
+      <input
+        type="file"
+        accept=".txt"
+        ref={fileInputRef}
+        onChange={handleFileUpload}
+        className="hidden"
+      />
 
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col relative z-10 max-w-4xl">
         {/* Header */}
@@ -116,7 +149,7 @@ const NotepadPage = () => {
             <button
               onClick={handleLoad}
               className={`p-2 rounded-full transition-colors ${isRainy ? 'text-amber-400 hover:bg-amber-900/30' : 'text-amber-600 hover:bg-amber-100'}`}
-              title="Load from Local Storage"
+              title="Load from Text File"
             >
               <FolderOpen size={20} />
             </button>
@@ -175,6 +208,16 @@ const NotepadPage = () => {
           {text.length} chars | {text.split(/\s+/).filter((w) => w.length > 0).length} words
         </div>
       </div>
+
+      <ConfirmationModal
+        isOpen={isClearModalOpen}
+        onClose={() => setIsClearModalOpen(false)}
+        onConfirm={confirmClear}
+        title="Clear Notepad"
+        message="Are you sure you want to clear your note? This action cannot be undone."
+        confirmText="Clear"
+        isDanger={true}
+      />
 
       <style>{`
             @keyframes rain {
