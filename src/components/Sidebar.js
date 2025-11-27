@@ -344,43 +344,43 @@ const Sidebar = ({isOpen, toggleSidebar, toggleModal, setIsPaletteOpen}) => {
               <CaretDoubleDownIcon size={24} className="text-white"/>
             </div>)}
         </div>
-        <div className="p-4 text-xs text-gray-300 text-left">
-          <div className="flex gap-2 mb-4">
+        <div className="p-4 text-gray-300 text-left relative z-10">
+          <div className="flex flex-col gap-2 mb-4">
             <button
               onClick={() => setIsPaletteOpen(true)}
-              className="flex items-center justify-center w-full text-sm font-normal tracking-wider focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
+              className="px-3 py-2 text-sm rounded-lg border border-gray-700/50 bg-gray-900/40 text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors duration-200 flex items-center justify-center gap-2 w-full font-mono"
             >
+              <MagnifyingGlassIcon size={16}/>
               <span>Commands</span>
-              <MagnifyingGlassIcon size={20} className="ml-2"/>
+            </button>
+            <button
+              onClick={handleSettingsClick}
+              className="px-3 py-2 text-sm rounded-lg border border-gray-700/50 bg-gray-900/40 text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors duration-200 flex items-center justify-center gap-2 w-full font-mono"
+            >
+              <GearSixIcon size={16}/>
+              <span>Settings</span>
             </button>
           </div>
-          <button
-            onClick={handleSettingsClick}
-            className="flex items-center justify-center w-full text-sm font-normal tracking-wider mb-4 focus:outline-none bg-gray-800 text-white hover:bg-gray-700 rounded-md p-2 font-sans"
-          >
-            <span>Settings</span>
-            <GearSixIcon size={20} className="ml-3"/>
-          </button>
-          <hr className="border-gray-700 my-4"/>
-          <div className="flex space-x-2 font-sans">
+          <hr className="border-gray-800 my-4"/>
+          <div className="flex flex-col gap-2 mb-4">
             <NavLink
               to="/random"
-              className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans text-center"
+              className="px-3 py-2 text-sm rounded-lg border border-gray-700/50 bg-gray-900/40 text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors duration-200 flex items-center justify-center gap-2 w-full font-mono"
             >
-              <ShuffleIcon size={20}/>
+              <ShuffleIcon size={16}/>
               <span>Random</span>
             </NavLink>
             <button
               onClick={toggleModal}
-              className="flex items-center justify-center space-x-2 bg-gray-900 border border-gray-700 hover:bg-gray-800 hover:border-gray-600 text-gray-300 py-1.5 px-3 rounded-md transition-colors w-full font-sans"
+              className="px-3 py-2 text-sm rounded-lg border border-gray-700/50 bg-gray-900/40 text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors duration-200 flex items-center justify-center gap-2 w-full font-mono"
             >
-              <EnvelopeSimpleIcon size={20}/>
+              <EnvelopeSimpleIcon size={16}/>
               <span>Contact</span>
             </button>
           </div>
-          <div className="flex justify-between items-center mt-4">
-            <p>&copy; {new Date().getFullYear()} fezcode</p>
-            <p>Version {version}</p>
+          <hr className="border-gray-800 my-4"/>
+          <div className="text-center text-xs text-gray-500 font-mono">
+            <p>&copy; {new Date().getFullYear()} fezcode // v{version}</p>
           </div>
         </div>
       </motion.aside>
