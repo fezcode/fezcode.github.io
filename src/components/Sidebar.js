@@ -256,11 +256,8 @@ const Sidebar = ({isOpen, toggleSidebar, toggleModal, setIsPaletteOpen}) => {
               </button>
               {sidebarState.isExtrasOpen && (<nav className={getGroupClass(false)}>
                   <NavLink to="/stories" className={getLinkClass}>
-                    <SwordIcon className="text-yellow-500" size={24}/>
-                    <span>
-                            S<span className="text-yellow-500"> &amp; </span>F&nbsp;<sup
-                      className="text-blue-500"> (alpha) </sup>
-                          </span>
+                    <SwordIcon className="text-orange-500" size={24}/>
+                    <span> S <span className="text-orange-500"> &amp; </span>F&nbsp;<sup className="text-xs text-orange-500"> [alpha] </sup> </span>
                   </NavLink>
                   <a
                     href="/rss.xml"
