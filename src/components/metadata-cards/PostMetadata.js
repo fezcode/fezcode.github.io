@@ -31,7 +31,9 @@ const PostMetadata = ({
             ? 'var(--color-dnd-badge)'
             : metadata.category === 'gist'
               ? 'var(--color-gist-badge)'
-              : 'var(--color-takes-badge)',
+              : metadata.category === 'feat'
+                ? 'var(--color-feat-badge)'
+                : 'var(--color-takes-badge)',
   };
 
   const categoryBadgeFontColorStyle =

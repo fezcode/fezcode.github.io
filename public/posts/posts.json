@@ -12,7 +12,7 @@
       "lazy-loading",
       "craco"
     ],
-    "category": "dev",
+    "category": "feat",
     "filename": "reducing-react-app-size.txt",
     "authors": ["fezcode"],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"

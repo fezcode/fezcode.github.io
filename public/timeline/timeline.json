@@ -1,6 +1,14 @@
 [
   {
     "date": "2025-11-27",
+    "title": "Visual Modes",
+    "description": "Implemented different visual modes that can be set in settings page or via Command Palette.",
+    "type": "feature",
+    "icon": "RocketLaunchIcon",
+    "link": "/#/settings"
+  },
+  {
+    "date": "2025-11-27",
     "title": "Bundle Size Optimization",
     "description": "Reduced main bundle size by ~70% via code splitting (React.lazy) and disabling production source maps.",
     "type": "refactor",

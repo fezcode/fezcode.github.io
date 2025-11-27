@@ -46,7 +46,9 @@ const PostItem = ({
             ? 'var(--color-dnd-badge)'
             : category === 'gist'
               ? 'var(--color-gist-badge)'
-              : 'var(--color-takes-badge)',
+              : category === 'feat'
+                ? 'var(--color-feat-badge)'
+                : 'var(--color-takes-badge)',
   };
 
   const postBackgroundColorClass =
@@ -58,7 +60,9 @@ const PostItem = ({
           ? 'bg-dnd-card-bg'
           : category === 'gist'
             ? 'bg-gist-card-bg'
-            : 'bg-takes-card-bg';
+            : category === 'feat'
+              ? 'bg-feat-card-bg'
+              : 'bg-takes-card-bg';
 
   const postHoverBackgroundColorClass =
     category === 'dev'
@@ -69,7 +73,9 @@ const PostItem = ({
           ? 'hover:bg-dnd-card-bg-hover'
           : category === 'gist'
             ? 'hover:bg-gist-card-bg-hover'
-            : 'hover:bg-takes-card-bg-hover';
+            : category === 'feat'
+              ? 'hover:bg-feat-card-bg-hover'
+              : 'hover:bg-takes-card-bg-hover';
 
   const postTitleHoverColorClass =
     category === 'dev'
@@ -80,7 +86,9 @@ const PostItem = ({
           ? 'group-hover:text-[var(--title-hover-dnd)]'
           : category === 'gist'
             ? 'group-hover:text-[var(--title-hover-gist)]'
-            : 'group-hover:text-[var(--title-hover-takes)]';
+            : category === 'feat'
+              ? 'group-hover:text-[var(--title-hover-feat)]'
+              : 'group-hover:text-[var(--title-hover-takes)]';
 
   const categoryBadgeFontColorStyle =
     category === 'gist' || category === 'gist' ? 'text-black' : 'text-white'

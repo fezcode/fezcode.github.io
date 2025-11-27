@@ -188,43 +188,47 @@ const BlogPage = () => {
             />
           </div>
           {/* Filter Buttons */}
-          <div className="mt-8 flex justify-center space-x-4">
-            <button
-              onClick={() => setActiveFilter('all')}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'all' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
-            >
-              All
-            </button>
-            <button
-              onClick={() => setActiveFilter('dev')}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'dev' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
-            >
-              Dev
-            </button>
-            <button
-              onClick={() => setActiveFilter('rant')}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'rant' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
-            >
-              Rant
-            </button>
-            <button
-              onClick={() => setActiveFilter('series')}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'series' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
-            >
-              Series
-            </button>
-            <button
-              onClick={() => setActiveFilter('gist')}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'gist' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
-            >
-              Gist
-            </button>
-            <button
-              onClick={() => setActiveFilter('d&d')}
-              className={`px-4 py-2 rounded-full text-sm font-medium ${activeFilter === 'd&d' ? 'bg-primary-500 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
-            >
-              D&D
-            </button>
+          <div className="mt-8 flex flex-wrap justify-center gap-2">
+            {[
+              { id: 'all', label: 'All' },
+              { id: 'dev', label: 'Dev' },
+              { id: 'feat', label: 'Feat' },
+              { id: 'rant', label: 'Rant' },
+              { id: 'series', label: 'Series' },
+              { id: 'gist', label: 'Gist' },
+              { id: 'd&d', label: 'D&D' },
+            ].map((filter) => (
+              <button
+                key={filter.id}
+                onClick={() => setActiveFilter(filter.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                  activeFilter === filter.id
+                    ? 'text-white shadow-md'
+                    : 'bg-gray-800 text-gray-400 hover:bg-gray-700 hover:text-white'
+                }`}
+                style={{
+                  backgroundColor:
+                    activeFilter === filter.id
+                      ? filter.id === 'all'
+                        ? '#4b5563' // gray-600 for All
+                        : filter.id === 'series'
+                          ? 'var(--color-series-badge)'
+                          : filter.id === 'd&d'
+                            ? 'var(--color-dnd-badge)'
+                            : filter.id === 'gist'
+                              ? 'var(--color-gist-badge)'
+                              : filter.id === 'feat'
+                                ? 'var(--color-feat-badge)'
+                                : filter.id === 'rant'
+                                  ? 'var(--color-takes-badge)'
+                                  : `var(--color-${filter.id}-badge)` // Dynamic for dev
+                      : undefined,
+                    color: activeFilter === filter.id && filter.id === 'gist' ? 'black' : undefined
+                }}
+              >
+                {filter.label}
+              </button>
+            ))}
           </div>
         </div>
         <div className="mt-16">

@@ -18,6 +18,7 @@ module.exports = {
   food: '#F4A259',
   websites: '#00FF7F',
   tools: '#e0aaff',
+  feat: '#a855f7',
   'book-light': '#4dcdff',
   'movie-light': '#e84f6d',
   'game-light': '#00e6bf',
@@ -28,6 +29,7 @@ module.exports = {
   'food-light': '#FFC780',
   'websites-light': '#4dff99',
   'tools-light': '#F0DFFF',
+  'feat-light': '#d8b4fe',
   'newspaper-background': '#fdfdf5',
   'sidebar-highlight': '#FA8072', // Duplicated from article
   'sidebar-highlight-light': '#FFB6C1', // Duplicated from article-light
@@ -46,6 +48,8 @@ module.exports = {
   'dnd-card-bg-hover': 'var(--bg-dnd-card-hover)',
   'gist-card-bg': 'var(--bg-gist-card)',
   'gist-card-bg-hover': 'var(--bg-gist-card-hover)',
+  'feat-card-bg': 'var(--bg-feat-card)',
+  'feat-card-bg-hover': 'var(--bg-feat-card-hover)',
   'book-alpha-10': 'rgba(0, 191, 255, 0.1)',
   'book-alpha-50': 'rgba(0, 191, 255, 0.5)',
   'movie-alpha-10': 'rgba(220, 20, 60, 0.1)',
@@ -66,6 +70,8 @@ module.exports = {
   'websites-alpha-50': 'rgba(0, 255, 127, 0.5)',
   'tools-alpha-10': 'rgba(224, 170, 255, 0.1)',
   'tools-alpha-50': 'rgba(224, 170, 255, 0.5)',
+  'feat-alpha-10': 'rgba(168, 85, 247, 0.1)',
+  'feat-alpha-50': 'rgba(168, 85, 247, 0.5)',
 
   // Toast success colors
   'toast-background': 'rgba(72,59,87,0.8)',

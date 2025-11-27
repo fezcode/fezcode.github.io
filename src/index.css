@@ -115,6 +115,12 @@ code {
   --bg-gist-card-hover: rgba(217, 119, 6, 0.2);
   --title-hover-gist: #fbbf24; /* amber-400 */
 
+  /*feat card*/
+  --color-feat-badge: #6b21a8; /* purple-800 */
+  --bg-feat-card: rgba(107, 33, 168, 0.175);
+  --bg-feat-card-hover: rgba(126, 34, 206, 0.275);
+  --title-hover-feat: #a855f7; /* purple-500 */
+
   /*fezccode colors*/
   --fzcdx-background: #ffffff;
   --fzcdx-text-primary: #2d2d2d;
