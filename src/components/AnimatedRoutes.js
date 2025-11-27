@@ -78,7 +78,7 @@ const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));
-const UsefulLinksPage = lazy(() => import('../pages/UsefulLinksPage'));
+const RandomPage = lazy(() => import('../pages/RandomPage'));
 const NotebooksPage = lazy(() => import('../pages/notebooks/NotebooksPage'));
 const NotebookViewerPage = lazy(() => import('../pages/notebooks/NotebookViewerPage'));
 const NewsPage = lazy(() => import('../pages/NewsPage'));
@@ -403,7 +403,7 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
-                <UsefulLinksPage />
+                <RandomPage />
               </motion.div>
             }
           />
