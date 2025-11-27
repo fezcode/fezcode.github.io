@@ -224,6 +224,13 @@ input[type='number'] {
   scrollbar-width: none; /* Firefox */
 }
 
+/*Visual Modes*/
+/*Visual Modes*/
+/*Visual Modes*/
+/*Visual Modes*/
+/*Visual Modes*/
+/*Visual Modes*/
+
 @keyframes barrel-roll {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -301,6 +308,14 @@ html.mirror-mode #root {
 }
 
 /* Noir Mode */
-body.noir-mode {
-  filter: grayscale(100%) contrast(1.2);
+body.noir-mode::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  backdrop-filter: grayscale(100%) contrast(1.2);
+  pointer-events: none;
 }
