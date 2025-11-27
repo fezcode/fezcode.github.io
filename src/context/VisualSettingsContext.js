@@ -11,6 +11,7 @@ export const VisualSettingsProvider = ({children}) => {
   const [isInverted, setIsInverted] = usePersistentState('is-inverted', false);
   const [isRetro, setIsRetro] = usePersistentState('is-retro', false);
   const [isParty, setIsParty] = usePersistentState('is-party', false);
+  const [isMirror, setIsMirror] = usePersistentState('is-mirror', false);
 
   useEffect(() => {
     if (isInverted) {
@@ -19,7 +20,6 @@ export const VisualSettingsProvider = ({children}) => {
       document.body.classList.remove('invert-mode');
     }
   }, [isInverted]);
-
   useEffect(() => {
     if (isRetro) {
       document.documentElement.classList.add('retro-mode');
@@ -36,12 +36,24 @@ export const VisualSettingsProvider = ({children}) => {
     }
   }, [isParty]);
 
+  useEffect(() => {
+    if (isMirror) {
+      document.documentElement.classList.add('mirror-mode');
+    } else {
+      document.documentElement.classList.remove('mirror-mode');
+    }
+  }, [isMirror]);
   const toggleInvert = () => setIsInverted(prev => !prev);
   const toggleRetro = () => setIsRetro(prev => !prev);
   const toggleParty = () => setIsParty(prev => !prev);
+  const toggleMirror = () => setIsMirror(prev => !prev);
 
-  return (<VisualSettingsContext.Provider value={{
-      isInverted, toggleInvert, isRetro, toggleRetro, isParty, toggleParty
+  return (
+    <VisualSettingsContext.Provider value={{
+      isInverted, toggleInvert,
+      isRetro, toggleRetro,
+      isParty, toggleParty,
+      isMirror, toggleMirror
     }}>
       {children}
     </VisualSettingsContext.Provider>);

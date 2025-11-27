@@ -52,9 +52,9 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
   const {
     isInverted, toggleInvert,
     isRetro, toggleRetro,
-    isParty, toggleParty
+    isParty, toggleParty,
+    isMirror, toggleMirror
   } = useVisualSettings();
-
   const filteredItems = filterItems(items, searchTerm);
 
   useEffect(() => {
@@ -184,6 +184,14 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isRetro ? 'Retro Mode On' : 'Retro Mode Off',
             message: !isRetro ? '80s Vibes Initiated.' : 'Back to the future!',
+            duration: 2000
+          });
+          break;
+        case 'toggleMirrorMode':
+          toggleMirror();
+          addToast({
+            title: !isMirror ? 'Mirror Mode On' : 'Mirror Mode Off',
+            message: !isMirror ? 'Through the looking glass...' : 'Reflections normalized.',
             duration: 2000
           });
           break;

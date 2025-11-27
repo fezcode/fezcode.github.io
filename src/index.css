@@ -15,7 +15,7 @@ body {
   font-style: normal !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: filter 0.5s ease; /* Smooth transition for filters */
+  transition: filter 0.5s ease, transform 0.5s ease; /* Smooth transition for filters and transforms */
 }
 
 code {
@@ -274,4 +274,22 @@ html.retro-mode::before {
 
 html.retro-mode body {
   text-shadow: 1px 0 2px rgba(255,0,0,0.7), -1px 0 2px rgba(0,255,255,0.7);
+}
+
+/* Mirror Mode */
+html.mirror-mode {
+  transform: scaleX(-1);
+  height: 100%;
+  overflow: hidden;
+}
+
+html.mirror-mode body {
+  height: 100%;
+  overflow: hidden;
+}
+
+html.mirror-mode #root {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 }

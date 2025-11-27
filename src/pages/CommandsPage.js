@@ -50,6 +50,7 @@ const commandsData = [
       { title: "Toggle Invert Colors", description: "Inverts all colors on the page. (Easter Egg)", color: "orange" },
       { title: "Party Mode", description: "Cycles hue colors for a disco effect. (Easter Egg)", color: "amber" },
       { title: "Toggle Retro Mode", description: "Enables a retro CRT scanline effect. (Easter Egg)", color: "yellow" },
+      { title: "Toggle Mirror Mode", description: "Mirrors the entire page horizontally. (Easter Egg)", color: "indigo" },
     ]
   },
   {
@@ -63,6 +64,31 @@ const commandsData = [
     ]
   }
 ];
+
+const colorClasses = {
+  red: { bg: 'bg-red-900', border: 'border-red-700', text: 'text-red-300' },
+  orange: { bg: 'bg-orange-900', border: 'border-orange-700', text: 'text-orange-300' },
+  amber: { bg: 'bg-amber-900', border: 'border-amber-700', text: 'text-amber-300' },
+  yellow: { bg: 'bg-yellow-900', border: 'border-yellow-700', text: 'text-yellow-300' },
+  lime: { bg: 'bg-lime-900', border: 'border-lime-700', text: 'text-lime-300' },
+  green: { bg: 'bg-green-900', border: 'border-green-700', text: 'text-green-300' },
+  emerald: { bg: 'bg-emerald-900', border: 'border-emerald-700', text: 'text-emerald-300' },
+  teal: { bg: 'bg-teal-900', border: 'border-teal-700', text: 'text-teal-300' },
+  cyan: { bg: 'bg-cyan-900', border: 'border-cyan-700', text: 'text-cyan-300' },
+  sky: { bg: 'bg-sky-900', border: 'border-sky-700', text: 'text-sky-300' },
+  blue: { bg: 'bg-blue-900', border: 'border-blue-700', text: 'text-blue-300' },
+  indigo: { bg: 'bg-indigo-900', border: 'border-indigo-700', text: 'text-indigo-300' },
+  violet: { bg: 'bg-violet-900', border: 'border-violet-700', text: 'text-violet-300' },
+  purple: { bg: 'bg-purple-900', border: 'border-purple-700', text: 'text-purple-300' },
+  fuchsia: { bg: 'bg-fuchsia-900', border: 'border-fuchsia-700', text: 'text-fuchsia-300' },
+  pink: { bg: 'bg-pink-900', border: 'border-pink-700', text: 'text-pink-300' },
+  rose: { bg: 'bg-rose-900', border: 'border-rose-700', text: 'text-rose-300' },
+  slate: { bg: 'bg-slate-900', border: 'border-slate-700', text: 'text-slate-300' },
+  gray: { bg: 'bg-gray-900', border: 'border-gray-700', text: 'text-gray-300' },
+  zinc: { bg: 'bg-zinc-900', border: 'border-zinc-700', text: 'text-zinc-300' },
+  neutral: { bg: 'bg-neutral-900', border: 'border-neutral-700', text: 'text-neutral-300' },
+  stone: { bg: 'bg-stone-900', border: 'border-stone-700', text: 'text-stone-300' },
+};
 
 function CommandsPage() {
   useSeo({
@@ -154,16 +180,19 @@ function CommandsPage() {
                 <div key={catIndex} className="mb-8">
                   <h2 className="text-2xl font-semibold text-gray-200 mb-4 border-b border-gray-700 pb-2 inline-block">{category.category}</h2>
                   <div className="grid grid-cols-1 gap-4">
-                    {category.items.map((cmd, cmdIndex) => (
-                      <div
-                        key={cmdIndex}
-                        className={`bg-${cmd.color}-900 bg-opacity-30 border border-${cmd.color}-700 text-${cmd.color}-300 px-4 py-3 rounded relative`}
-                        role="alert"
-                      >
-                        <strong className="font-bold">{cmd.title}:</strong>
-                        <span className="block sm:inline ml-2">{cmd.description}</span>
-                      </div>
-                    ))}
+                    {category.items.map((cmd, cmdIndex) => {
+                        const classes = colorClasses[cmd.color] || colorClasses.gray;
+                        return (
+                          <div
+                            key={cmdIndex}
+                            className={`${classes.bg} bg-opacity-30 border ${classes.border} ${classes.text} px-4 py-3 rounded relative`}
+                            role="alert"
+                          >
+                            <strong className="font-bold">{cmd.title}:</strong>
+                            <span className="block sm:inline ml-2">{cmd.description}</span>
+                          </div>
+                        );
+                    })}
                   </div>
                 </div>
               ))}

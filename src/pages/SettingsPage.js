@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {ArrowLeft, ArrowLeftIcon} from '@phosphor-icons/react';
+import {ArrowLeftIcon} from '@phosphor-icons/react';
 import {useAnimation} from '../context/AnimationContext';
 import {useVisualSettings} from '../context/VisualSettingsContext';
 import colors from '../config/colors';
@@ -8,9 +8,7 @@ import CustomToggle from '../components/CustomToggle';
 import useSeo from '../hooks/useSeo';
 import {useToast} from '../hooks/useToast';
 import {
-  KEY_SIDEBAR_STATE,
-  KEY_APPS_COLLAPSED_CATEGORIES,
-  remove as removeLocalStorageItem,
+  KEY_SIDEBAR_STATE, KEY_APPS_COLLAPSED_CATEGORIES, remove as removeLocalStorageItem,
 } from '../utils/LocalStorageManager';
 
 const SettingsPage = () => {
@@ -38,14 +36,13 @@ const SettingsPage = () => {
   const {
     isInverted, toggleInvert,
     isRetro, toggleRetro,
-    isParty, toggleParty
+    isParty, toggleParty,
+    isMirror, toggleMirror
   } = useVisualSettings();
 
   const {addToast} = useToast();
-
   const handleResetSidebarState = () => {
     removeLocalStorageItem(KEY_SIDEBAR_STATE);
-
     addToast({
       title: 'Success',
       message: 'Sidebar state has been reset. The page will now reload.',
@@ -56,10 +53,8 @@ const SettingsPage = () => {
       window.location.reload();
     }, 3000);
   };
-
   const handleResetAppsState = () => {
     removeLocalStorageItem(KEY_APPS_COLLAPSED_CATEGORIES);
-
     addToast({
       title: 'Success',
       message: 'App categories state has been reset. The page will now reload.',
@@ -85,14 +80,9 @@ const SettingsPage = () => {
           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/> Back to Home
         </Link>
         <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            Settings
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Manage your application preferences.
-          </p>
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl"> Settings </h1>
+          <p className="mt-6 text-lg leading-8 text-gray-300"> Manage your application preferences. </p>
         </div>
-
         <div className="flex justify-center items-center mt-16">
           <div
             className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
@@ -111,7 +101,6 @@ const SettingsPage = () => {
                 Application Settings
               </h1>
               <hr className="border-gray-700 mb-4"/>
-
               {/* Client-Side Notification */}
               <div
                 className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
@@ -119,16 +108,12 @@ const SettingsPage = () => {
               >
                 <strong className="font-bold">Client-Side Only:</strong>
                 <span className="block sm:inline ml-2">
-                  Your preferences are stored locally in your browser. No data
-                  is sent to any server.
+                    Your preferences are stored locally in your browser. No data
+                    is sent to any server.
                 </span>
               </div>
-
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Animation Settings
-              </h1>
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app"> Animation Settings </h1>
               <hr className="border-gray-700 mb-4"/>
-
               <div className="mb-6 ml-4 mr-4">
                 <CustomToggle
                   id="enable-animations"
@@ -163,19 +148,17 @@ const SettingsPage = () => {
                   >
                     <strong className="font-bold">Animations Disabled:</strong>
                     <span className="block sm:inline ml-2">
-                      Animation options are disabled because "Enable Animations"
-                      is off.
-                    </span>
+                        Animation options are disabled because "Enable Animations"
+                        is off.
+                      </span>
                   </div>
                 )}
               </div>
-
               {/* Visual Effects Settings */}
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 Visual Effects
               </h1>
               <hr className="border-gray-700 mb-4"/>
-
               <div className="mb-6 ml-4 mr-4">
                 <CustomToggle
                   id="enable-invert-colors"
@@ -197,8 +180,14 @@ const SettingsPage = () => {
                   checked={isParty}
                   onChange={toggleParty}
                 />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-mirror-mode"
+                  label="> Mirror Mode"
+                  checked={isMirror}
+                  onChange={toggleMirror}
+                />
               </div>
-
               {/* Sidebar Stuff */}
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 Sidebar Settings
@@ -264,8 +253,7 @@ const SettingsPage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
 };
 
 export default SettingsPage;
