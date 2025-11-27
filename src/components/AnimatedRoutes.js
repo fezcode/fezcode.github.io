@@ -106,8 +106,7 @@ function AnimatedRoutes() {
   const location = useLocation();
 
   return (
-    <Suspense fallback={<Loading />}>
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route
             path="/"
@@ -119,7 +118,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <HomePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -133,7 +134,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <BlogPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -147,7 +150,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
-                <BlogPostPage />
+                <Suspense fallback={<Loading />}>
+                  <BlogPostPage />
+                </Suspense>
               </motion.div>
             }
           />
@@ -161,7 +166,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <SeriesPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -175,7 +182,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
-                <BlogPostPage />
+                <Suspense fallback={<Loading />}>
+                  <BlogPostPage />
+                </Suspense>
               </motion.div>
             }
           />
@@ -189,7 +198,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ProjectsPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -203,7 +214,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ProjectPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -217,7 +230,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <AboutPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -231,7 +246,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <SettingsPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -245,7 +262,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <TimelinePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -259,7 +278,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <LogsPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -273,7 +294,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <LogDetailPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -287,7 +310,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <NotebooksPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -301,7 +326,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <NotebookViewerPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -315,7 +342,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <NotFoundPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -329,7 +358,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <DndPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -344,7 +375,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <DndLorePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -359,7 +392,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <DndBookPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -374,7 +409,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <DndEpisodePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -389,7 +426,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <DndAuthorsPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -403,7 +442,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <RandomPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -417,7 +458,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <NewsPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -431,7 +474,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <AppPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -445,7 +490,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <CommandsPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -674,7 +721,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <IpPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -688,7 +737,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <KeyboardTypingSpeedTesterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -702,7 +753,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <TcgCardGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -716,7 +769,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <RoguelikeGamePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -730,7 +785,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ConnectFourPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -744,7 +801,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <TicTacToePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -758,7 +817,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <RockPaperScissorsPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -772,7 +833,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <CardGamePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -786,7 +849,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <SoccerPongPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -800,7 +865,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <MemoryGamePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -814,7 +881,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <CronJobGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -828,7 +897,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ExcuseGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -842,7 +913,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <MagicEightBallPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -856,7 +929,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <TextDiffCheckerPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -870,7 +945,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <JSONGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -884,7 +961,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <WordCounterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -899,7 +978,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <TournamentBracketPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -913,7 +994,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <CaseConverterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -927,7 +1010,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <Base64ConverterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -941,7 +1026,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <UrlConverterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -955,7 +1042,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <AsciiConverterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -969,7 +1058,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <HashGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -983,7 +1074,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <UuidGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -997,7 +1090,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ColorPaletteGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1011,7 +1106,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <CssUnitConverterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1025,7 +1122,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <FantasyNameGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1039,7 +1138,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <DiceRollerPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1053,7 +1154,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <PickerWheelPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1067,7 +1170,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <CodenameGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1081,7 +1186,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ImageToolkitPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1095,7 +1202,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <PasswordGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1109,7 +1218,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <JsonFormatterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1123,7 +1234,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ColorContrastCheckerPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1137,7 +1250,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <QrCodeGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1151,7 +1266,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <JsonPimlConverterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1165,7 +1282,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <ImageCompressorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1179,7 +1298,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <StopwatchAppPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1193,7 +1314,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <PomodoroTimerPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1207,7 +1330,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <MorseCodeTranslatorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1221,7 +1346,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <MastermindPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1235,7 +1362,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <WordLadderPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1249,7 +1378,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <LightsOutPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1263,7 +1394,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <NonogramPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1277,7 +1410,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <WhackABugPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1291,7 +1426,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <SimonSaysPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1305,7 +1442,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <BubbleWrapPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1319,7 +1458,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <LoremIpsumGeneratorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1333,7 +1474,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <BananaConverterPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1347,7 +1490,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <PirateTranslatorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1361,7 +1506,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <GalacticAgePage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1375,7 +1522,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <BpmGuesserPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1389,7 +1538,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <WhiteboardPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1403,7 +1554,9 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <FootballEmblemCreatorPage />
+            </Suspense>
               </motion.div>
             }
           />
@@ -1417,7 +1570,9 @@ function AnimatedRoutes() {
               variants={pageVariants}
               transition={pageTransition}
             >
-              <NotepadPage />
+            <Suspense fallback={<Loading />}>
+                <NotepadPage />
+            </Suspense>
             </motion.div>
           }
         />
@@ -1435,7 +1590,9 @@ function AnimatedRoutes() {
               variants={pageVariants}
               transition={pageTransition}
             >
-              <PinnedAppPage />
+            <Suspense fallback={<Loading />}>
+                <PinnedAppPage />
+            </Suspense>
             </motion.div>
           }
         />
@@ -1454,13 +1611,14 @@ function AnimatedRoutes() {
                 variants={pageVariants}
                 transition={pageTransition}
               >
+            <Suspense fallback={<Loading />}>
                 <DndNotFoundPage />
+            </Suspense>
               </motion.div>
             }
           />
         </Routes>
       </AnimatePresence>
-    </Suspense>
   );
 }
 
