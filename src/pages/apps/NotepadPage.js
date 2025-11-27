@@ -146,7 +146,7 @@ const NotepadPage = () => {
                 className={`flex items-center gap-2 hover:underline ${isRainy ? 'text-gray-400 hover:text-white' : 'text-gray-600 hover:text-gray-900'}`}>
             <ArrowLeftIcon/> Back to Apps
           </Link>
-          <h1 className={`absolute left-1/2 -translate-x-1/2 text-2xl font-playfairDisplay text-amber-950 font-bold tracking-wide ${isRainy ? 'text-gray-200' : 'text-gray-800'}`}>
+          <h1 className={`absolute left-1/2 -translate-x-1/2 text-2xl font-playfairDisplay font-bold tracking-wide ${isRainy ? 'text-gray-200' : 'text-amber-950'}`}>
             Notepad
           </h1>
           <div className="flex gap-2 ml-auto">
