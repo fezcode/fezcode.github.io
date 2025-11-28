@@ -557,3 +557,60 @@ body.hellenic-mode h3 {
   letter-spacing: 2px;
   text-shadow: 1px 1px 0 #d4af37;
 }
+
+/* Dystopian Glitch Mode */
+body.glitch-mode {
+  background-color: #0a0a0a !important;
+  color: #dcdcdc !important;
+  font-family: 'VT323', 'Courier New', monospace !important;
+}
+
+body.glitch-mode::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: repeating-linear-gradient(transparent 0px, transparent 2px, #222 3px);
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.3;
+}
+
+body.glitch-mode * {
+  border-color: #333 !important;
+  box-shadow: -2px 0 0 rgba(255,0,0,.5), 2px 0 0 rgba(0,255,255,.5);
+}
+
+body.glitch-mode a {
+  color: #ff003c !important;
+  text-shadow: 2px 0 #00fff9, -2px 0 #ff00c1;
+  text-decoration: line-through;
+}
+
+body.glitch-mode a:hover {
+  text-decoration: none;
+  background: #ff003c;
+  color: #fff !important;
+}
+
+body.glitch-mode img {
+  filter: grayscale(100%) contrast(2);
+  mix-blend-mode: hard-light;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+@keyframes glitch-anim {
+  0% { transform: translate(0) }
+  20% { transform: translate(-2px, 2px) }
+  40% { transform: translate(-2px, -2px) }
+  60% { transform: translate(2px, 2px) }
+  80% { transform: translate(2px, -2px) }
+  100% { transform: translate(0) }
+}
+
+body.glitch-mode h1, body.glitch-mode h2, body.glitch-mode h3 {
+  animation: glitch-anim 2s infinite;
+}

@@ -47,7 +47,8 @@ const SettingsPage = () => {
     isGameboy, toggleGameboy,
     isComic, toggleComic,
     isSketchbook, toggleSketchbook,
-    isHellenic, toggleHellenic
+    isHellenic, toggleHellenic,
+    isGlitch, toggleGlitch
   } = useVisualSettings();
 
   const {addToast} = useToast();
@@ -272,6 +273,13 @@ const SettingsPage = () => {
                   label="> Hellenic Mode"
                   checked={isHellenic}
                   onChange={toggleHellenic}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-glitch-mode"
+                  label="> Dystopian Glitch Mode"
+                  checked={isGlitch}
+                  onChange={toggleGlitch}
                 />
               </div>
               {/* Sidebar Stuff */}

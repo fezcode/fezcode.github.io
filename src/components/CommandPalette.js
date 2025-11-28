@@ -63,7 +63,8 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isGameboy, toggleGameboy,
     isComic, toggleComic,
     isSketchbook, toggleSketchbook,
-    isHellenic, toggleHellenic
+    isHellenic, toggleHellenic,
+    isGlitch, toggleGlitch
   } = useVisualSettings();
 
   const filteredItems = filterItems(items, searchTerm);
@@ -283,6 +284,14 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isHellenic ? 'Hellenic Mode On' : 'Hellenic Mode Off',
             message: !isHellenic ? 'Welcome to Olympus.' : 'Leaving the Agora.',
+            duration: 2000
+          });
+          break;
+        case 'toggleGlitchMode':
+          toggleGlitch();
+          addToast({
+            title: !isGlitch ? 'Glitch Mode On' : 'Glitch Mode Off',
+            message: !isGlitch ? 'System corruption detected.' : 'Signal stabilized.',
             duration: 2000
           });
           break;

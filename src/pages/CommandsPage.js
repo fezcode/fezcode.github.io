@@ -61,6 +61,7 @@ const commandsData = [
       { title: "Toggle Comic Book Mode", description: "Switch to a vibrant pop-art comic style. (Easter Egg)", color: "red" },
       { title: "Toggle Sketchbook Mode", description: "Switch to a hand-drawn sketchbook style. (Easter Egg)", color: "stone" },
       { title: "Toggle Hellenic Mode", description: "Switch to a classical Greek architecture style. (Easter Egg)", color: "amber" },
+      { title: "Toggle Dystopian Glitch Mode", description: "Switch to a corrupted digital data style. (Easter Egg)", color: "slate" },
     ]
   },
   {

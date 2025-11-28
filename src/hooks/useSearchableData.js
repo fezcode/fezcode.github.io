@@ -118,6 +118,7 @@ const useSearchableData = () => {
           { title: 'Toggle Comic Book Mode', type: 'command', commandId: 'toggleComicMode' },
           { title: 'Toggle Sketchbook Mode', type: 'command', commandId: 'toggleSketchbookMode' },
           { title: 'Toggle Hellenic Mode', type: 'command', commandId: 'toggleHellenicMode' },
+          { title: 'Toggle Dystopian Glitch Mode', type: 'command', commandId: 'toggleGlitchMode' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

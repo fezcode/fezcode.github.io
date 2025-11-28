@@ -22,6 +22,7 @@ export const VisualSettingsProvider = ({children}) => {
   const [isComic, setIsComic] = usePersistentState('is-comic', false);
   const [isSketchbook, setIsSketchbook] = usePersistentState('is-sketchbook', false);
   const [isHellenic, setIsHellenic] = usePersistentState('is-hellenic', false);
+  const [isGlitch, setIsGlitch] = usePersistentState('is-glitch', false);
 
   useEffect(() => {
     if (isInverted) {
@@ -135,6 +136,14 @@ export const VisualSettingsProvider = ({children}) => {
     }
   }, [isHellenic]);
 
+  useEffect(() => {
+    if (isGlitch) {
+      document.body.classList.add('glitch-mode');
+    } else {
+      document.body.classList.remove('glitch-mode');
+    }
+  }, [isGlitch]);
+
   const toggleInvert = () => setIsInverted(prev => !prev);
   const toggleRetro = () => setIsRetro(prev => !prev);
   const toggleParty = () => setIsParty(prev => !prev);
@@ -149,6 +158,7 @@ export const VisualSettingsProvider = ({children}) => {
   const toggleComic = () => setIsComic(prev => !prev);
   const toggleSketchbook = () => setIsSketchbook(prev => !prev);
   const toggleHellenic = () => setIsHellenic(prev => !prev);
+  const toggleGlitch = () => setIsGlitch(prev => !prev);
 
   return (
     <VisualSettingsContext.Provider value={{
@@ -165,7 +175,8 @@ export const VisualSettingsProvider = ({children}) => {
       isGameboy, toggleGameboy,
       isComic, toggleComic,
       isSketchbook, toggleSketchbook,
-      isHellenic, toggleHellenic
+      isHellenic, toggleHellenic,
+      isGlitch, toggleGlitch
     }}>
       {children}
     </VisualSettingsContext.Provider>);
