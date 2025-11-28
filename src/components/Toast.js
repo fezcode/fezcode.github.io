@@ -37,8 +37,6 @@ const Toast = ({
     >
       <div className="flex flex-col text-sm group w-max flex-grow">
         <div className="flex items-center gap-2">
-          {' '}
-          {/* New div for icon and title */}
           {icon && <span className="text-xl text-red-100">{icon}</span>}
           <span className="text-base text-red-100">{title}</span>
         </div>

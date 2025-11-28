@@ -308,7 +308,8 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'toggleGlitchMode',
           },
-          { title: 'Fezynth', type: 'command', commandId: 'openFezynth' },
+          { title: 'Previous Page', type: 'command', commandId: 'previousPage' },
+          { title: 'Next Page', type: 'command', commandId: 'nextPage' },
         ];
 
         setItems([

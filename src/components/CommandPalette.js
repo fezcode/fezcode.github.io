@@ -516,6 +516,20 @@ const CommandPalette = ({
           });
           break;
         }
+        case 'previousPage':
+          addToast({
+            title: 'Previous Page',
+            duration: 1500,
+          });
+          navigate(-1);
+          break;
+        case 'nextPage':
+          addToast({
+            title: 'Next Page',
+            duration: 1500,
+          });
+          navigate(1);
+          break;
         default:
           break;
       }

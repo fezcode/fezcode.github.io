@@ -65,6 +65,16 @@ const commandsData = [
         description: 'Go to the bottom of the page.',
         color: 'blue',
       },
+      {
+        title: 'Previous Page',
+        description: 'Go back to the previous page in your browser history.',
+        color: 'sky',
+      },
+      {
+        title: 'Next Page',
+        description: 'Go forward to the next page in your browser history.',
+        color: 'blue',
+      },
     ],
   },
   {
