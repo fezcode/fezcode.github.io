@@ -23,23 +23,39 @@ const RandomPage = () => {
     if (hasNavigated.current) return; // Prevent double navigation in StrictMode or on re-render
 
     if (!isLoading && items.length > 0) {
-      const allNavigableItems = items.filter(item => item.path && item.path !== '/random'); // Exclude itself
+      const allNavigableItems = items.filter(
+        (item) => item.path && item.path !== '/random',
+      ); // Exclude itself
 
       if (allNavigableItems.length > 0) {
-        const randomIndex = Math.floor(Math.random() * allNavigableItems.length);
+        const randomIndex = Math.floor(
+          Math.random() * allNavigableItems.length,
+        );
         const randomItem = allNavigableItems[randomIndex];
         hasNavigated.current = true; // Set ref before navigating
         navigate(randomItem.path);
-        addToast({title: 'Random', message: `Navigating to ${randomItem.title || randomItem.path}`, duration: 2000});
+        addToast({
+          title: 'Random',
+          message: `Navigating to ${randomItem.title || randomItem.path}`,
+          duration: 2000,
+        });
       } else {
         hasNavigated.current = true; // Set ref before navigating
         navigate('/'); // Fallback to home if no other items exist
-        addToast({title: 'Info', message: 'No random items found, redirecting to home.', duration: 3000});
+        addToast({
+          title: 'Info',
+          message: 'No random items found, redirecting to home.',
+          duration: 3000,
+        });
       }
     } else if (!isLoading && items.length === 0) {
-        hasNavigated.current = true; // Set ref before navigating
-        navigate('/'); // Fallback to home if no items loaded
-        addToast({title: 'Info', message: 'No searchable items loaded, redirecting to home.', duration: 3000});
+      hasNavigated.current = true; // Set ref before navigating
+      navigate('/'); // Fallback to home if no items loaded
+      addToast({
+        title: 'Info',
+        message: 'No searchable items loaded, redirecting to home.',
+        duration: 3000,
+      });
     }
   }, [isLoading, items, navigate, addToast]); // Dependency array
 

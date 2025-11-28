@@ -1,9 +1,9 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, Trophy, Lock} from '@phosphor-icons/react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, Trophy, Lock } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
-import {useAchievements} from '../context/AchievementContext';
-import {ACHIEVEMENTS} from '../config/achievements';
+import { useAchievements } from '../context/AchievementContext';
+import { ACHIEVEMENTS } from '../config/achievements';
 import colors from '../config/colors';
 
 const AchievementsPage = () => {
@@ -20,24 +20,28 @@ const AchievementsPage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
-  const {unlockedAchievements} = useAchievements();
+  const { unlockedAchievements } = useAchievements();
 
   // Calculate progress
-  const unlockedCount = Object.keys(unlockedAchievements).filter(key => unlockedAchievements[key].unlocked).length;
+  const unlockedCount = Object.keys(unlockedAchievements).filter(
+    (key) => unlockedAchievements[key].unlocked,
+  ).length;
   const totalCount = ACHIEVEMENTS.length;
   const progressPercentage = Math.round((unlockedCount / totalCount) * 100);
 
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link to="/"
-              className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/> Back to Home
+        <Link
+          to="/"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Home
         </Link>
         <div className="mx-auto max-w-2xl text-center">
-          <h1
-            className="text-4xl font-semibold tracking-tight text-white sm:text-6xl flex items-center justify-center gap-4">
-            <Trophy size={48} weight="duotone" className="text-yellow-400"/>
+          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl flex items-center justify-center gap-4">
+            <Trophy size={48} weight="duotone" className="text-yellow-400" />
             Achievements
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
@@ -48,12 +52,14 @@ const AchievementsPage = () => {
           <div className="mt-8 max-w-md mx-auto">
             <div className="flex justify-between text-sm text-gray-400 mb-2">
               <span>Progress</span>
-              <span>{unlockedCount} / {totalCount}</span>
+              <span>
+                {unlockedCount} / {totalCount}
+              </span>
             </div>
             <div className="w-full bg-gray-700 rounded-full h-4 overflow-hidden border border-gray-600">
               <div
                 className="bg-gradient-to-r from-yellow-600 to-yellow-400 h-4 rounded-full transition-all duration-1000 ease-out"
-                style={{width: `${progressPercentage}%`}}
+                style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
           </div>
@@ -74,19 +80,25 @@ const AchievementsPage = () => {
               >
                 <div className="flex items-start justify-between">
                   <div
-                    className={`p-3 rounded-lg ${isUnlocked ? 'bg-yellow-500/20 text-yellow-400' : 'bg-gray-800 text-gray-500'}`}>
-                    {isUnlocked ? achievement.icon : <Lock size={32} weight="fill"/>}
+                    className={`p-3 rounded-lg ${isUnlocked ? 'bg-yellow-500/20 text-yellow-400' : 'bg-gray-800 text-gray-500'}`}
+                  >
+                    {isUnlocked ? (
+                      achievement.icon
+                    ) : (
+                      <Lock size={32} weight="fill" />
+                    )}
                   </div>
                   {isUnlocked && (
-                    <span
-                      className="text-xs font-mono text-green-400 bg-green-900/30 px-2 py-1 rounded border border-green-800">
+                    <span className="text-xs font-mono text-green-400 bg-green-900/30 px-2 py-1 rounded border border-green-800">
                       UNLOCKED
                     </span>
                   )}
                 </div>
 
                 <div className="mt-4">
-                  <h3 className={`text-xl font-bold ${isUnlocked ? 'text-white' : 'text-gray-500'}`}>
+                  <h3
+                    className={`text-xl font-bold ${isUnlocked ? 'text-white' : 'text-gray-500'}`}
+                  >
                     {achievement.title}
                   </h3>
                   <p className="mt-2 text-sm text-gray-400">
@@ -96,7 +108,10 @@ const AchievementsPage = () => {
 
                 {isUnlocked && (
                   <div className="mt-4 text-xs text-gray-600 font-mono">
-                    Unlocked on: {new Date(unlockedAchievements[achievement.id].unlockedAt).toLocaleDateString()}
+                    Unlocked on:{' '}
+                    {new Date(
+                      unlockedAchievements[achievement.id].unlockedAt,
+                    ).toLocaleDateString()}
                   </div>
                 )}
               </div>

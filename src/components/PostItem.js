@@ -91,9 +91,7 @@ const PostItem = ({
               : 'group-hover:text-[var(--title-hover-rant)]';
 
   const categoryBadgeFontColorStyle =
-    category === 'gist' || category === 'gist' ? 'text-black' : 'text-white'
-  ;
-
+    category === 'gist' || category === 'gist' ? 'text-black' : 'text-white';
   const shouldAnimate =
     isAnimationEnabled &&
     ((location.pathname === '/' && showAnimationsHomepage) ||
@@ -108,7 +106,11 @@ const PostItem = ({
         <div className="flex items-center">
           <p className="text-sm text-gray-400 w-28 flex-shrink-0">
             {formattedDate}
-            {authors && authors.length > 0 && <span className="block text-xs text-gray-500">by {authors[0]}</span>}
+            {authors && authors.length > 0 && (
+              <span className="block text-xs text-gray-500">
+                by {authors[0]}
+              </span>
+            )}
           </p>
           <div className="ml-4 flex-grow flex items-center">
             {category && (

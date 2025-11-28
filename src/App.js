@@ -16,8 +16,11 @@ function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isGenericModalOpen, setIsGenericModalOpen] = useState(false);
-  const [genericModalContent, setGenericModalContent] = useState({ title: '', content: null });
-    const [isRainActive, setIsRainActive] = useState(false); // State for Digital Rain
+  const [genericModalContent, setGenericModalContent] = useState({
+    title: '',
+    content: null,
+  });
+  const [isRainActive, setIsRainActive] = useState(false); // State for Digital Rain
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -36,7 +39,7 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top
   };
   const toggleDigitalRain = () => {
-    setIsRainActive(prev => !prev);
+    setIsRainActive((prev) => !prev);
   };
 
   return (

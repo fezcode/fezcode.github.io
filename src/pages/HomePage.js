@@ -185,7 +185,8 @@ const HomePage = () => {
 
         <div className="mt-8">
           <h2 className="text-2xl tracking-tight text-white text-center flex items-center justify-center gap-2 font-arvo">
-            <BookBookmarkIcon className="text-primary-400 text-lg" /> Recent Blog Posts
+            <BookBookmarkIcon className="text-primary-400 text-lg" /> Recent
+            Blog Posts
           </h2>
           <div className="mt-8">
             {posts

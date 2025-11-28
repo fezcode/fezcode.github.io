@@ -113,7 +113,10 @@ const ProjectPage = () => {
             {/*  />*/}
             {/*)}*/}
             <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-dark">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+              >
                 {fullProject.fullContent}
               </ReactMarkdown>
             </div>

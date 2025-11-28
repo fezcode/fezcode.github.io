@@ -11,14 +11,17 @@ export const useAchievements = () => {
 
 export const AchievementProvider = ({ children }) => {
   // Store achievements as { [id]: { unlocked: boolean, unlockedAt: string } }
-  const [unlockedAchievements, setUnlockedAchievements] = usePersistentState('unlocked-achievements', {});
+  const [unlockedAchievements, setUnlockedAchievements] = usePersistentState(
+    'unlocked-achievements',
+    {},
+  );
   const [readPosts, setReadPosts] = usePersistentState('read-posts', []);
   const { addToast } = useToast();
 
   // Helper to unlock an achievement
   const unlockAchievement = (id) => {
     // Check if valid achievement ID
-    const achievement = ACHIEVEMENTS.find(a => a.id === id);
+    const achievement = ACHIEVEMENTS.find((a) => a.id === id);
     if (!achievement) return;
 
     // Check if already unlocked
@@ -26,9 +29,9 @@ export const AchievementProvider = ({ children }) => {
 
     const now = new Date().toISOString();
 
-    setUnlockedAchievements(prev => ({
+    setUnlockedAchievements((prev) => ({
       ...prev,
-      [id]: { unlocked: true, unlockedAt: now }
+      [id]: { unlocked: true, unlockedAt: now },
     }));
 
     // Trigger Toast
@@ -43,7 +46,7 @@ export const AchievementProvider = ({ children }) => {
   const trackReadingProgress = (slug) => {
     if (!slug) return;
 
-    setReadPosts(prev => {
+    setReadPosts((prev) => {
       if (prev.includes(slug)) return prev; // Already read
 
       const newReadPosts = [...prev, slug];
@@ -63,7 +66,9 @@ export const AchievementProvider = ({ children }) => {
   }, []);
 
   return (
-    <AchievementContext.Provider value={{ unlockedAchievements, unlockAchievement, trackReadingProgress }}>
+    <AchievementContext.Provider
+      value={{ unlockedAchievements, unlockAchievement, trackReadingProgress }}
+    >
       {children}
     </AchievementContext.Provider>
   );

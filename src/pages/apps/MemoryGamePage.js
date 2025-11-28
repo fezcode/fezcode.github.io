@@ -130,10 +130,14 @@ const MemoryGamePage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-          <BreadcrumbTitle title="Memory Game" slug="mg" />
+        <BreadcrumbTitle title="Memory Game" slug="mg" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
@@ -206,7 +210,9 @@ const MemoryGamePage = () => {
                     >
                       <div className="memory-card-inner">
                         <div className="memory-card-face memory-card-back"></div>
-                        <div className="memory-card-face memory-card-front">{card.value}</div>
+                        <div className="memory-card-face memory-card-front">
+                          {card.value}
+                        </div>
                       </div>
                     </div>
                   ))}

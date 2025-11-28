@@ -1,6 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ArrowsInLineHorizontalIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  ArrowsInLineHorizontalIcon,
+} from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
@@ -9,14 +12,23 @@ import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 const ImageCompressorPage = () => {
   useSeo({
     title: 'Image Compressor | Fezcodex',
-    description: 'Compress images to reduce file size while maintaining quality.',
-    keywords: ['Fezcodex', 'image compressor', 'compress image', 'reduce image size', 'optimize image'],
+    description:
+      'Compress images to reduce file size while maintaining quality.',
+    keywords: [
+      'Fezcodex',
+      'image compressor',
+      'compress image',
+      'reduce image size',
+      'optimize image',
+    ],
     ogTitle: 'Image Compressor | Fezcodex',
-    ogDescription: 'Compress images to reduce file size while maintaining quality.',
+    ogDescription:
+      'Compress images to reduce file size while maintaining quality.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Image Compressor | Fezcodex',
-    twitterDescription: 'Compress images to reduce file size while maintaining quality.',
+    twitterDescription:
+      'Compress images to reduce file size while maintaining quality.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
@@ -47,7 +59,9 @@ const ImageCompressorPage = () => {
 
     const reader = new FileReader();
     reader.onload = (event) => {
-      console.log('Original image loaded into FileReader. Setting originalImage state.');
+      console.log(
+        'Original image loaded into FileReader. Setting originalImage state.',
+      );
       setOriginalImage(event.target.result);
       // Reset compressed image and size when a new image is uploaded
       setCompressedImage(null);
@@ -62,7 +76,7 @@ const ImageCompressorPage = () => {
       return;
     }
     if (!canvasRef.current) {
-      console.warn("Canvas ref is not current. Skipping image compression.");
+      console.warn('Canvas ref is not current. Skipping image compression.');
       return;
     }
 
@@ -81,28 +95,48 @@ const ImageCompressorPage = () => {
         const compressedDataUrl = canvas.toDataURL('image/jpeg', quality);
         setCompressedImage(compressedDataUrl);
 
-        const base64Length = compressedDataUrl.length - 'data:image/jpeg;base64,'.length;
+        const base64Length =
+          compressedDataUrl.length - 'data:image/jpeg;base64,'.length;
         const sizeInBytes = base64Length * 0.75;
         setCompressedSize(sizeInBytes);
 
-        addToast({ title: 'Success', message: 'Image compressed successfully.' });
+        addToast({
+          title: 'Success',
+          message: 'Image compressed successfully.',
+        });
         console.log('Image compressed and state updated.');
       } catch (error) {
         console.error('Error during image compression:', error);
-        addToast({ title: 'Error', message: 'Failed to compress image. Check console for details.', type: 'error' });
+        addToast({
+          title: 'Error',
+          message: 'Failed to compress image. Check console for details.',
+          type: 'error',
+        });
         setCompressedImage(null); // Ensure compressedImage is null on error
         setCompressedSize(0);
       }
     };
     img.onerror = () => {
       console.error('Error loading image into Image object.');
-      addToast({ title: 'Error', message: 'Failed to load image. Please try another file.', type: 'error' });
+      addToast({
+        title: 'Error',
+        message: 'Failed to load image. Please try another file.',
+        type: 'error',
+      });
       setOriginalImage(null);
       setCompressedImage(null);
       setOriginalSize(0);
       setCompressedSize(0);
     };
-  }, [originalImage, quality, addToast, setCompressedImage, setCompressedSize, setOriginalImage, setOriginalSize]);
+  }, [
+    originalImage,
+    quality,
+    addToast,
+    setCompressedImage,
+    setCompressedSize,
+    setOriginalImage,
+    setOriginalSize,
+  ]);
 
   const handleDownload = () => {
     if (compressedImage) {
@@ -117,7 +151,7 @@ const ImageCompressorPage = () => {
     }
   };
 
- // Added compressImage to dependencies
+  // Added compressImage to dependencies
 
   const formatBytes = (bytes, decimals = 2) => {
     if (bytes === 0) return '0 Bytes';
@@ -131,10 +165,14 @@ const ImageCompressorPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-          <BreadcrumbTitle title="Image Compressor" slug="imc" />
+        <BreadcrumbTitle title="Image Compressor" slug="imc" />
         <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
@@ -162,7 +200,8 @@ const ImageCompressorPage = () => {
               >
                 <strong className="font-bold">Client-Side Only:</strong>
                 <span className="block sm:inline ml-2">
-                  All image processing happens directly in your browser using canvas API. No data is uploaded to any server.
+                  All image processing happens directly in your browser using
+                  canvas API. No data is uploaded to any server.
                 </span>
               </div>
 
@@ -209,40 +248,78 @@ const ImageCompressorPage = () => {
                 </div>
               )}
 
-              {originalImage && <p>Original Image State: <span className="text-green-400">Set</span></p>}
-              {compressedImage && <p>Compressed Image State: <span className="text-green-400">Set</span></p>}
+              {originalImage && (
+                <p>
+                  Original Image State:{' '}
+                  <span className="text-green-400">Set</span>
+                </p>
+              )}
+              {compressedImage && (
+                <p>
+                  Compressed Image State:{' '}
+                  <span className="text-green-400">Set</span>
+                </p>
+              )}
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 {originalImage && (
                   <div className="border border-gray-500 p-2 rounded-lg">
-                    <h3 className="text-xl font-bold mb-2 text-center">Original Image</h3>
-                    <img src={originalImage} alt="Original" className="max-w-full h-auto rounded-lg mx-auto" />
-                    <p className="text-center mt-2">Size: {formatBytes(originalSize)}</p>
+                    <h3 className="text-xl font-bold mb-2 text-center">
+                      Original Image
+                    </h3>
+                    <img
+                      src={originalImage}
+                      alt="Original"
+                      className="max-w-full h-auto rounded-lg mx-auto"
+                    />
+                    <p className="text-center mt-2">
+                      Size: {formatBytes(originalSize)}
+                    </p>
                   </div>
                 )}
                 {/* Always render canvas if original image is present to make canvasRef available */}
                 {originalImage && (
-                  <div className="hidden"> {/* Hidden as it's for off-screen processing */}
+                  <div className="hidden">
+                    {' '}
+                    {/* Hidden as it's for off-screen processing */}
                     <canvas ref={canvasRef}></canvas>
                   </div>
                 )}
 
                 {compressedImage && (
                   <div className="border border-gray-500 p-2 rounded-lg">
-                    <h3 className="text-xl font-bold mb-2 text-center">Compressed Image</h3>
-                    <img src={compressedImage} alt="Compressed" className="max-w-full h-auto rounded-lg mx-auto" />
-                    <p className="text-center mt-2">Size: {formatBytes(compressedSize)}</p>
+                    <h3 className="text-xl font-bold mb-2 text-center">
+                      Compressed Image
+                    </h3>
+                    <img
+                      src={compressedImage}
+                      alt="Compressed"
+                      className="max-w-full h-auto rounded-lg mx-auto"
+                    />
+                    <p className="text-center mt-2">
+                      Size: {formatBytes(compressedSize)}
+                    </p>
                     {originalSize > 0 && compressedSize > 0 && (
                       <>
                         {originalSize >= compressedSize ? (
                           <p className="text-center text-green-400">
-                            Saved: {formatBytes(originalSize - compressedSize)} (
-                            {(((originalSize - compressedSize) / originalSize) * 100).toFixed(2)}%)
+                            Saved: {formatBytes(originalSize - compressedSize)}{' '}
+                            (
+                            {(
+                              ((originalSize - compressedSize) / originalSize) *
+                              100
+                            ).toFixed(2)}
+                            %)
                           </p>
                         ) : (
                           <p className="text-center text-red-400">
-                            Expanded: {formatBytes(compressedSize - originalSize)} (
-                            {(((compressedSize - originalSize) / originalSize) * 100).toFixed(2)}%)
+                            Expanded:{' '}
+                            {formatBytes(compressedSize - originalSize)} (
+                            {(
+                              ((compressedSize - originalSize) / originalSize) *
+                              100
+                            ).toFixed(2)}
+                            %)
                           </p>
                         )}
                       </>
@@ -253,10 +330,21 @@ const ImageCompressorPage = () => {
 
               {compressedImage && (
                 <div className="flex justify-center mt-4">
-                  <button onClick={handleDownload} className={`${buttonStyle} ${appButtonStyle}`}>
+                  <button
+                    onClick={handleDownload}
+                    className={`${buttonStyle} ${appButtonStyle}`}
+                  >
                     Download{' '}
-                    <span className={compressedSize < originalSize ? 'text-green-400' : 'text-red-600'}>
-                      {compressedSize < originalSize ? 'Compressed' : 'Expanded'}
+                    <span
+                      className={
+                        compressedSize < originalSize
+                          ? 'text-green-400'
+                          : 'text-red-600'
+                      }
+                    >
+                      {compressedSize < originalSize
+                        ? 'Compressed'
+                        : 'Expanded'}
                     </span>{' '}
                     Image
                   </button>

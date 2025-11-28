@@ -1,60 +1,83 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {useNavigate} from 'react-router-dom';
-import {AnimatePresence, motion} from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import useSearchableData from '../hooks/useSearchableData';
-import {useAnimation} from '../context/AnimationContext';
-import {useToast} from '../hooks/useToast';
-import {useVisualSettings} from '../context/VisualSettingsContext';
-import {useAchievements} from '../context/AchievementContext';
-import {KEY_SIDEBAR_STATE, remove as removeLocalStorageItem} from '../utils/LocalStorageManager';
-import {version} from '../version'; // Import the version
+import { useAnimation } from '../context/AnimationContext';
+import { useToast } from '../hooks/useToast';
+import { useVisualSettings } from '../context/VisualSettingsContext';
+import { useAchievements } from '../context/AchievementContext';
+import {
+  KEY_SIDEBAR_STATE,
+  remove as removeLocalStorageItem,
+} from '../utils/LocalStorageManager';
+import { version } from '../version'; // Import the version
 import LiveClock from './LiveClock'; // Import LiveClock
 import GenerativeArt from './GenerativeArt'; // Import GenerativeArt
 import TextTransformer from './TextTransformer'; // Import TextTransformer
 import Stopwatch from './Stopwatch'; // Import Stopwatch
-import {filterItems} from '../utils/search';
-import {TerminalWindowIcon} from "@phosphor-icons/react"; // Import the search utility
+import { filterItems } from '../utils/search';
+import { TerminalWindowIcon } from '@phosphor-icons/react'; // Import the search utility
 
 const categoryColorMap = {
-  'page': 'bg-red-400',
-  'command': 'bg-amber-400',
-  'post': 'bg-blue-400',
-  'project': 'bg-orange-400',
-  'log': 'bg-rose-400',
-  'app': 'bg-teal-400',
-  'story': 'bg-violet-400',
-  'notebook': 'bg-lime-400',
+  page: 'bg-red-400',
+  command: 'bg-amber-400',
+  post: 'bg-blue-400',
+  project: 'bg-orange-400',
+  log: 'bg-rose-400',
+  app: 'bg-teal-400',
+  story: 'bg-violet-400',
+  notebook: 'bg-lime-400',
 };
 
 const getCategoryColorClass = (type) => {
   return categoryColorMap[type] || 'bg-gray-500'; // Default gray for unmapped types
 };
 
-const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}) => {
+const CommandPalette = ({
+  isOpen,
+  setIsOpen,
+  openGenericModal,
+  toggleDigitalRain,
+}) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const {items, isLoading} = useSearchableData();
+  const { items, isLoading } = useSearchableData();
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const resultsRef = useRef(null);
-  const {isAnimationEnabled, toggleAnimation} = useAnimation();
-  const {addToast} = useToast();
+  const { isAnimationEnabled, toggleAnimation } = useAnimation();
+  const { addToast } = useToast();
   const {
-    isInverted, toggleInvert,
-    isRetro, toggleRetro,
-    isParty, toggleParty,
-    isMirror, toggleMirror,
-    isNoir, toggleNoir,
-    isTerminal, toggleTerminal,
-    isBlueprint, toggleBlueprint,
-    isSepia, toggleSepia,
-    isVaporwave, toggleVaporwave,
-    isCyberpunk, toggleCyberpunk,
-    isGameboy, toggleGameboy,
-    isComic, toggleComic,
-    isSketchbook, toggleSketchbook,
-    isHellenic, toggleHellenic,
-    isGlitch, toggleGlitch
+    isInverted,
+    toggleInvert,
+    isRetro,
+    toggleRetro,
+    isParty,
+    toggleParty,
+    isMirror,
+    toggleMirror,
+    isNoir,
+    toggleNoir,
+    isTerminal,
+    toggleTerminal,
+    isBlueprint,
+    toggleBlueprint,
+    isSepia,
+    toggleSepia,
+    isVaporwave,
+    toggleVaporwave,
+    isCyberpunk,
+    toggleCyberpunk,
+    isGameboy,
+    toggleGameboy,
+    isComic,
+    toggleComic,
+    isSketchbook,
+    toggleSketchbook,
+    isHellenic,
+    toggleHellenic,
+    isGlitch,
+    toggleGlitch,
   } = useVisualSettings();
 
   const { unlockAchievement } = useAchievements();
@@ -96,10 +119,14 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           }, 3000);
           break;
         case 'viewSource':
-          window.open('https://github.com/fezcode/fezcode.github.io', '_blank', 'noopener,noreferrer');
+          window.open(
+            'https://github.com/fezcode/fezcode.github.io',
+            '_blank',
+            'noopener,noreferrer',
+          );
           break;
         case 'randomPost': {
-          const posts = items.filter(i => i.type === 'post');
+          const posts = items.filter((i) => i.type === 'post');
           if (posts.length > 0) {
             const randomPost = posts[Math.floor(Math.random() * posts.length)];
             navigate(randomPost.path);
@@ -107,43 +134,76 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           break;
         }
         case 'sendEmailFezcode':
-          window.open('mailto:samil.bulbul@gmail.com', '_blank', 'noopener,noreferrer');
+          window.open(
+            'mailto:samil.bulbul@gmail.com',
+            '_blank',
+            'noopener,noreferrer',
+          );
           break;
         case 'openGitHub':
-          window.open('https://github.com/fezcode', '_blank', 'noopener,noreferrer');
+          window.open(
+            'https://github.com/fezcode',
+            '_blank',
+            'noopener,noreferrer',
+          );
           break;
         case 'openTwitter':
-          window.open('https://x.com/fezcoddy', '_blank', 'noopener,noreferrer');
+          window.open(
+            'https://x.com/fezcoddy',
+            '_blank',
+            'noopener,noreferrer',
+          );
           break;
         case 'openLinkedIn':
-          window.open('https://tr.linkedin.com/in/ahmed-samil-bulbul', '_blank', 'noopener,noreferrer');
+          window.open(
+            'https://tr.linkedin.com/in/ahmed-samil-bulbul',
+            '_blank',
+            'noopener,noreferrer',
+          );
           break;
         case 'scrollToTop':
-          window.scrollTo({top: 0, behavior: 'smooth'});
+          window.scrollTo({ top: 0, behavior: 'smooth' });
           break;
         case 'scrollToBottom':
-          window.scrollTo({top: document.documentElement.scrollHeight, behavior: 'smooth'});
+          window.scrollTo({
+            top: document.documentElement.scrollHeight,
+            behavior: 'smooth',
+          });
           break;
         case 'showSiteStats': {
-          const postCount = items.filter(i => i.type === 'post').length;
-          const projectCount = items.filter(i => i.type === 'project').length;
-          const logCount = items.filter(i => i.type === 'log').length;
-          const appCount = items.filter(i => i.type === 'app').length;
-          openGenericModal('Site Statistics', (
+          const postCount = items.filter((i) => i.type === 'post').length;
+          const projectCount = items.filter((i) => i.type === 'project').length;
+          const logCount = items.filter((i) => i.type === 'log').length;
+          const appCount = items.filter((i) => i.type === 'app').length;
+          openGenericModal(
+            'Site Statistics',
             <div>
-              <p><strong>Posts:</strong> {postCount}</p>
-              <p><strong>Projects:</strong> {projectCount}</p>
-              <p><strong>Logs:</strong> {logCount}</p>
-              <p><strong>Apps:</strong> {appCount}</p>
-            </div>
-          ));
+              <p>
+                <strong>Posts:</strong> {postCount}
+              </p>
+              <p>
+                <strong>Projects:</strong> {projectCount}
+              </p>
+              <p>
+                <strong>Logs:</strong> {logCount}
+              </p>
+              <p>
+                <strong>Apps:</strong> {appCount}
+              </p>
+            </div>,
+          );
           break;
         }
         case 'showVersion':
-          openGenericModal('Application Version', <p>Version: <strong>v{version}</strong></p>);
+          openGenericModal(
+            'Application Version',
+            <p>
+              Version: <strong>v{version}</strong>
+            </p>,
+          );
           break;
         case 'latestPost': {
-          const posts = items.filter(i => i.type === 'post');
+          const posts = items.filter((i) => i.type === 'post');
           if (posts.length > 0) {
             posts.sort((a, b) => new Date(b.date) - new Date(a.date));
             navigate(posts[0].path);
@@ -151,7 +211,7 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           break;
         }
         case 'latestLog': {
-          const logs = items.filter(i => i.type === 'log');
+          const logs = items.filter((i) => i.type === 'log');
           if (logs.length > 0) {
             logs.sort((a, b) => new Date(b.date) - new Date(a.date));
             navigate(logs[0].path);
@@ -159,11 +219,22 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           break;
         }
         case 'herDaim':
-          openGenericModal('Her Daim', <img src="/images/herdaim.jpg" alt="Her Daim" className="max-w-full h-auto"/>);
+          openGenericModal(
+            'Her Daim',
+            <img
+              src="/images/herdaim.jpg"
+              alt="Her Daim"
+              className="max-w-full h-auto"
+            />,
+          );
           break;
         case 'doBarrelRoll':
           document.body.classList.add('do-a-barrel-roll');
-          addToast({title: 'Wheeeee!', message: 'Do a Barrel Roll!', duration: 1000});
+          addToast({
+            title: 'Wheeeee!',
+            message: 'Do a Barrel Roll!',
+            duration: 1000,
+          });
           setTimeout(() => {
             document.body.classList.remove('do-a-barrel-roll');
           }, 1000);
@@ -172,16 +243,20 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           toggleInvert();
           addToast({
             title: !isInverted ? 'Colors Inverted' : 'Colors Restored',
-            message: !isInverted ? 'Welcome to the upside down!' : 'Back to normal!',
-            duration: 2000
+            message: !isInverted
+              ? 'Welcome to the upside down!'
+              : 'Back to normal!',
+            duration: 2000,
           });
           break;
         case 'partyMode':
           toggleParty();
           addToast({
-            title: !isParty ? 'Let\'s Party!' : 'Party Over',
-            message: !isParty ? 'Boots and cats and boots and cats!' : 'Party\'s over...',
-            duration: 2000
+            title: !isParty ? "Let's Party!" : 'Party Over',
+            message: !isParty
+              ? 'Boots and cats and boots and cats!'
+              : "Party's over...",
+            duration: 2000,
           });
           break;
         case 'toggleRetroMode':
@@ -189,23 +264,27 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isRetro ? 'Retro Mode On' : 'Retro Mode Off',
             message: !isRetro ? '80s Vibes Initiated.' : 'Back to the future!',
-            duration: 2000
+            duration: 2000,
           });
           break;
         case 'toggleMirrorMode':
           toggleMirror();
           addToast({
             title: !isMirror ? 'Mirror Mode On' : 'Mirror Mode Off',
-            message: !isMirror ? 'Through the looking glass...' : 'Reflections normalized.',
-            duration: 2000
+            message: !isMirror
+              ? 'Through the looking glass...'
+              : 'Reflections normalized.',
+            duration: 2000,
           });
           break;
         case 'toggleNoirMode':
           toggleNoir();
           addToast({
             title: !isNoir ? 'Noir Mode On' : 'Noir Mode Off',
-            message: !isNoir ? 'It was a dark and stormy night...' : 'Color returns to the world.',
-            duration: 2000
+            message: !isNoir
+              ? 'It was a dark and stormy night...'
+              : 'Color returns to the world.',
+            duration: 2000,
           });
           break;
         case 'toggleTerminalMode':
@@ -213,31 +292,37 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isTerminal ? 'Terminal Mode On' : 'Terminal Mode Off',
             message: !isTerminal ? 'System Online.' : 'System Offline.',
-            duration: 2000
+            duration: 2000,
           });
           break;
         case 'toggleBlueprintMode':
           toggleBlueprint();
           addToast({
             title: !isBlueprint ? 'Blueprint Mode On' : 'Blueprint Mode Off',
-            message: !isBlueprint ? 'Entering Construction Mode.' : 'Blueprint Stored.',
-            duration: 2000
+            message: !isBlueprint
+              ? 'Entering Construction Mode.'
+              : 'Blueprint Stored.',
+            duration: 2000,
           });
           break;
         case 'toggleSepiaMode':
           toggleSepia();
           addToast({
             title: !isSepia ? 'Sepia Mode On' : 'Sepia Mode Off',
-            message: !isSepia ? 'Time travel initiated.' : 'Back to the present.',
-            duration: 2000
+            message: !isSepia
+              ? 'Time travel initiated.'
+              : 'Back to the present.',
+            duration: 2000,
           });
           break;
         case 'toggleVaporwaveMode':
           toggleVaporwave();
           addToast({
             title: !isVaporwave ? 'Vaporwave Mode On' : 'Vaporwave Mode Off',
-            message: !isVaporwave ? 'A E S T H E T I C S.' : 'Reality restored.',
-            duration: 2000
+            message: !isVaporwave
+              ? 'A E S T H E T I C S.'
+              : 'Reality restored.',
+            duration: 2000,
           });
           break;
         case 'toggleCyberpunkMode':
@@ -245,7 +330,7 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isCyberpunk ? 'Cyberpunk Mode On' : 'Cyberpunk Mode Off',
             message: !isCyberpunk ? 'Wake up, Samurai.' : 'System normal.',
-            duration: 2000
+            duration: 2000,
           });
           break;
         case 'toggleGameboyMode':
@@ -253,7 +338,7 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isGameboy ? 'Game Boy Mode On' : 'Game Boy Mode Off',
             message: !isGameboy ? 'Press Start to play.' : 'Game Over.',
-            duration: 2000
+            duration: 2000,
           });
           break;
         case 'toggleComicMode':
@@ -261,7 +346,7 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isComic ? 'Comic Mode On' : 'Comic Mode Off',
             message: !isComic ? 'BAM! POW! ZAP!' : 'Story arc ended.',
-            duration: 2000
+            duration: 2000,
           });
           break;
         case 'toggleSketchbookMode':
@@ -269,7 +354,7 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isSketchbook ? 'Sketchbook Mode On' : 'Sketchbook Mode Off',
             message: !isSketchbook ? 'Pencil sharpened.' : 'Notebook closed.',
-            duration: 2000
+            duration: 2000,
           });
           break;
         case 'toggleHellenicMode':
@@ -277,45 +362,57 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isHellenic ? 'Hellenic Mode On' : 'Hellenic Mode Off',
             message: !isHellenic ? 'Welcome to Olympus.' : 'Leaving the Agora.',
-            duration: 2000
+            duration: 2000,
           });
           break;
         case 'toggleGlitchMode':
           toggleGlitch();
           addToast({
             title: !isGlitch ? 'Glitch Mode On' : 'Glitch Mode Off',
-            message: !isGlitch ? 'System corruption detected.' : 'Signal stabilized.',
-            duration: 2000
+            message: !isGlitch
+              ? 'System corruption detected.'
+              : 'Signal stabilized.',
+            duration: 2000,
           });
           break;
         case 'showTime': {
-          openGenericModal('Current Time', <LiveClock/>);
+          openGenericModal('Current Time', <LiveClock />);
           break;
         }
         case 'digitalRain':
           toggleDigitalRain();
           break;
         case 'generateArt':
-          openGenericModal('Generative Art', <GenerativeArt/>);
+          openGenericModal('Generative Art', <GenerativeArt />);
           break;
         case 'leetTransformer':
-          openGenericModal('Leet Speak Transformer', <TextTransformer/>);
+          openGenericModal('Leet Speak Transformer', <TextTransformer />);
           break;
         case 'stopwatch':
-          openGenericModal('Stopwatch', <Stopwatch/>);
+          openGenericModal('Stopwatch', <Stopwatch />);
           break;
         case 'showOSInfo': {
           const osInfo = (
             <div>
-              <p><strong>User Agent:</strong> {navigator.userAgent}</p>
-              <br/>
-              <p><strong>Platform:</strong> {navigator.platform}</p>
-              <br/>
-              <p><strong>App Version:</strong> {navigator.appVersion}</p>
-              <br/>
-              <p><strong>Language:</strong> {navigator.language}</p>
-              <br/>
-              <p><strong>Online:</strong> {navigator.onLine ? 'Yes' : 'No'}</p>
+              <p>
+                <strong>User Agent:</strong> {navigator.userAgent}
+              </p>
+              <br />
+              <p>
+                <strong>Platform:</strong> {navigator.platform}
+              </p>
+              <br />
+              <p>
+                <strong>App Version:</strong> {navigator.appVersion}
+              </p>
+              <br />
+              <p>
+                <strong>Language:</strong> {navigator.language}
+              </p>
+              <br />
+              <p>
+                <strong>Online:</strong> {navigator.onLine ? 'Yes' : 'No'}
+              </p>
             </div>
           );
           openGenericModal('User/Browser Information', osInfo);
@@ -323,50 +420,100 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
         }
         case 'copyCurrentURL':
           navigator.clipboard.writeText(window.location.href);
-          addToast({title: 'Copied', message: 'Current URL copied to clipboard!', duration: 3000});
+          addToast({
+            title: 'Copied',
+            message: 'Current URL copied to clipboard!',
+            duration: 3000,
+          });
           break;
         case 'clearLocalStorage':
           localStorage.clear();
-          addToast({title: 'Success', message: 'Local storage cleared!', duration: 3000});
+          addToast({
+            title: 'Success',
+            message: 'Local storage cleared!',
+            duration: 3000,
+          });
           break;
         case 'reloadPage':
-          addToast({title: 'Reloading', message: 'Page will reload shortly...', duration: 1500});
+          addToast({
+            title: 'Reloading',
+            message: 'Page will reload shortly...',
+            duration: 1500,
+          });
           setTimeout(() => window.location.reload(), 1500);
           break;
         case 'randomApp': {
-          const apps = items.filter(i => i.type === 'app');
+          const apps = items.filter((i) => i.type === 'app');
           if (apps.length > 0) {
             const randomApp = apps[Math.floor(Math.random() * apps.length)];
-            addToast({title: 'Random App', message: `Navigating to ${randomApp.title}`, duration: 2000});
+            addToast({
+              title: 'Random App',
+              message: `Navigating to ${randomApp.title}`,
+              duration: 2000,
+            });
             navigate(randomApp.path);
           } else {
-            addToast({title: 'Random App', message: 'No apps found to navigate to.', duration: 2000});
+            addToast({
+              title: 'Random App',
+              message: 'No apps found to navigate to.',
+              duration: 2000,
+            });
           }
           break;
         }
         case 'toggleFullScreen':
           if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().then(() => {
-              addToast({title: 'Full Screen', message: 'Entered full screen mode.', duration: 2000});
-            }).catch(err => {
-              addToast({title: 'Error', message: `Could not enter full screen: ${err.message}`, duration: 3000});
-            });
+            document.documentElement
+              .requestFullscreen()
+              .then(() => {
+                addToast({
+                  title: 'Full Screen',
+                  message: 'Entered full screen mode.',
+                  duration: 2000,
+                });
+              })
+              .catch((err) => {
+                addToast({
+                  title: 'Error',
+                  message: `Could not enter full screen: ${err.message}`,
+                  duration: 3000,
+                });
+              });
           } else {
             if (document.exitFullscreen) {
-              document.exitFullscreen().then(() => {
-                addToast({title: 'Full Screen', message: 'Exited full screen mode.', duration: 2000});
-              }).catch(err => {
-                addToast({title: 'Error', message: `Could not exit full screen: ${err.message}`, duration: 3000});
-              });
+              document
+                .exitFullscreen()
+                .then(() => {
+                  addToast({
+                    title: 'Full Screen',
+                    message: 'Exited full screen mode.',
+                    duration: 2000,
+                  });
+                })
+                .catch((err) => {
+                  addToast({
+                    title: 'Error',
+                    message: `Could not exit full screen: ${err.message}`,
+                    duration: 3000,
+                  });
+                });
             }
           }
           break;
         case 'openGitHubIssue': {
-          const issueTitle = encodeURIComponent(`Issue on page: ${window.location.pathname}`);
-          const issueBody = encodeURIComponent(`Found an issue on:\n${window.location.href}\n\n[Please describe the issue here]`);
+          const issueTitle = encodeURIComponent(
+            `Issue on page: ${window.location.pathname}`,
+          );
+          const issueBody = encodeURIComponent(
+            `Found an issue on:\n${window.location.href}\n\n[Please describe the issue here]`,
+          );
           const githubIssueUrl = `https://github.com/fezcode/fezcode.github.io/issues/new?title=${issueTitle}&body=${issueBody}`;
           window.open(githubIssueUrl, '_blank', 'noopener,noreferrer');
-          addToast({title: 'GitHub Issue', message: 'Opening new GitHub issue tab!', duration: 3000});
+          addToast({
+            title: 'GitHub Issue',
+            message: 'Opening new GitHub issue tab!',
+            duration: 3000,
+          });
           break;
         }
         default:
@@ -385,12 +532,12 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
       if (event.key === 'ArrowUp') {
         event.preventDefault();
         setSelectedIndex((prevIndex) =>
-          prevIndex === 0 ? filteredItems.length - 1 : prevIndex - 1
+          prevIndex === 0 ? filteredItems.length - 1 : prevIndex - 1,
         );
       } else if (event.key === 'ArrowDown') {
         event.preventDefault();
         setSelectedIndex((prevIndex) =>
-          prevIndex === filteredItems.length - 1 ? 0 : prevIndex + 1
+          prevIndex === filteredItems.length - 1 ? 0 : prevIndex + 1,
         );
       } else if (event.key === 'Enter') {
         event.preventDefault();
@@ -402,12 +549,12 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
       } else if (event.key === 'PageUp') {
         event.preventDefault();
         setSelectedIndex((prevIndex) =>
-          prevIndex <= 0 ? filteredItems.length - 1 : prevIndex - 10
+          prevIndex <= 0 ? filteredItems.length - 1 : prevIndex - 10,
         );
       } else if (event.key === 'PageDown') {
         event.preventDefault();
         setSelectedIndex((prevIndex) =>
-          prevIndex >= filteredItems.length - 10 ? 0 : prevIndex + 10
+          prevIndex >= filteredItems.length - 10 ? 0 : prevIndex + 10,
         );
       }
     };
@@ -438,33 +585,43 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           onClick={handleClose}
         >
           <motion.div
-            initial={{opacity: 0, scale: 0.95, y: -20}}
-            animate={{opacity: 1, scale: 1, y: 0}}
-            exit={{opacity: 0, scale: 0.95, y: -20}}
-            transition={{duration: 0.2, ease: 'easeOut'}}
+            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            transition={{ duration: 0.2, ease: 'easeOut' }}
             className="bg-gray-900  text-gray-100 rounded-lg shadow-2xl w-full max-w-xl mx-4"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="p-3 flex items-center justify-center">
-              <TerminalWindowIcon size={36} weight="light" className="mr-2 text-gray-200 "/>
+              <TerminalWindowIcon
+                size={36}
+                weight="light"
+                className="mr-2 text-gray-200 "
+              />
               <input
                 ref={inputRef}
                 type="text"
-                placeholder={isLoading ? "Loading data..." : "Search or type a command..."}
+                placeholder={
+                  isLoading ? 'Loading data...' : 'Search or type a command...'
+                }
                 className="w-full bg-transparent text-lg placeholder-gray-500 focus:outline-none font-mono"
                 value={searchTerm}
-                onChange={e => setSearchTerm(e.target.value)}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 disabled={isLoading}
               />
             </div>
-            <div ref={resultsRef}
-                 className="border-t border-gray-200 dark:border-gray-700 p-2 max-h-[50vh] overflow-y-auto scrollbar-hide">
+            <div
+              ref={resultsRef}
+              className="border-t border-gray-200 dark:border-gray-700 p-2 max-h-[50vh] overflow-y-auto scrollbar-hide"
+            >
               {filteredItems.length > 0 ? (
                 filteredItems.map((item, index) => (
                   <div
                     key={`${item.type}-${item.slug || item.commandId}-${index}`}
                     className={`p-3 rounded-lg cursor-pointer flex justify-between items-center font-mono ${
-                      selectedIndex === index ? 'bg-gray-800' : 'hover:bg-gray-800'
+                      selectedIndex === index
+                        ? 'bg-gray-800'
+                        : 'hover:bg-gray-800'
                     }`}
                     onClick={() => handleItemClick(item)}
                     onMouseMove={() => setSelectedIndex(index)}
@@ -472,25 +629,43 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
                     <span className="mr-2 text-gray-500 "> » </span>
                     <span className={`w-5/6 text-gray-100`}>{item.title}</span>
                     <span
-                      className={`w-20 h-6 flex items-center justify-center text-xs uppercase text-gray-800 font-bold ${getCategoryColorClass(item.type)} rounded border-2 border-black`}>{item.type}</span>
+                      className={`w-20 h-6 flex items-center justify-center text-xs uppercase text-gray-800 font-bold ${getCategoryColorClass(item.type)} rounded border-2 border-black`}
+                    >
+                      {item.type}
+                    </span>
                   </div>
                 ))
               ) : (
                 <div className="p-4 text-center text-gray-500">
-                  {isLoading ? "Loading..." : `No results found for "${searchTerm}"`}
+                  {isLoading
+                    ? 'Loading...'
+                    : `No results found for "${searchTerm}"`}
                 </div>
               )}
             </div>
-            <div
-              className="border-t border-gray-200 dark:border-gray-700 p-2 text-xs text-gray-400 dark:text-gray-500 flex items-center justify-between">
+            <div className="border-t border-gray-200 dark:border-gray-700 p-2 text-xs text-gray-400 dark:text-gray-500 flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">ESC</span> to close
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↑</span>
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↓</span>
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">PgUp</span>
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">PgDn</span> to
-                navigate
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">↵</span> to select
+                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
+                  ESC
+                </span>{' '}
+                to close
+                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
+                  ↑
+                </span>
+                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
+                  ↓
+                </span>
+                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
+                  PgUp
+                </span>
+                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
+                  PgDn
+                </span>{' '}
+                to navigate
+                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
+                  ↵
+                </span>{' '}
+                to select
               </div>
               <div className="font-semibold text-gray-400">
                 Fez<span className="text-accent-500">codex</span>

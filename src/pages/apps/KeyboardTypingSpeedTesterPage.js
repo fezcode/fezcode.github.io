@@ -1,25 +1,39 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, KeyboardIcon} from '@phosphor-icons/react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, KeyboardIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
-const sampleTexts = ["The quick brown fox jumps over the lazy dog.", "Never underestimate the power of a good book.", "Coding is like poetry; it should be beautiful and efficient.", "The early bird catches the worm, but the second mouse gets the cheese.", "Innovation distinguishes between a leader and a follower.", "Success is not final, failure is not fatal: it is the courage to continue that counts."];
+const sampleTexts = [
+  'The quick brown fox jumps over the lazy dog.',
+  'Never underestimate the power of a good book.',
+  'Coding is like poetry; it should be beautiful and efficient.',
+  'The early bird catches the worm, but the second mouse gets the cheese.',
+  'Innovation distinguishes between a leader and a follower.',
+  'Success is not final, failure is not fatal: it is the courage to continue that counts.',
+];
 
 function KeyboardTypingSpeedTesterPage() {
-  const appName = "FezType"; // Renamed as per user's request
-  const appSlug = "feztype"; // Corresponding slug
+  const appName = 'FezType'; // Renamed as per user's request
+  const appSlug = 'feztype'; // Corresponding slug
 
   useSeo({
     title: `${appName} | Fezcodex`,
-    description: "Test and improve your typing speed with FezType.",
-    keywords: ['Fezcodex', 'typing test', 'wpm', 'typing speed', 'keyboard', 'games'],
+    description: 'Test and improve your typing speed with FezType.',
+    keywords: [
+      'Fezcodex',
+      'typing test',
+      'wpm',
+      'typing speed',
+      'keyboard',
+      'games',
+    ],
     ogTitle: `${appName} | Fezcodex`,
-    ogDescription: "Test and improve your typing speed with FezType.",
+    ogDescription: 'Test and improve your typing speed with FezType.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${appName} | Fezcodex`,
-    twitterDescription: "Test and improve your typing speed with FezType.",
+    twitterDescription: 'Test and improve your typing speed with FezType.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
@@ -40,7 +54,8 @@ function KeyboardTypingSpeedTesterPage() {
 
   const inputRef = useRef(null);
 
-  const selectNewText = useCallback((currentText) => { // Takes currentText as argument
+  const selectNewText = useCallback((currentText) => {
+    // Takes currentText as argument
     let newRandomIndex;
     let newText;
     do {
@@ -58,9 +73,11 @@ function KeyboardTypingSpeedTesterPage() {
   const calculateResults = useCallback(() => {
     // Overall WPM: (Total correct characters / 5) / Total time elapsed
     const timeElapsedMinutes = (60 - timer) / 60; // Total time elapsed (fixed at 60s for now)
-    const calculatedWpm = timeElapsedMinutes === 0 ? 0 : (totalCorrectChars / 5) / timeElapsedMinutes;
+    const calculatedWpm =
+      timeElapsedMinutes === 0 ? 0 : totalCorrectChars / 5 / timeElapsedMinutes;
     // Overall Accuracy: (Total correct characters / Total typed characters) * 100
-    const calculatedAccuracy = totalTypedChars === 0 ? 0 : (totalCorrectChars / totalTypedChars) * 100;
+    const calculatedAccuracy =
+      totalTypedChars === 0 ? 0 : (totalCorrectChars / totalTypedChars) * 100;
 
     setWpm(Math.round(calculatedWpm));
     setAccuracy(calculatedAccuracy.toFixed(2));
@@ -113,10 +130,12 @@ function KeyboardTypingSpeedTesterPage() {
       }
 
       // Update cumulative stats
-      setTotalCorrectChars(prev => prev + segmentCorrectChars);
-      setTotalTypedChars(prev => prev + textToType.length);
-      setTotalMistakes(prev => prev + (textToType.length - segmentCorrectChars));
-      setTextsCompletedCount(prev => prev + 1);
+      setTotalCorrectChars((prev) => prev + segmentCorrectChars);
+      setTotalTypedChars((prev) => prev + textToType.length);
+      setTotalMistakes(
+        (prev) => prev + (textToType.length - segmentCorrectChars),
+      );
+      setTextsCompletedCount((prev) => prev + 1);
 
       // Immediately select new text and clear typed input for the next segment
       setTextToType((prevText) => selectNewText(prevText));
@@ -178,9 +197,12 @@ function KeyboardTypingSpeedTesterPage() {
       const isCursorPosition = index === typedText.length && !testCompleted;
 
       return (
-        <span key={index}
-              className={`${colorClass} ${extraClass} ${isCursorPosition ? 'border-b-2 border-yellow-400' : ''}`}>
-          {char === ' ' ? '\u00A0' : char} {/* Use non-breaking space for visual representation of space */}
+        <span
+          key={index}
+          className={`${colorClass} ${extraClass} ${isCursorPosition ? 'border-b-2 border-yellow-400' : ''}`}
+        >
+          {char === ' ' ? '\u00A0' : char}{' '}
+          {/* Use non-breaking space for visual representation of space */}
         </span>
       );
     });
@@ -188,62 +210,78 @@ function KeyboardTypingSpeedTesterPage() {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-        <BreadcrumbTitle title={appName} slug={appSlug}/>
-        <hr className="border-gray-700"/>
+        <BreadcrumbTitle title={appName} slug={appSlug} />
+        <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
-          <div
-            className="bg-app-alpha-10 border-app-alpha-50 text-app group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
+          <div className="bg-app-alpha-10 border-app-alpha-50 text-app group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
-                backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '10px 10px',
+                backgroundImage:
+                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundSize: '10px 10px',
               }}
             ></div>
             <div className="relative z-10 p-1">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                <KeyboardIcon size={32} className="inline-block mr-2"/> {appName}
+                <KeyboardIcon size={32} className="inline-block mr-2" />{' '}
+                {appName}
               </h1>
-              <hr className="border-gray-700 mb-4"/>
+              <hr className="border-gray-700 mb-4" />
 
-              {!testCompleted ? (<>
-                <div
-                  className="text-xl font-mono p-4 mb-4 border border-app-alpha-50 rounded-md bg-gray-900/50 min-h-[100px] flex flex-wrap content-start">
-                  {renderTextToType()}
-                </div>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  className="w-full p-4 mb-4 bg-gray-800 border border-app-alpha-50 rounded-md focus:ring-0 text-app-light font-mono"
-                  value={typedText}
-                  onChange={handleInputChange}
-                  placeholder="Start typing here..."
-                  disabled={timer === 0 && testStarted}
-                  autoFocus
-                />
-                <div className="font-mono flex justify-between items-center text-lg text-app">
-                  <span>Time: {timer}s</span>
-                  <span>Mistakes: {totalMistakes}</span>
+              {!testCompleted ? (
+                <>
+                  <div className="text-xl font-mono p-4 mb-4 border border-app-alpha-50 rounded-md bg-gray-900/50 min-h-[100px] flex flex-wrap content-start">
+                    {renderTextToType()}
+                  </div>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    className="w-full p-4 mb-4 bg-gray-800 border border-app-alpha-50 rounded-md focus:ring-0 text-app-light font-mono"
+                    value={typedText}
+                    onChange={handleInputChange}
+                    placeholder="Start typing here..."
+                    disabled={timer === 0 && testStarted}
+                    autoFocus
+                  />
+                  <div className="font-mono flex justify-between items-center text-lg text-app">
+                    <span>Time: {timer}s</span>
+                    <span>Mistakes: {totalMistakes}</span>
+                    <button
+                      onClick={resetTest}
+                      className="font-mono px-4 py-2 border border-white bg-black/50 hover:bg-white/50 hover:text-black hover:border-black rounded text-white  transition-colors"
+                    >
+                      Reset
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="text-center font-mono">
+                  <h2 className="text-4xl font-arvo mb-4 mt-6 text-green-400">
+                    Test Complete!
+                  </h2>
+                  <p className="text-2xl mb-2">
+                    WPM: <span className="font-bold text-app">{wpm}</span>
+                  </p>
+                  <p className="text-2xl mb-4">
+                    Accuracy:{' '}
+                    <span className="font-bold text-app">{accuracy}%</span>
+                  </p>
                   <button
                     onClick={resetTest}
-                    className="font-mono px-4 py-2 border border-white bg-black/50 hover:bg-white/50 hover:text-black hover:border-black rounded text-white  transition-colors"
+                    className="px-6 py-3 border border-white bg-black/50 hover:bg-white/50 hover:text-black hover:border-black rounded text-white text-xl transition-colors"
                   >
-                    Reset
+                    Try Again
                   </button>
                 </div>
-              </>) : (<div className="text-center font-mono">
-                <h2 className="text-4xl font-arvo mb-4 mt-6 text-green-400">Test Complete!</h2>
-                <p className="text-2xl mb-2">WPM: <span className="font-bold text-app">{wpm}</span></p>
-                <p className="text-2xl mb-4">Accuracy: <span className="font-bold text-app">{accuracy}%</span></p>
-                <button
-                  onClick={resetTest}
-                  className="px-6 py-3 border border-white bg-black/50 hover:bg-white/50 hover:text-black hover:border-black rounded text-white text-xl transition-colors"
-                >
-                  Try Again
-                </button>
-              </div>)}
+              )}
             </div>
           </div>
         </div>

@@ -1,23 +1,30 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PostItem from '../components/PostItem';
 import useSeo from '../hooks/useSeo';
-import {ArrowLeftIcon, ArticleMediumIcon, MagnifyingGlassIcon, FunnelIcon, XCircle, X} from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  ArticleMediumIcon,
+  MagnifyingGlassIcon,
+  FunnelIcon,
+  XCircle,
+  X,
+} from '@phosphor-icons/react';
 
 const iconColors = [
-  "text-red-500",
-  "text-orange-500",
-  "text-amber-500",
-  "text-yellow-500",
-  "text-lime-500",
-  "text-green-500",
-  "text-emerald-500",
-  "text-teal-500",
-  "text-cyan-500",
-  "text-sky-500",
-  "text-blue-500",
-  "text-indigo-500",
-  "text-violet-500",
+  'text-red-500',
+  'text-orange-500',
+  'text-amber-500',
+  'text-yellow-500',
+  'text-lime-500',
+  'text-green-500',
+  'text-emerald-500',
+  'text-teal-500',
+  'text-cyan-500',
+  'text-sky-500',
+  'text-blue-500',
+  'text-indigo-500',
+  'text-violet-500',
 ];
 
 const BlogPage = () => {
@@ -143,15 +150,20 @@ const BlogPage = () => {
       const query = searchQuery.toLowerCase();
       const title = item.title ? item.title.toLowerCase() : '';
       const slug = item.slug ? item.slug.toLowerCase() : '';
-      const authors = item.authors ? item.authors.map(a => a.toLowerCase()).join(' ') : ''; // Include authors in search
-      return title.includes(query) || slug.includes(query) || authors.includes(query);
+      const authors = item.authors
+        ? item.authors.map((a) => a.toLowerCase()).join(' ')
+        : ''; // Include authors in search
+      return (
+        title.includes(query) || slug.includes(query) || authors.includes(query)
+      );
     };
 
     return matchesFilter() && matchesSearch();
   });
 
   useEffect(() => {
-    const randomIconColor = iconColors[Math.floor(Math.random() * iconColors.length)]
+    const randomIconColor =
+      iconColors[Math.floor(Math.random() * iconColors.length)];
     setIconColor(randomIconColor);
   }, [searchQuery, activeFilter]);
 
@@ -190,7 +202,8 @@ const BlogPage = () => {
           to="/"
           className="group text-primary-400 hover:text-primary-300 hover:underline flex items-center gap-2 text-lg mb-8 transition-colors"
         >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/> Back to Home
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Home
         </Link>
 
         {/* Header */}
@@ -211,16 +224,16 @@ const BlogPage = () => {
               <span className="text-gray-500">]</span>
             </h1>
             <p className="text-gray-400 text-lg max-w-2xl font-mono">
-              From the <span style={{color: 'var(--fzcdx-spanner)'}}>Blog</span>: Catch up on the latest news and
-              insights.
+              From the{' '}
+              <span style={{ color: 'var(--fzcdx-spanner)' }}>Blog</span>: Catch
+              up on the latest news and insights.
             </p>
           </div>
 
           {/* Search Input */}
           <div className="mt-8 mb-8 flex justify-center relative max-w-lg mx-auto group">
             <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <MagnifyingGlassIcon
-                className="h-5 w-5 text-gray-500 group-focus-within:text-primary-400 transition-colors duration-300"/>
+              <MagnifyingGlassIcon className="h-5 w-5 text-gray-500 group-focus-within:text-primary-400 transition-colors duration-300" />
             </div>
             <input
               type="text"
@@ -236,33 +249,34 @@ const BlogPage = () => {
                   className="p-1 rounded-full text-gray-500 hover:text-white hover:bg-gray-700 transition-all duration-200 focus:outline-none"
                   title="Clear search"
                 >
-                  <X weight="bold" className="h-3.5 w-3.5"/>
+                  <X weight="bold" className="h-3.5 w-3.5" />
                 </button>
               )}
               <span
-                className={`text-xs font-mono px-2 py-1 rounded-md transition-colors duration-300 border ${filteredItems.length === 0 ? 'border-red-500/30 text-red-400 bg-red-500/10' : 'border-gray-700/50 text-gray-500 bg-gray-800/50'}`}>
-                 {filteredItems.length}
-               </span>
+                className={`text-xs font-mono px-2 py-1 rounded-md transition-colors duration-300 border ${filteredItems.length === 0 ? 'border-red-500/30 text-red-400 bg-red-500/10' : 'border-gray-700/50 text-gray-500 bg-gray-800/50'}`}
+              >
+                {filteredItems.length}
+              </span>
             </div>
           </div>
         </div>
 
-        <hr className="border-gray-800 mb-8"/>
+        <hr className="border-gray-800 mb-8" />
 
         {/* Filter Pills */}
         <div className="flex flex-wrap items-center gap-2 mb-10">
           <div className="flex items-center gap-2 mr-2 text-gray-500 font-mono text-sm">
-            <FunnelIcon size={16}/>
+            <FunnelIcon size={16} />
             <span>Filter:</span>
           </div>
           {[
-            {id: 'all', label: 'All'},
-            {id: 'dev', label: 'Dev'},
-            {id: 'feat', label: 'Feat'},
-            {id: 'rant', label: 'Rant'},
-            {id: 'series', label: 'Series'},
-            {id: 'gist', label: 'Gist'},
-            {id: 'd&d', label: 'D&D'},
+            { id: 'all', label: 'All' },
+            { id: 'dev', label: 'Dev' },
+            { id: 'feat', label: 'Feat' },
+            { id: 'rant', label: 'Rant' },
+            { id: 'series', label: 'Series' },
+            { id: 'gist', label: 'Gist' },
+            { id: 'd&d', label: 'D&D' },
           ].map((filter) => {
             const isSelected = activeFilter === filter.id;
             // Resolve specific color using colors.js logic approximation or CSS vars
@@ -271,16 +285,22 @@ const BlogPage = () => {
             // Let's try to use the hex codes from colors.js if possible, or fallback to a default.
 
             // Construct style object
-            const activeColor = filter.id === 'all' ? '#4b5563' :
-              filter.id === 'rant' ? 'var(--color-rant-badge)' :
-                filter.id === 'd&d' ? 'var(--color-dnd-badge)' :
-                  `var(--color-${filter.id}-badge)`;
-            const style = isSelected ? {
-              backgroundColor: activeColor,
-              borderColor: activeColor,
-              color: filter.id === 'gist' ? 'black' : 'white',
-              boxShadow: `0 0 20px ${activeColor}`
-            } : {};
+            const activeColor =
+              filter.id === 'all'
+                ? '#4b5563'
+                : filter.id === 'rant'
+                  ? 'var(--color-rant-badge)'
+                  : filter.id === 'd&d'
+                    ? 'var(--color-dnd-badge)'
+                    : `var(--color-${filter.id}-badge)`;
+            const style = isSelected
+              ? {
+                  backgroundColor: activeColor,
+                  borderColor: activeColor,
+                  color: filter.id === 'gist' ? 'black' : 'white',
+                  boxShadow: `0 0 20px ${activeColor}`,
+                }
+              : {};
 
             return (
               <button
@@ -296,12 +316,15 @@ const BlogPage = () => {
                 {filter.label}
               </button>
             );
-          })} {(activeFilter !== 'all' || searchQuery) && (
-          <button onClick={clearFilters}
-                  className="font-arvo ml-auto text-sm text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors">
-            <XCircle size={20}/> Clear
-          </button>
-        )}
+          })}{' '}
+          {(activeFilter !== 'all' || searchQuery) && (
+            <button
+              onClick={clearFilters}
+              className="font-arvo ml-auto text-sm text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors"
+            >
+              <XCircle size={20} /> Clear
+            </button>
+          )}
         </div>
 
         {/*mt-12 max-w-3xl mx-auto space-y-8*/}

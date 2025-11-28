@@ -1,5 +1,5 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import colors from '../config/colors';
 import {
   BookOpenIcon,
@@ -16,15 +16,15 @@ import {
 } from '@phosphor-icons/react';
 
 const categoryIcons = {
-  Book: <BookOpenIcon weight="duotone"/>,
-  Movie: <FilmStripIcon weight="duotone"/>,
-  Game: <GameControllerIcon weight="duotone"/>,
-  Article: <ArticleIcon weight="duotone"/>,
-  Music: <MusicNoteIcon weight="duotone"/>,
-  Series: <TelevisionIcon weight="duotone"/>,
-  Food: <ForkKnifeIcon weight="duotone"/>,
-  Websites: <GlobeIcon weight="duotone"/>,
-  Tools: <WrenchIcon weight="duotone"/>,
+  Book: <BookOpenIcon weight="duotone" />,
+  Movie: <FilmStripIcon weight="duotone" />,
+  Game: <GameControllerIcon weight="duotone" />,
+  Article: <ArticleIcon weight="duotone" />,
+  Music: <MusicNoteIcon weight="duotone" />,
+  Series: <TelevisionIcon weight="duotone" />,
+  Food: <ForkKnifeIcon weight="duotone" />,
+  Websites: <GlobeIcon weight="duotone" />,
+  Tools: <WrenchIcon weight="duotone" />,
 };
 
 const categoryColors = {
@@ -39,7 +39,7 @@ const categoryColors = {
   Tools: colors.tools,
 };
 
-const LogCard = ({log, index, totalLogs}) => {
+const LogCard = ({ log, index, totalLogs }) => {
   const {
     title,
     category,
@@ -59,7 +59,7 @@ const LogCard = ({log, index, totalLogs}) => {
   } = log;
 
   const accentColor = categoryColors[category] || colors.primary[400];
-  const Icon = categoryIcons[category] || <ArticleIcon/>;
+  const Icon = categoryIcons[category] || <ArticleIcon />;
 
   const renderStars = (rating) => {
     const stars = [];
@@ -70,36 +70,38 @@ const LogCard = ({log, index, totalLogs}) => {
           size={14}
           weight="fill"
           className={i < rating ? '' : 'opacity-30'}
-          style={{color: i < rating ? accentColor : '#9ca3af'}}
-        />
+          style={{ color: i < rating ? accentColor : '#9ca3af' }}
+        />,
       );
     }
     return <div className="flex gap-0.5">{stars}</div>;
   };
 
   // Metadata helper to avoid rendering empty fields
-  const MetadataItem = ({label, value}) => (
+  const MetadataItem = ({ label, value }) =>
     value ? (
       <div
         className="flex items-center gap-1 text-xs text-gray-300 px-2 py-1 rounded-md border border-gray-500/50"
-        style={{backgroundColor: `${accentColor}20`}}
+        style={{ backgroundColor: `${accentColor}20` }}
       >
         <span className="font-semibold text-gray-400">{label}:</span>
         <span className="truncate max-w-[150px]">{value}</span>
       </div>
-    ) : null
-  );
+    ) : null;
 
   return (
-    <Link to={`/logs/${log.category.toLowerCase()}/${slug}`} className="block h-full group">
+    <Link
+      to={`/logs/${log.category.toLowerCase()}/${slug}`}
+      className="block h-full group"
+    >
       <div
         className="relative h-full border border-gray-800 rounded-xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-gray-700 flex flex-col"
-        style={{backgroundColor: `${accentColor}30`}}
+        style={{ backgroundColor: `${accentColor}30` }}
       >
         {/* Left Border Accent */}
         <div
           className="absolute top-0 bottom-0 left-0 w-1 transition-all duration-300 group-hover:w-1.5"
-          style={{backgroundColor: accentColor}}
+          style={{ backgroundColor: accentColor }}
         />
         {/* Dotted Background */}
         <div
@@ -110,15 +112,23 @@ const LogCard = ({log, index, totalLogs}) => {
           }}
         ></div>
 
-        <div className="p-5 flex flex-col h-full ml-1"> {/* ml-1 to account for border */}
+        <div className="p-5 flex flex-col h-full ml-1">
+          {' '}
+          {/* ml-1 to account for border */}
           {/* Header: Icon, Index */}
           <div className="flex justify-between items-start mb-3">
-            <div className="p-2 rounded-lg  text-white" style={{color: accentColor, backgroundColor: `${accentColor}30`}}>
+            <div
+              className="p-2 rounded-lg  text-white"
+              style={{
+                color: accentColor,
+                backgroundColor: `${accentColor}30`,
+              }}
+            >
               <span className="text-2xl">{Icon}</span>
             </div>
             <span className="text-xs font-mono text-gray-400 group-hover:text-gray-400 transition-colors">
-                #{totalLogs - index}
-             </span>
+              #{totalLogs - index}
+            </span>
           </div>
           {/* Title */}
           <h3 className="font-mono text-lg font-bold text-gray-100 mb-2 leading-snug group-hover:text-white transition-colors">
@@ -126,28 +136,41 @@ const LogCard = ({log, index, totalLogs}) => {
           </h3>
           {/* Metadata Grid */}
           <div className="flex flex-wrap gap-2 mb-4">
-            <MetadataItem label="By" value={author || artist || creator || director}/>
-            <MetadataItem label="On" value={platform || source}/>
-            <MetadataItem label="Year" value={year || (releaseDate ? releaseDate.split('-')[0] : null)}/>
-            {album && <MetadataItem label="Album" value={album}/>}
+            <MetadataItem
+              label="By"
+              value={author || artist || creator || director}
+            />
+            <MetadataItem label="On" value={platform || source} />
+            <MetadataItem
+              label="Year"
+              value={year || (releaseDate ? releaseDate.split('-')[0] : null)}
+            />
+            {album && <MetadataItem label="Album" value={album} />}
           </div>
-
           {/* Spacer */}
-          <div className="flex-grow"/>
-
+          <div className="flex-grow" />
           {/* Footer: Rating & Date */}
-          <div className={`flex items-end justify-between mt-4 pt-4 border-t`} style={{borderColor: `${accentColor}50`}}>
+          <div
+            className={`flex items-end justify-between mt-4 pt-4 border-t`}
+            style={{ borderColor: `${accentColor}50` }}
+          >
             <div className="flex flex-col gap-1">
               {renderStars(rating)}
-              {rating > 0 && <span className="text-xs text-gray-400 font-mono">({rating}/5)</span>}
+              {rating > 0 && (
+                <span className="text-xs text-gray-400 font-mono">
+                  ({rating}/5)
+                </span>
+              )}
             </div>
 
             <div className="text-right flex flex-col items-end">
               {updated && (
-                <span className="text-[10px] text-rose-400 font-mono mb-0.5">Updated</span>
+                <span className="text-[10px] text-rose-400 font-mono mb-0.5">
+                  Updated
+                </span>
               )}
               <div className="flex items-center gap-1 text-xs text-gray-400 font-mono">
-                <CalendarBlankIcon size={12}/>
+                <CalendarBlankIcon size={12} />
                 {date}
               </div>
             </div>

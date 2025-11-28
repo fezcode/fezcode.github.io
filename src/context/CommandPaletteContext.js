@@ -27,7 +27,15 @@ export const CommandPaletteProvider = ({ children }) => {
   }, []);
 
   return (
-    <CommandPaletteContext.Provider value={{ isPaletteOpen, setIsPaletteOpen, openPalette, closePalette, togglePalette }}>
+    <CommandPaletteContext.Provider
+      value={{
+        isPaletteOpen,
+        setIsPaletteOpen,
+        openPalette,
+        closePalette,
+        togglePalette,
+      }}
+    >
       {children}
     </CommandPaletteContext.Provider>
   );

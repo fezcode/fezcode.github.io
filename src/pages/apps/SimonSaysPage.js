@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, CirclesFourIcon} from '@phosphor-icons/react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, CirclesFourIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import '../../styles/SimonSaysPage.css';
@@ -12,7 +12,13 @@ const SimonSaysPage = () => {
   useSeo({
     title: 'Simon Says | Fezcodex',
     description: 'Test your memory by repeating the sequence of colors.',
-    keywords: ['Fezcodex', 'simon says', 'memory game', 'color sequence', 'game'],
+    keywords: [
+      'Fezcodex',
+      'simon says',
+      'memory game',
+      'color sequence',
+      'game',
+    ],
     ogTitle: 'Simon Says | Fezcodex',
     ogDescription: 'Test your memory by repeating the sequence of colors.',
     ogImage: 'https://fezcode.github.io/logo512.png',
@@ -40,21 +46,22 @@ const SimonSaysPage = () => {
   };
 
   const addToSequence = useCallback(() => {
-    const randomColor = colorsList[Math.floor(Math.random() * colorsList.length)];
+    const randomColor =
+      colorsList[Math.floor(Math.random() * colorsList.length)];
     setSequence((prev) => [...prev, randomColor]);
   }, []);
 
   const playSequence = useCallback(async (currentSequence) => {
     setIsPlaying(true);
     // Small delay before starting
-    await new Promise(resolve => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     for (let i = 0; i < currentSequence.length; i++) {
       const color = currentSequence[i];
       setActiveColor(color);
-      await new Promise(resolve => setTimeout(resolve, 500)); // Light duration
+      await new Promise((resolve) => setTimeout(resolve, 500)); // Light duration
       setActiveColor(null);
-      await new Promise(resolve => setTimeout(resolve, 200)); // Gap between lights
+      await new Promise((resolve) => setTimeout(resolve, 200)); // Gap between lights
     }
     setIsPlaying(false);
   }, []);
@@ -73,7 +80,8 @@ const SimonSaysPage = () => {
     setUserSequence([]);
     // Initial move
     setTimeout(() => {
-      const randomColor = colorsList[Math.floor(Math.random() * colorsList.length)];
+      const randomColor =
+        colorsList[Math.floor(Math.random() * colorsList.length)];
       setSequence([randomColor]);
     }, 100);
   };
@@ -122,11 +130,15 @@ const SimonSaysPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-          <BreadcrumbTitle title="Simon Says" slug="simon" />
-        <hr className="border-gray-700"/>
+        <BreadcrumbTitle title="Simon Says" slug="simon" />
+        <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
             className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-2xl"
@@ -142,9 +154,9 @@ const SimonSaysPage = () => {
             ></div>
             <div className="relative z-10 p-1">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center gap-2">
-                <CirclesFourIcon size={32}/> Simon Says
+                <CirclesFourIcon size={32} /> Simon Says
               </h1>
-              <hr className="border-gray-700 mb-8"/>
+              <hr className="border-gray-700 mb-8" />
 
               <div className="text-center mb-8">
                 <div className="text-2xl font-bold mb-2">
@@ -152,11 +164,16 @@ const SimonSaysPage = () => {
                 </div>
                 {gameOver && (
                   <div className="mb-4">
-                    <h2 className="text-3xl font-bold text-red-500 mb-2">Game Over!</h2>
+                    <h2 className="text-3xl font-bold text-red-500 mb-2">
+                      Game Over!
+                    </h2>
                     <button
                       onClick={startGame}
                       className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                      style={{borderColor: cardStyle.color, color: cardStyle.color}}
+                      style={{
+                        borderColor: cardStyle.color,
+                        color: cardStyle.color,
+                      }}
                     >
                       Try Again
                     </button>
@@ -166,7 +183,10 @@ const SimonSaysPage = () => {
                   <button
                     onClick={startGame}
                     className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                    style={{borderColor: cardStyle.color, color: cardStyle.color}}
+                    style={{
+                      borderColor: cardStyle.color,
+                      color: cardStyle.color,
+                    }}
                   >
                     Start Game
                   </button>
@@ -182,7 +202,7 @@ const SimonSaysPage = () => {
                 {colorsList.map((color) => (
                   <div
                     key={color}
-                    className={`simon-btn simon-${color} ${activeColor === color ? 'active' : ''} ${(!gameActive || isPlaying) ? 'disabled' : ''}`}
+                    className={`simon-btn simon-${color} ${activeColor === color ? 'active' : ''} ${!gameActive || isPlaying ? 'disabled' : ''}`}
                     onClick={() => handleColorClick(color)}
                   />
                 ))}

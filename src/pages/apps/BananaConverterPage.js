@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, PlantIcon} from '@phosphor-icons/react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, PlantIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import CustomDropdown from '../../components/CustomDropdown'; // Import CustomDropdown
@@ -25,13 +25,21 @@ const BananaConverterPage = () => {
   useSeo({
     title: 'Banana for Scale Converter | Fezcodex',
     description: 'Convert measuring units into the internet standard: Bananas.',
-    keywords: ['Fezcodex', 'banana for scale', 'converter', 'fun', 'measurement'],
+    keywords: [
+      'Fezcodex',
+      'banana for scale',
+      'converter',
+      'fun',
+      'measurement',
+    ],
     ogTitle: 'Banana for Scale Converter | Fezcodex',
-    ogDescription: 'Convert measuring units into the internet standard: Bananas.',
+    ogDescription:
+      'Convert measuring units into the internet standard: Bananas.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Banana for Scale Converter | Fezcodex',
-    twitterDescription: 'Convert measuring units into the internet standard: Bananas.',
+    twitterDescription:
+      'Convert measuring units into the internet standard: Bananas.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
@@ -104,11 +112,15 @@ const BananaConverterPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-          <BreadcrumbTitle title="Banana Converter" slug="banana" />
-        <hr className="border-gray-700"/>
+        <BreadcrumbTitle title="Banana Converter" slug="banana" />
+        <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
             className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform h-full w-full max-w-2xl"
@@ -124,9 +136,9 @@ const BananaConverterPage = () => {
             ></div>
             <div className="relative z-10 p-1 text-center">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center justify-center gap-2">
-                <PlantIcon size={32}/> Banana Converter
+                <PlantIcon size={32} /> Banana Converter
               </h1>
-              <hr className="border-gray-700 mb-6"/>
+              <hr className="border-gray-700 mb-6" />
 
               <div className="flex flex-col gap-4 mb-6">
                 <div className="flex gap-2">
@@ -157,7 +169,6 @@ const BananaConverterPage = () => {
                   {result} 🍌
                 </div>
               )}
-
             </div>
           </div>
         </div>

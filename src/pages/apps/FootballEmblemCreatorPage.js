@@ -88,7 +88,7 @@ const FootballEmblemCreatorPage = () => {
   const [fontSize, setFontSize] = useState('10');
   const [foundedYearFontSize, setFoundedYearFontSize] = useState('6');
   const [showEstPrefix, setShowEstPrefix] = useState(true);
-  const [opacity, setOpacity] = useState("0.5");
+  const [opacity, setOpacity] = useState('0.5');
 
   const icons = {
     soccer: <SoccerBallIcon weight="fill" />,
@@ -161,335 +161,594 @@ const FootballEmblemCreatorPage = () => {
       downloadLink.download = `${teamName.replace(/\s+/g, '_').toLowerCase()}_emblem.png`;
       downloadLink.href = pngFile;
       downloadLink.click();
-      addToast({ title: 'Downloaded', message: 'Emblem saved successfully!', duration: 2000 });
+      addToast({
+        title: 'Downloaded',
+        message: 'Emblem saved successfully!',
+        duration: 2000,
+      });
     };
 
-    img.src = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(svgData)));
+    img.src =
+      'data:image/svg+xml;base64,' +
+      btoa(unescape(encodeURIComponent(svgData)));
   };
 
   // Shield Paths (normalized to 100x100 roughly, will scale)
   const renderShield = () => {
     switch (shieldShape) {
       case 'shield1': // Classic
-        return <path d="M10,10 L90,10 L90,30 C90,70 50,95 50,95 C50,95 10,70 10,30 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <path
+            d="M10,10 L90,10 L90,30 C90,70 50,95 50,95 C50,95 10,70 10,30 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       case 'shield2': // Round
-        return <circle cx="50" cy="50" r="45" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       case 'shield3': // Diamond
-        return <path d="M50,5 L95,50 L50,95 L5,50 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <path
+            d="M50,5 L95,50 L50,95 L5,50 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       case 'shield4': // Crest
-         return <path d="M10,10 Q50,0 90,10 L90,40 Q90,80 50,95 Q10,80 10,40 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
-       case 'shield5': // Boxy
-        return <path d="M15,10 L85,10 L85,70 L50,95 L15,70 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <path
+            d="M10,10 Q50,0 90,10 L90,40 Q90,80 50,95 Q10,80 10,40 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
+      case 'shield5': // Boxy
+        return (
+          <path
+            d="M15,10 L85,10 L85,70 L50,95 L15,70 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       default:
         return null;
     }
   };
 
   const renderPattern = () => {
-     // Patterns overlay on top of the base shield, masked by the shield shape logic ideally.
-     // Since SVG masking can be complex, I'll just draw shapes that fit generally or use a clipPath.
-     // Let's use a clipPath for the shield.
-     return (
-        <>
-            <defs>
-                <clipPath id="shieldClip">
-                    {renderShield()}
-                </clipPath>
-            </defs>
-            <g clipPath="url(#shieldClip)">
-                {pattern === 'stripes' && (
-                    <React.Fragment>
-                        <rect x="30" y="0" width="10" height="100" fill={secondaryColor} opacity={opacity} />
-                        <rect x="60" y="0" width="10" height="100" fill={secondaryColor} opacity={opacity} />
-                    </React.Fragment>
-                )}
-                 {pattern === 'half' && (
-                    <rect x="50" y="0" width="50" height="100" fill={secondaryColor} opacity={opacity} />
-                )}
-                 {pattern === 'cross' && (
-                    <React.Fragment>
-                         <rect x="40" y="0" width="20" height="100" fill={secondaryColor} opacity={opacity} />
-                         <rect x="0" y="40" width="100" height="20" fill={secondaryColor} opacity={opacity} />
-                    </React.Fragment>
-                )}
-                 {pattern === 'diagonal' && (
-                     <path d="M0,0 L100,100 L100,80 L20,0 Z" fill={secondaryColor} opacity={opacity} />
-                 )}
-                 {pattern === 'hoops' && (
-                     <React.Fragment>
-                         <rect x="0" y="20" width="100" height="10" fill={secondaryColor} opacity={opacity} />
-                         <rect x="0" y="40" width="100" height="10" fill={secondaryColor} opacity={opacity} />
-                         <rect x="0" y="60" width="100" height="10" fill={secondaryColor} opacity={opacity} />
-                         <rect x="0" y="80" width="100" height="10" fill={secondaryColor} opacity={opacity} />
-                     </React.Fragment>
-                 )}
-                 {pattern === 'checkered' && (
-                     <React.Fragment>
-                         <rect x="0" y="0" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="40" y="0" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="80" y="0" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+    // Patterns overlay on top of the base shield, masked by the shield shape logic ideally.
+    // Since SVG masking can be complex, I'll just draw shapes that fit generally or use a clipPath.
+    // Let's use a clipPath for the shield.
+    return (
+      <>
+        <defs>
+          <clipPath id="shieldClip">{renderShield()}</clipPath>
+        </defs>
+        <g clipPath="url(#shieldClip)">
+          {pattern === 'stripes' && (
+            <React.Fragment>
+              <rect
+                x="30"
+                y="0"
+                width="10"
+                height="100"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="60"
+                y="0"
+                width="10"
+                height="100"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+            </React.Fragment>
+          )}
+          {pattern === 'half' && (
+            <rect
+              x="50"
+              y="0"
+              width="50"
+              height="100"
+              fill={secondaryColor}
+              opacity={opacity}
+            />
+          )}
+          {pattern === 'cross' && (
+            <React.Fragment>
+              <rect
+                x="40"
+                y="0"
+                width="20"
+                height="100"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="0"
+                y="40"
+                width="100"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+            </React.Fragment>
+          )}
+          {pattern === 'diagonal' && (
+            <path
+              d="M0,0 L100,100 L100,80 L20,0 Z"
+              fill={secondaryColor}
+              opacity={opacity}
+            />
+          )}
+          {pattern === 'hoops' && (
+            <React.Fragment>
+              <rect
+                x="0"
+                y="20"
+                width="100"
+                height="10"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="0"
+                y="40"
+                width="100"
+                height="10"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="0"
+                y="60"
+                width="100"
+                height="10"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="0"
+                y="80"
+                width="100"
+                height="10"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+            </React.Fragment>
+          )}
+          {pattern === 'checkered' && (
+            <React.Fragment>
+              <rect
+                x="0"
+                y="0"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="40"
+                y="0"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="80"
+                y="0"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
 
-                         <rect x="20" y="20" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="60" y="20" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+              <rect
+                x="20"
+                y="20"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="60"
+                y="20"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
 
-                         <rect x="0" y="40" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="40" y="40" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="80" y="40" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+              <rect
+                x="0"
+                y="40"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="40"
+                y="40"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="80"
+                y="40"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
 
-                         <rect x="20" y="60" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="60" y="60" width="20" height="20" fill={secondaryColor} opacity={opacity} />
+              <rect
+                x="20"
+                y="60"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="60"
+                y="60"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
 
-                         <rect x="0" y="80" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="40" y="80" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                         <rect x="80" y="80" width="20" height="20" fill={secondaryColor} opacity={opacity} />
-                     </React.Fragment>
-                 )}
-                 {pattern === 'diamonds' && (
-                     <React.Fragment>
-                         <path d="M50,0 L100,50 L50,100 L0,50 Z" fill={secondaryColor} opacity="0.25" />
-                         <path d="M50,25 L75,50 L50,75 L25,50 Z" fill={secondaryColor} opacity="0.25" />
-                     </React.Fragment>
-                 )}
-            </g>
-        </>
-     )
-  }
+              <rect
+                x="0"
+                y="80"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="40"
+                y="80"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="80"
+                y="80"
+                width="20"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+            </React.Fragment>
+          )}
+          {pattern === 'diamonds' && (
+            <React.Fragment>
+              <path
+                d="M50,0 L100,50 L50,100 L0,50 Z"
+                fill={secondaryColor}
+                opacity="0.25"
+              />
+              <path
+                d="M50,25 L75,50 L50,75 L25,50 Z"
+                fill={secondaryColor}
+                opacity="0.25"
+              />
+            </React.Fragment>
+          )}
+        </g>
+      </>
+    );
+  };
 
   return (
     <div className="py-16 sm:py-24 text-gray-300">
-       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-         <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
-         </Link>
-          <BreadcrumbTitle title="Football Emblem Creator" slug="emblem" />
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
+        </Link>
+        <BreadcrumbTitle title="Football Emblem Creator" slug="emblem" />
         <hr className="border-gray-700 mb-8" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Editor Controls */}
-            <div className="space-y-8 bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+          {/* Editor Controls */}
+          <div className="space-y-8 bg-gray-800/50 p-6 rounded-xl border border-gray-700">
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-app">
+                Team Details
+              </h3>
+              <div className="grid grid-cols-1 gap-4">
                 <div>
-                    <h3 className="text-xl font-semibold mb-4 text-app">Team Details</h3>
-                    <div className="grid grid-cols-1 gap-4">
-                        <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-1">Team Name</label>
-                            <input
-                                type="text"
-                                value={teamName}
-                                onChange={(e) => setTeamName(e.target.value)}
-                                className="w-full bg-gray-900 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                                maxLength={20}
-                            />
-                        </div>
-                         <div>
-                            <label className="block text-sm font-medium text-gray-400 mb-1">Founded Year</label>
-                            <input
-                                type="text"
-                                value={foundedYear}
-                                onChange={(e) => setFoundedYear(e.target.value)}
-                                className="w-full bg-gray-900 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:border-blue-500"
-                                maxLength={4}
-                            />
-                        </div>
-
-                        <div className="flex items-center mt-2">
-                            <input
-                                type="checkbox"
-                                id="showEstPrefix"
-                                checked={showEstPrefix}
-                                onChange={(e) => setShowEstPrefix(e.target.checked)}
-                                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
-                            />
-                            <label htmlFor="showEstPrefix" className="ml-2 block text-sm text-gray-400">
-                                Show "EST." Prefix
-                            </label>
-                        </div>
-                    </div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Team Name
+                  </label>
+                  <input
+                    type="text"
+                    value={teamName}
+                    onChange={(e) => setTeamName(e.target.value)}
+                    className="w-full bg-gray-900 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    maxLength={20}
+                  />
                 </div>
                 <div>
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="col-span-1">
-                      <label className="block text-sm font-medium text-gray-400 mb-1">Team Font Size</label>
-                      <CustomDropdown
-                        options={[
-                          { label: 'Small', value: '6' },
-                          { label: 'Medium', value: '8' },
-                          { label: 'Large', value: '10' },
-                        ]}
-                        value={fontSize}
-                        onChange={setFontSize}
-                        label="Select Year Size"
-                        icon={TextAaIcon}
-                      />
-                    </div>
-                    <div className="col-span-1">
-                      <label className="block text-sm font-medium text-gray-400 mb-1">Year Font Size</label>
-                      <CustomDropdown
-                        options={[
-                          { label: 'Small', value: '4' },
-                          { label: 'Medium', value: '6' },
-                          { label: 'Large', value: '8' },
-                        ]}
-                        value={foundedYearFontSize}
-                        onChange={setFoundedYearFontSize}
-                        label="Select Year Size"
-                        icon={TextAaIcon}
-                      />
-                    </div>
-                    <div className="col-span-1">
-                      <label className="block text-sm font-medium text-gray-400 mb-1">Sec. Color Opacity</label>
-                      <CustomDropdown
-                        options={[
-                          { label: '25%', value: "0.25" },
-                          { label: '50%', value: "0.5" },
-                          { label: '75%', value: "0.75" },
-                          { label: '100%', value: "1.0" },
-                        ]}
-                        value={opacity}
-                        onChange={setOpacity}
-                        label="Select Opacity"
-                        icon={PercentIcon}
-                      />
-                    </div>
-                  </div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Founded Year
+                  </label>
+                  <input
+                    type="text"
+                    value={foundedYear}
+                    onChange={(e) => setFoundedYear(e.target.value)}
+                    className="w-full bg-gray-900 border border-gray-600 rounded-md px-3 py-2 text-white focus:outline-none focus:border-blue-500"
+                    maxLength={4}
+                  />
                 </div>
 
-                <div>
-                    <h3 className="text-xl font-semibold mb-4 text-app">Colors</h3>
-                    <div className="grid grid-cols-3 gap-4">
-                        <div>
-                             <label className="block text-sm font-medium text-gray-400 mb-1">Primary</label>
-                             <input type="color" value={primaryColor} onChange={(e) => setPrimaryColor(e.target.value)} className="w-full h-10 rounded cursor-pointer bg-transparent" />
-                        </div>
-                         <div>
-                             <label className="block text-sm font-medium text-gray-400 mb-1">Secondary</label>
-                             <input type="color" value={secondaryColor} onChange={(e) => setSecondaryColor(e.target.value)} className="w-full h-10 rounded cursor-pointer bg-transparent" />
-                        </div>
-                         <div>
-                             <label className="block text-sm font-medium text-gray-400 mb-1">Accent</label>
-                             <input type="color" value={accentColor} onChange={(e) => setAccentColor(e.target.value)} className="w-full h-10 rounded cursor-pointer bg-transparent" />
-                        </div>
-                    </div>
+                <div className="flex items-center mt-2">
+                  <input
+                    type="checkbox"
+                    id="showEstPrefix"
+                    checked={showEstPrefix}
+                    onChange={(e) => setShowEstPrefix(e.target.checked)}
+                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  />
+                  <label
+                    htmlFor="showEstPrefix"
+                    className="ml-2 block text-sm text-gray-400"
+                  >
+                    Show "EST." Prefix
+                  </label>
                 </div>
-
-                 <div>
-                    <h3 className="text-xl font-semibold mb-4 text-app">Shape & Pattern</h3>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div>
-                             <label className="block text-sm font-medium text-gray-400 mb-1">Shape</label>
-                             <CustomDropdown
-                                options={[
-                                  { label: 'Classic Shield', value: 'shield1' },
-                                  { label: 'Round', value: 'shield2' },
-                                  { label: 'Diamond', value: 'shield3' },
-                                  { label: 'Crest', value: 'shield4' },
-                                  { label: 'Boxy', value: 'shield5' },
-                                ]}
-                                value={shieldShape}
-                                onChange={setShieldShape}
-                                label="Select Shield Shape"
-                                icon={TrophyIcon} // Reusing Trophy icon
-                             />
-                        </div>
-                         <div>
-                             <label className="block text-sm font-medium text-gray-400 mb-1">Pattern</label>
-                             <CustomDropdown
-                                options={[
-                                  { label: 'None', value: 'none' },
-                                  { label: 'Stripes', value: 'stripes' },
-                                  { label: 'Half Split', value: 'half' },
-                                  { label: 'Cross', value: 'cross' },
-                                  { label: 'Diagonal', value: 'diagonal' },
-                                  { label: 'Hoops', value: 'hoops' },
-                                  { label: 'Checkered', value: 'checkered' },
-                                  { label: 'Diamonds', value: 'diamonds' },
-                                ]}
-                                value={pattern}
-                                onChange={setPattern}
-                                label="Select Pattern"
-                                icon={SoccerBallIcon} // Reusing SoccerBall icon
-                             />
-                        </div>
-                    </div>
+              </div>
+            </div>
+            <div>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Team Font Size
+                  </label>
+                  <CustomDropdown
+                    options={[
+                      { label: 'Small', value: '6' },
+                      { label: 'Medium', value: '8' },
+                      { label: 'Large', value: '10' },
+                    ]}
+                    value={fontSize}
+                    onChange={setFontSize}
+                    label="Select Year Size"
+                    icon={TextAaIcon}
+                  />
                 </div>
-
-                 <div>
-                    <h3 className="text-xl font-semibold mb-4 text-app">Icon</h3>
-                    <div className="grid grid-cols-6 gap-2">
-                        {Object.keys(icons).map((key) => (
-                            <button
-                                key={key}
-                                onClick={() => setSelectedIcon(key)}
-                                className={`p-2 rounded-lg border ${selectedIcon === key ? 'border-blue-500 bg-blue-500/20' : 'border-gray-700 hover:border-gray-500'} flex justify-center items-center text-2xl transition-colors`}
-                            >
-                                {icons[key]}
-                            </button>
-                        ))}
-                    </div>
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Year Font Size
+                  </label>
+                  <CustomDropdown
+                    options={[
+                      { label: 'Small', value: '4' },
+                      { label: 'Medium', value: '6' },
+                      { label: 'Large', value: '8' },
+                    ]}
+                    value={foundedYearFontSize}
+                    onChange={setFoundedYearFontSize}
+                    label="Select Year Size"
+                    icon={TextAaIcon}
+                  />
                 </div>
+                <div className="col-span-1">
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Sec. Color Opacity
+                  </label>
+                  <CustomDropdown
+                    options={[
+                      { label: '25%', value: '0.25' },
+                      { label: '50%', value: '0.5' },
+                      { label: '75%', value: '0.75' },
+                      { label: '100%', value: '1.0' },
+                    ]}
+                    value={opacity}
+                    onChange={setOpacity}
+                    label="Select Opacity"
+                    icon={PercentIcon}
+                  />
+                </div>
+              </div>
             </div>
 
-            {/* Preview */}
-            <div className="flex flex-col items-center justify-start space-y-8">
-                 <div className="bg-gray-800 p-8 rounded-xl border border-gray-700 shadow-2xl relative">
-                    <div className="absolute top-4 right-4 text-gray-500 text-sm font-mono">Preview</div>
-                    <svg
-                        ref={svgRef}
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 100 100"
-                        className="w-80 h-80 drop-shadow-xl"
-                    >
-                        {renderShield()}
-                        {renderPattern()}
-
-                        {/* Text Path for Team Name (Curved if Shield1/2/4, straight for others maybe? Let's keep it simple first) */}
-                        <text
-                            x="50"
-                            y="25"
-                            fontFamily="Arial, sans-serif"
-                            fontWeight="bold"
-                            fontSize={fontSize}
-                            textAnchor="middle"
-                            fill={accentColor}
-                            className="uppercase"
-                            style={{ textShadow: '1px 1px 0px rgba(255,255,255,0.5)' }}
-                        >
-                            {teamName}
-                        </text>
-
-                         {/* Icon */}
-                         <g transform="translate(30, 30)">
-                            {React.cloneElement(icons[selectedIcon], { size: 40, color: accentColor, weight: 'fill' })}
-                         </g>
-
-                         {/* Founded Year */}
-                         <text
-                            x="50"
-                            y="85"
-                            fontFamily="Arial, sans-serif"
-                            fontSize={foundedYearFontSize}
-                            textAnchor="middle"
-                            fill={accentColor}
-                            fontWeight="bold"
-                         >
-                            {showEstPrefix && "EST. "} {foundedYear}
-                         </text>
-                    </svg>
-                 </div>
-
-                 <button
-                    onClick={handleDownload}
-                    className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
-                 >
-                    <DownloadSimpleIcon size={20} className="inline-block mr-2" />
-                    Download Emblem
-                 </button>
-
-                 <div className="text-sm text-gray-500 max-w-md text-center">
-                    Note: The downloaded image will be a high-quality PNG.
-                 </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-app">Colors</h3>
+              <div className="grid grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Primary
+                  </label>
+                  <input
+                    type="color"
+                    value={primaryColor}
+                    onChange={(e) => setPrimaryColor(e.target.value)}
+                    className="w-full h-10 rounded cursor-pointer bg-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Secondary
+                  </label>
+                  <input
+                    type="color"
+                    value={secondaryColor}
+                    onChange={(e) => setSecondaryColor(e.target.value)}
+                    className="w-full h-10 rounded cursor-pointer bg-transparent"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Accent
+                  </label>
+                  <input
+                    type="color"
+                    value={accentColor}
+                    onChange={(e) => setAccentColor(e.target.value)}
+                    className="w-full h-10 rounded cursor-pointer bg-transparent"
+                  />
+                </div>
+              </div>
             </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-app">
+                Shape & Pattern
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Shape
+                  </label>
+                  <CustomDropdown
+                    options={[
+                      { label: 'Classic Shield', value: 'shield1' },
+                      { label: 'Round', value: 'shield2' },
+                      { label: 'Diamond', value: 'shield3' },
+                      { label: 'Crest', value: 'shield4' },
+                      { label: 'Boxy', value: 'shield5' },
+                    ]}
+                    value={shieldShape}
+                    onChange={setShieldShape}
+                    label="Select Shield Shape"
+                    icon={TrophyIcon} // Reusing Trophy icon
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-400 mb-1">
+                    Pattern
+                  </label>
+                  <CustomDropdown
+                    options={[
+                      { label: 'None', value: 'none' },
+                      { label: 'Stripes', value: 'stripes' },
+                      { label: 'Half Split', value: 'half' },
+                      { label: 'Cross', value: 'cross' },
+                      { label: 'Diagonal', value: 'diagonal' },
+                      { label: 'Hoops', value: 'hoops' },
+                      { label: 'Checkered', value: 'checkered' },
+                      { label: 'Diamonds', value: 'diamonds' },
+                    ]}
+                    value={pattern}
+                    onChange={setPattern}
+                    label="Select Pattern"
+                    icon={SoccerBallIcon} // Reusing SoccerBall icon
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4 text-app">Icon</h3>
+              <div className="grid grid-cols-6 gap-2">
+                {Object.keys(icons).map((key) => (
+                  <button
+                    key={key}
+                    onClick={() => setSelectedIcon(key)}
+                    className={`p-2 rounded-lg border ${selectedIcon === key ? 'border-blue-500 bg-blue-500/20' : 'border-gray-700 hover:border-gray-500'} flex justify-center items-center text-2xl transition-colors`}
+                  >
+                    {icons[key]}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Preview */}
+          <div className="flex flex-col items-center justify-start space-y-8">
+            <div className="bg-gray-800 p-8 rounded-xl border border-gray-700 shadow-2xl relative">
+              <div className="absolute top-4 right-4 text-gray-500 text-sm font-mono">
+                Preview
+              </div>
+              <svg
+                ref={svgRef}
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 100 100"
+                className="w-80 h-80 drop-shadow-xl"
+              >
+                {renderShield()}
+                {renderPattern()}
+
+                {/* Text Path for Team Name (Curved if Shield1/2/4, straight for others maybe? Let's keep it simple first) */}
+                <text
+                  x="50"
+                  y="25"
+                  fontFamily="Arial, sans-serif"
+                  fontWeight="bold"
+                  fontSize={fontSize}
+                  textAnchor="middle"
+                  fill={accentColor}
+                  className="uppercase"
+                  style={{ textShadow: '1px 1px 0px rgba(255,255,255,0.5)' }}
+                >
+                  {teamName}
+                </text>
+
+                {/* Icon */}
+                <g transform="translate(30, 30)">
+                  {React.cloneElement(icons[selectedIcon], {
+                    size: 40,
+                    color: accentColor,
+                    weight: 'fill',
+                  })}
+                </g>
+
+                {/* Founded Year */}
+                <text
+                  x="50"
+                  y="85"
+                  fontFamily="Arial, sans-serif"
+                  fontSize={foundedYearFontSize}
+                  textAnchor="middle"
+                  fill={accentColor}
+                  fontWeight="bold"
+                >
+                  {showEstPrefix && 'EST. '} {foundedYear}
+                </text>
+              </svg>
+            </div>
+
+            <button
+              onClick={handleDownload}
+              className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
+            >
+              <DownloadSimpleIcon size={20} className="inline-block mr-2" />
+              Download Emblem
+            </button>
+
+            <div className="text-sm text-gray-500 max-w-md text-center">
+              Note: The downloaded image will be a high-quality PNG.
+            </div>
+          </div>
         </div>
-       </div>
+      </div>
     </div>
   );
 };

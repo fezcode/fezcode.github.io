@@ -1,6 +1,6 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, BugIcon, GavelIcon} from '@phosphor-icons/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, BugIcon, GavelIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import '../../styles/WhackABugPage.css';
@@ -37,7 +37,7 @@ const WhackABugPage = () => {
     setTimeLeft(GAME_DURATION);
     setGameActive(true);
     setActiveHole(null);
-    setLastHole(null);    // Start game timer
+    setLastHole(null); // Start game timer
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -135,11 +135,15 @@ const WhackABugPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-          <BreadcrumbTitle title="Whack-a-Bug" slug="wab" />
-        <hr className="border-gray-700"/>
+        <BreadcrumbTitle title="Whack-a-Bug" slug="wab" />
+        <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
             className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
@@ -155,13 +159,20 @@ const WhackABugPage = () => {
             ></div>
             <div className="relative z-10 p-1">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center gap-2">
-                <GavelIcon size={32}/> Whack-a-Bug
+                <GavelIcon size={32} /> Whack-a-Bug
               </h1>
-              <hr className="border-gray-700 mb-4"/>
+              <hr className="border-gray-700 mb-4" />
 
               <div className="flex justify-between items-center mb-8 text-xl font-bold">
-                <div>Score: <span className="text-green-400">{score}</span></div>
-                <div>Time: <span className={`${timeLeft <= 5 ? 'text-red-500' : ''}`}>{timeLeft}s</span></div>
+                <div>
+                  Score: <span className="text-green-400">{score}</span>
+                </div>
+                <div>
+                  Time:{' '}
+                  <span className={`${timeLeft <= 5 ? 'text-red-500' : ''}`}>
+                    {timeLeft}s
+                  </span>
+                </div>
               </div>
 
               {!gameActive && timeLeft === 0 ? (
@@ -171,7 +182,10 @@ const WhackABugPage = () => {
                   <button
                     onClick={startGame}
                     className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                    style={{borderColor: cardStyle.color, color: cardStyle.color}}
+                    style={{
+                      borderColor: cardStyle.color,
+                      color: cardStyle.color,
+                    }}
                   >
                     Play Again
                   </button>
@@ -181,7 +195,10 @@ const WhackABugPage = () => {
                   <button
                     onClick={startGame}
                     className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                    style={{borderColor: cardStyle.color, color: cardStyle.color}}
+                    style={{
+                      borderColor: cardStyle.color,
+                      color: cardStyle.color,
+                    }}
                   >
                     Start Game
                   </button>
@@ -189,7 +206,7 @@ const WhackABugPage = () => {
               ) : null}
 
               <div className="whack-a-bug-grid">
-                {Array.from({length: HOLE_COUNT}).map((_, index) => (
+                {Array.from({ length: HOLE_COUNT }).map((_, index) => (
                   <div
                     key={index}
                     className="bug-hole flex items-center justify-center"
@@ -197,7 +214,7 @@ const WhackABugPage = () => {
                   >
                     {activeHole === index && (
                       <div className="bug text-red-400">
-                        <BugIcon size={48} weight="fill"/>
+                        <BugIcon size={48} weight="fill" />
                       </div>
                     )}
                   </div>

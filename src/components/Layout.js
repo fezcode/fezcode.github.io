@@ -11,7 +11,14 @@ import { useCommandPalette } from '../context/CommandPaletteContext';
 
 import { DndProvider } from '../context/DndContext';
 
-const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch, openGenericModal, toggleDigitalRain }) => {
+const Layout = ({
+  children,
+  toggleModal,
+  isSearchVisible,
+  toggleSearch,
+  openGenericModal,
+  toggleDigitalRain,
+}) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
   const location = useLocation();
@@ -48,14 +55,20 @@ const Layout = ({ children, toggleModal, isSearchVisible, toggleSearch, openGene
 
   return (
     <>
-      <CommandPalette isOpen={isPaletteOpen} setIsOpen={setIsPaletteOpen} openGenericModal={openGenericModal} toggleDigitalRain={toggleDigitalRain} />
+      <CommandPalette
+        isOpen={isPaletteOpen}
+        setIsOpen={setIsPaletteOpen}
+        openGenericModal={openGenericModal}
+        toggleDigitalRain={toggleDigitalRain}
+      />
       <div className="bg-gray-950 min-h-screen font-sans flex">
-              <Sidebar
-                isOpen={isSidebarOpen}
-                toggleSidebar={toggleSidebar}
-                toggleModal={toggleModal}
-                setIsPaletteOpen={setIsPaletteOpen} // Pass setIsPaletteOpen to Sidebar
-              />        <div
+        <Sidebar
+          isOpen={isSidebarOpen}
+          toggleSidebar={toggleSidebar}
+          toggleModal={toggleModal}
+          setIsPaletteOpen={setIsPaletteOpen} // Pass setIsPaletteOpen to Sidebar
+        />{' '}
+        <div
           className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}
         >
           <Navbar

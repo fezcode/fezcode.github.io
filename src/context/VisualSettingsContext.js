@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useEffect} from 'react';
+import React, { createContext, useContext, useEffect } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useAchievements } from './AchievementContext';
 
@@ -8,7 +8,7 @@ export const useVisualSettings = () => {
   return useContext(VisualSettingsContext);
 };
 
-export const VisualSettingsProvider = ({children}) => {
+export const VisualSettingsProvider = ({ children }) => {
   const { unlockAchievement } = useAchievements();
   const [isInverted, setIsInverted] = usePersistentState('is-inverted', false);
   const [isRetro, setIsRetro] = usePersistentState('is-retro', false);
@@ -16,13 +16,25 @@ export const VisualSettingsProvider = ({children}) => {
   const [isMirror, setIsMirror] = usePersistentState('is-mirror', false);
   const [isNoir, setIsNoir] = usePersistentState('is-noir', false);
   const [isTerminal, setIsTerminal] = usePersistentState('is-terminal', false);
-  const [isBlueprint, setIsBlueprint] = usePersistentState('is-blueprint', false);
+  const [isBlueprint, setIsBlueprint] = usePersistentState(
+    'is-blueprint',
+    false,
+  );
   const [isSepia, setIsSepia] = usePersistentState('is-sepia', false);
-  const [isVaporwave, setIsVaporwave] = usePersistentState('is-vaporwave', false);
-  const [isCyberpunk, setIsCyberpunk] = usePersistentState('is-cyberpunk', false);
+  const [isVaporwave, setIsVaporwave] = usePersistentState(
+    'is-vaporwave',
+    false,
+  );
+  const [isCyberpunk, setIsCyberpunk] = usePersistentState(
+    'is-cyberpunk',
+    false,
+  );
   const [isGameboy, setIsGameboy] = usePersistentState('is-gameboy', false);
   const [isComic, setIsComic] = usePersistentState('is-comic', false);
-  const [isSketchbook, setIsSketchbook] = usePersistentState('is-sketchbook', false);
+  const [isSketchbook, setIsSketchbook] = usePersistentState(
+    'is-sketchbook',
+    false,
+  );
   const [isHellenic, setIsHellenic] = usePersistentState('is-hellenic', false);
   const [isGlitch, setIsGlitch] = usePersistentState('is-glitch', false);
 
@@ -153,40 +165,58 @@ export const VisualSettingsProvider = ({children}) => {
     }
   }, [isGlitch, unlockAchievement]);
 
-  const toggleInvert = () => setIsInverted(prev => !prev);
-  const toggleRetro = () => setIsRetro(prev => !prev);
-  const toggleParty = () => setIsParty(prev => !prev);
-  const toggleMirror = () => setIsMirror(prev => !prev);
-  const toggleNoir = () => setIsNoir(prev => !prev);
-  const toggleTerminal = () => setIsTerminal(prev => !prev);
-  const toggleBlueprint = () => setIsBlueprint(prev => !prev);
-  const toggleSepia = () => setIsSepia(prev => !prev);
-  const toggleVaporwave = () => setIsVaporwave(prev => !prev);
-  const toggleCyberpunk = () => setIsCyberpunk(prev => !prev);
-  const toggleGameboy = () => setIsGameboy(prev => !prev);
-  const toggleComic = () => setIsComic(prev => !prev);
-  const toggleSketchbook = () => setIsSketchbook(prev => !prev);
-  const toggleHellenic = () => setIsHellenic(prev => !prev);
-  const toggleGlitch = () => setIsGlitch(prev => !prev);
+  const toggleInvert = () => setIsInverted((prev) => !prev);
+  const toggleRetro = () => setIsRetro((prev) => !prev);
+  const toggleParty = () => setIsParty((prev) => !prev);
+  const toggleMirror = () => setIsMirror((prev) => !prev);
+  const toggleNoir = () => setIsNoir((prev) => !prev);
+  const toggleTerminal = () => setIsTerminal((prev) => !prev);
+  const toggleBlueprint = () => setIsBlueprint((prev) => !prev);
+  const toggleSepia = () => setIsSepia((prev) => !prev);
+  const toggleVaporwave = () => setIsVaporwave((prev) => !prev);
+  const toggleCyberpunk = () => setIsCyberpunk((prev) => !prev);
+  const toggleGameboy = () => setIsGameboy((prev) => !prev);
+  const toggleComic = () => setIsComic((prev) => !prev);
+  const toggleSketchbook = () => setIsSketchbook((prev) => !prev);
+  const toggleHellenic = () => setIsHellenic((prev) => !prev);
+  const toggleGlitch = () => setIsGlitch((prev) => !prev);
 
   return (
-    <VisualSettingsContext.Provider value={{
-      isInverted, toggleInvert,
-      isRetro, toggleRetro,
-      isParty, toggleParty,
-      isMirror, toggleMirror,
-      isNoir, toggleNoir,
-      isTerminal, toggleTerminal,
-      isBlueprint, toggleBlueprint,
-      isSepia, toggleSepia,
-      isVaporwave, toggleVaporwave,
-      isCyberpunk, toggleCyberpunk,
-      isGameboy, toggleGameboy,
-      isComic, toggleComic,
-      isSketchbook, toggleSketchbook,
-      isHellenic, toggleHellenic,
-      isGlitch, toggleGlitch
-    }}>
+    <VisualSettingsContext.Provider
+      value={{
+        isInverted,
+        toggleInvert,
+        isRetro,
+        toggleRetro,
+        isParty,
+        toggleParty,
+        isMirror,
+        toggleMirror,
+        isNoir,
+        toggleNoir,
+        isTerminal,
+        toggleTerminal,
+        isBlueprint,
+        toggleBlueprint,
+        isSepia,
+        toggleSepia,
+        isVaporwave,
+        toggleVaporwave,
+        isCyberpunk,
+        toggleCyberpunk,
+        isGameboy,
+        toggleGameboy,
+        isComic,
+        toggleComic,
+        isSketchbook,
+        toggleSketchbook,
+        isHellenic,
+        toggleHellenic,
+        isGlitch,
+        toggleGlitch,
+      }}
+    >
       {children}
-    </VisualSettingsContext.Provider>);
+    </VisualSettingsContext.Provider>
+  );
 };

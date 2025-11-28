@@ -27,7 +27,8 @@ const AppCard = ({ app }) => {
           </p>
 
           <div className="mt-6 flex items-center text-sm font-medium text-primary-400 group-hover:text-primary-300 transition-colors font-mono">
-            Launch App <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+            Launch App{' '}
+            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
           </div>
         </div>
       </div>

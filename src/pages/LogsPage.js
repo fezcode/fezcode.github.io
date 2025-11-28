@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   LogIcon,
@@ -7,7 +7,7 @@ import {
   FunnelIcon,
   XCircle,
 } from '@phosphor-icons/react';
-import {motion, AnimatePresence} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import LogCard from '../components/LogCard';
 import useSeo from '../hooks/useSeo';
 import colors from '../config/colors';
@@ -26,19 +26,19 @@ const categories = [
 ];
 
 const iconColors = [
-  "text-red-500",
-  "text-orange-500",
-  "text-amber-500",
-  "text-yellow-500",
-  "text-lime-500",
-  "text-green-500",
-  "text-emerald-500",
-  "text-teal-500",
-  "text-cyan-500",
-  "text-sky-500",
-  "text-blue-500",
-  "text-indigo-500",
-  "text-violet-500",
+  'text-red-500',
+  'text-orange-500',
+  'text-amber-500',
+  'text-yellow-500',
+  'text-lime-500',
+  'text-green-500',
+  'text-emerald-500',
+  'text-teal-500',
+  'text-cyan-500',
+  'text-sky-500',
+  'text-blue-500',
+  'text-indigo-500',
+  'text-violet-500',
   // "text-purple-500",
   // "text-fuchsia-500",
   // "text-pink-500",
@@ -78,10 +78,14 @@ const LogsPage = () => {
     const fetchLogs = async () => {
       try {
         const fetchPromises = categories.map(async (category) => {
-          const response = await fetch(`/logs/${category.toLowerCase()}/${category.toLowerCase()}.json`);
+          const response = await fetch(
+            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.json`,
+          );
           if (!response.ok) {
             // If a category JSON file is not found, return an empty array for that category
-            console.warn(`Category JSON not found for ${category}: ${response.statusText}`);
+            console.warn(
+              `Category JSON not found for ${category}: ${response.statusText}`,
+            );
             return [];
           }
           return response.json();
@@ -90,11 +94,13 @@ const LogsPage = () => {
         const allLogsArrays = await Promise.all(fetchPromises);
         const combinedLogs = allLogsArrays.flat(); // Flatten the array of arrays
 
-        const logsWithId = combinedLogs.map((log, index) => ({
-          ...log,
-          id: `${log.title}-${log.date}-${index}`,
-          originalIndex: index,
-        })).sort((a, b) => new Date(b.date) - new Date(a.date));
+        const logsWithId = combinedLogs
+          .map((log, index) => ({
+            ...log,
+            id: `${log.title}-${log.date}-${index}`,
+            originalIndex: index,
+          }))
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
         setLogs(logsWithId);
       } catch (err) {
         console.error('Error fetching logs:', err);
@@ -115,11 +121,13 @@ const LogsPage = () => {
         const matchesSearch =
           log.title.toLowerCase().includes(lowerQuery) ||
           (log.author && log.author.toLowerCase().includes(lowerQuery)) ||
-          (log.description && log.description.toLowerCase().includes(lowerQuery));
+          (log.description &&
+            log.description.toLowerCase().includes(lowerQuery));
         return matchesCategory && matchesSearch;
       }),
     );
-    const randomIconColor = iconColors[Math.floor(Math.random() * iconColors.length)]
+    const randomIconColor =
+      iconColors[Math.floor(Math.random() * iconColors.length)];
     setIconColor(randomIconColor);
   }, [logs, selectedCategories, searchQuery]);
 
@@ -134,7 +142,7 @@ const LogsPage = () => {
   const clearFilters = () => {
     setSelectedCategories([]);
     setSearchQuery('');
-  }
+  };
 
   return (
     <div className="py-16 sm:py-24 bg-gray-950 min-h-screen">
@@ -179,8 +187,7 @@ const LogsPage = () => {
           {/* Search Bar */}
           <div className="relative group w-full md:w-72">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-              <MagnifyingGlassIcon
-                className="h-5 w-5 text-gray-500 group-focus-within:text-primary-400 transition-colors"/>
+              <MagnifyingGlassIcon className="h-5 w-5 text-gray-500 group-focus-within:text-primary-400 transition-colors" />
             </div>
             <input
               type="text"
@@ -192,12 +199,12 @@ const LogsPage = () => {
           </div>
         </div>
 
-        <hr className="border-gray-800 mb-8"/>
+        <hr className="border-gray-800 mb-8" />
 
         {/* Filter Pills */}
         <div className="flex flex-wrap items-center gap-2 mb-10">
           <div className="flex items-center gap-2 mr-2 text-gray-500 font-mono text-sm">
-            <FunnelIcon size={16}/>
+            <FunnelIcon size={16} />
             <span>Filter:</span>
           </div>
           {categories.map((category) => {
@@ -232,8 +239,11 @@ const LogsPage = () => {
           })}
 
           {(selectedCategories.length > 0 || searchQuery) && (
-            <button onClick={clearFilters} className="font-arvo ml-auto text-sm text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors">
-              <XCircle size={20}/> Clear
+            <button
+              onClick={clearFilters}
+              className="font-arvo ml-auto text-sm text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors"
+            >
+              <XCircle size={20} /> Clear
             </button>
           )}
         </div>
@@ -264,10 +274,10 @@ const LogsPage = () => {
                 <motion.div
                   layout
                   key={log.id}
-                  initial={{opacity: 0, scale: 0.9}}
-                  animate={{opacity: 1, scale: 1}}
-                  exit={{opacity: 0, scale: 0.9}}
-                  transition={{duration: 0.2}}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.2 }}
                 >
                   <LogCard
                     log={log}

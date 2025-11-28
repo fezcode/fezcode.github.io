@@ -1,5 +1,5 @@
-import React, {useRef, useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useRef, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   PencilSimpleIcon,
@@ -11,7 +11,7 @@ import {
 } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
-import {useToast} from '../../hooks/useToast';
+import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const WhiteboardPage = () => {
@@ -24,14 +24,15 @@ const WhiteboardPage = () => {
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Whiteboard | Fezcodex',
-    twitterDescription: 'A simple digital whiteboard for sketching and doodling.',
+    twitterDescription:
+      'A simple digital whiteboard for sketching and doodling.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
-  const lastPos = useRef({x: 0, y: 0}); // Track last position for segment drawing
-  const {addToast} = useToast();
+  const lastPos = useRef({ x: 0, y: 0 }); // Track last position for segment drawing
+  const { addToast } = useToast();
   const [isDrawing, setIsDrawing] = useState(false);
   const [context, setContext] = useState(null);
   const [color, setColor] = useState('#000000');
@@ -79,7 +80,7 @@ const WhiteboardPage = () => {
   }, [context, color, lineWidth, tool]);
 
   const getCoordinates = (event) => {
-    if (!canvasRef.current) return {x: 0, y: 0};
+    if (!canvasRef.current) return { x: 0, y: 0 };
     const canvas = canvasRef.current;
     const rect = canvas.getBoundingClientRect();
 
@@ -101,8 +102,8 @@ const WhiteboardPage = () => {
 
   const startDrawing = (event) => {
     event.preventDefault(); // Prevent scrolling on touch
-    const {x, y} = getCoordinates(event);
-    lastPos.current = {x, y};
+    const { x, y } = getCoordinates(event);
+    lastPos.current = { x, y };
     setIsDrawing(true);
 
     // Draw a dot
@@ -115,7 +116,7 @@ const WhiteboardPage = () => {
   const draw = (event) => {
     event.preventDefault();
     if (!isDrawing) return;
-    const {x, y} = getCoordinates(event);
+    const { x, y } = getCoordinates(event);
 
     context.beginPath();
     context.moveTo(lastPos.current.x, lastPos.current.y);
@@ -134,7 +135,7 @@ const WhiteboardPage = () => {
     }
 
     context.stroke();
-    lastPos.current = {x, y};
+    lastPos.current = { x, y };
   };
 
   const stopDrawing = () => {
@@ -149,7 +150,11 @@ const WhiteboardPage = () => {
     const rect = canvas.getBoundingClientRect();
     context.fillStyle = '#ffffff';
     context.fillRect(0, 0, rect.width, rect.height);
-    addToast({title: 'Canvas Cleared', message: 'Start fresh!', duration: 2000});
+    addToast({
+      title: 'Canvas Cleared',
+      message: 'Start fresh!',
+      duration: 2000,
+    });
   };
 
   const downloadCanvas = () => {
@@ -159,7 +164,11 @@ const WhiteboardPage = () => {
     link.href = image;
     link.download = 'whiteboard_doodle.png';
     link.click();
-    addToast({title: 'Saved', message: 'Image downloaded successfully.', duration: 2000});
+    addToast({
+      title: 'Saved',
+      message: 'Image downloaded successfully.',
+      duration: 2000,
+    });
   };
 
   const cardStyle = {
@@ -181,11 +190,15 @@ const WhiteboardPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-          <BreadcrumbTitle title="Whiteboard" slug="draw" />
-        <hr className="border-gray-700"/>
+        <BreadcrumbTitle title="Whiteboard" slug="draw" />
+        <hr className="border-gray-700" />
 
         <div className="flex justify-center items-center mt-16">
           <div
@@ -203,13 +216,11 @@ const WhiteboardPage = () => {
 
             <div className="relative z-10 p-1">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center justify-center gap-2">
-                <PencilSimpleIcon size={32}/> Whiteboard
+                <PencilSimpleIcon size={32} /> Whiteboard
               </h1>
 
               {/* Toolbar */}
-              <div
-                className="flex flex-wrap justify-between items-center bg-gray-800 p-3 rounded-t-lg border-b border-gray-700 gap-4">
-
+              <div className="flex flex-wrap justify-between items-center bg-gray-800 p-3 rounded-t-lg border-b border-gray-700 gap-4">
                 {/* Tools */}
                 <div className="flex gap-2">
                   <button
@@ -217,27 +228,27 @@ const WhiteboardPage = () => {
                     className={`p-2 rounded ${tool === 'pen' ? 'bg-blue-600 text-white' : 'bg-gray-700 hover:bg-gray-600'}`}
                     title="Pen"
                   >
-                    <PencilSimpleIcon size={24}/>
+                    <PencilSimpleIcon size={24} />
                   </button>
                   <button
                     onClick={() => setTool('eraser')}
                     className={`p-2 rounded ${tool === 'eraser' ? 'bg-blue-600 text-white' : 'bg-gray-700 hover:bg-gray-600'}`}
                     title="Eraser"
                   >
-                    <Eraser size={24}/>
+                    <Eraser size={24} />
                   </button>
                   <button
                     onClick={() => setIsSquiggly(!isSquiggly)}
                     className={`p-2 rounded ${isSquiggly ? 'bg-purple-600 text-white' : 'bg-gray-700 hover:bg-gray-600'}`}
                     title="Squiggly Mode"
                   >
-                    <Waves size={24}/>
+                    <Waves size={24} />
                   </button>
                 </div>
 
                 {/* Colors */}
                 <div className="flex gap-2 items-center">
-                  <Palette size={24} className="text-gray-400 mr-1"/>
+                  <Palette size={24} className="text-gray-400 mr-1" />
                   {colorsList.map((c) => (
                     <button
                       key={c}
@@ -246,7 +257,7 @@ const WhiteboardPage = () => {
                         setTool('pen');
                       }}
                       className={`w-6 h-6 rounded-full border-2 ${color === c && tool === 'pen' ? 'border-white scale-110' : 'border-transparent hover:scale-110'} transition-transform`}
-                      style={{backgroundColor: c}}
+                      style={{ backgroundColor: c }}
                       title={c}
                     />
                   ))}
@@ -272,14 +283,14 @@ const WhiteboardPage = () => {
                     className="p-2 rounded bg-red-500/20 text-red-400 hover:bg-red-500/30 border border-red-500/50 transition-colors"
                     title="Clear Canvas"
                   >
-                    <Trash size={20}/>
+                    <Trash size={20} />
                   </button>
                   <button
                     onClick={downloadCanvas}
                     className="p-2 rounded bg-green-500/20 text-green-400 hover:bg-green-500/30 border border-green-500/50 transition-colors"
                     title="Download"
                   >
-                    <DownloadSimple size={20}/>
+                    <DownloadSimple size={20} />
                   </button>
                 </div>
               </div>
@@ -304,7 +315,6 @@ const WhiteboardPage = () => {
               <p className="text-center mt-4 text-sm opacity-60">
                 Draw something amazing! Or just a stick figure.
               </p>
-
             </div>
           </div>
         </div>

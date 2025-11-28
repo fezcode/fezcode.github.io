@@ -1,26 +1,94 @@
-import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, ArticleIcon} from '@phosphor-icons/react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, ArticleIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
-import {useToast} from '../../hooks/useToast';
+import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const LOREM_WORDS = [
-  'lorem', 'ipsum', 'dolor', 'sit', 'amet', 'consectetur', 'adipiscing', 'elit', 'sed', 'do',
-  'eiusmod', 'tempor', 'incididunt', 'ut', 'labore', 'et', 'dolore', 'magna', 'aliqua', 'ut',
-  'enim', 'ad', 'minim', 'veniam', 'quis', 'nostrud', 'exercitation', 'ullamco', 'laboris',
-  'nisi', 'ut', 'aliquip', 'ex', 'ea', 'commodo', 'consequat', 'duis', 'aute', 'irure', 'dolor',
-  'in', 'reprehenderit', 'in', 'voluptate', 'velit', 'esse', 'cillum', 'dolore', 'eu', 'fugiat',
-  'nulla', 'pariatur', 'excepteur', 'sint', 'occaecat', 'cupidatat', 'non', 'proident', 'sunt',
-  'in', 'culpa', 'qui', 'officia', 'deserunt', 'mollit', 'anim', 'id', 'est', 'laborum'
+  'lorem',
+  'ipsum',
+  'dolor',
+  'sit',
+  'amet',
+  'consectetur',
+  'adipiscing',
+  'elit',
+  'sed',
+  'do',
+  'eiusmod',
+  'tempor',
+  'incididunt',
+  'ut',
+  'labore',
+  'et',
+  'dolore',
+  'magna',
+  'aliqua',
+  'ut',
+  'enim',
+  'ad',
+  'minim',
+  'veniam',
+  'quis',
+  'nostrud',
+  'exercitation',
+  'ullamco',
+  'laboris',
+  'nisi',
+  'ut',
+  'aliquip',
+  'ex',
+  'ea',
+  'commodo',
+  'consequat',
+  'duis',
+  'aute',
+  'irure',
+  'dolor',
+  'in',
+  'reprehenderit',
+  'in',
+  'voluptate',
+  'velit',
+  'esse',
+  'cillum',
+  'dolore',
+  'eu',
+  'fugiat',
+  'nulla',
+  'pariatur',
+  'excepteur',
+  'sint',
+  'occaecat',
+  'cupidatat',
+  'non',
+  'proident',
+  'sunt',
+  'in',
+  'culpa',
+  'qui',
+  'officia',
+  'deserunt',
+  'mollit',
+  'anim',
+  'id',
+  'est',
+  'laborum',
 ];
 
 const LoremIpsumGeneratorPage = () => {
   useSeo({
     title: 'Lorem Ipsum Generator | Fezcodex',
     description: 'Generate random placeholder text for your projects.',
-    keywords: ['Fezcodex', 'lorem ipsum', 'text generator', 'placeholder text', 'dummy text'],
+    keywords: [
+      'Fezcodex',
+      'lorem ipsum',
+      'text generator',
+      'placeholder text',
+      'dummy text',
+    ],
     ogTitle: 'Lorem Ipsum Generator | Fezcodex',
     ogDescription: 'Generate random placeholder text for your projects.',
     ogImage: 'https://fezcode.github.io/logo512.png',
@@ -30,7 +98,7 @@ const LoremIpsumGeneratorPage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
-  const {addToast} = useToast();
+  const { addToast } = useToast();
   const [paragraphs, setParagraphs] = useState(3);
   const [startWithLorem, setStartWithLorem] = useState(true);
   const [generatedText, setGeneratedText] = useState('');
@@ -45,11 +113,13 @@ const LoremIpsumGeneratorPage = () => {
         const numWords = Math.floor(Math.random() * 10) + 5; // 5 to 14 words
         let sentence = [];
         for (let k = 0; k < numWords; k++) {
-          const word = LOREM_WORDS[Math.floor(Math.random() * LOREM_WORDS.length)];
+          const word =
+            LOREM_WORDS[Math.floor(Math.random() * LOREM_WORDS.length)];
           sentence.push(word);
         }
         // Capitalize first letter
-        sentence[0] = sentence[0].charAt(0).toUpperCase() + sentence[0].slice(1);
+        sentence[0] =
+          sentence[0].charAt(0).toUpperCase() + sentence[0].slice(1);
         paragraph.push(sentence.join(' ') + '.');
       }
       text.push(paragraph.join(' '));
@@ -58,9 +128,10 @@ const LoremIpsumGeneratorPage = () => {
     let finalResult = text.join('\n\n');
 
     if (startWithLorem) {
-      const prefix = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ";
+      const prefix =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ';
       // Simple check to avoid double generating if random chance made it similar
-      if (!finalResult.startsWith("Lorem")) {
+      if (!finalResult.startsWith('Lorem')) {
         finalResult = prefix + finalResult;
       }
     }
@@ -76,7 +147,11 @@ const LoremIpsumGeneratorPage = () => {
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedText).then(() => {
-      addToast({title: 'Copied!', message: 'Text copied to clipboard.', duration: 2000});
+      addToast({
+        title: 'Copied!',
+        message: 'Text copied to clipboard.',
+        duration: 2000,
+      });
     });
   };
 
@@ -89,11 +164,15 @@ const LoremIpsumGeneratorPage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+        <Link
+          to="/apps"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+        >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          Back to Apps
         </Link>
-          <BreadcrumbTitle title="Lorem Ipsum Generator" slug="lorem" />
-        <hr className="border-gray-700"/>
+        <BreadcrumbTitle title="Lorem Ipsum Generator" slug="lorem" />
+        <hr className="border-gray-700" />
         <div className="flex justify-center items-center mt-16">
           <div
             className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
@@ -109,19 +188,23 @@ const LoremIpsumGeneratorPage = () => {
             ></div>
             <div className="relative z-10 p-1">
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center gap-2">
-                <ArticleIcon size={32}/> Lorem Ipsum Generator
+                <ArticleIcon size={32} /> Lorem Ipsum Generator
               </h1>
-              <hr className="border-gray-700 mb-6"/>
+              <hr className="border-gray-700 mb-6" />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label className="block text-sm font-medium mb-2 opacity-80">Paragraphs</label>
+                  <label className="block text-sm font-medium mb-2 opacity-80">
+                    Paragraphs
+                  </label>
                   <input
                     type="number"
                     min="1"
                     max="50"
                     value={paragraphs}
-                    onChange={(e) => setParagraphs(parseInt(e.target.value) || 1)}
+                    onChange={(e) =>
+                      setParagraphs(parseInt(e.target.value) || 1)
+                    }
                     className="w-full bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-blue-500 transition-colors"
                   />
                 </div>
@@ -142,7 +225,10 @@ const LoremIpsumGeneratorPage = () => {
                 <button
                   onClick={generateText}
                   className="px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                  style={{borderColor: cardStyle.color, color: cardStyle.color}}
+                  style={{
+                    borderColor: cardStyle.color,
+                    color: cardStyle.color,
+                  }}
                 >
                   Generate
                 </button>
@@ -154,11 +240,9 @@ const LoremIpsumGeneratorPage = () => {
                 </button>
               </div>
 
-              <div
-                className="bg-black/30 rounded-lg p-4 min-h-[200px] max-h-[500px] overflow-y-auto font-serif leading-relaxed whitespace-pre-wrap border border-gray-700">
+              <div className="bg-black/30 rounded-lg p-4 min-h-[200px] max-h-[500px] overflow-y-auto font-serif leading-relaxed whitespace-pre-wrap border border-gray-700">
                 {generatedText}
               </div>
-
             </div>
           </div>
         </div>

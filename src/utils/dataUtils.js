@@ -33,13 +33,15 @@ export const getPosts = async () => {
     });
 
     // Flatten series posts and individual posts into a single array
-    const flattenedPosts = processedPosts.map(post => ({
+    const flattenedPosts = processedPosts.map((post) => ({
       title: post.title,
       // Use updated date if available, otherwise original date
       date: post.updated || post.date,
       slug: post.slug,
       // Create a link based on whether it's a series post or individual
-      link: post.series ? `/blog/series/${post.series.slug}/${post.slug}` : `/blog/${post.slug}`,
+      link: post.series
+        ? `/blog/series/${post.series.slug}/${post.slug}`
+        : `/blog/${post.slug}`,
       description: post.description || 'A blog post from Fezcodex.',
       image: post.image || '/images/placeholder-blog.svg',
     }));
@@ -56,7 +58,7 @@ export const getProjects = async () => {
     const allProjectsData = await fetchJson('/projects/projects.json');
     // Assuming projects.json directly contains an array of project objects
     // Each project object should ideally have title, date, and slug properties
-    const formattedProjects = allProjectsData.map(project => ({
+    const formattedProjects = allProjectsData.map((project) => ({
       title: project.title,
       date: project.date, // Assuming projects have a 'date' field
       slug: project.slug,
@@ -76,7 +78,7 @@ export const getLogs = async () => {
     const allLogsData = await fetchJson('/logs/logs.json');
     // Assuming logs.json directly contains an array of log objects
     // Each log object should ideally have title, date, and slug properties
-    return allLogsData.map(log => ({
+    return allLogsData.map((log) => ({
       title: log.title,
       date: log.date, // Assuming logs have a 'date' field
       slug: log.slug,

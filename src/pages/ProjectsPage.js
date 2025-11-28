@@ -66,13 +66,15 @@ const ProjectsPage = () => {
             to="/"
             className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
           >
-            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Home
+            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+            Back to Home
           </Link>
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
             My <span className="text-orange-300">Projects</span>
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
-            A collection of my <span className="text-blue-400">work</span> and <span className="text-blue-400">experiments</span>.
+            A collection of my <span className="text-blue-400">work</span> and{' '}
+            <span className="text-blue-400">experiments</span>.
           </p>
           <div className="mt-4 text-center">
             <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">

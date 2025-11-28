@@ -47,6 +47,7 @@ import {
   TrophyIcon,
   CubeIcon,
   NotePencilIcon,
+  MusicNoteIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -98,4 +99,5 @@ export const appIcons = {
   TrophyIcon,
   CubeIcon,
   NotePencilIcon,
+  MusicNoteIcon,
 };

@@ -49,15 +49,15 @@ const GenericModal = ({ isOpen, onClose, title, children }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <div className="modal-header">
-          <h2 className="text-xl font-mono text-primary-400 font-bold">{title}</h2>
+          <h2 className="text-xl font-mono text-primary-400 font-bold">
+            {title}
+          </h2>
           <button onClick={handleClose} className="close-button">
             <XIcon size={24} />
           </button>
         </div>
         <hr className="border-gray-800/50" />
-        <div className="modal-body text-gray-300 font-mono">
-          {children}
-        </div>
+        <div className="modal-body text-gray-300 font-mono">{children}</div>
       </div>
     </div>
   );

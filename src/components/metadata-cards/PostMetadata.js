@@ -37,9 +37,9 @@ const PostMetadata = ({
   };
 
   const categoryBadgeFontColorStyle =
-    metadata.category === 'gist' || metadata.category === 'gist' ? 'text-black' : 'text-white'
-  ;
-
+    metadata.category === 'gist' || metadata.category === 'gist'
+      ? 'text-black'
+      : 'text-white';
   const handleButtonClick = () => {
     if (isAtTop) {
       window.scrollTo({
@@ -101,7 +101,9 @@ const PostMetadata = ({
           {estimatedReadingTime > 0 && (
             <div>
               <Label>Reading Time</Label>
-              <p className="text-gray-300 ml-1 mt-1">{estimatedReadingTime} min read</p>
+              <p className="text-gray-300 ml-1 mt-1">
+                {estimatedReadingTime} min read
+              </p>
             </div>
           )}
           {metadata.tags && (

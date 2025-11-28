@@ -62,7 +62,7 @@ const Search = ({ isVisible }) => {
         <input
           ref={inputRef}
           type="text"
-          placeholder={isLoading ? "Loading..." : "Search..."}
+          placeholder={isLoading ? 'Loading...' : 'Search...'}
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           onFocus={() => setIsDropdownOpen(true)}

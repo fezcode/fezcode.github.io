@@ -1,15 +1,15 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {useParams, Link} from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import LogMetadata from '../components/metadata-cards/LogMetadata';
-import {ArrowLeftIcon, ArrowSquareOutIcon} from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
 import ImageModal from '../components/ImageModal';
 
 import Seo from '../components/Seo';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 
-const LinkRenderer = ({href, children}) => {
+const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
     <a
@@ -18,13 +18,13 @@ const LinkRenderer = ({href, children}) => {
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
     >
-      {children} {isExternal && <ArrowSquareOutIcon className="text-xs"/>}
+      {children} {isExternal && <ArrowSquareOutIcon className="text-xs" />}
     </a>
   );
 };
 
 const LogDetailPage = () => {
-  const {category, slugId} = useParams();
+  const { category, slugId } = useParams();
   const [log, setLog] = useState(null);
   const [loading, setLoading] = useState(true);
   const contentRef = useRef(null);
@@ -51,8 +51,10 @@ const LogDetailPage = () => {
         // Fetch the specific category JSON based on the URL parameter
         const response = await fetch(`/logs/${category}/${category}.json`);
         if (!response.ok) {
-          console.error(`Category JSON not found for ${category}: ${response.statusText}`);
-          setLog({attributes: {title: 'Category not found'}, body: ''});
+          console.error(
+            `Category JSON not found for ${category}: ${response.statusText}`,
+          );
+          setLog({ attributes: { title: 'Category not found' }, body: '' });
           setLoading(false);
           return;
         }
@@ -62,25 +64,31 @@ const LogDetailPage = () => {
         logMetadata = categoryLogs.find((item) => item.slug === slugId);
 
         if (logMetadata) {
-          const logContentResponse = await fetch(`/logs/${category}/${slugId}.txt`);
+          const logContentResponse = await fetch(
+            `/logs/${category}/${slugId}.txt`,
+          );
 
           if (logContentResponse.ok) {
             logBody = await logContentResponse.text();
           } else {
-            console.error(`Failed to fetch log content for ${slugId}.txt: ${logContentResponse.statusText}`);
+            console.error(
+              `Failed to fetch log content for ${slugId}.txt: ${logContentResponse.statusText}`,
+            );
           }
         } else {
-          console.warn(`Log metadata not found for slugId: ${slugId} in category: ${category}`);
+          console.warn(
+            `Log metadata not found for slugId: ${slugId} in category: ${category}`,
+          );
         }
 
         if (logMetadata && logBody) {
-          setLog({attributes: logMetadata, body: logBody});
+          setLog({ attributes: logMetadata, body: logBody });
         } else {
-          setLog({attributes: {title: 'Log not found'}, body: ''});
+          setLog({ attributes: { title: 'Log not found' }, body: '' });
         }
       } catch (error) {
         console.error('Error fetching log:', error);
-        setLog({attributes: {title: 'Error loading log'}, body: ''});
+        setLog({ attributes: { title: 'Error loading log' }, body: '' });
       }
       setLoading(false);
     };
@@ -124,7 +132,7 @@ const LogDetailPage = () => {
     return <div className="text-center py-16">Log not found</div>;
   }
 
-  const ImageRenderer = ({src, alt}) => (
+  const ImageRenderer = ({ src, alt }) => (
     <img
       src={src}
       alt={alt}
@@ -158,7 +166,7 @@ const LogDetailPage = () => {
               to="/logs"
               className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
             >
-              <ArrowLeftIcon size={24}/> Back to Logs
+              <ArrowLeftIcon size={24} /> Back to Logs
             </Link>
             <div
               ref={contentRef}
@@ -167,14 +175,14 @@ const LogDetailPage = () => {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
-                components={{a: LinkRenderer, img: ImageRenderer}}
+                components={{ a: LinkRenderer, img: ImageRenderer }}
               >
                 {log.body}
               </ReactMarkdown>
             </div>
           </div>
           <div className="hidden lg:block">
-            <LogMetadata metadata={log.attributes}/>
+            <LogMetadata metadata={log.attributes} />
           </div>
         </div>
       </div>

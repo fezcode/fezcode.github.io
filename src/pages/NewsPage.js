@@ -41,7 +41,8 @@ const getItemClasses = (type, isFeatured = false) => {
   }
 
   // Common styles for all cards
-  const baseClasses = 'relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300';
+  const baseClasses =
+    'relative rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300';
 
   // Combine classes.
   return `${baseClasses} ${bgColorClass} ${borderColorClass} border-l-4 ${hoverBgColorClass}`;
@@ -70,7 +71,12 @@ function NewsPage() {
 
   // Get current date for the header
   const today = new Date();
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
   const formattedDate = today.toLocaleDateString('en-US', options);
 
   useEffect(() => {
@@ -81,7 +87,7 @@ function NewsPage() {
           getProjects(),
         ]);
 
-        const formattedBlogPosts = blogPosts.map(post => ({
+        const formattedBlogPosts = blogPosts.map((post) => ({
           type: 'Blog Post',
           title: post.title,
           date: post.date,
@@ -90,7 +96,7 @@ function NewsPage() {
           image: post.image,
         }));
 
-        const formattedProjects = projects.map(project => ({
+        const formattedProjects = projects.map((project) => ({
           type: 'Project',
           title: project.title,
           date: project.date,
@@ -160,14 +166,26 @@ function NewsPage() {
             <h2 className="text-4xl font-playfairDisplay font-bold text-gray-100 mb-6 border-b-2 border-gray-700 pb-3">
               Latest
             </h2>
-          <Link to={newsItems[0].link} className={`${getItemClasses(newsItems[0].type, true)} flex flex-col h-full group`}>
+            <Link
+              to={newsItems[0].link}
+              className={`${getItemClasses(newsItems[0].type, true)} flex flex-col h-full group`}
+            >
               <div className="relative h-72 sm:h-96 w-full overflow-hidden block">
-                <img src={newsItems[0].image} alt={newsItems[0].title} className="absolute inset-0 w-full h-full object-cover"/>
+                <img
+                  src={newsItems[0].image}
+                  alt={newsItems[0].title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
               </div>
               <div className="p-8 flex-grow flex flex-col">
                 <span className="block text-sm font-arvo text-primary-400 uppercase mb-3 tracking-wider">
-                  {newsItems[0].type} &mdash; {new Date(newsItems[0].date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                  {newsItems[0].type} &mdash;{' '}
+                  {new Date(newsItems[0].date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
                 </span>
                 <h3 className="text-4xl font-playfairDisplay font-extrabold text-gray-50 group-hover:text-primary-300 transition-colors duration-300 mb-4 leading-tight">
                   {newsItems[0].title}
@@ -177,8 +195,19 @@ function NewsPage() {
                 </p>
                 <div className="inline-flex items-center text-primary-400 group-hover:text-primary-300 font-arvo transition-colors duration-300 mt-auto">
                   Continue Reading
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  <svg
+                    className="ml-2 w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    ></path>
                   </svg>
                 </div>
               </div>
@@ -193,29 +222,53 @@ function NewsPage() {
               and More...
             </h2>
             {newsItems.slice(1, 3).map((item, index) => (
-                            <Link key={`secondary-${index}`} to={item.link} className={`${getItemClasses(item.type)} flex flex-col group`}>
-                              <div className="relative h-48 w-full overflow-hidden">
-                                <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover"/>
-                                <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
-                              </div>
-                              <div className="p-6 flex-grow flex flex-col">
-                                <span className="block text-xs font-arvo text-primary-400 uppercase mb-2">
-                                  {item.type} &mdash; {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                                </span>
-                                <h3 className="text-xl font-playfairDisplay font-bold text-gray-50 group-hover:text-primary-300 transition-colors duration-300 mb-3 leading-snug">
-                                  {item.title}
-                                </h3>
-                                <p className="text-gray-300 font-inter text-sm line-clamp-3">
-                                  {item.description}
-                                </p>
-                                <div className="inline-flex items-center text-primary-400 group-hover:text-primary-300 font-arvo transition-colors duration-300 mt-auto pt-4">
-                                  Read More
-                                  <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                  </svg>
-                                </div>
-                              </div>
-                            </Link>            ))}
+              <Link
+                key={`secondary-${index}`}
+                to={item.link}
+                className={`${getItemClasses(item.type)} flex flex-col group`}
+              >
+                <div className="relative h-48 w-full overflow-hidden">
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
+                </div>
+                <div className="p-6 flex-grow flex flex-col">
+                  <span className="block text-xs font-arvo text-primary-400 uppercase mb-2">
+                    {item.type} &mdash;{' '}
+                    {new Date(item.date).toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                    })}
+                  </span>
+                  <h3 className="text-xl font-playfairDisplay font-bold text-gray-50 group-hover:text-primary-300 transition-colors duration-300 mb-3 leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-300 font-inter text-sm line-clamp-3">
+                    {item.description}
+                  </p>
+                  <div className="inline-flex items-center text-primary-400 group-hover:text-primary-300 font-arvo transition-colors duration-300 mt-auto pt-4">
+                    Read More
+                    <svg
+                      className="ml-2 w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      ></path>
+                    </svg>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </section>
         )}
 
@@ -235,12 +288,20 @@ function NewsPage() {
                   }`}
                 >
                   <div className="relative h-48 w-full overflow-hidden block">
-                    <img src={item.image} alt={item.title} className="absolute inset-0 w-full h-full object-cover"/>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent"></div>
                   </div>
                   <div className="p-6 flex-grow flex flex-col">
                     <span className="block text-xs font-arvo text-primary-400 uppercase mb-2">
-                      {item.type} &mdash; {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                      {item.type} &mdash;{' '}
+                      {new Date(item.date).toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                      })}
                     </span>
                     <h3 className="text-xl font-playfairDisplay font-bold text-gray-50 group-hover:text-primary-300 transition-colors duration-300 mb-3 leading-snug">
                       {item.title}
@@ -250,8 +311,19 @@ function NewsPage() {
                     </p>
                     <div className="inline-flex items-center text-primary-400 group-hover:text-primary-300 font-arvo transition-colors duration-300 mt-auto pt-4">
                       Read More
-                      <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                      <svg
+                        className="ml-2 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M17 8l4 4m0 0l-4 4m4-4H3"
+                        ></path>
                       </svg>
                     </div>
                   </div>

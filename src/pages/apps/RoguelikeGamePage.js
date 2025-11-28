@@ -185,7 +185,14 @@ function RoguelikeGamePage() {
       // If no win/loss condition, then enemies move
       moveEnemies(nextPlayerPos);
     },
-    [playerPosition, gameMap, exitPosition, enemyPositions, gameStatus, moveEnemies],
+    [
+      playerPosition,
+      gameMap,
+      exitPosition,
+      enemyPositions,
+      gameStatus,
+      moveEnemies,
+    ],
   );
 
   // Keyboard input handler
@@ -232,12 +239,21 @@ function RoguelikeGamePage() {
         {gameMap.map((row, y) =>
           row.map((tile, x) => {
             let content = tile;
-            let className = 'flex items-center justify-center w-6 h-6 text-xs font-mono';
+            let className =
+              'flex items-center justify-center w-6 h-6 text-xs font-mono';
 
-            if (playerPosition && playerPosition.x === x && playerPosition.y === y) {
+            if (
+              playerPosition &&
+              playerPosition.x === x &&
+              playerPosition.y === y
+            ) {
               content = ENTITY_PLAYER;
               className += ' bg-blue-500 text-white';
-            } else if (exitPosition && exitPosition.x === x && exitPosition.y === y) {
+            } else if (
+              exitPosition &&
+              exitPosition.x === x &&
+              exitPosition.y === y
+            ) {
               content = ENTITY_EXIT;
               className += ' bg-green-500 text-white';
             } else if (enemyPositions.some((ep) => ep.x === x && ep.y === y)) {
@@ -262,8 +278,12 @@ function RoguelikeGamePage() {
 
   return (
     <div className="flex flex-col items-center justify-center py-16 sm:py-24 text-gray-300">
-      <Link to="/apps" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-        <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps
+      <Link
+        to="/apps"
+        className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+      >
+        <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+        Back to Apps
       </Link>
       <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center">
         <CubeIcon size={48} className="mr-2" /> Roguelike Adventure
@@ -295,9 +315,7 @@ function RoguelikeGamePage() {
         </div>
       )}
 
-      <div className="border-2 border-gray-600 p-2 relative">
-        {renderMap()}
-      </div>
+      <div className="border-2 border-gray-600 p-2 relative">{renderMap()}</div>
 
       <div className="mt-6 text-center">
         <p>Use WASD Keys to Move</p>
