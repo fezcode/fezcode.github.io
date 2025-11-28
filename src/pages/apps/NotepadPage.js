@@ -129,7 +129,6 @@ const NotepadPage = () => {
       message: isFixedSize
         ? 'Notepad expanded to fill space.'
         : 'Notepad height is now fixed.',
-      icon: <TrophyIcon />,
       duration: 2000,
     });
   };

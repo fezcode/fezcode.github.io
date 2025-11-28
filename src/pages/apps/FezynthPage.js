@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   MusicNoteIcon,
@@ -153,16 +153,16 @@ const FezynthPage = () => {
     oscillator.start();
 
     // Update Ref immediately
-    activeNotesRef.current[freq] = {oscillator, gainNode};
+    activeNotesRef.current[freq] = { oscillator, gainNode };
     // Update State for UI
-    setActiveNotes((prev) => ({...prev, [freq]: true}));
+    setActiveNotes((prev) => ({ ...prev, [freq]: true }));
   };
 
   const stopNote = (freq) => {
     const ctx = audioContextRef.current;
     if (!ctx || !activeNotesRef.current[freq]) return;
 
-    const {oscillator, gainNode} = activeNotesRef.current[freq];
+    const { oscillator, gainNode } = activeNotesRef.current[freq];
 
     // Envelope Release
     gainNode.gain.cancelScheduledValues(ctx.currentTime);
@@ -179,7 +179,7 @@ const FezynthPage = () => {
 
     // Cleanup State for UI immediately (visual feedback)
     setActiveNotes((prev) => {
-      const newState = {...prev};
+      const newState = { ...prev };
       delete newState[freq];
       return newState;
     });
@@ -217,13 +217,17 @@ const FezynthPage = () => {
           to="/apps"
           className="group text-primary-400 hover:underline flex items-center gap-2 text-lg mb-8"
         >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/>{' '}
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
           Back to Apps
         </Link>
 
         <div className="mx-auto max-w-2xl text-center mb-12">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl flex items-center justify-center gap-4">
-            <MusicNoteIcon size={48} weight="fill" className="text-purple-400" />
+            <MusicNoteIcon
+              size={48}
+              weight="fill"
+              className="text-purple-400"
+            />
             Fezynth
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-300">
@@ -235,14 +239,14 @@ const FezynthPage = () => {
           {/* Controls Panel */}
           <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-xl space-y-6">
             <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <Faders size={28} className="text-purple-400"/> Controls
+              <Faders size={28} className="text-purple-400" /> Controls
             </h2>
 
             {/* Volume */}
             <div>
               <label className="flex justify-between text-sm font-medium text-gray-300 mb-2">
                 <span className="flex items-center gap-2">
-                  <SpeakerHigh/> Master Volume
+                  <SpeakerHigh /> Master Volume
                 </span>
                 <span>{Math.round(volume * 100)}%</span>
               </label>
@@ -260,7 +264,7 @@ const FezynthPage = () => {
             {/* Waveform */}
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                <Waves/> Oscillator Type
+                <Waves /> Oscillator Type
               </label>
               <div className="grid grid-cols-2 gap-2">
                 {['sine', 'square', 'sawtooth', 'triangle'].map((type) => (
@@ -296,7 +300,10 @@ const FezynthPage = () => {
                     }
                   }}
                   onBlur={(e) => {
-                    if (e.target.value === '' || isNaN(parseFloat(e.target.value))) {
+                    if (
+                      e.target.value === '' ||
+                      isNaN(parseFloat(e.target.value))
+                    ) {
                       setAttack(0.1); // Reset to default if invalid
                     }
                   }}
@@ -322,7 +329,10 @@ const FezynthPage = () => {
                     }
                   }}
                   onBlur={(e) => {
-                    if (e.target.value === '' || isNaN(parseFloat(e.target.value))) {
+                    if (
+                      e.target.value === '' ||
+                      isNaN(parseFloat(e.target.value))
+                    ) {
                       setRelease(0.5); // Reset to default if invalid
                     }
                   }}
@@ -342,8 +352,7 @@ const FezynthPage = () => {
                 height="200"
                 className="w-full h-full"
               />
-              <div
-                className="absolute top-2 right-2 px-2 py-1 bg-black/50 rounded text-xs text-gray-400 font-mono pointer-events-none">
+              <div className="absolute top-2 right-2 px-2 py-1 bg-black/50 rounded text-xs text-gray-400 font-mono pointer-events-none">
                 Oscilloscope
               </div>
             </div>

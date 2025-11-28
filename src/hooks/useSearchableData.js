@@ -308,7 +308,11 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'toggleGlitchMode',
           },
-          { title: 'Previous Page', type: 'command', commandId: 'previousPage' },
+          {
+            title: 'Previous Page',
+            type: 'command',
+            commandId: 'previousPage',
+          },
           { title: 'Next Page', type: 'command', commandId: 'nextPage' },
         ];
 

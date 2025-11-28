@@ -32,6 +32,7 @@ import {
   PushPin,
   Trophy,
   MusicNoteIcon,
+  SkullIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -261,11 +262,12 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               </button>
               {sidebarState.isAppsOpen && (
                 <nav className={getGroupClass(isAppsActive)}>
-                  <NavLink to="/apps/pinned" className={getLinkClass}>
+                  <NavLink to="/pinned-apps" className={getLinkClass}>
                     <PushPin size={24} />
                     <span>Pinned Apps</span>
                   </NavLink>
-                  <NavLink to="/apps" className={getLinkClass} end>
+                  <NavLink to="/apps" className={getLinkClass}>
+                  {/*<NavLink to="/apps" className={getLinkClass} end>*/}
                     <SquaresFourIcon size={24} />
                     <span>All Apps</span>
                   </NavLink>

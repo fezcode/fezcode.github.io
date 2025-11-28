@@ -124,6 +124,7 @@ const KeyboardTypingSpeedTesterPage = lazy(
 );
 const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
+const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));
@@ -565,6 +566,10 @@ function AnimatedRoutes() {
           }
         />
         {/* Hardcoded redirects for fc::apps:: paths */}
+        <Route
+          path="/apps::pinned"
+          element={<Navigate to="/pinned-apps" replace />}
+        />
         <Route path="/apps::ip" element={<Navigate to="/apps/ip" replace />} />
         <Route
           path="/apps::wc"
@@ -778,6 +783,18 @@ function AnimatedRoutes() {
           path="/apps::ft"
           element={<Navigate to="/apps/feztype" replace />}
         />
+        <Route
+          path="/apps::fz"
+          element={<Navigate to="/apps/fezynth" replace />}
+        />
+        <Route
+          path="/apps::seance"
+          element={<Navigate to="/apps/seance" replace />}
+        />
+        <Route
+          path="/apps::np"
+          element={<Navigate to="/apps/notepad" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -839,6 +856,22 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <FezynthPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/seance"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CodeSeancePage />
               </Suspense>
             </motion.div>
           }
@@ -1661,11 +1694,7 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/apps::np"
-          element={<Navigate to="/apps/notepad" replace />}
-        />
-        <Route
-          path="/apps/pinned"
+          path="/pinned-apps"
           element={
             <motion.div
               initial="initial"
@@ -1679,10 +1708,6 @@ function AnimatedRoutes() {
               </Suspense>
             </motion.div>
           }
-        />
-        <Route
-          path="/apps::pinned"
-          element={<Navigate to="/apps/pinned" replace />}
         />
         {/* D&D specific 404 page */}
         <Route

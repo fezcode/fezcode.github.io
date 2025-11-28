@@ -12,6 +12,7 @@ import {
   BookOpenIcon,
   BookBookmarkIcon,
   BooksIcon,
+  GhostIcon,
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -98,5 +99,13 @@ export const ACHIEVEMENTS = [
     description: 'Read 10 different blog posts. Impressive!',
     icon: <BooksIcon size={32} weight="duotone" />,
     category: 'Content',
+  },
+  {
+    id: 'the_medium',
+    title: 'The Medium',
+    description:
+      'Successfully communicated with the code spirit and broke the infinite loop.',
+    icon: <GhostIcon size={32} weight="duotone" />,
+    category: 'Secret',
   },
 ];
