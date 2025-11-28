@@ -313,6 +313,7 @@ const CozyAppPage = () => {
         </div>
 
         {/* Content Area */}
+        {/*<div className="w-[830px] h-[800px] relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700">*/}
         <div className="flex-grow h-[80vh] relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700">
           {mode !== 'breathe' && (
             <div className="absolute inset-0 flex flex-col items-center justify-end pb-10">
