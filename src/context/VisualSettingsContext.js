@@ -16,6 +16,7 @@ export const VisualSettingsProvider = ({children}) => {
   const [isTerminal, setIsTerminal] = usePersistentState('is-terminal', false);
   const [isBlueprint, setIsBlueprint] = usePersistentState('is-blueprint', false);
   const [isSepia, setIsSepia] = usePersistentState('is-sepia', false);
+  const [isVaporwave, setIsVaporwave] = usePersistentState('is-vaporwave', false);
 
   useEffect(() => {
     if (isInverted) {
@@ -81,6 +82,14 @@ export const VisualSettingsProvider = ({children}) => {
     }
   }, [isSepia]);
 
+  useEffect(() => {
+    if (isVaporwave) {
+      document.body.classList.add('vaporwave-mode');
+    } else {
+      document.body.classList.remove('vaporwave-mode');
+    }
+  }, [isVaporwave]);
+
   const toggleInvert = () => setIsInverted(prev => !prev);
   const toggleRetro = () => setIsRetro(prev => !prev);
   const toggleParty = () => setIsParty(prev => !prev);
@@ -89,6 +98,7 @@ export const VisualSettingsProvider = ({children}) => {
   const toggleTerminal = () => setIsTerminal(prev => !prev);
   const toggleBlueprint = () => setIsBlueprint(prev => !prev);
   const toggleSepia = () => setIsSepia(prev => !prev);
+  const toggleVaporwave = () => setIsVaporwave(prev => !prev);
 
   return (
     <VisualSettingsContext.Provider value={{
@@ -99,7 +109,8 @@ export const VisualSettingsProvider = ({children}) => {
       isNoir, toggleNoir,
       isTerminal, toggleTerminal,
       isBlueprint, toggleBlueprint,
-      isSepia, toggleSepia
+      isSepia, toggleSepia,
+      isVaporwave, toggleVaporwave
     }}>
       {children}
     </VisualSettingsContext.Provider>);

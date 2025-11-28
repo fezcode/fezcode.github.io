@@ -57,7 +57,8 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isNoir, toggleNoir,
     isTerminal, toggleTerminal,
     isBlueprint, toggleBlueprint,
-    isSepia, toggleSepia
+    isSepia, toggleSepia,
+    isVaporwave, toggleVaporwave
   } = useVisualSettings();
 
   const filteredItems = filterItems(items, searchTerm);
@@ -229,6 +230,14 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isSepia ? 'Sepia Mode On' : 'Sepia Mode Off',
             message: !isSepia ? 'Time travel initiated.' : 'Back to the present.',
+            duration: 2000
+          });
+          break;
+        case 'toggleVaporwaveMode':
+          toggleVaporwave();
+          addToast({
+            title: !isVaporwave ? 'Vaporwave Mode On' : 'Vaporwave Mode Off',
+            message: !isVaporwave ? 'A E S T H E T I C S.' : 'Reality restored.',
             duration: 2000
           });
           break;

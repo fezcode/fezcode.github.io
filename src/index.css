@@ -351,3 +351,48 @@ body.sepia-mode::after {
   backdrop-filter: sepia(100%);
   pointer-events: none;
 }
+
+/* Vaporwave Mode */
+body.vaporwave-mode {
+  background-color: #2b0f54 !important; /* Deep Purple */
+  background-image:
+          linear-gradient(rgba(255, 113, 206, 0.2) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 113, 206, 0.2) 1px, transparent 1px);
+  background-size: 40px 40px;
+  color: #01cdfe !important; /* Neon Cyan Text */
+  text-shadow: 2px 2px 0px rgba(255, 113, 206, 0.4); /* Pink shadow */
+  font-family: 'Brush Script MT', 'Comic Sans MS', cursive !important; /* A E S T H E T I C font choice, or fallback */
+}
+
+body.vaporwave-mode * {
+  border-color: #ff71ce !important; /* Pink borders */
+}
+
+body.vaporwave-mode a {
+  color: #ff9dce !important;
+  text-shadow: 0 0 8px #ff71ce;
+}
+
+body.vaporwave-mode img {
+  filter: contrast(1.2) brightness(1.1) hue-rotate(-20deg) drop-shadow(4px 4px 0px rgba(255, 113, 206, 0.5));
+}
+
+body.vaporwave-mode::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  /* Scanlines */
+  background: repeating-linear-gradient(
+          0deg,
+          rgba(0, 0, 0, 0.15),
+          rgba(0, 0, 0, 0.15) 1px,
+          transparent 1px,
+          transparent 2px
+  );
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}

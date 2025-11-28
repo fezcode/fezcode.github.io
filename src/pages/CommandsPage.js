@@ -55,6 +55,7 @@ const commandsData = [
       { title: "Toggle Terminal Mode", description: "Switch to a green monochrome hacker aesthetic. (Easter Egg)", color: "green" },
       { title: "Toggle Blueprint Mode", description: "Switch to a blueprint schematic look. (Easter Egg)", color: "blue" },
       { title: "Toggle Sepia Mode", description: "Switch to an old-timey sepia tone. (Easter Egg)", color: "orange" },
+      { title: "Toggle Vaporwave Mode", description: "Switch to a nostalgic vaporwave aesthetic. (Easter Egg)", color: "pink" },
     ]
   },
   {

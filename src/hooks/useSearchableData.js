@@ -112,6 +112,7 @@ const useSearchableData = () => {
           { title: 'Toggle Terminal Mode', type: 'command', commandId: 'toggleTerminalMode' },
           { title: 'Toggle Blueprint Mode', type: 'command', commandId: 'toggleBlueprintMode' },
           { title: 'Toggle Sepia Mode', type: 'command', commandId: 'toggleSepiaMode' },
+          { title: 'Toggle Vaporwave Mode', type: 'command', commandId: 'toggleVaporwaveMode' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

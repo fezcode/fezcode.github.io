@@ -85,7 +85,6 @@ const generateSitemap = async () => {
     console.error('Error reading projects.json:', error);
   }
 
-
   // Add dynamic routes from logs (category-based)
   try {
     const logsDirectory = path.join(publicDirectory, 'logs');
@@ -112,7 +111,6 @@ const generateSitemap = async () => {
   } catch (error) {
     console.error('Error reading log categories or JSON files:', error);
   }
-
 
   // Add dynamic routes from stories/books.piml
   try {
