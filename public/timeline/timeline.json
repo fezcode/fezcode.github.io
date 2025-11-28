@@ -1,10 +1,18 @@
 [
   {
+    "date": "2025-11-29",
+    "title": "Introduction of Achievements",
+    "description": "Launched the achievements for different use cases of the Fezcodex.",
+    "type": "app",
+    "icon": "TrophyIcon",
+    "link": "/#/achievements"
+  },
+  {
     "date": "2025-11-27",
     "title": "Pinned Apps Hall of Fame",
     "description": "Introduced a dedicated, techno-styled page for my most used and favorite tools.",
     "type": "feature",
-    "icon": "PushPin",
+    "icon": "PushPinIcon",
     "link": "/#/pinned-apps"
   },
   {
@@ -44,7 +52,7 @@
     "title": "Major Refactors and UI Improvements",
     "description": "Significant refactoring of Logs and App pages, along with UI enhancements across the site.",
     "type": "refactor",
-    "icon": "SparklesIcon",
+    "icon": "SparkleIcon",
     "link": "/#/logs"
   },
   {
@@ -52,7 +60,7 @@
     "title": "Command Palette and Games",
     "description": "Introduced a command palette for navigation and new games like Nonogram and Lights Out.",
     "type": "feature",
-    "icon": "GamepadIcon",
+    "icon": "GameControllerIcon",
     "link": "/#/commands"
   },
   {
@@ -68,7 +76,7 @@
     "title": "Wallpapers Script and New Apps",
     "description": "Added a script for generating wallpapers and introduced new interactive apps.",
     "type": "feature",
-    "icon": "ImageIcon",
+    "icon": "ImagesIcon",
     "link": "/#/apps"
   },
   {
@@ -84,7 +92,7 @@
     "title": "PIML and SEO Implementation",
     "description": "Integrated PIML for content management and enhanced SEO capabilities.",
     "type": "project",
-    "icon": "SearchIcon"
+    "icon": "FileSearchIcon"
   },
   {
     "date": "2025-11-07",
@@ -99,7 +107,7 @@
     "title": "RSS Feed and Contact Modal",
     "description": "Implemented RSS feed generation and a contact modal.",
     "type": "feature",
-    "icon": "RssFeedIcon",
+    "icon": "RssIcon",
     "link": "/rss.xml"
   },
   {
@@ -107,7 +115,7 @@
     "title": "DND Content Section Introduced",
     "description": "Introduced the Dungeons & Dragons content section with the 'From Serfs and Frauds' series.",
     "type": "content",
-    "icon": "ScrollIcon",
+    "icon": "MeteorIcon",
     "link": "/#/dnd"
   },
   {
@@ -138,7 +146,7 @@
     "title": "About Page Introduced",
     "description": "Initial implementation of the About Me page.",
     "type": "content",
-    "icon": "Briefcase",
+    "icon": "BriefcaseIcon",
     "link": "/#/about-me"
   },
   {

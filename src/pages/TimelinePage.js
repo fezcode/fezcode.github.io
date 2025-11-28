@@ -1,33 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowLeftIcon,
-  TimerIcon,
-  CodeIcon,
-  ArticleIcon,
-  RocketLaunchIcon,
-  PaletteIcon,
-  GraduationCap,
-  Briefcase,
-  Gift,
-  Star,
-} from '@phosphor-icons/react';
+import {  ArrowLeftIcon, StarIcon, TimerIcon } from '@phosphor-icons/react';
+import { appIcons } from '../utils/appIcons';
 import { motion } from 'framer-motion';
 import useSeo from '../hooks/useSeo';
 import colors from '../config/colors'; // Assuming colors is available for styling
-
-// Map icon names from JSON to actual Phosphor Icons components
-const timelineIcons = {
-  CodeIcon: CodeIcon,
-  ArticleIcon: ArticleIcon,
-  RocketLaunchIcon: RocketLaunchIcon,
-  PaletteIcon: PaletteIcon,
-  GraduationCap: GraduationCap,
-  Briefcase: Briefcase,
-  Gift: Gift,
-  Star: Star,
-  // Add more icons as needed for different milestone types
-};
 
 const TimelinePage = () => {
   useSeo({
@@ -140,13 +117,13 @@ const TimelinePage = () => {
               <div key={i} className="mb-10 flex items-start">
                 <div className="flex-shrink-0 w-4 h-4 rounded-full bg-gray-700 absolute -left-2 md:-left-2.5 mt-2.5 animate-pulse"></div>
                 <div className="flex-grow pl-8 md:pl-6">
-                  <div className="h-4 bg-gray-700 rounded w-1/4 mb-2 animate-pulse"></div>{' '}
+                  <div className="h-4 bg-gray-700 rounded w-1/4 mb-2 animate-pulse"></div>
                   {/* Date */}
-                  <div className="h-6 bg-gray-600 rounded w-3/4 mb-2 animate-pulse"></div>{' '}
+                  <div className="h-6 bg-gray-600 rounded w-3/4 mb-2 animate-pulse"></div>
                   {/* Title */}
-                  <div className="h-4 bg-gray-700 rounded w-full mb-1 animate-pulse"></div>{' '}
+                  <div className="h-4 bg-gray-700 rounded w-full mb-1 animate-pulse"></div>
                   {/* Description line 1 */}
-                  <div className="h-4 bg-gray-700 rounded w-1/2 animate-pulse"></div>{' '}
+                  <div className="h-4 bg-gray-700 rounded w-1/2 animate-pulse"></div>
                   {/* Description line 2 */}
                 </div>
               </div>
@@ -157,10 +134,10 @@ const TimelinePage = () => {
           <div className="relative pl-8 md:pl-20 py-8">
             {/* Vertical Line */}
             <div className="absolute left-0 top-0 h-full w-0.5 bg-gray-800 hidden md:block"></div>
-            <div className="absolute left-4 top-0 h-full w-0.5 bg-gray-800 md:hidden"></div>{' '}
+            <div className="absolute left-4 top-0 h-full w-0.5 bg-gray-800 md:hidden"></div>
             {/* For smaller screens */}
             {milestones.map((milestone, index) => {
-              const EventIcon = timelineIcons[milestone.icon] || Star;
+              const EventIcon = appIcons[milestone.icon] || StarIcon;
               const eventColor = getEventColor(milestone.type);
               const milestoneDate = new Date(milestone.date);
               const formattedDate = milestoneDate.toLocaleDateString('en-US', {

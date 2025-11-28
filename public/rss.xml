@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 27 Nov 2025 12:50:03 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 28 Nov 2025 22:01:14 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 27 Nov 2025 12:50:03 GMT</pubDate>
+        <pubDate>Fri, 28 Nov 2025 22:01:14 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Unlocking Your Journey: Introducing the Fezcodex Achievement System!]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/the-fezcodex-achievement-system</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/the-fezcodex-achievement-system</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 28 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Here at Fezcodex, we believe exploration should be rewarded. That&#39;s why we&#39;re thrilled to unveil the brand-new <strong>Achievement System</strong> – a fun and engaging way to discover all the hidden corners and cool features of the site!</p>
+<p><a href="https://fezcode.com/#/blog/the-fezcodex-achievement-system">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Unlocking the Multiverse: New Visual Modes in Fezcodex]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/visual-modes-easter-eggs</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/visual-modes-easter-eggs</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 27 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Websites should be <strong>fun</strong>. While optimizing performance and fixing bugs is satisfying, sometimes you just want to flip the table -or in this case-, the entire viewport.</p>
+<p><a href="https://fezcode.com/#/blog/visual-modes-easter-eggs">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Reducing React App Bundle Size: A Practical Guide]]></title>
             <description><![CDATA[[object Object]]]></description>
