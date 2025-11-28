@@ -60,6 +60,7 @@ const commandsData = [
       { title: "Toggle Game Boy Mode", description: "Switch to a 4-color retro handheld look. (Easter Egg)", color: "lime" },
       { title: "Toggle Comic Book Mode", description: "Switch to a vibrant pop-art comic style. (Easter Egg)", color: "red" },
       { title: "Toggle Sketchbook Mode", description: "Switch to a hand-drawn sketchbook style. (Easter Egg)", color: "stone" },
+      { title: "Toggle Hellenic Mode", description: "Switch to a classical Greek architecture style. (Easter Egg)", color: "amber" },
     ]
   },
   {

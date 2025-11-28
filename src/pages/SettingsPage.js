@@ -46,7 +46,8 @@ const SettingsPage = () => {
     isCyberpunk, toggleCyberpunk,
     isGameboy, toggleGameboy,
     isComic, toggleComic,
-    isSketchbook, toggleSketchbook
+    isSketchbook, toggleSketchbook,
+    isHellenic, toggleHellenic
   } = useVisualSettings();
 
   const {addToast} = useToast();
@@ -264,6 +265,13 @@ const SettingsPage = () => {
                   label="> Sketchbook Mode"
                   checked={isSketchbook}
                   onChange={toggleSketchbook}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-hellenic-mode"
+                  label="> Hellenic Mode"
+                  checked={isHellenic}
+                  onChange={toggleHellenic}
                 />
               </div>
               {/* Sidebar Stuff */}

@@ -62,7 +62,8 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isCyberpunk, toggleCyberpunk,
     isGameboy, toggleGameboy,
     isComic, toggleComic,
-    isSketchbook, toggleSketchbook
+    isSketchbook, toggleSketchbook,
+    isHellenic, toggleHellenic
   } = useVisualSettings();
 
   const filteredItems = filterItems(items, searchTerm);
@@ -274,6 +275,14 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isSketchbook ? 'Sketchbook Mode On' : 'Sketchbook Mode Off',
             message: !isSketchbook ? 'Pencil sharpened.' : 'Notebook closed.',
+            duration: 2000
+          });
+          break;
+        case 'toggleHellenicMode':
+          toggleHellenic();
+          addToast({
+            title: !isHellenic ? 'Hellenic Mode On' : 'Hellenic Mode Off',
+            message: !isHellenic ? 'Welcome to Olympus.' : 'Leaving the Agora.',
             duration: 2000
           });
           break;

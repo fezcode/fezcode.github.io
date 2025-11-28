@@ -517,3 +517,43 @@ body.sketchbook-mode img {
   border: 2px solid #333;
   box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
 }
+
+/* Hellenic Mode */
+body.hellenic-mode {
+  background-color: #fdfbf7 !important;
+  color: #2c3e50 !important;
+  font-family: 'Cinzel', 'Trajan Pro', 'Times New Roman', serif !important;
+  background-image:
+          radial-gradient(circle at 100% 150%, #fdfbf7 24%, #f5f3ef 25%, #f5f3ef 28%, #fdfbf7 29%, #fdfbf7 36%, #f5f3ef 36%, #f5f3ef 40%, transparent 40%, transparent),
+          radial-gradient(circle at 0    150%, #fdfbf7 24%, #f5f3ef 25%, #f5f3ef 28%, #fdfbf7 29%, #fdfbf7 36%, #f5f3ef 36%, #f5f3ef 40%, transparent 40%, transparent),
+          radial-gradient(circle at 50%  100%, #f5f3ef 10%, #fdfbf7 11%, #fdfbf7 23%, #f5f3ef 24%, #f5f3ef 30%, #fdfbf7 31%, #fdfbf7 43%, #f5f3ef 44%, #f5f3ef 50%, #fdfbf7 51%, #fdfbf7 63%, #f5f3ef 64%, #f5f3ef 71%, transparent 71%, transparent),
+          radial-gradient(circle at 100% 50%, #f5f3ef 5%, #fdfbf7 6%, #fdfbf7 15%, #f5f3ef 16%, #f5f3ef 20%, #fdfbf7 21%, #fdfbf7 30%, #f5f3ef 31%, #f5f3ef 35%, #fdfbf7 36%, #fdfbf7 45%, #f5f3ef 46%, #f5f3ef 49%, transparent 50%, transparent),
+          radial-gradient(circle at 0    50%, #f5f3ef 5%, #fdfbf7 6%, #fdfbf7 15%, #f5f3ef 16%, #f5f3ef 20%, #fdfbf7 21%, #fdfbf7 30%, #f5f3ef 31%, #f5f3ef 35%, #fdfbf7 36%, #fdfbf7 45%, #f5f3ef 46%, #f5f3ef 49%, transparent 50%, transparent);
+  background-size: 50px 25px;
+}
+
+body.hellenic-mode * {
+  border-color: #d4af37 !important;
+  box-shadow: inset 1px 1px 3px rgba(0,0,0,0.1);
+}
+
+body.hellenic-mode a {
+  color: #005b96 !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+body.hellenic-mode img {
+  filter: contrast(1.1) sepia(0.2);
+  border: 4px double #d4af37 !important;
+}
+
+body.hellenic-mode h1,
+body.hellenic-mode h2,
+body.hellenic-mode h3 {
+  color: #005b96 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0 #d4af37;
+}
