@@ -148,6 +148,14 @@
     "order": 2,
     "apps": [
       {
+        "slug": "cozy-corner",
+        "to": "/apps/cozy-corner",
+        "title": "Cozy Corner",
+        "description": "A place to relax, watch a fire, or just breathe.",
+        "icon": "CampfireIcon",
+        "created_at": "2025-11-29T12:00:00+03:00"
+      },
+      {
         "slug": "tcg-card-generator",
         "to": "/apps/tcg-card-generator",
         "title": "TCG Card Generator",

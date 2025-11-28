@@ -123,6 +123,7 @@ const KeyboardTypingSpeedTesterPage = lazy(
   () => import('../pages/apps/KeyboardTypingSpeedTesterPage'),
 );
 const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
+const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
@@ -1689,6 +1690,22 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <NotepadPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/cozy-corner"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CozyAppPage />
               </Suspense>
             </motion.div>
           }

@@ -62,6 +62,8 @@ import {
   RssIcon,
   MeteorIcon,
   BellIcon,
+  FireIcon,
+  CampfireIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -128,4 +130,6 @@ export const appIcons = {
   RssIcon,
   MeteorIcon,
   BellIcon,
+  FireIcon,
+  CampfireIcon,
 };
