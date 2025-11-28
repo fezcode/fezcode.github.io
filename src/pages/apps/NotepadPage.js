@@ -1,6 +1,15 @@
 import React, {useState, useEffect, useRef} from 'react';
 import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, DownloadSimple, Trash, CloudRain, FloppyDisk, FolderOpen, ArrowsOutLineVerticalIcon} from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  DownloadSimple,
+  Trash,
+  CloudRain,
+  FloppyDisk,
+  FolderOpen,
+  ArrowsOutLineVerticalIcon,
+  TrophyIcon
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import {useToast} from '../../hooks/useToast';
 import ConfirmationModal from '../../components/ConfirmationModal';
@@ -103,6 +112,7 @@ const NotepadPage = () => {
     addToast({
         title: isFixedSize ? 'Expanded' : 'Fixed Height',
         message: isFixedSize ? 'Notepad expanded to fill space.' : 'Notepad height is now fixed.',
+        icon: <TrophyIcon />,
         duration: 2000
     });
   };

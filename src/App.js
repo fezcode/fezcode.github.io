@@ -10,6 +10,7 @@ import DigitalRain from './components/DigitalRain';
 import { AnimationProvider } from './context/AnimationContext'; // Import AnimationProvider
 import { CommandPaletteProvider } from './context/CommandPaletteContext';
 import { VisualSettingsProvider } from './context/VisualSettingsContext';
+import { AchievementProvider } from './context/AchievementContext';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -40,33 +41,35 @@ function App() {
 
   return (
     <AnimationProvider>
-      <VisualSettingsProvider>
-        <Router>
-          <DigitalRain isActive={isRainActive} />
-          <ScrollToTop />
-          <ToastProvider>
-            <CommandPaletteProvider>
-              <Layout
-                toggleModal={toggleModal}
-                isSearchVisible={isSearchVisible}
-                toggleSearch={toggleSearch}
-                openGenericModal={openGenericModal}
-                toggleDigitalRain={toggleDigitalRain}
+      <Router>
+        <ToastProvider>
+          <AchievementProvider>
+            <VisualSettingsProvider>
+              <DigitalRain isActive={isRainActive} />
+              <ScrollToTop />
+              <CommandPaletteProvider>
+                <Layout
+                  toggleModal={toggleModal}
+                  isSearchVisible={isSearchVisible}
+                  toggleSearch={toggleSearch}
+                  openGenericModal={openGenericModal}
+                  toggleDigitalRain={toggleDigitalRain}
+                >
+                  <AnimatedRoutes />
+                </Layout>
+              </CommandPaletteProvider>
+              <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
+              <GenericModal
+                isOpen={isGenericModalOpen}
+                onClose={closeGenericModal}
+                title={genericModalContent.title}
               >
-                <AnimatedRoutes />
-              </Layout>
-            </CommandPaletteProvider>
-            <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
-            <GenericModal
-              isOpen={isGenericModalOpen}
-              onClose={closeGenericModal}
-              title={genericModalContent.title}
-            >
-              {genericModalContent.content}
-            </GenericModal>
-          </ToastProvider>
-        </Router>
-      </VisualSettingsProvider>
+                {genericModalContent.content}
+              </GenericModal>
+            </VisualSettingsProvider>
+          </AchievementProvider>
+        </ToastProvider>
+      </Router>
     </AnimationProvider>
   );
 }

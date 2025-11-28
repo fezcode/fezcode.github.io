@@ -18,6 +18,7 @@ import ShareButtons from '../components/ShareButtons';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { calculateReadingTime } from '../utils/readingTime';
+import { useAchievements } from '../context/AchievementContext';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -139,6 +140,19 @@ const BlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx'); // Default to jsx
   const [modalImageSrc, setModalImageSrc] = useState(null);
+  const { trackReadingProgress } = useAchievements();
+  const [hasTrackedRead, setHasTrackedRead] = useState(false);
+
+  useEffect(() => {
+    setHasTrackedRead(false);
+  }, [currentSlug]);
+
+  useEffect(() => {
+    if (!hasTrackedRead && readingProgress > 90) {
+      trackReadingProgress(currentSlug);
+      setHasTrackedRead(true);
+    }
+  }, [readingProgress, hasTrackedRead, currentSlug, trackReadingProgress]);
 
   const openModal = (content, language) => {
     setModalContent(content);

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
 
-const Toast = ({ id, title, message, duration = 3000, type, removeToast }) => {
+const Toast = ({ id, title, message, duration = 3000, type, removeToast, icon }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(id);
@@ -28,7 +28,10 @@ const Toast = ({ id, title, message, duration = 3000, type, removeToast }) => {
       className={`${defaultStyle} ${type === 'error' ? `${errorStyle}` : `${successStyle}`}`}
     >
       <div className="flex flex-col text-sm group w-max flex-grow">
-        <span className="text-base text-red-100">{title}</span>
+        <div className="flex items-center gap-2"> {/* New div for icon and title */}
+          {icon && <span className="text-xl text-red-100">{icon}</span>}
+          <span className="text-base text-red-100">{title}</span>
+        </div>
         <motion.hr
           initial={{ width: 0 }}
           animate={{ width: '100%' }}

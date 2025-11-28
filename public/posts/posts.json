@@ -1,5 +1,25 @@
 [
   {
+    "slug": "the-fezcodex-achievement-system",
+    "title": "Unlocking Your Journey: Introducing the Fezcodex Achievement System!",
+    "date": "2025-11-28",
+    "updated": "2025-11-28",
+    "description": "Explore Fezcodex like never before with our new achievement system. Discover hidden features, unlock unique badges, and track your progress through the site's gamified world.",
+    "tags": [
+      "feat",
+      "gamification",
+      "achievements",
+      "update",
+      "fun"
+    ],
+    "category": "feat",
+    "filename": "the-fezcodex-achievement-system.txt",
+    "authors": [
+      "fezcode"
+    ],
+    "image": "/images/defaults/achievement-system.jpg"
+  },
+  {
     "slug": "visual-modes-easter-eggs",
     "title": "Unlocking the Multiverse: New Visual Modes in Fezcodex",
     "date": "2025-11-27",
@@ -14,7 +34,9 @@
     ],
     "category": "feat",
     "filename": "visual-modes-easter-eggs.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
   },
   {
@@ -32,7 +54,9 @@
     ],
     "category": "dev",
     "filename": "reducing-react-app-size.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
   },
   {
@@ -50,7 +74,9 @@
     ],
     "category": "gist",
     "filename": "mastering-tailwind-centering.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -68,7 +94,9 @@
     ],
     "category": "dev",
     "filename": "gaussian-elimination.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/antoine-dautry-05A-kdOH6Hw-unsplash.jpg"
   },
   {
@@ -77,10 +105,16 @@
     "date": "2025-11-22",
     "updated": "2025-11-22",
     "description": "A quick fix for problems caused by Grub Customizer",
-    "tags": ["linux", "grub", "grub-customizer"],
+    "tags": [
+      "linux",
+      "grub",
+      "grub-customizer"
+    ],
     "category": "dev",
     "filename": "fixing-grub.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
   },
   {
@@ -98,7 +132,9 @@
     ],
     "category": "rant",
     "filename": "floating-point-precision-in-javascript.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg"
   },
   {
@@ -107,10 +143,17 @@
     "date": "2025-11-18",
     "updated": "2025-11-18",
     "description": "Explore Kaprekar's Routine, a fascinating number game that always leads to the constant 6174 for most four-digit numbers.",
-    "tags": ["mathematics", "number-theory", "kaprekar", "fun"],
+    "tags": [
+      "mathematics",
+      "number-theory",
+      "kaprekar",
+      "fun"
+    ],
     "category": "rant",
     "filename": "kaprekars-routine.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/elimende-inagella-4ApmfdVo32Q-unsplash.jpg"
   },
   {
@@ -119,10 +162,18 @@
     "date": "2025-11-18",
     "updated": "2025-11-18",
     "description": "A philosophical rant on Chaos Theory, unpredictability, and the illusion of control.",
-    "tags": ["philosophy", "chaos-theory", "rant", "unpredictability"],
+    "tags": [
+      "philosophy",
+      "chaos-theory",
+      "rant",
+      "unpredictability"
+    ],
     "category": "rant",
     "filename": "chaos-theory-philosophical-rant.txt",
-    "authors": ["fezcode", "g2.5f"],
+    "authors": [
+      "fezcode",
+      "g2.5f"
+    ],
     "image": "/images/defaults/pascal-meier-1uVCTVSn-2o-unsplash.jpg"
   },
   {
@@ -144,7 +195,9 @@
     ],
     "category": "dev",
     "filename": "decoding-the-digital-alphabet-base-xx-encodings.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/shreya-thomas-HyKOTe-gIkY-unsplash.jpg"
   },
   {
@@ -153,10 +206,17 @@
     "date": "2025-11-14",
     "updated": "2025-11-14",
     "description": "A short explanation of git subtrees",
-    "tags": ["git", "subtree", "dnd", "stories"],
+    "tags": [
+      "git",
+      "subtree",
+      "dnd",
+      "stories"
+    ],
     "category": "dev",
     "filename": "fezcodex-stories-with-git-subtrees.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/joel-jasmin-forestbird-xzPMUMDDsfk-unsplash.jpg"
   },
   {
@@ -165,10 +225,18 @@
     "date": "2025-11-13",
     "updated": "2025-11-13",
     "description": "A short explanation of publishing NPM packages",
-    "tags": ["npm", "piml", "data-format", "serialization", "markup"],
+    "tags": [
+      "npm",
+      "piml",
+      "data-format",
+      "serialization",
+      "markup"
+    ],
     "category": "dev",
     "filename": "publishing-to-npm.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -177,10 +245,18 @@
     "date": "2025-11-12",
     "updated": "2025-11-14",
     "description": "A deep dive into PIML, a human-readable data serialization format, its syntax, data types, and comparison with JSON, YAML, and TOML.",
-    "tags": ["piml", "data-format", "serialization", "markup", "dev"],
+    "tags": [
+      "piml",
+      "data-format",
+      "serialization",
+      "markup",
+      "dev"
+    ],
     "category": "dev",
     "filename": "piml.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/piml.png"
   },
   {
@@ -189,10 +265,18 @@
     "date": "2025-11-10",
     "updated": "2025-11-10",
     "description": "A deep dive into the implementation of the Image Toolkit app.",
-    "tags": ["canvas", "react", "css", "image-processing", "tailwind"],
+    "tags": [
+      "canvas",
+      "react",
+      "css",
+      "image-processing",
+      "tailwind"
+    ],
     "category": "dev",
     "filename": "image-toolkit-deep-dive.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -201,10 +285,18 @@
     "date": "2025-11-09",
     "updated": "2025-11-09",
     "description": "A deep dive into the implementation of the Picker Wheel app.",
-    "tags": ["canvas", "react", "css", "animation", "tailwind"],
+    "tags": [
+      "canvas",
+      "react",
+      "css",
+      "animation",
+      "tailwind"
+    ],
     "category": "dev",
     "filename": "picker-wheel-deep-dive.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -213,10 +305,17 @@
     "date": "2025-11-07",
     "updated": "2025-11-07",
     "description": "Demystifying Tailwind CSS",
-    "tags": ["tailwind", "css", "fezcodex", "react"],
+    "tags": [
+      "tailwind",
+      "css",
+      "fezcodex",
+      "react"
+    ],
     "category": "dev",
     "filename": "demystifying-tailwind-css.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -225,10 +324,16 @@
     "date": "2025-10-29",
     "updated": "2025-10-29",
     "description": "Ubuntu 25.10",
-    "tags": ["ubuntu", "linux", "gnome"],
+    "tags": [
+      "ubuntu",
+      "linux",
+      "gnome"
+    ],
     "category": "dev",
     "filename": "ubuntu-once-more.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg"
   },
   {
@@ -245,7 +350,9 @@
           "date": "2025-10-25",
           "updated": "2025-10-26",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -254,7 +361,9 @@
           "filename": "/react-of-fezcode/016-react-refs-useref.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -264,7 +373,9 @@
           "date": "2025-10-25",
           "updated": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -273,7 +384,9 @@
           "filename": "/react-of-fezcode/014-react-custom-hooks.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -282,7 +395,9 @@
           "filename": "/react-of-fezcode/013-document-fetching-api.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -291,7 +406,9 @@
           "filename": "/react-of-fezcode/012-html-structure.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -300,7 +417,9 @@
           "filename": "/react-of-fezcode/011-javascript-fundamentals.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -309,7 +428,9 @@
           "filename": "/react-of-fezcode/010-css-and-tailwind-css.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -318,7 +439,9 @@
           "filename": "/react-of-fezcode/009-routing-with-react-router-dom.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -327,7 +450,9 @@
           "filename": "/react-of-fezcode/008-react-context-usecontext.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -336,7 +461,9 @@
           "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -345,7 +472,9 @@
           "filename": "/react-of-fezcode/006-react-basics-components-props.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -354,7 +483,9 @@
           "filename": "/react-of-fezcode/005-blog-post-page-component.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -363,7 +494,9 @@
           "filename": "/react-of-fezcode/004-app-js-main-component.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -372,7 +505,9 @@
           "filename": "/react-of-fezcode/003-index-js-entry-point.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -381,7 +516,9 @@
           "filename": "/react-of-fezcode/002-package-json-explained.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -390,12 +527,16 @@
           "filename": "/react-of-fezcode/001-project-overview.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -420,7 +561,9 @@
           ],
           "date": "2025-10-18",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -439,12 +582,16 @@
           ],
           "date": "2024-01-05",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -453,23 +600,34 @@
     "date": "2025-10-21",
     "updated": "2025-11-03",
     "description": "An introduction to my D&D adventures.",
-    "tags": ["dnd", "rpg", "adventure"],
+    "tags": [
+      "dnd",
+      "rpg",
+      "adventure"
+    ],
     "category": "d&d",
     "filename": "dnd-content.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
-
   {
     "slug": "do-i-need-to-create-a-lib-for-that",
     "title": "Do I Need to Create a Lib For That?",
     "date": "2025-10-16",
     "updated": "2025-10-16",
     "description": "a journey to create my first golang package",
-    "tags": ["go", "lib", "pkg.go.dev"],
+    "tags": [
+      "go",
+      "lib",
+      "pkg.go.dev"
+    ],
     "category": "dev",
     "filename": "do-i-need-to-create-a-lib-for-that.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -478,10 +636,17 @@
     "date": "2025-10-15",
     "updated": "2025-10-16",
     "description": "Why am I using HashRouter for github pages",
-    "tags": ["react", "webdev", "gh-pages", "router"],
+    "tags": [
+      "react",
+      "webdev",
+      "gh-pages",
+      "router"
+    ],
     "category": "dev",
     "filename": "hashrouter-vs-browserrouter.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -489,10 +654,15 @@
     "title": "About Fezcodex",
     "date": "2025-10-14",
     "updated": "2025-11-03",
-    "tags": ["writing", "updates"],
+    "tags": [
+      "writing",
+      "updates"
+    ],
     "category": "rant",
     "filename": "about-fezcodex.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -500,7 +670,11 @@
     "title": "Algorithms",
     "date": "2025-10-01",
     "description": "Algorithms",
-    "tags": ["cs", "algorithms", "graphs"],
+    "tags": [
+      "cs",
+      "algorithms",
+      "graphs"
+    ],
     "series": {
       "posts": [
         {
@@ -519,7 +693,9 @@
           ],
           "category": "dev",
           "filename": "/algos/leetcode-62-unique-paths.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
         },
         {
@@ -527,10 +703,17 @@
           "title": "Minimum Number of Steps to Make Two Strings Anagram",
           "date": "2025-11-17",
           "description": "LeetCode problem: Minimum Number of Steps to Make Two Strings Anagram",
-          "tags": ["cs", "algorithms", "string", "frequency-array"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "string",
+            "frequency-array"
+          ],
           "category": "dev",
           "filename": "/algos/minimum-number-of-steps-to-make-two-strings-anagram.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
         },
         {
@@ -538,10 +721,17 @@
           "title": "Find Minimum in Rotated Sorted Array",
           "date": "2025-11-08",
           "description": "LeetCode problem: Find Minimum in Rotated Sorted Array",
-          "tags": ["cs", "algorithms", "binary-search", "array"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "binary-search",
+            "array"
+          ],
           "category": "dev",
           "filename": "/algos/find-minimum-in-rotated-sorted-array.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -549,10 +739,19 @@
           "title": "Lowest Common Ancestor with Binary Search Tree",
           "date": "2025-11-07",
           "description": "Lowest Common Ancestor with Binary Search Tree",
-          "tags": ["cs", "algorithms", "tree", "bst", "recursion", "iterative"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "tree",
+            "bst",
+            "recursion",
+            "iterative"
+          ],
           "category": "dev",
           "filename": "/algos/lowest-common-ancestor-of-a-binary-search-tree.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -560,10 +759,17 @@
           "title": "Monotonic Stack with Daily Temperatures",
           "date": "2025-11-05",
           "description": "Monotonic Stack with Daily Temperatures",
-          "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "stack",
+            "monotonic-stack"
+          ],
           "category": "dev",
           "filename": "/algos/monotonic-stack.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -571,15 +777,23 @@
           "title": "Weighted Quick-Union with Path Compression",
           "date": "2025-11-04",
           "description": "Weighted Quick-Union with Path Compression",
-          "tags": ["cs", "algorithms", "graphs"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "graphs"
+          ],
           "category": "dev",
           "filename": "/algos/weighted-quick-union-with-path-compression.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   }
 ]

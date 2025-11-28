@@ -35,6 +35,7 @@ export const ToastProvider = ({ children }) => {
             message={toast.message}
             duration={toast.duration}
             type={toast.type}
+            icon={toast.icon}
             removeToast={removeToast}
           />
         ))}

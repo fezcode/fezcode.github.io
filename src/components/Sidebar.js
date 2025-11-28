@@ -30,6 +30,7 @@ import {
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
   PushPin,
+  Trophy,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -163,6 +164,10 @@ const Sidebar = ({isOpen, toggleSidebar, toggleModal, setIsPaletteOpen}) => {
                   <NavLink to="/about" className={getLinkClass}>
                     <UserIcon size={24}/>
                     <span>About</span>
+                  </NavLink>
+                  <NavLink to="/achievements" className={getLinkClass}>
+                    <Trophy size={24}/>
+                    <span>Trophy Room</span>
                   </NavLink>
                 </nav>)}
             </div>

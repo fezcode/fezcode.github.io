@@ -10,6 +10,7 @@ import {
 } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
 import piml from 'piml';
+import { useAchievements } from '../context/AchievementContext';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -30,6 +31,7 @@ const AboutPage = () => {
   const [email, setEmail] = useState('');
   const [title, setTitle] = useState('About Me');
   const [loading, setLoading] = useState(true);
+  const { unlockAchievement } = useAchievements();
 
   useSeo({
     title: `${title} | Fezcodex`,
@@ -54,6 +56,7 @@ const AboutPage = () => {
   });
 
   useEffect(() => {
+    unlockAchievement('curious_soul');
     const fetchAboutContent = async () => {
       try {
         const [metaResponse, contentResponse] = await Promise.all([

@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react'; // Import useEffect
 import {Link} from 'react-router-dom';
 import {ArrowLeftIcon} from '@phosphor-icons/react';
 import {useAnimation} from '../context/AnimationContext';
 import {useVisualSettings} from '../context/VisualSettingsContext';
+import { useAchievements } from '../context/AchievementContext'; // Import useAchievements
 import colors from '../config/colors';
 import CustomToggle from '../components/CustomToggle';
 import useSeo from '../hooks/useSeo';
@@ -24,6 +25,13 @@ const SettingsPage = () => {
     twitterDescription: 'Manage your application preferences for Fezcodex.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
+
+  const { unlockAchievement } = useAchievements(); // Destructure unlockAchievement
+
+  useEffect(() => {
+    unlockAchievement('power_user');
+  }, [unlockAchievement]);
+
   const {
     isAnimationEnabled,
     toggleAnimation,

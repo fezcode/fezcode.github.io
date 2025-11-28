@@ -1,5 +1,6 @@
 import React, {createContext, useContext, useEffect} from 'react';
 import usePersistentState from '../hooks/usePersistentState';
+import { useAchievements } from './AchievementContext';
 
 const VisualSettingsContext = createContext();
 
@@ -8,6 +9,7 @@ export const useVisualSettings = () => {
 };
 
 export const VisualSettingsProvider = ({children}) => {
+  const { unlockAchievement } = useAchievements();
   const [isInverted, setIsInverted] = usePersistentState('is-inverted', false);
   const [isRetro, setIsRetro] = usePersistentState('is-retro', false);
   const [isParty, setIsParty] = usePersistentState('is-party', false);
@@ -75,10 +77,11 @@ export const VisualSettingsProvider = ({children}) => {
   useEffect(() => {
     if (isBlueprint) {
       document.body.classList.add('blueprint-mode');
+      unlockAchievement('the_architect');
     } else {
       document.body.classList.remove('blueprint-mode');
     }
-  }, [isBlueprint]);
+  }, [isBlueprint, unlockAchievement]);
 
   useEffect(() => {
     if (isSepia) {
@@ -91,26 +94,29 @@ export const VisualSettingsProvider = ({children}) => {
   useEffect(() => {
     if (isVaporwave) {
       document.body.classList.add('vaporwave-mode');
+      unlockAchievement('retro_futurist');
     } else {
       document.body.classList.remove('vaporwave-mode');
     }
-  }, [isVaporwave]);
+  }, [isVaporwave, unlockAchievement]);
 
   useEffect(() => {
     if (isCyberpunk) {
       document.body.classList.add('cyberpunk-mode');
+      unlockAchievement('retro_futurist');
     } else {
       document.body.classList.remove('cyberpunk-mode');
     }
-  }, [isCyberpunk]);
+  }, [isCyberpunk, unlockAchievement]);
 
   useEffect(() => {
     if (isGameboy) {
       document.body.classList.add('gameboy-mode');
+      unlockAchievement('retro_gamer');
     } else {
       document.body.classList.remove('gameboy-mode');
     }
-  }, [isGameboy]);
+  }, [isGameboy, unlockAchievement]);
 
   useEffect(() => {
     if (isComic) {
@@ -123,26 +129,29 @@ export const VisualSettingsProvider = ({children}) => {
   useEffect(() => {
     if (isSketchbook) {
       document.body.classList.add('sketchbook-mode');
+      unlockAchievement('the_artist');
     } else {
       document.body.classList.remove('sketchbook-mode');
     }
-  }, [isSketchbook]);
+  }, [isSketchbook, unlockAchievement]);
 
   useEffect(() => {
     if (isHellenic) {
       document.body.classList.add('hellenic-mode');
+      unlockAchievement('the_architect');
     } else {
       document.body.classList.remove('hellenic-mode');
     }
-  }, [isHellenic]);
+  }, [isHellenic, unlockAchievement]);
 
   useEffect(() => {
     if (isGlitch) {
       document.body.classList.add('glitch-mode');
+      unlockAchievement('glitch_hunter');
     } else {
       document.body.classList.remove('glitch-mode');
     }
-  }, [isGlitch]);
+  }, [isGlitch, unlockAchievement]);
 
   const toggleInvert = () => setIsInverted(prev => !prev);
   const toggleRetro = () => setIsRetro(prev => !prev);

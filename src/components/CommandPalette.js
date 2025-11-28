@@ -5,6 +5,7 @@ import useSearchableData from '../hooks/useSearchableData';
 import {useAnimation} from '../context/AnimationContext';
 import {useToast} from '../hooks/useToast';
 import {useVisualSettings} from '../context/VisualSettingsContext';
+import {useAchievements} from '../context/AchievementContext';
 import {KEY_SIDEBAR_STATE, remove as removeLocalStorageItem} from '../utils/LocalStorageManager';
 import {version} from '../version'; // Import the version
 import LiveClock from './LiveClock'; // Import LiveClock
@@ -23,17 +24,6 @@ const categoryColorMap = {
   'app': 'bg-teal-400',
   'story': 'bg-violet-400',
   'notebook': 'bg-lime-400',
-};
-
-const categoryTextColorMap = {
-  'page': 'text-red-100',
-  'command': 'text-amber-100',
-  'post': 'text-blue-100',
-  'project': 'text-orange-100',
-  'log': 'text-rose-100',
-  'app': 'text-teal-100',
-  'story': 'text-violet-100',
-  'notebook': 'text-lime-100',
 };
 
 const getCategoryColorClass = (type) => {
@@ -67,13 +57,16 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isGlitch, toggleGlitch
   } = useVisualSettings();
 
+  const { unlockAchievement } = useAchievements();
+
   const filteredItems = filterItems(items, searchTerm);
 
   useEffect(() => {
     if (isOpen) {
       inputRef.current?.focus();
+      unlockAchievement('the_hacker');
     }
-  }, [isOpen]);
+  }, [isOpen, unlockAchievement]);
 
   useEffect(() => {
     setSelectedIndex(0);
