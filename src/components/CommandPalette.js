@@ -58,7 +58,10 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isTerminal, toggleTerminal,
     isBlueprint, toggleBlueprint,
     isSepia, toggleSepia,
-    isVaporwave, toggleVaporwave
+    isVaporwave, toggleVaporwave,
+    isCyberpunk, toggleCyberpunk,
+    isGameboy, toggleGameboy,
+    isComic, toggleComic
   } = useVisualSettings();
 
   const filteredItems = filterItems(items, searchTerm);
@@ -238,6 +241,30 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isVaporwave ? 'Vaporwave Mode On' : 'Vaporwave Mode Off',
             message: !isVaporwave ? 'A E S T H E T I C S.' : 'Reality restored.',
+            duration: 2000
+          });
+          break;
+        case 'toggleCyberpunkMode':
+          toggleCyberpunk();
+          addToast({
+            title: !isCyberpunk ? 'Cyberpunk Mode On' : 'Cyberpunk Mode Off',
+            message: !isCyberpunk ? 'Wake up, Samurai.' : 'System normal.',
+            duration: 2000
+          });
+          break;
+        case 'toggleGameboyMode':
+          toggleGameboy();
+          addToast({
+            title: !isGameboy ? 'Game Boy Mode On' : 'Game Boy Mode Off',
+            message: !isGameboy ? 'Press Start to play.' : 'Game Over.',
+            duration: 2000
+          });
+          break;
+        case 'toggleComicMode':
+          toggleComic();
+          addToast({
+            title: !isComic ? 'Comic Mode On' : 'Comic Mode Off',
+            message: !isComic ? 'BAM! POW! ZAP!' : 'Story arc ended.',
             duration: 2000
           });
           break;

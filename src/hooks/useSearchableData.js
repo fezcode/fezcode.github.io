@@ -113,6 +113,9 @@ const useSearchableData = () => {
           { title: 'Toggle Blueprint Mode', type: 'command', commandId: 'toggleBlueprintMode' },
           { title: 'Toggle Sepia Mode', type: 'command', commandId: 'toggleSepiaMode' },
           { title: 'Toggle Vaporwave Mode', type: 'command', commandId: 'toggleVaporwaveMode' },
+          { title: 'Toggle Cyberpunk Mode', type: 'command', commandId: 'toggleCyberpunkMode' },
+          { title: 'Toggle Game Boy Mode', type: 'command', commandId: 'toggleGameboyMode' },
+          { title: 'Toggle Comic Book Mode', type: 'command', commandId: 'toggleComicMode' },
         ];
 
         setItems([...staticRoutes, ...customCommands, ...allPosts, ...allProjects, ...allLogs, ...allApps]);

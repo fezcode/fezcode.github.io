@@ -41,7 +41,11 @@ const SettingsPage = () => {
     isNoir, toggleNoir,
     isTerminal, toggleTerminal,
     isBlueprint, toggleBlueprint,
-    isSepia, toggleSepia
+    isSepia, toggleSepia,
+    isVaporwave, toggleVaporwave,
+    isCyberpunk, toggleCyberpunk,
+    isGameboy, toggleGameboy,
+    isComic, toggleComic
   } = useVisualSettings();
 
   const {addToast} = useToast();
@@ -224,6 +228,34 @@ const SettingsPage = () => {
                   label="> Sepia Mode"
                   checked={isSepia}
                   onChange={toggleSepia}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-vaporwave-mode"
+                  label="> Vaporwave Mode"
+                  checked={isVaporwave}
+                  onChange={toggleVaporwave}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-cyberpunk-mode"
+                  label="> Cyberpunk Mode"
+                  checked={isCyberpunk}
+                  onChange={toggleCyberpunk}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-gameboy-mode"
+                  label="> Game Boy Mode"
+                  checked={isGameboy}
+                  onChange={toggleGameboy}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-comic-mode"
+                  label="> Comic Book Mode"
+                  checked={isComic}
+                  onChange={toggleComic}
                 />
               </div>
               {/* Sidebar Stuff */}

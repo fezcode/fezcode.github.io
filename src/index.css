@@ -396,3 +396,97 @@ body.vaporwave-mode::after {
   pointer-events: none;
   mix-blend-mode: overlay;
 }
+
+/* Cyberpunk Mode */
+body.cyberpunk-mode {
+  background-color: #050505 !important;
+  color: #fcee0a !important; /* Cyber Yellow */
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+body.cyberpunk-mode * {
+  border-color: #00ff9f !important; /* Cyber Green */
+  box-shadow: 0 0 2px rgba(0, 255, 159, 0.5);
+}
+
+body.cyberpunk-mode a {
+  color: #00ff9f !important;
+  text-decoration: none;
+  border-bottom: 2px solid #00ff9f;
+}
+
+body.cyberpunk-mode a:hover {
+  background-color: #00ff9f;
+  color: #000 !important;
+}
+
+body.cyberpunk-mode img {
+  filter: grayscale(100%) contrast(1.5) brightness(0.8);
+  border: 2px solid #fcee0a !important;
+}
+
+/* Game Boy Mode */
+body.gameboy-mode {
+  background-color: #8bac0f !important; /* Lightest Green */
+  color: #0f380f !important; /* Darkest Green */
+  font-family: 'Courier New', Courier, monospace !important;
+}
+
+body.gameboy-mode * {
+  border-color: #306230 !important; /* Dark Green */
+  box-shadow: none !important;
+}
+
+body.gameboy-mode a {
+  color: #306230 !important;
+  text-decoration: underline;
+}
+
+body.gameboy-mode img {
+  filter: grayscale(100%) contrast(1.5) brightness(0.9) sepia(1) hue-rotate(50deg) saturate(5);
+  mix-blend-mode: multiply;
+  image-rendering: pixelated;
+}
+
+body.gameboy-mode::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  background: #8bac0f;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+
+
+
+
+/* Comic Book Mode */
+body.comic-mode {
+  background-color: #ffffff !important;
+  background-image: radial-gradient(#e5e5f7 2px, transparent 2px);
+  background-size: 10px 10px; /* Halftone dots */
+  color: #000000 !important;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif !important;
+}
+
+body.comic-mode * {
+  border: 2px solid #000000 !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+
+body.comic-mode a {
+  color: #ff0000 !important;
+  font-weight: bold;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+}
+
+body.comic-mode img {
+  filter: contrast(1.5) saturate(1.5);
+}

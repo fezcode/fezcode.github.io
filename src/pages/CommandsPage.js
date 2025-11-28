@@ -56,6 +56,9 @@ const commandsData = [
       { title: "Toggle Blueprint Mode", description: "Switch to a blueprint schematic look. (Easter Egg)", color: "blue" },
       { title: "Toggle Sepia Mode", description: "Switch to an old-timey sepia tone. (Easter Egg)", color: "orange" },
       { title: "Toggle Vaporwave Mode", description: "Switch to a nostalgic vaporwave aesthetic. (Easter Egg)", color: "pink" },
+      { title: "Toggle Cyberpunk Mode", description: "Switch to a high-tech, low-life dark neon look. (Easter Egg)", color: "yellow" },
+      { title: "Toggle Game Boy Mode", description: "Switch to a 4-color retro handheld look. (Easter Egg)", color: "lime" },
+      { title: "Toggle Comic Book Mode", description: "Switch to a vibrant pop-art comic style. (Easter Egg)", color: "red" },
     ]
   },
   {

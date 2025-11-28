@@ -17,6 +17,9 @@ export const VisualSettingsProvider = ({children}) => {
   const [isBlueprint, setIsBlueprint] = usePersistentState('is-blueprint', false);
   const [isSepia, setIsSepia] = usePersistentState('is-sepia', false);
   const [isVaporwave, setIsVaporwave] = usePersistentState('is-vaporwave', false);
+  const [isCyberpunk, setIsCyberpunk] = usePersistentState('is-cyberpunk', false);
+  const [isGameboy, setIsGameboy] = usePersistentState('is-gameboy', false);
+  const [isComic, setIsComic] = usePersistentState('is-comic', false);
 
   useEffect(() => {
     if (isInverted) {
@@ -90,6 +93,30 @@ export const VisualSettingsProvider = ({children}) => {
     }
   }, [isVaporwave]);
 
+  useEffect(() => {
+    if (isCyberpunk) {
+      document.body.classList.add('cyberpunk-mode');
+    } else {
+      document.body.classList.remove('cyberpunk-mode');
+    }
+  }, [isCyberpunk]);
+
+  useEffect(() => {
+    if (isGameboy) {
+      document.body.classList.add('gameboy-mode');
+    } else {
+      document.body.classList.remove('gameboy-mode');
+    }
+  }, [isGameboy]);
+
+  useEffect(() => {
+    if (isComic) {
+      document.body.classList.add('comic-mode');
+    } else {
+      document.body.classList.remove('comic-mode');
+    }
+  }, [isComic]);
+
   const toggleInvert = () => setIsInverted(prev => !prev);
   const toggleRetro = () => setIsRetro(prev => !prev);
   const toggleParty = () => setIsParty(prev => !prev);
@@ -99,6 +126,9 @@ export const VisualSettingsProvider = ({children}) => {
   const toggleBlueprint = () => setIsBlueprint(prev => !prev);
   const toggleSepia = () => setIsSepia(prev => !prev);
   const toggleVaporwave = () => setIsVaporwave(prev => !prev);
+  const toggleCyberpunk = () => setIsCyberpunk(prev => !prev);
+  const toggleGameboy = () => setIsGameboy(prev => !prev);
+  const toggleComic = () => setIsComic(prev => !prev);
 
   return (
     <VisualSettingsContext.Provider value={{
@@ -110,7 +140,10 @@ export const VisualSettingsProvider = ({children}) => {
       isTerminal, toggleTerminal,
       isBlueprint, toggleBlueprint,
       isSepia, toggleSepia,
-      isVaporwave, toggleVaporwave
+      isVaporwave, toggleVaporwave,
+      isCyberpunk, toggleCyberpunk,
+      isGameboy, toggleGameboy,
+      isComic, toggleComic
     }}>
       {children}
     </VisualSettingsContext.Provider>);
