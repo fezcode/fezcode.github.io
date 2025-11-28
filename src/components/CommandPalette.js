@@ -61,7 +61,8 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
     isVaporwave, toggleVaporwave,
     isCyberpunk, toggleCyberpunk,
     isGameboy, toggleGameboy,
-    isComic, toggleComic
+    isComic, toggleComic,
+    isSketchbook, toggleSketchbook
   } = useVisualSettings();
 
   const filteredItems = filterItems(items, searchTerm);
@@ -265,6 +266,14 @@ const CommandPalette = ({isOpen, setIsOpen, openGenericModal, toggleDigitalRain}
           addToast({
             title: !isComic ? 'Comic Mode On' : 'Comic Mode Off',
             message: !isComic ? 'BAM! POW! ZAP!' : 'Story arc ended.',
+            duration: 2000
+          });
+          break;
+        case 'toggleSketchbookMode':
+          toggleSketchbook();
+          addToast({
+            title: !isSketchbook ? 'Sketchbook Mode On' : 'Sketchbook Mode Off',
+            message: !isSketchbook ? 'Pencil sharpened.' : 'Notebook closed.',
             duration: 2000
           });
           break;

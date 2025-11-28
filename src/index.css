@@ -490,3 +490,30 @@ body.comic-mode a {
 body.comic-mode img {
   filter: contrast(1.5) saturate(1.5);
 }
+
+/* Sketchbook Mode */
+body.sketchbook-mode {
+  background-color: #f9f8f2 !important;
+  background-image: repeating-linear-gradient(#e5e5e5 0 1px, transparent 1px 100%);
+  background-size: 100% 30px;
+  color: #333333 !important;
+  font-family: 'Segoe Print', 'Bradley Hand', cursive !important;
+}
+
+body.sketchbook-mode * {
+  border-color: #555555 !important;
+  border-style: solid !important;
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px !important; /* Wobbly lines */
+}
+
+body.sketchbook-mode a {
+  color: #669dd8 !important;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+}
+
+body.sketchbook-mode img {
+  filter: grayscale(100%) sepia(30%) contrast(1.2);
+  border: 2px solid #333;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}

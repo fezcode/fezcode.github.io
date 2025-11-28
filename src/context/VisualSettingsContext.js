@@ -20,6 +20,7 @@ export const VisualSettingsProvider = ({children}) => {
   const [isCyberpunk, setIsCyberpunk] = usePersistentState('is-cyberpunk', false);
   const [isGameboy, setIsGameboy] = usePersistentState('is-gameboy', false);
   const [isComic, setIsComic] = usePersistentState('is-comic', false);
+  const [isSketchbook, setIsSketchbook] = usePersistentState('is-sketchbook', false);
 
   useEffect(() => {
     if (isInverted) {
@@ -117,6 +118,14 @@ export const VisualSettingsProvider = ({children}) => {
     }
   }, [isComic]);
 
+  useEffect(() => {
+    if (isSketchbook) {
+      document.body.classList.add('sketchbook-mode');
+    } else {
+      document.body.classList.remove('sketchbook-mode');
+    }
+  }, [isSketchbook]);
+
   const toggleInvert = () => setIsInverted(prev => !prev);
   const toggleRetro = () => setIsRetro(prev => !prev);
   const toggleParty = () => setIsParty(prev => !prev);
@@ -129,6 +138,7 @@ export const VisualSettingsProvider = ({children}) => {
   const toggleCyberpunk = () => setIsCyberpunk(prev => !prev);
   const toggleGameboy = () => setIsGameboy(prev => !prev);
   const toggleComic = () => setIsComic(prev => !prev);
+  const toggleSketchbook = () => setIsSketchbook(prev => !prev);
 
   return (
     <VisualSettingsContext.Provider value={{
@@ -143,7 +153,8 @@ export const VisualSettingsProvider = ({children}) => {
       isVaporwave, toggleVaporwave,
       isCyberpunk, toggleCyberpunk,
       isGameboy, toggleGameboy,
-      isComic, toggleComic
+      isComic, toggleComic,
+      isSketchbook, toggleSketchbook
     }}>
       {children}
     </VisualSettingsContext.Provider>);

@@ -45,7 +45,8 @@ const SettingsPage = () => {
     isVaporwave, toggleVaporwave,
     isCyberpunk, toggleCyberpunk,
     isGameboy, toggleGameboy,
-    isComic, toggleComic
+    isComic, toggleComic,
+    isSketchbook, toggleSketchbook
   } = useVisualSettings();
 
   const {addToast} = useToast();
@@ -256,6 +257,13 @@ const SettingsPage = () => {
                   label="> Comic Book Mode"
                   checked={isComic}
                   onChange={toggleComic}
+                />
+                <div className="mb-4"></div>
+                <CustomToggle
+                  id="enable-sketchbook-mode"
+                  label="> Sketchbook Mode"
+                  checked={isSketchbook}
+                  onChange={toggleSketchbook}
                 />
               </div>
               {/* Sidebar Stuff */}
