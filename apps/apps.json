@@ -6,12 +6,21 @@
     "order": 1,
     "apps": [
       {
+        "slug": "fezynth",
+        "to": "/apps/fezynth",
+        "title": "FeZynth",
+        "description": "Make music with Web Audio API and Canvas API",
+        "icon": "MusicNoteIcon",
+        "pinned_order": 4,
+        "created_at": "2025-11-10T14:00:00+03:00"
+      },
+      {
         "slug": "feztype",
         "to": "/apps/feztype",
         "title": "FezType (Typing Speed Tester)",
         "description": "Test and improve your typing speed.",
         "icon": "KeyboardIcon",
-        "pinned_order": 4,
+        "pinned_order": 5,
         "created_at": "2025-11-10T14:00:00+03:00"
       },
       {
@@ -20,7 +29,7 @@
         "title": "Mastermind",
         "description": "Play the classic code-breaking game of Mastermind (Bulls and Cows).",
         "icon": "PuzzlePieceIcon",
-        "pinned_order": 5,
+        "pinned_order": 6,
         "created_at": "2025-11-23T18:28:07+03:00"
       },
       {
@@ -29,7 +38,7 @@
         "title": "Nonogram",
         "description": "Solve picture logic puzzles by filling cells according to numerical clues.",
         "icon": "GridFourIcon",
-        "pinned_order": 6,
+        "pinned_order": 7,
         "created_at": "2025-11-23T20:43:44+03:00"
       },
       {
@@ -153,7 +162,7 @@
         "title": "Tournament Bracket",
         "description": "Create and manage tournament brackets.",
         "icon": "ListNumbersIcon",
-        "pinned_order": 7,
+        "pinned_order": 8,
         "created_at": "2025-11-07T14:22:02+03:00"
       },
       {
@@ -178,7 +187,7 @@
         "title": "Whiteboard",
         "description": "A simple digital whiteboard for sketching and doodling.",
         "icon": "PencilSimpleIcon",
-        "pinned_order": 8,
+        "pinned_order": 9,
         "created_at": "2025-11-25T17:00:00+03:00"
       },
       {
@@ -259,7 +268,7 @@
         "title": "Color Palette Generator",
         "description": "Generate random color palettes.",
         "icon": "PaletteIcon",
-        "pinned_order": 9,
+        "pinned_order": 10,
         "created_at": "2025-11-07T19:33:40+03:00"
       },
       {
@@ -332,7 +341,7 @@
         "title": "Morse Code Translator",
         "description": "Translate text to Morse code and vice-versa, with audio playback.",
         "icon": "TranslateIcon",
-        "pinned_order": 10,
+        "pinned_order": 11,
         "created_at": "2025-11-23T18:16:28+03:00"
       },
       {
@@ -398,7 +407,7 @@
         "title": "Image Toolkit",
         "description": "A toolkit for basic image manipulations.",
         "icon": "ImageIcon",
-        "pinned_order": 11,
+        "pinned_order": 12,
         "created_at": "2025-11-10T23:58:16+03:00"
       },
       {
@@ -407,7 +416,7 @@
         "title": "Image Compressor",
         "description": "Compress images to reduce file size while maintaining quality.",
         "icon": "ArrowsInLineHorizontalIcon",
-        "pinned_order": 12,
+        "pinned_order": 13,
         "created_at": "2025-11-23T12:54:58+03:00"
       },
       {
@@ -416,7 +425,7 @@
         "title": "Stopwatch",
         "description": "A simple stopwatch with lap functionality.",
         "icon": "TimerIcon",
-        "pinned_order": 13,
+        "pinned_order": 14,
         "created_at": "2025-11-23T17:30:23+03:00"
       },
       {
@@ -425,7 +434,7 @@
         "title": "Pomodoro Timer",
         "description": "A simple and customizable Pomodoro timer to boost your productivity.",
         "icon": "TimerIcon",
-        "pinned_order": 14,
+        "pinned_order": 15,
         "created_at": "2025-11-23T18:11:03+03:00"
       },
       {
