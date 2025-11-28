@@ -705,7 +705,6 @@ const FootballEmblemCreatorPage = () => {
                   fontSize={fontSize}
                   textAnchor="middle"
                   fill={accentColor}
-                  className="uppercase"
                   style={{ textShadow: '1px 1px 0px rgba(255,255,255,0.5)' }}
                 >
                   {teamName}
