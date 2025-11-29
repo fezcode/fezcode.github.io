@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import RoadmapCard from './RoadmapCard';
 import { getOnlyBgStatusColor, statusTextColor } from '../../utils/roadmapHelpers';
-import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react'; // Import eye icons
+import { EyeIcon, EyeSlashIcon } from '@phosphor-icons/react';
+import { useAchievements } from '../../context/AchievementContext';
 
 const RoadmapView = ({ issuesData = [] }) => {
-  const [hiddenColumns, setHiddenColumns] = useState([]); // State to track hidden columns
+  const [hiddenColumns, setHiddenColumns] = useState([]);
+  const { unlockAchievement } = useAchievements();
+
+  const statusOrder = ['Planned', 'In Progress', 'Completed', 'On Hold'];
 
   const toggleColumnVisibility = (status) => {
     if (hiddenColumns.includes(status)) {
@@ -14,7 +18,14 @@ const RoadmapView = ({ issuesData = [] }) => {
     }
   };
 
-  const groupedApps = issuesData.reduce((acc, app) => {
+  useEffect(() => {
+    // Check if all status columns are hidden
+    if (hiddenColumns.length === statusOrder.length) {
+      unlockAchievement('hide_and_seek_master');
+    }
+  }, [hiddenColumns, statusOrder.length, unlockAchievement]);
+
+  const groupIssues = issuesData.reduce((acc, app) => {
     const status = app.status || 'Planned'; // Default to Planned if not specified
     if (!acc[status]) {
       acc[status] = [];
@@ -22,8 +33,6 @@ const RoadmapView = ({ issuesData = [] }) => {
     acc[status].push(app);
     return acc;
   }, {});
-
-  const statusOrder = ['Planned', 'In Progress', 'Completed', 'On Hold'];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -38,7 +47,7 @@ const RoadmapView = ({ issuesData = [] }) => {
                 <span
                   className={`w-3 h-3 rounded-full ${getOnlyBgStatusColor(status)} ${statusTextColor(status)}`}
                 ></span>
-                {status} ({groupedApps[status]?.length || 0})
+                {status} ({groupIssues[status]?.length || 0})
               </span>
               <button
                 onClick={() => toggleColumnVisibility(status)}
@@ -50,7 +59,7 @@ const RoadmapView = ({ issuesData = [] }) => {
             </h3>
             {!isHidden && (
               <div className="space-y-4">
-                {groupedApps[status]?.map((app, appIndex) => (
+                {groupIssues[status]?.map((app, appIndex) => (
                   <RoadmapCard key={app.id} app={app} index={appIndex} />
                 ))}
               </div>

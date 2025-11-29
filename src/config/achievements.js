@@ -13,6 +13,7 @@ import {
   BookBookmarkIcon,
   BooksIcon,
   GhostIcon,
+  EyeSlashIcon, // Added for new achievement
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -99,6 +100,13 @@ export const ACHIEVEMENTS = [
     description: 'Read 10 different blog posts. Impressive!',
     icon: <BooksIcon size={32} weight="duotone" />,
     category: 'Content',
+  },
+  {
+    id: 'hide_and_seek_master',
+    title: 'Hide and Seek Master',
+    description: 'Hid all roadmap status columns.',
+    icon: <EyeSlashIcon size={32} weight="duotone" />,
+    category: 'Exploration',
   },
   {
     id: 'the_medium',
