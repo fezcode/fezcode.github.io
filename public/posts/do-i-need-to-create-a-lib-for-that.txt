@@ -1,5 +1,3 @@
-# Do I Need to Create a Lib For That?
-
 ## My Journey into Go Libraries
 
 Creating my first Go library, [go-tournament-brackets](https://github.com/fezcode/go-tournament-brackets), has been a, _experience_...

@@ -1,4 +1,3 @@
-
 # Demystifying Tailwind CSS in `fezcodex`: A Utility-First Approach
 
 In the `fezcodex` project, you'll notice that our components are styled **cool**(!). Instead of writing custom CSS for every element, **Tailwind CSS** is used. This post will explain what Tailwind CSS is, how it's configured in my project,
