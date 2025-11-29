@@ -125,6 +125,7 @@ const KeyboardTypingSpeedTesterPage = lazy(
 const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
+const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
@@ -800,6 +801,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::spiro"
           element={<Navigate to="/apps/spirograph" replace />}
+        />
+        <Route
+          path="/apps::flora"
+          element={<Navigate to="/apps/fractal-flora" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1727,6 +1732,22 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <SpirographPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/fractal-flora"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <FractalFloraPage />
               </Suspense>
             </motion.div>
           }

@@ -289,6 +289,15 @@
     "order": 3,
     "apps": [
       {
+        "slug": "fractal-flora",
+        "to": "/apps/fractal-flora",
+        "title": "Fractal Flora",
+        "description": "Grow digital trees using recursive mathematics.",
+        "icon": "PlantIcon",
+        "pinned_order": 18,
+        "created_at": "2025-11-29T15:00:00+03:00"
+      },
+      {
         "slug": "color-palette-generator",
         "to": "/apps/color-palette-generator",
         "title": "Color Palette Generator",
