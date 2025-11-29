@@ -208,6 +208,15 @@
         "created_at": "2025-11-25T17:00:00+03:00"
       },
       {
+        "slug": "spirograph",
+        "to": "/apps/spirograph",
+        "title": "Spirograph Generator",
+        "description": "Create mesmerizing geometric patterns with math.",
+        "icon": "AtomIcon",
+        "pinned_order": 17,
+        "created_at": "2025-11-29T14:00:00+03:00"
+      },
+      {
         "slug": "codename-generator",
         "to": "/apps/codename-generator",
         "title": "Codename Generator",
@@ -279,6 +288,24 @@
     "icon": "MagicWandIcon",
     "order": 3,
     "apps": [
+      {
+        "slug": "fractal-flora",
+        "to": "/apps/fractal-flora",
+        "title": "Fractal Flora",
+        "description": "Grow digital trees using recursive mathematics.",
+        "icon": "PlantIcon",
+        "pinned_order": 18,
+        "created_at": "2025-11-29T15:00:00+03:00"
+      },
+      {
+        "slug": "l-system-art",
+        "to": "/apps/l-system-art",
+        "title": "L-System Art",
+        "description": "Generate intricate fractal patterns using L-System rules.",
+        "icon": "CodeIcon",
+        "pinned_order": 19,
+        "created_at": "2025-11-29T16:00:00+03:00"
+      },
       {
         "slug": "color-palette-generator",
         "to": "/apps/color-palette-generator",
