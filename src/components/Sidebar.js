@@ -29,8 +29,8 @@ import {
   TimerIcon,
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
-  PushPin,
-  Trophy,
+  PushPinIcon,
+  TrophyIcon,
   MusicNoteIcon,
   SkullIcon,
   BugBeetleIcon,
@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
       isAppsOpen: true,
       isExtrasOpen: false,
       isGamesOpen: false,
-      isExternalLinksOpen: false,
+      isStatusOpen: false,
     },
   );
 
@@ -121,11 +121,14 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
     location.pathname.startsWith('/blog') ||
     location.pathname.startsWith('/projects') ||
     location.pathname.startsWith('/logs') ||
-    location.pathname.startsWith('/news') ||
-    location.pathname.startsWith('/timeline');
+    location.pathname.startsWith('/news');
   const isAppsActive =
+    location.pathname.startsWith('/pinned-apps') ||
     location.pathname.startsWith('/apps') ||
     location.pathname.startsWith('/commands');
+  const isStatusActive =
+    location.pathname.startsWith('/timeline') ||
+    location.pathname.startsWith('/roadmap');
 
   const variants = {
     open: { x: 0 },
@@ -196,7 +199,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                     <span>About</span>
                   </NavLink>
                   <NavLink to="/achievements" className={getLinkClass}>
-                    <Trophy size={24} />
+                    <TrophyIcon size={24} />
                     <span>Trophy Room</span>
                   </NavLink>
                 </nav>
@@ -237,14 +240,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                     <GlobeSimpleIcon size={24} />
                     <span>News</span>
                   </NavLink>
-                  <NavLink to="/timeline" className={getLinkClass}>
-                    <TimerIcon size={24} />
-                    <span>Timeline</span>
-                  </NavLink>
-                  <NavLink to="/roadmap" className={getLinkClass}>
-                    <BugBeetleIcon size={24} />
-                    <span>Fezzilla</span>
-                  </NavLink>
                 </nav>
               )}
             </div>
@@ -254,9 +249,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                 onClick={() => toggleSection('isAppsOpen')}
                 className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isAppsActive ? 'text-sidebar-highlight' : 'text-gray-100'}`}
               >
-                <span
-                  className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-sidebar-highlight' : 'text-white'}`}
-                >
+                <span className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-sidebar-highlight' : 'text-white'}`}>
                   <SquaresFourIcon size={16} />
                   <span>Apps</span>
                 </span>
@@ -268,7 +261,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
               {sidebarState.isAppsOpen && (
                 <nav className={getGroupClass(isAppsActive)}>
                   <NavLink to="/pinned-apps" className={getLinkClass}>
-                    <PushPin size={24} />
+                    <PushPinIcon size={24} />
                     <span>Pinned Apps</span>
                   </NavLink>
                   <NavLink to="/apps" className={getLinkClass}>
@@ -279,6 +272,34 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                   <NavLink to="/commands" className={getLinkClass}>
                     <MagnifyingGlassIcon size={24} />
                     <span>All Commands</span>
+                  </NavLink>
+                </nav>
+              )}
+            </div>
+
+            <div className="mt-8">
+              <button
+                onClick={() => toggleSection('isStatusOpen')}
+                className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isStatusActive ? 'text-sidebar-highlight' : 'text-gray-100'}`}
+              >
+                <span className={`flex items-center gap-2 font-sans ${isStatusActive ? 'text-sidebar-highlight' : 'text-white'}`}>
+                  <SkullIcon size={16} />
+                  <span>Status</span>
+                </span>
+                <CaretDownIcon
+                  size={20}
+                  className={`transition-transform ${sidebarState.isStatusOpen ? 'transform rotate-180' : ''}`}
+                />
+              </button>
+              {sidebarState.isStatusOpen && (
+                <nav className={getGroupClass(isStatusActive)}>
+                  <NavLink to="/timeline" className={getLinkClass}>
+                    <TimerIcon size={24} />
+                    <span>Timeline</span>
+                  </NavLink>
+                  <NavLink to="/roadmap" className={getLinkClass}>
+                    <BugBeetleIcon size={24} />
+                    <span>Fezzilla</span>
                   </NavLink>
                 </nav>
               )}
@@ -359,36 +380,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                   >
                     <GlobeSimpleIcon size={24} />
                     <span>Openfront.io</span>
-                  </a>
-                </nav>
-              )}
-            </div>
-
-            <div className="mt-8">
-              <button
-                onClick={() => toggleSection('isExternalLinksOpen')}
-                className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${sidebarState.isExternalLinksOpen ? 'text-gray-100' : 'text-gray-100'}`}
-              >
-                <span className="flex items-center gap-2 font-sans text-white">
-                  <AnchorIcon size={16} />
-                  <span>External Links</span>
-                  <ArrowSquareOutIcon size={16} className="text-rose-400" />
-                </span>
-                <CaretDownIcon
-                  size={20}
-                  className={`transition-transform ${sidebarState.isExternalLinksOpen ? 'transform rotate-180' : ''}`}
-                />
-              </button>
-              {sidebarState.isExternalLinksOpen && (
-                <nav className={getGroupClass(false)}>
-                  <a
-                    href="https://github.com/fezcode"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`flex items-center space-x-3 px-3 py-1 rounded-md transition-colors text-gray-100 hover:text-white hover:bg-gray-800`}
-                  >
-                    <GithubLogoIcon size={24} />
-                    <span>GitHub</span>
                   </a>
                 </nav>
               )}
