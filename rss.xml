@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 29 Nov 2025 13:33:17 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 29 Nov 2025 15:10:23 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 29 Nov 2025 13:33:17 GMT</pubDate>
+        <pubDate>Sat, 29 Nov 2025 15:10:23 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -23,7 +23,7 @@
             <link>https://fezcode.com/#/blog/how-fractal-flora-works</link>
             <guid isPermaLink="false">https://fezcode.com/#/blog/how-fractal-flora-works</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
-            <pubDate>Sat, 29 Nov 2025 00:00:00 GMT</pubDate>
+            <pubDate>Fri, 28 Nov 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>Have you ever wondered how nature creates such intricate and beautiful patterns,
 from the branching of trees to the delicate veins of a leaf? Much of this complexity can be explained by surprisingly simple rules,
 often involving <strong>fractals</strong> and <strong>recursion</strong>.
