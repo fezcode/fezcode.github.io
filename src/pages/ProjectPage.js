@@ -9,6 +9,7 @@ import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
 import Seo from '../components/Seo';
 
 import {ArrowLeftIcon} from '@phosphor-icons/react';
+import '../styles/BlogPostPage.css';
 
 const ProjectPage = () => {
   const {slug} = useParams();
@@ -58,7 +59,7 @@ const ProjectPage = () => {
   const fullProject = {...project, ...content};
 
   return (
-    <div className="min-h-screen bg-[#020617] pb-24 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020617] pb-24 relative">
       <Seo
         title={`${fullProject.title} | Fezcodex`}
         description={fullProject.shortDescription}
@@ -74,37 +75,34 @@ const ProjectPage = () => {
         }
       />
 
-      {/* Header Background */}
-      <div
-        className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
+      {/* Background Wrapper */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Header Background */}
         <div
-          className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]"/>
+          className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
+          <div
+            className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]"/>
+        </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24">
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 relative">
         <div className="lg:grid lg:grid-cols-4 lg:gap-12">
           <div className="lg:col-span-3">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 font-mono text-sm tracking-widest uppercase hover:underline decoration-cyan-500/50 underline-offset-4 transition-all"
+              className="blog-page-header-link"
             >
               <ArrowLeftIcon size={16}/> Back to Projects
             </Link>
 
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white font-mono mb-6">
+            <h1 className="project-page-title">
               {fullProject.title}
               <span className="text-cyan-500 animate-pulse">_</span>
             </h1>
 
             <div className="mt-8 p-8 bg-gray-900/50 rounded-xl border border-gray-800 backdrop-blur-sm">
               <div
-                className="prose prose-invert prose-lg max-w-none
-                    prose-headings:font-mono prose-headings:text-gray-100
-                    prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline
-                    prose-code:text-cyan-300 prose-code:bg-gray-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-                    prose-pre:bg-gray-950 prose-pre:border prose-pre:border-gray-800
-                    prose-strong:text-white
-                    text-gray-300"
+                className="prose prose-invert prose-lg project-page-content"
               >
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}

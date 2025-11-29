@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import React, {useState, useEffect, useRef} from 'react';
+import {useParams, Link, useNavigate} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 import {
   ArrowSquareOut,
   ArrowsOutSimple,
@@ -9,42 +9,43 @@ import {
   ArrowLeft,
   ArrowLeftIcon,
 } from '@phosphor-icons/react';
-import { customTheme } from '../utils/customTheme';
+import {customTheme} from '../utils/customTheme';
 import PostMetadata from '../components/metadata-cards/PostMetadata';
 import CodeModal from '../components/CodeModal';
-import { useToast } from '../hooks/useToast';
+import {useToast} from '../hooks/useToast';
 import ImageModal from '../components/ImageModal';
 import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { calculateReadingTime } from '../utils/readingTime';
-import { useAchievements } from '../context/AchievementContext';
+import {calculateReadingTime} from '../utils/readingTime';
+import {useAchievements} from '../context/AchievementContext';
+import '../styles/BlogPostPage.css';
 
-const LinkRenderer = ({ href, children }) => {
+const LinkRenderer = ({href, children}) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
   return (
     <a
       href={href}
-      className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1"
+      className="text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1 decoration-cyan-500/30 hover:decoration-cyan-400 underline underline-offset-4"
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
     >
-      {children} {isExternal && <ArrowSquareOut className="text-xs" />}
+      {children} {isExternal && <ArrowSquareOut className="text-xs"/>}
     </a>
   );
 };
 
 const CodeBlock = ({
-  node,
-  inline,
-  className,
-  children,
-  openModal,
-  ...props
-}) => {
+                     node,
+                     inline,
+                     className,
+                     children,
+                     openModal,
+                     ...props
+                   }) => {
   const match = /language-(\w+)/.exec(className || '');
-  const { addToast } = useToast();
+  const {addToast} = useToast();
   const handleCopy = () => {
     const textToCopy = String(children);
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -91,44 +92,57 @@ const CodeBlock = ({
   };
 
   return !inline && match ? (
-    <div className="relative">
-      <div className="absolute top-2 right-2 flex gap-2">
+    <div className="relative group my-6">
+      <div
+        className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
         <button
           onClick={() =>
             openModal(String(children).replace(/\n$/, ''), match[1])
           }
-          className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
+          className="text-cyan-300 bg-gray-800/90 border border-cyan-900/50 p-1.5 rounded hover:bg-gray-700 hover:text-cyan-200 transition-colors shadow-lg backdrop-blur-sm"
+          title="Expand Code"
         >
-          <ArrowsOutSimple size={20} />
+          <ArrowsOutSimple size={16}/>
         </button>
         <button
           onClick={handleCopy}
-          className="text-white bg-gray-700 p-1 rounded opacity-75 hover:opacity-100"
+          className="text-cyan-300 bg-gray-800/90 border border-cyan-900/50 p-1.5 rounded hover:bg-gray-700 hover:text-cyan-200 transition-colors shadow-lg backdrop-blur-sm"
+          title="Copy Code"
         >
-          <Clipboard size={20} />
+          <Clipboard size={16}/>
         </button>
       </div>
-      <SyntaxHighlighter
-        style={customTheme}
-        language={match[1]}
-        PreTag="pre"
-        CodeTag="code"
-        // className="not-prose"
-        {...props}
-        codeTagProps={{ style: { fontFamily: "'JetBrains Mono', monospace" } }}
-      >
-        {String(children).replace(/\n$/, '')}
-      </SyntaxHighlighter>
+      <div className="rounded-lg overflow-hidden border border-gray-700/50 shadow-2xl">
+        <SyntaxHighlighter
+          style={customTheme}
+          language={match[1]}
+          PreTag="div"
+          CodeTag="code"
+          customStyle={{
+            margin: 0,
+            borderRadius: 0,
+            background: '#0f172a', // slate-900
+            padding: '1.5rem',
+            fontSize: '1rem',
+            lineHeight: '1.6',
+          }}
+          {...props}
+          codeTagProps={{style: {fontFamily: "'JetBrains Mono', monospace"}}}
+        >
+          {String(children).replace(/\n$/, '')}
+        </SyntaxHighlighter>
+      </div>
     </div>
   ) : (
-    <code className={`${className} font-mono`} {...props}>
+    <code
+      className={`${className} font-mono text-cyan-300 bg-gray-800/50 px-1.5 py-0.5 rounded text-sm border border-gray-700/50`} {...props}>
       {children}
     </code>
   );
 };
 
 const BlogPostPage = () => {
-  const { slug, seriesSlug, episodeSlug } = useParams();
+  const {slug, seriesSlug, episodeSlug} = useParams();
   const navigate = useNavigate();
   const currentSlug = episodeSlug || slug; // Use episodeSlug if present, otherwise use slug
   const [post, setPost] = useState(null);
@@ -141,7 +155,7 @@ const BlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx'); // Default to jsx
   const [modalImageSrc, setModalImageSrc] = useState(null);
-  const { trackReadingProgress } = useAchievements();
+  const {trackReadingProgress} = useAchievements();
   const [hasTrackedRead, setHasTrackedRead] = useState(false);
 
   useEffect(() => {
@@ -262,7 +276,7 @@ const BlogPostPage = () => {
       } catch (error) {
         console.error('Error fetching post or metadata:', error);
 
-        setPost({ attributes: { title: 'Error loading post' }, body: '' });
+        setPost({attributes: {title: 'Error loading post'}, body: ''});
       } finally {
         setLoading(false);
       }
@@ -274,7 +288,7 @@ const BlogPostPage = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (contentRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } =
+        const {scrollTop, scrollHeight, clientHeight} =
           document.documentElement;
         const totalHeight = scrollHeight - clientHeight;
         const currentProgress = (scrollTop / totalHeight) * 100;
@@ -288,39 +302,24 @@ const BlogPostPage = () => {
   }, [post]); // Re-attach scroll listener if post changes
 
   if (loading) {
-    // Skeleton loading screen for BlogPostPage
     return (
-      <div className="bg-gray-900 py-16 sm:py-24 animate-pulse">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-4 lg:gap-8">
-            <div className="lg:col-span-3">
-              <div className="h-8 bg-gray-800 rounded w-1/4 mb-4"></div>
-              <div className="h-12 bg-gray-800 rounded w-3/4 mb-8"></div>
-              <div className="space-y-4">
-                <div className="h-6 bg-gray-800 rounded w-full"></div>
-                <div className="h-6 bg-gray-800 rounded w-5/6"></div>
-                <div className="h-6 bg-gray-800 rounded w-full"></div>
-                <div className="h-6 bg-gray-800 rounded w-2/3"></div>
-              </div>
-            </div>
-            <div className="hidden lg:block">
-              <div className="bg-gray-800 rounded-lg shadow-lg p-6">
-                <div className="h-8 bg-gray-700 rounded w-1/2 mb-4"></div>
-                <div className="space-y-2">
-                  <div className="h-4 bg-gray-700 rounded w-full"></div>
-                  <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-700 rounded w-1/2"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
+          <p className="font-mono text-cyan-500 animate-pulse">
+            DECRYPTING DATA STREAM...
+          </p>
         </div>
       </div>
     );
   }
 
   if (!post) {
-    return <div className="text-center py-16">Post not found</div>;
+    return (
+      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center text-gray-400 font-mono">
+        Data not found in archives.
+      </div>
+    );
   }
 
   const currentPostIndex = post.seriesPosts
@@ -340,17 +339,22 @@ const BlogPostPage = () => {
     ? `Back to ${post.attributes.series.title}`
     : 'Back to Blog';
 
-  const ImageRenderer = ({ src, alt }) => (
-    <img
-      src={src}
-      alt={alt}
-      className="cursor-pointer max-w-full h-auto"
-      onClick={() => setModalImageSrc(src)}
-    />
+  const ImageRenderer = ({src, alt}) => (
+    <div className="my-8 mx-auto max-w-[75%] group relative rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
+      <div
+        className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"></div>
+      <img
+        src={src}
+        alt={alt}
+        className="cursor-pointer w-full h-auto transform transition-transform duration-500 group-hover:scale-[1.02] !border-0 !m-0 !max-w-full"
+        onClick={() => setModalImageSrc(src)}
+      />
+    </div>
   );
 
   return (
-    <div className="bg-gray-900 py-16 sm:py-24">
+
+    <div className="min-h-screen bg-[#020617] pb-24 relative">
       <Seo
         title={`${post.attributes.title} | Fezcodex`}
         description={post.body.substring(0, 150)}
@@ -367,34 +371,51 @@ const BlogPostPage = () => {
           post.attributes.image || 'https://fezcode.github.io/logo512.png'
         }
       />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+      {/* Background Wrapper to prevent overflow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* Header Background */}
+        <div
+          className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
+          <div
+            className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]"/>
+        </div>
+        {/* Ambient Orbs */}
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-900/10 rounded-full blur-3xl -z-10 opacity-50"/>
+      </div>
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 relative">
+        <div className="lg:grid lg:grid-cols-4 lg:gap-12">
           <div className="lg:col-span-3">
             <Link
               to={backLink}
-              className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+              className="blog-page-header-link"
             >
-              <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-              {backLinkText}
+              <ArrowLeftIcon size={16}/> {backLinkText}
             </Link>
-            <h1 className="text-4xl font-bold text-white mb-4">
+
+            <h1 className="blog-page-title">
               {post.attributes.title}
             </h1>
-            <ShareButtons
-              title={post.attributes.title}
-              url={window.location.href}
-            />
+
+            <div className="mb-8">
+              <ShareButtons
+                title={post.attributes.title}
+                url={window.location.href}
+              />
+            </div>
+
             <div
               ref={contentRef}
-              className="prose prose-xl prose-dark max-w-none mt-8"
+              className="prose prose-invert prose-lg blog-page-content"
             >
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 components={{
                   a: LinkRenderer,
+                  pre: ({children}) => <>{children}</>,
                   code: (props) => (
-                    <CodeBlock {...props} openModal={openModal} />
+                    <CodeBlock {...props} openModal={openModal}/>
                   ),
                   img: ImageRenderer,
                 }}
@@ -402,8 +423,10 @@ const BlogPostPage = () => {
                 {post.body}
               </ReactMarkdown>
             </div>
+
             {(prevPost || nextPost) && (
-              <div className="mt-8 flex justify-between items-center border-t border-gray-700 pt-8">
+              <div
+                className="mt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-gray-800 pt-8">
                 {prevPost && (
                   <Link
                     to={
@@ -411,11 +434,20 @@ const BlogPostPage = () => {
                         ? `/blog/series/${seriesSlug}/${prevPost.slug}`
                         : `/blog/${prevPost.slug}`
                     }
-                    className="text-primary-400 hover:underline flex items-center gap-2"
+                    className="group flex flex-col items-start max-w-[45%]"
                   >
-                    <ArrowLeft size={20} /> Previous: {prevPost.title}
+                    <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
+                        <ArrowLeft size={14} className="inline mr-1"/> Previous Transmission
+                    </span>
+                    <span
+                      className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
+                        {prevPost.title}
+                    </span>
                   </Link>
                 )}
+                {/* Spacer if only one exists */}
+                {!prevPost && <div></div>}
+
                 {nextPost && (
                   <Link
                     to={
@@ -423,25 +455,33 @@ const BlogPostPage = () => {
                         ? `/blog/series/${seriesSlug}/${nextPost.slug}`
                         : `/blog/${nextPost.slug}`
                     }
-                    className="text-primary-400 hover:underline flex items-center gap-2 ml-auto"
+                    className="group flex flex-col items-end text-right max-w-[45%]"
                   >
-                    Next: {nextPost.title}{' '}
-                    <ArrowLeft size={20} className="rotate-180" />
+                     <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
+                        Next Transmission <ArrowLeft size={14} className="inline ml-1 rotate-180"/>
+                    </span>
+                    <span
+                      className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
+                         {nextPost.title}
+                    </span>
                   </Link>
                 )}
               </div>
             )}
           </div>
-          <div className="hidden lg:block">
-            <PostMetadata
-              metadata={post.attributes}
-              readingProgress={readingProgress}
-              isAtTop={isAtTop}
-              overrideDate={post.attributes.date}
-              updatedDate={post.attributes.updated}
-              seriesPosts={post.seriesPosts}
-              estimatedReadingTime={estimatedReadingTime}
-            />
+
+          <div className="hidden lg:block mt-24 space-y-6">
+            <div className="sticky top-24">
+              <PostMetadata
+                metadata={post.attributes}
+                readingProgress={readingProgress}
+                isAtTop={isAtTop}
+                overrideDate={post.attributes.date}
+                updatedDate={post.attributes.updated}
+                seriesPosts={post.seriesPosts}
+                estimatedReadingTime={estimatedReadingTime}
+              />
+            </div>
           </div>
         </div>
       </div>

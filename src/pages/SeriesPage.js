@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useParams, Link} from 'react-router-dom';
 import PostItem from '../components/PostItem';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import {ArrowLeftIcon} from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
 
 const SeriesPage = () => {
-  const { seriesSlug } = useParams();
+  const {seriesSlug} = useParams();
   const [seriesPosts, setSeriesPosts] = useState([]);
   const [seriesTitle, setSeriesTitle] = useState('');
   const [loading, setLoading] = useState(true);
@@ -82,69 +82,73 @@ const SeriesPage = () => {
 
   if (loading) {
     return (
-      <div className="py-16 sm:py-24 animate-pulse">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <div className="h-8 bg-gray-800 rounded w-1/4 mb-4 mx-auto"></div>
-            <div className="h-12 bg-gray-800 rounded w-3/4 mb-4 mx-auto"></div>
-            <div className="h-6 bg-gray-800 rounded w-1/2 mb-8 mx-auto"></div>
-          </div>
-          <div className="mt-16 space-y-8">
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6">
-                <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
-                <div className="h-4 bg-gray-700 rounded w-1/2"></div>
-              </div>
-            ))}
-          </div>
+      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
+          <p className="font-mono text-cyan-500 animate-pulse">
+            ACCESSING SERIES DATA...
+          </p>
         </div>
       </div>
     );
   }
 
   if (!seriesTitle || seriesPosts.length === 0) {
-    return <div className="text-center py-16">Series not found.</div>;
+    return (
+      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center text-gray-400 font-mono">
+        Series Archives Empty.
+      </div>
+    );
   }
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+    <div className="min-h-screen bg-[#020617] pb-24 relative overflow-hidden">
+      {/* Background Effects */}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-900/20 rounded-full blur-3xl -z-10 opacity-30"/>
+      <div
+        className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-30"/>
+
+      <div className="relative py-16 sm:py-24 mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="mx-auto max-w-3xl text-center mb-16">
           <Link
             to="/blog"
-            className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+            className="inline-flex items-center justify-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-mono tracking-widest uppercase mb-8 border-b border-cyan-900/50 pb-1 hover:border-cyan-400"
           >
-            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-            Back to Blog
+            <ArrowLeftIcon className="text-lg"/>
+            Back to Archives
           </Link>
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            {seriesTitle}
+
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-white mb-6 font-mono">
+            SERIES:<span className="text-cyan-500">{seriesTitle.toUpperCase()}</span>
           </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Episodes in this series.
+
+          <div className="flex justify-center items-center gap-4 mt-6">
+             <span
+               className="px-4 py-1 bg-cyan-900/30 border border-cyan-800 text-cyan-400 rounded-full text-sm font-mono">
+               {seriesPosts.length} EPISODES
+             </span>
+          </div>
+
+          <p className="mt-6 text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Sequential data entries for this topic.
           </p>
-          <div className="mt-4 text-center">
-            <span className="ml-2 px-3 py-1 text-base font-medium text-gray-200 bg-gray-800 rounded-full">
-              Total Episodes: {seriesPosts.length}
-            </span>
-          </div>
         </div>
-        <div className="mt-16">
-          <div className="">
-            {seriesPosts.map((post) => (
-              <PostItem
-                key={post.slug}
-                slug={`series/${seriesSlug}/${post.slug}`}
-                title={post.title}
-                date={post.date}
-                updatedDate={post.updated}
-                category={post.category}
-                series={post.series}
-                seriesIndex={post.seriesIndex}
-                isSeries={false}
-              />
-            ))}
-          </div>
+
+        <div className="mt-12 space-y-6 max-w-4xl mx-auto">
+          {seriesPosts.map((post) => (
+            <PostItem
+              key={post.slug}
+              slug={`series/${seriesSlug}/${post.slug}`}
+              title={post.title}
+              date={post.date}
+              updatedDate={post.updated}
+              category={post.category}
+              series={post.series}
+              seriesIndex={post.seriesIndex}
+              isSeries={false}
+            />
+          ))}
         </div>
       </div>
     </div>

@@ -1,6 +1,14 @@
 [
   {
     "date": "2025-11-29",
+    "title": "Blog & Series Styling Overhaul",
+    "description": "Applied the new futuristic design language to Blog Post and Series pages, including enhanced typography, sticky metadata, and improved code block styling.",
+    "type": "refactor",
+    "icon": "SparkleIcon",
+    "link": "/#/blog"
+  },
+  {
+    "date": "2025-11-29",
     "title": "Projects Overhaul Refactor",
     "description": "Modernized Projects section with a futuristic cyan theme, enhanced animations, and improved metadata cards.",
     "type": "refactor",
