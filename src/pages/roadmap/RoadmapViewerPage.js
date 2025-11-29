@@ -270,23 +270,23 @@ const RoadmapViewerPage = () => {
         <div className="mb-8 flex justify-center gap-4 p-1 bg-gray-800/60 backdrop-blur-sm rounded-xl border border-gray-700">
           <button
             onClick={() => setViewMode('roadmap')}
-            className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+            className={`px-5 py-2 rounded-lg text-sm font-medium font-mono transition-all duration-300 flex items-center gap-2 border-2 ${
               viewMode === 'roadmap'
-                ? 'bg-purple-600 text-white shadow-lg'
-                : 'bg-transparent text-gray-300 hover:bg-gray-700/50'
+                ? 'bg-indigo-500/30 text-white shadow-lg border-indigo-500'
+                : 'bg-transparent text-gray-300 border-gray-700 hover:border-indigo-500 hover:bg-primary-700/20'
             }`}
           >
             <KanbanIcon size={20} /> Roadmap View
           </button>
           <button
             onClick={() => setViewMode('table')}
-            className={`px-5 py-2 rounded-lg text-sm font-medium transition-colors flex items-center gap-2 ${
+            className={`px-5 py-2 rounded-lg text-sm font-medium font-mono transition-all duration-300 flex items-center gap-2 border-2 ${
               viewMode === 'table'
-                ? 'bg-purple-600 text-white shadow-lg'
-                : 'bg-transparent text-gray-300 hover:bg-gray-700/50'
+                ? 'bg-indigo-500/30 text-white shadow-lg border-indigo-500'
+                : 'bg-transparent text-gray-300 border-gray-700 hover:border-indigo-500 hover:bg-primary-700/20'
             }`}
           >
-            <ListBulletsIcon size={20} /> Table View
+          <ListBulletsIcon size={20} /> Table View
           </button>
         </div>
 
