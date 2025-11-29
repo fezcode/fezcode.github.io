@@ -116,4 +116,11 @@ export const ACHIEVEMENTS = [
     icon: <GhostIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
+  {
+    id: 'her_daim',
+    title: 'Her Daim...',
+    description:'A hidden achievement',
+    icon: <GhostIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
 ];

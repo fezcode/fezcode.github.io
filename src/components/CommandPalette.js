@@ -219,6 +219,7 @@ const CommandPalette = ({
           break;
         }
         case 'herDaim':
+          unlockAchievement('her_daim');
           openGenericModal(
             'Her Daim',
             <img
