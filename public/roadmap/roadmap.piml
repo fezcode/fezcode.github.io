@@ -1,0 +1,72 @@
+(issues)
+  > (issues)
+    (id) 21aef85f-77c7-4eb4-9d1a-e54d0bf80185
+    (title) MIDI Support for FeZynth
+    (description) Integrate MIDI input to play FeZynth with external MIDI controllers.
+    (category) Games
+    (status) Planned
+    (priority) High
+    (created_at) 2025-11-29T10:00:00+03:00
+    (due_date) 2026-01-15T00:00:00+03:00
+    (notes) Requires Web MIDI API research.
+
+  > (issues)
+    (id) 0afd0226-8076-4b92-a597-e7f8118106cd
+    (title) Multiplayer FezType
+    (description) Allow users to compete in real-time typing races.
+    (category) Games
+    (status) In Progress
+    (priority) High
+    (created_at) 2025-11-20T11:30:00+03:00
+    (due_date) 2026-03-01T00:00:00+03:00
+    (notes) Backend infrastructure and WebSocket implementation needed.
+
+  > (issues)
+    (id) 6286e039-75ec-4b8c-8056-4f6a71e06362
+    (title) More Commands for Code Seance
+    (description) Expand the set of available commands and interactions in Code Seance.
+    (category) Games
+    (status) In Progress
+    (priority) Medium
+    (created_at) 2025-11-28T15:00:00+03:00
+    (notes) Focus on developer-themed commands.
+
+  > (issues)
+    (id) 237dffab-441f-4942-bc51-2ae4865a6d32
+    (title) Save/Load Color Palettes
+    (description) Add functionality to save and load generated color palettes.
+    (category) Generators
+    (status) Planned
+    (priority) Medium
+    (created_at) 2025-11-25T09:00:00+03:00
+    (notes) Local storage first, then user accounts.
+
+  > (issues)
+    (id) 41ae55f4-8641-4565-b817-5024fd4bd1e7
+    (title) Notepad Markdown Support
+    (description) Implement basic Markdown rendering and editing capabilities in Notepad.
+    (category) Utilities
+    (status) Planned
+    (priority) High
+    (created_at) 2025-11-27T16:00:00+03:00
+    (notes) Requires a Markdown parsing library.
+
+  > (issues)
+    (id) ef9a9a2e-a929-44d8-a2f4-1ccd0018b6fa
+    (title) Customizable Morse Code Translator
+    (description) Allow users to customize Morse code speed, tone, and character mappings.
+    (category) Converters
+    (status) On Hold
+    (priority) Low
+    (created_at) 2025-11-15T14:00:00+03:00
+    (notes) Lower priority, focus on core features first.
+
+  > (issues)
+    (id) f7a9de56-d1db-48ec-9607-3e37dda35c30
+    (title) New App: Project Timeline Visualizer
+    (description) A tool to visualize project timelines and dependencies.
+    (category) Utilities
+    (status) Completed
+    (priority) High
+    (created_at) 2025-11-29T18:00:00+03:00
+    (notes) Research Gantt chart libraries.

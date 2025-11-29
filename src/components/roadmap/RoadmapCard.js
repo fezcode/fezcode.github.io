@@ -13,8 +13,8 @@ const RoadmapCard = ({ app, index }) => {
         borderColor = 'border-blue-700'; // Darker shade for border
         break;
       case 'In Progress':
-        bgColor = 'bg-yellow-500';
-        borderColor = 'border-yellow-700';
+        bgColor = 'bg-orange-500';
+        borderColor = 'border-orange-700';
         break;
       case 'Completed':
         bgColor = 'bg-green-500';
@@ -55,7 +55,8 @@ const RoadmapCard = ({ app, index }) => {
   };
 
   const statusTextColor = (status) => {
-    return 'text-white';
+    if (status === 'Planned') return 'text-white';
+    return 'text-black';
   };
 
   return (

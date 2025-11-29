@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import useSeo from '../../hooks/useSeo';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+import piml from 'piml'; // Import piml
 
 const RoadmapItemDetailPage = () => {
   const { id } = useParams();
@@ -25,9 +26,13 @@ const RoadmapItemDetailPage = () => {
   useEffect(() => {
     const fetchRoadmapItem = async () => {
       try {
-        const response = await fetch('/roadmap/roadmap.json');
-        const data = await response.json();
-        const foundItem = data.find((item) => item.id === id);
+        const pimlResponse = await fetch('/roadmap/roadmap.piml');
+        if (!pimlResponse.ok) {
+          throw new Error(`HTTP error! status: ${pimlResponse.status}`);
+        }
+        const issuesPimlText = await pimlResponse.text();
+        const issuesData = piml.parse(issuesPimlText);
+        const foundItem = issuesData.issues.find((item) => item.id === id);
         setRoadmapItem(foundItem);
         setIsLoading(false);
       } catch (error) {
@@ -48,8 +53,8 @@ const RoadmapItemDetailPage = () => {
         borderColor = 'border-blue-700';
         break;
       case 'In Progress':
-        bgColor = 'bg-yellow-500';
-        borderColor = 'border-yellow-700';
+        bgColor = 'bg-orange-500';
+        borderColor = 'border-orange-700';
         break;
       case 'Completed':
         bgColor = 'bg-green-500';
@@ -64,6 +69,11 @@ const RoadmapItemDetailPage = () => {
         borderColor = 'border-gray-700';
     }
     return `${bgColor} ${borderColor}`;
+  };
+
+  const statusTextColor = (status) => {
+    if (status === 'Planned') return 'text-white';
+    return 'text-black';
   };
 
   const getPriorityClasses = (priority) => {
@@ -140,7 +150,7 @@ const RoadmapItemDetailPage = () => {
             <div>
               <p className="text-gray-400 font-mono font-medium">Status:</p>
               <span
-                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(roadmapItem.status)} text-white`}
+                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(roadmapItem.status)} ${statusTextColor(roadmapItem.status)}`}
               >
                 {roadmapItem.status || 'Planned'}
               </span>

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import useSeo from '../../hooks/useSeo';
 import { ArrowLeftIcon, KanbanIcon, ListBulletsIcon, FunnelIcon } from '@phosphor-icons/react';
 import CustomDropdown from '../../components/CustomDropdown';
-import RoadmapCard from '../../components/RoadmapCard'; // Added import for RoadmapCard
+import RoadmapCard from '../../components/roadmap/RoadmapCard'; // Added import for RoadmapCard
+import piml from 'piml'; // Import piml
 
 const RoadmapViewerPage = () => {
   useSeo({
@@ -19,16 +20,19 @@ const RoadmapViewerPage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
-  const [appsData, setAppsData] = useState([]);
+  const [issuesData, setIssuesData] = useState([]);
   const [viewMode, setViewMode] = useState('roadmap'); // 'roadmap' or 'table'
 
   useEffect(() => {
     const fetchRoadmap = async () => {
       try {
-        const response = await fetch('/roadmap/roadmap.json');
-        const data = await response.json();
-        // Roadmap.json is a flat array, no need to flatten categories
-        setAppsData(data);
+        const pimlResponse = await fetch('/roadmap/roadmap.piml');
+        if (!pimlResponse.ok) {
+          throw new Error(`HTTP error! status: ${pimlResponse.status}`);
+        }
+        const issuesPimlText = await pimlResponse.text();
+        const issuesData = piml.parse(issuesPimlText);
+        setIssuesData(issuesData.issues);
       } catch (error) {
         console.error('Failed to fetch roadmap data:', error);
       }
@@ -46,8 +50,8 @@ const RoadmapViewerPage = () => {
         borderColor = 'border-blue-700';
         break;
       case 'In Progress':
-        bgColor = 'bg-yellow-500';
-        borderColor = 'border-yellow-700';
+        bgColor = 'bg-orange-500';
+        borderColor = 'border-orange-700';
         break;
       case 'Completed':
         bgColor = 'bg-green-500';
@@ -92,8 +96,13 @@ const RoadmapViewerPage = () => {
     return classes.split(' ')[0]; // Returns only the bgColor class (e.g., "bg-blue-500")
   };
 
+  const statusTextColor = (status) => {
+    if (status === 'Planned') return 'text-white';
+    return 'text-black';
+  };
+
   const RoadmapView = () => {
-    const groupedApps = appsData.reduce((acc, app) => {
+    const groupedApps = issuesData.reduce((acc, app) => {
       const status = app.status || 'Planned'; // Default to Planned if not specified
       if (!acc[status]) {
         acc[status] = [];
@@ -112,7 +121,7 @@ const RoadmapViewerPage = () => {
               className={`text-lg font-mono tracking-wider mb-4 flex items-center gap-2 text-white`}
             >
               <span
-                className={`w-3 h-3 rounded-full ${getOnlyBgStatusColor(status)}`}
+                className={`w-3 h-3 rounded-full ${getOnlyBgStatusColor(status)} ${statusTextColor(status)}`}
               ></span>
               {status} ({groupedApps[status]?.length || 0})
             </h3>
@@ -132,7 +141,7 @@ const RoadmapViewerPage = () => {
     const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
     const [filterStatus, setFilterStatus] = useState('All');
 
-    const filteredApps = appsData.filter((app) =>
+    const filteredApps = issuesData.filter((app) =>
       filterStatus === 'All' ? true : (app.status || 'Planned') === filterStatus,
     );
 
@@ -248,14 +257,14 @@ const RoadmapViewerPage = () => {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span
-                    className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(app.status || 'Planned')} text-white`}
+                    className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(app.status)} ${statusTextColor(app.status)} `}
                   >
                     {app.status || 'Planned'}
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span
-                    className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(app.priority || 'Low')}`}
+                    className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(app.priority)}`}
                   >
                     {app.priority || 'Low'}
                   </span>
