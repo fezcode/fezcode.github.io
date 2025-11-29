@@ -1,11 +1,11 @@
-import React, {useState, useEffect} from 'react';
-import {useParams, Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import PostItem from '../components/PostItem';
-import {ArrowLeftIcon} from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
 
 const SeriesPage = () => {
-  const {seriesSlug} = useParams();
+  const { seriesSlug } = useParams();
   const [seriesPosts, setSeriesPosts] = useState([]);
   const [seriesTitle, setSeriesTitle] = useState('');
   const [loading, setLoading] = useState(true);
@@ -102,12 +102,14 @@ const SeriesPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#020617] pb-24 relative overflow-hidden">
+    <div className="min-h-screen bg-[#020617] pb-24 relative">
       {/* Background Effects */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-900/20 rounded-full blur-3xl -z-10 opacity-30"/>
-      <div
-        className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-30"/>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-900/20 rounded-full blur-3xl -z-10 opacity-30"/>
+        <div
+          className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-30"/>
+      </div>
 
       <div className="relative py-16 sm:py-24 mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-16">

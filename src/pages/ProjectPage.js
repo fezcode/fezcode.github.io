@@ -7,9 +7,7 @@ import {useProjects} from '../utils/projectParser';
 import {useProjectContent} from '../hooks/useProjectContent';
 import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
 import Seo from '../components/Seo';
-
 import {ArrowLeftIcon} from '@phosphor-icons/react';
-import '../styles/BlogPostPage.css';
 
 const ProjectPage = () => {
   const {slug} = useParams();
@@ -29,9 +27,7 @@ const ProjectPage = () => {
       <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
-          <p className="font-mono text-cyan-500 animate-pulse">
-            LOADING DATA STREAM...
-          </p>
+          <p className="font-mono text-cyan-500 animate-pulse">LOADING DATA STREAM...</p>
         </div>
       </div>
     );
@@ -70,14 +66,10 @@ const ProjectPage = () => {
         twitterCard="summary_large_image"
         twitterTitle={`${fullProject.title} | Fezcodex`}
         twitterDescription={fullProject.shortDescription}
-        twitterImage={
-          fullProject.image || 'https://fezcode.github.io/logo512.png'
-        }
+        twitterImage={fullProject.image || 'https://fezcode.github.io/logo512.png'}
       />
 
-      {/* Background Wrapper */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Header Background */}
         <div
           className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
           <div
@@ -90,19 +82,26 @@ const ProjectPage = () => {
           <div className="lg:col-span-3">
             <Link
               to="/projects"
-              className="blog-page-header-link"
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 font-mono text-sm tracking-widest uppercase hover:underline decoration-cyan-500/50 underline-offset-4 transition-all"
             >
               <ArrowLeftIcon size={16}/> Back to Projects
             </Link>
 
-            <h1 className="project-page-title">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-emerald-400 font-mono mb-6">
               {fullProject.title}
               <span className="text-cyan-500 animate-pulse">_</span>
             </h1>
 
             <div className="mt-8 p-8 bg-gray-900/50 rounded-xl border border-gray-800 backdrop-blur-sm">
               <div
-                className="prose prose-invert prose-lg project-page-content"
+                className="prose prose-invert prose-lg max-w-none
+                    prose-headings:font-mono
+                    prose-h1:text-emerald-400 prose-h2:text-emerald-300 prose-h3:text-emerald-200 prose-h4:text-emerald-100
+                    prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline
+                    prose-code:text-cyan-300 prose-code:bg-gray-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+                    prose-pre:bg-gray-950 prose-pre:border prose-pre:border-gray-800 prose-pre:text-base
+                    prose-strong:text-emerald-200
+                    text-gray-300"
               >
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}

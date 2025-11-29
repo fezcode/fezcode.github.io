@@ -30,6 +30,16 @@ module.exports = {
       },
       colors: colors,
       typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            'blockquote p:first-of-type::before': {
+              content: 'none',
+            },
+            'blockquote p:last-of-type::after': {
+              content: 'none',
+            },
+          },
+        },
         dark: {
           css: {
             color: theme('colors.gray.300'),
@@ -79,8 +89,13 @@ module.exports = {
             blockquote: {
               color: theme('colors.gray.400'),
               'border-left-color': theme('colors.primary.400'),
-              quotes: '"" ""' ,
               lineHeight: '1.6',
+            },
+            'blockquote p:first-of-type::before': {
+              content: 'none',
+            },
+            'blockquote p:last-of-type::after': {
+              content: 'none',
             },
 
             li: {

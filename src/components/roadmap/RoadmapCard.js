@@ -2,63 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { KanbanIcon } from '@phosphor-icons/react'; // Using KanbanIcon as a default/watermark icon
+import { getStatusClasses, getPriorityClasses, statusTextColor } from '../../utils/roadmapHelpers';
 
 const RoadmapCard = ({ app, index }) => {
-  const getStatusClasses = (status) => {
-    let bgColor = '';
-    let borderColor = '';
-    switch (status) {
-      case 'Planned':
-        bgColor = 'bg-blue-500';
-        borderColor = 'border-blue-700'; // Darker shade for border
-        break;
-      case 'In Progress':
-        bgColor = 'bg-orange-500';
-        borderColor = 'border-orange-700';
-        break;
-      case 'Completed':
-        bgColor = 'bg-green-500';
-        borderColor = 'border-green-700';
-        break;
-      case 'On Hold':
-        bgColor = 'bg-red-500';
-        borderColor = 'border-red-700';
-        break;
-      default:
-        bgColor = 'bg-gray-500';
-        borderColor = 'border-gray-700';
-    }
-    return `${bgColor} ${borderColor}`;
-  };
-
-  const getPriorityClasses = (priority) => {
-    let textColor = '';
-    let borderColor = '';
-    switch (priority) {
-      case 'High':
-        textColor = 'text-red-400';
-        borderColor = 'border-red-700';
-        break;
-      case 'Medium':
-        textColor = 'text-yellow-400';
-        borderColor = 'border-yellow-700';
-        break;
-      case 'Low':
-        textColor = 'text-green-400';
-        borderColor = 'border-green-700';
-        break;
-      default:
-        textColor = 'text-gray-400';
-        borderColor = 'border-gray-700';
-    }
-    return `${textColor} ${borderColor}`;
-  };
-
-  const statusTextColor = (status) => {
-    if (status === 'Planned') return 'text-white';
-    return 'text-black';
-  };
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -67,7 +13,7 @@ const RoadmapCard = ({ app, index }) => {
     >
       <Link to={`/roadmap/${app.id}`} className="block group relative h-full">
         {/* Main Card Container */}
-        <div className="relative flex flex-col h-full bg-gray-900/80 backdrop-blur-xl border border-gray-800 rounded-xl p-4 overflow-hidden group-hover:border-purple-600 transition-all duration-300 shadow-xl">
+        <div className="relative flex flex-col h-full bg-gray-900/80 backdrop-blur-xl border border-gray-800 rounded-xl p-4 overflow-hidden group-hover:border-primary-500 transition-all duration-300 shadow-xl">
           {/* Subtle Grid Background */}
           <div
             className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
@@ -96,7 +42,7 @@ const RoadmapCard = ({ app, index }) => {
                 {app.priority || 'Low'}
               </span>
             </div>
-            <h4 className="text-xl font-bold font-mono text-white mb-2 tracking-tight group-hover:text-purple-400 transition-colors">
+            <h4 className="text-xl font-bold font-mono text-white mb-2 tracking-tight group-hover:text-primary-400 transition-colors">
               {app.title}
             </h4>
             <p className="text-gray-400 font-mono text-sm leading-relaxed line-clamp-3">

@@ -54,8 +54,7 @@ const getOnlyBgStatusColor = (status) => {
 };
 
 const statusTextColor = (status) => {
-  if (status === 'Planned') return 'text-white';
-  return 'text-black';
+  return 'text-gray-900';
 };
 
 export { getStatusClasses, getPriorityClasses, getOnlyBgStatusColor, statusTextColor };
