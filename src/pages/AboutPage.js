@@ -139,7 +139,7 @@ const AboutPage = () => {
               {title}
             </h1>
 
-            <div className="prose prose-invert max-w-none leading-snug">
+            <div className="prose prose-invert max-w-none leading-snug font-mono">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
