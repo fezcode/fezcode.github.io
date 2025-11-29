@@ -5,6 +5,7 @@ import { appIcons } from '../utils/appIcons';
 import { motion } from 'framer-motion';
 import useSeo from '../hooks/useSeo';
 import colors from '../config/colors'; // Assuming colors is available for styling
+import { useAchievements } from '../context/AchievementContext';
 
 const TimelinePage = () => {
   useSeo({
@@ -23,8 +24,10 @@ const TimelinePage = () => {
 
   const [milestones, setMilestones] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
+    unlockAchievement('time_traveler');
     const fetchMilestones = async () => {
       try {
         const response = await fetch('/timeline/timeline.json');
@@ -46,7 +49,7 @@ const TimelinePage = () => {
     };
 
     fetchMilestones();
-  }, []);
+  }, [unlockAchievement]);
 
   const getEventColor = (type) => {
     switch (type) {

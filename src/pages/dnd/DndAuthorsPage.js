@@ -7,6 +7,7 @@ import { DndContext } from '../../context/DndContext'; // Import DndContext
 import DndAuthorCard from '../../components/dnd/DndAuthorCard'; // Import DndAuthorCard
 import { parseWallpaperName } from '../../utils/dndUtils'; // Import parseWallpaperName
 import dndWallpapers from '../../utils/dndWallpapers'; // Import dndWallpapers
+import { useAchievements } from '../../context/AchievementContext';
 
 const pageVariants = {
   initial: {
@@ -31,6 +32,7 @@ function DndAuthorsPage() {
   const [authors, setAuthors] = useState([]);
   const [books, setBooks] = useState([]);
   const [bgImage, setBgImage] = useState(''); // State for background image
+  const { unlockAchievement } = useAchievements();
 
   useSeo({
     title: 'Authors | From Serfs and Frauds',
@@ -49,6 +51,7 @@ function DndAuthorsPage() {
   });
 
   useEffect(() => {
+    unlockAchievement('author_aficionado');
     setBreadcrumbs([{ label: 'S&F', path: '/stories' }, { label: 'Authors' }]);
 
     const images = dndWallpapers;
@@ -85,7 +88,7 @@ function DndAuthorsPage() {
     };
 
     fetchAllData();
-  }, [setBreadcrumbs, setBgImageName]);
+  }, [setBreadcrumbs, setBgImageName, unlockAchievement]);
 
   const getBooksByAuthor = (authorName, authorAlias) => {
     const authorBooks = [];

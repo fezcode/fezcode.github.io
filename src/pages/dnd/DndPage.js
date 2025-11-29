@@ -5,6 +5,7 @@ import { parseWallpaperName } from '../../utils/dndUtils';
 import dndWallpapers from '../../utils/dndWallpapers';
 import DndCard from '../../components/dnd/DndCard';
 import useSeo from '../../hooks/useSeo';
+import { useAchievements } from '../../context/AchievementContext';
 
 const DndPage = () => {
   useSeo({
@@ -24,14 +25,16 @@ const DndPage = () => {
   });
   const [bgImage, setBgImage] = useState('');
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
+  const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
+    unlockAchievement('story_explorer');
     const images = dndWallpapers;
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([{ label: 'S&F', path: '/stories' }]);
-  }, [setBgImageName, setBreadcrumbs]);
+  }, [setBgImageName, setBreadcrumbs, unlockAchievement]);
 
   return (
     <div className="dnd-page-container">

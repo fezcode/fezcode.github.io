@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LogCard from '../components/LogCard';
 import useSeo from '../hooks/useSeo';
 import colors from '../config/colors';
+import { useAchievements } from '../context/AchievementContext';
 
 // Define categories for the filter pills
 const categories = [
@@ -73,8 +74,10 @@ const LogsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredLogs, setFilteredLogs] = useState([]);
   const [iconColor, setIconColor] = useState('text-white');
+  const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
+    unlockAchievement('log_diver');
     const fetchLogs = async () => {
       try {
         const fetchPromises = categories.map(async (category) => {
@@ -109,7 +112,7 @@ const LogsPage = () => {
       }
     };
     fetchLogs();
-  }, []);
+  }, [unlockAchievement]);
 
   useEffect(() => {
     const lowerQuery = searchQuery.toLowerCase();

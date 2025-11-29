@@ -16,6 +16,9 @@ import {
   ChalkboardIcon,
   CastleTurretIcon,
   MartiniIcon,
+  TimerIcon,
+  LogIcon,
+  KanbanIcon
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -31,6 +34,62 @@ export const ACHIEVEMENTS = [
     title: 'Curious Soul',
     description: 'Visited the About Me page to learn who is behind this.',
     icon: <UserIcon size={32} weight="duotone" />,
+    category: 'Exploration',
+  },
+  {
+    id: 'story_explorer',
+    title: 'Story Explorer',
+    description: 'Did you hear about the Serfs?',
+    icon: <BookOpenIcon size={32} weight="duotone" />,
+    category: 'Exploration',
+  },
+  {
+    id: 'author_aficionado',
+    title: 'Author Aficionado',
+    description: 'Explored the authors of From Serfs and Frauds.',
+    icon: <UserIcon size={32} weight="duotone" />,
+    category: 'Exploration',
+  },
+  {
+    id: 'time_traveler',
+    title: 'Time Traveler',
+    description: 'Changelogs?',
+    icon: <TimerIcon size={32} weight="duotone" />,
+    category: 'Exploration',
+  },
+  {
+    id: 'news_hound',
+    title: 'News Hound',
+    description: 'Checked out the latest news and updates.',
+    icon: <CompassIcon size={32} weight="duotone" />,
+    category: 'Exploration',
+  },
+  {
+    id: 'log_diver',
+    title: 'Log Diver',
+    description: 'Explored the logs.',
+    icon: <LogIcon size={32} weight="duotone" />,
+    category: 'Exploration',
+  },
+  {
+    id: 'project_pioneer',
+    title: 'Project Pioneer',
+    description: 'Discovered the projects page.',
+    icon: <TerminalWindowIcon size={32} weight="duotone" />,
+    category: 'Exploration',
+  },
+  {
+    id: 'time_teller',
+    title: 'Time Teller',
+    description: 'I want to know the time.',
+    icon: <TimerIcon size={32} weight="duotone" />,
+    category: 'Tools',
+  },
+  {
+    id: 'path_finder',
+    title: 'Path Finder',
+    description: 'Navigated to the Roadmap page.',
+    icon: <KanbanIcon size={32} weight="duotone" />,
     category: 'Exploration',
   },
   {

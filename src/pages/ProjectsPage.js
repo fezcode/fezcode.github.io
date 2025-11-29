@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link} from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
 import {useProjects} from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
 import {ArrowLeftIcon} from '@phosphor-icons/react';
+import { useAchievements } from '../context/AchievementContext';
 
 const ProjectsPage = () => {
   useSeo({
@@ -25,6 +26,11 @@ const ProjectsPage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
   const {projects, loading, error} = useProjects();
+  const { unlockAchievement } = useAchievements();
+
+  useEffect(() => {
+    unlockAchievement('project_pioneer');
+  }, [unlockAchievement]);
 
   if (loading) {
     // Skeleton loading screen for ProjectsPage

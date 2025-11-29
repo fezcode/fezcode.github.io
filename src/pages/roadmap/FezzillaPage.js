@@ -5,6 +5,7 @@ import { ArrowLeftIcon, KanbanIcon, ListBulletsIcon } from '@phosphor-icons/reac
 import piml from 'piml';
 import RoadmapView from '../../components/roadmap/RoadmapView';
 import TableView from '../../components/roadmap/TableView';
+import { useAchievements } from '../../context/AchievementContext';
 
 const FezzillaPage = () => {
   useSeo({
@@ -22,8 +23,10 @@ const FezzillaPage = () => {
 
   const [issuesData, setIssuesData] = useState([]);
   const [viewMode, setViewMode] = useState('roadmap'); // 'roadmap' or 'table'
+  const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
+    unlockAchievement('path_finder');
     const fetchRoadmap = async () => {
       try {
         const pimlResponse = await fetch('/roadmap/roadmap.piml');
@@ -39,7 +42,7 @@ const FezzillaPage = () => {
     };
 
     fetchRoadmap();
-  }, []);
+  }, [unlockAchievement]);
 
   return (
     <div className="min-h-screen py-8 sm:py-16 relative overflow-hidden">

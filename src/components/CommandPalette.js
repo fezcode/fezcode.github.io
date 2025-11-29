@@ -378,6 +378,7 @@ const CommandPalette = ({
           });
           break;
         case 'showTime': {
+          unlockAchievement('time_teller');
           openGenericModal('Current Time', <LiveClock />);
           break;
         }

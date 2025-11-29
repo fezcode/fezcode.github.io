@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { getPosts, getProjects } from '../utils/dataUtils';
 import useSeo from '../hooks/useSeo';
+import { useAchievements } from '../context/AchievementContext';
 
 const pageVariants = {
   initial: { opacity: 0 },
@@ -68,6 +69,7 @@ function NewsPage() {
   const [newsItems, setNewsItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const { unlockAchievement } = useAchievements();
 
   // Get current date for the header
   const today = new Date();
@@ -80,6 +82,7 @@ function NewsPage() {
   const formattedDate = today.toLocaleDateString('en-US', options);
 
   useEffect(() => {
+    unlockAchievement('news_hound');
     async function fetchNews() {
       try {
         const [blogPosts, projects] = await Promise.all([
@@ -120,7 +123,7 @@ function NewsPage() {
     }
 
     fetchNews();
-  }, []);
+  }, [unlockAchievement]);
 
   if (loading) {
     return (
