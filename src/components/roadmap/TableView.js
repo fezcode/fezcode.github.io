@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { MagnifyingGlass, Funnel, CaretUp, CaretDown, Check } from '@phosphor-icons/react';
-import { getStatusClasses, getPriorityClasses, statusTextColor } from '../../utils/roadmapHelpers';
+import { MagnifyingGlass, Funnel, CaretUp, CaretDown, Check, Lightning, ArrowsDownUp } from '@phosphor-icons/react';
+import { getStatusClasses, getPriorityClasses } from '../../utils/roadmapHelpers';
 
 const TableView = ({ issuesData = [] }) => {
   const navigate = useNavigate();
@@ -21,7 +21,8 @@ const TableView = ({ issuesData = [] }) => {
   const filteredApps = issuesData.filter((app) => {
     const matchesFilter = activeFilters.length === 0 || activeFilters.includes(app.status || 'Planned');
     const matchesSearch = (app.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
-                          (app.description?.toLowerCase() || '').includes(searchQuery.toLowerCase());
+                          (app.description?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+                          (app.epic?.toLowerCase() || '').includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
@@ -41,6 +42,8 @@ const TableView = ({ issuesData = [] }) => {
       comparison =
         priorityOrder.indexOf(a.priority || 'Low') -
         priorityOrder.indexOf(b.priority || 'Low');
+    } else if (sortBy === 'epic') {
+      comparison = (a.epic || '').localeCompare(b.epic || '');
     }
 
     return sortOrder === 'asc' ? comparison : -comparison;
@@ -56,8 +59,10 @@ const TableView = ({ issuesData = [] }) => {
   };
 
   const SortIcon = ({ column }) => {
-    if (sortBy !== column) return <div className="w-4 h-4" />; // Placeholder to prevent layout shift
-    return sortOrder === 'asc' ? <CaretUp weight="bold" size={14} /> : <CaretDown weight="bold" size={14} />;
+    if (sortBy !== column) {
+      return <ArrowsDownUp size={14} weight="bold" className="text-gray-500 opacity-70 group-hover:opacity-100 group-hover:text-primary-400 transition-all" />;
+    }
+    return sortOrder === 'asc' ? <CaretUp weight="bold" size={14} className="text-primary-400" /> : <CaretDown weight="bold" size={14} className="text-primary-400" />;
   };
 
   return (
@@ -71,7 +76,7 @@ const TableView = ({ issuesData = [] }) => {
           </div>
           <input
             type="text"
-            placeholder="Search issues by title or description..."
+            placeholder="Search issues by title, description, or epic..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="block w-full pl-11 pr-4 py-3 border border-gray-700 rounded-xl leading-5 bg-gray-800/50 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 focus:bg-gray-800 transition-all duration-300 text-sm font-mono"
@@ -89,10 +94,10 @@ const TableView = ({ issuesData = [] }) => {
                 key={status}
                 onClick={() => handleFilterChange(status)}
                 className={`
-                  group relative px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all duration-200 border select-none
+                  group relative px-3 py-1.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 select-none
                   ${activeFilters.includes(status)
-                    ? `${getStatusClasses(status).split(' ')[0]} ${getStatusClasses(status).split(' ')[1]} ${statusTextColor(status)} shadow-md ring-1 ring-white/10`
-                    : 'bg-gray-800/40 border-gray-700 text-gray-500 hover:border-gray-600 hover:bg-gray-800 hover:text-gray-300'
+                    ? `${getStatusClasses(status)} shadow-md ring-1 ring-white/10`
+                    : 'bg-gray-800/40 border border-gray-700 text-gray-500 hover:border-gray-600 hover:bg-gray-800 hover:text-gray-300'
                   }
                 `}
               >
@@ -114,6 +119,7 @@ const TableView = ({ issuesData = [] }) => {
               <tr className="bg-gray-800/60">
                 {[
                   { key: 'title', label: 'Title' },
+                  { key: 'epic', label: 'Epic' },
                   { key: 'description', label: 'Description', noSort: true },
                   { key: 'status', label: 'Status' },
                   { key: 'priority', label: 'Priority' },
@@ -125,7 +131,7 @@ const TableView = ({ issuesData = [] }) => {
                     scope="col"
                     onClick={() => !col.noSort && handleSort(col.key)}
                     className={`
-                      px-6 py-4 text-left text-xs font-mono font-bold text-gray-400 uppercase tracking-wider
+                      px-6 py-4 text-left text-xs font-mono font-bold text-gray-400 uppercase tracking-wider group
                       ${!col.noSort ? 'cursor-pointer hover:text-primary-400 hover:bg-gray-800/50 transition-colors select-none' : ''}
                     `}
                   >
@@ -159,21 +165,26 @@ const TableView = ({ issuesData = [] }) => {
                         {app.title}
                       </Link>
                     </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      {app.epic ? (
+                        <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-purple-500/10 border border-purple-500/30 text-purple-300 text-[10px] font-mono uppercase tracking-wider font-bold">
+                          <Lightning weight="fill" size={10} />
+                          {app.epic}
+                        </span>
+                      ) : (
+                        <span className="text-gray-600 font-mono text-xs">-</span>
+                      )}
+                    </td>
                     <td className="px-6 py-4 text-sm text-gray-400 font-mono max-w-xs truncate" title={app.description}>
                       {app.description}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`px-2.5 py-1 inline-flex items-center text-[10px] font-mono font-bold uppercase tracking-wide rounded-full border ${getStatusClasses(app.status)} ${statusTextColor(app.status)} shadow-sm`}>
+                      <span className={`px-2.5 py-1 inline-flex items-center text-[10px] font-mono font-bold uppercase tracking-wide rounded-full ${getStatusClasses(app.status)} shadow-sm`}>
                         {app.status || 'Planned'}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`flex items-center gap-2 text-xs font-mono font-bold ${getPriorityClasses(app.priority).split(' ')[0]}`}>
-                        <span className={`w-2 h-2 rounded-full ${
-                          app.priority === 'High' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.6)]' :
-                          app.priority === 'Medium' ? 'bg-yellow-500 shadow-[0_0_8px_rgba(234,179,8,0.6)]' :
-                          'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]'
-                        }`}></span>
+                      <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wide ${getPriorityClasses(app.priority)}`}>
                         {app.priority || 'Low'}
                       </span>
                     </td>
@@ -187,7 +198,7 @@ const TableView = ({ issuesData = [] }) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="6" className="px-6 py-16 text-center text-gray-500 font-mono">
+                  <td colSpan="7" className="px-6 py-16 text-center text-gray-500 font-mono">
                     <div className="flex flex-col items-center justify-center gap-4">
                       <div className="p-4 rounded-full bg-gray-800/50">
                         <MagnifyingGlass size={32} className="opacity-50" />

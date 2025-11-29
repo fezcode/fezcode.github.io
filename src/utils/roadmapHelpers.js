@@ -1,60 +1,56 @@
+const STATUS_COLORS = {
+  'Planned': 'blue',
+  'In Progress': 'orange',
+  'Completed': 'green',
+  'On Hold': 'red',
+};
+
+const PRIORITY_COLORS = {
+  'High': 'red',
+  'Medium': 'yellow',
+  'Low': 'green',
+};
+
+// Define explicit styles so Tailwind JIT can detect them
+const BADGE_STYLES = {
+  blue: 'bg-blue-500/20 border border-blue-500/50 text-blue-300',
+  orange: 'bg-orange-500/20 border border-orange-500/50 text-orange-300',
+  green: 'bg-green-500/20 border border-green-500/50 text-green-300',
+  red: 'bg-red-500/20 border border-red-500/50 text-red-300',
+  yellow: 'bg-yellow-500/20 border border-yellow-500/50 text-yellow-300',
+  gray: 'bg-gray-500/20 border border-gray-500/50 text-gray-300',
+};
+
+const getBadgeStyle = (color) => {
+  return BADGE_STYLES[color] || BADGE_STYLES['gray'];
+};
+
 const getStatusClasses = (status) => {
-  let bgColor = '';
-  let borderColor = '';
-  switch (status) {
-    case 'Planned':
-      bgColor = 'bg-blue-500';
-      borderColor = 'border-blue-700';
-      break;
-    case 'In Progress':
-      bgColor = 'bg-orange-500';
-      borderColor = 'border-orange-700';
-      break;
-    case 'Completed':
-      bgColor = 'bg-green-500';
-      borderColor = 'border-green-700';
-      break;
-    case 'On Hold':
-      bgColor = 'bg-red-500';
-      borderColor = 'border-red-700';
-      break;
-    default:
-      bgColor = 'bg-gray-500';
-      borderColor = 'border-gray-700';
-  }
-  return `${bgColor} ${borderColor}`;
+  const color = STATUS_COLORS[status] || 'gray';
+  return getBadgeStyle(color);
 };
 
 const getPriorityClasses = (priority) => {
-  let textColor = '';
-  let borderColor = '';
-  switch (priority) {
-    case 'High':
-      textColor = 'text-red-400';
-      borderColor = 'border-red-700';
-      break;
-    case 'Medium':
-      textColor = 'text-yellow-400';
-      borderColor = 'border-yellow-700';
-      break;
-    case 'Low':
-      textColor = 'text-green-400';
-      borderColor = 'border-green-700';
-      break;
-    default:
-      textColor = 'text-gray-400';
-      borderColor = 'border-gray-700';
-  }
-  return `${textColor} ${borderColor}`;
+  const color = PRIORITY_COLORS[priority] || 'gray';
+  return getBadgeStyle(color);
 };
 
 const getOnlyBgStatusColor = (status) => {
-  const classes = getStatusClasses(status);
-  return classes.split(' ')[0]; // Returns only the bgColor class (e.g., "bg-blue-500")
+  const color = STATUS_COLORS[status] || 'gray';
+  // Return explicit classes for JIT
+  const bgColors = {
+    blue: 'bg-blue-500',
+    orange: 'bg-orange-500',
+    green: 'bg-green-500',
+    red: 'bg-red-500',
+    yellow: 'bg-yellow-500',
+    gray: 'bg-gray-500',
+  };
+  return bgColors[color] || 'bg-gray-500';
 };
 
 const statusTextColor = (status) => {
-  return 'text-gray-900';
+  return ''; // Text color is now handled in getStatusClasses/getPriorityClasses
 };
 
 export { getStatusClasses, getPriorityClasses, getOnlyBgStatusColor, statusTextColor };

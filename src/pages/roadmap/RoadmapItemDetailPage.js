@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {useParams, Link} from 'react-router-dom';
 import useSeo from '../../hooks/useSeo';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import { motion } from 'framer-motion';
+import {
+  ArrowLeftIcon,
+  Lightning,
+  Circle,
+  ArrowsClockwise,
+  CheckCircle,
+  PauseCircle,
+  Fire,
+  Equals,
+  ArrowDown
+} from '@phosphor-icons/react';
+import {motion} from 'framer-motion';
 import piml from 'piml'; // Import piml
+import {getStatusClasses, getPriorityClasses} from '../../utils/roadmapHelpers';
 
 const RoadmapItemDetailPage = () => {
-  const { id } = useParams();
+  const {id} = useParams();
   const [roadmapItem, setRoadmapItem] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -44,70 +55,43 @@ const RoadmapItemDetailPage = () => {
     fetchRoadmapItem();
   }, [id]);
 
-  const getStatusClasses = (status) => {
-    let bgColor = '';
-    let borderColor = '';
+  const getStatusIcon = (status) => {
     switch (status) {
       case 'Planned':
-        bgColor = 'bg-blue-500';
-        borderColor = 'border-blue-700';
-        break;
+        return <Circle weight="bold"/>;
       case 'In Progress':
-        bgColor = 'bg-orange-500';
-        borderColor = 'border-orange-700';
-        break;
+        return <ArrowsClockwise weight="bold" className="animate-spin"/>;
       case 'Completed':
-        bgColor = 'bg-green-500';
-        borderColor = 'border-green-700';
-        break;
+        return <CheckCircle weight="bold"/>;
       case 'On Hold':
-        bgColor = 'bg-red-500';
-        borderColor = 'border-red-700';
-        break;
+        return <PauseCircle weight="bold"/>;
       default:
-        bgColor = 'bg-gray-500';
-        borderColor = 'border-gray-700';
+        return <Circle weight="bold"/>;
     }
-    return `${bgColor} ${borderColor}`;
   };
 
-  const statusTextColor = (status) => {
-    if (status === 'Planned') return 'text-white';
-    return 'text-black';
-  };
-
-  const getPriorityClasses = (priority) => {
-    let textColor = '';
-    let borderColor = '';
+  const getPriorityIcon = (priority) => {
     switch (priority) {
       case 'High':
-        textColor = 'text-red-400';
-        borderColor = 'border-red-700';
-        break;
+        return <Fire weight="fill"/>;
       case 'Medium':
-        textColor = 'text-yellow-400';
-        borderColor = 'border-yellow-700';
-        break;
+        return <Equals weight="bold"/>;
       case 'Low':
-        textColor = 'text-green-400';
-        borderColor = 'border-green-700';
-        break;
+        return <ArrowDown weight="bold"/>;
       default:
-        textColor = 'text-gray-400';
-        borderColor = 'border-gray-700';
+        return <ArrowDown weight="bold"/>;
     }
-    return `${textColor} ${borderColor}`;
   };
 
   if (isLoading) {
     return (
-      <div className="py-8 sm:py-16 text-center text-gray-400">Loading...</div>
+      <div className="py-8 sm:py-16 text-center text-gray-400 font-mono animate-pulse">Loading...</div>
     );
   }
 
   if (!roadmapItem) {
     return (
-      <div className="py-8 sm:py-16 text-center text-gray-400">
+      <div className="py-8 sm:py-16 text-center text-gray-400 font-mono">
         Roadmap item not found.
       </div>
     );
@@ -115,21 +99,22 @@ const RoadmapItemDetailPage = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="py-8 sm:py-16"
+      initial={{opacity: 0, y: 20}}
+      animate={{opacity: 1, y: 0}}
+      transition={{duration: 0.5}}
+      className="py-8 sm:py-16 min-h-screen"
     >
       <div className="mx-auto max-w-4xl px-6 lg:px-8">
         <Link
           to="/roadmap"
-          className="group text-primary-400 hover:underline flex items-center gap-2 text-lg mb-8"
+          className="group text-gray-400 hover:text-primary-400 flex items-center gap-2 text-sm font-mono mb-8 w-fit transition-colors"
         >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
+          <ArrowLeftIcon className="text-lg transition-transform group-hover:-translate-x-1"/>
           Back to Roadmap
         </Link>
 
-        <div className="bg-gray-900/80 backdrop-blur-xl rounded-xl shadow-xl p-6 lg:p-8 border border-gray-700 relative overflow-hidden">
+        <div
+          className="bg-gray-900/80 backdrop-blur-xl rounded-2xl shadow-2xl p-6 lg:p-10 border border-gray-800 relative overflow-hidden">
           {/* Subtle Grid Background */}
           <div
             className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
@@ -139,57 +124,75 @@ const RoadmapItemDetailPage = () => {
               backgroundSize: '20px 20px',
             }}
           ></div>
-          <h1 className="text-4xl font-bold text-white mb-4 relative z-10 font-mono tracking-tight">
-            {roadmapItem.title}
-          </h1>
-          <p className="text-gray-300 text-lg mb-6 relative z-10 font-mono">
-            {roadmapItem.description}
-          </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6 relative z-10">
-            <div>
-              <p className="text-gray-400 font-mono font-medium">Status:</p>
-              <span
-                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(roadmapItem.status)} ${statusTextColor(roadmapItem.status)}`}
-              >
-                {roadmapItem.status || 'Planned'}
-              </span>
-            </div>
-            <div>
-              <span
-                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(roadmapItem.priority)}`}
-              >
-                {roadmapItem.priority || 'Low'}
-              </span>
-            </div>
-            <div>
-              <p className="text-gray-400 font-mono font-medium">Category:</p>
-              <p className="text-white font-mono">{roadmapItem.category}</p>
-            </div>
-            <div>
-              <p className="text-gray-400 font-mono font-medium">Created At:</p>
-              <p className="text-white font-mono">
-                {new Date(roadmapItem.created_at).toLocaleDateString()}
-              </p>
-            </div>
-            {roadmapItem.due_date && (
+          <div className="relative z-10">
+            {roadmapItem.epic && (
+              <div
+                className="mb-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-purple-500/20 border border-purple-500/50 text-purple-300 text-[10px] font-mono uppercase tracking-wider font-bold">
+                <Lightning weight="fill" size={12}/>
+                {roadmapItem.epic}
+              </div>
+            )}
+
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-6 font-mono tracking-tight leading-tight">
+              {roadmapItem.title}
+            </h1>
+
+            <p className="text-gray-300 text-lg mb-8 font-mono leading-relaxed">
+              {roadmapItem.description}
+            </p>
+
+            <div
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 p-6 bg-black/20 rounded-xl border border-white/5">
               <div>
-                <p className="text-gray-400 font-mono font-medium">Due Date:</p>
-                <p className="text-white font-mono">
-                  {new Date(roadmapItem.due_date).toLocaleDateString()}
+                <p className="text-gray-500 text-xs font-mono uppercase tracking-wider font-bold mb-2">Status</p>
+                <span
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider rounded-md shadow-sm ${getStatusClasses(roadmapItem.status || 'Planned')}`}
+                >
+                  {getStatusIcon(roadmapItem.status || 'Planned')}
+                  {roadmapItem.status || 'Planned'}
+                </span>
+              </div>
+              <div>
+                <p className="text-gray-500 text-xs font-mono uppercase tracking-wider font-bold mb-2">Priority</p>
+                <span
+                  className={`inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-bold uppercase tracking-wider rounded-md shadow-sm ${getPriorityClasses(roadmapItem.priority || 'Low')}`}
+                >
+                  {getPriorityIcon(roadmapItem.priority || 'Low')}
+                  {roadmapItem.priority || 'Low'}
+                </span>
+              </div>
+              <div>
+                <p className="text-gray-500 text-xs font-mono uppercase tracking-wider font-bold mb-2">Category</p>
+                <p className="text-white font-mono text-sm">{roadmapItem.category}</p>
+              </div>
+              <div>
+                <p className="text-gray-500 text-xs font-mono uppercase tracking-wider font-bold mb-2">Created At</p>
+                <p className="text-white font-mono text-sm">
+                  {new Date(roadmapItem.created_at).toLocaleDateString()}
                 </p>
+              </div>
+              {roadmapItem.due_date && (
+                <div className="sm:col-span-2">
+                  <p className="text-gray-500 text-xs font-mono uppercase tracking-wider font-bold mb-2">Due Date</p>
+                  <p className="text-white font-mono text-sm">
+                    {new Date(roadmapItem.due_date).toLocaleDateString()}
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {roadmapItem.notes && (
+              <div className="mt-8">
+                <h3 className="text-sm font-mono font-bold text-gray-400 uppercase tracking-wider mb-3">Notes</h3>
+                <div className="bg-black/30 rounded-xl p-5 border border-white/10">
+                  <p className="text-gray-300 font-mono whitespace-pre-wrap text-sm leading-relaxed">
+                    {roadmapItem.notes}
+                  </p>
+                </div>
               </div>
             )}
           </div>
-
-          {roadmapItem.notes && (
-            <div className="mt-6 border-t border-gray-700 pt-6 relative z-10">
-              <h3 className="text-xl font-mono font-semibold text-white mb-2">Notes:</h3>
-              <p className="text-gray-300 font-mono whitespace-pre-wrap">
-                {roadmapItem.notes}
-              </p>
-            </div>
-          )}
         </div>
       </div>
     </motion.div>

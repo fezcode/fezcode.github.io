@@ -1,10 +1,39 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { KanbanIcon } from '@phosphor-icons/react'; // Using KanbanIcon as a default/watermark icon
-import { getStatusClasses, getPriorityClasses, statusTextColor } from '../../utils/roadmapHelpers';
+import {
+  KanbanIcon,
+  Lightning,
+  Circle,
+  ArrowsClockwise,
+  CheckCircle,
+  PauseCircle,
+  Fire,
+  Equals,
+  ArrowDown
+} from '@phosphor-icons/react';
+import { getStatusClasses, getPriorityClasses } from '../../utils/roadmapHelpers';
 
 const RoadmapCard = ({ app, index }) => {
+  const getStatusIcon = (status) => {
+    switch (status) {
+      case 'Planned': return <Circle weight="bold" />;
+      case 'In Progress': return <ArrowsClockwise weight="bold" className="animate-spin" />;
+      case 'Completed': return <CheckCircle weight="bold" />;
+      case 'On Hold': return <PauseCircle weight="bold" />;
+      default: return <Circle weight="bold" />;
+    }
+  };
+
+  const getPriorityIcon = (priority) => {
+    switch (priority) {
+      case 'High': return <Fire weight="fill" />;
+      case 'Medium': return <Equals weight="bold" />;
+      case 'Low': return <ArrowDown weight="bold" />;
+      default: return <ArrowDown weight="bold" />;
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -30,18 +59,28 @@ const RoadmapCard = ({ app, index }) => {
 
           {/* Content */}
           <div className="relative z-10 flex-grow">
-            <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center justify-between mb-3 gap-2">
               <span
-                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(app.status || 'Planned')} ${statusTextColor(app.status || 'Planned')}`}
+                className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider rounded-md shadow-sm ${getStatusClasses(app.status || 'Planned')}`}
               >
+                {getStatusIcon(app.status || 'Planned')}
                 {app.status || 'Planned'}
               </span>
               <span
-                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(app.priority || 'Low')}`}
+                className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider rounded-md shadow-sm ${getPriorityClasses(app.priority || 'Low')}`}
               >
+                {getPriorityIcon(app.priority || 'Low')}
                 {app.priority || 'Low'}
               </span>
             </div>
+
+            {app.epic && (
+              <div className="mb-3 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-purple-500/20 border border-purple-500/50 text-purple-300 text-[10px] font-mono uppercase tracking-wider font-bold w-fit">
+                <Lightning weight="fill" size={12} />
+                {app.epic}
+              </div>
+            )}
+
             <h4 className="text-xl font-bold font-mono text-white mb-2 tracking-tight group-hover:text-primary-400 transition-colors">
               {app.title}
             </h4>
@@ -51,9 +90,10 @@ const RoadmapCard = ({ app, index }) => {
           </div>
 
           {app.notes && (
-            <div className="relative z-10 mt-3 pt-3 border-t border-gray-700">
-              <p className="text-gray-500 text-xs italic line-clamp-2">
-                Notes: {app.notes}
+            <div className="relative z-10 mt-4 bg-black/20 rounded-lg p-3 border border-white/5">
+              <p className="text-gray-500 text-xs italic line-clamp-2 font-mono">
+                <span className="font-bold text-gray-400 not-italic mr-2">NOTE:</span>
+                {app.notes}
               </p>
             </div>
           )}
