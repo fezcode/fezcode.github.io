@@ -1,17 +1,17 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { useProjects } from '../utils/projectParser';
-import { useProjectContent } from '../hooks/useProjectContent'; // Import the new hook
+import {useProjects} from '../utils/projectParser';
+import {useProjectContent} from '../hooks/useProjectContent';
 import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
 import Seo from '../components/Seo';
 
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import {ArrowLeftIcon} from '@phosphor-icons/react';
 
 const ProjectPage = () => {
-  const { slug } = useParams();
+  const {slug} = useParams();
   const {
     projects,
     loading: loadingProjects,
@@ -24,33 +24,13 @@ const ProjectPage = () => {
   } = useProjectContent(slug);
 
   if (loadingProjects || loadingContent) {
-    // Skeleton loading screen for ProjectPage
     return (
-      <div className="bg-gray-900 py-16 sm:py-24 animate-pulse">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="lg:grid lg:grid-cols-4 lg:gap-8">
-            <div className="lg:col-span-3">
-              <div className="h-8 bg-gray-800 rounded w-1/4 mb-4"></div>
-              <div className="h-12 bg-gray-800 rounded w-3/4 mb-8"></div>
-              <div className="h-64 bg-gray-800 rounded w-full mb-8"></div>
-              <div className="space-y-4">
-                <div className="h-6 bg-gray-800 rounded w-full"></div>
-                <div className="h-6 bg-gray-800 rounded w-5/6"></div>
-                <div className="h-6 bg-gray-800 rounded w-full"></div>
-                <div className="h-6 bg-gray-800 rounded w-2/3"></div>
-              </div>
-            </div>
-            <div className="hidden lg:block">
-              <div className="bg-gray-800 rounded-lg shadow-lg p-6">
-                <div className="h-8 bg-gray-700 rounded w-1/2 mb-4"></div>
-                <div className="space-y-2">
-                  <div className="h-4 bg-gray-700 rounded w-full"></div>
-                  <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-700 rounded w-1/2"></div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
+          <p className="font-mono text-cyan-500 animate-pulse">
+            LOADING DATA STREAM...
+          </p>
         </div>
       </div>
     );
@@ -58,8 +38,8 @@ const ProjectPage = () => {
 
   if (errorProjects || errorContent) {
     return (
-      <div className="py-16 sm:py-24 text-center text-red-500">
-        Error loading project: {errorProjects?.message || errorContent?.message}
+      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center text-red-500 font-mono">
+        ERROR: {errorProjects?.message || errorContent?.message}
       </div>
     );
   }
@@ -68,17 +48,17 @@ const ProjectPage = () => {
 
   if (!project || !content) {
     return (
-      <div className="py-16 sm:py-24 text-center text-white">
-        Project not found
+      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center text-gray-400 font-mono">
+        Project not found in archives.
       </div>
     );
   }
 
   // Combine project metadata with fetched content
-  const fullProject = { ...project, ...content };
+  const fullProject = {...project, ...content};
 
   return (
-    <div className="bg-gray-900 py-16 sm:py-24">
+    <div className="min-h-screen bg-[#020617] pb-24 relative overflow-hidden">
       <Seo
         title={`${fullProject.title} | Fezcodex`}
         description={fullProject.shortDescription}
@@ -93,36 +73,53 @@ const ProjectPage = () => {
           fullProject.image || 'https://fezcode.github.io/logo512.png'
         }
       />
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+
+      {/* Header Background */}
+      <div
+        className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
+        <div
+          className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]"/>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24">
+        <div className="lg:grid lg:grid-cols-4 lg:gap-12">
           <div className="lg:col-span-3">
             <Link
               to="/projects"
-              className="text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 font-mono text-sm tracking-widest uppercase hover:underline decoration-cyan-500/50 underline-offset-4 transition-all"
             >
-              <ArrowLeftIcon size={24} /> Back to Projects
+              <ArrowLeftIcon size={16}/> Back to Projects
             </Link>
-            <h1 className="text-4xl font-bold tracking-tight text-markdown-hx-color sm:text-6xl">
+
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white font-mono mb-6">
               {fullProject.title}
+              <span className="text-cyan-500 animate-pulse">_</span>
             </h1>
-            {/*{fullProject.image && (*/}
-            {/*  <img*/}
-            {/*    src={fullProject.image}*/}
-            {/*    alt={fullProject.title}*/}
-            {/*    className="mt-8 w-full rounded-lg text-gray-200"*/}
-            {/*  />*/}
-            {/*)}*/}
-            <div className="mt-6 text-lg leading-8 text-gray-300 prose prose-dark">
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
+
+            <div className="mt-8 p-8 bg-gray-900/50 rounded-xl border border-gray-800 backdrop-blur-sm">
+              <div
+                className="prose prose-invert prose-lg max-w-none
+                    prose-headings:font-mono prose-headings:text-gray-100
+                    prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline
+                    prose-code:text-cyan-300 prose-code:bg-gray-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
+                    prose-pre:bg-gray-950 prose-pre:border prose-pre:border-gray-800
+                    prose-strong:text-white
+                    text-gray-300"
               >
-                {fullProject.fullContent}
-              </ReactMarkdown>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
+                >
+                  {fullProject.fullContent}
+                </ReactMarkdown>
+              </div>
             </div>
           </div>
-          <div className="hidden lg:block">
-            <ProjectMetadata project={fullProject} />
+
+          <div className="hidden lg:block mt-24 space-y-6">
+            <div className="sticky top-24">
+              <ProjectMetadata project={fullProject}/>
+            </div>
           </div>
         </div>
       </div>

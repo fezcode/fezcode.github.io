@@ -1,52 +1,70 @@
 import React from 'react';
 import Label from '../Label';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import {FaExternalLinkAlt} from 'react-icons/fa';
 
-const ProjectMetadata = ({ project }) => {
+const ProjectMetadata = ({project}) => {
   if (!project) {
     return null;
   }
 
   return (
-    <aside className="sticky top-24">
-      <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-700/50">
-        <h3 className="text-lg font-semibold text-gray-100 mb-4 border-b pb-2 border-gray-500">
-          About Project
-        </h3>
-        <div className="space-y-4">
-          <div>
-            <Label>Title</Label>
-            <p className="text-gray-300 ml-1 mt-1">{project.title}</p>
+    <aside>
+      <div
+        className="p-6 bg-gray-900/80 backdrop-blur-md rounded-xl border border-gray-800 shadow-lg relative overflow-hidden group">
+        {/* Decor element */}
+        <div className="absolute top-0 right-0 p-3 opacity-50">
+          <div className="flex gap-1">
+            <div className="w-1 h-1 bg-cyan-500 rounded-full"></div>
+            <div className="w-1 h-1 bg-gray-600 rounded-full"></div>
           </div>
+        </div>
+
+        <h3
+          className="text-sm font-mono font-bold text-cyan-400 mb-6 border-b border-gray-800 pb-3 uppercase tracking-widest flex items-center gap-2">
+          <span className="w-2 h-2 bg-cyan-500 rounded-sm"></span>
+          Project Data
+        </h3>
+
+        <div className="space-y-6">
+          <div>
+            <Label className="text-gray-500 text-xs uppercase tracking-wider font-mono">Title</Label>
+            <p className="text-gray-200 mt-1 font-medium">{project.title}</p>
+          </div>
+
           {project.link && (
             <div>
-              <Label>Link</Label>
-              <p className="text-gray-300 ml-1 mt-1">
+              <Label className="text-gray-500 text-xs uppercase tracking-wider font-mono">Deployment</Label>
+              <p className="text-gray-300 mt-1">
                 <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-amber-500 hover:text-amber-400 flex items-center"
+                  className="text-cyan-400 hover:text-cyan-300 flex items-center gap-2 group-hover:translate-x-1 transition-transform duration-300"
                 >
-                  View Project <FaExternalLinkAlt className="ml-1" size={12} />
+                  View System <FaExternalLinkAlt size={12}/>
                 </a>
               </p>
             </div>
           )}
+
           {project.pinned && (
             <div>
-              <Label>Status</Label>
-              <p className="text-gray-300 ml-1 mt-1">Pinned</p>
+              <Label className="text-gray-500 text-xs uppercase tracking-wider font-mono">Status</Label>
+              <div className="mt-2 flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <p className="text-green-400 font-mono text-sm">PINNED / ACTIVE</p>
+              </div>
             </div>
           )}
+
           {project.technologies && project.technologies.length > 0 && (
             <div>
-              <Label>Technologies</Label>
-              <div className="flex flex-wrap gap-2 mt-2">
+              <Label className="text-gray-500 text-xs uppercase tracking-wider font-mono">Stack</Label>
+              <div className="flex flex-wrap gap-2 mt-3">
                 {project.technologies.map((tech) => (
                   <span
                     key={tech}
-                    className="bg-primary-400/10 text-primary-400 text-xs font-medium px-2.5 py-1 rounded-full"
+                    className="bg-gray-800 text-cyan-300 border border-cyan-900/50 text-xs font-mono px-2.5 py-1 rounded hover:bg-cyan-900/20 transition-colors cursor-default"
                   >
                     {tech}
                   </span>

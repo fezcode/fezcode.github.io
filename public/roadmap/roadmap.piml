@@ -49,3 +49,14 @@
     (priority) High
     (created_at) 2025-11-29T18:00:00+03:00
     (notes) Research Gantt chart libraries.
+
+  > (issues)
+    (id) FEZ-5
+    (title) Refactor Projects Page
+    (description) Better styles & UI/UX for project related pages and components.
+    (category) UI/UX
+    (status) Completed
+    (priority) High
+    (created_at) 2025-11-28T18:00:00+03:00
+    (due_date) 2025-11-30T00:00:00+03:00
+    (notes) Futuristic Cyan Theme.

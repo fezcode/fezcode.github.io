@@ -1,6 +1,14 @@
 [
   {
     "date": "2025-11-29",
+    "title": "Projects Overhaul Refactor",
+    "description": "Modernized Projects section with a futuristic cyan theme, enhanced animations, and improved metadata cards.",
+    "type": "refactor",
+    "icon": "SparkleIcon",
+    "link": "/#/projects"
+  },
+  {
+    "date": "2025-11-29",
     "title": "Fezzilla: Issue Tracking Roadmap",
     "description": "Implemented Fezzilla, an issue tracking roadmap to visualize project statuses and progress.",
     "type": "feature",
