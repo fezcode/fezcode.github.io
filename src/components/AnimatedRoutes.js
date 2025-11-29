@@ -128,6 +128,8 @@ const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
+const RoadmapViewerPage = lazy(() => import('../pages/roadmap/RoadmapViewerPage'));
+const RoadmapItemDetailPage = lazy(() => import('../pages/roadmap/RoadmapItemDetailPage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));
@@ -1748,6 +1750,38 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <FractalFloraPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/roadmap"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <RoadmapViewerPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/roadmap/:id"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <RoadmapItemDetailPage />
               </Suspense>
             </motion.div>
           }
