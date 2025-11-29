@@ -124,6 +124,7 @@ const KeyboardTypingSpeedTesterPage = lazy(
 );
 const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
+const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
@@ -795,6 +796,10 @@ function AnimatedRoutes() {
         <Route
           path="/apps::np"
           element={<Navigate to="/apps/notepad" replace />}
+        />
+        <Route
+          path="/apps::spiro"
+          element={<Navigate to="/apps/spirograph" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1710,6 +1715,23 @@ function AnimatedRoutes() {
             </motion.div>
           }
         />
+        <Route
+          path="/apps/spirograph"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <SpirographPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        {/*Pinned Apps*/}
         <Route
           path="/pinned-apps"
           element={

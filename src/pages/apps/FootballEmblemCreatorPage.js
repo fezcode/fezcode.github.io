@@ -55,7 +55,6 @@ import {
   PercentIcon,
 } from '@phosphor-icons/react';
 import CustomDropdown from '../../components/CustomDropdown'; // Add this line
-import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';

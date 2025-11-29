@@ -208,6 +208,15 @@
         "created_at": "2025-11-25T17:00:00+03:00"
       },
       {
+        "slug": "spirograph",
+        "to": "/apps/spirograph",
+        "title": "Spirograph Generator",
+        "description": "Create mesmerizing geometric patterns with math.",
+        "icon": "AtomIcon",
+        "pinned_order": 17,
+        "created_at": "2025-11-29T14:00:00+03:00"
+      },
+      {
         "slug": "codename-generator",
         "to": "/apps/codename-generator",
         "title": "Codename Generator",
