@@ -2,7 +2,7 @@
 
 - **Category:** Movie
 - **Director:** Paul McGuigan
-- **Date:** 2025-11-28
+- **Date:** 2024-11-28
 - **Rating:** 5/5
 - **Link:** [IMDb - Lucky Number Slevin](https://www.imdb.com/title/tt0425210/)
 

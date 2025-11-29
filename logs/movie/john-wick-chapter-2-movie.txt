@@ -2,7 +2,7 @@
 
 - **Category:** Movie
 - **Director:** Chad Stahelski
-- **Date:** 2025-11-28
+- **Date:** 2020-01-01
 - **Rating:** 5/5
 - **Link:** [IMDb - John Wick: Chapter 2](https://www.imdb.com/title/tt4425200/)
 
