@@ -8,14 +8,14 @@ import piml from 'piml'; // Import piml
 
 const RoadmapViewerPage = () => {
   useSeo({
-    title: 'Apps Roadmap | Fezcodex',
+    title: 'Fezzilla Issue Tracking | Fezcodex',
     description: 'Roadmap and status of all applications and tools.',
     keywords: ['Fezcodex', 'roadmap', 'apps', 'status', 'tools'],
-    ogTitle: 'Apps Roadmap | Fezcodex',
+    ogTitle: 'Fezzilla Issue Tracking | Fezcodex',
     ogDescription: 'Roadmap and status of all applications and tools.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
-    twitterTitle: 'Apps Roadmap | Fezcodex',
+    twitterTitle: 'Fezzilla Issue Tracking | Fezcodex',
     twitterDescription: 'Roadmap and status of all applications and tools.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
