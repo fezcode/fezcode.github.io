@@ -1,6 +1,17 @@
 [
   {
     "category": "Movie",
+    "date": "2025-11-29",
+    "link": "https://www.imdb.com/title/tt1493274",
+    "director": "Darren Aronofsky",
+    "rating": 4,
+    "slug": "caught-stealing-2025",
+    "title": "Caught Stealing (2025)",
+    "image": "/images/defaults/movie/caught-stealing.png",
+    "description": "Burned-out ex-baseball player Hank Thompson unexpectedly finds himself embroiled in a dangerous struggle for survival amidst the criminal underbelly of 1990s New York City, forced to navigate a treacherous underworld he never imagined."
+  },
+  {
+    "category": "Movie",
     "date": "2025-11-28",
     "link": "https://www.imdb.com/title/tt0425210/",
     "director": "Paul McGuigan",
