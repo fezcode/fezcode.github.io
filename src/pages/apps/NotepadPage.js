@@ -232,7 +232,7 @@ const NotepadPage = () => {
 
         {/* Notepad Area */}
         <div
-          className={`${isFixedSize ? 'h-[60vh]' : 'flex-grow'} rounded-lg shadow-lg relative overflow-hidden flex flex-col transition-all duration-500 ${isRainy ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}
+          className={`${isFixedSize ? 'h-[80vh]' : 'flex-grow'} rounded-lg shadow-lg relative overflow-hidden flex flex-col transition-all duration-500 ${isRainy ? 'bg-gray-800 border border-gray-700' : 'bg-white border border-gray-200'}`}
         >
           {/* Paper Lines Background */}
           <div
