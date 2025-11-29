@@ -55,6 +55,8 @@ export const AchievementProvider = ({ children }) => {
       if (count >= 1) unlockAchievement('novice_reader');
       if (count >= 5) unlockAchievement('avid_reader');
       if (count >= 10) unlockAchievement('bookworm');
+      if (count >= 20) unlockAchievement('scholar');
+      if (count >= 40) unlockAchievement('lord');
 
       return newReadPosts;
     });

@@ -195,6 +195,7 @@ const CommandPalette = ({
           break;
         }
         case 'showVersion':
+          unlockAchievement('leave_no_stone_unturned');
           openGenericModal(
             'Application Version',
             <p>

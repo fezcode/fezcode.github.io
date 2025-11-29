@@ -1,6 +1,5 @@
 import {
   CompassIcon,
-  ClockIcon,
   TerminalWindowIcon,
   PaintBrushIcon,
   GameControllerIcon,
@@ -13,7 +12,10 @@ import {
   BookBookmarkIcon,
   BooksIcon,
   GhostIcon,
-  EyeSlashIcon, // Added for new achievement
+  EyeSlashIcon,
+  ChalkboardIcon,
+  CastleTurretIcon,
+  MartiniIcon,
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -102,6 +104,20 @@ export const ACHIEVEMENTS = [
     category: 'Content',
   },
   {
+    id: 'scholar',
+    title: 'Scholar',
+    description: 'Read 20 different blog posts. Impressive!',
+    icon: <ChalkboardIcon size={32} weight="duotone" />,
+    category: 'Content',
+  },
+  {
+    id: 'lord',
+    title: 'Lord',
+    description: 'Read 40 different blog posts. MiLord!',
+    icon: <CastleTurretIcon size={32} weight="duotone" />,
+    category: 'Content',
+  },
+  {
     id: 'hide_and_seek_master',
     title: 'Hide and Seek Master',
     description: 'Hid all roadmap status columns.',
@@ -114,6 +130,13 @@ export const ACHIEVEMENTS = [
     description:
       'Successfully communicated with the code spirit and broke the infinite loop.',
     icon: <GhostIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'leave_no_stone_unturned',
+    title: 'Leave No Stone Unturned',
+    description: 'Check application version.',
+    icon: <MartiniIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
   {
