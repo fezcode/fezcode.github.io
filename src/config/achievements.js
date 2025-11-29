@@ -111,9 +111,9 @@ export const ACHIEVEMENTS = [
     category: 'Content',
   },
   {
-    id: 'lord',
-    title: 'Lord',
-    description: 'Read 40 different blog posts. MiLord!',
+    id: 'milord',
+    title: 'Mi Lord',
+    description: 'Read 30 different blog posts. Mi Lord!',
     icon: <CastleTurretIcon size={32} weight="duotone" />,
     category: 'Content',
   },

@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useToast } from '../hooks/useToast';
 import { ACHIEVEMENTS } from '../config/achievements';
+import {TrophyIcon} from "@phosphor-icons/react";
 
 const AchievementContext = createContext();
 
@@ -39,6 +40,7 @@ export const AchievementProvider = ({ children }) => {
       title: 'Achievement Unlocked!',
       message: achievement.title,
       duration: 4000,
+      icon: <TrophyIcon weight="duotone"/>
       // You might want to add a specific type or icon here later for styling
     });
   };
@@ -56,7 +58,7 @@ export const AchievementProvider = ({ children }) => {
       if (count >= 5) unlockAchievement('avid_reader');
       if (count >= 10) unlockAchievement('bookworm');
       if (count >= 20) unlockAchievement('scholar');
-      if (count >= 40) unlockAchievement('lord');
+      if (count >= 30) unlockAchievement('milord');
 
       return newReadPosts;
     });
