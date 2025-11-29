@@ -156,7 +156,6 @@ const RoadmapItemDetailPage = () => {
               </span>
             </div>
             <div>
-              <p className="text-gray-400 font-mono font-medium">Priority:</p>
               <span
                 className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(roadmapItem.priority)}`}
               >

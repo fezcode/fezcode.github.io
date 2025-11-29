@@ -93,7 +93,7 @@ const RoadmapCard = ({ app, index }) => {
               <span
                 className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(app.priority || 'Low')}`}
               >
-                Priority: {app.priority || 'Low'}
+                {app.priority || 'Low'}
               </span>
             </div>
             <h4 className="text-xl font-bold font-mono text-white mb-2 tracking-tight group-hover:text-purple-400 transition-colors">
