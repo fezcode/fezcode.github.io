@@ -4,32 +4,54 @@ import { motion } from 'framer-motion';
 import { KanbanIcon } from '@phosphor-icons/react'; // Using KanbanIcon as a default/watermark icon
 
 const RoadmapCard = ({ app, index }) => {
-  const getStatusColor = (status) => {
+  const getStatusClasses = (status) => {
+    let bgColor = '';
+    let borderColor = '';
     switch (status) {
       case 'Planned':
-        return 'bg-blue-500';
+        bgColor = 'bg-blue-500';
+        borderColor = 'border-blue-700'; // Darker shade for border
+        break;
       case 'In Progress':
-        return 'bg-yellow-500';
+        bgColor = 'bg-yellow-500';
+        borderColor = 'border-yellow-700';
+        break;
       case 'Completed':
-        return 'bg-green-500';
+        bgColor = 'bg-green-500';
+        borderColor = 'border-green-700';
+        break;
       case 'On Hold':
-        return 'bg-red-500';
+        bgColor = 'bg-red-500';
+        borderColor = 'border-red-700';
+        break;
       default:
-        return 'bg-gray-500';
+        bgColor = 'bg-gray-500';
+        borderColor = 'border-gray-700';
     }
+    return `${bgColor} ${borderColor}`;
   };
 
-  const getPriorityColor = (priority) => {
+  const getPriorityClasses = (priority) => {
+    let textColor = '';
+    let borderColor = '';
     switch (priority) {
       case 'High':
-        return 'text-red-400';
+        textColor = 'text-red-400';
+        borderColor = 'border-red-700';
+        break;
       case 'Medium':
-        return 'text-yellow-400';
+        textColor = 'text-yellow-400';
+        borderColor = 'border-yellow-700';
+        break;
       case 'Low':
-        return 'text-green-400';
+        textColor = 'text-green-400';
+        borderColor = 'border-green-700';
+        break;
       default:
-        return 'text-gray-400';
+        textColor = 'text-gray-400';
+        borderColor = 'border-gray-700';
     }
+    return `${textColor} ${borderColor}`;
   };
 
   const statusTextColor = (status) => {
@@ -63,12 +85,12 @@ const RoadmapCard = ({ app, index }) => {
           <div className="relative z-10 flex-grow">
             <div className="flex items-center justify-between mb-2">
               <span
-                className={`px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(app.status || 'Planned')} ${statusTextColor(app.status || 'Planned')}`}
+                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(app.status || 'Planned')} ${statusTextColor(app.status || 'Planned')}`}
               >
                 {app.status || 'Planned'}
               </span>
               <span
-                className={`text-xs font-medium ${getPriorityColor(app.priority)}`}
+                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(app.priority || 'Low')}`}
               >
                 Priority: {app.priority || 'Low'}
               </span>

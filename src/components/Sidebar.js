@@ -33,6 +33,7 @@ import {
   Trophy,
   MusicNoteIcon,
   SkullIcon,
+  BugBeetleIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -239,6 +240,10 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                   <NavLink to="/timeline" className={getLinkClass}>
                     <TimerIcon size={24} />
                     <span>Timeline</span>
+                  </NavLink>
+                  <NavLink to="/roadmap" className={getLinkClass}>
+                    <BugBeetleIcon size={24} />
+                    <span>Fezzilla</span>
                   </NavLink>
                 </nav>
               )}

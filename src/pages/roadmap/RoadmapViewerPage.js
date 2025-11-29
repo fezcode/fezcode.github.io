@@ -37,32 +37,59 @@ const RoadmapViewerPage = () => {
     fetchRoadmap();
   }, []);
 
-  const getStatusColor = (status) => {
+  const getStatusClasses = (status) => {
+    let bgColor = '';
+    let borderColor = '';
     switch (status) {
       case 'Planned':
-        return 'bg-blue-500';
+        bgColor = 'bg-blue-500';
+        borderColor = 'border-blue-700';
+        break;
       case 'In Progress':
-        return 'bg-yellow-500';
+        bgColor = 'bg-yellow-500';
+        borderColor = 'border-yellow-700';
+        break;
       case 'Completed':
-        return 'bg-green-500';
+        bgColor = 'bg-green-500';
+        borderColor = 'border-green-700';
+        break;
       case 'On Hold':
-        return 'bg-red-500';
+        bgColor = 'bg-red-500';
+        borderColor = 'border-red-700';
+        break;
       default:
-        return 'bg-gray-500';
+        bgColor = 'bg-gray-500';
+        borderColor = 'border-gray-700';
     }
+    return `${bgColor} ${borderColor}`;
   };
 
-  const getPriorityColor = (priority) => {
+  const getPriorityClasses = (priority) => {
+    let textColor = '';
+    let borderColor = '';
     switch (priority) {
       case 'High':
-        return 'text-red-400';
+        textColor = 'text-red-400';
+        borderColor = 'border-red-700';
+        break;
       case 'Medium':
-        return 'text-yellow-400';
+        textColor = 'text-yellow-400';
+        borderColor = 'border-yellow-700';
+        break;
       case 'Low':
-        return 'text-green-400';
+        textColor = 'text-green-400';
+        borderColor = 'border-green-700';
+        break;
       default:
-        return 'text-gray-400';
+        textColor = 'text-gray-400';
+        borderColor = 'border-gray-700';
     }
+    return `${textColor} ${borderColor}`;
+  };
+
+  const getOnlyBgStatusColor = (status) => {
+    const classes = getStatusClasses(status);
+    return classes.split(' ')[0]; // Returns only the bgColor class (e.g., "bg-blue-500")
   };
 
   const RoadmapView = () => {
@@ -85,7 +112,7 @@ const RoadmapViewerPage = () => {
               className={`text-lg font-mono tracking-wider mb-4 flex items-center gap-2 text-white`}
             >
               <span
-                className={`w-3 h-3 rounded-full ${getStatusColor(status)}`}
+                className={`w-3 h-3 rounded-full ${getOnlyBgStatusColor(status)}`}
               ></span>
               {status} ({groupedApps[status]?.length || 0})
             </h3>
@@ -164,53 +191,53 @@ const RoadmapViewerPage = () => {
           />
         </div>
         <table className="min-w-full divide-y divide-gray-700 text-white">
-          <thead>
+          <thead className="bg-gray-800/60 border-b border-gray-700">
             <tr>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-sm font-mono text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
+                className="px-6 py-3 text-left text-sm font-mono font-bold text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
                 onClick={() => handleSort('title')}
               >
                 Title {renderSortArrow('title')}
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-sm font-mono text-gray-400 uppercase tracking-wide"
+                className="px-6 py-3 text-left text-sm font-mono font-bold text-gray-400 uppercase tracking-wide"
               >
                 Description
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-sm font-mono text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
+                className="px-6 py-3 text-left text-sm font-mono font-bold text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
                 onClick={() => handleSort('status')}
               >
                 Status {renderSortArrow('status')}
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-sm font-mono text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
+                className="px-6 py-3 text-left text-sm font-mono font-bold text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
                 onClick={() => handleSort('priority')}
               >
                 Priority {renderSortArrow('priority')}
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-sm font-mono text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
+                className="px-6 py-3 text-left text-sm font-mono font-bold text-gray-400 uppercase tracking-wide cursor-pointer hover:text-white transition-colors"
                 onClick={() => handleSort('created_at')}
               >
                 Created At {renderSortArrow('created_at')}
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-sm font-mono text-gray-400 uppercase tracking-wide"
+                className="px-6 py-3 text-left text-sm font-mono font-bold text-gray-400 uppercase tracking-wide"
               >
                 Notes
               </th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-700">
-            {sortedApps.map((app) => (
-              <tr key={app.id} className="group hover:bg-gray-800/50 transition-colors">
+            {sortedApps.map((app, index) => (
+              <tr key={app.id} className={`group hover:bg-indigo-500/20 transition-colors ${index % 2 === 0 ? 'bg-gray-900/40' : 'bg-gray-800/40'}`}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-mono font-medium text-white">
                   <Link to={`/roadmap/${app.id}`} className="hover:underline text-purple-400">
                     {app.title}
@@ -219,16 +246,16 @@ const RoadmapViewerPage = () => {
                 <td className="px-6 py-4 text-sm font-mono text-gray-400">
                   {app.description}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                <td className="px-6 py-4 whitespace-nowrap">
                   <span
-                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${getStatusColor(app.status || 'Planned')} text-white`}
+                    className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(app.status || 'Planned')} text-white`}
                   >
                     {app.status || 'Planned'}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                <td className="px-6 py-4 whitespace-nowrap">
                   <span
-                    className={`font-mono font-medium ${getPriorityColor(app.priority)}`}
+                    className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(app.priority || 'Low')}`}
                   >
                     {app.priority || 'Low'}
                   </span>
@@ -260,10 +287,10 @@ const RoadmapViewerPage = () => {
 
         <div className="mx-auto max-w-2xl text-center mb-12">
           <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white font-mono mb-4">
-            SYSTEM_LOG <span className="text-gray-600">//</span> ROADMAP
+            FEZZILLA <span className="text-gray-600">//</span> ROADMAP
           </h1>
           <p className="text-sm md:text-base text-gray-400 max-w-2xl mx-auto font-mono tracking-wide">
-            [ TRACKING APPLICATION DEVELOPMENT CYCLES ]
+            [ TRACKING PROJECT STATUS AND PROGRESS ]
           </p>
         </div>
 

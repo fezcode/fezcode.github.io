@@ -39,32 +39,54 @@ const RoadmapItemDetailPage = () => {
     fetchRoadmapItem();
   }, [id]);
 
-  const getStatusColor = (status) => {
+  const getStatusClasses = (status) => {
+    let bgColor = '';
+    let borderColor = '';
     switch (status) {
       case 'Planned':
-        return 'bg-blue-500';
+        bgColor = 'bg-blue-500';
+        borderColor = 'border-blue-700';
+        break;
       case 'In Progress':
-        return 'bg-yellow-500';
+        bgColor = 'bg-yellow-500';
+        borderColor = 'border-yellow-700';
+        break;
       case 'Completed':
-        return 'bg-green-500';
+        bgColor = 'bg-green-500';
+        borderColor = 'border-green-700';
+        break;
       case 'On Hold':
-        return 'bg-red-500';
+        bgColor = 'bg-red-500';
+        borderColor = 'border-red-700';
+        break;
       default:
-        return 'bg-gray-500';
+        bgColor = 'bg-gray-500';
+        borderColor = 'border-gray-700';
     }
+    return `${bgColor} ${borderColor}`;
   };
 
-  const getPriorityColor = (priority) => {
+  const getPriorityClasses = (priority) => {
+    let textColor = '';
+    let borderColor = '';
     switch (priority) {
       case 'High':
-        return 'text-red-400';
+        textColor = 'text-red-400';
+        borderColor = 'border-red-700';
+        break;
       case 'Medium':
-        return 'text-yellow-400';
+        textColor = 'text-yellow-400';
+        borderColor = 'border-yellow-700';
+        break;
       case 'Low':
-        return 'text-green-400';
+        textColor = 'text-green-400';
+        borderColor = 'border-green-700';
+        break;
       default:
-        return 'text-gray-400';
+        textColor = 'text-gray-400';
+        borderColor = 'border-gray-700';
     }
+    return `${textColor} ${borderColor}`;
   };
 
   if (isLoading) {
@@ -118,7 +140,7 @@ const RoadmapItemDetailPage = () => {
             <div>
               <p className="text-gray-400 font-mono font-medium">Status:</p>
               <span
-                className={`px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full ${getStatusColor(roadmapItem.status)}`}
+                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(roadmapItem.status)} text-white`}
               >
                 {roadmapItem.status || 'Planned'}
               </span>
@@ -126,7 +148,7 @@ const RoadmapItemDetailPage = () => {
             <div>
               <p className="text-gray-400 font-mono font-medium">Priority:</p>
               <span
-                className={`px-3 py-1 inline-flex text-sm leading-5 font-semibold rounded-full ${getPriorityColor(roadmapItem.priority)}`}
+                className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getPriorityClasses(roadmapItem.priority)}`}
               >
                 {roadmapItem.priority || 'Low'}
               </span>
