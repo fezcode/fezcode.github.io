@@ -298,15 +298,6 @@
         "created_at": "2025-11-29T15:00:00+03:00"
       },
       {
-        "slug": "l-system-art",
-        "to": "/apps/l-system-art",
-        "title": "L-System Art",
-        "description": "Generate intricate fractal patterns using L-System rules.",
-        "icon": "CodeIcon",
-        "pinned_order": 19,
-        "created_at": "2025-11-29T16:00:00+03:00"
-      },
-      {
         "slug": "color-palette-generator",
         "to": "/apps/color-palette-generator",
         "title": "Color Palette Generator",
