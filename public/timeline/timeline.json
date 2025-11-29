@@ -1,6 +1,14 @@
 [
   {
     "date": "2025-11-29",
+    "title": "Fezzilla: Issue Tracking Roadmap",
+    "description": "Implemented Fezzilla, an issue tracking roadmap to visualize project statuses and progress.",
+    "type": "feature",
+    "icon": "KanbanIcon",
+    "link": "/#/roadmap"
+  },
+  {
+    "date": "2025-11-29",
     "title": "Introduction of Achievements",
     "description": "Launched the achievements for different use cases of the Fezcodex.",
     "type": "app",
