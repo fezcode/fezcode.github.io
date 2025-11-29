@@ -6,7 +6,7 @@ import piml from 'piml';
 import RoadmapView from '../../components/roadmap/RoadmapView';
 import TableView from '../../components/roadmap/TableView';
 
-const RoadmapViewerPage = () => {
+const FezzillaPage = () => {
   useSeo({
     title: 'Fezzilla Issue Tracking | Fezcodex',
     description: 'Roadmap and status of all applications and tools.',
@@ -43,11 +43,8 @@ const RoadmapViewerPage = () => {
 
   return (
     <div className="py-8 sm:py-16">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link
-          to="/"
-          className="group text-primary-400 hover:underline flex items-center gap-2 text-lg mb-8"
-        >
+      <div className="mx-auto px-6 lg:px-8">
+        <Link to="/" className="group text-primary-400 hover:underline flex items-center gap-2 text-lg mb-8" >
           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
           Back to Home
         </Link>
@@ -90,4 +87,4 @@ const RoadmapViewerPage = () => {
   );
 };
 
-export default RoadmapViewerPage;
+export default FezzillaPage;
