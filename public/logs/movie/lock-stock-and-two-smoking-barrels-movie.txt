@@ -2,7 +2,7 @@
 
 - **Category:** Movie
 - **Director:** Guy Ritchie
-- **Date:** 2025-11-28
+- **Date:** 2024-11-28
 - **Rating:** 5/5
 - **Link:** [IMDb - Lock, Stock and Two Smoking Barrels](https://www.imdb.com/title/tt0120735/)
 

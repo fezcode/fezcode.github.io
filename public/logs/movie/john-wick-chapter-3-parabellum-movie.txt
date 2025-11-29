@@ -2,7 +2,7 @@
 
 - **Category:** Movie
 - **Director:** Chad Stahelski
-- **Date:** 2025-11-28
+- **Date:** 2021-01-01
 - **Rating:** 5/5
 - **Link:** [IMDb - John Wick: Chapter 3 – Parabellum](https://www.imdb.com/title/tt6146586/)
 

@@ -2,7 +2,7 @@
 
 - **Category:** Movie
 - **Director:** Juan Carlos Fresnadillo
-- **Date:** 2025-11-28
+- **Date:** 2016-01-01
 - **Rating:** 4/5
 - **Link:** [IMDb - 28 Weeks Later](https://www.imdb.com/title/tt0707680/)
 
