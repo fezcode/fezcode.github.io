@@ -1,17 +1,25 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import CustomDropdown from '../CustomDropdown';
-import { FunnelIcon } from '@phosphor-icons/react';
-import { getStatusClasses, getPriorityClasses } from '../../utils/roadmapHelpers';
+
+import { getStatusClasses, getPriorityClasses, statusTextColor } from '../../utils/roadmapHelpers';
 
 const TableView = ({ issuesData = [] }) => {
   const [sortBy, setSortBy] = useState('title');
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
-  const [filterStatus, setFilterStatus] = useState('All');
+  const [activeFilters, setActiveFilters] = useState([]); // Changed filterStatus to activeFilters
 
-  const filteredApps = issuesData.filter((app) =>
-    filterStatus === 'All' ? true : (app.status || 'Planned') === filterStatus,
-  );
+  const handleFilterChange = (status) => {
+    if (activeFilters.includes(status)) {
+      setActiveFilters(activeFilters.filter((s) => s !== status)); // Remove filter
+    } else {
+      setActiveFilters([...activeFilters, status]); // Add filter
+    }
+  };
+
+  const filteredApps = issuesData.filter((app) => {
+    if (activeFilters.length === 0) return false; // Show none if no filters active
+    return activeFilters.includes(app.status || 'Planned');
+  });
 
   const sortedApps = [...filteredApps].sort((a, b) => {
     let comparison = 0;
@@ -52,20 +60,20 @@ const TableView = ({ issuesData = [] }) => {
 
   return (
     <div className="overflow-x-auto rounded-xl shadow-lg bg-gray-900/70 backdrop-blur-sm border border-gray-800">
-      <div className="mb-4 mt-4 flex justify-center items-center">
-        <CustomDropdown
-          options={[
-            { label: 'All Statuses', value: 'All' },
-            { label: 'Planned', value: 'Planned' },
-            { label: 'In Progress', value: 'In Progress' },
-            { label: 'Completed', value: 'Completed' },
-            { label: 'On Hold', value: 'On Hold' },
-          ]}
-          value={filterStatus}
-          onChange={setFilterStatus}
-          icon={FunnelIcon}
-          label="Filter by Status"
-        />
+      <div className="mb-4 mt-4 flex justify-center items-center flex-wrap gap-2">
+        {['Planned', 'In Progress', 'Completed', 'On Hold'].map((status) => (
+          <button
+            key={status}
+            onClick={() => handleFilterChange(status)}
+            className={`px-4 py-2 rounded-md text-sm font-mono transition-colors border ${
+              activeFilters.includes(status)
+                ? `${getStatusClasses(status).split(' ')[0]} ${getStatusClasses(status).split(' ')[1]} ${statusTextColor(status)}`
+                : 'bg-gray-800/60 border-gray-700 text-gray-300 hover:border-indigo-500 hover:text-white'
+            }`}
+          >
+            {status}
+          </button>
+        ))}
       </div>
       <table className="min-w-full divide-y divide-gray-700 text-white">
         <thead className="bg-gray-800/60 border-b border-gray-700">
@@ -125,7 +133,7 @@ const TableView = ({ issuesData = [] }) => {
               </td>
               <td className="px-6 py-4 whitespace-nowrap">
                 <span
-                  className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(app.status)}`}
+                  className={`px-2 py-0 inline-flex text-xs font-mono font-semibold rounded-md shadow-sm border ${getStatusClasses(app.status)} ${statusTextColor(app.status)} `}
                 >
                   {app.status || 'Planned'}
                 </span>
