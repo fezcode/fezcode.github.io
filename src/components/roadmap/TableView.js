@@ -6,7 +6,7 @@ import { getStatusClasses, getPriorityClasses, statusTextColor } from '../../uti
 const TableView = ({ issuesData = [] }) => {
   const [sortBy, setSortBy] = useState('title');
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
-  const [activeFilters, setActiveFilters] = useState([]); // Changed filterStatus to activeFilters
+  const [activeFilters, setActiveFilters] = useState(['Planned', 'In Progress', 'On Hold', 'Completed']); // Changed filterStatus to activeFilters
 
   const handleFilterChange = (status) => {
     if (activeFilters.includes(status)) {
