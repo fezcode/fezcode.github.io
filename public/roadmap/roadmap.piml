@@ -11,28 +11,17 @@
 (issues)
   > (issues)
     (id) FEZ-1
-    (title) MIDI Support for FeZynth
-    (description) Integrate MIDI input to play FeZynth with external MIDI controllers.
-    (category) Games
+    (title) Backend Support for Fezcodex
+    (description) Integrate a cloud provider and add support for backend for Fezcodex.
+    (category) Infrastructure
     (status) Planned
-    (priority) High
+    (priority) Medium
     (created_at) 2025-11-29T10:00:00+03:00
     (due_date) 2026-01-15T00:00:00+03:00
-    (notes) Requires Web MIDI API research.
+    (notes) Find a free cloud provider.
 
   > (issues)
     (id) FEZ-2
-    (title) Multiplayer FezType
-    (description) Allow users to compete in real-time typing races.
-    (category) Games
-    (status) In Progress
-    (priority) High
-    (created_at) 2025-11-20T11:30:00+03:00
-    (due_date) 2026-03-01T00:00:00+03:00
-    (notes) Backend infrastructure and WebSocket implementation needed.
-
-  > (issues)
-    (id) FEZ-3
     (title) More Commands for Code Seance
     (description) Expand the set of available commands and interactions in Code Seance.
     (category) Games
@@ -42,27 +31,7 @@
     (notes) Focus on developer-themed commands.
 
   > (issues)
-    (id) FEZ-4
-    (title) Save/Load Color Palettes
-    (description) Add functionality to save and load generated color palettes.
-    (category) Generators
-    (status) Planned
-    (priority) Medium
-    (created_at) 2025-11-25T09:00:00+03:00
-    (notes) Local storage first, then user accounts.
-
-  > (issues)
-    (id) FEZ-5
-    (title) Notepad Markdown Support
-    (description) Implement basic Markdown rendering and editing capabilities in Notepad.
-    (category) Utilities
-    (status) Planned
-    (priority) High
-    (created_at) 2025-11-27T16:00:00+03:00
-    (notes) Requires a Markdown parsing library.
-
-  > (issues)
-    (id) FEZ-6
+    (id) FEZ-3
     (title) Customizable Morse Code Translator
     (description) Allow users to customize Morse code speed, tone, and character mappings.
     (category) Converters
@@ -72,7 +41,7 @@
     (notes) Lower priority, focus on core features first.
 
   > (issues)
-    (id) FEZ-7
+    (id) FEZ-4
     (title) New App: Project Timeline Visualizer
     (description) A tool to visualize project timelines and dependencies.
     (category) Utilities
