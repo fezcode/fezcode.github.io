@@ -17,7 +17,12 @@ export const AchievementProvider = ({ children }) => {
     {},
   );
   const [readPosts, setReadPosts] = usePersistentState('read-posts', []);
+  const [showAchievementToast, setShowAchievementToast] = usePersistentState('show-achievement-toasts', true);
   const { addToast } = useToast();
+
+  const toggleAchievementToast = () => {
+    setShowAchievementToast((prev) => !prev);
+  };
 
   // Helper to unlock an achievement
   const unlockAchievement = (id) => {
@@ -35,15 +40,20 @@ export const AchievementProvider = ({ children }) => {
       [id]: { unlocked: true, unlockedAt: now },
     }));
 
-    // Trigger Toast
-    addToast({
-      title: 'Achievement Unlocked!',
-      message: achievement.title,
-      duration: 4000,
-      icon: <TrophyIcon weight="duotone"/>,
-      type: 'gold'
-      // You might want to add a specific type or icon here later for styling
-    });
+    if (showAchievementToast) {
+      // Trigger Toast
+      addToast({
+        title: 'Achievement Unlocked!',
+        message: achievement.title,
+        duration: 4000,
+        icon: <TrophyIcon weight="duotone" />,
+        type: 'gold',
+        links: [
+            { label: 'Settings', to: '/settings' },
+            { label: 'Trophy Room', to: '/achievements' }
+        ]
+      });
+    }
   };
 
   const trackReadingProgress = (slug) => {
@@ -72,7 +82,7 @@ export const AchievementProvider = ({ children }) => {
 
   return (
     <AchievementContext.Provider
-      value={{ unlockedAchievements, unlockAchievement, trackReadingProgress }}
+      value={{ unlockedAchievements, unlockAchievement, trackReadingProgress, showAchievementToast, toggleAchievementToast }}
     >
       {children}
     </AchievementContext.Provider>

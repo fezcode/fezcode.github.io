@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react'; // Import useEffect
-import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import { useAnimation } from '../context/AnimationContext';
-import { useVisualSettings } from '../context/VisualSettingsContext';
-import { useAchievements } from '../context/AchievementContext'; // Import useAchievements
+import React, {useEffect} from 'react'; // Import useEffect
+import {Link} from 'react-router-dom';
+import {ArrowLeftIcon} from '@phosphor-icons/react';
+import {useAnimation} from '../context/AnimationContext';
+import {useVisualSettings} from '../context/VisualSettingsContext';
+import {useAchievements} from '../context/AchievementContext'; // Import useAchievements
 import colors from '../config/colors';
 import CustomToggle from '../components/CustomToggle';
 import useSeo from '../hooks/useSeo';
-import { useToast } from '../hooks/useToast';
+import {useToast} from '../hooks/useToast';
 import {
-  KEY_SIDEBAR_STATE,
-  KEY_APPS_COLLAPSED_CATEGORIES,
-  remove as removeLocalStorageItem,
+  KEY_SIDEBAR_STATE, KEY_APPS_COLLAPSED_CATEGORIES, remove as removeLocalStorageItem,
 } from '../utils/LocalStorageManager';
-
 const SettingsPage = () => {
   useSeo({
     title: 'Settings | Fezcodex',
@@ -27,13 +24,10 @@ const SettingsPage = () => {
     twitterDescription: 'Manage your application preferences for Fezcodex.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
-
-  const { unlockAchievement } = useAchievements(); // Destructure unlockAchievement
-
+  const {unlockAchievement, showAchievementToast, toggleAchievementToast} = useAchievements(); // Destructure unlockAchievement
   useEffect(() => {
     unlockAchievement('power_user');
   }, [unlockAchievement]);
-
   const {
     isAnimationEnabled,
     toggleAnimation,
@@ -42,7 +36,6 @@ const SettingsPage = () => {
     showAnimationsInnerPages,
     toggleShowAnimationsInnerPages,
   } = useAnimation();
-
   const {
     isInverted,
     toggleInvert,
@@ -75,48 +68,35 @@ const SettingsPage = () => {
     isGlitch,
     toggleGlitch,
   } = useVisualSettings();
-
-  const { addToast } = useToast();
+  const {addToast} = useToast();
   const handleResetSidebarState = () => {
     removeLocalStorageItem(KEY_SIDEBAR_STATE);
     addToast({
-      title: 'Success',
-      message: 'Sidebar state has been reset. The page will now reload.',
-      duration: 3000,
+      title: 'Success', message: 'Sidebar state has been reset. The page will now reload.', duration: 3000,
     });
     setTimeout(() => {
       window.location.reload();
     }, 3000);
   };
-
   const handleResetAppsState = () => {
     removeLocalStorageItem(KEY_APPS_COLLAPSED_CATEGORIES);
     addToast({
-      title: 'Success',
-      message: 'App categories state has been reset. The page will now reload.',
-      duration: 3000,
+      title: 'Success', message: 'App categories state has been reset. The page will now reload.', duration: 3000,
     });
-
     setTimeout(() => {
       window.location.reload();
     }, 3000);
   };
-
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],
     borderColor: colors['app-alpha-50'],
     color: colors.app,
   };
-
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link
-          to="/"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Home
+        <Link to="/" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/> Back to Home
         </Link>
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
@@ -134,8 +114,7 @@ const SettingsPage = () => {
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
               style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
+                backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
                 backgroundSize: '10px 10px',
               }}
             ></div>
@@ -143,7 +122,7 @@ const SettingsPage = () => {
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 Application Settings
               </h1>
-              <hr className="border-gray-700 mb-4" />
+              <hr className="border-gray-700 mb-4"/>
               {/* Client-Side Notification */}
               <div
                 className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
@@ -151,14 +130,14 @@ const SettingsPage = () => {
               >
                 <strong className="font-bold">Client-Side Only:</strong>
                 <span className="block sm:inline ml-2">
-                  Your preferences are stored locally in your browser. No data
-                  is sent to any server.
-                </span>
+                    Your preferences are stored locally in your browser. No data
+                    is sent to any server.
+                  </span>
               </div>
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 Animation Settings
               </h1>
-              <hr className="border-gray-700 mb-4" />
+              <hr className="border-gray-700 mb-4"/>
               <div className="mb-6 ml-4 mr-4">
                 <CustomToggle
                   id="enable-animations"
@@ -193,12 +172,26 @@ const SettingsPage = () => {
                   >
                     <strong className="font-bold">Animations Disabled:</strong>
                     <span className="block sm:inline ml-2">
-                      Animation options are disabled because "Enable Animations"
-                      is off.
-                    </span>
+                        Animation options are disabled because "Enable Animations"
+                        is off.
+                      </span>
                   </div>
                 )}
               </div>
+              {/* Achievement Settings */}
+              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
+                Achievement Settings
+              </h1>
+              <hr className="border-gray-700 mb-4" />
+              <div className="mb-6 ml-4 mr-4">
+                <CustomToggle
+                  id="enable-achievement-toasts"
+                  label="> Show Achievement Toasts"
+                  checked={showAchievementToast}
+                  onChange={toggleAchievementToast}
+                />
+              </div>
+
               {/* Visual Effects Settings */}
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 Visual Effects
@@ -314,7 +307,7 @@ const SettingsPage = () => {
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 Sidebar Settings
               </h1>
-              <hr className="border-gray-700 mb-4" />
+              <hr className="border-gray-700 mb-4"/>
               <div className="mb-6 ml-4 mr-4">
                 <p className="text-gray-300 mb-4">
                   Reset the open/closed state of all sidebar sections to their
@@ -327,11 +320,10 @@ const SettingsPage = () => {
                   Reset Sidebar State
                 </button>
               </div>
-
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 App Page Settings
               </h1>
-              <hr className="border-gray-700 mb-4" />
+              <hr className="border-gray-700 mb-4"/>
               <div className="mb-6 ml-4 mr-4">
                 <p className="text-gray-300 mb-4">
                   Reset the open/closed state of all app categories to their
@@ -344,11 +336,10 @@ const SettingsPage = () => {
                   Reset App Categories State
                 </button>
               </div>
-
               <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
                 Local Storage Management
               </h1>
-              <hr className="border-gray-700 mb-4" />
+              <hr className="border-gray-700 mb-4"/>
               <div className="mb-6 ml-4 mr-4">
                 <p className="text-gray-300 mb-4">
                   Clear all local storage data for this site. This will reset
@@ -359,8 +350,7 @@ const SettingsPage = () => {
                     localStorage.clear();
                     addToast({
                       title: 'Success',
-                      message:
-                        'All local storage data has been cleared. The page will now reload.',
+                      message: 'All local storage data has been cleared. The page will now reload.',
                       duration: 3000,
                     });
                     setTimeout(() => {
@@ -376,8 +366,6 @@ const SettingsPage = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
 };
-
 export default SettingsPage;

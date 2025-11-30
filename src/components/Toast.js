@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
+import { Link } from 'react-router-dom';
 
 const Toast = ({
   id,
@@ -10,6 +11,7 @@ const Toast = ({
   type,
   removeToast,
   icon,
+  links,
 }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -54,6 +56,56 @@ const Toast = ({
           className="mt-1 mb-1 min-w-max mr-5 border-red-200"
         />
         <span className="text-sm text-stone-200">{message}</span>
+        {links && links.length > 0 && (
+          <div className="flex flex-wrap gap-2 mt-3 mr-5">
+            {links.map((link, index) => {
+              const buttonClass =
+                'text-xs font-medium bg-white/20 hover:bg-white/30 text-white py-1.5 px-3 rounded transition-colors border border-white/10 shadow-sm';
+
+              if (link.to) {
+                return (
+                  <Link
+                    key={index}
+                    to={link.to}
+                    className={buttonClass}
+                    onClick={() => removeToast(id)}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              }
+              if (link.href) {
+                return (
+                  <a
+                    key={index}
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonClass}
+                    onClick={() => removeToast(id)}
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+              if (link.onClick) {
+                 return (
+                  <button
+                    key={index}
+                    onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                    }}
+                    className={buttonClass}
+                  >
+                    {link.label}
+                  </button>
+                 )
+              }
+              return null;
+            })}
+          </div>
+        )}
       </div>
       <button
         onClick={() => removeToast(id)}

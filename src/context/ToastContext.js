@@ -36,6 +36,7 @@ export const ToastProvider = ({ children }) => {
             duration={toast.duration}
             type={toast.type}
             icon={toast.icon}
+            links={toast.links}
             removeToast={removeToast}
           />
         ))}

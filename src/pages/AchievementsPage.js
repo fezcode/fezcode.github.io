@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, Trophy, Lock } from '@phosphor-icons/react';
+import { ArrowLeftIcon, Trophy, Lock, Info, BellSlash } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
 import { useAchievements } from '../context/AchievementContext';
 import { ACHIEVEMENTS } from '../config/achievements';
@@ -20,7 +20,7 @@ const AchievementsPage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
-  const { unlockedAchievements } = useAchievements();
+  const { unlockedAchievements, showAchievementToast } = useAchievements();
 
   // Calculate progress
   const unlockedCount = Object.keys(unlockedAchievements).filter(
@@ -61,6 +61,52 @@ const AchievementsPage = () => {
                 className="bg-gradient-to-r from-yellow-600 to-yellow-400 h-4 rounded-full transition-all duration-1000 ease-out"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
+            </div>
+            {/* Achievement Toast Status */}
+            <div
+              className={`mt-8 flex items-center gap-4 p-4 rounded-xl border backdrop-blur-sm transition-all duration-300 shadow-lg ${
+                showAchievementToast
+                  ? 'bg-emerald-900/20 border-emerald-500/30 text-emerald-100 shadow-emerald-900/10'
+                  : 'bg-rose-900/20 border-rose-500/30 text-rose-100 shadow-rose-900/10'
+              }`}
+            >
+              <div
+                className={`p-2.5 rounded-full shrink-0 ${
+                  showAchievementToast
+                    ? 'bg-emerald-500/20 text-emerald-400'
+                    : 'bg-rose-500/20 text-rose-400'
+                }`}
+              >
+                {showAchievementToast ? (
+                  <Info size={24} weight="duotone" />
+                ) : (
+                  <BellSlash size={24} weight="duotone" />
+                )}
+              </div>
+              <div className="flex-1 text-left">
+                <p className="font-medium text-sm tracking-wide">
+                  ACHIEVEMENT NOTIFICATIONS ARE{' '}
+                  <span className="font-bold">
+                    {showAchievementToast ? 'ACTIVE' : 'MUTED'}
+                  </span>
+                </p>
+                <p
+                  className={`text-xs mt-1 ${
+                    showAchievementToast
+                      ? 'text-emerald-400/80'
+                      : 'text-rose-400/80'
+                  }`}
+                >
+                  You can toggle these popups in the{' '}
+                  <Link
+                    to="/settings"
+                    className="underline underline-offset-2 hover:text-white transition-colors"
+                  >
+                    Settings
+                  </Link>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </div>
