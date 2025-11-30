@@ -27,13 +27,20 @@ const Toast = ({
     ' bg-toast-background border-toast-border hover:bg-toast-background/90';
   const errorStyle =
     ' bg-toast-error-background border-toast-error-border hover:bg-toast-error-background/90';
+  const goldStyle =
+    ' bg-toast-gold-background border-toast-gold-border hover:bg-toast-gold-background/90';
+
+  let toastStyle = successStyle;
+  if (type === 'error') toastStyle = errorStyle;
+  if (type === 'gold') toastStyle = goldStyle;
+
   return (
     <motion.div
       initial={{ x: '100%', opacity: 0 }}
       animate={{ x: 0, opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-      className={`${defaultStyle} ${type === 'error' ? `${errorStyle}` : `${successStyle}`}`}
+      className={`${defaultStyle} ${toastStyle}`}
     >
       <div className="flex flex-col text-sm group w-max flex-grow">
         <div className="flex items-center gap-2">

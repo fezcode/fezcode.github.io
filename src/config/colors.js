@@ -83,6 +83,11 @@ module.exports = {
   'toast-error-hover-background': 'rgba(122,84,84,0.8)',
   'toast-error-border': '#684b4b',
 
+  // Toast gold colors
+  'toast-gold-background': 'rgba(87, 72, 35, 0.8)',
+  'toast-gold-hover-background': 'rgba(122, 100, 49, 0.8)',
+  'toast-gold-border': '#68562b',
+
   // Code Theme Colors (from src/utils/customTheme.js)
   codeTheme: {
     'text-default': '#d1d5db',
