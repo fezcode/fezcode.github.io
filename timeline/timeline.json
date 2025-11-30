@@ -1,5 +1,28 @@
 [
   {
+    "date": "2025-11-30",
+    "title": "Settings Page UI/UX Redesign",
+    "description": "Overhauled the Settings page with a modern glassmorphism design, animated sections, custom icons, and improved layout for better user experience.",
+    "type": "refactor",
+    "icon": "SparkleIcon",
+    "link": "/#/settings"
+  },
+  {
+    "date": "2025-11-30",
+    "title": "Enhanced CustomToggle Component",
+    "description": "Reworked the CustomToggle component with a modern, animated switch design supporting multiple color themes.",
+    "type": "refactor",
+    "icon": "SparkleIcon"
+  },
+  {
+    "date": "2025-11-30",
+    "title": "Achievement Notification Improvements",
+    "description": "Added configurable achievement toast notifications with direct links to relevant pages (Settings, Trophy Room).",
+    "type": "feature",
+    "icon": "BellIcon",
+    "link": "/#/achievements"
+  },
+  {
     "date": "2025-11-29",
     "title": "Blog & Series Styling Overhaul",
     "description": "Applied the new futuristic design language to Blog Post and Series pages, including enhanced typography, sticky metadata, and improved code block styling.",
