@@ -1,33 +1,67 @@
-import React, {useEffect} from 'react'; // Import useEffect
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon} from '@phosphor-icons/react';
-import {useAnimation} from '../context/AnimationContext';
-import {useVisualSettings} from '../context/VisualSettingsContext';
-import {useAchievements} from '../context/AchievementContext'; // Import useAchievements
-import colors from '../config/colors';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import {
+  ArrowLeftIcon,
+  Trophy,
+  Layout,
+  Database,
+  FilmStrip,
+  Warning,
+  Trash,
+  ArrowCounterClockwise,
+  MagicWand,
+  Sidebar,
+  AppWindow
+} from '@phosphor-icons/react';
+import { useAnimation } from '../context/AnimationContext';
+import { useVisualSettings } from '../context/VisualSettingsContext';
+import { useAchievements } from '../context/AchievementContext';
 import CustomToggle from '../components/CustomToggle';
 import useSeo from '../hooks/useSeo';
-import {useToast} from '../hooks/useToast';
+import { useToast } from '../hooks/useToast';
 import {
-  KEY_SIDEBAR_STATE, KEY_APPS_COLLAPSED_CATEGORIES, remove as removeLocalStorageItem,
+  KEY_SIDEBAR_STATE,
+  KEY_APPS_COLLAPSED_CATEGORIES,
+  remove as removeLocalStorageItem,
 } from '../utils/LocalStorageManager';
+
+const Section = ({ title, icon, children, delay = 0 }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay }}
+    className="bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden relative group"
+  >
+    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
+      {React.cloneElement(icon, { size: 120, weight: "duotone" })}
+    </div>
+
+    <div className="flex items-center gap-3 mb-6 relative z-10">
+      <div className="p-2 bg-primary-500/20 rounded-lg text-rose-500">
+        {React.cloneElement(icon, { size: 24, weight: "duotone" })}
+      </div>
+      <h2 className="text-2xl font-arvo text-white tracking-wide">{title}</h2>
+    </div>
+    <div className="relative z-10">
+      {children}
+    </div>
+  </motion.div>
+);
+
 const SettingsPage = () => {
   useSeo({
     title: 'Settings | Fezcodex',
     description: 'Manage your application preferences for Fezcodex.',
     keywords: ['Fezcodex', 'settings', 'preferences', 'animation'],
-    ogTitle: 'Settings | Fezcodex',
-    ogDescription: 'Manage your application preferences for Fezcodex.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Settings | Fezcodex',
-    twitterDescription: 'Manage your application preferences for Fezcodex.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
   });
-  const {unlockAchievement, showAchievementToast, toggleAchievementToast} = useAchievements(); // Destructure unlockAchievement
+
+  const { unlockAchievement, showAchievementToast, toggleAchievementToast } = useAchievements();
+
   useEffect(() => {
     unlockAchievement('power_user');
   }, [unlockAchievement]);
+
   const {
     isAnimationEnabled,
     toggleAnimation,
@@ -36,336 +70,255 @@ const SettingsPage = () => {
     showAnimationsInnerPages,
     toggleShowAnimationsInnerPages,
   } = useAnimation();
+
   const {
-    isInverted,
-    toggleInvert,
-    isRetro,
-    toggleRetro,
-    isParty,
-    toggleParty,
-    isMirror,
-    toggleMirror,
-    isNoir,
-    toggleNoir,
-    isTerminal,
-    toggleTerminal,
-    isBlueprint,
-    toggleBlueprint,
-    isSepia,
-    toggleSepia,
-    isVaporwave,
-    toggleVaporwave,
-    isCyberpunk,
-    toggleCyberpunk,
-    isGameboy,
-    toggleGameboy,
-    isComic,
-    toggleComic,
-    isSketchbook,
-    toggleSketchbook,
-    isHellenic,
-    toggleHellenic,
-    isGlitch,
-    toggleGlitch,
+    isInverted, toggleInvert,
+    isRetro, toggleRetro,
+    isParty, toggleParty,
+    isMirror, toggleMirror,
+    isNoir, toggleNoir,
+    isTerminal, toggleTerminal,
+    isBlueprint, toggleBlueprint,
+    isSepia, toggleSepia,
+    isVaporwave, toggleVaporwave,
+    isCyberpunk, toggleCyberpunk,
+    isGameboy, toggleGameboy,
+    isComic, toggleComic,
+    isSketchbook, toggleSketchbook,
+    isHellenic, toggleHellenic,
+    isGlitch, toggleGlitch,
   } = useVisualSettings();
-  const {addToast} = useToast();
+
+  const { addToast } = useToast();
+
   const handleResetSidebarState = () => {
     removeLocalStorageItem(KEY_SIDEBAR_STATE);
     addToast({
-      title: 'Success', message: 'Sidebar state has been reset. The page will now reload.', duration: 3000,
+      title: 'Success',
+      message: 'Sidebar state has been reset. The page will now reload.',
+      duration: 3000,
     });
     setTimeout(() => {
       window.location.reload();
     }, 3000);
   };
+
   const handleResetAppsState = () => {
     removeLocalStorageItem(KEY_APPS_COLLAPSED_CATEGORIES);
     addToast({
-      title: 'Success', message: 'App categories state has been reset. The page will now reload.', duration: 3000,
+      title: 'Success',
+      message: 'App categories state has been reset. The page will now reload.',
+      duration: 3000,
     });
     setTimeout(() => {
       window.location.reload();
     }, 3000);
   };
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-  return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link to="/" className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4" >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/> Back to Home
-        </Link>
-        <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            Settings
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Manage your application preferences.
-          </p>
-        </div>
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Application Settings
-              </h1>
-              <hr className="border-gray-700 mb-4"/>
-              {/* Client-Side Notification */}
-              <div
-                className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
-                role="alert"
-              >
-                <strong className="font-bold">Client-Side Only:</strong>
-                <span className="block sm:inline ml-2">
-                    Your preferences are stored locally in your browser. No data
-                    is sent to any server.
-                  </span>
-              </div>
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Animation Settings
-              </h1>
-              <hr className="border-gray-700 mb-4"/>
-              <div className="mb-6 ml-4 mr-4">
-                <CustomToggle
-                  id="enable-animations"
-                  label="> Enable Animations"
-                  checked={isAnimationEnabled}
-                  onChange={toggleAnimation}
-                />
-                <div className="ml-8 mt-4">
-                  {' '}
-                  {/* Indent dependent options */}
-                  <CustomToggle
-                    id="show-animations-homepage"
-                    label=">> Show animations in homepage"
-                    checked={showAnimationsHomepage}
-                    onChange={toggleShowAnimationsHomepage}
-                    disabled={!isAnimationEnabled}
-                  />
-                  <div className="mb-4"></div>
-                  {/* Add vertical space */}
-                  <CustomToggle
-                    id="show-animations-inner-pages"
-                    label=">> Show animations in inner pages"
-                    checked={showAnimationsInnerPages}
-                    onChange={toggleShowAnimationsInnerPages}
-                    disabled={!isAnimationEnabled}
-                  />
-                </div>
-                {!isAnimationEnabled && (
-                  <div
-                    className="bg-red-900 bg-opacity-30 border border-red-700 text-red-300 px-4 py-3 rounded relative mt-6"
-                    role="alert"
-                  >
-                    <strong className="font-bold">Animations Disabled:</strong>
-                    <span className="block sm:inline ml-2">
-                        Animation options are disabled because "Enable Animations"
-                        is off.
-                      </span>
-                  </div>
-                )}
-              </div>
-              {/* Achievement Settings */}
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Achievement Settings
-              </h1>
-              <hr className="border-gray-700 mb-4" />
-              <div className="mb-6 ml-4 mr-4">
-                <CustomToggle
-                  id="enable-achievement-toasts"
-                  label="> Show Achievement Toasts"
-                  checked={showAchievementToast}
-                  onChange={toggleAchievementToast}
-                />
-              </div>
 
-              {/* Visual Effects Settings */}
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Visual Effects
+  const handleClearStorage = () => {
+    localStorage.clear();
+    addToast({
+      title: 'Success',
+      message: 'All local storage data has been cleared. The page will now reload.',
+      duration: 3000,
+    });
+    setTimeout(() => {
+      window.location.reload();
+    }, 3000);
+  };
+
+  return (
+    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 relative">
+      {/* Decorative Background Elements */}
+      <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-900/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-900/20 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="mx-auto max-w-5xl">
+        {/* Header */}
+        <div className="mb-12">
+          <Link
+            to="/"
+            className="group inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors mb-6 text-lg font-medium"
+          >
+            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />
+            Back to Home
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2">
+                Settings
               </h1>
-              <hr className="border-gray-700 mb-4" />
-              <div className="mb-6 ml-4 mr-4">
-                <CustomToggle
-                  id="enable-invert-colors"
-                  label="> Invert Colors"
-                  checked={isInverted}
-                  onChange={toggleInvert}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-retro-mode"
-                  label="> Retro Mode"
-                  checked={isRetro}
-                  onChange={toggleRetro}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-party-mode"
-                  label="> Party Mode"
-                  checked={isParty}
-                  onChange={toggleParty}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-mirror-mode"
-                  label="> Mirror Mode"
-                  checked={isMirror}
-                  onChange={toggleMirror}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-noir-mode"
-                  label="> Noir Mode"
-                  checked={isNoir}
-                  onChange={toggleNoir}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-terminal-mode"
-                  label="> Terminal Mode"
-                  checked={isTerminal}
-                  onChange={toggleTerminal}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-blueprint-mode"
-                  label="> Blueprint Mode"
-                  checked={isBlueprint}
-                  onChange={toggleBlueprint}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-sepia-mode"
-                  label="> Sepia Mode"
-                  checked={isSepia}
-                  onChange={toggleSepia}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-vaporwave-mode"
-                  label="> Vaporwave Mode"
-                  checked={isVaporwave}
-                  onChange={toggleVaporwave}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-cyberpunk-mode"
-                  label="> Cyberpunk Mode"
-                  checked={isCyberpunk}
-                  onChange={toggleCyberpunk}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-gameboy-mode"
-                  label="> Game Boy Mode"
-                  checked={isGameboy}
-                  onChange={toggleGameboy}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-comic-mode"
-                  label="> Comic Book Mode"
-                  checked={isComic}
-                  onChange={toggleComic}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-sketchbook-mode"
-                  label="> Sketchbook Mode"
-                  checked={isSketchbook}
-                  onChange={toggleSketchbook}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-hellenic-mode"
-                  label="> Hellenic Mode"
-                  checked={isHellenic}
-                  onChange={toggleHellenic}
-                />
-                <div className="mb-4"></div>
-                <CustomToggle
-                  id="enable-glitch-mode"
-                  label="> Dystopian Glitch Mode"
-                  checked={isGlitch}
-                  onChange={toggleGlitch}
-                />
-              </div>
-              {/* Sidebar Stuff */}
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Sidebar Settings
-              </h1>
-              <hr className="border-gray-700 mb-4"/>
-              <div className="mb-6 ml-4 mr-4">
-                <p className="text-gray-300 mb-4">
-                  Reset the open/closed state of all sidebar sections to their
-                  default.
-                </p>
-                <button
-                  onClick={handleResetSidebarState}
-                  className="px-6 py-2 rounded-md font-arvo font-normal transition-colors duration-300 ease-in-out border bg-red-800/50 text-white hover:bg-red-700/50 border-red-700"
-                >
-                  Reset Sidebar State
-                </button>
-              </div>
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                App Page Settings
-              </h1>
-              <hr className="border-gray-700 mb-4"/>
-              <div className="mb-6 ml-4 mr-4">
-                <p className="text-gray-300 mb-4">
-                  Reset the open/closed state of all app categories to their
-                  default.
-                </p>
-                <button
-                  onClick={handleResetAppsState}
-                  className="px-6 py-2 rounded-md font-arvo font-normal transition-colors duration-300 ease-in-out border bg-red-800/50 text-white hover:bg-red-700/50 border-red-700"
-                >
-                  Reset App Categories State
-                </button>
-              </div>
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Local Storage Management
-              </h1>
-              <hr className="border-gray-700 mb-4"/>
-              <div className="mb-6 ml-4 mr-4">
-                <p className="text-gray-300 mb-4">
-                  Clear all local storage data for this site. This will reset
-                  all your preferences and cached data.
-                </p>
-                <button
-                  onClick={() => {
-                    localStorage.clear();
-                    addToast({
-                      title: 'Success',
-                      message: 'All local storage data has been cleared. The page will now reload.',
-                      duration: 3000,
-                    });
-                    setTimeout(() => {
-                      window.location.reload();
-                    }, 3000);
-                  }}
-                  className="px-6 py-2 rounded-md font-arvo font-normal transition-colors duration-300 ease-in-out border bg-red-800/50 text-white hover:bg-red-700/50 border-red-700"
-                >
-                  Clear All Local Storage
-                </button>
-              </div>
+              <p className="text-lg text-gray-400 max-w-2xl">
+                Customize your experience, manage preferences, and tweak the visual engine.
+              </p>
+            </div>
+
+            {/* Client-Side Badge */}
+            <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700 text-xs font-mono text-gray-400">
+               <Database size={14} />
+               <span>CLIENT-SIDE STORAGE ONLY</span>
             </div>
           </div>
         </div>
+
+        <div className="grid grid-cols-1 gap-8">
+
+          {/* Animation & Performance */}
+          <Section title="Animation & Performance" icon={<FilmStrip />} delay={0.1}>
+            <div className="space-y-6">
+              <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
+                <CustomToggle
+                  id="enable-animations"
+                  label="Enable System Animations"
+                  checked={isAnimationEnabled}
+                  onChange={toggleAnimation}
+                />
+              </div>
+
+              <div className={`pl-4 border-l-2 border-gray-700 space-y-4 transition-all duration-300 ${!isAnimationEnabled ? 'opacity-50 grayscale' : ''}`}>
+                <CustomToggle
+                  id="show-animations-homepage"
+                  label="Show animations on Homepage"
+                  checked={showAnimationsHomepage}
+                  onChange={toggleShowAnimationsHomepage}
+                  disabled={!isAnimationEnabled}
+                />
+                <CustomToggle
+                  id="show-animations-inner-pages"
+                  label="Show animations on Inner Pages"
+                  checked={showAnimationsInnerPages}
+                  onChange={toggleShowAnimationsInnerPages}
+                  disabled={!isAnimationEnabled}
+                />
+              </div>
+
+              {!isAnimationEnabled && (
+                <div className="flex items-start gap-3 p-4 rounded-lg bg-red-900/20 border border-red-500/20 text-red-200 text-sm">
+                  <Warning size={20} className="shrink-0 mt-0.5" />
+                  <p>Detailed animation settings are disabled because the main switch is off.</p>
+                </div>
+              )}
+            </div>
+          </Section>
+
+          {/* Achievements */}
+          <Section title="Gamification" icon={<Trophy />} delay={0.2}>
+            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
+              <CustomToggle
+                id="enable-achievement-toasts"
+                label="Show Achievement Popups"
+                checked={showAchievementToast}
+                onChange={toggleAchievementToast}
+              />
+              <p className="mt-2 text-sm text-gray-400 ml-1">
+                When enabled, you'll receive a toast notification whenever you unlock a new achievement.
+              </p>
+            </div>
+          </Section>
+
+          {/* Visual Effects Grid */}
+          <Section title="Visual Effects Engine" icon={<MagicWand />} delay={0.3}>
+            <p className="mb-6 text-gray-400 text-sm">
+              Apply experimental visual filters to the entire application. Combine them at your own risk!
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+              <CustomToggle id="fx-invert" label="Invert Colors" checked={isInverted} onChange={toggleInvert} />
+              <CustomToggle id="fx-retro" label="Retro CRT" checked={isRetro} onChange={toggleRetro} />
+              <CustomToggle id="fx-party" label="Party Mode" checked={isParty} onChange={toggleParty} />
+              <CustomToggle id="fx-mirror" label="Mirror World" checked={isMirror} onChange={toggleMirror} />
+              <CustomToggle id="fx-noir" label="Film Noir" checked={isNoir} onChange={toggleNoir} />
+              <CustomToggle id="fx-terminal" label="Terminal Green" checked={isTerminal} onChange={toggleTerminal} />
+              <CustomToggle id="fx-blueprint" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint} />
+              <CustomToggle id="fx-sepia" label="Sepia Tone" checked={isSepia} onChange={toggleSepia} />
+              <CustomToggle id="fx-vaporwave" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave} />
+              <CustomToggle id="fx-cyberpunk" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk} />
+              <CustomToggle id="fx-gameboy" label="Game Boy" checked={isGameboy} onChange={toggleGameboy} />
+              <CustomToggle id="fx-comic" label="Comic Book" checked={isComic} onChange={toggleComic} />
+              <CustomToggle id="fx-sketchbook" label="Sketchbook" checked={isSketchbook} onChange={toggleSketchbook} />
+              <CustomToggle id="fx-hellenic" label="Hellenic Statue" checked={isHellenic} onChange={toggleHellenic} />
+              <CustomToggle id="fx-glitch" label="System Glitch" checked={isGlitch} onChange={toggleGlitch} />
+            </div>
+          </Section>
+
+          {/* Interface & Layout */}
+          <Section title="Interface & Layout" icon={<Layout />} delay={0.4}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-3 text-rose-500">
+                    <Sidebar size={20} weight="duotone" />
+                    <h3 className="font-medium text-white">Sidebar State</h3>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-6">
+                    Reset the expansion state of all sidebar sections to their defaults.
+                  </p>
+                </div>
+                <button
+                  onClick={handleResetSidebarState}
+                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors text-sm font-medium"
+                >
+                  <ArrowCounterClockwise size={18} />
+                  Reset Sidebar
+                </button>
+              </div>
+
+              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-3 text-rose-500">
+                    <AppWindow size={20} weight="duotone" />
+                    <h3 className="font-medium text-white">App Categories</h3>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-6">
+                    Reset the collapsed/expanded state of application categories.
+                  </p>
+                </div>
+                <button
+                  onClick={handleResetAppsState}
+                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors text-sm font-medium"
+                >
+                   <ArrowCounterClockwise size={18} />
+                  Reset App States
+                </button>
+              </div>
+            </div>
+          </Section>
+
+          {/* Data Zone */}
+          <Section title="Data Management" icon={<Database />} delay={0.5}>
+            <div className="bg-red-900/10 border border-red-500/20 rounded-xl p-6">
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-red-500/10 rounded-full text-red-400 shrink-0">
+                  <Trash size={24} />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-lg font-medium text-white mb-2">Clear Local Data</h3>
+                  <p className="text-gray-400 text-sm mb-6">
+                    This will wipe all locally stored preferences, achievements, and cached states for this site.
+                    This action cannot be undone.
+                  </p>
+                  <button
+                    onClick={handleClearStorage}
+                    className="inline-flex items-center gap-2 py-2.5 px-5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-200 border border-red-500/30 transition-colors text-sm font-medium"
+                  >
+                    <Trash size={18} />
+                    Clear All Local Storage
+                  </button>
+                </div>
+              </div>
+            </div>
+          </Section>
+
+        </div>
+
+        <div className="mt-12 text-center text-gray-600 text-sm font-mono">
+          Fezcodex Preferences Engine v2.0
+        </div>
       </div>
-    </div>);
+    </div>
+  );
 };
+
 export default SettingsPage;
