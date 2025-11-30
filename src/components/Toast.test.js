@@ -45,11 +45,10 @@ describe('Toast Component', () => {
       removeToast: mockRemoveToast,
     });
 
-    expect(screen.getByText('Internal Link')).toBeInTheDocument();
-    expect(screen.getByText('Internal Link').closest('a')).toHaveAttribute('href', '/internal');
+    expect(screen.getByRole('link', { name: 'Internal Link' })).toHaveAttribute('href', '/internal');
 
     expect(screen.getByText('External Link')).toBeInTheDocument();
-    expect(screen.getByText('External Link').closest('a')).toHaveAttribute('href', 'https://example.com');
+    expect(screen.getByRole('link', { name: 'External Link' })).toHaveAttribute('href', 'https://example.com');
 
     expect(screen.getByText('Action Button')).toBeInTheDocument();
     const actionButton = screen.getByText('Action Button');

@@ -5,7 +5,7 @@ import {
   ArrowLeftIcon,
   Trophy,
   Layout,
-  Database,
+  DatabaseIcon,
   FilmStrip,
   Warning,
   Trash,
@@ -158,7 +158,7 @@ const SettingsPage = () => {
 
             {/* Client-Side Badge */}
             <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700 text-xs font-mono text-gray-400">
-               <Database size={14} />
+               <DatabaseIcon size={14} />
                <span>CLIENT-SIDE STORAGE ONLY</span>
             </div>
           </div>
@@ -175,24 +175,36 @@ const SettingsPage = () => {
                   label="Enable System Animations"
                   checked={isAnimationEnabled}
                   onChange={toggleAnimation}
+                  colorTheme="blue"
                 />
-              </div>
 
-              <div className={`pl-4 border-l-2 border-gray-700 space-y-4 transition-all duration-300 ${!isAnimationEnabled ? 'opacity-50 grayscale' : ''}`}>
-                <CustomToggle
-                  id="show-animations-homepage"
-                  label="Show animations on Homepage"
-                  checked={showAnimationsHomepage}
-                  onChange={toggleShowAnimationsHomepage}
-                  disabled={!isAnimationEnabled}
-                />
-                <CustomToggle
-                  id="show-animations-inner-pages"
-                  label="Show animations on Inner Pages"
-                  checked={showAnimationsInnerPages}
-                  onChange={toggleShowAnimationsInnerPages}
-                  disabled={!isAnimationEnabled}
-                />
+                <motion.div
+                  animate={{
+                    height: isAnimationEnabled ? 'auto' : 0,
+                    opacity: isAnimationEnabled ? 1 : 0,
+                  }}
+                  className="overflow-hidden"
+                >
+                  <div className="my-4 border-t border-white/5"></div>
+                  <div className="space-y-4 pl-2">
+                    <CustomToggle
+                      id="show-animations-homepage"
+                      label="Show animations on Homepage"
+                      checked={showAnimationsHomepage}
+                      onChange={toggleShowAnimationsHomepage}
+                      disabled={!isAnimationEnabled}
+                      colorTheme="blue"
+                    />
+                    <CustomToggle
+                      id="show-animations-inner-pages"
+                      label="Show animations on Inner Pages"
+                      checked={showAnimationsInnerPages}
+                      onChange={toggleShowAnimationsInnerPages}
+                      disabled={!isAnimationEnabled}
+                      colorTheme="blue"
+                    />
+                  </div>
+                </motion.div>
               </div>
 
               {!isAnimationEnabled && (
@@ -212,6 +224,7 @@ const SettingsPage = () => {
                 label="Show Achievement Popups"
                 checked={showAchievementToast}
                 onChange={toggleAchievementToast}
+                colorTheme="rose"
               />
               <p className="mt-2 text-sm text-gray-400 ml-1">
                 When enabled, you'll receive a toast notification whenever you unlock a new achievement.
@@ -225,21 +238,21 @@ const SettingsPage = () => {
               Apply experimental visual filters to the entire application. Combine them at your own risk!
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-              <CustomToggle id="fx-invert" label="Invert Colors" checked={isInverted} onChange={toggleInvert} />
-              <CustomToggle id="fx-retro" label="Retro CRT" checked={isRetro} onChange={toggleRetro} />
-              <CustomToggle id="fx-party" label="Party Mode" checked={isParty} onChange={toggleParty} />
-              <CustomToggle id="fx-mirror" label="Mirror World" checked={isMirror} onChange={toggleMirror} />
-              <CustomToggle id="fx-noir" label="Film Noir" checked={isNoir} onChange={toggleNoir} />
-              <CustomToggle id="fx-terminal" label="Terminal Green" checked={isTerminal} onChange={toggleTerminal} />
-              <CustomToggle id="fx-blueprint" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint} />
-              <CustomToggle id="fx-sepia" label="Sepia Tone" checked={isSepia} onChange={toggleSepia} />
-              <CustomToggle id="fx-vaporwave" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave} />
-              <CustomToggle id="fx-cyberpunk" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk} />
-              <CustomToggle id="fx-gameboy" label="Game Boy" checked={isGameboy} onChange={toggleGameboy} />
-              <CustomToggle id="fx-comic" label="Comic Book" checked={isComic} onChange={toggleComic} />
-              <CustomToggle id="fx-sketchbook" label="Sketchbook" checked={isSketchbook} onChange={toggleSketchbook} />
-              <CustomToggle id="fx-hellenic" label="Hellenic Statue" checked={isHellenic} onChange={toggleHellenic} />
-              <CustomToggle id="fx-glitch" label="System Glitch" checked={isGlitch} onChange={toggleGlitch} />
+              <CustomToggle id="fx-invert" label="Invert Colors" checked={isInverted} onChange={toggleInvert} colorTheme="purple" />
+              <CustomToggle id="fx-retro" label="Retro CRT" checked={isRetro} onChange={toggleRetro} colorTheme="amber" />
+              <CustomToggle id="fx-party" label="Party Mode" checked={isParty} onChange={toggleParty} colorTheme="rose" />
+              <CustomToggle id="fx-mirror" label="Mirror World" checked={isMirror} onChange={toggleMirror} colorTheme="cyan" />
+              <CustomToggle id="fx-noir" label="Film Noir" checked={isNoir} onChange={toggleNoir} colorTheme="indigo" />
+              <CustomToggle id="fx-terminal" label="Terminal Green" checked={isTerminal} onChange={toggleTerminal} colorTheme="green" />
+              <CustomToggle id="fx-blueprint" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint} colorTheme="blue" />
+              <CustomToggle id="fx-sepia" label="Sepia Tone" checked={isSepia} onChange={toggleSepia} colorTheme="amber" />
+              <CustomToggle id="fx-vaporwave" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave} colorTheme="cyan" />
+              <CustomToggle id="fx-cyberpunk" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk} colorTheme="purple" />
+              <CustomToggle id="fx-gameboy" label="Game Boy" checked={isGameboy} onChange={toggleGameboy} colorTheme="green" />
+              <CustomToggle id="fx-comic" label="Comic Book" checked={isComic} onChange={toggleComic} colorTheme="amber" />
+              <CustomToggle id="fx-sketchbook" label="Sketchbook" checked={isSketchbook} onChange={toggleSketchbook} colorTheme="indigo" />
+              <CustomToggle id="fx-hellenic" label="Hellenic Statue" checked={isHellenic} onChange={toggleHellenic} colorTheme="blue" />
+              <CustomToggle id="fx-glitch" label="System Glitch" checked={isGlitch} onChange={toggleGlitch} colorTheme="rose" />
             </div>
           </Section>
 
@@ -287,7 +300,7 @@ const SettingsPage = () => {
           </Section>
 
           {/* Data Zone */}
-          <Section title="Data Management" icon={<Database />} delay={0.5}>
+          <Section title="Data Management" icon={<DatabaseIcon />} delay={0.5}>
             <div className="bg-red-900/10 border border-red-500/20 rounded-xl p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 bg-red-500/10 rounded-full text-red-400 shrink-0">
