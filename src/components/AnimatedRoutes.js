@@ -819,6 +819,10 @@ function AnimatedRoutes() {
           path="/apps::topo"
           element={<Navigate to="/apps/topographic-maps" replace />}
         />
+        <Route
+          path="/apps::phone"
+          element={<Navigate to="/apps/rotary-phone" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
