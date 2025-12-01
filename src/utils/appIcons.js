@@ -67,6 +67,7 @@ import {
   KanbanIcon,
   WaveSine,
   MapTrifold,
+  PhoneIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -138,4 +139,5 @@ export const appIcons = {
   KanbanIcon,
   WaveSine,
   MapTrifold,
+  PhoneIcon,
 };

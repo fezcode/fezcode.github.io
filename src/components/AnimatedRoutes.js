@@ -128,6 +128,7 @@ const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
 const AbstractWavesPage = lazy(() => import('../pages/apps/AbstractWavesPage'));
 const TopographicMapPage = lazy(() => import('../pages/apps/TopographicMapPage'));
+const RotaryPhonePage = lazy(() => import('../pages/apps/RotaryPhonePage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
@@ -1783,17 +1784,17 @@ function AnimatedRoutes() {
         <Route
           path="/apps/topographic-maps"
           element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <TopographicMapPage />
-              </Suspense>
-            </motion.div>
+            <Suspense fallback={<Loading />}>
+              <TopographicMapPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/apps/rotary-phone"
+          element={
+            <Suspense fallback={<Loading />}>
+              <RotaryPhonePage />
+            </Suspense>
           }
         />
         <Route
