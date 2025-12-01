@@ -17,7 +17,7 @@ export const AchievementProvider = ({ children }) => {
     {},
   );
   const [readPosts, setReadPosts] = usePersistentState('read-posts', []);
-  const [showAchievementToast, setShowAchievementToast] = usePersistentState('show-achievement-toasts', true);
+  const [showAchievementToast, setShowAchievementToast] = usePersistentState('show-achievement-toasts', false);
   const { addToast } = useToast();
 
   const toggleAchievementToast = () => {
