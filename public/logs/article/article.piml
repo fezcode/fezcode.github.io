@@ -1,0 +1,41 @@
+(logs)
+  > (item)
+    (author) needleful
+    (category) Article
+    (date) 2025-11-03
+    (link) https://needleful.net/blog/2024/01/arthur_whitney.html
+    (rating) 5
+    (slug) needleful-arthur-whitney-c-smart
+    (title) Learning to read Arthur Whitney's C to become Smart
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) "Learning to read Arthur Whitney's C to become Smart" is an in-depth article analyzing Arthur Whitney's highly compact and unconventional C coding style, particularly his 50-line K interpreter. It demystifies Whitney's use of macros, non-semantic types, and dense constructs, evaluating the strengths (composability, compactness) and weaknesses (readability, portability, code-golfing) of this approach. The article offers insights into high-performance programming and emphasizes the importance of deep problem understanding before coding.
+  > (item)
+    (category) Article
+    (date) 2025-11-03
+    (link) https://blog.hyperknot.com/p/openfreemap-survived-100000-requests
+    (rating) 3
+    (slug) openfreemap-survived-100000-requests
+    (author) Zsolt Ero
+    (title) OpenFreeMap survived 100,000 requests per second
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) This article by Zsolt Ero details how OpenFreeMap, a free and open-source map service, unexpectedly handled a massive traffic spike of 100,000 requests per second, largely due to a collaborative drawing website. The narrative highlights OpenFreemap's resilient architecture, Cloudflare's role, and offers insights into monitoring, rate limiting, and CDN benefits for developers and system administrators.
+  > (item)
+    (category) Article
+    (date) 2025-11-03
+    (link) https://endtimes.dev/why-your-website-should-be-under-14kb-in-size/
+    (rating) 4
+    (slug) why-your-website-should-be-under-14kb-in-size
+    (author) Nathaniel
+    (title) Why your website should be under 14kB in size
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) This article advocates for keeping a website's initial load under 14kB to optimize performance, especially on slower networks. It explains that this size aligns with the TCP slow start algorithm's initial burst of data (14.6kB), thereby avoiding additional round trips and reducing latency for improved user experience.
+  > (item)
+    (category) Article
+    (date) 2025-10-18
+    (link) https://datagubbe.se/crt2
+    (rating) 4
+    (slug) the-peach-meme-on-crts-pixels-and-signal-quality-again
+    (source) datagubbe
+    (title) The Peach meme: On CRTs, pixels and signal quality (again)
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) Carl Svensson's article, "The Peach meme: On CRTs, pixels and signal quality (again)," debunks misconceptions about CRTs and pixel art. It argues that while CRTs smooth pixel art, signal quality (e.g., composite vs. RGB) is paramount, not the CRT itself. The article highlights that poor composite signals, not CRT magic, cause effects like "Sonic Waterfalls," and emphasizes that historical pixel art techniques were adapted to display limitations, remaining crucial for graphics quality across all screen types.

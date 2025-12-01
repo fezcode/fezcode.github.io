@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import piml from 'piml';
 
 const useSearchableData = () => {
   const [items, setItems] = useState([]);
@@ -22,15 +23,17 @@ const useSearchableData = () => {
       try {
         const fetchLogPromises = categories.map(async (category) => {
           const response = await fetch(
-            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.json`,
+            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.piml`,
           );
           if (!response.ok) {
             console.warn(
-              `Category JSON not found for ${category}: ${response.statusText}`,
+              `Category PIML not found for ${category}: ${response.statusText}`,
             );
             return [];
           }
-          return response.json();
+          const text = await response.text();
+          const data = piml.parse(text);
+          return data.logs || [];
         });
 
         const [postsRes, projectsRes, allLogsArrays, appsRes] =

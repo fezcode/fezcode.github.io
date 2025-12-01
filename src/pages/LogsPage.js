@@ -12,6 +12,7 @@ import LogCard from '../components/LogCard';
 import useSeo from '../hooks/useSeo';
 import colors from '../config/colors';
 import { useAchievements } from '../context/AchievementContext';
+import piml from 'piml';
 
 // Define categories for the filter pills
 const categories = [
@@ -82,16 +83,18 @@ const LogsPage = () => {
       try {
         const fetchPromises = categories.map(async (category) => {
           const response = await fetch(
-            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.json`,
+            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.piml`,
           );
           if (!response.ok) {
-            // If a category JSON file is not found, return an empty array for that category
+            // If a category PIML file is not found, return an empty array for that category
             console.warn(
-              `Category JSON not found for ${category}: ${response.statusText}`,
+              `Category PIML not found for ${category}: ${response.statusText}`,
             );
             return [];
           }
-          return response.json();
+          const text = await response.text();
+          const data = piml.parse(text);
+          return data.logs || [];
         });
 
         const allLogsArrays = await Promise.all(fetchPromises);

@@ -8,6 +8,7 @@ import ImageModal from '../components/ImageModal';
 import Seo from '../components/Seo';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import piml from 'piml';
 
 const LinkRenderer = ({ href, children }) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -48,17 +49,19 @@ const LogDetailPage = () => {
       try {
         let logMetadata = null;
         let logBody = '';
-        // Fetch the specific category JSON based on the URL parameter
-        const response = await fetch(`/logs/${category}/${category}.json`);
+        // Fetch the specific category PIML based on the URL parameter
+        const response = await fetch(`/logs/${category}/${category}.piml`);
         if (!response.ok) {
           console.error(
-            `Category JSON not found for ${category}: ${response.statusText}`,
+            `Category PIML not found for ${category}: ${response.statusText}`,
           );
           setLog({ attributes: { title: 'Category not found' }, body: '' });
           setLoading(false);
           return;
         }
-        const categoryLogs = await response.json();
+        const pimlText = await response.text();
+        const data = piml.parse(pimlText);
+        const categoryLogs = data.logs || [];
 
         // Find the specific log metadata using slugId
         logMetadata = categoryLogs.find((item) => item.slug === slugId);

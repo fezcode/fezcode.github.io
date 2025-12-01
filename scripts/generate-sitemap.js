@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const piml = require('piml');
 
 const publicDirectory = path.join(__dirname, '../public');
 const baseUrl = 'https://fezcode.com'; // Replace with your actual base URL
@@ -93,10 +94,11 @@ const generateSitemap = async () => {
       .map(dirent => dirent.name);
 
     for (const category of logCategories) {
-      const categoryJsonPath = path.join(logsDirectory, category, `${category}.json`);
-      if (fs.existsSync(categoryJsonPath)) {
-        const logsJson = fs.readFileSync(categoryJsonPath, 'utf-8');
-        const logsData = JSON.parse(logsJson);
+      const categoryPimlPath = path.join(logsDirectory, category, `${category}.piml`);
+      if (fs.existsSync(categoryPimlPath)) {
+        const pimlContent = fs.readFileSync(categoryPimlPath, 'utf-8');
+        const pimlData = piml.parse(pimlContent);
+        const logsData = pimlData.logs || [];
 
         logsData.forEach(log => {
           urls.push({
@@ -109,14 +111,13 @@ const generateSitemap = async () => {
       }
     }
   } catch (error) {
-    console.error('Error reading log categories or JSON files:', error);
+    console.error('Error reading log categories or PIML files:', error);
   }
 
   // Add dynamic routes from stories/books.piml
   try {
     const pimlPath = path.join(publicDirectory, 'stories', 'books.piml');
     const pimlContent = fs.readFileSync(pimlPath, 'utf-8');
-    const piml = require('piml'); // Import piml here
     const dndData = piml.parse(pimlContent);
 
     dndData.books.forEach(book => { // Access dndData.books
