@@ -1,0 +1,37 @@
+Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS.
+It offers a distraction-free writing environment with powerful features.
+
+![Nocturnote Notepad Mode](/images/projects/nocturnote.png)
+> Notepad Mode in Nocturnote
+
+**Key Features:**
+*   **Customizable Interface:** Adjust font family, size, weight, line height, word wrap, and line numbers.
+*   **File Management:** Create new notes, open existing `.txt` or `.md` files, and save work.
+*   **Search and Replace:** Quickly find and replace text.
+*   **Notepad Mode:** Classic notepad aesthetic.
+*   **Rain Mode:** A unique visual effect.
+*   **Status Bar:** Displays line/column, character count, and encoding.
+*   **Cross-Platform:** Runs seamlessly across different operating systems.
+
+**Technologies Used:**
+*   **Electron:** For cross-platform desktop applications.
+*   **Svelte:** Modern JavaScript framework for UIs.
+*   **TypeScript:** For type-safe JavaScript.
+*   **Tailwind CSS:** Utility-first CSS framework.
+*   **electron-vite:** Fast development setup for Electron apps.
+
+**Installation:**
+Requires Node.js and npm/yarn.
+1.  Clone the repository: `git clone https://github.com/fezcode/nocturnote.git`
+2.  Navigate to the directory: `cd nocturnote`
+3.  Install dependencies: `npm install`
+
+**Usage:**
+*   **Development:** `npm run dev`
+*   **Building:** `npm run build` (creates distributable packages in `out` directory)
+    *   Specific platforms: `npm run build:win`, `npm run build:mac`, `npm run build:linux`
+*   **Other Scripts:** `npm run format`, `npm run lint`, `npm run typecheck`
+
+**License:** Distributed under the MIT License.
+
+**Project Link:** [https://github.com/fezcode/nocturnote](https://github.com/fezcode/nocturnote)

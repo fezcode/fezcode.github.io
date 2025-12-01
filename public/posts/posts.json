@@ -1,5 +1,17 @@
 [
   {
+    "slug": "nocturnote",
+    "title": "Nocturnote: A Sleek and Modern Text Editor",
+    "date": "2025-12-01",
+    "updated": "2025-12-01",
+    "description": "Introducing Nocturnote, a cross-platform, customizable text editor built with Electron, Svelte, and Tailwind CSS.",
+    "tags": ["electron", "svelte", "typescript", "tailwind", "project", "editor"],
+    "category": "dev",
+    "filename": "nocturnote.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+  },
+  {
     "slug": "how-fractal-flora-works",
     "title": "The Art of Recursive Botany: How Fractal Flora Works",
     "date": "2025-11-28",
