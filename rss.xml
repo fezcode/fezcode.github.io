@@ -9,14 +9,25 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 30 Nov 2025 14:31:38 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 01 Dec 2025 00:20:25 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 30 Nov 2025 14:31:38 GMT</pubDate>
+        <pubDate>Mon, 01 Dec 2025 00:20:25 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Nocturnote: A Sleek and Modern Text Editor]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/nocturnote</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/nocturnote</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>Nocturnote: The Text Editor I Always Wanted</h2>
+<p>Have you ever felt like your text editor is either doing too much or too little? That&#39;s exactly how I felt before I started building <strong>Nocturnote</strong>.</p>
+<p><a href="https://fezcode.com/#/blog/nocturnote">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Art of Recursive Botany: How Fractal Flora Works]]></title>
             <description><![CDATA[[object Object]]]></description>

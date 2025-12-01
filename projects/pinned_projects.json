@@ -1,5 +1,11 @@
 [
   {
+    "slug": "nocturnote",
+    "title": "Nocturnote",
+    "link": "https://github.com/fezcode/nocturnote",
+    "shortDescription": "Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS."
+  },
+  {
     "slug": "fezcodex",
     "title": "fezcodex",
     "link": "https://github.com/fezcode/fezcode.github.io",
@@ -28,11 +34,5 @@
     "title": "doku.js",
     "link": "https://github.com/fezcode/doku.js",
     "shortDescription": "Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`."
-  },
-  {
-    "slug": "boxer",
-    "title": "Boxer",
-    "link": "https://github.com/fezcode/boxer",
-    "shortDescription": "Boxer is a tool that creates archive files based on instructions provided in a boxerfile. Uses CMake and Ninja for its build system."
   }
 ]
