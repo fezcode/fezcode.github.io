@@ -1,0 +1,198 @@
+(logs)
+  > (item)
+    (category) Game
+    (date) 2025-11-25
+    (link) https://store.steampowered.com/app/1669000/Age_of_Wonders_4/
+    (platform) Steam
+    (rating) 5
+    (slug) age-of-wonders-4
+    (title) Age of Wonders 4
+    (image) /images/defaults/age-of-wonders-4.webp
+    (description) Age of Wonders 4 is a captivating 4X turn-based strategy game that immerses players in a vibrant high fantasy universe. As a ruler of a customizable fantasy realm, you embark on an epic journey to explore new magical realms, expand your empire, and engage in thrilling turn-based tactical combat.
+  > (item)
+    (category) Game
+    (date) 2025-10-28
+    (link) https://store.steampowered.com/app/532790/Vampire_The_Masquerade__Bloodlines_2/
+    (platform) Steam
+    (rating) 4
+    (slug) bloodlines-2
+    (tags)
+      > story
+      > single-player
+      > fps
+    (title) Vampire: The Masquerade - Bloodlines 2
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) "Vampire: The Masquerade - Bloodlines 2" is an RPG praised for its good story, captivating environment, and well-developed characters, despite initial combat flaws and optimization issues. The reviewer highlights Ronan Summers' performance as Fabien and the intriguing plot twists, emphasizing the game's resilience in development and its overall engaging experience within the vampire lore.
+  > (item)
+    (category) Game
+    (date) 2025-10-12
+    (link) https://www.zelda.com/breath-of-the-wild/
+    (platform) Nintendo Switch
+    (rating) 5
+    (slug) the-legend-of-zelda-breath-of-the-wild
+    (title) The Legend of Zelda: Breath of the Wild
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) "The Legend of Zelda: Breath of the Wild" is a highly-rated Nintendo Switch game.
+  > (item)
+    (category) Game
+    (date) 2025-09-20
+    (link) https://openfront.io
+    (platform) Web
+    (rating) 5
+    (slug) openfront-io
+    (tags)
+      > rts
+      > multiplayer
+    (title) OpenFront.io
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) "OpenFront.io" is a web-based, open-source real-time strategy game where players expand influence by building structures, forming alliances, trading, and conquering opponents. Known for its engaging gameplay that often leads to late-game "armageddon" and expected betrayals, it's currently in alpha, inviting community contributions. It offers various customization options for private lobbies and is praised as a great strategy game comparable to AAA titles.
+  > (item)
+    (category) Game
+    (date) 2025-01-13
+    (link) https://store.steampowered.com/app/480490/Prey/
+    (platform) PC (Steam), PlayStation 4, Xbox One
+    (rating) 5
+    (slug) prey-2017
+    (title) Prey (2017)
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Prey (2017) is a first-person shooter action RPG by Arkane Studios, a spiritual successor to immersive sims. Set aboard the Talos I space station overrun by aliens (Typhon), players embody Morgan Yu, navigating a psychological sci-fi thriller with emphasis on player choice, emergent gameplay, and multiple endings.
+  > (item)
+    (category) Game
+    (date) 2024-08-29
+    (link) https://www.rockstargames.com/maxpayne/
+    (platform) PC
+    (rating) 5
+    (slug) max-payne-trilogy
+    (title) Max Payne Trilogy
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) The Max Payne Trilogy comprises three highly influential third-person shooter games, renowned for their neo-noir storytelling, 'bullet time' mechanic, and gritty atmosphere. It follows detective Max Payne through his brutal quest for revenge and later his struggles in São Paulo, blending innovative gameplay with a dark, psychological narrative.
+  > (item)
+    (category) Game
+    (date) 2023-11-11
+    (link) https://www.residentevil.com/
+    (platform) PC (Steam), PlayStation, Xbox
+    (rating) 5
+    (slug) resident-evil-4-remake
+    (title) Resident Evil 4: Remake
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Resident Evil 4: Remake is a survival horror game by Capcom, a reimagined version of the 2005 original. It modernizes the classic with updated graphics, refined gameplay, and expanded storytelling, following Leon S. Kennedy's mission to rescue the President's daughter from a cult infected by Las Plagas.
+  > (item)
+    (category) Game
+    (date) 2023-05-05
+    (link) https://fallout.bethesda.net/games/fallout-4
+    (platform) PC (Steam), PlayStation 4, Xbox One
+    (rating) 4
+    (slug) fallout-4
+    (title) Fallout 4
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Fallout 4 is an action RPG by Bethesda Game Studios, set in a post-apocalyptic Boston after a nuclear war. Players emerge from Vault 111 to find their son, exploring a vast open world, building settlements, and engaging in real-time combat with the VATS system. It emphasizes exploration, crafting, and player choice.
+  > (item)
+    (category) Game
+    (date) 2023-02-18
+    (link) https://store.steampowered.com/app/239140/Dying_Light/
+    (platform) PC (Steam)
+    (rating) 5
+    (slug) dying-light
+    (title) Dying Light
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Dying Light is a first-person survival horror game known for its parkour mechanics, intense zombie combat, and a dynamic day-night cycle. Players navigate an infected city, adapting strategies as gameplay drastically shifts between day and night.
+  > (item)
+    (category) Game
+    (date) 2022-09-30
+    (link) https://en.wikipedia.org/wiki/Kingdoms_of_Amalur:_Reckoning
+    (platform) PC
+    (rating) 4
+    (slug) kingdoms-of-amalur-reckoning
+    (title) Kingdoms of Amalur: Reckoning
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Kingdoms of Amalur: Reckoning is a single-player action role-playing video game developed by 38 Studios and Big Huge Games. It features a high fantasy world, action-oriented combat, and extensive character customization. Players take on the role of the 'Fateless One,' a resurrected hero immune to destiny, tasked with stopping a plot to conquer the Faelands.
+  > (item)
+    (category) Game
+    (date) 2022-05-04
+    (link) https://www.residentevil.com/
+    (platform) PC (Steam), PlayStation, Xbox
+    (rating) 4
+    (slug) resident-evil-3-remake
+    (title) Resident Evil 3: Remake
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Resident Evil 3: Remake is a survival horror game by Capcom, a reimagining of the 1999 original. It modernizes the game with updated graphics and controls, focusing on Jill Valentine's escape from Raccoon City while pursued by Nemesis. Praised for its action and visuals, it received some criticism for its shorter campaign and linearity.
+  > (item)
+    (category) Game
+    (date) 2022-04-28
+    (link) https://www.niergame.com/
+    (platform) PC (Steam), PlayStation
+    (rating) 5
+    (slug) nier-automata-and-replicant
+    (title) Nier Automata & Nier Replicant
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) The Nier series, particularly Nier Automata and Nier Replicant, are action role-playing games known for their profound philosophical narratives, unique gameplay structures, and emotionally impactful storytelling, often exploring themes of existentialism, humanity, and sacrifice. Both offer multiple playthroughs revealing different perspectives and true endings.
+  > (item)
+    (category) Game
+    (date) 2021-08-20
+    (link) https://outerworlds.obsidian.net/
+    (platform) PC (Steam), PlayStation 4, Xbox One, Nintendo Switch
+    (rating) 5
+    (slug) the-outer-worlds
+    (title) The Outer Worlds
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) The Outer Worlds is a single-player action RPG by Obsidian Entertainment, set in a corporate-controlled future. Players awaken on a lost colony ship and become embroiled in a conspiracy, exploring planets, recruiting companions, and making choices that shape the Halcyon colony's fate. Known for its satirical humor and player agency.
+  > (item)
+    (category) Game
+    (date) 2021-12-07
+    (link) https://store.steampowered.com/app/1282730/Loop_Hero/
+    (platform) PC (Steam)
+    (rating) 5
+    (slug) loop-hero
+    (title) Loop Hero
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Loop Hero is a roguelike deck-building game where players indirectly control a hero traversing an endless loop. Strategic card placement to build terrain and spawn enemies is key to progression, resource gathering, and camp upgrades. The game features minimalist pixel art, deep strategy, and a cryptic narrative about rebuilding a world consumed by chaos.
+  > (item)
+    (category) Game
+    (date) 2021-11-23
+    (link) https://store.steampowered.com/app/337000/Deus_Ex_Mankind_Divided/
+    (platform) PC (Steam)
+    (rating) 4
+    (slug) deus-ex-mankind-divided
+    (title) Deus Ex: Mankind Divided
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Deus Ex: Mankind Divided is a cyberpunk action role-playing game featuring augmented covert operative Adam Jensen in a world of 'mechanical apartheid.' It offers freedom in stealth, combat, and RPG elements, exploring themes of transhumanism and social inequality. Praised for immersive atmosphere and intricate level design.
+  > (item)
+    (category) Game
+    (date) 2020-05-06
+    (link) https://www.residentevil.com
+    (platform) PC (Steam), PlayStation, Xbox
+    (rating) 5
+    (slug) resident-evil-2-remake
+    (title) Resident Evil 2: Remake
+    (image) /images/defaults/games/carl-raw-m3hn2Kn5Bns-unsplash.jpg
+    (description) Resident Evil 2: Remake is a survival horror game by Capcom, a complete remake of the 1998 classic. It features stunning graphics, modernized controls, and a terrifying experience set in Raccoon City, with players navigating as Leon S. Kennedy or Claire Redfield while being hunted by the relentless Tyrant (Mr. X).
+  > (item)
+    (category) Game
+    (date) 2016-12-09
+    (link) https://store.steampowered.com/app/200510/XCOM_Enemy_Unknown/
+    (platform) PC (Steam), PlayStation 3, Xbox 360, iOS, Android
+    (rating) 5
+    (slug) xcom-enemy-unknown
+    (title) XCOM: Enemy Unknown
+    (image) /images/defaults/games/leo_visions-F_-Yrr_WzBY-unsplash.jpg
+    (description) XCOM: Enemy Unknown is a turn-based tactical game by Firaxis Games, a reboot of the X-COM series. Players lead XCOM, an elite paramilitary organization, defending Earth from an alien invasion through strategic base management and intense turn-based combat with customizable soldiers and permadeath.
+  > (item)
+    (category) Game
+    (date) 2016-06-28
+    (link) https://store.steampowered.com/app/219150/Hotline_Miami/
+    (platform) PC (Steam)
+    (rating) 5
+    (slug) hotline-miami
+    (title) Hotline Miami
+    (image) /images/defaults/games/ryan-spencer-Um9AkOiIDcU-unsplash.jpg
+    (description) Hotline Miami is a high-octane, top-down 2D action game renowned for its psychedelic visuals, pulsating synth-wave soundtrack, brutal difficulty, and disturbing narrative. Players engage in ultraviolent combat, clearing buildings of enemies while unraveling a surreal story exploring themes of violence and morality.
+  > (item)
+    (category) Game
+    (date) 2015-09-21
+    (link) https://store.steampowered.com/app/238010/Deus_Ex_Human_Revolution__Directors_Cut/
+    (platform) PC (Steam)
+    (rating) 5
+    (slug) deus-ex-human-revolution
+    (title) Deus Ex: Human Revolution
+    (image) /images/defaults/games/javier-martinez-hUD0PUczwJQ-unsplash.jpg
+    (description) Deus Ex: Human Revolution is a cyberpunk action RPG where Adam Jensen uncovers a conspiracy in a future grappling with human augmentation. Celebrated for multi-path gameplay, extensive augmentations, and deep philosophical themes, it's a genre masterpiece.

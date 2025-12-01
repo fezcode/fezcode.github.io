@@ -148,6 +148,14 @@
     "order": 2,
     "apps": [
       {
+        "slug": "rotary-phone",
+        "to": "/apps/rotary-phone",
+        "title": "Rotary Phone",
+        "description": "A digital rotary phone. Dial numbers with your mouse or finger.",
+        "icon": "PhoneIcon",
+        "created_at": "2025-12-02T00:00:00+03:00"
+      },
+      {
         "slug": "cozy-corner",
         "to": "/apps/cozy-corner",
         "title": "Cozy Corner",
@@ -296,6 +304,24 @@
         "icon": "PlantIcon",
         "pinned_order": 18,
         "created_at": "2025-11-29T15:00:00+03:00"
+      },
+      {
+        "slug": "abstract-waves",
+        "to": "/apps/abstract-waves",
+        "title": "Abstract Waves",
+        "description": "Generate mesmerizing black and white abstract wave patterns.",
+        "icon": "WaveSine",
+        "pinned_order": 19,
+        "created_at": "2025-12-01T12:00:00+03:00"
+      },
+      {
+        "slug": "topographic-maps",
+        "to": "/apps/topographic-maps",
+        "title": "Topographic Map Generator",
+        "description": "Generate seamless topographic contour maps.",
+        "icon": "MapTrifold",
+        "pinned_order": 20,
+        "created_at": "2025-12-01T12:30:00+03:00"
       },
       {
         "slug": "color-palette-generator",
