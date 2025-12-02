@@ -31,10 +31,20 @@ const Toast = ({
     ' bg-toast-error-background border-toast-error-border hover:bg-toast-error-background/90';
   const goldStyle =
     ' bg-toast-gold-background border-toast-gold-border hover:bg-toast-gold-background/90';
-
+  const technoStyle =
+    ' bg-toast-techno-background border-toast-techno-border hover:bg-toast-techno-background/90';
+  // Techno Style
+  const technoTextStyle = 'text-toast-techno-color';
+  const technoHRStyle = 'border-toast-techno-color';
+  // Toast Style
   let toastStyle = successStyle;
+  // Toast Text Style
+  let textStyle = 'text-red-100'
+  // Toast HR Style
+  let hrStyle = 'border-red-200'
   if (type === 'error') toastStyle = errorStyle;
   if (type === 'gold') toastStyle = goldStyle;
+  if (type === 'techno') { toastStyle = technoStyle; textStyle = technoTextStyle; hrStyle = technoHRStyle; }
 
   return (
     <motion.div
@@ -47,13 +57,13 @@ const Toast = ({
       <div className="flex flex-col text-sm group w-max flex-grow">
         <div className="flex items-center gap-2">
           {icon && <span className="text-xl text-red-100">{icon}</span>}
-          <span className="text-base text-red-100">{title}</span>
+          <span className={`text-base ${textStyle}`}>{title}</span>
         </div>
         <motion.hr
           initial={{ width: 0 }}
           animate={{ width: '100%' }}
           transition={{ duration: duration / 1000 }}
-          className="mt-1 mb-1 min-w-max mr-5 border-red-200"
+          className={`mt-1 mb-1 min-w-max mr-5 ${hrStyle}`}
         />
         <span className="text-sm text-stone-200">{message}</span>
         {links && links.length > 0 && (

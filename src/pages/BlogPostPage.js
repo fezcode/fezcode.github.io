@@ -181,8 +181,8 @@ const BlogPostPage = () => {
     const handleCopy = () => {
       const textToCopy = String(children);
       navigator.clipboard.writeText(textToCopy).then(
-        () => addToast({title: 'Success', message: 'Copied to clipboard!', duration: 3000}),
-        () => addToast({title: 'Error', message: 'Failed to copy!', duration: 3000})
+        () => addToast({title: 'Success', message: 'Copied to clipboard!', duration: 3000, type:'techno'}),
+        () => addToast({title: 'Error', message: 'Failed to copy!', duration: 3000, type:'error'})
       );
     };
 

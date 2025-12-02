@@ -88,6 +88,11 @@ module.exports = {
   'toast-gold-hover-background': 'rgba(122, 100, 49, 0.8)',
   'toast-gold-border': '#68562b',
 
+  // Toast techno colors
+  'toast-techno-background': 'rgba(49,67,99,0.8)',
+  'toast-techno-hover-background': 'rgba(63,88,126,0.8)',
+  'toast-techno-border': '#3e5973',
+  'toast-techno-color': '#22d0eb',
   // Code Theme Colors (from src/utils/customTheme.js)
   codeTheme: {
     'text-default': '#d1d5db',
