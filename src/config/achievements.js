@@ -20,6 +20,7 @@ import {
   LogIcon,
   KanbanIcon,
   PhoneIcon,
+  ShuffleIcon,
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -344,6 +345,41 @@ export const ACHIEVEMENTS = [
     title: 'Pie',
     description: '3 is just enough.',
     icon: <PhoneIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'the_number_of_monkeys',
+    title: 'The Number of Monkeys',
+    description: 'Ask Bruce.',
+    icon: <ShuffleIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'some_bodies_gonna_get_it',
+    title: 'Some Bodies Gonna Get It',
+    description: 'Mark Henry enters the ring...',
+    icon: <ShuffleIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'fast_eyes',
+    title: 'Fast Eyes',
+    description: 'Shut and open the eyes quickly.',
+    icon: <ShuffleIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'and_heartbreak',
+    title: '& Heartbreak',
+    description: 'And my head keeps spinning.',
+    icon: <ShuffleIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'feeling_lucky',
+    title: 'Feeling Lucky',
+    description: 'Took a chance on the random button.',
+    icon: <ShuffleIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
 ];

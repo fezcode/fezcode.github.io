@@ -55,6 +55,9 @@ const RotaryPhonePage = () => {
     '007': 'the_worst_agent',
     '314': 'pie',
     '12': 'the_number_of_monkeys',
+    '36': 'some_bodies_gonna_get_it',
+    '182': 'fast_eyes',
+    '808': 'and_heartbreak',
   }
 
   const handleCall = () => {

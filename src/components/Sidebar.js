@@ -40,6 +40,7 @@ import Fez from './Fez';
 import { version } from '../version';
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
+import { useAchievements } from '../context/AchievementContext';
 
 const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
   const [sidebarState, setSidebarState] = usePersistentState(
@@ -54,6 +55,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
     },
   );
 
+  const { unlockAchievement } = useAchievements();
   const scrollRef = useRef(null);
   const [showScrollGradient, setShowScrollGradient] = useState({
     top: false,
@@ -412,6 +414,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
           <div className="flex flex-col gap-2 mb-4">
             <NavLink
               to="/random"
+              onClick={() => unlockAchievement('feeling_lucky')}
               className="px-3 py-2 text-sm rounded-lg border border-gray-700/50 bg-gray-900/40 text-gray-300 hover:text-white hover:bg-gray-800/60 transition-colors duration-200 flex items-center justify-center gap-2 w-full font-mono"
             >
               <ShuffleIcon size={16} />
