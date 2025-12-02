@@ -376,9 +376,16 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
+    id: 'elite',
+    title: 'Elite',
+    description: 'elite...',
+    icon: <ShuffleIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
     id: 'feeling_lucky',
     title: 'Feeling Lucky',
-    description: 'Took a chance on the random button.',
+    description: 'Surprise.',
     icon: <ShuffleIcon size={32} weight="duotone" />,
     category: 'Secret',
   },

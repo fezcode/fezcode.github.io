@@ -58,6 +58,7 @@ const RotaryPhonePage = () => {
     '36': 'some_bodies_gonna_get_it',
     '182': 'fast_eyes',
     '808': 'and_heartbreak',
+    '1337': 'elite',
   }
 
   const handleCall = () => {
