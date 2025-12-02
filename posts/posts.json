@@ -1,5 +1,17 @@
 [
   {
+    "slug": "building-a-digital-rotary-phone",
+    "title": "Building a Digital Rotary Phone",
+    "date": "2025-12-02",
+    "updated": "2025-12-02",
+    "description": "A deep dive into the engineering behind the interactive Rotary Phone app: trigonometry, Framer Motion, and React state management.",
+    "tags": ["react", "framer-motion", "math", "interactive", "frontend", "project"],
+    "category": "dev",
+    "filename": "building-a-digital-rotary-phone.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/mike-meyers--haAxbjiHds-unsplash.jpg"
+  },
+  {
     "slug": "nocturnote",
     "title": "Nocturnote: A Sleek and Modern Text Editor",
     "date": "2025-12-01",
