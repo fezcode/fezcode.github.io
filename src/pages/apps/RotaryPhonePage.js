@@ -72,6 +72,22 @@ const RotaryPhonePage = () => {
     '34': 'dont_google',
     '2': 'all_eyez_on_me',
     '343': 'the_monitor',
+    '19': 'you_smart',
+    '360': 'the_last_good_gen',
+    '127001': 'cyber_home',
+    '418': 'cyber_home',
+    '32': 'system',
+    '5150': 'van_halen',
+    '1993': 'rip_and_tear',
+    '80211': 'wireless',
+    '747': 'boing',
+    '9': 'feline',
+    '000000': 'black',
+    '2600': 'retro_gamer',
+    '11': 'ocean',
+    '20': 'critical_hit',
+    '21': 'savage',
+    '80': 'www',
   }
 
   const handleCall = () => {
