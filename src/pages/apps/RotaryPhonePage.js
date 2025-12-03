@@ -74,7 +74,7 @@ const RotaryPhonePage = () => {
     '343': 'the_monitor',
     '19': 'you_smart',
     '360': 'the_last_good_gen',
-    '127001': 'cyber_home',
+    '127001': 'cyber_homie',
     '418': 'teapot',
     '32': 'system',
     '5150': 'van_halen',

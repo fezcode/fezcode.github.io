@@ -489,7 +489,7 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
-    id: 'cyber_home',
+    id: 'cyber_homie',
     title: 'Cyber Home',
     description: 'There\'s no place like Cyber Home. Home Sweet Home',
     icon: <QuestionMarkIcon size={32} weight="duotone" />,
