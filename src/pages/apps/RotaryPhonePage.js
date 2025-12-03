@@ -59,6 +59,19 @@ const RotaryPhonePage = () => {
     '182': 'fast_eyes',
     '808': 'and_heartbreak',
     '1337': 'elite',
+    '3310': 'indestructible',
+    '9000': 'daisy_daisy',
+    '66': 'the_order',
+    '99': 'one_less_problem',
+    '3005': 'the_holo_grammy',
+    '313': 'moms_spaghetti',
+    '51': 'truth_is_out_there',
+    '57': 'ketchup',
+    '711': 'open_24_hours',
+    '1066': 'invaded_england',
+    '34': 'dont_google',
+    '2': 'all_eyez_on_me',
+    '343': 'the_monitor',
   }
 
   const handleCall = () => {
