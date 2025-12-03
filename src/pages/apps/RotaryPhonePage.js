@@ -83,7 +83,7 @@ const RotaryPhonePage = () => {
     '747': 'boing',
     '9': 'feline',
     '000000': 'black',
-    '2600': 'retro_gamer',
+    '2600': 'the_real_retro_gamer',
     '11': 'ocean',
     '20': 'critical_hit',
     '21': 'savage',

@@ -552,8 +552,8 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
-    id: 'retro_gamer',
-    title: 'Retro Gamer',
+    id: 'the_real_retro_gamer',
+    title: 'The Real Retro Gamer',
     description: 'One button, one joystick, infinite fun.',
     icon: <QuestionMarkIcon size={32} weight="duotone" />,
     category: 'Secret',
