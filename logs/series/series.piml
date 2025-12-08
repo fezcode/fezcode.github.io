@@ -1,6 +1,17 @@
 (logs)
   > (item)
     (category) Series
+    (date) 2025-12-08
+    (link) https://www.imdb.com/title/tt22202452/
+    (platform) Apple TV+
+    (rating) 5
+    (slug) pluribus-tv-series
+    (title) Pluribus (TV Series)
+    (image) /images/defaults/series/kelly-sikkema-RIPiTX__OeQ-unsplash.jpg
+    (description) "Pluribus" is a post-apocalyptic sci-fi series created by Vince Gilligan. Starring Rhea Seehorn as Carol Sturka, an author who remains an individual in a world where humanity has been assimilated into a peaceful hive mind.
+
+  > (item)
+    (category) Series
     (date) 2025-12-02
     (link) https://www.imdb.com/title/tt29420686/
     (platform) Netflix
