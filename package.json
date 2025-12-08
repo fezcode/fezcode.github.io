@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
@@ -14,7 +14,7 @@
     "framer-motion": "^12.23.24",
     "front-matter": "^4.0.2",
     "marked": "^16.4.1",
-    "piml": "^1.1.0",
+    "piml": "^1.1.1",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
