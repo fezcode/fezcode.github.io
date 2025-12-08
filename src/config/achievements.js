@@ -23,13 +23,13 @@ import {
   ShuffleIcon,
   QuestionMarkIcon,
   TrashIcon,
-  Metronome as MetronomeIcon,
-  Spade as SpadeIcon,
-  Heart as HeartIcon,
-  Diamond as DiamondIcon,
-  Eye as EyeIcon,
-  Target as TargetIcon,
-  Brain as BrainIcon
+  MetronomeIcon,
+  SpadeIcon,
+  HeartIcon,
+  DiamondIcon,
+  EyeIcon,
+  TargetIcon,
+  BrainIcon
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -602,13 +602,6 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
-    id: 'clean_slate',
-    title: 'Clean Slate',
-    description: 'Cleared all local storage.',
-    icon: <TrashIcon size={32} weight="duotone" />,
-    category: 'Secret',
-  },
-  {
     id: 'perfect_timing',
     title: 'Perfect Timing',
     description: 'Stopped the stopwatch at exactly 10.00 seconds.',
@@ -669,6 +662,13 @@ export const ACHIEVEMENTS = [
     title: 'CTU Agent',
     description: 'The clock is ticking...',
     icon: <PhoneIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'clean_slate',
+    title: 'Clean Slate',
+    description: 'Cleared all local storage.',
+    icon: <TrashIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
 ];
