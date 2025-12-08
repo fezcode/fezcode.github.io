@@ -21,7 +21,15 @@ import {
   KanbanIcon,
   PhoneIcon,
   ShuffleIcon,
-  QuestionMarkIcon
+  QuestionMarkIcon,
+  TrashIcon,
+  Metronome as MetronomeIcon,
+  Spade as SpadeIcon,
+  Heart as HeartIcon,
+  Diamond as DiamondIcon,
+  Eye as EyeIcon,
+  Target as TargetIcon,
+  Brain as BrainIcon
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -591,6 +599,76 @@ export const ACHIEVEMENTS = [
     title: 'Feeling Lucky',
     description: 'Surprise.',
     icon: <ShuffleIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'clean_slate',
+    title: 'Clean Slate',
+    description: 'Cleared all local storage.',
+    icon: <TrashIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'perfect_timing',
+    title: 'Perfect Timing',
+    description: 'Stopped the stopwatch at exactly 10.00 seconds.',
+    icon: <TimerIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'on_the_beat',
+    title: 'On the Beat',
+    description: 'Achieved exactly 90 BPM in the BPM Guesser.',
+    icon: <MetronomeIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'card_shark',
+    title: 'Card Shark',
+    description: 'Scored over 7 in Higher or Lower.',
+    icon: <SpadeIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'high_roller',
+    title: 'High Roller',
+    description: 'Scored over 14 in Higher or Lower.',
+    icon: <HeartIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'legendary_gambler',
+    title: 'Legendary Gambler',
+    description: 'Scored over 20 in Higher or Lower.',
+    icon: <DiamondIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'sharp_eye',
+    title: 'Sharp Eye',
+    description: 'Completed Memory Game in 24 moves or less.',
+    icon: <EyeIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'eidetic_memory',
+    title: 'Eidetic Memory',
+    description: 'Completed Memory Game in 18 moves or less.',
+    icon: <TargetIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'mind_palace',
+    title: 'Mind Palace',
+    description: 'Completed Memory Game in 14 moves or less.',
+    icon: <BrainIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'ctu_agent',
+    title: 'CTU Agent',
+    description: 'The clock is ticking...',
+    icon: <PhoneIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
 ];

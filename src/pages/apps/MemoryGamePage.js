@@ -5,6 +5,7 @@ import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import '../../styles/MemoryGamePage.css';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import { useAchievements } from '../../context/AchievementContext';
 
 const cardValues = ['🍎', '🍌', '🍒', '🍇', '🍋', '🍊', '🍓', '🍉']; // Example card values
 
@@ -28,6 +29,7 @@ const MemoryGamePage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
+  const { unlockAchievement } = useAchievements();
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
   const [matchesFound, setMatchesFound] = useState(0);
@@ -118,8 +120,11 @@ const MemoryGamePage = () => {
   useEffect(() => {
     if (matchesFound === cardValues.length) {
       setGameOver(true);
+      if (moves <= 24) unlockAchievement('sharp_eye');
+      if (moves <= 18) unlockAchievement('eidetic_memory');
+      if (moves <= 14) unlockAchievement('mind_palace');
     }
-  }, [matchesFound]);
+  }, [matchesFound, moves, unlockAchievement]);
 
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],

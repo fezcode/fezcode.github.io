@@ -6,6 +6,7 @@ import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import '../../styles/CardGamePage.css';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import { useAchievements } from '../../context/AchievementContext';
 
 const suits = ['♠', '♥', '♦', '♣'];
 const ranks = [
@@ -66,6 +67,7 @@ const CardGamePage = () => {
   });
 
   const { addToast } = useToast();
+  const { unlockAchievement } = useAchievements();
   const [deck, setDeck] = useState([]);
   const [currentCard, setCurrentCard] = useState(null);
   const [nextCard, setNextCard] = useState(null);
@@ -130,6 +132,15 @@ const CardGamePage = () => {
       setNextCard(null);
     } else {
       setGameOver(true);
+      if (score > 20) {
+        unlockAchievement('legendary_gambler');
+      }
+      if (score > 14) {
+        unlockAchievement('high_roller');
+      }
+      if (score > 7) {
+        unlockAchievement('card_shark');
+      }
       addToast({
         title: 'Game Over!',
         message: `It was a ${drawnNextCard.rank} of ${drawnNextCard.suit}. Final score: ${score}`,

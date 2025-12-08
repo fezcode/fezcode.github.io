@@ -88,6 +88,7 @@ const RotaryPhonePage = () => {
     '20': 'critical_hit',
     '21': 'savage',
     '80': 'www',
+    '24': 'ctu_agent',
   }
 
   const handleCall = () => {

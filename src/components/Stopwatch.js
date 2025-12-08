@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useAchievements } from '../context/AchievementContext';
 
 const Stopwatch = () => {
   const [time, setTime] = useState(0);
   const [laps, setLaps] = useState([]);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
+  const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
     if (isRunning) {
@@ -23,6 +25,10 @@ const Stopwatch = () => {
   };
   const handleStop = () => {
     setIsRunning(false);
+    console.log(time)
+    if (time === 10000) {
+      unlockAchievement('perfect_timing');
+    }
   };
   const handleReset = () => {
     setIsRunning(false);

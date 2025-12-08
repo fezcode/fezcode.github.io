@@ -122,6 +122,25 @@ const SettingsPage = () => {
       message: 'All local storage data has been cleared. The page will now reload.',
       duration: 3000,
     });
+
+    setTimeout(() => {
+      // Manually set the achievement to avoid restoring old state via context
+      const now = new Date().toISOString();
+      const cleanSlateData = {
+        clean_slate: { unlocked: true, unlockedAt: now }
+      };
+      // We use the raw key 'unlocked-achievements' as defined in AchievementContext
+      localStorage.setItem('unlocked-achievements', JSON.stringify(cleanSlateData));
+
+      addToast({
+        title: 'Achievement Unlocked!',
+        message: 'Clean Slate',
+        duration: 4000,
+        icon: <Trophy size={24} weight="duotone" />,
+        type: 'gold',
+      });
+    }, 500);
+
     setTimeout(() => {
       window.location.reload();
     }, 3000);

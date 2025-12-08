@@ -1,9 +1,10 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, MetronomeIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import useSeo from '../../hooks/useSeo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import { useAchievements } from '../../context/AchievementContext';
 
 const BpmGuesserPage = () => {
   useSeo({
@@ -30,6 +31,13 @@ const BpmGuesserPage = () => {
   const [bpm, setBpm] = useState(0);
   const [taps, setTaps] = useState([]);
   const lastTapTime = useRef(0);
+  const { unlockAchievement } = useAchievements();
+
+  useEffect(() => {
+    if (bpm === 90) {
+      unlockAchievement('on_the_beat');
+    }
+  }, [bpm, unlockAchievement]);
 
   const handleTap = () => {
     const now = performance.now();
