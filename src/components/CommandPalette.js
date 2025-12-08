@@ -78,6 +78,12 @@ const CommandPalette = ({
     toggleHellenic,
     isGlitch,
     toggleGlitch,
+    toggleRain,
+    isGarden,
+    toggleGarden,
+    isAutumn,
+    toggleAutumn,
+    isRain,
   } = useVisualSettings();
 
   const { unlockAchievement } = useAchievements();
@@ -231,6 +237,7 @@ const CommandPalette = ({
           );
           break;
         case 'doBarrelRoll':
+          unlockAchievement('do_a_barrel_roll');
           document.body.classList.add('do-a-barrel-roll');
           addToast({
             title: 'Wheeeee!',
@@ -374,6 +381,30 @@ const CommandPalette = ({
             message: !isGlitch
               ? 'System corruption detected.'
               : 'Signal stabilized.',
+            duration: 2000,
+          });
+          break;
+        case 'toggleGardenMode':
+          toggleGarden();
+          addToast({
+            title: !isGarden ? 'Garden Mode On' : 'Garden Mode Off',
+            message: !isGarden ? 'Bloom where you are planted.' : 'Winter is coming.',
+            duration: 2000,
+          });
+          break;
+        case 'toggleAutumnMode':
+          toggleAutumn();
+          addToast({
+            title: !isAutumn ? 'Autumn Mode On' : 'Autumn Mode Off',
+            message: !isAutumn ? 'The leaves are falling.' : 'Spring has sprung.',
+            duration: 2000,
+          });
+          break;
+        case 'toggleRainMode':
+          toggleRain();
+          addToast({
+            title: !isRain ? 'Rain Mode On' : 'Rain Mode Off',
+            message: !isRain ? 'It\'s raining, it\'s pouring.' : 'The sun is out.',
             duration: 2000,
           });
           break;

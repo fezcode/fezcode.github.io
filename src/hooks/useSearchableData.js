@@ -293,6 +293,21 @@ const useSearchableData = () => {
             commandId: 'toggleGlitchMode',
           },
           {
+            title: 'Toggle Garden Mode',
+            type: 'command',
+            commandId: 'toggleGardenMode',
+          },
+          {
+            title: 'Toggle Autumn Mode',
+            type: 'command',
+            commandId: 'toggleAutumnMode',
+          },
+          {
+            title: 'Toggle Rain Mode',
+            type: 'command',
+            commandId: 'toggleRainMode',
+          },
+          {
             title: 'Previous Page',
             type: 'command',
             commandId: 'previousPage',

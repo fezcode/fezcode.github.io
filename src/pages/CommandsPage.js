@@ -141,86 +141,98 @@ const commandsData = [
       { title: 'Her Daim', description: 'Her Daim...', color: 'stone' },
       {
         title: 'Do a Barrel Roll',
-        description: 'Spins the page 360 degrees. (Easter Egg)',
+        description: 'Spins the page 360 degrees.',
         color: 'red',
       },
       {
         title: 'Toggle Invert Colors',
-        description: 'Inverts all colors on the page. (Easter Egg)',
+        description: 'Inverts all colors on the page.',
         color: 'orange',
       },
       {
         title: 'Party Mode',
-        description: 'Cycles hue colors for a disco effect. (Easter Egg)',
+        description: 'Cycles hue colors for a disco effect.',
         color: 'amber',
       },
       {
         title: 'Toggle Retro Mode',
-        description: 'Enables a retro CRT scanline effect. (Easter Egg)',
+        description: 'Enables a retro CRT scanline effect.',
         color: 'yellow',
       },
       {
         title: 'Toggle Mirror Mode',
-        description: 'Mirrors the entire page horizontally. (Easter Egg)',
-        color: 'indigo',
-      },
-      {
-        title: 'Toggle Noir Mode',
-        description: 'Enables a black and white noir film effect. (Easter Egg)',
-        color: 'gray',
-      },
-      {
-        title: 'Toggle Terminal Mode',
-        description:
-          'Switch to a green monochrome hacker aesthetic. (Easter Egg)',
-        color: 'green',
-      },
-      {
-        title: 'Toggle Blueprint Mode',
-        description: 'Switch to a blueprint schematic look. (Easter Egg)',
-        color: 'blue',
-      },
-      {
-        title: 'Toggle Sepia Mode',
-        description: 'Switch to an old-timey sepia tone. (Easter Egg)',
-        color: 'orange',
-      },
-      {
-        title: 'Toggle Vaporwave Mode',
-        description: 'Switch to a nostalgic vaporwave aesthetic. (Easter Egg)',
-        color: 'pink',
-      },
-      {
-        title: 'Toggle Cyberpunk Mode',
-        description:
-          'Switch to a high-tech, low-life dark neon look. (Easter Egg)',
-        color: 'yellow',
-      },
-      {
-        title: 'Toggle Game Boy Mode',
-        description: 'Switch to a 4-color retro handheld look. (Easter Egg)',
+        description: 'Mirrors the entire page horizontally.',
         color: 'lime',
       },
       {
+        title: 'Toggle Noir Mode',
+        description: 'Enables a black and white noir film effect.',
+        color: 'green',
+      },
+      {
+        title: 'Toggle Terminal Mode',
+        description: 'Switch to a green monochrome hacker aesthetic.',
+        color: 'emerald',
+      },
+      {
+        title: 'Toggle Blueprint Mode',
+        description: 'Switch to a blueprint schematic look.',
+        color: 'teal',
+      },
+      {
+        title: 'Toggle Sepia Mode',
+        description: 'Switch to an old-timey sepia tone.',
+        color: 'cyan',
+      },
+      {
+        title: 'Toggle Vaporwave Mode',
+        description: 'Switch to a nostalgic vaporwave aesthetic.',
+        color: 'sky',
+      },
+      {
+        title: 'Toggle Cyberpunk Mode',
+        description: 'Switch to a high-tech, low-life dark neon look.',
+        color: 'blue',
+      },
+      {
+        title: 'Toggle Game Boy Mode',
+        description: 'Switch to a 4-color retro handheld look.',
+        color: 'indigo',
+      },
+      {
         title: 'Toggle Comic Book Mode',
-        description: 'Switch to a vibrant pop-art comic style. (Easter Egg)',
-        color: 'red',
+        description: 'Switch to a vibrant pop-art comic style.',
+        color: 'violet',
       },
       {
         title: 'Toggle Sketchbook Mode',
-        description: 'Switch to a hand-drawn sketchbook style. (Easter Egg)',
-        color: 'stone',
+        description: 'Switch to a hand-drawn sketchbook style.',
+        color: 'purple',
       },
       {
         title: 'Toggle Hellenic Mode',
-        description:
-          'Switch to a classical Greek architecture style. (Easter Egg)',
-        color: 'amber',
+        description: 'Switch to a classical Greek architecture style.',
+        color: 'fuchsia',
       },
       {
         title: 'Toggle Dystopian Glitch Mode',
-        description: 'Switch to a corrupted digital data style. (Easter Egg)',
+        description: 'Switch to a corrupted digital data style.',
+        color: 'pink',
+      },
+      {
+        title: 'Toggle Garden Mode',
+        description: 'Bloom where you are planted.',
+        color: 'rose',
+      },
+      {
+        title: 'Toggle Autumn Mode',
+        description: 'Winter is coming.',
         color: 'slate',
+      },
+      {
+        title: 'Toggle Rain Mode',
+        description: 'Let it rain.',
+        color: 'gray',
       },
     ],
   },

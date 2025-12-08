@@ -37,6 +37,9 @@ export const VisualSettingsProvider = ({ children }) => {
   );
   const [isHellenic, setIsHellenic] = usePersistentState('is-hellenic', false);
   const [isGlitch, setIsGlitch] = usePersistentState('is-glitch', false);
+  const [isGarden, setIsGarden] = usePersistentState('is-garden', false);
+  const [isAutumn, setIsAutumn] = usePersistentState('is-autumn', false);
+  const [isRain, setIsRain] = usePersistentState('is-rain', false);
 
   useEffect(() => {
     if (isInverted) {
@@ -165,6 +168,12 @@ export const VisualSettingsProvider = ({ children }) => {
     }
   }, [isGlitch, unlockAchievement]);
 
+  useEffect(() => {
+    if (isGarden && isAutumn && isRain) {
+      unlockAchievement('zen');
+    }
+  }, [isGarden, isAutumn, isRain, unlockAchievement]);
+
   const toggleInvert = () => setIsInverted((prev) => !prev);
   const toggleRetro = () => setIsRetro((prev) => !prev);
   const toggleParty = () => setIsParty((prev) => !prev);
@@ -180,6 +189,9 @@ export const VisualSettingsProvider = ({ children }) => {
   const toggleSketchbook = () => setIsSketchbook((prev) => !prev);
   const toggleHellenic = () => setIsHellenic((prev) => !prev);
   const toggleGlitch = () => setIsGlitch((prev) => !prev);
+  const toggleGarden = () => setIsGarden((prev) => !prev);
+  const toggleAutumn = () => setIsAutumn((prev) => !prev);
+  const toggleRain = () => setIsRain((prev) => !prev);
 
   return (
     <VisualSettingsContext.Provider
@@ -214,6 +226,12 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleHellenic,
         isGlitch,
         toggleGlitch,
+        isGarden,
+        toggleGarden,
+        isAutumn,
+        toggleAutumn,
+        isRain,
+        toggleRain,
       }}
     >
       {children}

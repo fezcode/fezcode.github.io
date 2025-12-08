@@ -87,6 +87,9 @@ const SettingsPage = () => {
     isSketchbook, toggleSketchbook,
     isHellenic, toggleHellenic,
     isGlitch, toggleGlitch,
+    isGarden, toggleGarden,
+    isAutumn, toggleAutumn,
+    isRain, toggleRain,
   } = useVisualSettings();
 
   const { addToast } = useToast();
@@ -272,6 +275,9 @@ const SettingsPage = () => {
               <CustomToggle id="fx-sketchbook" label="Sketchbook" checked={isSketchbook} onChange={toggleSketchbook} colorTheme="indigo" />
               <CustomToggle id="fx-hellenic" label="Hellenic Statue" checked={isHellenic} onChange={toggleHellenic} colorTheme="blue" />
               <CustomToggle id="fx-glitch" label="System Glitch" checked={isGlitch} onChange={toggleGlitch} colorTheme="rose" />
+              <CustomToggle id="fx-garden" label="Garden Mode" checked={isGarden} onChange={toggleGarden} colorTheme="green" />
+              <CustomToggle id="fx-autumn" label="Autumn Mode" checked={isAutumn} onChange={toggleAutumn} colorTheme="amber" />
+              <CustomToggle id="fx-rain" label="Rain Mode" checked={isRain} onChange={toggleRain} colorTheme="blue" />
             </div>
           </Section>
 

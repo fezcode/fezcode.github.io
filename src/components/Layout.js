@@ -8,6 +8,10 @@ import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
 import { useCommandPalette } from '../context/CommandPaletteContext';
+import { useVisualSettings } from '../context/VisualSettingsContext';
+import DigitalFlowers from './DigitalFlowers';
+import DigitalLeaves from './DigitalLeaves';
+import NaturalRain from './NaturalRain';
 
 import { DndProvider } from '../context/DndContext';
 
@@ -21,6 +25,7 @@ const Layout = ({
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
+  const { isGarden, isAutumn, isRain } = useVisualSettings();
   const location = useLocation();
 
   useEffect(() => {
@@ -55,6 +60,9 @@ const Layout = ({
 
   return (
     <>
+      {isGarden && <DigitalFlowers />}
+      {isAutumn && <DigitalLeaves />}
+      {isRain && <NaturalRain />}
       <CommandPalette
         isOpen={isPaletteOpen}
         setIsOpen={setIsPaletteOpen}

@@ -29,7 +29,9 @@ import {
   DiamondIcon,
   EyeIcon,
   TargetIcon,
-  BrainIcon
+  BrainIcon,
+  YinYangIcon,
+  ArrowsClockwiseIcon
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -662,6 +664,20 @@ export const ACHIEVEMENTS = [
     title: 'CTU Agent',
     description: 'The clock is ticking...',
     icon: <PhoneIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'zen',
+    title: 'Zen',
+    description: 'Turned it into a proper garden.',
+    icon: <YinYangIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'do_a_barrel_roll',
+    title: 'My Head Spinning',
+    description: 'You spin my head right round, right round.',
+    icon: <ArrowsClockwiseIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
   {
