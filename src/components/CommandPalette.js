@@ -98,6 +98,13 @@ const CommandPalette = ({
   }, [isOpen, unlockAchievement]);
 
   useEffect(() => {
+    const lowerTerm = searchTerm.toLowerCase();
+    if (lowerTerm === 'hello?' || lowerTerm === 'is anyone there?') {
+      unlockAchievement('echo_in_the_void');
+    }
+  }, [searchTerm, unlockAchievement]);
+
+  useEffect(() => {
     setSelectedIndex(0);
   }, [searchTerm, items]);
 

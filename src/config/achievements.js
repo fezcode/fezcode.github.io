@@ -715,4 +715,25 @@ export const ACHIEVEMENTS = [
     icon: <MetronomeIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
+  {
+    id: 'echo_in_the_void',
+    title: 'Echo in the Void',
+    description: 'Call out where no one listens.',
+    icon: <GhostIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'chaos_theory',
+    title: 'Chaos Theory',
+    description: 'The world shifts beneath your feet.',
+    icon: <ArrowsClockwiseIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'glitch_in_the_matrix',
+    title: 'Glitch in the Matrix',
+    description: 'Seek the paths that do not exist.',
+    icon: <SkullIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
 ];

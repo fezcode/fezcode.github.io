@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
+import { useAchievements } from '../context/AchievementContext';
 
 const NotFoundPage = () => {
+  const { unlockAchievement } = useAchievements();
+
+  useEffect(() => {
+    const visits = parseInt(localStorage.getItem('wrongs') || '0', 10) + 1;
+    localStorage.setItem('wrongs', visits.toString());
+
+    if (visits >= 3) {
+      unlockAchievement('glitch_in_the_matrix');
+    }
+  }, [unlockAchievement]);
+
   return (
     <div className="text-center mt-20 mb-20">
       <Seo
