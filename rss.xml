@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 08 Dec 2025 01:59:44 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 11 Dec 2025 04:48:28 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 08 Dec 2025 01:59:43 GMT</pubDate>
+        <pubDate>Thu, 11 Dec 2025 04:48:28 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[React Magic: Rendering Components from Markdown Links]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-magic-markdown-components</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-magic-markdown-components</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Static text is boring. In a modern React application, your content should be alive.</p>
+<p><a href="https://fezcode.com/#/blog/react-magic-markdown-components">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Implementing a Resizable Global Sliding Side Panel in React]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/implementing-a-sliding-side-panel</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/implementing-a-sliding-side-panel</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Sometimes, a modal is just too intrusive. You want to show detailed context—like a complex rating system or metadata—without forcing the user to lose their place on the page or blocking the entire UI with a backdrop that demands immediate attention. Enter the <strong>Sliding Side Panel</strong>.</p>
+<p><a href="https://fezcode.com/#/blog/implementing-a-sliding-side-panel">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Building a Digital Rotary Phone]]></title>
             <description><![CDATA[[object Object]]]></description>

@@ -1,5 +1,13 @@
 [
   {
+    "date": "2025-12-11",
+    "title": "Global Side Panel & Vocabulary Links",
+    "description": "Implemented a resizable, global side panel for contextual information, with vocabulary links in Markdown content that dynamically open the panel with lazy-loaded React components.",
+    "type": "feature",
+    "icon": "SidebarIcon",
+    "link": "/#/blog/react-magic-markdown-components"
+  },
+  {
     "date": "2025-11-30",
     "title": "Settings Page UI/UX Redesign",
     "description": "Overhauled the Settings page with a modern glassmorphism design, animated sections, custom icons, and improved layout for better user experience.",
