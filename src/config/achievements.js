@@ -31,7 +31,8 @@ import {
   TargetIcon,
   BrainIcon,
   YinYangIcon,
-  ArrowsClockwiseIcon
+  ArrowsClockwiseIcon,
+  CirclesFourIcon,
 } from '@phosphor-icons/react';
 
 export const ACHIEVEMENTS = [
@@ -681,13 +682,6 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
-    id: 'clean_slate',
-    title: 'Clean Slate',
-    description: 'Tabula Rasa.',
-    icon: <TrashIcon size={32} weight="duotone" />,
-    category: 'Secret',
-  },
-  {
     id: 'konami_code',
     title: 'Konami Code',
     description: 'The classic sequence.',
@@ -741,6 +735,27 @@ export const ACHIEVEMENTS = [
     title: 'Rule Breaker',
     description: 'Admitting it is the first step.',
     icon: <SkullIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'entropy_increaser',
+    title: 'Entropy Increaser',
+    description: 'Disorder is inevitable.',
+    icon: <CirclesFourIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'sos_signal',
+    title: 'A Universal plea',
+    description: 'THE universal plea.',
+    icon: <PhoneIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'clean_slate',
+    title: 'Clean Slate',
+    description: 'Tabula Rasa.',
+    icon: <TrashIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
 ];

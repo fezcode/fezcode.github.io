@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, SpeakerSimpleHighIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import { useAchievements } from '../../context/AchievementContext';
 
 const MORSE_CODE_MAP = {
   A: '.-',
@@ -72,6 +73,7 @@ const MorseCodeTranslatorPage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
+  const { unlockAchievement } = useAchievements();
   const [text, setText] = useState('');
   const [morseCode, setMorseCode] = useState('');
 
@@ -83,6 +85,7 @@ const MorseCodeTranslatorPage = () => {
       .map((char) => MORSE_CODE_MAP[char] || '')
       .join(' ');
     setMorseCode(newMorseCode);
+    if (newText === 'SOS') unlockAchievement('sos_signal');
   };
 
   const handleMorseChange = (e) => {
@@ -93,6 +96,7 @@ const MorseCodeTranslatorPage = () => {
       .map((code) => REVERSE_MORSE_CODE_MAP[code] || '')
       .join('');
     setText(newText);
+    if (newText === 'SOS') unlockAchievement('sos_signal');
   };
 
   const playMorseCode = () => {
