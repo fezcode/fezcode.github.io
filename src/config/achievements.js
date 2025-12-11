@@ -687,4 +687,32 @@ export const ACHIEVEMENTS = [
     icon: <TrashIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
+  {
+    id: 'konami_code',
+    title: 'Konami Code',
+    description: 'Up, Up, Down, Down, Left, Right, Left, Right, B, A.',
+    icon: <GameControllerIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'night_owl',
+    title: 'Night Owl',
+    description: 'Visited Fezcodex between 3 AM and 5 AM.',
+    icon: <EyeIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'combo_breaker',
+    title: 'Combo Breaker',
+    description: 'Completed Memory Game in under 45 seconds.',
+    icon: <LightningIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
+    id: 'human_metronome',
+    title: 'Human Metronome',
+    description: 'Maintained the exact same BPM for 15 taps in a row.',
+    icon: <MetronomeIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
 ];

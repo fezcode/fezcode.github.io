@@ -36,6 +36,7 @@ const MemoryGamePage = () => {
   const [moves, setMoves] = useState(0);
   const [gameOver, setGameOver] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
+  const [startTime, setStartTime] = useState(null);
 
   const initializeGame = useCallback(() => {
     const shuffledCards = shuffleCards(cardValues);
@@ -45,11 +46,17 @@ const MemoryGamePage = () => {
     setMoves(0);
     setGameOver(false);
     setGameStarted(false); // Game starts when "Play Game" is clicked
+    setStartTime(null);
   }, []);
 
   useEffect(() => {
     initializeGame();
   }, [initializeGame]);
+
+  const startGame = () => {
+    setGameStarted(true);
+    setStartTime(Date.now());
+  };
 
   const shuffleCards = (values) => {
     let id = 0;
@@ -120,11 +127,13 @@ const MemoryGamePage = () => {
   useEffect(() => {
     if (matchesFound === cardValues.length) {
       setGameOver(true);
+      const duration = (Date.now() - startTime) / 1000;
+      if (duration < 45) unlockAchievement('combo_breaker');
       if (moves <= 24) unlockAchievement('sharp_eye');
       if (moves <= 18) unlockAchievement('eidetic_memory');
       if (moves <= 14) unlockAchievement('mind_palace');
     }
-  }, [matchesFound, moves, unlockAchievement]);
+  }, [matchesFound, moves, unlockAchievement, startTime]);
 
   const cardStyle = {
     backgroundColor: colors['app-alpha-10'],
@@ -190,7 +199,7 @@ const MemoryGamePage = () => {
                   <div className="start-game-message text-center text-3xl font-bold mb-4">
                     Click "Play Game" to Start!
                     <button
-                      onClick={() => setGameStarted(true)}
+                      onClick={startGame}
                       className="block mx-auto mt-4 px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out"
                       style={{
                         backgroundColor: 'rgba(0, 0, 0, 0.2)',

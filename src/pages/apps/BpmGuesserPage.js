@@ -33,6 +33,10 @@ const BpmGuesserPage = () => {
   const lastTapTime = useRef(0);
   const { unlockAchievement } = useAchievements();
 
+  // For Human Metronome achievement
+  const prevBpmRef = useRef(0);
+  const streakRef = useRef(0);
+
   useEffect(() => {
     if (bpm === 90) {
       unlockAchievement('on_the_beat');
@@ -46,6 +50,8 @@ const BpmGuesserPage = () => {
       lastTapTime.current = now;
       setTaps([]);
       setBpm(0);
+      streakRef.current = 0;
+      prevBpmRef.current = 0;
       return;
     }
 
@@ -56,6 +62,8 @@ const BpmGuesserPage = () => {
     if (diff > 2000) {
       setTaps([]);
       setBpm(0);
+      streakRef.current = 0;
+      prevBpmRef.current = 0;
       return;
     }
 
@@ -68,6 +76,21 @@ const BpmGuesserPage = () => {
 
     const averageDiff = newTaps.reduce((a, b) => a + b, 0) / newTaps.length;
     const calculatedBpm = Math.round(60000 / averageDiff);
+
+    // Check consistency for Human Metronome
+    // Only check if we have enough samples to be stable (e.g., > 3 taps)
+    if (newTaps.length > 3) {
+      if (calculatedBpm === prevBpmRef.current) {
+        streakRef.current += 1;
+        if (streakRef.current >= 15) {
+            unlockAchievement('human_metronome');
+        }
+      } else {
+        streakRef.current = 0;
+      }
+    }
+    prevBpmRef.current = calculatedBpm;
+
     setBpm(calculatedBpm);
   };
 
@@ -75,6 +98,8 @@ const BpmGuesserPage = () => {
     setTaps([]);
     setBpm(0);
     lastTapTime.current = 0;
+    streakRef.current = 0;
+    prevBpmRef.current = 0;
   };
 
   const cardStyle = {

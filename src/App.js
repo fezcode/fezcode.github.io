@@ -11,6 +11,7 @@ import { AnimationProvider } from './context/AnimationContext'; // Import Animat
 import { CommandPaletteProvider } from './context/CommandPaletteContext';
 import { VisualSettingsProvider } from './context/VisualSettingsContext';
 import { AchievementProvider } from './context/AchievementContext';
+import AchievementListeners from './components/AchievementListeners';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,6 +48,7 @@ function App() {
       <Router>
         <ToastProvider>
           <AchievementProvider>
+            <AchievementListeners />
             <VisualSettingsProvider>
               <DigitalRain isActive={isRainActive} />
               <ScrollToTop />
