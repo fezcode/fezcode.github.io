@@ -736,4 +736,11 @@ export const ACHIEVEMENTS = [
     icon: <SkullIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
+  {
+    id: 'cheater',
+    title: 'Rule Breaker',
+    description: 'Admitting it is the first step.',
+    icon: <SkullIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
 ];
