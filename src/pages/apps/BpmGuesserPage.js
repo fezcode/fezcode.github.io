@@ -83,7 +83,7 @@ const BpmGuesserPage = () => {
       if (calculatedBpm === prevBpmRef.current) {
         streakRef.current += 1;
         if (streakRef.current >= 15) {
-            unlockAchievement('human_metronome');
+          unlockAchievement('human_metronome');
         }
       } else {
         streakRef.current = 0;

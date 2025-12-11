@@ -127,12 +127,16 @@ const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
 const AbstractWavesPage = lazy(() => import('../pages/apps/AbstractWavesPage'));
-const TopographicMapPage = lazy(() => import('../pages/apps/TopographicMapPage'));
+const TopographicMapPage = lazy(
+  () => import('../pages/apps/TopographicMapPage'),
+);
 const RotaryPhonePage = lazy(() => import('../pages/apps/RotaryPhonePage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
-const RoadmapItemDetailPage = lazy(() => import('../pages/roadmap/RoadmapItemDetailPage'));
+const RoadmapItemDetailPage = lazy(
+  () => import('../pages/roadmap/RoadmapItemDetailPage'),
+);
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));

@@ -1,22 +1,28 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   DownloadSimple,
   ArrowsClockwise,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import {useToast} from '../../hooks/useToast';
+import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const AbstractWavesPage = () => {
   useSeo({
     title: 'Abstract Waves | Fezcodex',
     description: 'Generate mesmerizing black and white abstract wave patterns.',
-    keywords: ['waves', 'generative art', 'abstract', 'black and white', 'canvas'],
+    keywords: [
+      'waves',
+      'generative art',
+      'abstract',
+      'black and white',
+      'canvas',
+    ],
   });
 
-  const {addToast} = useToast();
+  const { addToast } = useToast();
   const canvasRef = useRef(null);
 
   // --- Parameters ---
@@ -50,16 +56,19 @@ const AbstractWavesPage = () => {
         const yBase = startY + i * perspective;
 
         ctx.beginPath();
-        for (let x = 0; x <= w; x += 5) { // Step size 5 for performance
+        for (let x = 0; x <= w; x += 5) {
+          // Step size 5 for performance
           // Create a complex wave by combining sine waves and noise
           const distFromCenter = Math.abs(x - w / 2);
           const dampener = Math.max(0, 1 - distFromCenter / (w / 2)); // 1 at center, 0 at edges
 
           // Main wave
-          let y = yBase + Math.sin(x * frequency + phase + (i * 0.1)) * amplitude * dampener;
+          let y =
+            yBase +
+            Math.sin(x * frequency + phase + i * 0.1) * amplitude * dampener;
 
           // Add some "noise" or irregularity
-          y += Math.cos(x * frequency * 2.5 + (i * 0.5)) * (noise * dampener);
+          y += Math.cos(x * frequency * 2.5 + i * 0.5) * (noise * dampener);
 
           if (x === 0) {
             ctx.moveTo(x, y);
@@ -82,7 +91,17 @@ const AbstractWavesPage = () => {
         }
       }
     },
-    [lineCount, amplitude, frequency, perspective, noise, phase, lineWidth, fill, inverted]
+    [
+      lineCount,
+      amplitude,
+      frequency,
+      perspective,
+      noise,
+      phase,
+      lineWidth,
+      fill,
+      inverted,
+    ],
   );
 
   // Effect to redraw
@@ -136,10 +155,10 @@ const AbstractWavesPage = () => {
           to="/apps"
           className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
         >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/>{' '}
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
           Back to Apps
         </Link>
-        <BreadcrumbTitle title="Abstract Waves" slug="aw"/>
+        <BreadcrumbTitle title="Abstract Waves" slug="aw" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-grow">
           {/* Controls */}
@@ -149,14 +168,14 @@ const AbstractWavesPage = () => {
                 onClick={randomizeParams}
                 className="flex-1 py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-900 flex items-center justify-center gap-2 transition-colors"
               >
-                <ArrowsClockwise size={20}/> Randomize
+                <ArrowsClockwise size={20} /> Randomize
               </button>
               <button
                 onClick={handleDownload}
                 className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200"
                 title="Download"
               >
-                <DownloadSimple size={24}/>
+                <DownloadSimple size={24} />
               </button>
             </div>
 
@@ -169,7 +188,9 @@ const AbstractWavesPage = () => {
                   onChange={(e) => setInverted(e.target.checked)}
                   className="w-4 h-4 accent-black"
                 />
-                <span className="text-sm font-medium text-gray-700">Invert Colors</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Invert Colors
+                </span>
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
                 <input
@@ -178,7 +199,9 @@ const AbstractWavesPage = () => {
                   onChange={(e) => setFill(e.target.checked)}
                   className="w-4 h-4 accent-black"
                 />
-                <span className="text-sm font-medium text-gray-700">Opaque Lines</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Opaque Lines
+                </span>
               </label>
             </div>
 
@@ -285,18 +308,18 @@ const AbstractWavesPage = () => {
               </div>
             </div>
             <div className="bg-gray-100 p-3 rounded-lg text-xs text-gray-600">
-              <strong>Tip:</strong> "Opaque Lines" hides the waves behind the current one, creating a 3D landscape
-              effect similar to the famous "Unknown Pleasures" album cover.
+              <strong>Tip:</strong> "Opaque Lines" hides the waves behind the
+              current one, creating a 3D landscape effect similar to the famous
+              "Unknown Pleasures" album cover.
             </div>
           </div>
 
           {/* Canvas */}
-          <div
-            className="lg:col-span-2 bg-white rounded-xl shadow-lg border border-gray-200 p-4 flex items-center justify-center overflow-hidden">
+          <div className="lg:col-span-2 bg-white rounded-xl shadow-lg border border-gray-200 p-4 flex items-center justify-center overflow-hidden">
             <canvas
               ref={canvasRef}
               className="max-w-full h-auto rounded-lg shadow-inner border border-gray-100"
-              style={{maxHeight: '600px'}}
+              style={{ maxHeight: '600px' }}
             />
           </div>
         </div>

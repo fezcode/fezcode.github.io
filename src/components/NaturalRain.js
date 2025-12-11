@@ -39,13 +39,13 @@ const NaturalRain = () => {
               duration: drop.duration,
               repeat: Infinity,
               delay: drop.delay,
-              ease: "linear",
+              ease: 'linear',
             },
             x: {
               duration: drop.duration,
               repeat: Infinity,
               delay: drop.delay,
-              ease: "easeInOut",
+              ease: 'easeInOut',
             },
             opacity: {
               duration: drop.duration,

@@ -106,6 +106,9 @@ const CommandPalette = ({
     if (lowerTerm === 'command palette' || lowerTerm === 'the hacker') {
       unlockAchievement('the_paradox');
     }
+    if (lowerTerm === '0028:c0de1337') {
+      unlockAchievement('code_1337');
+    }
   }, [searchTerm, unlockAchievement]);
 
   useEffect(() => {
@@ -404,7 +407,9 @@ const CommandPalette = ({
           toggleGarden();
           addToast({
             title: !isGarden ? 'Garden Mode On' : 'Garden Mode Off',
-            message: !isGarden ? 'Bloom where you are planted.' : 'Winter is coming.',
+            message: !isGarden
+              ? 'Bloom where you are planted.'
+              : 'Winter is coming.',
             duration: 2000,
           });
           break;
@@ -412,7 +417,9 @@ const CommandPalette = ({
           toggleAutumn();
           addToast({
             title: !isAutumn ? 'Autumn Mode On' : 'Autumn Mode Off',
-            message: !isAutumn ? 'The leaves are falling.' : 'Spring has sprung.',
+            message: !isAutumn
+              ? 'The leaves are falling.'
+              : 'Spring has sprung.',
             duration: 2000,
           });
           break;
@@ -420,7 +427,9 @@ const CommandPalette = ({
           toggleRain();
           addToast({
             title: !isRain ? 'Rain Mode On' : 'Rain Mode Off',
-            message: !isRain ? 'It\'s raining, it\'s pouring.' : 'The sun is out.',
+            message: !isRain
+              ? "It's raining, it's pouring."
+              : 'The sun is out.',
             duration: 2000,
           });
           break;

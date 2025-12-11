@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProjectCard from '../components/ProjectCard';
-import {useProjects} from '../utils/projectParser';
+import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
-import {ArrowLeftIcon} from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { useAchievements } from '../context/AchievementContext';
 
 const ProjectsPage = () => {
@@ -25,7 +25,7 @@ const ProjectsPage = () => {
     twitterDescription: 'A collection of my work and experiments.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
-  const {projects, loading, error} = useProjects();
+  const { projects, loading, error } = useProjects();
   const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
@@ -67,10 +67,8 @@ const ProjectsPage = () => {
   return (
     <div className="relative min-h-screen bg-[#020617] overflow-hidden">
       {/* Ambient Background Glow */}
-      <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-900/20 rounded-full blur-3xl -z-10 opacity-50"/>
-      <div
-        className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-30"/>
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-900/20 rounded-full blur-3xl -z-10 opacity-50" />
+      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-30" />
 
       <div className="relative py-16 sm:py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center mb-20">
@@ -78,7 +76,7 @@ const ProjectsPage = () => {
             to="/"
             className="inline-flex items-center justify-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-mono tracking-widest uppercase mb-8 border-b border-cyan-900/50 pb-1 hover:border-cyan-400"
           >
-            <ArrowLeftIcon className="text-lg"/>
+            <ArrowLeftIcon className="text-lg" />
             Return to Base
           </Link>
 
@@ -96,12 +94,11 @@ const ProjectsPage = () => {
           </p>
         </div>
 
-        <div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 grid-flow-row-dense perspective-1000">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 grid-flow-row-dense perspective-1000">
           {projects.map((project) => (
             <ProjectCard
               key={project.slug}
-              project={{...project, description: project.shortDescription}}
+              project={{ ...project, description: project.shortDescription }}
               size={project.size}
             />
           ))}

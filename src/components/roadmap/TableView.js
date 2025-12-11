@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { MagnifyingGlass, Funnel, CaretUp, CaretDown, Check, Lightning, ArrowsDownUp } from '@phosphor-icons/react';
-import { getStatusClasses, getPriorityClasses } from '../../utils/roadmapHelpers';
+import {
+  MagnifyingGlass,
+  Funnel,
+  CaretUp,
+  CaretDown,
+  Check,
+  Lightning,
+  ArrowsDownUp,
+} from '@phosphor-icons/react';
+import {
+  getStatusClasses,
+  getPriorityClasses,
+} from '../../utils/roadmapHelpers';
 
 const TableView = ({ issuesData = [] }) => {
   const navigate = useNavigate();
   const [sortBy, setSortBy] = useState('title');
   const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
-  const [activeFilters, setActiveFilters] = useState(['Planned', 'In Progress', 'On Hold', 'Completed']);
+  const [activeFilters, setActiveFilters] = useState([
+    'Planned',
+    'In Progress',
+    'On Hold',
+    'Completed',
+  ]);
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleFilterChange = (status) => {
@@ -19,10 +35,15 @@ const TableView = ({ issuesData = [] }) => {
   };
 
   const filteredApps = issuesData.filter((app) => {
-    const matchesFilter = activeFilters.length === 0 || activeFilters.includes(app.status || 'Planned');
-    const matchesSearch = (app.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
-                          (app.description?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
-                          (app.epic?.toLowerCase() || '').includes(searchQuery.toLowerCase());
+    const matchesFilter =
+      activeFilters.length === 0 ||
+      activeFilters.includes(app.status || 'Planned');
+    const matchesSearch =
+      (app.title?.toLowerCase() || '').includes(searchQuery.toLowerCase()) ||
+      (app.description?.toLowerCase() || '').includes(
+        searchQuery.toLowerCase(),
+      ) ||
+      (app.epic?.toLowerCase() || '').includes(searchQuery.toLowerCase());
     return matchesFilter && matchesSearch;
   });
 
@@ -60,9 +81,19 @@ const TableView = ({ issuesData = [] }) => {
 
   const SortIcon = ({ column }) => {
     if (sortBy !== column) {
-      return <ArrowsDownUp size={14} weight="bold" className="text-gray-500 opacity-70 group-hover:opacity-100 group-hover:text-primary-400 transition-all" />;
+      return (
+        <ArrowsDownUp
+          size={14}
+          weight="bold"
+          className="text-gray-500 opacity-70 group-hover:opacity-100 group-hover:text-primary-400 transition-all"
+        />
+      );
     }
-    return sortOrder === 'asc' ? <CaretUp weight="bold" size={14} className="text-primary-400" /> : <CaretDown weight="bold" size={14} className="text-primary-400" />;
+    return sortOrder === 'asc' ? (
+      <CaretUp weight="bold" size={14} className="text-primary-400" />
+    ) : (
+      <CaretDown weight="bold" size={14} className="text-primary-400" />
+    );
   };
 
   return (
@@ -72,7 +103,10 @@ const TableView = ({ issuesData = [] }) => {
         {/* Search */}
         <div className="relative w-full lg:max-w-md group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <MagnifyingGlass className="text-gray-500 group-focus-within:text-primary-400 transition-colors" size={20} />
+            <MagnifyingGlass
+              className="text-gray-500 group-focus-within:text-primary-400 transition-colors"
+              size={20}
+            />
           </div>
           <input
             type="text"
@@ -89,24 +123,27 @@ const TableView = ({ issuesData = [] }) => {
             <Funnel size={16} className="mr-2" /> Filter Status:
           </div>
           <div className="flex flex-wrap justify-center gap-2">
-            {['Planned', 'In Progress', 'Completed', 'On Hold'].map((status) => (
-              <button
-                key={status}
-                onClick={() => handleFilterChange(status)}
-                className={`
+            {['Planned', 'In Progress', 'Completed', 'On Hold'].map(
+              (status) => (
+                <button
+                  key={status}
+                  onClick={() => handleFilterChange(status)}
+                  className={`
                   group relative px-3 py-1.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 select-none
-                  ${activeFilters.includes(status)
-                    ? `${getStatusClasses(status)} shadow-md ring-1 ring-white/10`
-                    : 'bg-gray-800/40 border border-gray-700 text-gray-500 hover:border-gray-600 hover:bg-gray-800 hover:text-gray-300'
+                  ${
+                    activeFilters.includes(status)
+                      ? `${getStatusClasses(status)} shadow-md ring-1 ring-white/10`
+                      : 'bg-gray-800/40 border border-gray-700 text-gray-500 hover:border-gray-600 hover:bg-gray-800 hover:text-gray-300'
                   }
                 `}
-              >
-                <span className="flex items-center gap-1.5">
-                  {activeFilters.includes(status) && <Check weight="bold" />}
-                  {status}
-                </span>
-              </button>
-            ))}
+                >
+                  <span className="flex items-center gap-1.5">
+                    {activeFilters.includes(status) && <Check weight="bold" />}
+                    {status}
+                  </span>
+                </button>
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -161,7 +198,10 @@ const TableView = ({ issuesData = [] }) => {
                     `}
                   >
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <Link to={`/roadmap/${app.id}`} className="text-sm font-mono font-bold text-white group-hover:text-primary-400 transition-colors">
+                      <Link
+                        to={`/roadmap/${app.id}`}
+                        className="text-sm font-mono font-bold text-white group-hover:text-primary-400 transition-colors"
+                      >
                         {app.title}
                       </Link>
                     </td>
@@ -172,24 +212,37 @@ const TableView = ({ issuesData = [] }) => {
                           {app.epic}
                         </span>
                       ) : (
-                        <span className="text-gray-600 font-mono text-xs">-</span>
+                        <span className="text-gray-600 font-mono text-xs">
+                          -
+                        </span>
                       )}
                     </td>
-                    <td className="px-6 py-4 text-sm text-gray-400 font-mono max-w-xs truncate" title={app.description}>
+                    <td
+                      className="px-6 py-4 text-sm text-gray-400 font-mono max-w-xs truncate"
+                      title={app.description}
+                    >
                       {app.description}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`px-2.5 py-1 inline-flex items-center text-[10px] font-mono font-bold uppercase tracking-wide rounded-full ${getStatusClasses(app.status)} shadow-sm`}>
+                      <span
+                        className={`px-2.5 py-1 inline-flex items-center text-[10px] font-mono font-bold uppercase tracking-wide rounded-full ${getStatusClasses(app.status)} shadow-sm`}
+                      >
                         {app.status || 'Planned'}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <span className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wide ${getPriorityClasses(app.priority)}`}>
+                      <span
+                        className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wide ${getPriorityClasses(app.priority)}`}
+                      >
                         {app.priority || 'Low'}
                       </span>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-xs font-mono text-gray-500">
-                      {new Date(app.created_at).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                      {new Date(app.created_at).toLocaleDateString(undefined, {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric',
+                      })}
                     </td>
                     <td className="px-6 py-4 text-xs text-gray-500 font-mono italic max-w-xs truncate">
                       {app.notes || '-'}
@@ -198,13 +251,20 @@ const TableView = ({ issuesData = [] }) => {
                 ))
               ) : (
                 <tr>
-                  <td colSpan="7" className="px-6 py-16 text-center text-gray-500 font-mono">
+                  <td
+                    colSpan="7"
+                    className="px-6 py-16 text-center text-gray-500 font-mono"
+                  >
                     <div className="flex flex-col items-center justify-center gap-4">
                       <div className="p-4 rounded-full bg-gray-800/50">
                         <MagnifyingGlass size={32} className="opacity-50" />
                       </div>
-                      <p className="text-lg font-medium text-gray-400">No issues found</p>
-                      <p className="text-sm">Try adjusting your search or filters.</p>
+                      <p className="text-lg font-medium text-gray-400">
+                        No issues found
+                      </p>
+                      <p className="text-sm">
+                        Try adjusting your search or filters.
+                      </p>
                     </div>
                   </td>
                 </tr>
@@ -217,7 +277,11 @@ const TableView = ({ issuesData = [] }) => {
       {/* Footer info */}
       <div className="flex justify-end items-center px-2">
         <span className="text-xs font-mono text-gray-600 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
-          Showing <span className="text-primary-400 font-bold">{sortedApps.length}</span> of {issuesData.length} issues
+          Showing{' '}
+          <span className="text-primary-400 font-bold">
+            {sortedApps.length}
+          </span>{' '}
+          of {issuesData.length} issues
         </span>
       </div>
     </div>

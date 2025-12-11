@@ -6,7 +6,8 @@ import {
   CloudSnowIcon,
   FireIcon,
   SpeakerHighIcon,
-  SpeakerSlashIcon, WindIcon
+  SpeakerSlashIcon,
+  WindIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 

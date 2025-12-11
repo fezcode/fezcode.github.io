@@ -1,14 +1,14 @@
 const STATUS_COLORS = {
-  'Planned': 'blue',
+  Planned: 'blue',
   'In Progress': 'orange',
-  'Completed': 'green',
+  Completed: 'green',
   'On Hold': 'red',
 };
 
 const PRIORITY_COLORS = {
-  'High': 'red',
-  'Medium': 'yellow',
-  'Low': 'green',
+  High: 'red',
+  Medium: 'yellow',
+  Low: 'green',
 };
 
 // Define explicit styles so Tailwind JIT can detect them
@@ -53,4 +53,9 @@ const statusTextColor = (status) => {
   return ''; // Text color is now handled in getStatusClasses/getPriorityClasses
 };
 
-export { getStatusClasses, getPriorityClasses, getOnlyBgStatusColor, statusTextColor };
+export {
+  getStatusClasses,
+  getPriorityClasses,
+  getOnlyBgStatusColor,
+  statusTextColor,
+};

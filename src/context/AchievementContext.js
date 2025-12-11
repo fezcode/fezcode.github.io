@@ -2,7 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useToast } from '../hooks/useToast';
 import { ACHIEVEMENTS } from '../config/achievements';
-import {TrophyIcon} from "@phosphor-icons/react";
+import { TrophyIcon } from '@phosphor-icons/react';
 
 const AchievementContext = createContext();
 
@@ -17,7 +17,10 @@ export const AchievementProvider = ({ children }) => {
     {},
   );
   const [readPosts, setReadPosts] = usePersistentState('read-posts', []);
-  const [showAchievementToast, setShowAchievementToast] = usePersistentState('show-achievement-toasts', false);
+  const [showAchievementToast, setShowAchievementToast] = usePersistentState(
+    'show-achievement-toasts',
+    false,
+  );
   const { addToast } = useToast();
 
   const toggleAchievementToast = () => {
@@ -49,9 +52,9 @@ export const AchievementProvider = ({ children }) => {
         icon: <TrophyIcon weight="duotone" />,
         type: 'gold',
         links: [
-            { label: 'Settings', to: '/settings' },
-            { label: 'Trophy Room', to: '/achievements' }
-        ]
+          { label: 'Settings', to: '/settings' },
+          { label: 'Trophy Room', to: '/achievements' },
+        ],
       });
     }
   };
@@ -82,7 +85,13 @@ export const AchievementProvider = ({ children }) => {
 
   return (
     <AchievementContext.Provider
-      value={{ unlockedAchievements, unlockAchievement, trackReadingProgress, showAchievementToast, toggleAchievementToast }}
+      value={{
+        unlockedAchievements,
+        unlockAchievement,
+        trackReadingProgress,
+        showAchievementToast,
+        toggleAchievementToast,
+      }}
     >
       {children}
     </AchievementContext.Provider>

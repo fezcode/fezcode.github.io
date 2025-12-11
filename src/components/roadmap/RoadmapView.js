@@ -39,13 +39,18 @@ const RoadmapView = ({ issuesData = [] }) => {
       {statusOrder.map((status) => {
         const isHidden = hiddenColumns.includes(status);
         return (
-          <div key={status} className="bg-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg p-4 border border-gray-800">
-            <h3
-              className={`mb-4 flex items-center justify-between`}
-            >
-              <span className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-sm font-mono font-bold uppercase tracking-wider ${getStatusClasses(status)}`}>
+          <div
+            key={status}
+            className="bg-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg p-4 border border-gray-800"
+          >
+            <h3 className={`mb-4 flex items-center justify-between`}>
+              <span
+                className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-sm font-mono font-bold uppercase tracking-wider ${getStatusClasses(status)}`}
+              >
                 {status}
-                <span className="opacity-70">({groupIssues[status]?.length || 0})</span>
+                <span className="opacity-70">
+                  ({groupIssues[status]?.length || 0})
+                </span>
               </span>
               <button
                 onClick={() => toggleColumnVisibility(status)}

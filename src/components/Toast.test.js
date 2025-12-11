@@ -7,7 +7,7 @@ const renderToast = (props) => {
   return render(
     <BrowserRouter>
       <Toast {...props} />
-    </BrowserRouter>
+    </BrowserRouter>,
   );
 };
 
@@ -45,10 +45,16 @@ describe('Toast Component', () => {
       removeToast: mockRemoveToast,
     });
 
-    expect(screen.getByRole('link', { name: 'Internal Link' })).toHaveAttribute('href', '/internal');
+    expect(screen.getByRole('link', { name: 'Internal Link' })).toHaveAttribute(
+      'href',
+      '/internal',
+    );
 
     expect(screen.getByText('External Link')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'External Link' })).toHaveAttribute('href', 'https://example.com');
+    expect(screen.getByRole('link', { name: 'External Link' })).toHaveAttribute(
+      'href',
+      'https://example.com',
+    );
 
     expect(screen.getByText('Action Button')).toBeInTheDocument();
     const actionButton = screen.getByText('Action Button');
@@ -59,10 +65,10 @@ describe('Toast Component', () => {
 
   test('calls removeToast when close button is clicked', () => {
     renderToast({
-        id: 1,
-        title: 'Close Test',
-        message: 'Testing Close',
-        removeToast: mockRemoveToast
+      id: 1,
+      title: 'Close Test',
+      message: 'Testing Close',
+      removeToast: mockRemoveToast,
     });
 
     const closeButton = screen.getByRole('button'); // The X button

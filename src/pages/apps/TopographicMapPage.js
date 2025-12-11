@@ -1,12 +1,12 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   DownloadSimple,
   ArrowsClockwise,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import {useToast} from '../../hooks/useToast';
+import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 // --- Simple Noise Implementation ---
@@ -42,27 +42,51 @@ const noise = (x, y, z) => {
   const u = fade(x);
   const v = fade(y);
   const w = fade(z);
-  const A = PERM[X] + Y, AA = PERM[A] + Z, AB = PERM[A + 1] + Z;
-  const B = PERM[X + 1] + Y, BA = PERM[B] + Z, BB = PERM[B + 1] + Z;
+  const A = PERM[X] + Y,
+    AA = PERM[A] + Z,
+    AB = PERM[A + 1] + Z;
+  const B = PERM[X + 1] + Y,
+    BA = PERM[B] + Z,
+    BB = PERM[B + 1] + Z;
 
-  return lerp(w, lerp(v, lerp(u, grad(PERM[AA], x, y, z),
-        grad(PERM[BA], x - 1, y, z)),
-      lerp(u, grad(PERM[AB], x, y - 1, z),
-        grad(PERM[BB], x - 1, y - 1, z))),
-    lerp(v, lerp(u, grad(PERM[AA + 1], x, y, z - 1),
-        grad(PERM[BA + 1], x - 1, y, z - 1)),
-      lerp(u, grad(PERM[AB + 1], x, y - 1, z - 1),
-        grad(PERM[BB + 1], x - 1, y - 1, z - 1))));
+  return lerp(
+    w,
+    lerp(
+      v,
+      lerp(u, grad(PERM[AA], x, y, z), grad(PERM[BA], x - 1, y, z)),
+      lerp(u, grad(PERM[AB], x, y - 1, z), grad(PERM[BB], x - 1, y - 1, z)),
+    ),
+    lerp(
+      v,
+      lerp(
+        u,
+        grad(PERM[AA + 1], x, y, z - 1),
+        grad(PERM[BA + 1], x - 1, y, z - 1),
+      ),
+      lerp(
+        u,
+        grad(PERM[AB + 1], x, y - 1, z - 1),
+        grad(PERM[BB + 1], x - 1, y - 1, z - 1),
+      ),
+    ),
+  );
 };
 
 const TopographicMapPage = () => {
   useSeo({
     title: 'Topographic Map Generator | Fezcodex',
     description: 'Generate seamless topographic contour maps.',
-    keywords: ['topographic', 'map', 'contour', 'height map', 'generative art', 'noise'],
+    keywords: [
+      'topographic',
+      'map',
+      'contour',
+      'height map',
+      'generative art',
+      'noise',
+    ],
   });
 
-  const {addToast} = useToast();
+  const { addToast } = useToast();
   const canvasRef = useRef(null);
 
   // --- Parameters ---
@@ -91,25 +115,26 @@ const TopographicMapPage = () => {
 
           // Octaves for detail
           for (let o = 0; o < 4; o++) {
-            value += noise(
-              (x + seed) * noiseScale * frequency,
-              (y + seed) * noiseScale * frequency,
-              0
-            ) * amplitude;
+            value +=
+              noise(
+                (x + seed) * noiseScale * frequency,
+                (y + seed) * noiseScale * frequency,
+                0,
+              ) * amplitude;
             maxValue += amplitude;
             amplitude *= smoothness;
             frequency *= 2;
           }
 
           // Normalize to 0-1
-          value = (value / maxValue) + 0.5;
+          value = value / maxValue + 0.5;
           value = Math.max(0, Math.min(1, value));
 
           // Contour Logic
           const levelStep = 1 / levels;
           const levelIndex = Math.floor(value / levelStep);
           const levelValue = levelIndex * levelStep;
-          const distToNext = Math.abs(value - ((levelIndex + 1) * levelStep));
+          const distToNext = Math.abs(value - (levelIndex + 1) * levelStep);
           const distToPrev = Math.abs(value - levelValue);
           const distToLine = Math.min(distToNext, distToPrev);
 
@@ -117,13 +142,14 @@ const TopographicMapPage = () => {
           // Determine "line strength" based on distance and width
           // The distToLine is in "value space" (0-1), so we need to map line width to that space roughly
           // This is an approximation.
-          const thicknessThreshold = (0.003 * lineWidth) / Math.max(0.2, smoothness); // Adjust thickness calc
+          const thicknessThreshold =
+            (0.003 * lineWidth) / Math.max(0.2, smoothness); // Adjust thickness calc
 
           // Smoothstep-like fade
           // 1.0 = black (center of line), 0.0 = white (far from line)
           let lineAlpha = 0;
           if (distToLine < thicknessThreshold) {
-            lineAlpha = 1.0 - (distToLine / thicknessThreshold);
+            lineAlpha = 1.0 - distToLine / thicknessThreshold;
             // Sharpen the curve a bit
             lineAlpha = Math.pow(lineAlpha, 0.5);
           }
@@ -133,19 +159,23 @@ const TopographicMapPage = () => {
           if (showColors) {
             // Simple elevation coloring
             let r, g, b;
-            if (value < 0.3) { // Water
+            if (value < 0.3) {
+              // Water
               r = 60;
               g = 120;
               b = 200;
-            } else if (value < 0.4) { // Sand
+            } else if (value < 0.4) {
+              // Sand
               r = 240;
               g = 230;
               b = 140;
-            } else if (value < 0.7) { // Grass
+            } else if (value < 0.7) {
+              // Grass
               r = 60;
               g = 180;
               b = 60;
-            } else { // Rock/Snow
+            } else {
+              // Rock/Snow
               const val = Math.floor(value * 255);
               r = val;
               g = val;
@@ -173,7 +203,7 @@ const TopographicMapPage = () => {
       }
       ctx.putImageData(imgData, 0, 0);
     },
-    [scale, levels, lineWidth, seed, showColors, smoothness]
+    [scale, levels, lineWidth, seed, showColors, smoothness],
   );
 
   // Effect to redraw
@@ -230,10 +260,10 @@ const TopographicMapPage = () => {
           to="/apps"
           className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
         >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/>{' '}
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
           Back to Apps
         </Link>
-        <BreadcrumbTitle title="Topographic Maps" slug="topo"/>
+        <BreadcrumbTitle title="Topographic Maps" slug="topo" />
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 flex-grow">
           {/* Controls */}
@@ -243,14 +273,14 @@ const TopographicMapPage = () => {
                 onClick={randomizeParams}
                 className="flex-1 py-2 px-4 bg-gray-800 text-white rounded-lg hover:bg-gray-900 flex items-center justify-center gap-2 transition-colors"
               >
-                <ArrowsClockwise size={20}/> Randomize
+                <ArrowsClockwise size={20} /> Randomize
               </button>
               <button
                 onClick={handleDownload}
                 className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200"
                 title="Download"
               >
-                <DownloadSimple size={24}/>
+                <DownloadSimple size={24} />
               </button>
             </div>
 
@@ -262,7 +292,9 @@ const TopographicMapPage = () => {
                   onChange={(e) => setShowColors(e.target.checked)}
                   className="w-4 h-4 accent-black"
                 />
-                <span className="text-sm font-medium text-gray-700">Show Elevation Colors</span>
+                <span className="text-sm font-medium text-gray-700">
+                  Show Elevation Colors
+                </span>
               </label>
             </div>
 
@@ -327,18 +359,18 @@ const TopographicMapPage = () => {
               </div>
             </div>
             <div className="bg-blue-50 p-3 rounded-lg text-xs text-blue-800">
-              <strong>Idea:</strong> Toggle "Elevation Colors" to see a classic physical map style, or keep it black and
-              white for a sleek technical drawing look.
+              <strong>Idea:</strong> Toggle "Elevation Colors" to see a classic
+              physical map style, or keep it black and white for a sleek
+              technical drawing look.
             </div>
           </div>
 
           {/* Canvas */}
-          <div
-            className="lg:col-span-2 bg-white rounded-xl shadow-lg border border-gray-200 p-4 flex items-center justify-center overflow-hidden">
+          <div className="lg:col-span-2 bg-white rounded-xl shadow-lg border border-gray-200 p-4 flex items-center justify-center overflow-hidden">
             <canvas
               ref={canvasRef}
               className="max-w-full h-auto rounded-lg shadow-inner border border-gray-100"
-              style={{maxHeight: '600px'}}
+              style={{ maxHeight: '600px' }}
             />
           </div>
         </div>

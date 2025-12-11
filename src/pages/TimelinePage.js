@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {  ArrowLeftIcon, StarIcon, TimerIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, StarIcon, TimerIcon } from '@phosphor-icons/react';
 import { appIcons } from '../utils/appIcons';
 import { motion } from 'framer-motion';
 import useSeo from '../hooks/useSeo';

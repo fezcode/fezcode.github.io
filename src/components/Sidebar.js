@@ -251,7 +251,9 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                 onClick={() => toggleSection('isAppsOpen')}
                 className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isAppsActive ? 'text-sidebar-highlight' : 'text-gray-100'}`}
               >
-                <span className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-sidebar-highlight' : 'text-white'}`}>
+                <span
+                  className={`flex items-center gap-2 font-sans ${isAppsActive ? 'text-sidebar-highlight' : 'text-white'}`}
+                >
                   <SquaresFourIcon size={16} />
                   <span>Apps</span>
                 </span>
@@ -267,7 +269,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                     <span>Pinned Apps</span>
                   </NavLink>
                   <NavLink to="/apps" className={getLinkClass}>
-                  {/*<NavLink to="/apps" className={getLinkClass} end>*/}
+                    {/*<NavLink to="/apps" className={getLinkClass} end>*/}
                     <SquaresFourIcon size={24} />
                     <span>All Apps</span>
                   </NavLink>
@@ -284,7 +286,9 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
                 onClick={() => toggleSection('isStatusOpen')}
                 className={`flex items-center justify-between w-full text-sm font-normal uppercase tracking-wider mb-4 focus:outline-none ${isStatusActive ? 'text-sidebar-highlight' : 'text-gray-100'}`}
               >
-                <span className={`flex items-center gap-2 font-sans ${isStatusActive ? 'text-sidebar-highlight' : 'text-white'}`}>
+                <span
+                  className={`flex items-center gap-2 font-sans ${isStatusActive ? 'text-sidebar-highlight' : 'text-white'}`}
+                >
                   <SkullIcon size={16} />
                   <span>Status</span>
                 </span>

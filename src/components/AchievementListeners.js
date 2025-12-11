@@ -1,32 +1,32 @@
-import {useEffect, useState} from 'react';
-import {useAchievements} from '../context/AchievementContext';
+import { useEffect, useState } from 'react';
+import { useAchievements } from '../context/AchievementContext';
 
 const AchievementListeners = () => {
-  const {unlockAchievement} = useAchievements();
+  const { unlockAchievement } = useAchievements();
   const [konamiIndex, setKonamiIndex] = useState(0);
 
   const [cheaterIndex, setCheaterIndex] = useState(0);
-    // Night Owl Check
-    useEffect(() => {
-      const checkNightOwl = () => {
-        const now = new Date();
-        const hour = now.getHours();
-        // Between 3 AM (03:00) and 5 AM (05:00)
-        if (hour >= 3 && hour < 5) {
-          unlockAchievement('night_owl');
-        }
-      };
-      checkNightOwl();
-    }, [unlockAchievement]);
-
-    // Time Traveller Check
-    useEffect(() => {
-      if (new Date().getFullYear() < 2000) {
-        unlockAchievement('time_traveller_system');
+  // Night Owl Check
+  useEffect(() => {
+    const checkNightOwl = () => {
+      const now = new Date();
+      const hour = now.getHours();
+      // Between 3 AM (03:00) and 5 AM (05:00)
+      if (hour >= 3 && hour < 5) {
+        unlockAchievement('night_owl');
       }
-    }, [unlockAchievement]);
+    };
+    checkNightOwl();
+  }, [unlockAchievement]);
 
-    // Konami Code Listener
+  // Time Traveller Check
+  useEffect(() => {
+    if (new Date().getFullYear() < 2000) {
+      unlockAchievement('time_traveller_system');
+    }
+  }, [unlockAchievement]);
+
+  // Konami Code Listener
   useEffect(() => {
     // Konami Code Sequence: Up, Up, Down, Down, Left, Right, Left, Right, B, A
     const konamiCode = [

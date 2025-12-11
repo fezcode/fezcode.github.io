@@ -1,7 +1,7 @@
-import React, {useState, useRef, useEffect} from 'react';
-import {motion, useMotionValue, animate} from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, useMotionValue, animate } from 'framer-motion';
 
-const RotaryDial = ({onDial}) => {
+const RotaryDial = ({ onDial }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [activeDigit, setActiveDigit] = useState(null);
   const rotation = useMotionValue(0);
@@ -47,7 +47,7 @@ const RotaryDial = ({onDial}) => {
     const rect = containerRef.current.getBoundingClientRect();
     const center = {
       x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2
+      y: rect.top + rect.height / 2,
     };
 
     const currentMouseAngle = getAngle(event, center);
@@ -68,7 +68,7 @@ const RotaryDial = ({onDial}) => {
     // for a high number digit (like 9 or 0).
     // Check if adding 360 brings us into a valid positive range close to maxRot.
     // We allow a small buffer over maxRot for elasticity.
-    if (newRotation < 0 && (newRotation + 360) <= maxRot + 30) {
+    if (newRotation < 0 && newRotation + 360 <= maxRot + 30) {
       newRotation += 360;
     }
 
@@ -95,10 +95,10 @@ const RotaryDial = ({onDial}) => {
 
     // Animate back to 0
     animationControls.current = animate(rotation, 0, {
-      type: "spring",
+      type: 'spring',
       stiffness: 200,
       damping: 20,
-      mass: 1
+      mass: 1,
     });
   };
 
@@ -109,7 +109,7 @@ const RotaryDial = ({onDial}) => {
     if (isDragging) {
       window.addEventListener('mousemove', onMove);
       window.addEventListener('mouseup', onUp);
-      window.addEventListener('touchmove', onMove, {passive: false});
+      window.addEventListener('touchmove', onMove, { passive: false });
       window.addEventListener('touchend', onUp);
     }
 
@@ -133,11 +133,11 @@ const RotaryDial = ({onDial}) => {
             <div
               key={`num-${digit}`}
               className="absolute inset-0 flex items-center justify-center pointer-events-none"
-              style={{transform: `rotate(${angle}deg)`}}
+              style={{ transform: `rotate(${angle}deg)` }}
             >
               <div
                 className="text-3xl font-bold text-white font-mono"
-                style={{transform: `translate(${140}%) rotate(${-angle}deg)`}}
+                style={{ transform: `translate(${140}%) rotate(${-angle}deg)` }}
               >
                 {digit}
               </div>
@@ -148,14 +148,14 @@ const RotaryDial = ({onDial}) => {
 
       <motion.div
         className="absolute inset-0 rounded-full border-4 border-transparent"
-        style={{rotate: rotation}}
+        style={{ rotate: rotation }}
       >
-        <div
-          className="absolute inset-2 rounded-full bg-gradient-to-br from-gray-800/90 to-gray-900/90 shadow-inner backdrop-blur-sm border border-gray-600">
-          <div
-            className="absolute inset-0 m-auto w-1/3 h-1/3 rounded-full bg-gray-800 border-2 border-gray-600 flex items-center justify-center shadow-lg">
+        <div className="absolute inset-2 rounded-full bg-gradient-to-br from-gray-800/90 to-gray-900/90 shadow-inner backdrop-blur-sm border border-gray-600">
+          <div className="absolute inset-0 m-auto w-1/3 h-1/3 rounded-full bg-gray-800 border-2 border-gray-600 flex items-center justify-center shadow-lg">
             <div className="text-gray-500 text-xs font-mono text-center opacity-50">
-              FEZ<br/>CODE
+              FEZ
+              <br />
+              CODE
             </div>
           </div>
 
@@ -165,17 +165,16 @@ const RotaryDial = ({onDial}) => {
               <div
                 key={`hole-${digit}`}
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
-                style={{transform: `rotate(${angle}deg)`}}
+                style={{ transform: `rotate(${angle}deg)` }}
               >
                 <div
                   className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full border-2 transition-colors duration-200 cursor-pointer pointer-events-auto
                                    ${activeDigit === digit ? 'bg-primary-500/20 border-primary-400 shadow-[0_0_15px_rgba(59,130,246,0.5)]' : 'bg-gray-950/50 border-gray-600 hover:border-gray-400'}
                                    flex items-center justify-center shadow-inner`}
-                  style={{transform: `translate(${140}%)`}}
+                  style={{ transform: `translate(${140}%)` }}
                   onMouseDown={(e) => handleStart(e, digit)}
                   onTouchStart={(e) => handleStart(e, digit)}
-                >
-                </div>
+                ></div>
               </div>
             );
           })}
@@ -184,10 +183,9 @@ const RotaryDial = ({onDial}) => {
 
       <div
         className="absolute inset-0 pointer-events-none z-10"
-        style={{transform: `rotate(${STOP_ANGLE}deg)`}}
+        style={{ transform: `rotate(${STOP_ANGLE}deg)` }}
       >
-        <div
-          className="absolute top-1/2 right-0 w-16 h-4 bg-gradient-to-r from-gray-400 to-gray-200 rounded-l-lg shadow-lg origin-right translate-x-2 -translate-y-1/2"/>
+        <div className="absolute top-1/2 right-0 w-16 h-4 bg-gradient-to-r from-gray-400 to-gray-200 rounded-l-lg shadow-lg origin-right translate-x-2 -translate-y-1/2" />
       </div>
     </div>
   );

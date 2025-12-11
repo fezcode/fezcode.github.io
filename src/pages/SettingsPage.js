@@ -12,7 +12,7 @@ import {
   ArrowCounterClockwise,
   MagicWand,
   Sidebar,
-  AppWindow
+  AppWindow,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../context/AnimationContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -34,18 +34,16 @@ const Section = ({ title, icon, children, delay = 0 }) => (
     className="bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden relative group"
   >
     <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
-      {React.cloneElement(icon, { size: 120, weight: "duotone" })}
+      {React.cloneElement(icon, { size: 120, weight: 'duotone' })}
     </div>
 
     <div className="flex items-center gap-3 mb-6 relative z-10">
       <div className="p-2 bg-primary-500/20 rounded-lg text-rose-500">
-        {React.cloneElement(icon, { size: 24, weight: "duotone" })}
+        {React.cloneElement(icon, { size: 24, weight: 'duotone' })}
       </div>
       <h2 className="text-2xl font-arvo text-white tracking-wide">{title}</h2>
     </div>
-    <div className="relative z-10">
-      {children}
-    </div>
+    <div className="relative z-10">{children}</div>
   </motion.div>
 );
 
@@ -56,7 +54,8 @@ const SettingsPage = () => {
     keywords: ['Fezcodex', 'settings', 'preferences', 'animation'],
   });
 
-  const { unlockAchievement, showAchievementToast, toggleAchievementToast } = useAchievements();
+  const { unlockAchievement, showAchievementToast, toggleAchievementToast } =
+    useAchievements();
 
   useEffect(() => {
     unlockAchievement('power_user');
@@ -72,24 +71,42 @@ const SettingsPage = () => {
   } = useAnimation();
 
   const {
-    isInverted, toggleInvert,
-    isRetro, toggleRetro,
-    isParty, toggleParty,
-    isMirror, toggleMirror,
-    isNoir, toggleNoir,
-    isTerminal, toggleTerminal,
-    isBlueprint, toggleBlueprint,
-    isSepia, toggleSepia,
-    isVaporwave, toggleVaporwave,
-    isCyberpunk, toggleCyberpunk,
-    isGameboy, toggleGameboy,
-    isComic, toggleComic,
-    isSketchbook, toggleSketchbook,
-    isHellenic, toggleHellenic,
-    isGlitch, toggleGlitch,
-    isGarden, toggleGarden,
-    isAutumn, toggleAutumn,
-    isRain, toggleRain,
+    isInverted,
+    toggleInvert,
+    isRetro,
+    toggleRetro,
+    isParty,
+    toggleParty,
+    isMirror,
+    toggleMirror,
+    isNoir,
+    toggleNoir,
+    isTerminal,
+    toggleTerminal,
+    isBlueprint,
+    toggleBlueprint,
+    isSepia,
+    toggleSepia,
+    isVaporwave,
+    toggleVaporwave,
+    isCyberpunk,
+    toggleCyberpunk,
+    isGameboy,
+    toggleGameboy,
+    isComic,
+    toggleComic,
+    isSketchbook,
+    toggleSketchbook,
+    isHellenic,
+    toggleHellenic,
+    isGlitch,
+    toggleGlitch,
+    isGarden,
+    toggleGarden,
+    isAutumn,
+    toggleAutumn,
+    isRain,
+    toggleRain,
   } = useVisualSettings();
 
   const { addToast } = useToast();
@@ -122,7 +139,8 @@ const SettingsPage = () => {
     localStorage.clear();
     addToast({
       title: 'Success',
-      message: 'All local storage data has been cleared. The page will now reload.',
+      message:
+        'All local storage data has been cleared. The page will now reload.',
       duration: 3000,
     });
 
@@ -130,10 +148,13 @@ const SettingsPage = () => {
       // Manually set the achievement to avoid restoring old state via context
       const now = new Date().toISOString();
       const cleanSlateData = {
-        clean_slate: { unlocked: true, unlockedAt: now }
+        clean_slate: { unlocked: true, unlockedAt: now },
       };
       // We use the raw key 'unlocked-achievements' as defined in AchievementContext
-      localStorage.setItem('unlocked-achievements', JSON.stringify(cleanSlateData));
+      localStorage.setItem(
+        'unlocked-achievements',
+        JSON.stringify(cleanSlateData),
+      );
 
       addToast({
         title: 'Achievement Unlocked!',
@@ -174,22 +195,26 @@ const SettingsPage = () => {
                 Settings
               </h1>
               <p className="text-lg text-gray-400 max-w-2xl">
-                Customize your experience, manage preferences, and tweak the visual engine.
+                Customize your experience, manage preferences, and tweak the
+                visual engine.
               </p>
             </div>
 
             {/* Client-Side Badge */}
             <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700 text-xs font-mono text-gray-400">
-               <DatabaseIcon size={14} />
-               <span>CLIENT-SIDE STORAGE ONLY</span>
+              <DatabaseIcon size={14} />
+              <span>CLIENT-SIDE STORAGE ONLY</span>
             </div>
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-8">
-
           {/* Animation & Performance */}
-          <Section title="Animation & Performance" icon={<FilmStrip />} delay={0.1}>
+          <Section
+            title="Animation & Performance"
+            icon={<FilmStrip />}
+            delay={0.1}
+          >
             <div className="space-y-6">
               <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
                 <CustomToggle
@@ -232,7 +257,10 @@ const SettingsPage = () => {
               {!isAnimationEnabled && (
                 <div className="flex items-start gap-3 p-4 rounded-lg bg-red-900/20 border border-red-500/20 text-red-200 text-sm">
                   <Warning size={20} className="shrink-0 mt-0.5" />
-                  <p>Detailed animation settings are disabled because the main switch is off.</p>
+                  <p>
+                    Detailed animation settings are disabled because the main
+                    switch is off.
+                  </p>
                 </div>
               )}
             </div>
@@ -249,35 +277,149 @@ const SettingsPage = () => {
                 colorTheme="rose"
               />
               <p className="mt-2 text-sm text-gray-400 ml-1">
-                When enabled, you'll receive a toast notification whenever you unlock a new achievement.
+                When enabled, you'll receive a toast notification whenever you
+                unlock a new achievement.
               </p>
             </div>
           </Section>
 
           {/* Visual Effects Grid */}
-          <Section title="Visual Effects Engine" icon={<MagicWand />} delay={0.3}>
+          <Section
+            title="Visual Effects Engine"
+            icon={<MagicWand />}
+            delay={0.3}
+          >
             <p className="mb-6 text-gray-400 text-sm">
-              Apply experimental visual filters to the entire application. Combine them at your own risk!
+              Apply experimental visual filters to the entire application.
+              Combine them at your own risk!
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-              <CustomToggle id="fx-invert" label="Invert Colors" checked={isInverted} onChange={toggleInvert} colorTheme="purple" />
-              <CustomToggle id="fx-retro" label="Retro CRT" checked={isRetro} onChange={toggleRetro} colorTheme="amber" />
-              <CustomToggle id="fx-party" label="Party Mode" checked={isParty} onChange={toggleParty} colorTheme="rose" />
-              <CustomToggle id="fx-mirror" label="Mirror World" checked={isMirror} onChange={toggleMirror} colorTheme="cyan" />
-              <CustomToggle id="fx-noir" label="Film Noir" checked={isNoir} onChange={toggleNoir} colorTheme="indigo" />
-              <CustomToggle id="fx-terminal" label="Terminal Green" checked={isTerminal} onChange={toggleTerminal} colorTheme="green" />
-              <CustomToggle id="fx-blueprint" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint} colorTheme="blue" />
-              <CustomToggle id="fx-sepia" label="Sepia Tone" checked={isSepia} onChange={toggleSepia} colorTheme="amber" />
-              <CustomToggle id="fx-vaporwave" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave} colorTheme="cyan" />
-              <CustomToggle id="fx-cyberpunk" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk} colorTheme="purple" />
-              <CustomToggle id="fx-gameboy" label="Game Boy" checked={isGameboy} onChange={toggleGameboy} colorTheme="green" />
-              <CustomToggle id="fx-comic" label="Comic Book" checked={isComic} onChange={toggleComic} colorTheme="amber" />
-              <CustomToggle id="fx-sketchbook" label="Sketchbook" checked={isSketchbook} onChange={toggleSketchbook} colorTheme="indigo" />
-              <CustomToggle id="fx-hellenic" label="Hellenic Statue" checked={isHellenic} onChange={toggleHellenic} colorTheme="blue" />
-              <CustomToggle id="fx-glitch" label="System Glitch" checked={isGlitch} onChange={toggleGlitch} colorTheme="rose" />
-              <CustomToggle id="fx-garden" label="Garden Mode" checked={isGarden} onChange={toggleGarden} colorTheme="green" />
-              <CustomToggle id="fx-autumn" label="Autumn Mode" checked={isAutumn} onChange={toggleAutumn} colorTheme="amber" />
-              <CustomToggle id="fx-rain" label="Rain Mode" checked={isRain} onChange={toggleRain} colorTheme="blue" />
+              <CustomToggle
+                id="fx-invert"
+                label="Invert Colors"
+                checked={isInverted}
+                onChange={toggleInvert}
+                colorTheme="purple"
+              />
+              <CustomToggle
+                id="fx-retro"
+                label="Retro CRT"
+                checked={isRetro}
+                onChange={toggleRetro}
+                colorTheme="amber"
+              />
+              <CustomToggle
+                id="fx-party"
+                label="Party Mode"
+                checked={isParty}
+                onChange={toggleParty}
+                colorTheme="rose"
+              />
+              <CustomToggle
+                id="fx-mirror"
+                label="Mirror World"
+                checked={isMirror}
+                onChange={toggleMirror}
+                colorTheme="cyan"
+              />
+              <CustomToggle
+                id="fx-noir"
+                label="Film Noir"
+                checked={isNoir}
+                onChange={toggleNoir}
+                colorTheme="indigo"
+              />
+              <CustomToggle
+                id="fx-terminal"
+                label="Terminal Green"
+                checked={isTerminal}
+                onChange={toggleTerminal}
+                colorTheme="green"
+              />
+              <CustomToggle
+                id="fx-blueprint"
+                label="Blueprint"
+                checked={isBlueprint}
+                onChange={toggleBlueprint}
+                colorTheme="blue"
+              />
+              <CustomToggle
+                id="fx-sepia"
+                label="Sepia Tone"
+                checked={isSepia}
+                onChange={toggleSepia}
+                colorTheme="amber"
+              />
+              <CustomToggle
+                id="fx-vaporwave"
+                label="Vaporwave"
+                checked={isVaporwave}
+                onChange={toggleVaporwave}
+                colorTheme="cyan"
+              />
+              <CustomToggle
+                id="fx-cyberpunk"
+                label="Cyberpunk"
+                checked={isCyberpunk}
+                onChange={toggleCyberpunk}
+                colorTheme="purple"
+              />
+              <CustomToggle
+                id="fx-gameboy"
+                label="Game Boy"
+                checked={isGameboy}
+                onChange={toggleGameboy}
+                colorTheme="green"
+              />
+              <CustomToggle
+                id="fx-comic"
+                label="Comic Book"
+                checked={isComic}
+                onChange={toggleComic}
+                colorTheme="amber"
+              />
+              <CustomToggle
+                id="fx-sketchbook"
+                label="Sketchbook"
+                checked={isSketchbook}
+                onChange={toggleSketchbook}
+                colorTheme="indigo"
+              />
+              <CustomToggle
+                id="fx-hellenic"
+                label="Hellenic Statue"
+                checked={isHellenic}
+                onChange={toggleHellenic}
+                colorTheme="blue"
+              />
+              <CustomToggle
+                id="fx-glitch"
+                label="System Glitch"
+                checked={isGlitch}
+                onChange={toggleGlitch}
+                colorTheme="rose"
+              />
+              <CustomToggle
+                id="fx-garden"
+                label="Garden Mode"
+                checked={isGarden}
+                onChange={toggleGarden}
+                colorTheme="green"
+              />
+              <CustomToggle
+                id="fx-autumn"
+                label="Autumn Mode"
+                checked={isAutumn}
+                onChange={toggleAutumn}
+                colorTheme="amber"
+              />
+              <CustomToggle
+                id="fx-rain"
+                label="Rain Mode"
+                checked={isRain}
+                onChange={toggleRain}
+                colorTheme="blue"
+              />
             </div>
           </Section>
 
@@ -291,7 +433,8 @@ const SettingsPage = () => {
                     <h3 className="font-medium text-white">Sidebar State</h3>
                   </div>
                   <p className="text-sm text-gray-400 mb-6">
-                    Reset the expansion state of all sidebar sections to their defaults.
+                    Reset the expansion state of all sidebar sections to their
+                    defaults.
                   </p>
                 </div>
                 <button
@@ -310,14 +453,15 @@ const SettingsPage = () => {
                     <h3 className="font-medium text-white">App Categories</h3>
                   </div>
                   <p className="text-sm text-gray-400 mb-6">
-                    Reset the collapsed/expanded state of application categories.
+                    Reset the collapsed/expanded state of application
+                    categories.
                   </p>
                 </div>
                 <button
                   onClick={handleResetAppsState}
                   className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors text-sm font-medium"
                 >
-                   <ArrowCounterClockwise size={18} />
+                  <ArrowCounterClockwise size={18} />
                   Reset App States
                 </button>
               </div>
@@ -332,10 +476,13 @@ const SettingsPage = () => {
                   <Trash size={24} />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-medium text-white mb-2">Clear Local Data</h3>
+                  <h3 className="text-lg font-medium text-white mb-2">
+                    Clear Local Data
+                  </h3>
                   <p className="text-gray-400 text-sm mb-6">
-                    This will wipe all locally stored preferences, achievements, and cached states for this site.
-                    This action cannot be undone.
+                    This will wipe all locally stored preferences, achievements,
+                    and cached states for this site. This action cannot be
+                    undone.
                   </p>
                   <button
                     onClick={handleClearStorage}
@@ -348,7 +495,6 @@ const SettingsPage = () => {
               </div>
             </div>
           </Section>
-
         </div>
 
         <div className="mt-12 text-center text-gray-600 text-sm font-mono">

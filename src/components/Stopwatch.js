@@ -25,7 +25,7 @@ const Stopwatch = () => {
   };
   const handleStop = () => {
     setIsRunning(false);
-    console.log(time)
+    console.log(time);
     if (time === 10000) {
       unlockAchievement('perfect_timing');
     }

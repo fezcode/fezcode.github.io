@@ -4,7 +4,12 @@ import { motion } from 'framer-motion';
 const FLOWER_TYPES = [
   // Type 1: Simple Daisy-like
   (color) => (
-    <svg viewBox="0 0 100 100" width="100%" height="100%" className="overflow-visible">
+    <svg
+      viewBox="0 0 100 100"
+      width="100%"
+      height="100%"
+      className="overflow-visible"
+    >
       <path d="M50 50 Q50 20 50 10 Q50 20 60 40 Z" fill={color} />
       <path d="M50 50 Q80 50 90 50 Q80 50 60 60 Z" fill={color} />
       <path d="M50 50 Q50 80 50 90 Q50 80 40 60 Z" fill={color} />
@@ -18,7 +23,12 @@ const FLOWER_TYPES = [
   ),
   // Type 2: Tulip-like
   (color) => (
-    <svg viewBox="0 0 100 100" width="100%" height="100%" className="overflow-visible">
+    <svg
+      viewBox="0 0 100 100"
+      width="100%"
+      height="100%"
+      className="overflow-visible"
+    >
       <path d="M30 40 Q30 80 50 90 Q70 80 70 40 Q50 50 30 40 Z" fill={color} />
       <path d="M30 40 Q40 20 50 40 Q60 20 70 40" fill={color} />
       <path d="M50 90 L50 150" stroke="#166534" strokeWidth="4" />
@@ -26,12 +36,17 @@ const FLOWER_TYPES = [
   ),
   // Type 3: Round
   (color) => (
-    <svg viewBox="0 0 100 100" width="100%" height="100%" className="overflow-visible">
-       <circle cx="50" cy="50" r="30" fill={color} opacity="0.8" />
-       <circle cx="50" cy="50" r="20" fill="#fff" opacity="0.3" />
-       <path d="M50 80 L50 150" stroke="#166534" strokeWidth="4" />
+    <svg
+      viewBox="0 0 100 100"
+      width="100%"
+      height="100%"
+      className="overflow-visible"
+    >
+      <circle cx="50" cy="50" r="30" fill={color} opacity="0.8" />
+      <circle cx="50" cy="50" r="20" fill="#fff" opacity="0.3" />
+      <path d="M50 80 L50 150" stroke="#166534" strokeWidth="4" />
     </svg>
-  )
+  ),
 ];
 
 const COLORS = ['#f472b6', '#c084fc', '#60a5fa', '#f87171', '#fbbf24'];
@@ -62,17 +77,26 @@ const DigitalFlowers = () => {
           animate={{
             y: 0,
             opacity: 1,
-            rotate: [flower.rotation - 5, flower.rotation + 5, flower.rotation - 5]
+            rotate: [
+              flower.rotation - 5,
+              flower.rotation + 5,
+              flower.rotation - 5,
+            ],
           }}
           transition={{
-            y: { duration: 1.5, delay: flower.delay, type: 'spring', stiffness: 50 },
+            y: {
+              duration: 1.5,
+              delay: flower.delay,
+              type: 'spring',
+              stiffness: 50,
+            },
             opacity: { duration: 1.5, delay: flower.delay },
             rotate: {
               duration: 3 + Math.random() * 2,
               repeat: Infinity,
-              ease: "easeInOut",
-              delay: flower.delay + 0.5
-            }
+              ease: 'easeInOut',
+              delay: flower.delay + 0.5,
+            },
           }}
           style={{
             position: 'absolute',

@@ -1,16 +1,16 @@
 import React from 'react';
-import {useParams, Link} from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import {useProjects} from '../utils/projectParser';
-import {useProjectContent} from '../hooks/useProjectContent';
+import { useProjects } from '../utils/projectParser';
+import { useProjectContent } from '../hooks/useProjectContent';
 import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
 import Seo from '../components/Seo';
-import {ArrowLeftIcon} from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const ProjectPage = () => {
-  const {slug} = useParams();
+  const { slug } = useParams();
   const {
     projects,
     loading: loadingProjects,
@@ -27,7 +27,9 @@ const ProjectPage = () => {
       <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
-          <p className="font-mono text-cyan-500 animate-pulse">LOADING DATA STREAM...</p>
+          <p className="font-mono text-cyan-500 animate-pulse">
+            LOADING DATA STREAM...
+          </p>
         </div>
       </div>
     );
@@ -52,7 +54,7 @@ const ProjectPage = () => {
   }
 
   // Combine project metadata with fetched content
-  const fullProject = {...project, ...content};
+  const fullProject = { ...project, ...content };
 
   return (
     <div className="min-h-screen bg-[#020617] pb-24 relative">
@@ -66,14 +68,14 @@ const ProjectPage = () => {
         twitterCard="summary_large_image"
         twitterTitle={`${fullProject.title} | Fezcodex`}
         twitterDescription={fullProject.shortDescription}
-        twitterImage={fullProject.image || 'https://fezcode.github.io/logo512.png'}
+        twitterImage={
+          fullProject.image || 'https://fezcode.github.io/logo512.png'
+        }
       />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div
-          className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
-          <div
-            className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]"/>
+        <div className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]" />
         </div>
       </div>
 
@@ -84,7 +86,7 @@ const ProjectPage = () => {
               to="/projects"
               className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 font-mono text-sm tracking-widest uppercase hover:underline decoration-cyan-500/50 underline-offset-4 transition-all"
             >
-              <ArrowLeftIcon size={16}/> Back to Projects
+              <ArrowLeftIcon size={16} /> Back to Projects
             </Link>
 
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-emerald-400 font-mono mb-6">
@@ -115,7 +117,7 @@ const ProjectPage = () => {
 
           <div className="hidden lg:block mt-24 space-y-6">
             <div className="sticky top-24">
-              <ProjectMetadata project={fullProject}/>
+              <ProjectMetadata project={fullProject} />
             </div>
           </div>
         </div>

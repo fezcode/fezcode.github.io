@@ -10,27 +10,39 @@ import {
   PauseCircle,
   Fire,
   Equals,
-  ArrowDown
+  ArrowDown,
 } from '@phosphor-icons/react';
-import { getStatusClasses, getPriorityClasses } from '../../utils/roadmapHelpers';
+import {
+  getStatusClasses,
+  getPriorityClasses,
+} from '../../utils/roadmapHelpers';
 
 const RoadmapCard = ({ app, index }) => {
   const getStatusIcon = (status) => {
     switch (status) {
-      case 'Planned': return <Circle weight="bold" />;
-      case 'In Progress': return <ArrowsClockwise weight="bold" className="animate-spin" />;
-      case 'Completed': return <CheckCircle weight="bold" />;
-      case 'On Hold': return <PauseCircle weight="bold" />;
-      default: return <Circle weight="bold" />;
+      case 'Planned':
+        return <Circle weight="bold" />;
+      case 'In Progress':
+        return <ArrowsClockwise weight="bold" className="animate-spin" />;
+      case 'Completed':
+        return <CheckCircle weight="bold" />;
+      case 'On Hold':
+        return <PauseCircle weight="bold" />;
+      default:
+        return <Circle weight="bold" />;
     }
   };
 
   const getPriorityIcon = (priority) => {
     switch (priority) {
-      case 'High': return <Fire weight="fill" />;
-      case 'Medium': return <Equals weight="bold" />;
-      case 'Low': return <ArrowDown weight="bold" />;
-      default: return <ArrowDown weight="bold" />;
+      case 'High':
+        return <Fire weight="fill" />;
+      case 'Medium':
+        return <Equals weight="bold" />;
+      case 'Low':
+        return <ArrowDown weight="bold" />;
+      default:
+        return <ArrowDown weight="bold" />;
     }
   };
 
@@ -92,7 +104,9 @@ const RoadmapCard = ({ app, index }) => {
           {app.notes && (
             <div className="relative z-10 mt-4 bg-black/20 rounded-lg p-3 border border-white/5">
               <p className="text-gray-500 text-xs italic line-clamp-2 font-mono">
-                <span className="font-bold text-gray-400 not-italic mr-2">NOTE:</span>
+                <span className="font-bold text-gray-400 not-italic mr-2">
+                  NOTE:
+                </span>
                 {app.notes}
               </p>
             </div>

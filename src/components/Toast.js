@@ -39,12 +39,16 @@ const Toast = ({
   // Toast Style
   let toastStyle = successStyle;
   // Toast Text Style
-  let textStyle = 'text-red-100'
+  let textStyle = 'text-red-100';
   // Toast HR Style
-  let hrStyle = 'border-red-200'
+  let hrStyle = 'border-red-200';
   if (type === 'error') toastStyle = errorStyle;
   if (type === 'gold') toastStyle = goldStyle;
-  if (type === 'techno') { toastStyle = technoStyle; textStyle = technoTextStyle; hrStyle = technoHRStyle; }
+  if (type === 'techno') {
+    toastStyle = technoStyle;
+    textStyle = technoTextStyle;
+    hrStyle = technoHRStyle;
+  }
 
   return (
     <motion.div
@@ -99,18 +103,18 @@ const Toast = ({
                 );
               }
               if (link.onClick) {
-                 return (
+                return (
                   <button
                     key={index}
                     onClick={() => {
-                        link.onClick();
-                        removeToast(id);
+                      link.onClick();
+                      removeToast(id);
                     }}
                     className={buttonClass}
                   >
                     {link.label}
                   </button>
-                 )
+                );
               }
               return null;
             })}

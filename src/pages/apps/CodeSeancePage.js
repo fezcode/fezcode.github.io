@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {Link} from 'react-router-dom';
-import {ArrowLeftIcon, SkullIcon} from '@phosphor-icons/react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { ArrowLeftIcon, SkullIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import {useAchievements} from '../../context/AchievementContext';
+import { useAchievements } from '../../context/AchievementContext';
 
 const CodeSeancePage = () => {
   useSeo({
@@ -18,11 +18,11 @@ const CodeSeancePage = () => {
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 
-  const {unlockAchievement} = useAchievements();
+  const { unlockAchievement } = useAchievements();
   const [history, setHistory] = useState([
-    {type: 'system', text: 'INITIALIZING SPIRIT CONNECTION...'},
-    {type: 'system', text: 'CONNECTION ESTABLISHED. THE VEIL IS THIN.'},
-    {type: 'spirit', text: '...looping... forever... consuming... memory...'},
+    { type: 'system', text: 'INITIALIZING SPIRIT CONNECTION...' },
+    { type: 'system', text: 'CONNECTION ESTABLISHED. THE VEIL IS THIN.' },
+    { type: 'spirit', text: '...looping... forever... consuming... memory...' },
   ]);
   const [input, setInput] = useState('');
   const [isGlitching, setIsGlitching] = useState(false);
@@ -82,7 +82,8 @@ const CodeSeancePage = () => {
     let nextStep = step;
     let responseSuffix = '';
 
-    if (step === 10) { // Seance is over
+    if (step === 10) {
+      // Seance is over
       response = '...the... connection... is... severed...';
       setHistory((prev) => [
         ...prev,
@@ -112,15 +113,25 @@ const CodeSeancePage = () => {
       response = spiritResponses['status'];
       nextStep = 1;
       responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 1 && (cleanCmd === 'trace' || cleanCmd === 'stack trace')) {
+    } else if (
+      step === 1 &&
+      (cleanCmd === 'trace' || cleanCmd === 'stack trace')
+    ) {
       response = spiritResponses['trace'];
       nextStep = 2;
       responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 2 && (cleanCmd === 'open 404' || cleanCmd === 'goto 404')) {
+    } else if (
+      step === 2 &&
+      (cleanCmd === 'open 404' || cleanCmd === 'goto 404')
+    ) {
       response = spiritResponses['open 404'];
       nextStep = 3;
       responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 3 && (cleanCmd.includes('define') || cleanCmd.includes('const')) && cleanCmd.includes('ghost_data')) {
+    } else if (
+      step === 3 &&
+      (cleanCmd.includes('define') || cleanCmd.includes('const')) &&
+      cleanCmd.includes('ghost_data')
+    ) {
       response = spiritResponses['define ghost_data'];
       nextStep = 4;
       responseSuffix = ` (Step ${nextStep})`;
@@ -128,7 +139,11 @@ const CodeSeancePage = () => {
       response = spiritResponses['ghost_data = null'];
       nextStep = 5;
       responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 5 && (cleanCmd.includes('restart') || cleanCmd.includes('start')) && cleanCmd.includes('daemon')) {
+    } else if (
+      step === 5 &&
+      (cleanCmd.includes('restart') || cleanCmd.includes('start')) &&
+      cleanCmd.includes('daemon')
+    ) {
       response = spiritResponses['restart daemon'];
       nextStep = 6;
       responseSuffix = ` (Step ${nextStep})`;
@@ -140,7 +155,10 @@ const CodeSeancePage = () => {
       response = spiritResponses['sudo'];
       nextStep = 8;
       responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 8 && (cleanCmd === 'password' || cleanCmd === '123456')) {
+    } else if (
+      step === 8 &&
+      (cleanCmd === 'password' || cleanCmd === '123456')
+    ) {
       response = spiritResponses['password'];
       nextStep = 9;
       responseSuffix = ` (Step ${nextStep})`;
@@ -158,7 +176,8 @@ const CodeSeancePage = () => {
         '...the... code... rots...',
         '...syntax... error...',
       ];
-      response = randomResponses[Math.floor(Math.random() * randomResponses.length)];
+      response =
+        randomResponses[Math.floor(Math.random() * randomResponses.length)];
     }
 
     if (effect) {
@@ -171,8 +190,9 @@ const CodeSeancePage = () => {
       { type: 'user', text: `> ${cmd}` },
       { type: 'spirit', text: response + responseSuffix },
     ]);
-    if (cleanCmd !== 'help' && nextStep !== step) { // Only update step if it's not a help command and step actually changed
-        setStep(nextStep);
+    if (cleanCmd !== 'help' && nextStep !== step) {
+      // Only update step if it's not a help command and step actually changed
+      setStep(nextStep);
     }
   };
 
@@ -199,15 +219,13 @@ const CodeSeancePage = () => {
           to="/apps"
           className="group text-green-700 hover:text-green-400 hover:underline flex items-center gap-2 text-lg mb-8 transition-colors"
         >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1"/>{' '}
+          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
           Escape
         </Link>
 
-        <div
-          className="border-2 border-green-800 rounded-lg p-6 bg-black shadow-[0_0_20px_rgba(0,255,0,0.1)] h-[70vh] flex flex-col relative">
+        <div className="border-2 border-green-800 rounded-lg p-6 bg-black shadow-[0_0_20px_rgba(0,255,0,0.1)] h-[70vh] flex flex-col relative">
           {/* Scanlines effect */}
-          <div
-            className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)50%,rgba(0,0,0,0.25)50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-0 pointer-events-none bg-[length:100%_2px,3px_100%] opacity-20"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)50%,rgba(0,0,0,0.25)50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] z-0 pointer-events-none bg-[length:100%_2px,3px_100%] opacity-20"></div>
 
           <div
             ref={scrollContainerRef}
@@ -235,7 +253,9 @@ const CodeSeancePage = () => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => {
                 // Prevent page scrolling with arrow keys, pageUp/Down
-                if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'].includes(e.key)) {
+                if (
+                  ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown'].includes(e.key)
+                ) {
                   e.preventDefault();
                 }
               }}
@@ -250,7 +270,7 @@ const CodeSeancePage = () => {
         </div>
 
         <div className="text-center mt-8 text-green-900 text-xs animate-pulse">
-          <SkullIcon size={32} className="mx-auto mb-2 opacity-50"/>
+          <SkullIcon size={32} className="mx-auto mb-2 opacity-50" />
           EST. 1970 - EPOCH START
         </div>
       </div>

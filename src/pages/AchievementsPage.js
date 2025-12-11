@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, Trophy, Lock, Info, BellSlash } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  Trophy,
+  Lock,
+  Info,
+  BellSlash,
+} from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
 import { useAchievements } from '../context/AchievementContext';
 import { ACHIEVEMENTS } from '../config/achievements';

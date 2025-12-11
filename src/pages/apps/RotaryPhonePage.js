@@ -3,7 +3,7 @@ import RotaryDial from '../../components/RotaryDial';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import Seo from '../../components/Seo';
 import DigitalDisplay from '../../components/DigitalDisplay';
-import {BackspaceIcon, TrashIcon, PhoneIcon} from '@phosphor-icons/react';
+import { BackspaceIcon, TrashIcon, PhoneIcon } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAchievements } from '../../context/AchievementContext';
 import { useToast } from '../../hooks/useToast';
@@ -34,69 +34,69 @@ const RotaryPhonePage = () => {
   };
 
   const achievements = {
-    '911': 'the_emergency',
-    '0': 'operator',
-    '123': 'speaking_clock',
-    '1905': 'galatasaray',
-    '6': 'm_for_murder',
-    '5550690': 'trinity_calling',
+    911: 'the_emergency',
+    0: 'operator',
+    123: 'speaking_clock',
+    1905: 'galatasaray',
+    6: 'm_for_murder',
+    5550690: 'trinity_calling',
     '0451': 'immersive_sim_door_code',
-    '555': 'call_me_generic',
-    '117': 'mr_halo_himself',
-    '47': 'barcode_man',
-    '111111': 'skyrim',
-    '52': 'new_dc_universe',
-    '824': 'kobe',
-    '42': 'the_answer',
-    '80085': 'dealing_with_a_kid',
-    '1984': 'dystopian_are_we',
-    '404': 'not_found',
-    '666': 'devil',
+    555: 'call_me_generic',
+    117: 'mr_halo_himself',
+    47: 'barcode_man',
+    111111: 'skyrim',
+    52: 'new_dc_universe',
+    824: 'kobe',
+    42: 'the_answer',
+    80085: 'dealing_with_a_kid',
+    1984: 'dystopian_are_we',
+    404: 'not_found',
+    666: 'devil',
     '007': 'the_worst_agent',
-    '314': 'pie',
-    '12': 'the_number_of_monkeys',
-    '36': 'some_bodies_gonna_get_it',
-    '182': 'fast_eyes',
-    '808': 'and_heartbreak',
-    '1337': 'elite',
-    '3310': 'indestructible',
-    '9000': 'daisy_daisy',
-    '66': 'the_order',
-    '99': 'one_less_problem',
-    '3005': 'the_holo_grammy',
-    '313': 'moms_spaghetti',
-    '51': 'truth_is_out_there',
-    '57': 'ketchup',
-    '711': 'open_24_hours',
-    '1066': 'invaded_england',
-    '34': 'dont_google',
-    '2': 'all_eyez_on_me',
-    '343': 'the_monitor',
-    '19': 'you_smart',
-    '360': 'the_last_good_gen',
-    '127001': 'cyber_homie',
-    '418': 'teapot',
-    '32': 'system',
-    '5150': 'van_halen',
-    '1993': 'rip_and_tear',
-    '80211': 'wireless',
-    '747': 'boing',
-    '9': 'feline',
+    314: 'pie',
+    12: 'the_number_of_monkeys',
+    36: 'some_bodies_gonna_get_it',
+    182: 'fast_eyes',
+    808: 'and_heartbreak',
+    1337: 'elite',
+    3310: 'indestructible',
+    9000: 'daisy_daisy',
+    66: 'the_order',
+    99: 'one_less_problem',
+    3005: 'the_holo_grammy',
+    313: 'moms_spaghetti',
+    51: 'truth_is_out_there',
+    57: 'ketchup',
+    711: 'open_24_hours',
+    1066: 'invaded_england',
+    34: 'dont_google',
+    2: 'all_eyez_on_me',
+    343: 'the_monitor',
+    19: 'you_smart',
+    360: 'the_last_good_gen',
+    127001: 'cyber_homie',
+    418: 'teapot',
+    32: 'system',
+    5150: 'van_halen',
+    1993: 'rip_and_tear',
+    80211: 'wireless',
+    747: 'boing',
+    9: 'feline',
     '000000': 'black',
-    '2600': 'the_real_retro_gamer',
-    '11': 'ocean',
-    '20': 'critical_hit',
-    '21': 'savage',
-    '80': 'www',
-    '24': 'ctu_agent',
-  }
+    2600: 'the_real_retro_gamer',
+    11: 'ocean',
+    20: 'critical_hit',
+    21: 'savage',
+    80: 'www',
+    24: 'ctu_agent',
+  };
 
   const handleCall = () => {
     if (!phoneNumber || isCalling) return;
     setIsCalling(true);
     setStatusMessage('Calling...');
     setTimeout(() => {
-      let res = achievements[phoneNumber]
+      let res = achievements[phoneNumber];
 
       if (res) {
         setStatusMessage('Connected');
@@ -152,7 +152,7 @@ const RotaryPhonePage = () => {
         {/* Display Area */}
         <div className="w-full bg-gray-900 p-6 rounded-3xl shadow-2xl border border-gray-800 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gray-950 px-4 py-1 rounded-full border border-gray-800 text-gray-500 text-xs uppercase tracking-widest font-mono">
-                        Display
+            Display
           </div>
           <DigitalDisplay
             text={getDisplayText()}

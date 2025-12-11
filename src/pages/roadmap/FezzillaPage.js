@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useSeo from '../../hooks/useSeo';
-import { ArrowLeftIcon, KanbanIcon, ListBulletsIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  KanbanIcon,
+  ListBulletsIcon,
+} from '@phosphor-icons/react';
 import piml from 'piml';
 import RoadmapView from '../../components/roadmap/RoadmapView';
 import TableView from '../../components/roadmap/TableView';
@@ -86,7 +90,10 @@ const FezzillaPage = () => {
                 }
               `}
             >
-              <KanbanIcon size={20} weight={viewMode === 'roadmap' ? 'fill' : 'regular'} />
+              <KanbanIcon
+                size={20}
+                weight={viewMode === 'roadmap' ? 'fill' : 'regular'}
+              />
               ROADMAP
             </button>
             <button
@@ -100,7 +107,10 @@ const FezzillaPage = () => {
                 }
               `}
             >
-              <ListBulletsIcon size={20} weight={viewMode === 'table' ? 'fill' : 'regular'} />
+              <ListBulletsIcon
+                size={20}
+                weight={viewMode === 'table' ? 'fill' : 'regular'}
+              />
               TABLE
             </button>
           </div>
