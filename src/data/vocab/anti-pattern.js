@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default {
-  title: 'Anti-Pattern',
-  content: (
+export default function AntiPattern() {
+  return (
     <div className="space-y-4">
       <p>
         An <strong>Anti-Pattern</strong> is a common response to a recurring problem that is usually ineffective and risks being highly counterproductive.
@@ -20,5 +19,5 @@ export default {
         </ul>
       </div>
     </div>
-  ),
-};
+  );
+}

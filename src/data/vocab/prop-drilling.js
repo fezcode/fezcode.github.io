@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default {
-  title: 'Prop Drilling',
-  content: (
+export default function PropDrilling() {
+  return (
     <div className="space-y-4">
       <p>
         <strong>Prop Drilling</strong> (also known as "threading") refers to the process of passing data from a parent component down to a deeply nested child component through intermediate components that do not need the data themselves.
@@ -29,5 +28,5 @@ export default {
         <strong>Solution:</strong> Use the <em>Context API</em>, <em>Redux</em>, or similar state management libraries to make data accessible to any component in the tree without manual passing.
       </p>
     </div>
-  ),
-};
+  );
+}

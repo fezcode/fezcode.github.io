@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default {
-  title: 'Pluribus',
-  content: (
+export default function Pluribus() {
+  return (
     <div className="space-y-4">
       <p>
         <strong>Pluribus</strong> is Latin for "from many" or "more". It is most famously known as part of the United States motto <em>E pluribus unum</em> ("Out of many, one").
@@ -16,5 +15,5 @@ export default {
         </p>
       </div>
     </div>
-  ),
-};
+  );
+}

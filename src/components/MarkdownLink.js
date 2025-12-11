@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { useSidePanel } from '../context/SidePanelContext';
 import { vocabulary } from '../data/vocabulary';
-import { ArrowSquareOut } from '@phosphor-icons/react';
+import { ArrowSquareOut, CircleNotch } from '@phosphor-icons/react';
 
 const MarkdownLink = ({ href, children, className, ...props }) => {
   const { openSidePanel } = useSidePanel();
@@ -11,17 +11,29 @@ const MarkdownLink = ({ href, children, className, ...props }) => {
   if (isVocab) {
     const parts = href.split('/vocab/');
     const term = parts[1];
-    const definition = vocabulary[term];
+    const entry = vocabulary[term];
 
     return (
       <a
         href={href}
         onClick={(e) => {
           e.preventDefault();
-          if (definition) {
-            openSidePanel(definition.title, definition.content);
+          if (entry && entry.loader) {
+            const LazyVocabComponent = lazy(entry.loader);
+            openSidePanel(
+              entry.title,
+              <Suspense
+                fallback={
+                  <div className="flex items-center justify-center p-8">
+                    <CircleNotch size={32} className="animate-spin text-gray-400" />
+                  </div>
+                }
+              >
+                <LazyVocabComponent />
+              </Suspense>
+            );
           } else {
-            console.warn(`Vocabulary term not found: ${term}`);
+            console.warn(`Vocabulary term or loader not found: ${term}`);
           }
         }}
         className="text-pink-400 hover:text-pink-300 transition-colors inline-flex items-center gap-1 border-b border-pink-500/30 border-dashed hover:border-solid cursor-help"

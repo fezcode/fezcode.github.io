@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default {
-  title: 'Side Effects',
-  content: (
+export default function SideEffects() {
+  return (
     <div className="space-y-6">
       <div>
         <h4 className="flex items-center gap-2 text-sm font-bold text-purple-400 mb-2">
@@ -41,5 +40,5 @@ export default {
         </p>
       </div>
     </div>
-  ),
-};
+  );
+}
