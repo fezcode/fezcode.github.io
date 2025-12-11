@@ -40,7 +40,7 @@ const MarkdownLink = ({ href, children }) => {
             openSidePanel(definition.title, definition.content);
           }
         }}
-        className="text-amber-400 dashed-underline cursor-help"
+        className="text-pink-400 dashed-underline cursor-help"
       >
         {children}
       </a>

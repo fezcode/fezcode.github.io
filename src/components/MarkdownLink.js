@@ -24,7 +24,7 @@ const MarkdownLink = ({ href, children, className, ...props }) => {
             console.warn(`Vocabulary term not found: ${term}`);
           }
         }}
-        className="text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1 border-b border-amber-500/30 border-dashed hover:border-solid cursor-help"
+        className="text-pink-400 hover:text-pink-300 transition-colors inline-flex items-center gap-1 border-b border-pink-500/30 border-dashed hover:border-solid cursor-help"
         title="Click for definition"
         {...props}
       >
