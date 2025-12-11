@@ -24,7 +24,7 @@ const ConstellationNode = ({ x, y, size = 40, label, color, icon: Icon, onClick,
         delay: delay * 0.1
       }}
       className="absolute cursor-pointer group"
-      style={{ left: x, top: y }}
+      style={{ left: x, top: y, translateX: '-50%', translateY: '-50%' }}
       onClick={onClick}
     >
       {/* Pulse Effect */}
@@ -104,34 +104,42 @@ const MindMapConstellation = () => {
      // Center
      { id: 'me', x: '50%', y: '50%', size: 80, label: 'Me', color: '#fff', icon: Sparkle, type: 'root', description: aboutData.profile.tagline },
 
-     // Skills Cluster (Top Left)
-     ...aboutData.skills.map((s, i) => ({
-        id: `skill-${i}`,
-        x: `${20 + Math.cos(i) * 15}%`,
-        y: `${30 + Math.sin(i) * 15}%`,
-        label: s.name,
-        color: NODE_COLORS[s.type] || '#fff',
-        icon: s.icon,
-        type: 'Skill',
-        description: `Proficiency Level: ${s.level}%`,
-        stats: { level: s.level }
-     })),
+     // Skills Cluster (Wide Arc Top-Left to Left)
+     ...aboutData.skills.map((s, i) => {
+        const angle = (Math.PI * 1.2) + (i * (Math.PI / 4)); // Spread from top-left downwards
+        const radius = 35; // % distance from center
+        return {
+          id: `skill-${i}`,
+          x: `${50 + Math.cos(angle) * radius}%`,
+          y: `${50 + Math.sin(angle) * radius}%`,
+          label: s.name,
+          color: NODE_COLORS[s.type] || '#fff',
+          icon: s.icon,
+          type: 'Skill',
+          description: `Proficiency Level: ${s.level}%`,
+          stats: { level: s.level }
+        };
+     }),
 
-     // Experience Cluster (Bottom Right)
-     ...aboutData.experience.map((e, i) => ({
-        id: `exp-${i}`,
-        x: `${70 + Math.cos(i + 2) * 15}%`,
-        y: `${70 + Math.sin(i + 2) * 15}%`,
-        label: e.company,
-        color: NODE_COLORS.experience,
-        type: 'Experience',
-        description: e.desc,
-        stats: { role: e.role, period: e.period }
-     })),
+     // Experience Cluster (Wide Arc Bottom-Right to Right)
+     ...aboutData.experience.map((e, i) => {
+        const angle = (Math.PI * 0.2) + (i * (Math.PI / 5)); // Spread from bottom-right upwards
+        const radius = 35;
+        return {
+          id: `exp-${i}`,
+          x: `${50 + Math.cos(angle) * radius}%`,
+          y: `${50 + Math.sin(angle) * radius}%`,
+          label: e.company,
+          color: NODE_COLORS.experience,
+          type: 'Experience',
+          description: e.desc,
+          stats: { role: e.role, period: e.period }
+        };
+     }),
 
-     // Traits Cluster (Top Right / Scattered)
-     { id: 'superpower', x: '80%', y: '20%', label: 'Superpower', color: NODE_COLORS.trait, icon: aboutData.traits.superpower.icon, description: aboutData.traits.superpower.desc, type: 'Trait' },
-     { id: 'hobby', x: '20%', y: '80%', label: 'Hobby', color: NODE_COLORS.trait, icon: aboutData.traits.hobby.icon, description: aboutData.traits.hobby.desc, type: 'Trait' },
+     // Traits (Outliers)
+     { id: 'superpower', x: '80%', y: '15%', label: 'Superpower', color: NODE_COLORS.trait, icon: aboutData.traits.superpower.icon, description: aboutData.traits.superpower.desc, type: 'Trait' },
+     { id: 'hobby', x: '20%', y: '85%', label: 'Hobby', color: NODE_COLORS.trait, icon: aboutData.traits.hobby.icon, description: aboutData.traits.hobby.desc, type: 'Trait' },
   ];
 
   return (

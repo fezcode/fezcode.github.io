@@ -3,13 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeft,
-  Desktop,
+  TreeStructure,
   Graph,
   Terminal,
   Article,
 } from '@phosphor-icons/react';
 import NeuromancerHUD from './about-views/NeuromancerHUD';
-import InteractiveDesk from './about-views/InteractiveDesk';
+import SystemArchitecture from './about-views/SystemArchitecture';
 import MindMapConstellation from './about-views/MindMapConstellation';
 import SimpleText from './about-views/SimpleText';
 import { useAchievements } from '../context/AchievementContext';
@@ -18,7 +18,7 @@ const ViewSwitcher = ({ currentView, setView }) => {
   const views = [
     { id: 'simple', icon: Article, label: 'Simple' },
     { id: 'hud', icon: Terminal, label: 'Terminal' },
-    { id: 'desk', icon: Desktop, label: 'Desk' },
+    { id: 'blueprint', icon: TreeStructure, label: 'Blueprint' },
     { id: 'map', icon: Graph, label: 'Mind Map' },
   ];
 
@@ -61,6 +61,21 @@ const AboutPage = () => {
     };
   }, [unlockAchievement]);
 
+  const getButtonStyle = (currentView) => {
+    switch (currentView) {
+      case 'simple':
+        return 'bg-transparent text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-[#4a0404] hover:text-white hover:border-[#4a0404] rounded-none shadow-none';
+      case 'hud':
+        return 'bg-black text-green-500 border-green-500 border font-mono tracking-wider hover:bg-green-500 hover:text-black shadow-[0_0_10px_rgba(0,255,0,0.3)] rounded-sm';
+      case 'blueprint':
+        return 'bg-[#002b5c]/90 text-cyan-300 border-cyan-400 border-2 font-mono uppercase text-xs tracking-wider hover:bg-cyan-400 hover:text-[#001e40] rounded-none';
+      case 'map':
+        return 'bg-gray-900/60 text-purple-200 border-purple-500/50 border hover:bg-purple-600 hover:text-white hover:border-purple-600 rounded-full shadow-lg backdrop-blur-xl';
+      default:
+        return 'bg-black/50 text-white border-white/10 hover:bg-white hover:text-black rounded-full font-bold';
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-[100] bg-black overflow-hidden">
       {/* Global Back Button */}
@@ -71,11 +86,7 @@ const AboutPage = () => {
       >
         <Link
           to="/"
-          className={`group flex items-center gap-2 px-4 py-2 backdrop-blur-md border transition-all ${
-            view === 'simple'
-              ? 'bg-transparent text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-[#4a0404] hover:text-white hover:border-[#4a0404] rounded-none'
-              : 'bg-black/50 text-white border-white/10 hover:bg-white hover:text-black rounded-full font-bold'
-          }`}
+          className={`group flex items-center gap-2 px-4 py-2 transition-all duration-300 ${getButtonStyle(view)}`}
         >
           <ArrowLeft weight="bold" className="group-hover:-translate-x-1 transition-transform" />
           <span className="hidden sm:inline">Back to Reality</span>
@@ -93,7 +104,7 @@ const AboutPage = () => {
           className="w-full h-full"
         >
           {view === 'hud' && <NeuromancerHUD />}
-          {view === 'desk' && <InteractiveDesk />}
+          {view === 'blueprint' && <SystemArchitecture />}
           {view === 'map' && <MindMapConstellation />}
           {view === 'simple' && <SimpleText />}
         </motion.div>
