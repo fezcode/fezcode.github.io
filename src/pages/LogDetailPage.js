@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import LogMetadata from '../components/metadata-cards/LogMetadata';
-import { ArrowLeftIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import ImageModal from '../components/ImageModal';
 
 import Seo from '../components/Seo';
@@ -17,18 +17,6 @@ const LogDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const contentRef = useRef(null);
   const [modalImageSrc, setModalImageSrc] = useState(null);
-
-  const categories = [
-    'Book',
-    'Movie',
-    'Game',
-    'Article',
-    'Music',
-    'Series',
-    'Food',
-    'Websites',
-    'Tools',
-  ];
 
   useEffect(() => {
     const fetchLog = async () => {

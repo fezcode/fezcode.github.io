@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {
-  FacebookLogo,
-  TwitterLogo,
-  LinkedinLogo,
-  LinkSimple,
-  WhatsappLogo,
-  RedditLogo,
+  FacebookLogoIcon,
+  TwitterLogoIcon,
+  LinkedinLogoIcon,
+  LinkSimpleIcon,
+  WhatsappLogoIcon,
+  RedditLogoIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../hooks/useToast';
 
@@ -149,7 +149,7 @@ const ShareButtons = ({ title, url }) => {
           className="text-gray-400 hover:text-primary-400 transition-colors"
           aria-label="Copy link"
         >
-          <LinkSimple size={24} />
+          <LinkSimpleIcon size={24} />
         </button>
       ) : (
         <>
@@ -165,7 +165,7 @@ const ShareButtons = ({ title, url }) => {
             className="text-gray-400 hover:text-blue-400 transition-colors"
             aria-label="Share on Twitter"
           >
-            <TwitterLogo size={24} />
+            <TwitterLogoIcon size={24} />
           </button>
           <button
             onClick={() =>
@@ -179,7 +179,7 @@ const ShareButtons = ({ title, url }) => {
             className="text-gray-400 hover:text-blue-600 transition-colors"
             aria-label="Share on Facebook"
           >
-            <FacebookLogo size={24} />
+            <FacebookLogoIcon size={24} />
           </button>
           <button
             onClick={() =>
@@ -193,7 +193,7 @@ const ShareButtons = ({ title, url }) => {
             className="text-gray-400 hover:text-blue-700 transition-colors"
             aria-label="Share on LinkedIn"
           >
-            <LinkedinLogo size={24} />
+            <LinkedinLogoIcon size={24} />
           </button>
           <button
             onClick={() =>
@@ -207,7 +207,7 @@ const ShareButtons = ({ title, url }) => {
             className="text-gray-400 hover:text-green-500 transition-colors"
             aria-label="Share on WhatsApp"
           >
-            <WhatsappLogo size={24} />
+            <WhatsappLogoIcon size={24} />
           </button>
           <button
             onClick={() =>
@@ -221,14 +221,14 @@ const ShareButtons = ({ title, url }) => {
             className="text-gray-400 hover:text-orange-500 transition-colors"
             aria-label="Share on Reddit"
           >
-            <RedditLogo size={24} />
+            <RedditLogoIcon size={24} />
           </button>
           <button
             onClick={() => handleShare(null, 'Copy Link')} // Pass null for platformUrl for Copy Link
             className="text-gray-400 hover:text-primary-400 transition-colors"
             aria-label="Copy link"
           >
-            <LinkSimple size={24} />
+            <LinkSimpleIcon size={24} />
           </button>
         </>
       )}

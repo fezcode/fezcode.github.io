@@ -3,10 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
-  ArrowSquareOut,
-  ArrowsOutSimple,
-  Clipboard,
-  ArrowLeft,
+  ArrowsOutSimpleIcon,
+  ClipboardIcon,
   ArrowLeftIcon,
 } from '@phosphor-icons/react';
 import { customTheme } from '../utils/customTheme';
@@ -195,14 +193,14 @@ const BlogPostPage = () => {
               className="text-cyan-300 bg-gray-800/90 border border-cyan-900/50 p-1.5 rounded hover:bg-gray-700 hover:text-cyan-200 transition-colors shadow-lg backdrop-blur-sm"
               title="Expand Code"
             >
-              <ArrowsOutSimple size={16} />
+              <ArrowsOutSimpleIcon size={16} />
             </button>
             <button
               onClick={handleCopy}
               className="text-cyan-300 bg-gray-800/90 border border-cyan-900/50 p-1.5 rounded hover:bg-gray-700 hover:text-cyan-200 transition-colors shadow-lg backdrop-blur-sm"
               title="Copy Code"
             >
-              <Clipboard size={16} />
+              <ClipboardIcon size={16} />
             </button>
           </div>
           <div className="rounded-lg overflow-hidden border border-gray-700/50 shadow-2xl">
@@ -382,7 +380,7 @@ const BlogPostPage = () => {
                     className="group flex flex-col items-start max-w-[45%]"
                   >
                     <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
-                      <ArrowLeft size={14} className="inline mr-1" /> Previous
+                      <ArrowLeftIcon size={14} className="inline mr-1" /> Previous
                       Transmission
                     </span>
                     <span className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
@@ -402,7 +400,7 @@ const BlogPostPage = () => {
                   >
                     <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
                       Next Transmission{' '}
-                      <ArrowLeft size={14} className="inline ml-1 rotate-180" />
+                      <ArrowLeftIcon size={14} className="inline ml-1 rotate-180" />
                     </span>
                     <span className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
                       {nextPost.title}
