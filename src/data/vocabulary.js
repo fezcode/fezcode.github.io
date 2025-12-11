@@ -23,4 +23,8 @@ export const vocabulary = {
     title: 'Corporate Greed',
     loader: () => import('./vocab/corporate-greed'),
   },
+  'poi-rating': {
+    title: 'Person of Interest\'s Rating',
+    loader: () => import('./vocab/poi-rating'),
+  },
 };
