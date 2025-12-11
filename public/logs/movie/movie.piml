@@ -24,7 +24,7 @@
     (date) 2024-11-28
     (link) https://www.imdb.com/title/tt0120735/
     (director) Guy Ritchie
-    (rating) 5
+    (rating) 4
     (slug) lock-stock-and-two-smoking-barrels-movie
     (title) Lock, Stock and Two Smoking Barrels (1998)
     (image) /images/defaults/movie/myke-simon-atsUqIm3wxo-unsplash.jpg
@@ -34,7 +34,7 @@
     (date) 2023-11-28
     (link) https://www.imdb.com/title/tt10366206/
     (director) Chad Stahelski
-    (rating) 5
+    (rating) 4
     (slug) john-wick-chapter-4-movie
     (title) John Wick: Chapter 4 (2023)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
@@ -44,7 +44,7 @@
     (date) 2021-01-01
     (link) https://www.imdb.com/title/tt6146586/
     (director) Chad Stahelski
-    (rating) 5
+    (rating) 3
     (slug) john-wick-chapter-3-parabellum-movie
     (title) John Wick: Chapter 3 – Parabellum (2019)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
@@ -54,7 +54,7 @@
     (date) 2020-01-01
     (link) https://www.imdb.com/title/tt4425200/
     (director) Chad Stahelski
-    (rating) 5
+    (rating) 3
     (slug) john-wick-chapter-2-movie
     (title) John Wick: Chapter 2 (2017)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
@@ -112,9 +112,19 @@
   > (item)
     (category) Movie
     (date) 2016-01-01
+    (link) https://www.imdb.com/title/tt4034228/
+    (director) Kenneth Lonergan
+    (rating) 4
+    (slug) manchester-by-the-sea-movie
+    (title) Manchester By The Sea (2016)
+    (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
+    (description) Manchester By The Sea (2016) is an American drama film written and directed by Kenneth Lonergan. The film stars Casey Affleck as Lee Chandler, a quiet and emotionally withdrawn handyman living in Boston.
+  > (item)
+    (category) Movie
+    (date) 2016-01-01
     (link) https://www.imdb.com/title/tt0289043/
     (director) Danny Boyle
-    (rating) 5
+    (rating) 4
     (slug) 28-days-later-movie
     (title) 28 Days Later (2002)
     (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
@@ -124,7 +134,7 @@
     (date) 2025-11-28
     (link) https://www.imdb.com/title/tt2294449/
     (director) Phil Lord, Christopher Miller
-    (rating) 5
+    (rating) 4
     (slug) 22-jump-street-movie
     (title) 22 Jump Street (2014)
     (image) /images/defaults/movie/ice-cube.jpg
@@ -134,7 +144,7 @@
     (date) 2025-11-28
     (link) https://www.imdb.com/title/tt1232829/
     (director) Phil Lord, Christopher Miller
-    (rating) 5
+    (rating) 4
     (slug) 21-jump-street-movie
     (title) 21 Jump Street (2012)
     (image) /images/defaults/movie/ice-cube.jpg

@@ -2,7 +2,7 @@
 - **Category:** Game
 - **Platform:** PC (Steam)
 - **Date:** 2025-11-25
-- **Rating:** 5/5
+- **Rating:** 4/5
 - **Link:** [Steam](https://store.steampowered.com/app/1669000/Age_of_Wonders_4/)
 
 ![Age of Wonders 4](/images/defaults/age-of-wonders-4.webp)

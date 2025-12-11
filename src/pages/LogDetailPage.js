@@ -9,20 +9,7 @@ import Seo from '../components/Seo';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import piml from 'piml';
-
-const LinkRenderer = ({ href, children }) => {
-  const isExternal = href.startsWith('http') || href.startsWith('https');
-  return (
-    <a
-      href={href}
-      className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1"
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-    >
-      {children} {isExternal && <ArrowSquareOutIcon className="text-xs" />}
-    </a>
-  );
-};
+import MarkdownLink from '../components/MarkdownLink';
 
 const LogDetailPage = () => {
   const { category, slugId } = useParams();
@@ -178,7 +165,15 @@ const LogDetailPage = () => {
               <ReactMarkdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
-                components={{ a: LinkRenderer, img: ImageRenderer }}
+                components={{
+                  a: (props) => (
+                    <MarkdownLink
+                      {...props}
+                      className="text-primary-400 hover:text-primary-600 transition-colors inline-flex items-center gap-1"
+                    />
+                  ),
+                  img: ImageRenderer,
+                }}
               >
                 {log.body}
               </ReactMarkdown>

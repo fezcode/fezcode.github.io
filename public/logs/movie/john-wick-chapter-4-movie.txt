@@ -3,7 +3,7 @@
 - **Category:** Movie
 - **Director:** Chad Stahelski
 - **Date:** 2023-11-28
-- **Rating:** 5/5
+- **Rating:** 4/5
 - **Link:** [IMDb - John Wick: Chapter 4](https://www.imdb.com/title/tt10366206/)
 
 ## About

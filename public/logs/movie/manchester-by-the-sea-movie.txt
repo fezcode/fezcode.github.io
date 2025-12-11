@@ -2,8 +2,8 @@
 
 - **Category:** Movie
 - **Director:** Kenneth Lonergan
-- **Date:** 2025-11-28
-- **Rating:** 5/5
+- **Date:** 2016-01-01
+- **Rating:** 4/5
 - **Link:** [IMDb - Manchester By The Sea](https://www.imdb.com/title/tt4034228/)
 
 ## About
