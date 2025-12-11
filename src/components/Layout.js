@@ -12,6 +12,7 @@ import { useVisualSettings } from '../context/VisualSettingsContext';
 import DigitalFlowers from './DigitalFlowers';
 import DigitalLeaves from './DigitalLeaves';
 import NaturalRain from './NaturalRain';
+import SidePanel from './SidePanel';
 
 import { DndProvider } from '../context/DndContext';
 
@@ -71,6 +72,7 @@ const Layout = ({
         toggleDigitalRain={toggleDigitalRain}
         toggleBSOD={toggleBSOD}
       />
+      <SidePanel />
       <div className="bg-gray-950 min-h-screen font-sans flex">
         <Sidebar
           isOpen={isSidebarOpen}

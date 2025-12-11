@@ -13,6 +13,7 @@ import { CommandPaletteProvider } from './context/CommandPaletteContext';
 import { VisualSettingsProvider } from './context/VisualSettingsContext';
 import { AchievementProvider } from './context/AchievementContext';
 import AchievementListeners from './components/AchievementListeners';
+import { SidePanelProvider } from './context/SidePanelContext';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -60,16 +61,18 @@ function App() {
               <BSOD isActive={isBSODActive} toggleBSOD={toggleBSOD} />
               <ScrollToTop />
               <CommandPaletteProvider>
-                <Layout
-                  toggleModal={toggleModal}
-                  isSearchVisible={isSearchVisible}
-                  toggleSearch={toggleSearch}
-                  openGenericModal={openGenericModal}
-                  toggleDigitalRain={toggleDigitalRain}
-                  toggleBSOD={toggleBSOD}
-                >
-                  <AnimatedRoutes />
-                </Layout>
+                <SidePanelProvider>
+                  <Layout
+                    toggleModal={toggleModal}
+                    isSearchVisible={isSearchVisible}
+                    toggleSearch={toggleSearch}
+                    openGenericModal={openGenericModal}
+                    toggleDigitalRain={toggleDigitalRain}
+                    toggleBSOD={toggleBSOD}
+                  >
+                    <AnimatedRoutes />
+                  </Layout>
+                </SidePanelProvider>
               </CommandPaletteProvider>
               <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
               <GenericModal
