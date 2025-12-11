@@ -144,6 +144,7 @@ const NotebookViewerPage = lazy(
 const NewsPage = lazy(() => import('../pages/NewsPage'));
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
+const SitemapPage = lazy(() => import('../pages/SitemapPage'));
 
 const pageVariants = {
   initial: {
@@ -569,6 +570,22 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <AchievementsPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/sitemap"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <SitemapPage />
               </Suspense>
             </motion.div>
           }

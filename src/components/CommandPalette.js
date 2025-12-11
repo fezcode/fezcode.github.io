@@ -38,6 +38,7 @@ const CommandPalette = ({
   setIsOpen,
   openGenericModal,
   toggleDigitalRain,
+  toggleBSOD,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -102,11 +103,19 @@ const CommandPalette = ({
     if (lowerTerm === 'hello?' || lowerTerm === 'is anyone there?') {
       unlockAchievement('echo_in_the_void');
     }
+    if (lowerTerm === 'command palette' || lowerTerm === 'the hacker') {
+      unlockAchievement('the_paradox');
+    }
   }, [searchTerm, unlockAchievement]);
 
   useEffect(() => {
     setSelectedIndex(0);
   }, [searchTerm, items]);
+
+  const triggerBSOD = () => {
+    unlockAchievement('bsod');
+    toggleBSOD();
+  };
 
   const handleItemClick = (item) => {
     if (!item) return;
@@ -596,7 +605,10 @@ const CommandPalette = ({
         );
       } else if (event.key === 'Enter') {
         event.preventDefault();
-        if (filteredItems[selectedIndex]) {
+        if (searchTerm.toLowerCase() === 'bsod') {
+          triggerBSOD();
+          handleClose();
+        } else if (filteredItems[selectedIndex]) {
           handleItemClick(filteredItems[selectedIndex]);
         }
       } else if (event.key === 'Escape') {
@@ -616,7 +628,14 @@ const CommandPalette = ({
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, filteredItems, selectedIndex, isAnimationEnabled]);
+  }, [
+    isOpen,
+    filteredItems,
+    selectedIndex,
+    isAnimationEnabled,
+    searchTerm,
+    triggerBSOD,
+  ]);
 
   useEffect(() => {
     const selectedItem = resultsRef.current?.children[selectedIndex];

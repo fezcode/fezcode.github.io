@@ -22,6 +22,7 @@ const Layout = ({
   toggleSearch,
   openGenericModal,
   toggleDigitalRain,
+  toggleBSOD,
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
@@ -68,6 +69,7 @@ const Layout = ({
         setIsOpen={setIsPaletteOpen}
         openGenericModal={openGenericModal}
         toggleDigitalRain={toggleDigitalRain}
+        toggleBSOD={toggleBSOD}
       />
       <div className="bg-gray-950 min-h-screen font-sans flex">
         <Sidebar

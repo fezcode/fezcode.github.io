@@ -7,6 +7,7 @@ import ScrollToTop from './components/ScrollToTop';
 import ContactModal from './components/ContactModal';
 import GenericModal from './components/GenericModal';
 import DigitalRain from './components/DigitalRain';
+import BSOD from './components/BSOD'; // Import BSOD
 import { AnimationProvider } from './context/AnimationContext'; // Import AnimationProvider
 import { CommandPaletteProvider } from './context/CommandPaletteContext';
 import { VisualSettingsProvider } from './context/VisualSettingsContext';
@@ -22,6 +23,8 @@ function App() {
     content: null,
   });
   const [isRainActive, setIsRainActive] = useState(false); // State for Digital Rain
+  const [isBSODActive, setIsBSODActive] = useState(false); // State for BSOD
+
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -42,6 +45,9 @@ function App() {
   const toggleDigitalRain = () => {
     setIsRainActive((prev) => !prev);
   };
+  const toggleBSOD = () => {
+    setIsBSODActive((prev) => !prev);
+  };
 
   return (
     <AnimationProvider>
@@ -51,6 +57,7 @@ function App() {
             <AchievementListeners />
             <VisualSettingsProvider>
               <DigitalRain isActive={isRainActive} />
+              <BSOD isActive={isBSODActive} toggleBSOD={toggleBSOD} />
               <ScrollToTop />
               <CommandPaletteProvider>
                 <Layout
@@ -59,6 +66,7 @@ function App() {
                   toggleSearch={toggleSearch}
                   openGenericModal={openGenericModal}
                   toggleDigitalRain={toggleDigitalRain}
+                  toggleBSOD={toggleBSOD}
                 >
                   <AnimatedRoutes />
                 </Layout>

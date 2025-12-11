@@ -1,7 +1,38 @@
 import React, { useRef, useEffect, memo } from 'react';
+import { useAchievements } from '../context/AchievementContext';
 
 const DigitalRain = memo(({ isActive }) => {
   const canvasRef = useRef(null);
+  const { unlockAchievement } = useAchievements();
+  const idleTimerRef = useRef(null);
+
+  useEffect(() => {
+    if (!isActive) {
+      clearTimeout(idleTimerRef.current);
+      return;
+    }
+
+    const resetTimer = () => {
+      clearTimeout(idleTimerRef.current);
+      idleTimerRef.current = setTimeout(() => {
+        unlockAchievement('the_void_stares_back');
+      }, 60000); // 1 minute
+    };
+
+    window.addEventListener('mousemove', resetTimer);
+    window.addEventListener('keydown', resetTimer);
+    window.addEventListener('click', resetTimer);
+
+    // Start initial timer
+    resetTimer();
+
+    return () => {
+      window.removeEventListener('mousemove', resetTimer);
+      window.removeEventListener('keydown', resetTimer);
+      window.removeEventListener('click', resetTimer);
+      clearTimeout(idleTimerRef.current);
+    };
+  }, [isActive, unlockAchievement]);
 
   useEffect(() => {
     if (!isActive) return;
