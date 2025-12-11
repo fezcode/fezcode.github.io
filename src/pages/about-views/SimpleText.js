@@ -5,6 +5,9 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import piml from 'piml';
 import {ArrowSquareOut, SealCheck} from '@phosphor-icons/react';
+import GrainOverlay from '../../components/GrainOverlay';
+import CoffeeStain from '../../components/CoffeeStain';
+import CensoredPolaroid from '../../components/CensoredPolaroid';
 
 const LinkRenderer = ({href, children}) => {
   const isExternal = href.startsWith('http') || href.startsWith('https');
@@ -69,7 +72,9 @@ const SimpleText = () => {
 
   return (
     <div
-      className="h-full bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans">
+      className="h-full bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans relative">
+      <GrainOverlay/>
+      <CoffeeStain/>
 
       {/* Top Secret Stamp / Decor */}
       <div className="fixed top-0 right-0 p-8 opacity-10 pointer-events-none z-0">
@@ -84,6 +89,7 @@ const SimpleText = () => {
         transition={{duration: 0.8, ease: "circOut"}}
         className="max-w-4xl mx-auto px-6 py-24 md:py-32 relative z-10"
       >
+        <CensoredPolaroid imageUrl="/images/herdaim.jpg" censored={true} />
         <header className="mb-20">
           <div className="flex flex-col items-start gap-4 mb-8">
             <span className="bg-black text-white px-3 py-1 font-mono text-xs tracking-[0.3em] uppercase">Fezcodex Archive // File #8942</span>
@@ -111,6 +117,7 @@ const SimpleText = () => {
           prose-thead:bg-black prose-thead:text-white
           prose-th:p-4 prose-th:uppercase prose-th:tracking-wider prose-th:font-normal prose-th:text-left prose-th:text-white
           prose-td:p-4 prose-td:border-b prose-td:border-gray-300 prose-td:text-gray-700
+
           prose-blockquote:border-l-4 prose-blockquote:border-black prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:bg-white prose-blockquote:p-6 prose-blockquote:shadow-sm"
         >
           <ReactMarkdown
