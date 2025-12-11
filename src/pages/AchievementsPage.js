@@ -188,13 +188,13 @@ const AchievementsPage = () => {
                 key={achievement.id}
                 className={`relative overflow-hidden rounded-xl border p-6 transition-all duration-300 ${
                   isUnlocked
-                    ? 'bg-amber-900/40 border-amber-500/30 shadow-[0_0_15px_rgba(245,158,11,0.2)]'
+                    ? 'bg-yellow-800/30 border-yellow-600/30 shadow-[0_0_15px_rgba(252,211,77,0.3)]'
                     : 'bg-gray-900/40 border-gray-800 opacity-70 grayscale'
                 }`}
               >
                 <div className="flex items-start justify-between">
                   <div
-                    className={`p-3 rounded-lg ${isUnlocked ? 'bg-amber-500/20 text-amber-400' : 'bg-gray-800 text-gray-500'}`}
+                    className={`p-3 rounded-lg ${isUnlocked ? 'bg-yellow-500/20 text-yellow-400' : 'bg-gray-800 text-gray-500'}`}
                   >
                     {isUnlocked ? (
                       achievement.icon
@@ -203,7 +203,7 @@ const AchievementsPage = () => {
                     )}
                   </div>
                   {isUnlocked && (
-                    <span className="text-xs font-mono text-amber-400 bg-amber-900/30 px-2 py-1 rounded border border-amber-800">
+                    <span className="text-xs font-mono text-yellow-400 bg-yellow-900/30 px-2 py-1 rounded border border-yellow-800">
                       UNLOCKED
                     </span>
                   )}
@@ -211,7 +211,7 @@ const AchievementsPage = () => {
 
                 <div className="mt-4">
                   <h3
-                    className={`text-xl font-bold ${isUnlocked ? 'text-amber-100' : 'text-gray-500'}`}
+                    className={`text-xl font-bold ${isUnlocked ? 'text-yellow-100' : 'text-gray-500'}`}
                   >
                     {achievement.title}
                   </h3>
