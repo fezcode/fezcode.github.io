@@ -1,0 +1,156 @@
+# Implementing a Resizable Global Side Panel in React
+
+Sometimes, a modal is just too intrusive. You want to show detailed context—like a complex rating system or metadata—without forcing the user to lose their place on the page or blocking the entire UI with a backdrop that demands immediate attention. Enter the **Sliding Side Panel**.
+
+In this post, I'll walk through how I implemented a global side panel system for **Fezcodex**, allowing any component in the app to trigger a content-rich overlay that slides in smoothly from the right. Even better? I made it **resizable**, so users can drag to expand the view if they need more space.
+
+## The Goal
+
+The immediate need was simple: I wanted to explain my G4-inspired 5-star rating system on the Logs page. A simple tooltip wasn't enough, and a full modal felt heavy-handed. I wanted a panel that felt like an extension of the UI, sliding in to offer "more details" on demand.
+
+## The Architecture
+
+To make this truly reusable, I avoided prop drilling by using the **Context API**.
+
+### Why Context? Avoiding Prop Drilling
+
+Without a global context, implementing a feature like this would require **prop drilling**. This is a common pattern (or anti-pattern) in React where you pass data or functions down through multiple layers of components just to get them to where they are needed.
+
+Imagine we managed the side panel state in `App.js`. We would have to pass the `openSidePanel` function like this:
+
+`App` → `Layout` → `MainContent` → `LogsPage` → `LogCard` → `InfoButton`
+
+Every intermediate component would need to accept and pass along a prop it doesn't even use. This makes refactoring a nightmare and clutters your component signatures. By using the **Context API**, we can bypass the middle layers entirely. Any component, no matter how deep in the tree, can simply reach out and grab the `openSidePanel` function directly.
+
+### 1. The Context (`SidePanelContext`)
+
+We need a way to tell the app: "Open the panel with *this* title, *this* content, and start at *this* width."
+
+```javascript
+// src/context/SidePanelContext.js
+import React, { createContext, useContext, useState } from 'react';
+
+const SidePanelContext = createContext();
+
+export const useSidePanel = () => useContext(SidePanelContext);
+
+export const SidePanelProvider = ({ children }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [panelContent, setPanelContent] = useState(null);
+  const [panelTitle, setPanelTitle] = useState('');
+  const [panelWidth, setPanelWidth] = useState(450); // Default width
+
+  // openSidePanel now accepts an optional initial width
+  const openSidePanel = (title, content, width = 450) => {
+    setPanelTitle(title);
+    setPanelContent(content);
+    setPanelWidth(width);
+    setIsOpen(true);
+  };
+
+  const closeSidePanel = () => setIsOpen(false);
+
+  return (
+    <SidePanelContext.Provider
+      value={{
+        isOpen,
+        panelTitle,
+        panelContent,
+        panelWidth,
+        setPanelWidth,
+        openSidePanel,
+        closeSidePanel
+      }}
+    >
+      {children}
+    </SidePanelContext.Provider>
+  );
+};
+```
+
+This allows any component to call `openSidePanel('My Title', <MyComponent />, 600)` to trigger the UI with a custom starting width.
+
+### 2. The Component (`SidePanel`)
+
+The visual component uses **Framer Motion** for silky smooth entrance and exit animations, and vanilla JS event listeners for the resize logic.
+
+```javascript
+// src/components/SidePanel.js
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { useSidePanel } from '../context/SidePanelContext';
+
+const SidePanel = () => {
+  const { isOpen, closeSidePanel, panelTitle, panelContent, panelWidth, setPanelWidth } = useSidePanel();
+  const [isResizing, setIsResizing] = useState(false);
+
+  // Resize Logic
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (!isResizing) return;
+      const newWidth = window.innerWidth - e.clientX;
+      // Constrain width: min 300px, max 90% of screen
+      if (newWidth > 300 && newWidth < window.innerWidth * 0.9) {
+        setPanelWidth(newWidth);
+      }
+    };
+
+    const handleMouseUp = () => setIsResizing(false);
+
+    if (isResizing) {
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none'; // Prevent text selection while dragging
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mouseup', handleMouseUp);
+      document.body.style.cursor = 'default';
+      document.body.style.userSelect = 'auto';
+    };
+  }, [isResizing, setPanelWidth]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          <motion.div onClick={closeSidePanel} className="fixed inset-0 bg-black/50 z-[60]" />
+          
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            style={{ width: panelWidth }} // Dynamic width
+            className="fixed top-0 right-0 h-full bg-gray-900 border-l border-gray-700 z-[70] flex flex-col"
+          >
+            {/* Resize Handle */}
+            <div
+              onMouseDown={(e) => { setIsResizing(true); e.preventDefault(); }}
+              className="absolute left-0 top-0 bottom-0 w-1.5 cursor-ew-resize hover:bg-primary-500/50 transition-colors z-50"
+            />
+            
+             {/* Header & Content */}
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
+  );
+};
+```
+
+### 3. Integration
+
+I wrapped the entire application in the `SidePanelProvider` in `App.js` and placed the `<SidePanel />` component in `Layout.js`. This ensures the panel is always available and renders on top of everything else.
+
+## Inspiration
+
+The first use case for this panel was to detail the **Rating System** for my logs. I wanted to pay homage to the classic **X-Play (G4TV)** scale, emphasizing that a **3 out of 5** is a solid, good score—not a failure.
+
+The side panel proved perfect for this: users can check the rating criteria without leaving the logs list, keeping their browsing flow uninterrupted.
+
+## Conclusion
+
+Global UI elements controlled via Context are a powerful pattern in React. By adding a simple resize handle and managing width in the global state, we've transformed a static overlay into a flexible, user-friendly tool that adapts to the user's needs.

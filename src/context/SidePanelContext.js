@@ -10,10 +10,12 @@ export const SidePanelProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [panelContent, setPanelContent] = useState(null);
   const [panelTitle, setPanelTitle] = useState('');
+  const [panelWidth, setPanelWidth] = useState(450);
 
-  const openSidePanel = (title, content) => {
+  const openSidePanel = (title, content, width = 450) => {
     setPanelTitle(title);
     setPanelContent(content);
+    setPanelWidth(width);
     setIsOpen(true);
   };
 
@@ -28,6 +30,8 @@ export const SidePanelProvider = ({ children }) => {
         isOpen,
         panelTitle,
         panelContent,
+        panelWidth,
+        setPanelWidth,
         openSidePanel,
         closeSidePanel,
       }}

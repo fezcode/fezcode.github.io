@@ -1,5 +1,5 @@
 import React from 'react';
-import {StarIcon} from '@phosphor-icons/react';
+import { StarIcon } from '@phosphor-icons/react';
 
 const RatingSystemDetail = () => {
   const renderStars = (rating) => {
@@ -88,12 +88,14 @@ const RatingSystemDetail = () => {
         </div>
       </div>
       <div className="space-y-2 pt-4">
-        <h3 className="text-white font-bold border-b border-gray-800 pb-2">Inspiration</h3>
+        <h3 className="text-white font-bold border-b border-gray-800 pb-2">
+          Inspiration
+        </h3>
         <p className="text-sm text-gray-400">
-          This rating system is heavily inspired by the classic <strong>X-Play (G4TV)</strong> scale.
-          We believe in the sanctity of the 3-star review: a 3 is not bad, it
-          is <strong>average</strong> or <strong>solid</strong>.
-          Grade inflation has no place here.
+          This rating system is heavily inspired by the classic{' '}
+          <strong>X-Play (G4TV)</strong> scale. We believe in the sanctity of
+          the 3-star review: a 3 is not bad, it is <strong>average</strong> or{' '}
+          <strong>solid</strong>. Grade inflation has no place here.
         </p>
       </div>
       <div className="mt-8 pt-6 border-t border-gray-800 text-xs text-gray-600 italic">

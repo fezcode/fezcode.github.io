@@ -1,5 +1,17 @@
 [
   {
+    "slug": "implementing-a-sliding-side-panel",
+    "title": "Implementing a Global Sliding Side Panel in React",
+    "date": "2025-12-11",
+    "updated": "2025-12-11",
+    "description": "How I built a context-driven, global sliding side panel system for Fezcodex using React and Framer Motion.",
+    "tags": ["react", "framer-motion", "context-api", "ui/ux", "frontend"],
+    "category": "dev",
+    "filename": "implementing-a-sliding-side-panel.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+  },
+  {
     "slug": "building-a-digital-rotary-phone",
     "title": "Building a Digital Rotary Phone",
     "date": "2025-12-02",

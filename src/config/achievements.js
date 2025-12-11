@@ -797,6 +797,13 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
+    id: 'east_side',
+    title: 'East Side',
+    description: 'Opened the Right Side.',
+    icon: <ColumnsIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
     id: 'clean_slate',
     title: 'Clean Slate',
     description: 'Tabula Rasa.',
