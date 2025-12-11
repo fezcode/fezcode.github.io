@@ -149,6 +149,7 @@ const NewsPage = lazy(() => import('../pages/NewsPage'));
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const SitemapPage = lazy(() => import('../pages/SitemapPage'));
+const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
 
 const pageVariants = {
   initial: {
@@ -396,6 +397,14 @@ function AnimatedRoutes() {
                 <NotebookViewerPage />
               </Suspense>
             </motion.div>
+          }
+        />
+        <Route
+          path="/vocab/:term"
+          element={
+            <Suspense fallback={<Loading />}>
+              <VocabRouteHandler />
+            </Suspense>
           }
         />
         <Route

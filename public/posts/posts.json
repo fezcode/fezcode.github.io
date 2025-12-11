@@ -1,7 +1,19 @@
 [
   {
+    "slug": "react-magic-markdown-components",
+    "title": "React Magic: Rendering Components from Markdown Links",
+    "date": "2025-12-12",
+    "updated": "2025-12-12",
+    "description": "How to trigger complex React interactions and render dynamic components directly from static Markdown links.",
+    "tags": ["react", "markdown", "ui/ux", "frontend", "patterns"],
+    "category": "dev",
+    "filename": "react-magic-markdown-components.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+  },
+  {
     "slug": "implementing-a-sliding-side-panel",
-    "title": "Implementing a Global Sliding Side Panel in React",
+    "title": "Implementing a Resizable Global Sliding Side Panel in React",
     "date": "2025-12-11",
     "updated": "2025-12-11",
     "description": "How I built a context-driven, global sliding side panel system for Fezcodex using React and Framer Motion.",

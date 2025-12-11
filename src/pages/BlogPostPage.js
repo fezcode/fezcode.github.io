@@ -20,11 +20,41 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { calculateReadingTime } from '../utils/readingTime';
 import { useAchievements } from '../context/AchievementContext';
+import { useSidePanel } from '../context/SidePanelContext';
+import { vocabulary } from '../data/vocabulary';
 
 // --- Helper Components ---
 
-const LinkRenderer = ({ href, children }) => {
-  const isExternal = href.startsWith('http') || href.startsWith('https');
+const MarkdownLink = ({ href, children }) => {
+  const { openSidePanel } = useSidePanel();
+  const isExternal = href?.startsWith('http') || href?.startsWith('https');
+  const isVocab = href && (href.startsWith('/vocab/') || href.includes('/#/vocab/'));
+
+  if (isVocab) {
+    // Extract term: handle both /vocab/term and /#/vocab/term
+    const parts = href.split('/vocab/');
+    const term = parts[1];
+    const definition = vocabulary[term];
+
+    return (
+      <a
+        href={href}
+        onClick={(e) => {
+          e.preventDefault();
+          if (definition) {
+            openSidePanel(definition.title, definition.content);
+          } else {
+            console.warn(`Vocabulary term not found: ${term}`);
+          }
+        }}
+        className="text-amber-400 hover:text-amber-300 transition-colors inline-flex items-center gap-1 border-b border-amber-500/30 border-dashed hover:border-solid cursor-help"
+        title="Click for definition"
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <a
       href={href}
@@ -370,7 +400,7 @@ const BlogPostPage = () => {
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
                 components={{
-                  a: LinkRenderer,
+                  a: MarkdownLink,
                   pre: ({ children }) => <>{children}</>,
                   code: CodeBlock,
                   img: ImageRenderer,
