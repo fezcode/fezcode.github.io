@@ -804,6 +804,13 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
+    id: 'su-done',
+    title: 'Privilege Escalation',
+    description: 'Escalate your privileges in a new environment',
+    icon: <TerminalWindowIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
+  {
     id: 'clean_slate',
     title: 'Clean Slate',
     description: 'Tabula Rasa.',

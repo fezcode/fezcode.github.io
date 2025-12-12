@@ -10,6 +10,7 @@ import {
   GitCommit,
   Cpu,
 } from '@phosphor-icons/react';
+import {useAchievements} from "../../context/AchievementContext";
 
 const THEMES = {
   green: {
@@ -77,14 +78,14 @@ const ScanLine = ({ theme = 'green' }) => (
 const MiniTerminal = ({ theme, setTheme }) => {
   const navigate = useNavigate();
   const [history, setHistory] = useState([
-    {type: 'output', text: 'FEZ.OS v4.2.0 initialized...'},
+    {type: 'output', text: 'FEZ.OS Shell v0.4.0 initialized...'},
     {type: 'output', text: 'Type "help" for available commands.'},
   ]);
   const [input, setInput] = useState('');
   const [commandHistory, setCommandHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const bottomRef = React.useRef(null);
-
+  const { unlockAchievement } = useAchievements();
   React.useEffect(() => {
     bottomRef.current?.scrollIntoView({behavior: 'smooth'});
   }, [history]);
@@ -257,6 +258,11 @@ const MiniTerminal = ({ theme, setTheme }) => {
         setHistory([]);
         return;
       case '':
+        break;
+      case 'sudo':
+        newHistory.push({ type: 'output', text: 'Checking user privileges...', className: `${THEMES[theme].text} font-bold` });
+        newHistory.push({ type: 'output', text: `Access Granted...`, className: THEMES[theme].textDim });
+        unlockAchievement('su-done');
         break;
       default:
         newHistory.push({ type: 'error', text: `Command not found: ${trimmed}`, className: 'text-red-500 font-bold' });

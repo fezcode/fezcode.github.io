@@ -13,6 +13,7 @@ import SystemArchitecture from './about-views/SystemArchitecture';
 import MindMapConstellation from './about-views/MindMapConstellation';
 import ClassifiedDossier from './about-views/ClassifiedDossier';
 import { useAchievements } from '../context/AchievementContext';
+import useSeo from "../hooks/useSeo";
 
 const ViewSwitcher = ({ currentView, setView }) => {
   const views = [
@@ -51,6 +52,12 @@ const ViewSwitcher = ({ currentView, setView }) => {
 const AboutPage = () => {
   const [view, setView] = useState('dossier');
   const { unlockAchievement } = useAchievements();
+
+  useSeo({
+    title: 'Fezcodex | About',
+    description: 'Learn more about the creator of Fezcodex.',
+    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'software engineer', 'about'],
+  });
 
   useEffect(() => {
     unlockAchievement('curious_soul');
