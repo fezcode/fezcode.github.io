@@ -32,6 +32,79 @@ const CozyAppPage = () => {
   const gainNodeRef = useRef(null);
   const sourceNodeRef = useRef(null);
   const canvasRef = useRef(null);
+  const isMouseDownRef = useRef(false); // Ref to hold the current state of isMouseDown
+  const particlesRef = useRef([]); // New: persistent storage for particles
+
+  class Particle { // Move Particle class definition here
+    constructor(mode, canvas) {
+      this.mode = mode;
+      this.canvas = canvas;
+      this.ctx = canvas.getContext('2d');
+      this.reset();
+    }
+
+    reset() {
+      if (this.mode === 'fireplace') {
+        const spread = this.canvas.width * 0.5;
+        this.x = this.canvas.width / 2 + (Math.random() - 0.5) * spread;
+        this.y = this.canvas.height;
+        this.size = Math.random() * 10 + 5;
+        this.speedY = Math.random() * 5 + 2;
+        this.speedX = (Math.random() - 0.5) * 2;
+        this.color = `hsla(${Math.random() * 40 + 10}, 100%, 50%, ${Math.random() * 0.5 + 0.1})`;
+        this.life = 150;
+        this.decay = Math.random() * 0.5 + 0.2;
+      } else if (this.mode === 'snow') {
+        this.x = Math.random() * this.canvas.width;
+        this.y = Math.random() * this.canvas.height * -1; // Start above canvas
+        this.size = Math.random() * 3 + 1;
+        this.speedY = Math.random() * 1 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.5; // Gentle drift
+        this.color = `hsla(0, 0%, 100%, ${Math.random() * 0.5 + 0.3})`;
+      } else if (this.mode === 'rain') {
+        this.x = Math.random() * this.canvas.width;
+        this.y = Math.random() * this.canvas.height * -1;
+        this.size = Math.random() * 20 + 10; // Length of rain drop
+        this.speedY = Math.random() * 10 + 15; // Fast
+        this.speedX = 0;
+        this.color = `hsla(210, 100%, 70%, ${Math.random() * 0.3 + 0.1})`;
+      }
+    }
+
+    update() {
+      this.x += this.speedX;
+      this.y += (this.mode === 'fireplace' ? -1 : 1) * this.speedY; // Fire goes up, rain/snow goes down
+
+      if (this.mode === 'fireplace') {
+        this.size -= 0.1;
+        this.life -= this.decay;
+        if (this.size <= 0 || this.life <= 0) this.reset();
+      } else {
+        // Wrap around for snow/rain
+        if (this.y > this.canvas.height) {
+          this.y = -10;
+          this.x = Math.random() * this.canvas.width;
+        }
+        if (this.x > this.canvas.width) this.x = 0;
+        if (this.x < 0) this.x = this.canvas.width;
+      }
+    }
+
+    draw() {
+      this.ctx.beginPath();
+      if (this.mode === 'rain') {
+        this.ctx.moveTo(this.x, this.y);
+        this.ctx.lineTo(this.x, this.y + this.size);
+        this.ctx.strokeStyle = this.color;
+        this.ctx.lineWidth = 1;
+        this.ctx.stroke();
+      } else {
+        this.ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        this.ctx.fillStyle = this.color;
+        this.ctx.fill();
+      }
+    }
+  }
 
   // --- Audio Engine ---
   useEffect(() => {
@@ -49,24 +122,20 @@ const CozyAppPage = () => {
         audioCtxRef.current = null;
       }
     };
-
     if (isMuted || mode === 'breathe') {
       cleanupAudio();
       return;
     }
-
     // Initialize Audio Context
     const AudioContext = window.AudioContext || window.webkitAudioContext;
     if (!audioCtxRef.current) {
       audioCtxRef.current = new AudioContext();
     }
     const ctx = audioCtxRef.current;
-
     // Create Master Gain (Volume)
     gainNodeRef.current = ctx.createGain();
     gainNodeRef.current.connect(ctx.destination);
     gainNodeRef.current.gain.value = 0.15; // Master volume
-
     // Generate Noise Buffer (Pink-ish Noise for nature sounds)
     const bufferSize = 2 * ctx.sampleRate;
     const noiseBuffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
@@ -78,17 +147,14 @@ const CozyAppPage = () => {
       lastOut = output[i];
       output[i] *= 3.5;
     }
-
     // Source setup
     sourceNodeRef.current = ctx.createBufferSource();
     sourceNodeRef.current.buffer = noiseBuffer;
     sourceNodeRef.current.loop = true;
-
     // Filter setup based on mode
     const filter = ctx.createBiquadFilter();
     sourceNodeRef.current.connect(filter);
     filter.connect(gainNodeRef.current);
-
     if (mode === 'fireplace') {
       filter.type = 'lowpass';
       filter.frequency.value = 400;
@@ -103,14 +169,16 @@ const CozyAppPage = () => {
       filter.frequency.value = 200; // Deep, soft wind rumble
       gainNodeRef.current.gain.value = 0.05; // Very quiet and soothing
     }
-
     sourceNodeRef.current.start();
-
     return cleanupAudio;
   }, [mode, isMuted]);
 
+  // --- Particle Engine ---
   useEffect(() => {
-    if (mode === 'breathe') return;
+    if (mode === 'breathe') {
+      particlesRef.current = []; // Clear particles if switching to breathe mode
+      return;
+    }
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -125,88 +193,38 @@ const CozyAppPage = () => {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    let particles = [];
-    let particleCount = 100;
+    let baseParticleCount = 100;
 
     // Config based on mode
-    if (mode === 'fireplace') particleCount = 300;
-    if (mode === 'snow') particleCount = 200;
-    if (mode === 'rain') particleCount = 500;
+    if (mode === 'fireplace') baseParticleCount = 300;
+    if (mode === 'snow') baseParticleCount = 200;
+    if (mode === 'rain') baseParticleCount = 500;
 
-    class Particle {
-      constructor() {
-        this.reset();
-      }
-
-      reset() {
-        if (mode === 'fireplace') {
-          const spread = canvas.width * 0.5;
-          this.x = canvas.width / 2 + (Math.random() - 0.5) * spread;
-          this.y = canvas.height;
-          this.size = Math.random() * 10 + 5;
-          this.speedY = Math.random() * 5 + 2;
-          this.speedX = (Math.random() - 0.5) * 2;
-          this.color = `hsla(${Math.random() * 40 + 10}, 100%, 50%, ${Math.random() * 0.5 + 0.1})`;
-          this.life = 150;
-          this.decay = Math.random() * 0.5 + 0.2;
-        } else if (mode === 'snow') {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height * -1; // Start above canvas
-          this.size = Math.random() * 3 + 1;
-          this.speedY = Math.random() * 1 + 0.5;
-          this.speedX = (Math.random() - 0.5) * 0.5; // Gentle drift
-          this.color = `hsla(0, 0%, 100%, ${Math.random() * 0.5 + 0.3})`;
-        } else if (mode === 'rain') {
-          this.x = Math.random() * canvas.width;
-          this.y = Math.random() * canvas.height * -1;
-          this.size = Math.random() * 20 + 10; // Length of rain drop
-          this.speedY = Math.random() * 10 + 15; // Fast
-          this.speedX = 0;
-          this.color = `hsla(210, 100%, 70%, ${Math.random() * 0.3 + 0.1})`;
-        }
-      }
-
-      update() {
-        this.x += this.speedX;
-        this.y += (mode === 'fireplace' ? -1 : 1) * this.speedY; // Fire goes up, rain/snow goes down
-
-        if (mode === 'fireplace') {
-          this.size -= 0.1;
-          this.life -= this.decay;
-          if (this.size <= 0 || this.life <= 0) this.reset();
-        } else {
-          // Wrap around for snow/rain
-          if (this.y > canvas.height) {
-            this.y = -10;
-            this.x = Math.random() * canvas.width;
-          }
-          if (this.x > canvas.width) this.x = 0;
-          if (this.x < 0) this.x = canvas.width;
-        }
-      }
-
-      draw() {
-        ctx.beginPath();
-        if (mode === 'rain') {
-          ctx.moveTo(this.x, this.y);
-          ctx.lineTo(this.x, this.y + this.size);
-          ctx.strokeStyle = this.color;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        } else {
-          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-          ctx.fillStyle = this.color;
-          ctx.fill();
-        }
-      }
-    }
-
-    // Initialize particles
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
+    // When mode changes, reset existing particles to adapt to the new mode
+    particlesRef.current.forEach(p => {
+      p.mode = mode; // Update mode reference
+      p.canvas = canvas; // Update canvas reference
+      p.ctx = ctx; // Update ctx reference
+      p.reset();
+    });
 
     const animate = () => {
+      // Calculate targetParticleCount inside animate, to react to isMouseDown changes
+      const targetParticleCount = isMouseDownRef.current ? baseParticleCount * 5 : baseParticleCount;
+
+      // Add or remove particles dynamically per frame
+      if (particlesRef.current.length < targetParticleCount) {
+        // Add a few particles per frame to smoothly increase
+        for (let i = 0; i < Math.min(15, targetParticleCount - particlesRef.current.length); i++) {
+          particlesRef.current.push(new Particle(mode, canvas));
+        }
+      } else if (particlesRef.current.length > targetParticleCount) {
+        // Remove a few particles per frame to smoothly decrease
+        for (let i = 0; i < Math.min(15, particlesRef.current.length - targetParticleCount); i++) {
+          particlesRef.current.pop();
+        }
+      }
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       if (mode === 'fireplace') {
@@ -223,7 +241,7 @@ const CozyAppPage = () => {
         ctx.globalCompositeOperation = 'source-over';
       }
 
-      particles.forEach((p) => {
+      particlesRef.current.forEach((p) => {
         p.update();
         p.draw();
       });
@@ -234,13 +252,30 @@ const CozyAppPage = () => {
       animationFrameId = requestAnimationFrame(animate);
     };
 
+    // Initial fill if particlesRef.current is empty when mode starts
+    if (particlesRef.current.length === 0) {
+        for (let i = 0; i < baseParticleCount; i++) {
+            particlesRef.current.push(new Particle(mode, canvas));
+        }
+    }
+
     animate();
 
     return () => {
       window.removeEventListener('resize', resizeCanvas);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [mode]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mode]); // isMouseDown removed from dependencies
+
+  const handleMouseDownIntensify = () => {
+    if (mode === 'breathe') return;
+    isMouseDownRef.current = true; // Update ref directly
+  };
+
+  const handleMouseUpIntensify = () => {
+    isMouseDownRef.current = false; // Update ref directly
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col transition-colors duration-500">
@@ -315,18 +350,32 @@ const CozyAppPage = () => {
 
         {/* Content Area */}
         {/*<div className="w-[830px] h-[800px] relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700">*/}
-        <div className="flex-grow h-[80vh] relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700">
+        <div
+          className="flex-grow h-[80vh] relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700"
+          onMouseDown={handleMouseDownIntensify} // Use onMouseDown
+          onMouseUp={handleMouseUpIntensify}     // Use onMouseUp
+          onMouseLeave={handleMouseUpIntensify}   // Reset if mouse leaves while down
+        >
           {mode !== 'breathe' && (
             <div className="absolute inset-0 flex flex-col items-center justify-end pb-10">
               <canvas
                 ref={canvasRef}
                 className="absolute inset-0 w-full h-full"
               />
-              <div className="relative z-10 text-amber-200/50 font-mono text-sm select-none pointer-events-none mb-4">
-                {mode === 'fireplace' && 'Warmth & comfort'}
-                {mode === 'snow' && 'Silent snow'}
-                {mode === 'rain' && 'Gentle rain'}
-              </div>
+              {mode !== 'breathe' && (
+                <>
+                  {!isMouseDownRef.current && (
+                    <div className="relative z-10 text-gray-300/35 font-mono text-xs select-none pointer-events-none mb-2">
+                      ...hold...
+                    </div>
+                  )}
+                  <div className="relative z-10 text-amber-200/50 font-mono text-sm select-none pointer-events-none mb-4">
+                    {mode === 'fireplace' && 'Warmth & comfort'}
+                    {mode === 'snow' && 'Silent snow'}
+                    {mode === 'rain' && 'Gentle rain'}
+                  </div>
+                </>
+              )}
             </div>
           )}
 
