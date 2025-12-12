@@ -152,7 +152,7 @@ const HomePage = () => {
   return (
     <div className="py-16 sm:py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center">
+        <div className="mx-auto max-w-2xl text-center font-mono">
           <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
             Welcome to fez<span className="text-primary-400">codex</span>
           </h1>

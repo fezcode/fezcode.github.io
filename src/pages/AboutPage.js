@@ -11,12 +11,12 @@ import {
 import NeuromancerHUD from './about-views/NeuromancerHUD';
 import SystemArchitecture from './about-views/SystemArchitecture';
 import MindMapConstellation from './about-views/MindMapConstellation';
-import SimpleText from './about-views/SimpleText';
+import ClassifiedDossier from './about-views/ClassifiedDossier';
 import { useAchievements } from '../context/AchievementContext';
 
 const ViewSwitcher = ({ currentView, setView }) => {
   const views = [
-    { id: 'simple', icon: Article, label: 'Simple' },
+    { id: 'dossier', icon: Article, label: 'Dossier' },
     { id: 'hud', icon: Terminal, label: 'Terminal' },
     { id: 'blueprint', icon: TreeStructure, label: 'Blueprint' },
     { id: 'map', icon: Graph, label: 'Mind Map' },
@@ -49,7 +49,7 @@ const ViewSwitcher = ({ currentView, setView }) => {
 };
 
 const AboutPage = () => {
-  const [view, setView] = useState('simple');
+  const [view, setView] = useState('dossier');
   const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
@@ -63,8 +63,8 @@ const AboutPage = () => {
 
   const getButtonStyle = (currentView) => {
     switch (currentView) {
-      case 'simple':
-        return 'bg-transparent text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-[#4a0404] hover:text-white hover:border-[#4a0404] rounded-none shadow-none';
+      case 'dossier':
+        return 'bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-[#4a0404] hover:text-white hover:border-[#4a0404] rounded-none shadow-none';
       case 'hud':
         return 'bg-black text-green-500 border-green-500 border font-mono tracking-wider hover:bg-green-500 hover:text-black shadow-[0_0_10px_rgba(0,255,0,0.3)] rounded-sm';
       case 'blueprint':
@@ -101,12 +101,12 @@ const AboutPage = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full h-full"
+          className="w-full h-full overflow-y-auto"
         >
           {view === 'hud' && <NeuromancerHUD />}
           {view === 'blueprint' && <SystemArchitecture />}
           {view === 'map' && <MindMapConstellation />}
-          {view === 'simple' && <SimpleText />}
+          {view === 'dossier' && <ClassifiedDossier />}
         </motion.div>
       </AnimatePresence>
 

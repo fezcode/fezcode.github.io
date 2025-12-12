@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { aboutData } from './aboutData';
-import { X, Sparkle } from '@phosphor-icons/react';
+import { X, Sparkle, Buildings } from '@phosphor-icons/react';
 
 const NODE_COLORS = {
   core: '#a78bfa', // purple
@@ -132,6 +132,7 @@ const MindMapConstellation = () => {
           label: e.company,
           color: NODE_COLORS.experience,
           type: 'Experience',
+          icon: Buildings, // Added default icon
           description: e.desc,
           stats: { role: e.role, period: e.period }
         };
@@ -146,19 +147,27 @@ const MindMapConstellation = () => {
     <div ref={containerRef} className="relative w-full h-screen bg-[#0f172a] overflow-hidden">
       {/* Background Stars */}
       <div className="absolute inset-0" style={{ background: 'radial-gradient(circle at center, #1e293b 0%, #0f172a 100%)' }}>
-          {[...Array(50)].map((_, i) => (
+          {[...Array(150)].map((_, i) => (
              <div
                key={i}
                className="absolute bg-white rounded-full opacity-20 animate-pulse"
                style={{
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
-                  width: Math.random() * 3 + 'px',
-                  height: Math.random() * 3 + 'px',
+                  width: Math.random() * 2 + 'px',
+                  height: Math.random() * 2 + 'px',
                   animationDelay: `${Math.random() * 5}s`
                }}
              />
           ))}
+      </div>
+
+      {/* Background Planets */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+         <div className="absolute top-[10%] left-[10%] w-32 h-32 rounded-full bg-purple-500 blur-3xl opacity-20" />
+         <div className="absolute top-[80%] left-[20%] w-48 h-48 rounded-full bg-blue-600 blur-3xl opacity-10" />
+         <div className="absolute top-[30%] right-[15%] w-24 h-24 rounded-full bg-cyan-400 blur-2xl opacity-20" />
+         <div className="absolute bottom-[10%] right-[10%] w-64 h-64 rounded-full bg-indigo-900 blur-3xl opacity-30" />
       </div>
 
       {/* SVG Layer for lines (simplified connection to center) */}

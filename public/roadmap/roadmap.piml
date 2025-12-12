@@ -115,3 +115,25 @@
     (priority) High
     (created_at) 2025-11-30T11:00:00+03:00
     (notes) A route for returning and rendering vocabulary components.
+
+  > (issues)
+    (id) FEZ-11
+    (title) Sprite Editor App.
+    (description) A pixel art editor that allows transparency and exporting as .bmp and .png
+    (category) Feature
+    (status) Planned
+    (priority) High
+    (created_at) 2025-12-12T03:22:00+03:00
+    (notes) App should use a artistic style, not default fezcodex style for the app.
+
+  > (issues)
+    (id) FEZ-12
+    (title) Re-imagine Home Page
+    (description) Current state of the home page is too old w.r.t. the other parts of the system.
+    (category) Feature
+    (status) Planned
+    (priority) High
+    (created_at) 2025-12-12T03:22:00+03:00
+    (notes) A hero or landing page using different styles must be implemented.
+
+

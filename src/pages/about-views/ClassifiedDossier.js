@@ -23,7 +23,7 @@ const LinkRenderer = ({href, children}) => {
   );
 };
 
-const SimpleText = () => {
+const ClassifiedDossier = () => {
   const [content, setContent] = useState('');
   const [title, setTitle] = useState('');
   const [loading, setLoading] = useState(true);
@@ -144,4 +144,4 @@ const SimpleText = () => {
   );
 };
 
-export default SimpleText;
+export default ClassifiedDossier;
