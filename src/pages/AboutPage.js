@@ -8,6 +8,8 @@ import {
   Terminal,
   Article,
 } from '@phosphor-icons/react';
+import CommandPalette from '../components/CommandPalette';
+import { useCommandPalette } from '../context/CommandPaletteContext';
 import NeuromancerHUD from './about-views/NeuromancerHUD';
 import SystemArchitecture from './about-views/SystemArchitecture';
 import MindMapConstellation from './about-views/MindMapConstellation';
@@ -52,6 +54,7 @@ const ViewSwitcher = ({ currentView, setView }) => {
 const AboutPage = () => {
   const [view, setView] = useState('dossier');
   const { unlockAchievement } = useAchievements();
+  const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
 
   useSeo({
     title: 'Fezcodex | About',
@@ -119,6 +122,7 @@ const AboutPage = () => {
 
       {/* Switcher Controls */}
       <ViewSwitcher currentView={view} setView={setView} />
+      <CommandPalette isOpen={isPaletteOpen} setIsOpen={setIsPaletteOpen} />
     </div>
   );
 };
