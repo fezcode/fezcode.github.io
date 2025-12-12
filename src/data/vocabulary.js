@@ -27,4 +27,8 @@ export const vocabulary = {
     title: 'Person of Interest\'s Rating',
     loader: () => import('./vocab/poi-rating'),
   },
+  'game-of-the-year': {
+    title: 'Game of the Year (GOTY)',
+    loader: () => import('./vocab/game-of-the-year'),
+  },
 };
