@@ -118,6 +118,12 @@ const MiniTerminal = ({ theme, setTheme }) => {
           { cmd: 'history', desc: 'View command log' },
           { cmd: 'htop', desc: 'Process monitor' },
           { cmd: 'clear', desc: 'Clear display' },
+          { cmd: 'sudo', desc: 'Run with the security privileges' },
+          { cmd: 'date', desc: 'Display current date and time' },
+          { cmd: 'motd', desc: 'Display Message Of The Day' },
+          { cmd: 'ping', desc: 'Check terminal responsiveness' },
+          { cmd: 'os', desc: 'Display operating system info' },
+          { cmd: 'neofetch', desc: 'Display system information with ASCII art' },
         ];
         commands.forEach(c => {
            newHistory.push({ type: 'output', content: (
@@ -264,6 +270,53 @@ const MiniTerminal = ({ theme, setTheme }) => {
         newHistory.push({ type: 'output', text: `Access Granted...`, className: THEMES[theme].textDim });
         unlockAchievement('su-done');
         break;
+      case 'bsod':
+        newHistory.push({ type: 'output', text: 'FEZ.OS cannot be crashed. Sorry, not sorry.', className: `${THEMES[theme].text} font-bold` });
+        break;
+      case 'date':
+        newHistory.push({ type: 'output', text: new Date().toLocaleString(), className: THEMES[theme].text });
+        break;
+      case 'motd':
+        newHistory.push({ type: 'output', text: 'WELCOME, OPERATOR. SYSTEM STATUS: OPTIMAL. ACCESS GRANTED.', className: `${THEMES[theme].accent} ` });
+        break;
+      case 'ping':
+        newHistory.push({ type: 'output', text: 'pong', className: THEMES[theme].text });
+        break;
+      case 'os':
+        newHistory.push({ type: 'output', text: 'OPERATING SYSTEM INFORMATION:', className: `${THEMES[theme].accent} font-bold mt-2` });
+        newHistory.push({ type: 'output', text: `  OS Name: FEZ.OS Galactic Edition`, className: THEMES[theme].textDim });
+        newHistory.push({ type: 'output', text: `  Architecture: x64`, className: THEMES[theme].textDim });
+        newHistory.push({ type: 'output', text: `  Kernel Version: 3.5.0-2077-generic-cigdem-edition`, className: THEMES[theme].textDim });
+        newHistory.push({ type: 'output', text: `  Build Date: ${new Date().toISOString().slice(0, 10)}`, className: THEMES[theme].textDim });
+        newHistory.push({ type: 'output', text: `  Hostname: FEZ-GH_PAGES_SERVER-ALPHA-01`, className: THEMES[theme].textDim });
+        newHistory.push({ type: 'output', text: `  GUI: FEZ.OS React Shell`, className: THEMES[theme].textDim });
+        break;
+      case 'neofetch':
+        const uptimeSeconds = Math.floor(Math.random() * (24 * 3600 * 7)) + 3600; // Up to 7 days + 1 hour
+        const days = Math.floor(uptimeSeconds / (3600 * 24));
+        const hours = Math.floor((uptimeSeconds % (3600 * 24)) / 3600);
+        const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+
+        const neofetchOutput = [
+          `\n`,
+          `    _.-^-._    ${THEMES[theme].accent}FEZ.OS${THEMES[theme].textDim}`,
+          `   /_______\\   ------------------`,
+          `  |   .-.   |   Host: FEZ-GH_PAGES_SERVER-ALPHA-01`,
+          `  |   '-'   |   OS: FEZ.OS Galactic Edition`,
+          `  \`---------'   Kernel: 3.5.0-2077-generic-cigdem-edition`,
+          `                Uptime: ${days} days, ${hours} hours, ${minutes} minutes`,
+          `                Shell: fesh`,
+          `                Resolution: 1920x1080`,
+          `                Terminal: FEZ.OS React Shell`,
+          `                CPU: iMDtel Coreyzhen XX-1000Z (8) @ 5.00GHz`,
+          `                GPU: Generic PnP Graphics Card 90960`,
+          `                Memory: 8GB / 32GB`,
+          `\n`
+        ];
+        neofetchOutput.forEach(line => {
+          newHistory.push({ type: 'output', text: line, className: THEMES[theme].text });
+        });
+        break;
       default:
         newHistory.push({ type: 'error', text: `Command not found: ${trimmed}`, className: 'text-red-500 font-bold' });
     }
@@ -301,7 +354,7 @@ const MiniTerminal = ({ theme, setTheme }) => {
          onClick={() => document.getElementById('terminal-input')?.focus()}>
       <div className="flex-grow overflow-y-auto custom-scrollbar">
         {history.map((line, i) => (
-          <div key={i} className={line.className || (line.type === 'input' ? `${THEMES[theme].text} mt-1` : THEMES[theme].textDim)}>
+          <div key={i} className={`whitespace-pre ${line.className || (line.type === 'input' ? `${THEMES[theme].text} mt-1` : THEMES[theme].textDim)}`}>
             {line.type === 'input' ? '> ' : ''}
             {line.content || line.text}
           </div>
