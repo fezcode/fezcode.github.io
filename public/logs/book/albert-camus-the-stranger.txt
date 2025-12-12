@@ -9,7 +9,7 @@
 - **Rating:** 4/5
 - **Link:** [Goodreads](https://www.goodreads.com/book/show/49552.The_Stranger)
 
-![The Stranger](images/logs/albert-camus-the-stranger.jpg)
+![The Stranger](images/logs/book/albert-camus-the-stranger.jpg)
 
 ## Albert Camus's The Stranger (L'Étranger): Review
 

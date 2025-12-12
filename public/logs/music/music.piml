@@ -1,5 +1,17 @@
 (logs)
   > (item)
+    (artist) KIDS SEE GHOSTS (Kanye West & Kid Cudi)
+    (category) Music
+    (date) 2025-12-13
+    (link) https://www.youtube.com/playlist?list=PLLBJrClJPlWJScARaoX_LIw1n3LiPoZZQ
+    (rating) 5
+    (slug) kids-see-ghosts
+    (title) KIDS SEE GHOSTS (album)
+    (album) KIDS SEE GHOSTS
+    (image) /images/logs/music/kids-see-ghosts-cover.png
+    (description) KIDS SEE GHOSTS is the eponymous debut studio album by American hip hop super-duo Kids See Ghosts, composed of Kanye West and Kid Cudi. Released on June 8, 2018, by G.O.O.D. Music and Def Jam Recordings.
+
+  > (item)
     (artist) Benny the Butcher & J. Cole
     (category) Music
     (date) 2025-12-01
@@ -19,7 +31,7 @@
     (slug) fifa-99-ost
     (title) Music from FIFA 99
     (album) FIFA 99 (Soundtrack)
-    (image) /images/defaults/fifa99.jpg
+    (image) /images/logs/games/fifa99.jpg
     (description) Songs from my favorite FIFA game, including Raincry by God Within, Rockafella Skank by Fatboy Slim, Gotta Learn by Danmass. Also a quick memorial, about John Motson... John Motson (1945-2023) was a renowned English football commentator for the BBC, easily recognizable by his distinctive voice and his iconic sheepskin coat. Over his extensive career, he commented on more than 2000 games, which included 10 FIFA World Cups and 29 FA Cup finals. He retired from the BBC in 2018 and was honored with an OBE in 2001 for his outstanding services to sports broadcasting.
 
   > (item)
@@ -57,7 +69,7 @@
     (title) Don't Skip the Interlude
     (album) Don't Skip the Interlude
     (releaseDate) 2025-08-29
-    (image) /images/logs/dont-skip-the-interlude.png
+    (image) /images/logs/music/dont-skip-the-interlude.png
     (description) "Don't Skip the Interlude" by Yoo Se Yoon is a comedic musical track that cleverly contrasts heartfelt lyrics about love with a deliberately long and humorous instrumental interlude. Known for its comedic intent and visual gags during performances, the song's prolonged interlude is central to its entertaining and funny experience.
 
   > (item)

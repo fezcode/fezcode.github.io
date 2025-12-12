@@ -20,7 +20,7 @@ Yoo Se Yoon's 'Don't Skip the Interlude' (간주점프는 안돼요) is a unique
 heartfelt lyrics with an extended, humorous instrumental interlude. The song's title directly instructs listeners
 not to skip this interlude, as it is central to the piece's comedic intent and overall experience.
 
-![Ayyaaah](images/logs/dont-skip-the-interlude.png)
+![Ayyaaah](images/logs/music/dont-skip-the-interlude.png)
 
 
 The song features lyrics that appear serious and even heartfelt, discussing themes of love, memories,

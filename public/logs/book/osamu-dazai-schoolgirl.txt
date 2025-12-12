@@ -6,7 +6,7 @@
 - **Rating:** 3/5
 - **Link:** [Goodreads](https://www.goodreads.com/book/show/12483882-schoolgirl)
 
-![The Flowers of Buffoonery](images/logs/osamu-dazai-schoolgirl.jpg)
+![The Flowers of Buffoonery](images/logs/book/osamu-dazai-schoolgirl.jpg)
 
 "Schoolgirl" by Osamu Dazai is a poignant and introspective novella that delves into the inner world of a young girl navigating
 the complexities of adolescence, societal expectations, and her own burgeoning self-awareness.

@@ -72,22 +72,3 @@ export const getProjects = async () => {
     return [];
   }
 };
-
-export const getLogs = async () => {
-  try {
-    const allLogsData = await fetchJson('/logs/logs.json');
-    // Assuming logs.json directly contains an array of log objects
-    // Each log object should ideally have title, date, and slug properties
-    return allLogsData.map((log) => ({
-      title: log.title,
-      date: log.date, // Assuming logs have a 'date' field
-      slug: log.slug,
-      link: `/logs/${log.slug}`,
-      description: log.description || 'A log entry from Fezcodex.',
-      image: log.image || '/images/placeholder-log.svg',
-    }));
-  } catch (error) {
-    console.error('Error in getLogs:', error);
-    return [];
-  }
-};
