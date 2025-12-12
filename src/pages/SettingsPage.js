@@ -20,6 +20,7 @@ import { useAchievements } from '../context/AchievementContext';
 import CustomToggle from '../components/CustomToggle';
 import useSeo from '../hooks/useSeo';
 import { useToast } from '../hooks/useToast';
+import { useHomepageOrder } from '../context/HomepageOrderContext';
 import {
   KEY_SIDEBAR_STATE,
   KEY_APPS_COLLAPSED_CATEGORIES,
@@ -110,6 +111,8 @@ const SettingsPage = () => {
   } = useVisualSettings();
 
   const { addToast } = useToast();
+
+  const { sectionOrder, toggleSectionOrder, resetSectionOrder } = useHomepageOrder();
 
   const handleResetSidebarState = () => {
     removeLocalStorageItem(KEY_SIDEBAR_STATE);
@@ -209,6 +212,36 @@ const SettingsPage = () => {
         </div>
 
         <div className="grid grid-cols-1 gap-8">
+          {/* Homepage Layout Ordering */}
+          <Section title="Homepage Layout" icon={<Layout />} delay={0.0}>
+            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="font-medium text-white flex items-center gap-2">
+                    Homepage Section Order
+                  </h3>
+                  <button
+                    onClick={() => {
+                        resetSectionOrder();
+                        addToast({ title: 'Order Reset', message: 'Homepage section order reset to default.', duration: 2000, type: 'info' });
+                    }}
+                    className="flex items-center gap-1 text-sm text-gray-400 hover:text-red-400 transition-colors"
+                  >
+                    <ArrowCounterClockwise size={16} /> Reset
+                  </button>
+                </div>
+                <CustomToggle
+                  id="homepage-section-order"
+                  label="Show Latest Blogposts first"
+                  checked={sectionOrder[0] === 'blogposts'}
+                  onChange={toggleSectionOrder}
+                  colorTheme="blue"
+                />
+                <p className="mt-2 text-sm text-gray-400 ml-1">
+                    Toggle to display "Latest Blogposts" section before "Pinned Projects" on the homepage.
+                </p>
+            </div>
+          </Section>
+
           {/* Animation & Performance */}
           <Section
             title="Animation & Performance"

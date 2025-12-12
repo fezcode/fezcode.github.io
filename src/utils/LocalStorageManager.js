@@ -16,6 +16,9 @@ export const KEY_SHOW_ANIMATIONS_INNER_PAGES = 'showAnimationsInnerPages';
 export const KEY_SIDEBAR_STATE = 'sidebar_state';
 export const KEY_APPS_COLLAPSED_CATEGORIES = 'apps_collapsedCategories';
 
+// Homepage Order Settings
+export const KEY_HOMEPAGE_SECTION_ORDER = 'homepage-section-order';
+
 // --- Utility Functions ---
 
 /**

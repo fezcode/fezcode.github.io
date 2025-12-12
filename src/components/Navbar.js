@@ -45,7 +45,7 @@ const Navbar = ({
           </button>
           <Link to="/" className="flex items-center space-x-2">
             <Fez />
-            <span className="text-2xl font-semibold tracking-tight">
+            <span className="text-2xl tracking-tight font-mono">
               fez<span className="text-primary-400">codex</span>
             </span>
           </Link>

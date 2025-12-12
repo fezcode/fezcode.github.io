@@ -15,22 +15,8 @@ import PostItem from '../components/PostItem';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
-
-const HeroButton = ({ to, children, Icon }) => {
-  return (
-    <Link
-      to={to}
-      className="relative flex items-center justify-center px-6 py-3 overflow-hidden font-mono text-sm font-bold text-white transition-all duration-300 ease-in-out bg-transparent border border-primary-500 rounded-md shadow-lg group hover:scale-105 hover:border-primary-400"
-    >
-      <span className="absolute inset-0 w-full h-full bg-primary-600 rounded-md opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
-      <span className="relative flex items-center gap-2 z-10 text-primary-300 group-hover:text-white transition-colors">
-        {Icon && <Icon size={20} className="transition-transform group-hover:translate-x-1" />}
-        {children}
-      </span>
-      <span className="absolute inset-0 rounded-md shadow-[0_0_15px_rgba(6,182,212,0)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-shadow duration-300"></span>
-    </Link>
-  );
-};
+import usePersistentState from '../hooks/usePersistentState';
+import { KEY_HOMEPAGE_SECTION_ORDER } from '../utils/LocalStorageManager';
 
 const Hero = () => {
   const [currentDateTime, setCurrentDateTime] = useState('');
@@ -150,6 +136,9 @@ const HomePage = () => {
   const [loadingPosts, setLoadingPosts] = useState(true);
   const { projects: pinnedProjects, loading: loadingProjects } = useProjects(true);
 
+  // Use persistent state for homepage section order
+  const [homepageSectionOrder] = usePersistentState(KEY_HOMEPAGE_SECTION_ORDER, ['projects', 'blogposts']);
+
   useEffect(() => {
     const fetchPostSlugs = async () => {
       try {
@@ -194,90 +183,106 @@ const HomePage = () => {
     );
   }
 
+  // Helper function to render a section
+  const renderSection = (sectionName) => {
+    switch (sectionName) {
+      case 'projects':
+        return (
+          <section className="mb-24 mt-8">
+            <SectionHeader icon={Cpu} title="Pinned Projects" link="/projects" linkText="View all projects" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pinnedProjects.map((project, index) => (
+                <motion.div
+                  key={project.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <ProjectCard project={{ ...project, description: project.shortDescription }} />
+                </motion.div>
+              ))}
+            </div>
+          </section>
+        );
+      case 'blogposts':
+        return (
+          <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-8">
+            {/* Main Feed */}
+            <div className="lg:col-span-8">
+               <SectionHeader icon={Article} title="Latest Blogposts" link="/blog" linkText="Read archive" />
+               <div className="space-y-4">
+                  {posts.slice(0, 5).map((item, index) => (
+                     <motion.div
+                        key={item.slug}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                        viewport={{ once: true }}
+                     >
+                       {item.isSeries ? (
+                          <PostItem
+                            slug={`series/${item.slug}`}
+                            title={item.title}
+                            date={item.date}
+                            updatedDate={item.updated}
+                            category="series"
+                            isSeries={true}
+                          />
+                        ) : (
+                          <PostItem
+                            slug={item.slug}
+                            title={item.title}
+                            date={item.date}
+                            updatedDate={item.updated}
+                            category={item.category}
+                            series={item.series}
+                            seriesIndex={item.seriesIndex}
+                          />
+                        )}
+                     </motion.div>
+                  ))}
+               </div>
+            </div>
+
+            {/* Side Widgets */}
+            <div className="lg:col-span-4 space-y-4 lg:pt-14 sm:pb-14">
+              <ExploreLinkCard
+                to="/apps"
+                title="Explore Apps"
+                description="Discover a collection of custom-built web applications and tools."
+                Icon={AppWindow}
+              />
+              <ExploreLinkCard
+                to="/roadmap"
+                title="Explore Fezzilla"
+                description="Dive into the roadmap and development progress of Fezcodex."
+                Icon={Cube}
+              />
+              <ExploreLinkCard
+                to="/commands"
+                title="Explore Commands"
+                description="Learn about available commands and system interactions."
+                Icon={Terminal}
+              />
+            </div>
+          </section>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
       <Hero />
 
       <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24">
-        {/* Featured Projects Section */}
-        <section className="mb-24">
-          <SectionHeader icon={Cpu} title="Pinned Projects" link="/projects" linkText="View all projects" />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pinnedProjects.map((project, index) => (
-              <motion.div
-                key={project.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <ProjectCard project={{ ...project, description: project.shortDescription }} />
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* Latest Log/Blog Section */}
-        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Main Feed */}
-          <div className="lg:col-span-8">
-             <SectionHeader icon={Article} title="Latest Blogposts" link="/blog" linkText="Read archive" />
-             <div className="space-y-4">
-                {posts.slice(0, 5).map((item, index) => (
-                   <motion.div
-                      key={item.slug}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: index * 0.05 }}
-                      viewport={{ once: true }}
-                   >
-                     {item.isSeries ? (
-                        <PostItem
-                          slug={`series/${item.slug}`}
-                          title={item.title}
-                          date={item.date}
-                          updatedDate={item.updated}
-                          category="series"
-                          isSeries={true}
-                        />
-                      ) : (
-                        <PostItem
-                          slug={item.slug}
-                          title={item.title}
-                          date={item.date}
-                          updatedDate={item.updated}
-                          category={item.category}
-                          series={item.series}
-                          seriesIndex={item.seriesIndex}
-                        />
-                      )}
-                   </motion.div>
-                ))}
-             </div>
-          </div>
-
-          {/* Side Widgets */}
-          <div className="lg:col-span-4 space-y-4">
-            <ExploreLinkCard
-              to="/apps"
-              title="Explore Apps"
-              description="Discover a collection of custom-built web applications and tools."
-              Icon={AppWindow}
-            />
-            <ExploreLinkCard
-              to="/roadmap"
-              title="Explore Fezzilla"
-              description="Dive into the roadmap and development progress of Fezcodex."
-              Icon={Cube}
-            />
-            <ExploreLinkCard
-              to="/commands"
-              title="Explore Commands"
-              description="Learn about available commands and system interactions."
-              Icon={Terminal}
-            />
-          </div>
-        </section>
+        {homepageSectionOrder.map((sectionName) => (
+          <React.Fragment key={sectionName}>
+            {renderSection(sectionName)}
+          </React.Fragment>
+        ))}
       </div>
     </div>
   );
