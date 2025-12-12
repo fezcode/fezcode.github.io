@@ -118,7 +118,9 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
   };
 
   const isMainActive =
-    location.pathname === '/' || location.pathname === '/about';
+    location.pathname === '/' ||
+    location.pathname === '/about' ||
+    location.pathname === '/achievements';
   const isContentActive =
     location.pathname.startsWith('/blog') ||
     location.pathname.startsWith('/projects') ||

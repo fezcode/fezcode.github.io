@@ -18,6 +18,7 @@ module.exports = {
   food: '#F4A259',
   websites: '#00FF7F',
   tools: '#e0aaff',
+  event: '#10b981',
   feat: '#a855f7',
   'book-light': '#4dcdff',
   'movie-light': '#e84f6d',
@@ -29,6 +30,7 @@ module.exports = {
   'food-light': '#FFC780',
   'websites-light': '#4dff99',
   'tools-light': '#F0DFFF',
+  'event-light': '#34d399',
   'feat-light': '#d8b4fe',
   'newspaper-background': '#fdfdf5',
   'sidebar-highlight': '#FA8072', // Duplicated from article
@@ -70,6 +72,8 @@ module.exports = {
   'websites-alpha-50': 'rgba(0, 255, 127, 0.5)',
   'tools-alpha-10': 'rgba(224, 170, 255, 0.1)',
   'tools-alpha-50': 'rgba(224, 170, 255, 0.5)',
+  'event-alpha-10': 'rgba(16, 185, 129, 0.1)',
+  'event-alpha-50': 'rgba(16, 185, 129, 0.5)',
   'feat-alpha-10': 'rgba(168, 85, 247, 0.1)',
   'feat-alpha-50': 'rgba(168, 85, 247, 0.5)',
 

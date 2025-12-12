@@ -25,6 +25,7 @@ const categoryIcons = {
   Food: <ForkKnifeIcon weight="duotone" />,
   Websites: <GlobeIcon weight="duotone" />,
   Tools: <WrenchIcon weight="duotone" />,
+  Event: <CalendarBlankIcon weight="duotone" />,
 };
 
 const categoryColors = {
@@ -37,6 +38,7 @@ const categoryColors = {
   Food: colors.food,
   Websites: colors.websites,
   Tools: colors.tools,
+  Event: colors.event,
 };
 
 const LogCard = ({ log, index, totalLogs }) => {
@@ -44,6 +46,7 @@ const LogCard = ({ log, index, totalLogs }) => {
     title,
     category,
     author,
+    by,
     director,
     platform,
     source,
@@ -54,8 +57,8 @@ const LogCard = ({ log, index, totalLogs }) => {
     rating,
     slug,
     updated,
-    album, // Added album
-    releaseDate, // Added releaseDate
+    album,
+    releaseDate,
   } = log;
 
   const accentColor = categoryColors[category] || colors.primary[400];
@@ -138,7 +141,7 @@ const LogCard = ({ log, index, totalLogs }) => {
           <div className="flex flex-wrap gap-2 mb-4">
             <MetadataItem
               label="By"
-              value={author || artist || creator || director}
+              value={by || author || artist || creator || director}
             />
             <MetadataItem label="On" value={platform || source} />
             <MetadataItem

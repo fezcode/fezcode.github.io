@@ -31,6 +31,7 @@ const categories = [
   'Food',
   'Websites',
   'Tools',
+  'Event',
 ];
 
 const iconColors = [
