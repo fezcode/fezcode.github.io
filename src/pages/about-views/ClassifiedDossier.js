@@ -106,11 +106,11 @@ const ClassifiedDossier = () => {
           </p>
         </header>
 
-        <article className="prose prose-lg md:prose-xl max-w-none
+        <article className="prose prose-lg md:prose-xl max-w-none font-mono
           prose-headings:font-playfairDisplay prose-headings:font-normal prose-headings:text-black prose-headings:uppercase prose-headings:tracking-widest prose-headings:text-sm prose-headings:mt-16 prose-headings:mb-6 prose-headings:border-b prose-headings:border-black prose-headings:pb-2
-          prose-p:font-serif prose-p:text-[#333] prose-p:leading-8 prose-p:mb-6
+          prose-p:font-mono prose-p:text-[#333] prose-p:leading-8 prose-p:mb-6
           prose-strong:font-bold prose-strong:text-white prose-strong:bg-black prose-strong:px-1
-          prose-li:marker:text-black prose-li:font-serif
+          prose-li:marker:text-black prose-li:font-mono
 
           /* Table Styling - Clean & Redacted Vibe */
           prose-table:w-full prose-table:border-collapse prose-table:font-mono prose-table:text-sm prose-table:my-8
