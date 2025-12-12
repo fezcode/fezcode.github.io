@@ -31,4 +31,8 @@ export const vocabulary = {
     title: 'Game of the Year (GOTY)',
     loader: () => import('./vocab/game-of-the-year'),
   },
+  'murakami': {
+    title: 'Murakami, Takashi',
+    loader: () => import('./vocab/murakami'),
+  },
 };
