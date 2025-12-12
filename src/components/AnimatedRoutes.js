@@ -98,6 +98,7 @@ const WordLadderPage = lazy(() => import('../pages/apps/WordLadderPage'));
 const LightsOutPage = lazy(() => import('../pages/apps/LightsOutPage'));
 const NonogramPage = lazy(() => import('../pages/apps/NonogramPage'));
 const WhackABugPage = lazy(() => import('../pages/apps/WhackABugPage'));
+const SpriteEditorPage = lazy(() => import('../pages/apps/SpriteEditorPage'));
 const BubbleWrapPage = lazy(() => import('../pages/apps/BubbleWrapPage'));
 const LoremIpsumGeneratorPage = lazy(
   () => import('../pages/apps/LoremIpsumGeneratorPage'),
@@ -853,6 +854,10 @@ function AnimatedRoutes() {
           path="/apps::phone"
           element={<Navigate to="/apps/rotary-phone" replace />}
         />
+        <Route
+          path="/apps::se"
+          element={<Navigate to="/apps/sprite-editor" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
@@ -1587,6 +1592,22 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <WhackABugPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/sprite-editor"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <SpriteEditorPage />
               </Suspense>
             </motion.div>
           }

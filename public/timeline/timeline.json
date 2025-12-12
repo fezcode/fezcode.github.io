@@ -1,5 +1,21 @@
 [
   {
+    "date": "2025-12-12",
+    "title": "About Me Page Overhaul",
+    "description": "Added 4 major version of the about me page.",
+    "type": "refactor",
+    "icon": "SparkleIcon",
+    "link": "/#/about"
+  },
+  {
+    "date": "2025-12-12",
+    "title": "Home Page Overhaul Refactor",
+    "description": "Modernized Home Page section.",
+    "type": "refactor",
+    "icon": "SparkleIcon",
+    "link": "/#/"
+  },
+  {
     "date": "2025-12-11",
     "title": "Global Side Panel & Vocabulary Links",
     "description": "Implemented a resizable, global side panel for contextual information, with vocabulary links in Markdown content that dynamically open the panel with lazy-loaded React components.",
@@ -202,7 +218,7 @@
     "description": "Initial implementation of the About Me page.",
     "type": "content",
     "icon": "BriefcaseIcon",
-    "link": "/#/about-me"
+    "link": "/#/about"
   },
   {
     "date": "2025-10-15",

@@ -1,37 +1,154 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import {
+  ArrowRight,
+  TerminalWindow,
+  Cpu,
+  Article,
+  RocketLaunch,
+  Terminal, // For "Explore Commands"
+  Cube,     // For "Explore Fezzilla"
+  AppWindow // For "Explore Apps"
+} from '@phosphor-icons/react';
 import PostItem from '../components/PostItem';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
-import { PushPin, BookBookmarkIcon, ArrowRight } from '@phosphor-icons/react';
-
 import useSeo from '../hooks/useSeo';
+
+const HeroButton = ({ to, children, Icon }) => {
+  return (
+    <Link
+      to={to}
+      className="relative flex items-center justify-center px-6 py-3 overflow-hidden font-mono text-sm font-bold text-white transition-all duration-300 ease-in-out bg-transparent border border-primary-500 rounded-md shadow-lg group hover:scale-105 hover:border-primary-400"
+    >
+      <span className="absolute inset-0 w-full h-full bg-primary-600 rounded-md opacity-0 group-hover:opacity-20 transition-opacity duration-300"></span>
+      <span className="relative flex items-center gap-2 z-10 text-primary-300 group-hover:text-white transition-colors">
+        {Icon && <Icon size={20} className="transition-transform group-hover:translate-x-1" />}
+        {children}
+      </span>
+      <span className="absolute inset-0 rounded-md shadow-[0_0_15px_rgba(6,182,212,0)] group-hover:shadow-[0_0_15px_rgba(6,182,212,0.6)] transition-shadow duration-300"></span>
+    </Link>
+  );
+};
+
+const Hero = () => {
+  const [currentDateTime, setCurrentDateTime] = useState('');
+
+  useEffect(() => {
+    const updateDateTime = () => {
+      const now = new Date();
+      const options = {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false,
+      };
+      setCurrentDateTime(now.toLocaleString('en-GB', options).replace(/,/, ''));
+    };
+
+    updateDateTime();
+    const intervalId = setInterval(updateDateTime, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  return (
+    <div className="relative overflow-hidden py-24 sm:py-32">
+       {/* Background decoration */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/40 rounded-full blur-[100px] opacity-30 animate-pulse"></div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-900/30 border border-primary-500/30 text-white text-sm mb-6 font-mono">
+            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span>
+            {currentDateTime}
+          </div>
+          <h1 className="text-5xl md:text-7xl  tracking-tight text-white mb-6">
+            Welcome to fez<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-white">codex</span>
+          </h1>
+          <p className="mt-6 text-lg leading-8 text-gray-400 max-w-2xl mx-auto font-mono">
+            A digital garden of code, thoughts, and experiments.
+            Documenting the journey through software engineering.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-x-6">
+            <Link to="/projects"
+              className="group flex items-center gap-2 px-4 py-2 transition-all duration-300 bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-rose-500 hover:text-gray-900 hover:border-rose-500 rounded-none shadow-none"
+            >
+              <RocketLaunch weight="bold" className="group-hover:-translate-x-1 transition-transform" />
+              Explore Projects
+            </Link>
+            <Link to="/about"
+              className="group flex items-center gap-2 px-4 py-2 transition-all duration-300 bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-emerald-500 hover:text-gray-900 hover:border-emerald-500 rounded-none shadow-none"
+            >
+              <ArrowRight weight="bold" className="group-hover:-translate-x-1 transition-transform" />
+              About Me
+            </Link>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
+const SectionHeader = ({ icon: Icon, title, link, linkText }) => (
+  <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-white/10">
+    <div className="flex items-center gap-3">
+      <div className="p-2 bg-white/5 rounded-lg">
+        <Icon size={24} className="text-green-300" />
+      </div>
+      <h2 className="text-2xl text-white font-arvo">{title}</h2>
+    </div>
+    {link && (
+      <Link to={link} className="group flex items-center gap-1 text-sm text-gray-400 hover:text-white transition-colors mt-4 sm:mt-0">
+        {linkText} <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+      </Link>
+    )}
+  </div>
+);
+
+// New component for the side navigation links
+const ExploreLinkCard = ({ to, title, description, Icon }) => (
+  <Link
+    to={to}
+    className="relative p-6 rounded-2xl bg-gradient-to-br from-primary-900/20 to-transparent border border-primary-500/20 group hover:border-primary-400 transition-colors duration-300 overflow-hidden flex flex-col"
+  >
+    {/* Optional: Background glitch effect on hover */}
+    <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
+    <div className="relative z-10"> {/* Wrap icon and text for better control */}
+      <div className="flex items-center gap-3 mb-2">
+        {Icon && <Icon size={28} className="text-primary-400 group-hover:scale-110 transition-transform" />}
+        <h3 className="text-lg font-bold text-white group-hover:text-primary-300 transition-colors">{title}</h3>
+      </div>
+      <p className="text-sm text-gray-400 mb-4">{description}</p>
+    </div>
+    <div className="relative z-10 text-right"> {/* Position arrow at the end of the content flow */}
+        <span className="inline-flex items-center text-primary-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
+            Explore <ArrowRight size={20} weight="bold" className="ml-1" />
+        </span>
+    </div>
+  </Link>
+);
 
 const HomePage = () => {
   useSeo({
     title: 'Fezcodex | Home',
-    description:
-      'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
-    keywords: [
-      'Fezcodex',
-      'blog',
-      'portfolio',
-      'developer',
-      'software engineer',
-    ],
-    ogTitle: 'Fezcodex | Home',
-    ogDescription:
-      'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Fezcodex | Home',
-    twitterDescription:
-      'Exploring the world of code, one post at a time. Welcome to my personal website and blog.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    description: 'Exploring the world of code, one post at a time.',
+    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'software engineer'],
   });
+
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
-  const { projects: pinnedProjects, loading, error } = useProjects(true);
+  const { projects: pinnedProjects, loading: loadingProjects } = useProjects(true);
 
   useEffect(() => {
     const fetchPostSlugs = async () => {
@@ -39,192 +156,128 @@ const HomePage = () => {
         const response = await fetch('/posts/posts.json');
         if (response.ok) {
           const allPostsData = await response.json();
-
+          // Process posts logic (same as before)
           const seriesMap = new Map();
           const individualPosts = [];
-
           allPostsData.forEach((item) => {
             if (item.series) {
-              // This is a series container
-              seriesMap.set(item.slug, {
-                ...item,
-                isSeries: true,
-                posts: item.series.posts, // Keep reference to child posts for date sorting
-              });
+              seriesMap.set(item.slug, { ...item, isSeries: true, posts: item.series.posts });
             } else {
-              // This is an individual post
               individualPosts.push(item);
             }
           });
-
-          // Combine individual posts and series entries
-          const combinedItems = [
-            ...Array.from(seriesMap.values()),
-            ...individualPosts,
-          ];
-
-          // Helper function to get the effective date for sorting
-          const getEffectiveDate = (item) => {
-            if (item.isSeries) {
-              // For a series, use its top-level updated or date
-              return new Date(item.updated || item.date);
-            } else {
-              // For an individual post, use updated or date
-              return new Date(item.updated || item.date);
-            }
-          };
-
-          // Sort combined items by effective date (newest first)
+          const combinedItems = [...Array.from(seriesMap.values()), ...individualPosts];
           combinedItems.sort((a, b) => {
-            const dateA = getEffectiveDate(a);
-            const dateB = getEffectiveDate(b);
-            return dateB - dateA;
+             const dateA = new Date(a.isSeries ? (a.updated || a.date) : (a.updated || a.date));
+             const dateB = new Date(b.isSeries ? (b.updated || b.date) : (b.updated || b.date));
+             return dateB - dateA;
           });
-
           setPosts(combinedItems);
-        } else {
-          console.error('Failed to fetch post slugs');
-          setPosts([]);
         }
       } catch (error) {
-        console.error('Error fetching post slugs:', error);
-        setPosts([]);
+        console.error('Error fetching posts:', error);
       } finally {
         setLoadingPosts(false);
       }
     };
-
     fetchPostSlugs();
   }, []);
 
-  if (loading || loadingPosts) {
-    // Skeleton loading screen for HomePage
+  if (loadingProjects || loadingPosts) {
     return (
-      <div className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <div className="h-10 bg-gray-800 rounded w-3/4 mx-auto mb-4"></div>
-            <div className="h-6 bg-gray-800 rounded w-1/2 mx-auto"></div>
-          </div>
-
-          <div className="mt-16">
-            <div className="h-8 bg-gray-800 rounded w-1/3 mx-auto mb-8"></div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {[...Array(2)].map((_, i) => (
-                <div
-                  key={i}
-                  className="bg-gray-800 rounded-lg shadow-lg p-6 animate-pulse"
-                >
-                  <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
-                  <div className="h-4 bg-gray-700 rounded w-1/2"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-8">
-            <div className="h-8 bg-gray-800 rounded w-1/3 mx-auto mb-8"></div>
-            <div className="space-y-4">
-              {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className="bg-gray-800 rounded-lg shadow-lg p-6 animate-pulse"
-                >
-                  <div className="h-6 bg-gray-700 rounded w-full mb-2"></div>
-                  <div className="h-4 bg-gray-700 rounded w-5/6"></div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
+          <div className="text-primary-400 font-mono text-sm animate-pulse">INITIALIZING...</div>
         </div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="py-16 sm:py-24 text-center text-red-500">
-        Error loading projects: {error.message}
       </div>
     );
   }
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center font-mono">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl">
-            Welcome to fez<span className="text-primary-400">codex</span>
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Exploring the world of code, one post at a time.
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#0a0a0a]">
+      <Hero />
 
-        <div className="mt-16">
-          <h2 className="text-2xl tracking-tight text-white text-center flex items-center justify-center gap-2 font-arvo">
-            <PushPin className="text-primary-400 text-lg" /> Pinned Projects
-          </h2>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pinnedProjects.map((project) => (
-              <ProjectCard
+      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24">
+        {/* Featured Projects Section */}
+        <section className="mb-24">
+          <SectionHeader icon={Cpu} title="Pinned Projects" link="/projects" linkText="View all projects" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pinnedProjects.map((project, index) => (
+              <motion.div
                 key={project.slug}
-                project={{ ...project, description: project.shortDescription }}
-              />
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <ProjectCard project={{ ...project, description: project.shortDescription }} />
+              </motion.div>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <Link
-              to="/projects"
-              className="text-primary-400 hover:underline flex items-center justify-center gap-2"
-            >
-              View All Projects <ArrowRight />
-            </Link>
-          </div>
-        </div>
+        </section>
 
-        <div className="mt-8">
-          <h2 className="text-2xl tracking-tight text-white text-center flex items-center justify-center gap-2 font-arvo">
-            <BookBookmarkIcon className="text-primary-400 text-lg" /> Recent
-            Blog Posts
-          </h2>
-          <div className="mt-8">
-            {posts
-              .slice(0, 5)
-              .map((item) =>
-                item.isSeries ? (
-                  <PostItem
-                    key={item.slug}
-                    slug={`series/${item.slug}`}
-                    title={item.title}
-                    date={item.date}
-                    updatedDate={item.updated}
-                    category="series"
-                    isSeries={true}
-                  />
-                ) : (
-                  <PostItem
-                    key={item.slug}
-                    slug={item.slug}
-                    title={item.title}
-                    date={item.date}
-                    updatedDate={item.updated}
-                    category={item.category}
-                    series={item.series}
-                    seriesIndex={item.seriesIndex}
-                  />
-                ),
-              )}
+        {/* Latest Log/Blog Section */}
+        <section className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Main Feed */}
+          <div className="lg:col-span-8">
+             <SectionHeader icon={Article} title="Latest Blogposts" link="/blog" linkText="Read archive" />
+             <div className="space-y-4">
+                {posts.slice(0, 5).map((item, index) => (
+                   <motion.div
+                      key={item.slug}
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      viewport={{ once: true }}
+                   >
+                     {item.isSeries ? (
+                        <PostItem
+                          slug={`series/${item.slug}`}
+                          title={item.title}
+                          date={item.date}
+                          updatedDate={item.updated}
+                          category="series"
+                          isSeries={true}
+                        />
+                      ) : (
+                        <PostItem
+                          slug={item.slug}
+                          title={item.title}
+                          date={item.date}
+                          updatedDate={item.updated}
+                          category={item.category}
+                          series={item.series}
+                          seriesIndex={item.seriesIndex}
+                        />
+                      )}
+                   </motion.div>
+                ))}
+             </div>
           </div>
-          <div className="mt-8 text-center">
-            <Link
-              to="/blog"
-              className="text-primary-400 hover:underline flex items-center justify-center gap-2"
-            >
-              See All Blog Posts <ArrowRight />
-            </Link>
+
+          {/* Side Widgets */}
+          <div className="lg:col-span-4 space-y-4">
+            <ExploreLinkCard
+              to="/apps"
+              title="Explore Apps"
+              description="Discover a collection of custom-built web applications and tools."
+              Icon={AppWindow}
+            />
+            <ExploreLinkCard
+              to="/roadmap"
+              title="Explore Fezzilla"
+              description="Dive into the roadmap and development progress of Fezcodex."
+              Icon={Cube}
+            />
+            <ExploreLinkCard
+              to="/commands"
+              title="Explore Commands"
+              description="Learn about available commands and system interactions."
+              Icon={Terminal}
+            />
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );
