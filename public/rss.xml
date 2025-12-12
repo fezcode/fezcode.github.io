@@ -9,14 +9,70 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 28 Nov 2025 22:01:14 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 12 Dec 2025 09:35:57 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 28 Nov 2025 22:01:14 GMT</pubDate>
+        <pubDate>Fri, 12 Dec 2025 09:35:57 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[React Magic: Rendering Components from Markdown Links]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-magic-markdown-components</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-magic-markdown-components</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 12 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Static text is boring. In a modern React application, your content should be alive.</p>
+<p><a href="https://fezcode.com/#/blog/react-magic-markdown-components">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Implementing a Resizable Global Sliding Side Panel in React]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/implementing-a-sliding-side-panel</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/implementing-a-sliding-side-panel</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 11 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Sometimes, a modal is just too intrusive. You want to show detailed context—like a complex rating system or metadata—without forcing the user to lose their place on the page or blocking the entire UI with a backdrop that demands immediate attention. Enter the <strong>Sliding Side Panel</strong>.</p>
+<p><a href="https://fezcode.com/#/blog/implementing-a-sliding-side-panel">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Building a Digital Rotary Phone]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/building-a-digital-rotary-phone</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/building-a-digital-rotary-phone</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 02 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>In a world of touchscreens and haptic feedback, there&#39;s something deeply satisfying about the mechanical click-whirrr of a rotary phone.
+I recently built a digital version of this retro interface for Fezcodex, and I want to take you through the engineering journey—from the
+trigonometry of the dial to the state management of the call logic.</p>
+<p><a href="https://fezcode.com/#/blog/building-a-digital-rotary-phone">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Nocturnote: A Sleek and Modern Text Editor]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/nocturnote</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/nocturnote</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>Nocturnote: The Text Editor I Always Wanted</h2>
+<p>Have you ever felt like your text editor is either doing too much or too little? That&#39;s exactly how I felt before I started building <strong>Nocturnote</strong>.</p>
+<p><a href="https://fezcode.com/#/blog/nocturnote">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Art of Recursive Botany: How Fractal Flora Works]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/how-fractal-flora-works</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/how-fractal-flora-works</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 28 Nov 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Have you ever wondered how nature creates such intricate and beautiful patterns,
+from the branching of trees to the delicate veins of a leaf? Much of this complexity can be explained by surprisingly simple rules,
+often involving <strong>fractals</strong> and <strong>recursion</strong>.
+Our new &quot;Fractal Flora&quot; app lets you explore these principles by growing your own digital trees with a few sliders.</p>
+<p><a href="https://fezcode.com/#/blog/how-fractal-flora-works">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Unlocking Your Journey: Introducing the Fezcodex Achievement System!]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -516,7 +572,7 @@ For now, we&#39;ll have to stick to our practical solutions. But one can dream o
             <guid isPermaLink="false">https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Thu, 16 Oct 2025 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h1>Do I Need to Create a Lib For That?</h1>
+            <content:encoded><![CDATA[<h2>My Journey into Go Libraries</h2>
 <p><a href="https://fezcode.com/#/blog/do-i-need-to-create-a-lib-for-that">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
