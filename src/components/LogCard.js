@@ -59,6 +59,7 @@ const LogCard = ({ log, index, totalLogs }) => {
     updated,
     album,
     releaseDate,
+    image,
   } = log;
 
   const accentColor = categoryColors[category] || colors.primary[400];
@@ -114,6 +115,12 @@ const LogCard = ({ log, index, totalLogs }) => {
             backgroundSize: '15px 15px', // Adjust size for desired density
           }}
         ></div>
+
+        {image && (
+          <div className="absolute bottom-0 right-0 w-28 h-28 overflow-hidden translate-x-4 translate-y-5 rotate-12 z-10 opacity-60 border-0 rounded-xl">
+            <img src={image} alt="log overlay" className="w-full h-full object-cover opacity-30 grayscale" />
+          </div>
+        )}
 
         <div className="p-5 flex flex-col h-full ml-1">
           {' '}
