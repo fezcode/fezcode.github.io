@@ -163,6 +163,31 @@ const SpriteEditorPage = () => {
     link.click();
   };
 
+  const exportSvg = () => {
+    const svgString = `
+      <svg width="${gridSize}" height="${gridSize}" viewBox="0 0 ${gridSize} ${gridSize}" xmlns="http://www.w3.org/2000/svg">
+        ${pixels.map((color, i) => {
+          if (color) {
+            const x = i % gridSize;
+            const y = Math.floor(i / gridSize);
+            return `<rect x="${x}" y="${y}" width="1" height="1" fill="${color}" />`;
+          }
+          return '';
+        }).join('')}
+      </svg>
+    `;
+
+    const blob = new Blob([svgString], { type: 'image/svg+xml' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `sprite.svg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   return (
     <div
       className={`min-h-screen ${currentTheme.pageBg} ${currentTheme.pageText} font-mono selection:bg-[#ff004d] selection:text-white pb-12`}>
@@ -288,6 +313,10 @@ const SpriteEditorPage = () => {
                 <button onClick={() => exportImage('png', 2)}
                         className="flex items-center justify-center gap-2 bg-[#008751] text-white py-2 px-4 rounded text-xs font-bold uppercase hover:bg-[#00a060] transition-colors border-b-4 border-[#005f38] active:border-b-0 active:translate-y-1">
                   <DownloadSimple weight="bold"/> PNG (2x)
+                </button>
+                <button onClick={exportSvg}
+                        className="flex items-center justify-center gap-2 bg-[#008751] text-white py-2 px-4 rounded text-xs font-bold uppercase hover:bg-[#00a060] transition-colors border-b-4 border-[#005f38] active:border-b-0 active:translate-y-1">
+                  <DownloadSimple weight="bold"/> SVG
                 </button>
               </div>
             </div>
