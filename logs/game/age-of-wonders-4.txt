@@ -5,7 +5,7 @@
 - **Rating:** 4/5
 - **Link:** [Steam](https://store.steampowered.com/app/1669000/Age_of_Wonders_4/)
 
-![Age of Wonders 4](/images/defaults/age-of-wonders-4.webp)
+![Age of Wonders 4](/images/logs/games/age-of-wonders-4.webp)
 
 ## A New Era of Fantasy 4X Strategy
 **Age of Wonders 4** is a captivating **4X turn-based strategy game** that immerses players in a vibrant high fantasy universe.

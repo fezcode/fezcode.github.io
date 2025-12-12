@@ -23,7 +23,7 @@ you can find me exploring new tech or enjoying a good cup of coffee ☕.
 *   **Frameworks & Core Concepts:** System Design, Microservices, Distributed Systems, gRPC, Node.js, Express.js, JavaFX,
 *   **Developer Tools:** Git, CMake, Conan, Nexus Repository Manager, Bitbucket, Linux, Docker
 
-## Useful Links
+## Links
 
 *   [GitHub Profile](https://github.com/fezcode)
 *   [LinkedIn Profile](https://www.linkedin.com/in/ahmedsamilbulbul)
@@ -40,5 +40,5 @@ flow—it's my kind of interactive jam session! 🤘
 ## More...
 
 | 🗂️ Some of my Work          | 📖 Articles written  | 🖼️ Stuff I Consume     | ✨ Some Small Apps |
-|:---------------------------:|:--------------------:|:----------------------:|:-------------------:|
-| [Projects](/#/projects)  | [Blogs](/#/blog) | [Logs](/#/logs)        | [ Apps](/#/apps)    |
+|:---------------------------:|:--------------------:|:-----------------------:|:-------------------:|
+| [Projects](/#/projects)     | [Blogs](/#/blog)     | [Logs](/#/logs)         | [ Apps](/#/apps)    |

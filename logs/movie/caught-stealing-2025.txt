@@ -10,7 +10,7 @@ Burned-out ex-baseball player Hank Thompson unexpectedly finds himself embroiled
 
 ## My Notes
 
-![Caught Stealing](/images/defaults/movie/caught-stealing.png)
+![Caught Stealing](/images/logs/movie/caught-stealing.png)
 > Death.
 >
 > Violence.

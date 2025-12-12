@@ -7,7 +7,7 @@
     (rating) 4
     (slug) caught-stealing-2025
     (title) Caught Stealing (2025)
-    (image) /images/defaults/movie/caught-stealing.png
+    (image) /images/logs/movie/caught-stealing.png
     (description) Burned-out ex-baseball player Hank Thompson unexpectedly finds himself embroiled in a dangerous struggle for survival amidst the criminal underbelly of 1990s New York City, forced to navigate a treacherous underworld he never imagined.
   > (item)
     (category) Movie
@@ -77,7 +77,7 @@
     (rating) 5
     (slug) heat-1995-movie
     (title) Heat (1995)
-    (image) /images/defaults/movie/heat.jpg
+    (image) /images/logs/movie/heat.jpg
     (description) Heat (1995) is a crime drama directed by Michael Mann, featuring the iconic first on-screen pairing of Al Pacino and Robert De Niro. It follows a meticulous professional thief, Neil McCauley, and the obsessive LAPD detective, Vincent Hanna, hunting him. Celebrated for its realistic action sequences, complex characterizations, and atmospheric portrayal of Los Angeles.
   > (item)
     (category) Movie
@@ -137,7 +137,7 @@
     (rating) 4
     (slug) 22-jump-street-movie
     (title) 22 Jump Street (2014)
-    (image) /images/defaults/movie/ice-cube.jpg
+    (image) /images/logs/movie/ice-cube.jpg
     (description) 22 Jump Street (2014) is an action-comedy film directed by Phil Lord and Christopher Miller, and the sequel to 21 Jump Street. It stars Jonah Hill and Channing Tatum as undercover police officers who this time go undercover in a college to bust a new drug ring. Praised for its self-aware humor, continuation of the comedic chemistry, and clever deconstruction of sequel tropes.
   > (item)
     (category) Movie
@@ -147,7 +147,7 @@
     (rating) 4
     (slug) 21-jump-street-movie
     (title) 21 Jump Street (2012)
-    (image) /images/defaults/movie/ice-cube.jpg
+    (image) /images/logs/movie/ice-cube.jpg
     (description) 21 Jump Street (2012) is an action-comedy film directed by Phil Lord and Christopher Miller, based on the TV series. It stars Jonah Hill and Channing Tatum as two incompetent police officers who go undercover as high school students to bust a drug ring. Praised for its unexpected humor, satirical take on high school tropes, and chemistry between the leads.
   > (item)
     (category) Movie
@@ -157,7 +157,7 @@
     (rating) 5
     (slug) no-country-for-old-men-movie
     (title) No Country for Old Men
-    (image) /images/defaults/movie/no-country-for-old-men.webp
+    (image) /images/logs/movie/no-country-for-old-men.webp
     (description) No Country for Old Men (2007) is a neo-western thriller directed by the Coen Brothers. Set in 1980 rural Texas, it follows a hunter who stumbles upon a drug deal gone wrong, leading him into a relentless pursuit by a psychopathic killer. Critically acclaimed for its tense atmosphere, philosophical depth, and unflinching portrayal of violence.
   > (item)
     (category) Movie
@@ -167,7 +167,7 @@
     (rating) 5
     (slug) collateral-2004-movie
     (title) Collateral (2004)
-    (image) /images/defaults/movie/collateral.jpg
+    (image) /images/logs/movie/collateral.jpg
     (description) Collateral (2004) is a neo-noir action thriller directed by Michael Mann. It follows a hitman, Vincent (Tom Cruise), who takes a Los Angeles taxi driver, Max (Jamie Foxx), hostage for a night of contract killings. Praised for its intense atmosphere, stunning cinematography of LA nights, and compelling performances from its leads.
   > (item)
     (category) Movie

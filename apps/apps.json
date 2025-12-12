@@ -148,6 +148,14 @@
     "order": 2,
     "apps": [
       {
+        "slug": "sprite-editor",
+        "to": "/apps/sprite-editor",
+        "title": "Sprite Editor",
+        "description": "A retro pixel art editor for creating sprites.",
+        "icon": "PencilSimpleIcon",
+        "created_at": "2025-12-12T00:00:00+03:00"
+      },
+      {
         "slug": "rotary-phone",
         "to": "/apps/rotary-phone",
         "title": "Rotary Phone",
