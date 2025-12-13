@@ -53,17 +53,14 @@ const iconColors = [
 const LogsPage = () => {
   useSeo({
     title: 'Logs | Fezcodex',
-    description:
-      'A collection of logs, thoughts, and other miscellaneous writings.',
+    description: 'A collection of logs, thoughts, and other miscellaneous writings.',
     keywords: ['Fezcodex', 'logs', 'thoughts', 'writing'],
     ogTitle: 'Logs | Fezcodex',
-    ogDescription:
-      'A collection of logs, thoughts, and other miscellaneous writings.',
+    ogDescription: 'A collection of logs, thoughts, and other miscellaneous writings.',
     ogImage: 'https://fezcode.github.io/logo512.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Logs | Fezcodex',
-    twitterDescription:
-      'A collection of logs, thoughts, and other miscellaneous writings.',
+    twitterDescription: 'A collection of logs, thoughts, and other miscellaneous writings.',
     twitterImage: 'https://fezcode.github.io/logo512.png',
   });
 

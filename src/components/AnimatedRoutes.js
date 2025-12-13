@@ -26,6 +26,7 @@ const WordCounterPage = lazy(() => import('../pages/apps/WordCounterPage'));
 const TournamentBracketPage = lazy(
   () => import('../pages/apps/TournamentBracketPage'),
 );
+const MarkdownTableFormatterPage = lazy(() => import('../pages/apps/MarkdownTableFormatterPage'));
 const CaseConverterPage = lazy(() => import('../pages/apps/CaseConverterPage'));
 const Base64ConverterPage = lazy(
   () => import('../pages/apps/Base64ConverterPage'),
@@ -619,6 +620,10 @@ function AnimatedRoutes() {
           element={<Navigate to="/apps/tournament-bracket" replace />}
         />
         <Route
+          path="/apps::mtf"
+          element={<Navigate to="/apps/markdown-table-formatter" replace />}
+        />
+        <Route
           path="/apps::cc"
           element={<Navigate to="/apps/case-converter" replace />}
         />
@@ -1160,6 +1165,22 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <TournamentBracketPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/markdown-table-formatter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <MarkdownTableFormatterPage />
               </Suspense>
             </motion.div>
           }

@@ -22,15 +22,15 @@ Travis Bickle is a mentally unstable Vietnam War veteran who takes a job as a ni
 
 ### **Cast & Characters**
 
-| Actor | Character | Role Description |
-| :---  | :-------: | ---------------: |
-| **Robert De Niro** | Travis Bickle | A lonely, insomniac Vietnam vet turned taxi driver. |
-| **Jodie Foster** | Iris Steensma | A 12-year-old child prostitute Travis tries to save. |
-| **Cybill Shepherd** | Betsy | A campaign volunteer Travis becomes obsessed with. |
-| **Harvey Keitel** | "Sport" (Matthew) | Iris's pimp. |
-| **Peter Boyle** | "Wizard" | A fellow taxi driver who offers Travis unsolicited advice. |
-| **Albert Brooks** | Tom | Betsy's coworker and Travis's romantic rival. |
-| **Martin Scorsese** | Passenger | Cameo as a passenger watching his wife through a window. |
+| Actor               | Character         | Role Description                                           |
+| :------------------ | :---------------: | ---------------------------------------------------------: |
+| **Robert De Niro**  | Travis Bickle     | A lonely, insomniac Vietnam vet turned taxi driver.        |
+| **Jodie Foster**    | Iris Steensma     | A 12-year-old child prostitute Travis tries to save.       |
+| **Cybill Shepherd** | Betsy             | A campaign volunteer Travis becomes obsessed with.         |
+| **Harvey Keitel**   | "Sport" (Matthew) | Iris's pimp.                                               |
+| **Peter Boyle**     | "Wizard"          | A fellow taxi driver who offers Travis unsolicited advice. |
+| **Albert Brooks**   | Tom               | Betsy's coworker and Travis's romantic rival.              |
+| **Martin Scorsese** | Passenger         | Cameo as a passenger watching his wife through a window.   |
 
 ---
 
