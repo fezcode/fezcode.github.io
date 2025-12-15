@@ -34,7 +34,7 @@ export const aboutData = {
     avatar: "/images/herdaim.jpg",
     links: [
       { label: "GitHub", url: "https://github.com/fezcode", icon: GithubLogoIcon },
-      { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmedsamilbulbul", icon: LinkedinLogoIcon },
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US", icon: LinkedinLogoIcon },
       { label: "Email", url: "mailto:samil.bulbul@gmail.com", icon: EnvelopeIcon },
       { label: "Twitter", url: "https://x.com/fezcoddy", icon: TwitterLogoIcon },
       { label: "Fezcode", url: "https://fezcode.com", icon: GlobeIcon },

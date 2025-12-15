@@ -69,7 +69,7 @@ const ContactModal = ({ isOpen, onClose }) => {
               <span>{colorizeText('samil.bulbul at gmail.com')}</span>
             </a>
             <a
-              href="https://tr.linkedin.com/in/ahmed-samil-bulbul"
+              href="https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US"
               target="_blank"
               rel="noopener noreferrer"
               className="contact-link"

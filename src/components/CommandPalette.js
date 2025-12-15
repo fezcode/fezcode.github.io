@@ -181,7 +181,7 @@ const CommandPalette = ({
           break;
         case 'openLinkedIn':
           window.open(
-            'https://tr.linkedin.com/in/ahmed-samil-bulbul',
+            'https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US',
             '_blank',
             'noopener,noreferrer',
           );
