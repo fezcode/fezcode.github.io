@@ -20,12 +20,12 @@ const BpmGuesserPage = () => {
     ogTitle: 'BPM Guesser | Fezcodex',
     ogDescription:
       'Tap the beat to guess the BPM (Beats Per Minute) of a song.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'BPM Guesser | Fezcodex',
     twitterDescription:
       'Tap the beat to guess the BPM (Beats Per Minute) of a song.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [bpm, setBpm] = useState(0);

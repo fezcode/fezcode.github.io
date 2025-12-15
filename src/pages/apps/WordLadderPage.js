@@ -516,12 +516,12 @@ const WordLadderPage = () => {
     ogTitle: 'Word Ladder | Fezcodex',
     ogDescription:
       'A fun word transformation game where you change one letter at a time.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Word Ladder | Fezcodex',
     twitterDescription:
       'A fun word transformation game where you change one letter at a time.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useContext(ToastContext);

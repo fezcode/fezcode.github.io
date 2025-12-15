@@ -15,12 +15,12 @@ const ConnectFourPage = () => {
     ogTitle: 'Connect Four | Fezcodex',
     ogDescription:
       'Play the classic game of Connect Four against another player or AI.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Connect Four | Fezcodex',
     twitterDescription:
       'Play the classic game of Connect Four against another player or AI.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

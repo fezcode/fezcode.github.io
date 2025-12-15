@@ -18,11 +18,11 @@ function RoguelikeGamePage() {
     keywords: ['Fezcodex', 'game', 'roguelike'],
     ogTitle: 'Roguelike Game | Fezcodex',
     ogDescription: 'A simple roguelike game.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Roguelike Game | Fezcodex',
     twitterDescription: 'A simple roguelike game.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [gameMap, setGameMap] = useState([]);

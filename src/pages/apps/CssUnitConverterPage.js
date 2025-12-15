@@ -22,12 +22,12 @@ const CssUnitConverterPage = () => {
     ogTitle: 'CSS Unit Converter | Fezcodex',
     ogDescription:
       'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'CSS Unit Converter | Fezcodex',
     twitterDescription:
       'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [inputValue, setInputValue] = useState('');

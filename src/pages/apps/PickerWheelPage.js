@@ -20,12 +20,12 @@ function PickerWheelPage() {
     ogTitle: 'Picker Wheel | Fezcodex',
     ogDescription:
       'A customizable picker wheel to make decisions or select random items from a list.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Picker Wheel | Fezcodex',
     twitterDescription:
       'A customizable picker wheel to make decisions or select random items from a list.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   return (

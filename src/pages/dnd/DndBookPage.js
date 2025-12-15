@@ -46,11 +46,11 @@ function DndBookPage() {
     ],
     ogTitle: `${pageTitle} | From Serfs and Frauds`,
     ogDescription: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${pageTitle} | From Serfs and Frauds`,
     twitterDescription: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   useEffect(() => {

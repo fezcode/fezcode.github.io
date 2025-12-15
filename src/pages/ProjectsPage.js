@@ -19,11 +19,11 @@ const ProjectsPage = () => {
     ],
     ogTitle: 'Projects | Fezcodex',
     ogDescription: 'A collection of my work and experiments.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Projects | Fezcodex',
     twitterDescription: 'A collection of my work and experiments.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: 'images/ogtitle.png',
   });
   const { projects, loading, error } = useProjects();
   const { unlockAchievement } = useAchievements();

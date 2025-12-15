@@ -22,11 +22,11 @@ const MemoryGamePage = () => {
     ],
     ogTitle: 'Memory Game | Fezcodex',
     ogDescription: 'A classic memory game to test your concentration.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Memory Game | Fezcodex',
     twitterDescription: 'A classic memory game to test your concentration.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { unlockAchievement } = useAchievements();

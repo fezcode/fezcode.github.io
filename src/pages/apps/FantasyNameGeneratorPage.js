@@ -24,12 +24,12 @@ const FantasyNameGeneratorPage = () => {
     ogTitle: 'Fantasy Name Generator | Fezcodex',
     ogDescription:
       'Generate random fantasy names for humans, elves, dwarves, and orcs for your stories and games.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Fantasy Name Generator | Fezcodex',
     twitterDescription:
       'Generate random fantasy names for humans, elves, dwarves, and orcs for your stories and games.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [nameType, setNameType] = useState('human');

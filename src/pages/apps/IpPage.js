@@ -22,11 +22,11 @@ function IpPage() {
     ],
     ogTitle: 'Show my IP | Fezcodex',
     ogDescription: 'Quickly find and display your public IP address.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Show my IP | Fezcodex',
     twitterDescription: 'Quickly find and display your public IP address.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [ip, setIp] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -30,11 +30,11 @@ function KeyboardTypingSpeedTesterPage() {
     ],
     ogTitle: `${appName} | Fezcodex`,
     ogDescription: 'Test and improve your typing speed with FezType.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${appName} | Fezcodex`,
     twitterDescription: 'Test and improve your typing speed with FezType.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [textToType, setTextToType] = useState('');

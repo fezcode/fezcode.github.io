@@ -16,11 +16,11 @@ const SeriesPage = () => {
     keywords: ['Fezcodex', 'blog', 'series', seriesTitle],
     ogTitle: `${seriesTitle} | Fezcodex`,
     ogDescription: `Explore the posts in the "${seriesTitle}" series on Fezcodex.`,
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${seriesTitle} | Fezcodex`,
     twitterDescription: `Explore the posts in the "${seriesTitle}" series on Fezcodex.`,
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   useEffect(() => {

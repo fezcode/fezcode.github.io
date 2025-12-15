@@ -30,12 +30,12 @@ function DndNotFoundPage() {
     ogTitle: '404 - Lost in the Dungeon! | Fezcodex',
     ogDescription:
       'The page you are looking for does not exist in this D&D realm. Perhaps you took a wrong turn at the last crossroads.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: '404 - Lost in the Dungeon! | Fezcodex',
     twitterDescription:
       'The page you are looking for does not exist in this D&D realm. Perhaps you took a wrong turn at the last crossroads.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   return (

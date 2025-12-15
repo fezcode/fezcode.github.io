@@ -21,12 +21,12 @@ function WordCounterPage() {
     ogTitle: 'Word Counter | Fezcodex',
     ogDescription:
       'Count words, characters, lines, and paragraphs in your text or uploaded files.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Word Counter | Fezcodex',
     twitterDescription:
       'Count words, characters, lines, and paragraphs in your text or uploaded files.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [text, setText] = useState('');
   const [counts, setCounts] = useState({

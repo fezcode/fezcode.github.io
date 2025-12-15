@@ -124,12 +124,12 @@ const PirateTranslatorPage = () => {
     ],
     ogTitle: 'Pirate Speak Translator | Fezcodex',
     ogDescription: 'Translate yer landlubber words into proper Pirate speak!',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Pirate Speak Translator | Fezcodex',
     twitterDescription:
       'Translate yer landlubber words into proper Pirate speak!',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const { addToast } = useToast();
   const [inputText, setInputText] = useState('');

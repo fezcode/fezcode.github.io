@@ -21,12 +21,12 @@ const JsonFormatterPage = () => {
     ogTitle: 'JSON Formatter & Validator | Fezcodex',
     ogDescription:
       'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'JSON Formatter & Validator | Fezcodex',
     twitterDescription:
       'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

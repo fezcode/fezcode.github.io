@@ -18,11 +18,11 @@ const FezzillaPage = () => {
     keywords: ['Fezcodex', 'roadmap', 'apps', 'status', 'tools'],
     ogTitle: 'Fezzilla Issue Tracking | Fezcodex',
     ogDescription: 'Roadmap and status of all applications and tools.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Fezzilla Issue Tracking | Fezcodex',
     twitterDescription: 'Roadmap and status of all applications and tools.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [issuesData, setIssuesData] = useState([]);

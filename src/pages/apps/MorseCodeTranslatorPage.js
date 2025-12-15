@@ -65,12 +65,12 @@ const MorseCodeTranslatorPage = () => {
     ogTitle: 'Morse Code Translator | Fezcodex',
     ogDescription:
       'Translate text to Morse code and vice-versa, with audio playback.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Morse Code Translator | Fezcodex',
     twitterDescription:
       'Translate text to Morse code and vice-versa, with audio playback.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { unlockAchievement } = useAchievements();

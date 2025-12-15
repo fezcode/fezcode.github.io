@@ -31,12 +31,12 @@ function JSONGeneratorPage() {
     ogTitle: 'JSON Generator | Fezcodex',
     ogDescription:
       'Generate random JSON objects with customizable depth, key count, and data types.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'JSON Generator | Fezcodex',
     twitterDescription:
       'Generate random JSON objects with customizable depth, key count, and data types.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [jsonOutput, setJsonOutput] = useState('{}');

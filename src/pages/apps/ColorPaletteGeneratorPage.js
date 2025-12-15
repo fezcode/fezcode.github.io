@@ -12,12 +12,12 @@ function ColorPaletteGeneratorPage() {
     keywords: ['Fezcodex', 'color palette', 'color generator', 'design tools'],
     ogTitle: 'Color Palette Generator | Fezcodex',
     ogDescription: 'Generate random color palettes for your design projects.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Color Palette Generator | Fezcodex',
     twitterDescription:
       'Generate random color palettes for your design projects.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [palette, setPalette] = useState([]);
   const { addToast } = useToast();

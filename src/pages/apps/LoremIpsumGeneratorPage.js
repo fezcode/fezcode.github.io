@@ -91,11 +91,11 @@ const LoremIpsumGeneratorPage = () => {
     ],
     ogTitle: 'Lorem Ipsum Generator | Fezcodex',
     ogDescription: 'Generate random placeholder text for your projects.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Lorem Ipsum Generator | Fezcodex',
     twitterDescription: 'Generate random placeholder text for your projects.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

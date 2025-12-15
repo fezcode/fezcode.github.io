@@ -18,11 +18,11 @@ const FruitDashboard = () => {
     keywords: ['Fezcodex', 'md', 'markdown', 'table'],
     ogTitle: 'Markdown Table Formatter | Fezcodex',
     ogDescription: 'Format your markdown tables.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Markdown Table Formatter | Fezcodex',
     twitterDescription: 'Format your markdown tables.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [inputText, setInputText] = useState('');

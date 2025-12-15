@@ -15,12 +15,12 @@ const TicTacToePage = () => {
     ogTitle: 'Tic Tac Toe | Fezcodex',
     ogDescription:
       'Play the classic game of Tic Tac Toe against another player or AI.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Tic Tac Toe | Fezcodex',
     twitterDescription:
       'Play the classic game of Tic Tac Toe against another player or AI.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [board, setBoard] = useState(Array(9).fill(null));

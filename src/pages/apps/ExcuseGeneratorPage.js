@@ -116,11 +116,11 @@ const ExcuseGeneratorPage = () => {
     ],
     ogTitle: 'Excuse Generator | Fezcodex',
     ogDescription: 'Generate funny and absurd excuses for any situation.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Excuse Generator | Fezcodex',
     twitterDescription: 'Generate funny and absurd excuses for any situation.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [currentExcuse, setCurrentExcuse] = useState(

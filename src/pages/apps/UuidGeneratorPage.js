@@ -20,12 +20,12 @@ function UuidGeneratorPage() {
     ogTitle: 'UUID Generator | Fezcodex',
     ogDescription:
       'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'UUID Generator | Fezcodex',
     twitterDescription:
       'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [uuid, setUuid] = useState('');
   const { addToast } = useToast();

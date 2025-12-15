@@ -47,12 +47,12 @@ function DndLorePage() {
     ogTitle: 'The Lore | From Serfs and Frauds',
     ogDescription:
       "Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.",
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'The Lore | From Serfs and Frauds',
     twitterDescription:
       "Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.",
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
   const [bgImage, setBgImage] = useState(''); // State for background image

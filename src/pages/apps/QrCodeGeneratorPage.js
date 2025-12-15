@@ -23,12 +23,12 @@ const QrCodeGeneratorPage = () => {
     ogTitle: 'QR Code Generator | Fezcodex',
     ogDescription:
       'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'QR Code Generator | Fezcodex',
     twitterDescription:
       'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

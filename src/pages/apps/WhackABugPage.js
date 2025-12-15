@@ -17,11 +17,11 @@ const WhackABugPage = () => {
     keywords: ['Fezcodex', 'whack a bug', 'game', 'reflexes', 'fun'],
     ogTitle: 'Whack-a-Bug | Fezcodex',
     ogDescription: 'Test your reflexes by fixing bugs as fast as you can!',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Whack-a-Bug | Fezcodex',
     twitterDescription: 'Test your reflexes by fixing bugs as fast as you can!',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [score, setScore] = useState(0);

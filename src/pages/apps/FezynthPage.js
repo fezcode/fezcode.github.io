@@ -27,12 +27,12 @@ const FezynthPage = () => {
     ogTitle: 'Fezynth | Fezcodex',
     ogDescription:
       'A client-side web synthesizer built with the Web Audio API.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Fezynth | Fezcodex',
     twitterDescription:
       'A client-side web synthesizer built with the Web Audio API.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [audioContext, setAudioContext] = useState(null);

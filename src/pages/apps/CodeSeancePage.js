@@ -11,11 +11,11 @@ const CodeSeancePage = () => {
     keywords: ['Fezcodex', 'seance', 'game', 'terminal', 'horror', 'coding'],
     ogTitle: 'Code Seance | Fezcodex',
     ogDescription: 'Communicate with the ghosts of deprecated code.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Code Seance | Fezcodex',
     twitterDescription: 'Communicate with the ghosts of deprecated code.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { unlockAchievement } = useAchievements();

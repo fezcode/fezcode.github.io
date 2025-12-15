@@ -22,12 +22,12 @@ const PasswordGeneratorPage = () => {
     ogTitle: 'Password Generator | Fezcodex',
     ogDescription:
       'Generate strong, random passwords with customizable length and character types for enhanced security.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Password Generator | Fezcodex',
     twitterDescription:
       'Generate strong, random passwords with customizable length and character types for enhanced security.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

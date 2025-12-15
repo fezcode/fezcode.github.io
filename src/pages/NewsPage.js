@@ -58,12 +58,12 @@ function NewsPage() {
     ogTitle: 'News | Fezcodex',
     ogDescription:
       'Catch up on the latest news, projects, and log entries from Fezcodex. Your daily digest of updates from the digital frontier.',
-    ogImage: 'https://fezcode.github.io/logo512.png', // Assuming a generic logo
+    ogImage: '/images/ogtitle.png', // Assuming a generic logo
     twitterCard: 'summary_large_image',
     twitterTitle: 'News | Fezcodex',
     twitterDescription:
       'Catch up on the latest news, projects, and log entries from Fezcodex. Your daily digest of updates from the digital frontier.',
-    twitterImage: 'https://fezcode.github.io/logo512.png', // Assuming a generic logo
+    twitterImage: '/images/ogtitle.png', // Assuming a generic logo
   });
 
   const [newsItems, setNewsItems] = useState([]);

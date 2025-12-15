@@ -24,12 +24,12 @@ function CaseConverterPage() {
     ogTitle: 'Case Converter | Fezcodex',
     ogDescription:
       'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Case Converter | Fezcodex',
     twitterDescription:
       'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [inputText, setInputText] = useState('');
   const { addToast } = useToast();

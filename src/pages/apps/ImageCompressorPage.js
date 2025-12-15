@@ -24,12 +24,12 @@ const ImageCompressorPage = () => {
     ogTitle: 'Image Compressor | Fezcodex',
     ogDescription:
       'Compress images to reduce file size while maintaining quality.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Image Compressor | Fezcodex',
     twitterDescription:
       'Compress images to reduce file size while maintaining quality.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

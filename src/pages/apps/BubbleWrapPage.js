@@ -15,11 +15,11 @@ const BubbleWrapPage = () => {
     keywords: ['Fezcodex', 'bubble wrap', 'stress relief', 'pop', 'game'],
     ogTitle: 'Bubble Wrap | Fezcodex',
     ogDescription: 'Pop some virtual bubble wrap to relieve stress.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Bubble Wrap | Fezcodex',
     twitterDescription: 'Pop some virtual bubble wrap to relieve stress.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { unlockAchievement } = useAchievements();

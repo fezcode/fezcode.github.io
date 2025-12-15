@@ -21,12 +21,12 @@ function TournamentBracketPage() {
     ogTitle: 'Tournament Bracket Generator | Fezcodex',
     ogDescription:
       'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Tournament Bracket Generator | Fezcodex',
     twitterDescription:
       'Generate and manage single-elimination tournament brackets with ease. Add competitors, track scores, and advance winners.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

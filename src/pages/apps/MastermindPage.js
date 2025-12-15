@@ -24,12 +24,12 @@ const MastermindPage = () => {
     ogTitle: 'Mastermind Game | Fezcodex',
     ogDescription:
       'Play the classic code-breaking game of Mastermind (Bulls and Cows).',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Mastermind Game | Fezcodex',
     twitterDescription:
       'Play the classic code-breaking game of Mastermind (Bulls and Cows).',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

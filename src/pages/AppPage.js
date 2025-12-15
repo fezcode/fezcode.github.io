@@ -33,11 +33,11 @@ function AppPage() {
     ],
     ogTitle: 'Apps | Fezcodex',
     ogDescription: 'All the available apps created within the Fezcodex.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Apps | Fezcodex',
     twitterDescription: 'All the available apps created within the Fezcodex.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [groupedApps, setGroupedApps] = useState({});

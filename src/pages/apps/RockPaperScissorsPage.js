@@ -21,12 +21,12 @@ const RockPaperScissorsPage = () => {
     ogTitle: 'Rock Paper Scissors | Fezcodex',
     ogDescription:
       'Play the classic game of Rock Paper Scissors against the computer.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Rock Paper Scissors | Fezcodex',
     twitterDescription:
       'Play the classic game of Rock Paper Scissors against the computer.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [playerChoice, setPlayerChoice] = useState(null);

@@ -17,12 +17,12 @@ function Base64ConverterPage() {
     ],
     ogTitle: 'Base64 Converter | Fezcodex',
     ogDescription: 'Encode and decode Base64 strings with this online tool.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Base64 Converter | Fezcodex',
     twitterDescription:
       'Encode and decode Base64 strings with this online tool.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');

@@ -18,11 +18,11 @@ const CronJobGeneratorPage = () => {
     ],
     ogTitle: 'CRON Job Generator | Fezcodex',
     ogDescription: 'Generate CRON expressions visually.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'CRON Job Generator | Fezcodex',
     twitterDescription: 'Generate CRON expressions visually.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   // --- CRON Generator State ---

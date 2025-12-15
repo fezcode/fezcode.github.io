@@ -23,12 +23,12 @@ function HashGeneratorPage() {
     ogTitle: 'Hash Generator | Fezcodex',
     ogDescription:
       'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Hash Generator | Fezcodex',
     twitterDescription:
       'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [inputText, setInputText] = useState('');
   const [hashes, setHashes] = useState({

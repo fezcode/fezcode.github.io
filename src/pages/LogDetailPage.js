@@ -128,13 +128,13 @@ const LogDetailPage = () => {
         ogTitle={`${log.attributes.title} | Fezcodex`}
         ogDescription={log.body.substring(0, 150)}
         ogImage={
-          log.attributes.image || 'https://fezcode.github.io/logo512.png'
+          log.attributes.image || '/images/ogtitle.png'
         }
         twitterCard="summary_large_image"
         twitterTitle={`${log.attributes.title} | Fezcodex`}
         twitterDescription={log.body.substring(0, 150)}
         twitterImage={
-          log.attributes.image || 'https://fezcode.github.io/logo512.png'
+          log.attributes.image || '/images/ogtitle.png'
         }
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">

@@ -20,12 +20,12 @@ function UrlConverterPage() {
     ogTitle: 'URL Encoder/Decoder | Fezcodex',
     ogDescription:
       'Encode and decode URLs with this online tool for web development and data manipulation.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'URL Encoder/Decoder | Fezcodex',
     twitterDescription:
       'Encode and decode URLs with this online tool for web development and data manipulation.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');

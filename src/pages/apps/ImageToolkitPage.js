@@ -85,12 +85,12 @@ function ImageToolkitPage() {
     ogTitle: 'Image Toolkit | Fezcodex',
     ogDescription:
       'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Image Toolkit | Fezcodex',
     twitterDescription:
       'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const { addToast } = useToast();
   const [image, setImage] = useState(null);

@@ -64,12 +64,12 @@ const ProjectPage = () => {
         keywords={fullProject.tags ? fullProject.tags.join(', ') : ''}
         ogTitle={`${fullProject.title} | Fezcodex`}
         ogDescription={fullProject.shortDescription}
-        ogImage={fullProject.image || 'https://fezcode.github.io/logo512.png'}
+        ogImage={fullProject.image || '/images/ogtitle.png'}
         twitterCard="summary_large_image"
         twitterTitle={`${fullProject.title} | Fezcodex`}
         twitterDescription={fullProject.shortDescription}
         twitterImage={
-          fullProject.image || 'https://fezcode.github.io/logo512.png'
+          fullProject.image || '/images/ogtitle.png'
         }
       />
 

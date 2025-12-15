@@ -19,12 +19,12 @@ const PomodoroTimerPage = () => {
     ogTitle: 'Pomodoro Timer | Fezcodex',
     ogDescription:
       'A simple and customizable Pomodoro timer to boost your productivity.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Pomodoro Timer | Fezcodex',
     twitterDescription:
       'A simple and customizable Pomodoro timer to boost your productivity.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();

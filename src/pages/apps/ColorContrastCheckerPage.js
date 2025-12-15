@@ -47,12 +47,12 @@ const ColorContrastCheckerPage = () => {
     ogTitle: 'Color Contrast Checker | Fezcodex',
     ogDescription:
       'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Color Contrast Checker | Fezcodex',
     twitterDescription:
       'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const { addToast } = useToast();
 

@@ -36,12 +36,12 @@ const BlogPage = () => {
     ogTitle: 'Blog | Fezcodex',
     ogDescription:
       'Catch up on the latest news and insights from the Fezcodex blog.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Blog | Fezcodex',
     twitterDescription:
       'Catch up on the latest news and insights from the Fezcodex blog.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [displayItems, setDisplayItems] = useState([]);
   const [loading, setLoading] = useState(true);

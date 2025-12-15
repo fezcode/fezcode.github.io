@@ -235,12 +235,12 @@ const CodenameGeneratorPage = () => {
     ogTitle: 'Codename Generator | Fezcodex',
     ogDescription:
       'Generate random codenames for your projects, games, or anything else.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Codename Generator | Fezcodex',
     twitterDescription:
       'Generate random codenames for your projects, games, or anything else.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [codename, setCodename] = useState('');
   const { addToast } = useToast();

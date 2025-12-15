@@ -57,11 +57,11 @@ const LogsPage = () => {
     keywords: ['Fezcodex', 'logs', 'thoughts', 'writing'],
     ogTitle: 'Logs | Fezcodex',
     ogDescription: 'A collection of logs, thoughts, and other miscellaneous writings.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Logs | Fezcodex',
     twitterDescription: 'A collection of logs, thoughts, and other miscellaneous writings.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [logs, setLogs] = useState([]);

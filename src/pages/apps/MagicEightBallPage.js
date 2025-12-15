@@ -46,12 +46,12 @@ function MagicEightBallPage() {
     ogTitle: 'Magic 8-Ball | Fezcodex',
     ogDescription:
       'Ask a yes/no question and let the Magic 8-Ball reveal your fate!',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Magic 8-Ball | Fezcodex',
     twitterDescription:
       'Ask a yes/no question and let the Magic 8-Ball reveal your fate!',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [question, setQuestion] = useState('');

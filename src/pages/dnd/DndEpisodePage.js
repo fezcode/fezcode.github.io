@@ -50,11 +50,11 @@ function DndEpisodePage() {
     ],
     ogTitle: `${episodeTitle} | From Serfs and Frauds`,
     ogDescription: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: `${episodeTitle} | From Serfs and Frauds`,
     twitterDescription: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   useEffect(() => {

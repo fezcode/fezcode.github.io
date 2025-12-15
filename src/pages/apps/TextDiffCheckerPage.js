@@ -23,12 +23,12 @@ function TextDiffCheckerPage() {
     ogTitle: 'Text Diff Checker | Fezcodex',
     ogDescription:
       'Compare two texts and highlight the differences (additions, deletions, changes).',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Text Diff Checker | Fezcodex',
     twitterDescription:
       'Compare two texts and highlight the differences (additions, deletions, changes).',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [textA, setTextA] = useState('');

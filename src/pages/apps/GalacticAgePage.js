@@ -25,12 +25,12 @@ const GalacticAgePage = () => {
     keywords: ['Fezcodex', 'galactic age', 'age converter', 'planets', 'space'],
     ogTitle: 'Galactic Age Converter | Fezcodex',
     ogDescription: 'Calculate your age on other planets in our solar system.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Galactic Age Converter | Fezcodex',
     twitterDescription:
       'Calculate your age on other planets in our solar system.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const [earthAge, setEarthAge] = useState('');

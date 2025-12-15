@@ -21,12 +21,12 @@ const WhiteboardPage = () => {
     keywords: ['Fezcodex', 'whiteboard', 'drawing', 'sketch', 'canvas', 'draw'],
     ogTitle: 'Whiteboard | Fezcodex',
     ogDescription: 'A simple digital whiteboard for sketching and doodling.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Whiteboard | Fezcodex',
     twitterDescription:
       'A simple digital whiteboard for sketching and doodling.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const canvasRef = useRef(null);

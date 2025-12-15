@@ -300,13 +300,13 @@ const BlogPostPage = () => {
         ogTitle={`${post.attributes.title} | Fezcodex`}
         ogDescription={post.body.substring(0, 150)}
         ogImage={
-          post.attributes.image || 'https://fezcode.github.io/logo512.png'
+          post.attributes.image || '/images/ogtitle.png'
         }
         twitterCard="summary_large_image"
         twitterTitle={`${post.attributes.title} | Fezcodex`}
         twitterDescription={post.body.substring(0, 150)}
         twitterImage={
-          post.attributes.image || 'https://fezcode.github.io/logo512.png'
+          post.attributes.image || '/images/ogtitle.png'
         }
       />
 

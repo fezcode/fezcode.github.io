@@ -25,12 +25,12 @@ const LightsOutPage = () => {
     ogTitle: 'Lights Out | Fezcodex',
     ogDescription:
       'A classic logic puzzle game where you turn off all the lights.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Lights Out | Fezcodex',
     twitterDescription:
       'A classic logic puzzle game where you turn off all the lights.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useContext(ToastContext);

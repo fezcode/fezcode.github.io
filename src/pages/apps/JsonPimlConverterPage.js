@@ -22,12 +22,12 @@ function JsonPimlConverterPage() {
     ogTitle: 'JSON - PIML Converter | Fezcodex',
     ogDescription:
       'Convert JSON to PIML and PIML to JSON with this online tool.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'JSON - PIML Converter | Fezcodex',
     twitterDescription:
       'Convert JSON to PIML and PIML to JSON with this online tool.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const { addToast } = useToast();
 

@@ -294,12 +294,12 @@ const NonogramPage = () => {
     ogTitle: 'Nonogram | Fezcodex',
     ogDescription:
       'Solve picture logic puzzles by filling cells according to numerical clues.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Nonogram | Fezcodex',
     twitterDescription:
       'Solve picture logic puzzles by filling cells according to numerical clues.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useContext(ToastContext);

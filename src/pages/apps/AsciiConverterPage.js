@@ -21,12 +21,12 @@ function AsciiConverterPage() {
     ogTitle: 'Text to ASCII Converter | Fezcodex',
     ogDescription:
       'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
-    ogImage: 'https://fezcode.github.io/logo512.png',
+    ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Text to ASCII Converter | Fezcodex',
     twitterDescription:
       'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
-    twitterImage: 'https://fezcode.github.io/logo512.png',
+    twitterImage: '/images/ogtitle.png',
   });
   const [inputText, setInputText] = useState('');
   const [asciiOutput, setAsciiOutput] = useState('');
