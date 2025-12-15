@@ -16,7 +16,7 @@ export const CommandPaletteProvider = ({ children }) => {
   // Global keyboard shortcut
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.altKey && event.key === 'k') {
+      if ( (event.altKey && event.key === 'k') || (event.ctrlKey && event.key === 'k') ) {
         event.preventDefault();
         togglePalette();
       }

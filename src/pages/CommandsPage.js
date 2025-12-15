@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, TerminalWindowIcon } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
 import { useCommandPalette } from '../context/CommandPaletteContext';
-import colors from '../config/colors';
 
 const commandsData = [
   {
@@ -353,18 +352,11 @@ function CommandsPage() {
     ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'All Commands | Fezcodex',
-    twitterDescription:
-      'All the available commands that can be used in Fezcodex.',
+    twitterDescription: 'All the available commands that can be used in Fezcodex.',
     twitterImage: '/images/ogtitle.png',
   });
 
   const { togglePalette } = useCommandPalette();
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
 
   return (
     <div className="py-16 sm:py-24">
@@ -391,8 +383,7 @@ function CommandsPage() {
         </div>
         <div className="flex justify-center items-center mt-16">
           <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+            className="group bg-[#1A2E1A50] rounded-[0.25rem] border border-neutral-700 shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
           >
             <div
               className="absolute top-0 left-0 w-full h-full opacity-10"
@@ -403,16 +394,14 @@ function CommandsPage() {
               }}
             ></div>
             <div className="relative z-10 p-1 font-mono">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Command Palette{' '}
+              <h1 className="text-3xl font-playfairDisplay font-normal mb-4 text-lime-200">
+                Command Palette
               </h1>
               <hr className="border-gray-700 mb-4" />
 
               <div className="mb-6 ml-4 mr-4">
                 <p className="text-gray-200 mb-4">
-                  Press <kbd className="kbd kbd-sm text-emerald-300">Alt</kbd>+
-                  <kbd className="kbd kbd-sm text-emerald-300">K</kbd> to open
+                  Press <kbd className="kbd kbd-sm text-black border rounded-lg px-1 bg-gray-200">Alt/Ctrl</kbd> + <kbd className="kbd kbd-sm text-black border rounded-lg px-1 bg-gray-200">K</kbd> to open
                   Commands Palette. It lists all available
                   <code className="text-red-400"> PAGE</code>,
                   <code className="text-red-400"> POST</code>,
@@ -436,15 +425,14 @@ function CommandsPage() {
                 </button>
               </div>
 
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Available Commands{' '}
+              <h1 className="text-3xl font-playfairDisplay font-normal mb-4 text-app">
+                Available Commands
               </h1>
               <hr className="border-gray-700 mb-6" />
 
               {commandsData.map((category, catIndex) => (
                 <div key={catIndex} className="mb-8">
-                  <h2 className="text-2xl font-semibold text-gray-200 mb-4 border-b border-gray-700 pb-2 inline-block">
+                  <h2 className="text-2xl font-playfairDisplay font-semibold text-gray-200 mb-4 border-b border-gray-700 pb-2 inline-block">
                     {category.category}
                   </h2>
                   <div className="grid grid-cols-1 gap-4">
