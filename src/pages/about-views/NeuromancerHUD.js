@@ -124,6 +124,7 @@ const MiniTerminal = ({ theme, setTheme }) => {
           { cmd: 'ping', desc: 'Check terminal responsiveness' },
           { cmd: 'os', desc: 'Display operating system info' },
           { cmd: 'neofetch', desc: 'Display system information with ASCII art' },
+          { cmd: 'publish', desc: 'List my publications' }, // Added publish command
         ];
         commands.forEach(c => {
            newHistory.push({ type: 'output', content: (
@@ -316,6 +317,11 @@ const MiniTerminal = ({ theme, setTheme }) => {
         neofetchOutput.forEach(line => {
           newHistory.push({ type: 'output', text: line, className: THEMES[theme].text });
         });
+        break;
+      case 'publish':
+        newHistory.push({ type: 'output', text: 'PUBLICATION ARCHIVE:', className: `${THEMES[theme].accent} font-bold mt-2` });
+        newHistory.push({ type: 'output', text: '* Usability Study of a Novel Tool: The Virtual Cafeteria in Nutrition Education (2020)', className: `${THEMES[theme].textDim} list-disc ml-6` });
+        newHistory.push({ type: 'output', text: '* The Virtual Cafeteria: An Immersive Environment for Interactive Food Portion-Size Education (2018)', className: `${THEMES[theme].textDim} list-disc ml-6` });
         break;
       default:
         newHistory.push({ type: 'error', text: `Command not found: ${trimmed}`, className: 'text-red-500 font-bold' });
