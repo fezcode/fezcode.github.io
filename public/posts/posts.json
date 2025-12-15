@@ -1,5 +1,17 @@
 [
   {
+    "slug": "react-hooks-comparison",
+    "title": "React Hooks Showdown: useMemo vs useCallback vs useState vs useEffect",
+    "date": "2025-12-15",
+    "updated": "2025-12-15",
+    "description": "A comprehensive comparison of React's most commonly used hooks, explaining when and why to use each.",
+    "tags": ["react", "hooks", "frontend", "javascript", "webdev"],
+    "category": "gist",
+    "filename": "react-hooks-comparison.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "react-magic-markdown-components",
     "title": "React Magic: Rendering Components from Markdown Links",
     "date": "2025-12-12",

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import {
   PencilSimple,
   Eraser,
@@ -80,7 +80,7 @@ const SpriteEditorPage = () => {
   }, [gridSize]);
 
   const saveToHistory = () => {
-    if (history.length > 20) {
+    if (history.length > 150) {
       setHistory([...history.slice(1), [...pixels]]);
     } else {
       setHistory([...history, [...pixels]]);
@@ -127,12 +127,12 @@ const SpriteEditorPage = () => {
     }
   };
 
-  const undo = () => {
+  const undo = useCallback(() => {
     if (history.length === 0) return;
     const previousState = history[history.length - 1];
     setPixels(previousState);
     setHistory(history.slice(0, -1));
-  };
+  }, [history]);
 
   const clearCanvas = () => {
     saveToHistory();
