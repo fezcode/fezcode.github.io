@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 15 Dec 2025 17:02:49 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 15 Dec 2025 20:34:40 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 15 Dec 2025 17:02:49 GMT</pubDate>
+        <pubDate>Mon, 15 Dec 2025 20:34:40 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[React Hooks Showdown: useMemo vs useCallback vs useState vs useEffect]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-hooks-comparison</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-hooks-comparison</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>1. useState: The Memory</h2>
+<p><a href="https://fezcode.com/#/blog/react-hooks-comparison">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[React Magic: Rendering Components from Markdown Links]]></title>
             <description><![CDATA[[object Object]]]></description>

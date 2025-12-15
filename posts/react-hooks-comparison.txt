@@ -1,0 +1,72 @@
+## 1. useState: The Memory
+
+**What it does:** Allows a functional component to "remember" information between renders.
+
+**When to use:** Whenever you have data that changes over time and needs to trigger a re-render to update the UI (e.g., form inputs, toggle states, counters).
+
+```javascript
+const [count, setCount] = useState(0);
+
+// Update state
+setCount(count + 1);
+```
+
+## 2. useEffect: The Side Effect
+
+**What it does:** Performs side effects in functional components. "Side effects" are things like data fetching, subscriptions, or manually changing the DOM.
+
+**When to use:** When you need to do something *after* the component renders or when a specific value changes.
+
+```javascript
+useEffect(() => {
+  // This runs after every render
+  document.title = `You clicked ${count} times`;
+
+  // Optional cleanup mechanism
+  return () => {
+    // Clean up code here
+  };
+}, [count]); // Only re-run if 'count' changes
+```
+
+## 3. useMemo: The Calculator
+
+**What it does:** Memoizes (caches) the *result* of a calculation. It only re-calculates the value when one of its dependencies changes.
+
+**When to use:** Optimization. Use it to avoid expensive calculations on every render.
+
+```javascript
+const expensiveValue = useMemo(() => {
+  return computeExpensiveValue(a, b);
+}, [a, b]); // Only re-compute if 'a' or 'b' changes
+```
+
+*Note: Don't overuse this. Memoization has its own cost.*
+
+## 4. useCallback: The Function Saver
+
+**What it does:** Memoizes a *function definition*. It returns the same function instance between renders unless its dependencies change.
+
+**When to use:** Optimization. Primarily useful when passing callbacks to optimized child components (like those wrapped in `React.memo`) to prevent unnecessary re-renders of the child.
+
+```javascript
+const handleClick = useCallback(() => {
+  doSomething(a, b);
+}, [a, b]); // Function identity remains stable unless 'a' or 'b' changes
+```
+
+## Summary Table
+
+| Hook | Returns | Purpose | Re-runs when... |
+| :--- | :--- | :--- | :--- |
+| **useState** | `[state, setter]` | Manage state | Setter is called |
+| **useEffect** | `undefined` | Side effects | Dependencies change |
+| **useMemo** | Calculated Value | Cache expensive calculation | Dependencies change |
+| **useCallback** | Memoized Function | Stable function identity | Dependencies change |
+
+## Key Difference: useMemo vs useCallback
+
+*   `useMemo` caches the **result** of a function call.
+*   `useCallback` caches the **function itself**.
+
+> `useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
