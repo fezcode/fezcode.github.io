@@ -28,6 +28,18 @@ you can find me exploring new tech or enjoying a good cup of coffee ☕.
 *   [GitHub Profile](https://github.com/fezcode)
 *   [LinkedIn Profile](https://www.linkedin.com/in/ahmedsamilbulbul)
 
+## Publications
+
+* **Usability Study of a Novel Tool: The Virtual Cafeteria in Nutrition Education**
+  *Authors*: Ufuk Celikcan, Ahmed Samil Bulbul, Cem Aslan
+  *Year*: 2020
+  *DOI*: https://doi.org/10.1016/j.jneb.2020.08.001
+
+* **The Virtual Cafeteria: An Immersive Environment for Interactive Food Portion-Size Education**
+  *Authors*: Ufuk Celikcan, Ahmed Samil Bulbul, Cem Aslan
+  *Year*: 2018
+  *DOI*: https://doi.org/10.1145/3279954.3279960
+
 ## Currently...
 
 *   **🎵 Making Music:** I'm currently exploring the world of music production, creating some sick beats and melodies.
