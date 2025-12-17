@@ -157,3 +157,16 @@
     (priority) High
     (created_at) 2025-12-12T08:34:00+03:00
     (notes) We assume explore section is also inside latest blogpost.
+
+  > (issues)
+    (id) FEZ-15
+    (title) Reading Experience Modes & Sidebar Colors
+    (description)
+      Implement Dossier and Terminal reader modes for blogposts which can be set in Settings.
+      Dossier having a Classified Dossier look while Terminal uses Dark Orange tones.
+      Sidebar's background color should also be adjustable.
+    (category) Feature
+    (status) Completed
+    (priority) High
+    (created_at) 2025-12-17T18:34:00+03:00
+    (notes) Sidebar should have a dark red color (transparent salmon)
