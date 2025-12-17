@@ -1,5 +1,17 @@
 [
   {
+    "slug": "the-irrelevant-speech-effect",
+    "title": "Why Your Brain Hates Lyrics While You Work: The Irrelevant Speech Effect",
+    "date": "2025-12-17",
+    "updated": "2025-12-17",
+    "description": "A ELI5 version of the irrelevant speech effect.",
+    "tags": ["rant", "music", "eli5", "psychological"],
+    "category": "rant",
+    "filename": "the-irrelevant-speech-effect.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/bhautik-patel-4R8CLj_mf2A-unsplash.jpg"
+  },
+  {
     "slug": "react-hooks-comparison",
     "title": "React Hooks Showdown: useMemo vs useCallback vs useState vs useEffect",
     "date": "2025-12-15",
