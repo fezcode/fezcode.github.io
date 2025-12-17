@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import { usePalette } from 'color-thief-react';
+import { getPalette } from 'color-thief-react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
 import { canvasRGBA } from 'stackblur-canvas';
@@ -9,12 +9,61 @@ import useSeo from '../../hooks/useSeo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function Palette({ image }) {
-  const {
-    data: palette,
-    loading,
-    error,
-  } = usePalette(image, 5, 'hex', { crossOrigin: 'anonymous', quality: 10 });
+  const [palette, setPalette] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { addToast } = useToast();
+
+  useEffect(() => {
+    console.log('Palette useEffect triggered, image:', image);
+    if (!image) {
+      setPalette(null);
+      setLoading(false);
+      console.log('No image provided, setting loading to false.');
+      return;
+    }
+
+    setLoading(true);
+    setError(null);
+    console.log('Starting image load for palette extraction.');
+
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.src = image;
+
+    img.onload = () => {
+      console.log('Image loaded successfully for palette extraction.');
+      getPalette(image, 5, 'hex', { quality: 10 })
+        .then((data) => {
+          console.log('Palette data received:', data);
+          setPalette(data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          console.error('getPalette error:', err);
+          setError(err);
+          setLoading(false);
+          addToast({
+            title: 'Error',
+            message: 'Failed to extract color palette.',
+            duration: 3000,
+          });
+        });
+    };
+
+    img.onerror = (err) => {
+      console.error('Image load error for palette extraction:', err);
+      setError(new Error('Failed to load image for palette extraction.'));
+      setLoading(false);
+      addToast({
+        title: 'Error',
+        message: 'Failed to load image for palette extraction.',
+        duration: 3000,
+      });
+    };
+  }, [image, addToast]);
+
+  console.log('Palette render state: loading=', loading, 'error=', error, 'palette=', palette);
 
   if (loading) return <p>Loading palette...</p>;
   if (error) return <p>Error generating palette: {error.message}</p>;

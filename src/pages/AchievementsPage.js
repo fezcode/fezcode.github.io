@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
-  Trophy,
-  Lock,
-  Info,
-  BellSlash,
+  TrophyIcon,
+  LockIcon,
+  InfoIcon,
+  BellSlashIcon,
   FunnelIcon,
-  XCircle,
-  CalendarBlank,
+  XCircleIcon,
+  CalendarBlankIcon,
   Leaf, // Added a leaf icon for flavor if needed, or stick to Trophy
 } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
@@ -86,7 +86,7 @@ const AchievementsPage = () => {
             <div className="relative">
               {/* Nature Glow behind Trophy */}
               <div className="absolute inset-0 bg-emerald-500 blur-2xl opacity-20 rounded-full"></div>
-              <Trophy size={56} weight="duotone" className="text-emerald-400 relative z-10 drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]" />
+              <TrophyIcon size={56} weight="duotone" className="text-emerald-400 relative z-10 drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]" />
             </div>
             Achievements
           </h1>
@@ -122,7 +122,7 @@ const AchievementsPage = () => {
                 onClick={clearFilters}
                 className="ml-2 text-sm text-red-400 hover:text-red-300 flex items-center gap-1 transition-colors"
               >
-                <XCircle size={20} /> Clear
+                <XCircleIcon size={20} /> Clear
               </button>
             )}
           </div>
@@ -159,9 +159,9 @@ const AchievementsPage = () => {
                 }`}
               >
                 {showAchievementToast ? (
-                  <Info size={24} weight="duotone" />
+                  <InfoIcon size={24} weight="duotone" />
                 ) : (
-                  <BellSlash size={24} weight="duotone" />
+                  <BellSlashIcon size={24} weight="duotone" />
                 )}
               </div>
               <div className="flex-1 text-left">
@@ -233,7 +233,7 @@ const AchievementsPage = () => {
                       }`}
                     >
                       <div className="scale-[1.4] drop-shadow-lg">
-                        {isUnlocked ? achievement.icon : <Lock weight="fill" />}
+                        {isUnlocked ? achievement.icon : <LockIcon weight="fill" />}
                       </div>
                     </div>
                   </div>
@@ -257,12 +257,12 @@ const AchievementsPage = () => {
                 }`}>
                   {isUnlocked ? (
                     <div className="flex items-center justify-center gap-2 text-xs text-emerald-400/70 font-medium font-mono uppercase tracking-widest">
-                      <CalendarBlank weight="duotone" size={16} />
+                      <CalendarBlankIcon weight="duotone" size={16} />
                       <span>Unlocked: {unlockedDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</span>
                     </div>
                   ) : (
                     <div className="text-center text-xs text-stone-600 font-mono uppercase tracking-widest flex items-center justify-center gap-2">
-                      <Lock size={14} /> Locked
+                      <LockIcon size={14} /> Locked
                     </div>
                   )}
                 </div>
