@@ -1,5 +1,13 @@
 [
   {
+    "date": "2025-12-17",
+    "title": "Reader Modes",
+    "description": "Implemented a Dossier and Terminal reader modes for blogposts which can be set in Settings. Dossier having a Classified Dossier look while Terminal uses Dark Orange tones.",
+    "type": "content",
+    "icon": "ArticleIcon",
+    "link": "/#/settings"
+  },
+  {
     "date": "2025-12-12",
     "title": "About Me Page Overhaul",
     "description": "Added 4 major version of the about me page.",
