@@ -13,6 +13,7 @@ import {
   MagicWand,
   Sidebar,
   AppWindow,
+  Article,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../context/AnimationContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -108,6 +109,8 @@ const SettingsPage = () => {
     toggleAutumn,
     isRain,
     toggleRain,
+    isDossierMode,
+    toggleDossierMode,
   } = useVisualSettings();
 
   const { addToast } = useToast();
@@ -239,6 +242,22 @@ const SettingsPage = () => {
                 <p className="mt-2 text-sm text-gray-400 ml-1">
                     Toggle to display "Latest Blogposts" section before "Pinned Projects" on the homepage.
                 </p>
+            </div>
+          </Section>
+
+          {/* Reading Experience */}
+          <Section title="Reading Experience" icon={<Article />} delay={0.05}>
+            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
+              <CustomToggle
+                id="dossier-mode"
+                label="Dossier Mode"
+                checked={isDossierMode}
+                onChange={toggleDossierMode}
+                colorTheme="stone"
+              />
+              <p className="mt-2 text-sm text-gray-400 ml-1">
+                Render blog posts as classified dossiers.
+              </p>
             </div>
           </Section>
 

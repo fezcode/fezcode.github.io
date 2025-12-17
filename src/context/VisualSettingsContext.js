@@ -42,6 +42,10 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isGarden, setIsGarden] = usePersistentState('is-garden', false);
   const [isAutumn, setIsAutumn] = usePersistentState('is-autumn', false);
   const [isRain, setIsRain] = usePersistentState('is-rain', false);
+  const [isDossierMode, setIsDossierMode] = usePersistentState(
+    'is-dossier-mode',
+    false,
+  );
 
   // Chaos Theory Achievement Tracker
   useEffect(() => {
@@ -76,6 +80,7 @@ export const VisualSettingsProvider = ({ children }) => {
     isGarden,
     isAutumn,
     isRain,
+    isDossierMode,
     unlockAchievement,
   ]);
 
@@ -230,6 +235,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const toggleGarden = () => setIsGarden((prev) => !prev);
   const toggleAutumn = () => setIsAutumn((prev) => !prev);
   const toggleRain = () => setIsRain((prev) => !prev);
+  const toggleDossierMode = () => setIsDossierMode((prev) => !prev);
 
   return (
     <VisualSettingsContext.Provider
@@ -270,6 +276,8 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleAutumn,
         isRain,
         toggleRain,
+        isDossierMode,
+        toggleDossierMode,
       }}
     >
       {children}
