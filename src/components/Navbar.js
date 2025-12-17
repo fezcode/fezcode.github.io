@@ -33,7 +33,7 @@ const Navbar = ({
         onClick={toggleSidebar}
         className="absolute top-1/2 -translate-y-1/2 left-4 text-red-600 focus:outline-none hidden md:block"
       >
-        <SidebarIcon size={24} />
+        <SidebarIcon size={24} weight="fill" />
       </button>
       <div className="container mx-auto flex justify-between items-center p-4 text-white">
         <div className="md:hidden flex items-center space-x-2">
