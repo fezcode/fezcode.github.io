@@ -23,4 +23,18 @@ and allows for a more personalized journey through Fezcodex.
 
 Head over to the [Settings page](/#/settings) (accessible from the Sidebar). Scroll down to the new **Reading Experience** section and set you mode...
 
+# Oh, One More Thing. ***Sidebar Colors***
+
+Also sidebar now supports multiple background colors. Some of your favorite even.
+
+- <span style="background-color: rgba(250, 128, 114, 0.5)">  Salmon Light  </span>
+- <span style="background-color: rgba(250, 128, 114, 0.75)"> Salmon Medium </span>
+- <span style="background-color: rgba(100, 149, 237, 0.5)">  Blue          </span>
+- <span style="background-color: rgba(60, 179, 113, 0.5)">   Green         </span>
+- <span style="background-color: rgba(147, 112, 219, 0.5)">  Purple        </span>
+- <span style="background-color: rgba(0, 255, 255, 0.5)">    Cyan          </span>
+
+Head over to the [Settings page](/#/settings), again. Scroll down to the new **Interface & Layout** then under **Sidebar Color** section set your sidebar color.
+
+
 Hope you enjoy exploring these new immersive reading modes. Happy reading!
