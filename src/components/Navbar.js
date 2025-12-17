@@ -27,11 +27,11 @@ const Navbar = ({
 
   return (
     <header
-      className={`backdrop-blur-sm sticky top-0 z-30 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'} relative`}
+      className={`bg-black/20 backdrop-blur-lg sticky top-0 z-30 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'} relative`}
     >
       <button
         onClick={toggleSidebar}
-        className="absolute top-1/2 -translate-y-1/2 left-4 text-red-500 focus:outline-none hidden md:block"
+        className="absolute top-1/2 -translate-y-1/2 left-4 text-red-600 focus:outline-none hidden md:block"
       >
         <SidebarIcon size={24} />
       </button>
@@ -46,7 +46,7 @@ const Navbar = ({
           <Link to="/" className="flex items-center space-x-2">
             <Fez />
             <span className="text-2xl tracking-tight font-mono">
-              fez<span className="text-primary-400">codex</span>
+              fez<span className="text-red-600">codex</span>
             </span>
           </Link>
         </div>
@@ -55,7 +55,7 @@ const Navbar = ({
             <Link to="/" className="flex items-center space-x-2">
               <Fez />
               <span className="text-2xl tracking-tight font-mono">
-                fez<span className="text-primary-400">codex</span>
+                fez<span className="text-red-600">codex</span>
               </span>
             </Link>
           )}
@@ -66,21 +66,21 @@ const Navbar = ({
               className="text-lg font-normal tracking-tight"
               style={{ fontFamily: "'Arvo', 'Playfair Display', serif" }}
             >
-              The Fez of <span className="text-primary-400">Code</span>
+              The Fez of <span className="text-red-600">Code</span>
             </span>
           </div>
         )}
         <div className="flex items-center space-x-3 md:space-x-6">
           <Link
             to="/about"
-            className="flex items-center space-x-1 text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
+            className="flex items-center space-x-1 text-white hover:bg-red-800 px-2 py-2 rounded-md transition-colors"
           >
             <UserIcon size={24} />
             <span className="md:hidden lg:inline">About</span>
           </Link>
           <button
             onClick={toggleSearch}
-            className="text-gray-300 hover:text-white hover:bg-gray-800 px-2 py-2 rounded-md transition-colors"
+            className="text-white hover:bg-red-800 px-2 py-2 rounded-md transition-colors"
             aria-label="Toggle Search"
           >
             <MagnifyingGlassIcon
