@@ -27,7 +27,7 @@ const Layout = ({
 }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
-  const { isGarden, isAutumn, isRain } = useVisualSettings();
+  const { isGarden, isAutumn, isRain, sidebarColor } = useVisualSettings();
   const location = useLocation();
 
   useEffect(() => {
@@ -79,6 +79,7 @@ const Layout = ({
           toggleSidebar={toggleSidebar}
           toggleModal={toggleModal}
           setIsPaletteOpen={setIsPaletteOpen} // Pass setIsPaletteOpen to Sidebar
+          sidebarColor={sidebarColor} // Pass sidebarColor to Sidebar
         />{' '}
         <div
           className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen ? 'md:ml-64' : 'md:ml-0'}`}

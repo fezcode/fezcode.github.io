@@ -37,6 +37,12 @@ module.exports = {
   'sidebar-highlight-light': '#FFB6C1', // Duplicated from article-light
   'sidebar-highlight-alpha-10': 'rgba(250, 128, 114, 0.1)', // Duplicated from article-alpha-10
   'sidebar-highlight-alpha-50': 'rgba(250, 128, 114, 0.5)', // Duplicated from article-alpha-50
+  'salmon-light': 'rgba(250, 128, 114, 0.05)',
+  'salmon-medium': 'rgba(250, 128, 114, 0.1)',
+  'blue-transparent': 'rgba(100, 149, 237, 0.1)',
+  'green-transparent': 'rgba(60, 179, 113, 0.1)',
+  'purple-transparent': 'rgba(147, 112, 219, 0.1)', // MediumPurple with transparency
+  'cyan-transparent': 'rgba(0, 255, 255, 0.1)', // Cyan with transparency
   'title-hover': '#fdd4a6', // orange-200
   'markdown-title-color': '#fed7aa', // orange-200
   'markdown-hx-color': '#ffedd5', // orange-100

@@ -42,10 +42,8 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isGarden, setIsGarden] = usePersistentState('is-garden', false);
   const [isAutumn, setIsAutumn] = usePersistentState('is-autumn', false);
   const [isRain, setIsRain] = usePersistentState('is-rain', false);
-  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState(
-    'blog-post-view-mode',
-    'standard',
-  );
+  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','standard');
+  const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
 
   // Chaos Theory Achievement Tracker
   useEffect(() => {
@@ -81,6 +79,7 @@ export const VisualSettingsProvider = ({ children }) => {
     isAutumn,
     isRain,
     blogPostViewMode,
+    sidebarColor, // Added sidebarColor
     unlockAchievement,
   ]);
 
@@ -277,6 +276,8 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleRain,
         blogPostViewMode,
         setBlogPostViewMode,
+        sidebarColor,
+        setSidebarColor,
       }}
     >
       {children}

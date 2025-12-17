@@ -112,6 +112,8 @@ const SettingsPage = () => {
     toggleRain,
     blogPostViewMode,
     setBlogPostViewMode,
+    sidebarColor,
+    setSidebarColor,
   } = useVisualSettings();
 
   const { addToast } = useToast();
@@ -506,7 +508,6 @@ const SettingsPage = () => {
                   Reset Sidebar
                 </button>
               </div>
-
               <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-3 text-rose-500">
@@ -525,6 +526,33 @@ const SettingsPage = () => {
                   <ArrowCounterClockwise size={18} />
                   Reset App States
                 </button>
+              </div>
+
+              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-3 text-rose-500">
+                    <Sidebar size={20} weight="duotone" />
+                    <h3 className="font-medium text-white">Sidebar Color</h3>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-6">
+                    Choose a custom background color for the sidebar.
+                  </p>
+                </div>
+                <CustomDropdown
+                  label="Select Sidebar Color"
+                  options={[
+                    { label: 'Default', value: 'default' },
+                    { label: 'Salmon Light', value: 'salmon-light' },
+                    { label: 'Salmon Medium', value: 'salmon-medium' },
+                    { label: 'Blue Transparent', value: 'blue-transparent' },
+                    { label: 'Green Transparent', value: 'green-transparent' },
+                    { label: 'Purple Transparent', value: 'purple-transparent' },
+                    { label: 'Cyan Transparent', value: 'cyan-transparent' },
+                  ]}
+                  value={sidebarColor}
+                  onChange={setSidebarColor}
+                  icon={Sidebar}
+                />
               </div>
             </div>
           </Section>

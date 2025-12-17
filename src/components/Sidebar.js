@@ -41,8 +41,9 @@ import { version } from '../version';
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 import { useAchievements } from '../context/AchievementContext';
+import colors from '../config/colors';
 
-const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
+const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen, sidebarColor }) => {
   const [sidebarState, setSidebarState] = usePersistentState(
     KEY_SIDEBAR_STATE,
     {
@@ -54,6 +55,13 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
       isStatusOpen: false,
     },
   );
+
+  const getSidebarBackgroundColor = () => {
+    if (sidebarColor && colors[sidebarColor]) {
+      return colors[sidebarColor];
+    }
+    return 'rgba(0, 0, 0, 0.3)'; // Default or fallback color
+  };
 
   const { unlockAchievement } = useAchievements();
   const scrollRef = useRef(null);
@@ -153,7 +161,8 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
         animate={isOpen ? 'open' : 'closed'}
         variants={variants}
         transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-        className={`fixed top-0 left-0 h-screen bg-black/30 backdrop-blur-sm text-white w-64 z-40 flex flex-col border-r border-gray-700/50 font-arvo`}
+        className={`fixed top-0 left-0 h-screen text-white w-64 z-40 flex flex-col border-r border-gray-700/50 font-arvo backdrop-blur-lg`}
+        style={{ backgroundColor: getSidebarBackgroundColor() }}
       >
         {isOpen && (
           <div className="p-4 flex justify-between items-center">
