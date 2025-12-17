@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.2f27d1c3.css",
-    "main.js": "/static/js/main.295a58f9.js",
+    "main.js": "/static/js/main.4cec23a5.js",
     "static/js/8852.cb3bd41d.chunk.js": "/static/js/8852.cb3bd41d.chunk.js",
     "static/js/2023.73a4c37e.chunk.js": "/static/js/2023.73a4c37e.chunk.js",
     "static/js/939.9e616b89.chunk.js": "/static/js/939.9e616b89.chunk.js",
@@ -24,7 +24,7 @@
     "static/js/675.7d4ba87a.chunk.js": "/static/js/675.7d4ba87a.chunk.js",
     "static/css/6124.9d390265.chunk.css": "/static/css/6124.9d390265.chunk.css",
     "static/js/6124.482c4e16.chunk.js": "/static/js/6124.482c4e16.chunk.js",
-    "static/js/825.5e3d215c.chunk.js": "/static/js/825.5e3d215c.chunk.js",
+    "static/js/825.f2c9d28c.chunk.js": "/static/js/825.f2c9d28c.chunk.js",
     "static/js/6233.b32f351d.chunk.js": "/static/js/6233.b32f351d.chunk.js",
     "static/js/6304.98300a69.chunk.js": "/static/js/6304.98300a69.chunk.js",
     "static/js/3629.7e7feec8.chunk.js": "/static/js/3629.7e7feec8.chunk.js",
@@ -98,9 +98,9 @@
     "static/js/9450.690d660c.chunk.js": "/static/js/9450.690d660c.chunk.js",
     "static/js/3989.aaa33c39.chunk.js": "/static/js/3989.aaa33c39.chunk.js",
     "static/js/4164.87a12553.chunk.js": "/static/js/4164.87a12553.chunk.js",
-    "static/js/848.f9631823.chunk.js": "/static/js/848.f9631823.chunk.js",
+    "static/js/848.3eacba21.chunk.js": "/static/js/848.3eacba21.chunk.js",
     "static/js/9015.01304c88.chunk.js": "/static/js/9015.01304c88.chunk.js",
-    "static/js/4428.3e9cfae1.chunk.js": "/static/js/4428.3e9cfae1.chunk.js",
+    "static/js/4428.249d465e.chunk.js": "/static/js/4428.249d465e.chunk.js",
     "static/js/3376.e9d3d92f.chunk.js": "/static/js/3376.e9d3d92f.chunk.js",
     "static/js/4770.b515976f.chunk.js": "/static/js/4770.b515976f.chunk.js",
     "static/css/6611.e383744f.chunk.css": "/static/css/6611.e383744f.chunk.css",
@@ -147,6 +147,6 @@
   },
   "entrypoints": [
     "static/css/main.2f27d1c3.css",
-    "static/js/main.295a58f9.js"
+    "static/js/main.4cec23a5.js"
   ]
 }

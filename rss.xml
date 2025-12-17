@@ -9,14 +9,35 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 17 Dec 2025 13:35:09 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 17 Dec 2025 14:01:38 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 17 Dec 2025 13:35:09 GMT</pubDate>
+        <pubDate>Wed, 17 Dec 2025 14:01:38 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Introducing New Reading Modes: Dossier and Terminal!]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/introducing-reading-experience</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/introducing-reading-experience</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 17 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Excited to unveil two brand new ways to experience content on Fezcodex Blogposts: <strong>Dossier Mode</strong> and <strong>Terminal Mode!</strong>
+These unique reading modes are designed to offer a fresh and engaging perspective, allowing you to tailor your browsing experience to your personal style.</p>
+<p><a href="https://fezcode.com/#/blog/introducing-reading-experience">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Typeface vs. Font: The Music Analogy]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/typeface-vs-font</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/typeface-vs-font</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 17 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>The easiest way to understand the difference is to think about music:</p>
+<p><a href="https://fezcode.com/#/blog/typeface-vs-font">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Why Your Brain Hates Lyrics While You Work: The Irrelevant Speech Effect]]></title>
             <description><![CDATA[[object Object]]]></description>
