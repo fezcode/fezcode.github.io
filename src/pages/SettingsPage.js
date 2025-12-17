@@ -110,8 +110,8 @@ const SettingsPage = () => {
     toggleAutumn,
     isRain,
     toggleRain,
-    blogPostViewMode, // Changed from isDossierMode
-    setBlogPostViewMode, // Changed from toggleDossierMode
+    blogPostViewMode,
+    setBlogPostViewMode,
   } = useVisualSettings();
 
   const { addToast } = useToast();
@@ -256,6 +256,7 @@ const SettingsPage = () => {
                   options={[
                     { label: 'Standard', value: 'standard' },
                     { label: 'Dossier', value: 'dossier' },
+                    { label: 'Terminal (New Vegas)', value: 'terminal' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
