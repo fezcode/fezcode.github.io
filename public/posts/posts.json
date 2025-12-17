@@ -1,5 +1,17 @@
 [
   {
+    "slug": "introducing-reading-experience",
+    "title": "Introducing New Reading Modes: Dossier and Terminal!",
+    "date": "2025-12-17",
+    "updated": "2025-12-17",
+    "description": "Explore Fezcodex blogpost like never before with our new reading modes.",
+    "tags": ["feat", "blogpost", "modes", "reading", "fun", "vintage", "terminal", "dossier"],
+    "category": "feat",
+    "filename": "introducing-reading-experience.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+  },
+  {
     "slug": "typeface-vs-font",
     "title": "Typeface vs. Font: The Music Analogy",
     "date": "2025-12-17",
