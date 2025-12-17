@@ -4,9 +4,9 @@ import DossierBlogPostPage from './DossierBlogPostPage';
 import StandardBlogPostPage from './StandardBlogPostPage';
 
 const BlogPostPage = () => {
-  const { isDossierMode } = useVisualSettings();
+  const { blogPostViewMode } = useVisualSettings();
 
-  if (isDossierMode) {
+  if (blogPostViewMode === 'dossier') {
     return <DossierBlogPostPage />;
   }
 

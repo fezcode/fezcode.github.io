@@ -19,6 +19,7 @@ import { useAnimation } from '../context/AnimationContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import { useAchievements } from '../context/AchievementContext';
 import CustomToggle from '../components/CustomToggle';
+import CustomDropdown from '../components/CustomDropdown'; // Added CustomDropdown
 import useSeo from '../hooks/useSeo';
 import { useToast } from '../hooks/useToast';
 import { useHomepageOrder } from '../context/HomepageOrderContext';
@@ -109,8 +110,8 @@ const SettingsPage = () => {
     toggleAutumn,
     isRain,
     toggleRain,
-    isDossierMode,
-    toggleDossierMode,
+    blogPostViewMode, // Changed from isDossierMode
+    setBlogPostViewMode, // Changed from toggleDossierMode
   } = useVisualSettings();
 
   const { addToast } = useToast();
@@ -247,16 +248,23 @@ const SettingsPage = () => {
 
           {/* Reading Experience */}
           <Section title="Reading Experience" icon={<Article />} delay={0.05}>
-            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
-              <CustomToggle
-                id="dossier-mode"
-                label="Dossier Mode"
-                checked={isDossierMode}
-                onChange={toggleDossierMode}
-                colorTheme="stone"
-              />
-              <p className="mt-2 text-sm text-gray-400 ml-1">
-                Render blog posts as classified dossiers.
+            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5 flex flex-col gap-4">
+              <div className="flex items-center justify-between">
+                <span className="font-medium text-white">Blog Post View</span>
+                <CustomDropdown
+                  label="Select View"
+                  options={[
+                    { label: 'Standard', value: 'standard' },
+                    { label: 'Dossier', value: 'dossier' },
+                  ]}
+                  value={blogPostViewMode}
+                  onChange={setBlogPostViewMode}
+                  icon={Article}
+                  className="ml-auto"
+                />
+              </div>
+              <p className="text-sm text-gray-400">
+                Select the default rendering style for blog posts.
               </p>
             </div>
           </Section>
