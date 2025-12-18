@@ -151,6 +151,7 @@ const NewsPage = lazy(() => import('../pages/NewsPage'));
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const SitemapPage = lazy(() => import('../pages/SitemapPage'));
+const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
 
 const pageVariants = {
@@ -601,6 +602,22 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <SitemapPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/welcome"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <WelcomePage />
               </Suspense>
             </motion.div>
           }
