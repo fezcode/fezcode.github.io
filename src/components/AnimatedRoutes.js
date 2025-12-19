@@ -26,7 +26,9 @@ const WordCounterPage = lazy(() => import('../pages/apps/WordCounterPage'));
 const TournamentBracketPage = lazy(
   () => import('../pages/apps/TournamentBracketPage'),
 );
-const MarkdownTableFormatterPage = lazy(() => import('../pages/apps/MarkdownTableFormatterPage'));
+const MarkdownTableFormatterPage = lazy(
+  () => import('../pages/apps/MarkdownTableFormatterPage'),
+);
 const CaseConverterPage = lazy(() => import('../pages/apps/CaseConverterPage'));
 const Base64ConverterPage = lazy(
   () => import('../pages/apps/Base64ConverterPage'),
@@ -511,53 +513,53 @@ function AnimatedRoutes() {
           }
         />
         <Route
-                  path="/random"
-                  element={
-                    <motion.div
-                      initial="initial"
-                      animate="in"
-                      exit="out"
-                      variants={pageVariants}
-                      transition={pageTransition}
-                    >
-                      <Suspense fallback={<Loading />}>
-                        <RandomPage />
-                      </Suspense>
-                    </motion.div>
-                  }
-                />
-                        <Route
-                          path="/apps"
-                          element={
-                            <motion.div
-                              initial="initial"
-                              animate="in"
-                              exit="out"
-                              variants={pageVariants}
-                              transition={pageTransition}
-                            >
-                              <Suspense fallback={<Loading />}>
-                                <AppPage />
-                              </Suspense>
-                            </motion.div>
-                          }
-                        />
-                        <Route
-                          path="/commands"
-                          element={
-                            <motion.div
-                              initial="initial"
-                              animate="in"
-                              exit="out"
-                              variants={pageVariants}
-                              transition={pageTransition}
-                            >
-                              <Suspense fallback={<Loading />}>
-                                <CommandsPage />
-                              </Suspense>
-                            </motion.div>
-                          }
-                        />
+          path="/random"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <RandomPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <AppPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/commands"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CommandsPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
         <Route
           path="/achievements"
           element={

@@ -12,8 +12,8 @@ const stripMarkdown = (markdown) => {
     .replace(/\n/g, ' ') // Replace newlines with spaces
     .replace(/#+\s/g, '') // Remove headers
     .replace(/(\*\*|\*|_|__)/g, '') // Remove bold/italic
-    .replace(/\`{1,3}[^\`]+\`{1,3}/g, '') // Remove inline code and code blocks
-    .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Remove links, keeping the text
+    .replace(/`{1,3}[^`]+`{1,3}/g, '') // Remove inline code and code blocks
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Remove links, keeping the text
     .trim();
 };
 

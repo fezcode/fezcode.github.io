@@ -22,64 +22,64 @@ import ImageModal from '../components/ImageModal';
 import { useToast } from '../hooks/useToast';
 
 const dossierCodeTheme = {
-  "code[class*=\"language-\"]": {
-    "color": "#111",
-    "background": "none",
-    "fontFamily": "'JetBrains Mono', monospace",
-    "fontSize": "0.9em",
-    "textAlign": "left",
-    "whiteSpace": "pre",
-    "wordSpacing": "normal",
-    "wordBreak": "normal",
-    "wordWrap": "normal",
-    "lineHeight": "1.5",
-    "tabSize": "4",
-    "hyphens": "none"
+  'code[class*="language-"]': {
+    color: '#111',
+    background: 'none',
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '0.9em',
+    textAlign: 'left',
+    whiteSpace: 'pre',
+    wordSpacing: 'normal',
+    wordBreak: 'normal',
+    wordWrap: 'normal',
+    lineHeight: '1.5',
+    tabSize: '4',
+    hyphens: 'none',
   },
-  "pre[class*=\"language-\"]": {
-    "color": "#111",
-    "background": "#f0f0f0",
-    "fontFamily": "'JetBrains Mono', monospace",
-    "fontSize": "0.9em",
-    "textAlign": "left",
-    "whiteSpace": "pre",
-    "wordSpacing": "normal",
-    "wordBreak": "normal",
-    "wordWrap": "normal",
-    "lineHeight": "1.5",
-    "tabSize": "4",
-    "hyphens": "none",
-    "padding": "1em",
-    "margin": ".5em 0",
-    "overflow": "auto",
-    "border": "1px solid #000"
+  'pre[class*="language-"]': {
+    color: '#111',
+    background: '#f0f0f0',
+    fontFamily: "'JetBrains Mono', monospace",
+    fontSize: '0.9em',
+    textAlign: 'left',
+    whiteSpace: 'pre',
+    wordSpacing: 'normal',
+    wordBreak: 'normal',
+    wordWrap: 'normal',
+    lineHeight: '1.5',
+    tabSize: '4',
+    hyphens: 'none',
+    padding: '1em',
+    margin: '.5em 0',
+    overflow: 'auto',
+    border: '1px solid #000',
   },
-  "comment": { "color": "#666", "fontStyle": "italic" },
-  "punctuation": { "color": "#444" },
-  "property": { "color": "#000", "fontWeight": "bold" },
-  "tag": { "color": "#000", "fontWeight": "bold" },
-  "boolean": { "color": "#000", "fontWeight": "bold" },
-  "number": { "color": "#000", "fontWeight": "bold" },
-  "constant": { "color": "#000", "fontWeight": "bold" },
-  "symbol": { "color": "#000", "fontWeight": "bold" },
-  "selector": { "color": "#000", "fontWeight": "bold" },
-  "attr-name": { "color": "#000" },
-  "string": { "color": "#444" },
-  "char": { "color": "#444" },
-  "builtin": { "color": "#000", "fontWeight": "bold" },
-  "inserted": { "color": "#000", "background": "#e6ffed" },
-  "deleted": { "color": "#000", "background": "#ffeef0" },
-  "operator": { "color": "#000" },
-  "entity": { "color": "#000", "cursor": "help" },
-  "url": { "color": "#000" },
-  "keyword": { "color": "#000", "fontWeight": "bold" },
-  "function": { "color": "#000", "fontWeight": "bold" },
-  "class-name": { "color": "#000", "fontWeight": "bold" },
-  "regex": { "color": "#444" },
-  "important": { "color": "#000", "fontWeight": "bold" },
-  "variable": { "color": "#000" },
-  "bold": { "fontWeight": "bold" },
-  "italic": { "fontStyle": "italic" }
+  comment: { color: '#666', fontStyle: 'italic' },
+  punctuation: { color: '#444' },
+  property: { color: '#000', fontWeight: 'bold' },
+  tag: { color: '#000', fontWeight: 'bold' },
+  boolean: { color: '#000', fontWeight: 'bold' },
+  number: { color: '#000', fontWeight: 'bold' },
+  constant: { color: '#000', fontWeight: 'bold' },
+  symbol: { color: '#000', fontWeight: 'bold' },
+  selector: { color: '#000', fontWeight: 'bold' },
+  'attr-name': { color: '#000' },
+  string: { color: '#444' },
+  char: { color: '#444' },
+  builtin: { color: '#000', fontWeight: 'bold' },
+  inserted: { color: '#000', background: '#e6ffed' },
+  deleted: { color: '#000', background: '#ffeef0' },
+  operator: { color: '#000' },
+  entity: { color: '#000', cursor: 'help' },
+  url: { color: '#000' },
+  keyword: { color: '#000', fontWeight: 'bold' },
+  function: { color: '#000', fontWeight: 'bold' },
+  'class-name': { color: '#000', fontWeight: 'bold' },
+  regex: { color: '#444' },
+  important: { color: '#000', fontWeight: 'bold' },
+  variable: { color: '#000' },
+  bold: { fontWeight: 'bold' },
+  italic: { fontStyle: 'italic' },
 };
 
 const DossierBlogPostPage = () => {
@@ -116,7 +116,8 @@ const DossierBlogPostPage = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (contentRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        const { scrollTop, scrollHeight, clientHeight } =
+          document.documentElement;
         const totalHeight = scrollHeight - clientHeight;
         const currentProgress = (scrollTop / totalHeight) * 100;
         setReadingProgress(currentProgress);
@@ -217,17 +218,31 @@ const DossierBlogPostPage = () => {
     const handleCopy = () => {
       const textToCopy = String(children);
       navigator.clipboard.writeText(textToCopy).then(
-        () => addToast({ title: 'EVIDENCE SECURED', message: 'Code copied to clipboard.', duration: 3000, type: 'success' }),
-        () => addToast({ title: 'ERROR', message: 'Failed to copy code.', duration: 3000, type: 'error' })
+        () =>
+          addToast({
+            title: 'EVIDENCE SECURED',
+            message: 'Code copied to clipboard.',
+            duration: 3000,
+            type: 'success',
+          }),
+        () =>
+          addToast({
+            title: 'ERROR',
+            message: 'Failed to copy code.',
+            duration: 3000,
+            type: 'error',
+          }),
       );
     };
 
     if (!inline && match) {
       return (
         <div className="relative group my-8">
-           <div className="absolute -top-3 right-4 flex gap-2 z-10">
+          <div className="absolute -top-3 right-4 flex gap-2 z-10">
             <button
-              onClick={() => openModal(String(children).replace(/\n$/, ''), match[1])}
+              onClick={() =>
+                openModal(String(children).replace(/\n$/, ''), match[1])
+              }
               className="bg-white border border-black px-2 py-1 text-xs uppercase font-mono tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-sm"
               title="Enlarge Evidence"
             >
@@ -242,9 +257,11 @@ const DossierBlogPostPage = () => {
             </button>
           </div>
           <div className="border border-black bg-[#f0f0f0] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
-             <div className="bg-black text-white px-2 py-1 text-xs font-mono uppercase tracking-widest border-b border-black flex justify-between">
-                <span>{'//'} ATTACHMENT: {match[1]}</span>
-             </div>
+            <div className="bg-black text-white px-2 py-1 text-xs font-mono uppercase tracking-widest border-b border-black flex justify-between">
+              <span>
+                {'//'} ATTACHMENT: {match[1]}
+              </span>
+            </div>
             <SyntaxHighlighter
               style={dossierCodeTheme}
               language={match[1]}
@@ -283,7 +300,10 @@ const DossierBlogPostPage = () => {
   const ImageRenderer = ({ src, alt }) => (
     <div className="my-12 w-full flex justify-center group relative transform rotate-1 hover:rotate-0 transition-transform duration-500 ease-in-out">
       <div className="absolute inset-0 bg-black/20 transform translate-x-2 translate-y-2 pointer-events-none -z-10 blur-sm"></div>
-      <div className="bg-white p-3 pb-8 border border-gray-200 shadow-md cursor-pointer w-full max-w-[98%] mx-auto" onClick={() => setModalImageSrc(src)}>
+      <div
+        className="bg-white p-3 pb-8 border border-gray-200 shadow-md cursor-pointer w-full max-w-[98%] mx-auto"
+        onClick={() => setModalImageSrc(src)}
+      >
         <img
           src={src}
           alt={alt}
@@ -301,7 +321,9 @@ const DossierBlogPostPage = () => {
       <div className="min-h-screen bg-[#f3f3f3] flex items-center justify-center">
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-black border-t-transparent animate-spin rounded-full" />
-          <span className="font-mono text-xs uppercase tracking-widest text-black">Retrieving Archive...</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-black">
+            Retrieving Archive...
+          </span>
         </div>
       </div>
     );
@@ -336,7 +358,9 @@ const DossierBlogPostPage = () => {
       {/* Top Secret Stamp / Decor */}
       <div className="fixed top-0 right-0 p-8 opacity-10 pointer-events-none z-0">
         <div className="border-4 border-black p-4 rounded-sm transform rotate-12">
-          <span className="text-6xl font-black uppercase tracking-widest font-mono">CONFIDENTIAL</span>
+          <span className="text-6xl font-black uppercase tracking-widest font-mono">
+            CONFIDENTIAL
+          </span>
         </div>
       </div>
 
@@ -349,15 +373,19 @@ const DossierBlogPostPage = () => {
         </Link>
 
         {post.attributes.image && (
-             <div className="mb-12">
-                <CensoredPolaroid imageUrl={post.attributes.image} censored={false} />
-             </div>
+          <div className="mb-12">
+            <CensoredPolaroid
+              imageUrl={post.attributes.image}
+              censored={false}
+            />
+          </div>
         )}
 
         <header className="mb-20">
           <div className="flex flex-col items-start gap-4 mb-8">
             <span className="bg-black text-white px-3 py-1 font-mono text-xs tracking-[0.3em] uppercase">
-              Fezcodex Archive {'//'} File #{currentSlug.substring(0, 6).toUpperCase()} ...[REDACTED]
+              Fezcodex Archive {'//'} File #
+              {currentSlug.substring(0, 6).toUpperCase()} ...[REDACTED]
             </span>
             <div className="w-24 h-1 bg-black"></div>
           </div>
@@ -369,21 +397,29 @@ const DossierBlogPostPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 font-mono text-xs text-gray-500 uppercase tracking-wide border-t border-b border-black/10 py-6">
             <div>
               <span className="text-gray-400 block mb-1">Date Logged</span>
-              <span className="text-black">{new Date(post.attributes.date).toLocaleDateString()}</span>
+              <span className="text-black">
+                {new Date(post.attributes.date).toLocaleDateString()}
+              </span>
             </div>
             {post.attributes.updated && (
               <div>
                 <span className="text-gray-400 block mb-1">Last Update</span>
-                <span className="text-black">{new Date(post.attributes.updated).toLocaleDateString()}</span>
+                <span className="text-black">
+                  {new Date(post.attributes.updated).toLocaleDateString()}
+                </span>
               </div>
             )}
-             <div>
+            <div>
               <span className="text-gray-400 block mb-1">Category</span>
               <span className="text-black">{post.attributes.category}</span>
             </div>
             <div>
-              <span className="text-gray-400 block mb-1">Est. Reading Time</span>
-              <span className="text-black">{calculateReadingTime(post.body)} min</span>
+              <span className="text-gray-400 block mb-1">
+                Est. Reading Time
+              </span>
+              <span className="text-black">
+                {calculateReadingTime(post.body)} min
+              </span>
             </div>
           </div>
         </header>
@@ -410,14 +446,17 @@ const DossierBlogPostPage = () => {
             rehypePlugins={[rehypeRaw]}
             components={{
               a: (props) => {
-                const isVocab = props.href && (props.href.startsWith('/vocab/') || props.href.includes('/#/vocab/'));
+                const isVocab =
+                  props.href &&
+                  (props.href.startsWith('/vocab/') ||
+                    props.href.includes('/#/vocab/'));
                 return (
                   <MarkdownLink
                     {...props}
                     className={
                       isVocab
-                        ? "!text-amber-600 !hover:text-red-600 font-bold transition-colors cursor-help !decoration-amber-600/30 underline decoration-2 underline-offset-2"
-                        : "inline-block px-1 bg-black/5 hover:bg-black hover:text-white transition-all font-mono text-sm mx-0.5 rounded-sm no-underline"
+                        ? '!text-amber-600 !hover:text-red-600 font-bold transition-colors cursor-help !decoration-amber-600/30 underline decoration-2 underline-offset-2'
+                        : 'inline-block px-1 bg-black/5 hover:bg-black hover:text-white transition-all font-mono text-sm mx-0.5 rounded-sm no-underline'
                     }
                   />
                 );

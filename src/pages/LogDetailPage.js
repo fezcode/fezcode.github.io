@@ -9,7 +9,7 @@ import {
   ArrowUpRight,
   Clock,
   User,
-  Hash
+  Hash,
 } from '@phosphor-icons/react';
 import ImageModal from '../components/ImageModal';
 import GenerativeArt from '../components/GenerativeArt';
@@ -43,7 +43,9 @@ const LogDetailPage = () => {
         const logMetadata = categoryLogs.find((item) => item.slug === slugId);
 
         if (logMetadata) {
-          const logContentResponse = await fetch(`/logs/${category}/${slugId}.txt`);
+          const logContentResponse = await fetch(
+            `/logs/${category}/${slugId}.txt`,
+          );
           if (logContentResponse.ok) {
             const logBody = await logContentResponse.text();
             setLog({ attributes: logMetadata, body: logBody });
@@ -63,10 +65,12 @@ const LogDetailPage = () => {
     return (
       <div className="flex min-h-screen items-center justify-center bg-[#050505] text-white">
         <div className="flex flex-col items-center gap-4">
-           <div className="h-px w-24 bg-white/10 relative overflow-hidden">
-             <div className="absolute inset-0 bg-emerald-400 animate-progress origin-left"></div>
-           </div>
-           <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Accessing_Log</span>
+          <div className="h-px w-24 bg-white/10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-emerald-400 animate-progress origin-left"></div>
+          </div>
+          <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+            Accessing_Log
+          </span>
         </div>
       </div>
     );
@@ -100,7 +104,9 @@ const LogDetailPage = () => {
     return (
       <div className="flex flex-col gap-1 py-4 border-b border-white/5">
         <span className="flex items-center gap-2 text-[10px] font-mono text-gray-500 uppercase tracking-widest">
-          {Icon && <Icon size={12} weight="bold" className="text-emerald-500" />}
+          {Icon && (
+            <Icon size={12} weight="bold" className="text-emerald-500" />
+          )}
           {label}
         </span>
         <span className="text-sm text-gray-200">{value}</span>
@@ -113,8 +119,8 @@ const LogDetailPage = () => {
     return (
       <div className="flex flex-col gap-2 py-4 border-b border-white/5">
         <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest flex items-center gap-2">
-            <Star size={12} weight="bold" className="text-yellow-500" />
-            Rating
+          <Star size={12} weight="bold" className="text-yellow-500" />
+          Rating
         </span>
         <div className="flex gap-1">
           {[...Array(5)].map((_, i) => (
@@ -125,7 +131,9 @@ const LogDetailPage = () => {
               className={i < rating ? 'text-yellow-500' : 'text-white/10'}
             />
           ))}
-          <span className="ml-2 font-mono text-xs text-gray-400">({rating}/5)</span>
+          <span className="ml-2 font-mono text-xs text-gray-400">
+            ({rating}/5)
+          </span>
         </div>
       </div>
     );
@@ -142,7 +150,10 @@ const LogDetailPage = () => {
       {/* HERO SECTION */}
       <section className="relative h-[60vh] md:h-[70vh] flex flex-col justify-end overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
-          <GenerativeArt seed={attributes.title} className="w-full h-full opacity-60" />
+          <GenerativeArt
+            seed={attributes.title}
+            className="w-full h-full opacity-60"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent" />
           <div className="absolute inset-0 bg-noise opacity-[0.05] mix-blend-overlay" />
         </div>
@@ -152,26 +163,29 @@ const LogDetailPage = () => {
             to="/logs"
             className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeft weight="bold" className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft
+              weight="bold"
+              className="group-hover:-translate-x-1 transition-transform"
+            />
             <span>Archive</span>
           </Link>
 
           <div className="flex flex-wrap items-center gap-4 mb-8">
-             <span
-                className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest border rounded-full bg-opacity-20 backdrop-blur-md"
-                style={{
-                    color: accentColor,
-                    borderColor: `${accentColor}44`,
-                    backgroundColor: `${accentColor}10`
-                }}
-             >
-                {category}
-             </span>
-             {attributes.updated && (
-                <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-rose-400 border border-rose-400/20 rounded-full bg-rose-400/5">
-                   Updated
-                </span>
-             )}
+            <span
+              className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest border rounded-full bg-opacity-20 backdrop-blur-md"
+              style={{
+                color: accentColor,
+                borderColor: `${accentColor}44`,
+                backgroundColor: `${accentColor}10`,
+              }}
+            >
+              {category}
+            </span>
+            {attributes.updated && (
+              <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-rose-400 border border-rose-400/20 rounded-full bg-rose-400/5">
+                Updated
+              </span>
+            )}
           </div>
 
           <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter leading-none mb-8 max-w-4xl">
@@ -180,13 +194,13 @@ const LogDetailPage = () => {
 
           <div className="flex flex-wrap items-center gap-8 text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em]">
             <div className="flex items-center gap-2">
-               <CalendarBlank size={16} className="text-emerald-500" />
-               <span>Published: {attributes.date}</span>
+              <CalendarBlank size={16} className="text-emerald-500" />
+              <span>Published: {attributes.date}</span>
             </div>
             {attributes.slug && (
               <div className="flex items-center gap-2">
-                 <Hash size={16} className="text-emerald-500" />
-                 <span>ID: {attributes.slug}</span>
+                <Hash size={16} className="text-emerald-500" />
+                <span>ID: {attributes.slug}</span>
               </div>
             )}
           </div>
@@ -196,7 +210,6 @@ const LogDetailPage = () => {
       {/* CONTENT SECTION */}
       <div className="mx-auto max-w-7xl px-6 py-20 lg:py-32">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
-
           {/* Main Reading Column */}
           <main className="lg:col-span-8">
             <article
@@ -227,58 +240,86 @@ const LogDetailPage = () => {
 
             {/* Tags Section */}
             {attributes.tags && attributes.tags.length > 0 && (
-                <div className="mt-20 pt-12 border-t border-white/10">
-                    <div className="flex flex-wrap gap-2">
-                        {attributes.tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-gray-400 uppercase tracking-widest hover:text-white hover:border-white transition-colors cursor-default"
-                            >
-                                #{tag}
-                            </span>
-                        ))}
-                    </div>
+              <div className="mt-20 pt-12 border-t border-white/10">
+                <div className="flex flex-wrap gap-2">
+                  {attributes.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-gray-400 uppercase tracking-widest hover:text-white hover:border-white transition-colors cursor-default"
+                    >
+                      #{tag}
+                    </span>
+                  ))}
                 </div>
+              </div>
             )}
           </main>
 
           {/* Sidebar Metadata */}
           <aside className="lg:col-span-4">
-             <div className="sticky top-24 space-y-12">
-                <div className="border border-white/10 p-8 bg-white/[0.02] backdrop-blur-sm rounded-sm relative overflow-hidden group">
-                   {/* Background accent line */}
-                   <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+            <div className="sticky top-24 space-y-12">
+              <div className="border border-white/10 p-8 bg-white/[0.02] backdrop-blur-sm rounded-sm relative overflow-hidden group">
+                {/* Background accent line */}
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+                <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                  <Tag weight="fill" />
+                  Manifest Data
+                </h3>
+                <div className="flex flex-col">
+                  <MetadataRow
+                    label="Category"
+                    value={attributes.category}
+                    icon={Tag}
+                  />
+                  <MetadataRow
+                    label="Creator/Author"
+                    value={
+                      attributes.author ||
+                      attributes.director ||
+                      attributes.artist ||
+                      attributes.creator ||
+                      attributes.by
+                    }
+                    icon={User}
+                  />
+                  <MetadataRow
+                    label="Platform/Source"
+                    value={attributes.platform || attributes.source}
+                    icon={ArrowUpRight}
+                  />
+                  <MetadataRow
+                    label="Release Year"
+                    value={attributes.year}
+                    icon={Clock}
+                  />
+                  <MetadataRow
+                    label="Last Updated"
+                    value={attributes.updated}
+                    icon={CalendarBlank}
+                  />
+                  {renderStars(attributes.rating)}
+                </div>
+                {attributes.link && (
+                  <a
+                    href={attributes.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-8 flex items-center justify-start gap-3 group/link border border-emerald-500/20 hover:border-emerald-500 p-4 transition-all"
+                  >
+                    <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 group-hover/link:text-emerald-500 transition-colors">
+                      Access External Source
+                    </span>
+                    <ArrowUpRight
+                      className="text-emerald-400 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1"
+                      size={20}
+                    />
+                  </a>
+                )}{' '}
+              </div>
 
-                   <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
-                      <Tag weight="fill" />
-                      Manifest Data
-                   </h3>
-
-                   <div className="flex flex-col">
-                      <MetadataRow label="Category" value={attributes.category} icon={Tag} />
-                      <MetadataRow label="Creator/Author" value={attributes.author || attributes.director || attributes.artist || attributes.creator || attributes.by} icon={User} />
-                      <MetadataRow label="Platform/Source" value={attributes.platform || attributes.source} icon={ArrowUpRight} />
-                      <MetadataRow label="Release Year" value={attributes.year} icon={Clock} />
-                      <MetadataRow label="Last Updated" value={attributes.updated} icon={CalendarBlank} />
-                      {renderStars(attributes.rating)}
-                   </div>
-
-                                      {attributes.link && (
-                                          <a
-                                           href={attributes.link}
-                                           target="_blank"
-                                           rel="noopener noreferrer"
-                                           className="mt-8 flex items-center justify-start gap-3 group/link border border-emerald-500/20 hover:border-emerald-500 p-4 transition-all"
-                                          >
-                                             <span className="text-xs font-mono uppercase tracking-widest text-emerald-400 group-hover/link:text-emerald-500 transition-colors">Access External Source</span>
-                                             <ArrowUpRight className="text-emerald-400 transition-transform group-hover/link:translate-x-1 group-hover/link:-translate-y-1" size={20} />
-                                          </a>
-                                      )}                </div>
-
-                {/* Optional: Read More / Next Prev could go here */}
-             </div>
+              {/* Optional: Read More / Next Prev could go here */}
+            </div>
           </aside>
-
         </div>
       </div>
 

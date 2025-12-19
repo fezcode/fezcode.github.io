@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, PlanetIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { motion } from 'framer-motion';
+import { ArrowLeftIcon, PlanetIcon, RocketIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const orbitalPeriods = {
   Mercury: 0.2408467,
@@ -13,100 +13,153 @@ const orbitalPeriods = {
   Saturn: 29.447498,
   Uranus: 84.016846,
   Neptune: 164.79132,
-  Pluto: 248.0, // Dwarf planet, but let's include it
-  'Elf (LotR)': 100, // Fictional: assume elves live super long, so 1 "elf year" is 100 earth years? Or maybe they just age slower. Let's say 1 elf year = 144 earth years (some lore suggests this).
-  Dog: 1 / 7, // "Dog years" usually means 1 earth year = 7 dog years, so 1 dog year = 1/7 earth years.
+  Pluto: 248.0,
+  'LotR Elf': 100,
+  Canine: 1 / 7,
 };
 
 const GalacticAgePage = () => {
+  const appName = 'Galactic Age';
+
   useSeo({
-    title: 'Galactic Age Converter | Fezcodex',
-    description: 'Calculate your age on other planets in our solar system.',
+    title: `${appName} | Fezcodex`,
+    description:
+      'Protocol for orbital temporal mapping. Calculate your age relative to planetary cycles.',
     keywords: ['Fezcodex', 'galactic age', 'age converter', 'planets', 'space'],
-    ogTitle: 'Galactic Age Converter | Fezcodex',
-    ogDescription: 'Calculate your age on other planets in our solar system.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Galactic Age Converter | Fezcodex',
-    twitterDescription:
-      'Calculate your age on other planets in our solar system.',
-    twitterImage: '/images/ogtitle.png',
   });
 
   const [earthAge, setEarthAge] = useState('');
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Galactic Age Converter" slug="space" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1 text-center">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center justify-center gap-2">
-                <PlanetIcon size={32} /> Galactic Age Converter
-              </h1>
-              <hr className="border-gray-700 mb-6" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
 
-              <div className="mb-8 max-w-sm mx-auto">
-                <label className="block text-sm font-medium mb-2 opacity-80">
-                  Your Earth Age (Years)
-                </label>
-                <input
-                  type="number"
-                  value={earthAge}
-                  onChange={(e) => setEarthAge(e.target.value)}
-                  placeholder="e.g., 30"
-                  className="w-full bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-purple-500 transition-colors text-center text-2xl"
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Planetary temporal mapping. Calculate your biological age
+                relative to different orbital periods within the celestial
+                matrix.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Input Area */}
+          <div className="lg:col-span-12">
+            <div className="relative border border-white/10 bg-white/[0.02] p-12 md:p-24 rounded-sm overflow-hidden group flex flex-col items-center justify-center">
+              {/* Generative Background */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt
+                  seed={appName + earthAge}
+                  className="w-full h-full"
                 />
               </div>
 
-              {earthAge && (
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                  {Object.entries(orbitalPeriods).map(([planet, period]) => {
-                    const age = (parseFloat(earthAge) / period).toFixed(2);
-                    return (
-                      <div
-                        key={planet}
-                        className="bg-black/20 p-4 rounded border border-gray-700 hover:border-purple-500 transition-colors"
-                      >
-                        <div className="text-sm opacity-70 mb-1">{planet}</div>
-                        <div className="text-xl font-bold text-purple-300">
-                          {age}
-                        </div>
-                        <div className="text-xs opacity-50">years</div>
-                      </div>
-                    );
-                  })}
+              <div className="relative z-10 w-full max-w-xl text-center space-y-8">
+                <div className="space-y-4">
+                  <label className="font-mono text-[10px] text-emerald-500 font-bold uppercase tracking-[0.5em]">
+                    {'//'} EARTH_YEARS_BASELINE
+                  </label>
+                  <input
+                    type="number"
+                    value={earthAge}
+                    onChange={(e) => setEarthAge(e.target.value)}
+                    placeholder="Enter age..."
+                    className="w-full bg-black/40 border-b-8 border-white text-6xl md:text-9xl font-black text-white text-center focus:border-emerald-500 focus:outline-none transition-colors py-8 font-mono tracking-tighter"
+                  />
                 </div>
-              )}
+              </div>
+            </div>
+          </div>
+
+          {/* Results Grid */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+              {Object.entries(orbitalPeriods).map(([planet, period], index) => {
+                const age = earthAge
+                  ? (parseFloat(earthAge) / period).toFixed(2)
+                  : '0.00';
+                return (
+                  <motion.div
+                    key={planet}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.05 }}
+                    className="border border-white/10 bg-white/[0.02] p-8 rounded-sm group hover:border-emerald-500/30 transition-all"
+                  >
+                    <div className="flex justify-between items-start mb-6">
+                      <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                        {planet}
+                      </span>
+                      <span className="text-[10px] font-mono text-gray-700 uppercase">
+                        Orbit: {period.toFixed(2)}
+                      </span>
+                    </div>
+                    <div className="flex items-baseline gap-3">
+                      <span className="text-4xl md:text-5xl font-black text-white group-hover:text-emerald-500 transition-colors leading-none">
+                        {age}
+                      </span>
+                      <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+                        Cycles
+                      </span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Sidebar Metrics */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-10 flex items-center gap-2">
+                <PlanetIcon weight="fill" />
+                Orbital_Parameters
+              </h3>
+
+              <div className="space-y-6 text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                <p>
+                  Biological age is a relative metric defined by the frequency
+                  of planetary rotation around the primary stellar mass.
+                </p>
+                <div className="pt-6 border-t border-white/5 flex justify-between items-center">
+                  <span>Standard</span>
+                  <span className="text-white font-black">Earth_Year_365D</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-4">
+              <RocketIcon size={24} className="text-gray-700 shrink-0 mt-1" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Temporal mapping requires alignment with planetary orbital
+                velocities. All calculations are performed relative to the Earth
+                baseline sequence.
+              </p>
             </div>
           </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Orbital_Module_v0.6.1</span>
+          <span className="text-gray-800">TEMPORAL_STATUS // CALIBRATED</span>
+        </footer>
       </div>
     </div>
   );

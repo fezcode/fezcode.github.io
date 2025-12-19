@@ -27,7 +27,15 @@ const Layout = ({
   toggleBSOD,
 }) => {
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
-  const { isGarden, isAutumn, isRain, sidebarColor, sidebarMode, isSidebarOpen, toggleSidebar } = useVisualSettings();
+  const {
+    isGarden,
+    isAutumn,
+    isRain,
+    sidebarColor,
+    sidebarMode,
+    isSidebarOpen,
+    toggleSidebar,
+  } = useVisualSettings();
   const location = useLocation();
 
   if (location.pathname.startsWith('/stories')) {

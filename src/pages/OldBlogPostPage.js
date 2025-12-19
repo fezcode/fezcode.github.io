@@ -299,15 +299,11 @@ const OldBlogPostPage = () => {
         keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
         ogTitle={`${post.attributes.title} | Fezcodex`}
         ogDescription={post.body.substring(0, 150)}
-        ogImage={
-          post.attributes.image || '/images/ogtitle.png'
-        }
+        ogImage={post.attributes.image || '/images/ogtitle.png'}
         twitterCard="summary_large_image"
         twitterTitle={`${post.attributes.title} | Fezcodex`}
         twitterDescription={post.body.substring(0, 150)}
-        twitterImage={
-          post.attributes.image || '/images/ogtitle.png'
-        }
+        twitterImage={post.attributes.image || '/images/ogtitle.png'}
       />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -380,8 +376,8 @@ const OldBlogPostPage = () => {
                     className="group flex flex-col items-start max-w-[45%]"
                   >
                     <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
-                      <ArrowLeftIcon size={14} className="inline mr-1" /> Previous
-                      Transmission
+                      <ArrowLeftIcon size={14} className="inline mr-1" />{' '}
+                      Previous Transmission
                     </span>
                     <span className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
                       {prevPost.title}
@@ -400,7 +396,10 @@ const OldBlogPostPage = () => {
                   >
                     <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
                       Next Transmission{' '}
-                      <ArrowLeftIcon size={14} className="inline ml-1 rotate-180" />
+                      <ArrowLeftIcon
+                        size={14}
+                        className="inline ml-1 rotate-180"
+                      />
                     </span>
                     <span className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
                       {nextPost.title}

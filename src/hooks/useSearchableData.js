@@ -5,17 +5,20 @@ const useSearchableData = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const categories = useMemo(() => [
-    'Book',
-    'Movie',
-    'Game',
-    'Article',
-    'Music',
-    'Series',
-    'Food',
-    'Websites',
-    'Tools',
-  ], []);
+  const categories = useMemo(
+    () => [
+      'Book',
+      'Movie',
+      'Game',
+      'Article',
+      'Music',
+      'Series',
+      'Food',
+      'Websites',
+      'Tools',
+    ],
+    [],
+  );
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,27 +52,36 @@ const useSearchableData = () => {
         const parsedPimlProjects = piml.parse(pimlProjectsText);
 
         let projectListRaw = [];
-        if (parsedPimlProjects.projects && Array.isArray(parsedPimlProjects.projects)) {
+        if (
+          parsedPimlProjects.projects &&
+          Array.isArray(parsedPimlProjects.projects)
+        ) {
           projectListRaw = parsedPimlProjects.projects;
-        } else if (parsedPimlProjects.item && Array.isArray(parsedPimlProjects.item)) {
+        } else if (
+          parsedPimlProjects.item &&
+          Array.isArray(parsedPimlProjects.item)
+        ) {
           projectListRaw = parsedPimlProjects.item;
         } else if (Array.isArray(parsedPimlProjects)) {
           projectListRaw = parsedPimlProjects;
         } else if (typeof parsedPimlProjects === 'object') {
-          projectListRaw = Object.values(parsedPimlProjects).find(val => Array.isArray(val)) || [];
+          projectListRaw =
+            Object.values(parsedPimlProjects).find((val) =>
+              Array.isArray(val),
+            ) || [];
         }
 
         // Post-process project list to handle types and arrays (consistent with projectParser.js)
-        const projectsData = projectListRaw.map(project => ({
+        const projectsData = projectListRaw.map((project) => ({
           ...project,
           size: project.size ? parseInt(project.size, 10) : 1,
           pinned: String(project.pinned).toLowerCase() === 'true',
           isActive: String(project.isActive).toLowerCase() === 'true',
           technologies: project.technologies
-            ? (typeof project.technologies === 'string'
-                ? project.technologies.split(',').map(t => t.trim())
-                : project.technologies)
-            : []
+            ? typeof project.technologies === 'string'
+              ? project.technologies.split(',').map((t) => t.trim())
+              : project.technologies
+            : [],
         }));
 
         const appsData = await appsRes.json();
@@ -121,7 +133,8 @@ const useSearchableData = () => {
             path: '/projects',
           },
           { title: 'About Me', slug: '/about', type: 'page', path: '/about' },
-          { title: 'Logs', slug: '/logs', type: 'page', path: '/logs' },{
+          { title: 'Logs', slug: '/logs', type: 'page', path: '/logs' },
+          {
             title: 'Fezzilla Roadmap',
             slug: '/roadmap',
             type: 'page',
@@ -146,7 +159,8 @@ const useSearchableData = () => {
             path: '/stories',
           },
           { title: 'Apps', slug: '/apps', type: 'page', path: '/apps' },
-          { title: 'Random', slug: '/random', type: 'page', path: '/random' },        ];
+          { title: 'Random', slug: '/random', type: 'page', path: '/random' },
+        ];
 
         const customCommands = [
           {

@@ -42,10 +42,21 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isGarden, setIsGarden] = usePersistentState('is-garden', false);
   const [isAutumn, setIsAutumn] = usePersistentState('is-autumn', false);
   const [isRain, setIsRain] = usePersistentState('is-rain', false);
-  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','standard');
-  const [sidebarMode, setSidebarMode] = usePersistentState('sidebar-mode', 'brutalist');
-  const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(window.innerWidth > 768);
+  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState(
+    'blog-post-view-mode',
+    'standard',
+  );
+  const [sidebarMode, setSidebarMode] = usePersistentState(
+    'sidebar-mode',
+    'brutalist',
+  );
+  const [sidebarColor, setSidebarColor] = usePersistentState(
+    'sidebar-color',
+    'default',
+  );
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(
+    window.innerWidth > 768,
+  );
 
   useEffect(() => {
     const handleResize = () => {

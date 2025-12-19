@@ -75,7 +75,8 @@ export const getProjects = async () => {
     } else if (Array.isArray(parsedData)) {
       projectList = parsedData;
     } else if (typeof parsedData === 'object') {
-      projectList = Object.values(parsedData).find(val => Array.isArray(val)) || [];
+      projectList =
+        Object.values(parsedData).find((val) => Array.isArray(val)) || [];
     }
 
     const formattedProjects = projectList.map((project) => ({

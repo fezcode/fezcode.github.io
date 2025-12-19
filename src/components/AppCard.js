@@ -25,9 +25,9 @@ const AppCard = ({ app }) => {
 
           {/* Icon Overlay */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-             <div className="p-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-emerald-400 transform group-hover:scale-110 transition-transform duration-500">
-                {Icon && <Icon size={32} weight="duotone" />}
-             </div>
+            <div className="p-3 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-emerald-400 transform group-hover:scale-110 transition-transform duration-500">
+              {Icon && <Icon size={32} weight="duotone" />}
+            </div>
           </div>
 
           {/* Pinned Badge */}
@@ -49,10 +49,14 @@ const AppCard = ({ app }) => {
           </p>
 
           <div className="mt-auto pt-4 flex items-center justify-between border-t border-white/5">
-             <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">
-                Open App
-             </span>
-             <ArrowRight weight="bold" size={14} className="text-emerald-500 transform -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
+            <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">
+              Open App
+            </span>
+            <ArrowRight
+              weight="bold"
+              size={14}
+              className="text-emerald-500 transform -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
+            />
           </div>
         </div>
       </Link>

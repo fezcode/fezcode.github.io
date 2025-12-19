@@ -17,7 +17,7 @@ import MindMapConstellation from './about-views/MindMapConstellation';
 import ClassifiedDossier from './about-views/ClassifiedDossier';
 import Brutalist from './about-views/Brutalist';
 import { useAchievements } from '../context/AchievementContext';
-import useSeo from "../hooks/useSeo";
+import useSeo from '../hooks/useSeo';
 
 const ViewSwitcher = ({ currentView, setView }) => {
   const views = [
@@ -62,7 +62,14 @@ const AboutPage = () => {
   useSeo({
     title: 'Fezcodex | About',
     description: 'Learn more about the creator of Fezcodex.',
-    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'software engineer', 'about'],
+    keywords: [
+      'Fezcodex',
+      'blog',
+      'portfolio',
+      'developer',
+      'software engineer',
+      'about',
+    ],
   });
 
   useEffect(() => {
@@ -103,7 +110,10 @@ const AboutPage = () => {
           to="/"
           className={`group flex items-center gap-2 px-4 py-2 transition-all duration-300 ${getButtonStyle(view)}`}
         >
-          <ArrowLeft weight="bold" className="group-hover:-translate-x-1 transition-transform" />
+          <ArrowLeft
+            weight="bold"
+            className="group-hover:-translate-x-1 transition-transform"
+          />
           <span className="hidden sm:inline">Back to Reality</span>
         </Link>
       </motion.div>

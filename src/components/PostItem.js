@@ -42,7 +42,22 @@ const PostItem = ({
     <motion.div
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
-      onMouseEnter={() => onHover({ slug, title, date, updatedDate, category, series, seriesIndex, isSeries, description, tags, authors, image })}
+      onMouseEnter={() =>
+        onHover({
+          slug,
+          title,
+          date,
+          updatedDate,
+          category,
+          series,
+          seriesIndex,
+          isSeries,
+          description,
+          tags,
+          authors,
+          image,
+        })
+      }
       className="relative mr-4 md:mr-12"
     >
       <Link
@@ -92,9 +107,9 @@ const PostItem = ({
           <span
             className="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm transition-all duration-300"
             style={{
-                color: categoryColor,
-                borderColor: `${categoryColor}44`,
-                backgroundColor: isActive ? `${categoryColor}11` : 'transparent'
+              color: categoryColor,
+              borderColor: `${categoryColor}44`,
+              backgroundColor: isActive ? `${categoryColor}11` : 'transparent',
             }}
           >
             {category || 'Post'}
@@ -105,7 +120,9 @@ const PostItem = ({
               weight="bold"
               size={20}
               className={`transition-all duration-300 ${
-                  isActive ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0 text-gray-500'
+                isActive
+                  ? 'translate-x-0 opacity-100'
+                  : '-translate-x-4 opacity-0 text-gray-500'
               }`}
               style={{ color: isActive ? categoryColor : undefined }}
             />

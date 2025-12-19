@@ -1,51 +1,45 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, BugIcon, GavelIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeftIcon, BugIcon, ArrowsClockwiseIcon, TargetIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import '../../styles/WhackABugPage.css';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const HOLE_COUNT = 9;
 const GAME_DURATION = 30;
 
 const WhackABugPage = () => {
+  const appName = 'Debugger';
+
   useSeo({
-    title: 'Whack-a-Bug | Fezcodex',
-    description: 'Test your reflexes by fixing bugs as fast as you can!',
+    title: `${appName} | Fezcodex`,
+    description: 'Protocol for real-time bug remediation and latency testing.',
     keywords: ['Fezcodex', 'whack a bug', 'game', 'reflexes', 'fun'],
-    ogTitle: 'Whack-a-Bug | Fezcodex',
-    ogDescription: 'Test your reflexes by fixing bugs as fast as you can!',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Whack-a-Bug | Fezcodex',
-    twitterDescription: 'Test your reflexes by fixing bugs as fast as you can!',
-    twitterImage: '/images/ogtitle.png',
   });
 
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [activeHole, setActiveHole] = useState(null);
   const [gameActive, setGameActive] = useState(false);
-  const [lastHole, setLastHole] = useState(null);
+
   const timerRef = useRef(null);
   const bugTimerRef = useRef(null);
+  const lastHoleRef = useRef(null);
 
-  const random = useCallback((min, max) => Math.floor(Math.random() * (max - min) + min), []);
-  const randomHole = useCallback((previous) => {
-    const idx = Math.floor(Math.random() * HOLE_COUNT);
-    if (idx === previous) {
-      return (idx + 1) % HOLE_COUNT;
-    }
-    return idx;
+  const endGame = useCallback(() => {
+    setGameActive(false);
+    clearInterval(timerRef.current);
+    clearTimeout(bugTimerRef.current);
+    setActiveHole(null);
   }, []);
 
   const startGame = () => {
     setScore(0);
     setTimeLeft(GAME_DURATION);
     setGameActive(true);
-    setActiveHole(null);
-    setLastHole(null); // Start game timer
+    lastHoleRef.current = null;
+
+    if (timerRef.current) clearInterval(timerRef.current);
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -55,67 +49,43 @@ const WhackABugPage = () => {
         return prev - 1;
       });
     }, 1000);
-
-    // Start bug movement
-    moveBug();
   };
 
-  const endGame = () => {
-    setGameActive(false);
-    clearInterval(timerRef.current);
-    clearTimeout(bugTimerRef.current);
-    setActiveHole(null);
-  };
+  const spawnBug = useCallback(() => {
+    if (!gameActive) return;
 
-  const moveBug = useCallback(() => {
-    if (!gameActive && timeLeft === GAME_DURATION && score === 0) {
-      // Initial move called from startGame
-    } else if (!gameActive) {
-      return;
-    }
+    let nextHole;
+    do {
+      nextHole = Math.floor(Math.random() * HOLE_COUNT);
+    } while (nextHole === lastHoleRef.current);
 
-    const randomTime = random(500, 1000);
-    const holeIndex = randomHole(lastHole);
+    lastHoleRef.current = nextHole;
+    setActiveHole(nextHole);
 
-    setActiveHole(holeIndex);
-    setLastHole(holeIndex);
-
+    const time = Math.random() * (1000 - 600) + 600;
     bugTimerRef.current = setTimeout(() => {
-      if (gameActive) {
-        moveBug();
-      }
-    }, randomTime);
-  }, [gameActive, timeLeft, score, lastHole, random, randomHole]);
+      setActiveHole(null);
+      // Wait a bit before spawning next
+      setTimeout(spawnBug, Math.random() * 400 + 200);
+    }, time);
+  }, [gameActive]);
 
-  // Need a separate effect to keep the bug moving loop correctly responsive to gameActive state change if handled inside moveBug,
-  // but refs are better for intervals.
-  // Actually, simpler approach:
   useEffect(() => {
     if (gameActive) {
-      const jump = () => {
-        const time = random(600, 1000);
-        const idx = Math.floor(Math.random() * HOLE_COUNT);
-        let newHole = idx;
-        if (newHole === lastHole) {
-          newHole = (newHole + 1) % HOLE_COUNT;
-        }
-        setActiveHole(newHole);
-        setLastHole(newHole);
-        bugTimerRef.current = setTimeout(jump, time);
-      };
-      jump();
+      spawnBug();
     }
-    return () => clearTimeout(bugTimerRef.current);
-  }, [gameActive, lastHole, random]);
+    return () => {
+      clearTimeout(bugTimerRef.current);
+    };
+  }, [gameActive, spawnBug]);
 
   const handleWhack = (index) => {
-    if (!gameActive) return;
-    if (index === activeHole) {
-      setScore((prev) => prev + 1);
-      setActiveHole(null); // Hide immediately
-      // Optional: Trigger immediate move?
-      // For now let the timer handle it, or it might be too easy.
-    }
+    if (!gameActive || index !== activeHole) return;
+    setScore((prev) => prev + 1);
+    setActiveHole(null);
+    clearTimeout(bugTimerRef.current);
+    // Spawn next one faster if whacked
+    setTimeout(spawnBug, 100);
   };
 
   useEffect(() => {
@@ -125,107 +95,134 @@ const WhackABugPage = () => {
     };
   }, []);
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Whack-a-Bug" slug="wab" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center gap-2">
-                <GavelIcon size={32} /> Whack-a-Bug
-              </h1>
-              <hr className="border-gray-700 mb-4" />
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
-              <div className="flex justify-between items-center mb-8 text-xl font-bold">
-                <div>
-                  Score: <span className="text-green-400">{score}</span>
+        <header className="mb-24">
+          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
+            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                System remediation protocol. Identify and neutralize structural anomalies within the neural grid before system stability is compromised.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Dashboard */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2">
+                <TargetIcon weight="fill" />
+                Session_Stats
+              </h3>
+
+              <div className="space-y-8">
+                <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                  <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Bugs_Neutralized</span>
+                  <span className="text-4xl font-black text-emerald-500">{score}</span>
                 </div>
-                <div>
-                  Time:{' '}
-                  <span className={`${timeLeft <= 5 ? 'text-red-500' : ''}`}>
-                    {timeLeft}s
-                  </span>
+                <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                  <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Temporal_Remaining</span>
+                  <span className={`text-4xl font-black ${timeLeft <= 5 ? 'text-red-500 animate-pulse' : 'text-white'}`}>{timeLeft}s</span>
                 </div>
               </div>
 
-              {!gameActive && timeLeft === 0 ? (
-                <div className="text-center mb-8">
-                  <h2 className="text-3xl font-bold mb-2">Game Over!</h2>
-                  <p className="text-xl mb-4">Final Score: {score}</p>
-                  <button
-                    onClick={startGame}
-                    className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                    style={{
-                      borderColor: cardStyle.color,
-                      color: cardStyle.color,
-                    }}
-                  >
-                    Play Again
-                  </button>
+              {!gameActive ? (
+                <button
+                  onClick={startGame}
+                  className="w-full py-6 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-emerald-500 transition-all rounded-sm shadow-[0_0_30px_rgba(255,255,255,0.05)] flex items-center justify-center gap-3"
+                >
+                  <ArrowsClockwiseIcon weight="bold" size={20} />
+                  {timeLeft === 0 ? 'Restart Session' : 'Initialize Protocol'}
+                </button>
+              ) : (
+                <div className="py-6 border border-emerald-500/20 bg-emerald-500/5 rounded-sm flex items-center justify-center gap-3">
+                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-ping" />
+                  <span className="font-mono text-[10px] text-emerald-500 font-black uppercase tracking-widest">System_Remediation_Active</span>
                 </div>
-              ) : !gameActive ? (
-                <div className="text-center mb-8">
-                  <button
-                    onClick={startGame}
-                    className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                    style={{
-                      borderColor: cardStyle.color,
-                      color: cardStyle.color,
-                    }}
-                  >
-                    Start Game
-                  </button>
-                </div>
-              ) : null}
+              )}
+            </div>
 
-              <div className="whack-a-bug-grid">
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Operational speed is critical. Bugs mutate rapidly within the local environment. Failure to neutralize within the temporal window results in system-wide latency.
+              </p>
+            </div>
+          </div>
+
+          {/* Grid Area */}
+          <div className="lg:col-span-8">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden min-h-[600px] flex items-center justify-center">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt seed={appName + gameActive + timeLeft} className="w-full h-full" />
+              </div>
+
+              <div className="relative z-10 grid grid-cols-3 gap-4 md:gap-8 max-w-2xl w-full">
                 {Array.from({ length: HOLE_COUNT }).map((_, index) => (
                   <div
                     key={index}
-                    className="bug-hole flex items-center justify-center"
                     onClick={() => handleWhack(index)}
+                    className={`
+                      aspect-square border-4 transition-all duration-200 flex items-center justify-center relative overflow-hidden
+                      ${activeHole === index ? 'border-emerald-500 bg-emerald-500/10 cursor-pointer shadow-[inset_0_0_30px_rgba(16,185,129,0.1)]' : 'border-white/5 bg-black/20 cursor-default'}
+                    `}
                   >
-                    {activeHole === index && (
-                      <div className="bug text-red-400">
-                        <BugIcon size={48} weight="fill" />
-                      </div>
-                    )}
+                    <AnimatePresence>
+                      {activeHole === index && (
+                        <motion.div
+                          initial={{ y: 50, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: 50, opacity: 0 }}
+                          transition={{ type: "spring", damping: 12 }}
+                          className="text-red-500"
+                        >
+                          <BugIcon size={64} weight="fill" className="drop-shadow-[0_0_15px_rgba(239,68,68,0.5)]" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    {/* Grid Pattern Background for Holes */}
+                    <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle, white 1px, transparent 1px)', backgroundSize: '8px 8px' }} />
                   </div>
                 ))}
               </div>
 
-              <p className="text-center mt-8 text-sm opacity-70">
-                Click the bugs as they appear! Don't let them escape.
-              </p>
+              {!gameActive && timeLeft === 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="absolute inset-0 z-20 bg-black/80 backdrop-blur-sm flex flex-col items-center justify-center p-12 text-center"
+                >
+                  <div className="space-y-6">
+                    <span className="font-mono text-xs text-red-500 font-bold uppercase tracking-[0.5em]">{'//'} SESSION_TERMINATED</span>
+                    <h2 className="text-6xl md:text-8xl font-black text-white uppercase tracking-tighter">Overload</h2>
+                    <div className="p-8 border border-white/10 bg-white/5 inline-block rounded-sm">
+                      <p className="font-mono text-gray-500 uppercase tracking-widest text-xs mb-2">Final_Mitigation_Count</p>
+                      <p className="text-5xl font-black text-emerald-500">{score}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
             </div>
           </div>
+
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Mitigation_Module_v0.6.1</span>
+          <span className="text-gray-800">REMEDIATION_STATUS // {gameActive ? 'IN_PROGRESS' : 'STANDBY'}</span>
+        </footer>
       </div>
     </div>
   );

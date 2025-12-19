@@ -6,7 +6,8 @@ import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   ArrowLeft,
-  ArrowsOutSimple, ClipboardTextIcon,
+  ArrowsOutSimple,
+  ClipboardTextIcon,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import { useAchievements } from '../context/AchievementContext';
@@ -16,65 +17,65 @@ import ImageModal from '../components/ImageModal';
 import { useToast } from '../hooks/useToast';
 
 const terminalCodeTheme = {
-  "code[class*=\"language-\"]": {
-    "color": "#fb923c", /* New Vegas Orange */
-    "background": "none",
-    "fontFamily": "monospace",
-    "fontSize": "1em",
-    "textAlign": "left",
-    "whiteSpace": "pre",
-    "wordSpacing": "normal",
-    "wordBreak": "normal",
-    "wordWrap": "normal",
-    "lineHeight": "1.5",
-    "tabSize": "4",
-    "hyphens": "none"
+  'code[class*="language-"]': {
+    color: '#fb923c' /* New Vegas Orange */,
+    background: 'none',
+    fontFamily: 'monospace',
+    fontSize: '1em',
+    textAlign: 'left',
+    whiteSpace: 'pre',
+    wordSpacing: 'normal',
+    wordBreak: 'normal',
+    wordWrap: 'normal',
+    lineHeight: '1.5',
+    tabSize: '4',
+    hyphens: 'none',
   },
-  "pre[class*=\"language-\"]": {
-    "color": "#fb923c", /* New Vegas Orange */
-    "background": "#1a1a1a", /* Darker black */
-    "fontFamily": "monospace",
-    "fontSize": "1em",
-    "textAlign": "left",
-    "whiteSpace": "pre",
-    "wordSpacing": "normal",
-    "wordBreak": "normal",
-    "wordWrap": "normal",
-    "lineHeight": "1.5",
-    "tabSize": "4",
-    "hyphens": "none",
-    "padding": "1em",
-    "margin": ".5em 0",
-    "overflow": "auto",
-    "border": "1px solid #fb923c",
-    "boxShadow": "0 0 5px rgba(251, 146, 60, 0.5)" /* Orange glow */
+  'pre[class*="language-"]': {
+    color: '#fb923c' /* New Vegas Orange */,
+    background: '#1a1a1a' /* Darker black */,
+    fontFamily: 'monospace',
+    fontSize: '1em',
+    textAlign: 'left',
+    whiteSpace: 'pre',
+    wordSpacing: 'normal',
+    wordBreak: 'normal',
+    wordWrap: 'normal',
+    lineHeight: '1.5',
+    tabSize: '4',
+    hyphens: 'none',
+    padding: '1em',
+    margin: '.5em 0',
+    overflow: 'auto',
+    border: '1px solid #fb923c',
+    boxShadow: '0 0 5px rgba(251, 146, 60, 0.5)' /* Orange glow */,
   },
-  "comment": { "color": "#888" },
-  "punctuation": { "color": "#fb923c" },
-  "property": { "color": "#fb923c" },
-  "tag": { "color": "#fb923c" },
-  "boolean": { "color": "#fb923c" },
-  "number": { "color": "#fb923c" },
-  "constant": { "color": "#fb923c" },
-  "symbol": { "color": "#fb923c" },
-  "selector": { "color": "#fb923c" },
-  "attr-name": { "color": "#fb923c" },
-  "string": { "color": "#fcd34d" }, /* Lighter orange for strings */
-  "char": { "color": "#fcd34d" },
-  "builtin": { "color": "#fb923c" },
-  "inserted": { "color": "#fb923c", "background": "#333" },
-  "deleted": { "color": "#fb923c", "background": "#333" },
-  "operator": { "color": "#fb923c" },
-  "entity": { "color": "#fb923c", "cursor": "help" },
-  "url": { "color": "#fb923c" },
-  "keyword": { "color": "#fb923c" },
-  "function": { "color": "#fb923c" },
-  "class-name": { "color": "#fb923c" },
-  "regex": { "color": "#fb923c" },
-  "important": { "color": "#fb923c" },
-  "variable": { "color": "#fb923c" },
-  "bold": { "fontWeight": "bold" },
-  "italic": { "fontStyle": "italic" }
+  comment: { color: '#888' },
+  punctuation: { color: '#fb923c' },
+  property: { color: '#fb923c' },
+  tag: { color: '#fb923c' },
+  boolean: { color: '#fb923c' },
+  number: { color: '#fb923c' },
+  constant: { color: '#fb923c' },
+  symbol: { color: '#fb923c' },
+  selector: { color: '#fb923c' },
+  'attr-name': { color: '#fb923c' },
+  string: { color: '#fcd34d' } /* Lighter orange for strings */,
+  char: { color: '#fcd34d' },
+  builtin: { color: '#fb923c' },
+  inserted: { color: '#fb923c', background: '#333' },
+  deleted: { color: '#fb923c', background: '#333' },
+  operator: { color: '#fb923c' },
+  entity: { color: '#fb923c', cursor: 'help' },
+  url: { color: '#fb923c' },
+  keyword: { color: '#fb923c' },
+  function: { color: '#fb923c' },
+  'class-name': { color: '#fb923c' },
+  regex: { color: '#fb923c' },
+  important: { color: '#fb923c' },
+  variable: { color: '#fb923c' },
+  bold: { fontWeight: 'bold' },
+  italic: { fontStyle: 'italic' },
 };
 
 const TerminalBlogPostPage = () => {
@@ -111,7 +112,8 @@ const TerminalBlogPostPage = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (contentRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+        const { scrollTop, scrollHeight, clientHeight } =
+          document.documentElement;
         const totalHeight = scrollHeight - clientHeight;
         const currentProgress = (scrollTop / totalHeight) * 100;
         setReadingProgress(currentProgress);
@@ -207,8 +209,20 @@ const TerminalBlogPostPage = () => {
     const handleCopy = () => {
       const textToCopy = String(children);
       navigator.clipboard.writeText(textToCopy).then(
-        () => addToast({ title: 'COPIED', message: 'Code block copied!', duration: 3000, type: 'info' }),
-        () => addToast({ title: 'ERROR', message: 'Failed to copy!', duration: 3000, type: 'error' })
+        () =>
+          addToast({
+            title: 'COPIED',
+            message: 'Code block copied!',
+            duration: 3000,
+            type: 'info',
+          }),
+        () =>
+          addToast({
+            title: 'ERROR',
+            message: 'Failed to copy!',
+            duration: 3000,
+            type: 'error',
+          }),
       );
     };
 
@@ -217,7 +231,9 @@ const TerminalBlogPostPage = () => {
         <div className="relative group my-6 border border-orange-500 shadow-orange-glow">
           <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
             <button
-              onClick={() => openModal(String(children).replace(/\n$/, ''), match[1])}
+              onClick={() =>
+                openModal(String(children).replace(/\n$/, ''), match[1])
+              }
               className="text-orange-300 bg-gray-900/90 border border-orange-700/50 p-1.5 rounded-sm hover:bg-orange-700 hover:text-gray-900 transition-colors shadow-lg backdrop-blur-sm"
               title="Expand Code"
             >
@@ -247,7 +263,7 @@ const TerminalBlogPostPage = () => {
             }}
             {...props}
             codeTagProps={{
-              style: { fontFamily: "monospace" },
+              style: { fontFamily: 'monospace' },
             }}
           >
             {String(children).replace(/\n$/, '')}
@@ -333,27 +349,28 @@ const TerminalBlogPostPage = () => {
         keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
         ogTitle={`${post.attributes.title.toUpperCase()} | TERMINAL LOG`}
         ogDescription={post.body.substring(0, 150)}
-        ogImage={
-          post.attributes.image || '/images/ogtitle.png'
-        }
+        ogImage={post.attributes.image || '/images/ogtitle.png'}
         twitterCard="summary_large_image"
         twitterTitle={`${post.attributes.title.toUpperCase()} | TERMINAL LOG`}
         twitterDescription={post.body.substring(0, 150)}
-        twitterImage={
-          post.attributes.image || '/images/ogtitle.png'
-        }
+        twitterImage={post.attributes.image || '/images/ogtitle.png'}
       />
 
       {/* Optional Scanline Effect Overlay */}
-      <div className="fixed inset-0 pointer-events-none z-50 opacity-20" style={{
-        background: 'repeating-linear-gradient(0deg, #000, #000 1px, #0f0f0f 1px, #0f0f0f 2px)'
-      }}></div>
+      <div
+        className="fixed inset-0 pointer-events-none z-50 opacity-20"
+        style={{
+          background:
+            'repeating-linear-gradient(0deg, #000, #000 1px, #0f0f0f 1px, #0f0f0f 2px)',
+        }}
+      ></div>
       <div className="mx-auto max-w-4xl px-4 py-12 relative z-10">
         <Link
           to={backLink}
           className="group flex items-center gap-2 text-orange-400 hover:text-orange-200 mb-8 text-sm uppercase transition-colors"
         >
-          <ArrowLeft size={16} /> <span className="underline">{backLinkText}</span>
+          <ArrowLeft size={16} />{' '}
+          <span className="underline">{backLinkText}</span>
         </Link>
 
         <h1 className="text-3xl font-bold mb-6 text-orange-300">
@@ -364,7 +381,8 @@ const TerminalBlogPostPage = () => {
         </p>
         {post.attributes.updated && (
           <p className="text-sm text-orange-400 mb-4">
-            {'//'} LAST UPDATE: {new Date(post.attributes.updated).toLocaleDateString()}
+            {'//'} LAST UPDATE:{' '}
+            {new Date(post.attributes.updated).toLocaleDateString()}
           </p>
         )}
         <hr className="border-orange-500/50 mb-8" />
@@ -387,14 +405,17 @@ const TerminalBlogPostPage = () => {
             rehypePlugins={[rehypeRaw]}
             components={{
               a: (props) => {
-                const isVocab = props.href && (props.href.startsWith('/vocab/') || props.href.includes('/#/vocab/'));
+                const isVocab =
+                  props.href &&
+                  (props.href.startsWith('/vocab/') ||
+                    props.href.includes('/#/vocab/'));
                 return (
                   <MarkdownLink
                     {...props}
                     className={
                       isVocab
-                        ? "text-orange-300 hover:text-orange-100 transition-colors cursor-help underline"
-                        : "text-orange-400 hover:text-orange-200 transition-colors underline"
+                        ? 'text-orange-300 hover:text-orange-100 transition-colors cursor-help underline'
+                        : 'text-orange-400 hover:text-orange-200 transition-colors underline'
                     }
                   />
                 );

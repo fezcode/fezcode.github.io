@@ -1,26 +1,18 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, X, Circle } from '@phosphor-icons/react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeftIcon, XIcon, CircleIcon, ArrowsClockwiseIcon, CpuIcon, UserIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
-import colors from '../../config/colors';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const TicTacToePage = () => {
+  const appName = 'Tic Tac Toe';
+
   useSeo({
-    title: 'Tic Tac Toe | Fezcodex',
-    description:
-      'Play the classic game of Tic Tac Toe against another player or AI.',
-    keywords: ['Fezcodex', 'tic tac toe', 'game', 'fun app'],
-    ogTitle: 'Tic Tac Toe | Fezcodex',
-    ogDescription:
-      'Play the classic game of Tic Tac Toe against another player or AI.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Tic Tac Toe | Fezcodex',
-    twitterDescription:
-      'Play the classic game of Tic Tac Toe against another player or AI.',
-    twitterImage: '/images/ogtitle.png',
+    title: `${appName} | Fezcodex`,
+    description: 'Protocol for strategic grid alignment. Challenge the neural AI in a classic logical confrontation.',
+    keywords: ['Fezcodex', 'tic tac toe', 'game', 'ai game', 'strategy'],
   });
 
   const [board, setBoard] = useState(Array(9).fill(null));
@@ -29,22 +21,18 @@ const TicTacToePage = () => {
   const { addToast } = useToast();
 
   const handleClick = useCallback((i) => {
-    if (winner || board[i]) {
-      return;
-    }
+    if (winner || board[i]) return;
     const newBoard = board.slice();
     newBoard[i] = xIsNext ? 'X' : 'O';
     setBoard(newBoard);
     setXIsNext(!xIsNext);
   }, [board, winner, xIsNext]);
 
-  // Minimax algorithm functions
   const minimax = useCallback((currentBoard, depth, isMaximizingPlayer) => {
     const result = calculateWinner(currentBoard);
-
-    if (result === 'X') return -10 + depth; // Player X (human) wins
-    if (result === 'O') return 10 - depth; // Player O (AI) wins
-    if (currentBoard.every(Boolean)) return 0; // It's a draw
+    if (result === 'X') return -10 + depth;
+    if (result === 'O') return 10 - depth;
+    if (currentBoard.every(Boolean)) return 0;
 
     if (isMaximizingPlayer) {
       let bestScore = -Infinity;
@@ -90,17 +78,12 @@ const TicTacToePage = () => {
 
   const makeAiMove = useCallback(() => {
     const bestMove = findBestMove(board);
-    if (bestMove !== null) {
-      handleClick(bestMove);
-    }
+    if (bestMove !== null) handleClick(bestMove);
   }, [board, handleClick, findBestMove]);
 
   useEffect(() => {
     if (!xIsNext && !winner) {
-      // AI's turn (simple AI for now)
-      const timer = setTimeout(() => {
-        makeAiMove();
-      }, 500);
+      const timer = setTimeout(() => makeAiMove(), 600);
       return () => clearTimeout(timer);
     }
   }, [xIsNext, winner, makeAiMove]);
@@ -109,29 +92,12 @@ const TicTacToePage = () => {
     const calculatedWinner = calculateWinner(board);
     if (calculatedWinner) {
       setWinner(calculatedWinner);
-      addToast({
-        title: 'Game Over',
-        message: `${calculatedWinner} wins!`,
-        duration: 3000,
-      });
+      addToast({ title: 'Game Over', message: `${calculatedWinner} has secured the grid.` });
     } else if (board.every(Boolean)) {
       setWinner('Draw');
-      addToast({ title: 'Game Over', message: "It's a draw!", duration: 3000 });
+      addToast({ title: 'Grid Lock', message: "No dominant sequence identified." });
     }
   }, [board, addToast]);
-
-  const renderSquare = (i) => (
-    <button
-      className="w-24 h-24 bg-gray-800 border border-gray-600 text-5xl flex items-center justify-center"
-      onClick={() => handleClick(i)}
-      disabled={winner || board[i]}
-    >
-      {board[i] === 'X' && <X size={48} color={colors.red} />}
-      {board[i] === 'O' && (
-        <Circle size={40} color={colors.blue} weight="thin" />
-      )}
-    </button>
-  );
 
   const resetGame = () => {
     setBoard(Array(9).fill(null));
@@ -139,88 +105,131 @@ const TicTacToePage = () => {
     setWinner(null);
   };
 
-  const status = winner
-    ? winner === 'Draw'
-      ? 'Draw!'
-      : `Winner: ${winner}`
-    : `Next player: ${xIsNext ? 'X' : 'O'}`;
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Tic Tac Toe" slug="ttt" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Tic Tac Toe{' '}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+
+        <header className="mb-24">
+          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
+            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
               </h1>
-              <hr className="border-gray-700 mb-4" />
-              <div className="flex flex-col items-center gap-8">
-                <div className="text-2xl font-medium mb-4">{status}</div>
-                <div className="grid grid-cols-3 gap-1">
-                  {Array(9)
-                    .fill(null)
-                    .map((_, i) => renderSquare(i))}
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Neural grid protocol. Engage in archetypal pattern matching against the system's recursive decision matrix.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Main Game Area */}
+          <div className="lg:col-span-8 flex justify-center">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-16 rounded-sm overflow-hidden group flex flex-col items-center justify-center w-full max-w-2xl">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt seed={appName + winner + board.join('')} className="w-full h-full" />
+              </div>
+
+              <div className="relative z-10 w-full flex flex-col items-center gap-12">
+                {/* Board */}
+                <div className="grid grid-cols-3 gap-4 md:gap-8 p-4 bg-black/40 border border-white/5 rounded-sm shadow-inner">
+                  {board.map((square, i) => (
+                    <button
+                      key={i}
+                      onClick={() => handleClick(i)}
+                      disabled={winner || square || (!xIsNext && !winner)}
+                      className={`
+                        w-20 h-20 md:w-32 md:h-32 flex items-center justify-center border-4 transition-all duration-300
+                        ${square === 'X' ? 'border-emerald-500 bg-emerald-500/10 text-emerald-500' :
+                          square === 'O' ? 'border-white bg-white/5 text-white' :
+                          'border-white/5 hover:border-emerald-500/30 bg-black/20'}
+                        ${(winner || square) ? 'cursor-default' : 'cursor-pointer'}
+                      `}
+                    >
+                      <AnimatePresence mode="wait">
+                        {square === 'X' && (
+                          <motion.div initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} exit={{ scale: 0 }}>
+                            <XIcon size={48} weight="black" />
+                          </motion.div>
+                        )}
+                        {square === 'O' && (
+                          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                            <CircleIcon size={48} weight="bold" />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </button>
+                  ))}
                 </div>
-                <button
-                  onClick={resetGame}
-                  className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
-                  style={{ borderColor: colors['app-alpha-50'] }}
-                >
-                  Reset Game
-                </button>
+
+                <div className="flex flex-wrap justify-center gap-6">
+                  <button
+                    onClick={resetGame}
+                    className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                  >
+                    <ArrowsClockwiseIcon weight="bold" size={24} className="group-hover:rotate-180 transition-transform duration-500" />
+                    <span>Clear Grid</span>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+
+          {/* Status Column */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-10 flex items-center gap-2">
+                <CpuIcon weight="fill" />
+                Protocol_Status
+              </h3>
+
+              <div className="space-y-8">
+                <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex flex-col gap-2">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">Current_Control</span>
+                  <div className="flex items-center gap-3">
+                    {xIsNext ? <UserIcon size={20} className="text-emerald-500" /> : <CpuIcon size={20} className="text-white" />}
+                    <span className="text-xl font-black uppercase">{xIsNext ? 'User_Alpha' : 'System_AI'}</span>
+                  </div>
+                </div>
+
+                <div className={`p-6 border rounded-sm flex flex-col gap-2 transition-all duration-500 ${winner ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/5 border-white/10'}`}>
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">Outcome_Registry</span>
+                  <span className={`text-xl font-black uppercase ${winner === 'X' ? 'text-emerald-500' : 'text-white'}`}>
+                    {winner ? (winner === 'Draw' ? 'Lockdown' : `${winner === 'X' ? 'User' : 'AI'}_Wins`) : 'Pending...'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                The minimax algorithm ensures the system AI maintains an optimal strategic posture. Achieving victory requires identifying subtle structural vulnerabilities in the recursive logic.
+              </p>
+            </div>
+          </div>
+
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Strategy_Loom_v0.6.1</span>
+          <span className="text-gray-800">MATRIX_STATUS // {winner ? 'TERMINATED' : 'ACTIVE'}</span>
+        </footer>
       </div>
     </div>
   );
 };
 
 function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
+  const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
-    }
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) return squares[a];
   }
   return null;
 }

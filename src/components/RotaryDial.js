@@ -14,10 +14,13 @@ const RotaryDial = ({ onDial }) => {
   // Numbers 1-9, 0. '1' is closest to stop.
   const DIGITS = React.useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], []);
 
-  const getDigitAngle = React.useCallback((digit) => {
-    const index = DIGITS.indexOf(digit);
-    return STOP_ANGLE - (index + 1) * GAP;
-  }, [DIGITS]);
+  const getDigitAngle = React.useCallback(
+    (digit) => {
+      const index = DIGITS.indexOf(digit);
+      return STOP_ANGLE - (index + 1) * GAP;
+    },
+    [DIGITS],
+  );
 
   const getAngle = (event, center) => {
     const clientX = event.touches ? event.touches[0].clientX : event.clientX;
@@ -42,42 +45,45 @@ const RotaryDial = ({ onDial }) => {
     setActiveDigit(digit);
   };
 
-  const handleMove = React.useCallback((event) => {
-    if (!isDragging || activeDigit === null || !containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const center = {
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-    };
+  const handleMove = React.useCallback(
+    (event) => {
+      if (!isDragging || activeDigit === null || !containerRef.current) return;
+      const rect = containerRef.current.getBoundingClientRect();
+      const center = {
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      };
 
-    const currentMouseAngle = getAngle(event, center);
-    const startAngle = getDigitAngle(activeDigit);
-    let newRotation = currentMouseAngle - startAngle;
+      const currentMouseAngle = getAngle(event, center);
+      const startAngle = getDigitAngle(activeDigit);
+      let newRotation = currentMouseAngle - startAngle;
 
-    const normalizeDiff = (diff) => {
-      while (diff <= -180) diff += 360;
-      while (diff > 180) diff -= 360;
-      return diff;
-    };
+      const normalizeDiff = (diff) => {
+        while (diff <= -180) diff += 360;
+        while (diff > 180) diff -= 360;
+        return diff;
+      };
 
-    newRotation = normalizeDiff(newRotation);
+      newRotation = normalizeDiff(newRotation);
 
-    const maxRot = STOP_ANGLE - startAngle;
+      const maxRot = STOP_ANGLE - startAngle;
 
-    // If rotation is negative, it might be because we've crossed the 180 boundary
-    // for a high number digit (like 9 or 0).
-    // Check if adding 360 brings us into a valid positive range close to maxRot.
-    // We allow a small buffer over maxRot for elasticity.
-    if (newRotation < 0 && newRotation + 360 <= maxRot + 30) {
-      newRotation += 360;
-    }
+      // If rotation is negative, it might be because we've crossed the 180 boundary
+      // for a high number digit (like 9 or 0).
+      // Check if adding 360 brings us into a valid positive range close to maxRot.
+      // We allow a small buffer over maxRot for elasticity.
+      if (newRotation < 0 && newRotation + 360 <= maxRot + 30) {
+        newRotation += 360;
+      }
 
-    // Clamp
-    if (newRotation < -10) newRotation = -10;
-    if (newRotation > maxRot) newRotation = maxRot;
+      // Clamp
+      if (newRotation < -10) newRotation = -10;
+      if (newRotation > maxRot) newRotation = maxRot;
 
-    rotation.set(newRotation);
-  }, [activeDigit, isDragging, rotation, getDigitAngle]);
+      rotation.set(newRotation);
+    },
+    [activeDigit, isDragging, rotation, getDigitAngle],
+  );
 
   const handleEnd = React.useCallback(() => {
     if (!isDragging) return;

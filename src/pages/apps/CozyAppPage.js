@@ -35,7 +35,8 @@ const CozyAppPage = () => {
   const isMouseDownRef = useRef(false); // Ref to hold the current state of isMouseDown
   const particlesRef = useRef([]); // New: persistent storage for particles
 
-  class Particle { // Move Particle class definition here
+  class Particle {
+    // Move Particle class definition here
     constructor(mode, canvas) {
       this.mode = mode;
       this.canvas = canvas;
@@ -201,7 +202,7 @@ const CozyAppPage = () => {
     if (mode === 'rain') baseParticleCount = 500;
 
     // When mode changes, reset existing particles to adapt to the new mode
-    particlesRef.current.forEach(p => {
+    particlesRef.current.forEach((p) => {
       p.mode = mode; // Update mode reference
       p.canvas = canvas; // Update canvas reference
       p.ctx = ctx; // Update ctx reference
@@ -210,17 +211,27 @@ const CozyAppPage = () => {
 
     const animate = () => {
       // Calculate targetParticleCount inside animate, to react to isMouseDown changes
-      const targetParticleCount = isMouseDownRef.current ? baseParticleCount * 5 : baseParticleCount;
+      const targetParticleCount = isMouseDownRef.current
+        ? baseParticleCount * 5
+        : baseParticleCount;
 
       // Add or remove particles dynamically per frame
       if (particlesRef.current.length < targetParticleCount) {
         // Add a few particles per frame to smoothly increase
-        for (let i = 0; i < Math.min(15, targetParticleCount - particlesRef.current.length); i++) {
+        for (
+          let i = 0;
+          i < Math.min(15, targetParticleCount - particlesRef.current.length);
+          i++
+        ) {
           particlesRef.current.push(new Particle(mode, canvas));
         }
       } else if (particlesRef.current.length > targetParticleCount) {
         // Remove a few particles per frame to smoothly decrease
-        for (let i = 0; i < Math.min(15, particlesRef.current.length - targetParticleCount); i++) {
+        for (
+          let i = 0;
+          i < Math.min(15, particlesRef.current.length - targetParticleCount);
+          i++
+        ) {
           particlesRef.current.pop();
         }
       }
@@ -254,9 +265,9 @@ const CozyAppPage = () => {
 
     // Initial fill if particlesRef.current is empty when mode starts
     if (particlesRef.current.length === 0) {
-        for (let i = 0; i < baseParticleCount; i++) {
-            particlesRef.current.push(new Particle(mode, canvas));
-        }
+      for (let i = 0; i < baseParticleCount; i++) {
+        particlesRef.current.push(new Particle(mode, canvas));
+      }
     }
 
     animate();
@@ -353,8 +364,8 @@ const CozyAppPage = () => {
         <div
           className="flex-grow h-[80vh] relative bg-gray-800 rounded-2xl overflow-hidden shadow-2xl border border-gray-700"
           onMouseDown={handleMouseDownIntensify} // Use onMouseDown
-          onMouseUp={handleMouseUpIntensify}     // Use onMouseUp
-          onMouseLeave={handleMouseUpIntensify}   // Reset if mouse leaves while down
+          onMouseUp={handleMouseUpIntensify} // Use onMouseUp
+          onMouseLeave={handleMouseUpIntensify} // Reset if mouse leaves while down
         >
           {mode !== 'breathe' && (
             <div className="absolute inset-0 flex flex-col items-center justify-end pb-10">

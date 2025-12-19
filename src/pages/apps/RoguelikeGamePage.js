@@ -86,14 +86,23 @@ function RoguelikeGamePage() {
     const newEnemyPositions = [];
     for (let i = 0; i < numEnemies; i++) {
       let enemyPos;
+      let isOccupied;
       do {
         enemyPos = getRandomEmptyPosition(newMap);
+        isOccupied = false;
+        for (let j = 0; j < newEnemyPositions.length; j++) {
+          if (
+            newEnemyPositions[j].x === enemyPos.x &&
+            newEnemyPositions[j].y === enemyPos.y
+          ) {
+            isOccupied = true;
+            break;
+          }
+        }
       } while (
         (enemyPos.x === playerPos.x && enemyPos.y === playerPos.y) ||
         (enemyPos.x === exitPos.x && enemyPos.y === exitPos.y) ||
-        newEnemyPositions.some(
-          (ep) => ep.x === enemyPos.x && ep.y === enemyPos.y,
-        )
+        isOccupied
       );
       newEnemyPositions.push(enemyPos);
     }

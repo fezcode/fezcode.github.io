@@ -3,9 +3,12 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import useSeo from '../hooks/useSeo';
 import { useCommandPalette } from '../context/CommandPaletteContext';
-import { ArrowLeftIcon, TerminalWindowIcon, CommandIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  TerminalWindowIcon,
+  CommandIcon,
+} from '@phosphor-icons/react';
 import GenerativeArt from '../components/GenerativeArt';
-import { useVisualSettings } from '../context/VisualSettingsContext';
 
 const commandsData = [
   {
@@ -35,7 +38,12 @@ const commandsData = [
         color: 'yellow',
         commandId: 'openLinkedIn',
       },
-      { title: 'Send Email', description: 'Send me email.', color: 'lime', commandId: 'sendEmailFezcode' },
+      {
+        title: 'Send Email',
+        description: 'Send me email.',
+        color: 'lime',
+        commandId: 'sendEmailFezcode',
+      },
     ],
   },
   {
@@ -162,7 +170,12 @@ const commandsData = [
         color: 'neutral',
         commandId: 'leetTransformer',
       },
-      { title: 'Her Daim', description: 'Her Daim...', color: 'stone', commandId: 'herDaim' },
+      {
+        title: 'Her Daim',
+        description: 'Her Daim...',
+        color: 'stone',
+        commandId: 'herDaim',
+      },
       {
         title: 'Do a Barrel Roll',
         description: 'Spins the page 360 degrees.',
@@ -404,14 +417,18 @@ const CommandListItem = ({ cmd, isActive, onHover, onClick }) => {
       {/* Active Indicator */}
       <div
         className={`absolute left-0 top-0 bottom-0 w-0.5 transition-all duration-300 ${
-          isActive ? 'bg-emerald-400 h-full' : 'bg-transparent h-0 group-hover:h-full group-hover:bg-white/20'
+          isActive
+            ? 'bg-emerald-400 h-full'
+            : 'bg-transparent h-0 group-hover:h-full group-hover:bg-white/20'
         }`}
       />
 
       <div className="flex items-baseline justify-between pr-4">
         <h3
           className={`text-lg font-playfairDisplay transition-all duration-300 ${
-            isActive ? 'text-white translate-x-2' : 'text-gray-500 group-hover:text-gray-300'
+            isActive
+              ? 'text-white translate-x-2'
+              : 'text-gray-500 group-hover:text-gray-300'
           }`}
         >
           {cmd.title}
@@ -421,9 +438,9 @@ const CommandListItem = ({ cmd, isActive, onHover, onClick }) => {
           <motion.div
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
-             className="hidden md:block text-emerald-400"
+            className="hidden md:block text-emerald-400"
           >
-             <ArrowLeftIcon className="rotate-180"/>
+            <ArrowLeftIcon className="rotate-180" />
           </motion.div>
         )}
       </div>
@@ -441,7 +458,8 @@ function CommandsPage() {
     ogImage: '/images/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'All Commands | Fezcodex',
-    twitterDescription: 'All the available commands that can be used in Fezcodex.',
+    twitterDescription:
+      'All the available commands that can be used in Fezcodex.',
     twitterImage: '/images/ogtitle.png',
   });
 
@@ -453,16 +471,16 @@ function CommandsPage() {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
-
       {/* Mobile Background */}
       <div className="absolute inset-0 xl:hidden opacity-20 pointer-events-none z-0">
-         <GenerativeArt seed="Commands" className="w-full h-full filter blur-3xl" />
+        <GenerativeArt
+          seed="Commands"
+          className="w-full h-full filter blur-3xl"
+        />
       </div>
 
       {/* LEFT PANEL: The Index */}
-      <div
-        className="w-full xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300"
-      >
+      <div className="w-full xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300">
         <header className="mb-20 text-center md:text-left">
           <Link
             to="/"
@@ -509,92 +527,105 @@ function CommandsPage() {
         </div>
       </div>
 
-              {/* RIGHT PANEL: The Stage (Desktop Only) */}
-              <div className="hidden xl:flex fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20 flex-col">              {/* Main Content Area (Grows) */}
-              <div className="flex-1 relative overflow-hidden">
-                <AnimatePresence mode="wait">
-                  {activeCommand ? (
-                    <motion.div
-                      key={activeCommand.title}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="absolute inset-0 flex flex-col justify-end p-20 pb-8"
+      {/* RIGHT PANEL: The Stage (Desktop Only) */}
+      <div className="hidden xl:flex fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20 flex-col">
+        {' '}
+        {/* Main Content Area (Grows) */}
+        <div className="flex-1 relative overflow-hidden">
+          <AnimatePresence mode="wait">
+            {activeCommand ? (
+              <motion.div
+                key={activeCommand.title}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
+                className="absolute inset-0 flex flex-col justify-end p-20 pb-8"
+              >
+                {/* Background */}
+                <div className="absolute inset-0 z-0">
+                  <GenerativeArt
+                    seed={activeCommand.title}
+                    className="w-full h-full opacity-60"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+                  <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay" />
+                </div>
+
+                <div className="relative z-10">
+                  <div className="mb-6">
+                    <span
+                      className={`inline-block px-3 py-1 text-xs font-mono uppercase tracking-wider rounded-full border bg-opacity-20 backdrop-blur-md mb-4 ${
+                        colorClasses[activeCommand.color]?.text || 'text-white'
+                      } ${colorClasses[activeCommand.color]?.border || 'border-white'} ${colorClasses[activeCommand.color]?.bg || 'bg-gray-800'}`}
                     >
-                      {/* Background */}
-                      <div className="absolute inset-0 z-0">
-                        <GenerativeArt seed={activeCommand.title} className="w-full h-full opacity-60" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
-                        <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay" />
-                      </div>
+                      {activeCommand.color}
+                    </span>
+                  </div>
 
-                      <div className="relative z-10">
-                        <div className="mb-6">
-                          <span className={`inline-block px-3 py-1 text-xs font-mono uppercase tracking-wider rounded-full border bg-opacity-20 backdrop-blur-md mb-4 ${
-                            colorClasses[activeCommand.color]?.text || 'text-white'
-                          } ${colorClasses[activeCommand.color]?.border || 'border-white'} ${colorClasses[activeCommand.color]?.bg || 'bg-gray-800'}`}>
-                              {activeCommand.color}
-                          </span>
-                        </div>
+                  <h2 className="text-5xl font-playfairDisplay text-white mb-6 leading-tight">
+                    {activeCommand.title}
+                  </h2>
 
-                        <h2 className="text-5xl font-playfairDisplay text-white mb-6 leading-tight">
-                          {activeCommand.title}
-                        </h2>
+                  <p className="text-xl text-gray-300 font-light max-w-xl leading-relaxed">
+                    {activeCommand.description}
+                  </p>
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="default-state"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 flex items-center justify-center p-12 text-center"
+              >
+                <div className="absolute inset-0 z-0 opacity-20">
+                  <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black" />
+                </div>
 
-                        <p className="text-xl text-gray-300 font-light max-w-xl leading-relaxed">
-                          {activeCommand.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="default-state"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute inset-0 flex items-center justify-center p-12 text-center"
-                    >
-                      <div className="absolute inset-0 z-0 opacity-20">
-                        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black" />
-                      </div>
-
-                      <div className="relative z-10 max-w-lg">
-                        <TerminalWindowIcon size={64} className="mx-auto mb-8 text-emerald-500/50" />
-                        <h2 className="text-4xl font-playfairDisplay text-white mb-6">
-                          Command Palette
-                        </h2>
-                        <p className="text-gray-400 mb-8 leading-relaxed">
-                          Access all features and navigations quickly.
-                          <br/>
-                          Hover over the list to see details.
-                        </p>
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-
-              {/* Persistent Footer (Always Visible) */}
-              <div className="p-8 border-t border-white/10 bg-neutral-900/80 backdrop-blur-md z-30 flex items-center justify-between gap-6">
-                 <div className="hidden xl:flex items-center gap-4 text-sm font-mono text-gray-400">
-                    <div className="flex gap-1">
-                       <kbd className="px-2 py-1 bg-white/10 rounded border border-white/20 text-white">Ctrl</kbd>
-                       <span className="self-center">+</span>
-                       <kbd className="px-2 py-1 bg-white/10 rounded border border-white/20 text-white">K</kbd>
-                    </div>
-                    <span>to open anywhere</span>
-                 </div>
-
-                 <button
-                  onClick={togglePalette}
-                  className="flex-1 xl:flex-none group relative inline-flex items-center justify-center gap-3 px-6 py-4 bg-white text-black hover:bg-emerald-400 transition-colors duration-300 font-mono uppercase tracking-widest text-sm"
-                >
-                  <CommandIcon size={20} />
-                  <span>Open Palette</span>
-                </button>
-              </div>
+                <div className="relative z-10 max-w-lg">
+                  <TerminalWindowIcon
+                    size={64}
+                    className="mx-auto mb-8 text-emerald-500/50"
+                  />
+                  <h2 className="text-4xl font-playfairDisplay text-white mb-6">
+                    Command Palette
+                  </h2>
+                  <p className="text-gray-400 mb-8 leading-relaxed">
+                    Access all features and navigations quickly.
+                    <br />
+                    Hover over the list to see details.
+                  </p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+        {/* Persistent Footer (Always Visible) */}
+        <div className="p-8 border-t border-white/10 bg-neutral-900/80 backdrop-blur-md z-30 flex items-center justify-between gap-6">
+          <div className="hidden xl:flex items-center gap-4 text-sm font-mono text-gray-400">
+            <div className="flex gap-1">
+              <kbd className="px-2 py-1 bg-white/10 rounded border border-white/20 text-white">
+                Ctrl
+              </kbd>
+              <span className="self-center">+</span>
+              <kbd className="px-2 py-1 bg-white/10 rounded border border-white/20 text-white">
+                K
+              </kbd>
             </div>
+            <span>to open anywhere</span>
+          </div>
+
+          <button
+            onClick={togglePalette}
+            className="flex-1 xl:flex-none group relative inline-flex items-center justify-center gap-3 px-6 py-4 bg-white text-black hover:bg-emerald-400 transition-colors duration-300 font-mono uppercase tracking-widest text-sm"
+          >
+            <CommandIcon size={20} />
+            <span>Open Palette</span>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

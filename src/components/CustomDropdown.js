@@ -68,8 +68,8 @@ const CustomDropdown = ({
         transition={{ duration: 0.1 }}
         className={`${
           isBrutalist
-            ? "bg-[#050505] border border-white/10 rounded-sm"
-            : "bg-gray-800 border border-gray-700 rounded-md shadow-lg"
+            ? 'bg-[#050505] border border-white/10 rounded-sm'
+            : 'bg-gray-800 border border-gray-700 rounded-md shadow-lg'
         } z-[1000] origin-top-left max-h-80 overflow-y-auto`}
         style={{
           position: 'absolute',
@@ -79,7 +79,7 @@ const CustomDropdown = ({
           width: 'max-content', // Allow content to determine width, but respect minWidth
         }}
       >
-        <div className={isBrutalist ? "p-1" : "py-1"}>
+        <div className={isBrutalist ? 'p-1' : 'py-1'}>
           {options.map((option) => (
             <button
               key={option.value}
@@ -100,7 +100,12 @@ const CustomDropdown = ({
             >
               <span>{option.label}</span>
               {value === option.value && (
-                <Check size={isBrutalist ? 12 : 16} className={isBrutalist ? "text-emerald-400" : "text-primary-400"} />
+                <Check
+                  size={isBrutalist ? 12 : 16}
+                  className={
+                    isBrutalist ? 'text-emerald-400' : 'text-primary-400'
+                  }
+                />
               )}
             </button>
           ))}
@@ -118,12 +123,17 @@ const CustomDropdown = ({
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center justify-between w-full gap-2 px-4 py-2 transition-all focus:outline-none ${
           isBrutalist
-            ? "bg-transparent border border-gray-800 rounded-sm text-xs font-mono uppercase tracking-widest text-gray-400 hover:border-gray-600 hover:text-white"
-            : "bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-md text-sm font-medium text-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500"
+            ? 'bg-transparent border border-gray-800 rounded-sm text-xs font-mono uppercase tracking-widest text-gray-400 hover:border-gray-600 hover:text-white'
+            : 'bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-md text-sm font-medium text-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500'
         }`}
       >
         <div className="flex items-center gap-2">
-          {Icon && <Icon size={isBrutalist ? 16 : 20} className={isBrutalist ? "text-emerald-500" : "text-gray-400"} />}
+          {Icon && (
+            <Icon
+              size={isBrutalist ? 16 : 20}
+              className={isBrutalist ? 'text-emerald-500' : 'text-gray-400'}
+            />
+          )}
           <span>{selectedOption ? selectedOption.label : label}</span>
         </div>
         <CaretDown

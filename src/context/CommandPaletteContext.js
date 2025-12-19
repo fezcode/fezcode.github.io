@@ -8,7 +8,9 @@ export const useCommandPalette = () => {
 
 export const CommandPaletteProvider = ({ children }) => {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
-  const [triggerCommand, setTriggerCommand] = useState(() => (id) => console.warn(`Command trigger not initialized for ${id}`));
+  const [triggerCommand, setTriggerCommand] = useState(
+    () => (id) => console.warn(`Command trigger not initialized for ${id}`),
+  );
 
   const openPalette = () => setIsPaletteOpen(true);
   const closePalette = () => setIsPaletteOpen(false);
@@ -17,7 +19,10 @@ export const CommandPaletteProvider = ({ children }) => {
   // Global keyboard shortcut
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if ( (event.altKey && event.key === 'k') || (event.ctrlKey && event.key === 'k') ) {
+      if (
+        (event.altKey && event.key === 'k') ||
+        (event.ctrlKey && event.key === 'k')
+      ) {
         event.preventDefault();
         togglePalette();
       }

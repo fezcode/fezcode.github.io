@@ -1,28 +1,28 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeftIcon,
-  Trophy,
-  Layout,
+  TrophyIcon,
+  LayoutIcon,
   DatabaseIcon,
-  FilmStrip,
-  Warning,
-  Trash,
-  ArrowCounterClockwise,
-  MagicWand,
-  Sidebar,
-  AppWindow,
-  Article,
+  FilmStripIcon,
+  WarningIcon,
+  TrashIcon,
+  ArrowCounterClockwiseIcon,
+  MagicWandIcon,
+  SidebarIcon,
+  ArticleIcon,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../context/AnimationContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import { useAchievements } from '../context/AchievementContext';
 import CustomToggle from '../components/CustomToggle';
-import CustomDropdown from '../components/CustomDropdown'; // Added CustomDropdown
+import CustomDropdown from '../components/CustomDropdown';
 import useSeo from '../hooks/useSeo';
 import { useToast } from '../hooks/useToast';
 import { useHomepageOrder } from '../context/HomepageOrderContext';
+import GenerativeArt from '../components/GenerativeArt';
 import {
   KEY_SIDEBAR_STATE,
   KEY_APPS_COLLAPSED_CATEGORIES,
@@ -34,17 +34,19 @@ const Section = ({ title, icon, children, delay = 0 }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay }}
-    className="bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl overflow-hidden relative group"
+    className="bg-white/[0.02] border border-white/10 rounded-sm p-8 shadow-2xl relative group overflow-hidden"
   >
-    <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
-      {React.cloneElement(icon, { size: 120, weight: 'duotone' })}
+    <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500 pointer-events-none grayscale">
+      {React.cloneElement(icon, { size: 160, weight: 'fill' })}
     </div>
 
-    <div className="flex items-center gap-3 mb-6 relative z-10">
-      <div className="p-2 bg-primary-500/20 rounded-lg text-rose-500">
-        {React.cloneElement(icon, { size: 24, weight: 'duotone' })}
+    <div className="flex items-center gap-4 mb-10 relative z-10">
+      <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-sm text-emerald-500">
+        {React.cloneElement(icon, { size: 24, weight: 'bold' })}
       </div>
-      <h2 className="text-2xl font-arvo text-white tracking-wide">{title}</h2>
+      <h2 className="text-3xl font-black text-white uppercase tracking-tighter">
+        {title}
+      </h2>
     </div>
     <div className="relative z-10">{children}</div>
   </motion.div>
@@ -53,8 +55,8 @@ const Section = ({ title, icon, children, delay = 0 }) => (
 const SettingsPage = () => {
   useSeo({
     title: 'Settings | Fezcodex',
-    description: 'Manage your application preferences for Fezcodex.',
-    keywords: ['Fezcodex', 'settings', 'preferences', 'animation'],
+    description: 'Customize your experience and configure site settings.',
+    keywords: ['Fezcodex', 'settings', 'preferences', 'configuration'],
   });
 
   const { unlockAchievement, showAchievementToast, toggleAchievementToast } =
@@ -120,48 +122,42 @@ const SettingsPage = () => {
 
   const { addToast } = useToast();
 
-  const { sectionOrder, toggleSectionOrder, resetSectionOrder } = useHomepageOrder();
+  const { sectionOrder, toggleSectionOrder, resetSectionOrder } =
+    useHomepageOrder();
 
   const handleResetSidebarState = () => {
     removeLocalStorageItem(KEY_SIDEBAR_STATE);
     addToast({
       title: 'Success',
-      message: 'Sidebar state has been reset. The page will now reload.',
-      duration: 3000,
+      message: 'Sidebar state reset. Refreshing...',
+      duration: 2000,
     });
-    setTimeout(() => {
-      window.location.reload();
-    }, 3000);
+    setTimeout(() => window.location.reload(), 2000);
   };
 
   const handleResetAppsState = () => {
     removeLocalStorageItem(KEY_APPS_COLLAPSED_CATEGORIES);
     addToast({
       title: 'Success',
-      message: 'App categories state has been reset. The page will now reload.',
-      duration: 3000,
+      message: 'App categories reset. Refreshing...',
+      duration: 2000,
     });
-    setTimeout(() => {
-      window.location.reload();
-    }, 3000);
+    setTimeout(() => window.location.reload(), 2000);
   };
 
   const handleClearStorage = () => {
     localStorage.clear();
     addToast({
       title: 'Success',
-      message:
-        'All local storage data has been cleared. The page will now reload.',
+      message: 'All local data cleared. Restarting engine...',
       duration: 3000,
     });
 
     setTimeout(() => {
-      // Manually set the achievement to avoid restoring old state via context
       const now = new Date().toISOString();
       const cleanSlateData = {
         clean_slate: { unlocked: true, unlockedAt: now },
       };
-      // We use the raw key 'unlocked-achievements' as defined in AchievementContext
       localStorage.setItem(
         'unlocked-achievements',
         JSON.stringify(cleanSlateData),
@@ -171,340 +167,136 @@ const SettingsPage = () => {
         title: 'Achievement Unlocked!',
         message: 'Clean Slate',
         duration: 4000,
-        icon: <Trophy size={24} weight="duotone" />,
+        icon: <TrophyIcon size={24} weight="duotone" />,
         type: 'gold',
       });
     }, 500);
 
-    setTimeout(() => {
-      window.location.reload();
-    }, 3000);
+    setTimeout(() => window.location.reload(), 3000);
   };
 
   return (
-    <div className="min-h-screen py-16 px-4 sm:px-6 lg:px-8 relative">
-      {/* Decorative Background Elements */}
-      <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary-900/20 rounded-full blur-[120px]" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-900/20 rounded-full blur-[120px]" />
+    <div className="min-h-screen bg-[#050505] py-24 px-6 md:px-12 selection:bg-emerald-500/30 font-sans relative overflow-x-hidden">
+      {/* Decorative Art Background */}
+      <div className="fixed inset-0 opacity-[0.03] pointer-events-none grayscale">
+        <GenerativeArt seed="Ahmed Samil Bulbul" className="w-full h-full" />
       </div>
 
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl relative z-10">
         {/* Header */}
-        <div className="mb-12">
+        <header className="mb-24">
           <Link
             to="/"
-            className="group inline-flex items-center gap-2 text-primary-400 hover:text-primary-300 transition-colors mb-6 text-lg font-medium"
+            className="group inline-flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-12 font-mono text-xs uppercase tracking-[0.3em]"
           >
-            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />
-            Back to Home
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Back to Home</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-2">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
                 Settings
               </h1>
-              <p className="text-lg text-gray-400 max-w-2xl">
-                Customize your experience, manage preferences, and tweak the
-                visual engine.
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Customize visuals, manage preferences, and configure your site
+                settings.
               </p>
             </div>
 
-            {/* Client-Side Badge */}
-            <div className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800/50 border border-gray-700 text-xs font-mono text-gray-400">
-              <DatabaseIcon size={14} />
-              <span>CLIENT-SIDE STORAGE ONLY</span>
+            <div className="hidden xl:flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 font-mono text-[10px] text-gray-500 uppercase tracking-widest rounded-sm">
+              <DatabaseIcon size={16} />
+              <span>Local Storage Only</span>
             </div>
           </div>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 gap-8">
-          {/* Homepage Layout Ordering */}
-          <Section title="Homepage Layout" icon={<Layout />} delay={0.0}>
-            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-medium text-white flex items-center gap-2">
-                    Homepage Section Order
+        <div className="grid grid-cols-1 gap-12">
+          {/* Layout Configuration */}
+          <Section title="Interface Layout" icon={<LayoutIcon />} delay={0.0}>
+            <div className="space-y-8">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Section Priority
                   </h3>
+                  <p className="text-sm text-gray-500">
+                    Choose which content appears first on your dashboard.
+                  </p>
+                </div>
+                <div className="flex flex-col items-start md:items-end gap-4">
                   <button
                     onClick={() => {
-                        resetSectionOrder();
-                        addToast({ title: 'Order Reset', message: 'Homepage section order reset to default.', duration: 2000, type: 'info' });
+                      resetSectionOrder();
+                      addToast({
+                        title: 'Order Reset',
+                        message: 'Homepage order restored to default.',
+                        duration: 2000,
+                      });
                     }}
-                    className="flex items-center gap-1 text-sm text-gray-400 hover:text-red-400 transition-colors"
+                    className="text-[10px] font-mono uppercase tracking-widest text-gray-500 hover:text-emerald-400 transition-colors flex items-center gap-2"
                   >
-                    <ArrowCounterClockwise size={16} /> Reset
+                    <ArrowCounterClockwiseIcon size={14} /> Reset
                   </button>
+                  <CustomToggle
+                    id="homepage-section-order"
+                    label="Blogposts First"
+                    checked={sectionOrder[0] === 'blogposts'}
+                    onChange={toggleSectionOrder}
+                  />
                 </div>
-                <CustomToggle
-                  id="homepage-section-order"
-                  label="Show Latest Blogposts first"
-                  checked={sectionOrder[0] === 'blogposts'}
-                  onChange={toggleSectionOrder}
-                  colorTheme="blue"
-                />
-                <p className="mt-2 text-sm text-gray-400 ml-1">
-                    Toggle to display "Latest Blogposts" section before "Pinned Projects" on the homepage.
-                </p>
+              </div>
             </div>
           </Section>
 
           {/* Reading Experience */}
-          <Section title="Reading Experience" icon={<Article />} delay={0.05}>
-            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5 flex flex-col gap-4">
-              <div className="flex items-center justify-between">
-                <span className="font-medium text-white">Blog Post View</span>
+          <Section
+            title="Reader Experience"
+            icon={<ArticleIcon />}
+            delay={0.05}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Visual Mode
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Default rendering style for long-form content.
+                  </p>
+                </div>
                 <CustomDropdown
+                  variant="brutalist"
                   label="Select View"
                   options={[
                     { label: 'Standard', value: 'standard' },
-                    { label: 'Old', value: 'old' },
+                    { label: 'Classic', value: 'old' },
                     { label: 'Dossier', value: 'dossier' },
-                    { label: 'Dokument', value: 'dokument' },
-                    { label: 'Terminal (New Vegas)', value: 'terminal' },
-                    { label: 'Terminal (Green)', value: 'terminal-green' },
+                    { label: 'Archive', value: 'dokument' },
+                    { label: 'Terminal (Amber)', value: 'terminal' },
+                    { label: 'Terminal (Emerald)', value: 'terminal-green' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
-                  icon={Article}
-                  className="ml-auto"
+                  icon={ArticleIcon}
                 />
               </div>
-              <p className="text-sm text-gray-400">
-                Select the default rendering style for blog posts.
-              </p>
-            </div>
-          </Section>
 
-          {/* Animation & Performance */}
-          <Section
-            title="Animation & Performance"
-            icon={<FilmStrip />}
-            delay={0.1}
-          >
-            <div className="space-y-6">
-              <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
-                <CustomToggle
-                  id="enable-animations"
-                  label="Enable System Animations"
-                  checked={isAnimationEnabled}
-                  onChange={toggleAnimation}
-                  colorTheme="blue"
-                />
-
-                <motion.div
-                  animate={{
-                    height: isAnimationEnabled ? 'auto' : 0,
-                    opacity: isAnimationEnabled ? 1 : 0,
-                  }}
-                  className="overflow-hidden"
-                >
-                  <div className="my-4 border-t border-white/5"></div>
-                  <div className="space-y-4 pl-2">
-                    <CustomToggle
-                      id="show-animations-homepage"
-                      label="Show animations on Homepage"
-                      checked={showAnimationsHomepage}
-                      onChange={toggleShowAnimationsHomepage}
-                      disabled={!isAnimationEnabled}
-                      colorTheme="blue"
-                    />
-                    <CustomToggle
-                      id="show-animations-inner-pages"
-                      label="Show animations on Inner Pages"
-                      checked={showAnimationsInnerPages}
-                      onChange={toggleShowAnimationsInnerPages}
-                      disabled={!isAnimationEnabled}
-                      colorTheme="blue"
-                    />
-                  </div>
-                </motion.div>
-              </div>
-
-              {!isAnimationEnabled && (
-                <div className="flex items-start gap-3 p-4 rounded-lg bg-red-900/20 border border-red-500/20 text-red-200 text-sm">
-                  <Warning size={20} className="shrink-0 mt-0.5" />
-                  <p>
-                    Detailed animation settings are disabled because the main
-                    switch is off.
-                  </p>
-                </div>
-              )}
-            </div>
-          </Section>
-
-          {/* Achievements */}
-          <Section title="Gamification" icon={<Trophy />} delay={0.2}>
-            <div className="bg-gray-800/30 rounded-xl p-4 border border-white/5">
-              <CustomToggle
-                id="enable-achievement-toasts"
-                label="Show Achievement Popups"
-                checked={showAchievementToast}
-                onChange={toggleAchievementToast}
-                colorTheme="rose"
-              />
-              <p className="mt-2 text-sm text-gray-400 ml-1">
-                When enabled, you'll receive a toast notification whenever you
-                unlock a new achievement.
-              </p>
-            </div>
-          </Section>
-
-          {/* Visual Effects Grid */}
-          <Section
-            title="Visual Effects Engine"
-            icon={<MagicWand />}
-            delay={0.3}
-          >
-            <p className="mb-6 text-gray-400 text-sm">
-              Apply experimental visual filters to the entire application.
-              Combine them at your own risk!
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-              <CustomToggle
-                id="fx-invert"
-                label="Invert Colors"
-                checked={isInverted}
-                onChange={toggleInvert}
-                colorTheme="purple"
-              />
-              <CustomToggle
-                id="fx-retro"
-                label="Retro CRT"
-                checked={isRetro}
-                onChange={toggleRetro}
-                colorTheme="amber"
-              />
-              <CustomToggle
-                id="fx-party"
-                label="Party Mode"
-                checked={isParty}
-                onChange={toggleParty}
-                colorTheme="rose"
-              />
-              <CustomToggle
-                id="fx-mirror"
-                label="Mirror World"
-                checked={isMirror}
-                onChange={toggleMirror}
-                colorTheme="cyan"
-              />
-              <CustomToggle
-                id="fx-noir"
-                label="Film Noir"
-                checked={isNoir}
-                onChange={toggleNoir}
-                colorTheme="indigo"
-              />
-              <CustomToggle
-                id="fx-terminal"
-                label="Terminal Green"
-                checked={isTerminal}
-                onChange={toggleTerminal}
-                colorTheme="green"
-              />
-              <CustomToggle
-                id="fx-blueprint"
-                label="Blueprint"
-                checked={isBlueprint}
-                onChange={toggleBlueprint}
-                colorTheme="blue"
-              />
-              <CustomToggle
-                id="fx-sepia"
-                label="Sepia Tone"
-                checked={isSepia}
-                onChange={toggleSepia}
-                colorTheme="amber"
-              />
-              <CustomToggle
-                id="fx-vaporwave"
-                label="Vaporwave"
-                checked={isVaporwave}
-                onChange={toggleVaporwave}
-                colorTheme="cyan"
-              />
-              <CustomToggle
-                id="fx-cyberpunk"
-                label="Cyberpunk"
-                checked={isCyberpunk}
-                onChange={toggleCyberpunk}
-                colorTheme="purple"
-              />
-              <CustomToggle
-                id="fx-gameboy"
-                label="Game Boy"
-                checked={isGameboy}
-                onChange={toggleGameboy}
-                colorTheme="green"
-              />
-              <CustomToggle
-                id="fx-comic"
-                label="Comic Book"
-                checked={isComic}
-                onChange={toggleComic}
-                colorTheme="amber"
-              />
-              <CustomToggle
-                id="fx-sketchbook"
-                label="Sketchbook"
-                checked={isSketchbook}
-                onChange={toggleSketchbook}
-                colorTheme="indigo"
-              />
-              <CustomToggle
-                id="fx-hellenic"
-                label="Hellenic Statue"
-                checked={isHellenic}
-                onChange={toggleHellenic}
-                colorTheme="blue"
-              />
-              <CustomToggle
-                id="fx-glitch"
-                label="System Glitch"
-                checked={isGlitch}
-                onChange={toggleGlitch}
-                colorTheme="rose"
-              />
-              <CustomToggle
-                id="fx-garden"
-                label="Garden Mode"
-                checked={isGarden}
-                onChange={toggleGarden}
-                colorTheme="green"
-              />
-              <CustomToggle
-                id="fx-autumn"
-                label="Autumn Mode"
-                checked={isAutumn}
-                onChange={toggleAutumn}
-                colorTheme="amber"
-              />
-              <CustomToggle
-                id="fx-rain"
-                label="Rain Mode"
-                checked={isRain}
-                onChange={toggleRain}
-                colorTheme="blue"
-              />
-            </div>
-          </Section>
-
-          {/* Interface & Layout */}
-          <Section title="Interface & Layout" icon={<Layout />} delay={0.4}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
                 <div>
-                  <div className="flex items-center gap-2 mb-3 text-emerald-500">
-                    <Sidebar size={20} weight="duotone" />
-                    <h3 className="font-medium text-white">Sidebar Style</h3>
-                  </div>
-                  <p className="text-sm text-gray-400 mb-6">
-                    Toggle between the modern Brutalist look or the original Classic design.
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Sidebar Aesthetics
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Switch between the modern Brutalist look or the original
+                    Classic design.
                   </p>
                 </div>
                 <CustomDropdown
+                  variant="brutalist"
                   label="Select Style"
                   options={[
                     { label: 'Brutalist', value: 'brutalist' },
@@ -512,110 +304,253 @@ const SettingsPage = () => {
                   ]}
                   value={sidebarMode}
                   onChange={setSidebarMode}
-                  icon={Sidebar}
+                  icon={SidebarIcon}
                 />
               </div>
+            </div>
+          </Section>
 
-              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
-                <div>
-                  <div className="flex items-center gap-2 mb-3 text-rose-500">
-                    <Sidebar size={20} weight="duotone" />
-                    <h3 className="font-medium text-white">Sidebar State</h3>
+          {/* Performance & Animation */}
+          <Section
+            title="Motion & Performance"
+            icon={<FilmStripIcon />}
+            delay={0.1}
+          >
+            <div className="space-y-8">
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+                <div className="flex items-center justify-between mb-8 pb-8 border-b border-white/5">
+                  <h3 className="text-lg font-bold text-white">
+                    Global Animations
+                  </h3>
+                  <CustomToggle
+                    id="enable-animations"
+                    label={isAnimationEnabled ? 'Enabled' : 'Disabled'}
+                    checked={isAnimationEnabled}
+                    onChange={toggleAnimation}
+                  />
+                </div>
+
+                <AnimatePresence>
+                  {isAnimationEnabled && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden"
+                    >
+                      <CustomToggle
+                        id="show-animations-homepage"
+                        label="Homepage Motion"
+                        checked={showAnimationsHomepage}
+                        onChange={toggleShowAnimationsHomepage}
+                      />
+                      <CustomToggle
+                        id="show-animations-inner-pages"
+                        label="Interior Page Motion"
+                        checked={showAnimationsInnerPages}
+                        onChange={toggleShowAnimationsInnerPages}
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {!isAnimationEnabled && (
+                  <div className="flex items-center gap-3 text-gray-500 font-mono text-[10px] uppercase tracking-widest">
+                    <WarningIcon size={16} />
+                    <span>
+                      Animation controls are disabled when global animations are
+                      off.
+                    </span>
                   </div>
-                  <p className="text-sm text-gray-400 mb-6">
-                    Reset the expansion state of all sidebar sections to their
-                    defaults.
+                )}
+              </div>
+            </div>
+          </Section>
+
+          {/* Gamification */}
+          <Section title="Achievement System" icon={<TrophyIcon />} delay={0.2}>
+            <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex items-center justify-between gap-6">
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">
+                  Achievement Toasts
+                </h3>
+                <p className="text-sm text-gray-500">
+                  Show a notification when you unlock a new achievement.
+                </p>
+              </div>
+              <CustomToggle
+                id="enable-achievement-toasts"
+                label={showAchievementToast ? 'Active' : 'Silent'}
+                checked={showAchievementToast}
+                onChange={toggleAchievementToast}
+              />
+            </div>
+          </Section>
+
+          {/* Visual Effects Grid */}
+          <Section title="Visual Matrix" icon={<MagicWandIcon />} delay={0.3}>
+            <p className="mb-10 text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">
+              Apply experimental filters to the entire application. Combine with caution.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <CustomToggle id="fx-invert" label="Invert Colors" checked={isInverted} onChange={toggleInvert} />
+              <CustomToggle id="fx-retro" label="Retro CRT" checked={isRetro} onChange={toggleRetro} />
+              <CustomToggle id="fx-party" label="Party Mode" checked={isParty} onChange={toggleParty} />
+              <CustomToggle id="fx-mirror" label="Mirror World" checked={isMirror} onChange={toggleMirror} />
+              <CustomToggle id="fx-noir" label="Film Noir" checked={isNoir} onChange={toggleNoir} />
+              <CustomToggle id="fx-terminal" label="Emerald Term" checked={isTerminal} onChange={toggleTerminal} />
+              <CustomToggle id="fx-blueprint" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint} />
+              <CustomToggle id="fx-sepia" label="Vintage Sepia" checked={isSepia} onChange={toggleSepia} />
+              <CustomToggle id="fx-vaporwave" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave} />
+              <CustomToggle id="fx-cyberpunk" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk} />
+              <CustomToggle id="fx-gameboy" label="Legacy Handheld" checked={isGameboy} onChange={toggleGameboy} />
+              <CustomToggle id="fx-comic" label="Comic Array" checked={isComic} onChange={toggleComic} />
+              <CustomToggle id="fx-sketchbook" label="Graphite Map" checked={isSketchbook} onChange={toggleSketchbook} />
+              <CustomToggle id="fx-hellenic" label="Classical Agora" checked={isHellenic} onChange={toggleHellenic} />
+              <CustomToggle id="fx-glitch" label="Data Corruption" checked={isGlitch} onChange={toggleGlitch} />
+              <CustomToggle id="fx-garden" label="Flora Protocol" checked={isGarden} onChange={toggleGarden} />
+              <CustomToggle id="fx-autumn" label="Seasonal Decay" checked={isAutumn} onChange={toggleAutumn} />
+              <CustomToggle id="fx-rain" label="Hydraulic Filter" checked={isRain} onChange={toggleRain} />
+            </div>
+          </Section>
+
+          {/* Toast Verification */}
+          <Section title="System Feedback" icon={<ArticleIcon />} delay={0.35}>
+            <p className="mb-10 text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">
+              Verify notification delivery and visual signatures for different system alerts.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <button
+                onClick={() => addToast({ title: 'Success', message: 'Primary system sequence executed successfully.', type: 'success' })}
+                className="py-4 border border-emerald-500/20 bg-emerald-500/5 text-emerald-500 font-mono text-[10px] uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all"
+              >
+                Test Success
+              </button>
+              <button
+                onClick={() => addToast({ title: 'System Error', message: 'Critical corruption detected in neural module.', type: 'error' })}
+                className="py-4 border border-red-500/20 bg-red-500/5 text-red-500 font-mono text-[10px] uppercase tracking-widest hover:bg-red-500 hover:text-black transition-all"
+              >
+                Test Error
+              </button>
+              <button
+                onClick={() => addToast({ title: 'Legacy Mapped', message: 'Classical data structure integrated into the archive.', type: 'gold' })}
+                className="py-4 border border-amber-500/20 bg-amber-500/5 text-amber-500 font-mono text-[10px] uppercase tracking-widest hover:bg-amber-500 hover:text-black transition-all"
+              >
+                Test Gold
+              </button>
+              <button
+                onClick={() => addToast({ title: 'Terminal Access', message: 'Remote connection established via protocol SSH_V2.', type: 'techno' })}
+                className="py-4 border border-cyan-500/20 bg-cyan-500/5 text-cyan-500 font-mono text-[10px] uppercase tracking-widest hover:bg-cyan-500 hover:text-black transition-all"
+              >
+                Test Techno
+              </button>
+            </div>
+          </Section>
+
+          {/* Advanced Settings */}
+          <Section
+            title="Advanced Settings"
+            icon={<DatabaseIcon />}
+            delay={0.4}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex flex-col justify-between gap-6">
+                <div>
+                  <h3 className="text-base font-bold text-white mb-1 uppercase tracking-wider">
+                    Sidebar State
+                  </h3>
+                  <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    Reset the sidebar to its default state.
                   </p>
                 </div>
                 <button
                   onClick={handleResetSidebarState}
-                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors text-sm font-medium"
+                  className="w-full py-3 px-4 border border-white/10 hover:bg-white hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest text-white"
                 >
-                  <ArrowCounterClockwise size={18} />
                   Reset Sidebar
                 </button>
               </div>
-              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex flex-col justify-between gap-6">
                 <div>
-                  <div className="flex items-center gap-2 mb-3 text-rose-500">
-                    <AppWindow size={20} weight="duotone" />
-                    <h3 className="font-medium text-white">App Categories</h3>
-                  </div>
-                  <p className="text-sm text-gray-400 mb-6">
-                    Reset the collapsed/expanded state of application
-                    categories.
+                  <h3 className="text-base font-bold text-white mb-1 uppercase tracking-wider">
+                    App Categories
+                  </h3>
+                  <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    Reset app categories to their default visibility.
                   </p>
                 </div>
                 <button
                   onClick={handleResetAppsState}
-                  className="flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors text-sm font-medium"
+                  className="w-full py-3 px-4 border border-white/10 hover:bg-white hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest text-white"
                 >
-                  <ArrowCounterClockwise size={18} />
-                  Reset App States
+                  Reset Apps
                 </button>
               </div>
 
-              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex flex-col justify-between gap-6">
                 <div>
-                  <div className="flex items-center gap-2 mb-3 text-rose-500">
-                    <Sidebar size={20} weight="duotone" />
-                    <h3 className="font-medium text-white">Sidebar Color</h3>
-                  </div>
-                  <p className="text-sm text-gray-400 mb-6">
-                    Choose a custom background color for the sidebar.
+                  <h3 className="text-base font-bold text-white mb-1 uppercase tracking-wider">
+                    Classic Sidebar Color
+                  </h3>
+                  <p className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    Change the main color of the classic/old style sidebar.
                   </p>
                 </div>
                 <CustomDropdown
-                  label="Select Sidebar Color"
+                  variant="brutalist"
+                  label="Sidebar Color"
                   options={[
                     { label: 'Default', value: 'default' },
                     { label: 'Salmon Light', value: 'salmon-light' },
                     { label: 'Salmon Medium', value: 'salmon-medium' },
                     { label: 'Blue Transparent', value: 'blue-transparent' },
                     { label: 'Green Transparent', value: 'green-transparent' },
-                    { label: 'Purple Transparent', value: 'purple-transparent' },
+                    {
+                      label: 'Purple Transparent',
+                      value: 'purple-transparent',
+                    },
                     { label: 'Cyan Transparent', value: 'cyan-transparent' },
                   ]}
                   value={sidebarColor}
                   onChange={setSidebarColor}
-                  icon={Sidebar}
+                  icon={SidebarIcon}
                 />
               </div>
             </div>
           </Section>
 
-          {/* Data Zone */}
-          <Section title="Data Management" icon={<DatabaseIcon />} delay={0.5}>
-            <div className="bg-red-900/10 border border-red-500/20 rounded-xl p-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-red-500/10 rounded-full text-red-400 shrink-0">
-                  <Trash size={24} />
+          {/* Danger Zone */}
+          <Section title="Reset All Data" icon={<TrashIcon />} delay={0.5}>
+            <div className="border-4 border-red-500/20 bg-red-500/5 p-8 rounded-sm">
+              <div className="flex flex-col md:flex-row items-center gap-8">
+                <div className="p-4 bg-red-500 text-black rounded-sm shrink-0">
+                  <WarningIcon size={32} weight="bold" />
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-medium text-white mb-2">
-                    Clear Local Data
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-2">
+                    Factory Reset
                   </h3>
-                  <p className="text-gray-400 text-sm mb-6">
-                    This will wipe all locally stored preferences, achievements,
-                    and cached states for this site. This action cannot be
-                    undone.
+                  <p className="text-gray-400 font-light max-w-xl">
+                    This will clear all your preferences and achievements. This
+                    cannot be undone.
                   </p>
-                  <button
-                    onClick={handleClearStorage}
-                    className="inline-flex items-center gap-2 py-2.5 px-5 rounded-lg bg-red-500/20 hover:bg-red-500/30 text-red-200 border border-red-500/30 transition-colors text-sm font-medium"
-                  >
-                    <Trash size={18} />
-                    Clear All Local Storage
-                  </button>
                 </div>
+                <button
+                  onClick={handleClearStorage}
+                  className="w-full md:w-auto px-8 py-4 bg-red-500 text-black hover:bg-red-400 transition-colors font-black uppercase tracking-widest text-sm rounded-sm shadow-[0_0_30px_rgba(239,68,68,0.2)]"
+                >
+                  Reset Everything
+                </button>
               </div>
             </div>
           </Section>
         </div>
 
-        <div className="mt-12 text-center text-gray-600 text-sm font-mono">
-          Fezcodex Preferences Engine v2.0
-        </div>
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex Settings v2.1</span>
+          <span className="text-gray-800">Connected</span>
+        </footer>
       </div>
     </div>
   );

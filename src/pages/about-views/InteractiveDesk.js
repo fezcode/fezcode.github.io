@@ -16,14 +16,22 @@ import {
 } from '@phosphor-icons/react';
 
 // A simple styled component for desk items
-const DeskItem = ({ icon: Icon, label, onClick, className = '', color = 'text-gray-400' }) => (
+const DeskItem = ({
+  icon: Icon,
+  label,
+  onClick,
+  className = '',
+  color = 'text-gray-400',
+}) => (
   <motion.button
     whileHover={{ scale: 1.1, y: -5 }}
     whileTap={{ scale: 0.95 }}
     onClick={onClick}
     className={`absolute flex flex-col items-center gap-2 group outline-none ${className}`}
   >
-    <div className={`p-4 bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 transition-colors group-hover:bg-white/20 ${color}`}>
+    <div
+      className={`p-4 bg-white/10 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 transition-colors group-hover:bg-white/20 ${color}`}
+    >
       <Icon size={48} weight="duotone" />
     </div>
     <span className="opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 text-white text-xs px-2 py-1 rounded font-mono pointer-events-none whitespace-nowrap">
@@ -64,9 +72,7 @@ const DetailModal = ({ item, onClose }) => {
           <h2 className="text-2xl font-bold">{item.title}</h2>
         </div>
 
-        <div className="prose prose-stone leading-relaxed">
-           {item.content}
-        </div>
+        <div className="prose prose-stone leading-relaxed">{item.content}</div>
       </motion.div>
     </motion.div>
   );
@@ -77,58 +83,78 @@ const InteractiveDesk = () => {
 
   const items = {
     laptop: {
-      title: "The Workstation",
+      title: 'The Workstation',
       icon: CodeBlock,
       content: (
         <div>
-           <p className="mb-4">My digital command center. Currently running Arch (btw) or maybe just VS Code on Mac.</p>
-           <h4 className="font-bold mb-2">Core Stack:</h4>
-           <ul className="list-disc pl-4 space-y-1">
-              {aboutData.skills.slice(0, 4).map(s => <li key={s.name}>{s.name}</li>)}
-           </ul>
+          <p className="mb-4">
+            My digital command center. Currently running Arch (btw) or maybe
+            just VS Code on Mac.
+          </p>
+          <h4 className="font-bold mb-2">Core Stack:</h4>
+          <ul className="list-disc pl-4 space-y-1">
+            {aboutData.skills.slice(0, 4).map((s) => (
+              <li key={s.name}>{s.name}</li>
+            ))}
+          </ul>
         </div>
-      )
+      ),
     },
     coffee: {
-      title: "Fuel Cell",
+      title: 'Fuel Cell',
       icon: Coffee,
       content: (
-         <div>
-            <p>Critical infrastructure component.</p>
-            <p className="mt-2">Consuming <strong>{aboutData.stats[2].value} {aboutData.stats[2].unit}</strong> daily.</p>
-         </div>
-      )
+        <div>
+          <p>Critical infrastructure component.</p>
+          <p className="mt-2">
+            Consuming{' '}
+            <strong>
+              {aboutData.stats[2].value} {aboutData.stats[2].unit}
+            </strong>{' '}
+            daily.
+          </p>
+        </div>
+      ),
     },
     books: {
-      title: "The Library",
+      title: 'The Library',
       icon: BookBookmark,
       content: (
-         <div>
-            <p className="mb-4">Knowledge repository.</p>
-            {aboutData.experience.map((exp, i) => (
-               <div key={i} className="mb-4 border-b border-gray-200 pb-2 last:border-0">
-                  <div className="font-bold">{exp.company}</div>
-                  <div className="text-sm text-gray-500">{exp.role} ({exp.period})</div>
-               </div>
-            ))}
-         </div>
-      )
+        <div>
+          <p className="mb-4">Knowledge repository.</p>
+          {aboutData.experience.map((exp, i) => (
+            <div
+              key={i}
+              className="mb-4 border-b border-gray-200 pb-2 last:border-0"
+            >
+              <div className="font-bold">{exp.company}</div>
+              <div className="text-sm text-gray-500">
+                {exp.role} ({exp.period})
+              </div>
+            </div>
+          ))}
+        </div>
+      ),
     },
     guitar: {
-       title: aboutData.traits.hobby.title,
-       icon: MusicNote,
-       content: <p>{aboutData.traits.hobby.desc}</p>
+      title: aboutData.traits.hobby.title,
+      icon: MusicNote,
+      content: <p>{aboutData.traits.hobby.desc}</p>,
     },
     notes: {
-       title: "Sticky Notes",
-       icon: Note,
-       content: (
-          <ul className="space-y-2">
-             <li className="bg-yellow-100 p-2 rotate-1 shadow-sm font-handwriting">Superpower: {aboutData.traits.superpower.title}</li>
-             <li className="bg-blue-100 p-2 -rotate-1 shadow-sm font-handwriting">Kryptonite: {aboutData.traits.kryptonite.title}</li>
-          </ul>
-       )
-    }
+      title: 'Sticky Notes',
+      icon: Note,
+      content: (
+        <ul className="space-y-2">
+          <li className="bg-yellow-100 p-2 rotate-1 shadow-sm font-handwriting">
+            Superpower: {aboutData.traits.superpower.title}
+          </li>
+          <li className="bg-blue-100 p-2 -rotate-1 shadow-sm font-handwriting">
+            Kryptonite: {aboutData.traits.kryptonite.title}
+          </li>
+        </ul>
+      ),
+    },
   };
 
   return (
@@ -136,8 +162,8 @@ const InteractiveDesk = () => {
       {/* Room Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#2d3436] to-[#1e272e]" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[60vh] bg-[#353b48] rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)] transform rotate-x-12 perspective-1000">
-         {/* Floor/Desk Surface */}
-         <div className="absolute bottom-0 w-full h-1/2 bg-[#7f8fa6] rounded-b-xl opacity-20" />
+        {/* Floor/Desk Surface */}
+        <div className="absolute bottom-0 w-full h-1/2 bg-[#7f8fa6] rounded-b-xl opacity-20" />
       </div>
 
       {/* Desk Items Layer */}

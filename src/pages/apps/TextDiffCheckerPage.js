@@ -1,18 +1,23 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import {
+  ArrowLeftIcon,
+  ColumnsIcon,
+  FileSearchIcon,
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { diff_match_patch } from 'diff-match-patch';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const dmp = new diff_match_patch();
 
 function TextDiffCheckerPage() {
+  const appName = 'Diff Checker';
+
   useSeo({
-    title: 'Text Diff Checker | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description:
-      'Compare two texts and highlight the differences (additions, deletions, changes).',
+      'Protocol for comparing data sequences and identifying structural variations.',
     keywords: [
       'Fezcodex',
       'text diff',
@@ -20,15 +25,6 @@ function TextDiffCheckerPage() {
       'text comparison',
       'code diff',
     ],
-    ogTitle: 'Text Diff Checker | Fezcodex',
-    ogDescription:
-      'Compare two texts and highlight the differences (additions, deletions, changes).',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Text Diff Checker | Fezcodex',
-    twitterDescription:
-      'Compare two texts and highlight the differences (additions, deletions, changes).',
-    twitterImage: '/images/ogtitle.png',
   });
 
   const [textA, setTextA] = useState('');
@@ -40,158 +36,160 @@ function TextDiffCheckerPage() {
       setDiffOutput([]);
       return;
     }
-
     const diffs = dmp.diff_main(textA, textB);
-    dmp.diff_cleanupSemantic(diffs); // Optional: improve human readability
+    dmp.diff_cleanupSemantic(diffs);
     setDiffOutput(diffs);
   }, [textA, textB]);
 
   useEffect(() => {
-    // Automatically compute diff when texts change
     computeDiff();
   }, [textA, textB, computeDiff]);
+
+  const DIFF_DELETE = -1;
+  const DIFF_INSERT = 1;
 
   const renderDiff = () => {
     return diffOutput.map((part, i) => {
       const [type, text] = part;
-      let style = {};
+      let className = 'transition-all duration-300 ';
+
       switch (type) {
         case DIFF_INSERT:
-          style = { backgroundColor: '#aaffaa', color: '#000' }; // Green for additions
+          className +=
+            'bg-emerald-500/20 text-emerald-400 border-b border-emerald-500/30 font-bold';
           break;
         case DIFF_DELETE:
-          style = {
-            backgroundColor: '#ffaaaa',
-            color: '#000',
-            textDecoration: 'line-through',
-          }; // Red for deletions
+          className += 'bg-red-500/20 text-red-400 line-through opacity-60';
           break;
-        case DIFF_EQUAL:
         default:
-          style = { color: colors['app-light'] }; // Default for unchanged
+          className += 'text-gray-400';
           break;
       }
+
       return (
-        <span key={i} style={style}>
-          {text.split('\n').map((item, key) => {
-            return (
-              <React.Fragment key={key}>
-                {item}
-                {key < text.split('\n').length - 1 && <br />}
-              </React.Fragment>
-            );
-          })}
+        <span key={i} className={className}>
+          {text.split('\n').map((item, key) => (
+            <React.Fragment key={key}>
+              {item}
+              {key < text.split('\n').length - 1 && <br />}
+            </React.Fragment>
+          ))}
         </span>
       );
     });
   };
 
-  const DIFF_DELETE = -1;
-  const DIFF_INSERT = 1;
-  const DIFF_EQUAL = 0;
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const textareaStyle = `w-full h-48 p-4 bg-gray-900/50 font-mono resize-y border rounded-md border-app-alpha-50 text-app-light focus:ring-0`;
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Text Diff Checker" slug="tdc" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative overflow-hidden h-full w-full max-w-6xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Text Diff Checker{' '}
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
               </h1>
-              <hr className="border-gray-700 mb-4" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Structural variance analyzer. Compare two data streams to
+                identify deletions, insertions, and modifications.
+              </p>
+            </div>
+          </div>
+        </header>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div>
-                  <label
-                    htmlFor="textA"
-                    className="block text-lg font-semibold mb-2 text-app"
-                  >
-                    Original Text (A)
-                  </label>
-                  <textarea
-                    id="textA"
-                    value={textA}
-                    onChange={(e) => setTextA(e.target.value)}
-                    placeholder="Enter original text here..."
-                    className={textareaStyle}
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="textB"
-                    className="block text-lg font-semibold mb-2 text-app"
-                  >
-                    New Text (B)
-                  </label>
-                  <textarea
-                    id="textB"
-                    value={textB}
-                    onChange={(e) => setTextB(e.target.value)}
-                    placeholder="Enter new text here..."
-                    className={textareaStyle}
-                  />
-                </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Input Areas */}
+          <div className="lg:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                <span className="h-px w-4 bg-gray-800" /> Source_A :: Original
+              </label>
+              <textarea
+                value={textA}
+                onChange={(e) => setTextA(e.target.value)}
+                placeholder="Insert baseline sequence..."
+                className="w-full h-64 p-8 bg-white/[0.02] border border-white/10 rounded-sm font-mono text-sm focus:border-emerald-500/50 focus:ring-0 transition-all resize-none"
+              />
+            </div>
+            <div className="space-y-4">
+              <label className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest flex items-center gap-2 font-black">
+                <span className="h-px w-4 bg-emerald-500/20" /> Source_B ::
+                Modified
+              </label>
+              <textarea
+                value={textB}
+                onChange={(e) => setTextB(e.target.value)}
+                placeholder="Insert comparison sequence..."
+                className="w-full h-64 p-8 bg-white/[0.02] border border-white/10 rounded-sm font-mono text-sm focus:border-emerald-500/50 focus:ring-0 transition-all resize-none"
+              />
+            </div>
+          </div>
+
+          {/* Results Area */}
+          <div className="lg:col-span-12">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt
+                  seed={appName + textA.length + textB.length}
+                  className="w-full h-full"
+                />
               </div>
 
-              <div className="flex justify-center mb-6">
-                <button
-                  onClick={computeDiff}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
-                >
-                  Compare Texts
-                </button>
-              </div>
+              <div className="relative z-10 space-y-8">
+                <div className="flex items-center justify-between border-b border-white/5 pb-6">
+                  <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2">
+                    <FileSearchIcon weight="fill" />
+                    Structural_Variance_Map
+                  </h3>
+                  <div className="flex items-center gap-6 font-mono text-[9px] text-gray-500 uppercase tracking-widest">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-emerald-500/40" /> Insertion
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-2 h-2 bg-red-500/40" /> Deletion
+                    </div>
+                  </div>
+                </div>
 
-              <div className="mt-4">
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  Differences
-                </label>
-                <div
-                  className="w-full p-4 bg-gray-800/50 font-mono resize-y border rounded-md border-app-alpha-50 text-app-light overflow-auto"
-                  style={{ minHeight: '100px' }}
-                >
+                <div className="bg-black/40 p-8 rounded-sm font-mono text-sm leading-relaxed min-h-[200px] border border-white/5 shadow-inner">
                   {diffOutput.length > 0 ? (
                     renderDiff()
                   ) : (
-                    <p className="text-gray-500">
-                      No differences or empty input.
-                    </p>
+                    <span className="text-gray-700 uppercase tracking-widest text-xs">
+                      Waiting for data comparison...
+                    </span>
                   )}
                 </div>
               </div>
             </div>
           </div>
+
+          <div className="lg:col-span-12">
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-6">
+              <ColumnsIcon size={32} className="text-gray-700 shrink-0 mt-1" />
+              <p className="text-sm font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500 max-w-4xl">
+                The analysis engine uses Google's Diff-Match-Patch algorithm to
+                map character-level variations between sequences. This protocol
+                ensures high precision identification of semantic changes.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Variance_Engine_v0.6.1</span>
+          <span className="text-gray-800">ANALYSIS_CORE // ACTIVE</span>
+        </footer>
       </div>
     </div>
   );

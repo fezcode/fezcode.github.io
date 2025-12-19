@@ -1,31 +1,28 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, MetronomeIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { motion } from 'framer-motion';
+import {
+  ArrowLeftIcon,
+  MetronomeIcon,
+  ArrowCounterClockwiseIcon,
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import { useAchievements } from '../../context/AchievementContext';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const BpmGuesserPage = () => {
+  const appName = 'BPM Guesser';
+
   useSeo({
-    title: 'BPM Guesser | Fezcodex',
-    description: 'Tap the beat to guess the BPM (Beats Per Minute) of a song.',
+    title: `${appName} | Fezcodex`,
+    description: 'Find the tempo of any song by tapping along to the beat.',
     keywords: [
       'Fezcodex',
-      'BPM guesser',
+      'BPM counter',
       'tap tempo',
-      'music tool',
-      'beat counter',
+      'music tools',
+      'metronome',
     ],
-    ogTitle: 'BPM Guesser | Fezcodex',
-    ogDescription:
-      'Tap the beat to guess the BPM (Beats Per Minute) of a song.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'BPM Guesser | Fezcodex',
-    twitterDescription:
-      'Tap the beat to guess the BPM (Beats Per Minute) of a song.',
-    twitterImage: '/images/ogtitle.png',
   });
 
   const [bpm, setBpm] = useState(0);
@@ -33,7 +30,6 @@ const BpmGuesserPage = () => {
   const lastTapTime = useRef(0);
   const { unlockAchievement } = useAchievements();
 
-  // For Human Metronome achievement
   const prevBpmRef = useRef(0);
   const streakRef = useRef(0);
 
@@ -58,7 +54,6 @@ const BpmGuesserPage = () => {
     const diff = now - lastTapTime.current;
     lastTapTime.current = now;
 
-    // Reset if pause is too long (> 2 seconds)
     if (diff > 2000) {
       setTaps([]);
       setBpm(0);
@@ -68,7 +63,6 @@ const BpmGuesserPage = () => {
     }
 
     const newTaps = [...taps, diff];
-    // Keep only last 8 taps for moving average
     if (newTaps.length > 8) {
       newTaps.shift();
     }
@@ -77,8 +71,6 @@ const BpmGuesserPage = () => {
     const averageDiff = newTaps.reduce((a, b) => a + b, 0) / newTaps.length;
     const calculatedBpm = Math.round(60000 / averageDiff);
 
-    // Check consistency for Human Metronome
-    // Only check if we have enough samples to be stable (e.g., > 3 taps)
     if (newTaps.length > 3) {
       if (calculatedBpm === prevBpmRef.current) {
         streakRef.current += 1;
@@ -90,7 +82,6 @@ const BpmGuesserPage = () => {
       }
     }
     prevBpmRef.current = calculatedBpm;
-
     setBpm(calculatedBpm);
   };
 
@@ -102,70 +93,111 @@ const BpmGuesserPage = () => {
     prevBpmRef.current = 0;
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="BPM Guesser" slug="bpm" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-2xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1 text-center">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center justify-center gap-2">
-                <MetronomeIcon size={32} /> BPM Guesser
-              </h1>
-              <hr className="border-gray-700 mb-6" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
 
-              <div className="mb-8">
-                <div className="text-6xl font-bold text-cyan-400 mb-2">
-                  {bpm > 0 ? bpm : '--'}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Protocol for temporal extraction. Align your input with the
+                rhythmic sequence to determine the frequency.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Main Interaction Area */}
+          <div className="lg:col-span-8">
+            <div className="relative border border-white/10 bg-white/[0.02] p-12 md:p-24 rounded-sm overflow-hidden group flex flex-col items-center justify-center">
+              {/* Generative Background */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale group-hover:opacity-[0.05] transition-opacity duration-700">
+                <GenerativeArt seed={appName + bpm} className="w-full h-full" />
+              </div>
+
+              <div className="relative z-10 flex flex-col items-center gap-12">
+                <div className="text-center space-y-2">
+                  <div className="text-8xl md:text-[12rem] font-black tracking-tighter text-emerald-500 leading-none">
+                    {bpm > 0 ? bpm : '00'}
+                  </div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.5em] text-gray-500">
+                    Beats_Per_Minute
+                  </div>
                 </div>
-                <div className="text-sm opacity-60 uppercase tracking-wider">
-                  Beats Per Minute
+
+                <motion.button
+                  whileTap={{ scale: 0.98 }}
+                  onMouseDown={handleTap}
+                  className="w-64 h-64 border-8 border-white bg-white text-black font-black text-4xl uppercase tracking-[0.2em] hover:bg-emerald-500 hover:border-emerald-500 transition-all duration-75 flex items-center justify-center shadow-[0_0_50px_rgba(255,255,255,0.1)]"
+                >
+                  TAP
+                </motion.button>
+              </div>
+            </div>
+          </div>
+
+          {/* Controls & Metrics */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <MetronomeIcon weight="fill" />
+                Session_Parameters
+              </h3>
+
+              <div className="space-y-6">
+                <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                  <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                    Sample_Count
+                  </span>
+                  <span className="text-xl font-black">{taps.length}</span>
+                </div>
+                <div className="flex justify-between items-end border-b border-white/5 pb-4">
+                  <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                    Stability_Streak
+                  </span>
+                  <span className="text-xl font-black">
+                    {streakRef.current}
+                  </span>
                 </div>
               </div>
 
               <button
-                onMouseDown={handleTap}
-                className="w-48 h-48 rounded-full border-4 border-cyan-500 text-cyan-500 font-bold text-2xl tracking-widest transition-all duration-100 active:scale-95 active:bg-cyan-500/20 hover:shadow-[0_0_20px_rgba(6,182,212,0.5)] flex items-center justify-center mx-auto"
+                onClick={reset}
+                className="mt-12 w-full py-4 border border-white/10 hover:bg-white hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3"
               >
-                TAP
+                <ArrowCounterClockwiseIcon weight="bold" size={16} />
+                Reset Engine
               </button>
+            </div>
 
-              <div className="mt-8">
-                <button
-                  onClick={reset}
-                  className="text-sm opacity-50 hover:opacity-100 transition-opacity underline"
-                >
-                  Reset
-                </button>
-              </div>
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Data extraction improves with consistency. Maintain a stable
+                input sequence for higher precision mapping.
+              </p>
             </div>
           </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Temporal_Module_v0.6.1</span>
+          <span className="text-gray-800">SYNC_STATUS // STABLE</span>
+        </footer>
       </div>
     </div>
   );

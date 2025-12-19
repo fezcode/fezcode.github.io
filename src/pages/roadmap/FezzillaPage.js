@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useSeo from '../../hooks/useSeo';
-import {
-  ArrowLeft,
-} from '@phosphor-icons/react';
+import { ArrowLeft } from '@phosphor-icons/react';
 import piml from 'piml';
 import RoadmapView from '../../components/roadmap/RoadmapView';
 import TableView from '../../components/roadmap/TableView';
@@ -42,7 +40,6 @@ const FezzillaPage = () => {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
-
         {/* Header Section */}
         <header className="mb-20 text-center md:text-left">
           <Link
@@ -59,31 +56,32 @@ const FezzillaPage = () => {
                 Roadmap
               </h1>
               <p className="text-gray-400 font-mono text-sm max-w-2xl uppercase tracking-[0.2em] leading-relaxed mx-auto md:mx-0">
-                Tracking status, progress, and future milestones of all digital artifacts.
+                Tracking status, progress, and future milestones of all digital
+                artifacts.
               </p>
             </div>
 
             <div className="flex bg-white/5 border border-white/10 rounded-sm p-1">
-                <button
-                  onClick={() => setViewMode('roadmap')}
-                  className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
-                    viewMode === 'roadmap'
-                      ? 'bg-white text-black shadow-lg'
-                      : 'text-gray-500 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  KANBAN
-                </button>
-                <button
-                  onClick={() => setViewMode('table')}
-                  className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
-                    viewMode === 'table'
-                      ? 'bg-white text-black shadow-lg'
-                      : 'text-gray-500 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  TABLE
-                </button>
+              <button
+                onClick={() => setViewMode('roadmap')}
+                className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
+                  viewMode === 'roadmap'
+                    ? 'bg-white text-black shadow-lg'
+                    : 'text-gray-500 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                KANBAN
+              </button>
+              <button
+                onClick={() => setViewMode('table')}
+                className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
+                  viewMode === 'table'
+                    ? 'bg-white text-black shadow-lg'
+                    : 'text-gray-500 hover:text-white hover:bg-white/5'
+                }`}
+              >
+                TABLE
+              </button>
             </div>
           </div>
         </header>

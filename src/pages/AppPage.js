@@ -18,7 +18,8 @@ import { KEY_APPS_COLLAPSED_CATEGORIES } from '../utils/LocalStorageManager';
 function AppPage() {
   useSeo({
     title: 'Apps | Fezcodex',
-    description: 'A collection of tools, games, and utilities created within Fezcodex.',
+    description:
+      'A collection of tools, games, and utilities created within Fezcodex.',
     keywords: ['Fezcodex', 'apps', 'utilities', 'tools', 'react'],
   });
 
@@ -73,8 +74,12 @@ function AppPage() {
     return [...apps].sort((a, b) => {
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
-        const matchA = a.title.toLowerCase().includes(query) || a.description.toLowerCase().includes(query);
-        const matchB = b.title.toLowerCase().includes(query) || b.description.toLowerCase().includes(query);
+        const matchA =
+          a.title.toLowerCase().includes(query) ||
+          a.description.toLowerCase().includes(query);
+        const matchB =
+          b.title.toLowerCase().includes(query) ||
+          b.description.toLowerCase().includes(query);
         if (matchA && !matchB) return -1;
         if (!matchA && matchB) return 1;
       }
@@ -88,7 +93,11 @@ function AppPage() {
   const filterApps = (apps) => {
     if (!searchQuery) return apps;
     const query = searchQuery.toLowerCase();
-    return apps.filter(app => app.title.toLowerCase().includes(query) || app.description.toLowerCase().includes(query));
+    return apps.filter(
+      (app) =>
+        app.title.toLowerCase().includes(query) ||
+        app.description.toLowerCase().includes(query),
+    );
   };
 
   const variants = {
@@ -99,7 +108,6 @@ function AppPage() {
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
-
         {/* Header Section */}
         <header className="mb-20">
           <Link
@@ -110,52 +118,58 @@ function AppPage() {
             <span>Home</span>
           </Link>
 
-                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-                      <div>
-                        <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                          Apps
-                        </h1>
-                        <p className="text-gray-400 font-mono text-sm max-w-sm uppercase tracking-widest">
-                          Total Apps: {totalAppsCount}
-                        </p>
-                      </div>
-                    </div>
-                  </header>
-
-                  {/* Controls: Search & Sort */}
-                  <div className="sticky top-0 z-30 bg-[#050505]/95 backdrop-blur-sm border-b border-white/10 pb-6 pt-2 mb-12">
-                      <div className="flex flex-col md:flex-row gap-6 items-center">
-                          <div className="relative flex-1 group">
-                             <MagnifyingGlass className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-emerald-500 transition-colors" size={20} />
-                             <input
-                                type="text"
-                                placeholder="Search apps..."
-                                value={searchQuery}
-                                onChange={(e) => setSearchQuery(e.target.value)}
-                                className="w-full bg-transparent border-b border-gray-800 pl-8 text-xl md:text-2xl font-light text-white placeholder-gray-700 focus:border-emerald-500 focus:outline-none py-2 transition-colors font-mono"
-                             />
-                          </div>
-                <div className="w-full md:w-64">
-                  <CustomDropdown
-                    options={[
-                      { label: 'Default Order', value: 'default' },
-                      { label: 'Newest First', value: 'created_desc' },
-                      { label: 'Oldest First', value: 'created_asc' },
-                    ]}
-                    value={sortOption}
-                    onChange={setSortOption}
-                    icon={Funnel}
-                    label="Sort"
-                    variant="brutalist"
-                  />
-                </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                Apps
+              </h1>
+              <p className="text-gray-400 font-mono text-sm max-w-sm uppercase tracking-widest">
+                Total Apps: {totalAppsCount}
+              </p>
             </div>
+          </div>
+        </header>
+
+        {/* Controls: Search & Sort */}
+        <div className="sticky top-0 z-30 bg-[#050505]/95 backdrop-blur-sm border-b border-white/10 pb-6 pt-2 mb-12">
+          <div className="flex flex-col md:flex-row gap-6 items-center">
+            <div className="relative flex-1 group">
+              <MagnifyingGlass
+                className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-emerald-500 transition-colors"
+                size={20}
+              />
+              <input
+                type="text"
+                placeholder="Search apps..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-transparent border-b border-gray-800 pl-8 text-xl md:text-2xl font-light text-white placeholder-gray-700 focus:border-emerald-500 focus:outline-none py-2 transition-colors font-mono"
+              />
+            </div>
+            <div className="w-full md:w-64">
+              <CustomDropdown
+                options={[
+                  { label: 'Default Order', value: 'default' },
+                  { label: 'Newest First', value: 'created_desc' },
+                  { label: 'Oldest First', value: 'created_asc' },
+                ]}
+                value={sortOption}
+                onChange={setSortOption}
+                icon={Funnel}
+                label="Sort"
+                variant="brutalist"
+              />
+            </div>
+          </div>
         </div>
 
         {isLoading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-64 w-full bg-white/5 border border-white/10 rounded-sm animate-pulse" />
+              <div
+                key={i}
+                className="h-64 w-full bg-white/5 border border-white/10 rounded-sm animate-pulse"
+              />
             ))}
           </div>
         ) : (
@@ -178,18 +192,31 @@ function AppPage() {
                       onClick={() => toggleCategoryCollapse(categoryKey)}
                     >
                       <div className="flex items-center gap-4">
-                        <div className={`p-2 transition-colors ${isCollapsed ? 'text-gray-600' : 'text-emerald-500'}`}>
-                          {CategoryIcon && <CategoryIcon size={24} weight={isCollapsed ? 'regular' : 'fill'} />}
+                        <div
+                          className={`p-2 transition-colors ${isCollapsed ? 'text-gray-600' : 'text-emerald-500'}`}
+                        >
+                          {CategoryIcon && (
+                            <CategoryIcon
+                              size={24}
+                              weight={isCollapsed ? 'regular' : 'fill'}
+                            />
+                          )}
                         </div>
                         <div className="text-left">
                           <h2 className="text-2xl font-bold font-sans uppercase tracking-tight text-gray-200 group-hover:text-white transition-colors">
                             {category.name}
-                            <span className="ml-4 font-mono text-xs font-normal text-gray-500">[{sortedApps.length}]</span>
+                            <span className="ml-4 font-mono text-xs font-normal text-gray-500">
+                              [{sortedApps.length}]
+                            </span>
                           </h2>
                         </div>
                       </div>
                       <div className="text-gray-600 group-hover:text-white transition-colors">
-                        {isCollapsed ? <CaretRight size={20} weight="bold" /> : <CaretDown size={20} weight="bold" />}
+                        {isCollapsed ? (
+                          <CaretRight size={20} weight="bold" />
+                        ) : (
+                          <CaretDown size={20} weight="bold" />
+                        )}
                       </div>
                     </button>
 
@@ -201,7 +228,10 @@ function AppPage() {
                           animate="open"
                           exit="collapsed"
                           variants={variants}
-                          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                          transition={{
+                            duration: 0.4,
+                            ease: [0.23, 1, 0.32, 1],
+                          }}
                           className="overflow-hidden"
                         >
                           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -216,11 +246,14 @@ function AppPage() {
                 );
               })}
 
-            {searchQuery && Object.keys(groupedApps).every(key => filterApps(groupedApps[key].apps).length === 0) && (
+            {searchQuery &&
+              Object.keys(groupedApps).every(
+                (key) => filterApps(groupedApps[key].apps).length === 0,
+              ) && (
                 <div className="py-32 text-center font-mono text-gray-600 uppercase tracking-widest border border-dashed border-white/10">
-                   No apps matching "{searchQuery}" found in archive.
+                  No apps matching "{searchQuery}" found in archive.
                 </div>
-            )}
+              )}
           </div>
         )}
       </div>

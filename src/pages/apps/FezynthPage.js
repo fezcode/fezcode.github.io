@@ -126,61 +126,67 @@ const FezynthPage = () => {
     draw();
   }, [audioContext]);
 
-  const playNote = useCallback((freq) => {
-    const ctx = audioContextRef.current;
-    if (!ctx) return;
-    if (ctx.state === 'suspended') ctx.resume();
+  const playNote = useCallback(
+    (freq) => {
+      const ctx = audioContextRef.current;
+      if (!ctx) return;
+      if (ctx.state === 'suspended') ctx.resume();
 
-    // Check Ref instead of State to prevent repeats and stuck keys
-    if (activeNotesRef.current[freq]) return;
+      // Check Ref instead of State to prevent repeats and stuck keys
+      if (activeNotesRef.current[freq]) return;
 
-    const oscillator = ctx.createOscillator();
-    const gainNode = ctx.createGain();
+      const oscillator = ctx.createOscillator();
+      const gainNode = ctx.createGain();
 
-    oscillator.type = waveform;
-    oscillator.frequency.setValueAtTime(freq, ctx.currentTime);
+      oscillator.type = waveform;
+      oscillator.frequency.setValueAtTime(freq, ctx.currentTime);
 
-    // Envelope Attack
-    gainNode.gain.setValueAtTime(0, ctx.currentTime);
-    gainNode.gain.linearRampToValueAtTime(volume, ctx.currentTime + attack);
+      // Envelope Attack
+      gainNode.gain.setValueAtTime(0, ctx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(volume, ctx.currentTime + attack);
 
-    oscillator.connect(gainNode);
-    gainNode.connect(analyserRef.current);
+      oscillator.connect(gainNode);
+      gainNode.connect(analyserRef.current);
 
-    oscillator.start();
+      oscillator.start();
 
-    // Update Ref immediately
-    activeNotesRef.current[freq] = { oscillator, gainNode };
-    // Update State for UI
-    setActiveNotes((prev) => ({ ...prev, [freq]: true }));
-  }, [waveform, volume, attack]);
+      // Update Ref immediately
+      activeNotesRef.current[freq] = { oscillator, gainNode };
+      // Update State for UI
+      setActiveNotes((prev) => ({ ...prev, [freq]: true }));
+    },
+    [waveform, volume, attack],
+  );
 
-  const stopNote = useCallback((freq) => {
-    const ctx = audioContextRef.current;
-    if (!ctx || !activeNotesRef.current[freq]) return;
+  const stopNote = useCallback(
+    (freq) => {
+      const ctx = audioContextRef.current;
+      if (!ctx || !activeNotesRef.current[freq]) return;
 
-    const { oscillator, gainNode } = activeNotesRef.current[freq];
+      const { oscillator, gainNode } = activeNotesRef.current[freq];
 
-    // Envelope Release
-    gainNode.gain.cancelScheduledValues(ctx.currentTime);
-    gainNode.gain.setValueAtTime(gainNode.gain.value, ctx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(
-      0.001,
-      ctx.currentTime + release,
-    );
+      // Envelope Release
+      gainNode.gain.cancelScheduledValues(ctx.currentTime);
+      gainNode.gain.setValueAtTime(gainNode.gain.value, ctx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(
+        0.001,
+        ctx.currentTime + release,
+      );
 
-    oscillator.stop(ctx.currentTime + release);
+      oscillator.stop(ctx.currentTime + release);
 
-    // Cleanup Ref
-    delete activeNotesRef.current[freq];
+      // Cleanup Ref
+      delete activeNotesRef.current[freq];
 
-    // Cleanup State for UI immediately (visual feedback)
-    setActiveNotes((prev) => {
-      const newState = { ...prev };
-      delete newState[freq];
-      return newState;
-    });
-  }, [release]);
+      // Cleanup State for UI immediately (visual feedback)
+      setActiveNotes((prev) => {
+        const newState = { ...prev };
+        delete newState[freq];
+        return newState;
+      });
+    },
+    [release],
+  );
 
   // Handle Keyboard Input
   useEffect(() => {

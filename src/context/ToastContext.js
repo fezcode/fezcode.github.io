@@ -26,20 +26,22 @@ export const ToastProvider = ({ children }) => {
   return (
     <ToastContext.Provider value={{ addToast, removeToast }}>
       {children}
-      <div className="fixed top-28 right-10 z-50">
-        {toasts.map((toast) => (
-          <Toast
-            key={toast.id}
-            id={toast.id}
-            title={toast.title}
-            message={toast.message}
-            duration={toast.duration}
-            type={toast.type}
-            icon={toast.icon}
-            links={toast.links}
-            removeToast={removeToast}
-          />
-        ))}
+      <div className="fixed top-24 right-6 md:right-12 z-[100] pointer-events-none flex flex-col items-end gap-2">
+        <div className="pointer-events-auto flex flex-col-reverse gap-3">
+          {toasts.map((toast) => (
+            <Toast
+              key={toast.id}
+              id={toast.id}
+              title={toast.title}
+              message={toast.message}
+              duration={toast.duration}
+              type={toast.type}
+              icon={toast.icon}
+              links={toast.links}
+              removeToast={removeToast}
+            />
+          ))}
+        </div>
       </div>
     </ToastContext.Provider>
   );

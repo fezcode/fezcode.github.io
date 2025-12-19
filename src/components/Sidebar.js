@@ -40,7 +40,13 @@ import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 import { useAchievements } from '../context/AchievementContext';
 import colors from '../config/colors';
 
-const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen, sidebarColor }) => {
+const Sidebar = ({
+  isOpen,
+  toggleSidebar,
+  toggleModal,
+  setIsPaletteOpen,
+  sidebarColor,
+}) => {
   const [sidebarState, setSidebarState] = usePersistentState(
     KEY_SIDEBAR_STATE,
     {

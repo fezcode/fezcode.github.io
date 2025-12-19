@@ -1,12 +1,14 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CheckCircle, XCircle } from '@phosphor-icons/react'; // Using Palette for now
-import colors from '../../config/colors';
-import { useToast } from '../../hooks/useToast';
+import {
+  ArrowLeftIcon,
+  CheckCircleIcon,
+  XCircleIcon,
+  PaletteIcon,
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
-// Helper function to convert hex to RGB
 const hexToRgb = (hex) => {
   const r = parseInt(hex.substring(1, 3), 16);
   const g = parseInt(hex.substring(3, 5), 16);
@@ -14,7 +16,6 @@ const hexToRgb = (hex) => {
   return [r, g, b];
 };
 
-// Helper function to calculate luminance
 const getLuminance = (r, g, b) => {
   const a = [r, g, b].map((v) => {
     v /= 255;
@@ -23,7 +24,6 @@ const getLuminance = (r, g, b) => {
   return a[0] * 0.2126 + a[1] * 0.7152 + a[2] * 0.0722;
 };
 
-// Helper function to calculate contrast ratio
 const getContrastRatio = (rgb1, rgb2) => {
   const lum1 = getLuminance(rgb1[0], rgb1[1], rgb1[2]);
   const lum2 = getLuminance(rgb2[0], rgb2[1], rgb2[2]);
@@ -33,10 +33,12 @@ const getContrastRatio = (rgb1, rgb2) => {
 };
 
 const ColorContrastCheckerPage = () => {
+  const appName = 'Contrast Checker';
+
   useSeo({
-    title: 'Color Contrast Checker | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description:
-      'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
+      'Verify color accessibility and WCAG compliance for digital interfaces.',
     keywords: [
       'Fezcodex',
       'color contrast',
@@ -44,30 +46,12 @@ const ColorContrastCheckerPage = () => {
       'WCAG',
       'color checker',
     ],
-    ogTitle: 'Color Contrast Checker | Fezcodex',
-    ogDescription:
-      'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Color Contrast Checker | Fezcodex',
-    twitterDescription:
-      'Check the contrast ratio of your colors to ensure accessibility and WCAG compliance.',
-    twitterImage: '/images/ogtitle.png',
   });
-  const { addToast } = useToast();
 
-  const [foregroundColor, setForegroundColor] = useState('#FFFFFF'); // Default white
-  const [backgroundColor, setBackgroundColor] = useState('#000000'); // Default black
+  const [foregroundColor, setForegroundColor] = useState('#FFFFFF');
+  const [backgroundColor, setBackgroundColor] = useState('#050505');
   const [contrastRatio, setContrastRatio] = useState(0);
   const [wcagStatus, setWcagStatus] = useState({ aa: false, aaa: false });
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const inputStyle = `mt-1 block w-full p-2 border rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 border-gray-600`;
 
   const calculateContrast = useCallback(() => {
     try {
@@ -75,11 +59,6 @@ const ColorContrastCheckerPage = () => {
       const bgRgb = hexToRgb(backgroundColor);
       const ratio = getContrastRatio(fgRgb, bgRgb);
       setContrastRatio(ratio.toFixed(2));
-
-      // WCAG 2.1 Guidelines
-      // Normal Text: AA (4.5:1), AAA (7:1)
-      // Large Text (18pt or 14pt bold): AA (3:1), AAA (4.5:1)
-      // For simplicity, we'll check for normal text here.
       setWcagStatus({
         aa: ratio >= 4.5,
         aaa: ratio >= 7,
@@ -87,148 +66,206 @@ const ColorContrastCheckerPage = () => {
     } catch (error) {
       setContrastRatio(0);
       setWcagStatus({ aa: false, aaa: false });
-      addToast({
-        title: 'Error',
-        message: 'Invalid hex color format.',
-        duration: 3000,
-        type: 'error',
-      });
     }
-  }, [foregroundColor, backgroundColor, addToast]);
+  }, [foregroundColor, backgroundColor]);
 
   useEffect(() => {
     calculateContrast();
   }, [calculateContrast]);
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Color Contrast Checker" slug="ccc" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Color Contrast Checker{' '}
-              </h1>
-              <hr className="border-gray-700 mb-4" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label
-                    htmlFor="foregroundColor"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Foreground Color (Hex)
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Accessibility verification protocol. Map chromatic ratios to
+                ensure visual clarity and adherence to universal standards.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Controls Column */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2">
+                <PaletteIcon weight="fill" />
+                Aesthetic_Input
+              </h3>
+
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <label className="block font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                    Foreground_Hex
                   </label>
-                  <input
-                    type="color"
-                    id="foregroundColorPicker"
-                    value={foregroundColor}
-                    onChange={(e) =>
-                      setForegroundColor(e.target.value.toUpperCase())
-                    }
-                    className="w-full h-10 mb-2 rounded-md cursor-pointer"
-                    title="Pick Foreground Color"
-                  />
-                  <input
-                    type="text"
-                    id="foregroundColor"
-                    value={foregroundColor}
-                    onChange={(e) =>
-                      setForegroundColor(e.target.value.toUpperCase())
-                    }
-                    className={inputStyle}
-                    placeholder="#FFFFFF"
-                  />
+                  <div className="flex gap-2">
+                    <input
+                      type="color"
+                      value={foregroundColor}
+                      onChange={(e) =>
+                        setForegroundColor(e.target.value.toUpperCase())
+                      }
+                      className="w-12 h-12 rounded-sm cursor-pointer bg-transparent border border-white/10 p-1"
+                    />
+                    <input
+                      type="text"
+                      value={foregroundColor}
+                      onChange={(e) =>
+                        setForegroundColor(e.target.value.toUpperCase())
+                      }
+                      className="flex-1 bg-white/5 border border-white/10 rounded-sm px-4 font-mono text-sm uppercase focus:border-emerald-500/50 focus:ring-0 transition-all"
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="backgroundColor"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Background Color (Hex)
+
+                <div className="space-y-4">
+                  <label className="block font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                    Background_Hex
                   </label>
-                  <input
-                    type="color"
-                    id="backgroundColorPicker"
-                    value={backgroundColor}
-                    onChange={(e) =>
-                      setBackgroundColor(e.target.value.toUpperCase())
-                    }
-                    className="w-full h-10 mb-2 rounded-md cursor-pointer"
-                    title="Pick Background Color"
-                  />
-                  <input
-                    type="text"
-                    id="backgroundColor"
-                    value={backgroundColor}
-                    onChange={(e) =>
-                      setBackgroundColor(e.target.value.toUpperCase())
-                    }
-                    className={inputStyle}
-                    placeholder="#000000"
-                  />
+                  <div className="flex gap-2">
+                    <input
+                      type="color"
+                      value={backgroundColor}
+                      onChange={(e) =>
+                        setBackgroundColor(e.target.value.toUpperCase())
+                      }
+                      className="w-12 h-12 rounded-sm cursor-pointer bg-transparent border border-white/10 p-1"
+                    />
+                    <input
+                      type="text"
+                      value={backgroundColor}
+                      onChange={(e) =>
+                        setBackgroundColor(e.target.value.toUpperCase())
+                      }
+                      className="flex-1 bg-white/5 border border-white/10 rounded-sm px-4 font-mono text-sm uppercase focus:border-emerald-500/50 focus:ring-0 transition-all"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Contrast ratios define the readability of digital assets. Higher
+                ratios improve processing efficiency for human operators.
+              </p>
+            </div>
+          </div>
+
+          {/* Preview & Results Column */}
+          <div className="lg:col-span-8 space-y-8">
+            {/* Immersive Preview */}
+            <div
+              className="relative aspect-video rounded-sm overflow-hidden flex flex-col items-center justify-center p-12 transition-colors duration-500 border border-white/10"
+              style={{ backgroundColor }}
+            >
+              <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay">
+                <GenerativeArt
+                  seed={foregroundColor + backgroundColor}
+                  className="w-full h-full"
+                />
+              </div>
+
+              <div
+                className="relative z-10 text-center space-y-6"
+                style={{ color: foregroundColor }}
+              >
+                <div className="text-6xl md:text-8xl font-black uppercase tracking-tighter leading-none">
+                  Sample Text
+                </div>
+                <p className="text-xl md:text-2xl font-light max-w-md mx-auto leading-relaxed">
+                  The quick brown fox jumps over the lazy dog.
+                </p>
+              </div>
+            </div>
+
+            {/* Metrics Dashboard */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm flex flex-col items-center justify-center gap-2">
+                <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                  Ratio
+                </span>
+                <div className="text-4xl font-black text-emerald-500">
+                  {contrastRatio}:1
                 </div>
               </div>
 
               <div
-                className="w-full h-32 rounded-md flex items-center justify-center text-2xl font-bold mb-6"
-                style={{
-                  backgroundColor: backgroundColor,
-                  color: foregroundColor,
-                  border: `1px solid ${colors['app-alpha-50']}`,
-                }}
+                className={`border border-white/10 p-8 rounded-sm flex flex-col items-center justify-center gap-4 transition-all ${wcagStatus.aa ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-red-500/10 border-red-500/20'}`}
               >
-                Aa
+                <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                  WCAG_AA
+                </span>
+                {wcagStatus.aa ? (
+                  <CheckCircleIcon
+                    size={32}
+                    weight="fill"
+                    className="text-emerald-500"
+                  />
+                ) : (
+                  <XCircleIcon
+                    size={32}
+                    weight="fill"
+                    className="text-red-500"
+                  />
+                )}
+                <span
+                  className={`text-[10px] font-black uppercase tracking-widest ${wcagStatus.aa ? 'text-emerald-500' : 'text-red-500'}`}
+                >
+                  {wcagStatus.aa ? 'PASS' : 'FAIL'}
+                </span>
               </div>
 
-              <div className="mb-6">
-                <p className="text-lg font-medium text-gray-300 mb-2">
-                  Contrast Ratio:{' '}
-                  <span className="text-white">{contrastRatio}:1</span>
-                </p>
-                <div className="flex items-center gap-4">
-                  <span className="text-base font-medium text-gray-300">
-                    WCAG AA:
-                  </span>
-                  {wcagStatus.aa ? (
-                    <CheckCircle size={24} className="text-green-500" />
-                  ) : (
-                    <XCircle size={24} className="text-red-500" />
-                  )}
-                  <span className="text-base font-medium text-gray-300 ml-4">
-                    WCAG AAA:
-                  </span>
-                  {wcagStatus.aaa ? (
-                    <CheckCircle size={24} className="text-green-500" />
-                  ) : (
-                    <XCircle size={24} className="text-red-500" />
-                  )}
-                </div>
+              <div
+                className={`border border-white/10 p-8 rounded-sm flex flex-col items-center justify-center gap-4 transition-all ${wcagStatus.aaa ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-red-500/10 border-red-500/20'}`}
+              >
+                <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                  WCAG_AAA
+                </span>
+                {wcagStatus.aaa ? (
+                  <CheckCircleIcon
+                    size={32}
+                    weight="fill"
+                    className="text-emerald-500"
+                  />
+                ) : (
+                  <XCircleIcon
+                    size={32}
+                    weight="fill"
+                    className="text-red-500"
+                  />
+                )}
+                <span
+                  className={`text-[10px] font-black uppercase tracking-widest ${wcagStatus.aaa ? 'text-emerald-500' : 'text-red-500'}`}
+                >
+                  {wcagStatus.aaa ? 'PASS' : 'FAIL'}
+                </span>
               </div>
             </div>
           </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Chromatic_Analyzer_v0.6.1</span>
+          <span className="text-gray-800">ACCESSIBILITY_MODE // VERIFIED</span>
+        </footer>
       </div>
     </div>
   );

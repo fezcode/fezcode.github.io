@@ -8,10 +8,18 @@ const Stopwatch = () => {
   const intervalRef = useRef(null);
   const { unlockAchievement } = useAchievements();
 
+  const startTimeRef = useRef(0);
+
+  const timeRef = useRef(time);
+  useEffect(() => {
+    timeRef.current = time;
+  }, [time]);
+
   useEffect(() => {
     if (isRunning) {
+      startTimeRef.current = Date.now() - timeRef.current;
       intervalRef.current = setInterval(() => {
-        setTime((prevTime) => prevTime + 10);
+        setTime(Date.now() - startTimeRef.current);
       }, 10);
     } else {
       clearInterval(intervalRef.current);
@@ -25,8 +33,7 @@ const Stopwatch = () => {
   };
   const handleStop = () => {
     setIsRunning(false);
-    console.log(time);
-    if (time === 10000) {
+    if (time >= 10000 && time < 10010) {
       unlockAchievement('perfect_timing');
     }
   };
@@ -40,7 +47,7 @@ const Stopwatch = () => {
   };
 
   const formatTime = (timeValue) => {
-    const milliseconds = `0${(timeValue % 1000) / 10}`.slice(-2);
+    const milliseconds = `0${Math.floor((timeValue % 1000) / 10)}`.slice(-2);
     const seconds = `0${Math.floor(timeValue / 1000) % 60}`.slice(-2);
     const minutes = `0${Math.floor(timeValue / 60000) % 60}`.slice(-2);
     const hours = `0${Math.floor(timeValue / 3600000)}`.slice(-2);

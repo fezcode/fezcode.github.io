@@ -38,47 +38,50 @@ const SpirographPage = () => {
   const requestRef = useRef();
 
   // Draw helper
-  const draw = useCallback((ctx, currentAngle) => {
-    const width = ctx.canvas.width;
-    const height = ctx.canvas.height;
-    const centerX = width / 2;
-    const centerY = height / 2;
+  const draw = useCallback(
+    (ctx, currentAngle) => {
+      const width = ctx.canvas.width;
+      const height = ctx.canvas.height;
+      const centerX = width / 2;
+      const centerY = height / 2;
 
-    const R = outerRadius;
-    const r = innerRadius;
-    const d = penOffset;
+      const R = outerRadius;
+      const r = innerRadius;
+      const d = penOffset;
 
-    // Current point
-    const x =
-      (R - r) * Math.cos(currentAngle) +
-      d * Math.cos(((R - r) / r) * currentAngle);
-    const y =
-      (R - r) * Math.sin(currentAngle) -
-      d * Math.sin(((R - r) / r) * currentAngle);
+      // Current point
+      const x =
+        (R - r) * Math.cos(currentAngle) +
+        d * Math.cos(((R - r) / r) * currentAngle);
+      const y =
+        (R - r) * Math.sin(currentAngle) -
+        d * Math.sin(((R - r) / r) * currentAngle);
 
-    // Previous point (to draw line)
-    // We approximate prev point by subtracting resolution.
-    // Ideally we store the last point, but for high res this is okayish,
-    // or we can use moveTo/lineTo in a path.
-    // Better approach for continuous drawing:
+      // Previous point (to draw line)
+      // We approximate prev point by subtracting resolution.
+      // Ideally we store the last point, but for high res this is okayish,
+      // or we can use moveTo/lineTo in a path.
+      // Better approach for continuous drawing:
 
-    ctx.beginPath();
-    // Calculate a slightly previous point to connect to
-    const prevAngle = currentAngle - resolution;
-    const prevX =
-      (R - r) * Math.cos(prevAngle) + d * Math.cos(((R - r) / r) * prevAngle);
-    const prevY =
-      (R - r) * Math.sin(prevAngle) - d * Math.sin(((R - r) / r) * prevAngle);
+      ctx.beginPath();
+      // Calculate a slightly previous point to connect to
+      const prevAngle = currentAngle - resolution;
+      const prevX =
+        (R - r) * Math.cos(prevAngle) + d * Math.cos(((R - r) / r) * prevAngle);
+      const prevY =
+        (R - r) * Math.sin(prevAngle) - d * Math.sin(((R - r) / r) * prevAngle);
 
-    ctx.moveTo(centerX + prevX, centerY + prevY);
-    ctx.lineTo(centerX + x, centerY + y);
+      ctx.moveTo(centerX + prevX, centerY + prevY);
+      ctx.lineTo(centerX + x, centerY + y);
 
-    ctx.strokeStyle = isRainbow
-      ? `hsl(${(currentAngle * 10) % 360}, 70%, 50%)`
-      : color;
-    ctx.lineWidth = 1;
-    ctx.stroke();
-  }, [outerRadius, innerRadius, penOffset, resolution, isRainbow, color]);
+      ctx.strokeStyle = isRainbow
+        ? `hsl(${(currentAngle * 10) % 360}, 70%, 50%)`
+        : color;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    },
+    [outerRadius, innerRadius, penOffset, resolution, isRainbow, color],
+  );
 
   const animate = useCallback(() => {
     if (!isDrawing) return;

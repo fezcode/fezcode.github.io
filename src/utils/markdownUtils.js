@@ -3,14 +3,14 @@ function formatMarkdownTable(markdownTable) {
   const lines = markdownTable
     .trim()
     .split('\n')
-    .map(line => line.trim())
-    .filter(line => line.length > 0);
+    .map((line) => line.trim())
+    .filter((line) => line.length > 0);
 
   // 2. Parse rows into cells
-  const rows = lines.map(line => {
+  const rows = lines.map((line) => {
     // Remove leading/trailing pipes if present to avoid empty first/last cells
     const content = line.replace(/^\||\|$/g, '');
-    return content.split('|').map(cell => cell.trim());
+    return content.split('|').map((cell) => cell.trim());
   });
 
   if (rows.length === 0) return '';
@@ -19,7 +19,7 @@ function formatMarkdownTable(markdownTable) {
   const colWidths = new Array(colCount).fill(0);
 
   // 3. Calculate max width for each column
-  rows.forEach(row => {
+  rows.forEach((row) => {
     row.forEach((cell, i) => {
       // Ensure we don't exceed the column count defined by the header
       if (i < colCount) {
@@ -34,27 +34,29 @@ function formatMarkdownTable(markdownTable) {
     // Detect if this is the separator row (usually index 1, contains only dashes/colons)
     const isSeparator = rowIndex === 1 && /^[:\s-]*$/.test(row.join(''));
 
-    const formattedCells = row.map((cell, i) => {
-      if (i >= colCount) return null; // Skip extra cells if row is too long
+    const formattedCells = row
+      .map((cell, i) => {
+        if (i >= colCount) return null; // Skip extra cells if row is too long
 
-      const targetWidth = colWidths[i];
+        const targetWidth = colWidths[i];
 
-      if (isSeparator) {
-        // Handle alignment markers (e.g., :---, ---:, :---:)
-        const hasLeftColon = cell.startsWith(':');
-        const hasRightColon = cell.endsWith(':');
+        if (isSeparator) {
+          // Handle alignment markers (e.g., :---, ---:, :---:)
+          const hasLeftColon = cell.startsWith(':');
+          const hasRightColon = cell.endsWith(':');
 
-        // Build the separator line
-        const start = hasLeftColon ? ':' : '-';
-        const end = hasRightColon ? ':' : '-';
-        const dashes = '-'.repeat(targetWidth - 2);
+          // Build the separator line
+          const start = hasLeftColon ? ':' : '-';
+          const end = hasRightColon ? ':' : '-';
+          const dashes = '-'.repeat(targetWidth - 2);
 
-        return start + dashes + end;
-      } else {
-        // Standard data cell: Pad with spaces on the right
-        return cell.padEnd(targetWidth, ' ');
-      }
-    }).filter(c => c !== null); // Remove skipped cells
+          return start + dashes + end;
+        } else {
+          // Standard data cell: Pad with spaces on the right
+          return cell.padEnd(targetWidth, ' ');
+        }
+      })
+      .filter((c) => c !== null); // Remove skipped cells
 
     return `| ${formattedCells.join(' | ')} |`;
   });

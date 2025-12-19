@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
-import {
-  ListIcon,
-  UserIcon,
-  MagnifyingGlassIcon
-} from '@phosphor-icons/react';
+import { ListIcon, UserIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 
 const Navbar = ({
   toggleSidebar,
@@ -63,7 +59,10 @@ const Navbar = ({
             <Link to="/" className="flex items-center gap-2 group">
               <Fez />
               <span className="text-2xl font-black tracking-tighter uppercase font-mono transition-colors group-hover:text-emerald-500">
-                Fez<span className="text-emerald-500 group-hover:text-white">codex</span>
+                Fez
+                <span className="text-emerald-500 group-hover:text-white">
+                  codex
+                </span>
               </span>
             </Link>
           )}
@@ -72,9 +71,7 @@ const Navbar = ({
         {/* Center Text (Optional / Conditional) */}
         {isSidebarOpen && (
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:block">
-            <span
-              className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-gray-500"
-            >
+            <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-gray-500">
               The Fez of <span className="text-emerald-500">Code</span>
             </span>
           </div>
@@ -87,7 +84,9 @@ const Navbar = ({
             className="group flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-sm transition-all"
           >
             <UserIcon size={20} weight="bold" />
-            <span className="hidden md:inline text-[10px] font-mono font-bold uppercase tracking-widest">About</span>
+            <span className="hidden md:inline text-[10px] font-mono font-bold uppercase tracking-widest">
+              About
+            </span>
           </Link>
 
           <button
@@ -100,7 +99,9 @@ const Navbar = ({
             aria-label="Toggle Search"
           >
             <MagnifyingGlassIcon size={20} weight="bold" />
-            <span className="hidden md:inline text-[10px] font-mono font-bold uppercase tracking-widest">Search</span>
+            <span className="hidden md:inline text-[10px] font-mono font-bold uppercase tracking-widest">
+              Search
+            </span>
           </button>
         </div>
       </div>

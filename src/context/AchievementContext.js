@@ -1,4 +1,9 @@
-import React, { createContext, useContext, useEffect, useCallback } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useCallback,
+} from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useToast } from '../hooks/useToast';
 import { ACHIEVEMENTS } from '../config/achievements';
@@ -28,36 +33,44 @@ export const AchievementProvider = ({ children }) => {
   };
 
   // Helper to unlock an achievement
-  const unlockAchievement = useCallback((id) => {
-    // Check if valid achievement ID
-    const achievement = ACHIEVEMENTS.find((a) => a.id === id);
-    if (!achievement) return;
+  const unlockAchievement = useCallback(
+    (id) => {
+      // Check if valid achievement ID
+      const achievement = ACHIEVEMENTS.find((a) => a.id === id);
+      if (!achievement) return;
 
-    // Check if already unlocked
-    if (unlockedAchievements[id]?.unlocked) return;
+      // Check if already unlocked
+      if (unlockedAchievements[id]?.unlocked) return;
 
-    const now = new Date().toISOString();
+      const now = new Date().toISOString();
 
-    setUnlockedAchievements((prev) => ({
-      ...prev,
-      [id]: { unlocked: true, unlockedAt: now },
-    }));
+      setUnlockedAchievements((prev) => ({
+        ...prev,
+        [id]: { unlocked: true, unlockedAt: now },
+      }));
 
-    if (showAchievementToast) {
-      // Trigger Toast
-      addToast({
-        title: 'Achievement Unlocked!',
-        message: achievement.title,
-        duration: 4000,
-        icon: <TrophyIcon weight="duotone" />,
-        type: 'gold',
-        links: [
-          { label: 'Settings', to: '/settings' },
-          { label: 'Trophy Room', to: '/achievements' },
-        ],
-      });
-    }
-  }, [unlockedAchievements, setUnlockedAchievements, showAchievementToast, addToast]);
+      if (showAchievementToast) {
+        // Trigger Toast
+        addToast({
+          title: 'Achievement Unlocked!',
+          message: achievement.title,
+          duration: 4000,
+          icon: <TrophyIcon weight="duotone" />,
+          type: 'gold',
+          links: [
+            { label: 'Settings', to: '/settings' },
+            { label: 'Trophy Room', to: '/achievements' },
+          ],
+        });
+      }
+    },
+    [
+      unlockedAchievements,
+      setUnlockedAchievements,
+      showAchievementToast,
+      addToast,
+    ],
+  );
 
   const trackReadingProgress = (slug) => {
     if (!slug) return;

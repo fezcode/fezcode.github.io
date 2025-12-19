@@ -28,7 +28,12 @@ import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 import { useAchievements } from '../context/AchievementContext';
 
-const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen }) => {
+const BrutalistSidebar = ({
+  isOpen,
+  toggleSidebar,
+  toggleModal,
+  setIsPaletteOpen,
+}) => {
   const [sidebarState, setSidebarState] = usePersistentState(
     KEY_SIDEBAR_STATE,
     {
@@ -104,7 +109,9 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
       <span className="font-arvo text-[11px] font-bold uppercase tracking-[0.2em]">
         {'//'} {label}
       </span>
-      <span className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+      <span
+        className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+      >
         ↓
       </span>
     </button>
@@ -119,7 +126,9 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
     <>
       <div
         className={`fixed inset-0 bg-black/80 backdrop-blur-sm z-40 md:hidden transition-opacity ${
-          isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          isOpen
+            ? 'opacity-100 pointer-events-auto'
+            : 'opacity-0 pointer-events-none'
         }`}
         onClick={toggleSidebar}
       />
@@ -131,7 +140,13 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
         className="fixed top-0 left-0 h-screen w-72 bg-[#050505] z-50 flex flex-col border-r border-white/10 shadow-2xl"
       >
         <div className="p-8 border-b border-white/10 flex flex-col gap-2 bg-black/50">
-          <Link to="/" className="flex items-center gap-3 group" onClick={isOpen && window.innerWidth < 768 ? toggleSidebar : undefined}>
+          <Link
+            to="/"
+            className="flex items-center gap-3 group"
+            onClick={
+              isOpen && window.innerWidth < 768 ? toggleSidebar : undefined
+            }
+          >
             <span className="text-xl font-black uppercase tracking-tighter text-white">
               Fez<span className="text-emerald-500">codex</span>
             </span>
@@ -149,19 +164,41 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
             </div>
           )}
 
-          <div ref={scrollRef} className="h-full overflow-y-auto scrollbar-hide no-scrollbar">
+          <div
+            ref={scrollRef}
+            className="h-full overflow-y-auto scrollbar-hide no-scrollbar"
+          >
             {/* Section: Main */}
             <SectionHeader
               id="isMainOpen"
               label="Main"
               isOpen={sidebarState.isMainOpen}
-              active={location.pathname === '/' || location.pathname === '/about' || location.pathname === '/achievements'}
+              active={
+                location.pathname === '/' ||
+                location.pathname === '/about' ||
+                location.pathname === '/achievements'
+              }
             />
             {sidebarState.isMainOpen && (
               <nav className="flex flex-col">
-                <SidebarLink to="/" icon={House} label="Home" getLinkClass={getLinkClass} />
-                <SidebarLink to="/about" icon={User} label="About" getLinkClass={getLinkClass} />
-                <SidebarLink to="/achievements" icon={Trophy} label="Achievements" getLinkClass={getLinkClass} />
+                <SidebarLink
+                  to="/"
+                  icon={House}
+                  label="Home"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/about"
+                  icon={User}
+                  label="About"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/achievements"
+                  icon={Trophy}
+                  label="Achievements"
+                  getLinkClass={getLinkClass}
+                />
               </nav>
             )}
 
@@ -170,13 +207,32 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
               id="isContentOpen"
               label="Feed"
               isOpen={sidebarState.isContentOpen}
-              active={location.pathname.startsWith('/blog') || location.pathname.startsWith('/projects') || location.pathname.startsWith('/logs')}
+              active={
+                location.pathname.startsWith('/blog') ||
+                location.pathname.startsWith('/projects') ||
+                location.pathname.startsWith('/logs')
+              }
             />
             {sidebarState.isContentOpen && (
               <nav className="flex flex-col">
-                <SidebarLink to="/blog" icon={BookOpen} label="Blogposts" getLinkClass={getLinkClass} />
-                <SidebarLink to="/projects" icon={Wrench} label="Projects" getLinkClass={getLinkClass} />
-                <SidebarLink to="/logs" icon={Article} label="Discovery Logs" getLinkClass={getLinkClass} />
+                <SidebarLink
+                  to="/blog"
+                  icon={BookOpen}
+                  label="Blogposts"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/projects"
+                  icon={Wrench}
+                  label="Projects"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/logs"
+                  icon={Article}
+                  label="Discovery Logs"
+                  getLinkClass={getLinkClass}
+                />
               </nav>
             )}
 
@@ -185,13 +241,32 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
               id="isAppsOpen"
               label="Utilities"
               isOpen={sidebarState.isAppsOpen}
-              active={location.pathname.startsWith('/apps') || location.pathname.startsWith('/pinned-apps') || location.pathname.startsWith('/commands')}
+              active={
+                location.pathname.startsWith('/apps') ||
+                location.pathname.startsWith('/pinned-apps') ||
+                location.pathname.startsWith('/commands')
+              }
             />
             {sidebarState.isAppsOpen && (
               <nav className="flex flex-col">
-                <SidebarLink to="/pinned-apps" icon={PushPin} label="Favorites" getLinkClass={getLinkClass} />
-                <SidebarLink to="/apps" icon={SquaresFour} label="App Center" getLinkClass={getLinkClass} />
-                <SidebarLink to="/commands" icon={MagnifyingGlass} label="Manuals" getLinkClass={getLinkClass} />
+                <SidebarLink
+                  to="/pinned-apps"
+                  icon={PushPin}
+                  label="Favorites"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/apps"
+                  icon={SquaresFour}
+                  label="App Center"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/commands"
+                  icon={MagnifyingGlass}
+                  label="Manuals"
+                  getLinkClass={getLinkClass}
+                />
               </nav>
             )}
 
@@ -200,12 +275,25 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
               id="isStatusOpen"
               label="System Status"
               isOpen={sidebarState.isStatusOpen}
-              active={location.pathname.startsWith('/roadmap') || location.pathname.startsWith('/timeline')}
+              active={
+                location.pathname.startsWith('/roadmap') ||
+                location.pathname.startsWith('/timeline')
+              }
             />
             {sidebarState.isStatusOpen && (
               <nav className="flex flex-col">
-                <SidebarLink to="/timeline" icon={Timer} label="History" getLinkClass={getLinkClass} />
-                <SidebarLink to="/roadmap" icon={BugBeetle} label="Fezzilla" getLinkClass={getLinkClass} />
+                <SidebarLink
+                  to="/timeline"
+                  icon={Timer}
+                  label="History"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/roadmap"
+                  icon={BugBeetle}
+                  label="Fezzilla"
+                  getLinkClass={getLinkClass}
+                />
               </nav>
             )}
 
@@ -218,7 +306,12 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
             />
             {sidebarState.isExtrasOpen && (
               <nav className="flex flex-col">
-                <SidebarLink to="/stories" icon={Sword} label="Serfs & Frauds" getLinkClass={getLinkClass} />
+                <SidebarLink
+                  to="/stories"
+                  icon={Sword}
+                  label="Serfs & Frauds"
+                  getLinkClass={getLinkClass}
+                />
                 <a
                   href="/rss.xml"
                   target="_blank"
@@ -226,10 +319,15 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
                   className="group flex items-center justify-between px-6 py-3 transition-all duration-300 border-b border-white/5 text-gray-300 hover:text-white hover:bg-white/5"
                 >
                   <div className="flex items-center gap-4">
-                      <Rss size={18} weight="bold" />
-                      <span className="font-arvo text-sm font-medium uppercase tracking-widest">RSS_Feed</span>
+                    <Rss size={18} weight="bold" />
+                    <span className="font-arvo text-sm font-medium uppercase tracking-widest">
+                      RSS_Feed
+                    </span>
                   </div>
-                  <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                  <ArrowRight
+                    size={14}
+                    className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
+                  />
                 </a>
               </nav>
             )}
@@ -243,17 +341,36 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
         </div>
 
         <div className="p-6 border-t border-white/10 bg-black/50">
-            <div className="grid grid-cols-2 gap-2 mb-6">
-                <FooterButton onClick={() => setIsPaletteOpen(true)} icon={MagnifyingGlass} label="CMDS" />
-                <FooterButton onClick={() => navigate('/settings')} icon={GearSix} label="SETT" />
-                <FooterButton onClick={() => { navigate('/random'); unlockAchievement('feeling_lucky'); }} icon={Shuffle} label="RAND" />
-                <FooterButton onClick={toggleModal} icon={EnvelopeSimple} label="CONT" />
-            </div>
-            <div className="text-center">
-                <p className="font-arvo text-[10px] text-gray-600 uppercase tracking-widest font-medium">
-                    {`© ${new Date().getFullYear()} Fezcode // End of Segment`}
-                </p>
-            </div>
+          <div className="grid grid-cols-2 gap-2 mb-6">
+            <FooterButton
+              onClick={() => setIsPaletteOpen(true)}
+              icon={MagnifyingGlass}
+              label="CMDS"
+            />
+            <FooterButton
+              onClick={() => navigate('/settings')}
+              icon={GearSix}
+              label="SETT"
+            />
+            <FooterButton
+              onClick={() => {
+                navigate('/random');
+                unlockAchievement('feeling_lucky');
+              }}
+              icon={Shuffle}
+              label="RAND"
+            />
+            <FooterButton
+              onClick={toggleModal}
+              icon={EnvelopeSimple}
+              label="CONT"
+            />
+          </div>
+          <div className="text-center">
+            <p className="font-arvo text-[10px] text-gray-600 uppercase tracking-widest font-medium">
+              {`© ${new Date().getFullYear()} Fezcode // End of Segment`}
+            </p>
+          </div>
         </div>
       </motion.aside>
     </>
@@ -261,26 +378,31 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
 };
 
 const SidebarLink = ({ to, icon: Icon, label, getLinkClass }) => (
-    <NavLink to={to} className={getLinkClass}>
-        <div className="flex items-center gap-4">
-            <Icon size={18} weight="bold" />
-            <span className="font-arvo text-sm font-medium uppercase tracking-widest">{label}</span>
-        </div>
-        <ArrowRight size={14} className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
-    </NavLink>
+  <NavLink to={to} className={getLinkClass}>
+    <div className="flex items-center gap-4">
+      <Icon size={18} weight="bold" />
+      <span className="font-arvo text-sm font-medium uppercase tracking-widest">
+        {label}
+      </span>
+    </div>
+    <ArrowRight
+      size={14}
+      className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
+    />
+  </NavLink>
 );
 
 const FooterButton = ({ onClick, icon: Icon, label }) => (
-    <button
-        onClick={onClick}
-        className="group flex flex-col items-center gap-2 p-2 border border-white/5 bg-white/5 hover:bg-white hover:border-white transition-all rounded-sm"
-    >
-        <div className="p-2 text-white group-hover:text-black transition-all">
-            <Icon size={18} weight="bold" />
-        </div>
-        <span className="font-arvo text-[10px] font-medium tracking-widest text-gray-500 group-hover:text-black transition-colors">
-            {label}
-        </span>
-    </button>
+  <button
+    onClick={onClick}
+    className="group flex flex-col items-center gap-2 p-2 border border-white/5 bg-white/5 hover:bg-white hover:border-white transition-all rounded-sm"
+  >
+    <div className="p-2 text-white group-hover:text-black transition-all">
+      <Icon size={18} weight="bold" />
+    </div>
+    <span className="font-arvo text-[10px] font-medium tracking-widest text-gray-500 group-hover:text-black transition-colors">
+      {label}
+    </span>
+  </button>
 );
 export default BrutalistSidebar;

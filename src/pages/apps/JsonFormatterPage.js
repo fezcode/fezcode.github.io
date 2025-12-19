@@ -1,16 +1,24 @@
 import React, { useState, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CopySimpleIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  ArrowLeftIcon,
+  CopySimpleIcon,
+  CheckCircleIcon,
+  XCircleIcon,
+  BracketsCurlyIcon,
+} from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const JsonFormatterPage = () => {
+  const appName = 'JSON Formatter';
+
   useSeo({
-    title: 'JSON Formatter & Validator | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description:
-      'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
+      'Protocol for structural validation and visual optimization of JSON data sequences.',
     keywords: [
       'Fezcodex',
       'JSON formatter',
@@ -18,59 +26,37 @@ const JsonFormatterPage = () => {
       'JSON beautifier',
       'JSON tool',
     ],
-    ogTitle: 'JSON Formatter & Validator | Fezcodex',
-    ogDescription:
-      'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'JSON Formatter & Validator | Fezcodex',
-    twitterDescription:
-      'Format and validate your JSON data with this online tool. Ensures proper syntax and readability.',
-    twitterImage: '/images/ogtitle.png',
   });
 
   const { addToast } = useToast();
-
   const [jsonInput, setJsonInput] = useState('');
   const [jsonOutput, setJsonOutput] = useState('');
   const [validationMessage, setValidationMessage] = useState('');
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const textareaStyle = `mt-1 block w-full p-3 border rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 border-gray-600 font-mono text-sm`;
-  const buttonStyle = `px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button`;
+  const [isValid, setIsValid] = useState(null);
 
   const formatJson = useCallback(() => {
     setValidationMessage('');
+    setIsValid(null);
     if (!jsonInput.trim()) {
       setJsonOutput('');
       addToast({
-        title: 'Input Empty',
-        message: 'Please enter JSON to format.',
-        duration: 3000,
-        type: 'info',
+        title: 'Info',
+        message: 'Insert JSON sequence for processing.',
       });
       return;
     }
     try {
       const parsed = JSON.parse(jsonInput);
-      setJsonOutput(JSON.stringify(parsed, null, 2)); // Pretty print with 2 spaces
-      addToast({
-        title: 'Formatted',
-        message: 'JSON formatted successfully.',
-        duration: 2000,
-      });
+      setJsonOutput(JSON.stringify(parsed, null, 2));
+      setIsValid(true);
+      addToast({ title: 'Success', message: 'Data structure optimized.' });
     } catch (error) {
       setJsonOutput('');
-      setValidationMessage(`Invalid JSON: ${error.message}`);
+      setIsValid(false);
+      setValidationMessage(error.message);
       addToast({
         title: 'Error',
-        message: 'Invalid JSON input.',
-        duration: 3000,
+        message: 'Structural corruption detected.',
         type: 'error',
       });
     }
@@ -79,181 +65,199 @@ const JsonFormatterPage = () => {
   const validateJson = useCallback(() => {
     setJsonOutput('');
     if (!jsonInput.trim()) {
-      setValidationMessage('Please enter JSON to validate.');
+      setIsValid(null);
       addToast({
-        title: 'Input Empty',
-        message: 'Please enter JSON to validate.',
-        duration: 3000,
-        type: 'info',
+        title: 'Info',
+        message: 'Insert JSON sequence for validation.',
       });
       return;
     }
     try {
       JSON.parse(jsonInput);
-      setValidationMessage('Valid JSON!');
-      addToast({ title: 'Valid', message: 'JSON is valid.', duration: 2000 });
+      setIsValid(true);
+      setValidationMessage('Sequence verified. No errors found.');
+      addToast({ title: 'Verified', message: 'JSON integrity confirmed.' });
     } catch (error) {
-      setValidationMessage(`Invalid JSON: ${error.message}`);
+      setIsValid(false);
+      setValidationMessage(error.message);
       addToast({
         title: 'Error',
-        message: 'Invalid JSON input.',
-        duration: 3000,
+        message: 'Validation failed.',
         type: 'error',
       });
     }
   }, [jsonInput, addToast]);
 
   const copyToClipboard = useCallback(() => {
-    const textToCopy = jsonOutput || jsonInput; // Copy formatted if available, else raw input
+    const textToCopy = jsonOutput || jsonInput;
     if (textToCopy.trim()) {
       navigator.clipboard.writeText(textToCopy);
-      addToast({
-        title: 'Copied!',
-        message: 'Content copied to clipboard.',
-        duration: 2000,
-      });
-    } else {
-      addToast({
-        title: 'Cannot Copy',
-        message: 'No content to copy.',
-        duration: 2000,
-        type: 'error',
-      });
+      addToast({ title: 'Copied', message: 'Data stored in clipboard.' });
     }
   }, [jsonInput, jsonOutput, addToast]);
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="JSON Formatter & Validator" slug="jf" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                JSON Formatter & Validator{' '}
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
               </h1>
-              <hr className="border-gray-700 mb-4" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Structural mapping protocol. Verify data integrity and optimize
+                visual hierarchy within JSON sequences.
+              </p>
+            </div>
+          </div>
+        </header>
 
-              {/* Client-Side Notification */}
-              <div
-                className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
-                role="alert"
-              >
-                <strong className="font-bold">Client-Side Only:</strong>
-                <span className="block sm:inline ml-2">
-                  This tool operates entirely within your browser. No JSON data
-                  is sent to any server, ensuring maximum privacy.
-                </span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Editor Column */}
+          <div className="lg:col-span-8 space-y-12">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt
+                  seed={appName + jsonInput.length}
+                  className="w-full h-full"
+                />
               </div>
 
-              <div className="mb-6">
-                <label
-                  htmlFor="jsonInput"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  JSON Input
-                </label>
-                <textarea
-                  id="jsonInput"
-                  rows="10"
-                  className={textareaStyle}
-                  value={jsonInput}
-                  onChange={(e) => setJsonInput(e.target.value)}
-                  placeholder='Enter your JSON here, e.g., {"name": "John Doe", "age": 30}'
-                ></textarea>
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 mb-6">
-                <button
-                  onClick={formatJson}
-                  className={`${buttonStyle} w-full sm:w-1/2`}
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
-                >
-                  Format JSON
-                </button>
-                <button
-                  onClick={validateJson}
-                  className={`${buttonStyle} w-full sm:w-1/2`}
-                  style={{
-                    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                    color: cardStyle.color,
-                    borderColor: cardStyle.borderColor,
-                    border: '1px solid',
-                  }}
-                >
-                  Validate JSON
-                </button>
-              </div>
-
-              {validationMessage && (
-                <div
-                  className={`px-4 py-3 rounded relative mb-6 ${validationMessage.startsWith('Valid') ? 'bg-green-900 bg-opacity-30 border border-green-700 text-green-300' : 'bg-red-900 bg-opacity-30 border border-red-700 text-red-300'}`}
-                  role="alert"
-                >
-                  {validationMessage}
-                </div>
-              )}
-
-              {jsonOutput && (
-                <div className="mb-6">
-                  <label
-                    htmlFor="jsonOutput"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Formatted JSON
+              <div className="relative z-10 space-y-8">
+                <div className="space-y-4">
+                  <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                    <span className="h-px w-4 bg-gray-800" /> Data_Input_Stream
                   </label>
-                  <div className="flex">
-                    <textarea
-                      id="jsonOutput"
-                      rows="10"
-                      className={`${textareaStyle} flex-grow`}
-                      value={jsonOutput}
-                      readOnly
-                    ></textarea>
-                    <button
-                      onClick={copyToClipboard}
-                      className="ml-2 px-4 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button flex items-center justify-center"
-                      style={{
-                        backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                        color: cardStyle.color,
-                        borderColor: cardStyle.borderColor,
-                        border: '1px solid',
-                      }}
-                      title="Copy to Clipboard"
+                  <textarea
+                    rows="12"
+                    className="w-full p-8 bg-black/40 border border-white/5 rounded-sm font-mono text-sm leading-relaxed focus:border-emerald-500/50 focus:ring-0 transition-all resize-none shadow-inner"
+                    value={jsonInput}
+                    onChange={(e) => setJsonInput(e.target.value)}
+                    placeholder="Enter your JSON sequence here..."
+                  />
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <button
+                    onClick={formatJson}
+                    className="px-8 py-4 bg-white text-black hover:bg-emerald-500 transition-all font-mono uppercase tracking-widest text-xs font-black rounded-sm"
+                  >
+                    Format Sequence
+                  </button>
+                  <button
+                    onClick={validateJson}
+                    className="px-8 py-4 border border-white/10 hover:bg-white/[0.05] transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm"
+                  >
+                    Verify Integrity
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <AnimatePresence>
+              {(jsonOutput || isValid !== null) && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  className="space-y-8"
+                >
+                  {isValid !== null && (
+                    <div
+                      className={`p-6 border rounded-sm flex items-center gap-4 ${isValid ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' : 'bg-red-500/10 border-red-500/20 text-red-400'}`}
                     >
-                      <CopySimpleIcon size={20} />
-                    </button>
+                      {isValid ? (
+                        <CheckCircleIcon size={24} weight="fill" />
+                      ) : (
+                        <XCircleIcon size={24} weight="fill" />
+                      )}
+                      <span className="font-mono text-xs uppercase tracking-widest font-black">
+                        {isValid
+                          ? 'Structure Verified'
+                          : `Corruption Detected: ${validationMessage}`}
+                      </span>
+                    </div>
+                  )}
+
+                  {jsonOutput && (
+                    <div className="relative group border border-emerald-500/20 bg-emerald-500/[0.02] p-8 md:p-12 rounded-sm overflow-hidden">
+                      <div className="flex justify-between items-center mb-6">
+                        <label className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest font-black flex items-center gap-2">
+                          <span className="h-px w-4 bg-emerald-500/20" />{' '}
+                          Optimized_Output
+                        </label>
+                        <button
+                          onClick={copyToClipboard}
+                          className="text-emerald-500 hover:text-white transition-colors"
+                          title="Copy to Clipboard"
+                        >
+                          <CopySimpleIcon size={24} weight="bold" />
+                        </button>
+                      </div>
+                      <textarea
+                        rows="12"
+                        className="w-full p-0 bg-transparent border-none font-mono text-sm leading-relaxed text-emerald-400 focus:ring-0 resize-none"
+                        value={jsonOutput}
+                        readOnly
+                      />
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Sidebar Column */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <BracketsCurlyIcon weight="fill" />
+                Processing_Notes
+              </h3>
+              <div className="space-y-6">
+                <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                  All structural modifications are executed client-side. No data
+                  fragments leave your local environment.
+                </p>
+                <div className="pt-6 border-t border-white/5 space-y-4">
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-mono text-gray-600 uppercase">
+                      Privacy
+                    </span>
+                    <span className="text-[10px] font-mono text-emerald-500 uppercase font-black">
+                      Encrypted_Local
+                    </span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-[10px] font-mono text-gray-600 uppercase">
+                      Engine
+                    </span>
+                    <span className="text-[10px] font-mono text-white uppercase font-black">
+                      JSON_V8
+                    </span>
                   </div>
                 </div>
-              )}
+              </div>
             </div>
           </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Data_Loom_v0.6.1</span>
+          <span className="text-gray-800">SCHEMA_VERIFIED // STABLE</span>
+        </footer>
       </div>
     </div>
   );

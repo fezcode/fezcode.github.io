@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, Sparkle, Copy } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  CopyIcon,
+  ArrowsClockwiseIcon,
+  ShieldCheckIcon,
+} from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
-import colors from '../../config/colors';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const prefixes = [
   'Operation',
@@ -222,26 +226,20 @@ const nouns = [
 ];
 
 const CodenameGeneratorPage = () => {
+  const appName = 'Codename Gen';
+
   useSeo({
-    title: 'Codename Generator | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description:
-      'Generate random codenames for your projects, games, or anything else.',
+      'Protocol for generating unique operation identifiers and strategic nomenclature.',
     keywords: [
       'Fezcodex',
       'codename generator',
       'random name generator',
       'project names',
     ],
-    ogTitle: 'Codename Generator | Fezcodex',
-    ogDescription:
-      'Generate random codenames for your projects, games, or anything else.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Codename Generator | Fezcodex',
-    twitterDescription:
-      'Generate random codenames for your projects, games, or anything else.',
-    twitterImage: '/images/ogtitle.png',
   });
+
   const [codename, setCodename] = useState('');
   const { addToast } = useToast();
 
@@ -260,89 +258,132 @@ const CodenameGeneratorPage = () => {
       await navigator.clipboard.writeText(codename);
       addToast({
         title: 'Success',
-        message: 'Codename is copied to clipboard!',
-        duration: 3000,
+        message: 'Identifier stored in clipboard.',
       });
     } catch (err) {
       addToast({
         title: 'Failure',
-        message: 'Failed to copy name!',
-        duration: 3000,
+        message: 'Failed to copy name.',
+        type: 'error',
       });
-      console.error('Failed to copy: ', err);
     }
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Codename Generator" slug="cg" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Codename Generator{' '}
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
               </h1>
-              <hr className="border-gray-700 mb-4" />
-              <div className="flex flex-col items-center gap-8">
-                <div className="relative text-4xl text-indigo-100 font-bold text-center h-16 mt-12">
-                  <div
-                    className="relative underline"
-                    style={{
-                      fontFamily: 'Playfair Display',
-                      textDecorationThickness: '10px',
-                    }}
-                  >
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Strategic identifier protocol. Generate unique nomenclature for
+                classified operations, system assets, and neural modules.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Main Interaction Area */}
+          <div className="lg:col-span-8">
+            <div className="relative border border-white/10 bg-white/[0.02] p-12 md:p-24 rounded-sm overflow-hidden group flex flex-col items-center justify-center">
+              {/* Generative Background */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt seed={codename} className="w-full h-full" />
+              </div>
+
+              <div className="relative z-10 w-full flex flex-col items-center gap-16">
+                <div className="text-center space-y-4">
+                  <span className="font-mono text-[10px] text-emerald-500 font-bold uppercase tracking-[0.5em]">
+                    {'//'} ASSIGNED_IDENTIFIER
+                  </span>
+                  <div className="text-5xl md:text-8xl font-black tracking-tighter text-white uppercase leading-none border-b-8 border-white pb-4">
                     {codename}
                   </div>
                 </div>
-                <div className="flex gap-4">
+
+                <div className="flex flex-wrap justify-center gap-6">
                   <button
                     onClick={generateCodename}
-                    className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
-                    style={{ borderColor: colors['app-alpha-50'] }}
+                    className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                   >
-                    <Sparkle size={20} /> Generate
+                    <ArrowsClockwiseIcon
+                      weight="bold"
+                      size={24}
+                      className="group-hover:rotate-180 transition-transform duration-500"
+                    />
+                    <span>Map New Alias</span>
                   </button>
+
                   <button
                     onClick={handleCopy}
-                    className="flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out bg-app/50 text-white hover:bg-app/70"
                     disabled={!codename}
-                    style={{ borderColor: colors['app-alpha-50'] }}
+                    className="group relative inline-flex items-center gap-4 px-12 py-6 border border-white/10 text-white hover:bg-white/5 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-bold rounded-sm disabled:opacity-20"
                   >
-                    <Copy size={20} /> Copy
+                    <CopyIcon weight="bold" size={24} />
+                    <span>Store Mapping</span>
                   </button>
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Side Module */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <ShieldCheckIcon weight="fill" />
+                Assignment_Parameters
+              </h3>
+
+              <div className="space-y-6">
+                <div className="space-y-2 pb-6 border-b border-white/5">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Context
+                  </span>
+                  <p className="text-white font-black uppercase tracking-tight">
+                    Classified_Operational
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Source
+                  </span>
+                  <p className="text-white font-black uppercase tracking-tight">
+                    Linguistic_Matrix_V2
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Identifiers are generated through a semantic pairing algorithm.
+                This ensures distinct nomenclature for tracking and security
+                purposes.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Alias_Engine_v0.6.1</span>
+          <span className="text-gray-800">ASSIGNMENT_STATUS // CONFIRMED</span>
+        </footer>
       </div>
     </div>
   );

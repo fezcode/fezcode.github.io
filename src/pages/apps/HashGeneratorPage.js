@@ -1,16 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import {
+  ArrowLeftIcon,
+  CopySimpleIcon,
+  ArrowsClockwiseIcon,
+  ShieldCheckIcon,
+} from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 function HashGeneratorPage() {
+  const appName = 'Hash Engine';
+
   useSeo({
-    title: 'Hash Generator | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description:
-      'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
+      'Protocol for generating cryptographic digests and data integrity signatures.',
     keywords: [
       'Fezcodex',
       'hash generator',
@@ -20,16 +26,8 @@ function HashGeneratorPage() {
       'cryptography',
       'hashing',
     ],
-    ogTitle: 'Hash Generator | Fezcodex',
-    ogDescription:
-      'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Hash Generator | Fezcodex',
-    twitterDescription:
-      'Generate SHA-1, SHA-256, and SHA-512 hashes from your input text.',
-    twitterImage: '/images/ogtitle.png',
   });
+
   const [inputText, setInputText] = useState('');
   const [hashes, setHashes] = useState({
     sha1: '',
@@ -39,158 +37,184 @@ function HashGeneratorPage() {
   const { addToast } = useToast();
 
   const generateHash = async (algorithm) => {
-    if (!inputText) {
-      setHashes((prev) => ({
-        ...prev,
-        [algorithm.toLowerCase().replace('sha-', 'sha')]: '',
-      }));
-      return;
-    }
-
+    if (!inputText) return '';
     try {
       const textEncoder = new TextEncoder();
       const data = textEncoder.encode(inputText);
       const hashBuffer = await crypto.subtle.digest(algorithm, data);
       const hashArray = Array.from(new Uint8Array(hashBuffer));
-      const hashHex = hashArray
-        .map((b) => b.toString(16).padStart(2, '0'))
-        .join('');
-      setHashes((prev) => ({
-        ...prev,
-        [algorithm.toLowerCase().replace('sha-', 'sha')]: hashHex,
-      }));
+      return hashArray.map((b) => b.toString(16).padStart(2, '0')).join('');
     } catch (error) {
-      addToast({
-        title: 'Error',
-        message: `Failed to generate ${algorithm} hash.`,
-        duration: 3000,
-      });
-      setHashes((prev) => ({
-        ...prev,
-        [algorithm.toLowerCase().replace('sha-', 'sha')]: 'Error',
-      }));
+      return 'ERROR_GEN_FAILED';
     }
   };
 
-  const generateAllHashes = () => {
-    generateHash('SHA-1');
-    generateHash('SHA-256');
-    generateHash('SHA-512');
+  const generateAllHashes = async () => {
+    if (!inputText) {
+      addToast({ title: 'Info', message: 'Insert data stream first.' });
+      return;
+    }
+    const [s1, s256, s512] = await Promise.all([
+      generateHash('SHA-1'),
+      generateHash('SHA-256'),
+      generateHash('SHA-512'),
+    ]);
+    setHashes({ sha1: s1, sha256: s256, sha512: s512 });
+    addToast({ title: 'Verified', message: 'Digest generation complete.' });
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        addToast({
-          title: 'Success',
-          message: 'Copied to clipboard!',
-          duration: 2000,
-        });
-      })
-      .catch(() => {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy!',
-          duration: 2000,
-        });
-      });
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      addToast({ title: 'Success', message: 'Digest stored in clipboard.' });
+    });
   };
 
-  const detailTextColor = colors['app-light'];
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Hash Generator" slug="hash" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div className="bg-app-alpha-10 border-app-alpha-50 text-app group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-              {' '}
-              Hash Generator{' '}
-            </h1>
-            <hr className="border-gray-700 mb-4" />
-            <div className="relative z-10 p-1">
-              <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  Input Text
-                </label>
-                <textarea
-                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y rounded-md focus:ring-0 border border-app-alpha-50 text-app"
-                  value={inputText}
-                  onChange={(e) => setInputText(e.target.value)}
-                  placeholder="Enter text to hash..."
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
+          >
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Cryptographic digest protocol. Generate unique mathematical
+                signatures to verify data integrity and authenticity.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Input Area */}
+          <div className="lg:col-span-12">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt
+                  seed={appName + inputText.length}
+                  className="w-full h-full"
                 />
               </div>
-              <div className="flex justify-center gap-4 mb-4">
+
+              <div className="relative z-10 space-y-8">
+                <div className="space-y-4">
+                  <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                    <span className="h-px w-4 bg-gray-800" /> Source_Data_Stream
+                  </label>
+                  <textarea
+                    className="w-full h-48 p-8 bg-black/40 border border-white/5 rounded-sm font-mono text-sm leading-relaxed focus:border-emerald-500/50 focus:ring-0 transition-all resize-none shadow-inner"
+                    value={inputText}
+                    onChange={(e) => setInputText(e.target.value)}
+                    placeholder="Insert plaintext sequence for digest generation..."
+                  />
+                </div>
+
                 <button
                   onClick={generateAllHashes}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
+                  className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm"
                 >
-                  Generate All Hashes
+                  <ArrowsClockwiseIcon
+                    weight="bold"
+                    size={24}
+                    className="group-hover:rotate-180 transition-transform duration-500"
+                  />
+                  <span>Map digests</span>
                 </button>
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <HashOutput
-                  title="SHA-1"
-                  value={hashes.sha1}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-                <HashOutput
-                  title="SHA-256"
-                  value={hashes.sha256}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-                <HashOutput
-                  title="SHA-512"
-                  value={hashes.sha512}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
               </div>
             </div>
           </div>
+
+          {/* Results Grid */}
+          <div className="lg:col-span-8 space-y-8">
+            <HashOutputRow
+              title="SHA-1"
+              value={hashes.sha1}
+              onCopy={copyToClipboard}
+            />
+            <HashOutputRow
+              title="SHA-256"
+              value={hashes.sha256}
+              onCopy={copyToClipboard}
+            />
+            <HashOutputRow
+              title="SHA-512"
+              value={hashes.sha512}
+              onCopy={copyToClipboard}
+            />
+          </div>
+
+          {/* Side Info */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-10 flex items-center gap-2">
+                <ShieldCheckIcon weight="fill" />
+                Integrity_Audit
+              </h3>
+
+              <div className="space-y-6 text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                <p>
+                  A hash is a one-way mathematical function. Any variation in
+                  the source data stream will result in a complete
+                  reconstruction of the digest sequence.
+                </p>
+                <div className="pt-6 border-t border-white/5 flex justify-between items-center">
+                  <span>Engine</span>
+                  <span className="text-white font-black">
+                    Subtle_Crypto_API
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Protocol recommendation: Use SHA-256 or higher for sensitive
+                data verification. SHA-1 is preserved for legacy compatibility.
+              </p>
+            </div>
+          </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Digest_Module_v0.6.1</span>
+          <span className="text-gray-800">HASH_STATE // STABLE</span>
+        </footer>
       </div>
     </div>
   );
 }
 
-const HashOutput = ({ title, value, onCopy, detailTextColor }) => (
-  <div className="flex flex-col">
-    <label className="text-sm font-medium text-gray-400 mb-1">{title}</label>
-    <div className="relative">
-      <textarea
-        readOnly
-        value={value}
-        className="w-full p-2 border rounded-md bg-gray-800/50 font-mono text-sm resize-none"
-        style={{ borderColor: colors['app-alpha-50'], color: detailTextColor }}
-        rows="3"
-      />
+const HashOutputRow = ({ title, value, onCopy }) => (
+  <div className="relative group border border-white/10 bg-white/[0.02] p-8 rounded-sm overflow-hidden transition-all hover:border-emerald-500/30">
+    <div className="flex justify-between items-center mb-4">
+      <span className="font-mono text-[10px] text-emerald-500 font-bold uppercase tracking-widest">
+        {title}
+      </span>
       <button
         onClick={() => onCopy(value)}
-        className="absolute top-2 right-2 px-2 py-1 bg-gray-700 text-white text-xs rounded hover:bg-gray-600"
+        disabled={!value}
+        className="text-gray-500 hover:text-white transition-colors disabled:opacity-0"
       >
-        Copy
+        <CopySimpleIcon size={20} weight="bold" />
       </button>
+    </div>
+    <div
+      className={`font-mono text-sm break-all transition-colors duration-500 ${value ? 'text-white' : 'text-gray-800'}`}
+    >
+      {value || 'WAITING_FOR_DATA_INPUT...'}
     </div>
   </div>
 );

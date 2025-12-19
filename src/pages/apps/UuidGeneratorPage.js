@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  CopySimpleIcon,
+  FingerprintIcon,
+  ArrowsClockwiseIcon,
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 function UuidGeneratorPage() {
+  const appName = 'UUID Generator';
+
   useSeo({
-    title: 'UUID Generator | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description:
-      'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
+      'Generate universally unique identifiers (UUIDs) version 4 for digital identification.',
     keywords: [
       'Fezcodex',
       'UUID generator',
@@ -17,119 +24,167 @@ function UuidGeneratorPage() {
       'unique ID',
       'UUID v4',
     ],
-    ogTitle: 'UUID Generator | Fezcodex',
-    ogDescription:
-      'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'UUID Generator | Fezcodex',
-    twitterDescription:
-      'Generate universally unique identifiers (UUIDs) of version 4 for your development needs.',
-    twitterImage: '/images/ogtitle.png',
   });
+
   const [uuid, setUuid] = useState('');
   const { addToast } = useToast();
 
   const generateUuidV4 = () => {
     try {
-      // RFC 4122 v4 UUID generation
       const uuidV4 = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(
         /[xy]/g,
         function (c) {
-          const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16; // Use crypto.getRandomValues for better randomness
-          // eslint-disable-next-line no-mixed-operators
+          const r = crypto.getRandomValues(new Uint8Array(1))[0] % 16;
           const v = c === 'x' ? r : (r & 0x3) | 0x8;
           return v.toString(16);
         },
       );
       setUuid(uuidV4);
+      addToast({ title: 'Generated', message: 'New unique sequence mapped.' });
     } catch (error) {
       addToast({
         title: 'Error',
-        message: 'Failed to generate UUID.',
-        duration: 3000,
+        message: 'Entropy generation failed.',
+        type: 'error',
       });
-      setUuid('');
     }
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        addToast({
-          title: 'Success',
-          message: 'Copied to clipboard!',
-          duration: 2000,
-        });
-      })
-      .catch(() => {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy!',
-          duration: 2000,
-        });
-      });
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      addToast({ title: 'Success', message: 'Sequence stored in clipboard.' });
+    });
   };
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="UUID Generator" slug="uuid" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-              {' '}
-              UUID Generator{' '}
-            </h1>
-            <hr className="border-gray-700 mb-4" />
-            <div className="relative z-10 p-1">
-              <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  Generated UUID v4
-                </label>
-                <div className="relative">
-                  <textarea
-                    readOnly
-                    className="w-full h-24 p-4 bg-gray-800/50 font-mono resize-y border rounded-md border-app-alpha-50 text-app"
-                    value={uuid}
-                    placeholder="Click 'Generate UUID' to create one..."
-                  />
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
+          >
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Unique identity generator. Extract high-entropy character
+                sequences for collision-free digital identification.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Main Display Area */}
+          <div className="lg:col-span-8">
+            <div className="relative border border-white/10 bg-white/[0.02] p-12 md:p-24 rounded-sm overflow-hidden group flex flex-col items-center justify-center">
+              {/* Generative Background */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt
+                  seed={appName + uuid}
+                  className="w-full h-full"
+                />
+              </div>
+
+              <div className="relative z-10 w-full max-w-2xl space-y-12 text-center">
+                <div className="space-y-4">
+                  <span className="font-mono text-[10px] text-emerald-500 font-bold uppercase tracking-[0.3em]">
+                    {'//'} IDENTIFIER_V4
+                  </span>
+                  <div
+                    className={`text-2xl md:text-4xl lg:text-5xl font-black font-mono tracking-tighter break-all transition-all duration-500 ${uuid ? 'text-white' : 'text-gray-800'}`}
+                  >
+                    {uuid || '00000000-0000-0000-0000-000000000000'}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap justify-center gap-6">
+                  <button
+                    onClick={generateUuidV4}
+                    className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]"
+                  >
+                    <ArrowsClockwiseIcon
+                      weight="bold"
+                      size={24}
+                      className="group-hover:rotate-180 transition-transform duration-500"
+                    />
+                    <span>Map New Identity</span>
+                  </button>
+
                   <button
                     onClick={() => copyToClipboard(uuid)}
-                    className="absolute top-2 right-2 px-3 py-1 bg-gray-700 text-white text-sm rounded hover:bg-gray-600"
+                    disabled={!uuid}
+                    className="group relative inline-flex items-center gap-4 px-12 py-6 border border-white/10 text-white hover:bg-white/5 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-bold rounded-sm disabled:opacity-20 disabled:cursor-not-allowed"
                   >
-                    Copy
+                    <CopySimpleIcon weight="bold" size={24} />
+                    <span>Store Mapping</span>
                   </button>
                 </div>
               </div>
-              <div className="flex justify-center gap-4 mb-4">
-                <button
-                  onClick={generateUuidV4}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
-                >
-                  Generate UUID v4
-                </button>
+            </div>
+          </div>
+
+          {/* Info Column */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-10 flex items-center gap-2">
+                <FingerprintIcon weight="fill" />
+                Technical_Specifications
+              </h3>
+
+              <div className="space-y-6">
+                <div className="space-y-2 pb-6 border-b border-white/5">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Architecture
+                  </span>
+                  <p className="text-white font-black uppercase tracking-tight">
+                    RFC 4122 Version 4
+                  </p>
+                </div>
+                <div className="space-y-2 pb-6 border-b border-white/5">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Source
+                  </span>
+                  <p className="text-white font-black uppercase tracking-tight">
+                    System CSPRNG
+                  </p>
+                </div>
+                <div className="space-y-2">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Probability
+                  </span>
+                  <p className="text-white font-black uppercase tracking-tight">
+                    Collision-Free Matrix
+                  </p>
+                </div>
               </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                A UUID v4 is derived from random numbers. The probability of
+                finding a duplicate is mathematically negligible within the
+                current epoch.
+              </p>
             </div>
           </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Identity_Core_v0.6.1</span>
+          <span className="text-gray-800">ENTROPY_STATUS // OPTIMAL</span>
+        </footer>
       </div>
     </div>
   );

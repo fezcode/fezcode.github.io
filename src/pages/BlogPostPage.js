@@ -18,7 +18,17 @@ const BlogPostPage = () => {
   // preventing it from running on every render if other local state were to change.
   const effectiveViewMode = useMemo(() => {
     const themeParam = searchParams.get('theme');
-    if (themeParam && ['dossier', 'terminal', 'standard', 'dokument', 'terminal-green', 'old'].includes(themeParam)) {
+    if (
+      themeParam &&
+      [
+        'dossier',
+        'terminal',
+        'standard',
+        'dokument',
+        'terminal-green',
+        'old',
+      ].includes(themeParam)
+    ) {
       return themeParam;
     }
     return blogPostViewMode;

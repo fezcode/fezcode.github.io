@@ -4,11 +4,7 @@ import GenericModal from './GenericModal';
 
 const ContactModal = ({ isOpen, onClose }) => {
   return (
-    <GenericModal
-      isOpen={isOpen}
-      onClose={onClose}
-      title="Contact"
-    >
+    <GenericModal isOpen={isOpen} onClose={onClose} title="Contact">
       <div className="flex flex-col gap-6">
         <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-xs">
           Reach out through any of these channels:
@@ -47,9 +43,15 @@ const ContactLink = ({ href, icon: Icon, label, value }) => (
     className="group flex items-center justify-between border border-white/10 bg-white/[0.02] p-4 transition-all hover:bg-emerald-500 hover:text-black hover:border-emerald-500 rounded-sm"
   >
     <div className="flex items-center gap-4">
-      <Icon size={24} weight="bold" className="text-emerald-500 group-hover:text-black transition-colors" />
+      <Icon
+        size={24}
+        weight="bold"
+        className="text-emerald-500 group-hover:text-black transition-colors"
+      />
       <div className="flex flex-col">
-        <span className="text-[10px] font-mono uppercase tracking-widest opacity-50">{label}</span>
+        <span className="text-[10px] font-mono uppercase tracking-widest opacity-50">
+          {label}
+        </span>
         <span className="font-bold tracking-tight">{value}</span>
       </div>
     </div>

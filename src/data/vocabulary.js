@@ -11,7 +11,7 @@ export const vocabulary = {
     title: 'Anti-Pattern',
     loader: () => import('./vocab/anti-pattern'),
   },
-  'pluribus': {
+  pluribus: {
     title: 'Pluribus',
     loader: () => import('./vocab/pluribus'),
   },
@@ -24,14 +24,14 @@ export const vocabulary = {
     loader: () => import('./vocab/corporate-greed'),
   },
   'poi-rating': {
-    title: 'Person of Interest\'s Rating',
+    title: "Person of Interest's Rating",
     loader: () => import('./vocab/poi-rating'),
   },
   'game-of-the-year': {
     title: 'Game of the Year (GOTY)',
     loader: () => import('./vocab/game-of-the-year'),
   },
-  'murakami': {
+  murakami: {
     title: 'Murakami, Takashi',
     loader: () => import('./vocab/murakami'),
   },

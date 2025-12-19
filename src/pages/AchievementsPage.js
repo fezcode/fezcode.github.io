@@ -69,7 +69,6 @@ const AchievementsPage = () => {
     // Changed main background to stone-950 for an earthy dark feel
     <div className="py-16 sm:py-24 bg-stone-950 min-h-screen">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-
         {/* Navigation */}
         <Link
           to="/"
@@ -85,7 +84,11 @@ const AchievementsPage = () => {
             <div className="relative">
               {/* Nature Glow behind Trophy */}
               <div className="absolute inset-0 bg-emerald-500 blur-2xl opacity-20 rounded-full"></div>
-              <TrophyIcon size={56} weight="duotone" className="text-emerald-400 relative z-10 drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]" />
+              <TrophyIcon
+                size={56}
+                weight="duotone"
+                className="text-emerald-400 relative z-10 drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]"
+              />
             </div>
             Achievements
           </h1>
@@ -100,7 +103,9 @@ const AchievementsPage = () => {
               <span>Filter:</span>
             </div>
             {uniqueCategories.map((category) => {
-              const isSelected = selectedCategories.includes(category) || (category === 'All' && selectedCategories.length === 0);
+              const isSelected =
+                selectedCategories.includes(category) ||
+                (category === 'All' && selectedCategories.length === 0);
               // Stone/Emerald Logic for pills
               const colorClass = isSelected
                 ? 'bg-emerald-900/40 text-emerald-300 border-emerald-500/50 shadow-[0_0_10px_rgba(16,185,129,0.2)]'
@@ -165,10 +170,22 @@ const AchievementsPage = () => {
               </div>
               <div className="flex-1 text-left">
                 <p className="font-medium text-sm tracking-wide">
-                  NOTIFICATIONS: <span className="font-bold">{showAchievementToast ? 'ACTIVE' : 'MUTED'}</span>
+                  NOTIFICATIONS:{' '}
+                  <span className="font-bold">
+                    {showAchievementToast ? 'ACTIVE' : 'MUTED'}
+                  </span>
                 </p>
-                <p className={`text-xs mt-1 ${showAchievementToast ? 'text-teal-400/70' : 'text-stone-500'}`}>
-                  Manage in <Link to="/settings" className="underline underline-offset-2 hover:text-white transition-colors">Settings</Link>.
+                <p
+                  className={`text-xs mt-1 ${showAchievementToast ? 'text-teal-400/70' : 'text-stone-500'}`}
+                >
+                  Manage in{' '}
+                  <Link
+                    to="/settings"
+                    className="underline underline-offset-2 hover:text-white transition-colors"
+                  >
+                    Settings
+                  </Link>
+                  .
                 </p>
               </div>
             </div>
@@ -196,8 +213,8 @@ const AchievementsPage = () => {
                 <div
                   className={`absolute inset-0 z-0 transition-all duration-500 ${
                     isUnlocked
-                      // A deep forest gradient
-                      ? 'bg-gradient-to-br from-emerald-950/80 via-stone-950 to-stone-950 opacity-100'
+                      ? // A deep forest gradient
+                        'bg-gradient-to-br from-emerald-950/80 via-stone-950 to-stone-950 opacity-100'
                       : 'bg-stone-950'
                   }`}
                 >
@@ -208,31 +225,38 @@ const AchievementsPage = () => {
                 </div>
 
                 <div className="relative z-10 flex flex-col items-center text-center p-6 flex-grow font-sans">
-
                   {/* Category Pill */}
-                  <span className={`mb-6 px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border ${
-                    isUnlocked
-                      ? 'bg-emerald-900/50 text-emerald-300 border-emerald-500/30'
-                      : 'bg-stone-800 text-stone-500 border-stone-700'
-                  }`}>
+                  <span
+                    className={`mb-6 px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border ${
+                      isUnlocked
+                        ? 'bg-emerald-900/50 text-emerald-300 border-emerald-500/30'
+                        : 'bg-stone-800 text-stone-500 border-stone-700'
+                    }`}
+                  >
                     {achievement.category}
                   </span>
 
                   {/* Icon Container */}
                   <div className="relative mb-6 group-hover:scale-105 transition-transform duration-300">
                     {/* Magical Glow */}
-                    {isUnlocked && <div className="absolute inset-0 bg-emerald-500 blur-2xl opacity-20 rounded-full animate-pulse-slow"></div>}
+                    {isUnlocked && (
+                      <div className="absolute inset-0 bg-emerald-500 blur-2xl opacity-20 rounded-full animate-pulse-slow"></div>
+                    )}
 
                     <div
                       className={`relative h-24 w-24 rounded-full flex items-center justify-center border-[3px] shadow-2xl ${
                         isUnlocked
-                          // Emerald to Teal gradient for the ring
-                          ? 'bg-gradient-to-b from-stone-900 to-emerald-950 border-emerald-500/50 text-emerald-300 shadow-emerald-900/50 ring-4 ring-emerald-500/10'
+                          ? // Emerald to Teal gradient for the ring
+                            'bg-gradient-to-b from-stone-900 to-emerald-950 border-emerald-500/50 text-emerald-300 shadow-emerald-900/50 ring-4 ring-emerald-500/10'
                           : 'bg-stone-900 border-stone-800 text-stone-600 shadow-black/50'
                       }`}
                     >
                       <div className="scale-[1.4] drop-shadow-lg">
-                        {isUnlocked ? achievement.icon : <LockIcon weight="fill" />}
+                        {isUnlocked ? (
+                          achievement.icon
+                        ) : (
+                          <LockIcon weight="fill" />
+                        )}
                       </div>
                     </div>
                   </div>
@@ -240,24 +264,39 @@ const AchievementsPage = () => {
                   {/* Text Content */}
                   <h3
                     className={`text-2xl font-playfairDisplay tracking-tight mb-3 ${
-                      isUnlocked ? 'text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 to-teal-100' : 'text-stone-600'
+                      isUnlocked
+                        ? 'text-transparent bg-clip-text bg-gradient-to-r from-emerald-200 to-teal-100'
+                        : 'text-stone-600'
                     }`}
                   >
                     {achievement.title}
                   </h3>
-                  <p className={`text-sm font-arvo leading-relaxed ${isUnlocked ? 'text-stone-300' : 'text-stone-600'}`}>
+                  <p
+                    className={`text-sm font-arvo leading-relaxed ${isUnlocked ? 'text-stone-300' : 'text-stone-600'}`}
+                  >
                     {achievement.description}
                   </p>
                 </div>
 
                 {/* Footer / Date */}
-                <div className={`relative z-10 mt-auto p-4 w-full border-t ${
-                  isUnlocked ? 'border-emerald-500/10 bg-emerald-950/20' : 'border-stone-800/50 bg-stone-900/30'
-                }`}>
+                <div
+                  className={`relative z-10 mt-auto p-4 w-full border-t ${
+                    isUnlocked
+                      ? 'border-emerald-500/10 bg-emerald-950/20'
+                      : 'border-stone-800/50 bg-stone-900/30'
+                  }`}
+                >
                   {isUnlocked ? (
                     <div className="flex items-center justify-center gap-2 text-xs text-emerald-400/70 font-medium font-mono uppercase tracking-widest">
                       <CalendarBlankIcon weight="duotone" size={16} />
-                      <span>Unlocked: {unlockedDate.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}</span>
+                      <span>
+                        Unlocked:{' '}
+                        {unlockedDate.toLocaleDateString(undefined, {
+                          year: 'numeric',
+                          month: 'short',
+                          day: 'numeric',
+                        })}
+                      </span>
                     </div>
                   ) : (
                     <div className="text-center text-xs text-stone-600 font-mono uppercase tracking-widest flex items-center justify-center gap-2">
