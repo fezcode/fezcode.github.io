@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, CaretRight } from '@phosphor-icons/react';
+import { ArrowRight } from '@phosphor-icons/react';
 
 const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
   return (
@@ -23,7 +23,7 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
           }`}
         />
 
-        <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0">
+        <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0 pr-8">
           {/* Index / Year */}
           <span
             className={`font-mono text-sm flex-shrink-0 transition-colors duration-300 ${
@@ -47,7 +47,7 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
 
         {/* Arrow Interaction */}
         <div
-          className={`transform transition-all duration-300 ${
+          className={`w-12 flex justify-end transform transition-all duration-300 ${
             isActive
               ? 'translate-x-0 opacity-100 text-emerald-400'
               : '-translate-x-4 opacity-0 text-gray-500'

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import useSearchableData from '../hooks/useSearchableData';
@@ -115,15 +115,21 @@ const CommandPalette = ({
     setSelectedIndex(0);
   }, [searchTerm, items]);
 
-  const triggerBSOD = () => {
+  const handleClose = React.useCallback(() => {
+    setIsOpen(false);
+    setSearchTerm('');
+  }, [setIsOpen]);
+
+  const triggerBSOD = useCallback(() => {
     unlockAchievement('bsod');
     toggleBSOD();
-  };
+  }, [unlockAchievement, toggleBSOD]);
 
-  const handleItemClick = (item) => {
-    if (!item) return;
+  const handleItemClick = React.useCallback(
+    (item) => {
+      if (!item) return;
 
-    if (item.type === 'command') {
+      if (item.type === 'command') {
       switch (item.commandId) {
         case 'toggleAnimations':
           toggleAnimation();
@@ -442,7 +448,10 @@ const CommandPalette = ({
           toggleDigitalRain();
           break;
         case 'generateArt':
-          openGenericModal('Generative Art', <GenerativeArt />);
+          openGenericModal(
+            'Generative Art',
+            <GenerativeArt seed={Math.random().toString(36).substring(7)} showDownload={true} />,
+          );
           break;
         case 'leetTransformer':
           openGenericModal('Leet Speak Transformer', <TextTransformer />);
@@ -596,7 +605,53 @@ const CommandPalette = ({
       navigate(item.path);
     }
     handleClose();
-  };
+  }, [
+    addToast,
+    isAnimationEnabled,
+    isInverted,
+    isParty,
+    isRetro,
+    isMirror,
+    isNoir,
+    isTerminal,
+    isBlueprint,
+    isSepia,
+    isVaporwave,
+    isCyberpunk,
+    isGameboy,
+    isComic,
+    isSketchbook,
+    isHellenic,
+    isGlitch,
+    isGarden,
+    isAutumn,
+    isRain,
+    items,
+    navigate,
+    openGenericModal,
+    toggleAnimation,
+    toggleInvert,
+    toggleParty,
+    toggleRetro,
+    toggleMirror,
+    toggleNoir,
+    toggleTerminal,
+    toggleBlueprint,
+    toggleSepia,
+    toggleVaporwave,
+    toggleCyberpunk,
+    toggleGameboy,
+    toggleComic,
+    toggleSketchbook,
+    toggleHellenic,
+    toggleGlitch,
+    toggleGarden,
+    toggleAutumn,
+    toggleRain,
+    toggleDigitalRain,
+    unlockAchievement,
+    handleClose,
+  ]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -641,9 +696,10 @@ const CommandPalette = ({
     isOpen,
     filteredItems,
     selectedIndex,
-    isAnimationEnabled,
     searchTerm,
     triggerBSOD,
+    handleItemClick,
+    handleClose,
   ]);
 
   useEffect(() => {
@@ -654,11 +710,6 @@ const CommandPalette = ({
       });
     }
   }, [selectedIndex]);
-
-  const handleClose = () => {
-    setIsOpen(false);
-    setSearchTerm('');
-  };
 
   return (
     <AnimatePresence>

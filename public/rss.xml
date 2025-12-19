@@ -9,14 +9,56 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 12 Dec 2025 09:35:57 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Dec 2025 20:48:13 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 12 Dec 2025 09:35:57 GMT</pubDate>
+        <pubDate>Fri, 19 Dec 2025 20:48:13 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Introducing New Reading Modes: Dossier and Terminal!]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/introducing-reading-experience</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/introducing-reading-experience</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 17 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Excited to unveil two brand new ways to experience content on Fezcodex Blogposts: <strong>Dossier Mode</strong> and <strong>Terminal Mode!</strong>
+These unique reading modes are designed to offer a fresh and engaging perspective, allowing you to tailor your browsing experience to your personal style.</p>
+<p><a href="https://fezcode.com/#/blog/introducing-reading-experience">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Typeface vs. Font: The Music Analogy]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/typeface-vs-font</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/typeface-vs-font</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 17 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>The easiest way to understand the difference is to think about music:</p>
+<p><a href="https://fezcode.com/#/blog/typeface-vs-font">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Why Your Brain Hates Lyrics While You Work: The Irrelevant Speech Effect]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/the-irrelevant-speech-effect</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/the-irrelevant-speech-effect</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 17 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Have you ever tried to read a book while someone next to you is having a loud conversation on the phone?
+You probably found yourself reading the same sentence three times without understanding a word.</p>
+<p><a href="https://fezcode.com/#/blog/the-irrelevant-speech-effect">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[React Hooks Showdown: useMemo vs useCallback vs useState vs useEffect]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/react-hooks-comparison</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/react-hooks-comparison</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>1. useState: The Memory</h2>
+<p><a href="https://fezcode.com/#/blog/react-hooks-comparison">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[React Magic: Rendering Components from Markdown Links]]></title>
             <description><![CDATA[[object Object]]]></description>

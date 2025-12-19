@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
@@ -38,7 +38,6 @@ const ImageCompressorPage = () => {
   const [originalSize, setOriginalSize] = useState(0);
   const [compressedSize, setCompressedSize] = useState(0);
   const [quality, setQuality] = useState(0.7); // Default compression quality
-  const [shouldCompress, setShouldCompress] = useState(false); // New state to control manual compression
   const canvasRef = useRef(null);
 
   const cardStyle = {

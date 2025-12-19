@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import colors from '../../config/colors';

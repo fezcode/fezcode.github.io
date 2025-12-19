@@ -84,7 +84,7 @@ const CardGamePage = () => {
     setScore(0);
     setGameOver(false);
     setGameStarted(true);
-  }, [addToast]);
+  }, []);
 
   useEffect(() => {
     if (!gameStarted) {

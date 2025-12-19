@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Fez from './Fez';
 import {
-  SidebarIcon,
+  ListIcon,
   UserIcon,
-  MagnifyingGlassIcon,
+  MagnifyingGlassIcon
 } from '@phosphor-icons/react';
 
 const Navbar = ({
@@ -27,66 +27,80 @@ const Navbar = ({
 
   return (
     <header
-      className={`bg-black/20 backdrop-blur-lg sticky top-0 z-30 transition-colors border-b ${isScrolled ? 'border-gray-700/50' : 'border-transparent'} relative`}
+      className={`bg-[#050505]/80 backdrop-blur-md sticky top-0 z-[60] transition-all border-b ${
+        isScrolled ? 'border-white/10 py-2' : 'border-transparent py-4'
+      } relative`}
     >
+      {/* Sidebar Toggle (Desktop) */}
       <button
         onClick={toggleSidebar}
-        className="absolute top-1/2 -translate-y-1/2 left-4 text-red-600 focus:outline-none hidden md:block"
+        className="absolute top-1/2 -translate-y-1/2 left-6 text-gray-400 hover:text-emerald-500 transition-colors hidden md:block focus:outline-none"
+        aria-label="Toggle Sidebar"
       >
-        <SidebarIcon size={24} weight="fill" />
+        <ListIcon size={24} weight="bold" />
       </button>
-      <div className="container mx-auto flex justify-between items-center p-4 text-white">
-        <div className="md:hidden flex items-center space-x-2">
+
+      <div className="mx-auto max-w-7xl px-6 flex justify-between items-center text-white">
+        {/* Mobile Left Section */}
+        <div className="md:hidden flex items-center gap-4">
           <button
             onClick={toggleSidebar}
-            className="text-white focus:outline-none"
+            className="text-gray-400 hover:text-white transition-colors focus:outline-none"
           >
-            <SidebarIcon size={24} />
+            <ListIcon size={24} weight="bold" />
           </button>
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center gap-2">
             <Fez />
-            <span className="text-2xl tracking-tight font-mono">
-              fez<span className="text-red-600">codex</span>
+            <span className="text-xl font-black tracking-tighter uppercase font-mono">
+              Fez<span className="text-emerald-500">codex</span>
             </span>
           </Link>
         </div>
-        <div className="hidden md:flex items-center space-x-2 ml-16">
+
+        {/* Desktop Left Section (Logo) */}
+        <div className="hidden md:flex items-center gap-2 ml-12">
           {!isSidebarOpen && (
-            <Link to="/" className="flex items-center space-x-2">
+            <Link to="/" className="flex items-center gap-2 group">
               <Fez />
-              <span className="text-2xl tracking-tight font-mono">
-                fez<span className="text-red-600">codex</span>
+              <span className="text-2xl font-black tracking-tighter uppercase font-mono transition-colors group-hover:text-emerald-500">
+                Fez<span className="text-emerald-500 group-hover:text-white">codex</span>
               </span>
             </Link>
           )}
         </div>
+
+        {/* Center Text (Optional / Conditional) */}
         {isSidebarOpen && (
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 hidden lg:block">
             <span
-              className="text-lg font-normal tracking-tight"
-              style={{ fontFamily: "'Arvo', 'Playfair Display', serif" }}
+              className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-gray-500"
             >
-              The Fez of <span className="text-red-600">Code</span>
+              The Fez of <span className="text-emerald-500">Code</span>
             </span>
           </div>
         )}
-        <div className="flex items-center space-x-3 md:space-x-6">
+
+        {/* Right Section (Actions) */}
+        <div className="flex items-center gap-2 md:gap-4">
           <Link
             to="/about"
-            className="flex items-center space-x-1 text-white hover:bg-red-800 px-2 py-2 rounded-md transition-colors"
+            className="group flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-sm transition-all"
           >
-            <UserIcon size={24} />
-            <span className="md:hidden lg:inline">About</span>
+            <UserIcon size={20} weight="bold" />
+            <span className="hidden md:inline text-[10px] font-mono font-bold uppercase tracking-widest">About</span>
           </Link>
+
           <button
             onClick={toggleSearch}
-            className="text-white hover:bg-red-800 px-2 py-2 rounded-md transition-colors"
+            className={`group flex items-center gap-2 px-3 py-2 rounded-sm transition-all ${
+              isSearchVisible
+                ? 'bg-emerald-500 text-black'
+                : 'text-gray-400 hover:text-white hover:bg-white/5'
+            }`}
             aria-label="Toggle Search"
           >
-            <MagnifyingGlassIcon
-              size={24}
-              className={isSearchVisible ? `text-primary-400` : ``}
-            />
+            <MagnifyingGlassIcon size={20} weight="bold" />
+            <span className="hidden md:inline text-[10px] font-mono font-bold uppercase tracking-widest">Search</span>
           </button>
         </div>
       </div>

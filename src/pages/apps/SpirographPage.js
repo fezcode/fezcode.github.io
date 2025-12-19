@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon, // Added ArrowLeftIcon
@@ -38,7 +38,7 @@ const SpirographPage = () => {
   const requestRef = useRef();
 
   // Draw helper
-  const draw = (ctx, currentAngle) => {
+  const draw = useCallback((ctx, currentAngle) => {
     const width = ctx.canvas.width;
     const height = ctx.canvas.height;
     const centerX = width / 2;
@@ -78,9 +78,9 @@ const SpirographPage = () => {
       : color;
     ctx.lineWidth = 1;
     ctx.stroke();
-  };
+  }, [outerRadius, innerRadius, penOffset, resolution, isRainbow, color]);
 
-  const animate = () => {
+  const animate = useCallback(() => {
     if (!isDrawing) return;
 
     const canvas = canvasRef.current;
@@ -110,7 +110,7 @@ const SpirographPage = () => {
     } else {
       requestRef.current = requestAnimationFrame(animate);
     }
-  };
+  }, [isDrawing, angle, speed, resolution, draw, addToast]);
 
   useEffect(() => {
     if (isDrawing) {
@@ -119,16 +119,7 @@ const SpirographPage = () => {
       cancelAnimationFrame(requestRef.current);
     }
     return () => cancelAnimationFrame(requestRef.current);
-  }, [
-    isDrawing,
-    angle,
-    outerRadius,
-    innerRadius,
-    penOffset,
-    speed,
-    color,
-    isRainbow,
-  ]);
+  }, [isDrawing, animate]);
 
   // Init canvas
   useEffect(() => {

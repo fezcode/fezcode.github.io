@@ -2,7 +2,7 @@ import React from 'react';
 import Stopwatch from '../../components/Stopwatch';
 import useSeo from '../../hooks/useSeo';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const StopwatchAppPage = () => {
   useSeo({

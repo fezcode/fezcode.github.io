@@ -1,75 +1,41 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import {
+  ArrowLeftIcon,
+  RulerIcon,
+  InfoIcon,
+  ArrowsLeftRightIcon
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import CustomDropdown from '../../components/CustomDropdown';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const CssUnitConverterPage = () => {
+  const appName = 'Unit Converter';
+
   useSeo({
-    title: 'CSS Unit Converter | Fezcodex',
-    description:
-      'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
-    keywords: [
-      'Fezcodex',
-      'CSS unit converter',
-      'px to rem',
-      'em to px',
-      'vw to px',
-      'css tools',
-    ],
-    ogTitle: 'CSS Unit Converter | Fezcodex',
-    ogDescription:
-      'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'CSS Unit Converter | Fezcodex',
-    twitterDescription:
-      'Convert CSS units like px, em, rem, vw, vh, and percentages with this online tool.',
-    twitterImage: '/images/ogtitle.png',
+    title: `${appName} | Fezcodex`,
+    description: 'Bilateral translation layer for CSS length units.',
+    keywords: ['Fezcodex', 'CSS unit converter', 'px to rem', 'em to px', 'vw to px'],
   });
 
   const [inputValue, setInputValue] = useState('');
   const [inputUnit, setInputUnit] = useState('px');
-  const [basePx, setBasePx] = useState(16); // Default base pixel for rem/em calculations
+  const [basePx, setBasePx] = useState(16);
 
   const convertUnits = (value, unit, base) => {
     const numValue = parseFloat(value);
-    if (isNaN(numValue)) {
-      return {
-        px: '',
-        em: '',
-        rem: '',
-        vw: '',
-        vh: '',
-        percent: '',
-      };
-    }
+    if (isNaN(numValue)) return { px: '', em: '', rem: '', vw: '', vh: '', percent: '' };
 
     let pxValue;
     switch (unit) {
-      case 'px':
-        pxValue = numValue;
-        break;
+      case 'px': pxValue = numValue; break;
       case 'em':
-      case 'rem':
-        pxValue = numValue * base;
-        break;
-      case 'vw':
-        // Assuming a viewport width of 1920px for a common reference
-        pxValue = (numValue / 100) * 1920;
-        break;
-      case 'vh':
-        // Assuming a viewport height of 1080px for a common reference
-        pxValue = (numValue / 100) * 1080;
-        break;
-      case 'percent':
-        // Percentage is relative, so we need a base. Let's assume 16px for 100%
-        pxValue = (numValue / 100) * base;
-        break;
-      default:
-        pxValue = numValue;
+      case 'rem': pxValue = numValue * base; break;
+      case 'vw': pxValue = (numValue / 100) * 1920; break;
+      case 'vh': pxValue = (numValue / 100) * 1080; break;
+      case 'percent': pxValue = (numValue / 100) * base; break;
+      default: pxValue = numValue;
     }
 
     return {
@@ -84,225 +50,121 @@ const CssUnitConverterPage = () => {
 
   const conversions = convertUnits(inputValue, inputUnit, basePx);
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="CSS Unit Converter" slug="css" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                CSS Unit Converter{' '}
-              </h1>
-              <hr className="border-gray-700 mb-4" />
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-                <div>
-                  <label
-                    htmlFor="inputValue"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Value
-                  </label>
-                  <input
-                    type="number"
-                    id="inputValue"
-                    className="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Enter value"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="inputUnit"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Unit
-                  </label>
-                  <div className="mt-1">
-                    <CustomDropdown
-                      options={[
-                        { label: 'px', value: 'px' },
-                        { label: 'em', value: 'em' },
-                        { label: 'rem', value: 'rem' },
-                        { label: 'vw', value: 'vw' },
-                        { label: 'vh', value: 'vh' },
-                        { label: '%', value: 'percent' },
-                      ]}
-                      value={inputUnit}
-                      onChange={setInputUnit}
-                      label="Unit"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <label
-                    htmlFor="basePx"
-                    className="block text-sm font-medium text-gray-300"
-                  >
-                    Base Pixel (for em/rem)
-                  </label>
-                  <input
-                    type="number"
-                    id="basePx"
-                    className="mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500"
-                    value={basePx}
-                    onChange={(e) =>
-                      setBasePx(parseFloat(e.target.value) || 16)
-                    }
-                    placeholder="16"
-                  />
-                </div>
-              </div>
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <header className="mb-20">
+          <Link to="/apps" className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest">
+            <ArrowLeftIcon weight="bold" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                CSS Units
+              </h1>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Relational length protocol. Map absolute pixel values to relative system units.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Controls Section */}
+          <div className="lg:col-span-5 space-y-8">
+             <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden">
+                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                   <GenerativeArt seed="CSS_UNIT_INPUT" className="w-full h-full" />
+                </div>
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+                <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                   <RulerIcon weight="fill" className="text-emerald-500" />
+                   Input_Parameters
+                </h3>
+
+                <div className="space-y-8 relative z-10">
+                   <div className="flex flex-col gap-4">
+                      <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Value to Convert</label>
+                      <input
+                        type="number"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        className="bg-transparent border-b-2 border-white/10 py-4 text-5xl font-mono text-white focus:border-emerald-500 focus:outline-none transition-colors"
+                        placeholder="0.00"
+                      />
+                   </div>
+
+                   <div className="grid grid-cols-2 gap-6">
+                      <div className="flex flex-col gap-2">
+                         <label className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">Source Unit</label>
+                         <CustomDropdown
+                           options={[
+                             { label: 'PX', value: 'px' },
+                             { label: 'EM', value: 'em' },
+                             { label: 'REM', value: 'rem' },
+                             { label: 'VW', value: 'vw' },
+                             { label: 'VH', value: 'vh' },
+                             { label: '%', value: 'percent' },
+                           ]}
+                           value={inputUnit}
+                           onChange={setInputUnit}
+                           label="Unit"
+                           variant="brutalist"
+                         />
+                      </div>
+                      <div className="flex flex-col gap-2">
+                         <label className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">Base Pixel (rem/em)</label>
+                         <input
+                           type="number"
+                           value={basePx}
+                           onChange={(e) => setBasePx(parseFloat(e.target.value) || 16)}
+                           className="bg-transparent border border-gray-800 rounded-sm p-2 text-sm font-mono text-gray-300 focus:border-emerald-500 focus:outline-none transition-all"
+                         />
+                      </div>
+                   </div>
+                </div>
+             </div>
+
+             <div className="bg-white/5 border border-white/10 p-8 rounded-sm">
+                <div className="flex items-center gap-3 mb-6 text-emerald-500">
+                   <InfoIcon size={20} weight="bold" />
+                   <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">System_Reference</h4>
+                </div>
+                <div className="space-y-4 text-xs font-mono text-gray-500 uppercase tracking-wider leading-relaxed">
+                   <p><span className="text-white">REM:</span> Relative to root font-size (base).</p>
+                   <p><span className="text-white">EM:</span> Relative to parent font-size.</p>
+                   <p><span className="text-white">VW/VH:</span> Relative to 1% of viewport width/height.</p>
+                </div>
+             </div>
+          </div>
+
+          {/* Results Column */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+                <ArrowsLeftRightIcon weight="fill" className="text-emerald-500" />
+                Computed_Mappings
+             </h3>
+
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(conversions).map(([unit, value]) => (
-                  <div key={unit} className="bg-gray-700 p-4 rounded-md">
-                    <p className="text-sm font-medium text-gray-400 uppercase">
-                      {unit}
-                    </p>
-                    <p className="text-xl font-semibold text-blue-400">
-                      {value}
-                      {unit === 'percent' ? '%' : unit}
-                    </p>
+                  <div key={unit} className="p-6 border border-white/10 bg-white/[0.01] rounded-sm group relative overflow-hidden">
+                    <div className="absolute top-0 left-0 w-full h-[1px] bg-emerald-500/0 group-hover:bg-emerald-500/30 transition-all" />
+                    <div className="flex flex-col gap-1">
+                       <span className="text-[9px] font-mono font-bold text-gray-600 uppercase tracking-widest">{unit === 'percent' ? 'Percentage' : unit}</span>
+                       <div className="font-mono text-2xl text-emerald-400 group-hover:text-white transition-colors">
+                          {value || '0.00'}<span className="text-gray-700 ml-1 text-sm">{unit === 'percent' ? '%' : unit}</span>
+                       </div>
+                    </div>
                   </div>
                 ))}
-              </div>
-            </div>
+             </div>
           </div>
-        </div>
 
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <div className="prose prose-invert max-w-none">
-                <h2 className="text-2xl font-bold mb-4">
-                  Understanding CSS Units
-                </h2>
-                <p>
-                  CSS units are essential for defining lengths and sizes in web
-                  design. They can be broadly categorized into absolute and
-                  relative units.
-                </p>
-
-                <h3 className="text-xl font-semibold mt-6 mb-2">
-                  Absolute Units
-                </h3>
-                <ul>
-                  <li>
-                    <strong>px (Pixels):</strong> The most common absolute unit.
-                    1px is typically 1/96th of an inch. While technically
-                    absolute, their rendering can vary slightly across devices
-                    due to pixel density.
-                  </li>
-                </ul>
-
-                <h3 className="text-xl font-semibold mt-6 mb-2">
-                  Relative Units
-                </h3>
-                <p>
-                  Relative units scale relative to another length property,
-                  making them excellent for responsive design.
-                </p>
-                <ul>
-                  <li>
-                    <strong>em:</strong> Relative to the font-size of the parent
-                    element. If the parent has `font-size: 16px`, then `1em`
-                    equals `16px`.
-                  </li>
-                  <li>
-                    <strong>rem (Root em):</strong> Relative to the font-size of
-                    the root HTML element (`html tag`). This makes `rem` units
-                    more predictable than `em` because they don't compound with
-                    nested elements.
-                  </li>
-                  <li>
-                    <strong>vw (Viewport Width):</strong> Relative to 1% of the
-                    viewport's width. If the viewport is 1000px wide, `1vw` is
-                    `10px`.
-                  </li>
-                  <li>
-                    <strong>vh (Viewport Height):</strong> Relative to 1% of the
-                    viewport's height. If the viewport is 800px high, `1vh` is
-                    `8px`.
-                  </li>
-                  <li>
-                    <strong>% (Percentage):</strong> Can be relative to various
-                    properties depending on the context. For font-size, it's
-                    relative to the parent's font-size. For width/height, it's
-                    relative to the parent's width/height.
-                  </li>
-                </ul>
-
-                <h3 className="text-xl font-semibold mt-6 mb-2">
-                  When to Use Which?
-                </h3>
-                <ul>
-                  <li>
-                    <strong>`px`</strong> for fixed-size elements or when
-                    precise pixel control is needed, though often less flexible
-                    for responsiveness.
-                  </li>
-                  <li>
-                    <strong>`rem`</strong> for typography and spacing to
-                    maintain a consistent scale across the entire site, easily
-                    adjustable by changing the root font-size.
-                  </li>
-                  <li>
-                    <strong>`em`</strong> for components where scaling relative
-                    to the immediate parent's font-size is desired (e.g., icons
-                    within a button).
-                  </li>
-                  <li>
-                    <strong>`vw` and `vh`</strong> for elements that should
-                    scale directly with the viewport dimensions, useful for
-                    full-width/height sections or responsive typography.
-                  </li>
-                  <li>
-                    <strong>`%`</strong> for widths, heights, padding, and
-                    margins that need to be relative to their parent container.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

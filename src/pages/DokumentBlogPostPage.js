@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import { motion } from 'framer-motion';
 import {
   ArrowLeft,
   SealCheck,
@@ -13,14 +12,10 @@ import {
   Calendar,
 } from '@phosphor-icons/react';
 import GrainOverlay from '../components/GrainOverlay';
-import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import { calculateReadingTime } from '../utils/readingTime';
-import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
-import CodeModal from '../components/CodeModal';
 import ImageModal from '../components/ImageModal';
-import { useToast } from '../hooks/useToast';
 
 const DokumentBlogPostPage = () => {
   const { slug, episodeSlug } = useParams();
@@ -28,11 +23,7 @@ const DokumentBlogPostPage = () => {
   const currentSlug = episodeSlug || slug;
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { addToast } = useToast();
   const [readingProgress, setReadingProgress] = useState(0);
-  const contentRef = useRef(null);
-  const { trackReadingProgress } = useAchievements();
-  const [hasTrackedRead, setHasTrackedRead] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState(null);
 
   useEffect(() => {

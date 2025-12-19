@@ -45,6 +45,19 @@ export const VisualSettingsProvider = ({ children }) => {
   const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','standard');
   const [sidebarMode, setSidebarMode] = usePersistentState('sidebar-mode', 'brutalist');
   const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(window.innerWidth > 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setIsSidebarOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
 
   // Chaos Theory Achievement Tracker
   useEffect(() => {
@@ -281,6 +294,9 @@ export const VisualSettingsProvider = ({ children }) => {
         setSidebarMode,
         sidebarColor,
         setSidebarColor,
+        isSidebarOpen,
+        setIsSidebarOpen,
+        toggleSidebar,
       }}
     >
       {children}

@@ -1,55 +1,17 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, SpeakerSimpleHighIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, SpeakerSimpleHighIcon, TranslateIcon, WaveSineIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import { useAchievements } from '../../context/AchievementContext';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const MORSE_CODE_MAP = {
-  A: '.-',
-  B: '-...',
-  C: '-.-.',
-  D: '-..',
-  E: '.',
-  F: '..-.',
-  G: '--.',
-  H: '....',
-  I: '..',
-  J: '.---',
-  K: '-.-',
-  L: '.-..',
-  M: '--',
-  N: '-.',
-  O: '---',
-  P: '.--.',
-  Q: '--.-',
-  R: '.-.',
-  S: '...',
-  T: '-',
-  U: '..-',
-  V: '...-',
-  W: '.--',
-  X: '-..-',
-  Y: '-.--',
-  Z: '--..',
-  1: '.----',
-  2: '..---',
-  3: '...--',
-  4: '....-',
-  5: '.....',
-  6: '-....',
-  7: '--...',
-  8: '---..',
-  9: '----.',
-  0: '-----',
-  ' ': '/',
-  ',': '--..--',
-  '.': '.-.-.-',
-  '?': '..--..',
-  '/': '-..-.',
-  '-': '-....-',
-  '(': '-.--.',
-  ')': '-.--.-',
+  A: '.-', B: '-...', C: '-.-.', D: '-..', E: '.', F: '..-.', G: '--.', H: '....',
+  I: '..', J: '.---', K: '-.-', L: '.-..', M: '--', N: '-.', O: '---', P: '.--.',
+  Q: '--.-', R: '.-.', S: '...', T: '-', U: '..-', V: '...-', W: '.--', X: '-..-',
+  Y: '-.--', Z: '--..', 1: '.----', 2: '..---', 3: '...--', 4: '....-', 5: '.....',
+  6: '-....', 7: '--...', 8: '---..', 9: '----.', 0: '-----', ' ': '/', ',': '--..--',
+  '.': '.-.-.-', '?': '..--..', '/': '-..-.', '-': '-....-', '(': '-.--.', ')': '-.--.-',
 };
 
 const REVERSE_MORSE_CODE_MAP = Object.fromEntries(
@@ -57,20 +19,12 @@ const REVERSE_MORSE_CODE_MAP = Object.fromEntries(
 );
 
 const MorseCodeTranslatorPage = () => {
+  const appName = 'Morse Translator';
+
   useSeo({
-    title: 'Morse Code Translator | Fezcodex',
-    description:
-      'Translate text to Morse code and vice-versa, with audio playback.',
+    title: `${appName} | Fezcodex`,
+    description: 'Translate natural language into binary pulses and vice-versa.',
     keywords: ['Fezcodex', 'morse code', 'translator', 'converter'],
-    ogTitle: 'Morse Code Translator | Fezcodex',
-    ogDescription:
-      'Translate text to Morse code and vice-versa, with audio playback.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Morse Code Translator | Fezcodex',
-    twitterDescription:
-      'Translate text to Morse code and vice-versa, with audio playback.',
-    twitterImage: '/images/ogtitle.png',
   });
 
   const { unlockAchievement } = useAchievements();
@@ -80,10 +34,7 @@ const MorseCodeTranslatorPage = () => {
   const handleTextChange = (e) => {
     const newText = e.target.value.toUpperCase();
     setText(newText);
-    const newMorseCode = newText
-      .split('')
-      .map((char) => MORSE_CODE_MAP[char] || '')
-      .join(' ');
+    const newMorseCode = newText.split('').map((char) => MORSE_CODE_MAP[char] || '').join(' ');
     setMorseCode(newMorseCode);
     if (newText === 'SOS') unlockAchievement('sos_signal');
   };
@@ -91,17 +42,13 @@ const MorseCodeTranslatorPage = () => {
   const handleMorseChange = (e) => {
     const newMorseCode = e.target.value;
     setMorseCode(newMorseCode);
-    const newText = newMorseCode
-      .split(' ')
-      .map((code) => REVERSE_MORSE_CODE_MAP[code] || '')
-      .join('');
+    const newText = newMorseCode.split(' ').map((code) => REVERSE_MORSE_CODE_MAP[code] || '').join('');
     setText(newText);
     if (newText === 'SOS') unlockAchievement('sos_signal');
   };
 
   const playMorseCode = () => {
-    const audioContext = new (window.AudioContext ||
-      window.webkitAudioContext)();
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const dotDuration = 80;
     const dashDuration = dotDuration * 3;
     const spaceDuration = dotDuration;
@@ -110,15 +57,12 @@ const MorseCodeTranslatorPage = () => {
     const playTone = (duration) => {
       const oscillator = audioContext.createOscillator();
       const gainNode = audioContext.createGain();
-
       oscillator.connect(gainNode);
       gainNode.connect(audioContext.destination);
-
-      oscillator.frequency.value = 600; // A suitable frequency for the tone
+      oscillator.frequency.value = 600;
       gainNode.gain.setValueAtTime(0, time);
       gainNode.gain.linearRampToValueAtTime(1, time + 0.01);
       gainNode.gain.linearRampToValueAtTime(0, time + duration);
-
       oscillator.start(time);
       oscillator.stop(time + duration);
     };
@@ -139,74 +83,70 @@ const MorseCodeTranslatorPage = () => {
   };
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Morse Code Translator" slug="mct" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-4">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                Morse Code Translator
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+
+        <header className="mb-20">
+          <Link to="/apps" className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest">
+            <ArrowLeftIcon weight="bold" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                Morse
               </h1>
-              <hr className="border-gray-700 mb-6" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label
-                    htmlFor="text-input"
-                    className="block text-lg font-semibold text-app mb-2"
-                  >
-                    Text
-                  </label>
-                  <textarea
-                    id="text-input"
-                    className="w-full h-48 p-4 bg-gray-900/50 font-mono resize-none border rounded-md focus:ring-0 text-app-light border-app-alpha-50"
-                    value={text}
-                    onChange={handleTextChange}
-                    placeholder="Enter text to translate..."
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="morse-input"
-                    className="block text-lg font-semibold text-app mb-2"
-                  >
-                    Morse Code
-                  </label>
-                  <textarea
-                    id="morse-input"
-                    className="w-full h-48 p-4 bg-gray-900/50 font-mono resize-none border rounded-md focus:ring-0 text-app-light border-app-alpha-50"
-                    value={morseCode}
-                    onChange={handleMorseChange}
-                    placeholder="Enter morse code to translate..."
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center mt-6">
-                <button
-                  onClick={playMorseCode}
-                  className="p-4 rounded-full bg-tb text-app border-app-alpha-50 hover:bg-app/15 border flex items-center gap-2"
-                >
-                  <SpeakerSimpleHighIcon size={32} /> Play Sound
-                </button>
-              </div>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Binary pulse translation layer. Map natural language to temporal patterns.
+              </p>
             </div>
+
+            <button
+               onClick={playMorseCode}
+               disabled={!morseCode}
+               className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm disabled:opacity-20"
+            >
+               <SpeakerSimpleHighIcon weight="bold" size={20} />
+               <span>Auditory Feed</span>
+            </button>
           </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+          <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden">
+             <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed="MORSE_TEXT" className="w-full h-full" />
+             </div>
+             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <TranslateIcon weight="fill" className="text-emerald-500" />
+                Language_Input
+             </h3>
+             <textarea
+               value={text}
+               onChange={handleTextChange}
+               className="w-full h-64 bg-black/40 border border-white/5 p-6 font-mono text-xl text-gray-300 focus:border-emerald-500 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide uppercase"
+               placeholder="Insert plaintext..."
+             />
+          </div>
+
+          <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden">
+             <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed="MORSE_PULSE" className="w-full h-full" />
+             </div>
+             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <WaveSineIcon weight="fill" className="text-emerald-500" />
+                Pulse_Sequence
+             </h3>
+             <textarea
+               value={morseCode}
+               onChange={handleMorseChange}
+               className="w-full h-64 bg-black/40 border border-white/5 p-6 font-mono text-2xl text-emerald-400 focus:border-emerald-500 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide tracking-[0.2em]"
+               placeholder=".... --- .-.. -.."
+             />
+          </div>
+
         </div>
       </div>
     </div>

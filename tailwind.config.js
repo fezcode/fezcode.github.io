@@ -21,6 +21,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        '3xl': '1600px',
+        '4xl': '1700px',
+      },
       fontFamily: {
         sans: ['Space Mono', ...defaultTheme.fontFamily.sans],
         mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],

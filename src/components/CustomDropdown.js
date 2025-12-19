@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom'; // Import ReactDOM
 import { CaretDown, Check } from '@phosphor-icons/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const CustomDropdown = ({
   options,

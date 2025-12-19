@@ -9,7 +9,6 @@ import {
   FunnelIcon,
   XCircleIcon,
   CalendarBlankIcon,
-  Leaf, // Added a leaf icon for flavor if needed, or stick to Trophy
 } from '@phosphor-icons/react';
 import useSeo from '../hooks/useSeo';
 import { useAchievements } from '../context/AchievementContext';

@@ -1,65 +1,76 @@
-import React, { useState, useEffect } from 'react';
-import './ContactModal.css'; // Reusing the same CSS for animations
+import React, { useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
 
 const GenericModal = ({ isOpen, onClose, title, children }) => {
-  const [isClosing, setIsClosing] = useState(false);
-
   useEffect(() => {
-    if (!isOpen) {
-      setIsClosing(false);
-    }
-
     const handleKeyDown = (event) => {
       if (event.key === 'Escape' && isOpen) {
-        handleClose();
+        onClose();
       }
     };
 
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
     } else {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'auto';
     };
-  }, [isOpen]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-      setIsClosing(false);
-    }, 300); // Corresponds to animation duration
-  };
-
-  if (!isOpen) {
-    return null;
-  }
+  }, [isOpen, onClose]);
 
   return (
-    <div
-      className={`modal-overlay ${isOpen && !isClosing ? 'fade-in' : 'fade-out'}`}
-      onClick={handleClose}
-    >
-      <div
-        className={`modal-content ${isOpen && !isClosing ? 'slide-up' : 'slide-down'}`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="modal-header">
-          <h2 className="text-xl font-mono text-primary-400 font-bold">
-            {title}
-          </h2>
-          <button onClick={handleClose} className="close-button">
-            <XIcon size={24} />
-          </button>
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
+          {/* Overlay */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+          />
+
+          {/* Modal Container */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: 20 }}
+            transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
+            className="relative w-full max-w-xl bg-[#050505] border border-white/10 rounded-sm shadow-2xl overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="flex items-center justify-between p-6 border-b border-white/10 bg-white/[0.02]">
+              <h2 className="text-2xl font-black uppercase tracking-tighter text-white">
+                {title}
+              </h2>
+              <button
+                onClick={onClose}
+                className="p-2 text-gray-500 hover:text-emerald-500 hover:bg-white/5 rounded-sm transition-all"
+                aria-label="Close Modal"
+              >
+                <XIcon size={24} weight="bold" />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div className="p-8 max-h-[70vh] overflow-y-auto scrollbar-hide text-gray-300 font-mono text-sm leading-relaxed">
+              {children}
+            </div>
+
+            {/* Footer Accent (Optional) */}
+            <div className="h-1 w-full bg-gradient-to-r from-emerald-500/0 via-emerald-500/50 to-emerald-500/0 opacity-30" />
+          </motion.div>
         </div>
-        <hr className="border-gray-800/50" />
-        <div className="modal-body text-gray-300 font-mono">{children}</div>
-      </div>
-    </div>
+      )}
+    </AnimatePresence>
   );
 };
 

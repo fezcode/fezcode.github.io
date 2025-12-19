@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
-  Cpu,
-  Article,
   Terminal,
   Cube,
   AppWindow,
@@ -78,7 +76,7 @@ const Hero = () => {
         const SectionHeader = ({ num, title, link, linkText }) => (
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div className="flex items-baseline gap-4">
-              <span className="font-mono text-emerald-500 text-sm font-bold tracking-widest">// {num}</span>
+              <span className="font-mono text-emerald-500 text-sm font-bold tracking-widest">{'//'} {num}</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">{title}</h2>
             </div>    {link && (
       <Link to={link} className="group flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">
@@ -186,7 +184,7 @@ const HomePage = () => {
 
               <div className="lg:col-span-4 space-y-12">
                 <div>
-                   <h3 className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-8">// QUICK_ACCESS</h3>
+                   <h3 className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-8">{'//'} QUICK_ACCESS</h3>
                    <div className="grid grid-cols-1 gap-4">
                       <ExploreLink to="/apps" title="Tools & Apps" icon={AppWindow} />
                       <ExploreLink to="/roadmap" title="Fezzilla Hub" icon={Cube} />

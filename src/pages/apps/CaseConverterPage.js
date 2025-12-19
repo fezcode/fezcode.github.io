@@ -1,183 +1,120 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { ArrowLeftIcon, TextAaIcon, CodeIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 function CaseConverterPage() {
+  const appName = 'Case Converter';
+
   useSeo({
-    title: 'Case Converter | Fezcodex',
-    description:
-      'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
-    keywords: [
-      'Fezcodex',
-      'case converter',
-      'uppercase',
-      'lowercase',
-      'title case',
-      'camel case',
-      'snake case',
-      'kebab case',
-    ],
-    ogTitle: 'Case Converter | Fezcodex',
-    ogDescription:
-      'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Case Converter | Fezcodex',
-    twitterDescription:
-      'Convert text to various cases like uppercase, lowercase, title case, camel case, snake case, and kebab case.',
-    twitterImage: '/images/ogtitle.png',
+    title: `${appName} | Fezcodex`,
+    description: 'Transform text case into various structural formats.',
+    keywords: ['Fezcodex', 'case converter', 'uppercase', 'lowercase', 'camelcase'],
   });
+
   const [inputText, setInputText] = useState('');
   const { addToast } = useToast();
 
   const convertToUpperCase = () => inputText.toUpperCase();
   const convertToLowerCase = () => inputText.toLowerCase();
-  const convertToTitleCase = () =>
-    inputText.replace(/\b\w/g, (char) => char.toUpperCase());
-  const convertToCamelCase = () =>
-    inputText
+  const convertToTitleCase = () => inputText.replace(/\b\w/g, (char) => char.toUpperCase());
+  const convertToCamelCase = () => inputText
       .replace(/(?:^|\s)([a-zA-Z])/g, (_, char) => char.toUpperCase())
       .replace(/\s+/g, '');
   const convertToSnakeCase = () => inputText.toLowerCase().replace(/\s+/g, '_');
   const convertToKebabCase = () => inputText.toLowerCase().replace(/\s+/g, '-');
 
   const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        addToast({
-          title: 'Success',
-          message: 'Copied to clipboard!',
-          duration: 2000,
-        });
-      })
-      .catch(() => {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy!',
-          duration: 2000,
-        });
-      });
+    navigator.clipboard.writeText(text).then(() => {
+      addToast({ title: 'Copied', message: 'Payload stored in clipboard.', duration: 2000 });
+    });
   };
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const detailTextColor = colors['app-light'];
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Case Converter" slug="cc" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>{' '}
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Case Converter{' '}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+
+        <header className="mb-20">
+          <Link to="/apps" className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest">
+            <ArrowLeftIcon weight="bold" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                {appName}
               </h1>
-              <hr className="border-gray-700 mb-4" />
-              <div
-                className="w-full h-48 resize-y overflow-auto border rounded-md"
-                style={{ borderColor: cardStyle.borderColor }}
-              >
-                <textarea
-                  className="w-full h-full p-4 bg-gray-900/50 font-mono resize-none border-none focus:ring-0"
-                  style={{ color: detailTextColor }}
-                  value={inputText}
-                  onChange={(e) => setInputText(e.target.value)}
-                  placeholder="Enter text here..."
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4 mt-4">
-                <CaseOutput
-                  title="Uppercase"
-                  value={convertToUpperCase()}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-                <CaseOutput
-                  title="Lowercase"
-                  value={convertToLowerCase()}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-                <CaseOutput
-                  title="Title Case"
-                  value={convertToTitleCase()}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-                <CaseOutput
-                  title="Camel Case"
-                  value={convertToCamelCase()}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-                <CaseOutput
-                  title="Snake Case"
-                  value={convertToSnakeCase()}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-                <CaseOutput
-                  title="Kebab Case"
-                  value={convertToKebabCase()}
-                  onCopy={copyToClipboard}
-                  detailTextColor={detailTextColor}
-                />
-              </div>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Text transformation protocol. Map character strings to specific case conventions.
+              </p>
             </div>
           </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Input Module */}
+          <div className="lg:col-span-5 space-y-8">
+             <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden">
+                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                   <GenerativeArt seed="CASE_INPUT" className="w-full h-full" />
+                </div>
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+                <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                   <TextAaIcon weight="fill" className="text-emerald-500" />
+                   Input_Buffer
+                </h3>
+                <textarea
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  className="w-full h-64 bg-black/40 border border-white/5 p-6 font-mono text-lg text-gray-300 focus:border-emerald-500 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide"
+                  placeholder="Insert plaintext sequence..."
+                />
+             </div>
+          </div>
+
+          {/* Outputs Column */}
+          <div className="lg:col-span-7 space-y-6">
+             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+                <CodeIcon weight="fill" className="text-emerald-500" />
+                Transformed_States
+             </h3>
+
+             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <CaseOutput title="Uppercase" value={convertToUpperCase()} onCopy={copyToClipboard} />
+                <CaseOutput title="Lowercase" value={convertToLowerCase()} onCopy={copyToClipboard} />
+                <CaseOutput title="Title Case" value={convertToTitleCase()} onCopy={copyToClipboard} />
+                <CaseOutput title="Camel Case" value={convertToCamelCase()} onCopy={copyToClipboard} />
+                <CaseOutput title="Snake Case" value={convertToSnakeCase()} onCopy={copyToClipboard} />
+                <CaseOutput title="Kebab Case" value={convertToKebabCase()} onCopy={copyToClipboard} />
+             </div>
+          </div>
+
         </div>
       </div>
     </div>
   );
 }
 
-const CaseOutput = ({ title, value, onCopy, detailTextColor }) => (
-  <div className="flex flex-col">
-    <label className="text-sm font-medium text-gray-400 mb-1">{title}</label>
-    <div className="relative">
-      <textarea
-        readOnly
-        value={value}
-        className="w-full p-2 border rounded-md bg-gray-800/50 font-mono text-sm resize-none"
-        style={{ borderColor: colors['app-alpha-50'], color: detailTextColor }}
-        rows="3"
-      />
-      <button
+const CaseOutput = ({ title, value, onCopy }) => (
+  <div className="flex flex-col gap-2 p-4 border border-white/10 bg-white/[0.01] rounded-sm group relative overflow-hidden">
+    <div className="absolute top-0 left-0 w-full h-[1px] bg-emerald-500/0 group-hover:bg-emerald-500/30 transition-all" />
+    <div className="flex items-center justify-between">
+       <span className="text-[9px] font-mono font-bold text-gray-600 uppercase tracking-widest">{title}</span>
+       <button
         onClick={() => onCopy(value)}
-        className="absolute top-2 right-2 px-2 py-1 bg-gray-700 text-white text-xs rounded hover:bg-gray-600"
+        className="text-gray-600 hover:text-emerald-400 transition-colors"
+        title="Copy Output"
       >
-        Copy
+        <CopySimpleIcon size={14} weight="bold" />
       </button>
+    </div>
+    <div className="font-mono text-sm text-gray-300 break-all line-clamp-2 min-h-[2.5rem]">
+       {value || <span className="opacity-10">---</span>}
     </div>
   </div>
 );

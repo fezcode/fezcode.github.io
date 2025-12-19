@@ -12,12 +12,12 @@ const RotaryDial = ({ onDial }) => {
   const STOP_ANGLE = 60; // Angle of the finger stop (in degrees, 0 is 3 o'clock)
   const GAP = 30; // Degrees between numbers
   // Numbers 1-9, 0. '1' is closest to stop.
-  const DIGITS = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+  const DIGITS = React.useMemo(() => [1, 2, 3, 4, 5, 6, 7, 8, 9, 0], []);
 
-  const getDigitAngle = (digit) => {
+  const getDigitAngle = React.useCallback((digit) => {
     const index = DIGITS.indexOf(digit);
     return STOP_ANGLE - (index + 1) * GAP;
-  };
+  }, [DIGITS]);
 
   const getAngle = (event, center) => {
     const clientX = event.touches ? event.touches[0].clientX : event.clientX;
@@ -42,7 +42,7 @@ const RotaryDial = ({ onDial }) => {
     setActiveDigit(digit);
   };
 
-  const handleMove = (event) => {
+  const handleMove = React.useCallback((event) => {
     if (!isDragging || activeDigit === null || !containerRef.current) return;
     const rect = containerRef.current.getBoundingClientRect();
     const center = {
@@ -77,8 +77,9 @@ const RotaryDial = ({ onDial }) => {
     if (newRotation > maxRot) newRotation = maxRot;
 
     rotation.set(newRotation);
-  };
-  const handleEnd = () => {
+  }, [activeDigit, isDragging, rotation, getDigitAngle]);
+
+  const handleEnd = React.useCallback(() => {
     if (!isDragging) return;
     setIsDragging(false);
 
@@ -100,7 +101,7 @@ const RotaryDial = ({ onDial }) => {
       damping: 20,
       mass: 1,
     });
-  };
+  }, [activeDigit, isDragging, onDial, rotation, getDigitAngle]);
 
   useEffect(() => {
     const onMove = (e) => handleMove(e);
@@ -119,7 +120,7 @@ const RotaryDial = ({ onDial }) => {
       window.removeEventListener('touchmove', onMove);
       window.removeEventListener('touchend', onUp);
     };
-  }, [isDragging, activeDigit]);
+  }, [isDragging, handleMove, handleEnd]);
 
   return (
     <div

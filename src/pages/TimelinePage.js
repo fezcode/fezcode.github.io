@@ -173,7 +173,7 @@ const TimelinePage = () => {
                           className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest hover:text-white transition-colors"
                           style={{ color: eventColor }}
                         >
-                          Access_Linked_Asset &rarr;
+                          Access Linked Asset &rarr;
                         </a>
                       </div>
                     )}
@@ -188,21 +188,21 @@ const TimelinePage = () => {
         <div className="mt-16 lg:col-span-4 lg:mt-0">
             <div className="sticky top-24 space-y-12">
                 <div>
-                    <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">_CHRONO_STATISTICS</h3>
+                    <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">STATISTICS</h3>
                     <div className="space-y-6 border-l border-white/10 pl-6">
                         <div className="flex flex-col gap-1">
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Event_Count</span>
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Event Count</span>
                             <span className="font-mono text-2xl uppercase text-emerald-500 font-black">{milestones.length}</span>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Active_Since</span>
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Active Since</span>
                             <span className="font-mono text-sm uppercase text-white">
                                 {milestones.length > 0 && new Date(milestones[milestones.length - 1].date).getFullYear()}
                             </span>
                         </div>
                         <div className="flex flex-col gap-1">
                             <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Status</span>
-                            <span className="font-mono text-sm uppercase text-emerald-400 font-bold animate-pulse">RECORDING...</span>
+                            <span className="font-mono text-sm uppercase text-emerald-400 font-bold animate-pulse">STILL GOING ON...</span>
                         </div>
                     </div>
                 </div>

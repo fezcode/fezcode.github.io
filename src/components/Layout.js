@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Navbar from './Navbar';
 import Sidebar from './Sidebar';
 import BrutalistSidebar from './BrutalistSidebar';
@@ -26,28 +26,9 @@ const Layout = ({
   toggleDigitalRain,
   toggleBSOD,
 }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
-  const { isGarden, isAutumn, isRain, sidebarColor, sidebarMode } = useVisualSettings();
+  const { isGarden, isAutumn, isRain, sidebarColor, sidebarMode, isSidebarOpen, toggleSidebar } = useVisualSettings();
   const location = useLocation();
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 768) {
-        setIsSidebarOpen(false);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
 
   if (location.pathname.startsWith('/stories')) {
     return (

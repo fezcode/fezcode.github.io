@@ -8,7 +8,6 @@ import {
   FloppyDisk,
   FolderOpen,
   ArrowsOutLineVerticalIcon,
-  TrophyIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';

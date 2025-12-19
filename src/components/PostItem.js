@@ -47,7 +47,7 @@ const PostItem = ({
     >
       <Link
         to={isSeries ? `/blog/series/${slug}` : `/blog/${slug}`}
-        className="group relative flex items-center justify-between border-b border-white/10 py-6 pr-12 transition-all duration-300"
+        className="group relative flex items-center justify-between border-b border-white/10 py-6 pr-20 transition-all duration-300"
       >
         {/* Active Marker */}
         <div
@@ -56,7 +56,7 @@ const PostItem = ({
           }`}
         />
 
-        <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0">
+        <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0 pr-12">
           {/* Date */}
           <span
             className={`font-mono text-[10px] tracking-widest flex-shrink-0 transition-colors duration-300 ${
@@ -80,14 +80,14 @@ const PostItem = ({
 
             {series && (
               <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-500/60">
-                {series} // Part {seriesIndex}
+                {series} {'//'} Part {seriesIndex}
               </span>
             )}
           </div>
         </div>
 
-        {/* Category Badge */}
-        <div className="flex items-center gap-4">
+        {/* Category Badge & Arrow */}
+        <div className="flex items-center gap-4 flex-shrink-0">
           <span
             className="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm transition-all duration-300"
             style={{
@@ -99,13 +99,15 @@ const PostItem = ({
             {category || 'Post'}
           </span>
 
-          <ArrowRight
-            weight="bold"
-            size={20}
-            className={`transition-all duration-300 ${
-                isActive ? 'translate-x-0 opacity-100 text-emerald-400' : '-translate-x-4 opacity-0 text-gray-500'
-            }`}
-          />
+          <div className="w-10 flex justify-end">
+            <ArrowRight
+              weight="bold"
+              size={20}
+              className={`transition-all duration-300 ${
+                  isActive ? 'translate-x-0 opacity-100 text-emerald-400' : '-translate-x-4 opacity-0 text-gray-500'
+              }`}
+            />
+          </div>
         </div>
       </Link>
     </motion.div>

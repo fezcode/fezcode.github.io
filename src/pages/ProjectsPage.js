@@ -8,6 +8,8 @@ import useSeo from '../hooks/useSeo';
 import { ArrowLeft, Cpu } from '@phosphor-icons/react';
 import { useAchievements } from '../context/AchievementContext';
 
+import { useVisualSettings } from '../context/VisualSettingsContext';
+
 const ProjectsPage = () => {
   useSeo({
     title: 'Archive | Fezcodex',
@@ -57,7 +59,7 @@ const ProjectsPage = () => {
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
 
       {/* Mobile Background (Static or Active Project Blur) */}
-      <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none z-0">
+      <div className="absolute inset-0 4xl:hidden opacity-20 pointer-events-none z-0">
           {activeProject && (isPlaceholder(activeProject) ? (
              <GenerativeArt seed={activeProject.title} className="w-full h-full filter blur-3xl" />
           ) : (
@@ -70,7 +72,7 @@ const ProjectsPage = () => {
       </div>
 
       {/* LEFT PANEL: The Index */}
-      <div className="w-full lg:w-1/2 lg:max-w-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:px-20 overflow-y-auto overflow-x-hidden no-scrollbar">
+      <div className="w-full 4xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300">
         <header className="mb-20">
           <Link
             to="/"
@@ -83,7 +85,7 @@ const ProjectsPage = () => {
             WORK
           </h1>
           <p className="text-gray-400 font-mono text-sm max-w-sm">
-            // SELECTED WORKS
+            {'//'} SELECTED WORKS
           </p>
         </header>
 
@@ -105,7 +107,7 @@ const ProjectsPage = () => {
       </div>
 
       {/* RIGHT PANEL: The Stage (Desktop Only) */}
-      <div className="hidden lg:block fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20">
+      <div className="hidden 4xl:block fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20">
         <AnimatePresence mode='wait'>
           {activeProject && (
             <motion.div

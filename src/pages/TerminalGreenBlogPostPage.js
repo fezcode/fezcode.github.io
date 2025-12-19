@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -10,11 +10,9 @@ import {
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
-import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
 import ImageModal from '../components/ImageModal';
-import { useToast } from '../hooks/useToast';
 
 const emeraldTerminalTheme = {
   "code[class*=\"language-\"]": { "color": "#10b981", "background": "none", "fontFamily": "monospace" },
@@ -124,9 +122,9 @@ const TerminalGreenBlogPostPage = () => {
         <div className="h-full bg-emerald-500 shadow-[0_0_10px_#10b981]" style={{ width: `${readingProgress}%` }} />
       </div>
 
-            <div className="relative pt-32 pb-20 border-b border-emerald-500/20">
-              <GenerativeArt seed={post.attributes.title} className="absolute inset-0 opacity-20 filter grayscale contrast-150 h-[30vh]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent h-[30vh]" />
+            <div className="relative pt-20 pb-12 border-b border-emerald-500/20">
+              <GenerativeArt seed={post.attributes.title} className="absolute inset-0 opacity-20 filter grayscale contrast-150 h-[20vh]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent h-[20vh]" />
 
               <div className="relative mx-auto max-w-5xl px-6">            <Link to="/blog" className="inline-flex items-center gap-2 border border-emerald-500/30 px-4 py-1 text-[10px] uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all mb-8">
                 <ArrowLeft weight="bold" /> [ BACK_TO_INDEX ]
@@ -135,8 +133,8 @@ const TerminalGreenBlogPostPage = () => {
                 {post.attributes.title}
             </h1>
             <div className="mt-8 flex gap-6 text-[10px] uppercase tracking-widest text-emerald-500/60">
-                <span>// DATE: {new Date(post.attributes.date).toLocaleDateString()}</span>
-                <span>// TERM: SESSION_01</span>
+                <span>{'//'} DATE: {new Date(post.attributes.date).toLocaleDateString()}</span>
+                <span>{'//'} TERM: SESSION_01</span>
             </div>
         </div>
       </div>

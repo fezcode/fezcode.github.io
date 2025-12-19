@@ -1,33 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { ArrowLeftIcon, CopySimpleIcon, KeyboardIcon, CodeIcon, ArrowsLeftRightIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 function AsciiConverterPage() {
+  const appName = 'Binary / ASCII';
+
   useSeo({
-    title: 'Text to ASCII Converter | Fezcodex',
-    description:
-      'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
-    keywords: [
-      'Fezcodex',
-      'ASCII converter',
-      'text to ASCII',
-      'binary converter',
-      'text to binary',
-    ],
-    ogTitle: 'Text to ASCII Converter | Fezcodex',
-    ogDescription:
-      'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Text to ASCII Converter | Fezcodex',
-    twitterDescription:
-      'Convert text to ASCII, ASCII to text, text to binary, and binary to text with this online tool.',
-    twitterImage: '/images/ogtitle.png',
+    title: `${appName} | Fezcodex`,
+    description: 'Protocol for mapping character sequences to ASCII and Binary representations.',
+    keywords: ['Fezcodex', 'ASCII converter', 'text to ASCII', 'binary converter', 'text to binary'],
   });
+
   const [inputText, setInputText] = useState('');
   const [asciiOutput, setAsciiOutput] = useState('');
   const [binaryOutput, setBinaryOutput] = useState('');
@@ -35,203 +21,148 @@ function AsciiConverterPage() {
 
   const textToAscii = () => {
     try {
-      const ascii = inputText
-        .split('')
-        .map((char) => char.charCodeAt(0))
-        .join(' ');
+      const ascii = inputText.split('').map((char) => char.charCodeAt(0)).join(' ');
       setAsciiOutput(ascii);
+      addToast({ title: 'Success', message: 'String mapped to ASCII sequence.', type: 'success' });
     } catch (error) {
-      addToast({
-        title: 'Error',
-        message: 'Failed to convert text to ASCII.',
-        duration: 3000,
-      });
+      addToast({ title: 'Error', message: 'Failed to map to ASCII.', type: 'error' });
       setAsciiOutput('');
     }
   };
 
   const asciiToText = () => {
     try {
-      const text = inputText
-        .split(' ')
-        .map((code) => String.fromCharCode(parseInt(code, 10)))
-        .join('');
+      const text = inputText.split(' ').map((code) => String.fromCharCode(parseInt(code, 10))).join('');
       setAsciiOutput(text);
+      addToast({ title: 'Success', message: 'ASCII sequence decoded.', type: 'success' });
     } catch (error) {
-      addToast({
-        title: 'Error',
-        message: 'Failed to convert ASCII to text. Invalid ASCII string.',
-        duration: 3000,
-      });
+      addToast({ title: 'Error', message: 'Invalid ASCII sequence.', type: 'error' });
       setAsciiOutput('');
     }
   };
 
   const textToBinary = () => {
     try {
-      const binary = inputText
-        .split('')
-        .map((char) => char.charCodeAt(0).toString(2).padStart(8, '0'))
-        .join(' ');
+      const binary = inputText.split('').map((char) => char.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
       setBinaryOutput(binary);
+      addToast({ title: 'Success', message: 'String mapped to Binary sequence.', type: 'success' });
     } catch (error) {
-      addToast({
-        title: 'Error',
-        message: 'Failed to convert text to Binary.',
-        duration: 3000,
-      });
+      addToast({ title: 'Error', message: 'Failed to map to Binary.', type: 'error' });
       setBinaryOutput('');
     }
   };
 
   const binaryToText = () => {
     try {
-      const text = inputText
-        .split(' ')
-        .map((bin) => String.fromCharCode(parseInt(bin, 2)))
-        .join('');
+      const text = inputText.split(' ').map((bin) => String.fromCharCode(parseInt(bin, 2))).join('');
       setBinaryOutput(text);
+      addToast({ title: 'Success', message: 'Binary sequence decoded.', type: 'success' });
     } catch (error) {
-      addToast({
-        title: 'Error',
-        message: 'Failed to convert Binary to text. Invalid Binary string.',
-        duration: 3000,
-      });
+      addToast({ title: 'Error', message: 'Invalid Binary sequence.', type: 'error' });
       setBinaryOutput('');
     }
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        addToast({
-          title: 'Success',
-          message: 'Copied to clipboard!',
-          duration: 2000,
-        });
-      })
-      .catch(() => {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy!',
-          duration: 2000,
-        });
-      });
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      addToast({ title: 'Copied', message: 'Payload stored in clipboard.', duration: 2000 });
+    });
   };
 
-  const detailTextColor = colors['app-light'];
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="ASCII Converter" slug="ascii" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div className="group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl bg-app-alpha-10 hover:bg-app/15 text-app border-app">
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-              {' '}
-              ASCII Converter{' '}
-            </h1>
-            <hr className="border-gray-700 mb-4" />
-            <div className="relative z-10 p-1">
-              <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  Input Text
-                </label>
-                <textarea
-                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y focus:ring-0 border rounded-md border-app"
-                  style={{ color: detailTextColor }}
-                  value={inputText}
-                  onChange={(e) => setInputText(e.target.value)}
-                  placeholder="Enter text or ASCII codes (space-separated) to convert..."
-                />
-              </div>
-              <div className="flex justify-center gap-4 mb-4">
-                <button
-                  onClick={textToAscii}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
-                >
-                  Text to ASCII
-                </button>
-                <button
-                  onClick={asciiToText}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
-                >
-                  ASCII to Text
-                </button>
-              </div>
-              <div className="flex justify-center gap-4 mb-4">
-                <button
-                  onClick={textToBinary}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
-                >
-                  Text to Binary
-                </button>
-                <button
-                  onClick={binaryToText}
-                  className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out bg-tb hover:bg-app/30 text-app border-app border"
-                >
-                  Binary to Text
-                </button>
-              </div>
-              <div>
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  ASCII Output
-                </label>
-                <div className="relative">
-                  <textarea
-                    readOnly
-                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md mb-4 border-app"
-                    style={{ color: detailTextColor }}
-                    value={asciiOutput}
-                    placeholder="Converted ASCII will appear here..."
-                  />
-                  <button
-                    onClick={() => copyToClipboard(asciiOutput)}
-                    className="absolute top-2 right-2 px-3 py-1 bg-gray-700 text-white text-sm rounded hover:bg-gray-600"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
-              <div>
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  Binary Output
-                </label>
-                <div className="relative">
-                  <textarea
-                    readOnly
-                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md border-app"
-                    style={{ color: detailTextColor }}
-                    value={binaryOutput}
-                    placeholder="Converted Binary will appear here..."
-                  />
-                  <button
-                    onClick={() => copyToClipboard(binaryOutput)}
-                    className="absolute top-2 right-2 px-3 py-1 bg-gray-700 text-white text-sm rounded hover:bg-gray-600"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+
+        <header className="mb-20">
+          <Link to="/apps" className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest">
+            <ArrowLeftIcon weight="bold" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                Base Units
+              </h1>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Character mapping protocol. Translate natural language into machine-level representations.
+              </p>
             </div>
           </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Input Section */}
+          <div className="lg:col-span-5 space-y-8">
+             <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden">
+                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                   <GenerativeArt seed="ASCII_INPUT" className="w-full h-full" />
+                </div>
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+                <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                   <KeyboardIcon weight="fill" className="text-emerald-500" />
+                   Input_Buffer
+                </h3>
+                <textarea
+                  value={inputText}
+                  onChange={(e) => setInputText(e.target.value)}
+                  className="w-full h-64 bg-black/40 border border-white/5 p-6 font-mono text-sm text-gray-300 focus:border-emerald-500 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide"
+                  placeholder="Insert plaintext or sequence..."
+                />
+
+                <div className="grid grid-cols-2 gap-4 mt-8">
+                   <div className="flex flex-col gap-2">
+                      <span className="text-[9px] font-mono text-gray-600 uppercase tracking-widest text-center">ASCII Functions</span>
+                      <button onClick={textToAscii} className="py-3 bg-white text-black font-black uppercase text-[10px] tracking-widest hover:bg-emerald-400 transition-all">To ASCII</button>
+                      <button onClick={asciiToText} className="py-3 border border-white/20 text-white font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all">From ASCII</button>
+                   </div>
+                   <div className="flex flex-col gap-2">
+                      <span className="text-[9px] font-mono text-gray-600 uppercase tracking-widest text-center">Binary Functions</span>
+                      <button onClick={textToBinary} className="py-3 bg-white text-black font-black uppercase text-[10px] tracking-widest hover:bg-emerald-400 transition-all">To Binary</button>
+                      <button onClick={binaryToText} className="py-3 border border-white/20 text-white font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all">From Binary</button>
+                   </div>
+                </div>
+             </div>
+          </div>
+
+          {/* Results Section */}
+          <div className="lg:col-span-7 space-y-8">
+             <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden flex flex-col">
+                <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                   <CodeIcon weight="fill" className="text-emerald-500" />
+                   ASCII_Sequence
+                </h3>
+                <div className="relative">
+                   <textarea
+                     value={asciiOutput}
+                     readOnly
+                     className="w-full h-32 bg-black/40 border border-white/5 p-4 font-mono text-sm text-emerald-400 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide"
+                     placeholder="ASCII output..."
+                   />
+                   <button onClick={() => copyToClipboard(asciiOutput)} className="absolute top-2 right-2 text-gray-600 hover:text-white transition-colors"><CopySimpleIcon size={16}/></button>
+                </div>
+             </div>
+
+             <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden flex flex-col">
+                <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                   <ArrowsLeftRightIcon weight="fill" className="text-emerald-500" />
+                   Binary_Sequence
+                </h3>
+                <div className="relative">
+                   <textarea
+                     value={binaryOutput}
+                     readOnly
+                     className="w-full h-32 bg-black/40 border border-white/5 p-4 font-mono text-sm text-emerald-400 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide"
+                     placeholder="Binary output..."
+                   />
+                   <button onClick={() => copyToClipboard(binaryOutput)} className="absolute top-2 right-2 text-gray-600 hover:text-white transition-colors"><CopySimpleIcon size={16}/></button>
+                </div>
+             </div>
+          </div>
+
         </div>
       </div>
     </div>

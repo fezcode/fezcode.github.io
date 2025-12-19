@@ -1,16 +1,35 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   MusicNoteIcon,
-  Play,
-  Pause,
   Faders,
   Waves,
   SpeakerHigh,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import colors from '../../config/colors';
+
+// Keyboard mapping (Letter -> Frequency)
+// Basic C Major scale starting from C4
+const KEY_MAP = {
+  a: 261.63, // C4
+  s: 293.66, // D4
+  d: 329.63, // E4
+  f: 349.23, // F4
+  g: 392.0, // G4
+  h: 440.0, // A4
+  j: 493.88, // B4
+  k: 523.25, // C5
+  l: 587.33, // D5
+  ';': 659.25, // E5
+  w: 277.18, // C#4
+  e: 311.13, // D#4
+  t: 369.99, // F#4
+  y: 415.3, // G#4
+  u: 466.16, // A#4
+  o: 554.37, // C#5
+  p: 622.25, // D#5
+};
 
 const FezynthPage = () => {
   useSeo({
@@ -46,28 +65,6 @@ const FezynthPage = () => {
   const analyserRef = useRef(null);
   const animationRef = useRef(null);
   const audioContextRef = useRef(null); // Ref for audio context to access inside effect
-
-  // Keyboard mapping (Letter -> Frequency)
-  // Basic C Major scale starting from C4
-  const keyMap = {
-    a: 261.63, // C4
-    s: 293.66, // D4
-    d: 329.63, // E4
-    f: 349.23, // F4
-    g: 392.0, // G4
-    h: 440.0, // A4
-    j: 493.88, // B4
-    k: 523.25, // C5
-    l: 587.33, // D5
-    ';': 659.25, // E5
-    w: 277.18, // C#4
-    e: 311.13, // D#4
-    t: 369.99, // F#4
-    y: 415.3, // G#4
-    u: 466.16, // A#4
-    o: 554.37, // C#5
-    p: 622.25, // D#5
-  };
 
   // Initialize Audio Context
   useEffect(() => {
@@ -129,7 +126,7 @@ const FezynthPage = () => {
     draw();
   }, [audioContext]);
 
-  const playNote = (freq) => {
+  const playNote = useCallback((freq) => {
     const ctx = audioContextRef.current;
     if (!ctx) return;
     if (ctx.state === 'suspended') ctx.resume();
@@ -156,9 +153,9 @@ const FezynthPage = () => {
     activeNotesRef.current[freq] = { oscillator, gainNode };
     // Update State for UI
     setActiveNotes((prev) => ({ ...prev, [freq]: true }));
-  };
+  }, [waveform, volume, attack]);
 
-  const stopNote = (freq) => {
+  const stopNote = useCallback((freq) => {
     const ctx = audioContextRef.current;
     if (!ctx || !activeNotesRef.current[freq]) return;
 
@@ -183,21 +180,21 @@ const FezynthPage = () => {
       delete newState[freq];
       return newState;
     });
-  };
+  }, [release]);
 
   // Handle Keyboard Input
   useEffect(() => {
     const handleKeyDown = (e) => {
       const key = e.key.toLowerCase();
-      if (keyMap[key] && !e.repeat) {
-        playNote(keyMap[key]);
+      if (KEY_MAP[key] && !e.repeat) {
+        playNote(KEY_MAP[key]);
       }
     };
 
     const handleKeyUp = (e) => {
       const key = e.key.toLowerCase();
-      if (keyMap[key]) {
-        stopNote(keyMap[key]);
+      if (KEY_MAP[key]) {
+        stopNote(KEY_MAP[key]);
       }
     };
 
@@ -208,14 +205,14 @@ const FezynthPage = () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [volume, waveform, attack, release]); // Removed activeNotes dependency
+  }, [playNote, stopNote]); // Now depends on playNote and stopNote
 
   return (
     <div className="py-8 sm:py-16">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <Link
           to="/apps"
-          className="group text-primary-400 hover:underline flex items-center gap-2 text-lg mb-8"
+          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-8"
         >
           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
           Back to Apps
@@ -363,7 +360,7 @@ const FezynthPage = () => {
                 {/* White Keys */}
                 {['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'].map(
                   (key, i) => {
-                    const freq = keyMap[key];
+                    const freq = KEY_MAP[key];
                     const isPressed = !!activeNotes[freq];
                     const label = [
                       'C',
@@ -397,7 +394,7 @@ const FezynthPage = () => {
                         {['w', 'e', null, 't', 'y', 'u', null, 'o', 'p'].map(
                           (bKey, j) => {
                             if (i !== j || !bKey) return null;
-                            const bFreq = keyMap[bKey];
+                            const bFreq = KEY_MAP[bKey];
                             const bIsPressed = !!activeNotes[bFreq];
                             return (
                               <button

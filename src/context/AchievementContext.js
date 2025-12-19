@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useCallback } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useToast } from '../hooks/useToast';
 import { ACHIEVEMENTS } from '../config/achievements';
@@ -16,7 +16,7 @@ export const AchievementProvider = ({ children }) => {
     'unlocked-achievements',
     {},
   );
-  const [readPosts, setReadPosts] = usePersistentState('read-posts', []);
+  const [, setReadPosts] = usePersistentState('read-posts', []);
   const [showAchievementToast, setShowAchievementToast] = usePersistentState(
     'show-achievement-toasts',
     false,
@@ -28,7 +28,7 @@ export const AchievementProvider = ({ children }) => {
   };
 
   // Helper to unlock an achievement
-  const unlockAchievement = (id) => {
+  const unlockAchievement = useCallback((id) => {
     // Check if valid achievement ID
     const achievement = ACHIEVEMENTS.find((a) => a.id === id);
     if (!achievement) return;
@@ -57,7 +57,7 @@ export const AchievementProvider = ({ children }) => {
         ],
       });
     }
-  };
+  }, [unlockedAchievements, setUnlockedAchievements, showAchievementToast, addToast]);
 
   const trackReadingProgress = (slug) => {
     if (!slug) return;
@@ -81,7 +81,7 @@ export const AchievementProvider = ({ children }) => {
   // Automatically unlock 'hello_world' on mount if not already
   useEffect(() => {
     unlockAchievement('hello_world');
-  }, []);
+  }, [unlockAchievement]);
 
   return (
     <AchievementContext.Provider

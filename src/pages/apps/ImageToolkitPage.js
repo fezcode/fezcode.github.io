@@ -1,153 +1,96 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import { getPalette } from 'color-thief-react';
-import colors from '../../config/colors';
-import { useToast } from '../../hooks/useToast';
-import { canvasRGBA } from 'stackblur-canvas';
+import React, {useState, useRef, useEffect, useCallback} from 'react';
+import {Link} from 'react-router-dom';
+import {
+  ArrowLeftIcon,
+  DownloadSimpleIcon,
+  ImageIcon,
+  CopySimpleIcon,
+  SelectionIcon,
+  PaletteIcon,
+  GearIcon,
+} from '@phosphor-icons/react';
+import {getPalette} from 'color-thief-react';
+import {motion, AnimatePresence} from 'framer-motion';
+import {canvasRGBA} from 'stackblur-canvas';
+import {useToast} from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
-function Palette({ image }) {
+function Palette({image}) {
   const [palette, setPalette] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const { addToast } = useToast();
+  const {addToast} = useToast();
 
   useEffect(() => {
-    console.log('Palette useEffect triggered, image:', image);
     if (!image) {
       setPalette(null);
       setLoading(false);
-      console.log('No image provided, setting loading to false.');
       return;
     }
 
     setLoading(true);
-    setError(null);
-    console.log('Starting image load for palette extraction.');
-
-    const img = new Image();
-    img.crossOrigin = 'anonymous';
-    img.src = image;
-
-    img.onload = () => {
-      console.log('Image loaded successfully for palette extraction.');
-      getPalette(image, 5, 'hex', { quality: 10 })
-        .then((data) => {
-          console.log('Palette data received:', data);
-          setPalette(data);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error('getPalette error:', err);
-          setError(err);
-          setLoading(false);
-          addToast({
-            title: 'Error',
-            message: 'Failed to extract color palette.',
-            duration: 3000,
-          });
-        });
-    };
-
-    img.onerror = (err) => {
-      console.error('Image load error for palette extraction:', err);
-      setError(new Error('Failed to load image for palette extraction.'));
-      setLoading(false);
-      addToast({
-        title: 'Error',
-        message: 'Failed to load image for palette extraction.',
-        duration: 3000,
-      });
-    };
-  }, [image, addToast]);
-
-  console.log('Palette render state: loading=', loading, 'error=', error, 'palette=', palette);
-
-  if (loading) return <p>Loading palette...</p>;
-  if (error) return <p>Error generating palette: {error.message}</p>;
-
-  const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        addToast({
-          title: 'Success',
-          message: `Copied ${text} to clipboard!`,
-          duration: 2000,
-        });
+    getPalette(image, 5, 'hex', {quality: 10})
+      .then((data) => {
+        setPalette(data);
+        setLoading(false);
       })
       .catch(() => {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy!',
-          duration: 2000,
-        });
+        setLoading(false);
+        addToast({title: 'Extraction Error', message: 'Failed to map color sequence.', type: 'error'});
       });
+  }, [image, addToast]);
+
+  const copyToClipboard = (text) => {
+    navigator.clipboard.writeText(text).then(() => {
+      addToast({title: 'Copied', message: `${text} stored in clipboard.`, duration: 2000});
+    });
   };
 
+  if (loading) return (
+    <div
+      className="flex items-center gap-3 font-mono text-[10px] text-gray-600 uppercase tracking-widest animate-pulse">
+      <span className="h-1 w-8 bg-gray-800"/> Mapping_Aesthetic_Matrix...
+    </div>
+  );
+
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mt-4">
-      {palette &&
-        palette.map((color, index) => (
-          <div
-            key={index}
-            className="flex flex-col items-center p-4 rounded-md cursor-pointer transition-transform duration-200 hover:scale-105"
-            style={{ backgroundColor: color }}
-            onClick={() => copyToClipboard(color)}
-          >
-            <span
-              className="text-white font-semibold text-shadow-sm"
-              style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}
-            >
+    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+      {palette && palette.map((color, index) => (
+        <motion.div
+          initial={{opacity: 0, y: 10}}
+          animate={{opacity: 1, y: 0}}
+          transition={{delay: index * 0.1}}
+          key={index}
+          className="group relative flex flex-col items-center justify-center h-24 rounded-sm cursor-pointer transition-all border border-white/5"
+          style={{backgroundColor: color}}
+          onClick={() => copyToClipboard(color)}
+        >
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors"/>
+          <span
+            className="relative z-10 font-mono text-xs font-black uppercase tracking-widest text-white mix-blend-difference opacity-0 group-hover:opacity-100 transition-opacity">
               {color}
             </span>
-          </div>
-        ))}
+        </motion.div>
+      ))}
     </div>
   );
 }
 
 function ImageToolkitPage() {
+  const appName = 'Image Toolkit';
+
   useSeo({
-    title: 'Image Toolkit | Fezcodex',
-    description:
-      'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
-    keywords: [
-      'Fezcodex',
-      'image toolkit',
-      'image editor',
-      'color palette',
-      'monochrome',
-      'blur',
-      'dithering',
-      'cel shading',
-      'halftone',
-      'solarization',
-      'posterization',
-      'sepia',
-      'pixelization',
-      'duotone',
-      'ascii art',
-    ],
-    ogTitle: 'Image Toolkit | Fezcodex',
-    ogDescription:
-      'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Image Toolkit | Fezcodex',
-    twitterDescription:
-      'A collection of online image manipulation tools, including color palette extraction, monochrome conversion, blur, dithering, and more.',
-    twitterImage: '/images/ogtitle.png',
+    title: `${appName} | Fezcodex`,
+    description: 'Tools for image manipulation, color extraction, and creative filtering.',
+    keywords: ['Fezcodex', 'image toolkit', 'image editor', 'color palette', 'monochrome'],
   });
-  const { addToast } = useToast();
+
+  const {addToast} = useToast();
   const [image, setImage] = useState(null);
   const [activeEffect, setActiveEffect] = useState(null);
   const [blurAmount, setBlurAmount] = useState(0);
   const [asciiArtOutput, setAsciiArtOutput] = useState('');
   const canvasRef = useRef(null);
-  const imageRef = useRef(null);
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -156,8 +99,16 @@ function ImageToolkitPage() {
       setImage(event.target.result);
       setActiveEffect(null);
     };
-    if (file) {
-      reader.readAsDataURL(file);
+    if (file) reader.readAsDataURL(file);
+  };
+
+  const handleDownload = () => {
+    if (canvasRef.current) {
+      const canvas = canvasRef.current;
+      const link = document.createElement('a');
+      link.download = `fezcodex-mod-${Date.now()}.png`;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
     }
   };
 
@@ -165,99 +116,64 @@ function ImageToolkitPage() {
     const data = new Uint8ClampedArray(imageData.data);
     for (let i = 0; i < data.length; i += 4) {
       const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-      data[i] = avg;
-      data[i + 1] = avg;
-      data[i + 2] = avg;
+      data[i] = data[i + 1] = data[i + 2] = avg;
     }
     return data;
   }, []);
 
-  const sobel = useCallback(
-    (imageData) => {
-      const width = imageData.width;
-      const height = imageData.height;
-      const grayscaleData = toGrayscale(imageData);
-      const sobelData = new Uint8ClampedArray(grayscaleData.length);
-      const sobelOperatorX = [
-        [-1, 0, 1],
-        [-2, 0, 2],
-        [-1, 0, 1],
-      ];
-      const sobelOperatorY = [
-        [-1, -2, -1],
-        [0, 0, 0],
-        [1, 2, 1],
-      ];
+  const sobel = useCallback((imageData) => {
+    const width = imageData.width;
+    const height = imageData.height;
+    const grayscaleData = toGrayscale(imageData);
+    const sobelData = new Uint8ClampedArray(grayscaleData.length);
+    const sobelOperatorX = [[-1, 0, 1], [-2, 0, 2], [-1, 0, 1]];
+    const sobelOperatorY = [[-1, -2, -1], [0, 0, 0], [1, 2, 1]];
 
-      for (let y = 1; y < height - 1; y++) {
-        for (let x = 1; x < width - 1; x++) {
-          let pixelX = 0;
-          let pixelY = 0;
-          for (let j = -1; j <= 1; j++) {
-            for (let i = -1; i <= 1; i++) {
-              const pixel = grayscaleData[((y + j) * width + (x + i)) * 4];
-              pixelX += pixel * sobelOperatorX[j + 1][i + 1];
-              pixelY += pixel * sobelOperatorY[j + 1][i + 1];
-            }
+    for (let y = 1; y < height - 1; y++) {
+      for (let x = 1; x < width - 1; x++) {
+        let pixelX = 0, pixelY = 0;
+        for (let j = -1; j <= 1; j++) {
+          for (let i = -1; i <= 1; i++) {
+            const pixel = grayscaleData[((y + j) * width + (x + i)) * 4];
+            pixelX += pixel * sobelOperatorX[j + 1][i + 1];
+            pixelY += pixel * sobelOperatorY[j + 1][i + 1];
           }
-          const magnitude = Math.sqrt(pixelX * pixelX + pixelY * pixelY);
-          const index = (y * width + x) * 4;
-          sobelData[index] = magnitude;
-          sobelData[index + 1] = magnitude;
-          sobelData[index + 2] = magnitude;
-          sobelData[index + 3] = 255;
         }
-      }
-      return new ImageData(sobelData, width, height);
-    },
-    [toGrayscale],
-  );
-
-  const combine = useCallback((quantized, edges) => {
-    const quantizedData = quantized.data;
-    const edgesData = edges.data;
-    const finalData = new Uint8ClampedArray(quantizedData.length);
-    for (let i = 0; i < quantizedData.length; i += 4) {
-      if (edgesData[i] > 128) {
-        // Edge threshold
-        finalData[i] = 0;
-        finalData[i + 1] = 0;
-        finalData[i + 2] = 0;
-        finalData[i + 3] = 255;
-      } else {
-        finalData[i] = quantizedData[i];
-        finalData[i + 1] = quantizedData[i + 1];
-        finalData[i + 2] = quantizedData[i + 2];
-        finalData[i + 3] = 255;
+        const magnitude = Math.sqrt(pixelX * pixelX + pixelY * pixelY);
+        const index = (y * width + x) * 4;
+        sobelData[index] = sobelData[index + 1] = sobelData[index + 2] = magnitude;
+        sobelData[index + 3] = 255;
       }
     }
-    return new ImageData(finalData, quantized.width, quantized.height);
+    return new ImageData(sobelData, width, height);
+  }, [toGrayscale]);
+
+  const combine = useCallback((quantized, edges) => {
+    const qData = quantized.data;
+    const eData = edges.data;
+    const fData = new Uint8ClampedArray(qData.length);
+    for (let i = 0; i < qData.length; i += 4) {
+      if (eData[i] > 128) fData[i] = fData[i + 1] = fData[i + 2] = 0;
+      else {
+        fData[i] = qData[i];
+        fData[i + 1] = qData[i + 1];
+        fData[i + 2] = qData[i + 2];
+      }
+      fData[i + 3] = 255;
+    }
+    return new ImageData(fData, quantized.width, quantized.height);
   }, []);
 
   const bayerDither = useCallback((imageData) => {
     const pixels = new Uint8ClampedArray(imageData.data);
-    const width = imageData.width;
-    const height = imageData.height;
-    const bayerMatrix = [
-      [1, 9, 3, 11],
-      [13, 5, 15, 7],
-      [4, 12, 2, 10],
-      [16, 8, 14, 6],
-    ];
-    const matrixSize = 4;
-
+    const {width, height} = imageData;
+    const bayerMatrix = [[1, 9, 3, 11], [13, 5, 15, 7], [4, 12, 2, 10], [16, 8, 14, 6]];
     for (let y = 0; y < height; y++) {
       for (let x = 0; x < width; x++) {
         const i = (y * width + x) * 4;
-        const r = pixels[i];
-        const g = pixels[i + 1];
-        const b = pixels[i + 2];
-        const gray = r * 0.299 + g * 0.587 + b * 0.114;
-        const threshold = bayerMatrix[y % matrixSize][x % matrixSize] * 16;
-        const newValue = gray < threshold ? 0 : 255;
-        pixels[i] = newValue;
-        pixels[i + 1] = newValue;
-        pixels[i + 2] = newValue;
+        const gray = pixels[i] * 0.299 + pixels[i + 1] * 0.587 + pixels[i + 2] * 0.114;
+        const threshold = bayerMatrix[y % 4][x % 4] * 16;
+        pixels[i] = pixels[i + 1] = pixels[i + 2] = gray < threshold ? 0 : 255;
       }
     }
     return new ImageData(pixels, width, height);
@@ -274,42 +190,34 @@ function ImageToolkitPage() {
     return new ImageData(data, imageData.width, imageData.height);
   }, []);
 
-  const halftone = useCallback(
-    (imageData, gridSize) => {
-      const width = imageData.width;
-      const height = imageData.height;
-      const grayscaleData = toGrayscale(imageData);
-      const ctx = document.createElement('canvas').getContext('2d');
-      ctx.canvas.width = width;
-      ctx.canvas.height = height;
-      ctx.fillStyle = 'white';
-      ctx.fillRect(0, 0, width, height);
-      ctx.fillStyle = 'black';
-
-      for (let y = 0; y < height; y += gridSize) {
-        for (let x = 0; x < width; x += gridSize) {
-          let totalBrightness = 0;
-          let count = 0;
-          for (let j = 0; j < gridSize; j++) {
-            for (let i = 0; i < gridSize; i++) {
-              if (x + i < width && y + j < height) {
-                const index = ((y + j) * width + (x + i)) * 4;
-                totalBrightness += grayscaleData[index];
-                count++;
-              }
+  const halftone = useCallback((imageData, gridSize) => {
+    const {width, height} = imageData;
+    const grayscaleData = toGrayscale(imageData);
+    const ctx = document.createElement('canvas').getContext('2d');
+    ctx.canvas.width = width;
+    ctx.canvas.height = height;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = 'black';
+    for (let y = 0; y < height; y += gridSize) {
+      for (let x = 0; x < width; x += gridSize) {
+        let total = 0, count = 0;
+        for (let j = 0; j < gridSize; j++) {
+          for (let i = 0; i < gridSize; i++) {
+            if (x + i < width && y + j < height) {
+              total += grayscaleData[((y + j) * width + (x + i)) * 4];
+              count++;
             }
           }
-          const avgBrightness = totalBrightness / count;
-          const radius = (gridSize / 2) * (1 - avgBrightness / 255);
-          ctx.beginPath();
-          ctx.arc(x + gridSize / 2, y + gridSize / 2, radius, 0, Math.PI * 2);
-          ctx.fill();
         }
+        const radius = (gridSize / 2) * (1 - (total / count) / 255);
+        ctx.beginPath();
+        ctx.arc(x + gridSize / 2, y + gridSize / 2, radius, 0, Math.PI * 2);
+        ctx.fill();
       }
-      return ctx.getImageData(0, 0, width, height);
-    },
-    [toGrayscale],
-  );
+    }
+    return ctx.getImageData(0, 0, width, height);
+  }, [toGrayscale]);
 
   const posterize = useCallback((imageData, levels) => {
     const data = new Uint8ClampedArray(imageData.data);
@@ -322,24 +230,18 @@ function ImageToolkitPage() {
     return new ImageData(data, imageData.width, imageData.height);
   }, []);
 
-  const asciiArt = useCallback(
-    (imageData, characterRamp) => {
-      const data = toGrayscale(imageData);
-      const { width, height } = imageData;
-      let ascii = '';
-      for (let y = 0; y < height; y += 8) {
-        for (let x = 0; x < width; x += 4) {
-          const i = (y * width + x) * 4;
-          const brightness = data[i] / 255;
-          const charIndex = Math.floor(brightness * (characterRamp.length - 1));
-          ascii += characterRamp[charIndex];
-        }
-        ascii += '\n';
+  const asciiArt = useCallback((imageData, charRamp) => {
+    const data = toGrayscale(imageData);
+    const {width, height} = imageData;
+    let ascii = '';
+    for (let y = 0; y < height; y += 8) {
+      for (let x = 0; x < width; x += 4) {
+        ascii += charRamp[Math.floor((data[(y * width + x) * 4] / 255) * (charRamp.length - 1))];
       }
-      return ascii;
-    },
-    [toGrayscale],
-  );
+      ascii += '\n';
+    }
+    return ascii;
+  }, [toGrayscale]);
 
   useEffect(() => {
     if (!image || !canvasRef.current) return;
@@ -429,8 +331,8 @@ function ImageToolkitPage() {
       } else if (activeEffect === 'duotone') {
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         const data = imageData.data;
-        const darkColor = { r: 0, g: 0, b: 100 };
-        const lightColor = { r: 255, g: 255, b: 155 };
+        const darkColor = {r: 0, g: 0, b: 100};
+        const lightColor = {r: 255, g: 255, b: 155};
         for (let i = 0; i < data.length; i += 4) {
           const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
           const t = avg / 255;
@@ -456,357 +358,204 @@ function ImageToolkitPage() {
     posterize,
     quantizeColors,
     sobel,
+    toGrayscale
   ]);
 
-  const handleGetColorPalette = () => {
-    if (image) {
-      setActiveEffect('palette');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleConvertToMonochrome = () => {
-    if (image) {
-      setActiveEffect('monochrome');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleBlurImage = () => {
-    if (image) {
-      setActiveEffect('blur');
-      setBlurAmount(10); // Default blur
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleApplyDithering = () => {
-    if (image) {
-      setActiveEffect('dithering');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleCelShading = () => {
-    if (image) {
-      setActiveEffect('celShading');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleHalftone = () => {
-    if (image) {
-      setActiveEffect('halftone');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleSolarization = () => {
-    if (image) {
-      setActiveEffect('solarization');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handlePosterization = () => {
-    if (image) {
-      setActiveEffect('posterization');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleSepia = () => {
-    if (image) {
-      setActiveEffect('sepia');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handlePixelization = () => {
-    if (image) {
-      setActiveEffect('pixelization');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleDuotone = () => {
-    if (image) {
-      setActiveEffect('duotone');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleAsciiArt = () => {
-    if (image) {
-      setActiveEffect('asciiArt');
-    } else {
-      addToast({ title: 'Info', message: 'Please upload an image first.' });
-    }
-  };
-
-  const handleDownload = () => {
-    if (canvasRef.current) {
-      const canvas = canvasRef.current;
-      const link = document.createElement('a');
-      link.download = 'modified-image.png';
-      link.href = canvas.toDataURL('image/png');
-      link.click();
-    }
-  };
-
-  const handleCopyAsciiArt = () => {
-    if (asciiArtOutput) {
-      navigator.clipboard
-        .writeText(asciiArtOutput)
-        .then(() => {
-          addToast({
-            title: 'Success',
-            message: 'Copied ASCII art to clipboard!',
-            duration: 2000,
-          });
-        })
-        .catch(() => {
-          addToast({
-            title: 'Error',
-            message: 'Failed to copy ASCII art!',
-            duration: 2000,
-          });
-        });
-    }
-  };
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const prefilter =
-    'px-6 py-2 flex items-center gap-2 text-lg font-arvo font-normal px-4 py-2 rounded-md border transition-colors duration-300 ease-in-out';
-  const filterButtonStyle =
-    'border-blue-400 bg-blue-500/50 text-white hover:bg-blue-500/70';
-  const greenButtonStyle =
-    'border-green-400 bg-green-500/50 text-white hover:bg-green-500/70';
-  const appButtonStyle =
-    'border-app/100 bg-app/20 hover:bg-app/40 cursor-pointer text-app hover:text-white';
+  const filterButtons = [
+    {id: 'palette', label: 'Extract Palette', icon: PaletteIcon},
+    {id: 'monochrome', label: 'Monochrome', icon: SelectionIcon},
+    {id: 'blur', label: 'Temporal Blur', icon: GearIcon},
+    {id: 'dithering', label: 'Bayer Dither', icon: GearIcon},
+    {id: 'celShading', label: 'Cel Shading', icon: GearIcon},
+    {id: 'halftone', label: 'Halftone', icon: GearIcon},
+    {id: 'solarization', label: 'Solarize', icon: GearIcon},
+    {id: 'posterization', label: 'Posterize', icon: GearIcon},
+    {id: 'sepia', label: 'Vintage Sepia', icon: GearIcon},
+    {id: 'pixelization', label: 'Pixelize', icon: GearIcon},
+    {id: 'duotone', label: 'Duotone Map', icon: GearIcon},
+    {id: 'asciiArt', label: 'ASCII Map', icon: GearIcon},
+  ];
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Image Toolkit" slug="itk" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative overflow-hidden h-full w-full max-w-6xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-              Image Toolkit
-            </h1>
-            <hr className="border-gray-700 mb-4" />
-            <div className="relative z-10 p-1">
-              <div className="flex justify-center mb-4">
-                <label
-                  htmlFor="image-upload"
-                  className={`${prefilter} ${appButtonStyle}`}
-                >
-                  Select Image
-                  <input
-                    id="image-upload"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleImageUpload}
-                    className="hidden"
-                  />
-                </label>
-              </div>
-              <hr className="border-gray-700 my-4" />
-              <h2 className="text-2xl font-arvo font-normal mb-4 text-app text-center">
-                Filters
-              </h2>
-              <div className="flex justify-center gap-4 mb-4 flex-wrap">
-                <button
-                  onClick={handleGetColorPalette}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  {' '}
-                  Get Color Palette{' '}
-                </button>
-                <button
-                  onClick={handleConvertToMonochrome}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  {' '}
-                  Monochrome{' '}
-                </button>
-                <button
-                  onClick={handleBlurImage}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Blur
-                </button>
-                <button
-                  onClick={handleApplyDithering}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Dithering
-                </button>
-                <button
-                  onClick={handleCelShading}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Cel Shading
-                </button>
-                <button
-                  onClick={handleHalftone}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Halftone
-                </button>
-                <button
-                  onClick={handleSolarization}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Solarization
-                </button>
-                <button
-                  onClick={handlePosterization}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Posterization
-                </button>
-                <button
-                  onClick={handleSepia}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Sepia
-                </button>
-                <button
-                  onClick={handlePixelization}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Pixelization
-                </button>
-                <button
-                  onClick={handleDuotone}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  Duotone
-                </button>
-                <button
-                  onClick={handleAsciiArt}
-                  className={`${prefilter} ${filterButtonStyle}`}
-                >
-                  ASCII Art
-                </button>
-              </div>
-              {activeEffect === 'blur' && (
-                <div className="flex justify-center items-center gap-4 my-4">
-                  <label htmlFor="blur-range" className="form-label">
-                    Blur Amount: {blurAmount}px
-                  </label>
-                  <input
-                    id="blur-range"
-                    type="range"
-                    min="0"
-                    max="50"
-                    value={blurAmount}
-                    onChange={(e) => setBlurAmount(e.target.value)}
-                    className="w-64"
-                  />
-                </div>
-              )}
-              <div className="flex flex-col items-center gap-4 mt-4">
-                {image && (
-                  <div className="w-full border border-gray-500 p-2 rounded-lg">
-                    <h3 className="text-xl font-bold mb-2 text-center">
-                      Original
-                    </h3>
-                    <img
-                      ref={imageRef}
-                      src={image}
-                      alt="Original"
-                      className="max-w-full h-auto rounded-lg mx-auto"
-                    />
-                  </div>
-                )}
-                {activeEffect && activeEffect !== 'palette' && (
-                  <div className="w-full border border-gray-500 p-2 rounded-lg">
-                    <h3 className="text-xl font-bold mb-2 text-center">
-                      Modified
-                    </h3>
-                    <canvas
-                      ref={canvasRef}
-                      className="max-w-full h-auto rounded-lg mx-auto"
-                    ></canvas>
-                  </div>
-                )}
-              </div>
-              {activeEffect === 'palette' && image && (
-                <div>
-                  <h3 className="text-xl font-bold mb-2 mt-4 text-center">
-                    Color Palette
-                  </h3>
-                  <Palette image={image} />
-                </div>
-              )}
-              {activeEffect === 'asciiArt' && asciiArtOutput && (
-                <div className="w-full border border-gray-500 p-2 rounded-lg mt-4">
-                  <div className="flex justify-between items-center mb-2">
-                    <h3 className="text-xl font-bold text-center ml-4">
-                      ASCII Art
-                    </h3>
-                    <button
-                      onClick={handleCopyAsciiArt}
-                      className={`${prefilter} ${filterButtonStyle}`}
-                      style={{ borderColor: colors['app-alpha-50'] }}
-                    >
-                      Copy
-                    </button>
-                  </div>
-                  <pre className="text-xs text-white bg-gray-900 p-4 rounded-lg overflow-x-auto whitespace-pre">
-                    {asciiArtOutput}
-                  </pre>
-                </div>
-              )}
-              {activeEffect && activeEffect !== 'palette' && (
-                <div className="flex justify-center mt-4">
-                  <button
-                    onClick={handleDownload}
-                    className={`${prefilter} ${greenButtonStyle}`}
-                  >
-                    Download Image
-                  </button>
-                </div>
-              )}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+
+        <header className="mb-20">
+          <Link to="/apps"
+                className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest">
+            <ArrowLeftIcon weight="bold"/>
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Tools for image manipulation, color extraction, and creative filtering.
+              </p>
+            </div>
+
+            <div className="flex flex-col gap-4 items-end">
+              <label htmlFor="image-upload"
+                     className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm cursor-pointer">
+                <ImageIcon weight="bold" size={20}/>
+                <span>Select Source</span>
+                <input id="image-upload" type="file" accept="image/*" onChange={handleImageUpload} className="hidden"/>
+              </label>
             </div>
           </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Controls Column */}
+          <div className="lg:col-span-4 space-y-12">
+            <div className="bg-white/5 border border-white/10 p-8 rounded-sm">
+              <h3
+                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <SelectionIcon weight="fill"/>
+                Effects
+              </h3>
+              <div className="grid grid-cols-1 gap-2">
+                {filterButtons.map((f) => (
+                  <button
+                    key={f.id}
+                    onClick={() => {
+                      if (!image) return addToast({title: 'Info', message: 'Select an image first.'});
+                      setActiveEffect(f.id);
+                      if (f.id === 'blur') setBlurAmount(10);
+                    }}
+                    className={`
+                           flex items-center justify-between px-4 py-3 border transition-all duration-200 text-[10px] font-mono uppercase tracking-widest
+                           ${activeEffect === f.id
+                      ? 'bg-emerald-500 text-black border-emerald-400'
+                      : 'bg-transparent border-white/5 text-gray-500 hover:border-emerald-500/50 hover:text-white'
+                    }
+                        `}
+                  >
+                    <div className="flex items-center gap-3">
+                      <f.icon size={16} weight={activeEffect === f.id ? "fill" : "bold"} />
+                      <span>{f.label}</span>
+                    </div>
+                    {activeEffect === f.id && <motion.span layoutId="active-tick">●</motion.span>}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {activeEffect === 'blur' && (
+              <div
+                className="bg-white/5 border border-white/10 p-8 rounded-sm animate-in fade-in slide-in-from-top-4 duration-500">
+                <h3
+                  className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6">Blur Strength</h3>
+                <input
+                  type="range" min="0" max="50" value={blurAmount}
+                  onChange={(e) => setBlurAmount(e.target.value)}
+                  className="w-full accent-emerald-500 h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer"
+                />
+                <div className="mt-4 flex justify-between font-mono text-[9px] text-gray-600">
+                  <span>MIN</span>
+                  <span className="text-emerald-500 font-black">{blurAmount}PX</span>
+                  <span>MAX</span>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Preview Column */}
+          <div className="lg:col-span-8 space-y-12">
+            <div
+              className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed={appName + (activeEffect || '')} className="w-full h-full"/>
+              </div>
+              <div
+                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+
+              <div className="relative z-10 flex flex-col gap-12">
+                {image ? (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-4">
+                            <span
+                              className="font-mono text-[9px] text-gray-600 uppercase tracking-widest flex items-center gap-2">
+                               <span className="h-px w-4 bg-gray-800"/> Original Image
+                            </span>
+                      <div className="border border-white/5 rounded-sm overflow-hidden bg-black">
+                        <img src={image} alt="Original" className="w-full h-auto opacity-80"/>
+                      </div>
+                    </div>
+                    {activeEffect && activeEffect !== 'palette' && (
+                      <div className="space-y-4">
+                               <span
+                                 className="font-mono text-[9px] text-emerald-500 uppercase tracking-widest flex items-center gap-2 font-black">
+                                  <span className="h-px w-4 bg-emerald-500/20"/> Modified Image :: {activeEffect}
+                               </span>
+                        <div
+                          className="border border-emerald-500/20 rounded-sm overflow-hidden bg-black shadow-[0_0_40px_rgba(16,185,129,0.05)]">
+                          <canvas ref={canvasRef} className="w-full h-auto"/>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div
+                    className="h-96 border border-white/10 border-dashed rounded-sm flex items-center justify-center text-center">
+                    <p className="font-mono text-xs uppercase tracking-[0.3em] text-gray-600">
+                      Waiting for image...
+                    </p>
+                  </div>
+                )}
+
+                <AnimatePresence>
+                  {activeEffect === 'palette' && image && (
+                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="pt-8 border-t border-white/10">
+                      <h3
+                        className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-8">Color Palette</h3>
+                      <Palette image={image}/>
+                    </motion.div>
+                  )}
+
+                  {activeEffect === 'asciiArt' && asciiArtOutput && (
+                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className="pt-8 border-t border-white/10">
+                      <div className="flex justify-between items-center mb-6">
+                        <h3
+                          className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest">ASCII Art</h3>
+                        <button onClick={() => {
+                          if (asciiArtOutput) {
+                            navigator.clipboard.writeText(asciiArtOutput).then(
+                              () => addToast({title: 'Success', message: 'ASCII data copied!'}),
+                              () => addToast({title: 'Error', message: 'Failed to copy ASCII data!', type: 'error'})
+                            );
+                          }
+                        }} className="text-emerald-500 hover:text-white transition-colors">
+                          <CopySimpleIcon size={20}/>
+                        </button>
+                      </div>
+                      <pre
+                        className="text-[8px] md:text-[10px] text-emerald-400 font-mono bg-black/60 p-8 rounded-sm overflow-x-auto whitespace-pre leading-[0.8]">
+                              {asciiArtOutput}
+                           </pre>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {activeEffect && activeEffect !== 'palette' && activeEffect !== 'asciiArt' && (
+                  <div className="flex justify-end">
+                    <button
+                      onClick={handleDownload}
+                      className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs"
+                    >
+                      <DownloadSimpleIcon weight="bold" size={18}/>
+                      <span>Download Image</span>
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>

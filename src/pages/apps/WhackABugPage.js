@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, BugIcon, GavelIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
@@ -8,7 +8,6 @@ import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const HOLE_COUNT = 9;
 const GAME_DURATION = 30;
-const INITIAL_SPEED = 800;
 
 const WhackABugPage = () => {
   useSeo({
@@ -31,6 +30,15 @@ const WhackABugPage = () => {
   const [lastHole, setLastHole] = useState(null);
   const timerRef = useRef(null);
   const bugTimerRef = useRef(null);
+
+  const random = useCallback((min, max) => Math.floor(Math.random() * (max - min) + min), []);
+  const randomHole = useCallback((previous) => {
+    const idx = Math.floor(Math.random() * HOLE_COUNT);
+    if (idx === previous) {
+      return (idx + 1) % HOLE_COUNT;
+    }
+    return idx;
+  }, []);
 
   const startGame = () => {
     setScore(0);
@@ -59,7 +67,7 @@ const WhackABugPage = () => {
     setActiveHole(null);
   };
 
-  const moveBug = () => {
+  const moveBug = useCallback(() => {
     if (!gameActive && timeLeft === GAME_DURATION && score === 0) {
       // Initial move called from startGame
     } else if (!gameActive) {
@@ -77,7 +85,7 @@ const WhackABugPage = () => {
         moveBug();
       }
     }, randomTime);
-  };
+  }, [gameActive, timeLeft, score, lastHole, random, randomHole]);
 
   // Need a separate effect to keep the bug moving loop correctly responsive to gameActive state change if handled inside moveBug,
   // but refs are better for intervals.
@@ -98,16 +106,7 @@ const WhackABugPage = () => {
       jump();
     }
     return () => clearTimeout(bugTimerRef.current);
-  }, [gameActive]);
-
-  const random = (min, max) => Math.floor(Math.random() * (max - min) + min);
-  const randomHole = (previous) => {
-    const idx = Math.floor(Math.random() * HOLE_COUNT);
-    if (idx === previous) {
-      return (idx + 1) % HOLE_COUNT;
-    }
-    return idx;
-  };
+  }, [gameActive, lastHole, random]);
 
   const handleWhack = (index) => {
     if (!gameActive) return;

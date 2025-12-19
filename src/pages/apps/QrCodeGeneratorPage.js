@@ -44,8 +44,6 @@ const QrCodeGeneratorPage = () => {
   };
 
   const inputStyle = `mt-1 block w-full p-2 border rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 border-gray-600`;
-  const selectStyle = `mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500`;
-  const buttonStyle = `px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button`;
 
   const downloadQrCode = useCallback(() => {
     const canvas = document.getElementById('qrCodeCanvas');
@@ -204,7 +202,7 @@ const QrCodeGeneratorPage = () => {
                   />
                   <button
                     onClick={downloadQrCode}
-                    className={`${buttonStyle} mt-4`}
+                    className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button mt-4"
                     style={{
                       backgroundColor: 'rgba(0, 0, 0, 0.2)',
                       color: cardStyle.color,

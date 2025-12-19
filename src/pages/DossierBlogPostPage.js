@@ -243,7 +243,7 @@ const DossierBlogPostPage = () => {
           </div>
           <div className="border border-black bg-[#f0f0f0] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
              <div className="bg-black text-white px-2 py-1 text-xs font-mono uppercase tracking-widest border-b border-black flex justify-between">
-                <span>// ATTACHMENT: {match[1]}</span>
+                <span>{'//'} ATTACHMENT: {match[1]}</span>
              </div>
             <SyntaxHighlighter
               style={dossierCodeTheme}
@@ -289,9 +289,9 @@ const DossierBlogPostPage = () => {
           alt={alt}
           className="h-auto filter sepia-[0.2] contrast-[1.05] group-hover:sepia-0 transition-all duration-500 mx-auto block"
         />
-        <div className="mt-4 text-center font-mono text-xs uppercase tracking-widest text-gray-500">
-          // EXHIBIT: {alt || 'UNLABELED'}
-        </div>
+        <p className="font-mono text-xs uppercase tracking-widest text-black/40 mt-4 border-t border-black/10 pt-4">
+          {'//'} EXHIBIT: {alt || 'UNLABELED'}
+        </p>
       </div>
     </div>
   );
@@ -357,7 +357,7 @@ const DossierBlogPostPage = () => {
         <header className="mb-20">
           <div className="flex flex-col items-start gap-4 mb-8">
             <span className="bg-black text-white px-3 py-1 font-mono text-xs tracking-[0.3em] uppercase">
-              Fezcodex Archive // File #{currentSlug.substring(0, 6).toUpperCase()} ...[REDACTED]
+              Fezcodex Archive {'//'} File #{currentSlug.substring(0, 6).toUpperCase()} ...[REDACTED]
             </span>
             <div className="w-24 h-1 bg-black"></div>
           </div>

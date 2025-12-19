@@ -1,96 +1,59 @@
-import React, { useState, useEffect } from 'react';
-import './ContactModal.css';
-import { X, Envelope, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
-
-const colorizeText = (text) => {
-  return text.split(' ').map((word, index) => {
-    if (index % 2 === 1) {
-      return (
-        <span
-          key={index}
-          className="red-text text-lg font-normal tracking-tight"
-        >
-          {word}{' '}
-        </span>
-      );
-    } else {
-      return (
-        <span key={index} className="text-lg font-normal tracking-tight">
-          {word}{' '}
-        </span>
-      );
-    }
-  });
-};
+import React from 'react';
+import { Envelope, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
+import GenericModal from './GenericModal';
 
 const ContactModal = ({ isOpen, onClose }) => {
-  const [isClosing, setIsClosing] = useState(false);
-
-  useEffect(() => {
-    if (!isOpen) {
-      setIsClosing(false);
-    }
-  }, [isOpen]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-      setIsClosing(false);
-    }, 300); // Corresponds to animation duration
-  };
-
-  if (!isOpen) {
-    return null;
-  }
-
   return (
-    <div
-      className={`modal-overlay ${isOpen && !isClosing ? 'fade-in' : 'fade-out'}`}
-      onClick={handleClose}
+    <GenericModal
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Contact"
     >
-      <div
-        className={`modal-content ${isOpen && !isClosing ? 'slide-up' : 'slide-down'}`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="modal-header">
-          <h2>{colorizeText('Contact Me')}</h2>
-          <button onClick={handleClose} className="close-button">
-            <X size={24} />
-          </button>
-        </div>
-        <div className="modal-body">
-          <p className="text-lg font-normal tracking-tight">
-            {colorizeText('You can reach me at:')}
-          </p>
-          <div className="contact-links">
-            <a href="mailto:samil.bulbul@gmail.com" className="contact-link">
-              <Envelope size={24} />
-              <span>{colorizeText('samil.bulbul at gmail.com')}</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              <LinkedinLogo size={24} />
-              <span>{colorizeText('LinkedIn')}</span>
-            </a>
-            <a
-              href="https://x.com/fezcoddy"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="contact-link"
-            >
-              <TwitterLogo size={24} />
-              <span>{colorizeText('Twitter (x.com)')}</span>
-            </a>
-          </div>
+      <div className="flex flex-col gap-6">
+        <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-xs">
+          Reach out through any of these channels:
+        </p>
+
+        <div className="flex flex-col gap-3">
+          <ContactLink
+            href="mailto:samil.bulbul@gmail.com"
+            icon={Envelope}
+            label="Email"
+            value="samil.bulbul@gmail.com"
+          />
+          <ContactLink
+            href="https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US"
+            icon={LinkedinLogo}
+            label="LinkedIn"
+            value="Ahmed Samil Bulbul"
+          />
+          <ContactLink
+            href="https://x.com/fezcoddy"
+            icon={TwitterLogo}
+            label="Twitter"
+            value="@fezcoddy"
+          />
         </div>
       </div>
-    </div>
+    </GenericModal>
   );
 };
+
+const ContactLink = ({ href, icon: Icon, label, value }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group flex items-center justify-between border border-white/10 bg-white/[0.02] p-4 transition-all hover:bg-emerald-500 hover:text-black hover:border-emerald-500 rounded-sm"
+  >
+    <div className="flex items-center gap-4">
+      <Icon size={24} weight="bold" className="text-emerald-500 group-hover:text-black transition-colors" />
+      <div className="flex flex-col">
+        <span className="text-[10px] font-mono uppercase tracking-widest opacity-50">{label}</span>
+        <span className="font-bold tracking-tight">{value}</span>
+      </div>
+    </div>
+  </a>
+);
 
 export default ContactModal;

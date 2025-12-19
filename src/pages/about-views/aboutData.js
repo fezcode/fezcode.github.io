@@ -1,6 +1,5 @@
 import {
   CpuIcon,
-  TerminalWindowIcon,
   MusicNotesIcon,
   BugIcon,
   LightningIcon,
@@ -16,7 +15,6 @@ import {
   LockIcon,
   BracketsCurlyIcon,
   GameControllerIcon,
-  BookIcon,
   GithubLogoIcon,
   LinkedinLogoIcon,
   EnvelopeIcon,
@@ -43,7 +41,7 @@ export const aboutData = {
   stats: [
     { label: "Experience", value: "8+", unit: "Years" },
     { label: "Systems Architected", value: "Critical", unit: "Scale" },
-    { label: "Valedictorian", value: "of \'18" },
+    { label: "Valedictorian", value: "of '18" },
     // { label: "Valedictorian", value: "3.89", unit: "GPA" },
   ],
   skills: [

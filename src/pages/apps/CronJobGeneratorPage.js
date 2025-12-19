@@ -35,16 +35,25 @@ const CronJobGeneratorPage = () => {
   const [generatedCronDescription, setGeneratedCronDescription] = useState('');
 
   // --- CRON Generator Logic ---
-  const generateCronExpression = useCallback(() => {
-    const cronString = `${minute} ${hour} ${dayOfMonth} ${month} ${dayOfWeek}`;
-    setGeneratedCron(cronString);
-    setGeneratedCronDescription(
-      getHumanReadableDescription(minute, hour, dayOfMonth, month, dayOfWeek),
-    );
-  }, [minute, hour, dayOfMonth, month, dayOfWeek]);
+  const monthNames = React.useMemo(() => [
+    '*',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ], []);
+  const dayOfWeekNames = React.useMemo(() => ['*', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'], []);
 
   // Helper function to get human-readable description
-  const getHumanReadableDescription = (min, hr, dom, mon, dow) => {
+  const getHumanReadableDescription = useCallback((min, hr, dom, mon, dow) => {
     let description = 'Runs ';
 
     // Minute
@@ -91,7 +100,15 @@ const CronJobGeneratorPage = () => {
     }
 
     return description.trim();
-  };
+  }, [dayOfWeekNames, monthNames]);
+
+  const generateCronExpression = useCallback(() => {
+    const cronString = `${minute} ${hour} ${dayOfMonth} ${month} ${dayOfWeek}`;
+    setGeneratedCron(cronString);
+    setGeneratedCronDescription(
+      getHumanReadableDescription(minute, hour, dayOfMonth, month, dayOfWeek),
+    );
+  }, [minute, hour, dayOfMonth, month, dayOfWeek, getHumanReadableDescription]);
 
   useEffect(() => {
     generateCronExpression();
@@ -117,23 +134,6 @@ const CronJobGeneratorPage = () => {
     return options;
   };
 
-  const monthNames = [
-    '*',
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ];
-  const dayOfWeekNames = ['*', 'Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
   const getMonthOptions = () => {
     return monthNames.map((name, index) => ({
       label: name,
@@ -147,10 +147,6 @@ const CronJobGeneratorPage = () => {
       value: index === 0 ? '*' : index.toString(),
     }));
   };
-
-  const inputStyle = `mt-1 block w-full p-2 border rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 border-gray-600`;
-  const selectStyle = `mt-1 block w-full p-2 border border-gray-600 rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500`;
-  const buttonStyle = `px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15`;
 
   return (
     <div className="py-16 sm:py-24">

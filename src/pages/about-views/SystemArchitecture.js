@@ -2,11 +2,10 @@ import React from 'react';
 import {motion} from 'framer-motion';
 import {aboutData} from './aboutData';
 import {
-  Cpu,
-  HardDrives,
-  Circuitry,
-  ShareNetwork,
-  Lightning,
+  CpuIcon,
+  HardDrivesIcon,
+  CircuitryIcon,
+  ShareNetworkIcon,
 } from '@phosphor-icons/react';
 
 const BlueprintGrid = () => (
@@ -61,11 +60,11 @@ const SystemArchitecture = () => {
         className="relative z-10 max-w-5xl mx-auto flex flex-col gap-0 border-2 border-cyan-500/50 p-1 bg-[#001830]/50 shadow-[0_0_30px_rgba(0,255,255,0.1)]">
         {/* Top Section: Processor */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-1 mb-1">
-          <SchematicBox title="CPU_CORE" icon={Cpu}
+          <SchematicBox title="CPU_CORE" icon={CpuIcon}
                         className="col-span-1 md:col-span-12 flex flex-col md:flex-row items-center gap-6">
             <div className="shrink-0 relative">
               <div className="w-20 h-20 border border-cyan-400 flex items-center justify-center bg-[#001e40]">
-                <Cpu size={48} className="text-cyan-400 animate-pulse"/>
+                <CpuIcon size={48} className="text-cyan-400 animate-pulse"/>
               </div>
               {/* Connection Lines */}
               <div className="absolute top-1/2 -right-6 w-6 h-px bg-cyan-500 md:block hidden"/>
@@ -92,7 +91,7 @@ const SystemArchitecture = () => {
         {/* Middle Section: Memory & I/O */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-1 mb-1">
           {/* Left: Experience */}
-          <SchematicBox title="MEMORY_BANKS (EXP)" icon={HardDrives} delay={0.2} className="h-full">
+          <SchematicBox title="MEMORY_BANKS (EXP)" icon={HardDrivesIcon} delay={0.2} className="h-full">
             <div className="space-y-0">
               {aboutData.experience.map((exp, i) => (
                 <div key={i}
@@ -112,7 +111,7 @@ const SystemArchitecture = () => {
           </SchematicBox>
 
           {/* Right: Skills */}
-          <SchematicBox title="I/O_BUS (SKILLS)" icon={Circuitry} delay={0.3} className="h-full">
+          <SchematicBox title="I/O_BUS (SKILLS)" icon={CircuitryIcon} delay={0.3} className="h-full">
             <div className="grid grid-cols-2 gap-2 h-full content-start">
               {aboutData.skills.map((skill, i) => (
                 <div key={i}
@@ -133,7 +132,7 @@ const SystemArchitecture = () => {
 
         {/* Bottom Section: Auxiliary */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-1">
-          <SchematicBox title="AUX_MODULES" icon={ShareNetwork} delay={0.4} className="col-span-1 md:col-span-12">
+          <SchematicBox title="AUX_MODULES" icon={ShareNetworkIcon} delay={0.4} className="col-span-1 md:col-span-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
 
               {/* Dynamic Traits Modules */}

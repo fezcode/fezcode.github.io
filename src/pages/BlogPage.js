@@ -6,12 +6,12 @@ import GenerativeArt from '../components/GenerativeArt';
 import useSeo from '../hooks/useSeo';
 import {
   ArrowLeft,
-  Funnel,
   XCircle,
   Clock,
   Tag,
   BookOpen
 } from '@phosphor-icons/react';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 
 const FILTERS = [
   { id: 'all', label: 'All' },
@@ -35,6 +35,7 @@ const BlogPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [activePost, setActivePost] = useState(null);
+  const { isSidebarOpen } = useVisualSettings();
 
   useEffect(() => {
     const fetchPostSlugs = async () => {
@@ -128,7 +129,7 @@ const BlogPage = () => {
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
 
       {/* LEFT PANEL: The Index */}
-      <div className="w-full lg:w-1/2 lg:max-w-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:px-20 overflow-y-auto overflow-x-hidden no-scrollbar">
+      <div className="w-full 4xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300">
         <header className="mb-16">
           <Link
             to="/"
@@ -141,7 +142,7 @@ const BlogPage = () => {
             INTEL
           </h1>
           <p className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em]">
-            // DATA_LOGS & ARCHIVED_THOUGHTS
+            {'//'} DATA_LOGS & ARCHIVED_THOUGHTS
           </p>
         </header>
 
@@ -184,7 +185,7 @@ const BlogPage = () => {
       </div>
 
       {/* RIGHT PANEL: The Stage */}
-      <div className="hidden lg:block fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20">
+      <div className="hidden 4xl:block fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20">
         <AnimatePresence mode='wait'>
           {activePost && (
             <motion.div
@@ -226,7 +227,7 @@ const BlogPage = () => {
 
                 {activePost.isSeries && (
                     <div className="mt-4 flex flex-col gap-4">
-                        <span className="font-mono text-[10px] text-emerald-500 font-bold tracking-widest uppercase">// SERIES_MANIFEST</span>
+                        <span className="font-mono text-[10px] text-emerald-500 font-bold tracking-widest uppercase">{'//'} SERIES_MANIFEST</span>
                         <div className="grid grid-cols-1 gap-2">
                             {activePost.posts?.slice(0, 3).map((p, i) => (
                                 <div key={p.slug} className="flex items-center gap-3 text-gray-500 font-mono text-[10px] uppercase">

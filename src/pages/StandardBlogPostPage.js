@@ -1,26 +1,19 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
-  ArrowUpRight,
-  BookOpen,
   Calendar,
   Clock,
   Tag,
-  ShareNetwork,
 } from '@phosphor-icons/react';
-import CodeModal from '../components/CodeModal';
-import { useToast } from '../hooks/useToast';
 import ImageModal from '../components/ImageModal';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { calculateReadingTime } from '../utils/readingTime';
-import { useAchievements } from '../context/AchievementContext';
-import MarkdownLink from '../components/MarkdownLink';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
@@ -32,16 +25,8 @@ const StandardBlogPostPage = () => {
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
   const [estimatedReadingTime, setEstimatedReadingTime] = useState(0);
-  const contentRef = useRef(null);
 
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalContent, setModalContent] = useState('');
-  const [modalLanguage, setModalLanguage] = useState('jsx');
   const [modalImageSrc, setModalImageSrc] = useState(null);
-
-  const { trackReadingProgress } = useAchievements();
-  const [hasTrackedRead, setHasTrackedRead] = useState(false);
-  const { addToast } = useToast();
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -130,11 +115,11 @@ const StandardBlogPostPage = () => {
       <div className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay" style={{ backgroundImage: NOISE_BG }} />
 
       {/* Hero */}
-      <div className="relative h-[50vh] w-full overflow-hidden border-b border-white/10">
+      <div className="relative h-[35vh] w-full overflow-hidden border-b border-white/10">
         <GenerativeArt seed={post.attributes.title} className="w-full h-full opacity-40 filter brightness-50" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
 
-        <div className="absolute bottom-0 left-0 w-full px-6 pb-12 md:px-12">
+        <div className="absolute bottom-0 left-0 w-full px-6 pb-8 md:px-12">
             <div className="mb-6 flex items-center gap-4">
                 <Link to="/blog" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black">
                   <ArrowLeft weight="bold" />
@@ -168,7 +153,7 @@ const StandardBlogPostPage = () => {
                 </ReactMarkdown>
             </div>
 
-            {/* {prevPost || nextPost} Series Nav */}
+            {/* Series Nav Section */}
             {(prevPost || nextPost) && (
               <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
                 {prevPost ? (
@@ -191,7 +176,7 @@ const StandardBlogPostPage = () => {
         <div className="mt-16 lg:col-span-4 lg:mt-0">
             <div className="sticky top-24 space-y-12">
                 <div>
-                    <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">// INTEL_SPECIFICATIONS</h3>
+                    <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">{'//'} INTEL_SPECIFICATIONS</h3>
                     <div className="space-y-6 border-l border-white/10 pl-6">
                         <SpecItem icon={Calendar} label="Dated" value={new Date(post.attributes.date).toLocaleDateString('en-GB')} />
                         <SpecItem icon={Clock} label="Process_Time" value={`${estimatedReadingTime} Min`} />
@@ -201,7 +186,7 @@ const StandardBlogPostPage = () => {
 
                 {post.seriesPosts && (
                     <div>
-                        <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">// SERIES_DATA</h3>
+                        <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">{'//'} SERIES_DATA</h3>
                         <div className="flex flex-col gap-2">
                             {post.seriesPosts.map((p, i) => (
                                 <Link key={p.slug} to={`/blog/${p.slug}`} className={`flex items-center gap-3 p-3 border transition-all ${p.slug === currentSlug ? 'bg-emerald-500 text-black border-emerald-500' : 'border-white/5 hover:border-white/20 text-gray-500 hover:text-white'}`}>

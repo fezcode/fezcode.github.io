@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import piml from 'piml';
 
 const useSearchableData = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const categories = [
+  const categories = useMemo(() => [
     'Book',
     'Movie',
     'Game',
@@ -15,7 +15,7 @@ const useSearchableData = () => {
     'Food',
     'Websites',
     'Tools',
-  ];
+  ], []);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -379,7 +379,7 @@ const useSearchableData = () => {
     };
 
     fetchData();
-  }, []);
+  }, [categories]);
 
   return { items, isLoading };
 };

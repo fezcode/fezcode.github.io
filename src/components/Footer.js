@@ -49,7 +49,7 @@ const Footer = () => {
                 </span>
               </p>
               <p>
-                v{version} // {new Date().getFullYear()}
+                v{version} {'//'} {new Date().getFullYear()}
               </p>
             </div>
           </div>

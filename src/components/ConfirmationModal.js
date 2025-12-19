@@ -14,6 +14,14 @@ const ConfirmationModal = ({
 }) => {
   const [isClosing, setIsClosing] = useState(false);
 
+  const handleClose = React.useCallback(() => {
+    setIsClosing(true);
+    setTimeout(() => {
+      onClose();
+      setIsClosing(false);
+    }, 300);
+  }, [onClose]);
+
   useEffect(() => {
     if (!isOpen) {
       setIsClosing(false);
@@ -34,15 +42,7 @@ const ConfirmationModal = ({
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [isOpen]);
-
-  const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(() => {
-      onClose();
-      setIsClosing(false);
-    }, 300);
-  };
+  }, [isOpen, handleClose]);
 
   const handleConfirmAction = () => {
     onConfirm();

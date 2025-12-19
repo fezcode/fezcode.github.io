@@ -1,6 +1,8 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
+import { DownloadSimpleIcon } from '@phosphor-icons/react';
 
-const GenerativeArt = ({ seed = 'fezcodex', className }) => {
+const GenerativeArt = ({ seed = 'fezcodex', className, showDownload = false }) => {
+  const svgRef = useRef(null);
   // Sanitize seed for use in SVG IDs
   const safeId = useMemo(() => seed.replace(/[^a-z0-9]/gi, '-').toLowerCase(), [seed]);
 
@@ -84,9 +86,44 @@ const GenerativeArt = ({ seed = 'fezcodex', className }) => {
     return shapes;
   }, [seed]);
 
+  const handleDownload = () => {
+    const svg = svgRef.current;
+    if (!svg) return;
+
+    const svgData = new XMLSerializer().serializeToString(svg);
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = new Image();
+
+    // Higher resolution for download
+    const size = 1024;
+    canvas.width = size;
+    canvas.height = size;
+
+    const svgBlob = new Blob([svgData], { type: 'image/svg+xml;charset=utf-8' });
+    const url = URL.createObjectURL(svgBlob);
+
+    img.onload = () => {
+      // Fill background
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fillRect(0, 0, size, size);
+      ctx.drawImage(img, 0, 0, size, size);
+
+      const pngUrl = canvas.toDataURL('image/png');
+      const downloadLink = document.createElement('a');
+      downloadLink.href = pngUrl;
+      downloadLink.download = `fezcodex-art-${safeId}.png`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+      URL.revokeObjectURL(url);
+    };
+    img.src = url;
+  };
+
   return (
     <div className={`w-full h-full bg-neutral-950 overflow-hidden relative ${className}`}>
-      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
+      <svg ref={svgRef} viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
         <defs>
           <pattern id={`bg-grid-${safeId}`} width="20" height="20" patternUnits="userSpaceOnUse">
             <circle cx="1" cy="1" r="0.5" fill="white" opacity="0.05"/>
@@ -114,6 +151,16 @@ const GenerativeArt = ({ seed = 'fezcodex', className }) => {
         })}
       </svg>
       <div className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E")`}} />
+
+      {showDownload && (
+        <button
+          onClick={handleDownload}
+          className="absolute bottom-4 right-4 p-3 bg-white/10 hover:bg-emerald-500 text-white hover:text-black transition-all border border-white/10 rounded-sm group/dl backdrop-blur-md"
+          title="Download PNG"
+        >
+          <DownloadSimpleIcon size={20} weight="bold" />
+        </button>
+      )}
     </div>
   );
 };

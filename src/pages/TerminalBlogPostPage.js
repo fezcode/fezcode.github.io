@@ -275,7 +275,7 @@ const TerminalBlogPostPage = () => {
         onClick={() => setModalImageSrc(src)}
       />
       <p className="font-mono text-orange-300 text-sm uppercase">
-        // IMAGE LOG: {alt || 'UNKNOWN DATA'}
+        {'//'} IMAGE LOG: {alt || 'UNKNOWN DATA'}
       </p>
     </div>
   );
@@ -360,11 +360,11 @@ const TerminalBlogPostPage = () => {
           {post.attributes.title.toUpperCase()}
         </h1>
         <p className="text-sm text-orange-400 mb-4">
-          // DATE: {new Date(post.attributes.date).toLocaleDateString()}
+          {'//'} DATE: {new Date(post.attributes.date).toLocaleDateString()}
         </p>
         {post.attributes.updated && (
           <p className="text-sm text-orange-400 mb-4">
-            // LAST UPDATE: {new Date(post.attributes.updated).toLocaleDateString()}
+            {'//'} LAST UPDATE: {new Date(post.attributes.updated).toLocaleDateString()}
           </p>
         )}
         <hr className="border-orange-500/50 mb-8" />

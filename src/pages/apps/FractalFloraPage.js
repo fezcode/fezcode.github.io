@@ -2,10 +2,8 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
-  PlantIcon,
   DownloadSimple,
   ArrowsClockwise,
-  Play,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
@@ -31,12 +29,7 @@ const FractalFloraPage = () => {
   const [season, setSeason] = useState('summer'); // summer, autumn, winter, spring, neon
 
   // --- Animation State ---
-  const [isAnimating, setIsAnimating] = useState(false);
-  // We use a "progress" value for animation (0 to 1)
-  // But for a recursive tree, animating "growth" is tricky without a frame loop.
-  // We'll use a simple frame loop to draw the tree progressively or just redraw fast.
-  // For high-performance sliders, instant redraw is best.
-  // We can add a "Grow" button that resets and animates.
+  // progress value for animation (0 to 1) omitted if not used
 
   const drawTree = useCallback(
     (ctx, w, h) => {

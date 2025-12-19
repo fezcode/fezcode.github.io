@@ -20,12 +20,12 @@ export default function SideEffects() {
           A function or expression is said to have a <strong>side effect</strong> if it modifies some state outside its local environment or has an observable interaction with the outside world.
         </p>
         <div className="bg-black/50 p-3 rounded border border-gray-800 my-3 font-mono text-xs overflow-x-auto">
-          <div className="text-gray-500">// Impure (Side Effect)</div>
+          <div className="text-gray-500">{'//'} Impure (Side Effect)</div>
           <span className="text-purple-300">let</span> <span className="text-blue-300">count</span> = <span className="text-orange-300">0</span>;
           <br />
           <span className="text-purple-300">function</span> <span className="text-yellow-300">increment</span>() {'{'}
           <br />
-          &nbsp;&nbsp;<span className="text-blue-300">count</span>++; <span className="text-gray-500">// Modifies external state!</span>
+          &nbsp;&nbsp;<span className="text-blue-300">count</span>++; <span className="text-gray-500">{'//'} Modifies external state!</span>
           <br />
           {'}'}
         </div>

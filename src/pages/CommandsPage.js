@@ -5,6 +5,7 @@ import useSeo from '../hooks/useSeo';
 import { useCommandPalette } from '../context/CommandPaletteContext';
 import { ArrowLeftIcon, TerminalWindowIcon, CommandIcon } from '@phosphor-icons/react';
 import GenerativeArt from '../components/GenerativeArt';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 
 const commandsData = [
   {
@@ -407,13 +408,15 @@ function CommandsPage() {
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
 
       {/* Mobile Background */}
-      <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none z-0">
+      <div className="absolute inset-0 xl:hidden opacity-20 pointer-events-none z-0">
          <GenerativeArt seed="Commands" className="w-full h-full filter blur-3xl" />
       </div>
 
       {/* LEFT PANEL: The Index */}
-      <div className="w-full lg:w-1/2 lg:max-w-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:px-20 overflow-y-auto overflow-x-hidden no-scrollbar">
-        <header className="mb-20">
+      <div
+        className="w-full xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300"
+      >
+        <header className="mb-20 text-center md:text-left">
           <Link
             to="/"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
@@ -424,9 +427,17 @@ function CommandsPage() {
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none">
             CMDS
           </h1>
-          <p className="text-gray-400 font-mono text-sm max-w-sm">
-            {'//'} AVAILABLE INSTRUCTIONS
+          <p className="text-gray-400 font-mono text-sm max-w-sm uppercase tracking-widest mb-8">
+            Available Commands
           </p>
+
+          <button
+            onClick={togglePalette}
+            className="group relative inline-flex items-center gap-3 px-6 py-3 bg-white/5 border border-white/10 hover:bg-white hover:text-black transition-all duration-300 font-mono uppercase tracking-widest text-xs rounded-sm mb-12"
+          >
+            <CommandIcon size={18} />
+            <span>Open Palette</span>
+          </button>
         </header>
 
         <div className="flex flex-col pb-32 gap-12">
@@ -450,10 +461,8 @@ function CommandsPage() {
         </div>
       </div>
 
-            {/* RIGHT PANEL: The Stage (Desktop Only) */}
-            <div className="hidden lg:flex fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20 flex-col">
-
-              {/* Main Content Area (Grows) */}
+              {/* RIGHT PANEL: The Stage (Desktop Only) */}
+              <div className="hidden xl:flex fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20 flex-col">              {/* Main Content Area (Grows) */}
               <div className="flex-1 relative overflow-hidden">
                 <AnimatePresence mode="wait">
                   {activeCommand ? (

@@ -1,32 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, LinkIcon, ArrowsLeftRightIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 function UrlConverterPage() {
+  const appName = 'URL Encoder';
+
   useSeo({
-    title: 'URL Encoder/Decoder | Fezcodex',
-    description:
-      'Encode and decode URLs with this online tool for web development and data manipulation.',
-    keywords: [
-      'Fezcodex',
-      'URL encoder',
-      'URL decoder',
-      'URL converter',
-      'web tools',
-    ],
-    ogTitle: 'URL Encoder/Decoder | Fezcodex',
-    ogDescription:
-      'Encode and decode URLs with this online tool for web development and data manipulation.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'URL Encoder/Decoder | Fezcodex',
-    twitterDescription:
-      'Encode and decode URLs with this online tool for web development and data manipulation.',
-    twitterImage: '/images/ogtitle.png',
+    title: `${appName} | Fezcodex`,
+    description: 'Protocol for encoding and decoding Uniform Resource Locators.',
+    keywords: ['Fezcodex', 'URL encoder', 'URL decoder', 'URL converter', 'web tools'],
   });
+
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const { addToast } = useToast();
@@ -34,12 +21,9 @@ function UrlConverterPage() {
   const encodeUrl = () => {
     try {
       setOutputText(encodeURIComponent(inputText));
+      addToast({ title: 'Success', message: 'URL string encoded.', type: 'success' });
     } catch (error) {
-      addToast({
-        title: 'Error',
-        message: 'Failed to encode URL.',
-        duration: 3000,
-      });
+      addToast({ title: 'Error', message: 'Failed to encode sequence.', type: 'error' });
       setOutputText('');
     }
   };
@@ -47,109 +31,102 @@ function UrlConverterPage() {
   const decodeUrl = () => {
     try {
       setOutputText(decodeURIComponent(inputText));
+      addToast({ title: 'Success', message: 'URL string decoded.', type: 'success' });
     } catch (error) {
-      addToast({
-        title: 'Error',
-        message: 'Failed to decode URL. Invalid URL string.',
-        duration: 3000,
-      });
+      addToast({ title: 'Error', message: 'Invalid URL sequence.', type: 'error' });
       setOutputText('');
     }
   };
 
   const copyToClipboard = (text) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        addToast({
-          title: 'Success',
-          message: 'Copied to clipboard!',
-          duration: 2000,
-        });
-      })
-      .catch(() => {
-        addToast({
-          title: 'Error',
-          message: 'Failed to copy!',
-          duration: 2000,
-        });
-      });
+    if (!text) return;
+    navigator.clipboard.writeText(text).then(() => {
+      addToast({ title: 'Copied', message: 'Payload stored in clipboard.', duration: 2000 });
+    });
   };
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="URL Encoder/Decoder" slug="url" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div className="bg-app-alpha-10 text-app border-app-alpha-50 hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-4xl">
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-              {' '}
-              URL Converter{' '}
-            </h1>
-            <hr className="border-gray-700 mb-4" />
-            <div className="relative z-10 p-1">
-              <div className="mb-4">
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  Input Text
-                </label>
-                <textarea
-                  className="w-full h-32 p-4 bg-gray-900/50 font-mono resize-y border rounded-md border-app-alpha-50 text-app"
-                  value={inputText}
-                  onChange={(e) => setInputText(e.target.value)}
-                  placeholder="Enter URL or text to encode/decode..."
-                />
-              </div>
-              <div className="flex justify-center gap-4 mb-4">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+
+        <header className="mb-20">
+          <Link to="/apps" className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest">
+            <ArrowLeftIcon weight="bold" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                Encoder
+              </h1>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Resource locator translation layer. Map character sequences to URI-safe encoding.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+
+          {/* Input Section */}
+          <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden">
+             <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed="URL_INPUT" className="w-full h-full" />
+             </div>
+             <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <LinkIcon weight="fill" className="text-emerald-500" />
+                Input_Buffer
+             </h3>
+             <textarea
+               value={inputText}
+               onChange={(e) => setInputText(e.target.value)}
+               className="w-full h-64 bg-black/40 border border-white/5 p-6 font-mono text-sm text-gray-300 focus:border-emerald-500 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide"
+               placeholder="Insert URL or plaintext sequence..."
+             />
+
+             <div className="grid grid-cols-2 gap-4 mt-8">
                 <button
                   onClick={encodeUrl}
-                  className="px-6 py-2 rounded-md text-lg font-semibold transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
+                  className="py-4 bg-white text-black font-black uppercase tracking-[0.2em] hover:bg-emerald-400 transition-all text-xs"
                 >
-                  Encode URL
+                  Encode
                 </button>
                 <button
                   onClick={decodeUrl}
-                  className="px-6 py-2 rounded-md text-lg font-semibold transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15"
+                  className="py-4 bg-transparent border border-white text-white font-black uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all text-xs"
                 >
-                  Decode URL
+                  Decode
                 </button>
-              </div>
-              <div>
-                <label className="block text-lg font-semibold mb-2 text-app">
-                  Output Text
-                </label>
-                <div className="relative">
-                  <textarea
-                    readOnly
-                    className="w-full h-32 p-4 bg-gray-800/50 font-mono resize-y border rounded-md border-app-alpha-50 text-app"
-                    value={outputText}
-                    placeholder="Converted text will appear here..."
-                  />
-                  <button
-                    onClick={() => copyToClipboard(outputText)}
-                    className="absolute top-2 right-2 px-3 py-1 bg-gray-700 text-white text-sm rounded hover:bg-gray-600"
-                  >
-                    Copy
-                  </button>
-                </div>
-              </div>
-            </div>
+             </div>
           </div>
+
+          {/* Output Section */}
+          <div className="relative border border-white/10 bg-white/[0.02] p-8 rounded-sm group overflow-hidden flex flex-col h-full">
+             <div className="absolute top-0 right-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+                <ArrowsLeftRightIcon weight="fill" className="text-emerald-500" />
+                Output_Stream
+             </h3>
+             <textarea
+               value={outputText}
+               readOnly
+               className="flex-grow w-full h-64 bg-black/40 border border-white/5 p-4 font-mono text-sm text-emerald-400 focus:outline-none transition-all rounded-sm resize-none scrollbar-hide mb-6"
+               placeholder="Translation will appear here..."
+             />
+
+             <button
+               onClick={() => copyToClipboard(outputText)}
+               disabled={!outputText}
+               className="w-full py-4 border border-white/10 text-gray-500 hover:text-white hover:border-white hover:bg-white/5 transition-all font-mono uppercase tracking-widest text-xs flex items-center justify-center gap-3 disabled:opacity-20"
+             >
+               <CopySimpleIcon weight="bold" size={18} />
+               Stage to Clipboard
+             </button>
+          </div>
+
         </div>
       </div>
     </div>

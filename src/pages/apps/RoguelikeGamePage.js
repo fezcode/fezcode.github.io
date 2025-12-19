@@ -11,6 +11,13 @@ const ENTITY_PLAYER = '@';
 const ENTITY_ENEMY = 'E';
 const ENTITY_EXIT = 'X';
 
+const POSSIBLE_MOVES = [
+  { dx: 0, dy: -1 },
+  { dx: 0, dy: 1 },
+  { dx: -1, dy: 0 },
+  { dx: 1, dy: 0 },
+];
+
 function RoguelikeGamePage() {
   useSeo({
     title: 'Roguelike Game | Fezcodex',
@@ -103,47 +110,40 @@ function RoguelikeGamePage() {
   // Enemy AI - Simple random movement (will be handled by player move)
   const moveEnemies = useCallback(
     (currentPlayerPos) => {
-      setEnemyPositions((prevEnemyPositions) => {
-        const newEnemyPositions = prevEnemyPositions.map((enemy) => {
-          const possibleMoves = [
-            { dx: 0, dy: -1 },
-            { dx: 0, dy: 1 },
-            { dx: -1, dy: 0 },
-            { dx: 1, dy: 0 },
-          ];
-          const randomMove =
-            possibleMoves[Math.floor(Math.random() * possibleMoves.length)];
+      let collisionOccurred = false;
+      const nextEnemyPositions = [];
 
-          const newX = enemy.x + randomMove.dx;
-          const newY = enemy.y + randomMove.dy;
+      for (let i = 0; i < enemyPositions.length; i++) {
+        const enemy = enemyPositions[i];
+        const randomMove =
+          POSSIBLE_MOVES[Math.floor(Math.random() * POSSIBLE_MOVES.length)];
 
-          // Check boundaries and walls
-          if (
-            newX >= 0 &&
-            newX < MAP_WIDTH &&
-            newY >= 0 &&
-            newY < MAP_HEIGHT &&
-            gameMap[newY][newX] !== TILE_WALL
-          ) {
-            return { x: newX, y: newY };
+        const newX = enemy.x + randomMove.dx;
+        const newY = enemy.y + randomMove.dy;
+
+        // Check boundaries and walls
+        if (
+          newX >= 0 &&
+          newX < MAP_WIDTH &&
+          newY >= 0 &&
+          newY < MAP_HEIGHT &&
+          gameMap[newY][newX] !== TILE_WALL
+        ) {
+          if (newX === currentPlayerPos.x && newY === currentPlayerPos.y) {
+            collisionOccurred = true;
           }
-          return enemy; // Stay if cannot move
-        });
-
-        // Check for collision with player after all enemies moved
-        for (const newEnemy of newEnemyPositions) {
-          if (
-            newEnemy.x === currentPlayerPos.x &&
-            newEnemy.y === currentPlayerPos.y
-          ) {
-            setGameStatus('lost');
-            break;
-          }
+          nextEnemyPositions.push({ x: newX, y: newY });
+        } else {
+          nextEnemyPositions.push(enemy); // Stay if cannot move
         }
-        return newEnemyPositions;
-      });
+      }
+
+      if (collisionOccurred) {
+        setGameStatus('lost');
+      }
+      setEnemyPositions(nextEnemyPositions);
     },
-    [gameMap, setGameStatus],
+    [gameMap, setGameStatus, enemyPositions],
   );
 
   // Player Movement

@@ -1,35 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeftIcon,
-  LightbulbIcon,
-  ArrowCounterClockwiseIcon,
+  ArrowLeft,
+  Lightbulb,
+  Target,
+  Clock
 } from '@phosphor-icons/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const MastermindPage = () => {
+  const appName = 'Mastermind';
+
   useSeo({
-    title: 'Mastermind Game | Fezcodex',
-    description:
-      'Play the classic code-breaking game of Mastermind (Bulls and Cows).',
-    keywords: [
-      'Fezcodex',
-      'mastermind',
-      'bulls and cows',
-      'game',
-      'logic game',
-    ],
-    ogTitle: 'Mastermind Game | Fezcodex',
-    ogDescription:
-      'Play the classic code-breaking game of Mastermind (Bulls and Cows).',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Mastermind Game | Fezcodex',
-    twitterDescription:
-      'Play the classic code-breaking game of Mastermind (Bulls and Cows).',
-    twitterImage: '/images/ogtitle.png',
+    title: `${appName} | Fezcodex`,
+    description: 'Play the classic code-breaking game of Mastermind.',
+    keywords: ['Fezcodex', 'mastermind', 'bulls and cows', 'game', 'logic game'],
   });
 
   const { addToast } = useToast();
@@ -40,25 +28,19 @@ const MastermindPage = () => {
   const [message, setMessage] = useState('');
   const MAX_GUESSES = 10;
 
-  const generateSecretCode = () => {
+  const generateSecretCode = useCallback(() => {
     let digits = '0123456789'.split('');
     let code = '';
     for (let i = 0; i < 4; i++) {
-      const randomIndex = Math.random() * digits.length;
+      const randomIndex = Math.floor(Math.random() * digits.length);
       code += digits.splice(randomIndex, 1)[0];
     }
     setSecretCode(code);
-  };
-
-  useEffect(() => {
-    generateSecretCode();
   }, []);
 
   useEffect(() => {
-    if (gameOver && message) {
-      addToast({ title: 'Mastermind', message: message, duration: 5000 });
-    }
-  }, [gameOver, message, addToast]);
+    generateSecretCode();
+  }, [generateSecretCode]);
 
   const handleGuessSubmit = (e) => {
     e.preventDefault();
@@ -69,10 +51,9 @@ const MastermindPage = () => {
       !/^\d{4}$/.test(currentGuess) ||
       new Set(currentGuess).size !== 4
     ) {
-      setMessage('Please enter a 4-digit number with unique digits.');
       addToast({
-        title: 'Mastermind Error',
-        message: 'Please enter a 4-digit number with unique digits.',
+        title: 'Input Error',
+        message: 'Enter 4 unique digits.',
         duration: 3000,
       });
       return;
@@ -88,15 +69,17 @@ const MastermindPage = () => {
       }
     }
 
-    const newGuesses = [...guesses, { guess: currentGuess, bulls, cows }];
+    const newGuesses = [{ guess: currentGuess, bulls, cows, id: Date.now() }, ...guesses];
     setGuesses(newGuesses);
 
     if (bulls === 4) {
       setGameOver(true);
-      setMessage(`You won! The code was ${secretCode}.`);
+      setMessage(`ACCESS_GRANTED :: Code identified as ${secretCode}`);
+      addToast({ title: 'Success', message: 'Target cracked!', type: 'success' });
     } else if (newGuesses.length >= MAX_GUESSES) {
       setGameOver(true);
-      setMessage(`Game Over! The secret code was ${secretCode}.`);
+      setMessage(`ACCESS_DENIED :: Secret code was ${secretCode}`);
+      addToast({ title: 'System Lock', message: 'Too many failed attempts.', type: 'error' });
     }
 
     setCurrentGuess('');
@@ -111,102 +94,158 @@ const MastermindPage = () => {
   };
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Mastermind" slug="mm" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div className="bg-app-alpha-10 border-app-alpha-50 text-app hover:bg-app/15 group border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform transition-all duration-300 ease-in-out scale-105 overflow-hidden h-full w-full max-w-lg">
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-4">
-              <h1 className="text-3xl font-arvo font-normal mb-2 text-app">
-                Mastermind
-              </h1>
-              <p className="text-center text-app-light mb-4">
-                Guess the secret 4-digit code. Digits are unique.
-              </p>
-              <hr className="border-gray-700 mb-6" />
-              {!gameOver && (
-                <form
-                  onSubmit={handleGuessSubmit}
-                  className="flex gap-2 justify-center mb-4"
-                >
-                  <input
-                    type="text"
-                    maxLength="4"
-                    value={currentGuess}
-                    onChange={(e) => setCurrentGuess(e.target.value)}
-                    className="w-32 text-center text-2xl p-2 bg-gray-900/50 font-mono border rounded-md focus:ring-0 text-app-light border-app-alpha-50"
-                    disabled={gameOver}
-                  />
-                  <button
-                    type="submit"
-                    className="px-4 py-2 rounded-md font-semibold bg-tb text-app border-app-alpha-50 hover:bg-app/15 border flex items-center gap-2"
-                    disabled={gameOver}
-                  >
-                    <LightbulbIcon size={24} /> Guess
-                  </button>
-                </form>
-              )}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
-              {message && (
-                <p className="text-center text-lg font-semibold my-4">
-                  {message}
-                </p>
-              )}
-              <div className="flex justify-center mb-4">
-                <button
-                  onClick={handleResetGame}
-                  className="px-4 py-2 rounded-md font-semibold bg-tb text-app border-app-alpha-50 hover:bg-app/15 border flex items-center gap-2"
-                >
-                  <ArrowCounterClockwiseIcon size={24} /> New Game
-                </button>
-              </div>
-              <div className="text-center text-lg font-semibold my-4">
-                Guesses: {guesses.length} / {MAX_GUESSES}
-              </div>
-              <div className="h-64 overflow-y-auto border border-app-alpha-50 rounded-md p-2">
-                <table className="w-full text-left font-mono">
-                  <thead>
-                    <tr className="border-b border-app-alpha-50">
-                      <th className="p-2">Guess</th>
-                      <th className="p-2">Bulls (Correct)</th>
-                      <th className="p-2">Cows (Present)</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {guesses
-                      .slice(0)
-                      .reverse()
-                      .map((g, index) => (
-                        <tr
-                          key={index}
-                          className="border-b border-app-alpha-50/50"
-                        >
-                          <td className="p-2">{g.guess}</td>
-                          <td className="p-2">{g.bulls}</td>
-                          <td className="p-2">{g.cows}</td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
-              </div>
+        {/* Header Section */}
+        <header className="mb-20">
+          <Link
+            to="/apps"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            <ArrowLeft weight="bold" />
+            <span>Applications</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                {appName}
+              </h1>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Logic-based sequence identification protocol. Crack the 4-digit code.
+              </p>
+            </div>
+
+            <div className="flex gap-12 font-mono">
+               <div className="flex flex-col">
+                  <span className="text-[10px] text-gray-600 uppercase tracking-widest">Attempts</span>
+                  <span className="text-3xl font-black text-emerald-500">{guesses.length}<span className="text-gray-700 text-lg">/{MAX_GUESSES}</span></span>
+               </div>
+               <div className="flex flex-col">
+                  <span className="text-[10px] text-gray-600 uppercase tracking-widest">Status</span>
+                  <span className={`text-3xl font-black ${gameOver ? 'text-rose-500' : 'text-white'}`}>
+                    {gameOver ? 'LOCKED' : 'ACTIVE'}
+                  </span>
+               </div>
             </div>
           </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Main Action Column */}
+          <div className="lg:col-span-5 space-y-8">
+             <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
+                <div className="absolute inset-0 opacity-5 pointer-events-none">
+                   <GenerativeArt seed={appName} className="w-full h-full" />
+                </div>
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+                <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                   <Target weight="fill" />
+                   Input_Module
+                </h3>
+
+                {!gameOver ? (
+                  <form onSubmit={handleGuessSubmit} className="flex flex-col gap-8 relative z-10">
+                    <div className="flex flex-col gap-4">
+                       <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Enter 4 Unique Digits</label>
+                       <input
+                        type="text"
+                        maxLength="4"
+                        value={currentGuess}
+                        onChange={(e) => setCurrentGuess(e.target.value.replace(/[^0-9]/g, ''))}
+                        className="bg-transparent border-b-2 border-white/10 py-4 text-5xl font-mono text-white focus:border-emerald-500 focus:outline-none transition-colors tracking-[0.5em] text-center"
+                        placeholder="0000"
+                        autoFocus
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
+                    >
+                      <Lightbulb weight="bold" size={18} />
+                      Validate
+                    </button>
+                  </form>
+                ) : (
+                  <div className="text-center py-8 relative z-10">
+                     <p className="text-xl font-mono text-emerald-400 mb-8 leading-relaxed uppercase">
+                        {message}
+                     </p>
+                     <button
+                        onClick={handleResetGame}
+                        className="w-full py-4 bg-emerald-500 text-black font-black uppercase tracking-[0.3em] hover:bg-white transition-all text-sm"
+                      >
+                        Re-Initialise
+                      </button>
+                  </div>
+                )}
+             </div>
+
+             <div className="border border-white/5 p-6 rounded-sm bg-black/40 font-mono text-[10px] uppercase tracking-widest text-gray-500 leading-relaxed">
+                <p>Bulls: Correct digit, correct position.</p>
+                <p className="mt-1">Cows: Correct digit, incorrect position.</p>
+             </div>
+          </div>
+
+          {/* History Column */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+                <Clock weight="fill" className="text-emerald-500" />
+                Transmission_History
+             </h3>
+
+             <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm overflow-hidden">
+                <div className="max-h-[600px] overflow-y-auto no-scrollbar">
+                   <table className="w-full text-left font-mono">
+                      <thead className="sticky top-0 bg-[#050505] z-10 border-b border-white/10">
+                        <tr>
+                          <th className="px-6 py-4 text-[10px] font-black uppercase text-gray-600 tracking-widest">#</th>
+                          <th className="px-6 py-4 text-[10px] font-black uppercase text-gray-600 tracking-widest">Sequence</th>
+                          <th className="px-6 py-4 text-[10px] font-black uppercase text-gray-600 tracking-widest text-center">Bulls</th>
+                          <th className="px-6 py-4 text-[10px] font-black uppercase text-gray-600 tracking-widest text-center">Cows</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-white/5">
+                        <AnimatePresence initial={false}>
+                          {guesses.map((g, index) => (
+                            <motion.tr
+                              key={g.id}
+                              initial={{ opacity: 0, x: 20 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              className="group hover:bg-white/5 transition-colors"
+                            >
+                              <td className="px-6 py-4 text-gray-600 text-xs">{guesses.length - index}</td>
+                              <td className="px-6 py-4 text-white font-black text-xl tracking-[0.2em]">{g.guess}</td>
+                              <td className="px-6 py-4 text-center">
+                                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-black">
+                                    {g.bulls}
+                                 </span>
+                              </td>
+                              <td className="px-6 py-4 text-center">
+                                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-black">
+                                    {g.cows}
+                                 </span>
+                              </td>
+                            </motion.tr>
+                          ))}
+                        </AnimatePresence>
+                        {guesses.length === 0 && (
+                          <tr>
+                            <td colSpan="4" className="px-6 py-20 text-center text-gray-700 uppercase tracking-widest text-xs">
+                               No transmissions recorded.
+                            </td>
+                          </tr>
+                        )}
+                      </tbody>
+                   </table>
+                </div>
+             </div>
+          </div>
+
         </div>
       </div>
     </div>

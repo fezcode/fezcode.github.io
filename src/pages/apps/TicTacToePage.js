@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, X, Circle, ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, X, Circle } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import colors from '../../config/colors';
@@ -28,39 +28,7 @@ const TicTacToePage = () => {
   const [winner, setWinner] = useState(null);
   const { addToast } = useToast();
 
-  useEffect(() => {
-    if (!xIsNext && !winner) {
-      // AI's turn (simple AI for now)
-      const timer = setTimeout(() => {
-        makeAiMove();
-      }, 500);
-      return () => clearTimeout(timer);
-    }
-  }, [xIsNext, board, winner]);
-
-  useEffect(() => {
-    const calculatedWinner = calculateWinner(board);
-    if (calculatedWinner) {
-      setWinner(calculatedWinner);
-      addToast({
-        title: 'Game Over',
-        message: `${calculatedWinner} wins!`,
-        duration: 3000,
-      });
-    } else if (board.every(Boolean)) {
-      setWinner('Draw');
-      addToast({ title: 'Game Over', message: "It's a draw!", duration: 3000 });
-    }
-  }, [board, addToast]);
-
-  const makeAiMove = () => {
-    const bestMove = findBestMove(board);
-    if (bestMove !== null) {
-      handleClick(bestMove);
-    }
-  };
-
-  const handleClick = (i) => {
+  const handleClick = useCallback((i) => {
     if (winner || board[i]) {
       return;
     }
@@ -68,10 +36,10 @@ const TicTacToePage = () => {
     newBoard[i] = xIsNext ? 'X' : 'O';
     setBoard(newBoard);
     setXIsNext(!xIsNext);
-  };
+  }, [board, winner, xIsNext]);
 
   // Minimax algorithm functions
-  const minimax = (currentBoard, depth, isMaximizingPlayer) => {
+  const minimax = useCallback((currentBoard, depth, isMaximizingPlayer) => {
     const result = calculateWinner(currentBoard);
 
     if (result === 'X') return -10 + depth; // Player X (human) wins
@@ -101,9 +69,9 @@ const TicTacToePage = () => {
       }
       return bestScore;
     }
-  };
+  }, []);
 
-  const findBestMove = (currentBoard) => {
+  const findBestMove = useCallback((currentBoard) => {
     let bestScore = -Infinity;
     let move = null;
     for (let i = 0; i < currentBoard.length; i++) {
@@ -118,7 +86,39 @@ const TicTacToePage = () => {
       }
     }
     return move;
-  };
+  }, [minimax]);
+
+  const makeAiMove = useCallback(() => {
+    const bestMove = findBestMove(board);
+    if (bestMove !== null) {
+      handleClick(bestMove);
+    }
+  }, [board, handleClick, findBestMove]);
+
+  useEffect(() => {
+    if (!xIsNext && !winner) {
+      // AI's turn (simple AI for now)
+      const timer = setTimeout(() => {
+        makeAiMove();
+      }, 500);
+      return () => clearTimeout(timer);
+    }
+  }, [xIsNext, winner, makeAiMove]);
+
+  useEffect(() => {
+    const calculatedWinner = calculateWinner(board);
+    if (calculatedWinner) {
+      setWinner(calculatedWinner);
+      addToast({
+        title: 'Game Over',
+        message: `${calculatedWinner} wins!`,
+        duration: 3000,
+      });
+    } else if (board.every(Boolean)) {
+      setWinner('Draw');
+      addToast({ title: 'Game Over', message: "It's a draw!", duration: 3000 });
+    }
+  }, [board, addToast]);
 
   const renderSquare = (i) => (
     <button
