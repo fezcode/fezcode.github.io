@@ -142,14 +142,7 @@
     "icon": "GameControllerIcon",
     "link": "/#/commands"
   },
-  {
-    "date": "2025-11-21",
-    "title": "News Feature Introduced",
-    "description": "Implemented a news section for updates and announcements.",
-    "type": "feature",
-    "icon": "ArticleIcon",
-    "link": "/#/news"
-  },
+
   {
     "date": "2025-11-18",
     "title": "Wallpapers Script and New Apps",
