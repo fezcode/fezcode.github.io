@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, StarIcon, TimerIcon } from '@phosphor-icons/react';
+import { ArrowLeft, Timer, Star, Calendar, Tag } from '@phosphor-icons/react';
 import { appIcons } from '../utils/appIcons';
 import { motion } from 'framer-motion';
 import useSeo from '../hooks/useSeo';
-import colors from '../config/colors'; // Assuming colors is available for styling
 import { useAchievements } from '../context/AchievementContext';
+import GenerativeArt from '../components/GenerativeArt';
+import colors from '../config/colors';
+
+const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
 const TimelinePage = () => {
   useSeo({
@@ -68,155 +71,150 @@ const TimelinePage = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white font-mono uppercase tracking-widest text-[10px]">
+        <span className="animate-pulse">Retrieving_Chronological_Data...</span>
+      </div>
+    );
+  }
+
   return (
-    <div className="py-16 sm:py-24 bg-gray-900 min-h-screen">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        {/* Back Link */}
-        <Link
-          to="/"
-          className="group text-primary-400 hover:text-primary-300 hover:underline flex items-center gap-2 text-lg mb-8 transition-colors"
-        >
-          <ArrowLeftIcon
-            size={20}
-            className="transition-transform group-hover:-translate-x-1"
-          />{' '}
-          Back to Home
-        </Link>
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative">
+      <div className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay" style={{ backgroundImage: NOISE_BG }} />
 
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center text-white">
-              <TimerIcon
-                size={48}
-                weight="duotone"
-                className="mr-4 text-red-400"
-              />
-              <span className="text-gray-100">fc</span>
-              <span className="text-gray-500">::</span>
-              <span className="text-gray-100">timeline</span>
-              <span className="text-gray-500">::</span>
-              <span className="text-gray-500">[</span>
-              <span className="text-gray-100">{milestones.length}</span>
-              <span className="text-gray-500">]</span>
-              {/*<span className="ml-4 text-2xl text-gray-500 bg-gray-800 px-3 py-1 rounded-full font-mono align-middle">*/}
-              {/*  {milestones.length}*/}
-              {/*</span>*/}
+      {/* Hero Section */}
+      <div className="relative h-[50vh] w-full overflow-hidden border-b border-white/10">
+        <GenerativeArt seed="Fezcodex Timeline" className="w-full h-full opacity-40 filter brightness-50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
+
+        <div className="absolute bottom-0 left-0 w-full px-6 pb-12 md:px-12">
+            <div className="mb-6 flex items-center gap-4">
+                <Link to="/" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black">
+                  <ArrowLeft weight="bold" />
+                  <span>Back to Home</span>
+                </Link>
+                <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm flex items-center gap-2">
+                   <Timer size={14} /> SYSTEM_HISTORY
+                </span>
+            </div>
+
+            <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl">
+                The Timeline
             </h1>
-            <p className="text-gray-400 text-lg max-w-2xl font-mono">
-              A journey through key milestones and achievements of Fez
-              <span className="text-primary-400">codex</span>.
+            <p className="mt-4 text-gray-400 font-mono text-sm max-w-xl">
+               A journey through {milestones.length} key milestones and achievements of Fezcodex, meticulously archived and indexed.
             </p>
-          </div>
         </div>
+      </div>
 
-        <hr className="border-gray-800 mb-12" />
+      {/* Timeline Content */}
+      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 lg:grid lg:grid-cols-12 lg:gap-24">
 
-        {loading ? (
-          // Skeleton Loader
-          <div className="relative pl-8 md:pl-20 py-8">
-            <div className="absolute left-0 top-0 h-full w-0.5 bg-gray-800"></div>
-            {[...Array(3)].map((_, i) => (
-              <div key={i} className="mb-10 flex items-start">
-                <div className="flex-shrink-0 w-4 h-4 rounded-full bg-gray-700 absolute -left-2 md:-left-2.5 mt-2.5 animate-pulse"></div>
-                <div className="flex-grow pl-8 md:pl-6">
-                  <div className="h-4 bg-gray-700 rounded w-1/4 mb-2 animate-pulse"></div>
-                  {/* Date */}
-                  <div className="h-6 bg-gray-600 rounded w-3/4 mb-2 animate-pulse"></div>
-                  {/* Title */}
-                  <div className="h-4 bg-gray-700 rounded w-full mb-1 animate-pulse"></div>
-                  {/* Description line 1 */}
-                  <div className="h-4 bg-gray-700 rounded w-1/2 animate-pulse"></div>
-                  {/* Description line 2 */}
-                </div>
-              </div>
-            ))}
-          </div>
-        ) : (
-          // Timeline Content
-          <div className="relative pl-8 md:pl-20 py-8">
-            {/* Vertical Line */}
-            <div className="absolute left-0 top-0 h-full w-0.5 bg-gray-800 hidden md:block"></div>
-            <div className="absolute left-4 top-0 h-full w-0.5 bg-gray-800 md:hidden"></div>
-            {/* For smaller screens */}
+        <div className="lg:col-span-8 relative">
+          {/* Vertical Line */}
+          <div className="absolute left-4 md:left-6 top-0 bottom-0 w-px bg-white/10" />
+
+          <div className="space-y-16">
             {milestones.map((milestone, index) => {
-              const EventIcon = appIcons[milestone.icon] || StarIcon;
-              const eventColor = getEventColor(milestone.type);
+              const EventIcon = appIcons[milestone.icon] || Star;
               const milestoneDate = new Date(milestone.date);
-              const formattedDate = milestoneDate.toLocaleDateString('en-US', {
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-              });
+              const eventColor = getEventColor(milestone.type);
 
               return (
                 <motion.div
                   key={index}
-                  className="mb-10 flex items-start"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  className="relative pl-12 md:pl-20 group"
                 >
-                  {/* Icon & Dot */}
-                  <div className="flex-shrink-0 relative">
-                    {/* Dot */}
-                    <div
-                      className="w-3 h-3 rounded-full absolute left-3 md:left-17 top-2.5"
-                      style={{
-                        backgroundColor: eventColor,
-                        transform: 'translateX(-50%)',
-                      }}
-                    ></div>
-                    {/* Icon */}
-                    <div
-                      className="flex items-center justify-center w-8 h-8 rounded-full border-2 absolute left-4 md:left-20 -top-1"
-                      style={{
-                        borderColor: eventColor,
-                        backgroundColor: 'rgba(0,0,0,0.4)',
-                        transform: 'translateX(-50%)',
-                        color: eventColor,
-                      }}
-                    >
-                      <EventIcon size={16} weight="bold" />
-                    </div>
+                  {/* Dot / Icon Container */}
+                  <div
+                    className="absolute left-0 md:left-0 top-0 flex items-center justify-center w-8 md:w-12 h-8 md:h-12 bg-[#050505] border border-white/20 group-hover:border-white transition-colors z-10"
+                    style={{ borderColor: `${eventColor}44` }}
+                  >
+                    <EventIcon size={18} style={{ color: eventColor }} />
                   </div>
 
-                  {/* Content */}
-                  <div className="flex-grow pl-14 md:pl-28">
-                    <p
-                      className="text-sm text-gray-500 font-mono mb-1"
-                      style={{ color: `${eventColor}90` }}
-                    >
-                      {' '}
-                      {formattedDate}{' '}
-                    </p>
+                  {/* Content Card */}
+                  <div className="border border-white/5 bg-white/2 backdrop-blur-sm p-8 hover:border-white/10 transition-colors relative overflow-hidden">
+                    {/* Color Accent */}
+                    <div className="absolute top-0 right-0 w-32 h-32 opacity-[0.03] pointer-events-none rounded-full blur-3xl -mr-16 -mt-16" style={{ backgroundColor: eventColor }} />
+
+                    <div className="flex flex-wrap items-center gap-4 mb-4 font-mono text-[10px] uppercase tracking-widest">
+                       <span className="px-2 py-1 flex items-center gap-1" style={{ color: eventColor, backgroundColor: `${eventColor}11` }}>
+                          <Calendar size={12} /> {milestoneDate.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: 'numeric' })}
+                       </span>
+                       <span className="text-gray-500 flex items-center gap-1">
+                          <Tag size={12} /> {milestone.type}
+                       </span>
+                    </div>
+
                     <h2
-                      className="text-xl font-bold font-mono text-gray-100 mb-2"
-                      style={{ color: eventColor }}
+                      className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-4 transition-colors"
+                      style={{ '--hover-color': eventColor }}
                     >
-                      {milestone.title}
+                        <span className="group-hover:text-[var(--hover-color)] transition-colors duration-300">
+                          {milestone.title}
+                        </span>
                     </h2>
-                    <p className="text-gray-400 font-mono leading-relaxed">
-                      {' '}
-                      {milestone.description}{' '}
+
+                    <p className="text-gray-400 font-sans leading-relaxed text-lg">
+                        {milestone.description}
                     </p>
+
                     {milestone.link && (
-                      <a
-                        href={milestone.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline text-sm mt-2 block"
-                        style={{ color: `${eventColor}90` }}
-                      >
-                        Learn More &rarr;
-                      </a>
+                      <div className="mt-8 pt-6 border-t border-white/5">
+                        <a
+                          href={milestone.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest hover:text-white transition-colors"
+                          style={{ color: eventColor }}
+                        >
+                          Access_Linked_Asset &rarr;
+                        </a>
+                      </div>
                     )}
                   </div>
                 </motion.div>
               );
             })}
           </div>
-        )}
+        </div>
+
+        {/* Sidebar */}
+        <div className="mt-16 lg:col-span-4 lg:mt-0">
+            <div className="sticky top-24 space-y-12">
+                <div>
+                    <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">_CHRONO_STATISTICS</h3>
+                    <div className="space-y-6 border-l border-white/10 pl-6">
+                        <div className="flex flex-col gap-1">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Event_Count</span>
+                            <span className="font-mono text-2xl uppercase text-emerald-500 font-black">{milestones.length}</span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Active_Since</span>
+                            <span className="font-mono text-sm uppercase text-white">
+                                {milestones.length > 0 && new Date(milestones[milestones.length - 1].date).getFullYear()}
+                            </span>
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">Status</span>
+                            <span className="font-mono text-sm uppercase text-emerald-400 font-bold animate-pulse">RECORDING...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="p-6 border border-white/10 bg-white/2 backdrop-blur-md">
+                   <p className="text-xs text-gray-500 font-mono leading-relaxed uppercase tracking-wider">
+                      {/* Evolutionary path log */}
+                      This log represents the evolutionary path of Fezcodex. Every entry is a milestone in our digital convergence.
+                   </p>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   );

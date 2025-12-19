@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  AxeIcon,
-  ArrowLeftIcon,
-  FunnelIcon,
-  MagnifyingGlassIcon,
+  ArrowLeft,
+  Funnel,
+  MagnifyingGlass,
   CaretRight,
   CaretDown,
-  Star,
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppCard from '../components/AppCard';
@@ -20,30 +18,14 @@ import { KEY_APPS_COLLAPSED_CATEGORIES } from '../utils/LocalStorageManager';
 function AppPage() {
   useSeo({
     title: 'Apps | Fezcodex',
-    description: 'All the available apps created within the Fezcodex.',
-    keywords: [
-      'Fezcodex',
-      'apps',
-      'applications',
-      'blog',
-      'dev',
-      'rant',
-      'series',
-      'd&d',
-    ],
-    ogTitle: 'Apps | Fezcodex',
-    ogDescription: 'All the available apps created within the Fezcodex.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Apps | Fezcodex',
-    twitterDescription: 'All the available apps created within the Fezcodex.',
-    twitterImage: '/images/ogtitle.png',
+    description: 'A collection of tools, games, and utilities created within Fezcodex.',
+    keywords: ['Fezcodex', 'apps', 'utilities', 'tools', 'react'],
   });
 
   const [groupedApps, setGroupedApps] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [totalAppsCount, setTotalAppsCount] = useState(0);
-  const [sortOption, setSortOption] = useState('default'); // 'default', 'created_desc', 'created_asc'
+  const [sortOption, setSortOption] = useState('default');
   const [searchQuery, setSearchQuery] = useState('');
   const [collapsedCategories, setCollapsedCategories] = usePersistentState(
     KEY_APPS_COLLAPSED_CATEGORIES,
@@ -64,12 +46,11 @@ function AppPage() {
         }
         setTotalAppsCount(count);
 
-        // Initialize collapsed state for new categories if needed (default open)
         setCollapsedCategories((prevState) => {
           const newState = { ...prevState };
           Object.keys(data).forEach((key) => {
             if (newState[key] === undefined) {
-              newState[key] = false; // Default to open (false = not collapsed)
+              newState[key] = false;
             }
           });
           return newState;
@@ -90,146 +71,100 @@ function AppPage() {
 
   const sortApps = (apps) => {
     return [...apps].sort((a, b) => {
-      // First filter by search query if it exists
       if (searchQuery) {
         const query = searchQuery.toLowerCase();
-        const matchA =
-          a.title.toLowerCase().includes(query) ||
-          a.description.toLowerCase().includes(query);
-        const matchB =
-          b.title.toLowerCase().includes(query) ||
-          b.description.toLowerCase().includes(query);
+        const matchA = a.title.toLowerCase().includes(query) || a.description.toLowerCase().includes(query);
+        const matchB = b.title.toLowerCase().includes(query) || b.description.toLowerCase().includes(query);
         if (matchA && !matchB) return -1;
         if (!matchA && matchB) return 1;
-        if (!matchA && !matchB) return 0;
       }
-
       if (sortOption === 'default') return 0;
-
       const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
       const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
-
-      if (sortOption === 'created_desc') {
-        return dateB - dateA;
-      } else if (sortOption === 'created_asc') {
-        return dateA - dateB;
-      }
-      return 0;
+      return sortOption === 'created_desc' ? dateB - dateA : dateA - dateB;
     });
   };
 
   const filterApps = (apps) => {
     if (!searchQuery) return apps;
     const query = searchQuery.toLowerCase();
-    return apps.filter(
-      (app) =>
-        app.title.toLowerCase().includes(query) ||
-        app.description.toLowerCase().includes(query),
-    );
+    return apps.filter(app => app.title.toLowerCase().includes(query) || app.description.toLowerCase().includes(query));
   };
 
   const variants = {
-    open: { opacity: 1, height: 'auto' },
-    collapsed: { opacity: 0, height: 0 },
+    open: { opacity: 1, height: 'auto', marginBottom: 40 },
+    collapsed: { opacity: 0, height: 0, marginBottom: 0 },
   };
 
   return (
-    <div className="py-16 sm:py-24 bg-gray-950 min-h-screen">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/"
-          className="group text-primary-400 hover:text-primary-300 hover:underline flex items-center gap-2 text-lg mb-8 transition-colors"
-        >
-          <ArrowLeftIcon
-            size={20}
-            className="transition-transform group-hover:-translate-x-1"
-          />{' '}
-          Back to Home
-        </Link>
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
-          <div>
-            <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center text-white">
-              <AxeIcon
-                size={48}
-                weight="fill"
-                className="mr-4 text-primary-500"
-              />
-              <span className="text-gray-100">fc</span>
-              <span className="text-gray-500">::</span>
-              <span className="text-gray-100">apps</span>
-              <span className="text-gray-500">::</span>
-              <span className="text-gray-500">[</span>
-              <span className="text-gray-100">{totalAppsCount}</span>
-              <span className="text-gray-500">]</span>
-              {/*<span className="ml-4 text-2xl text-gray-500 bg-gray-800 px-3 py-1 rounded-full font-mono align-middle">*/}
-              {/*      {totalAppsCount}*/}
-              {/*  </span>*/}
-            </h1>
-            <p className="text-gray-400 text-lg max-w-2xl">
-              A collection of tools, games, and utilities built with React and
-              passion.
-            </p>
-          </div>
+        {/* Header Section */}
+        <header className="mb-20">
+          <Link
+            to="/"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            <ArrowLeft weight="bold" />
+            <span>Home</span>
+          </Link>
 
-          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
-            {/* Search Bar */}
-            <div className="relative group w-full sm:w-64">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                <MagnifyingGlassIcon className="h-5 w-5 text-gray-500 group-focus-within:text-primary-400 transition-colors" />
-              </div>
-              <input
-                type="text"
-                className="block w-full pl-10 pr-3 py-2 border border-gray-700 rounded-lg leading-5 bg-gray-800/50 text-gray-300 placeholder-gray-500 focus:outline-none focus:bg-gray-800 focus:border-primary-500 focus:ring-1 focus:ring-primary-500 sm:text-sm transition-all"
-                placeholder="Search apps..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+                      <div>
+                        <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                          Apps
+                        </h1>
+                        <p className="text-gray-400 font-mono text-sm max-w-sm uppercase tracking-widest">
+                          Total Apps: {totalAppsCount}
+                        </p>
+                      </div>
+                    </div>
+                  </header>
+
+                  {/* Controls: Search & Sort */}
+                  <div className="sticky top-0 z-30 bg-[#050505]/95 backdrop-blur-sm border-b border-white/10 pb-6 pt-2 mb-12">
+                      <div className="flex flex-col md:flex-row gap-6 items-center">
+                          <div className="relative flex-1 group">
+                             <MagnifyingGlass className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-600 group-focus-within:text-emerald-500 transition-colors" size={20} />
+                             <input
+                                type="text"
+                                placeholder="Search apps..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="w-full bg-transparent border-b border-gray-800 pl-8 text-xl md:text-2xl font-light text-white placeholder-gray-700 focus:border-emerald-500 focus:outline-none py-2 transition-colors font-mono"
+                             />
+                          </div>
+                <div className="w-full md:w-64">
+                  <CustomDropdown
+                    options={[
+                      { label: 'Default Order', value: 'default' },
+                      { label: 'Newest First', value: 'created_desc' },
+                      { label: 'Oldest First', value: 'created_asc' },
+                    ]}
+                    value={sortOption}
+                    onChange={setSortOption}
+                    icon={Funnel}
+                    label="Sort"
+                    variant="brutalist"
+                  />
+                </div>
             </div>
-
-            {/* Sort Dropdown */}
-            <div className="w-full sm:w-48">
-              <CustomDropdown
-                options={[
-                  { label: 'Default', value: 'default' },
-                  { label: 'Newest', value: 'created_desc' },
-                  { label: 'Oldest', value: 'created_asc' },
-                ]}
-                value={sortOption}
-                onChange={setSortOption}
-                icon={FunnelIcon}
-                label="Sort By"
-              />
-            </div>
-          </div>
         </div>
 
-        <hr className="border-gray-800 mb-12" />
-
         {isLoading ? (
-          // Skeleton Loading State
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className="bg-gray-800/30 rounded-2xl p-6 h-64 animate-pulse border border-gray-700/50"
-              >
-                <div className="h-12 w-12 bg-gray-700/50 rounded-xl mb-4"></div>
-                <div className="h-6 bg-gray-700/50 rounded w-3/4 mb-3"></div>
-                <div className="h-4 bg-gray-700/30 rounded w-full mb-2"></div>
-                <div className="h-4 bg-gray-700/30 rounded w-2/3"></div>
-              </div>
+              <div key={i} className="h-64 w-full bg-white/5 border border-white/10 rounded-sm animate-pulse" />
             ))}
           </div>
         ) : (
-          // Content
-          <div className="space-y-8">
+          <div className="space-y-16">
             {Object.keys(groupedApps)
               .sort((a, b) => groupedApps[a].order - groupedApps[b].order)
               .map((categoryKey) => {
                 const category = groupedApps[categoryKey];
                 const CategoryIcon = appIcons[category.icon];
-
                 const filteredApps = filterApps(category.apps);
                 const sortedApps = sortApps(filteredApps);
                 const isCollapsed = collapsedCategories[categoryKey];
@@ -237,48 +172,26 @@ function AppPage() {
                 if (sortedApps.length === 0) return null;
 
                 return (
-                  <motion.div
-                    key={categoryKey}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="border border-gray-800 rounded-2xl overflow-hidden bg-gray-900/50"
-                  >
-                    <div
-                      className="flex items-center justify-between p-6 cursor-pointer hover:bg-gray-800/50 transition-colors"
+                  <div key={categoryKey} className="relative">
+                    <button
+                      className="w-full flex items-center justify-between py-4 border-b border-white/10 group mb-8"
                       onClick={() => toggleCategoryCollapse(categoryKey)}
                     >
                       <div className="flex items-center gap-4">
-                        <div
-                          className={`p-2 rounded-lg transition-colors ${isCollapsed ? 'bg-gray-800 text-gray-400' : 'bg-gray-800 text-primary-400'}`}
-                        >
-                          {CategoryIcon && (
-                            <CategoryIcon
-                              size={24}
-                              weight={isCollapsed ? 'regular' : 'fill'}
-                            />
-                          )}
+                        <div className={`p-2 transition-colors ${isCollapsed ? 'text-gray-600' : 'text-emerald-500'}`}>
+                          {CategoryIcon && <CategoryIcon size={24} weight={isCollapsed ? 'regular' : 'fill'} />}
                         </div>
-                        <div>
-                          <h2 className="text-xl font-bold font-mono text-gray-100 flex items-center gap-3">
+                        <div className="text-left">
+                          <h2 className="text-2xl font-bold font-sans uppercase tracking-tight text-gray-200 group-hover:text-white transition-colors">
                             {category.name}
-                            <span className="text-sm font-normal text-gray-500 bg-gray-800 px-2 py-0.5 rounded-full border border-gray-700">
-                              {sortedApps.length}
-                            </span>
+                            <span className="ml-4 font-mono text-xs font-normal text-gray-500">[{sortedApps.length}]</span>
                           </h2>
-                          <p className="text-gray-400 text-sm mt-1 font-mono">
-                            {category.description}
-                          </p>
                         </div>
                       </div>
-                      <div className="text-gray-500">
-                        {isCollapsed ? (
-                          <CaretRight size={20} />
-                        ) : (
-                          <CaretDown size={20} />
-                        )}
+                      <div className="text-gray-600 group-hover:text-white transition-colors">
+                        {isCollapsed ? <CaretRight size={20} weight="bold" /> : <CaretDown size={20} weight="bold" />}
                       </div>
-                    </div>
+                    </button>
 
                     <AnimatePresence initial={false}>
                       {!isCollapsed && (
@@ -288,44 +201,26 @@ function AppPage() {
                           animate="open"
                           exit="collapsed"
                           variants={variants}
-                          transition={{ duration: 0.3, ease: 'easeInOut' }}
-                          style={{ overflow: 'hidden' }}
+                          transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                          className="overflow-hidden"
                         >
-                          <div className="p-6 pt-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 border-t border-gray-800/50 mt-2 pt-6">
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                             {sortedApps.map((app, index) => (
-                              <div key={app.slug || index} className="relative">
-                                <AppCard app={app} />
-                                {app.pinned_order && (
-                                  <div className="absolute top-4 right-4 text-yellow-400 drop-shadow-md z-10 pointer-events-none">
-                                    <Star weight="fill" size={24} />
-                                  </div>
-                                )}
-                              </div>
+                              <AppCard key={app.slug || index} app={app} />
                             ))}
                           </div>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </motion.div>
+                  </div>
                 );
               })}
 
-            {searchQuery &&
-              Object.keys(groupedApps).every(
-                (key) => filterApps(groupedApps[key].apps).length === 0,
-              ) && (
-                <div className="text-center py-20">
-                  <p className="text-gray-500 text-lg">
-                    No apps found matching "{searchQuery}"
-                  </p>
-                  <button
-                    onClick={() => setSearchQuery('')}
-                    className="mt-4 text-primary-400 hover:text-primary-300 font-medium"
-                  >
-                    Clear search
-                  </button>
+            {searchQuery && Object.keys(groupedApps).every(key => filterApps(groupedApps[key].apps).length === 0) && (
+                <div className="py-32 text-center font-mono text-gray-600 uppercase tracking-widest border border-dashed border-white/10">
+                   No apps matching "{searchQuery}" found in archive.
                 </div>
-              )}
+            )}
           </div>
         )}
       </div>

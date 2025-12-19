@@ -28,7 +28,7 @@ const ProjectPage = () => {
   if (loadingProjects || loadingContent) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white font-mono uppercase tracking-widest text-xs">
-        <span className="animate-pulse">Loading Artifact Data...</span>
+        <span className="animate-pulse">Loading project data...</span>
       </div>
     );
   }
@@ -46,7 +46,7 @@ const ProjectPage = () => {
   if (!project || !content) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center text-gray-500 font-mono uppercase">
-        Artifact not found.
+        Project not found.
       </div>
     );
   }
@@ -151,7 +151,7 @@ const ProjectPage = () => {
                 <div className="flex flex-col gap-3">
                     {fullProject.link && (
                         <a href={fullProject.link} target="_blank" rel="noopener noreferrer" className="group flex w-full items-center justify-between border border-white/20 bg-white/5 p-4 transition-colors hover:bg-emerald-400 hover:text-black hover:border-emerald-400">
-                            <span className="font-mono text-sm font-bold uppercase tracking-widest">Live System</span>
+                            <span className="font-mono text-sm font-bold uppercase tracking-widest">Visit Live Site</span>
                             <ArrowUpRight weight="bold" size={20} />
                         </a>
                     )}
@@ -166,7 +166,7 @@ const ProjectPage = () => {
                 {/* Specs */}
                 <div>
                     <h3 className="mb-6 font-mono text-xs font-bold uppercase tracking-widest text-gray-500">
-                        // Technical Specifications
+                        Project Specifications
                     </h3>
                     <div className="space-y-4 border-l border-white/10 pl-6">
                         <div>
@@ -187,7 +187,7 @@ const ProjectPage = () => {
                              <span className="block font-mono text-[10px] text-gray-500 uppercase">Status</span>
                              <div className="mt-1 flex items-center gap-2">
                                 <span className={`h-2 w-2 rounded-full ${fullProject.isActive !== false ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
-                                <span className="font-mono text-sm text-white">{fullProject.isActive !== false ? 'Operational' : 'Archived'}</span>
+                                <span className="font-mono text-sm text-white">{fullProject.isActive !== false ? 'Active' : 'Archived'}</span>
                              </div>
                         </div>
                     </div>

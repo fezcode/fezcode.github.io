@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import useSeo from '../../hooks/useSeo';
 import {
-  ArrowLeftIcon,
-  KanbanIcon,
-  ListBulletsIcon,
+  ArrowLeft,
 } from '@phosphor-icons/react';
 import piml from 'piml';
 import RoadmapView from '../../components/roadmap/RoadmapView';
@@ -13,16 +11,9 @@ import { useAchievements } from '../../context/AchievementContext';
 
 const FezzillaPage = () => {
   useSeo({
-    title: 'Fezzilla Issue Tracking | Fezcodex',
-    description: 'Roadmap and status of all applications and tools.',
+    title: 'Roadmap | Fezcodex',
+    description: 'Project status and future development tracking.',
     keywords: ['Fezcodex', 'roadmap', 'apps', 'status', 'tools'],
-    ogTitle: 'Fezzilla Issue Tracking | Fezcodex',
-    ogDescription: 'Roadmap and status of all applications and tools.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Fezzilla Issue Tracking | Fezcodex',
-    twitterDescription: 'Roadmap and status of all applications and tools.',
-    twitterImage: '/images/ogtitle.png',
   });
 
   const [issuesData, setIssuesData] = useState([]);
@@ -49,72 +40,53 @@ const FezzillaPage = () => {
   }, [unlockAchievement]);
 
   return (
-    <div className="min-h-screen py-8 sm:py-16 relative overflow-hidden">
-      {/* Background Decoration */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-96 bg-primary-900/10 blur-[100px] -z-10 rounded-full pointer-events-none" />
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
-      <div className="mx-auto px-6 lg:px-8">
-        <Link
-          to="/"
-          className="group text-gray-400 hover:text-primary-400 flex items-center gap-2 text-lg mb-8 w-fit transition-colors duration-300"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />
-          <span className="font-mono">Back to Home</span>
-        </Link>
+        {/* Header Section */}
+        <header className="mb-20 text-center md:text-left">
+          <Link
+            to="/"
+            className="mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            <ArrowLeft weight="bold" />
+            <span>Home</span>
+          </Link>
 
-        <div className="mx-auto max-w-3xl text-center mb-12 space-y-4">
-          <h1 className="text-5xl md:text-7xl font-black tracking-tighter font-mono mb-4">
-            <span className="bg-gradient-to-r from-primary-400 via-red-500 to-secondary-400 text-transparent bg-clip-text">
-              FEZZILLA
-            </span>
-            <span className="text-gray-700 ml-4">//</span>
-            <span className="text-gray-200 ml-4">ROADMAP</span>
-          </h1>
-          <div className="flex items-center justify-center gap-3 text-gray-400 font-mono text-sm md:text-base tracking-widest uppercase">
-            <span className="w-8 h-[1px] bg-gray-700"></span>
-            <span>Tracking Project Status & Progress</span>
-            <span className="w-8 h-[1px] bg-gray-700"></span>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
+                Roadmap
+              </h1>
+              <p className="text-gray-400 font-mono text-sm max-w-2xl uppercase tracking-[0.2em] leading-relaxed mx-auto md:mx-0">
+                Tracking status, progress, and future milestones of all digital artifacts.
+              </p>
+            </div>
+
+            <div className="flex bg-white/5 border border-white/10 rounded-sm p-1">
+                <button
+                  onClick={() => setViewMode('roadmap')}
+                  className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
+                    viewMode === 'roadmap'
+                      ? 'bg-white text-black shadow-lg'
+                      : 'text-gray-500 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  KANBAN
+                </button>
+                <button
+                  onClick={() => setViewMode('table')}
+                  className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
+                    viewMode === 'table'
+                      ? 'bg-white text-black shadow-lg'
+                      : 'text-gray-500 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  TABLE
+                </button>
+            </div>
           </div>
-        </div>
-
-        <div className="flex justify-center mb-12">
-          <div className="flex p-1.5 bg-gray-900/80 backdrop-blur-md rounded-2xl border border-gray-800 shadow-xl">
-            <button
-              onClick={() => setViewMode('roadmap')}
-              className={`
-                relative px-6 py-2.5 rounded-xl text-sm font-bold font-mono transition-all duration-300 flex items-center gap-2.5
-                ${
-                  viewMode === 'roadmap'
-                    ? 'text-primary-400 bg-primary-600/20 shadow-lg shadow-primary-900/20 ring-1 ring-primary-500/50'
-                    : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
-                }
-              `}
-            >
-              <KanbanIcon
-                size={20}
-                weight={viewMode === 'roadmap' ? 'fill' : 'regular'}
-              />
-              ROADMAP
-            </button>
-            <button
-              onClick={() => setViewMode('table')}
-              className={`
-                relative px-6 py-2.5 rounded-xl text-sm font-bold font-mono transition-all duration-300 flex items-center gap-2.5
-                ${
-                  viewMode === 'table'
-                    ? 'text-primary-400 bg-primary-600/20 shadow-lg shadow-primary-900/20 ring-1 ring-primary-500/50'
-                    : 'text-gray-400 hover:text-gray-200 hover:bg-gray-800'
-                }
-              `}
-            >
-              <ListBulletsIcon
-                size={20}
-                weight={viewMode === 'table' ? 'fill' : 'regular'}
-              />
-              TABLE
-            </button>
-          </div>
-        </div>
+        </header>
 
         <div className="transition-all duration-500 ease-in-out">
           {viewMode === 'roadmap' ? (
