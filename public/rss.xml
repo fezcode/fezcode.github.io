@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 19 Dec 2025 22:31:05 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Dec 2025 23:52:57 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 19 Dec 2025 22:31:05 GMT</pubDate>
+        <pubDate>Fri, 19 Dec 2025 23:52:57 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Art of the Algorithm: Generative Visuals in Fezcodex]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/art-generation-in-fezcodex</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/art-generation-in-fezcodex</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 20 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Art in the digital age isn&#39;t just about pixels and brushes; it&#39;s about rules, logic, and mathematics. In Fezcodex, I&#39;ve integrated several &quot;visual experiments&quot; that turn code into aesthetics. From the subtle backgrounds of cards to full-blown design laboratories, let&#39;s explore how these algorithms work.</p>
+<p><a href="https://fezcode.com/#/blog/art-generation-in-fezcodex">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Brutalist Fezcodex: The Big Cleanup]]></title>
             <description><![CDATA[[object Object]]]></description>

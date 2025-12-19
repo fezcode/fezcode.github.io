@@ -38,8 +38,8 @@ Make sure you have Node.js installed on your computer.
 
 ### 1. Get the code
 ```bash
-git clone https://github.com/yourusername/fezcodex.git
-cd fezcodex
+git clone https://github.com/fezcode/fezcode.github.io.git
+cd fezcode.github.io
 ```
 
 ### 2. Install the tools
