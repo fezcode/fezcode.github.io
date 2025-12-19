@@ -112,6 +112,8 @@ const SettingsPage = () => {
     toggleRain,
     blogPostViewMode,
     setBlogPostViewMode,
+    sidebarMode,
+    setSidebarMode,
     sidebarColor,
     setSidebarColor,
   } = useVisualSettings();
@@ -491,6 +493,28 @@ const SettingsPage = () => {
           {/* Interface & Layout */}
           <Section title="Interface & Layout" icon={<Layout />} delay={0.4}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-3 text-emerald-500">
+                    <Sidebar size={20} weight="duotone" />
+                    <h3 className="font-medium text-white">Sidebar Style</h3>
+                  </div>
+                  <p className="text-sm text-gray-400 mb-6">
+                    Toggle between the modern Brutalist look or the original Classic design.
+                  </p>
+                </div>
+                <CustomDropdown
+                  label="Select Style"
+                  options={[
+                    { label: 'Brutalist', value: 'brutalist' },
+                    { label: 'Classic', value: 'classic' },
+                  ]}
+                  value={sidebarMode}
+                  onChange={setSidebarMode}
+                  icon={Sidebar}
+                />
+              </div>
+
               <div className="bg-gray-800/30 rounded-xl p-6 border border-white/5 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-2 mb-3 text-rose-500">

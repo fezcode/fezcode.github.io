@@ -43,6 +43,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isAutumn, setIsAutumn] = usePersistentState('is-autumn', false);
   const [isRain, setIsRain] = usePersistentState('is-rain', false);
   const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','standard');
+  const [sidebarMode, setSidebarMode] = usePersistentState('sidebar-mode', 'brutalist');
   const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
 
   // Chaos Theory Achievement Tracker
@@ -276,6 +277,8 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleRain,
         blogPostViewMode,
         setBlogPostViewMode,
+        sidebarMode,
+        setSidebarMode,
         sidebarColor,
         setSidebarColor,
       }}
