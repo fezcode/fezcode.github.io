@@ -70,7 +70,7 @@ const ProjectsPage = () => {
       </div>
 
       {/* LEFT PANEL: The Index */}
-      <div className="w-full lg:w-1/2 relative z-10 flex flex-col min-h-screen py-24 px-6 md:px-20 overflow-y-auto no-scrollbar">
+      <div className="w-full lg:w-1/2 lg:max-w-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:px-20 overflow-y-auto overflow-x-hidden no-scrollbar">
         <header className="mb-20">
           <Link
             to="/"
@@ -105,7 +105,7 @@ const ProjectsPage = () => {
       </div>
 
       {/* RIGHT PANEL: The Stage (Desktop Only) */}
-      <div className="hidden lg:block fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10">
+      <div className="hidden lg:block fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20">
         <AnimatePresence mode='wait'>
           {activeProject && (
             <motion.div

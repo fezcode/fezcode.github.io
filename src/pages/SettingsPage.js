@@ -258,7 +258,9 @@ const SettingsPage = () => {
                   options={[
                     { label: 'Standard', value: 'standard' },
                     { label: 'Dossier', value: 'dossier' },
+                    { label: 'Dokument', value: 'dokument' },
                     { label: 'Terminal (New Vegas)', value: 'terminal' },
+                    { label: 'Terminal (Green)', value: 'terminal-green' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

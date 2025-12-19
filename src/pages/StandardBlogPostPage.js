@@ -1,37 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { motion } from 'framer-motion';
 import {
-  ArrowsOutSimpleIcon,
-  ClipboardIcon,
-  ArrowLeftIcon,
+  ArrowLeft,
+  ArrowUpRight,
+  BookOpen,
+  Calendar,
+  Clock,
+  Tag,
+  ShareNetwork,
 } from '@phosphor-icons/react';
-import { customTheme } from '../utils/customTheme';
-import PostMetadata from '../components/metadata-cards/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
 import ImageModal from '../components/ImageModal';
 import Seo from '../components/Seo';
-import ShareButtons from '../components/ShareButtons';
+import GenerativeArt from '../components/GenerativeArt';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { calculateReadingTime } from '../utils/readingTime';
 import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
 
+const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
+
 const StandardBlogPostPage = () => {
-  const { slug, seriesSlug, episodeSlug } = useParams();
+  const { slug, episodeSlug } = useParams();
   const navigate = useNavigate();
   const currentSlug = episodeSlug || slug;
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
   const [estimatedReadingTime, setEstimatedReadingTime] = useState(0);
-  const [isAtTop, setIsAtTop] = useState(true);
   const contentRef = useRef(null);
 
-  // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
@@ -41,26 +43,11 @@ const StandardBlogPostPage = () => {
   const [hasTrackedRead, setHasTrackedRead] = useState(false);
   const { addToast } = useToast();
 
-  // --- Effects ---
-
-  useEffect(() => {
-    setHasTrackedRead(false);
-  }, [currentSlug]);
-
-  useEffect(() => {
-    if (!hasTrackedRead && readingProgress > 90) {
-      trackReadingProgress(currentSlug);
-      setHasTrackedRead(true);
-    }
-  }, [readingProgress, hasTrackedRead, currentSlug, trackReadingProgress]);
-
   useEffect(() => {
     const fetchPost = async () => {
       setLoading(true);
       try {
         const postsResponse = await fetch('/posts/posts.json');
-        if (!postsResponse.ok) throw new Error('Failed to fetch posts.json');
-
         const allPostsData = await postsResponse.json();
         let allPosts = [];
         allPostsData.forEach((item) => {
@@ -77,369 +64,172 @@ const StandardBlogPostPage = () => {
         });
 
         const postMetadata = allPosts.find((item) => item.slug === currentSlug);
-        if (!postMetadata) {
-          navigate('/404');
-          return;
-        }
-
-        if (!postMetadata.filename) {
-          navigate('/404');
-          return;
-        }
+        if (!postMetadata) { navigate('/404'); return; }
 
         const contentPath = `posts/${postMetadata.filename}`;
         const postContentResponse = await fetch(`/${contentPath}`);
-        if (!postContentResponse.ok) throw new Error('Failed to fetch content');
-
         const postBody = await postContentResponse.text();
-        if (postBody.trim().startsWith('<!DOCTYPE html>')) {
-          navigate('/404');
-          return;
-        }
 
         let seriesPosts = [];
-        let currentSeries = null;
-
         if (postMetadata.series) {
-          currentSeries = postMetadata.series;
-          const originalSeries = allPostsData.find(
-            (item) => item.series && item.slug === currentSeries.slug,
-          );
-          if (originalSeries) {
-            seriesPosts = originalSeries.series.posts;
-          }
+          const originalSeries = allPostsData.find(item => item.series && item.slug === postMetadata.series.slug);
+          if (originalSeries) seriesPosts = originalSeries.series.posts;
         }
 
-        setPost({
-          attributes: postMetadata,
-          body: postBody,
-          seriesPosts,
-          currentSeries,
-        });
+        setPost({ attributes: postMetadata, body: postBody, seriesPosts });
         setEstimatedReadingTime(calculateReadingTime(postBody));
       } catch (error) {
         console.error('Error fetching post:', error);
-        setPost(null);
       } finally {
         setLoading(false);
       }
     };
-
     fetchPost();
   }, [currentSlug, navigate]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (contentRef.current) {
-        const { scrollTop, scrollHeight, clientHeight } =
-          document.documentElement;
-        const totalHeight = scrollHeight - clientHeight;
-        const currentProgress = (scrollTop / totalHeight) * 100;
-        setReadingProgress(currentProgress);
-        setIsAtTop(scrollTop === 0);
-      }
+      const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+      const totalHeight = scrollHeight - clientHeight;
+      setReadingProgress((scrollTop / totalHeight) * 100);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [post]);
-
-  // --- Handlers ---
-
-  const openModal = (content, language) => {
-    setModalContent(content);
-    setModalLanguage(language);
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalContent('');
-  };
-
-  // --- Renderers (defined inside to access state/hooks) ---
-
-  const CodeBlock = ({ inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
-
-    const handleCopy = () => {
-      const textToCopy = String(children);
-      navigator.clipboard.writeText(textToCopy).then(
-        () =>
-          addToast({
-            title: 'Success',
-            message: 'Copied to clipboard!',
-            duration: 3000,
-            type: 'techno',
-          }),
-        () =>
-          addToast({
-            title: 'Error',
-            message: 'Failed to copy!',
-            duration: 3000,
-            type: 'error',
-          }),
-      );
-    };
-
-    if (!inline && match) {
-      return (
-        <div className="relative group my-6">
-          <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
-            <button
-              onClick={() =>
-                openModal(String(children).replace(/\n$/, ''), match[1])
-              }
-              className="text-cyan-300 bg-gray-800/90 border border-cyan-900/50 p-1.5 rounded hover:bg-gray-700 hover:text-cyan-200 transition-colors shadow-lg backdrop-blur-sm"
-              title="Expand Code"
-            >
-              <ArrowsOutSimpleIcon size={16} />
-            </button>
-            <button
-              onClick={handleCopy}
-              className="text-cyan-300 bg-gray-800/90 border border-cyan-900/50 p-1.5 rounded hover:bg-gray-700 hover:text-cyan-200 transition-colors shadow-lg backdrop-blur-sm"
-              title="Copy Code"
-            >
-              <ClipboardIcon size={16} />
-            </button>
-          </div>
-          <div className="rounded-lg overflow-hidden border border-gray-700/50 shadow-2xl">
-            <SyntaxHighlighter
-              style={customTheme}
-              language={match[1]}
-              PreTag="div"
-              CodeTag="code"
-              customStyle={{
-                margin: 0,
-                borderRadius: 0,
-                background: '#0f172a',
-                padding: '1.5rem',
-                fontSize: '1rem',
-                lineHeight: '1.6',
-              }}
-              {...props}
-              codeTagProps={{
-                style: { fontFamily: "'JetBrains Mono', monospace" },
-              }}
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <code
-        className={`${className} font-mono text-cyan-300 bg-gray-800/50 px-1.5 py-0.5 rounded text-sm border border-gray-700/50`}
-        {...props}
-      >
-        {children}
-      </code>
-    );
-  };
-
-  const ImageRenderer = ({ src, alt }) => (
-    <div className="my-8 mx-auto max-w-[75%] group relative rounded-xl overflow-hidden border border-gray-800 shadow-2xl">
-      <div className="absolute inset-0 bg-cyan-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-10"></div>
-      <img
-        src={src}
-        alt={alt}
-        className="cursor-pointer w-full h-auto transform transition-transform duration-500 group-hover:scale-[1.02] !border-0 !m-0 !max-w-full"
-        onClick={() => setModalImageSrc(src)}
-      />
-    </div>
-  );
-
-  // --- Main Render ---
+  }, []);
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
-          <p className="font-mono text-cyan-500 animate-pulse">
-            DECRYPTING DATA STREAM...
-          </p>
-        </div>
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white font-mono uppercase tracking-widest text-[10px]">
+        <span className="animate-pulse">Decrypting_Intel_Feed...</span>
       </div>
     );
   }
 
-  if (!post) {
-    return (
-      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center text-gray-400 font-mono">
-        Data not found in archives.
-      </div>
-    );
-  }
+  if (!post) return null;
 
-  const currentPostIndex = post.seriesPosts
-    ? post.seriesPosts.findIndex((item) => item.slug === currentSlug)
-    : -1;
-  const prevPost =
-    post.seriesPosts && currentPostIndex < post.seriesPosts.length - 1
-      ? post.seriesPosts[currentPostIndex + 1]
-      : null;
-  const nextPost =
-    currentPostIndex > 0 ? post.seriesPosts[currentPostIndex - 1] : null;
-
-  const backLink = post.attributes.series
-    ? `/blog/series/${post.attributes.series.slug}`
-    : '/blog';
-  const backLinkText = post.attributes.series
-    ? `Back to ${post.attributes.series.title}`
-    : 'Back to Blog';
+  const currentPostIndex = post.seriesPosts?.findIndex((item) => item.slug === currentSlug);
+  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
 
   return (
-    <div className="min-h-screen bg-[#020617] pb-24 relative">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative">
       <Seo
         title={`${post.attributes.title} | Fezcodex`}
         description={post.body.substring(0, 150)}
-        keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
-        ogTitle={`${post.attributes.title} | Fezcodex`}
-        ogDescription={post.body.substring(0, 150)}
-        ogImage={
-          post.attributes.image || '/images/ogtitle.png'
-        }
-        twitterCard="summary_large_image"
-        twitterTitle={`${post.attributes.title} | Fezcodex`}
-        twitterDescription={post.body.substring(0, 150)}
-        twitterImage={
-          post.attributes.image || '/images/ogtitle.png'
-        }
+        ogImage={post.attributes.image || '/images/ogtitle.png'}
       />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]" />
-        </div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-900/10 rounded-full blur-3xl -z-10 opacity-50" />
+      {/* Reading Progress */}
+      <div className="fixed top-0 left-0 w-full h-1 z-50 bg-white/5">
+        <motion.div
+            className="h-full bg-emerald-500 origin-left"
+            style={{ width: `${readingProgress}%` }}
+        />
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 relative">
-        <div className="lg:grid lg:grid-cols-4 lg:gap-12">
-          <div className="lg:col-span-3">
-            <Link
-              to={backLink}
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 font-mono text-sm tracking-widest uppercase hover:underline decoration-cyan-500/50 underline-offset-4 transition-all"
-            >
-              <ArrowLeftIcon size={16} /> {backLinkText}
-            </Link>
+      <div className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay" style={{ backgroundImage: NOISE_BG }} />
 
-            <h1 className="text-3xl md:text-5xl font-bold text-emerald-400 mb-6 tracking-tight font-mono">
-              {post.attributes.title}
+      {/* Hero */}
+      <div className="relative h-[50vh] w-full overflow-hidden border-b border-white/10">
+        <GenerativeArt seed={post.attributes.title} className="w-full h-full opacity-40 filter brightness-50" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
+
+        <div className="absolute bottom-0 left-0 w-full px-6 pb-12 md:px-12">
+            <div className="mb-6 flex items-center gap-4">
+                <Link to="/blog" className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black">
+                  <ArrowLeft weight="bold" />
+                  <span>Back to Intel</span>
+                </Link>
+                <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm">
+                   SOURCE: {post.attributes.category || 'Standard'}
+                </span>
+            </div>
+
+            <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl">
+                {post.attributes.title}
             </h1>
+        </div>
+      </div>
 
-            <div className="mb-8">
-              <ShareButtons
-                title={post.attributes.title}
-                url={window.location.href}
-              />
-            </div>
+      {/* Content Grid */}
+      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 lg:grid lg:grid-cols-12 lg:gap-24">
 
-            <div
-              ref={contentRef}
-              className="prose prose-invert prose-lg max-w-none mt-8
-                 prose-headings:font-mono prose-headings:font-semibold
-                 prose-h1:text-emerald-400 prose-h2:text-emerald-300 prose-h3:text-emerald-200 prose-h4:text-emerald-100
-                 prose-p:text-gray-300 prose-p:leading-relaxed
-                 prose-strong:text-emerald-200
-                 prose-blockquote:border-l-emerald-500 prose-blockquote:bg-gray-900/50 prose-blockquote:py-1 prose-blockquote:px-4 prose-blockquote:rounded-r
-                 prose-li:text-gray-300
-                 prose-code:before:content-none prose-code:after:content-none prose-pre:text-base"
+        <div className="lg:col-span-8">
+            <div className="prose prose-invert prose-lg max-w-none
+                prose-headings:font-sans prose-headings:uppercase prose-headings:tracking-tight prose-headings:font-bold prose-headings:text-white
+                prose-p:text-gray-400 prose-p:font-sans prose-p:leading-relaxed
+                prose-a:text-emerald-400 prose-a:underline prose-a:decoration-emerald-500/30 prose-a:underline-offset-4 hover:prose-a:decoration-emerald-400
+                prose-code:text-emerald-300 prose-code:font-mono prose-code:bg-white/5 prose-code:px-1 prose-code:rounded-sm
+                prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-white/10
+                prose-blockquote:border-l-emerald-500 prose-blockquote:bg-white/5 prose-blockquote:py-2"
             >
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-                components={{
-                  a: (props) => (
-                    <MarkdownLink
-                      {...props}
-                      className="text-cyan-400 hover:text-cyan-300 transition-colors inline-flex items-center gap-1 decoration-cyan-500/30 hover:decoration-cyan-400 underline underline-offset-4"
-                    />
-                  ),
-                  pre: ({ children }) => <>{children}</>,
-                  code: CodeBlock,
-                  img: ImageRenderer,
-                }}
-              >
-                {post.body}
-              </ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  {post.body}
+                </ReactMarkdown>
             </div>
 
+            {/* Series Nav */}
             {(prevPost || nextPost) && (
-              <div className="mt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-gray-800 pt-8">
-                {prevPost && (
-                  <Link
-                    to={
-                      seriesSlug
-                        ? `/blog/series/${seriesSlug}/${prevPost.slug}`
-                        : `/blog/${prevPost.slug}`
-                    }
-                    className="group flex flex-col items-start max-w-[45%]"
-                  >
-                    <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
-                      <ArrowLeftIcon size={14} className="inline mr-1" /> Previous
-                      Transmission
-                    </span>
-                    <span className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
-                      {prevPost.title}
-                    </span>
+              <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
+                {prevPost ? (
+                  <Link to={`/blog/${prevPost.slug}`} className="group border border-white/10 p-6 transition-colors hover:bg-white hover:text-black">
+                    <span className="block font-mono text-[10px] uppercase text-gray-500 mb-2">Previous Intel</span>
+                    <span className="text-xl font-bold uppercase">{prevPost.title}</span>
                   </Link>
-                )}
-                {!prevPost && <div></div>}
+                ) : <div />}
                 {nextPost && (
-                  <Link
-                    to={
-                      seriesSlug
-                        ? `/blog/series/${seriesSlug}/${nextPost.slug}`
-                        : `/blog/${nextPost.slug}`
-                    }
-                    className="group flex flex-col items-end text-right max-w-[45%]"
-                  >
-                    <span className="text-xs text-gray-500 font-mono mb-1 group-hover:text-cyan-400 transition-colors">
-                      Next Transmission{' '}
-                      <ArrowLeftIcon size={14} className="inline ml-1 rotate-180" />
-                    </span>
-                    <span className="text-gray-300 group-hover:text-white font-semibold line-clamp-2 leading-snug transition-colors">
-                      {nextPost.title}
-                    </span>
+                  <Link to={`/blog/${nextPost.slug}`} className="group border border-white/10 p-6 text-right transition-colors hover:bg-white hover:text-black">
+                    <span className="block font-mono text-[10px] uppercase text-gray-500 mb-2">Next Intel</span>
+                    <span className="text-xl font-bold uppercase">{nextPost.title}</span>
                   </Link>
                 )}
               </div>
             )}
-          </div>
+        </div>
 
-          <div className="hidden lg:block mt-24 space-y-6">
-            <div className="sticky top-24">
-              <PostMetadata
-                metadata={post.attributes}
-                readingProgress={readingProgress}
-                isAtTop={isAtTop}
-                overrideDate={post.attributes.date}
-                updatedDate={post.attributes.updated}
-                seriesPosts={post.seriesPosts}
-                estimatedReadingTime={estimatedReadingTime}
-              />
+        {/* Sidebar */}
+        <div className="mt-16 lg:col-span-4 lg:mt-0">
+            <div className="sticky top-24 space-y-12">
+                <div>
+                    <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">// INTEL_SPECIFICATIONS</h3>
+                    <div className="space-y-6 border-l border-white/10 pl-6">
+                        <SpecItem icon={Calendar} label="Dated" value={new Date(post.attributes.date).toLocaleDateString('en-GB')} />
+                        <SpecItem icon={Clock} label="Process_Time" value={`${estimatedReadingTime} Min`} />
+                        <SpecItem icon={Tag} label="Category" value={post.attributes.category || 'Misc'} isAccent />
+                    </div>
+                </div>
+
+                {post.seriesPosts && (
+                    <div>
+                        <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">// SERIES_DATA</h3>
+                        <div className="flex flex-col gap-2">
+                            {post.seriesPosts.map((p, i) => (
+                                <Link key={p.slug} to={`/blog/${p.slug}`} className={`flex items-center gap-3 p-3 border transition-all ${p.slug === currentSlug ? 'bg-emerald-500 text-black border-emerald-500' : 'border-white/5 hover:border-white/20 text-gray-500 hover:text-white'}`}>
+                                    <span className="font-mono text-[10px]">{String(i+1).padStart(2, '0')}</span>
+                                    <span className="text-xs font-bold uppercase truncate">{p.title}</span>
+                                </Link>
+                            ))}
+                        </div>
+                    </div>
+                )}
             </div>
-          </div>
         </div>
       </div>
-      <CodeModal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        language={modalLanguage}
-      >
-        {modalContent}
-      </CodeModal>
-      <ImageModal
-        src={modalImageSrc}
-        alt="Full size image"
-        onClose={() => setModalImageSrc(null)}
-      />
+
+      <ImageModal src={modalImageSrc} alt="Intel Imagery" onClose={() => setModalImageSrc(null)} />
     </div>
   );
 };
+
+const SpecItem = ({ icon: Icon, label, value, isAccent }) => (
+    <div className="flex flex-col gap-1">
+        <span className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-gray-500">
+            <Icon size={14} /> {label}
+        </span>
+        <span className={`font-mono text-sm uppercase ${isAccent ? 'text-emerald-400 font-bold' : 'text-white'}`}>
+            {value}
+        </span>
+    </div>
+);
 
 export default StandardBlogPostPage;

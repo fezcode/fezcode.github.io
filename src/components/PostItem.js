@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom'; // Import useLocation
-import { useAnimation } from '../context/AnimationContext'; // Import useAnimation
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowRight } from '@phosphor-icons/react';
 
 const PostItem = ({
   slug,
@@ -11,143 +12,99 @@ const PostItem = ({
   series,
   seriesIndex,
   isSeries,
-  authors, // Change to authors array
+  isActive,
+  onHover = () => {},
 }) => {
-  const {
-    isAnimationEnabled,
-    showAnimationsHomepage,
-    showAnimationsInnerPages,
-  } = useAnimation(); // Use the animation context
-  const location = useLocation(); // Get current location
-
-  // Format the date to a shorter format: Month Day, Year
-  const formattedDate = new Date(date).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
+  const formattedDate = new Date(date).toLocaleDateString('en-GB', {
+    day: '2-digit',
+    month: '2-digit',
+    year: '2-digit',
   });
 
-  // Format the updated date if it exists
-  const formattedUpdatedDate = updatedDate
-    ? new Date(updatedDate).toLocaleDateString('en-US', {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-      })
-    : null;
-
-  const categoryBadgeColorStyle = {
-    backgroundColor:
-      category === 'dev'
-        ? 'var(--color-dev-badge)'
-        : category === 'series'
-          ? 'var(--color-series-badge)'
-          : category === 'd&d'
-            ? 'var(--color-dnd-badge)'
-            : category === 'gist'
-              ? 'var(--color-gist-badge)'
-              : category === 'feat'
-                ? 'var(--color-feat-badge)'
-                : 'var(--color-rant-badge)',
-  };
-
-  const postBackgroundColorClass =
+  const categoryColor =
     category === 'dev'
-      ? 'bg-dev-card-bg'
+      ? 'var(--color-dev-badge)'
       : category === 'series'
-        ? 'bg-series-card-bg'
+        ? 'var(--color-series-badge)'
         : category === 'd&d'
-          ? 'bg-dnd-card-bg'
+          ? 'var(--color-dnd-badge)'
           : category === 'gist'
-            ? 'bg-gist-card-bg'
+            ? 'var(--color-gist-badge)'
             : category === 'feat'
-              ? 'bg-feat-card-bg'
-              : 'bg-rant-card-bg';
-
-  const postHoverBackgroundColorClass =
-    category === 'dev'
-      ? 'hover:bg-dev-card-bg-hover'
-      : category === 'series'
-        ? 'hover:bg-series-card-bg-hover'
-        : category === 'd&d'
-          ? 'hover:bg-dnd-card-bg-hover'
-          : category === 'gist'
-            ? 'hover:bg-gist-card-bg-hover'
-            : category === 'feat'
-              ? 'hover:bg-feat-card-bg-hover'
-              : 'hover:bg-rant-card-bg-hover';
-
-  const postTitleHoverColorClass =
-    category === 'dev'
-      ? 'group-hover:text-[var(--title-hover-dev)]'
-      : category === 'series'
-        ? 'group-hover:text-[var(--title-hover-series)]'
-        : category === 'd&d'
-          ? 'group-hover:text-[var(--title-hover-dnd)]'
-          : category === 'gist'
-            ? 'group-hover:text-[var(--title-hover-gist)]'
-            : category === 'feat'
-              ? 'group-hover:text-[var(--title-hover-feat)]'
-              : 'group-hover:text-[var(--title-hover-rant)]';
-
-  const categoryBadgeFontColorStyle =
-    category === 'gist' || category === 'gist' ? 'text-black' : 'text-white';
-  const shouldAnimate =
-    isAnimationEnabled &&
-    ((location.pathname === '/' && showAnimationsHomepage) ||
-      (location.pathname !== '/' && showAnimationsInnerPages));
+              ? 'var(--color-feat-badge)'
+              : 'var(--color-rant-badge)';
 
   return (
-    <Link
-      to={`/blog/${slug}`}
-      className={`block p-8 my-4 border border-gray-700/50 rounded-lg shadow-lg cursor-pointer transition-colors group relative overflow-hidden ${postBackgroundColorClass} ${postHoverBackgroundColorClass} ${shouldAnimate ? 'animated-grid-bg' : ''}`}
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      animate={{ opacity: 1, x: 0 }}
+      onMouseEnter={() => onHover({ slug, title, date, updatedDate, category, series, seriesIndex, isSeries })}
+      className="relative mr-4 md:mr-12"
     >
-      <article>
-        <div className="flex items-center">
-          <p className="text-sm text-gray-400 w-28 flex-shrink-0">
+      <Link
+        to={isSeries ? `/blog/series/${slug}` : `/blog/${slug}`}
+        className="group relative flex items-center justify-between border-b border-white/10 py-6 pr-12 transition-all duration-300"
+      >
+        {/* Active Marker */}
+        <div
+          className={`absolute left-0 top-0 h-full w-1 bg-emerald-400 transition-all duration-300 ${
+            isActive ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+
+        <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0">
+          {/* Date */}
+          <span
+            className={`font-mono text-[10px] tracking-widest flex-shrink-0 transition-colors duration-300 ${
+              isActive ? 'text-emerald-400' : 'text-gray-600'
+            }`}
+          >
             {formattedDate}
-            {authors && authors.length > 0 && (
-              <span className="block text-xs text-gray-500">
-                by {authors[0]}
-              </span>
-            )}
-          </p>
-          <div className="ml-4 flex-grow flex items-center">
-            {category && (
-              <span
-                className={`mr-2 px-2 py-1 font-arvo text-xs ${categoryBadgeFontColorStyle} rounded-md hidden sm:inline-block w-16 text-center`}
-                style={categoryBadgeColorStyle}
-              >
-                {category}
-              </span>
-            )}
-            {series && isSeries === undefined && (
-              <span className="mr-2 px-2 py-1 text-xs font-medium text-blue-400 bg-blue-400/10 rounded-full">
-                {series} - Part {seriesIndex}
-              </span>
-            )}
-            <h2
-              className={`text-lg font-mono text-white ${postTitleHoverColorClass} group-hover:underline transition-colors`}
+          </span>
+
+          {/* Title Area */}
+          <div className="flex flex-col gap-1 min-w-0 flex-1">
+            <h3
+              className={`text-xl font-medium uppercase tracking-tight transition-all duration-300 md:text-2xl break-words leading-tight ${
+                isActive
+                  ? 'translate-x-1 text-white'
+                  : 'text-gray-500 group-hover:text-gray-300'
+              }`}
             >
               {title}
-            </h2>
+            </h3>
+
+            {series && (
+              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-500/60">
+                {series} // Part {seriesIndex}
+              </span>
+            )}
           </div>
-          {formattedUpdatedDate && updatedDate !== date && (
-            <span className="hidden sm:inline-block ml-4 px-2 py-1 text-xs font-medium text-orange-400 bg-orange-400/10 rounded-full">
-              Update: {formattedUpdatedDate}
-            </span>
-          )}
-          <span
-            className={`ml-4 flex-shrink-0 text-sm font-medium text-primary-400 ${postTitleHoverColorClass} group-hover:underline transition-colors`}
-          >
-            <span className="hidden sm:inline">
-              {isSeries ? 'View Series' : 'Read post'}
-            </span>{' '}
-            &rarr;
-          </span>
         </div>
-      </article>
-    </Link>
+
+        {/* Category Badge */}
+        <div className="flex items-center gap-4">
+          <span
+            className="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm transition-all duration-300"
+            style={{
+                color: categoryColor,
+                borderColor: `${categoryColor}44`,
+                backgroundColor: isActive ? `${categoryColor}11` : 'transparent'
+            }}
+          >
+            {category || 'Post'}
+          </span>
+
+          <ArrowRight
+            weight="bold"
+            size={20}
+            className={`transition-all duration-300 ${
+                isActive ? 'translate-x-0 opacity-100 text-emerald-400' : '-translate-x-4 opacity-0 text-gray-500'
+            }`}
+          />
+        </div>
+      </Link>
+    </motion.div>
   );
 };
 

@@ -10,11 +10,11 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ delay: index * 0.05 }}
       onMouseEnter={() => onHover(project)}
-      className="relative"
+      className="relative mr-4 md:mr-12"
     >
       <Link
         to={`/projects/${project.slug}`}
-        className="group relative flex items-center justify-between border-b border-white/10 py-8 pr-4 transition-all duration-300"
+        className="group relative flex items-center justify-between border-b border-white/10 py-8 pr-12 transition-all duration-300"
       >
         {/* Active Indicator Line */}
         <div
@@ -23,10 +23,10 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
           }`}
         />
 
-        <div className="flex items-baseline gap-6 pl-4 md:pl-8">
+        <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0">
           {/* Index / Year */}
           <span
-            className={`font-mono text-sm transition-colors duration-300 ${
+            className={`font-mono text-sm flex-shrink-0 transition-colors duration-300 ${
               isActive ? 'text-emerald-400' : 'text-gray-600'
             }`}
           >
@@ -35,9 +35,9 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
 
           {/* Title */}
           <h3
-            className={`text-3xl font-light uppercase tracking-tight transition-all duration-300 md:text-5xl ${
+            className={`text-3xl font-light uppercase tracking-tight transition-all duration-300 md:text-5xl break-words leading-[1.1] ${
               isActive
-                ? 'translate-x-4 text-white font-medium'
+                ? 'translate-x-2 text-white font-medium'
                 : 'text-gray-500 group-hover:text-gray-300'
             }`}
           >

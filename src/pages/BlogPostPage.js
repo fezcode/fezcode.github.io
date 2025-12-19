@@ -2,8 +2,10 @@ import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import DossierBlogPostPage from './DossierBlogPostPage';
+import DokumentBlogPostPage from './DokumentBlogPostPage';
 import StandardBlogPostPage from './StandardBlogPostPage';
 import TerminalBlogPostPage from './TerminalBlogPostPage';
+import TerminalGreenBlogPostPage from './TerminalGreenBlogPostPage';
 
 const BlogPostPage = () => {
   const { blogPostViewMode } = useVisualSettings();
@@ -15,7 +17,7 @@ const BlogPostPage = () => {
   // preventing it from running on every render if other local state were to change.
   const effectiveViewMode = useMemo(() => {
     const themeParam = searchParams.get('theme');
-    if (themeParam && ['dossier', 'terminal', 'standard'].includes(themeParam)) {
+    if (themeParam && ['dossier', 'terminal', 'standard', 'dokument', 'terminal-green'].includes(themeParam)) {
       return themeParam;
     }
     return blogPostViewMode;
@@ -23,6 +25,14 @@ const BlogPostPage = () => {
 
   if (effectiveViewMode === 'dossier') {
     return <DossierBlogPostPage />;
+  }
+
+  if (effectiveViewMode === 'dokument') {
+    return <DokumentBlogPostPage />;
+  }
+
+  if (effectiveViewMode === 'terminal-green') {
+    return <TerminalGreenBlogPostPage />;
   }
 
   if (effectiveViewMode === 'terminal') {
