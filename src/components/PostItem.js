@@ -51,9 +51,10 @@ const PostItem = ({
       >
         {/* Active Marker */}
         <div
-          className={`absolute left-0 top-0 h-full w-1 bg-emerald-400 transition-all duration-300 ${
+          className={`absolute left-0 top-0 h-full w-1 transition-all duration-300 ${
             isActive ? 'opacity-100' : 'opacity-0'
           }`}
+          style={{ backgroundColor: categoryColor || 'var(--emerald-400)' }}
         />
 
         <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0 pr-12">
@@ -104,8 +105,9 @@ const PostItem = ({
               weight="bold"
               size={20}
               className={`transition-all duration-300 ${
-                  isActive ? 'translate-x-0 opacity-100 text-emerald-400' : '-translate-x-4 opacity-0 text-gray-500'
+                  isActive ? 'translate-x-0 opacity-100' : '-translate-x-4 opacity-0 text-gray-500'
               }`}
+              style={{ color: isActive ? categoryColor : undefined }}
             />
           </div>
         </div>

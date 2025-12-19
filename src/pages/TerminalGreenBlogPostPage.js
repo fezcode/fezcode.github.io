@@ -122,11 +122,13 @@ const TerminalGreenBlogPostPage = () => {
         <div className="h-full bg-emerald-500 shadow-[0_0_10px_#10b981]" style={{ width: `${readingProgress}%` }} />
       </div>
 
-            <div className="relative pt-20 pb-12 border-b border-emerald-500/20">
-              <GenerativeArt seed={post.attributes.title} className="absolute inset-0 opacity-20 filter grayscale contrast-150 h-[20vh]" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent h-[20vh]" />
+      <div className="relative pt-32 pb-12 border-b border-emerald-500/20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <GenerativeArt seed={post.attributes.title} className="w-full h-full opacity-20 filter grayscale contrast-150" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        </div>
 
-              <div className="relative mx-auto max-w-5xl px-6">            <Link to="/blog" className="inline-flex items-center gap-2 border border-emerald-500/30 px-4 py-1 text-[10px] uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all mb-8">
+        <div className="relative mx-auto max-w-5xl px-6">            <Link to="/blog" className="inline-flex items-center gap-2 border border-emerald-500/30 px-4 py-1 text-[10px] uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all mb-8">
                 <ArrowLeft weight="bold" /> [ BACK_TO_INDEX ]
             </Link>
             <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-tight drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">

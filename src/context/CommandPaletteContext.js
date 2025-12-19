@@ -8,6 +8,7 @@ export const useCommandPalette = () => {
 
 export const CommandPaletteProvider = ({ children }) => {
   const [isPaletteOpen, setIsPaletteOpen] = useState(false);
+  const [triggerCommand, setTriggerCommand] = useState(() => (id) => console.warn(`Command trigger not initialized for ${id}`));
 
   const openPalette = () => setIsPaletteOpen(true);
   const closePalette = () => setIsPaletteOpen(false);
@@ -34,6 +35,8 @@ export const CommandPaletteProvider = ({ children }) => {
         openPalette,
         closePalette,
         togglePalette,
+        triggerCommand,
+        setTriggerCommand,
       }}
     >
       {children}
