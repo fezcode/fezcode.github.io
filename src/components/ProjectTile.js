@@ -34,22 +34,33 @@ const ProjectTile = ({project}) => {
           </div>
         </div>
 
-        {/* Content */}
-        <div className="flex flex-col flex-grow p-5">
-          <h3
-            className="text-xl font-medium font-sans uppercase text-white mb-2 group-hover:text-cyan-400 transition-colors line-clamp-1">
-            {project.title}
-          </h3>
+                {/* Content */}
+
+                <div className="flex flex-col flex-grow p-5">
+
+                  <h3 className="text-xl font-medium font-sans uppercase text-white mb-2 group-hover:text-emerald-400 transition-colors line-clamp-1">
+
+                    {project.title}
+
+                  </h3>
           <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed mb-4 flex-grow"> {project.shortDescription}
           </p>
 
-          {/* Tech Stack */}
-          <div className="flex flex-wrap gap-2 mt-auto">
-            {project.technologies && project.technologies.slice(0, 3).map((tech) => (<span key={tech}
-                className="text-[10px] font-mono text-gray-500 uppercase tracking-wider border border-white/10 px-1.5 py-0.5 rounded">
-                {tech}
-              </span>))}
-          </div>
+                    {/* Tech Stack */}
+
+                    <div className="flex flex-wrap gap-2 mt-auto">
+
+                      {project.technologies && project.technologies.slice(0, 3).map((tech) => (
+
+                        <span key={tech} className="text-[10px] font-mono text-gray-500 uppercase tracking-wider border border-white/10 px-1.5 py-0.5 rounded group-hover:text-emerald-500 group-hover:border-emerald-500/30 transition-colors">
+
+                          {tech}
+
+                        </span>
+
+                      ))}
+
+                    </div>
         </div>
       </Link>
     </motion.div>);

@@ -54,7 +54,7 @@ const ProjectsPage = () => {
   const isPlaceholder = (project) => !project?.image || project.image.includes('placeholder');
 
   return (
-    <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-cyan-500/30">
+    <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
 
       {/* Mobile Background (Static or Active Project Blur) */}
       <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none z-0">
@@ -127,7 +127,7 @@ const ProjectsPage = () => {
               <div className="absolute bottom-0 left-0 w-full p-16 z-10 flex flex-col gap-6">
 
                 {/* ID & Date */}
-                <div className="flex items-center gap-4 text-cyan-400 font-mono text-sm tracking-widest uppercase">
+                <div className="flex items-center gap-4 text-emerald-400 font-mono text-sm tracking-widest uppercase">
                    <span>ID: {activeProject.slug.split('-')[0]}</span>
                    <span className="h-1 w-1 bg-current rounded-full" />
                    <span>{new Date(activeProject.date).getFullYear()}</span>
@@ -158,7 +158,7 @@ const ProjectsPage = () => {
                         transition={{ delay: 0.2 }}
                         className="mt-4"
                     >
-                        <a href={activeProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-white border-b border-white pb-1 hover:text-cyan-400 hover:border-cyan-400 transition-colors">
+                        <a href={activeProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-white border-b border-white pb-1 hover:text-emerald-400 hover:border-emerald-400 transition-colors">
                            <span className="text-sm font-bold uppercase tracking-widest">Visit Live Site</span>
                            <ArrowLeft className="rotate-135" weight="bold"/>
                         </a>

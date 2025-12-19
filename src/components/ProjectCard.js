@@ -18,7 +18,7 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
       >
         {/* Active Indicator Line */}
         <div
-          className={`absolute left-0 top-0 h-full w-1 bg-cyan-400 transition-all duration-300 ${
+          className={`absolute left-0 top-0 h-full w-1 bg-emerald-400 transition-all duration-300 ${
             isActive ? 'opacity-100' : 'opacity-0'
           }`}
         />
@@ -27,7 +27,7 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
           {/* Index / Year */}
           <span
             className={`font-mono text-sm transition-colors duration-300 ${
-              isActive ? 'text-cyan-400' : 'text-gray-600'
+              isActive ? 'text-emerald-400' : 'text-gray-600'
             }`}
           >
             {String(index + 1).padStart(2, '0')}
@@ -49,7 +49,7 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
         <div
           className={`transform transition-all duration-300 ${
             isActive
-              ? 'translate-x-0 opacity-100 text-cyan-400'
+              ? 'translate-x-0 opacity-100 text-emerald-400'
               : '-translate-x-4 opacity-0 text-gray-500'
           }`}
         >

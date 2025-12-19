@@ -3,141 +3,102 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
   ArrowRight,
-  TerminalWindow,
   Cpu,
   Article,
-  RocketLaunch,
-  Terminal, // For "Explore Commands"
-  Cube,     // For "Explore Fezzilla"
-  AppWindow // For "Explore Apps"
+  Terminal,
+  Cube,
+  AppWindow,
+  ArrowUpRight
 } from '@phosphor-icons/react';
-import PostItem from '../components/PostItem';
+import PostTile from '../components/PostTile';
 import ProjectTile from '../components/ProjectTile';
 import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_HOMEPAGE_SECTION_ORDER } from '../utils/LocalStorageManager';
 
+const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E")`;
+
 const Hero = () => {
-  const [currentDateTime, setCurrentDateTime] = useState('');
+  const [time, setTime] = useState('');
 
   useEffect(() => {
-    const updateDateTime = () => {
-      const now = new Date();
-      const options = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false,
-      };
-      setCurrentDateTime(now.toLocaleString('en-GB', options).replace(/,/, ''));
-    };
-
-    updateDateTime();
-    const intervalId = setInterval(updateDateTime, 1000);
-
-    return () => clearInterval(intervalId);
+    const timer = setInterval(() => {
+      setTime(new Date().toLocaleTimeString('en-GB', { hour12: false }));
+    }, 1000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
-    <div className="relative overflow-hidden py-24 sm:py-32">
-       {/* Background decoration */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-blue-500/40 rounded-full blur-[100px] opacity-30 animate-pulse"></div>
-      </div>
+    <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-white/10">
+      <div className="absolute top-6 left-6 right-6 flex justify-between items-start font-mono text-[10px] uppercase tracking-[0.2em] text-gray-500 z-20">
+        <div className="flex flex-col gap-1">
+          <span>System: Fezcodex_OS</span>
+          <span>Kernel: v0.6.0-stable</span>
+        </div>
+                <div className="text-right">
+                  <span>Local_Time: {time}</span>
+                  <div className="flex items-center gap-2 justify-end mt-1 text-emerald-500">
+                    <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse" />
+                    <span>Connection_Stable</span>
+                  </div>
+                </div>
+              </div>
+              <div className="mx-auto max-w-7xl px-6 relative z-10">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <h1 className="text-[12vw] font-black leading-[0.8] tracking-tighter text-white uppercase mb-8">
+                    Fez<span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">codex</span>
+                  </h1>
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 relative z-10 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-900/30 border border-primary-500/30 text-white text-sm mb-6 font-mono">
-            <span className="w-2 h-2 rounded-full bg-primary-400 animate-pulse"></span>
-            {currentDateTime}
-          </div>
-          <h1 className="text-5xl md:text-7xl  tracking-tight text-white mb-6">
-            Welcome to fez<span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-white">codex</span>
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-400 max-w-2xl mx-auto font-mono">
-            A digital garden of code, thoughts, and experiments.
-            Documenting the journey through software engineering.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6">
-            <Link to="/projects"
-              className="group flex items-center gap-2 px-4 py-2 transition-all duration-300 bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-rose-500 hover:text-gray-900 hover:border-rose-500 rounded-none shadow-none"
-            >
-              <RocketLaunch weight="bold" className="group-hover:-translate-x-1 transition-transform" />
-              Explore Projects
-            </Link>
-            <Link to="/about"
-              className="group flex items-center gap-2 px-4 py-2 transition-all duration-300 bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-emerald-500 hover:text-gray-900 hover:border-emerald-500 rounded-none shadow-none"
-            >
-              <ArrowRight weight="bold" className="group-hover:-translate-x-1 transition-transform" />
-              About Me
-            </Link>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mt-12">
+                    <p className="max-w-xl text-lg md:text-xl text-gray-400 font-sans leading-relaxed">
+                      A digital vault of experimental software, architectural thoughts, and the pursuit of code as an art form.
+                    </p>
 
-const SectionHeader = ({ icon: Icon, title, link, linkText }) => (
-  <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-white/10">
-    <div className="flex items-center gap-3">
-      <div className="p-2 bg-white/5 rounded-lg">
-        <Icon size={24} className="text-green-300" />
-      </div>
-      <h2 className="text-2xl text-white font-arvo">{title}</h2>
-    </div>
-    {link && (
-      <Link to={link} className="group flex items-center gap-1 text-sm text-gray-400 hover:text-white transition-colors mt-4 sm:mt-0">
-        {linkText} <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                    <div className="flex flex-wrap gap-4">
+                      <Link to="/projects" className="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-sm font-bold uppercase tracking-widest text-xs transition-all hover:bg-emerald-400">
+                        Explore Archives
+                        <ArrowRight weight="bold" className="group-hover:translate-x-1 transition-transform" />
+                      </Link>
+                      <Link to="/about" className="group flex items-center gap-3 border border-white/20 px-6 py-3 rounded-sm font-bold uppercase tracking-widest text-xs text-white transition-all hover:bg-white/5">
+                        System Info
+                      </Link>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          );
+        };
+
+        const SectionHeader = ({ num, title, link, linkText }) => (
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+            <div className="flex items-baseline gap-4">
+              <span className="font-mono text-emerald-500 text-sm font-bold tracking-widest">// {num}</span>
+              <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter text-white">{title}</h2>
+            </div>    {link && (
+      <Link to={link} className="group flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors">
+        {linkText} <ArrowUpRight weight="bold" className="group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
       </Link>
     )}
   </div>
 );
 
-// New component for the side navigation links
-const ExploreLinkCard = ({ to, title, description, Icon }) => (
-  <Link
-    to={to}
-    className="relative p-6 rounded-2xl bg-gradient-to-br from-primary-900/20 to-transparent border border-primary-500/20 group hover:border-primary-400 transition-colors duration-300 overflow-hidden flex flex-col"
-  >
-    {/* Optional: Background glitch effect on hover */}
-    <span className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-10 transition-opacity duration-300"></span>
-    <div className="relative z-10"> {/* Wrap icon and text for better control */}
-      <div className="flex items-center gap-3 mb-2">
-        {Icon && <Icon size={28} className="text-primary-400 group-hover:scale-110 transition-transform" />}
-        <h3 className="text-lg font-bold text-white group-hover:text-primary-300 transition-colors">{title}</h3>
-      </div>
-      <p className="text-sm text-gray-400 mb-4">{description}</p>
-    </div>
-    <div className="relative z-10 text-right"> {/* Position arrow at the end of the content flow */}
-        <span className="inline-flex items-center text-primary-400 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
-            Explore <ArrowRight size={20} weight="bold" className="ml-1" />
-        </span>
-    </div>
-  </Link>
-);
-
 const HomePage = () => {
   useSeo({
     title: 'Fezcodex | Home',
-    description: 'Exploring the world of code, one post at a time.',
-    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'software engineer'],
+    description: 'A digital garden of code, thoughts, and experiments.',
+    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'brutalist'],
   });
 
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const { projects: pinnedProjects, loading: loadingProjects } = useProjects(true);
-  const [activeProject, setActiveProject] = useState(null);
 
-  // Use persistent state for homepage section order
   const [homepageSectionOrder] = usePersistentState(KEY_HOMEPAGE_SECTION_ORDER, ['projects', 'blogposts']);
 
   useEffect(() => {
@@ -146,7 +107,6 @@ const HomePage = () => {
         const response = await fetch('/posts/posts.json');
         if (response.ok) {
           const allPostsData = await response.json();
-          // Process posts logic (same as before)
           const seriesMap = new Map();
           const individualPosts = [];
           allPostsData.forEach((item) => {
@@ -175,97 +135,65 @@ const HomePage = () => {
 
   if (loadingProjects || loadingPosts) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-primary-500 border-t-transparent rounded-full animate-spin"></div>
-          <div className="text-primary-400 font-mono text-sm animate-pulse">INITIALIZING...</div>
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
+        <div className="flex flex-col items-center gap-4 text-white font-mono text-xs uppercase tracking-[0.3em]">
+          <div className="h-px w-32 bg-white/10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-white animate-progress origin-left"></div>
+          </div>
+          <span>Initialising_System</span>
         </div>
       </div>
     );
   }
 
-  // Helper function to render a section
-  const renderSection = (sectionName) => {
+  const renderSection = (sectionName, index) => {
+    const sectionNum = String(index + 1).padStart(2, '0');
+
     switch (sectionName) {
       case 'projects':
         return (
-          <section className="mb-24 mt-8">
-            <SectionHeader icon={Cpu} title="Pinned Projects" link="/projects" linkText="View all projects" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {pinnedProjects.map((project, index) => (
-                <motion.div
-                  key={project.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
+          <section className="py-24 border-b border-white/10">
+            <SectionHeader num={sectionNum} title="Artifacts" link="/projects" linkText="View all entries" />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+              {pinnedProjects.map((project) => (
+                <div key={project.slug} className="bg-[#050505]">
                   <ProjectTile project={project} />
-                </motion.div>
+                </div>
               ))}
             </div>
           </section>
         );
       case 'blogposts':
         return (
-          <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-8">
-            {/* Main Feed */}
-            <div className="lg:col-span-8">
-               <SectionHeader icon={Article} title="Latest Blogposts" link="/blog" linkText="Read archive" />
-               <div className="space-y-4">
-                  {posts.slice(0, 5).map((item, index) => (
-                     <motion.div
-                        key={item.slug}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        transition={{ delay: index * 0.05 }}
-                        viewport={{ once: true }}
-                     >
-                       {item.isSeries ? (
-                          <PostItem
-                            slug={`series/${item.slug}`}
-                            title={item.title}
-                            date={item.date}
-                            updatedDate={item.updated}
-                            category="series"
-                            isSeries={true}
-                          />
-                        ) : (
-                          <PostItem
-                            slug={item.slug}
-                            title={item.title}
-                            date={item.date}
-                            updatedDate={item.updated}
-                            category={item.category}
-                            series={item.series}
-                            seriesIndex={item.seriesIndex}
-                          />
-                        )}
-                     </motion.div>
-                  ))}
-               </div>
-            </div>
+          <section className="py-24">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
+              <div className="lg:col-span-8">
+                 <SectionHeader num={sectionNum} title="Intel" link="/blog" linkText="Read archive" />
+                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {posts.slice(0, 4).map((item, index) => (
+                       <motion.div
+                          key={item.slug}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          transition={{ delay: index * 0.05 }}
+                          viewport={{ once: true }}
+                       >
+                          <PostTile post={item} />
+                       </motion.div>
+                    ))}
+                 </div>
+              </div>
 
-            {/* Side Widgets */}
-            <div className="lg:col-span-4 space-y-4 lg:pt-14 sm:pb-14">
-              <ExploreLinkCard
-                to="/apps"
-                title="Explore Apps"
-                description="Discover a collection of custom-built web applications and tools."
-                Icon={AppWindow}
-              />
-              <ExploreLinkCard
-                to="/roadmap"
-                title="Explore Fezzilla"
-                description="Dive into the roadmap and development progress of Fezcodex."
-                Icon={Cube}
-              />
-              <ExploreLinkCard
-                to="/commands"
-                title="Explore Commands"
-                description="Learn about available commands and system interactions."
-                Icon={Terminal}
-              />
+              <div className="lg:col-span-4 space-y-12">
+                <div>
+                   <h3 className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-8">// QUICK_ACCESS</h3>
+                   <div className="grid grid-cols-1 gap-4">
+                      <ExploreLink to="/apps" title="Tools & Apps" icon={AppWindow} />
+                      <ExploreLink to="/roadmap" title="Fezzilla Hub" icon={Cube} />
+                      <ExploreLink to="/commands" title="CLI Terminal" icon={Terminal} />
+                   </div>
+                </div>
+              </div>
             </div>
           </section>
         );
@@ -275,18 +203,30 @@ const HomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black relative">
+      <div className="pointer-events-none fixed inset-0 z-50 opacity-[0.15] mix-blend-overlay" style={{ backgroundImage: NOISE_BG }} />
+
       <Hero />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pb-24">
-        {homepageSectionOrder.map((sectionName) => (
+      <div className="mx-auto max-w-7xl px-6">
+        {homepageSectionOrder.map((sectionName, idx) => (
           <React.Fragment key={sectionName}>
-            {renderSection(sectionName)}
+            {renderSection(sectionName, idx)}
           </React.Fragment>
         ))}
       </div>
     </div>
   );
 };
+
+const ExploreLink = ({ to, title, icon: Icon }) => (
+  <Link to={to} className="group flex items-center justify-between border border-white/10 bg-white/5 p-6 transition-all hover:bg-white hover:text-black">
+    <div className="flex items-center gap-4">
+      <Icon size={20} weight="bold" />
+      <span className="font-bold uppercase tracking-widest text-xs">{title}</span>
+    </div>
+    <ArrowRight weight="bold" className="opacity-0 group-hover:opacity-100 transition-opacity" />
+  </Link>
+);
 
 export default HomePage;

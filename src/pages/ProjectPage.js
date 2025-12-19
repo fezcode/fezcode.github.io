@@ -129,7 +129,7 @@ const ProjectPage = () => {
                 prose-headings:font-sans prose-headings:uppercase prose-headings:tracking-tight prose-headings:font-bold prose-headings:text-white
                 prose-p:text-gray-400 prose-p:font-sans prose-p:leading-relaxed
                 prose-a:text-white prose-a:underline prose-a:decoration-white/30 prose-a:underline-offset-4 hover:prose-a:decoration-white
-                prose-code:text-cyan-300 prose-code:font-mono prose-code:bg-white/5 prose-code:px-1 prose-code:rounded-sm prose-code:before:content-none prose-code:after:content-none
+                prose-code:text-emerald-300 prose-code:font-mono prose-code:bg-white/5 prose-code:px-1 prose-code:rounded-sm prose-code:before:content-none prose-code:after:content-none
                 prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-white/10
                 prose-ul:marker:text-gray-500
                 prose-img:rounded-sm prose-img:border prose-img:border-white/10"
@@ -150,14 +150,14 @@ const ProjectPage = () => {
                 {/* Actions */}
                 <div className="flex flex-col gap-3">
                     {fullProject.link && (
-                        <a href={fullProject.link} target="_blank" rel="noopener noreferrer" className="group flex w-full items-center justify-between border border-white/20 bg-white/5 p-4 transition-colors hover:bg-white hover:text-black hover:border-white">
+                        <a href={fullProject.link} target="_blank" rel="noopener noreferrer" className="group flex w-full items-center justify-between border border-white/20 bg-white/5 p-4 transition-colors hover:bg-emerald-400 hover:text-black hover:border-emerald-400">
                             <span className="font-mono text-sm font-bold uppercase tracking-widest">Live System</span>
                             <ArrowUpRight weight="bold" size={20} />
                         </a>
                     )}
                      {/* Assuming GitHub link is available or derived (placeholder logic) */}
                      {/* If you have a github link in frontmatter, add it here. Using placeholder for structure */}
-                     <a href={`https://github.com/fezcode/${fullProject.slug}`} target="_blank" rel="noopener noreferrer" className="group flex w-full items-center justify-between border border-white/20 p-4 transition-colors hover:bg-white hover:text-black hover:border-white">
+                     <a href={`https://github.com/fezcode/${fullProject.slug}`} target="_blank" rel="noopener noreferrer" className="group flex w-full items-center justify-between border border-white/20 p-4 transition-colors hover:bg-emerald-400 hover:text-black hover:border-emerald-400">
                             <span className="font-mono text-sm font-bold uppercase tracking-widest">Source Code</span>
                             <GithubLogo weight="bold" size={20} />
                      </a>
@@ -173,7 +173,7 @@ const ProjectPage = () => {
                             <span className="block font-mono text-[10px] text-gray-500 uppercase">Frameworks</span>
                             <div className="mt-2 flex flex-wrap gap-2">
                                 {fullProject.technologies?.map(tech => (
-                                    <span key={tech} className="bg-zinc-900 px-2 py-1 font-mono text-xs text-cyan-400 border border-white/5">
+                                    <span key={tech} className="bg-zinc-900 px-2 py-1 font-mono text-xs text-emerald-400 border border-white/5">
                                         {tech}
                                     </span>
                                 ))}
