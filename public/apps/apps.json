@@ -6,15 +6,6 @@
     "order": 1,
     "apps": [
       {
-        "slug": "fezynth",
-        "to": "/apps/fezynth",
-        "title": "FeZynth",
-        "description": "Make music with Web Audio API and Canvas API",
-        "icon": "MusicNoteIcon",
-        "pinned_order": 4,
-        "created_at": "2025-11-10T14:00:00+03:00"
-      },
-      {
         "slug": "feztype",
         "to": "/apps/feztype",
         "title": "FezType (Typing Speed Tester)",
@@ -22,6 +13,14 @@
         "icon": "KeyboardIcon",
         "pinned_order": 5,
         "created_at": "2025-11-10T14:00:00+03:00"
+      },
+      {
+        "slug": "bpm-guesser",
+        "to": "/apps/bpm-guesser",
+        "title": "BPM Guesser",
+        "description": "Tap the beat to guess the BPM of a song.",
+        "icon": "MetronomeIcon",
+        "created_at": "2025-11-25T16:14:05+03:00"
       },
       {
         "slug": "seance",
@@ -155,6 +154,15 @@
     "icon": "SparkleIcon",
     "order": 2,
     "apps": [
+      {
+        "slug": "fezynth",
+        "to": "/apps/fezynth",
+        "title": "FeZynth",
+        "description": "Make music with Web Audio API and Canvas API",
+        "icon": "MusicNoteIcon",
+        "pinned_order": 4,
+        "created_at": "2025-11-10T14:00:00+03:00"
+      },
       {
         "slug": "sprite-editor",
         "to": "/apps/sprite-editor",
@@ -418,7 +426,16 @@
         "title": "Blend Lab",
         "description": "Create abstract color fields with noise, blur, and custom typography.",
         "icon": "SelectionIcon",
-        "created_at": "2025-12-20T15:00:00+03:00"
+        "created_at": "2025-12-20T15:00:00+03:00",
+        "pinned_order": 21
+      },
+      {
+        "slug": "cron-job-generator",
+        "to": "/apps/cron-job-generator",
+        "title": "CRON Job Generator",
+        "description": "Generate CRON expressions visually and convert human-readable text to CRON.",
+        "icon": "ClockIcon",
+        "created_at": "2025-11-18T03:40:32+03:00"
       }
     ]
   },
@@ -579,22 +596,6 @@
         "created_at": "2025-11-18T03:16:23+03:00"
       },
       {
-        "slug": "cron-job-generator",
-        "to": "/apps/cron-job-generator",
-        "title": "CRON Job Generator",
-        "description": "Generate CRON expressions visually and convert human-readable text to CRON.",
-        "icon": "ClockIcon",
-        "created_at": "2025-11-18T03:40:32+03:00"
-      },
-      {
-        "slug": "bpm-guesser",
-        "to": "/apps/bpm-guesser",
-        "title": "BPM Guesser",
-        "description": "Tap the beat to guess the BPM of a song.",
-        "icon": "MetronomeIcon",
-        "created_at": "2025-11-25T16:14:05+03:00"
-      },
-      {
         "slug": "task-grid",
         "to": "/apps/task-grid",
         "title": "Task Grid",
@@ -608,7 +609,8 @@
         "title": "Asset Studio",
         "description": "Convert source images into optimized web assets, including favicons and social media previews.",
         "icon": "AppWindowIcon",
-        "created_at": "2025-12-20T16:00:00+03:00"
+        "created_at": "2025-12-20T16:00:00+03:00",
+        "pinned_order": 22
       }
     ]
   }
