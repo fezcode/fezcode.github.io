@@ -21,7 +21,6 @@ import {
   Rss,
 } from '@phosphor-icons/react';
 
-import Fez from './Fez';
 import { version } from '../version';
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';

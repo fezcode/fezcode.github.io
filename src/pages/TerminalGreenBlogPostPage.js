@@ -6,9 +6,7 @@ import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   ArrowLeft,
-  ClipboardText,
   ArrowsOutSimple,
-  Terminal,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
@@ -34,11 +32,7 @@ const TerminalGreenBlogPostPage = () => {
   const currentSlug = episodeSlug || slug;
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { addToast } = useToast();
   const [readingProgress, setReadingProgress] = useState(0);
-  const contentRef = useRef(null);
-  const { trackReadingProgress } = useAchievements();
-  const [hasTrackedRead, setHasTrackedRead] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');

@@ -168,7 +168,7 @@ const StandardBlogPostPage = () => {
                 </ReactMarkdown>
             </div>
 
-            {/* Series Nav */}
+            {/* {prevPost || nextPost} Series Nav */}
             {(prevPost || nextPost) && (
               <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-white/10 pt-12">
                 {prevPost ? (

@@ -6,11 +6,9 @@ import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   ArrowLeft,
-  ClipboardText,
-  ArrowsOutSimple,
+  ArrowsOutSimple, ClipboardTextIcon,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
-// Removed unused import: import { calculateReadingTime } from '../utils/readingTime';
 import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
@@ -203,11 +201,6 @@ const TerminalBlogPostPage = () => {
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalContent('');
-  };
-
   const CodeBlock = ({ inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || '');
 
@@ -235,7 +228,7 @@ const TerminalBlogPostPage = () => {
               className="text-orange-300 bg-gray-900/90 border border-orange-700/50 p-1.5 rounded-sm hover:bg-orange-700 hover:text-gray-900 transition-colors shadow-lg backdrop-blur-sm"
               title="Copy Code"
             >
-              <ClipboardText size={16} />
+              <ClipboardTextIcon size={16} />
             </button>
           </div>
           <SyntaxHighlighter
@@ -418,7 +411,7 @@ const TerminalBlogPostPage = () => {
 
       <CodeModal
         isOpen={isModalOpen}
-        onClose={closeModal}
+        onClose={() => setIsModalOpen(false)}
         language={modalLanguage}
       >
         {modalContent}

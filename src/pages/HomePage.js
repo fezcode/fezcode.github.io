@@ -65,7 +65,7 @@ const Hero = () => {
                         <ArrowRight weight="bold" className="group-hover:translate-x-1 transition-transform" />
                       </Link>
                       <Link to="/about" className="group flex items-center gap-3 border border-white/20 px-6 py-3 rounded-sm font-bold uppercase tracking-widest text-xs text-white transition-all hover:bg-white/5">
-                        System Info
+                        About Me
                       </Link>
                     </div>
                   </div>

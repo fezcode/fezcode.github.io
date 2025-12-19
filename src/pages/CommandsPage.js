@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, TerminalWindowIcon } from '@phosphor-icons/react';
+import { motion, AnimatePresence } from 'framer-motion';
 import useSeo from '../hooks/useSeo';
 import { useCommandPalette } from '../context/CommandPaletteContext';
+import { ArrowLeftIcon, TerminalWindowIcon, CommandIcon } from '@phosphor-icons/react';
+import GenerativeArt from '../components/GenerativeArt';
 
 const commandsData = [
   {
@@ -342,6 +344,45 @@ const colorClasses = {
   },
 };
 
+const CommandListItem = ({ cmd, isActive, onHover }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -10 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      onMouseEnter={() => onHover(cmd)}
+      className="relative pl-6 md:pl-8 py-3 group cursor-pointer"
+    >
+      {/* Active Indicator */}
+      <div
+        className={`absolute left-0 top-0 bottom-0 w-0.5 transition-all duration-300 ${
+          isActive ? 'bg-emerald-400 h-full' : 'bg-transparent h-0 group-hover:h-full group-hover:bg-white/20'
+        }`}
+      />
+
+      <div className="flex items-baseline justify-between pr-4">
+        <h3
+          className={`text-lg font-playfairDisplay transition-all duration-300 ${
+            isActive ? 'text-white translate-x-2' : 'text-gray-500 group-hover:text-gray-300'
+          }`}
+        >
+          {cmd.title}
+        </h3>
+
+        {isActive && (
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+             className="hidden md:block text-emerald-400"
+          >
+             <ArrowLeftIcon className="rotate-180"/>
+          </motion.div>
+        )}
+      </div>
+    </motion.div>
+  );
+};
+
 function CommandsPage() {
   useSeo({
     title: 'All Commands | Fezcodex',
@@ -357,108 +398,146 @@ function CommandsPage() {
   });
 
   const { togglePalette } = useCommandPalette();
+  const [activeCommand, setActiveCommand] = useState(null);
+
+  // Flattened list for random selection if needed, but not used currently
+  // const allCommands = commandsData.flatMap(c => c.items);
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link
-          to="/"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Home
-        </Link>
-        <div className="mx-auto max-w-2xl text-center">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl flex items-center justify-center">
-            <TerminalWindowIcon
-              size={48}
-              weight="fill"
-              className="mr-4 mt-1 text-gray-100 "
-            />
-            <span className="text-orange-300">Command</span>&nbsp;Palette
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            See all available commands in Command Palette.
-          </p>
-        </div>
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-[#1A2E1A50] rounded-[0.25rem] border border-neutral-700 shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
+    <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
+
+      {/* Mobile Background */}
+      <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none z-0">
+         <GenerativeArt seed="Commands" className="w-full h-full filter blur-3xl" />
+      </div>
+
+      {/* LEFT PANEL: The Index */}
+      <div className="w-full lg:w-1/2 lg:max-w-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:px-20 overflow-y-auto overflow-x-hidden no-scrollbar">
+        <header className="mb-20">
+          <Link
+            to="/"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1 font-mono">
-              <h1 className="text-3xl font-playfairDisplay font-normal mb-4 text-lime-200">
-                Command Palette
-              </h1>
-              <hr className="border-gray-700 mb-4" />
+            <ArrowLeftIcon weight="bold" />
+            <span>Back to Home</span>
+          </Link>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none">
+            CMDS
+          </h1>
+          <p className="text-gray-400 font-mono text-sm max-w-sm">
+            {'//'} AVAILABLE INSTRUCTIONS
+          </p>
+        </header>
 
-              <div className="mb-6 ml-4 mr-4">
-                <p className="text-gray-200 mb-4">
-                  Press <kbd className="kbd kbd-sm text-black border rounded-lg px-1 bg-gray-200">Alt/Ctrl</kbd> + <kbd className="kbd kbd-sm text-black border rounded-lg px-1 bg-gray-200">K</kbd> to open
-                  Commands Palette. It lists all available
-                  <code className="text-red-400"> PAGE</code>,
-                  <code className="text-red-400"> POST</code>,
-                  <code className="text-red-400"> PROJECT</code>,
-                  <code className="text-red-400"> LOG</code>,
-                  <code className="text-red-400"> APP</code> and
-                  <code className="text-red-400"> COMMAND</code> that can be
-                  used/consumed in Fezcodex.
-                  <br />
-                  <br />
-                  You can type{' '}
-                  <code className="text-emerald-300"> COMMAND </code> to see all
-                  available commands.
-                </p>
-                <button
-                  onClick={togglePalette}
-                  className="border border-gray-200 bg-black/50 hover:bg-gray-50 text-white hover:text-black font-mono py-3 px-4 rounded w-full transition-colors duration-300 flex items-center justify-center gap-2"
-                >
-                  <TerminalWindowIcon size={24} />
-                  Open Command Palette
-                </button>
+        <div className="flex flex-col pb-32 gap-12">
+          {commandsData.map((category, catIndex) => (
+            <div key={catIndex}>
+              <h2 className="font-mono text-xs text-emerald-500 uppercase tracking-widest mb-6 border-b border-white/10 pb-2">
+                {category.category}
+              </h2>
+              <div className="flex flex-col">
+                {category.items.map((cmd, cmdIndex) => (
+                  <CommandListItem
+                    key={cmd.title}
+                    cmd={cmd}
+                    isActive={activeCommand?.title === cmd.title}
+                    onHover={setActiveCommand}
+                  />
+                ))}
               </div>
-
-              <h1 className="text-3xl font-playfairDisplay font-normal mb-4 text-app">
-                Available Commands
-              </h1>
-              <hr className="border-gray-700 mb-6" />
-
-              {commandsData.map((category, catIndex) => (
-                <div key={catIndex} className="mb-8">
-                  <h2 className="text-2xl font-playfairDisplay font-semibold text-gray-200 mb-4 border-b border-gray-700 pb-2 inline-block">
-                    {category.category}
-                  </h2>
-                  <div className="grid grid-cols-1 gap-4">
-                    {category.items.map((cmd, cmdIndex) => {
-                      const classes =
-                        colorClasses[cmd.color] || colorClasses.gray;
-                      return (
-                        <div
-                          key={cmdIndex}
-                          className={`${classes.bg} bg-opacity-30 border ${classes.border} ${classes.text} px-4 py-3 rounded relative`}
-                          role="alert"
-                        >
-                          <strong className="font-bold">{cmd.title}:</strong>
-                          <span className="block sm:inline ml-2">
-                            {cmd.description}
-                          </span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              ))}
             </div>
-          </div>
+          ))}
         </div>
       </div>
+
+            {/* RIGHT PANEL: The Stage (Desktop Only) */}
+            <div className="hidden lg:flex fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10 z-20 flex-col">
+
+              {/* Main Content Area (Grows) */}
+              <div className="flex-1 relative overflow-hidden">
+                <AnimatePresence mode="wait">
+                  {activeCommand ? (
+                    <motion.div
+                      key={activeCommand.title}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                      className="absolute inset-0 flex flex-col justify-end p-20 pb-8"
+                    >
+                      {/* Background */}
+                      <div className="absolute inset-0 z-0">
+                        <GenerativeArt seed={activeCommand.title} className="w-full h-full opacity-60" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/80 to-transparent" />
+                        <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay" />
+                      </div>
+
+                      <div className="relative z-10">
+                        <div className="mb-6">
+                          <span className={`inline-block px-3 py-1 text-xs font-mono uppercase tracking-wider rounded-full border bg-opacity-20 backdrop-blur-md mb-4 ${
+                            colorClasses[activeCommand.color]?.text || 'text-white'
+                          } ${colorClasses[activeCommand.color]?.border || 'border-white'} ${colorClasses[activeCommand.color]?.bg || 'bg-gray-800'}`}>
+                              {activeCommand.color}
+                          </span>
+                        </div>
+
+                        <h2 className="text-5xl font-playfairDisplay text-white mb-6 leading-tight">
+                          {activeCommand.title}
+                        </h2>
+
+                        <p className="text-xl text-gray-300 font-light max-w-xl leading-relaxed">
+                          {activeCommand.description}
+                        </p>
+                      </div>
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="default-state"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className="absolute inset-0 flex items-center justify-center p-12 text-center"
+                    >
+                      <div className="absolute inset-0 z-0 opacity-20">
+                        <div className="w-full h-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-800 via-black to-black" />
+                      </div>
+
+                      <div className="relative z-10 max-w-lg">
+                        <TerminalWindowIcon size={64} className="mx-auto mb-8 text-emerald-500/50" />
+                        <h2 className="text-4xl font-playfairDisplay text-white mb-6">
+                          Command Palette
+                        </h2>
+                        <p className="text-gray-400 mb-8 leading-relaxed">
+                          Access all features and navigations quickly.
+                          <br/>
+                          Hover over the list to see details.
+                        </p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              {/* Persistent Footer (Always Visible) */}
+              <div className="p-8 border-t border-white/10 bg-neutral-900/80 backdrop-blur-md z-30 flex items-center justify-between gap-6">
+                 <div className="hidden xl:flex items-center gap-4 text-sm font-mono text-gray-400">
+                    <div className="flex gap-1">
+                       <kbd className="px-2 py-1 bg-white/10 rounded border border-white/20 text-white">Ctrl</kbd>
+                       <span className="self-center">+</span>
+                       <kbd className="px-2 py-1 bg-white/10 rounded border border-white/20 text-white">K</kbd>
+                    </div>
+                    <span>to open anywhere</span>
+                 </div>
+
+                 <button
+                  onClick={togglePalette}
+                  className="flex-1 xl:flex-none group relative inline-flex items-center justify-center gap-3 px-6 py-4 bg-white text-black hover:bg-emerald-400 transition-colors duration-300 font-mono uppercase tracking-widest text-sm"
+                >
+                  <CommandIcon size={20} />
+                  <span>Open Palette</span>
+                </button>
+              </div>
+            </div>
     </div>
   );
 }

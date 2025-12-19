@@ -12,6 +12,10 @@ const PostItem = ({
   series,
   seriesIndex,
   isSeries,
+  description,
+  tags,
+  authors,
+  image,
   isActive,
   onHover = () => {},
 }) => {
@@ -38,7 +42,7 @@ const PostItem = ({
     <motion.div
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
-      onMouseEnter={() => onHover({ slug, title, date, updatedDate, category, series, seriesIndex, isSeries })}
+      onMouseEnter={() => onHover({ slug, title, date, updatedDate, category, series, seriesIndex, isSeries, description, tags, authors, image })}
       className="relative mr-4 md:mr-12"
     >
       <Link
