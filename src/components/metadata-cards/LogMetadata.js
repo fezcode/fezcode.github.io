@@ -1,7 +1,6 @@
 import React from 'react';
 import Label from '../Label';
-import { Star } from '@phosphor-icons/react';
-import { FaExternalLinkAlt } from 'react-icons/fa';
+import { Star, ArrowSquareOut } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 
 const LogMetadata = ({ metadata }) => {
@@ -131,9 +130,9 @@ const LogMetadata = ({ metadata }) => {
                   href={metadata.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-amber-500 hover:text-amber-400 flex items-center"
+                  className="text-amber-500 hover:text-amber-400 inline-flex items-center gap-1"
                 >
-                  View <FaExternalLinkAlt className="ml-1" size={12} />
+                  View <ArrowSquareOut size={14} />
                 </a>
               </p>
             </div>

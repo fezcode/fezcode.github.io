@@ -48,7 +48,7 @@ const MarkdownLink = ({ href, children, className, ...props }) => {
   return (
     <a
       href={href}
-      className={className || "text-primary-400 hover:text-primary-300 transition-colors inline-flex items-center gap-1"}
+      className={`${className || "text-primary-400 hover:text-primary-300"} inline-flex items-center gap-1`}
       target={isExternal ? '_blank' : undefined}
       rel={isExternal ? 'noopener noreferrer' : undefined}
       {...props}
