@@ -1,5 +1,13 @@
 [
   {
+    "date": "2025-12-19",
+    "title": "Brutalist Fezcodex: Major Refactor",
+    "description": "Executed a sweeping architectural and aesthetic refactor. Introduced high-contrast brutalist layouts, immersive hero sections with real-time generative art, and a massive codebase sanitization. Overhauled the Timeline and Memory Game components to match the new digital-first identity.",
+    "type": "refactor",
+    "icon": "SparkleIcon",
+    "link": "/#/"
+  },
+  {
     "date": "2025-12-17",
     "title": "Reading Experience Modes & Sidebar Colors",
     "description": "Implemented a Dossier and Terminal reader modes for blogposts which can be set in Settings. Dossier having a Classified Dossier look while Terminal uses Dark Orange tones. Also sidebar background can be changed now. Isn't that the best?",

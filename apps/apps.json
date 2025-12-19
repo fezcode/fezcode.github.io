@@ -6,15 +6,6 @@
     "order": 1,
     "apps": [
       {
-        "slug": "fezynth",
-        "to": "/apps/fezynth",
-        "title": "FeZynth",
-        "description": "Make music with Web Audio API and Canvas API",
-        "icon": "MusicNoteIcon",
-        "pinned_order": 4,
-        "created_at": "2025-11-10T14:00:00+03:00"
-      },
-      {
         "slug": "feztype",
         "to": "/apps/feztype",
         "title": "FezType (Typing Speed Tester)",
@@ -22,6 +13,14 @@
         "icon": "KeyboardIcon",
         "pinned_order": 5,
         "created_at": "2025-11-10T14:00:00+03:00"
+      },
+      {
+        "slug": "bpm-guesser",
+        "to": "/apps/bpm-guesser",
+        "title": "BPM Guesser",
+        "description": "Tap the beat to guess the BPM of a song.",
+        "icon": "MetronomeIcon",
+        "created_at": "2025-11-25T16:14:05+03:00"
       },
       {
         "slug": "seance",
@@ -138,6 +137,14 @@
         "description": "A simple terminal-like roguelike game.",
         "icon": "CubeIcon",
         "created_at": "2025-11-25T20:00:00+03:00"
+      },
+      {
+        "slug": "logic-architect",
+        "to": "/apps/logic-architect",
+        "title": "Logic Architect",
+        "description": "Construct digital circuits using logic gates and neural pathways.",
+        "icon": "CpuIcon",
+        "created_at": "2025-12-20T12:00:00+03:00"
       }
     ]
   },
@@ -147,6 +154,15 @@
     "icon": "SparkleIcon",
     "order": 2,
     "apps": [
+      {
+        "slug": "fezynth",
+        "to": "/apps/fezynth",
+        "title": "FeZynth",
+        "description": "Make music with Web Audio API and Canvas API",
+        "icon": "MusicNoteIcon",
+        "pinned_order": 4,
+        "created_at": "2025-11-10T14:00:00+03:00"
+      },
       {
         "slug": "sprite-editor",
         "to": "/apps/sprite-editor",
@@ -295,6 +311,14 @@
         "description": "Pop some virtual bubble wrap to relieve stress.",
         "icon": "CirclesFourIcon",
         "created_at": "2025-11-25T16:01:56+03:00"
+      },
+      {
+        "slug": "atmosphere-mixer",
+        "to": "/apps/atmosphere-mixer",
+        "title": "Atmosphere Mixer",
+        "description": "Blend background environments to create your ideal focus space.",
+        "icon": "SpeakerHighIcon",
+        "created_at": "2025-12-20T14:00:00+03:00"
       }
     ]
   },
@@ -318,7 +342,7 @@
         "to": "/apps/abstract-waves",
         "title": "Abstract Waves",
         "description": "Generate mesmerizing black and white abstract wave patterns.",
-        "icon": "WaveSine",
+        "icon": "WaveSineIcon",
         "pinned_order": 19,
         "created_at": "2025-12-01T12:00:00+03:00"
       },
@@ -327,7 +351,7 @@
         "to": "/apps/topographic-maps",
         "title": "Topographic Map Generator",
         "description": "Generate seamless topographic contour maps.",
-        "icon": "MapTrifold",
+        "icon": "MapTrifoldIcon",
         "pinned_order": 20,
         "created_at": "2025-12-01T12:30:00+03:00"
       },
@@ -387,6 +411,31 @@
         "description": "Generate random placeholder text for your projects.",
         "icon": "ArticleIcon",
         "created_at": "2025-11-25T16:07:49+03:00"
+      },
+      {
+        "slug": "cipher-studio",
+        "to": "/apps/cipher-studio",
+        "title": "Cipher Studio",
+        "description": "Encode and decode messages using classic cryptographic algorithms.",
+        "icon": "LockKeyIcon",
+        "created_at": "2025-12-20T12:00:00+03:00"
+      },
+      {
+        "slug": "blend-lab",
+        "to": "/apps/blend-lab",
+        "title": "Blend Lab",
+        "description": "Create abstract color fields with noise, blur, and custom typography.",
+        "icon": "SelectionIcon",
+        "created_at": "2025-12-20T15:00:00+03:00",
+        "pinned_order": 21
+      },
+      {
+        "slug": "cron-job-generator",
+        "to": "/apps/cron-job-generator",
+        "title": "CRON Job Generator",
+        "description": "Generate CRON expressions visually and convert human-readable text to CRON.",
+        "icon": "ClockIcon",
+        "created_at": "2025-11-18T03:40:32+03:00"
       }
     ]
   },
@@ -547,20 +596,21 @@
         "created_at": "2025-11-18T03:16:23+03:00"
       },
       {
-        "slug": "cron-job-generator",
-        "to": "/apps/cron-job-generator",
-        "title": "CRON Job Generator",
-        "description": "Generate CRON expressions visually and convert human-readable text to CRON.",
-        "icon": "ClockIcon",
-        "created_at": "2025-11-18T03:40:32+03:00"
+        "slug": "task-grid",
+        "to": "/apps/task-grid",
+        "title": "Task Grid",
+        "description": "A minimal, visual map for tracking your daily objectives.",
+        "icon": "CheckSquareOffsetIcon",
+        "created_at": "2025-12-20T14:00:00+03:00"
       },
       {
-        "slug": "bpm-guesser",
-        "to": "/apps/bpm-guesser",
-        "title": "BPM Guesser",
-        "description": "Tap the beat to guess the BPM of a song.",
-        "icon": "MetronomeIcon",
-        "created_at": "2025-11-25T16:14:05+03:00"
+        "slug": "asset-studio",
+        "to": "/apps/asset-studio",
+        "title": "Asset Studio",
+        "description": "Convert source images into optimized web assets, including favicons and social media previews.",
+        "icon": "AppWindowIcon",
+        "created_at": "2025-12-20T16:00:00+03:00",
+        "pinned_order": 22
       }
     ]
   }

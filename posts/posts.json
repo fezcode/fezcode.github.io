@@ -1,5 +1,29 @@
 [
   {
+    "slug": "art-generation-in-fezcodex",
+    "title": "The Art of the Algorithm: Generative Visuals in Fezcodex",
+    "date": "2025-12-20",
+    "updated": "2025-12-20",
+    "description": "How Fezcodex uses math, randomness, and recursion to turn code into art. Exploring GenerativeArt, BlendLab, and more.",
+    "tags": ["art", "generative", "math", "eli5", "algorithms", "blendlab"],
+    "category": "dev",
+    "filename": "art-generation-in-fezcodex.txt",
+    "authors": ["fezcode"],
+    "image": "/images/ogtitle.png"
+  },
+  {
+    "slug": "brutalist-refactor",
+    "title": "Brutalist Fezcodex: The Big Cleanup",
+    "date": "2025-12-19",
+    "updated": "2025-12-19",
+    "description": "A short and simple explanation of the major architectural and aesthetic refactor of Fezcodex.",
+    "tags": ["feat", "refactor", "brutalist", "eli5", "update"],
+    "category": "feat",
+    "filename": "brutalist-refactor.txt",
+    "authors": ["fezcode"],
+    "image": "/images/ogtitle.png"
+  },
+  {
     "slug": "introducing-reading-experience",
     "title": "Introducing New Reading Modes: Dossier and Terminal!",
     "date": "2025-12-17",
