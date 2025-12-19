@@ -259,6 +259,7 @@ const SettingsPage = () => {
                   label="Select View"
                   options={[
                     { label: 'Standard', value: 'standard' },
+                    { label: 'Old', value: 'old' },
                     { label: 'Dossier', value: 'dossier' },
                     { label: 'Dokument', value: 'dokument' },
                     { label: 'Terminal (New Vegas)', value: 'terminal' },

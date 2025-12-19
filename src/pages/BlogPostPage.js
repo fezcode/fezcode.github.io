@@ -4,6 +4,7 @@ import { useVisualSettings } from '../context/VisualSettingsContext';
 import DossierBlogPostPage from './DossierBlogPostPage';
 import DokumentBlogPostPage from './DokumentBlogPostPage';
 import StandardBlogPostPage from './StandardBlogPostPage';
+import OldBlogPostPage from './OldBlogPostPage';
 import TerminalBlogPostPage from './TerminalBlogPostPage';
 import TerminalGreenBlogPostPage from './TerminalGreenBlogPostPage';
 
@@ -17,11 +18,15 @@ const BlogPostPage = () => {
   // preventing it from running on every render if other local state were to change.
   const effectiveViewMode = useMemo(() => {
     const themeParam = searchParams.get('theme');
-    if (themeParam && ['dossier', 'terminal', 'standard', 'dokument', 'terminal-green'].includes(themeParam)) {
+    if (themeParam && ['dossier', 'terminal', 'standard', 'dokument', 'terminal-green', 'old'].includes(themeParam)) {
       return themeParam;
     }
     return blogPostViewMode;
   }, [searchParams, blogPostViewMode]);
+
+  if (effectiveViewMode === 'old') {
+    return <OldBlogPostPage />;
+  }
 
   if (effectiveViewMode === 'dossier') {
     return <DossierBlogPostPage />;

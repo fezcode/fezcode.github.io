@@ -31,14 +31,14 @@ const Hero = () => {
     <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-white/10">
       <div className="absolute top-6 left-6 right-6 flex justify-between items-start font-mono text-[10px] uppercase tracking-[0.2em] text-gray-500 z-20">
         <div className="flex flex-col gap-1">
-          <span>System: Fezcodex_OS</span>
-          <span>Kernel: v0.6.0-stable</span>
+          <span>System: Fezcodex</span>
+          {/*<span>Kernel: v0.6.0-stable</span>*/}
         </div>
                 <div className="text-right">
                   <span>Local_Time: {time}</span>
                   <div className="flex items-center gap-2 justify-end mt-1 text-emerald-500">
                     <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse" />
-                    <span>Connection_Stable</span>
+                    <span>LIVE</span>
                   </div>
                 </div>
               </div>
@@ -151,7 +151,7 @@ const HomePage = () => {
       case 'projects':
         return (
           <section className="py-24 border-b border-white/10">
-            <SectionHeader num={sectionNum} title="Artifacts" link="/projects" linkText="View all entries" />
+            <SectionHeader num={sectionNum} title="Works" link="/projects" linkText="View all entries" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
               {pinnedProjects.map((project) => (
                 <div key={project.slug} className="bg-[#050505]">
@@ -166,7 +166,7 @@ const HomePage = () => {
           <section className="py-24">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24">
               <div className="lg:col-span-8">
-                 <SectionHeader num={sectionNum} title="Intel" link="/blog" linkText="Read archive" />
+                 <SectionHeader num={sectionNum} title="Posts" link="/blog" linkText="Read archive" />
                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {posts.slice(0, 4).map((item, index) => (
                        <motion.div

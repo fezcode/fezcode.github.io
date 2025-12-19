@@ -5,207 +5,149 @@ import {
   TwitterLogo,
   GithubLogo,
   LinkedinLogo,
-  PaperPlaneRight,
   Command,
+  Terminal,
 } from '@phosphor-icons/react';
-import Fez from './Fez';
 
 const Footer = () => {
-  return (
-    <footer className="mt-auto bg-gray-950 border-t border-gray-800/50 relative overflow-hidden">
-      {/* Subtle Glow */}
-      <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full blur-[128px] pointer-events-none"></div>
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 py-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
-          {/* Column 1: Brand & Tech Info */}
-          <div className="space-y-4">
-            <Link
-              to="/"
-              className="flex items-center gap-2 group"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              <Fez className="w-8 h-8 text-primary-500 transition-transform group-hover:rotate-12" />
-              <span className="text-xl font-bold tracking-tight text-white font-arvo">
-                fez<span className="text-primary-400">codex</span>
-              </span>
-            </Link>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              A digital garden of code, thoughts, and interactive experiments.
-            </p>
-            <div className="pt-4 flex flex-col gap-2 text-xs text-gray-500 font-mono">
-              <p className="flex items-center gap-2">
-                <Command size={16} className="text-primary-500" />
-                <span>
-                  Press{' '}
-                  <kbd className="px-1.5 py-0.5 bg-gray-800 rounded border border-gray-700 text-gray-300">
-                    Alt
-                  </kbd>{' '}
-                  +{' '}
-                  <kbd className="px-1.5 py-0.5 bg-gray-800 rounded border border-gray-700 text-gray-300">
-                    K
-                  </kbd>{' '}
-                  for commands
-                </span>
-              </p>
-              <p>
-                v{version} {'//'} {new Date().getFullYear()}
-              </p>
+  return (
+    <footer className="bg-[#050505] border-t-2 border-white mt-auto selection:bg-white selection:text-black">
+      <div className="mx-auto max-w-[1600px] px-6 py-12 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-16">
+
+          {/* Column 1: Brand & Info */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="flex flex-col gap-4">
+               <Link to="/" onClick={scrollToTop} className="group inline-block">
+                  <span className="text-5xl md:text-6xl font-black uppercase tracking-tighter text-white">
+                    fez<span className="text-emerald-500">codex</span>
+                  </span>
+               </Link>
+               <p className="max-w-md text-gray-400 font-mono text-xs leading-relaxed uppercase tracking-widest">
+                  {'//'} A digital garden of experimental code, architectural thoughts, and creative explorations.
+               </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+               <div className="border border-white/10 p-4 bg-white/[0.02]">
+                  <h4 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-3">Site Info</h4>
+                  <div className="space-y-1 font-mono text-[10px] uppercase tracking-widest">
+                     <div className="flex justify-between">
+                        <span className="text-gray-600">Version:</span>
+                        <span className="text-white">v{version}</span>
+                     </div>
+                     <div className="flex justify-between">
+                        <span className="text-gray-600">Year:</span>
+                        <span className="text-white">{new Date().getFullYear()}</span>
+                     </div>
+                     <div className="flex justify-between text-emerald-500 font-black">
+                        <span>Status:</span>
+                        <span>Live</span>
+                     </div>
+                  </div>
+               </div>
+
+               <div className="border border-white/10 p-4 bg-white/[0.02] flex flex-col justify-center gap-3">
+                  <div className="flex items-center gap-2 text-white">
+                     <Command size={16} className="text-emerald-500" />
+                     <span className="font-mono text-[10px] font-bold uppercase tracking-widest">Quick Menu</span>
+                  </div>
+                  <div className="font-mono text-[10px] text-gray-500 uppercase leading-relaxed">
+                     Press <kbd className="bg-white text-black px-1 font-black">Alt</kbd> + <kbd className="bg-white text-black px-1 font-black">K</kbd> for commands.
+                  </div>
+               </div>
             </div>
           </div>
 
           {/* Column 2: Navigation */}
-          <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase font-mono mb-4">
-              Navigation
-            </h3>
-            <ul className="grid grid-cols-2 gap-3 text-sm text-gray-400">
-              <li>
-                <Link
-                  to="/"
-                  className="hover:text-primary-400 transition-colors"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/about"
-                  className="hover:text-primary-400 transition-colors"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/blog"
-                  className="hover:text-primary-400 transition-colors"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/projects"
-                  className="hover:text-primary-400 transition-colors"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/logs"
-                  className="hover:text-primary-400 transition-colors"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  Logs
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/apps"
-                  className="hover:text-primary-400 transition-colors"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  Apps
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/timeline"
-                  className="hover:text-primary-400 transition-colors"
-                  onClick={() =>
-                    window.scrollTo({ top: 0, behavior: 'smooth' })
-                  }
-                >
-                  Timeline
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/rss.xml"
-                  target="_blank"
-                  className="hover:text-primary-400 transition-colors"
-                >
-                  RSS
-                </Link>
-              </li>
-            </ul>
+          <div className="lg:col-span-4">
+             <h3 className="font-mono text-[10px] font-bold text-white uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+                <Terminal size={16} className="text-emerald-500" />
+                Navigation
+             </h3>
+
+             <ul className="grid grid-cols-2 gap-x-6 gap-y-3 font-mono text-[10px] uppercase tracking-widest">
+                {[
+                  { label: 'Home', to: '/' },
+                  { label: 'About', to: '/about' },
+                  { label: 'Blog', to: '/blog' },
+                  { label: 'Projects', to: '/projects' },
+                  { label: 'Logs', to: '/logs' },
+                  { label: 'Apps', to: '/apps' },
+                  { label: 'Timeline', to: '/timeline' },
+                  { label: 'Manuals', to: '/commands' },
+                ].map((item) => (
+                  <li key={item.to}>
+                    <Link
+                      to={item.to}
+                      onClick={scrollToTop}
+                      className="text-gray-500 hover:text-white flex items-center gap-2 transition-colors group"
+                    >
+                      <span className="text-emerald-500 group-hover:translate-x-1 transition-transform">→</span>
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+                <li>
+                   <a href="/rss.xml" target="_blank" className="text-gray-500 hover:text-white flex items-center gap-2">
+                      <span className="text-emerald-500">→</span> RSS Feed
+                   </a>
+                </li>
+             </ul>
           </div>
 
           {/* Column 3: Connect */}
-          <div>
-            <h3 className="text-sm font-semibold text-white tracking-wider uppercase font-mono mb-4">
-              Connect
-            </h3>
-            <div className="flex gap-4 mb-6">
-              <a
-                href="https://x.com/fezcoddy"
-                target="_blank"
-                rel="noreferrer"
-                className="text-gray-400 hover:text-white transition-colors hover:bg-gray-800 p-2 rounded-lg"
-              >
-                <TwitterLogo size={24} weight="fill" />
-              </a>
-              <a
-                href="https://github.com/fezcode"
-                target="_blank"
-                rel="noreferrer"
-                className="text-gray-400 hover:text-white transition-colors hover:bg-gray-800 p-2 rounded-lg"
-              >
-                <GithubLogo size={24} weight="fill" />
-              </a>
-              <a
-                href="https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US"
-                target="_blank"
-                rel="noreferrer"
-                className="text-gray-400 hover:text-white transition-colors hover:bg-gray-800 p-2 rounded-lg"
-              >
-                <LinkedinLogo size={24} weight="fill" />
-              </a>
-            </div>
+          <div className="lg:col-span-3">
+             <h3 className="font-mono text-[10px] font-bold text-white uppercase tracking-[0.3em] mb-8">
+                Connect
+             </h3>
 
-            {/* Fake Newsletter */}
-            <div className="relative">
-              <input
-                type="text"
-                disabled
-                placeholder="Newsletter coming soon..."
-                className="w-full bg-gray-900/50 border border-gray-800 rounded-lg py-2.5 pl-4 pr-10 text-sm text-gray-500 cursor-not-allowed"
-              />
-              <PaperPlaneRight
-                size={16}
-                className="absolute right-3 top-3 text-gray-600"
-              />
-            </div>
+             <div className="flex gap-3 mb-8">
+                <SocialIcon href="https://x.com/fezcoddy" icon={TwitterLogo} />
+                <SocialIcon href="https://github.com/fezcode" icon={GithubLogo} />
+                <SocialIcon href="https://www.linkedin.com/in/ahmed-samil-bulbul/" icon={LinkedinLogo} />
+             </div>
+
+             <div className="space-y-3 border-t border-white/10 pt-6">
+                <p className="font-mono text-[9px] font-bold text-gray-600 uppercase tracking-widest">
+                   Newsletter
+                </p>
+                <div className="relative">
+                   <input
+                    type="text"
+                    disabled
+                    placeholder="Coming soon..."
+                    className="w-full bg-white text-black font-mono text-[9px] uppercase tracking-widest py-2 px-3 border-none focus:ring-0 placeholder-black/40 disabled:cursor-not-allowed"
+                  />
+                </div>
+             </div>
           </div>
+
         </div>
 
-        <div className="mt-12 pt-8 border-t border-gray-800/50 text-center md:text-left">
-          <p className="text-xs text-gray-600">
-            &copy; {new Date().getFullYear()} fezcode. Built with React,
-            Tailwind, and caffeine.
-          </p>
+        <div className="mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-[9px] uppercase tracking-[0.2em] text-gray-600">
+           <p>
+              &copy; {new Date().getFullYear()} Fezcode // Built with React & Tailwind
+           </p>
+           <p className="text-white font-bold">
+              Thanks for visiting
+           </p>
         </div>
       </div>
     </footer>
   );
 };
+const SocialIcon = ({ href, icon: Icon }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noreferrer"
+    className="w-12 h-12 border border-white/10 bg-white/5 flex items-center justify-center text-gray-400 hover:bg-white hover:text-black hover:border-white transition-all group"
+  >
+    <Icon size={24} weight="bold" />
+  </a>
+);
 
 export default Footer;

@@ -74,7 +74,7 @@ const Brutalist = () => {
       {/* Visual Background Layer */}
       <div className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] mix-blend-overlay" style={{ backgroundImage: NOISE_BG }} />
       <div className="fixed top-0 left-0 w-full h-full opacity-10 pointer-events-none grayscale contrast-150">
-         <GenerativeArt seed="Brutalist Profile" className="w-full h-full" />
+         <GenerativeArt seed="Ahmed Samil Bulbul" className="w-full h-full" />
       </div>
 
       <motion.div
@@ -113,10 +113,10 @@ const Brutalist = () => {
                 prose-strong:font-black prose-strong:text-white
                 prose-li:font-mono prose-li:text-lg prose-li:my-4 prose-li:text-gray-400
 
-                prose-table:w-full prose-table:border-collapse prose-table:border-8 prose-table:border-white prose-table:font-mono prose-table:text-base prose-table:my-20
+                prose-table:w-full prose-table:border-collapse prose-table:border-2 prose-table:border-white prose-table:font-mono prose-table:text-sm md:prose-table:text-base prose-table:my-12
                 prose-thead:bg-white prose-thead:text-black
-                prose-th:p-6 prose-th:uppercase prose-th:tracking-widest prose-th:font-black prose-th:text-left prose-th:border-2 prose-th:border-white
-                prose-td:p-6 prose-td:border-2 prose-td:border-white
+                prose-th:p-4 prose-th:uppercase prose-th:tracking-widest prose-th:font-black prose-th:text-left prose-th:border prose-th:border-white
+                prose-td:p-4 prose-td:border prose-td:border-white/20
 
                 prose-blockquote:border-l-8 prose-blockquote:border-white prose-blockquote:bg-white/5 prose-blockquote:p-12 prose-blockquote:not-italic prose-blockquote:font-black prose-blockquote:text-2xl prose-blockquote:uppercase prose-blockquote:tracking-tighter"
               >
@@ -152,7 +152,7 @@ const Brutalist = () => {
                  </div>
 
                  <div className="p-8 border-4 border-white/10 bg-white/[0.02] backdrop-blur-md">
-                    <GenerativeArt seed={title} className="w-full h-48 opacity-50 grayscale contrast-125 mb-8" />
+                    <GenerativeArt seed={"Ahmed Samil Bulbul"} className="w-full h-48 opacity-50 grayscale contrast-125 mb-8" />
                     <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
                        Digital convergence archival entry. This segment contains curated behavioral patterns and experiential metrics of the subject.
                     </p>
@@ -163,7 +163,7 @@ const Brutalist = () => {
 
         <footer
           className="mt-48 pt-12 border-t-8 border-white flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-xs uppercase tracking-widest text-gray-500">
-          <div className="font-black text-white bg-white text-black px-4 py-2">
+          <div className="font-black bg-white text-black px-4 py-2">
             <span>TERMINAL_SESSION_END</span>
           </div>
           <div className="flex flex-col items-end gap-2">
