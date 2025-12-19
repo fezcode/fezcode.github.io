@@ -135,6 +135,7 @@ const HomePage = () => {
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const { projects: pinnedProjects, loading: loadingProjects } = useProjects(true);
+  const [activeProject, setActiveProject] = useState(null);
 
   // Use persistent state for homepage section order
   const [homepageSectionOrder] = usePersistentState(KEY_HOMEPAGE_SECTION_ORDER, ['projects', 'blogposts']);
@@ -190,17 +191,15 @@ const HomePage = () => {
         return (
           <section className="mb-24 mt-8">
             <SectionHeader icon={Cpu} title="Pinned Projects" link="/projects" linkText="View all projects" />
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="flex flex-col border-t border-white/10">
               {pinnedProjects.map((project, index) => (
-                <motion.div
+                <ProjectCard
                   key={project.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <ProjectCard project={{ ...project, description: project.shortDescription }} />
-                </motion.div>
+                  project={project}
+                  index={index}
+                  isActive={activeProject?.slug === project.slug}
+                  onHover={setActiveProject}
+                />
               ))}
             </div>
           </section>

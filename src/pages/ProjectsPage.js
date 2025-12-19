@@ -1,56 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import { ArrowLeft, Cpu } from '@phosphor-icons/react';
 import { useAchievements } from '../context/AchievementContext';
 
 const ProjectsPage = () => {
   useSeo({
-    title: 'Projects | Fezcodex',
-    description: 'A collection of my work and experiments.',
-    keywords: [
-      'Fezcodex',
-      'projects',
-      'portfolio',
-      'developer',
-      'software engineer',
-    ],
-    ogTitle: 'Projects | Fezcodex',
-    ogDescription: 'A collection of my work and experiments.',
-    ogImage: '/images/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Projects | Fezcodex',
-    twitterDescription: 'A collection of my work and experiments.',
-    twitterImage: 'images/ogtitle.png',
+    title: 'Archive | Fezcodex',
+    description: 'A curated collection of digital experiments and deployed systems.',
+    keywords: ['Fezcodex', 'projects', 'portfolio', 'developer', 'editorial'],
   });
+
   const { projects, loading, error } = useProjects();
   const { unlockAchievement } = useAchievements();
+  const [activeProject, setActiveProject] = useState(null);
+
+  // Set initial active project
+  useEffect(() => {
+    if (projects.length > 0 && !activeProject) {
+      setActiveProject(projects[0]);
+    }
+  }, [projects, activeProject]);
 
   useEffect(() => {
     unlockAchievement('project_pioneer');
   }, [unlockAchievement]);
 
   if (loading) {
-    // Skeleton loading screen for ProjectsPage
     return (
-      <div className="py-16 sm:py-24 animate-pulse">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <div className="h-8 bg-gray-800 rounded w-1/4 mb-4 mx-auto"></div>
-            <div className="h-12 bg-gray-800 rounded w-3/4 mb-4 mx-auto"></div>
-            <div className="h-6 bg-gray-800 rounded w-1/2 mb-8 mx-auto"></div>
-          </div>
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="bg-gray-800 rounded-lg shadow-lg p-6">
-                <div className="h-6 bg-gray-700 rounded w-3/4 mb-4"></div>
-                <div className="h-4 bg-gray-700 rounded w-1/2 mb-4"></div>
-                <div className="h-4 bg-gray-700 rounded w-full"></div>
-              </div>
-            ))}
-          </div>
+      <div className="flex h-screen items-center justify-center bg-[#050505] text-white">
+        <div className="flex flex-col items-center gap-4">
+           <div className="h-px w-24 bg-gray-800 relative overflow-hidden">
+             <div className="absolute inset-0 bg-white animate-progress origin-left"></div>
+           </div>
+           <span className="font-mono text-xs text-gray-500 uppercase tracking-widest">Loading Archive</span>
         </div>
       </div>
     );
@@ -58,51 +44,135 @@ const ProjectsPage = () => {
 
   if (error) {
     return (
-      <div className="py-16 sm:py-24 text-center text-red-500">
-        Error loading projects: {error.message}
+      <div className="flex h-screen items-center justify-center bg-[#050505] text-red-500 font-mono">
+        ERR: {error.message}
       </div>
     );
   }
 
   return (
-    <div className="relative min-h-screen bg-[#020617] overflow-hidden">
-      {/* Ambient Background Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-cyan-900/20 rounded-full blur-3xl -z-10 opacity-50" />
-      <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-30" />
+    <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-cyan-500/30">
 
-      <div className="relative py-16 sm:py-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-3xl text-center mb-20">
+      {/* Mobile Background (Static or Active Project Blur) */}
+      <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none z-0">
+          <img
+            src={activeProject?.image || '/images/defaults/placeholder-project.svg'}
+            alt="bg"
+            className="w-full h-full object-cover filter blur-3xl"
+          />
+      </div>
+
+      {/* LEFT PANEL: The Index */}
+      <div className="w-full lg:w-1/2 relative z-10 flex flex-col min-h-screen py-24 px-6 md:px-20 overflow-y-auto no-scrollbar">
+        <header className="mb-20">
           <Link
             to="/"
-            className="inline-flex items-center justify-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-mono tracking-widest uppercase mb-8 border-b border-cyan-900/50 pb-1 hover:border-cyan-400"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon className="text-lg" />
-            Return to Base
+            <ArrowLeft weight="bold" />
+            <span>System Root</span>
           </Link>
-
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-6 font-mono">
-            PROJECTS<span className="text-cyan-500">.LOG</span>
+          <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none">
+            WORK
           </h1>
-
-          <p className="mt-6 text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Initiating sequence... Loading{' '}
-            <span className="text-cyan-400 font-mono">{projects.length}</span>{' '}
-            distinct operational modules.
-            <span className="block mt-2 text-gray-500 text-base">
-              Explore the archives of experiments and deployed systems.
-            </span>
+          <p className="text-gray-400 font-mono text-sm max-w-sm">
+            / SELECTED WORKS 2024—2025
           </p>
-        </div>
+        </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 grid-flow-row-dense perspective-1000">
-          {projects.map((project) => (
+        <div className="flex flex-col pb-32">
+          {projects.map((project, index) => (
             <ProjectCard
               key={project.slug}
-              project={{ ...project, description: project.shortDescription }}
-              size={project.size}
+              index={index}
+              project={project}
+              isActive={activeProject?.slug === project.slug}
+              onHover={setActiveProject}
             />
           ))}
         </div>
+
+        <div className="mt-auto pt-20 border-t border-white/10 text-gray-600 font-mono text-xs uppercase tracking-widest">
+            Total Entries: {projects.length}
+        </div>
+      </div>
+
+      {/* RIGHT PANEL: The Stage (Desktop Only) */}
+      <div className="hidden lg:block fixed right-0 top-0 h-screen w-1/2 bg-neutral-900 overflow-hidden border-l border-white/10">
+        <AnimatePresence mode='wait'>
+          {activeProject && (
+            <motion.div
+              key={activeProject.slug}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.6, ease: "circOut" }}
+              className="absolute inset-0"
+            >
+              {/* Image */}
+              <div className="absolute inset-0 z-0">
+                 <img
+                    src={activeProject.image || '/images/defaults/placeholder-project.svg'}
+                    alt={activeProject.title}
+                    className="h-full w-full object-cover opacity-60"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40" />
+                 <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay" />
+              </div>
+
+              {/* Details Overlay */}
+              <div className="absolute bottom-0 left-0 w-full p-16 z-10 flex flex-col gap-6">
+
+                {/* ID & Date */}
+                <div className="flex items-center gap-4 text-cyan-400 font-mono text-sm tracking-widest uppercase">
+                   <span>ID: {activeProject.slug.split('-')[0]}</span>
+                   <span className="h-1 w-1 bg-current rounded-full" />
+                   <span>{new Date(activeProject.date).getFullYear()}</span>
+                </div>
+
+                {/* Description */}
+                <p className="text-xl md:text-2xl text-gray-200 font-light leading-relaxed max-w-2xl">
+                   {activeProject.shortDescription}
+                </p>
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {activeProject.technologies?.map((tech) => (
+                    <span
+                        key={tech}
+                        className="px-3 py-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-full text-xs font-mono text-white uppercase tracking-wider"
+                    >
+                        {tech}
+                    </span>
+                  ))}
+                </div>
+
+                {/* External Link Button (Optional) */}
+                {activeProject.link && (
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2 }}
+                        className="mt-4"
+                    >
+                        <a href={activeProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-3 text-white border-b border-white pb-1 hover:text-cyan-400 hover:border-cyan-400 transition-colors">
+                           <span className="text-sm font-bold uppercase tracking-widest">Visit Live Site</span>
+                           <ArrowLeft className="rotate-135" weight="bold"/>
+                        </a>
+                    </motion.div>
+                )}
+
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Placeholder / Empty State */}
+        {!activeProject && (
+            <div className="absolute inset-0 flex items-center justify-center text-gray-700">
+                <Cpu size={64} weight="thin" className="animate-pulse"/>
+            </div>
+        )}
       </div>
     </div>
   );
