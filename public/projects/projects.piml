@@ -228,7 +228,7 @@
     (title) Boxer
     (size) 2
     (link) https://github.com/fezcode/boxer
-    (pinned) true
+    (pinned) false
     (isActive) false
     (technologies)
       > Linux
