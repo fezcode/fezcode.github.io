@@ -26,6 +26,8 @@ const LogCard = ({ log, index, totalLogs }) => {
   const creatorName = by || author || artist || creator || director;
   const sourceName = platform || source;
   const categoryColor = colors[category.toLowerCase()] || colors.primary[400];
+  const categoryColorLight =
+    colors[category.toLowerCase() + '-light'] || categoryColor;
 
   return (
     <motion.div
@@ -94,7 +96,10 @@ const LogCard = ({ log, index, totalLogs }) => {
             </span>
           </div>
 
-          <h3 className="text-lg font-medium font-sans uppercase text-white mb-2 group-hover:text-emerald-400 transition-colors line-clamp-2 leading-tight">
+          <h3
+            className="text-lg font-medium font-sans uppercase mb-2 transition-colors line-clamp-2 leading-tight"
+            style={{ color: categoryColorLight }}
+          >
             {title}
           </h3>
 

@@ -7,7 +7,7 @@ import { appIcons } from '../utils/appIcons';
 
 const AppCard = ({ app }) => {
   const { to, title, description, icon, pinned_order } = app;
-  const Icon = appIcons[icon];
+  const Icon = appIcons[icon] || appIcons[`${icon}Icon`] || Star;
 
   return (
     <motion.div

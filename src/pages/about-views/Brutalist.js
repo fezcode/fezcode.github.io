@@ -133,10 +133,10 @@ const Brutalist = () => {
                 prose-strong:font-black prose-strong:text-white
                 prose-li:font-mono prose-li:text-lg prose-li:my-4 prose-li:text-gray-400
 
-                prose-table:w-full prose-table:border-collapse prose-table:border-2 prose-table:border-white prose-table:font-mono prose-table:text-sm md:prose-table:text-base prose-table:my-12
+                prose-table:w-full prose-table:border-collapse prose-table:border-2 prose-table:border-white prose-table:font-mono prose-table:text-xs md:prose-table:text-sm prose-table:my-12
                 prose-thead:bg-white prose-thead:text-black
-                prose-th:p-4 prose-th:uppercase prose-th:tracking-widest prose-th:font-black prose-th:text-left prose-th:border prose-th:border-white
-                prose-td:p-4 prose-td:border prose-td:border-white/20
+                prose-th:p-4 prose-th:uppercase prose-th:tracking-widest prose-th:font-black prose-th:text-center prose-th:border prose-th:border-white
+                prose-td:p-4 prose-td:border prose-td:border-white prose-td:text-center
 
                 prose-blockquote:border-l-8 prose-blockquote:border-white prose-blockquote:bg-white/5 prose-blockquote:p-12 prose-blockquote:not-italic prose-blockquote:font-black prose-blockquote:text-2xl prose-blockquote:uppercase prose-blockquote:tracking-tighter"
             >
@@ -188,10 +188,15 @@ const Brutalist = () => {
           </div>
         </div>
 
-        <footer className="mt-48 pt-12 border-t-8 border-white flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-xs uppercase tracking-widest text-gray-500">
-          <div className="font-black bg-white text-black px-4 py-2">
-            <span>TERMINAL_SESSION_END</span>
-          </div>
+                <footer
+
+                  className="mt-48 pt-12 border-t-8 border-white flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-xs uppercase tracking-widest text-gray-500">
+
+                  <div className="font-black bg-white !text-black px-4 py-2">
+
+                    <span>TERMINAL_SESSION_END</span>
+
+                  </div>
           <div className="flex flex-col items-end gap-2">
             <span>LOG_TIMESTAMP: {new Date().toISOString()}</span>
             <span className="text-white font-black tracking-widest">

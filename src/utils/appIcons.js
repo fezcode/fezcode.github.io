@@ -65,10 +65,14 @@ import {
   FireIcon,
   CampfireIcon,
   KanbanIcon,
-  WaveSine,
-  MapTrifold,
+  WaveSineIcon,
+  MapTrifoldIcon,
   PhoneIcon,
   SidebarIcon,
+  CpuIcon,
+  LockKeyIcon,
+  SpeakerHighIcon,
+  CheckSquareOffsetIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -138,8 +142,12 @@ export const appIcons = {
   FireIcon,
   CampfireIcon,
   KanbanIcon,
-  WaveSine,
-  MapTrifold,
+  WaveSineIcon,
+  MapTrifoldIcon,
   PhoneIcon,
   SidebarIcon,
+  CpuIcon,
+  LockKeyIcon,
+  SpeakerHighIcon,
+  CheckSquareOffsetIcon,
 };

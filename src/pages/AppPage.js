@@ -178,7 +178,7 @@ function AppPage() {
               .sort((a, b) => groupedApps[a].order - groupedApps[b].order)
               .map((categoryKey) => {
                 const category = groupedApps[categoryKey];
-                const CategoryIcon = appIcons[category.icon];
+                const CategoryIcon = appIcons[category.icon] || appIcons[`${category.icon}Icon`];
                 const filteredApps = filterApps(category.apps);
                 const sortedApps = sortApps(filteredApps);
                 const isCollapsed = collapsedCategories[categoryKey];

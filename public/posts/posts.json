@@ -1,5 +1,17 @@
 [
   {
+    "slug": "brutalist-refactor",
+    "title": "Brutalist Fezcodex: The Big Cleanup",
+    "date": "2025-12-19",
+    "updated": "2025-12-19",
+    "description": "A short and simple explanation of the major architectural and aesthetic refactor of Fezcodex.",
+    "tags": ["feat", "refactor", "brutalist", "eli5", "update"],
+    "category": "feat",
+    "filename": "brutalist-refactor.txt",
+    "authors": ["fezcode"],
+    "image": "/images/ogtitle.png"
+  },
+  {
     "slug": "introducing-reading-experience",
     "title": "Introducing New Reading Modes: Dossier and Terminal!",
     "date": "2025-12-17",

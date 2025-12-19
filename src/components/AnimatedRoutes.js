@@ -137,6 +137,10 @@ const TopographicMapPage = lazy(
 const RotaryPhonePage = lazy(() => import('../pages/apps/RotaryPhonePage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
+const CipherStudioPage = lazy(() => import('../pages/apps/CipherStudioPage'));
+const LogicArchitectPage = lazy(() => import('../pages/apps/LogicArchitectPage'));
+const AtmosphereMixerPage = lazy(() => import('../pages/apps/AtmosphereMixerPage'));
+const TaskGridPage = lazy(() => import('../pages/apps/TaskGridPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
   () => import('../pages/roadmap/RoadmapItemDetailPage'),
@@ -174,7 +178,14 @@ const pageTransition = {
   duration: 0.3,
 };
 
-function AnimatedRoutes() {
+const AnimatedRoutes = ({
+  isSearchVisible,
+  toggleSearch,
+  toggleModal,
+  openGenericModal,
+  toggleDigitalRain,
+  toggleBSOD,
+}) => {
   const location = useLocation();
 
   return (
@@ -964,6 +975,38 @@ function AnimatedRoutes() {
           }
         />
         <Route
+          path="/apps/cipher-studio"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CipherStudioPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/logic-architect"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <LogicArchitectPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
           path="/apps/connect-four"
           element={
             <motion.div
@@ -1664,6 +1707,38 @@ function AnimatedRoutes() {
             >
               <Suspense fallback={<Loading />}>
                 <BubbleWrapPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/atmosphere-mixer"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <AtmosphereMixerPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/task-grid"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <TaskGridPage />
               </Suspense>
             </motion.div>
           }

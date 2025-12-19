@@ -138,6 +138,14 @@
         "description": "A simple terminal-like roguelike game.",
         "icon": "CubeIcon",
         "created_at": "2025-11-25T20:00:00+03:00"
+      },
+      {
+        "slug": "logic-architect",
+        "to": "/apps/logic-architect",
+        "title": "Logic Architect",
+        "description": "Construct digital circuits using logic gates and neural pathways.",
+        "icon": "CpuIcon",
+        "created_at": "2025-12-20T12:00:00+03:00"
       }
     ]
   },
@@ -295,6 +303,14 @@
         "description": "Pop some virtual bubble wrap to relieve stress.",
         "icon": "CirclesFourIcon",
         "created_at": "2025-11-25T16:01:56+03:00"
+      },
+      {
+        "slug": "atmosphere-mixer",
+        "to": "/apps/atmosphere-mixer",
+        "title": "Atmosphere Mixer",
+        "description": "Blend background environments to create your ideal focus space.",
+        "icon": "SpeakerHighIcon",
+        "created_at": "2025-12-20T14:00:00+03:00"
       }
     ]
   },
@@ -318,7 +334,7 @@
         "to": "/apps/abstract-waves",
         "title": "Abstract Waves",
         "description": "Generate mesmerizing black and white abstract wave patterns.",
-        "icon": "WaveSine",
+        "icon": "WaveSineIcon",
         "pinned_order": 19,
         "created_at": "2025-12-01T12:00:00+03:00"
       },
@@ -327,7 +343,7 @@
         "to": "/apps/topographic-maps",
         "title": "Topographic Map Generator",
         "description": "Generate seamless topographic contour maps.",
-        "icon": "MapTrifold",
+        "icon": "MapTrifoldIcon",
         "pinned_order": 20,
         "created_at": "2025-12-01T12:30:00+03:00"
       },
@@ -387,6 +403,14 @@
         "description": "Generate random placeholder text for your projects.",
         "icon": "ArticleIcon",
         "created_at": "2025-11-25T16:07:49+03:00"
+      },
+      {
+        "slug": "cipher-studio",
+        "to": "/apps/cipher-studio",
+        "title": "Cipher Studio",
+        "description": "Encode and decode messages using classic cryptographic algorithms.",
+        "icon": "LockKeyIcon",
+        "created_at": "2025-12-20T12:00:00+03:00"
       }
     ]
   },
@@ -561,6 +585,14 @@
         "description": "Tap the beat to guess the BPM of a song.",
         "icon": "MetronomeIcon",
         "created_at": "2025-11-25T16:14:05+03:00"
+      },
+      {
+        "slug": "task-grid",
+        "to": "/apps/task-grid",
+        "title": "Task Grid",
+        "description": "A minimal, visual map for tracking your daily objectives.",
+        "icon": "CheckSquareOffsetIcon",
+        "created_at": "2025-12-20T14:00:00+03:00"
       }
     ]
   }

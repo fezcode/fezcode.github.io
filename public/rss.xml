@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 19 Dec 2025 20:48:13 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Dec 2025 22:31:05 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 19 Dec 2025 20:48:13 GMT</pubDate>
+        <pubDate>Fri, 19 Dec 2025 22:31:05 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Brutalist Fezcodex: The Big Cleanup]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/#/blog/brutalist-refactor</link>
+            <guid isPermaLink="false">https://fezcode.com/#/blog/brutalist-refactor</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 19 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Today was a huge day for Fezcodex. We did a &quot;Major Refactor.&quot;</p>
+<p><a href="https://fezcode.com/#/blog/brutalist-refactor">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Introducing New Reading Modes: Dossier and Terminal!]]></title>
             <description><![CDATA[[object Object]]]></description>
