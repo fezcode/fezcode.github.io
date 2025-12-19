@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
+import GenerativeArt from '../components/GenerativeArt';
 import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
 import { ArrowLeft, Cpu } from '@phosphor-icons/react';
@@ -50,16 +51,22 @@ const ProjectsPage = () => {
     );
   }
 
+  const isPlaceholder = (project) => !project?.image || project.image.includes('placeholder');
+
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-cyan-500/30">
 
       {/* Mobile Background (Static or Active Project Blur) */}
       <div className="absolute inset-0 lg:hidden opacity-20 pointer-events-none z-0">
-          <img
-            src={activeProject?.image || '/images/defaults/placeholder-project.svg'}
-            alt="bg"
-            className="w-full h-full object-cover filter blur-3xl"
-          />
+          {activeProject && (isPlaceholder(activeProject) ? (
+             <GenerativeArt seed={activeProject.title} className="w-full h-full filter blur-3xl" />
+          ) : (
+             <img
+               src={activeProject.image}
+               alt="bg"
+               className="w-full h-full object-cover filter blur-3xl"
+             />
+          ))}
       </div>
 
       {/* LEFT PANEL: The Index */}
@@ -70,13 +77,13 @@ const ProjectsPage = () => {
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
             <ArrowLeft weight="bold" />
-            <span>System Root</span>
+            <span>Home</span>
           </Link>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none">
             WORK
           </h1>
           <p className="text-gray-400 font-mono text-sm max-w-sm">
-            / SELECTED WORKS 2024—2025
+            // SELECTED WORKS
           </p>
         </header>
 
@@ -111,11 +118,7 @@ const ProjectsPage = () => {
             >
               {/* Image */}
               <div className="absolute inset-0 z-0">
-                 <img
-                    src={activeProject.image || '/images/defaults/placeholder-project.svg'}
-                    alt={activeProject.title}
-                    className="h-full w-full object-cover opacity-60"
-                 />
+                 <GenerativeArt seed={activeProject.title} className="w-full h-full opacity-80" />
                  <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40" />
                  <div className="absolute inset-0 bg-noise opacity-10 mix-blend-overlay" />
               </div>

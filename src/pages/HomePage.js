@@ -12,7 +12,7 @@ import {
   AppWindow // For "Explore Apps"
 } from '@phosphor-icons/react';
 import PostItem from '../components/PostItem';
-import ProjectCard from '../components/ProjectCard';
+import ProjectTile from '../components/ProjectTile';
 import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
 import usePersistentState from '../hooks/usePersistentState';
@@ -191,15 +191,17 @@ const HomePage = () => {
         return (
           <section className="mb-24 mt-8">
             <SectionHeader icon={Cpu} title="Pinned Projects" link="/projects" linkText="View all projects" />
-            <div className="flex flex-col border-t border-white/10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {pinnedProjects.map((project, index) => (
-                <ProjectCard
+                <motion.div
                   key={project.slug}
-                  project={project}
-                  index={index}
-                  isActive={activeProject?.slug === project.slug}
-                  onHover={setActiveProject}
-                />
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <ProjectTile project={project} />
+                </motion.div>
               ))}
             </div>
           </section>

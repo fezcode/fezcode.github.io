@@ -7,6 +7,7 @@ import {
   Graph,
   Terminal,
   Article,
+  Bug,
 } from '@phosphor-icons/react';
 import CommandPalette from '../components/CommandPalette';
 import { useCommandPalette } from '../context/CommandPaletteContext';
@@ -14,6 +15,7 @@ import NeuromancerHUD from './about-views/NeuromancerHUD';
 import SystemArchitecture from './about-views/SystemArchitecture';
 import MindMapConstellation from './about-views/MindMapConstellation';
 import ClassifiedDossier from './about-views/ClassifiedDossier';
+import Brutalist from './about-views/Brutalist';
 import { useAchievements } from '../context/AchievementContext';
 import useSeo from "../hooks/useSeo";
 
@@ -23,6 +25,7 @@ const ViewSwitcher = ({ currentView, setView }) => {
     { id: 'hud', icon: Terminal, label: 'Terminal' },
     { id: 'blueprint', icon: TreeStructure, label: 'Blueprint' },
     { id: 'map', icon: Graph, label: 'Mind Map' },
+    { id: 'brutalist', icon: Bug, label: 'Brutalist' },
   ];
 
   return (
@@ -75,6 +78,8 @@ const AboutPage = () => {
     switch (currentView) {
       case 'dossier':
         return 'bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-[#4a0404] hover:text-white hover:border-[#4a0404] rounded-none shadow-none';
+      case 'brutalist':
+        return 'bg-black text-white border-white border-2 font-mono uppercase tracking-widest text-xs hover:bg-white hover:text-black rounded-none';
       case 'hud':
         return 'bg-black text-green-500 border-green-500 border font-mono tracking-wider hover:bg-green-500 hover:text-black shadow-[0_0_10px_rgba(0,255,0,0.3)] rounded-sm';
       case 'blueprint':
@@ -117,6 +122,7 @@ const AboutPage = () => {
           {view === 'blueprint' && <SystemArchitecture />}
           {view === 'map' && <MindMapConstellation />}
           {view === 'dossier' && <ClassifiedDossier />}
+          {view === 'brutalist' && <Brutalist />}
         </motion.div>
       </AnimatePresence>
 

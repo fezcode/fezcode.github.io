@@ -1,91 +1,119 @@
 import React, { useMemo } from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { DownloadSimple } from '@phosphor-icons/react';
 
-const GenerativeArt = () => {
-  const art = useMemo(() => {
-    const SVG_SIZE = 500;
-    const NUM_SHAPES = 25;
+const GenerativeArt = ({ seed = 'fezcodex', className }) => {
+  // Sanitize seed for use in SVG IDs
+  const safeId = useMemo(() => seed.replace(/[^a-z0-9]/gi, '-').toLowerCase(), [seed]);
+
+  const shapes = useMemo(() => {
+    // Seeded RNG
+    let h = 0xdeadbeef;
+    const safeSeed = seed || 'fezcodex';
+    for (let i = 0; i < safeSeed.length; i++) {
+      h = Math.imul(h ^ safeSeed.charCodeAt(i), 2654435761);
+    }
+    const rng = () => {
+      h = Math.imul(h ^ (h >>> 16), 2246822507);
+      h = Math.imul(h ^ (h >>> 13), 3266489909);
+      return ((h ^= h >>> 16) >>> 0) / 4294967296;
+    };
+
+    const hue = Math.floor(rng() * 360);
+    const primaryColor = `hsl(${hue}, 70%, 60%)`;
+    const secondaryColor = `hsl(${(hue + 180) % 360}, 60%, 50%)`;
+    const accentColor = `hsl(${(hue + 90) % 360}, 80%, 60%)`;
+
+    const type = Math.floor(rng() * 3);
     const shapes = [];
 
-    const colors = ['#FBBF24', '#A7F3D0', '#F87171', '#60A5FA', '#A78BFA'];
+    if (type === 0) {
+      // Bauhaus Grid
+      const gridSize = 5;
+      const cellSize = 100 / gridSize;
+      let count = 0;
 
-    for (let i = 0; i < NUM_SHAPES; i++) {
-      const x = Math.random() * SVG_SIZE;
-      const y = Math.random() * SVG_SIZE;
-      const width = 10 + Math.random() * 150;
-      const height = 10 + Math.random() * 150;
-      const fill = colors[Math.floor(Math.random() * colors.length)];
-      const rotation = Math.random() * 360;
-      const opacity = 0.5 + Math.random() * 0.5;
+      const addShape = (x, y) => {
+        const shapeType = Math.floor(rng() * 4);
+        const rotation = Math.floor(rng() * 4) * 90;
+        const colorRoll = rng();
+        let color = primaryColor;
+        if (colorRoll > 0.6) color = secondaryColor;
+        if (colorRoll > 0.9) color = accentColor;
+        if (colorRoll < 0.1) color = '#ffffff';
+        shapes.push({ mode: 'grid', x: x * cellSize, y: y * cellSize, size: cellSize, shapeType, rotation, color, isOutline: rng() > 0.6 });
+        count++;
+      };
 
-      shapes.push(
-        <rect
-          key={i}
-          x={x}
-          y={y}
-          width={width}
-          height={height}
-          fill={fill}
-          opacity={opacity}
-          transform={`rotate(${rotation} ${x + width / 2} ${y + height / 2})`}
-        />,
-      );
+      for (let x = 0; x < gridSize; x++) {
+        for (let y = 0; y < gridSize; y++) {
+          if (rng() > 0.5) addShape(x, y);
+        }
+      }
+      // Guarantee at least 5 shapes
+      if (count < 5) {
+        for(let i=0; i<5; i++) addShape(Math.floor(rng()*gridSize), Math.floor(rng()*gridSize));
+      }
+    } else if (type === 1) {
+      // Tech Circuit
+      const count = 15;
+      for (let i = 0; i < count; i++) {
+        const isVertical = rng() > 0.5;
+        const x = Math.floor(rng() * 10) * 10;
+        const y = Math.floor(rng() * 10) * 10;
+        const thickness = 0.5 + rng() * 1.5;
+        shapes.push({
+          mode: 'tech',
+          x, y, isVertical, length: 20 + rng() * 60, thickness,
+          color: rng() > 0.8 ? '#ffffff' : primaryColor,
+          opacity: 0.4 + rng() * 0.6
+        });
+        if(rng() > 0.4) shapes.push({ mode: 'node', cx: x, cy: y, r: thickness * 2, color: accentColor });
+      }
+    } else {
+      // Geometric Flow
+      for (let i = 0; i < 8; i++) {
+        shapes.push({
+          mode: 'flow',
+          cx: rng() * 100, cy: rng() * 100,
+          r: 10 + rng() * 40,
+          color: i % 2 === 0 ? primaryColor : secondaryColor,
+          opacity: 0.3 + rng() * 0.3
+        });
+      }
     }
 
-    return (
-      <svg
-        width="100%"
-        height="100%"
-        viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <clipPath id="art-board">
-            <rect width={SVG_SIZE} height={SVG_SIZE} />
-          </clipPath>
-        </defs>
-        <rect width={SVG_SIZE} height={SVG_SIZE} fill="#1F2937" />
-        <g clipPath="url(#art-board)">{shapes}</g>
-      </svg>
-    );
-  }, []);
-
-  const handleDownload = () => {
-    const svgString = ReactDOMServer.renderToString(art);
-    const blob = new Blob([svgString], { type: 'image/svg+xml' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = 'generative-art.svg';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
-  };
+    return shapes;
+  }, [seed]);
 
   return (
-    <div>
-      <div
-        style={{
-          width: '100%',
-          height: '60vh',
-          border: '1px solid #374151',
-          borderRadius: '8px',
-          overflow: 'hidden',
-        }}
-      >
-        {art}
-      </div>
-      <div className="flex justify-center mt-4">
-        <button
-          onClick={handleDownload}
-          className="flex items-center gap-2 text-lg font-arvo font-normal px-6 py-2 rounded-md border transition-colors duration-300 ease-in-out border-green-700 bg-green-800/50 text-white hover:bg-green-700/50"
-        >
-          <DownloadSimple size={24} />
-          Download SVG
-        </button>
-      </div>
+    <div className={`w-full h-full bg-neutral-950 overflow-hidden relative ${className}`}>
+      <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" className="w-full h-full">
+        <defs>
+          <pattern id={`bg-grid-${safeId}`} width="20" height="20" patternUnits="userSpaceOnUse">
+            <circle cx="1" cy="1" r="0.5" fill="white" opacity="0.05"/>
+          </pattern>
+        </defs>
+        <rect width="100" height="100" fill={`url(#bg-grid-${safeId})`}/>
+        {shapes.map((s, i) => {
+          if (s.mode === 'grid') {
+            const center = s.size / 2;
+            const p = s.size * 0.1;
+            const is = s.size - (p * 2);
+            return (
+              <g key={i} transform={`translate(${s.x}, ${s.y}) rotate(${s.rotation}, ${center}, ${center})`}>
+                {s.shapeType === 0 && <rect x={p} y={p} width={is} height={is} fill={s.isOutline ? 'none' : s.color} stroke={s.color} strokeWidth={s.isOutline ? 1.5 : 0} opacity="0.9" rx="1" />}
+                {s.shapeType === 1 && <circle cx={center} cy={center} r={is / 2} fill={s.isOutline ? 'none' : s.color} stroke={s.color} strokeWidth={s.isOutline ? 1.5 : 0} opacity="0.9" />}
+                {s.shapeType === 2 && <path d={`M ${p} ${p} L ${s.size-p} ${p} A ${is} ${is} 0 0 1 ${p} ${s.size-p} Z`} fill={s.color} opacity="0.9" />}
+                {s.shapeType === 3 && <polygon points={`${p},${s.size-p} ${s.size/2},${p} ${s.size-p},${s.size-p}`} fill={s.isOutline ? 'none' : s.color} stroke={s.color} strokeWidth={s.isOutline ? 1.5 : 0} opacity="0.9" />}
+              </g>
+            );
+          }
+          if (s.mode === 'tech') return <rect key={i} x={s.x} y={s.y} width={s.isVertical ? s.thickness : s.length} height={s.isVertical ? s.length : s.thickness} fill={s.color} opacity={s.opacity} />;
+          if (s.mode === 'node') return <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill={s.color} opacity="0.8" />;
+          if (s.mode === 'flow') return <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill={s.color} opacity={s.opacity} style={{mixBlendMode: 'screen'}} />;
+          return null;
+        })}
+      </svg>
+      <div className="absolute inset-0 opacity-[0.15] pointer-events-none mix-blend-overlay" style={{backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E")`}} />
     </div>
   );
 };

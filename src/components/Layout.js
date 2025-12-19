@@ -92,7 +92,7 @@ const Layout = ({
           />
           {isSearchVisible && <Search isVisible={isSearchVisible} />}
           <main className="flex-grow">{children}</main>
-          <Footer />
+          {location.pathname !== '/projects' && <Footer />}
         </div>
       </div>
     </>

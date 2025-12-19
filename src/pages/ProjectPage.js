@@ -3,11 +3,14 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
+import { motion } from 'framer-motion';
 import { useProjects } from '../utils/projectParser';
 import { useProjectContent } from '../hooks/useProjectContent';
-import ProjectMetadata from '../components/metadata-cards/ProjectMetadata';
 import Seo from '../components/Seo';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
+import GenerativeArt from '../components/GenerativeArt';
+import { ArrowLeft, ArrowUpRight, GithubLogo, Globe } from '@phosphor-icons/react';
+
+const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
 const ProjectPage = () => {
   const { slug } = useParams();
@@ -24,21 +27,16 @@ const ProjectPage = () => {
 
   if (loadingProjects || loadingContent) {
     return (
-      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4">
-          <div className="w-16 h-16 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin"></div>
-          <p className="font-mono text-cyan-500 animate-pulse">
-            LOADING DATA STREAM...
-          </p>
-        </div>
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white font-mono uppercase tracking-widest text-xs">
+        <span className="animate-pulse">Loading Artifact Data...</span>
       </div>
     );
   }
 
   if (errorProjects || errorContent) {
     return (
-      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center text-red-500 font-mono">
-        ERROR: {errorProjects?.message || errorContent?.message}
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-red-500 font-mono uppercase">
+        Error: {errorProjects?.message || errorContent?.message}
       </div>
     );
   }
@@ -47,17 +45,17 @@ const ProjectPage = () => {
 
   if (!project || !content) {
     return (
-      <div className="min-h-screen bg-[#020617] py-24 px-6 flex items-center justify-center text-gray-400 font-mono">
-        Project not found in archives.
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center text-gray-500 font-mono uppercase">
+        Artifact not found.
       </div>
     );
   }
 
-  // Combine project metadata with fetched content
   const fullProject = { ...project, ...content };
+  const year = new Date(fullProject.date).getFullYear();
 
   return (
-    <div className="min-h-screen bg-[#020617] pb-24 relative">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
       <Seo
         title={`${fullProject.title} | Fezcodex`}
         description={fullProject.shortDescription}
@@ -68,59 +66,136 @@ const ProjectPage = () => {
         twitterCard="summary_large_image"
         twitterTitle={`${fullProject.title} | Fezcodex`}
         twitterDescription={fullProject.shortDescription}
-        twitterImage={
-          fullProject.image || '/images/ogtitle.png'
-        }
+        twitterImage={fullProject.image || '/images/ogtitle.png'}
       />
 
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-gray-900 to-[#020617] -z-10 border-b border-gray-800/50">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f1a_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f1a_1px,transparent_1px)] bg-[size:24px_24px] [mask-image:linear-gradient(to_bottom,black_40%,transparent_100%)]" />
-        </div>
-      </div>
+            {/* Noise Overlay */}
+            <div
+              className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay"
+              style={{ backgroundImage: NOISE_BG }}
+            />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 pt-24 relative">
-        <div className="lg:grid lg:grid-cols-4 lg:gap-12">
-          <div className="lg:col-span-3">
-            <Link
-              to="/projects"
-              className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 mb-8 font-mono text-sm tracking-widest uppercase hover:underline decoration-cyan-500/50 underline-offset-4 transition-all"
+            {/* Hero Image */}
+            <div className="relative h-[60vh] w-full overflow-hidden">
+              <GenerativeArt seed={fullProject.title} className="w-full h-full opacity-60 filter brightness-75" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/50 to-transparent" />
+
+              <div className="absolute bottom-0 left-0 w-full px-6 pb-12 md:px-12">
+                  <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="mb-6 flex items-center gap-4"
+                  >
+                      <Link
+                        to="/projects"
+                        className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black"
+                      >
+                        <ArrowLeft weight="bold" />
+                        <span>Back</span>
+                      </Link>
+                      <span className="font-mono text-[10px] text-gray-400 uppercase tracking-widest border border-white/10 px-2 py-1.5 rounded-full bg-black/40 backdrop-blur-sm">
+                         ID: {slug.split('-')[0]}
+                      </span>
+                  </motion.div>
+
+                  <motion.h1
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 }}
+                      className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl"
+                  >
+                      {fullProject.title}
+                  </motion.h1>
+                   <div className="mt-6 flex flex-wrap gap-4 font-mono text-xs uppercase tracking-widest text-gray-400">
+                      <span className="border border-white/20 px-3 py-1 rounded-full text-white">{year}</span>
+                      {fullProject.technologies?.slice(0, 3).map(tech => (
+                          <span key={tech} className="px-2 py-1">#{tech}</span>
+                      ))}
+                  </div>
+              </div>
+            </div>
+      {/* Main Content Grid */}
+      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 lg:grid lg:grid-cols-12 lg:gap-24">
+
+        {/* Left Column: Content */}
+        <div className="lg:col-span-8">
+            <div className="mb-16">
+                 <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed font-sans">
+                    {fullProject.shortDescription}
+                 </p>
+            </div>
+
+            <div className="prose prose-invert prose-lg max-w-none
+                prose-headings:font-sans prose-headings:uppercase prose-headings:tracking-tight prose-headings:font-bold prose-headings:text-white
+                prose-p:text-gray-400 prose-p:font-sans prose-p:leading-relaxed
+                prose-a:text-white prose-a:underline prose-a:decoration-white/30 prose-a:underline-offset-4 hover:prose-a:decoration-white
+                prose-code:text-cyan-300 prose-code:font-mono prose-code:bg-white/5 prose-code:px-1 prose-code:rounded-sm prose-code:before:content-none prose-code:after:content-none
+                prose-pre:bg-zinc-900 prose-pre:border prose-pre:border-white/10
+                prose-ul:marker:text-gray-500
+                prose-img:rounded-sm prose-img:border prose-img:border-white/10"
             >
-              <ArrowLeftIcon size={16} /> Back to Projects
-            </Link>
-
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-emerald-400 font-mono mb-6">
-              {fullProject.title}
-              <span className="text-cyan-500 animate-pulse">_</span>
-            </h1>
-
-            <div className="mt-8 p-8 bg-gray-900/50 rounded-xl border border-gray-800 backdrop-blur-sm">
-              <div
-                className="prose prose-invert prose-lg max-w-none
-                    prose-headings:font-mono
-                    prose-h1:text-emerald-400 prose-h2:text-emerald-300 prose-h3:text-emerald-200 prose-h4:text-emerald-100
-                    prose-a:text-cyan-400 prose-a:no-underline hover:prose-a:underline
-                    prose-code:text-cyan-300 prose-code:bg-gray-800/50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none
-                    prose-pre:bg-gray-950 prose-pre:border prose-pre:border-gray-800 prose-pre:text-base
-                    prose-strong:text-emerald-200
-                    text-gray-300"
-              >
                 <ReactMarkdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
                 >
                   {fullProject.fullContent}
                 </ReactMarkdown>
-              </div>
             </div>
-          </div>
-
-          <div className="hidden lg:block mt-24 space-y-6">
-            <div className="sticky top-24">
-              <ProjectMetadata project={fullProject} />
-            </div>
-          </div>
         </div>
+
+        {/* Right Column: Sticky Tech Specs */}
+        <div className="mt-16 lg:col-span-4 lg:mt-0">
+            <div className="sticky top-24 space-y-12">
+
+                {/* Actions */}
+                <div className="flex flex-col gap-3">
+                    {fullProject.link && (
+                        <a href={fullProject.link} target="_blank" rel="noopener noreferrer" className="group flex w-full items-center justify-between border border-white/20 bg-white/5 p-4 transition-colors hover:bg-white hover:text-black hover:border-white">
+                            <span className="font-mono text-sm font-bold uppercase tracking-widest">Live System</span>
+                            <ArrowUpRight weight="bold" size={20} />
+                        </a>
+                    )}
+                     {/* Assuming GitHub link is available or derived (placeholder logic) */}
+                     {/* If you have a github link in frontmatter, add it here. Using placeholder for structure */}
+                     <a href={`https://github.com/fezcode/${fullProject.slug}`} target="_blank" rel="noopener noreferrer" className="group flex w-full items-center justify-between border border-white/20 p-4 transition-colors hover:bg-white hover:text-black hover:border-white">
+                            <span className="font-mono text-sm font-bold uppercase tracking-widest">Source Code</span>
+                            <GithubLogo weight="bold" size={20} />
+                     </a>
+                </div>
+
+                {/* Specs */}
+                <div>
+                    <h3 className="mb-6 font-mono text-xs font-bold uppercase tracking-widest text-gray-500">
+                        // Technical Specifications
+                    </h3>
+                    <div className="space-y-4 border-l border-white/10 pl-6">
+                        <div>
+                            <span className="block font-mono text-[10px] text-gray-500 uppercase">Frameworks</span>
+                            <div className="mt-2 flex flex-wrap gap-2">
+                                {fullProject.technologies?.map(tech => (
+                                    <span key={tech} className="bg-zinc-900 px-2 py-1 font-mono text-xs text-cyan-400 border border-white/5">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div>
+                             <span className="block font-mono text-[10px] text-gray-500 uppercase">Release Date</span>
+                             <span className="block mt-1 font-mono text-sm text-white">{fullProject.date}</span>
+                        </div>
+                        <div>
+                             <span className="block font-mono text-[10px] text-gray-500 uppercase">Status</span>
+                             <div className="mt-1 flex items-center gap-2">
+                                <span className={`h-2 w-2 rounded-full ${fullProject.isActive !== false ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`} />
+                                <span className="font-mono text-sm text-white">{fullProject.isActive !== false ? 'Operational' : 'Archived'}</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
       </div>
     </div>
   );
