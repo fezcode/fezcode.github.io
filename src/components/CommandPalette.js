@@ -664,94 +664,106 @@ const CommandPalette = ({
     <AnimatePresence>
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-70 z-50 flex items-start justify-center pt-16 md:pt-32 "
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[100] flex items-start justify-center pt-16 md:pt-32 "
           onClick={handleClose}
         >
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: -20 }}
+            initial={{ opacity: 0, scale: 0.98, y: -10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: -20 }}
+            exit={{ opacity: 0, scale: 0.98, y: -10 }}
             transition={{ duration: 0.2, ease: 'easeOut' }}
-            className="bg-gray-900  text-gray-100 rounded-lg shadow-2xl w-full max-w-xl mx-4"
+            className="bg-[#050505] text-white rounded-sm border border-white/10 shadow-2xl w-full max-w-2xl mx-4 overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="p-3 flex items-center justify-center">
+            {/* Header / Search */}
+            <div className="p-6 flex items-center gap-4 bg-white/[0.02]">
               <TerminalWindowIcon
-                size={36}
-                weight="light"
-                className="mr-2 text-gray-200 "
+                size={32}
+                weight="fill"
+                className="text-emerald-500"
               />
               <input
                 ref={inputRef}
                 type="text"
                 placeholder={
-                  isLoading ? 'Loading data...' : 'Search or type a command...'
+                  isLoading ? "Initialising Data..." : "Search commands, posts, apps..."
                 }
-                className="w-full bg-transparent text-lg placeholder-gray-500 focus:outline-none font-mono"
+                className="w-full bg-transparent text-xl md:text-2xl font-light placeholder-gray-700 focus:outline-none font-mono uppercase tracking-tight"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 disabled={isLoading}
               />
             </div>
+
+            {/* Results Section */}
             <div
               ref={resultsRef}
-              className="border-t border-gray-200 dark:border-gray-700 p-2 max-h-[50vh] overflow-y-auto scrollbar-hide"
+              className="border-t border-white/10 max-h-[50vh] overflow-y-auto scrollbar-hide bg-black/20"
             >
               {filteredItems.length > 0 ? (
                 filteredItems.map((item, index) => (
                   <div
                     key={`${item.type}-${item.slug || item.commandId}-${index}`}
-                    className={`p-3 rounded-lg cursor-pointer flex justify-between items-center font-mono ${
+                    className={`px-6 py-4 cursor-pointer flex justify-between items-center transition-all duration-200 border-l-2 ${
                       selectedIndex === index
-                        ? 'bg-gray-800'
-                        : 'hover:bg-gray-800'
+                        ? 'bg-white/10 border-emerald-500 translate-x-1'
+                        : 'hover:bg-white/5 border-transparent'
                     }`}
                     onClick={() => handleItemClick(item)}
                     onMouseMove={() => setSelectedIndex(index)}
                   >
-                    <span className="mr-2 text-gray-500 "> » </span>
-                    <span className={`w-5/6 text-gray-100`}>{item.title}</span>
+                    <div className="flex flex-col gap-0.5">
+                       <span className={`text-lg font-medium tracking-tight ${selectedIndex === index ? 'text-white' : 'text-gray-400'}`}>
+                          {item.title}
+                       </span>
+                       {item.description && (
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-gray-600 truncate max-w-md">
+                             {item.description}
+                          </span>
+                       )}
+                    </div>
+
                     <span
-                      className={`w-20 h-6 flex items-center justify-center text-xs uppercase text-gray-800 font-bold ${getCategoryColorClass(item.type)} rounded border-2 border-black`}
+                      className={`px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest text-black ${getCategoryColorClass(item.type)} rounded-sm`}
                     >
                       {item.type}
                     </span>
                   </div>
                 ))
               ) : (
-                <div className="p-4 text-center text-gray-500">
-                  {isLoading
-                    ? 'Loading...'
-                    : `No results found for "${searchTerm}"`}
+                <div className="p-12 text-center">
+                   <p className="font-mono text-sm text-gray-600 uppercase tracking-widest">
+                      {isLoading ? "Fetching Registry..." : `No matches found for "${searchTerm}"`}
+                   </p>
                 </div>
               )}
             </div>
-            <div className="border-t border-gray-200 dark:border-gray-700 p-2 text-xs text-gray-400 dark:text-gray-500 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
-                  ESC
-                </span>{' '}
-                to close
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
-                  ↑
-                </span>
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
-                  ↓
-                </span>
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
-                  PgUp
-                </span>
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
-                  PgDn
-                </span>{' '}
-                to navigate
-                <span className="border border-gray-300 dark:border-gray-600 rounded px-1.5 py-0.5">
-                  ↵
-                </span>{' '}
-                to select
+
+            {/* Footer / Shortcuts */}
+            <div className="border-t border-white/10 p-4 bg-white/[0.02] flex items-center justify-between text-[10px] font-mono uppercase tracking-[0.2em]">
+              <div className="flex items-center gap-6 text-gray-500">
+                <div className="flex items-center gap-2">
+                   <kbd className="px-1.5 py-0.5 bg-white/10 rounded border border-white/10 text-white">ESC</kbd>
+                   <span>Close</span>
+                </div>
+                <div className="flex items-center gap-2">
+                   <div className="flex gap-1">
+                      <kbd className="px-1.5 py-0.5 bg-white/10 rounded border border-white/10 text-white">↑</kbd>
+                      <kbd className="px-1.5 py-0.5 bg-white/10 rounded border border-white/10 text-white">↓</kbd>
+                      <kbd className="px-1.5 py-0.5 bg-white/10 rounded border border-white/10 text-white text-[8px]">PGUP</kbd>
+                      <kbd className="px-1.5 py-0.5 bg-white/10 rounded border border-white/10 text-white text-[8px]">PGDN</kbd>
+                   </div>
+                   <span>Navigate</span>
+                </div>
+                <div className="flex items-center gap-2">
+                   <kbd className="px-1.5 py-0.5 bg-white/10 rounded border border-white/10 text-white">↵</kbd>
+                   <span>Select</span>
+                </div>
               </div>
-              <div className="font-semibold text-gray-400">
-                Fez<span className="text-accent-500">codex</span>
+
+              <div className="font-bold text-gray-400 flex items-center gap-2">
+                <span className="h-1 w-1 bg-emerald-500 rounded-full animate-pulse" />
+                Fez<span className="text-white">codex</span>
               </div>
             </div>
           </motion.div>
