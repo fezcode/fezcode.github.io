@@ -68,13 +68,24 @@ const generateSitemap = async () => {
     console.error('Error reading posts.json:', error);
   }
 
-  // Add dynamic routes from projects.json
+  // Add dynamic routes from projects.piml
   try {
-    const projectsJsonPath = path.join(publicDirectory, 'projects', 'projects.json');
-    const projectsJson = fs.readFileSync(projectsJsonPath, 'utf-8');
-    const projectsData = JSON.parse(projectsJson);
+    const projectsPimlPath = path.join(publicDirectory, 'projects', 'projects.piml');
+    const pimlContent = fs.readFileSync(projectsPimlPath, 'utf-8');
+    const parsedData = piml.parse(pimlContent);
 
-    projectsData.forEach(project => {
+    let projectList = [];
+    if (parsedData.projects && Array.isArray(parsedData.projects)) {
+      projectList = parsedData.projects;
+    } else if (parsedData.item && Array.isArray(parsedData.item)) {
+      projectList = parsedData.item;
+    } else if (Array.isArray(parsedData)) {
+      projectList = parsedData;
+    } else if (typeof parsedData === 'object') {
+      projectList = Object.values(parsedData).find(val => Array.isArray(val)) || [];
+    }
+
+    projectList.forEach(project => {
       urls.push({
         loc: `${baseUrl}/#/projects/${project.slug}`,
         lastmod: new Date(project.updated || project.date || new Date()).toISOString(),
@@ -83,7 +94,7 @@ const generateSitemap = async () => {
       });
     });
   } catch (error) {
-    console.error('Error reading projects.json:', error);
+    console.error('Error reading projects.piml:', error);
   }
 
   // Add dynamic routes from logs (category-based)

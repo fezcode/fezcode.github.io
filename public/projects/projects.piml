@@ -1,0 +1,259 @@
+(projects)
+  > (project)
+    (slug) nocturnote
+    (title) Nocturnote
+    (size) 2
+    (link) https://github.com/fezcode/nocturnote
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Electron
+      > Svelte
+      > TypeScript
+      > Tailwind CSS
+      > Editor
+    (shortDescription) Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS.
+    (date) 2025-12-01
+    (image) /images/defaults/visuals-2TS23o0-pUc-unsplash.jpg
+
+  > (project)
+    (slug) fezcodex
+    (title) fezcodex
+    (size) 1
+    (link) https://github.com/fezcode/fezcode.github.io
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > blog
+      > personal-website
+      > react
+      > tailwind
+      > webdev
+    (shortDescription) This website... The app you are currently on. Personal website and blog, written in React.
+    (date) 2025-11-10
+    (image) /images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg
+
+  > (project)
+    (slug) piml
+    (title) piml
+    (size) 1
+    (link) https://github.com/fezcode/piml
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > (project) markup-language
+    (shortDescription) piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
+    (date) 2025-11-08
+    (image) /images/defaults/piml-red.png
+
+  > (project)
+    (slug) bm
+    (title) bm - bookmark manager
+    (size) 1
+    (link) https://github.com/fezcode/bm
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Rust
+      > TOML
+    (shortDescription) BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
+    (date) 2025-11-06
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) villain-couch
+    (title) Villain Couch
+    (size) 2
+    (link) https://github.com/fezcode/Villain-Couch
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > VLC
+      > Go
+      > SQLite
+    (shortDescription) Villain Couch is a Windows application designed to track the status of VLC Media Player.
+    (date) 2025-11-04
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) go-piml
+    (title) go-piml
+    (size) 1
+    (link) https://github.com/fezcode/go-piml
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > piml
+      > markup-language
+      > go
+    (shortDescription) go-piml is a Go package that provides functionality to marshal and unmarshal data to and from the PIML format.
+    (date) 2025-11-01
+    (image) /images/defaults/piml-red.png
+
+  > (project)
+    (slug) piml.js
+    (title) piml.js
+    (size) 1
+    (link) https://github.com/fezcode/piml.js
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > piml
+      > markup-language
+      > js
+    (shortDescription) piml.js is a JavaScript library for parsing and stringifying data in the PIML format.
+    (date) 2025-11-01
+    (image) /images/defaults/piml-red.png
+
+  > (project)
+    (slug) doku
+    (title) doku.js
+    (size) 1
+    (link) https://github.com/fezcode/doku.js
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Node
+      > TUI
+      > npm
+    (shortDescription) Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`.
+    (date) 2024-01-01
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) stroque
+    (title) Stroque
+    (size) 1
+    (link) https://github.com/fezcode/Stroque
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > Rust
+      > SVG
+    (shortDescription) Stroque is a project for procedural box art generation. It draws boxes on a `2000 x 2000` SVG canvas and utilizes a backtracking algorithm.
+    (date) 2024-01-01
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) scrappy
+    (title) Scrappy.js
+    (size) 1
+    (link) https://github.com/fezcode/scrappy
+    (pinned) false
+    (isActive) false
+    (technologies)
+      > JavaScript
+    (shortDescription) Scrappy.js is a simple command-line web scraper.
+    (date) 2024-01-01
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) piml-highlighter
+    (title) PIML Syntax Highlighter for VS Code
+    (size) 2
+    (link) https://github.com/fezcode/piml-highlighter/
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > VS Code
+      > PIML
+      > Syntax Highlighting
+      > Extension
+    (shortDescription) This extension provides comprehensive syntax highlighting for PIML (Parenthesis Intended Markup Language) files in Visual Studio Code.
+    (date) 2025-11-11
+    (image) /images/defaults/piml-red.png
+
+  > (project)
+    (slug) go-homo-sapiens-time
+    (title) Go Homo Sapiens Time
+    (size) 1
+    (link) https://github.com/fezcode/go-homo-sapiens-time
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > Go
+    (shortDescription) Go Homo Sapiens Time is a Go package that provides utilities for converting human-readable time strings to milliseconds and vice-versa. It's a Go port of the popular JavaScript library homo-sapiens-time.
+    (date) 2025-11-07
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) go-tournament-brackets
+    (title) Go Tournament Bracket Generator Lib
+    (size) 1
+    (link) https://github.com/fezcode/go-tournament-brackets
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > Go
+    (shortDescription) Go Tournament Bracket Generator Lib is a simple and flexible Go library for creating and managing single-elimination tournament brackets. It also includes a fully interactive command-line application to run a tournament from start to finish.
+    (date) 2025-11-05
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) open-tab-with-respect
+    (title) Open Tab with Respect
+    (size) 1
+    (link) https://github.com/fezcode/open-tab-with-respect
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > WebExtension
+      > JavaScript
+      > Firefox
+      > HTML
+      > CSS
+    (shortDescription) "Open Tab With Respect" is a Firefox/WebExtension that allows users to open new tabs in specific positions relative to the current tab.
+    (date) 2024-01-01
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) clipboard-concat
+    (title) Clipboard Concat
+    (size) 1
+    (link) https://github.com/fezcode/clipboard-concat
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > WebExtension
+      > JavaScript
+      > Firefox
+      > HTML
+      > CSS
+    (shortDescription) "Clipboard Concat" is a Firefox/WebExtension that allows users to concatenate copied links and selections into their clipboard.
+    (date) 2024-01-01
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) boxer
+    (title) Boxer
+    (size) 2
+    (link) https://github.com/fezcode/boxer
+    (pinned) true
+    (isActive) false
+    (technologies)
+      > Linux
+      > C++
+      > C
+      > Ninja
+      > CMake
+      > Archiver
+    (shortDescription) Boxer is a tool that creates archive files based on instructions provided in a boxerfile. Uses CMake and Ninja for its build system.
+    (date) 2024-01-01
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) firefox-themes
+    (title) Firefox Themes
+    (size) 1
+    (link) https://github.com/fezcode
+    (pinned) false
+    (isActive) false
+    (technologies)
+      > WebExtension
+      > JavaScript
+      > Firefox
+      > HTML
+      > CSS
+    (shortDescription) These are themes created for Firefox.
+    (date) 2024-01-01
+    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg

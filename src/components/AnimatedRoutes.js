@@ -147,7 +147,7 @@ const NotebooksPage = lazy(() => import('../pages/notebooks/NotebooksPage'));
 const NotebookViewerPage = lazy(
   () => import('../pages/notebooks/NotebookViewerPage'),
 );
-const NewsPage = lazy(() => import('../pages/NewsPage'));
+
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const SitemapPage = lazy(() => import('../pages/SitemapPage'));
@@ -511,69 +511,53 @@ function AnimatedRoutes() {
           }
         />
         <Route
-          path="/random"
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <RandomPage />
-              </Suspense>
-            </motion.div>
-          }
-        />
-        <Route
-          path="/news" // New route for NewsPage
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <NewsPage />
-              </Suspense>
-            </motion.div>
-          }
-        />
-        <Route
-          path="/apps"
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <AppPage />
-              </Suspense>
-            </motion.div>
-          }
-        />
-        <Route
-          path="/commands"
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <CommandsPage />
-              </Suspense>
-            </motion.div>
-          }
-        />
+                  path="/random"
+                  element={
+                    <motion.div
+                      initial="initial"
+                      animate="in"
+                      exit="out"
+                      variants={pageVariants}
+                      transition={pageTransition}
+                    >
+                      <Suspense fallback={<Loading />}>
+                        <RandomPage />
+                      </Suspense>
+                    </motion.div>
+                  }
+                />
+                        <Route
+                          path="/apps"
+                          element={
+                            <motion.div
+                              initial="initial"
+                              animate="in"
+                              exit="out"
+                              variants={pageVariants}
+                              transition={pageTransition}
+                            >
+                              <Suspense fallback={<Loading />}>
+                                <AppPage />
+                              </Suspense>
+                            </motion.div>
+                          }
+                        />
+                        <Route
+                          path="/commands"
+                          element={
+                            <motion.div
+                              initial="initial"
+                              animate="in"
+                              exit="out"
+                              variants={pageVariants}
+                              transition={pageTransition}
+                            >
+                              <Suspense fallback={<Loading />}>
+                                <CommandsPage />
+                              </Suspense>
+                            </motion.div>
+                          }
+                        />
         <Route
           path="/achievements"
           element={

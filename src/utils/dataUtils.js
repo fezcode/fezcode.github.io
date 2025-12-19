@@ -1,4 +1,5 @@
 // src/utils/dataUtils.js
+import piml from 'piml';
 
 const fetchJson = async (url) => {
   const response = await fetch(url);
@@ -6,6 +7,15 @@ const fetchJson = async (url) => {
     throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
   }
   return response.json();
+};
+
+const fetchPiml = async (url) => {
+  const response = await fetch(url);
+  if (!response.ok) {
+    throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
+  }
+  const text = await response.text();
+  return piml.parse(text);
 };
 
 export const getPosts = async () => {
@@ -55,15 +65,25 @@ export const getPosts = async () => {
 
 export const getProjects = async () => {
   try {
-    const allProjectsData = await fetchJson('/projects/projects.json');
-    // Assuming projects.json directly contains an array of project objects
-    // Each project object should ideally have title, date, and slug properties
-    const formattedProjects = allProjectsData.map((project) => ({
+    const parsedData = await fetchPiml('/projects/projects.piml');
+
+    let projectList = [];
+    if (parsedData.projects && Array.isArray(parsedData.projects)) {
+      projectList = parsedData.projects;
+    } else if (parsedData.item && Array.isArray(parsedData.item)) {
+      projectList = parsedData.item;
+    } else if (Array.isArray(parsedData)) {
+      projectList = parsedData;
+    } else if (typeof parsedData === 'object') {
+      projectList = Object.values(parsedData).find(val => Array.isArray(val)) || [];
+    }
+
+    const formattedProjects = projectList.map((project) => ({
       title: project.title,
-      date: project.date, // Assuming projects have a 'date' field
+      date: project.date,
       slug: project.slug,
       link: `/projects/${project.slug}`,
-      description: project.description || 'A project by Fezcodex.',
+      description: project.shortDescription || 'A project by Fezcodex.',
       image: project.image || '/images/placeholder-project.svg',
     }));
     return formattedProjects;

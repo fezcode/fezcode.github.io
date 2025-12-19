@@ -132,8 +132,7 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen, sidebar
   const isContentActive =
     location.pathname.startsWith('/blog') ||
     location.pathname.startsWith('/projects') ||
-    location.pathname.startsWith('/logs') ||
-    location.pathname.startsWith('/news');
+    location.pathname.startsWith('/logs');
   const isAppsActive =
     location.pathname.startsWith('/pinned-apps') ||
     location.pathname.startsWith('/apps') ||
@@ -249,10 +248,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen, sidebar
                     <ArticleIcon size={24} />
                     <span>Logs</span>
                   </NavLink>
-                  <NavLink to="/news" className={getLinkClass}>
-                    <GlobeSimpleIcon size={24} />
-                    <span>News</span>
-                  </NavLink>
                 </nav>
               )}
             </div>
@@ -321,7 +316,6 @@ const Sidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen, sidebar
                 </nav>
               )}
             </div>
-
             <div className="mt-8">
               <button
                 onClick={() => toggleSection('isExtrasOpen')}

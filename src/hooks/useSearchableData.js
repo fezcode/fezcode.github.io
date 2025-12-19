@@ -39,13 +39,39 @@ const useSearchableData = () => {
         const [postsRes, projectsRes, allLogsArrays, appsRes] =
           await Promise.all([
             fetch('/posts/posts.json'),
-            fetch('/projects/projects.json'),
+            fetch('/projects/projects.piml'),
             Promise.all(fetchLogPromises), // Await all log category fetches
             fetch('/apps/apps.json'),
           ]);
 
         const postsData = await postsRes.json();
-        const projectsData = await projectsRes.json();
+        const pimlProjectsText = await projectsRes.text();
+        const parsedPimlProjects = piml.parse(pimlProjectsText);
+
+        let projectListRaw = [];
+        if (parsedPimlProjects.projects && Array.isArray(parsedPimlProjects.projects)) {
+          projectListRaw = parsedPimlProjects.projects;
+        } else if (parsedPimlProjects.item && Array.isArray(parsedPimlProjects.item)) {
+          projectListRaw = parsedPimlProjects.item;
+        } else if (Array.isArray(parsedPimlProjects)) {
+          projectListRaw = parsedPimlProjects;
+        } else if (typeof parsedPimlProjects === 'object') {
+          projectListRaw = Object.values(parsedPimlProjects).find(val => Array.isArray(val)) || [];
+        }
+
+        // Post-process project list to handle types and arrays (consistent with projectParser.js)
+        const projectsData = projectListRaw.map(project => ({
+          ...project,
+          size: project.size ? parseInt(project.size, 10) : 1,
+          pinned: String(project.pinned).toLowerCase() === 'true',
+          isActive: String(project.isActive).toLowerCase() === 'true',
+          technologies: project.technologies
+            ? (typeof project.technologies === 'string'
+                ? project.technologies.split(',').map(t => t.trim())
+                : project.technologies)
+            : []
+        }));
+
         const appsData = await appsRes.json();
         const combinedLogs = allLogsArrays.flat(); // Flatten the array of arrays from logs
 
@@ -95,9 +121,7 @@ const useSearchableData = () => {
             path: '/projects',
           },
           { title: 'About Me', slug: '/about', type: 'page', path: '/about' },
-          { title: 'Logs', slug: '/logs', type: 'page', path: '/logs' },
-          { title: 'News', slug: '/news', type: 'page', path: '/news' },
-          {
+          { title: 'Logs', slug: '/logs', type: 'page', path: '/logs' },{
             title: 'Fezzilla Roadmap',
             slug: '/roadmap',
             type: 'page',
@@ -122,8 +146,7 @@ const useSearchableData = () => {
             path: '/stories',
           },
           { title: 'Apps', slug: '/apps', type: 'page', path: '/apps' },
-          { title: 'Random', slug: '/random', type: 'page', path: '/random' },
-        ];
+          { title: 'Random', slug: '/random', type: 'page', path: '/random' },        ];
 
         const customCommands = [
           {
