@@ -158,7 +158,7 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
           {/* Section: Status */}
                     <SectionHeader
                       id="isStatusOpen"
-                      label="System_Status"
+                      label="System Status"
                       isOpen={sidebarState.isStatusOpen}
                       active={location.pathname.startsWith('/roadmap') || location.pathname.startsWith('/timeline')}
                     />
@@ -172,13 +172,13 @@ const BrutalistSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpen
                     {/* Section: Extras */}
                     <SectionHeader
                       id="isExtrasOpen"
-                      label="External_Nodes"
+                      label="External Nodes"
                       isOpen={sidebarState.isExtrasOpen}
                       active={location.pathname.startsWith('/stories')}
                     />
                     {sidebarState.isExtrasOpen && (
                       <nav className="flex flex-col">
-                        <SidebarLink to="/stories" icon={Sword} label="S_&_F" getLinkClass={getLinkClass} />
+                        <SidebarLink to="/stories" icon={Sword} label="Serfs & Frauds" getLinkClass={getLinkClass} />
                         <a
                           href="/rss.xml"
                           target="_blank"
