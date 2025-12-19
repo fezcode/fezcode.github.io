@@ -73,6 +73,8 @@ import {
   LockKeyIcon,
   SpeakerHighIcon,
   CheckSquareOffsetIcon,
+  SelectionIcon,
+  AppWindowIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -150,4 +152,6 @@ export const appIcons = {
   LockKeyIcon,
   SpeakerHighIcon,
   CheckSquareOffsetIcon,
+  SelectionIcon,
+  AppWindowIcon,
 };

@@ -141,6 +141,8 @@ const CipherStudioPage = lazy(() => import('../pages/apps/CipherStudioPage'));
 const LogicArchitectPage = lazy(() => import('../pages/apps/LogicArchitectPage'));
 const AtmosphereMixerPage = lazy(() => import('../pages/apps/AtmosphereMixerPage'));
 const TaskGridPage = lazy(() => import('../pages/apps/TaskGridPage'));
+const BlendLabPage = lazy(() => import('../pages/apps/BlendLabPage'));
+const AssetStudioPage = lazy(() => import('../pages/apps/AssetStudioPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
   () => import('../pages/roadmap/RoadmapItemDetailPage'),
@@ -1739,6 +1741,38 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <TaskGridPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/blend-lab"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <BlendLabPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/asset-studio"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <AssetStudioPage />
               </Suspense>
             </motion.div>
           }

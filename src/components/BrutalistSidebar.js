@@ -368,7 +368,7 @@ const BrutalistSidebar = ({
           </div>
           <div className="text-center">
             <p className="font-arvo text-[10px] text-gray-600 uppercase tracking-widest font-medium">
-              {`© ${new Date().getFullYear()} Fezcode // End of Segment`}
+              {`© ${new Date().getFullYear()} Fezcode // Theme: Brutalist`}
             </p>
           </div>
         </div>

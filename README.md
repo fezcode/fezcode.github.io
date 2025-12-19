@@ -1,35 +1,70 @@
-# Fezcode
+# Fezcodex
 
-## Deployment to GitHub Pages
+![Fezcodex Card](public/images/fezcodex-card.jpg)
+### What is this?
+Imagine you have a giant digital toy box. Inside, you keep the cool things you've built, the stories you've written, and a diary of all the interesting things you've learned. Fezcodex is that toy box. It is a special website that works like a personal museum on the internet. It is not just a boring page; it has moving parts, secret "Easter eggs," and little mini-apps like a sound mixer and a stopwatch.
 
-To deploy updates to GitHub Pages after each commit, follow these steps:
+---
 
-1.  **Commit your changes**: Ensure all your desired changes are committed to your main branch (e.g., `main` or `master`).
-2.  **Run the deploy script**: Execute the following command in your terminal:
-    ```bash
-    npm run deploy
-    ```
-    This script will:
-    *   Build your React application for production.
-    *   Push the built files to the `gh-pages` branch of your repository.
+## What can it do?
+- Digital Garden: A place where blog posts and "logs" (mini-diaries about books, movies, or games) grow.
+- Project Archives: A showcase of all the coding experiments and software I've built.
+- Mini-Apps: Built-in tools like an Atmosphere Mixer (for focus sounds), a Typing Tester, and a Stopwatch.
+- Visual Magic: You can change how the whole site looks using the "Visual Matrix" in Settings—make it look like an old computer, a blueprint, or even a comic book.
+- Achievements: Just like a video game, you get little trophies for exploring the site and finding hidden things.
 
-After the script completes, your updated application should be live at `https://fezcode.github.io` within a few minutes.
+---
 
-## About Log Card Fields
+## How is it built? (The Lego Bricks)
+- React and Tailwind CSS: These are the main building blocks that make the site work and look professional.
+- Framer Motion: This is the tool that makes everything move smoothly and animate.
+- Markdown and PIML: These are special ways of writing text so the computer knows how to turn them into beautiful pages.
+- Local Storage: The site remembers your settings and trophies right in your own browser, so it does not need a large database.
 
-The `About Log` card displays the following fields:
+---
 
-*   `title`
-*   `category`
-*   `tags`
-*   `author`
-*   `director`
-*   `platform`
-*   `source`
-*   `artist`
-*   `year`
-*   `creator`
-*   `date`
-*   `rating`
-*   `link`
-*   `updated`
+## Where is everything?
+- src/components/: The small parts (like buttons and cards) used to build pages.
+- src/pages/: The main areas of the house (Home, Blog, Settings, Apps).
+- public/: This is the pantry where all the actual content (text files for posts, images, and sounds) is stored.
+- scripts/: Helper programs that help build the sitemap and RSS feeds.
+
+---
+
+## For the Grown-ups (Technical Setup)
+
+### Prerequisites
+Make sure you have Node.js installed on your computer.
+
+### 1. Get the code
+```bash
+git clone https://github.com/yourusername/fezcodex.git
+cd fezcodex
+```
+
+### 2. Install the tools
+```bash
+npm install
+```
+
+### 3. Start the engine
+```bash
+npm start
+```
+This will open the site at http://localhost:3000.
+
+### 4. Shipping it to the world
+To put the site online (GitHub Pages):
+```bash
+npm run deploy
+```
+
+---
+
+## Rules of the House
+- Styling: We use Tailwind. Keep it Brutalist yet polished.
+- Icons: We use @phosphor-icons/react. Always use the ones ending in Icon (for example, CpuIcon).
+- Logic: Keep it simple. Use Context for global settings like Visual Effects and Animations.
+
+---
+Created by Ahmed Samil Bulbul.
