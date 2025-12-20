@@ -72,7 +72,7 @@ const AchievementsPage = () => {
         {/* Navigation */}
         <Link
           to="/"
-          className="group text-emerald-500 hover:text-emerald-400 flex items-center justify-center gap-2 text-lg mb-4 transition-all"
+          className="group text-emerald-500 hover:text-emerald-400 flex items-center justify-center gap-2 text-lg mb-4 transition-all font-playfairDisplay"
         >
           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
           Back to Home
@@ -80,7 +80,7 @@ const AchievementsPage = () => {
 
         {/* Title Section */}
         <div className="mx-auto max-w-2xl text-center relative z-10">
-          <h1 className="text-4xl font-bold tracking-tight text-stone-100 sm:text-6xl flex flex-col sm:flex-row items-center justify-center gap-4">
+          <h1 className="text-4xl font-bold font-playfairDisplay tracking-tight text-stone-100 sm:text-6xl flex flex-col sm:flex-row items-center justify-center gap-4">
             <div className="relative">
               {/* Nature Glow behind Trophy */}
               <div className="absolute inset-0 bg-emerald-500 blur-2xl opacity-20 rounded-full"></div>
@@ -91,13 +91,18 @@ const AchievementsPage = () => {
               />
             </div>
             Achievements
+            <TrophyIcon
+              size={56}
+              weight="duotone"
+              className="text-emerald-400 relative z-10 drop-shadow-[0_0_15px_rgba(52,211,153,0.4)]"
+            />
           </h1>
-          <p className="mt-6 text-lg leading-8 text-stone-400">
+          <p className="mt-6 text-lg leading-8 text-stone-400 font-arvo">
             Discover the wild secrets hidden within Fezcodex.
           </p>
 
           {/* Filter Pills - Nature Themed */}
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 max-w-2xl mx-auto">
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 max-w-2xl mx-auto font-arvo">
             <div className="flex items-center gap-2 mr-2 text-stone-500 font-mono text-sm">
               <FunnelIcon size={16} />
               <span>Filter:</span>

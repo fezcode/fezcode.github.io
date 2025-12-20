@@ -1,14 +1,6 @@
 // src/utils/dataUtils.js
 import piml from 'piml';
 
-const fetchJson = async (url) => {
-  const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error(`Failed to fetch ${url}: ${response.statusText}`);
-  }
-  return response.json();
-};
-
 const fetchPiml = async (url) => {
   const response = await fetch(url);
   if (!response.ok) {
@@ -18,9 +10,15 @@ const fetchPiml = async (url) => {
   return piml.parse(text);
 };
 
-export const getPosts = async () => {
+/**
+ * Centralized utility to fetch all blog posts and process series information.
+ * Normalizes filenames and attaches series metadata to individual episodes.
+ */
+export const fetchAllBlogPosts = async () => {
   try {
-    const allPostsData = await fetchJson('/posts/posts.json');
+    const response = await fetch('/posts/posts.json');
+    if (!response.ok) throw new Error('Failed to fetch posts.json');
+    const allPostsData = await response.json();
 
     const processedPosts = [];
     allPostsData.forEach((item) => {
@@ -28,19 +26,41 @@ export const getPosts = async () => {
         item.series.posts.forEach((seriesPost) => {
           processedPosts.push({
             ...seriesPost,
+            filename: seriesPost.filename.startsWith('/')
+              ? seriesPost.filename.substring(1)
+              : seriesPost.filename,
             series: {
               slug: item.slug,
               title: item.title,
               date: item.date,
               updated: item.updated,
               authors: item.authors,
+              image: item.image,
             },
           });
         });
       } else {
-        processedPosts.push(item);
+        processedPosts.push({
+          ...item,
+          filename: item.filename?.startsWith('/')
+            ? item.filename.substring(1)
+            : item.filename,
+        });
       }
     });
+    return { allPostsData, processedPosts };
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return { allPostsData: [], processedPosts: [] };
+  }
+};
+
+/**
+ * Legacy utility for simple flattened posts (kept for backwards compatibility if needed)
+ */
+export const getPosts = async () => {
+  try {
+    const { processedPosts } = await fetchAllBlogPosts();
 
     // Flatten series posts and individual posts into a single array
     const flattenedPosts = processedPosts.map((post) => ({

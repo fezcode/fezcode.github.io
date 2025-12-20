@@ -38,6 +38,7 @@ const TerminalGreenBlogPostPage = () => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [readingProgress, setReadingProgress] = useState(0);
+  const [estimatedReadingTime, setEstimatedReadingTime] = useState(0);
   const [modalImageSrc, setModalImageSrc] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
@@ -55,6 +56,9 @@ const TerminalGreenBlogPostPage = () => {
             item.series.posts.forEach((seriesPost) => {
               allPosts.push({
                 ...seriesPost,
+                filename: seriesPost.filename.startsWith('/')
+                  ? seriesPost.filename.substring(1)
+                  : seriesPost.filename,
                 series: { slug: item.slug, title: item.title },
               });
             });
@@ -73,7 +77,17 @@ const TerminalGreenBlogPostPage = () => {
         const postContentResponse = await fetch(`/${contentPath}`);
         const postBody = await postContentResponse.text();
 
-        setPost({ attributes: postMetadata, body: postBody });
+        let seriesPosts = [];
+        if (postMetadata.series) {
+          const originalSeries = allPostsData.find(
+            (item) => item.series && item.slug === postMetadata.series.slug,
+          );
+          if (originalSeries) seriesPosts = originalSeries.series.posts;
+        }
+
+        setPost({ attributes: postMetadata, body: postBody, seriesPosts });
+        const { calculateReadingTime } = await import('../utils/readingTime');
+        setEstimatedReadingTime(calculateReadingTime(postBody));
       } catch (error) {
         console.error('Error fetching terminal post:', error);
       } finally {
@@ -142,6 +156,12 @@ const TerminalGreenBlogPostPage = () => {
     );
   if (!post) return null;
 
+  const currentPostIndex = post.seriesPosts?.findIndex(
+    (item) => item.slug === currentSlug,
+  );
+  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+
   return (
     <div className="min-h-screen bg-black text-emerald-500 font-mono relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">
       <style>{`
@@ -182,17 +202,25 @@ const TerminalGreenBlogPostPage = () => {
         <div className="relative mx-auto max-w-5xl px-6">
           {' '}
           <Link
-            to="/blog"
+            to={
+              post.attributes.series
+                ? `/blog/series/${post.attributes.series.slug}`
+                : '/blog'
+            }
             className="inline-flex items-center gap-2 border border-emerald-500/30 px-4 py-1 text-[10px] uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all mb-8"
           >
-            <ArrowLeft weight="bold" /> [ BACK_TO_INDEX ]
+            <ArrowLeft weight="bold" /> [{' '}
+            {post.attributes.series ? 'BACK_TO_SERIES' : 'BACK_TO_INDEX'} ]
           </Link>
           <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-tight drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">
             {post.attributes.title}
           </h1>
-          <div className="mt-8 flex gap-6 text-[10px] uppercase tracking-widest text-emerald-500/60">
+          <div className="mt-8 flex flex-wrap gap-6 text-[10px] uppercase tracking-widest text-emerald-500/60">
             <span>
               {'//'} DATE: {new Date(post.attributes.date).toLocaleDateString()}
+            </span>
+            <span>
+              {'//'} PROCESS_TIME: {estimatedReadingTime} MIN_READ
             </span>
             <span>{'//'} TERM: SESSION_01</span>
           </div>
@@ -224,6 +252,48 @@ const TerminalGreenBlogPostPage = () => {
             {post.body}
           </ReactMarkdown>
         </article>
+
+        {/* Series Nav Section */}
+        {(prevPost || nextPost) && (
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-emerald-500/30 pt-12">
+            {prevPost ? (
+              <Link
+                to={
+                  post.attributes.series
+                    ? `/blog/series/${post.attributes.series.slug}/${prevPost.slug}`
+                    : `/blog/${prevPost.slug}`
+                }
+                className="group border border-emerald-500/20 p-6 transition-colors hover:bg-emerald-500/10"
+              >
+                <span className="block font-mono text-[10px] uppercase text-emerald-800 group-hover:text-emerald-500 mb-2">
+                  [ PREVIOUS_ENTRY ]
+                </span>
+                <span className="text-xl font-bold uppercase text-emerald-400">
+                  {prevPost.title}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {nextPost && (
+              <Link
+                to={
+                  post.attributes.series
+                    ? `/blog/series/${post.attributes.series.slug}/${nextPost.slug}`
+                    : `/blog/${nextPost.slug}`
+                }
+                className="group border border-emerald-500/20 p-6 text-right transition-colors hover:bg-emerald-500/10"
+              >
+                <span className="block font-mono text-[10px] uppercase text-emerald-800 group-hover:text-emerald-500 mb-2">
+                  [ NEXT_ENTRY ]
+                </span>
+                <span className="text-xl font-bold uppercase text-emerald-400">
+                  {nextPost.title}
+                </span>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
 
       <CodeModal

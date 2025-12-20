@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import PostItem from '../components/PostItem';
 import GenerativeArt from '../components/GenerativeArt';
 import useSeo from '../hooks/useSeo';
+import { fetchAllBlogPosts } from '../utils/dataUtils';
 import {
   ArrowLeft,
   XCircle,
@@ -37,60 +38,50 @@ const BlogPage = () => {
   const [activePost, setActivePost] = useState(null);
 
   useEffect(() => {
-    const fetchPostSlugs = async () => {
+    const fetchPosts = async () => {
       try {
-        const response = await fetch('/posts/posts.json');
-        if (response.ok) {
-          const allPostsData = await response.json();
-          const seriesMap = new Map();
-          const individualPosts = [];
+        const { processedPosts } = await fetchAllBlogPosts();
 
-          allPostsData.forEach((item) => {
-            if (item.series) {
-              if (!seriesMap.has(item.slug)) {
-                seriesMap.set(item.slug, {
-                  title: item.title,
-                  slug: item.slug,
-                  date: item.date,
-                  updated: item.updated,
-                  image: item.image,
-                  isSeries: true,
-                  posts: [],
-                });
-              }
-              item.series.posts.forEach((seriesPost) => {
-                seriesMap.get(item.slug).posts.push({
-                  ...seriesPost,
-                  series: {
-                    slug: item.slug,
-                    title: item.title,
-                  },
-                });
+        const seriesMap = new Map();
+        const individualPosts = [];
+
+        processedPosts.forEach((post) => {
+          if (post.series) {
+            if (!seriesMap.has(post.series.slug)) {
+              seriesMap.set(post.series.slug, {
+                title: post.series.title,
+                slug: post.series.slug,
+                date: post.date,
+                updated: post.updated,
+                image: post.series.image,
+                isSeries: true,
+                posts: [],
               });
-            } else {
-              individualPosts.push(item);
             }
-          });
+            seriesMap.get(post.series.slug).posts.push(post);
+          } else {
+            individualPosts.push(post);
+          }
+        });
 
-          const combinedItems = [
-            ...Array.from(seriesMap.values()),
-            ...individualPosts,
-          ];
-          combinedItems.sort(
-            (a, b) =>
-              new Date(b.updated || b.date) - new Date(a.updated || a.date),
-          );
+        const combinedItems = [
+          ...Array.from(seriesMap.values()),
+          ...individualPosts,
+        ];
+        combinedItems.sort(
+          (a, b) =>
+            new Date(b.updated || b.date) - new Date(a.updated || a.date),
+        );
 
-          setDisplayItems(combinedItems);
-          if (combinedItems.length > 0) setActivePost(combinedItems[0]);
-        }
+        setDisplayItems(combinedItems);
+        if (combinedItems.length > 0) setActivePost(combinedItems[0]);
       } catch (error) {
         console.error('Error fetching blog data:', error);
       } finally {
         setLoading(false);
       }
     };
-    fetchPostSlugs();
+    fetchPosts();
   }, []);
 
   const filteredItems = displayItems.filter((item) => {

@@ -275,7 +275,7 @@ const SettingsPage = () => {
                     { label: 'Standard', value: 'standard' },
                     { label: 'Classic', value: 'old' },
                     { label: 'Dossier', value: 'dossier' },
-                    { label: 'Archive', value: 'dokument' },
+                    { label: 'Dokument', value: 'dokument' },
                     { label: 'Terminal (Amber)', value: 'terminal' },
                     { label: 'Terminal (Emerald)', value: 'terminal-green' },
                   ]}

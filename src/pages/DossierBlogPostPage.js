@@ -20,6 +20,7 @@ import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
 import ImageModal from '../components/ImageModal';
 import { useToast } from '../hooks/useToast';
+import { fetchAllBlogPosts } from '../utils/dataUtils';
 
 const dossierCodeTheme = {
   'code[class*="language-"]': {
@@ -132,25 +133,11 @@ const DossierBlogPostPage = () => {
     const fetchPost = async () => {
       setLoading(true);
       try {
-        const postsResponse = await fetch('/posts/posts.json');
-        if (!postsResponse.ok) throw new Error('Failed to fetch posts.json');
+        const { allPostsData, processedPosts } = await fetchAllBlogPosts();
 
-        const allPostsData = await postsResponse.json();
-        let allPosts = [];
-        allPostsData.forEach((item) => {
-          if (item.series) {
-            item.series.posts.forEach((seriesPost) => {
-              allPosts.push({
-                ...seriesPost,
-                series: { slug: item.slug, title: item.title },
-              });
-            });
-          } else {
-            allPosts.push(item);
-          }
-        });
-
-        const postMetadata = allPosts.find((item) => item.slug === currentSlug);
+        const postMetadata = processedPosts.find(
+          (item) => item.slug === currentSlug,
+        );
         if (!postMetadata) {
           navigate('/404');
           return;
@@ -341,6 +328,12 @@ const DossierBlogPostPage = () => {
     ? `/blog/series/${post.attributes.series.slug}`
     : '/blog';
 
+  const currentPostIndex = post.seriesPosts?.findIndex(
+    (item) => item.slug === currentSlug,
+  );
+  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+
   return (
     <div className="min-h-screen bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans relative">
       <Seo
@@ -369,7 +362,8 @@ const DossierBlogPostPage = () => {
           to={backLink}
           className="inline-flex items-center gap-2 text-black/60 hover:text-black mb-12 font-mono text-xs tracking-widest uppercase hover:underline decoration-black/30 underline-offset-4 transition-all"
         >
-          <ArrowLeft weight="bold" /> Return to Index
+          <ArrowLeft weight="bold" />{' '}
+          {post.attributes.series ? 'Return to Series' : 'Return to Index'}
         </Link>
 
         {post.attributes.image && (
@@ -469,6 +463,48 @@ const DossierBlogPostPage = () => {
             {post.body}
           </ReactMarkdown>
         </article>
+
+        {/* Series Nav Section */}
+        {(prevPost || nextPost) && (
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-black/10 pt-12">
+            {prevPost ? (
+              <Link
+                to={
+                  post.attributes.series
+                    ? `/blog/series/${post.attributes.series.slug}/${prevPost.slug}`
+                    : `/blog/${prevPost.slug}`
+                }
+                className="group border border-black/10 p-6 transition-colors hover:bg-black hover:text-white"
+              >
+                <span className="block font-mono text-[10px] uppercase text-gray-400 group-hover:text-gray-300 mb-2">
+                  Previous File
+                </span>
+                <span className="text-xl font-bold uppercase">
+                  {prevPost.title}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {nextPost && (
+              <Link
+                to={
+                  post.attributes.series
+                    ? `/blog/series/${post.attributes.series.slug}/${nextPost.slug}`
+                    : `/blog/${nextPost.slug}`
+                }
+                className="group border border-black/10 p-6 text-right transition-colors hover:bg-black hover:text-white"
+              >
+                <span className="block font-mono text-[10px] uppercase text-gray-400 group-hover:text-gray-300 mb-2">
+                  Next File
+                </span>
+                <span className="text-xl font-bold uppercase">
+                  {nextPost.title}
+                </span>
+              </Link>
+            )}
+          </div>
+        )}
 
         <footer className="mt-32 pt-12 border-t border-black flex flex-col md:flex-row justify-between items-center gap-6 font-mono text-xs uppercase tracking-widest text-gray-500">
           <div className="flex items-center gap-2">

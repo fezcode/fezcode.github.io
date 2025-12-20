@@ -30,13 +30,26 @@ const PostItem = ({
       ? 'var(--color-dev-badge)'
       : category === 'series'
         ? 'var(--color-series-badge)'
-        : category === 'd&d'
+        : category === 'd&d' || category === 'dnd'
           ? 'var(--color-dnd-badge)'
           : category === 'gist'
             ? 'var(--color-gist-badge)'
             : category === 'feat'
               ? 'var(--color-feat-badge)'
               : 'var(--color-rant-badge)';
+
+  const categoryBg =
+    category === 'dev'
+      ? 'rgba(59, 130, 246, 0.3)'
+      : category === 'series'
+        ? 'rgba(237, 197, 49, 0.3)'
+        : category === 'd&d' || category === 'dnd'
+          ? 'rgba(236, 72, 153, 0.3)'
+          : category === 'gist'
+            ? 'rgba(245, 158, 11, 0.3)'
+            : category === 'feat'
+              ? 'rgba(168, 85, 247, 0.3)'
+              : 'rgba(16, 185, 129, 0.2)';
 
   return (
     <motion.div
@@ -96,7 +109,8 @@ const PostItem = ({
 
             {series && (
               <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-500/60">
-                {series} {'//'} Part {seriesIndex}
+                {typeof series === 'object' ? series.title : series} {'//'} Part{' '}
+                {seriesIndex}
               </span>
             )}
           </div>
@@ -105,11 +119,10 @@ const PostItem = ({
         {/* Category Badge & Arrow */}
         <div className="flex items-center gap-4 flex-shrink-0">
           <span
-            className="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm transition-all duration-300"
+            className="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm transition-all duration-300 text-gray-300"
             style={{
-              color: categoryColor,
-              borderColor: `${categoryColor}44`,
-              backgroundColor: isActive ? `${categoryColor}11` : 'transparent',
+              borderColor: categoryColor,
+              backgroundColor: categoryBg,
             }}
           >
             {category || 'Post'}

@@ -68,6 +68,9 @@ const OldBlogPostPage = () => {
             item.series.posts.forEach((seriesPost) => {
               allPosts.push({
                 ...seriesPost,
+                filename: seriesPost.filename.startsWith('/')
+                  ? seriesPost.filename.substring(1)
+                  : seriesPost.filename,
                 series: { slug: item.slug, title: item.title },
               });
             });

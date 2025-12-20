@@ -15,6 +15,7 @@ import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
 import ImageModal from '../components/ImageModal';
 import { useToast } from '../hooks/useToast';
+import { fetchAllBlogPosts } from '../utils/dataUtils';
 
 const terminalCodeTheme = {
   'code[class*="language-"]': {
@@ -128,25 +129,11 @@ const TerminalBlogPostPage = () => {
     const fetchPost = async () => {
       setLoading(true);
       try {
-        const postsResponse = await fetch('/posts/posts.json');
-        if (!postsResponse.ok) throw new Error('Failed to fetch posts.json');
+        const { allPostsData, processedPosts } = await fetchAllBlogPosts();
 
-        const allPostsData = await postsResponse.json();
-        let allPosts = [];
-        allPostsData.forEach((item) => {
-          if (item.series) {
-            item.series.posts.forEach((seriesPost) => {
-              allPosts.push({
-                ...seriesPost,
-                series: { slug: item.slug, title: item.title },
-              });
-            });
-          } else {
-            allPosts.push(item);
-          }
-        });
-
-        const postMetadata = allPosts.find((item) => item.slug === currentSlug);
+        const postMetadata = processedPosts.find(
+          (item) => item.slug === currentSlug,
+        );
         if (!postMetadata) {
           navigate('/404');
           return;
@@ -317,6 +304,12 @@ const TerminalBlogPostPage = () => {
     );
   }
 
+  const currentPostIndex = post.seriesPosts?.findIndex(
+    (item) => item.slug === currentSlug,
+  );
+  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+
   const backLink = post.attributes.series
     ? `/blog/series/${post.attributes.series.slug}`
     : '/blog';
@@ -428,6 +421,48 @@ const TerminalBlogPostPage = () => {
             {post.body}
           </ReactMarkdown>
         </article>
+
+        {/* Series Nav Section */}
+        {(prevPost || nextPost) && (
+          <div className="mt-24 grid grid-cols-1 md:grid-cols-2 gap-4 border-t border-orange-500/30 pt-12">
+            {prevPost ? (
+              <Link
+                to={
+                  post.attributes.series
+                    ? `/blog/series/${post.attributes.series.slug}/${prevPost.slug}`
+                    : `/blog/${prevPost.slug}`
+                }
+                className="group border border-orange-500/20 p-6 transition-colors hover:bg-orange-500/10"
+              >
+                <span className="block font-mono text-[10px] uppercase text-orange-700 group-hover:text-orange-500 mb-2">
+                  [ PREVIOUS_DATA ]
+                </span>
+                <span className="text-xl font-bold uppercase text-orange-300">
+                  {prevPost.title}
+                </span>
+              </Link>
+            ) : (
+              <div />
+            )}
+            {nextPost && (
+              <Link
+                to={
+                  post.attributes.series
+                    ? `/blog/series/${post.attributes.series.slug}/${nextPost.slug}`
+                    : `/blog/${nextPost.slug}`
+                }
+                className="group border border-orange-500/20 p-6 text-right transition-colors hover:bg-orange-500/10"
+              >
+                <span className="block font-mono text-[10px] uppercase text-orange-700 group-hover:text-orange-500 mb-2">
+                  [ NEXT_DATA ]
+                </span>
+                <span className="text-xl font-bold uppercase text-orange-300">
+                  {nextPost.title}
+                </span>
+              </Link>
+            )}
+          </div>
+        )}
       </div>
 
       <CodeModal

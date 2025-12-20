@@ -103,7 +103,7 @@ const useSearchableData = () => {
                 ...p,
                 type: 'post',
                 title: `${item.title}: ${p.title}`,
-                path: `/blog/${p.slug}`,
+                path: `/blog/series/${item.slug}/${p.slug}`,
               }))
             : { ...item, type: 'post', path: `/blog/${item.slug}` },
         );
