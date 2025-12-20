@@ -6,7 +6,6 @@ import {
   PlusIcon,
   TrashIcon,
   PencilSimpleIcon,
-  FloppyDiskIcon,
   ArrowCounterClockwiseIcon,
   PlayIcon,
   RowsIcon,
@@ -191,13 +190,6 @@ function TournamentBracketPage() {
       newBracket[nextRoundIndex][nextMatchIndex][1] = winner;
     }
     setBracket(newBracket);
-  };
-
-  const resetScores = () => {
-    setScores({});
-    setChampion(null);
-    setAdvancedMatches({});
-    generateBracket(competitors);
   };
 
   const resetTournament = () => {

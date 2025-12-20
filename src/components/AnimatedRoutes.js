@@ -143,6 +143,7 @@ const AtmosphereMixerPage = lazy(() => import('../pages/apps/AtmosphereMixerPage
 const TaskGridPage = lazy(() => import('../pages/apps/TaskGridPage'));
 const BlendLabPage = lazy(() => import('../pages/apps/BlendLabPage'));
 const AssetStudioPage = lazy(() => import('../pages/apps/AssetStudioPage'));
+const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
   () => import('../pages/roadmap/RoadmapItemDetailPage'),
@@ -1773,6 +1774,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <AssetStudioPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/poster-loom"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <PosterLoomPage />
               </Suspense>
             </motion.div>
           }
