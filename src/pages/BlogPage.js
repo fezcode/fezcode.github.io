@@ -42,43 +42,33 @@ const BlogPage = () => {
         const response = await fetch('/posts/posts.json');
         if (response.ok) {
           const allPostsData = await response.json();
-          const processedPosts = [];
-          allPostsData.forEach((item) => {
-            if (item.series) {
-              item.series.posts.forEach((seriesPost) => {
-                processedPosts.push({
-                  ...seriesPost,
-                  series: {
-                    slug: item.slug,
-                    title: item.title,
-                    date: item.date,
-                    updated: item.updated,
-                    authors: item.authors,
-                  },
-                });
-              });
-            } else {
-              processedPosts.push(item);
-            }
-          });
-
           const seriesMap = new Map();
           const individualPosts = [];
-          processedPosts.forEach((post) => {
-            if (post.series) {
-              if (!seriesMap.has(post.series.slug)) {
-                seriesMap.set(post.series.slug, {
-                  title: post.series.title,
-                  slug: post.series.slug,
-                  date: post.date,
-                  updated: post.updated,
+
+          allPostsData.forEach((item) => {
+            if (item.series) {
+              if (!seriesMap.has(item.slug)) {
+                seriesMap.set(item.slug, {
+                  title: item.title,
+                  slug: item.slug,
+                  date: item.date,
+                  updated: item.updated,
+                  image: item.image,
                   isSeries: true,
                   posts: [],
                 });
               }
-              seriesMap.get(post.series.slug).posts.push(post);
+              item.series.posts.forEach((seriesPost) => {
+                seriesMap.get(item.slug).posts.push({
+                  ...seriesPost,
+                  series: {
+                    slug: item.slug,
+                    title: item.title,
+                  },
+                });
+              });
             } else {
-              individualPosts.push(post);
+              individualPosts.push(item);
             }
           });
 
@@ -120,6 +110,9 @@ const BlogPage = () => {
     return matchesFilter() && matchesSearch();
   });
 
+  const isPlaceholder = (post) =>
+    !post?.image || post.image.includes('placeholder');
+
   if (loading) {
     return (
       <div className="flex h-screen items-center justify-center bg-[#050505] text-white">
@@ -137,6 +130,23 @@ const BlogPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
+      {/* Dynamic Background (Static or Active Post Blur) */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
+        {activePost &&
+          (isPlaceholder(activePost) ? (
+            <GenerativeArt
+              seed={activePost.title}
+              className="w-full h-full filter blur-3xl"
+            />
+          ) : (
+            <img
+              src={activePost.image}
+              alt="bg"
+              className="w-full h-full object-cover filter blur-3xl"
+            />
+          ))}
+      </div>
+
       {/* LEFT PANEL: The Index */}
       <div className="w-full 4xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300">
         <header className="mb-16">

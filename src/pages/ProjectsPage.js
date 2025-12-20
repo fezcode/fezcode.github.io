@@ -59,8 +59,8 @@ const ProjectsPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
-      {/* Mobile Background (Static or Active Project Blur) */}
-      <div className="absolute inset-0 4xl:hidden opacity-20 pointer-events-none z-0">
+      {/* Dynamic Background (Static or Active Project Blur) */}
+      <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
         {activeProject &&
           (isPlaceholder(activeProject) ? (
             <GenerativeArt
