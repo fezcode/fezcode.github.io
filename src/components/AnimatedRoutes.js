@@ -144,6 +144,7 @@ const TaskGridPage = lazy(() => import('../pages/apps/TaskGridPage'));
 const BlendLabPage = lazy(() => import('../pages/apps/BlendLabPage'));
 const AssetStudioPage = lazy(() => import('../pages/apps/AssetStudioPage'));
 const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
+const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
   () => import('../pages/roadmap/RoadmapItemDetailPage'),
@@ -1795,6 +1796,22 @@ const AnimatedRoutes = ({
           }
         />
         <Route
+          path="/apps/symbol-flow"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <SymbolFlowPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
           path="/apps/lorem-ipsum-generator"
           element={
             <motion.div
@@ -1989,17 +2006,33 @@ const AnimatedRoutes = ({
         <Route
           path="/apps/topographic-maps"
           element={
-            <Suspense fallback={<Loading />}>
-              <TopographicMapPage />
-            </Suspense>
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <TopographicMapPage />
+              </Suspense>
+            </motion.div>
           }
         />
         <Route
           path="/apps/rotary-phone"
           element={
-            <Suspense fallback={<Loading />}>
-              <RotaryPhonePage />
-            </Suspense>
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <RotaryPhonePage />
+              </Suspense>
+            </motion.div>
           }
         />
         <Route
