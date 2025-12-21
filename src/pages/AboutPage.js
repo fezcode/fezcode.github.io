@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import {
   ArrowLeft,
   TreeStructure,
@@ -21,11 +21,11 @@ import useSeo from '../hooks/useSeo';
 
 const ViewSwitcher = ({ currentView, setView }) => {
   const views = [
+    { id: 'brutalist', icon: Bug, label: 'Brutalist' },
     { id: 'dossier', icon: Article, label: 'Dossier' },
     { id: 'hud', icon: Terminal, label: 'Terminal' },
     { id: 'blueprint', icon: TreeStructure, label: 'Blueprint' },
     { id: 'map', icon: Graph, label: 'Mind Map' },
-    { id: 'brutalist', icon: Bug, label: 'Brutalist' },
   ];
 
   return (
@@ -55,7 +55,15 @@ const ViewSwitcher = ({ currentView, setView }) => {
 };
 
 const AboutPage = () => {
-  const [view, setView] = useState('dossier');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const validViews = ['dossier', 'hud', 'blueprint', 'map', 'brutalist'];
+  const viewParam = searchParams.get('v');
+  const view = validViews.includes(viewParam) ? viewParam : 'brutalist';
+
+  const setView = (newView) => {
+    setSearchParams({ v: newView }, { replace: true });
+  };
+
   const { unlockAchievement } = useAchievements();
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
 
