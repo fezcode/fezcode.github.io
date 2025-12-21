@@ -7,9 +7,33 @@ const BreadcrumbTitle = ({
   gradient = true,
   sansFont = false,
   lightStyle = true,
+  variant = 'default',
 }) => {
   // Use provided breadcrumbs array, or fallback to default ['fc', 'apps', slug]
   const parts = breadcrumbs || (slug ? ['fc', 'apps', slug] : []);
+  const isBrutalist = variant === 'brutalist';
+
+  if (isBrutalist) {
+    return (
+      <div className="flex flex-col gap-2 mb-8">
+        <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400">
+          {parts.map((part, index) => (
+            <React.Fragment key={index}>
+              <span className={index === parts.length - 1 ? 'text-emerald-500 font-bold' : ''}>
+                {part}
+              </span>
+              {index < parts.length - 1 && (
+                <span className="text-gray-600 font-bold "> {'//'}</span>
+              )}
+            </React.Fragment>
+          ))}
+        </div>
+        <h1 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase leading-none">
+          {title}
+        </h1>
+      </div>
+    );
+  }
 
   return (
     <div

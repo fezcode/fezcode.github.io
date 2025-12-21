@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CirclesFourIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import {
+  ArrowLeftIcon,
+  CirclesFourIcon,
+  ArrowsClockwiseIcon,
+  InfoIcon,
+  ShieldCheckIcon,
+  TrophyIcon
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import { useAchievements } from '../../context/AchievementContext';
+import GenerativeArt from '../../components/GenerativeArt';
 
-const BUBBLE_COUNT = 100; // Number of bubbles
+const BUBBLE_COUNT = 100;
 
 const BubbleWrapPage = () => {
   useSeo({
@@ -25,8 +32,6 @@ const BubbleWrapPage = () => {
   const { unlockAchievement } = useAchievements();
   const [bubbles, setBubbles] = useState(Array(BUBBLE_COUNT).fill(false));
   const [popCount, setPopCount] = useState(0);
-
-  // Audio context for simple pop sound
   const [audioContext, setAudioContext] = useState(null);
 
   useEffect(() => {
@@ -48,19 +53,19 @@ const BubbleWrapPage = () => {
     oscillator.connect(gainNode);
     gainNode.connect(audioContext.destination);
 
-    oscillator.type = 'square'; // Change to square wave for a harsher sound
-    oscillator.frequency.value = 100 + Math.random() * 200; // Lower frequency for more bass
+    oscillator.type = 'square';
+    oscillator.frequency.value = 100 + Math.random() * 200;
 
     const now = audioContext.currentTime;
-    gainNode.gain.setValueAtTime(0.5, now); // Start louder
-    gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.08); // Faster and shorter decay
+    gainNode.gain.setValueAtTime(0.5, now);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
 
     oscillator.start(now);
-    oscillator.stop(now + 0.08); // Very short duration
+    oscillator.stop(now + 0.08);
   };
 
   const popBubble = (index) => {
-    if (bubbles[index]) return; // Already popped
+    if (bubbles[index]) return;
 
     const newBubbles = [...bubbles];
     newBubbles[index] = true;
@@ -74,84 +79,138 @@ const BubbleWrapPage = () => {
     setPopCount(0);
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
+  const progress = Math.round((popCount / BUBBLE_COUNT) * 100);
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Bubble Wrap" slug="pop" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-3xl"
-            style={cardStyle}
-          >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1 text-center">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center justify-center gap-2">
-                <CirclesFourIcon size={32} /> Bubble Wrap
-              </h1>
-              <hr className="border-gray-700 mb-6" />
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
-              <div className="flex justify-between items-center mb-6 px-4">
-                <div className="text-xl font-bold">Popped: {popCount}</div>
-                <button
-                  onClick={resetBubbles}
-                  className="px-4 py-2 rounded-md text-sm font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                  style={{
-                    borderColor: cardStyle.color,
-                    color: cardStyle.color,
-                  }}
-                >
-                  Get a fresh sheet
-                </button>
-              </div>
+        <header className="mb-24">
+          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
+            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+            <span>Applications</span>
+          </Link>
 
-              <div className="grid grid-cols-5 sm:grid-cols-10 gap-2 justify-items-center">
-                {bubbles.map((isPopped, index) => (
-                  <button
-                    key={index}
-                    onClick={() => popBubble(index)}
-                    className={`w-12 h-12 rounded-full border-2 transition-all duration-100 relative overflow-hidden focus:outline-none
-                      ${
-                        isPopped
-                          ? 'bg-transparent scale-95 opacity-50 border-gray-600'
-                          : 'bg-white/10 hover:bg-white/20 scale-100 cursor-pointer'
-                      }`}
-                    style={{
-                      borderColor: isPopped ? 'gray' : cardStyle.color,
-                      boxShadow: isPopped
-                        ? 'inset 0 0 5px rgba(0,0,0,0.5)'
-                        : '0 4px 6px rgba(0,0,0,0.3)',
-                    }}
-                  >
-                    {!isPopped && (
-                      <div className="absolute top-2 left-2 w-3 h-3 bg-white rounded-full opacity-30 blur-[1px]"></div>
-                    )}
-                  </button>
-                ))}
-              </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle
+                title="Bubble Wrap"
+                slug="pop"
+                variant="brutalist"
+              />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Digital stress relief. Pop virtual cells to satisfy your tactile cravings.
+              </p>
             </div>
           </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* Controls & Configuration */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2">
+                <CirclesFourIcon weight="fill" />
+                Status
+              </h3>
+
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <div className="flex justify-between items-end">
+                    <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">Completion</label>
+                    <span className="text-xl font-black text-emerald-500">{progress}%</span>
+                  </div>
+                  <div className="w-full bg-gray-800 h-1 rounded-sm overflow-hidden">
+                    <div
+                      className="bg-emerald-500 h-full transition-all duration-300"
+                      style={{ width: `${progress}%` }}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-4 pt-4 border-t border-white/5">
+                   <div className="flex justify-between items-end">
+                      <label className="font-mono text-[10px] text-gray-500 uppercase">Popped Cells</label>
+                      <span className="text-xl font-black text-white">{popCount} <span className="text-gray-600 text-sm">/ {BUBBLE_COUNT}</span></span>
+                    </div>
+                </div>
+
+                <button
+                    onClick={resetBubbles}
+                    className="w-full py-3 border border-white/10 hover:border-white text-gray-400 hover:text-white transition-all text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2"
+                  >
+                    <ArrowsClockwiseIcon size={16} weight="bold" />
+                    Reset Sheet
+                  </button>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-4">
+              <InfoIcon size={24} className="text-gray-700 shrink-0" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Popping all cells triggers a completion event. Use this tool to reduce anxiety or procrastinate effectively.
+              </p>
+            </div>
+          </div>
+
+          {/* Game Area */}
+          <div className="lg:col-span-8 space-y-12">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group min-h-[600px] flex items-center justify-center">
+               <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt seed="bubblewrap" className="w-full h-full" />
+              </div>
+
+              <div className="relative z-10 w-full max-w-2xl">
+                <div className="grid grid-cols-10 gap-2 sm:gap-3 md:gap-4 justify-items-center">
+                    {bubbles.map((isPopped, index) => (
+                    <button
+                        key={index}
+                        onClick={() => popBubble(index)}
+                        className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 transition-all duration-200 relative overflow-hidden focus:outline-none group/bubble
+                        ${
+                            isPopped
+                            ? 'bg-transparent border-gray-800 scale-90'
+                            : 'bg-emerald-500/10 border-emerald-500/30 hover:bg-emerald-500/20 hover:border-emerald-500 hover:scale-105 cursor-pointer'
+                        }`}
+                    >
+                       {!isPopped && (
+                           <>
+                             <div className="absolute inset-0 opacity-0 group-hover/bubble:opacity-100 transition-opacity bg-emerald-400/10" />
+                             <div className="absolute top-1.5 left-1.5 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-white rounded-full opacity-20 blur-[0.5px] pointer-events-none" />
+                           </>
+                       )}
+                       {isPopped && (
+                           <div className="absolute inset-0 flex items-center justify-center">
+                               <div className="w-1 h-1 bg-gray-800 rounded-full" />
+                           </div>
+                       )}
+                    </button>
+                    ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <ShieldCheckIcon size={32} className="text-emerald-500/50" />
+                <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Audio Engine: Active</span>
+              </div>
+               {popCount === BUBBLE_COUNT && (
+                 <div className="flex items-center gap-2 text-emerald-500 animate-pulse">
+                    <TrophyIcon weight="fill" />
+                    <span className="text-[10px] font-mono uppercase tracking-widest font-bold">Sheet Cleared</span>
+                 </div>
+               )}
+            </div>
+          </div>
+
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Bubble_Wrap_v1.0.0</span>
+          <span className="text-gray-800">SIMULATION // ACTIVE</span>
+        </footer>
       </div>
     </div>
   );
