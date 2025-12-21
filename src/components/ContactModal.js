@@ -1,34 +1,46 @@
 import React from 'react';
-import { Envelope, LinkedinLogo, TwitterLogo } from '@phosphor-icons/react';
+import {
+  EnvelopeSimpleIcon,
+  LinkedinLogoIcon,
+  TwitterLogoIcon,
+  GithubLogoIcon,
+  GlobeIcon,
+} from '@phosphor-icons/react';
 import GenericModal from './GenericModal';
+import { useSiteConfig } from '../context/SiteConfigContext';
+
+const socialIcons = {
+  GithubLogo: GithubLogoIcon,
+  TwitterLogo: TwitterLogoIcon,
+  LinkedinLogo: LinkedinLogoIcon,
+  EnvelopeSimple: EnvelopeSimpleIcon,
+};
 
 const ContactModal = ({ isOpen, onClose }) => {
+  const { config } = useSiteConfig();
+
   return (
     <GenericModal isOpen={isOpen} onClose={onClose} title="Contact">
       <div className="flex flex-col gap-6">
-        <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-xs">
-          Reach out through any of these channels:
+        <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-[10px]">
+          {/* // CONNECT_PROTOCOLS */}
+          {'//'} Establish connection via established protocols:
         </p>
 
         <div className="flex flex-col gap-3">
-          <ContactLink
-            href="mailto:samil.bulbul@gmail.com"
-            icon={Envelope}
-            label="Email"
-            value="samil.bulbul@gmail.com"
-          />
-          <ContactLink
-            href="https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US"
-            icon={LinkedinLogo}
-            label="LinkedIn"
-            value="Ahmed Samil Bulbul"
-          />
-          <ContactLink
-            href="https://x.com/fezcoddy"
-            icon={TwitterLogo}
-            label="Twitter"
-            value="@fezcoddy"
-          />
+          {config?.socials &&
+            config.socials.map((link) => {
+              const Icon = socialIcons[link.icon] || GlobeIcon;
+              return (
+                <ContactLink
+                  key={link.id}
+                  href={link.url}
+                  icon={Icon}
+                  label={link.label}
+                  value={link.url.replace(/^mailto:/, '').replace(/^https?:\/\//, '')}
+                />
+              );
+            })}
         </div>
       </div>
     </GenericModal>

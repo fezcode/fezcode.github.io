@@ -1,0 +1,3 @@
+#!/bin/sh
+# Native git hook to run commitlint via node script
+node scripts/verify-commit.js "$1"

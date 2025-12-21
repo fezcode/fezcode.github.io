@@ -19,15 +19,16 @@ import {
   ArrowRightIcon,
   SwordIcon,
   RssIcon,
+  GraphIcon,
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
-  GraphIcon,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 import { useAchievements } from '../context/AchievementContext';
+import { useSiteConfig } from '../context/SiteConfigContext';
 
 const BrutalistSidebar = ({
   isOpen,
@@ -35,6 +36,7 @@ const BrutalistSidebar = ({
   toggleModal,
   setIsPaletteOpen,
 }) => {
+  const { config } = useSiteConfig();
   const [sidebarState, setSidebarState] = usePersistentState(
     KEY_SIDEBAR_STATE,
     {
@@ -149,11 +151,18 @@ const BrutalistSidebar = ({
             }
           >
             <span className="text-xl font-black uppercase tracking-tighter text-white">
-              Fez<span className="text-emerald-500">codex</span>
+              {config?.hero?.title?.toLowerCase().endsWith('codex') ? (
+                <>
+                  {config.hero.title.slice(0, -5)}
+                  <span className="text-emerald-500">codex</span>
+                </>
+              ) : (
+                config?.hero?.title || 'Fezcodex'
+              )}
             </span>
           </Link>
           <span className="font-arvo text-[10px] text-gray-500 uppercase tracking-widest font-medium">
-            Digital Archive Kernel v{version}
+            Digital Archive Kernel {'//'} v{version} {'//'} {config?.kernel?.codename}
           </span>
         </div>
 

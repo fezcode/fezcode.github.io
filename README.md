@@ -74,6 +74,7 @@ npm run deploy
 ---
 
 ## Rules of the House
+- **Contributing:** Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on commit messages and content updates.
 - Styling: We use Tailwind. Keep it Brutalist yet polished.
 - Icons: We use @phosphor-icons/react. Always use the ones ending in Icon (for example, CpuIcon).
 - Logic: Keep it simple. Use Context for global settings like Visual Effects and Animations.

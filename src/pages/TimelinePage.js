@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Timer, Star, Calendar, Tag } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  TimerIcon,
+  StarIcon,
+  CalendarIcon,
+  TagIcon,
+} from '@phosphor-icons/react';
 import { appIcons } from '../utils/appIcons';
 import { motion } from 'framer-motion';
+import piml from 'piml';
 import useSeo from '../hooks/useSeo';
 import { useAchievements } from '../context/AchievementContext';
 import GenerativeArt from '../components/GenerativeArt';
 import colors from '../config/colors';
 
-const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
+const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
 const TimelinePage = () => {
   useSeo({
@@ -33,19 +40,22 @@ const TimelinePage = () => {
     unlockAchievement('time_traveler');
     const fetchMilestones = async () => {
       try {
-        const response = await fetch('/timeline/timeline.json');
+        const response = await fetch('/timeline/timeline.piml');
         if (response.ok) {
-          const data = await response.json();
+          const text = await response.text();
+          const parsed = piml.parse(text);
+
+          let eventList = [];
+          if (parsed.timeline) {
+              eventList = Array.isArray(parsed.timeline) ? parsed.timeline : [parsed.timeline];
+          }
+
           // Sort milestones by date, newest first
-          data.sort((a, b) => new Date(b.date) - new Date(a.date));
-          setMilestones(data);
-        } else {
-          console.error('Failed to fetch timeline data');
-          setMilestones([]);
+          eventList.sort((a, b) => new Date(b.date) - new Date(a.date));
+          setMilestones(eventList);
         }
       } catch (error) {
         console.error('Error fetching timeline data:', error);
-        setMilestones([]);
       } finally {
         setLoading(false);
       }
@@ -55,7 +65,7 @@ const TimelinePage = () => {
   }, [unlockAchievement]);
 
   const getEventColor = (type) => {
-    switch (type) {
+    switch (String(type).toLowerCase()) {
       case 'project':
         return colors.game;
       case 'content':
@@ -100,11 +110,11 @@ const TimelinePage = () => {
               to="/"
               className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black"
             >
-              <ArrowLeft weight="bold" />
+              <ArrowLeftIcon weight="bold" />
               <span>Back to Home</span>
             </Link>
             <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm flex items-center gap-2">
-              <Timer size={14} /> SYSTEM_HISTORY
+              <TimerIcon size={14} /> SYSTEM_HISTORY
             </span>
           </div>
 
@@ -126,7 +136,7 @@ const TimelinePage = () => {
 
           <div className="space-y-16">
             {milestones.map((milestone, index) => {
-              const EventIcon = appIcons[milestone.icon] || Star;
+              const EventIcon = appIcons[milestone.icon] || StarIcon;
               const milestoneDate = new Date(milestone.date);
               const eventColor = getEventColor(milestone.type);
 
@@ -162,7 +172,7 @@ const TimelinePage = () => {
                           backgroundColor: `${eventColor}11`,
                         }}
                       >
-                        <Calendar size={12} />{' '}
+                        <CalendarIcon size={12} />{' '}
                         {milestoneDate.toLocaleDateString('en-GB', {
                           year: 'numeric',
                           month: 'short',
@@ -170,12 +180,12 @@ const TimelinePage = () => {
                         })}
                       </span>
                       <span className="text-gray-500 flex items-center gap-1">
-                        <Tag size={12} /> {milestone.type}
+                        <TagIcon size={12} /> {milestone.type}
                       </span>
                     </div>
 
                     <h2
-                      className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-4 transition-colors"
+                      className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white mb-4 transition-colors font-sans"
                       style={{ '--hover-color': eventColor }}
                     >
                       <span className="group-hover:text-[var(--hover-color)] transition-colors duration-300">
@@ -189,15 +199,13 @@ const TimelinePage = () => {
 
                     {milestone.link && (
                       <div className="mt-8 pt-6 border-t border-white/5">
-                        <a
-                          href={milestone.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Link
+                          to={milestone.link}
                           className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest hover:text-white transition-colors"
                           style={{ color: eventColor }}
                         >
                           Access Linked Asset &rarr;
-                        </a>
+                        </Link>
                       </div>
                     )}
                   </div>

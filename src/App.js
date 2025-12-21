@@ -15,6 +15,7 @@ import { AchievementProvider } from './context/AchievementContext';
 import AchievementListeners from './components/AchievementListeners';
 import { SidePanelProvider } from './context/SidePanelContext';
 import { HomepageOrderProvider } from './context/HomepageOrderContext';
+import { SiteConfigProvider } from './context/SiteConfigContext';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -55,8 +56,9 @@ function App() {
     <AnimationProvider>
       <Router>
         <ToastProvider>
-          <AchievementProvider>
-            <AchievementListeners />
+          <SiteConfigProvider>
+            <AchievementProvider>
+              <AchievementListeners />
             <HomepageOrderProvider>
               <VisualSettingsProvider>
                 <DigitalRain isActive={isRainActive} />
@@ -87,9 +89,10 @@ function App() {
               </VisualSettingsProvider>
             </HomepageOrderProvider>
           </AchievementProvider>
-        </ToastProvider>
-      </Router>
-    </AnimationProvider>
+        </SiteConfigProvider>
+      </ToastProvider>
+    </Router>
+  </AnimationProvider>
   );
 }
 export default App;
