@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
@@ -47,7 +47,7 @@
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b gh-pages",
-    "prod": "git push && npm run build && npm run deploy",
+    "prod": "npm run lint && git push && npm run deploy",
     "postbuild": "react-snap"
   },
   "reactSnap": {

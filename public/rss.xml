@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 21 Dec 2025 13:27:50 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 21 Dec 2025 13:45:58 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 21 Dec 2025 13:27:50 GMT</pubDate>
+        <pubDate>Sun, 21 Dec 2025 13:45:58 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Routing Revolution: SSG, BrowserRouter, and the SEO Fix]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/routing-revolution-ssg-and-seo</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/routing-revolution-ssg-and-seo</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Routing Revolution: SSG, BrowserRouter, and the SEO Fix</h1>
+<p><a href="https://fezcode.com/blog/routing-revolution-ssg-and-seo">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Art of the Algorithm: Generative Visuals in Fezcodex]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -3972,7 +3982,7 @@ function App() {
 }
 </code></pre>
 <ul>
-<li><strong>Purpose</strong>: <code>HashRouter</code> uses the hash portion of the URL (e.g., <code>http://localhost:3000/blog</code>) to keep your UI in sync with the URL. This is particularly useful for static site hosting (like GitHub Pages) because it doesn&#39;t require any special server-side configuration to handle routing. The server always serves <code>index.html</code>, and the React application handles the routing based on the hash.</li>
+<li><strong>Purpose</strong>: <code>HashRouter</code> uses the hash portion of the URL (e.g., <code>http://localhost:3000/#/blog</code>) to keep your UI in sync with the URL. This is particularly useful for static site hosting (like GitHub Pages) because it doesn&#39;t require any special server-side configuration to handle routing. The server always serves <code>index.html</code>, and the React application handles the routing based on the hash.</li>
 </ul>
 <h3>2. <code>Routes</code> and <code>Route</code></h3>
 <p>These components are used to define the mapping between URL paths and the React components that should be rendered for those paths. They are typically found in a central routing component, like <code>AnimatedRoutes.js</code> in this project.</p>
@@ -5671,7 +5681,7 @@ they do so in fundamentally different ways, and these differences become crucial
 </ul>
 <h3><code>HashRouter</code>: The Static Hosting Friend</h3>
 <ul>
-<li><strong>URL Structure:</strong> <code>https://yourdomain.com/blog/my-post</code></li>
+<li><strong>URL Structure:</strong> <code>https://yourdomain.com/#/blog/my-post</code></li>
 <li><strong>How it Works:</strong><ol>
 <li>When a user navigates to a URL with a hash (e.g., <code>#/blog/my-post</code>), the server (in this case, GitHub Pages) only sees the part of the URL <em>before</em> the hash: <code>https://yourdomain.com/</code>.</li>
 <li>GitHub Pages, being a static file server, simply looks for and serves the <code>index.html</code> file located at the root of your deployment.</li>
