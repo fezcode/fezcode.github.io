@@ -61,3 +61,20 @@ content(log): add corrupted blood incident rant
 - Updated posts.json with metadata
 - Added unique category color for 'rant'
 ```
+
+## Git Hooks
+
+This project uses **Native Git Hooks** to automatically enforce the commit message format.
+
+### How it Works
+When you run `npm install`, a script sets your git configuration `core.hooksPath` to the local `git-hooks/` directory.
+Inside this directory is a `commit-msg` script. Whenever you run `git commit`, Git triggers this script.
+The script runs `commitlint` to check your message against our rules.
+
+### Troubleshooting
+If you are unable to commit because of a "stuck" hook or an error, ensure you have run `npm install`.
+In an emergency (if the hook is broken), you can bypass verification:
+```bash
+git commit --no-verify -m "your message"
+```
+**Note:** Please use this sparingly and only if you are sure your message format is correct.
