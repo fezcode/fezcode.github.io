@@ -14,6 +14,7 @@ import RatingSystemDetail from '../components/RatingSystemDetail';
 const categories = [
   'Book',
   'Movie',
+  'Video',
   'Game',
   'Article',
   'Music',

@@ -10,6 +10,10 @@ export const categoryStyles = {
     backgroundColor: colors['movie-alpha-10'],
     borderColor: colors['movie-alpha-50'],
   },
+  Video: {
+    backgroundColor: colors['video-alpha-10'],
+    borderColor: colors['video-alpha-50'],
+  },
   Game: {
     backgroundColor: colors['game-alpha-10'],
     borderColor: colors['game-alpha-50'],

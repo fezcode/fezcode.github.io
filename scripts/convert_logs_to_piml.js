@@ -6,6 +6,7 @@ const publicLogsDir = path.join(__dirname, '../public/logs');
 const categories = [
   'Book',
   'Movie',
+  'Video',
   'Game',
   'Article',
   'Music',

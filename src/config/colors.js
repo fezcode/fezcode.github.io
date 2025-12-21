@@ -10,6 +10,7 @@ module.exports = {
   tb: '#00000033',
   book: '#00BFFF',
   movie: '#DC143C',
+  video: '#8A2BE2',
   game: '#00C9A7',
   article: '#FA8072', // Salmon
   app: '#fb8476', // Duplicated from article-ish
@@ -22,6 +23,7 @@ module.exports = {
   feat: '#a855f7',
   'book-light': '#4dcdff',
   'movie-light': '#e84f6d',
+  'video-light': '#a050f0',
   'game-light': '#00e6bf',
   'article-light': '#FFB6C1', // Light Pink
   'app-light': '#FFF8F00', // Duplicated from book-light
@@ -62,6 +64,8 @@ module.exports = {
   'book-alpha-50': 'rgba(0, 191, 255, 0.5)',
   'movie-alpha-10': 'rgba(220, 20, 60, 0.1)',
   'movie-alpha-50': 'rgba(220, 20, 60, 0.5)',
+  'video-alpha-10': 'rgba(138, 43, 226, 0.1)',
+  'video-alpha-50': 'rgba(138, 43, 226, 0.5)',
   'game-alpha-10': 'rgba(0, 201, 167, 0.1)',
   'game-alpha-50': 'rgba(0, 201, 167, 0.5)',
   'article-alpha-10': 'rgba(250, 128, 114, 0.1)',
