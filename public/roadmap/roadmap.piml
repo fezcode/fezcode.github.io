@@ -255,3 +255,24 @@
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) Requires passing a 'data stream' prop to the GenerativeArt component.
 
+  > (issues)
+    (id) FEZ-22
+    (title) Implementing Feature Flags for Banners
+    (description)
+      Sometimes, when we are adding features, we need to show a banner for down time.
+      Current version does not show a banner.
+      We may need to add a banner.piml to create a banner.
+      This piml objects would contain info like:
+      1. Type (warning, error, info, maybe???) for banners.
+      2. From Date
+      3. To Date
+      4. Text
+    (category) Aesthetic
+    (epic) OS Experience
+    (status) Planned
+    (priority) Medium
+    (created_at) 2025-12-21T18:00:00+03:00
+    (notes)
+
+
+
