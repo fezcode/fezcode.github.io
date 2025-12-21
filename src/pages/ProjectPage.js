@@ -29,15 +29,15 @@ const ProjectPage = () => {
   const fullProject = project && content ? { ...project, ...content } : null;
 
   useSeo({
-    title: fullProject ? `${fullProject.title} | Fezcodex` : 'Fezcodex',
-    description: fullProject?.shortDescription || '',
-    keywords: fullProject?.tags ? fullProject.tags.join(', ') : '',
-    ogTitle: fullProject ? `${fullProject.title} | Fezcodex` : 'Fezcodex',
-    ogDescription: fullProject?.shortDescription || '',
+    title: fullProject ? `${fullProject.title} | Fezcodex` : null,
+    description: fullProject?.shortDescription || null,
+    keywords: fullProject?.tags ? fullProject.tags.join(', ') : null,
+    ogTitle: fullProject ? `${fullProject.title} | Fezcodex` : null,
+    ogDescription: fullProject?.shortDescription || null,
     ogImage: fullProject?.image || '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
-    twitterTitle: fullProject ? `${fullProject.title} | Fezcodex` : 'Fezcodex',
-    twitterDescription: fullProject?.shortDescription || '',
+    twitterTitle: fullProject ? `${fullProject.title} | Fezcodex` : null,
+    twitterDescription: fullProject?.shortDescription || null,
     twitterImage: fullProject?.image || '/images/asset/ogtitle.png',
   });
 

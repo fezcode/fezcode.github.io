@@ -28,8 +28,8 @@ const LogDetailPage = () => {
   const [modalImageSrc, setModalImageSrc] = useState(null);
 
   useSeo({
-    title: log ? `${log.attributes.title} | Fezcodex` : 'Fezcodex',
-    description: log ? log.body.substring(0, 150) : '',
+    title: log ? `${log.attributes.title} | Fezcodex` : null,
+    description: log ? log.body.substring(0, 150) : null,
     ogImage: log?.attributes?.image || '/images/asset/ogtitle.png',
   });
 
