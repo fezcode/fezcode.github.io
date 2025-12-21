@@ -143,6 +143,7 @@ const AtmosphereMixerPage = lazy(() => import('../pages/apps/AtmosphereMixerPage
 const TaskGridPage = lazy(() => import('../pages/apps/TaskGridPage'));
 const BlendLabPage = lazy(() => import('../pages/apps/BlendLabPage'));
 const AssetStudioPage = lazy(() => import('../pages/apps/AssetStudioPage'));
+const OgImageGeneratorPage = lazy(() => import('../pages/apps/OgImageGeneratorPage'));
 const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
@@ -1813,6 +1814,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <AssetStudioPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/og-image-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <OgImageGeneratorPage />
               </Suspense>
             </motion.div>
           }
