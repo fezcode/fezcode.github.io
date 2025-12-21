@@ -1,5 +1,17 @@
 [
   {
+    "slug": "corrupted-blood-incident",
+    "title": "The Corrupted Blood Incident: When a Glitch Taught Us About Pandemics",
+    "date": "2025-12-21",
+    "updated": "2025-12-21",
+    "description": "A rant about the WoW Corrupted Blood incident, how it modeled real-world pandemics, and the GDC lessons we ignored.",
+    "tags": ["rant", "wow", "gaming", "pandemic", "gdc", "glitch"],
+    "category": "rant",
+    "filename": "corrupted-blood-incident.txt",
+    "authors": ["fezcode"],
+    "image": "/images/asset/ogtitle.png"
+  },
+  {
     "slug": "building-the-knowledge-graph",
     "title": "Building the Knowledge Graph: Visualizing Fezcodex in 3D",
     "date": "2025-12-21",
