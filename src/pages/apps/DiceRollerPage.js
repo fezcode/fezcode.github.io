@@ -28,14 +28,10 @@ const DiceRollerPage = () => {
       'rpg',
     ],
     ogTitle: 'Dice Roller | Fezcodex',
-    ogDescription:
-      'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription: 'Roll virtual dice for games and tabletop adventures.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Dice Roller | Fezcodex',
-    twitterDescription:
-      'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription: 'Roll virtual dice for games and tabletop adventures.',
   });
 
   const { addToast } = useToast();

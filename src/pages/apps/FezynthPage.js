@@ -44,14 +44,10 @@ const FezynthPage = () => {
       'keyboard',
     ],
     ogTitle: 'Fezynth | Fezcodex',
-    ogDescription:
-      'A client-side web synthesizer built with the Web Audio API.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription: 'A modular, browser-based synthesizer for sound design.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Fezynth | Fezcodex',
-    twitterDescription:
-      'A client-side web synthesizer built with the Web Audio API.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription: 'A modular, browser-based synthesizer for sound design.',
   });
 
   const [audioContext, setAudioContext] = useState(null);

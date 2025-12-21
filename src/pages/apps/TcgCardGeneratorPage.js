@@ -552,23 +552,6 @@ const TcgCardGeneratorPage = () => {
   const labelClass =
     'block text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-1';
 
-  const Module = ({ title, icon: Icon, children, seed }) => (
-    <div className="relative border border-white/10 bg-white/[0.02] p-6 rounded-sm group overflow-hidden">
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <GenerativeArt seed={seed} className="w-full h-full" />
-      </div>
-      <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
-
-      <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
-        <Icon weight="fill" className="text-emerald-500" />
-        {title}
-      </h3>
-      <div className="relative z-10">
-        {children}
-      </div>
-    </div>
-  );
-
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans pb-32 relative z-10">
       <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12">
@@ -802,5 +785,22 @@ const TcgCardGeneratorPage = () => {
     </div>
   );
 };
+
+const Module = ({ title, icon: Icon, children, seed }) => (
+    <div className="relative border border-white/10 bg-white/[0.02] p-6 rounded-sm group overflow-hidden">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <GenerativeArt seed={seed} className="w-full h-full" />
+      </div>
+      <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+      <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+        <Icon weight="fill" className="text-emerald-500" />
+        {title}
+      </h3>
+      <div className="relative z-10">
+        {children}
+      </div>
+    </div>
+  );
 
 export default TcgCardGeneratorPage;

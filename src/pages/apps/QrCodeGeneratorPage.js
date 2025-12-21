@@ -21,14 +21,10 @@ const QrCodeGeneratorPage = () => {
       'QR code online',
     ],
     ogTitle: 'QR Code Generator | Fezcodex',
-    ogDescription:
-      'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription: 'Generate custom QR codes for any text or URL.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'QR Code Generator | Fezcodex',
-    twitterDescription:
-      'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription: 'Generate custom QR codes for any text or URL.',
   });
 
   const { addToast } = useToast();

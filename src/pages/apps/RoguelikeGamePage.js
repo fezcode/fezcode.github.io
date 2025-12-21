@@ -20,16 +20,13 @@ const POSSIBLE_MOVES = [
 
 function RoguelikeGamePage() {
   useSeo({
-    title: 'Roguelike Game | Fezcodex',
-    description: 'A simple roguelike game.',
-    keywords: ['Fezcodex', 'game', 'roguelike'],
     ogTitle: 'Roguelike Game | Fezcodex',
-    ogDescription: 'A simple roguelike game.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription:
+      'Explore a procedurally generated dungeon in this browser-based roguelike.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Roguelike Game | Fezcodex',
-    twitterDescription: 'A simple roguelike game.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription:
+      'Explore a procedurally generated dungeon in this browser-based roguelike.',
   });
 
   const [gameMap, setGameMap] = useState([]);

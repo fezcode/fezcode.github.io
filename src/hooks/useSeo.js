@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 function useSeo({
   title,
@@ -12,6 +13,8 @@ function useSeo({
   twitterDescription,
   twitterImage,
 }) {
+  const location = useLocation();
+
   useEffect(() => {
     // Set document title
     if (title) {
@@ -46,6 +49,13 @@ function useSeo({
       }
     }
 
+    // Determine default images for apps
+    const isAppPath = location.pathname.startsWith('/apps');
+    const defaultAppImage = '/images/asset/ogtitle-apps.png';
+    const finalOgImage = ogImage || (isAppPath ? defaultAppImage : null);
+    const finalTwitterImage =
+      twitterImage || (isAppPath ? defaultAppImage : null);
+
     // Set Open Graph meta tags
     if (ogTitle) {
       const metaOgTitle = document.querySelector('meta[property="og:title"]');
@@ -73,14 +83,14 @@ function useSeo({
       }
     }
 
-    if (ogImage) {
+    if (finalOgImage) {
       const metaOgImage = document.querySelector('meta[property="og:image"]');
       if (metaOgImage) {
-        metaOgImage.setAttribute('content', ogImage);
+        metaOgImage.setAttribute('content', finalOgImage);
       } else {
         const newMeta = document.createElement('meta');
         newMeta.setAttribute('property', 'og:image');
-        newMeta.setAttribute('content', ogImage);
+        newMeta.setAttribute('content', finalOgImage);
         document.head.appendChild(newMeta);
       }
     }
@@ -128,20 +138,21 @@ function useSeo({
       }
     }
 
-    if (twitterImage) {
+    if (finalTwitterImage) {
       const metaTwitterImage = document.querySelector(
         'meta[name="twitter:image"]',
       );
       if (metaTwitterImage) {
-        metaTwitterImage.setAttribute('content', twitterImage);
+        metaTwitterImage.setAttribute('content', finalTwitterImage);
       } else {
         const newMeta = document.createElement('meta');
         newMeta.setAttribute('name', 'twitter:image');
-        newMeta.setAttribute('content', twitterImage);
+        newMeta.setAttribute('content', finalTwitterImage);
         document.head.appendChild(newMeta);
       }
     }
   }, [
+    location.pathname,
     title,
     description,
     keywords,

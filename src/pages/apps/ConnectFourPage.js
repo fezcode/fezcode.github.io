@@ -9,18 +9,8 @@ import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 const ConnectFourPage = () => {
   useSeo({
     title: 'Connect Four | Fezcodex',
-    description:
-      'Play the classic game of Connect Four against another player or AI.',
-    keywords: ['Fezcodex', 'connect four', 'game', 'fun app'],
-    ogTitle: 'Connect Four | Fezcodex',
-    ogDescription:
-      'Play the classic game of Connect Four against another player or AI.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Connect Four | Fezcodex',
-    twitterDescription:
-      'Play the classic game of Connect Four against another player or AI.',
-    twitterImage: '/images/asset/ogtitle.png',
+    description: 'Play the classic Connect Four game in your browser.',
+    keywords: ['Connect Four', 'game', 'React', 'strategy'],
   });
 
   const { addToast } = useToast();

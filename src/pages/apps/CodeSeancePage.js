@@ -7,15 +7,8 @@ import { useAchievements } from '../../context/AchievementContext';
 const CodeSeancePage = () => {
   useSeo({
     title: 'Code Seance | Fezcodex',
-    description: 'Communicate with the ghosts of deprecated code.',
-    keywords: ['Fezcodex', 'seance', 'game', 'terminal', 'horror', 'coding'],
-    ogTitle: 'Code Seance | Fezcodex',
-    ogDescription: 'Communicate with the ghosts of deprecated code.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Code Seance | Fezcodex',
-    twitterDescription: 'Communicate with the ghosts of deprecated code.',
-    twitterImage: '/images/asset/ogtitle.png',
+    description: 'An interactive coding experience with a mystical twist.',
+    keywords: ['coding', 'seance', 'interactive', 'terminal'],
   });
 
   const { unlockAchievement } = useAchievements();

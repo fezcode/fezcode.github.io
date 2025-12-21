@@ -25,13 +25,11 @@ const MarkdownTableFormatterPage = () => {
     title: `${appName} | Fezcodex`,
     description: 'Format your markdown tables into clean, readable structures.',
     keywords: ['Fezcodex', 'md', 'markdown', 'table', 'formatter'],
-    ogTitle: `${appName} | Fezcodex`,
-    ogDescription: 'Format your markdown tables into clean, readable structures.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogTitle: 'Markdown Table Formatter | Fezcodex',
+    ogDescription: 'Easily format and clean up your Markdown tables.',
     twitterCard: 'summary_large_image',
-    twitterTitle: `${appName} | Fezcodex`,
-    twitterDescription: 'Format your markdown tables into clean, readable structures.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterTitle: 'Markdown Table Formatter | Fezcodex',
+    twitterDescription: 'Easily format and clean up your Markdown tables.',
   });
 
   const [inputText, setInputText] = useState('');

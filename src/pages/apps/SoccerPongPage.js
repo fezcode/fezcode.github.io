@@ -33,12 +33,12 @@ const SoccerPongPage = () => {
       'AI game',
     ],
     ogTitle: 'Soccer Pong | Fezcodex',
-    ogDescription: 'A Pong-style game with a soccer twist. Player vs. AI.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription:
+      'Play a soccer-themed version of the classic Pong game in your browser.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Soccer Pong | Fezcodex',
-    twitterDescription: 'A Pong-style game with a soccer twist. Player vs. AI.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription:
+      'Play a soccer-themed version of the classic Pong game in your browser.',
   });
 
   const canvasRef = useRef(null);

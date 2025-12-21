@@ -20,13 +20,13 @@ function IpPage() {
       'IP address',
       'public IP',
     ],
-    ogTitle: 'Show my IP | Fezcodex',
-    ogDescription: 'Quickly find and display your public IP address.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogTitle: 'What is My IP | Fezcodex',
+    ogDescription:
+      'Find out your current IP address and connection information.',
     twitterCard: 'summary_large_image',
-    twitterTitle: 'Show my IP | Fezcodex',
-    twitterDescription: 'Quickly find and display your public IP address.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterTitle: 'What is My IP | Fezcodex',
+    twitterDescription:
+      'Find out your current IP address and connection information.',
   });
   const [ip, setIp] = useState(null);
   const [loading, setLoading] = useState(true);

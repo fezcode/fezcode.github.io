@@ -28,12 +28,12 @@ const MemoryGamePage = () => {
       'concentration',
     ],
     ogTitle: 'Memory Game | Fezcodex',
-    ogDescription: 'A classic memory game to test your concentration.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription:
+      'Challenge your memory with this classic card matching game.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Memory Game | Fezcodex',
-    twitterDescription: 'A classic memory game to test your concentration.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription:
+      'Challenge your memory with this classic card matching game.',
   });
 
   const { unlockAchievement } = useAchievements();

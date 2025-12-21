@@ -20,12 +20,10 @@ const SimonSaysPage = () => {
       'game',
     ],
     ogTitle: 'Simon Says | Fezcodex',
-    ogDescription: 'Test your memory by repeating the sequence of colors.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription: 'Test your memory with the classic Simon Says game.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Simon Says | Fezcodex',
-    twitterDescription: 'Test your memory by repeating the sequence of colors.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription: 'Test your memory with the classic Simon Says game.',
   });
 
   const [sequence, setSequence] = useState([]);

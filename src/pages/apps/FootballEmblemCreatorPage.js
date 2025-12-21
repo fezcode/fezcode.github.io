@@ -65,12 +65,10 @@ const FootballEmblemCreatorPage = () => {
     description: 'Create your own custom football team emblem.',
     keywords: ['football', 'emblem', 'logo', 'creator', 'generator', 'soccer'],
     ogTitle: 'Football Emblem Creator | Fezcodex',
-    ogDescription: 'Create your own custom football team emblem.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogDescription: 'Create custom football emblems and logos.',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Football Emblem Creator | Fezcodex',
-    twitterDescription: 'Create your own custom football team emblem.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterDescription: 'Create custom football emblems and logos.',
   });
 
   const { addToast } = useToast();

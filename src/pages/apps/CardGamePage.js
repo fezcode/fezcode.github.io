@@ -55,15 +55,11 @@ const CardGamePage = () => {
       'game',
       'react game',
     ],
-    ogTitle: 'Higher or Lower Card Game | Fezcodex',
-    ogDescription:
-      'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
-    ogImage: '/images/asset/ogtitle.png',
+    ogTitle: 'Card Game | Fezcodex',
+    ogDescription: 'Play a simple card game in your browser.',
     twitterCard: 'summary_large_image',
-    twitterTitle: 'Higher or Lower Card Game | Fezcodex',
-    twitterDescription:
-      'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
-    twitterImage: '/images/asset/ogtitle.png',
+    twitterTitle: 'Card Game | Fezcodex',
+    twitterDescription: 'Play a simple card game in your browser.',
   });
 
   const { addToast } = useToast();

@@ -1,10 +1,11 @@
-  "items": [
+[
     {
       "date": "2025-12-21",
       "title": "Neural Net Online",
-      "description": "Deployed the 3D Knowledge Graph Visualization Protocol (/graph). Now users can navigate the site via an interactive neural network.",
+      "description": "Deployed the 3D Knowledge Graph Visualization Protocol. Now users can navigate the site via an interactive neural network.",
       "type": "feature",
-      "icon": "Graph"
+      "icon": "Graph",
+      "link": "/graph"
     },
     {
       "date": "2025-12-21",
