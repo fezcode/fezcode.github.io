@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 21 Dec 2025 15:44:47 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 21 Dec 2025 17:02:03 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 21 Dec 2025 15:44:47 GMT</pubDate>
+        <pubDate>Sun, 21 Dec 2025 17:02:03 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Building the Knowledge Graph: Visualizing Fezcodex in 3D]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/building-the-knowledge-graph</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/building-the-knowledge-graph</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>The idea was simple: Fezcodex is growing. With hundreds of blog posts, apps, and project logs, a standard list or grid view just wasn&#39;t cutting it anymore. I wanted a way to visualize the <em>connections</em> between everything. To see the &quot;brain&quot; of the website.</p>
+<p><a href="https://fezcode.com/blog/building-the-knowledge-graph">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Routing Revolution: SSG, BrowserRouter, and the SEO Fix]]></title>
             <description><![CDATA[[object Object]]]></description>

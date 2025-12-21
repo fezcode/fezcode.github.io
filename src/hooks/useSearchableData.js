@@ -9,6 +9,7 @@ const useSearchableData = () => {
     () => [
       'Book',
       'Movie',
+      'Video',
       'Game',
       'Article',
       'Music',
