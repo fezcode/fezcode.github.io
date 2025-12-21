@@ -7,7 +7,7 @@ export default function CSR() {
         <strong>Client-Side Rendering (CSR)</strong> is a web development technique where the browser downloads a minimal HTML file and a large JavaScript bundle. The JavaScript then executes and builds the entire user interface on the fly.
       </p>
       <div className="bg-emerald-500/5 p-4 rounded-sm border border-emerald-500/20 font-mono text-xs">
-        <div className="text-gray-500 font-bold">// CSR Initial HTML</div>
+        <div className="text-gray-500 font-bold"> {'//'} CSR Initial HTML</div>
         <div className="text-white">{'<html>'}</div>
         <div className="text-white">{'  <body>'}</div>
         <div className="text-white">{'    <div id="root"></div>'}</div>

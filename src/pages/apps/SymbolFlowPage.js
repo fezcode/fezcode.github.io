@@ -1,17 +1,15 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeft,
-  Trash,
-  ArrowsClockwise,
-  Selection,
-  Info,
-  DownloadSimple,
-  PaintBrush,
-  Wind,
-  Waves,
-  Code,
-  CircleDashed,
+  ArrowLeftIcon,
+  TrashIcon,
+  SelectionIcon,
+  DownloadSimpleIcon,
+  PaintBrushIcon,
+  WindIcon,
+  WavesIcon,
+  CodeIcon,
+  CircleDashedIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
@@ -19,7 +17,7 @@ import { useToast } from '../../hooks/useToast';
 const PROTOCOLS = [
   { id: 'binary', label: 'BINARY_STREAM', symbols: ['0', '1'] },
   { id: 'geometric', label: 'GEOMETRIC_ENTITIES', symbols: ['+', '×', '□', '○', '△', '⬡'] },
-  { id: 'alpha', label: 'ALPHA_CODE', symbols: ['A', 'B', 'X', 'Y', 'Z', 'Σ', 'Φ', 'Ω'] },
+  { id: 'alpha', label: 'ALPHA_CodeIcon', symbols: ['A', 'B', 'X', 'Y', 'Z', 'Σ', 'Φ', 'Ω'] },
   { id: 'brutalist', label: 'VOID_BLOCKS', symbols: ['█', '▓', '▒', '░', '▖', '▗', '▘', '▙'] },
 ];
 
@@ -35,9 +33,9 @@ const SymbolFlowPage = () => {
   const appName = 'Symbol Flow';
 
   useSeo({
-    title: `${appName} | Fezcodex`,
+    title: `${appName} | FezCodeIconx`,
     description: 'Generative flow field visualizer using technical symbol protocols and procedural noise.',
-    keywords: ['Fezcodex', 'generative art', 'canvas animation', 'flow field', 'brutalist design'],
+    keywords: ['FezCodeIconx', 'generative art', 'canvas animation', 'flow field', 'brutalist design'],
   });
 
   const { addToast } = useToast();
@@ -185,12 +183,12 @@ const SymbolFlowPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-[#050505] text-white SelectionIcon:bg-emerald-500/30 font-sans overflow-x-hidden">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">
           <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
 
@@ -209,7 +207,7 @@ const SymbolFlowPage = () => {
                 onClick={() => setIsPaused(!isPaused)}
                 className={`group relative inline-flex items-center gap-4 px-10 py-6 border transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shrink-0 ${isPaused ? 'bg-white text-black border-white' : 'bg-transparent text-white border-white/20 hover:bg-white/5'}`}
               >
-                <Selection weight="bold" size={24} />
+                <SelectionIcon weight="bold" size={24} />
                 <span>{isPaused ? 'RESUME_STREAM' : 'HALT_TEMPORAL'}</span>
               </button>
 
@@ -217,7 +215,7 @@ const SymbolFlowPage = () => {
                 onClick={handleDownload}
                 className="group relative inline-flex items-center gap-4 px-10 py-6 bg-emerald-500 text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shrink-0"
               >
-                <DownloadSimple weight="bold" size={24} />
+                <DownloadSimpleIcon weight="bold" size={24} />
                 <span>Capture Frame</span>
               </button>
             </div>
@@ -232,7 +230,7 @@ const SymbolFlowPage = () => {
             {/* Protocols */}
             <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
-                <Code weight="fill" />
+                <CodeIcon weight="fill" />
                 Symbol_Protocols
               </h3>
 
@@ -253,7 +251,7 @@ const SymbolFlowPage = () => {
             {/* Chromatic */}
             <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
-                <PaintBrush weight="fill" />
+                <PaintBrushIcon weight="fill" />
                 Chromatic_Intensity
               </h3>
 
@@ -273,7 +271,7 @@ const SymbolFlowPage = () => {
             {/* Field Controls */}
             <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
-                <Wind weight="fill" />
+                <WindIcon weight="fill" />
                 Field_Calibration
               </h3>
 
@@ -329,7 +327,7 @@ const SymbolFlowPage = () => {
               {/* Interaction Overlay */}
               <div className="absolute top-8 left-8 flex gap-4 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
                 <div className="flex items-center gap-2 bg-black/60 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-sm">
-                  <CircleDashed size={14} className="text-emerald-500 animate-spin" />
+                  <CircleDashedIcon size={14} className="text-emerald-500 animate-spin" />
                   <span className="font-mono text-[9px] uppercase tracking-widest">Interactive_Field_Active</span>
                 </div>
               </div>
@@ -339,13 +337,13 @@ const SymbolFlowPage = () => {
                   onClick={() => { setDensity(50); setChaos(0.002); setVelocity(2); setTrail(0.15); }}
                   className="flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-black transition-all"
                 >
-                  <Trash weight="bold" /> Reset Field
+                  <TrashIcon weight="bold" /> Reset Field
                 </button>
               </div>
             </div>
 
             <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-6">
-              <Waves size={32} className="text-gray-700 shrink-0 mt-1" />
+              <WavesIcon size={32} className="text-gray-700 shrink-0 mt-1" />
               <p className="text-sm font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500 max-w-4xl">
                 Dynamic flow state utilized localized Canvas animation loops. Each entity responds to a composite vector field calculated from procedural noise and real-time cursor coordinates. Optimal systemic performance verified.
               </p>
@@ -355,7 +353,7 @@ const SymbolFlowPage = () => {
         </div>
 
         <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
-          <span>Fezcodex_Kinetic_Matrix_v0.6.1</span>
+          <span>FezCodeIconx_Kinetic_Matrix_v0.6.1</span>
           <span className="text-gray-800">STREAM_STATE // {isPaused ? 'LOCKED' : 'FLOWING'}</span>
         </footer>
       </div>

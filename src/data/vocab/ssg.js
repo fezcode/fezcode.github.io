@@ -7,7 +7,7 @@ export default function SSG() {
         <strong>Static Site Generation (SSG)</strong> is the process of building your website's HTML pages at build time, rather than on every request.
       </p>
       <div className="bg-emerald-500/5 p-4 rounded-sm border border-emerald-500/20 font-mono text-xs">
-        <div className="text-emerald-500 font-bold">// SSG Workflow</div>
+        <div className="text-emerald-500 font-bold"> {'//'} SSG Workflow</div>
         <div className="text-white">1. Developer runs 'npm run build'</div>
         <div className="text-white">2. Build engine (react-snap) crawls routes</div>
         <div className="text-white">3. Fully rendered HTML files are saved</div>

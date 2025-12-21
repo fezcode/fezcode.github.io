@@ -106,7 +106,7 @@ const BrutalistSidebar = ({
           : 'text-gray-600 hover:text-gray-400 border-l-2 border-transparent'
       }`}
     >
-      <span className="font-arvo text-[11px] font-bold uppercase tracking-[0.2em]">
+      <span className="font-arvo text-[11px] uppercase tracking-[0.2em]">
         {'//'} {label}
       </span>
       <span
