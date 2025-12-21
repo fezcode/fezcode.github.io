@@ -38,8 +38,10 @@ const Layout = ({
   } = useVisualSettings();
   const location = useLocation();
 
-  // Check if we are on the about page to conditionally render layout elements
+  // Check if we are on the about page or graph page to conditionally render layout elements
   const isAboutPage = location.pathname.startsWith('/about');
+  const isGraphPage = location.pathname === '/graph';
+  const hideLayout = isAboutPage || isGraphPage;
 
   if (location.pathname.startsWith('/stories')) {
     return (
@@ -55,9 +57,9 @@ const Layout = ({
 
   return (
     <>
-      {isGarden && !isAboutPage && <DigitalFlowers />}
-      {isAutumn && !isAboutPage && <DigitalLeaves />}
-      {isRain && !isAboutPage && <NaturalRain />}
+      {isGarden && !hideLayout && <DigitalFlowers />}
+      {isAutumn && !hideLayout && <DigitalLeaves />}
+      {isRain && !hideLayout && <NaturalRain />}
       <CommandPalette
         isOpen={isPaletteOpen}
         setIsOpen={setIsPaletteOpen}
@@ -65,9 +67,9 @@ const Layout = ({
         toggleDigitalRain={toggleDigitalRain}
         toggleBSOD={toggleBSOD}
       />
-      {!isAboutPage && <SidePanel />}
+      {!hideLayout && <SidePanel />}
       <div className="bg-gray-950 min-h-screen font-sans flex">
-        {!isAboutPage &&
+        {!hideLayout &&
           (sidebarMode === 'classic' ? (
             <Sidebar
               isOpen={isSidebarOpen}
@@ -85,9 +87,9 @@ const Layout = ({
             />
           ))}
         <div
-          className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !isAboutPage ? (sidebarMode === 'classic' ? 'md:ml-64' : 'md:ml-72') : 'md:ml-0'}`}
+          className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !hideLayout ? (sidebarMode === 'classic' ? 'md:ml-64' : 'md:ml-72') : 'md:ml-0'}`}
         >
-          {!isAboutPage && (
+          {!hideLayout && (
             <Navbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
@@ -95,11 +97,11 @@ const Layout = ({
               toggleSearch={toggleSearch}
             />
           )}
-          {!isAboutPage && isSearchVisible && (
+          {!hideLayout && isSearchVisible && (
             <Search isVisible={isSearchVisible} />
           )}
           <main className="flex-grow">{children}</main>
-          {!isAboutPage &&
+          {!hideLayout &&
             location.pathname !== '/projects' &&
             location.pathname !== '/blog' &&
             location.pathname !== '/commands' && <Footer />}

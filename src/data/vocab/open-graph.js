@@ -7,7 +7,7 @@ export default function OpenGraph() {
         The <strong>Open Graph (OG)</strong> protocol is a set of rules used to enable any web page to become a rich object in a social graph. It was originally created by Facebook.
       </p>
       <div className="bg-emerald-500/5 p-4 rounded-sm border border-emerald-500/20 font-mono text-xs">
-        <div className="text-gray-500 font-bold">// Example OG Tags</div>
+        <div className="text-gray-500 font-bold"> {'//'} Example OG Tags</div>
         <div className="text-white">{'<meta property="og:title" content="..." />'}</div>
         <div className="text-white">{'<meta property="og:description" content="..." />'}</div>
         <div className="text-white">{'<meta property="og:image" content="..." />'}</div>

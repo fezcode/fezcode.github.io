@@ -21,6 +21,7 @@ import {
   Rss,
   CaretDoubleDown,
   CaretDoubleUp,
+  Graph,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -306,6 +307,12 @@ const BrutalistSidebar = ({
             />
             {sidebarState.isExtrasOpen && (
               <nav className="flex flex-col">
+                <SidebarLink
+                  to="/graph"
+                  icon={Graph}
+                  label="Neural Net"
+                  getLinkClass={getLinkClass}
+                />
                 <SidebarLink
                   to="/stories"
                   icon={Sword}

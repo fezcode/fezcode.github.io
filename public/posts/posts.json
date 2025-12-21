@@ -1,5 +1,17 @@
 [
   {
+    "slug": "building-the-knowledge-graph",
+    "title": "Building the Knowledge Graph: Visualizing Fezcodex in 3D",
+    "date": "2025-12-21",
+    "updated": "2025-12-21",
+    "description": "A technical deep dive into how I built the 3D 'Neural Net' graph visualization using React, Three.js, and force-directed graph theory.",
+    "tags": ["React", "Three.js", "Data Visualization", "Graph Theory", "UI/UX"],
+    "category": "dev",
+    "filename": "building-the-knowledge-graph.txt",
+    "authors": ["fezcode"],
+    "image": "/images/asset/ogtitle.png"
+  },
+  {
     "slug": "routing-revolution-ssg-and-seo",
     "title": "Routing Revolution: SSG, BrowserRouter, and the SEO Fix",
     "date": "2025-12-21",

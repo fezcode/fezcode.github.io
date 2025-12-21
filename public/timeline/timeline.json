@@ -1,6 +1,13 @@
-[
-  {
-    "date": "2025-12-19",
+  "items": [
+    {
+      "date": "2025-12-21",
+      "title": "Neural Net Online",
+      "description": "Deployed the 3D Knowledge Graph Visualization Protocol (/graph). Now users can navigate the site via an interactive neural network.",
+      "type": "feature",
+      "icon": "Graph"
+    },
+    {
+      "date": "2025-12-21",
     "title": "Brutalist Fezcodex: Major Refactor",
     "description": "Executed a sweeping architectural and aesthetic refactor. Introduced high-contrast brutalist layouts, immersive hero sections with real-time generative art, and a massive codebase sanitization. Overhauled the Timeline and Memory Game components to match the new digital-first identity.",
     "type": "refactor",

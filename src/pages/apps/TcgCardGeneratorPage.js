@@ -4,10 +4,15 @@ import {
   ArrowLeftIcon,
   DownloadSimpleIcon,
   UploadSimpleIcon,
+  FadersIcon,
+  ImageIcon,
+  ChartBarIcon,
+  ArticleIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
+import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const backgroundOptions = [
@@ -483,7 +488,7 @@ const TcgCardGeneratorPage = () => {
 
     const dpr = window.devicePixelRatio || 1;
     const logicalWidth = 420;
-    const logicalHeight = 620;
+    const logicalHeight = 750;
 
     canvas.width = logicalWidth * dpr;
     canvas.height = logicalHeight * dpr;
@@ -525,7 +530,7 @@ const TcgCardGeneratorPage = () => {
     // High Resolution Download
     const scaleFactor = 3; // 3x resolution (1260x1860)
     const width = 420;
-    const height = 620;
+    const height = 750;
 
     const canvas = document.createElement('canvas');
     canvas.width = width * scaleFactor;
@@ -543,41 +548,70 @@ const TcgCardGeneratorPage = () => {
 
   // Styles helper
   const inputBaseClass =
-    'w-full p-2 rounded-md bg-gray-800 border border-gray-700 text-white focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all';
+    'w-full p-2 bg-black/40 border border-white/5 font-mono text-sm text-gray-300 focus:border-emerald-500 focus:outline-none transition-all rounded-sm placeholder-gray-700';
   const labelClass =
-    'block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1';
-  const sectionClass =
-    'bg-gray-900/50 p-6 rounded-xl border border-gray-800 backdrop-blur-sm';
+    'block text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-1';
+
+  const Module = ({ title, icon: Icon, children, seed }) => (
+    <div className="relative border border-white/10 bg-white/[0.02] p-6 rounded-sm group overflow-hidden">
+      <div className="absolute inset-0 opacity-5 pointer-events-none">
+        <GenerativeArt seed={seed} className="w-full h-full" />
+      </div>
+      <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+      <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+        <Icon weight="fill" className="text-emerald-500" />
+        {title}
+      </h3>
+      <div className="relative z-10">
+        {children}
+      </div>
+    </div>
+  );
 
   return (
-    <div className="py-12 sm:py-20 min-h-screen bg-gray-950 text-gray-200 font-sans">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans pb-32 relative z-10">
+      <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12">
         {/* Header */}
-        <div className="mb-10 text-center">
+        <header className="mb-20">
           <Link
             to="/apps"
-            className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-            Back to Apps
+            <ArrowLeftIcon weight="bold" />
+            <span>Applications</span>
           </Link>
-          <BreadcrumbTitle title="Techno TCG Maker" slug="tcg" />
-          <p className="text-gray-500 max-w-xl mx-auto mb-4">
-            Design your own futuristic trading cards.
-          </p>
-          <hr className="border-gray-700" />
-        </div>
-        <div className="flex flex-col xl:flex-row gap-10 items-start justify-center">
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="flex-1">
+              <BreadcrumbTitle
+                title="TCG Maker"
+                slug="tcg"
+                variant="brutalist"
+              />
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed mt-4">
+                Fabricate futuristic trading cards. Customize attributes, imagery, and structural data.
+              </p>
+            </div>
+
+            <button
+                onClick={downloadCard}
+                className="group flex items-center gap-3 px-6 py-3 bg-white text-black font-bold uppercase tracking-widest hover:bg-emerald-500 transition-colors"
+              >
+                <DownloadSimpleIcon size={20} weight="bold" />
+                <span>Initialize Download</span>
+            </button>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-8">
           {/* --- Left Column: Editor --- */}
-          <div className="w-full xl:w-5/12 space-y-6">
+          <div className="xl:col-span-4 space-y-6">
             {/* Basic Info Section */}
-            <div className={sectionClass}>
-              <h2 className="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2">
-                Card Data
-              </h2>
+            <Module title="Core_Data" icon={FadersIcon} seed="CORE_DATA">
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2">
-                  <label className={labelClass}>Card Name</label>
+                  <label className={labelClass}>Designation (Name)</label>
                   <input
                     type="text"
                     value={cardName}
@@ -586,7 +620,7 @@ const TcgCardGeneratorPage = () => {
                   />
                 </div>
                 <div>
-                  <label className={labelClass}>HP</label>
+                  <label className={labelClass}>Integrity (HP)</label>
                   <input
                     type="text"
                     value={hp}
@@ -595,36 +629,34 @@ const TcgCardGeneratorPage = () => {
                   />
                 </div>
                 <div>
-                  <label className={labelClass}>Background Style</label>
+                  <label className={labelClass}>Visual_Matrix</label>
                   <CustomDropdown
                     options={backgroundOptions}
                     value={background}
                     onChange={setBackground}
                     label="Select Style"
                     className="w-full"
+                    variant="brutalist"
                   />
                 </div>
               </div>
-            </div>
+            </Module>
 
             {/* Artwork Section */}
-            <div className={sectionClass}>
-              <h2 className="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2">
-                Artwork
-              </h2>
-              <div className="flex items-center gap-4">
-                <div className="flex-1">
-                  <p className="text-sm text-gray-400">
-                    Upload a cyberpunk or futuristic image for best results.
-                  </p>
-                  {imageDimensions && (
-                    <p className="text-xs text-gray-500 mt-1">
-                      Dimensions: {imageDimensions.width} x{' '}
-                      {imageDimensions.height} px
-                    </p>
+            <Module title="Visual_Asset" icon={ImageIcon} seed="VISUAL_ASSET">
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center justify-between border border-white/10 p-4 bg-black/40 rounded-sm">
+                  <div className="flex-1">
+                     <div className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1">Status</div>
+                     <div className="text-xs font-mono text-emerald-500">
+                        {image ? 'Asset_Loaded' : 'Awaiting_Upload'}
+                     </div>
+                      {imageDimensions && (
+                    <div className="text-[10px] font-mono text-gray-600 mt-1">
+                      {imageDimensions.width}x{imageDimensions.height}px
+                    </div>
                   )}
-                </div>
-                <div className="flex-shrink-0">
+                  </div>
                   <input
                     type="file"
                     ref={fileInputRef}
@@ -634,22 +666,25 @@ const TcgCardGeneratorPage = () => {
                   />
                   <button
                     onClick={triggerFileInput}
-                    className="flex items-center gap-2 px-4 py-2 rounded-md bg-gray-800 hover:bg-gray-700 border border-gray-600 transition-colors text-sm font-medium"
+                    className="flex items-center gap-2 px-4 py-2 border border-white/20 hover:border-emerald-500 hover:text-emerald-500 transition-colors text-[10px] font-bold uppercase tracking-widest"
                   >
-                    <UploadSimpleIcon size={20} /> Upload Art
+                    <UploadSimpleIcon size={16} /> Upload
                   </button>
                 </div>
+                 <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+                    * Recommended: High-contrast cyberpunk imagery.
+                  </p>
               </div>
-            </div>
+            </Module>
+          </div>
 
+          {/* Middle Column: Stats & Details */}
+          <div className="xl:col-span-4 space-y-6">
             {/* Stats Section */}
-            <div className={sectionClass}>
-              <h2 className="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2">
-                Stats & Info
-              </h2>
+            <Module title="Performance_Metrics" icon={ChartBarIcon} seed="STATS">
               <div className="space-y-4">
                 <div>
-                  <label className={labelClass}>Generation</label>
+                  <label className={labelClass}>Generation_Cycle</label>
                   <input
                     type="text"
                     value={generation}
@@ -658,7 +693,7 @@ const TcgCardGeneratorPage = () => {
                   />
                 </div>
                 <div>
-                  <label className={labelClass}>Type</label>
+                  <label className={labelClass}>Classification</label>
                   <input
                     type="text"
                     value={type}
@@ -668,7 +703,7 @@ const TcgCardGeneratorPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className={labelClass}>Attack</label>
+                    <label className={labelClass}>Offense_Value</label>
                     <input
                       type="text"
                       value={attack}
@@ -677,7 +712,7 @@ const TcgCardGeneratorPage = () => {
                     />
                   </div>
                   <div>
-                    <label className={labelClass}>Defense</label>
+                    <label className={labelClass}>Defense_Value</label>
                     <input
                       type="text"
                       value={defense}
@@ -687,7 +722,7 @@ const TcgCardGeneratorPage = () => {
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>Cost</label>
+                  <label className={labelClass}>Resource_Cost</label>
                   <input
                     type="text"
                     value={cost}
@@ -696,16 +731,13 @@ const TcgCardGeneratorPage = () => {
                   />
                 </div>
               </div>
-            </div>
+            </Module>
 
             {/* Description Section */}
-            <div className={sectionClass}>
-              <h2 className="text-lg font-bold text-white mb-4 border-b border-gray-700 pb-2">
-                Details
-              </h2>
+            <Module title="Metadata" icon={ArticleIcon} seed="METADATA">
               <div className="space-y-4">
                 <div>
-                  <label className={labelClass}>Description</label>
+                  <label className={labelClass}>Narrative_Log</label>
                   <textarea
                     value={description}
                     onChange={(e) => setDescription(e.target.value)}
@@ -714,7 +746,7 @@ const TcgCardGeneratorPage = () => {
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   <div className="col-span-1">
-                    <label className={labelClass}>Card #</label>
+                    <label className={labelClass}>Index_ID</label>
                     <input
                       type="text"
                       value={cardNumber}
@@ -723,7 +755,7 @@ const TcgCardGeneratorPage = () => {
                     />
                   </div>
                   <div className="col-span-1">
-                    <label className={labelClass}>Total</label>
+                    <label className={labelClass}>Total_Set</label>
                     <input
                       type="text"
                       value={totalCards}
@@ -732,7 +764,7 @@ const TcgCardGeneratorPage = () => {
                     />
                   </div>
                   <div className="col-span-1">
-                    <label className={labelClass}>Illustrator</label>
+                    <label className={labelClass}>Architect</label>
                     <input
                       type="text"
                       value={illustrator}
@@ -742,31 +774,28 @@ const TcgCardGeneratorPage = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </Module>
           </div>
 
           {/* --- Right Column: Preview --- */}
-          <div className="w-full xl:w-auto flex flex-col items-center sticky top-10">
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-pink-500 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-              <canvas
-                ref={canvasRef}
-                className="relative rounded-xl shadow-2xl max-w-full h-auto bg-black"
-                style={{ width: '420px', height: '620px' }}
-              />
-            </div>
+          <div className="xl:col-span-4 flex flex-col items-center">
+             <div className="sticky top-10 w-full flex flex-col items-center">
+                <div className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-4 w-full text-center">Output_Preview</div>
+                <div className="relative group p-1 border border-white/10 bg-black">
+                  <div className="absolute -inset-2 bg-gradient-to-b from-emerald-500/20 to-transparent blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                  <canvas
+                    ref={canvasRef}
+                    className="relative max-w-full h-auto bg-black border border-white/5"
+                    style={{ width: '420px', height: '750px' }}
+                  />
+                </div>
 
-            <div className="mt-8 flex gap-4 w-full max-w-[420px]">
-              <button
-                onClick={downloadCard}
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-4 rounded-md text-lg font-arvo transition-colors border bg-app/15 text-app border-app-alpha-50 hover:bg-app/20 "
-              >
-                <DownloadSimpleIcon size={24} weight="bold" /> Download HD
-              </button>
+                 <div className="mt-6 w-full max-w-[420px] text-center">
+                    <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+                        Resolution: 1260x2250 (HD)
+                    </p>
+                </div>
             </div>
-            <p className="mt-4 text-xs text-gray-500">
-              High-resolution (3x) PNG output.
-            </p>
           </div>
         </div>
       </div>
