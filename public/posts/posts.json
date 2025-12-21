@@ -9,7 +9,7 @@
     "category": "rant",
     "filename": "corrupted-blood-incident.txt",
     "authors": ["fezcode"],
-    "image": "/images/asset/ogtitle.png"
+    "image": "/images/posts/asset/symbol-flow.webp"
   },
   {
     "slug": "building-the-knowledge-graph",
@@ -21,7 +21,7 @@
     "category": "dev",
     "filename": "building-the-knowledge-graph.txt",
     "authors": ["fezcode"],
-    "image": "/images/asset/ogtitle.png"
+    "image": "/images/posts/asset/shapes-1.webp"
   },
   {
     "slug": "routing-revolution-ssg-and-seo",
@@ -33,7 +33,7 @@
     "category": "dev",
     "filename": "routing-revolution-ssg-and-seo.txt",
     "authors": ["fezcode"],
-    "image": "/images/asset/ogtitle.png"
+    "image": "/images/posts/asset/poster-loom.webp"
   },
   {
     "slug": "art-generation-in-fezcodex",
@@ -45,7 +45,7 @@
     "category": "dev",
     "filename": "art-generation-in-fezcodex.txt",
     "authors": ["fezcode"],
-    "image": "/images/asset/ogtitle.png"
+    "image": "/images/posts/asset/shapes-1.webp"
   },
   {
     "slug": "brutalist-refactor",
@@ -57,7 +57,7 @@
     "category": "feat",
     "filename": "brutalist-refactor.txt",
     "authors": ["fezcode"],
-    "image": "/images/asset/ogtitle.png"
+    "image": "/images/posts/asset/poster-loom.webp"
   },
   {
     "slug": "introducing-reading-experience",

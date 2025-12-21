@@ -73,7 +73,7 @@ export const getPosts = async () => {
         ? `/blog/series/${post.series.slug}/${post.slug}`
         : `/blog/${post.slug}`,
       description: post.description || 'A blog post from Fezcodex.',
-      image: post.image || '/images/placeholder-blog.svg',
+      image: post.image || '/images/fezcodex-card.jpg',
     }));
 
     return flattenedPosts;
@@ -105,7 +105,7 @@ export const getProjects = async () => {
       slug: project.slug,
       link: `/projects/${project.slug}`,
       description: project.shortDescription || 'A project by Fezcodex.',
-      image: project.image || '/images/placeholder-project.svg',
+      image: project.image || '/images/fezcodex-card.jpg',
     }));
     return formattedProjects;
   } catch (error) {
