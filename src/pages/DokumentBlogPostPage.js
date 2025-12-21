@@ -20,6 +20,7 @@ import { calculateReadingTime } from '../utils/readingTime';
 import MarkdownLink from '../components/MarkdownLink';
 import ImageModal from '../components/ImageModal';
 import CodeModal from '../components/CodeModal';
+import useSeo from '../hooks/useSeo';
 import { useToast } from '../hooks/useToast';
 import { fetchAllBlogPosts } from '../utils/dataUtils';
 
@@ -97,6 +98,27 @@ const DokumentBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const { addToast } = useToast();
+
+  useSeo({
+    title: post ? `${post.attributes.title} | Fezcodex` : 'Loading... | Fezcodex',
+    description: post ? post.body.substring(0, 150) : '',
+    keywords: post && post.attributes.tags ? post.attributes.tags.join(', ') : '',
+    ogTitle: post ? `${post.attributes.title} | Fezcodex` : 'Fezcodex',
+    ogDescription: post ? post.body.substring(0, 150) : '',
+    ogImage: post
+      ? post.attributes.ogImage ||
+        post.attributes.image ||
+        '/images/asset/ogtitle.png'
+      : '/images/asset/ogtitle.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: post ? `${post.attributes.title} | Fezcodex` : 'Fezcodex',
+    twitterDescription: post ? post.body.substring(0, 150) : '',
+    twitterImage: post
+      ? post.attributes.ogImage ||
+        post.attributes.image ||
+        '/images/asset/ogtitle.png'
+      : '/images/asset/ogtitle.png',
+  });
 
   useEffect(() => {
     const fetchPost = async () => {

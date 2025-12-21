@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { ArrowLeft, ArrowsOutSimple } from '@phosphor-icons/react';
-import Seo from '../components/Seo';
+import useSeo from '../hooks/useSeo';
 import GenerativeArt from '../components/GenerativeArt';
 import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
@@ -43,6 +43,27 @@ const TerminalGreenBlogPostPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
+
+  useSeo({
+    title: post ? `${post.attributes.title.toUpperCase()} | TERM` : 'LOADING... | TERM',
+    description: post ? post.body.substring(0, 150) : '',
+    keywords: post && post.attributes.tags ? post.attributes.tags.join(', ') : '',
+    ogTitle: post ? `${post.attributes.title.toUpperCase()} | TERM` : 'TERM',
+    ogDescription: post ? post.body.substring(0, 150) : '',
+    ogImage: post
+      ? post.attributes.ogImage ||
+        post.attributes.image ||
+        '/images/asset/ogtitle.png'
+      : '/images/asset/ogtitle.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: post ? `${post.attributes.title.toUpperCase()} | TERM` : 'TERM',
+    twitterDescription: post ? post.body.substring(0, 150) : '',
+    twitterImage: post
+      ? post.attributes.ogImage ||
+        post.attributes.image ||
+        '/images/asset/ogtitle.png'
+      : '/images/asset/ogtitle.png',
+  });
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -169,12 +190,6 @@ const TerminalGreenBlogPostPage = () => {
         .custom-scrollbar-terminal::-webkit-scrollbar-track { background: #000; }
         .custom-scrollbar-terminal::-webkit-scrollbar-thumb { background: #10b981; }
       `}</style>
-
-      <Seo
-        title={`${post.attributes.title.toUpperCase()} | TERM`}
-        description={post.body.substring(0, 150)}
-        ogImage={post.attributes.image || '/images/asset/ogtitle.png'}
-      />
 
       <div
         className="fixed inset-0 pointer-events-none z-50 opacity-[0.03]"
