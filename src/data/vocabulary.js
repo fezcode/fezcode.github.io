@@ -55,4 +55,8 @@ export const vocabulary = {
     title: 'Search Engine Crawler',
     loader: () => import('./vocab/crawler'),
   },
+  'open-graph': {
+    title: 'Open Graph Protocol',
+    loader: () => import('./vocab/open-graph'),
+  },
 };

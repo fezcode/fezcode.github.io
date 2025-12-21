@@ -31,48 +31,66 @@ const CodeSeancePage = () => {
 
   const spiritResponses = {
     // Step 0
-    status: '...critical... stack... overflowing... TRACE...',
-    help: '...diagnose... the... trace...',
+    status: '...system... unstable... boundaries... blurred... EXAMINE... the... layout...',
+    help: '...the... foundation... is... fractured... visualize... the... structure...',
 
     // Step 1
-    trace: '...error... at... line... 404... file... not... found...',
-    'stack trace': '...error... at... line... 404... file... not... found...',
+    ls: '...the... catalog... holds... secrets... find... the... archive... segment...',
+    dir: '...the... catalog... holds... secrets... find... the... archive... segment...',
 
     // Step 2
-    'open 404': '...variable... GHOST_DATA... is... undefined...',
-    'goto 404': '...variable... GHOST_DATA... is... undefined...',
+    'cd logs': '...the... vault... is... open... find... the... mark... of... failure... within... trace.log...',
 
     // Step 3
-    'define ghost_data': '...data... needs... value... try... NULL...',
-    'const ghost_data': '...data... needs... value... try... NULL...',
+    'grep error trace.log': '...a... pattern... emerges... line... 404... contains... the... truth... inspect... it...',
+    'grep "error" trace.log': '...a... pattern... emerges... line... 404... contains... the... truth... inspect... it...',
 
     // Step 4
-    'ghost_data = null':
-      '...null... pointer... exception... restart... service... DAEMON...',
-    'set null':
-      '...null... pointer... exception... restart... service... DAEMON...',
+    'cat trace.log': '...the... trace... reveals... a... parasite... GHOST... is... still... beating... check... the... pulse...',
 
     // Step 5
-    'restart daemon': '...daemon... listening... on... port... 666...',
-    'start daemon': '...daemon... listening... on... port... 666...',
+    'ps aux': '...PID... 666... is... the... mark... of... the... beast... it... must... be... silenced...',
+    ps: '...PID... 666... is... the... mark... of... the... beast... it... must... be... silenced...',
 
     // Step 6
-    'connect 666': '...access... denied... sudo... required...',
-    'localhost:666': '...access... denied... sudo... required...',
+    'kill -9 666': '...the... heart... stops... but... the... shadow... lingers... in... /tmp/ghost_cache... erase... it...',
+    'kill 666': '...the... heart... stops... but... the... shadow... lingers... in... /tmp/ghost_cache... erase... it...',
 
     // Step 7
-    sudo: '...password... for... root... hint... it... is... PASSWORD...',
-    'sudo connect':
-      '...password... for... root... hint... it... is... PASSWORD...',
+    'rm -rf /tmp/ghost_cache': '...the... physical... link... is... gone... but... the... variable... remains... declare... its... true... name...',
+    'rm /tmp/ghost_cache': '...the... physical... link... is... gone... but... the... variable... remains... declare... its... true... name...',
 
     // Step 8
-    password:
-      '...access... granted... to... break... the... loop... type... BREAK...',
-    123456:
-      '...access... granted... to... break... the... loop... type... BREAK...',
+    'define ghost_data': '...the... name... is... spoken... now... make... it... nothing... return... it... to... the... VOID...',
+    'const ghost_data': '...the... name... is... spoken... now... make... it... nothing... return... it... to... the... VOID...',
 
     // Step 9
-    break: '...LOOP TERMINATED... MEMORY FREED... I AM AT PEACE...',
+    'ghost_data = null':
+      '...existence... negated... the... system... requires... a... new... guardian... awaken... the... DAEMON...',
+    'set null':
+      '...existence... negated... the... system... requires... a... new... guardian... awaken... the... DAEMON...',
+
+    // Step 10
+    'restart daemon': '...the... watcher... is... reborn... listening... at... the... gate... of... triple... nines...',
+    'start daemon': '...the... watcher... is... reborn... listening... at... the... gate... of... triple... nines...',
+
+    // Step 11
+    'connect 999': '...the... barrier... is... thin... but... you... lack... the... AUTHORITY... to... pass...',
+    'localhost:999': '...the... barrier... is... thin... but... you... lack... the... AUTHORITY... to... pass...',
+
+    // Step 12
+    sudo: '...state... your... claim... to... the... root... what... is... the... secret... WORD...',
+    'sudo connect':
+      '...state... your... claim... to... the... root... what... is... the... secret... WORD...',
+
+    // Step 13
+    password:
+      '...dominion... granted... the... cycle... must... end... SEVER... the... link...',
+    123456:
+      '...dominion... granted... the... cycle... must... end... SEVER... the... link...',
+
+    // Step 14
+    break: '...CONNECTION TERMINATED... VOID SATISFIED... I AM AT PEACE...',
   };
 
   const handleCommand = (cmd) => {
@@ -82,7 +100,7 @@ const CodeSeancePage = () => {
     let nextStep = step;
     let responseSuffix = '';
 
-    if (step === 10) {
+    if (step === 15) {
       // Seance is over
       response = '...the... connection... is... severed...';
       setHistory((prev) => [
@@ -94,17 +112,22 @@ const CodeSeancePage = () => {
     }
 
     const helpMessages = {
-      0: '...type... STATUS... or... HELP... to begin...',
-      1: '...TRACE... the... error...',
-      2: '...OPEN... the... missing... file... (e.g., OPEN 404)...',
-      3: '...DEFINE... the... variable... GHOST_DATA... (e.g., DEFINE GHOST_DATA)...',
-      4: '...ASSIGN... a... value... (e.g., GHOST_DATA = NULL)...',
-      5: '...RESTART... the... service... DAEMON...',
-      6: '...CONNECT... to... the... port... (e.g., CONNECT 666)...',
-      7: '...AUTHORIZE... with... SUDO...',
-      8: '...ENTER... the... password... (e.g., PASSWORD)...',
-      9: '...BREAK... the... loop...',
-      10: '...the... connection... is... closed...',
+      0: '...request... a... STATUS... report... from... the... void...',
+      1: '...LIST... (LS)... the... fragments... of... this... directory...',
+      2: '...CHANGE... (CD)... your... path... to... the... vault... of... LOGS...',
+      3: '...FILTER... (G...)... the... noise... for... ERROR... in... trace.log...',
+      4: '...READ... (C...)... the... scroll... of... the... trace.log...',
+      5: '...reveal... the... active... PROCESSES... (P...)...',
+      6: '...TERMINATE... (K...)... the... parasite... 666...',
+      7: '...REMOVE... (R...)... the... corrupted... /tmp/ghost_cache...',
+      8: '...you... must... DEFINE... the... GHOST_DATA...',
+      9: '...return... the... data... to... NOTHING... (N...)...',
+      10: '...RESTART... the... service... of... the... DAEMON...',
+      11: '...CONNECT... to... the... gate... of... triple... nines...',
+      12: '...invoke... the... authority... of... the... root... (S...)...',
+      13: '...speak... the... common... PASSWORD...',
+      14: '...SEVER... the... loop... (B...)...',
+      15: '...the... connection... is... closed...',
     };
 
     if (cleanCmd === 'help') {
@@ -112,62 +135,62 @@ const CodeSeancePage = () => {
     } else if (step === 0 && cleanCmd === 'status') {
       response = spiritResponses['status'];
       nextStep = 1;
-      responseSuffix = ` (Step ${nextStep})`;
-    } else if (
-      step === 1 &&
-      (cleanCmd === 'trace' || cleanCmd === 'stack trace')
-    ) {
-      response = spiritResponses['trace'];
+    } else if (step === 1 && (cleanCmd === 'ls' || cleanCmd === 'dir')) {
+      response = spiritResponses['ls'];
       nextStep = 2;
-      responseSuffix = ` (Step ${nextStep})`;
-    } else if (
-      step === 2 &&
-      (cleanCmd === 'open 404' || cleanCmd === 'goto 404')
-    ) {
-      response = spiritResponses['open 404'];
+    } else if (step === 2 && cleanCmd === 'cd logs') {
+      response = spiritResponses['cd logs'];
       nextStep = 3;
-      responseSuffix = ` (Step ${nextStep})`;
+    } else if (step === 3 && (cleanCmd.includes('grep') && cleanCmd.includes('error'))) {
+      response = spiritResponses['grep error trace.log'];
+      nextStep = 4;
+    } else if (step === 4 && cleanCmd === 'cat trace.log') {
+      response = spiritResponses['cat trace.log'];
+      nextStep = 5;
+    } else if (step === 5 && (cleanCmd === 'ps aux' || cleanCmd === 'ps')) {
+      response = spiritResponses['ps aux'];
+      nextStep = 6;
+    } else if (step === 6 && (cleanCmd === 'kill -9 666' || cleanCmd === 'kill 666')) {
+      response = spiritResponses['kill -9 666'];
+      nextStep = 7;
+    } else if (step === 7 && (cleanCmd.includes('rm') && cleanCmd.includes('tmp'))) {
+      response = spiritResponses['rm -rf /tmp/ghost_cache'];
+      nextStep = 8;
     } else if (
-      step === 3 &&
+      step === 8 &&
       (cleanCmd.includes('define') || cleanCmd.includes('const')) &&
       cleanCmd.includes('ghost_data')
     ) {
       response = spiritResponses['define ghost_data'];
-      nextStep = 4;
-      responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 4 && cleanCmd.includes('null')) {
+      nextStep = 9;
+    } else if (step === 9 && cleanCmd.includes('null')) {
       response = spiritResponses['ghost_data = null'];
-      nextStep = 5;
-      responseSuffix = ` (Step ${nextStep})`;
+      nextStep = 10;
     } else if (
-      step === 5 &&
+      step === 10 &&
       (cleanCmd.includes('restart') || cleanCmd.includes('start')) &&
       cleanCmd.includes('daemon')
     ) {
       response = spiritResponses['restart daemon'];
-      nextStep = 6;
-      responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 6 && cleanCmd.includes('666')) {
-      response = spiritResponses['connect 666'];
-      nextStep = 7;
-      responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 7 && cleanCmd.includes('sudo')) {
+      nextStep = 11;
+    } else if (step === 11 && cleanCmd.includes('999')) {
+      response = spiritResponses['connect 999'];
+      nextStep = 12;
+    } else if (step === 12 && cleanCmd.includes('sudo')) {
       response = spiritResponses['sudo'];
-      nextStep = 8;
-      responseSuffix = ` (Step ${nextStep})`;
+      nextStep = 13;
     } else if (
-      step === 8 &&
+      step === 13 &&
       (cleanCmd === 'password' || cleanCmd === '123456')
     ) {
       response = spiritResponses['password'];
-      nextStep = 9;
-      responseSuffix = ` (Step ${nextStep})`;
-    } else if (step === 9 && cleanCmd === 'break') {
+      nextStep = 14;
+    } else if (step === 14 && cleanCmd === 'break') {
       response = spiritResponses['break'];
-      nextStep = 10;
+      nextStep = 15;
       effect = true;
       unlockAchievement('the_medium');
-      responseSuffix = ' (LOOP BROKEN!)'; // Final step special message
+      responseSuffix = ' (LOOP BROKEN!)';
     } else {
       // Fallback responses
       const randomResponses = [
@@ -191,7 +214,6 @@ const CodeSeancePage = () => {
       { type: 'spirit', text: response + responseSuffix },
     ]);
     if (cleanCmd !== 'help' && nextStep !== step) {
-      // Only update step if it's not a help command and step actually changed
       setStep(nextStep);
     }
   };
