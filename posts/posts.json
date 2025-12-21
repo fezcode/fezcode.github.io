@@ -9,7 +9,8 @@
     "category": "rant",
     "filename": "corrupted-blood-incident.txt",
     "authors": ["fezcode"],
-    "image": "/images/posts/asset/symbol-flow.webp"
+    "image": "/images/posts/asset/symbol-flow.webp",
+    "ogImage": "/images/posts/the_corrupted_blood_incident.webp"
   },
   {
     "slug": "building-the-knowledge-graph",
