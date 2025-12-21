@@ -26,7 +26,7 @@
     (title) More Commands for Code Seance
     (description) Expand the set of available commands and interactions in Code Seance.
     (category) Games
-    (status) In Progress
+    (status) Completed
     (priority) Medium
     (created_at) 2025-11-28T15:00:00+03:00
     (notes) Focus on developer-themed commands.
@@ -170,3 +170,88 @@
     (priority) High
     (created_at) 2025-12-17T18:34:00+03:00
     (notes) Sidebar should have a dark red color (transparent salmon)
+
+  > (issues)
+    (id) FEZ-16
+    (title) Knowledge Graph Visualization Protocol
+    (description)
+      A visual 'brain' for Fezcodex. Every single blog post, app, and log will be a node in a 3D interactive map.
+      Nodes are connected by shared tags (e.g., 'React' or 'Horror'). Users can spin, zoom, and click nodes to travel
+      through the site's logic instead of using standard menus.
+    (category) Discovery
+    (epic) OS Experience
+    (status) Planned
+    (priority) Medium
+    (created_at) 2025-12-21T18:00:00+03:00
+    (notes) Clicking a node should show a preview tooltip with the thumbnail and summary.
+
+  > (issues)
+    (id) FEZ-17
+    (title) Windowed Workspace Environment
+    (description)
+      A 'Desktop Mode' toggle. When active, apps (like Notepad or Morse Code) don't take up the whole screen.
+      Instead, they open in draggable, resizable windows with a taskbar at the bottom. This allows you to
+      use multiple tools at once—for example, taking notes while playing a game or translating text.
+    (category) UI/UX
+    (epic) OS Experience
+    (status) Planned
+    (priority) Low
+    (created_at) 2025-12-21T18:00:00+03:00
+    (notes) Use Framer Motion for dragging physics and Z-index management (active window comes to front).
+
+  > (issues)
+    (id) FEZ-18
+    (title) Real-time System Telemetry Stream
+    (description)
+      A narrow, persistent 'data strip' at the bottom of the site. It acts like a technical ticker tape,
+      streaming a mix of real data (Current Page, Scroll Speed, FPS) and atmospheric 'Ghost Data'
+      (e.g., 'Decrypting_Memory_Bank...', 'Spirit_Found_at_0x004'). It pulses when you click things.
+    (category) Atmosphere
+    (epic) OS Experience
+    (status) Planned
+    (priority) High
+    (created_at) 2025-12-21T18:00:00+03:00
+    (notes) The strip should have a 'glitch' animation when an achievement is unlocked.
+
+  > (issues)
+    (id) FEZ-19
+    (title) Central Command Dashboard
+    (description)
+      The Home Page becomes a technical command center. Instead of just a title, you see large digital
+      counters showing 'Total Intel Logged', 'Active Artifacts', and 'Global Uptime'. It will feature
+      a 'Latest Signal' feed (recent posts) and a 'Achievement Progress' radar chart.
+    (category) UI/UX
+    (epic) OS Experience
+    (status) Planned
+    (priority) High
+    (created_at) 2025-12-21T18:00:00+03:00
+    (notes) Visual layout should feel like a NASA control room or a security monitor.
+
+  > (issues)
+    (id) FEZ-20
+    (title) Subliminal Glitch Protocol
+    (description)
+      Hidden layers of mystery. Typing secret codes (like 'OVERLOAD') into the command palette triggers
+      site-wide visual events (screen shake, color inversion). Hidden 'Ghost Comments' will be buried
+      in the HTML code for developers to find, leading to secret unlisted pages.
+    (category) Mystery
+    (epic) Mystery
+    (status) In Progress
+    (priority) Medium
+    (created_at) 2025-12-21T18:00:00+03:00
+    (notes) First secret: typing 'FEZ' on any page should make the logo spin once.
+
+  > (issues)
+    (id) FEZ-21
+    (title) Data-Reactive Generative Backdrops
+    (description)
+      The background art is currently random. This protocol makes it 'intelligent'. In the Morse Code app,
+      the art pulses to your typing. In the Password Generator, it sharpens as your password gets stronger.
+      The background becomes a visual echo of your actions.
+    (category) Aesthetic
+    (epic) OS Experience
+    (status) Planned
+    (priority) Medium
+    (created_at) 2025-12-21T18:00:00+03:00
+    (notes) Requires passing a 'data stream' prop to the GenerativeArt component.
+
