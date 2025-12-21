@@ -1,5 +1,17 @@
 [
   {
+    "slug": "routing-revolution-ssg-and-seo",
+    "title": "Routing Revolution: SSG, BrowserRouter, and the SEO Fix",
+    "date": "2025-12-21",
+    "updated": "2025-12-21",
+    "description": "A technical deep dive into migrating from HashRouter to BrowserRouter using Static Site Generation (SSG) for perfect SEO on GitHub Pages.",
+    "tags": ["React", "SEO", "SSG", "WebDev"],
+    "category": "dev",
+    "filename": "routing-revolution-ssg-and-seo.txt",
+    "authors": ["fezcode"],
+    "image": "/images/ogtitle.png"
+  },
+  {
     "slug": "art-generation-in-fezcodex",
     "title": "The Art of the Algorithm: Generative Visuals in Fezcodex",
     "date": "2025-12-20",

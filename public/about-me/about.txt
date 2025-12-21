@@ -53,4 +53,4 @@ flow—it's my kind of interactive jam session! 🤘
 
 | 🗂️ Some of my Work          | 📖 Articles written  | 🖼️ Stuff I Consume     | ✨ Some Small Apps |
 |:---------------------------:|:--------------------:|:-----------------------:|:-------------------:|
-| [Projects](/#/projects)     | [Blogs](/#/blog)     | [Logs](/#/logs)         | [ Apps](/#/apps)    |
+| [Projects](/projects)       | [Blogs](/blog)       | [Logs](/logs)           | [ Apps](/apps)      |

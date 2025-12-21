@@ -12,7 +12,7 @@ To make this truly reusable, I avoided prop drilling by using the **Context API*
 
 ### Why Context? Avoiding Prop Drilling
 
-Without a global context, implementing a feature like this would require **[prop drilling](/#/vocab/prop-drilling)**. This is a common pattern (or **[anti-pattern](/#/vocab/anti-pattern)**) in React where you pass data or functions down through multiple layers of components just to get them to where they are needed.
+Without a global context, implementing a feature like this would require **[prop drilling](/vocab/prop-drilling)**. This is a common pattern (or **[anti-pattern](/vocab/anti-pattern)**) in React where you pass data or functions down through multiple layers of components just to get them to where they are needed.
 
 Imagine we managed the side panel state in `App.js`. We would have to pass the `openSidePanel` function like this:
 

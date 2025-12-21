@@ -32,6 +32,6 @@ Here are just a few examples of the achievements you can strive for:
 
 ## Visit the Trophy Room!
 
-Want to see your collection? Head over to the new [Trophy Room page](/#/achievements) (accessible via the sidebar) to view all the achievements you've unlocked and see what challenges still await!
+Want to see your collection? Head over to the new [Trophy Room page](/achievements) (accessible via the sidebar) to view all the achievements you've unlocked and see what challenges still await!
 
 We hope this new feature adds an extra layer of fun and discovery to your Fezcodex experience. Happy hunting!

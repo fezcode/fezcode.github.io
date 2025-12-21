@@ -2,7 +2,7 @@
 
 In this post, we'll take a deep dive into the implementation of the Picker Wheel app, a fun and interactive way to pick a random winner from a list of entries. We'll explore how it's built using React, the Canvas API, and Tailwind CSS, and we'll cover the key concepts and techniques used in its development.
 
-You can play with it here [apps::pw](/#/apps::pw)
+You can play with it here [apps::pw](/apps::pw)
 
 ## The Canvas Wheel
 

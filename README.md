@@ -53,8 +53,20 @@ npm start
 ```
 This will open the site at http://localhost:3000.
 
-### 4. Shipping it to the world
-To put the site online (GitHub Pages):
+## Routing and SEO
+
+This project uses `BrowserRouter` for clean URLs (e.g., `/apps/markdown-table-formatter`) instead of hash-based URLs (`/#/apps/...`).
+
+To support this on GitHub Pages (which is a static file host), we use `react-snap` to pre-render all routes into static HTML files during the build process.
+
+-   **Pre-rendering:** `react-snap` crawls the application and generates a directory structure that matches the routes (e.g., `build/apps/markdown-table-formatter/index.html`). This allows GitHub Pages to serve the correct file for each route directly.
+-   **SEO:** This approach ensures that every page has unique, server-side rendered metadata (title, description, open graph tags) for social media previews and search engines.
+-   **Fallback:** A `404.html` is generated to handle unknown routes.
+
+### Deployment
+
+The standard `npm run deploy` command handles the build, pre-rendering, and deployment to GitHub Pages automatically.
+
 ```bash
 npm run deploy
 ```

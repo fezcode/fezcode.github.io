@@ -35,4 +35,24 @@ export const vocabulary = {
     title: 'Murakami, Takashi',
     loader: () => import('./vocab/murakami'),
   },
+  ssg: {
+    title: 'Static Site Generation (SSG)',
+    loader: () => import('./vocab/ssg'),
+  },
+  csr: {
+    title: 'Client-Side Rendering (CSR)',
+    loader: () => import('./vocab/csr'),
+  },
+  hydration: {
+    title: 'Hydration',
+    loader: () => import('./vocab/hydration'),
+  },
+  spa: {
+    title: 'Single Page Application (SPA)',
+    loader: () => import('./vocab/spa'),
+  },
+  crawler: {
+    title: 'Search Engine Crawler',
+    loader: () => import('./vocab/crawler'),
+  },
 };

@@ -3,7 +3,7 @@ from the branching of trees to the delicate veins of a leaf? Much of this comple
 often involving **fractals** and **recursion**.
 Our new "Fractal Flora" app lets you explore these principles by growing your own digital trees with a few sliders.
 
-> [Try apps::flora here](/#/apps::flora)
+> [Try apps::flora here](/apps::flora)
 
 
 This post will peel back the layers and explain the core mechanics behind the app.

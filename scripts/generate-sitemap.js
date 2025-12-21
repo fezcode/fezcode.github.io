@@ -40,7 +40,7 @@ const generateSitemap = async () => {
       if (item.series) {
         // Add series page
         urls.push({
-          loc: `${baseUrl}/#/blog/series/${item.slug}`,
+          loc: `${baseUrl}/blog/series/${item.slug}`,
           lastmod: new Date(item.updated || item.date).toISOString(),
           changefreq: 'weekly',
           priority: '0.7',
@@ -48,7 +48,7 @@ const generateSitemap = async () => {
         // Add individual posts within the series
         item.series.posts.forEach(seriesPost => {
           urls.push({
-            loc: `${baseUrl}/#/blog/series/${item.slug}/${seriesPost.slug}`,
+            loc: `${baseUrl}/blog/series/${item.slug}/${seriesPost.slug}`,
             lastmod: new Date(seriesPost.updated || seriesPost.date).toISOString(),
             changefreq: 'weekly',
             priority: '0.6',
@@ -57,7 +57,7 @@ const generateSitemap = async () => {
       } else {
         // Add individual blog post
         urls.push({
-          loc: `${baseUrl}/#/blog/${item.slug}`,
+          loc: `${baseUrl}/blog/${item.slug}`,
           lastmod: new Date(item.updated || item.date).toISOString(),
           changefreq: 'weekly',
           priority: '0.7',
@@ -87,7 +87,7 @@ const generateSitemap = async () => {
 
     projectList.forEach(project => {
       urls.push({
-        loc: `${baseUrl}/#/projects/${project.slug}`,
+        loc: `${baseUrl}/projects/${project.slug}`,
         lastmod: new Date(project.updated || project.date || new Date()).toISOString(),
         changefreq: 'monthly',
         priority: '0.7',
@@ -113,7 +113,7 @@ const generateSitemap = async () => {
 
         logsData.forEach(log => {
           urls.push({
-            loc: `${baseUrl}/#/logs/${category.toLowerCase()}/${log.slug}`,
+            loc: `${baseUrl}/logs/${category.toLowerCase()}/${log.slug}`,
             lastmod: new Date(log.updated || log.date || new Date()).toISOString(),
             changefreq: 'weekly',
             priority: '0.7',
@@ -134,7 +134,7 @@ const generateSitemap = async () => {
     dndData.books.forEach(book => { // Access dndData.books
       // Add D&D book page
       urls.push({
-        loc: `${baseUrl}/#/stories/books/${book.bookId}`,
+        loc: `${baseUrl}/stories/books/${book.bookId}`,
         lastmod: new Date().toISOString(), // Assuming book data doesn't have a specific lastmod
         changefreq: 'monthly',
         priority: '0.6',
@@ -142,7 +142,7 @@ const generateSitemap = async () => {
       // Add individual D&D episodes
       book.episodes.forEach(episode => {
         urls.push({
-          loc: `${baseUrl}/#/stories/books/${book.bookId}/pages/${episode.id}`,
+          loc: `${baseUrl}/stories/books/${book.bookId}/pages/${episode.id}`,
           lastmod: new Date().toISOString(), // Assuming episode data doesn't have a specific lastmod
           changefreq: 'weekly',
           priority: '0.5',

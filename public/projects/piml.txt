@@ -4,13 +4,13 @@
 
 ### 1.1 Apps
 
-- [JSON<->PIML Converter](/#/apps::jpc)
+- [JSON<->PIML Converter](/apps::jpc)
 
 ### 1.2 Libraries
 There are two libraries for PIML.
 
-- [go-piml (beta)](/#/projects/go-piml) :: [Github Repo](https://github.com/fezcode/go-piml)
-- [piml.js (beta)](/#/projects/piml.js) :: [Github Repo](https://github.com/fezcode/piml.js)
+- [go-piml (beta)](/projects/go-piml) :: [Github Repo](https://github.com/fezcode/go-piml)
+- [piml.js (beta)](/projects/piml.js) :: [Github Repo](https://github.com/fezcode/piml.js)
 
 ### 1.3 About
 

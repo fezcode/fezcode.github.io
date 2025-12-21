@@ -350,7 +350,7 @@ const BrutalistSidebar = ({
             <FooterButton
               onClick={() => navigate('/settings')}
               icon={GearSix}
-              label="SETT"
+              label="SETTINGS"
             />
             <FooterButton
               onClick={() => {
@@ -358,12 +358,12 @@ const BrutalistSidebar = ({
                 unlockAchievement('feeling_lucky');
               }}
               icon={Shuffle}
-              label="RAND"
+              label="RANDOM"
             />
             <FooterButton
               onClick={toggleModal}
               icon={EnvelopeSimple}
-              label="CONT"
+              label="CONTACT"
             />
           </div>
           <div className="text-center">

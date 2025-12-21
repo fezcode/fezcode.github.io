@@ -71,7 +71,7 @@ const generateRssFeed = () => {
 
     const postContent = fs.readFileSync(postPath, 'utf-8');
     // The URL in the feed should be the canonical one, even if the site uses HashRouter
-    const url = `https://fezcode.com/#/blog/${post.slug}`;
+    const url = `https://fezcode.com/blog/${post.slug}`;
 
     const itemDescription = stripMarkdown(post.description || post.title).substring(0, 250);
 

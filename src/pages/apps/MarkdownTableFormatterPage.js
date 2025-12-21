@@ -8,7 +8,8 @@ import {
   InfoIcon,
   ShieldCheckIcon,
   TaxiIcon,
-  FileCodeIcon
+  FileCodeIcon,
+  BookOpenIcon
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
@@ -164,7 +165,10 @@ const MarkdownTableFormatterPage = () => {
                   }
                   className="w-full text-left font-mono text-[10px] text-gray-500 hover:text-white uppercase tracking-widest flex items-center justify-between group"
                 >
-                  <span>View Documentation / History</span>
+                  <span className="flex items-center gap-2">
+                    <BookOpenIcon weight="fill" />
+                    View Documentation / History
+                  </span>
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity">-></span>
                 </button>
               </div>
