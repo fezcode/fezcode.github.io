@@ -163,6 +163,7 @@ const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const SitemapPage = lazy(() => import('../pages/SitemapPage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const KnowledgeGraphPage = lazy(() => import('../pages/KnowledgeGraphPage'));
+const PIMLLabPage = lazy(() => import('../pages/apps/PIMLLabPage'));
 const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
 
 const pageVariants = {
@@ -1027,6 +1028,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <LogicArchitectPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/piml-lab"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <PIMLLabPage />
               </Suspense>
             </motion.div>
           }

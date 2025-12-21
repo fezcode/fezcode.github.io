@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  Lightning,
-  Circle,
-  ArrowsClockwise,
-  CheckCircle,
-  PauseCircle,
-  Fire,
-  Equals,
-  ArrowDown,
+  LightningIcon,
+  CircleIcon,
+  ArrowsClockwiseIcon,
+  CheckCircleIcon,
+  PauseCircleIcon,
+  FireIcon,
+  EqualsIcon,
+  ArrowDownIcon,
 } from '@phosphor-icons/react';
 import {
   getStatusClasses,
@@ -20,28 +20,28 @@ const RoadmapCard = ({ app, index }) => {
   const getStatusIcon = (status) => {
     switch (status) {
       case 'Planned':
-        return <Circle weight="bold" />;
+        return <CircleIcon weight="bold" />;
       case 'In Progress':
-        return <ArrowsClockwise weight="bold" className="animate-spin" />;
+        return <ArrowsClockwiseIcon weight="bold" className="animate-spin" />;
       case 'Completed':
-        return <CheckCircle weight="bold" />;
+        return <CheckCircleIcon weight="bold" />;
       case 'On Hold':
-        return <PauseCircle weight="bold" />;
+        return <PauseCircleIcon weight="bold" />;
       default:
-        return <Circle weight="bold" />;
+        return <CircleIcon weight="bold" />;
     }
   };
 
   const getPriorityIcon = (priority) => {
     switch (priority) {
       case 'High':
-        return <Fire weight="fill" />;
+        return <FireIcon weight="fill" />;
       case 'Medium':
-        return <Equals weight="bold" />;
+        return <EqualsIcon weight="bold" />;
       case 'Low':
-        return <ArrowDown weight="bold" />;
+        return <ArrowDownIcon weight="bold" />;
       default:
-        return <ArrowDown weight="bold" />;
+        return <ArrowDownIcon weight="bold" />;
     }
   };
 
@@ -49,7 +49,7 @@ const RoadmapCard = ({ app, index }) => {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
+      transition={{ duration: 0.3, delay: (index || 0) * 0.05 }}
     >
       <Link to={`/roadmap/${app.id}`} className="block group relative h-full">
         {/* Main Card Container */}
@@ -83,7 +83,7 @@ const RoadmapCard = ({ app, index }) => {
 
             {app.epic && (
               <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-purple-500/5 border border-purple-500/20 text-purple-400 text-[9px] font-mono uppercase tracking-[0.2em] font-black">
-                <Lightning weight="fill" size={10} />
+                <LightningIcon weight="fill" size={10} />
                 {app.epic}
               </div>
             )}
