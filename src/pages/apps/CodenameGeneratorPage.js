@@ -29,9 +29,11 @@ const prefixes = [
   'Gold',
   'Silver',
   'Bronze',
+  'Neural'
 ];
 
 const nouns = [
+  'Nexus',
   'Viper',
   'Phoenix',
   'Shadow',
