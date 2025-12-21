@@ -13,7 +13,7 @@ import {
 import GrainOverlay from '../components/GrainOverlay';
 import CoffeeStain from '../components/CoffeeStain';
 import CensoredPolaroid from '../components/CensoredPolaroid';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { calculateReadingTime } from '../utils/readingTime';
 import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
@@ -102,27 +102,6 @@ const DossierBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const [modalImageSrc, setModalImageSrc] = useState(null);
-
-  useSeo({
-    title: post ? `${post.attributes.title} | Fezcodex Archive` : 'Loading... | Fezcodex Archive',
-    description: post ? post.body.substring(0, 150) : '',
-    keywords: post && post.attributes.tags ? post.attributes.tags.join(', ') : '',
-    ogTitle: post ? `${post.attributes.title} | Fezcodex` : 'Fezcodex',
-    ogDescription: post ? post.body.substring(0, 150) : '',
-    ogImage: post
-      ? post.attributes.ogImage ||
-        post.attributes.image ||
-        '/images/asset/ogtitle.png'
-      : '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: post ? `${post.attributes.title} | Fezcodex` : 'Fezcodex',
-    twitterDescription: post ? post.body.substring(0, 150) : '',
-    twitterImage: post
-      ? post.attributes.ogImage ||
-        post.attributes.image ||
-        '/images/asset/ogtitle.png'
-      : '/images/asset/ogtitle.png',
-  });
 
   useEffect(() => {
     setHasTrackedRead(false);
@@ -355,11 +334,51 @@ const DossierBlogPostPage = () => {
   const prevPost = post.seriesPosts?.[currentPostIndex + 1];
   const nextPost = post.seriesPosts?.[currentPostIndex - 1];
 
-    return (
+      return (
 
-      <div className="min-h-screen bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans relative">
+        <div className="min-h-screen bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans relative">
 
-        <GrainOverlay />
+          <Seo
+
+            title={`${post.attributes.title} | Fezcodex Archive`}
+
+            description={post.body.substring(0, 150)}
+
+            keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
+
+            ogTitle={`${post.attributes.title} | Fezcodex`}
+
+            ogDescription={post.body.substring(0, 150)}
+
+            ogImage={
+
+              post.attributes.ogImage ||
+
+              post.attributes.image ||
+
+              '/images/asset/ogtitle.png'
+
+            }
+
+            twitterCard="summary_large_image"
+
+            twitterTitle={`${post.attributes.title} | Fezcodex`}
+
+            twitterDescription={post.body.substring(0, 150)}
+
+            twitterImage={
+
+              post.attributes.ogImage ||
+
+              post.attributes.image ||
+
+              '/images/asset/ogtitle.png'
+
+            }
+
+          />
+
+          <GrainOverlay />
       <CoffeeStain />
 
       {/* Top Secret Stamp / Decor */}
