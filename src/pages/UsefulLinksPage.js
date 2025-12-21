@@ -37,11 +37,11 @@ const UsefulLinksPage = () => {
           keywords={['Fezcodex', 'redirect', 'random', 'log']}
           ogTitle="Redirecting... | Fezcodex"
           ogDescription="Redirecting to a random log entry on Fezcodex."
-          ogImage="/images/ogtitle.png"
+          ogImage="/images/asset/ogtitle.png"
           twitterCard="summary_large_image"
           twitterTitle="Redirecting... | Fezcodex"
           twitterDescription="Redirecting to a random log entry on Fezcodex."
-          twitterImage="/images/ogtitle.png"
+          twitterImage="/images/asset/ogtitle.png"
         />
         <div className="text-center py-16">Finding a random log for you...</div>
       </>

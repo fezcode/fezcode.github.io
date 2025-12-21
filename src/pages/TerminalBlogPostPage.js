@@ -342,11 +342,11 @@ const TerminalBlogPostPage = () => {
         keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
         ogTitle={`${post.attributes.title.toUpperCase()} | TERMINAL LOG`}
         ogDescription={post.body.substring(0, 150)}
-        ogImage={post.attributes.image || '/images/ogtitle.png'}
+        ogImage={post.attributes.image || '/images/asset/ogtitle.png'}
         twitterCard="summary_large_image"
         twitterTitle={`${post.attributes.title.toUpperCase()} | TERMINAL LOG`}
         twitterDescription={post.body.substring(0, 150)}
-        twitterImage={post.attributes.image || '/images/ogtitle.png'}
+        twitterImage={post.attributes.image || '/images/asset/ogtitle.png'}
       />
 
       {/* Optional Scanline Effect Overlay */}

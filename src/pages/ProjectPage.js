@@ -62,11 +62,11 @@ const ProjectPage = () => {
         keywords={fullProject.tags ? fullProject.tags.join(', ') : ''}
         ogTitle={`${fullProject.title} | Fezcodex`}
         ogDescription={fullProject.shortDescription}
-        ogImage={fullProject.image || '/images/ogtitle.png'}
+        ogImage={fullProject.image || '/images/asset/ogtitle.png'}
         twitterCard="summary_large_image"
         twitterTitle={`${fullProject.title} | Fezcodex`}
         twitterDescription={fullProject.shortDescription}
-        twitterImage={fullProject.image || '/images/ogtitle.png'}
+        twitterImage={fullProject.image || '/images/asset/ogtitle.png'}
       />
 
       {/* Noise Overlay */}

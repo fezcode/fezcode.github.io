@@ -144,7 +144,7 @@ const LogDetailPage = () => {
       <Seo
         title={`${attributes.title} | Fezcodex`}
         description={body.substring(0, 150)}
-        ogImage={attributes.image || '/images/ogtitle.png'}
+        ogImage={attributes.image || '/images/asset/ogtitle.png'}
       />
 
       {/* HERO SECTION */}

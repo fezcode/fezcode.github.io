@@ -21,11 +21,11 @@ const AchievementsPage = () => {
     keywords: ['Fezcodex', 'achievements', 'gamification', 'trophies'],
     ogTitle: 'Achievements | Fezcodex',
     ogDescription: 'Track your progress and unlocked secrets in Fezcodex.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Achievements | Fezcodex',
     twitterDescription: 'Track your progress and unlocked secrets in Fezcodex.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const { unlockedAchievements, showAchievementToast } = useAchievements();

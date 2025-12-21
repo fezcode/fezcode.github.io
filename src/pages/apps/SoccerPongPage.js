@@ -34,11 +34,11 @@ const SoccerPongPage = () => {
     ],
     ogTitle: 'Soccer Pong | Fezcodex',
     ogDescription: 'A Pong-style game with a soccer twist. Player vs. AI.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Soccer Pong | Fezcodex',
     twitterDescription: 'A Pong-style game with a soccer twist. Player vs. AI.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const canvasRef = useRef(null);

@@ -30,12 +30,12 @@ const DiceRollerPage = () => {
     ogTitle: 'Dice Roller | Fezcodex',
     ogDescription:
       'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Dice Roller | Fezcodex',
     twitterDescription:
       'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const { addToast } = useToast();

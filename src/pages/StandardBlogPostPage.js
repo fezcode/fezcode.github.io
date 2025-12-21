@@ -199,7 +199,7 @@ const StandardBlogPostPage = () => {
       <Seo
         title={`${post.attributes.title} | Fezcodex`}
         description={post.body.substring(0, 150)}
-        ogImage={post.attributes.image || '/images/ogtitle.png'}
+        ogImage={post.attributes.image || '/images/asset/ogtitle.png'}
       />
 
       {/* Reading Progress */}

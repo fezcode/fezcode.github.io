@@ -21,11 +21,11 @@ const SimonSaysPage = () => {
     ],
     ogTitle: 'Simon Says | Fezcodex',
     ogDescription: 'Test your memory by repeating the sequence of colors.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Simon Says | Fezcodex',
     twitterDescription: 'Test your memory by repeating the sequence of colors.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const [sequence, setSequence] = useState([]);

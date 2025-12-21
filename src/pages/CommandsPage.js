@@ -455,12 +455,12 @@ function CommandsPage() {
     keywords: ['Fezcodex', 'apps', 'applications', 'cmd', 'dev', 'commands'],
     ogTitle: 'All Commands | Fezcodex',
     ogDescription: 'All the available commands that can be used in Fezcodex.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'All Commands | Fezcodex',
     twitterDescription:
       'All the available commands that can be used in Fezcodex.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const { togglePalette, triggerCommand } = useCommandPalette();

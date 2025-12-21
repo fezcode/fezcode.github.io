@@ -342,7 +342,7 @@ const DossierBlogPostPage = () => {
         keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
         ogTitle={`${post.attributes.title} | Fezcodex`}
         ogDescription={post.body.substring(0, 150)}
-        ogImage={post.attributes.image || '/images/ogtitle.png'}
+        ogImage={post.attributes.image || '/images/asset/ogtitle.png'}
       />
 
       <GrainOverlay />

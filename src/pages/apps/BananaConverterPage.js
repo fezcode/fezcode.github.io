@@ -35,12 +35,12 @@ const BananaConverterPage = () => {
     ogTitle: 'Banana for Scale Converter | Fezcodex',
     ogDescription:
       'Convert measuring units into the internet standard: Bananas.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Banana for Scale Converter | Fezcodex',
     twitterDescription:
       'Convert measuring units into the internet standard: Bananas.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const [inputValue, setInputValue] = useState('');

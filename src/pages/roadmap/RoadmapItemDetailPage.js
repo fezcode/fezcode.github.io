@@ -38,7 +38,7 @@ const RoadmapItemDetailPage = () => {
     ogDescription: roadmapItem
       ? roadmapItem.description
       : 'Details of a roadmap item.',
-    ogImage: '/images/ogtitle.png', // Assuming a default image
+    ogImage: '/images/asset/ogtitle.png', // Assuming a default image
     twitterCard: 'summary_large_image',
     twitterTitle: roadmapItem
       ? `${roadmapItem.title} | Roadmap`
@@ -46,7 +46,7 @@ const RoadmapItemDetailPage = () => {
     twitterDescription: roadmapItem
       ? roadmapItem.description
       : 'Details of a roadmap item.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   useEffect(() => {

@@ -302,11 +302,11 @@ const OldBlogPostPage = () => {
         keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
         ogTitle={`${post.attributes.title} | Fezcodex`}
         ogDescription={post.body.substring(0, 150)}
-        ogImage={post.attributes.image || '/images/ogtitle.png'}
+        ogImage={post.attributes.image || '/images/asset/ogtitle.png'}
         twitterCard="summary_large_image"
         twitterTitle={`${post.attributes.title} | Fezcodex`}
         twitterDescription={post.body.substring(0, 150)}
-        twitterImage={post.attributes.image || '/images/ogtitle.png'}
+        twitterImage={post.attributes.image || '/images/asset/ogtitle.png'}
       />
 
       <div className="absolute inset-0 overflow-hidden pointer-events-none">

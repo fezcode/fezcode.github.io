@@ -13,12 +13,12 @@ const NotebooksPage = () => {
     ogTitle: 'Notebooks | Fezcodex',
     ogDescription:
       'Explore a collection of my personal notebooks and thoughts.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Notebooks | Fezcodex',
     twitterDescription:
       'Explore a collection of my personal notebooks and thoughts.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const [notebooks, setNotebooks] = useState([]);

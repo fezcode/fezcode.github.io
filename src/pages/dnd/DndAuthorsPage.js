@@ -42,12 +42,12 @@ function DndAuthorsPage() {
     ogTitle: 'Authors | From Serfs and Frauds',
     ogDescription:
       'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Authors | From Serfs and Frauds',
     twitterDescription:
       'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   useEffect(() => {

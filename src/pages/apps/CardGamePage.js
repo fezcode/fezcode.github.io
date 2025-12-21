@@ -58,12 +58,12 @@ const CardGamePage = () => {
     ogTitle: 'Higher or Lower Card Game | Fezcodex',
     ogDescription:
       'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Higher or Lower Card Game | Fezcodex',
     twitterDescription:
       'Play a simple Higher or Lower card game. Guess if the next card will be higher or lower than the current one.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const { addToast } = useToast();

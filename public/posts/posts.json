@@ -9,7 +9,7 @@
     "category": "dev",
     "filename": "routing-revolution-ssg-and-seo.txt",
     "authors": ["fezcode"],
-    "image": "/images/ogtitle.png"
+    "image": "/images/asset/ogtitle.png"
   },
   {
     "slug": "art-generation-in-fezcodex",
@@ -21,7 +21,7 @@
     "category": "dev",
     "filename": "art-generation-in-fezcodex.txt",
     "authors": ["fezcode"],
-    "image": "/images/ogtitle.png"
+    "image": "/images/asset/ogtitle.png"
   },
   {
     "slug": "brutalist-refactor",
@@ -33,7 +33,7 @@
     "category": "feat",
     "filename": "brutalist-refactor.txt",
     "authors": ["fezcode"],
-    "image": "/images/ogtitle.png"
+    "image": "/images/asset/ogtitle.png"
   },
   {
     "slug": "introducing-reading-experience",

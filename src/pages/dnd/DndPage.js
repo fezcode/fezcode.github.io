@@ -16,12 +16,12 @@ const DndPage = () => {
     ogTitle: 'From Serfs and Frauds | Fezcodex',
     ogDescription:
       'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'From Serfs and Frauds | Fezcodex',
     twitterDescription:
       'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
   const [bgImage, setBgImage] = useState('');
   const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context

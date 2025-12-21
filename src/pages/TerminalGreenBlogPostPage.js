@@ -173,7 +173,7 @@ const TerminalGreenBlogPostPage = () => {
       <Seo
         title={`${post.attributes.title.toUpperCase()} | TERM`}
         description={post.body.substring(0, 150)}
-        ogImage={post.attributes.image || '/images/ogtitle.png'}
+        ogImage={post.attributes.image || '/images/asset/ogtitle.png'}
       />
 
       <div

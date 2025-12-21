@@ -17,12 +17,12 @@ const TimelinePage = () => {
     keywords: ['Fezcodex', 'timeline', 'milestones', 'history', 'achievements'],
     ogTitle: 'Timeline | Fezcodex',
     ogDescription: 'A chronological overview of key milestones and events.',
-    ogImage: '/images/ogtitle.png',
+    ogImage: '/images/asset/ogtitle.png',
     twitterCard: 'summary_large_image',
     twitterTitle: 'Timeline | Fezcodex',
     twitterDescription:
       'A chronological overview of key milestones and events.',
-    twitterImage: '/images/ogtitle.png',
+    twitterImage: '/images/asset/ogtitle.png',
   });
 
   const [milestones, setMilestones] = useState([]);
