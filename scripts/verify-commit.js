@@ -9,8 +9,6 @@ if (!commitMsgFile) {
 }
 
 try {
-  const commitMsg = fs.readFileSync(commitMsgFile, 'utf8').trim();
-
   // Use the locally installed commitlint
   try {
     execSync(`npx commitlint --edit "${commitMsgFile}"`, { stdio: 'inherit' });
