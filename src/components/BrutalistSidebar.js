@@ -2,26 +2,26 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  House,
-  User,
-  BookOpen,
-  Wrench,
-  Article,
-  SquaresFour,
-  GearSix,
-  MagnifyingGlass,
-  Timer,
-  PushPin,
-  Trophy,
-  Shuffle,
-  EnvelopeSimple,
-  BugBeetle,
-  ArrowRight,
-  Sword,
-  Rss,
-  CaretDoubleDown,
-  CaretDoubleUp,
-  Graph,
+  HouseIcon,
+  UserIcon,
+  BookOpenIcon,
+  WrenchIcon,
+  ArticleIcon,
+  SquaresFourIcon,
+  GearSixIcon,
+  MagnifyingGlassIcon,
+  TimerIcon,
+  PushPinIcon,
+  TrophyIcon,
+  ShuffleIcon,
+  EnvelopeSimpleIcon,
+  BugBeetleIcon,
+  ArrowRightIcon,
+  SwordIcon,
+  RssIcon,
+  CaretDoubleDownIcon,
+  CaretDoubleUpIcon,
+  GraphIcon,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -161,7 +161,7 @@ const BrutalistSidebar = ({
         <div className="relative flex-grow overflow-hidden">
           {showScrollGradient.top && (
             <div className="absolute top-0 left-0 right-0 h-12 flex items-center justify-center bg-gradient-to-b from-[#050505] to-transparent z-20 pointer-events-none">
-              <CaretDoubleUp size={16} className="text-emerald-500 mt-2" />
+              <CaretDoubleUpIcon size={16} className="text-emerald-500 mt-2" />
             </div>
           )}
 
@@ -184,19 +184,19 @@ const BrutalistSidebar = ({
               <nav className="flex flex-col">
                 <SidebarLink
                   to="/"
-                  icon={House}
+                  icon={HouseIcon}
                   label="Home"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/about"
-                  icon={User}
+                  icon={UserIcon}
                   label="About"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/achievements"
-                  icon={Trophy}
+                  icon={TrophyIcon}
                   label="Achievements"
                   getLinkClass={getLinkClass}
                 />
@@ -218,19 +218,19 @@ const BrutalistSidebar = ({
               <nav className="flex flex-col">
                 <SidebarLink
                   to="/blog"
-                  icon={BookOpen}
+                  icon={BookOpenIcon}
                   label="Blogposts"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/projects"
-                  icon={Wrench}
+                  icon={WrenchIcon}
                   label="Projects"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/logs"
-                  icon={Article}
+                  icon={ArticleIcon}
                   label="Discovery Logs"
                   getLinkClass={getLinkClass}
                 />
@@ -252,19 +252,19 @@ const BrutalistSidebar = ({
               <nav className="flex flex-col">
                 <SidebarLink
                   to="/pinned-apps"
-                  icon={PushPin}
+                  icon={PushPinIcon}
                   label="Favorites"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/apps"
-                  icon={SquaresFour}
+                  icon={SquaresFourIcon}
                   label="App Center"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/commands"
-                  icon={MagnifyingGlass}
+                  icon={MagnifyingGlassIcon}
                   label="Manuals"
                   getLinkClass={getLinkClass}
                 />
@@ -285,13 +285,13 @@ const BrutalistSidebar = ({
               <nav className="flex flex-col">
                 <SidebarLink
                   to="/timeline"
-                  icon={Timer}
+                  icon={TimerIcon}
                   label="History"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/roadmap"
-                  icon={BugBeetle}
+                  icon={BugBeetleIcon}
                   label="Fezzilla"
                   getLinkClass={getLinkClass}
                 />
@@ -309,13 +309,13 @@ const BrutalistSidebar = ({
               <nav className="flex flex-col">
                 <SidebarLink
                   to="/graph"
-                  icon={Graph}
+                  icon={GraphIcon}
                   label="Neural Net"
                   getLinkClass={getLinkClass}
                 />
                 <SidebarLink
                   to="/stories"
-                  icon={Sword}
+                  icon={SwordIcon}
                   label="Serfs & Frauds"
                   getLinkClass={getLinkClass}
                 />
@@ -326,12 +326,12 @@ const BrutalistSidebar = ({
                   className="group flex items-center justify-between px-6 py-3 transition-all duration-300 border-b border-white/5 text-gray-300 hover:text-white hover:bg-white/5"
                 >
                   <div className="flex items-center gap-4">
-                    <Rss size={18} weight="bold" />
+                    <RssIcon size={18} weight="bold" />
                     <span className="font-arvo text-sm font-medium uppercase tracking-widest">
                       RSS_Feed
                     </span>
                   </div>
-                  <ArrowRight
+                  <ArrowRightIcon
                     size={14}
                     className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
                   />
@@ -342,7 +342,7 @@ const BrutalistSidebar = ({
 
           {showScrollGradient.bottom && (
             <div className="absolute bottom-0 left-0 right-0 h-12 flex items-center justify-center bg-gradient-to-t from-[#050505] to-transparent z-20 pointer-events-none">
-              <CaretDoubleDown size={16} className="text-emerald-500 mb-2" />
+              <CaretDoubleDownIcon size={16} className="text-emerald-500 mb-2" />
             </div>
           )}
         </div>
@@ -351,12 +351,12 @@ const BrutalistSidebar = ({
           <div className="grid grid-cols-2 gap-2 mb-6">
             <FooterButton
               onClick={() => setIsPaletteOpen(true)}
-              icon={MagnifyingGlass}
+              icon={MagnifyingGlassIcon}
               label="CMDS"
             />
             <FooterButton
               onClick={() => navigate('/settings')}
-              icon={GearSix}
+              icon={GearSixIcon}
               label="SETTINGS"
             />
             <FooterButton
@@ -364,12 +364,12 @@ const BrutalistSidebar = ({
                 navigate('/random');
                 unlockAchievement('feeling_lucky');
               }}
-              icon={Shuffle}
+              icon={ShuffleIcon}
               label="RANDOM"
             />
             <FooterButton
               onClick={toggleModal}
-              icon={EnvelopeSimple}
+              icon={EnvelopeSimpleIcon}
               label="CONTACT"
             />
           </div>
@@ -392,7 +392,7 @@ const SidebarLink = ({ to, icon: Icon, label, getLinkClass }) => (
         {label}
       </span>
     </div>
-    <ArrowRight
+    <ArrowRightIcon
       size={14}
       className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
     />

@@ -3,7 +3,7 @@ import ForceGraph3D from 'react-force-graph-3d';
 import { useNavigate } from 'react-router-dom';
 import { fetchGraphData } from '../utils/graphDataManager';
 import Loading from '../components/Loading';
-import { ArrowLeft, Info } from '@phosphor-icons/react';
+import { ArrowLeftIcon, InfoIcon } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import useSeo from '../hooks/useSeo';
 
@@ -66,14 +66,14 @@ const KnowledgeGraphPage = () => {
                 to="/"
                 className="group flex items-center gap-2 px-4 py-2 bg-black/50 backdrop-blur-md border border-white/10 text-white rounded-sm pointer-events-auto hover:bg-white hover:text-black transition-all"
             >
-                <ArrowLeft weight="bold" />
+                <ArrowLeftIcon weight="bold" />
                 <span className="font-mono text-xs uppercase tracking-widest">Exit_Sim</span>
             </Link>
         </div>
 
         <div className="absolute bottom-6 left-6 z-50 pointer-events-none text-white/50 font-mono text-xs">
             <div className="flex items-center gap-2 mb-2">
-                <Info size={16} />
+                <InfoIcon size={16} />
                 <span>Double-click to center. Click to navigate.</span>
             </div>
             <div className="flex gap-4">

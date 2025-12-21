@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star } from '@phosphor-icons/react';
+import { ArrowRightIcon, StarIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import GenerativeArt from './GenerativeArt';
 import { appIcons } from '../utils/appIcons';
 
 const AppCard = ({ app }) => {
   const { to, title, description, icon, pinned_order } = app;
-  const Icon = appIcons[icon] || appIcons[`${icon}Icon`] || Star;
+  const Icon = appIcons[icon] || appIcons[`${icon}Icon`] || StarIcon;
 
   return (
     <motion.div
@@ -33,7 +33,7 @@ const AppCard = ({ app }) => {
           {/* Pinned Badge */}
           {pinned_order && (
             <div className="absolute top-3 right-3 text-yellow-400 drop-shadow-md">
-              <Star weight="fill" size={18} />
+              <StarIcon weight="fill" size={18} />
             </div>
           )}
         </div>
@@ -52,7 +52,7 @@ const AppCard = ({ app }) => {
             <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">
               Open App
             </span>
-            <ArrowRight
+            <ArrowRightIcon
               weight="bold"
               size={14}
               className="text-emerald-500 transform -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"

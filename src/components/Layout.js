@@ -14,6 +14,7 @@ import DigitalFlowers from './DigitalFlowers';
 import DigitalLeaves from './DigitalLeaves';
 import NaturalRain from './NaturalRain';
 import SidePanel from './SidePanel';
+import Banner from './Banner';
 
 import { DndProvider } from '../context/DndContext';
 
@@ -57,6 +58,7 @@ const Layout = ({
 
   return (
     <>
+      <Banner />
       {isGarden && !hideLayout && <DigitalFlowers />}
       {isAutumn && !hideLayout && <DigitalLeaves />}
       {isRain && !hideLayout && <NaturalRain />}

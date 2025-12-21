@@ -1,0 +1,10 @@
+(banners)
+  > (banner)
+    (id) launch-notification
+    (type) info
+    (from) 2025-12-21T00:00:00Z
+    (to) 2025-12-23T23:59:59Z
+    (text) NEURAL NET ONLINE: THE 3D KNOWLEDGE GRAPH VISUALIZATION PROTOCOL HAS BEEN DEPLOYED. ACCESS AT /GRAPH.
+    (isActive) true
+    (link) /graph
+    (linkText) See Neural Net

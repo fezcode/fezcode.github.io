@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Warning, ArrowLeft } from '@phosphor-icons/react';
+import { WarningIcon, ArrowLeftIcon } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import { useAchievements } from '../context/AchievementContext';
 
@@ -35,7 +35,7 @@ const NotFoundPage = () => {
 
       <div className="relative z-10 max-w-2xl w-full border-2 border-white p-8 md:p-12 bg-black/50 backdrop-blur-sm">
         <div className="flex items-center gap-4 mb-8 text-red-500 animate-pulse">
-          <Warning size={32} weight="bold" />
+          <WarningIcon size={32} weight="bold" />
           <span className="text-xl font-bold uppercase tracking-widest">
             System_Error: 404
           </span>
@@ -64,7 +64,7 @@ const NotFoundPage = () => {
             to="/"
             className="group flex items-center justify-center gap-3 bg-white text-black px-8 py-4 font-bold uppercase tracking-widest text-sm hover:bg-emerald-400 transition-colors w-full md:w-auto"
           >
-            <ArrowLeft
+            <ArrowLeftIcon
               size={20}
               weight="bold"
               className="group-hover:-translate-x-1 transition-transform"
