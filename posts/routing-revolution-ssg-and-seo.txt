@@ -30,7 +30,7 @@ Instead of shipping a nearly empty `index.html` and letting the browser build th
 2.  **The Snapshot:** It visits every route defined in our sitemap and apps list.
 3.  **The Export:** It captures the fully rendered HTML (including meta tags, titles, and unique descriptions) and saves it as a physical `index.html` file in a matching folder structure.
 
-In our latest build, this generated **281 unique HTML files**. Now, when you share a link, the crawler sees a real, static HTML file with the correct **[Open Graph](/vocab/crawler)** tags immediately.
+In our latest build, this generated **281 unique HTML files**. Now, when you share a link, the crawler sees a real, static HTML file with the correct **[Open Graph](/vocab/open-graph)** tags immediately.
 
 ## The Solution Part 3: Hydration
 
