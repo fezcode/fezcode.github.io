@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
-  MusicNoteIcon,
-  Faders,
-  Waves,
-  SpeakerHigh,
+  FadersIcon,
+  RecordIcon,
+  DownloadSimpleIcon,
+  ActivityIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
+import { useToast } from '../../hooks/useToast';
 
 // Keyboard mapping (Letter -> Frequency)
-// Basic C Major scale starting from C4
 const KEY_MAP = {
   a: 261.63, // C4
   s: 293.66, // D4
@@ -34,40 +34,61 @@ const KEY_MAP = {
 const FezynthPage = () => {
   useSeo({
     title: 'Fezynth | Fezcodex',
-    description: 'A client-side web synthesizer built with the Web Audio API.',
-    keywords: [
-      'Fezcodex',
-      'app',
-      'synthesizer',
-      'web audio',
-      'music',
-      'keyboard',
-    ],
-    ogTitle: 'Fezynth | Fezcodex',
-    ogDescription: 'A modular, browser-based synthesizer for sound design.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Fezynth | Fezcodex',
-    twitterDescription: 'A modular, browser-based synthesizer for sound design.',
+    description: 'A modular, browser-based synthesizer for sound design.',
+    keywords: ['synthesizer', 'web audio', 'music', 'generative', 'fezcodex'],
   });
 
+  const { addToast } = useToast();
   const [audioContext, setAudioContext] = useState(null);
   const [volume, setVolume] = useState(0.5);
   const [waveform, setWaveform] = useState('sine');
   const [attack, setAttack] = useState(0.1);
   const [release, setRelease] = useState(0.5);
-  const [activeNotes, setActiveNotes] = useState({}); // Map note frequency to oscillator node (for UI)
-  const activeNotesRef = useRef({}); // Ref for audio nodes (source of truth for logic)
+  const [isDistorted, setIsDistorted] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
+  const [activeNotes, setActiveNotes] = useState({});
+
+  const activeNotesRef = useRef({});
   const canvasRef = useRef(null);
   const analyserRef = useRef(null);
   const animationRef = useRef(null);
-  const audioContextRef = useRef(null); // Ref for audio context to access inside effect
+  const audioContextRef = useRef(null);
+  const distortionNodeRef = useRef(null);
+  const mediaRecorderRef = useRef(null);
+  const audioChunksRef = useRef([]);
 
-  // Initialize Audio Context
+  // Initialize Audio Context and Nodes
   useEffect(() => {
     const ctx = new (window.AudioContext || window.webkitAudioContext)();
     const analyser = ctx.createAnalyser();
-    analyser.fftSize = 2048;
+    const distortion = ctx.createWaveShaper();
+    const masterGain = ctx.createGain();
+
+    analyser.fftSize = 1024;
+
+    // Setup Distortion (Bitcrush-like effect via Waveshaper)
+    const makeDistortionCurve = (amount) => {
+      const k = typeof amount === 'number' ? amount : 50;
+      const n_samples = 44100;
+      const curve = new Float32Array(n_samples);
+      const deg = Math.PI / 180;
+      for (let i = 0; i < n_samples; ++i) {
+        const x = (i * 2) / n_samples - 1;
+        curve[i] = ((3 + k) * x * 20 * deg) / (Math.PI + k * Math.abs(x));
+      }
+      return curve;
+    };
+    distortion.curve = makeDistortionCurve(400);
+    distortion.oversample = '4x';
+
+    // Route: Osc -> Gain -> Distortion (conditional) -> Analyser -> Destination
+    masterGain.connect(isDistorted ? distortion : analyser);
+    if (isDistorted) {
+        distortion.connect(analyser);
+    }
     analyser.connect(ctx.destination);
+
+    distortionNodeRef.current = distortion;
     analyserRef.current = analyser;
     setAudioContext(ctx);
     audioContextRef.current = ctx;
@@ -76,7 +97,7 @@ const FezynthPage = () => {
       if (ctx) ctx.close();
       if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, []);
+  }, [isDistorted]);
 
   // Visualizer
   useEffect(() => {
@@ -92,11 +113,21 @@ const FezynthPage = () => {
       animationRef.current = requestAnimationFrame(draw);
       analyser.getByteTimeDomainData(dataArray);
 
-      ctx.fillStyle = '#1f2937'; // Gray-900 bg
+      ctx.fillStyle = '#050505';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+      // Grid Lines
+      ctx.strokeStyle = '#ffffff05';
+      ctx.lineWidth = 1;
+      for(let i = 0; i < canvas.width; i += 40) {
+          ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+      }
+      for(let i = 0; i < canvas.height; i += 40) {
+          ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
+      }
+
       ctx.lineWidth = 2;
-      ctx.strokeStyle = '#a78bfa'; // Purple-400 line
+      ctx.strokeStyle = isDistorted ? '#f87171' : '#10b981'; // Red if distorted, Emerald if clean
       ctx.beginPath();
 
       const sliceWidth = (canvas.width * 1.0) / bufferLength;
@@ -105,13 +136,8 @@ const FezynthPage = () => {
       for (let i = 0; i < bufferLength; i++) {
         const v = dataArray[i] / 128.0;
         const y = (v * canvas.height) / 2;
-
-        if (i === 0) {
-          ctx.moveTo(x, y);
-        } else {
-          ctx.lineTo(x, y);
-        }
-
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
         x += sliceWidth;
       }
 
@@ -120,316 +146,248 @@ const FezynthPage = () => {
     };
 
     draw();
-  }, [audioContext]);
+  }, [audioContext, isDistorted]);
 
-  const playNote = useCallback(
-    (freq) => {
-      const ctx = audioContextRef.current;
-      if (!ctx) return;
-      if (ctx.state === 'suspended') ctx.resume();
+  const playNote = useCallback((freq) => {
+    const ctx = audioContextRef.current;
+    if (!ctx) return;
+    if (ctx.state === 'suspended') ctx.resume();
+    if (activeNotesRef.current[freq]) return;
 
-      // Check Ref instead of State to prevent repeats and stuck keys
-      if (activeNotesRef.current[freq]) return;
+    const oscillator = ctx.createOscillator();
+    const gainNode = ctx.createGain();
 
-      const oscillator = ctx.createOscillator();
-      const gainNode = ctx.createGain();
+    oscillator.type = waveform;
+    oscillator.frequency.setValueAtTime(freq, ctx.currentTime);
 
-      oscillator.type = waveform;
-      oscillator.frequency.setValueAtTime(freq, ctx.currentTime);
+    gainNode.gain.setValueAtTime(0, ctx.currentTime);
+    gainNode.gain.linearRampToValueAtTime(volume, ctx.currentTime + attack);
 
-      // Envelope Attack
-      gainNode.gain.setValueAtTime(0, ctx.currentTime);
-      gainNode.gain.linearRampToValueAtTime(volume, ctx.currentTime + attack);
+    oscillator.connect(gainNode);
+    // Connect to whatever is currently feeding the destination
+    gainNode.connect(isDistorted ? distortionNodeRef.current : analyserRef.current);
 
-      oscillator.connect(gainNode);
-      gainNode.connect(analyserRef.current);
+    oscillator.start();
+    activeNotesRef.current[freq] = { oscillator, gainNode };
+    setActiveNotes((prev) => ({ ...prev, [freq]: true }));
+  }, [waveform, volume, attack, isDistorted]);
 
-      oscillator.start();
+  const stopNote = useCallback((freq) => {
+    const ctx = audioContextRef.current;
+    if (!ctx || !activeNotesRef.current[freq]) return;
 
-      // Update Ref immediately
-      activeNotesRef.current[freq] = { oscillator, gainNode };
-      // Update State for UI
-      setActiveNotes((prev) => ({ ...prev, [freq]: true }));
-    },
-    [waveform, volume, attack],
-  );
+    const { oscillator, gainNode } = activeNotesRef.current[freq];
+    gainNode.gain.cancelScheduledValues(ctx.currentTime);
+    gainNode.gain.setValueAtTime(gainNode.gain.value, ctx.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + release);
 
-  const stopNote = useCallback(
-    (freq) => {
-      const ctx = audioContextRef.current;
-      if (!ctx || !activeNotesRef.current[freq]) return;
+    oscillator.stop(ctx.currentTime + release);
+    delete activeNotesRef.current[freq];
+    setActiveNotes((prev) => {
+      const newState = { ...prev };
+      delete newState[freq];
+      return newState;
+    });
+  }, [release]);
 
-      const { oscillator, gainNode } = activeNotesRef.current[freq];
+  const handleRecording = () => {
+    if (!isRecording) {
+      const stream = audioContextRef.current.createMediaStreamDestination();
+      analyserRef.current.connect(stream);
+      const recorder = new MediaRecorder(stream.stream);
 
-      // Envelope Release
-      gainNode.gain.cancelScheduledValues(ctx.currentTime);
-      gainNode.gain.setValueAtTime(gainNode.gain.value, ctx.currentTime);
-      gainNode.gain.exponentialRampToValueAtTime(
-        0.001,
-        ctx.currentTime + release,
-      );
+      recorder.ondataavailable = (e) => audioChunksRef.current.push(e.data);
+      recorder.onstop = () => {
+        const blob = new Blob(audioChunksRef.current, { type: 'audio/wav' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `fezynth_sample_${Date.now()}.wav`;
+        link.click();
+        audioChunksRef.current = [];
+      };
 
-      oscillator.stop(ctx.currentTime + release);
+      recorder.start();
+      mediaRecorderRef.current = recorder;
+      setIsRecording(true);
+      addToast({ title: 'Recording Protocol Active', message: 'Capturing audio buffer...', type: 'info' });
+    } else {
+      mediaRecorderRef.current.stop();
+      setIsRecording(false);
+      addToast({ title: 'Recording Finalized', message: 'Sample exported to local storage.', type: 'success' });
+    }
+  };
 
-      // Cleanup Ref
-      delete activeNotesRef.current[freq];
-
-      // Cleanup State for UI immediately (visual feedback)
-      setActiveNotes((prev) => {
-        const newState = { ...prev };
-        delete newState[freq];
-        return newState;
-      });
-    },
-    [release],
-  );
-
-  // Handle Keyboard Input
   useEffect(() => {
     const handleKeyDown = (e) => {
       const key = e.key.toLowerCase();
-      if (KEY_MAP[key] && !e.repeat) {
-        playNote(KEY_MAP[key]);
-      }
+      if (KEY_MAP[key] && !e.repeat) playNote(KEY_MAP[key]);
     };
-
     const handleKeyUp = (e) => {
       const key = e.key.toLowerCase();
-      if (KEY_MAP[key]) {
-        stopNote(KEY_MAP[key]);
-      }
+      if (KEY_MAP[key]) stopNote(KEY_MAP[key]);
     };
-
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('keyup', handleKeyUp);
-
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, [playNote, stopNote]); // Now depends on playNote and stopNote
+  }, [playNote, stopNote]);
 
   return (
-    <div className="py-8 sm:py-16">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+    <div className="min-h-screen bg-[#050505] text-white font-mono selection:bg-emerald-500/30 py-24 px-6 md:px-12">
+      <div className="mx-auto max-w-7xl">
         <Link
           to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-8"
+          className="group inline-flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em] mb-12"
         >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
+          <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+          <span>Exit_To_Center</span>
         </Link>
 
-        <div className="mx-auto max-w-2xl text-center mb-12">
-          <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-6xl flex items-center justify-center gap-4">
-            <MusicNoteIcon
-              size={48}
-              weight="fill"
-              className="text-purple-400"
-            />
-            Fezynth
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            A web-based synthesizer. Start making some noise!
-          </p>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
+          <div className="space-y-4">
+            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase flex items-center gap-4 flex-wrap">
+              Fezynth <span className="text-xs border border-emerald-500 text-emerald-500 px-2 py-1 rounded-sm shrink-0 whitespace-nowrap tracking-normal">v2.0</span>
+            </h1>
+            <p className="text-xl text-gray-400 max-w-xl font-light">
+              Neural audio synthesis engine. Manipulation of Web Audio frequencies via low-level browser protocols.
+            </p>
+          </div>
+
+          <div className="flex gap-4">
+            <button
+              onClick={handleRecording}
+              className={`flex items-center gap-3 px-6 py-3 border-2 transition-all font-bold uppercase tracking-widest text-xs
+                ${isRecording ? 'bg-red-500 border-red-400 text-white animate-pulse' : 'bg-transparent border-white/10 hover:border-white'}`}
+            >
+              {isRecording ? <DownloadSimpleIcon weight="bold" /> : <RecordIcon weight="bold" />}
+              {isRecording ? 'Buffer_Export' : 'Record_Sample'}
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Controls Panel */}
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-xl space-y-6">
-            <h2 className="text-2xl font-bold text-white flex items-center gap-2">
-              <Faders size={28} className="text-purple-400" /> Controls
-            </h2>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          {/* Controls */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-8">
+              <h3 className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-4">
+                <FadersIcon weight="fill" /> Parameters
+              </h3>
 
-            {/* Volume */}
-            <div>
-              <label className="flex justify-between text-sm font-medium text-gray-300 mb-2">
-                <span className="flex items-center gap-2">
-                  <SpeakerHigh /> Master Volume
-                </span>
-                <span>{Math.round(volume * 100)}%</span>
-              </label>
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.01"
-                value={volume}
-                onChange={(e) => setVolume(parseFloat(e.target.value))}
-                className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-purple-500"
-              />
-            </div>
+              <div className="space-y-6">
+                <div>
+                  <label className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500 mb-3">
+                    <span>Master_Gain</span>
+                    <span className="text-white">{Math.round(volume * 100)}%</span>
+                  </label>
+                  <input
+                    type="range" min="0" max="1" step="0.01" value={volume}
+                    onChange={(e) => setVolume(parseFloat(e.target.value))}
+                    className="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                  />
+                </div>
 
-            {/* Waveform */}
-            <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2 flex items-center gap-2">
-                <Waves /> Oscillator Type
-              </label>
-              <div className="grid grid-cols-2 gap-2">
-                {['sine', 'square', 'sawtooth', 'triangle'].map((type) => (
-                  <button
-                    key={type}
-                    onClick={() => setWaveform(type)}
-                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors capitalize ${waveform === type ? 'bg-purple-600 text-white' : 'bg-gray-700 text-gray-300 hover:bg-gray-600'}`}
-                  >
-                    {type}
-                  </button>
-                ))}
-              </div>
-            </div>
+                <div>
+                  <label className="text-[10px] uppercase tracking-widest text-gray-500 block mb-3">Osc_Structure</label>
+                  <div className="grid grid-cols-2 gap-2">
+                    {['sine', 'square', 'sawtooth', 'triangle'].map((type) => (
+                      <button
+                        key={type} onClick={() => setWaveform(type)}
+                        className={`py-2 text-[10px] font-bold uppercase border transition-all
+                          ${waveform === type ? 'bg-white text-black border-white' : 'border-white/10 text-gray-500 hover:border-white/30'}`}
+                      >
+                        {type}
+                      </button>
+                    ))}
+                  </div>
+                </div>
 
-            {/* Envelope */}
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
-                  Attack (s)
-                </label>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  max="2"
-                  value={attack}
-                  onChange={(e) => {
-                    const val = parseFloat(e.target.value);
-                    if (!isNaN(val)) {
-                      setAttack(Math.max(0, Math.min(2, val)));
-                    } else if (e.target.value === '') {
-                      setAttack(0);
-                    }
-                  }}
-                  onBlur={(e) => {
-                    if (
-                      e.target.value === '' ||
-                      isNaN(parseFloat(e.target.value))
-                    ) {
-                      setAttack(0.1); // Reset to default if invalid
-                    }
-                  }}
-                  className="w-full bg-gray-900 border border-gray-700 rounded px-2 py-1 text-white text-sm"
-                />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-400 mb-1">
-                  Release (s)
-                </label>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  max="5"
-                  value={release}
-                  onChange={(e) => {
-                    const val = parseFloat(e.target.value);
-                    if (!isNaN(val)) {
-                      setRelease(Math.max(0, Math.min(5, val)));
-                    } else if (e.target.value === '') {
-                      setRelease(0);
-                    }
-                  }}
-                  onBlur={(e) => {
-                    if (
-                      e.target.value === '' ||
-                      isNaN(parseFloat(e.target.value))
-                    ) {
-                      setRelease(0.5); // Reset to default if invalid
-                    }
-                  }}
-                  className="w-full bg-gray-900 border border-gray-700 rounded px-2 py-1 text-white text-sm"
-                />
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500 mb-2">
+                      <span>Attack</span>
+                      <span className="text-white">{attack}s</span>
+                    </label>
+                    <input
+                      type="range" min="0" max="2" step="0.01" value={attack}
+                      onChange={(e) => setAttack(parseFloat(e.target.value))}
+                      className="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="flex justify-between text-[10px] uppercase tracking-widest text-gray-500 mb-2">
+                      <span>Release</span>
+                      <span className="text-white">{release}s</span>
+                    </label>
+                    <input
+                      type="range" min="0" max="5" step="0.01" value={release}
+                      onChange={(e) => setRelease(parseFloat(e.target.value))}
+                      className="w-full h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-4 border-t border-white/5">
+                    <button
+                        onClick={() => setIsDistorted(!isDistorted)}
+                        className={`w-full py-3 flex items-center justify-center gap-2 border-2 transition-all font-bold text-[10px] uppercase tracking-widest
+                            ${isDistorted ? 'bg-red-500/10 border-red-500 text-red-500' : 'bg-transparent border-white/10 text-gray-500 hover:border-white/20'}`}
+                    >
+                        <ActivityIcon weight="bold" />
+                        Signal_Interference: {isDistorted ? 'ON' : 'OFF'}
+                    </button>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Visualizer & Keyboard */}
-          <div className="lg:col-span-2 space-y-6">
-            {/* Visualizer */}
-            <div className="bg-gray-900 rounded-xl overflow-hidden border border-gray-700 shadow-inner h-48 relative">
-              <canvas
-                ref={canvasRef}
-                width="800"
-                height="200"
-                className="w-full h-full"
-              />
-              <div className="absolute top-2 right-2 px-2 py-1 bg-black/50 rounded text-xs text-gray-400 font-mono pointer-events-none">
-                Oscilloscope
+          <div className="lg:col-span-8 space-y-8">
+            <div className="relative h-64 border-2 border-white/10 bg-black overflow-hidden group">
+              <canvas ref={canvasRef} width="1200" height="300" className="w-full h-full" />
+              <div className="absolute top-4 right-4 flex items-center gap-2 px-2 py-1 bg-black/80 border border-white/10 rounded-sm">
+                <div className={`w-1.5 h-1.5 rounded-full ${isDistorted ? 'bg-red-500 animate-pulse' : 'bg-emerald-500'}`} />
+                <span className="text-[9px] font-mono text-gray-400 uppercase tracking-widest">Live_Oscilloscope</span>
               </div>
             </div>
 
-            {/* Virtual Keyboard */}
-            <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 shadow-xl overflow-x-auto">
-              <div className="flex justify-center min-w-max select-none">
-                {/* White Keys */}
-                {['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'].map(
-                  (key, i) => {
+            <div className="bg-white/[0.02] border border-white/10 p-8 rounded-sm overflow-x-auto select-none">
+              <div className="flex justify-center min-w-max">
+                {['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';'].map((key, i) => {
                     const freq = KEY_MAP[key];
                     const isPressed = !!activeNotes[freq];
-                    const label = [
-                      'C',
-                      'D',
-                      'E',
-                      'F',
-                      'G',
-                      'A',
-                      'B',
-                      'C',
-                      'D',
-                      'E',
-                    ][i];
-
                     return (
                       <div key={key} className="relative">
                         <button
-                          onMouseDown={() => playNote(freq)}
-                          onMouseUp={() => stopNote(freq)}
-                          onMouseLeave={() => stopNote(freq)}
-                          className={`w-12 h-40 border border-gray-400 rounded-b-lg mx-0.5 transition-all active:scale-95 flex flex-col justify-end pb-2 items-center shadow-md ${isPressed ? 'bg-purple-200 h-[9.8rem]' : 'bg-white hover:bg-gray-100'}`}
+                          onMouseDown={() => playNote(freq)} onMouseUp={() => stopNote(freq)} onMouseLeave={() => stopNote(freq)}
+                          className={`w-14 h-48 border border-white/10 mx-0.5 transition-all flex flex-col justify-end pb-4 items-center
+                            ${isPressed ? 'bg-emerald-500 border-emerald-400 text-black translate-y-1 h-[11.5rem]' : 'bg-transparent hover:bg-white/5 text-gray-500'}`}
                         >
-                          <span className="text-gray-500 font-bold text-lg">
-                            {label}
-                          </span>
-                          <span className="text-xs text-gray-400 font-mono uppercase">
-                            {key}
-                          </span>
+                          <span className="font-bold text-xl uppercase">{key}</span>
                         </button>
-                        {/* Black Keys (Absolute positioned relative to white key container) */}
-                        {['w', 'e', null, 't', 'y', 'u', null, 'o', 'p'].map(
-                          (bKey, j) => {
+                        {['w', 'e', null, 't', 'y', 'u', null, 'o', 'p'].map((bKey, j) => {
                             if (i !== j || !bKey) return null;
                             const bFreq = KEY_MAP[bKey];
                             const bIsPressed = !!activeNotes[bFreq];
                             return (
                               <button
                                 key={bKey}
-                                onMouseDown={(e) => {
-                                  e.stopPropagation();
-                                  playNote(bFreq);
-                                }}
-                                onMouseUp={(e) => {
-                                  e.stopPropagation();
-                                  stopNote(bFreq);
-                                }}
-                                onMouseLeave={(e) => {
-                                  e.stopPropagation();
-                                  stopNote(bFreq);
-                                }}
-                                className={`absolute -right-4 top-0 w-8 h-24 z-10 border border-black rounded-b-lg transition-all active:scale-95 flex flex-col justify-end pb-2 items-center shadow-lg ${bIsPressed ? 'bg-purple-900' : 'bg-black hover:bg-gray-900'}`}
+                                onMouseDown={(e) => { e.stopPropagation(); playNote(bFreq); }}
+                                onMouseUp={(e) => { e.stopPropagation(); stopNote(bFreq); }}
+                                onMouseLeave={(e) => { e.stopPropagation(); stopNote(bFreq); }}
+                                className={`absolute -right-5 top-0 w-10 h-28 z-10 border transition-all flex flex-col justify-end pb-4 items-center
+                                  ${bIsPressed ? 'bg-red-500 border-red-400 text-black translate-y-1 h-[6.8rem]' : 'bg-black border-white/20 text-gray-600 hover:border-white/40'}`}
                               >
-                                <span className="text-xs text-gray-500 font-mono uppercase">
-                                  {bKey}
-                                </span>
+                                <span className="text-xs font-bold uppercase">{bKey}</span>
                               </button>
                             );
-                          },
-                        )}
+                        })}
                       </div>
                     );
-                  },
-                )}
+                })}
               </div>
-              <p className="text-center text-gray-400 text-sm mt-6">
-                Play using your keyboard (A-L rows) or click the keys.
-              </p>
             </div>
           </div>
         </div>
