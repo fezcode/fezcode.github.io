@@ -13,7 +13,7 @@ import {
 } from '@phosphor-icons/react';
 import ImageModal from '../components/ImageModal';
 import GenerativeArt from '../components/GenerativeArt';
-import Seo from '../components/Seo';
+import useSeo from '../hooks/useSeo';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import piml from 'piml';
@@ -26,6 +26,12 @@ const LogDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const contentRef = useRef(null);
   const [modalImageSrc, setModalImageSrc] = useState(null);
+
+  useSeo({
+    title: log ? `${log.attributes.title} | Fezcodex` : 'Fezcodex',
+    description: log ? log.body.substring(0, 150) : '',
+    ogImage: log?.attributes?.image || '/images/asset/ogtitle.png',
+  });
 
   useEffect(() => {
     const fetchLog = async () => {
@@ -141,12 +147,6 @@ const LogDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
-      <Seo
-        title={`${attributes.title} | Fezcodex`}
-        description={body.substring(0, 150)}
-        ogImage={attributes.image || '/images/asset/ogtitle.png'}
-      />
-
       {/* HERO SECTION */}
       <section className="relative h-[60vh] md:h-[70vh] flex flex-col justify-end overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">

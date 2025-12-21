@@ -1,10 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Seo from '../components/Seo';
+import useSeo from '../hooks/useSeo';
 
 const UsefulLinksPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+
+  useSeo({
+    title: 'Redirecting... | Fezcodex',
+    description: 'Redirecting to a random log entry on Fezcodex.',
+    keywords: ['Fezcodex', 'redirect', 'random', 'log'],
+    ogTitle: 'Redirecting... | Fezcodex',
+    ogDescription: 'Redirecting to a random log entry on Fezcodex.',
+    ogImage: '/images/asset/ogtitle.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Redirecting... | Fezcodex',
+    twitterDescription: 'Redirecting to a random log entry on Fezcodex.',
+    twitterImage: '/images/asset/ogtitle.png',
+  });
 
   useEffect(() => {
     const fetchAndRedirect = async () => {
@@ -30,21 +43,7 @@ const UsefulLinksPage = () => {
 
   if (loading) {
     return (
-      <>
-        <Seo
-          title="Redirecting... | Fezcodex"
-          description="Redirecting to a random log entry on Fezcodex."
-          keywords={['Fezcodex', 'redirect', 'random', 'log']}
-          ogTitle="Redirecting... | Fezcodex"
-          ogDescription="Redirecting to a random log entry on Fezcodex."
-          ogImage="/images/asset/ogtitle.png"
-          twitterCard="summary_large_image"
-          twitterTitle="Redirecting... | Fezcodex"
-          twitterDescription="Redirecting to a random log entry on Fezcodex."
-          twitterImage="/images/asset/ogtitle.png"
-        />
-        <div className="text-center py-16">Finding a random log for you...</div>
-      </>
+      <div className="text-center py-16">Finding a random log for you...</div>
     );
   }
 

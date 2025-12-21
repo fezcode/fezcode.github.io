@@ -14,7 +14,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../utils/customTheme';
 import ImageModal from '../components/ImageModal';
 import CodeModal from '../components/CodeModal';
-import Seo from '../components/Seo';
+import useSeo from '../hooks/useSeo';
 import GenerativeArt from '../components/GenerativeArt';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -39,6 +39,19 @@ const StandardBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const { addToast } = useToast();
+
+  useSeo({
+    title: post ? `${post.attributes.title} | Fezcodex` : 'Fezcodex',
+    description: post ? post.body.substring(0, 150) : '',
+    keywords: post?.attributes?.tags ? post.attributes.tags.join(', ') : '',
+    ogTitle: post ? `${post.attributes.title} | Fezcodex` : 'Fezcodex',
+    ogDescription: post ? post.body.substring(0, 150) : '',
+    ogImage: post?.attributes?.ogImage || post?.attributes?.image || '/images/asset/ogtitle.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: post ? `${post.attributes.title} | Fezcodex` : 'Fezcodex',
+    twitterDescription: post ? post.body.substring(0, 150) : '',
+    twitterImage: post?.attributes?.ogImage || post?.attributes?.image || '/images/asset/ogtitle.png',
+  });
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -196,26 +209,6 @@ const StandardBlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative">
-      <Seo
-        title={`${post.attributes.title} | Fezcodex`}
-        description={post.body.substring(0, 150)}
-        keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
-        ogTitle={`${post.attributes.title} | Fezcodex`}
-        ogDescription={post.body.substring(0, 150)}
-        ogImage={
-          post.attributes.ogImage ||
-          post.attributes.image ||
-          '/images/asset/ogtitle.png'
-        }
-        twitterCard="summary_large_image"
-        twitterTitle={`${post.attributes.title} | Fezcodex`}
-        twitterDescription={post.body.substring(0, 150)}
-        twitterImage={
-          post.attributes.ogImage ||
-          post.attributes.image ||
-          '/images/asset/ogtitle.png'
-        }
-      />
 
       {/* Reading Progress */}
       <div className="fixed top-0 left-0 w-full h-1 z-50 bg-white/5">

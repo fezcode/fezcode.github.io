@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import RotaryDial from '../../components/RotaryDial';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
-import Seo from '../../components/Seo';
+import useSeo from '../../hooks/useSeo';
 import DigitalDisplay from '../../components/DigitalDisplay';
 import { BackspaceIcon, TrashIcon, PhoneIcon } from '@phosphor-icons/react';
 import { useAchievements } from '../../context/AchievementContext';
@@ -70,6 +70,12 @@ const RotaryPhonePage = () => {
   const [isCalling, setIsCalling] = useState(false);
   const { unlockAchievement } = useAchievements();
 
+  useSeo({
+    title: 'Rotary Phone | Fezcodex',
+    description: 'A digital rotary phone. Dial numbers with your mouse or finger.',
+    keywords: 'rotary phone, dialer, retro, interactive, web app',
+  });
+
   const handleDial = (digit) => {
     if (isCalling) return;
     setPhoneNumber((prev) => prev + digit);
@@ -123,12 +129,6 @@ const RotaryPhonePage = () => {
 
   return (
     <div className="min-h-screen bg-gray-950 py-12 px-4 sm:px-6 lg:px-8 flex flex-col items-center relative overflow-hidden">
-      <Seo
-        title="Rotary Phone | Fezcodex"
-        description="A digital rotary phone. Dial numbers with your mouse or finger."
-        keywords="rotary phone, dialer, retro, interactive, web app"
-      />
-
       <div className="w-full max-w-7xl mx-auto relative z-10">
         <BreadcrumbTitle title="Rotary Phone" slug="phone" />
       </div>

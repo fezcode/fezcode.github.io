@@ -6,7 +6,7 @@ import rehypeRaw from 'rehype-raw';
 import { motion } from 'framer-motion';
 import { useProjects } from '../utils/projectParser';
 import { useProjectContent } from '../hooks/useProjectContent';
-import Seo from '../components/Seo';
+import useSeo from '../hooks/useSeo';
 import GenerativeArt from '../components/GenerativeArt';
 import { ArrowLeft, ArrowUpRight, GithubLogo } from '@phosphor-icons/react';
 
@@ -25,6 +25,22 @@ const ProjectPage = () => {
     error: errorContent,
   } = useProjectContent(slug);
 
+  const project = projects.find((p) => p.slug === slug);
+  const fullProject = project && content ? { ...project, ...content } : null;
+
+  useSeo({
+    title: fullProject ? `${fullProject.title} | Fezcodex` : 'Fezcodex',
+    description: fullProject?.shortDescription || '',
+    keywords: fullProject?.tags ? fullProject.tags.join(', ') : '',
+    ogTitle: fullProject ? `${fullProject.title} | Fezcodex` : 'Fezcodex',
+    ogDescription: fullProject?.shortDescription || '',
+    ogImage: fullProject?.image || '/images/asset/ogtitle.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: fullProject ? `${fullProject.title} | Fezcodex` : 'Fezcodex',
+    twitterDescription: fullProject?.shortDescription || '',
+    twitterImage: fullProject?.image || '/images/asset/ogtitle.png',
+  });
+
   if (loadingProjects || loadingContent) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white font-mono uppercase tracking-widest text-xs">
@@ -41,9 +57,7 @@ const ProjectPage = () => {
     );
   }
 
-  const project = projects.find((p) => p.slug === slug);
-
-  if (!project || !content) {
+  if (!fullProject) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center text-gray-500 font-mono uppercase">
         Project not found.
@@ -51,24 +65,10 @@ const ProjectPage = () => {
     );
   }
 
-  const fullProject = { ...project, ...content };
   const year = new Date(fullProject.date).getFullYear();
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
-      <Seo
-        title={`${fullProject.title} | Fezcodex`}
-        description={fullProject.shortDescription}
-        keywords={fullProject.tags ? fullProject.tags.join(', ') : ''}
-        ogTitle={`${fullProject.title} | Fezcodex`}
-        ogDescription={fullProject.shortDescription}
-        ogImage={fullProject.image || '/images/asset/ogtitle.png'}
-        twitterCard="summary_large_image"
-        twitterTitle={`${fullProject.title} | Fezcodex`}
-        twitterDescription={fullProject.shortDescription}
-        twitterImage={fullProject.image || '/images/asset/ogtitle.png'}
-      />
-
       {/* Noise Overlay */}
       <div
         className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay"

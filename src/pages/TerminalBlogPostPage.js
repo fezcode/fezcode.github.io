@@ -9,7 +9,7 @@ import {
   ArrowsOutSimple,
   ClipboardTextIcon,
 } from '@phosphor-icons/react';
-import Seo from '../components/Seo';
+import useSeo from '../hooks/useSeo';
 import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
@@ -98,6 +98,19 @@ const TerminalBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const [modalImageSrc, setModalImageSrc] = useState(null);
+
+  useSeo({
+    title: post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : 'Fezcodex',
+    description: post ? post.body.substring(0, 150) : '',
+    keywords: post?.attributes?.tags ? post.attributes.tags.join(', ') : '',
+    ogTitle: post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : 'Fezcodex',
+    ogDescription: post ? post.body.substring(0, 150) : '',
+    ogImage: post?.attributes?.ogImage || post?.attributes?.image || '/images/asset/ogtitle.png',
+    twitterCard: 'summary_large_image',
+    twitterTitle: post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : 'Fezcodex',
+    twitterDescription: post ? post.body.substring(0, 150) : '',
+    twitterImage: post?.attributes?.ogImage || post?.attributes?.image || '/images/asset/ogtitle.png',
+  });
 
   useEffect(() => {
     setHasTrackedRead(false);
@@ -319,26 +332,6 @@ const TerminalBlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-orange-500 font-mono overflow-y-auto custom-scrollbar-terminal relative">
-      <Seo
-        title={`${post.attributes.title.toUpperCase()} | TERMINAL LOG`}
-        description={post.body.substring(0, 150)}
-        keywords={post.attributes.tags ? post.attributes.tags.join(', ') : ''}
-        ogTitle={`${post.attributes.title.toUpperCase()} | TERMINAL LOG`}
-        ogDescription={post.body.substring(0, 150)}
-        ogImage={
-          post.attributes.ogImage ||
-          post.attributes.image ||
-          '/images/asset/ogtitle.png'
-        }
-        twitterCard="summary_large_image"
-        twitterTitle={`${post.attributes.title.toUpperCase()} | TERMINAL LOG`}
-        twitterDescription={post.body.substring(0, 150)}
-        twitterImage={
-          post.attributes.ogImage ||
-          post.attributes.image ||
-          '/images/asset/ogtitle.png'
-        }
-      />
 
       <style>{`
         body { background-color: black; }
