@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ArticleIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowLeftIcon,
+  ArticleIcon,
+  ArrowsClockwiseIcon,
+  CopySimpleIcon,
+  TextTIcon,
+  ToggleLeftIcon,
+  ToggleRightIcon,
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const LOREM_WORDS = [
   'lorem',
@@ -79,8 +88,10 @@ const LOREM_WORDS = [
 ];
 
 const LoremIpsumGeneratorPage = () => {
+  const appName = 'Lorem Ipsum Generator';
+
   useSeo({
-    title: 'Lorem Ipsum Generator | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description: 'Generate random placeholder text for your projects.',
     keywords: [
       'Fezcodex',
@@ -89,12 +100,6 @@ const LoremIpsumGeneratorPage = () => {
       'placeholder text',
       'dummy text',
     ],
-    ogTitle: 'Lorem Ipsum Generator | Fezcodex',
-    ogDescription: 'Generate placeholder text for your projects and designs.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Lorem Ipsum Generator | Fezcodex',
-    twitterDescription:
-      'Generate placeholder text for your projects and designs.',
   });
 
   const { addToast } = useToast();
@@ -147,104 +152,179 @@ const LoremIpsumGeneratorPage = () => {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(generatedText).then(() => {
       addToast({
-        title: 'Copied!',
-        message: 'Text copied to clipboard.',
-        duration: 2000,
+        title: 'Copied',
+        message: 'Placeholder text stored in clipboard.',
       });
     });
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Lorem Ipsum Generator" slug="lorem" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center gap-2">
-                <ArticleIcon size={32} /> Lorem Ipsum Generator
-              </h1>
-              <hr className="border-gray-700 mb-6" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label className="block text-sm font-medium mb-2 opacity-80">
-                    Paragraphs
-                  </label>
-                  <input
-                    type="number"
-                    min="1"
-                    max="50"
-                    value={paragraphs}
-                    onChange={(e) =>
-                      setParagraphs(parseInt(e.target.value) || 1)
-                    }
-                    className="w-full bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-blue-500 transition-colors"
-                  />
-                </div>
-                <div className="flex items-center">
-                  <label className="flex items-center space-x-3 cursor-pointer mt-6">
-                    <input
-                      type="checkbox"
-                      checked={startWithLorem}
-                      onChange={(e) => setStartWithLorem(e.target.checked)}
-                      className="form-checkbox h-5 w-5 text-blue-600 rounded bg-black/20 border-gray-600"
-                    />
-                    <span>Start with "Lorem ipsum..."</span>
-                  </label>
-                </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle
+                title={appName}
+                slug="lorem"
+                variant="brutalist"
+              />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Standardized filler protocol. Generate pseudo-Latin data blocks
+                for structural layout verification.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Main Interaction Area */}
+          <div className="lg:col-span-8 space-y-12">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt
+                  seed={appName + paragraphs}
+                  className="w-full h-full"
+                />
               </div>
 
-              <div className="flex justify-end gap-4 mb-6">
+              <div className="relative z-10 space-y-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                      <TextTIcon weight="fill" /> Paragraph_Count
+                    </label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="50"
+                      value={paragraphs}
+                      onChange={(e) =>
+                        setParagraphs(parseInt(e.target.value) || 1)
+                      }
+                      className="w-full bg-black/40 border border-white/10 rounded-sm p-4 font-mono text-xl text-white focus:border-emerald-500/50 outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div className="space-y-4">
+                    <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                      Standard_Prefix
+                    </label>
+                    <button
+                      onClick={() => setStartWithLorem(!startWithLorem)}
+                      className={`w-full p-4 border rounded-sm flex items-center justify-between transition-all ${
+                        startWithLorem
+                          ? 'bg-emerald-500/10 border-emerald-500 text-emerald-500'
+                          : 'bg-black/40 border-white/10 text-gray-400 hover:border-white/30'
+                      }`}
+                    >
+                      <span className="font-mono text-xs uppercase tracking-wider">
+                        Start with "Lorem ipsum..."
+                      </span>
+                      {startWithLorem ? (
+                        <ToggleRightIcon size={24} weight="fill" />
+                      ) : (
+                        <ToggleLeftIcon size={24} />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
                 <button
                   onClick={generateText}
-                  className="px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                  style={{
-                    borderColor: cardStyle.color,
-                    color: cardStyle.color,
-                  }}
+                  className="w-full group relative inline-flex items-center justify-center gap-4 px-10 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm"
                 >
-                  Generate
-                </button>
-                <button
-                  onClick={copyToClipboard}
-                  className="px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 text-blue-500 hover:bg-blue-500 hover:text-white border-blue-500"
-                >
-                  Copy
+                  <ArrowsClockwiseIcon
+                    weight="bold"
+                    size={20}
+                    className="group-hover:rotate-180 transition-transform duration-500"
+                  />
+                  <span>Generate Sequence</span>
                 </button>
               </div>
+            </div>
 
-              <div className="bg-black/30 rounded-lg p-4 min-h-[200px] max-h-[500px] overflow-y-auto font-serif leading-relaxed whitespace-pre-wrap border border-gray-700">
-                {generatedText}
+            <AnimatePresence>
+              {generatedText && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  className="relative group border border-emerald-500/20 bg-emerald-500/[0.02] p-8 md:p-12 rounded-sm overflow-hidden"
+                >
+                  <div className="flex justify-between items-center mb-6 border-b border-emerald-500/10 pb-6">
+                    <label className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest font-black flex items-center gap-2">
+                      <span className="h-px w-4 bg-emerald-500/20" />{' '}
+                      Output_Stream
+                    </label>
+                    <button
+                      onClick={copyToClipboard}
+                      className="text-emerald-500 hover:text-white transition-colors"
+                    >
+                      <CopySimpleIcon size={24} weight="bold" />
+                    </button>
+                  </div>
+                  <div className="font-serif text-lg leading-relaxed text-gray-300 whitespace-pre-wrap">
+                    {generatedText}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+
+          {/* Sidebar Info */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-10 flex items-center gap-2">
+                <ArticleIcon weight="fill" />
+                Generator_Specs
+              </h3>
+
+              <div className="space-y-6">
+                <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase block mb-2">
+                    Source_Dialect
+                  </span>
+                  <p className="text-white font-black uppercase tracking-tight">
+                    Pseudo-Latin_V1
+                  </p>
+                </div>
+                <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase block mb-2">
+                    Word_Bank_Size
+                  </span>
+                  <p className="text-white font-black uppercase tracking-tight">
+                    {LOREM_WORDS.length} Units
+                  </p>
+                </div>
               </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-4">
+              <TextTIcon size={24} className="text-gray-700 shrink-0 mt-1" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                Lorem Ipsum is industry-standard dummy text used to demonstrate
+                the visual form of a document without the distraction of meaningful content.
+              </p>
             </div>
           </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Text_Synthesizer_v2.0</span>
+          <span className="text-gray-800">STREAM_STATUS // NOMINAL</span>
+        </footer>
       </div>
     </div>
   );

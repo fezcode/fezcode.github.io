@@ -1,4 +1,3 @@
-const fs = require('fs');
 const { execSync } = require('child_process');
 
 const commitMsgFile = process.argv[2];
