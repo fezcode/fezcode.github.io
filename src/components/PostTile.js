@@ -14,6 +14,32 @@ const PostTile = ({ post }) => {
     },
   );
 
+  const categoryColor =
+    post.category === 'dev'
+      ? 'var(--color-dev-badge)'
+      : post.category === 'series'
+        ? 'var(--color-series-badge)'
+        : post.category === 'd&d' || post.category === 'dnd'
+          ? 'var(--color-dnd-badge)'
+          : post.category === 'gist'
+            ? 'var(--color-gist-badge)'
+            : post.category === 'feat'
+              ? 'var(--color-feat-badge)'
+              : 'var(--color-rant-badge)';
+
+  const categoryBg =
+    post.category === 'dev'
+      ? 'rgba(59, 130, 246, 0.3)'
+      : post.category === 'series'
+        ? 'rgba(237, 197, 49, 0.3)'
+        : post.category === 'd&d' || post.category === 'dnd'
+          ? 'rgba(236, 72, 153, 0.3)'
+          : post.category === 'gist'
+            ? 'rgba(245, 158, 11, 0.3)'
+            : post.category === 'feat'
+              ? 'rgba(168, 85, 247, 0.3)'
+              : 'rgba(16, 185, 129, 0.2)';
+
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -32,7 +58,13 @@ const PostTile = ({ post }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
 
           <div className="absolute bottom-3 left-4 flex items-center gap-2">
-            <span className="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 rounded-sm">
+            <span
+              className="px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm transition-all duration-300 text-gray-300"
+              style={{
+                borderColor: categoryColor,
+                backgroundColor: categoryBg,
+              }}
+            >
               {post.category || 'Post'}
             </span>
             {post.isSeries && (
