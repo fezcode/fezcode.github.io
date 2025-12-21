@@ -12,6 +12,7 @@ import html2canvas from 'html2canvas';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const OgImageGeneratorPage = () => {
   const appName = 'OG Image Generator';
@@ -82,24 +83,21 @@ const OgImageGeneratorPage = () => {
       <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
         <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
-          <header className="mb-24">
-            <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
-              <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
-              <span>Applications</span>
-            </Link>
+                  <header className="mb-24">
+                    <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
+                      <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+                      <span>Applications</span>
+                    </Link>
 
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-              <div className="space-y-4">
-                <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                  OG Image Gen
-                </h1>
-                <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                  Create stunning Open Graph images with generative backgrounds.
-                </p>
-              </div>
-            </div>
-          </header>
-
+                    <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+                      <div className="space-y-4">
+                        <BreadcrumbTitle title="OG Image Gen" slug="og-gen" variant="brutalist" />
+                        <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                          Create stunning Open Graph images with generative backgrounds.
+                        </p>
+                      </div>
+                    </div>
+                  </header>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
             {/* Controls Sidebar */}

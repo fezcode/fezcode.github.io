@@ -1,29 +1,37 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, PlantIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  ArrowLeftIcon,
+  PlantIcon,
+  ArrowsClockwiseIcon,
+  RulerIcon,
+  ScalesIcon,
+  CalculatorIcon,
+} from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
-import CustomDropdown from '../../components/CustomDropdown'; // Import CustomDropdown
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const BANANA_LENGTH_CM = 18; // Average banana length
 const BANANA_WEIGHT_G = 120; // Average banana weight
 
 const unitOptions = [
-  { label: 'cm', value: 'cm' },
-  { label: 'm', value: 'm' },
-  { label: 'km', value: 'km' },
-  { label: 'in', value: 'in' },
-  { label: 'ft', value: 'ft' },
-  { label: 'g', value: 'g' },
-  { label: 'kg', value: 'kg' },
-  { label: 'lb', value: 'lb' },
-  { label: 'oz', value: 'oz' },
+  { label: 'CM', value: 'cm' },
+  { label: 'M', value: 'm' },
+  { label: 'KM', value: 'km' },
+  { label: 'IN', value: 'in' },
+  { label: 'FT', value: 'ft' },
+  { label: 'G', value: 'g' },
+  { label: 'KG', value: 'kg' },
+  { label: 'LB', value: 'lb' },
+  { label: 'OZ', value: 'oz' },
 ];
 
 const BananaConverterPage = () => {
+  const appName = 'Banana Converter';
   useSeo({
-    title: 'Banana for Scale Converter | Fezcodex',
+    title: `${appName} | Fezcodex`,
     description: 'Convert measuring units into the internet standard: Bananas.',
     keywords: [
       'Fezcodex',
@@ -32,11 +40,6 @@ const BananaConverterPage = () => {
       'fun',
       'measurement',
     ],
-    ogTitle: 'Banana Converter | Fezcodex',
-    ogDescription: 'Convert any unit of measurement into bananas.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Banana Converter | Fezcodex',
-    twitterDescription: 'Convert any unit of measurement into bananas.',
   });
 
   const [inputValue, setInputValue] = useState('');
@@ -93,81 +96,174 @@ const BananaConverterPage = () => {
     }
 
     if (isLength) {
-      setResult(`${(valInCm / BANANA_LENGTH_CM).toFixed(2)} Bananas long`);
+      setResult(`${(valInCm / BANANA_LENGTH_CM).toFixed(2)} BANANAS_LONG`);
     } else {
-      setResult(`${(valInG / BANANA_WEIGHT_G).toFixed(2)} Bananas heavy`);
+      setResult(`${(valInG / BANANA_WEIGHT_G).toFixed(2)} BANANAS_HEAVY`);
     }
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Banana Converter" slug="banana" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform h-full w-full max-w-2xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10 rounded-lg overflow-hidden"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1 text-center">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center justify-center gap-2">
-                <PlantIcon size={32} /> Banana Converter
-              </h1>
-              <hr className="border-gray-700 mb-6" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
+            <span>Applications</span>
+          </Link>
 
-              <div className="flex flex-col gap-4 mb-6">
-                <div className="flex gap-2">
-                  <input
-                    type="number"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Value"
-                    className="w-full bg-black/20 border border-gray-600 rounded px-3 py-2 focus:outline-none focus:border-yellow-500 transition-colors"
-                  />
-                  <CustomDropdown
-                    options={unitOptions}
-                    value={inputUnit}
-                    onChange={setInputUnit}
-                    label="Unit"
-                  />
-                </div>
-                <button
-                  onClick={handleConvert}
-                  className="px-6 py-2 rounded-md font-arvo font-normal border transition-colors duration-300 hover:bg-yellow-500/20 text-yellow-500 border-yellow-500"
-                >
-                  Scale It!
-                </button>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle
+                title={appName}
+                slug="banana"
+                variant="brutalist"
+              />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Standardization protocol. Convert arbitrary metric and imperial
+                units into the universal banana constant.
+              </p>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Main Interaction Area */}
+          <div className="lg:col-span-8 space-y-12">
+            <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+                <GenerativeArt
+                  seed={appName + inputValue}
+                  className="w-full h-full"
+                />
               </div>
 
-              {result && (
-                <div className="text-3xl font-bold text-yellow-400 animate-pulse">
-                  {result} 🍌
+              <div className="relative z-10 space-y-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                      <RulerIcon weight="fill" /> Input_Value
+                    </label>
+                    <input
+                      type="number"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      placeholder="0.00"
+                      className="w-full bg-black/40 border border-white/10 rounded-sm p-4 font-mono text-xl text-white focus:border-emerald-500/50 outline-none transition-colors"
+                    />
+                  </div>
+
+                  <div className="space-y-4">
+                    <label className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-2">
+                      <ScalesIcon weight="fill" /> Unit_Type
+                    </label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {unitOptions.map((opt) => (
+                        <button
+                          key={opt.value}
+                          onClick={() => setInputUnit(opt.value)}
+                          className={`py-2 text-[10px] font-mono uppercase tracking-wider border transition-all ${
+                            inputUnit === opt.value
+                              ? 'bg-emerald-500/10 border-emerald-500 text-emerald-500'
+                              : 'bg-black/40 border-white/10 text-gray-400 hover:border-white/30'
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                 </div>
+
+                <button
+                  onClick={handleConvert}
+                  className="w-full group relative inline-flex items-center justify-center gap-4 px-10 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm"
+                >
+                  <ArrowsClockwiseIcon
+                    weight="bold"
+                    size={20}
+                    className="group-hover:rotate-180 transition-transform duration-500"
+                  />
+                  <span>Compute Scale</span>
+                </button>
+              </div>
+            </div>
+
+            <AnimatePresence>
+              {result && (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 20 }}
+                  className="relative group border border-emerald-500/20 bg-emerald-500/[0.02] p-8 md:p-12 rounded-sm overflow-hidden"
+                >
+                  <div className="flex justify-between items-center mb-6 border-b border-emerald-500/10 pb-6">
+                    <label className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest font-black flex items-center gap-2">
+                      <span className="h-px w-4 bg-emerald-500/20" />{' '}
+                      Calculated_Output
+                    </label>
+                    <PlantIcon
+                      size={24}
+                      weight="fill"
+                      className="text-yellow-500"
+                    />
+                  </div>
+                  <div className="font-mono text-4xl md:text-5xl font-black text-white leading-none tracking-tighter">
+                    {result} 🍌
+                  </div>
+                </motion.div>
               )}
+            </AnimatePresence>
+          </div>
+
+          {/* Sidebar Info */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-10 flex items-center gap-2">
+                <CalculatorIcon weight="fill" />
+                Conversion_Constants
+              </h3>
+
+              <div className="space-y-6">
+                <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex justify-between items-center">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Length_Ref
+                  </span>
+                  <p className="text-white font-mono text-xs font-bold uppercase tracking-tight">
+                    {BANANA_LENGTH_CM} CM
+                  </p>
+                </div>
+                <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex justify-between items-center">
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Mass_Ref
+                  </span>
+                  <p className="text-white font-mono text-xs font-bold uppercase tracking-tight">
+                    {BANANA_WEIGHT_G} G
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-4">
+              <PlantIcon size={24} className="text-gray-700 shrink-0 mt-1" />
+              <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                The Banana Standard is the only universally accepted measurement
+                system for internet-scale visual verification. All calculations
+                assume a standard cavendish curve topology.
+              </p>
             </div>
           </div>
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezcodex_Scale_Engine_v0.9.4</span>
+          <span className="text-gray-800">SYSTEM_STATUS // CALIBRATED</span>
+        </footer>
       </div>
     </div>
   );

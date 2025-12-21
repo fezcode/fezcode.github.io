@@ -904,6 +904,10 @@ const AnimatedRoutes = ({
           path="/apps::se"
           element={<Navigate to="/apps/sprite-editor" replace />}
         />
+        <Route
+          path="/apps::og-gen"
+          element={<Navigate to="/apps/og-image-generator" replace />}
+        />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps/ip"
