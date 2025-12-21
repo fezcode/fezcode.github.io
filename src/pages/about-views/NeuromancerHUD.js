@@ -646,7 +646,7 @@ const NeuromancerHUD = () => {
 
   return (
     <div
-      className={`relative h-full bg-black ${THEMES[theme].text} font-mono overflow-y-auto overflow-x-hidden p-4 md:p-8 pt-24 pb-32`}
+      className={`relative min-h-screen bg-black ${THEMES[theme].text} font-mono p-4 md:p-8 pt-24 pb-32`}
     >
       <ScanLine theme={theme} />
 

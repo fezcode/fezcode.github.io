@@ -76,7 +76,7 @@ const Brutalist = () => {
   }
 
   return (
-    <div className="h-full bg-[#050505] text-white overflow-y-auto selection:bg-white selection:text-black font-mono relative">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black font-mono relative">
       {/* Visual Background Layer */}
       <div
         className="fixed inset-0 pointer-events-none z-0 opacity-[0.03] mix-blend-overlay"

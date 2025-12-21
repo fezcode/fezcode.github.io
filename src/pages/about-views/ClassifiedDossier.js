@@ -74,7 +74,7 @@ const ClassifiedDossier = () => {
   }
 
   return (
-    <div className="h-full bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans relative">
+    <div className="min-h-screen bg-[#f3f3f3] text-[#111] selection:bg-black selection:text-white custom-scrollbar font-sans relative">
       <GrainOverlay />
       <CoffeeStain />
 

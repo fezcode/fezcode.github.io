@@ -62,7 +62,7 @@ const SchematicBox = ({
 
 const SystemArchitecture = () => {
   return (
-    <div className="relative min-h-full h-auto bg-[#001e40] text-white overflow-y-auto overflow-x-hidden p-4 pt-24 font-mono selection:bg-cyan-500 selection:text-black pb-32">
+    <div className="relative min-h-screen bg-[#001e40] text-white p-4 pt-24 font-mono selection:bg-cyan-500 selection:text-black pb-32">
       <BlueprintGrid />
       <div className="relative z-10 max-w-5xl mx-auto flex flex-col gap-0 border-2 border-cyan-500/50 p-1 bg-[#001830]/50 shadow-[0_0_30px_rgba(0,255,255,0.1)]">
         {/* Top Section: Processor */}

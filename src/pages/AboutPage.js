@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useParams, Navigate } from 'react-router-dom';
 import {
   ArrowLeft,
   TreeStructure,
@@ -19,7 +19,7 @@ import Brutalist from './about-views/Brutalist';
 import { useAchievements } from '../context/AchievementContext';
 import useSeo from '../hooks/useSeo';
 
-const ViewSwitcher = ({ currentView, setView }) => {
+const ViewSwitcher = ({ currentView }) => {
   const views = [
     { id: 'brutalist', icon: Bug, label: 'Brutalist' },
     { id: 'dossier', icon: Article, label: 'Dossier' },
@@ -31,9 +31,9 @@ const ViewSwitcher = ({ currentView, setView }) => {
   return (
     <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-black/50 backdrop-blur-md p-2 rounded-full border border-white/10 shadow-2xl flex gap-2">
       {views.map((view) => (
-        <button
+        <Link
           key={view.id}
-          onClick={() => setView(view.id)}
+          to={`/about/${view.id}`}
           className={`relative px-4 py-2 rounded-full flex items-center gap-2 transition-all ${
             currentView === view.id
               ? 'bg-white text-black font-bold shadow-lg'
@@ -48,21 +48,15 @@ const ViewSwitcher = ({ currentView, setView }) => {
               className="absolute inset-0 bg-white rounded-full mix-blend-difference -z-10"
             />
           )}
-        </button>
+        </Link>
       ))}
     </div>
   );
 };
 
 const AboutPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const { viewId } = useParams();
   const validViews = ['dossier', 'hud', 'blueprint', 'map', 'brutalist'];
-  const viewParam = searchParams.get('v');
-  const view = validViews.includes(viewParam) ? viewParam : 'brutalist';
-
-  const setView = (newView) => {
-    setSearchParams({ v: newView }, { replace: true });
-  };
 
   const { unlockAchievement } = useAchievements();
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
@@ -82,12 +76,13 @@ const AboutPage = () => {
 
   useEffect(() => {
     unlockAchievement('curious_soul');
-    // Hide overflow on body when this component is mounted
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.body.style.overflow = 'auto';
-    };
   }, [unlockAchievement]);
+
+  if (!validViews.includes(viewId)) {
+    return <Navigate to="/404" replace />;
+  }
+
+  const view = viewId;
 
   const getButtonStyle = (currentView) => {
     switch (currentView) {
@@ -107,7 +102,7 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] bg-black overflow-hidden">
+    <div className="min-h-screen bg-black relative">
       {/* Global Back Button */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
@@ -134,7 +129,7 @@ const AboutPage = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full h-full overflow-y-auto"
+          className="w-full h-full"
         >
           {view === 'hud' && <NeuromancerHUD />}
           {view === 'blueprint' && <SystemArchitecture />}
@@ -145,7 +140,7 @@ const AboutPage = () => {
       </AnimatePresence>
 
       {/* Switcher Controls */}
-      <ViewSwitcher currentView={view} setView={setView} />
+      <ViewSwitcher currentView={view} />
       <CommandPalette isOpen={isPaletteOpen} setIsOpen={setIsPaletteOpen} />
     </div>
   );

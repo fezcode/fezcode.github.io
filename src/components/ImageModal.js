@@ -7,10 +7,10 @@ const ImageModal = ({ src, alt, onClose }) => {
     if (src) {
       document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
     return () => {
-      document.body.style.overflow = 'unset'; // Clean up on unmount
+      document.body.style.overflow = ''; // Clean up on unmount
     };
   }, [src]);
 

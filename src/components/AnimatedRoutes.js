@@ -309,6 +309,10 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/about"
+          element={<Navigate to="/about/brutalist" replace />}
+        />
+        <Route
+          path="/about/:viewId"
           element={
             <motion.div
               initial="initial"
