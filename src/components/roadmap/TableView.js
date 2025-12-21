@@ -5,8 +5,6 @@ import {
   Funnel,
   CaretUp,
   CaretDown,
-  Check,
-  Lightning,
   ArrowsDownUp,
 } from '@phosphor-icons/react';
 import {
@@ -97,49 +95,50 @@ const TableView = ({ issuesData = [] }) => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-12">
       {/* Toolbar: Search and Filters */}
-      <div className="bg-gray-900/70 backdrop-blur-md rounded-2xl border border-gray-800 shadow-xl p-4 md:p-5 flex flex-col lg:flex-row gap-6 justify-between items-center">
+      <div className="bg-white/[0.02] border border-white/10 p-8 rounded-sm flex flex-col lg:flex-row gap-12 justify-between items-start">
         {/* Search */}
         <div className="relative w-full lg:max-w-md group">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
             <MagnifyingGlass
-              className="text-gray-500 group-focus-within:text-primary-400 transition-colors"
-              size={20}
+              className="text-gray-600 group-focus-within:text-emerald-500 transition-colors"
+              size={18}
+              weight="bold"
             />
           </div>
           <input
             type="text"
-            placeholder="Search issues by title, description, or epic..."
+            placeholder="Search artifacts by ID, title, or epic..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="block w-full pl-11 pr-4 py-3 border border-gray-700 rounded-xl leading-5 bg-gray-800/50 text-gray-300 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/50 focus:border-primary-500 focus:bg-gray-800 transition-all duration-300 text-sm font-mono"
+            className="block w-full pl-12 pr-4 py-4 border border-white/5 rounded-sm bg-black/40 text-gray-300 placeholder-gray-700 focus:outline-none focus:border-emerald-500/50 transition-all duration-300 text-xs font-mono uppercase tracking-widest shadow-inner"
           />
         </div>
 
         {/* Filters */}
-        <div className="flex flex-col sm:flex-row items-center gap-3 w-full lg:w-auto justify-center lg:justify-end">
-          <div className="flex items-center text-gray-400 font-mono text-xs uppercase tracking-wider">
-            <Funnel size={16} className="mr-2" /> Filter Status:
+        <div className="flex flex-col gap-4 w-full lg:w-auto">
+          <div className="flex items-center gap-2 text-emerald-500 font-mono text-[10px] font-black uppercase tracking-[0.2em]">
+            <Funnel size={14} weight="fill" /> Filter_Protocol
           </div>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="flex flex-wrap gap-2">
             {['Planned', 'In Progress', 'Completed', 'On Hold'].map(
               (status) => (
                 <button
                   key={status}
                   onClick={() => handleFilterChange(status)}
                   className={`
-                  group relative px-3 py-1.5 rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-all duration-200 select-none
+                  px-4 py-2 text-[9px] font-mono font-black uppercase tracking-widest transition-all duration-200 border rounded-sm
                   ${
                     activeFilters.includes(status)
-                      ? `${getStatusClasses(status)} shadow-md ring-1 ring-white/10`
-                      : 'bg-gray-800/40 border border-gray-700 text-gray-500 hover:border-gray-600 hover:bg-gray-800 hover:text-gray-300'
+                      ? `${getStatusClasses(status)} border-current shadow-[0_0_15px_rgba(16,185,129,0.1)]`
+                      : 'bg-transparent border-white/5 text-gray-600 hover:border-white/20 hover:text-gray-400'
                   }
                 `}
                 >
-                  <span className="flex items-center gap-1.5">
-                    {activeFilters.includes(status) && <Check weight="bold" />}
+                  <span className="flex items-center gap-2">
                     {status}
+                    {activeFilters.includes(status) && <span>[X]</span>}
                   </span>
                 </button>
               ),
@@ -149,27 +148,27 @@ const TableView = ({ issuesData = [] }) => {
       </div>
 
       {/* Table */}
-      <div className="overflow-hidden rounded-2xl shadow-2xl bg-gray-900/70 backdrop-blur-md border border-gray-800">
+      <div className="border border-white/10 bg-white/[0.01] rounded-sm overflow-hidden shadow-2xl">
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-800">
+          <table className="min-w-full divide-y divide-white/5">
             <thead>
-              <tr className="bg-gray-800/60">
+              <tr className="bg-white/[0.03]">
                 {[
-                  { key: 'title', label: 'Title' },
-                  { key: 'epic', label: 'Epic' },
-                  { key: 'description', label: 'Description', noSort: true },
+                  { key: 'title', label: 'Artifact' },
+                  { key: 'epic', label: 'Domain' },
+                  { key: 'description', label: 'Manifest', noSort: true },
                   { key: 'status', label: 'Status' },
                   { key: 'priority', label: 'Priority' },
-                  { key: 'created_at', label: 'Created' },
-                  { key: 'notes', label: 'Notes', noSort: true },
+                  { key: 'created_at', label: 'Timestamp' },
+                  { key: 'notes', label: 'Intel', noSort: true },
                 ].map((col) => (
                   <th
                     key={col.key}
                     scope="col"
                     onClick={() => !col.noSort && handleSort(col.key)}
                     className={`
-                      px-6 py-4 text-left text-xs font-mono font-bold text-gray-400 uppercase tracking-wider group
-                      ${!col.noSort ? 'cursor-pointer hover:text-primary-400 hover:bg-gray-800/50 transition-colors select-none' : ''}
+                      px-6 py-5 text-left text-[10px] font-mono font-black text-gray-500 uppercase tracking-widest group
+                      ${!col.noSort ? 'cursor-pointer hover:text-white transition-colors select-none' : ''}
                     `}
                   >
                     <div className="flex items-center gap-2">
@@ -180,72 +179,66 @@ const TableView = ({ issuesData = [] }) => {
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-800/50">
+            <tbody className="divide-y divide-white/[0.03]">
               {sortedApps.length > 0 ? (
                 sortedApps.map((app, index) => (
                   <tr
                     key={app.id}
                     onClick={(e) => {
-                      // Navigate if the click didn't originate from a link
                       if (!e.target.closest('a')) {
                         navigate(`/roadmap/${app.id}`);
                       }
                     }}
-                    className={`
-                      group transition-colors duration-200 cursor-pointer
-                      ${index % 2 === 0 ? 'bg-gray-900/20' : 'bg-transparent'}
-                      hover:!bg-gray-800/60
-                    `}
+                    className="group transition-all duration-300 cursor-pointer hover:bg-emerald-500/[0.02]"
                   >
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-5 whitespace-nowrap">
                       <Link
                         to={`/roadmap/${app.id}`}
-                        className="text-sm font-mono font-bold text-white group-hover:text-primary-400 transition-colors"
+                        className="text-xs font-bold font-sans uppercase text-white group-hover:text-emerald-400 transition-colors"
                       >
                         {app.title}
                       </Link>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-5 whitespace-nowrap">
                       {app.epic ? (
-                        <span className="inline-flex items-center gap-1.5 px-2 py-1 rounded bg-purple-500/10 border border-purple-500/30 text-purple-300 text-[10px] font-mono uppercase tracking-wider font-bold">
-                          <Lightning weight="fill" size={10} />
+                        <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-purple-500/5 border border-purple-500/20 text-purple-400 text-[9px] font-mono uppercase tracking-widest font-black">
                           {app.epic}
                         </span>
                       ) : (
-                        <span className="text-gray-600 font-mono text-xs">
-                          -
+                        <span className="text-gray-800 font-mono text-[10px]">
+                          ---
                         </span>
                       )}
                     </td>
                     <td
-                      className="px-6 py-4 text-sm text-gray-400 font-mono max-w-xs truncate"
+                      className="px-6 py-5 text-[11px] text-gray-500 font-sans max-w-xs truncate group-hover:text-gray-400 transition-colors"
                       title={app.description}
                     >
                       {app.description}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-5 whitespace-nowrap">
                       <span
-                        className={`px-2.5 py-1 inline-flex items-center text-[10px] font-mono font-bold uppercase tracking-wide rounded-full ${getStatusClasses(app.status)} shadow-sm`}
+                        className={`px-2 py-0.5 inline-flex items-center text-[9px] font-mono font-black uppercase tracking-widest border rounded-sm ${getStatusClasses(app.status)}`}
                       >
                         {app.status || 'Planned'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-5 whitespace-nowrap">
                       <span
-                        className={`inline-flex items-center gap-1.5 px-2 py-1 rounded text-[10px] font-mono font-bold uppercase tracking-wide ${getPriorityClasses(app.priority)}`}
+                        className={`inline-flex items-center px-2 py-0.5 border rounded-sm text-[9px] font-mono font-black uppercase tracking-widest ${getPriorityClasses(app.priority)}`}
                       >
                         {app.priority || 'Low'}
                       </span>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-xs font-mono text-gray-500">
-                      {new Date(app.created_at).toLocaleDateString(undefined, {
+                    <td className="px-6 py-5 whitespace-nowrap text-[10px] font-mono text-gray-600 uppercase">
+                      {new Date(app.created_at).toLocaleDateString('en-GB', {
                         year: 'numeric',
                         month: 'short',
                         day: 'numeric',
                       })}
                     </td>
-                    <td className="px-6 py-4 text-xs text-gray-500 font-mono italic max-w-xs truncate">
-                      {app.notes || '-'}
+                    <td className="px-6 py-5 text-[10px] text-gray-700 font-mono italic max-w-xs truncate">
+                      {app.notes || '---'}
                     </td>
                   </tr>
                 ))
@@ -253,18 +246,20 @@ const TableView = ({ issuesData = [] }) => {
                 <tr>
                   <td
                     colSpan="7"
-                    className="px-6 py-16 text-center text-gray-500 font-mono"
+                    className="px-6 py-24 text-center"
                   >
-                    <div className="flex flex-col items-center justify-center gap-4">
-                      <div className="p-4 rounded-full bg-gray-800/50">
-                        <MagnifyingGlass size={32} className="opacity-50" />
+                    <div className="flex flex-col items-center justify-center gap-6">
+                      <div className="p-6 bg-white/[0.02] border border-white/5 rounded-sm">
+                        <MagnifyingGlass size={48} weight="thin" className="text-gray-800" />
                       </div>
-                      <p className="text-lg font-medium text-gray-400">
-                        No issues found
-                      </p>
-                      <p className="text-sm">
-                        Try adjusting your search or filters.
-                      </p>
+                      <div className="space-y-2">
+                        <p className="text-xs font-mono font-black uppercase tracking-[0.3em] text-gray-500">
+                          Query_Failed: No_Artifacts_Found
+                        </p>
+                        <p className="text-[10px] font-mono text-gray-700 uppercase tracking-widest">
+                          Adjust parameters and re-initialize search.
+                        </p>
+                      </div>
                     </div>
                   </td>
                 </tr>
@@ -276,12 +271,12 @@ const TableView = ({ issuesData = [] }) => {
 
       {/* Footer info */}
       <div className="flex justify-end items-center px-2">
-        <span className="text-xs font-mono text-gray-600 bg-gray-900/50 px-3 py-1 rounded-full border border-gray-800">
-          Showing{' '}
-          <span className="text-primary-400 font-bold">
+        <span className="text-[9px] font-mono font-black text-gray-600 uppercase tracking-[0.2em] bg-white/[0.03] border border-white/5 px-4 py-2 rounded-sm">
+          Displaying_Entries:{' '}
+          <span className="text-emerald-500">
             {sortedApps.length}
           </span>{' '}
-          of {issuesData.length} issues
+          {'//'} Pool_Size: {issuesData.length}
         </span>
       </div>
     </div>

@@ -41,27 +41,28 @@ const RoadmapView = ({ issuesData = [] }) => {
         return (
           <div
             key={status}
-            className="bg-gray-900/70 backdrop-blur-sm rounded-xl shadow-lg p-4 border border-gray-800"
+            className="bg-white/[0.02] border border-white/10 p-6 rounded-sm space-y-8"
           >
-            <h3 className={`mb-4 flex items-center justify-between`}>
+            <h3 className={`flex items-center justify-between border-b border-white/5 pb-4`}>
               <span
-                className={`inline-flex items-center gap-2 px-3 py-1 rounded-lg text-sm font-mono font-bold uppercase tracking-wider ${getStatusClasses(status)}`}
+                className={`inline-flex items-center gap-2 text-[10px] font-mono font-black uppercase tracking-[0.2em] ${getStatusClasses(status)}`}
               >
+                <span className="h-1.5 w-1.5 rounded-full bg-current" />
                 {status}
-                <span className="opacity-70">
-                  ({groupIssues[status]?.length || 0})
+                <span className="text-gray-600 font-normal">
+                  [{groupIssues[status]?.length || 0}]
                 </span>
               </span>
               <button
                 onClick={() => toggleColumnVisibility(status)}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-700 hover:text-white transition-colors"
                 title={isHidden ? 'Show column' : 'Hide column'}
               >
-                {isHidden ? <EyeSlashIcon size={20} /> : <EyeIcon size={20} />}
+                {isHidden ? <EyeSlashIcon size={16} weight="bold" /> : <EyeIcon size={16} weight="bold" />}
               </button>
             </h3>
             {!isHidden && (
-              <div className="space-y-4">
+              <div className="space-y-6">
                 {groupIssues[status]?.map((app, appIndex) => (
                   <RoadmapCard key={app.id} app={app} index={appIndex} />
                 ))}

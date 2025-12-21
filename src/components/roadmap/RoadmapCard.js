@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  KanbanIcon,
   Lightning,
   Circle,
   ArrowsClockwise,
@@ -54,32 +53,28 @@ const RoadmapCard = ({ app, index }) => {
     >
       <Link to={`/roadmap/${app.id}`} className="block group relative h-full">
         {/* Main Card Container */}
-        <div className="relative flex flex-col h-full bg-gray-900/80 backdrop-blur-xl border border-gray-800 rounded-xl p-4 overflow-hidden group-hover:border-primary-500 transition-all duration-300 shadow-xl">
+        <div className="relative flex flex-col h-full bg-zinc-950 border border-white/5 p-5 rounded-sm overflow-hidden group-hover:border-emerald-500/50 transition-all duration-500">
           {/* Subtle Grid Background */}
           <div
-            className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+            className="absolute inset-0 opacity-[0.02] pointer-events-none z-0 grayscale"
             style={{
               backgroundImage:
                 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)',
-              backgroundSize: '20px 20px',
+              backgroundSize: '16px 16px',
             }}
           ></div>
-          {/* Watermark Icon */}
-          <div className="absolute -bottom-6 -right-6 text-gray-700 opacity-20 group-hover:opacity-30 group-hover:scale-110 transition-all duration-500 rotate-12 pointer-events-none z-0">
-            <KanbanIcon size={120} weight="fill" />
-          </div>
 
           {/* Content */}
-          <div className="relative z-10 flex-grow">
-            <div className="flex items-center justify-between mb-3 gap-2">
+          <div className="relative z-10 flex-grow space-y-4">
+            <div className="flex flex-wrap items-center gap-2">
               <span
-                className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider rounded-md shadow-sm ${getStatusClasses(app.status || 'Planned')}`}
+                className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[9px] font-mono font-black uppercase tracking-widest border rounded-sm ${getStatusClasses(app.status || 'Planned')}`}
               >
                 {getStatusIcon(app.status || 'Planned')}
                 {app.status || 'Planned'}
               </span>
               <span
-                className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[10px] font-mono font-bold uppercase tracking-wider rounded-md shadow-sm ${getPriorityClasses(app.priority || 'Low')}`}
+                className={`px-2 py-0.5 inline-flex items-center gap-1.5 text-[9px] font-mono font-black uppercase tracking-widest border rounded-sm ${getPriorityClasses(app.priority || 'Low')}`}
               >
                 {getPriorityIcon(app.priority || 'Low')}
                 {app.priority || 'Low'}
@@ -87,26 +82,24 @@ const RoadmapCard = ({ app, index }) => {
             </div>
 
             {app.epic && (
-              <div className="mb-3 inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-purple-500/20 border border-purple-500/50 text-purple-300 text-[10px] font-mono uppercase tracking-wider font-bold w-fit">
-                <Lightning weight="fill" size={12} />
+              <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-sm bg-purple-500/5 border border-purple-500/20 text-purple-400 text-[9px] font-mono uppercase tracking-[0.2em] font-black">
+                <Lightning weight="fill" size={10} />
                 {app.epic}
               </div>
             )}
 
-            <h4 className="text-xl font-bold font-mono text-white mb-2 tracking-tight group-hover:text-primary-400 transition-colors">
+            <h4 className="text-lg font-bold font-sans uppercase text-white tracking-tight group-hover:text-emerald-400 transition-colors leading-tight">
               {app.title}
             </h4>
-            <p className="text-gray-400 font-mono text-sm leading-relaxed line-clamp-3">
+            <p className="text-gray-500 font-sans text-xs leading-relaxed line-clamp-2">
               {app.description}
             </p>
           </div>
 
           {app.notes && (
-            <div className="relative z-10 mt-4 bg-black/20 rounded-lg p-3 border border-white/5">
-              <p className="text-gray-500 text-xs italic line-clamp-2 font-mono">
-                <span className="font-bold text-gray-400 not-italic mr-2">
-                  NOTE:
-                </span>
+            <div className="relative z-10 mt-6 pt-4 border-t border-white/5">
+              <p className="text-[10px] font-mono text-gray-600 line-clamp-1 uppercase tracking-widest">
+                <span className="text-emerald-500/50 font-black mr-2">LOG:</span>
                 {app.notes}
               </p>
             </div>

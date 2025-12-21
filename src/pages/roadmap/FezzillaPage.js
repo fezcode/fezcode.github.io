@@ -6,6 +6,8 @@ import piml from 'piml';
 import RoadmapView from '../../components/roadmap/RoadmapView';
 import TableView from '../../components/roadmap/TableView';
 import { useAchievements } from '../../context/AchievementContext';
+import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const FezzillaPage = () => {
   useSeo({
@@ -39,50 +41,55 @@ const FezzillaPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
-      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+      <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12">
         {/* Header Section */}
-        <header className="mb-20 text-center md:text-left">
+        <header className="mb-24 relative">
           <Link
             to="/"
-            className="mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeft weight="bold" className="transition-transform group-hover:-translate-x-1" />
             <span>Home</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                Roadmap
-              </h1>
-              <p className="text-gray-400 font-mono text-sm max-w-2xl uppercase tracking-[0.2em] leading-relaxed mx-auto md:mx-0">
-                Tracking status, progress, and future milestones of all digital
-                artifacts.
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4 relative z-10">
+              <BreadcrumbTitle
+                title="Roadmap"
+                slug="roadmap"
+                variant="brutalist"
+              />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Architectural mapping of digital artifacts. Tracking the evolution from conceptual blueprints to stable deployments.
               </p>
             </div>
 
-            <div className="flex bg-white/5 border border-white/10 rounded-sm p-1">
+            <div className="flex bg-white/[0.03] border border-white/10 p-1 rounded-sm relative z-10">
               <button
                 onClick={() => setViewMode('roadmap')}
-                className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
+                className={`px-6 py-2 text-[10px] font-black font-mono tracking-[0.2em] transition-all rounded-sm ${
                   viewMode === 'roadmap'
-                    ? 'bg-white text-black shadow-lg'
-                    : 'text-gray-500 hover:text-white hover:bg-white/5'
+                    ? 'bg-white text-black'
+                    : 'text-gray-500 hover:text-white'
                 }`}
               >
                 KANBAN
               </button>
               <button
                 onClick={() => setViewMode('table')}
-                className={`px-6 py-2 text-[10px] font-bold font-mono tracking-widest transition-all ${
+                className={`px-6 py-2 text-[10px] font-black font-mono tracking-[0.2em] transition-all rounded-sm ${
                   viewMode === 'table'
-                    ? 'bg-white text-black shadow-lg'
-                    : 'text-gray-500 hover:text-white hover:bg-white/5'
+                    ? 'bg-white text-black'
+                    : 'text-gray-500 hover:text-white'
                 }`}
               >
                 TABLE
               </button>
             </div>
+          </div>
+
+          <div className="absolute -top-24 -right-12 w-96 h-96 opacity-[0.03] pointer-events-none grayscale">
+            <GenerativeArt seed="roadmap-header" className="w-full h-full" />
           </div>
         </header>
 
@@ -93,6 +100,11 @@ const FezzillaPage = () => {
             <TableView issuesData={issuesData} />
           )}
         </div>
+
+        <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
+          <span>Fezzilla_Artifact_Tracker_v2.1.0</span>
+          <span className="text-gray-800">STATUS // SYNCHRONIZED</span>
+        </footer>
       </div>
     </div>
   );
