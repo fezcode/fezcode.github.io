@@ -8,3 +8,14 @@
     (isActive) true
     (link) /graph
     (linkText) See Neural Net
+
+  > (banner)
+    (id) logic-architect-v2
+    (type) info
+    (from) 2025-12-23T00:00:00Z
+    (to) 2025-12-25T23:59:59Z
+    (text) LOGIC ARCHITECT V2 IS ONLINE: THE PERFECT LOGIC GATE EDITORS. ACCESS AT /APPS/LOGIC-ARCHITECT.
+    (isActive) true
+    (link) /apps/logic-architect
+    (linkText) See Logic Architect
+
