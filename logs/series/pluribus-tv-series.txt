@@ -7,7 +7,7 @@
 
 ## About "Pluribus"
 
-"[Pluribus](/#/vocab/pluribus)" is a post-apocalyptic sci-fi series created by Vince Gilligan ("Breaking Bad", "Better Call Saul").
+"[Pluribus](/vocab/pluribus)" is a post-apocalyptic sci-fi series created by Vince Gilligan ("Breaking Bad", "Better Call Saul").
 Starring Rhea Seehorn as Carol Sturka and Karolina Wydra as Zosia, the show explores how an author remains an individual
 in a world where humanity has been assimilated into a peaceful hive mind.
 The show explores themes of individuality and isolation. It has received critical acclaim for its writing and performance.

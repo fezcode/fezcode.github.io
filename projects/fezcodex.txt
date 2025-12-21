@@ -1,6 +1,6 @@
 # Overview
 
-[Development Series](/#/blog/series/react-of-fezcodex)
+[Development Series](/blog/series/react-of-fezcodex)
 
 **Fezcodex** is a _personal website_ and _blog_, serving as a digital hub for various content, including blog posts, personal projects, and D&D-related materials. It's built with a focus on modern web technologies, aiming for a clean, responsive, and performant user experience.
 

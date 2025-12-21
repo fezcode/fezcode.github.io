@@ -2,7 +2,7 @@
 
 In this blog post, we'll take a deep dive into the implementation of the Image Toolkit app. We'll explore the various image filters and their algorithms, and we'll also discuss a common React Hook-related warning and how to fix it.
 
-You can try it here [apps::itk](/#/apps::itk)
+You can try it here [apps::itk](/apps::itk)
 
 ## The Filters
 

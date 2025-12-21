@@ -21,7 +21,7 @@ The goal is to continually innovate and provide diverse ways for our users to in
 I believe that offering distinct visual experiences like Dossier and Terminal modes enhances user engagement
 and allows for a more personalized journey through Fezcodex.
 
-Head over to the [Settings page](/#/settings) (accessible from the Sidebar). Scroll down to the new **Reading Experience** section and set you mode...
+Head over to the [Settings page](/settings) (accessible from the Sidebar). Scroll down to the new **Reading Experience** section and set you mode...
 
 # Oh, One More Thing. ***Sidebar Colors***
 
@@ -34,7 +34,7 @@ Also sidebar now supports multiple background colors. Some of your favorite even
 - <span style="background-color: rgba(147, 112, 219, 0.5)">  Purple        </span>
 - <span style="background-color: rgba(0, 255, 255, 0.5)">    Cyan          </span>
 
-Head over to the [Settings page](/#/settings), again. Scroll down to the new **Interface & Layout** then under **Sidebar Color** section set your sidebar color.
+Head over to the [Settings page](/settings), again. Scroll down to the new **Interface & Layout** then under **Sidebar Color** section set your sidebar color.
 
 
 Hope you enjoy exploring these new immersive reading modes. Happy reading!

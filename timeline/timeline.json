@@ -5,7 +5,7 @@
     "description": "Executed a sweeping architectural and aesthetic refactor. Introduced high-contrast brutalist layouts, immersive hero sections with real-time generative art, and a massive codebase sanitization. Overhauled the Timeline and Memory Game components to match the new digital-first identity.",
     "type": "refactor",
     "icon": "SparkleIcon",
-    "link": "/#/"
+    "link": "/"
   },
   {
     "date": "2025-12-17",
@@ -13,7 +13,7 @@
     "description": "Implemented a Dossier and Terminal reader modes for blogposts which can be set in Settings. Dossier having a Classified Dossier look while Terminal uses Dark Orange tones. Also sidebar background can be changed now. Isn't that the best?",
     "type": "content",
     "icon": "ArticleIcon",
-    "link": "/#/blog/introducing-reading-experience"
+    "link": "/blog/introducing-reading-experience"
   },
   {
     "date": "2025-12-12",
@@ -21,7 +21,7 @@
     "description": "Added 4 major version of the about me page.",
     "type": "refactor",
     "icon": "SparkleIcon",
-    "link": "/#/about"
+    "link": "/about"
   },
   {
     "date": "2025-12-12",
@@ -29,7 +29,7 @@
     "description": "Modernized Home Page section.",
     "type": "refactor",
     "icon": "SparkleIcon",
-    "link": "/#/"
+    "link": "/"
   },
   {
     "date": "2025-12-11",
@@ -37,7 +37,7 @@
     "description": "Implemented a resizable, global side panel for contextual information, with vocabulary links in Markdown content that dynamically open the panel with lazy-loaded React components.",
     "type": "feature",
     "icon": "SidebarIcon",
-    "link": "/#/blog/react-magic-markdown-components"
+    "link": "/blog/react-magic-markdown-components"
   },
   {
     "date": "2025-11-30",
@@ -45,7 +45,7 @@
     "description": "Overhauled the Settings page with a modern glassmorphism design, animated sections, custom icons, and improved layout for better user experience.",
     "type": "refactor",
     "icon": "SparkleIcon",
-    "link": "/#/settings"
+    "link": "/settings"
   },
   {
     "date": "2025-11-30",
@@ -60,7 +60,7 @@
     "description": "Added configurable achievement toast notifications with direct links to relevant pages (Settings, Trophy Room).",
     "type": "feature",
     "icon": "BellIcon",
-    "link": "/#/achievements"
+    "link": "/achievements"
   },
   {
     "date": "2025-11-29",
@@ -68,7 +68,7 @@
     "description": "Applied the new futuristic design language to Blog Post and Series pages, including enhanced typography, sticky metadata, and improved code block styling.",
     "type": "refactor",
     "icon": "SparkleIcon",
-    "link": "/#/blog"
+    "link": "/blog"
   },
   {
     "date": "2025-11-29",
@@ -76,7 +76,7 @@
     "description": "Modernized Projects section with a futuristic cyan theme, enhanced animations, and improved metadata cards.",
     "type": "refactor",
     "icon": "SparkleIcon",
-    "link": "/#/projects"
+    "link": "/projects"
   },
   {
     "date": "2025-11-29",
@@ -84,7 +84,7 @@
     "description": "Implemented Fezzilla, an issue tracking roadmap to visualize project statuses and progress.",
     "type": "feature",
     "icon": "KanbanIcon",
-    "link": "/#/roadmap"
+    "link": "/roadmap"
   },
   {
     "date": "2025-11-29",
@@ -92,7 +92,7 @@
     "description": "Launched the achievements for different use cases of the Fezcodex.",
     "type": "app",
     "icon": "TrophyIcon",
-    "link": "/#/achievements"
+    "link": "/achievements"
   },
   {
     "date": "2025-11-27",
@@ -100,7 +100,7 @@
     "description": "Introduced a dedicated, techno-styled page for my most used and favorite tools.",
     "type": "feature",
     "icon": "PushPinIcon",
-    "link": "/#/pinned-apps"
+    "link": "/pinned-apps"
   },
   {
     "date": "2025-11-27",
@@ -108,7 +108,7 @@
     "description": "A new overhauled version of the blogposts page.",
     "type": "refactor",
     "icon": "RocketLaunchIcon",
-    "link": "/#/blog/"
+    "link": "/blog/"
   },
   {
     "date": "2025-11-27",
@@ -116,7 +116,7 @@
     "description": "Implemented different visual modes that can be set in settings page or via Command Palette.",
     "type": "feature",
     "icon": "RocketLaunchIcon",
-    "link": "/#/settings"
+    "link": "/settings"
   },
   {
     "date": "2025-11-27",
@@ -124,7 +124,7 @@
     "description": "Reduced main bundle size by ~70% via code splitting (React.lazy) and disabling production source maps.",
     "type": "refactor",
     "icon": "RocketLaunchIcon",
-    "link": "/#/blog/reducing-react-app-size"
+    "link": "/blog/reducing-react-app-size"
   },
   {
     "date": "2025-11-26",
@@ -132,7 +132,7 @@
     "description": "Implemented a chronological overview of project milestones and achievements.",
     "type": "feature",
     "icon": "TimerIcon",
-    "link": "/#/timeline"
+    "link": "/timeline"
   },
   {
     "date": "2025-11-26",
@@ -140,7 +140,7 @@
     "description": "Significant refactoring of Logs and App pages, along with UI enhancements across the site.",
     "type": "refactor",
     "icon": "SparkleIcon",
-    "link": "/#/logs"
+    "link": "/logs"
   },
   {
     "date": "2025-11-23",
@@ -148,7 +148,7 @@
     "description": "Introduced a command palette for navigation and new games like Nonogram and Lights Out.",
     "type": "feature",
     "icon": "GameControllerIcon",
-    "link": "/#/commands"
+    "link": "/commands"
   },
 
   {
@@ -157,7 +157,7 @@
     "description": "Added a script for generating wallpapers and introduced new interactive apps.",
     "type": "feature",
     "icon": "ImagesIcon",
-    "link": "/#/apps"
+    "link": "/apps"
   },
   {
     "date": "2025-11-14",
@@ -165,7 +165,7 @@
     "description": "Reworked the stories section with PIML integration and new structure.",
     "type": "content",
     "icon": "BookIcon",
-    "link": "/#/stories"
+    "link": "/stories"
   },
   {
     "date": "2025-11-13",
@@ -180,7 +180,7 @@
     "description": "Launched the interactive applications section with various tools and games.",
     "type": "app",
     "icon": "RocketLaunchIcon",
-    "link": "/#/apps"
+    "link": "/apps"
   },
   {
     "date": "2025-11-04",
@@ -196,7 +196,7 @@
     "description": "Introduced the Dungeons & Dragons content section with the 'From Serfs and Frauds' series.",
     "type": "content",
     "icon": "MeteorIcon",
-    "link": "/#/dnd"
+    "link": "/dnd"
   },
   {
     "date": "2025-10-17",
@@ -211,7 +211,7 @@
     "description": "Implemented initial blogpost and project display functionalities.",
     "type": "content",
     "icon": "ArticleIcon",
-    "link": "/#/posts"
+    "link": "/posts"
   },
   {
     "date": "2025-10-15",
@@ -219,7 +219,7 @@
     "description": "Initial implementation of the Projects page to showcase various works.",
     "type": "project",
     "icon": "CodeIcon",
-    "link": "/#/projects"
+    "link": "/projects"
   },
   {
     "date": "2025-10-15",
@@ -227,7 +227,7 @@
     "description": "Initial implementation of the About Me page.",
     "type": "content",
     "icon": "BriefcaseIcon",
-    "link": "/#/about"
+    "link": "/about"
   },
   {
     "date": "2025-10-15",
@@ -235,7 +235,7 @@
     "description": "Initial setup and display of the blog section.",
     "type": "content",
     "icon": "ArticleIcon",
-    "link": "/#/posts"
+    "link": "/posts"
   },
   {
     "date": "2025-10-15",

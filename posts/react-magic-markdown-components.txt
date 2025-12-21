@@ -4,7 +4,7 @@ Today I want to share a fun pattern I implemented in **Fezcodex**: triggering dy
 
 ## The Idea
 
-I wanted to explain technical terms like **[Prop Drilling](/#/vocab/prop-drilling)** without forcing the reader to leave the article. A tooltip is too small; a new tab is too distracting. The solution? My global **Side Panel**.
+I wanted to explain technical terms like **[Prop Drilling](/vocab/prop-drilling)** without forcing the reader to leave the article. A tooltip is too small; a new tab is too distracting. The solution? My global **Side Panel**.
 
 But how do you tell a static Markdown file to "render a React component in the side panel"?
 
@@ -68,7 +68,7 @@ export const vocabulary = {
 
 ### 3. Handling "Deep Links"
 
-What if someone actually copies the URL `https://fezcodex.com/#/vocab/prop-drilling` and sends it to a friend? The `onClick` handler won't fire because they aren't clicking a link—they are loading the app.
+What if someone actually copies the URL `https://fezcodex.com/vocab/prop-drilling` and sends it to a friend? The `onClick` handler won't fire because they aren't clicking a link—they are loading the app.
 
 To handle this, I added a "phantom" route in my Router:
 
@@ -96,6 +96,6 @@ const VocabRouteHandler = () => {
 
 This pattern effectively turns your static Markdown content into a control surface for your application. You can write:
 
-> "Check out this `[interactive demo](/#/demos/sorting-algo)`..."
+> "Check out this `[interactive demo](/demos/sorting-algo)`..."
 
 And have it launch a full-screen visualization, a game, or a configuration wizard, all without leaving the flow of your writing. It bridges the gap between "content" and "app".
