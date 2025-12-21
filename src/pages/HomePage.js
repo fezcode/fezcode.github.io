@@ -95,6 +95,40 @@ const Hero = () => {
   );
 };
 
+const QuickLinks = () => {
+  const favorites = [
+    { title: 'Logic Architect', to: '/apps/logic-architect', color: 'text-emerald-500' },
+    { title: 'Fezynth', to: '/apps/fezynth', color: 'text-purple-400' },
+    { title: 'Notepad', to: '/apps/notepad', color: 'text-amber-200' },
+    { title: 'Sprite Editor', to: '/apps/sprite-editor', color: 'text-rose-500' },
+  ];
+
+  return (
+    <div className="py-12 border-b border-white/10">
+      <h3 className="font-mono text-[10px] font-bold uppercase tracking-[0.3em] text-gray-600 mb-6 px-2">
+        {'//'} SOME_FAVORITES
+      </h3>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {favorites.map((app) => (
+          <Link
+            key={app.to}
+            to={app.to}
+            className="group p-4 border border-white/5 bg-white/[0.02] hover:bg-white hover:border-white transition-all flex flex-col gap-2"
+          >
+            <span className={`text-[10px] font-black uppercase tracking-widest ${app.color} group-hover:text-black transition-colors`}>
+              {app.title}
+            </span>
+            <div className="flex items-center justify-between">
+              <span className="text-[9px] font-mono text-gray-600 group-hover:text-black/50 uppercase">RUN THE APP</span>
+              <ArrowUpRight size={12} className="text-gray-700 group-hover:text-black transition-colors" />
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const SectionHeader = ({ num, title, link, linkText }) => (
   <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
     <div className="flex items-baseline gap-4">
@@ -283,6 +317,7 @@ const HomePage = () => {
       <Hero />
 
       <div className="mx-auto max-w-7xl px-6">
+        <QuickLinks />
         {homepageSectionOrder.map((sectionName, idx) => (
           <React.Fragment key={sectionName}>
             {renderSection(sectionName, idx)}

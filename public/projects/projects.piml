@@ -41,7 +41,7 @@
     (pinned) true
     (isActive) true
     (technologies)
-      > (project) markup-language
+      > Markup Language
     (shortDescription) piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
     (date) 2025-11-08
     (image) /images/defaults/piml-red.png
