@@ -151,8 +151,117 @@ function useSeo({
         document.head.appendChild(newMeta);
       }
     }
-  }, [
-    location.pathname,
+
+    // Update URL meta tags (Canonical and OG URL)
+    const currentUrl = window.location.origin + location.pathname;
+
+    // OG URL
+    const metaOgUrl = document.querySelector('meta[property="og:url"]');
+    if (metaOgUrl) {
+      metaOgUrl.setAttribute('content', currentUrl);
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.setAttribute('property', 'og:url');
+      newMeta.setAttribute('content', currentUrl);
+      document.head.appendChild(newMeta);
+    }
+
+    // Twitter URL
+    const metaTwitterUrl = document.querySelector('meta[name="twitter:url"]');
+    if (metaTwitterUrl) {
+      metaTwitterUrl.setAttribute('content', currentUrl);
+    } else {
+      const newMeta = document.createElement('meta');
+      newMeta.setAttribute('name', 'twitter:url');
+      newMeta.setAttribute('content', currentUrl);
+      document.head.appendChild(newMeta);
+    }
+
+    // Canonical link
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', currentUrl);
+    } else {
+      canonicalLink = document.createElement('link');
+            canonicalLink.setAttribute('rel', 'canonical');
+            canonicalLink.setAttribute('href', currentUrl);
+            document.head.appendChild(canonicalLink);
+          }
+
+          return () => {
+            // Cleanup: Restore defaults from index.html on unmount
+            const defaults = {
+              title: 'fezcodex',
+              description: 'codex by fezcode...',
+              ogTitle: 'Fezcodex - Personal Blog and Projects',
+              ogDescription:
+                'Discover logs, posts, projects, and stories from Fezcode.',
+              ogImage: '/images/asset/ogtitle.png',
+              ogUrl: 'https://fezcode.com/',
+              twitterCard: 'summary_large_image',
+              twitterTitle: 'Fezcodex - Personal Blog and Projects',
+              twitterDescription:
+                'Discover logs, posts, projects, and stories from Fezcode.',
+              twitterImage: '/images/asset/ogtitle.png',
+              twitterUrl: 'https://fezcode.com/',
+            };
+
+            document.title = defaults.title;
+
+            const metaDescription = document.querySelector(
+              'meta[name="description"]',
+            );
+            if (metaDescription)
+              metaDescription.setAttribute('content', defaults.description);
+
+            const metaOgTitle = document.querySelector('meta[property="og:title"]');
+            if (metaOgTitle) metaOgTitle.setAttribute('content', defaults.ogTitle);
+
+            const metaOgDescription = document.querySelector(
+              'meta[property="og:description"]',
+            );
+            if (metaOgDescription)
+              metaOgDescription.setAttribute('content', defaults.ogDescription);
+
+            const metaOgImage = document.querySelector('meta[property="og:image"]');
+            if (metaOgImage) metaOgImage.setAttribute('content', defaults.ogImage);
+
+            const metaOgUrl = document.querySelector('meta[property="og:url"]');
+            if (metaOgUrl) metaOgUrl.setAttribute('content', defaults.ogUrl);
+
+            const metaTwitterCard = document.querySelector(
+              'meta[name="twitter:card"]',
+            );
+            if (metaTwitterCard)
+              metaTwitterCard.setAttribute('content', defaults.twitterCard);
+
+            const metaTwitterTitle = document.querySelector(
+              'meta[name="twitter:title"]',
+            );
+            if (metaTwitterTitle)
+              metaTwitterTitle.setAttribute('content', defaults.twitterTitle);
+
+            const metaTwitterDescription = document.querySelector(
+              'meta[name="twitter:description"]',
+            );
+            if (metaTwitterDescription)
+              metaTwitterDescription.setAttribute('content', defaults.twitterDescription);
+
+            const metaTwitterImage = document.querySelector(
+              'meta[name="twitter:image"]',
+            );
+            if (metaTwitterImage)
+              metaTwitterImage.setAttribute('content', defaults.twitterImage);
+
+            const metaTwitterUrl = document.querySelector('meta[name="twitter:url"]');
+            if (metaTwitterUrl)
+              metaTwitterUrl.setAttribute('content', defaults.twitterUrl);
+
+            const canonicalLink = document.querySelector('link[rel="canonical"]');
+            if (canonicalLink) canonicalLink.setAttribute('href', defaults.ogUrl);
+          };
+        }, [
+          location.pathname,
     title,
     description,
     keywords,
