@@ -10,7 +10,7 @@ if (!commitMsgFile) {
 
 try {
   const commitMsg = fs.readFileSync(commitMsgFile, 'utf8').trim();
-  
+
   // Use the locally installed commitlint
   try {
     execSync(`npx commitlint --edit "${commitMsgFile}"`, { stdio: 'inherit' });
@@ -18,7 +18,6 @@ try {
     // commitlint will print its own errors to stdout/stderr
     process.exit(1);
   }
-
 } catch (err) {
   console.error('Error reading commit message file:', err);
   process.exit(1);

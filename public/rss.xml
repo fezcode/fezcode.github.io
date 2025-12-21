@@ -9,14 +9,26 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 21 Dec 2025 17:02:03 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 21 Dec 2025 19:29:42 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 21 Dec 2025 17:02:03 GMT</pubDate>
+        <pubDate>Sun, 21 Dec 2025 19:29:42 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Corrupted Blood Incident: When a Glitch Taught Us About Pandemics]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/corrupted-blood-incident</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/corrupted-blood-incident</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p><em>Okay, gather &#39;round</em>, fellow nerds and accidental epidemiologists.
+I need to talk about something that happened in <em>World of Warcraft</em> back in 2005.
+It&#39;s called the <strong>Corrupted Blood incident</strong>, and it&#39;s basically the coolest (and most terrifying) accidental science experiment in gaming history.</p>
+<p><a href="https://fezcode.com/blog/corrupted-blood-incident">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Building the Knowledge Graph: Visualizing Fezcodex in 3D]]></title>
             <description><![CDATA[[object Object]]]></description>
