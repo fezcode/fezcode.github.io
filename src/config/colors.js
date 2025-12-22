@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   primary: {
     400: '#f87171', // red-400
     500: '#ef4444', // red-500

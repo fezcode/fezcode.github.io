@@ -73,7 +73,7 @@ const FireplaceAudio = () => {
     <div className="fixed bottom-8 left-8 z-[110]">
       <audio
         ref={audioRef}
-        src={`${process.env.PUBLIC_URL}/sounds/static.mp3`} // Using static.mp3 as a fireplace crackle proxy if specific fire sound doesn't exist
+        src={`/sounds/static.mp3`} // Using static.mp3 as a fireplace crackle proxy if specific fire sound doesn't exist
         loop
       />
       <button
@@ -267,7 +267,7 @@ const DndLayout = ({ children }) => {
         <div
           className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
           style={{
-            backgroundImage: bgImage ? `url(${process.env.PUBLIC_URL}${bgImage})` : 'none',
+            backgroundImage: bgImage ? `url(${bgImage})` : 'none',
             filter: 'brightness(0.45) contrast(1.1)'
           }}
         />

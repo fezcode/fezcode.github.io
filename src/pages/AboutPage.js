@@ -24,7 +24,7 @@ const ViewSwitcher = ({ currentView }) => {
   const views = [
     { id: 'brutalist', icon: BugIcon, label: 'Brutalist' },
     { id: 'dossier', icon: ArticleIcon, label: 'Dossier' },
-    { id: 'hud', icon: TerminalIcon, label: 'TerminalIcon' },
+    { id: 'hud', icon: TerminalIcon, label: 'Terminal' },
     { id: 'blueprint', icon: TreeStructureIcon, label: 'Blueprint' },
     { id: 'map', icon: GraphIcon, label: 'Mind Map' },
   ];

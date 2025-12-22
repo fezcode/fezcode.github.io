@@ -43,7 +43,7 @@ function DndEpisodePage() {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        const response = await fetch(`/stories/books.piml`);
 
         if (response.ok) {
           const pimlText = await response.text();
@@ -100,7 +100,7 @@ function DndEpisodePage() {
 
           const fetchEpisodeContent = async () => {
             try {
-              const response = await fetch(`${process.env.PUBLIC_URL}/stories/${currentEp.filename}`);
+              const response = await fetch(`/stories/${currentEp.filename}`);
 
               if (response.ok) {
                 const text = await response.text();
