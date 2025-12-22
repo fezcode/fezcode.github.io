@@ -30,6 +30,31 @@ import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 import { useAchievements } from '../context/AchievementContext';
 import { useSiteConfig } from '../context/SiteConfigContext';
+import piml from 'piml';
+
+const ICON_MAP = {
+  HouseIcon,
+  UserIcon,
+  BookOpenIcon,
+  WrenchIcon,
+  ArticleIcon,
+  SquaresFourIcon,
+  GearSixIcon,
+  MagnifyingGlassIcon,
+  TimerIcon,
+  PushPinIcon,
+  TrophyIcon,
+  ShuffleIcon,
+  EnvelopeSimpleIcon,
+  BugBeetleIcon,
+  ArrowRightIcon,
+  SwordIcon,
+  RssIcon,
+  GraphIcon,
+  CaretDoubleDownIcon,
+  CaretDoubleUpIcon,
+  FlaskIcon,
+};
 
 const BrutalistSidebar = ({
   isOpen,
@@ -38,6 +63,24 @@ const BrutalistSidebar = ({
   setIsPaletteOpen,
 }) => {
   const { config } = useSiteConfig();
+  const [sidebarConfig, setSidebarConfig] = useState(null);
+
+  useEffect(() => {
+    const fetchSidebarConfig = async () => {
+      try {
+        const response = await fetch('/sidebar.piml');
+        if (response.ok) {
+          const text = await response.text();
+          const parsed = piml.parse(text);
+          setSidebarConfig(parsed.sidebar);
+        }
+      } catch (error) {
+        console.error('Failed to load sidebar config:', error);
+      }
+    };
+    fetchSidebarConfig();
+  }, []);
+
   const [sidebarState, setSidebarState] = usePersistentState(
     KEY_SIDEBAR_STATE,
     {
@@ -179,182 +222,66 @@ const BrutalistSidebar = ({
             ref={scrollRef}
             className="h-full overflow-y-auto scrollbar-hide no-scrollbar"
           >
-            {/* Section: Main */}
-            <SectionHeader
-              id="isMainOpen"
-              label="Main"
-              isOpen={sidebarState.isMainOpen}
-              active={
-                location.pathname === '/' ||
-                location.pathname === '/about' ||
-                location.pathname === '/achievements'
-              }
-            />
-            {sidebarState.isMainOpen && (
-              <nav className="flex flex-col">
-                <SidebarLink
-                  to="/"
-                  icon={HouseIcon}
-                  label="Home"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/about"
-                  icon={UserIcon}
-                  label="About"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/achievements"
-                  icon={TrophyIcon}
-                  label="Achievements"
-                  getLinkClass={getLinkClass}
-                />
-              </nav>
-            )}
+            {Array.isArray(sidebarConfig) &&
+              sidebarConfig.map((section, sectionIdx) => {
+                const items = Array.isArray(section.content)
+                  ? section.content
+                  : [];
+                const isActive = items.some((item) =>
+                  item.to === '/'
+                    ? location.pathname === '/'
+                    : item.to && location.pathname.startsWith(item.to),
+                );
 
-            {/* Section: Content */}
-            <SectionHeader
-              id="isContentOpen"
-              label="Feed"
-              isOpen={sidebarState.isContentOpen}
-              active={
-                location.pathname.startsWith('/blog') ||
-                location.pathname.startsWith('/projects') ||
-                location.pathname.startsWith('/logs')
-              }
-            />
-            {sidebarState.isContentOpen && (
-              <nav className="flex flex-col">
-                <SidebarLink
-                  to="/blog"
-                  icon={BookOpenIcon}
-                  label="Blogposts"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/projects"
-                  icon={WrenchIcon}
-                  label="Projects"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/logs"
-                  icon={ArticleIcon}
-                  label="Discovery Logs"
-                  getLinkClass={getLinkClass}
-                />
-              </nav>
-            )}
-
-            {/* Section: Tools */}
-            <SectionHeader
-              id="isAppsOpen"
-              label="Utilities"
-              isOpen={sidebarState.isAppsOpen}
-              active={
-                location.pathname.startsWith('/apps') ||
-                location.pathname.startsWith('/pinned-apps') ||
-                location.pathname.startsWith('/commands')
-              }
-            />
-            {sidebarState.isAppsOpen && (
-              <nav className="flex flex-col">
-                <SidebarLink
-                  to="/pinned-apps"
-                  icon={PushPinIcon}
-                  label="Favorites"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/apps"
-                  icon={SquaresFourIcon}
-                  label="App Center"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/commands"
-                  icon={MagnifyingGlassIcon}
-                  label="Manuals"
-                  getLinkClass={getLinkClass}
-                />
-              </nav>
-            )}
-
-            {/* Section: Status */}
-            <SectionHeader
-              id="isStatusOpen"
-              label="System"
-              isOpen={sidebarState.isStatusOpen}
-              active={
-                location.pathname.startsWith('/roadmap') ||
-                location.pathname.startsWith('/timeline') ||
-                location.pathname.startsWith('/brufez')
-              }
-            />
-            {sidebarState.isStatusOpen && (
-              <nav className="flex flex-col">
-                <SidebarLink
-                  to="/timeline"
-                  icon={TimerIcon}
-                  label="History"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/roadmap"
-                  icon={BugBeetleIcon}
-                  label="Fezzilla"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/brufez"
-                  icon={FlaskIcon}
-                  label="Brufez Spec"
-                  getLinkClass={getLinkClass}
-                />
-              </nav>
-            )}
-
-            {/* Section: Extras */}
-            <SectionHeader
-              id="isExtrasOpen"
-              label="External Nodes"
-              isOpen={sidebarState.isExtrasOpen}
-              active={location.pathname.startsWith('/stories')}
-            />
-            {sidebarState.isExtrasOpen && (
-              <nav className="flex flex-col">
-                <SidebarLink
-                  to="/graph"
-                  icon={GraphIcon}
-                  label="Neural Net"
-                  getLinkClass={getLinkClass}
-                />
-                <SidebarLink
-                  to="/stories"
-                  icon={SwordIcon}
-                  label="Serfs & Frauds"
-                  getLinkClass={getLinkClass}
-                />
-                <a
-                  href="/rss.xml"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-between px-6 py-3 transition-all duration-300 border-b border-white/5 text-gray-300 hover:text-white hover:bg-white/5"
-                >
-                  <div className="flex items-center gap-4">
-                    <RssIcon size={18} weight="bold" />
-                    <span className="font-arvo text-sm font-medium uppercase tracking-widest">
-                      RSS_Feed
-                    </span>
-                  </div>
-                  <ArrowRightIcon
-                    size={14}
-                    className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
-                  />
-                </a>
-              </nav>
-            )}
+                return (
+                  <React.Fragment key={section.id || sectionIdx}>
+                    <SectionHeader
+                      id={section.id}
+                      label={section.label}
+                      isOpen={sidebarState[section.id]}
+                      active={isActive}
+                    />
+                    {sidebarState[section.id] && (
+                      <nav className="flex flex-col">
+                        {items.map((item, idx) => {
+                          const Icon = ICON_MAP[item.icon] || ArrowRightIcon;
+                          if (item.external === 'true' || item.url) {
+                            return (
+                              <a
+                                key={idx}
+                                href={item.url || item.to}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group flex items-center justify-between px-6 py-3 transition-all duration-300 border-b border-white/5 text-gray-300 hover:text-white hover:bg-white/5"
+                              >
+                                <div className="flex items-center gap-4">
+                                  <Icon size={18} weight="bold" />
+                                  <span className="font-arvo text-sm font-medium uppercase tracking-widest">
+                                    {item.label}
+                                  </span>
+                                </div>
+                                <ArrowRightIcon
+                                  size={14}
+                                  className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"
+                                />
+                              </a>
+                            );
+                          }
+                          return (
+                            <SidebarLink
+                              key={idx}
+                              to={item.to}
+                              icon={Icon}
+                              label={item.label}
+                              getLinkClass={getLinkClass}
+                            />
+                          );
+                        })}
+                      </nav>
+                    )}
+                  </React.Fragment>
+                );
+              })}
           </div>
 
           {showScrollGradient.bottom && (
