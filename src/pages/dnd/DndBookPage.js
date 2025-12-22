@@ -57,7 +57,7 @@ function DndBookPage() {
           <div className="flex justify-center mb-6">
              <BookmarkSimple size={48} className="text-dnd-gold" weight="duotone" />
           </div>
-          <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none">
+          <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
             {pageTitle}
           </h1>
           <div className="h-px w-32 bg-dnd-gold mx-auto opacity-40" />

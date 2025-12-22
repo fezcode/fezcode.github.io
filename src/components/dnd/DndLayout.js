@@ -31,10 +31,12 @@ const FloatingRunes = () => {
   const runes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚨ', 'ᚱ', 'ᚲ', 'ᚷ', 'ᚹ', 'ᚺ', 'ᚾ', 'ᛁ', 'ᛃ', 'ᛈ', 'ᛇ', 'ᛉ', 'ᛊ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛜ', 'ᛞ', 'ᛟ'];
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      {[...Array(15)].map((_, i) => (
-        <div
+      {[...Array(20)].map((_, i) => (
+        <motion.div
           key={i}
           className="dnd-floating-rune text-4xl"
+          initial={{ opacity: 0.02 }}
+          whileHover={{ opacity: 0.1, scale: 1.5, filter: 'blur(0px)' }}
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
@@ -42,11 +44,29 @@ const FloatingRunes = () => {
           }}
         >
           {runes[Math.floor(Math.random() * runes.length)]}
-        </div>
+        </motion.div>
       ))}
     </div>
   );
 };
+
+const ViewportFrame = () => (
+  <>
+    <div className="dnd-viewport-frame" />
+    <div className="fixed top-0 left-0 w-24 h-24 z-[210] pointer-events-none">
+       <div className="absolute top-4 left-4 w-12 h-12 border-t-4 border-l-4 border-dnd-gold rounded-tl-lg" />
+    </div>
+    <div className="fixed top-0 right-0 w-24 h-24 z-[210] pointer-events-none">
+       <div className="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-dnd-gold rounded-tr-lg" />
+    </div>
+    <div className="fixed bottom-0 left-0 w-24 h-24 z-[210] pointer-events-none">
+       <div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-dnd-gold rounded-bl-lg" />
+    </div>
+    <div className="fixed bottom-0 right-0 w-24 h-24 z-[210] pointer-events-none">
+       <div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-dnd-gold rounded-br-lg" />
+    </div>
+  </>
+);
 
 const FireParticles = () => {
   const colors = [
@@ -149,6 +169,7 @@ const DndLayout = ({ children }) => {
 
   return (
     <div className="dnd-theme-root min-h-screen flex flex-col relative overflow-x-hidden">
+      <ViewportFrame />
       <Torchlight />
       <DiceRoller />
       <FireParticles />

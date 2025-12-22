@@ -11,9 +11,9 @@ const DndNavbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[100] dnd-nav-modern border-b-2 border-dnd-gold">
+    <nav className="fixed top-0 left-0 right-0 z-[300] dnd-nav-modern border-b-2 border-dnd-gold">
       {/* Top Bar: Navigation & Breadcrumbs */}
-      <div className="bg-black/40 px-6 py-2 flex items-center justify-between border-b border-white/5">
+      <div className="bg-black/40 px-12 py-2 flex items-center justify-between border-b border-white/5 mt-[25px]">
         <div className="flex items-center gap-4">
           <Link to="/" className="text-white hover:text-dnd-gold transition-colors">
             <House size={18} weight="fill" />
