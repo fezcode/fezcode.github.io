@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import {
-  ArrowLeft,
-  TreeStructure,
-  Graph,
-  Terminal,
-  Article,
-  Bug,
+  ArrowLeftIcon,
+  TreeStructureIcon,
+  GraphIcon,
+  TerminalIcon,
+  ArticleIcon,
+  BugIcon,
+  HandHeartIcon,
 } from '@phosphor-icons/react';
 import CommandPalette from '../components/CommandPalette';
 import { useCommandPalette } from '../context/CommandPaletteContext';
@@ -21,11 +22,11 @@ import useSeo from '../hooks/useSeo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
-    { id: 'brutalist', icon: Bug, label: 'Brutalist' },
-    { id: 'dossier', icon: Article, label: 'Dossier' },
-    { id: 'hud', icon: Terminal, label: 'Terminal' },
-    { id: 'blueprint', icon: TreeStructure, label: 'Blueprint' },
-    { id: 'map', icon: Graph, label: 'Mind Map' },
+    { id: 'brutalist', icon: BugIcon, label: 'Brutalist' },
+    { id: 'dossier', icon: ArticleIcon, label: 'Dossier' },
+    { id: 'hud', icon: TerminalIcon, label: 'TerminalIcon' },
+    { id: 'blueprint', icon: TreeStructureIcon, label: 'Blueprint' },
+    { id: 'map', icon: GraphIcon, label: 'Mind Map' },
   ];
 
   return (
@@ -103,21 +104,32 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-black relative">
-      {/* Global Back Button */}
+      {/* Global Navigation */}
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="fixed top-6 left-6 z-50"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="fixed top-6 left-6 z-50 flex flex-col items-start gap-3"
       >
         <Link
           to="/"
           className={`group flex items-center gap-2 px-4 py-2 transition-all duration-300 ${getButtonStyle(view)}`}
         >
-          <ArrowLeft
+          <ArrowLeftIcon
             weight="bold"
             className="group-hover:-translate-x-1 transition-transform"
           />
           <span className="hidden sm:inline">Back to Reality</span>
+        </Link>
+
+        <Link
+          to="/about/friends"
+          className={`group flex items-center gap-2 px-4 py-2 transition-all duration-300 ${getButtonStyle(view)}`}
+        >
+          <HandHeartIcon
+            weight="bold"
+            className="group-hover:scale-110 transition-transform"
+          />
+          <span className="hidden sm:inline">Friends of the Show</span>
         </Link>
       </motion.div>
 

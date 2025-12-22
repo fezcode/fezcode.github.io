@@ -10,6 +10,7 @@ const BlogPostPage = lazy(() => import('../pages/BlogPostPage'));
 const ProjectsPage = lazy(() => import('../pages/ProjectsPage'));
 const ProjectPage = lazy(() => import('../pages/ProjectPage'));
 const AboutPage = lazy(() => import('../pages/AboutPage'));
+const FriendsPage = lazy(() => import('../pages/FriendsPage'));
 const LogsPage = lazy(() => import('../pages/LogsPage'));
 const LogDetailPage = lazy(() => import('../pages/LogDetailPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
@@ -328,6 +329,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <AboutPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/about/friends"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <FriendsPage />
               </Suspense>
             </motion.div>
           }
