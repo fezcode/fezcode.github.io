@@ -167,7 +167,7 @@ const SettingsPage = () => {
         title: 'Achievement Unlocked!',
         message: 'Clean Slate',
         duration: 4000,
-        icon: <TrophyIcon size={24} weight="duotone" />,
+        icon: <TrophyIcon weight="duotone" className="text-amber-400" />,
         type: 'gold',
       });
     }, 500);

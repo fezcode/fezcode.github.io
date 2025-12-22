@@ -22,6 +22,7 @@ import {
   GraphIcon,
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
+  FlaskIcon,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -283,11 +284,12 @@ const BrutalistSidebar = ({
             {/* Section: Status */}
             <SectionHeader
               id="isStatusOpen"
-              label="System Status"
+              label="System"
               isOpen={sidebarState.isStatusOpen}
               active={
                 location.pathname.startsWith('/roadmap') ||
-                location.pathname.startsWith('/timeline')
+                location.pathname.startsWith('/timeline') ||
+                location.pathname.startsWith('/brufez')
               }
             />
             {sidebarState.isStatusOpen && (
@@ -302,6 +304,12 @@ const BrutalistSidebar = ({
                   to="/roadmap"
                   icon={BugBeetleIcon}
                   label="Fezzilla"
+                  getLinkClass={getLinkClass}
+                />
+                <SidebarLink
+                  to="/brufez"
+                  icon={FlaskIcon}
+                  label="Brufez Spec"
                   getLinkClass={getLinkClass}
                 />
               </nav>

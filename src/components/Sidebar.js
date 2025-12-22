@@ -31,6 +31,7 @@ import {
   TrophyIcon,
   SkullIcon,
   BugBeetleIcon,
+  FlaskIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -142,7 +143,8 @@ const Sidebar = ({
     location.pathname.startsWith('/commands');
   const isStatusActive =
     location.pathname.startsWith('/timeline') ||
-    location.pathname.startsWith('/roadmap');
+    location.pathname.startsWith('/roadmap') ||
+    location.pathname.startsWith('/brufez');
 
   const variants = {
     open: { x: 0 },
@@ -315,6 +317,10 @@ const Sidebar = ({
                   <NavLink to="/roadmap" className={getLinkClass}>
                     <BugBeetleIcon size={24} />
                     <span>Fezzilla</span>
+                  </NavLink>
+                  <NavLink to="/brufez" className={getLinkClass}>
+                    <FlaskIcon size={24} />
+                    <span>Brufez Spec</span>
                   </NavLink>
                 </nav>
               )}

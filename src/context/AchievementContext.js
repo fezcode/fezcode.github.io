@@ -55,7 +55,7 @@ export const AchievementProvider = ({ children }) => {
           title: 'Achievement Unlocked!',
           message: achievement.title,
           duration: 4000,
-          icon: <TrophyIcon weight="duotone" />,
+          icon: <TrophyIcon weight="duotone" className="text-amber-400" />,
           type: 'gold',
           links: [
             { label: 'Settings', to: '/settings' },

@@ -165,6 +165,8 @@ const SitemapPage = lazy(() => import('../pages/SitemapPage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const KnowledgeGraphPage = lazy(() => import('../pages/KnowledgeGraphPage'));
 const PIMLLabPage = lazy(() => import('../pages/apps/PIMLLabPage'));
+const BrufezPage = lazy(() => import('../pages/BrufezPage'));
+const BrufezPanelsPage = lazy(() => import('../pages/BrufezPanelsPage'));
 const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
 
 const pageVariants = {
@@ -594,6 +596,38 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <AchievementsPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/brufez"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <BrufezPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/brufez/panels"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <BrufezPanelsPage />
               </Suspense>
             </motion.div>
           }
