@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import {useEffect} from 'react';
+import {useLocation} from 'react-router-dom';
 
 const BASE_URL = 'https://fezcode.com';
 
@@ -7,7 +7,7 @@ const BASE_URL = 'https://fezcode.com';
  * useSeo - A simplified hook for managing site metadata.
  * Standardizes Title, Description, and Image across all platforms (OG, Twitter, etc.)
  */
-function useSeo({ title, description, image, keywords, ogImage, twitterImage }) {
+function useSeo({title, description, image, keywords, ogImage, twitterImage}) {
   const location = useLocation();
 
   useEffect(() => {
@@ -16,13 +16,14 @@ function useSeo({ title, description, image, keywords, ogImage, twitterImage }) 
 
     // 2. Prepare standardized values
     const currentUrl = BASE_URL + location.pathname;
-
+    // Determine default image based on path
+    const isAppPath = location.pathname.startsWith('/apps');
+    const defaultImage = isAppPath ? '/images/asset/ogtitle-apps.png' : '/images/asset/ogtitle.png';
     // Pick the first available image, fallback to default
-    const rawImage = image || ogImage || twitterImage || '/images/asset/ogtitle.png';
+    const rawImage = image || ogImage || twitterImage || defaultImage;
     const finalImage = rawImage.startsWith('http')
       ? rawImage
       : BASE_URL + (rawImage.startsWith('/') ? '' : '/') + rawImage;
-
     // 3. Helper to update/create meta tags
     const setMeta = (attrName, attrValue, content) => {
       if (!content) return;
