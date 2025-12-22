@@ -1,45 +1,35 @@
-import React, { useState, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, DownloadSimple } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import React, {useState, useCallback, useContext} from 'react';
+import {Link} from 'react-router-dom';
+import {
+  ArrowLeftIcon,
+  DownloadSimpleIcon,
+  QrCodeIcon,
+  GearSixIcon,
+  ShieldCheckIcon,
+  EyeIcon,
+} from '@phosphor-icons/react';
+import {motion} from 'framer-motion';
+import {QRCodeCanvas} from 'qrcode.react';
 import useSeo from '../../hooks/useSeo';
-import { useToast } from '../../hooks/useToast';
-import { QRCodeCanvas } from 'qrcode.react'; // Import the QRCodeCanvas component
+import {ToastContext} from '../../context/ToastContext';
 import CustomDropdown from '../../components/CustomDropdown';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const QrCodeGeneratorPage = () => {
+  const appName = 'QR Code Generator';
+
   useSeo({
-    title: 'QR Code Generator | Fezcodex',
-    description:
-      'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
-    keywords: [
-      'Fezcodex',
-      'QR code generator',
-      'QR code',
-      'generate QR',
-      'QR code online',
-    ],
-    ogTitle: 'QR Code Generator | Fezcodex',
-    ogDescription: 'Generate custom QR codes for any text or URL.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'QR Code Generator | Fezcodex',
-    twitterDescription: 'Generate custom QR codes for any text or URL.',
+    title: `${appName} | Fezcodex`,
+    description: 'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
+    keywords: ['Fezcodex', 'QR code generator', 'QR code', 'generate QR', 'brutalist'],
   });
 
-  const { addToast } = useToast();
+  const {addToast} = useContext(ToastContext);
   const [text, setText] = useState('https://fezcode.com');
-  const [version, setVersion] = useState(7); // Default QR code version
-  const [errorCorrectionLevel, setErrorCorrectionLevel] = useState('M'); // L, M, Q, H
-  const [qrCodeSize, setQrCodeSize] = useState(256); // Size of the QR code in pixels
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
-  const inputStyle = `mt-1 block w-full p-2 border rounded-md bg-gray-700 text-white focus:ring-blue-500 focus:border-blue-500 border-gray-600`;
+  const [version, setVersion] = useState(7);
+  const [errorCorrectionLevel, setErrorCorrectionLevel] = useState('M');
+  const [qrCodeSize, setQrCodeSize] = useState(256);
 
   const downloadQrCode = useCallback(() => {
     const canvas = document.getElementById('qrCodeCanvas');
@@ -52,141 +42,174 @@ const QrCodeGeneratorPage = () => {
       downloadLink.click();
       document.body.removeChild(downloadLink);
       addToast({
-        title: 'Downloaded',
         message: 'QR Code downloaded successfully.',
-        duration: 2000,
+        type: 'success',
       });
     } else {
       addToast({
-        title: 'Error',
         message: 'Could not find QR Code to download.',
-        duration: 3000,
         type: 'error',
       });
     }
   }, [addToast]);
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="QR Code Generator" slug="qr" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        {/* Header Section */}
+        <header className="mb-20">
+          <Link
+            to="/apps"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                QR Code Generator{' '}
-              </h1>
-              <hr className="border-gray-700 mb-4" />
+            <ArrowLeftIcon weight="bold"/>
+            <span>Applications</span>
+          </Link>
+          <BreadcrumbTitle title={appName} slug="qr" variant="brutalist" />
 
-              {/* Client-Side Notification */}
-              <div
-                className="bg-yellow-900 bg-opacity-30 border border-yellow-700 text-yellow-300 px-4 py-3 rounded relative mb-6"
-                role="alert"
-              >
-                <strong className="font-bold">Client-Side Only:</strong>
-                <span className="block sm:inline ml-2">
-                  This tool operates entirely within your browser. No data is
-                  sent to any server, ensuring maximum privacy.
+          <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Transform any string into a{' '}
+                <span className="text-emerald-400 font-bold">visual hash</span>.
+                Encoded and rendered entirely on the client-side.
+              </p>
+            </div>
+
+            <div className="flex gap-12 font-mono">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Environment
                 </span>
+                <span className="text-3xl font-black text-emerald-500">CLIENT_SIDE</span>
               </div>
-
-              <div className="mb-6">
-                <label
-                  htmlFor="qrText"
-                  className="block text-sm font-medium text-gray-300 mb-2"
-                >
-                  Text or URL to Encode
-                </label>
-                <textarea
-                  id="qrText"
-                  rows="3"
-                  className={inputStyle}
-                  value={text}
-                  onChange={(e) => setText(e.target.value)}
-                  placeholder="Enter text or URL here..."
-                ></textarea>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Encryption
+                </span>
+                <span className="text-3xl font-black text-white">SHA_ZERO</span>
               </div>
+            </div>
+          </div>
+        </header>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
-                <div>
-                  <label
-                    htmlFor="qrVersion"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    QR Version (1-40)
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Controls Column */}
+          <div className="lg:col-span-5 space-y-8">
+            <div
+              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed={appName} className="w-full h-full"/>
+              </div>
+              <div
+                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+
+              <h3
+                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <GearSixIcon weight="fill"/>
+                Config_Interface
+              </h3>
+
+              <div className="space-y-8 relative z-10">
+                <div className="space-y-4">
+                  <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    Source Payload
                   </label>
-                  <CustomDropdown
-                    options={Array.from({ length: 40 }, (_, i) => i + 1).map(
-                      (v) => ({ label: `Version ${v}`, value: v }),
-                    )}
-                    value={version}
-                    onChange={setVersion}
-                    label="Select Version"
+                  <textarea
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    rows="1"
+                    className="w-full bg-transparent border-b-2 border-white/10 py-2 text-xl font-mono text-white focus:border-emerald-500 focus:outline-none transition-colors uppercase"
+                    placeholder="ENTER_DATA..."
                   />
                 </div>
-                <div>
-                  <label
-                    htmlFor="errorCorrection"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Error Correction
-                  </label>
-                  <CustomDropdown
-                    options={[
-                      { label: 'L (Low ~7%)', value: 'L' },
-                      { label: 'M (Medium ~15%)', value: 'M' },
-                      { label: 'Q (Quartile ~25%)', value: 'Q' },
-                      { label: 'H (High ~30%)', value: 'H' },
-                    ]}
-                    value={errorCorrectionLevel}
-                    onChange={setErrorCorrectionLevel}
-                    label="Error Correction"
-                  />
+
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                      QR Version
+                    </label>
+                    <CustomDropdown
+                      options={Array.from({length: 40}, (_, i) => i + 1).map(
+                        (v) => ({label: `V_${v.toString().padStart(2, '0')}`, value: v}),
+                      )}
+                      value={version}
+                      onChange={setVersion}
+                      variant="brutalist"
+                      fullWidth={true}
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                      Error Correction
+                    </label>
+                    <CustomDropdown
+                      options={[
+                        {label: 'L (LOW ~07%)', value: 'L'},
+                        {label: 'M (MED ~15%)', value: 'M'},
+                        {label: 'Q (QUA ~25%)', value: 'Q'},
+                        {label: 'H (HIG ~30%)', value: 'H'},
+                      ]}
+                      value={errorCorrectionLevel}
+                      onChange={setErrorCorrectionLevel}
+                      variant="brutalist"
+                      fullWidth={true}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label
-                    htmlFor="qrSize"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Size (px)
+
+                <div className="space-y-4">
+                  <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    Resolution (Pixels)
                   </label>
                   <input
-                    type="number"
-                    id="qrSize"
-                    className={inputStyle}
+                    type="range"
+                    min="128"
+                    max="512"
+                    step="16"
                     value={qrCodeSize}
                     onChange={(e) => setQrCodeSize(Number(e.target.value))}
-                    min="64"
-                    max="768"
-                    step="16"
+                    className="w-full accent-emerald-500 bg-white/10"
                   />
+                  <div className="flex justify-between font-mono text-[10px] text-gray-500">
+                    <span>128PX</span>
+                    <span className="text-emerald-400 font-bold">{qrCodeSize}PX</span>
+                    <span>512PX</span>
+                  </div>
                 </div>
               </div>
+            </div>
 
-              {text && (
-                <div className="flex flex-col items-center justify-center mb-6">
+            <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
+              <div className="flex items-center gap-3 mb-4 text-emerald-500">
+                <ShieldCheckIcon size={20} weight="bold"/>
+                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
+                  Privacy_Policy
+                </h4>
+              </div>
+              <p className="text-xs font-mono text-gray-500 uppercase tracking-wider leading-relaxed">
+                This utility operates entirely within your local sandbox. No telemetry is sent. Data persistence is null.
+              </p>
+            </div>
+          </div>
+
+          {/* Display Column */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <h3
+              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500"/>
+              Render_Output
+            </h3>
+
+            <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm p-12 flex flex-col items-center justify-center gap-12">
+              {text ? (
+                <motion.div
+                  initial={{scale: 0.9, opacity: 0}}
+                  animate={{scale: 1, opacity: 1}}
+                  className="bg-white p-6 rounded-sm shadow-[0_0_50px_rgba(255,255,255,0.05)]"
+                >
                   <QRCodeCanvas
-                    id="qrCodeCanvas" // ID for canvas to download
+                    id="qrCodeCanvas"
                     value={text}
                     size={qrCodeSize}
                     level={errorCorrectionLevel}
@@ -194,28 +217,25 @@ const QrCodeGeneratorPage = () => {
                     bgColor="#FFFFFF"
                     fgColor="#000000"
                     includeMargin={true}
-                    // renderAs="canvas" is not needed for QRCodeCanvas as it defaults to canvas
                   />
-                  <button
-                    onClick={downloadQrCode}
-                    className="px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button mt-4"
-                    style={{
-                      backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                      color: cardStyle.color,
-                      borderColor: cardStyle.borderColor,
-                      border: '1px solid',
-                    }}
-                  >
-                    <DownloadSimple size={20} className="inline-block mr-2" />{' '}
-                    Download QR Code
-                  </button>
+                </motion.div>
+              ) : (
+                <div className="text-center space-y-4">
+                  <QrCodeIcon size={64} weight="thin" className="mx-auto text-white/5" />
+                  <p className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                    Waiting_for_payload...
+                  </p>
                 </div>
               )}
-              {!text && (
-                <div className="text-center text-gray-500 mb-6">
-                  Enter text or URL to generate QR Code.
-                </div>
-              )}
+
+              <button
+                onClick={downloadQrCode}
+                disabled={!text}
+                className="w-full max-w-sm py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm flex items-center justify-center gap-3"
+              >
+                <DownloadSimpleIcon weight="bold" size={18}/>
+                Export_Binary
+              </button>
             </div>
           </div>
         </div>

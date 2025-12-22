@@ -18,6 +18,7 @@ import {motion, AnimatePresence} from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
 import {ToastContext} from '../../context/ToastContext';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 // Placeholder dictionary
 const DICTIONARY = new Set([
@@ -723,11 +724,10 @@ const WordLadderPage = () => {
             <span>Applications</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <BreadcrumbTitle title={appName} slug="wl" variant="brutalist" />
+
+          <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                {appName}
-              </h1>
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
                 Transform{' '}
                 <span className="text-emerald-400 font-bold">{startWord}</span>{' '}

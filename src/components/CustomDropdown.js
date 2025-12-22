@@ -11,6 +11,7 @@ const CustomDropdown = ({
   label,
   className = '',
   variant = 'default',
+  fullWidth = false,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null); // Ref for the button
@@ -116,7 +117,7 @@ const CustomDropdown = ({
   };
 
   return (
-    <div className={`relative inline-block text-left ${className}`}>
+    <div className={`relative ${fullWidth ? 'w-full block' : 'inline-block'} text-left ${className}`}>
       <button
         type="button"
         ref={dropdownRef} // Attach ref to the button
