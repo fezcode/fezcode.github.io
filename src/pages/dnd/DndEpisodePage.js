@@ -168,103 +168,119 @@ function DndEpisodePage() {
 
                     >
 
-                      <div className="dnd-parchment-container p-6 shadow-xl lg:sticky lg:top-40 border-2 border-black/10 group">
+                      <div className="dnd-stat-block shadow-2xl lg:sticky lg:top-40 group">
 
-                {/* Small Ornate Corners for Sidebar */}
+                        <div className="dnd-stat-block-header">
 
-                <div className="absolute top-2 left-2 w-4 h-4 border-t border-l border-dnd-gold opacity-40" />
+                          {currentEpisode.author}
 
-                <div className="absolute bottom-2 right-2 w-4 h-4 border-b border-r border-dnd-gold opacity-40" />
+                        </div>
 
-                <div className="flex flex-col items-center gap-6 mb-8 pb-6 border-b border-black/10 relative z-10 text-center">
+                        <div className="text-[10px] italic text-dnd-crimson/80 mb-4 uppercase font-bold tracking-widest">
 
-                  <WaxSeal />
+                          Archival Scribe, Level 20
 
-                  <div className="space-y-1">
+                        </div>
 
-                    <span className="block text-[10px] font-mono uppercase tracking-[0.3em] text-dnd-crimson font-bold">Chronicle_Intel</span>
+                        <div className="h-1 w-full bg-dnd-crimson/20 my-4" />
 
-                    <div className="flex justify-center text-dnd-gold">
+                        <div className="space-y-4">
 
-                       <ShieldCheck size={16} weight="fill" />
+                          <div className="grid grid-cols-2 gap-4 text-center">
 
-                    </div>
+                            <div>
 
-                  </div>
+                              <div className="dnd-stat-block-label">Date</div>
 
-                </div>
+                              <div className="text-xs font-bold">{currentEpisode.date}</div>
 
-                <div className="space-y-6 relative z-10">
+                            </div>
 
-                  <div>
+                            <div>
 
-                    <label className="block text-[9px] font-mono uppercase tracking-widest text-black/40 mb-1 italic font-bold">Scribe_Name</label>
+                              <div className="dnd-stat-block-label">Seal</div>
 
-                    <span className="text-sm font-arvo font-black text-dnd-crimson">{currentEpisode.author}</span>
+                              <div className="flex justify-center mt-1">
 
-                  </div>
+                                <ShieldCheck size={16} className="text-dnd-crimson" weight="fill" />
 
-                  <div className="dnd-mystic-divider !my-2" />
+                              </div>
 
-                  <div>
+                            </div>
 
-                    <label className="block text-[9px] font-mono uppercase tracking-widest text-black/40 mb-1 italic font-bold">Era_Recorded</label>
+                          </div>
 
-                    <span className="text-sm font-arvo text-dnd-text/80">{currentEpisode.date}</span>
+                          <div className="h-1 w-full bg-dnd-crimson/20 my-4" />
 
-                  </div>
+                          <div className="space-y-3">
 
-                  {currentEpisode.updated && (
+                            <div className="text-xs">
 
-                    <>
+                              <span className="dnd-stat-block-label">Special Trait.</span>
 
-                      <div className="dnd-mystic-divider !my-2" />
+                              <span className="italic ml-1">Chronicler of the Realm.</span> This scribe adds their wisdom modifier to all storytelling checks.
 
-                      <div>
+                            </div>
 
-                        <label className="block text-[9px] font-mono uppercase tracking-widest text-black/40 mb-1 italic font-bold">Last_Revision</label>
+                            {currentEpisode.updated && (
 
-                        <span className="text-sm font-arvo text-dnd-text/80">{currentEpisode.updated}</span>
+                              <div className="text-xs">
+
+                                <span className="dnd-stat-block-label">Revision.</span>
+
+                                <span className="ml-1 text-dnd-crimson/80 font-bold">{currentEpisode.updated}</span>
+
+                              </div>
+
+                            )}
+
+                          </div>
+
+                          <div className="flex justify-center pt-6">
+
+                            <WaxSeal text="SF" />
+
+                          </div>
+
+                        </div>
 
                       </div>
 
-                    </>
+                    </motion.aside>
 
-                  )}
+                    <motion.div
 
-                </div>
+                      initial={{ opacity: 0, y: 30 }}
 
-              </div>
+                      animate={{ opacity: 1, y: 0 }}
 
-            </motion.aside>
+                      className="lg:col-span-4 dnd-parchment-container p-8 md:p-24 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col relative"
 
-            <motion.div
+                    >
 
-              initial={{ opacity: 0, y: 30 }}
+                      {/* Scroll Ornaments */}
 
-              animate={{ opacity: 1, y: 0 }}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-b-full blur-xl" />
 
-              className="lg:col-span-4 dnd-parchment-container p-8 md:p-20 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col"
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-t-full blur-xl" />
 
-            >
+                      <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-20 !h-20" />
 
-              <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-16 !h-16" />
+                      <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-20 !h-20" />
 
-              <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-16 !h-16" />
+                      <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-20 !h-20" />
 
-              <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-16 !h-16" />
+                      <div className="dnd-ornate-corner dnd-ornate-corner-br !w-20 !h-20" />
 
-              <div className="dnd-ornate-corner dnd-ornate-corner-br !w-16 !h-16" />
+                      <div className="relative z-10 prose prose-lg prose-stone max-w-none dnd-body-text dnd-drop-cap flex-grow">
 
-              <div className="relative z-10 prose prose-lg prose-stone max-w-none dnd-body-text dnd-drop-cap flex-grow">
+                        <ReactMarkdown rehypePlugins={[rehypeRaw]}>
 
-                <ReactMarkdown rehypePlugins={[rehypeRaw]}>
+                          {episodeContent}
 
-                  {episodeContent}
+                        </ReactMarkdown>
 
-                </ReactMarkdown>
-
-              </div>
+                      </div>
 
               {/* Scribe Signature at the bottom of the parchment */}
 

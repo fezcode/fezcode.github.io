@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndNavbar from './DndNavbar';
 import DndFooter from './DndFooter';
 import dndWallpapers from '../../utils/dndWallpapers';
 import { parseWallpaperName } from '../../utils/dndUtils';
 import '../../styles/dnd-refactor.css';
+import { GameController } from '@phosphor-icons/react';
 
 const DustMotes = () => (
   <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
@@ -46,6 +48,95 @@ const FloatingRunes = () => {
   );
 };
 
+const FireParticles = () => {
+  const colors = [
+    'radial-gradient(circle, #ff4500 0%, #ff8c00 70%, transparent 100%)', // Red-Orange
+    'radial-gradient(circle, #ff8c00 0%, #ffd700 70%, transparent 100%)', // Orange-Gold
+    'radial-gradient(circle, #ff0000 0%, #ff4500 70%, transparent 100%)', // Pure Red
+  ];
+
+  return (
+    <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
+      {[...Array(50)].map((_, i) => {
+        const size = 3 + Math.random() * 8;
+        return (
+          <div
+            key={i}
+            className="dnd-fire-particle"
+            style={{
+              left: `${Math.random() * 100}%`,
+              width: `${size}px`,
+              height: `${size}px`,
+              background: colors[Math.floor(Math.random() * colors.length)],
+              animationDuration: `${5 + Math.random() * 10}s`,
+              animationDelay: `${-Math.random() * 15}s`,
+              boxShadow: `0 0 ${size * 2}px #ff4500`,
+            }}
+          />
+        );
+      })}
+    </div>
+  );
+};
+const Torchlight = () => {
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const springX = useSpring(mouseX, { damping: 50, stiffness: 200 });
+  const springY = useSpring(mouseY, { damping: 50, stiffness: 200 });
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY]);
+
+  return (
+    <motion.div
+      className="fixed inset-0 pointer-events-none z-[100] hidden md:block"
+      style={{
+        background: `radial-gradient(circle 400px at ${springX}px ${springY}px, rgba(255, 180, 50, 0.08), transparent 80%)`,
+      }}
+    />
+  );
+};
+
+const DiceRoller = () => {
+  const [roll, setRoll] = useState(null);
+  const [isRolling, setIsRolling] = useState(false);
+
+  const rollDice = () => {
+    setIsRolling(true);
+    setTimeout(() => {
+      setRoll(Math.floor(Math.random() * 20) + 1);
+      setIsRolling(false);
+    }, 600);
+  };
+
+  return (
+    <div className="fixed bottom-8 right-8 z-[110] flex flex-col items-center gap-4">
+      {roll !== null && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.5, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          className="bg-dnd-crimson border-2 border-dnd-gold text-white px-4 py-2 rounded-sm font-mono text-xs shadow-2xl"
+        >
+          {roll === 20 ? 'CRITICAL SUCCESS!' : roll === 1 ? 'CRITICAL FAILURE...' : `YOU ROLLED: ${roll}`}
+        </motion.div>
+      )}
+      <button
+        onClick={rollDice}
+        className={`p-4 bg-dnd-crimson border-2 border-dnd-gold rounded-full text-dnd-gold shadow-2xl transition-all hover:scale-110 active:scale-95 ${isRolling ? 'dnd-dice-action' : ''}`}
+      >
+        <GameController size={32} weight="fill" />
+      </button>
+    </div>
+  );
+};
+
 const DndLayout = ({ children }) => {
   const { setBgImageName } = useContext(DndContext);
   const [bgImage, setBgImage] = useState('');
@@ -58,6 +149,9 @@ const DndLayout = ({ children }) => {
 
   return (
     <div className="dnd-theme-root min-h-screen flex flex-col relative overflow-x-hidden">
+      <Torchlight />
+      <DiceRoller />
+      <FireParticles />
       <DustMotes />
       <FloatingRunes />
       {/* Immersive Background */}

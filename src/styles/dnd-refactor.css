@@ -201,6 +201,110 @@
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
+/* Silk Ribbon Style */
+.dnd-ribbon {
+  position: absolute;
+  top: -10px;
+  right: 30px;
+  width: 30px;
+  height: 80px;
+  background: linear-gradient(to bottom, #8b0000, #4a0404);
+  box-shadow: 2px 5px 15px rgba(0,0,0,0.4);
+  z-index: 20;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 85%, 0 100%);
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Ink Splatter Procedural */
+.dnd-ink-splatter {
+  position: absolute;
+  background: var(--dnd-crimson);
+  filter: blur(2px);
+  border-radius: 50%;
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+/* Card Rune Glow */
+.dnd-card-rune {
+  position: absolute;
+  font-family: 'MedievalSharp', cursive;
+  font-size: 3rem;
+  color: var(--dnd-crimson);
+  opacity: 0.02;
+  pointer-events: none;
+  transition: all 1s ease;
+}
+
+.dnd-fantasy-card:hover .dnd-card-rune {
+  opacity: 0.08;
+  color: var(--dnd-gold);
+  filter: blur(0px);
+}
+
+/* Arcane Scrollbar */
+::-webkit-scrollbar { width: 12px; }
+::-webkit-scrollbar-track { background: #0c0a09; }
+::-webkit-scrollbar-thumb { 
+  background: linear-gradient(to bottom, var(--dnd-gold), var(--dnd-crimson));
+  border: 3px solid #0c0a09;
+  border-radius: 10px;
+}
+
+/* Torchlight Glow */
+.dnd-torchlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+  background: radial-gradient(circle 300px at var(--mouse-x) var(--mouse-y), rgba(255, 150, 50, 0.08), transparent 80%);
+}
+
+/* 5e Stat Block Style */
+.dnd-stat-block {
+  background-color: #fdf1dc;
+  border: 2px solid #7a0303;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  padding: 1rem;
+  position: relative;
+  border-top: 10px solid #7a0303;
+  border-bottom: 10px solid #7a0303;
+}
+
+.dnd-stat-block-header {
+  font-family: 'Playfair Display', serif;
+  color: #7a0303;
+  font-size: 1.5rem;
+  font-weight: 900;
+  border-bottom: 2px solid #7a0303;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
+}
+
+.dnd-stat-block-label {
+  color: #7a0303;
+  font-weight: bold;
+  font-family: 'Arvo', serif;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+/* D20 Animation */
+@keyframes d20-roll {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.dnd-dice-action {
+  animation: d20-roll 0.6s ease-out;
+}
+
+/* Paper Deckle Border (Procedural) */
+.dnd-paper-edge {
+  filter: url(#paper-edge-filter);
+}
+
 /* Dust Motes Animation */
 @keyframes dnd-dust {
   0% { transform: translateY(0) translateX(0); opacity: 0; }
@@ -241,4 +345,27 @@
   z-index: 1;
   user-select: none;
   filter: blur(1px);
+}
+
+/* Fire Particles / Embers */
+@keyframes dnd-fire-rise {
+  0% { transform: translateY(0) translateX(0) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  50% { transform: translateY(-50vh) translateX(-30px) scale(1.2); }
+  100% { transform: translateY(-110vh) translateX(30px) scale(0.5); opacity: 0; }
+}
+
+@keyframes dnd-fire-flicker {
+  0%, 100% { opacity: 0.8; filter: brightness(1) blur(1px); }
+  50% { opacity: 1; filter: brightness(1.5) blur(2px); }
+}
+
+.dnd-fire-particle {
+  position: fixed;
+  bottom: -50px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0;
+  animation: dnd-fire-rise linear infinite, dnd-fire-flicker 0.3s infinite;
 }
