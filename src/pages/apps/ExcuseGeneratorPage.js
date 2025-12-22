@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useContext} from 'react';
+import {Link} from 'react-router-dom';
 import {
   ArrowLeftIcon,
   CopySimpleIcon,
   DiceFiveIcon,
+  MaskHappyIcon,
+  GearSixIcon,
+  EyeIcon,
+  ClipboardIcon,
 } from '@phosphor-icons/react';
+import {motion, AnimatePresence} from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
+import {ToastContext} from '../../context/ToastContext';
 import CustomDropdown from '../../components/CustomDropdown';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
 const excuses = {
   late: [
@@ -103,124 +110,180 @@ const excuses = {
 };
 
 const ExcuseGeneratorPage = () => {
+  const appName = 'Excuse Generator';
+
   useSeo({
-    title: 'Excuse Generator | Fezcodex',
-    description: 'Generate funny and absurd excuses for any situation.',
-    keywords: [
-      'Fezcodex',
-      'excuse generator',
-      'funny excuses',
-      'absurd excuses',
-      'humor',
-      'random generator',
-    ],
-    ogTitle: 'Excuse Generator | Fezcodex',
-    ogDescription:
-      'Generate creative and humorous excuses for any situation.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Excuse Generator | Fezcodex',
-    twitterDescription:
-      'Generate creative and humorous excuses for any situation.',
+    title: `${appName} | Fezcodex`,
+    description: 'Generate funny and absurd excuses for any situation in a brutalist workspace.',
+    keywords: ['Fezcodex', 'excuse generator', 'funny excuses', 'absurd excuses', 'humor', 'brutalist'],
   });
 
-  const [currentExcuse, setCurrentExcuse] = useState(
-    "Click 'Generate Excuse' to get started!",
-  );
+  const {addToast} = useContext(ToastContext);
+  const [currentExcuse, setCurrentExcuse] = useState('SYSTEM_IDLE: Awaiting generation sequence.');
   const [selectedCategory, setSelectedCategory] = useState('general');
+  const [isGenerating, setIsGenerating] = useState(false);
 
   const generateExcuse = () => {
-    const categoryExcuses = excuses[selectedCategory];
-    const randomIndex = Math.floor(Math.random() * categoryExcuses.length);
-    setCurrentExcuse(categoryExcuses[randomIndex]);
+    setIsGenerating(true);
+    setTimeout(() => {
+      const categoryExcuses = excuses[selectedCategory];
+      const randomIndex = Math.floor(Math.random() * categoryExcuses.length);
+      setCurrentExcuse(categoryExcuses[randomIndex]);
+      setIsGenerating(false);
+      addToast({message: 'LOGIC_BYPASS_SUCCESSFUL', type: 'success'});
+    }, 400);
   };
 
   const copyToClipboard = () => {
     navigator.clipboard
       .writeText(currentExcuse)
       .then(() => {
-        // In a real app, you might add a toast notification here
-        console.log('Excuse copied to clipboard!');
+        addToast({message: 'PAYLOAD_COPIED_TO_CLIPBOARD', type: 'info'});
       })
       .catch((err) => {
-        console.error('Failed to copy excuse: ', err);
+        console.error('Failed to copy: ', err);
+        addToast({message: 'CLIPBOARD_ACCESS_DENIED', type: 'error'});
       });
   };
 
-  const buttonStyle = `px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out border bg-tb text-app border-app-alpha-50 hover:bg-app/15`;
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Excuse Generator" slug="excuse" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative overflow-hidden h-full w-full max-w-4xl"
-            style={{
-              backgroundColor: 'var(--app-alpha-10)',
-              borderColor: 'var(--app-alpha-50)',
-              color: 'var(--app)',
-            }}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        {/* Header Section */}
+        <header className="mb-20">
+          <Link
+            to="/apps"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
+            <ArrowLeftIcon weight="bold"/>
+            <span>Applications</span>
+          </Link>
+          <BreadcrumbTitle title={appName} slug="excuse" variant="brutalist" />
+
+          <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Automated responsibility avoidance engine. Synthesize{' '}
+                <span className="text-emerald-400 font-bold">absurd justifications</span>{' '}
+                 for any systemic failure.
+              </p>
+            </div>
+
+            <div className="flex gap-12 font-mono">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Category
+                </span>
+                <span className="text-3xl font-black text-emerald-500 uppercase">{selectedCategory}</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Engine_State
+                </span>
+                <span className={`text-3xl font-black ${isGenerating ? 'text-white' : 'text-emerald-500'}`}>
+                  {isGenerating ? 'SYNTHESIZING' : 'STABLE'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Controls Column */}
+          <div className="lg:col-span-5 space-y-8">
             <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Excuse Generator{' '}
-              </h1>
-              <hr className="border-gray-700 mb-4" />
-
-              <div className="mb-6">
-                <label
-                  htmlFor="category-select"
-                  className="block text-lg font-semibold mb-2 text-app"
-                >
-                  Select Category:
-                </label>
-                <CustomDropdown
-                  options={Object.keys(excuses).map((category) => ({
-                    label: category.charAt(0).toUpperCase() + category.slice(1),
-                    value: category,
-                  }))}
-                  value={selectedCategory}
-                  onChange={setSelectedCategory}
-                  label="Select Category"
-                />
+              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed={appName} className="w-full h-full"/>
               </div>
+              <div
+                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
 
-              <div className="flex flex-col items-center justify-center mb-6 p-4 bg-gray-800/50 rounded-md min-h-[120px]">
-                <p className="text-xl text-center font-normal text-app-light">
-                  {currentExcuse}
-                </p>
+              <h3
+                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <GearSixIcon weight="fill"/>
+                Synthesis_Parameters
+              </h3>
+
+              <div className="space-y-8 relative z-10">
+                <div className="space-y-4">
+                  <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    Context_Domain
+                  </label>
+                  <CustomDropdown
+                    fullWidth
+                    options={Object.keys(excuses).map((category) => ({
+                      label: category.toUpperCase(),
+                      value: category,
+                    }))}
+                    value={selectedCategory}
+                    onChange={setSelectedCategory}
+                    variant="brutalist"
+                  />
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <button
+                    onClick={generateExcuse}
+                    disabled={isGenerating}
+                    className="flex-1 py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs flex items-center justify-center gap-3"
+                  >
+                    <DiceFiveIcon weight="bold" size={18}/>
+                    Generate
+                  </button>
+                  <button
+                    onClick={copyToClipboard}
+                    className="flex-1 py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3"
+                  >
+                    <CopySimpleIcon weight="bold" size={16}/>
+                    Copy_String
+                  </button>
+                </div>
               </div>
+            </div>
 
-              <div className="flex justify-center gap-4">
-                <button
-                  onClick={generateExcuse}
-                  className={`${buttonStyle} flex items-center gap-2`}
+            <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
+              <div className="flex items-center gap-3 mb-4 text-emerald-500">
+                <MaskHappyIcon size={20} weight="bold"/>
+                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
+                  Ethical_Override
+                </h4>
+              </div>
+              <p className="text-xs font-mono text-gray-500 uppercase tracking-wider leading-relaxed">
+                This utility provides non-linear explanations for temporal discrepancies. Use with extreme caution in high-stakes social environments.
+              </p>
+            </div>
+          </div>
+
+          {/* Output Column */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <h3
+              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500"/>
+              Generated_Output
+            </h3>
+
+            <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm p-12 flex items-center justify-center relative overflow-hidden min-h-[300px]">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentExcuse}
+                  initial={{opacity: 0, y: 10}}
+                  animate={{opacity: 1, y: 0}}
+                  exit={{opacity: 0, y: -10}}
+                  transition={{duration: 0.2}}
+                  className="w-full text-center space-y-8"
                 >
-                  <DiceFiveIcon size={24} /> Generate Excuse
-                </button>
-                <button
-                  onClick={copyToClipboard}
-                  className={`${buttonStyle} flex items-center gap-2`}
-                >
-                  <CopySimpleIcon size={24} /> Copy
-                </button>
+                  <div className="h-px w-12 bg-emerald-500 mx-auto" />
+                  <p className="text-2xl md:text-4xl font-light italic text-white leading-tight">
+                    "{currentExcuse}"
+                  </p>
+                  <div className="h-px w-12 bg-emerald-500 mx-auto" />
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center opacity-20 font-mono text-[8px] uppercase tracking-[0.5em] text-gray-500">
+                <span className="flex items-center gap-2"><ClipboardIcon /> LOCAL_BUFFER_SYNCED</span>
+                <span>EG_v1.2.0</span>
               </div>
             </div>
           </div>

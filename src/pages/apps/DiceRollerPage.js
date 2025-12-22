@@ -1,41 +1,32 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeftIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
-import { useToast } from '../../hooks/useToast';
-import Dice from '../../components/Dice';
-import '../../styles/DiceRollerPage.css'; // Import the CSS for animations
+import React, {useState, useContext} from 'react';
+import {Link} from 'react-router-dom';
+import {
+  ArrowLeftIcon,
+  DiceSixIcon,
+  TargetIcon,
+  EyeIcon,
+  ChartBarIcon,
+  GearSixIcon,
+} from '@phosphor-icons/react';
+import {motion, AnimatePresence} from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
-import CustomDropdown from '../../components/CustomDropdown';
+import {ToastContext} from '../../context/ToastContext';
+import Dice from '../../components/Dice';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
+import CustomDropdown from '../../components/CustomDropdown';
 
 const DiceRollerPage = () => {
+  const appName = 'Dice Roller';
+
   useSeo({
-    title: 'Dice Roller | Fezcodex',
-    description:
-      'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations.',
-    keywords: [
-      'Fezcodex',
-      'dice roller',
-      'd4',
-      'd6',
-      'd8',
-      'd10',
-      'd12',
-      'd20',
-      'd100',
-      'games',
-      'rpg',
-    ],
-    ogTitle: 'Dice Roller | Fezcodex',
-    ogDescription: 'Roll virtual dice for games and tabletop adventures.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Dice Roller | Fezcodex',
-    twitterDescription: 'Roll virtual dice for games and tabletop adventures.',
+    title: `${appName} | Fezcodex`,
+    description: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations in a brutalist workspace.',
+    keywords: ['Fezcodex', 'dice roller', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100', 'games', 'rpg', 'brutalist'],
   });
 
-  const { addToast } = useToast();
-  const [diceType, setDiceType] = useState(6); // d6, d10, d20, etc.
+  const {addToast} = useContext(ToastContext);
+  const [diceType, setDiceType] = useState(6);
   const [numDice, setNumDice] = useState(1);
   const [numDiceError, setNumDiceError] = useState(false);
   const [results, setResults] = useState([]);
@@ -44,16 +35,14 @@ const DiceRollerPage = () => {
   const rollDice = () => {
     if (numDiceError) {
       addToast({
-        title: 'Invalid Input',
-        message: 'Please enter a number of dice between 1 and 1000.',
-        duration: 3000,
+        message: 'INPUT_ERROR: Dice count must be between 1 and 1000.',
         type: 'error',
       });
       return;
     }
 
     setRolling(true);
-    setResults([]); // Clear previous results
+    setResults([]);
 
     const newResults = [];
     for (let i = 0; i < numDice; i++) {
@@ -64,145 +53,211 @@ const DiceRollerPage = () => {
       setResults(newResults);
       setRolling(false);
       addToast({
-        title: 'Roll Complete',
-        message: `Rolled: ${newResults.join(', ')}`,
-        duration: 3000,
+        message: `SEQUENCE_GENERATED: Rolled ${newResults.length} units.`,
+        type: 'success',
       });
-    }, 1000); // Simulate rolling animation duration
+    }, 1000);
   };
 
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
+  const total = results.reduce((sum, current) => sum + current, 0);
+  const average = results.length > 0 ? (total / results.length).toFixed(2) : 0;
 
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Dice Roller" slug="dice" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-4xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        {/* Header Section */}
+        <header className="mb-20">
+          <Link
+            to="/apps"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
+            <ArrowLeftIcon weight="bold"/>
+            <span>Applications</span>
+          </Link>
+          <BreadcrumbTitle title={appName} slug="dice" variant="brutalist" />
+
+          <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Randomized unit generation. Interface with the{' '}
+                <span className="text-emerald-400 font-bold">probability matrix</span>{' '}
+                to extract non-deterministic results.
+              </p>
+            </div>
+
+            <div className="flex gap-12 font-mono">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Active_Units
+                </span>
+                <span className="text-3xl font-black text-emerald-500">
+                  {numDice.toString().padStart(2, '0')}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Matrix_Status
+                </span>
+                <span className={`text-3xl font-black ${rolling ? 'text-white' : 'text-emerald-500'}`}>
+                  {rolling ? 'COLLAPSING' : 'STABLE'}
+                </span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Controls Column */}
+          <div className="lg:col-span-5 space-y-8">
             <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app">
-                {' '}
-                Dice Roller{' '}
-              </h1>
-              <hr className="border-gray-700 mb-4" />
-              <div className="mb-6 flex flex-col sm:flex-row gap-4">
-                <div className="flex-1">
-                  <label
-                    htmlFor="diceType"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Dice Type (dX)
-                  </label>
-                  <CustomDropdown
-                    options={[
-                      { label: 'd4', value: 4 },
-                      { label: 'd6', value: 6 },
-                      { label: 'd8', value: 8 },
-                      { label: 'd10', value: 10 },
-                      { label: 'd12', value: 12 },
-                      { label: 'd20', value: 20 },
-                      { label: 'd100', value: 100 },
-                    ]}
-                    value={diceType}
-                    onChange={setDiceType}
-                    label="Dice Type"
-                  />
+              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed={appName} className="w-full h-full"/>
+              </div>
+              <div
+                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+
+              <h3
+                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                <GearSixIcon weight="fill"/>
+                Config_Interface
+              </h3>
+
+              <div className="space-y-8 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                      Unit_Type (dX)
+                    </label>
+                    <CustomDropdown
+                      fullWidth
+                      options={[
+                        {label: 'D4_TETRA', value: 4},
+                        {label: 'D6_HEXA', value: 6},
+                        {label: 'D8_OCTA', value: 8},
+                        {label: 'D10_DECA', value: 10},
+                        {label: 'D12_DODECA', value: 12},
+                        {label: 'D20_ICOSA', value: 20},
+                        {label: 'D100_PERCENT', value: 100},
+                      ]}
+                      value={diceType}
+                      onChange={setDiceType}
+                      variant="brutalist"
+                    />
+                  </div>
+                  <div className="space-y-4">
+                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                      Unit_Quantity
+                    </label>
+                    <input
+                      type="number"
+                      value={numDice}
+                      onChange={(e) => {
+                        const val = Number(e.target.value);
+                        setNumDice(val);
+                        setNumDiceError(val < 1 || val > 1000);
+                      }}
+                      className={`w-full bg-transparent border-b-2 py-2 text-xl font-mono text-white focus:outline-none transition-colors uppercase ${numDiceError ? 'border-rose-500' : 'border-white/10 focus:border-emerald-500'}`}
+                      min="1"
+                      max="1000"
+                    />
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <label
-                    htmlFor="numDice"
-                    className="block text-sm font-medium text-gray-300 mb-2"
-                  >
-                    Number of Dice
-                  </label>
-                  <input
-                    type="number"
-                    id="numDice"
-                    className={`mt-1 block w-full p-2 border rounded-md bg-gray-700 text-white focus:ring-blue-500 ${numDiceError ? 'border-red-500 focus:border-red-500' : 'border-gray-600 focus:border-blue-500'}`}
-                    value={numDice}
-                    onChange={(e) => {
-                      const value = Number(e.target.value);
-                      setNumDice(value);
-                      if (value < 1 || value > 1000) {
-                        setNumDiceError(true);
-                      } else {
-                        setNumDiceError(false);
-                      }
-                    }}
-                    min="1"
-                    max="1000"
-                  />
-                  {numDiceError && (
-                    <p className="text-red-500 text-sm mt-1">
-                      Number of dice must be between 1 and 1000.
-                    </p>
-                  )}
+
+                <button
+                  onClick={rollDice}
+                  disabled={rolling || numDiceError}
+                  className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 disabled:opacity-50 transition-all text-sm flex items-center justify-center gap-3"
+                >
+                  <DiceSixIcon weight="bold" size={18}/>
+                  {rolling ? 'COLLAPSING_WAVE...' : 'EXECUTE_ROLL'}
+                </button>
+              </div>
+            </div>
+
+            <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
+              <div className="flex items-center gap-3 mb-4 text-emerald-500">
+                <ChartBarIcon size={20} weight="bold"/>
+                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
+                  Metrics_Output
+                </h4>
+              </div>
+              <div className="space-y-4 font-mono text-[10px] uppercase tracking-widest">
+                <div className="flex justify-between border-b border-white/5 pb-2">
+                  <span className="text-gray-500">Aggregate_Sum</span>
+                  <span className="text-emerald-400 font-bold">{total}</span>
+                </div>
+                <div className="flex justify-between border-b border-white/5 pb-2">
+                  <span className="text-gray-500">Mean_Value</span>
+                  <span className="text-emerald-400 font-bold">{average}</span>
                 </div>
               </div>
-              <button
-                onClick={rollDice}
-                disabled={rolling || numDiceError}
-                className={`px-6 py-2 rounded-md text-lg font-arvo font-normal transition-colors duration-300 ease-in-out roll-button ${rolling || numDiceError ? 'opacity-50 cursor-not-allowed' : ''}`}
-                style={{
-                  backgroundColor: 'rgba(0, 0, 0, 0.2)',
-                  color: cardStyle.color,
-                  borderColor: cardStyle.borderColor,
-                  border: '1px solid',
-                }}
-              >
-                {rolling ? 'Rolling...' : 'Roll Dice'}
-              </button>
+            </div>
+          </div>
 
-              {results.length > 0 && (
-                <div className="mt-6 p-4 bg-gray-700 rounded-md text-center">
-                  <div className="dice-animation-container">
-                    {results.map((result, index) => (
-                      <Dice
-                        key={index}
-                        value={result}
-                        type={diceType}
-                        isRolling={false}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-sm text-gray-400 mt-2">
-                    Total: {results.reduce((sum, current) => sum + current, 0)}
-                    {results.length > 0 &&
-                      ` | Average: ${(results.reduce((sum, current) => sum + current, 0) / results.length).toFixed(2)}`}
-                  </p>
-                </div>
-              )}
+          {/* Results Column */}
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <h3
+              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500"/>
+              Observation_Deck
+            </h3>
 
-              {rolling && (
-                <div className="dice-animation-container mt-6">
-                  {Array.from({ length: numDice }).map((_, index) => (
-                    <Dice key={index} type={diceType} isRolling={true} />
-                  ))}
-                </div>
-              )}
+            <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm p-8 flex items-center justify-center relative overflow-hidden min-h-[400px]">
+              <div className="absolute inset-0 opacity-[0.02] pointer-events-none grayscale">
+                <GenerativeArt seed={appName + results.length} className="w-full h-full" />
+              </div>
+
+              <div className="relative z-10 w-full">
+                <AnimatePresence mode="wait">
+                  {rolling ? (
+                    <motion.div
+                      key="rolling"
+                      initial={{opacity: 0}}
+                      animate={{opacity: 1}}
+                      exit={{opacity: 0}}
+                      className="flex flex-wrap gap-4 justify-center"
+                    >
+                      {Array.from({length: Math.min(numDice, 50)}).map((_, i) => (
+                        <div key={i} className="animate-pulse">
+                          <Dice type={diceType} isRolling={true} />
+                        </div>
+                      ))}
+                      {numDice > 50 && <div className="text-gray-600 font-mono text-xs uppercase self-center">...Buffer_Overflow_Visual_Truncated</div>}
+                    </motion.div>
+                  ) : results.length > 0 ? (
+                    <motion.div
+                      key="results"
+                      initial={{opacity: 0}}
+                      animate={{opacity: 1}}
+                      className="flex flex-wrap gap-4 justify-center max-h-[500px] overflow-y-auto custom-scrollbar p-4"
+                    >
+                      {results.map((result, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{scale: 0, rotate: -180}}
+                          animate={{scale: 1, rotate: 0}}
+                          transition={{type: 'spring', delay: index * 0.01}}
+                        >
+                          <Dice value={result} type={diceType} isRolling={false} />
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  ) : (
+                    <div className="text-center space-y-4">
+                      <TargetIcon size={64} weight="thin" className="mx-auto text-white/5" />
+                      <p className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
+                        Awaiting_Execution_Command...
+                      </p>
+                    </div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center opacity-20 font-mono text-[8px] uppercase tracking-[0.5em] text-gray-500">
+                <span>LOCAL_PROBABILITY_SYNC</span>
+                <span>DR_v3.1.0</span>
+              </div>
             </div>
           </div>
         </div>
