@@ -31,6 +31,7 @@ import ProjectCard from '../components/ProjectCard';
 import LogCard from '../components/LogCard';
 import PostTile from '../components/PostTile';
 import RoadmapCard from '../components/roadmap/RoadmapCard';
+import {useSidePanel} from '../context/SidePanelContext';
 
 const mockProject = {
   id: 'fez-99',
@@ -78,10 +79,31 @@ const BrufezPage = () => {
   });
 
   const {addToast} = useToast();
+  const {openSidePanel} = useSidePanel();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dropdownVal, setDropdownVal] = useState('option_01');
   const [sliderVal, setSliderVal] = useState(50);
+
+  const demoSidePanel = () => {
+    openSidePanel(
+      'SIDE_PROTOCOL_ALPHA',
+      <div className="space-y-8">
+        <div className="p-6 border border-emerald-500/20 bg-emerald-500/5">
+          <h4 className="text-emerald-400 font-black uppercase tracking-tighter m-0">Live_Data_Buffer</h4>
+          <p className="text-[10px] font-mono text-gray-500 uppercase mt-2">Telemetry stream synchronized with local host.</p>
+        </div>
+        <p className="text-sm font-mono text-gray-400 uppercase leading-relaxed">
+          The SidePanel component provides a high-density vertical axis for auxiliary process controls and detailed systemic information without losing context of the primary matrix.
+        </p>
+        <div className="grid grid-cols-1 gap-4">
+          <div className="h-1 bg-white/5" />
+          <div className="h-1 bg-white/10" />
+          <div className="h-1 bg-emerald-500/20" />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans pb-32">
@@ -140,30 +162,66 @@ const BrufezPage = () => {
           {/* LEFT COLUMN */}
           <div className="lg:col-span-7 space-y-20">
 
-            {/* Philosophy Section */}
-            <section className="space-y-8">
-              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-[0.4em] flex items-center gap-2">
-                <FlaskIcon weight="fill"/>
-                01_CORE_PHILOSOPHY
-              </h3>
-              <div className="prose prose-invert max-w-none">
-                <p className="text-xl text-gray-300 font-light leading-relaxed">
-                  Brufez is a departure from the "soft" web. It rejects rounded corners, subtle gradients, and hidden structures.
-                  Instead, it embraces the machine—making the grid visible, the processes transparent, and the feedback absolute.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-                  <div className="p-6 border border-white/10 bg-white/5 space-y-4">
-                    <h4 className="text-white uppercase font-black tracking-tighter text-lg m-0">Structural Logic</h4>
-                    <p className="text-xs text-gray-400 font-mono uppercase m-0">If it exists, it must be bounded. Borders are 1PX solid, highlighting the layout hierarchy.</p>
-                  </div>
-                  <div className="p-6 border border-emerald-500/20 bg-emerald-500/5 space-y-4">
-                    <h4 className="text-emerald-400 uppercase font-black tracking-tighter text-lg m-0">Active Feedback</h4>
-                    <p className="text-xs text-gray-400 font-mono uppercase m-0">System states are communicated via color shifts and high-frequency animations (pulses, glitters).</p>
-                  </div>
-                </div>
-              </div>
-            </section>
+                        {/* Philosophy Section */}
+                        <section className="space-y-8">
+                          <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-[0.4em] flex items-center gap-2">
+                            <FlaskIcon weight="fill"/>
+                            01_CORE_PHILOSOPHY
+                          </h3>
+                          <div className="prose prose-invert max-w-none">
+                            <p className="text-xl text-gray-300 font-light leading-relaxed">
+                              Brufez is a departure from the "soft" web. It rejects rounded corners, subtle gradients, and hidden structures.
+                              Instead, it embraces the machine—making the grid visible, the processes transparent, and the feedback absolute.
+                            </p>
 
+                            <div className="mt-12 space-y-12">
+                              <div className="space-y-4">
+                                <h4 className="text-white uppercase font-black tracking-tighter text-2xl m-0 flex items-center gap-4">
+                                  <span className="text-emerald-500 font-mono text-sm">[01]</span> Geometric_Rigidity
+                                </h4>
+                                <p className="text-sm text-gray-400 leading-relaxed font-sans m-0">
+                                  Structure is defined by hard 1PX boundaries. We avoid soft shadows and deep elevations. Every component is anchored to a
+                                  mathematical grid, emphasizing the "raw" construction of the interface. Corners are sharp (0-2px radius), maintaining a
+                                  structural integrity that feels like physical hardware.
+                                </p>
+                              </div>
+
+                              <div className="space-y-4">
+                                <h4 className="text-white uppercase font-black tracking-tighter text-2xl m-0 flex items-center gap-4">
+                                  <span className="text-emerald-500 font-mono text-sm">[02]</span> Chromatic_Absolutism
+                                </h4>
+                                <p className="text-sm text-gray-400 leading-relaxed font-sans m-0">
+                                  The palette is restricted to a high-density black (<span className="text-white font-mono">#050505</span>) and a high-frequency
+                                  Emerald (<span className="text-emerald-500 font-mono">#10B981</span>). This dual-tone hierarchy creates extreme contrast,
+                                  ensuring that "system signals" are immediately distinguishable from static data. Supplemental tones (Rose, Amber) are
+                                  reserved exclusively for critical failure or warning states.
+                                </p>
+                              </div>
+
+                              <div className="space-y-4">
+                                <h4 className="text-white uppercase font-black tracking-tighter text-2xl m-0 flex items-center gap-4">
+                                  <span className="text-emerald-500 font-mono text-sm">[03]</span> Systemic_Transparency
+                                </h4>
+                                <p className="text-sm text-gray-400 leading-relaxed font-sans m-0">
+                                  Brufez does not hide metadata. Version IDs, process status, and local timestamps are primary UI elements. We use
+                                  <span className="text-emerald-400 font-mono"> UPPER_SNAKE_CASE</span> and system syntax (//, ::, []) to treat human-readable
+                                  text as structured logs, reinforcing the feeling of interacting directly with a digital kernel.
+                                </p>
+                              </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+                              <div className="p-6 border border-white/10 bg-white/5 space-y-4">
+                                <h4 className="text-white uppercase font-black tracking-tighter text-lg m-0">Structural Logic</h4>
+                                <p className="text-xs text-gray-400 font-mono uppercase m-0">If it exists, it must be bounded. Borders are 1PX solid, highlighting the layout hierarchy.</p>
+                              </div>
+                              <div className="p-6 border border-emerald-500/20 bg-emerald-500/5 space-y-4">
+                                <h4 className="text-emerald-400 uppercase font-black tracking-tighter text-lg m-0">Active Feedback</h4>
+                                <p className="text-xs text-gray-400 font-mono uppercase m-0">System states are communicated via color shifts and high-frequency animations (pulses, glitters).</p>
+                              </div>
+                            </div>
+                          </div>
+                        </section>
             {/* Interactive Components */}
             <section className="space-y-8">
               <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-[0.4em] flex items-center gap-2">
@@ -335,12 +393,15 @@ const BrufezPage = () => {
                                       </button>
                                     </div>                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <button onClick={() => setIsDialogOpen(true)} className="py-4 border border-white/10 hover:bg-white hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest">
                     Invoke_Dialog
                   </button>
                   <button onClick={() => setIsModalOpen(true)} className="py-4 border border-white/10 hover:bg-white hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest">
                     Invoke_Modal
+                  </button>
+                  <button onClick={demoSidePanel} className="py-4 border border-white/10 hover:bg-white hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest">
+                    Invoke_Side_Panel
                   </button>
                 </div>
               </div>

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { XIcon } from '@phosphor-icons/react';
+import { XIcon, InfoIcon } from '@phosphor-icons/react';
 import { useSidePanel } from '../context/SidePanelContext';
+import GenerativeArt from './GenerativeArt';
 
 const SidePanel = () => {
   const {
@@ -67,13 +68,13 @@ const SidePanel = () => {
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Overlay */}
+          {/* Backdrop with blur */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={closeSidePanel}
-            className="fixed inset-0 bg-black/50 z-[60] backdrop-blur-sm"
+            className="fixed inset-0 bg-black/80 backdrop-blur-md z-[100]"
           />
 
           <motion.div
@@ -83,34 +84,58 @@ const SidePanel = () => {
             variants={variants}
             transition={{ type: 'spring', damping: 25, stiffness: 200 }}
             style={{ width: panelWidth }}
-            className="fixed top-0 right-0 h-full bg-gray-900 border-l border-gray-700 shadow-[-10px_0_30px_-10px_rgba(0,0,0,0.5)] z-[70] flex flex-col overflow-hidden"
+            className="fixed top-0 right-0 h-full bg-[#050505] border-l border-white/10 shadow-2xl z-[110] flex flex-col overflow-hidden"
           >
+            {/* Background Art */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
+              <GenerativeArt seed={panelTitle} className="w-full h-full" />
+            </div>
+
             {/* Resize Handle */}
             <div
               onMouseDown={(e) => {
                 setIsResizing(true);
                 e.preventDefault();
               }}
-              className="absolute left-0 top-0 bottom-0 w-1.5 cursor-ew-resize hover:bg-primary-500/50 transition-colors z-50"
-              title="Drag to resize"
+              className="absolute left-0 top-0 bottom-0 w-1 cursor-ew-resize hover:bg-emerald-500/50 transition-colors z-[120]"
+              title="DRAG_TO_RESIZE"
             />
 
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-800">
-              <h2 className="text-xl font-mono font-bold text-gray-100 truncate pr-4">
-                {panelTitle}
-              </h2>
+            <div className="relative z-10 flex items-center justify-between p-8 border-b border-white/10 bg-black/40">
+              <div className="flex flex-col gap-1 min-w-0 pr-4">
+                <span className="font-mono text-[9px] text-emerald-500 uppercase tracking-[0.3em] font-bold">
+                  System_Panel_Node
+                </span>
+                <h2 className="text-2xl font-black font-mono tracking-tighter text-white uppercase italic leading-none truncate">
+                  {panelTitle}
+                </h2>
+              </div>
               <button
                 onClick={closeSidePanel}
-                className="p-2 text-gray-400 hover:text-white hover:bg-gray-800 rounded-full transition-colors flex-shrink-0"
+                className="p-2 text-gray-500 hover:text-white transition-colors flex-shrink-0"
               >
-                <XIcon size={20} />
+                <XIcon size={24} weight="bold" />
               </button>
             </div>
 
-            {/* Content */}
-            <div className="flex-1 overflow-y-auto p-6 text-gray-300 font-mono">
-              {panelContent}
+            {/* Content Area */}
+            <div className="relative z-10 flex-1 overflow-y-auto p-8 custom-scrollbar text-white">
+              <div className="space-y-8">
+                {panelContent}
+              </div>
+            </div>
+
+            {/* Panel Footer */}
+            <div className="relative z-10 p-6 border-t border-white/10 bg-black/40 flex items-center justify-between">
+              <div className="flex items-center gap-3 text-gray-600 font-mono text-[9px] uppercase tracking-[0.2em]">
+                <InfoIcon weight="fill" size={14} className="text-emerald-500/50" />
+                <span>Buffer_Active // {Math.round(panelWidth)}PX</span>
+              </div>
+              <div className="flex gap-2">
+                <div className="w-1.5 h-1.5 bg-emerald-500 animate-pulse rounded-full" />
+                <div className="w-1.5 h-1.5 bg-white/10 rounded-full" />
+              </div>
             </div>
           </motion.div>
         </>
