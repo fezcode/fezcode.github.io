@@ -248,21 +248,21 @@ function DndEpisodePage() {
 
                     </motion.aside>
 
-                    <motion.div
+                                <motion.div
 
-                      initial={{ opacity: 0, y: 30 }}
+                                  initial={{ opacity: 0, y: 30 }}
 
-                      animate={{ opacity: 1, y: 0 }}
+                                  animate={{ opacity: 1, y: 0 }}
 
-                      className="lg:col-span-4 dnd-parchment-container p-8 md:p-24 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col relative"
+                                  className="lg:col-span-4 dnd-parchment-container p-8 md:p-24 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col relative dnd-parchment-glow"
 
-                    >
+                                >
 
-                      {/* Scroll Ornaments */}
+                                  {/* Scroll Ornaments */}
 
-                      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-b-full blur-xl" />
+                                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-b-full blur-xl dnd-scroll-accent" />
 
-                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-t-full blur-xl" />
+                                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-t-full blur-xl dnd-scroll-accent" />
 
                       <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-20 !h-20" />
 

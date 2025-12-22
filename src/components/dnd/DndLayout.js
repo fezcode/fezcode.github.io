@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndNavbar from './DndNavbar';
@@ -6,7 +6,42 @@ import DndFooter from './DndFooter';
 import dndWallpapers from '../../utils/dndWallpapers';
 import { parseWallpaperName } from '../../utils/dndUtils';
 import '../../styles/dnd-refactor.css';
-import { GameController } from '@phosphor-icons/react';
+import { GameController, Flame } from '@phosphor-icons/react';
+
+const FireplaceAudio = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef(null);
+
+  const toggleAudio = () => {
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <div className="fixed bottom-8 left-8 z-[110]">
+      <audio
+        ref={audioRef}
+        src={`${process.env.PUBLIC_URL}/sounds/static.mp3`} // Using static.mp3 as a fireplace crackle proxy if specific fire sound doesn't exist
+        loop
+      />
+      <button
+        onClick={toggleAudio}
+        className={`p-4 rounded-full border-2 transition-all shadow-2xl ${isPlaying ? 'bg-dnd-crimson border-dnd-gold text-white animate-pulse' : 'bg-black/40 border-white/10 text-white/40 hover:text-white'}`}
+        title="Toggle Ambient Fireplace"
+      >
+        <Flame size={32} weight={isPlaying ? "fill" : "bold"} />
+      </button>
+    </div>
+  );
+};
+
+const FireOverlay = () => (
+  <div className="dnd-fire-overlay" />
+);
 
 const DustMotes = () => (
   <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
@@ -170,6 +205,8 @@ const DndLayout = ({ children }) => {
   return (
     <div className="dnd-theme-root min-h-screen flex flex-col relative overflow-x-hidden">
       <ViewportFrame />
+      <FireplaceAudio />
+      <FireOverlay />
       <Torchlight />
       <DiceRoller />
       <FireParticles />

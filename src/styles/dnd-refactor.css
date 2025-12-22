@@ -243,6 +243,42 @@
   animation: arcane-glow 4s infinite ease-in-out;
 }
 
+/* Fire/Ambient Overlay - Intensified */
+@keyframes ambient-flicker {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+}
+
+.dnd-fire-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  background: 
+    radial-gradient(circle at bottom, rgba(255, 69, 0, 0.15), transparent 70%),
+    linear-gradient(to top, rgba(255, 69, 0, 0.05), transparent 40%);
+  mix-blend-mode: screen;
+  animation: ambient-flicker 0.5s infinite;
+}
+
+/* Ornate Scroll Ornament Animation - Brighter */
+@keyframes scroll-glow {
+  0%, 100% { opacity: 0.4; filter: blur(15px); }
+  50% { opacity: 0.8; filter: blur(25px); }
+}
+
+.dnd-scroll-accent {
+  animation: scroll-glow 4s infinite ease-in-out;
+  background: rgba(212, 175, 55, 0.15) !important;
+}
+
+/* Animated Parchment Shadow */
+.dnd-parchment-glow {
+  box-shadow: 
+    0 0 40px rgba(212, 175, 55, 0.1),
+    0 40px 80px rgba(0,0,0,0.7);
+}
+
 /* Silk Ribbon Style */
 .dnd-ribbon {
   position: absolute;
