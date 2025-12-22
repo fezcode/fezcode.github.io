@@ -1,5 +1,17 @@
 [
   {
+    "slug": "renaming-js-to-jsx-gist",
+    "title": "Quick Renaming .js to .jsx for React",
+    "date": "2025-12-23",
+    "updated": "2025-12-23",
+    "description": "A quick guide on using PowerShell to batch rename React files from .js to .jsx, ensuring your editor recognizes them correctly.",
+    "tags": ["gist", "powershell", "react", "dev", "script"],
+    "category": "gist",
+    "filename": "renaming-js-to-jsx-gist.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "corrupted-blood-incident",
     "title": "The Corrupted Blood Incident: When a Glitch Taught Us About Pandemics",
     "date": "2025-12-21",
