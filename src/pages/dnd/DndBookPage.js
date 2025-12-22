@@ -22,7 +22,7 @@ function DndBookPage() {
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await fetch(`/stories/books.piml`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
         if (response.ok) {
           const pimlText = await response.text();
           const data = piml.parse(pimlText);

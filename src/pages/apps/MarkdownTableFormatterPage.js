@@ -167,7 +167,7 @@ const MarkdownTableFormatterPage = () => {
                     <BookOpenIcon weight="fill" />
                     View Documentation / History
                   </span>
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">&rarr;</span>
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">-></span>
                 </button>
               </div>
             </div>
