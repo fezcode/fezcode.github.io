@@ -5,7 +5,7 @@ import React, {
   useContext,
   useCallback,
 } from 'react';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {
   ArrowLeftIcon,
   LightbulbIcon,
@@ -14,9 +14,9 @@ import {
   HashIcon,
   TargetIcon,
 } from '@phosphor-icons/react';
-import { motion, AnimatePresence } from 'framer-motion';
+import {motion, AnimatePresence} from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
-import { ToastContext } from '../../context/ToastContext';
+import {ToastContext} from '../../context/ToastContext';
 import GenerativeArt from '../../components/GenerativeArt';
 
 // Placeholder dictionary
@@ -24,9 +24,16 @@ const DICTIONARY = new Set([
   'able',
   'acid',
   'aged',
+  'ally',
   'also',
+  'arch',
   'area',
+  'arid',
   'army',
+  'atom',
+  'aunt',
+  'aura',
+  'auto',
   'away',
   'baby',
   'back',
@@ -38,25 +45,44 @@ const DICTIONARY = new Set([
   'barn',
   'base',
   'bath',
+  'bead',
+  'beam',
+  'bean',
   'bear',
   'beat',
+  'beef',
+  'beer',
   'bell',
+  'belt',
   'bend',
   'best',
+  'beta',
+  'bike',
   'bill',
+  'bind',
   'bird',
   'bite',
-  'black',
   'blow',
   'blue',
+  'blur',
+  'boar',
   'boat',
   'body',
+  'boil',
+  'bold',
+  'bolt',
   'bomb',
   'bond',
   'bone',
+  'book',
+  'boom',
+  'boon',
+  'boot',
+  'bore',
   'born',
   'boss',
   'both',
+  'bout',
   'bowl',
   'boys',
   'bulk',
@@ -67,53 +93,106 @@ const DICTIONARY = new Set([
   'calm',
   'came',
   'camp',
+  'cane',
+  'cant',
+  'cape',
   'card',
   'care',
+  'cart',
   'case',
   'cash',
   'cast',
+  'cave',
   'cell',
   'cent',
+  'chat',
   'chef',
+  'chew',
+  'chin',
   'chip',
+  'chop',
+  'cite',
   'city',
+  'clan',
+  'clap',
+  'claw',
+  'clay',
+  'clip',
   'club',
+  'clue',
   'coal',
   'coat',
   'code',
+  'coin',
   'cold',
   'come',
+  'comb',
+  'cone',
   'cook',
   'cool',
+  'coop',
+  'cope',
   'copy',
+  'cord',
   'core',
+  'cork',
+  'corn',
   'cost',
+  'crab',
   'crew',
   'crop',
+  'crow',
+  'cube',
+  'cure',
+  'curl',
   'dark',
   'data',
+  'date',
   'dawn',
   'dead',
+  'deaf',
   'deal',
   'dean',
   'dear',
+  'deck',
+  'deed',
   'deep',
+  'deer',
+  'dent',
   'deny',
   'desk',
   'dial',
+  'dice',
   'diet',
+  'dirt',
   'disc',
   'dish',
+  'disk',
+  'dive',
+  'dock',
   'does',
+  'doll',
+  'dome',
   'done',
+  'doom',
   'door',
+  'dope',
   'down',
+  'drag',
   'draw',
   'drew',
   'drop',
   'drug',
+  'drum',
+  'duck',
+  'duel',
+  'duke',
+  'dull',
+  'dumb',
   'dump',
+  'dune',
   'dust',
+  'duty',
   'earn',
   'east',
   'easy',
@@ -372,7 +451,6 @@ const DICTIONARY = new Set([
   'self',
   'sell',
   'send',
-  'sense',
   'sent',
   'sets',
   'ship',
@@ -523,53 +601,66 @@ const WordLadderPage = () => {
     keywords: ['Fezcodex', 'word ladder', 'word game', 'puzzle', 'logic'],
   });
 
-  const { addToast } = useContext(ToastContext);
+  const {addToast} = useContext(ToastContext);
   const [startWord, setStartWord] = useState('');
   const [endWord, setEndWord] = useState('');
   const [currentGuess, setCurrentGuess] = useState('');
   const [ladder, setLadder] = useState([]);
   const [gameStatus, setGameStatus] = useState('playing');
   const [message, setMessage] = useState('');
+  const [solution, setSolution] = useState(null);
+  const [isRevealed, setIsRevealed] = useState(false);
   const inputRef = useRef(null);
 
-  const hasPath = useCallback((start, end, dict) => {
-    const queue = [{ word: start, path: [start] }];
+  const findShortestPath = useCallback((start, end, dict) => {
+    const queue = [{word: start, path: [start]}];
     const visited = new Set([start]);
     while (queue.length > 0) {
-      const { word, path } = queue.shift();
-      if (word === end) return true;
+      const {word, path} = queue.shift();
+      if (word === end) return path;
       for (const dictWord of dict) {
-        if (!visited.has(dictWord) && isOneLetterDifferent(word, dictWord)) {
+        if (
+          dictWord.length === start.length &&
+          !visited.has(dictWord) &&
+          isOneLetterDifferent(word, dictWord)
+        ) {
           visited.add(dictWord);
-          queue.push({ word: dictWord, path: [...path, dictWord] });
+          queue.push({word: dictWord, path: [...path, dictWord]});
         }
       }
     }
-    return false;
+    return null;
   }, []);
 
   const initGame = useCallback(
     (wordLength = 4) => {
       let newStartWord = generateRandomWord(wordLength);
       let newEndWord = generateRandomWord(wordLength);
+      let path = findShortestPath(newStartWord, newEndWord, DICTIONARY);
+
       while (
         newStartWord === newEndWord ||
         !newStartWord ||
         !newEndWord ||
-        !hasPath(newStartWord, newEndWord, DICTIONARY)
-      ) {
+        !path ||
+        path.length < 3
+        ) {
         newStartWord = generateRandomWord(wordLength);
         newEndWord = generateRandomWord(wordLength);
+        path = findShortestPath(newStartWord, newEndWord, DICTIONARY);
       }
+
       setStartWord(newStartWord);
       setEndWord(newEndWord);
       setLadder([newStartWord]);
       setGameStatus('playing');
       setMessage('');
       setCurrentGuess('');
+      setSolution(path);
+      setIsRevealed(false);
       setTimeout(() => inputRef.current?.focus(), 10);
     },
-    [hasPath],
+    [findShortestPath],
   );
 
   useEffect(() => {
@@ -589,11 +680,11 @@ const WordLadderPage = () => {
       return;
     }
     if (ladder.includes(guess)) {
-      addToast({ message: 'Word already used in ladder.', type: 'warning' });
+      addToast({message: 'Word already used in ladder.', type: 'warning'});
       return;
     }
     if (!DICTIONARY.has(guess)) {
-      addToast({ message: 'Not a valid word.', type: 'error' });
+      addToast({message: 'Not a valid word.', type: 'error'});
       return;
     }
 
@@ -615,7 +706,7 @@ const WordLadderPage = () => {
       setMessage(
         `Transformation Complete :: Success in ${newLadder.length - 1} steps.`,
       );
-      addToast({ message: 'Puzzle Solved!', type: 'success' });
+      addToast({message: 'Puzzle Solved!', type: 'success'});
     }
   };
 
@@ -628,7 +719,7 @@ const WordLadderPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold" />
+            <ArrowLeftIcon weight="bold"/>
             <span>Applications</span>
           </Link>
 
@@ -671,14 +762,17 @@ const WordLadderPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Main Input Column */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
+            <div
+              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full" />
+                <GenerativeArt seed={appName} className="w-full h-full"/>
               </div>
-              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+              <div
+                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
 
-              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
-                <TargetIcon weight="fill" />
+              <h3
+                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                <TargetIcon weight="fill"/>
                 Word_Input
               </h3>
 
@@ -711,7 +805,7 @@ const WordLadderPage = () => {
                     type="submit"
                     className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
                   >
-                    <LadderSimpleIcon weight="bold" size={18} />
+                    <LadderSimpleIcon weight="bold" size={18}/>
                     Submit Step
                   </button>
                 </form>
@@ -732,7 +826,7 @@ const WordLadderPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <LightbulbIcon size={20} weight="bold" />
+                <LightbulbIcon size={20} weight="bold"/>
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Rules of Engagement
                 </h4>
@@ -753,19 +847,60 @@ const WordLadderPage = () => {
               </ul>
             </div>
 
-            <button
-              onClick={() => initGame(startWord.length)}
-              className="w-full py-3 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
-            >
-              <ArrowCounterClockwiseIcon />
-              Reset Current
-            </button>
+            <div className="flex gap-4">
+              <button
+                onClick={() => initGame(startWord.length)}
+                className="flex-1 py-3 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
+              >
+                <ArrowCounterClockwiseIcon/>
+                Reset Current
+              </button>
+
+              <button
+                onClick={() => setIsRevealed(true)}
+                disabled={isRevealed || gameStatus === 'won'}
+                className="flex-1 py-3 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
+              >
+                <LightbulbIcon/>
+                Reveal Solution
+              </button>
+            </div>
+
+            {isRevealed && solution && (
+              <div className="bg-emerald-500/10 border border-emerald-500/20 p-6 rounded-sm">
+                <div className="flex items-center gap-3 mb-4 text-emerald-400">
+                  <LightbulbIcon size={20} weight="bold"/>
+                  <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
+                    Optimal Solution
+                  </h4>
+                </div>
+                <div className="flex flex-wrap gap-2 text-[10px] font-mono text-gray-400 uppercase leading-relaxed">
+                  {solution.map((word, idx) => (
+                    <span key={word + idx} className="flex items-center gap-2">
+                      <span
+                        className={
+                          idx === 0 || idx === solution.length - 1
+                            ? 'text-emerald-400 font-bold'
+                            : ''
+                        }
+                      >
+                        {word}
+                      </span>
+                      {idx < solution.length - 1 && (
+                        <span className="text-gray-700">→</span>
+                      )}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {/* History Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <HashIcon weight="fill" className="text-emerald-500" />
+            <h3
+              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <HashIcon weight="fill" className="text-emerald-500"/>
               Evolution_Path
             </h3>
 
@@ -775,8 +910,8 @@ const WordLadderPage = () => {
                   {ladder.map((word, index) => (
                     <motion.div
                       key={word + index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
+                      initial={{opacity: 0, scale: 0.9}}
+                      animate={{opacity: 1, scale: 1}}
                       className="flex items-center gap-4"
                     >
                       <div
