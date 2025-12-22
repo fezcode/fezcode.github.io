@@ -155,12 +155,6 @@ code {
   /*color: #A07B90 !important; !* Placeholder color for 'single-app' *!*/
 }
 
-@media (max-width: 768px) {
-  body {
-    font-family: serif !important;
-  }
-}
-
 /* Hide arrows from number inputs */
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
