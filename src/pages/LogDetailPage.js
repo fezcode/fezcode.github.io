@@ -30,7 +30,7 @@ const LogDetailPage = () => {
   useSeo({
     title: log ? `${log.attributes.title} | Fezcodex` : null,
     description: log ? log.body.substring(0, 150) : null,
-    ogImage: log?.attributes?.image || '/images/asset/ogtitle.png',
+    image: log?.attributes?.image,
   });
 
   useEffect(() => {

@@ -43,14 +43,8 @@ const StandardBlogPostPage = () => {
   useSeo({
     title: post ? `${post.attributes.title} | Fezcodex` : null,
     description: post ? post.body.substring(0, 150) : null,
-    keywords: post?.attributes?.tags ? post.attributes.tags.join(', ') : null,
-    ogTitle: post ? `${post.attributes.title} | Fezcodex` : null,
-    ogDescription: post ? post.body.substring(0, 150) : null,
-    ogImage: post?.attributes?.ogImage || post?.attributes?.image || '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: post ? `${post.attributes.title} | Fezcodex` : null,
-    twitterDescription: post ? post.body.substring(0, 150) : null,
-    twitterImage: post?.attributes?.ogImage || post?.attributes?.image || '/images/asset/ogtitle.png',
+    image: post?.attributes?.ogImage || post?.attributes?.image,
+    keywords: post?.attributes?.tags,
   });
 
   useEffect(() => {

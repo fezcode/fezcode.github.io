@@ -10,13 +10,6 @@ const UsefulLinksPage = () => {
     title: 'Redirecting... | Fezcodex',
     description: 'Redirecting to a random log entry on Fezcodex.',
     keywords: ['Fezcodex', 'redirect', 'random', 'log'],
-    ogTitle: 'Redirecting... | Fezcodex',
-    ogDescription: 'Redirecting to a random log entry on Fezcodex.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Redirecting... | Fezcodex',
-    twitterDescription: 'Redirecting to a random log entry on Fezcodex.',
-    twitterImage: '/images/asset/ogtitle.png',
   });
 
   useEffect(() => {
