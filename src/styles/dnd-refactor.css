@@ -200,3 +200,45 @@
   font-size: 2.2rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
+
+/* Dust Motes Animation */
+@keyframes dnd-dust {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  20% { opacity: 0.2; }
+  80% { opacity: 0.2; }
+  100% { transform: translateY(-100vh) translateX(20px); opacity: 0; }
+}
+
+.dnd-dust-particle {
+  position: fixed;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 5;
+  animation: dnd-dust linear infinite;
+}
+
+/* Magical Aura/Pulse */
+@keyframes dnd-aura {
+  0% { box-shadow: 0 0 0px rgba(212, 175, 55, 0); }
+  50% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4); }
+  100% { box-shadow: 0 0 0px rgba(212, 175, 55, 0); }
+}
+
+.dnd-magical-pulse {
+  animation: dnd-aura 3s infinite ease-in-out;
+}
+
+/* Floating Rune Style */
+.dnd-floating-rune {
+  position: fixed;
+  font-family: 'MedievalSharp', cursive;
+  color: var(--dnd-gold);
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1;
+  user-select: none;
+  filter: blur(1px);
+}

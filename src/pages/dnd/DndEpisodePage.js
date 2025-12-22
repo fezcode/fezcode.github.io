@@ -10,7 +10,7 @@ import rehypeRaw from 'rehype-raw';
 import { Scroll, CaretLeft, CaretRight, List, ShieldCheck } from '@phosphor-icons/react';
 
 const WaxSeal = ({ text = 'FC' }) => (
-  <div className="dnd-wax-seal group-hover:scale-110 transition-transform duration-500">
+  <div className="dnd-wax-seal group-hover:scale-110 dnd-magical-pulse transition-transform duration-500">
     <span className="dnd-wax-seal-inner">{text}</span>
   </div>
 );
@@ -154,21 +154,21 @@ function DndEpisodePage() {
 
         </header>
 
-        {book && currentEpisode && (
+                {book && currentEpisode && (
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-12">
+                  <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 mb-12">
 
-            <motion.aside
+                    <motion.aside
 
-              initial={{ opacity: 0, x: -20 }}
+                      initial={{ opacity: 0, x: -20 }}
 
-              animate={{ opacity: 1, x: 0 }}
+                      animate={{ opacity: 1, x: 0 }}
 
-              className="lg:col-span-1"
+                      className="lg:col-span-1"
 
-            >
+                    >
 
-              <div className="dnd-parchment-container p-6 shadow-xl sticky top-40 border-2 border-black/10 group">
+                      <div className="dnd-parchment-container p-6 shadow-xl lg:sticky lg:top-40 border-2 border-black/10 group">
 
                 {/* Small Ornate Corners for Sidebar */}
 
@@ -284,73 +284,85 @@ function DndEpisodePage() {
 
         )}
 
-                        <div className="flex flex-col md:flex-row items-stretch justify-between gap-8 pt-12 border-t border-white/10">
+                                <div className="flex flex-col md:flex-row items-stretch justify-between gap-8 pt-12 border-t border-white/10">
 
-                          <div className="w-full md:w-1/3 flex">
+                                  <div className="w-full md:w-1/3 flex">
 
-                            {prevEpisode && (
+                                    {prevEpisode && (
 
-                              <Link
+                                      <Link
 
-                                to={`/stories/books/${bookId}/pages/${prevEpisode.id}`}
+                                        to={`/stories/books/${bookId}/pages/${prevEpisode.id}`}
 
-                                className="group flex items-center gap-4 px-6 py-4 bg-white text-black hover:bg-dnd-gold hover:text-primary-600 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1 rounded-sm w-full"
+                                        className="group relative flex items-center gap-4 p-6 dnd-parchment-container border-2 border-black/10 hover:border-dnd-gold/50 transition-all shadow-xl hover:-translate-y-1 w-full overflow-hidden"
 
-                              >
+                                      >
 
-                                <CaretLeft size={20} weight="bold" />
+                                        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                                <div className="flex flex-col text-left">
+                                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                                  <span className="text-[8px] font-mono uppercase tracking-widest opacity-60">Prior Entry</span>
+                                        <CaretLeft size={24} weight="bold" className="text-dnd-crimson group-hover:scale-125 transition-transform" />
 
-                                  <span className="text-sm font-arvo font-bold line-clamp-1">{prevEpisode.title}</span>
+                                        <div className="flex flex-col text-left relative z-10">
 
-                                </div>
+                                          <span className="text-[8px] font-mono uppercase tracking-widest text-black/40">Prior Entry</span>
 
-                              </Link>
+                                          <span className="text-sm font-arvo font-bold text-dnd-crimson line-clamp-1">{prevEpisode.title}</span>
 
-                            )}
+                                        </div>
 
-                          </div>
+                                      </Link>
 
-                          <Link to="/stories/lore" className="group flex items-center justify-center gap-3 px-10 py-5 bg-white text-black font-mono font-black text-xs tracking-[0.4em] hover:bg-dnd-gold hover:text-primary-600 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1 rounded-sm min-w-[200px]">
+                                    )}
 
-                            <List size={18} weight="bold" />
+                                  </div>
 
-                            Show Index
+                                  <Link to="/stories/lore" className="group relative flex items-center justify-center gap-3 px-10 py-5 dnd-parchment-container border-2 border-black/10 hover:border-dnd-gold/50 transition-all shadow-xl hover:-translate-y-1 min-w-[240px] overflow-hidden">
 
-                          </Link>
+                                    <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                          <div className="w-full md:w-1/3 flex justify-end">
+                                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                            {nextEpisode && (
+                                    <List size={20} weight="bold" className="text-dnd-crimson" />
 
-                              <Link
+                                    <span className="font-mono font-black text-xs tracking-[0.4em] text-dnd-crimson">Show Index</span>
 
-                                to={`/stories/books/${bookId}/pages/${nextEpisode.id}`}
+                                  </Link>
 
-                                className="group flex items-center justify-between gap-4 px-6 py-4 bg-white text-black hover:bg-dnd-gold hover:text-primary-600 transition-all shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:-translate-y-1 rounded-sm w-full"
+                                  <div className="w-full md:w-1/3 flex justify-end">
 
-                              >
+                                    {nextEpisode && (
 
-                                <div className="flex flex-col text-right flex-grow">
+                                      <Link
 
-                                  <span className="text-[8px] font-mono uppercase tracking-widest opacity-60">Next Entry</span>
+                                        to={`/stories/books/${bookId}/pages/${nextEpisode.id}`}
 
-                                  <span className="text-sm font-arvo font-bold line-clamp-1">{nextEpisode.title}</span>
+                                        className="group relative flex items-center justify-between gap-4 p-6 dnd-parchment-container border-2 border-black/10 hover:border-dnd-gold/50 transition-all shadow-xl hover:-translate-y-1 w-full overflow-hidden"
 
-                                </div>
+                                      >
 
-                                <CaretRight size={20} weight="bold" />
+                                        <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                              </Link>
+                                        <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                            )}
+                                        <div className="flex flex-col text-right flex-grow relative z-10">
 
-                          </div>
+                                          <span className="text-[8px] font-mono uppercase tracking-widest text-black/40">Next Entry</span>
 
-                        </div>      </div>
+                                          <span className="text-sm font-arvo font-bold text-dnd-crimson line-clamp-1">{nextEpisode.title}</span>
+
+                                        </div>
+
+                                        <CaretRight size={24} weight="bold" className="text-dnd-crimson group-hover:scale-125 transition-transform" />
+
+                                      </Link>
+
+                                    )}
+
+                                  </div>
+
+                                </div>      </div>
     </DndLayout>
   );
 }

@@ -6,6 +6,46 @@ import dndWallpapers from '../../utils/dndWallpapers';
 import { parseWallpaperName } from '../../utils/dndUtils';
 import '../../styles/dnd-refactor.css';
 
+const DustMotes = () => (
+  <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
+    {[...Array(20)].map((_, i) => (
+      <div
+        key={i}
+        className="dnd-dust-particle"
+        style={{
+          left: `${Math.random() * 100}%`,
+          top: `${100 + Math.random() * 20}%`,
+          animationDuration: `${10 + Math.random() * 20}s`,
+          animationDelay: `${-Math.random() * 20}s`,
+          width: `${1 + Math.random() * 2}px`,
+          height: `${1 + Math.random() * 2}px`,
+        }}
+      />
+    ))}
+  </div>
+);
+
+const FloatingRunes = () => {
+  const runes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚨ', 'ᚱ', 'ᚲ', 'ᚷ', 'ᚹ', 'ᚺ', 'ᚾ', 'ᛁ', 'ᛃ', 'ᛈ', 'ᛇ', 'ᛉ', 'ᛊ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛜ', 'ᛞ', 'ᛟ'];
+  return (
+    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {[...Array(15)].map((_, i) => (
+        <div
+          key={i}
+          className="dnd-floating-rune text-4xl"
+          style={{
+            left: `${Math.random() * 100}%`,
+            top: `${Math.random() * 100}%`,
+            transform: `rotate(${Math.random() * 360}deg)`,
+          }}
+        >
+          {runes[Math.floor(Math.random() * runes.length)]}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 const DndLayout = ({ children }) => {
   const { setBgImageName } = useContext(DndContext);
   const [bgImage, setBgImage] = useState('');
@@ -18,6 +58,8 @@ const DndLayout = ({ children }) => {
 
   return (
     <div className="dnd-theme-root min-h-screen flex flex-col relative overflow-x-hidden">
+      <DustMotes />
+      <FloatingRunes />
       {/* Immersive Background */}
       <div className="fixed inset-0 z-0">
         <div
