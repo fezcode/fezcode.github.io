@@ -1,65 +1,62 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CirclesFourIcon } from '@phosphor-icons/react';
-import colors from '../../config/colors';
+import React, {useState, useEffect, useCallback, useContext} from 'react';
+import {Link} from 'react-router-dom';
+import {
+  ArrowLeftIcon,
+  ArrowCounterClockwiseIcon,
+  PlayIcon,
+  TrophyIcon,
+  ChartBarIcon,
+  CirclesFourIcon,
+} from '@phosphor-icons/react';
+import {motion} from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
-import '../../styles/SimonSaysPage.css';
+import {ToastContext} from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import GenerativeArt from '../../components/GenerativeArt';
 
-const colorsList = ['green', 'red', 'yellow', 'blue'];
+const colorsList = [
+  {id: 'green', color: 'bg-emerald-500', active: 'bg-emerald-300', glow: 'shadow-[0_0_30px_rgba(16,185,129,0.6)]'},
+  {id: 'red', color: 'bg-rose-500', active: 'bg-rose-300', glow: 'shadow-[0_0_30px_rgba(244,63,94,0.6)]'},
+  {id: 'yellow', color: 'bg-amber-500', active: 'bg-amber-300', glow: 'shadow-[0_0_30px_rgba(245,158,11,0.6)]'},
+  {id: 'blue', color: 'bg-sky-500', active: 'bg-sky-300', glow: 'shadow-[0_0_30px_rgba(14,165,233,0.6)]'},
+];
 
 const SimonSaysPage = () => {
+  const appName = 'Simon Says';
+
   useSeo({
-    title: 'Simon Says | Fezcodex',
-    description: 'Test your memory by repeating the sequence of colors.',
-    keywords: [
-      'Fezcodex',
-      'simon says',
-      'memory game',
-      'color sequence',
-      'game',
-    ],
-    ogTitle: 'Simon Says | Fezcodex',
-    ogDescription: 'Test your memory with the classic Simon Says game.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Simon Says | Fezcodex',
-    twitterDescription: 'Test your memory with the classic Simon Says game.',
+    title: `${appName} | Fezcodex`,
+    description: 'Test your memory by repeating the sequence of colors in this high-tech adaptation.',
+    keywords: ['Fezcodex', 'simon says', 'memory game', 'color sequence', 'brutalist'],
   });
 
+  const {addToast} = useContext(ToastContext);
   const [sequence, setSequence] = useState([]);
   const [userSequence, setUserSequence] = useState([]);
-  const [isPlaying, setIsPlaying] = useState(false); // Machine is playing sequence
+  const [isPlaying, setIsPlaying] = useState(false);
   const [gameActive, setGameActive] = useState(false);
   const [score, setScore] = useState(0);
   const [activeColor, setActiveColor] = useState(null);
   const [gameOver, setGameOver] = useState(false);
-
-  // Refs for timeout management
-  const timeoutRef = useRef(null);
-
-  const playTone = (color) => {
-    // Placeholder for sound - for now just visual
-    setActiveColor(color);
-    setTimeout(() => setActiveColor(null), 300);
-  };
+  const [highScore, setHighScore] = useState(() => {
+    return parseInt(localStorage.getItem('simon_high_score') || '0');
+  });
 
   const addToSequence = useCallback(() => {
-    const randomColor =
-      colorsList[Math.floor(Math.random() * colorsList.length)];
+    const randomColor = colorsList[Math.floor(Math.random() * colorsList.length)].id;
     setSequence((prev) => [...prev, randomColor]);
   }, []);
 
   const playSequence = useCallback(async (currentSequence) => {
     setIsPlaying(true);
-    // Small delay before starting
-    await new Promise((resolve) => setTimeout(resolve, 500));
+    await new Promise((resolve) => setTimeout(resolve, 800));
 
     for (let i = 0; i < currentSequence.length; i++) {
-      const color = currentSequence[i];
-      setActiveColor(color);
-      await new Promise((resolve) => setTimeout(resolve, 500)); // Light duration
+      const colorId = currentSequence[i];
+      setActiveColor(colorId);
+      await new Promise((resolve) => setTimeout(resolve, 500));
       setActiveColor(null);
-      await new Promise((resolve) => setTimeout(resolve, 200)); // Gap between lights
+      await new Promise((resolve) => setTimeout(resolve, 200));
     }
     setIsPlaying(false);
   }, []);
@@ -76,35 +73,34 @@ const SimonSaysPage = () => {
     setScore(0);
     setSequence([]);
     setUserSequence([]);
-    // Initial move
-    setTimeout(() => {
-      const randomColor =
-        colorsList[Math.floor(Math.random() * colorsList.length)];
-      setSequence([randomColor]);
-    }, 100);
+    setTimeout(addToSequence, 200);
   };
 
-  const handleColorClick = (color) => {
+  const handleColorClick = (colorId) => {
     if (!gameActive || isPlaying || gameOver) return;
-    // Prevent clicks if we are waiting for the next sequence
     if (userSequence.length === sequence.length) return;
 
-    playTone(color);
-    const newUserSequence = [...userSequence, color];
+    setActiveColor(colorId);
+    setTimeout(() => setActiveColor(null), 200);
+
+    const newUserSequence = [...userSequence, colorId];
     setUserSequence(newUserSequence);
 
-    // Check validity
     const currentIndex = newUserSequence.length - 1;
     if (newUserSequence[currentIndex] !== sequence[currentIndex]) {
       setGameOver(true);
       setGameActive(false);
+      addToast({message: 'SEQUENCE_TERMINATED: Error detected.', type: 'error'});
+      if (score > highScore) {
+        setHighScore(score);
+        localStorage.setItem('simon_high_score', score.toString());
+        addToast({message: 'NEW_RECORD_ESTABLISHED', type: 'success'});
+      }
       return;
     }
 
-    // Check completion
     if (newUserSequence.length === sequence.length) {
       setScore(sequence.length);
-      // Wait a bit then add next
       setTimeout(() => {
         addToSequence();
         setUserSequence([]);
@@ -112,104 +108,149 @@ const SimonSaysPage = () => {
     }
   };
 
-  // Cleanup
-  useEffect(() => {
-    const currentTimeout = timeoutRef.current;
-    return () => {
-      if (currentTimeout) clearTimeout(currentTimeout);
-    };
-  }, []);
-
-  const cardStyle = {
-    backgroundColor: colors['app-alpha-10'],
-    borderColor: colors['app-alpha-50'],
-    color: colors.app,
-  };
-
   return (
-    <div className="py-16 sm:py-24">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
-        <Link
-          to="/apps"
-          className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <BreadcrumbTitle title="Simon Says" slug="simon" />
-        <hr className="border-gray-700" />
-        <div className="flex justify-center items-center mt-16">
-          <div
-            className="group bg-transparent border rounded-lg shadow-2xl p-6 flex flex-col justify-between relative transform overflow-hidden h-full w-full max-w-2xl"
-            style={cardStyle}
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+        {/* Header Section */}
+        <header className="mb-20">
+          <Link
+            to="/apps"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <div
-              className="absolute top-0 left-0 w-full h-full opacity-10"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle, white 1px, transparent 1px)',
-                backgroundSize: '10px 10px',
-              }}
-            ></div>
-            <div className="relative z-10 p-1">
-              <h1 className="text-3xl font-arvo font-normal mb-4 text-app flex items-center gap-2">
-                <CirclesFourIcon size={32} /> Simon Says
-              </h1>
-              <hr className="border-gray-700 mb-8" />
+            <ArrowLeftIcon weight="bold"/>
+            <span>Applications</span>
+          </Link>
+          <BreadcrumbTitle title={appName} slug="simon" variant="brutalist" />
 
-              <div className="text-center mb-8">
-                <div className="text-2xl font-bold mb-2">
-                  Score: <span className="text-yellow-400">{score}</span>
-                </div>
-                {gameOver && (
-                  <div className="mb-4">
-                    <h2 className="text-3xl font-bold text-red-500 mb-2">
-                      Game Over!
-                    </h2>
-                    <button
-                      onClick={startGame}
-                      className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                      style={{
-                        borderColor: cardStyle.color,
-                        color: cardStyle.color,
-                      }}
-                    >
-                      Try Again
-                    </button>
+          <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+                Neural memory assessment. Replicate the generated{' '}
+                <span className="text-emerald-400 font-bold">light sequence</span>{' '}
+                to proceed.
+              </p>
+            </div>
+
+            <div className="flex gap-12 font-mono">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Active_Score
+                </span>
+                <span className="text-3xl font-black text-emerald-500">
+                  {score.toString().padStart(2, '0')}
+                </span>
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  System_Status
+                </span>
+                <span className={`text-3xl font-black ${gameActive ? (isPlaying ? 'text-white' : 'text-emerald-500') : (gameOver ? 'text-rose-500' : 'text-gray-700')}`}>
+                  {gameActive ? (isPlaying ? 'WATCHING' : 'LISTENING') : (gameOver ? 'TERMINATED' : 'IDLE')}
+                </span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Controls Column */}
+          <div className="lg:col-span-4 space-y-8">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+              <div className="absolute inset-0 opacity-5 pointer-events-none">
+                <GenerativeArt seed={appName} className="w-full h-full"/>
+              </div>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <ChartBarIcon weight="fill"/>
+                Session_Metrics
+              </h3>
+
+              <div className="space-y-6 relative z-10">
+                <div className="p-4 border border-white/5 bg-white/5">
+                  <div className="flex items-center justify-between mb-1">
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500">Highest_Seq</span>
+                    <TrophyIcon size={14} className="text-amber-500" />
                   </div>
-                )}
-                {!gameActive && !gameOver && (
+                  <div className="text-3xl font-black font-mono">{highScore.toString().padStart(2, '0')}</div>
+                </div>
+
+                {!gameActive ? (
                   <button
                     onClick={startGame}
-                    className="px-6 py-2 rounded-md text-lg font-arvo font-normal border transition-colors duration-300 hover:bg-white/10"
-                    style={{
-                      borderColor: cardStyle.color,
-                      color: cardStyle.color,
-                    }}
+                    className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
                   >
-                    Start Game
+                    <PlayIcon weight="bold" size={18}/>
+                    {gameOver ? 'REBOOT_SESSION' : 'INIT_SEQUENCE'}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => {setGameActive(false); setGameOver(true);}}
+                    className="w-full py-4 border border-rose-500/50 text-rose-500 hover:bg-rose-500 hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3"
+                  >
+                    <ArrowCounterClockwiseIcon weight="bold" size={16}/>
+                    ABORT_SESSION
                   </button>
                 )}
-                {gameActive && (
-                  <p className="h-6 text-lg opacity-80">
-                    {isPlaying ? 'Watch the sequence...' : 'Your turn!'}
-                  </p>
-                )}
               </div>
+            </div>
 
-              <div className="simon-grid">
+            <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
+              <div className="flex items-center gap-3 mb-4 text-emerald-500">
+                <CirclesFourIcon size={20} weight="bold"/>
+                <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
+                  Protocol_Details
+                </h4>
+              </div>
+              <ul className="space-y-3 text-xs font-mono text-gray-500 uppercase tracking-wider">
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">01</span> Observation phase: memorize the light pattern.
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">02</span> Execution phase: replicate the exact sequence.
+                </li>
+                <li className="flex gap-3">
+                  <span className="text-emerald-500">03</span> Sequence increments by +1 per successful cycle.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Game Column */}
+          <div className="lg:col-span-8 flex flex-col gap-6">
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <CirclesFourIcon weight="fill" className="text-emerald-500"/>
+              Input_Matrix_Interface
+            </h3>
+
+            <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm p-8 flex items-center justify-center">
+              <div className="grid grid-cols-2 gap-4 md:gap-8 w-full max-w-md aspect-square">
                 {colorsList.map((color) => (
-                  <div
-                    key={color}
-                    className={`simon-btn simon-${color} ${activeColor === color ? 'active' : ''} ${!gameActive || isPlaying ? 'disabled' : ''}`}
-                    onClick={() => handleColorClick(color)}
-                  />
+                  <motion.button
+                    key={color.id}
+                    whileHover={gameActive && !isPlaying && !gameOver ? {scale: 1.02} : {}}
+                    whileTap={gameActive && !isPlaying && !gameOver ? {scale: 0.95} : {}}
+                    onClick={() => handleColorClick(color.id)}
+                    disabled={!gameActive || isPlaying || gameOver}
+                    className={`
+                      relative aspect-square border-4 border-black/40 transition-all duration-150
+                      ${activeColor === color.id ? `${color.active} ${color.glow} z-10 scale-[0.98]` : `${color.color} opacity-40`}
+                      ${!gameActive || isPlaying || gameOver ? 'cursor-not-allowed' : 'cursor-pointer hover:opacity-80'}
+                    `}
+                  >
+                    <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+                    {activeColor === color.id && (
+                      <motion.div
+                        layoutId="active-glow"
+                        className="absolute -inset-4 border border-white/20 pointer-events-none"
+                        initial={{opacity: 0}}
+                        animate={{opacity: 1}}
+                        exit={{opacity: 0}}
+                      />
+                    )}
+                  </motion.button>
                 ))}
               </div>
-
-              <p className="text-center mt-8 text-sm opacity-70">
-                Repeat the pattern of lights. It gets longer every round!
-              </p>
             </div>
           </div>
         </div>

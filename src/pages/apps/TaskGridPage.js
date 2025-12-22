@@ -15,6 +15,7 @@ import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import usePersistentState from '../../hooks/usePersistentState';
+import BrutalistDialog from '../../components/BrutalistDialog';
 
 const TaskGridPage = () => {
   const appName = 'Task Grid';
@@ -28,6 +29,7 @@ const TaskGridPage = () => {
   const { addToast } = useToast();
   const [tasks, setTasks] = usePersistentState('task-grid-data', []);
   const [inputValue, setInputValue] = useState('');
+  const [isFlushDialogOpen, setIsFlushDialogOpen] = useState(false);
 
   const addTask = (e) => {
     e.preventDefault();
@@ -204,7 +206,7 @@ const TaskGridPage = () => {
               </div>
 
               <button
-                onClick={() => { if(window.confirm('Erase all mapped data? This cannot be undone.')) setTasks([]); }}
+                onClick={() => setIsFlushDialogOpen(true)}
                 className="w-full py-4 border border-white/10 hover:bg-red-500 hover:text-black hover:border-red-400 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
               >
                 <ArrowsClockwiseIcon weight="bold" /> Flush Sequence
@@ -226,6 +228,20 @@ const TaskGridPage = () => {
           <span className="text-gray-800">MAPPING_CORE // PERSISTENT</span>
         </footer>
       </div>
+
+      <BrutalistDialog
+        isOpen={isFlushDialogOpen}
+        onClose={() => setIsFlushDialogOpen(false)}
+        onConfirm={() => {
+          setTasks([]);
+          setIsFlushDialogOpen(false);
+          addToast({ title: 'Grid Flushed', message: 'All sequences have been erased.' });
+        }}
+        title="FLUSH_GRID_SEQUENCE"
+        message="Attention: This operation will permanently erase all mapped objectives. This action is irreversible. Proceed?"
+        confirmText="EXECUTE_FLUSH"
+        cancelText="ABORT_OPERATION"
+      />
     </div>
   );
 };
