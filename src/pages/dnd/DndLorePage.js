@@ -80,16 +80,17 @@ function DndLorePage() {
             ))}
           </div>
 
-          <div className="dnd-parchment-container p-12 md:p-24 shadow-2xl">
-            <div className="dnd-ornate-corner dnd-ornate-corner-tl" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-tr" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-bl" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-br" />
+          <div className="dnd-parchment-container p-12 md:p-24 shadow-2xl border-2 border-black/10">
+            <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-16 !h-16" />
+            <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-16 !h-16" />
+            <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-16 !h-16" />
+            <div className="dnd-ornate-corner dnd-ornate-corner-br !w-16 !h-16" />
 
             <div className="relative z-10 max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-12">
+              <h2 className="text-4xl md:text-5xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-12">
                 Index of Tomes
               </h2>
+              <div className="dnd-mystic-divider mb-12" />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
                 {books.map((book) => (
                   <Link

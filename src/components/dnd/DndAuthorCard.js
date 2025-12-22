@@ -10,11 +10,11 @@ const DndAuthorCard = ({
   booksWritten,
 }) => {
   return (
-    <div className="dnd-parchment-container p-8 md:p-12 shadow-xl group transition-all duration-500 hover:-translate-y-2">
-      <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-6 !h-6" />
-      <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-6 !h-6" />
-      <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-6 !h-6" />
-      <div className="dnd-ornate-corner dnd-ornate-corner-br !w-6 !h-6" />
+    <div className="dnd-parchment-container p-8 md:p-12 shadow-xl group transition-all duration-500 hover:-translate-y-2 border-2 border-black/10">
+      <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-10 !h-10" />
+      <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-10 !h-10" />
+      <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-10 !h-10" />
+      <div className="dnd-ornate-corner dnd-ornate-corner-br !w-10 !h-10" />
 
       <div className="relative z-10 flex flex-col items-center text-center">
         <div className="relative mb-6">
@@ -36,6 +36,8 @@ const DndAuthorCard = ({
           </span>
         )}
 
+        <div className="dnd-mystic-divider !my-4 opacity-20" />
+
         {authorWebsite && (
           <a
             href={authorWebsite}
@@ -47,7 +49,6 @@ const DndAuthorCard = ({
             Digital Signal
           </a>
         )}
-
         {booksWritten && booksWritten.length > 0 && (
           <div className="w-full pt-6 border-t border-dnd-crimson/10">
             <div className="flex items-center justify-center gap-2 mb-4 opacity-40">

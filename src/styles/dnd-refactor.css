@@ -4,105 +4,199 @@
   --dnd-gold: #d4af37;
   --dnd-gold-light: #f9e076;
   --dnd-crimson: #4a0404;
-  --dnd-parchment: #f4f1ea;
+  --dnd-parchment: #fcfaf2;
   --dnd-text: #2c1810;
   --dnd-border: rgba(184, 134, 11, 0.4);
 }
 
 .dnd-theme-root {
-  background-color: #050505;
+  background-color: #0c0a09;
   color: var(--dnd-text);
   min-height: screen;
   font-family: 'Arvo', serif;
 }
 
-/* High Fantasy Header Style */
+/* High Fidelity Procedural Parchment */
+.dnd-parchment-container {
+  background-color: #fcfaf2;
+  background-image: 
+    /* Layer 1: Water damage / Aged stains */
+    radial-gradient(circle at 10% 10%, rgba(139, 69, 19, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(139, 69, 19, 0.05) 0%, transparent 30%),
+    radial-gradient(circle at 50% 50%, rgba(139, 69, 19, 0.02) 0%, transparent 60%),
+    
+    /* Layer 2: Paper Fibers (SVG Noise) */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.07'/%3E%3C/svg%3E"),
+    
+    /* Layer 3: Crumpled paper effect (SVG Turbulence) */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 500 500' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='crumpleFilter'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.01' numOctaves='3' result='turb'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='turb' scale='10'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23crumpleFilter)' opacity='0.03'/%3E%3C/svg%3E"),
+    
+    /* Layer 4: Vertical fiber lines */
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,0,0,0.01) 40px, rgba(0,0,0,0.01) 41px),
+    
+    /* Layer 5: Main aged color gradient */
+    linear-gradient(135deg, #fcfaf2 0%, #f2ead3 50%, #e8dec0 100%);
+  
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 
+    0 40px 80px rgba(0,0,0,0.7),
+    inset 0 0 120px rgba(139, 69, 19, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Deckle Edge Effect (SVG Border) */
+.dnd-deckle-edge {
+  position: relative;
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cfilter id='jagged'%3E%3CfeTurbulence type='turbulence' baseFrequency='0.15' numOctaves='2' result='turb'/%3E%3CfeDisplacementMap in='SourceGraphic' in2='turb' scale='2'/%3E%3C/filter%3E%3Crect width='90' height='90' x='5' y='5' filter='url(%23jagged)'/%3E%3C/svg%3E");
+  mask-size: 100% 100%;
+}
+
+/* Ornate Border Accents - Higher Fidelity */
+.dnd-ornate-corner {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.dnd-ornate-corner::before,
+.dnd-ornate-corner::after {
+  content: "";
+  position: absolute;
+  background: linear-gradient(to right, var(--dnd-gold-light), var(--dnd-gold));
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.dnd-ornate-corner-tl { top: 15px; left: 15px; }
+.dnd-ornate-corner-tl::before { width: 100%; height: 3px; top: 0; left: 0; border-radius: 3px; }
+.dnd-ornate-corner-tl::after { width: 3px; height: 100%; top: 0; left: 0; border-radius: 3px; }
+
+.dnd-ornate-corner-tr { top: 15px; right: 15px; }
+.dnd-ornate-corner-tr::before { width: 100%; height: 3px; top: 0; right: 0; border-radius: 3px; }
+.dnd-ornate-corner-tr::after { width: 3px; height: 100%; top: 0; right: 0; border-radius: 3px; }
+
+.dnd-ornate-corner-bl { bottom: 15px; left: 15px; }
+.dnd-ornate-corner-bl::before { width: 100%; height: 3px; bottom: 0; left: 0; border-radius: 3px; }
+.dnd-ornate-corner-bl::after { width: 3px; height: 100%; bottom: 0; left: 0; border-radius: 3px; }
+
+.dnd-ornate-corner-br { bottom: 15px; right: 15px; }
+.dnd-ornate-corner-br::before { width: 100%; height: 3px; bottom: 0; right: 0; border-radius: 3px; }
+.dnd-ornate-corner-br::after { width: 3px; height: 100%; bottom: 0; right: 0; border-radius: 3px; }
+
+/* Mystical Divider */
+.dnd-mystic-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 3rem 0;
+  opacity: 0.6;
+}
+
+.dnd-mystic-divider::before,
+.dnd-mystic-divider::after {
+  content: "";
+  height: 2px;
+  flex-grow: 1;
+  background: radial-gradient(circle, var(--dnd-gold) 0%, transparent 100%);
+}
+
+/* Illuminated Letter Effect */
+.dnd-drop-cap::first-letter {
+  font-family: 'Playfair Display', serif;
+  float: left;
+  font-size: 5.5rem;
+  line-height: 0.7;
+  font-weight: 900;
+  margin-right: 1rem;
+  margin-top: 0.8rem;
+  color: var(--dnd-crimson);
+  text-shadow: 4px 4px 0px var(--dnd-gold);
+  border: 3px double var(--dnd-gold);
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.6);
+  box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+  clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); /* Slightly irregular shape */
+}
+
+/* Section Header Styles */
 .dnd-fantasy-header {
   font-family: 'Playfair Display', serif;
   font-style: italic;
   font-weight: 900;
   color: var(--dnd-gold);
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6);
   text-transform: uppercase;
   letter-spacing: -0.02em;
 }
 
-/* Parchment Effect Container */
-.dnd-parchment-container {
-  background-color: var(--dnd-parchment);
-  background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png'); /* Subtle texture */
-  border: 20px solid transparent;
-  border-image: url('https://www.transparenttextures.com/patterns/dark-matter.png') 30 round;
-  box-shadow: 0 0 50px rgba(0,0,0,0.8), inset 0 0 100px rgba(0,0,0,0.2);
-  position: relative;
-  color: var(--dnd-text);
+.dnd-gold-gradient-text {
+  background: linear-gradient(to bottom, var(--dnd-gold-light), var(--dnd-gold), #8b7325);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-/* Ornate Border Decor */
-.dnd-ornate-corner {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  border: 4px solid var(--dnd-gold);
-  z-index: 10;
-}
-
-.dnd-ornate-corner-tl { top: -10px; left: -10px; border-right: 0; border-bottom: 0; }
-.dnd-ornate-corner-tr { top: -10px; right: -10px; border-left: 0; border-bottom: 0; }
-.dnd-ornate-corner-bl { bottom: -10px; left: -10px; border-right: 0; border-top: 0; }
-.dnd-ornate-corner-br { bottom: -10px; right: -10px; border-left: 0; border-top: 0; }
-
-/* Navbar Refactor */
 .dnd-nav-modern {
-  background: linear-gradient(to bottom, rgba(74, 4, 4, 0.95), rgba(42, 10, 10, 0.8));
-  border-bottom: 3px solid var(--dnd-gold);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-  backdrop-blur: 10px;
-}
-
-.dnd-nav-link {
-  font-family: 'Playfair Display', serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-  color: var(--dnd-gold-light);
-  transition: all 0.3s ease;
-}
-
-.dnd-nav-link:hover {
-  color: #fff;
-  text-shadow: 0 0 10px var(--dnd-gold);
+  background: linear-gradient(to bottom, rgba(74, 4, 4, 0.99), rgba(42, 10, 10, 0.95));
+  border-bottom: 4px double var(--dnd-gold);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  backdrop-filter: blur(20px);
 }
 
 /* Interactive Fantasy Cards */
 .dnd-fantasy-card {
-  background: var(--dnd-parchment);
-  border: 1px solid var(--dnd-border);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
-  position: relative;
+  background-color: #fcfaf2;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, #fcfaf2, #f2ead3);
+  transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(0,0,0,0.1);
 }
 
 .dnd-fantasy-card:hover {
-  transform: translateY(-10px) scale(1.02);
+  transform: translateY(-15px) rotate(1deg);
+  box-shadow: 0 50px 100px rgba(0,0,0,0.9);
   border-color: var(--dnd-gold);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
 }
 
-.dnd-fantasy-card-overlay {
-  background: linear-gradient(to top, var(--dnd-crimson), transparent);
-  opacity: 0.8;
-}
-
-/* Typography Overrides */
 .dnd-body-text {
   font-family: 'Arvo', serif;
-  line-height: 1.8;
-  font-size: 1.1rem;
+  line-height: 2;
+  font-size: 1.2rem;
+  color: #2c1810;
+  text-shadow: 0.5px 0.5px 0px rgba(0,0,0,0.05);
 }
 
-.dnd-gold-gradient-text {
-  background: linear-gradient(to bottom, var(--dnd-gold-light), var(--dnd-gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+/* Wax Seal Style (Pure CSS) */
+.dnd-wax-seal {
+  width: 70px;
+  height: 70px;
+  background: radial-gradient(circle at 30% 30%, #b50000, #4a0404);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 6px 6px 15px rgba(0,0,0,0.7), inset -3px -3px 15px rgba(0,0,0,0.5);
+  border: 4px solid rgba(0,0,0,0.4);
+  transform: rotate(-12deg);
+  position: relative;
+  transition: all 0.5s ease;
+}
+
+.dnd-wax-seal::after {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 2px dashed rgba(255,255,255,0.1);
+  border-radius: 50%;
+}
+
+.dnd-wax-seal-inner {
+  color: rgba(212, 175, 55, 0.9);
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 2.2rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }

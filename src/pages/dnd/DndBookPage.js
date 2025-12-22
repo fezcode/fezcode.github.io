@@ -52,7 +52,7 @@ function DndBookPage() {
 
   return (
     <DndLayout>
-      <div className="max-w-5xl mx-auto px-6 py-12">
+      <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-24">
           <div className="flex justify-center mb-6">
              <BookmarkSimple size={48} className="text-dnd-gold" weight="duotone" />
@@ -67,20 +67,22 @@ function DndBookPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="dnd-parchment-container p-12 md:p-24 shadow-2xl"
+            className="dnd-parchment-container p-12 md:p-24 shadow-2xl border-2 border-black/10"
           >
-            <div className="dnd-ornate-corner dnd-ornate-corner-tl" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-tr" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-bl" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-br" />
+            <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-16 !h-16" />
+            <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-16 !h-16" />
+            <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-16 !h-16" />
+            <div className="dnd-ornate-corner dnd-ornate-corner-br !w-16 !h-16" />
 
             <div className="relative z-10">
-              <div className="flex items-center gap-4 mb-12 pb-4 border-b border-dnd-crimson/10">
+              <div className="flex items-center gap-4 mb-8 pb-4 border-b border-dnd-crimson/10">
                 <Scroll size={32} className="text-dnd-crimson" weight="duotone" />
                 <h2 className="text-3xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter">
                   Recorded Episodes
                 </h2>
               </div>
+
+              <div className="dnd-mystic-divider mb-12 opacity-20" />
 
               <div className="grid gap-4">
                 {book.episodes.map((episode, idx) => (

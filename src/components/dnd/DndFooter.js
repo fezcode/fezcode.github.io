@@ -10,7 +10,7 @@ const DndFooter = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
         <div className="space-y-4">
           <div className="flex justify-center md:justify-start">
-            <span className="text-4xl font-playfairDisplay italic font-black uppercase tracking-tighter dnd-gold-gradient-text">
+            <span className="text-4xl font-playfairDisplay font-black uppercase tracking-tighter dnd-gold-gradient-text">
               S & F
             </span>
           </div>
