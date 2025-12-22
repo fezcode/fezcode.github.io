@@ -1,0 +1,29 @@
+(friends)
+  > (person)
+    (title) Celil Yiğit
+    (url) https://celilygt.com
+    (description)
+       He is a backend engineer specializing in high-performance computing and
+       machine learning with a passion for technical writing and interactive projects.
+
+  > (person)
+    (title) Mervan Savğa
+    (url) https://mervansavga.com/
+    (description)
+      He is a results-driven Software Engineer with a strong foundation
+      in computer science, also a photographer and visual artist.
+
+(books)
+  > (book)
+    (title) Clean Code: A Handbook of Agile Software Craftsmanship
+    (author) Robert C. Martin
+    (description)
+      A fundamental guide that teaches developers how to write better, more readable code by applying principles, patterns, and
+      practices of craftsmanship to transform "bad" code into maintainable, professional software.
+
+  > (book)
+    (title) Clean Architecture: A Craftsman's Guide to Software Structure and Design
+    (author) Robert C. Martin
+    (description)
+      An essential exploration of software design principles that focuses on creating systems with clear boundaries, ensuring that core
+      business logic remains independent of frameworks, databases, and UI for maximum flexibility and testability.
