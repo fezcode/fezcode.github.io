@@ -1,63 +1,55 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { DndContext } from '../../context/DndContext'; // Import DndContext
+import { DndContext } from '../../context/DndContext';
+import { CaretRight, House } from '@phosphor-icons/react';
 
 const DndNavbar = () => {
-  const { breadcrumbs } = useContext(DndContext); // Get breadcrumbs from context
+  const { breadcrumbs } = useContext(DndContext);
 
   const formatBreadcrumbLabel = (label) => {
-    const colonIndex = label.indexOf(':');
-    return colonIndex !== -1 ? label.substring(0, colonIndex) : label;
+    return label.indexOf(':') !== -1 ? label.substring(0, label.indexOf(':')) : label;
   };
 
   return (
-    <nav className="dnd-navbar">
-      <div className="dnd-navbar-left">
-        {breadcrumbs && breadcrumbs.length > 0 ? (
-          <div className="dnd-breadcrumbs">
-            {breadcrumbs.map((crumb, index) => (
-              <React.Fragment key={crumb.path || index}>
-                {index > 0 && (
-                  <span className="dnd-breadcrumb-separator">&rarr;</span>
-                )}
-                {crumb.path ? (
-                  <Link to={crumb.path} className="dnd-breadcrumb-link">
-                    {formatBreadcrumbLabel(crumb.label)}
-                  </Link>
-                ) : (
-                  <span className="dnd-breadcrumb-current">
-                    {formatBreadcrumbLabel(crumb.label)}
-                  </span>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
-        ) : (
-          <Link to="/" className="dnd-navbar-link">
-            Back to Home
+    <nav className="fixed top-0 left-0 right-0 z-[100] dnd-nav-modern border-b-2 border-dnd-gold">
+      {/* Top Bar: Navigation & Breadcrumbs */}
+      <div className="bg-black/40 px-6 py-2 flex items-center justify-between border-b border-white/5">
+        <div className="flex items-center gap-4">
+          <Link to="/" className="text-white hover:text-dnd-gold transition-colors">
+            <House size={18} weight="fill" />
           </Link>
-        )}
-      </div>
-      <div className="dnd-navbar-center">
-        <span
-          className="text-2xl font-semibold tracking-tight"
-          style={{
-            color: '#FFFACD',
-            textShadow: '2px 2px 4px rgba(0, 0, 0, 0.7)',
-          }}
-        >
-          From Serfs and Frauds
-        </span>
-      </div>
-      <div className="dnd-navbar-right">
-        <Link to="/" className="flex items-center space-x-2">
-          <span className="text-2xl font-semibold tracking-tight text-white">
-            fez<span className="text-primary-400">codex</span>
-          </span>
+
+          {breadcrumbs && breadcrumbs.length > 0 && (
+            <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em]">
+              {breadcrumbs.map((crumb, index) => (
+                <React.Fragment key={crumb.path || index}>
+                  <CaretRight size={10} className="text-white/40" />
+                  {crumb.path ? (
+                    <Link to={crumb.path} className="text-white/60 hover:text-white transition-colors">
+                      {formatBreadcrumbLabel(crumb.label)}
+                    </Link>
+                  ) : (
+                    <span className="text-white font-bold">
+                      {formatBreadcrumbLabel(crumb.label)}
+                    </span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+          )}
+        </div>
+        <Link to="/" className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/40 hover:text-dnd-gold transition-colors">
+          FEZCODEX_SYSTEM
         </Link>
+      </div>
+
+      {/* Main Bar: Title */}
+      <div className="px-6 py-4 flex items-center justify-center relative bg-gradient-to-b from-dnd-crimson to-transparent">
+        <span className="text-3xl md:text-4xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter drop-shadow-2xl">
+          From Serfs & Frauds
+        </span>
       </div>
     </nav>
   );
 };
-
 export default DndNavbar;

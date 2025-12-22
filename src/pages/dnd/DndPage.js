@@ -1,70 +1,69 @@
-import React, { useState, useEffect, useContext } from 'react';
-import '../../styles/dnd.css';
+import React, { useEffect, useContext } from 'react';
+import { motion } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
-import { parseWallpaperName } from '../../utils/dndUtils';
-import dndWallpapers from '../../utils/dndWallpapers';
 import DndCard from '../../components/dnd/DndCard';
+import DndLayout from '../../components/dnd/DndLayout';
 import useSeo from '../../hooks/useSeo';
 import { useAchievements } from '../../context/AchievementContext';
+import { BookOpen, Scroll } from '@phosphor-icons/react';
 
 const DndPage = () => {
   useSeo({
     title: 'From Serfs and Frauds | Fezcodex',
-    description:
-      'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
+    description: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
     keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'campaign'],
-    ogTitle: 'From Serfs and Frauds | Fezcodex',
-    ogDescription:
-      'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'From Serfs and Frauds | Fezcodex',
-    twitterDescription:
-      'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
-    twitterImage: '/images/asset/ogtitle.png',
   });
-  const [bgImage, setBgImage] = useState('');
-  const { setBgImageName, setBreadcrumbs } = useContext(DndContext); // Get setBgImageName and setBreadcrumbs from context
+
+  const { setBreadcrumbs } = useContext(DndContext);
   const { unlockAchievement } = useAchievements();
 
   useEffect(() => {
     unlockAchievement('story_explorer');
-    const images = dndWallpapers;
-    const randomImage = images[Math.floor(Math.random() * images.length)];
-    setBgImage(randomImage);
-    setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
     setBreadcrumbs([{ label: 'S&F', path: '/stories' }]);
-  }, [setBgImageName, setBreadcrumbs, unlockAchievement]);
+  }, [setBreadcrumbs, unlockAchievement]);
 
   return (
-    <div className="dnd-page-container">
-      <div
-        className="dnd-hero"
-        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})` }}
-      >
-        <h1 className="dnd-title-box">
-          <span style={{ color: 'white' }}>Welcome to the</span>
-          <br />
-          <span>From Serfs and Frauds</span>
-        </h1>
-        <div className="dnd-cards-container">
+    <DndLayout>
+      <div className="max-w-6xl mx-auto px-6 py-20 text-center relative">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
+          className="mb-24"
+        >
+          <div className="flex justify-center mb-8">
+             <div className="h-px w-24 bg-dnd-gold/40 self-center" />
+             <Scroll size={40} className="mx-6 text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+             <div className="h-px w-24 bg-dnd-gold/40 self-center" />
+          </div>
+
+                    <h1 className="text-xl md:text-2xl font-mono text-white/80 uppercase tracking-[0.5em] mb-4 drop-shadow-lg">
+                      Welcome to the
+                    </h1>
+                    <h2 className="text-6xl md:text-9xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter leading-none mb-12 drop-shadow-2xl">
+                      Great Archives
+                    </h2>
+
+                    <p className="text-xl md:text-2xl font-arvo text-gray-200 max-w-2xl mx-auto leading-relaxed italic opacity-90">
+                      "Every serf has a story, and every fraud a hidden truth. Step into the tapestry of our shared odyssey."
+                    </p>        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
           <DndCard
-            title="Lore"
-            description="Explore the world's history and tales."
+            title="Chronicles"
+            description="The documented history and lore of the realms."
             link="/stories/lore"
-            backgroundImage={`${process.env.PUBLIC_URL}/images/stories/parchment.png`}
-            className="dnd-card-parchment"
+            icon={<Scroll size={48} weight="duotone" />}
           />
           <DndCard
-            title="Authors"
-            description="Meet the creators of the tales."
+            title="Creators"
+            description="Meeting the scribes behind the legend."
             link="/stories/authors"
-            backgroundImage={`${process.env.PUBLIC_URL}/images/stories/parchment.png`}
-            className="dnd-card-parchment"
+            icon={<BookOpen size={48} weight="duotone" />}
           />
         </div>
       </div>
-    </div>
+    </DndLayout>
   );
 };
 

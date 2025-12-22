@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+
+:root {
+  --dnd-gold: #d4af37;
+  --dnd-gold-light: #f9e076;
+  --dnd-crimson: #4a0404;
+  --dnd-parchment: #f4f1ea;
+  --dnd-text: #2c1810;
+  --dnd-border: rgba(184, 134, 11, 0.4);
+}
+
+.dnd-theme-root {
+  background-color: #050505;
+  color: var(--dnd-text);
+  min-height: screen;
+  font-family: 'Arvo', serif;
+}
+
+/* High Fantasy Header Style */
+.dnd-fantasy-header {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-weight: 900;
+  color: var(--dnd-gold);
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+/* Parchment Effect Container */
+.dnd-parchment-container {
+  background-color: var(--dnd-parchment);
+  background-image: url('https://www.transparenttextures.com/patterns/pinstriped-suit.png'); /* Subtle texture */
+  border: 20px solid transparent;
+  border-image: url('https://www.transparenttextures.com/patterns/dark-matter.png') 30 round;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8), inset 0 0 100px rgba(0,0,0,0.2);
+  position: relative;
+  color: var(--dnd-text);
+}
+
+/* Ornate Border Decor */
+.dnd-ornate-corner {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 4px solid var(--dnd-gold);
+  z-index: 10;
+}
+
+.dnd-ornate-corner-tl { top: -10px; left: -10px; border-right: 0; border-bottom: 0; }
+.dnd-ornate-corner-tr { top: -10px; right: -10px; border-left: 0; border-bottom: 0; }
+.dnd-ornate-corner-bl { bottom: -10px; left: -10px; border-right: 0; border-top: 0; }
+.dnd-ornate-corner-br { bottom: -10px; right: -10px; border-left: 0; border-top: 0; }
+
+/* Navbar Refactor */
+.dnd-nav-modern {
+  background: linear-gradient(to bottom, rgba(74, 4, 4, 0.95), rgba(42, 10, 10, 0.8));
+  border-bottom: 3px solid var(--dnd-gold);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  backdrop-blur: 10px;
+}
+
+.dnd-nav-link {
+  font-family: 'Playfair Display', serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+  color: var(--dnd-gold-light);
+  transition: all 0.3s ease;
+}
+
+.dnd-nav-link:hover {
+  color: #fff;
+  text-shadow: 0 0 10px var(--dnd-gold);
+}
+
+/* Interactive Fantasy Cards */
+.dnd-fantasy-card {
+  background: var(--dnd-parchment);
+  border: 1px solid var(--dnd-border);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+}
+
+.dnd-fantasy-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--dnd-gold);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.dnd-fantasy-card-overlay {
+  background: linear-gradient(to top, var(--dnd-crimson), transparent);
+  opacity: 0.8;
+}
+
+/* Typography Overrides */
+.dnd-body-text {
+  font-family: 'Arvo', serif;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.dnd-gold-gradient-text {
+  background: linear-gradient(to bottom, var(--dnd-gold-light), var(--dnd-gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

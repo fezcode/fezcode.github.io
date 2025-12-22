@@ -1,94 +1,47 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
-import '../../styles/dnd.css';
 import useSeo from '../../hooks/useSeo';
-import piml from 'piml'; // Import piml
-import { DndContext } from '../../context/DndContext'; // Import DndContext
-import DndAuthorCard from '../../components/dnd/DndAuthorCard'; // Import DndAuthorCard
-import { parseWallpaperName } from '../../utils/dndUtils'; // Import parseWallpaperName
-import dndWallpapers from '../../utils/dndWallpapers'; // Import dndWallpapers
+import piml from 'piml';
+import { DndContext } from '../../context/DndContext';
+import DndAuthorCard from '../../components/dnd/DndAuthorCard';
+import DndLayout from '../../components/dnd/DndLayout';
 import { useAchievements } from '../../context/AchievementContext';
-
-const pageVariants = {
-  initial: {
-    opacity: 0,
-  },
-  in: {
-    opacity: 1,
-  },
-  out: {
-    opacity: 0,
-  },
-};
-
-const pageTransition = {
-  type: 'tween',
-  ease: 'easeInOut',
-  duration: 0.3,
-};
+import { Users } from '@phosphor-icons/react';
 
 function DndAuthorsPage() {
-  const { setBreadcrumbs, setBgImageName } = useContext(DndContext);
+  const { setBreadcrumbs } = useContext(DndContext);
   const [authors, setAuthors] = useState([]);
   const [books, setBooks] = useState([]);
-  const [bgImage, setBgImage] = useState(''); // State for background image
   const { unlockAchievement } = useAchievements();
 
   useSeo({
     title: 'Authors | From Serfs and Frauds',
-    description:
-      'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
+    description: 'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
     keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'authors'],
-    ogTitle: 'Authors | From Serfs and Frauds',
-    ogDescription:
-      'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Authors | From Serfs and Frauds',
-    twitterDescription:
-      'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
-    twitterImage: '/images/asset/ogtitle.png',
   });
 
   useEffect(() => {
     unlockAchievement('author_aficionado');
     setBreadcrumbs([{ label: 'S&F', path: '/stories' }, { label: 'Authors' }]);
 
-    const images = dndWallpapers;
-    const randomImage = images[Math.floor(Math.random() * images.length)];
-    setBgImage(randomImage);
-    setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
-
-    const fetchAllData = async () => {
+    const fetchData = async () => {
       try {
-        // Fetch authors from authors.piml
-        const authorsResponse = await fetch(
-          `${process.env.PUBLIC_URL}/stories/authors.piml`,
-        );
-        if (!authorsResponse.ok) {
-          throw new Error(`HTTP error! status: ${authorsResponse.status}`);
-        }
-        const authorsPimlText = await authorsResponse.text();
-        const authorsData = piml.parse(authorsPimlText);
-        setAuthors(authorsData.authors);
+        const [authRes, booksRes] = await Promise.all([
+          fetch(`${process.env.PUBLIC_URL}/stories/authors.piml`),
+          fetch(`${process.env.PUBLIC_URL}/stories/books.piml`)
+        ]);
 
-        // Fetch books from books.piml
-        const booksResponse = await fetch(
-          `${process.env.PUBLIC_URL}/stories/books.piml`,
-        );
-        if (!booksResponse.ok) {
-          throw new Error(`HTTP error! status: ${booksResponse.status}`);
+        if (authRes.ok && booksRes.ok) {
+          const [authText, booksText] = await Promise.all([authRes.text(), booksRes.text()]);
+          setAuthors(piml.parse(authText).authors);
+          setBooks(piml.parse(booksText).books);
         }
-        const booksPimlText = await booksResponse.text();
-        const booksData = piml.parse(booksPimlText);
-        setBooks(booksData.books);
       } catch (error) {
         console.error('Failed to fetch data:', error);
       }
     };
-
-    fetchAllData();
-  }, [setBreadcrumbs, setBgImageName, unlockAchievement]);
+    fetchData();
+  }, [setBreadcrumbs, unlockAchievement]);
 
   const getBooksByAuthor = (authorName, authorAlias) => {
     const authorBooks = [];
@@ -109,35 +62,40 @@ function DndAuthorsPage() {
   };
 
   return (
-    <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransition}
-      className="dnd-page-container"
-    >
-      <div
-        className="dnd-hero"
-        style={{ backgroundImage: `url(${process.env.PUBLIC_URL}${bgImage})` }}
-      >
-        <h1 className="dnd-title-box">
-          <span className="dnd-hero-title-white">Authors</span>
-        </h1>
-        <div className="dnd-cards-container" style={{ zIndex: 1 }}>
+    <DndLayout>
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <header className="text-center mb-24 relative">
+          <div className="flex justify-center mb-6">
+             <Users size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+          </div>
+          <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none">
+            The Scribes
+          </h1>
+          <p className="text-lg md:text-xl font-arvo text-gray-400 max-w-2xl mx-auto uppercase tracking-widest opacity-60">
+            Meeting the voices behind the recorded history of the realms.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
           {authors.map((author, index) => (
-            <DndAuthorCard
+            <motion.div
               key={index}
-              authorName={author.name}
-              authorWebsite={author.website}
-              authorImage={author.image}
-              authorAlias={author.alias} // Pass the alias
-              booksWritten={getBooksByAuthor(author.name, author.alias)}
-            />
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <DndAuthorCard
+                authorName={author.name}
+                authorWebsite={author.website}
+                authorImage={author.image}
+                authorAlias={author.alias}
+                booksWritten={getBooksByAuthor(author.name, author.alias)}
+              />
+            </motion.div>
           ))}
         </div>
       </div>
-    </motion.div>
+    </DndLayout>
   );
 }
 

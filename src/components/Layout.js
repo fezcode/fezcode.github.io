@@ -3,8 +3,6 @@ import Navbar from './Navbar';
 import ClassicSidebar from './ClassicSidebar';
 import BrutalistSidebar from './BrutalistSidebar';
 import Footer from './Footer';
-import DndNavbar from './dnd/DndNavbar';
-import DndFooter from './dnd/DndFooter';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
@@ -47,11 +45,7 @@ const Layout = ({
   if (location.pathname.startsWith('/stories')) {
     return (
       <DndProvider>
-        <div className="bg-gray-950 min-h-screen font-sans flex flex-col">
-          <DndNavbar />
-          <main className="flex-grow">{children}</main>
-          <DndFooter />
-        </div>
+        {children}
       </DndProvider>
     );
   }
