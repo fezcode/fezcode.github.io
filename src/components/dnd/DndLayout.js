@@ -6,7 +6,55 @@ import DndFooter from './DndFooter';
 import dndWallpapers from '../../utils/dndWallpapers';
 import { parseWallpaperName } from '../../utils/dndUtils';
 import '../../styles/dnd-refactor.css';
-import { GameController, Flame } from '@phosphor-icons/react';
+import { GameController, Flame, TreasureChest } from '@phosphor-icons/react';
+import { useToast } from '../../hooks/useToast';
+
+const Lightning = () => (
+  <div className="dnd-lightning-overlay" />
+);
+
+const LootDiscovery = () => {
+  const { addToast } = useToast();
+  const [showLoot, setShowLoot] = useState(false);
+  const [lootPos, setLootPos] = useState({ top: '50%', left: '50%' });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // 50% chance every 15 seconds
+      if (Math.random() > 0.5) {
+        setLootPos({
+          top: `${30 + Math.random() * 40}%`,
+          left: `${20 + Math.random() * 60}%`,
+        });
+        setShowLoot(true);
+        setTimeout(() => setShowLoot(false), 8000); // Hide after 8s
+      }
+    }, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
+  if (!showLoot) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0 }}
+      onClick={() => {
+        addToast({
+          title: 'Loot Discovered!',
+          message: 'You found an ancient relic in the archives.',
+          type: 'gold',
+        });
+        setShowLoot(false);
+      }}
+      className="fixed z-[150] dnd-loot-item text-dnd-gold"
+      style={{ top: lootPos.top, left: lootPos.left }}
+    >
+      <TreasureChest size={32} weight="fill" />
+    </motion.div>
+  );
+};
 
 const FireplaceAudio = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -184,7 +232,7 @@ const DiceRoller = () => {
       )}
       <button
         onClick={rollDice}
-        className={`p-4 bg-dnd-crimson border-2 border-dnd-gold rounded-full text-dnd-gold shadow-2xl transition-all hover:scale-110 active:scale-95 ${isRolling ? 'dnd-dice-action' : ''}`}
+        className={`p-4 bg-dnd-crimson border-2 border-dnd-gold rounded-full text-white/50 shadow-2xl transition-all hover:scale-110 active:scale-95 ${isRolling ? 'dnd-dice-action' : ''}`}
       >
         <GameController size={32} weight="fill" />
       </button>
@@ -205,6 +253,8 @@ const DndLayout = ({ children }) => {
   return (
     <div className="dnd-theme-root min-h-screen flex flex-col relative overflow-x-hidden">
       <ViewportFrame />
+      <Lightning />
+      <LootDiscovery />
       <FireplaceAudio />
       <FireOverlay />
       <Torchlight />

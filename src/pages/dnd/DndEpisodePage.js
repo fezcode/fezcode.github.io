@@ -168,9 +168,17 @@ function DndEpisodePage() {
 
                     >
 
-                      <div className="dnd-stat-block shadow-2xl lg:sticky lg:top-40 group">
+                                    <div className="dnd-stat-block shadow-2xl lg:sticky lg:top-40 group">
 
-                        <div className="dnd-stat-block-header">
+                                      {/* Hidden message in sidebar */}
+
+                                      <div className="absolute -bottom-8 left-0 w-full text-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+
+                                         <span className="dnd-secret-text text-[8px] uppercase tracking-[0.2em]">Don't believe the scribes</span>
+
+                                      </div>
+
+                                      <div className="dnd-stat-block-header">
 
                           {currentEpisode.author}
 
@@ -248,17 +256,31 @@ function DndEpisodePage() {
 
                     </motion.aside>
 
-                                <motion.div
+                                            <motion.div
 
-                                  initial={{ opacity: 0, y: 30 }}
+                                              initial={{ opacity: 0, y: 30 }}
 
-                                  animate={{ opacity: 1, y: 0 }}
+                                              animate={{ opacity: 1, y: 0 }}
 
-                                  className="lg:col-span-4 dnd-parchment-container p-8 md:p-24 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col relative dnd-parchment-glow"
+                                              className="lg:col-span-4 dnd-parchment-container p-8 md:p-24 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col relative dnd-parchment-glow"
 
-                                >
+                                            >
 
-                                  {/* Scroll Ornaments */}
+                                              {/* Secret Inscriptions */}
+
+                                              <div className="absolute top-1/4 -left-4 -rotate-90 pointer-events-none">
+
+                                                 <span className="dnd-secret-text text-[10px] uppercase tracking-[1em]">The walls have eyes</span>
+
+                                              </div>
+
+                                              <div className="absolute bottom-1/4 -right-4 rotate-90 pointer-events-none">
+
+                                                 <span className="dnd-secret-text text-[10px] uppercase tracking-[1em]">History is written by survivors</span>
+
+                                              </div>
+
+                                              {/* Scroll Ornaments */}
 
                                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-b-full blur-xl dnd-scroll-accent" />
 

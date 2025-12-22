@@ -279,6 +279,60 @@
     0 40px 80px rgba(0,0,0,0.7);
 }
 
+/* Arcane Lightning Flash */
+@keyframes dnd-lightning {
+  0%, 95%, 100% { opacity: 0; }
+  96% { opacity: 0.2; }
+  97% { opacity: 0.05; }
+  98% { opacity: 0.4; }
+}
+
+.dnd-lightning-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0;
+  mix-blend-mode: overlay;
+  animation: dnd-lightning 7s infinite;
+}
+
+/* Secret Inscriptions - More visible */
+.dnd-secret-text {
+  font-family: 'MedievalSharp', cursive;
+  color: var(--dnd-crimson);
+  opacity: 0.15;
+  filter: blur(1px);
+  transition: all 0.5s ease;
+  user-select: none;
+  font-weight: bold;
+}
+
+.dnd-parchment-container:hover .dnd-secret-text {
+  opacity: 0.4;
+  color: var(--dnd-gold);
+  filter: blur(0px);
+  text-shadow: 0 0 10px var(--dnd-gold);
+}
+
+/* Gold Coin / Loot Styling */
+@keyframes loot-shine {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.5) drop-shadow(0 0 10px gold); }
+  100% { filter: brightness(1); }
+}
+
+.dnd-loot-item {
+  cursor: pointer;
+  animation: loot-shine 2s infinite ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.dnd-loot-item:hover {
+  transform: scale(1.5) rotate(15deg);
+}
+
 /* Silk Ribbon Style */
 .dnd-ribbon {
   position: absolute;
