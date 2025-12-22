@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from './Navbar';
-import Sidebar from './Sidebar';
+import ClassicSidebar from './ClassicSidebar';
 import BrutalistSidebar from './BrutalistSidebar';
 import Footer from './Footer';
 import DndNavbar from './dnd/DndNavbar';
@@ -73,7 +73,7 @@ const Layout = ({
       <div className="bg-gray-950 min-h-screen font-sans flex">
         {!hideLayout &&
           (sidebarMode === 'classic' ? (
-            <Sidebar
+            <ClassicSidebar
               isOpen={isSidebarOpen}
               toggleSidebar={toggleSidebar}
               toggleModal={toggleModal}

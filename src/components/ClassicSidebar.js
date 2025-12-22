@@ -41,7 +41,7 @@ import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 import { useAchievements } from '../context/AchievementContext';
 import colors from '../config/colors';
 
-const Sidebar = ({
+const ClassicSidebar = ({
   isOpen,
   toggleSidebar,
   toggleModal,
@@ -458,4 +458,4 @@ const Sidebar = ({
   );
 };
 
-export default Sidebar;
+export default ClassicSidebar;
