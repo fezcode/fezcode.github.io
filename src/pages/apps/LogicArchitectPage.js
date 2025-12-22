@@ -9,6 +9,7 @@ import {
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
+import BrutalistDialog from '../../components/BrutalistDialog';
 
 const GATES_META = {
   and: { label: 'AND', inputs: 2, color: '#10b981' },
@@ -22,6 +23,7 @@ const GATES_META = {
 const LogicArchitectPage = () => {
   const appName = 'Logic Architect';
   const { addToast } = useToast();
+  const [isClearDialogOpen, setIsClearDialogOpen] = useState(false);
 
   useSeo({
     title: `${appName} | Fezcodex`,
@@ -161,13 +163,28 @@ const LogicArchitectPage = () => {
             </button>
           ))}
           <button
-            onClick={() => { if(window.confirm('Clear workspace?')) { setNodes([]); setConnections([]); } }}
+            onClick={() => setIsClearDialogOpen(true)}
             className="px-3 py-1 border border-red-500/20 text-red-500 hover:bg-red-500 hover:text-black text-[10px] font-bold uppercase transition-all ml-4"
           >
             Flush_All
           </button>
         </div>
       </div>
+
+      <BrutalistDialog
+        isOpen={isClearDialogOpen}
+        onClose={() => setIsClearDialogOpen(false)}
+        onConfirm={() => {
+          setNodes([]);
+          setConnections([]);
+          setIsClearDialogOpen(false);
+          addToast({ title: 'Workspace Flushed', message: 'All modules and pathways have been purged.', type: 'info' });
+        }}
+        title="FLUSH_WORKSPACE"
+        message="This will permanently delete all logic gates and connections. proceed with protocol?"
+        confirmText="CONFIRM_PURGE"
+        cancelText="ABORT_FLUSH"
+      />
 
       <div className="flex-grow relative bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:40px_40px]" ref={workspaceRef}>
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">

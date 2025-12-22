@@ -588,27 +588,3 @@
 .dnd-list-item-link:hover {
   color: #ffb03a;
 }
-
-@media (max-width: 768px) {
-  .dnd-page-container,
-  .dnd-navbar,
-  .dnd-footer {
-    font-family: serif !important;
-  }
-
-  .dnd-books-section {
-    display: none;
-  }
-
-  .dnd-breadcrumbs {
-    display: none;
-  }
-
-  .dnd-navbar-center {
-    display: none;
-  }
-
-  .dnd-footer-logo-section {
-    display: none;
-  }
-}

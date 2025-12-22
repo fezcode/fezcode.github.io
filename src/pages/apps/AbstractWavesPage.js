@@ -8,6 +8,7 @@ import {
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import CustomSlider from '../../components/CustomSlider';
 
 const AbstractWavesPage = () => {
   useSeo({
@@ -206,106 +207,57 @@ const AbstractWavesPage = () => {
             </div>
 
             <div className="space-y-4">
-              <div>
-                <label className="flex justify-between text-sm font-medium text-gray-700 mb-1">
-                  <span>Line Count</span>
-                  <span className="text-gray-500">{lineCount}</span>
-                </label>
-                <input
-                  type="range"
-                  min="10"
-                  max="100"
-                  value={lineCount}
-                  onChange={(e) => setLineCount(Number(e.target.value))}
-                  className="w-full accent-black"
-                />
-              </div>
-              <div>
-                <label className="flex justify-between text-sm font-medium text-gray-700 mb-1">
-                  <span>Amplitude (Height)</span>
-                  <span className="text-gray-500">{Math.round(amplitude)}</span>
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="150"
-                  value={amplitude}
-                  onChange={(e) => setAmplitude(Number(e.target.value))}
-                  className="w-full accent-black"
-                />
-              </div>
-              <div>
-                <label className="flex justify-between text-sm font-medium text-gray-700 mb-1">
-                  <span>Frequency (Width)</span>
-                  <span className="text-gray-500">{frequency.toFixed(3)}</span>
-                </label>
-                <input
-                  type="range"
-                  min="0.001"
-                  max="0.05"
-                  step="0.001"
-                  value={frequency}
-                  onChange={(e) => setFrequency(Number(e.target.value))}
-                  className="w-full accent-black"
-                />
-              </div>
-              <div>
-                <label className="flex justify-between text-sm font-medium text-gray-700 mb-1">
-                  <span>Spacing</span>
-                  <span className="text-gray-500">{perspective}px</span>
-                </label>
-                <input
-                  type="range"
-                  min="2"
-                  max="40"
-                  value={perspective}
-                  onChange={(e) => setPerspective(Number(e.target.value))}
-                  className="w-full accent-black"
-                />
-              </div>
-              <div>
-                <label className="flex justify-between text-sm font-medium text-gray-700 mb-1">
-                  <span>Noise / Distortion</span>
-                  <span className="text-gray-500">{Math.round(noise)}</span>
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="100"
-                  value={noise}
-                  onChange={(e) => setNoise(Number(e.target.value))}
-                  className="w-full accent-black"
-                />
-              </div>
-              <div>
-                <label className="flex justify-between text-sm font-medium text-gray-700 mb-1">
-                  <span>Phase Shift</span>
-                  <span className="text-gray-500">{phase.toFixed(1)}</span>
-                </label>
-                <input
-                  type="range"
-                  min="0"
-                  max="10"
-                  step="0.1"
-                  value={phase}
-                  onChange={(e) => setPhase(Number(e.target.value))}
-                  className="w-full accent-black"
-                />
-              </div>
-              <div>
-                <label className="flex justify-between text-sm font-medium text-gray-700 mb-1">
-                  <span>Line Width</span>
-                  <span className="text-gray-500">{lineWidth}px</span>
-                </label>
-                <input
-                  type="range"
-                  min="1"
-                  max="10"
-                  value={lineWidth}
-                  onChange={(e) => setLineWidth(Number(e.target.value))}
-                  className="w-full accent-black"
-                />
-              </div>
+              <CustomSlider
+                label="Line Count"
+                min={10}
+                max={100}
+                value={lineCount}
+                onChange={setLineCount}
+              />
+              <CustomSlider
+                label="Amplitude (Height)"
+                min={0}
+                max={150}
+                value={Math.round(amplitude)}
+                onChange={setAmplitude}
+              />
+              <CustomSlider
+                label="Frequency (Width)"
+                min={0.001}
+                max={0.05}
+                step={0.001}
+                value={frequency}
+                onChange={setFrequency}
+              />
+              <CustomSlider
+                label="Spacing"
+                min={2}
+                max={40}
+                value={perspective}
+                onChange={setPerspective}
+              />
+              <CustomSlider
+                label="Noise / Distortion"
+                min={0}
+                max={100}
+                value={Math.round(noise)}
+                onChange={setNoise}
+              />
+              <CustomSlider
+                label="Phase Shift"
+                min={0}
+                max={10}
+                step={0.1}
+                value={phase}
+                onChange={setPhase}
+              />
+              <CustomSlider
+                label="Line Width"
+                min={1}
+                max={10}
+                value={lineWidth}
+                onChange={setLineWidth}
+              />
             </div>
             <div className="bg-gray-100 p-3 rounded-lg text-xs text-gray-600">
               <strong>Tip:</strong> "Opaque Lines" hides the waves behind the

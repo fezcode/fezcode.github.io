@@ -10,9 +10,9 @@ body {
 body {
   margin: 0;
   background-color: #020617;
-  font-family: 'Space Mono', 'JetBrains Mono', monospace, sans-serif !important;
-  font-weight: 400 !important;
-  font-style: normal !important;
+  font-family: 'Space Mono', 'JetBrains Mono', monospace, sans-serif;
+  font-weight: 400;
+  font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:
@@ -379,7 +379,7 @@ body.vaporwave-mode {
   color: #01cdfe !important; /* Neon Cyan Text */
   text-shadow: 2px 2px 0px rgba(255, 113, 206, 0.4); /* Pink shadow */
   font-family:
-    'Brush Script MT', 'Comic Sans MS', cursive !important; /* A E S T H E T I C font choice, or fallback */
+    'Brush Script MT', 'Comic Sans MS', monospace !important; /* A E S T H E T I C font choice, or fallback */
 }
 
 body.vaporwave-mode * {
@@ -488,7 +488,7 @@ body.comic-mode {
   background-image: radial-gradient(#e5e5f7 2px, transparent 2px);
   background-size: 10px 10px; /* Halftone dots */
   color: #000000 !important;
-  font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif !important;
+  font-family: 'Comic Sans MS', 'Chalkboard SE', monospace !important;
 }
 
 body.comic-mode * {
@@ -516,7 +516,7 @@ body.sketchbook-mode {
   );
   background-size: 100% 30px;
   color: #333333 !important;
-  font-family: 'Segoe Print', 'Bradley Hand', cursive !important;
+  font-family: 'Segoe Print', 'Bradley Hand', monospace !important;
 }
 
 body.sketchbook-mode * {
@@ -541,7 +541,7 @@ body.sketchbook-mode img {
 body.hellenic-mode {
   background-color: #fdfbf7 !important;
   color: #2c3e50 !important;
-  font-family: 'Cinzel', 'Trajan Pro', 'Times New Roman', serif !important;
+  font-family: 'Cinzel', 'Trajan Pro', 'Times New Roman', monospace !important;
   background-image:
     radial-gradient(
       circle at 100% 150%,

@@ -5,7 +5,7 @@ import ProjectCard from '../components/ProjectCard';
 import GenerativeArt from '../components/GenerativeArt';
 import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
-import { ArrowLeft, Cpu } from '@phosphor-icons/react';
+import { ArrowLeftIcon, CpuIcon } from '@phosphor-icons/react';
 import { useAchievements } from '../context/AchievementContext';
 
 const ProjectsPage = () => {
@@ -83,7 +83,7 @@ const ProjectsPage = () => {
             to="/"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon weight="bold" />
             <span>Home</span>
           </Link>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none">
@@ -176,7 +176,7 @@ const ProjectsPage = () => {
                       <span className="text-sm font-bold uppercase tracking-widest">
                         Visit Live Site
                       </span>
-                      <ArrowLeft className="rotate-135" weight="bold" />
+                      <ArrowLeftIcon className="rotate-135" weight="bold" />
                     </a>
                   </motion.div>
                 )}
@@ -188,7 +188,7 @@ const ProjectsPage = () => {
         {/* Placeholder / Empty State */}
         {!activeProject && (
           <div className="absolute inset-0 flex items-center justify-center text-gray-700">
-            <Cpu size={64} weight="thin" className="animate-pulse" />
+            <CpuIcon size={64} weight="thin" className="animate-pulse" />
           </div>
         )}
       </div>

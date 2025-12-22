@@ -13,6 +13,7 @@ import {
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
+import CustomSlider from '../../components/CustomSlider';
 
 const AssetStudioPage = () => {
   const appName = 'Asset Studio';
@@ -221,14 +222,13 @@ const AssetStudioPage = () => {
                   Scale Percentage
                 </h3>
                 <div className="space-y-4">
-                  <div className="flex justify-between font-mono text-[10px] uppercase text-gray-500">
-                    <span>Multiplier</span>
-                    <span className="text-white font-black">{scale}X</span>
-                  </div>
-                  <input
-                    type="range" min="0.1" max="4" step="0.1" value={scale}
-                    onChange={(e) => setScale(parseFloat(e.target.value))}
-                    className="w-full accent-white h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer"
+                  <CustomSlider
+                    label="Multiplier"
+                    min={0.1}
+                    max={4}
+                    step={0.1}
+                    value={scale}
+                    onChange={setScale}
                   />
                 </div>
                 <AssetButton

@@ -26,8 +26,8 @@ module.exports = {
         '4xl': '1700px',
       },
       fontFamily: {
-        sans: ['Space Mono', ...defaultTheme.fontFamily.sans],
-        mono: ['JetBrains Mono', ...defaultTheme.fontFamily.mono],
+        sans: ['Space Mono', 'monospace', ...defaultTheme.fontFamily.sans],
+        mono: ['JetBrains Mono', 'monospace', ...defaultTheme.fontFamily.mono],
         arvo: fonts.arvo, // New custom font
         playfairDisplay: fonts.playfairDisplay, // New custom font
         inter: fonts.inter, // New custom font
