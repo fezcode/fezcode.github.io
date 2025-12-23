@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Funnel, XCircle, Info } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  FunnelIcon,
+  XCircleIcon,
+  InfoIcon,
+  SquaresFourIcon,
+  ListIcon,
+} from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogCard from '../components/LogCard';
 import useSeo from '../hooks/useSeo';
+import usePersistentState from '../hooks/usePersistentState';
 import colors from '../config/colors';
 import { useAchievements } from '../context/AchievementContext';
 import piml from 'piml';
@@ -39,6 +47,7 @@ const LogsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredLogs, setFilteredLogs] = useState([]);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+  const [viewMode, setViewMode] = usePersistentState('fez_logs_view_mode', 'grid');
   const { unlockAchievement } = useAchievements();
   const { openSidePanel } = useSidePanel();
 
@@ -110,7 +119,7 @@ const LogsPage = () => {
             to="/"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon weight="bold" />
             <span>Home</span>
           </Link>
 
@@ -124,13 +133,32 @@ const LogsPage = () => {
               </p>
             </div>
 
-            <button
-              onClick={() => setIsInfoModalOpen(true)}
-              className="text-gray-500 hover:text-emerald-400 transition-colors font-mono text-xs uppercase tracking-widest flex items-center gap-2"
-            >
-              <Info size={16} />
-              <span>Rating System</span>
-            </button>
+            <div className="flex items-center gap-6">
+              <div className="flex bg-white/5 p-1 rounded-sm border border-white/10">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 transition-all ${viewMode === 'grid' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}
+                  title="Grid View"
+                >
+                  <SquaresFourIcon size={18} weight={viewMode === 'grid' ? 'fill' : 'regular'} />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`p-2 transition-all ${viewMode === 'list' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}
+                  title="List View"
+                >
+                  <ListIcon size={18} weight={viewMode === 'list' ? 'fill' : 'regular'} />
+                </button>
+              </div>
+
+              <button
+                onClick={() => setIsInfoModalOpen(true)}
+                className="text-gray-500 hover:text-emerald-400 transition-colors font-mono text-xs uppercase tracking-widest flex items-center gap-2"
+              >
+                <InfoIcon size={16} />
+                <span>Rating System</span>
+              </button>
+            </div>
           </div>
         </header>
 
@@ -150,7 +178,7 @@ const LogsPage = () => {
           {/* Filters */}
           <div className="flex flex-wrap items-center gap-3">
             <div className="flex items-center gap-2 mr-2 text-gray-600 font-mono text-xs uppercase tracking-widest">
-              <Funnel size={14} weight="fill" />
+              <FunnelIcon size={14} weight="fill" />
               <span>Filter By</span>
             </div>
 
@@ -190,7 +218,7 @@ const LogsPage = () => {
                 }}
                 className="ml-auto text-red-500 hover:text-red-400 transition-colors"
               >
-                <XCircle size={20} weight="fill" />
+                <XCircleIcon size={20} weight="fill" />
               </button>
             )}
           </div>
@@ -198,9 +226,12 @@ const LogsPage = () => {
 
         {/* Content List */}
         {loading ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-pulse">
+          <div className={viewMode === 'grid'
+            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-pulse"
+            : "flex flex-col gap-4 animate-pulse"
+          }>
             {[...Array(8)].map((_, i) => (
-              <div key={i} className="h-64 w-full bg-white/5 rounded-sm" />
+              <div key={i} className={viewMode === 'grid' ? "h-64 w-full bg-white/5 rounded-sm" : "h-20 w-full bg-white/5 rounded-sm"} />
             ))}
           </div>
         ) : (
@@ -208,21 +239,25 @@ const LogsPage = () => {
             <AnimatePresence mode="popLayout">
               <motion.div
                 layout
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                className={viewMode === 'grid'
+                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+                  : "flex flex-col"
+                }
               >
                 {filteredLogs.map((log) => (
                   <motion.div
                     layout
                     key={log.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
+                    initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
                     transition={{ duration: 0.2 }}
                   >
                     <LogCard
                       log={log}
                       index={log.originalIndex}
                       totalLogs={logs.length}
+                      viewMode={viewMode}
                     />
                   </motion.div>
                 ))}
