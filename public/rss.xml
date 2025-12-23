@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 22 Dec 2025 21:47:32 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 23 Dec 2025 01:41:21 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 22 Dec 2025 21:47:32 GMT</pubDate>
+        <pubDate>Tue, 23 Dec 2025 01:41:21 GMT</pubDate>
         <copyright><![CDATA[2025 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Quick Renaming .js to .jsx for React]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/renaming-js-to-jsx-gist</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/renaming-js-to-jsx-gist</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 23 Dec 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>The Command (PowerShell)</h2>
+<p><a href="https://fezcode.com/blog/renaming-js-to-jsx-gist">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Corrupted Blood Incident: When a Glitch Taught Us About Pandemics]]></title>
             <description><![CDATA[[object Object]]]></description>
