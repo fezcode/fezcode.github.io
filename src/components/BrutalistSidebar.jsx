@@ -23,6 +23,7 @@ import {
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
   FlaskIcon,
+  BookBookmarkIcon,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -54,6 +55,7 @@ const ICON_MAP = {
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
   FlaskIcon,
+  BookBookmarkIcon,
 };
 
 const BrutalistSidebar = ({

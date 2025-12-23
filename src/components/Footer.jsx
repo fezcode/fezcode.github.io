@@ -84,6 +84,7 @@ const Footer = () => {
                 { label: 'Blog', to: '/blog' },
                 { label: 'Projects', to: '/projects' },
                 { label: 'Logs', to: '/logs' },
+                { label: 'Vocab', to: '/vocab' },
                 { label: 'Apps', to: '/apps' },
                 { label: 'Timeline', to: '/timeline' },
                 { label: 'Manuals', to: '/commands' },

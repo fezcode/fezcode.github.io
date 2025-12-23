@@ -32,6 +32,7 @@ import {
   SkullIcon,
   BugBeetleIcon,
   FlaskIcon,
+  BookBookmarkIcon,
 } from '@phosphor-icons/react';
 
 import Fez from './Fez';
@@ -252,6 +253,10 @@ const ClassicSidebar = ({
                   <NavLink to="/logs" className={getLinkClass}>
                     <ArticleIcon size={24} />
                     <span>Logs</span>
+                  </NavLink>
+                  <NavLink to="/vocab" className={getLinkClass}>
+                    <BookBookmarkIcon size={24} />
+                    <span>Vocab</span>
                   </NavLink>
                 </nav>
               )}
