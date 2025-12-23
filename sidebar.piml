@@ -32,6 +32,10 @@
         (label) Discovery Logs
         (to) /logs
         (icon) ArticleIcon
+      > (item)
+        (label) Glossary
+        (to) /vocab
+        (icon) BookBookmarkIcon
 
   > (section)
     (id) isAppsOpen
