@@ -35,7 +35,7 @@ code {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid #4b5563; /* subtle gray border */
+  /*border: 5px solid #4b5563; !* subtle gray border *!*/
   border-radius: 0.25rem; /* rounded corners */
 }
 
@@ -47,7 +47,7 @@ code {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  border: 5px solid #4b5563; /* subtle gray border, same as images */
+  border: 1px solid #4b5563; /* subtle gray border, same as images */
   border-radius: 0.25rem; /* rounded corners, same as images */
 }
 

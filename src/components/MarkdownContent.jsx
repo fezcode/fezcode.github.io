@@ -6,16 +6,16 @@ import { ImagesIcon } from '@phosphor-icons/react';
 import ImageModal from './ImageModal';
 
 const MarkdownContent = ({ content, components = {}, className = '' }) => {
-  const [modalImage, setModalImage] = useState(null);
+  const [modalData, setModalData] = useState(null);
 
   const CustomImage = ({ src, alt, ...props }) => {
     return (
-      <figure className="my-8 group relative overflow-hidden rounded-lg border border-white/10 bg-white/5">
+      <figure className="my-8 group relative overflow-hidden rounded-lg">
         <img
           src={src}
           alt={alt}
           className="w-full h-auto transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-          onClick={() => setModalImage(src)}
+          onClick={() => setModalData({ src, alt })}
           {...props}
         />
         {alt && (
@@ -48,9 +48,9 @@ const MarkdownContent = ({ content, components = {}, className = '' }) => {
         </div>
 
         <ImageModal
-          src={modalImage}
-          alt="Enlarged Content"
-          onClose={() => setModalImage(null)}
+          src={modalData?.src}
+          alt={modalData?.alt}
+          onClose={() => setModalData(null)}
         />
       </>
     );

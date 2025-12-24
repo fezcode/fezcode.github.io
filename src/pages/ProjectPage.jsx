@@ -129,7 +129,7 @@ const ProjectPage = () => {
                </span>
             </div>
 
-            <h1 className="text-5xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-white leading-[0.9] mb-8 max-w-5xl">
+            <h1 className="text-5xl md:text-8xl lg:text-9xl font-light uppercase tracking-tighter text-white leading-[0.9] mb-8 max-w-5xl font-playfairDisplay">
               {fullProject.title}
             </h1>
 
@@ -159,7 +159,7 @@ const ProjectPage = () => {
               viewport={{ once: true }}
               className="mb-16 border-l-2 border-emerald-500 pl-8 py-2"
             >
-              <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 font-light leading-relaxed font-sans">
+              <p className="text-xl md:text-2xl lg:text-3xl text-gray-200 font-light leading-relaxed font-arvo">
                 {fullProject.shortDescription}
               </p>
             </motion.div>
@@ -169,11 +169,11 @@ const ProjectPage = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="prose prose-invert prose-lg max-w-none
-                  prose-headings:font-sans prose-headings:uppercase prose-headings:tracking-tight prose-headings:font-bold prose-headings:text-white
+              className="prose prose-invert prose-lg max-w-none font-arvo
+                  prose-headings:font-playfairDisplay prose-headings:uppercase prose-headings:tracking-tight prose-headings:font-normal prose-headings:text-white
                   prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
                   prose-h3:text-xl prose-h3:mt-8 prose-h3:text-emerald-400
-                  prose-p:text-gray-400 prose-p:font-sans prose-p:leading-relaxed
+                  prose-p:text-gray-400 prose-p:leading-relaxed
                   prose-a:text-emerald-400 prose-a:no-underline prose-a:border-b prose-a:border-emerald-400/30 hover:prose-a:border-emerald-400 hover:prose-a:text-emerald-300 prose-a:transition-all
                   prose-code:text-emerald-200 prose-code:font-mono prose-code:bg-emerald-900/20 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:border prose-code:border-emerald-900/30
                   prose-pre:bg-[#0A0A0A] prose-pre:border prose-pre:border-white/10 prose-pre:shadow-2xl
