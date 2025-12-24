@@ -44,6 +44,7 @@ const STYLES = [
   { label: 'Pip-Boy Interface', value: 'pipboy' },
   { label: 'Stellar Cartography', value: 'stellar' },
   { label: 'Geometric Circles', value: 'circles' },
+  { label: 'Pixel Construct', value: 'pixel' },
 ];
 
 const RESOLUTIONS = [
@@ -342,6 +343,21 @@ const WallpaperEnginePage = () => {
       const centerX = canvas.width / 2; const centerY = canvas.height / 2; const baseSize = Math.min(canvas.width, canvas.height);
       const count = Math.floor(5 + complexity / 5); for (let i = 0; i < count; i++) { const x = nextRand() * canvas.width; const y = nextRand() * canvas.height; const radius = (nextRand() * 200 + 50) * (baseSize / 1000); const color = nextRand() > 0.5 ? mainColor : accentColor; ctx.save(); ctx.translate(x, y); ctx.strokeStyle = color; ctx.lineWidth = 1 + nextRand() * 3; ctx.globalAlpha = 0.2 + nextRand() * 0.4; ctx.beginPath(); ctx.arc(0, 0, radius, 0, Math.PI * 2); ctx.stroke(); if (nextRand() > 0.5) { ctx.globalAlpha = 0.1; ctx.fillStyle = color; ctx.beginPath(); ctx.arc(0, 0, radius * 0.8, 0, Math.PI * 2); ctx.fill(); } if (nextRand() > 0.7) { ctx.setLineDash([5, 5]); ctx.beginPath(); ctx.arc(0, 0, radius + 10, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]); } if (nextRand() > 0.6) { ctx.globalAlpha = 0.6; ctx.fillStyle = color; ctx.font = `${Math.floor(10 * (baseSize/1000))}px monospace`; ctx.fillText(`RAD: ${Math.floor(radius)}px`, radius + 5, 0); ctx.fillText(`PHI: ${Math.floor(nextRand() * 360)}°`, radius + 5, 12); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(radius, 0); ctx.stroke(); } ctx.restore(); }
       ctx.globalAlpha = 0.1; ctx.strokeStyle = mainColor; ctx.lineWidth = 10; ctx.beginPath(); ctx.arc(centerX, centerY, baseSize * 0.35, 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 0.3; ctx.setLineDash([2, 10]); ctx.beginPath(); ctx.arc(centerX, centerY, baseSize * 0.37, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+    } else if (style === 'pixel') {
+      const mainColor = colors[0]; const accentColor = colors[1] || colors[0]; const bgColor = colors[colors.length - 1];
+      ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const pixelSize = Math.floor((100 - complexity / 1.5 + 10) * (canvas.width / 1920));
+      const cols = Math.ceil(canvas.width / pixelSize); const rows = Math.ceil(canvas.height / pixelSize);
+      for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+          const r = nextRand(); const px = x * pixelSize; const py = y * pixelSize;
+          if (r > 0.7) { ctx.fillStyle = r > 0.9 ? accentColor : mainColor; ctx.globalAlpha = 0.2 + nextRand() * 0.5; ctx.fillRect(px, py, pixelSize, pixelSize); }
+          else if (r > 0.5) { ctx.fillStyle = mainColor; ctx.globalAlpha = 0.1; const sub = pixelSize / 4; for (let i = 0; i < 4; i++) { for (let j = 0; j < 4; j++) { if ((i + j) % 2 === 0) { ctx.fillRect(px + i * sub, py + j * sub, sub, sub); } } } }
+          else if (r < 0.05) { ctx.fillStyle = '#fff'; ctx.globalAlpha = 0.8; const center = pixelSize / 2; const s = pixelSize * 0.2; ctx.fillRect(px + center - s/2, py + 2, s, pixelSize - 4); ctx.fillRect(px + 2, py + center - s/2, pixelSize - 4, s); }
+        }
+      }
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1;
+      for (let i = 0; i < 3; i++) { if (nextRand() > 0.5) { const ly = nextRand() * canvas.height; ctx.globalAlpha = 0.1; ctx.beginPath(); ctx.moveTo(0, ly); ctx.lineTo(canvas.width, ly); ctx.stroke(); ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`; ctx.fillText(`PX_SECTOR_${Math.floor(nextRand() * 1000)}`, 10, ly - 5); } }
     }
 
     if (noise > 0) {
