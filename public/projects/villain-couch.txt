@@ -1,50 +1,51 @@
-The VLC Tracker Agent, also known as Villain Couch, is a Windows application designed to track the status of VLC Media Player.
+# Villain Couch: The VLC Tracker
 
-## Building the Application:
+![Villain Couch - Cover Art](/images/projects/villain_couch.webp)
 
-To build this Windows application, execute the `build.ps1` PowerShell script.
+**Villain Couch** is a silent guardian for your media consumption. It is a lightweight background agent that integrates deeply with **VLC Media Player** to track your playback progress, effectively adding a "Resume" feature to your local media library.
+
+> "Never lose your place again. Your local media, now with cloud-level memory."
+
+## The Problem
+
+Streaming services remember where you left off. Local files don't.
+Villain Couch solves this by acting as a sidecar to VLC, recording your progress in a local SQLite database or syncing it to a remote server.
+
+## Key Features
+
+*   **Silent Operation:** Runs in the background with minimal resource footprint.
+*   **Auto-Resume:** Automatically detects the file you're playing and saves your timestamp.
+*   **Season Intelligence:** Smart enough to detect "next episode" patterns in filenames.
+*   **Cross-Session Persistence:** Close VLC, reboot your PC, open the file a week later—it resumes.
+
+## Architecture
+
+Built with performance and reliability in mind:
+
+*   **Core:** Written in **Go** for native performance and zero dependencies.
+*   **Integration:** Communicates with VLC via its HTTP interface.
+*   **Storage:** Uses **SQLite** for robust, local data storage.
+*   **Interface:** A CLI-first approach for easy scripting and automation.
+
+## Quick Start
+
+### Installation
+Villain Couch is a single binary. No complex setup required.
 
 ```powershell
-.\build.ps1
+# Build from source
+go build -o villain-couch ./src
 ```
 
-## Directory Structure:
+### Usage
+Simply point it to your media, or let it watch your VLC process.
 
-The project is organized into the following key directories:
+```bash
+./villain-couch --file "D:/Movies/The Matrix.mkv"
+```
 
-*   **`agent`**: Contains the core source code for the agent application, handling interactions with VLC, data management, and user commands.
-*   **`bin`**: Stores the compiled binaries of the application after a successful build.
-*   **`common`**: Houses shared utility packages for logging, error handling, and other common functionalities used across the application.
+## Directory Structure
 
-## Agent Details: VLC Tracker Agent
-
-The Villain Couch VLC Tracker Agent is a lightweight, command-line application that integrates with VLC Media Player to track media playback progress. It runs in the background, monitoring VLC's status and saving playback positions, allowing users to resume media from where they left off.
-
-### Features:
-
-*   **Automatic Playback Tracking:** Monitors VLC and saves media playback progress.
-*   **Seamless Resumption:** Enables users to continue watching from their last position.
-*   **Graceful Shutdown:** Ensures playback progress is saved even when the agent is closed with `Ctrl+C`.
-*   **Easy Configuration:** Utilizes a `config.json` file for settings.
-*   **Command-Line Interface:** Provides a simple CLI for interaction.
-
-### Installation:
-
-Requires Go to be installed.
-1.  Clone the repository.
-2.  Navigate to the `agent` directory.
-3.  Build the agent using `go build -o villain-couch ./src`.
-
-### Configuration:
-
-The agent uses a `config.json` file. A default file is created on first run in the user's configuration directory. Key configuration options include `web_url`, `status_endpoint`, `playlist_endpoint`, `http_port`, `extra_intf`, `http_password`, and `database_file_name`.
-
-### Usage:
-
-Run the agent using `./villain-couch [flags]`.
-*   **Flags:** `--verbose` (enable verbose logging), `--file <path>` (specify media file), `--ws <path>` (add workspace directory), `--find-next` (find next episode).
-*   **Examples:** `./villain-couch --file /path/to/your/media.mp4`, `./villain-couch --verbose --file /path/to/your/media.mp4`.
-
-### Development:
-
-Contribution steps include forking, creating a new branch, making changes, pushing to fork, and creating a pull request. For development builds, use `go run ./src [flags]`.
+*   `agent/`: The brain of the operation. Handles VLC communication.
+*   `common/`: Shared utilities for logging and config parsing.
+*   `bin/`: Where the magic happens (compiled binaries).

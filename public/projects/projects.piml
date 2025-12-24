@@ -33,7 +33,7 @@
       > webdev
     (shortDescription) This website... The app you are currently on. Personal website and blog, written in React.
     (date) 2025-11-10
-    (image) /images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg
+    (image) /images/projects/fezcodex.webp
 
   > (project)
     (slug) piml
@@ -47,7 +47,7 @@
       > Markup Language
     (shortDescription) piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
     (date) 2025-11-08
-    (image) /images/defaults/piml-red.png
+    (image) /images/projects/piml.webp
 
   > (project)
     (slug) bm
@@ -76,7 +76,7 @@
       > SQLite
     (shortDescription) Villain Couch is a Windows application designed to track the status of VLC Media Player.
     (date) 2025-11-04
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/villain_couch.webp
 
   > (project)
     (slug) go-piml
