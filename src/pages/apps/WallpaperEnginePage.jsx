@@ -760,7 +760,7 @@ const WallpaperEnginePage = () => {
                             ctx.globalAlpha = 0.6;
                             ctx.fillStyle = mainColor;
                             ctx.font = `bold ${Math.floor(12 * (canvas.width/1920))}px monospace`;
-                            ctx.fillText("PLANETARY_NETWORK_SCAN: ACTIVE", 50, canvas.height - 50);
+                            ctx.fillText("PLANETARY_NETWORK_SCAN: ACTIVE", 50, canvas.height - 55);
                             ctx.fillText(`NODES_DETECTED: ${nodeCount}`, 50, canvas.height - 35);
 
                             const corners = [
