@@ -1,5 +1,17 @@
 [
   {
+    "slug": "5-ways-to-pass-arguments-in-a-url",
+    "title": "5 Ways to Pass Arguments in a URL (Beyond the Basic Query)",
+    "date": "2025-12-24",
+    "updated": "2025-12-24",
+    "description": "A quick reference guide to the five main argument passing mechanisms in URLs and HTTP requests.",
+    "tags": ["gist", "http", "api", "url", "webdev"],
+    "category": "gist",
+    "filename": "5-ways-to-pass-arguments-in-a-url.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "renaming-js-to-jsx-gist",
     "title": "Quick Renaming .js to .jsx for React",
     "date": "2025-12-23",
