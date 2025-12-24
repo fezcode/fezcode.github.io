@@ -146,6 +146,7 @@ const BlendLabPage = lazy(() => import('../pages/apps/BlendLabPage'));
 const AssetStudioPage = lazy(() => import('../pages/apps/AssetStudioPage'));
 const OgImageGeneratorPage = lazy(() => import('../pages/apps/OgImageGeneratorPage'));
 const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
+const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
@@ -975,6 +976,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::og-gen"
           element={<Navigate to="/apps/og-image-generator" replace />}
+        />
+        <Route
+          path="/apps::we"
+          element={<Navigate to="/apps/wallpaper-engine" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -1918,6 +1923,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <PosterLoomPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/wallpaper-engine"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <WallpaperEnginePage />
               </Suspense>
             </motion.div>
           }
