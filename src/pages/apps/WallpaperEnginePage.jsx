@@ -42,6 +42,8 @@ const STYLES = [
   { label: 'Organic Noise', value: 'noise' },
   { label: 'Type Matrix', value: 'typematrix' },
   { label: 'Pip-Boy Interface', value: 'pipboy' },
+  { label: 'Stellar Cartography', value: 'stellar' },
+  { label: 'Geometric Circles', value: 'circles' },
 ];
 
 const RESOLUTIONS = [
@@ -60,7 +62,6 @@ const WallpaperEnginePage = () => {
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
-  // State
   const [seed, setSeed] = useState(() => Math.random().toString(36).substring(7));
   const [style, setStyle] = useState('bauhaus');
   const [complexity, setComplexity] = useState(50);
@@ -70,7 +71,6 @@ const WallpaperEnginePage = () => {
   const [resolution, setResolution] = useState('4k');
   const [isGenerating, setIsGenerating] = useState(false);
 
-  // RNG Helper
   const rng = useCallback((currentSeed) => {
     let h = 0xdeadbeef;
     for (let i = 0; i < currentSeed.length; i++) {
@@ -88,7 +88,6 @@ const WallpaperEnginePage = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    // Set internal size for high-res preview (scaled down by CSS)
     const res = RESOLUTIONS.find(r => r.value === resolution);
     canvas.width = res.width;
     canvas.height = res.height;
@@ -97,32 +96,23 @@ const WallpaperEnginePage = () => {
     const activePreset = COLOR_PRESETS.find(p => p.value === preset);
     const colors = preset === 'custom' ? customColors : activePreset.colors;
 
-    // Background
-    ctx.fillStyle = colors[colors.length - 1]; // Use last color as BG
+    ctx.fillStyle = colors[colors.length - 1];
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Grid Overlay (Subtle)
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
     ctx.lineWidth = 1;
     const gridSize = 50;
     for(let x = 0; x < canvas.width; x += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(x, 0);
-      ctx.lineTo(x, canvas.height);
-      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); ctx.stroke();
     }
     for(let y = 0; y < canvas.height; y += gridSize) {
-      ctx.beginPath();
-      ctx.moveTo(0, y);
-      ctx.lineTo(canvas.width, y);
-      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
     }
 
     if (style === 'bauhaus') {
       const cellCount = Math.floor(5 + (complexity / 10));
       const cellW = canvas.width / cellCount;
       const cellH = canvas.height / (cellCount * (canvas.height / canvas.width));
-
       for (let x = 0; x < cellCount; x++) {
         for (let y = 0; y < cellCount * (canvas.height / canvas.width); y++) {
           if (nextRand() > 0.4) {
@@ -130,36 +120,16 @@ const WallpaperEnginePage = () => {
             const posY = y * cellH;
             const color = colors[Math.floor(nextRand() * (colors.length - 1))];
             const shapeType = Math.floor(nextRand() * 4);
-
             ctx.save();
             ctx.translate(posX + cellW/2, posY + cellH/2);
             ctx.rotate((Math.floor(nextRand() * 4) * 90) * Math.PI / 180);
-
             ctx.fillStyle = color;
             ctx.globalAlpha = 0.8;
-
             const size = cellW * 0.8;
-
             if (shapeType === 0) ctx.fillRect(-size/2, -size/2, size, size);
-            else if (shapeType === 1) {
-              ctx.beginPath();
-              ctx.arc(0, 0, size/2, 0, Math.PI * 2);
-              ctx.fill();
-            } else if (shapeType === 2) {
-              ctx.beginPath();
-              ctx.moveTo(-size/2, size/2);
-              ctx.lineTo(size/2, size/2);
-              ctx.lineTo(0, -size/2);
-              ctx.closePath();
-              ctx.fill();
-            } else {
-              ctx.beginPath();
-              ctx.moveTo(-size/2, -size/2);
-              ctx.arcTo(size/2, -size/2, size/2, size/2, size/2);
-              ctx.lineTo(-size/2, size/2);
-              ctx.closePath();
-              ctx.fill();
-            }
+            else if (shapeType === 1) { ctx.beginPath(); ctx.arc(0, 0, size/2, 0, Math.PI * 2); ctx.fill(); }
+            else if (shapeType === 2) { ctx.beginPath(); ctx.moveTo(-size/2, size/2); ctx.lineTo(size/2, size/2); ctx.lineTo(0, -size/2); ctx.closePath(); ctx.fill(); }
+            else { ctx.beginPath(); ctx.moveTo(-size/2, -size/2); ctx.arcTo(size/2, -size/2, size/2, size/2, size/2); ctx.lineTo(-size/2, size/2); ctx.closePath(); ctx.fill(); }
             ctx.restore();
           }
         }
@@ -172,21 +142,13 @@ const WallpaperEnginePage = () => {
         const length = (100 + nextRand() * 400) * (canvas.width / 1920);
         const horizontal = nextRand() > 0.5;
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-
         ctx.strokeStyle = color;
         ctx.lineWidth = 2 + nextRand() * 4;
         ctx.beginPath();
         ctx.moveTo(x, y);
-        if (horizontal) ctx.lineTo(x + length, y);
-        else ctx.lineTo(x, y + length);
+        if (horizontal) ctx.lineTo(x + length, y); else ctx.lineTo(x, y + length);
         ctx.stroke();
-
-        if (nextRand() > 0.5) {
-          ctx.fillStyle = color;
-          ctx.beginPath();
-          ctx.arc(x, y, ctx.lineWidth * 2, 0, Math.PI * 2);
-          ctx.fill();
-        }
+        if (nextRand() > 0.5) { ctx.fillStyle = color; ctx.beginPath(); ctx.arc(x, y, ctx.lineWidth * 2, 0, Math.PI * 2); ctx.fill(); }
       }
     } else if (style === 'flow') {
       const nodes = 10 + Math.floor(complexity / 2);
@@ -195,16 +157,12 @@ const WallpaperEnginePage = () => {
         const y = nextRand() * canvas.height;
         const radius = (50 + nextRand() * 300) * (canvas.width / 1920);
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-
         const grad = ctx.createRadialGradient(x, y, 0, x, y, radius);
         grad.addColorStop(0, color);
         grad.addColorStop(1, 'transparent');
-
         ctx.fillStyle = grad;
         ctx.globalCompositeOperation = 'screen';
-        ctx.beginPath();
-        ctx.arc(x, y, radius, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(x, y, radius, 0, Math.PI * 2); ctx.fill();
       }
       ctx.globalCompositeOperation = 'source-over';
     } else if (style === 'rain') {
@@ -214,7 +172,6 @@ const WallpaperEnginePage = () => {
         const x = i * 25;
         let y = nextRand() * canvas.height;
         const len = 5 + nextRand() * 20;
-
         for(let j = 0; j < len; j++) {
           const alpha = 1 - (j / len);
           ctx.fillStyle = colors[Math.floor(nextRand() * (colors.length - 1))];
@@ -232,17 +189,14 @@ const WallpaperEnginePage = () => {
         const x = nextRand() * (canvas.width - w);
         const y = nextRand() * (canvas.height - h);
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-
         ctx.fillStyle = color;
         ctx.globalAlpha = 0.9;
         ctx.fillRect(x, y, w, h);
-
-        // Add technical label
         ctx.fillStyle = '#fff';
         ctx.font = `${Math.floor(12 * (canvas.width/1920))}px monospace`;
         ctx.fillText(`BLOCK_ID_${Math.floor(nextRand() * 10000)}`, x + 10, y + 20);
-        ctx.globalAlpha = 1.0;
       }
+      ctx.globalAlpha = 1.0;
     } else if (style === 'glitch') {
       const count = Math.floor(20 + complexity);
       for (let i = 0; i < count; i++) {
@@ -251,421 +205,169 @@ const WallpaperEnginePage = () => {
         const w = (nextRand() * canvas.width * 0.5);
         const h = (nextRand() * 20 + 2) * (canvas.height / 1080);
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-
         ctx.fillStyle = color;
         ctx.globalAlpha = nextRand() * 0.8;
         ctx.fillRect(x - w/2, y, w, h);
-
-        if (nextRand() > 0.8) {
-          ctx.strokeStyle = '#fff';
-          ctx.strokeRect(x - w/2, y, w, h);
-        }
+        if (nextRand() > 0.8) { ctx.strokeStyle = '#fff'; ctx.strokeRect(x - w/2, y, w, h); }
       }
       ctx.globalAlpha = 1.0;
     } else if (style === 'solar') {
       const centerX = canvas.width / 2;
       const centerY = canvas.height / 2;
       const rays = Math.floor(20 + complexity);
-
       for (let i = 0; i < rays; i++) {
         const angle = (nextRand() * 360) * Math.PI / 180;
         const length = (nextRand() * canvas.width * 0.8);
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-
         ctx.strokeStyle = color;
         ctx.lineWidth = 1 + nextRand() * 10;
         ctx.globalAlpha = 0.3 + nextRand() * 0.5;
-
-        ctx.beginPath();
-        ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + Math.cos(angle) * length, centerY + Math.sin(angle) * length);
-        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(centerX, centerY); ctx.lineTo(centerX + Math.cos(angle) * length, centerY + Math.sin(angle) * length); ctx.stroke();
       }
       ctx.globalAlpha = 1.0;
     } else if (style === 'nodes') {
       const count = Math.floor(10 + complexity / 2);
       const points = [];
-      for (let i = 0; i < count; i++) {
-        points.push({
-          x: nextRand() * canvas.width,
-          y: nextRand() * canvas.height,
-          color: colors[Math.floor(nextRand() * (colors.length - 1))]
-        });
-      }
-
+      for (let i = 0; i < count; i++) { points.push({ x: nextRand() * canvas.width, y: nextRand() * canvas.height, color: colors[Math.floor(nextRand() * (colors.length - 1))] }); }
       points.forEach((p, i) => {
-        // Draw connections
-        ctx.strokeStyle = p.color;
-        ctx.globalAlpha = 0.2;
-        ctx.lineWidth = 1;
-        points.slice(i + 1).forEach(p2 => {
-          const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist < canvas.width * 0.3) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
-          }
-        });
-
-        // Draw node
-        ctx.globalAlpha = 0.8;
-        ctx.fillStyle = p.color;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-        ctx.fill();
-
-        if (nextRand() > 0.7) {
-          ctx.fillStyle = '#fff';
-          ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`;
-          ctx.fillText(`NODE_${i.toString(16).toUpperCase()}`, p.x + 10, p.y + 10);
-        }
+        ctx.strokeStyle = p.color; ctx.globalAlpha = 0.2; ctx.lineWidth = 1;
+        points.slice(i + 1).forEach(p2 => { const dist = Math.hypot(p.x - p2.x, p.y - p2.y); if (dist < canvas.width * 0.3) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(p2.x, p2.y); ctx.stroke(); } });
+        ctx.globalAlpha = 0.8; ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fill();
+        if (nextRand() > 0.7) { ctx.fillStyle = '#fff'; ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`; ctx.fillText(`NODE_${i.toString(16).toUpperCase()}`, p.x + 10, p.y + 10); }
       });
     } else if (style === 'mesh') {
       const size = (80 + (100 - complexity)) * (canvas.width / 1920);
       const rows = canvas.height / size + 1;
       const cols = canvas.width / size + 1;
-
-      ctx.strokeStyle = colors[0];
-      ctx.lineWidth = 1;
-
+      ctx.strokeStyle = colors[0]; ctx.lineWidth = 1;
       for (let r = 0; r < rows; r++) {
         for (let c = 0; cols > c; c++) {
           const x = c * size * 1.5;
           const y = r * size * Math.sqrt(3) + (c % 2 === 0 ? 0 : (size * Math.sqrt(3)) / 2);
-
           ctx.globalAlpha = 0.1 + nextRand() * 0.4;
           ctx.beginPath();
-          for (let a = 0; a < 6; a++) {
-            const angle = (a * 60) * Math.PI / 180;
-            const px = x + size * Math.cos(angle);
-            const py = y + size * Math.sin(angle);
-            if (a === 0) ctx.moveTo(px, py);
-            else ctx.lineTo(px, py);
-          }
+          for (let a = 0; a < 6; a++) { const angle = (a * 60) * Math.PI / 180; const px = x + size * Math.cos(angle); const py = y + size * Math.sin(angle); if (a === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
           ctx.closePath();
-          if (nextRand() > 0.8) {
-            ctx.fillStyle = colors[Math.floor(nextRand() * (colors.length - 1))];
-            ctx.fill();
-          }
+          if (nextRand() > 0.8) { ctx.fillStyle = colors[Math.floor(nextRand() * (colors.length - 1))]; ctx.fill(); }
           ctx.stroke();
         }
       }
     } else if (style === 'echo') {
       const streams = Math.floor(10 + complexity / 2);
       ctx.font = `bold ${Math.floor(14 * (canvas.width/1920))}px monospace`;
-
       for (let i = 0; i < streams; i++) {
-        const x = nextRand() * canvas.width;
-        let y = nextRand() * canvas.height;
+        const x = nextRand() * canvas.width; let y = nextRand() * canvas.height;
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
         const text = Array.from({length: 20}, () => Math.floor(nextRand() * 256).toString(16).padStart(2, '0')).join(' ');
-
-        ctx.fillStyle = color;
-        ctx.globalAlpha = 0.6;
-        ctx.save();
-        ctx.translate(x, y);
-        if (nextRand() > 0.5) ctx.rotate(Math.PI / 2);
-        ctx.fillText(`>> ${text}`, 0, 0);
-
-        if (nextRand() > 0.8) {
-          ctx.strokeStyle = '#fff';
-          ctx.lineWidth = 0.5;
-          ctx.strokeRect(-5, -15, ctx.measureText(text).width + 40, 20);
-        }
+        ctx.fillStyle = color; ctx.globalAlpha = 0.6; ctx.save(); ctx.translate(x, y);
+        if (nextRand() > 0.5) ctx.rotate(Math.PI / 2); ctx.fillText(`>> ${text}`, 0, 0);
+        if (nextRand() > 0.8) { ctx.strokeStyle = '#fff'; ctx.lineWidth = 0.5; ctx.strokeRect(-5, -15, ctx.measureText(text).width + 40, 20); }
         ctx.restore();
       }
     } else if (style === 'iso') {
       const size = (60 + (100 - complexity)) * (canvas.width / 1920);
       const cols = canvas.width / size + 2;
       const rows = canvas.height / (size * 0.5) + 2;
-
       for (let i = 0; i < rows; i++) {
         for (let j = 0; j < cols; j++) {
           const x = (j - (i % 2 === 0 ? 0.5 : 0)) * size;
           const y = i * size * 0.25;
-
           if (nextRand() > 0.6) {
             const color = colors[Math.floor(nextRand() * (colors.length - 1))];
             ctx.globalAlpha = 0.4 + nextRand() * 0.4;
-
-            // Draw isometric box face
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x + size * 0.5, y + size * 0.25);
-            ctx.lineTo(x, y + size * 0.5);
-            ctx.lineTo(x - size * 0.5, y + size * 0.25);
-            ctx.closePath();
-            ctx.fillStyle = color;
-            ctx.fill();
-
-            if (nextRand() > 0.8) {
-              ctx.strokeStyle = '#fff';
-              ctx.stroke();
-            }
+            ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + size * 0.5, y + size * 0.25); ctx.lineTo(x, y + size * 0.5); ctx.lineTo(x - size * 0.5, y + size * 0.25); ctx.closePath();
+            ctx.fillStyle = color; ctx.fill();
+            if (nextRand() > 0.8) { ctx.strokeStyle = '#fff'; ctx.stroke(); }
           }
         }
       }
     } else if (style === 'noise') {
       const paths = Math.floor(5 + complexity / 10);
       for (let i = 0; i < paths; i++) {
-        let x = nextRand() * canvas.width;
-        let y = nextRand() * canvas.height;
+        let x = nextRand() * canvas.width; let y = nextRand() * canvas.height;
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-
-        ctx.beginPath();
-        ctx.moveTo(x, y);
-        ctx.strokeStyle = color;
-        ctx.lineWidth = 1 + nextRand() * 5;
-        ctx.globalAlpha = 0.3;
-
-        for (let j = 0; j < 100; j++) {
-          x += (nextRand() - 0.5) * 150;
-          y += (nextRand() - 0.5) * 150;
-          ctx.lineTo(x, y);
-        }
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.strokeStyle = color; ctx.lineWidth = 1 + nextRand() * 5; ctx.globalAlpha = 0.3;
+        for (let j = 0; j < 100; j++) { x += (nextRand() - 0.5) * 150; y += (nextRand() - 0.5) * 150; ctx.lineTo(x, y); }
         ctx.stroke();
       }
     } else if (style === 'typematrix') {
       const items = Math.floor(20 + complexity);
       for (let i = 0; i < items; i++) {
-        const x = nextRand() * canvas.width;
-        const y = nextRand() * canvas.height;
+        const x = nextRand() * canvas.width; const y = nextRand() * canvas.height;
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
         const fontSize = Math.floor((10 + nextRand() * 40) * (canvas.width / 1920));
-
         ctx.font = `${nextRand() > 0.5 ? 'bold ' : ''}${fontSize}px font-mono`;
-        ctx.fillStyle = color;
-        ctx.globalAlpha = 0.5 + nextRand() * 0.5;
-
+        ctx.fillStyle = color; ctx.globalAlpha = 0.5 + nextRand() * 0.5;
         const labels = ['SYS_CORE', 'DATA_STREAM', 'VOID_0', 'NULL_PTR', 'AUTH_OK', 'FETCH_META', 'DECRYPT'];
         const text = nextRand() > 0.3 ? labels[Math.floor(nextRand() * labels.length)] : Math.random().toString(16).slice(2, 10).toUpperCase();
-
         ctx.fillText(text, x, y);
-
-        if (nextRand() > 0.7) {
-          ctx.strokeStyle = color;
-          ctx.lineWidth = 1;
-          ctx.strokeRect(x - 5, y - fontSize, ctx.measureText(text).width + 10, fontSize + 5);
-        }
+        if (nextRand() > 0.7) { ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.strokeRect(x - 5, y - fontSize, ctx.measureText(text).width + 10, fontSize + 5); }
       }
     } else if (style === 'pipboy') {
-      const mainColor = colors[0];
-      const bgColor = colors[colors.length - 1];
-
-      // 1. CRT Background & Scanlines
-      ctx.fillStyle = bgColor;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.strokeStyle = mainColor;
-      ctx.lineWidth = 0.5;
-      ctx.globalAlpha = 0.1;
-      for (let y = 0; y < canvas.height; y += 4) {
-        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
-      }
-
-      // 2. Fixed Header UI
-      ctx.globalAlpha = 1.0;
-      ctx.fillStyle = mainColor;
-      ctx.font = `bold ${Math.floor(24 * (canvas.width/1920))}px monospace`;
+      const mainColor = colors[0]; const bgColor = colors[colors.length - 1];
+      ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = mainColor; ctx.lineWidth = 0.5; ctx.globalAlpha = 0.1;
+      for (let y = 0; y < canvas.height; y += 4) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke(); }
+      ctx.globalAlpha = 1.0; ctx.fillStyle = mainColor; ctx.font = `bold ${Math.floor(24 * (canvas.width/1920))}px monospace`;
       const tabs = ['STAT', 'INV', 'DATA', 'MAP', 'RADIO'];
-      tabs.forEach((tab, i) => {
-        const x = 100 + i * (canvas.width / 6);
-        ctx.fillText(tab, x, 80);
-        if (tab === 'DATA') { // Active tab indicator
-          ctx.fillRect(x - 10, 90, ctx.measureText(tab).width + 20, 4);
-        }
-      });
+      tabs.forEach((tab, i) => { const x = 100 + i * (canvas.width / 6); ctx.fillText(tab, x, 80); if (tab === 'DATA') { ctx.fillRect(x - 10, 90, ctx.measureText(tab).width + 20, 4); } });
       ctx.fillRect(50, 100, canvas.width - 100, 2);
-
-      // 3. Central Radar / Map Element
-      const centerX = canvas.width * 0.75;
-      const centerY = canvas.height * 0.5;
-      const radius = 200 * (canvas.width / 1920);
-
-      ctx.strokeStyle = mainColor;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
-      ctx.stroke();
-
-      ctx.globalAlpha = 0.3;
-      for (let r = 1; r < 4; r++) {
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, (radius / 4) * r, 0, Math.PI * 2);
-        ctx.stroke();
-      }
-
-      // Blips
-      ctx.globalAlpha = 0.8;
-      for (let i = 0; i < 5; i++) {
-        const bx = centerX + (nextRand() - 0.5) * radius * 1.5;
-        const by = centerY + (nextRand() - 0.5) * radius * 1.5;
-        ctx.fillRect(bx, by, 8, 8);
-      }
-
-      // 4. Data Listing
+      const centerX = canvas.width * 0.75; const centerY = canvas.height * 0.5; const radius = 200 * (canvas.width / 1920);
+      ctx.strokeStyle = mainColor; ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(centerX, centerY, radius, 0, Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = 0.3; for (let r = 1; r < 4; r++) { ctx.beginPath(); ctx.arc(centerX, centerY, (radius / 4) * r, 0, Math.PI * 2); ctx.stroke(); }
+      ctx.globalAlpha = 0.8; for (let i = 0; i < 5; i++) { const bx = centerX + (nextRand() - 0.5) * radius * 1.5; const by = centerY + (nextRand() - 0.5) * radius * 1.5; ctx.fillRect(bx, by, 8, 8); }
       ctx.font = `${Math.floor(18 * (canvas.width/1920))}px monospace`;
-      const entries = [
-        'FEZ_CODEX_OS v4.0.2',
-        'MEMORY_BANK: OK',
-        'RAD_LEVEL: 0.02 mSv',
-        'LOCATION: NEW_VEGAS_STRIP',
-        'SIGNAL: INTERCEPTED',
-        'ENCRYPTION: ACTIVE',
-        'USER: COURIER_SIX'
-      ];
+      const entries = ['FEZ_CODEX_OS v4.0.2', 'MEMORY_BANK: OK', 'RAD_LEVEL: 0.02 mSv', 'LOCATION: NEW_VEGAS_STRIP', 'SIGNAL: INTERCEPTED', 'ENCRYPTION: ACTIVE', 'USER: COURIER_SIX'];
+      entries.forEach((text, i) => { ctx.globalAlpha = 0.9; ctx.fillText(`> ${text}`, 100, 250 + i * 50); ctx.globalAlpha = 0.2; ctx.fillRect(100, 260 + i * 50, 300, 10); ctx.globalAlpha = 0.7; ctx.fillRect(100, 260 + i * 50, nextRand() * 300, 10); });
+      const scanY = (Date.now() / 20) % canvas.height; const grad = ctx.createLinearGradient(0, scanY - 50, 0, scanY); grad.addColorStop(0, 'transparent'); grad.addColorStop(1, mainColor); ctx.fillStyle = grad; ctx.globalAlpha = 0.15; ctx.fillRect(0, scanY - 100, canvas.width, 100);
+      ctx.globalAlpha = 1.0; ctx.lineWidth = 4; const cp = 40; ctx.beginPath(); ctx.moveTo(cp, cp+50); ctx.lineTo(cp, cp); ctx.lineTo(cp+50, cp); ctx.stroke(); ctx.beginPath(); ctx.moveTo(canvas.width-cp, canvas.height-cp-50); ctx.lineTo(canvas.width-cp, canvas.height-cp); ctx.lineTo(canvas.width-cp-50, canvas.height-cp); ctx.stroke();
+      const compassY = canvas.height - 150; ctx.globalAlpha = 0.6; ctx.fillRect(100, compassY, canvas.width - 200, 2); ctx.font = `${Math.floor(14 * (canvas.width/1920))}px monospace`;
+      for(let i = 0; i <= 20; i++) { const x = 100 + i * ((canvas.width - 200) / 20); const h = i % 5 === 0 ? 15 : 8; ctx.fillRect(x, compassY - h, 2, h); if (i % 5 === 0) { const dir = ['W', 'NW', 'N', 'NE', 'E'][i / 5]; if(dir) ctx.fillText(dir, x - 5, compassY - 25); } }
+      const vbX = 100; const vbY = 650; ctx.globalAlpha = 1.0; ctx.strokeRect(vbX, vbY, 200, 200); ctx.font = `bold ${Math.floor(12 * (canvas.width/1920))}px monospace`; ctx.fillText("F.C.D.X. STATUS", vbX, vbY - 10); ctx.beginPath(); ctx.arc(vbX + 100, vbY + 80, 40, 0, Math.PI * 2); ctx.moveTo(vbX + 100, vbY + 120); ctx.lineTo(vbX + 100, vbY + 180); ctx.moveTo(vbX + 100, vbY + 140); ctx.lineTo(vbX + 60, vbY + 110); ctx.moveTo(vbX + 100, vbY + 140); ctx.lineTo(vbX + 140, vbY + 110); ctx.stroke(); ctx.fillText("DISCONN", vbX + 50, vbY + 195);
+      ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`; ctx.globalAlpha = 0.4; ctx.fillText("AP: 85/85", canvas.width - 200, canvas.height - 80); ctx.fillText("HP: 240/240", canvas.width - 200, canvas.height - 60); ctx.fillText("VOLTAGE: 1.2V", 100, canvas.height - 80); ctx.fillText("OS_BUILD: 0.8.7", 100, canvas.height - 60);
+    } else if (style === 'stellar') {
+      const mainColor = colors[0]; const accentColor = colors[1] || colors[0]; const bgColor = colors[colors.length - 1];
+      ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const centerX = canvas.width / 2; const centerY = canvas.height / 2; ctx.strokeStyle = mainColor; ctx.lineWidth = 0.5; ctx.globalAlpha = 0.1;
+      for (let r = 1; r < 6; r++) { ctx.beginPath(); ctx.arc(centerX, centerY, (canvas.width / 10) * r, 0, Math.PI * 2); ctx.stroke(); }
+      for (let a = 0; a < 12; a++) { const angle = (a * 30) * Math.PI / 180; ctx.beginPath(); ctx.moveTo(centerX, centerY); ctx.lineTo(centerX + Math.cos(angle) * canvas.width, centerY + Math.sin(angle) * canvas.width); ctx.stroke(); }
+      const starCount = Math.floor(50 + complexity); const stars = []; for (let i = 0; i < starCount; i++) { stars.push({ x: nextRand() * canvas.width, y: nextRand() * canvas.height, size: nextRand() * 3 + 1, color: nextRand() > 0.8 ? accentColor : '#fff' }); }
+      ctx.globalAlpha = 0.15; ctx.lineWidth = 1; stars.forEach((s, i) => { stars.slice(i + 1).forEach(s2 => { const d = Math.hypot(s.x - s2.x, s.y - s2.y); if (d < canvas.width * 0.15) { ctx.beginPath(); ctx.moveTo(s.x, s.y); ctx.lineTo(s2.x, s2.y); ctx.stroke(); } }); });
+      stars.forEach((s, i) => { ctx.globalAlpha = 0.8; ctx.fillStyle = s.color; ctx.beginPath(); ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2); ctx.fill(); if (nextRand() > 0.9) { ctx.globalAlpha = 0.4; ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`; ctx.fillText(`STAR_${i.toString(16).toUpperCase()}`, s.x + 8, s.y + 8); } });
+      ctx.globalAlpha = 0.2; ctx.strokeStyle = accentColor; for (let i = 0; i < 3; i++) { ctx.save(); ctx.translate(centerX, centerY); ctx.rotate(nextRand() * Math.PI); ctx.beginPath(); ctx.ellipse(0, 0, (nextRand() * 400 + 200) * (canvas.width/1920), (nextRand() * 200 + 100) * (canvas.width/1920), 0, 0, Math.PI * 2); ctx.stroke(); ctx.restore(); }
+      ctx.globalAlpha = 0.6; ctx.fillStyle = mainColor; ctx.font = `bold ${Math.floor(12 * (canvas.width/1920))}px monospace`; for (let i = 0; i < 4; i++) { const x = nextRand() * canvas.width; const y = nextRand() * canvas.height; ctx.fillText(`[SECTOR_${Math.floor(nextRand() * 9999).toString().padStart(4, '0')}]`, x, y); ctx.fillRect(x, y + 5, 100, 1); }
+    } else if (style === 'circles') {
+      const mainColor = colors[0]; const accentColor = colors[1] || colors[0]; const bgColor = colors[colors.length - 1];
+      ctx.fillStyle = bgColor; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      const centerX = canvas.width / 2; const centerY = canvas.height / 2; const baseSize = Math.min(canvas.width, canvas.height);
+      const count = Math.floor(5 + complexity / 5); for (let i = 0; i < count; i++) { const x = nextRand() * canvas.width; const y = nextRand() * canvas.height; const radius = (nextRand() * 200 + 50) * (baseSize / 1000); const color = nextRand() > 0.5 ? mainColor : accentColor; ctx.save(); ctx.translate(x, y); ctx.strokeStyle = color; ctx.lineWidth = 1 + nextRand() * 3; ctx.globalAlpha = 0.2 + nextRand() * 0.4; ctx.beginPath(); ctx.arc(0, 0, radius, 0, Math.PI * 2); ctx.stroke(); if (nextRand() > 0.5) { ctx.globalAlpha = 0.1; ctx.fillStyle = color; ctx.beginPath(); ctx.arc(0, 0, radius * 0.8, 0, Math.PI * 2); ctx.fill(); } if (nextRand() > 0.7) { ctx.setLineDash([5, 5]); ctx.beginPath(); ctx.arc(0, 0, radius + 10, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]); } if (nextRand() > 0.6) { ctx.globalAlpha = 0.6; ctx.fillStyle = color; ctx.font = `${Math.floor(10 * (baseSize/1000))}px monospace`; ctx.fillText(`RAD: ${Math.floor(radius)}px`, radius + 5, 0); ctx.fillText(`PHI: ${Math.floor(nextRand() * 360)}°`, radius + 5, 12); ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(radius, 0); ctx.stroke(); } ctx.restore(); }
+      ctx.globalAlpha = 0.1; ctx.strokeStyle = mainColor; ctx.lineWidth = 10; ctx.beginPath(); ctx.arc(centerX, centerY, baseSize * 0.35, 0, Math.PI * 2); ctx.stroke(); ctx.globalAlpha = 0.3; ctx.setLineDash([2, 10]); ctx.beginPath(); ctx.arc(centerX, centerY, baseSize * 0.37, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]);
+    }
 
-      entries.forEach((text, i) => {
-        ctx.globalAlpha = 0.9;
-        ctx.fillText(`> ${text}`, 100, 250 + i * 50);
-
-        // Progress Bars
-        ctx.globalAlpha = 0.2;
-        ctx.fillRect(100, 260 + i * 50, 300, 10);
-        ctx.globalAlpha = 0.7;
-        ctx.fillRect(100, 260 + i * 50, nextRand() * 300, 10);
-      });
-
-      // 5. Vertical Scan Bar
-      const scanY = (Date.now() / 20) % canvas.height;
-      const grad = ctx.createLinearGradient(0, scanY - 50, 0, scanY);
-      grad.addColorStop(0, 'transparent');
-      grad.addColorStop(1, mainColor);
-      ctx.fillStyle = grad;
-      ctx.globalAlpha = 0.15;
-      ctx.fillRect(0, scanY - 100, canvas.width, 100);
-
-            // 6. Corner Accents
-
-            ctx.globalAlpha = 1.0;
-
-            ctx.lineWidth = 4;
-
-            const cp = 40;
-
-            // Top Left
-
-            ctx.beginPath(); ctx.moveTo(cp, cp+50); ctx.lineTo(cp, cp); ctx.lineTo(cp+50, cp); ctx.stroke();
-
-            // Bottom Right
-
-            ctx.beginPath(); ctx.moveTo(canvas.width-cp, canvas.height-cp-50); ctx.lineTo(canvas.width-cp, canvas.height-cp); ctx.lineTo(canvas.width-cp-50, canvas.height-cp); ctx.stroke();
-
-            // 7. Horizontal Compass (Bottom)
-
-            const compassY = canvas.height - 150;
-
-            ctx.globalAlpha = 0.6;
-
-            ctx.fillRect(100, compassY, canvas.width - 200, 2);
-
-            ctx.font = `${Math.floor(14 * (canvas.width/1920))}px monospace`;
-
-            for(let i = 0; i <= 20; i++) {
-              const x = 100 + i * ((canvas.width - 200) / 20);
-
-              const h = i % 5 === 0 ? 15 : 8;
-
-              ctx.fillRect(x, compassY - h, 2, h);
-
-              if (i % 5 === 0) {
-                const dir = ['W', 'NW', 'N', 'NE', 'E'][i / 5];
-
-                if(dir) ctx.fillText(dir, x - 5, compassY - 25);
-              }
-            }
-
-            // 8. Condition Monitor (Bottom Left Area)
-
-            const vbX = 100;
-
-            const vbY = 650;
-
-            ctx.globalAlpha = 1.0;
-
-            ctx.strokeRect(vbX, vbY, 200, 200);
-
-            ctx.font = `bold ${Math.floor(12 * (canvas.width/1920))}px monospace`;
-
-            ctx.fillText("F.C.D.X. STATUS", vbX, vbY - 10);
-
-            // Simple procedural "Vault Boy" wireframe head
-
-            ctx.beginPath();
-
-            ctx.arc(vbX + 100, vbY + 80, 40, 0, Math.PI * 2); // Head
-
-            ctx.moveTo(vbX + 100, vbY + 120); ctx.lineTo(vbX + 100, vbY + 180); // Body
-
-            ctx.moveTo(vbX + 100, vbY + 140); ctx.lineTo(vbX + 60, vbY + 110); // Arm L
-
-            ctx.moveTo(vbX + 100, vbY + 140); ctx.lineTo(vbX + 140, vbY + 110); // Arm R
-
-            ctx.stroke();
-
-            ctx.fillText("DISCONN", vbX + 50, vbY + 195);
-
-            // 9. Micro Metadata
-
-            ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`;
-
-            ctx.globalAlpha = 0.4;
-
-            ctx.fillText("AP: 85/85", canvas.width - 200, canvas.height - 80);
-
-            ctx.fillText("HP: 240/240", canvas.width - 200, canvas.height - 60);
-
-            ctx.fillText("VOLTAGE: 1.2V", 100, canvas.height - 80);
-
-            ctx.fillText("OS_BUILD: 0.8.7", 100, canvas.height - 60);
-          }
-
-          // Noise/Grain
     if (noise > 0) {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-      const noiseVal = noise * 2.55;
-      for (let i = 0; i < data.length; i += 4) {
-        const n = (nextRand() - 0.5) * noiseVal;
-        data[i] += n;
-        data[i+1] += n;
-        data[i+2] += n;
-      }
+      const data = imageData.data; const noiseVal = noise * 2.55;
+      for (let i = 0; i < data.length; i += 4) { const n = (nextRand() - 0.5) * noiseVal; data[i] += n; data[i+1] += n; data[i+2] += n; }
       ctx.putImageData(imageData, 0, 0);
     }
   }, [seed, style, complexity, noise, preset, resolution, rng, customColors]);
 
-  useEffect(() => {
-    draw();
-  }, [draw]);
+  useEffect(() => { draw(); }, [draw]);
 
-  const handleRegenerate = () => {
-    setIsGenerating(true);
-    setSeed(Math.random().toString(36).substring(7));
-    setTimeout(() => setIsGenerating(false), 500);
-  };
+  const handleRegenerate = () => { setIsGenerating(true); setSeed(Math.random().toString(36).substring(7)); setTimeout(() => setIsGenerating(false), 500); };
 
   const handleDownload = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
+    const canvas = canvasRef.current; if (!canvas) return;
     const link = document.createElement('a');
     const res = RESOLUTIONS.find(r => r.value === resolution);
     link.download = `fezcodex-wallpaper-${style}-${seed}-${res.width}x${res.height}.png`;
     link.href = canvas.toDataURL('image/png', 1.0);
     link.click();
-
-    addToast({
-      title: 'EXPORT SUCCESSFUL',
-      message: `System wallpaper saved at ${res.width}x${res.height}`,
-      type: 'success'
-    });
+    addToast({ title: 'EXPORT SUCCESSFUL', message: `System wallpaper saved at ${res.width}x${res.height}`, type: 'success' });
   };
 
   return (
     <div className="min-h-screen bg-[#050505] text-white flex flex-col lg:flex-row overflow-hidden font-mono selection:bg-emerald-500/30">
-      {/* SIDEBAR CONTROLS */}
       <aside className="w-full lg:w-80 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col bg-[#080808] z-20">
         <div className="p-6 border-b border-white/10">
           <Link to="/apps" className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 text-[10px] uppercase tracking-widest">
@@ -677,45 +379,24 @@ const WallpaperEnginePage = () => {
           </h1>
           <p className="text-[9px] text-gray-600 mt-1 uppercase tracking-widest">Procedural Visualization v2.0</p>
         </div>
-
         <div className="flex-1 overflow-y-auto p-6 space-y-8 no-scrollbar pb-32">
-          {/* Seed Section */}
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
                 <ArrowsClockwiseIcon /> Protocol Seed
               </span>
-              <button
-                onClick={handleRegenerate}
-                className="p-1 hover:text-emerald-500 transition-colors"
-                title="Randomize"
-              >
+              <button onClick={handleRegenerate} className="p-1 hover:text-emerald-500 transition-colors" title="Randomize">
                 <ArrowsClockwiseIcon size={14} className={isGenerating ? 'animate-spin' : ''} />
               </button>
             </div>
-            <input
-              type="text"
-              value={seed}
-              onChange={(e) => setSeed(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 p-2 text-xs focus:outline-none focus:border-emerald-500/50 transition-colors uppercase"
-            />
+            <input type="text" value={seed} onChange={(e) => setSeed(e.target.value)} className="w-full bg-white/5 border border-white/10 p-2 text-xs focus:outline-none focus:border-emerald-500/50 transition-colors uppercase" />
           </div>
-
-          {/* Style Dropdown */}
           <div className="space-y-3">
             <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
               <ShapesIcon /> Algorithm Style
             </span>
-            <CustomDropdown
-              variant="brutalist"
-              fullWidth
-              options={STYLES}
-              value={style}
-              onChange={setStyle}
-            />
+            <CustomDropdown variant="brutalist" fullWidth options={STYLES} value={style} onChange={setStyle} />
           </div>
-
-          {/* Color Presets */}
           <div className="space-y-3">
             <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
               <PaletteIcon /> Color Protocol
@@ -724,63 +405,27 @@ const WallpaperEnginePage = () => {
               {COLOR_PRESETS.map((p) => {
                 const isCustom = p.value === 'custom';
                 const isActive = preset === p.value;
-
                 return (
-                  <button
-                    key={p.value}
-                    onClick={() => setPreset(p.value)}
-                    className={`relative h-10 border transition-all ${
-                      isActive
-                        ? 'border-emerald-500 p-0.5'
-                        : isCustom
-                          ? 'border-primary-500/50 hover:border-primary-500'
-                          : 'border-white/10 hover:border-white/30'
-                    }`}
-                    title={p.label}
-                  >
+                  <button key={p.value} onClick={() => setPreset(p.value)} className={`relative h-10 border transition-all ${isActive ? 'border-emerald-500 p-0.5' : isCustom ? 'border-primary-500/50 hover:border-primary-500' : 'border-white/10 hover:border-white/30'}`} title={p.label}>
                     <div className="w-full h-full flex overflow-hidden">
                       {(p.value === 'custom' ? customColors : p.colors).slice(0, 3).map((c, i) => (
                         <div key={i} className="flex-1" style={{ backgroundColor: c }} />
                       ))}
                     </div>
-                    {isCustom && !isActive && (
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                         <span className="text-[10px] font-black text-white drop-shadow-md">+</span>
-                      </div>
-                    )}
-                    {isActive && (
-                      <div className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-black rounded-full p-0.5">
-                        <CheckIcon size={8} weight="bold" />
-                      </div>
-                    )}
+                    {isCustom && !isActive && ( <div className="absolute inset-0 flex items-center justify-center pointer-events-none"> <span className="text-[10px] font-black text-white drop-shadow-md">+</span> </div> )}
+                    {isActive && ( <div className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-black rounded-full p-0.5"> <CheckIcon size={8} weight="bold" /> </div> )}
                   </button>
                 );
               })}
             </div>
-
-            {/* Custom Color Pickers */}
             <AnimatePresence>
               {preset === 'custom' && (
-                <motion.div
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  className="space-y-3 pt-2 overflow-hidden"
-                >
+                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="space-y-3 pt-2 overflow-hidden">
                   <div className="flex gap-2">
                     {customColors.map((color, idx) => (
                       <div key={idx} className="flex-1 flex flex-col gap-1">
                         <label className="text-[8px] text-gray-600 uppercase">CH_{idx + 1}</label>
-                        <input
-                          type="color"
-                          value={color}
-                          onChange={(e) => {
-                            const newColors = [...customColors];
-                            newColors[idx] = e.target.value;
-                            setCustomColors(newColors);
-                          }}
-                          className="w-full h-8 bg-transparent border border-white/10 cursor-pointer p-0 block"
-                        />
+                        <input type="color" value={color} onChange={(e) => { const newColors = [...customColors]; newColors[idx] = e.target.value; setCustomColors(newColors); }} className="w-full h-8 bg-transparent border border-white/10 cursor-pointer p-0 block" />
                       </div>
                     ))}
                   </div>
@@ -789,55 +434,22 @@ const WallpaperEnginePage = () => {
               )}
             </AnimatePresence>
           </div>
-
-          {/* Complexity Slider */}
-          <CustomSlider
-            label="Complexity Level"
-            value={complexity}
-            onChange={setComplexity}
-            min={1}
-            max={100}
-          />
-
-          {/* Noise Slider */}
-          <CustomSlider
-            label="Digital Grain"
-            value={noise}
-            onChange={setNoise}
-            min={0}
-            max={50}
-          />
-
-                    {/* Resolution */}
-                    <div className="space-y-3">
-                      <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
-                        <MonitorIcon /> Export Target
-                      </span>
-                      <CustomDropdown
-                        variant="brutalist"
-                        fullWidth
-                        options={RESOLUTIONS}
-                        value={resolution}
-                        onChange={setResolution}
-                      />
-                    </div>
-
-                    <button
-                      onClick={handleDownload}
-                      className="w-full group flex items-center justify-between bg-emerald-500 hover:bg-emerald-400 text-black p-4 rounded-sm font-black uppercase tracking-tighter transition-all active:scale-[0.98]"
-                    >
-                      <span>Execute Export</span>
-                      <DownloadSimpleIcon size={20} weight="bold" className="group-hover:translate-y-0.5 transition-transform" />
-                    </button>
-                  </div>
-                </aside>
-      {/* MAIN VIEWPORT */}
+          <CustomSlider label="Complexity Level" value={complexity} onChange={setComplexity} min={1} max={100} />
+          <CustomSlider label="Digital Grain" value={noise} onChange={setNoise} min={0} max={50} />
+          <div className="space-y-3">
+            <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
+              <MonitorIcon /> Export Target
+            </span>
+            <CustomDropdown variant="brutalist" fullWidth options={RESOLUTIONS} value={resolution} onChange={setResolution} />
+          </div>
+          <button onClick={handleDownload} className="w-full group flex items-center justify-between bg-emerald-500 hover:bg-emerald-400 text-black p-4 rounded-sm font-black uppercase tracking-tighter transition-all active:scale-[0.98]">
+            <span>Execute Export</span>
+            <DownloadSimpleIcon size={20} weight="bold" className="group-hover:translate-y-0.5 transition-transform" />
+          </button>
+        </div>
+      </aside>
       <main className="flex-1 relative bg-[#050505] p-4 md:p-12 flex items-center justify-center overflow-hidden">
-        {/* Decorative Grid */}
-        <div className="absolute inset-0 pointer-events-none opacity-5"
-             style={{ backgroundImage: 'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }}
-        />
-
+        <div className="absolute inset-0 pointer-events-none opacity-5" style={{ backgroundImage: 'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
         <div className="relative w-full h-full flex flex-col items-center justify-center max-w-5xl">
           <div className="mb-4 w-full flex justify-between items-end">
             <div>
@@ -848,29 +460,13 @@ const WallpaperEnginePage = () => {
                 <span>Algorithm: {style}</span>
               </div>
             </div>
-            <div className="flex gap-2">
-               <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-               <div className="w-2 h-2 rounded-full bg-white/10" />
-               <div className="w-2 h-2 rounded-full bg-white/10" />
-            </div>
+            <div className="flex gap-2"> <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" /> <div className="w-2 h-2 rounded-full bg-white/10" /> <div className="w-2 h-2 rounded-full bg-white/10" /> </div>
           </div>
-
-          {/* Canvas Container with aspect-ratio management */}
-          <div className="w-full relative shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/5 rounded-sm overflow-hidden bg-black flex items-center justify-center"
-               style={{ aspectRatio: `${RESOLUTIONS.find(r => r.value === resolution).width} / ${RESOLUTIONS.find(r => r.value === resolution).height}`, maxHeight: '70vh' }}>
-            <canvas
-              ref={canvasRef}
-              className="w-full h-full object-contain"
-            />
-
+          <div className="w-full relative shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/5 rounded-sm overflow-hidden bg-black flex items-center justify-center" style={{ aspectRatio: `${RESOLUTIONS.find(r => r.value === resolution).width} / ${RESOLUTIONS.find(r => r.value === resolution).height}`, maxHeight: '70vh' }}>
+            <canvas ref={canvasRef} className="w-full h-full object-contain" />
             <AnimatePresence>
               {isGenerating && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10"
-                >
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10">
                   <div className="flex flex-col items-center gap-4">
                     <div className="w-12 h-12 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
                     <span className="text-[10px] uppercase tracking-[0.5em] text-emerald-500 animate-pulse">Re-Compiling...</span>
@@ -879,7 +475,6 @@ const WallpaperEnginePage = () => {
               )}
             </AnimatePresence>
           </div>
-
           <div className="mt-8 w-full border-t border-white/5 pt-6 grid grid-cols-2 gap-8">
              <StatsModule label="Render_Engine" value="Canvas_v2" />
              <StatsModule label="Data_Protocol" value="Procedural" />
