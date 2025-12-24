@@ -39,7 +39,7 @@ const ProjectTile = ({ project }) => {
           <h3 className="text-xl font-medium font-sans uppercase text-white mb-2 group-hover:text-emerald-400 transition-colors line-clamp-1">
             {project.title}
           </h3>
-          <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed mb-4 flex-grow">
+          <p className="text-sm text-gray-400 line-clamp-2 leading-relaxed mb-4 flex-grow font-arvo">
             {' '}
             {project.shortDescription}
           </p>
