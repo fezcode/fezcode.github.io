@@ -16,14 +16,18 @@ import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 
 const COLOR_PRESETS = [
+  { label: 'Default', value: 'default', colors: ['#10b981', '#3b82f6', '#050505'] },
   { label: 'Classic Fez', value: 'classic', colors: ['#f87171', '#fb923c', '#34d399'] },
   { label: 'Cyberpunk', value: 'cyberpunk', colors: ['#fcee0a', '#00ff9f', '#050505', '#ffffff'] },
   { label: 'Vaporwave', value: 'vaporwave', colors: ['#ff71ce', '#01cdfe', '#05ffa1', '#b967ff', '#fffb96'] },
   { label: 'Matrix', value: 'matrix', colors: ['#00ff41', '#008f11', '#003b00', '#0d0208'] },
   { label: 'Deep Sea', value: 'ocean', colors: ['#0ea5e9', '#2dd4bf', '#1e1b4b', '#f0f9ff'] },
   { label: 'Monochrome', value: 'mono', colors: ['#ffffff', '#a3a3a3', '#404040', '#000000'] },
+  { label: 'Forerunner Blue', value: 'forerunner', colors: ['#00f2ff', '#0066ff', '#001a33', '#050505'] },
+  { label: 'UNSC Green', value: 'unsc', colors: ['#94ff44', '#3d5c1a', '#1a240d', '#050505'] },
   { label: 'Pip-Boy Amber', value: 'pipboy_amber', colors: ['#ffb642', '#8a5d00', '#211500', '#050505'] },
   { label: 'Pip-Boy Green', value: 'pipboy_green', colors: ['#18e73c', '#005c00', '#001a00', '#050505'] },
+  { label: 'Cyberpunk Red', value: 'cyber_red', colors: ['#ff003c', '#00fff9', '#1a1a1a', '#050505'] },
   { label: 'Custom', value: 'custom', colors: [] },
 ];
 
@@ -45,6 +49,12 @@ const STYLES = [
   { label: 'Stellar Cartography', value: 'stellar' },
   { label: 'Geometric Circles', value: 'circles' },
   { label: 'Pixel Construct', value: 'pixel' },
+  { label: 'Bio-Helix Protocol', value: 'biohelix' },
+  { label: 'Fluent Mosaic', value: 'fluent' },
+  { label: 'Document Protocol', value: 'docs' },
+  { label: 'Night City Interface', value: 'nightcity' },
+  { label: 'Global Connectivity', value: 'global' },
+  { label: 'Schematic Protocol', value: 'schematic' },
 ];
 
 const RESOLUTIONS = [
@@ -67,7 +77,7 @@ const WallpaperEnginePage = () => {
   const [style, setStyle] = useState('bauhaus');
   const [complexity, setComplexity] = useState(50);
   const [noise, setNoise] = useState(15);
-  const [preset, setPreset] = useState('classic');
+  const [preset, setPreset] = useState('default');
   const [customColors, setCustomColors] = useState(['#10b981', '#3b82f6', '#050505']);
   const [resolution, setResolution] = useState('4k');
   const [isGenerating, setIsGenerating] = useState(false);
@@ -358,10 +368,506 @@ const WallpaperEnginePage = () => {
       }
       ctx.strokeStyle = '#fff'; ctx.lineWidth = 1;
       for (let i = 0; i < 3; i++) { if (nextRand() > 0.5) { const ly = nextRand() * canvas.height; ctx.globalAlpha = 0.1; ctx.beginPath(); ctx.moveTo(0, ly); ctx.lineTo(canvas.width, ly); ctx.stroke(); ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`; ctx.fillText(`PX_SECTOR_${Math.floor(nextRand() * 1000)}`, 10, ly - 5); } }
-    }
+    } else if (style === 'biohelix') {
+      const mainColor = colors[0];
+      const accentColor = colors[1] || colors[0];
+      const bgColor = colors[colors.length - 1];
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    if (noise > 0) {
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const strands = Math.floor(3 + complexity / 15);
+      const spacing = canvas.width / (strands + 1);
+
+      for (let s = 0; s < strands; s++) {
+        const centerX = spacing * (s + 1);
+        const waveHeight = (40 + nextRand() * 60) * (canvas.width / 1920);
+        const freq = (0.005 + nextRand() * 0.01);
+        const color = nextRand() > 0.5 ? mainColor : accentColor;
+
+        // Helix connection lines (Nucleotides)
+        for (let y = 0; y < canvas.height; y += 30) {
+          const x1 = centerX + Math.sin(y * freq) * waveHeight;
+          const x2 = centerX + Math.sin(y * freq + Math.PI) * waveHeight;
+
+          ctx.strokeStyle = color;
+          ctx.globalAlpha = 0.3;
+          ctx.beginPath();
+          ctx.moveTo(x1, y);
+          ctx.lineTo(x2, y);
+          ctx.stroke();
+
+          if (nextRand() > 0.8) {
+            ctx.fillStyle = '#fff';
+            ctx.font = `${Math.floor(8 * (canvas.width/1920))}px monospace`;
+            const bases = ['A', 'T', 'C', 'G'];
+            ctx.fillText(bases[Math.floor(nextRand() * 4)], (x1 + x2) / 2, y);
+          }
+        }
+
+        // Main Strands
+        ctx.lineWidth = 3;
+        ctx.globalAlpha = 0.8;
+        ctx.strokeStyle = color;
+
+        // Strand 1
+        ctx.beginPath();
+        for (let y = 0; y < canvas.height; y += 5) {
+          const x = centerX + Math.sin(y * freq) * waveHeight;
+          if (y === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Strand 2
+        ctx.beginPath();
+        for (let y = 0; y < canvas.height; y += 5) {
+          const x = centerX + Math.sin(y * freq + Math.PI) * waveHeight;
+          if (y === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.stroke();
+
+        // Technical bio-labels
+        ctx.fillStyle = color;
+        ctx.globalAlpha = 0.5;
+        ctx.font = `bold ${Math.floor(12 * (canvas.width/1920))}px monospace`;
+        ctx.fillText(`GEN_STRAND_0x${s.toString(16).toUpperCase()}`, centerX + waveHeight + 20, 100 + s * 100);
+        ctx.fillText(`SEQ_STABILITY: ${(90 + nextRand() * 10).toFixed(2)}%`, centerX + waveHeight + 20, 115 + s * 100);
+      }
+    } else if (style === 'fluent') {
+      const mainColor = colors[0];
+      const accentColor = colors[1] || colors[0];
+      const bgColor = colors[colors.length - 1];
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const rows = Math.floor(3 + complexity / 20);
+      const cols = Math.floor(rows * (canvas.width / canvas.height));
+      const tileW = canvas.width / cols;
+      const tileH = canvas.height / rows;
+
+      for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+          if (nextRand() > 0.3) {
+            const posX = x * tileW;
+            const posY = y * tileH;
+            const color = nextRand() > 0.7 ? accentColor : mainColor;
+
+            // "Acrylic" Surface
+            ctx.save();
+            ctx.translate(posX + 10, posY + 10);
+            const w = tileW - 20;
+            const h = tileH - 20;
+
+            const grad = ctx.createLinearGradient(0, 0, w, h);
+            grad.addColorStop(0, color);
+            grad.addColorStop(1, 'transparent');
+
+            ctx.fillStyle = grad;
+            ctx.globalAlpha = 0.1 + nextRand() * 0.3;
+            ctx.fillRect(0, 0, w, h);
+
+            // Tile Border (Reveal Highlight)
+            ctx.strokeStyle = '#fff';
+            ctx.globalAlpha = 0.05 + nextRand() * 0.1;
+            ctx.lineWidth = 1;
+            ctx.strokeRect(0, 0, w, h);
+
+            // Technical Labels (Metro Style)
+            if (nextRand() > 0.6) {
+              ctx.globalAlpha = 0.4;
+              ctx.fillStyle = '#fff';
+              ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`;
+              ctx.fillText(`TILE_0x${(x * y).toString(16).toUpperCase()}`, 10, 20);
+
+              if (nextRand() > 0.5) {
+                ctx.fillRect(10, 30, w * 0.3, 2);
+              }
+            }
+            ctx.restore();
+          }
+        }
+      }
+        } else if (style === 'docs') {
+          const mainColor = colors[0];
+          const accentColor = colors[1] || colors[0];
+          const bgColor = colors[colors.length - 1];
+          ctx.fillStyle = bgColor;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          const count = Math.floor(5 + complexity / 10);
+          const paperW = 400 * (canvas.width / 1920);
+          const paperH = 550 * (canvas.width / 1920);
+
+          // Organized Distribution: Grid with Jitter
+          const gridCols = Math.ceil(Math.sqrt(count * (canvas.width / canvas.height)));
+          const gridRows = Math.ceil(count / gridCols);
+          const cellW = canvas.width / gridCols;
+          const cellH = canvas.height / gridRows;
+
+          let drawnCount = 0;
+          for (let r = 0; r < gridRows; r++) {
+            for (let c = 0; gridCols > c; c++) {
+              if (drawnCount >= count) break;
+
+              // Position with jitter (mostly centered in its grid cell)
+              const x = (c + 0.5) * cellW + (nextRand() - 0.5) * cellW * 0.4;
+              const y = (r + 0.5) * cellH + (nextRand() - 0.5) * cellH * 0.4;
+              const rot = (nextRand() - 0.5) * 30 * Math.PI / 180; // Reduced rotation for "stacked" look
+              const color = nextRand() > 0.5 ? mainColor : accentColor;
+
+              ctx.save();
+              ctx.translate(x, y);
+              ctx.rotate(rot);
+
+              // Shadow
+              ctx.shadowColor = 'rgba(0,0,0,0.5)';
+              ctx.shadowBlur = 30;
+              ctx.shadowOffsetX = 10;
+              ctx.shadowOffsetY = 10;
+
+              // Paper Base
+              ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
+              ctx.fillRect(-paperW/2, -paperH/2, paperW, paperH);
+
+              // Reset shadow for content
+              ctx.shadowColor = 'transparent';
+              ctx.shadowBlur = 0;
+              ctx.shadowOffsetX = 0;
+              ctx.shadowOffsetY = 0;
+
+              // Paper Border
+              ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+              ctx.lineWidth = 1;
+              ctx.strokeRect(-paperW/2, -paperH/2, paperW, paperH);
+
+              // Content: Header
+              ctx.fillStyle = color;
+              ctx.globalAlpha = 0.8;
+              ctx.font = `bold ${Math.floor(14 * (canvas.width/1920))}px monospace`;
+              ctx.fillText(`FILE_ID: 0x${nextRand().toString(16).slice(2, 6).toUpperCase()}`, -paperW/2 + 20, -paperH/2 + 30);
+              ctx.fillRect(-paperW/2 + 20, -paperH/2 + 40, paperW - 40, 2);
+
+              // Content: "Text" lines
+              ctx.globalAlpha = 0.3;
+              for (let j = 0; j < 15; j++) {
+                const lw = (paperW - 40) * (0.3 + nextRand() * 0.7);
+                ctx.fillRect(-paperW/2 + 20, -paperH/2 + 70 + j * 25, lw, 4);
+              }
+
+              // Content: System Stamp
+              if (nextRand() > 0.6) {
+                ctx.save();
+                ctx.rotate(-15 * Math.PI / 180);
+                ctx.strokeStyle = '#f87171'; // Red stamp
+                ctx.lineWidth = 2;
+                ctx.globalAlpha = 0.6;
+                const stampText = nextRand() > 0.5 ? 'CONFIDENTIAL' : 'CLASSIFIED';
+                ctx.font = `bold ${Math.floor(20 * (canvas.width/1920))}px monospace`;
+                const tw = ctx.measureText(stampText).width;
+                ctx.strokeRect(-tw/2 - 10, paperH/4 - 25, tw + 20, 40);
+                ctx.fillStyle = '#f87171';
+                ctx.fillText(stampText, -tw/2, paperH/4 + 5);
+                ctx.restore();
+              }
+
+              ctx.restore();
+                        drawnCount++;
+                      }
+                    }
+                  } else if (style === 'nightcity') {
+                    const mainColor = colors[0];
+                    const accentColor = colors[1] || colors[0];
+                    const bgColor = colors[colors.length - 1];
+                    ctx.fillStyle = bgColor;
+                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                    // 1. Scanlines
+                    ctx.strokeStyle = mainColor;
+                    ctx.globalAlpha = 0.05;
+                    ctx.lineWidth = 1;
+                    for (let y = 0; y < canvas.height; y += 2) {
+                      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+                    }
+
+                    // 2. Slanted Panels (Background Layer)
+                    const panelCount = Math.floor(3 + complexity / 20);
+                    for (let i = 0; i < panelCount; i++) {
+                      const x = nextRand() * canvas.width;
+                      const y = nextRand() * canvas.height;
+                      const w = (300 + nextRand() * 600) * (canvas.width / 1920);
+                      const h = (200 + nextRand() * 400) * (canvas.width / 1920);
+
+                      ctx.save();
+                      ctx.translate(x, y);
+                      ctx.transform(1, 0, 0.2, 1, 0, 0); // Slant transform
+
+                      ctx.fillStyle = mainColor;
+                      ctx.globalAlpha = 0.02;
+                      ctx.fillRect(0, 0, w, h);
+
+                      ctx.strokeStyle = mainColor;
+                      ctx.globalAlpha = 0.1;
+                      ctx.strokeRect(0, 0, w, h);
+                      ctx.restore();
+                    }
+
+                    // 3. Glitch Bars
+                    const glitches = Math.floor(10 + complexity / 2);
+                    for (let i = 0; i < glitches; i++) {
+                      const x = nextRand() * canvas.width;
+                      const y = nextRand() * canvas.height;
+                      const w = (nextRand() * 400) * (canvas.width / 1920);
+                      const h = (2 + nextRand() * 10) * (canvas.width / 1920);
+
+                      ctx.fillStyle = nextRand() > 0.5 ? mainColor : accentColor;
+                      ctx.globalAlpha = 0.4;
+                      ctx.fillRect(x, y, w, h);
+
+                      // Offset shadow for chromatic effect
+                      ctx.fillStyle = '#fff';
+                      ctx.globalAlpha = 0.2;
+                      ctx.fillRect(x + 5, y + 2, w, h);
+                    }
+
+                    // 4. Interface Readouts
+                    ctx.fillStyle = mainColor;
+                    ctx.font = `bold ${Math.floor(40 * (canvas.width/1920))}px monospace`;
+                    ctx.globalAlpha = 0.8;
+                    ctx.fillText("BREACH_STATUS: NOMINAL", 100, 150);
+
+                    ctx.font = `${Math.floor(12 * (canvas.width/1920))}px monospace`;
+                    const readouts = [
+                      `NC_NET_NODE: 0x${nextRand().toString(16).slice(2, 8).toUpperCase()}`,
+                      'SYSTEM_AUTHORIZATION: OK',
+                      'BIOMONITOR_SYNC: ACTIVE',
+                      'RAM_USAGE: 42.8 GB',
+                      'CYBER_DECK: MILITECH_PARELINE'
+                    ];
+
+                    readouts.forEach((r, idx) => {
+                      ctx.globalAlpha = 0.6;
+                      ctx.fillText(`>> ${r}`, 100, 200 + idx * 25);
+                    });
+
+                    // 5. Arasaka-style Red Alert
+                    if (nextRand() > 0.7) {
+                      ctx.save();
+                      ctx.translate(canvas.width - 400, 100);
+                      ctx.fillStyle = '#ff003c';
+                      ctx.globalAlpha = 0.9;
+                      ctx.fillRect(0, 0, 300, 60);
+                      ctx.fillStyle = '#000';
+                      ctx.font = `black ${Math.floor(20 * (canvas.width/1920))}px monospace`;
+                      ctx.fillText("SAMURAI_LINK: OK", 20, 40);
+                      ctx.restore();
+                    }
+
+                    // 6. Technical Overlay Dots
+                    const dotCount = Math.floor(complexity);
+                    for (let i = 0; i < dotCount; i++) {
+                      ctx.fillStyle = '#fff';
+                      ctx.globalAlpha = 0.1;
+                              ctx.beginPath();
+                              ctx.arc(nextRand() * canvas.width, nextRand() * canvas.height, 1, 0, Math.PI * 2);
+                              ctx.fill();
+                            }
+                          } else if (style === 'global') {
+                            const mainColor = colors[0];
+                            const accentColor = colors[1] || colors[0];
+                            const bgColor = colors[colors.length - 1];
+                            ctx.fillStyle = bgColor;
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                            const centerX = canvas.width / 2;
+                            const centerY = canvas.height / 2;
+                            const radius = Math.min(canvas.width, canvas.height) * 0.4;
+
+                            // 1. Globe Sphere & Long/Lat
+                            ctx.strokeStyle = mainColor;
+                            ctx.lineWidth = 1;
+
+                            // Outer rim
+                            ctx.globalAlpha = 0.3;
+                            ctx.beginPath();
+                            ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+                            ctx.stroke();
+
+                            // Latitude lines
+                            ctx.globalAlpha = 0.1;
+                            for (let i = 1; i < 6; i++) {
+                              const r = radius * Math.sin((i / 6) * Math.PI);
+                              const y = centerY + radius * Math.cos((i / 6) * Math.PI);
+                              ctx.beginPath();
+                              ctx.ellipse(centerX, y, radius * Math.sin((i / 6) * Math.PI), r * 0.2, 0, 0, Math.PI * 2);
+                              ctx.stroke();
+                            }
+
+                            // Longitude lines
+                            for (let i = 0; i < 6; i++) {
+                              ctx.beginPath();
+                              ctx.ellipse(centerX, centerY, radius * Math.sin((i / 6) * Math.PI), radius, 0, 0, Math.PI * 2);
+                              ctx.stroke();
+                            }
+
+                            // 2. Nodes (Dots)
+                            const nodeCount = Math.floor(20 + complexity / 2);
+                            const nodes = [];
+                            for (let i = 0; i < nodeCount; i++) {
+                              const angle = nextRand() * Math.PI * 2;
+                              const dist = Math.sqrt(nextRand()) * radius;
+                              nodes.push({
+                                x: centerX + Math.cos(angle) * dist,
+                                y: centerY + Math.sin(angle) * dist,
+                                color: nextRand() > 0.7 ? accentColor : mainColor
+                              });
+                            }
+
+                            // 3. Connections (Lines)
+                            ctx.lineWidth = 1;
+                            nodes.forEach((n, i) => {
+                              // Draw dots
+                              ctx.fillStyle = n.color;
+                              ctx.globalAlpha = 0.8;
+                              ctx.beginPath();
+                              ctx.arc(n.x, n.y, 3, 0, Math.PI * 2);
+                              ctx.fill();
+
+                              // Draw connections
+                              ctx.strokeStyle = n.color;
+                              nodes.slice(i + 1).forEach(n2 => {
+                                const d = Math.hypot(n.x - n2.x, n.y - n2.y);
+                                if (d < radius * 0.8 && nextRand() > 0.8) {
+                                  ctx.globalAlpha = 0.2;
+                                  ctx.beginPath();
+                                  ctx.moveTo(n.x, n.y);
+                                  // Quadratic curve for "arc" look
+                                  const midX = (n.x + n2.x) / 2 + (nextRand() - 0.5) * 50;
+                                  const midY = (n.y + n2.y) / 2 + (nextRand() - 0.5) * 50;
+                                  ctx.quadraticCurveTo(midX, midY, n2.x, n2.y);
+                                  ctx.stroke();
+                                }
+                              });
+
+                              // Technical Labels
+                              if (nextRand() > 0.9) {
+                                ctx.fillStyle = '#fff';
+                                ctx.globalAlpha = 0.4;
+                                ctx.font = `${Math.floor(9 * (canvas.width/1920))}px monospace`;
+                                ctx.fillText(`LOC_${Math.floor(n.x)},${Math.floor(n.y)}`, n.x + 8, n.y + 8);
+                              }
+                            });
+
+                            // 4. Interface HUD
+                            ctx.globalAlpha = 0.6;
+                            ctx.fillStyle = mainColor;
+                            ctx.font = `bold ${Math.floor(12 * (canvas.width/1920))}px monospace`;
+                            ctx.fillText("PLANETARY_NETWORK_SCAN: ACTIVE", 50, canvas.height - 50);
+                            ctx.fillText(`NODES_DETECTED: ${nodeCount}`, 50, canvas.height - 35);
+
+                            const corners = [
+                              { x: 50, y: 50 },
+                              { x: canvas.width - 150, y: 50 },
+                              { x: canvas.width - 150, y: canvas.height - 50 }
+                            ];
+
+                            corners.forEach(c => {
+                              ctx.strokeRect(c.x, c.y, 100, 20);
+                                              ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`;
+                                              ctx.fillText(`SEC_${Math.floor(nextRand() * 99)}`, c.x + 5, c.y + 14);
+                                            });
+                                          } else if (style === 'schematic') {
+                                            const mainColor = colors[0];
+                                            const accentColor = colors[1] || colors[0];
+                                            const bgColor = colors[colors.length - 1];
+                                            ctx.fillStyle = bgColor;
+                                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                                            // 1. Technical Grid
+                                            ctx.strokeStyle = mainColor;
+                                            ctx.lineWidth = 0.5;
+                                            const step = 40 * (canvas.width / 1920);
+                                            for (let i = 0; i < canvas.width; i += step) {
+                                              ctx.globalAlpha = i % (step * 5) === 0 ? 0.15 : 0.05;
+                                              ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, canvas.height); ctx.stroke();
+                                            }
+                                            for (let i = 0; i < canvas.height; i += step) {
+                                              ctx.globalAlpha = i % (step * 5) === 0 ? 0.15 : 0.05;
+                                              ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(canvas.width, i); ctx.stroke();
+                                            }
+
+                                            // 2. Blueprint Components
+                                            const centerX = canvas.width / 2;
+                                            const centerY = canvas.height / 2;
+                                            const components = Math.floor(2 + complexity / 25);
+
+                                            for (let i = 0; i < components; i++) {
+                                              const x = centerX + (nextRand() - 0.5) * canvas.width * 0.6;
+                                              const y = centerY + (nextRand() - 0.5) * canvas.height * 0.6;
+                                              const w = (200 + nextRand() * 400) * (canvas.width / 1920);
+                                              const h = (150 + nextRand() * 300) * (canvas.width / 1920);
+                                              const color = nextRand() > 0.5 ? mainColor : accentColor;
+
+                                              ctx.save();
+                                              ctx.translate(x, y);
+
+                                              // Outline
+                                              ctx.strokeStyle = color;
+                                              ctx.lineWidth = 2;
+                                              ctx.globalAlpha = 0.8;
+                                              ctx.strokeRect(-w/2, -h/2, w, h);
+
+                                              // Cross-hatching
+                                              ctx.globalAlpha = 0.1;
+                                              ctx.beginPath();
+                                              for (let j = -w/2; j < w/2; j += 10) {
+                                                ctx.moveTo(j, -h/2); ctx.lineTo(j + 20, h/2);
+                                              }
+                                              ctx.stroke();
+
+                                              // Dimension lines
+                                              ctx.globalAlpha = 0.4;
+                                              ctx.lineWidth = 1;
+                                              ctx.beginPath();
+                                              // Horizontal Dimension
+                                              ctx.moveTo(-w/2, -h/2 - 20); ctx.lineTo(w/2, -h/2 - 20);
+                                              ctx.moveTo(-w/2, -h/2 - 25); ctx.lineTo(-w/2, -h/2 - 15);
+                                              ctx.moveTo(w/2, -h/2 - 25); ctx.lineTo(w/2, -h/2 - 15);
+                                              // Vertical Dimension
+                                              ctx.moveTo(w/2 + 20, -h/2); ctx.lineTo(w/2 + 20, h/2);
+                                              ctx.moveTo(w/2 + 15, -h/2); ctx.lineTo(w/2 + 25, -h/2);
+                                              ctx.moveTo(w/2 + 15, h/2); ctx.lineTo(w/2 + 25, h/2);
+                                              ctx.stroke();
+
+                                              // Dimension labels
+                                              ctx.fillStyle = color;
+                                              ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`;
+                                              ctx.fillText(`${Math.floor(w)}mm`, -15, -h/2 - 30);
+                                              ctx.save();
+                                              ctx.translate(w/2 + 35, 0);
+                                              ctx.rotate(Math.PI / 2);
+                                              ctx.fillText(`${Math.floor(h)}mm`, -15, 0);
+                                              ctx.restore();
+
+                                              // Technical Annotation
+                                              ctx.globalAlpha = 0.7;
+                                              ctx.fillText(`MOD_0x${nextRand().toString(16).slice(2,6).toUpperCase()}`, -w/2, h/2 + 20);
+
+                                              ctx.restore();
+                                            }
+
+                                            // 3. Drafting Header
+                                            ctx.globalAlpha = 0.9;
+                                            ctx.strokeStyle = mainColor;
+                                            ctx.lineWidth = 2;
+                                            ctx.strokeRect(50, 50, 400, 100);
+                                            ctx.font = `bold ${Math.floor(16 * (canvas.width/1920))}px monospace`;
+                                            ctx.fillStyle = mainColor;
+                                            ctx.fillText("ENGINEERING_ARCHIVE // SCHEMATIC", 70, 85);
+                                            ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`;
+                                            ctx.fillText(`DRAFT_VER: ${seed.slice(0,4).toUpperCase()}`, 70, 110);
+                                            ctx.fillText(`ARCH_SPEC: ${resolution.toUpperCase()}`, 70, 125);
+                                          }
+
+                                          if (noise > 0) {      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const data = imageData.data; const noiseVal = noise * 2.55;
       for (let i = 0; i < data.length; i += 4) { const n = (nextRand() - 0.5) * noiseVal; data[i] += n; data[i+1] += n; data[i+2] += n; }
       ctx.putImageData(imageData, 0, 0);
