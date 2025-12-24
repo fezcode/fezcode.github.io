@@ -241,7 +241,7 @@ const StandardBlogPostPage = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl">
+          <h1 className="text-4xl md:text-7xl font-medium font-playfairDisplay uppercase tracking-tighter text-white leading-none max-w-5xl">
             {post.attributes.title}
           </h1>
         </div>
@@ -252,8 +252,9 @@ const StandardBlogPostPage = () => {
         <div className="lg:col-span-8">
           <div
             className="prose prose-invert prose-lg max-w-none
-                prose-headings:font-sans prose-headings:uppercase prose-headings:tracking-tight prose-headings:font-bold prose-headings:text-white
-                prose-p:text-gray-400 prose-p:font-sans prose-p:leading-relaxed
+                prose-headings:font-sans prose-headings:uppercase prose-headings:tracking-tight prose-headings:font-medium prose-headings:text-white
+                prose-p:text-gray-400 prose-p:font-arvo prose-p:leading-relaxed
+                prose-li:font-arvo
                 prose-a:text-emerald-400 prose-a:underline prose-a:decoration-emerald-500/30 prose-a:underline-offset-4 hover:prose-a:decoration-emerald-400
                 prose-code:text-emerald-300 prose-code:font-mono prose-code:bg-white/5 prose-code:px-1 prose-code:rounded-sm
                 prose-pre:bg-transparent prose-pre:border-none prose-pre:p-0

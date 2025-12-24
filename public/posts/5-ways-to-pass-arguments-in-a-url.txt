@@ -1,5 +1,3 @@
-# 5 Ways to Pass Arguments in a URL (Beyond the Basic Query)
-
 When building web applications or designing APIs, understanding how to transfer data is crucial. While **Query Parameters** (the bits after the `?`) are the most common method, there are four other fundamental ways to pass arguments to a server via a URL or its associated HTTP request.
 
 Here is a quick reference guide to the five main argument passing mechanisms:
