@@ -22,6 +22,8 @@ const COLOR_PRESETS = [
   { label: 'Matrix', value: 'matrix', colors: ['#00ff41', '#008f11', '#003b00', '#0d0208'] },
   { label: 'Deep Sea', value: 'ocean', colors: ['#0ea5e9', '#2dd4bf', '#1e1b4b', '#f0f9ff'] },
   { label: 'Monochrome', value: 'mono', colors: ['#ffffff', '#a3a3a3', '#404040', '#000000'] },
+  { label: 'Pip-Boy Amber', value: 'pipboy_amber', colors: ['#ffb642', '#8a5d00', '#211500', '#050505'] },
+  { label: 'Pip-Boy Green', value: 'pipboy_green', colors: ['#18e73c', '#005c00', '#001a00', '#050505'] },
   { label: 'Custom', value: 'custom', colors: [] },
 ];
 
@@ -39,6 +41,7 @@ const STYLES = [
   { label: 'Isometric Grid', value: 'iso' },
   { label: 'Organic Noise', value: 'noise' },
   { label: 'Type Matrix', value: 'typematrix' },
+  { label: 'Pip-Boy Interface', value: 'pipboy' },
 ];
 
 const RESOLUTIONS = [
@@ -446,9 +449,179 @@ const WallpaperEnginePage = () => {
           ctx.strokeRect(x - 5, y - fontSize, ctx.measureText(text).width + 10, fontSize + 5);
         }
       }
-    }
+    } else if (style === 'pipboy') {
+      const mainColor = colors[0];
+      const bgColor = colors[colors.length - 1];
 
-    // Noise/Grain
+      // 1. CRT Background & Scanlines
+      ctx.fillStyle = bgColor;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.strokeStyle = mainColor;
+      ctx.lineWidth = 0.5;
+      ctx.globalAlpha = 0.1;
+      for (let y = 0; y < canvas.height; y += 4) {
+        ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); ctx.stroke();
+      }
+
+      // 2. Fixed Header UI
+      ctx.globalAlpha = 1.0;
+      ctx.fillStyle = mainColor;
+      ctx.font = `bold ${Math.floor(24 * (canvas.width/1920))}px monospace`;
+      const tabs = ['STAT', 'INV', 'DATA', 'MAP', 'RADIO'];
+      tabs.forEach((tab, i) => {
+        const x = 100 + i * (canvas.width / 6);
+        ctx.fillText(tab, x, 80);
+        if (tab === 'DATA') { // Active tab indicator
+          ctx.fillRect(x - 10, 90, ctx.measureText(tab).width + 20, 4);
+        }
+      });
+      ctx.fillRect(50, 100, canvas.width - 100, 2);
+
+      // 3. Central Radar / Map Element
+      const centerX = canvas.width * 0.75;
+      const centerY = canvas.height * 0.5;
+      const radius = 200 * (canvas.width / 1920);
+
+      ctx.strokeStyle = mainColor;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+      ctx.stroke();
+
+      ctx.globalAlpha = 0.3;
+      for (let r = 1; r < 4; r++) {
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, (radius / 4) * r, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      // Blips
+      ctx.globalAlpha = 0.8;
+      for (let i = 0; i < 5; i++) {
+        const bx = centerX + (nextRand() - 0.5) * radius * 1.5;
+        const by = centerY + (nextRand() - 0.5) * radius * 1.5;
+        ctx.fillRect(bx, by, 8, 8);
+      }
+
+      // 4. Data Listing
+      ctx.font = `${Math.floor(18 * (canvas.width/1920))}px monospace`;
+      const entries = [
+        'FEZ_CODEX_OS v4.0.2',
+        'MEMORY_BANK: OK',
+        'RAD_LEVEL: 0.02 mSv',
+        'LOCATION: NEW_VEGAS_STRIP',
+        'SIGNAL: INTERCEPTED',
+        'ENCRYPTION: ACTIVE',
+        'USER: COURIER_SIX'
+      ];
+
+      entries.forEach((text, i) => {
+        ctx.globalAlpha = 0.9;
+        ctx.fillText(`> ${text}`, 100, 250 + i * 50);
+
+        // Progress Bars
+        ctx.globalAlpha = 0.2;
+        ctx.fillRect(100, 260 + i * 50, 300, 10);
+        ctx.globalAlpha = 0.7;
+        ctx.fillRect(100, 260 + i * 50, nextRand() * 300, 10);
+      });
+
+      // 5. Vertical Scan Bar
+      const scanY = (Date.now() / 20) % canvas.height;
+      const grad = ctx.createLinearGradient(0, scanY - 50, 0, scanY);
+      grad.addColorStop(0, 'transparent');
+      grad.addColorStop(1, mainColor);
+      ctx.fillStyle = grad;
+      ctx.globalAlpha = 0.15;
+      ctx.fillRect(0, scanY - 100, canvas.width, 100);
+
+            // 6. Corner Accents
+
+            ctx.globalAlpha = 1.0;
+
+            ctx.lineWidth = 4;
+
+            const cp = 40;
+
+            // Top Left
+
+            ctx.beginPath(); ctx.moveTo(cp, cp+50); ctx.lineTo(cp, cp); ctx.lineTo(cp+50, cp); ctx.stroke();
+
+            // Bottom Right
+
+            ctx.beginPath(); ctx.moveTo(canvas.width-cp, canvas.height-cp-50); ctx.lineTo(canvas.width-cp, canvas.height-cp); ctx.lineTo(canvas.width-cp-50, canvas.height-cp); ctx.stroke();
+
+            // 7. Horizontal Compass (Bottom)
+
+            const compassY = canvas.height - 150;
+
+            ctx.globalAlpha = 0.6;
+
+            ctx.fillRect(100, compassY, canvas.width - 200, 2);
+
+            ctx.font = `${Math.floor(14 * (canvas.width/1920))}px monospace`;
+
+            for(let i = 0; i <= 20; i++) {
+              const x = 100 + i * ((canvas.width - 200) / 20);
+
+              const h = i % 5 === 0 ? 15 : 8;
+
+              ctx.fillRect(x, compassY - h, 2, h);
+
+              if (i % 5 === 0) {
+                const dir = ['W', 'NW', 'N', 'NE', 'E'][i / 5];
+
+                if(dir) ctx.fillText(dir, x - 5, compassY - 25);
+              }
+            }
+
+            // 8. Condition Monitor (Bottom Left Area)
+
+            const vbX = 100;
+
+            const vbY = 650;
+
+            ctx.globalAlpha = 1.0;
+
+            ctx.strokeRect(vbX, vbY, 200, 200);
+
+            ctx.font = `bold ${Math.floor(12 * (canvas.width/1920))}px monospace`;
+
+            ctx.fillText("F.C.D.X. STATUS", vbX, vbY - 10);
+
+            // Simple procedural "Vault Boy" wireframe head
+
+            ctx.beginPath();
+
+            ctx.arc(vbX + 100, vbY + 80, 40, 0, Math.PI * 2); // Head
+
+            ctx.moveTo(vbX + 100, vbY + 120); ctx.lineTo(vbX + 100, vbY + 180); // Body
+
+            ctx.moveTo(vbX + 100, vbY + 140); ctx.lineTo(vbX + 60, vbY + 110); // Arm L
+
+            ctx.moveTo(vbX + 100, vbY + 140); ctx.lineTo(vbX + 140, vbY + 110); // Arm R
+
+            ctx.stroke();
+
+            ctx.fillText("DISCONN", vbX + 50, vbY + 195);
+
+            // 9. Micro Metadata
+
+            ctx.font = `${Math.floor(10 * (canvas.width/1920))}px monospace`;
+
+            ctx.globalAlpha = 0.4;
+
+            ctx.fillText("AP: 85/85", canvas.width - 200, canvas.height - 80);
+
+            ctx.fillText("HP: 240/240", canvas.width - 200, canvas.height - 60);
+
+            ctx.fillText("VOLTAGE: 1.2V", 100, canvas.height - 80);
+
+            ctx.fillText("OS_BUILD: 0.8.7", 100, canvas.height - 60);
+          }
+
+          // Noise/Grain
     if (noise > 0) {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const data = imageData.data;
