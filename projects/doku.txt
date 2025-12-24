@@ -1,4 +1,4 @@
-![Doku.js Image](../images/projects/doku-image.png)
+![Doku.js Header](/images/projects/doku-header.webp)
 
 Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`.
 
@@ -15,6 +15,8 @@ Doku.js is a terminal UI text/document viewer that supports a custom documentati
 ## Installation:
 
 Install globally via npm: `npm install -g doku.js`. Can also be used locally with `npx doku` or integrated as a dependency in Node.js projects.
+
+![Doku.js Image](../images/projects/doku-image.png)
 
 ## Doky - Custom Documentation Syntax:
 

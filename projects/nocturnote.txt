@@ -1,37 +1,68 @@
-Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS.
-It offers a distraction-free writing environment with powerful features.
+Nocturnote is a sleek, modern, and highly customizable note-taking application designed for the minimalists who crave power. Built with the robustness of **Electron** and the agility of **Svelte**, it bridges the gap between a simple scratchpad and a full-fledged editor.
 
-![Nocturnote Notepad Mode](/images/projects/nocturnote.png)
-> Notepad Mode in Nocturnote
+> "A distraction-free writing environment that adapts to your state of flow, not the other way around."
 
-**Key Features:**
-*   **Customizable Interface:** Adjust font family, size, weight, line height, word wrap, and line numbers.
-*   **File Management:** Create new notes, open existing `.txt` or `.md` files, and save work.
-*   **Search and Replace:** Quickly find and replace text.
-*   **Notepad Mode:** Classic notepad aesthetic.
-*   **Rain Mode:** A unique visual effect.
-*   **Status Bar:** Displays line/column, character count, and encoding.
-*   **Cross-Platform:** Runs seamlessly across different operating systems.
+## Visual Showcase
 
-**Technologies Used:**
-*   **Electron:** For cross-platform desktop applications.
-*   **Svelte:** Modern JavaScript framework for UIs.
-*   **TypeScript:** For type-safe JavaScript.
-*   **Tailwind CSS:** Utility-first CSS framework.
-*   **electron-vite:** Fast development setup for Electron apps.
+![Nocturnote Notepad Mode - A clean, dark interface for focused writing](/images/projects/nocturenote-header.webp)
 
-**Installation:**
-Requires Node.js and npm/yarn.
-1.  Clone the repository: `git clone https://github.com/fezcode/nocturnote.git`
-2.  Navigate to the directory: `cd nocturnote`
-3.  Install dependencies: `npm install`
+## Core Philosophy
 
-**Usage:**
-*   **Development:** `npm run dev`
-*   **Building:** `npm run build` (creates distributable packages in `out` directory)
-    *   Specific platforms: `npm run build:win`, `npm run build:mac`, `npm run build:linux`
-*   **Other Scripts:** `npm run format`, `npm run lint`, `npm run typecheck`
+Nocturnote was born from a frustration with bloated text editors. It focuses on:
+*   **Immediacy:** Opens instantly.
+*   **Clarity:** UI that recedes when you're typing.
+*   **Flexibility:** From a retro "Notepad" aesthetic to a cyberpunk "Rain Mode".
 
-**License:** Distributed under the MIT License.
+## Key Features
 
-**Project Link:** [https://github.com/fezcode/nocturnote](https://github.com/fezcode/nocturnote)
+*   **Customizable Typography:** Fine-tune your font family, size, weight, and line height to match your reading preferences.
+*   **Seamless File Management:** Native support for `.txt` and `.md` files with auto-save capabilities.
+*   **Advanced Search:** Regex-powered search and replace for power users.
+*   **Visual Modes:** Switch between a classic light aesthetic or the immersive dark mode with digital rain effects.
+*   **Information Bar:** Real-time stats on line/column position, character count, and file encoding.
+
+## Architecture & Tech Stack
+
+Nocturnote leverages a modern stack to ensure performance and cross-platform compatibility:
+
+*   **Electron:** Provides the native desktop shell.
+*   **Svelte:** Delivers a reactive, DOM-efficient UI without the virtual DOM overhead.
+*   **TypeScript:** Ensures code reliability and maintainability.
+*   **Tailwind CSS:** Enables rapid styling and theming.
+*   **Electron-Vite:** A blazing fast build tool optimized for Electron development.
+
+## Getting Started
+
+### Installation
+Ensure you have Node.js installed, then:
+
+```bash
+# Clone the repository
+git clone https://github.com/fezcode/nocturnote.git
+
+# Navigate to the directory
+cd nocturnote
+
+# Install dependencies
+npm install
+```
+
+### Development
+To start the app in development mode with hot-reloading:
+
+```bash
+npm run dev
+```
+
+### Building for Production
+Create distributable binaries for your OS:
+
+```bash
+# Build for all platforms
+npm run build
+
+# Or specific platforms
+npm run build:win
+npm run build:mac
+npm run build:linux
+```

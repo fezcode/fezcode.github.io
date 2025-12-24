@@ -1,33 +1,37 @@
-# Overview
+# Fezcodex: The Digital Sanctum
 
-[Development Series](/blog/series/react-of-fezcodex)
+![Fezcodex - Cover Art](/images/projects/fezcodex.webp)
 
-**Fezcodex** is a _personal website_ and _blog_, serving as a digital hub for various content, including blog posts, personal projects, and D&D-related materials. It's built with a focus on modern web technologies, aiming for a clean, responsive, and performant user experience.
+**Fezcodex** is more than just a portfolio; it's a living digital garden, a personal operating system, and a testament to the brutalist aesthetic of the modern web. Built with **React** and **Tailwind CSS**, it serves as the central hub for my development journey, thoughts, and experiments.
 
-## Key Features:
+> "A reflection of the developer's soul, rendered in code and pixels."
 
-*   **Blog:** A platform for sharing articles and insights on various topics, including software development, algorithms, and personal reflections.
-*   **Projects Showcase:** A dedicated section to display personal coding projects, complete with descriptions and links.
-*   **D&D Content:** A space for Dungeons & Dragons related content, such as campaign logs or lore.
-*   **Responsive Design:** Optimized for viewing across different devices and screen sizes.
-*   **Fast and Modern UI:** Built with contemporary frontend tools to ensure a smooth and engaging user interface.
+## Core Philosophy
 
-## Technologies Used:
+Fezcodex was designed to break away from the sterile, corporate look of standard portfolios. It embraces:
+*   **Brutalism:** Raw, unpolished, and honest UI elements.
+*   **Interactivity:** A command palette, hidden modes, and easter eggs that reward exploration.
+*   **Performance:** Blazing fast navigation and optimized asset loading.
 
-The Fezcodex project leverages a robust stack of modern web development technologies:
+## Key Features
 
-*   **React:** The core JavaScript library for building the user interface, enabling a component-based and declarative approach to UI development.
-*   **Tailwind CSS:** A utility-first CSS framework used for rapid and consistent styling, allowing for highly customizable designs directly in the markup.
-*   **React Router DOM:** For declarative routing within the application, managing navigation between different pages and content sections.
-*   **Craco:** (Create React App Configuration Override) Used to extend and customize the Create React App configuration without ejecting, providing more control over the build process (e.g., integrating Tailwind CSS).
-*   **JavaScript (ES6+):** The primary programming language for frontend logic and interactivity.
-*   **HTML5 & CSS3:** The foundational languages for structuring and styling web content.
-*   **Markdown:** Used for writing blog posts and other textual content, offering a simple and readable format that is easily converted to HTML.
-*   **`@phosphor-icons/react` & `react-icons`:** Libraries for incorporating a wide range of vector icons, enhancing the visual appeal and usability of the interface.
-*   **`framer-motion`:** A production-ready motion library for React, used for animations and interactive elements to create a more dynamic user experience.
-*   **`marked` & `react-markdown`:** Libraries for parsing and rendering Markdown content into React components.
-*   **`gh-pages`:** A utility to publish the `build` directory to a `gh-pages` branch on GitHub, facilitating easy deployment to GitHub Pages.
-*   **`rss`:** A library used to generate an RSS feed for the blog, allowing users to subscribe to content updates.
-*   **`stackblur-canvas`:** Used in specific project implementations (like the Image Toolkit) for efficient image blurring directly on the canvas.
+*   **The Command Palette:** Navigate, toggle themes, or hack the system with a `Cmd+K` interface.
+*   **Visual Modes:** Switch between `Cyberpunk`, `Retro`, `Terminal`, and more to match your mood.
+*   **Dynamic Content:** Integrated blog engine with support for complex markdown, code highlighting, and live component rendering.
+*   **Project Showcase:** Immersive deep-dives into my work (like the page you're on now).
+*   **Digital Garden:** A space for raw notes, logs, and work-in-progress thoughts.
 
-This combination of technologies allows Fezcodex to be a dynamic, maintainable, and visually appealing platform for sharing content.
+## Tech Stack & Architecture
+
+Fezcodex is built on a modern stack designed for scalability and developer experience:
+
+*   **Frontend:** React (Create React App + Craco) for component-based architecture.
+*   **Styling:** Tailwind CSS for utility-first design, augmented with custom animations via Framer Motion.
+*   **Routing:** React Router DOM for seamless client-side navigation.
+*   **Content:** Custom Markdown pipeline using `remark` and `rehype` for rich text processing.
+*   **State:** React Context API for managing global themes, audio, and user preferences.
+
+## Development Series
+
+Interested in how this was built? Check out the development logs:
+[React of Fezcodex](/blog/series/react-of-fezcodex)
