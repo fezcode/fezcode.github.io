@@ -1,10 +1,12 @@
 import React, { useMemo, useRef } from 'react';
-import { DownloadSimpleIcon } from '@phosphor-icons/react';
+import { DownloadSimpleIcon, ArrowsClockwiseIcon } from '@phosphor-icons/react';
 
 const GenerativeArt = ({
   seed = 'fezcodex',
   className,
   showDownload = false,
+  downloadResolution = 1024,
+  onRegenerate,
 }) => {
   const svgRef = useRef(null);
   // Sanitize seed for use in SVG IDs
@@ -125,7 +127,7 @@ const GenerativeArt = ({
     const img = new Image();
 
     // Higher resolution for download
-    const size = 1024;
+    const size = downloadResolution;
     canvas.width = size;
     canvas.height = size;
 
@@ -271,15 +273,26 @@ const GenerativeArt = ({
         }}
       />
 
-      {showDownload && (
-        <button
-          onClick={handleDownload}
-          className="absolute bottom-4 right-4 p-3 bg-white/10 hover:bg-emerald-500 text-white hover:text-black transition-all border border-white/10 rounded-sm group/dl backdrop-blur-md"
-          title="Download PNG"
-        >
-          <DownloadSimpleIcon size={20} weight="bold" />
-        </button>
-      )}
+      <div className="absolute bottom-4 right-4 flex gap-2">
+        {onRegenerate && (
+          <button
+            onClick={onRegenerate}
+            className="p-3 bg-white/10 hover:bg-emerald-500 text-white hover:text-black transition-all border border-white/10 rounded-sm group/regen backdrop-blur-md"
+            title="Regenerate Art"
+          >
+            <ArrowsClockwiseIcon size={20} weight="bold" className="group-hover/regen:rotate-180 transition-transform duration-500" />
+          </button>
+        )}
+        {showDownload && (
+          <button
+            onClick={handleDownload}
+            className="p-3 bg-white/10 hover:bg-emerald-500 text-white hover:text-black transition-all border border-white/10 rounded-sm group/dl backdrop-blur-md"
+            title="Download PNG (4K)"
+          >
+            <DownloadSimpleIcon size={20} weight="bold" />
+          </button>
+        )}
+      </div>
     </div>
   );
 };

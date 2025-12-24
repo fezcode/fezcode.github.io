@@ -3,7 +3,8 @@
     (slug) nocturnote
     (title) Nocturnote
     (size) 2
-    (link) https://github.com/fezcode/nocturnote
+    (repo_link) https://github.com/fezcode/nocturnote
+    (demo_link) https://github.com/fezcode/nocturnote
     (pinned) true
     (isActive) true
     (technologies)
@@ -14,13 +15,14 @@
       > Editor
     (shortDescription) Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS.
     (date) 2025-12-01
-    (image) /images/defaults/visuals-2TS23o0-pUc-unsplash.jpg
+    (image) /images/projects/nocturenote-header.webp
 
   > (project)
     (slug) fezcodex
     (title) fezcodex
     (size) 1
-    (link) https://github.com/fezcode/fezcode.github.io
+    (repo_link) https://github.com/fezcode/fezcode.github.io
+    (demo_link) https://fezcode.com/about
     (pinned) true
     (isActive) true
     (technologies)
@@ -37,7 +39,8 @@
     (slug) piml
     (title) piml
     (size) 1
-    (link) https://github.com/fezcode/piml
+    (repo_link) https://github.com/fezcode/piml
+    (demo_link) /apps/piml-lab
     (pinned) true
     (isActive) true
     (technologies)
@@ -50,7 +53,7 @@
     (slug) bm
     (title) bm - bookmark manager
     (size) 1
-    (link) https://github.com/fezcode/bm
+    (repo_link) https://github.com/fezcode/bm
     (pinned) true
     (isActive) true
     (technologies)
@@ -64,7 +67,7 @@
     (slug) villain-couch
     (title) Villain Couch
     (size) 2
-    (link) https://github.com/fezcode/Villain-Couch
+    (repo_link) https://github.com/fezcode/Villain-Couch
     (pinned) true
     (isActive) true
     (technologies)
@@ -79,7 +82,8 @@
     (slug) go-piml
     (title) go-piml
     (size) 1
-    (link) https://github.com/fezcode/go-piml
+    (demo_link) https://pkg.go.dev/github.com/fezcode/go-piml
+    (repo_link) https://github.com/fezcode/go-piml
     (pinned) false
     (isActive) true
     (technologies)
@@ -94,7 +98,8 @@
     (slug) piml.js
     (title) piml.js
     (size) 1
-    (link) https://github.com/fezcode/piml.js
+    (demo_link) https://www.npmjs.com/package/piml
+    (repo_link) https://github.com/fezcode/piml.js
     (pinned) false
     (isActive) true
     (technologies)
@@ -109,7 +114,7 @@
     (slug) doku
     (title) doku.js
     (size) 1
-    (link) https://github.com/fezcode/doku.js
+    (repo_link) https://github.com/fezcode/doku.js
     (pinned) true
     (isActive) true
     (technologies)
@@ -124,7 +129,7 @@
     (slug) stroque
     (title) Stroque
     (size) 1
-    (link) https://github.com/fezcode/Stroque
+    (repo_link) https://github.com/fezcode/Stroque
     (pinned) false
     (isActive) true
     (technologies)
@@ -138,7 +143,7 @@
     (slug) scrappy
     (title) Scrappy.js
     (size) 1
-    (link) https://github.com/fezcode/scrappy
+    (repo_link) https://github.com/fezcode/scrappy
     (pinned) false
     (isActive) false
     (technologies)
@@ -151,7 +156,7 @@
     (slug) piml-highlighter
     (title) PIML Syntax Highlighter for VS Code
     (size) 2
-    (link) https://github.com/fezcode/piml-highlighter/
+    (repo_link) https://github.com/fezcode/piml-highlighter/
     (pinned) false
     (isActive) true
     (technologies)
@@ -167,7 +172,7 @@
     (slug) go-homo-sapiens-time
     (title) Go Homo Sapiens Time
     (size) 1
-    (link) https://github.com/fezcode/go-homo-sapiens-time
+    (repo_link) https://github.com/fezcode/go-homo-sapiens-time
     (pinned) false
     (isActive) true
     (technologies)
@@ -180,7 +185,8 @@
     (slug) go-tournament-brackets
     (title) Go Tournament Bracket Generator Lib
     (size) 1
-    (link) https://github.com/fezcode/go-tournament-brackets
+    (demo_link) https://pkg.go.dev/github.com/fezcode/go-tournament-brackets
+    (repo_link) https://github.com/fezcode/go-tournament-brackets
     (pinned) false
     (isActive) true
     (technologies)
@@ -193,7 +199,8 @@
     (slug) open-tab-with-respect
     (title) Open Tab with Respect
     (size) 1
-    (link) https://github.com/fezcode/open-tab-with-respect
+    (demo_link) https://addons.mozilla.org/en-US/firefox/addon/open-tab-with-respect/
+    (repo_link) https://github.com/fezcode/open-tab-with-respect
     (pinned) false
     (isActive) true
     (technologies)
@@ -210,7 +217,8 @@
     (slug) clipboard-concat
     (title) Clipboard Concat
     (size) 1
-    (link) https://github.com/fezcode/clipboard-concat
+    (demo_link) https://addons.mozilla.org/en-US/firefox/addon/clipboard-concat/
+    (repo_link) https://github.com/fezcode/clipboard-concat
     (pinned) false
     (isActive) true
     (technologies)
@@ -227,7 +235,7 @@
     (slug) boxer
     (title) Boxer
     (size) 2
-    (link) https://github.com/fezcode/boxer
+    (repo_link) https://github.com/fezcode/boxer
     (pinned) false
     (isActive) false
     (technologies)
@@ -245,7 +253,8 @@
     (slug) firefox-themes
     (title) Firefox Themes
     (size) 1
-    (link) https://github.com/fezcode
+    (demo_link) https://addons.mozilla.org/en-US/firefox/user/17269481/
+    (repo_link) https://github.com/fezcode
     (pinned) false
     (isActive) false
     (technologies)

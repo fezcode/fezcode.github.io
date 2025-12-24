@@ -1,48 +1,110 @@
 import React, { useEffect } from 'react';
-import { X } from '@phosphor-icons/react';
+import { X, Scan } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const ImageModal = ({ src, alt, onClose }) => {
   useEffect(() => {
     if (src) {
-      document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+      document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-    return () => {
-      document.body.style.overflow = ''; // Clean up on unmount
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
     };
-  }, [src]);
+
+    if (src) {
+      window.addEventListener('keydown', handleKeyDown);
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [src, onClose]);
 
   return (
     <AnimatePresence>
       {src && (
         <motion.div
-          className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50 p-4"
-          onClick={onClose} // Close modal when clicking outside image
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-xl p-4 md:p-8"
+          onClick={onClose}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
         >
+           {/* Grid Background Overlay */}
+           <div className="absolute inset-0 pointer-events-none opacity-10"
+               style={{ backgroundImage: 'radial-gradient(circle, #444 1px, transparent 1px)', backgroundSize: '30px 30px' }}
+           />
+
           <motion.div
-            className="relative"
-            onClick={(e) => e.stopPropagation()} // Prevent modal from closing when clicking on image
-            initial={{ scale: 0.8, opacity: 0 }}
+            className="relative max-w-7xl w-full h-full max-h-[90vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+            initial={{ scale: 0.98, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            transition={{ duration: 0.2 }}
+            exit={{ scale: 0.98, opacity: 0 }}
+            transition={{ type: "spring", damping: 30, stiffness: 300 }}
           >
-            <button
-              onClick={onClose}
-              className="absolute top-2 right-2 text-white text-2xl bg-gray-800 rounded-full p-2 hover:bg-gray-700 focus:outline-none"
-            >
-              <X size={24} weight="bold" />
-            </button>
-            <img
-              src={src}
-              alt={alt}
-              className="max-w-full max-h-[90vh] object-contain"
-            />
+            {/* Header Bar */}
+            <div className="flex items-center justify-between bg-black/60 border border-white/10 border-b-0 p-2 md:p-3 backdrop-blur-md rounded-t-sm">
+               <div className="flex items-center gap-3">
+                  <Scan className="text-emerald-500 animate-pulse" size={16} />
+                  <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400">
+                     SYSTEM.IMG_VIEWER // SECURE_MODE
+                  </span>
+               </div>
+               <div className="flex items-center gap-2">
+                  <span className="hidden md:inline font-mono text-[9px] text-gray-600 uppercase tracking-widest mr-2">Press ESC to exit</span>
+                  <button
+                    onClick={onClose}
+                    className="group flex items-center gap-2 px-4 py-1.5 bg-white/5 hover:bg-red-500 text-gray-400 hover:text-white border border-white/10 rounded-sm transition-all"
+                  >
+                    <X size={16} weight="bold" />
+                  </button>
+               </div>
+            </div>
+
+            {/* Image Container */}
+            <div className="relative flex-1 border border-white/10 bg-black/40 backdrop-blur-sm rounded-b-sm overflow-hidden flex items-center justify-center">
+               {/* Corner Accents */}
+               <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-emerald-500/30 z-10" />
+               <div className="absolute top-0 right-0 w-6 h-6 border-r-2 border-t-2 border-emerald-500/30 z-10" />
+               <div className="absolute bottom-0 left-0 w-6 h-6 border-l-2 border-b-2 border-emerald-500/30 z-10" />
+               <div className="absolute bottom-0 right-0 w-6 h-6 border-r-2 border-b-2 border-emerald-500/30 z-10" />
+
+               <img
+                  src={src}
+                  alt={alt}
+                  className="max-w-full max-h-full object-contain shadow-[0_0_50px_rgba(0,0,0,0.5)] select-none"
+               />
+
+               {/* Caption */}
+               {alt && alt !== 'Project Detail' && (
+                 <div className="absolute bottom-6 left-0 right-0 mx-auto w-max max-w-[80%] bg-black/90 backdrop-blur-xl border border-white/10 px-6 py-2.5 rounded-sm text-center shadow-2xl">
+                    <p className="font-mono text-xs text-emerald-400 uppercase tracking-[0.2em] font-medium">
+                       {alt}
+                    </p>
+                 </div>
+               )}
+            </div>
+
+            {/* Footer Metadata */}
+            <div className="mt-2 flex justify-between items-center opacity-40 px-2">
+               <div className="flex gap-4">
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500">
+                    RAW_STREAM: ACTIVE
+                  </span>
+               </div>
+               <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500 text-right">
+                  DECRYPTED_AT: {new Date().toLocaleTimeString()}
+               </span>
+            </div>
+
           </motion.div>
         </motion.div>
       )}

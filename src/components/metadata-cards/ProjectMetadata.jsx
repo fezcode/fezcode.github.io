@@ -31,19 +31,19 @@ const ProjectMetadata = ({ project }) => {
             <p className="text-gray-200 mt-1 font-medium">{project.title}</p>
           </div>
 
-          {project.link && (
+          {(project.demo_link || project.repo_link) && (
             <div>
               <Label className="text-gray-500 text-xs uppercase tracking-wider font-mono">
-                Deployment
+                {project.demo_link ? 'Deployment' : 'Source'}
               </Label>
               <p className="text-gray-300 mt-1">
                 <a
-                  href={project.link}
+                  href={project.demo_link || project.repo_link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-cyan-400 hover:text-cyan-300 flex items-center gap-2 group-hover:translate-x-1 transition-transform duration-300"
                 >
-                  View System <FaExternalLinkAlt size={12} />
+                  {project.demo_link ? 'View System' : 'View Code'} <FaExternalLinkAlt size={12} />
                 </a>
               </p>
             </div>

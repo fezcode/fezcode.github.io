@@ -160,7 +160,7 @@ const ProjectsPage = () => {
                 </div>
 
                 {/* External Link Button (Optional) */}
-                {activeProject.link && (
+                {(activeProject.demo_link || activeProject.repo_link) && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -168,13 +168,13 @@ const ProjectsPage = () => {
                     className="mt-4"
                   >
                     <a
-                      href={activeProject.link}
+                      href={activeProject.demo_link || activeProject.repo_link}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-3 text-white border-b border-white pb-1 hover:text-emerald-400 hover:border-emerald-400 transition-colors"
                     >
                       <span className="text-sm font-bold uppercase tracking-widest">
-                        Visit Live Site
+                        {activeProject.demo_link ? 'Visit Live Site' : 'View Source'}
                       </span>
                       <ArrowLeftIcon className="rotate-135" weight="bold" />
                     </a>

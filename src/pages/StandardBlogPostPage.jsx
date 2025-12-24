@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 import { motion } from 'framer-motion';
 import {
   ArrowLeft,
@@ -12,16 +11,14 @@ import {
 } from '@phosphor-icons/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../utils/customTheme';
-import ImageModal from '../components/ImageModal';
 import CodeModal from '../components/CodeModal';
 import useSeo from '../hooks/useSeo';
 import GenerativeArt from '../components/GenerativeArt';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
 import { calculateReadingTime } from '../utils/readingTime';
 import { fetchAllBlogPosts } from '../utils/dataUtils';
 import { useToast } from '../hooks/useToast';
 import MarkdownLink from '../components/MarkdownLink';
+import MarkdownContent from '../components/MarkdownContent';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
@@ -34,7 +31,6 @@ const StandardBlogPostPage = () => {
   const [readingProgress, setReadingProgress] = useState(0);
   const [estimatedReadingTime, setEstimatedReadingTime] = useState(0);
 
-  const [modalImageSrc, setModalImageSrc] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
@@ -263,9 +259,8 @@ const StandardBlogPostPage = () => {
                 prose-pre:bg-transparent prose-pre:border-none prose-pre:p-0
                 prose-blockquote:border-l-emerald-500 prose-blockquote:bg-white/5 prose-blockquote:py-2"
           >
-            <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
+            <MarkdownContent
+              content={post.body}
               components={{
                 a: (p) => {
                   const isVocab =
@@ -286,9 +281,7 @@ const StandardBlogPostPage = () => {
                 pre: ({ children }) => <>{children}</>,
                 code: CodeBlock,
               }}
-            >
-              {post.body}
-            </ReactMarkdown>
+            />
           </div>
 
           {/* Series Nav Section */}
@@ -394,11 +387,6 @@ const StandardBlogPostPage = () => {
         </div>
       </div>
 
-      <ImageModal
-        src={modalImageSrc}
-        alt="Intel Imagery"
-        onClose={() => setModalImageSrc(null)}
-      />
       <CodeModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

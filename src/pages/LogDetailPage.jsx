@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
 import {
   ArrowLeft,
   CalendarBlank,
@@ -11,21 +10,18 @@ import {
   User,
   Hash,
 } from '@phosphor-icons/react';
-import ImageModal from '../components/ImageModal';
 import GenerativeArt from '../components/GenerativeArt';
 import useSeo from '../hooks/useSeo';
-import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw';
 import piml from 'piml';
 import MarkdownLink from '../components/MarkdownLink';
 import colors from '../config/colors';
+import MarkdownContent from '../components/MarkdownContent';
 
 const LogDetailPage = () => {
   const { category, slugId } = useParams();
   const [log, setLog] = useState(null);
   const [loading, setLoading] = useState(true);
   const contentRef = useRef(null);
-  const [modalImageSrc, setModalImageSrc] = useState(null);
 
   useSeo({
     title: log ? `${log.attributes.title} | Fezcodex` : null,
@@ -92,18 +88,6 @@ const LogDetailPage = () => {
 
   const { attributes, body } = log;
   const accentColor = colors[category.toLowerCase()] || colors.primary[400];
-
-  const ImageRenderer = ({ src, alt }) => (
-    <div className="my-12 relative group overflow-hidden border border-white/10 rounded-sm">
-      <img
-        src={src}
-        alt={alt}
-        className="cursor-pointer w-full h-auto transition-transform duration-700 group-hover:scale-105"
-        onClick={() => setModalImageSrc(src)}
-      />
-      <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-    </div>
-  );
 
   const MetadataRow = ({ label, value, icon: Icon }) => {
     if (!value) return null;
@@ -221,9 +205,8 @@ const LogDetailPage = () => {
                          prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:bg-white/5 prose-blockquote:py-1 prose-blockquote:px-6
                          prose-strong:text-white prose-code:text-emerald-300 prose-code:bg-emerald-500/10 prose-code:px-1 prose-code:rounded-sm"
             >
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
+              <MarkdownContent
+                content={body}
                 components={{
                   a: (props) => (
                     <MarkdownLink
@@ -231,11 +214,8 @@ const LogDetailPage = () => {
                       className="text-emerald-400 hover:text-white transition-colors underline decoration-emerald-500/30 underline-offset-4"
                     />
                   ),
-                  img: ImageRenderer,
                 }}
-              >
-                {body}
-              </ReactMarkdown>
+              />
             </article>
 
             {/* Tags Section */}
@@ -322,12 +302,6 @@ const LogDetailPage = () => {
           </aside>
         </div>
       </div>
-
-      <ImageModal
-        src={modalImageSrc}
-        alt="Full size image"
-        onClose={() => setModalImageSrc(null)}
-      />
     </div>
   );
 };

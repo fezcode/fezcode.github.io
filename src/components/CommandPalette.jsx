@@ -34,6 +34,23 @@ const getCategoryColorClass = (type) => {
   return categoryColorMap[type] || 'bg-gray-500'; // Default gray for unmapped types
 };
 
+const GenerativeArtCommand = () => {
+  const [seed, setSeed] = useState(() => Math.random().toString(36).substring(7));
+
+  const handleRegenerate = () => {
+    setSeed(Math.random().toString(36).substring(7));
+  };
+
+  return (
+    <GenerativeArt
+      seed={seed}
+      showDownload={true}
+      downloadResolution={3840} // 4K Resolution
+      onRegenerate={handleRegenerate}
+    />
+  );
+};
+
 const CommandPalette = ({
   isOpen,
   setIsOpen,
@@ -449,10 +466,7 @@ const CommandPalette = ({
         case 'generateArt':
           openGenericModal(
             'Generative Art',
-            <GenerativeArt
-              seed={Math.random().toString(36).substring(7)}
-              showDownload={true}
-            />,
+            <GenerativeArtCommand />,
           );
           break;
         case 'leetTransformer':
