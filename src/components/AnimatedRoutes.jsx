@@ -156,6 +156,7 @@ const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
+const AlbumCoverPage = lazy(() => import('../pages/apps/AlbumCoverPage'));
 const TweetCreatorPage = lazy(() => import('../pages/apps/TweetCreatorPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
@@ -985,6 +986,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::og-gen"
           element={<Navigate to="/apps/og-image-generator" replace />}
+        />
+        <Route
+          path="/apps::album"
+          element={<Navigate to="/apps/album-constructor" replace />}
         />
         <Route
           path="/apps::tweet"
@@ -2004,6 +2009,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <MagazinerPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/album-constructor"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <AlbumCoverPage />
               </Suspense>
             </motion.div>
           }
