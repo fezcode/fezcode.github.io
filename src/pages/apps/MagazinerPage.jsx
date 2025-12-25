@@ -19,6 +19,7 @@ import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import CustomSlider from '../../components/CustomSlider';
 import BrutalistDialog from '../../components/BrutalistDialog';
+import CustomColorPicker from '../../components/CustomColorPicker';
 
 const STYLES = [
   { value: 'brutalist', label: 'BRUTALIST_CHAOS' },
@@ -622,48 +623,18 @@ const MagazinerPage = () => {
                   )}
                 </div>
 
-                <div className="space-y-4">
-                  <label className="block font-mono text-[9px] uppercase text-gray-600">Base Chromatic</label>
-                  <div className="flex flex-wrap gap-2">
-                    {COLORS.map((c) => (
-                      <button
-                        key={c.name}
-                        onClick={() => setPrimaryColor(c)}
-                        className={`w-8 h-8 rounded-full border-2 ${primaryColor.hex === c.hex ? 'border-emerald-500 scale-110' : 'border-transparent'}`}
-                        style={{ backgroundColor: c.hex }}
-                        title={c.name}
-                      />
-                    ))}
-                    <input
-                      type="color"
-                      value={primaryColor.hex}
-                      onChange={(e) => setPrimaryColor({ name: 'Custom', hex: e.target.value })}
-                      className="w-8 h-8 bg-transparent border-2 border-white/10 rounded-full cursor-pointer p-0 overflow-hidden"
-                      title="Custom Base Color"
-                    />
-                  </div>
-                </div>
+                <div className="space-y-6">
+                  <CustomColorPicker
+                    label="Base Chromatic"
+                    value={primaryColor.hex}
+                    onChange={(hex) => setPrimaryColor({ name: 'Custom', hex })}
+                  />
 
-                <div className="space-y-4">
-                  <label className="block font-mono text-[9px] uppercase text-gray-600">Accent Chromatic</label>
-                  <div className="flex flex-wrap gap-2">
-                    {COLORS.map((c) => (
-                      <button
-                        key={c.name}
-                        onClick={() => setAccentColor(c)}
-                        className={`w-8 h-8 rounded-full border-2 ${accentColor.hex === c.hex ? 'border-emerald-500 scale-110' : 'border-transparent'}`}
-                        style={{ backgroundColor: c.hex }}
-                        title={c.name}
-                      />
-                    ))}
-                    <input
-                      type="color"
-                      value={accentColor.hex}
-                      onChange={(e) => setAccentColor({ name: 'Custom', hex: e.target.value })}
-                      className="w-8 h-8 bg-transparent border-2 border-white/10 rounded-full cursor-pointer p-0 overflow-hidden"
-                      title="Custom Accent Color"
-                    />
-                  </div>
+                  <CustomColorPicker
+                    label="Accent Chromatic"
+                    value={accentColor.hex}
+                    onChange={(hex) => setAccentColor({ name: 'Custom', hex })}
+                  />
                 </div>
               </div>
             </div>
