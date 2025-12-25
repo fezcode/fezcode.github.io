@@ -58,12 +58,19 @@ const CodeModal = ({ isOpen, onClose, children, language }) => {
             </div>
 
             {/* Content */}
-            <div className="flex-1 overflow-auto relative z-10 custom-scrollbar bg-black/40">
+            <div className="flex-1 overflow-auto relative z-10 custom-scrollbar bg-black/40 text-gray-300">
                <SyntaxHighlighter
                 style={customTheme}
                 language={language}
                 PreTag="div"
-                className="!bg-transparent !p-6 !m-0 h-full !font-mono !text-sm md:!text-base"
+                customStyle={{
+                    margin: 0,
+                    padding: '1.5rem',
+                    background: 'transparent',
+                    height: '100%',
+                    fontFamily: '"JetBrains Mono", monospace',
+                    fontSize: '0.9rem', // equivalent to text-sm
+                }}
                 showLineNumbers={true}
                 lineNumberStyle={{
                     minWidth: '2.5em',

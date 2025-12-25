@@ -148,6 +148,7 @@ const OgImageGeneratorPage = lazy(() => import('../pages/apps/OgImageGeneratorPa
 const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
 const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
+const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
   () => import('../pages/roadmap/RoadmapItemDetailPage'),
@@ -1955,6 +1956,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <SymbolFlowPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/js-masterclass"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <JsMasterclassPage />
               </Suspense>
             </motion.div>
           }
