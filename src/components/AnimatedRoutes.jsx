@@ -99,6 +99,7 @@ const MorseCodeTranslatorPage = lazy(
 );
 const MastermindPage = lazy(() => import('../pages/apps/MastermindPage'));
 const SynergyFlowPage = lazy(() => import('../pages/apps/SynergyFlowPage'));
+const EchoChamberPage = lazy(() => import('../pages/apps/EchoChamberPage'));
 const WordLadderPage = lazy(() => import('../pages/apps/WordLadderPage'));
 const LightsOutPage = lazy(() => import('../pages/apps/LightsOutPage'));
 const NonogramPage = lazy(() => import('../pages/apps/NonogramPage'));
@@ -1734,6 +1735,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <SynergyFlowPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/echo-chamber"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <EchoChamberPage />
               </Suspense>
             </motion.div>
           }
