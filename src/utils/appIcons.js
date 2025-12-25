@@ -79,6 +79,7 @@ import {
   NewspaperIcon,
   MonitorIcon,
   WindIcon,
+  TwitterLogoIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -162,4 +163,5 @@ export const appIcons = {
   NewspaperIcon,
   MonitorIcon,
   WindIcon,
+  TwitterLogoIcon,
 };

@@ -156,6 +156,7 @@ const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
+const TweetCreatorPage = lazy(() => import('../pages/apps/TweetCreatorPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(
   () => import('../pages/roadmap/RoadmapItemDetailPage'),
@@ -984,6 +985,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::og-gen"
           element={<Navigate to="/apps/og-image-generator" replace />}
+        />
+        <Route
+          path="/apps::tweet"
+          element={<Navigate to="/apps/tweet-creator" replace />}
         />
         <Route
           path="/apps::magaziner"
@@ -1999,6 +2004,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <MagazinerPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/tweet-creator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <TweetCreatorPage />
               </Suspense>
             </motion.div>
           }
