@@ -23,6 +23,7 @@ import BrutalistDialog from '../../components/BrutalistDialog';
 const STYLES = [
   { value: 'brutalist', label: 'BRUTALIST_CHAOS' },
   { value: 'posh', label: 'ELITE_AND_POSH' },
+  { value: 'glassy', label: 'GLASSY_FLUX' },
 ];
 
 const FONTS = [
@@ -156,6 +157,23 @@ const MagazinerPage = () => {
       }));
       setPrimaryColor(COLORS[1]);
       setAccentColor(COLORS[0]);
+    } else if (style === 'glassy') {
+      setInputs(prev => ({
+        ...prev,
+        issueNo: { ...prev.issueNo, font: 'JetBrains Mono', size: 12 },
+        title: { ...prev.title, font: 'Playfair Display', size: 100 },
+        subtitle: { ...prev.subtitle, font: 'JetBrains Mono', size: 14 },
+        mainStory: { ...prev.mainStory, font: 'Arvo', size: 45 },
+        mainStorySub: { ...prev.mainStorySub, font: 'JetBrains Mono', size: 12 },
+        secondStory: { ...prev.secondStory, font: 'Playfair Display', size: 24 },
+        secondStorySub: { ...prev.secondStorySub, font: 'JetBrains Mono', size: 10 },
+        bottomText: { ...prev.bottomText, font: 'JetBrains Mono', size: 10 },
+        rightEdgeText: { ...prev.rightEdgeText, font: 'JetBrains Mono', size: 8 },
+        bottomLeftText: { ...prev.bottomLeftText, font: 'JetBrains Mono', size: 8 },
+      }));
+      setPrimaryColor({ name: 'Glassy Indigo', hex: '#6366f1', text: '#FFFFFF' });
+      setAccentColor({ name: 'White', hex: '#FFFFFF', text: '#000000' });
+      setPattern('generative_art');
     } else {
       setInputs(initialInputs);
       setPrimaryColor(COLORS[0]);
@@ -197,6 +215,29 @@ const MagazinerPage = () => {
     // 1. Background
     ctx.fillStyle = primaryColor.hex;
     ctx.fillRect(0, 0, width, height);
+
+    if (style === 'glassy' && !bgImage) {
+      const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+      bgGradient.addColorStop(0, '#6366f1');
+      bgGradient.addColorStop(0.5, '#a855f7');
+      bgGradient.addColorStop(1, '#ec4899');
+      ctx.fillStyle = bgGradient;
+      ctx.fillRect(0, 0, width, height);
+
+      const drawBlob = (x, y, r, color) => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.filter = 'blur(80px)';
+        ctx.globalAlpha = 0.4;
+        ctx.fill();
+        ctx.restore();
+      };
+      drawBlob(width * 0.2, height * 0.2, 300 * scale, '#c084fc');
+      drawBlob(width * 0.8, height * 0.1, 250 * scale, '#facc15');
+      drawBlob(width * 0.5, height * 0.9, 350 * scale, '#f472b6');
+    }
 
     if (bgImage && options.includeBgImage) {
       const imgRatio = bgImage.width / bgImage.height;
@@ -430,7 +471,29 @@ const MagazinerPage = () => {
       ctx.strokeStyle = accentColor.hex;
       ctx.lineWidth = borderWidth * scale;
       const bPadding = 30 * scale;
-      ctx.strokeRect(bPadding, bPadding, width - bPadding * 2, height - bPadding * 2);
+
+      if (style === 'glassy') {
+        const r = 40 * scale;
+        const bx = bPadding;
+        const by = bPadding;
+        const bw = width - bPadding * 2;
+        const bh = height - bPadding * 2;
+
+        ctx.beginPath();
+        ctx.moveTo(bx + r, by);
+        ctx.lineTo(bx + bw - r, by);
+        ctx.quadraticCurveTo(bx + bw, by, bx + bw, by + r);
+        ctx.lineTo(bx + bw, by + bh - r);
+        ctx.quadraticCurveTo(bx + bw, by + bh, bx + bw - r, by + bh);
+        ctx.lineTo(bx + r, by + bh);
+        ctx.quadraticCurveTo(bx, by + bh, bx, by + bh - r);
+        ctx.lineTo(bx, by + r);
+        ctx.quadraticCurveTo(bx, by, bx + r, by);
+        ctx.closePath();
+        ctx.stroke();
+      } else {
+        ctx.strokeRect(bPadding, bPadding, width - bPadding * 2, height - bPadding * 2);
+      }
     }
 
     // 5. Noise
