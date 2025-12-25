@@ -37,165 +37,217 @@ const TweetCreatorPage = () => {
     const [locationText, setLocationText] = useState('Transmission_HQ');
     const [postLink, setPostLink] = useState('fezcode.com/nodes/049');
 
-    const drawTweet = useCallback((ctx, width, height) => {    const scale = width / 1000;
+      const drawTweet = useCallback((ctx, width, height) => {
+        const scale = width / 800;
 
-    // 1. Background Gradient (Echo Chamber Style)
-    const bgGradient = ctx.createLinearGradient(0, 0, width, height);
-    bgGradient.addColorStop(0, '#6366f1'); // indigo-500
-    bgGradient.addColorStop(0.5, '#a855f7'); // purple-500
-    bgGradient.addColorStop(1, '#ec4899'); // pink-500
-    ctx.fillStyle = bgGradient;
-    ctx.fillRect(0, 0, width, height);
+        // 1. Transparent/Clean Background
 
-    // 2. Animated-style Blobs (Static for snapshot)
-    const drawBlob = (x, y, radius, color) => {
-      ctx.save();
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.fillStyle = color;
-      ctx.filter = 'blur(80px)';
-      ctx.globalAlpha = 0.4;
-      ctx.fill();
-      ctx.restore();
-    };
+        ctx.clearRect(0, 0, width, height);
 
-    drawBlob(width * 0.2, height * 0.2, 300 * scale, '#c084fc');
-    drawBlob(width * 0.8, height * 0.1, 250 * scale, '#facc15');
-    drawBlob(width * 0.5, height * 0.9, 350 * scale, '#f472b6');
+        // 2. Card Dimensions (Fill the canvas)
 
-    // 3. Glass Card
-    const cardW = 800 * scale;
-    const cardH = 500 * scale; // Dynamic height would be better but fixed for now
-    const cardX = (width - cardW) / 2;
-    const cardY = (height - cardH) / 2;
-    const radius = 40 * scale;
+        const cardW = width;
 
-    ctx.save();
-    // Shadow
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
-    ctx.shadowBlur = 40 * scale;
-    ctx.shadowOffsetY = 20 * scale;
+        const cardH = height;
 
-    // Glass Fill
-    ctx.beginPath();
-    ctx.moveTo(cardX + radius, cardY);
-    ctx.lineTo(cardX + cardW - radius, cardY);
-    ctx.quadraticCurveTo(cardX + cardW, cardY, cardX + cardW, cardY + radius);
-    ctx.lineTo(cardX + cardW, cardY + cardH - radius);
-    ctx.quadraticCurveTo(cardX + cardW, cardY + cardH, cardX + cardW - radius, cardY + cardH);
-    ctx.lineTo(cardX + radius, cardY + cardH);
-    ctx.quadraticCurveTo(cardX, cardY + cardH, cardX, cardY + cardH - radius);
-    ctx.lineTo(cardX, cardY + radius);
-    ctx.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
-    ctx.closePath();
+        const cardX = 0;
 
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.12)';
-    ctx.fill();
+        const cardY = 0;
 
-    // Glass Border
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-    ctx.lineWidth = 2 * scale;
-    ctx.stroke();
-    ctx.restore();
+        const radius = 40 * scale;
 
-    // 4. Content Rendering
-    const contentPadding = 50 * scale;
-    const innerX = cardX + contentPadding;
-    let currentY = cardY + contentPadding;
+        ctx.save();
 
-    // User Info Row
-    // Avatar Circle
-    const avatarSize = 70 * scale;
-    ctx.beginPath();
-    ctx.arc(innerX + avatarSize/2, currentY + avatarSize/2, avatarSize/2, 0, Math.PI * 2);
-    const avatarGrad = ctx.createLinearGradient(innerX, currentY, innerX + avatarSize, currentY + avatarSize);
-    avatarGrad.addColorStop(0, '#fef08a');
-    avatarGrad.addColorStop(1, '#f472b6');
-    ctx.fillStyle = avatarGrad;
-    ctx.fill();
+        // Glass Fill (Slightly more opaque since it's now the only layer)
 
-    // User Icon inside avatar
-    ctx.fillStyle = 'white';
-    ctx.font = `bold ${30 * scale}px "JetBrains Mono"`;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('@', innerX + avatarSize/2, currentY + avatarSize/2);
+        ctx.beginPath();
 
-    // Names
-    ctx.textAlign = 'left';
-    ctx.textBaseline = 'top';
-    ctx.font = `bold ${32 * scale}px "Playfair Display"`;
-    ctx.fillStyle = 'white';
-    ctx.fillText(userName, innerX + avatarSize + 20 * scale, currentY + 5 * scale);
+        ctx.moveTo(cardX + radius, cardY);
 
-    ctx.font = `${20 * scale}px "JetBrains Mono"`;
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
-    ctx.fillText(`@${userHandle}`, innerX + avatarSize + 20 * scale, currentY + 40 * scale);
+        ctx.lineTo(cardX + cardW - radius, cardY);
 
-    currentY += avatarSize + 40 * scale;
+        ctx.quadraticCurveTo(cardX + cardW, cardY, cardX + cardW, cardY + radius);
 
-    // Tweet Text
-    ctx.fillStyle = 'white';
-    ctx.font = `500 ${36 * scale}px "Arvo"`;
+        ctx.lineTo(cardX + cardW, cardY + cardH - radius);
 
-    const maxWidth = cardW - (contentPadding * 2);
-    const words = tweetText.split(' ');
-    let line = '';
-    const lineHeight = 50 * scale;
+        ctx.quadraticCurveTo(cardX + cardW, cardY + cardH, cardX + cardW - radius, cardY + cardH);
 
-    for (let n = 0; words.length > n; n++) {
-      const testLine = line + words[n] + ' ';
-      const metrics = ctx.measureText(testLine);
-      const testWidth = metrics.width;
-      if (testWidth > maxWidth && n > 0) {
+        ctx.lineTo(cardX + radius, cardY + cardH);
+
+        ctx.quadraticCurveTo(cardX, cardY + cardH, cardX, cardY + cardH - radius);
+
+        ctx.lineTo(cardX, cardY + radius);
+
+        ctx.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
+
+        ctx.closePath();
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+
+        ctx.fill();
+
+        // Glass Border
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+
+        ctx.lineWidth = 2 * scale;
+
+        ctx.stroke();
+
+        ctx.restore();
+
+        // 3. Content Rendering
+
+        const contentPadding = 50 * scale;
+
+        const innerX = cardX + contentPadding;
+
+        let currentY = cardY + contentPadding;
+
+        // User Info Row
+
+        const avatarSize = 70 * scale;
+
+        ctx.beginPath();
+
+        ctx.arc(innerX + avatarSize/2, currentY + avatarSize/2, avatarSize/2, 0, Math.PI * 2);
+
+        const avatarGrad = ctx.createLinearGradient(innerX, currentY, innerX + avatarSize, currentY + avatarSize);
+
+        avatarGrad.addColorStop(0, '#fef08a');
+
+        avatarGrad.addColorStop(1, '#f472b6');
+
+        ctx.fillStyle = avatarGrad;
+
+        ctx.fill();
+
+        ctx.fillStyle = 'white';
+
+        ctx.font = `bold ${30 * scale}px "JetBrains Mono"`;
+
+        ctx.textAlign = 'center';
+
+        ctx.textBaseline = 'middle';
+
+        ctx.fillText('@', innerX + avatarSize/2, currentY + avatarSize/2);
+
+        ctx.textAlign = 'left';
+
+        ctx.textBaseline = 'top';
+
+        ctx.font = `bold ${32 * scale}px "Playfair Display"`;
+
+        ctx.fillStyle = 'white';
+
+        ctx.fillText(userName, innerX + avatarSize + 20 * scale, currentY + 5 * scale);
+
+        ctx.font = `${20 * scale}px "JetBrains Mono"`;
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+
+        ctx.fillText(`@${userHandle}`, innerX + avatarSize + 20 * scale, currentY + 40 * scale);
+
+        currentY += avatarSize + 40 * scale;
+
+        // Tweet Text
+
+        ctx.fillStyle = 'white';
+
+        ctx.font = `500 ${36 * scale}px "Arvo"`;
+
+        const maxWidth = cardW - (contentPadding * 2);
+
+        const words = tweetText.split(' ');
+
+        let line = '';
+
+        const lineHeight = 50 * scale;
+
+        for (let n = 0; words.length > n; n++) {
+          const testLine = line + words[n] + ' ';
+
+          const metrics = ctx.measureText(testLine);
+
+          const testWidth = metrics.width;
+
+          if (testWidth > maxWidth && n > 0) {
+            ctx.fillText(line, innerX, currentY);
+
+            line = words[n] + ' ';
+
+            currentY += lineHeight;
+          } else {
+            line = testLine;
+          }
+        }
+
         ctx.fillText(line, innerX, currentY);
-        line = words[n] + ' ';
-        currentY += lineHeight;
-      } else {
-        line = testLine;
-      }
-    }
-    ctx.fillText(line, innerX, currentY);
-    currentY += lineHeight + 20 * scale;
 
-    // Meta (Date & Location)
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.font = `${18 * scale}px "JetBrains Mono"`;
-    const metaText = `${dateText} · ${locationText}`;
-    ctx.fillText(metaText.toUpperCase(), innerX, currentY);
-    currentY += 40 * scale;
+        currentY += lineHeight + 20 * scale;
 
-    // Stats Row (Horizontal Rule)
-    ctx.beginPath();
-    ctx.moveTo(innerX, currentY);
-    ctx.lineTo(cardX + cardW - contentPadding, currentY);
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-    ctx.lineWidth = 1 * scale;
-    ctx.stroke();
-    currentY += 30 * scale;
+        // Meta (Date & Location)
 
-    // Icons & Counts
-    const iconSize = 24 * scale;
-    ctx.textBaseline = 'middle';
-    ctx.font = `bold ${24 * scale}px "JetBrains Mono"`;
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
 
-    // Comment
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
-    ctx.fillText('💬', innerX, currentY + iconSize/2);
-    ctx.fillStyle = 'white';
-    ctx.fillText(commentCount, innerX + 40 * scale, currentY + iconSize/2);
+        ctx.font = `${18 * scale}px "JetBrains Mono"`;
 
-    // Like
-    const likeX = innerX + 150 * scale;
-    ctx.fillStyle = '#f472b6';
-    ctx.fillText('❤️', likeX, currentY + iconSize/2);
-    ctx.fillStyle = 'white';
-    ctx.fillText(likeCount, likeX + 40 * scale, currentY + iconSize/2);
+        const metaText = `${dateText} · ${locationText}`;
 
-    // Link Text at bottom
-    ctx.textAlign = 'center';
-    ctx.font = `${12 * scale}px "JetBrains Mono"`;
+        ctx.fillText(metaText.toUpperCase(), innerX, currentY);
+
+        currentY += 40 * scale;
+
+        // Stats Row
+
+        ctx.beginPath();
+
+        ctx.moveTo(innerX, currentY);
+
+        ctx.lineTo(cardX + cardW - contentPadding, currentY);
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+
+        ctx.lineWidth = 1 * scale;
+
+        ctx.stroke();
+
+        currentY += 30 * scale;
+
+        // Icons & Counts
+
+        const iconSize = 24 * scale;
+
+        ctx.textBaseline = 'middle';
+
+        ctx.font = `bold ${24 * scale}px "JetBrains Mono"`;
+
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+
+        ctx.fillText('💬', innerX, currentY + iconSize/2);
+
+        ctx.fillStyle = 'white';
+
+        ctx.fillText(commentCount, innerX + 40 * scale, currentY + iconSize/2);
+
+        const likeX = innerX + 150 * scale;
+
+        ctx.fillStyle = '#f472b6';
+
+        ctx.fillText('❤️', likeX, currentY + iconSize/2);
+
+        ctx.fillStyle = 'white';
+
+        ctx.fillText(likeCount, likeX + 40 * scale, currentY + iconSize/2);
+
+        // Link Text at bottom
+
+        ctx.textAlign = 'center';
+
+        ctx.font = `${12 * scale}px "JetBrains Mono"`;
+
         ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+
         ctx.fillText(postLink.toUpperCase(), cardX + cardW/2, cardY + cardH - 20 * scale);
       }, [userName, userHandle, tweetText, likeCount, commentCount, dateText, locationText, postLink]);
 
@@ -206,18 +258,21 @@ const TweetCreatorPage = () => {
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
 
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-    ctx.scale(dpr, dpr);
+    const logicalWidth = 800;
+    const logicalHeight = 550; // Increased slightly for link text
 
-    drawTweet(ctx, rect.width, rect.height);
+    canvas.width = rect.width * dpr;
+    canvas.height = (rect.width * (logicalHeight / logicalWidth)) * dpr;
+    ctx.scale(dpr * (rect.width / logicalWidth), dpr * (rect.width / logicalWidth));
+
+    drawTweet(ctx, logicalWidth, logicalHeight);
   }, [drawTweet]);
 
   const handleDownload = () => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    const W = 2000;
-    const H = 1600;
+    const W = 1600;
+    const H = 1100;
     canvas.width = W;
     canvas.height = H;
 
