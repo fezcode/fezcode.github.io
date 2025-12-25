@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "color-thief-react": "^1.0.2",
     "diff-match-patch": "^1.0.5",
+    "dom-to-image-more": "^3.7.2",
     "framer-motion": "^11.0.24",
     "front-matter": "^4.0.2",
     "html2canvas": "^1.4.1",

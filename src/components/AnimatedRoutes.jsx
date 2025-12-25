@@ -100,6 +100,8 @@ const MorseCodeTranslatorPage = lazy(
 const MastermindPage = lazy(() => import('../pages/apps/MastermindPage'));
 const SynergyFlowPage = lazy(() => import('../pages/apps/SynergyFlowPage'));
 const EchoChamberPage = lazy(() => import('../pages/apps/EchoChamberPage'));
+const ConspiracyBoardPage = lazy(() => import('../pages/apps/ConspiracyBoardPage'));
+const PaperInkPage = lazy(() => import('../pages/apps/PaperInkPage'));
 const WordLadderPage = lazy(() => import('../pages/apps/WordLadderPage'));
 const LightsOutPage = lazy(() => import('../pages/apps/LightsOutPage'));
 const NonogramPage = lazy(() => import('../pages/apps/NonogramPage'));
@@ -1751,6 +1753,38 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <EchoChamberPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/conspiracy-board"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <ConspiracyBoardPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/paper-ink"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <PaperInkPage />
               </Suspense>
             </motion.div>
           }

@@ -156,24 +156,6 @@
     "order": 2,
     "apps": [
       {
-        "slug": "echo-chamber",
-        "to": "/apps/echo-chamber",
-        "title": "The Echo Chamber",
-        "description": "A solitary social network where everyone agrees with you.",
-        "icon": "ChatCircleIcon",
-        "pinned_order": 27,
-        "created_at": "2025-12-25T16:00:00+03:00"
-      },
-      {
-        "slug": "synergy-flow",
-        "to": "/apps/synergy-flow",
-        "title": "Synergy Flow",
-        "description": "Generate meaningless corporate buzzwords and joyful corporate art.",
-        "icon": "BriefcaseIcon",
-        "pinned_order": 26,
-        "created_at": "2025-12-25T15:00:00+03:00"
-      },
-      {
         "slug": "fezynth",
         "to": "/apps/fezynth",
         "title": "FeZynth",
@@ -198,6 +180,41 @@
         "icon": "PhoneIcon",
         "created_at": "2025-12-02T00:00:00+03:00"
       },
+      {
+        "slug": "echo-chamber",
+        "to": "/apps/echo-chamber",
+        "title": "The Echo Chamber",
+        "description": "A solitary social network where everyone agrees with you.",
+        "icon": "ChatCircleIcon",
+        "pinned_order": 27,
+        "created_at": "2025-12-25T16:00:00+03:00"
+      },
+      {
+        "slug": "paper-ink",
+        "to": "/apps/paper-ink",
+        "title": "Paper & Ink",
+        "description": "A meditative ink drawing experience on digital rice paper.",
+        "icon": "PaintBrushIcon",
+        "created_at": "2025-12-25T17:30:00+03:00"
+      },
+      {
+        "slug": "conspiracy-board",
+        "to": "/apps/conspiracy-board",
+        "title": "The Conspiracy Board",
+        "description": "Connect the dots and find the truth on this digital corkboard.",
+        "icon": "PushPinIcon",
+        "created_at": "2025-12-25T17:00:00+03:00"
+      },
+      {
+        "slug": "synergy-flow",
+        "to": "/apps/synergy-flow",
+        "title": "Synergy Flow",
+        "description": "Generate meaningless corporate buzzwords and joyful corporate art.",
+        "icon": "BriefcaseIcon",
+        "pinned_order": 26,
+        "created_at": "2025-12-25T15:00:00+03:00"
+      },
+
       {
         "slug": "cozy-corner",
         "to": "/apps/cozy-corner",
