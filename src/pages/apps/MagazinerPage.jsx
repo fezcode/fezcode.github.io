@@ -13,6 +13,8 @@ import {
   ArrowsOutIcon,
   PushPinIcon,
   FloppyDiskBackIcon,
+  PlusIcon,
+  SquareIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
@@ -94,10 +96,35 @@ const MagazinerPage = () => {
   const [shapesCount, setShapesCount] = useState(15);
   const [borderWidth, setBorderWidth] = useState(10);
   const [inputs, setInputs] = useState(initialInputs);
+  const [assets, setAssets] = useState([]);
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const [isLoadDialogOpen, setIsLoadDialogOpen] = useState(false);
   const [isExportDialogOpen, setIsExportDialogOpen] = useState(false);
   const [stickyPreview, setStickyPreview] = useState(true);
+
+  const addAsset = (type) => {
+    const newAsset = {
+      id: Date.now(),
+      type,
+      x: 50,
+      y: 50,
+      width: type === 'line' ? 20 : 10,
+      height: type === 'line' ? 0.5 : 10,
+      rotation: 0,
+      opacity: 1,
+    };
+    setAssets([...assets, newAsset]);
+    addToast({ title: 'ASSET_ADDED', message: `New ${type.toUpperCase()} entity initialized.` });
+  };
+
+  const updateAsset = (id, field, value) => {
+    setAssets(assets.map(a => a.id === id ? { ...a, [field]: value } : a));
+  };
+
+  const removeAsset = (id) => {
+    setAssets(assets.filter(a => a.id !== id));
+    addToast({ title: 'ASSET_REMOVED', message: 'Entity purged from current sequence.', type: 'info' });
+  };
 
   const handleSavePreset = () => {
     const preset = {
@@ -111,6 +138,7 @@ const MagazinerPage = () => {
       shapesCount,
       borderWidth,
       inputs,
+      assets,
     };
     localStorage.setItem('magaziner_preset', JSON.stringify(preset));
     addToast({ title: 'PRESET_SAVED', message: 'Current configuration stored in local memory.' });
@@ -131,6 +159,7 @@ const MagazinerPage = () => {
         setShapesCount(preset.shapesCount);
         setBorderWidth(preset.borderWidth);
         setInputs(preset.inputs);
+        if (preset.assets) setAssets(preset.assets);
         addToast({ title: 'PRESET_LOADED', message: 'Configuration successfully restored.' });
       } catch (e) {
         addToast({ title: 'LOAD_ERROR', message: 'Stored preset is corrupted or incompatible.', type: 'error' });
@@ -444,7 +473,32 @@ const MagazinerPage = () => {
     }
     ctx.restore();
 
-    // 4. Typography
+    // 4. Manual Assets (Structural Entities)
+    ctx.save();
+    assets.forEach(asset => {
+      ctx.save();
+      const ax = (asset.x / 100) * width;
+      const ay = (asset.y / 100) * height;
+      const aw = (asset.width / 100) * width;
+      const ah = (asset.height / 100) * height;
+
+      ctx.translate(ax, ay);
+      ctx.rotate(asset.rotation * (Math.PI / 180));
+      ctx.globalAlpha = asset.opacity;
+      ctx.fillStyle = accentColor.hex;
+      ctx.strokeStyle = accentColor.hex;
+      ctx.lineWidth = 1 * scale;
+
+      if (asset.type === 'line') {
+        ctx.fillRect(-aw / 2, -ah / 2, aw, ah);
+      } else if (asset.type === 'box') {
+        ctx.strokeRect(-aw / 2, -ah / 2, aw, ah);
+      }
+      ctx.restore();
+    });
+    ctx.restore();
+
+    // 5. Typography
     if (options.includeText) {
       ctx.fillStyle = accentColor.hex;
       ctx.textBaseline = 'middle';
@@ -518,7 +572,7 @@ const MagazinerPage = () => {
       ctx.fillRect(0, 0, width, height);
       ctx.restore();
     }
-  }, [style, pattern, primaryColor, accentColor, bgImage, seed, shapesCount, shapesOpacity, noiseOpacity, gridOpacity, borderWidth, inputs]);
+  }, [style, pattern, primaryColor, accentColor, bgImage, seed, shapesCount, shapesOpacity, noiseOpacity, gridOpacity, borderWidth, inputs, assets]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -685,6 +739,92 @@ const MagazinerPage = () => {
                     ))}
                     <input type="color" value={accentColor.hex} onChange={(e) => setAccentColor({ name: 'Custom', hex: e.target.value })} className="w-8 h-8 bg-transparent border-2 border-white/10 rounded-full cursor-pointer p-0 overflow-hidden" title="Custom Accent Color" />
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
+                <SquareIcon weight="fill" />
+                Visual_Assets_Manager
+              </h3>
+
+              <div className="space-y-8">
+                <div className="grid grid-cols-2 gap-4">
+                  <button
+                    onClick={() => addAsset('line')}
+                    className="py-3 border border-white/10 text-[9px] font-mono uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all flex items-center justify-center gap-2"
+                  >
+                    <PlusIcon weight="bold" /> Add_Line
+                  </button>
+                  <button
+                    onClick={() => addAsset('box')}
+                    className="py-3 border border-white/10 text-[9px] font-mono uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all flex items-center justify-center gap-2"
+                  >
+                    <PlusIcon weight="bold" /> Add_Box
+                  </button>
+                </div>
+
+                <div className="space-y-12 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
+                  {assets.map((asset) => (
+                    <div key={asset.id} className="p-4 border border-white/5 bg-white/[0.01] space-y-6">
+                      <div className="flex justify-between items-center border-b border-white/5 pb-2">
+                        <span className="text-[9px] font-mono text-gray-500 uppercase">{asset.type} {'//'} {asset.id.toString().slice(-4)}</span>
+                        <button
+                          onClick={() => removeAsset(asset.id)}
+                          className="text-red-500 hover:text-white transition-colors"
+                        >
+                          <TrashIcon weight="bold" size={14} />
+                        </button>
+                      </div>
+
+                      <div className="space-y-4">
+                        <CustomSlider
+                          label="X Position"
+                          min={0}
+                          max={100}
+                          value={asset.x}
+                          onChange={(val) => updateAsset(asset.id, 'x', val)}
+                        />
+                        <CustomSlider
+                          label="Y Position"
+                          min={0}
+                          max={100}
+                          value={asset.y}
+                          onChange={(val) => updateAsset(asset.id, 'y', val)}
+                        />
+                        <CustomSlider
+                          label="Width"
+                          min={0.1}
+                          max={100}
+                          value={asset.width}
+                          onChange={(val) => updateAsset(asset.id, 'width', val)}
+                        />
+                        <CustomSlider
+                          label="Height / Thickness"
+                          min={0.1}
+                          max={100}
+                          value={asset.height}
+                          onChange={(val) => updateAsset(asset.id, 'height', val)}
+                        />
+                        <CustomSlider
+                          label="Rotation"
+                          min={0}
+                          max={360}
+                          value={asset.rotation}
+                          onChange={(val) => updateAsset(asset.id, 'rotation', val)}
+                        />
+                        <CustomSlider
+                          label="Opacity"
+                          min={0}
+                          max={1}
+                          step={0.01}
+                          value={asset.opacity}
+                          onChange={(val) => updateAsset(asset.id, 'opacity', val)}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
