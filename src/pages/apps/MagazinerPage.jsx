@@ -92,6 +92,7 @@ const MagazinerPage = () => {
   const [inputs, setInputs] = useState(initialInputs);
   const [isSaveDialogOpen, setIsSaveDialogOpen] = useState(false);
   const [isLoadDialogOpen, setIsLoadDialogOpen] = useState(false);
+  const [isExportDialogOpen, setIsExportDialogOpen] = useState(false);
   const [stickyPreview, setStickyPreview] = useState(true);
 
   const handleSavePreset = () => {
@@ -178,7 +179,7 @@ const MagazinerPage = () => {
     }
   };
 
-  const drawMagazine = useCallback((ctx, width, height) => {
+  const drawMagazine = useCallback((ctx, width, height, options = { includeText: true, includeBgImage: true }) => {
     const scale = width / 1000;
     const rng = (s) => {
       let v = s * 12345.678;
@@ -193,7 +194,7 @@ const MagazinerPage = () => {
     ctx.fillStyle = primaryColor.hex;
     ctx.fillRect(0, 0, width, height);
 
-    if (bgImage) {
+    if (bgImage && options.includeBgImage) {
       const imgRatio = bgImage.width / bgImage.height;
       const canvasRatio = width / height;
       let dWidth, dHeight, dx, dy;
@@ -374,33 +375,35 @@ const MagazinerPage = () => {
     ctx.restore();
 
     // 4. Typography
-    ctx.fillStyle = accentColor.hex;
-    ctx.textBaseline = 'middle';
+    if (options.includeText) {
+      ctx.fillStyle = accentColor.hex;
+      ctx.textBaseline = 'middle';
 
-    Object.entries(inputs).forEach(([key, config]) => {
-      ctx.save();
-      ctx.font = `${style === 'brutalist' ? 'bold' : ''} ${config.size * scale}px "${config.font}"`;
+      Object.entries(inputs).forEach(([key, config]) => {
+        ctx.save();
+        ctx.font = `${style === 'brutalist' ? 'bold' : ''} ${config.size * scale}px "${config.font}"`;
 
-      const x = (config.x / 100) * width;
-      const y = (config.y / 100) * height;
+        const x = (config.x / 100) * width;
+        const y = (config.y / 100) * height;
 
-      if (key === 'rightEdgeText') {
-        ctx.translate(x, y);
-        ctx.rotate(Math.PI / 2);
-        ctx.textAlign = 'center';
-        ctx.fillText(config.text.toUpperCase(), 0, 0);
-      } else if (key === 'title' || key === 'subtitle' || key === 'bottomText') {
-        ctx.textAlign = 'center';
-        ctx.fillText(config.text.toUpperCase(), x, y);
-      } else if (key === 'secondStory' || key === 'secondStorySub') {
-        ctx.textAlign = 'right';
-        ctx.fillText(config.text.toUpperCase(), x, y);
-      } else {
-        ctx.textAlign = 'left';
-        ctx.fillText(config.text.toUpperCase(), x, y);
-      }
-      ctx.restore();
-    });
+        if (key === 'rightEdgeText') {
+          ctx.translate(x, y);
+          ctx.rotate(Math.PI / 2);
+          ctx.textAlign = 'center';
+          ctx.fillText(config.text.toUpperCase(), 0, 0);
+        } else if (key === 'title' || key === 'subtitle' || key === 'bottomText') {
+          ctx.textAlign = 'center';
+          ctx.fillText(config.text.toUpperCase(), x, y);
+        } else if (key === 'secondStory' || key === 'secondStorySub') {
+          ctx.textAlign = 'right';
+          ctx.fillText(config.text.toUpperCase(), x, y);
+        } else {
+          ctx.textAlign = 'left';
+          ctx.fillText(config.text.toUpperCase(), x, y);
+        }
+        ctx.restore();
+      });
+    }
 
     // 4. Border (Frame Protocol)
     if (borderWidth > 0) {
@@ -448,7 +451,7 @@ const MagazinerPage = () => {
     drawMagazine(ctx, rect.width, rect.height);
   }, [drawMagazine]);
 
-  const handleDownload = () => {
+  const handleDownload = (mode = 'full') => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
     const W = 2480; // A4 at 300DPI approx
@@ -456,13 +459,21 @@ const MagazinerPage = () => {
     canvas.width = W;
     canvas.height = H;
 
-    drawMagazine(ctx, W, H);
+    const options = {
+      includeText: mode === 'full',
+      includeBgImage: mode === 'full',
+    };
+
+    drawMagazine(ctx, W, H, options);
 
     const link = document.createElement('a');
-    link.download = `magaziner-${Date.now()}.png`;
+    link.download = `magaziner-${mode}-${Date.now()}.png`;
     link.href = canvas.toDataURL('image/png', 1.0);
     link.click();
-    addToast({ title: 'EXPORT_SUCCESS', message: 'Magazine cover exported to your device.' });
+    addToast({
+      title: 'EXPORT_SUCCESS',
+      message: mode === 'full' ? 'Magazine cover exported.' : 'Background template exported.'
+    });
   };
 
   return (
@@ -499,19 +510,56 @@ const MagazinerPage = () => {
                                       >
                                         <FloppyDiskBackIcon weight="bold" size={24} />
                                       </button>
-                                      <button
-                                        onClick={handleDownload}
-                                        className="group relative inline-flex items-center gap-4 px-10 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shrink-0"
-                                      >
-                                        <DownloadSimpleIcon weight="bold" size={24} />
-                                        <span>Export Cover</span>
-                                      </button>
-                                    </div>
-                                  </div>
-                                </header>
+                                                    <button
+                                                      onClick={() => setIsExportDialogOpen(true)}
+                                                      className="group relative inline-flex items-center gap-4 px-10 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shrink-0"
+                                                    >
+                                                      <DownloadSimpleIcon weight="bold" size={24} />
+                                                      <span>Export</span>
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </header>
 
-                                {/* Save Confirmation Dialog */}
-                                <BrutalistDialog
+                                              {/* Export Manager Dialog */}
+                                              <BrutalistDialog
+                                                isOpen={isExportDialogOpen}
+                                                onClose={() => setIsExportDialogOpen(false)}
+                                                title="EXPORT_MANAGER_v1.0"
+                                              >
+                                                <div className="space-y-6 font-mono text-sm uppercase tracking-wider">
+                                                  <p className="text-gray-500 text-xs leading-relaxed">
+                                                    SELECT EXPORT MODE FOR CURRENT ARCHIVE ENTITY:
+                                                  </p>
+
+                                                  <div className="flex flex-col gap-4">
+                                                    <button
+                                                      onClick={() => { handleDownload('full'); setIsExportDialogOpen(false); }}
+                                                      className="w-full py-6 bg-white text-black hover:bg-emerald-500 transition-all font-black text-xs flex flex-col items-center gap-1"
+                                                    >
+                                                      <span>EXPORT_COVER</span>
+                                                      <span className="text-[9px] opacity-60">FULL COMPOSITION WITH TYPOGRAPHY & MEDIA</span>
+                                                    </button>
+
+                                                    <button
+                                                      onClick={() => { handleDownload('page'); setIsExportDialogOpen(false); }}
+                                                      className="w-full py-6 border border-white/10 text-white hover:bg-white/5 transition-all font-black text-xs flex flex-col items-center gap-1"
+                                                    >
+                                                      <span>EXPORT_PAGE</span>
+                                                      <span className="text-[9px] text-gray-500">TEMPLATE ONLY // SHAPES + GRID + BORDER</span>
+                                                    </button>
+
+                                                    <button
+                                                      onClick={() => setIsExportDialogOpen(false)}
+                                                      className="w-full py-3 text-red-500 hover:text-white transition-all font-mono text-[10px] uppercase tracking-[0.3em]"
+                                                    >
+                                                      [ CLOSE_SESSION ]
+                                                    </button>
+                                                  </div>
+                                                </div>
+                                              </BrutalistDialog>
+
+                                              {/* Save Confirmation Dialog */}                                <BrutalistDialog
                                   isOpen={isSaveDialogOpen}
                                   onClose={() => setIsSaveDialogOpen(false)}
                                   onConfirm={() => { handleSavePreset(); setIsSaveDialogOpen(false); }}

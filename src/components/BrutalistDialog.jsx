@@ -7,6 +7,7 @@ const BrutalistDialog = ({
   isOpen,
   onClose,
   onConfirm,
+  children,
   title = 'SYSTEM_CONFIRMATION',
   message = 'Are you sure you want to execute this operation?',
   confirmText = 'CONFIRM_ACTION',
@@ -57,27 +58,33 @@ const BrutalistDialog = ({
                 </button>
               </div>
 
-              <div className="space-y-2">
-                <div className="h-px w-12 bg-emerald-500" />
-                <p className="text-gray-400 font-mono text-xs uppercase tracking-widest leading-relaxed">
-                  {message}
-                </p>
-              </div>
+              {children ? (
+                <div className="relative z-10">{children}</div>
+              ) : (
+                <>
+                  <div className="space-y-2">
+                    <div className="h-px w-12 bg-emerald-500" />
+                    <p className="text-gray-400 font-mono text-xs uppercase tracking-widest leading-relaxed">
+                      {message}
+                    </p>
+                  </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <button
-                  onClick={onConfirm}
-                  className="flex-1 py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs"
-                >
-                  {confirmText}
-                </button>
-                <button
-                  onClick={onClose}
-                  className="flex-1 py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest"
-                >
-                  {cancelText}
-                </button>
-              </div>
+                  <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                    <button
+                      onClick={onConfirm}
+                      className="flex-1 py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs"
+                    >
+                      {confirmText}
+                    </button>
+                    <button
+                      onClick={onClose}
+                      className="flex-1 py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest"
+                    >
+                      {cancelText}
+                    </button>
+                  </div>
+                </>
+              )}
             </div>
           </motion.div>
         </div>
