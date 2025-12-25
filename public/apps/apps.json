@@ -364,6 +364,14 @@
         "pinned_order": 25
       },
       {
+        "slug": "fantasy-map-generator",
+        "to": "/apps/fantasy-map-generator",
+        "title": "Fantasy Map Generator",
+        "description": "Generate Middle-earth style fantasy maps with mountains, rivers, and castles.",
+        "icon": "MapTrifoldIcon",
+        "created_at": "2025-12-25T14:00:00+03:00"
+      },
+      {
         "slug": "fractal-flora",
         "to": "/apps/fractal-flora",
         "title": "Fractal Flora",
