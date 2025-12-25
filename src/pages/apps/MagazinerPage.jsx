@@ -19,7 +19,6 @@ import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import CustomSlider from '../../components/CustomSlider';
 import BrutalistDialog from '../../components/BrutalistDialog';
-import CustomColorPicker from '../../components/CustomColorPicker';
 
 const STYLES = [
   { value: 'brutalist', label: 'BRUTALIST_CHAOS' },
@@ -36,6 +35,7 @@ const FONTS = [
 
 const PATTERNS = [
   { value: 'just_shapes', label: 'JUST_SHAPES' },
+  { value: 'generative_art', label: 'GENERATIVE_ART' },
   { value: 'bauhaus', label: 'BAUHAUS_GRID' },
   { value: 'technical', label: 'TECH_SPEC' },
   { value: 'minimal', label: 'THE_VOID' },
@@ -64,6 +64,7 @@ const initialInputs = {
   secondStorySub: { text: 'MINIMALISM IS FOR THE ELITE', x: 90, y: 75, size: 14, font: 'JetBrains Mono' },
   bottomText: { text: 'WWW.FEZCODEX.COM // 2025', x: 50, y: 95, size: 12, font: 'JetBrains Mono' },
   rightEdgeText: { text: 'CLASSIFIED // NODE 049', x: 98, y: 50, size: 10, font: 'JetBrains Mono' },
+  bottomLeftText: { text: 'DESIGNED BY FEZCODE', x: 5, y: 95, size: 10, font: 'JetBrains Mono' },
 };
 
 const MagazinerPage = () => {
@@ -79,6 +80,7 @@ const MagazinerPage = () => {
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
 
+  // Magazine State
   const [style, setStyle] = useState('brutalist');
   const [pattern, setPattern] = useState('just_shapes');
   const [primaryColor, setPrimaryColor] = useState(COLORS[0]);
@@ -150,13 +152,14 @@ const MagazinerPage = () => {
         secondStorySub: { ...prev.secondStorySub, font: 'Inter', size: 10 },
         bottomText: { ...prev.bottomText, font: 'Inter', size: 10 },
         rightEdgeText: { ...prev.rightEdgeText, font: 'Inter', size: 8 },
+        bottomLeftText: { ...prev.bottomLeftText, font: 'Inter', size: 8 },
       }));
-      setPrimaryColor(COLORS[1]); // Paper White
-      setAccentColor(COLORS[0]); // Pure Void
+      setPrimaryColor(COLORS[1]);
+      setAccentColor(COLORS[0]);
     } else {
       setInputs(initialInputs);
       setPrimaryColor(COLORS[0]);
-      setAccentColor(COLORS[2]); // Emerald
+      setAccentColor(COLORS[2]);
     }
   }, [style]);
 
@@ -250,15 +253,9 @@ const MagazinerPage = () => {
         ctx.globalAlpha = shapesOpacity;
 
         switch (shapeType) {
-          case 0: // Rect
-            ctx.strokeRect(x, y, size, size);
-            break;
-          case 1: // Circle
-            ctx.beginPath();
-            ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-            ctx.stroke();
-            break;
-          case 2: // Triangle
+          case 0: ctx.strokeRect(x, y, size, size); break;
+          case 1: ctx.beginPath(); ctx.arc(x, y, size / 2, 0, Math.PI * 2); ctx.stroke(); break;
+          case 2:
             ctx.beginPath();
             ctx.moveTo(x, y);
             ctx.lineTo(x + size, y);
@@ -266,13 +263,13 @@ const MagazinerPage = () => {
             ctx.closePath();
             ctx.stroke();
             break;
-          case 3: // Cross
+          case 3:
             ctx.beginPath();
             ctx.moveTo(x - size / 2, y); ctx.lineTo(x + size / 2, y);
             ctx.moveTo(x, y - size / 2); ctx.lineTo(x, y + size / 2);
             ctx.stroke();
             break;
-          case 4: // Grid
+          case 4:
             const gSize = size / 4;
             for (let gx = 0; gx < 4; gx++) {
               for (let gy = 0; gy < 4; gy++) {
@@ -280,14 +277,14 @@ const MagazinerPage = () => {
               }
             }
             break;
-          case 5: // Dots
+          case 5:
             for (let j = 0; j < 5; j++) {
               ctx.beginPath();
               ctx.arc(x + getRand() * size, y + getRand() * size, 2 * scale, 0, Math.PI * 2);
               ctx.fill();
             }
             break;
-          case 6: // Waves
+          case 6:
             ctx.beginPath();
             ctx.moveTo(x, y);
             for (let j = 0; j < size; j += 5) {
@@ -295,13 +292,8 @@ const MagazinerPage = () => {
             }
             ctx.stroke();
             break;
-          case 7: // Diagonals
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x + size, y + size);
-            ctx.stroke();
-            break;
-          case 8: // Star
+          case 7: ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + size, y + size); ctx.stroke(); break;
+          case 8:
             ctx.beginPath();
             for (let j = 0; j < 5; j++) {
               ctx.lineTo(x + Math.cos(j * Math.PI * 2 / 5) * size, y + Math.sin(j * Math.PI * 2 / 5) * size);
@@ -309,56 +301,95 @@ const MagazinerPage = () => {
             ctx.closePath();
             ctx.stroke();
             break;
-          case 9: // Concentric
-            ctx.beginPath();
-            ctx.arc(x, y, size / 2, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.beginPath();
-            ctx.arc(x, y, size / 4, 0, Math.PI * 2);
-            ctx.stroke();
+          case 9:
+            ctx.beginPath(); ctx.arc(x, y, size / 2, 0, Math.PI * 2); ctx.stroke();
+            ctx.beginPath(); ctx.arc(x, y, size / 4, 0, Math.PI * 2); ctx.stroke();
             break;
           default: break;
+        }
+      }
+    } else if (pattern === 'generative_art') {
+      const artRng = (s) => {
+        let h = 0xdeadbeef;
+        const safeSeed = s.toString();
+        for (let i = 0; i < safeSeed.length; i++) {
+          h = Math.imul(h ^ safeSeed.charCodeAt(i), 2654435761);
+        }
+        return () => {
+          h = Math.imul(h ^ (h >>> 16), 2246822507);
+          h = Math.imul(h ^ (h >>> 13), 3266489909);
+          return ((h ^= h >>> 16) >>> 0) / 4294967296;
+        };
+      };
+      const gRng = artRng(seed);
+      const type = Math.floor(gRng() * 3);
+      ctx.globalAlpha = shapesOpacity;
+      if (type === 0) {
+        const gridSize = 5;
+        const cellSize = width / gridSize;
+        for (let x = 0; x < gridSize; x++) {
+          for (let y = 0; y < gridSize; y++) {
+            if (gRng() > 0.5) {
+              const shapeType = Math.floor(gRng() * 4);
+              const rotation = Math.floor(gRng() * 4) * (Math.PI / 2);
+              const cx = x * cellSize + cellSize / 2;
+              const cy = y * cellSize + cellSize / 2;
+              const is = cellSize * 0.8;
+              const p = cellSize * 0.1;
+              ctx.save();
+              ctx.translate(cx, cy); ctx.rotate(rotation); ctx.translate(-cellSize/2, -cellSize/2);
+              if (shapeType === 0) ctx.strokeRect(p, p, is, is);
+              else if (shapeType === 1) { ctx.beginPath(); ctx.arc(cellSize/2, cellSize/2, is/2, 0, Math.PI*2); ctx.stroke(); }
+              else if (shapeType === 2) {
+                ctx.beginPath(); ctx.moveTo(p, p); ctx.lineTo(cellSize-p, p);
+                ctx.arcTo(cellSize-p, cellSize-p, p, cellSize-p, is); ctx.lineTo(p, p); ctx.stroke();
+              }
+              else if (shapeType === 3) {
+                ctx.beginPath(); ctx.moveTo(p, cellSize-p); ctx.lineTo(cellSize/2, p); ctx.lineTo(cellSize-p, cellSize-p); ctx.closePath(); ctx.stroke();
+              }
+              ctx.restore();
+            }
+          }
+        }
+      } else if (type === 1) {
+        for (let i = 0; i < 15; i++) {
+          const isVertical = gRng() > 0.5;
+          const x = Math.floor(gRng() * 10) * (width / 10);
+          const y = Math.floor(gRng() * 10) * (height / 10);
+          const thickness = (0.5 + gRng() * 1.5) * scale * 5;
+          const len = (20 + gRng() * 60) * scale * 5;
+          ctx.fillRect(x, y, isVertical ? thickness : len, isVertical ? len : thickness);
+          if (gRng() > 0.4) { ctx.beginPath(); ctx.arc(x, y, thickness * 2, 0, Math.PI * 2); ctx.fill(); }
+        }
+      } else {
+        for (let i = 0; i < 8; i++) {
+          const cx = gRng() * width; const cy = gRng() * height;
+          const r = (10 + gRng() * 40) * scale * 5;
+          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
         }
       }
     } else {
       const padding = 60 * scale;
       ctx.globalAlpha = shapesOpacity;
       ctx.lineWidth = 2 * scale;
-
       if (pattern === 'bauhaus') {
         for (let i = 0; i < 5; i++) {
           ctx.strokeRect(getRand() * width, getRand() * height, 200 * scale * getRand(), 200 * scale * getRand());
-          ctx.beginPath();
-          ctx.arc(getRand() * width, getRand() * height, 100 * scale * getRand(), 0, Math.PI * 2);
-          ctx.stroke();
+          ctx.beginPath(); ctx.arc(getRand() * width, getRand() * height, 100 * scale * getRand(), 0, Math.PI * 2); ctx.stroke();
         }
       } else if (pattern === 'technical') {
-        ctx.beginPath();
-        ctx.moveTo(width / 2, padding);
-        ctx.lineTo(width / 2, height - padding);
-        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(width / 2, padding); ctx.lineTo(width / 2, height - padding); ctx.stroke();
         for (let i = 0; i < 10; i++) {
           const y = padding + getRand() * (height - padding * 2);
           ctx.strokeRect(width / 2 - 20 * scale, y, 40 * scale, 2 * scale);
         }
       } else if (pattern === 'minimal') {
-        const cx = width / 2;
-        const cy = height / 2;
-        const size = 100 * scale;
-        ctx.beginPath();
-        ctx.moveTo(cx - size, cy);
-        ctx.lineTo(cx + size, cy);
-        ctx.moveTo(cx, cy - size);
-        ctx.lineTo(cx, cy + size);
-        ctx.stroke();
+        const cx = width / 2; const cy = height / 2; const size = 100 * scale;
+        ctx.beginPath(); ctx.moveTo(cx - size, cy); ctx.lineTo(cx + size, cy);
+        ctx.moveTo(cx, cy - size); ctx.lineTo(cx, cy + size); ctx.stroke();
         ctx.strokeRect(cx - size / 4, cy - size / 4, size / 2, size / 2);
-      }
-      else if (pattern === 'column') {
-        const colX = padding * 3;
-        ctx.beginPath();
-        ctx.moveTo(colX, padding);
-        ctx.lineTo(colX, height - padding);
-        ctx.stroke();
+      } else if (pattern === 'column') {
+        const colX = padding * 3; ctx.beginPath(); ctx.moveTo(colX, padding); ctx.lineTo(colX, height - padding); ctx.stroke();
         for (let i = 0; i < 20; i++) {
           const y = padding + (i * (height - padding * 2) / 20);
           ctx.strokeRect(colX - 10 * scale, y, 20 * scale, 1 * scale);
@@ -366,10 +397,7 @@ const MagazinerPage = () => {
       } else if (pattern === 'diagonal') {
         const step = 40 * scale;
         for (let i = -height; i < width + height; i += step) {
-          ctx.beginPath();
-          ctx.moveTo(i, 0);
-          ctx.lineTo(i + height, height);
-          ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + height, height); ctx.stroke();
         }
       }
     }
@@ -379,34 +407,25 @@ const MagazinerPage = () => {
     if (options.includeText) {
       ctx.fillStyle = accentColor.hex;
       ctx.textBaseline = 'middle';
-
       Object.entries(inputs).forEach(([key, config]) => {
         ctx.save();
         ctx.font = `${style === 'brutalist' ? 'bold' : ''} ${config.size * scale}px "${config.font}"`;
-
         const x = (config.x / 100) * width;
         const y = (config.y / 100) * height;
-
         if (key === 'rightEdgeText') {
-          ctx.translate(x, y);
-          ctx.rotate(Math.PI / 2);
-          ctx.textAlign = 'center';
-          ctx.fillText(config.text.toUpperCase(), 0, 0);
+          ctx.translate(x, y); ctx.rotate(Math.PI / 2); ctx.textAlign = 'center'; ctx.fillText(config.text.toUpperCase(), 0, 0);
         } else if (key === 'title' || key === 'subtitle' || key === 'bottomText') {
-          ctx.textAlign = 'center';
-          ctx.fillText(config.text.toUpperCase(), x, y);
+          ctx.textAlign = 'center'; ctx.fillText(config.text.toUpperCase(), x, y);
         } else if (key === 'secondStory' || key === 'secondStorySub') {
-          ctx.textAlign = 'right';
-          ctx.fillText(config.text.toUpperCase(), x, y);
+          ctx.textAlign = 'right'; ctx.fillText(config.text.toUpperCase(), x, y);
         } else {
-          ctx.textAlign = 'left';
-          ctx.fillText(config.text.toUpperCase(), x, y);
+          ctx.textAlign = 'left'; ctx.fillText(config.text.toUpperCase(), x, y);
         }
         ctx.restore();
       });
     }
 
-    // 4. Border (Frame Protocol)
+    // 4. Border
     if (borderWidth > 0) {
       ctx.strokeStyle = accentColor.hex;
       ctx.lineWidth = borderWidth * scale;
@@ -428,7 +447,6 @@ const MagazinerPage = () => {
         nData.data[i + 3] = 255;
       }
       nCtx.putImageData(nData, 0, 0);
-
       ctx.save();
       ctx.globalAlpha = noiseOpacity;
       ctx.globalCompositeOperation = 'overlay';
@@ -438,35 +456,29 @@ const MagazinerPage = () => {
       ctx.restore();
     }
   }, [style, pattern, primaryColor, accentColor, bgImage, seed, shapesCount, shapesOpacity, noiseOpacity, gridOpacity, borderWidth, inputs]);
+
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
-
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
     ctx.scale(dpr, dpr);
-
     drawMagazine(ctx, rect.width, rect.height);
   }, [drawMagazine]);
 
   const handleDownload = (mode = 'full') => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    const W = 2480; // A4 at 300DPI approx
-    const H = 3508;
-    canvas.width = W;
-    canvas.height = H;
-
+    const W = 2480; const H = 3508;
+    canvas.width = W; canvas.height = H;
     const options = {
       includeText: mode === 'full',
       includeBgImage: mode === 'full',
     };
-
     drawMagazine(ctx, W, H, options);
-
     const link = document.createElement('a');
     link.download = `magaziner-${mode}-${Date.now()}.png`;
     link.href = canvas.toDataURL('image/png', 1.0);
@@ -496,309 +508,222 @@ const MagazinerPage = () => {
               </p>
             </div>
 
-                                    <div className="flex gap-4">
-                                      <button
-                                        onClick={() => setIsLoadDialogOpen(true)}
-                                        className="p-6 border border-white/10 text-emerald-500 hover:text-white hover:bg-white/5 transition-all rounded-sm"
-                                        title="Load Stored Preset"
-                                      >
-                                        <ArrowsClockwiseIcon weight="bold" size={24} />
-                                      </button>
-                                      <button
-                                        onClick={() => setIsSaveDialogOpen(true)}
-                                        className="p-6 border border-white/10 text-emerald-500 hover:text-white hover:bg-white/5 transition-all rounded-sm"
-                                        title="Save Current Preset"
-                                      >
-                                        <FloppyDiskBackIcon weight="bold" size={24} />
-                                      </button>
-                                                    <button
-                                                      onClick={() => setIsExportDialogOpen(true)}
-                                                      className="group relative inline-flex items-center gap-4 px-10 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shrink-0"
-                                                    >
-                                                      <DownloadSimpleIcon weight="bold" size={24} />
-                                                      <span>Export</span>
-                                                    </button>
-                                                  </div>
-                                                </div>
-                                              </header>
+            <div className="flex gap-4">
+              <button
+                onClick={() => setIsLoadDialogOpen(true)}
+                className="p-6 border border-white/10 text-emerald-500 hover:text-white hover:bg-white/5 transition-all rounded-sm"
+                title="Load Stored Preset"
+              >
+                <ArrowsClockwiseIcon weight="bold" size={24} />
+              </button>
+              <button
+                onClick={() => setIsSaveDialogOpen(true)}
+                className="p-6 border border-white/10 text-emerald-500 hover:text-white hover:bg-white/5 transition-all rounded-sm"
+                title="Save Current Preset"
+              >
+                <FloppyDiskBackIcon weight="bold" size={24} />
+              </button>
+              <button
+                onClick={() => setIsExportDialogOpen(true)}
+                className="group relative inline-flex items-center gap-4 px-10 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shrink-0"
+              >
+                <DownloadSimpleIcon weight="bold" size={24} />
+                <span>Export</span>
+              </button>
+            </div>
+          </div>
+        </header>
 
-                                              {/* Export Manager Dialog */}
-                                              <BrutalistDialog
-                                                isOpen={isExportDialogOpen}
-                                                onClose={() => setIsExportDialogOpen(false)}
-                                                title="EXPORT_MANAGER_v1.0"
-                                              >
-                                                <div className="space-y-6 font-mono text-sm uppercase tracking-wider">
-                                                  <p className="text-gray-500 text-xs leading-relaxed">
-                                                    SELECT EXPORT MODE FOR CURRENT ARCHIVE ENTITY:
-                                                  </p>
+        <BrutalistDialog
+          isOpen={isSaveDialogOpen}
+          onClose={() => setIsSaveDialogOpen(false)}
+          onConfirm={() => { handleSavePreset(); setIsSaveDialogOpen(false); }}
+          title="MEMORY_COMMIT_PROTOCOL"
+          message="THIS ACTION WILL OVERWRITE YOUR PREVIOUSLY STORED CONFIGURATION IN THE LOCAL BROWSER ARCHIVE. DO YOU WISH TO COMMIT THESE ENTITIES?"
+          confirmText="COMMIT_TO_MEMORY"
+          cancelText="ABORT_SEQUENCE"
+        />
 
-                                                  <div className="flex flex-col gap-4">
-                                                    <button
-                                                      onClick={() => { handleDownload('full'); setIsExportDialogOpen(false); }}
-                                                      className="w-full py-6 bg-white text-black hover:bg-emerald-500 transition-all font-black text-xs flex flex-col items-center gap-1"
-                                                    >
-                                                      <span>EXPORT_COVER</span>
-                                                      <span className="text-[9px] opacity-60">FULL COMPOSITION WITH TYPOGRAPHY & MEDIA</span>
-                                                    </button>
+        <BrutalistDialog
+          isOpen={isLoadDialogOpen}
+          onClose={() => setIsLoadDialogOpen(false)}
+          onConfirm={() => { handleLoadPreset(); setIsLoadDialogOpen(false); }}
+          title="DATA_RECOVERY_PROTOCOL"
+          message="THIS ACTION WILL OVERRIDE ALL CURRENT UNSAVED CHANGES WITH THE DATA STORED IN YOUR LOCAL ARCHIVE. DO YOU WISH TO PROCEED WITH RECOVERY?"
+          confirmText="EXECUTE_RECOVERY"
+          cancelText="ABORT_SEQUENCE"
+        />
 
-                                                    <button
-                                                      onClick={() => { handleDownload('page'); setIsExportDialogOpen(false); }}
-                                                      className="w-full py-6 border border-white/10 text-white hover:bg-white/5 transition-all font-black text-xs flex flex-col items-center gap-1"
-                                                    >
-                                                      <span>EXPORT_PAGE</span>
-                                                      <span className="text-[9px] text-gray-500">TEMPLATE ONLY // SHAPES + GRID + BORDER</span>
-                                                    </button>
+        <BrutalistDialog
+          isOpen={isExportDialogOpen}
+          onClose={() => setIsExportDialogOpen(false)}
+          title="EXPORT_MANAGER_v1.0"
+        >
+          <div className="space-y-6 font-mono text-sm uppercase tracking-wider">
+            <p className="text-gray-500 text-xs leading-relaxed">
+              SELECT EXPORT MODE FOR CURRENT ARCHIVE ENTITY:
+            </p>
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={() => { handleDownload('full'); setIsExportDialogOpen(false); }}
+                className="w-full py-6 bg-white text-black hover:bg-emerald-500 transition-all font-black text-xs flex flex-col items-center gap-1"
+              >
+                <span>EXPORT_COVER</span>
+                <span className="text-[9px] opacity-60">FULL COMPOSITION WITH TYPOGRAPHY & MEDIA</span>
+              </button>
+              <button
+                onClick={() => { handleDownload('page'); setIsExportDialogOpen(false); }}
+                className="w-full py-6 border border-white/10 text-white hover:bg-white/5 transition-all font-black text-xs flex flex-col items-center gap-1"
+              >
+                <span>EXPORT_PAGE</span>
+                <span className="text-[9px] text-gray-500">TEMPLATE ONLY // SHAPES + GRID + BORDER</span>
+              </button>
+              <button
+                onClick={() => setIsExportDialogOpen(false)}
+                className="w-full py-3 text-red-500 hover:text-white transition-all font-mono text-[10px] uppercase tracking-[0.3em]"
+              >
+                [ CLOSE_SESSION ]
+              </button>
+            </div>
+          </div>
+        </BrutalistDialog>
 
-                                                    <button
-                                                      onClick={() => setIsExportDialogOpen(false)}
-                                                      className="w-full py-3 text-red-500 hover:text-white transition-all font-mono text-[10px] uppercase tracking-[0.3em]"
-                                                    >
-                                                      [ CLOSE_SESSION ]
-                                                    </button>
-                                                  </div>
-                                                </div>
-                                              </BrutalistDialog>
-
-                                              {/* Save Confirmation Dialog */}                                <BrutalistDialog
-                                  isOpen={isSaveDialogOpen}
-                                  onClose={() => setIsSaveDialogOpen(false)}
-                                  onConfirm={() => { handleSavePreset(); setIsSaveDialogOpen(false); }}
-                                  title="MEMORY_COMMIT_PROTOCOL"
-                                  message="THIS ACTION WILL OVERWRITE YOUR PREVIOUSLY STORED CONFIGURATION IN THE LOCAL BROWSER ARCHIVE. DO YOU WISH TO COMMIT THESE ENTITIES?"
-                                  confirmText="COMMIT_TO_MEMORY"
-                                  cancelText="ABORT_SEQUENCE"
-                                />
-
-                                {/* Load Confirmation Dialog */}
-                                <BrutalistDialog
-                                  isOpen={isLoadDialogOpen}
-                                  onClose={() => setIsLoadDialogOpen(false)}
-                                  onConfirm={() => { handleLoadPreset(); setIsLoadDialogOpen(false); }}
-                                  title="DATA_RECOVERY_PROTOCOL"
-                                  message="THIS ACTION WILL OVERRIDE ALL CURRENT UNSAVED CHANGES WITH THE DATA STORED IN YOUR LOCAL ARCHIVE. DO YOU WISH TO PROCEED WITH RECOVERY?"
-                                  confirmText="EXECUTE_RECOVERY"
-                                  cancelText="ABORT_SEQUENCE"
-                                />        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* LEFT: Controls */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-4 space-y-8">
             <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
                 <SelectionIcon weight="fill" />
                 Aesthetic_Profile
               </h3>
-
               <div className="space-y-6">
-                <CustomDropdown
-                  label="Style Protocol"
-                  options={STYLES}
-                  value={style}
-                  onChange={setStyle}
-                  variant="brutalist"
-                  fullWidth
-                />
-
+                <CustomDropdown label="Style Protocol" options={STYLES} value={style} onChange={setStyle} variant="brutalist" fullWidth />
                 <div className="space-y-4">
                   <label className="block font-mono text-[9px] uppercase text-gray-600">Background Image</label>
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleImageUpload}
-                    className="hidden"
-                    accept="image/*"
-                  />
-                  <button
-                    onClick={() => fileInputRef.current.click()}
-                    className="w-full py-3 border border-dashed border-white/20 text-gray-400 hover:text-white hover:border-white/40 transition-all font-mono text-[10px] uppercase flex items-center justify-center gap-2"
-                  >
+                  <input type="file" ref={fileInputRef} onChange={handleImageUpload} className="hidden" accept="image/*" />
+                  <button onClick={() => fileInputRef.current.click()} className="w-full py-3 border border-dashed border-white/20 text-gray-400 hover:text-white transition-all font-mono text-[10px] uppercase flex items-center justify-center gap-2">
                     <ImageIcon weight="bold" /> {bgImage ? 'Replace Image' : 'Upload Backdrop'}
                   </button>
-                  {bgImage && (
-                    <button
-                      onClick={() => setBgImage(null)}
-                      className="w-full text-[9px] font-mono text-red-500 uppercase text-center"
-                    >
-                      Clear Image
-                    </button>
-                  )}
+                  {bgImage && <button onClick={() => setBgImage(null)} className="w-full text-[9px] font-mono text-red-500 uppercase text-center">Clear Image</button>}
                 </div>
-
-                <div className="space-y-6">
-                  <CustomColorPicker
-                    label="Base Chromatic"
-                    value={primaryColor.hex}
-                    onChange={(hex) => setPrimaryColor({ name: 'Custom', hex })}
-                  />
-
-                  <CustomColorPicker
-                    label="Accent Chromatic"
-                    value={accentColor.hex}
-                    onChange={(hex) => setAccentColor({ name: 'Custom', hex })}
-                  />
+                <div className="space-y-4">
+                  <label className="block font-mono text-[9px] uppercase text-gray-600">Base Chromatic</label>
+                  <div className="flex flex-wrap gap-2">
+                    {COLORS.map((c) => (
+                      <button key={c.name} onClick={() => setPrimaryColor(c)} className={`w-8 h-8 rounded-full border-2 ${primaryColor.hex === c.hex ? 'border-emerald-500 scale-110' : 'border-transparent'}`} style={{ backgroundColor: c.hex }} title={c.name} />
+                    ))}
+                    <input type="color" value={primaryColor.hex} onChange={(e) => setPrimaryColor({ name: 'Custom', hex: e.target.value })} className="w-8 h-8 bg-transparent border-2 border-white/10 rounded-full cursor-pointer p-0 overflow-hidden" title="Custom Base Color" />
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <label className="block font-mono text-[9px] uppercase text-gray-600">Accent Chromatic</label>
+                  <div className="flex flex-wrap gap-2">
+                    {COLORS.map((c) => (
+                      <button key={c.name} onClick={() => setAccentColor(c)} className={`w-8 h-8 rounded-full border-2 ${accentColor.hex === c.hex ? 'border-emerald-500 scale-110' : 'border-transparent'}`} style={{ backgroundColor: c.hex }} title={c.name} />
+                    ))}
+                    <input type="color" value={accentColor.hex} onChange={(e) => setAccentColor({ name: 'Custom', hex: e.target.value })} className="w-8 h-8 bg-transparent border-2 border-white/10 rounded-full cursor-pointer p-0 overflow-hidden" title="Custom Accent Color" />
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
-              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
-                <TextAaIcon weight="fill" />
-                Content_Matrix
-              </h3>
+            {Object.entries(inputs).map(([key, config]) => (
+              <div key={key} className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
+                <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
+                  <TextAaIcon weight="fill" />
+                  {key.replace(/([A-Z])/g, ' $1').trim().toUpperCase()}
+                </h3>
 
-                            <div className="space-y-8 overflow-y-auto max-h-[600px] pr-2 custom-scrollbar">
-                              {Object.entries(inputs).map(([key, config]) => (
-                                <div key={key} className="space-y-6 pb-6 border-b border-white/5">
-                                  <div className="space-y-2">
-                                    <label className="font-mono text-[9px] uppercase text-gray-500">{key.replace(/([A-Z])/g, '_$1')}</label>
-                                    <input
-                                      type="text"
-                                      value={config.text}
-                                      onChange={(e) => handleInputChange(key, 'text', e.target.value)}
-                                      className="w-full bg-black/40 border border-white/10 p-2 font-mono text-[10px] uppercase tracking-widest focus:border-emerald-500 outline-none transition-all"
-                                    />
-                                  </div>
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <label className="font-mono text-[9px] uppercase text-gray-500">Input String</label>
+                    <input
+                      type="text"
+                      value={config.text}
+                      onChange={(e) => handleInputChange(key, 'text', e.target.value)}
+                      className="w-full bg-black/40 border border-white/10 p-3 font-mono text-[10px] uppercase tracking-widest focus:border-emerald-500 outline-none transition-all"
+                    />
+                  </div>
 
-                                  <CustomSlider
-                                    label="Typographical Size"
-                                    min={5}
-                                    max={200}
-                                    value={config.size}
-                                    onChange={(val) => handleInputChange(key, 'size', val)}
-                                  />
+                  <div className="space-y-2">
+                    <CustomSlider
+                      label="Typographical Size"
+                      min={5}
+                      max={200}
+                      value={config.size}
+                      onChange={(val) => handleInputChange(key, 'size', val)}
+                    />
+                  </div>
 
-                                  <CustomDropdown
-                                    label="Font Family"
-                                    options={FONTS}
-                                    value={config.font}
-                                    onChange={(val) => handleInputChange(key, 'font', val)}
-                                    variant="brutalist"
-                                    fullWidth
-                                  />
+                  <div className="space-y-2">
+                    <CustomDropdown
+                      label="Font Family"
+                      options={FONTS}
+                      value={config.font}
+                      onChange={(val) => handleInputChange(key, 'font', val)}
+                      variant="brutalist"
+                      fullWidth
+                    />
+                  </div>
 
-                                  <CustomSlider
-                                    label="X Axis Position"
-                                    min={0}
-                                    max={100}
-                                    value={config.x}
-                                    onChange={(val) => handleInputChange(key, 'x', val)}
-                                  />
+                  <div className="space-y-2">
+                    <CustomSlider
+                      label="X Axis Position"
+                      min={0}
+                      max={100}
+                      value={config.x}
+                      onChange={(val) => handleInputChange(key, 'x', val)}
+                    />
+                  </div>
 
-                                  <CustomSlider
-                                    label="Y Axis Position"
-                                    min={0}
-                                    max={100}
-                                    value={config.y}
-                                    onChange={(val) => handleInputChange(key, 'y', val)}
-                                  />
-                                </div>
-                              ))}
-                            </div>            </div>
+                  <div className="space-y-2">
+                    <CustomSlider
+                      label="Y Axis Position"
+                      min={0}
+                      max={100}
+                      value={config.y}
+                      onChange={(val) => handleInputChange(key, 'y', val)}
+                    />
+                  </div>
+                </div>
+              </div>
+            ))}
 
             <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
                 <PaintBrushIcon weight="fill" />
                 Structural_Noise
               </h3>
-
               <div className="space-y-8">
-                <CustomDropdown
-                  label="Background Pattern"
-                  options={PATTERNS}
-                  value={pattern}
-                  onChange={setPattern}
-                  variant="brutalist"
-                  fullWidth
-                />
-
-                <CustomSlider
-                  label="Shape Density"
-                  min={0}
-                  max={50}
-                  value={shapesCount}
-                  onChange={setShapesCount}
-                />
-
-                <CustomSlider
-                  label="Frame Thickness"
-                  min={0}
-                  max={100}
-                  value={borderWidth}
-                  onChange={setBorderWidth}
-                />
-
-                <CustomSlider
-                  label="Noise Entropy"
-                  min={0}
-                  max={0.5}
-                  step={0.01}
-                  value={noiseOpacity}
-                  onChange={setNoiseOpacity}
-                />
-
-                <CustomSlider
-                  label="Grid Structural"
-                  min={0}
-                  max={0.8}
-                  step={0.01}
-                  value={gridOpacity}
-                  onChange={setGridOpacity}
-                />
-
-                <CustomSlider
-                  label="Pattern Opacity"
-                  min={0}
-                  max={1}
-                  step={0.01}
-                  value={shapesOpacity}
-                  onChange={setShapesOpacity}
-                />
-                <button
-                  onClick={() => setSeed(Math.random())}
-                  className="w-full py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
-                >
+                <CustomDropdown label="Background Pattern" options={PATTERNS} value={pattern} onChange={setPattern} variant="brutalist" fullWidth />
+                <CustomSlider label="Shape Density" min={0} max={50} value={shapesCount} onChange={setShapesCount} />
+                <CustomSlider label="Frame Thickness" min={0} max={100} value={borderWidth} onChange={setBorderWidth} />
+                <CustomSlider label="Noise Entropy" min={0} max={0.5} step={0.01} value={noiseOpacity} onChange={setNoiseOpacity} />
+                <CustomSlider label="Grid Structural" min={0} max={0.8} step={0.01} value={gridOpacity} onChange={setGridOpacity} />
+                <CustomSlider label="Pattern Opacity" min={0} max={1} step={0.01} value={shapesOpacity} onChange={setShapesOpacity} />
+                <button onClick={() => setSeed(Math.random())} className="w-full py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
                   <ArrowsClockwiseIcon weight="bold" /> Re-Seed Patterns
                 </button>
               </div>
             </div>
           </div>
 
-          {/* RIGHT: Preview */}
           <div className="lg:col-span-8">
             <div className={`${stickyPreview ? 'lg:sticky lg:top-24' : ''} transition-all duration-300`}>
               <div className="relative border border-white/10 bg-[#0a0a0a] rounded-sm overflow-hidden flex items-center justify-center shadow-2xl group min-h-[800px]">
-                <canvas
-                  ref={canvasRef}
-                  className="w-full max-w-[600px] aspect-[1/1.414] object-contain shadow-[0_0_100px_rgba(0,0,0,0.5)]"
-                  style={{ imageRendering: 'pixelated' }}
-                />
-
+                <canvas ref={canvasRef} className="w-full max-w-[600px] aspect-[1/1.414] object-contain shadow-[0_0_100px_rgba(0,0,0,0.5)]" style={{ imageRendering: 'pixelated' }} />
                 <div className="absolute top-8 right-8 z-30 flex flex-col items-end gap-2">
-                  <button
-                    onClick={() => setStickyPreview(!stickyPreview)}
-                    className={`flex items-center gap-2 px-4 py-2 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest transition-all ${
-                      stickyPreview
-                        ? 'bg-red-500 text-black border-red-500 font-black'
-                        : 'bg-black/60 text-red-400 hover:bg-red-500 hover:text-black'
-                    }`}
-                    title={stickyPreview ? 'Unstick Preview' : 'Stick Preview'}
-                  >
+                  <button onClick={() => setStickyPreview(!stickyPreview)} className={`flex items-center gap-2 px-4 py-2 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest transition-all ${stickyPreview ? 'bg-red-500 text-black border-red-500 font-black' : 'bg-black/60 text-red-400 hover:bg-red-500 hover:text-black'}`} title={stickyPreview ? 'Unstick Preview' : 'Stick Preview'}>
                     <PushPinIcon weight={stickyPreview ? 'fill' : 'bold'} /> {stickyPreview ? 'Pinned' : 'Pin'}
                   </button>
-                  <button
-                    onClick={() => { setInputs(initialInputs); setSeed(Math.random()); setBgImage(null); }}
-                    className="opacity-0 group-hover:opacity-100 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-black transition-all"
-                  >
+                  <button onClick={() => { setInputs(initialInputs); setSeed(Math.random()); setBgImage(null); }} className="opacity-0 group-hover:opacity-100 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-black transition-all">
                     <TrashIcon weight="bold" /> Reset
                   </button>
                 </div>
               </div>
-
               <div className="mt-12 p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-6">
                 <InfoIcon size={32} className="text-gray-700 shrink-0 mt-1" />
                 <div className="space-y-4">
-                  <p className="text-sm font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
-                    MAGAZINER_PROTOCOL: High-fidelity rasterization active. Final render calibrated for A4 output at 300 DPI.
-                  </p>
+                  <p className="text-sm font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">MAGAZINER_PROTOCOL: High-fidelity rasterization active. Final render calibrated for A4 output at 300 DPI.</p>
                   <div className="flex items-center gap-2 text-emerald-500 font-mono text-[10px] uppercase">
                     <ArrowsOutIcon weight="bold" /> All elements are fully mappable on the 100x100 grid.
                   </div>
