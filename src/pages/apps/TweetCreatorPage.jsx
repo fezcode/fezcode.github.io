@@ -8,6 +8,7 @@ import {
   HeartIcon,
   GlobeIcon,
   TrashIcon,
+  PaintBrushIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
@@ -34,67 +35,126 @@ const TweetCreatorPage = () => {
   const [likeCount, setLikeCount] = useState('1,337');
   const [commentCount, setCommentCount] = useState('42');
   const [dateText, setDateText] = useState('10:24 PM · Dec 25, 2025');
-    const [locationText, setLocationText] = useState('Transmission_HQ');
-    const [postLink, setPostLink] = useState('fezcode.com/nodes/049');
+      const [locationText, setLocationText] = useState('Transmission_HQ');
+      const [postLink, setPostLink] = useState('fezcode.com/nodes/049');
+      const [showCardBg, setShowCardBg] = useState(true);
 
-      const drawTweet = useCallback((ctx, width, height) => {
-        const scale = width / 800;
+        const drawTweet = useCallback((ctx, width, height) => {
+          const scale = width / 800;
 
-        // 1. Transparent/Clean Background
+          // 1. Transparent/Clean Background
 
-        ctx.clearRect(0, 0, width, height);
+          ctx.clearRect(0, 0, width, height);
 
-        // 2. Card Dimensions (Fill the canvas)
+          // 2. Card Dimensions
 
-        const cardW = width;
+          const cardW = width;
 
-        const cardH = height;
+          const cardH = height;
 
-        const cardX = 0;
+          const cardX = 0;
 
-        const cardY = 0;
+          const cardY = 0;
 
-        const radius = 40 * scale;
+          const radius = 40 * scale;
 
-        ctx.save();
+          // Define Card Path for clipping and filling
 
-        // Glass Fill (Slightly more opaque since it's now the only layer)
+          const defineCardPath = (c) => {
+            c.beginPath();
 
-        ctx.beginPath();
+            c.moveTo(cardX + radius, cardY);
 
-        ctx.moveTo(cardX + radius, cardY);
+            c.lineTo(cardX + cardW - radius, cardY);
 
-        ctx.lineTo(cardX + cardW - radius, cardY);
+            c.quadraticCurveTo(cardX + cardW, cardY, cardX + cardW, cardY + radius);
 
-        ctx.quadraticCurveTo(cardX + cardW, cardY, cardX + cardW, cardY + radius);
+            c.lineTo(cardX + cardW, cardY + cardH - radius);
 
-        ctx.lineTo(cardX + cardW, cardY + cardH - radius);
+            c.quadraticCurveTo(cardX + cardW, cardY + cardH, cardX + cardW - radius, cardY + cardH);
 
-        ctx.quadraticCurveTo(cardX + cardW, cardY + cardH, cardX + cardW - radius, cardY + cardH);
+            c.lineTo(cardX + radius, cardY + cardH);
 
-        ctx.lineTo(cardX + radius, cardY + cardH);
+            c.quadraticCurveTo(cardX, cardY + cardH, cardX, cardY + cardH - radius);
 
-        ctx.quadraticCurveTo(cardX, cardY + cardH, cardX, cardY + cardH - radius);
+            c.lineTo(cardX, cardY + radius);
 
-        ctx.lineTo(cardX, cardY + radius);
+            c.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
 
-        ctx.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
+            c.closePath();
+          };
 
-        ctx.closePath();
+          ctx.save();
 
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+          // Draw Background if enabled
 
-        ctx.fill();
+          if (showCardBg) {
+            ctx.save();
 
-        // Glass Border
+            defineCardPath(ctx);
 
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.clip();
 
-        ctx.lineWidth = 2 * scale;
+            // Background Gradient (Echo Chamber Style)
 
-        ctx.stroke();
+            const bgGradient = ctx.createLinearGradient(0, 0, width, height);
 
-        ctx.restore();
+            bgGradient.addColorStop(0, '#6366f1'); // indigo-500
+
+            bgGradient.addColorStop(0.5, '#a855f7'); // purple-500
+
+            bgGradient.addColorStop(1, '#ec4899'); // pink-500
+
+            ctx.fillStyle = bgGradient;
+
+            ctx.fillRect(0, 0, width, height);
+
+            // Blobs
+
+            const drawBlob = (x, y, r, color) => {
+              ctx.save();
+
+              ctx.beginPath();
+
+              ctx.arc(x, y, r, 0, Math.PI * 2);
+
+              ctx.fillStyle = color;
+
+              ctx.filter = 'blur(80px)';
+
+              ctx.globalAlpha = 0.4;
+
+              ctx.fill();
+
+              ctx.restore();
+            };
+
+            drawBlob(width * 0.2, height * 0.2, 300 * scale, '#c084fc');
+
+            drawBlob(width * 0.8, height * 0.1, 250 * scale, '#facc15');
+
+            drawBlob(width * 0.5, height * 0.9, 350 * scale, '#f472b6');
+
+            ctx.restore();
+          }
+
+          // Glass Fill
+
+          defineCardPath(ctx);
+
+          ctx.fillStyle = showCardBg ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.05)';
+
+          ctx.fill();
+
+          // Glass Border
+
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+
+          ctx.lineWidth = 2 * scale;
+
+          ctx.stroke();
+
+          ctx.restore();
 
         // 3. Content Rendering
 
@@ -244,12 +304,12 @@ const TweetCreatorPage = () => {
 
         ctx.textAlign = 'center';
 
-        ctx.font = `${12 * scale}px "JetBrains Mono"`;
+            ctx.font = `${12 * scale}px "JetBrains Mono"`;
 
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
 
-        ctx.fillText(postLink.toUpperCase(), cardX + cardW/2, cardY + cardH - 20 * scale);
-      }, [userName, userHandle, tweetText, likeCount, commentCount, dateText, locationText, postLink]);
+            ctx.fillText(postLink.toUpperCase(), cardX + cardW/2, cardY + cardH - 20 * scale);
+          }, [userName, userHandle, tweetText, likeCount, commentCount, dateText, locationText, postLink, showCardBg]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -353,6 +413,28 @@ const TweetCreatorPage = () => {
               <div className="space-y-4">
                 <input type="text" value={dateText} onChange={(e) => setDateText(e.target.value)} className={glassInputClass} placeholder="Date/Time String" />
                 <input type="text" value={locationText} onChange={(e) => setLocationText(e.target.value)} className={glassInputClass} placeholder="Location Tag" />
+              </div>
+            </div>
+
+            <div className={`${glassCardClass} p-8 space-y-6`}>
+              <h3 className="font-mono text-[10px] font-bold text-pink-200 uppercase tracking-widest flex items-center gap-2">
+                <PaintBrushIcon weight="fill" />
+                Visual_Aesthetics
+              </h3>
+              <div className="space-y-4">
+                <button
+                  onClick={() => setShowCardBg(!showCardBg)}
+                  className={`w-full py-3 px-4 rounded-xl border transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-between ${
+                    showCardBg
+                      ? 'bg-pink-500/20 border-pink-500/50 text-pink-200'
+                      : 'bg-white/5 border-white/10 text-white/40'
+                  }`}
+                >
+                  <span>Card Background</span>
+                  <span className={showCardBg ? 'text-pink-400' : ''}>
+                    {showCardBg ? '[ ENABLED ]' : '[ DISABLED ]'}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
