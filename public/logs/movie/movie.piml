@@ -1,6 +1,17 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2025-12-25
+    (link) https://www.imdb.com/title/tt1465522/
+    (director) Eli Craig
+    (rating) 4
+    (slug) tucker-and-dale-vs-evil-2010
+    (title) Tucker & Dale vs. Evil (2010)
+    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (description) Tucker & Dale vs. Evil (2010) is a horror comedy that subverts slasher tropes. It follows two well-meaning hillbillies who are mistaken for killers by a group of college students. Celebrated for its clever script, great performances by Alan Tudyk and Tyler Labine, and its perfect blend of gore and humor.
+
+  > (item)
+    (category) Movie
     (date) 2025-12-12
     (link) https://www.imdb.com/title/tt0075314/
     (director) Martin Scorsese
