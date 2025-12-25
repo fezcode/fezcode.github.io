@@ -190,6 +190,15 @@
         "created_at": "2025-12-25T16:00:00+03:00"
       },
       {
+        "slug": "voyager-terminal",
+        "to": "/apps/voyager-terminal",
+        "title": "Voyager Terminal",
+        "description": "Intercept deep space signals with this analog 1970s telemetry receiver.",
+        "icon": "BroadcastIcon",
+        "pinned_order": 30,
+        "created_at": "2025-12-25T18:00:00+03:00"
+      },
+      {
         "slug": "paper-ink",
         "to": "/apps/paper-ink",
         "title": "Paper & Ink",
@@ -381,6 +390,15 @@
     "icon": "MagicWandIcon",
     "order": 3,
     "apps": [
+      {
+        "slug": "magaziner",
+        "to": "/apps/magaziner",
+        "title": "Magaziner",
+        "description": "Premium magazine cover generator with brutalist and elite minimal aesthetics.",
+        "icon": "NewspaperIcon",
+        "created_at": "2025-12-25T15:00:00+03:00",
+        "pinned_order": 26
+      },
       {
         "slug": "og-image-generator",
         "to": "/apps/og-image-generator",

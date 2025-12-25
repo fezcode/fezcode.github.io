@@ -102,6 +102,7 @@ const SynergyFlowPage = lazy(() => import('../pages/apps/SynergyFlowPage'));
 const EchoChamberPage = lazy(() => import('../pages/apps/EchoChamberPage'));
 const ConspiracyBoardPage = lazy(() => import('../pages/apps/ConspiracyBoardPage'));
 const PaperInkPage = lazy(() => import('../pages/apps/PaperInkPage'));
+const VoyagerTerminalPage = lazy(() => import('../pages/apps/VoyagerTerminalPage'));
 const WordLadderPage = lazy(() => import('../pages/apps/WordLadderPage'));
 const LightsOutPage = lazy(() => import('../pages/apps/LightsOutPage'));
 const NonogramPage = lazy(() => import('../pages/apps/NonogramPage'));
@@ -151,6 +152,7 @@ const AssetStudioPage = lazy(() => import('../pages/apps/AssetStudioPage'));
 const OgImageGeneratorPage = lazy(() => import('../pages/apps/OgImageGeneratorPage'));
 const FantasyMapGeneratorPage = lazy(() => import('../pages/apps/FantasyMapGeneratorPage'));
 const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
+const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
@@ -984,6 +986,10 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/og-image-generator" replace />}
         />
         <Route
+          path="/apps::magaziner"
+          element={<Navigate to="/apps/magaziner" replace />}
+        />
+        <Route
           path="/apps::we"
           element={<Navigate to="/apps/wallpaper-engine" replace />}
         />
@@ -1790,6 +1796,22 @@ const AnimatedRoutes = ({
           }
         />
         <Route
+          path="/apps/voyager-terminal"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <VoyagerTerminalPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
           path="/apps/word-ladder"
           element={
             <motion.div
@@ -1961,6 +1983,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <AssetStudioPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/magaziner"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <MagazinerPage />
               </Suspense>
             </motion.div>
           }

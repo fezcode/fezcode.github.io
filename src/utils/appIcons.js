@@ -75,6 +75,10 @@ import {
   CheckSquareOffsetIcon,
   SelectionIcon,
   AppWindowIcon,
+  ArrowsOutIcon,
+  NewspaperIcon,
+  MonitorIcon,
+  WindIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -154,4 +158,8 @@ export const appIcons = {
   CheckSquareOffsetIcon,
   SelectionIcon,
   AppWindowIcon,
+  ArrowsOutIcon,
+  NewspaperIcon,
+  MonitorIcon,
+  WindIcon,
 };
