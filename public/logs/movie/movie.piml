@@ -2,6 +2,17 @@
   > (item)
     (category) Movie
     (date) 2025-12-25
+    (link) https://www.imdb.com/title/tt0116695/
+    (director) Cameron Crowe
+    (rating) 3
+    (slug) jerry-maguire-movie
+    (title) Jerry Maguire (1996)
+    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (description) Jerry Maguire (1996) is a romantic comedy-drama written and directed by Cameron Crowe. It follows a successful sports agent who has a moral epiphany, gets fired, and attempts to rebuild his career with his one remaining client and a single mother who believes in his vision. Famous for iconic lines and Tom Cruise's charismatic performance.
+
+  > (item)
+    (category) Movie
+    (date) 2025-12-25
     (link) https://www.imdb.com/title/tt1465522/
     (director) Eli Craig
     (rating) 4
