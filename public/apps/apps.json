@@ -391,6 +391,14 @@
     "order": 3,
     "apps": [
       {
+        "slug": "asset-constructor",
+        "to": "/apps/asset-constructor",
+        "title": "Asset Constructor",
+        "description": "Construct high-fidelity digital assets, containers and UI components with advanced glassmorphism.",
+        "icon": "SquaresFourIcon",
+        "created_at": "2025-12-25T18:00:00+03:00"
+      },
+      {
         "slug": "album-constructor",
         "to": "/apps/album-constructor",
         "title": "Album Constructor",

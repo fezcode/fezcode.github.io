@@ -50,6 +50,9 @@ const CssUnitConverterPage = () => {
       case 'vh':
         pxValue = (numValue / 100) * 1080;
         break;
+      case 'mm':
+        pxValue = numValue * 3.7795275591;
+        break;
       case 'percent':
         pxValue = (numValue / 100) * base;
         break;
@@ -63,6 +66,7 @@ const CssUnitConverterPage = () => {
       rem: (pxValue / base).toFixed(2),
       vw: ((pxValue / 1920) * 100).toFixed(2),
       vh: ((pxValue / 1080) * 100).toFixed(2),
+      mm: (pxValue / 3.7795275591).toFixed(2),
       percent: ((pxValue / base) * 100).toFixed(2),
     };
   };
@@ -135,6 +139,7 @@ const CssUnitConverterPage = () => {
                         { label: 'REM', value: 'rem' },
                         { label: 'VW', value: 'vw' },
                         { label: 'VH', value: 'vh' },
+                        { label: 'MM', value: 'mm' },
                         { label: '%', value: 'percent' },
                       ]}
                       value={inputUnit}
