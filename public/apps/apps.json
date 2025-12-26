@@ -404,8 +404,15 @@
         "title": "Album Constructor",
         "description": "The ultimate synthesis protocol for high-fidelity album art generation.",
         "icon": "MusicNoteIcon",
-        "created_at": "2025-12-25T17:00:00+03:00",
-        "pinned_order": 28
+        "created_at": "2025-12-25T17:00:00+03:00"
+      },
+      {
+        "slug": "codeblock-creator",
+        "to": "/apps/codeblock-creator",
+        "title": "Codeblock Creator",
+        "description": "Render syntax-highlighted code into high-fidelity image artifacts.",
+        "icon": "CodeIcon",
+        "created_at": "2025-12-26T12:00:00+03:00"
       },
       {
         "slug": "tweet-creator",
@@ -413,8 +420,7 @@
         "title": "Tweet Creator",
         "description": "Construct high-fidelity tweet snapshots with Echo Chamber aesthetics.",
         "icon": "TwitterLogoIcon",
-        "created_at": "2025-12-25T16:00:00+03:00",
-        "pinned_order": 27
+        "created_at": "2025-12-25T16:00:00+03:00"
       },
       {
         "slug": "magaziner",

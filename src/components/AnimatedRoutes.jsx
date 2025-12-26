@@ -157,6 +157,7 @@ const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
 const AssetConstructorPage = lazy(() => import('../pages/apps/AssetConstructorPage'));
+const CodeblockCreatorPage = lazy(() => import('../pages/apps/CodeblockCreatorPage'));
 const AlbumCoverPage = lazy(() => import('../pages/apps/AlbumCoverPage'));
 const TweetCreatorPage = lazy(() => import('../pages/apps/TweetCreatorPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
@@ -1074,6 +1075,26 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/wallpaper-engine" replace />}
         />
         {/* End of hardcoded redirects */}
+        <Route
+          path="/apps::code"
+          element={<Navigate to="/apps/codeblock-creator" replace />}
+        />
+        <Route
+          path="/apps/codeblock-creator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CodeblockCreatorPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
         <Route
           path="/apps/ip"
           element={
