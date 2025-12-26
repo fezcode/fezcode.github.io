@@ -11,6 +11,7 @@ import {
   ShareNetworkIcon
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const BOT_NAMES = [
   'Skylar_99', 'NeonVibe', 'CryptoKing', 'ZenMaster', 'Bella_Rose',
@@ -131,7 +132,7 @@ const EchoChamberPage = () => {
 
         {/* Header */}
         <div className="text-center mb-8">
-            <h1 className="text-6xl font-playfairDisplay font-bold mb-2 tracking-tight drop-shadow-lg">The Echo Chamber</h1>
+            <BreadcrumbTitle title="The Echo Chamber" slug="ec" variant="brutalist" className="justify-center" />
             <p className="text-pink-100 text-xl font-arvo opacity-90 italic">Where everyone agrees with you. Forever.</p>
         </div>
 

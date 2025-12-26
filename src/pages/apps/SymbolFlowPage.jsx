@@ -13,6 +13,7 @@ import {
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const PROTOCOLS = [
   { id: 'binary', label: 'BINARY_STREAM', symbols: ['0', '1'] },
@@ -194,9 +195,7 @@ const SymbolFlowPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                {appName}
-              </h1>
+              <BreadcrumbTitle title="Symbol Flow" slug="sf" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Generative stream protocol. Map technical symbol sets across procedural force fields to visualize digital kinetic energy.
               </p>

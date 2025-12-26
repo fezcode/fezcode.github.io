@@ -9,6 +9,7 @@ import {
 import useSeo from '../../hooks/useSeo';
 import { useAchievements } from '../../context/AchievementContext';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const MORSE_CODE_MAP = {
   A: '.-',
@@ -146,14 +147,12 @@ const MorseCodeTranslatorPage = () => {
             <span>Applications</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                Morse
-              </h1>
-              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
-                Binary pulse translation layer. Map natural language to temporal
-                patterns.
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Morse Code" slug="mct" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Auditory signaling protocol. Bilateral translation between
+                plaintext and standardized Morse code pulses.
               </p>
             </div>
 

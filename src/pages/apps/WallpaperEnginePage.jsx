@@ -8,6 +8,7 @@ import CustomSlider from '../../components/CustomSlider';
 import CustomDropdown from '../../components/CustomDropdown';
 import useSeo from '../../hooks/useSeo';
 import {useToast} from '../../hooks/useToast';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const COLOR_PRESETS = [{
   label: 'Default',
@@ -1293,10 +1294,11 @@ const WallpaperEnginePage = () => {
                 className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 text-[10px] uppercase tracking-widest">
             <ArrowLeftIcon/> Back to Tools
           </Link>
-          <h1 className="text-xl font-black uppercase tracking-tighter flex items-center gap-2">
-            <MonitorIcon size={24} weight="fill" className="text-emerald-500"/>
-            Wallpaper Engine
-          </h1>
+          <BreadcrumbTitle
+            title="Wall Paper Engine"
+            slug="we"
+            variant="brutalist"
+          />
           <p className="text-[9px] text-gray-600 mt-1 uppercase tracking-widest">Procedural Visualization v2.0</p>
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-8 no-scrollbar pb-32">

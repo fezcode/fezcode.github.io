@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Lightbulb, Target, Clock } from '@phosphor-icons/react';
+import { ArrowLeftIcon, LightbulbIcon, TargetIcon, ClockIcon } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const MastermindPage = () => {
   const appName = 'Mastermind';
@@ -109,46 +110,25 @@ const MastermindPage = () => {
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
-        <header className="mb-20">
+        <header className="mb-24">
           <Link
             to="/apps"
-            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Applications</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                {appName}
-              </h1>
-              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
-                Logic-based sequence identification protocol. Crack the 4-digit
-                code.
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Mastermind" slug="mm" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Heuristic optimization protocol. Decode the sequence via
+                iterative logical inference.
               </p>
-            </div>
-
-            <div className="flex gap-12 font-mono">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
-                  Attempts
-                </span>
-                <span className="text-3xl font-black text-emerald-500">
-                  {guesses.length}
-                  <span className="text-gray-700 text-lg">/{MAX_GUESSES}</span>
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
-                  Status
-                </span>
-                <span
-                  className={`text-3xl font-black ${gameOver ? 'text-rose-500' : 'text-white'}`}
-                >
-                  {gameOver ? 'LOCKED' : 'ACTIVE'}
-                </span>
-              </div>
             </div>
           </div>
         </header>
@@ -163,7 +143,7 @@ const MastermindPage = () => {
               <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
-                <Target weight="fill" />
+                <TargetIcon weight="fill" />
                 Input_Module
               </h3>
 
@@ -193,7 +173,7 @@ const MastermindPage = () => {
                     type="submit"
                     className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
                   >
-                    <Lightbulb weight="bold" size={18} />
+                    <LightbulbIcon weight="bold" size={18} />
                     Validate
                   </button>
                 </form>
@@ -221,7 +201,7 @@ const MastermindPage = () => {
           {/* History Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <Clock weight="fill" className="text-emerald-500" />
+              <ClockIcon weight="fill" className="text-emerald-500" />
               Transmission_History
             </h3>
 

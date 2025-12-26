@@ -10,6 +10,7 @@ import {
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function AsciiConverterPage() {
   const appName = 'Binary / ASCII';
@@ -143,12 +144,10 @@ function AsciiConverterPage() {
             <span>Applications</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                Base Units
-              </h1>
-              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Binary / ASCII" slug="ascii" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Character mapping protocol. Translate natural language into
                 machine-level representations.
               </p>

@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, CubeIcon } from '@phosphor-icons/react'; // Using CubeIcon as a placeholder icon for now
+import { ArrowLeftIcon } from '@phosphor-icons/react'; // Using CubeIcon as a placeholder icon for now
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const MAP_WIDTH = 20;
 const MAP_HEIGHT = 15;
@@ -291,12 +292,14 @@ function RoguelikeGamePage() {
         <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
         Back to Apps
       </Link>
-      <h1 className="text-4xl font-bold font-mono tracking-tight sm:text-6xl mb-4 flex items-center">
-        <CubeIcon size={48} className="mr-2" /> Roguelike Adventure
-      </h1>
-      <p className="text-lg text-gray-400 mb-6 text-center">
-        Navigate the maze, avoid enemies, and find the exit!
-      </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Roguelike" slug="rl" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Explore a procedurally generated dungeon in this browser-based roguelike.
+              </p>
+            </div>
+          </div>
 
       {gameStatus === 'won' && (
         <div className="text-green-400 text-2xl font-bold mb-4">

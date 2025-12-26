@@ -10,6 +10,7 @@ import {
 import useSeo from '../../hooks/useSeo';
 import { ToastContext } from '../../context/ToastContext';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const PUZZLES = [
   [
@@ -323,12 +324,10 @@ const NonogramPage = () => {
             <span>Applications</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                {appName}
-              </h1>
-              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Nonogram" slug="ng" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Picture logic protocol. Decrypt the pattern through grid-based
                 identification.
               </p>

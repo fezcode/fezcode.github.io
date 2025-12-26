@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import PickerWheel from '../../components/PickerWheel';
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function PickerWheelPage() {
   const appName = 'Picker Wheel';
@@ -30,9 +31,7 @@ function PickerWheelPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                {appName}
-              </h1>
+              <BreadcrumbTitle title="Picker Wheel" slug="pw" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Add your options and spin the wheel to make a random selection. Perfect for choosing where to eat, who goes first, or making quick decisions.
               </p>

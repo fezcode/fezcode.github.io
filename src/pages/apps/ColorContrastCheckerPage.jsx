@@ -8,6 +8,7 @@ import {
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const hexToRgb = (hex) => {
   const r = parseInt(hex.substring(1, 3), 16);
@@ -90,9 +91,7 @@ const ColorContrastCheckerPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                {appName}
-              </h1>
+              <BreadcrumbTitle title="Contrast Checker" slug="ccc" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Accessibility verification protocol. Map chromatic ratios to
                 ensure visual clarity and adherence to universal standards.

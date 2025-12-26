@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeft,
-  Keyboard,
-  ArrowCounterClockwise,
+  ArrowLeftIcon,
+  KeyboardIcon,
+  ArrowCounterClockwiseIcon,
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const sampleTexts = [
   'The quick brown fox jumps over the lazy dog.',
@@ -44,7 +45,6 @@ function KeyboardTypingSpeedTesterPage() {
   const [accuracy, setAccuracy] = useState(0);
   const [totalCorrectChars, setTotalCorrectChars] = useState(0);
   const [totalTypedChars, setTotalTypedChars] = useState(0);
-  const [totalMistakes, setTotalMistakes] = useState(0);
 
   const inputRef = useRef(null);
 
@@ -101,9 +101,6 @@ function KeyboardTypingSpeedTesterPage() {
       }
       setTotalCorrectChars((prev) => prev + segmentCorrectChars);
       setTotalTypedChars((prev) => prev + textToType.length);
-      setTotalMistakes(
-        (prev) => prev + (textToType.length - segmentCorrectChars),
-      );
       setTextToType((prevText) => selectNewText(prevText));
       setTypedText('');
     }
@@ -118,7 +115,6 @@ function KeyboardTypingSpeedTesterPage() {
     setAccuracy(0);
     setTotalCorrectChars(0);
     setTotalTypedChars(0);
-    setTotalMistakes(0);
     setTextToType(selectNewText(''));
     setTypedText('');
     setTimeout(() => inputRef.current?.focus(), 10);
@@ -155,50 +151,25 @@ function KeyboardTypingSpeedTesterPage() {
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
       <div className="mx-auto max-w-5xl px-6 py-24 md:px-12">
         {/* Header Section */}
-        <header className="mb-20">
+        <header className="mb-24">
           <Link
             to="/apps"
-            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Applications</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                {appName}
-              </h1>
-              <p className="text-gray-400 font-mono text-sm max-w-sm uppercase tracking-widest">
-                Typing Performance Protocol
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="FezType" slug="ft" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Keystroke velocity protocol. Benchmark and optimize your manual
+                data entry throughput.
               </p>
-            </div>
-
-            <div className="flex gap-12 font-mono">
-              <div className="flex flex-col">
-                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
-                  WPM
-                </span>
-                <span className="text-3xl font-black text-emerald-500">
-                  {Math.round(
-                    totalCorrectChars / 5 / ((60 - timer) / 60 || 1),
-                  ) || 0}
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
-                  Time
-                </span>
-                <span className="text-3xl font-black text-white">{timer}s</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
-                  Mistakes
-                </span>
-                <span className="text-3xl font-black text-rose-500">
-                  {totalMistakes}
-                </span>
-              </div>
             </div>
           </div>
         </header>
@@ -237,7 +208,7 @@ function KeyboardTypingSpeedTesterPage() {
                       autoFocus
                     />
                     <div className="absolute right-0 bottom-4 text-gray-700 pointer-events-none">
-                      <Keyboard size={32} weight="thin" />
+                      <KeyboardIcon size={32} weight="thin" />
                     </div>
                   </div>
 
@@ -246,7 +217,7 @@ function KeyboardTypingSpeedTesterPage() {
                       onClick={resetTest}
                       className="flex items-center gap-2 px-6 py-3 border border-white/10 hover:bg-white hover:text-black transition-all font-mono uppercase tracking-widest text-xs"
                     >
-                      <ArrowCounterClockwise weight="bold" />
+                      <ArrowCounterClockwiseIcon weight="bold" />
                       <span>Reset Test</span>
                     </button>
                   </div>

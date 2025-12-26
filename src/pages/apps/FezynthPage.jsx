@@ -9,6 +9,7 @@ import {
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 // Keyboard mapping (Letter -> Frequency)
 const KEY_MAP = {
@@ -246,12 +247,10 @@ const FezynthPage = () => {
           <span>Exit_To_Center</span>
         </Link>
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mb-16">
-          <div className="space-y-4">
-            <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-none uppercase flex items-center gap-4 flex-wrap">
-              Fezynth <span className="text-xs border border-emerald-500 text-emerald-500 px-2 py-1 rounded-sm shrink-0 whitespace-nowrap tracking-normal">v2.0</span>
-            </h1>
-            <p className="text-xl text-gray-400 max-w-xl font-light">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Fezynth" slug="fz" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
               Neural audio synthesis engine. Manipulation of Web Audio frequencies via low-level browser protocols.
             </p>
           </div>

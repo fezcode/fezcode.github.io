@@ -1,16 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeft,
-  Brain,
-  Timer,
-  Target,
-  ArrowsClockwise,
+  ArrowLeftIcon,
+  TimerIcon,
+  TargetIcon,
+  ArrowsClockwiseIcon,
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import '../../styles/MemoryGamePage.css';
 import { useAchievements } from '../../context/AchievementContext';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
@@ -157,34 +157,39 @@ const MemoryGamePage = () => {
 
       {/* Hero Section */}
       <div className="relative h-[40vh] w-full overflow-hidden border-b border-white/10">
-        <GenerativeArt
-          seed="Memory Protocol"
-          className="w-full h-full opacity-40 filter brightness-50"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
-
-        <div className="absolute bottom-0 left-0 w-full px-6 pb-12 md:px-12">
-          <div className="mb-6 flex items-center gap-4">
-            <Link
-              to="/apps"
-              className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/50 px-4 py-1.5 text-xs font-mono font-bold uppercase tracking-widest text-white backdrop-blur-md transition-colors hover:bg-white hover:text-black"
-            >
-              <ArrowLeft weight="bold" />
-              <span>Back to Apps</span>
-            </Link>
-            <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm flex items-center gap-2">
-              <Brain size={14} /> COGNITIVE_TEST_STATION
-            </span>
-          </div>
-
-          <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl">
-            Memory Game
-          </h1>
-          <p className="mt-4 text-gray-400 font-mono text-sm max-w-xl">
-            Identification and pattern matching protocol. Secure{' '}
-            {CARD_VALUES.length} pairs to complete the sequence.
-          </p>
+        <div className="absolute inset-0">
+          <GenerativeArt
+            seed="Memory Protocol"
+            className="w-full h-full opacity-40 filter brightness-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
         </div>
+      </div>
+
+      <div className="mx-auto max-w-7xl px-6 -mt-32 relative z-10">
+        <header className="mb-20">
+          <Link
+            to="/apps"
+            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+          >
+            <ArrowLeftIcon weight="bold" />
+            <span>Archive</span>
+          </Link>
+
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="space-y-4">
+              <BreadcrumbTitle
+                title="Memory Game"
+                slug="mg"
+                variant="brutalist"
+              />
+              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest">
+                Cognitive evaluation protocol. Match identical data points within
+                minimal move sequences.
+              </p>
+            </div>
+          </div>
+        </header>
       </div>
 
       {/* Main Content Grid */}
@@ -205,7 +210,7 @@ const MemoryGamePage = () => {
                     onClick={startGame}
                     className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
                   >
-                    <Target weight="bold" size={18} />
+                    <TargetIcon weight="bold" size={18} />
                     Execute_Start
                   </button>
                 </div>
@@ -216,7 +221,7 @@ const MemoryGamePage = () => {
               <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/80 backdrop-blur-md border border-emerald-500/20 p-12 text-center">
                 <div className="max-w-md">
                   <div className="inline-flex p-4 rounded-full bg-emerald-500/10 text-emerald-500 mb-6">
-                    <ArrowsClockwise
+                    <ArrowsClockwiseIcon
                       size={48}
                       weight="bold"
                       className="animate-spin-slow"
@@ -271,7 +276,7 @@ const MemoryGamePage = () => {
               <div className="space-y-6 border-l border-white/10 pl-6">
                 <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                    <Target size={12} /> Move_Count
+                    <TargetIcon size={12} /> Move_Count
                   </span>
                   <span className="font-mono text-2xl uppercase text-white font-black">
                     {moves}
@@ -279,7 +284,7 @@ const MemoryGamePage = () => {
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                    <ArrowsClockwise size={12} /> Sequence_Matches
+                    <ArrowsClockwiseIcon size={12} /> Sequence_Matches
                   </span>
                   <span className="font-mono text-2xl uppercase text-emerald-500 font-black">
                     {matchesFound}
@@ -290,7 +295,7 @@ const MemoryGamePage = () => {
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                    <Timer size={12} /> Uptime
+                    <TimerIcon size={12} /> Uptime
                   </span>
                   <span className="font-mono text-sm uppercase text-white font-bold">
                     {startTime

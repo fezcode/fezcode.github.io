@@ -10,6 +10,7 @@ import {
 import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import BrutalistDialog from '../../components/BrutalistDialog';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const GATES_META = {
   and: { label: 'AND', inputs: 2, color: '#10b981' },
@@ -147,7 +148,7 @@ const LogicArchitectPage = () => {
             <ArrowLeftIcon size={24} weight="bold" />
           </Link>
           <div>
-            <h1 className="text-2xl font-black uppercase tracking-tighter">Logic_Architect <span className="text-emerald-500 text-xs ml-2">v2.0</span></h1>
+            <BreadcrumbTitle title="Logic Architect" slug="la" variant="brutalist" />
             <p className="text-[10px] text-gray-600 uppercase tracking-widest mt-1">Experimental_Circuit_Lab</p>
           </div>
         </div>

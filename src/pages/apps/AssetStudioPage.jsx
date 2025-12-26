@@ -14,6 +14,7 @@ import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import CustomSlider from '../../components/CustomSlider';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const AssetStudioPage = () => {
   const appName = 'Asset Studio';
@@ -141,9 +142,7 @@ const AssetStudioPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                {appName}
-              </h1>
+              <BreadcrumbTitle title="Asset Studio" slug="as" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Resize, crop, and convert your images for the web. Create favicons, social media previews, and optimized assets.
               </p>

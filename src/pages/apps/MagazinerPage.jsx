@@ -21,6 +21,8 @@ import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import CustomSlider from '../../components/CustomSlider';
 import BrutalistDialog from '../../components/BrutalistDialog';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import CustomColorPicker from '../../components/CustomColorPicker';
 
 const STYLES = [
   { value: 'brutalist', label: 'BRUTALIST_CHAOS' },
@@ -617,9 +619,7 @@ const MagazinerPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                {appName}
-              </h1>
+              <BreadcrumbTitle title="Magaziner" slug="magaziner" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Premium cover construction interface. Toggle between raw brutalism and elite minimal aesthetics.
               </p>
@@ -722,26 +722,21 @@ const MagazinerPage = () => {
                   </button>
                   {bgImage && <button onClick={() => setBgImage(null)} className="w-full text-[9px] font-mono text-red-500 uppercase text-center">Clear Image</button>}
                 </div>
-                <div className="space-y-4">
-                  <label className="block font-mono text-[9px] uppercase text-gray-600">Base Chromatic</label>
-                  <div className="flex flex-wrap gap-2">
-                    {COLORS.map((c) => (
-                      <button key={c.name} onClick={() => setPrimaryColor(c)} className={`w-8 h-8 rounded-full border-2 ${primaryColor.hex === c.hex ? 'border-emerald-500 scale-110' : 'border-transparent'}`} style={{ backgroundColor: c.hex }} title={c.name} />
-                    ))}
-                    <input type="color" value={primaryColor.hex} onChange={(e) => setPrimaryColor({ name: 'Custom', hex: e.target.value })} className="w-8 h-8 bg-transparent border-2 border-white/10 rounded-full cursor-pointer p-0 overflow-hidden" title="Custom Base Color" />
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <label className="block font-mono text-[9px] uppercase text-gray-600">Accent Chromatic</label>
-                  <div className="flex flex-wrap gap-2">
-                    {COLORS.map((c) => (
-                      <button key={c.name} onClick={() => setAccentColor(c)} className={`w-8 h-8 rounded-full border-2 ${accentColor.hex === c.hex ? 'border-emerald-500 scale-110' : 'border-transparent'}`} style={{ backgroundColor: c.hex }} title={c.name} />
-                    ))}
-                    <input type="color" value={accentColor.hex} onChange={(e) => setAccentColor({ name: 'Custom', hex: e.target.value })} className="w-8 h-8 bg-transparent border-2 border-white/10 rounded-full cursor-pointer p-0 overflow-hidden" title="Custom Accent Color" />
-                  </div>
-                </div>
-              </div>
-            </div>
+                                <div className="space-y-6">
+                                  <CustomColorPicker
+                                    label="Base Chromatic"
+                                    value={primaryColor.hex}
+                                    onChange={(hex) => setPrimaryColor({ name: 'Custom', hex })}
+                                  />
+
+                                  <CustomColorPicker
+                                    label="Accent Chromatic"
+                                    value={accentColor.hex}
+                                    onChange={(hex) => setAccentColor({ name: 'Custom', hex })}
+                                  />
+                                </div>
+                              </div>
+                            </div>
 
             <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">

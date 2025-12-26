@@ -14,6 +14,7 @@ import {
 import domtoimage from 'dom-to-image-more';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const BOARD_TEXTURE = `radial-gradient(#d2a679 1px, transparent 1px), radial-gradient(#d2a679 1px, transparent 1px)`;
 
@@ -241,8 +242,9 @@ const ConspiracyBoardPage = () => {
         </AnimatePresence>
       </div>
 
-      <div className="ambient-text absolute bottom-6 right-6 font-mono text-sm text-[#5d4037] opacity-50 uppercase tracking-[0.5em] pointer-events-none transition-opacity duration-300">
-        Everything is connected
+      <div className="ambient-text absolute bottom-6 right-6 font-mono text-sm text-[#5d4037] opacity-50 uppercase tracking-[0.5em] pointer-events-none transition-opacity duration-300 flex flex-col items-end gap-2">
+        <BreadcrumbTitle title="Conspiracy Board" slug="cb" variant="brutalist" className="!text-[#5d4037]" />
+        <span>Everything is connected</span>
       </div>
     </div>
   );

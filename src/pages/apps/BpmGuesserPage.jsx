@@ -9,6 +9,7 @@ import {
 import useSeo from '../../hooks/useSeo';
 import { useAchievements } from '../../context/AchievementContext';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const BpmGuesserPage = () => {
   const appName = 'BPM Guesser';
@@ -110,9 +111,7 @@ const BpmGuesserPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                {appName}
-              </h1>
+              <BreadcrumbTitle title="BPM Guesser" slug="bpm" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Protocol for temporal extraction. Align your input with the
                 rhythmic sequence to determine the frequency.

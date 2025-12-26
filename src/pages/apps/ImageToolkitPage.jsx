@@ -15,6 +15,7 @@ import { canvasRGBA } from 'stackblur-canvas';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function Palette({ image }) {
   const [palette, setPalette] = useState(null);
@@ -436,12 +437,10 @@ function ImageToolkitPage() {
             <span>Applications</span>
           </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mt-8">
-            <div>
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
-                {appName}
-              </h1>
-              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Image Toolkit" slug="itk" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Tools for image manipulation, color extraction, and creative
                 filtering.
               </p>

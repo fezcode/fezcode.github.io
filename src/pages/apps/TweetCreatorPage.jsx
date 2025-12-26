@@ -359,11 +359,10 @@ const TweetCreatorPage = () => {
                   <span>Archive</span>
                 </Link>
 
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-                  <div className="space-y-4">
-                    <BreadcrumbTitle title="Tweet Creator" slug="tweet-creator" variant="brutalist" />
-                    <p className="text-xl text-pink-100 max-w-2xl font-light leading-relaxed drop-shadow-md">
-                      Precise canvas snapshot protocol. Every pixel is calculated for perfect alignment and technical fidelity.
+                          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+                            <div className="space-y-4">
+                              <BreadcrumbTitle title="Tweet Creator" slug="tweet" variant="brutalist" />
+                              <p className="text-xl text-pink-100 max-w-2xl font-light leading-relaxed drop-shadow-md">                      Precise canvas snapshot protocol. Every pixel is calculated for perfect alignment and technical fidelity.
                     </p>
                   </div>
                 </div>

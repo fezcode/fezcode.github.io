@@ -732,6 +732,10 @@ const AnimatedRoutes = ({
         />
         <Route path="/apps::ip" element={<Navigate to="/apps/ip" replace />} />
         <Route
+          path="/apps::vt"
+          element={<Navigate to="/apps/voyager-terminal" replace />}
+        />
+        <Route
           path="/apps::wc"
           element={<Navigate to="/apps/word-counter" replace />}
         />
@@ -756,8 +760,20 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/url-converter" replace />}
         />
         <Route
+          path="/apps::am"
+          element={<Navigate to="/apps/atmosphere-mixer" replace />}
+        />
+        <Route
+          path="/apps::as"
+          element={<Navigate to="/apps/asset-studio" replace />}
+        />
+        <Route
           path="/apps::ascii"
           element={<Navigate to="/apps/ascii-converter" replace />}
+        />
+        <Route
+          path="/apps::cipher"
+          element={<Navigate to="/apps/cipher-studio" replace />}
         />
         <Route
           path="/apps::hash"
@@ -780,6 +796,10 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/fantasy-name-generator" replace />}
         />
         <Route
+          path="/apps::ec"
+          element={<Navigate to="/apps/echo-chamber" replace />}
+        />
+        <Route
           path="/apps::dice"
           element={<Navigate to="/apps/dice-roller" replace />}
         />
@@ -788,12 +808,20 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/picker-wheel" replace />}
         />
         <Route
+          path="/apps::cb"
+          element={<Navigate to="/apps/conspiracy-board" replace />}
+        />
+        <Route
           path="/apps::cg"
           element={<Navigate to="/apps/codename-generator" replace />}
         />
         <Route
           path="/apps::itk"
           element={<Navigate to="/apps/image-toolkit" replace />}
+        />
+        <Route
+          path="/apps::pi"
+          element={<Navigate to="/apps/paper-ink" replace />}
         />
         <Route
           path="/apps::pg"
@@ -812,8 +840,16 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/qr-code-generator" replace />}
         />
         <Route
+          path="/apps::la"
+          element={<Navigate to="/apps/logic-architect" replace />}
+        />
+        <Route
           path="/apps::jpc"
           element={<Navigate to="/apps/json-piml-converter" replace />}
+        />
+        <Route
+          path="/apps::js"
+          element={<Navigate to="/apps/js-masterclass" replace />}
         />
         <Route
           path="/apps::jg"
@@ -856,12 +892,24 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/rock-paper-scissors" replace />}
         />
         <Route
+          path="/apps::tg"
+          element={<Navigate to="/apps/task-grid" replace />}
+        />
+        <Route
           path="/apps::ttt"
           element={<Navigate to="/apps/tic-tac-toe" replace />}
         />
         <Route
           path="/apps::c4"
           element={<Navigate to="/apps/connect-four" replace />}
+        />
+        <Route
+          path="/apps::syn"
+          element={<Navigate to="/apps/synergy-flow" replace />}
+        />
+        <Route
+          path="/apps::sf"
+          element={<Navigate to="/apps/symbol-flow" replace />}
         />
         <Route
           path="/apps::sw"
@@ -1730,8 +1778,8 @@ const AnimatedRoutes = ({
           element={
             <motion.div
               initial="initial"
-              animate="animate"
-              exit="exit"
+              animate="in"
+              exit="out"
               variants={pageVariants}
               transition={pageTransition}
             >

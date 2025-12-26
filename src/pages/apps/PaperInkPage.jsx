@@ -8,6 +8,7 @@ import {
   PaletteIcon
 } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const PaperInkPage = () => {
   useSeo({
@@ -136,11 +137,14 @@ const PaperInkPage = () => {
       />
 
       {/* UI Controls */}
-      <div className="absolute top-6 left-6 flex gap-4 pointer-events-auto">
-        <Link to="/apps" className="bg-[#1a1a1a] text-[#f4f1ea] px-6 py-3 font-mono border border-black shadow-lg hover:-translate-y-1 transition-transform flex items-center gap-2">
-            <ArrowLeftIcon weight="bold" />
-            <span>CLEANSE MIND</span>
+      <div className="absolute top-6 left-6 z-50 flex items-center gap-4">
+        <Link to="/apps" className="bg-white text-black px-6 py-3 font-mono border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center gap-2">
+          <ArrowLeftIcon weight="bold" />
+          <span>EXIT</span>
         </Link>
+        <div className="bg-black px-4 py-2 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
+          <BreadcrumbTitle title="Paper & Ink" slug="pi" variant="brutalist" className="!text-black" />
+        </div>
       </div>
 
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-6 items-center bg-white/50 backdrop-blur-md p-4 rounded-full border border-black/5 shadow-2xl pointer-events-auto">
@@ -175,7 +179,7 @@ const PaperInkPage = () => {
       </div>
 
       {/* Visual Indicator of current brush */}
-      <div className="absolute bottom-24 left-1/2 -translate-x-1/2 flex items-center gap-2 text-black/20 font-mono text-[10px] uppercase tracking-[0.3em]">
+      <div className="absolute bottom-32 left-1/2 -translate-x-1/2 flex items-center gap-2 text-black/20 font-mono text-[10px] uppercase tracking-[0.3em]">
           <PaintBrushIcon size={14} />
           <span>Flow State Active</span>
           <PaletteIcon size={14} />

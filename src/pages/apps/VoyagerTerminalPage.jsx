@@ -10,6 +10,7 @@ import {
   InfoIcon
 } from '@phosphor-icons/react';import useSeo from '../../hooks/useSeo';
 import CustomSlider from '../../components/CustomSlider';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const THEMES = {
     default: { color: '#0a1a0a', secondary: '#050505', glow: '#00ff00', horizon: 'linear-gradient(to top, #050505, #0a1a0a)' },
@@ -239,7 +240,7 @@ const VoyagerTerminalPage = () => {
         <div className="flex-1 p-8 border-r-4 border-[#333]">
             <div className="mb-6 flex justify-between items-end">
                 <div>
-                    <h1 className="text-2xl font-bold tracking-tighter text-[#00ff00]">VOYAGER_TERML_V1</h1>
+                    <BreadcrumbTitle title="VOYAGER_TERML_V1" slug="vt" variant="brutalist" className="!text-[#00ff00]" />
                     <p className="text-[10px] text-gray-500 uppercase tracking-widest">Deep Space Intercept Module</p>
                 </div>
                 <div className={`w-4 h-4 rounded-full ${isPowerOn ? 'bg-red-600 shadow-[0_0_10px_red] animate-pulse' : 'bg-gray-800'}`} />

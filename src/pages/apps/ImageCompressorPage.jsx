@@ -11,6 +11,7 @@ import {
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
@@ -130,13 +131,15 @@ const ImageCompressorPage = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl">
-            Image Compressor
-          </h1>
-          <p className="mt-4 text-gray-400 font-mono text-sm max-w-xl">
-            Client-side visual data optimization. Reduce array size while
-            maintaining perceptual integrity.
-          </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle title="Image Compressor" slug="imc" variant="brutalist" />
+              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                Bit density protocol. Optimize and compress digital media to
+                minimize data footprint.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 

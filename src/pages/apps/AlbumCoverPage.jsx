@@ -401,7 +401,7 @@ const AlbumCoverPage = () => {
           </Link>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Album Constructor" slug="album-constructor" variant="brutalist" />
+              <BreadcrumbTitle title="Album Constructor" slug="album" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Synthesis protocol. Merging aesthetics from across the Fezcodex ecosystem into a unified square-format master.
               </p>

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, BugIcon, ArrowsClockwiseIcon, TargetIcon } from '@phosphor-icons/react';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
+import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const HOLE_COUNT = 9;
 const GAME_DURATION = 30;
@@ -107,9 +108,7 @@ const WhackABugPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
-                {appName}
-              </h1>
+              <BreadcrumbTitle title="Debugger" slug="wab" variant="brutalist" />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 System remediation protocol. Identify and neutralize structural anomalies within the neural grid before system stability is compromised.
               </p>
