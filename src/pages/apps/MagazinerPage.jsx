@@ -722,21 +722,21 @@ const MagazinerPage = () => {
                   </button>
                   {bgImage && <button onClick={() => setBgImage(null)} className="w-full text-[9px] font-mono text-red-500 uppercase text-center">Clear Image</button>}
                 </div>
-                                <div className="space-y-6">
-                                  <CustomColorPicker
-                                    label="Base Chromatic"
-                                    value={primaryColor.hex}
-                                    onChange={(hex) => setPrimaryColor({ name: 'Custom', hex })}
-                                  />
+                    <div className="space-y-6">
+                      <CustomColorPicker
+                        label="Base Chromatic"
+                        value={primaryColor.hex}
+                        onChange={(hex) => setPrimaryColor({ name: 'Custom', hex })}
+                      />
 
-                                  <CustomColorPicker
-                                    label="Accent Chromatic"
-                                    value={accentColor.hex}
-                                    onChange={(hex) => setAccentColor({ name: 'Custom', hex })}
-                                  />
-                                </div>
-                              </div>
-                            </div>
+                      <CustomColorPicker
+                        label="Accent Chromatic"
+                        value={accentColor.hex}
+                        onChange={(hex) => setAccentColor({ name: 'Custom', hex })}
+                      />
+                    </div>
+              </div>
+            </div>
 
             <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
@@ -792,6 +792,7 @@ const MagazinerPage = () => {
                           label="Width"
                           min={0.1}
                           max={100}
+                          step={0.1}
                           value={asset.width}
                           onChange={(val) => updateAsset(asset.id, 'width', val)}
                         />
@@ -799,6 +800,7 @@ const MagazinerPage = () => {
                           label="Height / Thickness"
                           min={0.1}
                           max={100}
+                          step={0.1}
                           value={asset.height}
                           onChange={(val) => updateAsset(asset.id, 'height', val)}
                         />
