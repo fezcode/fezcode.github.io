@@ -36,6 +36,10 @@
         (label) Glossary
         (to) /vocab
         (icon) BookBookmarkIcon
+      > (item)
+        (label) The Vague
+        (to) /the-vague
+        (icon) FilePdfIcon
 
   > (section)
     (id) isAppsOpen
