@@ -181,6 +181,50 @@
         "created_at": "2025-12-02T00:00:00+03:00"
       },
       {
+        "slug": "echo-chamber",
+        "to": "/apps/echo-chamber",
+        "title": "The Echo Chamber",
+        "description": "A solitary social network where everyone agrees with you.",
+        "icon": "ChatCircleIcon",
+        "pinned_order": 27,
+        "created_at": "2025-12-25T16:00:00+03:00"
+      },
+      {
+        "slug": "voyager-terminal",
+        "to": "/apps/voyager-terminal",
+        "title": "Voyager Terminal",
+        "description": "Intercept deep space signals with this analog 1970s telemetry receiver.",
+        "icon": "BroadcastIcon",
+        "pinned_order": 30,
+        "created_at": "2025-12-25T18:00:00+03:00"
+      },
+      {
+        "slug": "paper-ink",
+        "to": "/apps/paper-ink",
+        "title": "Paper & Ink",
+        "description": "A meditative ink drawing experience on digital rice paper.",
+        "icon": "PaintBrushIcon",
+        "created_at": "2025-12-25T17:30:00+03:00"
+      },
+      {
+        "slug": "conspiracy-board",
+        "to": "/apps/conspiracy-board",
+        "title": "The Conspiracy Board",
+        "description": "Connect the dots and find the truth on this digital corkboard.",
+        "icon": "PushPinIcon",
+        "created_at": "2025-12-25T17:00:00+03:00"
+      },
+      {
+        "slug": "synergy-flow",
+        "to": "/apps/synergy-flow",
+        "title": "Synergy Flow",
+        "description": "Generate meaningless corporate buzzwords and joyful corporate art.",
+        "icon": "BriefcaseIcon",
+        "pinned_order": 26,
+        "created_at": "2025-12-25T15:00:00+03:00"
+      },
+
+      {
         "slug": "cozy-corner",
         "to": "/apps/cozy-corner",
         "title": "Cozy Corner",
@@ -347,6 +391,41 @@
     "order": 3,
     "apps": [
       {
+        "slug": "asset-constructor",
+        "to": "/apps/asset-constructor",
+        "title": "Asset Constructor",
+        "description": "Construct high-fidelity digital assets, containers and UI components with advanced glassmorphism.",
+        "icon": "SquaresFourIcon",
+        "created_at": "2025-12-25T18:00:00+03:00"
+      },
+      {
+        "slug": "album-constructor",
+        "to": "/apps/album-constructor",
+        "title": "Album Constructor",
+        "description": "The ultimate synthesis protocol for high-fidelity album art generation.",
+        "icon": "MusicNoteIcon",
+        "created_at": "2025-12-25T17:00:00+03:00",
+        "pinned_order": 28
+      },
+      {
+        "slug": "tweet-creator",
+        "to": "/apps/tweet-creator",
+        "title": "Tweet Creator",
+        "description": "Construct high-fidelity tweet snapshots with Echo Chamber aesthetics.",
+        "icon": "TwitterLogoIcon",
+        "created_at": "2025-12-25T16:00:00+03:00",
+        "pinned_order": 27
+      },
+      {
+        "slug": "magaziner",
+        "to": "/apps/magaziner",
+        "title": "Magaziner",
+        "description": "Premium magazine cover generator with brutalist and elite minimal aesthetics.",
+        "icon": "NewspaperIcon",
+        "created_at": "2025-12-25T15:00:00+03:00",
+        "pinned_order": 26
+      },
+      {
         "slug": "og-image-generator",
         "to": "/apps/og-image-generator",
         "title": "OG Image Generator",
@@ -362,6 +441,14 @@
         "icon": "MonitorIcon",
         "created_at": "2025-12-24T12:00:00+03:00",
         "pinned_order": 25
+      },
+      {
+        "slug": "fantasy-map-generator",
+        "to": "/apps/fantasy-map-generator",
+        "title": "Fantasy Map Generator",
+        "description": "Generate Middle-earth style fantasy maps with mountains, rivers, and castles.",
+        "icon": "MapTrifoldIcon",
+        "created_at": "2025-12-25T14:00:00+03:00"
       },
       {
         "slug": "fractal-flora",
@@ -654,6 +741,22 @@
         "icon": "AppWindowIcon",
         "created_at": "2025-12-20T16:00:00+03:00",
         "pinned_order": 22
+      }
+    ]
+  },
+  "Education": {
+    "name": "Education",
+    "description": "Learn new skills and expand your knowledge.",
+    "icon": "GraduationCapIcon",
+    "order": 6,
+    "apps": [
+      {
+        "slug": "js-masterclass",
+        "to": "/apps/js-masterclass",
+        "title": "JS Masterclass",
+        "description": "The ultimate Zero to Hero JavaScript and Node.js course.",
+        "icon": "CodeIcon",
+        "created_at": "2025-12-25T12:00:00+03:00"
       }
     ]
   }
