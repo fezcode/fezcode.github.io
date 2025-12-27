@@ -637,6 +637,14 @@
         "description": "Convert between px, em, rem, vw, vh, and % units.",
         "icon": "RulerIcon",
         "created_at": "2025-11-07T19:47:38+03:00"
+      },
+      {
+        "slug": "fezglyph",
+        "to": "/apps/fezglyph",
+        "title": "FezGlyph",
+        "description": "Transform text into the cryptic Fezcodex symbolic cipher.",
+        "icon": "PenNibIcon",
+        "created_at": "2025-12-28T12:00:00+03:00"
       }
     ]
   },

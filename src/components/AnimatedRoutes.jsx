@@ -156,6 +156,7 @@ const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
+const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
 const AssetConstructorPage = lazy(() => import('../pages/apps/AssetConstructorPage'));
 const CodeblockCreatorPage = lazy(() => import('../pages/apps/CodeblockCreatorPage'));
 const AlbumCoverPage = lazy(() => import('../pages/apps/AlbumCoverPage'));
@@ -1073,6 +1074,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::we"
           element={<Navigate to="/apps/wallpaper-engine" replace />}
+        />
+        <Route
+          path="/apps::fg"
+          element={<Navigate to="/apps/fezglyph" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
@@ -2244,6 +2249,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <JsMasterclassPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/fezglyph"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <FezGlyphPage />
               </Suspense>
             </motion.div>
           }
