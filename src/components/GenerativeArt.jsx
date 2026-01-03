@@ -273,15 +273,20 @@ const GenerativeArt = ({
         }}
       />
 
-      <div className="absolute bottom-4 right-4 flex gap-2">
+      <div className="absolute bottom-4 right-4 flex gap-2 items-center">
         {onRegenerate && (
-          <button
-            onClick={onRegenerate}
-            className="p-3 bg-white/10 hover:bg-emerald-500 text-white hover:text-black transition-all border border-white/10 rounded-sm group/regen backdrop-blur-md"
-            title="Regenerate Art"
-          >
-            <ArrowsClockwiseIcon size={20} weight="bold" className="group-hover/regen:rotate-180 transition-transform duration-500" />
-          </button>
+          <>
+            <div className="px-3 py-3 bg-white/10 text-white/50 border border-white/10 rounded-sm font-mono text-xs backdrop-blur-md select-all">
+              {seed}
+            </div>
+            <button
+              onClick={onRegenerate}
+              className="p-3 bg-white/10 hover:bg-emerald-500 text-white hover:text-black transition-all border border-white/10 rounded-sm group/regen backdrop-blur-md"
+              title="Regenerate Art"
+            >
+              <ArrowsClockwiseIcon size={20} weight="bold" className="group-hover/regen:rotate-180 transition-transform duration-500" />
+            </button>
+          </>
         )}
         {showDownload && (
           <button

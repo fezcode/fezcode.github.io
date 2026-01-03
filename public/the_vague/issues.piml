@@ -2,13 +2,15 @@
   > (issue)
     (id) issue_001
     (title) Issue #001: The Beginning
-    (filename) Issue001.pdf
+    (thumbnail) Issue001.png
+    (link) https://github.com/fezcode/fcdx.cdn/releases/download/Issue001-002/Issue001.pdf
     (description) The very first issue of The Vague. A collection of thoughts and whispers.
     (date) 2025-12-26
 
   > (issue)
     (id) issue_002
     (title) Issue #002: The Line
-    (filename) Issue002.pdf
-    (description) The very second issue of The Vague. A collection of thoughts and whispers.
+    (thumbnail) Issue002.png
+    (link) https://github.com/fezcode/fcdx.cdn/releases/download/Issue001-002/Issue002.pdf
+    (description) The second issue of The Vague. Down by Lupe Fiasco, Spec Ops: The Line and Egyptian Mythology.
     (date) 2026-01-03

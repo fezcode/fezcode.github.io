@@ -136,7 +136,7 @@ const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
-const ModelViewerPage = lazy(() => import('../pages/apps/ModelViewerPage'));
+
 const AbstractWavesPage = lazy(() => import('../pages/apps/AbstractWavesPage'));
 const TopographicMapPage = lazy(
   () => import('../pages/apps/TopographicMapPage'),
@@ -1986,22 +1986,7 @@ const AnimatedRoutes = ({
             </motion.div>
           }
         />
-        <Route
-          path="/apps/model-viewer"
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <ModelViewerPage />
-              </Suspense>
-            </motion.div>
-          }
-        />
+
         <Route
           path="/apps/sprite-editor"
           element={

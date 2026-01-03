@@ -37,7 +37,11 @@ const BrutalistModal = ({
           >
             {/* Left/Top side: Large Art */}
             <div className="relative w-full md:w-1/2 h-64 md:h-auto border-b md:border-b-0 md:border-r border-white/20">
-              <GenerativeArt seed={"2"+title+"[]"} className="w-full h-full" />
+              {item.image ? (
+                 <img src={item.image} alt={title} className="w-full h-full object-cover transition-all duration-700" />
+              ) : (
+                 <GenerativeArt seed={"2"+title+"[]"} className="w-full h-full" />
+              )}
               <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-[#050505] to-transparent opacity-60" />
             </div>
 
@@ -85,7 +89,7 @@ const BrutalistModal = ({
                     rel="noopener noreferrer"
                     className="group inline-flex items-center gap-4 bg-white text-black px-8 py-5 font-mono font-black text-xs uppercase tracking-[0.4em] hover:bg-emerald-400 transition-all w-full md:w-auto"
                   >
-                    <span>Visit</span>
+                    <span>{item.actionLabel || "Visit"}</span>
                     <ArrowSquareOutIcon weight="bold" size={20} />
                   </a>
                 </div>
