@@ -2,22 +2,11 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import useSearchableData from '../hooks/useSearchableData';
-import { useAnimation } from '../context/AnimationContext';
-import { useToast } from '../hooks/useToast';
-import { useVisualSettings } from '../context/VisualSettingsContext';
 import { useAchievements } from '../context/AchievementContext';
-import {
-  KEY_SIDEBAR_STATE,
-  remove as removeLocalStorageItem,
-} from '../utils/LocalStorageManager';
-import { version } from '../version'; // Import the version
-import LiveClock from './LiveClock'; // Import LiveClock
-import GenerativeArt from './GenerativeArt'; // Import GenerativeArt
-import TextTransformer from './TextTransformer'; // Import TextTransformer
-import Stopwatch from './Stopwatch'; // Import Stopwatch
-import { filterItems } from '../utils/search';
 import { TerminalWindowIcon } from '@phosphor-icons/react';
-import { useCommandPalette } from '../context/CommandPaletteContext'; // Import the search utility
+import { useCommandPalette } from '../context/CommandPaletteContext';
+import { filterItems } from '../utils/search';
+import { useCommandRegistry } from '../hooks/useCommandRegistry';
 
 const categoryColorMap = {
   page: 'bg-red-400',
@@ -34,23 +23,6 @@ const getCategoryColorClass = (type) => {
   return categoryColorMap[type] || 'bg-gray-500'; // Default gray for unmapped types
 };
 
-const GenerativeArtCommand = () => {
-  const [seed, setSeed] = useState(() => Math.random().toString(36).substring(7));
-
-  const handleRegenerate = () => {
-    setSeed(Math.random().toString(36).substring(7));
-  };
-
-  return (
-    <GenerativeArt
-      seed={seed}
-      showDownload={true}
-      downloadResolution={3840} // 4K Resolution
-      onRegenerate={handleRegenerate}
-    />
-  );
-};
-
 const CommandPalette = ({
   isOpen,
   setIsOpen,
@@ -64,49 +36,16 @@ const CommandPalette = ({
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const resultsRef = useRef(null);
-  const { isAnimationEnabled, toggleAnimation } = useAnimation();
-  const { addToast } = useToast();
-  const {
-    isInverted,
-    toggleInvert,
-    isRetro,
-    toggleRetro,
-    isParty,
-    toggleParty,
-    isMirror,
-    toggleMirror,
-    isNoir,
-    toggleNoir,
-    isTerminal,
-    toggleTerminal,
-    isBlueprint,
-    toggleBlueprint,
-    isSepia,
-    toggleSepia,
-    isVaporwave,
-    toggleVaporwave,
-    isCyberpunk,
-    toggleCyberpunk,
-    isGameboy,
-    toggleGameboy,
-    isComic,
-    toggleComic,
-    isSketchbook,
-    toggleSketchbook,
-    isHellenic,
-    toggleHellenic,
-    isGlitch,
-    toggleGlitch,
-    toggleRain,
-    isGarden,
-    toggleGarden,
-    isAutumn,
-    toggleAutumn,
-    isRain,
-  } = useVisualSettings();
 
   const { unlockAchievement } = useAchievements();
   const { setTriggerCommand } = useCommandPalette();
+
+  const { executeCommand } = useCommandRegistry({
+    openGenericModal,
+    toggleDigitalRain,
+    toggleBSOD,
+    items,
+  });
 
   const filteredItems = filterItems(items, searchTerm);
 
@@ -134,7 +73,7 @@ const CommandPalette = ({
     setSelectedIndex(0);
   }, [searchTerm, items]);
 
-  const handleClose = React.useCallback(() => {
+  const handleClose = useCallback(() => {
     setIsOpen(false);
     setSearchTerm('');
   }, [setIsOpen]);
@@ -144,544 +83,22 @@ const CommandPalette = ({
     toggleBSOD();
   }, [unlockAchievement, toggleBSOD]);
 
-  const handleCommand = useCallback(
-    (commandId) => {
-      switch (commandId) {
-        case 'toggleAnimations':
-          toggleAnimation();
-          addToast({
-            title: 'Settings Updated',
-            message: `Animations have been ${!isAnimationEnabled ? 'enabled' : 'disabled'}.`,
-          });
-          break;
-        case 'resetSidebarState':
-          removeLocalStorageItem(KEY_SIDEBAR_STATE);
-          addToast({
-            title: 'Success',
-            message: 'Sidebar state has been reset. The page will now reload.',
-            duration: 3000,
-          });
-          setTimeout(() => {
-            window.location.reload();
-          }, 3000);
-          break;
-        case 'viewSource':
-          window.open(
-            'https://github.com/fezcode/fezcode.github.io',
-            '_blank',
-            'noopener,noreferrer',
-          );
-          break;
-        case 'randomPost': {
-          const posts = items.filter((i) => i.type === 'post');
-          if (posts.length > 0) {
-            const randomPost = posts[Math.floor(Math.random() * posts.length)];
-            navigate(randomPost.path);
-          }
-          break;
-        }
-        case 'sendEmailFezcode':
-          window.open(
-            'mailto:samil.bulbul@gmail.com',
-            '_blank',
-            'noopener,noreferrer',
-          );
-          break;
-        case 'openGitHub':
-          window.open(
-            'https://github.com/fezcode',
-            '_blank',
-            'noopener,noreferrer',
-          );
-          break;
-        case 'openTwitter':
-          window.open(
-            'https://x.com/fezcoddy',
-            '_blank',
-            'noopener,noreferrer',
-          );
-          break;
-        case 'openLinkedIn':
-          window.open(
-            'https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US',
-            '_blank',
-            'noopener,noreferrer',
-          );
-          break;
-        case 'scrollToTop':
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-          break;
-        case 'scrollToBottom':
-          window.scrollTo({
-            top: document.documentElement.scrollHeight,
-            behavior: 'smooth',
-          });
-          break;
-        case 'showSiteStats': {
-          const postCount = items.filter((i) => i.type === 'post').length;
-          const projectCount = items.filter((i) => i.type === 'project').length;
-          const logCount = items.filter((i) => i.type === 'log').length;
-          const appCount = items.filter((i) => i.type === 'app').length;
-          openGenericModal(
-            'Site Statistics',
-            <div>
-              <p>
-                <strong>Posts:</strong> {postCount}
-              </p>
-              <p>
-                <strong>Projects:</strong> {projectCount}
-              </p>
-              <p>
-                <strong>Logs:</strong> {logCount}
-              </p>
-              <p>
-                <strong>Apps:</strong> {appCount}
-              </p>
-            </div>,
-          );
-          break;
-        }
-        case 'showVersion':
-          unlockAchievement('leave_no_stone_unturned');
-          openGenericModal(
-            'Application Version',
-            <p>
-              Version: <strong>v{version}</strong>
-            </p>,
-          );
-          break;
-        case 'latestPost': {
-          const posts = items.filter((i) => i.type === 'post');
-          if (posts.length > 0) {
-            posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-            navigate(posts[0].path);
-          }
-          break;
-        }
-        case 'latestLog': {
-          const logs = items.filter((i) => i.type === 'log');
-          if (logs.length > 0) {
-            logs.sort((a, b) => new Date(b.date) - new Date(a.date));
-            navigate(logs[0].path);
-          }
-          break;
-        }
-        case 'herDaim':
-          unlockAchievement('her_daim');
-          openGenericModal(
-            'Her Daim',
-            <img
-              src="/images/herdaim.jpg"
-              alt="Her Daim"
-              className="max-w-full h-auto"
-            />,
-          );
-          break;
-        case 'doBarrelRoll':
-          unlockAchievement('do_a_barrel_roll');
-          document.body.classList.add('do-a-barrel-roll');
-          addToast({
-            title: 'Wheeeee!',
-            message: 'Do a Barrel Roll!',
-            duration: 1000,
-          });
-          setTimeout(() => {
-            document.body.classList.remove('do-a-barrel-roll');
-          }, 1000);
-          break;
-        case 'toggleInvertColors':
-          toggleInvert();
-          addToast({
-            title: !isInverted ? 'Colors Inverted' : 'Colors Restored',
-            message: !isInverted
-              ? 'Welcome to the upside down!'
-              : 'Back to normal!',
-            duration: 2000,
-          });
-          break;
-        case 'partyMode':
-          toggleParty();
-          addToast({
-            title: !isParty ? "Let's Party!" : 'Party Over',
-            message: !isParty
-              ? 'Boots and cats and boots and cats!'
-              : "Party's over...",
-            duration: 2000,
-          });
-          break;
-        case 'toggleRetroMode':
-          toggleRetro();
-          addToast({
-            title: !isRetro ? 'Retro Mode On' : 'Retro Mode Off',
-            message: !isRetro ? '80s Vibes Initiated.' : 'Back to the future!',
-            duration: 2000,
-          });
-          break;
-        case 'toggleMirrorMode':
-          toggleMirror();
-          addToast({
-            title: !isMirror ? 'Mirror Mode On' : 'Mirror Mode Off',
-            message: !isMirror
-              ? 'Through the looking glass...'
-              : 'Reflections normalized.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleNoirMode':
-          toggleNoir();
-          addToast({
-            title: !isNoir ? 'Noir Mode On' : 'Noir Mode Off',
-            message: !isNoir
-              ? 'It was a dark and stormy night...'
-              : 'Color returns to the world.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleTerminalMode':
-          toggleTerminal();
-          addToast({
-            title: !isTerminal ? 'Terminal Mode On' : 'Terminal Mode Off',
-            message: !isTerminal ? 'System Online.' : 'System Offline.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleBlueprintMode':
-          toggleBlueprint();
-          addToast({
-            title: !isBlueprint ? 'Blueprint Mode On' : 'Blueprint Mode Off',
-            message: !isBlueprint
-              ? 'Entering Construction Mode.'
-              : 'Blueprint Stored.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleSepiaMode':
-          toggleSepia();
-          addToast({
-            title: !isSepia ? 'Sepia Mode On' : 'Sepia Mode Off',
-            message: !isSepia
-              ? 'Time travel initiated.'
-              : 'Back to the present.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleVaporwaveMode':
-          toggleVaporwave();
-          addToast({
-            title: !isVaporwave ? 'Vaporwave Mode On' : 'Vaporwave Mode Off',
-            message: !isVaporwave
-              ? 'A E S T H E T I C S.'
-              : 'Reality restored.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleCyberpunkMode':
-          toggleCyberpunk();
-          addToast({
-            title: !isCyberpunk ? 'Cyberpunk Mode On' : 'Cyberpunk Mode Off',
-            message: !isCyberpunk ? 'Wake up, Samurai.' : 'System normal.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleGameboyMode':
-          toggleGameboy();
-          addToast({
-            title: !isGameboy ? 'Game Boy Mode On' : 'Game Boy Mode Off',
-            message: !isGameboy ? 'Press Start to play.' : 'Game Over.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleComicMode':
-          toggleComic();
-          addToast({
-            title: !isComic ? 'Comic Mode On' : 'Comic Mode Off',
-            message: !isComic ? 'BAM! POW! ZAP!' : 'Story arc ended.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleSketchbookMode':
-          toggleSketchbook();
-          addToast({
-            title: !isSketchbook ? 'Sketchbook Mode On' : 'Sketchbook Mode Off',
-            message: !isSketchbook ? 'Pencil sharpened.' : 'Notebook closed.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleHellenicMode':
-          toggleHellenic();
-          addToast({
-            title: !isHellenic ? 'Hellenic Mode On' : 'Hellenic Mode Off',
-            message: !isHellenic ? 'Welcome to Olympus.' : 'Leaving the Agora.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleGlitchMode':
-          toggleGlitch();
-          addToast({
-            title: !isGlitch ? 'Glitch Mode On' : 'Glitch Mode Off',
-            message: !isGlitch
-              ? 'System corruption detected.'
-              : 'Signal stabilized.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleGardenMode':
-          toggleGarden();
-          addToast({
-            title: !isGarden ? 'Garden Mode On' : 'Garden Mode Off',
-            message: !isGarden
-              ? 'Bloom where you are planted.'
-              : 'Winter is coming.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleAutumnMode':
-          toggleAutumn();
-          addToast({
-            title: !isAutumn ? 'Autumn Mode On' : 'Autumn Mode Off',
-            message: !isAutumn
-              ? 'The leaves are falling.'
-              : 'Spring has sprung.',
-            duration: 2000,
-          });
-          break;
-        case 'toggleRainMode':
-          toggleRain();
-          addToast({
-            title: !isRain ? 'Rain Mode On' : 'Rain Mode Off',
-            message: !isRain
-              ? "It's raining, it's pouring."
-              : 'The sun is out.',
-            duration: 2000,
-          });
-          break;
-        case 'showTime': {
-          unlockAchievement('time_teller');
-          openGenericModal('Current Time', <LiveClock />);
-          break;
-        }
-        case 'digitalRain':
-          toggleDigitalRain();
-          break;
-        case 'generateArt':
-          openGenericModal(
-            'Generative Art',
-            <GenerativeArtCommand />,
-          );
-          break;
-        case 'leetTransformer':
-          openGenericModal('Leet Speak Transformer', <TextTransformer />);
-          break;
-        case 'stopwatch':
-          openGenericModal('Stopwatch', <Stopwatch />);
-          break;
-        case 'showOSInfo': {
-          const osInfo = (
-            <div>
-              <p>
-                <strong>User Agent:</strong> {navigator.userAgent}
-              </p>
-              <br />
-              <p>
-                <strong>Platform:</strong> {navigator.platform}
-              </p>
-              <br />
-              <p>
-                <strong>App Version:</strong> {navigator.appVersion}
-              </p>
-              <br />
-              <p>
-                <strong>Language:</strong> {navigator.language}
-              </p>
-              <br />
-              <p>
-                <strong>Online:</strong> {navigator.onLine ? 'Yes' : 'No'}
-              </p>
-            </div>
-          );
-          openGenericModal('User/Browser Information', osInfo);
-          break;
-        }
-        case 'copyCurrentURL':
-          navigator.clipboard.writeText(window.location.href);
-          addToast({
-            title: 'Copied',
-            message: 'Current URL copied to clipboard!',
-            duration: 3000,
-          });
-          break;
-        case 'clearLocalStorage':
-          localStorage.clear();
-          addToast({
-            title: 'Success',
-            message: 'Local storage cleared!',
-            duration: 3000,
-          });
-          break;
-        case 'reloadPage':
-          addToast({
-            title: 'Reloading',
-            message: 'Page will reload shortly...',
-            duration: 1500,
-          });
-          setTimeout(() => window.location.reload(), 1500);
-          break;
-        case 'randomApp': {
-          const apps = items.filter((i) => i.type === 'app');
-          if (apps.length > 0) {
-            const randomApp = apps[Math.floor(Math.random() * apps.length)];
-            addToast({
-              title: 'Random App',
-              message: `Navigating to ${randomApp.title}`,
-              duration: 2000,
-            });
-            navigate(randomApp.path);
-          } else {
-            addToast({
-              title: 'Random App',
-              message: 'No apps found to navigate to.',
-              duration: 2000,
-            });
-          }
-          break;
-        }
-        case 'toggleFullScreen':
-          if (!document.fullscreenElement) {
-            document.documentElement
-              .requestFullscreen()
-              .then(() => {
-                addToast({
-                  title: 'Full Screen',
-                  message: 'Entered full screen mode.',
-                  duration: 2000,
-                });
-              })
-              .catch((err) => {
-                addToast({
-                  title: 'Error',
-                  message: `Could not enter full screen: ${err.message}`,
-                  duration: 3000,
-                });
-              });
-          } else {
-            if (document.exitFullscreen) {
-              document
-                .exitFullscreen()
-                .then(() => {
-                  addToast({
-                    title: 'Full Screen',
-                    message: 'Exited full screen mode.',
-                    duration: 2000,
-                  });
-                })
-                .catch((err) => {
-                  addToast({
-                    title: 'Error',
-                    message: `Could not exit full screen: ${err.message}`,
-                    duration: 3000,
-                  });
-                });
-            }
-          }
-          break;
-        case 'openGitHubIssue': {
-          const issueTitle = encodeURIComponent(
-            `Issue on page: ${window.location.pathname}`,
-          );
-          const issueBody = encodeURIComponent(
-            `Found an issue on:\n${window.location.href}\n\n[Please describe the issue here]`,
-          );
-          const githubIssueUrl = `https://github.com/fezcode/fezcode.github.io/issues/new?title=${issueTitle}&body=${issueBody}`;
-          window.open(githubIssueUrl, '_blank', 'noopener,noreferrer');
-          addToast({
-            title: 'GitHub Issue',
-            message: 'Opening new GitHub issue tab!',
-            duration: 3000,
-          });
-          break;
-        }
-        case 'previousPage':
-          addToast({
-            title: 'Previous Page',
-            duration: 1500,
-          });
-          navigate(-1);
-          break;
-        case 'nextPage':
-          addToast({
-            title: 'Next Page',
-            duration: 1500,
-          });
-          navigate(1);
-          break;
-        default:
-          break;
-      }
-    },
-    [
-      addToast,
-      isAnimationEnabled,
-      isInverted,
-      isParty,
-      isRetro,
-      isMirror,
-      isNoir,
-      isTerminal,
-      isBlueprint,
-      isSepia,
-      isVaporwave,
-      isCyberpunk,
-      isGameboy,
-      isComic,
-      isSketchbook,
-      isHellenic,
-      isGlitch,
-      isGarden,
-      isAutumn,
-      isRain,
-      items,
-      navigate,
-      openGenericModal,
-      toggleAnimation,
-      toggleInvert,
-      toggleParty,
-      toggleRetro,
-      toggleMirror,
-      toggleNoir,
-      toggleTerminal,
-      toggleBlueprint,
-      toggleSepia,
-      toggleVaporwave,
-      toggleCyberpunk,
-      toggleGameboy,
-      toggleComic,
-      toggleSketchbook,
-      toggleHellenic,
-      toggleGlitch,
-      toggleGarden,
-      toggleAutumn,
-      toggleRain,
-      toggleDigitalRain,
-      unlockAchievement,
-    ],
-  );
-
   useEffect(() => {
-    setTriggerCommand(() => handleCommand);
-  }, [setTriggerCommand, handleCommand]);
+    setTriggerCommand(() => executeCommand);
+  }, [setTriggerCommand, executeCommand]);
 
-  const handleItemClick = React.useCallback(
+  const handleItemClick = useCallback(
     (item) => {
       if (!item) return;
 
       if (item.type === 'command') {
-        handleCommand(item.commandId);
+        executeCommand(item.commandId);
       } else {
         navigate(item.path);
       }
       handleClose();
     },
-    [handleCommand, navigate, handleClose],
+    [executeCommand, navigate, handleClose],
   );
 
   useEffect(() => {
