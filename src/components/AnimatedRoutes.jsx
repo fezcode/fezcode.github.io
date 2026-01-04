@@ -183,6 +183,7 @@ const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const KnowledgeGraphPage = lazy(() => import('../pages/KnowledgeGraphPage'));
 const TheVaguePage = lazy(() => import('../pages/TheVaguePage'));
 const PIMLLabPage = lazy(() => import('../pages/apps/PIMLLabPage'));
+const MetabolicHubPage = lazy(() => import('../pages/apps/IntermittentFastingTrackerPage'));
 const BrufezPage = lazy(() => import('../pages/BrufezPage'));
 const BrufezPanelsPage = lazy(() => import('../pages/BrufezPanelsPage'));
 const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
@@ -1104,6 +1105,26 @@ const AnimatedRoutes = ({
               </Suspense>
             </motion.div>
           }
+        />
+        <Route
+          path="/apps/metabolic-hub"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <MetabolicHubPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps::mhub"
+          element={<Navigate to="/apps/metabolic-hub" replace />}
         />
         <Route
           path="/apps/ip"

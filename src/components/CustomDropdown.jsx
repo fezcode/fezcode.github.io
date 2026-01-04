@@ -19,6 +19,7 @@ const CustomDropdown = ({
   const [dropdownMenuPosition, setDropdownMenuPosition] = useState({});
 
   const isBrutalist = variant === 'brutalist';
+  const isPaper = variant === 'paper';
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -70,7 +71,9 @@ const CustomDropdown = ({
         className={`${
           isBrutalist
             ? 'bg-[#050505] border border-white/10 rounded-sm'
-            : 'bg-gray-800 border border-gray-700 rounded-md shadow-lg'
+            : isPaper
+              ? 'bg-[#e9e4d0] border-[#1a1a1a] rounded-sm'
+              : 'bg-gray-800 border border-gray-700 rounded-md shadow-lg'
         } z-[1000] origin-top-left max-h-80 overflow-y-auto`}
         style={{
           position: 'absolute',
@@ -80,7 +83,7 @@ const CustomDropdown = ({
           width: 'max-content', // Allow content to determine width, but respect minWidth
         }}
       >
-        <div className={isBrutalist ? 'p-1' : 'py-1'}>
+        <div className={isBrutalist || isPaper ? 'p-1' : 'py-1'}>
           {options.map((option) => (
             <button
               key={option.value}
@@ -92,19 +95,25 @@ const CustomDropdown = ({
                         ? 'bg-white/10 text-emerald-400'
                         : 'text-gray-400 hover:bg-white/5 hover:text-white'
                     }`
-                  : `text-sm ${
-                      value === option.value
-                        ? 'bg-primary-500/10 text-primary-400'
-                        : 'text-gray-300 hover:bg-gray-700 hover:text-white'
-                    }`
+                  : isPaper
+                    ? `text-xs font-mono font-black uppercase tracking-widest ${
+                        value === option.value
+                          ? 'bg-[#1a1a1a] text-[#e9e4d0]'
+                          : 'text-[#1a1a1a]/60 hover:bg-[#1a1a1a]/5 hover:text-[#1a1a1a]'
+                      }`
+                    : `text-sm ${
+                        value === option.value
+                          ? 'bg-primary-500/10 text-primary-400'
+                          : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                      }`
               }`}
             >
               <span>{option.label}</span>
               {value === option.value && (
                 <Check
-                  size={isBrutalist ? 12 : 16}
+                  size={isBrutalist || isPaper ? 12 : 16}
                   className={
-                    isBrutalist ? 'text-emerald-400' : 'text-primary-400'
+                    isBrutalist ? 'text-emerald-400' : isPaper ? 'text-[#e9e4d0]' : 'text-primary-400'
                   }
                 />
               )}
@@ -125,20 +134,22 @@ const CustomDropdown = ({
         className={`flex items-center justify-between w-full gap-2 px-4 py-2 transition-all focus:outline-none ${
           isBrutalist
             ? 'bg-transparent border border-gray-800 rounded-sm text-xs font-mono uppercase tracking-widest text-gray-400 hover:border-gray-600 hover:text-white'
-            : 'bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-md text-sm font-medium text-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500'
+            : isPaper
+              ? 'bg-transparent border border-[#1a1a1a] rounded-sm text-xs font-mono font-black uppercase tracking-widest text-[#1a1a1a]/60 hover:bg-[#1a1a1a]/5 hover:text-[#1a1a1a]'
+              : 'bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-md text-sm font-medium text-gray-200 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-primary-500'
         }`}
       >
         <div className="flex items-center gap-2">
           {Icon && (
             <Icon
-              size={isBrutalist ? 16 : 20}
-              className={isBrutalist ? 'text-emerald-500' : 'text-gray-400'}
+              size={isBrutalist || isPaper ? 16 : 20}
+              className={isBrutalist ? 'text-emerald-500' : isPaper ? 'text-[#1a1a1a]' : 'text-gray-400'}
             />
           )}
           <span>{selectedOption ? selectedOption.label : label}</span>
         </div>
         <CaretDown
-          size={isBrutalist ? 12 : 16}
+          size={isBrutalist || isPaper ? 12 : 16}
           className={`ml-2 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>

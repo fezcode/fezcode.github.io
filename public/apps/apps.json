@@ -655,6 +655,14 @@
     "order": 5,
     "apps": [
       {
+        "slug": "metabolic-hub",
+        "to": "/apps/metabolic-hub",
+        "title": "Metabolic Hub (Fasting Tracker)",
+        "description": "Protocol for high-precision metabolic temporal management and nutritional tracking.",
+        "icon": "ForkKnifeIcon",
+        "created_at": "2026-01-04T12:00:00+03:00"
+      },
+      {
         "slug": "piml-lab",
         "to": "/apps/piml-lab",
         "title": "PIML Lab",
