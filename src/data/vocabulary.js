@@ -19,10 +19,6 @@ export const vocabulary = {
     title: 'Side Effects',
     loader: () => import('./vocab/side-effects'),
   },
-  'corporate-greed': {
-    title: 'Corporate Greed',
-    loader: () => import('./vocab/corporate-greed'),
-  },
   'poi-rating': {
     title: "Person of Interest's Rating",
     loader: () => import('./vocab/poi-rating'),
