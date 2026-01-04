@@ -17,14 +17,13 @@ import AdjustFastModal from '../../app/apps/fasting-tracker/components/AdjustFas
 import { useFastingData } from '../../app/apps/fasting-tracker/hooks/useFastingData';
 
 const IntermittentFastingTrackerPage = () => {
-  const appName = 'My Fasting Tracker';
+  const appName = 'The Fasting Ledger';
 
   useSeo({
     title: `${appName} | Fezcodex`,
     description: 'Track your fasting periods and daily meals with ease.',
     keywords: ['fasting', 'intermittent fasting', 'tracker', 'nutrition', 'health'],
   });
-
   const fastingData = useFastingData();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isMealLoggerOpen, setIsMealLoggerOpen] = useState(false);

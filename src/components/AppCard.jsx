@@ -40,11 +40,11 @@ const AppCard = ({ app }) => {
 
         {/* Content */}
         <div className="flex flex-col flex-grow p-5">
-          <h3 className="text-lg font-medium font-sans uppercase text-white mb-3 group-hover:text-emerald-400 transition-colors line-clamp-1 leading-tight tracking-tight">
+          <h3 className="text-lg font-ibm-plex-mono uppercase text-[#e0e1dd] mb-3 group-hover:text-emerald-400 transition-colors line-clamp-1 leading-tight tracking-tight">
             {title}
           </h3>
 
-          <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4 flex-grow font-sans">
+          <p className="text-xs text-gray-400 line-clamp-2 leading-relaxed mb-4 flex-grow font-outfit font-light">
             {description}
           </p>
 

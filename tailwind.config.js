@@ -30,6 +30,9 @@ module.exports = {
         mono: ['JetBrains Mono', 'monospace', ...defaultTheme.fontFamily.mono],
         arvo: fonts.arvo, // New custom font
         playfairDisplay: fonts.playfairDisplay, // New custom font
+        syne: fonts.syne, // Experimental Display Sans
+        outfit: fonts.outfit, // Geometric Sans
+        'ibm-plex-mono': fonts.ibmPlexMono, // Elegant Technical Mono
         inter: fonts.inter, // New custom font
       },
       colors: colors,
