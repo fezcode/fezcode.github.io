@@ -140,6 +140,15 @@
         "created_at": "2025-11-25T15:43:25+03:00"
       },
       {
+        "slug": "alchemy-lab",
+        "to": "/apps/alchemy-lab",
+        "title": "Alchemy Lab",
+        "description": "Combine elements and discover the secrets of the digital universe.",
+        "icon": "FlaskIcon",
+        "pinned_order": 2,
+        "created_at": "2026-01-04T17:00:00+03:00"
+      },
+      {
         "slug": "roguelike-game",
         "to": "/apps/roguelike-game",
         "title": "Roguelike Adventure",

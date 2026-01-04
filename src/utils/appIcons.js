@@ -80,6 +80,17 @@ import {
   MonitorIcon,
   WindIcon,
   TwitterLogoIcon,
+  FlaskIcon,
+  WavesIcon,
+  HeartIcon,
+  LightningIcon,
+  CloudRainIcon,
+  SunIcon,
+  MoonIcon,
+  TreeIcon,
+  PersonIcon,
+  HardDriveIcon,
+  PlusIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -164,4 +175,15 @@ export const appIcons = {
   MonitorIcon,
   WindIcon,
   TwitterLogoIcon,
+  FlaskIcon,
+  WavesIcon,
+  HeartIcon,
+  LightningIcon,
+  CloudRainIcon,
+  SunIcon,
+  MoonIcon,
+  TreeIcon,
+  PersonIcon,
+  HardDriveIcon,
+  PlusIcon,
 };
