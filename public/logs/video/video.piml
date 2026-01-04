@@ -1,6 +1,15 @@
 (logs)
   > (item)
     (category) Video
+    (date) 2026-01-04
+    (link) https://www.youtube.com/@DontTellComedy
+    (rating) 5
+    (slug) dont-tell-comedy
+    (title) Don't Tell Comedy
+    (description) The best of live stand-up comedy from unique locations across the world.
+
+  > (item)
+    (category) Video
     (date) 2025-12-26
     (link) https://www.youtube.com/watch?v=qhQDX21YCZ0
     (rating) 5
