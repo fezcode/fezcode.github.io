@@ -160,6 +160,7 @@ const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
 const AssetConstructorPage = lazy(() => import('../pages/apps/AssetConstructorPage'));
+const PatternGeneratorPage = lazy(() => import('../pages/apps/PatternGeneratorPage'));
 const CodeblockCreatorPage = lazy(() => import('../pages/apps/CodeblockCreatorPage'));
 const AlbumCoverPage = lazy(() => import('../pages/apps/AlbumCoverPage'));
 const TweetCreatorPage = lazy(() => import('../pages/apps/TweetCreatorPage'));
@@ -1083,13 +1084,29 @@ const AnimatedRoutes = ({
           element={<Navigate to="/apps/fezglyph" replace />}
         />
         <Route
-          path="/apps::3d"
-          element={<Navigate to="/apps/model-viewer" replace />}
+          path="/apps::pat"
+          element={<Navigate to="/apps/pattern-generator" replace />}
         />
         {/* End of hardcoded redirects */}
         <Route
           path="/apps::code"
           element={<Navigate to="/apps/codeblock-creator" replace />}
+        />
+        <Route
+          path="/apps/pattern-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <PatternGeneratorPage />
+              </Suspense>
+            </motion.div>
+          }
         />
         <Route
           path="/apps/codeblock-creator"

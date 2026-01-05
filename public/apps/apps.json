@@ -400,6 +400,14 @@
     "order": 3,
     "apps": [
       {
+        "slug": "pattern-generator",
+        "to": "/apps/pattern-generator",
+        "title": "Pattern Generator",
+        "description": "Generate seamless geometric vector patterns with 5-color palettes.",
+        "icon": "SquaresFourIcon",
+        "created_at": "2026-01-05T12:00:00+03:00"
+      },
+      {
         "slug": "asset-constructor",
         "to": "/apps/asset-constructor",
         "title": "Asset Constructor",
