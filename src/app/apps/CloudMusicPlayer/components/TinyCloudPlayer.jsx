@@ -3,7 +3,7 @@ import { useCloudMusic } from '../../../../context/CloudMusicContext';
 import { PlayIcon, PauseIcon, SkipForwardIcon, SkipBackIcon } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import GenerativeArt from '../../../../components/GenerativeArt';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const TinyCloudPlayer = () => {
   const {
@@ -18,6 +18,7 @@ const TinyCloudPlayer = () => {
     duration
   } = useCloudMusic();
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Disable on the main Aether app page to avoid redundancy, and on About pages
   if (location.pathname.startsWith('/apps/aether') || location.pathname.startsWith('/about')) return null;
@@ -52,7 +53,10 @@ const TinyCloudPlayer = () => {
                 </div>
 
                 {/* Cover Art / Icon - Square & Glitchy */}
-                <div className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0 border border-cyan-500/50 bg-black overflow-hidden">
+                <div
+                  className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0 border border-cyan-500/50 bg-black overflow-hidden cursor-pointer"
+                  onClick={() => {navigate('/apps/aether')}}
+                >
                     {currentTrack?.cover ? (
                         <img
                             src={currentTrack.cover}
@@ -67,15 +71,17 @@ const TinyCloudPlayer = () => {
                 </div>
 
                 {/* Track Info */}
-                <div className="flex-1 min-w-0 flex flex-col justify-center gap-0.5 md:gap-1">
-                    <h4 className="text-[10px] md:text-xs font-bold text-cyan-400 truncate uppercase tracking-widest">
-                        {currentTrack?.title || "NO SIGNAL"}
-                    </h4>
-                    <p className="text-[9px] md:text-[10px] text-cyan-700 truncate font-bold">
-                        {currentTrack?.artist || "UNKNOWN"}
-                    </p>
+                <div
+                  onClick={() => navigate('/apps/aether')}
+                  className="flex-1 min-w-0 flex flex-col justify-center gap-0.5 md:gap-1 cursor-pointer"
+                >
+                  <h4 className="text-[10px] md:text-xs font-bold text-cyan-400 truncate uppercase tracking-widest hover:underline">
+                      {currentTrack?.title || "NO SIGNAL"}
+                  </h4>
+                  <p className="text-[9px] md:text-[10px] text-cyan-700 truncate font-bold hover:underline">
+                      {currentTrack?.artist || "UNKNOWN"}
+                  </p>
                 </div>
-
                 {/* Controls - Mechanical Buttons */}
                 <div className="flex items-center gap-1">
                     <button
