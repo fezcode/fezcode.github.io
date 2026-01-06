@@ -24,79 +24,41 @@ const DndAuthorsPage = lazy(() => import('../pages/dnd/DndAuthorsPage'));
 const AppPage = lazy(() => import('../pages/AppPage'));
 const IpPage = lazy(() => import('../pages/apps/IpPage'));
 const WordCounterPage = lazy(() => import('../pages/apps/WordCounterPage'));
-const TournamentBracketPage = lazy(
-  () => import('../pages/apps/TournamentBracketPage'),
-);
-const MarkdownTableFormatterPage = lazy(
-  () => import('../pages/apps/MarkdownTableFormatterPage'),
-);
+const TournamentBracketPage = lazy(() => import('../pages/apps/TournamentBracketPage'));
+const MarkdownTableFormatterPage = lazy(() => import('../pages/apps/MarkdownTableFormatterPage'));
 const CaseConverterPage = lazy(() => import('../pages/apps/CaseConverterPage'));
-const Base64ConverterPage = lazy(
-  () => import('../pages/apps/Base64ConverterPage'),
-);
+const Base64ConverterPage = lazy(() => import('../pages/apps/Base64ConverterPage'));
 const UrlConverterPage = lazy(() => import('../pages/apps/UrlConverterPage'));
-const AsciiConverterPage = lazy(
-  () => import('../pages/apps/AsciiConverterPage'),
-);
+const AsciiConverterPage = lazy(() => import('../pages/apps/AsciiConverterPage'));
 const HashGeneratorPage = lazy(() => import('../pages/apps/HashGeneratorPage'));
 const UuidGeneratorPage = lazy(() => import('../pages/apps/UuidGeneratorPage'));
-const ColorPaletteGeneratorPage = lazy(
-  () => import('../pages/apps/ColorPaletteGeneratorPage'),
-);
-const CssUnitConverterPage = lazy(
-  () => import('../pages/apps/CssUnitConverterPage'),
-);
-const FantasyNameGeneratorPage = lazy(
-  () => import('../pages/apps/FantasyNameGeneratorPage'),
-);
+const ColorPaletteGeneratorPage = lazy(() => import('../pages/apps/ColorPaletteGeneratorPage'));
+const CssUnitConverterPage = lazy(() => import('../pages/apps/CssUnitConverterPage'));
+const FantasyNameGeneratorPage = lazy(() => import('../pages/apps/FantasyNameGeneratorPage'));
 const DiceRollerPage = lazy(() => import('../pages/apps/DiceRollerPage'));
 const PickerWheelPage = lazy(() => import('../pages/apps/PickerWheelPage'));
-const CodenameGeneratorPage = lazy(
-  () => import('../pages/apps/CodenameGeneratorPage'),
-);
+const CodenameGeneratorPage = lazy(() => import('../pages/apps/CodenameGeneratorPage'));
 const ImageToolkitPage = lazy(() => import('../pages/apps/ImageToolkitPage'));
-const PasswordGeneratorPage = lazy(
-  () => import('../pages/apps/PasswordGeneratorPage'),
-);
+const PasswordGeneratorPage = lazy(() => import('../pages/apps/PasswordGeneratorPage'));
 const JsonFormatterPage = lazy(() => import('../pages/apps/JsonFormatterPage'));
-const ColorContrastCheckerPage = lazy(
-  () => import('../pages/apps/ColorContrastCheckerPage'),
-);
-const QrCodeGeneratorPage = lazy(
-  () => import('../pages/apps/QrCodeGeneratorPage'),
-);
-const JsonPimlConverterPage = lazy(
-  () => import('../pages/apps/JsonPimlConverterPage'),
-);
-const TextDiffCheckerPage = lazy(
-  () => import('../pages/apps/TextDiffCheckerPage'),
-);
-const CronJobGeneratorPage = lazy(
-  () => import('../pages/apps/CronJobGeneratorPage'),
-);
-const ExcuseGeneratorPage = lazy(
-  () => import('../pages/apps/ExcuseGeneratorPage'),
-);
-const MagicEightBallPage = lazy(
-  () => import('../pages/apps/MagicEightBallPage'),
-);
+const ColorContrastCheckerPage = lazy(() => import('../pages/apps/ColorContrastCheckerPage'));
+const QrCodeGeneratorPage = lazy(() => import('../pages/apps/QrCodeGeneratorPage'));
+const JsonPimlConverterPage = lazy(() => import('../pages/apps/JsonPimlConverterPage'));
+const TextDiffCheckerPage = lazy(() => import('../pages/apps/TextDiffCheckerPage'));
+const CronJobGeneratorPage = lazy(() => import('../pages/apps/CronJobGeneratorPage'));
+const ExcuseGeneratorPage = lazy(() => import('../pages/apps/ExcuseGeneratorPage'));
+const MagicEightBallPage = lazy(() => import('../pages/apps/MagicEightBallPage'));
 const JSONGeneratorPage = lazy(() => import('../pages/apps/JSONGeneratorPage'));
 const CardGamePage = lazy(() => import('../pages/apps/CardGamePage'));
 const SoccerPongPage = lazy(() => import('../pages/apps/SoccerPongPage'));
 const MemoryGamePage = lazy(() => import('../pages/apps/MemoryGamePage'));
-const RockPaperScissorsPage = lazy(
-  () => import('../pages/apps/RockPaperScissorsPage'),
-);
+const RockPaperScissorsPage = lazy(() => import('../pages/apps/RockPaperScissorsPage'));
 const TicTacToePage = lazy(() => import('../pages/apps/TicTacToePage'));
 const ConnectFourPage = lazy(() => import('../pages/apps/ConnectFourPage'));
-const ImageCompressorPage = lazy(
-  () => import('../pages/apps/ImageCompressorPage'),
-);
+const ImageCompressorPage = lazy(() => import('../pages/apps/ImageCompressorPage'));
 const StopwatchAppPage = lazy(() => import('../pages/apps/StopwatchAppPage'));
 const PomodoroTimerPage = lazy(() => import('../pages/apps/PomodoroTimerPage'));
-const MorseCodeTranslatorPage = lazy(
-  () => import('../pages/apps/MorseCodeTranslatorPage'),
-);
+const MorseCodeTranslatorPage = lazy(() => import('../pages/apps/MorseCodeTranslatorPage'));
 const MastermindPage = lazy(() => import('../pages/apps/MastermindPage'));
 const SynergyFlowPage = lazy(() => import('../pages/apps/SynergyFlowPage'));
 const EchoChamberPage = lazy(() => import('../pages/apps/EchoChamberPage'));
@@ -109,39 +71,25 @@ const NonogramPage = lazy(() => import('../pages/apps/NonogramPage'));
 const WhackABugPage = lazy(() => import('../pages/apps/WhackABugPage'));
 const SpriteEditorPage = lazy(() => import('../pages/apps/SpriteEditorPage'));
 const BubbleWrapPage = lazy(() => import('../pages/apps/BubbleWrapPage'));
-const LoremIpsumGeneratorPage = lazy(
-  () => import('../pages/apps/LoremIpsumGeneratorPage'),
-);
+const LoremIpsumGeneratorPage = lazy(() => import('../pages/apps/LoremIpsumGeneratorPage'));
 const SimonSaysPage = lazy(() => import('../pages/apps/SimonSaysPage'));
-const BananaConverterPage = lazy(
-  () => import('../pages/apps/BananaConverterPage'),
-);
-const PirateTranslatorPage = lazy(
-  () => import('../pages/apps/PirateTranslatorPage'),
-);
+const BananaConverterPage = lazy(() => import('../pages/apps/BananaConverterPage'));
+const PirateTranslatorPage = lazy(() => import('../pages/apps/PirateTranslatorPage'));
 const GalacticAgePage = lazy(() => import('../pages/apps/GalacticAgePage'));
 const BpmGuesserPage = lazy(() => import('../pages/apps/BpmGuesserPage'));
 const WhiteboardPage = lazy(() => import('../pages/apps/WhiteboardPage'));
-const FootballEmblemCreatorPage = lazy(
-  () => import('../pages/apps/FootballEmblemCreatorPage'),
-);
+const FootballEmblemCreatorPage = lazy(() => import('../pages/apps/FootballEmblemCreatorPage'));
 const RoguelikeGamePage = lazy(() => import('../pages/apps/RoguelikeGamePage'));
-const TcgCardGeneratorPage = lazy(
-  () => import('../pages/apps/TcgCardGeneratorPage'),
-);
-const KeyboardTypingSpeedTesterPage = lazy(
-  () => import('../pages/apps/KeyboardTypingSpeedTesterPage'),
-);
+const TcgCardGeneratorPage = lazy(() => import('../pages/apps/TcgCardGeneratorPage'));
+const KeyboardTypingSpeedTesterPage = lazy(() => import('../pages/apps/KeyboardTypingSpeedTesterPage'));
 const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
 const AlchemyLabPage = lazy(() => import('../pages/apps/AlchemyLabPage'));
-
+const CloudMusicPlayerPage = lazy(() => import('../pages/apps/CloudMusicPlayerPage'));
 const AbstractWavesPage = lazy(() => import('../pages/apps/AbstractWavesPage'));
-const TopographicMapPage = lazy(
-  () => import('../pages/apps/TopographicMapPage'),
-);
+const TopographicMapPage = lazy(() => import('../pages/apps/TopographicMapPage'));
 const RotaryPhonePage = lazy(() => import('../pages/apps/RotaryPhonePage'));
 const FezynthPage = lazy(() => import('../pages/apps/FezynthPage'));
 const CodeSeancePage = lazy(() => import('../pages/apps/CodeSeancePage'));
@@ -165,18 +113,13 @@ const CodeblockCreatorPage = lazy(() => import('../pages/apps/CodeblockCreatorPa
 const AlbumCoverPage = lazy(() => import('../pages/apps/AlbumCoverPage'));
 const TweetCreatorPage = lazy(() => import('../pages/apps/TweetCreatorPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
-const RoadmapItemDetailPage = lazy(
-  () => import('../pages/roadmap/RoadmapItemDetailPage'),
-);
+const RoadmapItemDetailPage = lazy(() => import('../pages/roadmap/RoadmapItemDetailPage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));
 const RandomPage = lazy(() => import('../pages/RandomPage'));
 const NotebooksPage = lazy(() => import('../pages/notebooks/NotebooksPage'));
-const NotebookViewerPage = lazy(
-  () => import('../pages/notebooks/NotebookViewerPage'),
-);
-
+const NotebookViewerPage = lazy(() => import('../pages/notebooks/NotebookViewerPage'));
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const VocabPage = lazy(() => import('../pages/VocabPage'));
@@ -1091,6 +1034,22 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::code"
           element={<Navigate to="/apps/codeblock-creator" replace />}
+        />
+        <Route
+          path="/apps/aether"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CloudMusicPlayerPage />
+              </Suspense>
+            </motion.div>
+          }
         />
         <Route
           path="/apps/pattern-generator"

@@ -67,7 +67,7 @@
         (to) /timeline
         (icon) TimerIcon
       > (item)
-        (label) Fezilla
+        (label) Fezzilla
         (to) /roadmap
         (icon) BugBeetleIcon
       > (item)

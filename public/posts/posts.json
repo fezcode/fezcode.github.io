@@ -1,5 +1,17 @@
 [
   {
+    "slug": "aether-music-player",
+    "title": "Aether: Cyberpunk Audio Interface",
+    "date": "2026-01-06",
+    "updated": "2026-01-06",
+    "description": "Introducing Aether, a cloud-based, data-driven music player with a high-fidelity cyberpunk aesthetic and generative art.",
+    "tags": ["feat", "music", "cyberpunk", "react", "piml", "generative-art"],
+    "category": "feat",
+    "filename": "aether-music-player.txt",
+    "authors": ["fezcode"],
+    "image": "/images/apps/aether.png"
+  },
+  {
     "slug": "5-ways-to-pass-arguments-in-a-url",
     "title": "5 Ways to Pass Arguments in a URL (Beyond the Basic Query)",
     "date": "2025-12-24",

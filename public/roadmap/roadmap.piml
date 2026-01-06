@@ -274,5 +274,13 @@
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) Implemented via public/banner.piml and src/components/Banner.js. Supports types (info, warning, error), scheduling (from/to), links, and persistence (localStorage dismissal).
 
-
+  > (issues)
+    (id) FEZ-23
+    (title) Implementing A Music Player
+    (description)
+      A music player with custom URL support and a tiny player.
+    (category) Music
+    (status) Completed
+    (priority) High
+    (created_at) 2026-01-06T18:00:00+03:00
 

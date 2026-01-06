@@ -165,6 +165,15 @@
     "order": 2,
     "apps": [
       {
+        "slug": "aether",
+        "to": "/apps/aether",
+        "title": "Aether Music Player",
+        "description": "Abstract music player. Listen to the sounds above the clouds.",
+        "icon": "CloudFogIcon",
+        "created_at": "2026-01-06T12:00:00+03:00",
+        "pinned_order": 1
+      },
+      {
         "slug": "fezynth",
         "to": "/apps/fezynth",
         "title": "FeZynth",

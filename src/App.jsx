@@ -16,6 +16,8 @@ import AchievementListeners from './components/AchievementListeners';
 import { SidePanelProvider } from './context/SidePanelContext';
 import { HomepageOrderProvider } from './context/HomepageOrderContext';
 import { SiteConfigProvider } from './context/SiteConfigContext';
+import { CloudMusicProvider } from './context/CloudMusicContext';
+import TinyCloudPlayer from './app/apps/CloudMusicPlayer/components/TinyCloudPlayer';
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -57,42 +59,45 @@ function App() {
       <Router>
         <ToastProvider>
           <SiteConfigProvider>
-            <AchievementProvider>
-              <AchievementListeners />
-            <HomepageOrderProvider>
-              <VisualSettingsProvider>
-                <DigitalRain isActive={isRainActive} />
-                <BSOD isActive={isBSODActive} toggleBSOD={toggleBSOD} />
-                <ScrollToTop />
-                <CommandPaletteProvider>
-                  <SidePanelProvider>
-                    <Layout
-                      toggleModal={toggleModal}
-                      isSearchVisible={isSearchVisible}
-                      toggleSearch={toggleSearch}
-                      openGenericModal={openGenericModal}
-                      toggleDigitalRain={toggleDigitalRain}
-                      toggleBSOD={toggleBSOD}
-                    >
-                      <AnimatedRoutes />
-                    </Layout>
-                  </SidePanelProvider>
-                </CommandPaletteProvider>
-                <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
-                <GenericModal
-                  isOpen={isGenericModalOpen}
-                  onClose={closeGenericModal}
-                  title={genericModalContent.title}
-                >
-                  {genericModalContent.content}
-                </GenericModal>
-              </VisualSettingsProvider>
-            </HomepageOrderProvider>
-          </AchievementProvider>
-        </SiteConfigProvider>
-      </ToastProvider>
-    </Router>
-  </AnimationProvider>
+            <CloudMusicProvider>
+              <AchievementProvider>
+                <AchievementListeners />
+              <HomepageOrderProvider>
+                <VisualSettingsProvider>
+                  <DigitalRain isActive={isRainActive} />
+                  <BSOD isActive={isBSODActive} toggleBSOD={toggleBSOD} />
+                  <ScrollToTop />
+                  <TinyCloudPlayer />
+                  <CommandPaletteProvider>
+                    <SidePanelProvider>
+                      <Layout
+                        toggleModal={toggleModal}
+                        isSearchVisible={isSearchVisible}
+                        toggleSearch={toggleSearch}
+                        openGenericModal={openGenericModal}
+                        toggleDigitalRain={toggleDigitalRain}
+                        toggleBSOD={toggleBSOD}
+                      >
+                        <AnimatedRoutes />
+                      </Layout>
+                    </SidePanelProvider>
+                  </CommandPaletteProvider>
+                  <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
+                  <GenericModal
+                    isOpen={isGenericModalOpen}
+                    onClose={closeGenericModal}
+                    title={genericModalContent.title}
+                  >
+                    {genericModalContent.content}
+                  </GenericModal>
+                </VisualSettingsProvider>
+              </HomepageOrderProvider>
+            </AchievementProvider>
+            </CloudMusicProvider>
+          </SiteConfigProvider>
+        </ToastProvider>
+      </Router>
+    </AnimationProvider>
   );
 }
 export default App;
