@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import CloudPlaylist from './components/CloudPlaylist';
 import './CloudMusicPlayer.css';
 import { useCloudMusic } from '../../../context/CloudMusicContext';
@@ -7,7 +8,7 @@ import {
     PlusIcon, LinkIcon, PlayIcon, PauseIcon,
     SkipForwardIcon, SkipBackIcon, RepeatIcon,
     ShuffleIcon, SpeakerHighIcon, SpeakerSlashIcon, SpeakerLowIcon, SpeakerNoneIcon,
-    WaveformIcon
+    WaveformIcon, ArrowLeftIcon
 } from '@phosphor-icons/react';
 import CustomSlider from '../../../components/CustomSlider';
 import GenerativeArt from '../../../components/GenerativeArt';
@@ -71,26 +72,35 @@ const CloudMusicPlayer = () => {
   }
 
   return (
-    <div className="min-h-screen relative font-mono bg-black text-cyan-500 flex flex-col md:items-center md:justify-center overflow-y-auto md:overflow-hidden selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen relative font-mono bg-black text-cyan-500 selection:bg-cyan-500 selection:text-black py-24 px-6 md:px-12">
 
       {/* Generative Art Background */}
-      <div className="fixed inset-0 z-0 opacity-50 filter hue-rotate-180 brightness-50 contrast-125">
+      <div className="absolute inset-0 z-0 opacity-50 filter hue-rotate-180 brightness-50 contrast-125 h-full w-full overflow-hidden">
          <GenerativeArt seed={currentTrack?.title || "AETHER_DECK"} className="w-full h-full" />
       </div>
 
       {/* CRT Scanlines & Vignette */}
-      <div className="fixed inset-0 z-50 scanlines pointer-events-none"></div>
+      <div className="absolute inset-0 z-50 scanlines pointer-events-none h-full w-full"></div>
 
       {/* Background Grid */}
-      <div className="fixed inset-0 z-10 opacity-20 pointer-events-none"
+      <div className="absolute inset-0 z-10 opacity-20 pointer-events-none h-full w-full"
            style={{
                backgroundImage: `linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)`,
                backgroundSize: '40px 40px'
            }}>
       </div>
 
-      {/* Main Deck Container */}
-      <div className="relative z-30 w-full max-w-6xl h-auto md:h-[90vh] flex flex-col md:flex-row gap-6 p-4 md:p-8">
+      <div className="mx-auto max-w-7xl relative z-30">
+        <Link
+          to="/apps"
+          className="group inline-flex items-center gap-2 text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em] mb-12"
+        >
+          <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+          <span>Exit_To_Center</span>
+        </Link>
+
+        {/* Main Deck Container */}
+        <div className="w-full max-w-6xl h-auto md:h-[85vh] flex flex-col md:flex-row gap-6 mx-auto">
 
         {/* Left Column: Player Core */}
         <div className="w-full md:w-5/12 flex flex-col gap-4">
@@ -361,6 +371,7 @@ const CloudMusicPlayer = () => {
 
         </div>
 
+      </div>
       </div>
     </div>
   );

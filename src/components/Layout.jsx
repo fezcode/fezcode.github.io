@@ -64,7 +64,7 @@ const Layout = ({
         toggleBSOD={toggleBSOD}
       />
       {!hideLayout && <SidePanel />}
-      <div className="bg-gray-950 min-h-screen font-sans flex">
+      <div className="bg-[#050505] min-h-screen font-sans flex">
         {!hideLayout &&
           (sidebarMode === 'classic' ? (
             <ClassicSidebar

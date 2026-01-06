@@ -19,8 +19,8 @@ const TinyCloudPlayer = () => {
   } = useCloudMusic();
   const location = useLocation();
 
-  // Disable on the main Aether app page to avoid redundancy
-  if (location.pathname === '/apps/aether') return null;
+  // Disable on the main Aether app page to avoid redundancy, and on About pages
+  if (location.pathname.startsWith('/apps/aether') || location.pathname.startsWith('/about')) return null;
 
   if (!isPlayerOpen) return null;
 
@@ -30,11 +30,11 @@ const TinyCloudPlayer = () => {
     <AnimatePresence>
       {isPlayerOpen && (
         <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
+          initial={{ y: 100, opacity: 0, x: "-50%" }}
+          animate={{ y: 0, opacity: 1, x: "-50%" }}
+          exit={{ y: 100, opacity: 0, x: "-50%" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
-          className="fixed bottom-2 left-2 z-50 w-[calc(100%-1rem)] max-w-[20rem] md:bottom-6 md:left-1/2 md:transform md:-translate-x-1/2 md:w-full md:max-w-md font-mono"
+          className="fixed bottom-6 left-1/2 z-50 w-[95%] max-w-md font-mono"
         >
           <div className="relative group">
              {/* Cyber Deck Container */}
