@@ -20,6 +20,13 @@
       He is a results-driven Software Engineer with a strong foundation
       in computer science, also a photographer and visual artist.
 
+  > (person)
+    (title) Burak Uyar
+    (url) https://github.com/uyarburak
+    (description)
+      A Software Engineer who is interested in Frontend, Backend, Mobile, and all sorts of mischievous technologies in between,
+      and a YHT (High-Speed Train) enthusiast.
+
 (books)
   > (book)
     (title) Clean Code: A Handbook of Agile Software Craftsmanship
