@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {
   FacebookLogoIcon,
-  TwitterLogoIcon,
+  XLogoIcon,
   LinkedinLogoIcon,
   LinkSimpleIcon,
   WhatsappLogoIcon,
@@ -165,7 +165,7 @@ const ShareButtons = ({ title, url }) => {
             className="text-gray-400 hover:text-blue-400 transition-colors"
             aria-label="Share on Twitter"
           >
-            <TwitterLogoIcon size={24} />
+            <XLogoIcon size={24} />
           </button>
           <button
             onClick={() =>

@@ -18,7 +18,7 @@ import {
   GithubLogoIcon,
   LinkedinLogoIcon,
   EnvelopeIcon,
-  TwitterLogoIcon,
+  XLogoIcon,
   GraduationCapIcon,
 } from '@phosphor-icons/react';
 
@@ -48,9 +48,9 @@ export const aboutData = {
         icon: EnvelopeIcon,
       },
       {
-        label: 'Twitter',
+        label: 'X (Twitter)',
         url: 'https://x.com/fezcoddy',
-        icon: TwitterLogoIcon,
+        icon: XLogoIcon,
       },
       { label: 'Fezcode', url: 'https://fezcode.com', icon: GlobeIcon },
     ],

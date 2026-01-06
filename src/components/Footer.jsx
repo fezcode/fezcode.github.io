@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { version } from '../version';
 import {
-  TwitterLogo,
-  GithubLogo,
-  LinkedinLogo,
+  XLogoIcon,
+  GithubLogoIcon,
+  LinkedinLogoIcon,
   Command,
   Terminal,
 } from '@phosphor-icons/react';
@@ -121,11 +121,11 @@ const Footer = () => {
             </h3>
 
             <div className="flex gap-3 mb-8">
-              <SocialIcon href="https://x.com/fezcoddy" icon={TwitterLogo} />
-              <SocialIcon href="https://github.com/fezcode" icon={GithubLogo} />
+              <SocialIcon href="https://x.com/fezcoddy" icon={XLogoIcon} />
+              <SocialIcon href="https://github.com/fezcode" icon={GithubLogoIcon} />
               <SocialIcon
                 href="https://www.linkedin.com/in/ahmed-samil-bulbul/"
-                icon={LinkedinLogo}
+                icon={LinkedinLogoIcon}
               />
             </div>
 

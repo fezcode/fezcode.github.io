@@ -2,7 +2,7 @@ import React from 'react';
 import {
   EnvelopeSimpleIcon,
   LinkedinLogoIcon,
-  TwitterLogoIcon,
+  XLogoIcon,
   GithubLogoIcon,
   GlobeIcon,
 } from '@phosphor-icons/react';
@@ -11,7 +11,7 @@ import { useSiteConfig } from '../context/SiteConfigContext';
 
 const socialIcons = {
   GithubLogo: GithubLogoIcon,
-  TwitterLogo: TwitterLogoIcon,
+  XLogo: XLogoIcon,
   LinkedinLogo: LinkedinLogoIcon,
   EnvelopeSimple: EnvelopeSimpleIcon,
 };
