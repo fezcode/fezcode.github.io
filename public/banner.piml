@@ -25,7 +25,7 @@
     (from) 2025-12-27T00:00:00Z
     (to) 2025-12-29T23:59:59Z
     (text) MAGAZINER V1 IS ONLINE: THE PREMIUM MAGAZINE COVER CONSTRUCTOR PROTOCOL. ACCESS AT /APPS/MAGAZINER.
-    (isActive) true
+    (isActive) false
     (link) /apps/magaziner
     (linkText) See Magaziner
 
@@ -35,7 +35,7 @@
     (from) 2025-12-30T00:00:00Z
     (to) 2026-01-01T23:59:59Z
     (text) TWEET CREATOR IS ONLINE: CONSTRUCT HIGH-FIDELITY TWEET SNAPSHOTS WITH ECHO CHAMBER AESTHETICS. ACCESS AT /APPS/TWEET-CREATOR.
-    (isActive) true
+    (isActive) false
     (link) /apps/tweet-creator
     (linkText) See Tweet Creator
 
@@ -45,6 +45,16 @@
     (from) 2026-01-02T00:00:00Z
     (to) 2026-01-04T23:59:59Z
     (text) ALBUM CONSTRUCTOR IS ONLINE: SYNTHESIZE HIGH-FIDELITY MUSIC ART USING MULTI-MODAL AESTHETIC PROTOCOLS. ACCESS AT /APPS/ALBUM-CONSTRUCTOR.
-    (isActive) true
+    (isActive) false
     (link) /apps/album-constructor
     (linkText) See Album Constructor
+
+  > (banner)
+    (id) aether-v1
+    (type) info
+    (from) 2026-01-06T00:00:00Z
+    (to) 2026-01-10T23:59:59Z
+    (text) AETHER MUSIC PLAYER IS ONLINE: ABSTRACT MUSIC PLAYER. LISTEN TO THE SOUNDS ABOVE THE CLOUDS. ACCESS AT /APPS/AETHER.
+    (isActive) true
+    (link) /apps/aether
+    (linkText) See Aether

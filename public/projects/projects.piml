@@ -1,23 +1,5 @@
 (projects)
   > (project)
-    (slug) nocturnote
-    (title) Nocturnote
-    (size) 2
-    (repo_link) https://github.com/fezcode/nocturnote
-    (demo_link) https://github.com/fezcode/nocturnote
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > Electron
-      > Svelte
-      > TypeScript
-      > Tailwind CSS
-      > Editor
-    (shortDescription) Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS.
-    (date) 2025-12-01
-    (image) /images/projects/nocturenote-header.webp
-
-  > (project)
     (slug) fezcodex
     (title) fezcodex
     (size) 1
@@ -62,6 +44,42 @@
     (shortDescription) BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
     (date) 2025-11-06
     (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+
+  > (project)
+    (slug) nocturnote
+    (title) Nocturnote
+    (size) 2
+    (repo_link) https://github.com/fezcode/nocturnote
+    (demo_link) https://github.com/fezcode/nocturnote
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Electron
+      > Svelte
+      > TypeScript
+      > Tailwind CSS
+      > Editor
+    (shortDescription) Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS.
+    (date) 2025-12-01
+    (image) /images/projects/nocturenote-header.webp
+
+  > (project)
+    (slug) workhammer
+    (title) WorkHammer
+    (size) 2
+    (repo_link) https://github.com/fezcode/WorkHammer
+    (demo_link) https://github.com/fezcode/WorkHammer/releases
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET
+      > Avalonia UI
+      > MVVM
+      > Desktop
+    (shortDescription) WorkHammer is a high-fidelity, professional local-only job application tracker designed for developers, built with C# and Avalonia UI.
+    (date) 2026-01-06
+    (image) /images/projects/workhammer.webp
 
   > (project)
     (slug) villain-couch

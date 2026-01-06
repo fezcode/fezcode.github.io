@@ -62,7 +62,11 @@ const Footer = () => {
                 </div>
                 <div className="font-mono text-[10px] text-gray-500 uppercase leading-relaxed">
                   Press{' '}
-                  <kbd className="bg-white text-black px-1 font-black">Alt</kbd>{' '}
+                  <kbd className="bg-white text-black px-1 font-black">Alt</kbd>
+                  ,{' '}
+                  <kbd className="bg-white text-black px-1 font-black">Ctrl</kbd>
+                  , or{' '}
+                  <kbd className="bg-white text-black px-1 font-black">Cmd</kbd>{' '}
                   + <kbd className="bg-white text-black px-1 font-black">K</kbd>{' '}
                   for commands.
                 </div>
