@@ -107,7 +107,7 @@ const SidePanel = () => {
                 <span className="font-mono text-[9px] text-emerald-500 uppercase tracking-[0.3em] font-bold">
                   System_Panel_Node
                 </span>
-                <h2 className="text-2xl font-black font-mono tracking-tighter text-white uppercase italic leading-none truncate">
+                <h2 className="text-2xl font-black font-mono tracking-tighter text-white uppercase italic leading-none pr-2">
                   {panelTitle}
                 </h2>
               </div>
