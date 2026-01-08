@@ -1,5 +1,16 @@
 (logs)
   > (item)
+    (artist) Gorillaz
+    (category) Music
+    (date) 2026-01-08
+    (link) https://www.youtube.com/watch?v=nhPaWIeULKk
+    (rating) 5
+    (slug) gorillaz-stylo
+    (title) Stylo
+    (album) Plastic Beach
+    (description) "Stylo" by Gorillaz, a track from their 2010 album "Plastic Beach," features a surprising and memorable appearance by Bruce Willis in its music video. His role adds a unique, high-octane chase element to the animated world of Gorillaz, creating a truly shocking and entertaining experience for viewers.
+
+  > (item)
     (artist) Borislav Slavov
     (category) Music
     (date) 2025-12-25
