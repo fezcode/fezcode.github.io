@@ -118,3 +118,11 @@
     (book) The Petals of Predymesh
     (description) A damp, cramped attic in the Predymesh slums. Once a home for an honest mason, it is now the silent sickroom of Pellera Orlong, smelling of rain and desperation.
     (status) Active (Gloomy)
+
+  > (place)
+    (name) Krones Research Lab
+    (type) Scientific Facility
+    (category) Institutions
+    (book) The Harvest of Silence
+    (description) A sterile, high-security laboratory in the heart of Predymesh. It is where Avalia Krones performs her miracles—and where she hides the secrets of her true discoveries behind layers of mathematical noise.
+    (status) Active (Monitored)

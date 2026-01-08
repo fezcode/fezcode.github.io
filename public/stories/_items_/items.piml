@@ -46,3 +46,17 @@
     (description) A devastating affliction that manifests as a crimson rose-leaf mark on the forehead. It slowly drains the victim's motor functions and speech, eventually leaving them in a vegetative state. Its only known cure is a rare drop of Alilberry.
     (owner) Pellera Orlong (Afflicted)
     (image) /stories/_items_/touch_of_rose.png
+
+  > (item)
+    (name) Government Medal for Science
+    (type) Award
+    (book) The Harvest of Silence
+    (description) A heavy gold disc awarded for exceptional scientific achievement. To Avalia Krones, it is a symbol of her gilded cage and the government's attempt to buy her loyalty.
+    (owner) Avalia Krones
+
+  > (item)
+    (name) The Krones Formula
+    (type) Scientific Data / Discovery
+    (book) The Harvest of Silence
+    (description) A revolutionary method for accelerating agricultural growth. While publicly used to end hunger, the government seeks its hidden 'weaponized' potential, which Avalia carefully conceals.
+    (owner) Avalia Krones (Knowledge)

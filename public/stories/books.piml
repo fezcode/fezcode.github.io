@@ -192,3 +192,23 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) lightcoral
+
+  > (book)
+    (bookId) 10
+    (bookTitle) The Harvest of Silence
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-harvest-of-silence/the-medal-of-ash.txt
+        (title) The Medal of Ash (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) the-harvest-of-silence/kul-madalyasi.txt
+        (title) Kül Madalyası (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) gold
