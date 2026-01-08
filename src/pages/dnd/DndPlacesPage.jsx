@@ -5,7 +5,7 @@ import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
 import useSeo from '../../hooks/useSeo';
 import piml from 'piml';
-import { MapTrifold, X } from '@phosphor-icons/react';
+import { MapTrifold, X, MapPin } from '@phosphor-icons/react';
 
 function DndPlacesPage() {
   useSeo({
@@ -53,6 +53,18 @@ function DndPlacesPage() {
     );
   });
 
+  // Categorize filtered places
+  const categorizedPlaces = filteredPlaces.reduce((acc, place) => {
+    const category = place.category || 'Uncharted';
+    if (!acc[category]) {
+      acc[category] = [];
+    }
+    acc[category].push(place);
+    return acc;
+  }, {});
+
+  const categories = Object.keys(categorizedPlaces).sort();
+
   return (
     <DndLayout>
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -74,63 +86,78 @@ function DndPlacesPage() {
           />
         </header>
 
-        <section className="space-y-24">
-             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-               {filteredPlaces.map((place, idx) => (
-                 <motion.div
-                   key={idx}
-                   initial={{ opacity: 0, scale: 0.9 }}
-                   whileInView={{ opacity: 1, scale: 1 }}
-                   viewport={{ once: true }}
-                   transition={{ delay: idx * 0.1 }}
-                   onClick={() => setSelectedPlace(place)}
-                   className="cursor-pointer"
-                 >
-                   <div className="block group relative p-8 dnd-fantasy-card text-center h-full min-h-[400px] flex flex-col items-center justify-center border-2 border-black/20 shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
-                     {/* Background Runes */}
-                     <div className="dnd-card-rune top-8 left-8 -rotate-12">ᚦ</div>
-                     <div className="dnd-card-rune bottom-8 right-8 rotate-12">ᛉ</div>
+        <div className="space-y-20">
+          {categories.map((category) => (
+            <section key={category} className="space-y-8">
+              <div className="flex items-center gap-4 mb-8">
+                 <div className="h-px flex-grow bg-dnd-gold/20" />
+                 <h2 className="text-3xl md:text-4xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter flex items-center gap-3">
+                    <MapPin size={32} weight="duotone" className="text-dnd-gold" />
+                    {category}
+                 </h2>
+                 <div className="h-px flex-grow bg-dnd-gold/20" />
+              </div>
 
-                     {/* Ink Splatters */}
-                     <div className="dnd-ink-splatter w-8 h-8 top-1/4 right-8" />
-                     <div className="dnd-ink-splatter w-4 h-4 bottom-1/3 left-12" />
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {categorizedPlaces[category].map((place, idx) => (
+                  <motion.div
+                    key={`${category}-${idx}`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    onClick={() => setSelectedPlace(place)}
+                    className="cursor-pointer"
+                  >
+                    <div className="block group relative p-8 dnd-fantasy-card text-center h-full min-h-[350px] flex flex-col items-center justify-center border-2 border-black/20 shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
+                      {/* Background Runes */}
+                      <div className="dnd-card-rune top-8 left-8 -rotate-12">ᚦ</div>
+                      <div className="dnd-card-rune bottom-8 right-8 rotate-12">ᛉ</div>
 
-                     {/* Ornate corners */}
-                     <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
-                     <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
-                     <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
-                     <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
+                      {/* Ink Splatters */}
+                      <div className="dnd-ink-splatter w-8 h-8 top-1/4 right-8" />
+                      <div className="dnd-ink-splatter w-4 h-4 bottom-1/3 left-12" />
 
-                     <div className="mb-6 text-dnd-crimson group-hover:scale-110 transition-transform duration-500 relative z-10">
-                        <MapTrifold size={48} weight="duotone" />
-                     </div>
+                      {/* Ornate corners */}
+                      <div className="absolute top-4 left-4 w-8 h-8 border-t-2 border-l-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
+                      <div className="absolute top-4 right-4 w-8 h-8 border-t-2 border-r-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
+                      <div className="absolute bottom-4 left-4 w-8 h-8 border-b-2 border-l-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
+                      <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
 
-                     <h3 className="text-3xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2 relative z-10">
-                       {place.name}
-                     </h3>
-                     <p className="text-xs font-arvo text-black/60 uppercase tracking-widest mb-4 font-bold relative z-10">
-                       {place.type}
-                     </p>
+                      <div className="mb-6 text-dnd-crimson group-hover:scale-110 transition-transform duration-500 relative z-10">
+                          <MapTrifold size={48} weight="duotone" />
+                      </div>
 
-                     <div className="h-px w-16 bg-dnd-crimson/20 mb-6" />
+                      <h3 className="text-2xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2 relative z-10">
+                        {place.name}
+                      </h3>
 
-                     <p className="text-base font-arvo text-black/70 leading-relaxed line-clamp-4 relative z-10 px-4">
-                       {place.description}
-                     </p>
+                      <p className="text-xs font-arvo text-black/60 uppercase tracking-widest mb-4 font-bold relative z-10">
+                        {place.type}
+                      </p>
 
-                     <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-mono text-dnd-crimson uppercase tracking-widest">
-                        View Details
-                     </div>
-                   </div>
-                 </motion.div>
-               ))}
-               {filteredPlaces.length === 0 && (
-                 <div className="col-span-full text-center py-12 text-white/60 font-arvo italic">
-                   No landmarks found in the atlas.
-                 </div>
-               )}
-             </div>
-        </section>
+                      <div className="h-px w-16 bg-dnd-crimson/20 mb-6 mt-4" />
+
+                      <p className="text-sm font-arvo text-black/70 leading-relaxed line-clamp-4 relative z-10 px-4">
+                        {place.description}
+                      </p>
+
+                      <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-mono text-dnd-crimson uppercase tracking-widest">
+                          View Details
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          ))}
+
+          {filteredPlaces.length === 0 && (
+            <div className="col-span-full text-center py-12 text-white/60 font-arvo italic">
+              No landmarks found in the atlas.
+            </div>
+          )}
+        </div>
 
         {/* Place Modal */}
         <AnimatePresence>

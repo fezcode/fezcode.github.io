@@ -112,3 +112,23 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) orange
+
+  > (book)
+    (bookId) 6
+    (bookTitle) The Sanity Ward
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-sanity-ward/clinical-note.txt
+        (title) The Hysteria of the Moth (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) the-sanity-ward/klinik-not.txt
+        (title) Güve Histerisi (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) gray

@@ -317,3 +317,14 @@
     (assignee) Gemini
     (created_at) 2026-01-08T14:00:00+03:00
     (notes) Implemented Void Architect achievement.
+
+  > (issues)
+    (id) FEZ-25
+    (title) DND Content Expansion
+    (description) Added new stories, characters, places, and items sections to the Dungeons & Dragons pages. Includes advanced filtering, modal views, and search functionality.
+    (category) Content
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-01-08T18:00:00+03:00
+    (notes) Major content update for Serfs & Frauds campaign.

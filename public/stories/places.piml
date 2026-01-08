@@ -2,6 +2,7 @@
   > (place)
     (name) Corrigan Investigations
     (type) Office
+    (category) Residences
     (book) The Broken Path
     (description) A dusty office with a flickering neon sign, smelling of stale smoke and cheap bourbon. The sanctuary of a man fighting his own shadow.
     (status) Active
@@ -9,6 +10,7 @@
   > (place)
     (name) The Tipsy Lizard
     (type) Tavern
+    (category) Establishments
     (book) The Broken Path
     (description) A dive bar where secrets are traded for ale. The kind of place where you wipe your feet on the way out.
     (status) Active
@@ -16,6 +18,7 @@
   > (place)
     (name) St. Marlowe Hotel
     (type) Inn / Flophouse
+    (category) Establishments
     (book) The Broken Path
     (description) A rundown hotel for has-beens and never-weres. Its walls hold more regrets than paint.
     (status) Active
@@ -23,6 +26,7 @@
   > (place)
     (name) Blade's Clinic
     (type) Medical Facility
+    (category) Establishments
     (book) The Tales of Doctor Blade
     (description) A sanctuary of white marble and lavender scent. A place of miraculous healing, and sometimes, quiet death.
     (status) Active
@@ -30,20 +34,23 @@
   > (place)
     (name) The Lower Ward
     (type) District
+    (category) Locations
     (book) The Tales of Doctor Blade
     (description) The poorer district of the city, where an orphanage stands funded by questionable means.
     (status) Active
 
   > (place)
     (name) Craninal
-    (type) Town
+    (type) City
+    (category) Settlements
     (book) The Butterfly's Jest
-    (description) A town where truth is a dangerous commodity and the only safe place to speak it is on a comedy stage.
+    (description) A city where truth is a dangerous commodity and the only safe place to speak it is on a comedy stage.
     (status) Active
 
   > (place)
     (name) The Laughing Stock
     (type) Comedy Club
+    (category) Establishments
     (book) The Butterfly's Jest
     (description) The comedy club where the Sultan of Butterflies performs and gathers her silent army.
     (status) Active
@@ -51,6 +58,7 @@
   > (place)
     (name) Music Festival Grounds
     (type) Event Location
+    (category) Locations
     (book) The Butterfly's Jest
     (description) The site where Hellbound played "Last Breath" and Galarian Freiton took his.
     (status) Inactive
@@ -58,6 +66,7 @@
   > (place)
     (name) Glareach
     (type) City
+    (category) Settlements
     (book) The Sins of Glareach
     (description) Once a poor town, destroyed in the War of Fourbournes, now rebuilt as a neon-soaked metropolis of casinos and vice. A monument to Aester Cloudwear's greed.
     (status) Active (Corrupt)
@@ -65,6 +74,15 @@
   > (place)
     (name) The Clockwork Sanctum
     (type) Workshop / Shop
+    (category) Establishments
     (book) The Chronomancer's Dust
     (description) Klaude Barral's workshop in Craninal. A place where the air is thick with the smell of oil and the dust of dead cities, and where every tick of a clock sounds like a funeral bell.
+    (status) Active
+
+  > (place)
+    (name) St. Jude's Asylum
+    (type) Medical Institution / Prison
+    (category) Institutions
+    (book) The Sanity Ward
+    (description) A sterile fortress of white walls and silence, run by Dr. Brann Corshield. It is where the "mad" are sent to be broken and rebuilt in the image of conformity.
     (status) Active

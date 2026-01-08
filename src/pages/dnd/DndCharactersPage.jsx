@@ -105,7 +105,7 @@ function DndCharactersPage() {
                         <UsersThree size={48} weight="duotone" />
                      </div>
 
-                     <h3 className="text-3xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2 relative z-10">
+                     <h3 className="text-3xl font-playfairDisplay italic font-black text-[#b8860b] uppercase tracking-tighter mb-2 relative z-10">
                        {char.name}
                      </h3>
                      <p className="text-xs font-arvo text-black/60 uppercase tracking-widest mb-4 font-bold relative z-10">
