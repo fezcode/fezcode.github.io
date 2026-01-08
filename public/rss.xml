@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 08 Jan 2026 00:05:22 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 08 Jan 2026 15:50:54 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 08 Jan 2026 00:05:22 GMT</pubDate>
+        <pubDate>Thu, 08 Jan 2026 15:50:54 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Fixing gh-pages: Resolving spawn ENAMETOOLONG]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/gh-pages-enametoolong-fix</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/gh-pages-enametoolong-fix</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Resolving <code>spawn ENAMETOOLONG</code> in <code>gh-pages</code> Deployment</h1>
+<p><a href="https://fezcode.com/blog/gh-pages-enametoolong-fix">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Aether: Cyberpunk Audio Interface]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -25,6 +35,17 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Tue, 06 Jan 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>Aether: The Cyberpunk Music Player</h1>
+<p>I&#39;ve just deployed <strong>Aether</strong>, a new cloud-based music player for Fezcodex.</p>
+<p><img src="/images/apps/aether.png" alt="Aether Music Player"></p>
+<h2>Overview</h2>
+<p>Aether isn&#39;t just a music player; it&#39;s an atmospheric audio interface designed to immerse you in the soundscape of the site. It features:</p>
+<ul>
+<li><strong>Cyberpunk Aesthetic:</strong> A high-contrast, terminal-inspired interface with CRT scanlines, glitch effects, and a generative art background that reacts to the music.</li>
+<li><strong>Persistent Playback:</strong> A tiny, &quot;cyber deck&quot; style player docks to the bottom of your screen, allowing you to browse the site without interrupting your tunes.</li>
+<li><strong>Generative Art:</strong> If a track lacks cover art, the system generates a unique visual signature based on the track&#39;s title.</li>
+</ul>
+<p>Check it out here: <a href="/apps/aether">Aether Music Player</a></p>
+<p>Enjoy the vibes.</p>
 <p><a href="https://fezcode.com/blog/aether-music-player">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -35,6 +56,45 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Wed, 24 Dec 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>When building web applications or designing APIs, understanding how to transfer data is crucial. While <strong>Query Parameters</strong> (the bits after the <code>?</code>) are the most common method, there are four other fundamental ways to pass arguments to a server via a URL or its associated HTTP request.</p>
+<p>Here is a quick reference guide to the five main argument passing mechanisms:</p>
+<h2>1. Query Parameters</h2>
+<ul>
+<li><strong>Location:</strong> Appears in the URL after a <strong>?</strong> (question mark) and separated by <strong>&amp;</strong> (ampersand) symbols.</li>
+<li><strong>Purpose:</strong> Used for <strong>optional</strong> parameters such as filtering, sorting, searching, or pagination controls.</li>
+<li><strong>Characteristics:</strong> Data is highly visible (in the URL, server logs, and browser history). It is typically used with <strong>GET</strong> requests.</li>
+<li><strong>Example:</strong> <code>https://example.com/products?**category=1&amp;sort=price**</code></li>
+</ul>
+<h2>2. Path Parameters</h2>
+<ul>
+<li><strong>Location:</strong> Directly integrated into the URL&#39;s path structure.</li>
+<li><strong>Purpose:</strong> Used to uniquely <strong>identify a specific resource</strong> or define a hierarchical location.</li>
+<li><strong>Characteristics:</strong> Essential for defining clear, clean, and meaningful URLs, especially in RESTful API design.</li>
+<li><strong>Example:</strong> <code>https://example.com/users/**123**</code> or <code>https://example.com/books/**sci-fi**/dune</code></li>
+</ul>
+<h2>3. Header Parameters</h2>
+<ul>
+<li><strong>Location:</strong> Contained within the <strong>HTTP Request Header</strong>, invisible in the URL.</li>
+<li><strong>Purpose:</strong> Used for <strong>metadata</strong> about the request, such as authentication (e.g., API keys, tokens), content type, and language preferences.</li>
+<li><strong>Characteristics:</strong> Offers better security for sensitive, non-data payload information compared to Query Parameters, as it doesn&#39;t appear in the URL.</li>
+<li><strong>Example:</strong> <code>Header: **Authorization: Bearer token**</code> or <code>Header: **Content-Type: application/json**</code></li>
+</ul>
+<h2>4. Fragment Identifier Arguments</h2>
+<ul>
+<li><strong>Location:</strong> Appears at the very end of the URL after a <strong>#</strong> (hash symbol).</li>
+<li><strong>Purpose:</strong> Used for client-side functionality, like navigating to a specific section (anchor) on a page or managing application state in Single Page Applications (SPAs).</li>
+<li><strong>Characteristics:</strong> The browser <strong>does NOT send this part to the server</strong>; it is client-side only. It can still be used to pass data to the front-end application.</li>
+<li><strong>Example:</strong> <code>https://example.com/page**#section-name**</code></li>
+</ul>
+<h2>5. Request Body Arguments</h2>
+<ul>
+<li><strong>Location:</strong> Contained within the <strong>body</strong> (payload) of the HTTP request, invisible in the URL.</li>
+<li><strong>Purpose:</strong> Used for sending large data payloads when creating or updating resources (e.g., submitting a complex form, uploading a file, or sending a JSON object).</li>
+<li><strong>Characteristics:</strong> The primary method for data submission using <strong>POST, PUT, or PATCH</strong> HTTP methods. It is an HTTP request argument, not a true URL argument, and it is secure from URL exposure.</li>
+<li><strong>Example:</strong> <em>(Data like a user object in JSON format is sent in the hidden body payload.)</em></li>
+</ul>
+<hr>
+<h2>Conclusion</h2>
+<p>By strategically selecting among Query, Path, Header, Fragment, or Body arguments, developers can ensure their data is transferred efficiently and securely, leading to a robust and scalable application architecture.</p>
 <p><a href="https://fezcode.com/blog/5-ways-to-pass-arguments-in-a-url">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -45,6 +105,56 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Tue, 23 Dec 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>The Command (PowerShell)</h2>
+<p>I ran this specific script in your terminal. It uses &quot;piping&quot; (<code>|</code>) to pass the result of one command to the next, like a bucket brigade.</p>
+<pre><code class="language-powershell">Get-ChildItem -Path src -Recurse -Filter *.js |
+  Where-Object { $_.Name -notin @(&#39;index.js&#39;, &#39;reportWebVitals.js&#39;, &#39;setupTests.js&#39;) } |
+  ForEach-Object {
+    if (Select-String -Pattern &quot;&lt;[a-zA-Z]&quot; -Path $_.FullName -Quiet) {
+      Write-Host &quot;Renaming $($_.Name) to .jsx&quot;;
+      Rename-Item -LiteralPath $_.FullName -NewName ($_.Name -replace &#39;\.js$&#39;, &#39;.jsx&#39;)
+    }
+  }
+</code></pre>
+<h3>Deep Dive: Commands &amp; Arguments</h3>
+<p>Here is exactly what every part of that spell does:</p>
+<p><strong>1. Finding the files</strong>
+<code>Get-ChildItem -Path src -Recurse -Filter *.js</code></p>
+<ul>
+<li><code>Get-ChildItem</code>: The standard command to list files (like <code>ls</code> or <code>dir</code>).</li>
+<li><code>-Path src</code>: We only look inside the <code>src</code> folder.</li>
+<li><code>-Recurse</code>: We dig deep into every subfolder, not just the top level.</li>
+<li><code>-Filter *.js</code>: We ignore everything except files ending in <code>.js</code>.</li>
+</ul>
+<p><strong>2. Filtering the list</strong>
+<code>Where-Object { $_.Name -notin @(...) }</code></p>
+<ul>
+<li><code>Where-Object</code>: Acts like a bouncer; only lets items through that match the condition.</li>
+<li><code>$_</code>: Represents the &quot;current file&quot; being checked.</li>
+<li><code>-notin</code>: The condition operator. We are saying &quot;The name must NOT be in this list&quot;.</li>
+<li><code>@(&#39;index.js&#39;, ...)</code>: The list of system files we want to skip (leave as <code>.js</code>).</li>
+</ul>
+<p><strong>3. Processing each file</strong>
+<code>ForEach-Object { ... }</code></p>
+<ul>
+<li><code>ForEach-Object</code>: Runs the code block inside <code>{ ... }</code> for every single file that made it past the filter.</li>
+</ul>
+<p><strong>4. Checking for React Code (JSX)</strong>
+<code>if (Select-String -Pattern &quot;&lt;[a-zA-Z]&quot; -Path $_.FullName -Quiet)</code></p>
+<ul>
+<li><code>Select-String</code>: Searches for text inside a file (like <code>grep</code>).</li>
+<li><code>-Pattern &quot;&lt;[a-zA-Z]&quot;</code>: A Regex pattern. It looks for a <code>&lt;</code> followed by a letter. This catches HTML tags like <code>&lt;div&gt;</code> or React components like <code>&lt;App&gt;</code>.</li>
+<li><code>-Path $_.FullName</code>: The full path to the file we are currently reading.</li>
+<li><code>-Quiet</code>: Important! This tells the command &quot;Don&#39;t print the matching text, just tell me True or False.&quot;</li>
+</ul>
+<p><strong>5. Renaming the file</strong>
+<code>Rename-Item -LiteralPath $_.FullName -NewName (...)</code></p>
+<ul>
+<li><code>Rename-Item</code>: The command to change a file&#39;s name.</li>
+<li><code>-LiteralPath $_.FullName</code>: We use the full path to ensure we target the exact right file.</li>
+<li><code>-NewName ($_.Name -replace &#39;\.js$&#39;, &#39;.jsx&#39;)</code>: We calculate the new name by taking the old name and swapping the ending <code>.js</code> with <code>.jsx</code>.</li>
+</ul>
+<p><strong>The Result</strong></p>
+<p>Now your code editor knows exactly which files contain UI components. You&#39;ll get better autocomplete, better color highlighting, and generally a much happier development experience.</p>
 <p><a href="https://fezcode.com/blog/renaming-js-to-jsx-gist">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -57,6 +167,49 @@
             <content:encoded><![CDATA[<p><em>Okay, gather &#39;round</em>, fellow nerds and accidental epidemiologists.
 I need to talk about something that happened in <em>World of Warcraft</em> back in 2005.
 It&#39;s called the <strong>Corrupted Blood incident</strong>, and it&#39;s basically the coolest (and most terrifying) accidental science experiment in gaming history.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vj-mz5piYYY?si=RlcxH-t2Q7-2bYIJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+<h2>ELI5: What the Heck Happened?</h2>
+<p>Imagine you&#39;re playing a game, right? You and your 19 closest friends decide to go punch a giant blood god named <strong>Hakkar the Soulflayer</strong> in the face. This raid boss has a nasty spell called &quot;Corrupted Blood.&quot;</p>
+<p>Here&#39;s how it worked:</p>
+<ol>
+<li><strong>You catch it:</strong> It drains your health. Fast.</li>
+<li><strong>It spreads:</strong> If you stand near anyone else, they catch it too. Like a super-flu.</li>
+<li><strong>It&#39;s meant for the boss room:</strong> The disease was programmed to disappear when you died or left the dungeon.</li>
+</ol>
+<p><strong>BUT HERE&#39;S THE GLITCH.</strong></p>
+<p>Hunter pets (animals that players control) could catch the disease. If a player dismissed their pet while it was sick, the game &quot;froze&quot; the pet&#39;s state.
+When they summoned the pet back in a major city (like Ironforge or Orgrimmar), the pet came back... <em>still sick</em>.</p>
+<p><em>Boom. Patient Zero.</em></p>
+<h2>The Virtual Apocalypse</h2>
+<p>Suddenly, high-level players&#39; pets were nuking entire cities. Low-level players (newbies) were dropping dead instantly just by walking past the auction house.
+High-level players were scrambling to keep themselves alive, healing frantically.</p>
+<p>It was chaos.</p>
+<ul>
+<li><strong>The Cities:</strong> Zones of death. Skeletons everywhere.</li>
+<li><strong>The Players:</strong> Panic. Some fled to the wilderness (social distancing!). Some deliberately spread it (trolls/bioterrorists). Healers tried to set up triage centers.</li>
+<li><strong>Blizzard (The Devs):</strong> They tried quarantines. Failed. They tried warnings. Failed. Eventually, they had to do a hard server reset to scrub the disease from existence.</li>
+</ul>
+<h2>Why Real Scientists Cared</h2>
+<p>Here&#39;s the wild part. Real-world epidemiologists (the doctors who study diseases) looked at this and went, <em>&quot;Holy crap, this is better than our computer models.&quot;</em></p>
+<p>Usually, scientific models assume people act rationally. &quot;If there is a plague, people will stay home.&quot; But in <em>WoW</em>, people did <strong>human</strong> things:</p>
+<ul>
+<li><strong>Curiosity:</strong> &quot;What&#39;s happening over there?&quot; -&gt; <em>Dies.</em></li>
+<li><strong>Malice:</strong> &quot;Imma go infect the newbies lol.&quot; -&gt; <em>Spreads plague.</em></li>
+<li><strong>Altruism:</strong> &quot;I&#39;ll heal you!&quot; -&gt; <em>Gets infected, spreads it further.</em></li>
+</ul>
+<p>This accidental glitch provided a perfect, unscripted look at human behavior during a crisis. It showed how fast things spread when people don&#39;t follow rules,
+how asymptomatic carriers (pets/high-level players) can destroy vulnerable populations (low-level players), and how hard it is to contain stupidity.</p>
+<h2>The GDC Legacy</h2>
+<p>This wasn&#39;t just a &quot;remember when&quot; moment. It became a serious case study. At <strong>GDC (Game Developers Conference)</strong>,
+this incident is often cited as a prime example of emergent gameplay and complex systems gone wrong (or right, depending on your view).</p>
+<p>It taught developers that players will <em>always</em> find a way to break containment.
+It taught scientists that &quot;Gamer Behavior&quot; might actually be a decent proxy for &quot;Human Panic.&quot;</p>
+<h2>The Rant</h2>
+<p>It drives me crazy that we had this perfect simulation in 2005, and when 2020 rolled around, we saw the <em>exact same behaviors</em> IRL.
+The deniers, the spreaders, the people fleeing to the countryside. We didn&#39;t learn! We leveled up, but we didn&#39;t put any points into Wisdom!</p>
+<p><strong>TL;DR:</strong> A coding bug in a fantasy game predicted modern pandemic behavior better than some government models.
+Hakkar the Soulflayer is the ultimate teacher. Wash your hands, dismiss your pets responsibly, and for the love of Azeroth, stop standing in the fire.</p>
 <p><a href="https://fezcode.com/blog/corrupted-blood-incident">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -67,6 +220,78 @@ It&#39;s called the <strong>Corrupted Blood incident</strong>, and it&#39;s basi
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>The idea was simple: Fezcodex is growing. With hundreds of blog posts, apps, and project logs, a standard list or grid view just wasn&#39;t cutting it anymore. I wanted a way to visualize the <em>connections</em> between everything. To see the &quot;brain&quot; of the website.</p>
+<p>Enter the <strong>Knowledge Graph Visualization Protocol</strong>.</p>
+<h2>The Concept</h2>
+<p>I wanted a 3D, interactive network graph where:</p>
+<ul>
+<li><strong>Nodes</strong> represent content (Blog Posts, Apps, Projects).</li>
+<li><strong>Links</strong> represent relationships (Shared tags, Categories).</li>
+<li><strong>Interaction</strong> allows users to fly through the data and navigate to content.</li>
+</ul>
+<p>It needed to feel like a &quot;cyberspace&quot; visualization from a sci-fi movie—immersive, dark, and slightly chaotic but organized.</p>
+<h2>The Tech Stack</h2>
+<ul>
+<li><strong>React</strong>: The core framework.</li>
+<li><strong>react-force-graph-3d</strong>: The heavy lifter. This library uses WebGL (via Three.js) to render force-directed graphs with great performance.</li>
+<li><strong>PIML</strong>: My custom markup language for parsing project data.</li>
+<li><strong>Tailwind CSS</strong>: For the overlay UI and brutalist styling.</li>
+</ul>
+<h2>Implementation Details</h2>
+<h3>1. Data Extraction (<code>graphDataManager.js</code>)</h3>
+<p>The first challenge was aggregating data from three different sources:</p>
+<ul>
+<li><code>posts.json</code>: A static JSON file containing blog metadata.</li>
+<li><code>apps.json</code>: A structured list of all the mini-apps.</li>
+<li><code>projects.piml</code>: A custom file format for my project portfolio.</li>
+</ul>
+<p>I created a utility function <code>fetchGraphData</code> that pulls all three.</p>
+<pre><code class="language-javascript">export const fetchGraphData = async () =&gt; {
+  const nodes = [];
+  const links = [];
+  const tagMap = new Map();
+
+  // ... fetching logic ...
+</code></pre>
+<p>For each item, I created a <strong>primary node</strong>. Then, I looked at its <code>tags</code>, <code>category</code>, or <code>technologies</code>. For every tag found, I created a <strong>tag node</strong> (if it didn&#39;t exist) and created a <strong>link</strong> between the item and the tag.</p>
+<p>This automatically creates clusters. If five posts are tagged &quot;React&quot;, they all link to the &quot;React&quot; tag node, pulling them together in the 3D space.</p>
+<h3>2. The 3D Component (<code>KnowledgeGraphPage.js</code>)</h3>
+<p>I used <code>&lt;ForceGraph3D&gt;</code> to render the data.</p>
+<pre><code class="language-jsx">&lt;ForceGraph3D
+    ref={fgRef}
+    graphData={graphData}
+    backgroundColor=&quot;#050505&quot;
+    nodeLabel=&quot;name&quot;
+    nodeColor=&quot;color&quot;
+    onNodeClick={handleNodeClick}
+    // ...
+/&gt;
+</code></pre>
+<h3>3. Camera Controls</h3>
+<p>The &quot;cool factor&quot; comes from the camera movement. When you click a node, I didn&#39;t want a hard jump. I wanted a smooth flight.</p>
+<pre><code class="language-javascript">  const handleNodeClick = useCallback((node) =&gt; {
+    // Calculate a position slightly &quot;outside&quot; the node
+    const distance = 40;
+    const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+
+    if (fgRef.current) {
+        fgRef.current.cameraPosition(
+            { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // new pos
+            node, // lookAt
+            3000  // ms duration
+        );
+    }
+  }, []);
+</code></pre>
+<p>This calculates a vector from the center (0,0,0) to the node, extends it by a fixed distance, and moves the camera there while focusing on the node.</p>
+<h2>Challenges</h2>
+<ul>
+<li><strong>PIML Parsing</strong>: My custom language parser needed to be robust enough to handle the varying structures of the <code>projects.piml</code> file.</li>
+<li><strong>Performance</strong>: Rendering hundreds of text labels in 3D can be heavy. I kept the UI minimal and only showing detailed info on hover.</li>
+<li><strong>Theme</strong>: Matching the &quot;Brutalist/Cyberpunk&quot; aesthetic required careful tuning of node colors (Emerald for Apps, Red for Posts) and link opacity.</li>
+</ul>
+<h2>The Result</h2>
+<p>The result is a living, breathing map of Fezcodex. It reveals patterns I didn&#39;t explicitly plan—like the massive cluster around &quot;React&quot; or the isolated islands of specific game experiments. It&#39;s not just a navigation tool; it&#39;s a piece of generative art powered by my own work.</p>
+<p>Go check it out at <code>/graph</code> and fly through the system.</p>
 <p><a href="https://fezcode.com/blog/building-the-knowledge-graph">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -77,6 +302,40 @@ It&#39;s called the <strong>Corrupted Blood incident</strong>, and it&#39;s basi
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>Routing Revolution: SSG, BrowserRouter, and the SEO Fix</h1>
+<p>For a long time, Fezcodex lived behind the &quot;Hash Gap.&quot; If you looked at your address bar, you’d see that familiar <code>/#/</code> slicing through every URL. While functional, this was the primary reason social media thumbnails were failing and search engines were only seeing the home page.</p>
+<p>Today, I’ve completed a total migration to <strong><a href="/vocab/spa">BrowserRouter</a></strong> combined with <strong><a href="/vocab/ssg">SSG (Static Site Generation)</a></strong>. Here is the technical breakdown of why this was necessary and how it works.</p>
+<h2>The Problem: The Hash Black Hole</h2>
+<p>We originally used <code>HashRouter</code> because Fezcodex is hosted on GitHub Pages. Since GitHub Pages is a static file host, it doesn&#39;t know how to handle a request for <code>/apps/markdown-table-formatter</code>. It looks for a folder named <code>apps</code> and an <code>index.html</code> inside it. When it doesn&#39;t find them, it throws a 404.</p>
+<p><code>HashRouter</code> solved this by putting everything after the <code>#</code>. The server ignores the hash, always serves the root <code>index.html</code>, and React handles the rest. </p>
+<p><strong>The SEO Cost:</strong> Most <strong><a href="/vocab/crawler">crawlers</a></strong> (Twitter, Facebook, Discord) do not execute JavaScript and ignore the hash entirely. To them, every single link you shared looked like <code>fezcode.com/</code>—resulting in generic &quot;Fezcodex - Personal Blog&quot; thumbnails instead of page-specific content.</p>
+<h2>The Solution Part 1: BrowserRouter</h2>
+<p>I switched the core engine from <code>HashRouter</code> to <code>BrowserRouter</code>. This gives us &quot;clean&quot; URLs:</p>
+<ul>
+<li><strong>Old:</strong> <code>fezcode.com/#/blog/my-post</code></li>
+<li><strong>New:</strong> <code>fezcode.com/blog/my-post</code></li>
+</ul>
+<p>But how do we make this work on a static host without a backend?</p>
+<h2>The Solution Part 2: react-snap &amp; SSG</h2>
+<p>Enter <strong><a href="/vocab/ssg">Static Site Generation</a></strong> via <code>react-snap</code>. </p>
+<p>Instead of shipping a nearly empty <code>index.html</code> and letting the browser build the page (<strong><a href="/vocab/csr">Client-Side Rendering</a></strong>), we now build the pages during the deployment phase. </p>
+<ol>
+<li><strong>The Crawl:</strong> During <code>npm run build</code>, <code>react-snap</code> fires up a headless browser (Puppeteer).</li>
+<li><strong>The Snapshot:</strong> It visits every route defined in our sitemap and apps list.</li>
+<li><strong>The Export:</strong> It captures the fully rendered HTML (including meta tags, titles, and unique descriptions) and saves it as a physical <code>index.html</code> file in a matching folder structure.</li>
+</ol>
+<p>In our latest build, this generated <strong>281 unique HTML files</strong>. Now, when you share a link, the crawler sees a real, static HTML file with the correct <strong><a href="/vocab/open-graph">Open Graph</a></strong> tags immediately.</p>
+<h2>The Solution Part 3: Hydration</h2>
+<p>Once the browser loads the static HTML, we don&#39;t want to lose the interactivity of React. I updated <code>src/index.js</code> to use <code>ReactDOM.hydrateRoot</code>. </p>
+<p>This process, known as <strong><a href="/vocab/hydration">Hydration</a></strong>, allows React to &quot;attach&quot; to the existing HTML already on the screen rather than re-rendering everything from scratch. It preserves the fast initial load of a static site with the power of a modern web app.</p>
+<h2>Global Content Cleanup</h2>
+<p>Switching the router was only half the battle. Thousands of internal links within our <code>.piml</code> logs and <code>.txt</code> blog posts still pointed to the old <code>/#/</code> structure.</p>
+<p>I executed a global recursive replacement across the <code>public/</code> directory:</p>
+<pre><code class="language-powershell">Get-ChildItem -Path public -Include *.json, *.txt, *.piml, *.md -Recurse | 
+ForEach-Object { (Get-Content $_.FullName) -replace &#39;/#/&#39;, &#39;/&#39; | Set-Content $_.FullName }
+</code></pre>
+<p>This ensured that the entire ecosystem—from the timeline to the project descriptions—is now synchronized with the new routing architecture.</p>
+<h2>Conclusion</h2>
+<p>Fezcodex is no longer just a Single Page Application; it is a high-performance, SEO-optimized static engine. Clean URLs, unique thumbnails, and faster perceived load times are now the standard.</p>
 <p><a href="https://fezcode.com/blog/routing-revolution-ssg-and-seo">Read more...</a></p>]]></content:encoded>
         </item>
         <item>

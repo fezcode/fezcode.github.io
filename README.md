@@ -83,4 +83,13 @@ Stories are managed via git subtrees:
 - **Logic**: Use Context for global settings like Visual Effects and Achievements.
 
 ---
+
+## Github Pages Configuration
+
+1. Deploy from a branch.
+2. Select the `gh-pages` branch
+3. Add `fezcode.com` as the custom domain.
+
+--
+
 Created by [Ahmed Samil Bulbul](https://fezcode.com).
