@@ -58,3 +58,23 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) violet
+
+  > (book)
+    (bookId) 4
+    (bookTitle) The Sins of Glareach
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-sins-of-glareach/the-beret.txt
+        (title) The Beret with 22 Stars (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) the-sins-of-glareach/yirmi-iki-yildiz.txt
+        (title) 22 Yıldızlı Bere (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) crimson

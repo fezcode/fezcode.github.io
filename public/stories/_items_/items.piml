@@ -14,3 +14,11 @@
     (description) A fragment of an ancient soul, pulsating with a faint, rhythmic light. It whispers to those who hold it, promising power at a terrible cost.
     (owner) Unknown
     (image) /stories/_items_/soul_of_viyu.png
+
+  > (item)
+    (name) Dark Green Beret
+    (type) Military Apparel
+    (book) The Sins of Glareach
+    (description) A wool beret with twenty-two silver stars stitched into the side by Lenia. It is the only thing Lorhud Krauper has left from his daughter, and he never takes it off.
+    (owner) Lorhud Krauper
+    (image) /stories/_items_/beret_of_lorhud_krauper.png
