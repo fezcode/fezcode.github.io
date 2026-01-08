@@ -5,7 +5,7 @@
     (book) The Tales of Doctor Blade
     (description) A pearlescent grey mist derived from a rare herb, processed through dwarven glass and sung over by a mute bard. One drop cures; two drops kill.
     (owner) Doctor Blade
-    (image) /stories/_items_/alilberry_extract.png
+    (image) /stories/meta-items/alilberry_extract.png
 
   > (item)
     (name) Soul of Viyu
@@ -13,7 +13,7 @@
     (book) The Broken Path
     (description) A fragment of an ancient soul, pulsating with a faint, rhythmic light. It whispers to those who hold it, promising power at a terrible cost.
     (owner) Unknown
-    (image) /stories/_items_/soul_of_viyu.png
+    (image) /stories/meta-items/soul_of_viyu.png
 
   > (item)
     (name) Dark Green Beret
@@ -21,7 +21,7 @@
     (book) The Sins of Glareach
     (description) A wool beret with twenty-two silver stars stitched into the side by Lenia. It is the only thing Lorhud Krauper has left from his daughter, and he never takes it off.
     (owner) Lorhud Krauper
-    (image) /stories/_items_/beret_of_lorhud_krauper.png
+    (image) /stories/meta-items/beret_of_lorhud_krauper.png
 
   > (item)
     (name) Chronometer of Ash
@@ -29,7 +29,7 @@
     (book) The Chronomancer's Dust
     (description) A brass sphere powered by the ash of Glareach. It allows the user to relive exactly one hour of their past. The glass is unbreakable, ensuring the user can only observe, never intervene.
     (owner) Klaude Barral
-    (image) /stories/_items_/the_chronometer.png
+    (image) /stories/meta-items/the_chronometer.png
 
   > (item)
     (name) Valeth's Notebook
@@ -37,7 +37,7 @@
     (book) The Diplomat's Journal
     (description) A navy blue notebook with a single silver star on the cover. It contains the observations of a diplomat who sees too much, documenting the rot at the heart of Thornus. Recently stolen by Nex Orlong outside the Kosnak Estate.
     (owner) Nex Orlong (Current Holder) / Valeth Vanceshire (Original Owner)
-    (image) /stories/_items_/valeth_notebook.png
+    (image) /stories/meta-items/valeth_notebook.png
 
   > (item)
     (name) Touch of Rose
@@ -45,7 +45,7 @@
     (book) The Petals of Predymesh
     (description) A devastating affliction that manifests as a crimson rose-leaf mark on the forehead. It slowly drains the victim's motor functions and speech, eventually leaving them in a vegetative state. Its only known cure is a rare drop of Alilberry.
     (owner) Pellera Orlong (Afflicted)
-    (image) /stories/_items_/touch_of_rose.png
+    (image) /stories/meta-items/touch_of_rose.png
 
   > (item)
     (name) Government Medal for Science

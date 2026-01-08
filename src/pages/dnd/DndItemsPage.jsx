@@ -30,7 +30,7 @@ function DndItemsPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/_items_/items.piml`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/meta-items/items.piml`);
 
         if (response.ok) {
           const text = await response.text();

@@ -13,7 +13,7 @@ public/stories/
 ├── characters.piml
 ├── places.piml
 ├── MarkdownExample.md
-├── _items_/
+├── meta-items/
 │   ├── items.piml
 │   ├── [item-image].png
 │   └── ...
@@ -27,7 +27,7 @@ public/stories/
 *   `books.piml`: This PIML file serves as the main index for all story books and their respective episodes.
 *   `characters.piml`: This PIML file contains the definitions for all characters (Dramatis Personae).
 *   `places.piml`: This PIML file contains the definitions for all places and locations (The Atlas).
-*   `_items_/`: Contains item definitions and their respective images.
+*   `meta-items/`: Contains item definitions and their respective images.
     *   `items.piml`: Definitions for artifacts and tools (The Armory).
 *   `[book-directory-name]/`: Each book's individual episode content files are stored in their own dedicated subdirectories.
 *   `episodeX.txt`: These are plain text files containing the actual narrative content for each episode.
@@ -136,7 +136,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 *   `description` (String): Description of the atmosphere.
 *   `status` (String): Current status (e.g., Active, Destroyed).
 
-## Item Structure (_items_/items.piml)
+## Item Structure (meta-items/items.piml)
 
 ```piml
 (items)
@@ -146,7 +146,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
     (book) The Tales of Doctor Blade
     (description) A pearlescent grey mist...
     (owner) Doctor Blade
-    (image) /stories/_items_/alilberry_extract.png
+    (image) /stories/meta-items/alilberry_extract.png
 ```
 
 ### Item Object Properties:
