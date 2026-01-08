@@ -44,7 +44,7 @@
     (type) City
     (category) Settlements
     (book) The Butterfly's Jest
-    (description) A city where truth is a dangerous commodity and the only safe place to speak it is on a comedy stage.
+    (description) A city in Thornus where truth is a dangerous commodity and the only safe place to speak it is on a comedy stage.
     (status) Active
 
   > (place)
@@ -68,7 +68,7 @@
     (type) City
     (category) Settlements
     (book) The Sins of Glareach
-    (description) Once a poor town, destroyed in the War of Fourbournes, now rebuilt as a neon-soaked metropolis of casinos and vice. A monument to Aester Cloudwear's greed.
+    (description) Once a poor town in Thornus, destroyed in the War of Fourbournes, now rebuilt as a neon-soaked metropolis of casinos and vice. A monument to Aester Cloudwear's greed.
     (status) Active (Corrupt)
 
   > (place)
@@ -85,4 +85,20 @@
     (category) Institutions
     (book) The Sanity Ward
     (description) A sterile fortress of white walls and silence, run by Dr. Brann Corshield. It is where the "mad" are sent to be broken and rebuilt in the image of conformity.
+    (status) Active
+
+  > (place)
+    (name) Predymesh
+    (type) Capital City
+    (category) Settlements
+    (book) The Diplomat's Journal
+    (description) The capital city of Thornus. A place of gilded spires and deep corruption, where the air is rich and the morals are poor. Home to the ruling class and the shadow ruler, Wulf Kosnak.
+    (status) Active
+
+  > (place)
+    (name) Thornus
+    (type) Country
+    (category) Settlements
+    (book) The Diplomat's Journal
+    (description) A nation of sharp contrasts, where ancient traditions are suffocated by modern corruption. From the neon vice of Glareach to the gilded spires of Predymesh, it is a land held together by the iron grip of shadow rulers.
     (status) Active

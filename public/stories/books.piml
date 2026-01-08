@@ -132,3 +132,23 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) gray
+
+  > (book)
+    (bookId) 7
+    (bookTitle) The Diplomat's Journal
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-diplomats-journal/the-skulls.txt
+        (title) The Skulls in the Ceiling (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) the-diplomats-journal/kafatasi.txt
+        (title) Tavandaki Kafatasları (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) blue

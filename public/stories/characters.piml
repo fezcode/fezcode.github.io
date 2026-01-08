@@ -82,3 +82,24 @@
     (book) The Sanity Ward
     (description) An immensely egotistical psychiatrist who runs St. Jude's Asylum. Obsessed with his own image (literally) and maintaining "order," he seeks to lobotomize the Sultan of Butterflies to silence her "delusions."
     (status) Alive (Narcissistic)
+
+  > (character)
+    (name) Valeth Vanceshire
+    (role) Diplomat
+    (book) The Diplomat's Journal
+    (description) A kind-hearted foreign diplomat visiting Thornus. Armed only with his navy blue notebook, he documents the corruption of the ruling class while trying to navigate a dangerous political landscape.
+    (status) Alive (Observant)
+
+  > (character)
+    (name) Wulf Kosnak
+    (role) Shadow Ruler / Corrupt Noble
+    (book) The Diplomat's Journal
+    (description) A grotesque, gluttonous veteran who pulls the strings of Thornus from behind the curtain. He displays the skulls of his wife's parents as trophies, a secret he keeps from her.
+    (status) Alive (Corrupt)
+
+  > (character)
+    (name) Penta Kosnak
+    (role) Noblewoman / Prisoner
+    (book) The Diplomat's Journal
+    (description) The young, beautiful, and intelligent wife of Wulf Kosnak. A spoil of war forced into marriage, she is a prisoner in her own home, unaware of the gruesome truth hanging above her head.
+    (status) Alive (Trapped)

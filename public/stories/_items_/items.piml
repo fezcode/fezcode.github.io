@@ -30,3 +30,11 @@
     (description) A brass sphere powered by the ash of Glareach. It allows the user to relive exactly one hour of their past. The glass is unbreakable, ensuring the user can only observe, never intervene.
     (owner) Klaude Barral
     (image) /stories/_items_/the_chronometer.png
+
+  > (item)
+    (name) Valeth's Notebook
+    (type) Journal
+    (book) The Diplomat's Journal
+    (description) A navy blue notebook with a single silver star on the cover. It contains the observations of a diplomat who sees too much, documenting the rot at the heart of Thornus.
+    (owner) Valeth Vanceshire
+    (image) /stories/_items_/valeth_notebook.png
