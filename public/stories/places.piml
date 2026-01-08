@@ -102,3 +102,11 @@
     (book) The Diplomat's Journal
     (description) A nation of sharp contrasts, where ancient traditions are suffocated by modern corruption. From the neon vice of Glareach to the gilded spires of Predymesh, it is a land held together by the iron grip of shadow rulers.
     (status) Active
+
+  > (place)
+    (name) The Under-City
+    (type) Sewers / Slums
+    (category) Locations
+    (book) The Whispering Rats
+    (description) The labyrinthine sewer system beneath Predymesh. A dark, damp world where the forgotten live and the city's dirtiest secrets flow. Home to the triplets.
+    (status) Active (Grim)

@@ -3,8 +3,8 @@
     (name) Corrigan
     (role) Private Investigator
     (book) The Broken Path
-    (description) A cynical detective haunting the smog-choked streets, chasing his own demons and fractured memories.
-    (status) Alive (Haunted)
+    (description) A cynical detective who hunted his own shadow and found it. After the incident at the St. Marlowe, he is said to walk without a reflection—a hollow vessel haunting the streets of Thornus.
+    (status) Alive (Hollow / Shadowless)
 
   > (character)
     (name) Doctor Blade
@@ -103,3 +103,24 @@
     (book) The Diplomat's Journal
     (description) The young, beautiful, and intelligent wife of Wulf Kosnak. A spoil of war forced into marriage, she is a prisoner in her own home, unaware of the gruesome truth hanging above her head.
     (status) Alive (Trapped)
+
+  > (character)
+    (name) Ophera
+    (role) Sewer Dweller / Listener
+    (book) The Whispering Rats
+    (description) The eldest of the sewer-dwelling triplets. She "listens" to the vibrations of the city through the iron pipes, gathering secrets that wash down from above.
+    (status) Alive (Hidden)
+
+  > (character)
+    (name) Melsani
+    (role) Sewer Dweller / Watcher
+    (book) The Whispering Rats
+    (description) One of the triplets. She watches the reflections in the city's grime and puddles, seeing truths that people try to hide in the light.
+    (status) Alive (Hidden)
+
+  > (character)
+    (name) Nopilai
+    (role) Sewer Dweller / Scenter
+    (book) The Whispering Rats
+    (description) The brother of the triplets. He can smell fear, blood, and corruption in the steam that rises from the grates of Predymesh.
+    (status) Alive (Hidden)
