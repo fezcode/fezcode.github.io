@@ -120,6 +120,22 @@
     (status) Active (Gloomy)
 
   > (place)
+    (name) The Kosnak Estate
+    (type) Manor
+    (category) Residences
+    (book) The Diplomat's Journal
+    (description) A sprawling, opulent estate in the capital city of Predymesh. Its gilded walls hide the grotesque trophies of Wulf Kosnak and serve as a cage for Penta.
+    (status) Active
+
+  > (place)
+    (name) The Sewer Hub
+    (type) Hideout
+    (category) Locations
+    (book) The Whispering Rats
+    (description) A central junction in the Predymesh under-city. It is where the triplets sort through the city's washed-down secrets and listen to the vibrations of the ruling class above.
+    (status) Active
+
+  > (place)
     (name) Krones Research Lab
     (type) Scientific Facility
     (category) Institutions
@@ -143,10 +159,34 @@
     (description) A city of celebrities, glamour, and superficiality. It is the heart of the entertainment industry and filled with a glamorous lifestyle.
     (status) Active
 
-  > (place)
-    (name) Fredsound Dream Studios
-    (type) Production Studio
-    (category) Establishments
-    (book) The Fredsound Legacy
-    (description) The most prestigious and successful movie studio in Hamitonis, managed by Rainhold Fredsound.
-    (status) Active
+    > (place)
+
+      (name) Fredsound Dream Studios
+
+      (type) Production Studio
+
+      (category) Establishments
+
+      (book) The Fredsound Legacy
+
+      (description) The most prestigious and successful movie studio in Hamitonis, managed by Rainhold Fredsound.
+
+      (status) Active
+
+  
+
+    > (place)
+
+      (name) Proxan Mountain
+
+      (type) Geographical Landmark
+
+      (category) Locations
+
+      (book) The Sanity Ward
+
+      (description) The ancestral home of the Children of the Mountain. A towering, desolate peak containing pressurized pockets of Sansu Syrup. It is currently a restricted military excavation site.
+
+      (status) Restricted
+
+  

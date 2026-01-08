@@ -16,6 +16,13 @@
     (image) /stories/meta-items/soul_of_viyu.png
 
   > (item)
+    (name) Corrigan's .38 Revolver
+    (type) Weapon
+    (book) The Broken Path
+    (description) A cold, heavy piece of steel that has seen better days. It is the only thing Corrigan trusts in a city full of liars and shadows. It fired the final shot in the Case of the Mirror Man.
+    (owner) Corrigan
+
+  > (item)
     (name) Dark Green Beret
     (type) Military Apparel
     (book) The Sins of Glareach
@@ -67,3 +74,59 @@
     (book) The Cat of Craninal
     (description) Simple, salty snacks used to bribe the Council of Three. They represent the simple joys of a quiet life.
     (owner) Prostex Leatherwave
+
+  > (item)
+    (name) Sansu Syrup
+    (type) Ancient Bio-Catalyst
+    (book) The Roots of Silence
+    (description) An iridescent, vibrating fluid harvested from deep pockets within Proxan Mountain. Used by Proxanians for communal neural links. When pressurized with Viyu gas, it becomes a violent crimson 'Agitated' state.
+    (owner) Government (Seized) / Avalia Krones (Stolen Cache)
+
+  > (item)
+    (name) Crimson Binder
+    (type) Stabilizer / Pathogen
+    (book) The Roots of Silence
+    (description) A viscous red concentrate used by Proxanians to bridge biological neural networks. Willare Frindjen mistakenly added this to the Krones Formula thinking it was nitrogen. Avalia realized this too late, knowing that the binder is now searching for a neural host in humans.
+    (owner) Krones Research Lab (Avalia's Secret Cache)
+
+  > (item)
+    (name) Proxanian Seeds
+    (type) Biological Hardware
+    (book) The Roots of Silence
+    (description) Dormant seeds of extinct flora that grew on Proxan Mountain. They respond only to the 'Proxanian Echo' and were the true foundation of the Krones Formula.
+    (owner) Avalia Krones (Secret)
+
+  > (item)
+    (name) Proxanian Echo
+    (type) Acoustic Artifact / Frequency
+    (book) The Roots of Silence
+    (description) The background psychic frequency of the extinct Children of the Mountain. Avalia Krones sought to harness this for her 'botanical network', but it is now the phantom signal that the 'Touch of Rose' victims are biologically trying to connect to.
+    (owner) Proxan Mountain (Source)
+
+  > (item)
+    (name) Ash of Glareach
+    (type) Catalyst / Fuel
+    (book) The Chronomancer's Dust
+    (description) Fine gray powder harvested from the burn-sites of the old city. It retains the 'chronological weight' of the fire, making it the only substance capable of powering a Chronometer or stabilizing a RedLink.
+    (owner) Various (Black Market)
+
+  > (item)
+    (name) The Skulls in the Rafters
+    (type) Macabre Trophy
+    (book) The Diplomat's Journal
+    (description) The hidden remains of Penta Kosnak's parents, kept as a secret trophy by Wulf Kosnak. They represent the silent, horrific truth at the heart of the capital's ruling class.
+    (owner) Wulf Kosnak
+
+  > (item)
+    (name) Nitrogen Booster (Batch #4)
+    (type) Industrial Chemical
+    (book) The Harvest of Silence
+    (description) A standard agricultural supplement. The empty canister of Batch #4 stands in Avalia's lab as a reminder of the night Willare reached for the wrong shelf.
+    (owner) Krones Research Lab
+
+  > (item)
+    (name) "Last Breath" (Master Tape)
+    (type) Cursed Recording
+    (book) The Butterfly's Jest
+    (description) The final recording of the band Hellbound. Legend says the frequency of the last chord was matched to the exact moment Galarian Freiton's heart stopped.
+    (owner) Sultan of Butterflies (Rumored)
