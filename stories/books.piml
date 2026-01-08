@@ -260,3 +260,23 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) seagreen
+
+  > (book)
+    (bookId) 12
+    (bookTitle) The Fredsound Legacy
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-fredsound-legacy/the-fredsound-legacy.txt
+        (title) The Fredsound Legacy (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) the-fredsound-legacy/fredsound-mirasi.txt
+        (title) Fredsound Mirası (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) silver
