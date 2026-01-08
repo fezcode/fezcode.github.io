@@ -45,12 +45,19 @@ const LogDetailPage = () => {
         const logMetadata = categoryLogs.find((item) => item.slug === slugId);
 
         if (logMetadata) {
-          const logContentResponse = await fetch(
-            `/logs/${category}/${slugId}.txt`,
-          );
-          if (logContentResponse.ok) {
-            const logBody = await logContentResponse.text();
-            setLog({ attributes: logMetadata, body: logBody });
+          try {
+            const logContentResponse = await fetch(
+              `/logs/${category}/${slugId}.txt`,
+            );
+            if (logContentResponse.ok) {
+              const logBody = await logContentResponse.text();
+              setLog({ attributes: logMetadata, body: logBody });
+            } else {
+              // If text file is missing, just use metadata
+              setLog({ attributes: logMetadata, body: logMetadata.description || '' });
+            }
+          } catch (e) {
+             setLog({ attributes: logMetadata, body: logMetadata.description || '' });
           }
         } else {
           setLog({ attributes: { title: 'Log not found' }, body: '' });

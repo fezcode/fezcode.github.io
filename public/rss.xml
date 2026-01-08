@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 04 Jan 2026 13:18:50 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 08 Jan 2026 00:05:22 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 04 Jan 2026 13:18:50 GMT</pubDate>
+        <pubDate>Thu, 08 Jan 2026 00:05:22 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Aether: Cyberpunk Audio Interface]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/aether-music-player</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/aether-music-player</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 06 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Aether: The Cyberpunk Music Player</h1>
+<p><a href="https://fezcode.com/blog/aether-music-player">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[5 Ways to Pass Arguments in a URL (Beyond the Basic Query)]]></title>
             <description><![CDATA[[object Object]]]></description>

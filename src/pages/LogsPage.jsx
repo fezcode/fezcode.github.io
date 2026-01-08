@@ -7,6 +7,7 @@ import {
   InfoIcon,
   SquaresFourIcon,
   ListIcon,
+  BookBookmarkIcon,
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogCard from '../components/LogCard';
@@ -150,6 +151,14 @@ const LogsPage = () => {
                   <ListIcon size={18} weight={viewMode === 'list' ? 'fill' : 'regular'} />
                 </button>
               </div>
+
+              <Link
+                to="/reading"
+                className="flex items-center gap-2 px-4 py-2 bg-amber-500/10 border border-amber-500/50 text-amber-500 hover:bg-amber-500 hover:text-black transition-all font-mono text-xs uppercase tracking-widest font-bold rounded-sm"
+              >
+                <BookBookmarkIcon size={16} weight="bold" />
+                <span>Reading</span>
+              </Link>
 
               <button
                 onClick={() => setIsInfoModalOpen(true)}

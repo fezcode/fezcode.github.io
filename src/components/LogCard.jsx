@@ -83,6 +83,17 @@ const LogCard = ({ log, index, totalLogs, viewMode = 'grid' }) => {
               >
                 {category}
               </span>
+              {category === 'Reading' && log.status && (
+                <span
+                  className={`px-2 py-0.5 text-[10px] font-mono font-bold uppercase tracking-widest border rounded-sm ${
+                    log.status === 'read'
+                      ? 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10'
+                      : 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10'
+                  }`}
+                >
+                  {log.status}
+                </span>
+              )}
               {rating > 0 && (
                 <div className="flex items-center gap-1.5">
                   <span className="font-mono text-xs font-bold text-white">
@@ -162,7 +173,7 @@ const LogCard = ({ log, index, totalLogs, viewMode = 'grid' }) => {
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-900 to-transparent" />
 
           {/* Category Badge */}
-          <div className="absolute top-3 left-3">
+          <div className="absolute top-3 left-3 flex gap-2">
             <span
               className="px-2 py-1 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm backdrop-blur-md"
               style={{
@@ -173,6 +184,17 @@ const LogCard = ({ log, index, totalLogs, viewMode = 'grid' }) => {
             >
               {category}
             </span>
+            {category === 'Reading' && log.status && (
+              <span
+                className={`px-2 py-1 text-[9px] font-mono font-bold uppercase tracking-widest border rounded-sm backdrop-blur-md ${
+                  log.status === 'read'
+                    ? 'text-emerald-400 border-emerald-500/30 bg-emerald-500/10'
+                    : 'text-yellow-400 border-yellow-500/30 bg-yellow-500/10'
+                }`}
+              >
+                {log.status}
+              </span>
+            )}
           </div>
 
           {/* Rating Badge */}

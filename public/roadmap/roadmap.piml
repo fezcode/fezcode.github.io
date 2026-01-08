@@ -17,6 +17,7 @@
     (epic) Core Infrastructure
     (status) On Hold
     (priority) Medium
+    (assignee) Fezcodex
     (created_at) 2025-11-29T10:00:00+03:00
     (due_date) 2026-01-15T00:00:00+03:00
     (notes) Find a free cloud provider.
@@ -28,6 +29,7 @@
     (category) Games
     (status) Completed
     (priority) Medium
+    (assignee) Fezcodex
     (created_at) 2025-11-28T15:00:00+03:00
     (notes) Focus on developer-themed commands.
 
@@ -38,6 +40,7 @@
     (category) Converters
     (status) On Hold
     (priority) Low
+    (assignee) Fezcodex
     (created_at) 2025-11-15T14:00:00+03:00
     (notes) Lower priority, focus on core features first.
 
@@ -48,6 +51,7 @@
     (category) Utilities
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-11-29T18:00:00+03:00
     (notes) Research Gantt chart libraries.
 
@@ -59,6 +63,7 @@
     (epic) UI Overhaul
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-11-28T18:00:00+03:00
     (due_date) 2025-11-30T00:00:00+03:00
     (notes) Futuristic Cyan Theme.
@@ -71,6 +76,7 @@
     (epic) UI Overhaul
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-11-28T18:00:00+03:00
     (due_date) 2025-11-30T00:00:00+03:00
     (notes) Futuristic Cyan Theme.
@@ -83,6 +89,7 @@
     (epic) UI Overhaul
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-11-30T09:00:00+03:00
     (notes) Refactored layout, added Framer Motion animations, new CustomToggle themes.
 
@@ -93,6 +100,7 @@
     (category) UI/UX
     (status) Completed
     (priority) Medium
+    (assignee) Fezcodex
     (created_at) 2025-11-30T10:00:00+03:00
     (notes) Added `colorTheme` prop for customization.
 
@@ -103,6 +111,7 @@
     (category) Feature
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-11-30T11:00:00+03:00
     (notes) Added links to Settings and Achievements page in toast.
 
@@ -113,6 +122,7 @@
     (category) Feature
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-11-30T11:00:00+03:00
     (notes) A route for returning and rendering vocabulary components.
 
@@ -123,6 +133,7 @@
     (category) Feature
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-12-12T03:22:00+03:00
     (notes) App should use a artistic style, not default fezcodex style for the app.
 
@@ -133,6 +144,7 @@
     (category) Feature
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-12-12T03:22:00+03:00
     (notes) A hero or landing page using different styles must be implemented.
 
@@ -143,6 +155,7 @@
     (category) Feature
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-12-12T08:34:00+03:00
     (notes) More modern sidebar that fits well with the navbar as well
 
@@ -155,6 +168,7 @@
     (category) Feature
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-12-12T08:34:00+03:00
     (notes) We assume explore section is also inside latest blogpost.
 
@@ -168,6 +182,7 @@
     (category) Feature
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-12-17T18:34:00+03:00
     (notes) Sidebar should have a dark red color (transparent salmon)
 
@@ -182,6 +197,7 @@
     (epic) OS Experience
     (status) Completed
     (priority) Medium
+    (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) Clicking a node navigates to the content. Implemented using react-force-graph-3d.
 
@@ -196,6 +212,7 @@
     (epic) OS Experience
     (status) Planned
     (priority) Low
+    (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) Use Framer Motion for dragging physics and Z-index management (active window comes to front).
 
@@ -210,6 +227,7 @@
     (epic) OS Experience
     (status) Planned
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) The strip should have a 'glitch' animation when an achievement is unlocked.
 
@@ -224,6 +242,7 @@
     (epic) OS Experience
     (status) Planned
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) Visual layout should feel like a NASA control room or a security monitor.
 
@@ -238,6 +257,7 @@
     (epic) Mystery
     (status) In Progress
     (priority) Medium
+    (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) First secret: typing 'FEZ' on any page should make the logo spin once.
 
@@ -252,6 +272,7 @@
     (epic) OS Experience
     (status) Planned
     (priority) Medium
+    (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) Requires passing a 'data stream' prop to the GenerativeArt component.
 
@@ -271,6 +292,7 @@
     (epic) OS Experience
     (status) Completed
     (priority) Medium
+    (assignee) Fezcodex
     (created_at) 2025-12-21T18:00:00+03:00
     (notes) Implemented via public/banner.piml and src/components/Banner.js. Supports types (info, warning, error), scheduling (from/to), links, and persistence (localStorage dismissal).
 
@@ -282,5 +304,16 @@
     (category) Music
     (status) Completed
     (priority) High
+    (assignee) Fezcodex
     (created_at) 2026-01-06T18:00:00+03:00
 
+  > (issues)
+    (id) FEZ-24
+    (title) Refactor Roadmap Page
+    (description) Convert the Roadmap page to a Linear-style aesthetic with Board/List views, collapsible sections, and modal-based issue details.
+    (category) UI/UX
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-01-08T14:00:00+03:00
+    (notes) Implemented Void Architect achievement.

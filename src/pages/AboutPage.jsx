@@ -9,6 +9,7 @@ import {
   ArticleIcon,
   BugIcon,
   HandHeartIcon,
+  BookBookmarkIcon,
 } from '@phosphor-icons/react';
 import CommandPalette from '../components/CommandPalette';
 import { useCommandPalette } from '../context/CommandPaletteContext';
@@ -130,6 +131,17 @@ const AboutPage = () => {
             className="group-hover:scale-110 transition-transform"
           />
           <span className="hidden sm:inline">Friends of the Show</span>
+        </Link>
+
+        <Link
+          to="/reading"
+          className={`group flex items-center gap-2 px-4 py-2 transition-all duration-300 ${getButtonStyle(view)}`}
+        >
+          <BookBookmarkIcon
+            weight="bold"
+            className="group-hover:scale-110 transition-transform"
+          />
+          <span className="hidden sm:inline">Reading</span>
         </Link>
       </motion.div>
 

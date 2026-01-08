@@ -118,6 +118,7 @@ const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
 const SettingsPage = lazy(() => import('../pages/SettingsPage'));
 const TimelinePage = lazy(() => import('../pages/TimelinePage'));
 const RandomPage = lazy(() => import('../pages/RandomPage'));
+const ReadingPage = lazy(() => import('../pages/ReadingPage'));
 const NotebooksPage = lazy(() => import('../pages/notebooks/NotebooksPage'));
 const NotebookViewerPage = lazy(() => import('../pages/notebooks/NotebookViewerPage'));
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
@@ -544,6 +545,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <RandomPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/reading"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <ReadingPage />
               </Suspense>
             </motion.div>
           }
