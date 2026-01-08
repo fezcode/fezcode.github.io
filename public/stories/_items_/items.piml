@@ -1,0 +1,16 @@
+(items)
+  > (item)
+    (name) Alilberry Extract
+    (type) Potion / Poison
+    (book) The Tales of Doctor Blade
+    (description) A pearlescent grey mist derived from a rare herb, processed through dwarven glass and sung over by a mute bard. One drop cures; two drops kill.
+    (owner) Doctor Blade
+    (image) /stories/_items_/alilberry_extract.png
+
+  > (item)
+    (name) Soul of Viyu
+    (type) Artifact
+    (book) The Broken Path
+    (description) A fragment of an ancient soul, pulsating with a faint, rhythmic light. It whispers to those who hold it, promising power at a terrible cost.
+    (owner) Unknown
+    (image) /stories/_items_/soul_of_viyu.png

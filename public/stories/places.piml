@@ -1,0 +1,56 @@
+(places)
+  > (place)
+    (name) Corrigan Investigations
+    (type) Office
+    (book) The Broken Path
+    (description) A dusty office with a flickering neon sign, smelling of stale smoke and cheap bourbon. The sanctuary of a man fighting his own shadow.
+    (status) Active
+
+  > (place)
+    (name) The Tipsy Lizard
+    (type) Tavern
+    (book) The Broken Path
+    (description) A dive bar where secrets are traded for ale. The kind of place where you wipe your feet on the way out.
+    (status) Active
+
+  > (place)
+    (name) St. Marlowe Hotel
+    (type) Inn / Flophouse
+    (book) The Broken Path
+    (description) A rundown hotel for has-beens and never-weres. Its walls hold more regrets than paint.
+    (status) Active
+
+  > (place)
+    (name) Blade's Clinic
+    (type) Medical Facility
+    (book) The Tales of Doctor Blade
+    (description) A sanctuary of white marble and lavender scent. A place of miraculous healing, and sometimes, quiet death.
+    (status) Active
+
+  > (place)
+    (name) The Lower Ward
+    (type) District
+    (book) The Tales of Doctor Blade
+    (description) The poorer district of the city, where an orphanage stands funded by questionable means.
+    (status) Active
+
+  > (place)
+    (name) Craninal
+    (type) Town
+    (book) The Butterfly's Jest
+    (description) A town where truth is a dangerous commodity and the only safe place to speak it is on a comedy stage.
+    (status) Active
+
+  > (place)
+    (name) The Laughing Stock
+    (type) Comedy Club
+    (book) The Butterfly's Jest
+    (description) The comedy club where the Sultan of Butterflies performs and gathers her silent army.
+    (status) Active
+
+  > (place)
+    (name) Music Festival Grounds
+    (type) Event Location
+    (book) The Butterfly's Jest
+    (description) The site where Hellbound played "Last Breath" and Galarian Freiton took his.
+    (status) Inactive

@@ -41,9 +41,13 @@ const LootDiscovery = () => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0 }}
       onClick={() => {
+        const currentCount = parseInt(localStorage.getItem('fezcodex_loot_count') || '0', 10);
+        const newCount = currentCount + 1;
+        localStorage.setItem('fezcodex_loot_count', newCount.toString());
+
         addToast({
           title: 'Loot Discovered!',
-          message: 'You found an ancient relic in the archives.',
+          message: `You found an ancient relic in the archives. (Total Found: ${newCount})`,
           type: 'gold',
         });
         setShowLoot(false);

@@ -62,6 +62,14 @@ module.exports = {
   'gist-card-bg-hover': 'var(--bg-gist-card-hover)',
   'feat-card-bg': 'var(--bg-feat-card)',
   'feat-card-bg-hover': 'var(--bg-feat-card-hover)',
+
+  // DND Colors
+  'dnd-gold': 'var(--dnd-gold)',
+  'dnd-gold-light': 'var(--dnd-gold-light)',
+  'dnd-crimson': 'var(--dnd-crimson)',
+  'dnd-text': 'var(--dnd-text)',
+  'dnd-parchment': 'var(--dnd-parchment)',
+
   'book-alpha-10': 'rgba(0, 191, 255, 0.1)',
   'book-alpha-50': 'rgba(0, 191, 255, 0.5)',
   'movie-alpha-10': 'rgba(220, 20, 60, 0.1)',

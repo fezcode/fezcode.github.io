@@ -10,6 +10,13 @@ The content is organized as follows:
 public/stories/
 ├── authors.piml
 ├── books.piml
+├── characters.piml
+├── places.piml
+├── MarkdownExample.md
+├── _items_/
+│   ├── items.piml
+│   ├── [item-image].png
+│   └── ...
 └── [book-directory-name]/
     ├── episode1.txt
     └── episode2.txt
@@ -18,7 +25,11 @@ public/stories/
 
 *   `authors.piml`: This PIML file contains the definitions for all authors.
 *   `books.piml`: This PIML file serves as the main index for all story books and their respective episodes.
-*   `[book-directory-name]/`: Each book's individual episode content files are stored in their own dedicated subdirectories. For example, `book-one/` would contain episodes for "Book One".
+*   `characters.piml`: This PIML file contains the definitions for all characters (Dramatis Personae).
+*   `places.piml`: This PIML file contains the definitions for all places and locations (The Atlas).
+*   `_items_/`: Contains item definitions and their respective images.
+    *   `items.piml`: Definitions for artifacts and tools (The Armory).
+*   `[book-directory-name]/`: Each book's individual episode content files are stored in their own dedicated subdirectories.
 *   `episodeX.txt`: These are plain text files containing the actual narrative content for each episode.
 
 ## Episode File Contents
@@ -48,48 +59,8 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
         (author) fezcode
         (date) 2025-11-14
         (updated) 2025-11-14
-      > (episode)
-        (id) 2
-        (filename) book-one/episode2.txt
-        (title) Episode 2: The Goblin Ambush
-        (author) fezcode
-        (date) 2025-11-14
-        (updated) 2025-11-14
     (overlay) red
-
-  > (book)
-  # ... more book objects
 ```
-
-### Root Object Properties:
-
-*   `books` (Array): An array of book objects.
-
-## Author Structure (authors.piml)
-
-The `authors.piml` file is a PIML document that, when parsed, results in an object containing an `authors` array.
-
-```piml
-(authors)
-  > (author)
-    (name) Samil
-    (alias) fezcode
-    (website) https://fezcode.com
-    (image) https://avatars.githubusercontent.com/u/49845895?v=4
-  > (author)
-    (name) Sabri
-    (alias) TheLastRoadRunner
-    (website) https://github.com/TheLastRoadRunner
-    (image) https://avatars.githubusercontent.com/u/99679216?v=4
-  # more authors.
-```
-
-### Author Object Properties:
-
-*   `name` (String): The name of the author.
-*   `alias` (String): A unique alias for the author, used to link episodes to this author.
-*   `website` (String, Optional): The website or URL associated with the author.
-*   `image` (String): A URL to the author's profile picture.
 
 ### Book Object Properties:
 
@@ -101,10 +72,88 @@ The `authors.piml` file is a PIML document that, when parsed, results in an obje
 ### Episode Object Properties:
 
 *   `id` (Number): A unique identifier for the episode within its book.
-*   `filename` (String): The relative path to the plain text file containing the episode's content. This path is relative to the `public/stories/` directory (e.g., `book-one/episode1.txt`).
+*   `filename` (String): The relative path to the plain text file. Relative to the `public/stories/` directory.
 *   `title` (String): The title of the episode.
-*   `author` (String): The alias of the author of the episode, matching an `alias` in the `authors` section.
-*   `date` (String): The original release date of the episode.
-*   `updated` (String): The last update date of the episode.
+*   `author` (String): The alias of the author, matching an `alias` in `authors.piml`.
+*   `date` (String): Original release date.
+*   `updated` (String): Last update date.
 
-This structure allows the application to dynamically load and display story content, organizing it into books and episodes with associated metadata, and also provides a central place for author information.
+## Author Structure (authors.piml)
+
+```piml
+(authors)
+  > (author)
+    (name) Samil
+    (alias) fezcode
+    (website) https://fezcode.com
+    (image) https://avatars.githubusercontent.com/u/49845895?v=4
+```
+
+### Author Object Properties:
+
+*   `name` (String): The name of the author.
+*   `alias` (String): A unique alias for the author.
+*   `website` (String, Optional): The website URL.
+*   `image` (String): A URL to the author's profile picture.
+
+## Character Structure (characters.piml)
+
+```piml
+(characters)
+  > (character)
+    (name) Corrigan
+    (role) Private Investigator
+    (book) The Broken Path
+    (description) A cynical detective...
+    (status) Alive (Haunted)
+```
+
+### Character Object Properties:
+
+*   `name` (String): The name of the character.
+*   `role` (String): The occupation or role.
+*   `book` (String): Primary book appearance.
+*   `description` (String): Brief biography.
+*   `status` (String): Current status (e.g., Alive, Deceased).
+
+## Place Structure (places.piml)
+
+```piml
+(places)
+  > (place)
+    (name) Blade's Clinic
+    (type) Medical Facility
+    (book) The Tales of Doctor Blade
+    (description) A sanctuary of white marble...
+    (status) Active
+```
+
+### Place Object Properties:
+
+*   `name` (String): The name of the location.
+*   `type` (String): The type of place (e.g., Tavern, City).
+*   `book` (String): The book where it is featured.
+*   `description` (String): Description of the atmosphere.
+*   `status` (String): Current status (e.g., Active, Destroyed).
+
+## Item Structure (_items_/items.piml)
+
+```piml
+(items)
+  > (item)
+    (name) Alilberry Extract
+    (type) Potion / Poison
+    (book) The Tales of Doctor Blade
+    (description) A pearlescent grey mist...
+    (owner) Doctor Blade
+    (image) /stories/_items_/alilberry_extract.png
+```
+
+### Item Object Properties:
+
+*   `name` (String): The name of the artifact or item.
+*   `type` (String): The classification (e.g., Weapon, Tool, Potion).
+*   `book` (String): The book where it first appears.
+*   `description` (String): Detailed description of the item.
+*   `owner` (String): The character or entity that owns the item.
+*   `image` (String, Optional): Relative path to the item's image file.

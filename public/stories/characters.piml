@@ -1,0 +1,49 @@
+(characters)
+  > (character)
+    (name) Corrigan
+    (role) Private Investigator
+    (book) The Broken Path
+    (description) A cynical detective haunting the smog-choked streets, chasing his own demons and fractured memories.
+    (status) Alive (Haunted)
+
+  > (character)
+    (name) Doctor Blade
+    (role) Physician & Assassin
+    (book) The Tales of Doctor Blade
+    (description) A legendary healer with a dark secret. He cures the incurable and kills with the same precision using the magical Alilberry.
+    (status) Alive
+
+  > (character)
+    (name) Master Vorn
+    (role) Merchant
+    (book) The Tales of Doctor Blade
+    (description) A wealthy merchant, cheat, and slaver who sought a cure for his gout and found eternal rest instead.
+    (status) Deceased
+
+  > (character)
+    (name) Sultan of Butterflies
+    (role) Comedian / Cult Leader
+    (book) The Butterfly's Jest
+    (description) A tall, beautiful, and sharp-witted widow turned comedian. She hides her quest for justice behind a mask of madness and punchlines.
+    (status) Alive (Active)
+
+  > (character)
+    (name) Galarian "Galar" Freiton
+    (role) Scientist
+    (book) The Butterfly's Jest
+    (description) A brilliant scientist who spent 13 years discovering the "Soul of Viyu", a dark free energy source. Killed to keep it secret.
+    (status) Deceased
+
+  > (character)
+    (name) Agent Sprite
+    (role) Government Agent
+    (book) The Butterfly's Jest
+    (description) A shadowy government operative involved in the assassination of Galarian Freiton.
+    (status) Alive
+
+  > (character)
+    (name) Agent Laozi
+    (role) Government Agent
+    (book) The Butterfly's Jest
+    (description) A shadowy government operative involved in the assassination of Galarian Freiton.
+    (status) Alive

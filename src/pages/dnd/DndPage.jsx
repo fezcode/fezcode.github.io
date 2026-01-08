@@ -5,7 +5,7 @@ import DndCard from '../../components/dnd/DndCard';
 import DndLayout from '../../components/dnd/DndLayout';
 import useSeo from '../../hooks/useSeo';
 import { useAchievements } from '../../context/AchievementContext';
-import { BookOpen, Scroll } from '@phosphor-icons/react';
+import { BookOpen, Scroll, UsersThree, MapTrifold, Sword } from '@phosphor-icons/react';
 
 const DndPage = () => {
   useSeo({
@@ -47,12 +47,30 @@ const DndPage = () => {
                       "Every serf has a story, and every fraud a hidden truth. Step into the tapestry of our shared odyssey."
                     </p>        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
           <DndCard
             title="Chronicles"
             description="The documented history and lore of the realms."
             link="/stories/lore"
             icon={<Scroll size={48} weight="duotone" />}
+          />
+          <DndCard
+            title="Dramatis Personae"
+            description="The heroes, villains, and bystanders of our tales."
+            link="/stories/characters"
+            icon={<UsersThree size={48} weight="duotone" />}
+          />
+          <DndCard
+            title="The Atlas"
+            description="Landmarks, cities, and hidden corners of the world."
+            link="/stories/places"
+            icon={<MapTrifold size={48} weight="duotone" />}
+          />
+          <DndCard
+            title="The Armory"
+            description="Artifacts, curiosities, and tools of the trade."
+            link="/stories/items"
+            icon={<Sword size={48} weight="duotone" />}
           />
           <DndCard
             title="Creators"

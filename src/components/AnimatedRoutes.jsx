@@ -19,6 +19,9 @@ const DndPage = lazy(() => import('../pages/dnd/DndPage'));
 const DndNotFoundPage = lazy(() => import('../pages/dnd/DndNotFoundPage'));
 const DndEpisodePage = lazy(() => import('../pages/dnd/DndEpisodePage'));
 const DndLorePage = lazy(() => import('../pages/dnd/DndLorePage'));
+const DndCharactersPage = lazy(() => import('../pages/dnd/DndCharactersPage'));
+const DndPlacesPage = lazy(() => import('../pages/dnd/DndPlacesPage'));
+const DndItemsPage = lazy(() => import('../pages/dnd/DndItemsPage'));
 const DndBookPage = lazy(() => import('../pages/dnd/DndBookPage'));
 const DndAuthorsPage = lazy(() => import('../pages/dnd/DndAuthorsPage'));
 const AppPage = lazy(() => import('../pages/AppPage'));
@@ -478,6 +481,57 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <DndLorePage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        {/* D&D Characters Page */}
+        <Route
+          path="/stories/characters"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DndCharactersPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        {/* D&D Places Page */}
+        <Route
+          path="/stories/places"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DndPlacesPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        {/* D&D Items Page */}
+        <Route
+          path="/stories/items"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DndItemsPage />
               </Suspense>
             </motion.div>
           }

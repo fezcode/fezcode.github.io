@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndCard from '../../components/dnd/DndCard';
 import DndLayout from '../../components/dnd/DndLayout';
+import DndSearchInput from '../../components/dnd/DndSearchInput';
 import useSeo from '../../hooks/useSeo';
 import piml from 'piml';
 import { BookOpen, Scroll } from '@phosphor-icons/react';
@@ -17,6 +18,7 @@ function DndLorePage() {
 
   const { setBreadcrumbs } = useContext(DndContext);
   const [books, setBooks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     setBreadcrumbs([
@@ -26,7 +28,7 @@ function DndLorePage() {
   }, [setBreadcrumbs]);
 
   useEffect(() => {
-    const fetchBooks = async () => {
+    const fetchData = async () => {
       try {
         const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
         if (response.ok) {
@@ -36,30 +38,43 @@ function DndLorePage() {
           setBooks(sortedBooks);
         }
       } catch (error) {
-        console.error('Failed to fetch books:', error);
+        console.error('Failed to fetch data:', error);
       }
     };
-    fetchBooks();
+    fetchData();
   }, []);
+
+  const filteredBooks = books.filter(book => {
+    const term = searchQuery.toLowerCase();
+    const titleMatch = book.bookTitle.toLowerCase().includes(term);
+    const authorMatch = book.episodes?.some(ep => ep.author.toLowerCase().includes(term));
+    return titleMatch || authorMatch;
+  });
 
   return (
     <DndLayout>
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <header className="text-center mb-24 relative">
+        <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">
              <Scroll size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
           <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
             The Chronicles
           </h1>
-          <p className="text-lg md:text-xl font-arvo text-gray-400 max-w-2xl mx-auto uppercase tracking-widest opacity-60">
+          <p className="text-lg md:text-xl font-arvo text-gray-400 max-w-2xl mx-auto uppercase tracking-widest opacity-60 mb-12">
             A compendium of documented history and ancient scripts.
           </p>
+
+          <DndSearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            placeholder="Search chronicles by title or scribe..."
+          />
         </header>
 
         <section className="space-y-24">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {books.map((book, idx) => (
+            {filteredBooks.map((book, idx) => (
               <motion.div
                 key={book.bookId}
                 initial={{ opacity: 0, y: 20 }}
@@ -78,6 +93,11 @@ function DndLorePage() {
                 />
               </motion.div>
             ))}
+            {filteredBooks.length === 0 && (
+              <div className="col-span-full text-center py-12 text-white/60 font-arvo italic">
+                No scrolls found matching your inquiry.
+              </div>
+            )}
           </div>
 
           <div className="dnd-parchment-container p-12 md:p-24 shadow-2xl border-2 border-black/10 dnd-parchment-glow relative">
@@ -109,12 +129,11 @@ function DndLorePage() {
                   </Link>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </DndLayout>
-  );
-}
-
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </DndLayout>
+              );
+            }
 export default DndLorePage;

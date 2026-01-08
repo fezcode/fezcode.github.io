@@ -5,6 +5,7 @@ import piml from 'piml';
 import { DndContext } from '../../context/DndContext';
 import DndAuthorCard from '../../components/dnd/DndAuthorCard';
 import DndLayout from '../../components/dnd/DndLayout';
+import DndSearchInput from '../../components/dnd/DndSearchInput';
 import { useAchievements } from '../../context/AchievementContext';
 import { Users } from '@phosphor-icons/react';
 
@@ -12,6 +13,7 @@ function DndAuthorsPage() {
   const { setBreadcrumbs } = useContext(DndContext);
   const [authors, setAuthors] = useState([]);
   const [books, setBooks] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
   const { unlockAchievement } = useAchievements();
 
   useSeo({
@@ -61,23 +63,37 @@ function DndAuthorsPage() {
     return authorBooks;
   };
 
+  const filteredAuthors = authors.filter(author => {
+    const term = searchQuery.toLowerCase();
+    return (
+      author.name.toLowerCase().includes(term) ||
+      author.alias.toLowerCase().includes(term)
+    );
+  });
+
   return (
     <DndLayout>
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <header className="text-center mb-24 relative">
+        <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">
              <Users size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
           <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none">
             The Scribes
           </h1>
-          <p className="text-lg md:text-xl font-arvo text-gray-400 max-w-2xl mx-auto uppercase tracking-widest opacity-60">
+          <p className="text-lg md:text-xl font-arvo text-gray-400 max-w-2xl mx-auto uppercase tracking-widest opacity-60 mb-12">
             Meeting the voices behind the recorded history of the realms.
           </p>
+
+          <DndSearchInput
+            value={searchQuery}
+            onChange={setSearchQuery}
+            placeholder="Search scribes by name or alias..."
+          />
         </header>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-          {authors.map((author, index) => (
+          {filteredAuthors.map((author, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -93,6 +109,11 @@ function DndAuthorsPage() {
               />
             </motion.div>
           ))}
+          {filteredAuthors.length === 0 && (
+            <div className="col-span-full text-center py-12 text-white/60 font-arvo italic">
+              No scribes found matching your query.
+            </div>
+          )}
         </div>
       </div>
     </DndLayout>
