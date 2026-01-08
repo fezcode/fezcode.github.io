@@ -1,0 +1,53 @@
+# Resolving `spawn ENAMETOOLONG` in `gh-pages` Deployment
+
+If you've been using the `gh-pages` package for a while, especially in projects with large build folders or complex structures, you might have encountered the dreaded `spawn ENAMETOOLONG` error when running your deploy script.
+
+## The Problem
+When executing the standard deployment command:
+```bash
+gh-pages -d build -b gh-pages
+```
+The process fails with a system error indicating that the argument list or the command path itself has exceeded the operating system's limits. This is often related to how the underlying `globby` or `async` dependencies handle file lists in older versions of the package (like `6.3.0`).
+
+The issue is documented and discussed in detail here: [gh-pages Issue #585](https://github.com/tschaub/gh-pages/issues/585).
+
+## The Fix
+The specific fix for this issue was highlighted in [this GitHub comment](https://github.com/tschaub/gh-pages/issues/585#issuecomment-2585457896), which explains that the `ENAMETOOLONG` error occurs on Windows when the `rm` command receives an excessively long list of files as arguments.
+
+``` git
+diff --git a/lib/git.js b/lib/git.js
+index d4c5724272d00bd1f0d76c47dab47d21ccd094d9..d86ac2b0bd7cbc02f34a50dac6980965102ee964 100644
+--- a/lib/git.js
++++ b/lib/git.js
+@@ -143,7 +143,7 @@ Git.prototype.rm = function (files) {
+   if (!Array.isArray(files)) {
+     files = [files];
+   }
+-  return this.exec('rm', '--ignore-unmatch', '-r', '-f', '--', ...files);
++  return this.exec('rm', '--ignore-unmatch', '-r', '-f', '--', '.');
+ };
+
+ /**
+```
+
+The suggested workarounds included batching the file deletions or simplifying the command to target the current directory (`.`) instead of individual files. Fortunately, these improvements (including a more robust batching logic and a migration to `tinyglobby`) have already been merged into the main branch of the repository via PR #607.
+
+While we wait for a stable release on NPM that fully addresses this in all environments, the most effective way to resolve it is to use the latest development version directly from the source.
+
+By updating your `package.json` to point to the GitHub repository's main branch, you get the latest fixes (including the migration to `tinyglobby` and updated `commander` logic) that bypass these system limits.
+
+### Implementation
+Update your `package.json` dependencies:
+
+```json
+"devDependencies": {
+  "gh-pages": "github:tschaub/gh-pages"
+}
+```
+
+Then, refresh your installations:
+```bash
+npm install
+```
+
+This simple change allowed us to resume our production deployments without hitches, ensuring that our "Brutalist" digital garden stays fresh and accessible.

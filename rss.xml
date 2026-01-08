@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 08 Jan 2026 15:35:10 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 08 Jan 2026 16:31:00 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 08 Jan 2026 15:35:10 GMT</pubDate>
+        <pubDate>Thu, 08 Jan 2026 16:31:00 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Fixing gh-pages: Resolving spawn ENAMETOOLONG]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/gh-pages-enametoolong-fix</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/gh-pages-enametoolong-fix</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Resolving <code>spawn ENAMETOOLONG</code> in <code>gh-pages</code> Deployment</h1>
+<p><a href="https://fezcode.com/blog/gh-pages-enametoolong-fix">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Git Cheatsheet: From Basics to Time Travel]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/git-cheatsheet-gist</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/git-cheatsheet-gist</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Git Cheatsheet: From Basics to Time Travel</h1>
+<p><a href="https://fezcode.com/blog/git-cheatsheet-gist">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Aether: Cyberpunk Audio Interface]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -1904,6 +1924,7 @@ func main() {
 </ul>
 <h4>Step 1: Add the External Repository as a Remote</h4>
 <p>First, we&#39;ll add the external repository as a remote to your current Git project. This gives it a short, memorable name that you can use to reference it later.</p>
+<p><strong>Important Note for Collaborators:</strong> Since Git does not track remotes in the repository itself, every time you clone this project fresh, you must re-run this step to enable syncing. In this project, we&#39;ve simplified this with a command: <code>npm run init-stories</code>.</p>
 <p><strong>Explanation:</strong> This command tells your local Git repository about the existence of the <code>fezcodex.stories</code> repository and associates it with the name <code>fezcodex-stories</code>. This makes it easier to fetch from or push to this external repository without typing out the full URL every time.</p>
 <p><strong>Command:</strong></p>
 <pre><code class="language-bash">git remote add fezcodex-stories https://github.com/fezcode/fezcodex.stories

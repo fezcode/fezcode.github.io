@@ -1,5 +1,29 @@
 [
   {
+    "slug": "gh-pages-enametoolong-fix",
+    "title": "Fixing gh-pages: Resolving spawn ENAMETOOLONG",
+    "date": "2026-01-08",
+    "updated": "2026-01-08",
+    "description": "A quick guide on how to fix the spawn ENAMETOOLONG error in gh-pages by switching to the latest GitHub version.",
+    "tags": ["gh-pages", "bug", "deployment", "npm", "fix"],
+    "category": "dev",
+    "filename": "gh-pages-enametoolong-fix.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
+    "slug": "git-cheatsheet-gist",
+    "title": "Git Cheatsheet: From Basics to Time Travel",
+    "date": "2026-01-08",
+    "updated": "2026-01-08",
+    "description": "A comprehensive Git cheatsheet covering daily workflows, advanced history searching, and repository maintenance.",
+    "tags": ["git", "gist", "tutorial", "cheatsheet", "dev"],
+    "category": "gist",
+    "filename": "git-cheatsheet-gist.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "aether-music-player",
     "title": "Aether: Cyberpunk Audio Interface",
     "date": "2026-01-06",
