@@ -1,1 +1,0 @@
-Stroque is a project for procedural box art generation. It draws boxes on a `2000 x 2000` SVG canvas and utilizes a backtracking algorithm.

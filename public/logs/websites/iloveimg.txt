@@ -1,9 +1,0 @@
-# ILoveImg.com
-
-- **Category:** Websites
-- **Date:** 2025-11-23
-- **Link:** https://www.iloveimg.com/compress-image
-
-## About
-
-An image processor website with compression, resize, crop and converter.

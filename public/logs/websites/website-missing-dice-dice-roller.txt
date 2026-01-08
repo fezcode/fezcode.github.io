@@ -1,5 +1,0 @@
-### Dice Roller
-
-A beautiful website to roll dice.
-
-[Dice Roller](https://missingdice.com/dice-roller/)
