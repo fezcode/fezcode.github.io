@@ -7,6 +7,7 @@ import {
   LinkedinLogoIcon,
   Command,
   Terminal,
+  RedditLogoIcon,
 } from '@phosphor-icons/react';
 
 const Footer = () => {
@@ -127,10 +128,8 @@ const Footer = () => {
             <div className="flex gap-3 mb-8">
               <SocialIcon href="https://x.com/fezcoddy" icon={XLogoIcon} />
               <SocialIcon href="https://github.com/fezcode" icon={GithubLogoIcon} />
-              <SocialIcon
-                href="https://www.linkedin.com/in/ahmed-samil-bulbul/"
-                icon={LinkedinLogoIcon}
-              />
+              <SocialIcon href="https://www.reddit.com/r/fezcodex/" icon={RedditLogoIcon} />
+              <SocialIcon href="https://www.linkedin.com/in/ahmed-samil-bulbul/" icon={LinkedinLogoIcon} />
             </div>
 
             <div className="space-y-3 border-t border-white/10 pt-6">

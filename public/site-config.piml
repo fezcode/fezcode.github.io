@@ -26,6 +26,12 @@
       (icon) LinkedinLogo
 
     > (link)
+      (id) reddit
+      (label) REDDIT
+      (url) https://www.reddit.com/r/fezcodex/
+      (icon) RedditLogo
+
+    > (link)
       (id) email
       (label) EMAIL
       (url) mailto:samil.bulbul@gmail.com

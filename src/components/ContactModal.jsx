@@ -5,6 +5,7 @@ import {
   XLogoIcon,
   GithubLogoIcon,
   GlobeIcon,
+  RedditLogoIcon,
 } from '@phosphor-icons/react';
 import GenericModal from './GenericModal';
 import { useSiteConfig } from '../context/SiteConfigContext';
@@ -14,6 +15,7 @@ const socialIcons = {
   XLogo: XLogoIcon,
   LinkedinLogo: LinkedinLogoIcon,
   EnvelopeSimple: EnvelopeSimpleIcon,
+  RedditLogo: RedditLogoIcon,
 };
 
 const ContactModal = ({ isOpen, onClose }) => {
