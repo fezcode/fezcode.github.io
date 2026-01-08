@@ -1,0 +1,213 @@
+# A Deep Dive into the Picker Wheel: Canvas, React, and CSS
+
+In this post, we'll take a deep dive into the implementation of the Picker Wheel app, a fun and interactive way to pick a random winner from a list of entries. We'll explore how it's built using React, the Canvas API, and Tailwind CSS, and we'll cover the key concepts and techniques used in its development.
+
+You can play with it here [apps::pw](/apps::pw)
+
+## The Canvas Wheel
+
+The heart of the Picker Wheel is the wheel itself, which is drawn using the HTML5 Canvas API. The canvas provides a powerful and flexible way to draw graphics and animations, and it's perfect for creating the dynamic and interactive wheel we need.
+
+The `drawWheel` function is responsible for drawing the wheel. It takes the list of entries and the current rotation angle as input, and it uses them to draw the segments of the wheel. Each segment is a pie slice, and it's filled with a unique color from a predefined color palette. The text of the entry is then drawn on top of the segment, rotated to align with the segment's angle.
+
+```javascript
+// This function is responsible for drawing the wheel on the canvas.
+const drawWheel = () => {
+  // Get a reference to the canvas element.
+  const canvas = canvasRef.current;
+  // If the canvas element doesn't exist, do nothing.
+  if (!canvas) return;
+  // Get the 2D rendering context for the canvas.
+  const ctx = canvas.getContext('2d');
+  // Get the width and height of the canvas.
+  const { width, height } = canvas;
+  // Calculate the size of each arc (segment) of the wheel.
+  const arc = 2 * Math.PI / (entries.length || 1);
+
+  // Clear the canvas before drawing.
+  ctx.clearRect(0, 0, width, height);
+  // Save the current state of the canvas context.
+  ctx.save();
+  // Move the origin of the canvas to the center.
+  ctx.translate(width / 2, height / 2);
+  // Rotate the canvas by the current rotation angle.
+  ctx.rotate(rotation);
+  // Move the origin back to the top-left corner.
+  ctx.translate(-width / 2, -height / 2);
+
+  // Loop through each entry and draw a segment for it.
+  for (let i = 0; i < entries.length; i++) {
+    // Calculate the angle of the current segment.
+    const angle = i * arc;
+    // Set the fill style to a color from the color palette.
+    ctx.fillStyle = colorPalette[i % colorPalette.length];
+    // Begin a new path.
+    ctx.beginPath();
+    // Draw the outer arc of the segment.
+    ctx.arc(width / 2, height / 2, width / 2 - 10, angle, angle + arc);
+    // Draw the inner arc of the segment.
+    ctx.arc(width / 2, height / 2, 0, angle + arc, angle, true);
+    // Fill the segment with the current fill style.
+    ctx.fill();
+
+    // Save the current state of the canvas context.
+    ctx.save();
+    // Set the fill style for the text.
+    ctx.fillStyle = '#000';
+    // Set the font for the text.
+    ctx.font = '30px Arial';
+    // Move the origin to the center of the segment.
+    ctx.translate(width / 2 + Math.cos(angle + arc / 2) * (width / 2 - 80), height / 2 + Math.sin(angle + arc / 2) * (height / 2 - 80));
+    // Rotate the canvas to align the text with the segment.
+    ctx.rotate(angle + arc / 2 + Math.PI / 2);
+    // Get the text for the current entry.
+    const text = entries[i];
+    // Draw the text on the canvas.
+    ctx.fillText(text, -ctx.measureText(text).width / 2, 0);
+    // Restore the canvas context to its previous state.
+    ctx.restore();
+  }
+  // Restore the canvas context to its previous state.
+  ctx.restore();
+};
+```
+
+## React Hooks
+
+The Picker Wheel app is built using React, and it makes extensive use of React Hooks to manage its state and side effects.
+
+*   **`useState`:** The `useState` hook is used to manage the component's state, including the list of entries, the new entry input, the winner, and the spinning state.
+*   **`useRef`:** The `useRef` hook is used to get a reference to the canvas element, which is needed for drawing the wheel. It's also used to store the ID of the animation frame, which is used to cancel the animation when the component unmounts.
+*   **`useEffect`:** The `useEffect` hook is used to draw the wheel whenever the list of entries or the rotation angle changes.
+
+## Timers and Animation
+
+The spinning animation is created using a combination of `requestAnimationFrame` and an easing function. The `requestAnimationFrame` function provides a smooth and efficient way to create animations, and the easing function is used to create the "fast spin then slow down" effect.
+
+The `spin` function is responsible for starting the animation. It calculates the start and end rotation angles, and then it uses `requestAnimationFrame` to update the rotation angle on each frame of the animation. The easing function is used to calculate the new rotation angle based on the progress of the animation.
+
+```javascript
+// This function creates a "fast spin then slow down" effect.
+const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+// This function starts the spinning animation.
+const spin = () => {
+  // Only spin if there are more than one entry and the wheel is not already spinning.
+  if (entries.length > 1 && !spinning) {
+    // Set the spinning state to true.
+    setSpinning(true);
+    // Clear the winner.
+    setWinner(null);
+    // Set the duration of the animation.
+    const duration = 7000;
+    // Get the start time of the animation.
+    const startTime = performance.now();
+    // Get the start rotation of the wheel.
+    const startRotation = rotation;
+    // Calculate a random number of spins.
+    const randomSpins = Math.random() * 5 + 5;
+    // Calculate the end rotation of the wheel.
+    const endRotation = startRotation + randomSpins * 2 * Math.PI;
+
+    // This function is called on each frame of the animation.
+    const animate = (currentTime) => {
+      // Calculate the elapsed time.
+      const elapsedTime = currentTime - startTime;
+      // Calculate the progress of the animation.
+      const progress = Math.min(elapsedTime / duration, 1);
+      // Calculate the eased progress of the animation.
+      const easedProgress = easeOut(progress);
+
+      // Calculate the new rotation of the wheel.
+      const newRotation = startRotation + (endRotation - startRotation) * easedProgress;
+      // Set the new rotation of the wheel.
+      setRotation(newRotation);
+
+      // If the animation is not finished, request another frame.
+      if (progress < 1) {
+        animationFrameId.current = requestAnimationFrame(animate);
+      } else {
+        // ...
+      }
+    };
+
+    // Start the animation.
+    animationFrameId.current = requestAnimationFrame(animate);
+  }
+};
+```
+
+## CSS and Styling
+
+The Picker Wheel app is styled using a combination of CSS and Tailwind CSS. The CSS is used to style the wheel and the pin, and Tailwind CSS is used for the layout and the rest of the styling.
+
+The wheel is styled with a border and a box shadow to give it a 3D look. The pin is a simple triangle created with CSS borders.
+
+```css
+/* Style for the wheel */
+.wheel {
+  border-radius: 50%;
+  border: 5px solid #333;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* Style for the pin */
+.pin {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 30px solid #333;
+  z-index: 10;
+}
+```
+
+## Event Handling
+
+The Picker Wheel app uses a variety of event handlers to respond to user input.
+
+*   **`onClick`:** The `onClick` event handler is used to handle clicks on the "Spin", "Add", "Delete", and "Load from List" buttons.
+*   **`onChange`:** The `onChange` event handler is used to handle changes to the new entry input field.
+*   **`onKeyDown`:** The `onKeyDown` event handler is used to handle key presses on the new entry input field. When the "Enter" key is pressed, the `addEntry` function is called.
+
+## Reading from a List
+
+The "Load from List" feature allows users to paste a list of entries, which are then added to the picker wheel. The list is parsed using the newline character as a delimiter, and the entries are added to the list of entries. The number of entries is limited to 30.
+
+```javascript
+// This function is called when the user saves a list of entries from the modal.
+const handleSaveList = (list) => {
+  // Split the list into an array of entries, using the newline character as a delimiter.
+  const newEntries = list.split('\n').map(entry => entry.trim()).filter(entry => entry);
+  // Add the new entries to the existing list of entries, and limit the total number of entries to 30.
+  setEntries([...entries, ...newEntries].slice(0, 30));
+};
+```
+
+## Tailwind CSS
+
+The Picker Wheel app uses Tailwind CSS for its layout and styling. Tailwind CSS is a utility-first CSS framework that provides a set of low-level utility classes that can be used to build custom designs.
+
+The app uses a flexbox layout to arrange the wheel and the entry list side-by-side. The `flex` and `gap-8` classes are used to create the flex container and the gap between the two elements.
+
+```html
+<!-- This is the main container for the wheel and the entry list. -->
+<div class="flex gap-8">
+  <!-- This is the container for the wheel. -->
+  <div class="flex flex-col items-center">
+    {/* ... */}
+  </div>
+  <!-- This is the container for the entry list. -->
+  <div class="w-full max-w-xs ml-16">
+    {/* ... */}
+  </div>
+</div>
+```
+
+## Conclusion
+
+The Picker Wheel app is a fun and interactive way to pick a random winner from a list of entries. It's built using a combination of React, the Canvas API, and Tailwind CSS, and it demonstrates a variety of concepts and techniques used in modern web development.

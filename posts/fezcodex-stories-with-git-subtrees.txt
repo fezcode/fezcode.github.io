@@ -1,0 +1,107 @@
+# Fezcodex Stories with `git subtree`
+
+Let's cover how we integrate `fezcodex.stories` repo to store and show our stories (dnd) section.
+
+## Integrating External Content Seamlessly with Git Subtree: A Practical Guide
+
+In modern web development, it's common to need to incorporate content or even entire sub-projects from external Git repositories into your main project. Whether it's a shared library, documentation, or, as in our case, a collection of stories or blog posts, managing this external content efficiently is key. Git offers a couple of powerful tools for this: `git submodule` and `git subtree`.
+
+While `git submodule` is excellent for managing distinct project dependencies, `git subtree` often shines when you want to integrate external content directly into your repository as if it were always part of it, especially when you need to easily pull updates. Let's dive into how `git subtree` can help you manage external content like your `fezcodex.stories` within your `public/stories` directory.
+
+### Why Choose Git Subtree?
+
+When deciding between `git submodule` and `git subtree`, consider these advantages of `git subtree` for content integration:
+
+*   **Integrated History:** The content of the external repository becomes a part of your main repository's history. This means anyone cloning your main repository gets all the content directly, without needing extra steps.
+*   **Simpler Cloning:** A regular `git clone` of your main repository will fetch all the subtree content. No special commands like `git submodule update --init --recursive` are required for collaborators.
+*   **Easy Updates:** Keeping your integrated content up-to-date with the original source is straightforward with a single `git subtree pull` command.
+*   **No `.gitmodules`:** `git subtree` doesn't introduce additional configuration files like `.gitmodules`, keeping your repository root cleaner.
+*   **Works with Existing Tools:** Since the content is fully integrated, all your existing Git tools and workflows (like `git grep`, `git log`) work seamlessly across your entire project, including the subtree content.
+
+### Setting Up Your Git Subtree: Step-by-Step
+
+Let's walk through the process of adding the `fezcodex.stories` repository into your `public/stories` directory.
+
+#### Prerequisites:
+
+Before you begin, ensure your working directory is clean. Git commands like `git subtree add` prefer a state where there are no uncommitted changes to prevent conflicts.
+
+*   **Check your status:** Run `git status` to see if you have any pending changes.
+*   **Commit or Stash:** If you have modifications, either commit them (`git add . && git commit -m "WIP: Prepare for subtree addition"`) or temporarily stash them (`git stash`).
+
+#### Step 1: Add the External Repository as a Remote
+
+First, we'll add the external repository as a remote to your current Git project. This gives it a short, memorable name that you can use to reference it later.
+
+**Explanation:** This command tells your local Git repository about the existence of the `fezcodex.stories` repository and associates it with the name `fezcodex-stories`. This makes it easier to fetch from or push to this external repository without typing out the full URL every time.
+
+**Command:**
+```bash
+git remote add fezcodex-stories https://github.com/fezcode/fezcodex.stories
+```
+
+#### Step 2: Add the Remote as a Subtree
+
+Now, we'll integrate the content from the `fezcodex-stories` remote into a specific directory within your project (`public/stories`).
+
+**Explanation:**
+*   `git subtree add`: This is the core command to add a subtree.
+*   `--prefix public/stories`: This specifies the local directory within your main project where the content from the external repository will reside. Git will create this directory if it doesn't exist.
+*   `fezcodex-stories`: This is the name of the remote you defined in Step 1.
+*   `main`: This indicates the branch from the `fezcodex-stories` remote that you want to pull. **Important:** Double-check the default branch name of the external repository (it might be `master` instead of `main`).
+*   `--squash`: This option is highly recommended. It squashes all the commits from the external repository's history into a single commit when adding it to your main repository. This keeps your main project's commit history cleaner, preventing it from being flooded with potentially hundreds of commits from the external source.
+
+**Command:**
+```bash
+git subtree add --prefix public/stories fezcodex-stories main --squash
+```
+
+### Managing Your Git Subtree
+
+Once your subtree is set up, here's how you'll typically interact with it.
+
+#### Pulling Updates from the Subtree Source
+
+The primary reason for using `git subtree` for content is to easily keep it updated. When the original `fezcodex.stories` repository has new content, you can pull those changes into your project.
+
+**Explanation:** This command is very similar to the `add` command, but `pull` fetches the latest changes from the specified remote and branch, and then merges them into your local subtree directory. The `--squash` option again helps to keep your history tidy by squashing the incoming changes into a single merge commit.
+
+**Command:**
+```bash
+git subtree pull --prefix public/stories fezcodex-stories main --squash
+```
+
+#### Making Changes within the Subtree and Pushing Back (Optional)
+
+Sometimes, you might make modifications to the files within your `public/stories` directory (the subtree content) and wish to contribute those changes back to the original `fezcodex.stories` repository.
+
+**Explanation:**
+*   First, commit your changes in your main repository as you normally would.
+*   Then, use `git subtree push`. This command takes the commits related to your `public/stories` directory and pushes them to the `main` branch of the `fezcodex-stories` remote.
+*   **Important:** You must have push access to the original `https://github.com/fezcode/fezcodex.stories` repository for this to work. If you don't, you'd typically fork the original repository, push to your fork, and then open a pull request.
+
+**Command:**
+```bash
+git subtree push --prefix public/stories fezcodex-stories main
+```
+
+#### Removing a Git Subtree (If Needed)
+
+If you ever need to remove the subtree, it's a multi-step process:
+
+**Explanation:**
+1.  `git rm -r public/stories`: This removes the directory and its contents from your working tree and stages the deletion.
+2.  `git commit -m "Remove subtree public/stories"`: Commits the removal.
+3.  `git remote rm fezcodex-stories`: Removes the remote reference you added earlier.
+4.  You might also want to clean up any leftover Git configuration related to the subtree, though `git remote rm` handles the main part.
+
+**Commands:**
+```bash
+git rm -r public/stories
+git commit -m "Remove subtree public/stories"
+git remote rm fezcodex-stories
+```
+
+### Conclusion
+
+`git subtree` provides a robust and integrated way to manage external content within your main Git repository. It simplifies collaboration by making external content directly available upon cloning and streamlines the update process. By following these steps, you can effectively incorporate and maintain your `fezcodex.stories` content, or any other external project, within your `public/stories` directory.
