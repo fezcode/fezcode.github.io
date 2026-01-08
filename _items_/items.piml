@@ -1,0 +1,69 @@
+(items)
+  > (item)
+    (name) Alilberry Extract
+    (type) Potion / Poison
+    (book) The Tales of Doctor Blade
+    (description) A pearlescent grey mist derived from a rare herb, processed through dwarven glass and sung over by a mute bard. One drop cures; two drops kill.
+    (owner) Doctor Blade
+    (image) /stories/_items_/alilberry_extract.png
+
+  > (item)
+    (name) Soul of Viyu
+    (type) Artifact
+    (book) The Broken Path
+    (description) A fragment of an ancient soul, pulsating with a faint, rhythmic light. It whispers to those who hold it, promising power at a terrible cost.
+    (owner) Unknown
+    (image) /stories/_items_/soul_of_viyu.png
+
+  > (item)
+    (name) Dark Green Beret
+    (type) Military Apparel
+    (book) The Sins of Glareach
+    (description) A wool beret with twenty-two silver stars stitched into the side by Lenia. It is the only thing Lorhud Krauper has left from his daughter, and he never takes it off.
+    (owner) Lorhud Krauper
+    (image) /stories/_items_/beret_of_lorhud_krauper.png
+
+  > (item)
+    (name) Chronometer of Ash
+    (type) Tool / Artifact
+    (book) The Chronomancer's Dust
+    (description) A brass sphere powered by the ash of Glareach. It allows the user to relive exactly one hour of their past. The glass is unbreakable, ensuring the user can only observe, never intervene.
+    (owner) Klaude Barral
+    (image) /stories/_items_/the_chronometer.png
+
+  > (item)
+    (name) Valeth's Notebook
+    (type) Journal
+    (book) The Diplomat's Journal
+    (description) A navy blue notebook with a single silver star on the cover. It contains the observations of a diplomat who sees too much, documenting the rot at the heart of Thornus. Recently stolen by Nex Orlong outside the Kosnak Estate.
+    (owner) Nex Orlong (Current Holder) / Valeth Vanceshire (Original Owner)
+    (image) /stories/_items_/valeth_notebook.png
+
+  > (item)
+    (name) Touch of Rose
+    (type) Disease / Mark
+    (book) The Petals of Predymesh
+    (description) A devastating affliction that manifests as a crimson rose-leaf mark on the forehead. It slowly drains the victim's motor functions and speech, eventually leaving them in a vegetative state. Its only known cure is a rare drop of Alilberry.
+    (owner) Pellera Orlong (Afflicted)
+    (image) /stories/_items_/touch_of_rose.png
+
+  > (item)
+    (name) Government Medal for Science
+    (type) Award
+    (book) The Harvest of Silence
+    (description) A heavy gold disc awarded for exceptional scientific achievement. To Avalia Krones, it is a symbol of her gilded cage and the government's attempt to buy her loyalty.
+    (owner) Avalia Krones
+
+  > (item)
+    (name) The Krones Formula
+    (type) Scientific Data / Discovery
+    (book) The Harvest of Silence
+    (description) A revolutionary method for accelerating agricultural growth. While publicly used to end hunger, the government seeks its hidden 'weaponized' potential, which Avalia carefully conceals.
+    (owner) Avalia Krones (Knowledge)
+
+  > (item)
+    (name) Leatherwave's Dried Fish
+    (type) Food / Treat
+    (book) The Cat of Craninal
+    (description) Simple, salty snacks used to bribe the Council of Three. They represent the simple joys of a quiet life.
+    (owner) Prostex Leatherwave
