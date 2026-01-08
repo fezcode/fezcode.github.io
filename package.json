@@ -39,6 +39,7 @@
   "scripts": {
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
+    "init-stories": "git remote add fezcodex-stories https://github.com/fezcode/fezcodex.stories",
     "pull-stories": "git subtree pull --prefix public/stories fezcodex-stories main --squash",
     "push-stories": "git subtree push --prefix public/stories fezcodex-stories main",
     "generate-wallpapers": "node scripts/generateWallpapers.js",

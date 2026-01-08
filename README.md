@@ -69,7 +69,8 @@ npm run deploy
 ```
 
 ### Content Syncing
-Stories are managed via git subtrees:
+Stories are managed via git subtrees. Because subtree remotes are not tracked by git, you must initialize the remote once after cloning:
+- `npm run init-stories`: Initialize the stories remote URL (only needed once).
 - `npm run pull-stories`: Sync stories from the remote repository.
 - `npm run push-stories`: Push local story changes to the remote repository.
 
