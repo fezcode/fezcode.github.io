@@ -211,4 +211,32 @@
         (author) fezcode
         (date) 2026-01-08
         (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) the-harvest-of-silence/the-sin-of-the-seed.txt
+        (title) The Sin of the Seed (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) the-harvest-of-silence/tohumun-gunahi.txt
+        (title) Tohumun Günahı (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 5
+        (filename) the-harvest-of-silence/the-listener-in-the-shadows.txt
+        (title) The Listener in the Shadows (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 6
+        (filename) the-harvest-of-silence/golgelerdeki-dinleyici.txt
+        (title) Gölgelerdeki Dinleyici (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
     (overlay) gold
