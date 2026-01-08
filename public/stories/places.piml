@@ -110,3 +110,11 @@
     (book) The Whispering Rats
     (description) The labyrinthine sewer system beneath Predymesh. A dark, damp world where the forgotten live and the city's dirtiest secrets flow. Home to the triplets.
     (status) Active (Grim)
+
+  > (place)
+    (name) Orlong's Attic
+    (type) Slum Residence
+    (category) Residences
+    (book) The Petals of Predymesh
+    (description) A damp, cramped attic in the Predymesh slums. Once a home for an honest mason, it is now the silent sickroom of Pellera Orlong, smelling of rain and desperation.
+    (status) Active (Gloomy)

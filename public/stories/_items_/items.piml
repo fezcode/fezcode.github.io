@@ -35,6 +35,14 @@
     (name) Valeth's Notebook
     (type) Journal
     (book) The Diplomat's Journal
-    (description) A navy blue notebook with a single silver star on the cover. It contains the observations of a diplomat who sees too much, documenting the rot at the heart of Thornus.
-    (owner) Valeth Vanceshire
+    (description) A navy blue notebook with a single silver star on the cover. It contains the observations of a diplomat who sees too much, documenting the rot at the heart of Thornus. Recently stolen by Nex Orlong outside the Kosnak Estate.
+    (owner) Nex Orlong (Current Holder) / Valeth Vanceshire (Original Owner)
     (image) /stories/_items_/valeth_notebook.png
+
+  > (item)
+    (name) Touch of Rose
+    (type) Disease / Mark
+    (book) The Petals of Predymesh
+    (description) A devastating affliction that manifests as a crimson rose-leaf mark on the forehead. It slowly drains the victim's motor functions and speech, eventually leaving them in a vegetative state. Its only known cure is a rare drop of Alilberry.
+    (owner) Pellera Orlong (Afflicted)
+    (image) /stories/_items_/touch_of_rose.png

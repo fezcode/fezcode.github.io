@@ -172,3 +172,23 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) brown
+
+  > (book)
+    (bookId) 9
+    (bookTitle) The Petals of Predymesh
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-petals-of-predymesh/the-stolen-star.txt
+        (title) The Stolen Star (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) the-petals-of-predymesh/calinan-yildiz.txt
+        (title) Çalınan Yıldız (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) lightcoral
