@@ -245,7 +245,14 @@ const DiceRoller = () => {
 };
 
 const DndLayout = ({ children }) => {
-  const { setBgImageName } = useContext(DndContext);
+  const {
+    setBgImageName,
+    isLightningEnabled,
+    isLootDiscoveryEnabled,
+    isFireOverlayEnabled,
+    isFireParticlesEnabled,
+    isViewportFrameEnabled,
+  } = useContext(DndContext);
   const [bgImage, setBgImage] = useState('');
 
   useEffect(() => {
@@ -257,14 +264,14 @@ const DndLayout = ({ children }) => {
   return (
     <div className="dnd-theme-root min-h-screen flex flex-col relative overflow-x-hidden">
       <div className="hidden md:block">
-        <ViewportFrame />
-        <Lightning />
-        <LootDiscovery />
+        {isViewportFrameEnabled && <ViewportFrame />}
+        {isLightningEnabled && <Lightning />}
+        {isLootDiscoveryEnabled && <LootDiscovery />}
         <FireplaceAudio />
-        <FireOverlay />
+        {isFireOverlayEnabled && <FireOverlay />}
         <Torchlight />
         <DiceRoller />
-        <FireParticles />
+        {isFireParticlesEnabled && <FireParticles />}
         <DustMotes />
         <FloatingRunes />
       </div>

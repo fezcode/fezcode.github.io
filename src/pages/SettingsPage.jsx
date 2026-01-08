@@ -17,6 +17,7 @@ import {
 import { useAnimation } from '../context/AnimationContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import { useAchievements } from '../context/AchievementContext';
+import { DndContext } from '../context/DndContext';
 import CustomToggle from '../components/CustomToggle';
 import CustomDropdown from '../components/CustomDropdown';
 import useSeo from '../hooks/useSeo';
@@ -119,6 +120,19 @@ const SettingsPage = () => {
     sidebarColor,
     setSidebarColor,
   } = useVisualSettings();
+
+  const {
+    isLightningEnabled,
+    toggleLightning,
+    isLootDiscoveryEnabled,
+    toggleLootDiscovery,
+    isFireOverlayEnabled,
+    toggleFireOverlay,
+    isFireParticlesEnabled,
+    toggleFireParticles,
+    isViewportFrameEnabled,
+    toggleViewportFrame,
+  } = React.useContext(DndContext);
 
   const { addToast } = useToast();
 
@@ -411,6 +425,21 @@ const SettingsPage = () => {
               <CustomToggle id="fx-garden" label="Flora Protocol" checked={isGarden} onChange={toggleGarden} />
               <CustomToggle id="fx-autumn" label="Seasonal Decay" checked={isAutumn} onChange={toggleAutumn} />
               <CustomToggle id="fx-rain" label="Hydraulic Filter" checked={isRain} onChange={toggleRain} />
+            </div>
+          </Section>
+
+          {/* DND Experience Settings */}
+          <Section title="DND Experience" icon={<FilmStripIcon />} delay={0.32}>
+            <p className="mb-10 text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">
+              Fine-tune the immersive effects of the "From Serfs and Frauds" archives.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <CustomToggle id="dnd-lightning" label="Lightning Strikes" checked={isLightningEnabled} onChange={toggleLightning} />
+              <CustomToggle id="dnd-loot" label="Loot Discovery" checked={isLootDiscoveryEnabled} onChange={toggleLootDiscovery} />
+              <CustomToggle id="dnd-fire-overlay" label="Fire Overlay" checked={isFireOverlayEnabled} onChange={toggleFireOverlay} />
+              <CustomToggle id="dnd-fire-particles" label="Fire Particles" checked={isFireParticlesEnabled} onChange={toggleFireParticles} />
+              <CustomToggle id="dnd-frame" label="Viewport Frame" checked={isViewportFrameEnabled} onChange={toggleViewportFrame} />
             </div>
           </Section>
 

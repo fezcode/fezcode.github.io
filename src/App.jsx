@@ -17,6 +17,7 @@ import { SidePanelProvider } from './context/SidePanelContext';
 import { HomepageOrderProvider } from './context/HomepageOrderContext';
 import { SiteConfigProvider } from './context/SiteConfigContext';
 import { CloudMusicProvider } from './context/CloudMusicContext';
+import { DndProvider } from './context/DndContext';
 import TinyCloudPlayer from './app/apps/CloudMusicPlayer/components/TinyCloudPlayer';
 
 function App() {
@@ -60,39 +61,41 @@ function App() {
         <ToastProvider>
           <SiteConfigProvider>
             <CloudMusicProvider>
-              <AchievementProvider>
-                <AchievementListeners />
-              <HomepageOrderProvider>
-                <VisualSettingsProvider>
-                  <DigitalRain isActive={isRainActive} />
-                  <BSOD isActive={isBSODActive} toggleBSOD={toggleBSOD} />
-                  <ScrollToTop />
-                  <TinyCloudPlayer />
-                  <CommandPaletteProvider>
-                    <SidePanelProvider>
-                      <Layout
-                        toggleModal={toggleModal}
-                        isSearchVisible={isSearchVisible}
-                        toggleSearch={toggleSearch}
-                        openGenericModal={openGenericModal}
-                        toggleDigitalRain={toggleDigitalRain}
-                        toggleBSOD={toggleBSOD}
+              <DndProvider>
+                <AchievementProvider>
+                  <AchievementListeners />
+                  <HomepageOrderProvider>
+                    <VisualSettingsProvider>
+                      <DigitalRain isActive={isRainActive} />
+                      <BSOD isActive={isBSODActive} toggleBSOD={toggleBSOD} />
+                      <ScrollToTop />
+                      <TinyCloudPlayer />
+                      <CommandPaletteProvider>
+                        <SidePanelProvider>
+                          <Layout
+                            toggleModal={toggleModal}
+                            isSearchVisible={isSearchVisible}
+                            toggleSearch={toggleSearch}
+                            openGenericModal={openGenericModal}
+                            toggleDigitalRain={toggleDigitalRain}
+                            toggleBSOD={toggleBSOD}
+                          >
+                            <AnimatedRoutes />
+                          </Layout>
+                        </SidePanelProvider>
+                      </CommandPaletteProvider>
+                      <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
+                      <GenericModal
+                        isOpen={isGenericModalOpen}
+                        onClose={closeGenericModal}
+                        title={genericModalContent.title}
                       >
-                        <AnimatedRoutes />
-                      </Layout>
-                    </SidePanelProvider>
-                  </CommandPaletteProvider>
-                  <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
-                  <GenericModal
-                    isOpen={isGenericModalOpen}
-                    onClose={closeGenericModal}
-                    title={genericModalContent.title}
-                  >
-                    {genericModalContent.content}
-                  </GenericModal>
-                </VisualSettingsProvider>
-              </HomepageOrderProvider>
-            </AchievementProvider>
+                        {genericModalContent.content}
+                      </GenericModal>
+                    </VisualSettingsProvider>
+                  </HomepageOrderProvider>
+                </AchievementProvider>
+              </DndProvider>
             </CloudMusicProvider>
           </SiteConfigProvider>
         </ToastProvider>
