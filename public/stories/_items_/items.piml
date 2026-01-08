@@ -22,3 +22,11 @@
     (description) A wool beret with twenty-two silver stars stitched into the side by Lenia. It is the only thing Lorhud Krauper has left from his daughter, and he never takes it off.
     (owner) Lorhud Krauper
     (image) /stories/_items_/beret_of_lorhud_krauper.png
+
+  > (item)
+    (name) Chronometer of Ash
+    (type) Tool / Artifact
+    (book) The Chronomancer's Dust
+    (description) A brass sphere powered by the ash of Glareach. It allows the user to relive exactly one hour of their past. The glass is unbreakable, ensuring the user can only observe, never intervene.
+    (owner) Klaude Barral
+    (image) /stories/_items_/the_chronometer.png

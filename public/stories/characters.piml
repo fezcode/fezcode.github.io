@@ -61,3 +61,17 @@
     (book) The Sins of Glareach
     (description) A drug-addicted veteran seeking revenge for his daughter Lenia. He wears a green beret with 22 stars and walks the razor's edge between healing and death.
     (status) Alive (Addicted)
+
+  > (character)
+    (name) Lenia Krauper
+    (role) Seamstress / Victim
+    (book) The Sins of Glareach
+    (description) Lorhud's beloved daughter. During the razing of Glareach, she was dragged from her home by Cloudwear's private security. She was violated and butchered by Aester himself as her father watched helplessly from the shadows, her blood serving as the mortar for the first casino of the new Glareach.
+    (status) Deceased
+
+  > (character)
+    (name) Klaude Barral
+    (role) Chronomancer / Horologist
+    (book) The Chronomancer's Dust
+    (description) A master clockmaker who uses ash from destroyed cities to power his Chronometers. He allows people to relive their past, but he never lets them change it.
+    (status) Alive (Cynical)

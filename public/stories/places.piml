@@ -61,3 +61,10 @@
     (book) The Sins of Glareach
     (description) Once a poor town, destroyed in the War of Fourbournes, now rebuilt as a neon-soaked metropolis of casinos and vice. A monument to Aester Cloudwear's greed.
     (status) Active (Corrupt)
+
+  > (place)
+    (name) The Clockwork Sanctum
+    (type) Workshop / Shop
+    (book) The Chronomancer's Dust
+    (description) Klaude Barral's workshop in Craninal. A place where the air is thick with the smell of oil and the dust of dead cities, and where every tick of a clock sounds like a funeral bell.
+    (status) Active

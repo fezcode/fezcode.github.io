@@ -78,3 +78,37 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) crimson
+
+  > (book)
+    (bookId) 5
+    (bookTitle) The Chronomancer's Dust
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-chronomancers-dust/the-hour-of-ghosts.txt
+        (title) The Hour of Ghosts (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) the-chronomancers-dust/hayaletler-saati.txt
+        (title) Hayaletler Saati (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) the-chronomancers-dust/the-chronometer.txt
+        (title) The Chronometer of Ash (EN)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) the-chronomancers-dust/kronometre.txt
+        (title) Kül Kronometresi (TR)
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) orange
