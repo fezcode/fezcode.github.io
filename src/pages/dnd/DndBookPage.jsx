@@ -52,12 +52,12 @@ function DndBookPage() {
 
   return (
     <DndLayout>
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <header className="text-center mb-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
+        <header className="text-center mb-12 md:mb-24">
           <div className="flex justify-center mb-6">
              <BookmarkSimple size={48} className="text-dnd-gold" weight="duotone" />
           </div>
-          <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
+          <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
             {pageTitle}
           </h1>
           <div className="h-px w-32 bg-dnd-gold mx-auto opacity-40" />
@@ -67,7 +67,7 @@ function DndBookPage() {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="dnd-parchment-container p-12 md:p-24 shadow-2xl border-2 border-black/10 dnd-parchment-glow relative"
+            className="dnd-parchment-container p-6 md:p-24 shadow-2xl border-2 border-black/10 dnd-parchment-glow relative"
           >
             {/* Scroll Ornaments */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-b-full blur-xl dnd-scroll-accent" />

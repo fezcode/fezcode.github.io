@@ -13,14 +13,14 @@ const DndNavbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-[300] dnd-nav-modern border-b-2 border-dnd-gold">
       {/* Top Bar: Navigation & Breadcrumbs */}
-      <div className="bg-black/40 px-12 py-2 flex items-center justify-between border-b border-white/5 mt-[25px]">
+      <div className="bg-black/40 px-4 md:px-12 py-2 flex items-center justify-between border-b border-white/5 md:mt-[25px]">
         <div className="flex items-center gap-4">
           <Link to="/" className="text-white hover:text-dnd-gold transition-colors">
             <House size={18} weight="fill" />
           </Link>
 
           {breadcrumbs && breadcrumbs.length > 0 && (
-            <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em]">
+            <div className="hidden sm:flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em]">
               {breadcrumbs.map((crumb, index) => (
                 <React.Fragment key={crumb.path || index}>
                   <CaretRight size={10} className="text-white/40" />

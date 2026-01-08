@@ -58,10 +58,10 @@ function DndLorePage() {
           <div className="flex justify-center mb-6">
              <Scroll size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
-          <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
+          <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
             The Chronicles
           </h1>
-          <p className="text-lg md:text-xl font-arvo text-gray-400 max-w-2xl mx-auto uppercase tracking-widest opacity-60 mb-12">
+          <p className="text-base md:text-xl font-arvo text-gray-400 max-w-2xl mx-auto uppercase tracking-widest opacity-60 mb-12 px-4">
             A compendium of documented history and ancient scripts.
           </p>
 
@@ -100,7 +100,7 @@ function DndLorePage() {
             )}
           </div>
 
-          <div className="dnd-parchment-container p-12 md:p-24 shadow-2xl border-2 border-black/10 dnd-parchment-glow relative">
+          <div className="dnd-parchment-container p-6 md:p-24 shadow-2xl border-2 border-black/10 dnd-parchment-glow relative">
             {/* Scroll Ornaments */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-b-full blur-xl dnd-scroll-accent" />
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-t-full blur-xl dnd-scroll-accent" />
@@ -111,7 +111,7 @@ function DndLorePage() {
             <div className="dnd-ornate-corner dnd-ornate-corner-br !w-16 !h-16" />
 
             <div className="relative z-10 max-w-4xl mx-auto text-center">
-              <h2 className="text-4xl md:text-5xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-12">
+              <h2 className="text-3xl md:text-5xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-6 md:mb-12">
                 Index of Tomes
               </h2>
               <div className="dnd-mystic-divider mb-12" />

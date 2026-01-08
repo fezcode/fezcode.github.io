@@ -37,15 +37,25 @@ const DndPage = () => {
              <div className="h-px w-24 bg-dnd-gold/40 self-center" />
           </div>
 
-                    <h1 className="text-xl md:text-2xl font-mono text-white/80 uppercase tracking-[0.5em] mb-4 drop-shadow-lg">
-                      Welcome to the
-                    </h1>
-                              <h2 className="text-6xl md:text-9xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter leading-none mb-12 drop-shadow-2xl dnd-header-pulse">
-                                Great Archives
-                              </h2>
-                    <p className="text-xl md:text-2xl font-arvo text-gray-200 max-w-2xl mx-auto leading-relaxed italic opacity-90">
-                      "Every serf has a story, and every fraud a hidden truth. Step into the tapestry of our shared odyssey."
-                    </p>        </motion.div>
+                                        <h1 className="text-lg md:text-2xl font-mono text-white/80 uppercase tracking-[0.3em] md:tracking-[0.5em] mb-4 drop-shadow-lg">
+
+                                          Welcome to the
+
+                                        </h1>
+
+                                                  <h2 className="text-5xl md:text-9xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter leading-none mb-12 drop-shadow-2xl dnd-header-pulse">
+
+                                                    Great Archives
+
+                                                  </h2>
+
+                                        <p className="text-lg md:text-2xl font-arvo text-gray-200 max-w-2xl mx-auto leading-relaxed italic opacity-90 px-4">
+
+                                          "Every serf has a story, and every fraud a hidden truth. Step into the tapestry of our shared odyssey."
+
+                                        </p>
+
+                            </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-7xl mx-auto">
           <DndCard

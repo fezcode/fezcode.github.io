@@ -6,8 +6,8 @@ const DndFooter = () => {
   const { bgImageName } = useContext(DndContext);
 
   return (
-    <footer className="relative mt-24 border-t-2 border-dnd-gold bg-dnd-crimson/95 py-16 px-6 text-white">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center md:text-left">
+    <footer className="relative mt-12 md:mt-24 border-t-2 border-dnd-gold bg-dnd-crimson/95 py-12 md:py-16 px-6 text-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 items-center text-center md:text-left">
         <div className="space-y-4">
           <div className="flex justify-center md:justify-start">
             <span className="text-4xl font-playfairDisplay font-black uppercase tracking-tighter dnd-gold-gradient-text">

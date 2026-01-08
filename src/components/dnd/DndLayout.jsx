@@ -256,16 +256,19 @@ const DndLayout = ({ children }) => {
 
   return (
     <div className="dnd-theme-root min-h-screen flex flex-col relative overflow-x-hidden">
-      <ViewportFrame />
-      <Lightning />
-      <LootDiscovery />
-      <FireplaceAudio />
-      <FireOverlay />
-      <Torchlight />
-      <DiceRoller />
-      <FireParticles />
-      <DustMotes />
-      <FloatingRunes />
+      <div className="hidden md:block">
+        <ViewportFrame />
+        <Lightning />
+        <LootDiscovery />
+        <FireplaceAudio />
+        <FireOverlay />
+        <Torchlight />
+        <DiceRoller />
+        <FireParticles />
+        <DustMotes />
+        <FloatingRunes />
+      </div>
+
       {/* Immersive Background */}
       <div className="fixed inset-0 z-0">
         <div

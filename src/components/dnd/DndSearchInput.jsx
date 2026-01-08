@@ -3,7 +3,7 @@ import { MagnifyingGlass } from '@phosphor-icons/react';
 
 const DndSearchInput = ({ value, onChange, placeholder = "Search the archives..." }) => {
   return (
-    <div className="relative max-w-md mx-auto mb-16 group">
+    <div className="relative max-w-md mx-auto mb-8 md:mb-16 group">
       <div className="absolute inset-0 bg-dnd-gold/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
       <div className="relative flex items-center">
         <div className="absolute left-5 text-dnd-gold">

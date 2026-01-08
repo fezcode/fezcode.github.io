@@ -136,7 +136,7 @@ function DndEpisodePage() {
 
       <div className="max-w-7xl mx-auto px-6 py-12">
 
-        <header className="text-center mb-24">
+        <header className="text-center mb-12 md:mb-24 px-4">
 
           <div className="flex justify-center mb-6">
 
@@ -144,7 +144,7 @@ function DndEpisodePage() {
 
           </div>
 
-                    <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
+                    <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
 
                       {episodeTitle}
 
@@ -172,7 +172,7 @@ function DndEpisodePage() {
 
                                       {/* Hidden message in sidebar */}
 
-                                      <div className="absolute -bottom-8 left-0 w-full text-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000">
+                                      <div className="absolute -bottom-8 left-0 w-full text-center opacity-0 group-hover:opacity-100 transition-opacity duration-1000 hidden md:block">
 
                                          <span className="dnd-secret-text text-[8px] uppercase tracking-[0.2em]">Don't believe the scribes</span>
 
@@ -262,19 +262,19 @@ function DndEpisodePage() {
 
                                               animate={{ opacity: 1, y: 0 }}
 
-                                              className="lg:col-span-4 dnd-parchment-container p-8 md:p-24 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col relative dnd-parchment-glow"
+                                              className="lg:col-span-4 dnd-parchment-container p-6 md:p-24 shadow-2xl border-2 border-black/10 min-h-[60vh] flex flex-col relative dnd-parchment-glow"
 
                                             >
 
                                               {/* Secret Inscriptions */}
 
-                                              <div className="absolute top-1/4 -left-4 -rotate-90 pointer-events-none">
+                                              <div className="absolute top-1/4 -left-4 -rotate-90 pointer-events-none hidden md:block">
 
                                                  <span className="dnd-secret-text text-[10px] uppercase tracking-[1em]">The walls have eyes</span>
 
                                               </div>
 
-                                              <div className="absolute bottom-1/4 -right-4 rotate-90 pointer-events-none">
+                                              <div className="absolute bottom-1/4 -right-4 rotate-90 pointer-events-none hidden md:block">
 
                                                  <span className="dnd-secret-text text-[10px] uppercase tracking-[1em]">History is written by survivors</span>
 
@@ -286,13 +286,13 @@ function DndEpisodePage() {
 
                                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-t-full blur-xl dnd-scroll-accent" />
 
-                      <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-20 !h-20" />
+                      <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-12 md:!w-20 !h-12 md:!h-20" />
 
-                      <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-20 !h-20" />
+                      <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-12 md:!w-20 !h-12 md:!h-20" />
 
-                      <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-20 !h-20" />
+                      <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-12 md:!w-20 !h-12 md:!h-20" />
 
-                      <div className="dnd-ornate-corner dnd-ornate-corner-br !w-20 !h-20" />
+                      <div className="dnd-ornate-corner dnd-ornate-corner-br !w-12 md:!w-20 !h-12 md:!h-20" />
 
                       <div className="relative z-10 prose prose-lg prose-stone max-w-none dnd-body-text dnd-drop-cap flex-grow">
 
@@ -306,9 +306,9 @@ function DndEpisodePage() {
 
               {/* Scribe Signature at the bottom of the parchment */}
 
-              <div className="mt-20 pt-12 border-t border-black/5 relative z-10 flex flex-col items-end opacity-60">
+              <div className="mt-12 md:mt-20 pt-8 md:pt-12 border-t border-black/5 relative z-10 flex flex-col items-end opacity-60">
 
-                 <span className="font-playfairDisplay italic text-2xl text-dnd-crimson mb-2">{currentEpisode.author}</span>
+                 <span className="font-playfairDisplay italic text-xl md:text-2xl text-dnd-crimson mb-2">{currentEpisode.author}</span>
 
                  <div className="h-px w-32 bg-dnd-crimson/20 mb-1" />
 
