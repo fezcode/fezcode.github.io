@@ -25,42 +25,37 @@ Must be one of the following:
 - **refactor**: A code change that neither fixes a bug nor adds a feature
 - **perf**: A code change that improves performance
 - **test**: Adding missing tests or correcting existing tests
-- **chore**: Changes to the build process or auxiliary tools and libraries such as documentation generation
+- **chore**: Changes to the build process or auxiliary tools and libraries
+- **build**: Changes that affect the build system or external dependencies
+- **ci**: Changes to CI configuration files and scripts
+- **revert**: Reverts a previous commit
 - **content**: **(Project Specific)** Adding or updating content such as:
     - Blog posts (`content(blog): add new post about react`)
     - Logs (`content(log): add review for new movie`)
     - Projects (`content(project): add details for new app`)
     - Music/Sounds (`content(audio): add new ambient track`)
-    - Assets (`content(assets): update avatar image`)
 
 ### Scope (Optional)
 
 The scope provides additional context to the type. For `content` types, the scope is highly recommended (e.g., `blog`, `log`, `project`).
 
-### Subject
+---
 
-The subject contains a succinct description of the change:
-- Use the imperative, present tense: "change" not "changed" nor "changes"
-- Don't capitalize the first letter
-- No dot (.) at the end
+## Coding Standards
 
-### Body (Optional)
+### Directory Structure
+To keep the codebase organized, we follow a modular pattern:
+- **`src/app/`**: This is where the core logic, domain-specific state, views, and complex functionality live (e.g., `src/app/achievements`, `src/app/os`).
+- **`src/components/`**: Only for generic, reusable UI atoms (buttons, modals, inputs).
 
-Just as in the **subject**, use the imperative, present tense. The body should include the motivation for the change and contrast this with previous behavior.
+### Linting & Style
+We enforce strict whitespace rules via ESLint:
+- No multiple empty lines.
+- No padded blocks.
+- No trailing spaces.
+- **Always run `npm run format` and `npm run lint` before committing.**
 
-### Footer (Optional)
-
-The footer should contain any information about **Breaking Changes** and is also the place to reference GitHub issues that this commit closes.
-
-## Example
-
-```
-content(log): add corrupted blood incident rant
-
-- Added new text file for the post
-- Updated posts.json with metadata
-- Added unique category color for 'rant'
-```
+---
 
 ## Git Hooks
 
@@ -77,4 +72,3 @@ In an emergency (if the hook is broken), you can bypass verification:
 ```bash
 git commit --no-verify -m "your message"
 ```
-**Note:** Please use this sparingly and only if you are sure your message format is correct.

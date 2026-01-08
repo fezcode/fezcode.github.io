@@ -1,37 +1,41 @@
 # Fezcodex
 
 ![Fezcodex Card](public/images/fezcodex-card.jpg)
+
 ### What is this?
-Imagine you have a giant digital toy box. Inside, you keep the cool things you've built, the stories you've written, and a diary of all the interesting things you've learned. Fezcodex is that toy box. It is a special website that works like a personal museum on the internet. It is not just a boring page; it has moving parts, secret "Easter eggs," and little mini-apps like a sound mixer and a stopwatch.
+Imagine you have a giant digital toy box. Inside, you keep the cool things you've built, the stories you've written, and a diary of all the interesting things you've learned. Fezcodex is that toy box. It is a special website that works like a personal museum on the internet. It is not just a boring page; it has moving parts, secret "Easter eggs," and little mini-apps like a sound mixer and a knowledge graph.
 
 ---
 
-## What can it do?
-- Digital Garden: A place where blog posts and "logs" (mini-diaries about books, movies, or games) grow.
-- Project Archives: A showcase of all the coding experiments and software I've built.
-- Mini-Apps: Built-in tools like an Atmosphere Mixer (for focus sounds), a Typing Tester, and a Stopwatch.
-- Visual Magic: You can change how the whole site looks using the "Visual Matrix" in Settings—make it look like an old computer, a blueprint, or even a comic book.
-- Achievements: Just like a video game, you get little trophies for exploring the site and finding hidden things.
+## Key Features
+- **Digital Garden**: A space where blog posts and "logs" (mini-diaries about books, movies, or games) grow.
+- **Knowledge Graph**: A 3D interactive visualization of how all content on the site is interconnected.
+- **Project Archives**: A showcase of all the coding experiments and software I've built.
+- **Mini-Apps**: Built-in tools like an Atmosphere Mixer, Cloud Music Player, Typing Tester, and a digital Rotary Phone.
+- **Visual Magic**: Change how the whole site looks using the "Visual Matrix"—make it look like an old computer (CRT), a blueprint, or even a comic book.
+- **Achievements**: Just like a video game, you get little trophies for exploring the site and finding hidden things.
 
 ---
 
-## How is it built? (The Lego Bricks)
-- React and Tailwind CSS: These are the main building blocks that make the site work and look professional.
-- Framer Motion: This is the tool that makes everything move smoothly and animate.
-- Markdown and PIML: These are special ways of writing text so the computer knows how to turn them into beautiful pages.
-- Local Storage: The site remembers your settings and trophies right in your own browser, so it does not need a large database.
+## Tech Stack (The Lego Bricks)
+- **Frontend**: React 19, Tailwind CSS, and Framer Motion for smooth animations.
+- **3D & Graphics**: Three.js and react-force-graph-3d for the knowledge graph.
+- **Content**: Markdown and **PIML** (Plain Old Markup Language) for structured content.
+- **Build Tools**: Craco (CRA Configuration Override) for custom build pipelines.
+- **Persistence**: Local Storage for settings, achievements, and persistent state.
 
 ---
 
-## Where is everything?
-- src/components/: The small parts (like buttons and cards) used to build pages.
-- src/pages/: The main areas of the house (Home, Blog, Settings, Apps).
-- public/: This is the pantry where all the actual content (text files for posts, images, and sounds) is stored.
-- scripts/: Helper programs that help build the sitemap and RSS feeds.
+## Project Structure
+- `src/app/`: Domain logic, core features, and views (Achievements, OS, Command Palette, etc.).
+- `src/components/`: Reusable UI components (Buttons, Modals, Cards).
+- `src/context/`: Global state management (Visual Settings, Toast, Animation).
+- `public/`: The "pantry" where all actual content (PIML files, text, images, sounds) is stored.
+- `scripts/`: Helper programs for generating RSS, sitemaps, and wallpapers.
 
 ---
 
-## For the Grown-ups (Technical Setup)
+## Technical Setup
 
 ### Prerequisites
 Make sure you have Node.js installed on your computer.
@@ -53,31 +57,30 @@ npm start
 ```
 This will open the site at http://localhost:3000.
 
+---
+
 ## Routing and SEO
-
-This project uses `BrowserRouter` for clean URLs (e.g., `/apps/markdown-table-formatter`) instead of hash-based URLs (`/#/apps/...`).
-
-To support this on GitHub Pages (which is a static file host), we use `react-snap` to pre-render all routes into static HTML files during the build process.
-
--   **Pre-rendering:** `react-snap` crawls the application and generates a directory structure that matches the routes (e.g., `build/apps/markdown-table-formatter/index.html`). This allows GitHub Pages to serve the correct file for each route directly.
--   **SEO:** This approach ensures that every page has unique, server-side rendered metadata (title, description, open graph tags) for social media previews and search engines.
--   **Fallback:** A `404.html` is generated to handle unknown routes.
+This project uses `BrowserRouter` for clean URLs. To support this on static hosts like GitHub Pages, we use `react-snap` to pre-render routes into static HTML files during the build process.
 
 ### Deployment
-
 The standard `npm run deploy` command handles the build, pre-rendering, and deployment to GitHub Pages automatically.
-
 ```bash
 npm run deploy
 ```
+
+### Content Syncing
+Stories are managed via git subtrees:
+- `npm run pull-stories`: Sync stories from the remote repository.
+- `npm run push-stories`: Push local story changes to the remote repository.
 
 ---
 
 ## Rules of the House
 - **Contributing:** Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on commit messages and content updates.
-- Styling: We use Tailwind. Keep it Brutalist yet polished.
-- Icons: We use @phosphor-icons/react. Always use the ones ending in Icon (for example, CpuIcon).
-- Logic: Keep it simple. Use Context for global settings like Visual Effects and Animations.
+- **Styling**: We use Tailwind. Keep it **Brutalist** yet polished.
+- **Components**: Always use `CustomDropdown`, `BrutalistDialog`, and `CustomSlider` for UI consistency.
+- **Icons**: We use `@phosphor-icons/react`. Always use the ones ending in `Icon` (e.g., `CpuIcon`).
+- **Logic**: Use Context for global settings like Visual Effects and Achievements.
 
 ---
-Created by Ahmed Samil Bulbul.
+Created by [Ahmed Samil Bulbul](https://fezcode.com).
