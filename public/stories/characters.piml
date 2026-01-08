@@ -166,3 +166,32 @@
     (book) The Cat of Craninal
     (description) Pippin's three feline companions. Soot is the shadow, Ginger is the sleeper, and Moonbeam is the guardian. They provide the only true peace in the city of Craninal.
     (status) Alive (Purring)
+
+  > (character)
+    (name) Rainhold Fredsound
+    (role) CEO of Fredsound Dream Studios
+    (book) The Fredsound Legacy
+    (description) A kind and generous man living in Hamitonis. He manages his massive wealth with a heavy heart, preferring to help others in secret. He loves Kramen as his closest friend.
+    (status) Wounded
+
+  > (character)
+    (name) Kramen Mandora
+    (role) Butler / Guardian
+    (book) The Fredsound Legacy
+    (description) A strict but loyal butler who grew up in Glareach before its destruction. He is a skilled marksman and saved Isabylle Fredsound's life during an "accident".
+    (status) Active (Wounded)
+
+  > (character)
+    (name) Isabylle Fredsound
+    (role) Matriarch
+    (book) The Fredsound Legacy
+    (description) Rainhold's mother, who refused Aester Cloudwear's gentrification project. She was saved by Kramen after a car "accident".
+    (status) Alive
+
+  > (character)
+    (name) Elyka
+    (role) Movie Star
+    (book) The Fredsound Legacy
+    (description) A glamorous celebrity unimpressed by wealth and fame. She vanished during an ambush in Hamitonis.
+    (status) Missing
+

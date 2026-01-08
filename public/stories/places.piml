@@ -134,3 +134,19 @@
     (book) The Cat of Craninal
     (description) A small, hidden oasis at the end of a dead-end alley in Craninal. It is a place of moss, sunlight, and feline mumbles.
     (status) Active (Peaceful)
+
+  > (place)
+    (name) Hamitonis
+    (type) Metropolitan City
+    (category) Settlements
+    (book) The Fredsound Legacy
+    (description) A city of celebrities, glamour, and superficiality. It is the heart of the entertainment industry and filled with a glamorous lifestyle.
+    (status) Active
+
+  > (place)
+    (name) Fredsound Dream Studios
+    (type) Production Studio
+    (category) Establishments
+    (book) The Fredsound Legacy
+    (description) The most prestigious and successful movie studio in Hamitonis, managed by Rainhold Fredsound.
+    (status) Active
