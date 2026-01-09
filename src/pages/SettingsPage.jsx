@@ -113,6 +113,8 @@ const SettingsPage = () => {
     toggleAutumn,
     isRain,
     toggleRain,
+    isSplashTextEnabled,
+    toggleSplashText,
     blogPostViewMode,
     setBlogPostViewMode,
     sidebarMode,
@@ -425,6 +427,7 @@ const SettingsPage = () => {
               <CustomToggle id="fx-garden" label="Flora Protocol" checked={isGarden} onChange={toggleGarden} />
               <CustomToggle id="fx-autumn" label="Seasonal Decay" checked={isAutumn} onChange={toggleAutumn} />
               <CustomToggle id="fx-rain" label="Hydraulic Filter" checked={isRain} onChange={toggleRain} />
+              <CustomToggle id="fx-splash" label="Splash Text" checked={isSplashTextEnabled} onChange={toggleSplashText} />
             </div>
           </Section>
 

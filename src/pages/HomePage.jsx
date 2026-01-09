@@ -14,55 +14,107 @@ import { useProjects } from '../utils/projectParser';
 import useSeo from '../hooks/useSeo';
 import usePersistentState from '../hooks/usePersistentState';
 import { useSiteConfig } from '../context/SiteConfigContext';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 import { KEY_HOMEPAGE_SECTION_ORDER } from '../utils/LocalStorageManager';
+import SplashText from '../components/SplashText';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)'/%3E%3C/svg%3E")`;
 
 const Hero = () => {
   const [time, setTime] = useState('');
+
   const { config } = useSiteConfig();
+
+  const { isSplashTextEnabled } = useVisualSettings();
 
   useEffect(() => {
     const timer = setInterval(() => {
       setTime(new Date().toLocaleTimeString('en-GB', { hour12: false }));
     }, 1000);
+
     return () => clearInterval(timer);
   }, []);
 
   const heroTitle = config?.hero?.title || 'Fezcodex';
+
   const heroTagline = config?.hero?.tagline || 'A digital vault of experimental software...';
 
   // Split title if it contains codex
+
   const mainTitle = heroTitle.toLowerCase().endsWith('codex')
+
     ? heroTitle.slice(0, -5)
+
     : heroTitle;
+
   const subTitle = heroTitle.toLowerCase().endsWith('codex') ? 'codex' : '';
 
   return (
+
     <div className="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-white/10">
+
       <div className="absolute top-6 left-6 right-6 flex justify-between items-start font-mono text-[10px] uppercase tracking-[0.2em] text-gray-500 z-20">
+
         <div className="flex flex-col gap-2">
+
           <div className="flex flex-col gap-1">
+
             <span>System: {heroTitle}</span>
+
             {config?.kernel && (
+
                 <span>Kernel: {config.kernel.codename}</span>
+
             )}
+
           </div>
+
           <Link
+
             to="/welcome"
+
             className="inline-flex items-center gap-2 text-emerald-500 hover:text-white transition-colors group"
+
           >
+
             <span className="h-1 w-1 bg-current" />
+
             <span>Show_Welcome</span>
+
           </Link>
+
         </div>
-        <div className="text-right">
-          <span>Local_Time: {time}</span>
-          <div className="flex items-center gap-2 justify-end mt-1 text-emerald-500">
+
+                <div className="text-right flex flex-col items-end gap-1">
+
+                  <span>Local_Time: {time}</span>
+
+                            {isSplashTextEnabled && (
+
+                              <Link
+
+                                to="/settings"
+
+                                className="text-orange-600 hover:text-red-500 transition-colors uppercase tracking-[0.2em]"
+
+                              >
+
+                                [Splash_Text: Enabled // click to disable]
+
+                              </Link>
+
+                            )}
+
+                  <div className="flex items-center gap-2 justify-end mt-1 text-emerald-500">
+
             <span className="h-1.5 w-1.5 rounded-full bg-current animate-pulse" />
+
             <span>LIVE</span>
+
           </div>
+
         </div>
+
       </div>
       <div className="mx-auto max-w-7xl px-6 relative z-10">
         <motion.div
@@ -70,13 +122,13 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-[12vw] font-black leading-[0.8] tracking-tighter text-white uppercase mb-8">
-            {mainTitle}
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">
-              {subTitle}
-            </span>
-          </h1>
-
+                    <h1 className="text-[12vw] font-black leading-[0.8] tracking-tighter text-white uppercase mb-8 relative">
+                      {mainTitle}
+                      <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">
+                        {subTitle}
+                      </span>
+                      <SplashText />
+                    </h1>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12 mt-12">
             <p className="max-w-xl text-lg md:text-xl text-gray-400 font-sans leading-relaxed text-wrap">
               {heroTagline}
@@ -228,12 +280,14 @@ const HomePage = () => {
 
   if (loadingProjects || loadingPosts) {
     return (
-      <div className="min-h-screen bg-[#050505] flex items-center justify-center">
-        <div className="flex flex-col items-center gap-4 text-white font-mono text-xs uppercase tracking-[0.3em]">
+      <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6">
+        <div className="flex flex-col items-center gap-6 text-white font-mono text-xs uppercase tracking-[0.3em] max-w-md text-center">
           <div className="h-px w-32 bg-white/10 relative overflow-hidden">
             <div className="absolute inset-0 bg-white animate-progress origin-left"></div>
           </div>
-          <span>Initialising_System</span>
+          <div className="flex flex-col gap-2">
+            <span>Initialising_System</span>
+          </div>
         </div>
       </div>
     );

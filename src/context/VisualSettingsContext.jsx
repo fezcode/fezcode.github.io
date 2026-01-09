@@ -54,6 +54,10 @@ export const VisualSettingsProvider = ({ children }) => {
     'sidebar-color',
     'default',
   );
+  const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState(
+    'is-splash-text-enabled',
+    true,
+  );
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(
     window.innerWidth > 768,
   );
@@ -259,6 +263,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const toggleGarden = () => setIsGarden((prev) => !prev);
   const toggleAutumn = () => setIsAutumn((prev) => !prev);
   const toggleRain = () => setIsRain((prev) => !prev);
+  const toggleSplashText = () => setIsSplashTextEnabled((prev) => !prev);
 
   return (
     <VisualSettingsContext.Provider
@@ -305,6 +310,8 @@ export const VisualSettingsProvider = ({ children }) => {
         setSidebarMode,
         sidebarColor,
         setSidebarColor,
+        isSplashTextEnabled,
+        toggleSplashText,
         isSidebarOpen,
         setIsSidebarOpen,
         toggleSidebar,
