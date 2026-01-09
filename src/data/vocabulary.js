@@ -55,4 +55,12 @@ export const vocabulary = {
     title: 'Open Graph Protocol',
     loader: () => import('./vocab/open-graph'),
   },
+  'name-mangling': {
+    title: 'Name Mangling',
+    loader: () => import('./vocab/name-mangling'),
+  },
+  'modules-vs-includes': {
+    title: 'Modules vs. Includes',
+    loader: () => import('./vocab/modules-vs-includes'),
+  },
 };
