@@ -127,9 +127,9 @@
 
   > (character)
     (name) Pellera Orlong
-    (role) Daughter / Victim
+    (role) Daughter / Patient Zero
     (book) The Petals of Predymesh
-    (description) A twelve-year-old girl afflicted with the 'Touch of Rose.' She remains in a vegetative state in a slum attic, her forehead marked by a crimson rose-leaf shape.
+    (description) A twelve-year-old girl and the first human to manifest the 'Touch of Rose'. Afflicted by Willare's mistake, she remains in a vegetative state in a slum attic, her forehead marked by a crimson rose-leaf shape. She is the biological 'Zero Point' for the disease, and her mark is a beacon for a connection that hasn't been established yet.
     (status) Ailing (Vegetative)
 
   > (character)
@@ -143,15 +143,29 @@
     (name) Avalia Krones
     (role) Scientist / Strategist
     (book) The Harvest of Silence
-    (description) A brilliant young scientist who revolutionized agriculture with the 'Krones Formula.' She maintains a facade of loyalty to the government while secretly obfuscating her research to prevent its weaponization. She acts as a silent mediator between the regime and the Butterflies.
-    (status) Alive (Double-Agent)
+    (description) A brilliant strategist who secretly used Proxanian Seeds and Sansu Syrup to develop her formula. She sought to create a botanical neural network but never intended to create a pathogen. After demanding to see Patient Zero (Pellera Orlong), she realized Willare's mistake involved her secret Proxanian materials. She remains silent about the source to protect her own life and research.
+    (status) Alive (Strategically Silent)
 
   > (character)
     (name) Willare Frindjen
     (role) Junior Lab Assistant
     (book) The Harvest of Silence
-    (description) A lab assistant at the Krones Research Lab who accidentally created the 'Touch of Rose' disease while working on the Krones Formula. Consumed by guilt and fear, she has turned to alcohol and isolation, eventually confessing her crimes on the rooftop of The Tipsy Lizard.
-    (status) Alive (Guilt-Ridden)
+    (description) A dedicated assistant who is consumed by guilt. She accidentally contaminated the Krones Formula with what she thought was a standard supplement (the Crimson Binder). It was only after Avalia forced her to look at Pellera Orlong that she realized the magnitude of her error, though she still doesn't know the Proxanian nature of what she touched.
+    (status) Alive (Guilt-Ridden / Broken)
+
+  > (character)
+    (name) Proythom
+    (role) Farmer / Civilian
+    (book) The Harvest of Silence
+    (description) Willare's former lover. A kind and honest man from the outskirts of Predymesh. Willare left him without explanation to protect him from the guilt and the 'rot' she believed she was carrying.
+    (status) Alive (Heartbroken)
+
+  > (character)
+    (name) The Mute Bard
+    (role) Alchemist's Companion
+    (book) The Tales of Doctor Blade
+    (description) A mysterious figure who cannot speak but whose songs hold the power to stabilize volatile herbal mixtures. He provides the final, magical resonance required to turn raw Alilberry into the legendary 'Drop'.
+    (status) Unknown
 
   > (character)
     (name) Prostex Leatherwave
@@ -195,3 +209,9 @@
     (description) A glamorous celebrity unimpressed by wealth and fame. She vanished during an ambush in Hamitonis.
     (status) Missing
 
+  > (character)
+    (name) Children of the Mountain
+    (role) Extinct Civilization (Proxanians)
+    (book) The Sanity Ward
+    (description) A humanoid race that predates human colonization of Thornus. Their culture revolved around the 'Communion Rites' and the biological harvesting of Sansu Syrup. Their remnant psychic frequency, the 'Proxanian Echo', is harvested to power the RedLink.
+    (status) Extinct (Harvested)

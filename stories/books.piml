@@ -131,10 +131,92 @@
         (author) fezcode
         (date) 2026-01-08
         (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) the-sanity-ward/redlink-log.txt
+        (title) RedLink Protocol 0-12 (EN)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 4
+        (filename) the-sanity-ward/redlink-protokolu.txt
+        (title) RedLink Protokolü 0-12 (TR)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
     (overlay) gray
 
   > (book)
     (bookId) 7
+    (bookTitle) The Roots of Silence
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-roots-of-silence/en/the-secret-seed.txt
+        (title) The Secret Seed (EN)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 2
+        (filename) the-roots-of-silence/tr/gizli-tohum.txt
+        (title) Gizli Tohum (TR)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+    (overlay) darkgreen
+
+  > (book)
+    (bookId) 8
+    (bookTitle) The Architecture of Ghosts
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) the-architecture-of-ghosts/en/the-fossilized-thought.txt
+        (title) Part I: The Fossilized Thought (EN)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 2
+        (filename) the-architecture-of-ghosts/tr/fosillesmis-dusunce.txt
+        (title) Bölüm I: Fosilleşmiş Düşünce (TR)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 3
+        (filename) the-architecture-of-ghosts/en/the-tectonic-whisper.txt
+        (title) Part II: The Tectonic Whisper (EN)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 4
+        (filename) the-architecture-of-ghosts/tr/tektonik-fisilti.txt
+        (title) Bölüm II: Tektonik Fısıltı (TR)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 5
+        (filename) the-architecture-of-ghosts/en/ruby-circuitry.txt
+        (title) Part III: Ruby Circuitry (EN)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 6
+        (filename) the-architecture-of-ghosts/tr/yakut-devreler.txt
+        (title) Bölüm III: Yakut Devreler (TR)
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+    (overlay) indigo
+
+  > (book)
+    (bookId) 9
     (bookTitle) The Diplomat's Journal
     (episodes)
       > (episode)
@@ -154,7 +236,7 @@
     (overlay) blue
 
   > (book)
-    (bookId) 8
+    (bookId) 10
     (bookTitle) The Whispering Rats
     (episodes)
       > (episode)
@@ -174,7 +256,7 @@
     (overlay) brown
 
   > (book)
-    (bookId) 9
+    (bookId) 11
     (bookTitle) The Petals of Predymesh
     (episodes)
       > (episode)
@@ -194,7 +276,7 @@
     (overlay) lightcoral
 
   > (book)
-    (bookId) 10
+    (bookId) 12
     (bookTitle) The Harvest of Silence
     (episodes)
       > (episode)
@@ -242,7 +324,7 @@
     (overlay) gold
 
   > (book)
-    (bookId) 11
+    (bookId) 13
     (bookTitle) The Cat of Craninal
     (episodes)
       > (episode)
@@ -262,7 +344,7 @@
     (overlay) seagreen
 
   > (book)
-    (bookId) 12
+    (bookId) 14
     (bookTitle) The Fredsound Legacy
     (episodes)
       > (episode)
