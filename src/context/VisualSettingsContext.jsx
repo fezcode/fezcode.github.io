@@ -42,6 +42,12 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isGarden, setIsGarden] = usePersistentState('is-garden', false);
   const [isAutumn, setIsAutumn] = usePersistentState('is-autumn', false);
   const [isRain, setIsRain] = usePersistentState('is-rain', false);
+  const [isFalloutOverlay, setIsFalloutOverlay] = usePersistentState('is-fallout-overlay', false);
+  const [falloutVariant, setFalloutVariant] = usePersistentState('fallout-variant', 'amber'); // 'amber' or 'green'
+  const [isFalloutNoiseEnabled, setIsFalloutNoiseEnabled] = usePersistentState('fallout-noise', true);
+  const [isFalloutScanlinesEnabled, setIsFalloutScanlinesEnabled] = usePersistentState('fallout-scanlines', true);
+  const [isFalloutVignetteEnabled, setIsFalloutVignetteEnabled] = usePersistentState('fallout-vignette', true);
+
   const [blogPostViewMode, setBlogPostViewMode] = usePersistentState(
     'blog-post-view-mode',
     'standard',
@@ -245,6 +251,14 @@ export const VisualSettingsProvider = ({ children }) => {
     }
   }, [isGarden, isAutumn, isRain, unlockAchievement]);
 
+  useEffect(() => {
+    if (isFalloutOverlay) {
+      document.body.classList.add('fallout-mode');
+    } else {
+      document.body.classList.remove('fallout-mode');
+    }
+  }, [isFalloutOverlay]);
+
   const toggleInvert = () => setIsInverted((prev) => !prev);
   const toggleRetro = () => setIsRetro((prev) => !prev);
   const toggleParty = () => setIsParty((prev) => !prev);
@@ -263,6 +277,10 @@ export const VisualSettingsProvider = ({ children }) => {
   const toggleGarden = () => setIsGarden((prev) => !prev);
   const toggleAutumn = () => setIsAutumn((prev) => !prev);
   const toggleRain = () => setIsRain((prev) => !prev);
+  const toggleFalloutOverlay = () => setIsFalloutOverlay((prev) => !prev);
+  const toggleFalloutNoise = () => setIsFalloutNoiseEnabled((prev) => !prev);
+  const toggleFalloutScanlines = () => setIsFalloutScanlinesEnabled((prev) => !prev);
+  const toggleFalloutVignette = () => setIsFalloutVignetteEnabled((prev) => !prev);
   const toggleSplashText = () => setIsSplashTextEnabled((prev) => !prev);
 
   return (
@@ -304,6 +322,16 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleAutumn,
         isRain,
         toggleRain,
+        isFalloutOverlay,
+        toggleFalloutOverlay,
+        falloutVariant,
+        setFalloutVariant,
+        isFalloutNoiseEnabled,
+        toggleFalloutNoise,
+        isFalloutScanlinesEnabled,
+        toggleFalloutScanlines,
+        isFalloutVignetteEnabled,
+        toggleFalloutVignette,
         blogPostViewMode,
         setBlogPostViewMode,
         sidebarMode,

@@ -115,6 +115,16 @@ const SettingsPage = () => {
     toggleRain,
     isSplashTextEnabled,
     toggleSplashText,
+    isFalloutOverlay,
+    toggleFalloutOverlay,
+    falloutVariant,
+    setFalloutVariant,
+    isFalloutNoiseEnabled,
+    toggleFalloutNoise,
+    isFalloutScanlinesEnabled,
+    toggleFalloutScanlines,
+    isFalloutVignetteEnabled,
+    toggleFalloutVignette,
     blogPostViewMode,
     setBlogPostViewMode,
     sidebarMode,
@@ -427,6 +437,46 @@ const SettingsPage = () => {
               <CustomToggle id="fx-garden" label="Flora Protocol" checked={isGarden} onChange={toggleGarden} />
               <CustomToggle id="fx-autumn" label="Seasonal Decay" checked={isAutumn} onChange={toggleAutumn} />
               <CustomToggle id="fx-rain" label="Hydraulic Filter" checked={isRain} onChange={toggleRain} />
+              <CustomToggle id="fx-fallout" label="Fallout Overlay" checked={isFalloutOverlay} onChange={toggleFalloutOverlay} />
+              {isFalloutOverlay && (
+                <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-4 p-6 border border-white/10 bg-white/5 rounded-sm space-y-6">
+                  <div className="flex items-center gap-4">
+                    <span className="font-mono text-[10px] uppercase tracking-widest text-gray-400">Overlay Variant:</span>
+                    <CustomDropdown
+                        variant="brutalist"
+                        label="Variant"
+                        options={[
+                            { label: 'New Vegas (Amber)', value: 'amber' },
+                            { label: 'Fallout 3 (Green)', value: 'green' }
+                        ]}
+                        value={falloutVariant}
+                        onChange={setFalloutVariant}
+                        fullWidth={false}
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-white/5">
+                    <CustomToggle
+                      id="fallout-noise"
+                      label="Signal Noise"
+                      checked={isFalloutNoiseEnabled}
+                      onChange={toggleFalloutNoise}
+                    />
+                    <CustomToggle
+                      id="fallout-scanlines"
+                      label="CRT Scanlines"
+                      checked={isFalloutScanlinesEnabled}
+                      onChange={toggleFalloutScanlines}
+                    />
+                    <CustomToggle
+                      id="fallout-vignette"
+                      label="Screen Vignette"
+                      checked={isFalloutVignetteEnabled}
+                      onChange={toggleFalloutVignette}
+                    />
+                  </div>
+                </div>
+              )}
               <CustomToggle id="fx-splash" label="Splash Text" checked={isSplashTextEnabled} onChange={toggleSplashText} />
             </div>
           </Section>

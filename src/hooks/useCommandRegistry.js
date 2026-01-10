@@ -61,6 +61,8 @@ export const useCommandRegistry = ({
     isGarden, toggleGarden,
     isAutumn, toggleAutumn,
     isRain, toggleRain,
+    isFalloutOverlay, toggleFalloutOverlay,
+    falloutVariant, setFalloutVariant,
   } = useVisualSettings();
 
   const commandHandlers = useMemo(() => ({
@@ -368,6 +370,25 @@ export const useCommandRegistry = ({
         duration: 2000,
       });
     },
+    toggleFalloutMode: () => {
+      toggleFalloutOverlay();
+      addToast({
+        title: !isFalloutOverlay ? 'Fallout Overlay Active' : 'Fallout Overlay Disabled',
+        message: !isFalloutOverlay
+          ? `Welcome to the Wasteland. (${falloutVariant.toUpperCase()})`
+          : 'Returning to pre-war reality.',
+        duration: 2000,
+      });
+    },
+    switchFalloutVariant: () => {
+        const newVariant = falloutVariant === 'amber' ? 'green' : 'amber';
+        setFalloutVariant(newVariant);
+        addToast({
+            title: 'Fallout Overlay Color Changed',
+            message: `HUD Color set to: ${newVariant.toUpperCase()}`,
+            duration: 2000,
+        });
+    },
     showTime: () => {
       unlockAchievement('time_teller');
       openGenericModal('Current Time', <LiveClock />);
@@ -554,6 +575,8 @@ export const useCommandRegistry = ({
     isGarden, toggleGarden,
     isAutumn, toggleAutumn,
     isRain, toggleRain,
+    isFalloutOverlay, toggleFalloutOverlay,
+    falloutVariant, setFalloutVariant,
   ]);
 
   const executeCommand = useCallback((commandId) => {

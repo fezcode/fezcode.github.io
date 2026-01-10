@@ -11,6 +11,7 @@ import { useVisualSettings } from '../context/VisualSettingsContext';
 import DigitalFlowers from './DigitalFlowers';
 import DigitalLeaves from './DigitalLeaves';
 import NaturalRain from './NaturalRain';
+import FalloutOverlay from './FalloutOverlay';
 import SidePanel from './SidePanel';
 import Banner from './Banner';
 
@@ -53,6 +54,7 @@ const Layout = ({
   return (
     <>
       <Banner />
+      <FalloutOverlay />
       {isGarden && !hideLayout && <DigitalFlowers />}
       {isAutumn && !hideLayout && <DigitalLeaves />}
       {isRain && !hideLayout && <NaturalRain />}

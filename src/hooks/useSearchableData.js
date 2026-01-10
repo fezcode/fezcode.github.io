@@ -371,6 +371,16 @@ const useSearchableData = () => {
             commandId: 'toggleRainMode',
           },
           {
+            title: 'Toggle Fallout Overlay',
+            type: 'command',
+            commandId: 'toggleFalloutMode',
+          },
+          {
+            title: 'Switch Fallout Overlay Color (Amber/Green)',
+            type: 'command',
+            commandId: 'switchFalloutVariant',
+          },
+          {
             title: 'Previous Page',
             type: 'command',
             commandId: 'previousPage',
