@@ -51,7 +51,7 @@ const TierRow = ({
           style={{ backgroundColor: tier.color }}
         >
           <span
-            className="text-black font-black text-xl md:text-3xl uppercase tracking-wider text-center select-none cursor-pointer break-words w-full"
+            className="tier-label-text text-black font-black text-xl md:text-3xl uppercase tracking-wider text-center select-none cursor-pointer break-words w-full"
             style={{ textShadow: '0 2px 0 rgba(255,255,255,0.2)' }}
             onDoubleClick={openModal}
           >

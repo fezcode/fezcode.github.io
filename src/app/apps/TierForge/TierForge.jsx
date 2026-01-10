@@ -263,6 +263,17 @@ const TierForge = () => {
                     chart.style.overflow = 'visible';
                     chart.style.height = 'auto';
                 }
+
+                // Fix vertical alignment for text in capture (html2canvas often renders text lower)
+                const labels = document.querySelectorAll('.tier-label-text');
+                labels.forEach(label => {
+                    label.style.transform = 'translateY(-10px)'; // Nudge text up
+                });
+
+                const items = document.querySelectorAll('.item-text-content');
+                items.forEach(item => {
+                    item.style.transform = 'translateY(-4px)';
+                });
             }
         });
 
@@ -331,7 +342,7 @@ const TierForge = () => {
               <div className="flex items-center gap-2 px-3 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-sm animate-pulse">
                 <InfoIcon weight="fill" className="text-emerald-500" size={12} />
                 <span className="text-[10px] text-emerald-500 font-bold uppercase tracking-widest leading-none">
-                  Data Detected
+                  Saved Data Exists
                 </span>
               </div>
            )}
