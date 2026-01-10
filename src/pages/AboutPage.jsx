@@ -10,6 +10,7 @@ import {
   BugIcon,
   HandHeartIcon,
   BookBookmarkIcon,
+  IdentificationCardIcon,
 } from '@phosphor-icons/react';
 import CommandPalette from '../components/CommandPalette';
 import { useCommandPalette } from '../context/CommandPaletteContext';
@@ -18,12 +19,14 @@ import SystemArchitecture from './about-views/SystemArchitecture';
 import MindMapConstellation from './about-views/MindMapConstellation';
 import ClassifiedDossier from './about-views/ClassifiedDossier';
 import Brutalist from './about-views/Brutalist';
+import SkillDeck from './about-views/SkillDeck';
 import { useAchievements } from '../context/AchievementContext';
 import useSeo from '../hooks/useSeo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
     { id: 'brutalist', icon: BugIcon, label: 'Brutalist' },
+    { id: 'skills', icon: IdentificationCardIcon, label: 'Skill Deck' },
     { id: 'dossier', icon: ArticleIcon, label: 'Dossier' },
     { id: 'hud', icon: TerminalIcon, label: 'The Terminal' },
     { id: 'blueprint', icon: TreeStructureIcon, label: 'Blueprint' },
@@ -58,7 +61,7 @@ const ViewSwitcher = ({ currentView }) => {
 
 const AboutPage = () => {
   const { viewId } = useParams();
-  const validViews = ['dossier', 'hud', 'blueprint', 'map', 'brutalist'];
+  const validViews = ['dossier', 'hud', 'blueprint', 'map', 'brutalist', 'skills'];
 
   const { unlockAchievement } = useAchievements();
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
@@ -91,6 +94,7 @@ const AboutPage = () => {
       case 'dossier':
         return 'bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-[#4a0404] hover:text-white hover:border-[#4a0404] rounded-none shadow-none';
       case 'brutalist':
+      case 'skills':
         return 'bg-black text-white border-white border-2 font-mono uppercase tracking-widest text-xs hover:bg-white hover:text-black rounded-none';
       case 'hud':
         return 'bg-black text-green-500 border-green-500 border font-mono tracking-wider hover:bg-green-500 hover:text-black shadow-[0_0_10px_rgba(0,255,0,0.3)] rounded-sm';
@@ -160,6 +164,7 @@ const AboutPage = () => {
           {view === 'map' && <MindMapConstellation />}
           {view === 'dossier' && <ClassifiedDossier />}
           {view === 'brutalist' && <Brutalist />}
+          {view === 'skills' && <SkillDeck />}
         </motion.div>
       </AnimatePresence>
 
