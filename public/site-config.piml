@@ -36,3 +36,15 @@
       (label) EMAIL
       (url) mailto:samil.bulbul@gmail.com
       (icon) EnvelopeSimple
+
+    > (link)
+      (id) repo
+      (label) REPO
+      (url) https://github.com/fezcode/fezcode.github.io
+      (icon) GitBranch
+
+    > (link)
+      (id) website
+      (label) WEBSITE
+      (url) https://fezcode.com
+      (icon) Globe

@@ -1,17 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { version } from '../version';
+import { useAboutData } from '../hooks/useAboutData';
 import {
-  XLogoIcon,
-  GithubLogoIcon,
-  LinkedinLogoIcon,
   Command,
   Terminal,
-  RedditLogoIcon,
 } from '@phosphor-icons/react';
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+  const aboutData = useAboutData();
 
   return (
     <footer className="bg-[#050505] border-t-2 border-white/10 mt-auto selection:bg-white selection:text-black">
@@ -26,8 +24,7 @@ const Footer = () => {
                 </span>
               </Link>
               <p className="max-w-md text-gray-400 font-mono text-xs leading-relaxed uppercase tracking-widest">
-                {'//'} A digital garden of experimental code, architectural
-                thoughts, and creative explorations.
+                {'//'} {aboutData.profile.tagline || 'A digital garden of experimental code, architectural thoughts, and creative explorations.'}
               </p>
             </div>
 
@@ -125,11 +122,10 @@ const Footer = () => {
               Connect
             </h3>
 
-            <div className="flex gap-3 mb-8">
-              <SocialIcon href="https://x.com/fezcoddy" icon={XLogoIcon} />
-              <SocialIcon href="https://github.com/fezcode" icon={GithubLogoIcon} />
-              <SocialIcon href="https://www.reddit.com/r/fezcodex/" icon={RedditLogoIcon} />
-              <SocialIcon href="https://www.linkedin.com/in/ahmed-samil-bulbul/" icon={LinkedinLogoIcon} />
+            <div className="flex gap-3 mb-8 flex-wrap">
+              {aboutData.profile.links.filter(l => l.id !== 'email' && l.id !== 'website').map((link, i) => (
+                <SocialIcon key={i} href={link.url} icon={link.icon} />
+              ))}
             </div>
 
             <div className="space-y-3 border-t border-white/10 pt-6">

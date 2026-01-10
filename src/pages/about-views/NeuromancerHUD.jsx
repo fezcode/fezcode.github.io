@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { aboutData } from './aboutData';
+import { useAboutData } from '../../hooks/useAboutData';
 import { version } from '../../version';
 import {
   Crosshair,
@@ -99,6 +99,7 @@ const ScanLine = ({ theme = 'green' }) => (
 
 const MiniTerminal = ({ theme, setTheme }) => {
   const navigate = useNavigate();
+  const aboutData = useAboutData();
   const [history, setHistory] = useState([
     { type: 'output', text: 'FEZ.OS Shell v0.4.0 initialized...' },
     { type: 'output', text: 'Type "help" for available commands.' },
@@ -384,12 +385,10 @@ const MiniTerminal = ({ theme, setTheme }) => {
           text: 'CONNECTIVITY PROTOCOLS:',
           className: `${THEMES[theme].accent} font-bold mt-2`,
         });
-        const contacts = [
-          { label: 'EMAIL', val: aboutData.profile.email },
-          { label: 'LINKEDIN', val: '/in/ahmedsamilbulbul' },
-          { label: 'GITHUB', val: '/fezcode' },
-          { label: 'TWITTER', val: '@fezcode' },
-        ];
+        const contacts = aboutData.profile.links.map((link) => ({
+          label: link.id ? link.id.toUpperCase() : link.label.toUpperCase(),
+          val: link.url.replace('mailto:', ''),
+        }));
         contacts.forEach((c) => {
           newHistory.push({
             type: 'output',
@@ -643,6 +642,7 @@ const MiniTerminal = ({ theme, setTheme }) => {
 const NeuromancerHUD = () => {
   const [activeTab, setActiveTab] = useState('status');
   const [theme, setTheme] = useState('green');
+  const aboutData = useAboutData();
 
   return (
     <div

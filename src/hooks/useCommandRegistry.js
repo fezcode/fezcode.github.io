@@ -4,6 +4,7 @@ import { useAnimation } from '../context/AnimationContext';
 import { useToast } from './useToast';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import { useAchievements } from '../context/AchievementContext';
+import { useAboutData } from './useAboutData';
 import { version } from '../version';
 import { KEY_SIDEBAR_STATE, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
 import LiveClock from '../components/LiveClock';
@@ -39,6 +40,7 @@ export const useCommandRegistry = ({
   const { isAnimationEnabled, toggleAnimation } = useAnimation();
   const { addToast } = useToast();
   const { unlockAchievement } = useAchievements();
+  const aboutData = useAboutData();
 
   const {
     isInverted, toggleInvert,
@@ -82,7 +84,7 @@ export const useCommandRegistry = ({
     },
     viewSource: () => {
       window.open(
-        'https://github.com/fezcode/fezcode.github.io',
+        aboutData.profile.links.find((l) => l.id === 'repo')?.url || 'https://github.com/fezcode/fezcode.github.io',
         '_blank',
         'noopener,noreferrer',
       );
@@ -96,28 +98,28 @@ export const useCommandRegistry = ({
     },
     sendEmailFezcode: () => {
       window.open(
-        'mailto:samil.bulbul@gmail.com',
+        aboutData.profile.links.find((l) => l.id === 'email')?.url || 'mailto:samil.bulbul@gmail.com',
         '_blank',
         'noopener,noreferrer',
       );
     },
     openGitHub: () => {
       window.open(
-        'https://github.com/fezcode',
+        aboutData.profile.links.find((l) => l.id === 'github')?.url || 'https://github.com/fezcode',
         '_blank',
         'noopener,noreferrer',
       );
     },
     openTwitter: () => {
       window.open(
-        'https://x.com/fezcoddy',
+        aboutData.profile.links.find((l) => l.id === 'twitter')?.url || 'https://x.com/fezcoddy',
         '_blank',
         'noopener,noreferrer',
       );
     },
     openLinkedIn: () => {
       window.open(
-        'https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US',
+        aboutData.profile.links.find((l) => l.id === 'linkedin')?.url || 'https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US',
         '_blank',
         'noopener,noreferrer',
       );
@@ -499,7 +501,8 @@ export const useCommandRegistry = ({
       const issueBody = encodeURIComponent(
         `Found an issue on:\n${window.location.href}\n\n[Please describe the issue here]`,
       );
-      const githubIssueUrl = `https://github.com/fezcode/fezcode.github.io/issues/new?title=${issueTitle}&body=${issueBody}`;
+      const repoUrl = aboutData.profile.links.find((l) => l.id === 'repo')?.url || 'https://github.com/fezcode/fezcode.github.io';
+      const githubIssueUrl = `${repoUrl}/issues/new?title=${issueTitle}&body=${issueBody}`;
       window.open(githubIssueUrl, '_blank', 'noopener,noreferrer');
       addToast({
         title: 'GitHub Issue',
@@ -530,6 +533,7 @@ export const useCommandRegistry = ({
     toggleAnimation,
     unlockAchievement,
     toggleDigitalRain,
+    aboutData,
 
     // Visual Settings dependencies
     isInverted, toggleInvert,

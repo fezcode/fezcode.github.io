@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { aboutData } from './aboutData';
+import { useAboutData } from '../../hooks/useAboutData';
 import {
   CpuIcon,
   HardDrivesIcon,
@@ -61,6 +61,7 @@ const SchematicBox = ({
 );
 
 const SystemArchitecture = () => {
+  const aboutData = useAboutData();
   return (
     <div className="relative min-h-screen bg-[#001e40] text-white p-4 pt-24 font-mono selection:bg-cyan-500 selection:text-black pb-32">
       <BlueprintGrid />

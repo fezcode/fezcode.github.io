@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { aboutData } from './aboutData';
+import { useAboutData } from '../../hooks/useAboutData';
 import { X, Sparkle, Buildings } from '@phosphor-icons/react';
 
 const NODE_COLORS = {
@@ -115,6 +115,7 @@ const InfoPanel = ({ data, onClose }) => (
 const MindMapConstellation = () => {
   const [selectedNode, setSelectedNode] = useState(null);
   const containerRef = useRef(null);
+  const aboutData = useAboutData();
 
   // Generating node positions
   // In a real implementation, we might use d3-force or similar
