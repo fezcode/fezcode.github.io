@@ -4,12 +4,12 @@ import {
   ArrowLeftIcon,
   TextAaIcon,
   CodeIcon,
-  CopySimpleIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import useSeo from '../../hooks/useSeo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
+import BrutalistOutputCard from '../../components/BrutalistOutputCard';
 
 function CaseConverterPage() {
   const appName = 'Case Converter';
@@ -32,13 +32,20 @@ function CaseConverterPage() {
   const convertToUpperCase = () => inputText.toUpperCase();
   const convertToLowerCase = () => inputText.toLowerCase();
   const convertToTitleCase = () =>
-    inputText.replace(/\b\w/g, (char) => char.toUpperCase());
-  const convertToCamelCase = () =>
+    inputText.toLowerCase().replace(/\b\w/g, (char) => char.toUpperCase());
+  const convertToPascalCase = () =>
     inputText
-      .replace(/(?:^|\s)([a-zA-Z])/g, (_, char) => char.toUpperCase())
+      .toLowerCase()
+      .replace(/(?:^|\s+)([a-z])/g, (_, char) => char.toUpperCase())
       .replace(/\s+/g, '');
+  const convertToCamelCase = () => {
+    const pascal = convertToPascalCase();
+    return pascal.charAt(0).toLowerCase() + pascal.slice(1);
+  };
   const convertToSnakeCase = () => inputText.toLowerCase().replace(/\s+/g, '_');
   const convertToKebabCase = () => inputText.toLowerCase().replace(/\s+/g, '-');
+  const convertToSentenceCase = () =>
+    inputText.charAt(0).toUpperCase() + inputText.slice(1).toLowerCase();
 
   const copyToClipboard = (text) => {
     navigator.clipboard.writeText(text).then(() => {
@@ -103,33 +110,51 @@ function CaseConverterPage() {
             </h3>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <CaseOutput
+              <BrutalistOutputCard
                 title="Uppercase"
+                description="ALL CHARACTERS CAPITALIZED"
                 value={convertToUpperCase()}
                 onCopy={copyToClipboard}
               />
-              <CaseOutput
+              <BrutalistOutputCard
                 title="Lowercase"
+                description="all characters lowercase"
                 value={convertToLowerCase()}
                 onCopy={copyToClipboard}
               />
-              <CaseOutput
+              <BrutalistOutputCard
                 title="Title Case"
+                description="Capitalize Every Word"
                 value={convertToTitleCase()}
                 onCopy={copyToClipboard}
               />
-              <CaseOutput
+              <BrutalistOutputCard
+                title="Sentence Case"
+                description="Capitalize only the first word"
+                value={convertToSentenceCase()}
+                onCopy={copyToClipboard}
+              />
+              <BrutalistOutputCard
                 title="Camel Case"
+                description="lowerCaseThenCapitalize"
                 value={convertToCamelCase()}
                 onCopy={copyToClipboard}
               />
-              <CaseOutput
+              <BrutalistOutputCard
+                title="Pascal Case"
+                description="CapitalizeEveryWordNoSpaces"
+                value={convertToPascalCase()}
+                onCopy={copyToClipboard}
+              />
+              <BrutalistOutputCard
                 title="Snake Case"
+                description="lowercase_with_underscores"
                 value={convertToSnakeCase()}
                 onCopy={copyToClipboard}
               />
-              <CaseOutput
+              <BrutalistOutputCard
                 title="Kebab Case"
+                description="lowercase-with-hyphens"
                 value={convertToKebabCase()}
                 onCopy={copyToClipboard}
               />
@@ -140,26 +165,5 @@ function CaseConverterPage() {
     </div>
   );
 }
-
-const CaseOutput = ({ title, value, onCopy }) => (
-  <div className="flex flex-col gap-2 p-4 border border-white/10 bg-white/[0.01] rounded-sm group relative overflow-hidden">
-    <div className="absolute top-0 left-0 w-full h-[1px] bg-emerald-500/0 group-hover:bg-emerald-500/30 transition-all" />
-    <div className="flex items-center justify-between">
-      <span className="text-[9px] font-mono font-bold text-gray-600 uppercase tracking-widest">
-        {title}
-      </span>
-      <button
-        onClick={() => onCopy(value)}
-        className="text-gray-600 hover:text-emerald-400 transition-colors"
-        title="Copy Output"
-      >
-        <CopySimpleIcon size={14} weight="bold" />
-      </button>
-    </div>
-    <div className="font-mono text-sm text-gray-300 break-all line-clamp-2 min-h-[2.5rem]">
-      {value || <span className="opacity-10">---</span>}
-    </div>
-  </div>
-);
 
 export default CaseConverterPage;
