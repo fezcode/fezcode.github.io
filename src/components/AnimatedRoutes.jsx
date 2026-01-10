@@ -109,6 +109,7 @@ const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
+const TierForgePage = lazy(() => import('../pages/apps/TierForgePage'));
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
 const AssetConstructorPage = lazy(() => import('../pages/apps/AssetConstructorPage'));
 const PatternGeneratorPage = lazy(() => import('../pages/apps/PatternGeneratorPage'));
@@ -1153,6 +1154,26 @@ const AnimatedRoutes = ({
               </Suspense>
             </motion.div>
           }
+        />
+        <Route
+          path="/apps/tier-forge"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <TierForgePage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps::tf"
+          element={<Navigate to="/apps/tier-forge" replace />}
         />
         <Route
           path="/apps/metabolic-hub"

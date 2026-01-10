@@ -165,6 +165,14 @@
     "order": 2,
     "apps": [
       {
+        "slug": "tier-forge",
+        "to": "/apps/tier-forge",
+        "title": "Tier Forge",
+        "description": "Construct and visualize ranked data sets with drag-and-drop precision.",
+        "icon": "ListBulletsIcon",
+        "created_at": "2026-01-10T12:00:00+03:00"
+      },
+      {
         "slug": "aether",
         "to": "/apps/aether",
         "title": "Aether Music Player",

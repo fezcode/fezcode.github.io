@@ -69,13 +69,15 @@ const hsvToHex = (h, s, v) => {
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 };
 
-const CustomColorPicker = ({ value, onChange, label }) => {
+const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [hsv, setHsv] = useState({ h: 0, s: 0, v: 0 });
   const [inputValue, setInputValue] = useState(value);
   const containerRef = useRef(null);
   const satRef = useRef(null);
   const hueRef = useRef(null);
+
+  const isBrutalist = variant === 'brutalist';
 
   useEffect(() => {
     try {
@@ -145,7 +147,9 @@ const CustomColorPicker = ({ value, onChange, label }) => {
       <div className="relative">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full flex items-center gap-3 p-2 bg-black/40 border border-white/10 hover:border-white/30 transition-all rounded-sm group"
+          className={`w-full flex items-center gap-3 p-2 bg-black/40 border transition-all rounded-sm group ${
+            isBrutalist ? 'border-white/20 hover:border-emerald-500/50' : 'border-white/10 hover:border-white/30'
+          }`}
         >
           <div
             className="w-6 h-6 rounded-sm border border-white/20 shadow-inner shrink-0"

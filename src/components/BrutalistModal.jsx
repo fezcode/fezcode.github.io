@@ -7,6 +7,7 @@ const BrutalistModal = ({
   isOpen,
   onClose,
   item,
+  children
 }) => {
   if (!item) return null;
 
@@ -46,7 +47,7 @@ const BrutalistModal = ({
             </div>
 
             {/* Right side: Content */}
-            <div className="flex-1 flex flex-col p-8 md:p-12 relative">
+            <div className="flex-1 flex flex-col p-8 md:p-12 relative overflow-y-auto">
               {/* Decorative background logo */}
               <div className="absolute top-0 right-0 p-12 opacity-[0.02] pointer-events-none select-none">
                  <h1 className="text-9xl font-black font-playfairDisplay leading-none">FC</h1>
@@ -55,7 +56,7 @@ const BrutalistModal = ({
               <div className="flex justify-between items-start mb-12">
                 <div className="space-y-1">
                   <div className="h-1 w-12 bg-emerald-500 mb-4" />
-                  <h2 className="text-4xl md:text-5xl font-normal font-playfairDisplay tracking-tighter text-white uppercase leading-none">
+                  <h2 className="text-4xl md:text-5xl font-normal font-playfairDisplay tracking-tighter text-white uppercase leading-none break-all">
                     {title}
                   </h2>
                 </div>
@@ -67,32 +68,40 @@ const BrutalistModal = ({
                 </button>
               </div>
 
-              <div className="flex-grow space-y-8">
-                <p className="text-xl md:text-2xl text-gray-300 font-arvo leading-relaxed">
-                  {description}
-                </p>
-                {item.author && (
-                  <div className="pt-4 flex items-center gap-3">
-                    <div className="w-8 h-px bg-white/20" />
-                    <span className="text-xs font-mono uppercase tracking-[0.4em] text-gray-500">
-                      Authored by // {item.author}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {url && url !== '#' && (
-                <div className="mt-12">
-                  <a
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-4 bg-white text-black px-8 py-5 font-mono font-black text-xs uppercase tracking-[0.4em] hover:bg-emerald-400 transition-all w-full md:w-auto"
-                  >
-                    <span>{item.actionLabel || "Visit"}</span>
-                    <ArrowSquareOutIcon weight="bold" size={20} />
-                  </a>
+              {children ? (
+                <div className="flex-grow">
+                  {children}
                 </div>
+              ) : (
+                <>
+                  <div className="flex-grow space-y-8">
+                    <p className="text-xl md:text-2xl text-gray-300 font-arvo leading-relaxed">
+                      {description}
+                    </p>
+                    {item.author && (
+                      <div className="pt-4 flex items-center gap-3">
+                        <div className="w-8 h-px bg-white/20" />
+                        <span className="text-xs font-mono uppercase tracking-[0.4em] text-gray-500">
+                          Authored by // {item.author}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+
+                  {url && url !== '#' && (
+                    <div className="mt-12">
+                      <a
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group inline-flex items-center gap-4 bg-white text-black px-8 py-5 font-mono font-black text-xs uppercase tracking-[0.4em] hover:bg-emerald-400 transition-all w-full md:w-auto"
+                      >
+                        <span>{item.actionLabel || "Visit"}</span>
+                        <ArrowSquareOutIcon weight="bold" size={20} />
+                      </a>
+                    </div>
+                  )}
+                </>
               )}
 
               {/* Grid corner markers */}
