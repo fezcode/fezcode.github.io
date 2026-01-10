@@ -1,5 +1,16 @@
 [
   {
+    "slug": "implementing-drag-and-drop-in-react",
+    "title": "Implementing Drag and Drop in React without Libraries",
+    "date": "2026-01-10",
+    "updated": "2026-01-10",
+    "description": "A deep dive into building a robust drag-and-drop system for Tier Forge using the native HTML5 Drag and Drop API.",
+    "tags": ["react", "drag-and-drop", "javascript", "tutorial", "frontend"],
+    "category": "dev",
+    "filename": "implementing-drag-and-drop-in-react.txt",
+    "authors": ["fezcode"]
+  },
+  {
     "slug": "gh-pages-enametoolong-fix",
     "title": "Fixing gh-pages: Resolving spawn ENAMETOOLONG",
     "date": "2026-01-08",

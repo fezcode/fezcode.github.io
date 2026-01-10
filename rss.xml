@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 10 Jan 2026 16:58:31 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 10 Jan 2026 20:42:48 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 10 Jan 2026 16:58:31 GMT</pubDate>
+        <pubDate>Sat, 10 Jan 2026 20:42:47 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Implementing Drag and Drop in React without Libraries]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/implementing-drag-and-drop-in-react</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/implementing-drag-and-drop-in-react</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>When building <strong>Tier Forge</strong>, I needed a flexible way to move items between the &quot;pool&quot; and various &quot;tiers&quot;. While libraries like <code>react-beautiful-dnd</code> or <code>dnd-kit</code> are excellent, sometimes you just want full control without the overhead.</p>
+<p><a href="https://fezcode.com/blog/implementing-drag-and-drop-in-react">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Fixing gh-pages: Resolving spawn ENAMETOOLONG]]></title>
             <description><![CDATA[[object Object]]]></description>
