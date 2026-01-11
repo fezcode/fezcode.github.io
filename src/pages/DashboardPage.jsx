@@ -9,7 +9,6 @@ import {
   BookOpen,
   Scroll,
   ArrowUpRight,
-  Wallet,
   Circle,
   TrendUp,
   Gear,
