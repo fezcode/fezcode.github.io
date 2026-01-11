@@ -210,24 +210,6 @@ const TheVaguePage = () => {
     );
   }
 
-  // --- TERMINAL MODE RENDER ---
-  if (theme === 'terminal') {
-      return (
-          <div className="min-h-screen bg-black overflow-hidden relative">
-              <TheVagueTerminal
-                issues={sortedIssues}
-                onExit={() => setTheme('neo')}
-                onOpenIssue={handleIssueClick}
-              />
-               <BrutalistModal
-                isOpen={!!selectedIssue}
-                onClose={() => setSelectedIssue(null)}
-                item={selectedIssue}
-               />
-          </div>
-      );
-  }
-
   return (
     <div className={`min-h-screen ${currentTheme.colors.bg} ${currentTheme.colors.text} ${currentTheme.font.body} transition-colors duration-500 flex flex-col relative overflow-hidden`}>
 
@@ -255,6 +237,17 @@ const TheVaguePage = () => {
                   CONFIDENTIAL
                </div>
            </div>
+       )}
+
+       {/* TERMINAL OVERLAY */}
+       {theme === 'terminal' && (
+          <div className="fixed inset-0 z-[200]">
+              <TheVagueTerminal
+                issues={sortedIssues}
+                onExit={() => setTheme('neo')}
+                onOpenIssue={handleIssueClick}
+              />
+          </div>
        )}
 
        <BrutalistModal
