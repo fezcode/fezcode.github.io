@@ -12,6 +12,20 @@ export const VisualSettingsProvider = ({ children }) => {
   const { unlockAchievement } = useAchievements();
   const themeChangeTimestamps = useRef([]); // Track theme changes
 
+  const availableFonts = [
+    { id: 'font-sans', name: 'Space Mono' },
+    { id: 'font-mono', name: 'JetBrains Mono' },
+    { id: 'font-inter', name: 'Inter' },
+    { id: 'font-arvo', name: 'Arvo' },
+    { id: 'font-playfairDisplay', name: 'Playfair Display' },
+    { id: 'font-syne', name: 'Syne' },
+    { id: 'font-outfit', name: 'Outfit' },
+    { id: 'font-ibm-plex-mono', name: 'IBM Plex Mono' },
+  ];
+
+  const [headerFont, setHeaderFont] = usePersistentState('header-font', 'font-outfit');
+  const [bodyFont, setBodyFont] = usePersistentState('body-font', 'font-outfit');
+
   const [isInverted, setIsInverted] = usePersistentState('is-inverted', false);
   const [isRetro, setIsRetro] = usePersistentState('is-retro', false);
   const [isParty, setIsParty] = usePersistentState('is-party', false);
@@ -338,6 +352,11 @@ export const VisualSettingsProvider = ({ children }) => {
         setSidebarMode,
         sidebarColor,
         setSidebarColor,
+        headerFont,
+        setHeaderFont,
+        bodyFont,
+        setBodyFont,
+        availableFonts,
         isSplashTextEnabled,
         toggleSplashText,
         isSidebarOpen,

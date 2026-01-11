@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeftIcon,
@@ -30,8 +30,9 @@ import {
   remove as removeLocalStorageItem,
 } from '../utils/LocalStorageManager';
 
-const Section = ({ title, icon, children, delay = 0 }) => (
+const Section = ({ title, icon, children, delay = 0, id }) => (
   <motion.div
+    id={id}
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay }}
@@ -54,14 +55,28 @@ const Section = ({ title, icon, children, delay = 0 }) => (
 );
 
 const SettingsPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const timer = setTimeout(() => {
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [location.hash]);
+
   useSeo({
     title: 'Settings | Fezcodex',
     description: 'Customize your experience and configure site settings.',
     keywords: ['Fezcodex', 'settings', 'preferences', 'configuration'],
   });
 
-  const { unlockAchievement, showAchievementToast, toggleAchievementToast } =
-    useAchievements();
+  const { unlockAchievement, showAchievementToast, toggleAchievementToast } = useAchievements();
 
   useEffect(() => {
     unlockAchievement('power_user');
@@ -131,6 +146,11 @@ const SettingsPage = () => {
     setSidebarMode,
     sidebarColor,
     setSidebarColor,
+    headerFont,
+    setHeaderFont,
+    bodyFont,
+    setBodyFont,
+    availableFonts,
   } = useVisualSettings();
 
   const {
@@ -336,6 +356,49 @@ const SettingsPage = () => {
             </div>
           </Section>
 
+          {/* Typography Configuration */}
+          <Section title="Discovery Log Typography" icon={<LayoutIcon />} delay={0.07}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Header Font
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Neural font selection for log headings and titles.
+                  </p>
+                </div>
+                <CustomDropdown
+                  variant="brutalist"
+                  label="Select Header Font"
+                  options={availableFonts.map(f => ({ label: f.name, value: f.id }))}
+                  value={headerFont}
+                  onChange={setHeaderFont}
+                  fullWidth={true}
+                />
+              </div>
+
+              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Body Font
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Primary typeface for log reader content and detailed text.
+                  </p>
+                </div>
+                <CustomDropdown
+                  variant="brutalist"
+                  label="Select Body Font"
+                  options={availableFonts.map(f => ({ label: f.name, value: f.id }))}
+                  value={bodyFont}
+                  onChange={setBodyFont}
+                  fullWidth={true}
+                />
+              </div>
+            </div>
+          </Section>
+
           {/* Performance & Animation */}
           <Section
             title="Motion & Performance"
@@ -394,7 +457,7 @@ const SettingsPage = () => {
           </Section>
 
           {/* Gamification */}
-          <Section title="Achievement System" icon={<TrophyIcon />} delay={0.2}>
+          <Section id="achievements" title="Achievement System" icon={<TrophyIcon />} delay={0.2}>
             <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex items-center justify-between gap-6">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">
@@ -414,7 +477,7 @@ const SettingsPage = () => {
           </Section>
 
           {/* Visual Effects Grid */}
-          <Section title="Visual Matrix" icon={<MagicWandIcon />} delay={0.3}>
+          <Section id="visual-matrix" title="Visual Matrix" icon={<MagicWandIcon />} delay={0.3}>
             <p className="mb-10 text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">
               Apply experimental filters to the entire application. Combine with caution.
             </p>

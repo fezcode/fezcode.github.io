@@ -17,6 +17,7 @@ const useSearchableData = () => {
       'Food',
       'Websites',
       'Tools',
+      'Event',
     ],
     [],
   );

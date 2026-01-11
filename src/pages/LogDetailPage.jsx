@@ -16,11 +16,14 @@ import piml from 'piml';
 import MarkdownLink from '../components/MarkdownLink';
 import colors from '../config/colors';
 import MarkdownContent from '../components/MarkdownContent';
+import CustomDropdown from '../components/CustomDropdown';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 
 const LogDetailPage = () => {
   const { category, slugId } = useParams();
   const [log, setLog] = useState(null);
   const [loading, setLoading] = useState(true);
+  const {headerFont, setHeaderFont, bodyFont, setBodyFont, availableFonts } = useVisualSettings();
   const contentRef = useRef(null);
 
   useSeo({
@@ -136,8 +139,27 @@ const LogDetailPage = () => {
     );
   };
 
+  const fontMap = {
+    'font-sans': "'Space Mono', monospace",
+    'font-mono': "'JetBrains Mono', monospace",
+    'font-inter': "'Inter', sans-serif",
+    'font-arvo': "'Arvo', serif",
+    'font-playfairDisplay': "'Playfair Display', serif",
+    'font-syne': "'Syne', sans-serif",
+    'font-outfit': "'Outfit', sans-serif",
+    'font-ibm-plex-mono': "'IBM Plex Mono', monospace",
+  };
+
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
+    <div className={`min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30`}>
+      <style>
+        {`
+          .custom-prose h1, .custom-prose h2, .custom-prose h3,
+          .custom-prose h4, .custom-prose h5, .custom-prose h6 {
+            font-family: ${fontMap[headerFont] || fontMap['font-sans']} !important;
+          }
+        `}
+      </style>
       {/* HERO SECTION */}
       <section className="relative h-[60vh] md:h-[70vh] flex flex-col justify-end overflow-hidden border-b border-white/10">
         <div className="absolute inset-0 z-0">
@@ -205,12 +227,12 @@ const LogDetailPage = () => {
           <main className="lg:col-span-8">
             <article
               ref={contentRef}
-              className="prose prose-xl prose-dark prose-emerald max-w-none
+              className={`prose prose-xl prose-dark prose-emerald max-w-none custom-prose ${bodyFont}
                          prose-headings:uppercase prose-headings:tracking-tighter prose-headings:font-black
                          prose-p:text-gray-300 prose-p:leading-relaxed
                          prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline
                          prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:bg-white/5 prose-blockquote:py-1 prose-blockquote:px-6
-                         prose-strong:text-white prose-code:text-emerald-300 prose-code:bg-emerald-500/10 prose-code:px-1 prose-code:rounded-sm"
+                         prose-strong:text-white prose-code:text-emerald-300 prose-code:bg-emerald-500/10 prose-code:px-1 prose-code:rounded-sm`}
             >
               <MarkdownContent
                 content={body}
@@ -302,6 +324,48 @@ const LogDetailPage = () => {
                     />
                   </a>
                 )}{' '}
+              </div>
+
+              {/* Typography Lab */}
+              <div className="border border-white/10 p-8 bg-white/[0.02] backdrop-blur-sm rounded-sm relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+                <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                  <Tag weight="fill" />
+                  Typography Lab
+                </h3>
+                <div className="space-y-6">
+                  <div className="space-y-2">
+                    <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block ml-1">Header Font</span>
+                    <CustomDropdown
+                      label="Select Font"
+                      options={availableFonts.map((f) => ({
+                        label: f.name,
+                        value: f.id,
+                      }))}
+                      value={headerFont}
+                      onChange={setHeaderFont}
+                      variant="brutalist"
+                      fullWidth={true}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block ml-1">Body Font</span>
+                    <CustomDropdown
+                      label="Select Font"
+                      options={availableFonts.map((f) => ({
+                        label: f.name,
+                        value: f.id,
+                      }))}
+                      value={bodyFont}
+                      onChange={setBodyFont}
+                      variant="brutalist"
+                      fullWidth={true}
+                    />
+                  </div>
+                </div>
+                <div className="mt-8 pt-4 border-t border-white/5 text-[9px] font-mono text-gray-600 uppercase tracking-widest flex justify-between">
+                  <span>You can also change them in Settings page</span>
+                </div>
               </div>
 
               {/* Optional: Read More / Next Prev could go here */}
