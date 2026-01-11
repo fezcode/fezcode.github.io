@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
@@ -58,6 +58,7 @@
     "prepare": "git config core.hooksPath git-hooks"
   },
   "reactSnap": {
+    "concurrency": 10,
     "puppeteerArgs": [
       "--no-sandbox",
       "--disable-setuid-sandbox"

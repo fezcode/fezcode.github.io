@@ -25,32 +25,19 @@ export const VisualSettingsProvider = ({ children }) => {
 
   const [headerFont, setHeaderFont] = usePersistentState('header-font', 'font-outfit');
   const [bodyFont, setBodyFont] = usePersistentState('body-font', 'font-outfit');
-
   const [isInverted, setIsInverted] = usePersistentState('is-inverted', false);
   const [isRetro, setIsRetro] = usePersistentState('is-retro', false);
   const [isParty, setIsParty] = usePersistentState('is-party', false);
   const [isMirror, setIsMirror] = usePersistentState('is-mirror', false);
   const [isNoir, setIsNoir] = usePersistentState('is-noir', false);
   const [isTerminal, setIsTerminal] = usePersistentState('is-terminal', false);
-  const [isBlueprint, setIsBlueprint] = usePersistentState(
-    'is-blueprint',
-    false,
-  );
+  const [isBlueprint, setIsBlueprint] = usePersistentState('is-blueprint',false);
   const [isSepia, setIsSepia] = usePersistentState('is-sepia', false);
-  const [isVaporwave, setIsVaporwave] = usePersistentState(
-    'is-vaporwave',
-    false,
-  );
-  const [isCyberpunk, setIsCyberpunk] = usePersistentState(
-    'is-cyberpunk',
-    false,
-  );
+  const [isVaporwave, setIsVaporwave] = usePersistentState('is-vaporwave',false);
+  const [isCyberpunk, setIsCyberpunk] = usePersistentState('is-cyberpunk',false);
   const [isGameboy, setIsGameboy] = usePersistentState('is-gameboy', false);
   const [isComic, setIsComic] = usePersistentState('is-comic', false);
-  const [isSketchbook, setIsSketchbook] = usePersistentState(
-    'is-sketchbook',
-    false,
-  );
+  const [isSketchbook, setIsSketchbook] = usePersistentState('is-sketchbook',false);
   const [isHellenic, setIsHellenic] = usePersistentState('is-hellenic', false);
   const [isGlitch, setIsGlitch] = usePersistentState('is-glitch', false);
   const [isGarden, setIsGarden] = usePersistentState('is-garden', false);
@@ -61,27 +48,12 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isFalloutNoiseEnabled, setIsFalloutNoiseEnabled] = usePersistentState('fallout-noise', true);
   const [isFalloutScanlinesEnabled, setIsFalloutScanlinesEnabled] = usePersistentState('fallout-scanlines', true);
   const [isFalloutVignetteEnabled, setIsFalloutVignetteEnabled] = usePersistentState('fallout-vignette', true);
+  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','standard');
+  const [sidebarMode, setSidebarMode] = usePersistentState('sidebar-mode','brutalist');
+  const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
+  const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState('is-splash-text-enabled',true);
 
-  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState(
-    'blog-post-view-mode',
-    'standard',
-  );
-  const [sidebarMode, setSidebarMode] = usePersistentState(
-    'sidebar-mode',
-    'brutalist',
-  );
-  const [sidebarColor, setSidebarColor] = usePersistentState(
-    'sidebar-color',
-    'default',
-  );
-  const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState(
-    'is-splash-text-enabled',
-    true,
-  );
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(
-    window.innerWidth > 768,
-  );
-
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(window.innerWidth > 768);
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
