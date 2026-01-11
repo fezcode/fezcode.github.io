@@ -1,5 +1,17 @@
 [
   {
+    "slug": "steganography-lsb-deep-dive",
+    "title": "Steganography: Hiding Secrets in Plain Sight with LSB",
+    "date": "2026-01-12",
+    "updated": "2026-01-12",
+    "description": "A technical deep dive into Least Significant Bit (LSB) steganography and how we implemented it for the Fezcodex Steganography Tool.",
+    "tags": ["steganography", "lsb", "security", "image-processing", "canvas", "javascript", "dev"],
+    "category": "dev",
+    "filename": "steganography-lsb-deep-dive.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "pixel-art-resources-guide",
     "title": "The Ultimate Pixel Art Resources Guide",
     "date": "2026-01-12",
