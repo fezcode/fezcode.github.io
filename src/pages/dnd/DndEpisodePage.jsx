@@ -18,7 +18,7 @@ const WaxSeal = ({ text = 'FC' }) => (
 function DndEpisodePage() {
   const { bookId, episodeId } = useParams();
 
-  const { setBreadcrumbs } = useContext(DndContext);
+  const { setBreadcrumbs, language } = useContext(DndContext);
 
   const [episodeContent, setEpisodeContent] = useState('');
 
@@ -43,7 +43,7 @@ function DndEpisodePage() {
   useEffect(() => {
     const fetchAllBooks = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`);
 
         if (response.ok) {
           const pimlText = await response.text();
@@ -58,7 +58,7 @@ function DndEpisodePage() {
     };
 
     fetchAllBooks();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (allBooks.length > 0 && bookId && episodeId) {

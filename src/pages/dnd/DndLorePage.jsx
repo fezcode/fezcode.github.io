@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndCard from '../../components/dnd/DndCard';
 import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
+import StoryTreeView from '../../components/dnd/StoryTreeView';
 import useSeo from '../../hooks/useSeo';
 import piml from 'piml';
 import { BookOpen, Scroll } from '@phosphor-icons/react';
@@ -16,7 +16,7 @@ function DndLorePage() {
     keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'lore', 'history', 'tales'],
   });
 
-  const { setBreadcrumbs } = useContext(DndContext);
+  const { setBreadcrumbs, language } = useContext(DndContext);
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -30,7 +30,7 @@ function DndLorePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`);
         if (response.ok) {
           const pimlText = await response.text();
           const data = piml.parse(pimlText);
@@ -42,7 +42,7 @@ function DndLorePage() {
       }
     };
     fetchData();
-  }, []);
+  }, [language]);
 
   const filteredBooks = books.filter(book => {
     const term = searchQuery.toLowerCase();
@@ -54,7 +54,7 @@ function DndLorePage() {
   return (
     <DndLayout>
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <header className="text-center mb-12 relative">
+        <header className="text-center mb-16 relative">
           <div className="flex justify-center mb-6">
              <Scroll size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
@@ -100,40 +100,24 @@ function DndLorePage() {
             )}
           </div>
 
-          <div className="dnd-parchment-container p-6 md:p-24 shadow-2xl border-2 border-black/10 dnd-parchment-glow relative">
-            {/* Scroll Ornaments */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-b-full blur-xl dnd-scroll-accent" />
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-64 h-8 bg-dnd-crimson/5 rounded-t-full blur-xl dnd-scroll-accent" />
-
-            <div className="dnd-ornate-corner dnd-ornate-corner-tl !w-16 !h-16" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-tr !w-16 !h-16" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-bl !w-16 !h-16" />
-            <div className="dnd-ornate-corner dnd-ornate-corner-br !w-16 !h-16" />
-
-            <div className="relative z-10 max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-5xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-6 md:mb-12">
-                Index of Tomes
-              </h2>
-              <div className="dnd-mystic-divider mb-12" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-left">
-                {books.map((book) => (
-                  <Link
-                    key={book.bookId}
-                    to={`/stories/books/${book.bookId}`}
-                    className="group flex items-center gap-4 p-4 border-b border-dnd-crimson/10 hover:bg-dnd-crimson/5 transition-colors"
-                  >
-                    <div className="w-2 h-2 rounded-full bg-dnd-crimson group-hover:scale-150 transition-transform" />
-                    <span className="text-xl font-arvo font-bold text-dnd-crimson/80 group-hover:text-dnd-crimson transition-colors">
-                      {book.bookTitle}
-                    </span>
-                  </Link>
-                ))}
+          {filteredBooks.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="max-w-5xl mx-auto"
+            >
+              <div className="flex items-center gap-4 mb-8">
+                 <div className="h-px w-16 bg-dnd-gold/40" />
+                 <span className="font-mono text-xs text-dnd-gold uppercase tracking-[0.4em]">Index of Tomes</span>
+                 <div className="h-px flex-grow bg-dnd-gold/40" />
               </div>
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </DndLayout>
-              );
-            }
+              <StoryTreeView books={filteredBooks} />
+            </motion.div>
+          )}
+        </section>
+      </div>
+    </DndLayout>
+  );
+}
 export default DndLorePage;

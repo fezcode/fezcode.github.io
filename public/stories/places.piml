@@ -1,5 +1,29 @@
 (places)
   > (place)
+    (name) Military Academy of Thornus
+    (type) Academy
+    (category) Institutions
+    (book) Volume I: The Streets of Thornus
+    (description) A rigid institution where the elite of Thornus are trained. It is where Niva DeRosa met Granold Rolnifeld and learned the hard truths of class and betrayal.
+    (status) Active
+
+  > (place)
+    (name) Road of Lion
+    (type) Avenue
+    (category) Locations
+    (book) Volume I: The Streets of Thornus
+    (description) The ceremonial avenue of Thornus, often used for parades. It was the target of a diversionary bomb threat by Cytrox.
+    (status) Active
+
+  > (place)
+    (name) City Market
+    (type) Marketplace
+    (category) Locations
+    (book) Volume I: The Streets of Thornus
+    (description) The bustling heart of Thornus commerce. It became the site of the Massacre of the Grenadiers, where Mayor Lynnia and 13 civilians, including Donlane DeRosa, were killed.
+    (status) Active (Scarred)
+
+  > (place)
     (name) Corrigan Investigations
     (type) Office
     (category) Residences

@@ -130,6 +130,7 @@ const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const VocabPage = lazy(() => import('../pages/VocabPage'));
 const SitemapPage = lazy(() => import('../pages/SitemapPage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
+const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 const KnowledgeGraphPage = lazy(() => import('../pages/KnowledgeGraphPage'));
 const TheVaguePage = lazy(() => import('../pages/TheVaguePage'));
 const PIMLLabPage = lazy(() => import('../pages/apps/PIMLLabPage'));
@@ -728,6 +729,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <WelcomePage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DashboardPage />
               </Suspense>
             </motion.div>
           }

@@ -6,6 +6,7 @@ export const DndContext = createContext();
 export const DndProvider = ({ children }) => {
   const [bgImageName, setBgImageName] = useState('');
   const [breadcrumbs, setBreadcrumbs] = useState([]); // Add breadcrumbs state
+  const [language, setLanguage] = usePersistentState('dnd-language', 'en'); // Add language state
 
   // Effect Settings (User requested 5 specific ones)
   const [isLightningEnabled, setIsLightningEnabled] = usePersistentState('dnd-lightning-enabled', true);
@@ -27,6 +28,8 @@ export const DndProvider = ({ children }) => {
         setBgImageName,
         breadcrumbs,
         setBreadcrumbs,
+        language,
+        setLanguage,
         isLightningEnabled,
         toggleLightning,
         isLootDiscoveryEnabled,

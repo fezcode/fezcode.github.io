@@ -1,5 +1,12 @@
 (items)
   > (item)
+    (name) Niva's Badge
+    (type) Insignia
+    (book) Volume I: The Streets of Thornus
+    (description) An intelligence officer's badge, now stained with the blood of a sewer worker. It represents the failure of the system to protect those who built it.
+    (owner) Niva DeRosa (Abandoned)
+
+  > (item)
     (name) Alilberry Extract
     (type) Potion / Poison
     (book) The Tales of Doctor Blade

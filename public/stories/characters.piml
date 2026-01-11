@@ -1,5 +1,33 @@
 (characters)
   > (character)
+    (name) Niva DeRosa
+    (role) Intelligence Officer
+    (book) Volume I: The Streets of Thornus
+    (description) A sewer worker's daughter who became an intelligence officer to give her father a better life. She uncovered the plot behind the Massacre of the Grenadiers but was ignored, leading to a tragedy that broke her.
+    (status) Missing
+
+  > (character)
+    (name) Donlane DeRosa
+    (role) Sewer Worker / "The King"
+    (book) Volume I: The Streets of Thornus
+    (description) A giant of a man with a crown-shaped birthmark on his hand. He dedicated his life to the sewers of Thornus to raise his children. He died buying flowers in the City Market.
+    (status) Deceased
+
+  > (character)
+    (name) Granold Rolnifeld
+    (role) Major / Military Officer
+    (book) Volume I: The Streets of Thornus
+    (description) A charismatic but arrogant military officer who dismissed Niva's warning about the City Market attack. He carries the weight of the massacre and Niva's disappearance.
+    (status) Alive (Guilt-Ridden)
+
+  > (character)
+    (name) Hewond Lynnia
+    (role) Mayor of Thornus
+    (book) Volume I: The Streets of Thornus
+    (description) The Mayor of Thornus who was assassinated during the Massacre of the Grenadiers.
+    (status) Deceased
+
+  > (character)
     (name) Corrigan
     (role) Private Investigator
     (book) The Broken Path

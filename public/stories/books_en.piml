@@ -1,0 +1,186 @@
+(books)
+  > (book)
+    (bookId) 1
+    (bookTitle) Volume I: The Streets of Thornus
+    (phase) 1
+    (phaseTitle) Phase I: The Streets of Thornus
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-1-thornus/the-reflections/en/the-case-of-the-mirror-man.txt
+        (title) The Case of the Mirror Man
+        (author) Constellation
+        (date) 2025-11-23
+        (updated) 2025-11-23
+      > (episode)
+        (id) 2
+        (filename) vol-1-thornus/the-diplomats-journal/the-skulls.txt
+        (title) The Skulls in the Ceiling
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-1-thornus/the-whispering-rats/the-sewer-prophecy.txt
+        (title) The Truth Under the Grate
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-1-thornus/niva-derosa/episode1_en.txt
+        (title) The Crown of the Sewer
+        (author) fezcode
+        (date) 2026-01-11
+        (updated) 2026-01-11
+      > (episode)
+        (id) 5
+        (filename) vol-1-thornus/niva-derosa/episode2_en.txt
+        (title) The Massacre of the Grenadiers
+        (author) fezcode
+        (date) 2026-01-11
+        (updated) 2026-01-11
+    (overlay) dodgerblue
+
+  > (book)
+    (bookId) 2
+    (bookTitle) Volume II: The Cost of Sin
+    (phase) 2
+    (phaseTitle) Phase II: The Cost of Sin
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-2-sin/the-sins-of-glareach/the-beret.txt
+        (title) The Beret with 22 Stars
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) vol-2-sin/the-fredsound-legacy/the-fredsound-legacy.txt
+        (title) The Fredsound Legacy
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-2-sin/the-chronomancers-dust/the-hour-of-ghosts.txt
+        (title) The Hour of Ghosts
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-2-sin/the-chronomancers-dust/the-chronometer.txt
+        (title) The Chronometer of Ash
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) crimson
+
+  > (book)
+    (bookId) 3
+    (bookTitle) Volume III: The RedLink Arc
+    (phase) 3
+    (phaseTitle) Phase III: The RedLink Arc
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-3-redlink/the-petals-of-predymesh/the-stolen-star.txt
+        (title) The Stolen Star
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) vol-3-redlink/doctor-blade/the-alilberry-cure.txt
+        (title) The Drop of Alilberry
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-3-redlink/the-sanity-ward/clinical-note.txt
+        (title) The Hysteria of the Moth
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-3-redlink/the-sanity-ward/redlink-log.txt
+        (title) RedLink Protocol 0-12
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 5
+        (filename) vol-3-redlink/the-roots-of-silence/en/the-secret-seed.txt
+        (title) The Secret Seed
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 6
+        (filename) vol-3-redlink/the-architecture-of-ghosts/en/the-fossilized-thought.txt
+        (title) Part I: The Fossilized Thought
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 7
+        (filename) vol-3-redlink/the-architecture-of-ghosts/en/the-tectonic-whisper.txt
+        (title) Part II: The Tectonic Whisper
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 8
+        (filename) vol-3-redlink/the-architecture-of-ghosts/en/ruby-circuitry.txt
+        (title) Part III: Ruby Circuitry
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+    (overlay) indigo
+
+  > (book)
+    (bookId) 4
+    (bookTitle) Volume IV: The Resistance
+    (phase) 4
+    (phaseTitle) Phase IV: The Resistance
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-4-resistance/the-harvest-of-silence/the-medal-of-ash.txt
+        (title) The Medal of Ash
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) vol-4-resistance/the-harvest-of-silence/the-sin-of-the-seed.txt
+        (title) The Sin of the Seed
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-4-resistance/the-harvest-of-silence/the-listener-in-the-shadows.txt
+        (title) The Listener in the Shadows
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-4-resistance/the-butterflys-jest/the-last-laugh.txt
+        (title) The Last Laugh
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 5
+        (filename) vol-4-resistance/the-cat-of-craninal/the-purring-shadows.txt
+        (title) The Purring Shadows
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) gold

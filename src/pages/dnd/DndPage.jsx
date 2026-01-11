@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndCard from '../../components/dnd/DndCard';
 import DndLayout from '../../components/dnd/DndLayout';
-import StoryReadingOrder from '../../components/StoryReadingOrder';
 import useSeo from '../../hooks/useSeo';
 import { useAchievements } from '../../context/AchievementContext';
 import { BookOpen, Scroll, UsersThree, MapTrifold, Sword } from '@phosphor-icons/react';
@@ -91,7 +90,6 @@ const DndPage = () => {
           />
         </div>
 
-        <StoryReadingOrder />
       </div>
     </DndLayout>
   );

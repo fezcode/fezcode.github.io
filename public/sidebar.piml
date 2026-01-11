@@ -63,6 +63,10 @@
     (label) System
     (content)
       > (item)
+        (label) Dashboard
+        (to) /dashboard
+        (icon) TerminalWindowIcon
+      > (item)
         (label) History
         (to) /timeline
         (icon) TimerIcon

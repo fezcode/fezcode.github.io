@@ -1,0 +1,186 @@
+(books)
+  > (book)
+    (bookId) 1
+    (bookTitle) Cilt I: Thornus Sokakları
+    (phase) 1
+    (phaseTitle) Faz I: Thornus Sokakları
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-1-thornus/the-reflections/tr/the-case-of-the-mirror-man.txt
+        (title) Ayna Adam Davası
+        (author) Constellation
+        (date) 2025-11-23
+        (updated) 2025-11-23
+      > (episode)
+        (id) 2
+        (filename) vol-1-thornus/the-diplomats-journal/kafatasi.txt
+        (title) Tavandaki Kafatasları
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-1-thornus/the-whispering-rats/lagim-kehaneti.txt
+        (title) Izgaranın Altındaki Gerçek
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-1-thornus/niva-derosa/episode1_tr.txt
+        (title) Kanalizasyonun Tacı
+        (author) fezcode
+        (date) 2026-01-11
+        (updated) 2026-01-11
+      > (episode)
+        (id) 5
+        (filename) vol-1-thornus/niva-derosa/episode2_tr.txt
+        (title) Grenadier Katliamı
+        (author) fezcode
+        (date) 2026-01-11
+        (updated) 2026-01-11
+    (overlay) dodgerblue
+
+  > (book)
+    (bookId) 2
+    (bookTitle) Cilt II: Günahın Bedeli
+    (phase) 2
+    (phaseTitle) Faz II: Günahın Bedeli
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-2-sin/the-sins-of-glareach/yirmi-iki-yildiz.txt
+        (title) 22 Yıldızlı Bere
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) vol-2-sin/the-fredsound-legacy/fredsound-mirasi.txt
+        (title) Fredsound Mirası
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-2-sin/the-chronomancers-dust/hayaletler-saati.txt
+        (title) Hayaletler Saati
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-2-sin/the-chronomancers-dust/kronometre.txt
+        (title) Kül Kronometresi
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) crimson
+
+  > (book)
+    (bookId) 3
+    (bookTitle) Cilt III: RedLink Arkı
+    (phase) 3
+    (phaseTitle) Faz III: RedLink Arkı
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-3-redlink/the-petals-of-predymesh/calinan-yildiz.txt
+        (title) Çalınan Yıldız
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) vol-3-redlink/doctor-blade/alilberry-curesi.txt
+        (title) Alilberry Damlası
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-3-redlink/the-sanity-ward/klinik-not.txt
+        (title) Güve Histerisi
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-3-redlink/the-sanity-ward/redlink-protokolu.txt
+        (title) RedLink Protokolü 0-12
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 5
+        (filename) vol-3-redlink/the-roots-of-silence/tr/gizli-tohum.txt
+        (title) Gizli Tohum
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 6
+        (filename) vol-3-redlink/the-architecture-of-ghosts/tr/fosillesmis-dusunce.txt
+        (title) Bölüm I: Fosilleşmiş Düşünce
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 7
+        (filename) vol-3-redlink/the-architecture-of-ghosts/tr/tektonik-fisilti.txt
+        (title) Bölüm II: Tektonik Fısıltı
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+      > (episode)
+        (id) 8
+        (filename) vol-3-redlink/the-architecture-of-ghosts/tr/yakut-devreler.txt
+        (title) Bölüm III: Yakut Devreler
+        (author) fezcode
+        (date) 2026-01-09
+        (updated) 2026-01-09
+    (overlay) indigo
+
+  > (book)
+    (bookId) 4
+    (bookTitle) Cilt IV: Direniş
+    (phase) 4
+    (phaseTitle) Faz IV: Direniş
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-4-resistance/the-harvest-of-silence/kul-madalyasi.txt
+        (title) Kül Madalyası
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 2
+        (filename) vol-4-resistance/the-harvest-of-silence/tohumun-gunahi.txt
+        (title) Tohumun Günahı
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 3
+        (filename) vol-4-resistance/the-harvest-of-silence/golgelerdeki-dinleyici.txt
+        (title) Gölgelerdeki Dinleyici
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 4
+        (filename) vol-4-resistance/the-butterflys-jest/son-kahkaha.txt
+        (title) Son Kahkaha
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+      > (episode)
+        (id) 5
+        (filename) vol-4-resistance/the-cat-of-craninal/mirlayan-golgeler.txt
+        (title) Mırlayan Gölgeler
+        (author) fezcode
+        (date) 2026-01-08
+        (updated) 2026-01-08
+    (overlay) gold

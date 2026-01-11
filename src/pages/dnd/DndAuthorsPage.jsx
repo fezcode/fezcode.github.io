@@ -10,7 +10,7 @@ import { useAchievements } from '../../context/AchievementContext';
 import { Users } from '@phosphor-icons/react';
 
 function DndAuthorsPage() {
-  const { setBreadcrumbs } = useContext(DndContext);
+  const { setBreadcrumbs, language } = useContext(DndContext);
   const [authors, setAuthors] = useState([]);
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -30,7 +30,7 @@ function DndAuthorsPage() {
       try {
         const [authRes, booksRes] = await Promise.all([
           fetch(`${process.env.PUBLIC_URL}/stories/authors.piml`),
-          fetch(`${process.env.PUBLIC_URL}/stories/books.piml`)
+          fetch(`${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`)
         ]);
 
         if (authRes.ok && booksRes.ok) {
@@ -43,7 +43,7 @@ function DndAuthorsPage() {
       }
     };
     fetchData();
-  }, [setBreadcrumbs, unlockAchievement]);
+  }, [setBreadcrumbs, unlockAchievement, language]);
 
   const getBooksByAuthor = (authorName, authorAlias) => {
     const authorBooks = [];

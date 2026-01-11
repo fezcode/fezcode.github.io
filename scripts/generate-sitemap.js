@@ -125,32 +125,39 @@ const generateSitemap = async () => {
     console.error('Error reading log categories or PIML files:', error);
   }
 
-  // Add dynamic routes from stories/books.piml
-  try {
-    const pimlPath = path.join(publicDirectory, 'stories', 'books.piml');
-    const pimlContent = fs.readFileSync(pimlPath, 'utf-8');
-    const dndData = piml.parse(pimlContent);
+  // Add dynamic routes from stories/books_*.piml
+  const languages = ['en', 'tr'];
+  for (const lang of languages) {
+    try {
+      const pimlPath = path.join(publicDirectory, 'stories', `books_${lang}.piml`);
+      if (fs.existsSync(pimlPath)) {
+        const pimlContent = fs.readFileSync(pimlPath, 'utf-8');
+        const dndData = piml.parse(pimlContent);
 
-    dndData.books.forEach(book => { // Access dndData.books
-      // Add D&D book page
-      urls.push({
-        loc: `${baseUrl}/stories/books/${book.bookId}`,
-        lastmod: new Date().toISOString(), // Assuming book data doesn't have a specific lastmod
-        changefreq: 'monthly',
-        priority: '0.6',
-      });
-      // Add individual D&D episodes
-      book.episodes.forEach(episode => {
-        urls.push({
-          loc: `${baseUrl}/stories/books/${book.bookId}/pages/${episode.id}`,
-          lastmod: new Date().toISOString(), // Assuming episode data doesn't have a specific lastmod
-          changefreq: 'weekly',
-          priority: '0.5',
-        });
-      });
-    });
-  } catch (error) {
-    console.error('Error reading stories/books.piml:', error);
+        if (dndData.books) {
+          dndData.books.forEach(book => {
+            // Add D&D book page
+            urls.push({
+              loc: `${baseUrl}/stories/books/${book.bookId}`,
+              lastmod: new Date().toISOString(),
+              changefreq: 'monthly',
+              priority: '0.6',
+            });
+            // Add individual D&D episodes
+            book.episodes.forEach(episode => {
+              urls.push({
+                loc: `${baseUrl}/stories/books/${book.bookId}/pages/${episode.id}`,
+                lastmod: new Date().toISOString(),
+                changefreq: 'weekly',
+                priority: '0.5',
+              });
+            });
+          });
+        }
+      }
+    } catch (error) {
+      console.error(`Error reading stories/books_${lang}.piml:`, error);
+    }
   }
 
   // Construct XML sitemap content

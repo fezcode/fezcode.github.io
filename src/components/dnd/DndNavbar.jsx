@@ -4,7 +4,7 @@ import { DndContext } from '../../context/DndContext';
 import { CaretRight, House } from '@phosphor-icons/react';
 
 const DndNavbar = () => {
-  const { breadcrumbs } = useContext(DndContext);
+  const { breadcrumbs, language, setLanguage } = useContext(DndContext);
 
   const formatBreadcrumbLabel = (label) => {
     return label.indexOf(':') !== -1 ? label.substring(0, label.indexOf(':')) : label;
@@ -38,15 +38,32 @@ const DndNavbar = () => {
             </div>
           )}
         </div>
-        <Link to="/" className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/40 hover:text-dnd-gold transition-colors">
-          FEZCODEX_SYSTEM
-        </Link>
+        <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 font-mono text-[10px] font-bold tracking-widest">
+            <button
+              onClick={() => setLanguage('en')}
+              className={`transition-colors ${language === 'en' ? 'text-dnd-gold underline decoration-2 underline-offset-4' : 'text-white/40 hover:text-white'}`}
+            >
+              EN
+            </button>
+            <span className="text-white/20">/</span>
+            <button
+              onClick={() => setLanguage('tr')}
+              className={`transition-colors ${language === 'tr' ? 'text-dnd-gold underline decoration-2 underline-offset-4' : 'text-white/40 hover:text-white'}`}
+            >
+              TR
+            </button>
+          </div>
+          <Link to="/" className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/40 hover:text-dnd-gold transition-colors hidden md:block">
+            FEZCODEX_SYSTEM
+          </Link>
+        </div>
       </div>
 
       {/* Main Bar: Title */}
       <div className="px-6 py-4 flex items-center justify-center relative bg-gradient-to-b from-dnd-crimson to-transparent">
         <span className="text-3xl md:text-4xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter drop-shadow-2xl">
-          From Serfs & Frauds
+          {language === 'tr' ? 'Serfler ve Sahtekarlar' : 'From Serfs & Frauds'}
         </span>
       </div>
     </nav>

@@ -11,7 +11,7 @@ function DndBookPage() {
   const { bookId } = useParams();
   const [book, setBook] = useState(null);
   const [pageTitle, setPageTitle] = useState('Loading Book...');
-  const { setBreadcrumbs } = useContext(DndContext);
+  const { setBreadcrumbs, language } = useContext(DndContext);
 
   useSeo({
     title: `${pageTitle} | From Serfs and Frauds`,
@@ -22,7 +22,7 @@ function DndBookPage() {
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books.piml`);
+        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`);
         if (response.ok) {
           const pimlText = await response.text();
           const data = piml.parse(pimlText);
@@ -48,7 +48,7 @@ function DndBookPage() {
       }
     };
     fetchBookData();
-  }, [bookId, setBreadcrumbs]);
+  }, [bookId, setBreadcrumbs, language]);
 
   return (
     <DndLayout>
