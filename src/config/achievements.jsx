@@ -817,4 +817,11 @@ export const ACHIEVEMENTS = [
     icon: <TrashIcon size={32} weight="duotone" />,
     category: 'Secret',
   },
+  {
+    id: 'access_granted',
+    title: 'Access Granted',
+    description: 'Decrypted the hidden terminal sequence.',
+    icon: <TerminalWindowIcon size={32} weight="duotone" />,
+    category: 'Secret',
+  },
 ];
