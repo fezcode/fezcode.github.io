@@ -1,6 +1,15 @@
 (logs)
   > (item)
     (category) Tools
+    (date) 2026-01-12
+    (link) https://www.aseprite.org/
+    (slug) aseprite
+    (title) Aseprite
+    (image) /images/logs/website/pixel-art.webp
+    (description) The industry standard for creating pixel art and animations.
+    (rating) 5
+  > (item)
+    (category) Tools
     (date) 2025-11-03
     (link) https://mastra.ai/
     (rating) 5
