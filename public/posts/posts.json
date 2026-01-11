@@ -1,5 +1,17 @@
 [
   {
+    "slug": "pixel-art-resources-guide",
+    "title": "The Ultimate Pixel Art Resources Guide",
+    "date": "2026-01-12",
+    "updated": "2026-01-12",
+    "description": "A curated list of essential tools, websites, and guides to start or level up your pixel art journey, inspired by JuniperDev.",
+    "tags": ["pixel-art", "resources", "tools", "aseprite", "art", "tutorial"],
+    "category": "dev",
+    "filename": "pixel-art-resources-guide.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "implementing-drag-and-drop-in-react",
     "title": "Implementing Drag and Drop in React without Libraries",
     "date": "2026-01-10",
