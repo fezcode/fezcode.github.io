@@ -328,3 +328,34 @@
     (assignee) Gemini
     (created_at) 2026-01-08T18:00:00+03:00
     (notes) Major content update for Serfs & Frauds campaign.
+
+  > (issues)
+    (id) FEZ-26
+    (title) Fallout CRT Overlay Protocol
+    (description) Implement authentic Fallout 3 and New Vegas inspired screen overlays with scanlines, noise, and color variants.
+    (category) UI/UX
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-01-11T10:00:00+03:00
+    (notes) Added Amber (NV) and Green (F3) modes in Settings.
+
+  > (issues)
+    (id) FEZ-27
+    (title) Tier Forge: Tier List Maker
+    (description) Build a hierarchical ranking application with drag-and-drop support and export capabilities.
+    (category) Apps
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-01-11T12:00:00+03:00
+
+  > (issues)
+    (id) FEZ-28
+    (title) Mission Intel Reading List
+    (description) Create a tactical, high-immersion reading list interface at /reading with theme support and 3D visualization.
+    (category) UI/UX
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-01-11T15:00:00+03:00
