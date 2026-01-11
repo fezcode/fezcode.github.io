@@ -1,0 +1,31 @@
+# Dush: The Dumb Shell
+
+![Dush Shell](https://raw.githubusercontent.com/fezcode/dush/main/title-card.png)
+
+**Dush** (Dumb Shell) is a minimalist, extensible command-line interface written in **Go**. It aims to be a functional alternative to Bash while serving as a playground for exploring low-level system interactions and shell mechanics.
+
+> "Simplicity is the ultimate sophistication, even for a shell that calls itself dumb."
+
+## The Vision
+
+Dush was born from a desire to understand the "magic" behind the terminal. Instead of relying on bloated legacy shells, Dush provides a raw, focused experience for developers who want to know exactly what's happening under the hood.
+
+## Key Features
+
+- [x] **Command Execution:** Blazing fast execution of external programs.
+- [ ] **Built-in Essentials:** Core commands like `cd`, `pwd`, and `exit` implemented natively in Go.
+- [ ] **Command History:** Quick access to your previous commands for maximum efficiency.
+- [ ] **I/O Redirection:** Support for input/output redirection (`>`, `>>`, `<`).
+- [ ] **Piping Architecture:** Chaining commands with `|`.
+- [ ] **Environment Management:** Control over environment variables.
+- [ ] **Customizable Prompt:** A dynamic and informative shell prompt.
+
+## Tech Stack
+
+*   **Language:** Go (Golang) for performance and cross-platform compatibility.
+*   **System Calls:** Direct interaction with OS-level APIs for process management.
+*   **Cross-Platform:** Designed to run on Windows, Linux, and macOS.
+
+## Why "Dush"?
+
+The name is a humble nod to its "dumb" architecture—it doesn't try to be everything for everyone. It stays out of your way and does exactly what you tell it to do, no more, no less.

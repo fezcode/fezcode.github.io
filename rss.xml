@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 11 Jan 2026 20:20:28 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 11 Jan 2026 23:02:04 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 11 Jan 2026 20:20:28 GMT</pubDate>
+        <pubDate>Sun, 11 Jan 2026 23:02:03 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Steganography: Hiding Secrets in Plain Sight with LSB]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/steganography-lsb-deep-dive</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/steganography-lsb-deep-dive</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Steganography is the art and science of hiding information within other non-secret data. Unlike cryptography, which scrambles a message so it can&#39;t be read, steganography hides the very existence of the message.</p>
+<p><a href="https://fezcode.com/blog/steganography-lsb-deep-dive">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Ultimate Pixel Art Resources Guide]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/pixel-art-resources-guide</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/pixel-art-resources-guide</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Pixel art is a beautiful and nostalgic medium that has seen a massive resurgence in recent years, especially within the indie game development scene. Whether you&#39;re a seasoned artist or just starting, having the right tools and resources can make a world of difference.</p>
+<p><a href="https://fezcode.com/blog/pixel-art-resources-guide">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Implementing Drag and Drop in React without Libraries]]></title>
             <description><![CDATA[[object Object]]]></description>

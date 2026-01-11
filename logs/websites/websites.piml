@@ -1,6 +1,24 @@
 (logs)
   > (item)
     (category) Websites
+    (date) 2026-01-12
+    (link) https://lospec.com/
+    (slug) lospec
+    (title) Lospec
+    (image) /images/logs/website/pixel-art.webp
+    (description) A hub for pixel art palettes, tools, and tutorials.
+    (rating) 5
+  > (item)
+    (category) Websites
+    (date) 2026-01-12
+    (link) https://itch.io/game-assets/free/tag-pixel-art
+    (slug) itch-io-pixel-art
+    (title) itch.io - Pixel Art Assets
+    (image) /images/logs/website/pixel-art.webp
+    (description) A massive marketplace for free and premium pixel art game assets.
+    (rating) 5
+  > (item)
+    (category) Websites
     (date) 2025-11-23
     (link) https://www.iloveimg.com/compress-image
     (slug) iloveimg

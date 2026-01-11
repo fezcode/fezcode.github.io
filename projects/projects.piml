@@ -46,6 +46,22 @@
     (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
 
   > (project)
+    (slug) dush
+    (title) Dush
+    (size) 1
+    (repo_link) https://github.com/fezcode/dush
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Go
+      > Shell
+      > CLI
+      > System
+    (shortDescription) Dush (Dumb Shell) is a custom terminal shell written in Go, intended as a Bash alternative and a learning platform for shell mechanics.
+    (date) 2026-01-12
+    (image) https://raw.githubusercontent.com/fezcode/dush/main/title-card.png
+
+  > (project)
     (slug) nocturnote
     (title) Nocturnote
     (size) 2
@@ -133,7 +149,7 @@
     (title) doku.js
     (size) 1
     (repo_link) https://github.com/fezcode/doku.js
-    (pinned) true
+    (pinned) false
     (isActive) true
     (technologies)
       > Node
