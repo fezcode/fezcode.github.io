@@ -3,7 +3,7 @@
     (name) Military Academy of Thornus
     (type) Academy
     (category) Institutions
-    (book) Volume I: The Streets of Thornus
+    (book) The Crown of the Sewer
     (description) A rigid institution where the elite of Thornus are trained. It is where Niva DeRosa met Granold Rolnifeld and learned the hard truths of class and betrayal.
     (status) Active
 
@@ -11,7 +11,7 @@
     (name) Road of Lion
     (type) Avenue
     (category) Locations
-    (book) Volume I: The Streets of Thornus
+    (book) The Massacre of the Grenadiers
     (description) The ceremonial avenue of Thornus, often used for parades. It was the target of a diversionary bomb threat by Cytrox.
     (status) Active
 
@@ -19,8 +19,8 @@
     (name) City Market
     (type) Marketplace
     (category) Locations
-    (book) Volume I: The Streets of Thornus
-    (description) The bustling heart of Thornus commerce. It became the site of the Massacre of the Grenadiers, where Mayor Lynnia and 13 civilians, including Donlane DeRosa, were killed.
+    (book) The Massacre of the Grenadiers
+    (description) The bustling heart of Predymesh commerce. It became the site of the Massacre of the Grenadiers, where Mayor Lynnia and 13 civilians, including Donlane DeRosa, were killed.
     (status) Active (Scarred)
 
   > (place)
@@ -183,34 +183,18 @@
     (description) A city of celebrities, glamour, and superficiality. It is the heart of the entertainment industry and filled with a glamorous lifestyle.
     (status) Active
 
-    > (place)
+  > (place)
+    (name) Fredsound Dream Studios
+    (type) Production Studio
+    (category) Establishments
+    (book) The Fredsound Legacy
+    (description) The most prestigious and successful movie studio in Hamitonis, managed by Rainhold Fredsound.
+    (status) Active
 
-      (name) Fredsound Dream Studios
-
-      (type) Production Studio
-
-      (category) Establishments
-
-      (book) The Fredsound Legacy
-
-      (description) The most prestigious and successful movie studio in Hamitonis, managed by Rainhold Fredsound.
-
-      (status) Active
-
-  
-
-    > (place)
-
-      (name) Proxan Mountain
-
-      (type) Geographical Landmark
-
-      (category) Locations
-
-      (book) The Sanity Ward
-
-      (description) The ancestral home of the Children of the Mountain. A towering, desolate peak containing pressurized pockets of Sansu Syrup. It is currently a restricted military excavation site.
-
-      (status) Restricted
-
-  
+  > (place)
+    (name) Proxan Mountain
+    (type) Geographical Landmark
+    (category) Locations
+    (book) The Sanity Ward
+    (description) The ancestral home of the Children of the Mountain. A towering, desolate peak containing pressurized pockets of Sansu Syrup. It is currently a restricted military excavation site.
+    (status) Restricted
