@@ -69,6 +69,7 @@ const ConspiracyBoardPage = lazy(() => import('../pages/apps/ConspiracyBoardPage
 const PaperInkPage = lazy(() => import('../pages/apps/PaperInkPage'));
 const VoyagerTerminalPage = lazy(() => import('../pages/apps/VoyagerTerminalPage'));
 const WordLadderPage = lazy(() => import('../pages/apps/WordLadderPage'));
+const SteganographyPage = lazy(() => import('../pages/apps/SteganographyPage'));
 const LightsOutPage = lazy(() => import('../pages/apps/LightsOutPage'));
 const NonogramPage = lazy(() => import('../pages/apps/NonogramPage'));
 const WhackABugPage = lazy(() => import('../pages/apps/WhackABugPage'));
@@ -1123,6 +1124,26 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::code"
           element={<Navigate to="/apps/codeblock-creator" replace />}
+        />
+        <Route
+          path="/apps::stego"
+          element={<Navigate to="/apps/steganography" replace />}
+        />
+        <Route
+          path="/apps/steganography"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <SteganographyPage />
+              </Suspense>
+            </motion.div>
+          }
         />
         <Route
           path="/apps/aether"

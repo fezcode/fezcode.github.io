@@ -697,6 +697,14 @@
         "created_at": "2026-01-04T12:00:00+03:00"
       },
       {
+        "slug": "steganography",
+        "to": "/apps/steganography",
+        "title": "Steganography",
+        "description": "Hide secret messages within images using Least Significant Bit (LSB) steganography.",
+        "icon": "LockKeyIcon",
+        "created_at": "2026-01-12T12:00:00+03:00"
+      },
+      {
         "slug": "piml-lab",
         "to": "/apps/piml-lab",
         "title": "PIML Lab",
