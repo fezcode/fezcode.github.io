@@ -63,7 +63,7 @@ const StatCard = ({ title, value, icon: Icon, colorClass, bgClass, delay }) => (
   </motion.div>
 );
 
-const DetailCard = ({ title, icon: Icon, children, bgClass, delay }) => (
+const DetailCard = ({ title, icon: Icon, children, bgClass, delay, footerLink, footerLabel }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
@@ -82,6 +82,15 @@ const DetailCard = ({ title, icon: Icon, children, bgClass, delay }) => (
     <div className="flex-grow font-inter relative z-10">
       {children}
     </div>
+    {footerLink && footerLabel && (
+      <div className="mt-6 pt-4 border-t border-white/5 relative z-10">
+        <Link to={footerLink}>
+           <button className="w-full py-3 rounded-xl bg-[#1a1a1a] hover:bg-[#252525] text-white/70 hover:text-white text-[10px] font-bold uppercase tracking-widest transition-colors font-inter border border-white/10 hover:border-white/20 flex items-center justify-center gap-2">
+              {footerLabel} <ArrowUpRight size={14} weight="bold" />
+           </button>
+        </Link>
+      </div>
+    )}
   </motion.div>
 );
 
@@ -200,10 +209,22 @@ const DashboardPage = () => {
         const logCategories = ['article', 'book', 'event', 'food', 'game', 'movie', 'music', 'reading', 'series', 'tools', 'video', 'websites'];
         const logsData = {};
 
-        // Quick fetch for logs (mocking counts for simplicity/speed as per original logic)
-        for (const cat of logCategories) {
-           logsData[cat] = { length: Math.floor(Math.random() * 20) + 1 };
-        }
+        // Fetch actual log counts
+        await Promise.all(logCategories.map(async (cat) => {
+          try {
+            const res = await fetch(`/logs/${cat}/${cat}.piml`);
+            if (res.ok) {
+              const text = await res.text();
+              const parsed = piml.parse(text);
+              logsData[cat] = { length: (parsed.items || parsed.logs || []).length };
+            } else {
+              logsData[cat] = { length: 0 };
+            }
+          } catch (e) {
+            console.error(`Error fetching logs for ${cat}:`, e);
+            logsData[cat] = { length: 0 };
+          }
+        }));
 
         setData({
           posts: postsData,
@@ -244,7 +265,8 @@ const DashboardPage = () => {
 
   // Derived Distribution Data
   const postsByCategory = data.posts.reduce((acc, post) => {
-    acc[post.category] = (acc[post.category] || 0) + 1;
+    const cat = post.category || 'Other';
+    acc[cat] = (acc[cat] || 0) + 1;
     return acc;
   }, {});
 
@@ -282,7 +304,9 @@ const DashboardPage = () => {
                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                    <span className="text-xs font-medium text-white/70 tracking-wide font-inter">v{version} Stable</span>
                 </div>
-                <DashboardButton icon={Wallet} primary>System Online</DashboardButton>
+                <Link to="/about/skills">
+                   <DashboardButton icon={Info} primary>About</DashboardButton>
+                </Link>
              </div>
          </div>
       </div>
@@ -337,7 +361,14 @@ const DashboardPage = () => {
 
         {/* DETAIL BREAKDOWN */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-           <DetailCard title="Content Distribution" icon={Newspaper} bgClass="bg-blue-500/5" delay={0.5}>
+           <DetailCard
+             title="Content Distribution"
+             icon={Newspaper}
+             bgClass="bg-blue-500/5"
+             delay={0.5}
+             footerLink="/blog"
+             footerLabel="View Blog"
+           >
               <div className="space-y-1">
                  {Object.entries(postsByCategory).slice(0, 5).map(([cat, count]) => (
                     <ProgressBar key={cat} label={cat} value={count} max={totalPosts} color="bg-blue-500" />
@@ -345,7 +376,14 @@ const DashboardPage = () => {
               </div>
            </DetailCard>
 
-           <DetailCard title="App Ecosystem" icon={AppWindow} bgClass="bg-purple-500/5" delay={0.6}>
+           <DetailCard
+             title="App Ecosystem"
+             icon={AppWindow}
+             bgClass="bg-purple-500/5"
+             delay={0.6}
+             footerLink="/apps"
+             footerLabel="Explore Apps"
+           >
               <div className="space-y-1">
                  {Object.keys(data.apps).map((cat) => (
                     <ProgressBar key={cat} label={cat} value={data.apps[cat].apps.length} max={totalApps} color="bg-purple-500" />
@@ -353,8 +391,15 @@ const DashboardPage = () => {
               </div>
            </DetailCard>
 
-           <DetailCard title="Project Health" icon={Kanban} bgClass="bg-orange-500/5" delay={0.7}>
-              <div className="flex gap-4 mb-8">
+           <DetailCard
+             title="Project Health"
+             icon={Kanban}
+             bgClass="bg-orange-500/5"
+             delay={0.7}
+             footerLink="/projects"
+             footerLabel="View All Projects"
+           >
+              <div className="flex gap-4 mb-2">
                  <div className="flex-1 bg-[#1a1a1a] p-4 rounded-2xl text-center border border-white/5">
                     <div className="text-2xl font-normal text-white font-inter">{projectStatus.active}</div>
                     <div className="text-[10px] uppercase text-white/50 tracking-widest font-inter">Active</div>
@@ -364,11 +409,6 @@ const DashboardPage = () => {
                     <div className="text-[10px] uppercase text-white/50 tracking-widest font-inter">Archived</div>
                  </div>
               </div>
-              <Link to="/projects">
-                 <button className="w-full py-3 rounded-xl bg-[#1a1a1a] hover:bg-[#252525] text-white/70 hover:text-white text-xs font-medium uppercase tracking-widest transition-colors font-inter border border-white/10 hover:border-white/20">
-                    View All Projects
-                 </button>
-              </Link>
            </DetailCard>
         </div>
 
