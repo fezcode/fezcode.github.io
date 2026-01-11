@@ -97,10 +97,10 @@ const SkillDeck = () => {
 
       <div className="absolute top-12 left-1/2 -translate-x-1/2 text-center z-10 w-full px-4">
         <h1 className="text-4xl md:text-8xl font-outfit font-black uppercase tracking-tighter mb-2 drop-shadow-[0_0_30px_rgba(0,0,0,1)]">
-          Expertise_Matrix
+          the_deck
         </h1>
         <p className="font-mono text-[10px] md:text-xs text-white/60 uppercase tracking-[1em] animate-pulse">
-          INITIALIZING_CORE_SYSTEMS_ACCESS...
+          Cards of Experiences
         </p>
       </div>
 

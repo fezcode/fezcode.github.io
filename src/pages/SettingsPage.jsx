@@ -419,25 +419,25 @@ const SettingsPage = () => {
               Apply experimental filters to the entire application. Combine with caution.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <CustomToggle id="fx-invert" label="Invert Colors" checked={isInverted} onChange={toggleInvert} />
-              <CustomToggle id="fx-retro" label="Retro CRT" checked={isRetro} onChange={toggleRetro} />
-              <CustomToggle id="fx-party" label="Party Mode" checked={isParty} onChange={toggleParty} />
-              <CustomToggle id="fx-mirror" label="Mirror World" checked={isMirror} onChange={toggleMirror} />
-              <CustomToggle id="fx-noir" label="Film Noir" checked={isNoir} onChange={toggleNoir} />
-              <CustomToggle id="fx-terminal" label="Emerald Term" checked={isTerminal} onChange={toggleTerminal} />
-              <CustomToggle id="fx-blueprint" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint} />
-              <CustomToggle id="fx-sepia" label="Vintage Sepia" checked={isSepia} onChange={toggleSepia} />
-              <CustomToggle id="fx-vaporwave" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave} />
-              <CustomToggle id="fx-cyberpunk" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk} />
-              <CustomToggle id="fx-gameboy" label="Legacy Handheld" checked={isGameboy} onChange={toggleGameboy} />
-              <CustomToggle id="fx-comic" label="Comic Array" checked={isComic} onChange={toggleComic} />
-              <CustomToggle id="fx-sketchbook" label="Graphite Map" checked={isSketchbook} onChange={toggleSketchbook} />
-              <CustomToggle id="fx-hellenic" label="Classical Agora" checked={isHellenic} onChange={toggleHellenic} />
-              <CustomToggle id="fx-glitch" label="Data Corruption" checked={isGlitch} onChange={toggleGlitch} />
-              <CustomToggle id="fx-garden" label="Flora Protocol" checked={isGarden} onChange={toggleGarden} />
-              <CustomToggle id="fx-autumn" label="Seasonal Decay" checked={isAutumn} onChange={toggleAutumn} />
-              <CustomToggle id="fx-rain" label="Hydraulic Filter" checked={isRain} onChange={toggleRain} />
-              <CustomToggle id="fx-fallout" label="Fallout Overlay" checked={isFalloutOverlay} onChange={toggleFalloutOverlay} />
+              <CustomToggle id="fx-invert"      colorTheme="rose"    label="Invert Colors"     checked={isInverted}        onChange={toggleInvert} />
+              <CustomToggle id="fx-retro"       colorTheme="blue"    label="Retro CRT"         checked={isRetro}           onChange={toggleRetro} />
+              <CustomToggle id="fx-party"       colorTheme="green"   label="Party Mode"        checked={isParty}           onChange={toggleParty} />
+              <CustomToggle id="fx-mirror"      colorTheme="amber"   label="Mirror World"      checked={isMirror}          onChange={toggleMirror} />
+              <CustomToggle id="fx-noir"        colorTheme="purple"  label="Film Noir"         checked={isNoir}            onChange={toggleNoir} />
+              <CustomToggle id="fx-terminal"    colorTheme="cyan"    label="Emerald Term"      checked={isTerminal}        onChange={toggleTerminal} />
+              <CustomToggle id="fx-blueprint"   colorTheme="indigo"  label="Blueprint"         checked={isBlueprint}       onChange={toggleBlueprint} />
+              <CustomToggle id="fx-sepia"       colorTheme="rose"    label="Vintage Sepia"     checked={isSepia}           onChange={toggleSepia} />
+              <CustomToggle id="fx-vaporwave"   colorTheme="blue"    label="Vaporwave"         checked={isVaporwave}       onChange={toggleVaporwave} />
+              <CustomToggle id="fx-cyberpunk"   colorTheme="green"   label="Cyberpunk"         checked={isCyberpunk}       onChange={toggleCyberpunk} />
+              <CustomToggle id="fx-gameboy"     colorTheme="amber"   label="Legacy Handheld"   checked={isGameboy}         onChange={toggleGameboy} />
+              <CustomToggle id="fx-comic"       colorTheme="purple"  label="Comic Array"       checked={isComic}           onChange={toggleComic} />
+              <CustomToggle id="fx-sketchbook"  colorTheme="cyan"    label="Graphite Map"      checked={isSketchbook}      onChange={toggleSketchbook} />
+              <CustomToggle id="fx-hellenic"    colorTheme="indigo"  label="Classical Agora"   checked={isHellenic}        onChange={toggleHellenic} />
+              <CustomToggle id="fx-glitch"      colorTheme="rose"    label="Data Corruption"   checked={isGlitch}          onChange={toggleGlitch} />
+              <CustomToggle id="fx-garden"      colorTheme="blue"    label="Flora Protocol"    checked={isGarden}          onChange={toggleGarden} />
+              <CustomToggle id="fx-autumn"      colorTheme="green"   label="Seasonal Decay"    checked={isAutumn}          onChange={toggleAutumn} />
+              <CustomToggle id="fx-rain"        colorTheme="amber"   label="Hydraulic Filter"  checked={isRain}            onChange={toggleRain} />
+              <CustomToggle id="fx-fallout"     colorTheme="purple"  label="Fallout Overlay"   checked={isFalloutOverlay}  onChange={toggleFalloutOverlay} />
               {isFalloutOverlay && (
                 <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-4 p-6 border border-white/10 bg-white/5 rounded-sm space-y-6">
                   <div className="flex items-center gap-4">
