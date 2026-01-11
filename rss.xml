@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 11 Jan 2026 04:17:13 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 11 Jan 2026 19:28:35 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 11 Jan 2026 04:17:13 GMT</pubDate>
+        <pubDate>Sun, 11 Jan 2026 19:28:34 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -545,84 +545,6 @@ This is the inner voice you hear when you read silently.</p>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>1. useState: The Memory</h2>
-<p><strong>What it does:</strong> Allows a functional component to &quot;remember&quot; information between renders.</p>
-<p><strong>When to use:</strong> Whenever you have data that changes over time and needs to trigger a re-render to update the UI (e.g., form inputs, toggle states, counters).</p>
-<pre><code class="language-javascript">const [count, setCount] = useState(0);
-
-// Update state
-setCount(count + 1);
-</code></pre>
-<h2>2. useEffect: The Side Effect</h2>
-<p><strong>What it does:</strong> Performs side effects in functional components. &quot;Side effects&quot; are things like data fetching, subscriptions, or manually changing the DOM.</p>
-<p><strong>When to use:</strong> When you need to do something <em>after</em> the component renders or when a specific value changes.</p>
-<pre><code class="language-javascript">useEffect(() =&gt; {
-  // This runs after every render
-  document.title = `You clicked ${count} times`;
-
-  // Optional cleanup mechanism
-  return () =&gt; {
-    // Clean up code here
-  };
-}, [count]); // Only re-run if &#39;count&#39; changes
-</code></pre>
-<h2>3. useMemo: The Calculator</h2>
-<p><strong>What it does:</strong> Memoizes (caches) the <em>result</em> of a calculation. It only re-calculates the value when one of its dependencies changes.</p>
-<p><strong>When to use:</strong> Optimization. Use it to avoid expensive calculations on every render.</p>
-<pre><code class="language-javascript">const expensiveValue = useMemo(() =&gt; {
-  return computeExpensiveValue(a, b);
-}, [a, b]); // Only re-compute if &#39;a&#39; or &#39;b&#39; changes
-</code></pre>
-<p><em>Note: Don&#39;t overuse this. Memoization has its own cost.</em></p>
-<h2>4. useCallback: The Function Saver</h2>
-<p><strong>What it does:</strong> Memoizes a <em>function definition</em>. It returns the same function instance between renders unless its dependencies change.</p>
-<p><strong>When to use:</strong> Optimization. Primarily useful when passing callbacks to optimized child components (like those wrapped in <code>React.memo</code>) to prevent unnecessary re-renders of the child.</p>
-<pre><code class="language-javascript">const handleClick = useCallback(() =&gt; {
-  doSomething(a, b);
-}, [a, b]); // Function identity remains stable unless &#39;a&#39; or &#39;b&#39; changes
-</code></pre>
-<h2>Summary Table</h2>
-<table>
-<thead>
-<tr>
-<th align="left">Hook</th>
-<th align="left">Returns</th>
-<th align="left">Purpose</th>
-<th align="left">Re-runs when...</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>useState</strong></td>
-<td align="left"><code>[state, setter]</code></td>
-<td align="left">Manage state</td>
-<td align="left">Setter is called</td>
-</tr>
-<tr>
-<td align="left"><strong>useEffect</strong></td>
-<td align="left"><code>undefined</code></td>
-<td align="left">Side effects</td>
-<td align="left">Dependencies change</td>
-</tr>
-<tr>
-<td align="left"><strong>useMemo</strong></td>
-<td align="left">Calculated Value</td>
-<td align="left">Cache expensive calculation</td>
-<td align="left">Dependencies change</td>
-</tr>
-<tr>
-<td align="left"><strong>useCallback</strong></td>
-<td align="left">Memoized Function</td>
-<td align="left">Stable function identity</td>
-<td align="left">Dependencies change</td>
-</tr>
-</tbody></table>
-<h2>Key Difference: useMemo vs useCallback</h2>
-<ul>
-<li><code>useMemo</code> caches the <strong>result</strong> of a function call.</li>
-<li><code>useCallback</code> caches the <strong>function itself</strong>.</li>
-</ul>
-<blockquote>
-<p><code>useCallback(fn, deps)</code> is equivalent to <code>useMemo(() =&gt; fn, deps)</code>.</p>
-</blockquote>
 <p><a href="https://fezcode.com/blog/react-hooks-comparison">Read more...</a></p>]]></content:encoded>
         </item>
         <item>

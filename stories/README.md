@@ -9,7 +9,8 @@ The content is organized as follows:
 ```
 public/stories/
 ├── authors.piml
-├── books.piml
+├── books_en.piml       # English Books Index
+├── books_tr.piml       # Turkish Books Index
 ├── characters.piml
 ├── places.piml
 ├── MarkdownExample.md
@@ -17,20 +18,24 @@ public/stories/
 │   ├── items.piml
 │   ├── [item-image].png
 │   └── ...
-└── [book-directory-name]/
-    ├── episode1.txt
-    └── episode2.txt
-    └── ...
+├── vol-1-thornus/      # Volume I Content
+│   ├── [story-name]/
+│   │   ├── episode1_en.txt
+│   │   └── episode1_tr.txt
+│   └── ...
+├── vol-2-sin/          # Volume II Content
+└── ...
 ```
 
 *   `authors.piml`: This PIML file contains the definitions for all authors.
-*   `books.piml`: This PIML file serves as the main index for all story books and their respective episodes.
+*   `books_en.piml` / `books_tr.piml`: These PIML files serve as the main index for all story books and their respective episodes, separated by language.
 *   `characters.piml`: This PIML file contains the definitions for all characters (Dramatis Personae).
 *   `places.piml`: This PIML file contains the definitions for all places and locations (The Atlas).
 *   `meta-items/`: Contains item definitions and their respective images.
     *   `items.piml`: Definitions for artifacts and tools (The Armory).
-*   `[book-directory-name]/`: Each book's individual episode content files are stored in their own dedicated subdirectories.
-*   `episodeX.txt`: These are plain text files containing the actual narrative content for each episode.
+*   `vol-[id]-[slug]/`: Content is organized into "Volumes" (Phases).
+    *   `[story-name]/`: Each story arc has its own subdirectory.
+    *   `episodeX_[lang].txt`: Plain text files containing the narrative content.
 
 ## Episode File Contents
 
@@ -42,32 +47,36 @@ Every file should end with `.txt` format however you can write `markdown` in it 
 
 When you don't have to show underline in a `h2` (`##`), use `h3` (`###`) header instead. Do not go under h3. (i.e. do not use h4 and below)
 
-## Book Structure (books.piml)
+## Book Structure (books_en.piml / books_tr.piml)
 
-The `books.piml` file is a PIML document that, when parsed, results in an object containing a `books` array.
+The `books_*.piml` files are PIML documents that, when parsed, result in an object containing a `books` array. The application groups these books by their `phase`.
 
 ```piml
 (books)
   > (book)
     (bookId) 1
-    (bookTitle) Book One: The Shadowed Path
+    (bookTitle) Volume I: The Streets of Thornus
+    (phase) 1
+    (phaseTitle) Phase I: The Streets of Thornus
     (episodes)
       > (episode)
         (id) 1
-        (filename) book-one/episode1.txt
-        (title) Episode 1: The Whispering Woods
-        (author) fezcode
-        (date) 2025-11-14
-        (updated) 2025-11-14
-    (overlay) red
+        (filename) vol-1-thornus/the-reflections/en/the-case-of-the-mirror-man.txt
+        (title) The Case of the Mirror Man
+        (author) Constellation
+        (date) 2025-11-23
+        (updated) 2025-11-23
+    (overlay) dodgerblue
 ```
 
 ### Book Object Properties:
 
-*   `bookId` (Number): A unique identifier for the book.
-*   `bookTitle` (String): The full title of the book.
+*   `bookId` (Number): A unique identifier for the book (Volume).
+*   `bookTitle` (String): The full title of the volume.
+*   `phase` (Number): The phase number this book belongs to (used for grouping/sorting).
+*   `phaseTitle` (String): The title of the phase.
 *   `episodes` (Array): An array of episode objects belonging to this book.
-*   `overlay` (String): A color string (e.g., "red", "blue", "black") used for visual styling in the application.
+*   `overlay` (String): A color string used for visual styling.
 
 ### Episode Object Properties:
 
@@ -103,7 +112,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
   > (character)
     (name) Corrigan
     (role) Private Investigator
-    (book) The Broken Path
+    (book) Volume I: The Streets of Thornus
     (description) A cynical detective...
     (status) Alive (Haunted)
 ```
@@ -112,7 +121,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 
 *   `name` (String): The name of the character.
 *   `role` (String): The occupation or role.
-*   `book` (String): Primary book appearance.
+*   `book` (String): Primary book/volume appearance.
 *   `description` (String): Brief biography.
 *   `status` (String): Current status (e.g., Alive, Deceased).
 
@@ -123,7 +132,8 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
   > (place)
     (name) Blade's Clinic
     (type) Medical Facility
-    (book) The Tales of Doctor Blade
+    (category) Establishments
+    (book) Volume III: The RedLink Arc
     (description) A sanctuary of white marble...
     (status) Active
 ```
@@ -132,7 +142,8 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 
 *   `name` (String): The name of the location.
 *   `type` (String): The type of place (e.g., Tavern, City).
-*   `book` (String): The book where it is featured.
+*   `category` (String): Broad category (Establishments, Locations, Settlements, etc.).
+*   `book` (String): The book/volume where it is featured.
 *   `description` (String): Description of the atmosphere.
 *   `status` (String): Current status (e.g., Active, Destroyed).
 
@@ -143,7 +154,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
   > (item)
     (name) Alilberry Extract
     (type) Potion / Poison
-    (book) The Tales of Doctor Blade
+    (book) Volume III: The RedLink Arc
     (description) A pearlescent grey mist...
     (owner) Doctor Blade
     (image) /stories/meta-items/alilberry_extract.png
@@ -153,7 +164,7 @@ The `books.piml` file is a PIML document that, when parsed, results in an object
 
 *   `name` (String): The name of the artifact or item.
 *   `type` (String): The classification (e.g., Weapon, Tool, Potion).
-*   `book` (String): The book where it first appears.
+*   `book` (String): The book/volume where it first appears.
 *   `description` (String): Detailed description of the item.
 *   `owner` (String): The character or entity that owns the item.
 *   `image` (String, Optional): Relative path to the item's image file.

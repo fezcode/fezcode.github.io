@@ -70,3 +70,45 @@ const handleClick = useCallback(() => {
 *   `useCallback` caches the **function itself**.
 
 > `useCallback(fn, deps)` is equivalent to `useMemo(() => fn, deps)`.
+
+## Real World Example: Language Switching
+
+A common question is: "Why use `useEffect` for fetching data when `useState` holds it?"
+
+Let's say we have a Language Switcher (EN/TR).
+
+### The Wrong Way (Trying to use useState for fetching)
+
+```javascript
+// This won't work because fetch is async and returns a Promise, not the data immediately.
+const [books] = useState(fetch(`/stories/books_${language}.piml`));
+```
+
+### The Right Way (useEffect + useState)
+
+1.  **State** holds the *result* (the parsed books).
+2.  **Effect** handles the *process* (fetching when language changes).
+
+```javascript
+const { language } = useContext(DndContext); // "en" or "tr"
+const [books, setBooks] = useState([]); // Holds the data
+
+// Run this side effect whenever 'language' changes
+useEffect(() => {
+  const fetchData = async () => {
+    // 1. Fetch the file based on the dynamic language variable
+    const response = await fetch(`/stories/books_${language}.piml`);
+    
+    // 2. Parse the result
+    const text = await response.text();
+    const data = parsePiml(text);
+    
+    // 3. Update state (triggers re-render)
+    setBooks(data.books);
+  };
+
+  fetchData();
+}, [language]); // <--- The dependency that triggers the re-fetch
+```
+
+This pattern ensures that every time the user clicks "TR", the effect re-runs, fetches the Turkish content, updates the state, and the UI refreshes automatically.
