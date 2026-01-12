@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CloudPlaylist from './components/CloudPlaylist';
 import './CloudMusicPlayer.css';
@@ -8,7 +8,7 @@ import {
     PlusIcon, LinkIcon, PlayIcon, PauseIcon,
     SkipForwardIcon, SkipBackIcon, RepeatIcon,
     ShuffleIcon, SpeakerHighIcon, SpeakerSlashIcon, SpeakerLowIcon, SpeakerNoneIcon,
-    WaveformIcon, ArrowLeftIcon
+    WaveformIcon, ArrowLeftIcon, QuotesIcon
 } from '@phosphor-icons/react';
 import CustomSlider from '../../../components/CustomSlider';
 import GenerativeArt from '../../../components/GenerativeArt';
@@ -28,6 +28,9 @@ const CloudMusicPlayer = () => {
   const [newTitle, setNewTitle] = useState('');
   const [newArtist, setNewArtist] = useState('');
   const [showVisualizer, setShowVisualizer] = useState(true);
+  const [showLyrics, setShowLyrics] = useState(false);
+  const [lyrics, setLyrics] = useState('');
+  const [loadingLyrics, setLoadingLyrics] = useState(false);
 
   // Format time (mm:ss)
   const formatTime = (time) => {
@@ -36,6 +39,33 @@ const CloudMusicPlayer = () => {
       const seconds = Math.floor(time % 60);
       return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
+
+  useEffect(() => {
+    const fetchLyrics = async () => {
+      if (!currentTrack?.title || !currentTrack?.artist) {
+          setLyrics('');
+          return;
+      }
+      setLoadingLyrics(true);
+      try {
+        const response = await fetch(`https://lrclib.net/api/get?artist_name=${encodeURIComponent(currentTrack.artist)}&track_name=${encodeURIComponent(currentTrack.title)}`);
+        if (response.ok) {
+          const data = await response.json();
+          setLyrics(data.plainLyrics || data.syncedLyrics?.replace(/\[\d+:\d+.\d+\]/g, '') || "LYRICS_NOT_FOUND");
+        } else {
+          setLyrics("LYRICS_NOT_FOUND");
+        }
+      } catch (err) {
+        setLyrics("ERROR_FETCHING_DATA");
+      } finally {
+        setLoadingLyrics(false);
+      }
+    };
+
+    if (showLyrics) {
+      fetchLyrics();
+    }
+  }, [currentTrack, showLyrics]);
 
   const handleAddTrack = (e) => {
     e.preventDefault();
@@ -187,7 +217,14 @@ const CloudMusicPlayer = () => {
                 )}
 
                 {/* Status Overlay */}
-                <div className="absolute top-4 right-4 flex gap-2 z-20">
+                <div className="absolute top-4 right-4 flex gap-2 z-30">
+                    <button
+                        onClick={() => setShowLyrics(!showLyrics)}
+                        className={`bg-black/80 border border-cyan-500 px-2 py-1 text-xs font-bold transition-colors ${showLyrics ? 'text-cyan-400 shadow-[0_0_10px_rgba(0,255,255,0.3)]' : 'text-cyan-800'}`}
+                        title="Toggle Lyrics"
+                    >
+                        <QuotesIcon size={16} weight={showLyrics ? "fill" : "regular"} />
+                    </button>
                     <button
                         onClick={() => setShowVisualizer(!showVisualizer)}
                         className={`bg-black/80 border border-cyan-500 px-2 py-1 text-xs font-bold transition-colors ${showVisualizer ? 'text-cyan-400 shadow-[0_0_10px_rgba(0,255,255,0.3)]' : 'text-cyan-800'}`}
@@ -199,6 +236,36 @@ const CloudMusicPlayer = () => {
                         {isPlaying ? 'PLAYING' : 'PAUSED'}
                     </div>
                 </div>
+
+                {/* Lyrics Display */}
+                {showLyrics && (
+                    <div className="absolute inset-0 z-20 bg-black/90 backdrop-blur-md flex flex-col">
+                        {/* Fixed Corner Accents for Lyrics */}
+                        <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-cyan-500 z-30"></div>
+                        <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-cyan-500 z-30"></div>
+                        <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-cyan-500 z-30"></div>
+                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-cyan-500 z-30"></div>
+
+                        <div className="flex-1 overflow-y-auto p-6 flex flex-col items-center justify-start text-center custom-scrollbar">
+                            {loadingLyrics ? (
+                                <div className="h-full flex items-center justify-center">
+                                    <div className="text-cyan-500 animate-pulse font-bold tracking-widest uppercase text-xs">
+                                        [ FETCHING_LYRICS... ]
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className="w-full mt-8">
+                                    <h3 className="text-[10px] text-cyan-700 font-bold mb-4 tracking-[0.5em] border-b border-cyan-900/50 pb-2 uppercase">
+                                        DATA_STREAM: LYRICS
+                                    </h3>
+                                    <pre className="whitespace-pre-wrap font-mono text-xs md:text-sm leading-relaxed text-cyan-300">
+                                        {lyrics || "NO_LYRICS_AVAILABLE"}
+                                    </pre>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
 
             {/* Track Info Display */}
@@ -337,7 +404,7 @@ const CloudMusicPlayer = () => {
                             <LinkIcon className="text-cyan-700" size={16} />
                             <input
                                 type="text"
-                                placeholder="DATA_SOURCE_URL"
+                                placeholder="MP3_DATA_SOURCE_URL"
                                 value={newUrl}
                                 onChange={(e) => setNewUrl(e.target.value)}
                                 className="flex-1 bg-transparent border-none p-2 text-cyan-300 placeholder-cyan-800 text-xs focus:outline-none"
