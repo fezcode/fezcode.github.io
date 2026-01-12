@@ -78,3 +78,13 @@
     (isActive) true
     (link) /apps/github-thumbnail-generator
     (linkText) See Github Thumbnail Gen
+
+  > (banner)
+    (id) yap-v1
+    (type) info
+    (from) 2026-01-23T00:00:00Z
+    (to) 2026-01-29T23:59:59Z
+    (text) YAP IS ONLINE: A LIGHTWEIGHT TERMINAL-BASED YOUTUBE AUDIO PLAYER WITH SYNCED LYRICS. ACCESS AT /PROJECTS/YAP.
+    (isActive) true
+    (link) /projects/yap
+    (linkText) See Yap
