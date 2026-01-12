@@ -39,6 +39,8 @@ const THEME_OPTIONS = [
   { value: 'crtAmber', label: 'RETRO_AMBER_CRT' },
   { value: 'gta', label: 'GRAND_THEFT_AUTO' },
   { value: 'rich', label: 'LUXURY_GOLD' },
+  { value: 'abstract', label: 'ABSTRACT_SHAPES' },
+  { value: 'matrix', label: 'THE_MATRIX' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
