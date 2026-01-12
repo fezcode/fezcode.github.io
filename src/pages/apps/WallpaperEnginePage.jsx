@@ -6,6 +6,7 @@ import {
 import {Link} from 'react-router-dom';
 import CustomSlider from '../../components/CustomSlider';
 import CustomDropdown from '../../components/CustomDropdown';
+import CustomColorPicker from '../../components/CustomColorPicker';
 import Seo from '../../components/Seo';
 import {useToast} from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -1348,16 +1349,21 @@ const WallpaperEnginePage = () => {
             <AnimatePresence>
               {preset === 'custom' && (
                 <motion.div initial={{opacity: 0, height: 0}} animate={{opacity: 1, height: 'auto'}}
-                            exit={{opacity: 0, height: 0}} className="space-y-3 pt-2 overflow-hidden">
-                  <div className="flex gap-2">
-                    {customColors.map((color, idx) => (<div key={idx} className="flex-1 flex flex-col gap-1">
-                        <label className="text-[8px] text-gray-600 uppercase">CH_{idx + 1}</label>
-                        <input type="color" value={color} onChange={(e) => {
+                            exit={{opacity: 0, height: 0}} className="space-y-3 pt-2 overflow-visible relative z-30">
+                  <div className="space-y-3">
+                    {customColors.map((color, idx) => (
+                      <CustomColorPicker
+                        key={idx}
+                        variant="brutalist"
+                        label={`CH_${idx + 1}`}
+                        value={color}
+                        onChange={(newColor) => {
                           const newColors = [...customColors];
-                          newColors[idx] = e.target.value;
+                          newColors[idx] = newColor;
                           setCustomColors(newColors);
-                        }} className="w-full h-8 bg-transparent border border-white/10 cursor-pointer p-0 block"/>
-                      </div>))}
+                        }}
+                      />
+                    ))}
                   </div>
                   <p className="text-[8px] text-gray-600 uppercase italic leading-tight">CH_3 is utilized as the primary
                     foundation layer.</p>
