@@ -68,3 +68,13 @@
     (isActive) true
     (link) /apps/tier-forge
     (linkText) See Tier Forge
+
+  > (banner)
+    (id) github-thumbnail-generator-v1
+    (type) info
+    (from) 2026-01-16T00:00:00Z
+    (to) 2026-01-22T23:59:59Z
+    (text) GITHUB THUMBNAIL GENERATOR ONLINE: GENERATE PROFESSIONAL SOCIAL PREVIEW IMAGES AND README HEADERS FOR YOUR PROJECTS. ACCESS AT /APPS::GHTG.
+    (isActive) true
+    (link) /apps/github-thumbnail-generator
+    (linkText) See Github Thumbnail Gen

@@ -117,6 +117,7 @@ const PatternGeneratorPage = lazy(() => import('../pages/apps/PatternGeneratorPa
 const CodeblockCreatorPage = lazy(() => import('../pages/apps/CodeblockCreatorPage'));
 const AlbumCoverPage = lazy(() => import('../pages/apps/AlbumCoverPage'));
 const TweetCreatorPage = lazy(() => import('../pages/apps/TweetCreatorPage'));
+const GithubThumbnailGeneratorPage = lazy(() => import('../pages/apps/GithubThumbnailGeneratorPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(() => import('../pages/roadmap/RoadmapItemDetailPage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
@@ -1103,6 +1104,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::tweet"
           element={<Navigate to="/apps/tweet-creator" replace />}
+        />
+        <Route
+          path="/apps::ghtg"
+          element={<Navigate to="/apps/github-thumbnail-generator" replace />}
         />
         <Route
           path="/apps::magaziner"
@@ -2287,6 +2292,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <TweetCreatorPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/github-thumbnail-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <GithubThumbnailGeneratorPage />
               </Suspense>
             </motion.div>
           }
