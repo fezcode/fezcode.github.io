@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 12 Jan 2026 03:06:43 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 12 Jan 2026 04:59:39 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 12 Jan 2026 03:06:43 GMT</pubDate>
+        <pubDate>Mon, 12 Jan 2026 04:59:39 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Upgrading Debian 11 to 13: The Safe Path]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/debian-upgrade-path</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/debian-upgrade-path</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Upgrading Debian 11 to 13: The Safe Path</h1>
+<p><a href="https://fezcode.com/blog/debian-upgrade-path">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Steganography: Hiding Secrets in Plain Sight with LSB]]></title>
             <description><![CDATA[[object Object]]]></description>
