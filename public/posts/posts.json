@@ -1,5 +1,17 @@
 [
   {
+    "slug": "debian-upgrade-path",
+    "title": "Upgrading Debian 11 to 13: The Safe Path",
+    "date": "2026-01-12",
+    "updated": "2026-01-12",
+    "description": "A quick gist on how to safely upgrade from Debian 11 to Debian 13 by following the required sequential path.",
+    "tags": ["linux", "debian", "upgrade", "sysadmin", "gist"],
+    "category": "gist",
+    "filename": "debian-upgrade-path.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "steganography-lsb-deep-dive",
     "title": "Steganography: Hiding Secrets in Plain Sight with LSB",
     "date": "2026-01-12",
