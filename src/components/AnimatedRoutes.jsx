@@ -117,7 +117,7 @@ const PatternGeneratorPage = lazy(() => import('../pages/apps/PatternGeneratorPa
 const CodeblockCreatorPage = lazy(() => import('../pages/apps/CodeblockCreatorPage'));
 const AlbumCoverPage = lazy(() => import('../pages/apps/AlbumCoverPage'));
 const TweetCreatorPage = lazy(() => import('../pages/apps/TweetCreatorPage'));
-const GithubThumbnailGeneratorPage = lazy(() => import('../pages/apps/GithubThumbnailGeneratorPage'));
+const GithubThumbnailGeneratorPage = lazy(() => import('../pages/apps/github-thumbnail/GithubThumbnailGeneratorPage'));
 const RoadmapViewerPage = lazy(() => import('../pages/roadmap/FezzillaPage'));
 const RoadmapItemDetailPage = lazy(() => import('../pages/roadmap/RoadmapItemDetailPage'));
 const PinnedAppPage = lazy(() => import('../pages/PinnedAppPage'));
