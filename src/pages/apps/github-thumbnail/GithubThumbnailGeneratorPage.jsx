@@ -40,7 +40,7 @@ const THEME_OPTIONS = [
   { value: 'gta', label: 'GRAND_THEFT_AUTO' },
   { value: 'rich', label: 'LUXURY_GOLD' },
   { value: 'abstract', label: 'ABSTRACT_SHAPES' },
-  { value: 'matrix', label: 'THE_MATRIX' },
+  { value: 'nature', label: 'NATURE_VIBES' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

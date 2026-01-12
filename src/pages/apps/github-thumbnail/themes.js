@@ -20,7 +20,7 @@ import { crtAmber } from './themes/crtAmber';
 import { gta } from './themes/gta';
 import { rich } from './themes/rich';
 import { abstract } from './themes/abstract';
-import { matrix } from './themes/matrix';
+import { nature } from './themes/nature';
 
 export const themeRenderers = {
   modern,
@@ -45,5 +45,5 @@ export const themeRenderers = {
   gta,
   rich,
   abstract,
-  matrix,
+  nature,
 };
