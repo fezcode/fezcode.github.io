@@ -359,3 +359,13 @@
     (priority) High
     (assignee) Gemini
     (created_at) 2026-01-11T15:00:00+03:00
+
+  > (issues)
+    (id) FEZ-29
+    (title) SEO Refactoring: Declarative Metadata
+    (description) Shift from imperative 'useSeo' hooks to a declarative '<Seo />' component to leverage React 19 metadata hoisting and ensure full SEO payloads are captured during react-snap SSG.
+    (category) Infrastructure
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-01-12T10:00:00+03:00

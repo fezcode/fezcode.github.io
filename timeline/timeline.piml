@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-01-12
+    (title) Major SEO Refactoring: Declarative Metadata
+    (description) Executed a site-wide architectural shift from imperative 'useSeo' hooks to a declarative '<Seo />' component system. This transition ensures that React 19 metadata hoisting is correctly utilized during Static Site Generation (SSG) via react-snap, enabling crawlers to capture full SEO payloads before hydration. Optimized 130+ pages and implemented standard path mapping for improved compatibility.
+    (icon) MagnifyingGlassIcon
+    (link) /blog/routing-revolution-ssg-and-seo
+    (type) refactor
+
+  > (item)
     (date) 2026-01-06
     (title) Aether: Cyberpunk Audio Interface
     (description) Deployed 'Aether', a cloud-based music player with a high-fidelity cyberpunk aesthetic. Features a generative audio visualizer, seamless playback across the site via a tiny persistent player, and a fully data-driven playlist system powered by PIML.
