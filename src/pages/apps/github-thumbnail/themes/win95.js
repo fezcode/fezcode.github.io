@@ -57,7 +57,7 @@ export const win95 = (ctx, width, height, scale, data) => {
     ctx.fillStyle = white;
     ctx.textAlign = 'left';
     ctx.font = `bold ${20 * scale}px "Arial", sans-serif`;
-    ctx.fillText(`${repoOwner} - Notepad`, winX + titlePad + 10*scale, winY + titlePad + 28*scale);
+    ctx.fillText(`${repoOwner}`, winX + titlePad + 10*scale, winY + titlePad + 28*scale);
 
     // X Button
     const btnSize = titleH - 4*scale;
@@ -208,5 +208,5 @@ export const win95 = (ctx, width, height, scale, data) => {
     drawBevel(appX, appY, appW, startH, true);
     ctx.fillStyle = black;
     ctx.textAlign = 'left';
-    ctx.fillText(`${repoName} - Notepad`, appX + 10*scale, appY + 22*scale);
+    ctx.fillText(` ${repoName}`, appX + 10*scale, appY + 22*scale);
 };

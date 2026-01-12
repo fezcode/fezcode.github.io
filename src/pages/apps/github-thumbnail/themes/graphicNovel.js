@@ -70,8 +70,8 @@ export const graphicNovel = (ctx, width, height, scale, data) => {
     ctx.fillText(repoOwner.toUpperCase(), padding, height * 0.25);
 
     // Description - White Serif (Typewriter style)
-    ctx.fillStyle = '#ffffff';
-    ctx.font = `normal ${30 * scale}px "Courier New", monospace`;
+    ctx.fillStyle = '#ff0000';
+    ctx.font = `normal ${30 * scale}px "Space Mono", monospace`;
     wrapText(ctx, description, padding, height * 0.55, width * 0.6, 40 * scale);
 
     // 5. Speech Bubble for Stats
