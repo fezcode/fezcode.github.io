@@ -8,7 +8,8 @@ import {
   SpeakerHighIcon,
   SpeakerSlashIcon,
   InfoIcon
-} from '@phosphor-icons/react';import useSeo from '../../hooks/useSeo';
+} from '@phosphor-icons/react';
+import Seo from '../../components/Seo';
 import CustomSlider from '../../components/CustomSlider';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -22,12 +23,6 @@ const THEMES = {
 };
 
 const VoyagerTerminalPage = () => {
-  useSeo({
-    title: 'The Voyager Terminal | Fezcodex',
-    description: 'Intercept deep space signals with this analog 1970s telemetry receiver.',
-    keywords: ['voyager', 'nasa', 'space', 'radio', 'oscilloscope', 'analog', 'signals'],
-  });
-
   const [frequency, setFrequency] = useState(440);
   const [isPowerOn, setIsPowerOn] = useState(false);
   const [signalLocked, setSignalLocked] = useState(false);
@@ -183,7 +178,11 @@ const VoyagerTerminalPage = () => {
 
   return (
     <div className="min-h-screen p-4 md:p-12 flex flex-col items-center justify-center font-mono text-[#00ff00] relative overflow-hidden">
-
+      <Seo
+        title="The Voyager Terminal | Fezcodex"
+        description="Intercept deep space signals with this analog 1970s telemetry receiver."
+        keywords={['voyager', 'nasa', 'space', 'radio', 'oscilloscope', 'analog', 'signals']}
+      />
       {/* FULL PLANETARY SCENERY BACKDROP */}
       <div className="fixed inset-0 pointer-events-none -z-20">
           {/* Deep Space / Atmospheric sky */}

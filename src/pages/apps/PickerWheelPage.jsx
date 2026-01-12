@@ -2,26 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import PickerWheel from '../../components/PickerWheel';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function PickerWheelPage() {
-  const appName = 'Picker Wheel';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Make decisions or select random items from a list with a custom spinning wheel.',
-    keywords: [
-      'Fezcodex',
-      'picker wheel',
-      'decision maker',
-      'random selector',
-      'wheel spinner',
-    ],
-  });
-
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Picker Wheel | Fezcodex"
+        description="Make decisions or select random items from a list with a custom spinning wheel."
+        keywords={[
+          'Fezcodex',
+          'picker wheel',
+          'decision maker',
+          'random selector',
+          'wheel spinner',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">

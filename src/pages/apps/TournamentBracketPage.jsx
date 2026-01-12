@@ -11,25 +11,13 @@ import {
   RowsIcon,
   SquaresFourIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function TournamentBracketPage() {
   const appName = 'Tournament Bracket';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Create and manage single-elimination tournament brackets.',
-    keywords: [
-      'Fezcodex',
-      'tournament bracket',
-      'bracket generator',
-      'single elimination',
-      'tournament manager',
-    ],
-  });
 
   const { addToast } = useToast();
 
@@ -240,6 +228,17 @@ function TournamentBracketPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Tournament Bracket | Fezcodex"
+        description="Create and manage single-elimination tournament brackets."
+        keywords={[
+          'Fezcodex',
+          'tournament bracket',
+          'bracket generator',
+          'single elimination',
+          'tournament manager',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">

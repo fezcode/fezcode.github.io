@@ -7,7 +7,8 @@ import {
   CalendarIcon,
   DatabaseIcon,
   InfoIcon
-} from '@phosphor-icons/react';import useSeo from '../../hooks/useSeo';
+} from '@phosphor-icons/react';
+import Seo from '../../components/Seo';
 import Dashboard from '../../app/apps/fasting-tracker/components/Dashboard';
 import Planner from '../../app/apps/fasting-tracker/components/Planner';
 import FoodDatabase from '../../app/apps/fasting-tracker/components/FoodDatabase';
@@ -17,13 +18,6 @@ import AdjustFastModal from '../../app/apps/fasting-tracker/components/AdjustFas
 import { useFastingData } from '../../app/apps/fasting-tracker/hooks/useFastingData';
 
 const IntermittentFastingTrackerPage = () => {
-  const appName = 'The Fasting Ledger';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Track your fasting periods and daily meals with ease.',
-    keywords: ['fasting', 'intermittent fasting', 'tracker', 'nutrition', 'health'],
-  });
   const fastingData = useFastingData();
   const [activeTab, setActiveTab] = useState('dashboard');
   const [isMealLoggerOpen, setIsMealLoggerOpen] = useState(false);
@@ -53,6 +47,11 @@ const IntermittentFastingTrackerPage = () => {
 
   return (
     <div className="min-h-screen bg-[#e9e4d0] text-[#1a1a1a] selection:bg-[#8b0000]/20 font-arvo border-t-8 border-[#1a1a1a]">
+      <Seo
+        title="The Fasting Ledger | Fezcodex"
+        description="Track your fasting periods and daily meals with ease."
+        keywords={['fasting', 'intermittent fasting', 'tracker', 'nutrition', 'health']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24 border-b border-[#1a1a1a] pb-12">
           <Link

@@ -6,27 +6,12 @@ import {
   ArrowsLeftRightIcon,
   CopySimpleIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function UrlConverterPage() {
-  const appName = 'URL Encoder';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for encoding and decoding Uniform Resource Locators.',
-    keywords: [
-      'Fezcodex',
-      'URL encoder',
-      'URL decoder',
-      'URL converter',
-      'web tools',
-    ],
-  });
-
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const { addToast } = useToast();
@@ -80,6 +65,17 @@ function UrlConverterPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="URL Encoder | Fezcodex"
+        description="Protocol for encoding and decoding Uniform Resource Locators."
+        keywords={[
+          'Fezcodex',
+          'URL encoder',
+          'URL decoder',
+          'URL converter',
+          'web tools',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

@@ -1,31 +1,29 @@
 import React, { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
 import Loading from '../../components/Loading';
 
 const TierForge = lazy(() => import('../../app/apps/TierForge/TierForge'));
 
-const TierForgePage = () => {
+function TierForgePage() {
   const appName = 'Tier Forge';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for hierarchical data classification and visual ranking generation.',
-    keywords: [
-      'Fezcodex',
-      'Tier List',
-      'Ranker',
-      'Tier List Maker',
-      'Visual Ranking',
-    ],
-  });
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Tier Forge | Fezcodex"
+        description="Protocol for hierarchical data classification and visual ranking generation."
+        keywords={[
+          'Fezcodex',
+          'Tier List',
+          'Ranker',
+          'Tier List Maker',
+          'Visual Ranking',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

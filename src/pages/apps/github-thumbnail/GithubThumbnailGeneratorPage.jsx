@@ -10,7 +10,7 @@ import {
   LayoutIcon,
   TrashIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../../hooks/useSeo';
+import Seo from '../../../components/Seo';
 import { useToast } from '../../../hooks/useToast';
 import CustomDropdown from '../../../components/CustomDropdown';
 import CustomColorPicker from '../../../components/CustomColorPicker';
@@ -46,14 +46,6 @@ const THEME_OPTIONS = [
 ];
 
 const GithubThumbnailGeneratorPage = () => {
-  const appName = 'Github Thumbnail Generator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Generate high-fidelity thumbnails and cover art for GitHub repositories.',
-    keywords: ['github', 'thumbnail', 'generator', 'cover art', 'readme', 'social preview', 'fezcodex'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -171,6 +163,11 @@ const GithubThumbnailGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-indigo-500/30">
+      <Seo
+        title="Github Thumbnail Generator | Fezcodex"
+        description="Generate high-fidelity thumbnails and cover art for GitHub repositories."
+        keywords={['github', 'thumbnail', 'generator', 'cover art', 'readme', 'social preview', 'fezcodex']}
+      />
        <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12 relative z-10">
 
         <header className="mb-24">

@@ -19,7 +19,7 @@ import {
   MagnifyingGlass,
 } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import piml from 'piml';
 import TacticalGlobe from '../components/TacticalGlobe';
 
@@ -140,12 +140,6 @@ const THEMES = {
 }
 
 const ReadingPage = () => {
-  useSeo({
-    title: 'Mission Logs // Intel | Fezcodex',
-    description: 'Classified operational intelligence and briefing materials.',
-    keywords: ['Fezcodex', 'intel', 'mission', 'logs', 'reading'],
-  });
-
   const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [selectedId, setSelectedId] = useState(null);
@@ -224,6 +218,11 @@ const ReadingPage = () => {
 
     return (
       <div className={`min-h-screen bg-black ${currentTheme.primary} font-mono ${currentTheme.selection} selection:text-black overflow-hidden relative flex flex-col`}>
+        <Seo
+          title="Mission Logs // Intel | Fezcodex"
+          description="Classified operational intelligence and briefing materials."
+          keywords={['Fezcodex', 'intel', 'mission', 'logs', 'reading']}
+        />
         {/* HUD Overlays */}
         <div className="pointer-events-none fixed inset-0 z-50 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
         <div className={`pointer-events-none fixed inset-0 z-50 bg-gradient-to-b from-transparent ${currentTheme.decoration} to-transparent bg-[length:100%_4px] animate-scanline`}></div>

@@ -3,17 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import piml from 'piml';
 import { UsersThree, X } from '@phosphor-icons/react';
 
 function DndCharactersPage() {
-  useSeo({
-    title: 'Dramatis Personae | From Serfs and Frauds',
-    description: "Meet the characters of the Dungeons & Dragons campaign, From Serfs and Frauds.",
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'characters', 'npc', 'pc'],
-  });
-
   const { setBreadcrumbs } = useContext(DndContext);
   const [characters, setCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(null);
@@ -55,6 +49,11 @@ function DndCharactersPage() {
 
   return (
     <DndLayout>
+      <Seo
+        title="Dramatis Personae | From Serfs and Frauds"
+        description="Meet the characters of the Dungeons & Dragons campaign, From Serfs and Frauds."
+        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'characters', 'npc', 'pc']}
+      />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">

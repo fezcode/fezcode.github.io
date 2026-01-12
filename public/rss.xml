@@ -9,14 +9,44 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 11 Jan 2026 16:25:52 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 12 Jan 2026 07:07:14 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 11 Jan 2026 16:25:52 GMT</pubDate>
+        <pubDate>Mon, 12 Jan 2026 07:07:14 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Upgrading Debian 11 to 13: The Safe Path]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/debian-upgrade-path</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/debian-upgrade-path</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Upgrading Debian 11 to 13: The Safe Path</h1>
+<p><a href="https://fezcode.com/blog/debian-upgrade-path">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Steganography: Hiding Secrets in Plain Sight with LSB]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/steganography-lsb-deep-dive</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/steganography-lsb-deep-dive</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Steganography is the art and science of hiding information within other non-secret data. Unlike cryptography, which scrambles a message so it can&#39;t be read, steganography hides the very existence of the message.</p>
+<p><a href="https://fezcode.com/blog/steganography-lsb-deep-dive">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Ultimate Pixel Art Resources Guide]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/pixel-art-resources-guide</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/pixel-art-resources-guide</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Pixel art is a beautiful and nostalgic medium that has seen a massive resurgence in recent years, especially within the indie game development scene. Whether you&#39;re a seasoned artist or just starting, having the right tools and resources can make a world of difference.</p>
+<p><a href="https://fezcode.com/blog/pixel-art-resources-guide">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Implementing Drag and Drop in React without Libraries]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -545,84 +575,6 @@ This is the inner voice you hear when you read silently.</p>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>1. useState: The Memory</h2>
-<p><strong>What it does:</strong> Allows a functional component to &quot;remember&quot; information between renders.</p>
-<p><strong>When to use:</strong> Whenever you have data that changes over time and needs to trigger a re-render to update the UI (e.g., form inputs, toggle states, counters).</p>
-<pre><code class="language-javascript">const [count, setCount] = useState(0);
-
-// Update state
-setCount(count + 1);
-</code></pre>
-<h2>2. useEffect: The Side Effect</h2>
-<p><strong>What it does:</strong> Performs side effects in functional components. &quot;Side effects&quot; are things like data fetching, subscriptions, or manually changing the DOM.</p>
-<p><strong>When to use:</strong> When you need to do something <em>after</em> the component renders or when a specific value changes.</p>
-<pre><code class="language-javascript">useEffect(() =&gt; {
-  // This runs after every render
-  document.title = `You clicked ${count} times`;
-
-  // Optional cleanup mechanism
-  return () =&gt; {
-    // Clean up code here
-  };
-}, [count]); // Only re-run if &#39;count&#39; changes
-</code></pre>
-<h2>3. useMemo: The Calculator</h2>
-<p><strong>What it does:</strong> Memoizes (caches) the <em>result</em> of a calculation. It only re-calculates the value when one of its dependencies changes.</p>
-<p><strong>When to use:</strong> Optimization. Use it to avoid expensive calculations on every render.</p>
-<pre><code class="language-javascript">const expensiveValue = useMemo(() =&gt; {
-  return computeExpensiveValue(a, b);
-}, [a, b]); // Only re-compute if &#39;a&#39; or &#39;b&#39; changes
-</code></pre>
-<p><em>Note: Don&#39;t overuse this. Memoization has its own cost.</em></p>
-<h2>4. useCallback: The Function Saver</h2>
-<p><strong>What it does:</strong> Memoizes a <em>function definition</em>. It returns the same function instance between renders unless its dependencies change.</p>
-<p><strong>When to use:</strong> Optimization. Primarily useful when passing callbacks to optimized child components (like those wrapped in <code>React.memo</code>) to prevent unnecessary re-renders of the child.</p>
-<pre><code class="language-javascript">const handleClick = useCallback(() =&gt; {
-  doSomething(a, b);
-}, [a, b]); // Function identity remains stable unless &#39;a&#39; or &#39;b&#39; changes
-</code></pre>
-<h2>Summary Table</h2>
-<table>
-<thead>
-<tr>
-<th align="left">Hook</th>
-<th align="left">Returns</th>
-<th align="left">Purpose</th>
-<th align="left">Re-runs when...</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>useState</strong></td>
-<td align="left"><code>[state, setter]</code></td>
-<td align="left">Manage state</td>
-<td align="left">Setter is called</td>
-</tr>
-<tr>
-<td align="left"><strong>useEffect</strong></td>
-<td align="left"><code>undefined</code></td>
-<td align="left">Side effects</td>
-<td align="left">Dependencies change</td>
-</tr>
-<tr>
-<td align="left"><strong>useMemo</strong></td>
-<td align="left">Calculated Value</td>
-<td align="left">Cache expensive calculation</td>
-<td align="left">Dependencies change</td>
-</tr>
-<tr>
-<td align="left"><strong>useCallback</strong></td>
-<td align="left">Memoized Function</td>
-<td align="left">Stable function identity</td>
-<td align="left">Dependencies change</td>
-</tr>
-</tbody></table>
-<h2>Key Difference: useMemo vs useCallback</h2>
-<ul>
-<li><code>useMemo</code> caches the <strong>result</strong> of a function call.</li>
-<li><code>useCallback</code> caches the <strong>function itself</strong>.</li>
-</ul>
-<blockquote>
-<p><code>useCallback(fn, deps)</code> is equivalent to <code>useMemo(() =&gt; fn, deps)</code>.</p>
-</blockquote>
 <p><a href="https://fezcode.com/blog/react-hooks-comparison">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -1016,7 +968,7 @@ from the branching of trees to the delicate veins of a leaf? Much of this comple
 often involving <strong>fractals</strong> and <strong>recursion</strong>.
 Our new &quot;Fractal Flora&quot; app lets you explore these principles by growing your own digital trees with a few sliders.</p>
 <blockquote>
-<p><a href="/apps::flora">Try apps::flora here</a></p>
+<p><a href="/apps/flora">Try apps::flora here</a></p>
 </blockquote>
 <p>This post will peel back the layers and explain the core mechanics behind the app.</p>
 <p><img src="/images/projects/fractal-flora.png" alt="/images/projects/fractal-flora.png"></p>
@@ -2067,7 +2019,7 @@ git remote rm fezcodex-stories
             <content:encoded><![CDATA[<h1>piml</h1>
 <p><strong>Spec version</strong>: v1.1.0</p>
 <p><a href="https://github.com/fezcode/piml/blob/main/LIBRARIES.md">Available Libraries</a></p>
-<p><a href="/apps::jpc">JSON&lt;-&gt;PIML Converter</a></p>
+<p><a href="/apps/json-piml-converter">JSON&lt;-&gt;PIML Converter</a></p>
 <h2>Parenthesis Intended Markup Language</h2>
 <p>In the ever-evolving landscape of data serialization formats, PIML (Parenthesis Intended Markup Language) emerges as a compelling alternative, prioritizing human readability and writability without compromising machine parseability. This post delves into the core tenets of PIML, exploring its syntax, data types, and how it stacks up against established formats like JSON, YAML, and TOML.</p>
 <h2>What is PIML?</h2>
@@ -2254,7 +2206,7 @@ git remote rm fezcodex-stories
             <pubDate>Mon, 10 Nov 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>Image Toolkit Deep Dive</h1>
 <p>In this blog post, we&#39;ll take a deep dive into the implementation of the Image Toolkit app. We&#39;ll explore the various image filters and their algorithms, and we&#39;ll also discuss a common React Hook-related warning and how to fix it.</p>
-<p>You can try it here <a href="/apps::itk">apps::itk</a></p>
+<p>You can try it here <a href="/apps/image-toolkit">apps::itk</a></p>
 <h2>The Filters</h2>
 <p>The Image Toolkit app provides a variety of filters that you can apply to your images. Let&#39;s take a look at each one and the algorithm behind it.</p>
 <h3>Monochrome</h3>
@@ -2370,7 +2322,7 @@ data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
             <pubDate>Sun, 09 Nov 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>A Deep Dive into the Picker Wheel: Canvas, React, and CSS</h1>
 <p>In this post, we&#39;ll take a deep dive into the implementation of the Picker Wheel app, a fun and interactive way to pick a random winner from a list of entries. We&#39;ll explore how it&#39;s built using React, the Canvas API, and Tailwind CSS, and we&#39;ll cover the key concepts and techniques used in its development.</p>
-<p>You can play with it here <a href="/apps::pw">apps::pw</a></p>
+<p>You can play with it here <a href="/apps/picker-wheel">apps::pw</a></p>
 <h2>The Canvas Wheel</h2>
 <p>The heart of the Picker Wheel is the wheel itself, which is drawn using the HTML5 Canvas API. The canvas provides a powerful and flexible way to draw graphics and animations, and it&#39;s perfect for creating the dynamic and interactive wheel we need.</p>
 <p>The <code>drawWheel</code> function is responsible for drawing the wheel. It takes the list of entries and the current rotation angle as input, and it uses them to draw the segments of the wheel. Each segment is a pie slice, and it&#39;s filled with a unique color from a predefined color palette. The text of the entry is then drawn on top of the segment, rotated to align with the segment&#39;s angle.</p>

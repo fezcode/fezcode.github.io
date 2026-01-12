@@ -6,7 +6,7 @@ import {
   TargetIcon,
   ArrowsClockwiseIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import '../../styles/MemoryGamePage.css';
 import { useAchievements } from '../../context/AchievementContext';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -17,25 +17,6 @@ const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='ht
 const CARD_VALUES = ['🍎', '🍌', '🍒', '🍇', '🍋', '🍊', '🍓', '🍉'];
 
 const MemoryGamePage = () => {
-  useSeo({
-    title: 'Memory Game | Fezcodex',
-    description: 'A classic memory game to test your concentration.',
-    keywords: [
-      'Fezcodex',
-      'memory game',
-      'match pairs',
-      'brain game',
-      'concentration',
-    ],
-    ogTitle: 'Memory Game | Fezcodex',
-    ogDescription:
-      'Challenge your memory with this classic card matching game.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Memory Game | Fezcodex',
-    twitterDescription:
-      'Challenge your memory with this classic card matching game.',
-  });
-
   const { unlockAchievement } = useAchievements();
   const [cards, setCards] = useState([]);
   const [flippedCards, setFlippedCards] = useState([]);
@@ -150,6 +131,18 @@ const MemoryGamePage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative font-sans">
+      <Seo
+        title="Memory Game | Fezcodex"
+        description="A classic memory game to test your concentration."
+        keywords={[
+          'Fezcodex',
+          'memory game',
+          'match pairs',
+          'brain game',
+          'concentration',
+        ]}
+        ogImage="/images/asset/ogtitle.png"
+      />
       <div
         className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay"
         style={{ backgroundImage: NOISE_BG }}

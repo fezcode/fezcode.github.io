@@ -1,16 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, SkullIcon } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useAchievements } from '../../context/AchievementContext';
 
 const CodeSeancePage = () => {
-  useSeo({
-    title: 'Code Seance | Fezcodex',
-    description: 'An interactive coding experience with a mystical twist.',
-    keywords: ['coding', 'seance', 'interactive', 'terminal'],
-  });
-
   const { unlockAchievement } = useAchievements();
   const [history, setHistory] = useState([
     { type: 'system', text: 'INITIALIZING SPIRIT CONNECTION...' },
@@ -229,6 +223,11 @@ const CodeSeancePage = () => {
     <div
       className={`min-h-screen bg-black text-green-500 font-mono p-4 sm:p-8 selection:bg-green-900 selection:text-white overflow-hidden ${isGlitching ? 'animate-ping' : ''}`}
     >
+      <Seo
+        title="Code Seance | Fezcodex"
+        description="An interactive coding experience with a mystical twist."
+        keywords={['coding', 'seance', 'interactive', 'terminal']}
+      />
       <div className="max-w-3xl mx-auto relative z-10">
         <Link
           to="/apps"

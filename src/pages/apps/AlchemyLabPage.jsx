@@ -26,7 +26,7 @@ import {
 import Fez from '../../components/Fez';
 import usePersistentState from '../../hooks/usePersistentState';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import BrutalistDialog from '../../components/BrutalistDialog';
 
@@ -103,12 +103,6 @@ const AlchemyLabPage = () => {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const { addToast } = useToast();
 
-  useSeo({
-    title: 'Alchemy Lab | Fezcodex',
-    description: 'Combine base elements to discover the secrets of the digital universe in this atmospheric alchemy game.',
-    keywords: ['alchemy', 'game', 'crafting', 'elements', 'fezcodex'],
-  });
-
   const combine = useCallback(() => {
     if (!slot1 || !slot2) return;
 
@@ -146,6 +140,11 @@ const AlchemyLabPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-mono selection:bg-emerald-500/30 overflow-hidden flex flex-col">
+      <Seo
+        title="Alchemy Lab | Fezcodex"
+        description="Combine base elements to discover the secrets of the digital universe in this atmospheric alchemy game."
+        keywords={['alchemy', 'game', 'crafting', 'elements', 'fezcodex']}
+      />
       {/* Header */}
       <div className="p-6 md:p-12 border-b border-white/10 flex justify-between items-center bg-black/50 backdrop-blur-md z-50">
         <div className="flex items-center gap-8">

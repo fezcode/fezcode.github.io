@@ -3,17 +3,11 @@ import { motion } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndCard from '../../components/dnd/DndCard';
 import DndLayout from '../../components/dnd/DndLayout';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useAchievements } from '../../context/AchievementContext';
 import { BookOpen, Scroll, UsersThree, MapTrifold, Sword } from '@phosphor-icons/react';
 
 const DndPage = () => {
-  useSeo({
-    title: 'From Serfs and Frauds | Fezcodex',
-    description: 'Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign.',
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'campaign'],
-  });
-
   const { setBreadcrumbs } = useContext(DndContext);
   const { unlockAchievement } = useAchievements();
 
@@ -24,6 +18,11 @@ const DndPage = () => {
 
   return (
     <DndLayout>
+      <Seo
+        title="From Serfs and Frauds | Fezcodex"
+        description="Welcome to the world of From Serfs and Frauds, a Dungeons & Dragons campaign."
+        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'campaign']}
+      />
       <div className="max-w-6xl mx-auto px-6 py-20 text-center relative">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

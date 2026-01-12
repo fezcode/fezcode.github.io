@@ -6,7 +6,7 @@ import {
   DiceFiveIcon,
   ScrollIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 
 // --- Utility: Noise Functions ---
@@ -95,12 +95,6 @@ const MedievalSlider = ({ label, value, min, max, step, onChange }) => {
 };
 
 const FantasyMapGeneratorPage = () => {
-  useSeo({
-    title: 'Fantasy Map Generator | Fezcodex',
-    description: 'Generate Middle-earth style fantasy maps with mountains, rivers, and castles.',
-    keywords: ['fantasy', 'map', 'generator', 'middle-earth', 'castle', 'rpg', 'dnd'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -452,6 +446,11 @@ const FantasyMapGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-stone-100 flex flex-col font-serif selection:bg-[#8C7B6C] selection:text-[#F0E6D2]">
+      <Seo
+        title="Fantasy Map Generator | Fezcodex"
+        description="Generate Middle-earth style fantasy maps with mountains, rivers, and castles."
+        keywords={['fantasy', 'map', 'generator', 'middle-earth', 'castle', 'rpg', 'dnd']}
+      />
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-7xl relative z-10">
         <Link to="/apps" className="group text-stone-600 hover:text-stone-900 hover:underline flex items-center justify-center gap-2 text-lg mb-4">
           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Apps

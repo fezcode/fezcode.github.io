@@ -10,7 +10,7 @@ import {
 } from '@phosphor-icons/react';
 import {motion} from 'framer-motion';
 import {QRCodeCanvas} from 'qrcode.react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import CustomDropdown from '../../components/CustomDropdown';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -18,12 +18,6 @@ import GenerativeArt from '../../components/GenerativeArt';
 
 const QrCodeGeneratorPage = () => {
   const appName = 'QR Code Generator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Generate QR codes from text or URLs with customizable options for version, error correction, and size.',
-    keywords: ['Fezcodex', 'QR code generator', 'QR code', 'generate QR', 'brutalist'],
-  });
 
   const {addToast} = useContext(ToastContext);
   const [text, setText] = useState('https://fezcode.com');
@@ -55,6 +49,11 @@ const QrCodeGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="QR Code Generator | Fezcodex"
+        description="Generate QR codes from text or URLs with customizable options for version, error correction, and size."
+        keywords={['Fezcodex', 'QR code generator', 'QR code', 'generate QR', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

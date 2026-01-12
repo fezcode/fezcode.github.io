@@ -12,7 +12,7 @@ import PostMetadata from '../components/metadata-cards/PostMetadata';
 import CodeModal from '../components/CodeModal';
 import { useToast } from '../hooks/useToast';
 import ImageModal from '../components/ImageModal';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import ShareButtons from '../components/ShareButtons';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
@@ -40,15 +40,6 @@ const OldBlogPostPage = () => {
   const { trackReadingProgress } = useAchievements();
   const [hasTrackedRead, setHasTrackedRead] = useState(false);
   const { addToast } = useToast();
-
-  useSeo({
-    title: post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : null,
-    description: post ? post.body.substring(0, 150) : null,
-    image: post?.attributes?.ogImage || post?.attributes?.image,
-    keywords: post?.attributes?.tags,
-  });
-
-  // --- Effects ---
 
   useEffect(() => {
     setHasTrackedRead(false);
@@ -324,6 +315,13 @@ const OldBlogPostPage = () => {
             >
               <ArrowLeftIcon size={16} /> {backLinkText}
             </Link>
+
+            <Seo
+              title={`${post.attributes.title} | Fezcodex`}
+              description={post.attributes.description}
+              image={post.attributes.image}
+              keywords={post.attributes.tags}
+            />
 
             <h1 className="text-3xl md:text-5xl font-bold text-emerald-400 mb-6 tracking-tight font-mono">
               {post.attributes.title}

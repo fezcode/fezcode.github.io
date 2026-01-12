@@ -5,17 +5,11 @@ import DndCard from '../../components/dnd/DndCard';
 import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
 import StoryTreeView from '../../components/dnd/StoryTreeView';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import piml from 'piml';
 import { BookOpen, Scroll } from '@phosphor-icons/react';
 
 function DndLorePage() {
-  useSeo({
-    title: 'The Lore | From Serfs and Frauds',
-    description: "Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds.",
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'lore', 'history', 'tales'],
-  });
-
   const { setBreadcrumbs, language } = useContext(DndContext);
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -53,6 +47,11 @@ function DndLorePage() {
 
   return (
     <DndLayout>
+      <Seo
+        title="The Lore | From Serfs and Frauds"
+        description="Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds."
+        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'lore', 'history', 'tales']}
+      />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-16 relative">
           <div className="flex justify-center mb-6">

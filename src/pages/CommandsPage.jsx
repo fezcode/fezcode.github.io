@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { useCommandPalette } from '../context/CommandPaletteContext';
 import {
   ArrowLeftIcon,
@@ -449,20 +449,6 @@ const CommandListItem = ({ cmd, isActive, onHover, onClick }) => {
 };
 
 function CommandsPage() {
-  useSeo({
-    title: 'All Commands | Fezcodex',
-    description: 'All the available commands that can be used in Fezcodex.',
-    keywords: ['Fezcodex', 'apps', 'applications', 'cmd', 'dev', 'commands'],
-    ogTitle: 'All Commands | Fezcodex',
-    ogDescription: 'All the available commands that can be used in Fezcodex.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'All Commands | Fezcodex',
-    twitterDescription:
-      'All the available commands that can be used in Fezcodex.',
-    twitterImage: '/images/asset/ogtitle.png',
-  });
-
   const { togglePalette, triggerCommand } = useCommandPalette();
   const [activeCommand, setActiveCommand] = useState(null);
 
@@ -471,6 +457,12 @@ function CommandsPage() {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
+      <Seo
+        title="All Commands | Fezcodex"
+        description="All the available commands that can be used in Fezcodex."
+        keywords={['Fezcodex', 'apps', 'applications', 'cmd', 'dev', 'commands']}
+        ogImage="/images/asset/commands-page.webp"
+      />
       {/* Mobile Background */}
       <div className="absolute inset-0 xl:hidden opacity-20 pointer-events-none z-0">
         <GenerativeArt

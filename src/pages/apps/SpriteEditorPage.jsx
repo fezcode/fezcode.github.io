@@ -13,6 +13,7 @@ import {
   ArrowLeft as ArrowLeftIcon,
 } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const SpriteEditorPage = () => {
@@ -223,6 +224,11 @@ const SpriteEditorPage = () => {
     <div
       className={`min-h-screen ${currentTheme.pageBg} ${currentTheme.pageText} font-mono selection:bg-[#ff004d] selection:text-white pb-12`}
     >
+      <Seo
+        title="Sprite Editor | Fezcodex"
+        description="A simple, browser-based pixel art editor."
+        keywords={['pixel art', 'sprite editor', 'game art', 'drawing', 'canvas']}
+      />
       <div className="max-w-6xl mx-auto pt-24 px-4">
         <Link
           to="/apps"

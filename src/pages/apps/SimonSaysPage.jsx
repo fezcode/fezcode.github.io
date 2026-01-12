@@ -9,7 +9,7 @@ import {
   CirclesFourIcon,
 } from '@phosphor-icons/react';
 import {motion} from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -23,12 +23,6 @@ const colorsList = [
 
 const SimonSaysPage = () => {
   const appName = 'Simon Says';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Test your memory by repeating the sequence of colors in this high-tech adaptation.',
-    keywords: ['Fezcodex', 'simon says', 'memory game', 'color sequence', 'brutalist'],
-  });
 
   const {addToast} = useContext(ToastContext);
   const [sequence, setSequence] = useState([]);
@@ -110,6 +104,11 @@ const SimonSaysPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Simon Says | Fezcodex"
+        description="Test your memory by repeating the sequence of colors in this high-tech adaptation."
+        keywords={['Fezcodex', 'simon says', 'memory game', 'color sequence', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

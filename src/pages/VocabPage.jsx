@@ -10,19 +10,12 @@ import {
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { vocabulary } from '../data/vocabulary';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { useSidePanel } from '../context/SidePanelContext';
 import BreadcrumbTitle from '../components/BreadcrumbTitle';
 import GenerativeArt from '../components/GenerativeArt';
 
 const VocabPage = () => {
-  useSeo({
-    title: 'Glossary | Fezcodex',
-    description:
-      'A collection of technical terms, concepts, and definitions used across Fezcodex.',
-    keywords: ['Fezcodex', 'vocabulary', 'glossary', 'definitions'],
-  });
-
   const [searchQuery, setSearchQuery] = useState('');
   const { openSidePanel } = useSidePanel();
 
@@ -73,6 +66,11 @@ const VocabPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Glossary | Fezcodex"
+        description="A collection of technical terms, concepts, and definitions used across Fezcodex."
+        keywords={['Fezcodex', 'vocabulary', 'glossary', 'definitions']}
+      />
       <div className="mx-auto max-w-6xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

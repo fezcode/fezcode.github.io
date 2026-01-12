@@ -6,28 +6,13 @@ import {
   CalendarIcon,
   ClockIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import CustomDropdown from '../../components/CustomDropdown';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const CronJobGeneratorPage = () => {
-  const appName = 'CRON Generator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Visual protocol for scheduling repetitive tasks and temporal automation.',
-    keywords: [
-      'Fezcodex',
-      'cron job',
-      'cron generator',
-      'scheduler',
-      'automation',
-    ],
-  });
-
   const { addToast } = useToast();
 
   // --- CRON Generator State ---
@@ -147,6 +132,17 @@ const CronJobGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="CRON Generator | Fezcodex"
+        description="Visual protocol for scheduling repetitive tasks and temporal automation."
+        keywords={[
+          'Fezcodex',
+          'cron job',
+          'cron generator',
+          'scheduler',
+          'automation',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

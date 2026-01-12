@@ -8,7 +8,7 @@ import {
   ShieldCheckIcon,
   TrophyIcon
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import { useAchievements } from '../../context/AchievementContext';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -16,17 +16,6 @@ import GenerativeArt from '../../components/GenerativeArt';
 const BUBBLE_COUNT = 100;
 
 const BubbleWrapPage = () => {
-  useSeo({
-    title: 'Bubble Wrap | Fezcodex',
-    description: 'Pop some virtual bubble wrap to relieve stress.',
-    keywords: ['Fezcodex', 'bubble wrap', 'stress relief', 'pop', 'game'],
-    ogTitle: 'Bubble Wrap | Fezcodex',
-    ogDescription: 'Satisfy your popping urges with virtual bubble wrap.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Bubble Wrap | Fezcodex',
-    twitterDescription: 'Satisfy your popping urges with virtual bubble wrap.',
-  });
-
   const { unlockAchievement } = useAchievements();
   const [bubbles, setBubbles] = useState(Array(BUBBLE_COUNT).fill(false));
   const [popCount, setPopCount] = useState(0);
@@ -81,6 +70,11 @@ const BubbleWrapPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Bubble Wrap | Fezcodex"
+        description="Pop some virtual bubble wrap to relieve stress."
+        keywords={['Fezcodex', 'bubble wrap', 'stress relief', 'pop', 'game']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

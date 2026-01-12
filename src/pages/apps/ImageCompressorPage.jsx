@@ -9,31 +9,13 @@ import {
   GearIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
 const ImageCompressorPage = () => {
-  useSeo({
-    title: 'Image Compressor | Fezcodex',
-    description:
-      'Compress images to reduce file size while maintaining quality.',
-    keywords: [
-      'Fezcodex',
-      'image compressor',
-      'compress image',
-      'optimize image',
-    ],
-    ogTitle: 'Image Compressor | Fezcodex',
-    ogDescription: 'Compress and optimize your images directly in the browser.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Image Compressor | Fezcodex',
-    twitterDescription:
-      'Compress and optimize your images directly in the browser.',
-  });
-
   const { addToast } = useToast();
   const [originalImage, setOriginalImage] = useState(null);
   const [compressedImage, setCompressedImage] = useState(null);
@@ -104,6 +86,16 @@ const ImageCompressorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative font-sans">
+      <Seo
+        title="Image Compressor | Fezcodex"
+        description="Compress images to reduce file size while maintaining quality."
+        keywords={[
+          'Fezcodex',
+          'image compressor',
+          'compress image',
+          'optimize image',
+        ]}
+      />
       <div
         className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay"
         style={{ backgroundImage: NOISE_BG }}

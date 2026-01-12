@@ -12,7 +12,7 @@ import {
   BookOpenIcon
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import formatMarkdownTable from '../../utils/markdownUtils';
 import { useSidePanel } from '../../context/SidePanelContext';
@@ -20,17 +20,6 @@ import GenerativeArt from '../../components/GenerativeArt';
 
 const MarkdownTableFormatterPage = () => {
   const appName = 'Markdown Table Formatter';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Format your markdown tables into clean, readable structures.',
-    keywords: ['Fezcodex', 'md', 'markdown', 'table', 'formatter'],
-    ogTitle: 'Markdown Table Formatter | Fezcodex',
-    ogDescription: 'Easily format and clean up your Markdown tables.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Markdown Table Formatter | Fezcodex',
-    twitterDescription: 'Easily format and clean up your Markdown tables.',
-  });
 
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
@@ -102,6 +91,11 @@ const MarkdownTableFormatterPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Markdown Table Formatter | Fezcodex"
+        description="Format your markdown tables into clean, readable structures."
+        keywords={['Fezcodex', 'md', 'markdown', 'table', 'formatter']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

@@ -10,7 +10,7 @@ import {
   TriangleIcon,
   FlaskIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import BreadcrumbTitle from '../components/BreadcrumbTitle';
 import GenerativeArt from '../components/GenerativeArt';
 
@@ -46,16 +46,15 @@ const panelData = [
 ];
 
 const BrufezPanelsPage = () => {
-  useSeo({
-    title: 'Brufez | Two-Panel Layout',
-    description: 'Demonstration of the Brufez dual-panel architecture for information-dense interfaces.',
-    keywords: ['Brufez', 'design system', 'layout', 'two-panel', 'brutalist'],
-  });
-
   const [activeItem, setActiveCommand] = useState(panelData[0]);
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
+      <Seo
+        title="Brufez | Two-Panel Layout"
+        description="Demonstration of the Brufez dual-panel architecture for information-dense interfaces."
+        keywords={['Brufez', 'design system', 'layout', 'two-panel', 'brutalist']}
+      />
       {/* LEFT PANEL: The Index */}
       <div className="w-full xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300">
         <header className="mb-20">

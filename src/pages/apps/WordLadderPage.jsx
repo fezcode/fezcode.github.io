@@ -15,7 +15,7 @@ import {
   TargetIcon,
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -596,12 +596,6 @@ const isOneLetterDifferent = (word1, word2) => {
 const WordLadderPage = () => {
   const appName = 'Word Ladder';
 
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Transform words one letter at a time in this logic puzzle.',
-    keywords: ['Fezcodex', 'word ladder', 'word game', 'puzzle', 'logic'],
-  });
-
   const {addToast} = useContext(ToastContext);
   const [startWord, setStartWord] = useState('');
   const [endWord, setEndWord] = useState('');
@@ -713,6 +707,11 @@ const WordLadderPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Word Ladder | Fezcodex"
+        description="Transform words one letter at a time in this logic puzzle."
+        keywords={['Fezcodex', 'word ladder', 'word game', 'puzzle', 'logic']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

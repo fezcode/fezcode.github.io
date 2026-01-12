@@ -7,28 +7,13 @@ import {
   ArrowsClockwiseIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import CustomDropdown from '../../components/CustomDropdown';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const FantasyNameGeneratorPage = () => {
   const appName = 'Identity Gen';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for archetypal nomenclature. Generate names for humans, elves, dwarves, and orcs.',
-    keywords: [
-      'Fezcodex',
-      'fantasy name generator',
-      'random name',
-      'human names',
-      'elf names',
-      'dwarf names',
-      'orc names',
-    ],
-  });
 
   const [nameType, setNameType] = useState('human');
   const [generatedName, setGeneratedName] = useState('');
@@ -542,6 +527,19 @@ const FantasyNameGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Identity Gen | Fezcodex"
+        description="Protocol for archetypal nomenclature. Generate names for humans, elves, dwarves, and orcs."
+        keywords={[
+          'Fezcodex',
+          'fantasy name generator',
+          'random name',
+          'human names',
+          'elf names',
+          'dwarf names',
+          'orc names',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

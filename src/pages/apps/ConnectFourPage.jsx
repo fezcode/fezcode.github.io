@@ -10,18 +10,12 @@ import {
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
 import {ToastContext} from '../../context/ToastContext';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const ConnectFourPage = () => {
   const appName = 'Connect Four';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Play the classic Connect Four game in your browser.',
-    keywords: ['Connect Four', 'game', 'React', 'strategy', 'brutalist'],
-  });
 
   const {addToast} = useContext(ToastContext);
 
@@ -143,6 +137,11 @@ const ConnectFourPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Connect Four | Fezcodex"
+        description="Play the classic Connect Four game in your browser."
+        keywords={['Connect Four', 'game', 'React', 'strategy', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

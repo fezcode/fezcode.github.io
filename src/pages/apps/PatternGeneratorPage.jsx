@@ -10,7 +10,7 @@ import {
   ImageSquareIcon,
   ShapesIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import CustomSlider from '../../components/CustomSlider';
@@ -58,12 +58,6 @@ const ASPECT_OPTIONS = [
 ];
 
 const PatternGeneratorPage = () => {
-  useSeo({
-    title: 'Pattern Generator | Fezcodex',
-    description: 'Generate seamless geometric vector patterns in 4K resolution.',
-    keywords: ['pattern', 'generator', 'svg', 'geometric', 'design', '4k', 'wallpaper'],
-  });
-
   const { addToast } = useToast();
   const svgRef = useRef(null);
 
@@ -451,6 +445,11 @@ const PatternGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#111] text-gray-100 font-sans flex flex-col">
+       <Seo
+        title="Pattern Generator | Fezcodex"
+        description="Generate seamless geometric vector patterns in 4K resolution."
+        keywords={['pattern', 'generator', 'svg', 'geometric', 'design', '4k', 'wallpaper']}
+       />
        <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-7xl">
          {/* Header */}
          <header className="mb-8">

@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useProjects } from '../utils/projectParser';
 import { useProjectContent } from '../hooks/useProjectContent';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import {
   ArrowLeftIcon,
@@ -40,13 +40,6 @@ const ProjectPage = () => {
   const project = projects.find((p) => p.slug === slug);
   const fullProject = project && content ? { ...project, ...content } : null;
 
-  useSeo({
-    title: fullProject ? `${fullProject.title} | Fezcodex` : null,
-    description: fullProject?.shortDescription,
-    image: fullProject?.image,
-    keywords: fullProject?.tags,
-  });
-
   if (loadingProjects || loadingContent) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white font-mono uppercase tracking-widest text-xs">
@@ -76,6 +69,12 @@ const ProjectPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 selection:text-emerald-200 overflow-x-hidden">
+      <Seo
+        title={`${fullProject.title} | Fezcodex`}
+        description={fullProject.shortDescription}
+        image={fullProject.image}
+        keywords={fullProject.tags}
+      />
       <div
         className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay"
         style={{ backgroundImage: NOISE_BG }}

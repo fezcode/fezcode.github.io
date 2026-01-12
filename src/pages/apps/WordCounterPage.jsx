@@ -9,24 +9,12 @@ import {
   RowsIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function WordCounterPage() {
   const appName = 'Word Counter';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Protocol for linguistic decomposition and character mapping.',
-    keywords: [
-      'Fezcodex',
-      'word counter',
-      'character counter',
-      'line counter',
-      'text analysis',
-    ],
-  });
 
   const [text, setText] = useState('');
   const [counts, setCounts] = useState({
@@ -80,6 +68,17 @@ function WordCounterPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Word Counter | Fezcodex"
+        description="Protocol for linguistic decomposition and character mapping."
+        keywords={[
+          'Fezcodex',
+          'word counter',
+          'character counter',
+          'line counter',
+          'text analysis',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

@@ -7,16 +7,10 @@ import {
   PaintBrushIcon,
   PaletteIcon
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const PaperInkPage = () => {
-  useSeo({
-    title: 'Paper & Ink | Fezcodex',
-    description: 'A meditative ink drawing experience on digital rice paper.',
-    keywords: ['drawing', 'ink', 'calligraphy', 'zen', 'art', 'canvas'],
-  });
-
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
   const [lastPoint, setLastPoint] = useState(null);
@@ -118,6 +112,11 @@ const PaperInkPage = () => {
 
   return (
     <div className="h-screen w-screen bg-[#f4f1ea] relative overflow-hidden cursor-crosshair select-none">
+      <Seo
+        title="Paper & Ink | Fezcodex"
+        description="A meditative ink drawing experience on digital rice paper."
+        keywords={['drawing', 'ink', 'calligraphy', 'zen', 'art', 'canvas']}
+      />
       {/* Rice Paper Texture Overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-20 mix-blend-multiply" style={{
           backgroundImage: `url('https://www.transparenttextures.com/patterns/rice-paper.png')`

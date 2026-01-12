@@ -6,26 +6,13 @@ import {
   FingerprintIcon,
   ArrowsClockwiseIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
 import { useToast } from '../../hooks/useToast';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function UuidGeneratorPage() {
   const appName = 'UUID Generator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Generate universally unique identifiers (UUIDs) version 4 for digital identification.',
-    keywords: [
-      'Fezcodex',
-      'UUID generator',
-      'GUID generator',
-      'unique ID',
-      'UUID v4',
-    ],
-  });
 
   const [uuid, setUuid] = useState('');
   const { addToast } = useToast();
@@ -60,6 +47,17 @@ function UuidGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="UUID Generator | Fezcodex"
+        description="Generate universally unique identifiers (UUIDs) version 4 for digital identification."
+        keywords={[
+          'Fezcodex',
+          'UUID generator',
+          'GUID generator',
+          'unique ID',
+          'UUID v4',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

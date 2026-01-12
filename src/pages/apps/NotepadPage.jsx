@@ -9,18 +9,12 @@ import {
   FolderOpen,
   ArrowsOutLineVerticalIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import ConfirmationModal from '../../components/ConfirmationModal';
 import usePersistentState from '../../hooks/usePersistentState';
 
 const NotepadPage = () => {
-  useSeo({
-    title: 'Notepad | Fezcodex',
-    description: 'A simple, distraction-free notepad for your thoughts.',
-    keywords: ['notepad', 'writing', 'text editor', 'simple', 'rain'],
-  });
-
   const [text, setText] = useState('');
   const [isRainy, setIsRainy] = useState(false);
   const [isClearModalOpen, setIsClearModalOpen] = useState(false);
@@ -136,6 +130,11 @@ const NotepadPage = () => {
     <div
       className={`min-h-screen flex flex-col transition-colors duration-500 ${isRainy ? 'bg-gray-900' : 'bg-[#fdfbf7]'}`}
     >
+      <Seo
+        title="Notepad | Fezcodex"
+        description="A simple, distraction-free notepad for your thoughts."
+        keywords={['notepad', 'writing', 'text editor', 'simple', 'rain']}
+      />
       {/* Rain Effect Overlay */}
       {isRainy && (
         <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">

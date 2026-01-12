@@ -8,7 +8,7 @@ import {
   ArrowsOutIcon,
   TrashIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import CustomSlider from '../../components/CustomSlider';
@@ -30,14 +30,6 @@ const BG_STYLES = [
 ];
 
 const AssetConstructorPage = () => {
-  const appName = 'Asset Constructor';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Construct high-fidelity digital assets, containers and UI components.',
-    keywords: ['asset creator', 'ui design', 'glassmorphism', 'container generator', 'fezcodex'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -250,6 +242,11 @@ const AssetConstructorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Asset Constructor | Fezcodex"
+        description="Construct high-fidelity digital assets, containers and UI components."
+        keywords={['asset creator', 'ui design', 'glassmorphism', 'container generator', 'fezcodex']}
+      />
       <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12 relative z-10">
 
         <header className="mb-24">

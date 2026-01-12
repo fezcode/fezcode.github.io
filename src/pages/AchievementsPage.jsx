@@ -10,24 +10,11 @@ import {
   XCircleIcon,
   CalendarBlankIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { useAchievements } from '../context/AchievementContext';
 import { ACHIEVEMENTS } from '../config/achievements';
 
 const AchievementsPage = () => {
-  useSeo({
-    title: 'Achievements | Fezcodex',
-    description: 'Track your progress and unlocked secrets in Fezcodex.',
-    keywords: ['Fezcodex', 'achievements', 'gamification', 'trophies'],
-    ogTitle: 'Achievements | Fezcodex',
-    ogDescription: 'Track your progress and unlocked secrets in Fezcodex.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Achievements | Fezcodex',
-    twitterDescription: 'Track your progress and unlocked secrets in Fezcodex.',
-    twitterImage: '/images/asset/ogtitle.png',
-  });
-
   const { unlockedAchievements, showAchievementToast } = useAchievements();
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -68,6 +55,13 @@ const AchievementsPage = () => {
   return (
     // Changed main background to stone-950 for an earthy dark feel
     <div className="py-16 sm:py-24 bg-stone-950 min-h-screen">
+      <Seo
+        title="Achievements | Fezcodex"
+        description="Track your progress and unlocked secrets in Fezcodex."
+        keywords={['Fezcodex', 'achievements', 'gamification', 'trophies']}
+        image="/images/asset/achievements-page.webp"
+      />
+
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         {/* Navigation */}
         <Link

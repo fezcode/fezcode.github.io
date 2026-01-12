@@ -35,7 +35,7 @@ import {
   synthwave84
 } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import CustomDropdown from '../../components/CustomDropdown';
@@ -89,14 +89,6 @@ const fonts = [
 ];
 
 const CodeblockCreatorPage = () => {
-  const appName = 'Codeblock Creator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Create aesthetic code snapshots for social media and documentation.',
-    keywords: ['codeblock', 'snapshot', 'code image', 'developer tools', 'fezcodex'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -302,6 +294,11 @@ const CodeblockCreatorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Codeblock Creator | Fezcodex"
+        description="Create aesthetic code snapshots for social media and documentation."
+        keywords={['codeblock', 'snapshot', 'code image', 'developer tools', 'fezcodex']}
+      />
       <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12">
 
         <header className="mb-24">

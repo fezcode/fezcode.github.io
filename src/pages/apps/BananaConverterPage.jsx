@@ -9,7 +9,7 @@ import {
   ScalesIcon,
   CalculatorIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
 
@@ -30,17 +30,6 @@ const unitOptions = [
 
 const BananaConverterPage = () => {
   const appName = 'Banana Converter';
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Convert measuring units into the internet standard: Bananas.',
-    keywords: [
-      'Fezcodex',
-      'banana for scale',
-      'converter',
-      'fun',
-      'measurement',
-    ],
-  });
 
   const [inputValue, setInputValue] = useState('');
   const [inputUnit, setInputUnit] = useState('cm');
@@ -104,6 +93,17 @@ const BananaConverterPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Banana Converter | Fezcodex"
+        description="Convert measuring units into the internet standard: Bananas."
+        keywords={[
+          'Fezcodex',
+          'banana for scale',
+          'converter',
+          'fun',
+          'measurement',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

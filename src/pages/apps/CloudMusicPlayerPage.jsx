@@ -1,16 +1,19 @@
 import React from 'react';
 import CloudMusicPlayer from '../../app/apps/CloudMusicPlayer/CloudMusicPlayer';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 
 const CloudMusicPlayerPage = () => {
-  useSeo({
-    title: 'Aether | Cyberpunk Music Player',
-    description: 'A cloud-based, cyberpunk-themed music player featuring generative art visualization and a persistent audio interface.',
-    keywords: ['music', 'player', 'cyberpunk', 'generative art', 'audio', 'visualization', 'aether'],
-    image: '/images/apps/aether.png',
-  });
-
-  return <CloudMusicPlayer />;
+  return (
+    <>
+      <Seo
+        title="Aether | Cyberpunk Music Player"
+        description="A cloud-based, cyberpunk-themed music player featuring generative art visualization and a persistent audio interface."
+        keywords={['music', 'player', 'cyberpunk', 'generative art', 'audio', 'visualization', 'aether']}
+        image="/images/apps/aether.png"
+      />
+      <CloudMusicPlayer />
+    </>
+  );
 };
 
 export default CloudMusicPlayerPage;

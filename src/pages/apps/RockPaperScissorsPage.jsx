@@ -9,7 +9,7 @@ import {
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 
 const choices = [
@@ -19,15 +19,6 @@ const choices = [
 ];
 
 const RockPaperScissorsPage = () => {
-  const appName = 'Rock Paper Scissors';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Play the classic game of Rock Paper Scissors against the neural network.',
-    keywords: ['Fezcodex', 'rock paper scissors', 'game', 'fun app'],
-  });
-
   const [playerChoice, setPlayerChoice] = useState(null);
   const [computerChoice, setComputerChoice] = useState(null);
   const [result, setResult] = useState('');
@@ -85,6 +76,11 @@ const RockPaperScissorsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Rock Paper Scissors | Fezcodex"
+        description="Play the classic game of Rock Paper Scissors against the neural network."
+        keywords={['Fezcodex', 'rock paper scissors', 'game', 'fun app']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

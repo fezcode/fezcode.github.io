@@ -2,7 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, CopySimpleIcon, LockKeyIcon, ArrowsClockwiseIcon, InfoIcon, ShieldCheckIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import CustomDropdown from '../../components/CustomDropdown';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -15,12 +15,6 @@ const CIPHERS = [
 
 const CipherStudioPage = () => {
   const appName = 'Cipher Studio';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Encode and decode messages using classic cryptographic algorithms like Caesar and Vigenère.',
-    keywords: ['Fezcodex', 'cryptography', 'cipher', 'encryption', 'decryption', 'caesar cipher'],
-  });
 
   const { addToast } = useToast();
   const [inputText, setInputText] = useState('');
@@ -104,6 +98,11 @@ const CipherStudioPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Cipher Studio | Fezcodex"
+        description="Encode and decode messages using classic cryptographic algorithms like Caesar and Vigenère."
+        keywords={['Fezcodex', 'cryptography', 'cipher', 'encryption', 'decryption', 'caesar cipher']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

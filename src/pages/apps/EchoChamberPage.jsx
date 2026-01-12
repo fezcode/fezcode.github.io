@@ -10,7 +10,7 @@ import {
   DotsThreeIcon,
   ShareNetworkIcon
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const BOT_NAMES = [
@@ -40,12 +40,6 @@ const PRESET_POSTS = [
 ];
 
 const EchoChamberPage = () => {
-  useSeo({
-    title: 'The Echo Chamber | Fezcodex',
-    description: 'A solitary social network where everyone agrees with you.',
-    keywords: ['social media', 'simulation', 'glassmorphism', 'echo chamber', 'bots'],
-  });
-
   const [posts, setPosts] = useState([]);
   const [inputText, setInputText] = useState('');
   const feedEndRef = useRef(null);
@@ -112,7 +106,11 @@ const EchoChamberPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 font-sans text-white overflow-hidden relative selection:bg-pink-300 selection:text-pink-900">
-
+      <Seo
+        title="The Echo Chamber | Fezcodex"
+        description="A solitary social network where everyone agrees with you."
+        keywords={['social media', 'simulation', 'glassmorphism', 'echo chamber', 'bots']}
+      />
       {/* Animated Background Blobs */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob"></div>

@@ -12,7 +12,7 @@ import {
   TargetIcon,
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -41,12 +41,6 @@ const shuffleDeck = (deck) => {
 
 const CardGamePage = () => {
   const appName = 'Higher or Lower';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Guess if the next card is higher or lower in this high-contrast tactical environment.',
-    keywords: ['Fezcodex', 'card game', 'higher or lower', 'game', 'brutalist'],
-  });
 
   const {addToast} = useContext(ToastContext);
   const {unlockAchievement} = useAchievements();
@@ -148,6 +142,11 @@ const CardGamePage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Higher or Lower | Fezcodex"
+        description="Guess if the next card is higher or lower in this high-contrast tactical environment."
+        keywords={['Fezcodex', 'card game', 'higher or lower', 'game', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

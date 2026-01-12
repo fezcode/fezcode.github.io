@@ -6,7 +6,7 @@ import {
   TranslateIcon,
   WaveSineIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useAchievements } from '../../context/AchievementContext';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -63,15 +63,6 @@ const REVERSE_MORSE_CODE_MAP = Object.fromEntries(
 );
 
 const MorseCodeTranslatorPage = () => {
-  const appName = 'Morse Translator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Translate natural language into binary pulses and vice-versa.',
-    keywords: ['Fezcodex', 'morse code', 'translator', 'converter'],
-  });
-
   const { unlockAchievement } = useAchievements();
   const [text, setText] = useState('');
   const [morseCode, setMorseCode] = useState('');
@@ -137,6 +128,11 @@ const MorseCodeTranslatorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Morse Translator | Fezcodex"
+        description="Translate natural language into binary pulses and vice-versa."
+        keywords={['Fezcodex', 'morse code', 'translator', 'converter']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

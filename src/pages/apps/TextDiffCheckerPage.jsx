@@ -5,7 +5,7 @@ import {
   ColumnsIcon,
   FileSearchIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { diff_match_patch } from 'diff-match-patch';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -14,19 +14,6 @@ const dmp = new diff_match_patch();
 
 function TextDiffCheckerPage() {
   const appName = 'Diff Checker';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for comparing data sequences and identifying structural variations.',
-    keywords: [
-      'Fezcodex',
-      'text diff',
-      'diff checker',
-      'text comparison',
-      'code diff',
-    ],
-  });
 
   const [textA, setTextA] = useState('');
   const [textB, setTextB] = useState('');
@@ -82,6 +69,17 @@ function TextDiffCheckerPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Diff Checker | Fezcodex"
+        description="Protocol for comparing data sequences and identifying structural variations."
+        keywords={[
+          'Fezcodex',
+          'text diff',
+          'diff checker',
+          'text comparison',
+          'code diff',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

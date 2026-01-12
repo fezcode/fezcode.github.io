@@ -13,19 +13,13 @@ import {
   DownloadSimpleIcon,
   ArrowsOutCardinalIcon
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 
 const DEFAULT_COLORS = ['#ef4444', '#10b981', '#3b82f6', '#f59e0b', '#8b5cf6', '#ec4899'];
 
 const BlendLabPage = () => {
   const appName = 'Blend Lab';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Create high-impact color fields with noise, blur, and custom typography.',
-    keywords: ['Fezcodex', 'gradient generator', 'noise texture', 'brutalist design', 'typography'],
-  });
 
   const { addToast } = useToast();
   const canvasRef = useRef(null);
@@ -184,6 +178,11 @@ const BlendLabPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Blend Lab | Fezcodex"
+        description="Create high-impact color fields with noise, blur, and custom typography."
+        keywords={['Fezcodex', 'gradient generator', 'noise texture', 'brutalist design', 'typography']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

@@ -11,7 +11,7 @@ import {
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LogCard from '../components/LogCard';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import usePersistentState from '../hooks/usePersistentState';
 import colors from '../config/colors';
 import { useAchievements } from '../context/AchievementContext';
@@ -35,13 +35,6 @@ const categories = [
 ];
 
 const LogsPage = () => {
-  useSeo({
-    title: 'Logs | Fezcodex',
-    description:
-      'A collection of logs, thoughts, and other miscellaneous writings.',
-    keywords: ['Fezcodex', 'logs', 'thoughts', 'writing'],
-  });
-
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -113,6 +106,11 @@ const LogsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Logs | Fezcodex"
+        description="A collection of logs, thoughts, and other miscellaneous writings."
+        keywords={['Fezcodex', 'logs', 'thoughts', 'writing']}
+      />
       <div className="mx-auto max-w-5xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

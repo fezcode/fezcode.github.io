@@ -12,7 +12,7 @@ import {
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../utils/customTheme';
 import CodeModal from '../components/CodeModal';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import { calculateReadingTime } from '../utils/readingTime';
 import { fetchAllBlogPosts } from '../utils/dataUtils';
@@ -35,13 +35,6 @@ const StandardBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const { addToast } = useToast();
-
-  useSeo({
-    title: post ? `${post.attributes.title} | Fezcodex` : null,
-    description: post ? post.body.substring(0, 150) : null,
-    image: post?.attributes?.ogImage || post?.attributes?.image,
-    keywords: post?.attributes?.tags,
-  });
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -199,7 +192,12 @@ const StandardBlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative">
-
+      <Seo
+        title={post ? `${post.attributes.title} | Fezcodex` : null}
+        description={post ? post.body.substring(0, 150) : null}
+        image={post?.attributes?.ogImage || post?.attributes?.image}
+        keywords={post?.attributes?.tags}
+      />
       {/* Reading Progress */}
       <div className="fixed top-0 left-0 w-full h-1 z-50 bg-white/5">
         <motion.div

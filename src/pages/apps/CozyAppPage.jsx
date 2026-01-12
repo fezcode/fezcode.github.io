@@ -9,23 +9,9 @@ import {
   SpeakerSlashIcon,
   WindIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 
 const CozyAppPage = () => {
-  useSeo({
-    title: 'Cozy Corner | Fezcodex',
-    description: 'A place to relax, watch a fire, snow, rain, or just breathe.',
-    keywords: [
-      'cozy',
-      'relax',
-      'fire',
-      'snow',
-      'rain',
-      'breathe',
-      'meditation',
-    ],
-  });
-
   const [mode, setMode] = useState('fireplace'); // fireplace, breathe, snow, rain
   const [isMuted, setIsMuted] = useState(true);
   const audioCtxRef = useRef(null);
@@ -290,6 +276,19 @@ const CozyAppPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-gray-100 flex flex-col transition-colors duration-500">
+      <Seo
+        title="Cozy Corner | Fezcodex"
+        description="A place to relax, watch a fire, snow, rain, or just breathe."
+        keywords={[
+          'cozy',
+          'relax',
+          'fire',
+          'snow',
+          'rain',
+          'breathe',
+          'meditation',
+        ]}
+      />
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col relative z-10 max-w-4xl">
         {/* Header */}
         <div className="flex items-center mb-8 justify-between">

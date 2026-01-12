@@ -5,7 +5,7 @@ import { fetchGraphData } from '../utils/graphDataManager';
 import Loading from '../components/Loading';
 import { ArrowLeftIcon, InfoIcon } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 
 const KnowledgeGraphPage = () => {
   const [graphData, setGraphData] = useState({ nodes: [], links: [] });
@@ -13,12 +13,6 @@ const KnowledgeGraphPage = () => {
   const [hoverNode, setHoverNode] = useState(null);
   const fgRef = useRef();
   const navigate = useNavigate();
-
-  useSeo({
-    title: 'Fezcodex | Neural Net',
-    description: 'A 3D visualization of the Fezcodex knowledge base.',
-    keywords: ['graph', '3d', 'visualization', 'network', 'fezcodex'],
-  });
 
   useEffect(() => {
     const loadData = async () => {
@@ -60,6 +54,11 @@ const KnowledgeGraphPage = () => {
 
   return (
     <div className="relative w-full h-screen bg-[#050505] overflow-hidden">
+        <Seo
+          title="Fezcodex | Neural Net"
+          description="A 3D visualization of the Fezcodex knowledge base."
+          keywords={['graph', '3d', 'visualization', 'network', 'fezcodex']}
+        />
         {/* UI Overlay */}
         <div className="absolute top-6 left-6 z-50 pointer-events-none">
              <Link

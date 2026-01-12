@@ -9,7 +9,7 @@ import {
   ArrowsOutSimple,
   ClipboardTextIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
@@ -98,13 +98,6 @@ const TerminalBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const [modalImageSrc, setModalImageSrc] = useState(null);
-
-  useSeo({
-    title: post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : null,
-    description: post ? post.body.substring(0, 150) : null,
-    image: post?.attributes?.ogImage || post?.attributes?.image,
-    keywords: post?.attributes?.tags,
-  });
 
   useEffect(() => {
     setHasTrackedRead(false);
@@ -326,7 +319,12 @@ const TerminalBlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-orange-500 font-mono overflow-y-auto custom-scrollbar-terminal relative">
-
+      <Seo
+        title={post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : null}
+        description={post ? post.body.substring(0, 150) : null}
+        image={post?.attributes?.ogImage || post?.attributes?.image}
+        keywords={post?.attributes?.tags}
+      />
       <style>{`
         body { background-color: black; }
       `}</style>

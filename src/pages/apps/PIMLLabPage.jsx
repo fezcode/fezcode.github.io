@@ -15,7 +15,7 @@ import {
   KanbanIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import ProjectCard from '../../components/ProjectCard';
 import LogCard from '../../components/LogCard';
@@ -61,12 +61,6 @@ const PIMLLabPage = () => {
   const [input, setInput] = useState(TEMPLATES.project);
   const [parsedData, setParsedData] = useState(null);
   const [error, setError] = useState(null);
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Real-time PIML playground. Write custom markup and see it rendered as Fezcodex components.',
-    keywords: ['PIML', 'playground', 'editor', 'markup', 'react', 'fezcodex'],
-  });
 
   useEffect(() => {
     try {
@@ -137,6 +131,11 @@ const PIMLLabPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans flex flex-col">
+      <Seo
+        title="PIML Lab | Fezcodex"
+        description="Real-time PIML playground. Write custom markup and see it rendered as Fezcodex components."
+        keywords={['PIML', 'playground', 'editor', 'markup', 'react', 'fezcodex']}
+      />
       <div className="mx-auto max-w-7xl w-full px-6 py-12 md:px-12 flex-grow flex flex-col">
         <header className="mb-12">
           <Link to="/apps" className="group mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">

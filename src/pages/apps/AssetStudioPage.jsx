@@ -14,7 +14,7 @@ import {
   TrashIcon,
   DownloadSimpleIcon
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import CustomSlider from '../../components/CustomSlider';
@@ -22,12 +22,6 @@ import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const AssetStudioPage = () => {
   const appName = 'Asset Studio';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Convert images into optimized website assets with custom resizing and scaling options. Bulk processing supported.',
-    keywords: ['Fezcodex', 'image converter', 'webp', 'favicon generator', 'og image', 'image resizer', 'image scaler', 'bulk image processing'],
-  });
 
   const { addToast } = useToast();
   const [images, setImages] = useState([]);
@@ -177,6 +171,11 @@ const AssetStudioPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title={`${appName} | Fezcodex`}
+        description="Convert images into optimized website assets with custom resizing and scaling options. Bulk processing supported."
+        keywords={['Fezcodex', 'image converter', 'webp', 'favicon generator', 'og image', 'image resizer', 'image scaler', 'bulk image processing']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

@@ -6,26 +6,12 @@ import {
   InfoIcon,
   ArrowsLeftRightIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import CustomDropdown from '../../components/CustomDropdown';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const CssUnitConverterPage = () => {
-  const appName = 'Unit Converter';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Bilateral translation layer for CSS length units.',
-    keywords: [
-      'Fezcodex',
-      'CSS unit converter',
-      'px to rem',
-      'em to px',
-      'vw to px',
-    ],
-  });
-
   const [inputValue, setInputValue] = useState('');
   const [inputUnit, setInputUnit] = useState('px');
   const [basePx, setBasePx] = useState(16);
@@ -75,6 +61,17 @@ const CssUnitConverterPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Unit Converter | Fezcodex"
+        description="Bilateral translation layer for CSS length units."
+        keywords={[
+          'Fezcodex',
+          'CSS unit converter',
+          'px to rem',
+          'em to px',
+          'vw to px',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

@@ -9,7 +9,7 @@ import {
   GearSixIcon,
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import Dice from '../../components/Dice';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -18,12 +18,6 @@ import CustomDropdown from '../../components/CustomDropdown';
 
 const DiceRollerPage = () => {
   const appName = 'Dice Roller';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations in a brutalist workspace.',
-    keywords: ['Fezcodex', 'dice roller', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100', 'games', 'rpg', 'brutalist'],
-  });
 
   const {addToast} = useContext(ToastContext);
   const [diceType, setDiceType] = useState(6);
@@ -64,6 +58,11 @@ const DiceRollerPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Dice Roller | Fezcodex"
+        description="Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations in a brutalist workspace."
+        keywords={['Fezcodex', 'dice roller', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100', 'games', 'rpg', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

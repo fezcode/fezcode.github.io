@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, BugIcon, ArrowsClockwiseIcon, TargetIcon } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -11,12 +11,6 @@ const GAME_DURATION = 30;
 
 const WhackABugPage = () => {
   const appName = 'Debugger';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Protocol for real-time bug remediation and latency testing.',
-    keywords: ['Fezcodex', 'whack a bug', 'game', 'reflexes', 'fun'],
-  });
 
   const [score, setScore] = useState(0);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
@@ -98,6 +92,11 @@ const WhackABugPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Debugger | Fezcodex"
+        description="Protocol for real-time bug remediation and latency testing."
+        keywords={['Fezcodex', 'whack a bug', 'game', 'reflexes', 'fun']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

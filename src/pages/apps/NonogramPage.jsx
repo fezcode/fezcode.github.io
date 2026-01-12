@@ -7,7 +7,7 @@ import {
   LightbulbIcon,
   ShapesIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { ToastContext } from '../../context/ToastContext';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -240,13 +240,6 @@ const generateClues = (puzzle) => {
 const NonogramPage = () => {
   const appName = 'Nonogram';
 
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Solve complex picture logic puzzles using numerical identifiers.',
-    keywords: ['Fezcodex', 'nonogram', 'puzzle', 'logic', 'game'],
-  });
-
   const { addToast } = useContext(ToastContext);
   const [solvedPuzzle, setSolvedPuzzle] = useState([]);
   const [playerGrid, setPlayerGrid] = useState([]);
@@ -314,6 +307,11 @@ const NonogramPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Nonogram | Fezcodex"
+        description="Solve complex picture logic puzzles using numerical identifiers."
+        keywords={['Fezcodex', 'nonogram', 'puzzle', 'logic', 'game']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

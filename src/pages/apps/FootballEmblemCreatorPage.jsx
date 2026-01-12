@@ -59,19 +59,13 @@ import {
   CornersOutIcon,
 } from '@phosphor-icons/react';
 import CustomDropdown from '../../components/CustomDropdown';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
 
 const FootballEmblemCreatorPage = () => {
   const appName = 'Emblem Creator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Create your own custom football team emblem in a high-contrast brutalist environment.',
-    keywords: ['football', 'emblem', 'logo', 'creator', 'generator', 'soccer', 'brutalist'],
-  });
 
   const {addToast} = useContext(ToastContext);
   const svgRef = useRef(null);
@@ -233,6 +227,11 @@ const FootballEmblemCreatorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Emblem Creator | Fezcodex"
+        description="Create your own custom football team emblem in a high-contrast brutalist environment."
+        keywords={['football', 'emblem', 'logo', 'creator', 'generator', 'soccer', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

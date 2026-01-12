@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import piml from 'piml';
 import { DndContext } from '../../context/DndContext';
 import DndAuthorCard from '../../components/dnd/DndAuthorCard';
@@ -15,12 +15,6 @@ function DndAuthorsPage() {
   const [books, setBooks] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const { unlockAchievement } = useAchievements();
-
-  useSeo({
-    title: 'Authors | From Serfs and Frauds',
-    description: 'Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds.',
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'authors'],
-  });
 
   useEffect(() => {
     unlockAchievement('author_aficionado');
@@ -73,6 +67,11 @@ function DndAuthorsPage() {
 
   return (
     <DndLayout>
+      <Seo
+        title="Authors | From Serfs and Frauds"
+        description="Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds."
+        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'authors']}
+      />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">

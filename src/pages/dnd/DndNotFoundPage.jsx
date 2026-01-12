@@ -1,18 +1,17 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import DndLayout from '../../components/dnd/DndLayout';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { WarningCircle } from '@phosphor-icons/react';
 
 function DndNotFoundPage() {
-  useSeo({
-    title: '404 - Lost in the Dungeon! | Fezcodex',
-    description: 'The page you are looking for does not exist in this D&D realm.',
-    keywords: ['Fezcodex', 'd&d', 'dnd', '404', 'not found', 'lost', 'dungeon'],
-  });
-
   return (
     <DndLayout>
+      <Seo
+        title="404 - Lost in the Dungeon! | Fezcodex"
+        description="The page you are looking for does not exist in this D&D realm."
+        keywords={['Fezcodex', 'd&d', 'dnd', '404', 'not found', 'lost', 'dungeon']}
+      />
       <div className="max-w-4xl mx-auto px-6 py-32 text-center relative">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}

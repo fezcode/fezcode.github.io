@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PostItem from '../components/PostItem';
 import { ArrowLeft, Clock, Tag, BookOpen } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { fetchAllBlogPosts } from '../utils/dataUtils';
 import GenerativeArt from '../components/GenerativeArt';
 
@@ -13,12 +13,6 @@ const SeriesPage = () => {
   const [seriesTitle, setSeriesTitle] = useState('');
   const [loading, setLoading] = useState(true);
   const [activePost, setActivePost] = useState(null);
-
-  useSeo({
-    title: `${seriesTitle} | Fezcodex Series`,
-    description: `Explore the sequential entries in the "${seriesTitle}" series.`,
-    keywords: ['Fezcodex', 'blog', 'series', seriesTitle],
-  });
 
   useEffect(() => {
     const fetchSeriesPosts = async () => {
@@ -73,6 +67,11 @@ const SeriesPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
+      <Seo
+        title={`${seriesTitle} | Fezcodex Series`}
+        description={`Explore the sequential entries in the "${seriesTitle}" series.`}
+        keywords={['Fezcodex', 'blog', 'series', seriesTitle]}
+      />
       {/* Dynamic Background (Static or Active Post Blur) */}
       <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
         {activePost &&

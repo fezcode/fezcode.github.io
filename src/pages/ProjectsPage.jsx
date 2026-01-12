@@ -4,18 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import GenerativeArt from '../components/GenerativeArt';
 import { useProjects } from '../utils/projectParser';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { ArrowLeftIcon, CpuIcon } from '@phosphor-icons/react';
 import { useAchievements } from '../context/AchievementContext';
 
 const ProjectsPage = () => {
-  useSeo({
-    title: 'Archive | Fezcodex',
-    description:
-      'A curated collection of digital experiments and deployed systems.',
-    keywords: ['Fezcodex', 'projects', 'portfolio', 'developer', 'editorial'],
-  });
-
   const { projects, loading, error } = useProjects();
   const { unlockAchievement } = useAchievements();
   const [activeProject, setActiveProject] = useState(null);
@@ -59,6 +52,11 @@ const ProjectsPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
+      <Seo
+        title="Archive | Fezcodex"
+        description="A curated collection of digital experiments and deployed systems."
+        keywords={['Fezcodex', 'projects', 'portfolio', 'developer', 'editorial']}
+      />
       {/* Dynamic Background (Static or Active Project Blur) */}
       <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
         {activeProject &&

@@ -11,7 +11,7 @@ import {
 import PostTile from '../components/PostTile';
 import ProjectTile from '../components/ProjectTile';
 import { useProjects } from '../utils/projectParser';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import usePersistentState from '../hooks/usePersistentState';
 import { useSiteConfig } from '../context/SiteConfigContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -195,12 +195,6 @@ const SectionHeader = ({ num, title, link, linkText }) => (
 );
 
 const HomePage = () => {
-  useSeo({
-    title: 'Fezcodex | Home',
-    description: 'A digital garden of code, thoughts, and experiments.',
-    keywords: ['Fezcodex', 'blog', 'portfolio', 'developer', 'brutalist'],
-  });
-
   const [posts, setPosts] = useState([]);
   const [loadingPosts, setLoadingPosts] = useState(true);
   const { projects: pinnedProjects, loading: loadingProjects } =
@@ -351,6 +345,11 @@ const HomePage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black relative">
+      <Seo
+        title="Fezcodex | Home"
+        description="A digital garden of code, thoughts, and experiments."
+        keywords={['Fezcodex', 'blog', 'portfolio', 'developer', 'brutalist']}
+      />
       <div
         className="pointer-events-none fixed inset-0 z-50 opacity-[0.15] mix-blend-overlay"
         style={{ backgroundImage: NOISE_BG }}

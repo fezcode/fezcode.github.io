@@ -3,17 +3,11 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowLeftIcon, XIcon, CircleIcon, ArrowsClockwiseIcon, CpuIcon, UserIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 
 const TicTacToePage = () => {
   const appName = 'Tic Tac Toe';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Protocol for strategic grid alignment. Challenge the neural AI in a classic logical confrontation.',
-    keywords: ['Fezcodex', 'tic tac toe', 'game', 'ai game', 'strategy'],
-  });
 
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
@@ -107,6 +101,11 @@ const TicTacToePage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Tic Tac Toe | Fezcodex"
+        description="Protocol for strategic grid alignment. Challenge the neural AI in a classic logical confrontation."
+        keywords={['Fezcodex', 'tic tac toe', 'game', 'ai game', 'strategy']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

@@ -13,7 +13,7 @@ import {
   CameraIcon,
   IdentificationBadgeIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import CustomSlider from '../../components/CustomSlider';
@@ -52,12 +52,6 @@ const initialInputs = {
 
 const AlbumCoverPage = () => {
   const appName = 'Album Constructor';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'The ultimate high-fidelity album cover generation protocol.',
-    keywords: ['album cover', 'generator', 'design tool', 'music art', 'fezcodex'],
-  });
 
   const { addToast } = useToast();
   const canvasRef = useRef(null);
@@ -393,6 +387,11 @@ const AlbumCoverPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title={`${appName} | Fezcodex`}
+        description="The ultimate high-fidelity album cover generation protocol."
+        keywords={['album cover', 'generator', 'design tool', 'music art', 'fezcodex']}
+      />
       <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12 relative z-10">
         <header className="mb-24">
           <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">

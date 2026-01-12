@@ -20,7 +20,7 @@ import { calculateReadingTime } from '../utils/readingTime';
 import MarkdownLink from '../components/MarkdownLink';
 import ImageModal from '../components/ImageModal';
 import CodeModal from '../components/CodeModal';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { useToast } from '../hooks/useToast';
 import { fetchAllBlogPosts } from '../utils/dataUtils';
 
@@ -98,13 +98,6 @@ const DokumentBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const { addToast } = useToast();
-
-  useSeo({
-    title: post ? `${post.attributes.title} | Fezcodex` : null,
-    description: post ? post.body.substring(0, 150) : null,
-    image: post?.attributes?.ogImage || post?.attributes?.image,
-    keywords: post?.attributes?.tags,
-  });
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -254,6 +247,12 @@ const DokumentBlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-[#f3f3f3] text-[#111] font-sans relative overflow-x-hidden selection:bg-emerald-500/20">
+      <Seo
+        title={post ? `${post.attributes.title} | Fezcodex` : null}
+        description={post ? post.body.substring(0, 150) : null}
+        image={post?.attributes?.ogImage || post?.attributes?.image}
+        keywords={post?.attributes?.tags}
+      />
       <GrainOverlay opacity={0.4} />
 
       <div className="fixed top-0 left-0 w-full h-1 bg-black/5 z-50">

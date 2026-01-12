@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon } from '@phosphor-icons/react'; // Using CubeIcon as a placeholder icon for now
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const MAP_WIDTH = 20;
@@ -20,16 +20,6 @@ const POSSIBLE_MOVES = [
 ];
 
 function RoguelikeGamePage() {
-  useSeo({
-    ogTitle: 'Roguelike Game | Fezcodex',
-    ogDescription:
-      'Explore a procedurally generated dungeon in this browser-based roguelike.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Roguelike Game | Fezcodex',
-    twitterDescription:
-      'Explore a procedurally generated dungeon in this browser-based roguelike.',
-  });
-
   const [gameMap, setGameMap] = useState([]);
   const [playerPosition, setPlayerPosition] = useState(null);
   const [enemyPositions, setEnemyPositions] = useState([]);
@@ -285,6 +275,11 @@ function RoguelikeGamePage() {
 
   return (
     <div className="flex flex-col items-center justify-center py-16 sm:py-24 text-gray-300">
+      <Seo
+        title="Roguelike Game | Fezcodex"
+        description="Explore a procedurally generated dungeon in this browser-based roguelike."
+        keywords={['roguelike', 'game', 'dungeon', 'procedural', 'fezcodex']}
+      />
       <Link
         to="/apps"
         className="group text-primary-400 hover:underline flex items-center justify-center gap-2 text-lg mb-4"

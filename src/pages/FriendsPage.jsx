@@ -8,7 +8,7 @@ import {
   Users,
 } from '@phosphor-icons/react';
 import piml from 'piml';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import BrutalistModal from '../components/BrutalistModal';
 import TransmissionTile from '../components/TransmissionTile';
@@ -18,11 +18,6 @@ const FriendsPage = () => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-
-  useSeo({
-    title: 'Friends of the Show | Fezcodex',
-    description: 'A curated list of signals, portals, and archives from the digital garden.',
-  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,6 +58,10 @@ const FriendsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#0c0a09] text-white p-8 md:p-24 selection:bg-emerald-500/30 relative overflow-x-hidden">
+      <Seo
+        title="Friends of the Show | Fezcodex"
+        description="A curated list of signals, portals, and archives from the digital garden."
+      />
       {/* Structural Grid Background */}
       <div className="fixed inset-0 opacity-[0.05] pointer-events-none"
            style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '100px 100px' }}

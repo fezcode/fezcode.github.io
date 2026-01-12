@@ -7,7 +7,7 @@ import {
   LightningIcon,
   PowerIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BrutalistDialog from '../../components/BrutalistDialog';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -22,15 +22,8 @@ const GATES_META = {
 };
 
 const LogicArchitectPage = () => {
-  const appName = 'Logic Architect';
   const { addToast } = useToast();
   const [isClearDialogOpen, setIsClearDialogOpen] = useState(false);
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Construct complex digital circuits and simulate logical pathways in real-time.',
-    keywords: ['logic gates', 'circuit simulator', 'digital logic', 'brutalist', 'engineering'],
-  });
 
   const [nodes, setNodes] = useState([
     { id: 'node-1', type: 'input', x: 100, y: 150, state: false },
@@ -142,6 +135,11 @@ const LogicArchitectPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-mono selection:bg-emerald-500/30 overflow-hidden flex flex-col">
+      <Seo
+        title="Logic Architect | Fezcodex"
+        description="Construct complex digital circuits and simulate logical pathways in real-time."
+        keywords={['logic gates', 'circuit simulator', 'digital logic', 'brutalist', 'engineering']}
+      />
       <div className="p-6 md:p-12 border-b border-white/10 flex justify-between items-center bg-black/50 backdrop-blur-md z-50">
         <div className="flex items-center gap-8">
           <Link to="/apps" className="text-gray-500 hover:text-white transition-colors">

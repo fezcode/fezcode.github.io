@@ -7,7 +7,7 @@ import {
   GearIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import CustomDropdown from '../../components/CustomDropdown';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -24,19 +24,6 @@ const generateRandomBoolean = () => Math.random() > 0.5;
 
 function JSONGeneratorPage() {
   const appName = 'JSON Generator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for generating synthetic data structures and mapping complex JSON schemas.',
-    keywords: [
-      'Fezcodex',
-      'JSON generator',
-      'random JSON',
-      'JSON tool',
-      'developer tool',
-    ],
-  });
 
   const { addToast } = useToast();
   const [jsonOutput, setJsonOutput] = useState('{}');
@@ -158,6 +145,17 @@ function JSONGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="JSON Generator | Fezcodex"
+        description="Protocol for generating synthetic data structures and mapping complex JSON schemas."
+        keywords={[
+          'Fezcodex',
+          'JSON generator',
+          'random JSON',
+          'JSON tool',
+          'developer tool',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

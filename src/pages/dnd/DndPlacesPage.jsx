@@ -3,17 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import piml from 'piml';
 import { MapTrifold, X, MapPin } from '@phosphor-icons/react';
 
 function DndPlacesPage() {
-  useSeo({
-    title: 'The Atlas | From Serfs and Frauds',
-    description: "Explore the locations and landmarks of the Dungeons & Dragons campaign, From Serfs and Frauds.",
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'places', 'locations', 'maps'],
-  });
-
   const { setBreadcrumbs } = useContext(DndContext);
   const [places, setPlaces] = useState([]);
   const [selectedPlace, setSelectedPlace] = useState(null);
@@ -67,6 +61,11 @@ function DndPlacesPage() {
 
   return (
     <DndLayout>
+      <Seo
+        title="The Atlas | From Serfs and Frauds"
+        description="Explore the locations and landmarks of the Dungeons & Dragons campaign, From Serfs and Frauds."
+        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'places', 'locations', 'maps']}
+      />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">

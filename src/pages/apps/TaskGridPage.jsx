@@ -11,7 +11,7 @@ import {
   DatabaseIcon,
   WarningCircleIcon
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import usePersistentState from '../../hooks/usePersistentState';
@@ -20,12 +20,6 @@ import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const TaskGridPage = () => {
   const appName = 'Task Grid';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Minimal project mapper. Track your daily objectives within a high-contrast structural grid.',
-    keywords: ['Fezcodex', 'task manager', 'to-do list', 'minimalist planner', 'grid tasks'],
-  });
 
   const { addToast } = useToast();
   const [tasks, setTasks] = usePersistentState('task-grid-data', []);
@@ -69,6 +63,11 @@ const TaskGridPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Task Grid | Fezcodex"
+        description="Minimal project mapper. Track your daily objectives within a high-contrast structural grid."
+        keywords={['Fezcodex', 'task manager', 'to-do list', 'minimalist planner', 'grid tasks']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

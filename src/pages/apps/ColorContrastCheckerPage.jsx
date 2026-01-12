@@ -6,7 +6,7 @@ import {
   XCircleIcon,
   PaletteIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -34,21 +34,6 @@ const getContrastRatio = (rgb1, rgb2) => {
 };
 
 const ColorContrastCheckerPage = () => {
-  const appName = 'Contrast Checker';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Verify color accessibility and WCAG compliance for digital interfaces.',
-    keywords: [
-      'Fezcodex',
-      'color contrast',
-      'accessibility',
-      'WCAG',
-      'color checker',
-    ],
-  });
-
   const [foregroundColor, setForegroundColor] = useState('#FFFFFF');
   const [backgroundColor, setBackgroundColor] = useState('#050505');
   const [contrastRatio, setContrastRatio] = useState(0);
@@ -76,6 +61,17 @@ const ColorContrastCheckerPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Contrast Checker | Fezcodex"
+        description="Verify color accessibility and WCAG compliance for digital interfaces."
+        keywords={[
+          'Fezcodex',
+          'color contrast',
+          'accessibility',
+          'WCAG',
+          'color checker',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

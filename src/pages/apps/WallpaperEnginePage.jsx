@@ -6,7 +6,7 @@ import {
 import {Link} from 'react-router-dom';
 import CustomSlider from '../../components/CustomSlider';
 import CustomDropdown from '../../components/CustomDropdown';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {useToast} from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -90,11 +90,6 @@ const RESOLUTIONS = [{label: 'Full HD (1080p)', value: '1080', width: 1920, heig
 },];
 
 const WallpaperEnginePage = () => {
-  useSeo({
-    title: 'Procedural Wallpaper Engine | Fezcodex',
-    description: 'Construct high-resolution procedural wallpapers using generative algorithms and technical protocols.',
-  });
-
   const {addToast} = useToast();
   const canvasRef = useRef(null);
 
@@ -1287,6 +1282,11 @@ const WallpaperEnginePage = () => {
 
   return (<div
       className="min-h-screen bg-[#050505] text-white flex flex-col lg:flex-row overflow-hidden font-mono selection:bg-emerald-500/30">
+      <Seo
+        title="Procedural Wallpaper Engine | Fezcodex"
+        description="Construct high-resolution procedural wallpapers using generative algorithms and technical protocols."
+        keywords={['wallpaper', 'generator', 'procedural', 'generative art', 'fezcodex']}
+      />
       <aside
         className="w-full lg:w-80 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col bg-[#080808] z-20">
         <div className="p-6 border-b border-white/10">

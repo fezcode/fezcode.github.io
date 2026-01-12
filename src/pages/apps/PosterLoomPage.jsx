@@ -10,7 +10,7 @@ import {
   DownloadSimple,
   PaintBrush,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 
 const LAYOUTS = [
@@ -33,12 +33,6 @@ const COLORS = [
 
 const PosterLoomPage = () => {
   const appName = 'Poster Loom';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Construct high-impact brutalist posters with generative shapes and technical typography.',
-    keywords: ['Fezcodex', 'poster generator', 'brutalist design', 'generative art', 'typography tool'],
-  });
 
   const { addToast } = useToast();
   const canvasRef = useRef(null);
@@ -248,6 +242,11 @@ const PosterLoomPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Poster Loom | Fezcodex"
+        description="Construct high-impact brutalist posters with generative shapes and technical typography."
+        keywords={['Fezcodex', 'poster generator', 'brutalist design', 'generative art', 'typography tool']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

@@ -8,7 +8,7 @@ import {
   CopyIcon,
   CheckIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -91,21 +91,6 @@ const REVERSE_SHORTHAND_MAP = Object.fromEntries(
 );
 
 const FezGlyphPage = () => {
-  const appName = 'FezGlyph';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Transform text into the cryptic Fezcodex symbolic cipher.',
-    keywords: [
-      'Fezcodex',
-      'fezglyph',
-      'symbols',
-      'cipher',
-      'converter',
-      'runes',
-    ],
-  });
-
   const { addToast } = useToast();
   const [text, setText] = useState('');
   const [shorthand, setShorthand] = useState('');
@@ -165,6 +150,18 @@ const FezGlyphPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="FezGlyph | Fezcodex"
+        description="Transform text into the cryptic Fezcodex symbolic cipher."
+        keywords={[
+          'Fezcodex',
+          'fezglyph',
+          'symbols',
+          'cipher',
+          'converter',
+          'runes',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

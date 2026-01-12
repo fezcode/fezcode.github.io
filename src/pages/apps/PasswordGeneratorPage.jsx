@@ -8,27 +8,11 @@ import {
   ShieldCheckIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const PasswordGeneratorPage = () => {
-  const appName = 'Access Key Gen';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for generating high-entropy character sequences for secure system access.',
-    keywords: [
-      'Fezcodex',
-      'password generator',
-      'random password',
-      'strong password',
-      'security',
-      'password tool',
-    ],
-  });
-
   const { addToast } = useToast();
 
   const [password, setPassword] = useState('');
@@ -81,6 +65,18 @@ const PasswordGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Access Key Gen | Fezcodex"
+        description="Protocol for generating high-entropy character sequences for secure system access."
+        keywords={[
+          'Fezcodex',
+          'password generator',
+          'random password',
+          'strong password',
+          'security',
+          'password tool',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

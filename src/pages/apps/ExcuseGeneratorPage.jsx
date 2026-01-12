@@ -10,7 +10,7 @@ import {
   ClipboardIcon,
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import CustomDropdown from '../../components/CustomDropdown';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -112,12 +112,6 @@ const excuses = {
 const ExcuseGeneratorPage = () => {
   const appName = 'Excuse Generator';
 
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Generate funny and absurd excuses for any situation in a brutalist workspace.',
-    keywords: ['Fezcodex', 'excuse generator', 'funny excuses', 'absurd excuses', 'humor', 'brutalist'],
-  });
-
   const {addToast} = useContext(ToastContext);
   const [currentExcuse, setCurrentExcuse] = useState('SYSTEM_IDLE: Awaiting generation sequence.');
   const [selectedCategory, setSelectedCategory] = useState('general');
@@ -148,6 +142,11 @@ const ExcuseGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Excuse Generator | Fezcodex"
+        description="Generate funny and absurd excuses for any situation in a brutalist workspace."
+        keywords={['Fezcodex', 'excuse generator', 'funny excuses', 'absurd excuses', 'humor', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

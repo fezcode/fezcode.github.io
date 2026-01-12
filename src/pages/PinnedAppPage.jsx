@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Star, Hash } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { appIcons } from '../utils/appIcons';
 import GenerativeArt from '../components/GenerativeArt';
 
@@ -76,13 +76,6 @@ const PinnedAppCard = ({ app, index }) => {
 };
 
 const PinnedAppPage = () => {
-  useSeo({
-    title: 'Featured Apps | Fezcodex',
-    description:
-      'A curated selection of core tools and essential applications.',
-    keywords: ['pinned', 'apps', 'tools', 'featured', 'core'],
-  });
-
   const [pinnedApps, setPinnedApps] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -104,6 +97,11 @@ const PinnedAppPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
+      <Seo
+        title="Featured Apps | Fezcodex"
+        description="A curated selection of core tools and essential applications."
+        keywords={['pinned', 'apps', 'tools', 'featured', 'core']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20 text-center md:text-left">

@@ -12,7 +12,7 @@ import {
   KeyboardIcon,
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -33,12 +33,6 @@ const OBSTACLE_SPEED = 2;
 
 const SoccerPongPage = () => {
   const appName = 'Soccer Pong';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'A Pong-style game with a soccer twist. High-performance brutalist interface.',
-    keywords: ['Fezcodex', 'soccer pong', 'arcade game', 'pong', 'soccer', 'AI game', 'brutalist'],
-  });
 
   const {addToast} = useContext(ToastContext);
   const canvasRef = useRef(null);
@@ -251,6 +245,11 @@ const SoccerPongPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Soccer Pong | Fezcodex"
+        description="A Pong-style game with a soccer twist. High-performance brutalist interface."
+        keywords={['Fezcodex', 'soccer pong', 'arcade game', 'pong', 'soccer', 'AI game', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

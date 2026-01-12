@@ -1,16 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { WarningIcon, ArrowLeftIcon } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { useAchievements } from '../context/AchievementContext';
 
 const NotFoundPage = () => {
   const { unlockAchievement } = useAchievements();
-
-  useSeo({
-    title: '404 | DATA_NOT_FOUND',
-    description: 'System Error: The requested data segment could not be located.',
-  });
 
   useEffect(() => {
     const visits = parseInt(localStorage.getItem('wrongs') || '0', 10) + 1;
@@ -23,6 +18,10 @@ const NotFoundPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-mono flex flex-col items-center justify-center p-4 relative overflow-hidden">
+      <Seo
+        title="404 | DATA_NOT_FOUND"
+        description="System Error: The requested data segment could not be located."
+      />
       {/* Background Noise/Grid */}
       <div
         className="absolute inset-0 opacity-10 pointer-events-none"

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeftIcon, PlanetIcon, RocketIcon } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -22,17 +22,15 @@ const orbitalPeriods = {
 const GalacticAgePage = () => {
   const appName = 'Galactic Age';
 
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for orbital temporal mapping. Calculate your age relative to planetary cycles.',
-    keywords: ['Fezcodex', 'galactic age', 'age converter', 'planets', 'space'],
-  });
-
   const [earthAge, setEarthAge] = useState('');
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Galactic Age | Fezcodex"
+        description="Protocol for orbital temporal mapping. Calculate your age relative to planetary cycles."
+        keywords={['Fezcodex', 'galactic age', 'age converter', 'planets', 'space']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

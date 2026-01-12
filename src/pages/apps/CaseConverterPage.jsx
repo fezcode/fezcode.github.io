@@ -6,26 +6,12 @@ import {
   CodeIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import BrutalistOutputCard from '../../components/BrutalistOutputCard';
 
 function CaseConverterPage() {
-  const appName = 'Case Converter';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Transform text case into various structural formats.',
-    keywords: [
-      'Fezcodex',
-      'case converter',
-      'uppercase',
-      'lowercase',
-      'camelcase',
-    ],
-  });
-
   const [inputText, setInputText] = useState('');
   const { addToast } = useToast();
 
@@ -59,6 +45,17 @@ function CaseConverterPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Case Converter | Fezcodex"
+        description="Transform text case into various structural formats."
+        keywords={[
+          'Fezcodex',
+          'case converter',
+          'uppercase',
+          'lowercase',
+          'camelcase',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

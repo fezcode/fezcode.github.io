@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import '../../styles/notebook.css';
 import { CaretLeft, CaretRight } from '@phosphor-icons/react';
 import piml from 'piml';
+import Seo from '../../components/Seo';
 
 const Page = ({ content, pageNumber, title }) => {
   return (
@@ -126,6 +127,10 @@ const NotebookViewerPage = () => {
 
   return (
     <div className="notebook-container">
+      <Seo
+        title={notebook ? `${notebook.title} | Notebooks` : 'Notebook Viewer'}
+        description="A digital notebook viewer for personal thoughts and notes."
+      />
       <div className="book">
         {currentPage > 0 && (
           <div className="clickable-edge left" onClick={handlePrevPage}>

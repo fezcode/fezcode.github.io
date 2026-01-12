@@ -7,27 +7,12 @@ import {
   ShieldCheckIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function HashGeneratorPage() {
   const appName = 'Hash Engine';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for generating cryptographic digests and data integrity signatures.',
-    keywords: [
-      'Fezcodex',
-      'hash generator',
-      'SHA-1',
-      'SHA-256',
-      'SHA-512',
-      'cryptography',
-      'hashing',
-    ],
-  });
 
   const [inputText, setInputText] = useState('');
   const [hashes, setHashes] = useState({
@@ -73,6 +58,19 @@ function HashGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Hash Engine | Fezcodex"
+        description="Protocol for generating cryptographic digests and data integrity signatures."
+        keywords={[
+          'Fezcodex',
+          'hash generator',
+          'SHA-1',
+          'SHA-256',
+          'SHA-512',
+          'cryptography',
+          'hashing',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

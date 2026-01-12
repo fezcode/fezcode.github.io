@@ -9,19 +9,11 @@ import {
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function ColorPaletteGeneratorPage() {
-  const appName = 'Color Palette';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Generate harmonious color palettes for your design projects.',
-    keywords: ['Fezcodex', 'color palette', 'color generator', 'design tools'],
-  });
-
   const [palette, setPalette] = useState([]);
   const { addToast } = useToast();
 
@@ -77,6 +69,11 @@ function ColorPaletteGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Color Palette | Fezcodex"
+        description="Generate harmonious color palettes for your design projects."
+        keywords={['Fezcodex', 'color palette', 'color generator', 'design tools']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

@@ -8,26 +8,11 @@ import {
   ArrowsLeftRightIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function AsciiConverterPage() {
-  const appName = 'Binary / ASCII';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for mapping character sequences to ASCII and Binary representations.',
-    keywords: [
-      'Fezcodex',
-      'ASCII converter',
-      'text to ASCII',
-      'binary converter',
-      'text to binary',
-    ],
-  });
-
   const [inputText, setInputText] = useState('');
   const [asciiOutput, setAsciiOutput] = useState('');
   const [binaryOutput, setBinaryOutput] = useState('');
@@ -134,6 +119,17 @@ function AsciiConverterPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Binary / ASCII | Fezcodex"
+        description="Protocol for mapping character sequences to ASCII and Binary representations."
+        keywords={[
+          'Fezcodex',
+          'ASCII converter',
+          'text to ASCII',
+          'binary converter',
+          'text to binary',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

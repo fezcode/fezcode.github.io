@@ -7,24 +7,11 @@ import {
   CopySimpleIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function Base64ConverterPage() {
-  const appName = 'Base64';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Binary-to-text encoding and decoding protocol.',
-    keywords: [
-      'Fezcodex',
-      'Base64 converter',
-      'encode Base64',
-      'decode Base64',
-    ],
-  });
-
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const { addToast } = useToast();
@@ -78,6 +65,16 @@ function Base64ConverterPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Base64 | Fezcodex"
+        description="Binary-to-text encoding and decoding protocol."
+        keywords={[
+          'Fezcodex',
+          'Base64 converter',
+          'encode Base64',
+          'decode Base64',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

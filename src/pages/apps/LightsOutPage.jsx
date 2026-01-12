@@ -7,20 +7,13 @@ import {
   LightbulbFilamentIcon,
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { ToastContext } from '../../context/ToastContext';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const LightsOutPage = () => {
   const appName = 'Lights Out';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'A classic logic puzzle where you must deactivate all lighting nodes.',
-    keywords: ['Fezcodex', 'lights out', 'puzzle', 'logic', 'game'],
-  });
 
   const { addToast } = useContext(ToastContext);
   const GRID_SIZE = 5;
@@ -97,6 +90,11 @@ const LightsOutPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Lights Out | Fezcodex"
+        description="A classic logic puzzle where you must deactivate all lighting nodes."
+        keywords={['Fezcodex', 'lights out', 'puzzle', 'logic', 'game']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

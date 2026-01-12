@@ -8,7 +8,7 @@ import {
   AnchorIcon,
   ArrowsClockwiseIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
@@ -117,19 +117,6 @@ const piratePhrases = [
 const PirateTranslatorPage = () => {
   const appName = 'Pirate Gen';
 
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for semantic remapping. Convert standard data streams into maritime vernacular.',
-    keywords: [
-      'Fezcodex',
-      'pirate translator',
-      'pirate speak',
-      'fun',
-      'converter',
-    ],
-  });
-
   const { addToast } = useToast();
   const [inputText, setInputText] = useState('');
   const [translatedText, setTranslatedText] = useState('');
@@ -161,6 +148,17 @@ const PirateTranslatorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Pirate Gen | Fezcodex"
+        description="Protocol for semantic remapping. Convert standard data streams into maritime vernacular."
+        keywords={[
+          'Fezcodex',
+          'pirate translator',
+          'pirate speak',
+          'fun',
+          'converter',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

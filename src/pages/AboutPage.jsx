@@ -21,7 +21,7 @@ import ClassifiedDossier from './about-views/ClassifiedDossier';
 import Brutalist from './about-views/Brutalist';
 import SkillDeck from './about-views/SkillDeck';
 import { useAchievements } from '../context/AchievementContext';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
@@ -66,19 +66,6 @@ const AboutPage = () => {
   const { unlockAchievement } = useAchievements();
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
 
-  useSeo({
-    title: 'Fezcodex | About',
-    description: 'Learn more about the creator of Fezcodex.',
-    keywords: [
-      'Fezcodex',
-      'blog',
-      'portfolio',
-      'developer',
-      'software engineer',
-      'about',
-    ],
-  });
-
   useEffect(() => {
     unlockAchievement('curious_soul');
   }, [unlockAchievement]);
@@ -109,6 +96,18 @@ const AboutPage = () => {
 
   return (
     <div className="min-h-screen bg-black relative">
+      <Seo
+        title="Fezcodex | About"
+        description="Learn more about the creator of Fezcodex."
+        keywords={[
+          'Fezcodex',
+          'blog',
+          'portfolio',
+          'developer',
+          'software engineer',
+          'about',
+        ]}
+      />
       {/* Global Navigation */}
       <motion.div
         initial={{ opacity: 0, x: -20 }}

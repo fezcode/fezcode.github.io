@@ -5,17 +5,11 @@ import {
   DownloadSimple,
   ArrowsClockwise,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const FractalFloraPage = () => {
-  useSeo({
-    title: 'Fractal Flora | Fezcodex',
-    description: 'Grow digital trees using recursive mathematics.',
-    keywords: ['fractal', 'tree', 'recursive', 'generative art', 'math'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -150,6 +144,11 @@ const FractalFloraPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Seo
+        title="Fractal Flora | Fezcodex"
+        description="Grow digital trees using recursive mathematics."
+        keywords={['fractal', 'tree', 'recursive', 'generative art', 'math']}
+      />
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-6xl">
         {/* Header */}
         <Link

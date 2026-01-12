@@ -5,7 +5,7 @@ import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { ArrowLeft, ArrowsOutSimple } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import MarkdownLink from '../components/MarkdownLink';
 import CodeModal from '../components/CodeModal';
@@ -43,13 +43,6 @@ const TerminalGreenBlogPostPage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
-
-  useSeo({
-    title: post ? `${post.attributes.title.toUpperCase()} | TERM` : null,
-    description: post ? post.body.substring(0, 150) : null,
-    image: post?.attributes?.ogImage || post?.attributes?.image,
-    keywords: post?.attributes?.tags,
-  });
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -171,6 +164,12 @@ const TerminalGreenBlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-black text-emerald-500 font-mono relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">
+      <Seo
+        title={post ? `${post.attributes.title.toUpperCase()} | TERM` : null}
+        description={post ? post.body.substring(0, 150) : null}
+        image={post?.attributes?.ogImage || post?.attributes?.image}
+        keywords={post?.attributes?.tags}
+      />
       <style>{`
         .custom-scrollbar-terminal::-webkit-scrollbar { width: 4px; }
         .custom-scrollbar-terminal::-webkit-scrollbar-track { background: #000; }

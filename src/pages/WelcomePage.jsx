@@ -14,7 +14,7 @@ import { useVisualSettings } from '../context/VisualSettingsContext';
 import { useAchievements } from '../context/AchievementContext';
 import CustomToggle from '../components/CustomToggle';
 import CustomDropdown from '../components/CustomDropdown';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
@@ -40,11 +40,6 @@ const OptionCard = ({ title, icon: Icon, children, delay }) => (
 );
 
 const WelcomePage = () => {
-  useSeo({
-    title: 'Initialize | Fezcodex',
-    description: 'Setup your Fezcodex experience.',
-  });
-
   const navigate = useNavigate();
   const [isLaunching, setIsLaunching] = useState(false);
 
@@ -68,6 +63,10 @@ const WelcomePage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans relative overflow-x-hidden">
+      <Seo
+        title="Initialize | Fezcodex"
+        description="Setup your Fezcodex experience."
+      />
       <div className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay" style={{ backgroundImage: NOISE_BG }} />
 
       {/* Hero Section */}

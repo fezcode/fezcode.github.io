@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndLayout from '../../components/dnd/DndLayout';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import piml from 'piml';
 import { Scroll, BookmarkSimple } from '@phosphor-icons/react';
 
@@ -12,12 +12,6 @@ function DndBookPage() {
   const [book, setBook] = useState(null);
   const [pageTitle, setPageTitle] = useState('Loading Book...');
   const { setBreadcrumbs, language } = useContext(DndContext);
-
-  useSeo({
-    title: `${pageTitle} | From Serfs and Frauds`,
-    description: `Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`,
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'book', pageTitle],
-  });
 
   useEffect(() => {
     const fetchBookData = async () => {
@@ -52,6 +46,11 @@ function DndBookPage() {
 
   return (
     <DndLayout>
+      <Seo
+        title={`${pageTitle} | From Serfs and Frauds`}
+        description={`Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`}
+        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'book', pageTitle]}
+      />
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
         <header className="text-center mb-12 md:mb-24">
           <div className="flex justify-center mb-6">

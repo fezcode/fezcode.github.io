@@ -12,19 +12,13 @@ import {
   DownloadSimpleIcon
 } from '@phosphor-icons/react';
 import domtoimage from 'dom-to-image-more';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const BOARD_TEXTURE = `radial-gradient(#d2a679 1px, transparent 1px), radial-gradient(#d2a679 1px, transparent 1px)`;
 
 const ConspiracyBoardPage = () => {
-  useSeo({
-    title: 'The Conspiracy Board | Fezcodex',
-    description: 'Connect the dots, find the truth. A digital corkboard for your wildest theories.',
-    keywords: ['conspiracy', 'detective', 'board', 'mindmap', 'red string', 'theory'],
-  });
-
   const [items, setItems] = useState([
     { id: 'header-note', type: 'header', text: 'PROJECT: UNVEILING THE HIDDEN ARCHITECTURE', x: 200, y: 40, rotation: -2 },
     { id: '1', type: 'note', text: 'THEY ARE WATCHING', x: 100, y: 150, color: '#fff9c4', rotation: -5 },
@@ -144,6 +138,11 @@ const ConspiracyBoardPage = () => {
       onPointerUp={handlePointerUp}
       onPointerLeave={handlePointerUp}
     >
+      <Seo
+        title="The Conspiracy Board | Fezcodex"
+        description="Connect the dots, find the truth. A digital corkboard for your wildest theories."
+        keywords={['conspiracy', 'detective', 'board', 'mindmap', 'red string', 'theory']}
+      />
       <div className="absolute inset-0 bg-black/10 pointer-events-none shadow-inner" />
 
       <div className="toolbar absolute top-6 left-6 z-50 flex gap-4 pointer-events-auto transition-opacity duration-300">

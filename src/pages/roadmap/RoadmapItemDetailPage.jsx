@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {
   ArrowLeft,
   CalendarBlank,
@@ -57,16 +57,6 @@ const RoadmapItemDetailPage = () => {
   const { id } = useParams();
   const [roadmapItem, setRoadmapItem] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-
-  useSeo({
-    title: roadmapItem
-      ? `${roadmapItem.title} | Roadmap`
-      : 'Roadmap Item | Fezcodex',
-    description: roadmapItem
-      ? roadmapItem.description
-      : 'Details of a roadmap item.',
-    keywords: ['Fezcodex', 'roadmap', 'item', id],
-  });
 
   useEffect(() => {
     const fetchRoadmapItem = async () => {
@@ -127,6 +117,15 @@ const RoadmapItemDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-[#080808] text-[#e5e5e5] font-sans selection:bg-indigo-500/30">
+      <Seo
+        title={roadmapItem
+          ? `${roadmapItem.title} | Roadmap`
+          : 'Roadmap Item | Fezcodex'}
+        description={roadmapItem
+          ? roadmapItem.description
+          : 'Details of a roadmap item.'}
+        keywords={['Fezcodex', 'roadmap', 'item', id]}
+      />
       {/* Navbar / Header */}
       <header className="sticky top-0 z-50 bg-[#080808]/80 backdrop-blur-xl border-b border-white/[0.06] h-14 flex items-center px-6">
         <div className="flex items-center gap-4 text-sm">

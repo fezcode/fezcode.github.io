@@ -2,25 +2,13 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeftIcon, LightbulbIcon, TargetIcon, ClockIcon } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const MastermindPage = () => {
   const appName = 'Mastermind';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Play the classic code-breaking game of Mastermind.',
-    keywords: [
-      'Fezcodex',
-      'mastermind',
-      'bulls and cows',
-      'game',
-      'logic game',
-    ],
-  });
 
   const { addToast } = useToast();
   const [secretCode, setSecretCode] = useState('');
@@ -108,6 +96,17 @@ const MastermindPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Mastermind | Fezcodex"
+        description="Play the classic code-breaking game of Mastermind."
+        keywords={[
+          'Fezcodex',
+          'mastermind',
+          'bulls and cows',
+          'game',
+          'logic game',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-24">

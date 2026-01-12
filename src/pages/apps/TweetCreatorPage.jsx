@@ -10,19 +10,11 @@ import {
   TrashIcon,
   PaintBrushIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const TweetCreatorPage = () => {
-  const appName = 'Tweet Creator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Create high-fidelity tweet snapshots using precise canvas rendering.',
-    keywords: ['tweet creator', 'canvas', 'social media', 'mockup', 'generator', 'echo chamber', 'fezcodex'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -350,8 +342,12 @@ const TweetCreatorPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 font-sans text-white overflow-hidden relative selection:bg-pink-300 selection:text-pink-900">
-
-            <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12 relative z-10">
+      <Seo
+        title="Tweet Creator | Fezcodex"
+        description="Create high-fidelity tweet snapshots using precise canvas rendering."
+        keywords={['tweet creator', 'canvas', 'social media', 'mockup', 'generator', 'echo chamber', 'fezcodex']}
+      />
+      <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12 relative z-10">
 
               <header className="mb-24">
                 <Link to="/apps" className={`${glassCardClass} px-6 py-3 inline-flex items-center gap-2 hover:bg-white/20 transition-all text-xs font-bold font-mono tracking-widest uppercase mb-12`}>

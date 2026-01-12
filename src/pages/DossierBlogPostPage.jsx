@@ -13,7 +13,7 @@ import {
 import GrainOverlay from '../components/GrainOverlay';
 import CoffeeStain from '../components/CoffeeStain';
 import CensoredPolaroid from '../components/CensoredPolaroid';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { calculateReadingTime } from '../utils/readingTime';
 import { useAchievements } from '../context/AchievementContext';
 import MarkdownLink from '../components/MarkdownLink';
@@ -102,13 +102,6 @@ const DossierBlogPostPage = () => {
   const [modalContent, setModalContent] = useState('');
   const [modalLanguage, setModalLanguage] = useState('jsx');
   const [modalImageSrc, setModalImageSrc] = useState(null);
-
-  useSeo({
-    title: post ? `${post.attributes.title} | Fezcodex Archive` : null,
-    description: post ? post.body.substring(0, 150) : null,
-    image: post?.attributes?.ogImage || post?.attributes?.image,
-    keywords: post?.attributes?.tags,
-  });
 
   useEffect(() => {
     setHasTrackedRead(false);
@@ -342,10 +335,14 @@ const DossierBlogPostPage = () => {
   const nextPost = post.seriesPosts?.[currentPostIndex - 1];
 
   return (
-
     <div className="min-h-screen bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans relative">
-
-          <GrainOverlay />
+      <Seo
+        title={post ? `${post.attributes.title} | Fezcodex Archive` : null}
+        description={post ? post.body.substring(0, 150) : null}
+        image={post?.attributes?.ogImage || post?.attributes?.image}
+        keywords={post?.attributes?.tags}
+      />
+      <GrainOverlay />
       <CoffeeStain />
 
       {/* Top Secret Stamp / Decor */}

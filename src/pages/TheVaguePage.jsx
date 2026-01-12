@@ -15,7 +15,7 @@ import {
   TargetIcon,
   TerminalWindowIcon
 } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import BrutalistModal from '../components/BrutalistModal';
 import GenerativeArt from '../components/GenerativeArt';
 import TheVagueTerminal from '../components/TheVagueTerminal';
@@ -131,12 +131,6 @@ const THEMES = {
 };
 
 const TheVaguePage = () => {
-  useSeo({
-    title: 'The Vague | Fezcodex',
-    description: 'Issues of The Vague. A collection of thoughts and whispers.',
-    keywords: ['Fezcodex', 'The Vague', 'PDF', 'zine', 'editorial'],
-  });
-
   // Data & State
   const [issues, setIssues] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -212,7 +206,12 @@ const TheVaguePage = () => {
 
   return (
     <div className={`min-h-screen ${currentTheme.colors.bg} ${currentTheme.colors.text} ${currentTheme.font.body} transition-colors duration-500 flex flex-col relative overflow-hidden`}>
-
+       <Seo
+        title="The Vague | Fezcodex"
+        description="Issues of The Vague. A collection of thoughts and whispers."
+        keywords={['Fezcodex', 'The Vague', 'PDF', 'zine', 'editorial']}
+        image="/images/asset/timeline-page.webp"
+       />
        {/* Global Backgrounds for specific themes */}
        {theme === 'glass' && (
            <div className="fixed inset-0 pointer-events-none z-0">
@@ -301,7 +300,7 @@ const TheVaguePage = () => {
           {/* HERO SECTION */}
           {latestIssue && (
               <section className="relative">
-                  <div className={`flex flex-col md:flex-row gap-8 md:items-center 
+                  <div className={`flex flex-col md:flex-row gap-8 md:items-center
                       ${theme === 'neo' ? 'border-2 border-white p-8 bg-[#1a1a1a]' : ''}
                       ${theme === 'swiss' ? 'border-y border-white py-12' : ''}
                       ${theme === 'cold_war' ? 'border border-red-900/50 p-8 bg-black/40 relative overflow-hidden' : ''}
@@ -319,7 +318,7 @@ const TheVaguePage = () => {
                       )}
 
                       {/* Visual */}
-                      <div className={`w-full md:w-1/3 aspect-[3/4] relative cursor-pointer group 
+                      <div className={`w-full md:w-1/3 aspect-[3/4] relative cursor-pointer group
                           ${theme === 'neo' ? 'shadow-[8px_8px_0px_0px_#ccff00] border-2 border-white' : ''}
                           ${theme === 'glass' ? 'rounded-2xl overflow-hidden shadow-2xl' : ''}
                           ${theme === 'cold_war' ? 'border-2 border-white/10 grayscale contrast-125 group-hover:grayscale-0 transition-all' : ''}
@@ -347,7 +346,7 @@ const TheVaguePage = () => {
                       <div className="flex-1 flex flex-col items-start gap-6">
                           {theme === 'swiss' && <div className="w-full h-px bg-white/20 mb-4" />}
 
-                          <div className={`inline-block px-3 py-1 
+                          <div className={`inline-block px-3 py-1
                               ${theme === 'neo' ? 'bg-white text-black font-bold' : ''}
                               ${theme === 'swiss' ? 'text-current border border-white/20' : ''}
                               ${theme === 'cold_war' ? 'bg-red-900/20 text-red-500 border border-red-900/50' : ''}
@@ -361,7 +360,7 @@ const TheVaguePage = () => {
                               {latestIssue.title}
                           </h1>
 
-                          <p className={`text-lg opacity-80 max-w-xl 
+                          <p className={`text-lg opacity-80 max-w-xl
                               ${theme === 'swiss' ? 'font-mono text-xs' : ''}
                               ${theme === 'cold_war' ? 'font-mono text-sm leading-relaxed border-l-2 border-red-900/50 pl-4 text-gray-400' : ''}
                           `}>
@@ -387,7 +386,7 @@ const TheVaguePage = () => {
           )}
 
           {/* CONTROLS BAR */}
-          <div className={`flex flex-wrap items-center justify-between gap-4 p-4 
+          <div className={`flex flex-wrap items-center justify-between gap-4 p-4
               ${theme === 'neo' ? 'bg-white text-black border-2 border-white' : ''}
               ${theme === 'glass' ? 'bg-white/5 border border-white/10 rounded-xl' : ''}
               ${theme === 'swiss' ? 'border-b border-white' : ''}
@@ -456,7 +455,7 @@ const TheVaguePage = () => {
                     {/* Info */}
                     <div className={`${viewMode === 'grid' && theme === 'glass' ? 'p-4' : 'flex-1'}`}>
                         <div className="flex justify-between items-start mb-1">
-                            <span className={`font-mono text-[9px] uppercase tracking-widest 
+                            <span className={`font-mono text-[9px] uppercase tracking-widest
                                 ${theme === 'neo' ? 'text-[#ccff00]' : ''}
                                 ${theme === 'cold_war' ? 'text-red-500/70' : ''}
                                 ${theme !== 'neo' && theme !== 'cold_war' ? 'text-gray-400' : ''}
@@ -493,7 +492,7 @@ const TheVaguePage = () => {
        </main>
 
        {/* --- FOOTER --- */}
-       <footer className={`py-12 border-t relative z-10 
+       <footer className={`py-12 border-t relative z-10
            ${theme === 'neo' ? 'bg-[#ccff00] text-black border-white' : ''}
            ${theme === 'swiss' ? 'bg-black border-white/20' : ''}
            ${theme === 'glass' ? 'bg-black/40 border-white/10' : ''}

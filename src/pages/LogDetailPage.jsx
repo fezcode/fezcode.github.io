@@ -11,7 +11,7 @@ import {
   Hash,
 } from '@phosphor-icons/react';
 import GenerativeArt from '../components/GenerativeArt';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import piml from 'piml';
 import MarkdownLink from '../components/MarkdownLink';
 import colors from '../config/colors';
@@ -25,12 +25,6 @@ const LogDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const {headerFont, setHeaderFont, bodyFont, setBodyFont, availableFonts } = useVisualSettings();
   const contentRef = useRef(null);
-
-  useSeo({
-    title: log ? `${log.attributes.title} | Fezcodex` : null,
-    description: log ? log.body.substring(0, 150) : null,
-    image: log?.attributes?.image,
-  });
 
   useEffect(() => {
     const fetchLog = async () => {
@@ -152,6 +146,11 @@ const LogDetailPage = () => {
 
   return (
     <div className={`min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30`}>
+      <Seo
+        title={log ? `${log.attributes.title} | Fezcodex` : null}
+        description={log ? log.body.substring(0, 150) : null}
+        image={log?.attributes?.image}
+      />
       <style>
         {`
           .custom-prose h1, .custom-prose h2, .custom-prose h3,

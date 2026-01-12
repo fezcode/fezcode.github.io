@@ -4,7 +4,7 @@
 
 [Available Libraries](https://github.com/fezcode/piml/blob/main/LIBRARIES.md)
 
-[JSON<->PIML Converter](/apps::jpc)
+[JSON<->PIML Converter](/apps/json-piml-converter)
 
 ## Parenthesis Intended Markup Language
 

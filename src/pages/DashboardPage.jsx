@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import piml from 'piml';
 import {
   Newspaper,
@@ -167,12 +167,6 @@ const NavTab = ({ to, label, isActive }) => (
 );
 
 const DashboardPage = () => {
-  useSeo({
-    title: 'Dashboard | Fezcodex',
-    description: 'System overview and metrics for Fezcodex.',
-    keywords: ['dashboard', 'metrics', 'stats', 'fezcodex', 'web3-style'],
-  });
-
   const location = useLocation();
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState({
@@ -276,7 +270,11 @@ const DashboardPage = () => {
 
   return (
     <div className="min-h-screen bg-[#020202] text-gray-300 font-inter selection:bg-[#5c6aff] selection:text-white pb-20 pt-24 overflow-hidden relative">
-
+      <Seo
+        title="Dashboard | Fezcodex"
+        description="System overview and metrics for Fezcodex."
+        keywords={['dashboard', 'metrics', 'stats', 'fezcodex', 'web3-style']}
+      />
       {/* BACKGROUND AMBIENCE */}
       <div className="fixed inset-0 z-0 pointer-events-none">
          <TacticalGlobe className="absolute inset-0 w-full h-full opacity-20" accentColor="#3b82f6" />

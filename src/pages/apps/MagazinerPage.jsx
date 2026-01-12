@@ -16,7 +16,7 @@ import {
   PlusIcon,
   SquareIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import CustomSlider from '../../components/CustomSlider';
@@ -73,14 +73,6 @@ const initialInputs = {
 };
 
 const MagazinerPage = () => {
-  const appName = 'Magaziner';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Generate high-end magazine covers with brutalist or posh aesthetics.',
-    keywords: ['Fezcodex', 'magazine cover generator', 'brutalist design', 'posh design', 'typography tool'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
   const fileInputRef = useRef(null);
@@ -610,6 +602,11 @@ const MagazinerPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Magaziner | Fezcodex"
+        description="Generate high-end magazine covers with brutalist or posh aesthetics."
+        keywords={['Fezcodex', 'magazine cover generator', 'brutalist design', 'posh design', 'typography tool']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">

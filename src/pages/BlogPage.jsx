@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PostItem from '../components/PostItem';
 import GenerativeArt from '../components/GenerativeArt';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { fetchAllBlogPosts } from '../utils/dataUtils';
 import {
   ArrowLeft,
@@ -24,13 +24,6 @@ const FILTERS = [
 ];
 
 const BlogPage = () => {
-  useSeo({
-    title: 'Archive | Fezcodex Blog',
-    description:
-      'A curated collection of thoughts, insights, and digital rants.',
-    keywords: ['Fezcodex', 'blog', 'developer', 'archive'],
-  });
-
   const [displayItems, setDisplayItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
@@ -121,6 +114,11 @@ const BlogPage = () => {
 
   return (
     <div className="flex min-h-screen bg-[#050505] text-white overflow-hidden relative selection:bg-emerald-500/30">
+      <Seo
+        title="Archive | Fezcodex Blog"
+        description="A curated collection of thoughts, insights, and digital rants."
+        keywords={['Fezcodex', 'blog', 'developer', 'archive']}
+      />
       {/* Dynamic Background (Static or Active Post Blur) */}
       <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
         {activePost &&

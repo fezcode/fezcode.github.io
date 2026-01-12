@@ -13,7 +13,7 @@ import { getPalette } from 'color-thief-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { canvasRGBA } from 'stackblur-canvas';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -87,19 +87,6 @@ function Palette({ image }) {
 
 function ImageToolkitPage() {
   const appName = 'Image Toolkit';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Tools for image manipulation, color extraction, and creative filtering.',
-    keywords: [
-      'Fezcodex',
-      'image toolkit',
-      'image editor',
-      'color palette',
-      'monochrome',
-    ],
-  });
 
   const { addToast } = useToast();
   const [image, setImage] = useState(null);
@@ -427,6 +414,17 @@ function ImageToolkitPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Image Toolkit | Fezcodex"
+        description="Tools for image manipulation, color extraction, and creative filtering."
+        keywords={[
+          'Fezcodex',
+          'image toolkit',
+          'image editor',
+          'color palette',
+          'monochrome',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

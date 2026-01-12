@@ -6,25 +6,13 @@ import {
   MetronomeIcon,
   ArrowCounterClockwiseIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useAchievements } from '../../context/AchievementContext';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const BpmGuesserPage = () => {
   const appName = 'BPM Guesser';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Find the tempo of any song by tapping along to the beat.',
-    keywords: [
-      'Fezcodex',
-      'BPM counter',
-      'tap tempo',
-      'music tools',
-      'metronome',
-    ],
-  });
 
   const [bpm, setBpm] = useState(0);
   const [taps, setTaps] = useState([]);
@@ -96,6 +84,17 @@ const BpmGuesserPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="BPM Guesser | Fezcodex"
+        description="Find the tempo of any song by tapping along to the beat."
+        keywords={[
+          'Fezcodex',
+          'BPM counter',
+          'tap tempo',
+          'music tools',
+          'metronome',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

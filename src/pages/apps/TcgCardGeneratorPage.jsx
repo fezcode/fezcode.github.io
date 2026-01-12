@@ -9,7 +9,7 @@ import {
   ChartBarIcon,
   ArticleIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import CustomDropdown from '../../components/CustomDropdown';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -115,20 +115,6 @@ const backgroundOptions = [
 ];
 
 const TcgCardGeneratorPage = () => {
-  useSeo({
-    title: 'TCG Card Generator | Fezcodex',
-    description:
-      'Create your own custom Trading Card Game cards with this generator.',
-    keywords: [
-      'TCG',
-      'card generator',
-      'pokemon card',
-      'magic card',
-      'custom card',
-      'maker',
-    ],
-  });
-
   const { addToast } = useToast();
 
   // --- State ---
@@ -554,6 +540,11 @@ const TcgCardGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans pb-32 relative z-10">
+      <Seo
+        title="TCG Card Generator | Fezcodex"
+        description="Create your own custom Trading Card Game cards with this generator."
+        keywords={['TCG', 'card generator', 'pokemon card', 'magic card', 'custom card', 'maker']}
+      />
       <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12">
         {/* Header */}
         <header className="mb-20">

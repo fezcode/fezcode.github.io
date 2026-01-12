@@ -20,7 +20,7 @@ import { useAchievements } from '../context/AchievementContext';
 import { DndContext } from '../context/DndContext';
 import CustomToggle from '../components/CustomToggle';
 import CustomDropdown from '../components/CustomDropdown';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { useToast } from '../hooks/useToast';
 import { useHomepageOrder } from '../context/HomepageOrderContext';
 import GenerativeArt from '../components/GenerativeArt';
@@ -69,12 +69,6 @@ const SettingsPage = () => {
       return () => clearTimeout(timer);
     }
   }, [location.hash]);
-
-  useSeo({
-    title: 'Settings | Fezcodex',
-    description: 'Customize your experience and configure site settings.',
-    keywords: ['Fezcodex', 'settings', 'preferences', 'configuration'],
-  });
 
   const { unlockAchievement, showAchievementToast, toggleAchievementToast } = useAchievements();
 
@@ -223,6 +217,11 @@ const SettingsPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] py-24 px-6 md:px-12 selection:bg-emerald-500/30 font-sans relative overflow-x-hidden">
+      <Seo
+        title="Settings | Fezcodex"
+        description="Customize your experience and configure site settings."
+        keywords={['Fezcodex', 'settings', 'preferences', 'configuration']}
+      />
       {/* Decorative Art Background */}
       <div className="fixed inset-0 opacity-[0.03] pointer-events-none grayscale">
         <GenerativeArt seed="Ahmed Samil Bulbul" className="w-full h-full" />

@@ -9,7 +9,7 @@ import {
   EyeIcon,
 } from '@phosphor-icons/react';
 import {motion, AnimatePresence} from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {ToastContext} from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -40,12 +40,6 @@ const magicEightBallAnswers = [
 const MagicEightBallPage = () => {
   const appName = 'Magic 8-Ball';
 
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Ask a yes/no question and let the Magic 8-Ball reveal your fate in this high-tech adaptation.',
-    keywords: ['Fezcodex', 'magic 8-ball', 'decision maker', 'fun app', 'random answer', 'brutalist'],
-  });
-
   const {addToast} = useContext(ToastContext);
   const [question, setQuestion] = useState('');
   const [answer, setAnswer] = useState('AWAITING_QUERY...');
@@ -71,6 +65,11 @@ const MagicEightBallPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Magic 8-Ball | Fezcodex"
+        description="Ask a yes/no question and let the Magic 8-Ball reveal your fate in this high-tech adaptation."
+        keywords={['Fezcodex', 'magic 8-ball', 'decision maker', 'fun app', 'random answer', 'brutalist']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

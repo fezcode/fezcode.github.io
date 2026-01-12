@@ -16,7 +16,7 @@ import {
   ArrowsClockwiseIcon,
   UploadIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import CustomSlider from '../../components/CustomSlider';
@@ -72,12 +72,6 @@ const CustomModel = ({ url, color, wireframe, speed }) => {
 };
 
 const ModelViewerPage = () => {
-  useSeo({
-    title: '3D Model Viewer | Fezcodex',
-    description: 'Inspect and interact with 3D models in your browser.',
-    keywords: ['3d', 'model', 'viewer', 'webgl', 'threejs', 'react-three-fiber'],
-  });
-
   const { addToast } = useToast();
 
   // App State
@@ -127,6 +121,11 @@ const ModelViewerPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-gray-400 flex flex-col">
+      <Seo
+        title="3D Model Viewer | Fezcodex"
+        description="Inspect and interact with 3D models in your browser."
+        keywords={['3d', 'model', 'viewer', 'webgl', 'threejs', 'react-three-fiber']}
+      />
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-7xl">
         {/* Header */}
         <Link

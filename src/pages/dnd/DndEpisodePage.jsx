@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { DndContext } from '../../context/DndContext';
 import DndLayout from '../../components/dnd/DndLayout';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import piml from 'piml';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
@@ -17,28 +17,12 @@ const WaxSeal = ({ text = 'FC' }) => (
 
 function DndEpisodePage() {
   const { bookId, episodeId } = useParams();
-
   const { setBreadcrumbs, language } = useContext(DndContext);
-
   const [episodeContent, setEpisodeContent] = useState('');
-
   const [episodeTitle, setEpisodeTitle] = useState('');
-
   const [book, setBook] = useState(null);
-
   const [currentEpisode, setCurrentEpisode] = useState(null);
-
   const [allBooks, setAllBooks] = useState([]);
-
-  useSeo({
-
-    title: `${episodeTitle} | From Serfs and Frauds`,
-
-    description: `Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`,
-
-    keywords: ['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'episode', episodeTitle],
-
-  });
 
   useEffect(() => {
     const fetchAllBooks = async () => {
@@ -131,9 +115,12 @@ function DndEpisodePage() {
   const nextEpisode = book && currentEpisodeIndex < book.episodes.length - 1 ? book.episodes[currentEpisodeIndex + 1] : null;
 
   return (
-
     <DndLayout>
-
+      <Seo
+        title={`${episodeTitle} | From Serfs and Frauds`}
+        description={`Read the episode "${episodeTitle}" from the Dungeons & Dragons campaign, From Serfs and Frauds.`}
+        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'episode', episodeTitle]}
+      />
       <div className="max-w-7xl mx-auto px-6 py-12">
 
         <header className="text-center mb-12 md:mb-24 px-4">

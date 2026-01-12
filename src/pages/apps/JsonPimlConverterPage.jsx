@@ -11,20 +11,11 @@ import {
 import { motion, AnimatePresence } from 'framer-motion';
 import piml from 'piml';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function JsonPimlConverterPage() {
-  const appName = 'JSON - PIML';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Bilateral conversion protocol between JSON and PIML data formats.',
-    keywords: ['Fezcodex', 'JSON', 'PIML', 'converter', 'data format'],
-  });
-
   const { addToast } = useToast();
   const [jsonInput, setJsonInput] = useState('');
   const [pimlInput, setPimlInput] = useState('');
@@ -90,6 +81,11 @@ function JsonPimlConverterPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="JSON - PIML | Fezcodex"
+        description="Bilateral conversion protocol between JSON and PIML data formats."
+        keywords={['Fezcodex', 'JSON', 'PIML', 'converter', 'data format']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

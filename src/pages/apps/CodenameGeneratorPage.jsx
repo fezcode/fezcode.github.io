@@ -7,7 +7,7 @@ import {
   ShieldCheckIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -229,20 +229,6 @@ const nouns = [
 ];
 
 const CodenameGeneratorPage = () => {
-  const appName = 'Codename Gen';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for generating unique operation identifiers and strategic nomenclature.',
-    keywords: [
-      'Fezcodex',
-      'codename generator',
-      'random name generator',
-      'project names',
-    ],
-  });
-
   const [codename, setCodename] = useState('');
   const { addToast } = useToast();
 
@@ -274,6 +260,16 @@ const CodenameGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Codename Gen | Fezcodex"
+        description="Protocol for generating unique operation identifiers and strategic nomenclature."
+        keywords={[
+          'Fezcodex',
+          'codename generator',
+          'random name generator',
+          'project names',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

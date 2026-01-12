@@ -9,22 +9,13 @@ import {
   ImageSquareIcon
 } from '@phosphor-icons/react';
 import html2canvas from 'html2canvas';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const OgImageGeneratorPage = () => {
-  const appName = 'OG Image Generator';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Generate beautiful Open Graph images for your website using generative art backgrounds.',
-    keywords: ['og image', 'open graph', 'generator', 'social media', 'preview', 'fezcodex'],
-  });
-
-    const { addToast } = useToast();
-    const [title, setTitle] = useState('My Awesome Post');
+    const { addToast } = useToast();    const [title, setTitle] = useState('My Awesome Post');
     const [description, setDescription] = useState('A short description about the content goes here. Make it catchy!');
     const [seed, setSeed] = useState('fezcodex');
     const [format, setFormat] = useState('png');
@@ -79,11 +70,15 @@ const OgImageGeneratorPage = () => {
       setSeed(Math.random().toString(36).substring(7));
     };
 
-    return (
-      <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
-        <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
-
-                  <header className="mb-24">
+      return (
+        <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+          <Seo
+            title="OG Image Generator | Fezcodex"
+            description="Generate beautiful Open Graph images for your website using generative art backgrounds."
+            keywords={['og image', 'open graph', 'generator', 'social media', 'preview', 'fezcodex']}
+          />
+          <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
+                      <header className="mb-24">
                     <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
                       <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
                       <span>Applications</span>

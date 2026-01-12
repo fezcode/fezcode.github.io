@@ -7,7 +7,7 @@ import {
   DownloadSimpleIcon,
   ActivityIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -33,12 +33,6 @@ const KEY_MAP = {
 };
 
 const FezynthPage = () => {
-  useSeo({
-    title: 'Fezynth | Fezcodex',
-    description: 'A modular, browser-based synthesizer for sound design.',
-    keywords: ['synthesizer', 'web audio', 'music', 'generative', 'fezcodex'],
-  });
-
   const { addToast } = useToast();
   const [audioContext, setAudioContext] = useState(null);
   const [volume, setVolume] = useState(0.5);
@@ -238,6 +232,11 @@ const FezynthPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white font-mono selection:bg-emerald-500/30 py-24 px-6 md:px-12">
+      <Seo
+        title="Fezynth | Fezcodex"
+        description="A modular, browser-based synthesizer for sound design."
+        keywords={['synthesizer', 'web audio', 'music', 'generative', 'fezcodex']}
+      />
       <div className="mx-auto max-w-7xl">
         <Link
           to="/apps"

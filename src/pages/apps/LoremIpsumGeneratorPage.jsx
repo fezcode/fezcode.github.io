@@ -10,7 +10,7 @@ import {
   ToggleLeftIcon,
   ToggleRightIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -90,18 +90,6 @@ const LOREM_WORDS = [
 const LoremIpsumGeneratorPage = () => {
   const appName = 'Lorem Ipsum Generator';
 
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Generate random placeholder text for your projects.',
-    keywords: [
-      'Fezcodex',
-      'lorem ipsum',
-      'text generator',
-      'placeholder text',
-      'dummy text',
-    ],
-  });
-
   const { addToast } = useToast();
   const [paragraphs, setParagraphs] = useState(3);
   const [startWithLorem, setStartWithLorem] = useState(true);
@@ -160,6 +148,17 @@ const LoremIpsumGeneratorPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Lorem Ipsum Generator | Fezcodex"
+        description="Generate random placeholder text for your projects."
+        keywords={[
+          'Fezcodex',
+          'lorem ipsum',
+          'text generator',
+          'placeholder text',
+          'dummy text',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

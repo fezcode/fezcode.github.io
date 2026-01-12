@@ -16,7 +16,7 @@ import {
   FireIcon,
   ChartBarIcon
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 
 const BUZZWORDS = {
   verbs: [
@@ -56,12 +56,6 @@ const FLOATING_TEXTS = [
 ];
 
 const SynergyFlowPage = () => {
-  useSeo({
-    title: 'Synergy Flow | Fezcodex',
-    description: 'Generate meaningless corporate buzzwords and joyful corporate art.',
-    keywords: ['corporate', 'synergy', 'buzzword', 'generator', 'memphis', 'art'],
-  });
-
   const [phrase, setPhrase] = useState('');
   const [shape, setShape] = useState(0);
   const [color, setColor] = useState(CORPORATE_COLORS[0]);
@@ -125,6 +119,11 @@ const SynergyFlowPage = () => {
 
   return (
     <div className="min-h-screen bg-white text-gray-800 font-sans selection:bg-blue-200 selection:text-blue-900 overflow-hidden relative">
+      <Seo
+        title="Synergy Flow | Fezcodex"
+        description="Generate meaningless corporate buzzwords and joyful corporate art."
+        keywords={['corporate', 'synergy', 'buzzword', 'generator', 'memphis', 'art']}
+      />
       {/* Navigation Return Link (Styled to clash) */}
       <div className="absolute top-4 left-4 z-50">
          <Link to="/apps" className="px-6 py-3 bg-black text-white font-mono uppercase text-sm tracking-widest hover:bg-gray-800 transition-colors flex items-center gap-2 rounded-full shadow-lg">

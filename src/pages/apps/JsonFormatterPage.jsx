@@ -9,25 +9,12 @@ import {
   BracketsCurlyIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const JsonFormatterPage = () => {
   const appName = 'JSON Formatter';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Protocol for structural validation and visual optimization of JSON data sequences.',
-    keywords: [
-      'Fezcodex',
-      'JSON formatter',
-      'JSON validator',
-      'JSON beautifier',
-      'JSON tool',
-    ],
-  });
 
   const { addToast } = useToast();
   const [jsonInput, setJsonInput] = useState('');
@@ -99,6 +86,17 @@ const JsonFormatterPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="JSON Formatter | Fezcodex"
+        description="Protocol for structural validation and visual optimization of JSON data sequences."
+        keywords={[
+          'Fezcodex',
+          'JSON formatter',
+          'JSON validator',
+          'JSON beautifier',
+          'JSON tool',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
           <Link

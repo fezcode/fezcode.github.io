@@ -11,7 +11,7 @@ import {
   FilePlusIcon,
 } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -19,19 +19,6 @@ const MAGIC_HEADER = 'FEZ';
 
 function SteganographyPage() {
   const appName = 'Steganography Tool';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description:
-      'Hide secret messages within images using Least Significant Bit (LSB) steganography.',
-    keywords: [
-      'Fezcodex',
-      'steganography',
-      'hide message in image',
-      'image security',
-      'LSB steganography',
-    ],
-  });
 
   const { addToast } = useToast();
   const [image, setImage] = useState(null);
@@ -214,6 +201,17 @@ function SteganographyPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="Steganography Tool | Fezcodex"
+        description="Hide secret messages within images using Least Significant Bit (LSB) steganography."
+        keywords={[
+          'Fezcodex',
+          'steganography',
+          'hide message in image',
+          'image security',
+          'LSB steganography',
+        ]}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-20">
           <Link

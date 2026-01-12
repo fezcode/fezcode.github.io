@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import {
   ArrowLeft,
   CheckCircle,
@@ -136,12 +136,6 @@ const GroupHeader = ({ title, count, icon: Icon, isCollapsed, onToggle }) => (
 );
 
 const FezzillaPage = () => {
-  useSeo({
-    title: 'Roadmap | Fezcodex',
-    description: 'Project status and future development tracking.',
-    keywords: ['Fezcodex', 'roadmap', 'linear', 'issues'],
-  });
-
   const [issuesData, setIssuesData] = useState([]);
   const [viewMode, setViewMode] = useState('list'); // 'list' or 'board'
   const { unlockAchievement } = useAchievements();
@@ -277,6 +271,13 @@ const FezzillaPage = () => {
 
   return (
     <div className="min-h-screen bg-[#080808] text-[#e5e5e5] font-sans selection:bg-indigo-500/30 relative">
+        <Seo
+          title="Roadmap | Fezcodex"
+          description="Project status and future development tracking."
+          keywords={['Fezcodex', 'roadmap', 'linear', 'issues']}
+          image="/images/asset/roadmap-page.webp"
+        />
+
         {selectedIssueId && (
             <RoadmapItemModal issueId={selectedIssueId} onClose={handleCloseModal} />
         )}

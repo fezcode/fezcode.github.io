@@ -9,20 +9,13 @@ import {
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AppCard from '../components/AppCard';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import { appIcons } from '../utils/appIcons';
 import CustomDropdown from '../components/CustomDropdown';
 import usePersistentState from '../hooks/usePersistentState';
 import { KEY_APPS_COLLAPSED_CATEGORIES } from '../utils/LocalStorageManager';
 
 function AppPage() {
-  useSeo({
-    title: 'Apps | Fezcodex',
-    description:
-      'A collection of tools, games, and utilities created within Fezcodex.',
-    keywords: ['Fezcodex', 'apps', 'utilities', 'tools', 'react'],
-  });
-
   const [groupedApps, setGroupedApps] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [totalAppsCount, setTotalAppsCount] = useState(0);
@@ -107,6 +100,11 @@ function AppPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
+      <Seo
+        title="Apps | Fezcodex"
+        description="A collection of tools, games, and utilities created within Fezcodex."
+        keywords={['Fezcodex', 'apps', 'utilities', 'tools', 'react']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

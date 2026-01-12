@@ -19,7 +19,7 @@ import {
   TrophyIcon,
   TerminalIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 import {useToast} from '../hooks/useToast';
 import BreadcrumbTitle from '../components/BreadcrumbTitle';
 import GenerativeArt from '../components/GenerativeArt';
@@ -72,12 +72,6 @@ const mockIssue = {
 };
 
 const BrufezPage = () => {
-  useSeo({
-    title: `Brufez | Design Language Spec`,
-    description: 'System documentation for the Brufez design language. A study in systemic transparency and digital rawness.',
-    keywords: ['Brufez', 'design system', 'brutalist', 'ui', 'fezcodex'],
-  });
-
   const {addToast} = useToast();
   const {openSidePanel} = useSidePanel();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -107,6 +101,11 @@ const BrufezPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans pb-32">
+      <Seo
+        title="Brufez | Design Language Spec"
+        description="System documentation for the Brufez design language. A study in systemic transparency and digital rawness."
+        keywords={['Brufez', 'design system', 'brutalist', 'ui', 'fezcodex']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-20">

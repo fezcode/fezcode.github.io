@@ -5,24 +5,12 @@ import {
   DownloadSimple,
   ArrowsClockwise,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import CustomSlider from '../../components/CustomSlider';
 
 const AbstractWavesPage = () => {
-  useSeo({
-    title: 'Abstract Waves | Fezcodex',
-    description: 'Generate mesmerizing black and white abstract wave patterns.',
-    keywords: [
-      'waves',
-      'generative art',
-      'abstract',
-      'black and white',
-      'canvas',
-    ],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -151,6 +139,17 @@ const AbstractWavesPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Seo
+        title="Abstract Waves | Fezcodex"
+        description="Generate mesmerizing black and white abstract wave patterns."
+        keywords={[
+          'waves',
+          'generative art',
+          'abstract',
+          'black and white',
+          'canvas',
+        ]}
+      />
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-6xl">
         <Link
           to="/apps"

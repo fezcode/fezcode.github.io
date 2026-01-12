@@ -1,26 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import NotebookCover from './NotebookCover';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { ArrowLeftIcon } from '@phosphor-icons/react';
 import piml from 'piml';
 
 const NotebooksPage = () => {
-  useSeo({
-    title: 'Notebooks | Fezcodex',
-    description: 'Explore a collection of my personal notebooks and thoughts.',
-    keywords: ['Fezcodex', 'notebooks', 'thoughts', 'journal'],
-    ogTitle: 'Notebooks | Fezcodex',
-    ogDescription:
-      'Explore a collection of my personal notebooks and thoughts.',
-    ogImage: '/images/asset/ogtitle.png',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'Notebooks | Fezcodex',
-    twitterDescription:
-      'Explore a collection of my personal notebooks and thoughts.',
-    twitterImage: '/images/asset/ogtitle.png',
-  });
-
   const [notebooks, setNotebooks] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -62,6 +47,12 @@ const NotebooksPage = () => {
 
   return (
     <div className="py-16 sm:py-24">
+      <Seo
+        title="Notebooks | Fezcodex"
+        description="Explore a collection of my personal notebooks and thoughts."
+        keywords={['Fezcodex', 'notebooks', 'thoughts', 'journal']}
+        ogImage="/images/asset/ogtitle.png"
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <Link

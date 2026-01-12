@@ -7,17 +7,11 @@ import {
   Play,
   Pause,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const SpirographPage = () => {
-  useSeo({
-    title: 'Spirograph Generator | Fezcodex',
-    description: 'Create mesmerizing geometric patterns with math.',
-    keywords: ['spirograph', 'geometry', 'art', 'generator', 'math art'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
 
@@ -157,6 +151,11 @@ const SpirographPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
+      <Seo
+        title="Spirograph Generator | Fezcodex"
+        description="Create mesmerizing geometric patterns with math."
+        keywords={['spirograph', 'geometry', 'art', 'generator', 'math art']}
+      />
       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-6xl">
         {/* Header */}
         <Link

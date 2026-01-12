@@ -6,7 +6,7 @@ import {
   ArrowCounterClockwiseIcon,
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -21,19 +21,6 @@ const sampleTexts = [
 
 function KeyboardTypingSpeedTesterPage() {
   const appName = 'FezType';
-
-  useSeo({
-    title: `${appName} | Fezcodex`,
-    description: 'Test and improve your typing speed with FezType.',
-    keywords: [
-      'Fezcodex',
-      'typing test',
-      'wpm',
-      'typing speed',
-      'keyboard',
-      'games',
-    ],
-  });
 
   const [textToType, setTextToType] = useState('');
   const [typedText, setTypedText] = useState('');
@@ -149,6 +136,18 @@ function KeyboardTypingSpeedTesterPage() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
+      <Seo
+        title="FezType | Fezcodex"
+        description="Test and improve your typing speed with FezType."
+        keywords={[
+          'Fezcodex',
+          'typing test',
+          'wpm',
+          'typing speed',
+          'keyboard',
+          'games',
+        ]}
+      />
       <div className="mx-auto max-w-5xl px-6 py-24 md:px-12">
         {/* Header Section */}
         <header className="mb-24">

@@ -11,7 +11,7 @@ import {
   CodeIcon,
   CircleDashedIcon,
 } from '@phosphor-icons/react';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -31,14 +31,6 @@ const COLORS = [
 ];
 
 const SymbolFlowPage = () => {
-  const appName = 'Symbol Flow';
-
-  useSeo({
-    title: `${appName} | FezCodeIconx`,
-    description: 'Generative flow field visualizer using technical symbol protocols and procedural noise.',
-    keywords: ['FezCodeIconx', 'generative art', 'canvas animation', 'flow field', 'brutalist design'],
-  });
-
   const { addToast } = useToast();
   const canvasRef = useRef(null);
   const containerRef = useRef(null);
@@ -185,6 +177,11 @@ const SymbolFlowPage = () => {
 
   return (
     <div className="min-h-screen bg-[#050505] text-white SelectionIcon:bg-emerald-500/30 font-sans overflow-x-hidden">
+      <Seo
+        title="Symbol Flow | Fezcodex"
+        description="Generative flow field visualizer using technical symbol protocols and procedural noise."
+        keywords={['Fezcodex', 'generative art', 'canvas animation', 'flow field', 'brutalist design']}
+      />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
 
         <header className="mb-24">

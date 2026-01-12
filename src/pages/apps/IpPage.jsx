@@ -6,28 +6,10 @@ import {
 } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 import { useToast } from '../../hooks/useToast';
-import useSeo from '../../hooks/useSeo';
+import Seo from '../../components/Seo';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 function IpPage() {
-  useSeo({
-    title: 'Show my IP | Fezcodex',
-    description: 'Quickly find and display your public IP address.',
-    keywords: [
-      'Fezcodex',
-      'show my IP',
-      'what is my IP',
-      'IP address',
-      'public IP',
-    ],
-    ogTitle: 'What is My IP | Fezcodex',
-    ogDescription:
-      'Find out your current IP address and connection information.',
-    twitterCard: 'summary_large_image',
-    twitterTitle: 'What is My IP | Fezcodex',
-    twitterDescription:
-      'Find out your current IP address and connection information.',
-  });
   const [ip, setIp] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -82,6 +64,11 @@ function IpPage() {
 
   return (
     <div className="py-16 sm:py-24">
+      <Seo
+        title="Show my IP | Fezcodex"
+        description="Quickly find and display your public IP address."
+        keywords={['Fezcodex', 'show my IP', 'what is my IP', 'IP address', 'public IP']}
+      />
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
         <Link
           to="/apps"

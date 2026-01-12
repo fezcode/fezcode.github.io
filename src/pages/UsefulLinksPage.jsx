@@ -1,16 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useSeo from '../hooks/useSeo';
+import Seo from '../components/Seo';
 
 const UsefulLinksPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-
-  useSeo({
-    title: 'Redirecting... | Fezcodex',
-    description: 'Redirecting to a random log entry on Fezcodex.',
-    keywords: ['Fezcodex', 'redirect', 'random', 'log'],
-  });
 
   useEffect(() => {
     const fetchAndRedirect = async () => {
@@ -42,6 +36,11 @@ const UsefulLinksPage = () => {
 
   return (
     <div className="text-center py-16">
+      <Seo
+        title="Redirecting... | Fezcodex"
+        description="Redirecting to a random log entry on Fezcodex."
+        keywords={['Fezcodex', 'redirect', 'random', 'log']}
+      />
       <p>
         If you are not redirected, please click <a href="/">here</a> to go to
         the homepage.
