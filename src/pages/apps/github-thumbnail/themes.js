@@ -17,7 +17,7 @@ import { bauhaus } from './themes/bauhaus';
 import { popart } from './themes/popart';
 import { cod } from './themes/callofduty';
 import { crtAmber } from './themes/crtAmber';
-import { basketball } from './themes/basketball';
+import { gta } from './themes/gta';
 import { rich } from './themes/rich';
 
 export const themeRenderers = {
@@ -40,6 +40,6 @@ export const themeRenderers = {
   popart,
   cod,
   crtAmber,
-  basketball,
+  gta,
   rich,
 };

@@ -37,7 +37,7 @@ const THEME_OPTIONS = [
   { value: 'popart', label: 'POP_ART_COMIC' },
   { value: 'cod', label: 'TACTICAL_OPS' },
   { value: 'crtAmber', label: 'RETRO_AMBER_CRT' },
-  { value: 'basketball', label: 'COURT_SIDE' },
+  { value: 'gta', label: 'GRAND_THEFT_AUTO' },
   { value: 'rich', label: 'LUXURY_GOLD' },
 ];
 
