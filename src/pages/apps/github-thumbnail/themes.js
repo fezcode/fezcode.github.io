@@ -15,6 +15,10 @@ import { cyberpunk } from './themes/cyberpunk';
 import { sketch } from './themes/sketch';
 import { bauhaus } from './themes/bauhaus';
 import { popart } from './themes/popart';
+import { cod } from './themes/callofduty';
+import { crtAmber } from './themes/crtAmber';
+import { basketball } from './themes/basketball';
+import { rich } from './themes/rich';
 
 export const themeRenderers = {
   modern,
@@ -34,4 +38,8 @@ export const themeRenderers = {
   sketch,
   bauhaus,
   popart,
+  cod,
+  crtAmber,
+  basketball,
+  rich,
 };

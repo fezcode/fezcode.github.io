@@ -35,6 +35,10 @@ const THEME_OPTIONS = [
   { value: 'sketch', label: 'HAND_DRAWN' },
   { value: 'bauhaus', label: 'BAUHAUS_GEO' },
   { value: 'popart', label: 'POP_ART_COMIC' },
+  { value: 'cod', label: 'TACTICAL_OPS' },
+  { value: 'crtAmber', label: 'RETRO_AMBER_CRT' },
+  { value: 'basketball', label: 'COURT_SIDE' },
+  { value: 'rich', label: 'LUXURY_GOLD' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
