@@ -210,7 +210,7 @@ const TheVaguePage = () => {
         title="The Vague | Fezcodex"
         description="Issues of The Vague. A collection of thoughts and whispers."
         keywords={['Fezcodex', 'The Vague', 'PDF', 'zine', 'editorial']}
-        image="/images/asset/timeline-page.webp"
+        image="/images/asset/the-vague-page.webp"
        />
        {/* Global Backgrounds for specific themes */}
        {theme === 'glass' && (
