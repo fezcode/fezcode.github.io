@@ -417,6 +417,14 @@
     "order": 3,
     "apps": [
       {
+        "slug": "github-thumbnail-generator",
+        "to": "/apps/github-thumbnail-generator",
+        "title": "Github Thumbnail Generator",
+        "description": "Generate high-fidelity thumbnails and cover art for GitHub repositories.",
+        "icon": "GithubLogoIcon",
+        "created_at": "2026-01-12T12:00:00+03:00"
+      },
+      {
         "slug": "pattern-generator",
         "to": "/apps/pattern-generator",
         "title": "Pattern Generator",
