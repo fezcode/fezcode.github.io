@@ -113,6 +113,22 @@
     (image) /images/projects/villain_couch.webp
 
   > (project)
+    (slug) yap
+    (title) yap
+    (size) 1
+    (repo_link) https://github.com/fezcode/yap
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > Go
+      > TUI
+      > FFmpeg
+      > Audio
+    (shortDescription) A lightweight, terminal-based YouTube audio player written in Go with synced lyrics and advanced playback controls.
+    (date) 2026-01-12
+    (image) /images/projects/yap-banner.webp
+
+  > (project)
     (slug) go-piml
     (title) go-piml
     (size) 1
