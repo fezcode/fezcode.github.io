@@ -21,6 +21,8 @@ import { gta } from './themes/gta';
 import { rich } from './themes/rich';
 import { abstract } from './themes/abstract';
 import { nature } from './themes/nature';
+import { graphicNovel } from './themes/graphicNovel';
+import { win95 } from './themes/win95';
 
 export const themeRenderers = {
   modern,
@@ -46,4 +48,6 @@ export const themeRenderers = {
   rich,
   abstract,
   nature,
+  graphicNovel,
+  win95,
 };

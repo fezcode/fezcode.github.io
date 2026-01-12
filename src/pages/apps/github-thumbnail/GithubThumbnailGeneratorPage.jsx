@@ -41,6 +41,8 @@ const THEME_OPTIONS = [
   { value: 'rich', label: 'LUXURY_GOLD' },
   { value: 'abstract', label: 'ABSTRACT_SHAPES' },
   { value: 'nature', label: 'NATURE_VIBES' },
+  { value: 'graphicNovel', label: 'SIN_CITY_STYLE' },
+  { value: 'win95', label: 'RETRO_WINDOWS_95' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
