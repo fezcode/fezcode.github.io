@@ -1,8 +1,8 @@
 (projects)
   > (project)
     (slug) fezcodex
-    (title) fezcodex
-    (size) 1
+    (title) Fezcodex Project
+    (stylish) true
     (repo_link) https://github.com/fezcode/fezcode.github.io
     (demo_link) https://fezcode.com/about
     (pinned) true
@@ -15,7 +15,7 @@
       > webdev
     (shortDescription) This website... The app you are currently on. Personal website and blog, written in React.
     (date) 2025-11-10
-    (image) /images/projects/fezcodex.webp
+    (image) /images/projects/fezcodex/fezcodex.webp
 
   > (project)
     (slug) piml

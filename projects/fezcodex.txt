@@ -1,6 +1,6 @@
 # Fezcodex: The Digital Sanctum
 
-![Fezcodex - Cover Art](/images/projects/fezcodex.webp)
+![Fezcodex - Cover Art](/images/projects/fezcodex/fezcodex.webp)
 
 **Fezcodex** is more than just a portfolio; it's a living digital garden, a personal operating system, and a testament to the brutalist aesthetic of the modern web. Built with **React** and **Tailwind CSS**, it serves as the central hub for my development journey, thoughts, and experiments.
 
