@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 310 60" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="butt" stroke-linejoin="miter" class="text-white">
+  <!-- F -->
+  <path d="M20 10 V50 M20 14 H50 M20 30 H45" />
+  
+  <!-- E -->
+  <path d="M60 14 H90 M60 30 H80 M60 46 H90" />
+  
+  <!-- Z -->
+  <path d="M100 14 H130" />
+  <path d="M115 24 H130" />
+  <path d="M100 36 H115" />
+  <path d="M100 46 H130" />
+  
+  <!-- C -->
+  <path d="M165 10 H140 V50 H165" />
+  
+  <!-- O -->
+  <rect x="175" y="10" width="30" height="40" />
+  
+  <!-- D (Triangular style) -->
+  <path d="M215 10 V50 L245 30 Z" />
+  
+  <!-- E -->
+  <path d="M260 14 H290 M260 30 H280 M260 46 H290" />
+</svg>

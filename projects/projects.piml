@@ -2,7 +2,7 @@
   > (project)
     (slug) fezcodex
     (title) Fezcodex Project
-    (stylish) true
+    (style) stylish
     (repo_link) https://github.com/fezcode/fezcode.github.io
     (demo_link) https://fezcode.com/about
     (pinned) true
@@ -48,6 +48,7 @@
   > (project)
     (slug) dush
     (title) Dush
+    (style) editorial
     (size) 1
     (repo_link) https://github.com/fezcode/dush
     (pinned) true
