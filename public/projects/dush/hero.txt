@@ -1,0 +1,5 @@
+# Engineered
+# For The Shell
+
+Dush is the custom terminal shell that lets you wield the full power of Go.
+Built for learning, optimized for customization.

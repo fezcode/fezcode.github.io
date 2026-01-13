@@ -5,7 +5,7 @@ import Loading from './Loading';
 
 const ProjectPage = lazy(() => import('../pages/ProjectPage'));
 const StylishProjectDetailsPage = lazy(() => import('../pages/StylishProjectDetailsPage'));
-const TechnoProjectDetailsPage = lazy(() => import('../pages/TechnoProjectDetailsPage'));
+const EditorialProjectDetailsPage = lazy(() => import('../pages/EditorialProjectDetailsPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -30,10 +30,10 @@ const ProjectRouteHandler = () => {
     );
   }
 
-  if (projectStyle === 'techno') {
+  if (projectStyle === 'editorial') {
     return (
       <Suspense fallback={<Loading />}>
-        <TechnoProjectDetailsPage />
+        <EditorialProjectDetailsPage />
       </Suspense>
     );
   }

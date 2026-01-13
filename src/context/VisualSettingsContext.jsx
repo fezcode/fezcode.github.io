@@ -21,6 +21,8 @@ export const VisualSettingsProvider = ({ children }) => {
     { id: 'font-syne', name: 'Syne' },
     { id: 'font-outfit', name: 'Outfit' },
     { id: 'font-ibm-plex-mono', name: 'IBM Plex Mono' },
+    { id: 'font-instr-serif', name: 'Instrument Serif' },
+    { id: 'font-nunito', name: 'Nunito' },
   ];
 
   const [headerFont, setHeaderFont] = usePersistentState('header-font', 'font-outfit');

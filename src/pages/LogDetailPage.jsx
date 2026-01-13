@@ -142,6 +142,8 @@ const LogDetailPage = () => {
     'font-syne': "'Syne', sans-serif",
     'font-outfit': "'Outfit', sans-serif",
     'font-ibm-plex-mono': "'IBM Plex Mono', monospace",
+    'font-instr-serif': "'Instrument Serif', serif",
+    'font-nunito': "'Nunito', sans-serif",
   };
 
   return (

@@ -1,137 +1,137 @@
-# Stylish Project Showcases
+# Project Showcases
 
-Fezcodex supports a "Stylish" project details page variant. This layout is designed for high-production, landing-page style showcases that are isolated from the main site's global layout.
+Fezcodex supports different project detail page styles to best present each project. Currently, there are two distinct styles available: "Stylish" and "Techno".
 
 ## 1. Activation
 
-To enable the stylish layout for a project, you must set the `(stylish)` flag to `true` in `public/projects/projects.piml`:
+To assign a style to a project, set the `(style)` field in `public/projects/projects.piml`:
 
 ```piml
 > (project)
   (slug) my-cool-project
-  (stylish) true
+  (style) stylish  ; or 'techno'
   ...
 ```
 
-When this flag is detected, the site will automatically bypass the global sidebar/navbar and render the project using the `StylishProjectDetailsPage` component.
+If no style is specified, the default layout will be used.
 
-## 2. Directory Structure
+---
 
-All content for a stylish project must be placed in a dedicated folder under `public/projects/[slug]/`.
+## 2. Stylish Layout
+
+This layout is designed for high-production, landing-page style showcases. It features a rich, component-driven design ideal for web apps and major projects.
+
+### Directory Structure
+Content resides in `public/projects/[slug]/` as `.txt` files (previously `.mdx`).
 
 ```text
-public/projects/my-cool-project/
-├── hero.txt          # Hero title, typewriter words, and main image
-├── partners.txt      # Tech stack or "Trusted by" list
+public/projects/my-project/
+├── hero.txt          # Hero section
+├── partners.txt      # Tech stack/Partners
 ├── terminal.txt      # Interactive terminal tabs
-├── integrations.txt  # Feature showcase with images (Exploration Modes)
-├── features.txt      # Grid of feature cards
-├── technical.txt     # Technical architecture overview
-├── details.txt       # Long-form markdown (Philosophy/Deep Dive)
-└── cta.txt           # Call to action and install command
+├── integrations.txt  # Feature showcase grid
+├── features.txt      # Icon cards grid
+├── technical.txt     # Technical specs
+├── details.txt       # Long-form content
+└── cta.txt           # Call to action
 ```
 
-## 3. MDX File Specifications
+### File Specifications
+(Same block parsing rules as before apply, e.g., `:::feature`, `:::tech`)
 
-### `hero.txt`
-The hero section expects a specific header format:
-*   **Line 1**: The prefix (e.g., `# Built for`)
-*   **Line 2**: Comma-separated words for the typewriter effect.
-*   **image:** tag: Path to the main hero image.
-*   **Body**: The main description paragraph.
+---
 
-```mdx
-# Built for
-explorers, hackers, builders
+## 3. Editorial Layout
 
-image: /images/projects/my-hero.webp
+The **Editorial** style (formerly Techno) is a raw, brutalist, developer-focused aesthetic. It uses monospaced fonts, high-contrast dark modes, and terminal-inspired elements. It is perfect for CLIs, system tools, and low-level libraries.
 
-This is the main description of the project.
+### Directory Structure
+Content resides in `public/projects/[slug]/` as `.txt` files.
+
+```text
+public/projects/my-cli-tool/
+├── hero.txt          # Hero title and description
+├── features.txt      # (Not currently used in Editorial layout, but reserved)
+├── terminal.txt      # Terminal session preview (supports colors)
+├── install.txt       # Installation command(s)
+├── social.txt        # Horizontal scrollable "social proof" or "explore" cards
+├── description.txt   # Main project description (Overview, Features)
+└── footer.txt        # (Reserved for footer links)
 ```
 
-### `partners.txt`
-Used to show a list of technologies or partners.
-*   **label**: The small header text.
-*   **logos**: Comma-separated list of items to display.
+### File Specifications
 
-```mdx
-label: Built with
-logos: REACT, TAILWIND, RUST
+#### `hero.txt`
+*   **Lines starting with `#`**: Title lines (rendered in large serif font).
+*   **image:** tag: (Ignored in Editorial layout as it uses a global background grid, but good to keep for metadata).
+*   **Body**: Description text below the title.
+
+```txt
+# Engineered
+# For The Shell
+
+Dush is the custom terminal shell...
 ```
 
-### `terminal.txt`
-Defines the interactive terminal component. Uses `:::tab` blocks.
-*   **id**: Unique identifier for the tab.
-*   **label**: Text displayed on the tab button.
-*   **command**: The "input" command shown after the `$`.
-*   **output**: The response text.
+#### `terminal.txt`
+Raw text that is rendered inside a terminal window component.
+*   Supports standard Markdown code blocks.
+*   Use `rehype-raw` compatible HTML spans for colors if needed (e.g., `<span class="text-yellow-500">warn</span>`).
 
-```mdx
-:::tab
-id: scan
-label: Scan
-command: project --scan
-output: Scanning system... Done.
-:::
+```txt
+  <span class="text-[#b8bb26]">➜</span> ~ dush
+  dush> echo "hello"
 ```
 
-### `integrations.txt`
-Renders as a 3-column grid with images at the top. Uses `:::integration` blocks.
-*   **title**, **description**, **image**, **link** (optional).
+#### `install.txt`
+Contains the raw installation command string.
 
-```mdx
-# Navigation Modes
-:::integration
-title: Mobile App
-description: Access on the go.
-image: /images/projects/mobile.webp
-link: /download
-:::
+```txt
+go install github.com/fezcode/dush@latest
 ```
 
-### `features.txt`
-Renders as a 4-column grid of icon cards. Uses `:::feature` blocks.
-*   **icon**: Phosphor icon name (without 'Icon' suffix, e.g., `Cpu`, `Command`, `Globe`).
-*   **title**, **description**.
+#### `social.txt`
+Defines the "Explore With Us" cards. Entries are separated by `---`.
+*   **Line 1**: Title (optionally starts with `#`).
+*   **Line 2**: Author / Subtitle.
+*   **Line 3**: Stats string (e.g., `+10 -2 ~1`).
+*   **link:**: URL for the card.
+*   **image:**: (Optional) Background image URL.
 
-```mdx
-:::feature
-icon: Lightning
-title: Fast
-description: Blazing fast execution.
-:::
+```txt
+# Why I built Dush
+fezcode
++10 -2 ~1
+link: https://github.com/fezcode/dush
+---
+# Architecture
+...
 ```
 
-### `technical.txt`
-Renders as a grid of architectural cards. Uses `:::tech` blocks.
-*   **Bold text** inside the block becomes the card title (Instrument Serif font).
+#### `description.txt`
+The main content area ("About the Project").
+*   Standard Markdown.
+*   Supports lists, bolding, and headers.
+*   `## Headings` separate the content into different grid rows in the layout.
 
-```mdx
-:::tech
-**Frontend:** Built with React 19.
-:::
+```txt
+## Overview
+Dush is a minimalist shell...
+
+## Key Features
+- Feature 1
+- Feature 2
 ```
-
-### `details.txt`
-Standard markdown for the "Philosophy" section.
-*   Supports `image: /path/to/img` for auto-styled image containers.
-*   Supports `## Headings` for section titles.
-*   Links are automatically rendered as stylized buttons.
-
-### `cta.txt`
-The final section.
-*   The first `# Heading` is the title.
-*   A code block (e.g., ` ```bash `) is rendered inside a terminal-style `ProjectUrlLine` component.
 
 ## 4. Assets
 
-*   **Images**: Place images in `public/images/projects/` or `public/images/asset/`.
-*   **Icons**: Use any icon name from `@phosphor-icons/react` (e.g., `User`, `Gear`, `ShieldCheck`).
+*   **Images**: Place images in `public/images/projects/` or `public/images/bg/`.
+*   **Icons**: Use Phosphor icons where applicable in code, or SVG assets.
 
 ## 5. Adding a New Project Checklist
 
 1.  Create the folder `public/projects/[your-slug]`.
-2.  Copy existing `.txt` files from `fezcodex` as templates.
-3.  Fill in the content.
-4.  Add the project to `public/projects/projects.piml` with `(stylish) true`.
-5.  Run `npm run lint` to ensure everything is correct.
+2.  Choose your style: `stylish` or `editorial`.
+3.  Create the corresponding `.txt` files based on the chosen style's structure.
+4.  Add the project to `public/projects/projects.piml` with the correct `(style)` field.
+5.  Run `npm run lint` to ensure code quality.

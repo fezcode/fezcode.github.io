@@ -48,6 +48,7 @@
   > (project)
     (slug) dush
     (title) Dush
+    (style) editorial
     (size) 1
     (repo_link) https://github.com/fezcode/dush
     (pinned) true
