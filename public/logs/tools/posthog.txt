@@ -1,0 +1,11 @@
+PostHog is an open-source product operating system. It provides a suite of tools that help you understand user behavior, test new features, and improve your product without needing to integrate multiple different services.
+
+### Key Features
+- **Product Analytics:** Track events, funnels, and retention to understand the user journey.
+- **Session Replays:** Watch recordings of user sessions to identify friction points and bugs.
+- **Feature Flags:** Safely roll out features to specific user segments and perform canary releases.
+- **A/B Testing:** Run experiments to make data-driven decisions about UI and UX changes.
+- **Surveys:** Gather qualitative feedback directly from your users at the right moment.
+
+### How to use it
+You can either use PostHog Cloud or self-host it on your own infrastructure. Integration is straightforward with their JavaScript snippet for web or various SDKs for mobile and backend. One of its greatest strengths is "Autocapture," which starts tracking clicks and pageviews without manual instrumentation, though custom events can be added for deeper insights. It's an essential tool for any product-led growth strategy.

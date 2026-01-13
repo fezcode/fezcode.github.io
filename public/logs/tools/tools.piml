@@ -1,6 +1,15 @@
 (logs)
   > (item)
     (category) Tools
+    (date) 2026-01-13
+    (link) https://posthog.com/
+    (slug) posthog
+    (title) PostHog
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) The all-in-one platform for product analytics, feature flags, session replays, and more.
+    (rating) 5
+  > (item)
+    (category) Tools
     (date) 2026-01-12
     (link) https://www.aseprite.org/
     (slug) aseprite
