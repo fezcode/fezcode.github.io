@@ -44,14 +44,16 @@ const Layout = ({
   const isAboutPage = location.pathname.startsWith('/about');
   const isGraphPage = location.pathname === '/graph';
 
-  // Check for stylish project
+  // Check for special project styles that require hiding the default layout
   const projectSlug = location.pathname.startsWith('/projects/') ? location.pathname.split('/')[2] : null;
   const project = projectSlug ? projects.find(p => p.slug === projectSlug) : null;
-  const isStylishProject = project?.stylish;
 
-  const hideLayout = isAboutPage || isGraphPage || isStylishProject;
+  const projectStyle = project?.style || 'default';
+  const isSpecialProject = projectStyle === 'stylish' || projectStyle === 'techno';
 
-  if (location.pathname.startsWith('/stories') || isStylishProject) {
+  const hideLayout = isAboutPage || isGraphPage || isSpecialProject;
+
+  if (location.pathname.startsWith('/stories') || isSpecialProject) {
     return (
       <DndProvider>
         {children}
