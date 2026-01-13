@@ -80,7 +80,7 @@ const EditorialProjectDetailsPage = () => {
         <EditorialNavbar title={projectMetadata?.title || 'Project'} repoLink={projectMetadata?.repo_link} />
 
         <main className="flex-1 flex flex-col">
-           <EditorialHero content={content.hero} repoLink={projectMetadata?.repo_link} />
+           <EditorialHero content={content.hero} repoLink={projectMetadata?.repo_link} title={projectMetadata?.title} />
            <EditorialTerminal content={content.terminal} />
            <EditorialDescription content={content.description} />
            <EditorialInstall content={content.install} />

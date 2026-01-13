@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-const EditorialHero = ({ content, repoLink }) => {
+const EditorialHero = ({ content, repoLink, title: projectTitle }) => {
   if (!content) return null;
 
   const lines = content.split('\n');
@@ -26,7 +26,7 @@ const EditorialHero = ({ content, repoLink }) => {
     }
   }
 
-  const title = titleLines.join('\n\n'); // Join with double newline for markdown paragraph break or <br/> if we want explicit
+  const heroTitle = titleLines.join('\n\n');
   const description = lines.slice(descriptionStartIndex).join('\n');
 
   return (
@@ -35,6 +35,13 @@ const EditorialHero = ({ content, repoLink }) => {
 
         {/* Title Section */}
         <div className="md:col-span-2 md:col-start-2 border-l border-white/10 pl-8">
+          {projectTitle && (
+            <div className="mb-6">
+              <span className="font-instr-serif text-xl text-white uppercase tracking-[0.1em] px-4 py-2 border border-white/20 inline-block">
+                {projectTitle}
+              </span>
+            </div>
+          )}
           <h1 className="text-6xl md:text-8xl font-instr-serif leading-[0.9] tracking-tight text-white mb-8">
             <ReactMarkdown
                 components={{
@@ -42,7 +49,7 @@ const EditorialHero = ({ content, repoLink }) => {
                     em: ({children}) => <span className="italic font-light">{children}</span>
                 }}
             >
-                {title}
+                {heroTitle}
             </ReactMarkdown>
           </h1>
         </div>
@@ -69,4 +76,5 @@ const EditorialHero = ({ content, repoLink }) => {
     </section>
   );
 };
+
 export default EditorialHero;
