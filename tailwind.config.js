@@ -34,6 +34,9 @@ module.exports = {
         outfit: fonts.outfit, // Geometric Sans
         'ibm-plex-mono': fonts.ibmPlexMono, // Elegant Technical Mono
         inter: fonts.inter, // New custom font
+        'instr-serif': fonts.instrSerif,
+        'instr-sans': fonts.instrSans,
+        'nunito': fonts.nunito,
       },
       colors: colors,
       typography: (theme) => ({

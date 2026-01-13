@@ -99,6 +99,13 @@ module.exports = {
   'feat-alpha-10': 'rgba(168, 85, 247, 0.1)',
   'feat-alpha-50': 'rgba(168, 85, 247, 0.5)',
 
+  // Product Page Colors
+  'product-bg': '#141413',
+  'product-card-bg': '#1f1e1d',
+  'product-card-text': '#f5f5f0',
+  'product-card-icon': '#d97757',
+  'product-body-text': '#d1cdc7',
+
   // Toast success colors
   'toast-background': 'rgba(72,59,87,0.8)',
   'toast-hover-background': 'rgba(102,84,122,0.8)',

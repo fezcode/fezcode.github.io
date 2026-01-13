@@ -8,7 +8,6 @@ const HomePage = lazy(() => import('../pages/HomePage'));
 const BlogPage = lazy(() => import('../pages/BlogPage'));
 const BlogPostPage = lazy(() => import('../pages/BlogPostPage'));
 const ProjectsPage = lazy(() => import('../pages/ProjectsPage'));
-const ProjectPage = lazy(() => import('../pages/ProjectPage'));
 const AboutPage = lazy(() => import('../pages/AboutPage'));
 const FriendsPage = lazy(() => import('../pages/FriendsPage'));
 const LogsPage = lazy(() => import('../pages/LogsPage'));
@@ -139,6 +138,7 @@ const PIMLLabPage = lazy(() => import('../pages/apps/PIMLLabPage'));
 const MetabolicHubPage = lazy(() => import('../pages/apps/IntermittentFastingTrackerPage'));
 const BrufezPage = lazy(() => import('../pages/BrufezPage'));
 const BrufezPanelsPage = lazy(() => import('../pages/BrufezPanelsPage'));
+const ProjectRouteHandler = lazy(() => import('../components/ProjectRouteHandler'));
 const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
 
 const pageVariants = {
@@ -271,17 +271,9 @@ const AnimatedRoutes = ({
         <Route
           path="/projects/:slug"
           element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <ProjectPage />
-              </Suspense>
-            </motion.div>
+            <Suspense fallback={<Loading />}>
+              <ProjectRouteHandler />
+            </Suspense>
           }
         />
         <Route

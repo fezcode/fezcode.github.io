@@ -1,0 +1,23 @@
+:::feature
+icon: Command
+title: Command Palette
+description: Navigate, toggle themes, or hack the system with a power-user Cmd+K interface.
+:::
+
+:::feature
+icon: Palette
+title: Visual Modes
+description: Switch between Cyberpunk, Retro, and Terminal modes to match your aesthetic preference.
+:::
+
+:::feature
+icon: FileCode
+title: Dynamic Content
+description: Integrated blog engine with complex markdown support and live component rendering.
+:::
+
+:::feature
+icon: Plant
+title: Digital Garden
+description: A living space for raw notes, discovery logs, and work-in-progress architectural thoughts.
+:::

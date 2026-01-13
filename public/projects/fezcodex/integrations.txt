@@ -1,0 +1,24 @@
+# Exploration Modes
+
+Fezcodex meets you wherever you are in your journey.
+
+:::integration
+title: Command Palette
+description: Deep system access from any page via Cmd+K.
+image: /images/asset/commands-page.webp
+link: /commands
+:::
+
+:::integration
+title: The Vague: Magazine
+description: Raw notes and work-in-progress thoughts.
+image: /images/asset/the-vague-page.webp
+link: /the-vague
+:::
+
+:::integration
+title: Interactive Timeline
+description: A chronological journey through the archive.
+image: /images/asset/timeline-page.webp
+link: /timeline
+:::

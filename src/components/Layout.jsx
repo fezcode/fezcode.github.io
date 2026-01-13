@@ -14,6 +14,7 @@ import NaturalRain from './NaturalRain';
 import FalloutOverlay from './FalloutOverlay';
 import SidePanel from './SidePanel';
 import Banner from './Banner';
+import { useProjects } from '../utils/projectParser';
 
 import { DndProvider } from '../context/DndContext';
 
@@ -37,13 +38,20 @@ const Layout = ({
     toggleSidebar,
   } = useVisualSettings();
   const location = useLocation();
+  const { projects } = useProjects();
 
   // Check if we are on the about page or graph page to conditionally render layout elements
   const isAboutPage = location.pathname.startsWith('/about');
   const isGraphPage = location.pathname === '/graph';
-  const hideLayout = isAboutPage || isGraphPage;
 
-  if (location.pathname.startsWith('/stories')) {
+  // Check for stylish project
+  const projectSlug = location.pathname.startsWith('/projects/') ? location.pathname.split('/')[2] : null;
+  const project = projectSlug ? projects.find(p => p.slug === projectSlug) : null;
+  const isStylishProject = project?.stylish;
+
+  const hideLayout = isAboutPage || isGraphPage || isStylishProject;
+
+  if (location.pathname.startsWith('/stories') || isStylishProject) {
     return (
       <DndProvider>
         {children}

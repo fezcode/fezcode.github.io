@@ -5,4 +5,7 @@ module.exports = {
   syne: ['Syne', 'sans-serif'],
   outfit: ['Outfit', 'sans-serif'],
   ibmPlexMono: ['IBM Plex Mono', 'monospace'],
+  instrSerif: ['Instrument Serif', 'serif'],
+  instrSans: ['Instrument Sans', 'sans-serif'],
+  nunito: ['Nunito', 'sans-serif'],
 };
