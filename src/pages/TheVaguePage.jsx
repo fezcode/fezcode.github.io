@@ -92,7 +92,7 @@ const TheVaguePage = () => {
 
     {/* Sidebar Area for Collapsed State */}
     <div
-     className={`fixed top-0 left-0 bottom-0 w-[3.55556rem] z-[700] border-r ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} hidden md:block bg-inherit`}
+     className={`fixed top-0 left-0 bottom-0 w-[4rem] z-[700] border-r ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} hidden md:block bg-inherit`}
     />
 
     {/* Loader */}
@@ -103,8 +103,8 @@ const TheVaguePage = () => {
     </div>
 
     {/* HEADER */}
-    <header className="c-header md:!left-[3.55556rem]">
-        <div className="c-header_inner md:!left-[3.55556rem]">
+    <header className="c-header md:!left-[4rem]">
+        <div className="c-header_inner md:!left-[4rem]">
             <p className="c-header_heading font-instr-sans">
                 <Link className="c-header_link" to="/">Fezcodex</Link> + <span className="c-header_link">The Vague</span>
             </p>
@@ -175,7 +175,7 @@ const TheVaguePage = () => {
     </div>
 
     {/* MAIN CONTENT */}
-    <div className="o-scroll h-screen overflow-y-auto overflow-x-hidden md:pl-[3.55556rem]">
+    <div className="o-scroll h-screen overflow-y-auto overflow-x-hidden md:pl-[4rem]">
         <main>
             <div className="c-newspaper">
                 <div className="c-newspaper_container !pb-0">
