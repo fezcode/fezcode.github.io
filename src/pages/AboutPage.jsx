@@ -12,8 +12,6 @@ import {
   BookBookmarkIcon,
   IdentificationCardIcon,
 } from '@phosphor-icons/react';
-import CommandPalette from '../components/CommandPalette';
-import { useCommandPalette } from '../context/CommandPaletteContext';
 import NeuromancerHUD from './about-views/NeuromancerHUD';
 import SystemArchitecture from './about-views/SystemArchitecture';
 import MindMapConstellation from './about-views/MindMapConstellation';
@@ -64,7 +62,6 @@ const AboutPage = () => {
   const validViews = ['dossier', 'hud', 'blueprint', 'map', 'brutalist', 'skills'];
 
   const { unlockAchievement } = useAchievements();
-  const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
 
   useEffect(() => {
     unlockAchievement('curious_soul');
@@ -169,7 +166,6 @@ const AboutPage = () => {
 
       {/* Switcher Controls */}
       <ViewSwitcher currentView={view} />
-      <CommandPalette isOpen={isPaletteOpen} setIsOpen={setIsPaletteOpen} />
     </div>
   );
 };

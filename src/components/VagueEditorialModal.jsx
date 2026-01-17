@@ -38,14 +38,14 @@ const VagueEditorialModal = ({
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header / Top Bar */}
-            <div className={`flex items-center justify-between p-6 border-b ${isInvert ? 'border-white/10' : 'border-black/10'}`}>
+            <div className={`flex items-center justify-between p-6 border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
               <div className="flex flex-col">
                 <span className="font-instr-sans text-[10px] uppercase tracking-[0.3em] opacity-50 mb-1">Issue Details</span>
                 <span className="font-instr-sans text-[11px] font-black uppercase tracking-widest">{date}</span>
               </div>
               <button
                 onClick={onClose}
-                className={`p-2 transition-transform hover:rotate-90 duration-300 ${isInvert ? 'text-white' : 'text-black'}`}
+                className={`p-2 transition-transform hover:rotate-90 duration-300 ${isInvert ? 'text-[#f4f4f4]' : 'text-[#1a1a1a]'}`}
               >
                 <XIcon weight="bold" size={24} />
               </button>
@@ -64,7 +64,7 @@ const VagueEditorialModal = ({
                             ? 'grayscale invert contrast-125'
                             : 'grayscale contrast-125'}`}
                       />
-                      <div className={`absolute inset-0 pointer-events-none border border-current opacity-10`} />
+                      <div className={`absolute inset-0 pointer-events-none border ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`} />
                    </div>
                 )}
 
@@ -72,7 +72,7 @@ const VagueEditorialModal = ({
                   {title}
                 </h2>
 
-                <div className={`w-12 h-px mx-auto mb-12 ${isInvert ? 'bg-white/20' : 'bg-black/20'}`} />
+                <div className={`w-12 h-px mx-auto mb-12 ${isInvert ? 'bg-[#f4f4f4]/25' : 'bg-[#1a1a1a]/25'}`} />
 
                 <p className="text-xl md:text-2xl font-instr-serif leading-relaxed italic opacity-80 mb-16">
                   {description}

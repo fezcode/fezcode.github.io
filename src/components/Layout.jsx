@@ -59,13 +59,51 @@ const Layout = ({
 
   const hideLayout = isAboutPage || isGraphPage || isSpecialProject || isTheVaguePage;
 
-  if (location.pathname.startsWith('/stories') || isSpecialProject) {
-    return (
-      <DndProvider>
-        {children}
-      </DndProvider>
-    );
-  }
+  const mainContent = (location.pathname.startsWith('/stories')) ? (
+    <DndProvider>
+      {children}
+    </DndProvider>
+  ) : (
+    <div className="bg-[#050505] min-h-screen font-sans flex">
+      {!hideLayout &&
+        (sidebarMode === 'classic' ? (
+          <ClassicSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+            sidebarColor={sidebarColor}
+          />
+        ) : (
+          <BrutalistSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
+        ))}
+      <div
+        className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !hideLayout ? (sidebarMode === 'classic' ? 'md:ml-64' : 'md:ml-72') : 'md:ml-0'}`}
+      >
+        {!hideLayout && (
+          <Navbar
+            toggleSidebar={toggleSidebar}
+            isSidebarOpen={isSidebarOpen}
+            isSearchVisible={isSearchVisible}
+            toggleSearch={toggleSearch}
+          />
+        )}
+        {!hideLayout && isSearchVisible && (
+          <Search isVisible={isSearchVisible} />
+        )}
+        <main className="flex-grow">{children}</main>
+        {!hideLayout &&
+          location.pathname !== '/projects' &&
+          location.pathname !== '/blog' &&
+          location.pathname !== '/commands' && <Footer />}
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -82,45 +120,7 @@ const Layout = ({
         toggleBSOD={toggleBSOD}
       />
       {!hideLayout && <SidePanel />}
-      <div className="bg-[#050505] min-h-screen font-sans flex">
-        {!hideLayout &&
-          (sidebarMode === 'classic' ? (
-            <ClassicSidebar
-              isOpen={isSidebarOpen}
-              toggleSidebar={toggleSidebar}
-              toggleModal={toggleModal}
-              setIsPaletteOpen={setIsPaletteOpen}
-              sidebarColor={sidebarColor}
-            />
-          ) : (
-            <BrutalistSidebar
-              isOpen={isSidebarOpen}
-              toggleSidebar={toggleSidebar}
-              toggleModal={toggleModal}
-              setIsPaletteOpen={setIsPaletteOpen}
-            />
-          ))}
-        <div
-          className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !hideLayout ? (sidebarMode === 'classic' ? 'md:ml-64' : 'md:ml-72') : 'md:ml-0'}`}
-        >
-          {!hideLayout && (
-            <Navbar
-              toggleSidebar={toggleSidebar}
-              isSidebarOpen={isSidebarOpen}
-              isSearchVisible={isSearchVisible}
-              toggleSearch={toggleSearch}
-            />
-          )}
-          {!hideLayout && isSearchVisible && (
-            <Search isVisible={isSearchVisible} />
-          )}
-          <main className="flex-grow">{children}</main>
-          {!hideLayout &&
-            location.pathname !== '/projects' &&
-            location.pathname !== '/blog' &&
-            location.pathname !== '/commands' && <Footer />}
-        </div>
-      </div>
+      {mainContent}
     </>
   );
 };

@@ -120,20 +120,19 @@ hr { margin-top: 0; margin-bottom: 0; border-top: 1px solid rgba(26, 26, 26, .25
 .has-nav-open .c-nav { transform: translate3d(100%,0,0); background-color: #f4f4f4 }
 .has-nav-open.is-invert .c-nav { background-color: #1a1a1a }
 
-.c-navButton { position: fixed; width: 3.55556rem; z-index: 2000; top: 3.55556rem; bottom: 0; left: 0; background: none; border: none; mix-blend-mode: difference; color: #fff; }
-@media (max-width:699px) { .c-navButton { top: 0; right: 6px; height: 3.55556rem; left: auto; mix-blend-mode: normal; color: #1a1a1a; z-index: 2000; } }
+.c-navButton { position: fixed; width: 3.55556rem; z-index: 2000; top: 3.55556rem; bottom: 0; left: 0; background: none; border: none; color: inherit; }
+@media (max-width:699px) { .c-navButton { top: 0; right: 6px; height: 3.55556rem; left: auto; color: #1a1a1a; z-index: 2000; } }
 .is-invert .c-navButton { color: #f4f4f4; }
 .has-nav-open .c-navButton { color: #1a1a1a !important; }
 .has-nav-open.is-invert .c-navButton { color: #f4f4f4 !important; }
 .c-navButton_wrap { position: absolute; top: 0; bottom: 0; left: 0; width: 3.55556rem; display: flex; justify-content: center; align-items: center; flex-direction: column; }
-.has-nav-open .c-navButton { transform: translateX(34vw) translateX(-3.55556rem); mix-blend-mode: normal; }
+.has-nav-open .c-navButton { transform: translateX(34vw) translateX(-3.55556rem); }
 @media (max-width:1199px) { .has-nav-open .c-navButton { transform: translateX(50vw) translateX(-3.55556rem) } }
 @media (max-width:699px) { 
   .has-nav-open .c-navButton { transform: none; color: transparent !important; pointer-events: none; } 
 }
 
-.c-navButton_lines:after, .c-navButton_lines:before { content: ""; display: block; width: 1.55556rem; border-bottom: 2px solid #1a1a1a; }
-.is-invert .c-navButton_lines:after, .is-invert .c-navButton_lines:before { border-bottom-color: #f4f4f4; }
+.c-navButton_lines:after, .c-navButton_lines:before { content: ""; display: block; width: 1.55556rem; border-bottom: 2px solid currentColor; }
 .c-navButton_lines:before { margin-bottom: .38889rem }
 .has-nav-open .c-navButton_lines:after, .has-nav-open .c-navButton_lines:before { display: none; }
 
@@ -150,8 +149,8 @@ hr { margin-top: 0; margin-bottom: 0; border-top: 1px solid rgba(26, 26, 26, .25
 .c-nav_label { position: absolute; bottom: 1.66667rem; font-family: 'Instrument Sans', sans-serif; writing-mode: vertical-rl; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; }
 @media (max-width:699px) { .c-nav_label { display: none } }
 
-.c-nav_panel { height: 100%; border-right: 1px solid rgba(26,26,26,.25); color: #1a1a1a; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; overflow-y: auto; font-family: 'Instrument Sans', sans-serif; }
-.is-invert .c-nav_panel { color: #f4f4f4; border-right-color: hsla(0, 0%, 95.7%, .25); }
+.c-nav_panel { height: 100%; color: #1a1a1a; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; overflow-y: auto; font-family: 'Instrument Sans', sans-serif; }
+.is-invert .c-nav_panel { color: #f4f4f4; }
 .c-nav_panel_main { font-size: 3rem; font-weight: 200; text-transform: uppercase; letter-spacing: -0.02em; }
 .c-nav_panel_list { margin: 2rem 0 2rem 1rem; }
 .c-nav_panel_item { margin-bottom: 1.5rem; }
