@@ -74,7 +74,7 @@ const EditorialProjectDetailsPage = () => {
         keywords={projectMetadata?.technologies}
       />
 
-      <EditorialGridBackground />
+      <EditorialGridBackground image={projectMetadata?.backgroundImage} />
 
       <div className="relative z-10 flex flex-col min-h-screen">
         <EditorialNavbar title={projectMetadata?.title || 'Project'} repoLink={projectMetadata?.repo_link} />
@@ -87,7 +87,7 @@ const EditorialProjectDetailsPage = () => {
            <EditorialSocial content={content.social} />
         </main>
 
-        <EditorialFooter content={content.footer} />
+        <EditorialFooter content={content.footer} photoCredit={{ text: projectMetadata?.photoCreditText, link: projectMetadata?.photoCreditLink }} />
       </div>
     </div>
   );

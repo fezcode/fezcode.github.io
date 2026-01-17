@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditorialFooter = ({ content }) => {
+const EditorialFooter = ({ content, photoCredit }) => {
   return (
     <footer className="border-t border-white/10 py-16 bg-black z-10 relative">
       <div className="max-w-[2400px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -9,11 +9,17 @@ const EditorialFooter = ({ content }) => {
            <span>© {new Date().getFullYear()} Handcrafted by Fezcode &nbsp; · &nbsp; Built with love and code.</span>
         </div>
 
-        <div className="text-[10px] text-white/30 hover:text-white/50 transition-colors uppercase tracking-wider ml-auto">
-            <a href="https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE" target="_blank" rel="noopener noreferrer">
-              Photo by Tim Simon
-            </a>
-        </div>
+        {photoCredit?.text && (
+            <div className="text-[10px] text-white/30 hover:text-white/50 transition-colors uppercase tracking-wider ml-auto">
+                {photoCredit.link ? (
+                    <a href={photoCredit.link} target="_blank" rel="noopener noreferrer">
+                    {photoCredit.text}
+                    </a>
+                ) : (
+                    <span>{photoCredit.text}</span>
+                )}
+            </div>
+        )}
 
       </div>
     </footer>

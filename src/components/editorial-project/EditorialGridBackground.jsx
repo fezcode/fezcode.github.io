@@ -1,6 +1,6 @@
 import React from 'react';
 
-const EditorialGridBackground = () => {
+const EditorialGridBackground = ({ image }) => {
   return (
     <div aria-hidden="true" className="fixed top-0 left-0 w-full h-full pointer-events-none z-0">
       <svg
@@ -16,12 +16,14 @@ const EditorialGridBackground = () => {
         <line className="stroke-white/10" x1="2354.3941" y1="0" x2="2354.3941" y2="3344" strokeWidth="1" />
       </svg>
             {/* Background Image Overlay */}
-            <img
-              src="/images/bg/tim_simon.jpg"
-              alt=""
-              className="absolute top-0 left-0 w-full h-full object-cover mix-blend-normal opacity-40"
-              style={{ maskImage: 'linear-gradient(to bottom, #000 80%, transparent 100%)' }}
-            />    </div>
+            {image && (
+              <img
+                src={image}
+                alt=""
+                className="absolute top-0 left-0 w-full h-full object-cover mix-blend-normal opacity-40"
+                style={{ maskImage: 'linear-gradient(to bottom, #000 80%, transparent 100%)' }}
+              />
+            )}    </div>
   );
 };
 

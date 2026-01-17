@@ -61,6 +61,9 @@
     (shortDescription) Dush (Dumb Shell) is a custom terminal shell written in Go, intended as a Bash alternative and a learning platform for shell mechanics.
     (date) 2026-01-12
     (image) https://raw.githubusercontent.com/fezcode/dush/main/title-card.png
+    (backgroundImage) /images/bg/tim_simon.jpg
+    (photoCreditText) Photo by Tim Simon
+    (photoCreditLink) https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE
 
   > (project)
     (slug) nocturnote
