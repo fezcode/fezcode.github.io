@@ -149,7 +149,16 @@ hr { margin-top: 0; margin-bottom: 0; border-top: 1px solid rgba(26, 26, 26, .25
 .c-nav_label { position: absolute; bottom: 1.66667rem; font-family: 'Instrument Sans', sans-serif; writing-mode: vertical-rl; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.1em; }
 @media (max-width:699px) { .c-nav_label { display: none } }
 
-.c-nav_panel { height: 100%; color: #1a1a1a; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; overflow-y: auto; font-family: 'Instrument Sans', sans-serif; }
+.c-nav_panel { 
+    height: 100%; 
+    color: #1a1a1a; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    padding: 2rem 2rem 2rem 5rem; 
+    overflow-y: auto; 
+    font-family: 'Instrument Sans', sans-serif; 
+}
 .is-invert .c-nav_panel { color: #f4f4f4; }
 .c-nav_panel_main { font-size: 3rem; font-weight: 200; text-transform: uppercase; letter-spacing: -0.02em; }
 .c-nav_panel_list { margin: 2rem 0 2rem 1rem; }
