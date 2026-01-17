@@ -41,6 +41,7 @@ const Layout = ({
   const { projects } = useProjects();
 
   // Check if we are on the about page or graph page to conditionally render layout elements
+  const isTheVaguePage = location.pathname.startsWith('/the-vague');
   const isAboutPage = location.pathname.startsWith('/about');
   const isGraphPage = location.pathname === '/graph';
 
@@ -56,7 +57,7 @@ const Layout = ({
         projectStyle === 'museum'
   ;
 
-  const hideLayout = isAboutPage || isGraphPage || isSpecialProject;
+  const hideLayout = isAboutPage || isGraphPage || isSpecialProject || isTheVaguePage;
 
   if (location.pathname.startsWith('/stories') || isSpecialProject) {
     return (
