@@ -1,7 +1,6 @@
-import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
-const EditorialInstall = ({ content }) => {
+const EditorialInstall = ({ content, platforms }) => {
   if (!content) return null;
 
   return (
@@ -17,15 +16,11 @@ const EditorialInstall = ({ content }) => {
                 Platform Support
               </h3>
               <div className="flex flex-wrap gap-2">
-                 <div className="border border-white/20 text-white px-4 py-2 rounded select-none cursor-default">
-                   Windows
-                 </div>
-                 <div className="border border-white/20 text-white px-4 py-2 rounded select-none cursor-default">
-                   Linux
-                 </div>
-                 <div className="border border-white/20 text-white px-4 py-2 rounded select-none cursor-default">
-                   macOS
-                 </div>
+                 {platforms.split('\n').map((platform, idx) => (
+                   <div key={idx} className="border border-white/20 text-white px-4 py-2 rounded select-none cursor-default">
+                     {platform}
+                   </div>
+                 ))}
               </div>
             </div>
 

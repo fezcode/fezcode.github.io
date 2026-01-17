@@ -24,6 +24,7 @@ const EditorialProjectDetailsPage = () => {
     social: '',
     description: '',
     footer: '',
+    platforms: '',
   });
   const [loading, setLoading] = useState(true);
 
@@ -32,7 +33,7 @@ const EditorialProjectDetailsPage = () => {
       try {
         const productSlug = slug || 'fezcodex';
 
-        const files = ['hero', 'features', 'terminal', 'install', 'social', 'description', 'footer'];
+        const files = ['hero', 'features', 'terminal', 'install', 'social', 'description', 'footer', 'platforms'];
         const promises = files.map(file =>
           fetch(`/projects/${productSlug}/${file}.txt`)
             .then(res => res.ok ? res.text() : '')
@@ -83,7 +84,7 @@ const EditorialProjectDetailsPage = () => {
            <EditorialHero content={content.hero} repoLink={projectMetadata?.repo_link} title={projectMetadata?.title} />
            <EditorialTerminal content={content.terminal} />
            <EditorialDescription content={content.description} />
-           <EditorialInstall content={content.install} />
+           <EditorialInstall content={content.install} platforms={content.platforms} />
            <EditorialSocial content={content.social} />
         </main>
 

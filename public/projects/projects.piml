@@ -35,6 +35,7 @@
   > (project)
     (slug) bm
     (title) bm - bookmark manager
+    (style) editorial
     (size) 1
     (repo_link) https://github.com/fezcode/bm
     (pinned) true
@@ -45,6 +46,9 @@
     (shortDescription) BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
     (date) 2025-11-06
     (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (backgroundImage) /images/bg/nik.jpg
+    (photoCreditText) Photo by Nik on Unsplash
+    (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
 
   > (project)
     (slug) dush
