@@ -1,0 +1,9 @@
+## Overview
+
+BM is a command-line utility designed for speed and simplicity. Built in Rust, it provides a fast way to manage and navigate your most frequent terminal paths.
+
+## Key Features
+
+- **Blazing Fast**: Written in Rust for near-instant execution.
+- **TOML Store**: Uses a standard TOML file for easy manual editing if needed.
+- **Minimalist**: Focuses on doing one thing extremely well.

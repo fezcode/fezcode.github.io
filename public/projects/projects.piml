@@ -119,6 +119,7 @@
   > (project)
     (slug) yap
     (title) yap
+    (style) minimal-modern
     (size) 1
     (repo_link) https://github.com/fezcode/yap
     (pinned) false
@@ -130,7 +131,7 @@
       > Audio
     (shortDescription) A lightweight, terminal-based YouTube audio player written in Go with synced lyrics and advanced playback controls.
     (date) 2026-01-12
-    (image) /images/projects/yap-banner.webp
+    (image) /images/projects/yap/yap-banner.webp
 
   > (project)
     (slug) go-piml
