@@ -184,7 +184,7 @@ hr { margin-top: 0; margin-bottom: 0; border-top: 1px solid rgba(26, 26, 26, .25
 
 /* Button Styles */
 .c-button {
-  position: relative; height: 2.66667rem; padding: 0 1.33333rem; border-radius: 1.38889rem;
+  position: relative; height: 2.66667rem; padding: 0 1.33333rem; border-radius: 0;
   font-family: 'Instrument Sans', sans-serif; display: inline-flex; align-items: center; justify-content: center;
   border: 2px solid #1a1a1a; color: #1a1a1a;
 }

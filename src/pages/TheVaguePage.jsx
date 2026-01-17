@@ -130,7 +130,7 @@ const TheVaguePage = () => {
                                                 </button>
                                             </div>
                                             <div className="c-nav_panel_main font-instr-sans">
-                                                Archive Index                                                            <ol className="c-nav_panel_list font-instr-sans">
+                                                Collection Index                                                            <ol className="c-nav_panel_list font-instr-sans">
                                                                 {sortedIssues.map((issue, idx) => (
                                                                     <li key={issue.id || idx} className="c-nav_panel_item group">
                                                                         <button
@@ -167,41 +167,67 @@ const TheVaguePage = () => {
                 <div className="o-scroll h-screen overflow-y-auto overflow-x-hidden">
                     <main>
                                         {/* HERO / NEWSPAPER SECTION */}
-                                        {latestIssue && (
-                                            <div id="introduction">
-                                                <div className="c-newspaper">
-                                                    <div className="c-newspaper_container">
+                                        <div className="c-newspaper">
+                                            <div className="c-newspaper_container">
+                                                {latestIssue && (
+                                                    <div id="introduction">
                                                         <div className="o-container pt-24 md:pt-32">
                                                                                                 <Link
                                                                                                     to="/"
                                                                                                     className="c-nav_panel_link inline-flex items-center gap-2 mb-12"
                                                                                                 >
                                                                                                     <span className="c-nav_panel_label -under font-instr-sans uppercase tracking-[0.3em] text-[10px] font-black">← Back to Fezcodex</span>
-                                                                                                </Link>                                            <header className="c-newspaper_header">                                        <p className="c-newspaper_header_subtitle font-instr-sans uppercase tracking-[0.2em] text-[11px] opacity-50">Issue No. {issues.length} {'//'} {latestIssue.date}</p>
-                                        <h1 className="c-newspaper_header_title font-instr-serif italic">
-                                            {latestIssue.title}
-                                        </h1>
-                                        <div className="c-newspaper_header_info font-instr-sans uppercase tracking-widest text-[10px] font-bold">
-                                            <p>Volumes</p>
-                                            <p>Latest Artifact</p>
-                                        </div>
-                                    </header>
-                                    <div className="c-newspaper_intro font-instr-serif italic">
-                                        <p>
-                                            {latestIssue.description}
-                                        </p>
-                                    </div>
+                                                                                                </Link>                                            <header className="c-newspaper_header">
+                                                <p className="c-newspaper_header_subtitle font-instr-sans uppercase tracking-[0.2em] text-[11px] opacity-50">Issue No. {issues.length} {'//'} {latestIssue.date}</p>
+                                                <h1 className="c-newspaper_header_title font-instr-serif italic">
+                                                    {latestIssue.title}
+                                                </h1>
+                                                <div className="c-newspaper_header_info font-instr-sans uppercase tracking-widest text-[10px] font-bold">
+                                                    <p>Volumes</p>
+                                                    <p>Latest Publication</p>
+                                                </div>
+                                            </header>
+                                            <div className="c-newspaper_intro font-instr-serif italic">
+                                                <p>
+                                                    {latestIssue.description}
+                                                </p>
+                                            </div>
 
-                                    <div className="mt-8 font-instr-sans pb-20 text-center">
-                                        <button className="c-button -black" onClick={() => handleIssueClick(latestIssue)}>
-                                            <span className="c-button_label uppercase tracking-widest text-xs font-black">Open Issue Artifact</span>
-                                        </button>
+                                            <div className="mt-8 font-instr-sans pb-20 text-center">
+                                                <button className="c-button -whiteInvert group" onClick={() => handleIssueClick(latestIssue)}>
+                                                    <span className="c-button_label uppercase tracking-widest text-xs font-black">View Issue</span>
+                                                </button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
+                                )}
+
+                                {/* ARCHIVE LIST SECTION */}
+                                <hr className="w-full border-t border-current border-opacity-20 !ml-0" />
+                                <section className="pb-32 o-container relative z-10">
+                                    <div className="pt-12">
+                                        <h2 className="font-instr-sans uppercase tracking-[0.3em] text-[11px] mb-16 opacity-70 font-black">Issue Collection</h2>
+                                        <div className="flex flex-col">
+                                            {sortedIssues.map((issue, idx) => (
+                                                <button
+                                                    key={issue.id || idx}
+                                                    onClick={() => handleIssueClick(issue)}
+                                                    className="flex flex-col md:flex-row md:items-baseline justify-between group border-b border-current border-opacity-10 py-8 hover:opacity-50 transition-all text-left"
+                                                >
+                                                    <div className="flex items-baseline gap-6">
+                                                        <span className="font-instr-sans text-[10px] opacity-50">0{issues.length - idx}</span>
+                                                        <span className="font-instr-serif italic text-4xl md:text-7xl leading-tight">{issue.title}</span>
+                                                    </div>
+                                                    <div className="flex flex-col md:text-right mt-4 md:mt-0">
+                                                        <span className="font-instr-sans text-[10px] uppercase tracking-[0.2em] font-bold">{issue.date}</span>
+                                                        <span className="font-instr-sans text-[9px] uppercase tracking-widest opacity-60 mt-1">Read Now</span>
+                                                    </div>
+                                                </button>
+                                            ))}
+                                        </div>
+                                    </div>
+                                </section>                    </div>
+                </div>
             </main>
         </div>
 

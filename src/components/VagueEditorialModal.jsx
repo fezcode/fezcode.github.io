@@ -40,7 +40,7 @@ const VagueEditorialModal = ({
             {/* Header / Top Bar */}
             <div className={`flex items-center justify-between p-6 border-b ${isInvert ? 'border-white/10' : 'border-black/10'}`}>
               <div className="flex flex-col">
-                <span className="font-instr-sans text-[10px] uppercase tracking-[0.3em] opacity-50 mb-1">Archive Record</span>
+                <span className="font-instr-sans text-[10px] uppercase tracking-[0.3em] opacity-50 mb-1">Issue Details</span>
                 <span className="font-instr-sans text-[11px] font-black uppercase tracking-widest">{date}</span>
               </div>
               <button
@@ -54,6 +54,20 @@ const VagueEditorialModal = ({
             {/* Content Area */}
             <div className="p-8 md:p-16 flex-1 overflow-y-auto custom-scrollbar">
               <div className="max-w-2xl mx-auto text-center">
+                {item.image && (
+                   <div className="mb-12 relative group">
+                      <img
+                        src={item.image}
+                        alt={title}
+                        className={`w-full max-w-sm mx-auto shadow-2xl transition-all duration-700
+                          ${isInvert
+                            ? 'grayscale invert contrast-125'
+                            : 'grayscale contrast-125'}`}
+                      />
+                      <div className={`absolute inset-0 pointer-events-none border border-current opacity-10`} />
+                   </div>
+                )}
+
                 <h2 className="text-5xl md:text-7xl font-instr-serif italic leading-none mb-12">
                   {title}
                 </h2>
@@ -70,19 +84,16 @@ const VagueEditorialModal = ({
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`group flex items-center gap-4 px-10 py-5 transition-all duration-300 border-2
-                        ${isInvert
-                          ? 'bg-white text-black border-white hover:bg-transparent hover:text-white'
-                          : 'bg-black text-white border-black hover:bg-transparent hover:text-black'}`}
+                      className="c-button -whiteInvert !h-auto !py-4 !px-10 group"
                     >
-                      <span className="font-instr-sans font-black text-xs uppercase tracking-[0.3em]">
-                        {item.actionLabel || "Download Artifact"}
+                      <span className="c-button_label uppercase tracking-[0.3em] text-xs font-black flex items-center gap-4">
+                        Download PDF
+                        <DownloadSimpleIcon weight="bold" size={20} className="group-hover:translate-y-1 transition-transform" />
                       </span>
-                      <DownloadSimpleIcon weight="bold" size={20} className="group-hover:translate-y-1 transition-transform" />
                     </a>
 
                     <p className="font-instr-sans text-[9px] uppercase tracking-[0.2em] opacity-40">
-                      Format: Portable Document Format (PDF)
+                      Format: PDF Document
                     </p>
                   </div>
                 )}
