@@ -83,167 +83,171 @@ const TheVaguePage = () => {
 
   return (
     <div className={`vague-editorial ${isInvert ? 'is-invert bg-[#1a1a1a] text-[#f4f4f4]' : 'bg-[#f4f4f4] text-[#1a1a1a]'} ${isNavOpen ? 'has-nav-open' : ''} is-loaded font-instr-serif transition-colors duration-500 min-h-screen`}>
-       <Seo
-        title="The Vague | Fezcodex"
-        description="Issues of The Vague. A collection of thoughts and whispers."
-        keywords={['Fezcodex', 'The Vague', 'PDF', 'zine', 'editorial']}
-        image="/images/asset/the-vague-page.webp"
-       />
+    <Seo
+    title="The Vague | Fezcodex"
+    description="Issues of The Vague. A collection of thoughts and whispers."
+    keywords={['Fezcodex', 'The Vague', 'PDF', 'zine', 'editorial']}
+    image="/images/asset/the-vague-page.webp"
+    />
 
-       {/* Sidebar Area for Collapsed State */}
-       <div
-         className={`fixed top-0 left-0 bottom-0 w-[3.55556rem] z-[700] border-r ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} hidden md:block bg-inherit`}
-       />
+    {/* Sidebar Area for Collapsed State */}
+    <div
+     className={`fixed top-0 left-0 bottom-0 w-[3.55556rem] z-[700] border-r ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} hidden md:block bg-inherit`}
+    />
 
-       {/* Loader */}
-       <div className="c-loader">
-            <div className="c-loader_spinner font-instr-serif">
-                <span>The Vague</span>
-            </div>
+    {/* Loader */}
+    <div className="c-loader">
+        <div className="c-loader_spinner font-instr-serif">
+            <span>The Vague</span>
+        </div>
+    </div>
+
+    {/* HEADER */}
+    <header className="c-header md:!left-[3.55556rem]">
+        <div className="c-header_inner md:!left-[3.55556rem]">
+            <p className="c-header_heading font-instr-sans">
+                <Link className="c-header_link" to="/">Fezcodex</Link> + <span className="c-header_link">The Vague</span>
+            </p>
+            <h1 className="c-header_name font-instr-serif">
+                <a className="c-header_link" href="#introduction">Editorial Collection</a>
+            </h1>
         </div>
 
-        {/* HEADER */}
-        <header className="c-header md:!left-[3.55556rem]">
-            <div className="c-header_inner md:!left-[3.55556rem]">
-                <p className="c-header_heading font-instr-sans">
-                    <Link className="c-header_link" to="/">Fezcodex</Link> + <span className="c-header_link">The Vague</span>
-                </p>
-                <h1 className="c-header_name font-instr-serif">
-                    <a className="c-header_link" href="#introduction">Editorial Collection</a>
-                </h1>
-            </div>
-
-            <div className="c-header_buttons font-instr-sans">
-                <button className="c-header_invert" type="button" onClick={toggleInvert}>
-                    <span className="c-header_link">Invert Colors</span>
-                    <span className="c-header_invert_dot"></span>
-                </button>
-                <button className="c-button -whiteInvert" onClick={() => setShowTerminal(true)}>
-                    <span className="c-button_label uppercase tracking-widest text-[10px] font-black">Terminal View</span>
-                </button>
-            </div>
-        </header>
-
-        {/* NAVIGATION / TOC */}
-        <div>
-            <div className={`c-nav-bg ${isNavOpen ? 'is-visible' : ''}`} onClick={toggleNav}></div>
-            <nav className={`c-nav border-r ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} bg-inherit`}>
-                <div className="c-nav_panel">
-                    <div className="md:hidden flex justify-end mb-4">
-                        <button onClick={toggleNav} className="p-2">
-                            <XIcon size={24} weight="bold" />
-                        </button>
-                    </div>
-                    <div className="c-nav_panel_main font-instr-sans">
-                        Collection Index
-                        <ol className="c-nav_panel_list font-instr-sans">
-                            {sortedIssues.map((issue, idx) => (
-                                <li key={issue.id || idx} className="c-nav_panel_item group">
-                                    <button
-                                        className="c-nav_panel_link text-left flex items-center gap-4"
-                                        onClick={() => {
-                                            handleIssueClick(issue);
-                                            toggleNav();
-                                        }}
-                                    >
-                                        <span className="c-nav_panel_label -under">{issue.title}</span>
-                                    </button>
-                                </li>
-                            ))}
-                        </ol>
-                    </div>
-                    <div className="c-nav_panel_footer font-instr-sans">
-                        <div className="c-nav_panel_links -bold">
-                            <Link className="c-nav_panel_link" to="/">←
-                                <span className="c-nav_panel_label -under">Back to Fezcodex</span>
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <button className="c-navButton" type="button" onClick={toggleNav} aria-label="Menu">
-                <span className="c-navButton_wrap">
-                    <span className="c-navButton_lines">
-                        {isNavOpen ? <XIcon size={24} weight="bold" /> : null}
-                    </span>
-                    <span className="c-nav_label font-instr-sans uppercase tracking-widest text-[10px] font-black">Table of contents</span>
-                </span>
+        <div className="c-header_buttons font-instr-sans">
+            <button className="c-header_invert" type="button" onClick={toggleInvert}>
+                <span className="c-header_link">Invert Colors</span>
+                <span className="c-header_invert_dot"></span>
+            </button>
+            <button className="c-button -whiteInvert" onClick={() => setShowTerminal(true)}>
+                <span className="c-button_label uppercase tracking-widest text-[10px] font-black">Terminal View</span>
             </button>
         </div>
+    </header>
 
-                {/* MAIN CONTENT */}
-                <div className="o-scroll h-screen overflow-y-auto overflow-x-hidden md:pl-[3.55556rem]">
-                    <main>
-                        <div className="c-newspaper">
-                            <div className="c-newspaper_container !pb-0">
-                                {latestIssue && (
-                                    <div id="introduction" className={`border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
-                                        <div className="o-container pt-24 md:pt-32 pb-20">
-                                            <Link
-                                                to="/"
-                                                className="c-nav_panel_link inline-flex items-center gap-2 mb-12"
-                                            >
-                                                <span className="c-nav_panel_label -under font-instr-sans uppercase tracking-[0.3em] text-[10px] font-black">← Back to Fezcodex</span>
-                                            </Link>
-                                            <header className="c-newspaper_header">
-                                                <p className="c-newspaper_header_subtitle font-instr-sans uppercase tracking-[0.2em] text-[11px] opacity-50">Issue No. {issues.length} {'//'} {latestIssue.date}</p>
-                                                <h1 className="c-newspaper_header_title font-instr-serif italic">
-                                                    {latestIssue.title}
-                                                </h1>
-                                                <div className="c-newspaper_header_info font-instr-sans uppercase tracking-widest text-[10px] font-bold">
-                                                    <p>Volumes</p>
-                                                    <p>Latest Publication</p>
-                                                </div>
-                                            </header>
-                                            <div className="c-newspaper_intro font-instr-serif italic">
-                                                <p>
-                                                    {latestIssue.description}
-                                                </p>
-                                            </div>
+    {/* NAVIGATION / TOC */}
+    <div>
+        <div className={`c-nav-bg ${isNavOpen ? 'is-visible' : ''}`} onClick={toggleNav}></div>
+        <nav className={`c-nav border-r ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} bg-inherit`}>
+            <div className="c-nav_panel">
+                <div className="md:hidden flex justify-end mb-4">
+                    <button onClick={toggleNav} className="p-2">
+                        <XIcon size={24} weight="bold" />
+                    </button>
+                </div>
+                <div className="c-nav_panel_main font-instr-sans">
+                    Collection Index
+                    <ol className="c-nav_panel_list font-instr-sans">
+                        {sortedIssues.map((issue, idx) => (
+                            <li key={issue.id || idx} className="c-nav_panel_item group">
+                                <button
+                                    className="c-nav_panel_link text-left flex items-center gap-4"
+                                    onClick={() => {
+                                        handleIssueClick(issue);
+                                        toggleNav();
+                                    }}
+                                >
+                                    <span className="c-nav_panel_label -under">{issue.title}</span>
+                                </button>
+                            </li>
+                        ))}
+                    </ol>
+                </div>
+                <div className="c-nav_panel_footer font-instr-sans">
+                    <div className="c-nav_panel_links -bold">
+                        <Link className="c-nav_panel_link" to="/">←
+                            <span className="c-nav_panel_label -under">Back to Fezcodex</span>
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <button className="c-navButton" type="button" onClick={toggleNav} aria-label="Menu">
+            <span className="c-navButton_wrap">
+                <span className="c-navButton_lines">
+                    {isNavOpen ? <XIcon size={24} weight="bold" /> : null}
+                </span>
+                <span className="c-nav_label font-instr-sans uppercase tracking-widest text-[10px] font-black">Table of contents</span>
+            </span>
+        </button>
+    </div>
 
-                                            <div className="mt-[-4rem] font-instr-sans text-center">
-                                                <button className="c-button -whiteInvert group" onClick={() => handleIssueClick(latestIssue)}>
-                                                    <span className="c-button_label uppercase tracking-widest text-xs font-black">View Publication</span>
-                                                </button>
-                                            </div>
-                                        </div>
+    {/* MAIN CONTENT */}
+    <div className="o-scroll h-screen overflow-y-auto overflow-x-hidden md:pl-[3.55556rem]">
+        <main>
+            <div className="c-newspaper">
+                <div className="c-newspaper_container !pb-0">
+                    {latestIssue && (
+                        <div id="introduction" className={`border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
+                            <div className="o-container pt-24 md:pt-32 pb-20">
+                                <Link
+                                    to="/"
+                                    className="c-nav_panel_link inline-flex items-center gap-2 mb-12"
+                                >
+                                <div className="c-nav_panel_footer font-instr-sans text-xs">
+                                    <Link className="c-nav_panel_link" to="/">←
+                                      <span className="c-nav_panel_label -under">Back to Fezcodex</span>
+                                    </Link>
+                                </div>
+                                </Link>
+                                <header className="c-newspaper_header">
+                                    <p className="c-newspaper_header_subtitle font-instr-sans uppercase tracking-[0.2em] text-[11px] opacity-50">Issue No. {issues.length} {'//'} {latestIssue.date}</p>
+                                    <h1 className="c-newspaper_header_title font-instr-serif italic">
+                                        {latestIssue.title}
+                                    </h1>
+                                    <div className="c-newspaper_header_info font-instr-sans uppercase tracking-widest text-[10px] font-bold">
+                                        <p>Volumes</p>
+                                        <p>Latest Publication</p>
                                     </div>
-                                )}
+                                </header>
+                                <div className="c-newspaper_intro font-instr-serif italic">
+                                    <p>
+                                        {latestIssue.description}
+                                    </p>
+                                </div>
 
-                                {/* ISSUE COLLECTION GRID SECTION */}
-                                <section className="relative z-10 w-full  pb-px !mb-0">
-                                    <div className={`w-full pt-16 pb-16 px-8 md:px-16 border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
-                                        <h2 className="font-instr-sans uppercase tracking-[0.3em] text-[11px] opacity-70 font-black">Issue Collection</h2>
-                                    </div>
-                                    <div className={`grid grid-cols-1 md:grid-cols-3 w-full border-l ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
-                                        {sortedIssues.map((issue, idx) => (
-                                            <button
-                                                key={issue.id || idx}
-                                                onClick={() => handleIssueClick(issue)}
-                                                className={`p-8 md:p-16 flex flex-col justify-between group !border-r !border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} transition-all duration-500 text-left min-h-[550px] w-full
-                                                    ${isInvert ? 'hover:bg-[#f4f4f4] hover:text-[#1a1a1a]' : 'hover:bg-[#1a1a1a] hover:text-[#f4f4f4]'}`}
-                                            >
-                                                <div className="w-full">
-                                                    <span className="font-instr-sans text-[10px] opacity-50 block mb-8 uppercase tracking-widest font-black">No. 0{issues.length - idx}</span>
-                                                    <h3 className="font-instr-serif italic text-6xl md:text-8xl leading-[0.9] mb-12 group-hover:translate-x-4 transition-transform duration-700 w-full">
-                                                        {issue.title}
-                                                    </h3>
-                                                </div>
-                                                <div className="flex flex-col w-full">
-                                                    <div className={`w-16 h-px mb-10 transition-colors ${isInvert ? 'bg-[#f4f4f4]/25 group-hover:bg-[#1a1a1a]/25' : 'bg-[#1a1a1a]/25 group-hover:bg-[#f4f4f4]/25'}`} />
-                                                    <span className="font-instr-sans text-[12px] uppercase tracking-[0.3em] font-black opacity-90">{issue.date}</span>
-                                                    <span className="font-instr-sans text-[10px] uppercase tracking-widest opacity-40 mt-6 flex items-center gap-3 group-hover:opacity-100 transition-all font-black">
-                                                        Read Publication <span className="text-xl">→</span>
-                                                    </span>
-                                                </div>
-                                            </button>
-                                        ))}
-                                    </div>
-                                </section>
+                                <div className="mt-[-4rem] font-instr-sans text-center">
+                                    <button className="c-button -whiteInvert group" onClick={() => handleIssueClick(latestIssue)}>
+                                        <span className="c-button_label uppercase tracking-widest text-xs font-black">View Publication</span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </main>
+                    )}
+
+                    {/* ISSUE COLLECTION GRID SECTION */}
+                    <section className="relative z-10 w-full  pb-px !mb-0">
+                        <div className={`w-full pt-16 pb-16 px-8 md:px-16 border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
+                            <h2 className="font-instr-sans uppercase tracking-[0.3em] text-[11px] opacity-70 font-black">Issue Collection</h2>
+                        </div>
+                        <div className={`grid grid-cols-1 md:grid-cols-3 w-full border-l ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
+                            {sortedIssues.map((issue, idx) => (
+                                <button
+                                    key={issue.id || idx}
+                                    onClick={() => handleIssueClick(issue)}
+                                    className={`p-8 md:p-16 flex flex-col justify-between group !border-r !border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} transition-all duration-500 text-left min-h-[550px] w-full
+                                        ${isInvert ? 'hover:bg-[#f4f4f4] hover:text-[#1a1a1a]' : 'hover:bg-[#1a1a1a] hover:text-[#f4f4f4]'}`}
+                                >
+                                    <div className="w-full">
+                                        <span className="font-instr-sans text-[10px] opacity-50 block mb-8 uppercase tracking-widest font-black">No. 0{issues.length - idx}</span>
+                                        <h3 className="font-instr-serif italic text-6xl md:text-8xl leading-[0.9] mb-12 group-hover:translate-x-4 transition-transform duration-700 w-full">
+                                            {issue.title}
+                                        </h3>
+                                    </div>
+                                    <div className="flex flex-col w-full">
+                                        <div className={`w-16 h-px mb-10 transition-colors ${isInvert ? 'bg-[#f4f4f4]/25 group-hover:bg-[#1a1a1a]/25' : 'bg-[#1a1a1a]/25 group-hover:bg-[#f4f4f4]/25'}`} />
+                                        <span className="font-instr-sans text-[12px] uppercase tracking-[0.3em] font-black opacity-90">{issue.date}</span>
+                                        <span className="font-instr-sans text-[10px] uppercase tracking-widest opacity-40 mt-6 flex items-center gap-3 group-hover:opacity-100 transition-all font-black">
+                                            Read Publication <span className="text-xl">→</span>
+                                        </span>
+                                    </div>
+                                </button>
+                            ))}
+                        </div>
+                    </section>
                 </div>
+            </div>
+        </main>
+    </div>
 
         {/* TERMINAL OVERLAY */}
         <AnimatePresence>
