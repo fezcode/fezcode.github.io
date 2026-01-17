@@ -134,9 +134,9 @@ const TheVaguePage = () => {
                         <XIcon size={24} weight="bold" />
                     </button>
                 </div>
-                <div className="c-nav_panel_main font-instr-sans">
+                <div className="c-nav_panel_main font-instr-serif italic">
                     Collection Index
-                    <ol className="c-nav_panel_list font-instr-sans">
+                    <ol className="c-nav_panel_list font-instr-serif not-italic">
                         {sortedIssues.map((issue, idx) => (
                             <li key={issue.id || idx} className="c-nav_panel_item group">
                                 <button
@@ -146,7 +146,10 @@ const TheVaguePage = () => {
                                         toggleNav();
                                     }}
                                 >
-                                    <span className="c-nav_panel_label -under">{issue.title}</span>
+                                  <span className="opacity-30 text-sm font-instr-sans mr-2">
+                                      {String(sortedIssues.length - idx).padStart(2, '0')}
+                                  </span>
+                                  <span className="c-nav_panel_label">{issue.title}</span>
                                 </button>
                             </li>
                         ))}
@@ -213,6 +216,26 @@ const TheVaguePage = () => {
                             </div>
                         </div>
                     )}
+
+                    {/* NEWSPAPER COLUMNS SECTION */}
+                    <section className={`border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
+                        <div className="o-container py-20">
+                            <div className="c-newspaper_columns font-instr-serif text-lg md:text-xl">
+                                <p className="mb-6">
+                                    The Vague is not merely a collection of documents; it is an ongoing exploration into the intersections of digital permanence and ephemeral thought. Each issue represents a localized state of consciousness, captured and formatted for the void. We navigate the silence between the bits, seeking meaning in the static.
+                                </p>
+                                <p className="mb-6 italic">
+                                    "In the garden of forking paths, every decision is a digital signature."
+                                </p>
+                                <p className="mb-6">
+                                    As we progress through the various volumes, the objective remains constant: to document the evolution of the Fezcodex ecosystem. This editorial space serves as a bridge between technical implementation and philosophical inquiry, providing a platform for long-form reflections that transcend the limitations of traditional commits.
+                                </p>
+                                <p>
+                                    Through these pages, we invite you to look closer at the architecture of the unknown. The vague is where clarity begins—a threshold of potential where every whisper carries the weight of a world yet to be built.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
 
                     {/* ISSUE COLLECTION GRID SECTION */}
                     <section className="relative z-10 w-full  pb-px !mb-0">
