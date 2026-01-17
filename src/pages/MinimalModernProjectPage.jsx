@@ -166,7 +166,7 @@ const MinimalModernProjectPage = () => {
             <span className="text-sm font-black uppercase tracking-widest">{activeSection?.id?.toUpperCase()}</span>
           </div>
           <div className={`w-12 h-12 border-2 ${themeClasses.border} flex items-center justify-center font-black`}>
-            {sections.findIndex(s => s.id === activeSectionId) + 1}
+            {activeSectionId ? sections.findIndex(s => s.id === activeSectionId) + 1 : '0'}
           </div>
         </div>
       </div>
@@ -176,7 +176,7 @@ const MinimalModernProjectPage = () => {
           {sections.map((section, idx) => (
             <motion.div
               key={section.id}
-              onMouseEnter={() => setActiveSectionId(section.id)}
+              onClick={() => setActiveSectionId(activeSectionId === section.id ? null : section.id)}
               className="group cursor-pointer relative"
             >
               <div className="flex items-center gap-6">
