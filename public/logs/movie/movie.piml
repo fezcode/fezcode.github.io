@@ -2,6 +2,16 @@
   > (item)
     (category) Movie
     (date) 2026-01-17
+    (link) https://www.imdb.com/title/tt0342258/
+    (director) Louis Leterrier
+    (rating) 3
+    (slug) unleashed-2005
+    (title) Unleashed (2005)
+    (description) A man raised as a fighting dog by a mobster escapes and starts a new life with a blind piano tuner and his stepdaughter, but his past soon catches up with him.
+
+  > (item)
+    (category) Movie
+    (date) 2026-01-17
     (link) https://www.imdb.com/title/tt0356910/
     (director) Doug Liman
     (rating) 4
