@@ -1,0 +1,6 @@
+LABEL: Overview
+SUBTEXT: The Concept
+
+**PIML** is a data serialization format designed for humans first, machines second. It bridges the gap between the strictness of JSON and the ambiguity of YAML, offering a syntax that is readable, writable, and structurally obvious.
+
+> "Data should be beautiful. Structure should be self-evident."

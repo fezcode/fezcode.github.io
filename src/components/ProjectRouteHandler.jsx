@@ -7,6 +7,7 @@ const ProjectPage = lazy(() => import('../pages/ProjectPage'));
 const StylishProjectDetailsPage = lazy(() => import('../pages/StylishProjectDetailsPage'));
 const EditorialProjectDetailsPage = lazy(() => import('../pages/EditorialProjectDetailsPage'));
 const MinimalModernProjectPage = lazy(() => import('../pages/MinimalModernProjectPage'));
+const MuseumProjectPage = lazy(() => import('../pages/MuseumProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -43,6 +44,14 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <MinimalModernProjectPage />
+      </Suspense>
+    );
+  }
+
+  if (projectStyle === 'museum') {
+    return (
+      <Suspense fallback={<Loading />}>
+        <MuseumProjectPage />
       </Suspense>
     );
   }

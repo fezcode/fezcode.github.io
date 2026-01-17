@@ -49,7 +49,12 @@ const Layout = ({
   const project = projectSlug ? projects.find(p => p.slug === projectSlug) : null;
 
   const projectStyle = project?.style || 'default';
-  const isSpecialProject = projectStyle === 'stylish' || projectStyle === 'editorial' || projectStyle === 'minimal-modern';
+  const isSpecialProject =
+        projectStyle === 'stylish' ||
+        projectStyle === 'editorial' ||
+        projectStyle === 'minimal-modern' ||
+        projectStyle === 'museum'
+  ;
 
   const hideLayout = isAboutPage || isGraphPage || isSpecialProject;
 

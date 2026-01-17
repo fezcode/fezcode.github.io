@@ -20,6 +20,7 @@
   > (project)
     (slug) piml
     (title) piml
+    (style) museum
     (size) 1
     (repo_link) https://github.com/fezcode/piml
     (demo_link) /apps/piml-lab
