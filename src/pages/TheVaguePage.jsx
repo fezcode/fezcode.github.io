@@ -249,30 +249,30 @@ const TheVaguePage = () => {
         </main>
     </div>
 
-        {/* TERMINAL OVERLAY */}
-        <AnimatePresence>
-            {showTerminal && (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-[2000]"
-                >
-                    <TheVagueTerminal
-                        issues={sortedIssues}
-                        onExit={() => setShowTerminal(false)}
-                        onOpenIssue={handleIssueClick}
-                    />
-                </motion.div>
-            )}
-        </AnimatePresence>
+    {/* TERMINAL OVERLAY */}
+    <AnimatePresence>
+        {showTerminal && (
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 z-[2000]"
+            >
+                <TheVagueTerminal
+                    issues={sortedIssues}
+                    onExit={() => setShowTerminal(false)}
+                    onOpenIssue={handleIssueClick}
+                />
+            </motion.div>
+        )}
+    </AnimatePresence>
 
-        <VagueEditorialModal
-            isOpen={!!selectedIssue}
-            onClose={() => setSelectedIssue(null)}
-            item={selectedIssue}
-            isInvert={isInvert}
-        />
+    <VagueEditorialModal
+        isOpen={!!selectedIssue}
+        onClose={() => setSelectedIssue(null)}
+        item={selectedIssue}
+        isInvert={isInvert}
+    />
     </div>
   );
 };
