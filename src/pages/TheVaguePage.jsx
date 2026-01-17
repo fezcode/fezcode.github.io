@@ -252,7 +252,7 @@ const TheVaguePage = () => {
                                 >
                                     <div className="w-full">
                                         <span className="font-instr-sans text-[10px] opacity-50 block mb-8 uppercase tracking-widest font-black">No. 0{issues.length - idx}</span>
-                                        <h3 className="font-instr-serif italic text-6xl md:text-8xl leading-[0.9] mb-12 group-hover:translate-x-4 transition-transform duration-700 w-full">
+                                        <h3 className="font-instr-serif italic text-5xl md:text-8xl leading-[0.9] mb-12 group-hover:translate-x-4 transition-transform duration-700 w-full">
                                             {issue.title}
                                         </h3>
                                     </div>
