@@ -201,7 +201,7 @@ const StandardBlogPostPage = () => {
       {/* Reading Progress */}
       <div className="fixed top-0 left-0 w-full h-1 z-[9999] bg-white/5">
         <motion.div
-          className="h-full bg-emerald-500 origin-left"
+          className="h-full bg-emerald-500 origin-left shadow-[0_0_10px_#10b981]"
           style={{ width: `${readingProgress}%` }}
         />
       </div>
