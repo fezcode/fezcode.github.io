@@ -8,6 +8,14 @@
     (link) /projects
 
   > (item)
+    (date) 2026-01-17
+    (title) The Vague: Editorial Refactor
+    (description) Refactored The Vague page to align with the new Editorial design style. The page now features a sophisticated, text-centric layout that emphasizes readability and typographic elegance.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /the_vague
+
+  > (item)
     (date) 2026-01-12
     (title) Major SEO Refactoring: Declarative Metadata
     (description) Executed a site-wide architectural shift from imperative 'useSeo' hooks to a declarative '<Seo />' component system. This transition ensures that React 19 metadata hoisting is correctly utilized during Static Site Generation (SSG) via react-snap, enabling crawlers to capture full SEO payloads before hydration. Optimized 130+ pages and implemented standard path mapping for improved compatibility.
