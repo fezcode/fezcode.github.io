@@ -206,7 +206,7 @@ const EditorialBlogPostPage = () => {
 
       {/* Main Content */}
       <main className="pt-32 pb-20">
-        <div className="max-w-[90rem] mx-auto px-6 md:px-12">
+        <div className="max-w-[90rem] mx-auto px-[25px] md:pl-[5.77rem] md:pr-[2.22rem]">
             <div className={`border-b ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} pb-12 mb-12`}>
                 <div className="flex flex-col items-center text-center">
                     <h1 className="font-instr-serif italic text-6xl md:text-9xl mb-12 leading-[0.8] max-w-6xl tracking-tighter">
@@ -298,15 +298,35 @@ const EditorialBlogPostPage = () => {
                                 )}
                             </figure>
                         ),
-                        h1: ({children}) => <h2 className="text-5xl font-instr-serif mt-20 mb-8 tracking-tight">{children}</h2>,
-                        h2: ({children}) => <h2 className="text-4xl font-instr-serif mt-16 mb-6 tracking-tight">{children}</h2>,
-                        h3: ({children}) => <h3 className="text-3xl font-instr-serif italic mt-12 mb-4 tracking-tight">{children}</h3>,
-                        h4: ({children}) => <h4 className="text-2xl font-instr-serif italic mt-10 mb-4 tracking-tight">{children}</h4>,
+                        h1: ({children}) => (
+                            <div className="mt-20 mb-8">
+                                <h2 className="text-5xl font-instr-serif tracking-tight mb-6">{children}</h2>
+                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
+                            </div>
+                        ),
+                        h2: ({children}) => (
+                            <div className="mt-16 mb-6">
+                                <h2 className="text-4xl font-instr-serif tracking-tight mb-4">{children}</h2>
+                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
+                            </div>
+                        ),
+                        h3: ({children}) => (
+                            <div className="mt-12 mb-4">
+                                <h3 className="text-3xl font-instr-serif italic tracking-tight mb-3">{children}</h3>
+                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
+                            </div>
+                        ),
+                        h4: ({children}) => (
+                            <div className="mt-10 mb-4">
+                                <h4 className="text-2xl font-instr-serif italic tracking-tight mb-3">{children}</h4>
+                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
+                            </div>
+                        ),
                         p: ({ node, children }) => {
                             if (node.children[0].tagName === 'img') {
                                 return <div className="mb-8 last:mb-0">{children}</div>;
                             }
-                            return <p className="mb-8 last:mb-0 leading-[1.6]">{children}</p>;
+                            return <p className="mb-8 last:mb-0 leading-[1.8]">{children}</p>;
                         },
                         blockquote: ({children}) => (
                             <blockquote className={`border-l-4 pl-8 my-12 italic text-3xl font-light ${isInvert ? 'border-white/20 text-white/90' : 'border-black/20 text-black/90'}`}>
@@ -315,14 +335,24 @@ const EditorialBlogPostPage = () => {
                         ),
                         ul: ({children}) => <ul className="list-disc pl-6 my-8 space-y-3">{children}</ul>,
                         ol: ({children}) => <ol className="list-decimal pl-6 my-8 space-y-3">{children}</ol>,
-                        hr: () => <hr className={`my-16 border-t ${isInvert ? 'border-white/10' : 'border-black/10'}`} />,
+                        hr: () => <hr className={`my-16 border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />,
                     }}
                 />
             </div>
 
+            {/* Back to Index Footer */}
+            <div className={`mt-24 pt-12 border-t ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} text-center`}>
+                <Link
+                    to="/blog"
+                    className={`inline-flex items-center gap-2 font-instr-sans text-xl tracking-tight ${isInvert ? 'text-white hover:text-white/70' : 'text-black hover:text-black/70'} transition-opacity`}
+                >
+                    <span className="text-lg">←</span> Back to Blogposts
+                </Link>
+            </div>
+
             {/* Series Navigation */}
             {(prevPost || nextPost) && (
-                <div className={`mt-32 pt-16 border-t ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
+                <div className={`mt-12 pt-16 border-t ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'}`}>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                         {prevPost ? (
                             <Link
