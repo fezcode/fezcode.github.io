@@ -111,6 +111,7 @@ const WelcomePage = () => {
                           variant="brutalist"
                           options={[
                             { label: 'Standard', value: 'standard' },
+                            { label: 'Editorial', value: 'editorial' },
                             { label: 'Dossier', value: 'dossier' },
                             { label: 'Terminal', value: 'terminal' },
                           ]}
