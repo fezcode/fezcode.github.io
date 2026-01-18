@@ -185,7 +185,7 @@ const TerminalGreenBlogPostPage = () => {
             'repeating-linear-gradient(0deg, #fff, #fff 1px, transparent 1px, transparent 2px)',
         }}
       ></div>
-      <div className="fixed top-0 left-0 w-full h-1 bg-emerald-950 z-50">
+      <div className="fixed top-0 left-0 w-full h-1 bg-emerald-950 z-[9999]">
         <div
           className="h-full bg-emerald-500 shadow-[0_0_10px_#10b981]"
           style={{ width: `${readingProgress}%` }}

@@ -325,6 +325,14 @@ const OldBlogPostPage = () => {
               keywords={post.attributes.tags}
             />
 
+            {/* Reading Progress */}
+            <div className="fixed top-0 left-0 w-full h-1 z-[9999] bg-white/5">
+              <div
+                className="h-full bg-emerald-500 origin-left transition-all duration-150"
+                style={{ width: `${readingProgress}%` }}
+              />
+            </div>
+
             <h1 className="text-3xl md:text-5xl font-bold text-emerald-400 mb-6 tracking-tight font-mono">
               {post.attributes.title}
             </h1>

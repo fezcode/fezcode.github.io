@@ -331,6 +331,14 @@ const TerminalBlogPostPage = () => {
         body { background-color: black; }
       `}</style>
 
+      {/* Reading Progress */}
+      <div className="fixed top-0 left-0 w-full h-1 z-[9999] bg-orange-950/20">
+        <div
+          className="h-full bg-orange-500 shadow-[0_0_10px_#f97316]"
+          style={{ width: `${readingProgress}%` }}
+        />
+      </div>
+
       {/* Optional Scanline Effect Overlay */}
       <div
         className="fixed inset-0 pointer-events-none z-50 opacity-20"

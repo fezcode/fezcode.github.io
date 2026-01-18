@@ -199,7 +199,7 @@ const StandardBlogPostPage = () => {
         keywords={post?.attributes?.tags}
       />
       {/* Reading Progress */}
-      <div className="fixed top-0 left-0 w-full h-1 z-50 bg-white/5">
+      <div className="fixed top-0 left-0 w-full h-1 z-[9999] bg-white/5">
         <motion.div
           className="h-full bg-emerald-500 origin-left"
           style={{ width: `${readingProgress}%` }}
