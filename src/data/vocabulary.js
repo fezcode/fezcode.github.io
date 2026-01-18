@@ -63,4 +63,20 @@ export const vocabulary = {
     title: 'Modules vs. Includes',
     loader: () => import('./vocab/modules-vs-includes'),
   },
+  'lingua-franca': {
+    title: 'Lingua Franca',
+    loader: () => import('./vocab/lingua-franca'),
+  },
+  'power-law': {
+    title: 'Power Law (Long-tail)',
+    loader: () => import('./vocab/power-law'),
+  },
+  'box-plot': {
+    title: 'Box Plot',
+    loader: () => import('./vocab/box-plot'),
+  },
+  p99: {
+    title: 'P99 (99th Percentile)',
+    loader: () => import('./vocab/p99'),
+  },
 };

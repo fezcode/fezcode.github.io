@@ -1,0 +1,181 @@
+> This analysis was built by a Software Engineer relying on 8-year-old university memories of statistics.
+> If the math looks wrong, just assume it's a feature, not a bug.
+> You can always contact me.
+
+## Deconstructing Hollywood: A Data Science Journey from Raw Data to p99 Insights
+
+As software engineers, we are used to deterministic systems. If `a = b`, then a equals b.
+Data Science, however, deals with probability, distributions, and noise.
+It's less about "**what is the answer**" and more about "**how confident are we in this trend?**"
+
+Recently, I wanted to bridge my engineering background with data science to answer a simple pop-culture question:
+**How do different movie genres actually perform?**
+
+Are "**Action**" movies inherently rated lower than "**Dramas**"? Is it harder to make a masterpiece "**Horror**" movie than a masterpiece "**Biography**"?
+
+To answer this, I didn't just want to run a script; I wanted to build a production-grade Data Science lab?!. (/s)
+This post details the entire journey—from choosing the modern Python stack and engineering the data pipeline to defining
+the statistical metrics that reveal the "truth" behind average ratings.
+
+## Part 1: The Engineering Foundation
+
+A data project is only as good as its environment. I wanted a setup that was fast, reproducible, and clean.
+
+### The Stack Decision
+
+I chose Python because it is the undisputed **[lingua franca](/vocab/lingua-franca)** of data science.
+The ecosystem (Pandas for data crunching, Seaborn for visualization) is unmatched.
+
+### The Package Manager: Why `uv`?
+
+Traditionally, Python data science relies on Conda because it manages complex C-library dependencies used by
+math libraries like NumPy. However, Conda can be slow and bloated.
+
+For this project, I chose `uv`.
+
+`uv` is a modern, blazing-fast Python package manager written in Rust.
+It replaces `pip`, `poetry`, and `virtualenv`. It resolves dependencies in milliseconds and creates deterministic environments instantly.
+For a project relying on standard wheels like Pandas, `uv` provides a vastly superior developer experience.
+
+```bash
+# Setting up the environment took seconds
+$ uv init movie-analysis
+$ uv python install 3.10
+$ uv add pandas matplotlib seaborn scipy jupyter ipykernel
+```
+
+Then connected VS Code to this `.venv` created by `uv`, giving me a robust Jupyter Notebook experience right in the IDE.
+
+## Part 2: The Data Pipeline (ETL)
+
+I needed data with genres, votes, and ratings, went straight to the source: the **IMDb Non-Commercial Datasets**.
+
+Then I faced a classic data engineering challenge: these are massive TSV (Tab Separated Values) files.
+Loading the entirety of IMDb into RAM on a laptop is a bad idea.
+
+Solution? Build a Python ETL script to handle ingestion smartly:
+
+1. **Stream & Filter**: used Pandas to read the raw files in chunks, filtering immediately for `titleType == 'movie'` and excluding older films. This kept memory usage low.
+2. **Merge**: joined the `title.basics` (genres/names) with `title.ratings` (scores/votes) on their unique IDs.
+3. **The "Explode"**: This was the crucial data transformation step. IMDb lists genres as a single string: "Action,Adventure,Sci-Fi". To analyze by category, I had to split that string and "explode" the dataset, duplicating the movie row for each genre it belongs to.
+
+```python
+# Transforming "Action,Comedy" into two distinct analysis rows
+df['genres'] = df['genres'].str.split(',')
+df_exploded = df.explode('genres')
+```
+
+## Part 3: The Science (Beyond Averages)
+
+With clean data in hand, we moved into a Jupyter Notebook for Exploratory Data Analysis (EDA).
+
+### 1. Removing the Noise (The Long Tail)
+
+If you average every movie on IMDb, your data is polluted by home videos with 5 votes from the director's family.
+In statistics, vote counts often follow a ["Power Law"](/vocab/power-law) or long-tail distribution.
+
+To analyze global sentiment, we had to filter out the noise. We set a threshold, dropping any movie with fewer than 100 votes.
+This ensured our statistical analysis was based on titles with a minimum level of public engagement.
+
+### 2. Visualizing the Truth (The Box Plot)
+
+A simple average rating is misleading. If a genre has many `1/10`s and many `10/10`s, the average is `5/10` - but that doesn't tell the story of how polarizing it is.
+
+I used a [Box Plot](/vocab/box-plot) to visualize the distribution. It shows the median (the center line), the Interquartile Range (the colored box containing the middle 50% of data), and outliers (the dots).
+
+![The Box Plot](/images/posts/wgsiw/boxplot.png)
+
+**Initial Observations:**
+- **Documentary/Biography**: High medians, compact boxes. They are consistently rated highly.
+- **Horror**: The lowest median and a wide spread. It’s very easy to make a bad horror movie.
+
+### 3. The Metrics: Weighted Ratings & p99
+
+To get deeper insights, I needed better math than simple means.
+
+#### Metric A: The Weighted Rating (Bayesian Average)
+
+How do you compare a movie with a 9.0 rating and 105 votes against an 8.2 rating with 500,000 votes? The latter score is more statistically significant.
+
+I adopted IMDb's own **Weighted Rating** formula. This "Bayesian average" pulls a movie's rating toward the global average (C) if it has few votes (v),
+only allowing it to deviate as it gains more votes over a threshold (m).
+
+![Weighted Rating](/images/posts/wgsiw/formula.png)
+
+This provided a fair "Quality Score" for every movie.
+
+#### Metric B: The p99 Ceiling
+
+I wanted to know the "potential" of a genre. Even if most Action movies are mediocre, how good are the very best ones?
+
+For this, I calculated the [99th Percentile (p99)](/vocab/p99) rating for each genre. This is the rating value below which 99% of the genre falls.
+It represents the elite tier, the "Masterpiece Ceiling."
+
+### Part 4: The Deductions (The Gap Analysis)
+
+By combining the Average Weighted Rating (the typical experience) and the p99 Rating (the elite potential), we created a "Gap Analysis" chart.
+
+The dark green bar is the average quality. The total height of the bar is the p99 ceiling. The light green area represents the "Masterpiece Gap".
+
+![Masterpiece Gap](/images/posts/wgsiw/gap.png)
+
+#### The Data Science Deductions
+
+This single chart reveals the "personality" of every genre:
+
+1. **The "Safe Bets" (Documentary, History, Biography)**:
+They have very high averages (tall dark bars) and a small gap to the ceiling.
+_Deduction_: It is difficult to make a poorly rated documentary. Audience selection bias likely plays a role here
+(people only watch docs on topics they already like).
+
+2. **The "High Risk / High Reward" (Horror, Sci-Fi)**: They have the lowest averages (short dark bars),
+indicating the typical output is poor. However, their p99 ceilings remain high.
+_Deduction_: The gap is huge. It is incredibly difficult to execute these genres well, but when it's done right
+(e.g., Alien, The Exorcist), they are revered just as highly as dramas.
+
+3. **The Animation Anomaly**: Animation has a high average and a very high ceiling.
+_Deduction_: Statistically, this is perhaps the most consistently high-quality genre in modern cinema.
+
+## Conclusion
+
+This project demonstrated that with a solid engineering setup using modern tools like `uv`,
+and by applying statistical concepts beyond simple averages, we can uncover nuanced truths hidden in raw data.
+Averages tell you what is probable; distributions and percentiles tell you what is possible.
+
+### Question A: Which genre is "easier" to make? (Action vs. Drama vs. Comedy)
+
+**The Data Verdict:** It is significantly "easier" to make an acceptable **Drama** than an acceptable **Action** or **Comedy** movie.
+
+- **Evidence:** Look at the box plot, kindly.
+  - **Drama** has a high median and a "tight" box (smaller Interquartile Range). This means even "average" Dramas are usually rated around 6.5–7.0. The "floor" is high.
+  - **Action** has a lower median. Action movies require budget, stunts, and effects. If those look cheap, the rating tanks immediately.
+  A bad drama is just "boring" (5/10); a bad action movie looks "broken" (3/10).
+  - **Comedy** is arguably the *hardest* to get a high rating for. Humor is subjective.
+  If a joke lands for 50% of the audience but annoys the other 50%, the rating averages out to a 5.0.
+  **Drama is universal; Comedy is divisive**.
+
+### Question B: Should I use lower search bounds for Comedy compared to Drama?
+
+**The Data Verdict:** **YES. Absolutely.**
+
+- **The "Genre Inflation" Factor:** Users rate genres differently. A **7.0** in Horror or Comedy is effectively an **8.0** in Drama or Biography.
+  - **The Strategy:** If you filter for `Rating > 7.5`, you will see hundreds of Biographies, but you will filter out some of the funniest Comedies ever made (which often sit at 6.8 - 7.2).
+  - **Action/Comedy Filter:** Set your threshold to **6.5**.
+  - **Drama/Doc Filter:** Set your threshold to **7.5**.
+
+
+### Question C: The "Blindfold Test" (Documentary vs. Sci-Fi)
+
+**The Data Verdict:** You will be statistically safer picking the **Documentary**.
+
+- **The "Floor" Concept:** Look at the "Whiskers" (the lines extending from the boxes) on the box plot.
+  - **Sci-Fi:** The bottom whisker goes deep down (towards 1.0 or 2.0). There is a significant statistical probability that a random Sci-Fi movie is unwatchable _garbage_.
+  - **Documentary:** The bottom whisker rarely dips below 5.0 or 6.0.
+
+- **The Psychology:**
+  - **Documentaries** are usually made by passionate experts about specific topics. They rarely "fail" completely.
+  - **Sci-Fi** is high-risk. It attempts to build new worlds. When that fails, it looks ridiculous, leading to "hate-watching" and 1-star reviews.
+  - **Conclusion:** If you are tired and just want a "guaranteed decent watch" (Low Variance), pick **Documentary**. If you want to gamble for a potentially mind-blowing experience (High Variance), pick **Sci-Fi**.
+
+
+You can check the project here: [IMDbayes](https://github.com/fezcode/IMDbayes)
