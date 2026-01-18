@@ -9,14 +9,164 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 17 Jan 2026 10:26:40 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 18 Jan 2026 12:17:35 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 17 Jan 2026 10:26:39 GMT</pubDate>
+        <pubDate>Sun, 18 Jan 2026 12:17:35 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Dying is Easy, Comedy is Statistically Impossible: An IMDbayes Analysis]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/what-genre-should-i-watch</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/what-genre-should-i-watch</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 18 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p>This analysis was built by a Software Engineer relying on 8-year-old university memories of statistics.
+If the math looks wrong, just assume it&#39;s a feature, not a bug.
+You can always contact me.</p>
+</blockquote>
+<h2>Deconstructing Hollywood: A Data Science Journey from Raw Data to p99 Insights</h2>
+<p>As software engineers, we are used to deterministic systems. If <code>a = b</code>, then a equals b.
+Data Science, however, deals with probability, distributions, and noise.
+It&#39;s less about &quot;<strong>what is the answer</strong>&quot; and more about &quot;<strong>how confident are we in this trend?</strong>&quot;</p>
+<p>Recently, I wanted to bridge my engineering background with data science to answer a simple pop-culture question:
+<strong>How do different movie genres actually perform?</strong></p>
+<p>Are &quot;<strong>Action</strong>&quot; movies inherently rated lower than &quot;<strong>Dramas</strong>&quot;? Is it harder to make a masterpiece &quot;<strong>Horror</strong>&quot; movie than a masterpiece &quot;<strong>Biography</strong>&quot;?</p>
+<p>To answer this, I didn&#39;t just want to run a script; I wanted to build a production-grade Data Science lab?!. (/s)
+This post details the entire journey—from choosing the modern Python stack and engineering the data pipeline to defining
+the statistical metrics that reveal the &quot;truth&quot; behind average ratings.</p>
+<h2>Part 1: The Engineering Foundation</h2>
+<p>A data project is only as good as its environment. I wanted a setup that was fast, reproducible, and clean.</p>
+<h3>The Stack Decision</h3>
+<p>I chose Python because it is the undisputed <strong><a href="/vocab/lingua-franca">lingua franca</a></strong> of data science.
+The ecosystem (Pandas for data crunching, Seaborn for visualization) is unmatched.</p>
+<h3>The Package Manager: Why <code>uv</code>?</h3>
+<p>Traditionally, Python data science relies on Conda because it manages complex C-library dependencies used by
+math libraries like NumPy. However, Conda can be slow and bloated.</p>
+<p>For this project, I chose <code>uv</code>.</p>
+<p><code>uv</code> is a modern, blazing-fast Python package manager written in Rust.
+It replaces <code>pip</code>, <code>poetry</code>, and <code>virtualenv</code>. It resolves dependencies in milliseconds and creates deterministic environments instantly.
+For a project relying on standard wheels like Pandas, <code>uv</code> provides a vastly superior developer experience.</p>
+<pre><code class="language-bash"># Setting up the environment took seconds
+$ uv init movie-analysis
+$ uv python install 3.10
+$ uv add pandas matplotlib seaborn scipy jupyter ipykernel
+</code></pre>
+<p>Then connected VS Code to this <code>.venv</code> created by <code>uv</code>, giving me a robust Jupyter Notebook experience right in the IDE.</p>
+<h2>Part 2: The Data Pipeline (ETL)</h2>
+<p>I needed data with genres, votes, and ratings, went straight to the source: the <strong>IMDb Non-Commercial Datasets</strong>.</p>
+<p>Then I faced a classic data engineering challenge: these are massive TSV (Tab Separated Values) files.
+Loading the entirety of IMDb into RAM on a laptop is a bad idea.</p>
+<p>Solution? Build a Python ETL script to handle ingestion smartly:</p>
+<ol>
+<li><strong>Stream &amp; Filter</strong>: used Pandas to read the raw files in chunks, filtering immediately for <code>titleType == &#39;movie&#39;</code> and excluding older films. This kept memory usage low.</li>
+<li><strong>Merge</strong>: joined the <code>title.basics</code> (genres/names) with <code>title.ratings</code> (scores/votes) on their unique IDs.</li>
+<li><strong>The &quot;Explode&quot;</strong>: This was the crucial data transformation step. IMDb lists genres as a single string: &quot;Action,Adventure,Sci-Fi&quot;. To analyze by category, I had to split that string and &quot;explode&quot; the dataset, duplicating the movie row for each genre it belongs to.</li>
+</ol>
+<pre><code class="language-python"># Transforming &quot;Action,Comedy&quot; into two distinct analysis rows
+df[&#39;genres&#39;] = df[&#39;genres&#39;].str.split(&#39;,&#39;)
+df_exploded = df.explode(&#39;genres&#39;)
+</code></pre>
+<h2>Part 3: The Science (Beyond Averages)</h2>
+<p>With clean data in hand, we moved into a Jupyter Notebook for Exploratory Data Analysis (EDA).</p>
+<h3>1. Removing the Noise (The Long Tail)</h3>
+<p>If you average every movie on IMDb, your data is polluted by home videos with 5 votes from the director&#39;s family.
+In statistics, vote counts often follow a <a href="/vocab/power-law">&quot;Power Law&quot;</a> or long-tail distribution.</p>
+<p>To analyze global sentiment, we had to filter out the noise. We set a threshold, dropping any movie with fewer than 100 votes.
+This ensured our statistical analysis was based on titles with a minimum level of public engagement.</p>
+<h3>2. Visualizing the Truth (The Box Plot)</h3>
+<p>A simple average rating is misleading. If a genre has many <code>1/10</code>s and many <code>10/10</code>s, the average is <code>5/10</code> - but that doesn&#39;t tell the story of how polarizing it is.</p>
+<p>I used a <a href="/vocab/box-plot">Box Plot</a> to visualize the distribution. It shows the median (the center line), the Interquartile Range (the colored box containing the middle 50% of data), and outliers (the dots).</p>
+<p><img src="/images/posts/wgsiw/boxplot.png" alt="The Box Plot"></p>
+<p><strong>Initial Observations:</strong></p>
+<ul>
+<li><strong>Documentary/Biography</strong>: High medians, compact boxes. They are consistently rated highly.</li>
+<li><strong>Horror</strong>: The lowest median and a wide spread. It’s very easy to make a bad horror movie.</li>
+</ul>
+<h3>3. The Metrics: Weighted Ratings &amp; p99</h3>
+<p>To get deeper insights, I needed better math than simple means.</p>
+<h4>Metric A: The Weighted Rating (Bayesian Average)</h4>
+<p>How do you compare a movie with a 9.0 rating and 105 votes against an 8.2 rating with 500,000 votes? The latter score is more statistically significant.</p>
+<p>I adopted IMDb&#39;s own <strong>Weighted Rating</strong> formula. This &quot;Bayesian average&quot; pulls a movie&#39;s rating toward the global average (C) if it has few votes (v),
+only allowing it to deviate as it gains more votes over a threshold (m).</p>
+<p><img src="/images/posts/wgsiw/formula.png" alt="Weighted Rating"></p>
+<p>This provided a fair &quot;Quality Score&quot; for every movie.</p>
+<h4>Metric B: The p99 Ceiling</h4>
+<p>I wanted to know the &quot;potential&quot; of a genre. Even if most Action movies are mediocre, how good are the very best ones?</p>
+<p>For this, I calculated the <a href="/vocab/p99">99th Percentile (p99)</a> rating for each genre. This is the rating value below which 99% of the genre falls.
+It represents the elite tier, the &quot;Masterpiece Ceiling.&quot;</p>
+<h3>Part 4: The Deductions (The Gap Analysis)</h3>
+<p>By combining the Average Weighted Rating (the typical experience) and the p99 Rating (the elite potential), we created a &quot;Gap Analysis&quot; chart.</p>
+<p>The dark green bar is the average quality. The total height of the bar is the p99 ceiling. The light green area represents the &quot;Masterpiece Gap&quot;.</p>
+<p><img src="/images/posts/wgsiw/gap.png" alt="Masterpiece Gap"></p>
+<h4>The Data Science Deductions</h4>
+<p>This single chart reveals the &quot;personality&quot; of every genre:</p>
+<ol>
+<li><p><strong>The &quot;Safe Bets&quot; (Documentary, History, Biography)</strong>:
+They have very high averages (tall dark bars) and a small gap to the ceiling.
+<em>Deduction</em>: It is difficult to make a poorly rated documentary. Audience selection bias likely plays a role here
+(people only watch docs on topics they already like).</p>
+</li>
+<li><p><strong>The &quot;High Risk / High Reward&quot; (Horror, Sci-Fi)</strong>: They have the lowest averages (short dark bars),
+indicating the typical output is poor. However, their p99 ceilings remain high.
+<em>Deduction</em>: The gap is huge. It is incredibly difficult to execute these genres well, but when it&#39;s done right
+(e.g., Alien, The Exorcist), they are revered just as highly as dramas.</p>
+</li>
+<li><p><strong>The Animation Anomaly</strong>: Animation has a high average and a very high ceiling.
+<em>Deduction</em>: Statistically, this is perhaps the most consistently high-quality genre in modern cinema.</p>
+</li>
+</ol>
+<h2>Conclusion</h2>
+<p>This project demonstrated that with a solid engineering setup using modern tools like <code>uv</code>,
+and by applying statistical concepts beyond simple averages, we can uncover nuanced truths hidden in raw data.
+Averages tell you what is probable; distributions and percentiles tell you what is possible.</p>
+<h3>Question A: Which genre is &quot;easier&quot; to make? (Action vs. Drama vs. Comedy)</h3>
+<p><strong>The Data Verdict:</strong> It is significantly &quot;easier&quot; to make an acceptable <strong>Drama</strong> than an acceptable <strong>Action</strong> or <strong>Comedy</strong> movie.</p>
+<ul>
+<li><strong>Evidence:</strong> Look at the box plot, kindly.<ul>
+<li><strong>Drama</strong> has a high median and a &quot;tight&quot; box (smaller Interquartile Range). This means even &quot;average&quot; Dramas are usually rated around 6.5–7.0. The &quot;floor&quot; is high.</li>
+<li><strong>Action</strong> has a lower median. Action movies require budget, stunts, and effects. If those look cheap, the rating tanks immediately.
+A bad drama is just &quot;boring&quot; (5/10); a bad action movie looks &quot;broken&quot; (3/10).</li>
+<li><strong>Comedy</strong> is arguably the <em>hardest</em> to get a high rating for. Humor is subjective.
+If a joke lands for 50% of the audience but annoys the other 50%, the rating averages out to a 5.0.
+<strong>Drama is universal; Comedy is divisive</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3>Question B: Should I use lower search bounds for Comedy compared to Drama?</h3>
+<p><strong>The Data Verdict:</strong> <strong>YES. Absolutely.</strong></p>
+<ul>
+<li><strong>The &quot;Genre Inflation&quot; Factor:</strong> Users rate genres differently. A <strong>7.0</strong> in Horror or Comedy is effectively an <strong>8.0</strong> in Drama or Biography.<ul>
+<li><strong>The Strategy:</strong> If you filter for <code>Rating &gt; 7.5</code>, you will see hundreds of Biographies, but you will filter out some of the funniest Comedies ever made (which often sit at 6.8 - 7.2).</li>
+<li><strong>Action/Comedy Filter:</strong> Set your threshold to <strong>6.5</strong>.</li>
+<li><strong>Drama/Doc Filter:</strong> Set your threshold to <strong>7.5</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3>Question C: The &quot;Blindfold Test&quot; (Documentary vs. Sci-Fi)</h3>
+<p><strong>The Data Verdict:</strong> You will be statistically safer picking the <strong>Documentary</strong>.</p>
+<ul>
+<li><p><strong>The &quot;Floor&quot; Concept:</strong> Look at the &quot;Whiskers&quot; (the lines extending from the boxes) on the box plot.</p>
+<ul>
+<li><strong>Sci-Fi:</strong> The bottom whisker goes deep down (towards 1.0 or 2.0). There is a significant statistical probability that a random Sci-Fi movie is unwatchable <em>garbage</em>.</li>
+<li><strong>Documentary:</strong> The bottom whisker rarely dips below 5.0 or 6.0.</li>
+</ul>
+</li>
+<li><p><strong>The Psychology:</strong></p>
+<ul>
+<li><strong>Documentaries</strong> are usually made by passionate experts about specific topics. They rarely &quot;fail&quot; completely.</li>
+<li><strong>Sci-Fi</strong> is high-risk. It attempts to build new worlds. When that fails, it looks ridiculous, leading to &quot;hate-watching&quot; and 1-star reviews.</li>
+<li><strong>Conclusion:</strong> If you are tired and just want a &quot;guaranteed decent watch&quot; (Low Variance), pick <strong>Documentary</strong>. If you want to gamble for a potentially mind-blowing experience (High Variance), pick <strong>Sci-Fi</strong>.</li>
+</ul>
+</li>
+</ul>
+<p>You can check the project here: <a href="https://github.com/fezcode/IMDbayes">IMDbayes</a></p>
+<p><a href="https://fezcode.com/blog/what-genre-should-i-watch">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Upgrading Debian 11 to 13: The Safe Path]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -25,6 +175,45 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>Upgrading Debian 11 to 13: The Safe Path</h1>
+<p>So, you&#39;re on Debian 11 (Bullseye) and want to jump to Debian 13 (Trixie). Maybe you saw some shiny new package, or you just want to be on the cutting edge (or as cutting edge as Debian gets).</p>
+<p>But here&#39;s the catch: <strong>You can&#39;t skip a version.</strong></p>
+<p>Debian upgrades are designed to be sequential. Jumping from 11 straight to 13 is a recipe for a broken system (frankstein packages, dependency hell, the works). The safe path is <strong>11 → 12 → 13</strong>.</p>
+<p>Here is the quick gist of how to do it properly.</p>
+<h2>Phase 1: Bullseye (11) to Bookworm (12)</h2>
+<p>First, make sure your current system is fully updated and clean.</p>
+<pre><code class="language-bash"># Clean up any broken sources first!
+# If you have 404 errors on backports, comment them out in /etc/apt/sources.list
+sudo apt update
+sudo apt full-upgrade -y
+</code></pre>
+<p>Now, switch your sources to Bookworm.</p>
+<pre><code class="language-bash">sudo sed -i &#39;s/bullseye/bookworm/g&#39; /etc/apt/sources.list
+</code></pre>
+<p>Run the upgrade. This is the big one.</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt full-upgrade -y
+</code></pre>
+<p><strong>Reboot your system.</strong></p>
+<h2>Phase 2: Bookworm (12) to Trixie (13)</h2>
+<p>Welcome back. You are now on Debian 12. Let&#39;s keep going.</p>
+<p>Update your sources to Trixie.</p>
+<pre><code class="language-bash">sudo sed -i &#39;s/bookworm/trixie/g&#39; /etc/apt/sources.list
+</code></pre>
+<p>Run the upgrade again.</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt full-upgrade -y
+</code></pre>
+<h2>Phase 3: Cleanup</h2>
+<p>You made it. Now clean up the leftovers.</p>
+<pre><code class="language-bash">sudo apt autoremove -y
+sudo reboot
+</code></pre>
+<h2>Verification</h2>
+<p>When you&#39;re back, check your version:</p>
+<pre><code class="language-bash">cat /etc/debian_version
+# Should output 13.x (or testing/trixie)
+</code></pre>
+<p>And that&#39;s it. You have successfully time traveled.</p>
 <p><a href="https://fezcode.com/blog/debian-upgrade-path">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -35,6 +224,250 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>Steganography is the art and science of hiding information within other non-secret data. Unlike cryptography, which scrambles a message so it can&#39;t be read, steganography hides the very existence of the message.</p>
+<p>In this deep dive, we&#39;ll explore the implementation of the <strong>Steganography Tool</strong> added to Fezcodex, focusing on the <strong>Least Significant Bit (LSB)</strong> technique.</p>
+<h2>The Core Concept: Least Significant Bit (LSB)</h2>
+<p>Digital images are made up of pixels. In a standard 24-bit RGB image, each pixel has three color channels: Red, Green, and Blue. Each channel is represented by 8 bits (a value from 0 to 255).</p>
+<p>Example of a pixel&#39;s color:</p>
+<ul>
+<li><strong>Red:</strong> 1011010<strong>1</strong> (181)</li>
+<li><strong>Green:</strong> 0110011<strong>0</strong> (102)</li>
+<li><strong>Blue:</strong> 1100101<strong>1</strong> (203)</li>
+</ul>
+<p>The <strong>Least Significant Bit</strong> is the rightmost bit in these binary strings. If we change this single bit, the decimal value of the color channel only changes by 1. For example, changing the Red channel from <code>10110101</code> (181) to <code>10110100</code> (180) is a change so subtle that the human eye cannot detect it in a complex image.</p>
+<p>By replacing the LSB of each color channel with a bit from our secret message, we can embed data directly into the image.</p>
+<h2>The Protocol: FEZ Steganography</h2>
+<p>To make the extraction process reliable, we&#39;ve implemented a simple protocol:</p>
+<ol>
+<li><strong>Magic Header (<code>FEZ</code>):</strong> The first 24 bits (3 bytes) of the hidden data always spell &quot;FEZ&quot;. This allows the decoder to verify if an image actually contains a hidden message from our tool.</li>
+<li><strong>Length (32-bit):</strong> The next 32 bits represent the length of the message in bytes. This tells the decoder exactly when to stop reading.</li>
+<li><strong>The Message:</strong> The remaining bits are the actual UTF-8 encoded message.</li>
+</ol>
+<h3>Tracing the Magic: Encoding &quot;FEZ&quot;</h3>
+<p>Let&#39;s look at how the magic header <code>FEZ</code> is scattered across the first few pixels.</p>
+<p><strong>Step 1: Convert characters to binary</strong></p>
+<ul>
+<li><strong>F</strong> (70): <code>0 1 0 0 0 1 1 0</code></li>
+<li><strong>E</strong> (69): <code>0 1 0 0 0 1 0 1</code></li>
+<li><strong>Z</strong> (90): <code>0 1 0 1 1 0 1 0</code></li>
+</ul>
+<p>Combined Bitstream: <code>01000110</code> + <code>01000101</code> + <code>01011010</code> (24 bits total)</p>
+<p><strong>Step 2: Embed into pixels</strong>
+Since each pixel has 3 channels (R, G, B), we need 8 pixels to hide these 24 bits.</p>
+<table>
+<thead>
+<tr>
+<th align="left">Pixel</th>
+<th align="left">Channel</th>
+<th align="left">Original Byte</th>
+<th align="left">Bit to Hide</th>
+<th align="left">Modified Byte</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>Pixel 1</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>1011010</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from F)</td>
+<td align="left"><code>1011010</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>0110011</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from F)</td>
+<td align="left"><code>0110011</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>1100101</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from F)</td>
+<td align="left"><code>1100101</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pixel 2</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>0101010</code><strong><code>0</code></strong></td>
+<td align="left"><strong>0</strong> (from F)</td>
+<td align="left"><code>0101010</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>1111001</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from F)</td>
+<td align="left"><code>1111001</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>0011001</code><strong><code>1</code></strong></td>
+<td align="left"><strong>1</strong> (from F)</td>
+<td align="left"><code>0011001</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pixel 3</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>1010101</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from F)</td>
+<td align="left"><code>1010101</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>1100110</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from F)</td>
+<td align="left"><code>1100110</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>0001111</code><strong><code>0</code></strong></td>
+<td align="left"><strong>0</strong> (from E)</td>
+<td align="left"><code>0001111</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pixel 4</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>1011001</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from E)</td>
+<td align="left"><code>1011001</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>0110110</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from E)</td>
+<td align="left"><code>0110110</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>1110001</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from E)</td>
+<td align="left"><code>1110001</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pixel 5</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>0101010</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from E)</td>
+<td align="left"><code>0101010</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>1111001</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from E)</td>
+<td align="left"><code>1111001</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>0011001</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from E)</td>
+<td align="left"><code>0011001</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pixel 6</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>1010101</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from E)</td>
+<td align="left"><code>1010101</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>1100110</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from Z)</td>
+<td align="left"><code>1100110</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>0101111</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from Z)</td>
+<td align="left"><code>0101111</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pixel 7</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>1011001</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from Z)</td>
+<td align="left"><code>1011001</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>0110110</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from Z)</td>
+<td align="left"><code>0110110</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>1110001</code><strong><code>1</code></strong></td>
+<td align="left"><strong>1</strong> (from Z)</td>
+<td align="left"><code>1110001</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"><strong>Pixel 8</strong></td>
+<td align="left">Red</td>
+<td align="left"><code>0101010</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from Z)</td>
+<td align="left"><code>0101010</code><strong><code>0</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Green</td>
+<td align="left"><code>1111001</code><strong><code>0</code></strong></td>
+<td align="left"><strong>1</strong> (from Z)</td>
+<td align="left"><code>1111001</code><strong><code>1</code></strong></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">Blue</td>
+<td align="left"><code>0011001</code><strong><code>1</code></strong></td>
+<td align="left"><strong>0</strong> (from Z)</td>
+<td align="left"><code>0011001</code><strong><code>0</code></strong></td>
+</tr>
+</tbody></table>
+<p>By the time we reach Pixel 8, all 24 bits of &quot;FEZ&quot; are woven into the image. If you open this in a hex editor, you might see that the color <code>181</code> became <code>180</code>, but the text &quot;FEZ&quot; is nowhere to be found in the raw bytes!</p>
+<h3>Why PNG and not JPEG?</h3>
+<p>Our tool works best with <strong>PNG</strong> files. Why?</p>
+<ul>
+<li><strong>PNG (Portable Network Graphics)</strong> is a <em>lossless</em> format. It preserves every single bit exactly as it was saved.</li>
+<li><strong>JPEG (Joint Photographic Experts Group)</strong> is a <em>lossy</em> format. It uses compression algorithms that slightly alter pixel values to reduce file size. These tiny changes are fine for human viewing, but they destroy the data we&#39;ve hidden in the LSBs.</li>
+</ul>
+<h2>The Implementation (JavaScript/Canvas)</h2>
+<p>We use the HTML5 <code>&lt;canvas&gt;</code> API to access and manipulate image data at the pixel level.</p>
+<h3>Encoding Logic</h3>
+<pre><code class="language-javascript">const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+const data = imageData.data; // Uint8ClampedArray [R, G, B, A, R, G, B, A, ...]
+
+// ... transform message to bits ...
+
+let bitIndex = 0;
+for (let i = 0; i &lt; data.length &amp;&amp; bitIndex &lt; allBits.length; i += 4) {
+  for (let j = 0; j &lt; 3 &amp;&amp; bitIndex &lt; allBits.length; j++) {
+    // Replace LSB of R, G, or B
+    // (data[i + j] &amp; 0xfe) clears the last bit
+    // | allBits[bitIndex++] sets it to our secret bit
+    data[i + j] = (data[i + j] &amp; 0xfe) | allBits[bitIndex++];
+  }
+}
+ctx.putImageData(imageData, 0, 0);
+</code></pre>
+<h3>Decoding Logic</h3>
+<p>Decoding is the reverse process. We iterate through the pixels, extract the LSB of each R, G, and B channel, and rebuild the bitstream until we&#39;ve parsed the header, the length, and finally the message content.</p>
+<h2>Challenges and Limitations</h2>
+<ul>
+<li><strong>Capacity:</strong> The amount of data you can hide depends on the image resolution. Each pixel can hold 3 bits (1 for each RGB channel). A 1080p image (1920x1080) can theoretically hold about 777 KB of hidden data.</li>
+<li><strong>Robustness:</strong> LSB steganography is very fragile. Resizing, cropping, or re-saving the image as a JPEG will likely corrupt the hidden message.</li>
+<li><strong>Security:</strong> Pure LSB is &quot;security through obscurity.&quot; Anyone who knows the technique can extract the message. For true security, you should encrypt the message <em>before</em> hiding it in the image.</li>
+</ul>
+<h2>Try it out!</h2>
+<p>Check out the <strong>Steganography Tool</strong> in the Applications section and start sending your own cryptic signals through the digital aether.</p>
 <p><a href="https://fezcode.com/blog/steganography-lsb-deep-dive">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -45,6 +478,38 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Mon, 12 Jan 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>Pixel art is a beautiful and nostalgic medium that has seen a massive resurgence in recent years, especially within the indie game development scene. Whether you&#39;re a seasoned artist or just starting, having the right tools and resources can make a world of difference.</p>
+<p>In this post, we&#39;ll explore some of the best resources for pixel art, inspired by the excellent guide by JuniperDev.</p>
+<h3>The Ultimate Video Guide</h3>
+<p>First and foremost, if you haven&#39;t seen it yet, check out this comprehensive video:
+<a href="https://www.youtube.com/watch?v=DKmrBUpd0yw">The ONLY Pixel Art Guide You Need (Beginner to Advanced)</a></p>
+<h3>Essential Software: Aseprite</h3>
+<p>When it comes to creating pixel art, <strong>Aseprite</strong> is widely considered the industry standard. It&#39;s not just a drawing tool; it&#39;s a specialized environment for sprites and animation.</p>
+<ul>
+<li><strong>Why it&#39;s great:</strong> Pixel-perfect drawing mode, specialized animation timeline, easy sprite sheet exporting, and a very active community.</li>
+<li><strong>Where to get it:</strong> <a href="https://www.aseprite.org/">aseprite.org</a></li>
+</ul>
+<h3>Mastering Color: Lospec</h3>
+<p>Color is everything in pixel art. Since you&#39;re often working with a limited palette, choosing the right colors is crucial. <strong>Lospec</strong> is the go-to resource for this.</p>
+<ul>
+<li><strong>Palette Database:</strong> Thousands of pre-made palettes that you can filter by color count.</li>
+<li><strong>Tools:</strong> They also offer web-based tools for checking contrast and creating your own palettes.</li>
+<li><strong>Link:</strong> <a href="https://lospec.com/">lospec.com</a></li>
+</ul>
+<h3>Assets and Inspiration: itch.io</h3>
+<p>Sometimes you need a head start, or you just want to see how other artists tackle specific challenges. <strong>itch.io</strong> is a goldmine for pixel art assets.</p>
+<ul>
+<li><strong>What you&#39;ll find:</strong> Character sprites, tilesets, UI elements, and full environmental packs.</li>
+<li><strong>Learning from others:</strong> Analyzing high-quality asset packs is one of the best ways to learn techniques like dithering, sub-pixeling, and cluster management.</li>
+<li><strong>Link:</strong> <a href="https://itch.io/game-assets/free/tag-pixel-art">itch.io/game-assets/free/tag-pixel-art</a></li>
+</ul>
+<h3>Quick Tips for Beginners</h3>
+<ol>
+<li><strong>Start Small:</strong> Don&#39;t try to draw a massive 256x256 piece right away. Start with 16x16 or 32x32.</li>
+<li><strong>Limit Your Palette:</strong> Using too many colors can make your art look messy. Stick to 4-8 colors initially.</li>
+<li><strong>Study Real Life:</strong> Even though it&#39;s stylized, good pixel art is often grounded in real-world lighting and anatomy.</li>
+<li><strong>Practice Your Lines:</strong> Learn about &quot;jaggies&quot; and how to avoid them to keep your lines looking clean and intentional.</li>
+</ol>
+<p>Pixel art is as much about what you leave out as what you put in. Happy pixeling!</p>
 <p><a href="https://fezcode.com/blog/pixel-art-resources-guide">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -55,6 +520,81 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 10 Jan 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>When building <strong>Tier Forge</strong>, I needed a flexible way to move items between the &quot;pool&quot; and various &quot;tiers&quot;. While libraries like <code>react-beautiful-dnd</code> or <code>dnd-kit</code> are excellent, sometimes you just want full control without the overhead.</p>
+<p>Here is how I implemented a robust drag-and-drop system using only the native HTML5 API and React state.</p>
+<h2>The State Architecture</h2>
+<p>The key to a good DnD system is centralized state. In <code>TierForge</code>, the state is held in the parent component:</p>
+<pre><code class="language-javascript">const [tiers, setTiers] = useState(DEFAULT_TIERS); // The board
+const [poolItems, setPoolItems] = useState([]);    // The unranked items
+const [dragData, setDragData] = useState(null);    // What are we dragging?
+</code></pre>
+<p>We track <code>dragData</code> to know <em>what</em> is moving (<code>itemId</code>) and <em>where</em> it came from (<code>sourceId</code>).</p>
+<h2>The Handlers</h2>
+<p>We need three main handlers: <code>onDragStart</code>, <code>onDragOver</code>, and <code>onDrop</code>.</p>
+<h3>1. Starting the Drag</h3>
+<p>When a user grabs an item, we store its ID and source container ID. We also set <code>dataTransfer</code> for compatibility.</p>
+<pre><code class="language-javascript">const handleDragStart = (e, itemId, sourceId) =&gt; {
+  setDragData({ itemId, sourceId });
+  e.dataTransfer.effectAllowed = &#39;move&#39;;
+  // Fallback for some browsers
+  e.dataTransfer.setData(&#39;text/plain&#39;, JSON.stringify({ itemId, sourceId }));
+};
+</code></pre>
+<h3>2. Allowing the Drop</h3>
+<p>By default, HTML elements don&#39;t accept drops. We must prevent the default behavior.</p>
+<pre><code class="language-javascript">const handleDragOver = (e) =&gt; {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = &#39;move&#39;;
+};
+</code></pre>
+<h3>3. Handling the Drop</h3>
+<p>This is where the magic happens. When an item is dropped, we:</p>
+<ol>
+<li>Identify the <strong>Source</strong> (where it came from) and <strong>Target</strong> (where it landed).</li>
+<li>If Source === Target, do nothing (or reorder).</li>
+<li>Find the item in the Source array.</li>
+<li>Remove it from the Source.</li>
+<li>Add it to the Target.</li>
+</ol>
+<pre><code class="language-javascript">const handleDrop = (e, targetId) =&gt; {
+  e.preventDefault();
+  const data = dragData || JSON.parse(e.dataTransfer.getData(&#39;text/plain&#39;));
+  if (!data) return;
+
+  const { itemId, sourceId } = data;
+  if (sourceId === targetId) return;
+
+  // ... Logic to find item, remove from source, add to target ...
+  // This involves setTiers() and setPoolItems() updates.
+};
+</code></pre>
+<h2>The Components</h2>
+<h3>Draggable Item</h3>
+<p>The item itself needs the <code>draggable</code> attribute and the start handler.</p>
+<pre><code class="language-jsx">&lt;div
+  draggable
+  onDragStart={(e) =&gt; onDragStart(e, item.id, sourceId)}
+  className=&quot;cursor-grab active:cursor-grabbing ...&quot;
+&gt;
+  {/* Content */}
+&lt;/div&gt;
+</code></pre>
+<h3>Drop Zone</h3>
+<p>The container (Tier or Pool) listens for drag-over and drop events.</p>
+<pre><code class="language-jsx">&lt;div
+  onDragOver={handleDragOver}
+  onDrop={(e) =&gt; handleDrop(e, containerId)}
+  className=&quot;...&quot;
+&gt;
+  {/* Render Items */}
+&lt;/div&gt;
+</code></pre>
+<h2>Why Native API?</h2>
+<ol>
+<li><strong>Zero Dependencies:</strong> Keeps the bundle size small.</li>
+<li><strong>Full Control:</strong> I can define exactly how state updates happen.</li>
+<li><strong>Performance:</strong> Direct DOM events are highly performant.</li>
+</ol>
+<p>This pattern powers the entire Tier Forge experience, allowing smooth transitions of assets between the chaotic pool and the structured tiers.</p>
 <p><a href="https://fezcode.com/blog/implementing-drag-and-drop-in-react">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -65,6 +605,42 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>Resolving <code>spawn ENAMETOOLONG</code> in <code>gh-pages</code> Deployment</h1>
+<p>If you&#39;ve been using the <code>gh-pages</code> package for a while, especially in projects with large build folders or complex structures, you might have encountered the dreaded <code>spawn ENAMETOOLONG</code> error when running your deploy script.</p>
+<h2>The Problem</h2>
+<p>When executing the standard deployment command:</p>
+<pre><code class="language-bash">gh-pages -d build -b gh-pages
+</code></pre>
+<p>The process fails with a system error indicating that the argument list or the command path itself has exceeded the operating system&#39;s limits. This is often related to how the underlying <code>globby</code> or <code>async</code> dependencies handle file lists in older versions of the package (like <code>6.3.0</code>).</p>
+<p>The issue is documented and discussed in detail here: <a href="https://github.com/tschaub/gh-pages/issues/585">gh-pages Issue #585</a>.</p>
+<h2>The Fix</h2>
+<p>The specific fix for this issue was highlighted in <a href="https://github.com/tschaub/gh-pages/issues/585#issuecomment-2585457896">this GitHub comment</a>, which explains that the <code>ENAMETOOLONG</code> error occurs on Windows when the <code>rm</code> command receives an excessively long list of files as arguments.</p>
+<pre><code class="language-git">diff --git a/lib/git.js b/lib/git.js
+index d4c5724272d00bd1f0d76c47dab47d21ccd094d9..d86ac2b0bd7cbc02f34a50dac6980965102ee964 100644
+--- a/lib/git.js
++++ b/lib/git.js
+@@ -143,7 +143,7 @@ Git.prototype.rm = function (files) {
+   if (!Array.isArray(files)) {
+     files = [files];
+   }
+-  return this.exec(&#39;rm&#39;, &#39;--ignore-unmatch&#39;, &#39;-r&#39;, &#39;-f&#39;, &#39;--&#39;, ...files);
++  return this.exec(&#39;rm&#39;, &#39;--ignore-unmatch&#39;, &#39;-r&#39;, &#39;-f&#39;, &#39;--&#39;, &#39;.&#39;);
+ };
+
+ /**
+</code></pre>
+<p>The suggested workarounds included batching the file deletions or simplifying the command to target the current directory (<code>.</code>) instead of individual files. Fortunately, these improvements (including a more robust batching logic and a migration to <code>tinyglobby</code>) have already been merged into the main branch of the repository via PR #607.</p>
+<p>While we wait for a stable release on NPM that fully addresses this in all environments, the most effective way to resolve it is to use the latest development version directly from the source.</p>
+<p>By updating your <code>package.json</code> to point to the GitHub repository&#39;s main branch, you get the latest fixes (including the migration to <code>tinyglobby</code> and updated <code>commander</code> logic) that bypass these system limits.</p>
+<h3>Implementation</h3>
+<p>Update your <code>package.json</code> dependencies:</p>
+<pre><code class="language-json">&quot;devDependencies&quot;: {
+  &quot;gh-pages&quot;: &quot;github:tschaub/gh-pages&quot;
+}
+</code></pre>
+<p>Then, refresh your installations:</p>
+<pre><code class="language-bash">npm install
+</code></pre>
+<p>This simple change allowed us to resume our production deployments without hitches, ensuring that our &quot;Brutalist&quot; digital garden stays fresh and accessible.</p>
 <p><a href="https://fezcode.com/blog/gh-pages-enametoolong-fix">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -75,6 +651,70 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Thu, 08 Jan 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>Git Cheatsheet: From Basics to Time Travel</h1>
+<p>A collection of essential Git commands, from daily workflows to digging through the depths of your repository&#39;s history.</p>
+<h2>🔍 Searching History</h2>
+<h3>Find when a file existed (even if deleted)</h3>
+<pre><code class="language-bash">git log --all -- [path]
+</code></pre>
+<h3>Search for content changes (Pickaxe)</h3>
+<p>Find commits where a specific string was added or removed:</p>
+<pre><code class="language-bash">git log -S &quot;your_search_string&quot;
+</code></pre>
+<h3>Search content with Regex</h3>
+<pre><code class="language-bash">git log -G &quot;your_regex&quot;
+</code></pre>
+<h3>Find a file in any commit/branch</h3>
+<pre><code class="language-bash">git rev-list --all | xargs git grep -l &quot;filename&quot;
+</code></pre>
+<h3>See the history of a specific function/method</h3>
+<pre><code class="language-bash">git log -L :function_name:file_path
+</code></pre>
+<hr>
+<h2>🚀 Daily Workflow</h2>
+<h3>Stage and Commit</h3>
+<pre><code class="language-bash">git add .
+git commit -m &quot;feat: descriptive message&quot;
+</code></pre>
+<h3>Undo last commit (keep changes)</h3>
+<pre><code class="language-bash">git reset --soft HEAD~1
+</code></pre>
+<h3>Fix the last commit message</h3>
+<pre><code class="language-bash">git commit --amend -m &quot;new message&quot;
+</code></pre>
+<hr>
+<h2>🌿 Branching &amp; Merging</h2>
+<h3>Switch to a new branch</h3>
+<pre><code class="language-bash">git checkout -b feature/cool-stuff
+# or the newer way:
+git switch -c feature/cool-stuff
+</code></pre>
+<h3>List all branches (including remote)</h3>
+<pre><code class="language-bash">git branch -a
+</code></pre>
+<h3>Safely delete a branch</h3>
+<pre><code class="language-bash">git branch -d branch_name
+</code></pre>
+<hr>
+<h2>🛠️ Cleanup &amp; Maintenance</h2>
+<h3>Discard all local changes</h3>
+<pre><code class="language-bash">git reset --hard HEAD
+</code></pre>
+<h3>Clean untracked files</h3>
+<pre><code class="language-bash">git clean -fd
+</code></pre>
+<h3>Stash changes for later</h3>
+<pre><code class="language-bash">git stash save &quot;Work in progress&quot;
+git stash list
+git stash pop
+</code></pre>
+<hr>
+<h2>📤 Remote Operations</h2>
+<h3>Update local with remote and rebase</h3>
+<pre><code class="language-bash">git pull --rebase origin main
+</code></pre>
+<h3>Prune old remote tracking branches</h3>
+<pre><code class="language-bash">git fetch -p
+</code></pre>
 <p><a href="https://fezcode.com/blog/git-cheatsheet-gist">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
@@ -575,6 +1215,117 @@ This is the inner voice you hear when you read silently.</p>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Mon, 15 Dec 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h2>1. useState: The Memory</h2>
+<p><strong>What it does:</strong> Allows a functional component to &quot;remember&quot; information between renders.</p>
+<p><strong>When to use:</strong> Whenever you have data that changes over time and needs to trigger a re-render to update the UI (e.g., form inputs, toggle states, counters).</p>
+<pre><code class="language-javascript">const [count, setCount] = useState(0);
+
+// Update state
+setCount(count + 1);
+</code></pre>
+<h2>2. useEffect: The Side Effect</h2>
+<p><strong>What it does:</strong> Performs side effects in functional components. &quot;Side effects&quot; are things like data fetching, subscriptions, or manually changing the DOM.</p>
+<p><strong>When to use:</strong> When you need to do something <em>after</em> the component renders or when a specific value changes.</p>
+<pre><code class="language-javascript">useEffect(() =&gt; {
+  // This runs after every render
+  document.title = `You clicked ${count} times`;
+
+  // Optional cleanup mechanism
+  return () =&gt; {
+    // Clean up code here
+  };
+}, [count]); // Only re-run if &#39;count&#39; changes
+</code></pre>
+<h2>3. useMemo: The Calculator</h2>
+<p><strong>What it does:</strong> Memoizes (caches) the <em>result</em> of a calculation. It only re-calculates the value when one of its dependencies changes.</p>
+<p><strong>When to use:</strong> Optimization. Use it to avoid expensive calculations on every render.</p>
+<pre><code class="language-javascript">const expensiveValue = useMemo(() =&gt; {
+  return computeExpensiveValue(a, b);
+}, [a, b]); // Only re-compute if &#39;a&#39; or &#39;b&#39; changes
+</code></pre>
+<p><em>Note: Don&#39;t overuse this. Memoization has its own cost.</em></p>
+<h2>4. useCallback: The Function Saver</h2>
+<p><strong>What it does:</strong> Memoizes a <em>function definition</em>. It returns the same function instance between renders unless its dependencies change.</p>
+<p><strong>When to use:</strong> Optimization. Primarily useful when passing callbacks to optimized child components (like those wrapped in <code>React.memo</code>) to prevent unnecessary re-renders of the child.</p>
+<pre><code class="language-javascript">const handleClick = useCallback(() =&gt; {
+  doSomething(a, b);
+}, [a, b]); // Function identity remains stable unless &#39;a&#39; or &#39;b&#39; changes
+</code></pre>
+<h2>Summary Table</h2>
+<table>
+<thead>
+<tr>
+<th align="left">Hook</th>
+<th align="left">Returns</th>
+<th align="left">Purpose</th>
+<th align="left">Re-runs when...</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><strong>useState</strong></td>
+<td align="left"><code>[state, setter]</code></td>
+<td align="left">Manage state</td>
+<td align="left">Setter is called</td>
+</tr>
+<tr>
+<td align="left"><strong>useEffect</strong></td>
+<td align="left"><code>undefined</code></td>
+<td align="left">Side effects</td>
+<td align="left">Dependencies change</td>
+</tr>
+<tr>
+<td align="left"><strong>useMemo</strong></td>
+<td align="left">Calculated Value</td>
+<td align="left">Cache expensive calculation</td>
+<td align="left">Dependencies change</td>
+</tr>
+<tr>
+<td align="left"><strong>useCallback</strong></td>
+<td align="left">Memoized Function</td>
+<td align="left">Stable function identity</td>
+<td align="left">Dependencies change</td>
+</tr>
+</tbody></table>
+<h2>Key Difference: useMemo vs useCallback</h2>
+<ul>
+<li><code>useMemo</code> caches the <strong>result</strong> of a function call.</li>
+<li><code>useCallback</code> caches the <strong>function itself</strong>.</li>
+</ul>
+<blockquote>
+<p><code>useCallback(fn, deps)</code> is equivalent to <code>useMemo(() =&gt; fn, deps)</code>.</p>
+</blockquote>
+<h2>Real World Example: Language Switching</h2>
+<p>A common question is: &quot;Why use <code>useEffect</code> for fetching data when <code>useState</code> holds it?&quot;</p>
+<p>Let&#39;s say we have a Language Switcher (EN/TR).</p>
+<h3>The Wrong Way (Trying to use useState for fetching)</h3>
+<pre><code class="language-javascript">// This won&#39;t work because fetch is async and returns a Promise, not the data immediately.
+const [books] = useState(fetch(`/stories/books_${language}.piml`));
+</code></pre>
+<h3>The Right Way (useEffect + useState)</h3>
+<ol>
+<li><strong>State</strong> holds the <em>result</em> (the parsed books).</li>
+<li><strong>Effect</strong> handles the <em>process</em> (fetching when language changes).</li>
+</ol>
+<pre><code class="language-javascript">const { language } = useContext(DndContext); // &quot;en&quot; or &quot;tr&quot;
+const [books, setBooks] = useState([]); // Holds the data
+
+// Run this side effect whenever &#39;language&#39; changes
+useEffect(() =&gt; {
+  const fetchData = async () =&gt; {
+    // 1. Fetch the file based on the dynamic language variable
+    const response = await fetch(`/stories/books_${language}.piml`);
+    
+    // 2. Parse the result
+    const text = await response.text();
+    const data = parsePiml(text);
+    
+    // 3. Update state (triggers re-render)
+    setBooks(data.books);
+  };
+
+  fetchData();
+}, [language]); // &lt;--- The dependency that triggers the re-fetch
+</code></pre>
+<p>This pattern ensures that every time the user clicks &quot;TR&quot;, the effect re-runs, fetches the Turkish content, updates the state, and the UI refreshes automatically.</p>
 <p><a href="https://fezcode.com/blog/react-hooks-comparison">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
