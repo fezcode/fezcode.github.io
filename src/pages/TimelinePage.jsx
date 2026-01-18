@@ -139,7 +139,7 @@ const TimelinePage = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-[#050505]/50" />
 
         {/* HUD Elements */}
-        <div className="absolute top-0 left-0 w-full h-full p-6 md:p-8 lg:p-12 pointer-events-none flex flex-col justify-between z-10">
+        <div className="absolute top-0 left-0 w-full h-full p-6 md:p-8 lg:pt-20 lg:pb-20 lg:px-12 pointer-events-none flex flex-col justify-between z-10">
             {/* Top Bar HUD */}
             <div className="flex justify-between items-start">
                 <div className="flex flex-col gap-1">
@@ -213,7 +213,7 @@ const TimelinePage = () => {
       </div>
 
       {/* Right Column: Timeline Content */}
-      <div className="w-full lg:w-7/12 relative bg-[#050505] p-6 md:p-12 lg:p-24 overflow-y-auto">
+      <div className="w-full lg:w-7/12 relative bg-[#050505] p-6 md:p-12 lg:pt-32 lg:pb-24 lg:px-24 overflow-y-auto">
           {/* Vertical Line */}
           <div className="absolute left-6 md:left-12 lg:left-24 top-0 bottom-0 w-px bg-white/10" />
 
