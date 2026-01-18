@@ -97,10 +97,18 @@ To get deeper insights, I needed better math than simple means.
 
 How do you compare a movie with a 9.0 rating and 105 votes against an 8.2 rating with 500,000 votes? The latter score is more statistically significant.
 
-I adopted IMDb's own **Weighted Rating** formula. This "Bayesian average" pulls a movie's rating toward the global average (C) if it has few votes (v),
-only allowing it to deviate as it gains more votes over a threshold (m).
+I adopted IMDb's own **Weighted Rating** formula. This "Bayesian average" pulls a movie's rating toward the global average $C$ if it has few votes $v$,
+only allowing it to deviate as it gains more votes over a threshold $m$.
 
-![Weighted Rating](/images/posts/wgsiw/formula.png)
+$$
+WR = \left( \frac{v}{v+m} \cdot R \right) + \left( \frac{m}{v+m} \cdot C \right)
+$$
+
+**Where:**
+* $R$ = Average Rating of the movie
+* $v$ = Number of votes for the movie
+* $m$ = Minimum votes required to be listed (Threshold: 100)
+* $C$ = Mean vote across the whole dataset
 
 This provided a fair "Quality Score" for every movie.
 

@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 18 Jan 2026 16:01:09 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 18 Jan 2026 17:28:17 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 18 Jan 2026 16:01:09 GMT</pubDate>
+        <pubDate>Sun, 18 Jan 2026 17:28:17 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -91,9 +91,18 @@ This ensured our statistical analysis was based on titles with a minimum level o
 <p>To get deeper insights, I needed better math than simple means.</p>
 <h4>Metric A: The Weighted Rating (Bayesian Average)</h4>
 <p>How do you compare a movie with a 9.0 rating and 105 votes against an 8.2 rating with 500,000 votes? The latter score is more statistically significant.</p>
-<p>I adopted IMDb&#39;s own <strong>Weighted Rating</strong> formula. This &quot;Bayesian average&quot; pulls a movie&#39;s rating toward the global average (C) if it has few votes (v),
-only allowing it to deviate as it gains more votes over a threshold (m).</p>
-<p><img src="/images/posts/wgsiw/formula.png" alt="Weighted Rating"></p>
+<p>I adopted IMDb&#39;s own <strong>Weighted Rating</strong> formula. This &quot;Bayesian average&quot; pulls a movie&#39;s rating toward the global average $C$ if it has few votes $v$,
+only allowing it to deviate as it gains more votes over a threshold $m$.</p>
+<p>$$
+WR = \left( \frac{v}{v+m} \cdot R \right) + \left( \frac{m}{v+m} \cdot C \right)
+$$</p>
+<p><strong>Where:</strong></p>
+<ul>
+<li>$R$ = Average Rating of the movie</li>
+<li>$v$ = Number of votes for the movie</li>
+<li>$m$ = Minimum votes required to be listed (Threshold: 100)</li>
+<li>$C$ = Mean vote across the whole dataset</li>
+</ul>
 <p>This provided a fair &quot;Quality Score&quot; for every movie.</p>
 <h4>Metric B: The p99 Ceiling</h4>
 <p>I wanted to know the &quot;potential&quot; of a genre. Even if most Action movies are mediocre, how good are the very best ones?</p>
