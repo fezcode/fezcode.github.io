@@ -184,7 +184,7 @@ const BlogPage = () => {
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="SEARCH_INTEL..."
+                placeholder="Search Blogposts..."
                 className="bg-transparent border-none outline-none text-[10px] font-mono uppercase tracking-widest text-white placeholder-gray-600 w-full"
               />
               {searchQuery && (
@@ -261,10 +261,10 @@ const BlogPage = () => {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <h2 className="text-4xl font-black text-white uppercase tracking-tighter leading-none">
+                  <h2 className="text-6xl md:text-7xl font-instr-serif text-white uppercase tracking-normal leading-none">
                     {activePost.title}
                   </h2>
-                  <p className="text-lg text-gray-300 font-light leading-relaxed max-w-xl">
+                  <p className="text-lg text-gray-300 font-syne leading-relaxed max-w-xl">
                     {activePost.description ||
                       'Archived content from the digital vault. Processed and cataloged for immediate access.'}
                   </p>
@@ -316,10 +316,10 @@ const BlogPage = () => {
                         ? `/blog/series/${activePost.slug}`
                         : `/blog/${activePost.slug}`
                     }
-                    className="inline-flex items-center gap-4 text-white border-b-2 border-emerald-500 pb-2 hover:bg-emerald-500 hover:text-black transition-all px-1"
+                    className="inline-flex items-center gap-4 text-white border-b-2 border-emerald-500 pb-2 hover:bg-emerald-500 hover:text-black transition-all px-2 py-2"
                   >
-                    <span className="text-sm font-black uppercase tracking-[0.2em]">
-                      Read_Post
+                    <span className="text-sm font-syne font-normal uppercase tracking-[0.2em]">
+                      Read Post
                     </span>
                     <BookOpen weight="bold" size={20} />
                   </Link>
