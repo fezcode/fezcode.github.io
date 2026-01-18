@@ -314,12 +314,22 @@ const DokumentBlogPostPage = () => {
               remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeRaw, rehypeKatex]}
               components={{
-                a: (p) => (
-                  <MarkdownLink
-                    {...p}
-                    className="font-bold underline decoration-emerald-600/30 hover:decoration-emerald-600"
-                  />
-                ),
+                a: (p) => {
+                  const isVocab =
+                    p.href &&
+                    (p.href.startsWith('/vocab/') ||
+                      p.href.includes('/#/vocab/'));
+                  return (
+                    <MarkdownLink
+                      {...p}
+                      className={
+                        isVocab
+                          ? 'font-bold text-black bg-emerald-300 px-1 hover:bg-emerald-700 hover:text-white transition-all cursor-help no-underline'
+                          : 'font-bold underline decoration-emerald-600/30 hover:decoration-emerald-600 text-emerald-800'
+                      }
+                    />
+                  );
+                },
                 pre: ({ children }) => <>{children}</>,
                 code: CodeBlock,
               }}
