@@ -2,14 +2,14 @@ import React from 'react';
 
 export default function Murakami() {
   return (
-    <div className="space-y-4">
+    <div className="space-y-6 font-mono text-sm leading-relaxed">
       <img
         src="/images/takashi-murakami.jpg"
         alt="Takashi Murakami"
-        className="w-full h-auto max-w-xs mx-auto rounded-lg shadow-lg"
+        className="w-full h-auto max-w-xs mx-auto border-2 border-white/10 grayscale hover:grayscale-0 transition-all duration-500"
       />
       <p>
-        <strong>Murakami, Takashi</strong> (村上 隆, Murakami Takashi) is a
+        <strong className="text-white">Murakami, Takashi</strong> (村上 隆, Murakami Takashi) is a
         highly influential contemporary Japanese artist, often referred to as
         the "Andy Warhol of Japan."
       </p>
@@ -20,10 +20,10 @@ export default function Murakami() {
         otaku culture, and consumerism, frequently featuring smiling flowers,
         cartoon-like characters, and a bold, colorful palette.
       </p>
-      <div className="bg-gray-800 p-4 rounded-lg border border-gray-700 text-sm text-gray-300">
+      <div className="border border-white/10 p-4 bg-white/[0.02] text-xs text-gray-400">
         <p>
           Murakami's notable collaborations include designing the album cover
-          art for Kanye West's 2007 album <em>Graduation</em>
+          art for Kanye West's 2007 album <em className="text-white not-italic">Graduation</em>
           and the 2018 Kids See Ghosts album (a joint project by Kanye West and
           Kid Cudi).
         </p>
