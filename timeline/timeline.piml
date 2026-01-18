@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-01-18
+    (title) Multimodal Project Layouts
+    (description) Implemented a polymorphic layout system for project pages, allowing projects to define their own visual identity via specialized 'Styles'. Launched four distinct protocols: 'Stylish' (e.g., Fezcodex), 'Museum' (e.g., PIML), 'Editorial' (e.g., Dush, BM), and 'Minimal Modern' (e.g., Yap). Each style adapts the UI to match the project's unique character.
+    (type) feature
+    (icon) PaletteIcon
+    (link) /projects
+
+  > (item)
     (date) 2026-01-12
     (title) Major SEO Refactoring: Declarative Metadata
     (description) Executed a site-wide architectural shift from imperative 'useSeo' hooks to a declarative '<Seo />' component system. This transition ensures that React 19 metadata hoisting is correctly utilized during Static Site Generation (SSG) via react-snap, enabling crawlers to capture full SEO payloads before hydration. Optimized 130+ pages and implemented standard path mapping for improved compatibility.
