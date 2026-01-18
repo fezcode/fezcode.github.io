@@ -20,6 +20,7 @@
   > (project)
     (slug) piml
     (title) piml
+    (style) museum
     (size) 1
     (repo_link) https://github.com/fezcode/piml
     (demo_link) /apps/piml-lab
@@ -34,6 +35,7 @@
   > (project)
     (slug) bm
     (title) bm - bookmark manager
+    (style) editorial
     (size) 1
     (repo_link) https://github.com/fezcode/bm
     (pinned) true
@@ -44,6 +46,9 @@
     (shortDescription) BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
     (date) 2025-11-06
     (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (backgroundImage) /images/bg/nik.jpg
+    (photoCreditText) Photo by Nik on Unsplash
+    (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
 
   > (project)
     (slug) dush
@@ -61,6 +66,9 @@
     (shortDescription) Dush (Dumb Shell) is a custom terminal shell written in Go, intended as a Bash alternative and a learning platform for shell mechanics.
     (date) 2026-01-12
     (image) https://raw.githubusercontent.com/fezcode/dush/main/title-card.png
+    (backgroundImage) /images/bg/tim_simon.jpg
+    (photoCreditText) Photo by Tim Simon
+    (photoCreditLink) https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE
 
   > (project)
     (slug) nocturnote
@@ -116,6 +124,7 @@
   > (project)
     (slug) yap
     (title) yap
+    (style) minimal-modern
     (size) 1
     (repo_link) https://github.com/fezcode/yap
     (pinned) false
@@ -127,7 +136,7 @@
       > Audio
     (shortDescription) A lightweight, terminal-based YouTube audio player written in Go with synced lyrics and advanced playback controls.
     (date) 2026-01-12
-    (image) /images/projects/yap-banner.webp
+    (image) /images/projects/yap/yap-banner.webp
 
   > (project)
     (slug) go-piml

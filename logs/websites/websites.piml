@@ -1,6 +1,14 @@
 (logs)
   > (item)
     (category) Websites
+    (date) 2026-01-17
+    (link) https://noyaml.com
+    (slug) noyaml
+    (title) NoYAML
+    (description) A tongue-in-cheek platform highlighting the pitfalls and quirks of YAML in DevOps.
+    (rating) 5
+  > (item)
+    (category) Websites
     (date) 2026-01-16
     (link) https://21st.dev
     (slug) 21st

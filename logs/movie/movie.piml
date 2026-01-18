@@ -1,6 +1,26 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-01-17
+    (link) https://www.imdb.com/title/tt0342258/
+    (director) Louis Leterrier
+    (rating) 3
+    (slug) unleashed-2005
+    (title) Unleashed (2005)
+    (description) A man raised as a fighting dog by a mobster escapes and starts a new life with a blind piano tuner and his stepdaughter, but his past soon catches up with him.
+
+  > (item)
+    (category) Movie
+    (date) 2026-01-17
+    (link) https://www.imdb.com/title/tt0356910/
+    (director) Doug Liman
+    (rating) 4
+    (slug) mr-and-mrs-smith-2005
+    (title) Mr. & Mrs. Smith (2005)
+    (description) A bored married couple is surprised to learn that they are both assassins working for competing agencies, and that they have been assigned to kill each other.
+
+  > (item)
+    (category) Movie
     (date) 2025-12-26
     (link) https://www.imdb.com/title/tt0119643/
     (director) Martin Brest

@@ -5,20 +5,20 @@ Fezcodex meets you wherever you are in your journey.
 :::integration
 title: Command Palette
 description: Deep system access from any page via Cmd+K.
-image: /images/asset/commands-page.webp
+image: /images/projects/fezcodex/command.png
 link: /commands
 :::
 
 :::integration
 title: The Vague: Magazine
 description: Raw notes and work-in-progress thoughts.
-image: /images/asset/the-vague-page.webp
+image: /images/projects/fezcodex/the_vague.png
 link: /the-vague
 :::
 
 :::integration
 title: Interactive Timeline
 description: A chronological journey through the archive.
-image: /images/asset/timeline-page.webp
+image: /images/projects/fezcodex/timeline.png
 link: /timeline
 :::

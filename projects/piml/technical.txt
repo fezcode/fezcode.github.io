@@ -1,0 +1,8 @@
+LABEL: Ecosystem
+SUBTEXT: Integration
+
+PIML is supported by a growing ecosystem of tools:
+- **go-piml**: A high-performance Go parser and serializer.
+- **piml.js**: Full support for JavaScript/TypeScript environments.
+- **VS Code Extension**: Syntax highlighting and snippets for visual clarity.
+- **PIML Lab**: A live playground to test and convert your data.

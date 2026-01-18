@@ -1,5 +1,16 @@
 [
   {
+    "slug": "what-genre-should-i-watch",
+    "title": "Dying is Easy, Comedy is Statistically Impossible: An IMDbayes Analysis",
+    "date": "2026-01-18",
+    "updated": "2026-01-18",
+    "description": "Deconstructing Hollywood: A Data Science Journey from Raw Data to p99 Insights. Why you need a 6.5 filter for laughs, but can fly blind with a Documentary.",
+    "tags": ["data science", "math", "python", "imdb", "movies", "uv", "dev"],
+    "category": "dev",
+    "filename": "what-genre-should-i-watch.txt",
+    "authors": ["fezcode"]
+  },
+  {
     "slug": "debian-upgrade-path",
     "title": "Upgrading Debian 11 to 13: The Safe Path",
     "date": "2026-01-12",

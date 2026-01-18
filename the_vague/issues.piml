@@ -22,3 +22,13 @@
     (link) https://github.com/fezcode/fcdx.cdn/releases/download/TheVague/Issue003.pdf
     (description) The third issue of The Vague. The Dance of Death, The Post-Event Palate
     (date) 2026-01-05
+
+  > (issue)
+    (id) issue_004
+    (title) Issue #004: The Graphical User Interface
+    (thumbnail) Issue004.png
+    (link) https://github.com/fezcode/fcdx.cdn/releases/download/TheVague/Issue004.pdf
+    (description)
+      The fourth issue of The Vague. In this issue, we compare graphical user interface libraries and frameworks,
+      and unravel the mystery between 24 and 60 FPS.
+    (date) 2026-01-17

@@ -1,0 +1,12 @@
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> bm add rust_docs    <span class="text-[#b8bb26]"># Adds current directory to bookmarks</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> bm show             <span class="text-[#b8bb26]"># Lists all bookmarks</span>
+
+  ws C:\Workspace
+  bm C:\Workspace\bm\target\debug\bm.exe
+  home C:\Users\fezcode
+  config C:\Users\fezcode\.bm
+
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> bm show -p          <span class="text-[#b8bb26]"># Lists all bookmarks in a table</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> bm delete rust_docs <span class="text-[#b8bb26]"># Delete rust_docs bookmark</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> bm help             <span class="text-[#b8bb26]"># Show help text</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> bm version          <span class="text-[#b8bb26]"># Show version</span>
