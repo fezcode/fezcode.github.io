@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
 import { ImagesIcon } from '@phosphor-icons/react';
 import ImageModal from './ImageModal';
 
@@ -39,8 +41,8 @@ const MarkdownContent = ({ content, components = {}, className = '' }) => {
       <>
         <div className={className}>
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={defaultComponents}
           >
             {content}

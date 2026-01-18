@@ -2,14 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { ArrowLeft, ArrowsOutSimple } from '@phosphor-icons/react';
-import Seo from '../components/Seo';
-import GenerativeArt from '../components/GenerativeArt';
-import MarkdownLink from '../components/MarkdownLink';
-import CodeModal from '../components/CodeModal';
-import ImageModal from '../components/ImageModal';
+import Seo from '../../components/Seo';
+import GenerativeArt from '../../components/GenerativeArt';
+import MarkdownLink from '../../components/MarkdownLink';
+import CodeModal from '../../components/CodeModal';
+import ImageModal from '../../components/ImageModal';
 
 const emeraldTerminalTheme = {
   'code[class*="language-"]': {
@@ -86,7 +88,7 @@ const TerminalGreenBlogPostPage = () => {
         }
 
         setPost({ attributes: postMetadata, body: postBody, seriesPosts });
-        const { calculateReadingTime } = await import('../utils/readingTime');
+        const { calculateReadingTime } = await import('../../utils/readingTime');
         setEstimatedReadingTime(calculateReadingTime(postBody));
       } catch (error) {
         console.error('Error fetching terminal post:', error);
@@ -237,8 +239,8 @@ const TerminalGreenBlogPostPage = () => {
             prose-code:before:content-none prose-code:after:content-none prose-a:text-emerald-400 prose-a:underline hover:prose-a:text-white"
         >
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={{
               code: CodeBlock,
               a: (p) => (

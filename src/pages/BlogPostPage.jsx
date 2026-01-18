@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
-import DossierBlogPostPage from './DossierBlogPostPage';
-import DokumentBlogPostPage from './DokumentBlogPostPage';
-import StandardBlogPostPage from './StandardBlogPostPage';
-import OldBlogPostPage from './OldBlogPostPage';
-import TerminalBlogPostPage from './TerminalBlogPostPage';
-import TerminalGreenBlogPostPage from './TerminalGreenBlogPostPage';
+import DossierBlogPostPage from './blog-views/DossierBlogPostPage';
+import DokumentBlogPostPage from './blog-views/DokumentBlogPostPage';
+import StandardBlogPostPage from './blog-views/StandardBlogPostPage';
+import OldBlogPostPage from './blog-views/OldBlogPostPage';
+import TerminalBlogPostPage from './blog-views/TerminalBlogPostPage';
+import TerminalGreenBlogPostPage from './blog-views/TerminalGreenBlogPostPage';
 
 const BlogPostPage = () => {
   const { blogPostViewMode } = useVisualSettings();

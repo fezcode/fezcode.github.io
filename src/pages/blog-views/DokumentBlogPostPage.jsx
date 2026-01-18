@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   ArrowLeft,
@@ -14,15 +16,15 @@ import {
   ArrowsOutSimple,
   ClipboardText,
 } from '@phosphor-icons/react';
-import GrainOverlay from '../components/GrainOverlay';
-import GenerativeArt from '../components/GenerativeArt';
-import { calculateReadingTime } from '../utils/readingTime';
-import MarkdownLink from '../components/MarkdownLink';
-import ImageModal from '../components/ImageModal';
-import CodeModal from '../components/CodeModal';
-import Seo from '../components/Seo';
-import { useToast } from '../hooks/useToast';
-import { fetchAllBlogPosts } from '../utils/dataUtils';
+import GrainOverlay from '../../components/GrainOverlay';
+import GenerativeArt from '../../components/GenerativeArt';
+import { calculateReadingTime } from '../../utils/readingTime';
+import MarkdownLink from '../../components/MarkdownLink';
+import ImageModal from '../../components/ImageModal';
+import CodeModal from '../../components/CodeModal';
+import Seo from '../../components/Seo';
+import { useToast } from '../../hooks/useToast';
+import { fetchAllBlogPosts } from '../../utils/dataUtils';
 
 const dokumentCodeTheme = {
   'code[class*="language-"]': {
@@ -309,8 +311,8 @@ const DokumentBlogPostPage = () => {
                 prose-a:text-emerald-700 prose-a:underline prose-a:decoration-emerald-600/30 hover:prose-a:decoration-emerald-600"
           >
             <ReactMarkdown
-              remarkPlugins={[remarkGfm]}
-              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={[remarkGfm, remarkMath]}
+              rehypePlugins={[rehypeRaw, rehypeKatex]}
               components={{
                 a: (p) => (
                   <MarkdownLink

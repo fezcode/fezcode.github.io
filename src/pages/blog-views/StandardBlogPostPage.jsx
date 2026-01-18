@@ -10,15 +10,15 @@ import {
   ClipboardText,
 } from '@phosphor-icons/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { customTheme } from '../utils/customTheme';
-import CodeModal from '../components/CodeModal';
-import Seo from '../components/Seo';
-import GenerativeArt from '../components/GenerativeArt';
-import { calculateReadingTime } from '../utils/readingTime';
-import { fetchAllBlogPosts } from '../utils/dataUtils';
-import { useToast } from '../hooks/useToast';
-import MarkdownLink from '../components/MarkdownLink';
-import MarkdownContent from '../components/MarkdownContent';
+import { customTheme } from '../../utils/customTheme';
+import CodeModal from '../../components/CodeModal';
+import Seo from '../../components/Seo';
+import GenerativeArt from '../../components/GenerativeArt';
+import { calculateReadingTime } from '../../utils/readingTime';
+import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { useToast } from '../../hooks/useToast';
+import MarkdownLink from '../../components/MarkdownLink';
+import MarkdownContent from '../../components/MarkdownContent';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 

@@ -11,6 +11,8 @@ import {
   Clock,
   Tag,
   BookOpen,
+  MagnifyingGlass,
+  Hash,
 } from '@phosphor-icons/react';
 
 const FILTERS = [
@@ -49,6 +51,9 @@ const BlogPage = () => {
                 image: post.series.image,
                 isSeries: true,
                 posts: [],
+                tags: post.tags, // Inherit tags from first post for preview if series
+                category: post.category,
+                description: post.series.description || post.description,
               });
             }
             seriesMap.get(post.series.slug).posts.push(post);
@@ -154,29 +159,44 @@ const BlogPage = () => {
           </p>
         </header>
 
-        {/* Filter Bar */}
-        <div className="mb-12 flex flex-wrap items-center gap-2 border-b border-white/10 pb-8">
-          {FILTERS.map((f) => (
-            <button
-              key={f.id}
-              onClick={() => setActiveFilter(f.id)}
-              className={`rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest transition-all ${
-                activeFilter === f.id
-                  ? 'bg-emerald-500 text-black shadow-lg shadow-emerald-500/20'
-                  : 'bg-white/5 text-gray-500 hover:text-white hover:bg-white/10 border border-white/5'
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
-          {searchQuery && (
-            <button
-              onClick={() => setSearchQuery('')}
-              className="ml-2 text-red-500"
-            >
-              <XCircle size={18} />
-            </button>
-          )}
+        {/* Filter Bar & Search */}
+        <div className="mb-12 border-b border-white/10 pb-8 space-y-6">
+          <div className="flex flex-wrap items-center gap-2">
+            {FILTERS.map((f) => (
+              <button
+                key={f.id}
+                onClick={() => setActiveFilter(f.id)}
+                className={`rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest transition-all ${
+                  activeFilter === f.id
+                    ? 'bg-emerald-500 text-black shadow-lg shadow-emerald-500/20'
+                    : 'bg-white/5 text-gray-500 hover:text-white hover:bg-white/10 border border-white/5'
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="relative group w-full max-w-md">
+            <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-sm px-3 py-1.5 focus-within:border-emerald-500/50 focus-within:bg-white/10 transition-all">
+              <MagnifyingGlass size={14} className="text-gray-500 group-focus-within:text-emerald-400" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="SEARCH_INTEL..."
+                className="bg-transparent border-none outline-none text-[10px] font-mono uppercase tracking-widest text-white placeholder-gray-600 w-full"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="text-gray-500 hover:text-red-500 transition-colors"
+                >
+                  <XCircle size={14} weight="fill" />
+                </button>
+              )}
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col pb-32">
@@ -188,10 +208,17 @@ const BlogPage = () => {
               onHover={setActivePost}
             />
           ))}
+          {filteredItems.length === 0 && (
+            <div className="py-12 text-center border border-dashed border-white/10 rounded-lg">
+              <p className="font-mono text-xs text-gray-500 uppercase tracking-widest">
+                No_Intel_Found
+              </p>
+            </div>
+          )}
         </div>
 
         <div className="mt-auto pt-20 border-t border-white/10 text-gray-600 font-mono text-[10px] uppercase tracking-widest">
-          Stored_Entries: {displayItems.length}
+          Total Stored Entries: {displayItems.length}
         </div>
       </div>
 
@@ -242,6 +269,20 @@ const BlogPage = () => {
                       'Archived content from the digital vault. Processed and cataloged for immediate access.'}
                   </p>
                 </div>
+
+                {/* Tags Section */}
+                {activePost.tags && activePost.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 max-w-xl">
+                    {activePost.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-wider text-gray-400 bg-black/40 px-2 py-1 rounded-sm border border-white/5"
+                      >
+                        <Hash size={10} /> {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
 
                 {activePost.isSeries && (
                   <div className="mt-4 flex flex-col gap-4">

@@ -2,20 +2,22 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   ArrowLeft,
   ArrowsOutSimple,
   ClipboardTextIcon,
 } from '@phosphor-icons/react';
-import Seo from '../components/Seo';
-import { useAchievements } from '../context/AchievementContext';
-import MarkdownLink from '../components/MarkdownLink';
-import CodeModal from '../components/CodeModal';
-import ImageModal from '../components/ImageModal';
-import { useToast } from '../hooks/useToast';
-import { fetchAllBlogPosts } from '../utils/dataUtils';
+import Seo from '../../components/Seo';
+import { useAchievements } from '../../context/AchievementContext';
+import MarkdownLink from '../../components/MarkdownLink';
+import CodeModal from '../../components/CodeModal';
+import ImageModal from '../../components/ImageModal';
+import { useToast } from '../../hooks/useToast';
+import { fetchAllBlogPosts } from '../../utils/dataUtils';
 
 const terminalCodeTheme = {
   'code[class*="language-"]': {
@@ -374,8 +376,8 @@ const TerminalBlogPostPage = () => {
             prose-a:text-orange-400 prose-a:underline hover:prose-a:text-orange-200"
         >
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={{
               a: (props) => {
                 const isVocab =

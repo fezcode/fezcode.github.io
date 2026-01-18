@@ -7,18 +7,20 @@ import {
   ClipboardIcon,
   ArrowLeftIcon,
 } from '@phosphor-icons/react';
-import { customTheme } from '../utils/customTheme';
-import PostMetadata from '../components/metadata-cards/PostMetadata';
-import CodeModal from '../components/CodeModal';
-import { useToast } from '../hooks/useToast';
-import ImageModal from '../components/ImageModal';
-import Seo from '../components/Seo';
-import ShareButtons from '../components/ShareButtons';
+import { customTheme } from '../../utils/customTheme';
+import PostMetadata from '../../components/metadata-cards/PostMetadata';
+import CodeModal from '../../components/CodeModal';
+import { useToast } from '../../hooks/useToast';
+import ImageModal from '../../components/ImageModal';
+import Seo from '../../components/Seo';
+import ShareButtons from '../../components/ShareButtons';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
-import { calculateReadingTime } from '../utils/readingTime';
-import { useAchievements } from '../context/AchievementContext';
-import MarkdownLink from '../components/MarkdownLink';
+import rehypeKatex from 'rehype-katex';
+import { calculateReadingTime } from '../../utils/readingTime';
+import { useAchievements } from '../../context/AchievementContext';
+import MarkdownLink from '../../components/MarkdownLink';
 
 const OldBlogPostPage = () => {
   const { slug, seriesSlug, episodeSlug } = useParams();
@@ -346,8 +348,8 @@ const OldBlogPostPage = () => {
                  prose-code:before:content-none prose-code:after:content-none prose-pre:text-base"
             >
               <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
+                remarkPlugins={[remarkGfm, remarkMath]}
+                rehypePlugins={[rehypeRaw, rehypeKatex]}
                 components={{
                   a: (props) => (
                     <MarkdownLink

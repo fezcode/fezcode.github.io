@@ -2,7 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
+import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   ArrowLeft,
@@ -10,17 +12,17 @@ import {
   ArrowsOutSimple,
   ClipboardText,
 } from '@phosphor-icons/react';
-import GrainOverlay from '../components/GrainOverlay';
-import CoffeeStain from '../components/CoffeeStain';
-import CensoredPolaroid from '../components/CensoredPolaroid';
-import Seo from '../components/Seo';
-import { calculateReadingTime } from '../utils/readingTime';
-import { useAchievements } from '../context/AchievementContext';
-import MarkdownLink from '../components/MarkdownLink';
-import CodeModal from '../components/CodeModal';
-import ImageModal from '../components/ImageModal';
-import { useToast } from '../hooks/useToast';
-import { fetchAllBlogPosts } from '../utils/dataUtils';
+import GrainOverlay from '../../components/GrainOverlay';
+import CoffeeStain from '../../components/CoffeeStain';
+import CensoredPolaroid from '../../components/CensoredPolaroid';
+import Seo from '../../components/Seo';
+import { calculateReadingTime } from '../../utils/readingTime';
+import { useAchievements } from '../../context/AchievementContext';
+import MarkdownLink from '../../components/MarkdownLink';
+import CodeModal from '../../components/CodeModal';
+import ImageModal from '../../components/ImageModal';
+import { useToast } from '../../hooks/useToast';
+import { fetchAllBlogPosts } from '../../utils/dataUtils';
 
 const dossierCodeTheme = {
   'code[class*="language-"]': {
@@ -433,8 +435,8 @@ const DossierBlogPostPage = () => {
           prose-blockquote:border-l-[6px] prose-blockquote:border-black prose-blockquote:bg-black/5 prose-blockquote:text-black prose-blockquote:not-italic prose-blockquote:font-mono prose-blockquote:p-6 prose-blockquote:my-8 prose-blockquote:shadow-none"
         >
           <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            rehypePlugins={[rehypeRaw]}
+            remarkPlugins={[remarkGfm, remarkMath]}
+            rehypePlugins={[rehypeRaw, rehypeKatex]}
             components={{
               a: (props) => {
                 const isVocab =
