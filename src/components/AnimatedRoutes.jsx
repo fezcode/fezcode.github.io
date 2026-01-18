@@ -108,6 +108,7 @@ const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
 const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage'));
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
+const DataPrismPage = lazy(() => import('../pages/apps/DataPrismPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
 const TierForgePage = lazy(() => import('../pages/apps/TierForgePage'));
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
@@ -1117,7 +1118,6 @@ const AnimatedRoutes = ({
           path="/apps::pat"
           element={<Navigate to="/apps/pattern-generator" replace />}
         />
-        {/* End of hardcoded redirects */}
         <Route
           path="/apps::code"
           element={<Navigate to="/apps/codeblock-creator" replace />}
@@ -1126,6 +1126,11 @@ const AnimatedRoutes = ({
           path="/apps::stego"
           element={<Navigate to="/apps/steganography" replace />}
         />
+        <Route
+          path="/apps::metrics"
+          element={<Navigate to="/apps/data-prism" replace />}
+        />
+        {/* End of hardcoded redirects */}
         <Route
           path="/apps/steganography"
           element={
@@ -1138,6 +1143,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <SteganographyPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/data-prism"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DataPrismPage />
               </Suspense>
             </motion.div>
           }
