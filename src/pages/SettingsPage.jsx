@@ -318,6 +318,7 @@ const SettingsPage = () => {
                   label="Select View"
                   options={[
                     { label: 'Standard', value: 'standard' },
+                    { label: 'Editorial', value: 'editorial' },
                     { label: 'Classic', value: 'old' },
                     { label: 'Dossier', value: 'dossier' },
                     { label: 'Dokument', value: 'dokument' },

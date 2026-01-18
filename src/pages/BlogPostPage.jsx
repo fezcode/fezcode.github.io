@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import DossierBlogPostPage from './blog-views/DossierBlogPostPage';
 import DokumentBlogPostPage from './blog-views/DokumentBlogPostPage';
+import EditorialBlogPostPage from './blog-views/EditorialBlogPostPage';
 import StandardBlogPostPage from './blog-views/StandardBlogPostPage';
 import OldBlogPostPage from './blog-views/OldBlogPostPage';
 import TerminalBlogPostPage from './blog-views/TerminalBlogPostPage';
@@ -21,9 +22,10 @@ const BlogPostPage = () => {
     if (
       themeParam &&
       [
+        'standard',
+        'editorial',
         'dossier',
         'terminal',
-        'standard',
         'dokument',
         'terminal-green',
         'old',
@@ -44,6 +46,10 @@ const BlogPostPage = () => {
 
   if (effectiveViewMode === 'dokument') {
     return <DokumentBlogPostPage />;
+  }
+
+  if (effectiveViewMode === 'editorial') {
+    return <EditorialBlogPostPage />;
   }
 
   if (effectiveViewMode === 'terminal-green') {
