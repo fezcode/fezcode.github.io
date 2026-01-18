@@ -129,11 +129,6 @@ const TheVaguePage = () => {
         <div className={`c-nav-bg ${isNavOpen ? 'is-visible' : ''}`} onClick={toggleNav}></div>
         <nav className={`c-nav border-r ${isInvert ? 'border-[#f4f4f4]/25' : 'border-[#1a1a1a]/25'} bg-inherit`}>
             <div className="c-nav_panel">
-                <div className="md:hidden flex justify-end mb-4">
-                    <button onClick={toggleNav} className="p-2">
-                        <XIcon size={24} weight="bold" />
-                    </button>
-                </div>
                 <div className="c-nav_panel_main font-instr-serif italic">
                     Collection Index
                     <ol className="c-nav_panel_list font-instr-serif not-italic">

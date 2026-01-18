@@ -129,7 +129,7 @@ hr { margin-top: 0; margin-bottom: 0; border-top: 1px solid rgba(26, 26, 26, .25
 .has-nav-open .c-navButton { transform: translateX(34vw) translateX(-4rem); }
 @media (max-width:1199px) { .has-nav-open .c-navButton { transform: translateX(50vw) translateX(-4rem) } }
 @media (max-width:699px) {
-  .has-nav-open .c-navButton { transform: none; color: transparent !important; pointer-events: none; }
+  .has-nav-open .c-navButton { transform: none; z-index: 2001; }
 }
 
 .c-navButton_lines:after, .c-navButton_lines:before { content: ""; display: block; width: 1.55556rem; border-bottom: 2px solid currentColor; }

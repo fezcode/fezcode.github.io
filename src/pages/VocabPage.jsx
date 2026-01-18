@@ -2,18 +2,67 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
-  BookBookmarkIcon,
   MagnifyingGlassIcon,
   XCircleIcon,
-  ArrowSquareOutIcon,
-  FileTextIcon,
+  ArrowUpRightIcon,
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { vocabulary } from '../data/vocabulary';
 import Seo from '../components/Seo';
 import { useSidePanel } from '../context/SidePanelContext';
-import BreadcrumbTitle from '../components/BreadcrumbTitle';
-import GenerativeArt from '../components/GenerativeArt';
+
+const BauhausShapes = ({ seed }) => {
+  const shapes = useMemo(() => {
+    // Simple deterministic RNG based on string seed
+    let hash = 0;
+    for (let i = 0; i < seed.length; i++) {
+      hash = seed.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    const rng = () => {
+      const x = Math.sin(hash++) * 10000;
+      return x - Math.floor(x);
+    };
+
+    const count = 6;
+    const items = [];
+    const colors = ['#10b981', '#3b82f6', '#f87171', '#fb923c', '#ffffff'];
+
+    for (let i = 0; i < count; i++) {
+      items.push({
+        type: Math.floor(rng() * 4), // 0: rect, 1: circle, 2: triangle, 3: arc
+        x: rng() * 100,
+        y: rng() * 100,
+        size: 15 + rng() * 25,
+        rotation: Math.floor(rng() * 4) * 90,
+        color: colors[Math.floor(rng() * colors.length)],
+        opacity: 0.03 + rng() * 0.07
+      });
+    }
+    return items;
+  }, [seed]);
+
+  return (
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+      {shapes.map((s, i) => (
+        <g key={i} transform={`translate(${s.x}, ${s.y}) rotate(${s.rotation})`}>
+          {s.type === 0 && (
+            <rect x={-s.size/2} y={-s.size/2} width={s.size} height={s.size} fill={s.color} fillOpacity={s.opacity} />
+          )}
+          {s.type === 1 && (
+            <circle cx={0} cy={0} r={s.size/2} fill={s.color} fillOpacity={s.opacity} />
+          )}
+          {s.type === 2 && (
+            <path d={`M 0 ${-s.size/2} L ${s.size/2} ${s.size/2} L ${-s.size/2} ${s.size/2} Z`} fill={s.color} fillOpacity={s.opacity} />
+          )}
+          {s.type === 3 && (
+            <path d={`M ${-s.size/2} ${-s.size/2} A ${s.size} ${s.size} 0 0 1 ${s.size/2} ${s.size/2} L ${-s.size/2} ${s.size/2} Z`} fill={s.color} fillOpacity={s.opacity} />
+          )}
+        </g>
+      ))}
+    </svg>
+  );
+};
 
 const VocabPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -51,7 +100,7 @@ const VocabPage = () => {
   const scrollToLetter = (letter) => {
     const element = document.getElementById(`letter-${letter}`);
     if (element) {
-      const offset = 120; // sticky header offset
+      const offset = 140;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -64,179 +113,134 @@ const VocabPage = () => {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 font-sans">
-      <Seo
-        title="Glossary | Fezcodex"
-        description="A collection of technical terms, concepts, and definitions used across Fezcodex."
-        keywords={['Fezcodex', 'vocabulary', 'glossary', 'definitions']}
-      />
-      <div className="mx-auto max-w-6xl px-6 py-24 md:px-12">
-        {/* Header Section */}
-        <header className="mb-20">
-          <Link
-            to="/"
-            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
-          >
-            <ArrowLeftIcon weight="bold" />
-            <span>Back to Home</span>
-          </Link>
+    return (
+      <div className="min-h-screen bg-[#050505] text-[#f4f4f4] selection:bg-emerald-500/30 font-sans">
+        <Seo
+          title="Glossary | Fezcodex"
+          description="A dictionary of technical concepts and patterns."
+          keywords={['Fezcodex', 'vocabulary', 'glossary', 'definitions']}
+        />
 
-          <BreadcrumbTitle
-            title="Glossary"
-            breadcrumbs={['fc', 'reference', 'terms']}
-            variant="brutalist"
-          />
+        {/* Bauhaus Grid Background Pattern */}
+        <div className="fixed inset-0 pointer-events-none opacity-[0.02] z-0"
+             style={{
+               backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
+               backgroundSize: '40px 40px'
+             }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-12">
+          {/* Header Section */}
+          <header className="mb-24 flex flex-col items-start">
+            <Link
+              to="/"
+              className="mb-12 inline-flex items-center gap-3 text-md font-instr-sans text-gray-500 hover:text-white transition-colors"
+            >
+              <ArrowLeftIcon size={16} />
+              <span>Fezcodex Index</span>
+            </Link>
 
-          <div className="mt-8 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <p className="text-gray-400 font-mono text-[10px] uppercase tracking-[0.2em] max-w-sm">
-              {'//'} A dictionary of technical concepts, patterns, and terminology used throughout this digital garden.
+            <h1 className="text-7xl md:text-9xl font-instr-serif italic tracking-tight mb-6 text-white">
+              Glossary
+            </h1>
+            <p className="text-xl font-light text-gray-400 max-w-2xl font-instr-sans">
+              A curated collection of technical concepts, design patterns, and terminology.
             </p>
-            <div className="flex gap-4">
-              <span className="px-2 py-1 bg-white/5 border border-white/10 text-gray-500 font-mono text-[9px] uppercase tracking-widest">
-                Entries: {vocabEntries.length}
-              </span>
-            </div>
-          </div>
-        </header>
+          </header>
 
-                {/* Dictionary Navigation & Search Sticky Bar */}
-
-                <div className="sticky top-0 z-30 bg-[#050505]/95 backdrop-blur-md pb-6 pt-2 mb-16">
-
-                  {/* Alphabet Nav */}
-
-                  <div className="flex flex-wrap gap-2 mb-8 mt-2">
-
-                    {alphabet.map(letter => (
-
-                      <button
-
-                        key={letter}
-
-                        onClick={() => scrollToLetter(letter)}
-
-                        className="w-8 h-8 flex items-center justify-center border border-white/10 bg-white/5 hover:bg-emerald-500 hover:text-black transition-all font-black text-xs uppercase"
-
-                      >
-
-                        {letter}
-
-                      </button>
-
-                    ))}
-
+          {/* Sticky Search & Nav */}
+          <div className="sticky top-6 z-30 mb-20">
+              <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 shadow-lg rounded-2xl p-2 flex flex-col md:flex-row items-center gap-4">
+                  <div className="relative w-full md:w-96">
+                      <MagnifyingGlassIcon size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
+                      <input
+                        type="text"
+                        placeholder="Search terms..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full bg-transparent text-lg font-instr-sans placeholder-gray-600 focus:outline-none py-3 pl-12 pr-4 text-white"
+                      />
+                      {searchQuery && (
+                          <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-500">
+                              <XCircleIcon size={18} weight="fill" />
+                          </button>
+                      )}
                   </div>
 
-                  <div className="relative group">
+                  <div className="h-8 w-px bg-white/10 hidden md:block" />
 
-                    <MagnifyingGlassIcon
+                  <div className="flex flex-wrap gap-1 justify-center md:justify-start px-2 py-2 md:py-0 w-full overflow-x-auto no-scrollbar">
+                      {alphabet.map(letter => (
+                        <button
+                          key={letter}
+                          onClick={() => scrollToLetter(letter)}
+                          className="w-8 h-8 flex items-center justify-center rounded-full text-xs font-bold text-gray-500 hover:bg-white hover:text-black transition-all font-mono"
+                        >
+                          {letter}
+                        </button>
+                      ))}
+                  </div>
+              </div>
+          </div>
 
-                      size={20}
+          {/* Content */}
+          <div className="pb-48 space-y-20">
+            <AnimatePresence mode="popLayout">
+              {alphabet.map((letter) => (
+                <motion.section
+                  key={letter}
+                  id={`letter-${letter}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                >
+                  <div className="flex items-baseline gap-6 mb-10 border-b border-white/10 pb-4">
+                    <h2 className="text-6xl font-instr-serif italic text-white/20">{letter}</h2>
+                  </div>
 
-                      className="absolute left-0 top-1/2 -translate-y-1/2 text-gray-700 group-focus-within:text-emerald-500 transition-colors"
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
+                    {groupedEntries[letter].map((entry) => (
+                                          <motion.button
+                                            key={entry.slug}
+                                            layout
+                                            onClick={() => handleOpenVocab(entry)}
+                                            className="group flex flex-col text-left p-8 bg-[#0a0a0a] border border-white/5 hover:border-white/20 hover:shadow-2xl hover:shadow-emerald-900/10 hover:-translate-y-1 transition-all duration-300 rounded-xl relative overflow-hidden"
+                                          >
+                                              {/* Procedural Bauhaus Background */}
+                                              <div className="absolute inset-0 opacity-40 group-hover:opacity-100 transition-opacity duration-700">
+                                                <BauhausShapes seed={entry.slug} />
+                                              </div>
 
-                    />
+                                              {/* Decorative Bauhaus Shape Overlay */}
+                                              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-white/5 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                    <input
+                                              <div className="flex justify-between items-start w-full mb-6 relative z-10">                              <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest group-hover:text-emerald-400 transition-colors">
+                                  {entry.slug}
+                              </span>
+                              <ArrowUpRightIcon
+                                  size={18}
+                                  className="text-gray-600 group-hover:text-white transition-colors"
+                              />
+                          </div>
 
-                      type="text"
+                          <h3 className="text-2xl font-instr-serif text-white mb-3 group-hover:underline decoration-1 underline-offset-4 decoration-white/30 relative z-10">
+                              {entry.title}
+                          </h3>
+                      </motion.button>
+                    ))}
+                  </div>
+                </motion.section>
+              ))}
+            </AnimatePresence>
 
-                      placeholder="Search terms..."
-
-                      value={searchQuery}
-
-                      onChange={(e) => setSearchQuery(e.target.value)}
-
-                      className="w-full bg-transparent border-b border-gray-800 text-xl md:text-2xl font-light text-white placeholder-gray-700 focus:border-emerald-500 focus:outline-none py-2 pl-8 transition-colors font-mono"
-
-                    />
-
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-0 top-1/2 -translate-y-1/2 text-red-500 hover:text-red-400 transition-colors"
-              >
-                <XCircleIcon size={20} weight="fill" />
-              </button>
+            {filteredEntries.length === 0 && (
+              <div className="py-32 text-center">
+                  <p className="font-instr-serif italic text-2xl text-gray-600">No definitions found for "{searchQuery}"</p>
+              </div>
             )}
           </div>
         </div>
-
-        {/* Dictionary Groups */}
-        <div className="pb-48 space-y-24">
-          <AnimatePresence mode="popLayout">
-            {alphabet.map((letter) => (
-              <motion.section
-                key={letter}
-                id={`letter-${letter}`}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
-                className="space-y-8"
-              >
-                <div className="flex items-center gap-6">
-                  <h2 className="text-7xl font-black text-white leading-none opacity-20">{letter}</h2>
-                  <div className="h-px flex-grow bg-white/10" />
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {groupedEntries[letter].map((entry) => (
-                    <div key={entry.slug} className="flex flex-col h-full space-y-4">
-                      <span className="text-[10px] font-mono text-gray-600 uppercase tracking-widest flex items-center gap-2">
-                        <FileTextIcon size={14} /> {entry.slug.toUpperCase()}
-                      </span>
-                      <motion.button
-                        layout
-                        onClick={() => handleOpenVocab(entry)}
-                        className="group relative flex flex-col items-start text-left p-8 rounded-none bg-zinc-900 border border-white/10 hover:border-emerald-500/50 transition-all hover:bg-emerald-500/[0.02] flex-grow overflow-hidden"
-                      >
-                        {/* Background Generative Art - High Visibility */}
-                        <div className="absolute inset-0 opacity-30 group-hover:opacity-80 transition-opacity pointer-events-none scale-125 grayscale group-hover:grayscale-0 group-hover:scale-100 duration-1000">
-                          <GenerativeArt seed={entry.slug} className="w-full h-full" />
-                          <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors" />
-                        </div>
-
-                        {/* Ribbon */}
-                        <div className="absolute top-0 right-0 overflow-hidden w-16 h-16 pointer-events-none z-10">
-                          <div className="absolute top-[12px] right-[-24px] w-[80px] bg-emerald-500 text-black text-[8px] font-black font-mono text-center rotate-45 uppercase py-0.5 shadow-lg">
-                            TERM
-                          </div>
-                        </div>
-
-                        <div className="mb-6 text-emerald-500 group-hover:text-emerald-400 transition-colors relative z-10">
-                          <BookBookmarkIcon size={32} weight="duotone" />
-                        </div>
-
-                        <h3 className="text-2xl font-black tracking-tighter uppercase mb-4 group-hover:text-emerald-400 transition-colors leading-none relative z-10">
-                          {entry.title}
-                        </h3>
-
-                        <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest mt-auto group-hover:text-gray-400 transition-colors border-t border-white/5 pt-4 w-full relative z-10">
-                          {'//'} {entry.slug}
-                        </span>
-
-                        <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-all transform translate-x-2 group-hover:translate-x-0 z-10">
-                          <ArrowSquareOutIcon size={16} className="text-emerald-500" />
-                        </div>
-                      </motion.button>
-                    </div>
-                  ))}
-                </div>
-              </motion.section>
-            ))}
-          </AnimatePresence>
-
-          {filteredEntries.length === 0 && (
-            <div className="py-20 text-center font-mono text-gray-600 uppercase tracking-widest border border-dashed border-white/5 bg-white/[0.01]">
-              No matching terms found.
-            </div>
-          )}
-        </div>
       </div>
-    </div>
-  );
-};
+    );};
 
 export default VocabPage;
