@@ -235,7 +235,7 @@ const StandardBlogPostPage = () => {
               </span>
             </Link>
             <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm">
-              SOURCE: {post.attributes.category || 'Standard'}
+              Category: {post.attributes.category || 'Standard'}
             </span>
           </div>
 
