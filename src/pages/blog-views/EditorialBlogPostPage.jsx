@@ -258,7 +258,7 @@ const EditorialBlogPostPage = () => {
             </div>
 
             {/* Post Body - 1 Column Layout (Wider) */}
-            <div className="max-w-4xl mx-auto font-instr-serif text-xl md:text-2xl leading-[1.6] text-justify">
+            <div className="max-w-5xl mx-auto font-instr-serif text-xl md:text-2xl leading-[1.8] tracking-wide text-justify">
                 <MarkdownContent
                     content={post.body}
                     components={{
