@@ -9,14 +9,29 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 18 Jan 2026 20:52:03 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 19 Jan 2026 17:09:46 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 18 Jan 2026 20:52:03 GMT</pubDate>
+        <pubDate>Mon, 19 Jan 2026 17:09:46 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The FIFA Paradox: Why We Spend 14 Hours Playing Games We Hate]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/gun-and-ball</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/gun-and-ball</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>⚠️ Disclaimer: Open Analysis</strong></p>
+<p>This post explores game data using statistical analysis. Please note that while I am an experienced engineer,
+I am not a specialized Data Scientist. I have made the code and data available <a href="https://github.com/fezcode/Project-Touch-Grass">in GitHub</a> for transparency.
+If you find errors in the methodology or want to improve the model, I welcome your feedback and pull requests.</p>
+</blockquote>
+<p><a href="https://fezcode.com/blog/gun-and-ball">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Dying is Easy, Comedy is Statistically Impossible: An IMDbayes Analysis]]></title>
             <description><![CDATA[[object Object]]]></description>

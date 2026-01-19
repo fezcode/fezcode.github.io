@@ -165,6 +165,14 @@
     "order": 2,
     "apps": [
       {
+        "slug": "souls-banner-generator",
+        "to": "/apps/souls-banner-generator",
+        "title": "Souls Banner Generator",
+        "description": "Generate 'Enemy Felled' style banners on your images.",
+        "icon": "SkullIcon",
+        "created_at": "2026-01-19T12:00:00+03:00"
+      },
+      {
         "slug": "tier-forge",
         "to": "/apps/tier-forge",
         "title": "Tier Forge",
@@ -830,6 +838,14 @@
     "icon": "GraduationCapIcon",
     "order": 6,
     "apps": [
+      {
+        "slug": "color-theory",
+        "to": "/apps/color-theory",
+        "title": "Chromatology",
+        "description": "Interactive exploration of color harmony, models, and perception.",
+        "icon": "PaletteIcon",
+        "created_at": "2026-01-20T12:00:00+03:00"
+      },
       {
         "slug": "js-masterclass",
         "to": "/apps/js-masterclass",
