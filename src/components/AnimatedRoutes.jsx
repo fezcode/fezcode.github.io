@@ -41,6 +41,7 @@ const DiceRollerPage = lazy(() => import('../pages/apps/DiceRollerPage'));
 const PickerWheelPage = lazy(() => import('../pages/apps/PickerWheelPage'));
 const CodenameGeneratorPage = lazy(() => import('../pages/apps/CodenameGeneratorPage'));
 const ImageToolkitPage = lazy(() => import('../pages/apps/ImageToolkitPage'));
+const SoulsBannerGeneratorPage = lazy(() => import('../pages/apps/SoulsBannerGeneratorPage'));
 const PasswordGeneratorPage = lazy(() => import('../pages/apps/PasswordGeneratorPage'));
 const JsonFormatterPage = lazy(() => import('../pages/apps/JsonFormatterPage'));
 const ColorContrastCheckerPage = lazy(() => import('../pages/apps/ColorContrastCheckerPage'));
@@ -1824,6 +1825,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <ImageToolkitPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/souls-banner-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <SoulsBannerGeneratorPage />
               </Suspense>
             </motion.div>
           }
