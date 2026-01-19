@@ -839,6 +839,14 @@
     "order": 6,
     "apps": [
       {
+        "slug": "color-theory",
+        "to": "/apps/color-theory",
+        "title": "Chromatology",
+        "description": "Interactive exploration of color harmony, models, and perception.",
+        "icon": "PaletteIcon",
+        "created_at": "2026-01-20T12:00:00+03:00"
+      },
+      {
         "slug": "js-masterclass",
         "to": "/apps/js-masterclass",
         "title": "JS Masterclass",

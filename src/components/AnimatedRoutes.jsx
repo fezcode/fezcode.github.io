@@ -111,6 +111,7 @@ const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const DataPrismPage = lazy(() => import('../pages/apps/DataPrismPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
+const ColorTheoryPage = lazy(() => import('../pages/apps/ColorTheoryPage'));
 const TierForgePage = lazy(() => import('../pages/apps/TierForgePage'));
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
 const AssetConstructorPage = lazy(() => import('../pages/apps/AssetConstructorPage'));
@@ -2418,6 +2419,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <SymbolFlowPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/color-theory"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <ColorTheoryPage />
               </Suspense>
             </motion.div>
           }
