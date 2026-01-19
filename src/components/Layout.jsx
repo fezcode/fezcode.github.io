@@ -36,6 +36,7 @@ const Layout = ({
     sidebarMode,
     isSidebarOpen,
     toggleSidebar,
+    isAppFullscreen,
   } = useVisualSettings();
   const location = useLocation();
   const { projects } = useProjects();
@@ -57,7 +58,9 @@ const Layout = ({
         projectStyle === 'museum'
   ;
 
-  const hideLayout = isAboutPage || isGraphPage || isSpecialProject || isTheVaguePage;
+  // Check if we are inside a specific app (but not the apps listing page)
+  const isAppDetail = location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
+  const hideLayout = isAboutPage || isGraphPage || isSpecialProject || isTheVaguePage || (isAppDetail && isAppFullscreen);
 
   const mainContent = (location.pathname.startsWith('/stories')) ? (
     <DndProvider>

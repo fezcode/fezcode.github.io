@@ -54,6 +54,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const [sidebarMode, setSidebarMode] = usePersistentState('sidebar-mode','brutalist');
   const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
   const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState('is-splash-text-enabled',true);
+  const [isAppFullscreen, setIsAppFullscreen] = usePersistentState('is-app-fullscreen', false);
 
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(window.innerWidth > 768);
   useEffect(() => {
@@ -270,6 +271,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const toggleFalloutScanlines = () => setIsFalloutScanlinesEnabled((prev) => !prev);
   const toggleFalloutVignette = () => setIsFalloutVignetteEnabled((prev) => !prev);
   const toggleSplashText = () => setIsSplashTextEnabled((prev) => !prev);
+  const toggleAppFullscreen = () => setIsAppFullscreen((prev) => !prev);
 
   return (
     <VisualSettingsContext.Provider
@@ -333,6 +335,8 @@ export const VisualSettingsProvider = ({ children }) => {
         availableFonts,
         isSplashTextEnabled,
         toggleSplashText,
+        isAppFullscreen,
+        toggleAppFullscreen,
         isSidebarOpen,
         setIsSidebarOpen,
         toggleSidebar,

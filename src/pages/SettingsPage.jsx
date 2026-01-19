@@ -46,7 +46,7 @@ const Section = ({ title, icon, children, delay = 0, id }) => (
       <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-sm text-emerald-500">
         {React.cloneElement(icon, { size: 24, weight: 'bold' })}
       </div>
-      <h2 className="text-3xl font-black text-white uppercase tracking-tighter">
+      <h2 className="text-3xl text-white uppercase tracking-tighter">
         {title}
       </h2>
     </div>
@@ -145,6 +145,8 @@ const SettingsPage = () => {
     bodyFont,
     setBodyFont,
     availableFonts,
+    isAppFullscreen,
+    toggleAppFullscreen,
   } = useVisualSettings();
 
   const {
@@ -243,7 +245,7 @@ const SettingsPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white leading-none uppercase">
+              <h1 className="text-6xl md:text-8xl tracking-tighter text-white leading-none uppercase">
                 Settings
               </h1>
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
@@ -291,6 +293,27 @@ const SettingsPage = () => {
                     label="Blogposts First"
                     checked={sectionOrder[0] === 'blogposts'}
                     onChange={toggleSectionOrder}
+                    fontClass="font-outfit"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    App Experience
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Control how applications are displayed.
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <CustomToggle
+                    id="app-fullscreen"
+                    label="Fullscreen Apps"
+                    checked={isAppFullscreen}
+                    onChange={toggleAppFullscreen}
+                    fontClass="font-outfit"
                   />
                 </div>
               </div>
@@ -416,6 +439,7 @@ const SettingsPage = () => {
                     label={isAnimationEnabled ? 'Enabled' : 'Disabled'}
                     checked={isAnimationEnabled}
                     onChange={toggleAnimation}
+                    fontClass="font-outfit"
                   />
                 </div>
 
@@ -432,12 +456,14 @@ const SettingsPage = () => {
                         label="Homepage Motion"
                         checked={showAnimationsHomepage}
                         onChange={toggleShowAnimationsHomepage}
+                        fontClass="font-outfit"
                       />
                       <CustomToggle
                         id="show-animations-inner-pages"
                         label="Interior Page Motion"
                         checked={showAnimationsInnerPages}
                         onChange={toggleShowAnimationsInnerPages}
+                        fontClass="font-outfit"
                       />
                     </motion.div>
                   )}
@@ -472,6 +498,7 @@ const SettingsPage = () => {
                 label={showAchievementToast ? 'Active' : 'Silent'}
                 checked={showAchievementToast}
                 onChange={toggleAchievementToast}
+                fontClass="font-outfit"
               />
             </div>
           </Section>
@@ -482,25 +509,25 @@ const SettingsPage = () => {
               Apply experimental filters to the entire application. Combine with caution.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <CustomToggle id="fx-invert"      colorTheme="rose"    label="Invert Colors"     checked={isInverted}        onChange={toggleInvert} />
-              <CustomToggle id="fx-retro"       colorTheme="blue"    label="Retro CRT"         checked={isRetro}           onChange={toggleRetro} />
-              <CustomToggle id="fx-party"       colorTheme="green"   label="Party Mode"        checked={isParty}           onChange={toggleParty} />
-              <CustomToggle id="fx-mirror"      colorTheme="amber"   label="Mirror World"      checked={isMirror}          onChange={toggleMirror} />
-              <CustomToggle id="fx-noir"        colorTheme="purple"  label="Film Noir"         checked={isNoir}            onChange={toggleNoir} />
-              <CustomToggle id="fx-terminal"    colorTheme="cyan"    label="Emerald Term"      checked={isTerminal}        onChange={toggleTerminal} />
-              <CustomToggle id="fx-blueprint"   colorTheme="indigo"  label="Blueprint"         checked={isBlueprint}       onChange={toggleBlueprint} />
-              <CustomToggle id="fx-sepia"       colorTheme="rose"    label="Vintage Sepia"     checked={isSepia}           onChange={toggleSepia} />
-              <CustomToggle id="fx-vaporwave"   colorTheme="blue"    label="Vaporwave"         checked={isVaporwave}       onChange={toggleVaporwave} />
-              <CustomToggle id="fx-cyberpunk"   colorTheme="green"   label="Cyberpunk"         checked={isCyberpunk}       onChange={toggleCyberpunk} />
-              <CustomToggle id="fx-gameboy"     colorTheme="amber"   label="Legacy Handheld"   checked={isGameboy}         onChange={toggleGameboy} />
-              <CustomToggle id="fx-comic"       colorTheme="purple"  label="Comic Array"       checked={isComic}           onChange={toggleComic} />
-              <CustomToggle id="fx-sketchbook"  colorTheme="cyan"    label="Graphite Map"      checked={isSketchbook}      onChange={toggleSketchbook} />
-              <CustomToggle id="fx-hellenic"    colorTheme="indigo"  label="Classical Agora"   checked={isHellenic}        onChange={toggleHellenic} />
-              <CustomToggle id="fx-glitch"      colorTheme="rose"    label="Data Corruption"   checked={isGlitch}          onChange={toggleGlitch} />
-              <CustomToggle id="fx-garden"      colorTheme="blue"    label="Flora Protocol"    checked={isGarden}          onChange={toggleGarden} />
-              <CustomToggle id="fx-autumn"      colorTheme="green"   label="Seasonal Decay"    checked={isAutumn}          onChange={toggleAutumn} />
-              <CustomToggle id="fx-rain"        colorTheme="amber"   label="Hydraulic Filter"  checked={isRain}            onChange={toggleRain} />
-              <CustomToggle id="fx-fallout"     colorTheme="purple"  label="Fallout Overlay"   checked={isFalloutOverlay}  onChange={toggleFalloutOverlay} />
+              <CustomToggle id="fx-invert"      colorTheme="rose"    label="Invert Colors"     checked={isInverted}        onChange={toggleInvert}            fontClass="font-outfit" />
+              <CustomToggle id="fx-retro"       colorTheme="blue"    label="Retro CRT"         checked={isRetro}           onChange={toggleRetro}             fontClass="font-outfit" />
+              <CustomToggle id="fx-party"       colorTheme="green"   label="Party Mode"        checked={isParty}           onChange={toggleParty}             fontClass="font-outfit" />
+              <CustomToggle id="fx-mirror"      colorTheme="amber"   label="Mirror World"      checked={isMirror}          onChange={toggleMirror}            fontClass="font-outfit" />
+              <CustomToggle id="fx-noir"        colorTheme="purple"  label="Film Noir"         checked={isNoir}            onChange={toggleNoir}              fontClass="font-outfit" />
+              <CustomToggle id="fx-terminal"    colorTheme="cyan"    label="Emerald Term"      checked={isTerminal}        onChange={toggleTerminal}          fontClass="font-outfit" />
+              <CustomToggle id="fx-blueprint"   colorTheme="indigo"  label="Blueprint"         checked={isBlueprint}       onChange={toggleBlueprint}         fontClass="font-outfit" />
+              <CustomToggle id="fx-sepia"       colorTheme="rose"    label="Vintage Sepia"     checked={isSepia}           onChange={toggleSepia}             fontClass="font-outfit" />
+              <CustomToggle id="fx-vaporwave"   colorTheme="blue"    label="Vaporwave"         checked={isVaporwave}       onChange={toggleVaporwave}         fontClass="font-outfit" />
+              <CustomToggle id="fx-cyberpunk"   colorTheme="green"   label="Cyberpunk"         checked={isCyberpunk}       onChange={toggleCyberpunk}         fontClass="font-outfit" />
+              <CustomToggle id="fx-gameboy"     colorTheme="amber"   label="Legacy Handheld"   checked={isGameboy}         onChange={toggleGameboy}           fontClass="font-outfit" />
+              <CustomToggle id="fx-comic"       colorTheme="purple"  label="Comic Array"       checked={isComic}           onChange={toggleComic}             fontClass="font-outfit" />
+              <CustomToggle id="fx-sketchbook"  colorTheme="cyan"    label="Graphite Map"      checked={isSketchbook}      onChange={toggleSketchbook}        fontClass="font-outfit" />
+              <CustomToggle id="fx-hellenic"    colorTheme="indigo"  label="Classical Agora"   checked={isHellenic}        onChange={toggleHellenic}          fontClass="font-outfit" />
+              <CustomToggle id="fx-glitch"      colorTheme="rose"    label="Data Corruption"   checked={isGlitch}          onChange={toggleGlitch}            fontClass="font-outfit" />
+              <CustomToggle id="fx-garden"      colorTheme="blue"    label="Flora Protocol"    checked={isGarden}          onChange={toggleGarden}            fontClass="font-outfit" />
+              <CustomToggle id="fx-autumn"      colorTheme="green"   label="Seasonal Decay"    checked={isAutumn}          onChange={toggleAutumn}            fontClass="font-outfit" />
+              <CustomToggle id="fx-rain"        colorTheme="amber"   label="Hydraulic Filter"  checked={isRain}            onChange={toggleRain}              fontClass="font-outfit" />
+              <CustomToggle id="fx-fallout"     colorTheme="purple"  label="Fallout Overlay"   checked={isFalloutOverlay}  onChange={toggleFalloutOverlay}    fontClass="font-outfit" />
               {isFalloutOverlay && (
                 <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-4 p-6 border border-white/10 bg-white/5 rounded-sm space-y-6">
                   <div className="flex items-center gap-4">
@@ -524,23 +551,26 @@ const SettingsPage = () => {
                       label="Signal Noise"
                       checked={isFalloutNoiseEnabled}
                       onChange={toggleFalloutNoise}
+                      fontClass="font-outfit"
                     />
                     <CustomToggle
                       id="fallout-scanlines"
                       label="CRT Scanlines"
                       checked={isFalloutScanlinesEnabled}
                       onChange={toggleFalloutScanlines}
+                      fontClass="font-outfit"
                     />
                     <CustomToggle
                       id="fallout-vignette"
                       label="Screen Vignette"
                       checked={isFalloutVignetteEnabled}
                       onChange={toggleFalloutVignette}
+                      fontClass="font-outfit"
                     />
                   </div>
                 </div>
               )}
-              <CustomToggle id="fx-splash" label="Splash Text" checked={isSplashTextEnabled} onChange={toggleSplashText} />
+              <CustomToggle id="fx-splash" label="Splash Text" checked={isSplashTextEnabled} onChange={toggleSplashText} fontClass="font-outfit" />
             </div>
           </Section>
 
@@ -551,11 +581,11 @@ const SettingsPage = () => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <CustomToggle id="dnd-lightning" label="Lightning Strikes" checked={isLightningEnabled} onChange={toggleLightning} />
-              <CustomToggle id="dnd-loot" label="Loot Discovery" checked={isLootDiscoveryEnabled} onChange={toggleLootDiscovery} />
-              <CustomToggle id="dnd-fire-overlay" label="Fire Overlay" checked={isFireOverlayEnabled} onChange={toggleFireOverlay} />
-              <CustomToggle id="dnd-fire-particles" label="Fire Particles" checked={isFireParticlesEnabled} onChange={toggleFireParticles} />
-              <CustomToggle id="dnd-frame" label="Viewport Frame" checked={isViewportFrameEnabled} onChange={toggleViewportFrame} />
+              <CustomToggle id="dnd-lightning" label="Lightning Strikes" checked={isLightningEnabled} onChange={toggleLightning} fontClass="font-outfit" />
+              <CustomToggle id="dnd-loot" label="Loot Discovery" checked={isLootDiscoveryEnabled} onChange={toggleLootDiscovery} fontClass="font-outfit" />
+              <CustomToggle id="dnd-fire-overlay" label="Fire Overlay" checked={isFireOverlayEnabled} onChange={toggleFireOverlay} fontClass="font-outfit" />
+              <CustomToggle id="dnd-fire-particles" label="Fire Particles" checked={isFireParticlesEnabled} onChange={toggleFireParticles} fontClass="font-outfit" />
+              <CustomToggle id="dnd-frame" label="Viewport Frame" checked={isViewportFrameEnabled} onChange={toggleViewportFrame} fontClass="font-outfit" />
             </div>
           </Section>
 
@@ -673,7 +703,7 @@ const SettingsPage = () => {
                   <WarningIcon size={32} weight="bold" />
                 </div>
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-2">
+                  <h3 className="text-2xl text-white uppercase tracking-tighter mb-2">
                     Factory Reset
                   </h3>
                   <p className="text-gray-400 font-light max-w-xl">
@@ -683,7 +713,7 @@ const SettingsPage = () => {
                 </div>
                 <button
                   onClick={handleClearStorage}
-                  className="w-full md:w-auto px-8 py-4 bg-red-500 text-black hover:bg-red-400 transition-colors font-black uppercase tracking-widest text-sm rounded-sm shadow-[0_0_30px_rgba(239,68,68,0.2)]"
+                  className="w-full md:w-auto px-8 py-4 bg-red-500 text-black hover:bg-red-400 transition-colors uppercase tracking-widest text-sm rounded-sm shadow-[0_0_30px_rgba(239,68,68,0.2)]"
                 >
                   Reset Everything
                 </button>
