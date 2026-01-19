@@ -9,6 +9,9 @@ const CustomToggle = ({
   label,
   disabled,
   colorTheme = 'rose',
+  fontClass = '',
+  labelColorClass = 'text-gray-300',
+  hoverColorClass = 'group-hover:text-white',
 }) => {
   const themes = {
     rose: {
@@ -52,12 +55,12 @@ const CustomToggle = ({
 
   return (
     <div
-      className={`flex items-center justify-between w-full group py-2 ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
+      className={`flex items-center justify-between w-full group py-2 gap-4 ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}`}
       onClick={() => !disabled && onChange({ target: { checked: !checked } })}
     >
       <label
         htmlFor={id}
-        className="text-base sm:text-lg text-gray-300 font-medium cursor-pointer select-none group-hover:text-white transition-colors duration-300"
+        className={`text-base sm:text-lg font-medium cursor-pointer select-none transition-colors duration-300 ${labelColorClass} ${hoverColorClass} ${fontClass}`}
         onClick={(e) => e.stopPropagation()} // Prevent double toggle if label is clicked directly (though container click handles it)
       >
         {label}
