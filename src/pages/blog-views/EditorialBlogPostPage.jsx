@@ -336,6 +336,23 @@ const EditorialBlogPostPage = () => {
                         ul: ({children}) => <ul className="list-disc pl-6 my-8 space-y-3">{children}</ul>,
                         ol: ({children}) => <ol className="list-decimal pl-6 my-8 space-y-3">{children}</ol>,
                         hr: () => <hr className={`my-16 border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />,
+                        table: ({children}) => (
+                            <div className="overflow-x-auto my-12">
+                                <table className={`w-full text-left border-collapse border ${isInvert ? 'border-white/25 text-white/90' : 'border-black/25 text-black/90'}`}>
+                                    {children}
+                                </table>
+                            </div>
+                        ),
+                        th: ({children}) => (
+                            <th className={`py-4 px-6 font-bold border ${isInvert ? 'border-white/25 bg-white/5' : 'border-black/25 bg-black/5'}`}>
+                                {children}
+                            </th>
+                        ),
+                        td: ({children}) => (
+                            <td className={`py-4 px-6 border ${isInvert ? 'border-white/25' : 'border-black/25'}`}>
+                                {children}
+                            </td>
+                        ),
                     }}
                 />
             </div>

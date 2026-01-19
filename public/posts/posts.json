@@ -1,5 +1,16 @@
 [
   {
+    "slug": "gun-and-ball",
+    "title": "The FIFA Paradox: Why We Spend 14 Hours Playing Games We Hate",
+    "date": "2026-01-19",
+    "updated": "2026-01-19",
+    "description": "In the gaming world, there is a pervasive stereotype: \"Shooters and Sports games are trash for casuals, while RPGs and Strategy games are high art for intellectuals.\". Any truth?",
+    "tags": ["data science", "math", "python", "games", "gun", "ball", "fifa", "cod", "uv", "dev"],
+    "category": "dev",
+    "filename": "gun-and-ball.txt",
+    "authors": ["fezcode"]
+  },
+  {
     "slug": "what-genre-should-i-watch",
     "title": "Dying is Easy, Comedy is Statistically Impossible: An IMDbayes Analysis",
     "date": "2026-01-18",

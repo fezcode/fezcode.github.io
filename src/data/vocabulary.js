@@ -79,4 +79,8 @@ export const vocabulary = {
     title: 'P99 (99th Percentile)',
     loader: () => import('./vocab/p99'),
   },
+  etl: {
+    title: 'ETL (Extract, Transform, Load)',
+    loader: () => import('./vocab/etl'),
+  },
 };
