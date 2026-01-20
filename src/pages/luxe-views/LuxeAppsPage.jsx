@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MagnifyingGlass, ArrowUpRight, ArrowLeft } from '@phosphor-icons/react';
+import { MagnifyingGlassIcon, ArrowUpRightIcon, ArrowLeftIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { appIcons } from '../../utils/appIcons';
 import LuxeArt from '../../components/LuxeArt';
@@ -71,7 +71,7 @@ const LuxeAppsPage = () => {
 
         <header className="mb-12 pt-12 border-b border-[#1A1A1A]/10 pb-12">
            <Link to="/" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-black/40 hover:text-[#8D4004] transition-colors">
-               <ArrowLeft /> FZCX Index
+               <ArrowLeftIcon /> FZCX Index
            </Link>
            <h1 className="font-playfairDisplay text-7xl md:text-9xl text-[#1A1A1A] mb-6">
                Software
@@ -89,7 +89,7 @@ const LuxeAppsPage = () => {
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="w-full bg-transparent py-2 outline-none font-outfit text-sm placeholder-[#1A1A1A]/30"
                    />
-                   <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
+                   <MagnifyingGlassIcon className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
                </div>
            </div>
         </header>
@@ -141,7 +141,7 @@ const LuxeAppsPage = () => {
                                  </div>
 
                                  <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#1A1A1A] text-white p-4 rounded-full">
-                                     <ArrowUpRight size={24} />
+                                     <ArrowUpRightIcon size={24} />
                                  </div>
                             </div>
 

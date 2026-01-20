@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MagnifyingGlass } from '@phosphor-icons/react';
+import { ArrowRightIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
@@ -108,7 +108,7 @@ const LuxeBlogPage = () => {
                           onChange={(e) => setSearchQuery(e.target.value)}
                           className="w-full bg-transparent py-2 outline-none font-outfit text-sm placeholder-[#1A1A1A]/30"
                        />
-                       <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
+                       <MagnifyingGlassIcon className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
                    </div>
 
                    {/* Filters */}
@@ -167,7 +167,7 @@ const LuxeBlogPage = () => {
                             </p>
 
                             <div className="pt-4 flex items-center gap-2 text-[#1A1A1A] font-outfit text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
-                                Read Entry <ArrowRight />
+                                Read Entry <ArrowRightIcon />
                             </div>
                         </div>
                     </Link>

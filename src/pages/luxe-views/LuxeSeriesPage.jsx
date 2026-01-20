@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Calendar } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowRightIcon, CalendarIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import LuxeArt from '../../components/LuxeArt';
@@ -66,7 +66,7 @@ const LuxeSeriesPage = () => {
         {/* Header */}
         <header className="mb-20 text-center">
            <Link to="/blog" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors">
-               <ArrowLeft /> Back to Journal
+               <ArrowLeftIcon /> Back to Journal
            </Link>
 
            <div className="relative mb-8 aspect-[21/9] w-full bg-[#EBEBEB] overflow-hidden rounded-sm border border-[#1A1A1A]/5 shadow-sm">
@@ -107,14 +107,14 @@ const LuxeSeriesPage = () => {
                                     {post.title}
                                 </h3>
                                 <div className="flex items-center gap-4 font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40">
-                                    <span className="flex items-center gap-1"><Calendar size={12} /> {new Date(post.date).toLocaleDateString()}</span>
+                                    <span className="flex items-center gap-1"><CalendarIcon size={12} /> {new Date(post.date).toLocaleDateString()}</span>
                                     {post.tags && <span>#{post.tags[0]}</span>}
                                 </div>
                             </div>
                         </div>
 
                         <div className="flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 group-hover:text-[#8D4004] transition-colors">
-                            Read Episode <ArrowRight />
+                            Read Episode <ArrowRightIcon />
                         </div>
                     </div>
                 </Link>

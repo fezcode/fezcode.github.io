@@ -2,16 +2,16 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowLeft,
-  Trophy,
-  Layout,
-  Database,
-  FilmStrip,
-  Warning,
-  Trash,
-  MagicWand,
-  Article,
-  CheckCircle,
+  ArrowLeftIcon,
+  TrophyIcon,
+  LayoutIcon,
+  DatabaseIcon,
+  FilmStripIcon,
+  WarningIcon,
+  TrashIcon,
+  MagicWandIcon,
+  ArticleIcon,
+  CheckCircleIcon,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../../context/AnimationContext';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
@@ -139,7 +139,7 @@ const LuxeSettingsPage = () => {
 
         <header className="mb-24 pt-12 border-b border-black/10 pb-12">
            <Link to="/" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-black/40 hover:text-[#8D4004] transition-colors">
-               <ArrowLeft /> FZCX Index
+               <ArrowLeftIcon /> Fezcodex Index
            </Link>
            <h1 className="font-playfairDisplay text-7xl md:text-9xl text-[#1A1A1A] mb-6">
                Preferences
@@ -149,7 +149,7 @@ const LuxeSettingsPage = () => {
                    Adjust the system parameters to align with your personal aesthetic and performance requirements.
                </p>
                <div className="flex items-center gap-2 font-outfit text-[10px] uppercase tracking-[0.2em] text-black/30 bg-white/50 px-4 py-2 rounded-full border border-black/5">
-                   <Database size={14} /> Local Repository Only
+                   <DatabaseIcon size={14} /> Local Repository Only
                </div>
            </div>
         </header>
@@ -157,7 +157,7 @@ const LuxeSettingsPage = () => {
         <div className="space-y-12">
 
           {/* Interface Layout */}
-          <LuxeSection title="Interface" icon={<Layout />} delay={0.1}>
+          <LuxeSection title="Interface" icon={<LayoutIcon />} delay={0.1}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-8">
                     <div className="p-6 border-l-2 border-[#8D4004]/20 bg-white/40 space-y-4">
@@ -172,7 +172,7 @@ const LuxeSettingsPage = () => {
                           ]}
                           value={fezcodexTheme}
                           onChange={setFezcodexTheme}
-                          icon={Layout}
+                          icon={LayoutIcon}
                           fullWidth
                         />
                     </div>
@@ -213,7 +213,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Reader Experience */}
-          <LuxeSection title="Reader" icon={<Article />} delay={0.15}>
+          <LuxeSection title="Reader" icon={<ArticleIcon />} delay={0.15}>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-6">
                     <h3 className="font-outfit text-[10px] uppercase tracking-[0.3em] text-black/30">Visual Mode</h3>
@@ -232,7 +232,7 @@ const LuxeSettingsPage = () => {
                       ]}
                       value={blogPostViewMode}
                       onChange={setBlogPostViewMode}
-                      icon={Article}
+                      icon={ArticleIcon}
                       fullWidth
                     />
                 </div>
@@ -240,7 +240,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Typography */}
-          <LuxeSection title="Typography" icon={<Layout />} delay={0.2}>
+          <LuxeSection title="Typography" icon={<LayoutIcon />} delay={0.2}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-6">
                     <h3 className="font-outfit text-[10px] uppercase tracking-[0.3em] text-black/30">Header Font</h3>
@@ -268,7 +268,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Motion & Performance */}
-          <LuxeSection title="Motion" icon={<FilmStrip />} delay={0.25}>
+          <LuxeSection title="Motion" icon={<FilmStripIcon />} delay={0.25}>
             <div className="space-y-8">
                 <CustomToggle
                   id="enable-animations"
@@ -309,7 +309,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Visual Matrix */}
-          <LuxeSection title="Visual Matrix" icon={<MagicWand />} delay={0.3}>
+          <LuxeSection title="Visual Matrix" icon={<MagicWandIcon />} delay={0.3}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6">
               <CustomToggle id="fx-invert"      colorTheme="amber"  label="Invert Colors"     checked={isInverted}        onChange={toggleInvert}            {...toggleClasses} />
               <CustomToggle id="fx-retro"       colorTheme="amber"  label="Retro CRT"         checked={isRetro}           onChange={toggleRetro}             {...toggleClasses} />
@@ -362,7 +362,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* DND Experience */}
-          <LuxeSection title="Immersive" icon={<FilmStrip />} delay={0.35}>
+          <LuxeSection title="D&D Pages Effects" icon={<FilmStripIcon />} delay={0.35}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <CustomToggle id="dnd-lightning" label="Lightning" checked={isLightningEnabled} onChange={toggleLightning} colorTheme="amber" {...toggleClasses} />
               <CustomToggle id="dnd-loot" label="Loot Feedback" checked={isLootDiscoveryEnabled} onChange={toggleLootDiscovery} colorTheme="amber" {...toggleClasses} />
@@ -373,10 +373,10 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Achievements */}
-          <LuxeSection title="Recognition" icon={<Trophy />} delay={0.4}>
+          <LuxeSection title="Achievements" icon={<TrophyIcon />} delay={0.4}>
              <CustomToggle
                 id="enable-achievement-toasts"
-                label="Notification Feedback"
+                label="Achievement Toasts"
                 checked={showAchievementToast}
                 onChange={toggleAchievementToast}
                 colorTheme="amber"
@@ -385,7 +385,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Feedback Verification */}
-          <LuxeSection title="Verification" icon={<Article />} delay={0.45}>
+          <LuxeSection title="Verification" icon={<ArticleIcon />} delay={0.45}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { label: 'Success', type: 'success', color: 'text-emerald-600 bg-emerald-50' },
@@ -405,7 +405,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Advanced / Maintenance */}
-          <LuxeSection title="Maintenance" icon={<Database />} delay={0.5}>
+          <LuxeSection title="Maintenance" icon={<DatabaseIcon />} delay={0.5}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 <div className="space-y-4">
                     <h3 className="font-playfairDisplay text-xl">Sidebar Cache</h3>
@@ -423,10 +423,10 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Factory Reset */}
-          <LuxeSection title="Termination" icon={<Trash />} delay={0.55}>
+          <LuxeSection title="Termination" icon={<TrashIcon />} delay={0.55}>
              <div className="p-8 border border-rose-500/20 bg-rose-500/5 rounded-sm flex flex-col md:flex-row items-center gap-8">
                 <div className="w-16 h-16 flex items-center justify-center bg-rose-500 text-white rounded-full shrink-0">
-                    <Warning size={32} weight="bold" />
+                    <WarningIcon size={32} weight="bold" />
                 </div>
                 <div className="flex-1 text-center md:text-left">
                     <h3 className="font-playfairDisplay text-3xl text-rose-900 mb-2">Factory Reset</h3>
@@ -447,7 +447,7 @@ const LuxeSettingsPage = () => {
 
         <footer className="mt-32 pt-12 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-6 text-black/40 font-outfit text-[10px] uppercase tracking-[0.3em]">
           <div className="flex items-center gap-2">
-              <CheckCircle size={14} className="text-[#8D4004]" />
+              <CheckCircleIcon size={14} className="text-[#8D4004]" />
               <span>System Integrity Verified</span>
           </div>
           <span>Fezcodex Preferences v2.1.0</span>

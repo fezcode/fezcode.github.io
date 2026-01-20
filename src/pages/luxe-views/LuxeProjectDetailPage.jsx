@@ -6,10 +6,10 @@ import { useProjectContent } from '../../hooks/useProjectContent';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
 import {
-  ArrowLeft,
-  ArrowUpRight,
-  GithubLogo,
-  CalendarBlank,
+  ArrowLeftIcon,
+  ArrowUpRightIcon,
+  GithubLogoIcon,
+  CalendarBlankIcon,
 } from '@phosphor-icons/react';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
@@ -61,13 +61,13 @@ const LuxeProjectDetailPage = () => {
 
           <div className="relative z-10 max-w-6xl mx-auto w-full">
               <Link to="/projects" className="inline-flex items-center gap-2 mb-12 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors">
-                  <ArrowLeft /> Back to Works
+                  <ArrowLeftIcon /> Back to Works
               </Link>
 
               <div className="flex flex-col md:flex-row justify-between items-end gap-12">
                   <div className="space-y-6">
                       <div className="flex items-center gap-4 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/50">
-                          <span className="flex items-center gap-2"><CalendarBlank size={14} /> {new Date(fullProject.date).getFullYear()}</span>
+                          <span className="flex items-center gap-2"><CalendarBlankIcon size={14} /> {new Date(fullProject.date).getFullYear()}</span>
                           <span>•</span>
                           <span>{fullProject.isActive ? 'Active' : 'Archived'}</span>
                       </div>
@@ -80,12 +80,12 @@ const LuxeProjectDetailPage = () => {
                   <div className="flex gap-4">
                       {fullProject.demo_link && (
                           <a href={fullProject.demo_link} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#1A1A1A] text-white px-6 py-3 rounded-full font-outfit text-xs uppercase tracking-widest hover:bg-[#8D4004] transition-colors">
-                              Live Demo <ArrowUpRight weight="bold" />
+                              Live Demo <ArrowUpRightIcon weight="bold" />
                           </a>
                       )}
                       {fullProject.repo_link && (
                           <a href={fullProject.repo_link} target="_blank" rel="noreferrer" className="flex items-center gap-2 border border-[#1A1A1A]/10 px-6 py-3 rounded-full font-outfit text-xs uppercase tracking-widest hover:border-[#1A1A1A] transition-colors">
-                              Source <GithubLogo weight="bold" />
+                              Source <GithubLogoIcon weight="bold" />
                           </a>
                       )}
                   </div>

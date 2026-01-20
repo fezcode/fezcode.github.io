@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { List, MagnifyingGlass } from '@phosphor-icons/react';
+import { ListIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
 
 const LuxeNavbar = ({
   toggleSidebar,
@@ -36,7 +36,7 @@ const LuxeNavbar = ({
             className="text-[#1A1A1A]/60 hover:text-[#1A1A1A] transition-colors focus:outline-none"
             aria-label="Toggle Sidebar"
           >
-            <List size={24} weight="light" />
+            <ListIcon size={24} weight="light" />
           </button>
 
           <Link to="/" className="flex items-center gap-2 group">
@@ -62,7 +62,7 @@ const LuxeNavbar = ({
             className="flex items-center gap-2 text-[#1A1A1A]/60 hover:text-[#1A1A1A] transition-colors"
             aria-label="Toggle Search"
           >
-            <MagnifyingGlass size={20} weight="light" />
+            <MagnifyingGlassIcon size={20} weight="light" />
             <span className="hidden md:inline font-outfit text-xs font-medium uppercase tracking-widest">
               Search
             </span>

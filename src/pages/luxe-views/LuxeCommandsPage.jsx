@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MagnifyingGlass, Terminal, Command, ArrowRight, ArrowLeft } from '@phosphor-icons/react';
+import { MagnifyingGlassIcon, TerminalIcon, CommandIcon, ArrowRightIcon, ArrowLeftIcon } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import Seo from '../../components/Seo';
 import { commands as commandsData } from '../../data/commands';
@@ -28,7 +28,7 @@ const LuxeCommandsPage = () => {
 
         <header className="mb-20 pt-12 border-b border-[#1A1A1A]/10 pb-12">
            <Link to="/" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors">
-               <ArrowLeft /> FZCX Index
+               <ArrowLeftIcon /> FZCX Index
            </Link>
            <h1 className="font-playfairDisplay text-7xl md:text-9xl text-[#1A1A1A] mb-6">
                Terminal
@@ -54,7 +54,7 @@ const LuxeCommandsPage = () => {
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="w-full bg-transparent py-2 outline-none font-outfit text-sm placeholder-[#1A1A1A]/30"
                    />
-                   <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
+                   <MagnifyingGlassIcon className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
                </div>
            </div>
         </header>
@@ -80,7 +80,7 @@ const LuxeCommandsPage = () => {
                                 className="group relative bg-white border border-[#1A1A1A]/5 p-8 text-left hover:shadow-xl hover:border-[#1A1A1A]/10 transition-all duration-500 rounded-sm overflow-hidden"
                             >
                                 {/* Decorative Command Icon Background */}
-                                <Command
+                                <CommandIcon
                                     size={120}
                                     weight="thin"
                                     className="absolute -right-8 -bottom-8 text-[#1A1A1A]/[0.02] group-hover:text-[#8D4004]/[0.05] transition-colors duration-700"
@@ -91,7 +91,7 @@ const LuxeCommandsPage = () => {
                                         <div className="px-3 py-1 bg-[#1A1A1A]/5 rounded-sm border border-[#1A1A1A]/5">
                                             <span className="font-mono text-xs text-[#8D4004]">{cmd.commandId}</span>
                                         </div>
-                                        <Terminal size={18} className="text-[#1A1A1A]/20 group-hover:text-[#1A1A1A] transition-colors" />
+                                        <TerminalIcon size={18} className="text-[#1A1A1A]/20 group-hover:text-[#1A1A1A] transition-colors" />
                                     </div>
 
                                     <h3 className="font-playfairDisplay text-2xl text-[#1A1A1A] leading-tight group-hover:italic transition-all">
@@ -103,7 +103,7 @@ const LuxeCommandsPage = () => {
                                     </p>
 
                                     <div className="pt-4 flex items-center gap-2 text-[10px] font-outfit uppercase tracking-[0.3em] text-[#1A1A1A]/30 group-hover:text-[#8D4004] transition-colors">
-                                        Execute <ArrowRight size={12} className="group-hover:translate-x-2 transition-transform" />
+                                        Execute <ArrowRightIcon size={12} className="group-hover:translate-x-2 transition-transform" />
                                     </div>
                                 </div>
                             </button>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from '@phosphor-icons/react';
+import { ArrowUpRightIcon } from '@phosphor-icons/react';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
@@ -64,7 +64,7 @@ const LuxeProjectsPage = () => {
                              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500" />
 
                              <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-white text-black p-4 rounded-full">
-                                 <ArrowUpRight size={24} />
+                                 <ArrowUpRightIcon size={24} />
                              </div>
                         </div>
 

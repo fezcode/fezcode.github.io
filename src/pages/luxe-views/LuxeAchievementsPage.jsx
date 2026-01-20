@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  ArrowLeft,
-  Lock,
-  Info,
-  BellSlash,
-  Funnel,
-  XCircle,
-  CalendarBlank,
-  CheckCircle,
+  ArrowLeftIcon,
+  LockIcon,
+  InfoIcon,
+  BellSlashIcon,
+  FunnelIcon,
+  XCircleIcon,
+  CalendarBlankIcon,
+  CheckCircleIcon,
 } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
@@ -68,13 +68,18 @@ const LuxeAchievementsPage = () => {
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
 
-        {/* Header */}
-        <header className="mb-20 pt-12 border-b border-[#1A1A1A]/10 pb-12">
-           <Link to="/" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors">
-               <ArrowLeft /> FZCX Index
-           </Link>
+                {/* Header */}
 
-           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+                <header className="mb-20 pt-12 border-b border-[#1A1A1A]/10 pb-12">
+
+                   <Link to="/" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors">
+
+                       <ArrowLeftIcon /> FZCX Index
+
+                   </Link>
+
+                   <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+
                <div>
                    <h1 className="font-playfairDisplay text-7xl md:text-9xl text-[#1A1A1A] mb-6">
                        Milestones
@@ -108,7 +113,7 @@ const LuxeAchievementsPage = () => {
         {/* Filters */}
         <div className="flex flex-wrap items-center gap-4 mb-16">
             <div className="flex items-center gap-2 text-[#1A1A1A]/30 font-outfit text-[10px] uppercase tracking-widest mr-4">
-                <Funnel size={14} /> <span>Filter Archives:</span>
+                <FunnelIcon size={14} /> <span>Filter Archives:</span>
             </div>
             {uniqueCategories.map((category) => {
               const isSelected =
@@ -137,7 +142,7 @@ const LuxeAchievementsPage = () => {
                         onClick={clearFilters}
                         className="flex items-center gap-2 text-[10px] font-outfit uppercase tracking-widest text-rose-600 hover:text-rose-800 transition-colors ml-4"
                     >
-                        <XCircle size={16} /> Reset Filters
+                        <XCircleIcon size={16} /> Reset Filters
                     </motion.button>
                 )}
             </AnimatePresence>
@@ -153,7 +158,7 @@ const LuxeAchievementsPage = () => {
                 <div className={`w-10 h-10 flex items-center justify-center rounded-full ${
                     showAchievementToast ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/20' : 'bg-[#1A1A1A]/5'
                 }`}>
-                    {showAchievementToast ? <Info size={20} weight="fill" /> : <BellSlash size={20} />}
+                    {showAchievementToast ? <InfoIcon size={20} weight="fill" /> : <BellSlashIcon size={20} />}
                 </div>
                 <div className="flex flex-col">
                     <span className="font-outfit text-[9px] uppercase tracking-[0.3em] opacity-50">Discovery Protocol</span>
@@ -187,9 +192,9 @@ const LuxeAchievementsPage = () => {
                         {/* Status Marker */}
                         <div className="absolute top-4 right-4">
                             {isUnlocked ? (
-                                <CheckCircle size={16} weight="fill" className="text-emerald-600" />
+                                <CheckCircleIcon size={16} weight="fill" className="text-emerald-600" />
                             ) : (
-                                <Lock size={16} weight="light" className="text-[#1A1A1A]/20" />
+                                <LockIcon size={16} weight="light" className="text-[#1A1A1A]/20" />
                             )}
                         </div>
 
@@ -211,7 +216,7 @@ const LuxeAchievementsPage = () => {
                                 : 'bg-transparent text-[#1A1A1A]/10 border border-dashed border-[#1A1A1A]/10'
                             }`}>
                                 <div className="scale-[1.8]">
-                                    {isUnlocked ? achievement.icon : <Lock size={20} weight="light" />}
+                                    {isUnlocked ? achievement.icon : <LockIcon size={20} weight="light" />}
                                 </div>
                             </div>
                         </div>
@@ -231,7 +236,7 @@ const LuxeAchievementsPage = () => {
                         {/* Unlocked Date Footer */}
                         {isUnlocked && (
                             <div className="mt-8 pt-6 border-t border-[#1A1A1A]/5 w-full flex items-center justify-center gap-2 text-[9px] font-outfit uppercase tracking-widest text-[#1A1A1A]/30">
-                                <CalendarBlank size={12} />
+                                <CalendarBlankIcon size={12} />
                                 <span>Synchronized: {unlockedDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
                             </div>
                         )}

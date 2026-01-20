@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowLeft, Star, ShareNetwork, Tag, User, CalendarBlank, ArrowUpRight } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  StarIcon,
+  ShareNetworkIcon,
+  TagIcon,
+  UserIcon,
+  CalendarBlankIcon,
+  ArrowUpRightIcon,
+} from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
 import MarkdownContent from '../../components/MarkdownContent';
@@ -83,13 +91,13 @@ const LuxeLogDetailPage = () => {
 
             <div className="relative z-10 max-w-4xl space-y-8">
                 <Link to="/logs" className="inline-flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors mb-4">
-                    <ArrowLeft /> Back to Archives
+                    <ArrowLeftIcon /> Back to Archives
                 </Link>
 
                 <div className="flex items-center justify-center gap-4">
                     <div className="flex gap-1">
                         {[...Array(5)].map((_, i) => (
-                            <Star key={i} size={16} weight="fill" className={i < (attributes.rating || 0) ? "text-[#8D4004]" : "text-[#1A1A1A]/10"} />
+                            <StarIcon key={i} size={16} weight="fill" className={i < (attributes.rating || 0) ? "text-[#8D4004]" : "text-[#1A1A1A]/10"} />
                         ))}
                     </div>
                 </div>
@@ -99,11 +107,14 @@ const LuxeLogDetailPage = () => {
                 </h1>
 
                 <div className="flex flex-wrap justify-center gap-6 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/50">
-                    <span className="flex items-center gap-2 px-3 py-1 rounded-full border bg-opacity-10 backdrop-blur-sm" style={{ color: accentColor, borderColor: `${accentColor}40`, backgroundColor: `${accentColor}10` }}>
-                        <Tag size={14} weight="fill" /> {category}
+                    <span
+                        className="flex items-center gap-2 px-3 py-1 rounded-full border font-bold text-black"
+                        style={{ backgroundColor: accentColor, borderColor: accentColor }}
+                    >
+                        <TagIcon size={14} weight="fill" /> {category}
                     </span>
-                    {attributes.author && <span className="flex items-center gap-2"><User size={14} /> {attributes.author}</span>}
-                    <span className="flex items-center gap-2"><CalendarBlank size={14} /> {attributes.date}</span>
+                    {attributes.author && <span className="flex items-center gap-2"><UserIcon size={14} /> {attributes.author}</span>}
+                    <span className="flex items-center gap-2"><CalendarBlankIcon size={14} /> {attributes.date}</span>
                 </div>
             </div>
         </motion.div>
@@ -131,13 +142,13 @@ const LuxeLogDetailPage = () => {
           <div className="mt-20 pt-12 border-t border-[#1A1A1A]/10 flex flex-col items-center gap-8">
               {attributes.link && (
                   <a href={attributes.link} target="_blank" rel="noreferrer" className="flex items-center gap-2 bg-[#1A1A1A] text-white px-8 py-4 rounded-full font-outfit text-xs uppercase tracking-widest hover:bg-[#8D4004] transition-colors">
-                      External Source <ArrowUpRight weight="bold" />
+                      External Source <ArrowUpRightIcon weight="bold" />
                   </a>
               )}
 
               <div className="flex gap-4">
                   <button className="flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors">
-                      <ShareNetwork size={16} /> Share Entry
+                      <ShareNetworkIcon size={16} /> Share Entry
                   </button>
               </div>
           </div>

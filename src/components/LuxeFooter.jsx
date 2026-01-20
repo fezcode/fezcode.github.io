@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { version } from '../version';
 import { useAboutData } from '../hooks/useAboutData';
-import { Command } from '@phosphor-icons/react';
+import { CommandIcon } from '@phosphor-icons/react';
 
 const LuxeFooter = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -69,7 +69,7 @@ const LuxeFooter = () => {
 
              <div className="p-6 border border-[#1A1A1A]/5 bg-white rounded-sm">
                  <div className="flex items-center gap-3 mb-2 text-[#1A1A1A]/60">
-                    <Command size={16} />
+                    <CommandIcon size={16} />
                     <span className="font-outfit text-[10px] uppercase tracking-widest">Quick Actions</span>
                  </div>
                  <p className="font-outfit text-xs text-[#1A1A1A]/40">

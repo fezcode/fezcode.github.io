@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { MagnifyingGlass, ArrowUpRight, ArrowLeft } from '@phosphor-icons/react';
+import { MagnifyingGlassIcon, ArrowUpRightIcon, ArrowLeftIcon } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import Seo from '../../components/Seo';
 import { vocabulary } from '../../data/vocabulary';
@@ -60,7 +60,7 @@ const LuxeVocabPage = () => {
 
         <header className="mb-20 pt-12 border-b border-[#1A1A1A]/10 pb-12">
            <Link to="/" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors">
-               <ArrowLeft /> FZCX Index
+               <ArrowLeftIcon /> FZCX Index
            </Link>
            <h1 className="font-playfairDisplay text-7xl md:text-9xl text-[#1A1A1A] mb-6">
                Lexicon
@@ -78,7 +78,7 @@ const LuxeVocabPage = () => {
                       onChange={(e) => setSearchQuery(e.target.value)}
                       className="w-full bg-transparent py-2 outline-none font-outfit text-sm placeholder-[#1A1A1A]/30"
                    />
-                   <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
+                   <MagnifyingGlassIcon className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
                </div>
            </div>
         </header>
@@ -114,7 +114,7 @@ const LuxeVocabPage = () => {
                             >
                                 <div className="flex items-center justify-between border-b border-[#1A1A1A]/5 pb-2">
                                     <span className="font-outfit text-[10px] uppercase tracking-widest text-[#8D4004]">{entry.slug}</span>
-                                    <ArrowUpRight size={16} className="text-[#1A1A1A]/20 group-hover:text-[#8D4004] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
+                                    <ArrowUpRightIcon size={16} className="text-[#1A1A1A]/20 group-hover:text-[#8D4004] group-hover:translate-x-1 group-hover:-translate-y-1 transition-all" />
                                 </div>
                                 <h3 className="font-playfairDisplay text-3xl text-[#1A1A1A] group-hover:italic transition-all leading-tight">
                                     {entry.title}

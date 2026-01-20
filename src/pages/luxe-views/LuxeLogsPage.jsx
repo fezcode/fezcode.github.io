@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { MagnifyingGlass, Star, ArrowUpRight } from '@phosphor-icons/react';
+import { MagnifyingGlassIcon, StarIcon, ArrowUpRightIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import piml from 'piml';
 import colors from '../../config/colors';
@@ -77,7 +77,7 @@ const LuxeLogsPage = () => {
                           onChange={(e) => setSearchQuery(e.target.value)}
                           className="w-full bg-transparent py-2 outline-none font-outfit text-sm placeholder-[#1A1A1A]/30"
                        />
-                       <MagnifyingGlass className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
+                       <MagnifyingGlassIcon className="absolute right-0 top-1/2 -translate-y-1/2 text-[#1A1A1A]/40" />
                    </div>
                </div>
            </div>
@@ -163,7 +163,7 @@ const LuxeLogsPage = () => {
                                 <div className="flex items-center justify-between md:justify-end gap-12 md:w-48 shrink-0">
                                     <div className="flex gap-0.5">
                                         {[...Array(5)].map((_, i) => (
-                                            <Star
+                                            <StarIcon
                                                 key={i}
                                                 size={12}
                                                 weight="fill"
@@ -172,7 +172,7 @@ const LuxeLogsPage = () => {
                                         ))}
                                     </div>
                                     <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                         <ArrowUpRight size={20} className="text-[#1A1A1A]/20" />
+                                         <ArrowUpRightIcon size={20} className="text-[#1A1A1A]/20" />
                                     </div>
                                 </div>
                             </div>

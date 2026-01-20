@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, Star } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowUpRightIcon, StarIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { appIcons } from '../../utils/appIcons';
 import LuxeArt from '../../components/LuxeArt';
@@ -33,7 +33,7 @@ const LuxePinnedAppsPage = () => {
 
         <header className="mb-20 pt-12 border-b border-[#1A1A1A]/10 pb-12">
            <Link to="/apps" className="inline-flex items-center gap-2 mb-8 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 hover:text-[#8D4004] transition-colors">
-               <ArrowLeft /> All Applications
+               <ArrowLeftIcon /> All Applications
            </Link>
            <h1 className="font-playfairDisplay text-7xl md:text-9xl text-[#1A1A1A] mb-6">
                Featured
@@ -50,7 +50,7 @@ const LuxePinnedAppsPage = () => {
                 <div className="col-span-full py-32 text-center font-outfit text-[#1A1A1A]/40">Loading Modules...</div>
             ) : (
                 pinnedApps.map((app, index) => {
-                    const Icon = appIcons[app.icon] || Star;
+                    const Icon = appIcons[app.icon] || StarIcon;
                     return (
                         <Link key={app.slug} to={app.to} className="group block">
                             <div className="relative aspect-square w-full bg-[#EBEBEB] overflow-hidden mb-8 border border-[#1A1A1A]/5 shadow-sm group-hover:shadow-2xl transition-all duration-700 rounded-sm">
@@ -60,11 +60,11 @@ const LuxePinnedAppsPage = () => {
                                  </div>
 
                                  <div className="absolute top-6 left-6 w-16 h-16 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full text-[#1A1A1A] shadow-md border border-[#1A1A1A]/5">
-                                     <Icon size={28} weight="light" />
+                                     {Icon && <Icon size={28} weight="light" />}
                                  </div>
 
                                  <div className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-[#1A1A1A] text-white p-4 rounded-full">
-                                     <ArrowUpRight size={24} />
+                                     <ArrowUpRightIcon size={24} />
                                  </div>
                             </div>
 
