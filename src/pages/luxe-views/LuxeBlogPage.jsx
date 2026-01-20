@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRightIcon, MagnifyingGlassIcon } from '@phosphor-icons/react';
+import {
+  ArrowRightIcon,
+  MagnifyingGlassIcon,
+  ListBulletsIcon,
+  GridFourIcon,
+  FolderIcon
+} from '@phosphor-icons/react';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
@@ -20,6 +26,7 @@ const LuxeBlogPage = () => {
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [layoutMode, setLayoutMode] = useState('grid');
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -112,14 +119,14 @@ const LuxeBlogPage = () => {
                    </div>
 
                    {/* Filters */}
-                   <div className="flex gap-2 overflow-x-auto no-scrollbar">
+                   <div className="flex gap-2 overflow-x-auto no-scrollbar flex-1 md:flex-none">
                        {FILTERS.map(f => (
                            <button
                               key={f.id}
                               onClick={() => setActiveFilter(f.id)}
                               className={`px-4 py-2 rounded-full font-outfit text-xs uppercase tracking-widest whitespace-nowrap transition-all ${
                                   activeFilter === f.id
-                                  ? 'bg-[#1A1A1A] text-white'
+                                  ? 'bg-[#1A1A1A] text-white shadow-lg shadow-black/10'
                                   : 'border border-[#1A1A1A]/10 hover:border-[#1A1A1A] text-[#1A1A1A]/60'
                               }`}
                            >
@@ -127,20 +134,38 @@ const LuxeBlogPage = () => {
                            </button>
                        ))}
                    </div>
+
+                   {/* Layout Switcher */}
+                   <div className="flex bg-white rounded-full p-1 border border-[#1A1A1A]/5 shadow-sm">
+                       <button
+                          onClick={() => setLayoutMode('grid')}
+                          className={`p-2 rounded-full transition-all ${layoutMode === 'grid' ? 'bg-[#1A1A1A] text-white shadow-md' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
+                          title="Grid View"
+                       >
+                           <GridFourIcon size={18} />
+                       </button>
+                       <button
+                          onClick={() => setLayoutMode('list')}
+                          className={`p-2 rounded-full transition-all ${layoutMode === 'list' ? 'bg-[#1A1A1A] text-white shadow-md' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
+                          title="List View"
+                       >
+                           <ListBulletsIcon size={18} />
+                       </button>
+                   </div>
                </div>
            </div>
         </header>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-            {loading ? (
-                <div className="col-span-full py-32 text-center font-outfit text-[#1A1A1A]/40">Loading Archive...</div>
-            ) : (
-                filteredItems.map((item) => (
+        {/* Content Area */}
+        {loading ? (
+            <div className="py-32 text-center font-outfit text-[#1A1A1A]/40 text-xs uppercase tracking-[0.2em] animate-pulse">Synchronizing Archive...</div>
+        ) : layoutMode === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 animate-fade-in">
+                {filteredItems.map((item) => (
                     <Link key={item.slug} to={item.isSeries ? `/blog/series/${item.slug}` : `/blog/${item.slug}`} className="group block">
-                        <div className="relative aspect-[4/5] bg-[#EBEBEB] overflow-hidden mb-6 border border-[#1A1A1A]/5">
+                        <div className="relative aspect-[4/5] bg-[#EBEBEB] overflow-hidden mb-6 border border-[#1A1A1A]/5 shadow-sm group-hover:shadow-2xl transition-all duration-700">
                              {/* Art/Image */}
-                             <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-105">
+                             <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
                                  <LuxeArt seed={item.title} className="w-full h-full opacity-80 mix-blend-multiply" />
                              </div>
 
@@ -154,26 +179,69 @@ const LuxeBlogPage = () => {
 
                         <div className="space-y-3">
                             <div className="flex items-center gap-3">
-                                <span className="font-outfit text-[10px] uppercase tracking-widest text-[#8D4004]">{item.category}</span>
-                                {item.isSeries && <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40 border border-[#1A1A1A]/10 px-1 rounded">Series</span>}
+                                <span className="font-outfit text-[10px] uppercase tracking-widest text-[#8D4004] font-bold">{item.category}</span>
+                                {item.isSeries && (
+                                    <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40 border border-[#1A1A1A]/10 px-1.5 py-0.5 rounded-sm bg-white/50 flex items-center gap-1">
+                                        <FolderIcon size={12} weight="fill" /> Series
+                                    </span>
+                                )}
                             </div>
 
                             <h2 className="font-playfairDisplay text-3xl text-[#1A1A1A] group-hover:italic transition-all leading-tight">
                                 {item.title}
                             </h2>
 
-                            <p className="font-outfit text-sm text-[#1A1A1A]/60 line-clamp-2">
+                            <p className="font-outfit text-sm text-[#1A1A1A]/60 line-clamp-2 leading-relaxed">
                                 {item.description}
                             </p>
 
-                            <div className="pt-4 flex items-center gap-2 text-[#1A1A1A] font-outfit text-xs uppercase tracking-widest group-hover:gap-4 transition-all">
+                            <div className="pt-4 flex items-center gap-2 text-[#1A1A1A]/40 font-outfit text-[10px] uppercase tracking-[0.2em] group-hover:text-[#8D4004] group-hover:gap-4 transition-all">
                                 Read Entry <ArrowRightIcon />
                             </div>
                         </div>
                     </Link>
-                ))
-            )}
-        </div>
+                ))}
+            </div>
+        ) : (
+            <div className="max-w-5xl mx-auto flex flex-col divide-y divide-[#1A1A1A]/5 animate-fade-in">
+                {filteredItems.map((item) => (
+                    <Link key={item.slug} to={item.isSeries ? `/blog/series/${item.slug}` : `/blog/${item.slug}`} className="group py-12 first:pt-0 flex flex-col md:flex-row gap-8 items-start md:items-center">
+                        <div className="w-full md:w-48 lg:w-64 shrink-0">
+                            <div className="relative aspect-[16/9] md:aspect-square bg-[#EBEBEB] overflow-hidden border border-[#1A1A1A]/5 group-hover:shadow-xl transition-all duration-500">
+                                <LuxeArt seed={item.title} className="w-full h-full opacity-60 mix-blend-multiply transition-transform duration-1000 group-hover:scale-110" />
+                            </div>
+                        </div>
+
+                        <div className="flex-1 space-y-4">
+                            <div className="flex items-center gap-4 text-[10px] font-outfit uppercase tracking-[0.2em]">
+                                <span className="text-[#8D4004] font-bold">{item.category}</span>
+                                <span className="text-[#1A1A1A]/30">/</span>
+                                <span className="text-[#1A1A1A]/40">
+                                    {new Date(item.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+                                </span>
+                                {item.isSeries && (
+                                    <span className="bg-[#1A1A1A]/5 px-2 py-0.5 rounded text-[9px] text-[#1A1A1A]/60 flex items-center gap-1">
+                                        <FolderIcon size={12} weight="bold" /> Series
+                                    </span>
+                                )}
+                            </div>
+
+                            <h2 className="font-playfairDisplay text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] group-hover:italic group-hover:translate-x-2 transition-all duration-500 leading-tight">
+                                {item.title}
+                            </h2>
+
+                            <p className="font-outfit text-sm text-[#1A1A1A]/60 line-clamp-2 max-w-2xl leading-relaxed italic">
+                                {item.description}
+                            </p>
+                        </div>
+
+                        <div className="hidden md:flex shrink-0 w-12 h-12 rounded-full border border-[#1A1A1A]/10 items-center justify-center group-hover:bg-[#1A1A1A] group-hover:text-white transition-all duration-500">
+                            <ArrowRightIcon size={20} />
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        )}
 
       </div>
     </div>
