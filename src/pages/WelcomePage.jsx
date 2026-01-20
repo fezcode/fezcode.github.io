@@ -46,8 +46,8 @@ const WelcomePage = () => {
   const {
     blogPostViewMode,
     setBlogPostViewMode,
-    sidebarColor,
-    setSidebarColor,
+    fezcodexTheme,
+    setFezcodexTheme,
     isRetro,
     toggleRetro,
   } = useVisualSettings();
@@ -110,7 +110,7 @@ const WelcomePage = () => {
                           label="Select Mode"
                           variant="brutalist"
                           options={[
-                            { label: 'Standard', value: 'standard' },
+                            { label: 'Brutalist', value: 'brutalist' },
                             { label: 'Editorial', value: 'editorial' },
                             { label: 'Dossier', value: 'dossier' },
                             { label: 'Terminal', value: 'terminal' },
@@ -143,27 +143,24 @@ const WelcomePage = () => {
                         />
                       </OptionCard>
 
-                      {/* 3. Interface Color */}
+                      {/* 3. Interface Theme */}
                       <OptionCard
-                        title="Classic Sidebar Color"
+                        title="Interface Theme"
                         icon={Palette}
                         delay={0.3}
                       >
                         <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
-                          Pick a color for the side navigation panel.
+                          Choose the core aesthetic for your journey.
                         </p>
                         <CustomDropdown
-                          label="Select Color"
+                          label="Select Theme"
                           variant="brutalist"
                           options={[
-                            { label: 'Dark', value: 'default' },
-                            { label: 'Salmon', value: 'salmon-medium' },
-                            { label: 'Cyber Blue', value: 'blue-transparent' },
-                            { label: 'Matrix Green', value: 'green-transparent' },
-                            { label: 'Neon Purple', value: 'purple-transparent' },
+                            { label: 'Brutalist (Dark)', value: 'brutalist' },
+                            { label: 'Luxe (Refined)', value: 'luxe' },
                           ]}
-                          value={sidebarColor}
-                          onChange={setSidebarColor}
+                          value={fezcodexTheme}
+                          onChange={setFezcodexTheme}
                           className="w-full"
                         />
                       </OptionCard>
