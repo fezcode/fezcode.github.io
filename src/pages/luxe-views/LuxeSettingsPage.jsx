@@ -33,8 +33,7 @@ const LuxeSection = ({ title, icon, children, delay = 0, id }) => (
   <motion.div
     id={id}
     initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
+    animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.6, delay }}
     className="bg-white/60 backdrop-blur-md border border-black/5 rounded-sm p-8 md:p-12 shadow-sm relative group overflow-hidden"
   >
