@@ -369,3 +369,15 @@
     (priority) High
     (assignee) Gemini
     (created_at) 2026-01-12T10:00:00+03:00
+
+  > (issues)
+    (id) FEZ-30
+    (title) Luxe Design System: Architectural Elegance
+    (description) Implement a secondary site-wide design language focused on sophisticated, calm aesthetics. Features include a cinematic rolling project stack, Playfair Display typography, and theme-polymorphic components.
+    (category) UI/UX
+    (epic) OS Experience
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-01-20T10:00:00+03:00
+    (notes) Toggleable via Settings or Command Palette.
