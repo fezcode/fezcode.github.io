@@ -21,14 +21,15 @@ const LuxeNavbar = ({
   }, []);
 
   return (
-            <header
-              className={`sticky top-0 left-0 right-0 z-[60] transition-all duration-500 bg-[#FDFCFB]/80 backdrop-blur-md border-b ${
-                isScrolled
-                  ? 'py-4 border-[#1A1A1A]/5 shadow-sm'
-                  : 'py-6 border-transparent'
-              }`}
-            >      <div className="mx-auto max-w-[1800px] px-6 md:px-12 flex justify-between items-center text-[#1A1A1A]">
-
+    <header
+      className={`sticky top-0 left-0 right-0 z-[60] transition-all duration-500 bg-[#FDFCFB]/80 backdrop-blur-md border-b ${
+        isScrolled
+          ? 'py-4 border-[#1A1A1A]/5 shadow-sm'
+          : 'py-6 border-transparent'
+      }`}
+    >
+      {' '}
+      <div className="mx-auto max-w-[1800px] px-6 md:px-12 flex justify-between items-center text-[#1A1A1A]">
         {/* Left: Sidebar Toggle & Brand */}
         <div className="flex items-center gap-6">
           <button
@@ -49,7 +50,7 @@ const LuxeNavbar = ({
         {/* Right: Actions */}
         <div className="flex items-center gap-6">
           <Link
-            to="/about"
+            to="/about/luxe"
             className="hidden md:flex items-center gap-2 text-[#1A1A1A]/60 hover:text-[#1A1A1A] transition-colors"
           >
             <span className="font-outfit text-xs font-medium uppercase tracking-widest">
