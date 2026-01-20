@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import { useParams } from 'react-router-dom';
 import { useProjects } from '../utils/projectParser';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 import Loading from './Loading';
 
 const ProjectPage = lazy(() => import('../pages/ProjectPage'));
@@ -8,10 +9,12 @@ const StylishProjectDetailsPage = lazy(() => import('../pages/StylishProjectDeta
 const EditorialProjectDetailsPage = lazy(() => import('../pages/EditorialProjectDetailsPage'));
 const MinimalModernProjectPage = lazy(() => import('../pages/MinimalModernProjectPage'));
 const MuseumProjectPage = lazy(() => import('../pages/MuseumProjectPage'));
+const LuxeProjectDetailPage = lazy(() => import('../pages/luxe-views/LuxeProjectDetailPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
   const { projects, loading } = useProjects();
+  const { fezcodexTheme } = useVisualSettings();
 
   if (loading) return <Loading />;
 
@@ -21,7 +24,7 @@ const ProjectRouteHandler = () => {
     return <Suspense fallback={<Loading />}><ProjectPage /></Suspense>;
   }
 
-  // Handle different project styles
+  // Handle different project styles first
   const projectStyle = project.style || 'default';
 
   if (projectStyle === 'stylish') {
@@ -52,6 +55,15 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <MuseumProjectPage />
+      </Suspense>
+    );
+  }
+
+  // Fallback to theme based routing if style is default
+  if (fezcodexTheme === 'luxe') {
+    return (
+      <Suspense fallback={<Loading />}>
+        <LuxeProjectDetailPage />
       </Suspense>
     );
   }
