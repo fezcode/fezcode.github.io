@@ -1,30 +1,30 @@
 import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
-  House,
-  User,
-  BookOpen,
-  Wrench,
-  Article,
-  SquaresFour,
-  GearSix,
-  MagnifyingGlass,
-  Timer,
-  PushPin,
-  Trophy,
-  Shuffle,
-  EnvelopeSimple,
-  BugBeetle,
-  ArrowRight,
-  Sword,
-  Rss,
-  Graph,
-  CaretDoubleDown,
-  CaretDoubleUp,
-  Flask,
-  BookBookmark,
-  FilePdf,
+  HouseIcon,
+  UserIcon,
+  BookOpenIcon,
+  WrenchIcon,
+  ArticleIcon,
+  SquaresFourIcon,
+  GearSixIcon,
+  MagnifyingGlassIcon,
+  TimerIcon,
+  PushPinIcon,
+  TrophyIcon,
+  ShuffleIcon,
+  EnvelopeSimpleIcon,
+  BugBeetleIcon,
+  ArrowRightIcon,
+  SwordIcon,
+  RssIcon,
+  GraphIcon,
+  CaretDoubleDownIcon,
+  CaretDoubleUpIcon,
+  FlaskIcon,
+  BookBookmarkIcon,
+  FilePdfIcon,
   TerminalWindowIcon
 } from '@phosphor-icons/react';
 
@@ -35,30 +35,30 @@ import { useAchievements } from '../context/AchievementContext';
 import piml from 'piml';
 
 const ICON_MAP = {
-  HouseIcon: House,
-  UserIcon: User,
-  BookOpenIcon: BookOpen,
-  WrenchIcon: Wrench,
-  ArticleIcon: Article,
-  SquaresFourIcon: SquaresFour,
-  GearSixIcon: GearSix,
-  MagnifyingGlassIcon: MagnifyingGlass,
-  TimerIcon: Timer,
-  PushPinIcon: PushPin,
-  TrophyIcon: Trophy,
-  ShuffleIcon: Shuffle,
-  EnvelopeSimpleIcon: EnvelopeSimple,
-  BugBeetleIcon: BugBeetle,
-  ArrowRightIcon: ArrowRight,
-  SwordIcon: Sword,
-  RssIcon: Rss,
-  GraphIcon: Graph,
-  CaretDoubleDownIcon: CaretDoubleDown,
-  CaretDoubleUpIcon: CaretDoubleUp,
-  FlaskIcon: Flask,
-  BookBookmarkIcon: BookBookmark,
-  FilePdfIcon: FilePdf,
-  TerminalWindowIcon: TerminalWindowIcon
+  HouseIcon,
+  UserIcon,
+  BookOpenIcon,
+  WrenchIcon,
+  ArticleIcon,
+  SquaresFourIcon,
+  GearSixIcon,
+  MagnifyingGlassIcon,
+  TimerIcon,
+  PushPinIcon,
+  TrophyIcon,
+  ShuffleIcon,
+  EnvelopeSimpleIcon,
+  BugBeetleIcon,
+  ArrowRightIcon,
+  SwordIcon,
+  RssIcon,
+  GraphIcon,
+  CaretDoubleDownIcon,
+  CaretDoubleUpIcon,
+  FlaskIcon,
+  BookBookmarkIcon,
+  FilePdfIcon,
+  TerminalWindowIcon
 };
 
 const LuxeSidebar = ({
@@ -203,7 +203,7 @@ const LuxeSidebar = ({
             </span>
           </Link>
           <span className="font-outfit text-[10px] text-[#1A1A1A]/40 uppercase tracking-widest pl-1">
-            System v{version}
+            Fezcodex v{version}
           </span>
         </div>
 
@@ -213,7 +213,7 @@ const LuxeSidebar = ({
         <div className="relative flex-grow overflow-hidden">
           {showScrollGradient.top && (
             <div className="absolute top-0 left-0 right-0 h-12 flex items-center justify-center bg-gradient-to-b from-[#FDFCFB] to-transparent z-20 pointer-events-none">
-              <CaretDoubleUp size={16} className="text-[#8D4004] mt-2" />
+              <CaretDoubleUpIcon size={16} className="text-[#8D4004] mt-2" />
             </div>
           )}
 
@@ -254,7 +254,7 @@ const LuxeSidebar = ({
                           className="flex flex-col overflow-hidden"
                         >
                           {items.map((item, idx) => {
-                            const Icon = ICON_MAP[item.icon] || ArrowRight;
+                            const Icon = ICON_MAP[item.icon] || ArrowRightIcon;
                             if (item.external === 'true' || item.url) {
                               return (
                                 <a
@@ -270,7 +270,7 @@ const LuxeSidebar = ({
                                       {item.label}
                                     </span>
                                   </div>
-                                  <ArrowRight
+                                  <ArrowRightIcon
                                     size={12}
                                     className="opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all text-[#8D4004]"
                                   />
@@ -297,7 +297,7 @@ const LuxeSidebar = ({
 
           {showScrollGradient.bottom && (
             <div className="absolute bottom-0 left-0 right-0 h-12 flex items-center justify-center bg-gradient-to-t from-[#FDFCFB] to-transparent z-20 pointer-events-none">
-              <CaretDoubleDown size={16} className="text-[#8D4004] mb-2" />
+              <CaretDoubleDownIcon size={16} className="text-[#8D4004] mb-2" />
             </div>
           )}
         </div>
@@ -306,12 +306,12 @@ const LuxeSidebar = ({
           <div className="grid grid-cols-4 gap-2 mb-4">
             <FooterButton
               onClick={() => setIsPaletteOpen(true)}
-              icon={MagnifyingGlass}
+              icon={MagnifyingGlassIcon}
               title="Search"
             />
             <FooterButton
               onClick={() => navigate('/settings')}
-              icon={GearSix}
+              icon={GearSixIcon}
               title="Config"
             />
             <FooterButton
@@ -319,12 +319,12 @@ const LuxeSidebar = ({
                 navigate('/random');
                 unlockAchievement('feeling_lucky');
               }}
-              icon={Shuffle}
+              icon={ShuffleIcon}
               title="Random"
             />
             <FooterButton
               onClick={toggleModal}
-              icon={EnvelopeSimple}
+              icon={EnvelopeSimpleIcon}
               title="Contact"
             />
           </div>
@@ -337,7 +337,7 @@ const LuxeSidebar = ({
 const SidebarLink = ({ to, icon: Icon, label, getLinkClass }) => (
   <NavLink to={to} className={getLinkClass}>
     <div className="flex items-center gap-4">
-      <Icon size={16} />
+      {Icon && <Icon size={16} />}
       <span className="font-outfit text-xs font-medium uppercase tracking-widest">
         {label}
       </span>
@@ -354,8 +354,5 @@ const FooterButton = ({ onClick, icon: Icon, title }) => (
     <Icon size={18} />
   </button>
 );
-
-// Helper for animation
-const AnimatePresence = ({ children, initial }) => React.Children.only(children);
 
 export default LuxeSidebar;
