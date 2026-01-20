@@ -187,6 +187,9 @@ const LuxeSettingsPage = () => {
                           colorTheme="amber"
                           {...toggleClasses}
                         />
+                        <p className="mt-4 font-outfit text-sm text-black/40 italic leading-relaxed">
+                            Note: Activating this is recommended for the Fezluxe theme, as all internal applications currently utilize the Brutalist design language.
+                        </p>
                     </div>
                 </div>
 
@@ -208,6 +211,9 @@ const LuxeSettingsPage = () => {
                       colorTheme="amber"
                       {...toggleClasses}
                     />
+                    <p className="mt-4 font-outfit text-sm text-black/40 italic leading-relaxed">
+                        Note: Homepage section prioritization is currently exclusive to the Brutalist (Brufez) theme architecture.
+                    </p>
                 </div>
             </div>
           </LuxeSection>
@@ -265,6 +271,9 @@ const LuxeSettingsPage = () => {
                     />
                 </div>
             </div>
+            <p className="mt-8 font-outfit text-sm text-black/40 italic leading-relaxed">
+                Note: Global font selection is currently exclusive to the Brutalist (Brufez) theme architecture. Fezluxe utilize fixed high-fidelity typography for structural integrity.
+            </p>
           </LuxeSection>
 
           {/* Motion & Performance */}
