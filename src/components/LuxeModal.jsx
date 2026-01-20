@@ -1,54 +1,66 @@
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from '@phosphor-icons/react';
+import { XIcon } from '@phosphor-icons/react';
 
 const LuxeModal = ({ isOpen, onClose, title, children }) => {
   useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
     if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
     } else {
-      document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
     }
+
     return () => {
-      document.body.style.overflow = 'unset';
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
     };
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-0 bg-[#F5F5F0]/80 backdrop-blur-md"
             onClick={onClose}
+            className="absolute inset-0 bg-[#F5F5F0]/90 backdrop-blur-md"
           />
+
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.98, y: 10 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="relative w-full max-w-2xl bg-white border border-[#1A1A1A]/10 shadow-2xl rounded-sm overflow-hidden flex flex-col max-h-[90vh]"
+            exit={{ opacity: 0, scale: 0.98, y: 10 }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className="relative w-full max-w-xl bg-white border border-black/5 rounded-sm shadow-[0_30px_100px_-20px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-[#1A1A1A]/5 bg-[#FAFAF8]">
-              <h2 className="font-playfairDisplay text-2xl text-[#1A1A1A] italic">
+            <div className="flex items-center justify-between p-8 border-b border-black/5 bg-[#FAFAF8]">
+              <h2 className="text-3xl font-playfairDisplay italic text-[#1A1A1A]">
                 {title}
               </h2>
               <button
                 onClick={onClose}
-                className="text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors p-2"
+                className="p-2 text-[#1A1A1A]/30 hover:text-[#8D4004] transition-colors"
               >
-                <X size={20} />
+                <XIcon size={24} weight="light" />
               </button>
             </div>
 
-            {/* Content */}
-            <div className="p-8 overflow-y-auto font-outfit text-[#1A1A1A]/80 leading-relaxed text-sm">
+            <div className="p-10 max-h-[70vh] overflow-y-auto scrollbar-hide text-[#1A1A1A]/70 font-outfit text-base leading-relaxed">
               {children}
             </div>
+
+            <div className="h-1 w-full bg-gradient-to-r from-transparent via-[#8D4004]/10 to-transparent" />
           </motion.div>
         </div>
       )}

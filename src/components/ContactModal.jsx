@@ -9,7 +9,6 @@ import {
   ArrowUpRightIcon,
 } from '@phosphor-icons/react';
 import GenericModal from './GenericModal';
-import LuxeModal from './LuxeModal';
 import { useSiteConfig } from '../context/SiteConfigContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 
@@ -24,19 +23,30 @@ const socialIcons = {
 const ContactModal = ({ isOpen, onClose }) => {
   const { config } = useSiteConfig();
   const { fezcodexTheme } = useVisualSettings();
+  const isLuxe = fezcodexTheme === 'luxe';
 
-  if (fezcodexTheme === 'luxe') {
-    return (
-      <LuxeModal isOpen={isOpen} onClose={onClose} title="Establish Contact">
-        <div className="flex flex-col gap-8">
-          <p className="font-outfit text-sm text-[#1A1A1A]/60 italic leading-relaxed">
+  return (
+    <GenericModal
+      isOpen={isOpen}
+      onClose={onClose}
+      title={isLuxe ? "Establish Contact" : "Contact"}
+    >
+      <div className="flex flex-col gap-6">
+        {isLuxe ? (
+          <p className="font-outfit text-sm text-[#1A1A1A]/60 italic leading-relaxed mb-2">
             Choose a preferred channel to initiate communication with the primary node.
           </p>
+        ) : (
+          <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-[10px]">
+            {'//'} Establish connection via established protocols:
+          </p>
+        )}
 
-          <div className="grid grid-cols-1 gap-4">
-            {config?.socials &&
-              config.socials.map((link) => {
-                const Icon = socialIcons[link.icon] || GlobeIcon;
+        <div className={`grid grid-cols-1 ${isLuxe ? 'gap-4' : 'gap-3'}`}>
+          {config?.socials &&
+            config.socials.map((link) => {
+              const Icon = socialIcons[link.icon] || GlobeIcon;
+              if (isLuxe) {
                 return (
                   <LuxeContactLink
                     key={link.id}
@@ -46,27 +56,9 @@ const ContactModal = ({ isOpen, onClose }) => {
                     value={link.url.replace(/^mailto:/, '').replace(/^https?:\/\//, '')}
                   />
                 );
-              })}
-          </div>
-        </div>
-      </LuxeModal>
-    );
-  }
-
-  return (
-    <GenericModal isOpen={isOpen} onClose={onClose} title="Contact">
-      <div className="flex flex-col gap-6">
-        <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-[10px]">
-          {/* // CONNECT_PROTOCOLS */}
-          {'//'} Establish connection via established protocols:
-        </p>
-
-        <div className="flex flex-col gap-3">
-          {config?.socials &&
-            config.socials.map((link) => {
-              const Icon = socialIcons[link.icon] || GlobeIcon;
+              }
               return (
-                <ContactLink
+                <BrutalistContactLink
                   key={link.id}
                   href={link.url}
                   icon={Icon}
@@ -103,7 +95,7 @@ const LuxeContactLink = ({ href, icon: Icon, label, value }) => (
   </a>
 );
 
-const ContactLink = ({ href, icon: Icon, label, value }) => (
+const BrutalistContactLink = ({ href, icon: Icon, label, value }) => (
   <a
     href={href}
     target="_blank"
@@ -116,7 +108,7 @@ const ContactLink = ({ href, icon: Icon, label, value }) => (
         weight="bold"
         className="text-emerald-500 group-hover:text-black transition-colors"
       />
-      <div className="flex flex-col">
+      <div className="flex flex-col text-white group-hover:text-black">
         <span className="text-[10px] font-mono uppercase tracking-widest opacity-50">
           {label}
         </span>
