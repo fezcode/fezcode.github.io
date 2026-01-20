@@ -250,23 +250,20 @@ const OmniverseHero = () => {
         rivers.push({ mesh: river, geo: riverGeo, mat: riverMat, speed: 0.02 + Math.random() * 0.05 });
     }
 
-    // 7. ASTEROID BELT
+    // 7. ASTEROID BELT (Reduced)
     const asteroids = [];
-    const asteroidGeo = new THREE.DodecahedronGeometry(0.4, 0); // Low poly rocks
+    const asteroidGeo = new THREE.DodecahedronGeometry(0.4, 0);
     const asteroidMat = new THREE.MeshBasicMaterial({ color: 0x333333 });
 
-    for(let i=0; i<40; i++) {
+    for(let i=0; i<15; i++) {
         const asteroid = new THREE.Mesh(asteroidGeo, asteroidMat);
-        // Position in a rough belt/cloud
         const theta = Math.random() * Math.PI * 2;
         const r = 18 + Math.random() * 5;
         asteroid.position.x = r * Math.cos(theta);
         asteroid.position.z = r * Math.sin(theta);
-        asteroid.position.y = (Math.random() - 0.5) * 6; // Spread vertically
-
+        asteroid.position.y = (Math.random() - 0.5) * 6;
         asteroid.rotation.x = Math.random() * Math.PI;
         asteroid.rotation.y = Math.random() * Math.PI;
-
         scene.add(asteroid);
         asteroids.push({
             mesh: asteroid,
@@ -276,6 +273,31 @@ const OmniverseHero = () => {
             rotSpeed: 0.01 + Math.random() * 0.02
         });
     }
+
+    // 7.5 DISTANT PLANETS
+    const planets = [];
+    const planetConfig = [
+        { size: 1.2, r: 45, speed: 0.0005, color: 0x8D4004, opacity: 0.4 }, // Soft Amber
+        { size: 0.8, r: 55, speed: -0.0003, color: 0x1A1A1A, opacity: 0.3 }, // Dark
+        { size: 1.5, r: 70, speed: 0.0002, color: 0xFFFFFF, opacity: 0.2 }, // White/Cloudy
+        { size: 0.5, r: 40, speed: 0.0008, color: 0x457B9D, opacity: 0.3 }, // Soft Blue
+    ];
+
+    planetConfig.forEach(conf => {
+        const planetGeo = new THREE.SphereGeometry(conf.size, 32, 32);
+        const planetMat = new THREE.MeshBasicMaterial({
+            color: conf.color,
+            transparent: true,
+            opacity: conf.opacity
+        });
+        const planet = new THREE.Mesh(planetGeo, planetMat);
+        const theta = Math.random() * Math.PI * 2;
+        planet.position.x = conf.r * Math.cos(theta);
+        planet.position.z = conf.r * Math.sin(theta);
+        planet.position.y = (Math.random() - 0.5) * 20;
+        scene.add(planet);
+        planets.push({ mesh: planet, angle: theta, radius: conf.r, speed: conf.speed });
+    });
 
     // 8. SATELLITES (More complex shapes)
     const satellites = [];
@@ -340,6 +362,13 @@ const OmniverseHero = () => {
           a.mesh.rotation.y += a.rotSpeed;
       });
 
+      // Planets
+      planets.forEach(p => {
+          p.angle += p.speed;
+          p.mesh.position.x = p.radius * Math.cos(p.angle);
+          p.mesh.position.z = p.radius * Math.sin(p.angle);
+      });
+
       // Satellites
       satellites.forEach(s => {
           s.angle += s.speed;
@@ -394,6 +423,7 @@ const OmniverseHero = () => {
       planeGeo.dispose(); planeMat.dispose();
       rivers.forEach(r => { r.geo.dispose(); r.mat.dispose(); });
       asteroidGeo.dispose(); asteroidMat.dispose();
+      planets.forEach(p => { p.mesh.geometry.dispose(); p.mesh.material.dispose(); });
       satellites.forEach(s => {
           s.geo.dispose(); s.mat.dispose();
           s.geo2.dispose(); s.mat2.dispose();
@@ -412,7 +442,7 @@ const OmniverseHero = () => {
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-black/80">Omniverse::Online</span>
                 </div>
                 <h1 className="font-playfairDisplay text-8xl md:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 tracking-tighter mix-blend-overlay">
-                    FEZ<br/><span className="italic text-black/40">CODEX</span>
+                  <span className="italic">FEZ</span><br/><span className="text-black/40">CODEX</span>
                 </h1>
                 <p className="font-outfit text-sm uppercase tracking-widest text-black/60 max-w-md mx-auto">
                     Exploring the infinite digital expanse.
