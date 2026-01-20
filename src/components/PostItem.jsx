@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRight, Folder } from '@phosphor-icons/react';
 
 const PostItem = ({
   slug,
@@ -96,23 +96,28 @@ const PostItem = ({
           </span>
 
           {/* Title Area */}
-          <div className="flex flex-col gap-1 min-w-0 flex-1">
-            <h3
-              className={`text-xl font-medium uppercase tracking-tight transition-all duration-300 md:text-2xl break-words leading-tight ${
-                isActive
-                  ? 'translate-x-1 text-white'
-                  : 'text-gray-500 group-hover:text-gray-300'
-              }`}
-            >
-              {title}
-            </h3>
+          <div className="flex items-start gap-3 min-w-0 flex-1">
+             {isSeries && (
+                <Folder size={24} weight="fill" className="text-amber-400 shrink-0 mt-0.5" />
+             )}
+             <div className="flex flex-col gap-1">
+                <h3
+                  className={`text-xl font-medium uppercase tracking-tight transition-all duration-300 md:text-2xl break-words leading-tight ${
+                    isActive
+                      ? 'translate-x-1 text-white'
+                      : 'text-gray-500 group-hover:text-gray-300'
+                  }`}
+                >
+                  {title}
+                </h3>
 
-            {series && (
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-500/60">
-                {typeof series === 'object' ? series.title : series} {'//'} Part{' '}
-                {seriesIndex}
-              </span>
-            )}
+                {series && (
+                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-500/60">
+                    {typeof series === 'object' ? series.title : series} {'//'} Part{' '}
+                    {seriesIndex}
+                  </span>
+                )}
+             </div>
           </div>
         </div>
 

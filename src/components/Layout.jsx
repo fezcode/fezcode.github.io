@@ -3,6 +3,9 @@ import Navbar from './Navbar';
 import ClassicSidebar from './ClassicSidebar';
 import BrutalistSidebar from './BrutalistSidebar';
 import Footer from './Footer';
+import LuxeSidebar from './LuxeSidebar';
+import LuxeNavbar from './LuxeNavbar';
+import LuxeFooter from './LuxeFooter';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
@@ -37,6 +40,7 @@ const Layout = ({
     isSidebarOpen,
     toggleSidebar,
     isAppFullscreen,
+    fezcodexTheme,
   } = useVisualSettings();
   const location = useLocation();
   const { projects } = useProjects();
@@ -75,9 +79,16 @@ const Layout = ({
   const mainContent = location.pathname.startsWith('/stories') ? (
     <DndProvider>{children}</DndProvider>
   ) : (
-    <div className="bg-[#050505] min-h-screen font-sans flex">
+    <div className={`${fezcodexTheme === 'luxe' ? 'bg-[#F5F5F0]' : 'bg-[#050505]'} min-h-screen font-sans flex`}>
       {!hideLayout &&
-        (sidebarMode === 'classic' ? (
+        (fezcodexTheme === 'luxe' ? (
+          <LuxeSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
+        ) : sidebarMode === 'classic' ? (
           <ClassicSidebar
             isOpen={isSidebarOpen}
             toggleSidebar={toggleSidebar}
@@ -97,12 +108,21 @@ const Layout = ({
         className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !hideLayout ? (sidebarMode === 'classic' ? 'md:ml-64' : 'md:ml-72') : 'md:ml-0'}`}
       >
         {!hideLayout && (
-          <Navbar
-            toggleSidebar={toggleSidebar}
-            isSidebarOpen={isSidebarOpen}
-            isSearchVisible={isSearchVisible}
-            toggleSearch={toggleSearch}
-          />
+          fezcodexTheme === 'luxe' ? (
+            <LuxeNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
+          ) : (
+            <Navbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
+          )
         )}
         {!hideLayout && isSearchVisible && (
           <Search isVisible={isSearchVisible} />
@@ -111,7 +131,9 @@ const Layout = ({
         {!hideLayout &&
           location.pathname !== '/projects' &&
           location.pathname !== '/blog' &&
-          location.pathname !== '/commands' && <Footer />}
+          location.pathname !== '/commands' &&
+          (fezcodexTheme === 'luxe' ? <LuxeFooter /> : <Footer />)
+        }
       </div>
     </div>
   );

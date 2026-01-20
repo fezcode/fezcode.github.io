@@ -8,6 +8,10 @@
         (to) /
         (icon) HouseIcon
       > (item)
+        (label) Terminal
+        (to) /terminal
+        (icon) TerminalWindowIcon
+      > (item)
         (label) About
         (to) /about
         (icon) UserIcon

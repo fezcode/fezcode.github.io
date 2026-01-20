@@ -25,6 +25,7 @@ import {
   FlaskIcon,
   BookBookmarkIcon,
   FilePdfIcon,
+  TerminalWindowIcon
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -58,6 +59,7 @@ const ICON_MAP = {
   FlaskIcon,
   BookBookmarkIcon,
   FilePdfIcon,
+  TerminalWindowIcon,
 };
 
 const BrutalistSidebar = ({

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, ToggleLeft, Clock, Stack, GridFour, Globe } from '@phosphor-icons/react';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
@@ -18,23 +19,37 @@ const TimeDisplay = () => {
   return <span className="font-mono tabular-nums">{time.toLocaleTimeString('en-US', { hour12: false })}</span>;
 };
 
-const StatusItem = ({ label, value, icon: Icon, onClick, actionLabel }) => (
-  <div className="flex items-center gap-4 p-4 border-r border-black/10 last:border-r-0 group hover:bg-white/40 transition-colors flex-1">
-      <div className="w-10 h-10 rounded-full bg-black/5 flex items-center justify-center text-black/60 group-hover:bg-black group-hover:text-white transition-colors">
-         {Icon && <Icon size={18} />}
+const StatusItem = ({ label, value, icon: Icon, onClick, actionLabel }) => {
+  const isClickable = !!onClick;
+  const Component = isClickable ? motion.button : motion.div;
+
+  return (
+    <Component
+      onClick={onClick}
+      whileHover={isClickable ? { backgroundColor: 'rgba(255, 255, 255, 0.6)' } : {}}
+      whileTap={isClickable ? { scale: 0.98 } : {}}
+      className={`flex flex-col items-center justify-center gap-2 p-6 border-r border-black/10 last:border-r-0 transition-colors flex-1 min-w-[160px] md:min-w-[200px] ${isClickable ? 'cursor-pointer' : 'cursor-default'}`}
+    >
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 rounded-full bg-black/5 flex items-center justify-center text-black/60 group-hover:bg-black group-hover:text-white transition-colors">
+           {Icon && <Icon size={16} />}
+        </div>
+        <span className="font-outfit text-[10px] uppercase tracking-[0.2em] text-black/40">{label}</span>
       </div>
-      <div className="flex flex-col">
-         <span className="font-outfit text-[10px] uppercase tracking-widest text-black/40">{label}</span>
-         {onClick ? (
-             <button onClick={onClick} className="font-playfairDisplay italic text-xl text-black text-left hover:text-[#8D4004] transition-colors flex items-center gap-2">
-                 {value} {actionLabel && <span className="not-italic text-[10px] font-sans border border-black/10 px-1 rounded hover:bg-black hover:text-white transition-colors">{actionLabel}</span>}
-             </button>
-         ) : (
-             <span className="font-playfairDisplay italic text-xl text-black">{value}</span>
+
+      <div className="flex items-center gap-3">
+         <span className="font-playfairDisplay italic text-xl md:text-2xl text-black">
+             {value}
+         </span>
+         {isClickable && actionLabel && (
+            <span className="text-[9px] font-sans border border-black/20 px-2 py-0.5 rounded-full text-black/40 uppercase tracking-widest bg-white/20">
+                {actionLabel}
+            </span>
          )}
       </div>
-  </div>
-);
+    </Component>
+  );
+};
 
 // --- Adaptive Card Components ---
 
@@ -352,18 +367,20 @@ const OmniverseHero = () => {
 
     animate();
 
-    // RESIZE
-    const handleResize = () => {
+    // RESIZE HANDLING via ResizeObserver (Detects sidebar toggles)
+    const resizeObserver = new ResizeObserver(() => {
       if (!mount) return;
-      camera.aspect = mount.clientWidth / mount.clientHeight;
+      const width = mount.clientWidth;
+      const height = mount.clientHeight;
+      camera.aspect = width / height;
       camera.updateProjectionMatrix();
-      renderer.setSize(mount.clientWidth, mount.clientHeight);
-    };
-    window.addEventListener('resize', handleResize);
+      renderer.setSize(width, height);
+    });
+    resizeObserver.observe(mount);
 
     // CLEANUP
     return () => {
-      window.removeEventListener('resize', handleResize);
+      resizeObserver.disconnect();
       cancelAnimationFrame(frameId);
       if (mount && mount.contains(renderer.domElement)) {
           mount.removeChild(renderer.domElement);
@@ -431,7 +448,7 @@ const LuxeHomePage = () => {
       <OmniverseHero />
 
       <div className="border-y border-black/10 bg-white/40 backdrop-blur-md sticky top-0 z-40">
-          <div className="flex divide-x divide-black/10 max-w-[1800px] mx-auto overflow-x-auto">
+          <div className="flex justify-center divide-x divide-black/10 max-w-[1800px] mx-auto overflow-x-auto no-scrollbar">
               <StatusItem
                 label="View Mode"
                 value={layoutMode === 'stack' ? 'Stacked' : 'Grid'}
