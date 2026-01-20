@@ -45,27 +45,35 @@ const Layout = ({
   const isTheVaguePage = location.pathname.startsWith('/the-vague');
   const isAboutPage = location.pathname.startsWith('/about');
   const isGraphPage = location.pathname === '/graph';
+  const isTerminalPage = location.pathname === '/terminal';
 
   // Check for special project styles that require hiding the default layout
-  const projectSlug = location.pathname.startsWith('/projects/') ? location.pathname.split('/')[2] : null;
-  const project = projectSlug ? projects.find(p => p.slug === projectSlug) : null;
+  const projectSlug = location.pathname.startsWith('/projects/')
+    ? location.pathname.split('/')[2]
+    : null;
+  const project = projectSlug
+    ? projects.find((p) => p.slug === projectSlug)
+    : null;
 
   const projectStyle = project?.style || 'default';
   const isSpecialProject =
-        projectStyle === 'stylish' ||
-        projectStyle === 'editorial' ||
-        projectStyle === 'minimal-modern' ||
-        projectStyle === 'museum'
-  ;
-
+    projectStyle === 'stylish' ||
+    projectStyle === 'editorial' ||
+    projectStyle === 'minimal-modern' ||
+    projectStyle === 'museum';
   // Check if we are inside a specific app (but not the apps listing page)
-  const isAppDetail = location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
-  const hideLayout = isAboutPage || isGraphPage || isSpecialProject || isTheVaguePage || (isAppDetail && isAppFullscreen);
+  const isAppDetail =
+    location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
+  const hideLayout =
+    isAboutPage ||
+    isGraphPage ||
+    isSpecialProject ||
+    isTheVaguePage ||
+    isTerminalPage ||
+    (isAppDetail && isAppFullscreen);
 
-  const mainContent = (location.pathname.startsWith('/stories')) ? (
-    <DndProvider>
-      {children}
-    </DndProvider>
+  const mainContent = location.pathname.startsWith('/stories') ? (
+    <DndProvider>{children}</DndProvider>
   ) : (
     <div className="bg-[#050505] min-h-screen font-sans flex">
       {!hideLayout &&

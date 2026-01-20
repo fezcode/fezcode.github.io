@@ -141,6 +141,7 @@ const PIMLLabPage = lazy(() => import('../pages/apps/PIMLLabPage'));
 const MetabolicHubPage = lazy(() => import('../pages/apps/IntermittentFastingTrackerPage'));
 const BrufezPage = lazy(() => import('../pages/BrufezPage'));
 const BrufezPanelsPage = lazy(() => import('../pages/BrufezPanelsPage'));
+const RetroTerminalPage = lazy(() => import('../pages/RetroTerminalPage'));
 const ProjectRouteHandler = lazy(() => import('../components/ProjectRouteHandler'));
 const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
 
@@ -187,6 +188,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <HomePage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/terminal"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <RetroTerminalPage />
               </Suspense>
             </motion.div>
           }
