@@ -18,11 +18,13 @@ import MindMapConstellation from './about-views/MindMapConstellation';
 import ClassifiedDossier from './about-views/ClassifiedDossier';
 import Brutalist from './about-views/Brutalist';
 import SkillDeck from './about-views/SkillDeck';
+import LuxeAboutView from './about-views/LuxeAboutView';
 import { useAchievements } from '../context/AchievementContext';
 import Seo from '../components/Seo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
+    { id: 'luxe', icon: IdentificationCardIcon, label: 'Luxe' },
     { id: 'brutalist', icon: BugIcon, label: 'Brutalist' },
     { id: 'skills', icon: IdentificationCardIcon, label: 'Skill Deck' },
     { id: 'dossier', icon: ArticleIcon, label: 'Dossier' },
@@ -59,7 +61,7 @@ const ViewSwitcher = ({ currentView }) => {
 
 const AboutPage = () => {
   const { viewId } = useParams();
-  const validViews = ['dossier', 'hud', 'blueprint', 'map', 'brutalist', 'skills'];
+  const validViews = ['luxe', 'dossier', 'hud', 'blueprint', 'map', 'brutalist', 'skills'];
 
   const { unlockAchievement } = useAchievements();
 
@@ -75,6 +77,8 @@ const AboutPage = () => {
 
   const getButtonStyle = (currentView) => {
     switch (currentView) {
+      case 'luxe':
+        return 'bg-white/80 text-black border-black/10 border font-outfit uppercase tracking-widest text-[10px] hover:bg-black hover:text-white rounded-full shadow-sm backdrop-blur-md';
       case 'dossier':
         return 'bg-white text-black border-black border-2 font-mono uppercase tracking-widest text-xs hover:bg-[#4a0404] hover:text-white hover:border-[#4a0404] rounded-none shadow-none';
       case 'brutalist':
@@ -155,6 +159,7 @@ const AboutPage = () => {
           transition={{ duration: 0.5 }}
           className="w-full h-full"
         >
+          {view === 'luxe' && <LuxeAboutView />}
           {view === 'hud' && <NeuromancerHUD />}
           {view === 'blueprint' && <SystemArchitecture />}
           {view === 'map' && <MindMapConstellation />}
