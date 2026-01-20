@@ -139,8 +139,10 @@ const KnowledgeGraphPage = lazy(() => import('../pages/KnowledgeGraphPage'));
 const TheVaguePage = lazy(() => import('../pages/TheVaguePage'));
 const PIMLLabPage = lazy(() => import('../pages/apps/PIMLLabPage'));
 const MetabolicHubPage = lazy(() => import('../pages/apps/IntermittentFastingTrackerPage'));
+const DesignSelectionPage = lazy(() => import('../pages/DesignSelectionPage'));
 const BrufezPage = lazy(() => import('../pages/BrufezPage'));
 const BrufezPanelsPage = lazy(() => import('../pages/BrufezPanelsPage'));
+const FezluxeDesignPage = lazy(() => import('../pages/luxe-views/FezluxeDesignPage'));
 const RetroTerminalPage = lazy(() => import('../pages/RetroTerminalPage'));
 const ProjectRouteHandler = lazy(() => import('../components/ProjectRouteHandler'));
 const VocabRouteHandler = lazy(() => import('../components/VocabRouteHandler'));
@@ -668,7 +670,7 @@ const AnimatedRoutes = ({
           }
         />
         <Route
-          path="/achievements"
+          path="/design"
           element={
             <motion.div
               initial="initial"
@@ -678,13 +680,13 @@ const AnimatedRoutes = ({
               transition={pageTransition}
             >
               <Suspense fallback={<Loading />}>
-                <AchievementsPage />
+                <DesignSelectionPage />
               </Suspense>
             </motion.div>
           }
         />
         <Route
-          path="/brufez"
+          path="/design/brufez"
           element={
             <motion.div
               initial="initial"
@@ -700,7 +702,7 @@ const AnimatedRoutes = ({
           }
         />
         <Route
-          path="/brufez/panels"
+          path="/design/brufez/panels"
           element={
             <motion.div
               initial="initial"
@@ -711,6 +713,40 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <BrufezPanelsPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/design/fezluxe"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <FezluxeDesignPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route path="/brufez" element={<Navigate to="/design/brufez" replace />} />
+        <Route path="/brufez/panels" element={<Navigate to="/design/brufez/panels" replace />} />
+        <Route
+          path="/achievements"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <AchievementsPage />
               </Suspense>
             </motion.div>
           }

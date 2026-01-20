@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, ToggleLeft, Clock, Stack, GridFour, Globe } from '@phosphor-icons/react';
+import { ArrowRightIcon, ArrowUpRightIcon, ToggleLeftIcon, ClockIcon, StackIcon, GridFourIcon, GlobeIcon, UserIcon } from '@phosphor-icons/react';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
@@ -79,7 +79,7 @@ const ProjectCard = ({ project, index, isStacked }) => {
                         Work {index + 1}
                     </span>
                     <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
-                        <ArrowUpRight size={24} />
+                        <ArrowUpRightIcon size={24} />
                     </div>
                 </div>
                 <div>
@@ -133,7 +133,7 @@ const JournalCard = ({ post, index, isStacked }) => {
                    <span className="font-outfit text-xs font-bold uppercase tracking-widest text-black/40 group-hover:text-[#8D4004] transition-colors">
                        Read Article
                    </span>
-                   <ArrowRight size={20} className="text-black/30 group-hover:text-[#8D4004] group-hover:translate-x-2 transition-all" />
+                   <ArrowRightIcon size={20} className="text-black/30 group-hover:text-[#8D4004] group-hover:translate-x-2 transition-all" />
               </div>
           </div>
        </Link>
@@ -438,7 +438,7 @@ const OmniverseHero = () => {
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
             <div className="text-center animate-fade-in-up bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-2xl">
                 <div className="inline-flex items-center gap-3 px-4 py-2 border border-black/10 rounded-full bg-white/40 mb-8">
-                    <Globe size={16} className="text-[#8D4004] animate-spin-slow" />
+                    <GlobeIcon size={16} className="text-[#8D4004] animate-spin-slow" />
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-black/80">Omniverse::Online</span>
                 </div>
                 <h1 className="font-playfairDisplay text-8xl md:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 tracking-tighter mix-blend-overlay">
@@ -456,6 +456,7 @@ const OmniverseHero = () => {
 };
 
 const LuxeHomePage = () => {
+  const navigate = useNavigate();
   const { projects, loading: loadingProjects } = useProjects(true);
   const { setFezcodexTheme } = useVisualSettings();
   const [posts, setPosts] = useState([]);
@@ -482,15 +483,22 @@ const LuxeHomePage = () => {
               <StatusItem
                 label="View Mode"
                 value={layoutMode === 'stack' ? 'Stacked' : 'Grid'}
-                icon={layoutMode === 'stack' ? Stack : GridFour}
+                icon={layoutMode === 'stack' ? StackIcon : GridFourIcon}
                 onClick={() => setLayoutMode(prev => prev === 'stack' ? 'grid' : 'stack')}
                 actionLabel="Toggle"
               />
-              <StatusItem label="Local Time" value={<TimeDisplay />} icon={Clock} />
+              <StatusItem label="Local Time" value={<TimeDisplay />} icon={ClockIcon} />
+              <StatusItem
+                label="Author"
+                value="A. S. Bulbul"
+                icon={UserIcon}
+                onClick={() => navigate('/about/luxe')}
+                actionLabel="Profile"
+              />
               <StatusItem
                 label="Interface"
                 value="Luxe"
-                icon={ToggleLeft}
+                icon={ToggleLeftIcon}
                 onClick={() => setFezcodexTheme('brutalist')}
                 actionLabel="Switch"
               />

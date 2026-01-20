@@ -130,7 +130,7 @@ const BrufezPage = () => {
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
-                  to="/brufez/panels"
+                  to="/design/brufez/panels"
                   className="group flex items-center gap-3 bg-white text-black px-6 py-3 rounded-sm font-black uppercase tracking-[0.2em] text-[10px] transition-all hover:bg-emerald-400"
                 >
                   <ColumnsIcon weight="bold" size={16}/>

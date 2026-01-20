@@ -59,7 +59,7 @@ const BrufezPanelsPage = () => {
       <div className="w-full xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300">
         <header className="mb-20">
           <Link
-            to="/brufez"
+            to="/design/brufez"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
             <ArrowLeftIcon weight="bold" />

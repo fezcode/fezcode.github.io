@@ -79,9 +79,9 @@
         (to) /roadmap
         (icon) BugBeetleIcon
       > (item)
-        (label) Brufez Spec
-        (to) /brufez
-        (icon) FlaskIcon
+        (label) Design System
+        (to) /design
+        (icon) PaletteIcon
 
   > (section)
     (id) isExtrasOpen
