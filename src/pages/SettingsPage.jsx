@@ -124,16 +124,10 @@ const SettingsPage = () => {
     toggleRain,
     isSplashTextEnabled,
     toggleSplashText,
-    isFalloutOverlay,
-    toggleFalloutOverlay,
-    falloutVariant,
-    setFalloutVariant,
-    isFalloutNoiseEnabled,
-    toggleFalloutNoise,
-    isFalloutScanlinesEnabled,
-    toggleFalloutScanlines,
-    isFalloutVignetteEnabled,
-    toggleFalloutVignette,
+    isAppFullscreen,
+    toggleAppFullscreen,
+    fezcodexTheme,
+    setFezcodexTheme,
     blogPostViewMode,
     setBlogPostViewMode,
     sidebarMode,
@@ -145,8 +139,16 @@ const SettingsPage = () => {
     bodyFont,
     setBodyFont,
     availableFonts,
-    isAppFullscreen,
-    toggleAppFullscreen,
+    isFalloutOverlay,
+    toggleFalloutOverlay,
+    falloutVariant,
+    setFalloutVariant,
+    isFalloutNoiseEnabled,
+    toggleFalloutNoise,
+    isFalloutScanlinesEnabled,
+    toggleFalloutScanlines,
+    isFalloutVignetteEnabled,
+    toggleFalloutVignette,
   } = useVisualSettings();
 
   const {
@@ -218,7 +220,7 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] py-24 px-6 md:px-12 selection:bg-emerald-500/30 font-sans relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#050505] py-24 px-6 md:px-12 selection:bg-emerald-500/30 font-mono relative overflow-x-hidden">
       <Seo
         title="Settings | Fezcodex"
         description="Customize your experience and configure site settings."
@@ -316,6 +318,28 @@ const SettingsPage = () => {
                     fontClass="font-outfit"
                   />
                 </div>
+              </div>
+
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-1">
+                    Fezcodex Theme
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    Choose between the high-contrast brutalist vault or the sophisticated luxe interface.
+                  </p>
+                </div>
+                <CustomDropdown
+                  variant="brutalist"
+                  label="Select Theme"
+                  options={[
+                    { label: 'Brutalist (Dark)', value: 'brutalist' },
+                    { label: 'Luxe (Refined)', value: 'luxe' },
+                  ]}
+                  value={fezcodexTheme}
+                  onChange={setFezcodexTheme}
+                  icon={LayoutIcon}
+                />
               </div>
             </div>
           </Section>

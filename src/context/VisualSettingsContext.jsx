@@ -55,6 +55,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
   const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState('is-splash-text-enabled',true);
   const [isAppFullscreen, setIsAppFullscreen] = usePersistentState('is-app-fullscreen', false);
+  const [fezcodexTheme, setFezcodexTheme] = usePersistentState('fezcodex-theme', 'brutalist'); // 'brutalist' or 'luxe'
 
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(window.innerWidth > 768);
   useEffect(() => {
@@ -337,6 +338,8 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleSplashText,
         isAppFullscreen,
         toggleAppFullscreen,
+        fezcodexTheme,
+        setFezcodexTheme,
         isSidebarOpen,
         setIsSidebarOpen,
         toggleSidebar,
