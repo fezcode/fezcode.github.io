@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, ToggleLeft, Clock, Stack, GridFour } from '@phosphor-icons/react';
+import { ArrowRight, ArrowUpRight, ToggleLeft, Clock, Stack, GridFour, Globe } from '@phosphor-icons/react';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
-import { useSiteConfig } from '../../context/SiteConfigContext';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
 import LuxeArt from '../../components/LuxeArt';
+import * as THREE from 'three';
 
 // --- Components ---
 
@@ -40,15 +39,15 @@ const StatusItem = ({ label, value, icon: Icon, onClick, actionLabel }) => (
 // --- Adaptive Card Components ---
 
 const ProjectCard = ({ project, index, isStacked }) => {
-  const topOffset = 120 + index * 40;
+  // Adjusted offset for better stacking visibility - 150px base + 60px per card
+  const topOffset = 150 + index * 60;
 
   const containerClass = isStacked
-    ? "sticky top-0 h-[80vh] w-full mb-20 last:mb-0 pt-10"
+    ? "sticky w-full mb-32 last:mb-0 pt-10" // Increased margin-bottom to allow scroll space between reveals
     : "w-full mb-12 last:mb-0";
 
-  const innerClass = isStacked
-    ? "relative w-full h-full bg-[#EBEBEB] rounded-xl overflow-hidden shadow-2xl border border-white/20 group"
-    : "relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] w-full bg-[#EBEBEB] rounded-xl overflow-hidden shadow-xl border border-white/20 group";
+  const innerClass = "relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] w-full bg-[#EBEBEB] rounded-xl overflow-hidden border border-white/20 group " +
+    (isStacked ? "shadow-2xl max-h-[700px]" : "shadow-xl");
 
   const style = isStacked ? { top: topOffset, zIndex: index + 1 } : {};
 
@@ -84,15 +83,14 @@ const ProjectCard = ({ project, index, isStacked }) => {
 };
 
 const JournalCard = ({ post, index, isStacked }) => {
-  const topOffset = 120 + index * 40;
+  const topOffset = 150 + index * 60;
 
   const containerClass = isStacked
-    ? "sticky top-0 h-[80vh] w-full mb-20 last:mb-0 pt-10"
+    ? "sticky w-full mb-32 last:mb-0 pt-10"
     : "w-full mb-12 last:mb-0";
 
-  const innerClass = isStacked
-    ? "relative w-full h-full bg-white rounded-xl overflow-hidden shadow-2xl border border-black/5 flex flex-col group"
-    : "relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] w-full bg-white rounded-xl overflow-hidden shadow-sm border border-black/5 hover:shadow-xl transition-all duration-500 flex flex-col group";
+  const innerClass = "relative aspect-[3/4] md:aspect-square lg:aspect-[4/5] w-full bg-white rounded-xl overflow-hidden border border-black/5 flex flex-col group " +
+    (isStacked ? "shadow-2xl max-h-[700px]" : "shadow-sm hover:shadow-xl transition-all duration-500");
 
   const style = isStacked ? { top: topOffset, zIndex: index + 1 } : {};
 
@@ -128,59 +126,293 @@ const JournalCard = ({ post, index, isStacked }) => {
   );
 };
 
-const HeroContent = ({ variant = 'light' }) => {
-  const { config } = useSiteConfig();
-  const isDark = variant === 'dark';
+// --- Omniverse Hero (Three.js - Maximalist) ---
+
+const OmniverseHero = () => {
+  const mountRef = useRef(null);
+
+  useEffect(() => {
+    const mount = mountRef.current;
+    if (!mount) return;
+
+    // SCENE SETUP
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xF5F5F0);
+    scene.fog = new THREE.FogExp2(0xF5F5F0, 0.003); // Slightly denser fog for depth
+
+    const camera = new THREE.PerspectiveCamera(75, mount.clientWidth / mount.clientHeight, 0.1, 1000);
+    camera.position.z = 35;
+    camera.position.y = 12;
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(mount.clientWidth, mount.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    mount.appendChild(renderer.domElement);
+
+    // --- ASSETS ---
+
+    // 1. THE GLOBE (Complex Wireframe)
+    const globeGeo = new THREE.IcosahedronGeometry(10, 5);
+    const globeMat = new THREE.MeshBasicMaterial({ color: 0x1A1A1A, wireframe: true, transparent: true, opacity: 0.05 });
+    const globe = new THREE.Mesh(globeGeo, globeMat);
+    scene.add(globe);
+
+    // 2. INNER CORE (Glowing)
+    const coreGeo = new THREE.IcosahedronGeometry(9.5, 2);
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 });
+    const core = new THREE.Mesh(coreGeo, coreMat);
+    scene.add(core);
+
+    // 3. ORBITAL RINGS (More variety)
+    const rings = [];
+    const ringConfig = [
+        { r: 16, t: 0.05, speed: 0.002, color: 0x8D4004 },
+        { r: 22, t: 0.02, speed: -0.003, color: 0x1A1A1A },
+        { r: 28, t: 0.08, speed: 0.001, color: 0x8D4004 },
+        { r: 35, t: 0.01, speed: -0.001, color: 0x000000 }
+    ];
+
+    ringConfig.forEach(conf => {
+        const ringGeo = new THREE.TorusGeometry(conf.r, conf.t, 16, 100);
+        const ringMat = new THREE.MeshBasicMaterial({ color: conf.color, transparent: true, opacity: 0.2 });
+        const ring = new THREE.Mesh(ringGeo, ringMat);
+        ring.rotation.x = Math.random() * Math.PI;
+        ring.rotation.y = Math.random() * Math.PI;
+        scene.add(ring);
+        rings.push({ mesh: ring, geo: ringGeo, mat: ringMat, speed: conf.speed });
+    });
+
+    // 4. PARTICLES (Stars/Dust - Increased density)
+    const particlesGeo = new THREE.BufferGeometry();
+    const particleCount = 1500;
+    const posArray = new Float32Array(particleCount * 3);
+    for(let i = 0; i < particleCount * 3; i++) {
+        posArray[i] = (Math.random() - 0.5) * 150;
+    }
+    particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const particlesMat = new THREE.PointsMaterial({ size: 0.15, color: 0x8D4004, transparent: true, opacity: 0.3 });
+    const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+    scene.add(particlesMesh);
+
+    // 5. TERRAIN GRID (Mountains - Dynamic)
+    // We create a custom grid with some height variation
+    const planeGeo = new THREE.PlaneGeometry(300, 300, 60, 60);
+    const posAttribute = planeGeo.attributes.position;
+    for (let i = 0; i < posAttribute.count; i++) {
+        const x = posAttribute.getX(i);
+        const y = posAttribute.getY(i);
+        // Simple noise-like elevation
+        const z = Math.sin(x * 0.1) * Math.cos(y * 0.1) * 2 + Math.random() * 0.5;
+        posAttribute.setZ(i, z);
+    }
+    planeGeo.computeVertexNormals();
+
+    const planeMat = new THREE.MeshBasicMaterial({
+        color: 0x1A1A1A,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.05
+    });
+    const terrain = new THREE.Mesh(planeGeo, planeMat);
+    terrain.rotation.x = -Math.PI / 2;
+    terrain.position.y = -20;
+    scene.add(terrain);
+
+    // 6. DIGITAL RIVERS (Moving Lines)
+    const riverCount = 20;
+    const rivers = [];
+    for(let i=0; i<riverCount; i++) {
+        const curve = new THREE.CatmullRomCurve3([
+            new THREE.Vector3((Math.random()-0.5)*100, -18, (Math.random()-0.5)*100),
+            new THREE.Vector3((Math.random()-0.5)*100, -15, (Math.random()-0.5)*100),
+            new THREE.Vector3((Math.random()-0.5)*100, -18, (Math.random()-0.5)*100),
+        ]);
+        const pts = curve.getPoints(50);
+        const riverGeo = new THREE.BufferGeometry().setFromPoints(pts);
+        const riverMat = new THREE.LineBasicMaterial({ color: 0x8D4004, transparent: true, opacity: 0.4 });
+        const river = new THREE.Line(riverGeo, riverMat);
+        scene.add(river);
+        rivers.push({ mesh: river, geo: riverGeo, mat: riverMat, speed: 0.02 + Math.random() * 0.05 });
+    }
+
+    // 7. ASTEROID BELT
+    const asteroids = [];
+    const asteroidGeo = new THREE.DodecahedronGeometry(0.4, 0); // Low poly rocks
+    const asteroidMat = new THREE.MeshBasicMaterial({ color: 0x333333 });
+
+    for(let i=0; i<40; i++) {
+        const asteroid = new THREE.Mesh(asteroidGeo, asteroidMat);
+        // Position in a rough belt/cloud
+        const theta = Math.random() * Math.PI * 2;
+        const r = 18 + Math.random() * 5;
+        asteroid.position.x = r * Math.cos(theta);
+        asteroid.position.z = r * Math.sin(theta);
+        asteroid.position.y = (Math.random() - 0.5) * 6; // Spread vertically
+
+        asteroid.rotation.x = Math.random() * Math.PI;
+        asteroid.rotation.y = Math.random() * Math.PI;
+
+        scene.add(asteroid);
+        asteroids.push({
+            mesh: asteroid,
+            angle: theta,
+            radius: r,
+            speed: 0.002 + Math.random() * 0.003,
+            rotSpeed: 0.01 + Math.random() * 0.02
+        });
+    }
+
+    // 8. SATELLITES (More complex shapes)
+    const satellites = [];
+    for(let i=0; i<8; i++) {
+        const satGroup = new THREE.Group();
+
+        // Main body
+        const bodyGeo = new THREE.BoxGeometry(0.5, 0.5, 1);
+        const bodyMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        const body = new THREE.Mesh(bodyGeo, bodyMat);
+        satGroup.add(body);
+
+        // Solar panels
+        const panelGeo = new THREE.PlaneGeometry(2, 0.5);
+        const panelMat = new THREE.MeshBasicMaterial({ color: 0x8D4004, side: THREE.DoubleSide });
+        const panel = new THREE.Mesh(panelGeo, panelMat);
+        panel.rotation.x = Math.PI / 2;
+        satGroup.add(panel);
+
+        scene.add(satGroup);
+        satellites.push({
+            mesh: satGroup,
+            geo: bodyGeo, // track for disposal
+            mat: bodyMat, // track for disposal
+            geo2: panelGeo,
+            mat2: panelMat,
+            angle: Math.random() * Math.PI * 2,
+            radius: 25 + Math.random() * 15,
+            speed: 0.003 + Math.random() * 0.005,
+            inclination: (Math.random() - 0.5) * 1
+        });
+    }
+
+    // ANIMATION LOOP
+    let frameId;
+    const animate = () => {
+      frameId = requestAnimationFrame(animate);
+      const time = Date.now() * 0.001;
+
+      // Globe
+      globe.rotation.y += 0.001;
+      core.rotation.y -= 0.0005;
+
+      // Rings
+      rings.forEach(r => {
+          r.mesh.rotation.x += r.speed;
+          r.mesh.rotation.y += r.speed;
+      });
+
+      // Particles
+      particlesMesh.rotation.y += 0.0002;
+
+      // Terrain Move
+      terrain.position.z = (time * 2) % 10; // Illusion of movement
+
+      // Asteroids
+      asteroids.forEach(a => {
+          a.angle += a.speed;
+          a.mesh.position.x = a.radius * Math.cos(a.angle);
+          a.mesh.position.z = a.radius * Math.sin(a.angle);
+          a.mesh.rotation.x += a.rotSpeed;
+          a.mesh.rotation.y += a.rotSpeed;
+      });
+
+      // Satellites
+      satellites.forEach(s => {
+          s.angle += s.speed;
+          // Apply inclination
+          const x = s.radius * Math.cos(s.angle);
+          const z = s.radius * Math.sin(s.angle);
+          const y = Math.sin(s.angle * 2) * s.radius * Math.sin(s.inclination);
+
+          s.mesh.position.set(x, y, z);
+          s.mesh.lookAt(0, 0, 0); // Face earth
+      });
+
+      // Rivers pulse
+      rivers.forEach((r, i) => {
+          r.mesh.material.opacity = 0.2 + Math.sin(time + i) * 0.2;
+      });
+
+      // Camera drift
+      camera.position.x = Math.sin(time * 0.1) * 2;
+      camera.position.y = 10 + Math.cos(time * 0.1) * 2;
+      camera.lookAt(0, 0, 0);
+
+      renderer.render(scene, camera);
+    };
+
+    animate();
+
+    // RESIZE
+    const handleResize = () => {
+      if (!mount) return;
+      camera.aspect = mount.clientWidth / mount.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(mount.clientWidth, mount.clientHeight);
+    };
+    window.addEventListener('resize', handleResize);
+
+    // CLEANUP
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      cancelAnimationFrame(frameId);
+      if (mount && mount.contains(renderer.domElement)) {
+          mount.removeChild(renderer.domElement);
+      }
+
+      // Extensive disposal
+      globeGeo.dispose(); globeMat.dispose();
+      coreGeo.dispose(); coreMat.dispose();
+      rings.forEach(r => { r.geo.dispose(); r.mat.dispose(); });
+      particlesGeo.dispose(); particlesMat.dispose();
+      planeGeo.dispose(); planeMat.dispose();
+      rivers.forEach(r => { r.geo.dispose(); r.mat.dispose(); });
+      asteroidGeo.dispose(); asteroidMat.dispose();
+      satellites.forEach(s => {
+          s.geo.dispose(); s.mat.dispose();
+          s.geo2.dispose(); s.mat2.dispose();
+      });
+    };
+  }, []);
 
   return (
-    <div className={`relative h-full flex flex-col justify-center px-6 md:px-12 pt-12 md:pt-20 ${isDark ? 'bg-[#050505] text-[#E0E0E0]' : 'text-[#1A1A1A]'}`}>
-        <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none z-0 opacity-[0.03]">
-             <span className={`font-playfairDisplay font-black text-[20vw] whitespace-nowrap ${isDark ? 'text-emerald-500 opacity-10' : 'text-black'}`}>
-                 {isDark ? 'SYSTEM::ROOT' : 'FEZCODEX'}
-             </span>
+    <div className="relative h-screen w-full bg-[#F5F5F0] overflow-hidden">
+        <div ref={mountRef} className="absolute inset-0 z-0" />
+
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
+            <div className="text-center animate-fade-in-up bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-2xl">
+                <div className="inline-flex items-center gap-3 px-4 py-2 border border-black/10 rounded-full bg-white/40 mb-8">
+                    <Globe size={16} className="text-[#8D4004] animate-spin-slow" />
+                    <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-black/80">Omniverse::Online</span>
+                </div>
+                <h1 className="font-playfairDisplay text-8xl md:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 tracking-tighter mix-blend-overlay">
+                    FEZ<br/><span className="italic text-black/40">CODEX</span>
+                </h1>
+                <p className="font-outfit text-sm uppercase tracking-widest text-black/60 max-w-md mx-auto">
+                    Exploring the infinite digital expanse.
+                </p>
+            </div>
         </div>
-        <div className="relative z-10 max-w-6xl mt-20 md:mt-0">
-             <motion.div
-                 initial={isDark ? {} : { opacity: 0, x: -50 }}
-                 animate={isDark ? {} : { opacity: 1, x: 0 }}
-                 transition={{ duration: 1 }}
-              >
-                  <span className={`inline-block px-3 py-1 border rounded-full font-outfit text-[10px] uppercase tracking-widest mb-8 backdrop-blur-sm ${isDark ? 'border-white/20 text-emerald-400' : 'border-black/20 text-black/50'}`}>
-                     {isDark ? 'SYSTEM::OVERRIDE' : 'Est. 2024'}
-                  </span>
-                  <h1 className="font-playfairDisplay text-6xl md:text-8xl lg:text-[10rem] leading-[0.8] mb-12 tracking-tight">
-                      {isDark ? 'Hidden' : 'Digital'} <br/>
-                      <span className={`italic font-light ml-4 md:ml-32 ${isDark ? 'text-emerald-500 font-mono not-italic' : 'text-black/70'}`}>
-                         {isDark ? 'REALITY' : 'Alchemy.'}
-                      </span>
-                  </h1>
-                  <div className="flex flex-col md:flex-row gap-12 items-start md:items-end max-w-2xl ml-2">
-                      <p className={`font-outfit text-sm leading-relaxed max-w-md ${isDark ? 'text-white/60 font-mono' : 'text-black/60'}`}>
-                          {isDark
-                            ? ">> DECODING THE MATRIX. ACCESSING ROOT DIRECTORY."
-                            : (config?.hero?.subtitle || "Weaving logic into aesthetics. A curated archive of generative systems.")}
-                      </p>
-                      <Link to="/projects" className={`shrink-0 flex items-center gap-3 font-outfit text-xs uppercase tracking-widest border-b pb-1 transition-colors ${isDark ? 'border-emerald-500 text-emerald-500' : 'border-black hover:text-black/60'}`}>
-                          {isDark ? 'INITIATE PROTOCOL' : 'Explore Works'} <ArrowRight />
-                      </Link>
-                  </div>
-              </motion.div>
-        </div>
+
+        <div className="absolute inset-0 bg-radial-gradient-to-t from-[#F5F5F0] via-transparent to-transparent z-0 pointer-events-none" />
     </div>
   );
-}
+};
 
 const LuxeHomePage = () => {
   const { projects, loading: loadingProjects } = useProjects(true);
   const { setFezcodexTheme } = useVisualSettings();
   const [posts, setPosts] = useState([]);
   const [layoutMode, setLayoutMode] = useState('stack');
-
-  const { scrollY } = useScroll();
-  const heroY = useTransform(scrollY, [0, 500], [0, 150]);
-
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -192,44 +424,11 @@ const LuxeHomePage = () => {
     fetchPosts();
   }, []);
 
-  const handleMouseMove = (e) => {
-    if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect();
-        setMousePos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
-    }
-  };
-
-  const HERO_IMAGE = '/images/bg/7.webp';
-
   return (
     <div className="min-h-full w-full bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black pb-20">
       <Seo title="Fezcodex | Luxe" description="A digital sanctuary." />
 
-      <section
-        ref={containerRef}
-        onMouseMove={handleMouseMove}
-        className="relative min-h-[90vh] overflow-hidden"
-      >
-          <motion.div style={{ y: heroY }} className="absolute inset-0 z-10">
-              <div className="absolute top-0 right-0 w-full md:w-2/3 h-full z-0 pointer-events-none">
-                 <div className="w-full h-full relative">
-                     <img
-                        src={HERO_IMAGE}
-                        alt="Hero Texture"
-                        className="w-full h-full object-cover opacity-20 mix-blend-multiply grayscale contrast-125"
-                     />
-                     <div className="absolute inset-0 bg-gradient-to-l from-transparent via-[#F5F5F0]/50 to-[#F5F5F0]" />
-                 </div>
-              </div>
-              <HeroContent variant="light" />
-          </motion.div>
-          <div
-             className="absolute inset-0 z-20 pointer-events-none bg-[#0a0a0a]"
-             style={{ clipPath: `circle(150px at ${mousePos.x}px ${mousePos.y}px)` }}
-          >
-              <HeroContent variant="dark" />
-          </div>
-      </section>
+      <OmniverseHero />
 
       <div className="border-y border-black/10 bg-white/40 backdrop-blur-md sticky top-0 z-40">
           <div className="flex divide-x divide-black/10 max-w-[1800px] mx-auto overflow-x-auto">
@@ -241,13 +440,14 @@ const LuxeHomePage = () => {
                 actionLabel="Toggle"
               />
               <StatusItem label="Local Time" value={<TimeDisplay />} icon={Clock} />
-                            <StatusItem
-                              label="Interface"
-                              value="Luxe"
-                              icon={ToggleLeft}
-                              onClick={() => setFezcodexTheme('brutalist')}
-                              actionLabel="Switch"
-                            />          </div>
+              <StatusItem
+                label="Interface"
+                value="Luxe"
+                icon={ToggleLeft}
+                onClick={() => setFezcodexTheme('brutalist')}
+                actionLabel="Switch"
+              />
+          </div>
       </div>
 
       <section className="max-w-[1800px] mx-auto px-6 md:px-12 py-32">
