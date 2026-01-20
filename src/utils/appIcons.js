@@ -103,6 +103,16 @@ import {
   GithubLogoIcon,
   LinkedinLogoIcon,
   PlusIcon,
+  ListBulletsIcon,
+  CloudFogIcon,
+  ChatCircleIcon,
+  BroadcastIcon,
+  PaintBrushIcon,
+  ForkKnifeIcon,
+  GraphIcon,
+  SquaresFourIcon,
+  ImageSquareIcon,
+  PenNibIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -210,4 +220,14 @@ export const appIcons = {
   GithubLogoIcon,
   LinkedinLogoIcon,
   PlusIcon,
+  ListBulletsIcon,
+  CloudFogIcon,
+  ChatCircleIcon,
+  BroadcastIcon,
+  PaintBrushIcon,
+  ForkKnifeIcon,
+  GraphIcon,
+  SquaresFourIcon,
+  ImageSquareIcon,
+  PenNibIcon,
 };
