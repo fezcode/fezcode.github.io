@@ -1,40 +1,49 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
 import DossierBlogPostPage from './blog-views/DossierBlogPostPage';
 import DokumentBlogPostPage from './blog-views/DokumentBlogPostPage';
 import EditorialBlogPostPage from './blog-views/EditorialBlogPostPage';
-import StandardBlogPostPage from './blog-views/StandardBlogPostPage';
+import BrutalistBlogPostPage from './blog-views/BrutalistBlogPostPage';
 import OldBlogPostPage from './blog-views/OldBlogPostPage';
 import TerminalBlogPostPage from './blog-views/TerminalBlogPostPage';
 import TerminalGreenBlogPostPage from './blog-views/TerminalGreenBlogPostPage';
+import LuxeBlogPostPage from './blog-views/LuxeBlogPostPage';
 
 const BlogPostPage = () => {
-  const { blogPostViewMode } = useVisualSettings();
+  const { blogPostViewMode, fezcodexTheme } = useVisualSettings();
   const [searchParams] = useSearchParams();
 
   // Determine the effective view mode
-  // Using useMemo here to derive the mode based on URL params and context.
-  // This ensures we only recalculate the "winning" mode when the URL or global setting changes,
-  // preventing it from running on every render if other local state were to change.
-  const effectiveViewMode = useMemo(() => {
+  const effectiveViewMode = (() => {
     const themeParam = searchParams.get('theme');
     if (
       themeParam &&
       [
-        'standard',
+        'brutalist',
         'editorial',
         'dossier',
         'terminal',
         'dokument',
         'terminal-green',
         'old',
+        'luxe',
       ].includes(themeParam)
     ) {
       return themeParam;
     }
-    return blogPostViewMode;
-  }, [searchParams, blogPostViewMode]);
+
+    // Auto-switch to luxe if global theme is luxe and user hasn't explicitly chosen another non-brutalist mode
+    // or if they have selected 'luxe' explicitly in settings
+    if (blogPostViewMode === 'luxe') return 'luxe';
+    if (fezcodexTheme === 'luxe' && (blogPostViewMode === 'brutalist' || blogPostViewMode === 'standard')) return 'luxe';
+
+    return blogPostViewMode === 'standard' ? 'brutalist' : blogPostViewMode;
+  })();
+
+  if (effectiveViewMode === 'luxe') {
+    return <LuxeBlogPostPage />;
+  }
 
   if (effectiveViewMode === 'old') {
     return <OldBlogPostPage />;
@@ -60,7 +69,7 @@ const BlogPostPage = () => {
     return <TerminalBlogPostPage />;
   }
 
-  return <StandardBlogPostPage />;
+  return <BrutalistBlogPostPage />;
 };
 
 export default BlogPostPage;
