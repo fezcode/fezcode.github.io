@@ -50,9 +50,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isFalloutNoiseEnabled, setIsFalloutNoiseEnabled] = usePersistentState('fallout-noise', true);
   const [isFalloutScanlinesEnabled, setIsFalloutScanlinesEnabled] = usePersistentState('fallout-scanlines', true);
   const [isFalloutVignetteEnabled, setIsFalloutVignetteEnabled] = usePersistentState('fallout-vignette', true);
-  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','standard');
-  const [sidebarMode, setSidebarMode] = usePersistentState('sidebar-mode','brutalist');
-  const [sidebarColor, setSidebarColor] = usePersistentState('sidebar-color','default');
+  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','editorial');
   const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState('is-splash-text-enabled',true);
   const [isAppFullscreen, setIsAppFullscreen] = usePersistentState('is-app-fullscreen', false);
   const [fezcodexTheme, setFezcodexTheme] = usePersistentState('fezcodex-theme', 'brutalist'); // 'brutalist' or 'luxe'
@@ -104,7 +102,6 @@ export const VisualSettingsProvider = ({ children }) => {
     isAutumn,
     isRain,
     blogPostViewMode,
-    sidebarColor, // Added sidebarColor
     unlockAchievement,
   ]);
 
@@ -325,10 +322,6 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleFalloutVignette,
         blogPostViewMode,
         setBlogPostViewMode,
-        sidebarMode,
-        setSidebarMode,
-        sidebarColor,
-        setSidebarColor,
         headerFont,
         setHeaderFont,
         bodyFont,
