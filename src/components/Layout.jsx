@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from './Navbar';
-import ClassicSidebar from './ClassicSidebar';
 import BrutalistSidebar from './BrutalistSidebar';
 import Footer from './Footer';
 import LuxeSidebar from './LuxeSidebar';
@@ -35,8 +34,6 @@ const Layout = ({
     isGarden,
     isAutumn,
     isRain,
-    sidebarColor,
-    sidebarMode,
     isSidebarOpen,
     toggleSidebar,
     isAppFullscreen,
@@ -88,14 +85,6 @@ const Layout = ({
             toggleModal={toggleModal}
             setIsPaletteOpen={setIsPaletteOpen}
           />
-        ) : sidebarMode === 'classic' ? (
-          <ClassicSidebar
-            isOpen={isSidebarOpen}
-            toggleSidebar={toggleSidebar}
-            toggleModal={toggleModal}
-            setIsPaletteOpen={setIsPaletteOpen}
-            sidebarColor={sidebarColor}
-          />
         ) : (
           <BrutalistSidebar
             isOpen={isSidebarOpen}
@@ -105,7 +94,7 @@ const Layout = ({
           />
         ))}
       <div
-        className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !hideLayout ? (sidebarMode === 'classic' ? 'md:ml-64' : 'md:ml-72') : 'md:ml-0'}`}
+        className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !hideLayout ? 'md:ml-72' : 'md:ml-0'}`}
       >
         {!hideLayout && (
           fezcodexTheme === 'luxe' ? (
