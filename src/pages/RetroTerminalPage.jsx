@@ -280,6 +280,19 @@ const FileViewer = ({ file, type, onClose, playClick, onVocabClick }) => {
 
   useEffect(() => {
     if (type === 'post') {
+      if (file.isSeries) {
+        const seriesContent = `
+# ${file.title}
+${file.description || ''}
+
+## Series Index
+${file.posts.map((p, i) => `${i + 1}. [${p.title}](/blog/${p.slug})`).join('\n')}
+        `;
+        setContent(seriesContent);
+        setLoading(false);
+        return;
+      }
+
       setLoading(true);
       const fetchPath = file.content
         ? null
@@ -610,14 +623,47 @@ const Workstation = ({
     }))
     .sort((a, b) => a.title.localeCompare(b.title));
 
-  useEffect(() => {
-    // Fetch posts
-    fetch('/posts/posts.json')
-      .then((res) => res.json())
-      .then((data) => setPosts(data))
-      .catch((err) => console.error(err));
+    useEffect(() => {
+      // Fetch posts
+      fetch('/posts/posts.json')
+        .then((res) => res.json())
+        .then((data) => {
+          const processedItems = data.map((item) => {
+            if (item.series) {
+              // This is a series container
+              return {
+                ...item,
+                isSeries: true,
+                // Flatten the nested posts array to the top level for FileViewer compatibility
+                posts: item.series.posts.map(p => ({
+                  ...p,
+                  // Ensure filename is clean
+                  filename: p.filename?.startsWith('/') ? p.filename.substring(1) : p.filename
+                })),
+                category: 'series', // Ensure category is set for styling
+                // Inherit tags from first post or use own
+                tags: item.tags || (item.series.posts && item.series.posts[0] && item.series.posts[0].tags) || [],
+                description: item.description || (item.series && item.series.description)
+              };
+            } else {
+              // Individual post
+              return {
+                ...item,
+                filename: item.filename?.startsWith('/') ? item.filename.substring(1) : item.filename
+              };
+            }
+          });
 
-    // Fetch About
+          // Sort by updated/date
+          processedItems.sort(
+            (a, b) =>
+              new Date(b.updated || b.date) - new Date(a.updated || a.date),
+          );
+          setPosts(processedItems);
+        })
+        .catch((err) => console.error(err));
+
+      // Fetch About
     fetch('/about-me/about.txt')
       .then((res) => res.text())
       .then((text) => setAboutContent(text))
@@ -959,7 +1005,10 @@ const Workstation = ({
                     })
                   : 'Unknown'}
               </div>
-              <div className="col-span-5 font-medium text-[#e8f7f7] group-hover:text-white truncate">
+              <div className="col-span-5 font-medium text-[#e8f7f7] group-hover:text-white truncate flex items-center gap-2">
+                {post.isSeries && (
+                  <Folder size={16} weight="fill" className="text-amber-400 shrink-0" />
+                )}
                 {post.title}
               </div>
               <div className="col-span-2">
