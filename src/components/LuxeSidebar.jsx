@@ -205,7 +205,7 @@ const LuxeSidebar = ({
             </span>
           </Link>
           <span className="font-outfit text-[10px] text-[#1A1A1A]/40 uppercase tracking-widest pl-1">
-            Fezcodex v{version}
+            Version v{version}
           </span>
         </div>
 
