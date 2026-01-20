@@ -37,7 +37,7 @@ export const useCommandRegistry = ({
   items,
 }) => {
   const navigate = useNavigate();
-  const { isAnimationEnabled, toggleAnimation } = useAnimation();
+  const { reduceMotion, toggleReduceMotion } = useAnimation();
   const { addToast } = useToast();
   const { unlockAchievement } = useAchievements();
   const aboutData = useAboutData();
@@ -67,10 +67,10 @@ export const useCommandRegistry = ({
 
   const commandHandlers = useMemo(() => ({
     toggleAnimations: () => {
-      toggleAnimation();
+      toggleReduceMotion();
       addToast({
         title: 'Settings Updated',
-        message: `Animations have been ${!isAnimationEnabled ? 'enabled' : 'disabled'}.`,
+        message: `Reduced Motion has been ${!reduceMotion ? 'enabled' : 'disabled'}.`,
       });
     },
     resetSidebarState: () => {
@@ -547,11 +547,11 @@ export const useCommandRegistry = ({
     },
   }), [
     addToast,
-    isAnimationEnabled,
+    reduceMotion,
     items,
     navigate,
     openGenericModal,
-    toggleAnimation,
+    toggleReduceMotion,
     unlockAchievement,
     toggleDigitalRain,
     aboutData,

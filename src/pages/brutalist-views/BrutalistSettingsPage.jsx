@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ArrowLeftIcon,
   TrophyIcon,
@@ -76,12 +76,8 @@ const SettingsPage = () => {
   }, [unlockAchievement]);
 
   const {
-    isAnimationEnabled,
-    toggleAnimation,
-    showAnimationsHomepage,
-    toggleShowAnimationsHomepage,
-    showAnimationsInnerPages,
-    toggleShowAnimationsInnerPages,
+    reduceMotion,
+    toggleReduceMotion,
   } = useAnimation();
 
   const {
@@ -427,54 +423,23 @@ const SettingsPage = () => {
           >
             <div className="space-y-8">
               <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm">
-                <div className="flex items-center justify-between mb-8 pb-8 border-b border-white/5">
-                  <h3 className="text-lg font-bold text-white">
-                    Global Animations
-                  </h3>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-lg font-bold text-white mb-1">
+                      Reduce Motion
+                    </h3>
+                    <p className="text-sm text-gray-500 max-w-md">
+                      Disables all Framer Motion animations across the application for a faster, more stable experience.
+                    </p>
+                  </div>
                   <CustomToggle
-                    id="enable-animations"
-                    label={isAnimationEnabled ? 'Enabled' : 'Disabled'}
-                    checked={isAnimationEnabled}
-                    onChange={toggleAnimation}
+                    id="reduce-motion"
+                    label={reduceMotion ? 'Enabled' : 'Disabled'}
+                    checked={reduceMotion}
+                    onChange={toggleReduceMotion}
                     fontClass="font-outfit"
                   />
                 </div>
-
-                <AnimatePresence>
-                  {isAnimationEnabled && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="grid grid-cols-1 md:grid-cols-2 gap-8 overflow-hidden"
-                    >
-                      <CustomToggle
-                        id="show-animations-homepage"
-                        label="Homepage Motion"
-                        checked={showAnimationsHomepage}
-                        onChange={toggleShowAnimationsHomepage}
-                        fontClass="font-outfit"
-                      />
-                      <CustomToggle
-                        id="show-animations-inner-pages"
-                        label="Interior Page Motion"
-                        checked={showAnimationsInnerPages}
-                        onChange={toggleShowAnimationsInnerPages}
-                        fontClass="font-outfit"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                {!isAnimationEnabled && (
-                  <div className="flex items-center gap-3 text-gray-500 font-mono text-[10px] uppercase tracking-widest">
-                    <WarningIcon size={16} />
-                    <span>
-                      Animation controls are disabled when global animations are
-                      off.
-                    </span>
-                  </div>
-                )}
               </div>
             </div>
           </Section>

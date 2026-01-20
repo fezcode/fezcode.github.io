@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
   ArrowLeftIcon,
   TrophyIcon,
@@ -63,12 +63,8 @@ const LuxeSettingsPage = () => {
   const { sectionOrder, toggleSectionOrder, resetSectionOrder } = useHomepageOrder();
 
   const {
-    isAnimationEnabled,
-    toggleAnimation,
-    showAnimationsHomepage,
-    toggleShowAnimationsHomepage,
-    showAnimationsInnerPages,
-    toggleShowAnimationsInnerPages,
+    reduceMotion,
+    toggleReduceMotion,
   } = useAnimation();
 
   const {
@@ -279,41 +275,22 @@ const LuxeSettingsPage = () => {
           {/* Motion & Performance */}
           <LuxeSection title="Motion" icon={<FilmStripIcon />} delay={0.25}>
             <div className="space-y-8">
-                <CustomToggle
-                  id="enable-animations"
-                  label="Global Motion"
-                  checked={isAnimationEnabled}
-                  onChange={toggleAnimation}
-                  colorTheme="amber"
-                  {...toggleClasses}
-                />
-                <AnimatePresence>
-                  {isAnimationEnabled && (
-                    <motion.div
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -10 }}
-                      className="grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-black/5 pt-8"
-                    >
-                        <CustomToggle
-                          id="show-animations-homepage"
-                          label="Homepage Motion"
-                          checked={showAnimationsHomepage}
-                          onChange={toggleShowAnimationsHomepage}
-                          colorTheme="amber"
-                          {...toggleClasses}
-                        />
-                        <CustomToggle
-                          id="show-animations-inner-pages"
-                          label="Interior Page Motion"
-                          checked={showAnimationsInnerPages}
-                          onChange={toggleShowAnimationsInnerPages}
-                          colorTheme="amber"
-                          {...toggleClasses}
-                        />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border-l-2 border-black/5 bg-white/20">
+                    <div>
+                        <h3 className="font-playfairDisplay text-xl mb-1">Reduce Motion</h3>
+                        <p className="font-outfit text-xs text-black/50 max-w-md leading-relaxed">
+                            Disables all cinematic animations across the application for a faster, more stable experience.
+                        </p>
+                    </div>
+                    <CustomToggle
+                      id="reduce-motion"
+                      label={reduceMotion ? "Enabled" : "Disabled"}
+                      checked={reduceMotion}
+                      onChange={toggleReduceMotion}
+                      colorTheme="amber"
+                      {...toggleClasses}
+                    />
+                </div>
             </div>
           </LuxeSection>
 

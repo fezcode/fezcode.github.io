@@ -134,8 +134,8 @@ export const commands = [
     category: 'Visual Effects & Fun',
     items: [
       {
-        title: 'Toggle Animations',
-        description: 'Enable/Disable all animations in Fezcodex.',
+        title: 'Toggle Reduced Motion',
+        description: 'Reduce or disable all animations in Fezcodex.',
         color: 'slate',
         commandId: 'toggleAnimations',
       },

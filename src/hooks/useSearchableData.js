@@ -152,7 +152,7 @@ const useSearchableData = () => {
             commandId: 'randomPost',
           },
           {
-            title: 'Toggle Animations',
+            title: 'Toggle Reduced Motion',
             type: 'command',
             commandId: 'toggleAnimations',
           },

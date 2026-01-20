@@ -1,46 +1,25 @@
 import React, { createContext, useContext } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
-import {
-  KEY_IS_ANIMATION_ENABLED,
-  KEY_SHOW_ANIMATIONS_HOMEPAGE,
-  KEY_SHOW_ANIMATIONS_INNER_PAGES,
-} from '../utils/LocalStorageManager';
 
 const AnimationContext = createContext();
 
 export const AnimationProvider = ({ children }) => {
-  const [isAnimationEnabled, setIsAnimationEnabled] = usePersistentState(
-    KEY_IS_ANIMATION_ENABLED,
-    true,
+  // We use the existing key but invert the logic mentally or rename it.
+  // Let's use a new key for clarity: reduceMotion
+  const [reduceMotion, setReduceMotion] = usePersistentState(
+    'reduceMotion',
+    false,
   );
 
-  const [showAnimationsHomepage, setShowAnimationsHomepage] =
-    usePersistentState(KEY_SHOW_ANIMATIONS_HOMEPAGE, true);
-
-  const [showAnimationsInnerPages, setShowAnimationsInnerPages] =
-    usePersistentState(KEY_SHOW_ANIMATIONS_INNER_PAGES, false);
-
-  const toggleAnimation = () => {
-    setIsAnimationEnabled((prev) => !prev);
-  };
-
-  const toggleShowAnimationsHomepage = () => {
-    setShowAnimationsHomepage((prev) => !prev);
-  };
-
-  const toggleShowAnimationsInnerPages = () => {
-    setShowAnimationsInnerPages((prev) => !prev);
+  const toggleReduceMotion = () => {
+    setReduceMotion((prev) => !prev);
   };
 
   return (
     <AnimationContext.Provider
       value={{
-        isAnimationEnabled,
-        toggleAnimation,
-        showAnimationsHomepage,
-        toggleShowAnimationsHomepage,
-        showAnimationsInnerPages,
-        toggleShowAnimationsInnerPages,
+        reduceMotion,
+        toggleReduceMotion,
       }}
     >
       {children}
