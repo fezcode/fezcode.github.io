@@ -1,5 +1,17 @@
 [
   {
+    "slug": "introducing-fezluxe-refined-architectural-elegance",
+    "title": "Introducing Fezluxe: A Study in Refined Architectural Elegance",
+    "date": "2026-01-20",
+    "updated": "2026-01-20",
+    "description": "A deep dive into the philosophy and implementation of the new Fezluxe design language. Moving beyond brutalism to find sophisticated digital calm.",
+    "tags": ["design", "luxe", "ui/ux", "refactor", "architectural", "frontend", "feat"],
+    "category": "feat",
+    "filename": "introducing-fezluxe-refined-architectural-elegance.txt",
+    "authors": ["fezcode"],
+    "image": "/images/asset/luxe-design.webp"
+  },
+  {
     "slug": "gun-and-ball",
     "title": "The FIFA Paradox: Why We Spend 14 Hours Playing Games We Hate",
     "date": "2026-01-19",
