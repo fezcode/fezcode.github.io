@@ -1,5 +1,17 @@
 [
   {
+    "slug": "deep-link-configuration-with-url-parameters",
+    "title": "Deep Link Configuration: Achieving a Global Parameter Observer in React",
+    "date": "2026-01-21",
+    "updated": "2026-01-21",
+    "description": "How to implement a global URL parameter observer that silently updates application state and cleans up the address bar for a seamless user experience.",
+    "tags": ["react", "webdev", "url-parameters", "ux", "browser-api", "frontend", "dev"],
+    "category": "dev",
+    "filename": "deep-link-configuration-with-url-parameters.txt",
+    "authors": ["fezcode"],
+    "image": "/images/asset/url-magic.webp"
+  },
+  {
     "slug": "introducing-fezluxe-refined-architectural-elegance",
     "title": "Introducing Fezluxe: A Study in Refined Architectural Elegance",
     "date": "2026-01-20",
