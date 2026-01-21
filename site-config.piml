@@ -25,11 +25,11 @@
       (url) https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US
       (icon) LinkedinLogo
 
-    > (link)
-      (id) reddit
-      (label) REDDIT
-      (url) https://www.reddit.com/r/fezcodex/
-      (icon) RedditLogo
+    # > (link)
+    #   (id) reddit
+    #   (label) REDDIT
+    #   (url) https://www.reddit.com/r/fezcodex/
+    #   (icon) RedditLogo
 
     > (link)
       (id) email

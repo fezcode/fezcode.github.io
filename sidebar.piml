@@ -8,6 +8,10 @@
         (to) /
         (icon) HouseIcon
       > (item)
+        (label) Terminal
+        (to) /terminal
+        (icon) TerminalWindowIcon
+      > (item)
         (label) About
         (to) /about
         (icon) UserIcon
@@ -75,9 +79,9 @@
         (to) /roadmap
         (icon) BugBeetleIcon
       > (item)
-        (label) Brufez Spec
-        (to) /brufez
-        (icon) FlaskIcon
+        (label) Design System
+        (to) /design
+        (icon) PaletteIcon
 
   > (section)
     (id) isExtrasOpen

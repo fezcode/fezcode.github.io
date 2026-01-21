@@ -82,9 +82,19 @@
   > (banner)
     (id) yap-v1
     (type) info
-    (from) 2026-01-23T00:00:00Z
-    (to) 2026-01-29T23:59:59Z
+    (from) 2026-01-21T00:00:00Z
+    (to) 2026-01-23T23:59:59Z
     (text) YAP IS ONLINE: A LIGHTWEIGHT TERMINAL-BASED YOUTUBE AUDIO PLAYER WITH SYNCED LYRICS. ACCESS AT /PROJECTS/YAP.
     (isActive) true
     (link) /projects/yap
     (linkText) See Yap
+
+  > (banner)
+    (id) fezluxe-launch
+    (type) info
+    (from) 2026-01-23T00:00:00Z
+    (to) 2026-01-28T23:59:59Z
+    (text) FEZLUXE IS ONLINE: EXPERIENCE A NEW ARCHITECTURAL ELEGANCE. ACCESS THE REFINED DIGITAL SANCTUARY VIA SETTINGS OR COMMAND PALETTE.
+    (isActive) true
+    (link) /blog/introducing-fezluxe-refined-architectural-elegance
+    (linkText) Explore Fezluxe

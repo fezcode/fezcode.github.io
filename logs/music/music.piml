@@ -1,5 +1,38 @@
 (logs)
   > (item)
+    (artist) Digitalism
+    (category) Music
+    (date) 2026-01-21
+    (link) https://www.youtube.com/watch?v=eyW7VfPofDU
+    (rating) 5
+    (slug) pogo-digitalism
+    (title) Pogo
+    (album) Idealism
+    (description) A cornerstone of mid-2000s electro-house, Digitalism's "Pogo" is an energetic, indie-infused anthem that remains a dancefloor staple and a nostalgic trip for FIFA fans.
+
+  > (item)
+    (artist) Madvillain (MF DOOM & Madlib)
+    (category) Music
+    (date) 2026-01-21
+    (link) https://www.youtube.com/playlist?list=OLAK5uy_mXmI-0R2M9m8fO_j3I0R4-L6O8z2_0x3I
+    (rating) 5
+    (slug) madvillainy
+    (title) Madvillainy
+    (album) Madvillainy
+    (description) Madvillainy is the result of the legendary collaboration between MF DOOM and Madlib. It's a non-linear, sample-heavy masterpiece that redefined independent hip-hop.
+
+  > (item)
+    (artist) The Away Days
+    (category) Music
+    (date) 2026-01-21
+    (link) https://www.youtube.com/playlist?list=OLAK5uy_m-15C039z_59G7F506rU4619u0R_G2pI4
+    (rating) 5
+    (slug) dreamed-at-dawn
+    (title) Dreamed at Dawn
+    (album) Dreamed at Dawn
+    (description) The Away Days' debut album "Dreamed at Dawn" is a masterpiece of Turkish dream pop and shoegaze. It beautifully captures the atmosphere of Istanbul with its shimmering guitars and haunting synths.
+
+  > (item)
     (artist) Gorillaz
     (category) Music
     (date) 2026-01-08
