@@ -85,6 +85,32 @@ Stories are managed via git subtrees. Because subtree remotes are not tracked by
 
 ---
 
+## Developer Guide: How to Update Things
+
+If you are modifying or expanding the functionality of Fezcodex, follow these specific architectural patterns:
+
+### 1. Adding or Updating Commands
+Commands are used in the **Commands Page** and the **Command Palette**. To update them, you must touch three places:
+- **`src/data/commands.js`**: Update the UI data (title, description, icon color) for the `/commands` page.
+- **`src/hooks/useCommandRegistry.js`**: Implement the actual logic/handler for what the command does.
+- **`src/hooks/useSearchableData.js`**: Update the `customCommands` list so the Command Palette (`Ctrl + K`) can "find" the command.
+
+### 2. Updating Search Data
+The site-wide search (Command Palette and Search bar) is powered by a unified registry:
+- **Automatic:** Blog posts, Projects, and Logs are automatically indexed from their respective `.json` and `.piml` files in the `public/` directory.
+- **Manual:** Static pages and custom commands must be manually added to the `staticRoutes` or `customCommands` lists in `src/hooks/useSearchableData.js`.
+
+### 3. Modifying Visual Themes (Brutalist vs. Luxe)
+Every core component should be **Theme-Aware**:
+- **Switcher Components:** Components like `CommandPalette.jsx`, `SidePanel.jsx`, and `GenericModal.jsx` act as controllers. They detect `fezcodexTheme` and render either a `BrutalistX` or `LuxeX` variant.
+- **Universal Styles:** Prefer the `variant="brutalist"` or `variant="paper"` props for shared components like `CustomDropdown` to maintain consistency.
+
+### 4. Global State & Persistence
+- Use `VisualSettingsContext.jsx` for any UI state that needs to survive a page refresh (Invert mode, Theme selection, etc.).
+- Use `usePersistentState` hook to automatically sync your context variables with `localStorage`.
+
+---
+
 ## Github Pages Configuration
 
 1. Deploy from a branch.
