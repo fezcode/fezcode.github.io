@@ -45,7 +45,7 @@ const Layout = ({
   // Check if we are on the about page or graph page to conditionally render layout elements
   const isTheVaguePage = location.pathname.startsWith('/the-vague');
   const isAboutPage = location.pathname.startsWith('/about');
-  const isGraphPage = location.pathname === '/graph';
+  const isGraphPage = location.pathname.startsWith('/graph');
   const isTerminalPage = location.pathname.startsWith('/terminal');
 
   // Check for special project styles that require hiding the default layout
