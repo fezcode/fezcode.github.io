@@ -441,7 +441,7 @@ const OmniverseHero = () => {
                     <GlobeIcon size={16} className="text-[#8D4004] animate-spin-slow" />
                     <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-black/80">Omniverse::Online</span>
                 </div>
-                <h1 className="font-playfairDisplay text-8xl md:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 tracking-tighter mix-blend-overlay">
+                <h1 className="font-instr-serif text-8xl md:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 px-16 tracking-tighter mix-blend-overlay">
                   <span className="italic">FEZ</span><br/><span className="text-black/40">CODEX</span>
                 </h1>
                 <p className="font-outfit text-sm uppercase tracking-widest text-black/60 max-w-md mx-auto">

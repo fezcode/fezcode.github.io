@@ -41,7 +41,7 @@ const LuxeNavbar = ({
           </button>
 
           <Link to="/" className="flex items-center gap-2 group">
-            <span className="font-playfairDisplay text-xl font-bold tracking-tight text-[#1A1A1A]">
+            <span className="font-playfairDisplay text-xl font-normal tracking-tight text-[#1A1A1A]">
               Fezcodex
             </span>
           </Link>

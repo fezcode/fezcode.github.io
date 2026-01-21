@@ -200,7 +200,7 @@ const LuxeSidebar = ({
               isOpen && window.innerWidth < 768 ? toggleSidebar : undefined
             }
           >
-            <span className="font-playfairDisplay text-2xl font-bold text-[#1A1A1A]">
+            <span className="font-instr-serif text-2xl font-normal text-[#1A1A1A]">
               Fezcodex
             </span>
           </Link>
