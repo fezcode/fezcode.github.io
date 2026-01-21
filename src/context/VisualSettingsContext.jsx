@@ -55,6 +55,37 @@ export const VisualSettingsProvider = ({ children }) => {
   const [isAppFullscreen, setIsAppFullscreen] = usePersistentState('is-app-fullscreen', false);
   const [fezcodexTheme, setFezcodexTheme] = usePersistentState('fezcodex-theme', 'brutalist'); // 'brutalist' or 'luxe'
 
+  // URL Parameter Observer - Consumes ?fezTheme=... and ?fezBlogMode=...
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const themeParam = params.get('fezTheme');
+    const blogModeParam = params.get('fezBlogMode');
+    let changed = false;
+
+    if (themeParam && ['brutalist', 'luxe'].includes(themeParam)) {
+      setFezcodexTheme(themeParam);
+      changed = true;
+    }
+
+    if (blogModeParam && [
+      'brutalist', 'editorial', 'dossier', 'terminal',
+      'dokument', 'terminal-green', 'old', 'luxe'
+    ].includes(blogModeParam)) {
+      setBlogPostViewMode(blogModeParam);
+      changed = true;
+    }
+
+    if (changed) {
+      // Clean up the URL
+      const newParams = new URLSearchParams(window.location.search);
+      newParams.delete('fezTheme');
+      newParams.delete('fezBlogMode');
+      const newSearch = newParams.toString();
+      const newUrl = window.location.pathname + (newSearch ? `?${newSearch}` : '') + window.location.hash;
+      window.history.replaceState({}, '', newUrl);
+    }
+  }, [setFezcodexTheme, setBlogPostViewMode]);
+
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(window.innerWidth > 768);
   useEffect(() => {
     const handleResize = () => {
