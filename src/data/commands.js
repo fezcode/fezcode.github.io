@@ -131,8 +131,14 @@ export const commands = [
     ],
   },
   {
-    category: 'Visual Effects & Fun',
+    category: 'Interface & Settings',
     items: [
+      {
+        title: 'Switch Visual Theme',
+        description: 'Open a modal to choose between Brufez and Fezluxe aesthetics.',
+        color: 'amber',
+        commandId: 'switchTheme',
+      },
       {
         title: 'Toggle Reduced Motion',
         description: 'Reduce or disable all animations in Fezcodex.',

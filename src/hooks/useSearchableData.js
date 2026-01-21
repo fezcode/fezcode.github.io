@@ -142,6 +142,11 @@ const useSearchableData = () => {
 
         const customCommands = [
           {
+            title: 'Switch Visual Theme',
+            type: 'command',
+            commandId: 'switchTheme',
+          },
+          {
             title: 'View Source on GitHub',
             type: 'command',
             commandId: 'viewSource',

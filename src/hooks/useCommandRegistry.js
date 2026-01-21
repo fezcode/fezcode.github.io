@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAnimation } from '../context/AnimationContext';
 import { useToast } from './useToast';
@@ -9,12 +9,14 @@ import { version } from '../version';
 import { KEY_SIDEBAR_STATE, remove as removeLocalStorageItem } from '../utils/LocalStorageManager';
 import LiveClock from '../components/LiveClock';
 import GenerativeArt from '../components/GenerativeArt';
+import LuxeArt from '../components/LuxeArt';
 import TextTransformer from '../components/TextTransformer';
 import Stopwatch from '../components/Stopwatch';
+import { BugIcon, SparkleIcon } from '@phosphor-icons/react';
 
 // Wrapper for GenerativeArt to handle state locally
 const GenerativeArtCommand = () => {
-  const [seed, setSeed] = useState(() => Math.random().toString(36).substring(7));
+  const [seed, setSeed] = React.useState(() => Math.random().toString(36).substring(7));
 
   const handleRegenerate = () => {
     setSeed(Math.random().toString(36).substring(7));
@@ -27,6 +29,48 @@ const GenerativeArtCommand = () => {
       downloadResolution={3840} // 4K Resolution
       onRegenerate={handleRegenerate}
     />
+  );
+};
+
+// Theme Switcher Modal Content
+const ThemeSwitcherContent = ({ currentTheme, onSelect }) => {
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* BRUFEZ */}
+            <button
+              onClick={() => onSelect('brutalist')}
+              className={`group relative text-left p-8 border transition-all duration-500 rounded-sm overflow-hidden bg-[#050505] ${currentTheme === 'brutalist' ? 'border-[#10B981] shadow-[0_0_20px_rgba(16,185,129,0.2)]' : 'border-white/10 hover:border-white/30'}`}
+            >
+              <div className="absolute inset-0 opacity-[0.05] pointer-events-none grayscale">
+                <GenerativeArt seed="brufez" className="w-full h-full" />
+              </div>
+              <div className="relative z-10">
+                <div className={`w-12 h-12 flex items-center justify-center rounded-sm mb-6 transition-colors ${currentTheme === 'brutalist' ? 'bg-[#10B981] text-black' : 'bg-white/5 text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black'}`}>
+                  <BugIcon size={24} weight="fill" />
+                </div>
+                <h3 className="text-2xl font-black text-white uppercase tracking-tighter mb-2">Brufez</h3>
+                <p className="font-mono text-[10px] text-gray-500 uppercase tracking-widest leading-relaxed">Systemic Brutalism</p>
+              </div>
+            </button>
+
+            {/* FEZLUXE */}
+            <button
+              onClick={() => onSelect('luxe')}
+              className={`group relative text-left p-8 border transition-all duration-500 rounded-sm overflow-hidden bg-white ${currentTheme === 'luxe' ? 'border-[#8D4004] shadow-[0_0_20px_rgba(141,64,4,0.2)]' : 'border-black/5 hover:border-black/20'}`}
+            >
+              <div className="absolute inset-0 opacity-[0.05] pointer-events-none">
+                <LuxeArt seed="fezluxe" className="w-full h-full mix-blend-multiply" transparent={true} />
+              </div>
+              <div className="relative z-10">
+                <div className={`w-12 h-12 flex items-center justify-center rounded-full mb-6 transition-all duration-500 ${currentTheme === 'luxe' ? 'bg-[#1A1A1A] text-white' : 'bg-[#F5F5F0] text-[#8D4004] shadow-sm group-hover:bg-[#1A1A1A] group-hover:text-white'}`}>
+                  <SparkleIcon size={24} weight="light" />
+                </div>
+                <h3 className="text-2xl font-playfairDisplay italic text-[#1A1A1A] mb-2 leading-none">Fezluxe</h3>
+                <p className="font-outfit text-[10px] text-black/40 uppercase tracking-[0.2em] leading-relaxed">Refined Elegance</p>
+              </div>
+            </button>
+
+    </div>
   );
 };
 
@@ -43,6 +87,7 @@ export const useCommandRegistry = ({
   const aboutData = useAboutData();
 
   const {
+    fezcodexTheme, setFezcodexTheme,
     isInverted, toggleInvert,
     isRetro, toggleRetro,
     isParty, toggleParty,
@@ -72,6 +117,22 @@ export const useCommandRegistry = ({
         title: 'Settings Updated',
         message: `Reduced Motion has been ${!reduceMotion ? 'enabled' : 'disabled'}.`,
       });
+    },
+    switchTheme: () => {
+      openGenericModal(
+        'Aesthetic Configuration',
+        <ThemeSwitcherContent
+          currentTheme={fezcodexTheme}
+          onSelect={(theme) => {
+            setFezcodexTheme(theme);
+            addToast({
+              title: 'Aesthetic Reconfigured',
+              message: `System interface shifted to ${theme.toUpperCase()} architecture.`,
+              type: 'success'
+            });
+          }}
+        />
+      );
     },
     resetSidebarState: () => {
       removeLocalStorageItem(KEY_SIDEBAR_STATE);
@@ -574,9 +635,10 @@ export const useCommandRegistry = ({
     isGlitch, toggleGlitch,
     isGarden, toggleGarden,
     isAutumn, toggleAutumn,
-    isRain, toggleRain,
+    toggleRain,
     isFalloutOverlay, toggleFalloutOverlay,
     falloutVariant, setFalloutVariant,
+    fezcodexTheme, setFezcodexTheme,
   ]);
 
   const executeCommand = useCallback((commandId) => {
