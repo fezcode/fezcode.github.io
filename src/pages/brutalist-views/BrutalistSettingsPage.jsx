@@ -256,7 +256,7 @@ const SettingsPage = () => {
 
         <div className="grid grid-cols-1 gap-12">
           {/* Layout Configuration */}
-          <Section title="Interface Layout" icon={<LayoutIcon />} delay={0.0}>
+          <Section id="interface" title="Interface Layout" icon={<LayoutIcon />} delay={0.0}>
             <div className="space-y-8">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-sm">
                 <div>
@@ -337,6 +337,7 @@ const SettingsPage = () => {
 
           {/* Reading Experience */}
           <Section
+            id="reader"
             title="Reader Experience"
             icon={<ArticleIcon />}
             delay={0.05}
@@ -373,7 +374,7 @@ const SettingsPage = () => {
           </Section>
 
           {/* Typography Configuration */}
-          <Section title="Discovery Log Typography" icon={<LayoutIcon />} delay={0.07}>
+          <Section id="typography" title="Discovery Log Typography" icon={<LayoutIcon />} delay={0.07}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
                 <div>
@@ -417,6 +418,7 @@ const SettingsPage = () => {
 
           {/* Performance & Animation */}
           <Section
+            id="motion"
             title="Motion & Performance"
             icon={<FilmStripIcon />}
             delay={0.1}
@@ -537,7 +539,7 @@ const SettingsPage = () => {
           </Section>
 
           {/* DND Experience Settings */}
-          <Section title="DND Experience" icon={<FilmStripIcon />} delay={0.32}>
+          <Section id="dnd" title="DND Experience" icon={<FilmStripIcon />} delay={0.32}>
             <p className="mb-10 text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">
               Fine-tune the immersive effects of the "From Serfs and Frauds" archives.
             </p>
@@ -552,7 +554,7 @@ const SettingsPage = () => {
           </Section>
 
           {/* Toast Verification */}
-          <Section title="System Feedback" icon={<ArticleIcon />} delay={0.35}>
+          <Section id="feedback" title="System Feedback" icon={<ArticleIcon />} delay={0.35}>
             <p className="mb-10 text-gray-500 font-mono text-[10px] uppercase tracking-[0.2em]">
               Verify notification delivery and visual signatures for different system alerts.
             </p>
@@ -586,6 +588,7 @@ const SettingsPage = () => {
 
           {/* Advanced Settings */}
           <Section
+            id="advanced"
             title="Advanced Settings"
             icon={<DatabaseIcon />}
             delay={0.4}
@@ -628,7 +631,7 @@ const SettingsPage = () => {
           </Section>
 
           {/* Danger Zone */}
-          <Section title="Reset All Data" icon={<TrashIcon />} delay={0.5}>
+          <Section id="danger-zone" title="Reset All Data" icon={<TrashIcon />} delay={0.5}>
             <div className="border-4 border-red-500/20 bg-red-500/5 p-8 rounded-sm">
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="p-4 bg-red-500 text-black rounded-sm shrink-0">

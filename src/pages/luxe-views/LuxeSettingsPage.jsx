@@ -152,7 +152,7 @@ const LuxeSettingsPage = () => {
         <div className="space-y-12">
 
           {/* Interface Layout */}
-          <LuxeSection title="Interface" icon={<LayoutIcon />} delay={0.1}>
+          <LuxeSection id="interface" title="Interface" icon={<LayoutIcon />} delay={0.1}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-8">
                     <div className="p-6 border-l-2 border-[#8D4004]/20 bg-white/40 space-y-4">
@@ -214,7 +214,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Reader Experience */}
-          <LuxeSection title="Reader" icon={<ArticleIcon />} delay={0.15}>
+          <LuxeSection id="reader" title="Reader" icon={<ArticleIcon />} delay={0.15}>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-6">
                     <h3 className="font-outfit text-[10px] uppercase tracking-[0.3em] text-black/30">Visual Mode</h3>
@@ -241,7 +241,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Typography */}
-          <LuxeSection title="Typography" icon={<LayoutIcon />} delay={0.2}>
+          <LuxeSection id="typography" title="Typography" icon={<LayoutIcon />} delay={0.2}>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className="space-y-6">
                     <h3 className="font-outfit text-[10px] uppercase tracking-[0.3em] text-black/30">Header Font</h3>
@@ -272,7 +272,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Motion & Performance */}
-          <LuxeSection title="Motion" icon={<FilmStripIcon />} delay={0.25}>
+          <LuxeSection id="motion" title="Motion" icon={<FilmStripIcon />} delay={0.25}>
             <div className="space-y-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border-l-2 border-black/5 bg-white/20">
                     <div>
@@ -294,7 +294,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Visual Matrix */}
-          <LuxeSection title="Visual Matrix" icon={<MagicWandIcon />} delay={0.3}>
+          <LuxeSection id="visual-matrix" title="Visual Matrix" icon={<MagicWandIcon />} delay={0.3}>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-6">
               <CustomToggle id="fx-invert"      colorTheme="amber"  label="Invert Colors"     checked={isInverted}        onChange={toggleInvert}            {...toggleClasses} />
               <CustomToggle id="fx-retro"       colorTheme="amber"  label="Retro CRT"         checked={isRetro}           onChange={toggleRetro}             {...toggleClasses} />
@@ -347,7 +347,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* DND Experience */}
-          <LuxeSection title="D&D Pages Effects" icon={<FilmStripIcon />} delay={0.35}>
+          <LuxeSection id="dnd" title="D&D Pages Effects" icon={<FilmStripIcon />} delay={0.35}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <CustomToggle id="dnd-lightning" label="Lightning" checked={isLightningEnabled} onChange={toggleLightning} colorTheme="amber" {...toggleClasses} />
               <CustomToggle id="dnd-loot" label="Loot Feedback" checked={isLootDiscoveryEnabled} onChange={toggleLootDiscovery} colorTheme="amber" {...toggleClasses} />
@@ -358,7 +358,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Achievements */}
-          <LuxeSection title="Achievements" icon={<TrophyIcon />} delay={0.4}>
+          <LuxeSection id="achievements" title="Achievements" icon={<TrophyIcon />} delay={0.4}>
              <CustomToggle
                 id="enable-achievement-toasts"
                 label="Achievement Toasts"
@@ -370,7 +370,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Feedback Verification */}
-          <LuxeSection title="Verification" icon={<ArticleIcon />} delay={0.45}>
+          <LuxeSection id="verification" title="Verification" icon={<ArticleIcon />} delay={0.45}>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {[
                 { label: 'Success', type: 'success', color: 'text-emerald-600 bg-emerald-50' },
@@ -390,7 +390,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Advanced / Maintenance */}
-          <LuxeSection title="Maintenance" icon={<DatabaseIcon />} delay={0.5}>
+          <LuxeSection id="maintenance" title="Maintenance" icon={<DatabaseIcon />} delay={0.5}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                 <div className="space-y-4">
                     <h3 className="font-playfairDisplay text-xl">Sidebar Cache</h3>
@@ -408,7 +408,7 @@ const LuxeSettingsPage = () => {
           </LuxeSection>
 
           {/* Factory Reset */}
-          <LuxeSection title="Termination" icon={<TrashIcon />} delay={0.55}>
+          <LuxeSection id="termination" title="Termination" icon={<TrashIcon />} delay={0.55}>
              <div className="p-8 border border-rose-500/20 bg-rose-500/5 rounded-sm flex flex-col md:flex-row items-center gap-8">
                 <div className="w-16 h-16 flex items-center justify-center bg-rose-500 text-white rounded-full shrink-0">
                     <WarningIcon size={32} weight="bold" />
