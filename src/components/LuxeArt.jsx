@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-const LuxeArt = ({ seed = 'luxe', className }) => {
+const LuxeArt = ({ seed = 'luxe', className, transparent = false }) => {
   // LCG Random Generator
   const rng = useMemo(() => {
     let h = 0xdeadbeef;
@@ -57,7 +57,7 @@ const LuxeArt = ({ seed = 'luxe', className }) => {
       // Close the shape to bottom/corners to form a fillable area
       d += ` L 100 100 L 0 100 Z`;
 
-      const opacity = 0.05 + r() * 0.15;
+      const opacity = (0.05 + r() * 0.15) * (transparent ? 2 : 1);
       // const color = `hsla(${baseHue + (r() - 0.5) * 40}, ${saturation}%, ${lightness - i * 5}%, ${opacity})`;
       // Force grayscale/gold/bronze tones for "Luxe"
       const isGold = r() > 0.8;
@@ -79,7 +79,7 @@ const LuxeArt = ({ seed = 'luxe', className }) => {
             cx: r() * 100,
             cy: r() * 100,
             r: r() * 0.3,
-            fill: 'rgba(0,0,0,0.1)'
+            fill: transparent ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.1)'
         });
     }
 
@@ -87,7 +87,7 @@ const LuxeArt = ({ seed = 'luxe', className }) => {
   }, [rng]);
 
   return (
-    <div className={`w-full h-full bg-[#EBEBEB] overflow-hidden relative ${className}`}>
+    <div className={`w-full h-full overflow-hidden relative ${!transparent && 'bg-[#EBEBEB]'} ${className}`}>
       <svg
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
