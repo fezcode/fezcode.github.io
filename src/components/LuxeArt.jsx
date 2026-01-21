@@ -84,7 +84,7 @@ const LuxeArt = ({ seed = 'luxe', className, transparent = false }) => {
     }
 
     return { curves: items, specks };
-  }, [rng]);
+  }, [rng, transparent]);
 
   return (
     <div className={`w-full h-full overflow-hidden relative ${!transparent && 'bg-[#EBEBEB]'} ${className}`}>

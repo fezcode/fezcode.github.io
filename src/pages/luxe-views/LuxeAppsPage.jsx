@@ -4,6 +4,8 @@ import {
   MagnifyingGlassIcon,
   ArrowUpRightIcon,
   ArrowLeftIcon,
+  SortAscendingIcon,
+  CalendarBlankIcon
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { appIcons } from '../../utils/appIcons';
@@ -30,6 +32,7 @@ const LuxeAppsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
   const [availableCategories, setAvailableCategories] = useState([]);
+  const [sortOrder, setSortOrder] = useState('alphabetical'); // 'alphabetical' or 'newest'
 
   useEffect(() => {
     setIsLoading(true);
@@ -59,15 +62,22 @@ const LuxeAppsPage = () => {
       .finally(() => setIsLoading(false));
   }, []);
 
-  const filteredApps = apps.filter((app) => {
-    const query = searchQuery.toLowerCase();
-    const matchesSearch =
-      app.name.toLowerCase().includes(query) ||
-      app.description.toLowerCase().includes(query);
-    const matchesCategory =
-      activeCategory === 'All' || app.categoryName === activeCategory;
-    return matchesSearch && matchesCategory;
-  });
+  const sortedApps = [...apps]
+    .filter((app) => {
+        const query = searchQuery.toLowerCase();
+        const matchesSearch =
+          app.name.toLowerCase().includes(query) ||
+          app.description.toLowerCase().includes(query);
+        const matchesCategory =
+          activeCategory === 'All' || app.categoryName === activeCategory;
+        return matchesSearch && matchesCategory;
+    })
+    .sort((a, b) => {
+        if (sortOrder === 'newest') {
+            return new Date(b.date || 0) - new Date(a.date || 0);
+        }
+        return a.name.localeCompare(b.name);
+    });
 
   return (
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black pt-24 pb-20">
@@ -103,21 +113,38 @@ const LuxeAppsPage = () => {
           </div>
         </header>
 
-        {/* Category Filter */}
-        <div className="flex gap-2 overflow-x-auto no-scrollbar mb-20 pb-4 border-b border-[#1A1A1A]/5">
-          {availableCategories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full font-outfit text-[10px] uppercase tracking-[0.2em] transition-all whitespace-nowrap ${
-                activeCategory === cat
-                  ? 'bg-[#1A1A1A] text-white shadow-lg'
-                  : 'bg-white/50 text-[#1A1A1A]/40 border border-[#1A1A1A]/10 hover:border-[#1A1A1A] hover:text-[#1A1A1A]'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        {/* Category Filter & Sort */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-20 pb-4 border-b border-[#1A1A1A]/5">
+          <div className="flex gap-2 overflow-x-auto no-scrollbar flex-1 w-full">
+            {availableCategories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-6 py-2 rounded-full font-outfit text-[10px] uppercase tracking-[0.2em] transition-all whitespace-nowrap ${
+                  activeCategory === cat
+                    ? 'bg-[#1A1A1A] text-white shadow-lg'
+                    : 'bg-white/50 text-[#1A1A1A]/40 border border-[#1A1A1A]/10 hover:border-[#1A1A1A] hover:text-[#1A1A1A]'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex bg-white rounded-full p-1 border border-[#1A1A1A]/5 shadow-sm shrink-0">
+              <button
+                onClick={() => setSortOrder('alphabetical')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full font-outfit text-[10px] uppercase tracking-widest transition-all ${sortOrder === 'alphabetical' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
+              >
+                <SortAscendingIcon size={14} /> A-Z
+              </button>
+              <button
+                onClick={() => setSortOrder('newest')}
+                className={`flex items-center gap-2 px-4 py-2 rounded-full font-outfit text-[10px] uppercase tracking-widest transition-all ${sortOrder === 'newest' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
+              >
+                <CalendarBlankIcon size={14} /> Newest
+              </button>
+          </div>
         </div>
 
         {isLoading ? (
@@ -126,7 +153,7 @@ const LuxeAppsPage = () => {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12">
-            {filteredApps.map((app) => {
+            {sortedApps.map((app) => {
               const categoryColor =
                 categoryColors[app.categoryName] || categoryColors.Default;
               const Icon = appIcons[app.icon] || appIcons[`${app.icon}Icon`];
