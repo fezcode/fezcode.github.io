@@ -4,7 +4,7 @@ export default function BoxPlot() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        A <strong className="text-white">Box Plot</strong> (or box-and-whisker plot) is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum.
+        A <strong className="text-current">Box Plot</strong> (or box-and-whisker plot) is a standardized way of displaying the distribution of data based on a five-number summary: minimum, first quartile (Q1), median, third quartile (Q3), and maximum.
       </p>
 
       {/* Box Plot Diagram */}

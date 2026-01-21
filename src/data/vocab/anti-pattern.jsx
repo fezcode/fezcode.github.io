@@ -4,7 +4,7 @@ export default function AntiPattern() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        An <strong className="text-white">Anti-Pattern</strong> is a common response to a recurring
+        An <strong className="text-current">Anti-Pattern</strong> is a common response to a recurring
         problem that is usually ineffective and risks being highly
         counterproductive.
       </p>

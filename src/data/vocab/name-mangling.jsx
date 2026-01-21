@@ -4,7 +4,7 @@ export default function NameMangling() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-white">Name Mangling</strong> (or name decoration) is a technique used by compilers to resolve unique names for programming entities (like functions, structure members, or variables) in modern programming languages.
+        <strong className="text-current">Name Mangling</strong> (or name decoration) is a technique used by compilers to resolve unique names for programming entities (like functions, structure members, or variables) in modern programming languages.
       </p>
       <p>
         It provides a way to encode additional information about the name—such as the function's parameter types or scope—directly into the symbol name used by the linker. This is essential for supporting features like function overloading or namespacing, especially in languages like C++.

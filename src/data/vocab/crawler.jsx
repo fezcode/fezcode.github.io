@@ -4,7 +4,7 @@ export default function Crawler() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        A <strong className="text-white">Crawler</strong> (or bot) is an automated program that visits websites to index content for search
+        A <strong className="text-current">Crawler</strong> (or bot) is an automated program that visits websites to index content for search
         engines (like Google) or to generate link previews for social media (like Twitter and Discord).
       </p>
 
@@ -17,7 +17,7 @@ export default function Crawler() {
         relies entirely on JavaScript to render its content (CSR), the crawler sees a blank page.
       </p>
       <p>
-        By using <strong className="text-white">Static Site Generation (SSG)</strong>, we ensure that every route on Fezcodex has a unique HTML
+        By using <strong className="text-current">Static Site Generation (SSG)</strong>, we ensure that every route on Fezcodex has a unique HTML
         file that any crawler can read, ensuring perfect SEO and rich social thumbnails.
       </p>
     </div>

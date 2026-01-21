@@ -4,7 +4,7 @@ export default function ETL() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-white">ETL (Extract, Transform, Load)</strong> is a data integration process that combines data from multiple sources into a single, consistent data store that is loaded into a data warehouse or other target system.
+        <strong className="text-current">ETL (Extract, Transform, Load)</strong> is a data integration process that combines data from multiple sources into a single, consistent data store that is loaded into a data warehouse or other target system.
       </p>
 
       <div className="bg-black p-4 border border-white/10 font-mono text-xs my-6">
@@ -31,12 +31,12 @@ export default function ETL() {
       </p>
 
       <div className="border-l-2 border-white/20 pl-4 py-1">
-        <strong className="text-gray-300 uppercase tracking-widest text-xs block mb-2">Common Tools</strong>
+        <strong className="text-rose-600 uppercase tracking-widest text-xs block mb-2">Common Tools</strong>
         <div className="flex flex-wrap gap-2">
-           <span className="bg-white/5 px-2 py-1 text-xs text-gray-300">Apache Airflow</span>
-           <span className="bg-white/5 px-2 py-1 text-xs text-gray-300">Talend</span>
-           <span className="bg-white/5 px-2 py-1 text-xs text-gray-300">AWS Glue</span>
-           <span className="bg-white/5 px-2 py-1 text-xs text-gray-300">Pandas</span>
+           <span className="bg-white/5 px-2 py-1 text-xs text-rose-600">Apache Airflow</span>
+           <span className="bg-white/5 px-2 py-1 text-xs text-rose-600">Talend</span>
+           <span className="bg-white/5 px-2 py-1 text-xs text-rose-600">AWS Glue</span>
+           <span className="bg-white/5 px-2 py-1 text-xs text-rose-600">Pandas</span>
         </div>
       </div>
     </div>

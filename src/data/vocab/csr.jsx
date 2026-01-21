@@ -4,7 +4,7 @@ export default function CSR() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-white">Client-Side Rendering (CSR)</strong> is a web development technique where the browser downloads a minimal HTML file and a large JavaScript bundle. The JavaScript then executes and builds the entire user interface on the fly.
+        <strong className="text-current">Client-Side Rendering (CSR)</strong> is a web development technique where the browser downloads a minimal HTML file and a large JavaScript bundle. The JavaScript then executes and builds the entire user interface on the fly.
       </p>
 
       <div className="bg-black p-4 border border-white/10 font-mono text-xs my-6">
@@ -22,7 +22,7 @@ export default function CSR() {
       </p>
 
       <div className="border-l-2 border-white/20 pl-4 py-1">
-        <strong className="text-white uppercase tracking-wider text-xs block mb-1">Comparison</strong>
+        <strong className="text-current uppercase tracking-wider text-xs block mb-1">Comparison</strong>
         <span className="text-gray-400 text-xs">Unlike SSG, where the HTML is ready before it reaches the browser, CSR requires the user's device to do the heavy lifting of rendering.</span>
       </div>
     </div>
