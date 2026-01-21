@@ -6,13 +6,17 @@ import {
   Calendar,
   Clock,
   ShareNetwork,
+  ArrowsOutSimple,
+  ClipboardText,
 } from '@phosphor-icons/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 
@@ -23,6 +27,11 @@ const LuxeBlogPostPage = () => {
   const [post, setPost] = useState(null);
   const [loading, setLoading] = useState(true);
   const [estimatedReadingTime, setEstimatedReadingTime] = useState(0);
+
+  const [isCodeModalOpen, setIsCodeModalOpen] = useState(false);
+  const [modalCode, setModalCode] = useState('');
+  const [modalLanguage, setModalLanguage] = useState('jsx');
+  const { addToast } = useToast();
 
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
@@ -66,29 +75,66 @@ const LuxeBlogPostPage = () => {
     fetchPost();
   }, [currentSlug, navigate]);
 
+  const openCodeModal = (content, language) => {
+    setModalCode(content);
+    setModalLanguage(language);
+    setIsCodeModalOpen(true);
+  };
+
   const CodeBlock = ({ inline, className, children, ...props }) => {
     const match = /language-(\w+)/.exec(className || '');
+
+    const handleCopy = () => {
+      navigator.clipboard.writeText(String(children)).then(() => {
+        addToast({
+          title: 'Specimen Captured',
+          message: 'Code has been copied to your clipboard.',
+          type: 'success'
+        });
+      });
+    };
+
     if (!inline && match) {
       return (
-        <div className="my-8 rounded-lg overflow-hidden border border-[#1A1A1A]/10 shadow-sm bg-[#F9F9F9]">
-          <div className="bg-[#F5F5F0] px-4 py-2 border-b border-[#1A1A1A]/5 flex justify-between items-center">
-             <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40">{match[1]}</span>
+        <div className="relative group my-12">
+          {/* Action Overlay */}
+          <div className="absolute top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+            <button
+              onClick={() => openCodeModal(String(children).replace(/\n$/, ''), match[1])}
+              className="bg-white/90 backdrop-blur-sm border border-[#1A1A1A]/10 px-3 py-1.5 text-[10px] uppercase font-outfit font-bold tracking-widest text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all rounded-full shadow-sm"
+              title="Expand View"
+            >
+              <ArrowsOutSimple size={14} weight="bold" />
+            </button>
+            <button
+              onClick={handleCopy}
+              className="bg-white/90 backdrop-blur-sm border border-[#1A1A1A]/10 px-3 py-1.5 text-[10px] uppercase font-outfit font-bold tracking-widest text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all rounded-full shadow-sm"
+              title="Copy Source"
+            >
+              <ClipboardText size={14} weight="bold" />
+            </button>
           </div>
-          <SyntaxHighlighter
-            style={coy}
-            language={match[1]}
-            PreTag="div"
-            customStyle={{
-              margin: 0,
-              padding: '1.5rem',
-              fontSize: '0.9rem',
-              lineHeight: '1.6',
-              background: 'transparent',
-            }}
-            {...props}
-          >
-            {String(children).replace(/\n$/, '')}
-          </SyntaxHighlighter>
+
+          <div className="rounded-sm overflow-hidden border border-[#1A1A1A]/5 shadow-sm bg-white">
+            <div className="bg-[#FAFAF8] px-6 py-3 border-b border-[#1A1A1A]/5 flex justify-between items-center">
+               <span className="font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/30 font-bold">Source Specimen: {match[1]}</span>
+            </div>
+            <SyntaxHighlighter
+              style={coy}
+              language={match[1]}
+              PreTag="div"
+              customStyle={{
+                margin: 0,
+                padding: '2rem',
+                fontSize: '0.9rem',
+                lineHeight: '1.7',
+                background: 'transparent',
+              }}
+              {...props}
+            >
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
+          </div>
         </div>
       );
     }
@@ -204,6 +250,14 @@ const LuxeBlogPostPage = () => {
           </div>
 
       </div>
+
+      <CodeModal
+        isOpen={isCodeModalOpen}
+        onClose={() => setIsCodeModalOpen(false)}
+        language={modalLanguage}
+      >
+        {modalCode}
+      </CodeModal>
     </div>
   );
 };
