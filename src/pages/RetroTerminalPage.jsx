@@ -6,6 +6,8 @@ import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { vocabulary } from '../data/vocabulary';
+import Seo from '../components/Seo';
+import piml from 'piml';
 import {
   ArrowLeft,
   FloppyDisk,
@@ -592,6 +594,7 @@ const Workstation = ({
   const [selectedFile, setSelectedFile] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [aboutContent, setAboutContent] = useState('');
+  const [vagueIssues, setVagueIssues] = useState([]);
 
   // Terminal State
   const [terminalHistory, setTerminalHistory] = useState([
@@ -668,6 +671,15 @@ const Workstation = ({
       .then((res) => res.text())
       .then((text) => setAboutContent(text))
       .catch((err) => console.error(err));
+
+    // Fetch Vague Issues
+    fetch('/the_vague/issues.piml')
+      .then((res) => res.text())
+      .then((text) => {
+        const parsed = piml.parse(text);
+        setVagueIssues(parsed.issues || []);
+      })
+      .catch((err) => console.error(err));
   }, []);
 
   const handleScroll = (direction) => {
@@ -696,6 +708,12 @@ const Workstation = ({
             v.title.toLowerCase().includes(searchQuery.toLowerCase()),
           )
         : vocabList;
+    if (activeTab === 'vague')
+      return searchQuery
+        ? vagueIssues.filter((v) =>
+            v.title.toLowerCase().includes(searchQuery.toLowerCase()),
+          )
+        : vagueIssues;
     return [];
   };
 
@@ -733,6 +751,7 @@ const Workstation = ({
     BLOG            : Switch to Handbook directory
     VOCAB           : Switch to Knowledge directory
     ABOUT           : View Personnel File
+    VAGUE           : Switch to The Vague Archives
     SYSTEM          : Switch to System Config directory
     CLEAR           : Clear terminal history
     EXIT            : Return to standard homepage`;
@@ -855,6 +874,9 @@ const Workstation = ({
     } else if (command === 'about' || command === 'cd about') {
       handleTabChange('about');
       addLog(cmd, 'DIRECTORY CHANGED: PERSONNEL FILE');
+    } else if (command === 'vague' || command === 'cd vague') {
+      handleTabChange('vague');
+      addLog(cmd, 'DIRECTORY CHANGED: THE VAGUE ARCHIVES');
     } else if (command === 'system' || command === 'cd system') {
       handleTabChange('system');
       addLog(cmd, 'DIRECTORY CHANGED: SYSTEM CONFIG');
@@ -1064,6 +1086,51 @@ const Workstation = ({
       );
     }
 
+    if (activeTab === 'vague') {
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 p-6 pb-20">
+          {filteredData.map((issue, idx) => (
+            <button
+              key={idx}
+              onClick={() => {
+                if (issue.link && issue.link.endsWith('.pdf')) {
+                  window.open(`${issue.link}`, '_blank');
+                  playClick();
+                } else if (issue.link) {
+                  window.open(issue.link, '_blank');
+                  playClick();
+                }
+              }}
+              className="group text-left border border-[#005f6b] bg-[#00252b] p-4 hover:border-[#4fffa8] hover:bg-[#00333b] transition-all relative overflow-hidden flex flex-col h-full"
+            >
+              <div className="absolute top-0 right-0 p-1 opacity-20 group-hover:opacity-100 transition-opacity font-mono text-2xl font-bold">
+                {String(filteredData.length - idx).padStart(2, '0')}
+              </div>
+              <h3 className="font-bold text-[#e8f7f7] uppercase tracking-wide truncate pr-6 mb-2">
+                {issue.title}
+              </h3>
+              <p className="text-[10px] text-[#80a0a0] line-clamp-2 mb-4">
+                {issue.description}
+              </p>
+              <div className="mt-auto pt-2 border-t border-[#005f6b]/30 flex justify-between items-center">
+                <span className="text-[9px] uppercase tracking-widest text-[#4fffa8]/60">
+                  {issue.date}
+                </span>
+                <span className="text-[9px] font-bold text-[#4fffa8]">
+                  [Access Publication]
+                </span>
+              </div>
+            </button>
+          ))}
+          {filteredData.length === 0 && (
+            <div className="col-span-full text-[#005f6b] text-center py-12 uppercase tracking-widest">
+              No archives found matching query.
+            </div>
+          )}
+        </div>
+      );
+    }
+
     return (
       <div className="p-12 flex flex-col items-center justify-center h-full text-center">
         <FloppyDisk size={48} className="mb-6 text-[#005f6b]" />
@@ -1149,6 +1216,16 @@ const Workstation = ({
               weight={activeTab === 'about' ? 'fill' : 'regular'}
             />
             Personnel (About)
+          </button>
+          <button
+            onClick={() => handleTabChange('vague')}
+            className={`w-full text-left px-6 py-3 text-xs uppercase tracking-widest font-bold border-l-2 transition-colors flex items-center gap-3 ${activeTab === 'vague' ? 'border-[#4fffa8] bg-[#00252b] text-white' : 'border-transparent text-[#80a0a0] hover:text-white hover:bg-[#001a1f]'}`}
+          >
+            <Globe
+              size={18}
+              weight={activeTab === 'vague' ? 'fill' : 'regular'}
+            />
+            The Vague (Archives)
           </button>
           <button
             onClick={() => handleTabChange('system')}
@@ -1330,16 +1407,25 @@ const RetroTerminalPage = () => {
   const [booted, setBooted] = useState(false);
   const audio = useRetroAudio();
 
-  return booted ? (
-    <Workstation {...audio} />
-  ) : (
-    <BootScreen
-      onComplete={() => {
-        setBooted(true);
-        audio.playBoot();
-      }}
-      initAudio={audio.initAudio}
-    />
+  return (
+    <>
+      <Seo
+        title="Fezminal OS v2.0.26 | Restricted Access"
+        description="Low-level architectural interface for Fezcodex archives."
+        keywords={['terminal', 'retro', 'os', 'cyberpunk', 'archives']}
+      />
+      {booted ? (
+        <Workstation {...audio} />
+      ) : (
+        <BootScreen
+          onComplete={() => {
+            setBooted(true);
+            audio.playBoot();
+          }}
+          initAudio={audio.initAudio}
+        />
+      )}
+    </>
   );
 };
 
