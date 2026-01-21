@@ -46,7 +46,7 @@ const Layout = ({
   const isTheVaguePage = location.pathname.startsWith('/the-vague');
   const isAboutPage = location.pathname.startsWith('/about');
   const isGraphPage = location.pathname === '/graph';
-  const isTerminalPage = location.pathname === '/terminal';
+  const isTerminalPage = location.pathname.startsWith('/terminal');
 
   // Check for special project styles that require hiding the default layout
   const projectSlug = location.pathname.startsWith('/projects/')
