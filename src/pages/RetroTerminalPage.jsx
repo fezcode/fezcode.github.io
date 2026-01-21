@@ -152,7 +152,7 @@ const BootScreen = ({ onComplete, initAudio }) => {
             <div className="text-3xl font-black italic">L</div>
           </div>
           <h1 className="text-2xl tracking-[0.5em] font-bold uppercase">
-            Lumon
+            Fezminal
           </h1>
         </div>
       )}
@@ -597,7 +597,7 @@ const Workstation = ({
   const [terminalHistory, setTerminalHistory] = useState([
     {
       timestamp: new Date().toLocaleTimeString(),
-      response: "WELCOME TO LUMON OS v2.0.26. TYPE 'HELP' FOR INSTRUCTIONS.",
+      response: "WELCOME TO FEZMINAL OS v2.0.26. TYPE 'HELP' FOR INSTRUCTIONS.",
     },
   ]);
   const [isTerminalMinimized, setIsTerminalMinimized] = useState(false);
@@ -1071,7 +1071,7 @@ const Workstation = ({
           System Config
         </h2>
         <p className="text-[#80a0a0] max-w-md mb-8">
-          User customization is restricted by Lumon Compliance Standards. Please
+          User customization is restricted by Fezminal Compliance Standards. Please
           contact your department head for ergonomic adjustments.
         </p>
         <div className="flex gap-4">
@@ -1102,7 +1102,7 @@ const Workstation = ({
       <aside className="w-64 bg-[#001014] border-r border-[#00333b] flex flex-col z-20 shrink-0">
         <div className="p-6 border-b border-[#00333b]">
           <h1 className="text-2xl font-black italic tracking-widest text-[#4fffa8] mb-1">
-            Lumon
+            Fezminal
           </h1>
           <div className="text-[9px] uppercase tracking-[0.2em] text-[#005f6b]">
             Workstation 492-E
@@ -1207,7 +1207,7 @@ const Workstation = ({
             <div className="text-xs uppercase tracking-[0.2em] font-bold">
               {selectedFile
                 ? `Viewing: ${selectedFile.title || selectedFile.name}`
-                : 'LUMON INDUSTRIES // WORKSTATION'}
+                : 'FEZMINAL INDUSTRIES // WORKSTATION'}
             </div>
           </div>
 
