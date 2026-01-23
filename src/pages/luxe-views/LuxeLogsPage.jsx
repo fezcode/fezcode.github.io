@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon, StarIcon, ArrowUpRightIcon } from '@phosphor-icons
 import Seo from '../../components/Seo';
 import piml from 'piml';
 import colors from '../../config/colors';
+import LuxeArt from '../../components/LuxeArt';
 
 const categories = [
   'Book', 'Movie', 'Video', 'Game', 'Article', 'Music',
@@ -120,66 +121,72 @@ const LuxeLogsPage = () => {
         </header>
 
         <div className="space-y-0">
-            {loading ? (
-                <div className="py-32 text-center font-outfit text-[#1A1A1A]/40">Loading Archives...</div>
-            ) : (
-                filteredLogs.map((log) => {
-                    const color = colors[log.category.toLowerCase()] || '#1A1A1A';
-                    return (
-                        <Link
-                            key={log.id}
-                            to={`/logs/${log.category.toLowerCase()}/${log.slug}`}
-                            className="group block border-b border-[#1A1A1A]/5 py-8 hover:bg-white transition-all px-6 -mx-6 rounded-sm"
-                        >
-                            <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
-                                {/* Metadata Column */}
-                                                                <div className="flex items-center gap-8 md:w-48 shrink-0">
-                                                                    <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/30 w-16">
-                                                                        {new Date(log.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
-                                                                    </span>
-                                                                    <span
-                                                                        className="font-outfit text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border rounded-full transition-colors text-black"
-                                                                        style={{
-                                                                            backgroundColor: color,
-                                                                            borderColor: color,
-                                                                        }}
-                                                                    >
-                                                                        {log.category}
-                                                                    </span>
-                                                                </div>
-                                                                {/* Title Column */}
-                                <div className="flex-1 min-w-0">
-                                    <h2 className="font-playfairDisplay text-2xl md:text-3xl text-[#1A1A1A] group-hover:italic transition-all leading-tight truncate">
-                                        {log.title}
-                                    </h2>
-                                    {log.author && (
-                                        <p className="font-outfit text-xs text-[#1A1A1A]/40 mt-1 uppercase tracking-wider">
-                                            {log.author}
-                                        </p>
-                                    )}
-                                </div>
+          {loading ? (
+            <div className="py-32 text-center font-outfit text-[#1A1A1A]/40">Loading Archives...</div>
+          ) : (
+            filteredLogs.map((log) => {
+              const color = colors[log.category.toLowerCase()] || '#1A1A1A';
+              return (
+                <Link
+                  key={log.id}
+                  to={`/logs/${log.category.toLowerCase()}/${log.slug}`}
+                  className="group relative block border-b border-[#1A1A1A]/5 py-8 transition-all px-6 -mx-6 rounded-sm overflow-hidden"
+                >
+                  {/* Background Art */}
+                  <div className="absolute inset-0 opacity-10 group-hover:opacity-30 transition-opacity duration-700 pointer-events-none">
+                      <LuxeArt seed={log.title} colorful={false} className="w-full h-full mix-blend-multiply transition-transform duration-1000 group-hover:scale-110" />
+                  </div>
 
-                                {/* Rating & Action */}
-                                <div className="flex items-center justify-between md:justify-end gap-12 md:w-48 shrink-0">
-                                    <div className="flex gap-0.5">
-                                        {[...Array(5)].map((_, i) => (
-                                            <StarIcon
-                                                key={i}
-                                                size={12}
-                                                weight="fill"
-                                                className={i < (log.rating || 0) ? "text-[#8D4004]" : "text-[#1A1A1A]/10"}
-                                            />
-                                        ))}
-                                    </div>
-                                    <div className="opacity-0 group-hover:opacity-100 transition-opacity">
-                                         <ArrowUpRightIcon size={20} className="text-[#1A1A1A]/20" />
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                    );
-                })
-            )}
+                  <div className="relative z-10 flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
+                      {/* Metadata Column */}
+                      <div className="flex items-center gap-8 md:w-48 shrink-0">
+                        <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/30 w-16">
+                          {new Date(log.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                        </span>
+                        <span
+                          className="font-outfit text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border rounded-full transition-colors text-black"
+                          style={{
+                              backgroundColor: color,
+                              borderColor: color,
+                          }}
+                        >
+                          {log.category}
+                        </span>
+                      </div>
+
+                      {/* Title Column */}
+                      <div className="flex-1 min-w-0">
+                        <h2 className="font-playfairDisplay text-2xl md:text-3xl text-[#1A1A1A] group-hover:italic transition-all leading-tight truncate">
+                          {log.title}
+                        </h2>
+                        {log.author && (
+                          <p className="font-outfit text-xs text-[#1A1A1A]/40 mt-1 uppercase tracking-wider">
+                              {log.author}
+                          </p>
+                        )}
+                    </div>
+
+                    {/* Rating & Action */}
+                    <div className="flex items-center justify-between md:justify-end gap-12 md:w-48 shrink-0">
+                      <div className="flex gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <StarIcon
+                              key={i}
+                              size={12}
+                              weight="fill"
+                              className={i < (log.rating || 0) ? "text-[#8D4004]" : "text-[#1A1A1A]/10"}
+                          />
+                        ))}
+                      </div>
+                      <div className="opacity-0 group-hover:opacity-100 transition-opacity">
+                           <ArrowUpRightIcon size={20} className="text-[#1A1A1A]/20" />
+                      </div>
+                    </div>
+                </div>
+              </Link>
+              );
+            })
+          )}
         </div>
 
       </div>

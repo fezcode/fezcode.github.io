@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-const LuxeArt = ({ seed = 'luxe', className, transparent = false }) => {
+const LuxeArt = ({ seed = 'luxe', className, transparent = false, colorful = false }) => {
   // LCG Random Generator
   const rng = useMemo(() => {
     let h = 0xdeadbeef;
@@ -61,9 +61,9 @@ const LuxeArt = ({ seed = 'luxe', className, transparent = false }) => {
       // const color = `hsla(${baseHue + (r() - 0.5) * 40}, ${saturation}%, ${lightness - i * 5}%, ${opacity})`;
       // Force grayscale/gold/bronze tones for "Luxe"
       const isGold = r() > 0.8;
-      const hue = isGold ? 45 : baseHue; // 45 is roughly gold
-      const sat = isGold ? 60 : 0; // Grayscale or Gold
-      const lit = isGold ? 60 : 90 - i * 5;
+      const hue = isGold ? 45 : (baseHue + (r() - 0.5) * 30);
+      const sat = colorful ? (40 + r() * 40) : (isGold ? 60 : 0);
+      const lit = colorful ? (70 + r() * 15) : (isGold ? 60 : 90 - i * 5);
 
       items.push({
         d,
@@ -84,7 +84,7 @@ const LuxeArt = ({ seed = 'luxe', className, transparent = false }) => {
     }
 
     return { curves: items, specks };
-  }, [rng, transparent]);
+  }, [rng, transparent, colorful]);
 
   return (
     <div className={`w-full h-full overflow-hidden relative ${!transparent && 'bg-[#EBEBEB]'} ${className}`}>
