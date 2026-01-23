@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 23 Jan 2026 15:22:43 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 23 Jan 2026 20:09:31 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 23 Jan 2026 15:22:43 GMT</pubDate>
+        <pubDate>Fri, 23 Jan 2026 20:09:31 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Architecting Trust: 5 Patterns to Prevent Insider Threats]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/architecting-trust-preventing-insider-threats</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/architecting-trust-preventing-insider-threats</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 23 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Architecting Trust: 5 Patterns to Prevent Insider Threats</h1>
+<p><a href="https://fezcode.com/blog/architecting-trust-preventing-insider-threats">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Deep Link Configuration: Achieving a Global Parameter Observer in React]]></title>
             <description><![CDATA[[object Object]]]></description>

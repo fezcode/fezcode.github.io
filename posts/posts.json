@@ -1,5 +1,17 @@
 [
   {
+    "slug": "architecting-trust-preventing-insider-threats",
+    "title": "Architecting Trust: 5 Patterns to Prevent Insider Threats",
+    "date": "2026-01-23",
+    "updated": "2026-01-23",
+    "description": "Developers have God-mode access, but absolute power creates absolute risk. Here are 5 architectural patterns to prevent internal fraud and system abuse.",
+    "tags": ["architecture", "security", "design-patterns", "maker-checker", "event-sourcing", "devops"],
+    "category": "dev",
+    "filename": "architecting-trust-preventing-insider-threats.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+  },
+  {
     "slug": "deep-link-configuration-with-url-parameters",
     "title": "Deep Link Configuration: Achieving a Global Parameter Observer in React",
     "date": "2026-01-21",
