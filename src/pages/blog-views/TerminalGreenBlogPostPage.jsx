@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -12,6 +12,7 @@ import GenerativeArt from '../../components/GenerativeArt';
 import MarkdownLink from '../../components/MarkdownLink';
 import CodeModal from '../../components/CodeModal';
 import ImageModal from '../../components/ImageModal';
+import MermaidDiagram from '../../components/MermaidDiagram';
 
 const emeraldTerminalTheme = {
   'code[class*="language-"]': {
@@ -115,40 +116,58 @@ const TerminalGreenBlogPostPage = () => {
     setIsModalOpen(true);
   };
 
-  const CodeBlock = ({ inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
-    if (!inline && match) {
-      return (
-        <div className="relative group my-6 border border-emerald-500/20 bg-black shadow-lg">
-          <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-            <button
-              onClick={() =>
-                openModal(String(children).replace(/\n$/, ''), match[1])
-              }
-              className="text-emerald-400 bg-black border border-emerald-500/30 p-1.5 hover:bg-emerald-500 hover:text-black transition-all"
+  const components = useMemo(() => {
+    const CodeBlock = ({ inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || '');
+      const isMermaid = match && match[1] === 'mermaid';
+
+      if (!inline && isMermaid) {
+        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+      }
+
+      if (!inline && match) {
+        return (
+          <div className="relative group my-6 border border-emerald-500/20 bg-black shadow-lg">
+            <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
+              <button
+                onClick={() =>
+                  openModal(String(children).replace(/\n$/, ''), match[1])
+                }
+                className="text-emerald-400 bg-black border border-emerald-500/30 p-1.5 hover:bg-emerald-500 hover:text-black transition-all"
+              >
+                <ArrowsOutSimple size={16} />
+              </button>
+            </div>
+            <SyntaxHighlighter
+              style={emeraldTerminalTheme}
+              language={match[1]}
+              PreTag="div"
+              CodeTag="code"
+              customStyle={{ background: 'transparent', padding: '1.5rem' }}
+              {...props}
             >
-              <ArrowsOutSimple size={16} />
-            </button>
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
           </div>
-          <SyntaxHighlighter
-            style={emeraldTerminalTheme}
-            language={match[1]}
-            PreTag="div"
-            CodeTag="code"
-            customStyle={{ background: 'transparent', padding: '1.5rem' }}
-            {...props}
-          >
-            {String(children).replace(/\n$/, '')}
-          </SyntaxHighlighter>
-        </div>
+        );
+      }
+      return (
+        <code className="bg-emerald-500/10 text-emerald-400 px-1 rounded-sm">
+          {children}
+        </code>
       );
-    }
-    return (
-      <code className="bg-emerald-500/10 text-emerald-400 px-1 rounded-sm">
-        {children}
-      </code>
-    );
-  };
+    };
+
+    return {
+      code: CodeBlock,
+      a: (p) => (
+        <MarkdownLink
+          {...p}
+          className="underline decoration-emerald-500/30 hover:decoration-emerald-500"
+        />
+      ),
+    };
+  }, []);
 
   if (loading)
     return (
@@ -241,15 +260,7 @@ const TerminalGreenBlogPostPage = () => {
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeRaw, rehypeKatex]}
-            components={{
-              code: CodeBlock,
-              a: (p) => (
-                <MarkdownLink
-                  {...p}
-                  className="underline decoration-emerald-500/30 hover:decoration-emerald-500"
-                />
-              ),
-            }}
+            components={components}
           >
             {post.body}
           </ReactMarkdown>

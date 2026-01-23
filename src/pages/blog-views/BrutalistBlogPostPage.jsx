@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
@@ -19,6 +19,7 @@ import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
+import MermaidDiagram from '../../components/MermaidDiagram';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
 
@@ -90,89 +91,116 @@ const BrutalistBlogPostPage = () => {
     setIsModalOpen(true);
   };
 
-  const CodeBlock = ({ inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
+  const components = useMemo(() => {
+    const CodeBlock = ({ inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || '');
+      const isMermaid = match && match[1] === 'mermaid';
 
-    const handleCopy = () => {
-      const textToCopy = String(children);
-      navigator.clipboard.writeText(textToCopy).then(
-        () =>
-          addToast({
-            title: 'INTEL COPIED',
-            message: 'Code block synchronized to clipboard.',
-            duration: 3000,
-            type: 'success',
-          }),
-        () =>
-          addToast({
-            title: 'ERROR',
-            message: 'Failed to access clipboard.',
-            duration: 3000,
-            type: 'error',
-          }),
+      if (!inline && isMermaid) {
+        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+      }
+
+      const handleCopy = () => {
+        const textToCopy = String(children);
+        navigator.clipboard.writeText(textToCopy).then(
+          () =>
+            addToast({
+              title: 'INTEL COPIED',
+              message: 'Code block synchronized to clipboard.',
+              duration: 3000,
+              type: 'success',
+            }),
+          () =>
+            addToast({
+              title: 'ERROR',
+              message: 'Failed to access clipboard.',
+              duration: 3000,
+              type: 'error',
+            }),
+        );
+      };
+
+      if (!inline && match) {
+        return (
+          <div className="relative group my-8">
+            <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button
+                onClick={() =>
+                  openModal(String(children).replace(/\n$/, ''), match[1])
+                }
+                className="bg-zinc-900 border border-white/10 px-2 py-1 text-[10px] uppercase font-mono font-bold tracking-widest text-gray-400 hover:text-white hover:bg-emerald-500 hover:border-emerald-500 transition-all rounded-sm"
+                title="Enlarge Intel"
+              >
+                <ArrowsOutSimple size={12} weight="bold" /> EXPAND
+              </button>
+              <button
+                onClick={handleCopy}
+                className="bg-zinc-900 border border-white/10 px-2 py-1 text-[10px] uppercase font-mono font-bold tracking-widest text-gray-400 hover:text-white hover:bg-emerald-500 hover:border-emerald-500 transition-all rounded-sm"
+                title="Copy to Clipboard"
+              >
+                <ClipboardText size={12} weight="bold" /> COPY
+              </button>
+            </div>
+            <div className="border border-white/10 rounded-sm overflow-hidden shadow-2xl bg-zinc-950">
+              <div className="bg-white/5 px-4 py-2 border-b border-white/10 flex justify-between items-center">
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500">
+                  DATA_NODE: {match[1]}
+                </span>
+              </div>
+              <SyntaxHighlighter
+                style={customTheme}
+                language={match[1]}
+                PreTag="div"
+                CodeTag="code"
+                customStyle={{
+                  margin: 0,
+                  padding: '1.5rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.6',
+                  background: 'transparent',
+                }}
+                {...props}
+                codeTagProps={{
+                  style: { fontFamily: "'JetBrains Mono', monospace" },
+                }}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <code
+          className={`${className} font-mono bg-white/5 text-emerald-400 px-1.5 py-0.5 rounded-sm text-sm`}
+          {...props}
+        >
+          {children}
+        </code>
       );
     };
 
-    if (!inline && match) {
-      return (
-        <div className="relative group my-8">
-          <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button
-              onClick={() =>
-                openModal(String(children).replace(/\n$/, ''), match[1])
-              }
-              className="bg-zinc-900 border border-white/10 px-2 py-1 text-[10px] uppercase font-mono font-bold tracking-widest text-gray-400 hover:text-white hover:bg-emerald-500 hover:border-emerald-500 transition-all rounded-sm"
-              title="Enlarge Intel"
-            >
-              <ArrowsOutSimple size={12} weight="bold" /> EXPAND
-            </button>
-            <button
-              onClick={handleCopy}
-              className="bg-zinc-900 border border-white/10 px-2 py-1 text-[10px] uppercase font-mono font-bold tracking-widest text-gray-400 hover:text-white hover:bg-emerald-500 hover:border-emerald-500 transition-all rounded-sm"
-              title="Copy to Clipboard"
-            >
-              <ClipboardText size={12} weight="bold" /> COPY
-            </button>
-          </div>
-          <div className="border border-white/10 rounded-sm overflow-hidden shadow-2xl bg-zinc-950">
-            <div className="bg-white/5 px-4 py-2 border-b border-white/10 flex justify-between items-center">
-              <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500">
-                DATA_NODE: {match[1]}
-              </span>
-            </div>
-            <SyntaxHighlighter
-              style={customTheme}
-              language={match[1]}
-              PreTag="div"
-              CodeTag="code"
-              customStyle={{
-                margin: 0,
-                padding: '1.5rem',
-                fontSize: '0.9rem',
-                lineHeight: '1.6',
-                background: 'transparent',
-              }}
-              {...props}
-              codeTagProps={{
-                style: { fontFamily: "'JetBrains Mono', monospace" },
-              }}
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          </div>
-        </div>
-      );
-    }
-
-    return (
-      <code
-        className={`${className} font-mono bg-white/5 text-emerald-400 px-1.5 py-0.5 rounded-sm text-sm`}
-        {...props}
-      >
-        {children}
-      </code>
-    );
-  };
+    return {
+      a: (p) => {
+        const isVocab =
+          p.href &&
+          (p.href.startsWith('/vocab/') || p.href.includes('/#/vocab/'));
+        return (
+          <MarkdownLink
+            {...p}
+            className={
+              isVocab
+                ? 'text-emerald-400 font-bold transition-colors cursor-help decoration-emerald-500/30 underline decoration-2 underline-offset-2'
+                : 'underline decoration-emerald-500/30 hover:decoration-emerald-500'
+            }
+          />
+        );
+      },
+      pre: ({ children }) => <>{children}</>,
+      code: CodeBlock,
+    };
+  }, [addToast]);
 
   if (loading) {
     return (
@@ -260,26 +288,7 @@ const BrutalistBlogPostPage = () => {
           >
             <MarkdownContent
               content={post.body}
-              components={{
-                a: (p) => {
-                  const isVocab =
-                    p.href &&
-                    (p.href.startsWith('/vocab/') ||
-                      p.href.includes('/#/vocab/'));
-                  return (
-                    <MarkdownLink
-                      {...p}
-                      className={
-                        isVocab
-                          ? 'text-emerald-400 font-bold transition-colors cursor-help decoration-emerald-500/30 underline decoration-2 underline-offset-2'
-                          : 'underline decoration-emerald-500/30 hover:decoration-emerald-500'
-                      }
-                    />
-                  );
-                },
-                pre: ({ children }) => <>{children}</>,
-                code: CodeBlock,
-              }}
+              components={components}
             />
           </div>
 

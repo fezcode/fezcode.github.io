@@ -17,6 +17,7 @@
     "html2canvas": "^1.4.1",
     "katex": "^0.16.27",
     "marked": "^16.4.1",
+    "mermaid": "^11.12.2",
     "piml": "^1.1.1",
     "prismjs": "^1.30.0",
     "qrcode.react": "^4.2.0",

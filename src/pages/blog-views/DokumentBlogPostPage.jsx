@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -25,6 +25,7 @@ import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import MermaidDiagram from '../../components/MermaidDiagram';
 
 const dokumentCodeTheme = {
   'code[class*="language-"]': {
@@ -154,84 +155,193 @@ const DokumentBlogPostPage = () => {
     setIsModalOpen(true);
   };
 
-  const CodeBlock = ({ inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
+    const components = useMemo(() => {
+      const CodeBlock = ({ inline, className, children, ...props }) => {
+        const match = /language-(\w+)/.exec(className || '');
 
-    const handleCopy = () => {
-      const textToCopy = String(children);
-      navigator.clipboard.writeText(textToCopy).then(
-        () =>
-          addToast({
-            title: 'FILE COPIED',
-            message: 'Code sequence secured to clipboard.',
-            duration: 3000,
-            type: 'success',
-          }),
-        () =>
-          addToast({
-            title: 'ERROR',
-            message: 'Data extraction failed.',
-            duration: 3000,
-            type: 'error',
-          }),
-      );
-    };
+        const isMermaid = match && match[1] === 'mermaid';
 
-    if (!inline && match) {
-      return (
-        <div className="relative group my-8">
-          <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button
-              onClick={() =>
-                openModal(String(children).replace(/\n$/, ''), match[1])
-              }
-              className="bg-white border-2 border-black px-2 py-1 text-xs uppercase font-mono font-black tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-              title="Expand Dokument"
-            >
-              <ArrowsOutSimple size={12} weight="bold" /> EXPAND
-            </button>
-            <button
-              onClick={handleCopy}
-              className="bg-white border-2 border-black px-2 py-1 text-xs uppercase font-mono font-black tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-              title="Copy to Clipboard"
-            >
-              <ClipboardText size={12} weight="bold" /> COPY
-            </button>
-          </div>
-          <SyntaxHighlighter
-            style={dokumentCodeTheme}
-            language={match[1]}
-            PreTag="div"
-            CodeTag="code"
-            customStyle={{
-              margin: 0,
-              padding: '1.5rem',
-              fontSize: '0.9rem',
-              lineHeight: '1.6',
-              background: '#ffffff',
-              border: '2px solid #000',
-              boxShadow: '4px 4px 0px 0px rgba(0,0,0,1)',
-            }}
+        if (!inline && isMermaid) {
+          return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+        }
+
+        const handleCopy = () => {
+          const textToCopy = String(children);
+
+          navigator.clipboard.writeText(textToCopy).then(
+
+            () =>
+
+              addToast({
+
+                title: 'FILE COPIED',
+
+                message: 'Code sequence secured to clipboard.',
+
+                duration: 3000,
+
+                type: 'success',
+
+              }),
+
+            () =>
+
+              addToast({
+
+                title: 'ERROR',
+
+                message: 'Data extraction failed.',
+
+                duration: 3000,
+
+                type: 'error',
+
+              }),
+
+          );
+        };
+
+        if (!inline && match) {
+          return (
+
+            <div className="relative group my-8">
+
+              <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+
+                <button
+
+                  onClick={() =>
+
+                    openModal(String(children).replace(/\n$/, ''), match[1])
+
+                  }
+
+                  className="bg-white border-2 border-black px-2 py-1 text-xs uppercase font-mono font-black tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+
+                  title="Expand Dokument"
+
+                >
+
+                  <ArrowsOutSimple size={12} weight="bold" /> EXPAND
+
+                </button>
+
+                <button
+
+                  onClick={handleCopy}
+
+                  className="bg-white border-2 border-black px-2 py-1 text-xs uppercase font-mono font-black tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
+
+                  title="Copy to Clipboard"
+
+                >
+
+                  <ClipboardText size={12} weight="bold" /> COPY
+
+                </button>
+
+              </div>
+
+              <SyntaxHighlighter
+
+                style={dokumentCodeTheme}
+
+                language={match[1]}
+
+                PreTag="div"
+
+                CodeTag="code"
+
+                customStyle={{
+
+                  margin: 0,
+
+                  padding: '1.5rem',
+
+                  fontSize: '0.9rem',
+
+                  lineHeight: '1.6',
+
+                  background: '#ffffff',
+
+                  border: '2px solid #000',
+
+                  boxShadow: '4px 4px 0px 0px rgba(0,0,0,1)',
+
+                }}
+
+                {...props}
+
+                codeTagProps={{
+
+                  style: { fontFamily: "'JetBrains Mono', monospace" },
+
+                }}
+
+              >
+
+                {String(children).replace(/\n$/, '')}
+
+              </SyntaxHighlighter>
+
+            </div>
+
+          );
+        }
+
+        return (
+
+          <code
+
+            className={`${className} font-mono bg-black/5 text-emerald-800 px-1.5 py-0.5 rounded-sm text-sm border-b border-black/10`}
+
             {...props}
-            codeTagProps={{
-              style: { fontFamily: "'JetBrains Mono', monospace" },
-            }}
-          >
-            {String(children).replace(/\n$/, '')}
-          </SyntaxHighlighter>
-        </div>
-      );
-    }
 
-    return (
-      <code
-        className={`${className} font-mono bg-black/5 text-emerald-800 px-1.5 py-0.5 rounded-sm text-sm border-b border-black/10`}
-        {...props}
-      >
-        {children}
-      </code>
-    );
-  };
+          >
+
+            {children}
+
+          </code>
+
+        );
+      };
+
+      return {
+
+        a: (p) => {
+          const isVocab =
+
+            p.href &&
+
+            (p.href.startsWith('/vocab/') || p.href.includes('/#/vocab/'));
+
+          return (
+
+            <MarkdownLink
+
+              {...p}
+
+              className={
+
+                isVocab
+
+                  ? 'font-bold text-black bg-emerald-300 px-1 hover:bg-emerald-700 hover:text-white transition-all cursor-help no-underline'
+
+                  : 'font-bold underline decoration-emerald-600/30 hover:decoration-emerald-600 text-emerald-800'
+
+              }
+
+            />
+
+          );
+        },
+
+        pre: ({ children }) => <>{children}</>,
+
+        code: CodeBlock,
+
+      };
+    }, [addToast]);
 
   if (loading)
     return (
@@ -313,26 +423,7 @@ const DokumentBlogPostPage = () => {
             <ReactMarkdown
               remarkPlugins={[remarkGfm, remarkMath]}
               rehypePlugins={[rehypeRaw, rehypeKatex]}
-              components={{
-                a: (p) => {
-                  const isVocab =
-                    p.href &&
-                    (p.href.startsWith('/vocab/') ||
-                      p.href.includes('/#/vocab/'));
-                  return (
-                    <MarkdownLink
-                      {...p}
-                      className={
-                        isVocab
-                          ? 'font-bold text-black bg-emerald-300 px-1 hover:bg-emerald-700 hover:text-white transition-all cursor-help no-underline'
-                          : 'font-bold underline decoration-emerald-600/30 hover:decoration-emerald-600 text-emerald-800'
-                      }
-                    />
-                  );
-                },
-                pre: ({ children }) => <>{children}</>,
-                code: CodeBlock,
-              }}
+              components={components}
             >
               {post.body}
             </ReactMarkdown>

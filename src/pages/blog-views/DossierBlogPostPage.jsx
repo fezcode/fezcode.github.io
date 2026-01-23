@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -23,6 +23,7 @@ import CodeModal from '../../components/CodeModal';
 import ImageModal from '../../components/ImageModal';
 import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import MermaidDiagram from '../../components/MermaidDiagram';
 
 const dossierCodeTheme = {
   'code[class*="language-"]': {
@@ -201,109 +202,138 @@ const DossierBlogPostPage = () => {
     setModalContent('');
   };
 
-  const CodeBlock = ({ inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
+  const components = useMemo(() => {
+    const CodeBlock = ({ inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || '');
+      const isMermaid = match && match[1] === 'mermaid';
 
-    const handleCopy = () => {
-      const textToCopy = String(children);
-      navigator.clipboard.writeText(textToCopy).then(
-        () =>
-          addToast({
-            title: 'EVIDENCE SECURED',
-            message: 'Code copied to clipboard.',
-            duration: 3000,
-            type: 'success',
-          }),
-        () =>
-          addToast({
-            title: 'ERROR',
-            message: 'Failed to copy code.',
-            duration: 3000,
-            type: 'error',
-          }),
+      if (!inline && isMermaid) {
+        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+      }
+
+      const handleCopy = () => {
+        const textToCopy = String(children);
+        navigator.clipboard.writeText(textToCopy).then(
+          () =>
+            addToast({
+              title: 'EVIDENCE SECURED',
+              message: 'Code copied to clipboard.',
+              duration: 3000,
+              type: 'success',
+            }),
+          () =>
+            addToast({
+              title: 'ERROR',
+              message: 'Failed to copy code.',
+              duration: 3000,
+              type: 'error',
+            }),
+        );
+      };
+
+      if (!inline && match) {
+        return (
+          <div className="relative group my-8">
+            <div className="absolute -top-3 right-4 flex gap-2 z-10">
+              <button
+                onClick={() =>
+                  openModal(String(children).replace(/\n$/, ''), match[1])
+                }
+                className="bg-white border border-black px-2 py-1 text-xs uppercase font-mono tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-sm"
+                title="Enlarge Evidence"
+              >
+                <ArrowsOutSimple size={12} /> EXPAND
+              </button>
+              <button
+                onClick={handleCopy}
+                className="bg-white border border-black px-2 py-1 text-xs uppercase font-mono tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-sm"
+                title="Copy to Clipboard"
+              >
+                <ClipboardText size={12} /> COPY
+              </button>
+            </div>
+            <div className="border border-black bg-[#f0f0f0] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
+              <div className="bg-black text-white px-2 py-1 text-xs font-mono uppercase tracking-widest border-b border-black flex justify-between">
+                <span>
+                  {'//'} ATTACHMENT: {match[1]}
+                </span>
+              </div>
+              <SyntaxHighlighter
+                style={dossierCodeTheme}
+                language={match[1]}
+                PreTag="div"
+                CodeTag="code"
+                customStyle={{
+                  margin: 0,
+                  padding: '1.5rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.6',
+                  background: 'transparent',
+                  border: 'none',
+                }}
+                {...props}
+                codeTagProps={{
+                  style: { fontFamily: "'JetBrains Mono', monospace" },
+                }}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <code
+          className={`${className} font-mono bg-black/10 px-1.5 py-0.5 rounded-sm text-sm border-b border-black/20`}
+          {...props}
+        >
+          {children}
+        </code>
       );
     };
 
-    if (!inline && match) {
-      return (
-        <div className="relative group my-8">
-          <div className="absolute -top-3 right-4 flex gap-2 z-10">
-            <button
-              onClick={() =>
-                openModal(String(children).replace(/\n$/, ''), match[1])
-              }
-              className="bg-white border border-black px-2 py-1 text-xs uppercase font-mono tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-sm"
-              title="Enlarge Evidence"
-            >
-              <ArrowsOutSimple size={12} /> EXPAND
-            </button>
-            <button
-              onClick={handleCopy}
-              className="bg-white border border-black px-2 py-1 text-xs uppercase font-mono tracking-wider hover:bg-black hover:text-white transition-colors flex items-center gap-1 shadow-sm"
-              title="Copy to Clipboard"
-            >
-              <ClipboardText size={12} /> COPY
-            </button>
-          </div>
-          <div className="border border-black bg-[#f0f0f0] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
-            <div className="bg-black text-white px-2 py-1 text-xs font-mono uppercase tracking-widest border-b border-black flex justify-between">
-              <span>
-                {'//'} ATTACHMENT: {match[1]}
-              </span>
-            </div>
-            <SyntaxHighlighter
-              style={dossierCodeTheme}
-              language={match[1]}
-              PreTag="div"
-              CodeTag="code"
-              customStyle={{
-                margin: 0,
-                padding: '1.5rem',
-                fontSize: '0.9rem',
-                lineHeight: '1.6',
-                background: 'transparent',
-                border: 'none',
-              }}
-              {...props}
-              codeTagProps={{
-                style: { fontFamily: "'JetBrains Mono', monospace" },
-              }}
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          </div>
+    const ImageRenderer = ({ src, alt }) => (
+      <div className="my-12 w-full flex justify-center group relative transform rotate-1 hover:rotate-0 transition-transform duration-500 ease-in-out">
+        <div className="absolute inset-0 bg-black/20 transform translate-x-2 translate-y-2 pointer-events-none -z-10 blur-sm"></div>
+        <div
+          className="bg-white p-3 pb-8 border border-gray-200 shadow-md cursor-pointer w-full max-w-[98%] mx-auto"
+          onClick={() => setModalImageSrc(src)}
+        >
+          <img
+            src={src}
+            alt={alt}
+            className="h-auto filter sepia-[0.2] contrast-[1.05] group-hover:sepia-0 transition-all duration-500 mx-auto block"
+          />
+          <p className="font-mono text-xs uppercase tracking-widest text-black/40 mt-4 border-t border-black/10 pt-4">
+            {'//'} EXHIBIT: {alt || 'UNLABELED'}
+          </p>
         </div>
-      );
-    }
-
-    return (
-      <code
-        className={`${className} font-mono bg-black/10 px-1.5 py-0.5 rounded-sm text-sm border-b border-black/20`}
-        {...props}
-      >
-        {children}
-      </code>
-    );
-  };
-
-  const ImageRenderer = ({ src, alt }) => (
-    <div className="my-12 w-full flex justify-center group relative transform rotate-1 hover:rotate-0 transition-transform duration-500 ease-in-out">
-      <div className="absolute inset-0 bg-black/20 transform translate-x-2 translate-y-2 pointer-events-none -z-10 blur-sm"></div>
-      <div
-        className="bg-white p-3 pb-8 border border-gray-200 shadow-md cursor-pointer w-full max-w-[98%] mx-auto"
-        onClick={() => setModalImageSrc(src)}
-      >
-        <img
-          src={src}
-          alt={alt}
-          className="h-auto filter sepia-[0.2] contrast-[1.05] group-hover:sepia-0 transition-all duration-500 mx-auto block"
-        />
-        <p className="font-mono text-xs uppercase tracking-widest text-black/40 mt-4 border-t border-black/10 pt-4">
-          {'//'} EXHIBIT: {alt || 'UNLABELED'}
-        </p>
       </div>
-    </div>
-  );
+    );
+
+    return {
+      a: (props) => {
+        const isVocab =
+          props.href &&
+          (props.href.startsWith('/vocab/') ||
+            props.href.includes('/#/vocab/'));
+        return (
+          <MarkdownLink
+            {...props}
+            className={
+              isVocab
+                ? '!text-amber-600 !hover:text-red-600 font-bold transition-colors cursor-help !decoration-amber-600/30 underline decoration-2 underline-offset-2'
+                : 'inline-block px-1 bg-black/5 hover:bg-black hover:text-white transition-all font-mono text-sm mx-0.5 rounded-sm no-underline'
+            }
+          />
+        );
+      },
+      pre: ({ children }) => <>{children}</>,
+      code: CodeBlock,
+      img: ImageRenderer,
+    };
+  }, [addToast]);
 
   if (loading) {
     return (
@@ -444,27 +474,7 @@ const DossierBlogPostPage = () => {
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeRaw, rehypeKatex]}
-            components={{
-              a: (props) => {
-                const isVocab =
-                  props.href &&
-                  (props.href.startsWith('/vocab/') ||
-                    props.href.includes('/#/vocab/'));
-                return (
-                  <MarkdownLink
-                    {...props}
-                    className={
-                      isVocab
-                        ? '!text-amber-600 !hover:text-red-600 font-bold transition-colors cursor-help !decoration-amber-600/30 underline decoration-2 underline-offset-2'
-                        : 'inline-block px-1 bg-black/5 hover:bg-black hover:text-white transition-all font-mono text-sm mx-0.5 rounded-sm no-underline'
-                    }
-                  />
-                );
-              },
-              pre: ({ children }) => <>{children}</>,
-              code: CodeBlock,
-              img: ImageRenderer,
-            }}
+            components={components}
           >
             {post.body}
           </ReactMarkdown>

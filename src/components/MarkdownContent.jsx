@@ -6,6 +6,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeKatex from 'rehype-katex';
 import { ImagesIcon } from '@phosphor-icons/react';
 import ImageModal from './ImageModal';
+import MermaidDiagram from './MermaidDiagram';
 
 const MarkdownContent = ({ content, components = {}, className = '' }) => {
   const [modalData, setModalData] = useState(null);
@@ -32,8 +33,24 @@ const MarkdownContent = ({ content, components = {}, className = '' }) => {
     );
   };
 
+  const CodeBlock = ({ node, inline, className, children, ...props }) => {
+    const match = /language-(\w+)/.exec(className || '');
+    const isMermaid = match && match[1] === 'mermaid';
+
+    if (!inline && isMermaid) {
+      return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+    }
+
+    return (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
+  };
+
   const defaultComponents = {
     img: CustomImage,
+    code: CodeBlock,
     ...components,
   };
 

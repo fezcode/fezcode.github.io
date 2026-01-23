@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import {
@@ -19,6 +19,7 @@ import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
+import MermaidDiagram from '../../components/MermaidDiagram';
 
 const LuxeBlogPostPage = () => {
   const { slug, episodeSlug } = useParams();
@@ -81,69 +82,96 @@ const LuxeBlogPostPage = () => {
     setIsCodeModalOpen(true);
   };
 
-  const CodeBlock = ({ inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
+  const components = useMemo(() => {
+    const CodeBlock = ({ inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || '');
+      const isMermaid = match && match[1] === 'mermaid';
 
-    const handleCopy = () => {
-      navigator.clipboard.writeText(String(children)).then(() => {
-        addToast({
-          title: 'Specimen Captured',
-          message: 'Code has been copied to your clipboard.',
-          type: 'success'
+      if (!inline && isMermaid) {
+        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+      }
+
+      const handleCopy = () => {
+        navigator.clipboard.writeText(String(children)).then(() => {
+          addToast({
+            title: 'Specimen Captured',
+            message: 'Code has been copied to your clipboard.',
+            type: 'success',
+          });
         });
-      });
+      };
+
+      if (!inline && match) {
+        return (
+          <div className="relative group my-12">
+            {/* Action Overlay */}
+            <div className="absolute top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
+              <button
+                onClick={() =>
+                  openCodeModal(
+                    String(children).replace(/\n$/, ''),
+                    match[1],
+                  )
+                }
+                className="bg-white/90 backdrop-blur-sm border border-[#1A1A1A]/10 px-3 py-1.5 text-[10px] uppercase font-outfit font-bold tracking-widest text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all rounded-full shadow-sm"
+                title="Expand View"
+              >
+                <ArrowsOutSimple size={14} weight="bold" />
+              </button>
+              <button
+                onClick={handleCopy}
+                className="bg-white/90 backdrop-blur-sm border border-[#1A1A1A]/10 px-3 py-1.5 text-[10px] uppercase font-outfit font-bold tracking-widest text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all rounded-full shadow-sm"
+                title="Copy Source"
+              >
+                <ClipboardText size={14} weight="bold" />
+              </button>
+            </div>
+
+            <div className="rounded-sm overflow-hidden border border-[#1A1A1A]/5 shadow-sm bg-white">
+              <div className="bg-[#FAFAF8] px-6 py-3 border-b border-[#1A1A1A]/5 flex justify-between items-center">
+                <span className="font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/30 font-bold">
+                  Source Specimen: {match[1]}
+                </span>
+              </div>
+              <SyntaxHighlighter
+                style={coy}
+                language={match[1]}
+                PreTag="div"
+                customStyle={{
+                  margin: 0,
+                  padding: '2rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.7',
+                  background: 'transparent',
+                }}
+                {...props}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            </div>
+          </div>
+        );
+      }
+      return (
+        <code
+          className={`${className} font-mono text-sm bg-[#1A1A1A]/5 text-[#8D4004] px-1.5 py-0.5 rounded-sm`}
+          {...props}
+        >
+          {children}
+        </code>
+      );
     };
 
-    if (!inline && match) {
-      return (
-        <div className="relative group my-12">
-          {/* Action Overlay */}
-          <div className="absolute top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
-            <button
-              onClick={() => openCodeModal(String(children).replace(/\n$/, ''), match[1])}
-              className="bg-white/90 backdrop-blur-sm border border-[#1A1A1A]/10 px-3 py-1.5 text-[10px] uppercase font-outfit font-bold tracking-widest text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all rounded-full shadow-sm"
-              title="Expand View"
-            >
-              <ArrowsOutSimple size={14} weight="bold" />
-            </button>
-            <button
-              onClick={handleCopy}
-              className="bg-white/90 backdrop-blur-sm border border-[#1A1A1A]/10 px-3 py-1.5 text-[10px] uppercase font-outfit font-bold tracking-widest text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all rounded-full shadow-sm"
-              title="Copy Source"
-            >
-              <ClipboardText size={14} weight="bold" />
-            </button>
-          </div>
-
-          <div className="rounded-sm overflow-hidden border border-[#1A1A1A]/5 shadow-sm bg-white">
-            <div className="bg-[#FAFAF8] px-6 py-3 border-b border-[#1A1A1A]/5 flex justify-between items-center">
-               <span className="font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/30 font-bold">Source Specimen: {match[1]}</span>
-            </div>
-            <SyntaxHighlighter
-              style={coy}
-              language={match[1]}
-              PreTag="div"
-              customStyle={{
-                margin: 0,
-                padding: '2rem',
-                fontSize: '0.9rem',
-                lineHeight: '1.7',
-                background: 'transparent',
-              }}
-              {...props}
-            >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
-          </div>
-        </div>
-      );
-    }
-    return (
-      <code className={`${className} font-mono text-sm bg-[#1A1A1A]/5 text-[#8D4004] px-1.5 py-0.5 rounded-sm`} {...props}>
-        {children}
-      </code>
-    );
-  };
+    return {
+      a: (p) => (
+        <MarkdownLink
+          {...p}
+          className="text-[#8D4004] hover:text-black transition-colors"
+        />
+      ),
+      code: CodeBlock,
+    };
+  }, [addToast]);
 
   if (loading) {
     return (
@@ -211,10 +239,7 @@ const LuxeBlogPostPage = () => {
           ">
               <MarkdownContent
                 content={post.body}
-                components={{
-                  a: (p) => <MarkdownLink {...p} className="text-[#8D4004] hover:text-black transition-colors" />,
-                  code: CodeBlock,
-                }}
+                components={components}
               />
           </div>
 

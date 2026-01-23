@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
@@ -11,6 +11,7 @@ import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
+import MermaidDiagram from '../../components/MermaidDiagram';
 
 const EditorialBlogPostPage = () => {
   const { slug, episodeSlug } = useParams();
@@ -84,89 +85,190 @@ const EditorialBlogPostPage = () => {
     setIsCodeModalOpen(true);
   };
 
-  const CodeBlock = ({ inline, className, children, ...props }) => {
-    const match = /language-(\w+)/.exec(className || '');
+  const toggleInvert = () => setIsInvert(!isInvert);
 
-    const handleCopy = () => {
-      const textToCopy = String(children);
-      navigator.clipboard.writeText(textToCopy).then(
-        () =>
-          addToast({
-            title: 'COPIED',
-            message: 'Code synchronized to clipboard.',
-            duration: 3000,
-            type: 'success',
-          }),
-        () =>
-          addToast({
-            title: 'ERROR',
-            message: 'Failed to access clipboard.',
-            duration: 3000,
-            type: 'error',
-          }),
+  const components = useMemo(() => {
+    const CodeBlock = ({ inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || '');
+      const isMermaid = match && match[1] === 'mermaid';
+
+      if (!inline && isMermaid) {
+        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+      }
+
+      const handleCopy = () => {
+        const textToCopy = String(children);
+        navigator.clipboard.writeText(textToCopy).then(
+          () =>
+            addToast({
+              title: 'COPIED',
+              message: 'Code synchronized to clipboard.',
+              duration: 3000,
+              type: 'success',
+            }),
+          () =>
+            addToast({
+              title: 'ERROR',
+              message: 'Failed to access clipboard.',
+              duration: 3000,
+              type: 'error',
+            }),
+        );
+      };
+
+      if (!inline && match) {
+        return (
+          <div className={`relative group my-8 border ${isInvert ? 'border-white/10' : 'border-black/10'}`}>
+            <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+              <button
+                onClick={() =>
+                  openCodeModal(String(children).replace(/\n$/, ''), match[1])
+                }
+                className={`px-2 py-1 text-[10px] uppercase font-instr-sans font-bold tracking-widest transition-all rounded-sm border ${isInvert ? 'bg-white text-black border-white/10 hover:bg-black hover:text-white' : 'bg-black text-white border-white/10 hover:bg-white hover:text-black'}`}
+              >
+                EXPAND
+              </button>
+              <button
+                onClick={handleCopy}
+                className={`px-2 py-1 text-[10px] uppercase font-instr-sans font-bold tracking-widest transition-all rounded-sm border ${isInvert ? 'bg-white text-black border-white/10 hover:bg-black hover:text-white' : 'bg-black text-white border-white/10 hover:bg-white hover:text-black'}`}
+              >
+                COPY
+              </button>
+            </div>
+            <div className={`rounded-sm overflow-hidden ${isInvert ? 'bg-[#111111]' : 'bg-[#e8e8e8]'}`}>
+              <div className={`px-4 py-2 border-b flex justify-between items-center ${isInvert ? 'border-white/10 bg-white/5' : 'border-black/10 bg-black/5'}`}>
+                <span className={`font-instr-sans text-[9px] uppercase tracking-[0.2em] ${isInvert ? 'text-white/50' : 'text-black/50'}`}>
+                  {match[1]}
+                </span>
+              </div>
+              <SyntaxHighlighter
+                style={isInvert ? darkTheme : lightTheme}
+                language={match[1]}
+                PreTag="div"
+                CodeTag="code"
+                customStyle={{
+                  margin: 0,
+                  padding: '1.5rem',
+                  fontSize: '0.9rem',
+                  lineHeight: '1.6',
+                  background: 'transparent',
+                }}
+                {...props}
+                codeTagProps={{
+                  style: { fontFamily: "'JetBrains Mono', monospace" },
+                }}
+              >
+                {String(children).replace(/\n$/, '')}
+              </SyntaxHighlighter>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <code
+          className={`${className} font-mono px-1.5 py-0.5 rounded-sm text-sm relative -top-[0.1em] ${isInvert ? 'bg-white/10 text-white border border-white/20' : 'bg-black/5 text-black border border-black/10'}`}
+          {...props}
+        >
+          {children}
+        </code>
       );
     };
 
-    if (!inline && match) {
-      return (
-        <div className={`relative group my-8 border ${isInvert ? 'border-white/10' : 'border-black/10'}`}>
-          <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
-            <button
-              onClick={() =>
-                openCodeModal(String(children).replace(/\n$/, ''), match[1])
-              }
-              className={`px-2 py-1 text-[10px] uppercase font-instr-sans font-bold tracking-widest transition-all rounded-sm border ${isInvert ? 'bg-white text-black border-white/10 hover:bg-black hover:text-white' : 'bg-black text-white border-white/10 hover:bg-white hover:text-black'}`}
-            >
-              EXPAND
-            </button>
-            <button
-              onClick={handleCopy}
-              className={`px-2 py-1 text-[10px] uppercase font-instr-sans font-bold tracking-widest transition-all rounded-sm border ${isInvert ? 'bg-white text-black border-white/10 hover:bg-black hover:text-white' : 'bg-black text-white border-white/10 hover:bg-white hover:text-black'}`}
-            >
-              COPY
-            </button>
-          </div>
-          <div className={`rounded-sm overflow-hidden ${isInvert ? 'bg-[#111111]' : 'bg-[#e8e8e8]'}`}>
-            <div className={`px-4 py-2 border-b flex justify-between items-center ${isInvert ? 'border-white/10 bg-white/5' : 'border-black/10 bg-black/5'}`}>
-              <span className={`font-instr-sans text-[9px] uppercase tracking-[0.2em] ${isInvert ? 'text-white/50' : 'text-black/50'}`}>
-                {match[1]}
-              </span>
-            </div>
-            <SyntaxHighlighter
-              style={isInvert ? darkTheme : lightTheme}
-              language={match[1]}
-              PreTag="div"
-              CodeTag="code"
-              customStyle={{
-                margin: 0,
-                padding: '1.5rem',
-                fontSize: '0.9rem',
-                lineHeight: '1.6',
-                background: 'transparent',
-              }}
+    return {
+      a: (p) => (
+        <MarkdownLink
+          {...p}
+          className={`underline decoration-1 underline-offset-4 transition-colors ${isInvert ? 'decoration-white/30 hover:decoration-white' : 'decoration-black/30 hover:decoration-black'}`}
+        />
+      ),
+      code: ({ inline, className, children, ...props }) => {
+        if (inline) {
+          return (
+            <code
+              className={`${className} font-mono px-1.5 py-0.5 rounded-sm text-sm relative -top-[0.1em] ${isInvert ? 'bg-white/10 text-white border border-white/20' : 'bg-black/5 text-black border border-black/10'}`}
               {...props}
-              codeTagProps={{
-                style: { fontFamily: "'JetBrains Mono', monospace" },
-              }}
             >
-              {String(children).replace(/\n$/, '')}
-            </SyntaxHighlighter>
+              {children}
+            </code>
+          );
+        }
+        return <CodeBlock className={className} {...props}>{children}</CodeBlock>;
+      },
+      strong: ({ children }) => <strong className="font-bold text-current">{children}</strong>,
+      img: (props) => (
+        <figure className="my-16 w-full group cursor-pointer" onClick={() => setModalImageSrc(props.src)}>
+          <div className={`overflow-hidden border ${isInvert ? 'border-white/10' : 'border-black/10'}`}>
+            <img
+              {...props}
+              alt={props.alt || 'Article Image'}
+              className="w-full h-auto transition-all duration-700"
+            />
           </div>
+          {props.alt && (
+            <figcaption className={`mt-4 text-center font-instr-sans text-xs uppercase tracking-widest ${isInvert ? 'text-white/50' : 'text-black/50'}`}>
+              {props.alt}
+            </figcaption>
+          )}
+        </figure>
+      ),
+      h1: ({ children }) => (
+        <div className="mt-20 mb-8">
+          <h2 className="text-5xl font-instr-serif tracking-tight mb-6">{children}</h2>
+          <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
         </div>
-      );
-    }
-
-    return (
-      <code
-        className={`${className} font-mono px-1.5 py-0.5 rounded-sm text-sm relative -top-[0.1em] ${isInvert ? 'bg-white/10 text-white border border-white/20' : 'bg-black/5 text-black border border-black/10'}`}
-        {...props}
-      >
-        {children}
-      </code>
-    );
-  };
-
-  const toggleInvert = () => setIsInvert(!isInvert);
+      ),
+      h2: ({ children }) => (
+        <div className="mt-16 mb-6">
+          <h2 className="text-4xl font-instr-serif tracking-tight mb-4">{children}</h2>
+          <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
+        </div>
+      ),
+      h3: ({ children }) => (
+        <div className="mt-12 mb-4">
+          <h3 className="text-3xl font-instr-serif italic tracking-tight mb-3">{children}</h3>
+          <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
+        </div>
+      ),
+      h4: ({ children }) => (
+        <div className="mt-10 mb-4">
+          <h4 className="text-2xl font-instr-serif italic tracking-tight mb-3">{children}</h4>
+          <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
+        </div>
+      ),
+      p: ({ node, children }) => {
+        if (node.children[0].tagName === 'img') {
+          return <div className="mb-8 last:mb-0">{children}</div>;
+        }
+        return <p className="mb-8 last:mb-0 leading-[1.8]">{children}</p>;
+      },
+      blockquote: ({ children }) => (
+        <blockquote className={`border-l-4 pl-8 my-12 italic text-3xl font-light ${isInvert ? 'border-white/20 text-white/90' : 'border-black/20 text-black/90'}`}>
+          {children}
+        </blockquote>
+      ),
+      ul: ({ children }) => <ul className="list-disc pl-6 my-8 space-y-3">{children}</ul>,
+      ol: ({ children }) => <ol className="list-decimal pl-6 my-8 space-y-3">{children}</ol>,
+      hr: () => <hr className={`my-16 border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />,
+      table: ({ children }) => (
+        <div className="overflow-x-auto my-12">
+          <table className={`w-full text-left border-collapse border ${isInvert ? 'border-white/25 text-white/90' : 'border-black/25 text-black/90'}`}>
+            {children}
+          </table>
+        </div>
+      ),
+      th: ({ children }) => (
+        <th className={`py-4 px-6 font-bold border ${isInvert ? 'border-white/25 bg-white/5' : 'border-black/25 bg-black/5'}`}>
+          {children}
+        </th>
+      ),
+      td: ({ children }) => (
+        <td className={`py-4 px-6 border ${isInvert ? 'border-white/25' : 'border-black/25'}`}>
+          {children}
+        </td>
+      ),
+    };
+  }, [isInvert, addToast]);
 
   if (loading) {
     return (
@@ -261,99 +363,7 @@ const EditorialBlogPostPage = () => {
             <div className="max-w-5xl mx-auto font-instr-serif text-xl md:text-2xl leading-[1.8] tracking-wide text-justify">
                 <MarkdownContent
                     content={post.body}
-                    components={{
-                        a: (p) => (
-                            <MarkdownLink
-                                {...p}
-                                className={`underline decoration-1 underline-offset-4 transition-colors ${isInvert ? 'decoration-white/30 hover:decoration-white' : 'decoration-black/30 hover:decoration-black'}`}
-                            />
-                        ),
-                        code: ({ inline, className, children, ...props }) => {
-                            if (inline) {
-                                return (
-                                    <code
-                                        className={`${className} font-mono px-1.5 py-0.5 rounded-sm text-sm relative -top-[0.1em] ${isInvert ? 'bg-white/10 text-white border border-white/20' : 'bg-black/5 text-black border border-black/10'}`}
-                                        {...props}
-                                    >
-                                        {children}
-                                    </code>
-                                );
-                            }
-                            return <CodeBlock className={className} {...props}>{children}</CodeBlock>;
-                        },
-                        strong: ({ children }) => <strong className="font-bold text-current">{children}</strong>,
-                        img: (props) => (
-                            <figure className="my-16 w-full group cursor-pointer" onClick={() => setModalImageSrc(props.src)}>
-                                <div className={`overflow-hidden border ${isInvert ? 'border-white/10' : 'border-black/10'}`}>
-                                    <img
-                                        {...props}
-                                        alt={props.alt || 'Article Image'}
-                                        className="w-full h-auto transition-all duration-700"
-                                    />
-                                </div>
-                                {props.alt && (
-                                    <figcaption className={`mt-4 text-center font-instr-sans text-xs uppercase tracking-widest ${isInvert ? 'text-white/50' : 'text-black/50'}`}>
-                                        {props.alt}
-                                    </figcaption>
-                                )}
-                            </figure>
-                        ),
-                        h1: ({children}) => (
-                            <div className="mt-20 mb-8">
-                                <h2 className="text-5xl font-instr-serif tracking-tight mb-6">{children}</h2>
-                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
-                            </div>
-                        ),
-                        h2: ({children}) => (
-                            <div className="mt-16 mb-6">
-                                <h2 className="text-4xl font-instr-serif tracking-tight mb-4">{children}</h2>
-                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
-                            </div>
-                        ),
-                        h3: ({children}) => (
-                            <div className="mt-12 mb-4">
-                                <h3 className="text-3xl font-instr-serif italic tracking-tight mb-3">{children}</h3>
-                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
-                            </div>
-                        ),
-                        h4: ({children}) => (
-                            <div className="mt-10 mb-4">
-                                <h4 className="text-2xl font-instr-serif italic tracking-tight mb-3">{children}</h4>
-                                <hr className={`border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />
-                            </div>
-                        ),
-                        p: ({ node, children }) => {
-                            if (node.children[0].tagName === 'img') {
-                                return <div className="mb-8 last:mb-0">{children}</div>;
-                            }
-                            return <p className="mb-8 last:mb-0 leading-[1.8]">{children}</p>;
-                        },
-                        blockquote: ({children}) => (
-                            <blockquote className={`border-l-4 pl-8 my-12 italic text-3xl font-light ${isInvert ? 'border-white/20 text-white/90' : 'border-black/20 text-black/90'}`}>
-                                {children}
-                            </blockquote>
-                        ),
-                        ul: ({children}) => <ul className="list-disc pl-6 my-8 space-y-3">{children}</ul>,
-                        ol: ({children}) => <ol className="list-decimal pl-6 my-8 space-y-3">{children}</ol>,
-                        hr: () => <hr className={`my-16 border-t w-full ${isInvert ? 'border-white/25' : 'border-black/25'}`} />,
-                        table: ({children}) => (
-                            <div className="overflow-x-auto my-12">
-                                <table className={`w-full text-left border-collapse border ${isInvert ? 'border-white/25 text-white/90' : 'border-black/25 text-black/90'}`}>
-                                    {children}
-                                </table>
-                            </div>
-                        ),
-                        th: ({children}) => (
-                            <th className={`py-4 px-6 font-bold border ${isInvert ? 'border-white/25 bg-white/5' : 'border-black/25 bg-black/5'}`}>
-                                {children}
-                            </th>
-                        ),
-                        td: ({children}) => (
-                            <td className={`py-4 px-6 border ${isInvert ? 'border-white/25' : 'border-black/25'}`}>
-                                {children}
-                            </td>
-                        ),
-                    }}
+                    components={components}
                 />
             </div>
 
