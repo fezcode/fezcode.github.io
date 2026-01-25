@@ -8,4 +8,5 @@ module.exports = {
   instrSerif: ['Instrument Serif', 'serif'],
   instrSans: ['Instrument Sans', 'sans-serif'],
   nunito: ['Nunito', 'sans-serif'],
+  garamond: ['"EB Garamond"', 'serif'],
 };
