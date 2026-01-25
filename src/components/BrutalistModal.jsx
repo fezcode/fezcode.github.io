@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
 
-const BrutalistModal = ({ isOpen, onClose, title, children }) => {
+const BrutalistModal = ({ isOpen, onClose, title, children, maxWidth = 'max-w-xl' }) => {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape' && isOpen) {
@@ -41,7 +41,7 @@ const BrutalistModal = ({ isOpen, onClose, title, children }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
-            className="relative w-full max-w-xl bg-[#050505] border border-white/10 rounded-sm shadow-2xl overflow-hidden flex flex-col"
+            className={`relative w-full ${maxWidth} bg-[#050505] border border-white/10 rounded-sm shadow-2xl overflow-hidden flex flex-col`}
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-6 border-b border-white/10 bg-white/[0.02]">

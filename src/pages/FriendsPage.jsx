@@ -6,6 +6,7 @@ import {
   Broadcast,
   BookOpen,
   Users,
+  ArrowSquareOut,
 } from '@phosphor-icons/react';
 import piml from 'piml';
 import Seo from '../components/Seo';
@@ -42,17 +43,29 @@ const FriendsPage = () => {
 
   const getCategoryIcon = (key) => {
     switch (key) {
-      case 'friends': return <Users size={32} weight="duotone" className="text-emerald-500" />;
-      case 'books': return <BookOpen size={32} weight="duotone" className="text-cyan-500" />;
-      default: return <Broadcast size={32} weight="duotone" className="text-rose-500" />;
+      case 'friends':
+        return (
+          <Users size={32} weight="duotone" className="text-emerald-500" />
+        );
+      case 'books':
+        return (
+          <BookOpen size={32} weight="duotone" className="text-cyan-500" />
+        );
+      default:
+        return (
+          <Broadcast size={32} weight="duotone" className="text-rose-500" />
+        );
     }
   };
 
   const getCategoryLabel = (key) => {
     switch (key) {
-      case 'friends': return 'Parallel Realities';
-      case 'books': return 'Archive Access';
-      default: return key.charAt(0).toUpperCase() + key.slice(1);
+      case 'friends':
+        return 'Parallel Realities';
+      case 'books':
+        return 'Archive Access';
+      default:
+        return key.charAt(0).toUpperCase() + key.slice(1);
     }
   };
 
@@ -63,8 +76,13 @@ const FriendsPage = () => {
         description="A curated list of signals, portals, and archives from the digital garden."
       />
       {/* Structural Grid Background */}
-      <div className="fixed inset-0 opacity-[0.05] pointer-events-none"
-           style={{ backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '100px 100px' }}
+      <div
+        className="fixed inset-0 opacity-[0.05] pointer-events-none"
+        style={{
+          backgroundImage:
+            'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+          backgroundSize: '100px 100px',
+        }}
       />
 
       {/* Decorative Art Background - Increased visibility */}
@@ -77,7 +95,7 @@ const FriendsPage = () => {
         <motion.div
           initial={{ y: -100 }}
           animate={{ y: '100vh' }}
-          transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
           className="w-full h-24 bg-gradient-to-b from-transparent via-emerald-500/10 to-transparent"
         />
       </div>
@@ -85,8 +103,80 @@ const FriendsPage = () => {
       <BrutalistModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        item={selectedItem}
-      />
+        maxWidth="max-w-4xl"
+        title={
+          <span className="font-playfairDisplay font-bold normal-case text-3xl">
+            {selectedItem?.title}
+          </span>
+        }
+      >
+        {' '}
+        <div className="flex flex-col md:flex-row -m-8 min-h-[400px]">
+          {/* Left Side: All Generative Art */}
+          <div className="w-full md:w-5/12 border-b md:border-b-0 md:border-r border-white/10 relative overflow-hidden bg-black">
+            <div className="absolute inset-0 z-0">
+              <GenerativeArt
+                seed={selectedItem?.title || 'void'}
+                className="w-full h-full"
+              />
+            </div>
+            {/* Aesthetic Overlays */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.4)_100%)] pointer-events-none" />
+          </div>
+
+          {/* Right Side: Detailed Transmission Data */}
+          <div className="w-full md:w-7/12 p-10 flex flex-col bg-[#050505] relative">
+            <div className="mb-8">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-[1px] bg-emerald-500" />
+                <span className="font-mono text-[10px] uppercase tracking-[0.4em] text-emerald-500/70">
+                  Secure Transmission
+                </span>
+              </div>
+
+              {selectedItem?.author && (
+                <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500 border-l border-emerald-500/30 pl-4 py-1">
+                  Origin: {selectedItem.author}
+                </p>
+              )}
+            </div>
+
+            <div className="flex-grow">
+              {selectedItem?.description && (
+                <p className="font-garamond text-xl md:text-2xl text-gray-300 leading-relaxed opacity-90">
+                  "{selectedItem.description}"
+                </p>
+              )}
+            </div>
+
+            {selectedItem?.url && (
+              <div className="mt-12 pt-8 border-t border-white/5">
+                <a
+                  href={selectedItem.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between w-full p-4 bg-emerald-950/30 border border-emerald-500/30 hover:bg-emerald-500 hover:border-emerald-500 hover:text-black transition-all duration-300"
+                >
+                  <span className="font-mono text-xs font-bold uppercase tracking-[0.2em] text-emerald-500 group-hover:text-black transition-colors">
+                    Establish Portal Connection
+                  </span>
+                  <ArrowSquareOut
+                    size={20}
+                    weight="bold"
+                    className="text-emerald-500 group-hover:text-black group-hover:translate-x-1 transition-all"
+                  />
+                </a>
+              </div>
+            )}
+
+            {/* Subtle Corner Decoration */}
+            <div className="absolute bottom-4 right-4 opacity-10 pointer-events-none">
+              <Broadcast size={40} weight="thin" className="text-emerald-500" />
+            </div>
+          </div>
+        </div>
+      </BrutalistModal>
 
       <div className="relative z-10">
         {/* Navigation */}
@@ -99,7 +189,10 @@ const FriendsPage = () => {
             onClick={() => navigate(-1)}
             className="group flex items-center gap-3 text-gray-500 hover:text-white transition-all duration-300 font-mono text-xs uppercase tracking-[0.3em] bg-white/5 px-4 py-2 border border-white/10 hover:border-emerald-500/50"
           >
-            <ArrowLeft weight="bold" className="group-hover:-translate-x-1 transition-transform" />
+            <ArrowLeft
+              weight="bold"
+              className="group-hover:-translate-x-1 transition-transform"
+            />
             <span>Return to Archive</span>
           </button>
           <div className="h-px flex-grow bg-white/10" />
@@ -109,10 +202,12 @@ const FriendsPage = () => {
           <header className="mb-32 relative">
             <div className="absolute -left-12 top-0 bottom-0 w-1 bg-emerald-500 hidden xl:block" />
             <h1 className="text-7xl md:text-9xl font-black font-playfairDisplay italic uppercase tracking-tighter mb-6 leading-none">
-              <span className="text-emerald-500">Friends</span> of the <span className="text-lime-500">Show</span>
+              <span className="text-emerald-500">Friends</span> of the{' '}
+              <span className="text-lime-500">Show</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-500 font-arvo max-w-2xl leading-relaxed border-l-2 border-white/10 pl-6">
-              Signals from parallel realities and archived transmissions from the digital garden.
+              Signals from parallel realities and archived transmissions from
+              the digital garden.
             </p>
           </header>
 
@@ -121,8 +216,14 @@ const FriendsPage = () => {
               let items = [];
               if (Array.isArray(content)) {
                 items = content;
-              } else if (content && typeof content === 'object' && content.item) {
-                items = Array.isArray(content.item) ? content.item : [content.item];
+              } else if (
+                content &&
+                typeof content === 'object' &&
+                content.item
+              ) {
+                items = Array.isArray(content.item)
+                  ? content.item
+                  : [content.item];
               }
 
               if (items.length === 0) return null;
@@ -138,14 +239,18 @@ const FriendsPage = () => {
                 >
                   <div className="flex items-center gap-8">
                     <div className="p-6 bg-white/5 border border-white/10 rounded-sm relative group overflow-hidden">
-                        <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-colors" />
-                        {getCategoryIcon(key)}
+                      <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/5 transition-colors" />
+                      {getCategoryIcon(key)}
                     </div>
                     <div className="flex-grow">
                       <div className="flex items-center gap-4 mb-2">
-                        <h2 className="text-4xl md:text-6xl font-normal font-playfairDisplay uppercase tracking-tighter">{getCategoryLabel(key)}</h2>
+                        <h2 className="text-4xl md:text-6xl font-normal font-playfairDisplay uppercase tracking-tighter">
+                          {getCategoryLabel(key)}
+                        </h2>
                         <div className="h-px flex-grow bg-white/10" />
-                        <span className="font-mono text-[10px] text-emerald-500/50 uppercase tracking-[0.2em]">Section_{idx + 1}</span>
+                        <span className="font-mono text-[10px] text-emerald-500/50 uppercase tracking-[0.2em]">
+                          Section_{idx + 1}
+                        </span>
                       </div>
                       <p className="text-xs font-mono text-gray-500 uppercase tracking-[0.4em]">
                         Transmissions detected in the {key} sector.
@@ -171,15 +276,15 @@ const FriendsPage = () => {
 
         <footer className="mt-64 pt-24 border-t border-white/10 relative">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 px-8 bg-[#050505]">
-             <Broadcast size={32} className="text-emerald-500 animate-pulse" />
+            <Broadcast size={32} className="text-emerald-500 animate-pulse" />
           </div>
           <p className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.5em] text-center mb-4">
             End of Line // Transmission Terminated
           </p>
           <div className="flex justify-center gap-12 opacity-20">
-             {[...Array(6)].map((_, i) => (
-               <div key={i} className="w-1 h-1 bg-white rounded-full" />
-             ))}
+            {[...Array(6)].map((_, i) => (
+              <div key={i} className="w-1 h-1 bg-white rounded-full" />
+            ))}
           </div>
         </footer>
       </div>
