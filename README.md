@@ -1,6 +1,6 @@
 # Fezcodex
 
-![Fezcodex Card](public/images/fezcodex-card.jpg)
+![Fezcodex Card](public/images/fezcodex-card.png)
 
 ### What is this?
 Imagine you have a giant digital toy box. Inside, you keep the cool things you've built, the stories you've written, and a diary of all the interesting things you've learned. Fezcodex is that toy box. It is a special website that works like a personal museum on the internet. It is not just a boring page; it has moving parts, secret "Easter eggs," and little mini-apps like a sound mixer and a knowledge graph.
