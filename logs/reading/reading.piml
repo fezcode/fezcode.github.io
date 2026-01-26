@@ -1,5 +1,13 @@
 (logs)
   > (item)
+    (title) I Love You, Redis, But I'm Leaving You for SolidQueue
+    (author) Matt Kelly
+    (link) https://www.simplethread.com/redis-solidqueue/
+    (status) unread
+    (date) 2026-01-25
+    (description) A discussion on how Rails 8 has moved away from requiring Redis by introducing SolidQueue, SolidCache, and SolidCable, all running on relational databases.
+
+  > (item)
     (title) The AI Enlightenment
     (author) Maggie Appleton
     (link) https://maggieappleton.com/ai-enlightenment
