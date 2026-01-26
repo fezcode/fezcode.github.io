@@ -251,7 +251,7 @@ const BrutalistLogsPage = () => {
                   : "flex flex-col"
                 }
               >
-                {filteredLogs.map((log) => (
+                {filteredLogs.map((log, ndx) => (
                   <motion.div
                     layout
                     key={log.id}
@@ -262,7 +262,7 @@ const BrutalistLogsPage = () => {
                   >
                     <LogCard
                       log={log}
-                      index={log.originalIndex}
+                      index={ndx} // previously log.originalIndex
                       totalLogs={logs.length}
                       viewMode={viewMode}
                     />
