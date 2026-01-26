@@ -184,3 +184,25 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) gold
+
+  > (book)
+    (bookId) 5
+    (bookTitle) Cilt V: Kara Ragnarok
+    (phase) 5
+    (phaseTitle) Faz V: Kara Ragnarok
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-5-black-ragnarok/cold-message/the-message_tr.txt
+        (title) Soğuk Mesaj
+        (author) fezcode
+        (date) 2026-01-27
+        (updated) 2026-01-27
+      > (episode)
+        (id) 2
+        (filename) vol-5-black-ragnarok/the-foxs-den/the-fox_tr.txt
+        (title) Tilki'nin İni
+        (author) fezcode
+        (date) 2026-01-27
+        (updated) 2026-01-27
+    (overlay) darkslategray

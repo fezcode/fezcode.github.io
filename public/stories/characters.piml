@@ -243,3 +243,24 @@
     (book) The Massacre of the Grenadiers
     (description) The Mayor of Predymesh who was assassinated during the Massacre of the Grenadiers.
     (status) Deceased
+
+  > (character)
+    (name) Orinor Perborn
+    (role) Retired Fisherman / Former Agent
+    (book) The Cold Message
+    (description) A former operative of Black Ragnarok who retired to a life of fishing in Oakhaven. He was pulled back into the shadows by a cryptic message from his old partner.
+    (status) Active (Reluctant)
+
+  > (character)
+    (name) Freya Haelmar
+    (role) Operative
+    (book) The Cold Message
+    (description) An active operative of Black Ragnarok and Orinor's former partner. She has gone dark after discovering a betrayal within the organization.
+    (status) Missing (Compromised)
+
+  > (character)
+    (name) Vancelor "The Fox" Ivarel
+    (role) Retired Agent
+    (book) The Fox's Den
+    (description) A former Black Ragnarok agent known as "The Fox" who retired to raise a family. He lost his left eye in the line of duty and is reluctant to return to the shadows.
+    (status) Active (Reluctant)
