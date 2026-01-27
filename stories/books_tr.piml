@@ -184,3 +184,46 @@
         (date) 2026-01-08
         (updated) 2026-01-08
     (overlay) gold
+
+  > (book)
+    (bookId) 5
+    (bookTitle) Cilt V: Kara Ragnarok
+    (phase) 5
+    (phaseTitle) Faz V: Kara Ragnarok
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-5-black-ragnarok/cold-message/the-message_tr.txt
+        (title) Soğuk Mesaj
+        (author) fezcode
+        (date) 2026-01-27
+        (updated) 2026-01-27
+      > (episode)
+        (id) 2
+        (filename) vol-5-black-ragnarok/the-foxs-den/the-fox_tr.txt
+        (title) Tilki'nin İni
+        (author) fezcode
+        (date) 2026-01-27
+        (updated) 2026-01-27
+      > (episode)
+        (id) 3
+        (filename) vol-5-black-ragnarok/lighthouse-of-ash/the-lighthouse_tr.txt
+        (title) Kül Feneri
+        (author) fezcode
+        (date) 2026-01-27
+        (updated) 2026-01-27
+      > (episode)
+        (id) 4
+        (filename) vol-5-black-ragnarok/signal-on-the-road/the-signal_tr.txt
+        (title) Yoldaki Sinyal
+        (author) fezcode
+        (date) 2026-01-27
+        (updated) 2026-01-27
+      > (episode)
+        (id) 5
+        (filename) vol-5-black-ragnarok/the-miserable-trail/the-trail_tr.txt
+        (title) Sefillerin İzi
+        (author) fezcode
+        (date) 2026-01-27
+        (updated) 2026-01-27
+    (overlay) darkslategray

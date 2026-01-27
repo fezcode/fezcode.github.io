@@ -2,21 +2,21 @@
   > (character)
     (name) Corrigan
     (role) Private Investigator
-    (book) The Broken Path
+    (book) The Case of the Mirror Man
     (description) A cynical detective who hunted his own shadow and found it. After the incident at the St. Marlowe, he is said to walk without a reflection—a hollow vessel haunting the streets of Predymesh.
     (status) Alive (Hollow / Shadowless)
 
   > (character)
     (name) Doctor Blade
     (role) Physician & Assassin
-    (book) The Tales of Doctor Blade
+    (book) The Drop of Alilberry
     (description) A legendary healer with a dark secret. He cures the incurable and kills with the same precision using the magical Alilberry.
     (status) Alive
 
   > (character)
     (name) Master Vorn
     (role) Merchant
-    (book) The Tales of Doctor Blade
+    (book) The Drop of Alilberry
     (description) A wealthy merchant, cheat, and slaver who sought a cure for his gout and found eternal rest instead.
     (status) Deceased
 
@@ -51,133 +51,133 @@
   > (character)
     (name) Aester Cloudwear
     (role) Real Estate Developer
-    (book) The Sins of Glareach
+    (book) The Beret with 22 Stars
     (description) A wealthy tycoon who manipulated the War of Fourbournes to gentrify Glareach. A monster in a silk suit who built a sin city on the bones of the poor.
     (status) Alive (Wealthy)
 
   > (character)
     (name) Lorhud Krauper
     (role) Hitman / Former Soldier
-    (book) The Sins of Glareach
+    (book) The Beret with 22 Stars
     (description) A drug-addicted veteran seeking revenge for his daughter Lenia. He wears a green beret with 22 stars and walks the razor's edge between healing and death.
     (status) Alive (Addicted)
 
   > (character)
     (name) Lenia Krauper
     (role) Seamstress / Victim
-    (book) The Sins of Glareach
+    (book) The Beret with 22 Stars
     (description) Lorhud's beloved daughter. During the razing of Glareach, she was dragged from her home by Cloudwear's private security. She was violated and butchered by Aester himself as her father watched helplessly from the shadows, her blood serving as the mortar for the first casino of the new Glareach.
     (status) Deceased
 
   > (character)
     (name) Klaude Barral
     (role) Chronomancer / Horologist
-    (book) The Chronomancer's Dust
+    (book) The Hour of Ghosts
     (description) A master clockmaker who uses ash from destroyed cities to power his Chronometers. He allows people to relive their past, but he never lets them change it.
     (status) Alive (Cynical)
 
   > (character)
     (name) Dr. Brann Corshield
     (role) Chief Alienist / Villain
-    (book) The Sanity Ward
+    (book) The Hysteria of the Moth
     (description) An immensely egotistical psychiatrist who runs St. Jude's Asylum. Obsessed with his own image (literally) and maintaining "order," he seeks to lobotomize the Sultan of Butterflies to silence her "delusions."
     (status) Alive (Narcissistic)
 
   > (character)
     (name) Valeth Vanceshire
     (role) Diplomat
-    (book) The Diplomat's Journal
+    (book) The Skulls in the Ceiling
     (description) A kind-hearted foreign diplomat visiting Thornus. Armed only with his navy blue notebook, he documents the corruption of the ruling class while trying to navigate a dangerous political landscape.
     (status) Alive (Observant)
 
   > (character)
     (name) Wulf Kosnak
     (role) Shadow Ruler / Corrupt Noble
-    (book) The Diplomat's Journal
+    (book) The Skulls in the Ceiling
     (description) A grotesque, gluttonous veteran who pulls the strings of Thornus from behind the curtain. He displays the skulls of his wife's parents as trophies, a secret he keeps from her.
     (status) Alive (Corrupt)
 
   > (character)
     (name) Penta Kosnak
     (role) Noblewoman / Prisoner
-    (book) The Diplomat's Journal
+    (book) The Skulls in the Ceiling
     (description) The young, beautiful, and intelligent wife of Wulf Kosnak. A spoil of war forced into marriage, she is a prisoner in her own home, unaware of the gruesome truth hanging above her head.
     (status) Alive (Trapped)
 
   > (character)
     (name) Ophera
     (role) Sewer Dweller / Listener
-    (book) The Whispering Rats
+    (book) The Truth Under the Grate
     (description) The eldest of the sewer-dwelling triplets. She "listens" to the vibrations of the city through the iron pipes, gathering secrets that wash down from above.
     (status) Alive (Hidden)
 
   > (character)
     (name) Melsani
     (role) Sewer Dweller / Watcher
-    (book) The Whispering Rats
+    (book) The Truth Under the Grate
     (description) One of the triplets. She watches the reflections in the city's grime and puddles, seeing truths that people try to hide in the light.
     (status) Alive (Hidden)
 
   > (character)
     (name) Nopilai
     (role) Sewer Dweller / Scenter
-    (book) The Whispering Rats
+    (book) The Truth Under the Grate
     (description) The brother of the triplets. He can smell fear, blood, and corruption in the steam that rises from the grates of Predymesh.
     (status) Alive (Hidden)
 
   > (character)
     (name) Pellera Orlong
     (role) Daughter / Patient Zero
-    (book) The Petals of Predymesh
+    (book) The Stolen Star
     (description) A twelve-year-old girl and the first human to manifest the 'Touch of Rose'. Afflicted by Willare's mistake, she remains in a vegetative state in a slum attic, her forehead marked by a crimson rose-leaf shape. She is the biological 'Zero Point' for the disease, and her mark is a beacon for a connection that hasn't been established yet.
     (status) Ailing (Vegetative)
 
   > (character)
     (name) Nex Orlong
     (role) Mason turned Thief
-    (book) The Petals of Predymesh
+    (book) The Stolen Star
     (description) Once an honest mason, Nex turned to a life of crime to fund the Alilberry treatment needed to save his daughter. He is desperate, guilt-ridden, and now in possession of dangerous secrets.
     (status) Alive (Wanted)
 
   > (character)
     (name) Avalia Krones
     (role) Scientist / Strategist
-    (book) The Harvest of Silence
+    (book) The Medal of Ash
     (description) A brilliant strategist who secretly used Proxanian Seeds and Sansu Syrup to develop her formula. She sought to create a botanical neural network but never intended to create a pathogen. After demanding to see Patient Zero (Pellera Orlong), she realized Willare's mistake involved her secret Proxanian materials. She remains silent about the source to protect her own life and research.
     (status) Alive (Strategically Silent)
 
   > (character)
     (name) Willare Frindjen
     (role) Junior Lab Assistant
-    (book) The Harvest of Silence
+    (book) The Medal of Ash
     (description) A dedicated assistant who is consumed by guilt. She accidentally contaminated the Krones Formula with what she thought was a standard supplement (the Crimson Binder). It was only after Avalia forced her to look at Pellera Orlong that she realized the magnitude of her error, though she still doesn't know the Proxanian nature of what she touched.
     (status) Alive (Guilt-Ridden / Broken)
 
   > (character)
     (name) Proythom
     (role) Farmer / Civilian
-    (book) The Harvest of Silence
+    (book) The Medal of Ash
     (description) Willare's former lover. A kind and honest man from the outskirts of Predymesh. Willare left him without explanation to protect him from the guilt and the 'rot' she believed she was carrying.
     (status) Alive (Heartbroken)
 
   > (character)
     (name) The Mute Bard
     (role) Alchemist's Companion
-    (book) The Tales of Doctor Blade
+    (book) The Drop of Alilberry
     (description) A mysterious figure who cannot speak but whose songs hold the power to stabilize volatile herbal mixtures. He provides the final, magical resonance required to turn raw Alilberry into the legendary 'Drop'.
     (status) Unknown
 
   > (character)
     (name) Prostex Leatherwave
     (role) Caretaker of Cats
-    (book) The Cat of Craninal
+    (book) The Purring Shadows
     (description) A young boy in Craninal who lives a simple, peaceful life caring for his three cats in a hidden garden.
     (status) Alive (Happy)
 
   > (character)
     (name) Soot, Ginger, and Moonbeam
     (role) The Council of Three (Cats)
-    (book) The Cat of Craninal
+    (book) The Purring Shadows
     (description) Pippin's three feline companions. Soot is the shadow, Ginger is the sleeper, and Moonbeam is the guardian. They provide the only true peace in the city of Craninal.
     (status) Alive (Purring)
 
@@ -212,7 +212,7 @@
   > (character)
     (name) Children of the Mountain
     (role) Extinct Civilization (Proxanians)
-    (book) The Sanity Ward
+    (book) RedLink Protocol 0-12
     (description) A humanoid race that predates human colonization of Thornus. Their culture revolved around the 'Communion Rites' and the biological harvesting of Sansu Syrup. Their remnant psychic frequency, the 'Proxanian Echo', is harvested to power the RedLink.
     (status) Extinct (Harvested)
 
@@ -243,3 +243,31 @@
     (book) The Massacre of the Grenadiers
     (description) The Mayor of Predymesh who was assassinated during the Massacre of the Grenadiers.
     (status) Deceased
+
+  > (character)
+    (name) Soren Perborn
+    (role) Retired Fisherman / Former Agent
+    (book) The Cold Message
+    (description) A former operative of Black Ragnarok who retired to a life of fishing in Oakhaven. He was pulled back into the shadows by a cryptic message from his old partner.
+    (status) Active (Reluctant)
+
+  > (character)
+    (name) Freya Haelmar
+    (role) Operative
+    (book) The Cold Message
+    (description) An active operative of Black Ragnarok and Soren's former partner. She has gone dark after discovering a betrayal within the organization.
+    (status) Missing (Compromised)
+
+  > (character)
+    (name) Vancelor "The Fox" Ivarel
+    (role) Retired Agent
+    (book) The Fox's Den
+    (description) A former Black Ragnarok agent known as "The Fox" who retired to raise a family. He lost his left eye in the line of duty and is reluctant to return to the shadows.
+    (status) Active (Reluctant)
+
+  > (character)
+    (name) Palwin Condervale
+    (role) Active Agent / Strategist
+    (book) The Lighthouse of Ash
+    (description) A sharp, seasoned operative of Black Ragnarok who never left the agency. She assists Soren and The Fox from the shadows of an abandoned lighthouse, though her true motives remain guarded.
+    (status) Active
