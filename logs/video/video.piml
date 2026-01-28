@@ -1,6 +1,24 @@
 (logs)
   > (item)
     (category) Video
+    (date) 2026-01-28
+    (link) https://www.youtube.com/watch?v=BK1ilhnSUtg
+    (rating) 5
+    (slug) had-to-be-me-mordin-solus
+    (title) Had to be me. Someone else might have gotten it wrong - Mordin Solus
+    (description) A poignant and defining moment for Mordin Solus in Mass Effect 3, sacrificing himself to cure the Genophage.
+
+  > (item)
+    (category) Video
+    (date) 2026-01-28
+    (link) https://www.youtube.com/watch?v=l0K4XPu3Qhg
+    (rating) 5
+    (slug) what-sam-altman-doesnt-want-you-to-know
+    (title) What Sam Altman Doesn't Want You To Know
+    (description) Analysis by Wallstreetmillennial on the strategic moves and hidden aspects of Sam Altman's leadership at OpenAI.
+
+  > (item)
+    (category) Video
     (date) 2026-01-08
     (link) https://www.youtube.com/watch?v=Mc6VA7Q1vXQ
     (rating) 5
