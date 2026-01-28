@@ -703,6 +703,14 @@
         "description": "Transform text into the cryptic Fezcodex symbolic cipher.",
         "icon": "PenNibIcon",
         "created_at": "2025-12-28T12:00:00+03:00"
+      },
+      {
+        "slug": "gokturkish-converter",
+        "to": "/apps/gokturkish-converter",
+        "title": "Göktürk Converter",
+        "description": "Convert text between Latin and Göktürk (Orkhon) script.",
+        "icon": "TranslateIcon",
+        "created_at": "2026-01-28T12:00:00+03:00"
       }
     ]
   },
@@ -853,6 +861,14 @@
         "description": "The ultimate Zero to Hero JavaScript and Node.js course.",
         "icon": "CodeIcon",
         "created_at": "2025-12-25T12:00:00+03:00"
+      },
+      {
+        "slug": "csv-flashcards",
+        "to": "/apps/csv-flashcards",
+        "title": "Flashcard Forge",
+        "description": "Study tool. Load custom flashcards via CSV for memory recall.",
+        "icon": "CardsIcon",
+        "created_at": "2026-01-28T14:00:00+03:00"
       }
     ]
   }

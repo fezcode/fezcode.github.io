@@ -111,9 +111,11 @@ const WallpaperEnginePage = lazy(() => import('../pages/apps/WallpaperEnginePage
 const SymbolFlowPage = lazy(() => import('../pages/apps/SymbolFlowPage'));
 const DataPrismPage = lazy(() => import('../pages/apps/DataPrismPage'));
 const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
+const CsvFlashcardsPage = lazy(() => import('../pages/apps/CsvFlashcardsPage'));
 const ColorTheoryPage = lazy(() => import('../pages/apps/ColorTheoryPage'));
 const TierForgePage = lazy(() => import('../pages/apps/TierForgePage'));
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
+const GokturkishConverterPage = lazy(() => import('../pages/apps/GokturkishConverterPage'));
 const AssetConstructorPage = lazy(() => import('../pages/apps/AssetConstructorPage'));
 const PatternGeneratorPage = lazy(() => import('../pages/apps/PatternGeneratorPage'));
 const CodeblockCreatorPage = lazy(() => import('../pages/apps/CodeblockCreatorPage'));
@@ -1168,6 +1170,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::fg"
           element={<Navigate to="/apps/fezglyph" replace />}
+        />
+        <Route
+          path="/apps::gokturk"
+          element={<Navigate to="/apps/gokturkish-converter" replace />}
         />
         <Route
           path="/apps::pat"
@@ -2509,6 +2515,22 @@ const AnimatedRoutes = ({
           }
         />
         <Route
+          path="/apps/csv-flashcards"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CsvFlashcardsPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
           path="/apps/fezglyph"
           element={
             <motion.div
@@ -2520,6 +2542,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <FezGlyphPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/gokturkish-converter"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <GokturkishConverterPage />
               </Suspense>
             </motion.div>
           }
