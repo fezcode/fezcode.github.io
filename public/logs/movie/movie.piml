@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-01-30
+    (link) https://www.imdb.com/title/tt0206634/
+    (director) Alfonso Cuarón
+    (rating) 5
+    (slug) children-of-men-2006
+    (title) Children of Men (2006)
+    (description) In 2027, in a chaotic world in which women have become somehow infertile, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea. The atmosphere is perfect, the set is superb, and the dystopian setup is consistently brilliant.
+
+  > (item)
+    (category) Movie
     (date) 2026-01-17
     (link) https://www.imdb.com/title/tt0342258/
     (director) Louis Leterrier
