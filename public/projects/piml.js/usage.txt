@@ -1,0 +1,30 @@
+LABEL: Code Examples
+SUBTEXT: USAGE
+
+### Parsing PIML to JavaScript Objects
+
+```javascript
+import { parse } from 'piml.js';
+
+const pimlString = `
+(site_name) My Awesome Site
+(port) 8080
+(is_production) true
+`;
+
+const config = parse(pimlString);
+```
+
+### Stringifying JavaScript Objects to PIML
+
+```javascript
+import { stringify } from 'piml.js';
+
+const config = {
+  site_name: 'My Awesome Site',
+  port: 8080,
+  is_production: true
+};
+
+const pimlString = stringify(config);
+```

@@ -10,6 +10,7 @@ const EditorialProjectDetailsPage = lazy(() => import('../pages/EditorialProject
 const MinimalModernProjectPage = lazy(() => import('../pages/MinimalModernProjectPage'));
 const MuseumProjectPage = lazy(() => import('../pages/MuseumProjectPage'));
 const LuxeProjectDetailPage = lazy(() => import('../pages/luxe-views/LuxeProjectDetailPage'));
+const BentoProjectPage = lazy(() => import('../pages/BentoProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -55,6 +56,14 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <MuseumProjectPage />
+      </Suspense>
+    );
+  }
+
+  if (projectStyle === 'bento') {
+    return (
+      <Suspense fallback={<Loading />}>
+        <BentoProjectPage />
       </Suspense>
     );
   }

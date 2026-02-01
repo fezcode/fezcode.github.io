@@ -1,5 +1,5 @@
-LABEL: Ecosystem
-SUBTEXT: Integration
+LABEL: ECOSYSTEM
+SUBTEXT: INTEGRATION
 
 PIML is supported by a growing ecosystem of tools:
 - **go-piml**: A high-performance Go parser and serializer.
