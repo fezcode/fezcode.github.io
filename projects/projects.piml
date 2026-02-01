@@ -141,6 +141,7 @@
   > (project)
     (slug) go-piml
     (title) go-piml
+    (style) bento
     (size) 1
     (demo_link) https://pkg.go.dev/github.com/fezcode/go-piml
     (repo_link) https://github.com/fezcode/go-piml
@@ -157,6 +158,7 @@
   > (project)
     (slug) piml.js
     (title) piml.js
+    (style) bento
     (size) 1
     (demo_link) https://www.npmjs.com/package/piml
     (repo_link) https://github.com/fezcode/piml.js
