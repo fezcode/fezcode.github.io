@@ -11,6 +11,7 @@ import PartnerLogos from '../components/stylish-project/PartnerLogos';
 import TerminalTabs from '../components/stylish-project/TerminalTabs';
 import { useProjects } from '../utils/projectParser';
 import Seo from '../components/Seo';
+import Loading from '../components/Loading';
 
 const StylishProjectDetailsPage = () => {
   const { slug } = useParams();
@@ -58,10 +59,12 @@ const StylishProjectDetailsPage = () => {
           setLoading(false);
         }
       };
-      fetchContent();
-    }, [slug, projects]);
-    if (loading) return <div className="min-h-screen bg-product-bg flex items-center justify-center text-white font-nunito">Loading...</div>;
-      // Robust parser for the :::block blocks
+            fetchContent();
+          }, [slug, projects]);
+
+          if (loading) return <Loading />;
+            // Robust parser for the :::block blocks
+
       const parseBlocks = (text, blockType) => {
         const blocks = [];
         if (!text || text.includes('<!DOCTYPE html>')) return blocks;
