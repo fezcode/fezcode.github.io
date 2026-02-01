@@ -1,0 +1,8 @@
+LABEL: Getting Started
+SUBTEXT: INSTALLATION
+
+To use `go-piml` in your Go project, simply run:
+
+```bash
+go get github.com/fezcode/go-piml
+```

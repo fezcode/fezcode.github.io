@@ -1,6 +1,49 @@
-LABEL: Overview
-SUBTEXT: The Concept
+# PIML: Parenthesis Intended Markup Language
 
-**PIML** is a data serialization format designed for humans first, machines second. It bridges the gap between the strictness of JSON and the ambiguity of YAML, offering a syntax that is readable, writable, and structurally obvious.
+**Spec version**: v1.1.0
 
-> "Data should be beautiful. Structure should be self-evident."
+PIML (Parenthesis Intended Markup Language) is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing. It was created to solve the frustrations found in JSON (too many brackets and quotes) and YAML (ambiguous indentation and type coercion).
+
+## Core Design Goals
+
+1. **Visual Scannability**: Use distinctive symbols `()` and `>` to make the data hierarchy visible at a glance.
+2. **Minimalist Syntax**: Remove unnecessary noise like quotes and commas where they don't add value.
+3. **Strict but Flexible**: Provide a clear structure that prevents common formatting errors while allowing for free-form text blocks.
+
+## Structural Overview
+
+PIML's power lies in its three primary building blocks:
+
+### 1. The Key-Value Pair
+Defined by parentheses. `(name) PIML` is a complete entry. No quotes needed for the key or simple string values.
+
+### 2. The List Item
+Defined by the `>` symbol. It allows for vertical lists that are incredibly easy to read and reorder.
+```piml
+(tags)
+  > data
+  > markup
+  > human-centric
+```
+
+### 3. The Nested Object
+Objects are created by placing key-value pairs or list items inside a parent key using indentation.
+```piml
+(database)
+  (host) 127.0.0.1
+  (settings)
+    (timeout) 30
+    (logging) true
+```
+
+## Advanced Type Handling
+
+PIML handles complex types with ease:
+- **Booleans**: `true` and `false`.
+- **Numbers**: Integers and floating-point numbers.
+- **Nulls**: Represented by `nil`.
+- **Text Blocks**: Multi-line strings are handled by indenting text under a key, maintaining all line breaks and internal formatting.
+
+## Adoption
+
+PIML is ideally suited for configuration files, manifest declarations, and any data storage where humans are expected to interact with the raw file regularly.
