@@ -20,6 +20,7 @@ import {
 } from '@phosphor-icons/react';
 import { version } from '../version';
 import TacticalGlobe from '../components/TacticalGlobe';
+import Loading from '../components/Loading';
 
 // --- STYLED COMPONENTS ---
 
@@ -237,7 +238,7 @@ const DashboardPage = () => {
     fetchAllData();
   }, []);
 
-  if (loading) return <div className="min-h-screen bg-[#050505] flex items-center justify-center"><div className="w-1 h-1 bg-white rounded-full animate-ping" /></div>;
+  if (loading) return <Loading />;
 
   // Metrics
   const totalPosts = data.posts.length;

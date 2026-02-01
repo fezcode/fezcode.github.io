@@ -10,6 +10,7 @@ import EditorialDescription from '../components/editorial-project/EditorialDescr
 import EditorialGridBackground from '../components/editorial-project/EditorialGridBackground';
 import { useProjects } from '../utils/projectParser';
 import Seo from '../components/Seo';
+import Loading from '../components/Loading';
 
 const EditorialProjectDetailsPage = () => {
   const { slug } = useParams();
@@ -64,7 +65,7 @@ const EditorialProjectDetailsPage = () => {
     }
   }, [slug, projectMetadata]);
 
-  if (loading) return <div className="min-h-screen bg-black text-white flex items-center justify-center font-mono">INITIALIZING...</div>;
+  if (loading) return <Loading />;
 
   return (
     <div className="min-h-screen bg-black text-[#e8e8e8] font-nunito selection:bg-[#ffffff20] selection:text-white overflow-x-hidden relative">

@@ -9,14 +9,59 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 18 Jan 2026 12:17:35 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 01 Feb 2026 00:01:28 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 18 Jan 2026 12:17:35 GMT</pubDate>
+        <pubDate>Sun, 01 Feb 2026 00:01:28 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Architecting Trust: 5 Patterns to Prevent Insider Threats]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/architecting-trust-preventing-insider-threats</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/architecting-trust-preventing-insider-threats</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 23 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Architecting Trust: 5 Patterns to Prevent Insider Threats</h1>
+<p><a href="https://fezcode.com/blog/architecting-trust-preventing-insider-threats">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Deep Link Configuration: Achieving a Global Parameter Observer in React]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/deep-link-configuration-with-url-parameters</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/deep-link-configuration-with-url-parameters</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 21 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Deep Link Configuration: Achieving a Global Parameter Observer in React</h1>
+<p><a href="https://fezcode.com/blog/deep-link-configuration-with-url-parameters">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Introducing Fezluxe: A Study in Refined Architectural Elegance]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/introducing-fezluxe-refined-architectural-elegance</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/introducing-fezluxe-refined-architectural-elegance</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 20 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Introducing Fezluxe: A Study in Refined Architectural Elegance</h1>
+<p><a href="https://fezcode.com/blog/introducing-fezluxe-refined-architectural-elegance">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The FIFA Paradox: Why We Spend 14 Hours Playing Games We Hate]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/gun-and-ball</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/gun-and-ball</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 19 Jan 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>⚠️ Disclaimer: Open Analysis</strong></p>
+<p>This post explores game data using statistical analysis. Please note that while I am an experienced engineer,
+I am not a specialized Data Scientist. I have made the code and data available <a href="https://github.com/fezcode/Project-Touch-Grass">in GitHub</a> for transparency.
+If you find errors in the methodology or want to improve the model, I welcome your feedback and pull requests.</p>
+</blockquote>
+<p><a href="https://fezcode.com/blog/gun-and-ball">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Dying is Easy, Comedy is Statistically Impossible: An IMDbayes Analysis]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -91,9 +136,18 @@ This ensured our statistical analysis was based on titles with a minimum level o
 <p>To get deeper insights, I needed better math than simple means.</p>
 <h4>Metric A: The Weighted Rating (Bayesian Average)</h4>
 <p>How do you compare a movie with a 9.0 rating and 105 votes against an 8.2 rating with 500,000 votes? The latter score is more statistically significant.</p>
-<p>I adopted IMDb&#39;s own <strong>Weighted Rating</strong> formula. This &quot;Bayesian average&quot; pulls a movie&#39;s rating toward the global average (C) if it has few votes (v),
-only allowing it to deviate as it gains more votes over a threshold (m).</p>
-<p><img src="/images/posts/wgsiw/formula.png" alt="Weighted Rating"></p>
+<p>I adopted IMDb&#39;s own <strong>Weighted Rating</strong> formula. This &quot;Bayesian average&quot; pulls a movie&#39;s rating toward the global average $C$ if it has few votes $v$,
+only allowing it to deviate as it gains more votes over a threshold $m$.</p>
+<p>$$
+WR = \left( \frac{v}{v+m} \cdot R \right) + \left( \frac{m}{v+m} \cdot C \right)
+$$</p>
+<p><strong>Where:</strong></p>
+<ul>
+<li>$R$ = Average Rating of the movie</li>
+<li>$v$ = Number of votes for the movie</li>
+<li>$m$ = Minimum votes required to be listed (Threshold: 100)</li>
+<li>$C$ = Mean vote across the whole dataset</li>
+</ul>
 <p>This provided a fair &quot;Quality Score&quot; for every movie.</p>
 <h4>Metric B: The p99 Ceiling</h4>
 <p>I wanted to know the &quot;potential&quot; of a genre. Even if most Action movies are mediocre, how good are the very best ones?</p>
