@@ -41,6 +41,7 @@ const DiceRollerPage = lazy(() => import('../pages/apps/DiceRollerPage'));
 const PickerWheelPage = lazy(() => import('../pages/apps/PickerWheelPage'));
 const CodenameGeneratorPage = lazy(() => import('../pages/apps/CodenameGeneratorPage'));
 const ImageToolkitPage = lazy(() => import('../pages/apps/ImageToolkitPage'));
+const QuoteGeneratorPage = lazy(() => import('../pages/apps/QuoteGeneratorPage'));
 const SoulsBannerGeneratorPage = lazy(() => import('../pages/apps/SoulsBannerGeneratorPage'));
 const PasswordGeneratorPage = lazy(() => import('../pages/apps/PasswordGeneratorPage'));
 const JsonFormatterPage = lazy(() => import('../pages/apps/JsonFormatterPage'));
@@ -926,6 +927,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::itk"
           element={<Navigate to="/apps/image-toolkit" replace />}
+        />
+        <Route
+          path="/apps::qg"
+          element={<Navigate to="/apps/quote-generator" replace />}
         />
         <Route
           path="/apps::pi"
@@ -1885,6 +1890,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <ImageToolkitPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/quote-generator"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <QuoteGeneratorPage />
               </Suspense>
             </motion.div>
           }
