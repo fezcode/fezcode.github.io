@@ -9,14 +9,28 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 02 Feb 2026 23:42:22 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 05 Feb 2026 02:19:44 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 02 Feb 2026 23:42:22 GMT</pubDate>
+        <pubDate>Thu, 05 Feb 2026 02:19:43 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Hyrum's Law: Why Your Bug Fix Broke My Spacebar Heating Workflow]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/hyrums-law</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/hyrums-law</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 05 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>⚠️ Warning: Behavioral Changes Ahead</strong></p>
+<p>If you rely on the specific way this blog post is formatted to scrape it for your AI training data, I apologize in advance.
+By reading this, you are effectively becoming an example of the very law I am about to explain.</p>
+</blockquote>
+<p><a href="https://fezcode.com/blog/hyrums-law">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Architecting Trust: 5 Patterns to Prevent Insider Threats]]></title>
             <description><![CDATA[[object Object]]]></description>

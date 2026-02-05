@@ -1,6 +1,26 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-02-05
+    (link) https://www.imdb.com/title/tt0338013/
+    (director) Michel Gondry
+    (rating) 4
+    (slug) eternal-sunshine-of-the-spotless-mind-2004
+    (title) Eternal Sunshine of the Spotless Mind (2004)
+    (description) Eternal Sunshine of the Spotless Mind (2004) is a romantic sci-fi drama directed by Michel Gondry. It follows an estranged couple who erase each other from their memories, only to rediscover their love.
+
+  > (item)
+    (category) Movie
+    (date) 2026-02-05
+    (link) https://www.imdb.com/title/tt0375679/
+    (director) Paul Haggis
+    (rating) 4
+    (slug) crash-2004
+    (title) Crash (2004)
+    (description) Crash (2004) is a drama film directed by Paul Haggis that explores racial and social tensions in Los Angeles through the interweaving stories of strangers.
+
+  > (item)
+    (category) Movie
     (date) 2026-01-30
     (link) https://www.imdb.com/title/tt0206634/
     (director) Alfonso Cuarón
