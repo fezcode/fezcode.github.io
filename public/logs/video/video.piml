@@ -1,6 +1,15 @@
 (logs)
   > (item)
     (category) Video
+    (date) 2026-02-06
+    (link) https://www.youtube.com/watch?v=N9qYF9DZPdw
+    (rating) 5
+    (slug) white-and-nerdy
+    (title) "Weird Al" Yankovic - White & Nerdy
+    (description) A brilliant parody of Chamillionaire's "Ridin'", celebrating nerd culture with Weird Al's signature wit.
+
+  > (item)
+    (category) Video
     (date) 2026-01-28
     (link) https://www.youtube.com/watch?v=BK1ilhnSUtg
     (rating) 5
