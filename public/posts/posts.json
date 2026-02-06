@@ -1,5 +1,27 @@
 [
   {
+    "slug": "understanding-database-normalization-3nf",
+    "title": "Understanding Database Normalization: The Path to Third Normal Form (3NF)",
+    "date": "2026-02-06",
+    "updated": "2026-02-06",
+    "description": "A professional guide to database normalization, explaining the journey from 1NF to 3NF with clear examples and architectural diagrams.",
+    "tags": ["database", "sql", "normalization", "3nf", "data-integrity", "dev"],
+    "category": "dev",
+    "filename": "understanding-database-normalization-3nf.txt",
+    "authors": ["fezcode"]
+  },
+  {
+    "slug": "cqrs-in-go-for-geniuses",
+    "title": "CQRS: Command Query Responsibility Segregation in Modern Architecture",
+    "date": "2026-02-06",
+    "updated": "2026-02-06",
+    "description": "An authoritative guide to CQRS (Command Query Responsibility Segregation) following Martin Fowler's principles, implemented in Golang.",
+    "tags": ["golang", "architecture", "cqrs", "design-patterns", "backend", "dev"],
+    "category": "dev",
+    "filename": "cqrs-in-go-for-geniuses.txt",
+    "authors": ["fezcode"]
+  },
+  {
     "slug": "hyrums-law",
     "title": "Hyrum's Law: Why Your Bug Fix Broke My Spacebar Heating Workflow",
     "date": "2026-02-05",
