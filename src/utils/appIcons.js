@@ -113,6 +113,7 @@ import {
   SquaresFourIcon,
   ImageSquareIcon,
   PenNibIcon,
+  CoffeeIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -230,4 +231,5 @@ export const appIcons = {
   SquaresFourIcon,
   ImageSquareIcon,
   PenNibIcon,
+  CoffeeIcon,
 };

@@ -423,6 +423,14 @@
         "description": "Transform raw datasets into high-fidelity Bauhaus visualizations and technical diagrams.",
         "icon": "GraphIcon",
         "created_at": "2026-01-18T18:00:00+03:00"
+      },
+      {
+        "slug": "brew-master",
+        "to": "/apps/brew-master",
+        "title": "BrewMaster",
+        "description": "High-fidelity coffee extraction protocol. Calibrate ratios and execute extraction sequences.",
+        "icon": "CoffeeIcon",
+        "created_at": "2026-02-06T12:00:00+03:00"
       }
     ]
   },

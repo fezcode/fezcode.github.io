@@ -70,6 +70,7 @@ const ConspiracyBoardPage = lazy(() => import('../pages/apps/ConspiracyBoardPage
 const PaperInkPage = lazy(() => import('../pages/apps/PaperInkPage'));
 const VoyagerTerminalPage = lazy(() => import('../pages/apps/VoyagerTerminalPage'));
 const WordLadderPage = lazy(() => import('../pages/apps/WordLadderPage'));
+const BrewMasterPage = lazy(() => import('../pages/apps/BrewMasterPage'));
 const SteganographyPage = lazy(() => import('../pages/apps/SteganographyPage'));
 const LightsOutPage = lazy(() => import('../pages/apps/LightsOutPage'));
 const NonogramPage = lazy(() => import('../pages/apps/NonogramPage'));
@@ -1198,6 +1199,22 @@ const AnimatedRoutes = ({
         />
         {/* End of hardcoded redirects */}
         <Route
+          path="/apps/brew-master"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <BrewMasterPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
           path="/apps/steganography"
           element={
             <motion.div
@@ -1292,6 +1309,10 @@ const AnimatedRoutes = ({
               </Suspense>
             </motion.div>
           }
+        />
+        <Route
+          path="/apps::brew"
+          element={<Navigate to="/apps/brew-master" replace />}
         />
         <Route
           path="/apps::tf"
