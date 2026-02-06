@@ -6,10 +6,9 @@
     "updated": "2026-02-05",
     "description": "With a sufficient number of users, every bug becomes a feature. Exploring why you can't fix anything without breaking someone's weird workflow.",
     "tags": ["software-engineering", "hyrums-law", "xkcd", "philosophy", "bugs", "dev"],
-    "category": "rant",
+    "category": "dev",
     "filename": "hyrums-law.txt",
-    "authors": ["fezcode"],
-    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+    "authors": ["fezcode"]
   },
   {
     "slug": "architecting-trust-preventing-insider-threats",
@@ -20,8 +19,7 @@
     "tags": ["architecture", "security", "design-patterns", "maker-checker", "event-sourcing", "devops"],
     "category": "dev",
     "filename": "architecting-trust-preventing-insider-threats.txt",
-    "authors": ["fezcode"],
-    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+    "authors": ["fezcode"]
   },
   {
     "slug": "deep-link-configuration-with-url-parameters",
