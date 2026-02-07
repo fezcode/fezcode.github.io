@@ -84,11 +84,19 @@ export const vocabulary = {
     loader: () => import('./vocab/etl'),
   },
   staccato: {
-    title: 'Staccato',
+    title: 'Staccato (Music)',
     loader: () => import('./vocab/staccato'),
   },
   legato: {
-    title: 'Legato',
+    title: 'Legato (Music)',
     loader: () => import('./vocab/legato'),
+  },
+  tremolo: {
+    title: 'Tremolo (Music)',
+    loader: () => import('./vocab/tremolo'),
+  },
+  vibrato: {
+    title: 'Vibrato (Music)',
+    loader: () => import('./vocab/vibrato'),
   },
 };
