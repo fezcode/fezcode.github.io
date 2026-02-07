@@ -47,14 +47,24 @@ const BrutalistDialog = ({
             </div>
 
             {/* Corner Accents (Lines only at corners) */}
-            <div className={`absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`} />
-            <div className={`absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`} />
-            <div className={`absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`} />
-            <div className={`absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`} />
+            <div
+              className={`absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`}
+            />
+            <div
+              className={`absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`}
+            />
+            <div
+              className={`absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`}
+            />
+            <div
+              className={`absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 ${isPaper ? 'border-[#1a1a1a]' : 'border-emerald-500'}`}
+            />
 
             <div className="relative z-10 space-y-8">
               <div className="flex justify-between items-start gap-4">
-                <h3 className={`text-2xl font-black font-mono tracking-tighter uppercase italic leading-none ${isPaper ? 'text-[#1a1a1a]' : 'text-white'}`}>
+                <h3
+                  className={`text-2xl font-black font-mono tracking-tighter uppercase italic leading-none ${isPaper ? 'text-[#1a1a1a]' : 'text-white'}`}
+                >
                   {title}
                 </h3>
                 <button
@@ -70,8 +80,12 @@ const BrutalistDialog = ({
               ) : (
                 <>
                   <div className="space-y-2">
-                    <div className={`h-px w-12 ${isPaper ? 'bg-[#1a1a1a]' : 'bg-emerald-500'}`} />
-                    <p className={`font-mono text-xs uppercase tracking-widest leading-relaxed ${isPaper ? 'text-[#1a1a1a]/60' : 'text-gray-400'}`}>
+                    <div
+                      className={`h-px w-12 ${isPaper ? 'bg-[#1a1a1a]' : 'bg-emerald-500'}`}
+                    />
+                    <p
+                      className={`font-mono text-xs uppercase tracking-widest leading-relaxed ${isPaper ? 'text-[#1a1a1a]/60' : 'text-gray-400'}`}
+                    >
                       {message}
                     </p>
                   </div>
@@ -80,7 +94,9 @@ const BrutalistDialog = ({
                     <button
                       onClick={onConfirm}
                       className={`flex-1 py-4 font-black uppercase tracking-[0.3em] transition-all text-xs ${
-                        isPaper ? 'bg-[#1a1a1a] text-[#e9e4d0] hover:opacity-90' : 'bg-white text-black hover:bg-emerald-400'
+                        isPaper
+                          ? 'bg-[#1a1a1a] text-[#e9e4d0] hover:opacity-90'
+                          : 'bg-white text-black hover:bg-emerald-400'
                       }`}
                     >
                       {confirmText}
@@ -88,7 +104,9 @@ const BrutalistDialog = ({
                     <button
                       onClick={onClose}
                       className={`flex-1 py-4 border transition-all font-mono text-[10px] uppercase tracking-widest ${
-                        isPaper ? 'border-[#1a1a1a]/20 text-[#1a1a1a]/40 hover:border-[#1a1a1a] hover:text-[#1a1a1a]' : 'border-white/10 text-gray-500 hover:text-white hover:bg-white/5'
+                        isPaper
+                          ? 'border-[#1a1a1a]/20 text-[#1a1a1a]/40 hover:border-[#1a1a1a] hover:text-[#1a1a1a]'
+                          : 'border-white/10 text-gray-500 hover:text-white hover:bg-white/5'
                       }`}
                     >
                       {cancelText}

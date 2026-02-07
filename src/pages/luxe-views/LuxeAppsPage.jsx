@@ -5,7 +5,7 @@ import {
   ArrowUpRightIcon,
   ArrowLeftIcon,
   SortAscendingIcon,
-  CalendarBlankIcon
+  CalendarBlankIcon,
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { appIcons } from '../../utils/appIcons';
@@ -64,19 +64,19 @@ const LuxeAppsPage = () => {
 
   const sortedApps = [...apps]
     .filter((app) => {
-        const query = searchQuery.toLowerCase();
-        const matchesSearch =
-          app.name.toLowerCase().includes(query) ||
-          app.description.toLowerCase().includes(query);
-        const matchesCategory =
-          activeCategory === 'All' || app.categoryName === activeCategory;
-        return matchesSearch && matchesCategory;
+      const query = searchQuery.toLowerCase();
+      const matchesSearch =
+        app.name.toLowerCase().includes(query) ||
+        app.description.toLowerCase().includes(query);
+      const matchesCategory =
+        activeCategory === 'All' || app.categoryName === activeCategory;
+      return matchesSearch && matchesCategory;
     })
     .sort((a, b) => {
-        if (sortOrder === 'newest') {
-            return new Date(b.date || 0) - new Date(a.date || 0);
-        }
-        return a.name.localeCompare(b.name);
+      if (sortOrder === 'newest') {
+        return new Date(b.date || 0) - new Date(a.date || 0);
+      }
+      return a.name.localeCompare(b.name);
     });
 
   return (
@@ -132,18 +132,18 @@ const LuxeAppsPage = () => {
           </div>
 
           <div className="flex bg-white rounded-full p-1 border border-[#1A1A1A]/5 shadow-sm shrink-0">
-              <button
-                onClick={() => setSortOrder('alphabetical')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full font-outfit text-[10px] uppercase tracking-widest transition-all ${sortOrder === 'alphabetical' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
-              >
-                <SortAscendingIcon size={14} /> A-Z
-              </button>
-              <button
-                onClick={() => setSortOrder('newest')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full font-outfit text-[10px] uppercase tracking-widest transition-all ${sortOrder === 'newest' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
-              >
-                <CalendarBlankIcon size={14} /> Newest
-              </button>
+            <button
+              onClick={() => setSortOrder('alphabetical')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full font-outfit text-[10px] uppercase tracking-widest transition-all ${sortOrder === 'alphabetical' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
+            >
+              <SortAscendingIcon size={14} /> A-Z
+            </button>
+            <button
+              onClick={() => setSortOrder('newest')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-full font-outfit text-[10px] uppercase tracking-widest transition-all ${sortOrder === 'newest' ? 'bg-[#1A1A1A] text-white' : 'text-[#1A1A1A]/40 hover:text-[#1A1A1A]'}`}
+            >
+              <CalendarBlankIcon size={14} /> Newest
+            </button>
           </div>
         </div>
 

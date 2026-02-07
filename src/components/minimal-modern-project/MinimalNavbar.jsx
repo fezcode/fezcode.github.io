@@ -13,8 +13,12 @@ const MinimalNavbar = ({ title, repoLink }) => {
         </Link>
 
         <div className="flex items-center gap-10 text-[10px] font-bold uppercase tracking-[0.3em] text-black/40">
-          <Link to="/projects" className="hover:text-black transition-colors">Projects</Link>
-          <Link to="/about" className="hover:text-black transition-colors">About</Link>
+          <Link to="/projects" className="hover:text-black transition-colors">
+            Projects
+          </Link>
+          <Link to="/about" className="hover:text-black transition-colors">
+            About
+          </Link>
           {repoLink && (
             <a
               href={repoLink}

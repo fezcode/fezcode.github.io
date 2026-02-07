@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, ArrowRightIcon, StarIcon, HashIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  ArrowRightIcon,
+  StarIcon,
+  HashIcon,
+} from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import Seo from '../../components/Seo';
 import { appIcons } from '../../utils/appIcons';

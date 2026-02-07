@@ -287,14 +287,15 @@ function RoguelikeGamePage() {
         <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
         Back to Apps
       </Link>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-            <div className="space-y-4">
-              <BreadcrumbTitle title="Roguelike" slug="rl" variant="brutalist" />
-              <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Explore a procedurally generated dungeon in this browser-based roguelike.
-              </p>
-            </div>
-          </div>
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+        <div className="space-y-4">
+          <BreadcrumbTitle title="Roguelike" slug="rl" variant="brutalist" />
+          <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+            Explore a procedurally generated dungeon in this browser-based
+            roguelike.
+          </p>
+        </div>
+      </div>
 
       {gameStatus === 'won' && (
         <div className="text-green-400 text-2xl font-bold mb-4">

@@ -543,7 +543,14 @@ const TcgCardGeneratorPage = () => {
       <Seo
         title="TCG Card Generator | Fezcodex"
         description="Create your own custom Trading Card Game cards with this generator."
-        keywords={['TCG', 'card generator', 'pokemon card', 'magic card', 'custom card', 'maker']}
+        keywords={[
+          'TCG',
+          'card generator',
+          'pokemon card',
+          'magic card',
+          'custom card',
+          'maker',
+        ]}
       />
       <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12">
         {/* Header */}
@@ -564,16 +571,17 @@ const TcgCardGeneratorPage = () => {
                 variant="brutalist"
               />
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed mt-4">
-                Fabricate futuristic trading cards. Customize attributes, imagery, and structural data.
+                Fabricate futuristic trading cards. Customize attributes,
+                imagery, and structural data.
               </p>
             </div>
 
             <button
-                onClick={downloadCard}
-                className="group flex items-center gap-3 px-6 py-3 bg-white text-black font-bold uppercase tracking-widest hover:bg-emerald-500 transition-colors"
-              >
-                <DownloadSimpleIcon size={20} weight="bold" />
-                <span>Initialize Download</span>
+              onClick={downloadCard}
+              className="group flex items-center gap-3 px-6 py-3 bg-white text-black font-bold uppercase tracking-widest hover:bg-emerald-500 transition-colors"
+            >
+              <DownloadSimpleIcon size={20} weight="bold" />
+              <span>Initialize Download</span>
             </button>
           </div>
         </header>
@@ -621,15 +629,17 @@ const TcgCardGeneratorPage = () => {
               <div className="flex flex-col gap-4">
                 <div className="flex items-center justify-between border border-white/10 p-4 bg-black/40 rounded-sm">
                   <div className="flex-1">
-                     <div className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1">Status</div>
-                     <div className="text-xs font-mono text-emerald-500">
-                        {image ? 'Asset_Loaded' : 'Awaiting_Upload'}
-                     </div>
-                      {imageDimensions && (
-                    <div className="text-[10px] font-mono text-gray-600 mt-1">
-                      {imageDimensions.width}x{imageDimensions.height}px
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-1">
+                      Status
                     </div>
-                  )}
+                    <div className="text-xs font-mono text-emerald-500">
+                      {image ? 'Asset_Loaded' : 'Awaiting_Upload'}
+                    </div>
+                    {imageDimensions && (
+                      <div className="text-[10px] font-mono text-gray-600 mt-1">
+                        {imageDimensions.width}x{imageDimensions.height}px
+                      </div>
+                    )}
                   </div>
                   <input
                     type="file"
@@ -645,9 +655,9 @@ const TcgCardGeneratorPage = () => {
                     <UploadSimpleIcon size={16} /> Upload
                   </button>
                 </div>
-                 <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
-                    * Recommended: High-contrast cyberpunk imagery.
-                  </p>
+                <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+                  * Recommended: High-contrast cyberpunk imagery.
+                </p>
               </div>
             </Module>
           </div>
@@ -655,7 +665,11 @@ const TcgCardGeneratorPage = () => {
           {/* Middle Column: Stats & Details */}
           <div className="xl:col-span-4 space-y-6">
             {/* Stats Section */}
-            <Module title="Performance_Metrics" icon={ChartBarIcon} seed="STATS">
+            <Module
+              title="Performance_Metrics"
+              icon={ChartBarIcon}
+              seed="STATS"
+            >
               <div className="space-y-4">
                 <div>
                   <label className={labelClass}>Generation_Cycle</label>
@@ -753,22 +767,24 @@ const TcgCardGeneratorPage = () => {
 
           {/* --- Right Column: Preview --- */}
           <div className="xl:col-span-4 flex flex-col items-center">
-             <div className="sticky top-10 w-full flex flex-col items-center">
-                <div className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-4 w-full text-center">Output_Preview</div>
-                <div className="relative group p-1 border border-white/10 bg-black">
-                  <div className="absolute -inset-2 bg-gradient-to-b from-emerald-500/20 to-transparent blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                  <canvas
-                    ref={canvasRef}
-                    className="relative max-w-full h-auto bg-black border border-white/5"
-                    style={{ width: '420px', height: '750px' }}
-                  />
-                </div>
+            <div className="sticky top-10 w-full flex flex-col items-center">
+              <div className="text-[10px] font-mono text-gray-500 uppercase tracking-widest mb-4 w-full text-center">
+                Output_Preview
+              </div>
+              <div className="relative group p-1 border border-white/10 bg-black">
+                <div className="absolute -inset-2 bg-gradient-to-b from-emerald-500/20 to-transparent blur-xl opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                <canvas
+                  ref={canvasRef}
+                  className="relative max-w-full h-auto bg-black border border-white/5"
+                  style={{ width: '420px', height: '750px' }}
+                />
+              </div>
 
-                 <div className="mt-6 w-full max-w-[420px] text-center">
-                    <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
-                        Resolution: 1260x2250 (HD)
-                    </p>
-                </div>
+              <div className="mt-6 w-full max-w-[420px] text-center">
+                <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+                  Resolution: 1260x2250 (HD)
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -778,20 +794,18 @@ const TcgCardGeneratorPage = () => {
 };
 
 const Module = ({ title, icon: Icon, children, seed }) => (
-    <div className="relative border border-white/10 bg-white/[0.02] p-6 rounded-sm group overflow-hidden">
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <GenerativeArt seed={seed} className="w-full h-full" />
-      </div>
-      <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
-
-      <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
-        <Icon weight="fill" className="text-emerald-500" />
-        {title}
-      </h3>
-      <div className="relative z-10">
-        {children}
-      </div>
+  <div className="relative border border-white/10 bg-white/[0.02] p-6 rounded-sm group overflow-hidden">
+    <div className="absolute inset-0 opacity-5 pointer-events-none">
+      <GenerativeArt seed={seed} className="w-full h-full" />
     </div>
-  );
+    <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+
+    <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-6 flex items-center gap-2">
+      <Icon weight="fill" className="text-emerald-500" />
+      {title}
+    </h3>
+    <div className="relative z-10">{children}</div>
+  </div>
+);
 
 export default TcgCardGeneratorPage;

@@ -8,7 +8,13 @@ const ColorTheoryPage = () => {
       <Seo
         title="Color Theory | Fezcodex"
         description="Interactive exploration of color harmony, models, and perception."
-        keywords={['color theory', 'design', 'interactive', 'learning', 'color wheel']}
+        keywords={[
+          'color theory',
+          'design',
+          'interactive',
+          'learning',
+          'color wheel',
+        ]}
       />
       <div className="min-h-screen bg-[#050505]">
         <ColorTheoryApp />

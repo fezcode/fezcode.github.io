@@ -23,7 +23,8 @@ const BrutalistLogDetailPage = () => {
   const { category, slugId } = useParams();
   const [log, setLog] = useState(null);
   const [loading, setLoading] = useState(true);
-  const {headerFont, setHeaderFont, bodyFont, setBodyFont, availableFonts } = useVisualSettings();
+  const { headerFont, setHeaderFont, bodyFont, setBodyFont, availableFonts } =
+    useVisualSettings();
   const contentRef = useRef(null);
 
   useEffect(() => {
@@ -51,10 +52,16 @@ const BrutalistLogDetailPage = () => {
               setLog({ attributes: logMetadata, body: logBody });
             } else {
               // If text file is missing, just use metadata
-              setLog({ attributes: logMetadata, body: logMetadata.description || '' });
+              setLog({
+                attributes: logMetadata,
+                body: logMetadata.description || '',
+              });
             }
           } catch (e) {
-             setLog({ attributes: logMetadata, body: logMetadata.description || '' });
+            setLog({
+              attributes: logMetadata,
+              body: logMetadata.description || '',
+            });
           }
         } else {
           setLog({ attributes: { title: 'Log not found' }, body: '' });
@@ -147,7 +154,9 @@ const BrutalistLogDetailPage = () => {
   };
 
   return (
-    <div className={`min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30`}>
+    <div
+      className={`min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30`}
+    >
       <Seo
         title={log ? `${log.attributes.title} | Fezcodex` : null}
         description={log ? log.body.substring(0, 150) : null}
@@ -336,7 +345,9 @@ const BrutalistLogDetailPage = () => {
                 </h3>
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block ml-1">Header Font</span>
+                    <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block ml-1">
+                      Header Font
+                    </span>
                     <CustomDropdown
                       label="Select Font"
                       options={availableFonts.map((f) => ({
@@ -350,7 +361,9 @@ const BrutalistLogDetailPage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block ml-1">Body Font</span>
+                    <span className="text-[9px] font-mono text-gray-500 uppercase tracking-widest block ml-1">
+                      Body Font
+                    </span>
                     <CustomDropdown
                       label="Select Font"
                       options={availableFonts.map((f) => ({

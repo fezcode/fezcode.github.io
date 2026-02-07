@@ -84,7 +84,11 @@ const CssUnitConverterPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Unit Converter" slug="css" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Unit Converter"
+                slug="css"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Bilateral translation layer for CSS length units. Standardize
                 your spatial measurements across digital viewpoints.

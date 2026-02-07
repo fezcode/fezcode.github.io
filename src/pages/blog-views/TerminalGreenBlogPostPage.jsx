@@ -89,7 +89,8 @@ const TerminalGreenBlogPostPage = () => {
         }
 
         setPost({ attributes: postMetadata, body: postBody, seriesPosts });
-        const { calculateReadingTime } = await import('../../utils/readingTime');
+        const { calculateReadingTime } =
+          await import('../../utils/readingTime');
         setEstimatedReadingTime(calculateReadingTime(postBody));
       } catch (error) {
         console.error('Error fetching terminal post:', error);

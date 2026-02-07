@@ -53,7 +53,9 @@ const DndAuthorCard = ({
           <div className="w-full pt-6 border-t border-dnd-crimson/10">
             <div className="flex items-center justify-center gap-2 mb-4 opacity-40">
               <BookOpenIcon size={16} />
-              <span className="text-[9px] font-mono font-bold uppercase tracking-[0.3em]">Compiled Tomes</span>
+              <span className="text-[9px] font-mono font-bold uppercase tracking-[0.3em]">
+                Compiled Tomes
+              </span>
             </div>
             <div className="space-y-2">
               {booksWritten.map((book, index) => (

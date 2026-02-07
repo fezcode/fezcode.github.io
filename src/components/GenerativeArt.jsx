@@ -284,7 +284,11 @@ const GenerativeArt = ({
               className="p-3 bg-white/10 hover:bg-emerald-500 text-white hover:text-black transition-all border border-white/10 rounded-sm group/regen backdrop-blur-md"
               title="Regenerate Art"
             >
-              <ArrowsClockwiseIcon size={20} weight="bold" className="group-hover/regen:rotate-180 transition-transform duration-500" />
+              <ArrowsClockwiseIcon
+                size={20}
+                weight="bold"
+                className="group-hover/regen:rotate-180 transition-transform duration-500"
+              />
             </button>
           </>
         )}

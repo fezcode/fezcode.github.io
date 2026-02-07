@@ -110,7 +110,11 @@ const BpmGuesserPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="BPM Guesser" slug="bpm" variant="brutalist" />
+              <BreadcrumbTitle
+                title="BPM Guesser"
+                slug="bpm"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Protocol for temporal extraction. Align your input with the
                 rhythmic sequence to determine the frequency.

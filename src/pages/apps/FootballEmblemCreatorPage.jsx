@@ -1,5 +1,5 @@
-import React, {useState, useRef, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useRef, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   TrophyIcon,
@@ -60,14 +60,14 @@ import {
 } from '@phosphor-icons/react';
 import CustomDropdown from '../../components/CustomDropdown';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
 
 const FootballEmblemCreatorPage = () => {
   const appName = 'Emblem Creator';
 
-  const {addToast} = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
   const svgRef = useRef(null);
 
   const [teamName, setTeamName] = useState('FEZ FC');
@@ -168,15 +168,52 @@ const FootballEmblemCreatorPage = () => {
   const renderShield = () => {
     switch (shieldShape) {
       case 'shield1':
-        return <path d="M10,10 L90,10 L90,30 C90,70 50,95 50,95 C50,95 10,70 10,30 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <path
+            d="M10,10 L90,10 L90,30 C90,70 50,95 50,95 C50,95 10,70 10,30 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       case 'shield2':
-        return <circle cx="50" cy="50" r="45" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       case 'shield3':
-        return <path d="M50,5 L95,50 L50,95 L5,50 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <path
+            d="M50,5 L95,50 L50,95 L5,50 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       case 'shield4':
-        return <path d="M10,10 Q50,0 90,10 L90,40 Q90,80 50,95 Q10,80 10,40 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <path
+            d="M10,10 Q50,0 90,10 L90,40 Q90,80 50,95 Q10,80 10,40 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       case 'shield5':
-        return <path d="M15,10 L85,10 L85,70 L50,95 L15,70 Z" fill={primaryColor} stroke={accentColor} strokeWidth="2" />;
+        return (
+          <path
+            d="M15,10 L85,10 L85,70 L50,95 L15,70 Z"
+            fill={primaryColor}
+            stroke={accentColor}
+            strokeWidth="2"
+          />
+        );
       default:
         return null;
     }
@@ -191,33 +228,118 @@ const FootballEmblemCreatorPage = () => {
         <g clipPath="url(#shieldClip)">
           {pattern === 'stripes' && (
             <React.Fragment>
-              <rect x="30" y="0" width="10" height="100" fill={secondaryColor} opacity={opacity} />
-              <rect x="60" y="0" width="10" height="100" fill={secondaryColor} opacity={opacity} />
+              <rect
+                x="30"
+                y="0"
+                width="10"
+                height="100"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="60"
+                y="0"
+                width="10"
+                height="100"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
             </React.Fragment>
           )}
-          {pattern === 'half' && <rect x="50" y="0" width="50" height="100" fill={secondaryColor} opacity={opacity} />}
+          {pattern === 'half' && (
+            <rect
+              x="50"
+              y="0"
+              width="50"
+              height="100"
+              fill={secondaryColor}
+              opacity={opacity}
+            />
+          )}
           {pattern === 'cross' && (
             <React.Fragment>
-              <rect x="40" y="0" width="20" height="100" fill={secondaryColor} opacity={opacity} />
-              <rect x="0" y="40" width="100" height="20" fill={secondaryColor} opacity={opacity} />
+              <rect
+                x="40"
+                y="0"
+                width="20"
+                height="100"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
+              <rect
+                x="0"
+                y="40"
+                width="100"
+                height="20"
+                fill={secondaryColor}
+                opacity={opacity}
+              />
             </React.Fragment>
           )}
-          {pattern === 'diagonal' && <path d="M0,0 L100,100 L100,80 L20,0 Z" fill={secondaryColor} opacity={opacity} />}
+          {pattern === 'diagonal' && (
+            <path
+              d="M0,0 L100,100 L100,80 L20,0 Z"
+              fill={secondaryColor}
+              opacity={opacity}
+            />
+          )}
           {pattern === 'hoops' && (
             <React.Fragment>
-              {[20, 40, 60, 80].map(y => <rect key={y} x="0" y={y} width="100" height="10" fill={secondaryColor} opacity={opacity} />)}
+              {[20, 40, 60, 80].map((y) => (
+                <rect
+                  key={y}
+                  x="0"
+                  y={y}
+                  width="100"
+                  height="10"
+                  fill={secondaryColor}
+                  opacity={opacity}
+                />
+              ))}
             </React.Fragment>
           )}
           {pattern === 'checkered' && (
             <React.Fragment>
-              {[0, 40, 80].map(x => [0, 40, 80].map(y => <rect key={`${x}-${y}`} x={x} y={y} width="20" height="20" fill={secondaryColor} opacity={opacity} />))}
-              {[20, 60].map(x => [20, 60].map(y => <rect key={`${x}-${y}`} x={x} y={y} width="20" height="20" fill={secondaryColor} opacity={opacity} />))}
+              {[0, 40, 80].map((x) =>
+                [0, 40, 80].map((y) => (
+                  <rect
+                    key={`${x}-${y}`}
+                    x={x}
+                    y={y}
+                    width="20"
+                    height="20"
+                    fill={secondaryColor}
+                    opacity={opacity}
+                  />
+                )),
+              )}
+              {[20, 60].map((x) =>
+                [20, 60].map((y) => (
+                  <rect
+                    key={`${x}-${y}`}
+                    x={x}
+                    y={y}
+                    width="20"
+                    height="20"
+                    fill={secondaryColor}
+                    opacity={opacity}
+                  />
+                )),
+              )}
             </React.Fragment>
           )}
           {pattern === 'diamonds' && (
             <React.Fragment>
-              <path d="M50,0 L100,50 L50,100 L0,50 Z" fill={secondaryColor} opacity="0.25" />
-              <path d="M50,25 L75,50 L50,75 L25,50 Z" fill={secondaryColor} opacity="0.25" />
+              <path
+                d="M50,0 L100,50 L50,100 L0,50 Z"
+                fill={secondaryColor}
+                opacity="0.25"
+              />
+              <path
+                d="M50,25 L75,50 L50,75 L25,50 Z"
+                fill={secondaryColor}
+                opacity="0.25"
+              />
             </React.Fragment>
           )}
         </g>
@@ -230,7 +352,15 @@ const FootballEmblemCreatorPage = () => {
       <Seo
         title="Emblem Creator | Fezcodex"
         description="Create your own custom football team emblem in a high-contrast brutalist environment."
-        keywords={['football', 'emblem', 'logo', 'creator', 'generator', 'soccer', 'brutalist']}
+        keywords={[
+          'football',
+          'emblem',
+          'logo',
+          'creator',
+          'generator',
+          'soccer',
+          'brutalist',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -239,7 +369,7 @@ const FootballEmblemCreatorPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
           <BreadcrumbTitle title={appName} slug="emblem" variant="brutalist" />
@@ -248,7 +378,10 @@ const FootballEmblemCreatorPage = () => {
             <div>
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
                 Vector-based identity constructor. Define your team's{' '}
-                <span className="text-emerald-400 font-bold">visual signature</span>.
+                <span className="text-emerald-400 font-bold">
+                  visual signature
+                </span>
+                .
               </p>
             </div>
 
@@ -265,7 +398,9 @@ const FootballEmblemCreatorPage = () => {
                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">
                   Est_Date
                 </span>
-                <span className="text-3xl font-black text-white">{foundedYear}</span>
+                <span className="text-3xl font-black text-white">
+                  {foundedYear}
+                </span>
               </div>
             </div>
           </div>
@@ -274,24 +409,23 @@ const FootballEmblemCreatorPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Controls Column */}
           <div className="lg:col-span-5 space-y-8">
-            <div
-              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div
-                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
-              <h3
-                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
-                <GearSixIcon weight="fill"/>
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <GearSixIcon weight="fill" />
                 Identity_Config
               </h3>
 
               <div className="space-y-8 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Team_Name</label>
+                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                      Team_Name
+                    </label>
                     <input
                       type="text"
                       value={teamName}
@@ -301,7 +435,9 @@ const FootballEmblemCreatorPage = () => {
                     />
                   </div>
                   <div className="space-y-4">
-                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Foundation_Year</label>
+                    <label className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                      Foundation_Year
+                    </label>
                     <input
                       type="text"
                       value={foundedYear}
@@ -320,7 +456,10 @@ const FootballEmblemCreatorPage = () => {
                     onChange={(e) => setShowEstPrefix(e.target.checked)}
                     className="w-4 h-4 accent-emerald-500 bg-white/10 border-white/20 rounded-sm"
                   />
-                  <label htmlFor="showEstPrefix" className="text-[10px] font-mono text-gray-400 uppercase tracking-widest cursor-pointer">
+                  <label
+                    htmlFor="showEstPrefix"
+                    className="text-[10px] font-mono text-gray-400 uppercase tracking-widest cursor-pointer"
+                  >
                     Prefix "EST." Enabled
                   </label>
                 </div>
@@ -333,11 +472,11 @@ const FootballEmblemCreatorPage = () => {
                     <CustomDropdown
                       fullWidth
                       options={[
-                        {label: 'CLASSIC_SHIELD', value: 'shield1'},
-                        {label: 'RADIAL_DISK', value: 'shield2'},
-                        {label: 'DIAMOND_GRID', value: 'shield3'},
-                        {label: 'ANCIENT_CREST', value: 'shield4'},
-                        {label: 'LINEAR_BLOCK', value: 'shield5'},
+                        { label: 'CLASSIC_SHIELD', value: 'shield1' },
+                        { label: 'RADIAL_DISK', value: 'shield2' },
+                        { label: 'DIAMOND_GRID', value: 'shield3' },
+                        { label: 'ANCIENT_CREST', value: 'shield4' },
+                        { label: 'LINEAR_BLOCK', value: 'shield5' },
                       ]}
                       value={shieldShape}
                       onChange={setShieldShape}
@@ -351,14 +490,14 @@ const FootballEmblemCreatorPage = () => {
                     <CustomDropdown
                       fullWidth
                       options={[
-                        {label: 'NONE', value: 'none'},
-                        {label: 'VERTICAL_STRIPES', value: 'stripes'},
-                        {label: 'BI_SECTION', value: 'half'},
-                        {label: 'AXIAL_CROSS', value: 'cross'},
-                        {label: 'ANGULAR_PATH', value: 'diagonal'},
-                        {label: 'HORIZONTAL_HOOPS', value: 'hoops'},
-                        {label: 'CHECKERED_GRID', value: 'checkered'},
-                        {label: 'DIAMOND_MAP', value: 'diamonds'},
+                        { label: 'NONE', value: 'none' },
+                        { label: 'VERTICAL_STRIPES', value: 'stripes' },
+                        { label: 'BI_SECTION', value: 'half' },
+                        { label: 'AXIAL_CROSS', value: 'cross' },
+                        { label: 'ANGULAR_PATH', value: 'diagonal' },
+                        { label: 'HORIZONTAL_HOOPS', value: 'hoops' },
+                        { label: 'CHECKERED_GRID', value: 'checkered' },
+                        { label: 'DIAMOND_MAP', value: 'diamonds' },
                       ]}
                       value={pattern}
                       onChange={setPattern}
@@ -372,9 +511,15 @@ const FootballEmblemCreatorPage = () => {
                     <PaletteIcon /> Color_Spectrum
                   </label>
                   <div className="grid grid-cols-3 gap-4">
-                    {[['Primary', primaryColor, setPrimaryColor], ['Secondary', secondaryColor, setSecondaryColor], ['Accent', accentColor, setAccentColor]].map(([label, val, set]) => (
+                    {[
+                      ['Primary', primaryColor, setPrimaryColor],
+                      ['Secondary', secondaryColor, setSecondaryColor],
+                      ['Accent', accentColor, setAccentColor],
+                    ].map(([label, val, set]) => (
                       <div key={label} className="space-y-2">
-                        <div className="text-[9px] font-mono text-gray-600 uppercase tracking-tighter">{label}</div>
+                        <div className="text-[9px] font-mono text-gray-600 uppercase tracking-tighter">
+                          {label}
+                        </div>
                         <input
                           type="color"
                           value={val}
@@ -394,9 +539,9 @@ const FootballEmblemCreatorPage = () => {
                     <CustomDropdown
                       fullWidth
                       options={[
-                        {label: 'MINIMAL (6)', value: '6'},
-                        {label: 'STANDARD (8)', value: '8'},
-                        {label: 'MAXIMUM (10)', value: '10'},
+                        { label: 'MINIMAL (6)', value: '6' },
+                        { label: 'STANDARD (8)', value: '8' },
+                        { label: 'MAXIMUM (10)', value: '10' },
                       ]}
                       value={fontSize}
                       onChange={setFontSize}
@@ -410,10 +555,10 @@ const FootballEmblemCreatorPage = () => {
                     <CustomDropdown
                       fullWidth
                       options={[
-                        {label: '25%', value: '0.25'},
-                        {label: '50%', value: '0.5'},
-                        {label: '75%', value: '0.75'},
-                        {label: '100%', value: '1.0'},
+                        { label: '25%', value: '0.25' },
+                        { label: '50%', value: '0.5' },
+                        { label: '75%', value: '0.75' },
+                        { label: '100%', value: '1.0' },
                       ]}
                       value={opacity}
                       onChange={setOpacity}
@@ -426,22 +571,22 @@ const FootballEmblemCreatorPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <ShieldIcon size={20} weight="bold"/>
+                <ShieldIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Vector_Notice
                 </h4>
               </div>
               <p className="text-xs font-mono text-gray-500 uppercase tracking-wider leading-relaxed">
-                All emblems are generated as high-fidelity SVG assets. Exporting will rasterize the output to high-resolution PNG format.
+                All emblems are generated as high-fidelity SVG assets. Exporting
+                will rasterize the output to high-resolution PNG format.
               </p>
             </div>
           </div>
 
           {/* Display Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h3
-              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <EyeIcon weight="fill" className="text-emerald-500"/>
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500" />
               Raster_Preview
             </h3>
 
@@ -503,7 +648,7 @@ const FootballEmblemCreatorPage = () => {
                         ${selectedIcon === key ? 'border-emerald-500 bg-emerald-500/20 text-emerald-400' : 'border-white/5 bg-white/5 text-gray-500 hover:border-white/20 hover:text-white'}
                       `}
                     >
-                      {React.cloneElement(iconMap[key], {size: 20})}
+                      {React.cloneElement(iconMap[key], { size: 20 })}
                     </button>
                   ))}
                 </div>
@@ -512,7 +657,7 @@ const FootballEmblemCreatorPage = () => {
                   onClick={handleDownload}
                   className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
                 >
-                  <DownloadSimpleIcon weight="bold" size={18}/>
+                  <DownloadSimpleIcon weight="bold" size={18} />
                   Download_Identity_Package
                 </button>
               </div>

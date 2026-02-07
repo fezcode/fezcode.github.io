@@ -1,5 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   DiceSixIcon,
@@ -8,9 +8,9 @@ import {
   ChartBarIcon,
   GearSixIcon,
 } from '@phosphor-icons/react';
-import {motion, AnimatePresence} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import Dice from '../../components/Dice';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -19,7 +19,7 @@ import CustomDropdown from '../../components/CustomDropdown';
 const DiceRollerPage = () => {
   const appName = 'Dice Roller';
 
-  const {addToast} = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
   const [diceType, setDiceType] = useState(6);
   const [numDice, setNumDice] = useState(1);
   const [numDiceError, setNumDiceError] = useState(false);
@@ -61,7 +61,20 @@ const DiceRollerPage = () => {
       <Seo
         title="Dice Roller | Fezcodex"
         description="Roll various types of dice (d4, d6, d8, d10, d12, d20, d100) for your games and simulations in a brutalist workspace."
-        keywords={['Fezcodex', 'dice roller', 'd4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100', 'games', 'rpg', 'brutalist']}
+        keywords={[
+          'Fezcodex',
+          'dice roller',
+          'd4',
+          'd6',
+          'd8',
+          'd10',
+          'd12',
+          'd20',
+          'd100',
+          'games',
+          'rpg',
+          'brutalist',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -70,7 +83,7 @@ const DiceRollerPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
           <BreadcrumbTitle title={appName} slug="dice" variant="brutalist" />
@@ -79,7 +92,9 @@ const DiceRollerPage = () => {
             <div>
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
                 Randomized unit generation. Interface with the{' '}
-                <span className="text-emerald-400 font-bold">probability matrix</span>{' '}
+                <span className="text-emerald-400 font-bold">
+                  probability matrix
+                </span>{' '}
                 to extract non-deterministic results.
               </p>
             </div>
@@ -97,7 +112,9 @@ const DiceRollerPage = () => {
                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">
                   Matrix_Status
                 </span>
-                <span className={`text-3xl font-black ${rolling ? 'text-white' : 'text-emerald-500'}`}>
+                <span
+                  className={`text-3xl font-black ${rolling ? 'text-white' : 'text-emerald-500'}`}
+                >
                   {rolling ? 'COLLAPSING' : 'STABLE'}
                 </span>
               </div>
@@ -108,17 +125,14 @@ const DiceRollerPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Controls Column */}
           <div className="lg:col-span-5 space-y-8">
-            <div
-              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div
-                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
-              <h3
-                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
-                <GearSixIcon weight="fill"/>
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                <GearSixIcon weight="fill" />
                 Config_Interface
               </h3>
 
@@ -131,13 +145,13 @@ const DiceRollerPage = () => {
                     <CustomDropdown
                       fullWidth
                       options={[
-                        {label: 'D4_TETRA', value: 4},
-                        {label: 'D6_HEXA', value: 6},
-                        {label: 'D8_OCTA', value: 8},
-                        {label: 'D10_DECA', value: 10},
-                        {label: 'D12_DODECA', value: 12},
-                        {label: 'D20_ICOSA', value: 20},
-                        {label: 'D100_PERCENT', value: 100},
+                        { label: 'D4_TETRA', value: 4 },
+                        { label: 'D6_HEXA', value: 6 },
+                        { label: 'D8_OCTA', value: 8 },
+                        { label: 'D10_DECA', value: 10 },
+                        { label: 'D12_DODECA', value: 12 },
+                        { label: 'D20_ICOSA', value: 20 },
+                        { label: 'D100_PERCENT', value: 100 },
                       ]}
                       value={diceType}
                       onChange={setDiceType}
@@ -168,7 +182,7 @@ const DiceRollerPage = () => {
                   disabled={rolling || numDiceError}
                   className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 disabled:opacity-50 transition-all text-sm flex items-center justify-center gap-3"
                 >
-                  <DiceSixIcon weight="bold" size={18}/>
+                  <DiceSixIcon weight="bold" size={18} />
                   {rolling ? 'COLLAPSING_WAVE...' : 'EXECUTE_ROLL'}
                 </button>
               </div>
@@ -176,7 +190,7 @@ const DiceRollerPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <ChartBarIcon size={20} weight="bold"/>
+                <ChartBarIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Metrics_Output
                 </h4>
@@ -196,15 +210,17 @@ const DiceRollerPage = () => {
 
           {/* Results Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h3
-              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <EyeIcon weight="fill" className="text-emerald-500"/>
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500" />
               Observation_Deck
             </h3>
 
             <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm p-8 flex items-center justify-center relative overflow-hidden min-h-[400px]">
               <div className="absolute inset-0 opacity-[0.02] pointer-events-none grayscale">
-                <GenerativeArt seed={appName + results.length} className="w-full h-full" />
+                <GenerativeArt
+                  seed={appName + results.length}
+                  className="w-full h-full"
+                />
               </div>
 
               <div className="relative z-10 w-full">
@@ -212,39 +228,53 @@ const DiceRollerPage = () => {
                   {rolling ? (
                     <motion.div
                       key="rolling"
-                      initial={{opacity: 0}}
-                      animate={{opacity: 1}}
-                      exit={{opacity: 0}}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       className="flex flex-wrap gap-4 justify-center"
                     >
-                      {Array.from({length: Math.min(numDice, 50)}).map((_, i) => (
-                        <div key={i} className="animate-pulse">
-                          <Dice type={diceType} isRolling={true} />
+                      {Array.from({ length: Math.min(numDice, 50) }).map(
+                        (_, i) => (
+                          <div key={i} className="animate-pulse">
+                            <Dice type={diceType} isRolling={true} />
+                          </div>
+                        ),
+                      )}
+                      {numDice > 50 && (
+                        <div className="text-gray-600 font-mono text-xs uppercase self-center">
+                          ...Buffer_Overflow_Visual_Truncated
                         </div>
-                      ))}
-                      {numDice > 50 && <div className="text-gray-600 font-mono text-xs uppercase self-center">...Buffer_Overflow_Visual_Truncated</div>}
+                      )}
                     </motion.div>
                   ) : results.length > 0 ? (
                     <motion.div
                       key="results"
-                      initial={{opacity: 0}}
-                      animate={{opacity: 1}}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
                       className="flex flex-wrap gap-4 justify-center max-h-[500px] overflow-y-auto custom-scrollbar p-4"
                     >
                       {results.map((result, index) => (
                         <motion.div
                           key={index}
-                          initial={{scale: 0, rotate: -180}}
-                          animate={{scale: 1, rotate: 0}}
-                          transition={{type: 'spring', delay: index * 0.01}}
+                          initial={{ scale: 0, rotate: -180 }}
+                          animate={{ scale: 1, rotate: 0 }}
+                          transition={{ type: 'spring', delay: index * 0.01 }}
                         >
-                          <Dice value={result} type={diceType} isRolling={false} />
+                          <Dice
+                            value={result}
+                            type={diceType}
+                            isRolling={false}
+                          />
                         </motion.div>
                       ))}
                     </motion.div>
                   ) : (
                     <div className="text-center space-y-4">
-                      <TargetIcon size={64} weight="thin" className="mx-auto text-white/5" />
+                      <TargetIcon
+                        size={64}
+                        weight="thin"
+                        className="mx-auto text-white/5"
+                      />
                       <p className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
                         Awaiting_Execution_Command...
                       </p>

@@ -3,20 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon, FolderIcon } from '@phosphor-icons/react';
 
-const BrutalistPostItem = ({
-  post,
-  isActive,
-  onHover = () => {},
-}) => {
-  const {
-    slug,
-    title,
-    date,
-    category,
-    series,
-    seriesIndex,
-    isSeries,
-  } = post;
+const BrutalistPostItem = ({ post, isActive, onHover = () => {} }) => {
+  const { slug, title, date, category, series, seriesIndex, isSeries } = post;
 
   const formattedDate = new Date(date).toLocaleDateString('en-GB', {
     day: '2-digit',
@@ -81,32 +69,32 @@ const BrutalistPostItem = ({
 
           {/* Title Area */}
           <div className="flex items-center gap-3 min-w-0 flex-1">
-             {isSeries && (
-                <FolderIcon
-                  size={24}
-                  weight="fill"
-                  className="shrink-0"
-                  style={{ color: categoryColor }}
-                />
-             )}
-             <div className="flex flex-col gap-1">
-                <h3
-                  className={`text-xl font-medium uppercase tracking-tight transition-all duration-300 md:text-2xl break-words leading-tight ${
-                    isActive
-                      ? 'translate-x-1 text-white'
-                      : 'text-gray-500 group-hover:text-gray-300'
-                  }`}
-                >
-                  {title}
-                </h3>
+            {isSeries && (
+              <FolderIcon
+                size={24}
+                weight="fill"
+                className="shrink-0"
+                style={{ color: categoryColor }}
+              />
+            )}
+            <div className="flex flex-col gap-1">
+              <h3
+                className={`text-xl font-medium uppercase tracking-tight transition-all duration-300 md:text-2xl break-words leading-tight ${
+                  isActive
+                    ? 'translate-x-1 text-white'
+                    : 'text-gray-500 group-hover:text-gray-300'
+                }`}
+              >
+                {title}
+              </h3>
 
-                {series && (
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-500/60">
-                    {typeof series === 'object' ? series.title : series} {'//'} Part{' '}
-                    {seriesIndex}
-                  </span>
-                )}
-             </div>
+              {series && (
+                <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-emerald-500/60">
+                  {typeof series === 'object' ? series.title : series} {'//'}{' '}
+                  Part {seriesIndex}
+                </span>
+              )}
+            </div>
           </div>
         </div>
 

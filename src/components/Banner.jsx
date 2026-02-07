@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import piml from 'piml';
 import { motion, AnimatePresence } from 'framer-motion';
-import { InfoIcon, WarningIcon, WarningOctagonIcon, XIcon, ArrowRightIcon } from '@phosphor-icons/react';
+import {
+  InfoIcon,
+  WarningIcon,
+  WarningOctagonIcon,
+  XIcon,
+  ArrowRightIcon,
+} from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 
 const DISMISSED_BANNERS_KEY = 'dismissed-banners';
@@ -93,14 +99,14 @@ const Banner = () => {
           bg: 'bg-red-600',
           text: 'text-white',
           icon: <WarningOctagonIcon size={20} weight="bold" />,
-          accent: 'border-red-400'
+          accent: 'border-red-400',
         };
       case 'warning':
         return {
           bg: 'bg-amber-500',
           text: 'text-black',
           icon: <WarningIcon size={20} weight="bold" />,
-          accent: 'border-amber-300'
+          accent: 'border-amber-300',
         };
       case 'info':
       default:
@@ -108,7 +114,7 @@ const Banner = () => {
           bg: 'bg-emerald-600',
           text: 'text-white',
           icon: <InfoIcon size={20} weight="bold" />,
-          accent: 'border-emerald-400'
+          accent: 'border-emerald-400',
         };
     }
   };

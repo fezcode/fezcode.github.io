@@ -9,7 +9,7 @@ import {
   ArrowsClockwiseIcon,
   CheckCircleIcon,
   DatabaseIcon,
-  WarningCircleIcon
+  WarningCircleIcon,
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
@@ -33,32 +33,45 @@ const TaskGridPage = () => {
       id: Date.now(),
       text: inputValue.trim(),
       status: 'pending', // pending, active, resolved
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
     };
     setTasks([newTask, ...tasks]);
     setInputValue('');
-    addToast({ title: 'Task Registered', message: 'New objective mapped to the grid.' });
+    addToast({
+      title: 'Task Registered',
+      message: 'New objective mapped to the grid.',
+    });
   };
 
   const toggleStatus = (id) => {
-    setTasks(tasks.map(t => {
-      if (t.id === id) {
-        const nextStatus = t.status === 'pending' ? 'active' : t.status === 'active' ? 'resolved' : 'pending';
-        return { ...t, status: nextStatus };
-      }
-      return t;
-    }));
+    setTasks(
+      tasks.map((t) => {
+        if (t.id === id) {
+          const nextStatus =
+            t.status === 'pending'
+              ? 'active'
+              : t.status === 'active'
+                ? 'resolved'
+                : 'pending';
+          return { ...t, status: nextStatus };
+        }
+        return t;
+      }),
+    );
   };
 
   const removeTask = (id) => {
-    setTasks(tasks.filter(t => t.id !== id));
-    addToast({ title: 'Task Purged', message: 'Objective removed from the sequence.' });
+    setTasks(tasks.filter((t) => t.id !== id));
+    addToast({
+      title: 'Task Purged',
+      message: 'Objective removed from the sequence.',
+    });
   };
 
   const stats = {
     total: tasks.length,
-    active: tasks.filter(t => t.status === 'active').length,
-    resolved: tasks.filter(t => t.status === 'resolved').length
+    active: tasks.filter((t) => t.status === 'active').length,
+    resolved: tasks.filter((t) => t.status === 'resolved').length,
   };
 
   return (
@@ -66,21 +79,37 @@ const TaskGridPage = () => {
       <Seo
         title="Task Grid | Fezcodex"
         description="Minimal project mapper. Track your daily objectives within a high-contrast structural grid."
-        keywords={['Fezcodex', 'task manager', 'to-do list', 'minimalist planner', 'grid tasks']}
+        keywords={[
+          'Fezcodex',
+          'task manager',
+          'to-do list',
+          'minimalist planner',
+          'grid tasks',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
-
         <header className="mb-24">
-          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
-            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
+          >
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Applications</span>
           </Link>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Task Grid" slug="tg" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Task Grid"
+                slug="tg"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Objective mapping protocol. Organize systemic tasks within a structured grid to track progress and neural throughput.
+                Objective mapping protocol. Organize systemic tasks within a
+                structured grid to track progress and neural throughput.
               </p>
             </div>
           </div>
@@ -88,17 +117,23 @@ const TaskGridPage = () => {
 
         {/* Local Storage Warning */}
         <div className="mb-12 p-6 border border-amber-500/20 bg-amber-500/5 rounded-sm flex items-center gap-6">
-          <DatabaseIcon size={32} weight="fill" className="text-amber-500 shrink-0" />
+          <DatabaseIcon
+            size={32}
+            weight="fill"
+            className="text-amber-500 shrink-0"
+          />
           <div className="space-y-1">
-            <h4 className="text-xs font-black uppercase tracking-widest text-amber-500">Local Data Storage Active</h4>
+            <h4 className="text-xs font-black uppercase tracking-widest text-amber-500">
+              Local Data Storage Active
+            </h4>
             <p className="text-[11px] font-mono text-amber-500/60 uppercase tracking-widest">
-              All objectives are stored within your browser's local cache. Clearing your browser data will erase this mapping sequence.
+              All objectives are stored within your browser's local cache.
+              Clearing your browser data will erase this mapping sequence.
             </p>
           </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
           {/* Input & List Area */}
           <div className="lg:col-span-8 space-y-12">
             {/* Entry Module */}
@@ -121,7 +156,10 @@ const TaskGridPage = () => {
             {/* Grid Map */}
             <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden min-h-[400px]">
               <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
-                <GenerativeArt seed={appName + tasks.length} className="w-full h-full" />
+                <GenerativeArt
+                  seed={appName + tasks.length}
+                  className="w-full h-full"
+                />
               </div>
 
               <div className="relative z-10 space-y-4">
@@ -136,9 +174,13 @@ const TaskGridPage = () => {
                           exit={{ opacity: 0, x: 20 }}
                           className={`
                             flex items-center justify-between p-6 border transition-all group
-                            ${task.status === 'resolved' ? 'border-emerald-500/20 bg-emerald-500/5 opacity-60' :
-                              task.status === 'active' ? 'border-emerald-500 bg-emerald-500/10' :
-                              'border-white/5 bg-white/[0.01] hover:border-white/20'}
+                            ${
+                              task.status === 'resolved'
+                                ? 'border-emerald-500/20 bg-emerald-500/5 opacity-60'
+                                : task.status === 'active'
+                                  ? 'border-emerald-500 bg-emerald-500/10'
+                                  : 'border-white/5 bg-white/[0.01] hover:border-white/20'
+                            }
                           `}
                         >
                           <div className="flex items-center gap-6 flex-1 min-w-0">
@@ -146,10 +188,20 @@ const TaskGridPage = () => {
                               onClick={() => toggleStatus(task.id)}
                               className={`w-8 h-8 border-2 rounded-sm flex items-center justify-center transition-all ${task.status === 'resolved' ? 'bg-emerald-500 border-emerald-400' : 'border-white/20 hover:border-white/40'}`}
                             >
-                              {task.status === 'resolved' && <CheckCircleIcon weight="fill" size={20} className="text-black" />}
-                              {task.status === 'active' && <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />}
+                              {task.status === 'resolved' && (
+                                <CheckCircleIcon
+                                  weight="fill"
+                                  size={20}
+                                  className="text-black"
+                                />
+                              )}
+                              {task.status === 'active' && (
+                                <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" />
+                              )}
                             </button>
-                            <span className={`text-lg transition-all truncate ${task.status === 'resolved' ? 'line-through text-gray-500' : 'text-white'}`}>
+                            <span
+                              className={`text-lg transition-all truncate ${task.status === 'resolved' ? 'line-through text-gray-500' : 'text-white'}`}
+                            >
                               {task.text}
                             </span>
                           </div>
@@ -190,16 +242,26 @@ const TaskGridPage = () => {
 
               <div className="space-y-8">
                 <div className="flex justify-between items-end border-b border-white/5 pb-4">
-                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">Mapped</span>
+                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+                    Mapped
+                  </span>
                   <span className="text-3xl font-black">{stats.total}</span>
                 </div>
                 <div className="flex justify-between items-end border-b border-white/5 pb-4">
-                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">Active</span>
-                  <span className="text-3xl font-black text-white">{stats.active}</span>
+                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+                    Active
+                  </span>
+                  <span className="text-3xl font-black text-white">
+                    {stats.active}
+                  </span>
                 </div>
                 <div className="flex justify-between items-end border-b border-white/5 pb-4">
-                  <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest">Resolved</span>
-                  <span className="text-3xl font-black text-emerald-500">{stats.resolved}</span>
+                  <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest">
+                    Resolved
+                  </span>
+                  <span className="text-3xl font-black text-emerald-500">
+                    {stats.resolved}
+                  </span>
                 </div>
               </div>
 
@@ -212,13 +274,17 @@ const TaskGridPage = () => {
             </div>
 
             <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-4">
-              <WarningCircleIcon size={24} className="text-gray-700 shrink-0 mt-1" />
+              <WarningCircleIcon
+                size={24}
+                className="text-gray-700 shrink-0 mt-1"
+              />
               <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
-                Data persistence is restricted to the local interface. For cross-device synchronization, manual sequence export is required.
+                Data persistence is restricted to the local interface. For
+                cross-device synchronization, manual sequence export is
+                required.
               </p>
             </div>
           </div>
-
         </div>
 
         <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
@@ -233,7 +299,10 @@ const TaskGridPage = () => {
         onConfirm={() => {
           setTasks([]);
           setIsFlushDialogOpen(false);
-          addToast({ title: 'Grid Flushed', message: 'All sequences have been erased.' });
+          addToast({
+            title: 'Grid Flushed',
+            message: 'All sequences have been erased.',
+          });
         }}
         title="FLUSH_GRID_SEQUENCE"
         message="Attention: This operation will permanently erase all mapped objectives. This action is irreversible. Proceed?"

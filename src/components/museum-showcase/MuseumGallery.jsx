@@ -11,7 +11,7 @@ const MuseumGallery = ({ image, title, caption }) => {
         <motion.div
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: '-100px' }}
           transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
           className="relative group"
         >
@@ -20,9 +20,11 @@ const MuseumGallery = ({ image, title, caption }) => {
             <div className="relative w-full h-full overflow-hidden">
               <img
                 src={image}
-                alt={title || "Gallery Image"}
+                alt={title || 'Gallery Image'}
                 className="w-full h-full object-cover grayscale-[0.1] group-hover:grayscale-0 group-hover:scale-[1.01] transition-all duration-[2000ms] ease-out"
-                onError={(e) => { e.target.style.display = 'none'; }}
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                }}
               />
               {/* Artistic Texture Overlay */}
               <div className="absolute inset-0 bg-black/5 mix-blend-soft-light pointer-events-none" />

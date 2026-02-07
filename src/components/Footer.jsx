@@ -2,10 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { version } from '../version';
 import { useAboutData } from '../hooks/useAboutData';
-import {
-  Command,
-  Terminal,
-} from '@phosphor-icons/react';
+import { Command, Terminal } from '@phosphor-icons/react';
 
 const Footer = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -24,7 +21,9 @@ const Footer = () => {
                 </span>
               </Link>
               <p className="max-w-md text-gray-400 font-mono text-xs leading-relaxed uppercase tracking-widest">
-                {'//'} {aboutData.profile.tagline || 'A digital garden of experimental code, architectural thoughts, and creative explorations.'}
+                {'//'}{' '}
+                {aboutData.profile.tagline ||
+                  'A digital garden of experimental code, architectural thoughts, and creative explorations.'}
               </p>
             </div>
 
@@ -62,7 +61,9 @@ const Footer = () => {
                   Press{' '}
                   <kbd className="bg-white text-black px-1 font-black">Alt</kbd>
                   ,{' '}
-                  <kbd className="bg-white text-black px-1 font-black">Ctrl</kbd>
+                  <kbd className="bg-white text-black px-1 font-black">
+                    Ctrl
+                  </kbd>
                   , or{' '}
                   <kbd className="bg-white text-black px-1 font-black">Cmd</kbd>{' '}
                   + <kbd className="bg-white text-black px-1 font-black">K</kbd>{' '}
@@ -123,9 +124,11 @@ const Footer = () => {
             </h3>
 
             <div className="flex gap-3 mb-8 flex-wrap">
-              {aboutData.profile.links.filter(l => l.id !== 'email' && l.id !== 'website').map((link, i) => (
-                <SocialIcon key={i} href={link.url} icon={link.icon} />
-              ))}
+              {aboutData.profile.links
+                .filter((l) => l.id !== 'email' && l.id !== 'website')
+                .map((link, i) => (
+                  <SocialIcon key={i} href={link.url} icon={link.icon} />
+                ))}
             </div>
 
             <div className="space-y-3 border-t border-white/10 pt-6">

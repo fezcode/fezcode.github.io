@@ -145,7 +145,11 @@ const MorseCodeTranslatorPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Morse Code" slug="mct" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Morse Code"
+                slug="mct"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Auditory signaling protocol. Bilateral translation between
                 plaintext and standardized Morse code pulses.

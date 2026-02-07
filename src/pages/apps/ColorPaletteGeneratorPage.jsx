@@ -72,7 +72,12 @@ function ColorPaletteGeneratorPage() {
       <Seo
         title="Color Palette | Fezcodex"
         description="Generate harmonious color palettes for your design projects."
-        keywords={['Fezcodex', 'color palette', 'color generator', 'design tools']}
+        keywords={[
+          'Fezcodex',
+          'color palette',
+          'color generator',
+          'design tools',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -87,7 +92,11 @@ function ColorPaletteGeneratorPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Color Palette" slug="cpg" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Color Palette"
+                slug="cpg"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Visual aesthetics generator. Create harmonious color sequences
                 for digital environments.

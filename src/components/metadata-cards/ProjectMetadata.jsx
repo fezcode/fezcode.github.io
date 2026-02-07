@@ -43,7 +43,8 @@ const ProjectMetadata = ({ project }) => {
                   rel="noopener noreferrer"
                   className="text-cyan-400 hover:text-cyan-300 flex items-center gap-2 group-hover:translate-x-1 transition-transform duration-300"
                 >
-                  {project.demo_link ? 'View System' : 'View Code'} <FaExternalLinkAlt size={12} />
+                  {project.demo_link ? 'View System' : 'View Code'}{' '}
+                  <FaExternalLinkAlt size={12} />
                 </a>
               </p>
             </div>

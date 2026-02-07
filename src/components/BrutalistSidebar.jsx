@@ -26,7 +26,7 @@ import {
   FlaskIcon,
   BookBookmarkIcon,
   FilePdfIcon,
-  TerminalWindowIcon
+  TerminalWindowIcon,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -214,7 +214,8 @@ const BrutalistSidebar = ({
             </span>
           </Link>
           <span className="font-arvo text-[10px] text-gray-500 uppercase tracking-widest font-medium">
-            Digital Archive Kernel {'//'} v{version} {'//'} {config?.kernel?.codename}
+            Digital Archive Kernel {'//'} v{version} {'//'}{' '}
+            {config?.kernel?.codename}
           </span>
         </div>
 
@@ -294,7 +295,10 @@ const BrutalistSidebar = ({
 
           {showScrollGradient.bottom && (
             <div className="absolute bottom-0 left-0 right-0 h-12 flex items-center justify-center bg-gradient-to-t from-[#050505] to-transparent z-20 pointer-events-none">
-              <CaretDoubleDownIcon size={16} className="text-emerald-500 mb-2" />
+              <CaretDoubleDownIcon
+                size={16}
+                className="text-emerald-500 mb-2"
+              />
             </div>
           )}
         </div>

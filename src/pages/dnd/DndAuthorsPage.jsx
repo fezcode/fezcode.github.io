@@ -24,11 +24,16 @@ function DndAuthorsPage() {
       try {
         const [authRes, booksRes] = await Promise.all([
           fetch(`${process.env.PUBLIC_URL}/stories/authors.piml`),
-          fetch(`${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`)
+          fetch(
+            `${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`,
+          ),
         ]);
 
         if (authRes.ok && booksRes.ok) {
-          const [authText, booksText] = await Promise.all([authRes.text(), booksRes.text()]);
+          const [authText, booksText] = await Promise.all([
+            authRes.text(),
+            booksRes.text(),
+          ]);
           setAuthors(piml.parse(authText).authors);
           setBooks(piml.parse(booksText).books);
         }
@@ -57,7 +62,7 @@ function DndAuthorsPage() {
     return authorBooks;
   };
 
-  const filteredAuthors = authors.filter(author => {
+  const filteredAuthors = authors.filter((author) => {
     const term = searchQuery.toLowerCase();
     return (
       author.name.toLowerCase().includes(term) ||
@@ -70,12 +75,22 @@ function DndAuthorsPage() {
       <Seo
         title="Authors | From Serfs and Frauds"
         description="Meet the authors behind the Dungeons & Dragons stories, From Serfs and Frauds."
-        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'authors']}
+        keywords={[
+          'Fezcodex',
+          'd&d',
+          'dnd',
+          'from serfs and frauds',
+          'authors',
+        ]}
       />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">
-             <UsersIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+            <UsersIcon
+              size={48}
+              className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]"
+              weight="duotone"
+            />
           </div>
           <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none">
             The Scribes

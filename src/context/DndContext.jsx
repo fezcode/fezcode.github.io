@@ -9,17 +9,30 @@ export const DndProvider = ({ children }) => {
   const [language, setLanguage] = usePersistentState('dnd-language', 'en'); // Add language state
 
   // Effect Settings (User requested 5 specific ones)
-  const [isLightningEnabled, setIsLightningEnabled] = usePersistentState('dnd-lightning-enabled', true);
-  const [isLootDiscoveryEnabled, setIsLootDiscoveryEnabled] = usePersistentState('dnd-loot-enabled', true);
-  const [isFireOverlayEnabled, setIsFireOverlayEnabled] = usePersistentState('dnd-fire-overlay-enabled', true);
-  const [isFireParticlesEnabled, setIsFireParticlesEnabled] = usePersistentState('dnd-fire-particles-enabled', true);
-  const [isViewportFrameEnabled, setIsViewportFrameEnabled] = usePersistentState('dnd-viewport-frame-enabled', true);
+  const [isLightningEnabled, setIsLightningEnabled] = usePersistentState(
+    'dnd-lightning-enabled',
+    true,
+  );
+  const [isLootDiscoveryEnabled, setIsLootDiscoveryEnabled] =
+    usePersistentState('dnd-loot-enabled', true);
+  const [isFireOverlayEnabled, setIsFireOverlayEnabled] = usePersistentState(
+    'dnd-fire-overlay-enabled',
+    true,
+  );
+  const [isFireParticlesEnabled, setIsFireParticlesEnabled] =
+    usePersistentState('dnd-fire-particles-enabled', true);
+  const [isViewportFrameEnabled, setIsViewportFrameEnabled] =
+    usePersistentState('dnd-viewport-frame-enabled', true);
 
   const toggleLightning = () => setIsLightningEnabled(!isLightningEnabled);
-  const toggleLootDiscovery = () => setIsLootDiscoveryEnabled(!isLootDiscoveryEnabled);
-  const toggleFireOverlay = () => setIsFireOverlayEnabled(!isFireOverlayEnabled);
-  const toggleFireParticles = () => setIsFireParticlesEnabled(!isFireParticlesEnabled);
-  const toggleViewportFrame = () => setIsViewportFrameEnabled(!isViewportFrameEnabled);
+  const toggleLootDiscovery = () =>
+    setIsLootDiscoveryEnabled(!isLootDiscoveryEnabled);
+  const toggleFireOverlay = () =>
+    setIsFireOverlayEnabled(!isFireOverlayEnabled);
+  const toggleFireParticles = () =>
+    setIsFireParticlesEnabled(!isFireParticlesEnabled);
+  const toggleViewportFrame = () =>
+    setIsViewportFrameEnabled(!isViewportFrameEnabled);
 
   return (
     <DndContext.Provider
@@ -39,7 +52,7 @@ export const DndProvider = ({ children }) => {
         isFireParticlesEnabled,
         toggleFireParticles,
         isViewportFrameEnabled,
-        toggleViewportFrame
+        toggleViewportFrame,
       }}
     >
       {children}

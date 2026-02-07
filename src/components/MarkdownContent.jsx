@@ -54,24 +54,24 @@ const MarkdownContent = ({ content, components = {}, className = '' }) => {
     ...components,
   };
 
-    return (
-      <>
-        <div className={className}>
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm, remarkMath]}
-            rehypePlugins={[rehypeRaw, rehypeKatex]}
-            components={defaultComponents}
-          >
-            {content}
-          </ReactMarkdown>
-        </div>
+  return (
+    <>
+      <div className={className}>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm, remarkMath]}
+          rehypePlugins={[rehypeRaw, rehypeKatex]}
+          components={defaultComponents}
+        >
+          {content}
+        </ReactMarkdown>
+      </div>
 
-        <ImageModal
-          src={modalData?.src}
-          alt={modalData?.alt}
-          onClose={() => setModalData(null)}
-        />
-      </>
-    );
-  };
+      <ImageModal
+        src={modalData?.src}
+        alt={modalData?.alt}
+        onClose={() => setModalData(null)}
+      />
+    </>
+  );
+};
 export default MarkdownContent;

@@ -30,9 +30,10 @@ export default function GameOfTheYear() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-current">Game of the Year (GOTY)</strong> is an award given by various
-        gaming publications, websites, and events to a video game that is
-        considered the best or most outstanding of a particular year.
+        <strong className="text-current">Game of the Year (GOTY)</strong> is an
+        award given by various gaming publications, websites, and events to a
+        video game that is considered the best or most outstanding of a
+        particular year.
       </p>
       <p>
         These awards recognize excellence in areas such as design, narrative,
@@ -48,8 +49,12 @@ export default function GameOfTheYear() {
         <div className="grid grid-cols-1 gap-2">
           {WINNERS.map((winner) => (
             <div key={winner.year} className="flex gap-4 text-xs group">
-              <span className="text-emerald-500 font-bold min-w-[40px]">{winner.year}</span>
-              <span className="text-gray-400 group-hover:text-current transition-colors">{winner.game}</span>
+              <span className="text-emerald-500 font-bold min-w-[40px]">
+                {winner.year}
+              </span>
+              <span className="text-gray-400 group-hover:text-current transition-colors">
+                {winner.game}
+              </span>
             </div>
           ))}
         </div>

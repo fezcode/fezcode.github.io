@@ -16,11 +16,15 @@ function DndBookPage() {
   useEffect(() => {
     const fetchBookData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`);
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`,
+        );
         if (response.ok) {
           const pimlText = await response.text();
           const data = piml.parse(pimlText);
-          const foundBook = data.books.find((b) => b.bookId === parseInt(bookId));
+          const foundBook = data.books.find(
+            (b) => b.bookId === parseInt(bookId),
+          );
           if (foundBook) {
             setBook(foundBook);
             setPageTitle(foundBook.bookTitle);
@@ -49,12 +53,23 @@ function DndBookPage() {
       <Seo
         title={`${pageTitle} | From Serfs and Frauds`}
         description={`Explore the episodes of ${pageTitle}, a book in the From Serfs and Frauds D&D campaign.`}
-        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'book', pageTitle]}
+        keywords={[
+          'Fezcodex',
+          'd&d',
+          'dnd',
+          'from serfs and frauds',
+          'book',
+          pageTitle,
+        ]}
       />
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
         <header className="text-center mb-12 md:mb-24">
           <div className="flex justify-center mb-6">
-             <BookmarkSimpleIcon size={48} className="text-dnd-gold" weight="duotone" />
+            <BookmarkSimpleIcon
+              size={48}
+              className="text-dnd-gold"
+              weight="duotone"
+            />
           </div>
           <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
             {pageTitle}
@@ -79,7 +94,11 @@ function DndBookPage() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-8 pb-4 border-b border-dnd-crimson/10">
-                <ScrollIcon size={32} className="text-dnd-crimson" weight="duotone" />
+                <ScrollIcon
+                  size={32}
+                  className="text-dnd-crimson"
+                  weight="duotone"
+                />
                 <h2 className="text-3xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter">
                   Recorded Episodes
                 </h2>

@@ -41,7 +41,10 @@ const BrutalistLogsPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredLogs, setFilteredLogs] = useState([]);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
-  const [viewMode, setViewMode] = usePersistentState('fez_logs_view_mode', 'grid');
+  const [viewMode, setViewMode] = usePersistentState(
+    'fez_logs_view_mode',
+    'grid',
+  );
   const { unlockAchievement } = useAchievements();
   const { openSidePanel } = useSidePanel();
 
@@ -139,14 +142,20 @@ const BrutalistLogsPage = () => {
                   className={`p-2 transition-all ${viewMode === 'grid' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}
                   title="Grid View"
                 >
-                  <SquaresFourIcon size={18} weight={viewMode === 'grid' ? 'fill' : 'regular'} />
+                  <SquaresFourIcon
+                    size={18}
+                    weight={viewMode === 'grid' ? 'fill' : 'regular'}
+                  />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
                   className={`p-2 transition-all ${viewMode === 'list' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}
                   title="List View"
                 >
-                  <ListIcon size={18} weight={viewMode === 'list' ? 'fill' : 'regular'} />
+                  <ListIcon
+                    size={18}
+                    weight={viewMode === 'list' ? 'fill' : 'regular'}
+                  />
                 </button>
               </div>
 
@@ -233,12 +242,22 @@ const BrutalistLogsPage = () => {
 
         {/* Content List */}
         {loading ? (
-          <div className={viewMode === 'grid'
-            ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-pulse"
-            : "flex flex-col gap-4 animate-pulse"
-          }>
+          <div
+            className={
+              viewMode === 'grid'
+                ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 animate-pulse'
+                : 'flex flex-col gap-4 animate-pulse'
+            }
+          >
             {[...Array(8)].map((_, i) => (
-              <div key={i} className={viewMode === 'grid' ? "h-64 w-full bg-white/5 rounded-sm" : "h-20 w-full bg-white/5 rounded-sm"} />
+              <div
+                key={i}
+                className={
+                  viewMode === 'grid'
+                    ? 'h-64 w-full bg-white/5 rounded-sm'
+                    : 'h-20 w-full bg-white/5 rounded-sm'
+                }
+              />
             ))}
           </div>
         ) : (
@@ -246,9 +265,10 @@ const BrutalistLogsPage = () => {
             <AnimatePresence mode="popLayout">
               <motion.div
                 layout
-                className={viewMode === 'grid'
-                  ? "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-                  : "flex flex-col"
+                className={
+                  viewMode === 'grid'
+                    ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+                    : 'flex flex-col'
                 }
               >
                 {filteredLogs.map((log, ndx) => (

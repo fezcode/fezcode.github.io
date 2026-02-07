@@ -24,7 +24,9 @@ function DndLorePage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`);
+        const response = await fetch(
+          `${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`,
+        );
         if (response.ok) {
           const pimlText = await response.text();
           const data = piml.parse(pimlText);
@@ -38,10 +40,12 @@ function DndLorePage() {
     fetchData();
   }, [language]);
 
-  const filteredBooks = books.filter(book => {
+  const filteredBooks = books.filter((book) => {
     const term = searchQuery.toLowerCase();
     const titleMatch = book.bookTitle.toLowerCase().includes(term);
-    const authorMatch = book.episodes?.some(ep => ep.author.toLowerCase().includes(term));
+    const authorMatch = book.episodes?.some((ep) =>
+      ep.author.toLowerCase().includes(term),
+    );
     return titleMatch || authorMatch;
   });
 
@@ -50,12 +54,24 @@ function DndLorePage() {
       <Seo
         title="The Lore | From Serfs and Frauds"
         description="Explore the world's history and tales from the Dungeons & Dragons campaign, From Serfs and Frauds."
-        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'lore', 'history', 'tales']}
+        keywords={[
+          'Fezcodex',
+          'd&d',
+          'dnd',
+          'from serfs and frauds',
+          'lore',
+          'history',
+          'tales',
+        ]}
       />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-16 relative">
           <div className="flex justify-center mb-6">
-             <ScrollIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+            <ScrollIcon
+              size={48}
+              className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]"
+              weight="duotone"
+            />
           </div>
           <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
             The Chronicles
@@ -83,13 +99,14 @@ function DndLorePage() {
                 <DndCard
                   title={book.bookTitle}
                   description={
-                                          book.episodes && book.episodes.length > 0
-                                          ? `Authored by ${book.episodes[0].author}`
-                                          : 'Ancient scripts of unknown origin.'
-                                      }
-                                      link={`/stories/books/${book.bookId}`}
-                                      icon={<BookOpenIcon size={48} weight="duotone" />}
-                                    />              </motion.div>
+                    book.episodes && book.episodes.length > 0
+                      ? `Authored by ${book.episodes[0].author}`
+                      : 'Ancient scripts of unknown origin.'
+                  }
+                  link={`/stories/books/${book.bookId}`}
+                  icon={<BookOpenIcon size={48} weight="duotone" />}
+                />{' '}
+              </motion.div>
             ))}
             {filteredBooks.length === 0 && (
               <div className="col-span-full text-center py-12 text-white/60 font-arvo italic">
@@ -106,9 +123,11 @@ function DndLorePage() {
               className="max-w-5xl mx-auto"
             >
               <div className="flex items-center gap-4 mb-8">
-                 <div className="h-px w-16 bg-dnd-gold/40" />
-                 <span className="font-mono text-xs text-dnd-gold uppercase tracking-[0.4em]">Index of Tomes</span>
-                 <div className="h-px flex-grow bg-dnd-gold/40" />
+                <div className="h-px w-16 bg-dnd-gold/40" />
+                <span className="font-mono text-xs text-dnd-gold uppercase tracking-[0.4em]">
+                  Index of Tomes
+                </span>
+                <div className="h-px flex-grow bg-dnd-gold/40" />
               </div>
               <StoryTreeView books={filteredBooks} />
             </motion.div>

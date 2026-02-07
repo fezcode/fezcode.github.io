@@ -94,7 +94,11 @@ function WordCounterPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Word Counter" slug="wc" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Word Counter"
+                slug="wc"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Linguistic analysis engine. Map character density, word
                 frequency, and structural attributes of your data stream.

@@ -19,7 +19,11 @@ const BreadcrumbTitle = ({
         <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.3em] text-gray-400">
           {parts.map((part, index) => (
             <React.Fragment key={index}>
-              <span className={index === parts.length - 1 ? 'text-emerald-500 font-bold' : ''}>
+              <span
+                className={
+                  index === parts.length - 1 ? 'text-emerald-500 font-bold' : ''
+                }
+              >
                 {part}
               </span>
               {index < parts.length - 1 && (

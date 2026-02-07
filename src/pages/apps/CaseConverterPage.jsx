@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowLeftIcon,
-  TextAaIcon,
-  CodeIcon,
-} from '@phosphor-icons/react';
+import { ArrowLeftIcon, TextAaIcon, CodeIcon } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -68,7 +64,11 @@ function CaseConverterPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Case Converter" slug="cc" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Case Converter"
+                slug="cc"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Text transformation protocol. Map character strings to specific
                 case conventions.

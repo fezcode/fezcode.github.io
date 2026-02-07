@@ -55,7 +55,13 @@ const BrutalistProjectsPage = () => {
       <Seo
         title="Archive | Fezcodex"
         description="A curated collection of digital experiments and deployed systems."
-        keywords={['Fezcodex', 'projects', 'portfolio', 'developer', 'editorial']}
+        keywords={[
+          'Fezcodex',
+          'projects',
+          'portfolio',
+          'developer',
+          'editorial',
+        ]}
       />
       {/* Dynamic Background (Static or Active Project Blur) */}
       <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
@@ -172,7 +178,9 @@ const BrutalistProjectsPage = () => {
                       className="inline-flex items-center gap-3 text-white border-b border-white pb-1 hover:text-emerald-400 hover:border-emerald-400 transition-colors"
                     >
                       <span className="text-sm font-bold uppercase tracking-widest">
-                        {activeProject.demo_link ? 'Visit Live Site' : 'View Source'}
+                        {activeProject.demo_link
+                          ? 'Visit Live Site'
+                          : 'View Source'}
                       </span>
                       <ArrowLeftIcon className="rotate-135" weight="bold" />
                     </a>

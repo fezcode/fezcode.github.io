@@ -1,6 +1,11 @@
 import React, { useMemo } from 'react';
 
-const LuxeArt = ({ seed = 'luxe', className, transparent = false, colorful = false }) => {
+const LuxeArt = ({
+  seed = 'luxe',
+  className,
+  transparent = false,
+  colorful = false,
+}) => {
   // LCG Random Generator
   const rng = useMemo(() => {
     let h = 0xdeadbeef;
@@ -36,7 +41,7 @@ const LuxeArt = ({ seed = 'luxe', className, transparent = false, colorful = fal
       for (let j = 1; j <= segments; j++) {
         points.push({
           x: (j / segments) * 100,
-          y: startY + (r() - 0.5) * 50 // Variation
+          y: startY + (r() - 0.5) * 50, // Variation
         });
       }
 
@@ -61,33 +66,35 @@ const LuxeArt = ({ seed = 'luxe', className, transparent = false, colorful = fal
       // const color = `hsla(${baseHue + (r() - 0.5) * 40}, ${saturation}%, ${lightness - i * 5}%, ${opacity})`;
       // Force grayscale/gold/bronze tones for "Luxe"
       const isGold = r() > 0.8;
-      const hue = isGold ? 45 : (baseHue + (r() - 0.5) * 30);
-      const sat = colorful ? (40 + r() * 40) : (isGold ? 60 : 0);
-      const lit = colorful ? (70 + r() * 15) : (isGold ? 60 : 90 - i * 5);
+      const hue = isGold ? 45 : baseHue + (r() - 0.5) * 30;
+      const sat = colorful ? 40 + r() * 40 : isGold ? 60 : 0;
+      const lit = colorful ? 70 + r() * 15 : isGold ? 60 : 90 - i * 5;
 
       items.push({
         d,
         fill: `hsla(${hue}, ${sat}%, ${lit}%, ${opacity})`,
-        stroke: `hsla(${hue}, ${sat}%, ${lit - 20}%, ${opacity * 2})`
+        stroke: `hsla(${hue}, ${sat}%, ${lit - 20}%, ${opacity * 2})`,
       });
     }
 
     // Add some noise texture specks
     const specks = [];
-    for(let k=0; k<50; k++) {
-        specks.push({
-            cx: r() * 100,
-            cy: r() * 100,
-            r: r() * 0.3,
-            fill: transparent ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.1)'
-        });
+    for (let k = 0; k < 50; k++) {
+      specks.push({
+        cx: r() * 100,
+        cy: r() * 100,
+        r: r() * 0.3,
+        fill: transparent ? 'rgba(0,0,0,0.2)' : 'rgba(0,0,0,0.1)',
+      });
     }
 
     return { curves: items, specks };
   }, [rng, transparent, colorful]);
 
   return (
-    <div className={`w-full h-full overflow-hidden relative ${!transparent && 'bg-[#EBEBEB]'} ${className}`}>
+    <div
+      className={`w-full h-full overflow-hidden relative ${!transparent && 'bg-[#EBEBEB]'} ${className}`}
+    >
       <svg
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
@@ -104,7 +111,13 @@ const LuxeArt = ({ seed = 'luxe', className, transparent = false, colorful = fal
           />
         ))}
         {shapes.specks.map((s, i) => (
-           <circle key={`speck-${i}`} cx={s.cx} cy={s.cy} r={s.r} fill={s.fill} />
+          <circle
+            key={`speck-${i}`}
+            cx={s.cx}
+            cy={s.cy}
+            r={s.r}
+            fill={s.fill}
+          />
         ))}
       </svg>
     </div>

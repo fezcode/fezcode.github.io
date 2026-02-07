@@ -67,7 +67,13 @@ function IpPage() {
       <Seo
         title="Show my IP | Fezcodex"
         description="Quickly find and display your public IP address."
-        keywords={['Fezcodex', 'show my IP', 'what is my IP', 'IP address', 'public IP']}
+        keywords={[
+          'Fezcodex',
+          'show my IP',
+          'what is my IP',
+          'IP address',
+          'public IP',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 lg:px-8 text-gray-300">
         <Link

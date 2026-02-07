@@ -142,7 +142,11 @@ function AsciiConverterPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Binary / ASCII" slug="ascii" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Binary / ASCII"
+                slug="ascii"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Character mapping protocol. Translate natural language into
                 machine-level representations.

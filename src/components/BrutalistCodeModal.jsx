@@ -52,30 +52,33 @@ const BrutalistCodeModal = ({ isOpen, onClose, children, language }) => {
                 onClick={onClose}
                 className="group p-2 hover:bg-red-500/10 border border-transparent hover:border-red-500/50 transition-all rounded-sm"
               >
-                <X size={20} className="text-gray-500 group-hover:text-red-500 transition-colors" />
+                <X
+                  size={20}
+                  className="text-gray-500 group-hover:text-red-500 transition-colors"
+                />
               </button>
             </div>
 
             <div className="flex-1 overflow-auto relative z-10 custom-scrollbar bg-black/40 text-gray-300">
-               <SyntaxHighlighter
+              <SyntaxHighlighter
                 style={customTheme}
                 language={language}
                 PreTag="div"
                 customStyle={{
-                    margin: 0,
-                    padding: '1.5rem',
-                    background: 'transparent',
-                    height: '100%',
-                    fontFamily: '"JetBrains Mono", monospace',
-                    fontSize: '0.9rem',
+                  margin: 0,
+                  padding: '1.5rem',
+                  background: 'transparent',
+                  height: '100%',
+                  fontFamily: '"JetBrains Mono", monospace',
+                  fontSize: '0.9rem',
                 }}
                 showLineNumbers={true}
                 lineNumberStyle={{
-                    minWidth: '2.5em',
-                    paddingRight: '1.5em',
-                    color: '#333',
-                    textAlign: 'right',
-                    fontFamily: '"JetBrains Mono", monospace'
+                  minWidth: '2.5em',
+                  paddingRight: '1.5em',
+                  color: '#333',
+                  textAlign: 'right',
+                  fontFamily: '"JetBrains Mono", monospace',
                 }}
                 codeTagProps={{
                   style: { fontFamily: "'JetBrains Mono', monospace" },
@@ -86,18 +89,18 @@ const BrutalistCodeModal = ({ isOpen, onClose, children, language }) => {
             </div>
 
             <div className="px-6 py-2 border-t border-white/10 bg-white/[0.02] flex justify-between items-center z-10">
-                <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
-                    ReadOnly Mode
-                </span>
-                <span className="font-mono text-[10px] text-emerald-500/50 uppercase tracking-widest">
-                    • Connected
-                </span>
+              <span className="font-mono text-[10px] text-gray-600 uppercase tracking-widest">
+                ReadOnly Mode
+              </span>
+              <span className="font-mono text-[10px] text-emerald-500/50 uppercase tracking-widest">
+                • Connected
+              </span>
             </div>
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 };
 

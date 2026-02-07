@@ -9,14 +9,38 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 07 Feb 2026 05:14:09 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 07 Feb 2026 05:41:45 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 07 Feb 2026 05:14:09 GMT</pubDate>
+        <pubDate>Sat, 07 Feb 2026 05:41:44 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Linux vs. Unix: The Kernel Wars and the Philosophy of Modular Design]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/linux-vs-unix-the-kernel-wars</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/linux-vs-unix-the-kernel-wars</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 08 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Linux vs. Unix: The Kernel Wars and the Philosophy of Modular Design</h1>
+<p><a href="https://fezcode.com/blog/linux-vs-unix-the-kernel-wars">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Halo Effect: Why We Trust Idiots with Good Hair]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/the-halo-effect</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/the-halo-effect</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 08 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>⚠️ Warning: Objects in Mirror Are Less Perfect Than They Appear</strong></p>
+<p>If you think this blog post is genius just because the font is nice and the layout is clean, you are currently being blinded by the very thing I&#39;m about to roast.
+Welcome to the glow.</p>
+</blockquote>
+<p><a href="https://fezcode.com/blog/the-halo-effect">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Mastering Git Worktrees: Parallel Development with AI Agents]]></title>
             <description><![CDATA[[object Object]]]></description>

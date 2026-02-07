@@ -87,7 +87,11 @@ const LuxeSidePanel = () => {
           >
             {/* Background Texture */}
             <div className="absolute inset-0 opacity-[0.2] pointer-events-none">
-              <LuxeArt seed={panelTitle} className="w-full h-full" transparent={true} />
+              <LuxeArt
+                seed={panelTitle}
+                className="w-full h-full"
+                transparent={true}
+              />
             </div>
 
             {/* Resize Handle */}
@@ -119,15 +123,17 @@ const LuxeSidePanel = () => {
 
             {/* Content Area */}
             <div className="relative z-10 flex-1 overflow-y-auto p-10 custom-scrollbar text-[#1A1A1A]/80 font-outfit leading-relaxed text-base">
-              <div className="space-y-8">
-                {panelContent}
-              </div>
+              <div className="space-y-8">{panelContent}</div>
             </div>
 
             {/* Panel Footer */}
             <div className="relative z-10 p-6 border-t border-black/5 bg-[#FAFAF8] flex items-center justify-between">
               <div className="flex items-center gap-3 text-black/20 font-outfit text-[9px] uppercase tracking-[0.3em]">
-                <InfoIcon weight="light" size={14} className="text-[#8D4004]/40" />
+                <InfoIcon
+                  weight="light"
+                  size={14}
+                  className="text-[#8D4004]/40"
+                />
                 <span>Structural Node // {Math.round(panelWidth)}PX</span>
               </div>
               <div className="flex gap-2">

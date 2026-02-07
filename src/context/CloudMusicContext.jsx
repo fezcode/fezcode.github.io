@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useState, useRef, useEffect, useCallback } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+  useCallback,
+} from 'react';
 import piml from 'piml';
 
 const CloudMusicContext = createContext();
@@ -23,8 +30,8 @@ export const CloudMusicProvider = ({ children }) => {
 
   // Initialize Audio Object once
   if (!audioRef.current) {
-      audioRef.current = new Audio();
-      // No crossOrigin or Web Audio API nodes to avoid silence with local/opaque sources
+    audioRef.current = new Audio();
+    // No crossOrigin or Web Audio API nodes to avoid silence with local/opaque sources
   }
 
   const [duration, setDuration] = useState(0);
@@ -40,7 +47,7 @@ export const CloudMusicProvider = ({ children }) => {
           const text = await response.text();
           const parsed = piml.parse(text);
           if (parsed && parsed.musics) {
-              setPlaylist(parsed.musics);
+            setPlaylist(parsed.musics);
           }
         }
       } catch (error) {
@@ -52,44 +59,44 @@ export const CloudMusicProvider = ({ children }) => {
   }, []);
 
   // Helper to get random index
-    const getRandomIndex = useCallback((currentIndex, length) => {
-        if (length <= 1) return 0;
-        let newIndex = currentIndex;
-        while (newIndex === currentIndex) {
-            newIndex = Math.floor(Math.random() * length);
-        }
-        return newIndex;
-    }, []);
+  const getRandomIndex = useCallback((currentIndex, length) => {
+    if (length <= 1) return 0;
+    let newIndex = currentIndex;
+    while (newIndex === currentIndex) {
+      newIndex = Math.floor(Math.random() * length);
+    }
+    return newIndex;
+  }, []);
 
-    const playNext = useCallback(() => {
-        setCurrentTrackIndex(prevIndex => {
-           if (isShuffle) return getRandomIndex(prevIndex, playlist.length);
-           return (prevIndex + 1) % playlist.length;
-       });
-       setIsPlaying(true);
+  const playNext = useCallback(() => {
+    setCurrentTrackIndex((prevIndex) => {
+      if (isShuffle) return getRandomIndex(prevIndex, playlist.length);
+      return (prevIndex + 1) % playlist.length;
+    });
+    setIsPlaying(true);
   }, [playlist.length, isShuffle, getRandomIndex]);
 
   const playPrev = useCallback(() => {
-      setCurrentTrackIndex(prevIndex => {
-          if (isShuffle) return getRandomIndex(prevIndex, playlist.length);
-          return (prevIndex - 1 + playlist.length) % playlist.length;
-      });
-      setIsPlaying(true);
+    setCurrentTrackIndex((prevIndex) => {
+      if (isShuffle) return getRandomIndex(prevIndex, playlist.length);
+      return (prevIndex - 1 + playlist.length) % playlist.length;
+    });
+    setIsPlaying(true);
   }, [playlist.length, isShuffle, getRandomIndex]);
 
   const handleTrackEnded = useCallback(() => {
-      if (repeatMode === 'one') {
-          audioRef.current.currentTime = 0;
-          audioRef.current.play();
-      } else if (repeatMode === 'all') {
-           playNext();
+    if (repeatMode === 'one') {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    } else if (repeatMode === 'all') {
+      playNext();
+    } else {
+      if (currentTrackIndex === playlist.length - 1 && !isShuffle) {
+        setIsPlaying(false);
       } else {
-           if (currentTrackIndex === playlist.length - 1 && !isShuffle) {
-               setIsPlaying(false);
-           } else {
-               playNext();
-           }
+        playNext();
       }
+    }
   }, [repeatMode, currentTrackIndex, playlist.length, isShuffle, playNext]);
 
   useEffect(() => {
@@ -124,34 +131,37 @@ export const CloudMusicProvider = ({ children }) => {
         ? currentTrack.url
         : `${publicUrl}${currentTrack.url}`; // Use PUBLIC_URL for local assets
 
-      if (audio.src !== trackUrl && audio.src !== window.location.origin + trackUrl) {
-         audio.src = trackUrl;
-         if (isPlaying) {
-            audio.play().catch(e => console.error("Play error:", e));
-         }
+      if (
+        audio.src !== trackUrl &&
+        audio.src !== window.location.origin + trackUrl
+      ) {
+        audio.src = trackUrl;
+        if (isPlaying) {
+          audio.play().catch((e) => console.error('Play error:', e));
+        }
       }
     }
   }, [currentTrackIndex, playlist, isPlaying]);
 
   // Handle Play/Pause side effects
   useEffect(() => {
-      const audio = audioRef.current;
-      if (isPlaying) {
-          audio.play().catch(e => {
-              console.error("Play failed", e);
-              setIsPlaying(false);
-          });
-      } else {
-          audio.pause();
-      }
+    const audio = audioRef.current;
+    if (isPlaying) {
+      audio.play().catch((e) => {
+        console.error('Play failed', e);
+        setIsPlaying(false);
+      });
+    } else {
+      audio.pause();
+    }
   }, [isPlaying]);
 
   // Handle Volume
   useEffect(() => {
-      const audio = audioRef.current;
-      if (audio) {
-          audio.volume = isMuted ? 0 : volume;
-      }
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = isMuted ? 0 : volume;
+    }
   }, [volume, isMuted]);
 
   const playTrack = (index) => {
@@ -167,16 +177,16 @@ export const CloudMusicProvider = ({ children }) => {
   };
 
   const toggleRepeat = () => {
-      setRepeatMode(prev => {
-          if (prev === 'off') return 'all';
-          if (prev === 'all') return 'one';
-          return 'off';
-      });
-  }
+    setRepeatMode((prev) => {
+      if (prev === 'off') return 'all';
+      if (prev === 'all') return 'one';
+      return 'off';
+    });
+  };
 
   const toggleShuffle = () => {
-      setIsShuffle(prev => !prev);
-  }
+    setIsShuffle((prev) => !prev);
+  };
 
   const closePlayer = () => {
     setIsPlaying(false);
@@ -184,28 +194,28 @@ export const CloudMusicProvider = ({ children }) => {
   };
 
   const seek = (time) => {
-      const audio = audioRef.current;
-      audio.currentTime = time;
-      setCurrentTime(time);
-  }
+    const audio = audioRef.current;
+    audio.currentTime = time;
+    setCurrentTime(time);
+  };
 
   const setVolume = (val) => {
-      const newVol = Math.max(0, Math.min(1, val));
-      setVolumeState(newVol);
-      if (newVol > 0 && isMuted) {
-          setIsMuted(false);
-      }
+    const newVol = Math.max(0, Math.min(1, val));
+    setVolumeState(newVol);
+    if (newVol > 0 && isMuted) {
+      setIsMuted(false);
+    }
   };
 
   const toggleMute = () => {
-      if (isMuted) {
-          setIsMuted(false);
-          setVolumeState(previousVolume || 1); // Restore previous volume
-      } else {
-          setPreviousVolume(volume);
-          setIsMuted(true);
-          setVolumeState(0);
-      }
+    if (isMuted) {
+      setIsMuted(false);
+      setVolumeState(previousVolume || 1); // Restore previous volume
+    } else {
+      setPreviousVolume(volume);
+      setIsMuted(true);
+      setVolumeState(0);
+    }
   };
 
   const value = {
@@ -229,7 +239,7 @@ export const CloudMusicProvider = ({ children }) => {
     seek,
     setPlaylist,
     setVolume,
-    toggleMute
+    toggleMute,
   };
 
   return (

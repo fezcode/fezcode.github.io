@@ -43,7 +43,9 @@ const RoadmapView = ({ issuesData = [] }) => {
             key={status}
             className="bg-white/[0.02] border border-white/10 p-6 rounded-sm space-y-8"
           >
-            <h3 className={`flex items-center justify-between border-b border-white/5 pb-4`}>
+            <h3
+              className={`flex items-center justify-between border-b border-white/5 pb-4`}
+            >
               <span
                 className={`inline-flex items-center gap-2 text-[10px] font-mono font-black uppercase tracking-[0.2em] ${getStatusClasses(status)}`}
               >
@@ -58,7 +60,11 @@ const RoadmapView = ({ issuesData = [] }) => {
                 className="text-gray-700 hover:text-white transition-colors"
                 title={isHidden ? 'Show column' : 'Hide column'}
               >
-                {isHidden ? <EyeSlashIcon size={16} weight="bold" /> : <EyeIcon size={16} weight="bold" />}
+                {isHidden ? (
+                  <EyeSlashIcon size={16} weight="bold" />
+                ) : (
+                  <EyeIcon size={16} weight="bold" />
+                )}
               </button>
             </h3>
             {!isHidden && (

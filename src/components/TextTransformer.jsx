@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  TranslateIcon,
-  CodeIcon,
-  CopySimpleIcon,
-} from '@phosphor-icons/react';
+import { TranslateIcon, CodeIcon, CopySimpleIcon } from '@phosphor-icons/react';
 import { useToast } from '../hooks/useToast';
 
 const TextTransformer = () => {
@@ -86,7 +82,11 @@ const TextTransformer = () => {
         <div className="relative group">
           <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500/20 to-transparent opacity-20 rounded-sm pointer-events-none" />
           <div className="relative w-full h-32 bg-black/60 border border-white/10 p-4 font-mono text-sm text-emerald-500/80 rounded-sm overflow-auto scrollbar-hide break-all whitespace-pre-wrap">
-            {transformedText || <span className="opacity-20 italic uppercase tracking-tighter">--- awaiting_signal ---</span>}
+            {transformedText || (
+              <span className="opacity-20 italic uppercase tracking-tighter">
+                --- awaiting_signal ---
+              </span>
+            )}
           </div>
         </div>
       </div>

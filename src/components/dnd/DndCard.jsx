@@ -1,13 +1,8 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-import {motion} from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
-const DndCard = ({
-  title,
-  description,
-  link,
-  icon,
-}) => {
+const DndCard = ({ title, description, link, icon }) => {
   return (
     <motion.div
       whileHover={{ y: -10 }}
@@ -22,8 +17,12 @@ const DndCard = ({
         <div className="dnd-ribbon transition-transform duration-500 group-hover:translate-y-2 hidden md:block" />
 
         {/* Background Runes */}
-        <div className="dnd-card-rune top-4 md:top-12 left-4 md:left-12 -rotate-12">ᚦ</div>
-        <div className="dnd-card-rune bottom-4 md:bottom-12 right-4 md:right-12 rotate-12">ᛉ</div>
+        <div className="dnd-card-rune top-4 md:top-12 left-4 md:left-12 -rotate-12">
+          ᚦ
+        </div>
+        <div className="dnd-card-rune bottom-4 md:bottom-12 right-4 md:right-12 rotate-12">
+          ᛉ
+        </div>
 
         {/* Ink Splatters */}
         <div className="dnd-ink-splatter w-8 h-8 top-1/4 right-8" />
@@ -56,17 +55,17 @@ const DndCard = ({
 
         {/* Mini Wax Seal at bottom */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-1000 translate-y-4 group-hover:translate-y-0 pointer-events-none scale-50 hidden md:block">
-           <div className="dnd-wax-seal">
-              <span className="dnd-wax-seal-inner text-sm">SF</span>
-           </div>
+          <div className="dnd-wax-seal">
+            <span className="dnd-wax-seal-inner text-sm">SF</span>
+          </div>
         </div>
 
         {/* Interaction hint - refined and darker */}
         <div className="mt-6 md:mt-10 pt-4 md:pt-8 border-t border-black/10 w-full flex flex-col items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-700 transform translate-y-4 group-hover:translate-y-0 relative z-10">
           <div className="flex items-center gap-4">
-             <div className="h-px w-8 bg-dnd-crimson/20" />
-             <div className="w-1.5 h-1.5 bg-dnd-gold rounded-full animate-pulse shadow-[0_0_8px_var(--dnd-gold)]" />
-             <div className="h-px w-8 bg-dnd-crimson/20" />
+            <div className="h-px w-8 bg-dnd-crimson/20" />
+            <div className="w-1.5 h-1.5 bg-dnd-gold rounded-full animate-pulse shadow-[0_0_8px_var(--dnd-gold)]" />
+            <div className="h-px w-8 bg-dnd-crimson/20" />
           </div>
           <span className="text-[9px] font-mono font-bold uppercase tracking-[0.5em] text-black/60">
             Open_Script

@@ -29,12 +29,13 @@ const ContactModal = ({ isOpen, onClose }) => {
     <GenericModal
       isOpen={isOpen}
       onClose={onClose}
-      title={isLuxe ? "Establish Contact" : "Contact"}
+      title={isLuxe ? 'Establish Contact' : 'Contact'}
     >
       <div className="flex flex-col gap-6">
         {isLuxe ? (
           <p className="font-outfit text-sm text-[#1A1A1A]/60 italic leading-relaxed mb-2">
-            Choose a preferred channel to initiate communication with the primary node.
+            Choose a preferred channel to initiate communication with the
+            primary node.
           </p>
         ) : (
           <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-[10px]">
@@ -53,7 +54,9 @@ const ContactModal = ({ isOpen, onClose }) => {
                     href={link.url}
                     icon={Icon}
                     label={link.label}
-                    value={link.url.replace(/^mailto:/, '').replace(/^https?:\/\//, '')}
+                    value={link.url
+                      .replace(/^mailto:/, '')
+                      .replace(/^https?:\/\//, '')}
                   />
                 );
               }
@@ -63,7 +66,9 @@ const ContactModal = ({ isOpen, onClose }) => {
                   href={link.url}
                   icon={Icon}
                   label={link.label}
-                  value={link.url.replace(/^mailto:/, '').replace(/^https?:\/\//, '')}
+                  value={link.url
+                    .replace(/^mailto:/, '')
+                    .replace(/^https?:\/\//, '')}
                 />
               );
             })}
@@ -88,10 +93,15 @@ const LuxeContactLink = ({ href, icon: Icon, label, value }) => (
         <span className="text-[10px] font-outfit uppercase tracking-[0.2em] text-[#1A1A1A]/40">
           {label}
         </span>
-        <span className="font-playfairDisplay text-lg italic text-[#1A1A1A]">{value}</span>
+        <span className="font-playfairDisplay text-lg italic text-[#1A1A1A]">
+          {value}
+        </span>
       </div>
     </div>
-    <ArrowUpRightIcon size={18} className="text-[#1A1A1A]/10 group-hover:text-[#8D4004] transition-colors" />
+    <ArrowUpRightIcon
+      size={18}
+      className="text-[#1A1A1A]/10 group-hover:text-[#8D4004] transition-colors"
+    />
   </a>
 );
 

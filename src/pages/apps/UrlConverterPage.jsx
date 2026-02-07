@@ -88,7 +88,11 @@ function UrlConverterPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="URL Encoder" slug="url" variant="brutalist" />
+              <BreadcrumbTitle
+                title="URL Encoder"
+                slug="url"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Protocol for encoding and decoding Uniform Resource Locators.
                 Map arbitrary data into web-compliant character sequences.

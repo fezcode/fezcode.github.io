@@ -158,7 +158,11 @@ const CronJobGeneratorPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="CRON Generator" slug="cron" variant="brutalist" />
+              <BreadcrumbTitle
+                title="CRON Generator"
+                slug="cron"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Visual protocol for temporal scheduling. Map the frequency of
                 automated executions within the system core.

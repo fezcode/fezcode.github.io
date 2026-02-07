@@ -15,7 +15,7 @@ import Loading from '../components/Loading';
 const EditorialProjectDetailsPage = () => {
   const { slug } = useParams();
   const { projects } = useProjects();
-  const projectMetadata = projects.find(p => p.slug === slug);
+  const projectMetadata = projects.find((p) => p.slug === slug);
 
   const [content, setContent] = useState({
     hero: '',
@@ -34,10 +34,20 @@ const EditorialProjectDetailsPage = () => {
       try {
         const productSlug = slug || 'fezcodex';
 
-        const files = ['hero', 'features', 'terminal', 'install', 'social', 'description', 'footer', 'platforms'];
-        const promises = files.map(file =>
-          fetch(`/projects/${productSlug}/${file}.txt`)
-            .then(res => res.ok ? res.text() : '')
+        const files = [
+          'hero',
+          'features',
+          'terminal',
+          'install',
+          'social',
+          'description',
+          'footer',
+          'platforms',
+        ];
+        const promises = files.map((file) =>
+          fetch(`/projects/${productSlug}/${file}.txt`).then((res) =>
+            res.ok ? res.text() : '',
+          ),
         );
 
         const results = await Promise.all(promises);
@@ -49,12 +59,12 @@ const EditorialProjectDetailsPage = () => {
 
         // Fallback for description if empty
         if (!newContent.description && projectMetadata?.shortDescription) {
-            newContent.description = `## Overview\n${projectMetadata.shortDescription}`;
+          newContent.description = `## Overview\n${projectMetadata.shortDescription}`;
         }
 
         setContent(newContent);
       } catch (error) {
-        console.error("Error fetching editorial project content:", error);
+        console.error('Error fetching editorial project content:', error);
       } finally {
         setLoading(false);
       }
@@ -79,17 +89,33 @@ const EditorialProjectDetailsPage = () => {
       <EditorialGridBackground image={projectMetadata?.backgroundImage} />
 
       <div className="relative z-10 flex flex-col min-h-screen">
-        <EditorialNavbar title={projectMetadata?.title || 'Project'} repoLink={projectMetadata?.repo_link} />
+        <EditorialNavbar
+          title={projectMetadata?.title || 'Project'}
+          repoLink={projectMetadata?.repo_link}
+        />
 
         <main className="flex-1 flex flex-col">
-           <EditorialHero content={content.hero} repoLink={projectMetadata?.repo_link} title={projectMetadata?.title} />
-           <EditorialTerminal content={content.terminal} />
-           <EditorialDescription content={content.description} />
-           <EditorialInstall content={content.install} platforms={content.platforms} />
-           <EditorialSocial content={content.social} />
+          <EditorialHero
+            content={content.hero}
+            repoLink={projectMetadata?.repo_link}
+            title={projectMetadata?.title}
+          />
+          <EditorialTerminal content={content.terminal} />
+          <EditorialDescription content={content.description} />
+          <EditorialInstall
+            content={content.install}
+            platforms={content.platforms}
+          />
+          <EditorialSocial content={content.social} />
         </main>
 
-        <EditorialFooter content={content.footer} photoCredit={{ text: projectMetadata?.photoCreditText, link: projectMetadata?.photoCreditLink }} />
+        <EditorialFooter
+          content={content.footer}
+          photoCredit={{
+            text: projectMetadata?.photoCreditText,
+            link: projectMetadata?.photoCreditLink,
+          }}
+        />
       </div>
     </div>
   );

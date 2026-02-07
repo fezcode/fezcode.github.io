@@ -13,11 +13,21 @@ const LogMetadata = ({ metadata }) => {
     for (let i = 0; i < 5; i++) {
       if (i < rating) {
         stars.push(
-          <StarIcon key={i} size={16} weight="fill" className="text-yellow-400" />,
+          <StarIcon
+            key={i}
+            size={16}
+            weight="fill"
+            className="text-yellow-400"
+          />,
         );
       } else {
         stars.push(
-          <StarIcon key={i} size={16} weight="fill" className="text-gray-500" />,
+          <StarIcon
+            key={i}
+            size={16}
+            weight="fill"
+            className="text-gray-500"
+          />,
         );
       }
     }

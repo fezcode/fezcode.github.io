@@ -21,9 +21,9 @@ export default function SideEffects() {
         </h4>
         <p className="text-gray-400 text-xs mb-4">
           A function or expression is said to have a{' '}
-          <strong className="text-current">side effect</strong> if it modifies some state outside its
-          local environment or has an observable interaction with the outside
-          world.
+          <strong className="text-current">side effect</strong> if it modifies
+          some state outside its local environment or has an observable
+          interaction with the outside world.
         </p>
 
         <div className="bg-black p-4 border border-white/10 my-4 font-mono text-xs overflow-x-auto">
@@ -44,13 +44,19 @@ export default function SideEffects() {
         <ul className="space-y-1 text-gray-500 text-xs pl-4 border-l border-white/10">
           <li>-- Modifying a global variable</li>
           <li>-- Writing to a file or database</li>
-          <li>-- <code>console.log()</code></li>
+          <li>
+            -- <code>console.log()</code>
+          </li>
           <li>-- DOM manipulation</li>
         </ul>
 
         <p className="text-gray-500 text-xs mt-4 italic border-t border-white/5 pt-2">
-          In <strong className="text-current not-italic">Functional Programming</strong>, side effects are avoided
-          to ensure functions are "pure" (deterministic).
+          In{' '}
+          <strong className="text-current not-italic">
+            Functional Programming
+          </strong>
+          , side effects are avoided to ensure functions are "pure"
+          (deterministic).
         </p>
       </div>
     </div>

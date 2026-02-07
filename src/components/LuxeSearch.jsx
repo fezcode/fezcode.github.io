@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { MagnifyingGlassIcon, XCircleIcon, ArrowRightIcon } from '@phosphor-icons/react';
+import {
+  MagnifyingGlassIcon,
+  XCircleIcon,
+  ArrowRightIcon,
+} from '@phosphor-icons/react';
 import useSearchableData from '../hooks/useSearchableData';
 import { filterItems } from '../utils/search';
 
@@ -83,7 +87,9 @@ const LuxeSearch = ({ isVisible, toggleSearch }) => {
           <input
             ref={inputRef}
             type="text"
-            placeholder={isLoading ? 'Synchronizing Registry...' : 'Search the archive...'}
+            placeholder={
+              isLoading ? 'Synchronizing Registry...' : 'Search the archive...'
+            }
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             onFocus={() => setIsDropdownOpen(true)}
@@ -127,10 +133,15 @@ const LuxeSearch = ({ isVisible, toggleSearch }) => {
                   </div>
 
                   <div className="flex items-center gap-6">
-                    <span className={`px-2 py-0.5 text-[9px] font-outfit font-bold uppercase tracking-widest rounded-sm shadow-sm ${getCategoryStyle(result.type)}`}>
+                    <span
+                      className={`px-2 py-0.5 text-[9px] font-outfit font-bold uppercase tracking-widest rounded-sm shadow-sm ${getCategoryStyle(result.type)}`}
+                    >
                       {result.type}
                     </span>
-                    <ArrowRightIcon size={16} className="text-[#1A1A1A]/10 group-hover:text-[#8D4004] group-hover:translate-x-1 transition-all" />
+                    <ArrowRightIcon
+                      size={16}
+                      className="text-[#1A1A1A]/10 group-hover:text-[#8D4004] group-hover:translate-x-1 transition-all"
+                    />
                   </div>
                 </Link>
               ))}
@@ -149,7 +160,8 @@ const LuxeSearch = ({ isVisible, toggleSearch }) => {
         {isDropdownOpen && searchTerm && searchResults.length === 0 && (
           <div className="absolute mt-6 w-full bg-white border border-[#1A1A1A]/5 p-12 text-center shadow-xl z-[100] left-0 rounded-sm">
             <p className="font-playfairDisplay italic text-lg text-[#1A1A1A]/20">
-              No archive records found for: <span className="text-[#8D4004] opacity-100">{searchTerm}</span>
+              No archive records found for:{' '}
+              <span className="text-[#8D4004] opacity-100">{searchTerm}</span>
             </p>
           </div>
         )}

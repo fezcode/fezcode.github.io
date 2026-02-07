@@ -286,10 +286,7 @@ const BrutalistBlogPostPage = () => {
                 prose-pre:bg-transparent prose-pre:border-none prose-pre:p-0
                 prose-blockquote:border-l-emerald-500 prose-blockquote:bg-white/5 prose-blockquote:py-2"
           >
-            <MarkdownContent
-              content={post.body}
-              components={components}
-            />
+            <MarkdownContent content={post.body} components={components} />
           </div>
 
           {/* Series Nav Section */}

@@ -9,21 +9,34 @@ const BASE_URL = 'https://fezcode.com';
  * This ensures that static site generators like react-snap can capture the metadata
  * even before hydration, as long as the component is rendered.
  */
-const Seo = ({ title, description, image, keywords, ogImage, twitterImage, type }) => {
+const Seo = ({
+  title,
+  description,
+  image,
+  keywords,
+  ogImage,
+  twitterImage,
+  type,
+}) => {
   const location = useLocation();
 
   if (!title || title === 'Fezcodex' || title === 'fezcodex') return null;
 
   const currentUrl = BASE_URL + location.pathname;
   const isAppPath = location.pathname.startsWith('/apps');
-  const defaultImage = isAppPath ? '/images/asset/ogtitle-apps.png' : '/images/asset/ogtitle.png';
+  const defaultImage = isAppPath
+    ? '/images/asset/ogtitle-apps.png'
+    : '/images/asset/ogtitle.png';
   const rawImage = image || ogImage || twitterImage || defaultImage;
   const finalImage = rawImage.startsWith('http')
     ? rawImage
     : BASE_URL + (rawImage.startsWith('/') ? '' : '/') + rawImage;
 
-  const finalKeywords = Array.isArray(keywords) ? keywords.join(', ') : keywords;
-  const finalType = type || (location.pathname.startsWith('/blog') ? 'article' : 'website');
+  const finalKeywords = Array.isArray(keywords)
+    ? keywords.join(', ')
+    : keywords;
+  const finalType =
+    type || (location.pathname.startsWith('/blog') ? 'article' : 'website');
 
   return (
     <>
@@ -38,7 +51,9 @@ const Seo = ({ title, description, image, keywords, ogImage, twitterImage, type 
       <meta property="og:url" content={currentUrl} />
       <meta property="og:type" content={finalType} />
       <meta property="og:site_name" content="Fezcodex" />
-      {finalImage.startsWith('https') && <meta property="og:image:secure_url" content={finalImage} />}
+      {finalImage.startsWith('https') && (
+        <meta property="og:image:secure_url" content={finalImage} />
+      )}
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />

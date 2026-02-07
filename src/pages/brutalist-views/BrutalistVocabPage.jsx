@@ -36,27 +36,55 @@ const BauhausShapes = ({ seed }) => {
         size: 15 + rng() * 25,
         rotation: Math.floor(rng() * 4) * 90,
         color: colors[Math.floor(rng() * colors.length)],
-        opacity: 0.03 + rng() * 0.07
+        opacity: 0.03 + rng() * 0.07,
       });
     }
     return items;
   }, [seed]);
 
   return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox="0 0 100 100"
+      preserveAspectRatio="xMidYMid slice"
+    >
       {shapes.map((s, i) => (
-        <g key={i} transform={`translate(${s.x}, ${s.y}) rotate(${s.rotation})`}>
+        <g
+          key={i}
+          transform={`translate(${s.x}, ${s.y}) rotate(${s.rotation})`}
+        >
           {s.type === 0 && (
-            <rect x={-s.size/2} y={-s.size/2} width={s.size} height={s.size} fill={s.color} fillOpacity={s.opacity} />
+            <rect
+              x={-s.size / 2}
+              y={-s.size / 2}
+              width={s.size}
+              height={s.size}
+              fill={s.color}
+              fillOpacity={s.opacity}
+            />
           )}
           {s.type === 1 && (
-            <circle cx={0} cy={0} r={s.size/2} fill={s.color} fillOpacity={s.opacity} />
+            <circle
+              cx={0}
+              cy={0}
+              r={s.size / 2}
+              fill={s.color}
+              fillOpacity={s.opacity}
+            />
           )}
           {s.type === 2 && (
-            <path d={`M 0 ${-s.size/2} L ${s.size/2} ${s.size/2} L ${-s.size/2} ${s.size/2} Z`} fill={s.color} fillOpacity={s.opacity} />
+            <path
+              d={`M 0 ${-s.size / 2} L ${s.size / 2} ${s.size / 2} L ${-s.size / 2} ${s.size / 2} Z`}
+              fill={s.color}
+              fillOpacity={s.opacity}
+            />
           )}
           {s.type === 3 && (
-            <path d={`M ${-s.size/2} ${-s.size/2} A ${s.size} ${s.size} 0 0 1 ${s.size/2} ${s.size/2} L ${-s.size/2} ${s.size/2} Z`} fill={s.color} fillOpacity={s.opacity} />
+            <path
+              d={`M ${-s.size / 2} ${-s.size / 2} A ${s.size} ${s.size} 0 0 1 ${s.size / 2} ${s.size / 2} L ${-s.size / 2} ${s.size / 2} Z`}
+              fill={s.color}
+              fillOpacity={s.opacity}
+            />
           )}
         </g>
       ))}
@@ -68,25 +96,30 @@ const VocabPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const { openSidePanel } = useSidePanel();
 
-  const vocabEntries = useMemo(() =>
-    Object.entries(vocabulary).map(([slug, data]) => ({
-      slug,
-      ...data,
-    })).sort((a, b) => a.title.localeCompare(b.title)),
-  []);
+  const vocabEntries = useMemo(
+    () =>
+      Object.entries(vocabulary)
+        .map(([slug, data]) => ({
+          slug,
+          ...data,
+        }))
+        .sort((a, b) => a.title.localeCompare(b.title)),
+    [],
+  );
 
   const filteredEntries = useMemo(() => {
     const query = searchQuery.toLowerCase().trim();
     if (!query) return vocabEntries;
-    return vocabEntries.filter((entry) =>
-      entry.title.toLowerCase().includes(query) ||
-      entry.slug.toLowerCase().includes(query)
+    return vocabEntries.filter(
+      (entry) =>
+        entry.title.toLowerCase().includes(query) ||
+        entry.slug.toLowerCase().includes(query),
     );
   }, [vocabEntries, searchQuery]);
 
   const groupedEntries = useMemo(() => {
     const groups = {};
-    filteredEntries.forEach(entry => {
+    filteredEntries.forEach((entry) => {
       const firstLetter = entry.title.charAt(0).toUpperCase();
       if (!groups[firstLetter]) groups[firstLetter] = [];
       groups[firstLetter].push(entry);
@@ -94,7 +127,10 @@ const VocabPage = () => {
     return groups;
   }, [filteredEntries]);
 
-  const alphabet = useMemo(() => Object.keys(groupedEntries).sort(), [groupedEntries]);
+  const alphabet = useMemo(
+    () => Object.keys(groupedEntries).sort(),
+    [groupedEntries],
+  );
 
   const handleOpenVocab = (entry) => {
     const LazyComponent = React.lazy(entry.loader);
@@ -112,7 +148,7 @@ const VocabPage = () => {
 
       window.scrollTo({
         top: offsetPosition,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   };
@@ -126,11 +162,13 @@ const VocabPage = () => {
       />
 
       {/* Bauhaus Grid Background Pattern */}
-      <div className="fixed inset-0 pointer-events-none opacity-[0.02] z-0"
-           style={{
-             backgroundImage: 'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
-             backgroundSize: '40px 40px'
-           }}
+      <div
+        className="fixed inset-0 pointer-events-none opacity-[0.02] z-0"
+        style={{
+          backgroundImage:
+            'linear-gradient(#ffffff 1px, transparent 1px), linear-gradient(90deg, #ffffff 1px, transparent 1px)',
+          backgroundSize: '40px 40px',
+        }}
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-24 md:px-12 flex flex-col">
@@ -148,43 +186,50 @@ const VocabPage = () => {
             Glossary
           </h1>
           <p className="text-xl font-light text-gray-400 max-w-2xl font-instr-sans">
-            A curated collection of technical concepts, design patterns, and terminology.
+            A curated collection of technical concepts, design patterns, and
+            terminology.
           </p>
         </header>
 
         {/* Sticky Search & Nav */}
         <div className="sticky top-6 z-30 mb-20 shrink-0">
-            <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl p-2 flex flex-col md:flex-row items-center gap-4">
-                <div className="relative w-full md:w-96">
-                    <MagnifyingGlassIcon size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500" />
-                    <input
-                      type="text"
-                      placeholder="Search terms..."
-                      value={searchQuery}
-                      onChange={(e) => setSearchQuery(e.target.value)}
-                      className="w-full bg-transparent text-lg font-instr-sans placeholder-gray-600 focus:outline-none py-3 pl-12 pr-4 text-white"
-                    />
-                    {searchQuery && (
-                        <button onClick={() => setSearchQuery('')} className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-500">
-                            <XCircleIcon size={18} weight="fill" />
-                        </button>
-                    )}
-                </div>
-
-                <div className="h-8 w-px bg-white/10 hidden md:block" />
-
-                <div className="flex flex-wrap gap-1 justify-center md:justify-start px-2 py-2 md:py-0 w-full overflow-x-auto no-scrollbar">
-                    {alphabet.map(letter => (
-                      <button
-                        key={letter}
-                        onClick={() => scrollToLetter(letter)}
-                        className="w-8 h-8 flex items-center justify-center rounded-full text-xs font-bold text-gray-500 hover:bg-white hover:text-black transition-all font-mono"
-                      >
-                        {letter}
-                      </button>
-                    ))}
-                </div>
+          <div className="bg-[#0a0a0a]/80 backdrop-blur-xl border border-white/10 shadow-2xl rounded-2xl p-2 flex flex-col md:flex-row items-center gap-4">
+            <div className="relative w-full md:w-96">
+              <MagnifyingGlassIcon
+                size={18}
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"
+              />
+              <input
+                type="text"
+                placeholder="Search terms..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full bg-transparent text-lg font-instr-sans placeholder-gray-600 focus:outline-none py-3 pl-12 pr-4 text-white"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-red-500"
+                >
+                  <XCircleIcon size={18} weight="fill" />
+                </button>
+              )}
             </div>
+
+            <div className="h-8 w-px bg-white/10 hidden md:block" />
+
+            <div className="flex flex-wrap gap-1 justify-center md:justify-start px-2 py-2 md:py-0 w-full overflow-x-auto no-scrollbar">
+              {alphabet.map((letter) => (
+                <button
+                  key={letter}
+                  onClick={() => scrollToLetter(letter)}
+                  className="w-8 h-8 flex items-center justify-center rounded-full text-xs font-bold text-gray-500 hover:bg-white hover:text-black transition-all font-mono"
+                >
+                  {letter}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Content Container - Shrinks with content */}
@@ -198,7 +243,9 @@ const VocabPage = () => {
               className="scroll-mt-40"
             >
               <div className="flex items-baseline gap-6 mb-10 border-b border-white/10 pb-4">
-                <h2 className="text-6xl font-instr-serif italic text-white/20">{letter}</h2>
+                <h2 className="text-6xl font-instr-serif italic text-white/20">
+                  {letter}
+                </h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -237,7 +284,9 @@ const VocabPage = () => {
 
           {filteredEntries.length === 0 && (
             <div className="py-32 text-center">
-              <p className="font-instr-serif italic text-2xl text-gray-600">No definitions found for "{searchQuery}"</p>
+              <p className="font-instr-serif italic text-2xl text-gray-600">
+                No definitions found for "{searchQuery}"
+              </p>
             </div>
           )}
         </div>

@@ -12,7 +12,7 @@ import {
   MagnifyingGlassPlusIcon,
   StackIcon,
   TrashIcon,
-  DownloadSimpleIcon
+  DownloadSimpleIcon,
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
@@ -174,7 +174,16 @@ const AssetStudioPage = () => {
       <Seo
         title={`${appName} | Fezcodex`}
         description="Convert images into optimized website assets with custom resizing and scaling options. Bulk processing supported."
-        keywords={['Fezcodex', 'image converter', 'webp', 'favicon generator', 'og image', 'image resizer', 'image scaler', 'bulk image processing']}
+        keywords={[
+          'Fezcodex',
+          'image converter',
+          'webp',
+          'favicon generator',
+          'og image',
+          'image resizer',
+          'image scaler',
+          'bulk image processing',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
@@ -182,22 +191,36 @@ const AssetStudioPage = () => {
             to="/apps"
             className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
           >
-            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Applications</span>
           </Link>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Asset Studio" slug="as" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Asset Studio"
+                slug="as"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Resize, crop, and convert your images for the web. Supports single and bulk processing for favicons, OG images, and more.
+                Resize, crop, and convert your images for the web. Supports
+                single and bulk processing for favicons, OG images, and more.
               </p>
             </div>
 
             <label className="group relative inline-flex items-center gap-4 px-10 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm cursor-pointer shrink-0">
               <ImageIcon weight="bold" size={24} />
               <span>Select Images</span>
-              <input type="file" className="hidden" accept="image/*" multiple onChange={handleFileUpload} />
+              <input
+                type="file"
+                className="hidden"
+                accept="image/*"
+                multiple
+                onChange={handleFileUpload}
+              />
             </label>
           </div>
         </header>
@@ -207,13 +230,17 @@ const AssetStudioPage = () => {
           <div className="lg:col-span-8 space-y-12">
             <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group flex flex-col items-center justify-center min-h-[600px]">
               <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
-                <GenerativeArt seed={appName + (images.length > 0 ? 'active' : 'idle')} className="w-full h-full" />
+                <GenerativeArt
+                  seed={appName + (images.length > 0 ? 'active' : 'idle')}
+                  className="w-full h-full"
+                />
               </div>
 
               {images.length > 0 ? (
                 <div className="relative z-10 w-full flex flex-col items-center gap-8">
                   <span className="font-mono text-[10px] text-emerald-500 font-black uppercase tracking-[0.5em]">
-                    {'//'} {images.length > 1 ? 'COLLECTION_ACTIVE' : 'IMAGE_LOADED'}
+                    {'//'}{' '}
+                    {images.length > 1 ? 'COLLECTION_ACTIVE' : 'IMAGE_LOADED'}
                   </span>
                   <div className="max-w-full max-h-[600px] border border-white/10 p-2 bg-black/40 shadow-2xl overflow-hidden relative group/preview">
                     <img
@@ -233,7 +260,8 @@ const AssetStudioPage = () => {
                   <div className="flex flex-col items-center gap-2 font-mono text-[10px] text-gray-500 uppercase tracking-widest text-center">
                     <span className="text-white">{currentImage.name}</span>
                     <span>
-                      {currentImage.originalWidth}x{currentImage.originalHeight} PX
+                      {currentImage.originalWidth}x{currentImage.originalHeight}{' '}
+                      PX
                     </span>
                   </div>
 
@@ -244,10 +272,16 @@ const AssetStudioPage = () => {
                           key={img.id}
                           onClick={() => setCurrentIndex(idx)}
                           className={`w-12 h-12 border transition-all overflow-hidden p-0.5 ${
-                            idx === currentIndex ? 'border-emerald-500 scale-110' : 'border-white/10 opacity-40 hover:opacity-100'
+                            idx === currentIndex
+                              ? 'border-emerald-500 scale-110'
+                              : 'border-white/10 opacity-40 hover:opacity-100'
                           }`}
                         >
-                          <img src={img.src} className="w-full h-full object-cover" alt="" />
+                          <img
+                            src={img.src}
+                            className="w-full h-full object-cover"
+                            alt=""
+                          />
                         </button>
                       ))}
                     </div>
@@ -255,7 +289,11 @@ const AssetStudioPage = () => {
                 </div>
               ) : (
                 <div className="relative z-10 text-center space-y-6">
-                  <ImageIcon size={64} weight="thin" className="mx-auto text-gray-800" />
+                  <ImageIcon
+                    size={64}
+                    weight="thin"
+                    className="mx-auto text-gray-800"
+                  />
                   <p className="font-mono text-xs uppercase tracking-[0.3em] text-gray-600">
                     Please select one or more images to start...
                   </p>
@@ -272,7 +310,9 @@ const AssetStudioPage = () => {
                 </h3>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-[9px] font-mono text-gray-600 uppercase">Width (px)</label>
+                    <label className="text-[9px] font-mono text-gray-600 uppercase">
+                      Width (px)
+                    </label>
                     <input
                       type="number"
                       value={customWidth}
@@ -281,11 +321,15 @@ const AssetStudioPage = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[9px] font-mono text-gray-600 uppercase">Height (px)</label>
+                    <label className="text-[9px] font-mono text-gray-600 uppercase">
+                      Height (px)
+                    </label>
                     <input
                       type="number"
                       value={customHeight}
-                      onChange={(e) => setCustomHeight(parseInt(e.target.value))}
+                      onChange={(e) =>
+                        setCustomHeight(parseInt(e.target.value))
+                      }
                       className="w-full bg-black/40 border border-white/10 rounded-sm p-3 font-mono text-sm text-white"
                     />
                   </div>
@@ -313,7 +357,14 @@ const AssetStudioPage = () => {
                   Scale Percentage
                 </h3>
                 <div className="space-y-4">
-                  <CustomSlider label="Multiplier" min={0.1} max={4} step={0.1} value={scale} onChange={setScale} />
+                  <CustomSlider
+                    label="Multiplier"
+                    min={0.1}
+                    max={4}
+                    step={0.1}
+                    value={scale}
+                    onChange={setScale}
+                  />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <AssetButton
@@ -348,7 +399,9 @@ const AssetStudioPage = () => {
                       key={f}
                       onClick={() => setTargetFormat(f)}
                       className={`flex-1 py-2 font-mono text-[10px] uppercase tracking-widest transition-all ${
-                        targetFormat === f ? 'bg-emerald-500 text-black font-black' : 'text-gray-500 hover:text-white'
+                        targetFormat === f
+                          ? 'bg-emerald-500 text-black font-black'
+                          : 'text-gray-500 hover:text-white'
                       }`}
                     >
                       {f}
@@ -402,8 +455,9 @@ const AssetStudioPage = () => {
             <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-4">
               <InfoIcon size={24} className="text-gray-700 shrink-0" />
               <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
-                You can upload multiple images. Select a transformation and use the "Bulk" option to process all images
-                at once. All processing is local to your browser.
+                You can upload multiple images. Select a transformation and use
+                the "Bulk" option to process all images at once. All processing
+                is local to your browser.
               </p>
             </div>
 
@@ -423,14 +477,23 @@ const AssetStudioPage = () => {
 
         <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
           <span>Fezcodex_Asset_Studio_v0.7.0</span>
-          <span className="text-gray-800">ENGINE_STATUS // {images.length > 0 ? 'READY' : 'STANDBY'}</span>
+          <span className="text-gray-800">
+            ENGINE_STATUS // {images.length > 0 ? 'READY' : 'STANDBY'}
+          </span>
         </footer>
       </div>
     </div>
   );
 };
 
-const BulkProcessControl = ({ label, type, onProcess, disabled, showBulk, icon }) => (
+const BulkProcessControl = ({
+  label,
+  type,
+  onProcess,
+  disabled,
+  showBulk,
+  icon,
+}) => (
   <div className="space-y-2">
     <div className="flex gap-2">
       <AssetButton
@@ -454,7 +517,15 @@ const BulkProcessControl = ({ label, type, onProcess, disabled, showBulk, icon }
   </div>
 );
 
-const AssetButton = ({ label, description, onClick, disabled, icon: Icon, variant = 'default', className = '' }) => (
+const AssetButton = ({
+  label,
+  description,
+  onClick,
+  disabled,
+  icon: Icon,
+  variant = 'default',
+  className = '',
+}) => (
   <button
     onClick={onClick}
     disabled={disabled}
@@ -480,12 +551,20 @@ const AssetButton = ({ label, description, onClick, disabled, icon: Icon, varian
         <Icon
           size={16}
           weight={disabled ? 'regular' : 'bold'}
-          className={!disabled ? (variant === 'emerald' ? 'text-emerald-500' : 'group-hover:text-emerald-500') : ''}
+          className={
+            !disabled
+              ? variant === 'emerald'
+                ? 'text-emerald-500'
+                : 'group-hover:text-emerald-500'
+              : ''
+          }
         />
       )}
     </div>
     {description && (
-      <span className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">{description}</span>
+      <span className="text-[9px] font-mono text-gray-600 uppercase tracking-widest">
+        {description}
+      </span>
     )}
   </button>
 );

@@ -9,7 +9,6 @@ const MuseumHero = ({ title, subtitle, image, date, technologies }) => {
   return (
     <section className="min-h-screen pt-40 pb-40 px-8 md:px-24 flex flex-col relative overflow-hidden bg-[#FDFAF5]">
       <div className="max-w-7xl mx-auto w-full flex-grow flex flex-col relative z-10">
-
         {/* Refined Meta Info Bar */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -17,22 +16,24 @@ const MuseumHero = ({ title, subtitle, image, date, technologies }) => {
           transition={{ duration: 1.5 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-32 py-10 border-y border-black/10"
         >
-          {[{
-            label: 'Artifact',
-            value: title
-          },
-          {
-            label: 'Timeline',
-            value: date || '2026'
-          },
-          {
-            label: 'Category',
-            value: 'Digital Specimen'
-          },
-          {
-            label: 'Core Tech',
-            value: technologies?.slice(0, 2).join(', ') || 'Various'
-          }].map((item, i) => (
+          {[
+            {
+              label: 'Artifact',
+              value: title,
+            },
+            {
+              label: 'Timeline',
+              value: date || '2026',
+            },
+            {
+              label: 'Category',
+              value: 'Digital Specimen',
+            },
+            {
+              label: 'Core Tech',
+              value: technologies?.slice(0, 2).join(', ') || 'Various',
+            },
+          ].map((item, i) => (
             <div key={i} className="flex flex-col gap-2">
               <span className="text-[10px] font-black uppercase tracking-[0.3em] text-black/20 font-ibm-plex-mono">
                 {item.label}
@@ -79,7 +80,10 @@ const MuseumHero = ({ title, subtitle, image, date, technologies }) => {
               src={image}
               alt={title}
               className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 ease-in-out"
-              onError={(e) => { e.target.src = '/images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg'; }}
+              onError={(e) => {
+                e.target.src =
+                  '/images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg';
+              }}
             />
             {/* Subtle Reflection Overlay */}
             <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none" />
@@ -89,7 +93,6 @@ const MuseumHero = ({ title, subtitle, image, date, technologies }) => {
           <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[90%] h-20 bg-black/5 blur-3xl -z-10" />
           <div className="absolute bottom-0 left-0 w-full h-[1px] bg-black/10" />
         </div>
-
       </div>
     </section>
   );

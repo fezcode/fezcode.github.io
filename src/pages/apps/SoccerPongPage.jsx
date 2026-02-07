@@ -1,5 +1,11 @@
-import React, {useRef, useEffect, useState, useCallback, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, {
+  useRef,
+  useEffect,
+  useState,
+  useCallback,
+  useContext,
+} from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   SoccerBallIcon,
@@ -11,9 +17,9 @@ import {
   EyeIcon,
   KeyboardIcon,
 } from '@phosphor-icons/react';
-import {motion, AnimatePresence} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
 
@@ -34,7 +40,7 @@ const OBSTACLE_SPEED = 2;
 const SoccerPongPage = () => {
   const appName = 'Soccer Pong';
 
-  const {addToast} = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
   const canvasRef = useRef(null);
   const [playerScore, setPlayerScore] = useState(0);
   const [aiScore, setAiScore] = useState(0);
@@ -63,15 +69,40 @@ const SoccerPongPage = () => {
     gameState.current.ballX = GAME_WIDTH / 2;
     gameState.current.ballY = GAME_HEIGHT / 2;
     gameState.current.ballDx = (Math.random() > 0.5 ? 1 : -1) * BALL_SPEED;
-    gameState.current.ballDy = (Math.random() > 0.5 ? 1 : -1) * (BALL_SPEED * 0.8);
+    gameState.current.ballDy =
+      (Math.random() > 0.5 ? 1 : -1) * (BALL_SPEED * 0.8);
   }, []);
 
   const initializeObstacles = useCallback(() => {
     gameState.current.obstacles = [
-      {x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2, y: GAME_HEIGHT / 4, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: OBSTACLE_SPEED},
-      {x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2, y: (GAME_HEIGHT * 3) / 4 - OBSTACLE_HEIGHT, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: -OBSTACLE_SPEED},
-      {x: (GAME_WIDTH * 3) / 4 - OBSTACLE_WIDTH / 2, y: GAME_HEIGHT / 4, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: -OBSTACLE_SPEED},
-      {x: (GAME_WIDTH * 3) / 4 - OBSTACLE_WIDTH / 2, y: (GAME_HEIGHT * 3) / 4 - OBSTACLE_HEIGHT, width: OBSTACLE_WIDTH, height: OBSTACLE_HEIGHT, dy: OBSTACLE_SPEED},
+      {
+        x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2,
+        y: GAME_HEIGHT / 4,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: OBSTACLE_SPEED,
+      },
+      {
+        x: GAME_WIDTH / 4 - OBSTACLE_WIDTH / 2,
+        y: (GAME_HEIGHT * 3) / 4 - OBSTACLE_HEIGHT,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: -OBSTACLE_SPEED,
+      },
+      {
+        x: (GAME_WIDTH * 3) / 4 - OBSTACLE_WIDTH / 2,
+        y: GAME_HEIGHT / 4,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: -OBSTACLE_SPEED,
+      },
+      {
+        x: (GAME_WIDTH * 3) / 4 - OBSTACLE_WIDTH / 2,
+        y: (GAME_HEIGHT * 3) / 4 - OBSTACLE_HEIGHT,
+        width: OBSTACLE_WIDTH,
+        height: OBSTACLE_HEIGHT,
+        dy: OBSTACLE_SPEED,
+      },
     ];
   }, []);
 
@@ -80,13 +111,13 @@ const SoccerPongPage = () => {
     setAiScore(0);
     setGameOver(false);
     setWinner(null);
-    setGoalAnimation({active: false, scorer: null});
+    setGoalAnimation({ active: false, scorer: null });
     resetBall();
     initializeObstacles();
     gameState.current.playerPaddleY = GAME_HEIGHT / 2 - PADDLE_HEIGHT / 2;
     gameState.current.aiPaddleY = GAME_HEIGHT / 2 - PADDLE_HEIGHT / 2;
     setGameStarted(true);
-    addToast({message: 'GAME_INITIALIZED: Simulation active.', type: 'info'});
+    addToast({ message: 'GAME_INITIALIZED: Simulation active.', type: 'info' });
   }, [resetBall, initializeObstacles, addToast]);
 
   useEffect(() => {
@@ -117,11 +148,21 @@ const SoccerPongPage = () => {
 
       // Player paddle
       ctx.fillStyle = '#10b981';
-      ctx.fillRect(0, gameState.current.playerPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+      ctx.fillRect(
+        0,
+        gameState.current.playerPaddleY,
+        PADDLE_WIDTH,
+        PADDLE_HEIGHT,
+      );
 
       // AI paddle
       ctx.fillStyle = '#ffffff';
-      ctx.fillRect(GAME_WIDTH - PADDLE_WIDTH, gameState.current.aiPaddleY, PADDLE_WIDTH, PADDLE_HEIGHT);
+      ctx.fillRect(
+        GAME_WIDTH - PADDLE_WIDTH,
+        gameState.current.aiPaddleY,
+        PADDLE_WIDTH,
+        PADDLE_HEIGHT,
+      );
 
       // Obstacles
       ctx.fillStyle = 'rgba(255, 255, 255, 0.05)';
@@ -136,7 +177,13 @@ const SoccerPongPage = () => {
       ctx.shadowColor = '#10b981';
       ctx.fillStyle = '#10b981';
       ctx.beginPath();
-      ctx.arc(gameState.current.ballX, gameState.current.ballY, BALL_SIZE / 2, 0, Math.PI * 2);
+      ctx.arc(
+        gameState.current.ballX,
+        gameState.current.ballY,
+        BALL_SIZE / 2,
+        0,
+        Math.PI * 2,
+      );
       ctx.fill();
       ctx.shadowBlur = 0;
     };
@@ -147,13 +194,23 @@ const SoccerPongPage = () => {
       const state = gameState.current;
 
       // Movement
-      if (state.playerMoveUp) state.playerPaddleY = Math.max(0, state.playerPaddleY - PADDLE_SPEED);
-      if (state.playerMoveDown) state.playerPaddleY = Math.min(GAME_HEIGHT - PADDLE_HEIGHT, state.playerPaddleY + PADDLE_SPEED);
+      if (state.playerMoveUp)
+        state.playerPaddleY = Math.max(0, state.playerPaddleY - PADDLE_SPEED);
+      if (state.playerMoveDown)
+        state.playerPaddleY = Math.min(
+          GAME_HEIGHT - PADDLE_HEIGHT,
+          state.playerPaddleY + PADDLE_SPEED,
+        );
 
       // AI Logic
       const aiTarget = state.ballY - PADDLE_HEIGHT / 2;
-      if (state.aiPaddleY < aiTarget) state.aiPaddleY = Math.min(GAME_HEIGHT - PADDLE_HEIGHT, state.aiPaddleY + PADDLE_SPEED * 0.7);
-      else if (state.aiPaddleY > aiTarget) state.aiPaddleY = Math.max(0, state.aiPaddleY - PADDLE_SPEED * 0.7);
+      if (state.aiPaddleY < aiTarget)
+        state.aiPaddleY = Math.min(
+          GAME_HEIGHT - PADDLE_HEIGHT,
+          state.aiPaddleY + PADDLE_SPEED * 0.7,
+        );
+      else if (state.aiPaddleY > aiTarget)
+        state.aiPaddleY = Math.max(0, state.aiPaddleY - PADDLE_SPEED * 0.7);
 
       // Obstacles
       state.obstacles.forEach((o) => {
@@ -165,21 +222,38 @@ const SoccerPongPage = () => {
       state.ballX += state.ballDx;
       state.ballY += state.ballDy;
 
-      if (state.ballY - BALL_SIZE / 2 < 0 || state.ballY + BALL_SIZE / 2 > GAME_HEIGHT) state.ballDy *= -1;
+      if (
+        state.ballY - BALL_SIZE / 2 < 0 ||
+        state.ballY + BALL_SIZE / 2 > GAME_HEIGHT
+      )
+        state.ballDy *= -1;
 
       // Paddle Collisions
-      if (state.ballX - BALL_SIZE / 2 < PADDLE_WIDTH && state.ballY > state.playerPaddleY && state.ballY < state.playerPaddleY + PADDLE_HEIGHT) {
+      if (
+        state.ballX - BALL_SIZE / 2 < PADDLE_WIDTH &&
+        state.ballY > state.playerPaddleY &&
+        state.ballY < state.playerPaddleY + PADDLE_HEIGHT
+      ) {
         state.ballDx = Math.abs(state.ballDx);
         state.ballDy += (Math.random() - 0.5) * 4;
       }
-      if (state.ballX + BALL_SIZE / 2 > GAME_WIDTH - PADDLE_WIDTH && state.ballY > state.aiPaddleY && state.ballY < state.aiPaddleY + PADDLE_HEIGHT) {
+      if (
+        state.ballX + BALL_SIZE / 2 > GAME_WIDTH - PADDLE_WIDTH &&
+        state.ballY > state.aiPaddleY &&
+        state.ballY < state.aiPaddleY + PADDLE_HEIGHT
+      ) {
         state.ballDx = -Math.abs(state.ballDx);
         state.ballDy += (Math.random() - 0.5) * 4;
       }
 
       // Obstacle Collisions
       state.obstacles.forEach((o) => {
-        if (state.ballX + BALL_SIZE / 2 > o.x && state.ballX - BALL_SIZE / 2 < o.x + o.width && state.ballY + BALL_SIZE / 2 > o.y && state.ballY - BALL_SIZE / 2 < o.y + o.height) {
+        if (
+          state.ballX + BALL_SIZE / 2 > o.x &&
+          state.ballX - BALL_SIZE / 2 < o.x + o.width &&
+          state.ballY + BALL_SIZE / 2 > o.y &&
+          state.ballY - BALL_SIZE / 2 < o.y + o.height
+        ) {
           state.ballDx *= -1;
           state.ballDy += (Math.random() - 0.5) * 2;
         }
@@ -191,18 +265,26 @@ const SoccerPongPage = () => {
     };
 
     const handleGoal = (scorer) => {
-      setGoalAnimation({active: true, scorer});
+      setGoalAnimation({ active: true, scorer });
       setTimeout(() => {
-        setGoalAnimation({active: false, scorer: null});
+        setGoalAnimation({ active: false, scorer: null });
         if (scorer === 'Player') {
-          setPlayerScore(s => {
-            if (s + 1 >= maxScore) { setGameOver(true); setWinner('Player'); return s + 1; }
+          setPlayerScore((s) => {
+            if (s + 1 >= maxScore) {
+              setGameOver(true);
+              setWinner('Player');
+              return s + 1;
+            }
             resetBall();
             return s + 1;
           });
         } else {
-          setAiScore(s => {
-            if (s + 1 >= maxScore) { setGameOver(true); setWinner('AI'); return s + 1; }
+          setAiScore((s) => {
+            if (s + 1 >= maxScore) {
+              setGameOver(true);
+              setWinner('AI');
+              return s + 1;
+            }
             resetBall();
             return s + 1;
           });
@@ -223,7 +305,14 @@ const SoccerPongPage = () => {
     }
 
     return () => cancelAnimationFrame(animationFrameId);
-  }, [gameStarted, gameOver, resetBall, goalAnimation.active, maxScore, initializeObstacles]);
+  }, [
+    gameStarted,
+    gameOver,
+    resetBall,
+    goalAnimation.active,
+    maxScore,
+    initializeObstacles,
+  ]);
 
   // Keyboard controls
   useEffect(() => {
@@ -248,7 +337,15 @@ const SoccerPongPage = () => {
       <Seo
         title="Soccer Pong | Fezcodex"
         description="A Pong-style game with a soccer twist. High-performance brutalist interface."
-        keywords={['Fezcodex', 'soccer pong', 'arcade game', 'pong', 'soccer', 'AI game', 'brutalist']}
+        keywords={[
+          'Fezcodex',
+          'soccer pong',
+          'arcade game',
+          'pong',
+          'soccer',
+          'AI game',
+          'brutalist',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -257,7 +354,7 @@ const SoccerPongPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
           <BreadcrumbTitle title={appName} slug="sp" variant="brutalist" />
@@ -266,19 +363,29 @@ const SoccerPongPage = () => {
             <div>
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
                 Binary athletics simulation. Outperform the AI sub-routine in a{' '}
-                <span className="text-emerald-400 font-bold">high-frequency</span>{' '}
+                <span className="text-emerald-400 font-bold">
+                  high-frequency
+                </span>{' '}
                 kinematic match.
               </p>
             </div>
 
             <div className="flex gap-12 font-mono text-center md:text-left">
               <div className="flex flex-col">
-                <span className="text-[10px] text-gray-600 uppercase tracking-widest">Player_Score</span>
-                <span className="text-3xl font-black text-emerald-500">{playerScore.toString().padStart(2, '0')}</span>
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  Player_Score
+                </span>
+                <span className="text-3xl font-black text-emerald-500">
+                  {playerScore.toString().padStart(2, '0')}
+                </span>
               </div>
               <div className="flex flex-col">
-                <span className="text-[10px] text-gray-600 uppercase tracking-widest">AI_Subroutine</span>
-                <span className="text-3xl font-black text-white">{aiScore.toString().padStart(2, '0')}</span>
+                <span className="text-[10px] text-gray-600 uppercase tracking-widest">
+                  AI_Subroutine
+                </span>
+                <span className="text-3xl font-black text-white">
+                  {aiScore.toString().padStart(2, '0')}
+                </span>
               </div>
             </div>
           </div>
@@ -287,17 +394,14 @@ const SoccerPongPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Controls Column */}
           <div className="lg:col-span-4 space-y-8">
-            <div
-              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div
-                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
-              <h3
-                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
-                <GearSixIcon weight="fill"/>
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <GearSixIcon weight="fill" />
                 Match_Configuration
               </h3>
 
@@ -310,7 +414,9 @@ const SoccerPongPage = () => {
                     type="number"
                     min="1"
                     value={maxScore}
-                    onChange={(e) => setMaxScore(Math.max(1, parseInt(e.target.value)))}
+                    onChange={(e) =>
+                      setMaxScore(Math.max(1, parseInt(e.target.value)))
+                    }
                     disabled={gameStarted && !gameOver}
                     className="w-full bg-transparent border-b-2 border-white/10 py-2 text-xl font-mono text-white focus:border-emerald-500 focus:outline-none transition-colors uppercase disabled:opacity-30"
                   />
@@ -321,7 +427,7 @@ const SoccerPongPage = () => {
                     onClick={startGame}
                     className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs flex items-center justify-center gap-3"
                   >
-                    <PlayIcon weight="bold" size={18}/>
+                    <PlayIcon weight="bold" size={18} />
                     {gameOver ? 'REBOOT_MATCH' : 'INIT_SIMULATION'}
                   </button>
                 ) : (
@@ -329,7 +435,7 @@ const SoccerPongPage = () => {
                     onClick={() => setGameOver(true)}
                     className="w-full py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3"
                   >
-                    <ArrowsClockwiseIcon weight="bold" size={16}/>
+                    <ArrowsClockwiseIcon weight="bold" size={16} />
                     ABORT_MATCH
                   </button>
                 )}
@@ -338,7 +444,7 @@ const SoccerPongPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <KeyboardIcon size={20} weight="bold"/>
+                <KeyboardIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Control_Mapping
                 </h4>
@@ -358,9 +464,8 @@ const SoccerPongPage = () => {
 
           {/* Arena Column */}
           <div className="lg:col-span-8 flex flex-col gap-6">
-            <h3
-              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <EyeIcon weight="fill" className="text-emerald-500"/>
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500" />
               Kinematic_Arena_Preview
             </h3>
 
@@ -376,26 +481,34 @@ const SoccerPongPage = () => {
                 <AnimatePresence>
                   {!gameStarted && !gameOver && (
                     <motion.div
-                      initial={{opacity: 0}}
-                      animate={{opacity: 1}}
-                      exit={{opacity: 0}}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
                       className="absolute inset-0 bg-black/80 backdrop-blur-sm flex items-center justify-center z-20"
                     >
                       <div className="text-center space-y-6">
-                        <SoccerBallIcon size={64} weight="thin" className="mx-auto text-emerald-500/50 animate-pulse" />
-                        <p className="font-mono text-[10px] text-gray-400 uppercase tracking-[0.4em]">AWAITING_USER_START_SIGNAL</p>
+                        <SoccerBallIcon
+                          size={64}
+                          weight="thin"
+                          className="mx-auto text-emerald-500/50 animate-pulse"
+                        />
+                        <p className="font-mono text-[10px] text-gray-400 uppercase tracking-[0.4em]">
+                          AWAITING_USER_START_SIGNAL
+                        </p>
                       </div>
                     </motion.div>
                   )}
 
                   {goalAnimation.active && (
                     <motion.div
-                      initial={{scale: 0.5, opacity: 0}}
-                      animate={{scale: 1.2, opacity: 1}}
-                      exit={{scale: 1.5, opacity: 0}}
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1.2, opacity: 1 }}
+                      exit={{ scale: 1.5, opacity: 0 }}
                       className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none"
                     >
-                      <span className={`text-8xl font-black font-mono uppercase tracking-tighter ${goalAnimation.scorer === 'Player' ? 'text-emerald-500' : 'text-white'}`}>
+                      <span
+                        className={`text-8xl font-black font-mono uppercase tracking-tighter ${goalAnimation.scorer === 'Player' ? 'text-emerald-500' : 'text-white'}`}
+                      >
                         GOAL!
                       </span>
                     </motion.div>
@@ -403,15 +516,25 @@ const SoccerPongPage = () => {
 
                   {gameOver && (
                     <motion.div
-                      initial={{opacity: 0}}
-                      animate={{opacity: 1}}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
                       className="absolute inset-0 bg-black/90 backdrop-blur-md flex items-center justify-center z-40 p-8"
                     >
                       <div className="text-center space-y-8">
-                        <TrophyIcon size={80} weight="fill" className={winner === 'Player' ? 'mx-auto text-emerald-500' : 'mx-auto text-white/20'} />
+                        <TrophyIcon
+                          size={80}
+                          weight="fill"
+                          className={
+                            winner === 'Player'
+                              ? 'mx-auto text-emerald-500'
+                              : 'mx-auto text-white/20'
+                          }
+                        />
                         <div className="space-y-2">
                           <h2 className="text-5xl font-black font-mono uppercase tracking-tighter">
-                            {winner === 'Player' ? 'VICTORY_SECURED' : 'SYSTEM_OVERRIDE'}
+                            {winner === 'Player'
+                              ? 'VICTORY_SECURED'
+                              : 'SYSTEM_OVERRIDE'}
                           </h2>
                           <p className="font-mono text-sm text-gray-500 uppercase tracking-widest">
                             FINAL_SCORE: {playerScore} :: {aiScore}
@@ -430,7 +553,9 @@ const SoccerPongPage = () => {
               </div>
 
               <div className="w-full mt-8 flex justify-between items-center opacity-20 font-mono text-[8px] uppercase tracking-[0.5em] text-gray-500 px-4">
-                <span className="flex items-center gap-2"><ChartBarIcon /> LIVE_TELEMETRY_FEED</span>
+                <span className="flex items-center gap-2">
+                  <ChartBarIcon /> LIVE_TELEMETRY_FEED
+                </span>
                 <span>SP_v2.4.0</span>
               </div>
             </div>

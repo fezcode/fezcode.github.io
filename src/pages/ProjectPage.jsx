@@ -87,13 +87,13 @@ const ProjectPage = () => {
           className="absolute inset-0 z-0"
         >
           {isDefaultImage ? (
-             <GenerativeArt
-             seed={fullProject.title}
-             className="w-full h-full opacity-60 filter brightness-75"
-           />
+            <GenerativeArt
+              seed={fullProject.title}
+              className="w-full h-full opacity-60 filter brightness-75"
+            />
           ) : (
             <div className="w-full h-full relative">
-               <img
+              <img
                 src={fullProject.image}
                 alt={fullProject.title}
                 className="w-full h-full object-cover filter brightness-[0.4]"
@@ -110,7 +110,7 @@ const ProjectPage = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-             <Link
+            <Link
               to="/projects"
               className="inline-flex items-center gap-2 mb-8 text-xs font-mono font-bold uppercase tracking-widest text-emerald-400 hover:text-emerald-300 transition-colors"
             >
@@ -119,13 +119,15 @@ const ProjectPage = () => {
             </Link>
 
             <div className="flex flex-wrap items-center gap-4 mb-6">
-               <span className="font-mono text-[10px] text-white/60 uppercase tracking-widest border border-white/10 px-3 py-1 rounded-full bg-white/5 backdrop-blur-md">
-                 {year}
-               </span>
-               <span className={`font-mono text-[10px] uppercase tracking-widest border px-3 py-1 rounded-full backdrop-blur-md flex items-center gap-2 ${fullProject.isActive ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10' : 'border-red-500/30 text-red-400 bg-red-500/10'}`}>
-                  {fullProject.isActive ? <CheckCircleIcon /> : <XCircleIcon />}
-                  {fullProject.isActive ? 'Active Development' : 'Archived'}
-               </span>
+              <span className="font-mono text-[10px] text-white/60 uppercase tracking-widest border border-white/10 px-3 py-1 rounded-full bg-white/5 backdrop-blur-md">
+                {year}
+              </span>
+              <span
+                className={`font-mono text-[10px] uppercase tracking-widest border px-3 py-1 rounded-full backdrop-blur-md flex items-center gap-2 ${fullProject.isActive ? 'border-emerald-500/30 text-emerald-400 bg-emerald-500/10' : 'border-red-500/30 text-red-400 bg-red-500/10'}`}
+              >
+                {fullProject.isActive ? <CheckCircleIcon /> : <XCircleIcon />}
+                {fullProject.isActive ? 'Active Development' : 'Archived'}
+              </span>
             </div>
 
             <h1 className="text-5xl md:text-8xl lg:text-9xl font-light uppercase tracking-tighter text-white leading-[0.9] mb-8 max-w-5xl font-playfairDisplay">
@@ -149,7 +151,6 @@ const ProjectPage = () => {
       {/* Main Content */}
       <main className="container mx-auto px-6 py-16 md:px-12 lg:py-24">
         <div className="lg:grid lg:grid-cols-12 lg:gap-20">
-
           {/* Content Column */}
           <div className="lg:col-span-8">
             <motion.div
@@ -185,83 +186,89 @@ const ProjectPage = () => {
 
           {/* Sidebar Column */}
           <aside className="lg:col-span-4 mt-16 lg:mt-0">
-             <div className="sticky top-12 space-y-8">
+            <div className="sticky top-12 space-y-8">
+              {/* Actions Card */}
+              <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-gray-500 mb-6 flex items-center gap-2">
+                  <CpuIcon size={16} />
+                  Project Actions
+                </h3>
+                <div className="space-y-3">
+                  {fullProject.demo_link && (
+                    <a
+                      href={fullProject.demo_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex w-full items-center justify-between bg-emerald-500 text-black px-6 py-4 rounded font-bold transition-all hover:bg-emerald-400 hover:scale-[1.02] active:scale-[0.98]"
+                    >
+                      <span className="font-mono text-sm uppercase tracking-widest">
+                        Visit Project
+                      </span>
+                      <ArrowUpRightIcon
+                        weight="bold"
+                        size={20}
+                        className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1"
+                      />
+                    </a>
+                  )}
 
-               {/* Actions Card */}
-               <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                 <h3 className="text-xs font-mono font-bold uppercase tracking-widest text-gray-500 mb-6 flex items-center gap-2">
-                   <CpuIcon size={16} />
-                   Project Actions
-                 </h3>
-                 <div className="space-y-3">
-                    {fullProject.demo_link && (
-                      <a
-                        href={fullProject.demo_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex w-full items-center justify-between bg-emerald-500 text-black px-6 py-4 rounded font-bold transition-all hover:bg-emerald-400 hover:scale-[1.02] active:scale-[0.98]"
+                  {fullProject.repo_link && (
+                    <a
+                      href={fullProject.repo_link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex w-full items-center justify-between border border-white/20 px-6 py-4 rounded text-white transition-all hover:bg-white/10 hover:border-white/40"
+                    >
+                      <span className="font-mono text-sm uppercase tracking-widest">
+                        Source Code
+                      </span>
+                      <GithubLogoIcon weight="bold" size={20} />
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              {/* Meta Info */}
+              <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-6">
+                <div>
+                  <h4 className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-2 flex items-center gap-2">
+                    <CalendarBlankIcon />
+                    Release Date
+                  </h4>
+                  <p className="font-mono text-sm text-white">
+                    {fullProject.date}
+                  </p>
+                </div>
+
+                <div className="w-full h-px bg-white/5" />
+
+                <div>
+                  <h4 className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-2">
+                    License
+                  </h4>
+                  <p className="font-mono text-sm text-white">MIT License</p>
+                </div>
+
+                <div className="w-full h-px bg-white/5" />
+
+                <div>
+                  <h4 className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-3">
+                    Tech Stack
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
+                    {fullProject.technologies?.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs text-gray-400 bg-black/20 px-2 py-1 rounded border border-white/5"
                       >
-                        <span className="font-mono text-sm uppercase tracking-widest">
-                          Visit Project
-                        </span>
-                        <ArrowUpRightIcon weight="bold" size={20} className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </a>
-                    )}
-
-                    {fullProject.repo_link && (
-                      <a
-                        href={fullProject.repo_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex w-full items-center justify-between border border-white/20 px-6 py-4 rounded text-white transition-all hover:bg-white/10 hover:border-white/40"
-                      >
-                        <span className="font-mono text-sm uppercase tracking-widest">
-                          Source Code
-                        </span>
-                        <GithubLogoIcon weight="bold" size={20} />
-                      </a>
-                    )}
-                 </div>
-               </div>
-
-               {/* Meta Info */}
-               <div className="p-6 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-6">
-                  <div>
-                    <h4 className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-2 flex items-center gap-2">
-                      <CalendarBlankIcon />
-                      Release Date
-                    </h4>
-                    <p className="font-mono text-sm text-white">{fullProject.date}</p>
+                        {tech}
+                      </span>
+                    ))}
                   </div>
-
-                  <div className="w-full h-px bg-white/5" />
-
-                  <div>
-                    <h4 className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-2">
-                      License
-                    </h4>
-                    <p className="font-mono text-sm text-white">MIT License</p>
-                  </div>
-
-                  <div className="w-full h-px bg-white/5" />
-
-                   <div>
-                    <h4 className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 mb-3">
-                      Tech Stack
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {fullProject.technologies?.map(tech => (
-                        <span key={tech} className="text-xs text-gray-400 bg-black/20 px-2 py-1 rounded border border-white/5">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-               </div>
-
-             </div>
+                </div>
+              </div>
+            </div>
           </aside>
-
         </div>
       </main>
     </div>

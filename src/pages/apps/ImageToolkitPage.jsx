@@ -437,7 +437,11 @@ function ImageToolkitPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Image Toolkit" slug="itk" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Image Toolkit"
+                slug="itk"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Tools for image manipulation, color extraction, and creative
                 filtering.

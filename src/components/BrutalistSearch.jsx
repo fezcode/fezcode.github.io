@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { MagnifyingGlassIcon, XCircleIcon, HashIcon } from '@phosphor-icons/react';
+import {
+  MagnifyingGlassIcon,
+  XCircleIcon,
+  HashIcon,
+} from '@phosphor-icons/react';
 import useSearchableData from '../hooks/useSearchableData';
 import { filterItems } from '../utils/search';
 
@@ -126,10 +130,15 @@ const BrutalistSearch = ({ isVisible, toggleSearch }) => {
                   </div>
 
                   <div className="flex items-center gap-3">
-                    <span className={`px-2 py-0.5 text-[8px] font-mono font-black uppercase tracking-widest border rounded-sm ${getCategoryStyle(result.type)}`}>
+                    <span
+                      className={`px-2 py-0.5 text-[8px] font-mono font-black uppercase tracking-widest border rounded-sm ${getCategoryStyle(result.type)}`}
+                    >
                       {result.type}
                     </span>
-                    <HashIcon size={14} className="text-gray-800 group-hover:text-emerald-500 transition-colors" />
+                    <HashIcon
+                      size={14}
+                      className="text-gray-800 group-hover:text-emerald-500 transition-colors"
+                    />
                   </div>
                 </Link>
               ))}
@@ -148,7 +157,8 @@ const BrutalistSearch = ({ isVisible, toggleSearch }) => {
         {isDropdownOpen && searchTerm && searchResults.length === 0 && (
           <div className="absolute mt-4 w-full bg-[#0a0a0a] border border-white/10 p-8 text-center shadow-2xl z-[100] left-0">
             <p className="font-mono text-xs text-gray-600 uppercase tracking-[0.3em]">
-              No_Results_Found_For: <span className="text-red-500">{searchTerm}</span>
+              No_Results_Found_For:{' '}
+              <span className="text-red-500">{searchTerm}</span>
             </p>
           </div>
         )}

@@ -28,12 +28,14 @@ const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='ht
 const StatusPill = () => {
   const [time, setTime] = useState('');
   const { config } = useSiteConfig();
-  const { isSplashTextEnabled, fezcodexTheme, setFezcodexTheme } = useVisualSettings();
+  const { isSplashTextEnabled, fezcodexTheme, setFezcodexTheme } =
+    useVisualSettings();
   const { showAchievementToast } = useAchievements();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const updateTime = () => setTime(new Date().toLocaleTimeString('en-GB', { hour12: false }));
+    const updateTime = () =>
+      setTime(new Date().toLocaleTimeString('en-GB', { hour12: false }));
     updateTime();
     const timer = setInterval(updateTime, 1000);
     return () => clearInterval(timer);
@@ -52,7 +54,9 @@ const StatusPill = () => {
             <div className="flex flex-col gap-3 text-xs font-mono uppercase tracking-wider">
               <div className="flex justify-between items-center text-gray-400">
                 <span>VERSION</span>
-                <span className="text-white bg-emerald-600 px-1">{config?.kernel?.codename || 'v1.0.0'}</span>
+                <span className="text-white bg-emerald-600 px-1">
+                  {config?.kernel?.codename || 'v1.0.0'}
+                </span>
               </div>
               <div className="flex justify-between items-center text-gray-400">
                 <span>LOCAL TIME</span>
@@ -63,7 +67,11 @@ const StatusPill = () => {
               <div className="flex justify-between items-center text-gray-400">
                 <span>THEME</span>
                 <button
-                  onClick={() => setFezcodexTheme(fezcodexTheme === 'brutalist' ? 'luxe' : 'brutalist')}
+                  onClick={() =>
+                    setFezcodexTheme(
+                      fezcodexTheme === 'brutalist' ? 'luxe' : 'brutalist',
+                    )
+                  }
                   className="text-[10px] border border-white/40 text-white px-2 py-0.5 hover:bg-white hover:text-black transition-colors"
                 >
                   [{fezcodexTheme}]
@@ -73,21 +81,30 @@ const StatusPill = () => {
               <div className="h-px bg-transparent border-t border-dashed border-blue-100/30 my-1" />
 
               {isSplashTextEnabled && (
-                <Link to="/settings#visual-matrix" className="flex items-center justify-between group hover:text-white transition-colors text-gray-500">
+                <Link
+                  to="/settings#visual-matrix"
+                  className="flex items-center justify-between group hover:text-white transition-colors text-gray-500"
+                >
                   <span>SPLASH</span>
                   <div className="w-2 h-2 bg-emerald-500 animate-pulse" />
                 </Link>
               )}
               {showAchievementToast && (
-                <Link to="/settings#achievements" className="flex items-center justify-between group hover:text-white transition-colors text-gray-500">
+                <Link
+                  to="/settings#achievements"
+                  className="flex items-center justify-between group hover:text-white transition-colors text-gray-500"
+                >
                   <span>ACHIEVEMENTS</span>
                   <div className="w-2 h-2 bg-emerald-500 animate-pulse" />
                 </Link>
               )}
-               <Link to="/welcome" className="flex items-center justify-between group hover:bg-white hover:text-black transition-colors text-gray-500 pt-2 mt-1 border-t-2 border-white/10 px-1 -mx-1">
-                  <span>INTRO</span>
-                  <ArrowRightIcon weight="bold" />
-                </Link>
+              <Link
+                to="/welcome"
+                className="flex items-center justify-between group hover:bg-white hover:text-black transition-colors text-gray-500 pt-2 mt-1 border-t-2 border-white/10 px-1 -mx-1"
+              >
+                <span>INTRO</span>
+                <ArrowRightIcon weight="bold" />
+              </Link>
             </div>
           </motion.div>
         )}
@@ -98,10 +115,15 @@ const StatusPill = () => {
         className="flex items-center gap-3 bg-black border-2 border-white hover:bg-white hover:text-black text-white px-6 py-3 transition-all group shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]"
       >
         <div className="flex items-center gap-2 text-sm font-mono uppercase font-bold tracking-widest">
-          <span className={`w-2 h-2 bg-emerald-500 ${!isOpen && 'animate-pulse'}`} />
+          <span
+            className={`w-2 h-2 bg-emerald-500 ${!isOpen && 'animate-pulse'}`}
+          />
           <span>STATUS</span>
         </div>
-        <GearIcon weight="fill" className={`transition-transform duration-500 ${isOpen ? 'rotate-90' : ''}`} />
+        <GearIcon
+          weight="fill"
+          className={`transition-transform duration-500 ${isOpen ? 'rotate-90' : ''}`}
+        />
       </button>
     </div>
   );
@@ -110,7 +132,8 @@ const StatusPill = () => {
 const Hero = () => {
   const { config } = useSiteConfig();
   const heroTitle = config?.hero?.title || 'Fezcodex';
-  const heroTagline = config?.hero?.tagline || 'A digital vault of experimental software...';
+  const heroTagline =
+    config?.hero?.tagline || 'A digital vault of experimental software...';
 
   const mainTitle = heroTitle.toLowerCase().endsWith('codex')
     ? heroTitle.slice(0, -5)
@@ -126,7 +149,7 @@ const Hero = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "circOut" }}
+          transition={{ duration: 0.8, ease: 'circOut' }}
           className="flex flex-col items-start border-l-4 border-emerald-600 pl-6 md:pl-12"
         >
           <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.1em] mb-8 transform -rotate-1 shadow-[4px_4px_0px_0px_rgba(50,205,50,0.5)]">
@@ -140,9 +163,9 @@ const Hero = () => {
           </h1>
 
           <div className="h-16 flex items-center justify-start mb-10 w-full max-w-3xl border-t border-b border-dashed border-blue-100/20 py-4">
-             <div className="opacity-90 w-full">
-               <SplashText />
-             </div>
+            <div className="opacity-90 w-full">
+              <SplashText />
+            </div>
           </div>
 
           <p className="max-w-2xl text-xl md:text-2xl text-gray-400 font-mono leading-relaxed text-balance mb-12 border-l border-blue-100/20 pl-6">
@@ -165,15 +188,17 @@ const Hero = () => {
             >
               <span className="flex items-center gap-2">
                 ABOUT ME
-                <span className="opacity-0 group-hover:opacity-100 transition-opacity">?</span>
+                <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+                  ?
+                </span>
               </span>
             </Link>
           </div>
         </motion.div>
       </div>
 
-       <div className="absolute right-0 bottom-0 p-4 font-mono text-[10px] text-gray-700 opacity-50 hidden md:block">
-          COORDS: {Math.random().toFixed(4)}, {Math.random().toFixed(4)}
+      <div className="absolute right-0 bottom-0 p-4 font-mono text-[10px] text-gray-700 opacity-50 hidden md:block">
+        COORDS: {Math.random().toFixed(4)}, {Math.random().toFixed(4)}
       </div>
     </div>
   );
@@ -181,10 +206,30 @@ const Hero = () => {
 
 const QuickLinks = () => {
   const favorites = [
-    { title: 'Logic Architect', to: '/apps/logic-architect', icon: CubeIcon, desc: 'Circuit Design' },
-    { title: 'Fezynth', to: '/apps/fezynth', icon: BroadcastIcon, desc: 'Audio Synthesis' },
-    { title: 'Notepad', to: '/apps/notepad', icon: AppWindowIcon, desc: 'Text Buffer' },
-    { title: 'Sprite Editor', to: '/apps/sprite-editor', icon: TerminalIcon, desc: 'Pixel Matrix' },
+    {
+      title: 'Logic Architect',
+      to: '/apps/logic-architect',
+      icon: CubeIcon,
+      desc: 'Circuit Design',
+    },
+    {
+      title: 'Fezynth',
+      to: '/apps/fezynth',
+      icon: BroadcastIcon,
+      desc: 'Audio Synthesis',
+    },
+    {
+      title: 'Notepad',
+      to: '/apps/notepad',
+      icon: AppWindowIcon,
+      desc: 'Text Buffer',
+    },
+    {
+      title: 'Sprite Editor',
+      to: '/apps/sprite-editor',
+      icon: TerminalIcon,
+      desc: 'Pixel Matrix',
+    },
   ];
 
   return (
@@ -197,8 +242,14 @@ const QuickLinks = () => {
             className="group relative p-8 hover:bg-white hover:text-black transition-colors duration-200 h-48 flex flex-col justify-between overflow-hidden"
           >
             <div className="flex justify-between items-start">
-               <app.icon size={32} weight="fill" className="text-gray-500 group-hover:text-black transition-colors" />
-               <span className="font-mono text-[10px] opacity-40">0{idx + 1}</span>
+              <app.icon
+                size={32}
+                weight="fill"
+                className="text-gray-500 group-hover:text-black transition-colors"
+              />
+              <span className="font-mono text-[10px] opacity-40">
+                0{idx + 1}
+              </span>
             </div>
 
             <div className="relative z-10">
@@ -211,9 +262,9 @@ const QuickLinks = () => {
             </div>
 
             <ArrowUpRightIcon
-                size={24}
-                weight="bold"
-                className="absolute top-4 right-4 opacity-0 -translate-y-2 translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300"
+              size={24}
+              weight="bold"
+              className="absolute top-4 right-4 opacity-0 -translate-y-2 translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300"
             />
           </Link>
         ))}
@@ -302,8 +353,10 @@ const HomePage = () => {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6">
         <div className="flex flex-col items-center gap-6">
-           <div className="w-16 h-16 border-4 border-white border-t-emerald-500 rounded-none animate-spin" />
-           <span className="font-mono text-sm uppercase tracking-[0.3em] animate-pulse">System_Boot...</span>
+          <div className="w-16 h-16 border-4 border-white border-t-emerald-500 rounded-none animate-spin" />
+          <span className="font-mono text-sm uppercase tracking-[0.3em] animate-pulse">
+            System_Boot...
+          </span>
         </div>
       </div>
     );
@@ -324,14 +377,22 @@ const HomePage = () => {
             />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {pinnedProjects.map((project) => (
-                <div key={project.slug} className="group border border-white/10 hover:border-emerald-500/50 transition-colors p-1 bg-[#0a0a0a]">
+                <div
+                  key={project.slug}
+                  className="group border border-white/10 hover:border-emerald-500/50 transition-colors p-1 bg-[#0a0a0a]"
+                >
                   <ProjectTile project={project} />
                 </div>
               ))}
             </div>
-             <div className="mt-12 md:hidden flex justify-center">
-                 <Link to="/projects" className="px-6 py-3 border border-white/20 text-xs font-mono uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors">View All Projects</Link>
-             </div>
+            <div className="mt-12 md:hidden flex justify-center">
+              <Link
+                to="/projects"
+                className="px-6 py-3 border border-white/20 text-xs font-mono uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors"
+              >
+                View All Projects
+              </Link>
+            </div>
           </section>
         );
       case 'blogposts':
@@ -359,36 +420,53 @@ const HomePage = () => {
                     </motion.div>
                   ))}
                 </div>
-                 <div className="mt-12 md:hidden flex justify-center">
-                     <Link to="/blog" className="px-6 py-3 border border-white/20 text-xs font-mono uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors">ReadAll Logs</Link>
-                 </div>
+                <div className="mt-12 md:hidden flex justify-center">
+                  <Link
+                    to="/blog"
+                    className="px-6 py-3 border border-white/20 text-xs font-mono uppercase tracking-widest text-white hover:bg-white hover:text-black transition-colors"
+                  >
+                    ReadAll Logs
+                  </Link>
+                </div>
               </div>
 
               <div className="lg:col-span-4 space-y-12 pt-4 lg:pt-0">
-                 <div className="p-8 border-2 border-white/10 bg-[#0a0a0a] relative overflow-hidden group hover:border-white/30 transition-colors">
-                    <div className="absolute top-0 right-0 p-2 opacity-10">
-                        <TerminalIcon size={64} />
-                    </div>
-                    <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-500 mb-8 flex items-center gap-2">
-                       <span className="w-2 h-2 bg-emerald-500" /> NAVIGATION
-                    </h3>
-                    <div className="space-y-1">
-                        <ExploreLink to="/apps" title="APPS" icon={AppWindowIcon} />
-                        <ExploreLink to="/roadmap" title="ROADMAP" icon={CubeIcon} />
-                        <ExploreLink to="/terminal" title="TERMINAL" icon={TerminalIcon} />
-                        <ExploreLink to="/about" title="ABOUT" icon={CpuIcon} />
-                    </div>
-                 </div>
+                <div className="p-8 border-2 border-white/10 bg-[#0a0a0a] relative overflow-hidden group hover:border-white/30 transition-colors">
+                  <div className="absolute top-0 right-0 p-2 opacity-10">
+                    <TerminalIcon size={64} />
+                  </div>
+                  <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-500 mb-8 flex items-center gap-2">
+                    <span className="w-2 h-2 bg-emerald-500" /> NAVIGATION
+                  </h3>
+                  <div className="space-y-1">
+                    <ExploreLink to="/apps" title="APPS" icon={AppWindowIcon} />
+                    <ExploreLink
+                      to="/roadmap"
+                      title="ROADMAP"
+                      icon={CubeIcon}
+                    />
+                    <ExploreLink
+                      to="/terminal"
+                      title="TERMINAL"
+                      icon={TerminalIcon}
+                    />
+                    <ExploreLink to="/about" title="ABOUT" icon={CpuIcon} />
+                  </div>
+                </div>
 
-                 <div className="p-6 border border-dashed border-blue-100/20">
-                     <div className="flex items-center gap-2 text-gray-500 font-mono text-xs uppercase mb-4">
-                        <LightningIcon weight="fill" className="text-yellow-500" />
-                        <span>TIP</span>
-                     </div>
-                     <p className="text-sm text-gray-400 leading-relaxed font-mono">
-                        Try navigating with keyboard shortcuts. Press <span className="text-white border border-white/20 px-1">CMD/CTRL + K</span> to view the command palette.
-                     </p>
-                 </div>
+                <div className="p-6 border border-dashed border-blue-100/20">
+                  <div className="flex items-center gap-2 text-gray-500 font-mono text-xs uppercase mb-4">
+                    <LightningIcon weight="fill" className="text-yellow-500" />
+                    <span>TIP</span>
+                  </div>
+                  <p className="text-sm text-gray-400 leading-relaxed font-mono">
+                    Try navigating with keyboard shortcuts. Press{' '}
+                    <span className="text-white border border-white/20 px-1">
+                      CMD/CTRL + K
+                    </span>{' '}
+                    to view the command palette.
+                  </p>
+                </div>
               </div>
             </div>
           </section>
@@ -403,7 +481,13 @@ const HomePage = () => {
       <Seo
         title="Fezcodex // ROOT"
         description="Experimental software vault and digital garden."
-        keywords={['Fezcodex', 'brutalist', 'portfolio', 'experimental', 'react']}
+        keywords={[
+          'Fezcodex',
+          'brutalist',
+          'portfolio',
+          'experimental',
+          'react',
+        ]}
       />
 
       {/* Background Noise */}
@@ -435,7 +519,7 @@ const ExploreLink = ({ to, title, icon: Icon }) => (
   >
     <div className="flex items-center gap-4">
       <div className="text-gray-500 group-hover:text-emerald-500 transition-colors">
-          <Icon size={20} />
+        <Icon size={20} />
       </div>
       <span className="font-bold font-mono uppercase tracking-wider text-xs text-gray-300 group-hover:text-white transition-colors">
         {title}

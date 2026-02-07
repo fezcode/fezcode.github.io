@@ -107,7 +107,11 @@ const LightsOutPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Lights Out" slug="lo" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Lights Out"
+                slug="lo"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Deactivate all nodes. Interacting with a node flips its state
                 and all cardinal neighbors.

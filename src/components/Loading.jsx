@@ -8,8 +8,9 @@ const Loading = () => {
       <div
         className="absolute inset-0 pointer-events-none z-10 opacity-[0.03]"
         style={{
-          background: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))',
-          backgroundSize: '100% 4px, 3px 100%'
+          background:
+            'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))',
+          backgroundSize: '100% 4px, 3px 100%',
         }}
       />
 
@@ -17,7 +18,7 @@ const Loading = () => {
       <motion.div
         initial={{ top: '-10%' }}
         animate={{ top: '110%' }}
-        transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
         className="absolute left-0 right-0 h-1 z-20 bg-white/5 pointer-events-none"
       />
 
@@ -26,9 +27,9 @@ const Loading = () => {
           <motion.div
             animate={{
               opacity: [0.4, 1, 0.4],
-              scale: [0.98, 1.02, 0.98]
+              scale: [0.98, 1.02, 0.98],
             }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
             className="text-xs uppercase tracking-[0.3em] font-bold text-gray-400"
           >
             Initializing
@@ -43,7 +44,7 @@ const Loading = () => {
                 transition={{
                   duration: 1.5,
                   repeat: Infinity,
-                  delay: i * 0.1
+                  delay: i * 0.1,
                 }}
                 className="text-2xl font-black tracking-tighter"
               >
@@ -66,7 +67,7 @@ const Loading = () => {
             transition={{
               duration: 2,
               repeat: Infinity,
-              ease: "easeInOut"
+              ease: 'easeInOut',
             }}
             className="absolute top-0 bottom-0 w-1/2 bg-gradient-to-r from-transparent via-primary-400 to-transparent shadow-[0_0_10px_rgba(248,113,113,0.5)]"
           />

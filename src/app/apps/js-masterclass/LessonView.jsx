@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import MarkdownContent from '../../../components/MarkdownContent';
 import Quiz from './Quiz';
-import { CaretRight, Flask, ArrowsOutSimple, ClipboardText } from '@phosphor-icons/react';
+import {
+  CaretRight,
+  Flask,
+  ArrowsOutSimple,
+  ClipboardText,
+} from '@phosphor-icons/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../../../utils/customTheme';
 import CodeModal from '../../../components/CodeModal';
@@ -103,34 +108,36 @@ const LessonView = ({ lesson, onComplete }) => {
     );
   };
 
-  if (!lesson) return (
-    <div className="flex flex-col items-center justify-center h-full text-gray-500 font-mono text-[10px] uppercase tracking-widest space-y-4">
+  if (!lesson)
+    return (
+      <div className="flex flex-col items-center justify-center h-full text-gray-500 font-mono text-[10px] uppercase tracking-widest space-y-4">
         <div className="w-8 h-8 border border-t-emerald-500 border-r-emerald-500/50 border-b-emerald-500/20 border-l-emerald-500/10 animate-spin rounded-full"></div>
         <p>Loading_Matrix_Data...</p>
-    </div>
-  );
+      </div>
+    );
 
   return (
     <div className="max-w-5xl mx-auto pb-32">
-        {/* Lesson Header */}
+      {/* Lesson Header */}
       <div className="mb-16 border-b border-white/10 pb-12">
         <div className="flex items-center gap-2 text-[10px] font-mono text-emerald-500 uppercase tracking-[0.2em] mb-6">
-            <span>Module_0{lesson.id.split('-')[0] || '1'}</span>
-            <CaretRight size={10} />
-            <span>Unit_Protocol</span>
+          <span>Module_0{lesson.id.split('-')[0] || '1'}</span>
+          <CaretRight size={10} />
+          <span>Unit_Protocol</span>
         </div>
         <h1 className="text-4xl md:text-6xl font-playfairDisplay font-light text-white mb-8 leading-none tracking-tight uppercase">
-            {lesson.title}
+          {lesson.title}
         </h1>
         <div className="flex gap-4">
-            <div className="h-1 w-24 bg-emerald-500"></div>
-            <div className="h-1 w-12 bg-white/20"></div>
-            <div className="h-1 w-4 bg-white/10"></div>
+          <div className="h-1 w-24 bg-emerald-500"></div>
+          <div className="h-1 w-12 bg-white/20"></div>
+          <div className="h-1 w-4 bg-white/10"></div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="prose prose-invert prose-lg max-w-none
+      <div
+        className="prose prose-invert prose-lg max-w-none
         prose-headings:font-playfairDisplay prose-headings:font-light prose-headings:uppercase prose-headings:tracking-wide prose-headings:text-white
         prose-p:text-gray-400 prose-p:font-light prose-p:leading-relaxed prose-p:font-mono
         prose-strong:text-white prose-strong:font-bold
@@ -138,31 +145,42 @@ const LessonView = ({ lesson, onComplete }) => {
         prose-blockquote:border-l-2 prose-blockquote:border-emerald-500 prose-blockquote:bg-white/[0.02] prose-blockquote:py-2 prose-blockquote:px-6 prose-blockquote:not-italic prose-blockquote:text-gray-500
         prose-li:text-gray-400 prose-li:font-mono prose-li:marker:text-emerald-500
         prose-img:rounded-none prose-img:border prose-img:border-white/10 prose-img:grayscale hover:prose-img:grayscale-0 prose-img:transition-all
-        ">
+        "
+      >
         <MarkdownContent
-            content={lesson.content}
-            components={{ code: CodeBlock }}
+          content={lesson.content}
+          components={{ code: CodeBlock }}
         />
       </div>
 
       {/* Footer / Quiz Section */}
       <div className="mt-24 pt-12 border-t border-white/10">
         {lesson.quiz && lesson.quiz.length > 0 ? (
-          <Quiz questions={lesson.quiz} onComplete={() => onComplete(lesson.id)} />
+          <Quiz
+            questions={lesson.quiz}
+            onComplete={() => onComplete(lesson.id)}
+          />
         ) : (
           <div className="flex flex-col items-center justify-center bg-white/[0.02] border border-white/5 p-16 text-center group hover:border-emerald-500/30 transition-all">
-             <div className="mb-6 p-4 bg-white/5 rounded-full text-gray-500 group-hover:text-emerald-500 transition-colors">
-                <Flask size={32} weight="duotone" />
-             </div>
-             <h3 className="text-xl font-bold text-white uppercase tracking-widest mb-2 font-mono">Protocol_End</h3>
-             <p className="text-gray-500 font-mono text-xs uppercase tracking-widest mb-8">No assessment required for this unit.</p>
-             <button
-                onClick={() => onComplete(lesson.id)}
-                className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-[10px] uppercase tracking-[0.2em] text-black bg-white hover:bg-emerald-500 transition-all"
-             >
-                <span>MARK_COMPLETE</span>
-                <CaretRight className="ml-3 transition-transform duration-200 group-hover:translate-x-1" weight="bold" />
-             </button>
+            <div className="mb-6 p-4 bg-white/5 rounded-full text-gray-500 group-hover:text-emerald-500 transition-colors">
+              <Flask size={32} weight="duotone" />
+            </div>
+            <h3 className="text-xl font-bold text-white uppercase tracking-widest mb-2 font-mono">
+              Protocol_End
+            </h3>
+            <p className="text-gray-500 font-mono text-xs uppercase tracking-widest mb-8">
+              No assessment required for this unit.
+            </p>
+            <button
+              onClick={() => onComplete(lesson.id)}
+              className="group relative inline-flex items-center justify-center px-8 py-4 font-black text-[10px] uppercase tracking-[0.2em] text-black bg-white hover:bg-emerald-500 transition-all"
+            >
+              <span>MARK_COMPLETE</span>
+              <CaretRight
+                className="ml-3 transition-transform duration-200 group-hover:translate-x-1"
+                weight="bold"
+              />
+            </button>
           </div>
         )}
       </div>

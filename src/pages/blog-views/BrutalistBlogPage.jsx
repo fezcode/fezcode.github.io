@@ -179,7 +179,10 @@ const BrutalistBlogPage = () => {
 
           <div className="relative group w-full max-w-md">
             <div className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-sm px-3 py-1.5 focus-within:border-emerald-500/50 focus-within:bg-white/10 transition-all">
-              <MagnifyingGlass size={14} className="text-gray-500 group-focus-within:text-emerald-400" />
+              <MagnifyingGlass
+                size={14}
+                className="text-gray-500 group-focus-within:text-emerald-400"
+              />
               <input
                 type="text"
                 value={searchQuery}

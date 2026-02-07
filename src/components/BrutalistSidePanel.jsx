@@ -121,15 +121,17 @@ const BrutalistSidePanel = () => {
 
             {/* Content Area */}
             <div className="relative z-10 flex-1 overflow-y-auto p-8 custom-scrollbar text-white">
-              <div className="space-y-8">
-                {panelContent}
-              </div>
+              <div className="space-y-8">{panelContent}</div>
             </div>
 
             {/* Panel Footer */}
             <div className="relative z-10 p-6 border-t border-white/10 bg-black/40 flex items-center justify-between">
               <div className="flex items-center gap-3 text-gray-600 font-mono text-[9px] uppercase tracking-[0.2em]">
-                <InfoIcon weight="fill" size={14} className="text-emerald-500/50" />
+                <InfoIcon
+                  weight="fill"
+                  size={14}
+                  className="text-emerald-500/50"
+                />
                 <span>Buffer_Active // {Math.round(panelWidth)}PX</span>
               </div>
               <div className="flex gap-2">

@@ -150,42 +150,63 @@ function SteganographyPage() {
       const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
       const data = imageData.data;
 
-            const headerLen = MAGIC_HEADER.length * 8;
+      const headerLen = MAGIC_HEADER.length * 8;
 
-            // Extract bits from R, G, B channels
-            const allExtractedBits = [];
-            for(let i=0; i < data.length; i+=4) {
-                allExtractedBits.push(data[i] & 1);
-                allExtractedBits.push(data[i+1] & 1);
-                allExtractedBits.push(data[i+2] & 1);
-            }
+      // Extract bits from R, G, B channels
+      const allExtractedBits = [];
+      for (let i = 0; i < data.length; i += 4) {
+        allExtractedBits.push(data[i] & 1);
+        allExtractedBits.push(data[i + 1] & 1);
+        allExtractedBits.push(data[i + 2] & 1);
+      }
       // Magic header check
       const headBits = allExtractedBits.slice(0, headerLen);
       if (bitsToString(headBits) !== MAGIC_HEADER) {
-          addToast({ title: 'Error', message: 'No message found.', type: 'error' });
-          return;
+        addToast({
+          title: 'Error',
+          message: 'No message found.',
+          type: 'error',
+        });
+        return;
       }
 
       // Length extraction
-      const extractedLenBits = allExtractedBits.slice(headerLen, headerLen + 32);
+      const extractedLenBits = allExtractedBits.slice(
+        headerLen,
+        headerLen + 32,
+      );
       let length = 0;
-      for(let i=0; i<32; i++) {
-          length = (length << 1) | extractedLenBits[i];
+      for (let i = 0; i < 32; i++) {
+        length = (length << 1) | extractedLenBits[i];
       }
 
       if (length <= 0 || length > 1000000) {
-          addToast({ title: 'Error', message: 'Invalid message length.', type: 'error' });
-          return;
+        addToast({
+          title: 'Error',
+          message: 'Invalid message length.',
+          type: 'error',
+        });
+        return;
       }
 
       // Content extraction
-      const contentBits = allExtractedBits.slice(headerLen + 32, headerLen + 32 + (length * 8));
+      const contentBits = allExtractedBits.slice(
+        headerLen + 32,
+        headerLen + 32 + length * 8,
+      );
       try {
-          const decoded = bitsToString(contentBits);
-          setDecodedMessage(decoded);
-          addToast({ title: 'Success', message: 'Message extracted successfully!' });
+        const decoded = bitsToString(contentBits);
+        setDecodedMessage(decoded);
+        addToast({
+          title: 'Success',
+          message: 'Message extracted successfully!',
+        });
       } catch (e) {
-          addToast({ title: 'Error', message: 'Failed to decode message.', type: 'error' });
+        addToast({
+          title: 'Error',
+          message: 'Failed to decode message.',
+          type: 'error',
+        });
       }
     };
   };
@@ -224,9 +245,14 @@ function SteganographyPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Steganography" slug="stego" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Steganography"
+                slug="stego"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Hide secret messages within images using Least Significant Bit (LSB) steganography.
+                Hide secret messages within images using Least Significant Bit
+                (LSB) steganography.
               </p>
             </div>
           </div>
@@ -253,7 +279,10 @@ function SteganographyPage() {
                   `}
                 >
                   <div className="flex items-center gap-3">
-                    <LockKeyIcon size={16} weight={mode === 'encode' ? 'fill' : 'bold'} />
+                    <LockKeyIcon
+                      size={16}
+                      weight={mode === 'encode' ? 'fill' : 'bold'}
+                    />
                     <span>Encode Message</span>
                   </div>
                   {mode === 'encode' && <span>●</span>}
@@ -270,7 +299,10 @@ function SteganographyPage() {
                   `}
                 >
                   <div className="flex items-center gap-3">
-                    <LockKeyOpenIcon size={16} weight={mode === 'decode' ? 'fill' : 'bold'} />
+                    <LockKeyOpenIcon
+                      size={16}
+                      weight={mode === 'decode' ? 'fill' : 'bold'}
+                    />
                     <span>Decode Message</span>
                   </div>
                   {mode === 'decode' && <span>●</span>}
@@ -287,7 +319,10 @@ function SteganographyPage() {
                 onClick={() => fileInputRef.current.click()}
                 className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-white/5 border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/5 transition-all group font-mono text-[10px] uppercase tracking-widest"
               >
-                <FilePlusIcon size={20} className="text-gray-500 group-hover:text-emerald-500" />
+                <FilePlusIcon
+                  size={20}
+                  className="text-gray-500 group-hover:text-emerald-500"
+                />
                 <span>{image ? 'Change Image' : 'Select Image'}</span>
               </button>
               <input
@@ -298,7 +333,8 @@ function SteganographyPage() {
                 className="hidden"
               />
               <p className="mt-4 text-[9px] font-mono text-gray-600 uppercase tracking-tighter leading-tight">
-                * PNG IS RECOMMENDED TO PREVENT COMPRESSION ARTIFACTS FROM DESTROYING THE HIDDEN DATA.
+                * PNG IS RECOMMENDED TO PREVENT COMPRESSION ARTIFACTS FROM
+                DESTROYING THE HIDDEN DATA.
               </p>
             </div>
 
@@ -341,7 +377,10 @@ function SteganographyPage() {
           <div className="lg:col-span-8 space-y-12">
             <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-12 rounded-sm overflow-hidden group min-h-[500px] flex flex-col">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName + mode} className="w-full h-full" />
+                <GenerativeArt
+                  seed={appName + mode}
+                  className="w-full h-full"
+                />
               </div>
 
               <div className="relative z-10 flex-1 flex flex-col gap-12">
@@ -353,9 +392,15 @@ function SteganographyPage() {
                     </span>
                     <div className="aspect-square border border-white/5 rounded-sm overflow-hidden bg-black flex items-center justify-center">
                       {image ? (
-                        <img src={image} alt="Input" className="max-w-full max-h-full object-contain" />
+                        <img
+                          src={image}
+                          alt="Input"
+                          className="max-w-full max-h-full object-contain"
+                        />
                       ) : (
-                        <span className="font-mono text-[8px] text-gray-800 uppercase tracking-widest">No Image Loaded</span>
+                        <span className="font-mono text-[8px] text-gray-800 uppercase tracking-widest">
+                          No Image Loaded
+                        </span>
                       )}
                     </div>
                   </div>
@@ -363,30 +408,39 @@ function SteganographyPage() {
                   {/* Output/Result View */}
                   <div className="space-y-4">
                     <span className="font-mono text-[9px] text-emerald-500 uppercase tracking-widest flex items-center gap-2 font-black">
-                      <span className="h-px w-4 bg-emerald-500/20" /> Result Matrix
+                      <span className="h-px w-4 bg-emerald-500/20" /> Result
+                      Matrix
                     </span>
                     <div className="aspect-square border border-emerald-500/20 rounded-sm overflow-hidden bg-black flex items-center justify-center relative">
                       {mode === 'encode' ? (
                         encodedImage ? (
-                          <img src={encodedImage} alt="Encoded" className="max-w-full max-h-full object-contain shadow-[0_0_40px_rgba(16,185,129,0.1)]" />
+                          <img
+                            src={encodedImage}
+                            alt="Encoded"
+                            className="max-w-full max-h-full object-contain shadow-[0_0_40px_rgba(16,185,129,0.1)]"
+                          />
                         ) : (
                           <div className="flex flex-col items-center gap-4 opacity-20">
-                             <EraserIcon size={32} weight="thin" />
-                             <span className="font-mono text-[8px] uppercase tracking-widest">Waiting for process</span>
+                            <EraserIcon size={32} weight="thin" />
+                            <span className="font-mono text-[8px] uppercase tracking-widest">
+                              Waiting for process
+                            </span>
                           </div>
                         )
                       ) : (
                         <div className="w-full h-full p-6 flex flex-col">
-                            {decodedMessage ? (
-                                <div className="flex-1 overflow-auto font-mono text-xs text-emerald-400 p-4 bg-emerald-500/5 border border-emerald-500/20 whitespace-pre-wrap">
-                                    {decodedMessage}
-                                </div>
-                            ) : (
-                                <div className="flex-1 flex flex-col items-center justify-center gap-4 opacity-20">
-                                    <MagnifyingGlassIcon size={32} weight="thin" />
-                                    <span className="font-mono text-[8px] uppercase tracking-widest">No message extracted</span>
-                                </div>
-                            )}
+                          {decodedMessage ? (
+                            <div className="flex-1 overflow-auto font-mono text-xs text-emerald-400 p-4 bg-emerald-500/5 border border-emerald-500/20 whitespace-pre-wrap">
+                              {decodedMessage}
+                            </div>
+                          ) : (
+                            <div className="flex-1 flex flex-col items-center justify-center gap-4 opacity-20">
+                              <MagnifyingGlassIcon size={32} weight="thin" />
+                              <span className="font-mono text-[8px] uppercase tracking-widest">
+                                No message extracted
+                              </span>
+                            </div>
+                          )}
                         </div>
                       )}
                     </div>
@@ -405,15 +459,18 @@ function SteganographyPage() {
                     </button>
                   )}
                   {decodedMessage && mode === 'decode' && (
-                      <button
-                        onClick={() => {
-                            navigator.clipboard.writeText(decodedMessage);
-                            addToast({ title: 'Success', message: 'Message copied to clipboard.' });
-                        }}
-                        className="flex items-center gap-3 px-8 py-4 bg-emerald-500 text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs"
-                      >
-                        <span>Copy Message</span>
-                      </button>
+                    <button
+                      onClick={() => {
+                        navigator.clipboard.writeText(decodedMessage);
+                        addToast({
+                          title: 'Success',
+                          message: 'Message copied to clipboard.',
+                        });
+                      }}
+                      className="flex items-center gap-3 px-8 py-4 bg-emerald-500 text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs"
+                    >
+                      <span>Copy Message</span>
+                    </button>
                   )}
                 </div>
               </div>

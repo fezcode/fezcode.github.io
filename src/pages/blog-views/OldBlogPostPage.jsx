@@ -285,7 +285,9 @@ const OldBlogPostPage = () => {
       ? post.seriesPosts[currentPostIndex - 1]
       : null;
   const nextPost =
-    currentPostIndex < post.seriesPosts.length - 1 ? post.seriesPosts[currentPostIndex + 1] : null;
+    currentPostIndex < post.seriesPosts.length - 1
+      ? post.seriesPosts[currentPostIndex + 1]
+      : null;
 
   const backLink = post.attributes.series
     ? `/blog/series/${post.attributes.series.slug}`
@@ -296,7 +298,6 @@ const OldBlogPostPage = () => {
 
   return (
     <div className="min-h-screen bg-[#020617] pb-24 relative">
-
       <style>{`
         body { background-color: black; }
       `}</style>

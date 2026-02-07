@@ -140,7 +140,14 @@ function BrutalistCommandsPage() {
       <Seo
         title="All Commands | Fezcodex"
         description="All the available commands that can be used in Fezcodex."
-        keywords={['Fezcodex', 'apps', 'applications', 'cmd', 'dev', 'commands']}
+        keywords={[
+          'Fezcodex',
+          'apps',
+          'applications',
+          'cmd',
+          'dev',
+          'commands',
+        ]}
         ogImage="/images/asset/commands-page.webp"
       />
       {/* Mobile Background */}

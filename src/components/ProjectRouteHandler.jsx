@@ -5,11 +5,19 @@ import { useVisualSettings } from '../context/VisualSettingsContext';
 import Loading from './Loading';
 
 const ProjectPage = lazy(() => import('../pages/ProjectPage'));
-const StylishProjectDetailsPage = lazy(() => import('../pages/StylishProjectDetailsPage'));
-const EditorialProjectDetailsPage = lazy(() => import('../pages/EditorialProjectDetailsPage'));
-const MinimalModernProjectPage = lazy(() => import('../pages/MinimalModernProjectPage'));
+const StylishProjectDetailsPage = lazy(
+  () => import('../pages/StylishProjectDetailsPage'),
+);
+const EditorialProjectDetailsPage = lazy(
+  () => import('../pages/EditorialProjectDetailsPage'),
+);
+const MinimalModernProjectPage = lazy(
+  () => import('../pages/MinimalModernProjectPage'),
+);
 const MuseumProjectPage = lazy(() => import('../pages/MuseumProjectPage'));
-const LuxeProjectDetailPage = lazy(() => import('../pages/luxe-views/LuxeProjectDetailPage'));
+const LuxeProjectDetailPage = lazy(
+  () => import('../pages/luxe-views/LuxeProjectDetailPage'),
+);
 const BentoProjectPage = lazy(() => import('../pages/BentoProjectPage'));
 
 const ProjectRouteHandler = () => {
@@ -19,10 +27,14 @@ const ProjectRouteHandler = () => {
 
   if (loading) return <Loading />;
 
-  const project = projects.find(p => p.slug === slug);
+  const project = projects.find((p) => p.slug === slug);
 
   if (!project) {
-    return <Suspense fallback={<Loading />}><ProjectPage /></Suspense>;
+    return (
+      <Suspense fallback={<Loading />}>
+        <ProjectPage />
+      </Suspense>
+    );
   }
 
   // Handle different project styles first

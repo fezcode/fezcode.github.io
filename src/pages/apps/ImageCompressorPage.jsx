@@ -125,7 +125,11 @@ const ImageCompressorPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Image Compressor" slug="imc" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Image Compressor"
+                slug="imc"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Bit density protocol. Optimize and compress digital media to
                 minimize data footprint.

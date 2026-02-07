@@ -1,6 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeftIcon, GithubLogoIcon, GlobeIcon, SunIcon, MoonIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  GithubLogoIcon,
+  GlobeIcon,
+  SunIcon,
+  MoonIcon,
+} from '@phosphor-icons/react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useProjects } from '../utils/projectParser';
 import Loading from '../components/Loading';
@@ -33,22 +39,23 @@ const MinimalModernProjectPage = () => {
 
       const sectionFiles = ['overview', 'features', 'technical', 'access'];
       try {
-        const promises = sectionFiles.map(file =>
-          fetch(`/projects/${slug}/${file}.txt`)
-            .then(res => res.ok ? res.text().then(text => ({ id: file, text })) : null)
+        const promises = sectionFiles.map((file) =>
+          fetch(`/projects/${slug}/${file}.txt`).then((res) =>
+            res.ok ? res.text().then((text) => ({ id: file, text })) : null,
+          ),
         );
 
         const results = await Promise.all(promises);
         const validSections = results
-          .filter(res => res !== null)
-          .map(res => {
+          .filter((res) => res !== null)
+          .map((res) => {
             const lines = res.text.split('\n');
             let label = res.id.charAt(0).toUpperCase() + res.id.slice(1);
             let subtext = 'Details';
             let image = project?.image || '';
             let contentLines = [];
 
-            lines.forEach(line => {
+            lines.forEach((line) => {
               if (line.startsWith('LABEL:')) {
                 label = line.replace('LABEL:', '').trim();
               } else if (line.startsWith('SUBTEXT:')) {
@@ -65,7 +72,7 @@ const MinimalModernProjectPage = () => {
               label,
               subtext,
               image,
-              content: contentLines.join('\n').trim()
+              content: contentLines.join('\n').trim(),
             };
           });
 
@@ -85,9 +92,10 @@ const MinimalModernProjectPage = () => {
     }
   }, [slug, project]);
 
-  const activeSection = useMemo(() =>
-    sections.find(s => s.id === activeSectionId) || sections[0],
-  [sections, activeSectionId]);
+  const activeSection = useMemo(
+    () => sections.find((s) => s.id === activeSectionId) || sections[0],
+    [sections, activeSectionId],
+  );
 
   if (projectsLoading || loadingContent || !project) {
     return <Loading />;
@@ -99,16 +107,20 @@ const MinimalModernProjectPage = () => {
     textMuted: isBlackMode ? 'text-zinc-500' : 'text-zinc-400',
     border: isBlackMode ? 'border-white' : 'border-black',
     borderMuted: isBlackMode ? 'border-zinc-800' : 'border-zinc-200',
-    shadow: isBlackMode ? 'shadow-[30px_30px_0px_0px_rgba(255,255,255,1)]' : 'shadow-[30px_30px_0px_0px_rgba(0,0,0,1)]',
+    shadow: isBlackMode
+      ? 'shadow-[30px_30px_0px_0px_rgba(255,255,255,1)]'
+      : 'shadow-[30px_30px_0px_0px_rgba(0,0,0,1)]',
     prose: isBlackMode ? 'prose-invert' : 'prose-zinc',
     activeTab: isBlackMode ? 'text-white' : 'text-black',
     inactiveTab: isBlackMode ? 'text-zinc-800' : 'text-zinc-300',
     subtextActive: isBlackMode ? 'text-zinc-400' : 'text-zinc-500',
-    subtextInactive: isBlackMode ? 'text-zinc-800' : 'text-zinc-300'
+    subtextInactive: isBlackMode ? 'text-zinc-800' : 'text-zinc-300',
   };
 
   return (
-    <div className={`min-h-screen ${themeClasses.bg} ${themeClasses.text} p-8 md:p-16 flex flex-col font-instr-sans overflow-hidden transition-colors duration-500`}>
+    <div
+      className={`min-h-screen ${themeClasses.bg} ${themeClasses.text} p-8 md:p-16 flex flex-col font-instr-sans overflow-hidden transition-colors duration-500`}
+    >
       <Seo
         title={`${project.title} | Fezcodex`}
         description={project.shortDescription}
@@ -121,8 +133,13 @@ const MinimalModernProjectPage = () => {
             onClick={() => navigate('/projects')}
             className={`flex items-center gap-2 ${isBlackMode ? 'text-zinc-400 hover:text-white' : 'text-zinc-500 hover:text-black'} transition-colors group w-fit`}
           >
-            <ArrowLeftIcon size={20} className="group-hover:-translate-x-1 transition-transform" />
-            <span className="text-sm font-bold uppercase tracking-widest">Back to Projects</span>
+            <ArrowLeftIcon
+              size={20}
+              className="group-hover:-translate-x-1 transition-transform"
+            />
+            <span className="text-sm font-bold uppercase tracking-widest">
+              Back to Projects
+            </span>
           </button>
 
           <button
@@ -130,7 +147,11 @@ const MinimalModernProjectPage = () => {
             className={`p-2 rounded-full border-2 ${themeClasses.border} hover:bg-zinc-500/10 transition-all`}
             title={isBlackMode ? 'Switch to Light' : 'Switch to Black'}
           >
-            {isBlackMode ? <SunIcon size={20} weight="bold" /> : <MoonIcon size={20} weight="bold" />}
+            {isBlackMode ? (
+              <SunIcon size={20} weight="bold" />
+            ) : (
+              <MoonIcon size={20} weight="bold" />
+            )}
           </button>
         </div>
 
@@ -145,7 +166,9 @@ const MinimalModernProjectPage = () => {
                 title="Github Repository"
               >
                 <GithubLogoIcon size={20} weight="bold" />
-                <span className="text-[10px] font-black uppercase tracking-widest">Source</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">
+                  Source
+                </span>
               </a>
             )}
             {project.demo_link && (
@@ -157,16 +180,28 @@ const MinimalModernProjectPage = () => {
                 title="Live Demo"
               >
                 <GlobeIcon size={20} weight="bold" />
-                <span className="text-[10px] font-black uppercase tracking-widest">Live</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">
+                  Live
+                </span>
               </a>
             )}
           </div>
           <div className="hidden md:flex flex-col items-end">
-            <span className={`text-[10px] ${themeClasses.textMuted} font-bold uppercase tracking-[0.2em]`}>Project Phase</span>
-            <span className="text-sm font-black uppercase tracking-widest">{activeSection?.id?.toUpperCase()}</span>
+            <span
+              className={`text-[10px] ${themeClasses.textMuted} font-bold uppercase tracking-[0.2em]`}
+            >
+              Project Phase
+            </span>
+            <span className="text-sm font-black uppercase tracking-widest">
+              {activeSection?.id?.toUpperCase()}
+            </span>
           </div>
-          <div className={`w-12 h-12 border-2 ${themeClasses.border} flex items-center justify-center font-black`}>
-            {activeSectionId ? sections.findIndex(s => s.id === activeSectionId) + 1 : '0'}
+          <div
+            className={`w-12 h-12 border-2 ${themeClasses.border} flex items-center justify-center font-black`}
+          >
+            {activeSectionId
+              ? sections.findIndex((s) => s.id === activeSectionId) + 1
+              : '0'}
           </div>
         </div>
       </div>
@@ -176,20 +211,31 @@ const MinimalModernProjectPage = () => {
           {sections.map((section, idx) => (
             <motion.div
               key={section.id}
-              onClick={() => setActiveSectionId(activeSectionId === section.id ? null : section.id)}
+              onClick={() =>
+                setActiveSectionId(
+                  activeSectionId === section.id ? null : section.id,
+                )
+              }
               className="group cursor-pointer relative"
             >
               <div className="flex items-center gap-6">
-                <span className={`text-sm font-black transition-colors ${activeSectionId === section.id ? themeClasses.activeTab : themeClasses.inactiveTab}`}>
+                <span
+                  className={`text-sm font-black transition-colors ${activeSectionId === section.id ? themeClasses.activeTab : themeClasses.inactiveTab}`}
+                >
                   0{idx + 1}
                 </span>
                 <div className="flex flex-col">
-                   <span className={`text-[10px] font-bold uppercase tracking-[0.3em] transition-colors ${activeSectionId === section.id ? themeClasses.subtextActive : themeClasses.subtextInactive}`}>
+                  <span
+                    className={`text-[10px] font-bold uppercase tracking-[0.3em] transition-colors ${activeSectionId === section.id ? themeClasses.subtextActive : themeClasses.subtextInactive}`}
+                  >
                     {section.subtext}
                   </span>
                   <h2
                     className={`text-4xl md:text-6xl font-black uppercase transition-all duration-300 ${
-                      activeSectionId === section.id ? themeClasses.activeTab + ' translate-x-2' : themeClasses.inactiveTab + ' group-hover:text-zinc-500'
+                      activeSectionId === section.id
+                        ? themeClasses.activeTab + ' translate-x-2'
+                        : themeClasses.inactiveTab +
+                          ' group-hover:text-zinc-500'
                     }`}
                   >
                     {section.label}
@@ -205,17 +251,26 @@ const MinimalModernProjectPage = () => {
                     exit={{ height: 0, opacity: 0, marginTop: 0 }}
                     className="overflow-hidden pl-12"
                   >
-                    <div className={`max-w-lg prose prose-sm ${themeClasses.prose} border-l-4 ${themeClasses.border} pl-6`}>
-                      <ReactMarkdown components={{
-                        img: () => null, // Skip images in text view as they are handled by the hero
-                        h1: () => null,
-                        h2: () => null,
-                        a: ({node, children, ...props}) => (
-                          <a {...props} className={`${isBlackMode ? 'text-white' : 'text-black'} font-black underline`} target="_blank" rel="noopener noreferrer">
-                            {children}
-                          </a>
-                        )
-                      }}>
+                    <div
+                      className={`max-w-lg prose prose-sm ${themeClasses.prose} border-l-4 ${themeClasses.border} pl-6`}
+                    >
+                      <ReactMarkdown
+                        components={{
+                          img: () => null, // Skip images in text view as they are handled by the hero
+                          h1: () => null,
+                          h2: () => null,
+                          a: ({ node, children, ...props }) => (
+                            <a
+                              {...props}
+                              className={`${isBlackMode ? 'text-white' : 'text-black'} font-black underline`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {children}
+                            </a>
+                          ),
+                        }}
+                      >
                         {section.content}
                       </ReactMarkdown>
 
@@ -254,7 +309,9 @@ const MinimalModernProjectPage = () => {
         </div>
 
         <div className="lg:w-3/5 relative">
-          <div className={`w-full aspect-[4/5] lg:h-[70vh] relative overflow-hidden border-[8px] ${themeClasses.border} ${themeClasses.shadow} bg-zinc-200 transition-all duration-500`}>
+          <div
+            className={`w-full aspect-[4/5] lg:h-[70vh] relative overflow-hidden border-[8px] ${themeClasses.border} ${themeClasses.shadow} bg-zinc-200 transition-all duration-500`}
+          >
             <AnimatePresence mode="wait">
               <motion.div
                 key={`${project.slug}-${activeSectionId}`}
@@ -269,7 +326,8 @@ const MinimalModernProjectPage = () => {
                   alt={project.title}
                   className="w-full h-full object-cover"
                   onError={(e) => {
-                    e.target.src = '/images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg';
+                    e.target.src =
+                      '/images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg';
                   }}
                 />
 
@@ -278,34 +336,49 @@ const MinimalModernProjectPage = () => {
                 )}
                 {activeSectionId === 'access' && (
                   <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                     <span className="text-white text-xs font-black uppercase tracking-[1em] -rotate-90">Deployment</span>
+                    <span className="text-white text-xs font-black uppercase tracking-[1em] -rotate-90">
+                      Deployment
+                    </span>
                   </div>
                 )}
               </motion.div>
             </AnimatePresence>
 
             <div className="absolute top-8 left-8 mix-blend-difference text-white">
-               <div className="text-xs font-black uppercase tracking-[0.4em] mb-2">Artifact No.</div>
-               <div className="text-4xl font-black">{project.slug.toUpperCase()}</div>
+              <div className="text-xs font-black uppercase tracking-[0.4em] mb-2">
+                Artifact No.
+              </div>
+              <div className="text-4xl font-black">
+                {project.slug.toUpperCase()}
+              </div>
             </div>
 
             <div className="absolute bottom-8 right-8 mix-blend-difference text-white text-right">
-               <div className="text-[60px] font-black leading-none opacity-50">
-                 {idxToLetter(sections.findIndex(s => s.id === activeSectionId))}
-               </div>
+              <div className="text-[60px] font-black leading-none opacity-50">
+                {idxToLetter(
+                  sections.findIndex((s) => s.id === activeSectionId),
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className={`mt-12 flex justify-between items-end border-t-2 ${themeClasses.border} pt-8`}>
-        <div className={`text-[10px] font-black uppercase tracking-[0.5em] ${themeClasses.textMuted}`}>
+      <div
+        className={`mt-12 flex justify-between items-end border-t-2 ${themeClasses.border} pt-8`}
+      >
+        <div
+          className={`text-[10px] font-black uppercase tracking-[0.5em] ${themeClasses.textMuted}`}
+        >
           Digital Archive / {project.title} / {new Date().getFullYear()}
         </div>
         <div className="flex gap-2">
-           {sections.map((s, i) => (
-             <div key={s.id} className={`w-8 h-2 ${s.id === activeSectionId ? (isBlackMode ? 'bg-white' : 'bg-black') : (isBlackMode ? 'bg-zinc-900' : 'bg-zinc-200')}`} />
-           ))}
+          {sections.map((s, i) => (
+            <div
+              key={s.id}
+              className={`w-8 h-2 ${s.id === activeSectionId ? (isBlackMode ? 'bg-white' : 'bg-black') : isBlackMode ? 'bg-zinc-900' : 'bg-zinc-200'}`}
+            />
+          ))}
         </div>
       </div>
     </div>

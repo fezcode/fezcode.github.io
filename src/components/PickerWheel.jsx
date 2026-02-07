@@ -6,7 +6,12 @@ import React, {
   useMemo,
 } from 'react';
 import '../styles/PickerWheel.css';
-import { TrashIcon, PlusIcon, ListBulletsIcon, ArrowsClockwiseIcon } from '@phosphor-icons/react';
+import {
+  TrashIcon,
+  PlusIcon,
+  ListBulletsIcon,
+  ArrowsClockwiseIcon,
+} from '@phosphor-icons/react';
 import ListInputModal from './ListInputModal';
 import GenerativeArt from './GenerativeArt';
 
@@ -23,12 +28,36 @@ const PickerWheel = () => {
 
   const colorPalette = useMemo(
     () => [
-      '#FDE2E4', '#E2ECE9', '#BEE1E6', '#F0EFEB', '#DFE7FD',
-      '#CDDAFD', '#EAD5E6', '#F4C7C3', '#D6E2E9', '#B9E2E6',
-      '#F9D8D6', '#D4E9E6', '#A8DADC', '#E9E4F2', '#D0D9FB',
-      '#C0CFFB', '#E3C8DE', '#F1BDBD', '#C9D5DE', '#A1D5DB',
-      '#F6C4C1', '#C1E0DA', '#92D2D2', '#E2DDF0', '#C3CEFA',
-      '#B3C4FA', '#DBBBD1', '#EDB3B0', '#BCC8D3', '#8DCED1',
+      '#FDE2E4',
+      '#E2ECE9',
+      '#BEE1E6',
+      '#F0EFEB',
+      '#DFE7FD',
+      '#CDDAFD',
+      '#EAD5E6',
+      '#F4C7C3',
+      '#D6E2E9',
+      '#B9E2E6',
+      '#F9D8D6',
+      '#D4E9E6',
+      '#A8DADC',
+      '#E9E4F2',
+      '#D0D9FB',
+      '#C0CFFB',
+      '#E3C8DE',
+      '#F1BDBD',
+      '#C9D5DE',
+      '#A1D5DB',
+      '#F6C4C1',
+      '#C1E0DA',
+      '#92D2D2',
+      '#E2DDF0',
+      '#C3CEFA',
+      '#B3C4FA',
+      '#DBBBD1',
+      '#EDB3B0',
+      '#BCC8D3',
+      '#8DCED1',
     ],
     [],
   );
@@ -195,8 +224,12 @@ const PickerWheel = () => {
                   </div>
                 ) : winner ? (
                   <div className="flex flex-col items-center gap-1">
-                    <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">The winner is</span>
-                    <span className="text-3xl font-black text-white uppercase tracking-tighter italic">{winner}</span>
+                    <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                      The winner is
+                    </span>
+                    <span className="text-3xl font-black text-white uppercase tracking-tighter italic">
+                      {winner}
+                    </span>
                   </div>
                 ) : null}
               </div>
@@ -204,7 +237,9 @@ const PickerWheel = () => {
 
             <div className="space-y-12">
               <div className="space-y-6">
-                <h2 className="text-2xl font-black uppercase tracking-tighter">Options</h2>
+                <h2 className="text-2xl font-black uppercase tracking-tighter">
+                  Options
+                </h2>
                 <div className="flex gap-4">
                   <input
                     ref={newEntryInputRef}
@@ -239,8 +274,13 @@ const PickerWheel = () => {
               <div className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 max-h-[300px] overflow-y-auto custom-scrollbar-terminal pr-4">
                   {entries.map((entry, index) => (
-                    <div key={index} className="group/item flex items-center justify-between bg-white/5 border border-white/5 p-3 hover:border-white/20 transition-all">
-                      <span className="text-xs font-mono uppercase truncate mr-2 text-white">{entry}</span>
+                    <div
+                      key={index}
+                      className="group/item flex items-center justify-between bg-white/5 border border-white/5 p-3 hover:border-white/20 transition-all"
+                    >
+                      <span className="text-xs font-mono uppercase truncate mr-2 text-white">
+                        {entry}
+                      </span>
                       <button
                         onClick={() => deleteEntry(index)}
                         className="p-1 text-gray-600 hover:text-red-500 transition-colors opacity-0 group-hover/item:opacity-100"
@@ -251,7 +291,9 @@ const PickerWheel = () => {
                   ))}
                   {entries.length === 0 && (
                     <div className="col-span-full py-12 border border-dashed border-white/10 text-center">
-                      <span className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">No options added</span>
+                      <span className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+                        No options added
+                      </span>
                     </div>
                   )}
                 </div>

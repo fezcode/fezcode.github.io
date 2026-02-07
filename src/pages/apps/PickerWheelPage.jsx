@@ -21,16 +21,28 @@ function PickerWheelPage() {
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
-          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
-            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
+          >
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Applications</span>
           </Link>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Picker Wheel" slug="pw" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Picker Wheel"
+                slug="pw"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Add your options and spin the wheel to make a random selection. Perfect for choosing where to eat, who goes first, or making quick decisions.
+                Add your options and spin the wheel to make a random selection.
+                Perfect for choosing where to eat, who goes first, or making
+                quick decisions.
               </p>
             </div>
           </div>

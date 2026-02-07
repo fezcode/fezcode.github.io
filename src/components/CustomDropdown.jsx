@@ -113,7 +113,11 @@ const CustomDropdown = ({
                 <Check
                   size={isBrutalist || isPaper ? 12 : 16}
                   className={
-                    isBrutalist ? 'text-emerald-400' : isPaper ? 'text-[#e9e4d0]' : 'text-primary-400'
+                    isBrutalist
+                      ? 'text-emerald-400'
+                      : isPaper
+                        ? 'text-[#e9e4d0]'
+                        : 'text-primary-400'
                   }
                 />
               )}
@@ -126,7 +130,9 @@ const CustomDropdown = ({
   };
 
   return (
-    <div className={`relative ${fullWidth ? 'w-full block' : 'inline-block'} text-left ${className}`}>
+    <div
+      className={`relative ${fullWidth ? 'w-full block' : 'inline-block'} text-left ${className}`}
+    >
       <button
         type="button"
         ref={dropdownRef} // Attach ref to the button
@@ -143,7 +149,13 @@ const CustomDropdown = ({
           {Icon && (
             <Icon
               size={isBrutalist || isPaper ? 16 : 20}
-              className={isBrutalist ? 'text-emerald-500' : isPaper ? 'text-[#1a1a1a]' : 'text-gray-400'}
+              className={
+                isBrutalist
+                  ? 'text-emerald-500'
+                  : isPaper
+                    ? 'text-[#1a1a1a]'
+                    : 'text-gray-400'
+              }
             />
           )}
           <span>{selectedOption ? selectedOption.label : label}</span>

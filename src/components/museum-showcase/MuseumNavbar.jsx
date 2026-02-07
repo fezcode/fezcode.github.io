@@ -13,11 +13,13 @@ const MuseumNavbar = () => {
   }, []);
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center transition-all duration-500 ${
-      isScrolled
-        ? 'bg-[#FDFAF5]/90 backdrop-blur-md border-b border-black/5 shadow-sm'
-        : 'bg-[#FDFAF5] border-b border-transparent'
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center transition-all duration-500 ${
+        isScrolled
+          ? 'bg-[#FDFAF5]/90 backdrop-blur-md border-b border-black/5 shadow-sm'
+          : 'bg-[#FDFAF5] border-b border-transparent'
+      }`}
+    >
       <div className="flex-1">
         <button
           onClick={() => navigate('/projects')}

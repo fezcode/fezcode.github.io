@@ -185,9 +185,7 @@ const BrutalistCommandPalette = ({
                 ref={inputRef}
                 type="text"
                 placeholder={
-                  isLoading
-                    ? 'Initialising Data...'
-                    : 'Search registry...'
+                  isLoading ? 'Initialising Data...' : 'Search registry...'
                 }
                 className="w-full bg-transparent text-xl md:text-2xl font-light placeholder-gray-700 focus:outline-none font-mono uppercase tracking-tight"
                 value={searchTerm}

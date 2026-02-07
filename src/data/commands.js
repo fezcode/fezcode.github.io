@@ -135,7 +135,8 @@ export const commands = [
     items: [
       {
         title: 'Switch Visual Theme',
-        description: 'Open a modal to choose between Brufez and Fezluxe aesthetics.',
+        description:
+          'Open a modal to choose between Brufez and Fezluxe aesthetics.',
         color: 'amber',
         commandId: 'switchTheme',
       },

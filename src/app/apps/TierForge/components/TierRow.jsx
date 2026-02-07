@@ -4,7 +4,7 @@ import {
   ArrowDownIcon,
   TrashIcon,
   GearIcon,
-  FloppyDiskIcon
+  FloppyDiskIcon,
 } from '@phosphor-icons/react';
 import DraggableItem from './DraggableItem';
 import CustomColorPicker from '../../../../components/CustomColorPicker';
@@ -21,7 +21,7 @@ const TierRow = ({
   onMoveDown,
   onDeleteItem,
   isFirst,
-  isLast
+  isLast,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tempLabel, setTempLabel] = useState(tier.label);
@@ -112,7 +112,9 @@ const TierRow = ({
           ))}
           {tier.items.length === 0 && (
             <div className="w-full h-full flex items-center justify-center pointer-events-none opacity-10">
-              <span className="font-mono text-xs uppercase tracking-widest">Drop items here</span>
+              <span className="font-mono text-xs uppercase tracking-widest">
+                Drop items here
+              </span>
             </div>
           )}
         </div>

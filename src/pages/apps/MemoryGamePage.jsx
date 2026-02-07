@@ -177,8 +177,8 @@ const MemoryGamePage = () => {
                 variant="brutalist"
               />
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest">
-                Cognitive evaluation protocol. Match identical data points within
-                minimal move sequences.
+                Cognitive evaluation protocol. Match identical data points
+                within minimal move sequences.
               </p>
             </div>
           </div>

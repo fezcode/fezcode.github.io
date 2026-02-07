@@ -16,9 +16,9 @@ const DraggableItem = ({ item, onDragStart, onDelete }) => {
         />
       ) : (
         <div className="w-full h-full grid place-items-center p-1 bg-[#111] text-white overflow-hidden">
-            <span className="item-text-content text-[10px] font-mono text-center break-words leading-tight w-full">
-                {item.content}
-            </span>
+          <span className="item-text-content text-[10px] font-mono text-center break-words leading-tight w-full">
+            {item.content}
+          </span>
         </div>
       )}
 

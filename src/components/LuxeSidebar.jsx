@@ -26,7 +26,7 @@ import {
   FlaskIcon,
   BookBookmarkIcon,
   FilePdfIcon,
-  TerminalWindowIcon
+  TerminalWindowIcon,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -60,7 +60,7 @@ const ICON_MAP = {
   FlaskIcon,
   BookBookmarkIcon,
   FilePdfIcon,
-  TerminalWindowIcon
+  TerminalWindowIcon,
 };
 
 const LuxeSidebar = ({
@@ -154,9 +154,7 @@ const LuxeSidebar = ({
     <button
       onClick={() => toggleSection(id)}
       className={`flex items-center justify-between w-full px-8 py-5 transition-all duration-300 ${
-        active
-          ? 'text-[#8D4004]'
-          : 'text-[#1A1A1A] hover:text-[#8D4004]'
+        active ? 'text-[#8D4004]' : 'text-[#1A1A1A] hover:text-[#8D4004]'
       }`}
     >
       <span className="font-playfairDisplay text-sm italic font-medium">
@@ -172,7 +170,10 @@ const LuxeSidebar = ({
 
   const sidebarVariants = {
     open: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
-    closed: { x: '-100%', transition: { type: 'spring', stiffness: 300, damping: 30 } },
+    closed: {
+      x: '-100%',
+      transition: { type: 'spring', stiffness: 300, damping: 30 },
+    },
   };
 
   return (
@@ -249,10 +250,10 @@ const LuxeSidebar = ({
                           animate="open"
                           exit="collapsed"
                           variants={{
-                            open: { opacity: 1, height: "auto" },
-                            collapsed: { opacity: 0, height: 0 }
+                            open: { opacity: 1, height: 'auto' },
+                            collapsed: { opacity: 0, height: 0 },
                           }}
-                          transition={{ duration: 0.3, ease: "easeInOut" }}
+                          transition={{ duration: 0.3, ease: 'easeInOut' }}
                           className="flex flex-col overflow-hidden"
                         >
                           {items.map((item, idx) => {

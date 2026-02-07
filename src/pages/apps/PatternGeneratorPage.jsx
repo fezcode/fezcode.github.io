@@ -31,9 +31,18 @@ const PREDEFINED_PALETTES = [
 const SHAPES = [
   'square',
   'circle',
-  'triangle-tl', 'triangle-tr', 'triangle-bl', 'triangle-br',
-  'quarter-tl', 'quarter-tr', 'quarter-bl', 'quarter-br',
-  'half-t', 'half-b', 'half-l', 'half-r'
+  'triangle-tl',
+  'triangle-tr',
+  'triangle-bl',
+  'triangle-br',
+  'quarter-tl',
+  'quarter-tr',
+  'quarter-bl',
+  'quarter-br',
+  'half-t',
+  'half-b',
+  'half-l',
+  'half-r',
 ];
 
 const PATTERN_TYPES = [
@@ -98,29 +107,24 @@ const PatternGeneratorPage = () => {
           const [bgIndex, fgIndex] = getIndices(2);
           const shape = SHAPES[Math.floor(Math.random() * SHAPES.length)];
           cellData = { bgIndex, fgIndex, shape };
-        }
-        else if (patternType === 'mosaic') {
+        } else if (patternType === 'mosaic') {
           const [c1, c2] = getIndices(2);
           // 0: top-left to bottom-right split (\)
           // 1: bottom-left to top-right split (/)
           const type = Math.random() > 0.5 ? 'backslash' : 'slash';
           cellData = { c1, c2, type };
-        }
-        else if (patternType === 'rings') {
+        } else if (patternType === 'rings') {
           const count = Math.floor(Math.random() * 3) + 2; // 2 to 4 rings
           const indices = getIndices(count);
           cellData = { indices };
-        }
-        else if (patternType === 'stripes') {
+        } else if (patternType === 'stripes') {
           const [c1, c2] = getIndices(2);
           const direction = Math.floor(Math.random() * 4); // 0: horz, 1: vert, 2: diag1, 3: diag2
           cellData = { c1, c2, direction };
-        }
-        else if (patternType === 'pyramids') {
+        } else if (patternType === 'pyramids') {
           const indices = getIndices(4);
           cellData = { indices };
-        }
-        else if (patternType === 'cubist') {
+        } else if (patternType === 'cubist') {
           const indices = getIndices(4); // Back, Side1, Side2, Front
           const scale = 0.3 + Math.random() * 0.5; // 0.3 to 0.8
           // Random shift -0.5 to 0.5 relative to available space
@@ -142,7 +146,10 @@ const PatternGeneratorPage = () => {
   }, [generatePattern, seed]);
 
   const randomizePalette = () => {
-    const randomPalette = PREDEFINED_PALETTES[Math.floor(Math.random() * PREDEFINED_PALETTES.length)];
+    const randomPalette =
+      PREDEFINED_PALETTES[
+        Math.floor(Math.random() * PREDEFINED_PALETTES.length)
+      ];
     setPalette(randomPalette);
   };
 
@@ -169,9 +176,9 @@ const PatternGeneratorPage = () => {
     document.body.removeChild(link);
 
     addToast({
-        title: 'Downloaded',
-        message: 'High-res SVG saved to your device.',
-        duration: 3000,
+      title: 'Downloaded',
+      message: 'High-res SVG saved to your device.',
+      duration: 3000,
     });
   };
 
@@ -219,8 +226,8 @@ const PatternGeneratorPage = () => {
   };
 
   const handleDownloadPng1080p = () => {
-      // 1080p is half of 4K (3840x2160 -> 1920x1080)
-      handleDownloadPng(targetRes.w / 2, targetRes.h / 2, '1080p');
+    // 1080p is half of 4K (3840x2160 -> 1920x1080)
+    handleDownloadPng(targetRes.w / 2, targetRes.h / 2, '1080p');
   };
 
   // --- Renderers ---
@@ -246,45 +253,107 @@ const PatternGeneratorPage = () => {
         fgShape = <circle cx={cx} cy={cy} r={r} fill={fg} />;
         break;
       case 'triangle-tl':
-        fgShape = <path d={`M${x},${y} L${x+size},${y} L${x},${y+size} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x},${y} L${x + size},${y} L${x},${y + size} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'triangle-tr':
-        fgShape = <path d={`M${x},${y} L${x+size},${y} L${x+size},${y+size} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x},${y} L${x + size},${y} L${x + size},${y + size} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'triangle-bl':
-        fgShape = <path d={`M${x},${y} L${x},${y+size} L${x+size},${y+size} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x},${y} L${x},${y + size} L${x + size},${y + size} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'triangle-br':
-        fgShape = <path d={`M${x+size},${y} L${x+size},${y+size} L${x},${y+size} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x + size},${y} L${x + size},${y + size} L${x},${y + size} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'quarter-tl':
-        fgShape = <path d={`M${x},${y} v${size} A${size},${size} 0 0,1 ${x+size},${y} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x},${y} v${size} A${size},${size} 0 0,1 ${x + size},${y} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'quarter-tr':
-        fgShape = <path d={`M${x+size},${y} v${size} A${size},${size} 0 0,0 ${x},${y} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x + size},${y} v${size} A${size},${size} 0 0,0 ${x},${y} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'quarter-bl':
-         fgShape = <path d={`M${x},${y+size} h${size} A${size},${size} 0 0,0 ${x},${y} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x},${y + size} h${size} A${size},${size} 0 0,0 ${x},${y} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'quarter-br':
-        fgShape = <path d={`M${x+size},${y+size} h-${size} A${size},${size} 0 0,1 ${x+size},${y} Z`} fill={fg} />;
+        fgShape = (
+          <path
+            d={`M${x + size},${y + size} h-${size} A${size},${size} 0 0,1 ${x + size},${y} Z`}
+            fill={fg}
+          />
+        );
         break;
       case 'half-t':
-        fgShape = <rect x={x} y={y} width={size} height={size/2} fill={fg} />;
+        fgShape = <rect x={x} y={y} width={size} height={size / 2} fill={fg} />;
         break;
       case 'half-b':
-        fgShape = <rect x={x} y={y + size/2} width={size} height={size/2} fill={fg} />;
+        fgShape = (
+          <rect
+            x={x}
+            y={y + size / 2}
+            width={size}
+            height={size / 2}
+            fill={fg}
+          />
+        );
         break;
       case 'half-l':
-        fgShape = <rect x={x} y={y} width={size/2} height={size} fill={fg} />;
+        fgShape = <rect x={x} y={y} width={size / 2} height={size} fill={fg} />;
         break;
       case 'half-r':
-         fgShape = <rect x={x + size/2} y={y} width={size/2} height={size} fill={fg} />;
+        fgShape = (
+          <rect
+            x={x + size / 2}
+            y={y}
+            width={size / 2}
+            height={size}
+            fill={fg}
+          />
+        );
         break;
-      default: break;
+      default:
+        break;
     }
 
-    return <g key={`${x}-${y}`}>{bgRect}{fgShape}</g>;
+    return (
+      <g key={`${x}-${y}`}>
+        {bgRect}
+        {fgShape}
+      </g>
+    );
   };
 
   const renderMosaic = (cell, x, y, size) => {
@@ -294,47 +363,71 @@ const PatternGeneratorPage = () => {
     const color2 = palette[c2] || '#fff';
 
     // To avoid seams, we draw a full rect of C1, then a triangle of C2
-    const bgRect = <rect x={x} y={y} width={size} height={size} fill={color1} />;
+    const bgRect = (
+      <rect x={x} y={y} width={size} height={size} fill={color1} />
+    );
 
     let tri = null;
     if (type === 'backslash') {
-       // \ split. Top-Left is C1 (bg). Bottom-Right is C2.
-       // Triangle vertices for Bottom-Right: (x, y+size), (x+size, y+size), (x+size, y)
-       tri = <path d={`M${x},${y+size} L${x+size},${y+size} L${x+size},${y} Z`} fill={color2} />;
+      // \ split. Top-Left is C1 (bg). Bottom-Right is C2.
+      // Triangle vertices for Bottom-Right: (x, y+size), (x+size, y+size), (x+size, y)
+      tri = (
+        <path
+          d={`M${x},${y + size} L${x + size},${y + size} L${x + size},${y} Z`}
+          fill={color2}
+        />
+      );
     } else {
-       // / split. Bottom-Left is C1 (bg). Top-Right is C2.
-       // Triangle vertices for Top-Right: (x, y), (x+size, y), (x+size, y+size)
-       tri = <path d={`M${x},${y} L${x+size},${y} L${x+size},${y+size} Z`} fill={color2} />;
+      // / split. Bottom-Left is C1 (bg). Top-Right is C2.
+      // Triangle vertices for Top-Right: (x, y), (x+size, y), (x+size, y+size)
+      tri = (
+        <path
+          d={`M${x},${y} L${x + size},${y} L${x + size},${y + size} Z`}
+          fill={color2}
+        />
+      );
     }
 
-    return <g key={`${x}-${y}`}>{bgRect}{tri}</g>;
+    return (
+      <g key={`${x}-${y}`}>
+        {bgRect}
+        {tri}
+      </g>
+    );
   };
 
   const renderRings = (cell, x, y, size) => {
     const { indices } = cell;
     if (!indices || !indices.length) return null;
     // Draw from largest to smallest
-    const cx = x + size/2;
-    const cy = y + size/2;
+    const cx = x + size / 2;
+    const cy = y + size / 2;
 
     // Base square
-    const base = <rect x={x} y={y} width={size} height={size} fill={palette[indices[0]]} />;
+    const base = (
+      <rect x={x} y={y} width={size} height={size} fill={palette[indices[0]]} />
+    );
 
     // Rings
     const rings = indices.slice(1).map((idx, i) => {
-        // total remaining = indices.length - 1
-        // scale goes from 1.0 down to 0
-        // If we have 3 colors: Base, Mid, Center.
-        // Base is rect.
-        // Mid is Circle R = size/2 * (2/3) ?
-        // Center is Circle R = size/2 * (1/3) ?
-        // Let's do simple proportional
-        const fraction = (indices.length - 1 - i) / indices.length;
-        const r = (size/2) * fraction;
-        return <circle key={i} cx={cx} cy={cy} r={r} fill={palette[idx]} />;
+      // total remaining = indices.length - 1
+      // scale goes from 1.0 down to 0
+      // If we have 3 colors: Base, Mid, Center.
+      // Base is rect.
+      // Mid is Circle R = size/2 * (2/3) ?
+      // Center is Circle R = size/2 * (1/3) ?
+      // Let's do simple proportional
+      const fraction = (indices.length - 1 - i) / indices.length;
+      const r = (size / 2) * fraction;
+      return <circle key={i} cx={cx} cy={cy} r={r} fill={palette[idx]} />;
     });
 
-    return <g key={`${x}-${y}`}>{base}{rings}</g>;
+    return (
+      <g key={`${x}-${y}`}>
+        {base}
+        {rings}
+      </g>
+    );
   };
 
   const renderStripes = (cell, x, y, size) => {
@@ -346,29 +439,76 @@ const PatternGeneratorPage = () => {
     const bg = <rect x={x} y={y} width={size} height={size} fill={color1} />;
 
     let stripe = null;
-    const half = size/2;
+    const half = size / 2;
 
-    switch(direction) {
-        case 0: // Horizontal
-            stripe = <rect x={x} y={y + size/4} width={size} height={size/2} fill={color2} />;
-            break;
-        case 1: // Vertical
-            stripe = <rect x={x + size/4} y={y} width={size/2} height={size} fill={color2} />;
-            break;
-        case 2: // Diag 1
-             stripe = <path d={`M${x},${y} L${x+half},${y} L${x+size},${y+half} L${x+size},${y+size} L${x+half},${y+size} L${x},${y+half} Z`} fill={color2} />;
-             // Actually a centered stripe is complex polygon.
-             // Simpler: Just half split?
-             // Let's make it a thick line
-             stripe = <line x1={x} y1={y} x2={x+size} y2={y+size} stroke={color2} strokeWidth={size/3} strokeLinecap="square" />;
-            break;
-        case 3: // Diag 2
-             stripe = <line x1={x+size} y1={y} x2={x} y2={y+size} stroke={color2} strokeWidth={size/3} strokeLinecap="square" />;
-            break;
-        default: break;
+    switch (direction) {
+      case 0: // Horizontal
+        stripe = (
+          <rect
+            x={x}
+            y={y + size / 4}
+            width={size}
+            height={size / 2}
+            fill={color2}
+          />
+        );
+        break;
+      case 1: // Vertical
+        stripe = (
+          <rect
+            x={x + size / 4}
+            y={y}
+            width={size / 2}
+            height={size}
+            fill={color2}
+          />
+        );
+        break;
+      case 2: // Diag 1
+        stripe = (
+          <path
+            d={`M${x},${y} L${x + half},${y} L${x + size},${y + half} L${x + size},${y + size} L${x + half},${y + size} L${x},${y + half} Z`}
+            fill={color2}
+          />
+        );
+        // Actually a centered stripe is complex polygon.
+        // Simpler: Just half split?
+        // Let's make it a thick line
+        stripe = (
+          <line
+            x1={x}
+            y1={y}
+            x2={x + size}
+            y2={y + size}
+            stroke={color2}
+            strokeWidth={size / 3}
+            strokeLinecap="square"
+          />
+        );
+        break;
+      case 3: // Diag 2
+        stripe = (
+          <line
+            x1={x + size}
+            y1={y}
+            x2={x}
+            y2={y + size}
+            stroke={color2}
+            strokeWidth={size / 3}
+            strokeLinecap="square"
+          />
+        );
+        break;
+      default:
+        break;
     }
 
-    return <g key={`${x}-${y}`}>{bg}{stripe}</g>;
+    return (
+      <g key={`${x}-${y}`}>
+        {bg}
+        {stripe}
+      </g>
+    );
   };
 
   const renderPyramids = (cell, x, y, size) => {
@@ -384,10 +524,23 @@ const PatternGeneratorPage = () => {
 
     return (
       <g key={`${x}-${y}`}>
-        <path d={`M${x},${y} L${x + size},${y} L${cx},${cy} Z`} fill={c1} /> {/* Top */}
-        <path d={`M${x + size},${y} L${x + size},${y + size} L${cx},${cy} Z`} fill={c2} /> {/* Right */}
-        <path d={`M${x + size},${y + size} L${x},${y + size} L${cx},${cy} Z`} fill={c3} /> {/* Bottom */}
-        <path d={`M${x},${y + size} L${x},${y} L${cx},${cy} Z`} fill={c4} /> {/* Left */}
+        <path d={`M${x},${y} L${x + size},${y} L${cx},${cy} Z`} fill={c1} />{' '}
+        {/* Top */}
+        <path
+          d={`M${x + size},${y} L${x + size},${y + size} L${cx},${cy} Z`}
+          fill={c2}
+        />{' '}
+        {/* Right */}
+        <path
+          d={`M${x + size},${y + size} L${x},${y + size} L${cx},${cy} Z`}
+          fill={c3}
+        />{' '}
+        {/* Bottom */}
+        <path
+          d={`M${x},${y + size} L${x},${y} L${cx},${cy} Z`}
+          fill={c4}
+        />{' '}
+        {/* Left */}
       </g>
     );
   };
@@ -414,16 +567,34 @@ const PatternGeneratorPage = () => {
 
         {/* Connecting Sides */}
         {/* Top */}
-        <path d={`M${x},${y} L${x+size},${y} L${fx+innerSize},${fy} L${fx},${fy} Z`} fill={cSide1} />
+        <path
+          d={`M${x},${y} L${x + size},${y} L${fx + innerSize},${fy} L${fx},${fy} Z`}
+          fill={cSide1}
+        />
         {/* Bottom */}
-        <path d={`M${x},${y+size} L${x+size},${y+size} L${fx+innerSize},${fy+innerSize} L${fx},${fy+innerSize} Z`} fill={cSide1} />
+        <path
+          d={`M${x},${y + size} L${x + size},${y + size} L${fx + innerSize},${fy + innerSize} L${fx},${fy + innerSize} Z`}
+          fill={cSide1}
+        />
         {/* Left */}
-        <path d={`M${x},${y} L${x},${y+size} L${fx},${fy+innerSize} L${fx},${fy} Z`} fill={cSide2} />
+        <path
+          d={`M${x},${y} L${x},${y + size} L${fx},${fy + innerSize} L${fx},${fy} Z`}
+          fill={cSide2}
+        />
         {/* Right */}
-        <path d={`M${x+size},${y} L${x+size},${y+size} L${fx+innerSize},${fy+innerSize} L${fx+innerSize},${fy} Z`} fill={cSide2} />
+        <path
+          d={`M${x + size},${y} L${x + size},${y + size} L${fx + innerSize},${fy + innerSize} L${fx + innerSize},${fy} Z`}
+          fill={cSide2}
+        />
 
         {/* Front Face */}
-        <rect x={fx} y={fy} width={innerSize} height={innerSize} fill={cFront} />
+        <rect
+          x={fx}
+          y={fy}
+          width={innerSize}
+          height={innerSize}
+          fill={cFront}
+        />
       </g>
     );
   };
@@ -433,178 +604,196 @@ const PatternGeneratorPage = () => {
     const y = rIndex * cellSize;
 
     switch (patternType) {
-      case 'bauhaus': return renderBauhaus(cell, x, y, cellSize);
-      case 'mosaic': return renderMosaic(cell, x, y, cellSize);
-      case 'rings': return renderRings(cell, x, y, cellSize);
-      case 'stripes': return renderStripes(cell, x, y, cellSize);
-      case 'pyramids': return renderPyramids(cell, x, y, cellSize);
-      case 'cubist': return renderCubist(cell, x, y, cellSize);
-      default: return null;
+      case 'bauhaus':
+        return renderBauhaus(cell, x, y, cellSize);
+      case 'mosaic':
+        return renderMosaic(cell, x, y, cellSize);
+      case 'rings':
+        return renderRings(cell, x, y, cellSize);
+      case 'stripes':
+        return renderStripes(cell, x, y, cellSize);
+      case 'pyramids':
+        return renderPyramids(cell, x, y, cellSize);
+      case 'cubist':
+        return renderCubist(cell, x, y, cellSize);
+      default:
+        return null;
     }
   };
 
   return (
     <div className="min-h-screen bg-[#111] text-gray-100 font-sans flex flex-col">
-       <Seo
+      <Seo
         title="Pattern Generator | Fezcodex"
         description="Generate seamless geometric vector patterns in 4K resolution."
-        keywords={['pattern', 'generator', 'svg', 'geometric', 'design', '4k', 'wallpaper']}
-       />
-       <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-7xl">
-         {/* Header */}
-         <header className="mb-8">
-            <Link
-                to="/apps"
-                className="group text-emerald-400 hover:text-emerald-300 flex items-center gap-2 text-sm font-mono uppercase tracking-widest mb-4 transition-colors"
-            >
-                <ArrowLeftIcon className="text-lg transition-transform group-hover:-translate-x-1" />
-                <span>Apps directory</span>
-            </Link>
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-                <BreadcrumbTitle title="Pattern Generator" slug="pat" variant="brutalist" />
-                <div className="flex gap-3">
-                     <button
-                        onClick={regenerate}
-                        className="px-4 py-3 bg-white text-black font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-emerald-400 transition-colors flex items-center gap-2"
-                        title="Regenerate Pattern"
-                    >
-                        <ArrowsClockwiseIcon size={18} weight="bold" />
-                        <span className="hidden md:inline">Regen</span>
-                    </button>
-                    <button
-                        onClick={handleDownloadSvg}
-                        className="px-4 py-3 border border-white/20 text-white font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-white hover:text-black transition-colors flex items-center gap-2"
-                        title="Download SVG"
-                    >
-                        <DownloadSimpleIcon size={18} weight="bold" />
-                        <span className="hidden md:inline">SVG (4K)</span>
-                    </button>
-                    <button
-                        onClick={() => handleDownloadPng(null, null, '4K')}
-                        className="px-4 py-3 border border-white/20 text-white font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-white hover:text-black transition-colors flex items-center gap-2"
-                        title="Download PNG (4K)"
-                    >
-                        <ImageSquareIcon size={18} weight="bold" />
-                        <span className="hidden md:inline">PNG (4K)</span>
-                    </button>
-                    <button
-                        onClick={handleDownloadPng1080p}
-                        className="px-4 py-3 border border-white/20 text-white font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-white hover:text-black transition-colors flex items-center gap-2"
-                        title="Download PNG (1080p)"
-                    >
-                        <ImageSquareIcon size={18} weight="bold" />
-                        <span className="hidden md:inline">PNG (1080p)</span>
-                    </button>
-                </div>
+        keywords={[
+          'pattern',
+          'generator',
+          'svg',
+          'geometric',
+          'design',
+          '4k',
+          'wallpaper',
+        ]}
+      />
+      <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-7xl">
+        {/* Header */}
+        <header className="mb-8">
+          <Link
+            to="/apps"
+            className="group text-emerald-400 hover:text-emerald-300 flex items-center gap-2 text-sm font-mono uppercase tracking-widest mb-4 transition-colors"
+          >
+            <ArrowLeftIcon className="text-lg transition-transform group-hover:-translate-x-1" />
+            <span>Apps directory</span>
+          </Link>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <BreadcrumbTitle
+              title="Pattern Generator"
+              slug="pat"
+              variant="brutalist"
+            />
+            <div className="flex gap-3">
+              <button
+                onClick={regenerate}
+                className="px-4 py-3 bg-white text-black font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-emerald-400 transition-colors flex items-center gap-2"
+                title="Regenerate Pattern"
+              >
+                <ArrowsClockwiseIcon size={18} weight="bold" />
+                <span className="hidden md:inline">Regen</span>
+              </button>
+              <button
+                onClick={handleDownloadSvg}
+                className="px-4 py-3 border border-white/20 text-white font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-white hover:text-black transition-colors flex items-center gap-2"
+                title="Download SVG"
+              >
+                <DownloadSimpleIcon size={18} weight="bold" />
+                <span className="hidden md:inline">SVG (4K)</span>
+              </button>
+              <button
+                onClick={() => handleDownloadPng(null, null, '4K')}
+                className="px-4 py-3 border border-white/20 text-white font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-white hover:text-black transition-colors flex items-center gap-2"
+                title="Download PNG (4K)"
+              >
+                <ImageSquareIcon size={18} weight="bold" />
+                <span className="hidden md:inline">PNG (4K)</span>
+              </button>
+              <button
+                onClick={handleDownloadPng1080p}
+                className="px-4 py-3 border border-white/20 text-white font-bold font-mono uppercase tracking-widest text-[10px] hover:bg-white hover:text-black transition-colors flex items-center gap-2"
+                title="Download PNG (1080p)"
+              >
+                <ImageSquareIcon size={18} weight="bold" />
+                <span className="hidden md:inline">PNG (1080p)</span>
+              </button>
             </div>
-         </header>
+          </div>
+        </header>
 
-         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 flex-grow">
-            {/* Sidebar Controls */}
-            <div className="lg:col-span-1 space-y-8">
-                {/* Dimensions */}
-                <div className="bg-[#1a1a1a] p-6 border border-white/5 space-y-6">
-                    <h3 className="font-mono text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                         <FrameCornersIcon weight="fill" className="text-emerald-500"/>
-                         Canvas Setup
-                    </h3>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 flex-grow">
+          {/* Sidebar Controls */}
+          <div className="lg:col-span-1 space-y-8">
+            {/* Dimensions */}
+            <div className="bg-[#1a1a1a] p-6 border border-white/5 space-y-6">
+              <h3 className="font-mono text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                <FrameCornersIcon weight="fill" className="text-emerald-500" />
+                Canvas Setup
+              </h3>
 
-                    <CustomDropdown
-                        options={PATTERN_TYPES}
-                        value={patternType}
-                        onChange={setPatternType}
-                        label="Pattern Style"
-                        icon={ShapesIcon}
-                        variant="brutalist"
-                        fullWidth
-                    />
+              <CustomDropdown
+                options={PATTERN_TYPES}
+                value={patternType}
+                onChange={setPatternType}
+                label="Pattern Style"
+                icon={ShapesIcon}
+                variant="brutalist"
+                fullWidth
+              />
 
-                    <CustomDropdown
-                        options={ASPECT_OPTIONS}
-                        value={aspectRatio}
-                        onChange={setAspectRatio}
-                        label="Aspect Ratio"
-                        variant="brutalist"
-                        fullWidth
-                    />
+              <CustomDropdown
+                options={ASPECT_OPTIONS}
+                value={aspectRatio}
+                onChange={setAspectRatio}
+                label="Aspect Ratio"
+                variant="brutalist"
+                fullWidth
+              />
 
-                    <div>
-                        <CustomSlider
-                            label="Grid Density"
-                            value={density}
-                            min={4}
-                            max={40}
-                            step={2}
-                            onChange={(val) => setDensity(val)}
-                        />
-                         <p className="text-[10px] text-gray-600 font-mono uppercase mt-2 text-right">
-                            {gridCols} Cols x {gridRows} Rows
-                        </p>
-                    </div>
-                </div>
-
-                {/* Palette Control */}
-                <div className="bg-[#1a1a1a] p-6 border border-white/5">
-                    <div className="flex items-center justify-between mb-4">
-                        <h3 className="font-mono text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
-                            <PaletteIcon weight="fill" className="text-emerald-500"/>
-                            Color Palette
-                        </h3>
-                        <button
-                            onClick={randomizePalette}
-                            className="p-2 hover:bg-white/5 rounded-full transition-colors text-emerald-400"
-                            title="Random Palette"
-                        >
-                            <ShuffleIcon size={16} weight="bold" />
-                        </button>
-                    </div>
-
-                    <div className="space-y-3">
-                        {palette.map((color, i) => (
-                            <CustomColorPicker
-                                key={i}
-                                value={color}
-                                onChange={(newColor) => updateColor(i, newColor)}
-                                label={`Color ${i + 1}`}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                 <div className="bg-emerald-900/10 border border-emerald-500/20 p-4">
-                    <p className="text-[10px] text-emerald-500 font-mono leading-relaxed">
-                        NOTE:
-                        Output is rendered at {targetRes.w}x{targetRes.h}px (4K).
-                        Patterns are vector-based and infinitely scalable.
-                    </p>
-                </div>
+              <div>
+                <CustomSlider
+                  label="Grid Density"
+                  value={density}
+                  min={4}
+                  max={40}
+                  step={2}
+                  onChange={(val) => setDensity(val)}
+                />
+                <p className="text-[10px] text-gray-600 font-mono uppercase mt-2 text-right">
+                  {gridCols} Cols x {gridRows} Rows
+                </p>
+              </div>
             </div>
 
-            {/* Preview Area */}
-            <div className="lg:col-span-3 bg-[#0a0a0a] border border-white/10 flex items-center justify-center p-8 overflow-hidden min-h-[500px]">
-                <div className="relative shadow-2xl shadow-black max-w-full max-h-[70vh] flex">
-                     <svg
-                        ref={svgRef}
-                        width={targetRes.w}
-                        height={targetRes.h}
-                        viewBox={`0 0 ${targetRes.w} ${targetRes.h}`}
-                        className="w-full h-full object-contain"
-                        style={{
-                            maxHeight: '70vh',
-                            maxWidth: '100%',
-                            aspectRatio: `${targetRes.w}/${targetRes.h}`
-                        }}
-                     >
-                        {patternData.map((row, rIndex) =>
-                            row.map((cell, cIndex) =>
-                                renderCellDispatch(cell, rIndex, cIndex)
-                            )
-                        )}
-                     </svg>
-                </div>
+            {/* Palette Control */}
+            <div className="bg-[#1a1a1a] p-6 border border-white/5">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="font-mono text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center gap-2">
+                  <PaletteIcon weight="fill" className="text-emerald-500" />
+                  Color Palette
+                </h3>
+                <button
+                  onClick={randomizePalette}
+                  className="p-2 hover:bg-white/5 rounded-full transition-colors text-emerald-400"
+                  title="Random Palette"
+                >
+                  <ShuffleIcon size={16} weight="bold" />
+                </button>
+              </div>
+
+              <div className="space-y-3">
+                {palette.map((color, i) => (
+                  <CustomColorPicker
+                    key={i}
+                    value={color}
+                    onChange={(newColor) => updateColor(i, newColor)}
+                    label={`Color ${i + 1}`}
+                  />
+                ))}
+              </div>
             </div>
-         </div>
-       </div>
+
+            <div className="bg-emerald-900/10 border border-emerald-500/20 p-4">
+              <p className="text-[10px] text-emerald-500 font-mono leading-relaxed">
+                NOTE: Output is rendered at {targetRes.w}x{targetRes.h}px (4K).
+                Patterns are vector-based and infinitely scalable.
+              </p>
+            </div>
+          </div>
+
+          {/* Preview Area */}
+          <div className="lg:col-span-3 bg-[#0a0a0a] border border-white/10 flex items-center justify-center p-8 overflow-hidden min-h-[500px]">
+            <div className="relative shadow-2xl shadow-black max-w-full max-h-[70vh] flex">
+              <svg
+                ref={svgRef}
+                width={targetRes.w}
+                height={targetRes.h}
+                viewBox={`0 0 ${targetRes.w} ${targetRes.h}`}
+                className="w-full h-full object-contain"
+                style={{
+                  maxHeight: '70vh',
+                  maxWidth: '100%',
+                  aspectRatio: `${targetRes.w}/${targetRes.h}`,
+                }}
+              >
+                {patternData.map((row, rIndex) =>
+                  row.map((cell, cIndex) =>
+                    renderCellDispatch(cell, rIndex, cIndex),
+                  ),
+                )}
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

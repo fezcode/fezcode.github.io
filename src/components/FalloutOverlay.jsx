@@ -15,7 +15,7 @@ const VARIANTS = {
     glitchShadow2: '#ff0000',
     primary: '#10b981',
     tint: 'sepia(100%) hue-rotate(70deg) saturate(300%)', // Fallback filter
-  }
+  },
 };
 
 const FalloutOverlay = () => {
@@ -81,40 +81,33 @@ const FalloutOverlay = () => {
         }
       `}</style>
 
-            {/* HUD Overlays */}
+      {/* HUD Overlays */}
 
-            <div className="fallout-overlay">
+      <div className="fallout-overlay">
+        {/* Noise */}
 
-              {/* Noise */}
+        {isFalloutNoiseEnabled && (
+          <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        )}
 
-              {isFalloutNoiseEnabled && (
+        {/* Scanlines */}
 
-                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
+        {isFalloutScanlinesEnabled && (
+          <div
+            className={`absolute inset-0 bg-gradient-to-b from-transparent ${currentTheme.decoration} to-transparent bg-[length:100%_4px] animate-scanline`}
+          ></div>
+        )}
 
-              )}
+        {/* Vignette */}
 
-              {/* Scanlines */}
+        {isFalloutVignetteEnabled && (
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.6)_100%)]"></div>
+        )}
 
-              {isFalloutScanlinesEnabled && (
+        {/* CRT Tint (Subtle global tint if needed, though CSS color override handles most) */}
 
-                <div className={`absolute inset-0 bg-gradient-to-b from-transparent ${currentTheme.decoration} to-transparent bg-[length:100%_4px] animate-scanline`}></div>
-
-              )}
-
-              {/* Vignette */}
-
-              {isFalloutVignetteEnabled && (
-
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_50%,rgba(0,0,0,0.6)_100%)]"></div>
-
-              )}
-
-              {/* CRT Tint (Subtle global tint if needed, though CSS color override handles most) */}
-
-              <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
-
-            </div>
-
+        <div className="absolute inset-0 bg-black/10 mix-blend-overlay"></div>
+      </div>
     </>
   );
 };

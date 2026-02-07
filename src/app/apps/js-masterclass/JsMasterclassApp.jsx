@@ -6,8 +6,14 @@ import { useToast } from '../../../hooks/useToast';
 
 const JsMasterclassApp = () => {
   const [course, setCourse] = useState(null);
-  const [currentLessonId, setCurrentLessonId] = usePersistentState('js-masterclass-last-lesson', null);
-  const [completedLessons, setCompletedLessons] = usePersistentState('js-masterclass-completed', []);
+  const [currentLessonId, setCurrentLessonId] = usePersistentState(
+    'js-masterclass-last-lesson',
+    null,
+  );
+  const [completedLessons, setCompletedLessons] = usePersistentState(
+    'js-masterclass-completed',
+    [],
+  );
   const { addToast } = useToast();
 
   useEffect(() => {
@@ -15,7 +21,7 @@ const JsMasterclassApp = () => {
     fetch('/apps/js-masterclass/course.json')
       .then((res) => {
         if (!res.ok) {
-            throw new Error(`HTTP error! status: ${res.status}`);
+          throw new Error(`HTTP error! status: ${res.status}`);
         }
         return res.json();
       })
@@ -26,23 +32,31 @@ const JsMasterclassApp = () => {
         // Validation Logic
         let isValidLesson = false;
         if (currentLessonId) {
-            // Check if the saved ID actually exists in the new data
-            for (const module of data.modules) {
-                if (module.lessons.find(l => l.id === currentLessonId)) {
-                    isValidLesson = true;
-                    break;
-                }
+          // Check if the saved ID actually exists in the new data
+          for (const module of data.modules) {
+            if (module.lessons.find((l) => l.id === currentLessonId)) {
+              isValidLesson = true;
+              break;
             }
+          }
         }
 
-        if (!isValidLesson && data.modules.length > 0 && data.modules[0].lessons.length > 0) {
-            console.log('Invalid or missing lesson ID, resetting to start.');
-            setCurrentLessonId(data.modules[0].lessons[0].id);
+        if (
+          !isValidLesson &&
+          data.modules.length > 0 &&
+          data.modules[0].lessons.length > 0
+        ) {
+          console.log('Invalid or missing lesson ID, resetting to start.');
+          setCurrentLessonId(data.modules[0].lessons[0].id);
         }
       })
       .catch((err) => {
-          console.error('Failed to load course:', err);
-          addToast({ title: 'SYSTEM_ERROR', message: 'FAILED_TO_LOAD_DATA_STREAM', type: 'error' });
+        console.error('Failed to load course:', err);
+        addToast({
+          title: 'SYSTEM_ERROR',
+          message: 'FAILED_TO_LOAD_DATA_STREAM',
+          type: 'error',
+        });
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); // Empty dependency array to run only once on mount
@@ -67,13 +81,17 @@ const JsMasterclassApp = () => {
 
   const handleResetCourse = () => {
     setCompletedLessons([]);
-    if (course && course.modules.length > 0 && course.modules[0].lessons.length > 0) {
-        setCurrentLessonId(course.modules[0].lessons[0].id);
+    if (
+      course &&
+      course.modules.length > 0 &&
+      course.modules[0].lessons.length > 0
+    ) {
+      setCurrentLessonId(course.modules[0].lessons[0].id);
     }
     addToast({
-        title: 'SYSTEM_RESET',
-        message: 'PROTOCOL_PROGRESS_WIPED',
-        type: 'techno',
+      title: 'SYSTEM_RESET',
+      message: 'PROTOCOL_PROGRESS_WIPED',
+      type: 'techno',
     });
   };
 
@@ -81,7 +99,7 @@ const JsMasterclassApp = () => {
   const getCurrentLesson = () => {
     if (!course || !currentLessonId) return null;
     for (const module of course.modules) {
-      const lesson = module.lessons.find(l => l.id === currentLessonId);
+      const lesson = module.lessons.find((l) => l.id === currentLessonId);
       if (lesson) return lesson;
     }
     return null;
@@ -98,8 +116,8 @@ const JsMasterclassApp = () => {
       />
       <main className="flex-grow overflow-y-auto bg-[#050505] p-8 md:p-16 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
         <LessonView
-            lesson={getCurrentLesson()}
-            onComplete={handleLessonComplete}
+          lesson={getCurrentLesson()}
+          onComplete={handleLessonComplete}
         />
       </main>
     </div>

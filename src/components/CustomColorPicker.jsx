@@ -18,7 +18,9 @@ const PRESET_COLORS = [
 ];
 
 const hexToHsv = (hex) => {
-  let r = 0, g = 0, b = 0;
+  let r = 0,
+    g = 0,
+    b = 0;
   if (hex.length === 4) {
     r = parseInt(hex[1] + hex[1], 16);
     g = parseInt(hex[2] + hex[2], 16);
@@ -29,9 +31,14 @@ const hexToHsv = (hex) => {
     b = parseInt(hex.substring(5, 7), 16);
   }
 
-  r /= 255; g /= 255; b /= 255;
-  const max = Math.max(r, g, b), min = Math.min(r, g, b);
-  let h, s, v = max;
+  r /= 255;
+  g /= 255;
+  b /= 255;
+  const max = Math.max(r, g, b),
+    min = Math.min(r, g, b);
+  let h,
+    s,
+    v = max;
   const d = max - min;
   s = max === 0 ? 0 : d / max;
 
@@ -39,10 +46,17 @@ const hexToHsv = (hex) => {
     h = 0;
   } else {
     switch (max) {
-      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-      case g: h = (b - r) / d + 2; break;
-      case b: h = (r - g) / d + 4; break;
-      default: break;
+      case r:
+        h = (g - b) / d + (g < b ? 6 : 0);
+        break;
+      case g:
+        h = (b - r) / d + 2;
+        break;
+      case b:
+        h = (r - g) / d + 4;
+        break;
+      default:
+        break;
     }
     h /= 6;
   }
@@ -57,15 +71,43 @@ const hsvToHex = (h, s, v) => {
   const q = v * (1 - f * s);
   const t = v * (1 - (1 - f) * s);
   switch (i % 6) {
-    case 0: r = v; g = t; b = p; break;
-    case 1: r = q; g = v; b = p; break;
-    case 2: r = p; g = v; b = t; break;
-    case 3: r = p; g = q; b = v; break;
-    case 4: r = t; g = p; b = v; break;
-    case 5: r = v; g = p; b = q; break;
-    default: break;
+    case 0:
+      r = v;
+      g = t;
+      b = p;
+      break;
+    case 1:
+      r = q;
+      g = v;
+      b = p;
+      break;
+    case 2:
+      r = p;
+      g = v;
+      b = t;
+      break;
+    case 3:
+      r = p;
+      g = q;
+      b = v;
+      break;
+    case 4:
+      r = t;
+      g = p;
+      b = v;
+      break;
+    case 5:
+      r = v;
+      g = p;
+      b = q;
+      break;
+    default:
+      break;
   }
-  const toHex = (x) => Math.round(x * 255).toString(16).padStart(2, '0');
+  const toHex = (x) =>
+    Math.round(x * 255)
+      .toString(16)
+      .padStart(2, '0');
   return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
 };
 
@@ -90,7 +132,10 @@ const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (containerRef.current && !containerRef.current.contains(event.target)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target)
+      ) {
         setIsOpen(false);
       }
     };
@@ -148,7 +193,9 @@ const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
         <button
           onClick={() => setIsOpen(!isOpen)}
           className={`w-full flex items-center gap-3 p-2 bg-black/40 border transition-all rounded-sm group ${
-            isBrutalist ? 'border-white/20 hover:border-emerald-500/50' : 'border-white/10 hover:border-white/30'
+            isBrutalist
+              ? 'border-white/20 hover:border-emerald-500/50'
+              : 'border-white/10 hover:border-white/30'
           }`}
         >
           <div
@@ -158,7 +205,10 @@ const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
           <span className="font-mono text-[10px] uppercase tracking-widest text-gray-400 group-hover:text-white transition-colors">
             {value.toUpperCase()}
           </span>
-          <EyedropperIcon className="ml-auto text-gray-600 group-hover:text-emerald-500 transition-colors" size={14} />
+          <EyedropperIcon
+            className="ml-auto text-gray-600 group-hover:text-emerald-500 transition-colors"
+            size={14}
+          />
         </button>
 
         <AnimatePresence>
@@ -173,7 +223,10 @@ const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
                 <span className="font-mono text-[9px] font-bold text-emerald-500 uppercase tracking-widest">
                   Color_Matrix
                 </span>
-                <button onClick={() => setIsOpen(false)} className="text-gray-600 hover:text-white">
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-gray-600 hover:text-white"
+                >
                   <XIcon size={12} />
                 </button>
               </div>
@@ -189,7 +242,10 @@ const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
                 <div
                   className="absolute w-3 h-3 border-2 border-white rounded-full -translate-x-1/2 -translate-y-1/2 shadow-[0_0_5px_rgba(0,0,0,0.5)] pointer-events-none"
-                  style={{ left: `${hsv.s * 100}%`, top: `${(1 - hsv.v) * 100}%` }}
+                  style={{
+                    left: `${hsv.s * 100}%`,
+                    top: `${(1 - hsv.v) * 100}%`,
+                  }}
                 />
               </div>
 
@@ -198,7 +254,10 @@ const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
                 ref={hueRef}
                 onMouseDown={handleHueMouseDown}
                 className="relative w-full h-4 mb-6 cursor-pointer rounded-sm border border-white/10"
-                style={{ background: 'linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%)' }}
+                style={{
+                  background:
+                    'linear-gradient(to right, #ff0000 0%, #ffff00 17%, #00ff00 33%, #00ffff 50%, #0000ff 67%, #ff00ff 83%, #ff0000 100%)',
+                }}
               >
                 <div
                   className="absolute top-0 bottom-0 w-1.5 bg-white border border-black/40 -translate-x-1/2 shadow-md pointer-events-none"
@@ -234,17 +293,24 @@ const CustomColorPicker = ({ value, onChange, label, variant = 'default' }) => {
                       setInputValue(val);
 
                       let hex = val;
-                      if (!hex.startsWith('#') && hex.length > 0) hex = '#' + hex;
+                      if (!hex.startsWith('#') && hex.length > 0)
+                        hex = '#' + hex;
 
                       // Validate 3, 4, 6, or 8 digit hex
-                      if (/^#([0-9A-F]{3}){1,2}$/i.test(hex) || /^#([0-9A-F]{4}){1,2}$/i.test(hex)) {
+                      if (
+                        /^#([0-9A-F]{3}){1,2}$/i.test(hex) ||
+                        /^#([0-9A-F]{4}){1,2}$/i.test(hex)
+                      ) {
                         onChange(hex);
                       }
                     }}
                     onBlur={() => setInputValue(value)}
                     className="w-full bg-transparent font-mono text-[10px] text-white outline-none uppercase tracking-widest"
                   />
-                  <div className="w-4 h-4 rounded-sm border border-white/10 shrink-0" style={{ backgroundColor: value }} />
+                  <div
+                    className="w-4 h-4 rounded-sm border border-white/10 shrink-0"
+                    style={{ backgroundColor: value }}
+                  />
                 </div>
               </div>
             </motion.div>

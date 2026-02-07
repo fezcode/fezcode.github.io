@@ -99,7 +99,9 @@ const RoadmapCard = ({ app, index }) => {
           {app.notes && (
             <div className="relative z-10 mt-6 pt-4 border-t border-white/5">
               <p className="text-[10px] font-mono text-gray-600 line-clamp-1 uppercase tracking-widest">
-                <span className="text-emerald-500/50 font-black mr-2">LOG:</span>
+                <span className="text-emerald-500/50 font-black mr-2">
+                  LOG:
+                </span>
                 {app.notes}
               </p>
             </div>

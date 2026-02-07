@@ -1,5 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   CopySimpleIcon,
@@ -9,9 +9,9 @@ import {
   EyeIcon,
   ClipboardIcon,
 } from '@phosphor-icons/react';
-import {motion, AnimatePresence} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import CustomDropdown from '../../components/CustomDropdown';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -112,8 +112,10 @@ const excuses = {
 const ExcuseGeneratorPage = () => {
   const appName = 'Excuse Generator';
 
-  const {addToast} = useContext(ToastContext);
-  const [currentExcuse, setCurrentExcuse] = useState('SYSTEM_IDLE: Awaiting generation sequence.');
+  const { addToast } = useContext(ToastContext);
+  const [currentExcuse, setCurrentExcuse] = useState(
+    'SYSTEM_IDLE: Awaiting generation sequence.',
+  );
   const [selectedCategory, setSelectedCategory] = useState('general');
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -124,7 +126,7 @@ const ExcuseGeneratorPage = () => {
       const randomIndex = Math.floor(Math.random() * categoryExcuses.length);
       setCurrentExcuse(categoryExcuses[randomIndex]);
       setIsGenerating(false);
-      addToast({message: 'LOGIC_BYPASS_SUCCESSFUL', type: 'success'});
+      addToast({ message: 'LOGIC_BYPASS_SUCCESSFUL', type: 'success' });
     }, 400);
   };
 
@@ -132,11 +134,11 @@ const ExcuseGeneratorPage = () => {
     navigator.clipboard
       .writeText(currentExcuse)
       .then(() => {
-        addToast({message: 'PAYLOAD_COPIED_TO_CLIPBOARD', type: 'info'});
+        addToast({ message: 'PAYLOAD_COPIED_TO_CLIPBOARD', type: 'info' });
       })
       .catch((err) => {
         console.error('Failed to copy: ', err);
-        addToast({message: 'CLIPBOARD_ACCESS_DENIED', type: 'error'});
+        addToast({ message: 'CLIPBOARD_ACCESS_DENIED', type: 'error' });
       });
   };
 
@@ -145,7 +147,14 @@ const ExcuseGeneratorPage = () => {
       <Seo
         title="Excuse Generator | Fezcodex"
         description="Generate funny and absurd excuses for any situation in a brutalist workspace."
-        keywords={['Fezcodex', 'excuse generator', 'funny excuses', 'absurd excuses', 'humor', 'brutalist']}
+        keywords={[
+          'Fezcodex',
+          'excuse generator',
+          'funny excuses',
+          'absurd excuses',
+          'humor',
+          'brutalist',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -154,7 +163,7 @@ const ExcuseGeneratorPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
           <BreadcrumbTitle title={appName} slug="excuse" variant="brutalist" />
@@ -163,8 +172,10 @@ const ExcuseGeneratorPage = () => {
             <div>
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
                 Automated responsibility avoidance engine. Synthesize{' '}
-                <span className="text-emerald-400 font-bold">absurd justifications</span>{' '}
-                 for any systemic failure.
+                <span className="text-emerald-400 font-bold">
+                  absurd justifications
+                </span>{' '}
+                for any systemic failure.
               </p>
             </div>
 
@@ -173,13 +184,17 @@ const ExcuseGeneratorPage = () => {
                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">
                   Category
                 </span>
-                <span className="text-3xl font-black text-emerald-500 uppercase">{selectedCategory}</span>
+                <span className="text-3xl font-black text-emerald-500 uppercase">
+                  {selectedCategory}
+                </span>
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">
                   Engine_State
                 </span>
-                <span className={`text-3xl font-black ${isGenerating ? 'text-white' : 'text-emerald-500'}`}>
+                <span
+                  className={`text-3xl font-black ${isGenerating ? 'text-white' : 'text-emerald-500'}`}
+                >
                   {isGenerating ? 'SYNTHESIZING' : 'STABLE'}
                 </span>
               </div>
@@ -190,17 +205,14 @@ const ExcuseGeneratorPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Controls Column */}
           <div className="lg:col-span-5 space-y-8">
-            <div
-              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div
-                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
-              <h3
-                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
-                <GearSixIcon weight="fill"/>
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <GearSixIcon weight="fill" />
                 Synthesis_Parameters
               </h3>
 
@@ -227,14 +239,14 @@ const ExcuseGeneratorPage = () => {
                     disabled={isGenerating}
                     className="flex-1 py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-xs flex items-center justify-center gap-3"
                   >
-                    <DiceFiveIcon weight="bold" size={18}/>
+                    <DiceFiveIcon weight="bold" size={18} />
                     Generate
                   </button>
                   <button
                     onClick={copyToClipboard}
                     className="flex-1 py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3"
                   >
-                    <CopySimpleIcon weight="bold" size={16}/>
+                    <CopySimpleIcon weight="bold" size={16} />
                     Copy_String
                   </button>
                 </div>
@@ -243,22 +255,23 @@ const ExcuseGeneratorPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <MaskHappyIcon size={20} weight="bold"/>
+                <MaskHappyIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Ethical_Override
                 </h4>
               </div>
               <p className="text-xs font-mono text-gray-500 uppercase tracking-wider leading-relaxed">
-                This utility provides non-linear explanations for temporal discrepancies. Use with extreme caution in high-stakes social environments.
+                This utility provides non-linear explanations for temporal
+                discrepancies. Use with extreme caution in high-stakes social
+                environments.
               </p>
             </div>
           </div>
 
           {/* Output Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h3
-              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <EyeIcon weight="fill" className="text-emerald-500"/>
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500" />
               Generated_Output
             </h3>
 
@@ -266,10 +279,10 @@ const ExcuseGeneratorPage = () => {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentExcuse}
-                  initial={{opacity: 0, y: 10}}
-                  animate={{opacity: 1, y: 0}}
-                  exit={{opacity: 0, y: -10}}
-                  transition={{duration: 0.2}}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.2 }}
                   className="w-full text-center space-y-8"
                 >
                   <div className="h-px w-12 bg-emerald-500 mx-auto" />
@@ -281,7 +294,9 @@ const ExcuseGeneratorPage = () => {
               </AnimatePresence>
 
               <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center opacity-20 font-mono text-[8px] uppercase tracking-[0.5em] text-gray-500">
-                <span className="flex items-center gap-2"><ClipboardIcon /> LOCAL_BUFFER_SYNCED</span>
+                <span className="flex items-center gap-2">
+                  <ClipboardIcon /> LOCAL_BUFFER_SYNCED
+                </span>
                 <span>EG_v1.2.0</span>
               </div>
             </div>

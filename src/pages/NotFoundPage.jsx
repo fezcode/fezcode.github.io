@@ -48,13 +48,15 @@ const NotFoundPage = () => {
 
         <div className="space-y-4 mb-12 text-sm md:text-base text-gray-400">
           <p className="uppercase tracking-wider">
-            &gt; Querying database... <span className="text-red-500">FAILED</span>
+            &gt; Querying database...{' '}
+            <span className="text-red-500">FAILED</span>
           </p>
           <p className="uppercase tracking-wider">
             &gt; Locating asset... <span className="text-red-500">NULL</span>
           </p>
           <p className="uppercase tracking-wider">
-            &gt; Diagnostic: The requested URL endpoint does not exist in the current spacetime coordinate system.
+            &gt; Diagnostic: The requested URL endpoint does not exist in the
+            current spacetime coordinate system.
           </p>
         </div>
 

@@ -1,85 +1,94 @@
 export const japanese = (ctx, width, height, scale, data) => {
-    const { primaryColor, secondaryColor, repoOwner, repoName, language, stars, forks, supportUrl } = data;
-    // JAPANESE POP Style
+  const {
+    primaryColor,
+    secondaryColor,
+    repoOwner,
+    repoName,
+    language,
+    stars,
+    forks,
+    supportUrl,
+  } = data;
+  // JAPANESE POP Style
 
-    // Dynamic background pattern (Halftone / Stripes)                    ctx.fillStyle = secondaryColor; // Bg base
-    ctx.fillStyle = secondaryColor;
+  // Dynamic background pattern (Halftone / Stripes)                    ctx.fillStyle = secondaryColor; // Bg base
+  ctx.fillStyle = secondaryColor;
+  ctx.fillRect(0, 0, width, height);
+
+  // Sunburst or Stripes
+  ctx.save();
+  ctx.translate(width / 2, height / 2);
+  ctx.fillStyle = primaryColor;
+  for (let i = 0; i < 12; i++) {
+    ctx.rotate(Math.PI / 6);
     ctx.fillRect(0, 0, width, height);
+  }
+  ctx.restore();
 
-    // Sunburst or Stripes
+  // Center Circle (Sun)
+  ctx.beginPath();
+  ctx.arc(width / 2, height / 2, 300 * scale, 0, Math.PI * 2);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+
+  // Text
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+
+  // Repo Name (Bold, Stroke)
+  ctx.font = `900 ${120 * scale}px "Arial Black", sans-serif`;
+  ctx.fillStyle = '#000';
+  ctx.strokeStyle = '#fff';
+  ctx.lineWidth = 8 * scale;
+
+  ctx.strokeText(repoName.toUpperCase(), width / 2, height / 2);
+  ctx.fillText(repoName.toUpperCase(), width / 2, height / 2);
+
+  // Vertical Text (Decorations)
+  const fontStack = '"Arial", sans-serif';
+  ctx.fillStyle = '#fff';
+  ctx.font = `bold ${40 * scale}px ${fontStack}`;
+
+  const drawVert = (text, x, y) => {
     ctx.save();
-    ctx.translate(width/2, height/2);
-    ctx.fillStyle = primaryColor;
-    for (let i = 0; i < 12; i++) {
-            ctx.rotate(Math.PI / 6);
-            ctx.fillRect(0, 0, width, height);
+    ctx.translate(x, y);
+    for (let i = 0; i < text.length; i++) {
+      ctx.fillText(text[i], 0, i * 40 * scale);
     }
     ctx.restore();
+  };
 
-    // Center Circle (Sun)
+  drawVert(repoOwner.toUpperCase(), 60 * scale, 60 * scale);
+  drawVert(language.toUpperCase(), width - 60 * scale, 60 * scale);
+
+  // Stats in Floating Bubbles
+  const drawBubble = (text, x, y, color) => {
     ctx.beginPath();
-    ctx.arc(width/2, height/2, 300 * scale, 0, Math.PI * 2);
-    ctx.fillStyle = '#ffffff';
+    ctx.arc(x, y, 60 * scale, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.strokeStyle = '#000';
+    ctx.lineWidth = 4 * scale;
     ctx.fill();
+    ctx.stroke();
 
-    // Text
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-
-    // Repo Name (Bold, Stroke)
-    ctx.font = `900 ${120 * scale}px "Arial Black", sans-serif`;
     ctx.fillStyle = '#000';
-    ctx.strokeStyle = '#fff';
-    ctx.lineWidth = 8 * scale;
+    ctx.font = `bold ${20 * scale}px ${fontStack}`;
+    ctx.fillText(text, x, y);
+  };
 
-    ctx.strokeText(repoName.toUpperCase(), width/2, height/2);
-    ctx.fillText(repoName.toUpperCase(), width/2, height/2);
+  if (stars) drawBubble(`★ ${stars}`, width * 0.2, height * 0.8, '#ffe600');
+  if (forks) drawBubble(`⑂ ${forks}`, width * 0.8, height * 0.8, '#0099ff');
 
-    // Vertical Text (Decorations)
-    const fontStack = '"Arial", sans-serif';
+  // Support URL (Sticker style)
+  if (supportUrl) {
+    ctx.save();
+    ctx.translate(width / 2, height - 60 * scale);
+    ctx.rotate(-0.05);
+    ctx.fillStyle = '#000';
+    ctx.fillRect(-200 * scale, -30 * scale, 400 * scale, 60 * scale);
     ctx.fillStyle = '#fff';
-    ctx.font = `bold ${40 * scale}px ${fontStack}`;
-
-    const drawVert = (text, x, y) => {
-        ctx.save();
-        ctx.translate(x, y);
-        for (let i = 0; i < text.length; i++) {
-            ctx.fillText(text[i], 0, i * 40 * scale);
-        }
-        ctx.restore();
-    };
-
-    drawVert(repoOwner.toUpperCase(), 60 * scale, 60 * scale);
-    drawVert(language.toUpperCase(), width - 60 * scale, 60 * scale);
-
-    // Stats in Floating Bubbles
-    const drawBubble = (text, x, y, color) => {
-            ctx.beginPath();
-            ctx.arc(x, y, 60 * scale, 0, Math.PI * 2);
-            ctx.fillStyle = color;
-            ctx.strokeStyle = '#000';
-            ctx.lineWidth = 4 * scale;
-            ctx.fill();
-            ctx.stroke();
-
-            ctx.fillStyle = '#000';
-            ctx.font = `bold ${20 * scale}px ${fontStack}`;
-            ctx.fillText(text, x, y);
-    };
-
-    if (stars) drawBubble(`★ ${stars}`, width * 0.2, height * 0.8, '#ffe600');
-    if (forks) drawBubble(`⑂ ${forks}`, width * 0.8, height * 0.8, '#0099ff');
-
-    // Support URL (Sticker style)
-    if (supportUrl) {
-        ctx.save();
-        ctx.translate(width/2, height - 60 * scale);
-        ctx.rotate(-0.05);
-        ctx.fillStyle = '#000';
-        ctx.fillRect(-200 * scale, -30 * scale, 400 * scale, 60 * scale);
-        ctx.fillStyle = '#fff';
-        ctx.font = `bold ${24 * scale}px ${fontStack}`;
-        ctx.fillText(supportUrl, 0, 0);
-        ctx.restore();
-    }
+    ctx.font = `bold ${24 * scale}px ${fontStack}`;
+    ctx.fillText(supportUrl, 0, 0);
+    ctx.restore();
+  }
 };

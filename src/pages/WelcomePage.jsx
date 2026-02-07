@@ -32,7 +32,9 @@ const OptionCard = ({ title, icon: Icon, children, delay }) => (
         <div className="p-2 border border-white/10 text-emerald-500">
           <Icon size={20} weight="bold" />
         </div>
-        <h3 className="font-mono text-[10px] text-gray-500 uppercase tracking-[0.3em]">{title}</h3>
+        <h3 className="font-mono text-[10px] text-gray-500 uppercase tracking-[0.3em]">
+          {title}
+        </h3>
       </div>
     </div>
     <div className="relative z-10">{children}</div>
@@ -67,164 +69,160 @@ const WelcomePage = () => {
         title="Initialize | Fezcodex"
         description="Setup your Fezcodex experience."
       />
-      <div className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay" style={{ backgroundImage: NOISE_BG }} />
+      <div
+        className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay"
+        style={{ backgroundImage: NOISE_BG }}
+      />
 
       {/* Hero Section */}
       <div className="relative h-[45vh] w-full overflow-hidden border-b border-white/10">
-        <GenerativeArt seed="Welcome Initialisation" className="w-full h-full opacity-40 filter brightness-50" />
+        <GenerativeArt
+          seed="Welcome Initialisation"
+          className="w-full h-full opacity-40 filter brightness-50"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
 
-                <div className="absolute bottom-0 left-0 w-full px-6 pb-12 md:px-12">
-                    <div className="mb-6 flex items-center gap-4">
-                        <div className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm flex items-center gap-2">
-                           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                           Initial Setup
-                        </div>
-                    </div>
+        <div className="absolute bottom-0 left-0 w-full px-6 pb-12 md:px-12">
+          <div className="mb-6 flex items-center gap-4">
+            <div className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+              Initial Setup
+            </div>
+          </div>
 
-                    <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl">
-                        Hello, <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">Traveler.</span>
-                    </h1>
-                    <p className="mt-6 text-gray-400 font-mono text-sm max-w-xl uppercase tracking-widest">
-                       Personalize your experience before exploring the garden.
-                    </p>
-                </div>
-              </div>
+          <h1 className="text-5xl md:text-8xl font-black uppercase tracking-tighter text-white leading-none max-w-5xl">
+            Hello,{' '}
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/20">
+              Traveler.
+            </span>
+          </h1>
+          <p className="mt-6 text-gray-400 font-mono text-sm max-w-xl uppercase tracking-widest">
+            Personalize your experience before exploring the garden.
+          </p>
+        </div>
+      </div>
 
-              <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24">
+      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 md:gap-24">
+          {/* Configuration Grid */}
+          <div className="lg:col-span-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* 1. Reading Experience */}
+              <OptionCard title="Reading Mode" icon={Eyeglasses} delay={0.1}>
+                <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
+                  Choose how blog posts and logs are displayed.
+                </p>
+                <CustomDropdown
+                  label="Select Mode"
+                  variant="brutalist"
+                  options={[
+                    { label: 'Brutalist', value: 'brutalist' },
+                    { label: 'Editorial', value: 'editorial' },
+                    { label: 'Dossier', value: 'dossier' },
+                    { label: 'Terminal', value: 'terminal' },
+                  ]}
+                  value={blogPostViewMode}
+                  onChange={setBlogPostViewMode}
+                  className="w-full"
+                />
+              </OptionCard>
 
-                  {/* Configuration Grid */}
-                  <div className="lg:col-span-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      {/* 1. Reading Experience */}
-                      <OptionCard
-                        title="Reading Mode"
-                        icon={Eyeglasses}
-                        delay={0.1}
-                      >
-                        <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
-                          Choose how blog posts and logs are displayed.
-                        </p>
-                        <CustomDropdown
-                          label="Select Mode"
-                          variant="brutalist"
-                          options={[
-                            { label: 'Brutalist', value: 'brutalist' },
-                            { label: 'Editorial', value: 'editorial' },
-                            { label: 'Dossier', value: 'dossier' },
-                            { label: 'Terminal', value: 'terminal' },
-                          ]}
-                          value={blogPostViewMode}
-                          onChange={setBlogPostViewMode}
-                          className="w-full"
-                        />
-                      </OptionCard>
+              {/* 2. Gamification */}
+              <OptionCard
+                title="Achievements"
+                icon={GameController}
+                delay={0.2}
+              >
+                <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
+                  Enable milestone tracking and notifications.
+                </p>
+                <CustomToggle
+                  id="gamification-toggle"
+                  label={showAchievementToast ? 'Enabled' : 'Muted'}
+                  checked={showAchievementToast}
+                  onChange={toggleAchievementToast}
+                  colorTheme="green"
+                />
+              </OptionCard>
 
-                      {/* 2. Gamification */}
-                      <OptionCard
-                        title="Achievements"
-                        icon={GameController}
-                        delay={0.2}
-                      >
-                        <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
-                          Enable milestone tracking and notifications.
-                        </p>
-                        <CustomToggle
-                          id="gamification-toggle"
-                          label={
-                            showAchievementToast
-                              ? 'Enabled'
-                              : 'Muted'
-                          }
-                          checked={showAchievementToast}
-                          onChange={toggleAchievementToast}
-                          colorTheme="green"
-                        />
-                      </OptionCard>
+              {/* 3. Interface Theme */}
+              <OptionCard title="Interface Theme" icon={Palette} delay={0.3}>
+                <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
+                  Choose the core aesthetic for your journey.
+                </p>
+                <CustomDropdown
+                  label="Select Theme"
+                  variant="brutalist"
+                  options={[
+                    { label: 'Brutalist (Dark)', value: 'brutalist' },
+                    { label: 'Luxe (Refined)', value: 'luxe' },
+                  ]}
+                  value={fezcodexTheme}
+                  onChange={setFezcodexTheme}
+                  className="w-full"
+                />
+              </OptionCard>
 
-                      {/* 3. Interface Theme */}
-                      <OptionCard
-                        title="Interface Theme"
-                        icon={Palette}
-                        delay={0.3}
-                      >
-                        <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
-                          Choose the core aesthetic for your journey.
-                        </p>
-                        <CustomDropdown
-                          label="Select Theme"
-                          variant="brutalist"
-                          options={[
-                            { label: 'Brutalist (Dark)', value: 'brutalist' },
-                            { label: 'Luxe (Refined)', value: 'luxe' },
-                          ]}
-                          value={fezcodexTheme}
-                          onChange={setFezcodexTheme}
-                          className="w-full"
-                        />
-                      </OptionCard>
+              {/* 4. Visual Processing */}
+              <OptionCard title="Retro Effects" icon={Monitor} delay={0.4}>
+                <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
+                  Enable classic CRT scanlines and flicker.
+                </p>
+                <CustomToggle
+                  id="retro-toggle"
+                  label={isRetro ? 'Active' : 'Offline'}
+                  checked={isRetro}
+                  onChange={toggleRetro}
+                  colorTheme="green"
+                />
+              </OptionCard>
+            </div>
+          </div>
+          {/* Action Area */}
+          <div className="lg:col-span-4 flex flex-col gap-8">
+            <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
+              <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <Target weight="fill" className="text-emerald-500" />
+                Ready to Start
+              </h3>
 
-                      {/* 4. Visual Processing */}
-                      <OptionCard
-                        title="Retro Effects"
-                        icon={Monitor}
-                        delay={0.4}
-                      >
-                        <p className="text-xs font-mono text-gray-500 mb-6 h-8 uppercase leading-relaxed">
-                          Enable classic CRT scanlines and flicker.
-                        </p>
-                        <CustomToggle
-                          id="retro-toggle"
-                          label={isRetro ? 'Active' : 'Offline'}
-                          checked={isRetro}
-                          onChange={toggleRetro}
-                          colorTheme="green"
-                        />
-                      </OptionCard>
-                    </div>
-                  </div>
-
-                  {/* Action Area */}
-                  <div className="lg:col-span-4 flex flex-col gap-8">
-                    <div className="border border-white/10 bg-white/[0.02] p-8 rounded-sm">
-                       <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-8 flex items-center gap-2">
-                          <Target weight="fill" className="text-emerald-500" />
-                          Ready to Start
-                       </h3>
-
-                       <button
-                        onClick={handleFinish}
-                        className={`
+              <button
+                onClick={handleFinish}
+                className={`
                           group relative flex items-center justify-center gap-4 w-full py-6
                           bg-white text-black font-mono font-black text-sm tracking-[0.3em] uppercase
                           transition-all duration-300 rounded-sm
                           hover:bg-emerald-500 hover:text-black
                           ${isLaunching ? 'scale-95 opacity-80' : ''}
                         `}
-                      >
-                        <span>Enter Garden</span>
-                        <CaretRight weight="bold" size={20} className="group-hover:translate-x-1 transition-transform" />
-                      </button>
+              >
+                <span>Enter Garden</span>
+                <CaretRight
+                  weight="bold"
+                  size={20}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </button>
 
-                      <div className="mt-8 pt-8 border-t border-white/5 space-y-4">
-                         <div className="flex items-center gap-3 text-[10px] font-mono text-gray-600 uppercase tracking-widest">
-                            <Cpu size={14} />
-                            <span>Status: Verified</span>
-                         </div>
-                         <p className="text-[9px] text-gray-700 font-mono uppercase leading-relaxed tracking-wider">
-                            * You can change these settings anytime in the Settings menu.
-                         </p>
-                      </div>
-                    </div>
+              <div className="mt-8 pt-8 border-t border-white/5 space-y-4">
+                <div className="flex items-center gap-3 text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+                  <Cpu size={14} />
+                  <span>Status: Verified</span>
+                </div>
+                <p className="text-[9px] text-gray-700 font-mono uppercase leading-relaxed tracking-wider">
+                  * You can change these settings anytime in the Settings menu.
+                </p>
+              </div>
+            </div>
 
-                    <button
-                      onClick={handleFinish}
-                      className="w-full py-3 border border-white/5 text-gray-600 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest rounded-sm"
-                    >
-                      Skip Setup
-                    </button>
-                  </div>        </div>
+            <button
+              onClick={handleFinish}
+              className="w-full py-3 border border-white/5 text-gray-600 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest rounded-sm"
+            >
+              Skip Setup
+            </button>
+          </div>{' '}
+        </div>
       </div>
     </div>
   );

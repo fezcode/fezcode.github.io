@@ -6,7 +6,9 @@ export default function Legato() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-current">Legato</strong> is a form of musical articulation. In modern notation, it indicates that musical notes are played or sung smoothly and connected.
+        <strong className="text-current">Legato</strong> is a form of musical
+        articulation. In modern notation, it indicates that musical notes are
+        played or sung smoothly and connected.
       </p>
 
       <div className="border-l-2 border-blue-500/50 pl-4 py-1 italic opacity-70 text-xs">
@@ -14,13 +16,20 @@ export default function Legato() {
       </div>
 
       <p>
-        It is often indicated with a slur (a curved line) over or under the notes that are to be joined.
+        It is often indicated with a slur (a curved line) over or under the
+        notes that are to be joined.
       </p>
 
       <div className="flex flex-col gap-4 pt-4 border-t border-current/10">
         <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold">
           <span>See also:</span>
-          <MarkdownLink href="/vocab/staccato" className="text-orange-400 hover:underline" width={600}>Staccato</MarkdownLink>
+          <MarkdownLink
+            href="/vocab/staccato"
+            className="text-orange-400 hover:underline"
+            width={600}
+          >
+            Staccato
+          </MarkdownLink>
         </div>
 
         <a

@@ -31,7 +31,10 @@ const DndFooter = () => {
             Digital Archive Kernel // v0.8.7
           </p>
           <p className="font-arvo text-[9px] uppercase tracking-widest text-white">
-            Wallpaper Source // <span className="text-white font-bold">{bgImageName || 'Default_Vault'}</span>
+            Wallpaper Source //{' '}
+            <span className="text-white font-bold">
+              {bgImageName || 'Default_Vault'}
+            </span>
           </p>
           <div className="h-px w-12 bg-dnd-gold ml-auto opacity-50" />
           <p className="font-arvo text-[10px] uppercase tracking-[0.2em] text-white">

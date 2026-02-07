@@ -94,7 +94,11 @@ const Navbar = ({
             className="group flex items-center gap-2 px-3 py-2 text-gray-400 hover:text-white hover:bg-white/5 rounded-sm transition-all"
             aria-label="Toggle Search"
           >
-            <MagnifyingGlassIcon size={20} weight="bold" className="group-hover:text-emerald-500 transition-colors" />
+            <MagnifyingGlassIcon
+              size={20}
+              weight="bold"
+              className="group-hover:text-emerald-500 transition-colors"
+            />
             <span className="hidden md:inline text-[10px] font-mono font-bold uppercase tracking-widest group-hover:text-emerald-500 transition-colors">
               Search
             </span>

@@ -61,7 +61,15 @@ const ViewSwitcher = ({ currentView }) => {
 
 const AboutPage = () => {
   const { viewId } = useParams();
-  const validViews = ['luxe', 'dossier', 'hud', 'blueprint', 'map', 'brutalist', 'skills'];
+  const validViews = [
+    'luxe',
+    'dossier',
+    'hud',
+    'blueprint',
+    'map',
+    'brutalist',
+    'skills',
+  ];
 
   const { unlockAchievement } = useAchievements();
 

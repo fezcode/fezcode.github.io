@@ -21,7 +21,7 @@ import {
   HardDriveIcon,
   CodeIcon,
   PlusIcon,
-  ArrowLeftIcon
+  ArrowLeftIcon,
 } from '@phosphor-icons/react';
 import Fez from '../../components/Fez';
 import usePersistentState from '../../hooks/usePersistentState';
@@ -33,41 +33,111 @@ import BrutalistDialog from '../../components/BrutalistDialog';
 const ITEMS = {
   // Base Elements
   fire: { id: 'fire', name: 'Fire', icon: FireIcon, color: 'text-orange-500' },
-  water: { id: 'water', name: 'Water', icon: WavesIcon, color: 'text-blue-500' },
+  water: {
+    id: 'water',
+    name: 'Water',
+    icon: WavesIcon,
+    color: 'text-blue-500',
+  },
   air: { id: 'air', name: 'Air', icon: WindIcon, color: 'text-cyan-400' },
-  earth: { id: 'earth', name: 'Earth', icon: GlobeIcon, color: 'text-amber-700' },
+  earth: {
+    id: 'earth',
+    name: 'Earth',
+    icon: GlobeIcon,
+    color: 'text-amber-700',
+  },
 
   // Tier 1
   lava: { id: 'lava', name: 'Lava', icon: FireIcon, color: 'text-red-600' },
   mud: { id: 'mud', name: 'Mud', icon: GlobeIcon, color: 'text-yellow-900' },
   steam: { id: 'steam', name: 'Steam', icon: WindIcon, color: 'text-gray-300' },
   dust: { id: 'dust', name: 'Dust', icon: WindIcon, color: 'text-yellow-600' },
-  rain: { id: 'rain', name: 'Rain', icon: CloudRainIcon, color: 'text-blue-300' },
-  energy: { id: 'energy', name: 'Energy', icon: LightningIcon, color: 'text-yellow-400' },
+  rain: {
+    id: 'rain',
+    name: 'Rain',
+    icon: CloudRainIcon,
+    color: 'text-blue-300',
+  },
+  energy: {
+    id: 'energy',
+    name: 'Energy',
+    icon: LightningIcon,
+    color: 'text-yellow-400',
+  },
 
   // Tier 2
-  stone: { id: 'stone', name: 'Stone', icon: GlobeIcon, color: 'text-gray-500' },
+  stone: {
+    id: 'stone',
+    name: 'Stone',
+    icon: GlobeIcon,
+    color: 'text-gray-500',
+  },
   life: { id: 'life', name: 'Life', icon: HeartIcon, color: 'text-pink-500' },
-  plant: { id: 'plant', name: 'Plant', icon: PlantIcon, color: 'text-green-500' },
+  plant: {
+    id: 'plant',
+    name: 'Plant',
+    icon: PlantIcon,
+    color: 'text-green-500',
+  },
   metal: { id: 'metal', name: 'Metal', icon: AtomIcon, color: 'text-blue-100' },
   sun: { id: 'sun', name: 'Sun', icon: SunIcon, color: 'text-yellow-500' },
   moon: { id: 'moon', name: 'Moon', icon: MoonIcon, color: 'text-blue-100' },
 
   // Tier 3
-  sword: { id: 'sword', name: 'Sword', icon: SwordIcon, color: 'text-gray-300' },
-  organism: { id: 'organism', name: 'Organism', icon: BugIcon, color: 'text-green-400' },
+  sword: {
+    id: 'sword',
+    name: 'Sword',
+    icon: SwordIcon,
+    color: 'text-gray-300',
+  },
+  organism: {
+    id: 'organism',
+    name: 'Organism',
+    icon: BugIcon,
+    color: 'text-green-400',
+  },
   tree: { id: 'tree', name: 'Tree', icon: TreeIcon, color: 'text-green-700' },
-  electricity: { id: 'electricity', name: 'Electricity', icon: LightningIcon, color: 'text-yellow-300' },
+  electricity: {
+    id: 'electricity',
+    name: 'Electricity',
+    icon: LightningIcon,
+    color: 'text-yellow-300',
+  },
 
   // Tier 4
-  human: { id: 'human', name: 'Human', icon: PersonIcon, color: 'text-orange-200' },
-  computer: { id: 'computer', name: 'Computer', icon: HardDriveIcon, color: 'text-blue-400' },
-  knight: { id: 'knight', name: 'Knight', icon: SwordIcon, color: 'text-indigo-400' },
+  human: {
+    id: 'human',
+    name: 'Human',
+    icon: PersonIcon,
+    color: 'text-orange-200',
+  },
+  computer: {
+    id: 'computer',
+    name: 'Computer',
+    icon: HardDriveIcon,
+    color: 'text-blue-400',
+  },
+  knight: {
+    id: 'knight',
+    name: 'Knight',
+    icon: SwordIcon,
+    color: 'text-indigo-400',
+  },
 
   // Tier 5 (Ultimate)
   code: { id: 'code', name: 'Code', icon: CodeIcon, color: 'text-emerald-500' },
-  fezcodex: { id: 'fezcodex', name: 'Fezcodex', icon: Fez, color: 'text-emerald-400' },
-  ghost: { id: 'ghost', name: 'Ghost', icon: SkullIcon, color: 'text-purple-300' },
+  fezcodex: {
+    id: 'fezcodex',
+    name: 'Fezcodex',
+    icon: Fez,
+    color: 'text-emerald-400',
+  },
+  ghost: {
+    id: 'ghost',
+    name: 'Ghost',
+    icon: SkullIcon,
+    color: 'text-purple-300',
+  },
 };
 
 const RECIPES = [
@@ -96,7 +166,12 @@ const RECIPES = [
 ];
 
 const AlchemyLabPage = () => {
-  const [discovered, setDiscovered] = usePersistentState('alchemy-discovered', ['fire', 'water', 'air', 'earth']);
+  const [discovered, setDiscovered] = usePersistentState('alchemy-discovered', [
+    'fire',
+    'water',
+    'air',
+    'earth',
+  ]);
   const [slot1, setSlot1] = useState(null);
   const [slot2, setSlot2] = useState(null);
   const [lastResult, setLastResult] = useState(null);
@@ -106,8 +181,9 @@ const AlchemyLabPage = () => {
   const combine = useCallback(() => {
     if (!slot1 || !slot2) return;
 
-    const recipe = RECIPES.find(r =>
-      (r.a === slot1 && r.b === slot2) || (r.a === slot2 && r.b === slot1)
+    const recipe = RECIPES.find(
+      (r) =>
+        (r.a === slot1 && r.b === slot2) || (r.a === slot2 && r.b === slot1),
     );
 
     if (recipe) {
@@ -118,7 +194,7 @@ const AlchemyLabPage = () => {
         addToast({
           title: 'Transmutation Success',
           message: `Conceptualized: ${ITEMS[result].name.toUpperCase()}`,
-          duration: 3000
+          duration: 3000,
         });
       }
     } else {
@@ -148,12 +224,21 @@ const AlchemyLabPage = () => {
       {/* Header */}
       <div className="p-6 md:p-12 border-b border-white/10 flex justify-between items-center bg-black/50 backdrop-blur-md z-50">
         <div className="flex items-center gap-8">
-          <Link to="/apps" className="text-gray-500 hover:text-white transition-colors">
+          <Link
+            to="/apps"
+            className="text-gray-500 hover:text-white transition-colors"
+          >
             <ArrowLeftIcon size={24} weight="bold" />
           </Link>
           <div>
-            <BreadcrumbTitle title="Alchemy Lab" slug="al" variant="brutalist" />
-            <p className="text-[10px] text-gray-600 uppercase tracking-widest mt-1">Transmutation_Protocol_Active</p>
+            <BreadcrumbTitle
+              title="Alchemy Lab"
+              slug="al"
+              variant="brutalist"
+            />
+            <p className="text-[10px] text-gray-600 uppercase tracking-widest mt-1">
+              Transmutation_Protocol_Active
+            </p>
           </div>
         </div>
 
@@ -173,7 +258,11 @@ const AlchemyLabPage = () => {
         onConfirm={() => {
           setDiscovered(['fire', 'water', 'air', 'earth']);
           setIsResetDialogOpen(false);
-          addToast({ title: 'System Reset', message: 'All elemental data has been purged.', type: 'info' });
+          addToast({
+            title: 'System Reset',
+            message: 'All elemental data has been purged.',
+            type: 'info',
+          });
         }}
         title="PURGE_DATABASE"
         message="This will reset all your discoveries to the 4 base elements. proceed?"
@@ -197,9 +286,11 @@ const AlchemyLabPage = () => {
                   {React.createElement(ITEMS[slot1].icon, {
                     size: 48,
                     weight: 'bold',
-                    className: ITEMS[slot1].color
+                    className: ITEMS[slot1].color,
                   })}
-                  <span className="text-[9px] mt-2 uppercase font-black tracking-tighter">{ITEMS[slot1].name}</span>
+                  <span className="text-[9px] mt-2 uppercase font-black tracking-tighter">
+                    {ITEMS[slot1].name}
+                  </span>
                 </div>
               ) : (
                 <PlusIcon size={24} className="opacity-10" />
@@ -221,9 +312,11 @@ const AlchemyLabPage = () => {
                   {React.createElement(ITEMS[slot2].icon, {
                     size: 48,
                     weight: 'bold',
-                    className: ITEMS[slot2].color
+                    className: ITEMS[slot2].color,
                   })}
-                  <span className="text-[9px] mt-2 uppercase font-black tracking-tighter">{ITEMS[slot2].name}</span>
+                  <span className="text-[9px] mt-2 uppercase font-black tracking-tighter">
+                    {ITEMS[slot2].name}
+                  </span>
                 </div>
               ) : (
                 <PlusIcon size={24} className="opacity-10" />
@@ -266,7 +359,7 @@ const AlchemyLabPage = () => {
                   {React.createElement(ITEMS[lastResult].icon, {
                     size: 64,
                     weight: 'bold',
-                    className: ITEMS[lastResult].color
+                    className: ITEMS[lastResult].color,
                   })}
                   <span className="text-[10px] mt-4 uppercase font-black tracking-widest text-emerald-400">
                     {ITEMS[lastResult].name}
@@ -280,13 +373,15 @@ const AlchemyLabPage = () => {
         {/* Inventory Sidebar */}
         <div className="w-full md:w-80 border-l border-white/10 bg-black/30 backdrop-blur-sm flex flex-col">
           <div className="p-4 border-b border-white/10 flex justify-between items-center">
-            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">Inventory</span>
+            <span className="text-[10px] font-black uppercase tracking-widest text-gray-500">
+              Inventory
+            </span>
             <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">
               {discovered.length} / {Object.keys(ITEMS).length}
             </span>
           </div>
           <div className="flex-grow overflow-y-auto p-4 grid grid-cols-3 gap-2 scrollbar-hide">
-            {discovered.map(id => (
+            {discovered.map((id) => (
               <motion.div
                 key={id}
                 whileHover={{ scale: 1.05 }}
@@ -298,7 +393,10 @@ const AlchemyLabPage = () => {
                 {React.createElement(ITEMS[id].icon, {
                   size: 24,
                   weight: 'bold',
-                  className: slot1 === id || slot2 === id ? 'text-emerald-400' : ITEMS[id].color
+                  className:
+                    slot1 === id || slot2 === id
+                      ? 'text-emerald-400'
+                      : ITEMS[id].color,
                 })}
                 <span className="text-[7px] mt-1.5 uppercase font-bold text-center leading-none tracking-tighter opacity-60">
                   {ITEMS[id].name}
@@ -316,8 +414,14 @@ const AlchemyLabPage = () => {
           <span>Buffer_Cleared</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className={`w-2 h-2 rounded-full ${discovered.length === Object.keys(ITEMS).length ? 'bg-emerald-500 animate-pulse' : 'bg-yellow-500'}`} />
-          <span>{discovered.length === Object.keys(ITEMS).length ? 'Master_Alchemist_Status' : 'Research_In_Progress'}</span>
+          <div
+            className={`w-2 h-2 rounded-full ${discovered.length === Object.keys(ITEMS).length ? 'bg-emerald-500 animate-pulse' : 'bg-yellow-500'}`}
+          />
+          <span>
+            {discovered.length === Object.keys(ITEMS).length
+              ? 'Master_Alchemist_Status'
+              : 'Research_In_Progress'}
+          </span>
         </div>
       </footer>
     </div>

@@ -1,6 +1,9 @@
 import React from 'react';
 
-const PartnerLogos = ({ logos = [], label = "Trusted by industry leaders" }) => {
+const PartnerLogos = ({
+  logos = [],
+  label = 'Trusted by industry leaders',
+}) => {
   if (!logos || logos.length === 0) return null;
 
   return (
@@ -11,7 +14,10 @@ const PartnerLogos = ({ logos = [], label = "Trusted by industry leaders" }) => 
         </p>
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-40 grayscale hover:grayscale-0 transition-all duration-500">
           {logos.map((logo, index) => (
-            <div key={index} className="text-xl font-bold text-white tracking-tighter uppercase">
+            <div
+              key={index}
+              className="text-xl font-bold text-white tracking-tighter uppercase"
+            >
               {logo}
             </div>
           ))}

@@ -4,10 +4,10 @@ export default function PropDrilling() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-current">Prop Drilling</strong> (also known as "threading") refers to the
-        process of passing data from a parent component down to a deeply nested
-        child component through intermediate components that do not need the
-        data themselves.
+        <strong className="text-current">Prop Drilling</strong> (also known as
+        "threading") refers to the process of passing data from a parent
+        component down to a deeply nested child component through intermediate
+        components that do not need the data themselves.
       </p>
 
       <div className="border border-white/10 bg-black p-4 font-mono text-xs my-6">
@@ -24,7 +24,8 @@ export default function PropDrilling() {
 
       <div className="space-y-2">
         <p className="text-gray-400">
-          While simple, it becomes problematic as the application grows, leading to:
+          While simple, it becomes problematic as the application grows, leading
+          to:
         </p>
         <ul className="list-none space-y-1 text-xs text-gray-500 pl-4 border-l border-white/10">
           <li>-- Code verbosity</li>
@@ -35,8 +36,15 @@ export default function PropDrilling() {
       </div>
 
       <div className="mt-4 pt-4 border-t border-white/10">
-        <strong className="text-emerald-400 uppercase tracking-wider text-xs block mb-2">Solution</strong>
-        <p>Use the <em className="text-current not-italic">Context API</em>, <em className="text-current not-italic">Redux</em>, or similar state management libraries to make data accessible to any component in the tree without manual passing.</p>
+        <strong className="text-emerald-400 uppercase tracking-wider text-xs block mb-2">
+          Solution
+        </strong>
+        <p>
+          Use the <em className="text-current not-italic">Context API</em>,{' '}
+          <em className="text-current not-italic">Redux</em>, or similar state
+          management libraries to make data accessible to any component in the
+          tree without manual passing.
+        </p>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@ import { MotionConfig } from 'framer-motion';
 const MotionConfigWrapper = ({ children }) => {
   const { reduceMotion } = useAnimation();
   return (
-    <MotionConfig reducedMotion={reduceMotion ? "always" : "never"}>
+    <MotionConfig reducedMotion={reduceMotion ? 'always' : 'never'}>
       {children}
     </MotionConfig>
   );
@@ -95,7 +95,10 @@ function App() {
                             </Layout>
                           </SidePanelProvider>
                         </CommandPaletteProvider>
-                        <ContactModal isOpen={isModalOpen} onClose={toggleModal} />
+                        <ContactModal
+                          isOpen={isModalOpen}
+                          onClose={toggleModal}
+                        />
                         <GenericModal
                           isOpen={isGenericModalOpen}
                           onClose={closeGenericModal}

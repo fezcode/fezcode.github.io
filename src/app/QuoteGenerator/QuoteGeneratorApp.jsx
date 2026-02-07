@@ -9,8 +9,8 @@ const QuoteGeneratorApp = () => {
 
   // State
   const [state, setState] = useState({
-    text: "The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.",
-    author: "Albert Camus",
+    text: 'The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.',
+    author: 'Albert Camus',
     width: 1080,
     height: 1080, // Square by default, maybe customizable later
     backgroundColor: '#ffffff',
@@ -44,7 +44,7 @@ const QuoteGeneratorApp = () => {
       'Lora:ital,wght@0,400;0,700;1,400',
       'Montserrat:wght@400;700;900',
       'Space+Mono:ital,wght@0,400;0,700;1,400',
-      'UnifrakturMaguntia'
+      'UnifrakturMaguntia',
     ];
 
     const link = document.createElement('link');
@@ -67,7 +67,7 @@ const QuoteGeneratorApp = () => {
     addToast({
       title: 'Quote Downloaded',
       message: 'Your quote has been saved successfully.',
-      type: 'success'
+      type: 'success',
     });
   };
 

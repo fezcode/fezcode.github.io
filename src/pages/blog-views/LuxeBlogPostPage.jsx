@@ -37,7 +37,11 @@ const LuxeBlogPostPage = () => {
   const { scrollY } = useScroll();
   const heroOpacity = useTransform(scrollY, [0, 400], [1, 0]);
   const heroY = useTransform(scrollY, [0, 400], [0, 100]);
-  const progressBarScale = useTransform(scrollY, [0, document.body.scrollHeight], [0, 1]);
+  const progressBarScale = useTransform(
+    scrollY,
+    [0, document.body.scrollHeight],
+    [0, 1],
+  );
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -108,10 +112,7 @@ const LuxeBlogPostPage = () => {
             <div className="absolute top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
               <button
                 onClick={() =>
-                  openCodeModal(
-                    String(children).replace(/\n$/, ''),
-                    match[1],
-                  )
+                  openCodeModal(String(children).replace(/\n$/, ''), match[1])
                 }
                 className="bg-white/90 backdrop-blur-sm border border-[#1A1A1A]/10 px-3 py-1.5 text-[10px] uppercase font-outfit font-bold tracking-widest text-[#1A1A1A]/60 hover:text-white hover:bg-[#1A1A1A] transition-all rounded-full shadow-sm"
                 title="Expand View"
@@ -202,78 +203,95 @@ const LuxeBlogPostPage = () => {
         style={{ opacity: heroOpacity, y: heroY }}
         className="relative h-[60vh] w-full flex flex-col justify-center items-center text-center px-6"
       >
-          <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
-             <LuxeArt seed={post.attributes.title} className="w-full h-full mix-blend-multiply filter grayscale contrast-125" />
+        <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+          <LuxeArt
+            seed={post.attributes.title}
+            className="w-full h-full mix-blend-multiply filter grayscale contrast-125"
+          />
+        </div>
+
+        <div className="relative z-10 max-w-4xl space-y-8">
+          <div className="flex items-center justify-center gap-4 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/50">
+            <span className="flex items-center gap-2">
+              <Calendar size={14} />{' '}
+              {new Date(post.attributes.date).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </span>
+            <span>•</span>
+            <span className="flex items-center gap-2">
+              <Clock size={14} /> {estimatedReadingTime} Min Read
+            </span>
           </div>
 
-          <div className="relative z-10 max-w-4xl space-y-8">
-              <div className="flex items-center justify-center gap-4 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/50">
-                  <span className="flex items-center gap-2"><Calendar size={14} /> {new Date(post.attributes.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                  <span>•</span>
-                  <span className="flex items-center gap-2"><Clock size={14} /> {estimatedReadingTime} Min Read</span>
-              </div>
+          <h1 className="font-playfairDisplay text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9]">
+            {post.attributes.title}
+          </h1>
 
-              <h1 className="font-playfairDisplay text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9]">
-                  {post.attributes.title}
-              </h1>
-
-              {post.attributes.category && (
-                  <span className="inline-block border border-[#1A1A1A]/20 px-4 py-1 rounded-full font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/60">
-                      {post.attributes.category}
-                  </span>
-              )}
-          </div>
+          {post.attributes.category && (
+            <span className="inline-block border border-[#1A1A1A]/20 px-4 py-1 rounded-full font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/60">
+              {post.attributes.category}
+            </span>
+          )}
+        </div>
       </motion.div>
 
       {/* Content */}
       <div className="max-w-[900px] mx-auto px-6 pb-32 relative z-20 bg-[#F5F5F0]">
-
-          {/* Main Body */}
-          <div className="prose prose-stone prose-lg max-w-none
+        {/* Main Body */}
+        <div
+          className="prose prose-stone prose-lg max-w-none
               prose-headings:font-playfairDisplay prose-headings:font-normal prose-headings:text-[#1A1A1A]
               prose-p:font-outfit prose-p:text-[#1A1A1A]/80 prose-p:leading-relaxed
               prose-a:text-[#8D4004] prose-a:no-underline prose-a:border-b prose-a:border-[#8D4004]/30 hover:prose-a:border-[#8D4004] prose-a:transition-colors
               prose-strong:font-medium prose-strong:text-[#1A1A1A]
               prose-li:font-outfit prose-li:text-[#1A1A1A]/80
               prose-blockquote:border-l-[#8D4004] prose-blockquote:bg-[#EBEBEB] prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:not-italic
-          ">
-              <MarkdownContent
-                content={post.body}
-                components={components}
-              />
+          "
+        >
+          <MarkdownContent content={post.body} components={components} />
+        </div>
+
+        {/* Footer / Meta */}
+        <div className="mt-20 pt-12 border-t border-[#1A1A1A]/10">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="flex flex-wrap gap-2">
+              {post.attributes.tags?.map((tag) => (
+                <span
+                  key={tag}
+                  className="bg-[#EBEBEB] px-3 py-1 rounded-sm font-outfit text-xs text-[#1A1A1A]/60"
+                >
+                  #{tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex gap-4">
+              <button className="flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors">
+                <ShareNetwork size={16} /> Share
+              </button>
+            </div>
           </div>
+        </div>
 
-          {/* Footer / Meta */}
-          <div className="mt-20 pt-12 border-t border-[#1A1A1A]/10">
-              <div className="flex flex-col md:flex-row justify-between items-center gap-8">
-                  <div className="flex flex-wrap gap-2">
-                      {post.attributes.tags?.map(tag => (
-                          <span key={tag} className="bg-[#EBEBEB] px-3 py-1 rounded-sm font-outfit text-xs text-[#1A1A1A]/60">
-                              #{tag}
-                          </span>
-                      ))}
-                  </div>
+        {/* Navigation */}
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Link
+            to="/blog"
+            className="group p-8 border border-[#1A1A1A]/10 hover:border-[#1A1A1A] transition-all bg-white"
+          >
+            <span className="flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 mb-4 group-hover:gap-1 transition-all">
+              <ArrowLeft /> Back to Journal
+            </span>
+            <span className="font-playfairDisplay text-2xl text-[#1A1A1A]">
+              Index
+            </span>
+          </Link>
 
-                  <div className="flex gap-4">
-                      <button className="flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/60 hover:text-[#8D4004] transition-colors">
-                          <ShareNetwork size={16} /> Share
-                      </button>
-                  </div>
-              </div>
-          </div>
-
-          {/* Navigation */}
-          <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <Link to="/blog" className="group p-8 border border-[#1A1A1A]/10 hover:border-[#1A1A1A] transition-all bg-white">
-                  <span className="flex items-center gap-2 font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/40 mb-4 group-hover:gap-1 transition-all">
-                      <ArrowLeft /> Back to Journal
-                  </span>
-                  <span className="font-playfairDisplay text-2xl text-[#1A1A1A]">Index</span>
-              </Link>
-
-              {/* Could add Next Post logic here similar to BrutalistBlogPostPage */}
-          </div>
-
+          {/* Could add Next Post logic here similar to BrutalistBlogPostPage */}
+        </div>
       </div>
 
       <CodeModal

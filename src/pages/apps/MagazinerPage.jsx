@@ -60,16 +60,70 @@ const COLORS = [
 ];
 
 const initialInputs = {
-  issueNo: { text: 'ISSUE NO. 42', x: 5, y: 5, size: 14, font: 'JetBrains Mono' },
+  issueNo: {
+    text: 'ISSUE NO. 42',
+    x: 5,
+    y: 5,
+    size: 14,
+    font: 'JetBrains Mono',
+  },
   title: { text: 'FEZCODEX', x: 50, y: 15, size: 80, font: 'JetBrains Mono' },
-  subtitle: { text: 'THE FUTURE OF DIGITAL ARCHITECTURE', x: 50, y: 22, size: 18, font: 'JetBrains Mono' },
-  mainStory: { text: 'CHAOS THEORY', x: 10, y: 45, size: 50, font: 'JetBrains Mono' },
-  mainStorySub: { text: 'HOW BRUTALISM SAVED THE WEB', x: 10, y: 52, size: 16, font: 'JetBrains Mono' },
-  secondStory: { text: 'THE POSH ERA', x: 90, y: 70, size: 30, font: 'JetBrains Mono' },
-  secondStorySub: { text: 'MINIMALISM IS FOR THE ELITE', x: 90, y: 75, size: 14, font: 'JetBrains Mono' },
-  bottomText: { text: 'WWW.FEZCODEX.COM // 2025', x: 50, y: 95, size: 12, font: 'JetBrains Mono' },
-  rightEdgeText: { text: 'CLASSIFIED // NODE 049', x: 98, y: 50, size: 10, font: 'JetBrains Mono' },
-  bottomLeftText: { text: 'DESIGNED BY FEZCODE', x: 5, y: 95, size: 10, font: 'JetBrains Mono' },
+  subtitle: {
+    text: 'THE FUTURE OF DIGITAL ARCHITECTURE',
+    x: 50,
+    y: 22,
+    size: 18,
+    font: 'JetBrains Mono',
+  },
+  mainStory: {
+    text: 'CHAOS THEORY',
+    x: 10,
+    y: 45,
+    size: 50,
+    font: 'JetBrains Mono',
+  },
+  mainStorySub: {
+    text: 'HOW BRUTALISM SAVED THE WEB',
+    x: 10,
+    y: 52,
+    size: 16,
+    font: 'JetBrains Mono',
+  },
+  secondStory: {
+    text: 'THE POSH ERA',
+    x: 90,
+    y: 70,
+    size: 30,
+    font: 'JetBrains Mono',
+  },
+  secondStorySub: {
+    text: 'MINIMALISM IS FOR THE ELITE',
+    x: 90,
+    y: 75,
+    size: 14,
+    font: 'JetBrains Mono',
+  },
+  bottomText: {
+    text: 'WWW.FEZCODEX.COM // 2025',
+    x: 50,
+    y: 95,
+    size: 12,
+    font: 'JetBrains Mono',
+  },
+  rightEdgeText: {
+    text: 'CLASSIFIED // NODE 049',
+    x: 98,
+    y: 50,
+    size: 10,
+    font: 'JetBrains Mono',
+  },
+  bottomLeftText: {
+    text: 'DESIGNED BY FEZCODE',
+    x: 5,
+    y: 95,
+    size: 10,
+    font: 'JetBrains Mono',
+  },
 };
 
 const MagazinerPage = () => {
@@ -108,16 +162,23 @@ const MagazinerPage = () => {
       opacity: 1,
     };
     setAssets([...assets, newAsset]);
-    addToast({ title: 'ASSET_ADDED', message: `New ${type.toUpperCase()} entity initialized.` });
+    addToast({
+      title: 'ASSET_ADDED',
+      message: `New ${type.toUpperCase()} entity initialized.`,
+    });
   };
 
   const updateAsset = (id, field, value) => {
-    setAssets(assets.map(a => a.id === id ? { ...a, [field]: value } : a));
+    setAssets(assets.map((a) => (a.id === id ? { ...a, [field]: value } : a)));
   };
 
   const removeAsset = (id) => {
-    setAssets(assets.filter(a => a.id !== id));
-    addToast({ title: 'ASSET_REMOVED', message: 'Entity purged from current sequence.', type: 'info' });
+    setAssets(assets.filter((a) => a.id !== id));
+    addToast({
+      title: 'ASSET_REMOVED',
+      message: 'Entity purged from current sequence.',
+      type: 'info',
+    });
   };
 
   const handleSavePreset = () => {
@@ -135,7 +196,10 @@ const MagazinerPage = () => {
       assets,
     };
     localStorage.setItem('magaziner_preset', JSON.stringify(preset));
-    addToast({ title: 'PRESET_SAVED', message: 'Current configuration stored in local memory.' });
+    addToast({
+      title: 'PRESET_SAVED',
+      message: 'Current configuration stored in local memory.',
+    });
   };
 
   const handleLoadPreset = () => {
@@ -154,25 +218,40 @@ const MagazinerPage = () => {
         setBorderWidth(preset.borderWidth);
         setInputs(preset.inputs);
         if (preset.assets) setAssets(preset.assets);
-        addToast({ title: 'PRESET_LOADED', message: 'Configuration successfully restored.' });
+        addToast({
+          title: 'PRESET_LOADED',
+          message: 'Configuration successfully restored.',
+        });
       } catch (e) {
-        addToast({ title: 'LOAD_ERROR', message: 'Stored preset is corrupted or incompatible.', type: 'error' });
+        addToast({
+          title: 'LOAD_ERROR',
+          message: 'Stored preset is corrupted or incompatible.',
+          type: 'error',
+        });
       }
     } else {
-      addToast({ title: 'NO_PRESET', message: 'No stored configuration found in local memory.', type: 'info' });
+      addToast({
+        title: 'NO_PRESET',
+        message: 'No stored configuration found in local memory.',
+        type: 'info',
+      });
     }
   };
 
   useEffect(() => {
     if (style === 'posh') {
-      setInputs(prev => ({
+      setInputs((prev) => ({
         ...prev,
         issueNo: { ...prev.issueNo, font: 'Playfair Display', size: 12 },
         title: { ...prev.title, font: 'Playfair Display', size: 100 },
         subtitle: { ...prev.subtitle, font: 'Inter', size: 14 },
         mainStory: { ...prev.mainStory, font: 'Playfair Display', size: 40 },
         mainStorySub: { ...prev.mainStorySub, font: 'Inter', size: 12 },
-        secondStory: { ...prev.secondStory, font: 'Playfair Display', size: 24 },
+        secondStory: {
+          ...prev.secondStory,
+          font: 'Playfair Display',
+          size: 24,
+        },
         secondStorySub: { ...prev.secondStorySub, font: 'Inter', size: 10 },
         bottomText: { ...prev.bottomText, font: 'Inter', size: 10 },
         rightEdgeText: { ...prev.rightEdgeText, font: 'Inter', size: 8 },
@@ -181,20 +260,44 @@ const MagazinerPage = () => {
       setPrimaryColor(COLORS[1]);
       setAccentColor(COLORS[0]);
     } else if (style === 'glassy') {
-      setInputs(prev => ({
+      setInputs((prev) => ({
         ...prev,
         issueNo: { ...prev.issueNo, font: 'JetBrains Mono', size: 12 },
         title: { ...prev.title, font: 'Playfair Display', size: 100 },
         subtitle: { ...prev.subtitle, font: 'JetBrains Mono', size: 14 },
         mainStory: { ...prev.mainStory, font: 'Arvo', size: 45 },
-        mainStorySub: { ...prev.mainStorySub, font: 'JetBrains Mono', size: 12 },
-        secondStory: { ...prev.secondStory, font: 'Playfair Display', size: 24 },
-        secondStorySub: { ...prev.secondStorySub, font: 'JetBrains Mono', size: 10 },
+        mainStorySub: {
+          ...prev.mainStorySub,
+          font: 'JetBrains Mono',
+          size: 12,
+        },
+        secondStory: {
+          ...prev.secondStory,
+          font: 'Playfair Display',
+          size: 24,
+        },
+        secondStorySub: {
+          ...prev.secondStorySub,
+          font: 'JetBrains Mono',
+          size: 10,
+        },
         bottomText: { ...prev.bottomText, font: 'JetBrains Mono', size: 10 },
-        rightEdgeText: { ...prev.rightEdgeText, font: 'JetBrains Mono', size: 8 },
-        bottomLeftText: { ...prev.bottomLeftText, font: 'JetBrains Mono', size: 8 },
+        rightEdgeText: {
+          ...prev.rightEdgeText,
+          font: 'JetBrains Mono',
+          size: 8,
+        },
+        bottomLeftText: {
+          ...prev.bottomLeftText,
+          font: 'JetBrains Mono',
+          size: 8,
+        },
       }));
-      setPrimaryColor({ name: 'Glassy Indigo', hex: '#6366f1', text: '#FFFFFF' });
+      setPrimaryColor({
+        name: 'Glassy Indigo',
+        hex: '#6366f1',
+        text: '#FFFFFF',
+      });
       setAccentColor({ name: 'White', hex: '#FFFFFF', text: '#000000' });
       setPattern('generative_art');
     } else {
@@ -205,9 +308,9 @@ const MagazinerPage = () => {
   }, [style]);
 
   const handleInputChange = (key, field, value) => {
-    setInputs(prev => ({
+    setInputs((prev) => ({
       ...prev,
-      [key]: { ...prev[key], [field]: value }
+      [key]: { ...prev[key], [field]: value },
     }));
   };
 
@@ -224,349 +327,467 @@ const MagazinerPage = () => {
     }
   };
 
-  const drawMagazine = useCallback((ctx, width, height, options = { includeText: true, includeBgImage: true }) => {
-    const scale = width / 1000;
-    const rng = (s) => {
-      let v = s * 12345.678;
-      return () => {
-        v = (v * 987.654) % 1;
-        return v;
-      };
-    };
-    const getRand = rng(seed);
-
-    // 1. Background
-    ctx.fillStyle = primaryColor.hex;
-    ctx.fillRect(0, 0, width, height);
-
-    if (style === 'glassy' && !bgImage) {
-      const bgGradient = ctx.createLinearGradient(0, 0, width, height);
-      bgGradient.addColorStop(0, '#6366f1');
-      bgGradient.addColorStop(0.5, '#a855f7');
-      bgGradient.addColorStop(1, '#ec4899');
-      ctx.fillStyle = bgGradient;
-      ctx.fillRect(0, 0, width, height);
-
-      const drawBlob = (x, y, r, color) => {
-        ctx.save();
-        ctx.beginPath();
-        ctx.arc(x, y, r, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.filter = 'blur(80px)';
-        ctx.globalAlpha = 0.4;
-        ctx.fill();
-        ctx.restore();
-      };
-      drawBlob(width * 0.2, height * 0.2, 300 * scale, '#c084fc');
-      drawBlob(width * 0.8, height * 0.1, 250 * scale, '#facc15');
-      drawBlob(width * 0.5, height * 0.9, 350 * scale, '#f472b6');
-    }
-
-    if (bgImage && options.includeBgImage) {
-      const imgRatio = bgImage.width / bgImage.height;
-      const canvasRatio = width / height;
-      let dWidth, dHeight, dx, dy;
-
-      if (imgRatio > canvasRatio) {
-        dHeight = height;
-        dWidth = height * imgRatio;
-        dx = (width - dWidth) / 2;
-        dy = 0;
-      } else {
-        dWidth = width;
-        dHeight = width / imgRatio;
-        dx = 0;
-        dy = (height - dHeight) / 2;
-      }
-      ctx.drawImage(bgImage, dx, dy, dWidth, dHeight);
-    }
-
-    // 2. Grid Layer (Structural Protocol)
-    if (gridOpacity > 0) {
-      ctx.save();
-      ctx.strokeStyle = accentColor.hex;
-      ctx.globalAlpha = gridOpacity;
-      ctx.lineWidth = 1 * scale;
-      const gridSize = 50 * scale;
-
-      ctx.beginPath();
-      for (let x = 0; x <= width; x += gridSize) {
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-      }
-      for (let y = 0; y <= height; y += gridSize) {
-        ctx.moveTo(0, y);
-        ctx.lineTo(width, y);
-      }
-      ctx.stroke();
-      ctx.restore();
-    }
-
-    // 3. Shapes & Patterns
-    ctx.save();
-    ctx.strokeStyle = accentColor.hex;
-    ctx.fillStyle = accentColor.hex;
-    ctx.lineWidth = 1 * scale;
-
-    if (pattern === 'just_shapes') {
-      for (let i = 0; i < shapesCount; i++) {
-        const shapeType = Math.floor(getRand() * 10);
-        const x = getRand() * width;
-        const y = getRand() * height;
-        const size = (20 + getRand() * 100) * scale;
-        ctx.globalAlpha = shapesOpacity;
-
-        switch (shapeType) {
-          case 0: ctx.strokeRect(x, y, size, size); break;
-          case 1: ctx.beginPath(); ctx.arc(x, y, size / 2, 0, Math.PI * 2); ctx.stroke(); break;
-          case 2:
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            ctx.lineTo(x + size, y);
-            ctx.lineTo(x + size / 2, y - size);
-            ctx.closePath();
-            ctx.stroke();
-            break;
-          case 3:
-            ctx.beginPath();
-            ctx.moveTo(x - size / 2, y); ctx.lineTo(x + size / 2, y);
-            ctx.moveTo(x, y - size / 2); ctx.lineTo(x, y + size / 2);
-            ctx.stroke();
-            break;
-          case 4:
-            const gSize = size / 4;
-            for (let gx = 0; gx < 4; gx++) {
-              for (let gy = 0; gy < 4; gy++) {
-                ctx.strokeRect(x + gx * gSize, y + gy * gSize, 2, 2);
-              }
-            }
-            break;
-          case 5:
-            for (let j = 0; j < 5; j++) {
-              ctx.beginPath();
-              ctx.arc(x + getRand() * size, y + getRand() * size, 2 * scale, 0, Math.PI * 2);
-              ctx.fill();
-            }
-            break;
-          case 6:
-            ctx.beginPath();
-            ctx.moveTo(x, y);
-            for (let j = 0; j < size; j += 5) {
-              ctx.lineTo(x + j, y + Math.sin(j * 0.1) * 10 * scale);
-            }
-            ctx.stroke();
-            break;
-          case 7: ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + size, y + size); ctx.stroke(); break;
-          case 8:
-            ctx.beginPath();
-            for (let j = 0; j < 5; j++) {
-              ctx.lineTo(x + Math.cos(j * Math.PI * 2 / 5) * size, y + Math.sin(j * Math.PI * 2 / 5) * size);
-            }
-            ctx.closePath();
-            ctx.stroke();
-            break;
-          case 9:
-            ctx.beginPath(); ctx.arc(x, y, size / 2, 0, Math.PI * 2); ctx.stroke();
-            ctx.beginPath(); ctx.arc(x, y, size / 4, 0, Math.PI * 2); ctx.stroke();
-            break;
-          default: break;
-        }
-      }
-    } else if (pattern === 'generative_art') {
-      const artRng = (s) => {
-        let h = 0xdeadbeef;
-        const safeSeed = s.toString();
-        for (let i = 0; i < safeSeed.length; i++) {
-          h = Math.imul(h ^ safeSeed.charCodeAt(i), 2654435761);
-        }
+  const drawMagazine = useCallback(
+    (
+      ctx,
+      width,
+      height,
+      options = { includeText: true, includeBgImage: true },
+    ) => {
+      const scale = width / 1000;
+      const rng = (s) => {
+        let v = s * 12345.678;
         return () => {
-          h = Math.imul(h ^ (h >>> 16), 2246822507);
-          h = Math.imul(h ^ (h >>> 13), 3266489909);
-          return ((h ^= h >>> 16) >>> 0) / 4294967296;
+          v = (v * 987.654) % 1;
+          return v;
         };
       };
-      const gRng = artRng(seed);
-      const type = Math.floor(gRng() * 3);
-      ctx.globalAlpha = shapesOpacity;
-      if (type === 0) {
-        const gridSize = 5;
-        const cellSize = width / gridSize;
-        for (let x = 0; x < gridSize; x++) {
-          for (let y = 0; y < gridSize; y++) {
-            if (gRng() > 0.5) {
-              const shapeType = Math.floor(gRng() * 4);
-              const rotation = Math.floor(gRng() * 4) * (Math.PI / 2);
-              const cx = x * cellSize + cellSize / 2;
-              const cy = y * cellSize + cellSize / 2;
-              const is = cellSize * 0.8;
-              const p = cellSize * 0.1;
-              ctx.save();
-              ctx.translate(cx, cy); ctx.rotate(rotation); ctx.translate(-cellSize/2, -cellSize/2);
-              if (shapeType === 0) ctx.strokeRect(p, p, is, is);
-              else if (shapeType === 1) { ctx.beginPath(); ctx.arc(cellSize/2, cellSize/2, is/2, 0, Math.PI*2); ctx.stroke(); }
-              else if (shapeType === 2) {
-                ctx.beginPath(); ctx.moveTo(p, p); ctx.lineTo(cellSize-p, p);
-                ctx.arcTo(cellSize-p, cellSize-p, p, cellSize-p, is); ctx.lineTo(p, p); ctx.stroke();
-              }
-              else if (shapeType === 3) {
-                ctx.beginPath(); ctx.moveTo(p, cellSize-p); ctx.lineTo(cellSize/2, p); ctx.lineTo(cellSize-p, cellSize-p); ctx.closePath(); ctx.stroke();
-              }
-              ctx.restore();
-            }
-          }
-        }
-      } else if (type === 1) {
-        for (let i = 0; i < 15; i++) {
-          const isVertical = gRng() > 0.5;
-          const x = Math.floor(gRng() * 10) * (width / 10);
-          const y = Math.floor(gRng() * 10) * (height / 10);
-          const thickness = (0.5 + gRng() * 1.5) * scale * 5;
-          const len = (20 + gRng() * 60) * scale * 5;
-          ctx.fillRect(x, y, isVertical ? thickness : len, isVertical ? len : thickness);
-          if (gRng() > 0.4) { ctx.beginPath(); ctx.arc(x, y, thickness * 2, 0, Math.PI * 2); ctx.fill(); }
-        }
-      } else {
-        for (let i = 0; i < 8; i++) {
-          const cx = gRng() * width; const cy = gRng() * height;
-          const r = (10 + gRng() * 40) * scale * 5;
-          ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.fill();
-        }
-      }
-    } else {
-      const padding = 60 * scale;
-      ctx.globalAlpha = shapesOpacity;
-      ctx.lineWidth = 2 * scale;
-      if (pattern === 'bauhaus') {
-        for (let i = 0; i < 5; i++) {
-          ctx.strokeRect(getRand() * width, getRand() * height, 200 * scale * getRand(), 200 * scale * getRand());
-          ctx.beginPath(); ctx.arc(getRand() * width, getRand() * height, 100 * scale * getRand(), 0, Math.PI * 2); ctx.stroke();
-        }
-      } else if (pattern === 'technical') {
-        ctx.beginPath(); ctx.moveTo(width / 2, padding); ctx.lineTo(width / 2, height - padding); ctx.stroke();
-        for (let i = 0; i < 10; i++) {
-          const y = padding + getRand() * (height - padding * 2);
-          ctx.strokeRect(width / 2 - 20 * scale, y, 40 * scale, 2 * scale);
-        }
-      } else if (pattern === 'minimal') {
-        const cx = width / 2; const cy = height / 2; const size = 100 * scale;
-        ctx.beginPath(); ctx.moveTo(cx - size, cy); ctx.lineTo(cx + size, cy);
-        ctx.moveTo(cx, cy - size); ctx.lineTo(cx, cy + size); ctx.stroke();
-        ctx.strokeRect(cx - size / 4, cy - size / 4, size / 2, size / 2);
-      } else if (pattern === 'column') {
-        const colX = padding * 3; ctx.beginPath(); ctx.moveTo(colX, padding); ctx.lineTo(colX, height - padding); ctx.stroke();
-        for (let i = 0; i < 20; i++) {
-          const y = padding + (i * (height - padding * 2) / 20);
-          ctx.strokeRect(colX - 10 * scale, y, 20 * scale, 1 * scale);
-        }
-      } else if (pattern === 'diagonal') {
-        const step = 40 * scale;
-        for (let i = -height; i < width + height; i += step) {
-          ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i + height, height); ctx.stroke();
-        }
-      }
-    }
-    ctx.restore();
+      const getRand = rng(seed);
 
-    // 4. Manual Assets (Structural Entities)
-    ctx.save();
-    assets.forEach(asset => {
+      // 1. Background
+      ctx.fillStyle = primaryColor.hex;
+      ctx.fillRect(0, 0, width, height);
+
+      if (style === 'glassy' && !bgImage) {
+        const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+        bgGradient.addColorStop(0, '#6366f1');
+        bgGradient.addColorStop(0.5, '#a855f7');
+        bgGradient.addColorStop(1, '#ec4899');
+        ctx.fillStyle = bgGradient;
+        ctx.fillRect(0, 0, width, height);
+
+        const drawBlob = (x, y, r, color) => {
+          ctx.save();
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fillStyle = color;
+          ctx.filter = 'blur(80px)';
+          ctx.globalAlpha = 0.4;
+          ctx.fill();
+          ctx.restore();
+        };
+        drawBlob(width * 0.2, height * 0.2, 300 * scale, '#c084fc');
+        drawBlob(width * 0.8, height * 0.1, 250 * scale, '#facc15');
+        drawBlob(width * 0.5, height * 0.9, 350 * scale, '#f472b6');
+      }
+
+      if (bgImage && options.includeBgImage) {
+        const imgRatio = bgImage.width / bgImage.height;
+        const canvasRatio = width / height;
+        let dWidth, dHeight, dx, dy;
+
+        if (imgRatio > canvasRatio) {
+          dHeight = height;
+          dWidth = height * imgRatio;
+          dx = (width - dWidth) / 2;
+          dy = 0;
+        } else {
+          dWidth = width;
+          dHeight = width / imgRatio;
+          dx = 0;
+          dy = (height - dHeight) / 2;
+        }
+        ctx.drawImage(bgImage, dx, dy, dWidth, dHeight);
+      }
+
+      // 2. Grid Layer (Structural Protocol)
+      if (gridOpacity > 0) {
+        ctx.save();
+        ctx.strokeStyle = accentColor.hex;
+        ctx.globalAlpha = gridOpacity;
+        ctx.lineWidth = 1 * scale;
+        const gridSize = 50 * scale;
+
+        ctx.beginPath();
+        for (let x = 0; x <= width; x += gridSize) {
+          ctx.moveTo(x, 0);
+          ctx.lineTo(x, height);
+        }
+        for (let y = 0; y <= height; y += gridSize) {
+          ctx.moveTo(0, y);
+          ctx.lineTo(width, y);
+        }
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      // 3. Shapes & Patterns
       ctx.save();
-      const ax = (asset.x / 100) * width;
-      const ay = (asset.y / 100) * height;
-      const aw = (asset.width / 100) * width;
-      const ah = (asset.height / 100) * height;
-
-      ctx.translate(ax, ay);
-      ctx.rotate(asset.rotation * (Math.PI / 180));
-      ctx.globalAlpha = asset.opacity;
-      ctx.fillStyle = accentColor.hex;
       ctx.strokeStyle = accentColor.hex;
+      ctx.fillStyle = accentColor.hex;
       ctx.lineWidth = 1 * scale;
 
-      if (asset.type === 'line') {
-        ctx.fillRect(-aw / 2, -ah / 2, aw, ah);
-      } else if (asset.type === 'box') {
-        ctx.strokeRect(-aw / 2, -ah / 2, aw, ah);
+      if (pattern === 'just_shapes') {
+        for (let i = 0; i < shapesCount; i++) {
+          const shapeType = Math.floor(getRand() * 10);
+          const x = getRand() * width;
+          const y = getRand() * height;
+          const size = (20 + getRand() * 100) * scale;
+          ctx.globalAlpha = shapesOpacity;
+
+          switch (shapeType) {
+            case 0:
+              ctx.strokeRect(x, y, size, size);
+              break;
+            case 1:
+              ctx.beginPath();
+              ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+              ctx.stroke();
+              break;
+            case 2:
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + size, y);
+              ctx.lineTo(x + size / 2, y - size);
+              ctx.closePath();
+              ctx.stroke();
+              break;
+            case 3:
+              ctx.beginPath();
+              ctx.moveTo(x - size / 2, y);
+              ctx.lineTo(x + size / 2, y);
+              ctx.moveTo(x, y - size / 2);
+              ctx.lineTo(x, y + size / 2);
+              ctx.stroke();
+              break;
+            case 4:
+              const gSize = size / 4;
+              for (let gx = 0; gx < 4; gx++) {
+                for (let gy = 0; gy < 4; gy++) {
+                  ctx.strokeRect(x + gx * gSize, y + gy * gSize, 2, 2);
+                }
+              }
+              break;
+            case 5:
+              for (let j = 0; j < 5; j++) {
+                ctx.beginPath();
+                ctx.arc(
+                  x + getRand() * size,
+                  y + getRand() * size,
+                  2 * scale,
+                  0,
+                  Math.PI * 2,
+                );
+                ctx.fill();
+              }
+              break;
+            case 6:
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              for (let j = 0; j < size; j += 5) {
+                ctx.lineTo(x + j, y + Math.sin(j * 0.1) * 10 * scale);
+              }
+              ctx.stroke();
+              break;
+            case 7:
+              ctx.beginPath();
+              ctx.moveTo(x, y);
+              ctx.lineTo(x + size, y + size);
+              ctx.stroke();
+              break;
+            case 8:
+              ctx.beginPath();
+              for (let j = 0; j < 5; j++) {
+                ctx.lineTo(
+                  x + Math.cos((j * Math.PI * 2) / 5) * size,
+                  y + Math.sin((j * Math.PI * 2) / 5) * size,
+                );
+              }
+              ctx.closePath();
+              ctx.stroke();
+              break;
+            case 9:
+              ctx.beginPath();
+              ctx.arc(x, y, size / 2, 0, Math.PI * 2);
+              ctx.stroke();
+              ctx.beginPath();
+              ctx.arc(x, y, size / 4, 0, Math.PI * 2);
+              ctx.stroke();
+              break;
+            default:
+              break;
+          }
+        }
+      } else if (pattern === 'generative_art') {
+        const artRng = (s) => {
+          let h = 0xdeadbeef;
+          const safeSeed = s.toString();
+          for (let i = 0; i < safeSeed.length; i++) {
+            h = Math.imul(h ^ safeSeed.charCodeAt(i), 2654435761);
+          }
+          return () => {
+            h = Math.imul(h ^ (h >>> 16), 2246822507);
+            h = Math.imul(h ^ (h >>> 13), 3266489909);
+            return ((h ^= h >>> 16) >>> 0) / 4294967296;
+          };
+        };
+        const gRng = artRng(seed);
+        const type = Math.floor(gRng() * 3);
+        ctx.globalAlpha = shapesOpacity;
+        if (type === 0) {
+          const gridSize = 5;
+          const cellSize = width / gridSize;
+          for (let x = 0; x < gridSize; x++) {
+            for (let y = 0; y < gridSize; y++) {
+              if (gRng() > 0.5) {
+                const shapeType = Math.floor(gRng() * 4);
+                const rotation = Math.floor(gRng() * 4) * (Math.PI / 2);
+                const cx = x * cellSize + cellSize / 2;
+                const cy = y * cellSize + cellSize / 2;
+                const is = cellSize * 0.8;
+                const p = cellSize * 0.1;
+                ctx.save();
+                ctx.translate(cx, cy);
+                ctx.rotate(rotation);
+                ctx.translate(-cellSize / 2, -cellSize / 2);
+                if (shapeType === 0) ctx.strokeRect(p, p, is, is);
+                else if (shapeType === 1) {
+                  ctx.beginPath();
+                  ctx.arc(cellSize / 2, cellSize / 2, is / 2, 0, Math.PI * 2);
+                  ctx.stroke();
+                } else if (shapeType === 2) {
+                  ctx.beginPath();
+                  ctx.moveTo(p, p);
+                  ctx.lineTo(cellSize - p, p);
+                  ctx.arcTo(cellSize - p, cellSize - p, p, cellSize - p, is);
+                  ctx.lineTo(p, p);
+                  ctx.stroke();
+                } else if (shapeType === 3) {
+                  ctx.beginPath();
+                  ctx.moveTo(p, cellSize - p);
+                  ctx.lineTo(cellSize / 2, p);
+                  ctx.lineTo(cellSize - p, cellSize - p);
+                  ctx.closePath();
+                  ctx.stroke();
+                }
+                ctx.restore();
+              }
+            }
+          }
+        } else if (type === 1) {
+          for (let i = 0; i < 15; i++) {
+            const isVertical = gRng() > 0.5;
+            const x = Math.floor(gRng() * 10) * (width / 10);
+            const y = Math.floor(gRng() * 10) * (height / 10);
+            const thickness = (0.5 + gRng() * 1.5) * scale * 5;
+            const len = (20 + gRng() * 60) * scale * 5;
+            ctx.fillRect(
+              x,
+              y,
+              isVertical ? thickness : len,
+              isVertical ? len : thickness,
+            );
+            if (gRng() > 0.4) {
+              ctx.beginPath();
+              ctx.arc(x, y, thickness * 2, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        } else {
+          for (let i = 0; i < 8; i++) {
+            const cx = gRng() * width;
+            const cy = gRng() * height;
+            const r = (10 + gRng() * 40) * scale * 5;
+            ctx.beginPath();
+            ctx.arc(cx, cy, r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        }
+      } else {
+        const padding = 60 * scale;
+        ctx.globalAlpha = shapesOpacity;
+        ctx.lineWidth = 2 * scale;
+        if (pattern === 'bauhaus') {
+          for (let i = 0; i < 5; i++) {
+            ctx.strokeRect(
+              getRand() * width,
+              getRand() * height,
+              200 * scale * getRand(),
+              200 * scale * getRand(),
+            );
+            ctx.beginPath();
+            ctx.arc(
+              getRand() * width,
+              getRand() * height,
+              100 * scale * getRand(),
+              0,
+              Math.PI * 2,
+            );
+            ctx.stroke();
+          }
+        } else if (pattern === 'technical') {
+          ctx.beginPath();
+          ctx.moveTo(width / 2, padding);
+          ctx.lineTo(width / 2, height - padding);
+          ctx.stroke();
+          for (let i = 0; i < 10; i++) {
+            const y = padding + getRand() * (height - padding * 2);
+            ctx.strokeRect(width / 2 - 20 * scale, y, 40 * scale, 2 * scale);
+          }
+        } else if (pattern === 'minimal') {
+          const cx = width / 2;
+          const cy = height / 2;
+          const size = 100 * scale;
+          ctx.beginPath();
+          ctx.moveTo(cx - size, cy);
+          ctx.lineTo(cx + size, cy);
+          ctx.moveTo(cx, cy - size);
+          ctx.lineTo(cx, cy + size);
+          ctx.stroke();
+          ctx.strokeRect(cx - size / 4, cy - size / 4, size / 2, size / 2);
+        } else if (pattern === 'column') {
+          const colX = padding * 3;
+          ctx.beginPath();
+          ctx.moveTo(colX, padding);
+          ctx.lineTo(colX, height - padding);
+          ctx.stroke();
+          for (let i = 0; i < 20; i++) {
+            const y = padding + (i * (height - padding * 2)) / 20;
+            ctx.strokeRect(colX - 10 * scale, y, 20 * scale, 1 * scale);
+          }
+        } else if (pattern === 'diagonal') {
+          const step = 40 * scale;
+          for (let i = -height; i < width + height; i += step) {
+            ctx.beginPath();
+            ctx.moveTo(i, 0);
+            ctx.lineTo(i + height, height);
+            ctx.stroke();
+          }
+        }
       }
       ctx.restore();
-    });
-    ctx.restore();
 
-    // 5. Typography
-    if (options.includeText) {
-      ctx.fillStyle = accentColor.hex;
-      ctx.textBaseline = 'middle';
-      Object.entries(inputs).forEach(([key, config]) => {
+      // 4. Manual Assets (Structural Entities)
+      ctx.save();
+      assets.forEach((asset) => {
         ctx.save();
-        ctx.font = `${style === 'brutalist' ? 'bold' : ''} ${config.size * scale}px "${config.font}"`;
-        const x = (config.x / 100) * width;
-        const y = (config.y / 100) * height;
-        if (key === 'rightEdgeText') {
-          ctx.translate(x, y); ctx.rotate(Math.PI / 2); ctx.textAlign = 'center'; ctx.fillText(config.text.toUpperCase(), 0, 0);
-        } else if (key === 'title' || key === 'subtitle' || key === 'bottomText') {
-          ctx.textAlign = 'center'; ctx.fillText(config.text.toUpperCase(), x, y);
-        } else if (key === 'secondStory' || key === 'secondStorySub') {
-          ctx.textAlign = 'right'; ctx.fillText(config.text.toUpperCase(), x, y);
-        } else {
-          ctx.textAlign = 'left'; ctx.fillText(config.text.toUpperCase(), x, y);
+        const ax = (asset.x / 100) * width;
+        const ay = (asset.y / 100) * height;
+        const aw = (asset.width / 100) * width;
+        const ah = (asset.height / 100) * height;
+
+        ctx.translate(ax, ay);
+        ctx.rotate(asset.rotation * (Math.PI / 180));
+        ctx.globalAlpha = asset.opacity;
+        ctx.fillStyle = accentColor.hex;
+        ctx.strokeStyle = accentColor.hex;
+        ctx.lineWidth = 1 * scale;
+
+        if (asset.type === 'line') {
+          ctx.fillRect(-aw / 2, -ah / 2, aw, ah);
+        } else if (asset.type === 'box') {
+          ctx.strokeRect(-aw / 2, -ah / 2, aw, ah);
         }
         ctx.restore();
       });
-    }
-
-    // 4. Border
-    if (borderWidth > 0) {
-      ctx.strokeStyle = accentColor.hex;
-      ctx.lineWidth = borderWidth * scale;
-      const bPadding = 30 * scale;
-
-      if (style === 'glassy') {
-        const r = 40 * scale;
-        const bx = bPadding;
-        const by = bPadding;
-        const bw = width - bPadding * 2;
-        const bh = height - bPadding * 2;
-
-        ctx.beginPath();
-        ctx.moveTo(bx + r, by);
-        ctx.lineTo(bx + bw - r, by);
-        ctx.quadraticCurveTo(bx + bw, by, bx + bw, by + r);
-        ctx.lineTo(bx + bw, by + bh - r);
-        ctx.quadraticCurveTo(bx + bw, by + bh, bx + bw - r, by + bh);
-        ctx.lineTo(bx + r, by + bh);
-        ctx.quadraticCurveTo(bx, by + bh, bx, by + bh - r);
-        ctx.lineTo(bx, by + r);
-        ctx.quadraticCurveTo(bx, by, bx + r, by);
-        ctx.closePath();
-        ctx.stroke();
-      } else {
-        ctx.strokeRect(bPadding, bPadding, width - bPadding * 2, height - bPadding * 2);
-      }
-    }
-
-    // 5. Noise
-    if (noiseOpacity > 0) {
-      const noiseSize = 256;
-      const noiseCanvas = document.createElement('canvas');
-      noiseCanvas.width = noiseSize;
-      noiseCanvas.height = noiseSize;
-      const nCtx = noiseCanvas.getContext('2d');
-      const nData = nCtx.createImageData(noiseSize, noiseSize);
-      for (let i = 0; i < nData.data.length; i += 4) {
-        const val = Math.random() * 255;
-        nData.data[i] = nData.data[i + 1] = nData.data[i + 2] = val;
-        nData.data[i + 3] = 255;
-      }
-      nCtx.putImageData(nData, 0, 0);
-      ctx.save();
-      ctx.globalAlpha = noiseOpacity;
-      ctx.globalCompositeOperation = 'overlay';
-      const pattern = ctx.createPattern(noiseCanvas, 'repeat');
-      ctx.fillStyle = pattern;
-      ctx.fillRect(0, 0, width, height);
       ctx.restore();
-    }
-  }, [style, pattern, primaryColor, accentColor, bgImage, seed, shapesCount, shapesOpacity, noiseOpacity, gridOpacity, borderWidth, inputs, assets]);
+
+      // 5. Typography
+      if (options.includeText) {
+        ctx.fillStyle = accentColor.hex;
+        ctx.textBaseline = 'middle';
+        Object.entries(inputs).forEach(([key, config]) => {
+          ctx.save();
+          ctx.font = `${style === 'brutalist' ? 'bold' : ''} ${config.size * scale}px "${config.font}"`;
+          const x = (config.x / 100) * width;
+          const y = (config.y / 100) * height;
+          if (key === 'rightEdgeText') {
+            ctx.translate(x, y);
+            ctx.rotate(Math.PI / 2);
+            ctx.textAlign = 'center';
+            ctx.fillText(config.text.toUpperCase(), 0, 0);
+          } else if (
+            key === 'title' ||
+            key === 'subtitle' ||
+            key === 'bottomText'
+          ) {
+            ctx.textAlign = 'center';
+            ctx.fillText(config.text.toUpperCase(), x, y);
+          } else if (key === 'secondStory' || key === 'secondStorySub') {
+            ctx.textAlign = 'right';
+            ctx.fillText(config.text.toUpperCase(), x, y);
+          } else {
+            ctx.textAlign = 'left';
+            ctx.fillText(config.text.toUpperCase(), x, y);
+          }
+          ctx.restore();
+        });
+      }
+
+      // 4. Border
+      if (borderWidth > 0) {
+        ctx.strokeStyle = accentColor.hex;
+        ctx.lineWidth = borderWidth * scale;
+        const bPadding = 30 * scale;
+
+        if (style === 'glassy') {
+          const r = 40 * scale;
+          const bx = bPadding;
+          const by = bPadding;
+          const bw = width - bPadding * 2;
+          const bh = height - bPadding * 2;
+
+          ctx.beginPath();
+          ctx.moveTo(bx + r, by);
+          ctx.lineTo(bx + bw - r, by);
+          ctx.quadraticCurveTo(bx + bw, by, bx + bw, by + r);
+          ctx.lineTo(bx + bw, by + bh - r);
+          ctx.quadraticCurveTo(bx + bw, by + bh, bx + bw - r, by + bh);
+          ctx.lineTo(bx + r, by + bh);
+          ctx.quadraticCurveTo(bx, by + bh, bx, by + bh - r);
+          ctx.lineTo(bx, by + r);
+          ctx.quadraticCurveTo(bx, by, bx + r, by);
+          ctx.closePath();
+          ctx.stroke();
+        } else {
+          ctx.strokeRect(
+            bPadding,
+            bPadding,
+            width - bPadding * 2,
+            height - bPadding * 2,
+          );
+        }
+      }
+
+      // 5. Noise
+      if (noiseOpacity > 0) {
+        const noiseSize = 256;
+        const noiseCanvas = document.createElement('canvas');
+        noiseCanvas.width = noiseSize;
+        noiseCanvas.height = noiseSize;
+        const nCtx = noiseCanvas.getContext('2d');
+        const nData = nCtx.createImageData(noiseSize, noiseSize);
+        for (let i = 0; i < nData.data.length; i += 4) {
+          const val = Math.random() * 255;
+          nData.data[i] = nData.data[i + 1] = nData.data[i + 2] = val;
+          nData.data[i + 3] = 255;
+        }
+        nCtx.putImageData(nData, 0, 0);
+        ctx.save();
+        ctx.globalAlpha = noiseOpacity;
+        ctx.globalCompositeOperation = 'overlay';
+        const pattern = ctx.createPattern(noiseCanvas, 'repeat');
+        ctx.fillStyle = pattern;
+        ctx.fillRect(0, 0, width, height);
+        ctx.restore();
+      }
+    },
+    [
+      style,
+      pattern,
+      primaryColor,
+      accentColor,
+      bgImage,
+      seed,
+      shapesCount,
+      shapesOpacity,
+      noiseOpacity,
+      gridOpacity,
+      borderWidth,
+      inputs,
+      assets,
+    ],
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -583,8 +804,10 @@ const MagazinerPage = () => {
   const handleDownload = (mode = 'full') => {
     const canvas = document.createElement('canvas');
     const ctx = canvas.getContext('2d');
-    const W = 2480; const H = 3508;
-    canvas.width = W; canvas.height = H;
+    const W = 2480;
+    const H = 3508;
+    canvas.width = W;
+    canvas.height = H;
     const options = {
       includeText: mode === 'full',
       includeBgImage: mode === 'full',
@@ -596,7 +819,10 @@ const MagazinerPage = () => {
     link.click();
     addToast({
       title: 'EXPORT_SUCCESS',
-      message: mode === 'full' ? 'Magazine cover exported.' : 'Background template exported.'
+      message:
+        mode === 'full'
+          ? 'Magazine cover exported.'
+          : 'Background template exported.',
     });
   };
 
@@ -605,20 +831,34 @@ const MagazinerPage = () => {
       <Seo
         title="Magaziner | Fezcodex"
         description="Generate high-end magazine covers with brutalist or posh aesthetics."
-        keywords={['Fezcodex', 'magazine cover generator', 'brutalist design', 'posh design', 'typography tool']}
+        keywords={[
+          'Fezcodex',
+          'magazine cover generator',
+          'brutalist design',
+          'posh design',
+          'typography tool',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
-          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
+          >
             <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Magaziner" slug="magaziner" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Magaziner"
+                slug="magaziner"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Premium cover construction interface. Toggle between raw brutalism and elite minimal aesthetics.
+                Premium cover construction interface. Toggle between raw
+                brutalism and elite minimal aesthetics.
               </p>
             </div>
 
@@ -651,7 +891,10 @@ const MagazinerPage = () => {
         <BrutalistDialog
           isOpen={isSaveDialogOpen}
           onClose={() => setIsSaveDialogOpen(false)}
-          onConfirm={() => { handleSavePreset(); setIsSaveDialogOpen(false); }}
+          onConfirm={() => {
+            handleSavePreset();
+            setIsSaveDialogOpen(false);
+          }}
           title="MEMORY_COMMIT_PROTOCOL"
           message="THIS ACTION WILL OVERWRITE YOUR PREVIOUSLY STORED CONFIGURATION IN THE LOCAL BROWSER ARCHIVE. DO YOU WISH TO COMMIT THESE ENTITIES?"
           confirmText="COMMIT_TO_MEMORY"
@@ -661,7 +904,10 @@ const MagazinerPage = () => {
         <BrutalistDialog
           isOpen={isLoadDialogOpen}
           onClose={() => setIsLoadDialogOpen(false)}
-          onConfirm={() => { handleLoadPreset(); setIsLoadDialogOpen(false); }}
+          onConfirm={() => {
+            handleLoadPreset();
+            setIsLoadDialogOpen(false);
+          }}
           title="DATA_RECOVERY_PROTOCOL"
           message="THIS ACTION WILL OVERRIDE ALL CURRENT UNSAVED CHANGES WITH THE DATA STORED IN YOUR LOCAL ARCHIVE. DO YOU WISH TO PROCEED WITH RECOVERY?"
           confirmText="EXECUTE_RECOVERY"
@@ -679,18 +925,28 @@ const MagazinerPage = () => {
             </p>
             <div className="flex flex-col gap-4">
               <button
-                onClick={() => { handleDownload('full'); setIsExportDialogOpen(false); }}
+                onClick={() => {
+                  handleDownload('full');
+                  setIsExportDialogOpen(false);
+                }}
                 className="w-full py-6 bg-white text-black hover:bg-emerald-500 transition-all font-black text-xs flex flex-col items-center gap-1"
               >
                 <span>EXPORT_COVER</span>
-                <span className="text-[9px] opacity-60">FULL COMPOSITION WITH TYPOGRAPHY & MEDIA</span>
+                <span className="text-[9px] opacity-60">
+                  FULL COMPOSITION WITH TYPOGRAPHY & MEDIA
+                </span>
               </button>
               <button
-                onClick={() => { handleDownload('page'); setIsExportDialogOpen(false); }}
+                onClick={() => {
+                  handleDownload('page');
+                  setIsExportDialogOpen(false);
+                }}
                 className="w-full py-6 border border-white/10 text-white hover:bg-white/5 transition-all font-black text-xs flex flex-col items-center gap-1"
               >
                 <span>EXPORT_PAGE</span>
-                <span className="text-[9px] text-gray-500">TEMPLATE ONLY // SHAPES + GRID + BORDER</span>
+                <span className="text-[9px] text-gray-500">
+                  TEMPLATE ONLY // SHAPES + GRID + BORDER
+                </span>
               </button>
               <button
                 onClick={() => setIsExportDialogOpen(false)}
@@ -710,28 +966,54 @@ const MagazinerPage = () => {
                 Aesthetic_Profile
               </h3>
               <div className="space-y-6">
-                <CustomDropdown label="Style Protocol" options={STYLES} value={style} onChange={setStyle} variant="brutalist" fullWidth />
+                <CustomDropdown
+                  label="Style Protocol"
+                  options={STYLES}
+                  value={style}
+                  onChange={setStyle}
+                  variant="brutalist"
+                  fullWidth
+                />
                 <div className="space-y-4">
-                  <label className="block font-mono text-[9px] uppercase text-gray-600">Background Image</label>
-                  <input type="file" ref={fileInputRef} onChange={handleImageUpload} className="hidden" accept="image/*" />
-                  <button onClick={() => fileInputRef.current.click()} className="w-full py-3 border border-dashed border-white/20 text-gray-400 hover:text-white transition-all font-mono text-[10px] uppercase flex items-center justify-center gap-2">
-                    <ImageIcon weight="bold" /> {bgImage ? 'Replace Image' : 'Upload Backdrop'}
+                  <label className="block font-mono text-[9px] uppercase text-gray-600">
+                    Background Image
+                  </label>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    accept="image/*"
+                  />
+                  <button
+                    onClick={() => fileInputRef.current.click()}
+                    className="w-full py-3 border border-dashed border-white/20 text-gray-400 hover:text-white transition-all font-mono text-[10px] uppercase flex items-center justify-center gap-2"
+                  >
+                    <ImageIcon weight="bold" />{' '}
+                    {bgImage ? 'Replace Image' : 'Upload Backdrop'}
                   </button>
-                  {bgImage && <button onClick={() => setBgImage(null)} className="w-full text-[9px] font-mono text-red-500 uppercase text-center">Clear Image</button>}
+                  {bgImage && (
+                    <button
+                      onClick={() => setBgImage(null)}
+                      className="w-full text-[9px] font-mono text-red-500 uppercase text-center"
+                    >
+                      Clear Image
+                    </button>
+                  )}
                 </div>
-                    <div className="space-y-6">
-                      <CustomColorPicker
-                        label="Base Chromatic"
-                        value={primaryColor.hex}
-                        onChange={(hex) => setPrimaryColor({ name: 'Custom', hex })}
-                      />
+                <div className="space-y-6">
+                  <CustomColorPicker
+                    label="Base Chromatic"
+                    value={primaryColor.hex}
+                    onChange={(hex) => setPrimaryColor({ name: 'Custom', hex })}
+                  />
 
-                      <CustomColorPicker
-                        label="Accent Chromatic"
-                        value={accentColor.hex}
-                        onChange={(hex) => setAccentColor({ name: 'Custom', hex })}
-                      />
-                    </div>
+                  <CustomColorPicker
+                    label="Accent Chromatic"
+                    value={accentColor.hex}
+                    onChange={(hex) => setAccentColor({ name: 'Custom', hex })}
+                  />
+                </div>
               </div>
             </div>
 
@@ -759,9 +1041,14 @@ const MagazinerPage = () => {
 
                 <div className="space-y-12 overflow-y-auto max-h-[400px] pr-2 custom-scrollbar">
                   {assets.map((asset) => (
-                    <div key={asset.id} className="p-4 border border-white/5 bg-white/[0.01] space-y-6">
+                    <div
+                      key={asset.id}
+                      className="p-4 border border-white/5 bg-white/[0.01] space-y-6"
+                    >
                       <div className="flex justify-between items-center border-b border-white/5 pb-2">
-                        <span className="text-[9px] font-mono text-gray-500 uppercase">{asset.type} {'//'} {asset.id.toString().slice(-4)}</span>
+                        <span className="text-[9px] font-mono text-gray-500 uppercase">
+                          {asset.type} {'//'} {asset.id.toString().slice(-4)}
+                        </span>
                         <button
                           onClick={() => removeAsset(asset.id)}
                           className="text-red-500 hover:text-white transition-colors"
@@ -791,7 +1078,9 @@ const MagazinerPage = () => {
                           max={100}
                           step={0.1}
                           value={asset.width}
-                          onChange={(val) => updateAsset(asset.id, 'width', val)}
+                          onChange={(val) =>
+                            updateAsset(asset.id, 'width', val)
+                          }
                         />
                         <CustomSlider
                           label="Height / Thickness"
@@ -799,14 +1088,18 @@ const MagazinerPage = () => {
                           max={100}
                           step={0.1}
                           value={asset.height}
-                          onChange={(val) => updateAsset(asset.id, 'height', val)}
+                          onChange={(val) =>
+                            updateAsset(asset.id, 'height', val)
+                          }
                         />
                         <CustomSlider
                           label="Rotation"
                           min={0}
                           max={360}
                           value={asset.rotation}
-                          onChange={(val) => updateAsset(asset.id, 'rotation', val)}
+                          onChange={(val) =>
+                            updateAsset(asset.id, 'rotation', val)
+                          }
                         />
                         <CustomSlider
                           label="Opacity"
@@ -814,7 +1107,9 @@ const MagazinerPage = () => {
                           max={1}
                           step={0.01}
                           value={asset.opacity}
-                          onChange={(val) => updateAsset(asset.id, 'opacity', val)}
+                          onChange={(val) =>
+                            updateAsset(asset.id, 'opacity', val)
+                          }
                         />
                       </div>
                     </div>
@@ -824,19 +1119,29 @@ const MagazinerPage = () => {
             </div>
 
             {Object.entries(inputs).map(([key, config]) => (
-              <div key={key} className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10">
+              <div
+                key={key}
+                className="border border-white/10 bg-white/[0.02] p-8 rounded-sm space-y-10"
+              >
                 <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-6">
                   <TextAaIcon weight="fill" />
-                  {key.replace(/([A-Z])/g, ' $1').trim().toUpperCase()}
+                  {key
+                    .replace(/([A-Z])/g, ' $1')
+                    .trim()
+                    .toUpperCase()}
                 </h3>
 
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <label className="font-mono text-[9px] uppercase text-gray-500">Input String</label>
+                    <label className="font-mono text-[9px] uppercase text-gray-500">
+                      Input String
+                    </label>
                     <input
                       type="text"
                       value={config.text}
-                      onChange={(e) => handleInputChange(key, 'text', e.target.value)}
+                      onChange={(e) =>
+                        handleInputChange(key, 'text', e.target.value)
+                      }
                       className="w-full bg-black/40 border border-white/10 p-3 font-mono text-[10px] uppercase tracking-widest focus:border-emerald-500 outline-none transition-all"
                     />
                   </div>
@@ -891,13 +1196,56 @@ const MagazinerPage = () => {
                 Structural_Noise
               </h3>
               <div className="space-y-8">
-                <CustomDropdown label="Background Pattern" options={PATTERNS} value={pattern} onChange={setPattern} variant="brutalist" fullWidth />
-                <CustomSlider label="Shape Density" min={0} max={50} value={shapesCount} onChange={setShapesCount} />
-                <CustomSlider label="Frame Thickness" min={0} max={100} value={borderWidth} onChange={setBorderWidth} />
-                <CustomSlider label="Noise Entropy" min={0} max={0.5} step={0.01} value={noiseOpacity} onChange={setNoiseOpacity} />
-                <CustomSlider label="Grid Structural" min={0} max={0.8} step={0.01} value={gridOpacity} onChange={setGridOpacity} />
-                <CustomSlider label="Pattern Opacity" min={0} max={1} step={0.01} value={shapesOpacity} onChange={setShapesOpacity} />
-                <button onClick={() => setSeed(Math.random())} className="w-full py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2">
+                <CustomDropdown
+                  label="Background Pattern"
+                  options={PATTERNS}
+                  value={pattern}
+                  onChange={setPattern}
+                  variant="brutalist"
+                  fullWidth
+                />
+                <CustomSlider
+                  label="Shape Density"
+                  min={0}
+                  max={50}
+                  value={shapesCount}
+                  onChange={setShapesCount}
+                />
+                <CustomSlider
+                  label="Frame Thickness"
+                  min={0}
+                  max={100}
+                  value={borderWidth}
+                  onChange={setBorderWidth}
+                />
+                <CustomSlider
+                  label="Noise Entropy"
+                  min={0}
+                  max={0.5}
+                  step={0.01}
+                  value={noiseOpacity}
+                  onChange={setNoiseOpacity}
+                />
+                <CustomSlider
+                  label="Grid Structural"
+                  min={0}
+                  max={0.8}
+                  step={0.01}
+                  value={gridOpacity}
+                  onChange={setGridOpacity}
+                />
+                <CustomSlider
+                  label="Pattern Opacity"
+                  min={0}
+                  max={1}
+                  step={0.01}
+                  value={shapesOpacity}
+                  onChange={setShapesOpacity}
+                />
+                <button
+                  onClick={() => setSeed(Math.random())}
+                  className="w-full py-4 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
+                >
                   <ArrowsClockwiseIcon weight="bold" /> Re-Seed Patterns
                 </button>
               </div>
@@ -905,14 +1253,32 @@ const MagazinerPage = () => {
           </div>
 
           <div className="lg:col-span-8">
-            <div className={`${stickyPreview ? 'lg:sticky lg:top-24' : ''} transition-all duration-300`}>
+            <div
+              className={`${stickyPreview ? 'lg:sticky lg:top-24' : ''} transition-all duration-300`}
+            >
               <div className="relative border border-white/10 bg-[#0a0a0a] rounded-sm overflow-hidden flex items-center justify-center shadow-2xl group min-h-[800px]">
-                <canvas ref={canvasRef} className="w-full max-w-[600px] aspect-[1/1.414] object-contain shadow-[0_0_100px_rgba(0,0,0,0.5)]" style={{ imageRendering: 'pixelated' }} />
+                <canvas
+                  ref={canvasRef}
+                  className="w-full max-w-[600px] aspect-[1/1.414] object-contain shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+                  style={{ imageRendering: 'pixelated' }}
+                />
                 <div className="absolute top-8 right-8 z-30 flex flex-col items-end gap-2">
-                  <button onClick={() => setStickyPreview(!stickyPreview)} className={`flex items-center gap-2 px-4 py-2 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest transition-all ${stickyPreview ? 'bg-red-500 text-black border-red-500 font-black' : 'bg-black/60 text-red-400 hover:bg-red-500 hover:text-black'}`} title={stickyPreview ? 'Unstick Preview' : 'Stick Preview'}>
-                    <PushPinIcon weight={stickyPreview ? 'fill' : 'bold'} /> {stickyPreview ? 'Pinned' : 'Pin'}
+                  <button
+                    onClick={() => setStickyPreview(!stickyPreview)}
+                    className={`flex items-center gap-2 px-4 py-2 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest transition-all ${stickyPreview ? 'bg-red-500 text-black border-red-500 font-black' : 'bg-black/60 text-red-400 hover:bg-red-500 hover:text-black'}`}
+                    title={stickyPreview ? 'Unstick Preview' : 'Stick Preview'}
+                  >
+                    <PushPinIcon weight={stickyPreview ? 'fill' : 'bold'} />{' '}
+                    {stickyPreview ? 'Pinned' : 'Pin'}
                   </button>
-                  <button onClick={() => { setInputs(initialInputs); setSeed(Math.random()); setBgImage(null); }} className="opacity-0 group-hover:opacity-100 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-black transition-all">
+                  <button
+                    onClick={() => {
+                      setInputs(initialInputs);
+                      setSeed(Math.random());
+                      setBgImage(null);
+                    }}
+                    className="opacity-0 group-hover:opacity-100 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-black transition-all"
+                  >
                     <TrashIcon weight="bold" /> Reset
                   </button>
                 </div>
@@ -920,9 +1286,13 @@ const MagazinerPage = () => {
               <div className="mt-12 p-8 border border-white/10 bg-white/[0.01] rounded-sm flex items-start gap-6">
                 <InfoIcon size={32} className="text-gray-700 shrink-0 mt-1" />
                 <div className="space-y-4">
-                  <p className="text-sm font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">MAGAZINER_PROTOCOL: High-fidelity rasterization active. Final render calibrated for A4 output at 300 DPI.</p>
+                  <p className="text-sm font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
+                    MAGAZINER_PROTOCOL: High-fidelity rasterization active.
+                    Final render calibrated for A4 output at 300 DPI.
+                  </p>
                   <div className="flex items-center gap-2 text-emerald-500 font-mono text-[10px] uppercase">
-                    <ArrowsOutIcon weight="bold" /> All elements are fully mappable on the 100x100 grid.
+                    <ArrowsOutIcon weight="bold" /> All elements are fully
+                    mappable on the 100x100 grid.
                   </div>
                 </div>
               </div>

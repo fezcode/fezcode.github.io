@@ -10,7 +10,15 @@ function DndNotFoundPage() {
       <Seo
         title="404 - Lost in the Dungeon! | Fezcodex"
         description="The page you are looking for does not exist in this D&D realm."
-        keywords={['Fezcodex', 'd&d', 'dnd', '404', 'not found', 'lost', 'dungeon']}
+        keywords={[
+          'Fezcodex',
+          'd&d',
+          'dnd',
+          '404',
+          'not found',
+          'lost',
+          'dungeon',
+        ]}
       />
       <div className="max-w-4xl mx-auto px-6 py-32 text-center relative">
         <motion.div
@@ -19,7 +27,11 @@ function DndNotFoundPage() {
           transition={{ duration: 0.5 }}
         >
           <div className="flex justify-center mb-12">
-             <WarningCircleIcon size={80} className="text-dnd-gold animate-pulse" weight="duotone" />
+            <WarningCircleIcon
+              size={80}
+              className="text-dnd-gold animate-pulse"
+              weight="duotone"
+            />
           </div>
 
           <h1 className="text-7xl md:text-9xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-8">
@@ -36,8 +48,9 @@ function DndNotFoundPage() {
               Stranded in the Ether
             </p>
             <p className="text-lg font-arvo text-dnd-text/80 leading-relaxed max-w-lg mx-auto">
-              The chronicle you seek has been lost to time or never existed in these archives.
-              Perhaps you took a wrong turn at the last crossroads.
+              The chronicle you seek has been lost to time or never existed in
+              these archives. Perhaps you took a wrong turn at the last
+              crossroads.
             </p>
           </div>
         </motion.div>

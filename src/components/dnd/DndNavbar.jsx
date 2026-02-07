@@ -7,7 +7,9 @@ const DndNavbar = () => {
   const { breadcrumbs, language, setLanguage } = useContext(DndContext);
 
   const formatBreadcrumbLabel = (label) => {
-    return label.indexOf(':') !== -1 ? label.substring(0, label.indexOf(':')) : label;
+    return label.indexOf(':') !== -1
+      ? label.substring(0, label.indexOf(':'))
+      : label;
   };
 
   return (
@@ -15,7 +17,10 @@ const DndNavbar = () => {
       {/* Top Bar: Navigation & Breadcrumbs */}
       <div className="bg-black/40 px-4 md:px-12 py-2 flex items-center justify-between border-b border-white/5 md:mt-[25px]">
         <div className="flex items-center gap-4">
-          <Link to="/" className="text-white hover:text-dnd-gold transition-colors">
+          <Link
+            to="/"
+            className="text-white hover:text-dnd-gold transition-colors"
+          >
             <HouseIcon size={18} weight="fill" />
           </Link>
 
@@ -25,7 +30,10 @@ const DndNavbar = () => {
                 <React.Fragment key={crumb.path || index}>
                   <CaretRightIcon size={10} className="text-white/40" />
                   {crumb.path ? (
-                    <Link to={crumb.path} className="text-white/60 hover:text-white transition-colors">
+                    <Link
+                      to={crumb.path}
+                      className="text-white/60 hover:text-white transition-colors"
+                    >
                       {formatBreadcrumbLabel(crumb.label)}
                     </Link>
                   ) : (
@@ -54,7 +62,10 @@ const DndNavbar = () => {
               TR
             </button>
           </div>
-          <Link to="/" className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/40 hover:text-dnd-gold transition-colors hidden md:block">
+          <Link
+            to="/"
+            className="text-[10px] font-mono font-bold tracking-[0.4em] text-white/40 hover:text-dnd-gold transition-colors hidden md:block"
+          >
             FEZCODEX_SYSTEM
           </Link>
         </div>

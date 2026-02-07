@@ -7,7 +7,8 @@ import reportWebVitals from './reportWebVitals';
 
 // Polyfill Object.hasOwn for older environments (like react-snap's puppeteer)
 if (!Object.hasOwn) {
-  Object.hasOwn = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop);
+  Object.hasOwn = (obj, prop) =>
+    Object.prototype.hasOwnProperty.call(obj, prop);
 }
 
 const rootElement = document.getElementById('root');
@@ -17,7 +18,7 @@ if (rootElement.hasChildNodes()) {
     rootElement,
     <React.StrictMode>
       <App />
-    </React.StrictMode>
+    </React.StrictMode>,
   );
 } else {
   const root = ReactDOM.createRoot(rootElement);

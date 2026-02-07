@@ -25,35 +25,76 @@ export const VisualSettingsProvider = ({ children }) => {
     { id: 'font-nunito', name: 'Nunito' },
   ];
 
-  const [headerFont, setHeaderFont] = usePersistentState('header-font', 'font-outfit');
-  const [bodyFont, setBodyFont] = usePersistentState('body-font', 'font-outfit');
+  const [headerFont, setHeaderFont] = usePersistentState(
+    'header-font',
+    'font-outfit',
+  );
+  const [bodyFont, setBodyFont] = usePersistentState(
+    'body-font',
+    'font-outfit',
+  );
   const [isInverted, setIsInverted] = usePersistentState('is-inverted', false);
   const [isRetro, setIsRetro] = usePersistentState('is-retro', false);
   const [isParty, setIsParty] = usePersistentState('is-party', false);
   const [isMirror, setIsMirror] = usePersistentState('is-mirror', false);
   const [isNoir, setIsNoir] = usePersistentState('is-noir', false);
   const [isTerminal, setIsTerminal] = usePersistentState('is-terminal', false);
-  const [isBlueprint, setIsBlueprint] = usePersistentState('is-blueprint',false);
+  const [isBlueprint, setIsBlueprint] = usePersistentState(
+    'is-blueprint',
+    false,
+  );
   const [isSepia, setIsSepia] = usePersistentState('is-sepia', false);
-  const [isVaporwave, setIsVaporwave] = usePersistentState('is-vaporwave',false);
-  const [isCyberpunk, setIsCyberpunk] = usePersistentState('is-cyberpunk',false);
+  const [isVaporwave, setIsVaporwave] = usePersistentState(
+    'is-vaporwave',
+    false,
+  );
+  const [isCyberpunk, setIsCyberpunk] = usePersistentState(
+    'is-cyberpunk',
+    false,
+  );
   const [isGameboy, setIsGameboy] = usePersistentState('is-gameboy', false);
   const [isComic, setIsComic] = usePersistentState('is-comic', false);
-  const [isSketchbook, setIsSketchbook] = usePersistentState('is-sketchbook',false);
+  const [isSketchbook, setIsSketchbook] = usePersistentState(
+    'is-sketchbook',
+    false,
+  );
   const [isHellenic, setIsHellenic] = usePersistentState('is-hellenic', false);
   const [isGlitch, setIsGlitch] = usePersistentState('is-glitch', false);
   const [isGarden, setIsGarden] = usePersistentState('is-garden', false);
   const [isAutumn, setIsAutumn] = usePersistentState('is-autumn', false);
   const [isRain, setIsRain] = usePersistentState('is-rain', false);
-  const [isFalloutOverlay, setIsFalloutOverlay] = usePersistentState('is-fallout-overlay', false);
-  const [falloutVariant, setFalloutVariant] = usePersistentState('fallout-variant', 'amber'); // 'amber' or 'green'
-  const [isFalloutNoiseEnabled, setIsFalloutNoiseEnabled] = usePersistentState('fallout-noise', true);
-  const [isFalloutScanlinesEnabled, setIsFalloutScanlinesEnabled] = usePersistentState('fallout-scanlines', true);
-  const [isFalloutVignetteEnabled, setIsFalloutVignetteEnabled] = usePersistentState('fallout-vignette', true);
-  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState('blog-post-view-mode','editorial');
-  const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState('is-splash-text-enabled',true);
-  const [isAppFullscreen, setIsAppFullscreen] = usePersistentState('is-app-fullscreen', false);
-  const [fezcodexTheme, setFezcodexTheme] = usePersistentState('fezcodex-theme', 'brutalist'); // 'brutalist' or 'luxe'
+  const [isFalloutOverlay, setIsFalloutOverlay] = usePersistentState(
+    'is-fallout-overlay',
+    false,
+  );
+  const [falloutVariant, setFalloutVariant] = usePersistentState(
+    'fallout-variant',
+    'amber',
+  ); // 'amber' or 'green'
+  const [isFalloutNoiseEnabled, setIsFalloutNoiseEnabled] = usePersistentState(
+    'fallout-noise',
+    true,
+  );
+  const [isFalloutScanlinesEnabled, setIsFalloutScanlinesEnabled] =
+    usePersistentState('fallout-scanlines', true);
+  const [isFalloutVignetteEnabled, setIsFalloutVignetteEnabled] =
+    usePersistentState('fallout-vignette', true);
+  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState(
+    'blog-post-view-mode',
+    'editorial',
+  );
+  const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState(
+    'is-splash-text-enabled',
+    true,
+  );
+  const [isAppFullscreen, setIsAppFullscreen] = usePersistentState(
+    'is-app-fullscreen',
+    false,
+  );
+  const [fezcodexTheme, setFezcodexTheme] = usePersistentState(
+    'fezcodex-theme',
+    'brutalist',
+  ); // 'brutalist' or 'luxe'
 
   // URL Parameter Observer - Consumes ?fezTheme=... and ?fezBlogMode=...
   useEffect(() => {
@@ -67,10 +108,19 @@ export const VisualSettingsProvider = ({ children }) => {
       changed = true;
     }
 
-    if (blogModeParam && [
-      'brutalist', 'editorial', 'dossier', 'terminal',
-      'dokument', 'terminal-green', 'old', 'luxe'
-    ].includes(blogModeParam)) {
+    if (
+      blogModeParam &&
+      [
+        'brutalist',
+        'editorial',
+        'dossier',
+        'terminal',
+        'dokument',
+        'terminal-green',
+        'old',
+        'luxe',
+      ].includes(blogModeParam)
+    ) {
       setBlogPostViewMode(blogModeParam);
       changed = true;
     }
@@ -81,12 +131,17 @@ export const VisualSettingsProvider = ({ children }) => {
       newParams.delete('fezTheme');
       newParams.delete('fezBlogMode');
       const newSearch = newParams.toString();
-      const newUrl = window.location.pathname + (newSearch ? `?${newSearch}` : '') + window.location.hash;
+      const newUrl =
+        window.location.pathname +
+        (newSearch ? `?${newSearch}` : '') +
+        window.location.hash;
       window.history.replaceState({}, '', newUrl);
     }
   }, [setFezcodexTheme, setBlogPostViewMode]);
 
-  const [isSidebarOpen, setIsSidebarOpen] = React.useState(window.innerWidth > 768);
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(
+    window.innerWidth > 768,
+  );
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth <= 768) {
@@ -297,8 +352,10 @@ export const VisualSettingsProvider = ({ children }) => {
   const toggleRain = () => setIsRain((prev) => !prev);
   const toggleFalloutOverlay = () => setIsFalloutOverlay((prev) => !prev);
   const toggleFalloutNoise = () => setIsFalloutNoiseEnabled((prev) => !prev);
-  const toggleFalloutScanlines = () => setIsFalloutScanlinesEnabled((prev) => !prev);
-  const toggleFalloutVignette = () => setIsFalloutVignetteEnabled((prev) => !prev);
+  const toggleFalloutScanlines = () =>
+    setIsFalloutScanlinesEnabled((prev) => !prev);
+  const toggleFalloutVignette = () =>
+    setIsFalloutVignetteEnabled((prev) => !prev);
   const toggleSplashText = () => setIsSplashTextEnabled((prev) => !prev);
   const toggleAppFullscreen = () => setIsAppFullscreen((prev) => !prev);
 

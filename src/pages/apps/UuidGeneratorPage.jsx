@@ -73,7 +73,11 @@ function UuidGeneratorPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="UUID Generator" slug="uuid" variant="brutalist" />
+              <BreadcrumbTitle
+                title="UUID Generator"
+                slug="uuid"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Unique identity generator. Extract high-entropy character
                 sequences for collision-free digital identification.

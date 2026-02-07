@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import BrutalistPostItem from '../../components/BrutalistPostItem';
-import { ArrowLeftIcon, TagIcon, BookOpenIcon, CalendarIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  TagIcon,
+  BookOpenIcon,
+  CalendarIcon,
+} from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -123,7 +128,7 @@ const BrutalistSeriesPage = () => {
               post={{
                 ...post,
                 slug: `series/${seriesSlug}/${post.slug}`,
-                isSeries: false
+                isSeries: false,
               }}
               isActive={activePost?.slug === post.slug}
               onHover={setActivePost}
@@ -159,19 +164,20 @@ const BrutalistSeriesPage = () => {
 
               {/* Details Overlay */}
               <div className="absolute bottom-0 left-0 w-full p-16 z-10 flex flex-col gap-12">
-
                 <div className="space-y-6 border-l border-white/10 pl-6">
-                    <SpecItem
-                        icon={CalendarIcon}
-                        label="Date"
-                        value={new Date(activePost.updated || activePost.date).toLocaleDateString('en-GB')}
-                    />
-                    <SpecItem
-                        icon={TagIcon}
-                        label="Category"
-                        value={activePost.category || 'Episode'}
-                        isAccent
-                    />
+                  <SpecItem
+                    icon={CalendarIcon}
+                    label="Date"
+                    value={new Date(
+                      activePost.updated || activePost.date,
+                    ).toLocaleDateString('en-GB')}
+                  />
+                  <SpecItem
+                    icon={TagIcon}
+                    label="Category"
+                    value={activePost.category || 'Episode'}
+                    isAccent
+                  />
                 </div>
 
                 <div className="flex flex-col gap-4">

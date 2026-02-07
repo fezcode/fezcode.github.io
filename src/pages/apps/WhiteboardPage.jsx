@@ -137,7 +137,13 @@ const WhiteboardPage = () => {
   };
 
   const colorsList = [
-    '#000000', '#FF0000', '#0000FF', '#008000', '#FFA500', '#800080', '#A0522D',
+    '#000000',
+    '#FF0000',
+    '#0000FF',
+    '#008000',
+    '#FFA500',
+    '#800080',
+    '#A0522D',
   ];
 
   return (
@@ -145,20 +151,38 @@ const WhiteboardPage = () => {
       <Seo
         title="Whiteboard | Fezcodex"
         description="A simple digital whiteboard for sketching and doodling."
-        keywords={['Fezcodex', 'whiteboard', 'drawing', 'sketch', 'canvas', 'draw']}
+        keywords={[
+          'Fezcodex',
+          'whiteboard',
+          'drawing',
+          'sketch',
+          'canvas',
+          'draw',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
-          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
-            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
+          >
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Applications</span>
           </Link>
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Whiteboard" slug="draw" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Whiteboard"
+                slug="draw"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                A minimal digital space for sketching, brainstorming, and visualizing ideas.
+                A minimal digital space for sketching, brainstorming, and
+                visualizing ideas.
               </p>
             </div>
           </div>
@@ -203,7 +227,10 @@ const WhiteboardPage = () => {
                     {colorsList.map((c) => (
                       <button
                         key={c}
-                        onClick={() => { setColor(c); setTool('pen'); }}
+                        onClick={() => {
+                          setColor(c);
+                          setTool('pen');
+                        }}
                         className={`w-5 h-5 rounded-full border border-white/20 transition-transform ${color === c && tool === 'pen' ? 'scale-125 border-white' : 'hover:scale-110'}`}
                         style={{ backgroundColor: c }}
                       />
@@ -214,13 +241,20 @@ const WhiteboardPage = () => {
 
               <div className="flex items-center gap-6">
                 <div className="flex items-center gap-3">
-                  <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Size</span>
+                  <span className="text-[10px] font-mono text-gray-500 uppercase tracking-widest">
+                    Size
+                  </span>
                   <input
-                    type="range" min="1" max="20" value={lineWidth}
+                    type="range"
+                    min="1"
+                    max="20"
+                    value={lineWidth}
                     onChange={(e) => setLineWidth(parseInt(e.target.value))}
                     className="w-32 accent-white h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer"
                   />
-                  <span className="text-[10px] font-mono text-white w-4">{lineWidth}</span>
+                  <span className="text-[10px] font-mono text-white w-4">
+                    {lineWidth}
+                  </span>
                 </div>
 
                 <div className="flex gap-2">

@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useCallback, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   ArrowCounterClockwiseIcon,
@@ -8,23 +8,43 @@ import {
   ChartBarIcon,
   CirclesFourIcon,
 } from '@phosphor-icons/react';
-import {motion} from 'framer-motion';
+import { motion } from 'framer-motion';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
 
 const colorsList = [
-  {id: 'green', color: 'bg-emerald-500', active: 'bg-emerald-300', glow: 'shadow-[0_0_30px_rgba(16,185,129,0.6)]'},
-  {id: 'red', color: 'bg-rose-500', active: 'bg-rose-300', glow: 'shadow-[0_0_30px_rgba(244,63,94,0.6)]'},
-  {id: 'yellow', color: 'bg-amber-500', active: 'bg-amber-300', glow: 'shadow-[0_0_30px_rgba(245,158,11,0.6)]'},
-  {id: 'blue', color: 'bg-sky-500', active: 'bg-sky-300', glow: 'shadow-[0_0_30px_rgba(14,165,233,0.6)]'},
+  {
+    id: 'green',
+    color: 'bg-emerald-500',
+    active: 'bg-emerald-300',
+    glow: 'shadow-[0_0_30px_rgba(16,185,129,0.6)]',
+  },
+  {
+    id: 'red',
+    color: 'bg-rose-500',
+    active: 'bg-rose-300',
+    glow: 'shadow-[0_0_30px_rgba(244,63,94,0.6)]',
+  },
+  {
+    id: 'yellow',
+    color: 'bg-amber-500',
+    active: 'bg-amber-300',
+    glow: 'shadow-[0_0_30px_rgba(245,158,11,0.6)]',
+  },
+  {
+    id: 'blue',
+    color: 'bg-sky-500',
+    active: 'bg-sky-300',
+    glow: 'shadow-[0_0_30px_rgba(14,165,233,0.6)]',
+  },
 ];
 
 const SimonSaysPage = () => {
   const appName = 'Simon Says';
 
-  const {addToast} = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
   const [sequence, setSequence] = useState([]);
   const [userSequence, setUserSequence] = useState([]);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -37,7 +57,8 @@ const SimonSaysPage = () => {
   });
 
   const addToSequence = useCallback(() => {
-    const randomColor = colorsList[Math.floor(Math.random() * colorsList.length)].id;
+    const randomColor =
+      colorsList[Math.floor(Math.random() * colorsList.length)].id;
     setSequence((prev) => [...prev, randomColor]);
   }, []);
 
@@ -84,11 +105,14 @@ const SimonSaysPage = () => {
     if (newUserSequence[currentIndex] !== sequence[currentIndex]) {
       setGameOver(true);
       setGameActive(false);
-      addToast({message: 'SEQUENCE_TERMINATED: Error detected.', type: 'error'});
+      addToast({
+        message: 'SEQUENCE_TERMINATED: Error detected.',
+        type: 'error',
+      });
       if (score > highScore) {
         setHighScore(score);
         localStorage.setItem('simon_high_score', score.toString());
-        addToast({message: 'NEW_RECORD_ESTABLISHED', type: 'success'});
+        addToast({ message: 'NEW_RECORD_ESTABLISHED', type: 'success' });
       }
       return;
     }
@@ -107,7 +131,13 @@ const SimonSaysPage = () => {
       <Seo
         title="Simon Says | Fezcodex"
         description="Test your memory by repeating the sequence of colors in this high-tech adaptation."
-        keywords={['Fezcodex', 'simon says', 'memory game', 'color sequence', 'brutalist']}
+        keywords={[
+          'Fezcodex',
+          'simon says',
+          'memory game',
+          'color sequence',
+          'brutalist',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -116,7 +146,7 @@ const SimonSaysPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
           <BreadcrumbTitle title={appName} slug="simon" variant="brutalist" />
@@ -125,7 +155,9 @@ const SimonSaysPage = () => {
             <div>
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
                 Neural memory assessment. Replicate the generated{' '}
-                <span className="text-emerald-400 font-bold">light sequence</span>{' '}
+                <span className="text-emerald-400 font-bold">
+                  light sequence
+                </span>{' '}
                 to proceed.
               </p>
             </div>
@@ -143,8 +175,16 @@ const SimonSaysPage = () => {
                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">
                   System_Status
                 </span>
-                <span className={`text-3xl font-black ${gameActive ? (isPlaying ? 'text-white' : 'text-emerald-500') : (gameOver ? 'text-rose-500' : 'text-gray-700')}`}>
-                  {gameActive ? (isPlaying ? 'WATCHING' : 'LISTENING') : (gameOver ? 'TERMINATED' : 'IDLE')}
+                <span
+                  className={`text-3xl font-black ${gameActive ? (isPlaying ? 'text-white' : 'text-emerald-500') : gameOver ? 'text-rose-500' : 'text-gray-700'}`}
+                >
+                  {gameActive
+                    ? isPlaying
+                      ? 'WATCHING'
+                      : 'LISTENING'
+                    : gameOver
+                      ? 'TERMINATED'
+                      : 'IDLE'}
                 </span>
               </div>
             </div>
@@ -156,22 +196,26 @@ const SimonSaysPage = () => {
           <div className="lg:col-span-4 space-y-8">
             <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
               <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
-                <ChartBarIcon weight="fill"/>
+                <ChartBarIcon weight="fill" />
                 Session_Metrics
               </h3>
 
               <div className="space-y-6 relative z-10">
                 <div className="p-4 border border-white/5 bg-white/5">
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500">Highest_Seq</span>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-gray-500">
+                      Highest_Seq
+                    </span>
                     <TrophyIcon size={14} className="text-amber-500" />
                   </div>
-                  <div className="text-3xl font-black font-mono">{highScore.toString().padStart(2, '0')}</div>
+                  <div className="text-3xl font-black font-mono">
+                    {highScore.toString().padStart(2, '0')}
+                  </div>
                 </div>
 
                 {!gameActive ? (
@@ -179,15 +223,18 @@ const SimonSaysPage = () => {
                     onClick={startGame}
                     className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
                   >
-                    <PlayIcon weight="bold" size={18}/>
+                    <PlayIcon weight="bold" size={18} />
                     {gameOver ? 'REBOOT_SESSION' : 'INIT_SEQUENCE'}
                   </button>
                 ) : (
                   <button
-                    onClick={() => {setGameActive(false); setGameOver(true);}}
+                    onClick={() => {
+                      setGameActive(false);
+                      setGameOver(true);
+                    }}
                     className="w-full py-4 border border-rose-500/50 text-rose-500 hover:bg-rose-500 hover:text-black transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-3"
                   >
-                    <ArrowCounterClockwiseIcon weight="bold" size={16}/>
+                    <ArrowCounterClockwiseIcon weight="bold" size={16} />
                     ABORT_SESSION
                   </button>
                 )}
@@ -196,20 +243,23 @@ const SimonSaysPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <CirclesFourIcon size={20} weight="bold"/>
+                <CirclesFourIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Protocol_Details
                 </h4>
               </div>
               <ul className="space-y-3 text-xs font-mono text-gray-500 uppercase tracking-wider">
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">01</span> Observation phase: memorize the light pattern.
+                  <span className="text-emerald-500">01</span> Observation
+                  phase: memorize the light pattern.
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">02</span> Execution phase: replicate the exact sequence.
+                  <span className="text-emerald-500">02</span> Execution phase:
+                  replicate the exact sequence.
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">03</span> Sequence increments by +1 per successful cycle.
+                  <span className="text-emerald-500">03</span> Sequence
+                  increments by +1 per successful cycle.
                 </li>
               </ul>
             </div>
@@ -218,7 +268,7 @@ const SimonSaysPage = () => {
           {/* Game Column */}
           <div className="lg:col-span-8 flex flex-col gap-6">
             <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <CirclesFourIcon weight="fill" className="text-emerald-500"/>
+              <CirclesFourIcon weight="fill" className="text-emerald-500" />
               Input_Matrix_Interface
             </h3>
 
@@ -227,8 +277,16 @@ const SimonSaysPage = () => {
                 {colorsList.map((color) => (
                   <motion.button
                     key={color.id}
-                    whileHover={gameActive && !isPlaying && !gameOver ? {scale: 1.02} : {}}
-                    whileTap={gameActive && !isPlaying && !gameOver ? {scale: 0.95} : {}}
+                    whileHover={
+                      gameActive && !isPlaying && !gameOver
+                        ? { scale: 1.02 }
+                        : {}
+                    }
+                    whileTap={
+                      gameActive && !isPlaying && !gameOver
+                        ? { scale: 0.95 }
+                        : {}
+                    }
                     onClick={() => handleColorClick(color.id)}
                     disabled={!gameActive || isPlaying || gameOver}
                     className={`
@@ -242,9 +300,9 @@ const SimonSaysPage = () => {
                       <motion.div
                         layoutId="active-glow"
                         className="absolute -inset-4 border border-white/20 pointer-events-none"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                       />
                     )}
                   </motion.button>

@@ -29,7 +29,13 @@ const GalacticAgePage = () => {
       <Seo
         title="Galactic Age | Fezcodex"
         description="Protocol for orbital temporal mapping. Calculate your age relative to planetary cycles."
-        keywords={['Fezcodex', 'galactic age', 'age converter', 'planets', 'space']}
+        keywords={[
+          'Fezcodex',
+          'galactic age',
+          'age converter',
+          'planets',
+          'space',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         <header className="mb-24">
@@ -46,7 +52,11 @@ const GalacticAgePage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Galactic Age" slug="space" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Galactic Age"
+                slug="space"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Planetary temporal mapping. Calculate your biological age
                 relative to different orbital periods within the celestial

@@ -188,15 +188,10 @@ const Brutalist = () => {
           </div>
         </div>
 
-                <footer
-
-                  className="mt-48 pt-12 border-t-8 border-white flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-xs uppercase tracking-widest text-gray-500">
-
-                  <div className="font-black bg-white !text-black px-4 py-2">
-
-                    <span>TERMINAL_SESSION_END</span>
-
-                  </div>
+        <footer className="mt-48 pt-12 border-t-8 border-white flex flex-col md:flex-row justify-between items-center gap-8 font-mono text-xs uppercase tracking-widest text-gray-500">
+          <div className="font-black bg-white !text-black px-4 py-2">
+            <span>TERMINAL_SESSION_END</span>
+          </div>
           <div className="flex flex-col items-end gap-2">
             <span>LOG_TIMESTAMP: {new Date().toISOString()}</span>
             <span className="text-white font-black tracking-widest">

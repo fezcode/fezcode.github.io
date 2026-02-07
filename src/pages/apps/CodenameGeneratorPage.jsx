@@ -30,7 +30,7 @@ const prefixes = [
   'Gold',
   'Silver',
   'Bronze',
-  'Neural'
+  'Neural',
 ];
 
 const nouns = [
@@ -285,7 +285,11 @@ const CodenameGeneratorPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Operation Gen" slug="cg" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Operation Gen"
+                slug="cg"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Strategic identifier protocol. Generate unique nomenclature for
                 classified operations, system assets, and neural modules.

@@ -26,7 +26,7 @@ const LuxeCodeModal = ({ isOpen, onClose, children, language }) => {
       addToast({
         title: 'Archive Synchronized',
         message: 'Code snippet copied to local clipboard.',
-        type: 'success'
+        type: 'success',
       });
     });
   };
@@ -47,10 +47,13 @@ const LuxeCodeModal = ({ isOpen, onClose, children, language }) => {
             initial={{ scale: 0.98, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.98, opacity: 0, y: 20 }}
-            transition={{ type: "spring", damping: 35, stiffness: 200 }}
+            transition={{ type: 'spring', damping: 35, stiffness: 200 }}
           >
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
-              <LuxeArt seed="CODE_EXPANSION" className="w-full h-full mix-blend-multiply" />
+              <LuxeArt
+                seed="CODE_EXPANSION"
+                className="w-full h-full mix-blend-multiply"
+              />
             </div>
 
             {/* Header */}
@@ -67,32 +70,32 @@ const LuxeCodeModal = ({ isOpen, onClose, children, language }) => {
 
               <div className="flex items-center gap-4">
                 <button
-                    onClick={handleCopy}
-                    className="flex items-center gap-2 px-5 py-2 bg-white hover:bg-[#1A1A1A] text-[#1A1A1A]/60 hover:text-white border border-black/10 rounded-full transition-all text-[10px] uppercase tracking-widest font-bold"
+                  onClick={handleCopy}
+                  className="flex items-center gap-2 px-5 py-2 bg-white hover:bg-[#1A1A1A] text-[#1A1A1A]/60 hover:text-white border border-black/10 rounded-full transition-all text-[10px] uppercase tracking-widest font-bold"
                 >
-                    <ClipboardText size={16} /> Copy
+                  <ClipboardText size={16} /> Copy
                 </button>
                 <button
-                    onClick={onClose}
-                    className="group p-2 text-[#1A1A1A]/20 hover:text-[#8D4004] transition-colors"
+                  onClick={onClose}
+                  className="group p-2 text-[#1A1A1A]/20 hover:text-[#8D4004] transition-colors"
                 >
-                    <X size={24} weight="light" />
+                  <X size={24} weight="light" />
                 </button>
               </div>
             </div>
 
             {/* Content */}
             <div className="flex-1 overflow-auto relative z-10 custom-scrollbar bg-white p-2">
-               <SyntaxHighlighter
+              <SyntaxHighlighter
                 style={coy}
                 language={language}
                 PreTag="div"
                 customStyle={{
-                    margin: 0,
-                    padding: '2rem',
-                    background: 'transparent',
-                    fontSize: '0.95rem',
-                    lineHeight: '1.7'
+                  margin: 0,
+                  padding: '2rem',
+                  background: 'transparent',
+                  fontSize: '0.95rem',
+                  lineHeight: '1.7',
                 }}
                 showLineNumbers={true}
               >
@@ -102,17 +105,17 @@ const LuxeCodeModal = ({ isOpen, onClose, children, language }) => {
 
             {/* Footer */}
             <div className="relative z-10 px-8 py-3 border-t border-black/5 bg-[#FAFAF8] flex justify-between items-center font-outfit text-[9px] uppercase tracking-[0.3em] text-black/20">
-                <span>Refined Syntax Presentation</span>
-                <div className="flex items-center gap-2">
-                    <span className="w-1 h-1 bg-[#8D4004]/30 rounded-full animate-pulse" />
-                    <span>Archive Online</span>
-                </div>
+              <span>Refined Syntax Presentation</span>
+              <div className="flex items-center gap-2">
+                <span className="w-1 h-1 bg-[#8D4004]/30 rounded-full animate-pulse" />
+                <span>Archive Online</span>
+              </div>
             </div>
           </motion.div>
         </motion.div>
       )}
     </AnimatePresence>,
-    document.body
+    document.body,
   );
 };
 

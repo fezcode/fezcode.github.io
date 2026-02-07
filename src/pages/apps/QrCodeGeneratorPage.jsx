@@ -1,5 +1,5 @@
-import React, {useState, useCallback, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useCallback, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   DownloadSimpleIcon,
@@ -8,10 +8,10 @@ import {
   ShieldCheckIcon,
   EyeIcon,
 } from '@phosphor-icons/react';
-import {motion} from 'framer-motion';
-import {QRCodeCanvas} from 'qrcode.react';
+import { motion } from 'framer-motion';
+import { QRCodeCanvas } from 'qrcode.react';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import CustomDropdown from '../../components/CustomDropdown';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -19,7 +19,7 @@ import GenerativeArt from '../../components/GenerativeArt';
 const QrCodeGeneratorPage = () => {
   const appName = 'QR Code Generator';
 
-  const {addToast} = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
   const [text, setText] = useState('https://fezcode.com');
   const [version, setVersion] = useState(7);
   const [errorCorrectionLevel, setErrorCorrectionLevel] = useState('M');
@@ -52,7 +52,13 @@ const QrCodeGeneratorPage = () => {
       <Seo
         title="QR Code Generator | Fezcodex"
         description="Generate QR codes from text or URLs with customizable options for version, error correction, and size."
-        keywords={['Fezcodex', 'QR code generator', 'QR code', 'generate QR', 'brutalist']}
+        keywords={[
+          'Fezcodex',
+          'QR code generator',
+          'QR code',
+          'generate QR',
+          'brutalist',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -61,7 +67,7 @@ const QrCodeGeneratorPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
           <BreadcrumbTitle title={appName} slug="qr" variant="brutalist" />
@@ -80,7 +86,9 @@ const QrCodeGeneratorPage = () => {
                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">
                   Environment
                 </span>
-                <span className="text-3xl font-black text-emerald-500">CLIENT_SIDE</span>
+                <span className="text-3xl font-black text-emerald-500">
+                  CLIENT_SIDE
+                </span>
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] text-gray-600 uppercase tracking-widest">
@@ -95,17 +103,14 @@ const QrCodeGeneratorPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Controls Column */}
           <div className="lg:col-span-5 space-y-8">
-            <div
-              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div
-                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
-              <h3
-                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
-                <GearSixIcon weight="fill"/>
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+                <GearSixIcon weight="fill" />
                 Config_Interface
               </h3>
 
@@ -129,8 +134,11 @@ const QrCodeGeneratorPage = () => {
                       QR Version
                     </label>
                     <CustomDropdown
-                      options={Array.from({length: 40}, (_, i) => i + 1).map(
-                        (v) => ({label: `V_${v.toString().padStart(2, '0')}`, value: v}),
+                      options={Array.from({ length: 40 }, (_, i) => i + 1).map(
+                        (v) => ({
+                          label: `V_${v.toString().padStart(2, '0')}`,
+                          value: v,
+                        }),
                       )}
                       value={version}
                       onChange={setVersion}
@@ -144,10 +152,10 @@ const QrCodeGeneratorPage = () => {
                     </label>
                     <CustomDropdown
                       options={[
-                        {label: 'L (LOW ~07%)', value: 'L'},
-                        {label: 'M (MED ~15%)', value: 'M'},
-                        {label: 'Q (QUA ~25%)', value: 'Q'},
-                        {label: 'H (HIG ~30%)', value: 'H'},
+                        { label: 'L (LOW ~07%)', value: 'L' },
+                        { label: 'M (MED ~15%)', value: 'M' },
+                        { label: 'Q (QUA ~25%)', value: 'Q' },
+                        { label: 'H (HIG ~30%)', value: 'H' },
                       ]}
                       value={errorCorrectionLevel}
                       onChange={setErrorCorrectionLevel}
@@ -172,7 +180,9 @@ const QrCodeGeneratorPage = () => {
                   />
                   <div className="flex justify-between font-mono text-[10px] text-gray-500">
                     <span>128PX</span>
-                    <span className="text-emerald-400 font-bold">{qrCodeSize}PX</span>
+                    <span className="text-emerald-400 font-bold">
+                      {qrCodeSize}PX
+                    </span>
                     <span>512PX</span>
                   </div>
                 </div>
@@ -181,30 +191,30 @@ const QrCodeGeneratorPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <ShieldCheckIcon size={20} weight="bold"/>
+                <ShieldCheckIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Privacy_Policy
                 </h4>
               </div>
               <p className="text-xs font-mono text-gray-500 uppercase tracking-wider leading-relaxed">
-                This utility operates entirely within your local sandbox. No telemetry is sent. Data persistence is null.
+                This utility operates entirely within your local sandbox. No
+                telemetry is sent. Data persistence is null.
               </p>
             </div>
           </div>
 
           {/* Display Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h3
-              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <EyeIcon weight="fill" className="text-emerald-500"/>
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500" />
               Render_Output
             </h3>
 
             <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm p-12 flex flex-col items-center justify-center gap-12">
               {text ? (
                 <motion.div
-                  initial={{scale: 0.9, opacity: 0}}
-                  animate={{scale: 1, opacity: 1}}
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
                   className="bg-white p-6 rounded-sm shadow-[0_0_50px_rgba(255,255,255,0.05)]"
                 >
                   <QRCodeCanvas
@@ -220,7 +230,11 @@ const QrCodeGeneratorPage = () => {
                 </motion.div>
               ) : (
                 <div className="text-center space-y-4">
-                  <QrCodeIcon size={64} weight="thin" className="mx-auto text-white/5" />
+                  <QrCodeIcon
+                    size={64}
+                    weight="thin"
+                    className="mx-auto text-white/5"
+                  />
                   <p className="font-mono text-[10px] text-gray-500 uppercase tracking-widest">
                     Waiting_for_payload...
                   </p>
@@ -232,7 +246,7 @@ const QrCodeGeneratorPage = () => {
                 disabled={!text}
                 className="w-full max-w-sm py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all text-sm flex items-center justify-center gap-3"
               >
-                <DownloadSimpleIcon weight="bold" size={18}/>
+                <DownloadSimpleIcon weight="bold" size={18} />
                 Export_Binary
               </button>
             </div>

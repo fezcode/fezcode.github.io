@@ -18,7 +18,8 @@ const CodeSeancePage = () => {
 
   const spiritResponses = {
     // Step 0
-    status: '...system... unstable... boundaries... blurred... EXAMINE... the... layout...',
+    status:
+      '...system... unstable... boundaries... blurred... EXAMINE... the... layout...',
     help: '...the... foundation... is... fractured... visualize... the... structure...',
 
     // Step 1
@@ -26,30 +27,41 @@ const CodeSeancePage = () => {
     dir: '...the... catalog... holds... secrets... find... the... archive... segment...',
 
     // Step 2
-    'cd logs': '...the... vault... is... open... find... the... mark... of... failure... within... trace.log...',
+    'cd logs':
+      '...the... vault... is... open... find... the... mark... of... failure... within... trace.log...',
 
     // Step 3
-    'grep error trace.log': '...a... pattern... emerges... line... 404... contains... the... truth... inspect... it...',
-    'grep "error" trace.log': '...a... pattern... emerges... line... 404... contains... the... truth... inspect... it...',
+    'grep error trace.log':
+      '...a... pattern... emerges... line... 404... contains... the... truth... inspect... it...',
+    'grep "error" trace.log':
+      '...a... pattern... emerges... line... 404... contains... the... truth... inspect... it...',
 
     // Step 4
-    'cat trace.log': '...the... trace... reveals... a... parasite... GHOST... is... still... beating... check... the... pulse...',
+    'cat trace.log':
+      '...the... trace... reveals... a... parasite... GHOST... is... still... beating... check... the... pulse...',
 
     // Step 5
-    'ps aux': '...PID... 666... is... the... mark... of... the... beast... it... must... be... silenced...',
+    'ps aux':
+      '...PID... 666... is... the... mark... of... the... beast... it... must... be... silenced...',
     ps: '...PID... 666... is... the... mark... of... the... beast... it... must... be... silenced...',
 
     // Step 6
-    'kill -9 666': '...the... heart... stops... but... the... shadow... lingers... in... /tmp/ghost_cache... erase... it...',
-    'kill 666': '...the... heart... stops... but... the... shadow... lingers... in... /tmp/ghost_cache... erase... it...',
+    'kill -9 666':
+      '...the... heart... stops... but... the... shadow... lingers... in... /tmp/ghost_cache... erase... it...',
+    'kill 666':
+      '...the... heart... stops... but... the... shadow... lingers... in... /tmp/ghost_cache... erase... it...',
 
     // Step 7
-    'rm -rf /tmp/ghost_cache': '...the... physical... link... is... gone... but... the... variable... remains... declare... its... true... name...',
-    'rm /tmp/ghost_cache': '...the... physical... link... is... gone... but... the... variable... remains... declare... its... true... name...',
+    'rm -rf /tmp/ghost_cache':
+      '...the... physical... link... is... gone... but... the... variable... remains... declare... its... true... name...',
+    'rm /tmp/ghost_cache':
+      '...the... physical... link... is... gone... but... the... variable... remains... declare... its... true... name...',
 
     // Step 8
-    'define ghost_data': '...the... name... is... spoken... now... make... it... nothing... return... it... to... the... VOID...',
-    'const ghost_data': '...the... name... is... spoken... now... make... it... nothing... return... it... to... the... VOID...',
+    'define ghost_data':
+      '...the... name... is... spoken... now... make... it... nothing... return... it... to... the... VOID...',
+    'const ghost_data':
+      '...the... name... is... spoken... now... make... it... nothing... return... it... to... the... VOID...',
 
     // Step 9
     'ghost_data = null':
@@ -58,12 +70,16 @@ const CodeSeancePage = () => {
       '...existence... negated... the... system... requires... a... new... guardian... awaken... the... DAEMON...',
 
     // Step 10
-    'restart daemon': '...the... watcher... is... reborn... listening... at... the... gate... of... triple... nines...',
-    'start daemon': '...the... watcher... is... reborn... listening... at... the... gate... of... triple... nines...',
+    'restart daemon':
+      '...the... watcher... is... reborn... listening... at... the... gate... of... triple... nines...',
+    'start daemon':
+      '...the... watcher... is... reborn... listening... at... the... gate... of... triple... nines...',
 
     // Step 11
-    'connect 999': '...the... barrier... is... thin... but... you... lack... the... AUTHORITY... to... pass...',
-    'localhost:999': '...the... barrier... is... thin... but... you... lack... the... AUTHORITY... to... pass...',
+    'connect 999':
+      '...the... barrier... is... thin... but... you... lack... the... AUTHORITY... to... pass...',
+    'localhost:999':
+      '...the... barrier... is... thin... but... you... lack... the... AUTHORITY... to... pass...',
 
     // Step 12
     sudo: '...state... your... claim... to... the... root... what... is... the... secret... WORD...',
@@ -128,7 +144,11 @@ const CodeSeancePage = () => {
     } else if (step === 2 && cleanCmd === 'cd logs') {
       response = spiritResponses['cd logs'];
       nextStep = 3;
-    } else if (step === 3 && (cleanCmd.includes('grep') && cleanCmd.includes('error'))) {
+    } else if (
+      step === 3 &&
+      cleanCmd.includes('grep') &&
+      cleanCmd.includes('error')
+    ) {
       response = spiritResponses['grep error trace.log'];
       nextStep = 4;
     } else if (step === 4 && cleanCmd === 'cat trace.log') {
@@ -137,10 +157,17 @@ const CodeSeancePage = () => {
     } else if (step === 5 && (cleanCmd === 'ps aux' || cleanCmd === 'ps')) {
       response = spiritResponses['ps aux'];
       nextStep = 6;
-    } else if (step === 6 && (cleanCmd === 'kill -9 666' || cleanCmd === 'kill 666')) {
+    } else if (
+      step === 6 &&
+      (cleanCmd === 'kill -9 666' || cleanCmd === 'kill 666')
+    ) {
       response = spiritResponses['kill -9 666'];
       nextStep = 7;
-    } else if (step === 7 && (cleanCmd.includes('rm') && cleanCmd.includes('tmp'))) {
+    } else if (
+      step === 7 &&
+      cleanCmd.includes('rm') &&
+      cleanCmd.includes('tmp')
+    ) {
       response = spiritResponses['rm -rf /tmp/ghost_cache'];
       nextStep = 8;
     } else if (

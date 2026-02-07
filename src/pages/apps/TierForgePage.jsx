@@ -39,26 +39,28 @@ function TierForgePage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Tier Forge" slug="tf" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Tier Forge"
+                slug="tf"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Hierarchical classification protocol. Construct and visualize ranked data sets with drag-and-drop precision.
+                Hierarchical classification protocol. Construct and visualize
+                ranked data sets with drag-and-drop precision.
               </p>
             </div>
           </div>
         </header>
 
         <div className="border border-white/10 bg-white/[0.02] p-4 md:p-8 rounded-sm overflow-hidden min-h-[600px] relative">
-           <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale z-0">
-                <GenerativeArt
-                  seed={appName}
-                  className="w-full h-full"
-                />
-            </div>
-            <div className="relative z-10">
-                <Suspense fallback={<Loading />}>
-                    <TierForge />
-                </Suspense>
-            </div>
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale z-0">
+            <GenerativeArt seed={appName} className="w-full h-full" />
+          </div>
+          <div className="relative z-10">
+            <Suspense fallback={<Loading />}>
+              <TierForge />
+            </Suspense>
+          </div>
         </div>
 
         <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
@@ -68,6 +70,6 @@ function TierForgePage() {
       </div>
     </div>
   );
-};
+}
 
 export default TierForgePage;

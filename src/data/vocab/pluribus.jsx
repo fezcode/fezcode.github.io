@@ -4,9 +4,10 @@ export default function Pluribus() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-current">Pluribus</strong> is Latin for "from many" or "more". It is most
-        famously known as part of the United States motto{' '}
-        <em className="text-current not-italic">E pluribus unum</em> ("Out of many, one").
+        <strong className="text-current">Pluribus</strong> is Latin for "from
+        many" or "more". It is most famously known as part of the United States
+        motto <em className="text-current not-italic">E pluribus unum</em> ("Out
+        of many, one").
       </p>
       <p>
         Thematically, it represents the concept of{' '}

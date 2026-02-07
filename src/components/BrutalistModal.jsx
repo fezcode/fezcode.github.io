@@ -2,7 +2,13 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
 
-const BrutalistModal = ({ isOpen, onClose, title, children, maxWidth = 'max-w-xl' }) => {
+const BrutalistModal = ({
+  isOpen,
+  onClose,
+  title,
+  children,
+  maxWidth = 'max-w-xl',
+}) => {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape' && isOpen) {

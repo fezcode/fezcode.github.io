@@ -105,7 +105,9 @@ const LogCard = ({ log, index, totalLogs, viewMode = 'grid' }) => {
                         key={i}
                         weight="fill"
                         size={10}
-                        className={i < rating ? 'text-yellow-500' : 'text-white/10'}
+                        className={
+                          i < rating ? 'text-yellow-500' : 'text-white/10'
+                        }
                       />
                     ))}
                   </div>

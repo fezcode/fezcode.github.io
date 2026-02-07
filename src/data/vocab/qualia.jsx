@@ -4,7 +4,8 @@ export default function Qualia() {
   return (
     <div className="space-y-6 font-mono text-sm leading-relaxed">
       <p>
-        <strong className="text-current">Qualia</strong> (singular: quale) are individual instances of subjective, conscious experience.
+        <strong className="text-current">Qualia</strong> (singular: quale) are
+        individual instances of subjective, conscious experience.
       </p>
 
       <div className="border-l-2 border-pink-500/50 pl-4 py-1 italic opacity-70 text-xs">
@@ -12,7 +13,9 @@ export default function Qualia() {
       </div>
 
       <p>
-        Daniel Dennett called qualia "an unfamiliar term for something that could not be more familiar to each of us: the ways things seem to us." It is the central problem in the "Hard Problem of Consciousness."
+        Daniel Dennett called qualia "an unfamiliar term for something that
+        could not be more familiar to each of us: the ways things seem to us."
+        It is the central problem in the "Hard Problem of Consciousness."
       </p>
     </div>
   );

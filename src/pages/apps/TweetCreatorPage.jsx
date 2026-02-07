@@ -21,287 +21,332 @@ const TweetCreatorPage = () => {
   // Identity State
   const [userName, setUserName] = useState('Skylar_99');
   const [userHandle, setUserHandle] = useState('skylar_flux');
-  const [tweetText, setTweetText] = useState("Just discovered the ultimate digital architecture protocol. The paradigm is shifting! ✨ #Fezcodex #DigitalArt");
+  const [tweetText, setTweetText] = useState(
+    'Just discovered the ultimate digital architecture protocol. The paradigm is shifting! ✨ #Fezcodex #DigitalArt',
+  );
 
   // Engagement & Metadata State
   const [likeCount, setLikeCount] = useState('1,337');
   const [commentCount, setCommentCount] = useState('42');
   const [dateText, setDateText] = useState('10:24 PM · Dec 25, 2025');
-      const [locationText, setLocationText] = useState('Transmission_HQ');
-      const [postLink, setPostLink] = useState('fezcode.com/nodes/049');
-      const [showCardBg, setShowCardBg] = useState(true);
+  const [locationText, setLocationText] = useState('Transmission_HQ');
+  const [postLink, setPostLink] = useState('fezcode.com/nodes/049');
+  const [showCardBg, setShowCardBg] = useState(true);
 
-        const drawTweet = useCallback((ctx, width, height) => {
-          const scale = width / 800;
+  const drawTweet = useCallback(
+    (ctx, width, height) => {
+      const scale = width / 800;
 
-          // 1. Transparent/Clean Background
+      // 1. Transparent/Clean Background
 
-          ctx.clearRect(0, 0, width, height);
+      ctx.clearRect(0, 0, width, height);
 
-          // 2. Card Dimensions
+      // 2. Card Dimensions
 
-          const cardW = width;
+      const cardW = width;
 
-          const cardH = height;
+      const cardH = height;
 
-          const cardX = 0;
+      const cardX = 0;
 
-          const cardY = 0;
+      const cardY = 0;
 
-          const radius = 40 * scale;
+      const radius = 40 * scale;
 
-          // Define Card Path for clipping and filling
+      // Define Card Path for clipping and filling
 
-          const defineCardPath = (c) => {
-            c.beginPath();
+      const defineCardPath = (c) => {
+        c.beginPath();
 
-            c.moveTo(cardX + radius, cardY);
+        c.moveTo(cardX + radius, cardY);
 
-            c.lineTo(cardX + cardW - radius, cardY);
+        c.lineTo(cardX + cardW - radius, cardY);
 
-            c.quadraticCurveTo(cardX + cardW, cardY, cardX + cardW, cardY + radius);
+        c.quadraticCurveTo(cardX + cardW, cardY, cardX + cardW, cardY + radius);
 
-            c.lineTo(cardX + cardW, cardY + cardH - radius);
+        c.lineTo(cardX + cardW, cardY + cardH - radius);
 
-            c.quadraticCurveTo(cardX + cardW, cardY + cardH, cardX + cardW - radius, cardY + cardH);
+        c.quadraticCurveTo(
+          cardX + cardW,
+          cardY + cardH,
+          cardX + cardW - radius,
+          cardY + cardH,
+        );
 
-            c.lineTo(cardX + radius, cardY + cardH);
+        c.lineTo(cardX + radius, cardY + cardH);
 
-            c.quadraticCurveTo(cardX, cardY + cardH, cardX, cardY + cardH - radius);
+        c.quadraticCurveTo(cardX, cardY + cardH, cardX, cardY + cardH - radius);
 
-            c.lineTo(cardX, cardY + radius);
+        c.lineTo(cardX, cardY + radius);
 
-            c.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
+        c.quadraticCurveTo(cardX, cardY, cardX + radius, cardY);
 
-            c.closePath();
-          };
+        c.closePath();
+      };
 
+      ctx.save();
+
+      // Draw Background if enabled
+
+      if (showCardBg) {
+        ctx.save();
+
+        defineCardPath(ctx);
+
+        ctx.clip();
+
+        // Background Gradient (Echo Chamber Style)
+
+        const bgGradient = ctx.createLinearGradient(0, 0, width, height);
+
+        bgGradient.addColorStop(0, '#6366f1'); // indigo-500
+
+        bgGradient.addColorStop(0.5, '#a855f7'); // purple-500
+
+        bgGradient.addColorStop(1, '#ec4899'); // pink-500
+
+        ctx.fillStyle = bgGradient;
+
+        ctx.fillRect(0, 0, width, height);
+
+        // Blobs
+
+        const drawBlob = (x, y, r, color) => {
           ctx.save();
 
-          // Draw Background if enabled
+          ctx.beginPath();
 
-          if (showCardBg) {
-            ctx.save();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
 
-            defineCardPath(ctx);
+          ctx.fillStyle = color;
 
-            ctx.clip();
+          ctx.filter = 'blur(80px)';
 
-            // Background Gradient (Echo Chamber Style)
-
-            const bgGradient = ctx.createLinearGradient(0, 0, width, height);
-
-            bgGradient.addColorStop(0, '#6366f1'); // indigo-500
-
-            bgGradient.addColorStop(0.5, '#a855f7'); // purple-500
-
-            bgGradient.addColorStop(1, '#ec4899'); // pink-500
-
-            ctx.fillStyle = bgGradient;
-
-            ctx.fillRect(0, 0, width, height);
-
-            // Blobs
-
-            const drawBlob = (x, y, r, color) => {
-              ctx.save();
-
-              ctx.beginPath();
-
-              ctx.arc(x, y, r, 0, Math.PI * 2);
-
-              ctx.fillStyle = color;
-
-              ctx.filter = 'blur(80px)';
-
-              ctx.globalAlpha = 0.4;
-
-              ctx.fill();
-
-              ctx.restore();
-            };
-
-            drawBlob(width * 0.2, height * 0.2, 300 * scale, '#c084fc');
-
-            drawBlob(width * 0.8, height * 0.1, 250 * scale, '#facc15');
-
-            drawBlob(width * 0.5, height * 0.9, 350 * scale, '#f472b6');
-
-            ctx.restore();
-          }
-
-          // Glass Fill
-
-          defineCardPath(ctx);
-
-          ctx.fillStyle = showCardBg ? 'rgba(255, 255, 255, 0.12)' : 'rgba(255, 255, 255, 0.05)';
+          ctx.globalAlpha = 0.4;
 
           ctx.fill();
 
-          // Glass Border
-
-          ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-
-          ctx.lineWidth = 2 * scale;
-
-          ctx.stroke();
-
           ctx.restore();
+        };
 
-        // 3. Content Rendering
+        drawBlob(width * 0.2, height * 0.2, 300 * scale, '#c084fc');
 
-        const contentPadding = 50 * scale;
+        drawBlob(width * 0.8, height * 0.1, 250 * scale, '#facc15');
 
-        const innerX = cardX + contentPadding;
+        drawBlob(width * 0.5, height * 0.9, 350 * scale, '#f472b6');
 
-        let currentY = cardY + contentPadding;
+        ctx.restore();
+      }
 
-        // User Info Row
+      // Glass Fill
 
-        const avatarSize = 70 * scale;
+      defineCardPath(ctx);
 
-        ctx.beginPath();
+      ctx.fillStyle = showCardBg
+        ? 'rgba(255, 255, 255, 0.12)'
+        : 'rgba(255, 255, 255, 0.05)';
 
-        ctx.arc(innerX + avatarSize/2, currentY + avatarSize/2, avatarSize/2, 0, Math.PI * 2);
+      ctx.fill();
 
-        const avatarGrad = ctx.createLinearGradient(innerX, currentY, innerX + avatarSize, currentY + avatarSize);
+      // Glass Border
 
-        avatarGrad.addColorStop(0, '#fef08a');
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
 
-        avatarGrad.addColorStop(1, '#f472b6');
+      ctx.lineWidth = 2 * scale;
 
-        ctx.fillStyle = avatarGrad;
+      ctx.stroke();
 
-        ctx.fill();
+      ctx.restore();
 
-        ctx.fillStyle = 'white';
+      // 3. Content Rendering
 
-        ctx.font = `bold ${30 * scale}px "JetBrains Mono"`;
+      const contentPadding = 50 * scale;
 
-        ctx.textAlign = 'center';
+      const innerX = cardX + contentPadding;
 
-        ctx.textBaseline = 'middle';
+      let currentY = cardY + contentPadding;
 
-        ctx.fillText('@', innerX + avatarSize/2, currentY + avatarSize/2);
+      // User Info Row
 
-        ctx.textAlign = 'left';
+      const avatarSize = 70 * scale;
 
-        ctx.textBaseline = 'top';
+      ctx.beginPath();
 
-        ctx.font = `bold ${32 * scale}px "Playfair Display"`;
+      ctx.arc(
+        innerX + avatarSize / 2,
+        currentY + avatarSize / 2,
+        avatarSize / 2,
+        0,
+        Math.PI * 2,
+      );
 
-        ctx.fillStyle = 'white';
+      const avatarGrad = ctx.createLinearGradient(
+        innerX,
+        currentY,
+        innerX + avatarSize,
+        currentY + avatarSize,
+      );
 
-        ctx.fillText(userName, innerX + avatarSize + 20 * scale, currentY + 5 * scale);
+      avatarGrad.addColorStop(0, '#fef08a');
 
-        ctx.font = `${20 * scale}px "JetBrains Mono"`;
+      avatarGrad.addColorStop(1, '#f472b6');
 
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
+      ctx.fillStyle = avatarGrad;
 
-        ctx.fillText(`@${userHandle}`, innerX + avatarSize + 20 * scale, currentY + 40 * scale);
+      ctx.fill();
 
-        currentY += avatarSize + 40 * scale;
+      ctx.fillStyle = 'white';
 
-        // Tweet Text
+      ctx.font = `bold ${30 * scale}px "JetBrains Mono"`;
 
-        ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
 
-        ctx.font = `500 ${36 * scale}px "Arvo"`;
+      ctx.textBaseline = 'middle';
 
-        const maxWidth = cardW - (contentPadding * 2);
+      ctx.fillText('@', innerX + avatarSize / 2, currentY + avatarSize / 2);
 
-        const words = tweetText.split(' ');
+      ctx.textAlign = 'left';
 
-        let line = '';
+      ctx.textBaseline = 'top';
 
-        const lineHeight = 50 * scale;
+      ctx.font = `bold ${32 * scale}px "Playfair Display"`;
 
-        for (let n = 0; words.length > n; n++) {
-          const testLine = line + words[n] + ' ';
+      ctx.fillStyle = 'white';
 
-          const metrics = ctx.measureText(testLine);
+      ctx.fillText(
+        userName,
+        innerX + avatarSize + 20 * scale,
+        currentY + 5 * scale,
+      );
 
-          const testWidth = metrics.width;
+      ctx.font = `${20 * scale}px "JetBrains Mono"`;
 
-          if (testWidth > maxWidth && n > 0) {
-            ctx.fillText(line, innerX, currentY);
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.7)';
 
-            line = words[n] + ' ';
+      ctx.fillText(
+        `@${userHandle}`,
+        innerX + avatarSize + 20 * scale,
+        currentY + 40 * scale,
+      );
 
-            currentY += lineHeight;
-          } else {
-            line = testLine;
-          }
+      currentY += avatarSize + 40 * scale;
+
+      // Tweet Text
+
+      ctx.fillStyle = 'white';
+
+      ctx.font = `500 ${36 * scale}px "Arvo"`;
+
+      const maxWidth = cardW - contentPadding * 2;
+
+      const words = tweetText.split(' ');
+
+      let line = '';
+
+      const lineHeight = 50 * scale;
+
+      for (let n = 0; words.length > n; n++) {
+        const testLine = line + words[n] + ' ';
+
+        const metrics = ctx.measureText(testLine);
+
+        const testWidth = metrics.width;
+
+        if (testWidth > maxWidth && n > 0) {
+          ctx.fillText(line, innerX, currentY);
+
+          line = words[n] + ' ';
+
+          currentY += lineHeight;
+        } else {
+          line = testLine;
         }
+      }
 
-        ctx.fillText(line, innerX, currentY);
+      ctx.fillText(line, innerX, currentY);
 
-        currentY += lineHeight + 20 * scale;
+      currentY += lineHeight + 20 * scale;
 
-        // Meta (Date & Location)
+      // Meta (Date & Location)
 
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
 
-        ctx.font = `${18 * scale}px "JetBrains Mono"`;
+      ctx.font = `${18 * scale}px "JetBrains Mono"`;
 
-        const metaText = `${dateText} · ${locationText}`;
+      const metaText = `${dateText} · ${locationText}`;
 
-        ctx.fillText(metaText.toUpperCase(), innerX, currentY);
+      ctx.fillText(metaText.toUpperCase(), innerX, currentY);
 
-        currentY += 40 * scale;
+      currentY += 40 * scale;
 
-        // Stats Row
+      // Stats Row
 
-        ctx.beginPath();
+      ctx.beginPath();
 
-        ctx.moveTo(innerX, currentY);
+      ctx.moveTo(innerX, currentY);
 
-        ctx.lineTo(cardX + cardW - contentPadding, currentY);
+      ctx.lineTo(cardX + cardW - contentPadding, currentY);
 
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
 
-        ctx.lineWidth = 1 * scale;
+      ctx.lineWidth = 1 * scale;
 
-        ctx.stroke();
+      ctx.stroke();
 
-        currentY += 30 * scale;
+      currentY += 30 * scale;
 
-        // Icons & Counts
+      // Icons & Counts
 
-        const iconSize = 24 * scale;
+      const iconSize = 24 * scale;
 
-        ctx.textBaseline = 'middle';
+      ctx.textBaseline = 'middle';
 
-        ctx.font = `bold ${24 * scale}px "JetBrains Mono"`;
+      ctx.font = `bold ${24 * scale}px "JetBrains Mono"`;
 
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.6)';
 
-        ctx.fillText('💬', innerX, currentY + iconSize/2);
+      ctx.fillText('💬', innerX, currentY + iconSize / 2);
 
-        ctx.fillStyle = 'white';
+      ctx.fillStyle = 'white';
 
-        ctx.fillText(commentCount, innerX + 40 * scale, currentY + iconSize/2);
+      ctx.fillText(commentCount, innerX + 40 * scale, currentY + iconSize / 2);
 
-        const likeX = innerX + 150 * scale;
+      const likeX = innerX + 150 * scale;
 
-        ctx.fillStyle = '#f472b6';
+      ctx.fillStyle = '#f472b6';
 
-        ctx.fillText('❤️', likeX, currentY + iconSize/2);
+      ctx.fillText('❤️', likeX, currentY + iconSize / 2);
 
-        ctx.fillStyle = 'white';
+      ctx.fillStyle = 'white';
 
-        ctx.fillText(likeCount, likeX + 40 * scale, currentY + iconSize/2);
+      ctx.fillText(likeCount, likeX + 40 * scale, currentY + iconSize / 2);
 
-        // Link Text at bottom
+      // Link Text at bottom
 
-        ctx.textAlign = 'center';
+      ctx.textAlign = 'center';
 
-            ctx.font = `${12 * scale}px "JetBrains Mono"`;
+      ctx.font = `${12 * scale}px "JetBrains Mono"`;
 
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
 
-            ctx.fillText(postLink.toUpperCase(), cardX + cardW/2, cardY + cardH - 20 * scale);
-          }, [userName, userHandle, tweetText, likeCount, commentCount, dateText, locationText, postLink, showCardBg]);
+      ctx.fillText(
+        postLink.toUpperCase(),
+        cardX + cardW / 2,
+        cardY + cardH - 20 * scale,
+      );
+    },
+    [
+      userName,
+      userHandle,
+      tweetText,
+      likeCount,
+      commentCount,
+      dateText,
+      locationText,
+      postLink,
+      showCardBg,
+    ],
+  );
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -314,8 +359,11 @@ const TweetCreatorPage = () => {
     const logicalHeight = 550; // Increased slightly for link text
 
     canvas.width = rect.width * dpr;
-    canvas.height = (rect.width * (logicalHeight / logicalWidth)) * dpr;
-    ctx.scale(dpr * (rect.width / logicalWidth), dpr * (rect.width / logicalWidth));
+    canvas.height = rect.width * (logicalHeight / logicalWidth) * dpr;
+    ctx.scale(
+      dpr * (rect.width / logicalWidth),
+      dpr * (rect.width / logicalWidth),
+    );
 
     drawTweet(ctx, logicalWidth, logicalHeight);
   }, [drawTweet]);
@@ -334,47 +382,82 @@ const TweetCreatorPage = () => {
     link.download = `tweet-${userHandle}-${Date.now()}.png`;
     link.href = canvas.toDataURL('image/png', 1.0);
     link.click();
-    addToast({ title: 'EXPORT_SUCCESS', message: 'Tweet snapshot rasterized and saved.' });
+    addToast({
+      title: 'EXPORT_SUCCESS',
+      message: 'Tweet snapshot rasterized and saved.',
+    });
   };
 
-  const glassCardClass = "bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl";
-  const glassInputClass = "bg-white/5 border border-white/10 rounded-xl p-3 font-sans text-sm text-white focus:border-pink-400/50 outline-none transition-colors w-full placeholder-white/20";
+  const glassCardClass =
+    'bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl shadow-2xl';
+  const glassInputClass =
+    'bg-white/5 border border-white/10 rounded-xl p-3 font-sans text-sm text-white focus:border-pink-400/50 outline-none transition-colors w-full placeholder-white/20';
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 font-sans text-white overflow-hidden relative selection:bg-pink-300 selection:text-pink-900">
       <Seo
         title="Tweet Creator | Fezcodex"
         description="Create high-fidelity tweet snapshots using precise canvas rendering."
-        keywords={['tweet creator', 'canvas', 'social media', 'mockup', 'generator', 'echo chamber', 'fezcodex']}
+        keywords={[
+          'tweet creator',
+          'canvas',
+          'social media',
+          'mockup',
+          'generator',
+          'echo chamber',
+          'fezcodex',
+        ]}
       />
       <div className="mx-auto max-w-[1600px] px-6 py-24 md:px-12 relative z-10">
+        <header className="mb-24">
+          <Link
+            to="/apps"
+            className={`${glassCardClass} px-6 py-3 inline-flex items-center gap-2 hover:bg-white/20 transition-all text-xs font-bold font-mono tracking-widest uppercase mb-12`}
+          >
+            <ArrowLeftIcon weight="bold" />
+            <span>Archive</span>
+          </Link>
 
-              <header className="mb-24">
-                <Link to="/apps" className={`${glassCardClass} px-6 py-3 inline-flex items-center gap-2 hover:bg-white/20 transition-all text-xs font-bold font-mono tracking-widest uppercase mb-12`}>
-                  <ArrowLeftIcon weight="bold" />
-                  <span>Archive</span>
-                </Link>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+            <div className="space-y-4">
+              <BreadcrumbTitle
+                title="Tweet Creator"
+                slug="tweet"
+                variant="brutalist"
+              />
+              <p className="text-xl text-pink-100 max-w-2xl font-light leading-relaxed drop-shadow-md">
+                {' '}
+                Precise canvas snapshot protocol. Every pixel is calculated for
+                perfect alignment and technical fidelity.
+              </p>
+            </div>
+          </div>
+        </header>
 
-                          <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
-                            <div className="space-y-4">
-                              <BreadcrumbTitle title="Tweet Creator" slug="tweet" variant="brutalist" />
-                              <p className="text-xl text-pink-100 max-w-2xl font-light leading-relaxed drop-shadow-md">                      Precise canvas snapshot protocol. Every pixel is calculated for perfect alignment and technical fidelity.
-                    </p>
-                  </div>
-                </div>
-              </header>
-
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-
-                {/* Controls Sidebar */}
-                <div className="lg:col-span-3 space-y-6">
-                    <div className={`${glassCardClass} p-8 space-y-6`}>              <h3 className="font-mono text-[10px] font-bold text-pink-200 uppercase tracking-widest flex items-center gap-2">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          {/* Controls Sidebar */}
+          <div className="lg:col-span-3 space-y-6">
+            <div className={`${glassCardClass} p-8 space-y-6`}>
+              {' '}
+              <h3 className="font-mono text-[10px] font-bold text-pink-200 uppercase tracking-widest flex items-center gap-2">
                 <UserIcon weight="fill" />
                 Identity_Matrix
               </h3>
               <div className="space-y-4">
-                <input type="text" value={userName} onChange={(e) => setUserName(e.target.value)} className={glassInputClass} placeholder="User Name" />
-                <input type="text" value={userHandle} onChange={(e) => setUserHandle(e.target.value)} className={glassInputClass} placeholder="User Handle" />
+                <input
+                  type="text"
+                  value={userName}
+                  onChange={(e) => setUserName(e.target.value)}
+                  className={glassInputClass}
+                  placeholder="User Name"
+                />
+                <input
+                  type="text"
+                  value={userHandle}
+                  onChange={(e) => setUserHandle(e.target.value)}
+                  className={glassInputClass}
+                  placeholder="User Handle"
+                />
               </div>
             </div>
 
@@ -384,8 +467,20 @@ const TweetCreatorPage = () => {
                 Transmission_Data
               </h3>
               <div className="space-y-4">
-                <textarea value={tweetText} onChange={(e) => setTweetText(e.target.value)} rows={4} className={`${glassInputClass} resize-none`} placeholder="Tweet Text" />
-                <input type="text" value={postLink} onChange={(e) => setPostLink(e.target.value)} className={glassInputClass} placeholder="Origin Link" />
+                <textarea
+                  value={tweetText}
+                  onChange={(e) => setTweetText(e.target.value)}
+                  rows={4}
+                  className={`${glassInputClass} resize-none`}
+                  placeholder="Tweet Text"
+                />
+                <input
+                  type="text"
+                  value={postLink}
+                  onChange={(e) => setPostLink(e.target.value)}
+                  className={glassInputClass}
+                  placeholder="Origin Link"
+                />
               </div>
             </div>
 
@@ -395,8 +490,20 @@ const TweetCreatorPage = () => {
                 Engagement_Matrix
               </h3>
               <div className="space-y-4">
-                <input type="text" value={likeCount} onChange={(e) => setLikeCount(e.target.value)} className={glassInputClass} placeholder="Likes" />
-                <input type="text" value={commentCount} onChange={(e) => setCommentCount(e.target.value)} className={glassInputClass} placeholder="Comments" />
+                <input
+                  type="text"
+                  value={likeCount}
+                  onChange={(e) => setLikeCount(e.target.value)}
+                  className={glassInputClass}
+                  placeholder="Likes"
+                />
+                <input
+                  type="text"
+                  value={commentCount}
+                  onChange={(e) => setCommentCount(e.target.value)}
+                  className={glassInputClass}
+                  placeholder="Comments"
+                />
               </div>
             </div>
 
@@ -406,8 +513,20 @@ const TweetCreatorPage = () => {
                 Temporal_Registry
               </h3>
               <div className="space-y-4">
-                <input type="text" value={dateText} onChange={(e) => setDateText(e.target.value)} className={glassInputClass} placeholder="Date/Time String" />
-                <input type="text" value={locationText} onChange={(e) => setLocationText(e.target.value)} className={glassInputClass} placeholder="Location Tag" />
+                <input
+                  type="text"
+                  value={dateText}
+                  onChange={(e) => setDateText(e.target.value)}
+                  className={glassInputClass}
+                  placeholder="Date/Time String"
+                />
+                <input
+                  type="text"
+                  value={locationText}
+                  onChange={(e) => setLocationText(e.target.value)}
+                  className={glassInputClass}
+                  placeholder="Location Tag"
+                />
               </div>
             </div>
 
@@ -444,7 +563,11 @@ const TweetCreatorPage = () => {
                   style={{ imageRendering: 'pixelated' }}
                 />
                 <button
-                  onClick={() => { setUserName('Skylar_99'); setUserHandle('skylar_flux'); setTweetText("Default protocol initiated."); }}
+                  onClick={() => {
+                    setUserName('Skylar_99');
+                    setUserHandle('skylar_flux');
+                    setTweetText('Default protocol initiated.');
+                  }}
                   className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 flex items-center gap-2 px-4 py-2 bg-black/60 backdrop-blur-md border border-white/10 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500 hover:text-black transition-all rounded-full"
                 >
                   <TrashIcon weight="bold" /> Reset
@@ -465,7 +588,6 @@ const TweetCreatorPage = () => {
               </div>
             </div>
           </div>
-
         </div>
       </div>
 

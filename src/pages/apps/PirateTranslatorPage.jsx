@@ -174,7 +174,11 @@ const PirateTranslatorPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title={appName} slug="pirate" variant="brutalist" />
+              <BreadcrumbTitle
+                title={appName}
+                slug="pirate"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Linguistic remapping protocol. Translate standard data streams
                 into high-seas vernacular through semantic substitution.

@@ -8,7 +8,15 @@ const CloudMusicPlayerPage = () => {
       <Seo
         title="Aether | Cyberpunk Music Player"
         description="A cloud-based, cyberpunk-themed music player featuring generative art visualization and a persistent audio interface."
-        keywords={['music', 'player', 'cyberpunk', 'generative art', 'audio', 'visualization', 'aether']}
+        keywords={[
+          'music',
+          'player',
+          'cyberpunk',
+          'generative art',
+          'audio',
+          'visualization',
+          'aether',
+        ]}
         image="/images/apps/aether.png"
       />
       <CloudMusicPlayer />

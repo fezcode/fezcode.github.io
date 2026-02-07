@@ -32,7 +32,7 @@ const LogicArchitectPage = () => {
   ]);
 
   const [connections, setConnections] = useState([
-    { from: 'node-1', to: 'node-2', inputIdx: 0 }
+    { from: 'node-1', to: 'node-2', inputIdx: 0 },
   ]);
 
   const [activePort, setActivePort] = useState(null); // { nodeId, type: 'in' | 'out', idx }
@@ -40,19 +40,19 @@ const LogicArchitectPage = () => {
 
   // --- Simulation Logic ---
   const simulate = useCallback(() => {
-    setNodes(prevNodes => {
+    setNodes((prevNodes) => {
       const newNodes = [...prevNodes];
       let changed = false;
 
-      newNodes.forEach(node => {
+      newNodes.forEach((node) => {
         if (node.type === 'input') return;
 
         // Get inputs for this node, correctly mapped to indices
         const nodeInputs = [];
         connections
-          .filter(c => c.to === node.id)
-          .forEach(c => {
-            const sourceNode = newNodes.find(n => n.id === c.from);
+          .filter((c) => c.to === node.id)
+          .forEach((c) => {
+            const sourceNode = newNodes.find((n) => n.id === c.from);
             nodeInputs[c.inputIdx] = sourceNode ? sourceNode.state : false;
           });
 
@@ -60,11 +60,13 @@ const LogicArchitectPage = () => {
         if (node.type === 'output') {
           newState = nodeInputs[0] || false;
         } else if (node.type === 'and') {
-          newState = (nodeInputs[0] === true && nodeInputs[1] === true);
+          newState = nodeInputs[0] === true && nodeInputs[1] === true;
         } else if (node.type === 'or') {
-          newState = (nodeInputs[0] === true || nodeInputs[1] === true);
+          newState = nodeInputs[0] === true || nodeInputs[1] === true;
         } else if (node.type === 'xor') {
-          newState = (nodeInputs[0] !== nodeInputs[1]) && (nodeInputs[0] !== undefined || nodeInputs[1] !== undefined);
+          newState =
+            nodeInputs[0] !== nodeInputs[1] &&
+            (nodeInputs[0] !== undefined || nodeInputs[1] !== undefined);
         } else if (node.type === 'not') {
           newState = !nodeInputs[0];
         }
@@ -88,13 +90,16 @@ const LogicArchitectPage = () => {
   const addNode = (type) => {
     const id = `node-${Date.now()}`;
     // Position near top-left of visible area
-    setNodes(prev => [...prev, { id, type, x: 100, y: 100, state: false }]);
-    addToast({ title: 'Module Initialized', message: `${type.toUpperCase()} gate added to workspace.` });
+    setNodes((prev) => [...prev, { id, type, x: 100, y: 100, state: false }]);
+    addToast({
+      title: 'Module Initialized',
+      message: `${type.toUpperCase()} gate added to workspace.`,
+    });
   };
 
   const deleteNode = (id) => {
-    setNodes(prev => prev.filter(n => n.id !== id));
-    setConnections(prev => prev.filter(c => c.from !== id && c.to !== id));
+    setNodes((prev) => prev.filter((n) => n.id !== id));
+    setConnections((prev) => prev.filter((c) => c.from !== id && c.to !== id));
   };
 
   const handlePortClick = (nodeId, type, idx) => {
@@ -109,28 +114,45 @@ const LogicArchitectPage = () => {
 
       if (type === 'in') {
         const newConn = { from: activePort.nodeId, to: nodeId, inputIdx: idx };
-        setConnections(prev => [...prev.filter(c => !(c.to === nodeId && c.inputIdx === idx)), newConn]);
-        addToast({ title: 'Pathway Established', message: 'Nodes synchronized.', type: 'success' });
+        setConnections((prev) => [
+          ...prev.filter((c) => !(c.to === nodeId && c.inputIdx === idx)),
+          newConn,
+        ]);
+        addToast({
+          title: 'Pathway Established',
+          message: 'Nodes synchronized.',
+          type: 'success',
+        });
       }
       setActivePort(null);
     }
   };
 
   const toggleInput = (id) => {
-    setNodes(prev => prev.map(n => n.id === id ? { ...n, state: !n.state } : n));
+    setNodes((prev) =>
+      prev.map((n) => (n.id === id ? { ...n, state: !n.state } : n)),
+    );
   };
 
   const removeConnection = (targetId, inputIdx) => {
-    setConnections(prev => prev.filter(c => !(c.to === targetId && c.inputIdx === inputIdx)));
-    addToast({ title: 'Pathway Severed', message: 'Connection removed.', type: 'info' });
+    setConnections((prev) =>
+      prev.filter((c) => !(c.to === targetId && c.inputIdx === inputIdx)),
+    );
+    addToast({
+      title: 'Pathway Severed',
+      message: 'Connection removed.',
+      type: 'info',
+    });
   };
 
   const handlePan = (nodeId, info) => {
-    setNodes(prev => prev.map(n =>
-      n.id === nodeId
-        ? { ...n, x: n.x + info.delta.x, y: n.y + info.delta.y }
-        : n
-    ));
+    setNodes((prev) =>
+      prev.map((n) =>
+        n.id === nodeId
+          ? { ...n, x: n.x + info.delta.x, y: n.y + info.delta.y }
+          : n,
+      ),
+    );
   };
 
   return (
@@ -138,21 +160,36 @@ const LogicArchitectPage = () => {
       <Seo
         title="Logic Architect | Fezcodex"
         description="Construct complex digital circuits and simulate logical pathways in real-time."
-        keywords={['logic gates', 'circuit simulator', 'digital logic', 'brutalist', 'engineering']}
+        keywords={[
+          'logic gates',
+          'circuit simulator',
+          'digital logic',
+          'brutalist',
+          'engineering',
+        ]}
       />
       <div className="p-6 md:p-12 border-b border-white/10 flex justify-between items-center bg-black/50 backdrop-blur-md z-50">
         <div className="flex items-center gap-8">
-          <Link to="/apps" className="text-gray-500 hover:text-white transition-colors">
+          <Link
+            to="/apps"
+            className="text-gray-500 hover:text-white transition-colors"
+          >
             <ArrowLeftIcon size={24} weight="bold" />
           </Link>
           <div>
-            <BreadcrumbTitle title="Logic Architect" slug="la" variant="brutalist" />
-            <p className="text-[10px] text-gray-600 uppercase tracking-widest mt-1">Experimental_Circuit_Lab</p>
+            <BreadcrumbTitle
+              title="Logic Architect"
+              slug="la"
+              variant="brutalist"
+            />
+            <p className="text-[10px] text-gray-600 uppercase tracking-widest mt-1">
+              Experimental_Circuit_Lab
+            </p>
           </div>
         </div>
 
         <div className="flex gap-2">
-          {['input', 'and', 'or', 'not', 'xor', 'output'].map(type => (
+          {['input', 'and', 'or', 'not', 'xor', 'output'].map((type) => (
             <button
               key={type}
               onClick={() => addNode(type)}
@@ -177,7 +214,11 @@ const LogicArchitectPage = () => {
           setNodes([]);
           setConnections([]);
           setIsClearDialogOpen(false);
-          addToast({ title: 'Workspace Flushed', message: 'All modules and pathways have been purged.', type: 'info' });
+          addToast({
+            title: 'Workspace Flushed',
+            message: 'All modules and pathways have been purged.',
+            type: 'info',
+          });
         }}
         title="FLUSH_WORKSPACE"
         message="This will permanently delete all logic gates and connections. proceed with protocol?"
@@ -185,11 +226,14 @@ const LogicArchitectPage = () => {
         cancelText="ABORT_FLUSH"
       />
 
-      <div className="flex-grow relative bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:40px_40px]" ref={workspaceRef}>
+      <div
+        className="flex-grow relative bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:40px_40px]"
+        ref={workspaceRef}
+      >
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
           {connections.map((conn, i) => {
-            const fromNode = nodes.find(n => n.id === conn.from);
-            const toNode = nodes.find(n => n.id === conn.to);
+            const fromNode = nodes.find((n) => n.id === conn.from);
+            const toNode = nodes.find((n) => n.id === conn.to);
             if (!fromNode || !toNode) return null;
 
             // precise line calculation
@@ -199,7 +243,10 @@ const LogicArchitectPage = () => {
             const y2 = toNode.y + (conn.inputIdx === 0 ? 32 : 68);
 
             return (
-              <g key={`${conn.from}-${conn.to}-${conn.inputIdx}`} className="cursor-pointer pointer-events-auto">
+              <g
+                key={`${conn.from}-${conn.to}-${conn.inputIdx}`}
+                className="cursor-pointer pointer-events-auto"
+              >
                 {/* Wider invisible path for easier clicking */}
                 <path
                   d={`M ${x1} ${y1} C ${x1 + 50} ${y1}, ${x2 - 50} ${y2}, ${x2} ${y2}`}
@@ -223,7 +270,7 @@ const LogicArchitectPage = () => {
           })}
         </svg>
 
-        {nodes.map(node => (
+        {nodes.map((node) => (
           <motion.div
             key={node.id}
             onPan={(e, info) => handlePan(node.id, info)}
@@ -232,10 +279,15 @@ const LogicArchitectPage = () => {
               ${node.state ? 'border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.15)]' : 'border-white/10'}`}
           >
             <div className="flex justify-between items-start mb-4">
-              <span className={`text-[9px] font-black uppercase tracking-widest ${node.state ? 'text-emerald-500' : 'text-gray-600'}`}>
+              <span
+                className={`text-[9px] font-black uppercase tracking-widest ${node.state ? 'text-emerald-500' : 'text-gray-600'}`}
+              >
                 {node.type}
               </span>
-              <button onClick={() => deleteNode(node.id)} className="opacity-0 group-hover:opacity-100 text-gray-700 hover:text-red-500 transition-all">
+              <button
+                onClick={() => deleteNode(node.id)}
+                className="opacity-0 group-hover:opacity-100 text-gray-700 hover:text-red-500 transition-all"
+              >
                 <TrashIcon size={12} />
               </button>
             </div>
@@ -249,11 +301,18 @@ const LogicArchitectPage = () => {
                   {node.state ? <PowerIcon weight="bold" /> : <PowerIcon />}
                 </button>
               ) : node.type === 'output' ? (
-                <div className={`w-10 h-10 border-2 rounded-full flex items-center justify-center transition-all ${node.state ? 'bg-red-500 border-red-400 shadow-[0_0_15px_rgba(239,68,68,0.5)]' : 'border-white/10'}`}>
-                  <LightningIcon weight={node.state ? 'fill' : 'regular'} className={node.state ? 'text-white' : 'text-gray-800'} />
+                <div
+                  className={`w-10 h-10 border-2 rounded-full flex items-center justify-center transition-all ${node.state ? 'bg-red-500 border-red-400 shadow-[0_0_15px_rgba(239,68,68,0.5)]' : 'border-white/10'}`}
+                >
+                  <LightningIcon
+                    weight={node.state ? 'fill' : 'regular'}
+                    className={node.state ? 'text-white' : 'text-gray-800'}
+                  />
                 </div>
               ) : (
-                <div className="text-2xl font-black text-white/20 select-none">{GATES_META[node.type].label}</div>
+                <div className="text-2xl font-black text-white/20 select-none">
+                  {GATES_META[node.type].label}
+                </div>
               )}
             </div>
 
@@ -283,9 +342,9 @@ const LogicArchitectPage = () => {
         ))}
 
         {activePort && (
-            <div className="fixed top-6 left-1/2 -translate-x-1/2 bg-emerald-500 text-black px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] rounded-full z-[100] animate-pulse">
-                Select target input port to connect...
-            </div>
+          <div className="fixed top-6 left-1/2 -translate-x-1/2 bg-emerald-500 text-black px-4 py-1 text-[10px] font-black uppercase tracking-[0.2em] rounded-full z-[100] animate-pulse">
+            Select target input port to connect...
+          </div>
         )}
       </div>
 

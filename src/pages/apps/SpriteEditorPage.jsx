@@ -227,7 +227,13 @@ const SpriteEditorPage = () => {
       <Seo
         title="Sprite Editor | Fezcodex"
         description="A simple, browser-based pixel art editor."
-        keywords={['pixel art', 'sprite editor', 'game art', 'drawing', 'canvas']}
+        keywords={[
+          'pixel art',
+          'sprite editor',
+          'game art',
+          'drawing',
+          'canvas',
+        ]}
       />
       <div className="max-w-6xl mx-auto pt-24 px-4">
         <Link

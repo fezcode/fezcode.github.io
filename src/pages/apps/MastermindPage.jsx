@@ -1,6 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeftIcon, LightbulbIcon, TargetIcon, ClockIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  LightbulbIcon,
+  TargetIcon,
+  ClockIcon,
+} from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
@@ -123,7 +128,11 @@ const MastermindPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Mastermind" slug="mm" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Mastermind"
+                slug="mm"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Heuristic optimization protocol. Decode the sequence via
                 iterative logical inference.

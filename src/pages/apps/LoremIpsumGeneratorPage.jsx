@@ -314,7 +314,8 @@ const LoremIpsumGeneratorPage = () => {
               <TextTIcon size={24} className="text-gray-700 shrink-0 mt-1" />
               <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
                 Lorem Ipsum is industry-standard dummy text used to demonstrate
-                the visual form of a document without the distraction of meaningful content.
+                the visual form of a document without the distraction of
+                meaningful content.
               </p>
             </div>
           </div>

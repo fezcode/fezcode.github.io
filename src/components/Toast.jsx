@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { XIcon, CheckCircleIcon, WarningCircleIcon, TrophyIcon, TerminalIcon } from '@phosphor-icons/react';
+import {
+  XIcon,
+  CheckCircleIcon,
+  WarningCircleIcon,
+  TrophyIcon,
+  TerminalIcon,
+} from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 
 const Toast = ({
@@ -24,37 +30,53 @@ const Toast = ({
   const getIcon = () => {
     if (icon) return icon;
     switch (type) {
-      case 'error': return <WarningCircleIcon weight="fill" className="text-red-500" />;
-      case 'gold': return <TrophyIcon weight="fill" className="text-amber-400" />;
-      case 'techno': return <TerminalIcon weight="fill" className="text-emerald-400" />;
-      default: return <CheckCircleIcon weight="fill" className="text-emerald-500" />;
+      case 'error':
+        return <WarningCircleIcon weight="fill" className="text-red-500" />;
+      case 'gold':
+        return <TrophyIcon weight="fill" className="text-amber-400" />;
+      case 'techno':
+        return <TerminalIcon weight="fill" className="text-emerald-400" />;
+      default:
+        return <CheckCircleIcon weight="fill" className="text-emerald-500" />;
     }
   };
 
   const getAccentColor = () => {
     switch (type) {
-      case 'error': return 'bg-red-500';
-      case 'gold': return 'bg-amber-400';
-      case 'techno': return 'bg-emerald-400';
-      default: return 'bg-emerald-500';
+      case 'error':
+        return 'bg-red-500';
+      case 'gold':
+        return 'bg-amber-400';
+      case 'techno':
+        return 'bg-emerald-400';
+      default:
+        return 'bg-emerald-500';
     }
   };
 
   const getBorderColor = () => {
     switch (type) {
-      case 'error': return 'border-red-500/50';
-      case 'gold': return 'border-amber-400/50';
-      case 'techno': return 'border-emerald-400/50';
-      default: return 'border-emerald-500/50';
+      case 'error':
+        return 'border-red-500/50';
+      case 'gold':
+        return 'border-amber-400/50';
+      case 'techno':
+        return 'border-emerald-400/50';
+      default:
+        return 'border-emerald-500/50';
     }
   };
 
   const getGlowColor = () => {
     switch (type) {
-      case 'error': return 'shadow-red-500/10';
-      case 'gold': return 'shadow-amber-400/10';
-      case 'techno': return 'shadow-emerald-400/10';
-      default: return 'shadow-emerald-500/10';
+      case 'error':
+        return 'shadow-red-500/10';
+      case 'gold':
+        return 'shadow-amber-400/10';
+      case 'techno':
+        return 'shadow-emerald-400/10';
+      default:
+        return 'shadow-emerald-500/10';
     }
   };
 
@@ -70,15 +92,13 @@ const Toast = ({
       <motion.div
         initial={{ width: '100%' }}
         animate={{ width: 0 }}
-        transition={{ duration: duration / 1000, ease: "linear" }}
+        transition={{ duration: duration / 1000, ease: 'linear' }}
         className={`absolute bottom-0 left-0 h-1 z-20 ${getAccentColor()}`}
       />
 
       <div className="p-6 flex gap-4 items-start">
         <div className="flex-shrink-0 mt-1">
-          <div className="text-xl">
-            {getIcon()}
-          </div>
+          <div className="text-xl">{getIcon()}</div>
         </div>
 
         <div className="flex-grow min-w-0 space-y-1">
@@ -92,10 +112,45 @@ const Toast = ({
           {links && links.length > 0 && (
             <div className="flex flex-wrap gap-2 pt-3">
               {links.map((link, index) => {
-                const btnClass = "text-[9px] font-black uppercase tracking-widest px-3 py-1.5 bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black transition-all rounded-sm";
-                if (link.to) return <Link key={index} to={link.to} className={btnClass} onClick={() => removeToast(id)}>{link.label}</Link>;
-                if (link.href) return <a key={index} href={link.href} target="_blank" rel="noopener noreferrer" className={btnClass} onClick={() => removeToast(id)}>{link.label}</a>;
-                if (link.onClick) return <button key={index} onClick={() => { link.onClick(); removeToast(id); }} className={btnClass}>{link.label}</button>;
+                const btnClass =
+                  'text-[9px] font-black uppercase tracking-widest px-3 py-1.5 bg-white/5 border border-white/10 text-white hover:bg-white hover:text-black transition-all rounded-sm';
+                if (link.to)
+                  return (
+                    <Link
+                      key={index}
+                      to={link.to}
+                      className={btnClass}
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                if (link.href)
+                  return (
+                    <a
+                      key={index}
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={btnClass}
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                if (link.onClick)
+                  return (
+                    <button
+                      key={index}
+                      onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                      }}
+                      className={btnClass}
+                    >
+                      {link.label}
+                    </button>
+                  );
                 return null;
               })}
             </div>

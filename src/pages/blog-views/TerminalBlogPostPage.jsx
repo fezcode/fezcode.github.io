@@ -193,223 +193,149 @@ const TerminalBlogPostPage = () => {
     setIsModalOpen(true);
   };
 
-    const components = useMemo(() => {
-      const CodeBlock = ({ inline, className, children, ...props }) => {
-        const match = /language-(\w+)/.exec(className || '');
+  const components = useMemo(() => {
+    const CodeBlock = ({ inline, className, children, ...props }) => {
+      const match = /language-(\w+)/.exec(className || '');
 
-        const isMermaid = match && match[1] === 'mermaid';
+      const isMermaid = match && match[1] === 'mermaid';
 
-        if (!inline && isMermaid) {
-          return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
-        }
+      if (!inline && isMermaid) {
+        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+      }
 
-        const handleCopy = () => {
-          const textToCopy = String(children);
+      const handleCopy = () => {
+        const textToCopy = String(children);
 
-          navigator.clipboard.writeText(textToCopy).then(
+        navigator.clipboard.writeText(textToCopy).then(
+          () =>
+            addToast({
+              title: 'COPIED',
 
-            () =>
+              message: 'Code block copied!',
 
-              addToast({
+              duration: 3000,
 
-                title: 'COPIED',
+              type: 'info',
+            }),
 
-                message: 'Code block copied!',
+          () =>
+            addToast({
+              title: 'ERROR',
 
-                duration: 3000,
+              message: 'Failed to copy!',
 
-                type: 'info',
+              duration: 3000,
 
-              }),
-
-            () =>
-
-              addToast({
-
-                title: 'ERROR',
-
-                message: 'Failed to copy!',
-
-                duration: 3000,
-
-                type: 'error',
-
-              }),
-
-          );
-        };
-
-        if (!inline && match) {
-          return (
-
-            <div className="relative group my-6 border border-orange-500 shadow-orange-glow">
-
-              <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
-
-                <button
-
-                  onClick={() =>
-
-                    openModal(String(children).replace(/\n$/, ''), match[1])
-
-                  }
-
-                  className="text-orange-300 bg-gray-900/90 border border-orange-700/50 p-1.5 rounded-sm hover:bg-orange-700 hover:text-gray-900 transition-colors shadow-lg backdrop-blur-sm"
-
-                  title="Expand Code"
-
-                >
-
-                  <ArrowsOutSimple size={16} />
-
-                </button>
-
-                <button
-
-                  onClick={handleCopy}
-
-                  className="text-orange-300 bg-gray-900/90 border border-orange-700/50 p-1.5 rounded-sm hover:bg-orange-700 hover:text-gray-900 transition-colors shadow-lg backdrop-blur-sm"
-
-                  title="Copy Code"
-
-                >
-
-                  <ClipboardTextIcon size={16} />
-
-                </button>
-
-              </div>
-
-              <SyntaxHighlighter
-
-                style={terminalCodeTheme}
-
-                language={match[1]}
-
-                PreTag="div"
-
-                CodeTag="code"
-
-                customStyle={{
-
-                  margin: 0,
-
-                  borderRadius: 0,
-
-                  background: 'transparent',
-
-                  padding: '1.5rem',
-
-                  fontSize: '1rem',
-
-                  lineHeight: '1.6',
-
-                  border: 'none',
-
-                }}
-
-                {...props}
-
-                codeTagProps={{
-
-                  style: { fontFamily: 'monospace' },
-
-                }}
-
-              >
-
-                {String(children).replace(/\n$/, '')}
-
-              </SyntaxHighlighter>
-
-            </div>
-
-          );
-        }
-
-        return (
-
-          <code
-
-            className={`${className} font-mono text-orange-400 bg-gray-800/50 px-1.5 py-0.5 rounded-sm text-sm border border-orange-700/50`}
-
-            {...props}
-
-          >
-
-            {children}
-
-          </code>
-
+              type: 'error',
+            }),
         );
       };
 
-      const ImageRenderer = ({ src, alt }) => (
+      if (!inline && match) {
+        return (
+          <div className="relative group my-6 border border-orange-500 shadow-orange-glow">
+            <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
+              <button
+                onClick={() =>
+                  openModal(String(children).replace(/\n$/, ''), match[1])
+                }
+                className="text-orange-300 bg-gray-900/90 border border-orange-700/50 p-1.5 rounded-sm hover:bg-orange-700 hover:text-gray-900 transition-colors shadow-lg backdrop-blur-sm"
+                title="Expand Code"
+              >
+                <ArrowsOutSimple size={16} />
+              </button>
 
-        <div className="my-8 mx-auto w-full text-center border border-orange-500 p-4 bg-gray-900 shadow-orange-glow">
+              <button
+                onClick={handleCopy}
+                className="text-orange-300 bg-gray-900/90 border border-orange-700/50 p-1.5 rounded-sm hover:bg-orange-700 hover:text-gray-900 transition-colors shadow-lg backdrop-blur-sm"
+                title="Copy Code"
+              >
+                <ClipboardTextIcon size={16} />
+              </button>
+            </div>
 
-          <img
+            <SyntaxHighlighter
+              style={terminalCodeTheme}
+              language={match[1]}
+              PreTag="div"
+              CodeTag="code"
+              customStyle={{
+                margin: 0,
 
-            src={src}
+                borderRadius: 0,
 
-            alt={alt}
+                background: 'transparent',
 
-            className="w-full h-auto mx-auto mb-4 filter grayscale contrast-125"
+                padding: '1.5rem',
 
-            onClick={() => setModalImageSrc(src)}
+                fontSize: '1rem',
 
-          />
+                lineHeight: '1.6',
 
-          <p className="font-mono text-orange-300 text-sm uppercase">
-
-            {'//'} IMAGE LOG: {alt || 'UNKNOWN DATA'}
-
-          </p>
-
-        </div>
-
-      );
-
-      return {
-
-        a: (props) => {
-          const isVocab =
-
-            props.href &&
-
-            (props.href.startsWith('/vocab/') ||
-
-              props.href.includes('/#/vocab/'));
-
-          return (
-
-            <MarkdownLink
-
+                border: 'none',
+              }}
               {...props}
+              codeTagProps={{
+                style: { fontFamily: 'monospace' },
+              }}
+            >
+              {String(children).replace(/\n$/, '')}
+            </SyntaxHighlighter>
+          </div>
+        );
+      }
 
-              className={
+      return (
+        <code
+          className={`${className} font-mono text-orange-400 bg-gray-800/50 px-1.5 py-0.5 rounded-sm text-sm border border-orange-700/50`}
+          {...props}
+        >
+          {children}
+        </code>
+      );
+    };
 
-                isVocab
+    const ImageRenderer = ({ src, alt }) => (
+      <div className="my-8 mx-auto w-full text-center border border-orange-500 p-4 bg-gray-900 shadow-orange-glow">
+        <img
+          src={src}
+          alt={alt}
+          className="w-full h-auto mx-auto mb-4 filter grayscale contrast-125"
+          onClick={() => setModalImageSrc(src)}
+        />
 
-                  ? 'text-orange-300 hover:text-orange-100 transition-colors cursor-help underline'
+        <p className="font-mono text-orange-300 text-sm uppercase">
+          {'//'} IMAGE LOG: {alt || 'UNKNOWN DATA'}
+        </p>
+      </div>
+    );
 
-                  : 'text-orange-400 hover:text-orange-200 transition-colors underline'
+    return {
+      a: (props) => {
+        const isVocab =
+          props.href &&
+          (props.href.startsWith('/vocab/') ||
+            props.href.includes('/#/vocab/'));
 
-              }
+        return (
+          <MarkdownLink
+            {...props}
+            className={
+              isVocab
+                ? 'text-orange-300 hover:text-orange-100 transition-colors cursor-help underline'
+                : 'text-orange-400 hover:text-orange-200 transition-colors underline'
+            }
+          />
+        );
+      },
 
-            />
+      pre: ({ children }) => <>{children}</>,
 
-          );
-        },
+      code: CodeBlock,
 
-        pre: ({ children }) => <>{children}</>,
-
-        code: CodeBlock,
-
-        img: ImageRenderer,
-
-      };
-    }, [addToast]);
+      img: ImageRenderer,
+    };
+  }, [addToast]);
 
   if (loading) {
     return (
@@ -448,7 +374,9 @@ const TerminalBlogPostPage = () => {
   return (
     <div className="min-h-screen bg-black text-orange-500 font-mono overflow-y-auto custom-scrollbar-terminal relative">
       <Seo
-        title={post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : null}
+        title={
+          post ? `${post.attributes.title.toUpperCase()} | TERMINAL LOG` : null
+        }
         description={post ? post.body.substring(0, 150) : null}
         image={post?.attributes?.ogImage || post?.attributes?.image}
         keywords={post?.attributes?.tags}

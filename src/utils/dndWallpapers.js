@@ -4,7 +4,7 @@ const dndWallpapers = [
   '/images/stories/wallies/ember-navarro-3q2TzsUUVIo-unsplash.jpg',
   '/images/stories/wallies/galxrax-rax-oGAf4jsC0Fw-unsplash.jpg',
   '/images/stories/wallies/jr-korpa-RADGP_E2pBk-unsplash.jpg',
-  '/images/stories/wallies/muhammad-haikal-sjukri--RMBf_xSf2U-unsplash.jpg'
+  '/images/stories/wallies/muhammad-haikal-sjukri--RMBf_xSf2U-unsplash.jpg',
 ];
 
 export default dndWallpapers;

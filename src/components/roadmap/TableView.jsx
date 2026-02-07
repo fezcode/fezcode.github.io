@@ -244,13 +244,14 @@ const TableView = ({ issuesData = [] }) => {
                 ))
               ) : (
                 <tr>
-                  <td
-                    colSpan="7"
-                    className="px-6 py-24 text-center"
-                  >
+                  <td colSpan="7" className="px-6 py-24 text-center">
                     <div className="flex flex-col items-center justify-center gap-6">
                       <div className="p-6 bg-white/[0.02] border border-white/5 rounded-sm">
-                        <MagnifyingGlass size={48} weight="thin" className="text-gray-800" />
+                        <MagnifyingGlass
+                          size={48}
+                          weight="thin"
+                          className="text-gray-800"
+                        />
                       </div>
                       <div className="space-y-2">
                         <p className="text-xs font-mono font-black uppercase tracking-[0.3em] text-gray-500">
@@ -273,10 +274,8 @@ const TableView = ({ issuesData = [] }) => {
       <div className="flex justify-end items-center px-2">
         <span className="text-[9px] font-mono font-black text-gray-600 uppercase tracking-[0.2em] bg-white/[0.03] border border-white/5 px-4 py-2 rounded-sm">
           Displaying_Entries:{' '}
-          <span className="text-emerald-500">
-            {sortedApps.length}
-          </span>{' '}
-          {'//'} Pool_Size: {issuesData.length}
+          <span className="text-emerald-500">{sortedApps.length}</span> {'//'}{' '}
+          Pool_Size: {issuesData.length}
         </span>
       </div>
     </div>

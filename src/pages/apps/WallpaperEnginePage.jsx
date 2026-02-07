@@ -1,105 +1,176 @@
-import React, {useState, useRef, useEffect, useCallback} from 'react';
-import {motion, AnimatePresence} from 'framer-motion';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
-  DownloadSimpleIcon, ArrowsClockwiseIcon, MonitorIcon, PaletteIcon, ShapesIcon, ArrowLeftIcon, CheckIcon
+  DownloadSimpleIcon,
+  ArrowsClockwiseIcon,
+  MonitorIcon,
+  PaletteIcon,
+  ShapesIcon,
+  ArrowLeftIcon,
+  CheckIcon,
 } from '@phosphor-icons/react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CustomSlider from '../../components/CustomSlider';
 import CustomDropdown from '../../components/CustomDropdown';
 import CustomColorPicker from '../../components/CustomColorPicker';
 import Seo from '../../components/Seo';
-import {useToast} from '../../hooks/useToast';
+import { useToast } from '../../hooks/useToast';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
-const COLOR_PRESETS = [{
-  label: 'Default',
-  value: 'default',
-  colors: ['#10b981', '#3b82f6', '#050505']
-}, {label: 'Classic Fez', value: 'classic', colors: ['#f87171', '#fb923c', '#34d399']}, {
-  label: 'Cyberpunk',
-  value: 'cyberpunk',
-  colors: ['#fcee0a', '#00ff9f', '#050505', '#ffffff']
-}, {
-  label: 'Vaporwave',
-  value: 'vaporwave',
-  colors: ['#ff71ce', '#01cdfe', '#05ffa1', '#b967ff', '#fffb96']
-}, {label: 'Matrix', value: 'matrix', colors: ['#00ff41', '#008f11', '#003b00', '#0d0208']}, {
-  label: 'Deep Sea',
-  value: 'ocean',
-  colors: ['#0ea5e9', '#2dd4bf', '#1e1b4b', '#f0f9ff']
-}, {
-  label: 'Monochrome',
-  value: 'mono',
-  colors: ['#ffffff', '#a3a3a3', '#404040', '#000000']
-}, {
-  label: 'Forerunner Blue',
-  value: 'forerunner',
-  colors: ['#00f2ff', '#0066ff', '#001a33', '#050505']
-}, {label: 'UNSC Green', value: 'unsc', colors: ['#94ff44', '#3d5c1a', '#1a240d', '#050505']}, {
-  label: 'Pip-Boy Amber',
-  value: 'pipboy_amber',
-  colors: ['#ffb642', '#8a5d00', '#211500', '#050505']
-}, {
-  label: 'Pip-Boy Green',
-  value: 'pipboy_green',
-  colors: ['#18e73c', '#005c00', '#001a00', '#050505']
-}, {label: 'Cyberpunk Red', value: 'cyber_red', colors: ['#ff003c', '#00fff9', '#1a1a1a', '#050505']}, {
-  label: 'Custom',
-  value: 'custom',
-  colors: []
-},];
+const COLOR_PRESETS = [
+  {
+    label: 'Default',
+    value: 'default',
+    colors: ['#10b981', '#3b82f6', '#050505'],
+  },
+  {
+    label: 'Classic Fez',
+    value: 'classic',
+    colors: ['#f87171', '#fb923c', '#34d399'],
+  },
+  {
+    label: 'Cyberpunk',
+    value: 'cyberpunk',
+    colors: ['#fcee0a', '#00ff9f', '#050505', '#ffffff'],
+  },
+  {
+    label: 'Vaporwave',
+    value: 'vaporwave',
+    colors: ['#ff71ce', '#01cdfe', '#05ffa1', '#b967ff', '#fffb96'],
+  },
+  {
+    label: 'Matrix',
+    value: 'matrix',
+    colors: ['#00ff41', '#008f11', '#003b00', '#0d0208'],
+  },
+  {
+    label: 'Deep Sea',
+    value: 'ocean',
+    colors: ['#0ea5e9', '#2dd4bf', '#1e1b4b', '#f0f9ff'],
+  },
+  {
+    label: 'Monochrome',
+    value: 'mono',
+    colors: ['#ffffff', '#a3a3a3', '#404040', '#000000'],
+  },
+  {
+    label: 'Forerunner Blue',
+    value: 'forerunner',
+    colors: ['#00f2ff', '#0066ff', '#001a33', '#050505'],
+  },
+  {
+    label: 'UNSC Green',
+    value: 'unsc',
+    colors: ['#94ff44', '#3d5c1a', '#1a240d', '#050505'],
+  },
+  {
+    label: 'Pip-Boy Amber',
+    value: 'pipboy_amber',
+    colors: ['#ffb642', '#8a5d00', '#211500', '#050505'],
+  },
+  {
+    label: 'Pip-Boy Green',
+    value: 'pipboy_green',
+    colors: ['#18e73c', '#005c00', '#001a00', '#050505'],
+  },
+  {
+    label: 'Cyberpunk Red',
+    value: 'cyber_red',
+    colors: ['#ff003c', '#00fff9', '#1a1a1a', '#050505'],
+  },
+  {
+    label: 'Custom',
+    value: 'custom',
+    colors: [],
+  },
+];
 
-const STYLES = [{label: 'Bauhaus Grid', value: 'bauhaus'}, {
-  label: 'Tech Circuit',
-  value: 'circuit'
-}, {label: 'Geometric Flow', value: 'flow'}, {label: 'Digital Rain', value: 'rain'}, {
-  label: 'Brutalist Blocks',
-  value: 'brutalist'
-}, {label: 'Glitch Stream', value: 'glitch'}, {label: 'Solar Burst', value: 'solar'}, {
-  label: 'Data Nodes',
-  value: 'nodes'
-}, {label: 'Cyber Mesh', value: 'mesh'}, {label: 'Terminal Echo', value: 'echo'}, {
-  label: 'Isometric Grid',
-  value: 'iso'
-}, {label: 'Organic Noise', value: 'noise'}, {label: 'Type Matrix', value: 'typematrix'}, {
-  label: 'Pip-Boy Interface',
-  value: 'pipboy'
-}, {label: 'Stellar Cartography', value: 'stellar'}, {
-  label: 'Geometric Circles',
-  value: 'circles'
-}, {label: 'Pixel Construct', value: 'pixel'}, {
-  label: 'Bio-Helix Protocol',
-  value: 'biohelix'
-}, {label: 'Fluent Mosaic', value: 'fluent'}, {
-  label: 'Document Protocol',
-  value: 'docs'
-}, {label: 'Night City Interface', value: 'nightcity'}, {
-  label: 'Global Connectivity',
-  value: 'global'
-}, {label: 'Schematic Protocol', value: 'schematic'},];
+const STYLES = [
+  { label: 'Bauhaus Grid', value: 'bauhaus' },
+  {
+    label: 'Tech Circuit',
+    value: 'circuit',
+  },
+  { label: 'Geometric Flow', value: 'flow' },
+  { label: 'Digital Rain', value: 'rain' },
+  {
+    label: 'Brutalist Blocks',
+    value: 'brutalist',
+  },
+  { label: 'Glitch Stream', value: 'glitch' },
+  { label: 'Solar Burst', value: 'solar' },
+  {
+    label: 'Data Nodes',
+    value: 'nodes',
+  },
+  { label: 'Cyber Mesh', value: 'mesh' },
+  { label: 'Terminal Echo', value: 'echo' },
+  {
+    label: 'Isometric Grid',
+    value: 'iso',
+  },
+  { label: 'Organic Noise', value: 'noise' },
+  { label: 'Type Matrix', value: 'typematrix' },
+  {
+    label: 'Pip-Boy Interface',
+    value: 'pipboy',
+  },
+  { label: 'Stellar Cartography', value: 'stellar' },
+  {
+    label: 'Geometric Circles',
+    value: 'circles',
+  },
+  { label: 'Pixel Construct', value: 'pixel' },
+  {
+    label: 'Bio-Helix Protocol',
+    value: 'biohelix',
+  },
+  { label: 'Fluent Mosaic', value: 'fluent' },
+  {
+    label: 'Document Protocol',
+    value: 'docs',
+  },
+  { label: 'Night City Interface', value: 'nightcity' },
+  {
+    label: 'Global Connectivity',
+    value: 'global',
+  },
+  { label: 'Schematic Protocol', value: 'schematic' },
+];
 
-const RESOLUTIONS = [{label: 'Full HD (1080p)', value: '1080', width: 1920, height: 1080}, {
-  label: '4K Ultra HD',
-  value: '4k',
-  width: 3840,
-  height: 2160
-}, {label: '8K Master', value: '8k', width: 7680, height: 4320}, {
-  label: 'Phone (Vertical)',
-  value: 'phone',
-  width: 1170,
-  height: 2532
-},];
+const RESOLUTIONS = [
+  { label: 'Full HD (1080p)', value: '1080', width: 1920, height: 1080 },
+  {
+    label: '4K Ultra HD',
+    value: '4k',
+    width: 3840,
+    height: 2160,
+  },
+  { label: '8K Master', value: '8k', width: 7680, height: 4320 },
+  {
+    label: 'Phone (Vertical)',
+    value: 'phone',
+    width: 1170,
+    height: 2532,
+  },
+];
 
 const WallpaperEnginePage = () => {
-  const {addToast} = useToast();
+  const { addToast } = useToast();
   const canvasRef = useRef(null);
 
-  const [seed, setSeed] = useState(() => Math.random().toString(36).substring(7));
+  const [seed, setSeed] = useState(() =>
+    Math.random().toString(36).substring(7),
+  );
   const [style, setStyle] = useState('bauhaus');
   const [complexity, setComplexity] = useState(50);
   const [noise, setNoise] = useState(15);
   const [preset, setPreset] = useState('default');
-  const [customColors, setCustomColors] = useState(['#10b981', '#3b82f6', '#050505']);
+  const [customColors, setCustomColors] = useState([
+    '#10b981',
+    '#3b82f6',
+    '#050505',
+  ]);
   const [resolution, setResolution] = useState('4k');
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -120,12 +191,12 @@ const WallpaperEnginePage = () => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
 
-    const res = RESOLUTIONS.find(r => r.value === resolution);
+    const res = RESOLUTIONS.find((r) => r.value === resolution);
     canvas.width = res.width;
     canvas.height = res.height;
 
     const nextRand = rng(seed);
-    const activePreset = COLOR_PRESETS.find(p => p.value === preset);
+    const activePreset = COLOR_PRESETS.find((p) => p.value === preset);
     const colors = preset === 'custom' ? customColors : activePreset.colors;
 
     ctx.fillStyle = colors[colors.length - 1];
@@ -148,9 +219,10 @@ const WallpaperEnginePage = () => {
     }
 
     if (style === 'bauhaus') {
-      const cellCount = Math.floor(5 + (complexity / 10));
+      const cellCount = Math.floor(5 + complexity / 10);
       const cellW = canvas.width / cellCount;
-      const cellH = canvas.height / (cellCount * (canvas.height / canvas.width));
+      const cellH =
+        canvas.height / (cellCount * (canvas.height / canvas.width));
       for (let x = 0; x < cellCount; x++) {
         for (let y = 0; y < cellCount * (canvas.height / canvas.width); y++) {
           if (nextRand() > 0.4) {
@@ -160,11 +232,12 @@ const WallpaperEnginePage = () => {
             const shapeType = Math.floor(nextRand() * 4);
             ctx.save();
             ctx.translate(posX + cellW / 2, posY + cellH / 2);
-            ctx.rotate((Math.floor(nextRand() * 4) * 90) * Math.PI / 180);
+            ctx.rotate((Math.floor(nextRand() * 4) * 90 * Math.PI) / 180);
             ctx.fillStyle = color;
             ctx.globalAlpha = 0.8;
             const size = cellW * 0.8;
-            if (shapeType === 0) ctx.fillRect(-size / 2, -size / 2, size, size); else if (shapeType === 1) {
+            if (shapeType === 0) ctx.fillRect(-size / 2, -size / 2, size, size);
+            else if (shapeType === 1) {
               ctx.beginPath();
               ctx.arc(0, 0, size / 2, 0, Math.PI * 2);
               ctx.fill();
@@ -199,7 +272,8 @@ const WallpaperEnginePage = () => {
         ctx.lineWidth = 2 + nextRand() * 4;
         ctx.beginPath();
         ctx.moveTo(x, y);
-        if (horizontal) ctx.lineTo(x + length, y); else ctx.lineTo(x, y + length);
+        if (horizontal) ctx.lineTo(x + length, y);
+        else ctx.lineTo(x, y + length);
         ctx.stroke();
         if (nextRand() > 0.5) {
           ctx.fillStyle = color;
@@ -233,11 +307,11 @@ const WallpaperEnginePage = () => {
         let y = nextRand() * canvas.height;
         const len = 5 + nextRand() * 20;
         for (let j = 0; j < len; j++) {
-          const alpha = 1 - (j / len);
+          const alpha = 1 - j / len;
           ctx.fillStyle = colors[Math.floor(nextRand() * (colors.length - 1))];
           ctx.globalAlpha = alpha;
-          const char = String.fromCharCode(0x30A0 + Math.random() * 96);
-          ctx.fillText(char, x, y + (j * 25));
+          const char = String.fromCharCode(0x30a0 + Math.random() * 96);
+          ctx.fillText(char, x, y + j * 25);
         }
       }
       ctx.globalAlpha = 1.0;
@@ -254,7 +328,11 @@ const WallpaperEnginePage = () => {
         ctx.fillRect(x, y, w, h);
         ctx.fillStyle = '#fff';
         ctx.font = `${Math.floor(12 * (canvas.width / 1920))}px monospace`;
-        ctx.fillText(`BLOCK_ID_${Math.floor(nextRand() * 10000)}`, x + 10, y + 20);
+        ctx.fillText(
+          `BLOCK_ID_${Math.floor(nextRand() * 10000)}`,
+          x + 10,
+          y + 20,
+        );
       }
       ctx.globalAlpha = 1.0;
     } else if (style === 'glitch') {
@@ -262,7 +340,7 @@ const WallpaperEnginePage = () => {
       for (let i = 0; i < count; i++) {
         const x = nextRand() * canvas.width;
         const y = nextRand() * canvas.height;
-        const w = (nextRand() * canvas.width * 0.5);
+        const w = nextRand() * canvas.width * 0.5;
         const h = (nextRand() * 20 + 2) * (canvas.height / 1080);
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
         ctx.fillStyle = color;
@@ -279,15 +357,18 @@ const WallpaperEnginePage = () => {
       const centerY = canvas.height / 2;
       const rays = Math.floor(20 + complexity);
       for (let i = 0; i < rays; i++) {
-        const angle = (nextRand() * 360) * Math.PI / 180;
-        const length = (nextRand() * canvas.width * 0.8);
+        const angle = (nextRand() * 360 * Math.PI) / 180;
+        const length = nextRand() * canvas.width * 0.8;
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
         ctx.strokeStyle = color;
         ctx.lineWidth = 1 + nextRand() * 10;
         ctx.globalAlpha = 0.3 + nextRand() * 0.5;
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + Math.cos(angle) * length, centerY + Math.sin(angle) * length);
+        ctx.lineTo(
+          centerX + Math.cos(angle) * length,
+          centerY + Math.sin(angle) * length,
+        );
         ctx.stroke();
       }
       ctx.globalAlpha = 1.0;
@@ -298,14 +379,14 @@ const WallpaperEnginePage = () => {
         points.push({
           x: nextRand() * canvas.width,
           y: nextRand() * canvas.height,
-          color: colors[Math.floor(nextRand() * (colors.length - 1))]
+          color: colors[Math.floor(nextRand() * (colors.length - 1))],
         });
       }
       points.forEach((p, i) => {
         ctx.strokeStyle = p.color;
         ctx.globalAlpha = 0.2;
         ctx.lineWidth = 1;
-        points.slice(i + 1).forEach(p2 => {
+        points.slice(i + 1).forEach((p2) => {
           const dist = Math.hypot(p.x - p2.x, p.y - p2.y);
           if (dist < canvas.width * 0.3) {
             ctx.beginPath();
@@ -322,7 +403,11 @@ const WallpaperEnginePage = () => {
         if (nextRand() > 0.7) {
           ctx.fillStyle = '#fff';
           ctx.font = `${Math.floor(10 * (canvas.width / 1920))}px monospace`;
-          ctx.fillText(`NODE_${i.toString(16).toUpperCase()}`, p.x + 10, p.y + 10);
+          ctx.fillText(
+            `NODE_${i.toString(16).toUpperCase()}`,
+            p.x + 10,
+            p.y + 10,
+          );
         }
       });
     } else if (style === 'mesh') {
@@ -334,18 +419,22 @@ const WallpaperEnginePage = () => {
       for (let r = 0; r < rows; r++) {
         for (let c = 0; cols > c; c++) {
           const x = c * size * 1.5;
-          const y = r * size * Math.sqrt(3) + (c % 2 === 0 ? 0 : (size * Math.sqrt(3)) / 2);
+          const y =
+            r * size * Math.sqrt(3) +
+            (c % 2 === 0 ? 0 : (size * Math.sqrt(3)) / 2);
           ctx.globalAlpha = 0.1 + nextRand() * 0.4;
           ctx.beginPath();
           for (let a = 0; a < 6; a++) {
-            const angle = (a * 60) * Math.PI / 180;
+            const angle = (a * 60 * Math.PI) / 180;
             const px = x + size * Math.cos(angle);
             const py = y + size * Math.sin(angle);
-            if (a === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+            if (a === 0) ctx.moveTo(px, py);
+            else ctx.lineTo(px, py);
           }
           ctx.closePath();
           if (nextRand() > 0.8) {
-            ctx.fillStyle = colors[Math.floor(nextRand() * (colors.length - 1))];
+            ctx.fillStyle =
+              colors[Math.floor(nextRand() * (colors.length - 1))];
             ctx.fill();
           }
           ctx.stroke();
@@ -358,7 +447,11 @@ const WallpaperEnginePage = () => {
         const x = nextRand() * canvas.width;
         let y = nextRand() * canvas.height;
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-        const text = Array.from({length: 20}, () => Math.floor(nextRand() * 256).toString(16).padStart(2, '0')).join(' ');
+        const text = Array.from({ length: 20 }, () =>
+          Math.floor(nextRand() * 256)
+            .toString(16)
+            .padStart(2, '0'),
+        ).join(' ');
         ctx.fillStyle = color;
         ctx.globalAlpha = 0.6;
         ctx.save();
@@ -422,17 +515,35 @@ const WallpaperEnginePage = () => {
         const x = nextRand() * canvas.width;
         const y = nextRand() * canvas.height;
         const color = colors[Math.floor(nextRand() * (colors.length - 1))];
-        const fontSize = Math.floor((10 + nextRand() * 40) * (canvas.width / 1920));
+        const fontSize = Math.floor(
+          (10 + nextRand() * 40) * (canvas.width / 1920),
+        );
         ctx.font = `${nextRand() > 0.5 ? 'bold ' : ''}${fontSize}px font-mono`;
         ctx.fillStyle = color;
         ctx.globalAlpha = 0.5 + nextRand() * 0.5;
-        const labels = ['SYS_CORE', 'DATA_STREAM', 'VOID_0', 'NULL_PTR', 'AUTH_OK', 'FETCH_META', 'DECRYPT'];
-        const text = nextRand() > 0.3 ? labels[Math.floor(nextRand() * labels.length)] : Math.random().toString(16).slice(2, 10).toUpperCase();
+        const labels = [
+          'SYS_CORE',
+          'DATA_STREAM',
+          'VOID_0',
+          'NULL_PTR',
+          'AUTH_OK',
+          'FETCH_META',
+          'DECRYPT',
+        ];
+        const text =
+          nextRand() > 0.3
+            ? labels[Math.floor(nextRand() * labels.length)]
+            : Math.random().toString(16).slice(2, 10).toUpperCase();
         ctx.fillText(text, x, y);
         if (nextRand() > 0.7) {
           ctx.strokeStyle = color;
           ctx.lineWidth = 1;
-          ctx.strokeRect(x - 5, y - fontSize, ctx.measureText(text).width + 10, fontSize + 5);
+          ctx.strokeRect(
+            x - 5,
+            y - fontSize,
+            ctx.measureText(text).width + 10,
+            fontSize + 5,
+          );
         }
       }
     } else if (style === 'pipboy') {
@@ -482,7 +593,15 @@ const WallpaperEnginePage = () => {
         ctx.fillRect(bx, by, 8, 8);
       }
       ctx.font = `${Math.floor(18 * (canvas.width / 1920))}px monospace`;
-      const entries = ['FEZ_CODEX_OS v4.0.2', 'MEMORY_BANK: OK', 'RAD_LEVEL: 0.02 mSv', 'LOCATION: NEW_VEGAS_STRIP', 'SIGNAL: INTERCEPTED', 'ENCRYPTION: ACTIVE', 'USER: COURIER_SIX'];
+      const entries = [
+        'FEZ_CODEX_OS v4.0.2',
+        'MEMORY_BANK: OK',
+        'RAD_LEVEL: 0.02 mSv',
+        'LOCATION: NEW_VEGAS_STRIP',
+        'SIGNAL: INTERCEPTED',
+        'ENCRYPTION: ACTIVE',
+        'USER: COURIER_SIX',
+      ];
       entries.forEach((text, i) => {
         ctx.globalAlpha = 0.9;
         ctx.fillText(`> ${text}`, 100, 250 + i * 50);
@@ -529,7 +648,7 @@ const WallpaperEnginePage = () => {
       ctx.globalAlpha = 1.0;
       ctx.strokeRect(vbX, vbY, 200, 200);
       ctx.font = `bold ${Math.floor(12 * (canvas.width / 1920))}px monospace`;
-      ctx.fillText("F.C.D.X. STATUS", vbX, vbY - 10);
+      ctx.fillText('F.C.D.X. STATUS', vbX, vbY - 10);
       ctx.beginPath();
       ctx.arc(vbX + 100, vbY + 80, 40, 0, Math.PI * 2);
       ctx.moveTo(vbX + 100, vbY + 120);
@@ -539,13 +658,13 @@ const WallpaperEnginePage = () => {
       ctx.moveTo(vbX + 100, vbY + 140);
       ctx.lineTo(vbX + 140, vbY + 110);
       ctx.stroke();
-      ctx.fillText("DISCONN", vbX + 50, vbY + 195);
+      ctx.fillText('DISCONN', vbX + 50, vbY + 195);
       ctx.font = `${Math.floor(10 * (canvas.width / 1920))}px monospace`;
       ctx.globalAlpha = 0.4;
-      ctx.fillText("AP: 85/85", canvas.width - 200, canvas.height - 80);
-      ctx.fillText("HP: 240/240", canvas.width - 200, canvas.height - 60);
-      ctx.fillText("VOLTAGE: 1.2V", 100, canvas.height - 80);
-      ctx.fillText("OS_BUILD: 0.8.7", 100, canvas.height - 60);
+      ctx.fillText('AP: 85/85', canvas.width - 200, canvas.height - 80);
+      ctx.fillText('HP: 240/240', canvas.width - 200, canvas.height - 60);
+      ctx.fillText('VOLTAGE: 1.2V', 100, canvas.height - 80);
+      ctx.fillText('OS_BUILD: 0.8.7', 100, canvas.height - 60);
     } else if (style === 'stellar') {
       const mainColor = colors[0];
       const accentColor = colors[1] || colors[0];
@@ -563,10 +682,13 @@ const WallpaperEnginePage = () => {
         ctx.stroke();
       }
       for (let a = 0; a < 12; a++) {
-        const angle = (a * 30) * Math.PI / 180;
+        const angle = (a * 30 * Math.PI) / 180;
         ctx.beginPath();
         ctx.moveTo(centerX, centerY);
-        ctx.lineTo(centerX + Math.cos(angle) * canvas.width, centerY + Math.sin(angle) * canvas.width);
+        ctx.lineTo(
+          centerX + Math.cos(angle) * canvas.width,
+          centerY + Math.sin(angle) * canvas.width,
+        );
         ctx.stroke();
       }
       const starCount = Math.floor(50 + complexity);
@@ -576,13 +698,13 @@ const WallpaperEnginePage = () => {
           x: nextRand() * canvas.width,
           y: nextRand() * canvas.height,
           size: nextRand() * 3 + 1,
-          color: nextRand() > 0.8 ? accentColor : '#fff'
+          color: nextRand() > 0.8 ? accentColor : '#fff',
         });
       }
       ctx.globalAlpha = 0.15;
       ctx.lineWidth = 1;
       stars.forEach((s, i) => {
-        stars.slice(i + 1).forEach(s2 => {
+        stars.slice(i + 1).forEach((s2) => {
           const d = Math.hypot(s.x - s2.x, s.y - s2.y);
           if (d < canvas.width * 0.15) {
             ctx.beginPath();
@@ -601,7 +723,11 @@ const WallpaperEnginePage = () => {
         if (nextRand() > 0.9) {
           ctx.globalAlpha = 0.4;
           ctx.font = `${Math.floor(10 * (canvas.width / 1920))}px monospace`;
-          ctx.fillText(`STAR_${i.toString(16).toUpperCase()}`, s.x + 8, s.y + 8);
+          ctx.fillText(
+            `STAR_${i.toString(16).toUpperCase()}`,
+            s.x + 8,
+            s.y + 8,
+          );
         }
       });
       ctx.globalAlpha = 0.2;
@@ -611,7 +737,15 @@ const WallpaperEnginePage = () => {
         ctx.translate(centerX, centerY);
         ctx.rotate(nextRand() * Math.PI);
         ctx.beginPath();
-        ctx.ellipse(0, 0, (nextRand() * 400 + 200) * (canvas.width / 1920), (nextRand() * 200 + 100) * (canvas.width / 1920), 0, 0, Math.PI * 2);
+        ctx.ellipse(
+          0,
+          0,
+          (nextRand() * 400 + 200) * (canvas.width / 1920),
+          (nextRand() * 200 + 100) * (canvas.width / 1920),
+          0,
+          0,
+          Math.PI * 2,
+        );
         ctx.stroke();
         ctx.restore();
       }
@@ -621,7 +755,13 @@ const WallpaperEnginePage = () => {
       for (let i = 0; i < 4; i++) {
         const x = nextRand() * canvas.width;
         const y = nextRand() * canvas.height;
-        ctx.fillText(`[SECTOR_${Math.floor(nextRand() * 9999).toString().padStart(4, '0')}]`, x, y);
+        ctx.fillText(
+          `[SECTOR_${Math.floor(nextRand() * 9999)
+            .toString()
+            .padStart(4, '0')}]`,
+          x,
+          y,
+        );
         ctx.fillRect(x, y + 5, 100, 1);
       }
     } else if (style === 'circles') {
@@ -692,7 +832,9 @@ const WallpaperEnginePage = () => {
       const bgColor = colors[colors.length - 1];
       ctx.fillStyle = bgColor;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      const pixelSize = Math.floor((100 - complexity / 1.5 + 10) * (canvas.width / 1920));
+      const pixelSize = Math.floor(
+        (100 - complexity / 1.5 + 10) * (canvas.width / 1920),
+      );
       const cols = Math.ceil(canvas.width / pixelSize);
       const rows = Math.ceil(canvas.height / pixelSize);
       for (let x = 0; x < cols; x++) {
@@ -736,7 +878,11 @@ const WallpaperEnginePage = () => {
           ctx.lineTo(canvas.width, ly);
           ctx.stroke();
           ctx.font = `${Math.floor(10 * (canvas.width / 1920))}px monospace`;
-          ctx.fillText(`PX_SECTOR_${Math.floor(nextRand() * 1000)}`, 10, ly - 5);
+          ctx.fillText(
+            `PX_SECTOR_${Math.floor(nextRand() * 1000)}`,
+            10,
+            ly - 5,
+          );
         }
       }
     } else if (style === 'biohelix') {
@@ -752,7 +898,7 @@ const WallpaperEnginePage = () => {
       for (let s = 0; s < strands; s++) {
         const centerX = spacing * (s + 1);
         const waveHeight = (40 + nextRand() * 60) * (canvas.width / 1920);
-        const freq = (0.005 + nextRand() * 0.01);
+        const freq = 0.005 + nextRand() * 0.01;
         const color = nextRand() > 0.5 ? mainColor : accentColor;
 
         // Helix connection lines (Nucleotides)
@@ -784,7 +930,8 @@ const WallpaperEnginePage = () => {
         ctx.beginPath();
         for (let y = 0; y < canvas.height; y += 5) {
           const x = centerX + Math.sin(y * freq) * waveHeight;
-          if (y === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          if (y === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
         }
         ctx.stroke();
 
@@ -792,7 +939,8 @@ const WallpaperEnginePage = () => {
         ctx.beginPath();
         for (let y = 0; y < canvas.height; y += 5) {
           const x = centerX + Math.sin(y * freq + Math.PI) * waveHeight;
-          if (y === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          if (y === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
         }
         ctx.stroke();
 
@@ -800,8 +948,16 @@ const WallpaperEnginePage = () => {
         ctx.fillStyle = color;
         ctx.globalAlpha = 0.5;
         ctx.font = `bold ${Math.floor(12 * (canvas.width / 1920))}px monospace`;
-        ctx.fillText(`GEN_STRAND_0x${s.toString(16).toUpperCase()}`, centerX + waveHeight + 20, 100 + s * 100);
-        ctx.fillText(`SEQ_STABILITY: ${(90 + nextRand() * 10).toFixed(2)}%`, centerX + waveHeight + 20, 115 + s * 100);
+        ctx.fillText(
+          `GEN_STRAND_0x${s.toString(16).toUpperCase()}`,
+          centerX + waveHeight + 20,
+          100 + s * 100,
+        );
+        ctx.fillText(
+          `SEQ_STABILITY: ${(90 + nextRand() * 10).toFixed(2)}%`,
+          centerX + waveHeight + 20,
+          115 + s * 100,
+        );
       }
     } else if (style === 'fluent') {
       const mainColor = colors[0];
@@ -847,7 +1003,11 @@ const WallpaperEnginePage = () => {
               ctx.globalAlpha = 0.4;
               ctx.fillStyle = '#fff';
               ctx.font = `${Math.floor(10 * (canvas.width / 1920))}px monospace`;
-              ctx.fillText(`TILE_0x${(x * y).toString(16).toUpperCase()}`, 10, 20);
+              ctx.fillText(
+                `TILE_0x${(x * y).toString(16).toUpperCase()}`,
+                10,
+                20,
+              );
 
               if (nextRand() > 0.5) {
                 ctx.fillRect(10, 30, w * 0.3, 2);
@@ -869,7 +1029,9 @@ const WallpaperEnginePage = () => {
       const paperH = 550 * (canvas.width / 1920);
 
       // Organized Distribution: Grid with Jitter
-      const gridCols = Math.ceil(Math.sqrt(count * (canvas.width / canvas.height)));
+      const gridCols = Math.ceil(
+        Math.sqrt(count * (canvas.width / canvas.height)),
+      );
       const gridRows = Math.ceil(count / gridCols);
       const cellW = canvas.width / gridCols;
       const cellH = canvas.height / gridRows;
@@ -882,7 +1044,7 @@ const WallpaperEnginePage = () => {
           // Position with jitter (mostly centered in its grid cell)
           const x = (c + 0.5) * cellW + (nextRand() - 0.5) * cellW * 0.4;
           const y = (r + 0.5) * cellH + (nextRand() - 0.5) * cellH * 0.4;
-          const rot = (nextRand() - 0.5) * 30 * Math.PI / 180; // Reduced rotation for "stacked" look
+          const rot = ((nextRand() - 0.5) * 30 * Math.PI) / 180; // Reduced rotation for "stacked" look
           const color = nextRand() > 0.5 ? mainColor : accentColor;
 
           ctx.save();
@@ -914,7 +1076,11 @@ const WallpaperEnginePage = () => {
           ctx.fillStyle = color;
           ctx.globalAlpha = 0.8;
           ctx.font = `bold ${Math.floor(14 * (canvas.width / 1920))}px monospace`;
-          ctx.fillText(`FILE_ID: 0x${nextRand().toString(16).slice(2, 6).toUpperCase()}`, -paperW / 2 + 20, -paperH / 2 + 30);
+          ctx.fillText(
+            `FILE_ID: 0x${nextRand().toString(16).slice(2, 6).toUpperCase()}`,
+            -paperW / 2 + 20,
+            -paperH / 2 + 30,
+          );
           ctx.fillRect(-paperW / 2 + 20, -paperH / 2 + 40, paperW - 40, 2);
 
           // Content: "Text" lines
@@ -927,7 +1093,7 @@ const WallpaperEnginePage = () => {
           // Content: System Stamp
           if (nextRand() > 0.6) {
             ctx.save();
-            ctx.rotate(-15 * Math.PI / 180);
+            ctx.rotate((-15 * Math.PI) / 180);
             ctx.strokeStyle = '#f87171'; // Red stamp
             ctx.lineWidth = 2;
             ctx.globalAlpha = 0.6;
@@ -989,7 +1155,7 @@ const WallpaperEnginePage = () => {
       for (let i = 0; i < glitches; i++) {
         const x = nextRand() * canvas.width;
         const y = nextRand() * canvas.height;
-        const w = (nextRand() * 400) * (canvas.width / 1920);
+        const w = nextRand() * 400 * (canvas.width / 1920);
         const h = (2 + nextRand() * 10) * (canvas.width / 1920);
 
         ctx.fillStyle = nextRand() > 0.5 ? mainColor : accentColor;
@@ -1006,10 +1172,16 @@ const WallpaperEnginePage = () => {
       ctx.fillStyle = mainColor;
       ctx.font = `bold ${Math.floor(40 * (canvas.width / 1920))}px monospace`;
       ctx.globalAlpha = 0.8;
-      ctx.fillText("BREACH_STATUS: NOMINAL", 100, 150);
+      ctx.fillText('BREACH_STATUS: NOMINAL', 100, 150);
 
       ctx.font = `${Math.floor(12 * (canvas.width / 1920))}px monospace`;
-      const readouts = [`NC_NET_NODE: 0x${nextRand().toString(16).slice(2, 8).toUpperCase()}`, 'SYSTEM_AUTHORIZATION: OK', 'BIOMONITOR_SYNC: ACTIVE', 'RAM_USAGE: 42.8 GB', 'CYBER_DECK: MILITECH_PARELINE'];
+      const readouts = [
+        `NC_NET_NODE: 0x${nextRand().toString(16).slice(2, 8).toUpperCase()}`,
+        'SYSTEM_AUTHORIZATION: OK',
+        'BIOMONITOR_SYNC: ACTIVE',
+        'RAM_USAGE: 42.8 GB',
+        'CYBER_DECK: MILITECH_PARELINE',
+      ];
 
       readouts.forEach((r, idx) => {
         ctx.globalAlpha = 0.6;
@@ -1025,7 +1197,7 @@ const WallpaperEnginePage = () => {
         ctx.fillRect(0, 0, 300, 60);
         ctx.fillStyle = '#000';
         ctx.font = `black ${Math.floor(20 * (canvas.width / 1920))}px monospace`;
-        ctx.fillText("SAMURAI_LINK: OK", 20, 40);
+        ctx.fillText('SAMURAI_LINK: OK', 20, 40);
         ctx.restore();
       }
 
@@ -1035,7 +1207,13 @@ const WallpaperEnginePage = () => {
         ctx.fillStyle = '#fff';
         ctx.globalAlpha = 0.1;
         ctx.beginPath();
-        ctx.arc(nextRand() * canvas.width, nextRand() * canvas.height, 1, 0, Math.PI * 2);
+        ctx.arc(
+          nextRand() * canvas.width,
+          nextRand() * canvas.height,
+          1,
+          0,
+          Math.PI * 2,
+        );
         ctx.fill();
       }
     } else if (style === 'global') {
@@ -1065,14 +1243,30 @@ const WallpaperEnginePage = () => {
         const r = radius * Math.sin((i / 6) * Math.PI);
         const y = centerY + radius * Math.cos((i / 6) * Math.PI);
         ctx.beginPath();
-        ctx.ellipse(centerX, y, radius * Math.sin((i / 6) * Math.PI), r * 0.2, 0, 0, Math.PI * 2);
+        ctx.ellipse(
+          centerX,
+          y,
+          radius * Math.sin((i / 6) * Math.PI),
+          r * 0.2,
+          0,
+          0,
+          Math.PI * 2,
+        );
         ctx.stroke();
       }
 
       // Longitude lines
       for (let i = 0; i < 6; i++) {
         ctx.beginPath();
-        ctx.ellipse(centerX, centerY, radius * Math.sin((i / 6) * Math.PI), radius, 0, 0, Math.PI * 2);
+        ctx.ellipse(
+          centerX,
+          centerY,
+          radius * Math.sin((i / 6) * Math.PI),
+          radius,
+          0,
+          0,
+          Math.PI * 2,
+        );
         ctx.stroke();
       }
 
@@ -1085,7 +1279,7 @@ const WallpaperEnginePage = () => {
         nodes.push({
           x: centerX + Math.cos(angle) * dist,
           y: centerY + Math.sin(angle) * dist,
-          color: nextRand() > 0.7 ? accentColor : mainColor
+          color: nextRand() > 0.7 ? accentColor : mainColor,
         });
       }
 
@@ -1101,7 +1295,7 @@ const WallpaperEnginePage = () => {
 
         // Draw connections
         ctx.strokeStyle = n.color;
-        nodes.slice(i + 1).forEach(n2 => {
+        nodes.slice(i + 1).forEach((n2) => {
           const d = Math.hypot(n.x - n2.x, n.y - n2.y);
           if (d < radius * 0.8 && nextRand() > 0.8) {
             ctx.globalAlpha = 0.2;
@@ -1120,7 +1314,11 @@ const WallpaperEnginePage = () => {
           ctx.fillStyle = '#fff';
           ctx.globalAlpha = 0.4;
           ctx.font = `${Math.floor(9 * (canvas.width / 1920))}px monospace`;
-          ctx.fillText(`LOC_${Math.floor(n.x)},${Math.floor(n.y)}`, n.x + 8, n.y + 8);
+          ctx.fillText(
+            `LOC_${Math.floor(n.x)},${Math.floor(n.y)}`,
+            n.x + 8,
+            n.y + 8,
+          );
         }
       });
 
@@ -1128,12 +1326,16 @@ const WallpaperEnginePage = () => {
       ctx.globalAlpha = 0.6;
       ctx.fillStyle = mainColor;
       ctx.font = `bold ${Math.floor(12 * (canvas.width / 1920))}px monospace`;
-      ctx.fillText("PLANETARY_NETWORK_SCAN: ACTIVE", 50, canvas.height - 55);
+      ctx.fillText('PLANETARY_NETWORK_SCAN: ACTIVE', 50, canvas.height - 55);
       ctx.fillText(`NODES_DETECTED: ${nodeCount}`, 50, canvas.height - 35);
 
-      const corners = [{x: 50, y: 50}, {x: canvas.width - 150, y: 50}, {x: canvas.width - 150, y: canvas.height - 50}];
+      const corners = [
+        { x: 50, y: 50 },
+        { x: canvas.width - 150, y: 50 },
+        { x: canvas.width - 150, y: canvas.height - 50 },
+      ];
 
-      corners.forEach(c => {
+      corners.forEach((c) => {
         ctx.strokeRect(c.x, c.y, 100, 20);
         ctx.font = `${Math.floor(10 * (canvas.width / 1920))}px monospace`;
         ctx.fillText(`SEC_${Math.floor(nextRand() * 99)}`, c.x + 5, c.y + 14);
@@ -1226,7 +1428,11 @@ const WallpaperEnginePage = () => {
 
         // Technical Annotation
         ctx.globalAlpha = 0.7;
-        ctx.fillText(`MOD_0x${nextRand().toString(16).slice(2, 6).toUpperCase()}`, -w / 2, h / 2 + 20);
+        ctx.fillText(
+          `MOD_0x${nextRand().toString(16).slice(2, 6).toUpperCase()}`,
+          -w / 2,
+          h / 2 + 20,
+        );
 
         ctx.restore();
       }
@@ -1238,7 +1444,7 @@ const WallpaperEnginePage = () => {
       ctx.strokeRect(50, 50, 400, 100);
       ctx.font = `bold ${Math.floor(16 * (canvas.width / 1920))}px monospace`;
       ctx.fillStyle = mainColor;
-      ctx.fillText("ENGINEERING_ARCHIVE // SCHEMATIC", 70, 85);
+      ctx.fillText('ENGINEERING_ARCHIVE // SCHEMATIC', 70, 85);
       ctx.font = `${Math.floor(10 * (canvas.width / 1920))}px monospace`;
       ctx.fillText(`DRAFT_VER: ${seed.slice(0, 4).toUpperCase()}`, 70, 110);
       ctx.fillText(`ARCH_SPEC: ${resolution.toUpperCase()}`, 70, 125);
@@ -1272,84 +1478,133 @@ const WallpaperEnginePage = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const link = document.createElement('a');
-    const res = RESOLUTIONS.find(r => r.value === resolution);
+    const res = RESOLUTIONS.find((r) => r.value === resolution);
     link.download = `fezcodex-wallpaper-${style}-${seed}-${res.width}x${res.height}.png`;
     link.href = canvas.toDataURL('image/png', 1.0);
     link.click();
     addToast({
-      title: 'EXPORT SUCCESSFUL', message: `System wallpaper saved at ${res.width}x${res.height}`, type: 'success'
+      title: 'EXPORT SUCCESSFUL',
+      message: `System wallpaper saved at ${res.width}x${res.height}`,
+      type: 'success',
     });
   };
 
-  return (<div
-      className="min-h-screen bg-[#050505] text-white flex flex-col lg:flex-row overflow-hidden font-mono selection:bg-emerald-500/30">
+  return (
+    <div className="min-h-screen bg-[#050505] text-white flex flex-col lg:flex-row overflow-hidden font-mono selection:bg-emerald-500/30">
       <Seo
         title="Procedural Wallpaper Engine | Fezcodex"
         description="Construct high-resolution procedural wallpapers using generative algorithms and technical protocols."
-        keywords={['wallpaper', 'generator', 'procedural', 'generative art', 'fezcodex']}
+        keywords={[
+          'wallpaper',
+          'generator',
+          'procedural',
+          'generative art',
+          'fezcodex',
+        ]}
       />
-      <aside
-        className="w-full lg:w-80 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col bg-[#080808] z-20">
+      <aside className="w-full lg:w-80 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col bg-[#080808] z-20">
         <div className="p-6 border-b border-white/10">
-          <Link to="/apps"
-                className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 text-[10px] uppercase tracking-widest">
-            <ArrowLeftIcon/> Back to Tools
+          <Link
+            to="/apps"
+            className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors mb-6 text-[10px] uppercase tracking-widest"
+          >
+            <ArrowLeftIcon /> Back to Tools
           </Link>
           <BreadcrumbTitle
             title="Wall Paper Engine"
             slug="we"
             variant="brutalist"
           />
-          <p className="text-[9px] text-gray-600 mt-1 uppercase tracking-widest">Procedural Visualization v2.0</p>
+          <p className="text-[9px] text-gray-600 mt-1 uppercase tracking-widest">
+            Procedural Visualization v2.0
+          </p>
         </div>
         <div className="flex-1 overflow-y-auto p-6 space-y-8 no-scrollbar pb-32">
           <div className="space-y-3">
             <div className="flex justify-between items-center">
               <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
-                <ArrowsClockwiseIcon/> Protocol Seed
+                <ArrowsClockwiseIcon /> Protocol Seed
               </span>
-              <button onClick={handleRegenerate} className="p-1 hover:text-emerald-500 transition-colors"
-                      title="Randomize">
-                <ArrowsClockwiseIcon size={14} className={isGenerating ? 'animate-spin' : ''}/>
+              <button
+                onClick={handleRegenerate}
+                className="p-1 hover:text-emerald-500 transition-colors"
+                title="Randomize"
+              >
+                <ArrowsClockwiseIcon
+                  size={14}
+                  className={isGenerating ? 'animate-spin' : ''}
+                />
               </button>
             </div>
-            <input type="text" value={seed} onChange={(e) => setSeed(e.target.value)}
-                   className="w-full bg-white/5 border border-white/10 p-2 text-xs focus:outline-none focus:border-emerald-500/50 transition-colors uppercase"/>
+            <input
+              type="text"
+              value={seed}
+              onChange={(e) => setSeed(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 p-2 text-xs focus:outline-none focus:border-emerald-500/50 transition-colors uppercase"
+            />
           </div>
           <div className="space-y-3">
             <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
-              <ShapesIcon/> Algorithm Style
+              <ShapesIcon /> Algorithm Style
             </span>
-            <CustomDropdown variant="brutalist" fullWidth options={STYLES} value={style} onChange={setStyle}/>
+            <CustomDropdown
+              variant="brutalist"
+              fullWidth
+              options={STYLES}
+              value={style}
+              onChange={setStyle}
+            />
           </div>
           <div className="space-y-3">
             <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
-              <PaletteIcon/> Color Protocol
+              <PaletteIcon /> Color Protocol
             </span>
             <div className="grid grid-cols-4 gap-2">
               {COLOR_PRESETS.map((p) => {
                 const isCustom = p.value === 'custom';
                 const isActive = preset === p.value;
-                return (<button key={p.value} onClick={() => setPreset(p.value)}
-                                className={`relative h-10 border transition-all ${isActive ? 'border-emerald-500 p-0.5' : isCustom ? 'border-primary-500/50 hover:border-primary-500' : 'border-white/10 hover:border-white/30'}`}
-                                title={p.label}>
+                return (
+                  <button
+                    key={p.value}
+                    onClick={() => setPreset(p.value)}
+                    className={`relative h-10 border transition-all ${isActive ? 'border-emerald-500 p-0.5' : isCustom ? 'border-primary-500/50 hover:border-primary-500' : 'border-white/10 hover:border-white/30'}`}
+                    title={p.label}
+                  >
                     <div className="w-full h-full flex overflow-hidden">
-                      {(p.value === 'custom' ? customColors : p.colors).slice(0, 3).map((c, i) => (
-                        <div key={i} className="flex-1" style={{backgroundColor: c}}/>))}
+                      {(p.value === 'custom' ? customColors : p.colors)
+                        .slice(0, 3)
+                        .map((c, i) => (
+                          <div
+                            key={i}
+                            className="flex-1"
+                            style={{ backgroundColor: c }}
+                          />
+                        ))}
                     </div>
                     {isCustom && !isActive && (
-                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none"><span
-                        className="text-[10px] font-black text-white drop-shadow-md">+</span></div>)}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                        <span className="text-[10px] font-black text-white drop-shadow-md">
+                          +
+                        </span>
+                      </div>
+                    )}
                     {isActive && (
                       <div className="absolute -top-1.5 -right-1.5 bg-emerald-500 text-black rounded-full p-0.5">
-                        <CheckIcon size={8} weight="bold"/></div>)}
-                  </button>);
+                        <CheckIcon size={8} weight="bold" />
+                      </div>
+                    )}
+                  </button>
+                );
               })}
             </div>
             <AnimatePresence>
               {preset === 'custom' && (
-                <motion.div initial={{opacity: 0, height: 0}} animate={{opacity: 1, height: 'auto'}}
-                            exit={{opacity: 0, height: 0}} className="space-y-3 pt-2 overflow-visible relative z-30">
+                <motion.div
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  className="space-y-3 pt-2 overflow-visible relative z-30"
+                >
                   <div className="space-y-3">
                     {customColors.map((color, idx) => (
                       <CustomColorPicker
@@ -1365,80 +1620,125 @@ const WallpaperEnginePage = () => {
                       />
                     ))}
                   </div>
-                  <p className="text-[8px] text-gray-600 uppercase italic leading-tight">CH_3 is utilized as the primary
-                    foundation layer.</p>
-                </motion.div>)}
+                  <p className="text-[8px] text-gray-600 uppercase italic leading-tight">
+                    CH_3 is utilized as the primary foundation layer.
+                  </p>
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
-          <CustomSlider label="Complexity Level" value={complexity} onChange={setComplexity} min={1} max={100}/>
-          <CustomSlider label="Digital Grain" value={noise} onChange={setNoise} min={0} max={50}/>
+          <CustomSlider
+            label="Complexity Level"
+            value={complexity}
+            onChange={setComplexity}
+            min={1}
+            max={100}
+          />
+          <CustomSlider
+            label="Digital Grain"
+            value={noise}
+            onChange={setNoise}
+            min={0}
+            max={50}
+          />
           <div className="space-y-3">
             <span className="text-[10px] uppercase tracking-widest text-gray-500 font-bold flex items-center gap-2">
-              <MonitorIcon/> Export Target
+              <MonitorIcon /> Export Target
             </span>
-            <CustomDropdown variant="brutalist" fullWidth options={RESOLUTIONS} value={resolution}
-                            onChange={setResolution}/>
+            <CustomDropdown
+              variant="brutalist"
+              fullWidth
+              options={RESOLUTIONS}
+              value={resolution}
+              onChange={setResolution}
+            />
           </div>
-          <button onClick={handleDownload}
-                  className="w-full group flex items-center justify-between bg-emerald-500 hover:bg-emerald-400 text-black p-4 rounded-sm font-black uppercase tracking-tighter transition-all active:scale-[0.98]">
+          <button
+            onClick={handleDownload}
+            className="w-full group flex items-center justify-between bg-emerald-500 hover:bg-emerald-400 text-black p-4 rounded-sm font-black uppercase tracking-tighter transition-all active:scale-[0.98]"
+          >
             <span>Execute Export</span>
-            <DownloadSimpleIcon size={20} weight="bold" className="group-hover:translate-y-0.5 transition-transform"/>
+            <DownloadSimpleIcon
+              size={20}
+              weight="bold"
+              className="group-hover:translate-y-0.5 transition-transform"
+            />
           </button>
         </div>
       </aside>
       <main className="flex-1 relative bg-[#050505] p-4 md:p-12 flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none opacity-5" style={{
-          backgroundImage: 'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}/>
+        <div
+          className="absolute inset-0 pointer-events-none opacity-5"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, #fff 1px, transparent 1px), linear-gradient(to bottom, #fff 1px, transparent 1px)',
+            backgroundSize: '40px 40px',
+          }}
+        />
         <div className="relative w-full h-full flex flex-col items-center justify-center max-w-5xl">
           <div className="mb-4 w-full flex justify-between items-end">
             <div>
-              <span
-                className="text-[10px] text-emerald-500/50 uppercase tracking-[0.3em] block mb-1">Live_Preview_Stream</span>
+              <span className="text-[10px] text-emerald-500/50 uppercase tracking-[0.3em] block mb-1">
+                Live_Preview_Stream
+              </span>
               <div className="flex gap-4 font-mono text-[9px] text-gray-600 uppercase">
-                <span>Res: {RESOLUTIONS.find(r => r.value === resolution).width} x {RESOLUTIONS.find(r => r.value === resolution).height}</span>
+                <span>
+                  Res: {RESOLUTIONS.find((r) => r.value === resolution).width} x{' '}
+                  {RESOLUTIONS.find((r) => r.value === resolution).height}
+                </span>
                 <span>Seed: {seed}</span>
                 <span>Algorithm: {style}</span>
               </div>
             </div>
             <div className="flex gap-2">
-              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"/>
-              <div className="w-2 h-2 rounded-full bg-white/10"/>
-              <div className="w-2 h-2 rounded-full bg-white/10"/>
+              <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <div className="w-2 h-2 rounded-full bg-white/10" />
+              <div className="w-2 h-2 rounded-full bg-white/10" />
             </div>
           </div>
           <div
             className="w-full relative shadow-[0_0_100px_rgba(0,0,0,0.5)] border border-white/5 rounded-sm overflow-hidden bg-black flex items-center justify-center"
             style={{
-              aspectRatio: `${RESOLUTIONS.find(r => r.value === resolution).width} / ${RESOLUTIONS.find(r => r.value === resolution).height}`,
-              maxHeight: '70vh'
-            }}>
-            <canvas ref={canvasRef} className="w-full h-full object-contain"/>
+              aspectRatio: `${RESOLUTIONS.find((r) => r.value === resolution).width} / ${RESOLUTIONS.find((r) => r.value === resolution).height}`,
+              maxHeight: '70vh',
+            }}
+          >
+            <canvas ref={canvasRef} className="w-full h-full object-contain" />
             <AnimatePresence>
-              {isGenerating && (<motion.div initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}}
-                                            className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10">
+              {isGenerating && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-10"
+                >
                   <div className="flex flex-col items-center gap-4">
-                    <div
-                      className="w-12 h-12 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin"/>
-                    <span
-                      className="text-[10px] uppercase tracking-[0.5em] text-emerald-500 animate-pulse">Re-Compiling...</span>
+                    <div className="w-12 h-12 border-2 border-emerald-500 border-t-transparent rounded-full animate-spin" />
+                    <span className="text-[10px] uppercase tracking-[0.5em] text-emerald-500 animate-pulse">
+                      Re-Compiling...
+                    </span>
                   </div>
-                </motion.div>)}
+                </motion.div>
+              )}
             </AnimatePresence>
           </div>
           <div className="mt-8 w-full border-t border-white/5 pt-6 grid grid-cols-2 gap-8">
-            <StatsModule label="Render_Engine" value="Canvas_v2"/>
-            <StatsModule label="Data_Protocol" value="Procedural"/>
+            <StatsModule label="Render_Engine" value="Canvas_v2" />
+            <StatsModule label="Data_Protocol" value="Procedural" />
           </div>
         </div>
       </main>
-    </div>);
+    </div>
+  );
 };
 
-const StatsModule = ({label, value}) => (<div>
-    <span className="text-[9px] text-gray-600 uppercase tracking-widest block mb-1">{label}</span>
+const StatsModule = ({ label, value }) => (
+  <div>
+    <span className="text-[9px] text-gray-600 uppercase tracking-widest block mb-1">
+      {label}
+    </span>
     <span className="text-xs text-gray-400 font-bold uppercase">{value}</span>
-  </div>);
+  </div>
+);
 
 export default WallpaperEnginePage;

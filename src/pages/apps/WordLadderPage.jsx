@@ -5,7 +5,7 @@ import React, {
   useContext,
   useCallback,
 } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   LightbulbIcon,
@@ -14,9 +14,9 @@ import {
   HashIcon,
   TargetIcon,
 } from '@phosphor-icons/react';
-import {motion, AnimatePresence} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
@@ -596,7 +596,7 @@ const isOneLetterDifferent = (word1, word2) => {
 const WordLadderPage = () => {
   const appName = 'Word Ladder';
 
-  const {addToast} = useContext(ToastContext);
+  const { addToast } = useContext(ToastContext);
   const [startWord, setStartWord] = useState('');
   const [endWord, setEndWord] = useState('');
   const [currentGuess, setCurrentGuess] = useState('');
@@ -608,10 +608,10 @@ const WordLadderPage = () => {
   const inputRef = useRef(null);
 
   const findShortestPath = useCallback((start, end, dict) => {
-    const queue = [{word: start, path: [start]}];
+    const queue = [{ word: start, path: [start] }];
     const visited = new Set([start]);
     while (queue.length > 0) {
-      const {word, path} = queue.shift();
+      const { word, path } = queue.shift();
       if (word === end) return path;
       for (const dictWord of dict) {
         if (
@@ -620,7 +620,7 @@ const WordLadderPage = () => {
           isOneLetterDifferent(word, dictWord)
         ) {
           visited.add(dictWord);
-          queue.push({word: dictWord, path: [...path, dictWord]});
+          queue.push({ word: dictWord, path: [...path, dictWord] });
         }
       }
     }
@@ -639,7 +639,7 @@ const WordLadderPage = () => {
         !newEndWord ||
         !path ||
         path.length < 3
-        ) {
+      ) {
         newStartWord = generateRandomWord(wordLength);
         newEndWord = generateRandomWord(wordLength);
         path = findShortestPath(newStartWord, newEndWord, DICTIONARY);
@@ -675,11 +675,11 @@ const WordLadderPage = () => {
       return;
     }
     if (ladder.includes(guess)) {
-      addToast({message: 'Word already used in ladder.', type: 'warning'});
+      addToast({ message: 'Word already used in ladder.', type: 'warning' });
       return;
     }
     if (!DICTIONARY.has(guess)) {
-      addToast({message: 'Not a valid word.', type: 'error'});
+      addToast({ message: 'Not a valid word.', type: 'error' });
       return;
     }
 
@@ -701,7 +701,7 @@ const WordLadderPage = () => {
       setMessage(
         `Transformation Complete :: Success in ${newLadder.length - 1} steps.`,
       );
-      addToast({message: 'Puzzle Solved!', type: 'success'});
+      addToast({ message: 'Puzzle Solved!', type: 'success' });
     }
   };
 
@@ -719,7 +719,7 @@ const WordLadderPage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
 
@@ -761,17 +761,14 @@ const WordLadderPage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Main Input Column */}
           <div className="lg:col-span-5 space-y-8">
-            <div
-              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 md:p-12 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div
-                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
-              <h3
-                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
-                <TargetIcon weight="fill"/>
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                <TargetIcon weight="fill" />
                 Word_Input
               </h3>
 
@@ -804,7 +801,7 @@ const WordLadderPage = () => {
                     type="submit"
                     className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
                   >
-                    <LadderSimpleIcon weight="bold" size={18}/>
+                    <LadderSimpleIcon weight="bold" size={18} />
                     Submit Step
                   </button>
                 </form>
@@ -825,7 +822,7 @@ const WordLadderPage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <LightbulbIcon size={20} weight="bold"/>
+                <LightbulbIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Rules of Engagement
                 </h4>
@@ -851,7 +848,7 @@ const WordLadderPage = () => {
                 onClick={() => initGame(startWord.length)}
                 className="flex-1 py-3 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
               >
-                <ArrowCounterClockwiseIcon/>
+                <ArrowCounterClockwiseIcon />
                 Reset Current
               </button>
 
@@ -860,7 +857,7 @@ const WordLadderPage = () => {
                 disabled={isRevealed || gameStatus === 'won'}
                 className="flex-1 py-3 border border-white/10 text-gray-500 hover:text-white hover:bg-white/5 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-mono text-[10px] uppercase tracking-widest flex items-center justify-center gap-2"
               >
-                <LightbulbIcon/>
+                <LightbulbIcon />
                 Reveal Solution
               </button>
             </div>
@@ -868,7 +865,7 @@ const WordLadderPage = () => {
             {isRevealed && solution && (
               <div className="bg-emerald-500/10 border border-emerald-500/20 p-6 rounded-sm">
                 <div className="flex items-center gap-3 mb-4 text-emerald-400">
-                  <LightbulbIcon size={20} weight="bold"/>
+                  <LightbulbIcon size={20} weight="bold" />
                   <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                     Optimal Solution
                   </h4>
@@ -897,9 +894,8 @@ const WordLadderPage = () => {
 
           {/* History Column */}
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <h3
-              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <HashIcon weight="fill" className="text-emerald-500"/>
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <HashIcon weight="fill" className="text-emerald-500" />
               Evolution_Path
             </h3>
 
@@ -909,8 +905,8 @@ const WordLadderPage = () => {
                   {ladder.map((word, index) => (
                     <motion.div
                       key={word + index}
-                      initial={{opacity: 0, scale: 0.9}}
-                      animate={{opacity: 1, scale: 1}}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
                       className="flex items-center gap-4"
                     >
                       <div

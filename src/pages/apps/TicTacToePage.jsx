@@ -1,7 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeftIcon, XIcon, CircleIcon, ArrowsClockwiseIcon, CpuIcon, UserIcon } from '@phosphor-icons/react';
+import {
+  ArrowLeftIcon,
+  XIcon,
+  CircleIcon,
+  ArrowsClockwiseIcon,
+  CpuIcon,
+  UserIcon,
+} from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -14,13 +21,16 @@ const TicTacToePage = () => {
   const [winner, setWinner] = useState(null);
   const { addToast } = useToast();
 
-  const handleClick = useCallback((i) => {
-    if (winner || board[i]) return;
-    const newBoard = board.slice();
-    newBoard[i] = xIsNext ? 'X' : 'O';
-    setBoard(newBoard);
-    setXIsNext(!xIsNext);
-  }, [board, winner, xIsNext]);
+  const handleClick = useCallback(
+    (i) => {
+      if (winner || board[i]) return;
+      const newBoard = board.slice();
+      newBoard[i] = xIsNext ? 'X' : 'O';
+      setBoard(newBoard);
+      setXIsNext(!xIsNext);
+    },
+    [board, winner, xIsNext],
+  );
 
   const minimax = useCallback((currentBoard, depth, isMaximizingPlayer) => {
     const result = calculateWinner(currentBoard);
@@ -53,22 +63,25 @@ const TicTacToePage = () => {
     }
   }, []);
 
-  const findBestMove = useCallback((currentBoard) => {
-    let bestScore = -Infinity;
-    let move = null;
-    for (let i = 0; i < currentBoard.length; i++) {
-      if (currentBoard[i] === null) {
-        currentBoard[i] = 'O';
-        let score = minimax(currentBoard, 0, false);
-        currentBoard[i] = null;
-        if (score > bestScore) {
-          bestScore = score;
-          move = i;
+  const findBestMove = useCallback(
+    (currentBoard) => {
+      let bestScore = -Infinity;
+      let move = null;
+      for (let i = 0; i < currentBoard.length; i++) {
+        if (currentBoard[i] === null) {
+          currentBoard[i] = 'O';
+          let score = minimax(currentBoard, 0, false);
+          currentBoard[i] = null;
+          if (score > bestScore) {
+            bestScore = score;
+            move = i;
+          }
         }
       }
-    }
-    return move;
-  }, [minimax]);
+      return move;
+    },
+    [minimax],
+  );
 
   const makeAiMove = useCallback(() => {
     const bestMove = findBestMove(board);
@@ -86,10 +99,16 @@ const TicTacToePage = () => {
     const calculatedWinner = calculateWinner(board);
     if (calculatedWinner) {
       setWinner(calculatedWinner);
-      addToast({ title: 'Game Over', message: `${calculatedWinner} has secured the grid.` });
+      addToast({
+        title: 'Game Over',
+        message: `${calculatedWinner} has secured the grid.`,
+      });
     } else if (board.every(Boolean)) {
       setWinner('Draw');
-      addToast({ title: 'Grid Lock', message: "No dominant sequence identified." });
+      addToast({
+        title: 'Grid Lock',
+        message: 'No dominant sequence identified.',
+      });
     }
   }, [board, addToast]);
 
@@ -107,10 +126,15 @@ const TicTacToePage = () => {
         keywords={['Fezcodex', 'tic tac toe', 'game', 'ai game', 'strategy']}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
-
         <header className="mb-24">
-          <Link to="/apps" className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]">
-            <ArrowLeftIcon weight="bold" className="transition-transform group-hover:-translate-x-1" />
+          <Link
+            to="/apps"
+            className="group mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-[0.3em]"
+          >
+            <ArrowLeftIcon
+              weight="bold"
+              className="transition-transform group-hover:-translate-x-1"
+            />
             <span>Applications</span>
           </Link>
 
@@ -120,19 +144,22 @@ const TicTacToePage = () => {
                 {appName}
               </h1>
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
-                Neural grid protocol. Engage in archetypal pattern matching against the system's recursive decision matrix.
+                Neural grid protocol. Engage in archetypal pattern matching
+                against the system's recursive decision matrix.
               </p>
             </div>
           </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
           {/* Main Game Area */}
           <div className="lg:col-span-8 flex justify-center">
             <div className="relative border border-white/10 bg-white/[0.02] p-8 md:p-16 rounded-sm overflow-hidden group flex flex-col items-center justify-center w-full max-w-2xl">
               <div className="absolute inset-0 opacity-[0.03] pointer-events-none grayscale">
-                <GenerativeArt seed={appName + winner + board.join('')} className="w-full h-full" />
+                <GenerativeArt
+                  seed={appName + winner + board.join('')}
+                  className="w-full h-full"
+                />
               </div>
 
               <div className="relative z-10 w-full flex flex-col items-center gap-12">
@@ -145,20 +172,32 @@ const TicTacToePage = () => {
                       disabled={winner || square || (!xIsNext && !winner)}
                       className={`
                         w-20 h-20 md:w-32 md:h-32 flex items-center justify-center border-4 transition-all duration-300
-                        ${square === 'X' ? 'border-emerald-500 bg-emerald-500/10 text-emerald-500' :
-                          square === 'O' ? 'border-white bg-white/5 text-white' :
-                          'border-white/5 hover:border-emerald-500/30 bg-black/20'}
-                        ${(winner || square) ? 'cursor-default' : 'cursor-pointer'}
+                        ${
+                          square === 'X'
+                            ? 'border-emerald-500 bg-emerald-500/10 text-emerald-500'
+                            : square === 'O'
+                              ? 'border-white bg-white/5 text-white'
+                              : 'border-white/5 hover:border-emerald-500/30 bg-black/20'
+                        }
+                        ${winner || square ? 'cursor-default' : 'cursor-pointer'}
                       `}
                     >
                       <AnimatePresence mode="wait">
                         {square === 'X' && (
-                          <motion.div initial={{ scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} exit={{ scale: 0 }}>
+                          <motion.div
+                            initial={{ scale: 0, rotate: -45 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            exit={{ scale: 0 }}
+                          >
                             <XIcon size={48} weight="black" />
                           </motion.div>
                         )}
                         {square === 'O' && (
-                          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }}>
+                          <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            exit={{ scale: 0 }}
+                          >
                             <CircleIcon size={48} weight="bold" />
                           </motion.div>
                         )}
@@ -172,7 +211,11 @@ const TicTacToePage = () => {
                     onClick={resetGame}
                     className="group relative inline-flex items-center gap-4 px-12 py-6 bg-white text-black hover:bg-emerald-400 transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm shadow-[0_0_30px_rgba(255,255,255,0.05)]"
                   >
-                    <ArrowsClockwiseIcon weight="bold" size={24} className="group-hover:rotate-180 transition-transform duration-500" />
+                    <ArrowsClockwiseIcon
+                      weight="bold"
+                      size={24}
+                      className="group-hover:rotate-180 transition-transform duration-500"
+                    />
                     <span>Clear Grid</span>
                   </button>
                 </div>
@@ -190,17 +233,35 @@ const TicTacToePage = () => {
 
               <div className="space-y-8">
                 <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex flex-col gap-2">
-                  <span className="font-mono text-[10px] text-gray-600 uppercase">Current_Control</span>
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Current_Control
+                  </span>
                   <div className="flex items-center gap-3">
-                    {xIsNext ? <UserIcon size={20} className="text-emerald-500" /> : <CpuIcon size={20} className="text-white" />}
-                    <span className="text-xl font-black uppercase">{xIsNext ? 'User_Alpha' : 'System_AI'}</span>
+                    {xIsNext ? (
+                      <UserIcon size={20} className="text-emerald-500" />
+                    ) : (
+                      <CpuIcon size={20} className="text-white" />
+                    )}
+                    <span className="text-xl font-black uppercase">
+                      {xIsNext ? 'User_Alpha' : 'System_AI'}
+                    </span>
                   </div>
                 </div>
 
-                <div className={`p-6 border rounded-sm flex flex-col gap-2 transition-all duration-500 ${winner ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/5 border-white/10'}`}>
-                  <span className="font-mono text-[10px] text-gray-600 uppercase">Outcome_Registry</span>
-                  <span className={`text-xl font-black uppercase ${winner === 'X' ? 'text-emerald-500' : 'text-white'}`}>
-                    {winner ? (winner === 'Draw' ? 'Lockdown' : `${winner === 'X' ? 'User' : 'AI'}_Wins`) : 'Pending...'}
+                <div
+                  className={`p-6 border rounded-sm flex flex-col gap-2 transition-all duration-500 ${winner ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/5 border-white/10'}`}
+                >
+                  <span className="font-mono text-[10px] text-gray-600 uppercase">
+                    Outcome_Registry
+                  </span>
+                  <span
+                    className={`text-xl font-black uppercase ${winner === 'X' ? 'text-emerald-500' : 'text-white'}`}
+                  >
+                    {winner
+                      ? winner === 'Draw'
+                        ? 'Lockdown'
+                        : `${winner === 'X' ? 'User' : 'AI'}_Wins`
+                      : 'Pending...'}
                   </span>
                 </div>
               </div>
@@ -208,16 +269,19 @@ const TicTacToePage = () => {
 
             <div className="p-8 border border-white/10 bg-white/[0.01] rounded-sm">
               <p className="text-[10px] font-mono uppercase tracking-[0.2em] leading-relaxed text-gray-500">
-                The minimax algorithm ensures the system AI maintains an optimal strategic posture. Achieving victory requires identifying subtle structural vulnerabilities in the recursive logic.
+                The minimax algorithm ensures the system AI maintains an optimal
+                strategic posture. Achieving victory requires identifying subtle
+                structural vulnerabilities in the recursive logic.
               </p>
             </div>
           </div>
-
         </div>
 
         <footer className="mt-32 pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6 text-gray-600 font-mono text-[10px] uppercase tracking-[0.3em]">
           <span>Fezcodex_Strategy_Loom_v0.6.1</span>
-          <span className="text-gray-800">MATRIX_STATUS // {winner ? 'TERMINATED' : 'ACTIVE'}</span>
+          <span className="text-gray-800">
+            MATRIX_STATUS // {winner ? 'TERMINATED' : 'ACTIVE'}
+          </span>
         </footer>
       </div>
     </div>
@@ -225,10 +289,20 @@ const TicTacToePage = () => {
 };
 
 function calculateWinner(squares) {
-  const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+  const lines = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) return squares[a];
+    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c])
+      return squares[a];
   }
   return null;
 }

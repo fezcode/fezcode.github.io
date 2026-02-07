@@ -76,7 +76,9 @@ const Layout = ({
   const mainContent = location.pathname.startsWith('/stories') ? (
     <DndProvider>{children}</DndProvider>
   ) : (
-    <div className={`${fezcodexTheme === 'luxe' ? 'bg-[#F5F5F0]' : 'bg-[#050505]'} min-h-screen font-sans flex`}>
+    <div
+      className={`${fezcodexTheme === 'luxe' ? 'bg-[#F5F5F0]' : 'bg-[#050505]'} min-h-screen font-sans flex`}
+    >
       {!hideLayout &&
         (fezcodexTheme === 'luxe' ? (
           <LuxeSidebar
@@ -96,8 +98,8 @@ const Layout = ({
       <div
         className={`flex-1 flex flex-col transition-all duration-300 ${isSidebarOpen && !hideLayout ? 'md:ml-72' : 'md:ml-0'}`}
       >
-        {!hideLayout && (
-          fezcodexTheme === 'luxe' ? (
+        {!hideLayout &&
+          (fezcodexTheme === 'luxe' ? (
             <LuxeNavbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
@@ -111,8 +113,7 @@ const Layout = ({
               isSearchVisible={isSearchVisible}
               toggleSearch={toggleSearch}
             />
-          )
-        )}
+          ))}
         {!hideLayout && isSearchVisible && (
           <Search isVisible={isSearchVisible} />
         )}
@@ -121,8 +122,7 @@ const Layout = ({
           location.pathname !== '/projects' &&
           location.pathname !== '/blog' &&
           location.pathname !== '/commands' &&
-          (fezcodexTheme === 'luxe' ? <LuxeFooter /> : <Footer />)
-        }
+          (fezcodexTheme === 'luxe' ? <LuxeFooter /> : <Footer />)}
       </div>
     </div>
   );

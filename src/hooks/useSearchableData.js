@@ -1,4 +1,4 @@
-import {useEffect, useMemo, useState} from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import piml from 'piml';
 
 const useSearchableData = () => {
@@ -102,12 +102,12 @@ const useSearchableData = () => {
         const allPosts = postsData.flatMap((item) =>
           item.series
             ? item.series.posts.map((p) => ({
-              ...p,
-              type: 'post',
-              title: `${item.title}: ${p.title}`,
-              path: `/blog/series/${item.slug}/${p.slug}`,
-            }))
-            : {...item, type: 'post', path: `/blog/${item.slug}`},
+                ...p,
+                type: 'post',
+                title: `${item.title}: ${p.title}`,
+                path: `/blog/series/${item.slug}/${p.slug}`,
+              }))
+            : { ...item, type: 'post', path: `/blog/${item.slug}` },
         );
 
         // Process Projects
@@ -126,18 +126,43 @@ const useSearchableData = () => {
 
         // Define static routes and custom commands
         const staticRoutes = [
-          {title: 'Home', slug: '/', type: 'page', path: '/'},
-          {title: 'Blog', slug: '/blog', type: 'page', path: '/blog'},
-          {title: 'Projects', slug: '/projects', type: 'page', path: '/projects'},
-          {title: 'About Me', slug: '/about', type: 'page', path: '/about'},
-          {title: 'Logs', slug: '/logs', type: 'page', path: '/logs'},
-          {title: 'Fezzilla Roadmap', slug: '/roadmap', type: 'page', path: '/roadmap'},
-          {title: 'Timeline', slug: '/timeline', type: 'page', path: '/timeline'},
-          {title: 'Settings', slug: '/settings', type: 'page', path: '/settings'},
-          {title: 'Stories', slug: '/stories', type: 'page', path: '/stories'},
-          {title: 'Glossary', slug: '/vocab', type: 'page', path: '/vocab'},
-          {title: 'Apps', slug: '/apps', type: 'page', path: '/apps'},
-          {title: 'Random', slug: '/random', type: 'page', path: '/random'},
+          { title: 'Home', slug: '/', type: 'page', path: '/' },
+          { title: 'Blog', slug: '/blog', type: 'page', path: '/blog' },
+          {
+            title: 'Projects',
+            slug: '/projects',
+            type: 'page',
+            path: '/projects',
+          },
+          { title: 'About Me', slug: '/about', type: 'page', path: '/about' },
+          { title: 'Logs', slug: '/logs', type: 'page', path: '/logs' },
+          {
+            title: 'Fezzilla Roadmap',
+            slug: '/roadmap',
+            type: 'page',
+            path: '/roadmap',
+          },
+          {
+            title: 'Timeline',
+            slug: '/timeline',
+            type: 'page',
+            path: '/timeline',
+          },
+          {
+            title: 'Settings',
+            slug: '/settings',
+            type: 'page',
+            path: '/settings',
+          },
+          {
+            title: 'Stories',
+            slug: '/stories',
+            type: 'page',
+            path: '/stories',
+          },
+          { title: 'Glossary', slug: '/vocab', type: 'page', path: '/vocab' },
+          { title: 'Apps', slug: '/apps', type: 'page', path: '/apps' },
+          { title: 'Random', slug: '/random', type: 'page', path: '/random' },
         ];
 
         const customCommands = [
@@ -186,7 +211,7 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'openLinkedIn',
           },
-          {title: 'Scroll to Top', type: 'command', commandId: 'scrollToTop'},
+          { title: 'Scroll to Top', type: 'command', commandId: 'scrollToTop' },
           {
             title: 'Scroll to Bottom',
             type: 'command',
@@ -197,7 +222,7 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'showSiteStats',
           },
-          {title: 'Show Version', type: 'command', commandId: 'showVersion'},
+          { title: 'Show Version', type: 'command', commandId: 'showVersion' },
           {
             title: 'Go to Latest Post',
             type: 'command',
@@ -218,7 +243,7 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'digitalRain',
           },
-          {title: 'Generate Art', type: 'command', commandId: 'generateArt'},
+          { title: 'Generate Art', type: 'command', commandId: 'generateArt' },
           {
             title: 'Leet Speak Transformer',
             type: 'command',
@@ -244,7 +269,7 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'clearLocalStorage',
           },
-          {title: 'Reload Page', type: 'command', commandId: 'reloadPage'},
+          { title: 'Reload Page', type: 'command', commandId: 'reloadPage' },
           {
             title: 'Go to Random App',
             type: 'command',
@@ -260,7 +285,7 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'openGitHubIssue',
           },
-          {title: 'Her Daim', type: 'command', commandId: 'herDaim'},
+          { title: 'Her Daim', type: 'command', commandId: 'herDaim' },
           {
             title: 'Do a Barrel Roll',
             type: 'command',
@@ -271,7 +296,7 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'toggleInvertColors',
           },
-          {title: 'Party Mode', type: 'command', commandId: 'partyMode'},
+          { title: 'Party Mode', type: 'command', commandId: 'partyMode' },
           {
             title: 'Toggle Retro Mode',
             type: 'command',
@@ -367,7 +392,7 @@ const useSearchableData = () => {
             type: 'command',
             commandId: 'previousPage',
           },
-          {title: 'Next Page', type: 'command', commandId: 'nextPage'},
+          { title: 'Next Page', type: 'command', commandId: 'nextPage' },
         ];
 
         setItems([
@@ -388,7 +413,7 @@ const useSearchableData = () => {
     fetchData();
   }, [categories]);
 
-  return {items, isLoading};
+  return { items, isLoading };
 };
 
 export default useSearchableData;

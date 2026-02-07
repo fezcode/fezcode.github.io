@@ -9,9 +9,7 @@ import '../../styles/dnd-refactor.css';
 import { GameController, Flame, TreasureChest } from '@phosphor-icons/react';
 import { useToast } from '../../hooks/useToast';
 
-const Lightning = () => (
-  <div className="dnd-lightning-overlay" />
-);
+const Lightning = () => <div className="dnd-lightning-overlay" />;
 
 const LootDiscovery = () => {
   const { addToast } = useToast();
@@ -41,7 +39,10 @@ const LootDiscovery = () => {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0 }}
       onClick={() => {
-        const currentCount = parseInt(localStorage.getItem('fezcodex_loot_count') || '0', 10);
+        const currentCount = parseInt(
+          localStorage.getItem('fezcodex_loot_count') || '0',
+          10,
+        );
         const newCount = currentCount + 1;
         localStorage.setItem('fezcodex_loot_count', newCount.toString());
 
@@ -85,15 +86,13 @@ const FireplaceAudio = () => {
         className={`p-4 rounded-full border-2 transition-all shadow-2xl ${isPlaying ? 'bg-dnd-crimson border-dnd-gold text-white animate-pulse' : 'bg-black/40 border-white/10 text-white/40 hover:text-white'}`}
         title="Toggle Ambient Fireplace"
       >
-        <Flame size={32} weight={isPlaying ? "fill" : "bold"} />
+        <Flame size={32} weight={isPlaying ? 'fill' : 'bold'} />
       </button>
     </div>
   );
 };
 
-const FireOverlay = () => (
-  <div className="dnd-fire-overlay" />
-);
+const FireOverlay = () => <div className="dnd-fire-overlay" />;
 
 const DustMotes = () => (
   <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden">
@@ -115,7 +114,32 @@ const DustMotes = () => (
 );
 
 const FloatingRunes = () => {
-  const runes = ['ᚠ', 'ᚢ', 'ᚦ', 'ᚨ', 'ᚱ', 'ᚲ', 'ᚷ', 'ᚹ', 'ᚺ', 'ᚾ', 'ᛁ', 'ᛃ', 'ᛈ', 'ᛇ', 'ᛉ', 'ᛊ', 'ᛏ', 'ᛒ', 'ᛖ', 'ᛗ', 'ᛚ', 'ᛜ', 'ᛞ', 'ᛟ'];
+  const runes = [
+    'ᚠ',
+    'ᚢ',
+    'ᚦ',
+    'ᚨ',
+    'ᚱ',
+    'ᚲ',
+    'ᚷ',
+    'ᚹ',
+    'ᚺ',
+    'ᚾ',
+    'ᛁ',
+    'ᛃ',
+    'ᛈ',
+    'ᛇ',
+    'ᛉ',
+    'ᛊ',
+    'ᛏ',
+    'ᛒ',
+    'ᛖ',
+    'ᛗ',
+    'ᛚ',
+    'ᛜ',
+    'ᛞ',
+    'ᛟ',
+  ];
   return (
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
       {[...Array(20)].map((_, i) => (
@@ -141,16 +165,16 @@ const ViewportFrame = () => (
   <>
     <div className="dnd-viewport-frame" />
     <div className="fixed top-0 left-0 w-24 h-24 z-[210] pointer-events-none">
-       <div className="absolute top-4 left-4 w-12 h-12 border-t-4 border-l-4 border-dnd-gold rounded-tl-lg" />
+      <div className="absolute top-4 left-4 w-12 h-12 border-t-4 border-l-4 border-dnd-gold rounded-tl-lg" />
     </div>
     <div className="fixed top-0 right-0 w-24 h-24 z-[210] pointer-events-none">
-       <div className="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-dnd-gold rounded-tr-lg" />
+      <div className="absolute top-4 right-4 w-12 h-12 border-t-4 border-r-4 border-dnd-gold rounded-tr-lg" />
     </div>
     <div className="fixed bottom-0 left-0 w-24 h-24 z-[210] pointer-events-none">
-       <div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-dnd-gold rounded-bl-lg" />
+      <div className="absolute bottom-4 left-4 w-12 h-12 border-b-4 border-l-4 border-dnd-gold rounded-bl-lg" />
     </div>
     <div className="fixed bottom-0 right-0 w-24 h-24 z-[210] pointer-events-none">
-       <div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-dnd-gold rounded-br-lg" />
+      <div className="absolute bottom-4 right-4 w-12 h-12 border-b-4 border-r-4 border-dnd-gold rounded-br-lg" />
     </div>
   </>
 );
@@ -231,7 +255,11 @@ const DiceRoller = () => {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           className="bg-dnd-crimson border-2 border-dnd-gold text-white px-4 py-2 rounded-sm font-mono text-xs shadow-2xl"
         >
-          {roll === 20 ? 'CRITICAL SUCCESS!' : roll === 1 ? 'CRITICAL FAILURE...' : `YOU ROLLED: ${roll}`}
+          {roll === 20
+            ? 'CRITICAL SUCCESS!'
+            : roll === 1
+              ? 'CRITICAL FAILURE...'
+              : `YOU ROLLED: ${roll}`}
         </motion.div>
       )}
       <button
@@ -256,7 +284,8 @@ const DndLayout = ({ children }) => {
   const [bgImage, setBgImage] = useState('');
 
   useEffect(() => {
-    const randomImage = dndWallpapers[Math.floor(Math.random() * dndWallpapers.length)];
+    const randomImage =
+      dndWallpapers[Math.floor(Math.random() * dndWallpapers.length)];
     setBgImage(randomImage);
     setBgImageName(parseWallpaperName(randomImage.split('/').pop()));
   }, [setBgImageName]);
@@ -281,8 +310,10 @@ const DndLayout = ({ children }) => {
         <div
           className="absolute inset-0 bg-cover bg-center transition-all duration-1000"
           style={{
-            backgroundImage: bgImage ? `url(${process.env.PUBLIC_URL}${bgImage})` : 'none',
-            filter: 'brightness(0.45) contrast(1.1)'
+            backgroundImage: bgImage
+              ? `url(${process.env.PUBLIC_URL}${bgImage})`
+              : 'none',
+            filter: 'brightness(0.45) contrast(1.1)',
           }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/80" />
@@ -291,9 +322,7 @@ const DndLayout = ({ children }) => {
       {/* Content Layer */}
       <div className="relative z-20 flex flex-col min-h-screen">
         <DndNavbar />
-        <main className="flex-grow pt-24 pb-12">
-          {children}
-        </main>
+        <main className="flex-grow pt-24 pb-12">{children}</main>
         <DndFooter />
       </div>
 

@@ -11,7 +11,14 @@ const QuoteGeneratorPage = () => {
       <Seo
         title="Quote Generator | Fezcodex"
         description="Create beautiful quote images with customizable themes, fonts, and colors."
-        keywords={['quote', 'generator', 'image', 'maker', 'typography', 'design']}
+        keywords={[
+          'quote',
+          'generator',
+          'image',
+          'maker',
+          'typography',
+          'design',
+        ]}
       />
 
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
@@ -26,9 +33,14 @@ const QuoteGeneratorPage = () => {
           </Link>
 
           <div className="space-y-4">
-            <BreadcrumbTitle title="Quote Generator" slug="quote-gen" variant="brutalist" />
+            <BreadcrumbTitle
+              title="Quote Generator"
+              slug="quote-gen"
+              variant="brutalist"
+            />
             <p className="text-xl text-gray-400 max-w-2xl font-serif italic">
-              "Words are, in my not-so-humble opinion, our most inexhaustible source of magic."
+              "Words are, in my not-so-humble opinion, our most inexhaustible
+              source of magic."
             </p>
           </div>
         </header>

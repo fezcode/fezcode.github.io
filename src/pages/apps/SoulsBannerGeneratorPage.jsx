@@ -56,7 +56,7 @@ const PRESETS = {
     fontWeight: 900,
     letterSpacing: 2,
     overlayOpacity: 0.5,
-  }
+  },
 };
 
 const FONT_OPTIONS = [
@@ -86,8 +86,12 @@ function SoulsBannerGeneratorPage() {
   const [fontSize, setFontSize] = useState(PRESETS.ENEMY_FELLED.fontSize);
   const [textColor, setTextColor] = useState(PRESETS.ENEMY_FELLED.textColor);
   const [glowColor, setGlowColor] = useState(PRESETS.ENEMY_FELLED.glowColor);
-  const [overlayOpacity, setOverlayOpacity] = useState(PRESETS.ENEMY_FELLED.overlayOpacity);
-  const [letterSpacing, setLetterSpacing] = useState(PRESETS.ENEMY_FELLED.letterSpacing);
+  const [overlayOpacity, setOverlayOpacity] = useState(
+    PRESETS.ENEMY_FELLED.overlayOpacity,
+  );
+  const [letterSpacing, setLetterSpacing] = useState(
+    PRESETS.ENEMY_FELLED.letterSpacing,
+  );
   const [yOffset, setYOffset] = useState(50); // Percentage from top
   const [showOverlay, setShowOverlay] = useState(true);
   const [fontFamily, setFontFamily] = useState('Cinzel');
@@ -96,7 +100,8 @@ function SoulsBannerGeneratorPage() {
   useEffect(() => {
     // Load Cinzel font
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap';
+    link.href =
+      'https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
     return () => document.head.removeChild(link);
@@ -134,14 +139,19 @@ function SoulsBannerGeneratorPage() {
         const yPos = (canvas.height * yOffset) / 100;
 
         // Gradient for the band
-        const gradient = ctx.createLinearGradient(0, yPos - bandHeight/2, 0, yPos + bandHeight/2);
+        const gradient = ctx.createLinearGradient(
+          0,
+          yPos - bandHeight / 2,
+          0,
+          yPos + bandHeight / 2,
+        );
         gradient.addColorStop(0, 'rgba(0,0,0,0)');
         gradient.addColorStop(0.2, `rgba(0,0,0,${overlayOpacity})`);
         gradient.addColorStop(0.8, `rgba(0,0,0,${overlayOpacity})`);
         gradient.addColorStop(1, 'rgba(0,0,0,0)');
 
         ctx.fillStyle = gradient;
-        ctx.fillRect(0, yPos - bandHeight/2, canvas.width, bandHeight);
+        ctx.fillRect(0, yPos - bandHeight / 2, canvas.width, bandHeight);
       }
 
       // Draw Text
@@ -159,21 +169,34 @@ function SoulsBannerGeneratorPage() {
 
       // Text drawing with spacing manually
       if (letterSpacing > 0) {
-         const totalWidth = ctx.measureText(text).width + (text.length - 1) * letterSpacing;
-         let currentX = textX - totalWidth / 2;
+        const totalWidth =
+          ctx.measureText(text).width + (text.length - 1) * letterSpacing;
+        let currentX = textX - totalWidth / 2;
 
-         for (let i = 0; i < text.length; i++) {
-             const char = text[i];
-             ctx.fillText(char, currentX, textY);
-             currentX += ctx.measureText(char).width + letterSpacing;
-         }
+        for (let i = 0; i < text.length; i++) {
+          const char = text[i];
+          ctx.fillText(char, currentX, textY);
+          currentX += ctx.measureText(char).width + letterSpacing;
+        }
       } else {
-          ctx.fillText(text, textX, textY);
+        ctx.fillText(text, textX, textY);
       }
 
       ctx.restore();
     };
-  }, [image, text, fontSize, textColor, glowColor, overlayOpacity, yOffset, showOverlay, letterSpacing, fontFamily, fontWeight]);
+  }, [
+    image,
+    text,
+    fontSize,
+    textColor,
+    glowColor,
+    overlayOpacity,
+    yOffset,
+    showOverlay,
+    letterSpacing,
+    fontFamily,
+    fontWeight,
+  ]);
 
   useEffect(() => {
     drawCanvas();
@@ -230,34 +253,37 @@ function SoulsBannerGeneratorPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Souls Banner" slug="souls-gen" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Souls Banner"
+                slug="souls-gen"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-serif italic">
-                "The flow of time itself is convoluted; with heroes centuries old phasing in and out."
+                "The flow of time itself is convoluted; with heroes centuries
+                old phasing in and out."
               </p>
             </div>
 
-             <label
-                htmlFor="image-upload"
-                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-red-600 hover:text-white transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm cursor-pointer shadow-[4px_4px_0px_rgba(255,255,255,0.2)] hover:shadow-none translate-x-[-4px] translate-y-[-4px] hover:translate-x-0 hover:translate-y-0"
-              >
-                <ImageIcon weight="bold" size={20} />
-                <span>Upload Image</span>
-                <input
-                  id="image-upload"
-                  type="file"
-                  accept="image/*"
-                  onChange={handleImageUpload}
-                  className="hidden"
-                />
-              </label>
+            <label
+              htmlFor="image-upload"
+              className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-black hover:bg-red-600 hover:text-white transition-all duration-300 font-mono uppercase tracking-widest text-sm font-black rounded-sm cursor-pointer shadow-[4px_4px_0px_rgba(255,255,255,0.2)] hover:shadow-none translate-x-[-4px] translate-y-[-4px] hover:translate-x-0 hover:translate-y-0"
+            >
+              <ImageIcon weight="bold" size={20} />
+              <span>Upload Image</span>
+              <input
+                id="image-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+            </label>
           </div>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
           {/* Controls */}
           <div className="lg:col-span-4 space-y-8 h-fit lg:sticky lg:top-8">
-
             {/* Presets */}
             <div className="bg-[#111] border border-white/5 p-6 rounded-sm space-y-4">
               <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
@@ -265,7 +291,7 @@ function SoulsBannerGeneratorPage() {
                 Presets
               </h3>
               <div className="grid grid-cols-2 gap-2">
-                {Object.keys(PRESETS).map(key => (
+                {Object.keys(PRESETS).map((key) => (
                   <button
                     key={key}
                     onClick={() => applyPreset(key)}
@@ -285,7 +311,9 @@ function SoulsBannerGeneratorPage() {
               </h3>
 
               <div className="space-y-2">
-                <label className="text-xs font-mono text-gray-500 uppercase">Message</label>
+                <label className="text-xs font-mono text-gray-500 uppercase">
+                  Message
+                </label>
                 <input
                   type="text"
                   value={text}
@@ -295,48 +323,48 @@ function SoulsBannerGeneratorPage() {
               </div>
 
               <div className="space-y-4">
-                 <CustomDropdown
-                    label="Font Family"
-                    options={FONT_OPTIONS}
-                    value={fontFamily}
-                    onChange={setFontFamily}
-                    variant="brutalist"
-                    icon={TextTIcon}
-                 />
+                <CustomDropdown
+                  label="Font Family"
+                  options={FONT_OPTIONS}
+                  value={fontFamily}
+                  onChange={setFontFamily}
+                  variant="brutalist"
+                  icon={TextTIcon}
+                />
 
-                 <CustomSlider
-                    variant="brutalist"
-                    label="Font Weight"
-                    min={100}
-                    max={900}
-                    step={100}
-                    value={fontWeight}
-                    onChange={(val) => setFontWeight(val)}
-                 />
-                 <CustomSlider
-                    variant="brutalist"
-                    label="Font Size"
-                    min={20}
-                    max={400}
-                    value={fontSize}
-                    onChange={(val) => setFontSize(val)}
-                 />
-                 <CustomSlider
-                    variant="brutalist"
-                    label="Letter Spacing"
-                    min={0}
-                    max={50}
-                    value={letterSpacing}
-                    onChange={(val) => setLetterSpacing(val)}
-                 />
-                 <CustomSlider
-                    variant="brutalist"
-                    label="Vertical Position"
-                    min={0}
-                    max={100}
-                    value={yOffset}
-                    onChange={(val) => setYOffset(val)}
-                 />
+                <CustomSlider
+                  variant="brutalist"
+                  label="Font Weight"
+                  min={100}
+                  max={900}
+                  step={100}
+                  value={fontWeight}
+                  onChange={(val) => setFontWeight(val)}
+                />
+                <CustomSlider
+                  variant="brutalist"
+                  label="Font Size"
+                  min={20}
+                  max={400}
+                  value={fontSize}
+                  onChange={(val) => setFontSize(val)}
+                />
+                <CustomSlider
+                  variant="brutalist"
+                  label="Letter Spacing"
+                  min={0}
+                  max={50}
+                  value={letterSpacing}
+                  onChange={(val) => setLetterSpacing(val)}
+                />
+                <CustomSlider
+                  variant="brutalist"
+                  label="Vertical Position"
+                  min={0}
+                  max={100}
+                  value={yOffset}
+                  onChange={(val) => setYOffset(val)}
+                />
               </div>
             </div>
 
@@ -347,70 +375,77 @@ function SoulsBannerGeneratorPage() {
                 Visuals
               </h3>
 
-               <div className="grid grid-cols-1 gap-4">
-                  <CustomColorPicker
-                      label="Text Color"
-                      value={textColor}
-                      onChange={setTextColor}
-                      variant="brutalist"
-                  />
-                   <CustomColorPicker
-                      label="Glow Color"
-                      value={glowColor}
-                      onChange={setGlowColor}
-                      variant="brutalist"
-                  />
-               </div>
+              <div className="grid grid-cols-1 gap-4">
+                <CustomColorPicker
+                  label="Text Color"
+                  value={textColor}
+                  onChange={setTextColor}
+                  variant="brutalist"
+                />
+                <CustomColorPicker
+                  label="Glow Color"
+                  value={glowColor}
+                  onChange={setGlowColor}
+                  variant="brutalist"
+                />
+              </div>
 
-               <div className="pt-4 border-t border-white/5 space-y-4">
-                  <CustomSlider
+              <div className="pt-4 border-t border-white/5 space-y-4">
+                <CustomSlider
+                  variant="brutalist"
+                  label="Overlay Opacity"
+                  min={0}
+                  max={1}
+                  step={0.1}
+                  value={overlayOpacity}
+                  onChange={(val) => setOverlayOpacity(val)}
+                />
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-mono text-gray-500 uppercase">
+                    Show Overlay Band
+                  </span>
+                  <CustomToggle
                     variant="brutalist"
-                    label="Overlay Opacity"
-                    min={0}
-                    max={1}
-                    step={0.1}
-                    value={overlayOpacity}
-                    onChange={(val) => setOverlayOpacity(val)}
-                 />
-                  <div className="flex items-center justify-between">
-                     <span className="text-xs font-mono text-gray-500 uppercase">Show Overlay Band</span>
-                     <CustomToggle variant="brutalist" checked={showOverlay} onChange={() => setShowOverlay(!showOverlay)} />
-                  </div>
-               </div>
+                    checked={showOverlay}
+                    onChange={() => setShowOverlay(!showOverlay)}
+                  />
+                </div>
+              </div>
             </div>
-
           </div>
 
           {/* Preview */}
           <div className="lg:col-span-8">
-             <div className="relative border border-white/10 bg-[#000] p-4 rounded-sm">
-                {image ? (
-                  <div className="relative w-full flex flex-col items-center">
-                    <canvas ref={canvasRef} className="max-w-full h-auto shadow-2xl" />
+            <div className="relative border border-white/10 bg-[#000] p-4 rounded-sm">
+              {image ? (
+                <div className="relative w-full flex flex-col items-center">
+                  <canvas
+                    ref={canvasRef}
+                    className="max-w-full h-auto shadow-2xl"
+                  />
 
-                    <div className="mt-6 w-full flex justify-end">
-                       <button
-                        onClick={handleDownload}
-                        className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase tracking-[0.2em] hover:bg-red-500 hover:text-white transition-all text-xs"
-                      >
-                        <DownloadSimpleIcon weight="bold" size={18} />
-                        <span>Save Image</span>
-                      </button>
-                    </div>
+                  <div className="mt-6 w-full flex justify-end">
+                    <button
+                      onClick={handleDownload}
+                      className="flex items-center gap-3 px-8 py-4 bg-white text-black font-black uppercase tracking-[0.2em] hover:bg-red-500 hover:text-white transition-all text-xs"
+                    >
+                      <DownloadSimpleIcon weight="bold" size={18} />
+                      <span>Save Image</span>
+                    </button>
                   </div>
-                ) : (
-                  <div className="aspect-video w-full border border-white/10 border-dashed rounded-sm flex flex-col items-center justify-center text-center gap-4 bg-[#050505]">
-                    <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-gray-600">
-                        <ImageIcon size={32} />
-                    </div>
-                    <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">
-                      Upload an image to begin
-                    </p>
+                </div>
+              ) : (
+                <div className="aspect-video w-full border border-white/10 border-dashed rounded-sm flex flex-col items-center justify-center text-center gap-4 bg-[#050505]">
+                  <div className="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center text-gray-600">
+                    <ImageIcon size={32} />
                   </div>
-                )}
-             </div>
+                  <p className="font-mono text-xs uppercase tracking-[0.2em] text-gray-500">
+                    Upload an image to begin
+                  </p>
+                </div>
+              )}
+            </div>
           </div>
-
         </div>
       </div>
     </div>

@@ -11,41 +11,49 @@ import GenerativeArt from '../../components/GenerativeArt';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
 const latinToGokturkMap = {
-  'A': '𐰀', 'E': '𐰀',
-  'I': '𐰃', 'İ': '𐰃',
-  'O': '𐰆', 'U': '𐰆',
-  'Ö': '𐰇', 'Ü': '𐰇',
-  'B': '𐰉',
-  'C': '𐰲', 'Ç': '𐰲',
-  'D': '𐰑',
-  'F': '𐰯', // Approx
-  'G': '𐰍',
-  'Ğ': '𐰍',
-  'H': '𐰴', // Approx
-  'J': '𐰲', // Approx
-  'K': '𐰴',
-  'L': '𐰞',
-  'M': '𐰢',
-  'N': '𐰣',
-  'P': '𐰯',
-  'R': '𐰺',
-  'S': '𐰽',
-  'Ş': '𐱁',
-  'T': '𐱃',
-  'V': '𐰉', // Approx
-  'Y': '𐰖',
-  'Z': '𐰕',
+  A: '𐰀',
+  E: '𐰀',
+  I: '𐰃',
+  İ: '𐰃',
+  O: '𐰆',
+  U: '𐰆',
+  Ö: '𐰇',
+  Ü: '𐰇',
+  B: '𐰉',
+  C: '𐰲',
+  Ç: '𐰲',
+  D: '𐰑',
+  F: '𐰯', // Approx
+  G: '𐰍',
+  Ğ: '𐰍',
+  H: '𐰴', // Approx
+  J: '𐰲', // Approx
+  K: '𐰴',
+  L: '𐰞',
+  M: '𐰢',
+  N: '𐰣',
+  P: '𐰯',
+  R: '𐰺',
+  S: '𐰽',
+  Ş: '𐱁',
+  T: '𐱃',
+  V: '𐰉', // Approx
+  Y: '𐰖',
+  Z: '𐰕',
   ' ': ':', // Word separator
   '.': '',
   ',': '',
 };
 
-const gokturkToLatinMap = Object.entries(latinToGokturkMap).reduce((acc, [key, value]) => {
-  if (!acc[value] && key !== '.' && key !== ',') {
-     acc[value] = key;
-  }
-  return acc;
-}, {});
+const gokturkToLatinMap = Object.entries(latinToGokturkMap).reduce(
+  (acc, [key, value]) => {
+    if (!acc[value] && key !== '.' && key !== ',') {
+      acc[value] = key;
+    }
+    return acc;
+  },
+  {},
+);
 // Manual overrides for better reverse mapping if needed
 gokturkToLatinMap[':'] = ' ';
 
@@ -86,7 +94,7 @@ function GokturkishConverterPage() {
   };
 
   const toLatin = () => {
-     try {
+    try {
       const converted = inputText
         .split('')
         .map((char) => gokturkToLatinMap[char] || char)
@@ -142,7 +150,11 @@ function GokturkishConverterPage() {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Göktürk Converter" slug="gokturk" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Göktürk Converter"
+                slug="gokturk"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Ancient script protocol. Translate modern text into the runic
                 alphabet of the Göktürks.
@@ -173,16 +185,16 @@ function GokturkishConverterPage() {
 
               <div className="grid grid-cols-2 gap-4 mt-8">
                 <button
-                    onClick={toGokturk}
-                    className="py-3 bg-white text-black font-black uppercase text-[10px] tracking-widest hover:bg-emerald-400 transition-all"
-                  >
-                    To Göktürk
+                  onClick={toGokturk}
+                  className="py-3 bg-white text-black font-black uppercase text-[10px] tracking-widest hover:bg-emerald-400 transition-all"
+                >
+                  To Göktürk
                 </button>
-                 <button
-                    onClick={toLatin}
-                    className="py-3 border border-white/20 text-white font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all"
-                  >
-                    To Latin
+                <button
+                  onClick={toLatin}
+                  className="py-3 border border-white/20 text-white font-black uppercase text-[10px] tracking-widest hover:bg-white/10 transition-all"
+                >
+                  To Latin
                 </button>
               </div>
             </div>

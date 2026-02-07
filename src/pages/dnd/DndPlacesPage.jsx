@@ -24,7 +24,9 @@ function DndPlacesPage() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const placesResponse = await fetch(`${process.env.PUBLIC_URL}/stories/places.piml`);
+        const placesResponse = await fetch(
+          `${process.env.PUBLIC_URL}/stories/places.piml`,
+        );
 
         if (placesResponse.ok) {
           const text = await placesResponse.text();
@@ -38,7 +40,7 @@ function DndPlacesPage() {
     fetchData();
   }, []);
 
-  const filteredPlaces = places.filter(place => {
+  const filteredPlaces = places.filter((place) => {
     const term = searchQuery.toLowerCase();
     return (
       place.name.toLowerCase().includes(term) ||
@@ -64,12 +66,24 @@ function DndPlacesPage() {
       <Seo
         title="The Atlas | From Serfs and Frauds"
         description="Explore the locations and landmarks of the Dungeons & Dragons campaign, From Serfs and Frauds."
-        keywords={['Fezcodex', 'd&d', 'dnd', 'from serfs and frauds', 'places', 'locations', 'maps']}
+        keywords={[
+          'Fezcodex',
+          'd&d',
+          'dnd',
+          'from serfs and frauds',
+          'places',
+          'locations',
+          'maps',
+        ]}
       />
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">
-             <MapTrifoldIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+            <MapTrifoldIcon
+              size={48}
+              className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]"
+              weight="duotone"
+            />
           </div>
           <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
             The Atlas
@@ -89,12 +103,16 @@ function DndPlacesPage() {
           {categories.map((category) => (
             <section key={category} className="space-y-8">
               <div className="flex items-center gap-4 mb-8">
-                 <div className="h-px flex-grow bg-dnd-gold/20" />
-                 <h2 className="text-3xl md:text-4xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter flex items-center gap-3">
-                    <MapPinIcon size={32} weight="duotone" className="text-dnd-gold" />
-                    {category}
-                 </h2>
-                 <div className="h-px flex-grow bg-dnd-gold/20" />
+                <div className="h-px flex-grow bg-dnd-gold/20" />
+                <h2 className="text-3xl md:text-4xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter flex items-center gap-3">
+                  <MapPinIcon
+                    size={32}
+                    weight="duotone"
+                    className="text-dnd-gold"
+                  />
+                  {category}
+                </h2>
+                <div className="h-px flex-grow bg-dnd-gold/20" />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -110,8 +128,12 @@ function DndPlacesPage() {
                   >
                     <div className="block group relative p-8 dnd-fantasy-card text-center h-full min-h-[350px] flex flex-col items-center justify-center border-2 border-black/20 shadow-2xl overflow-hidden hover:scale-[1.02] transition-transform duration-300">
                       {/* Background Runes */}
-                      <div className="dnd-card-rune top-8 left-8 -rotate-12">ᚦ</div>
-                      <div className="dnd-card-rune bottom-8 right-8 rotate-12">ᛉ</div>
+                      <div className="dnd-card-rune top-8 left-8 -rotate-12">
+                        ᚦ
+                      </div>
+                      <div className="dnd-card-rune bottom-8 right-8 rotate-12">
+                        ᛉ
+                      </div>
 
                       {/* Ink Splatters */}
                       <div className="dnd-ink-splatter w-8 h-8 top-1/4 right-8" />
@@ -124,7 +146,7 @@ function DndPlacesPage() {
                       <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
 
                       <div className="mb-6 text-dnd-crimson group-hover:scale-110 transition-transform duration-500 relative z-10">
-                          <MapTrifoldIcon size={48} weight="duotone" />
+                        <MapTrifoldIcon size={48} weight="duotone" />
                       </div>
 
                       <h3 className="text-2xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2 relative z-10">
@@ -142,7 +164,7 @@ function DndPlacesPage() {
                       </p>
 
                       <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-xs font-mono text-dnd-crimson uppercase tracking-widest">
-                          View Details
+                        View Details
                       </div>
                     </div>
                   </motion.div>
@@ -175,51 +197,62 @@ function DndPlacesPage() {
                 exit={{ opacity: 0, scale: 0.9, y: 20 }}
                 className="relative w-full max-w-2xl bg-[#fcfaf2] border-2 border-dnd-gold shadow-2xl overflow-hidden dnd-fantasy-card p-8 md:p-12"
               >
-                 {/* Close Button */}
-                 <button
-                   onClick={() => setSelectedPlace(null)}
-                   className="absolute top-4 right-4 text-dnd-crimson/60 hover:text-dnd-crimson hover:rotate-90 transition-all duration-300 z-50"
-                 >
-                   <XIcon size={32} />
-                 </button>
+                {/* Close Button */}
+                <button
+                  onClick={() => setSelectedPlace(null)}
+                  className="absolute top-4 right-4 text-dnd-crimson/60 hover:text-dnd-crimson hover:rotate-90 transition-all duration-300 z-50"
+                >
+                  <XIcon size={32} />
+                </button>
 
-                 {/* Modal Content */}
-                 <div className="relative z-10 flex flex-col items-center text-center">
-                    <div className="mb-8 text-dnd-crimson animate-bounce-slow">
-                        <MapTrifoldIcon size={64} weight="duotone" />
-                     </div>
+                {/* Modal Content */}
+                <div className="relative z-10 flex flex-col items-center text-center">
+                  <div className="mb-8 text-dnd-crimson animate-bounce-slow">
+                    <MapTrifoldIcon size={64} weight="duotone" />
+                  </div>
 
-                    <h2 className="text-4xl md:text-5xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2">
-                      {selectedPlace.name}
-                    </h2>
-                    <p className="text-sm font-arvo text-dnd-gold-darker uppercase tracking-widest mb-8 font-bold">
-                       {selectedPlace.type}
-                     </p>
+                  <h2 className="text-4xl md:text-5xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2">
+                    {selectedPlace.name}
+                  </h2>
+                  <p className="text-sm font-arvo text-dnd-gold-darker uppercase tracking-widest mb-8 font-bold">
+                    {selectedPlace.type}
+                  </p>
 
-                     <div className="dnd-mystic-divider mb-8 w-full" />
+                  <div className="dnd-mystic-divider mb-8 w-full" />
 
-                     <p className="text-lg font-arvo text-black/80 leading-loose mb-12 max-w-lg">
-                       {selectedPlace.description}
-                     </p>
+                  <p className="text-lg font-arvo text-black/80 leading-loose mb-12 max-w-lg">
+                    {selectedPlace.description}
+                  </p>
 
-                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                       <div className="bg-black/5 p-4 border border-black/10 rounded-sm">
-                         <div className="text-xs font-mono text-black/50 uppercase tracking-wider mb-1">Status</div>
-                         <div className="text-xl font-playfairDisplay font-bold text-dnd-crimson">{selectedPlace.status}</div>
-                       </div>
-                       <div className="bg-black/5 p-4 border border-black/10 rounded-sm">
-                         <div className="text-xs font-mono text-black/50 uppercase tracking-wider mb-1">First Appearance</div>
-                         <div className="text-lg font-playfairDisplay font-bold text-dnd-text truncate" title={selectedPlace.book}>{selectedPlace.book}</div>
-                       </div>
-                     </div>
-                 </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
+                    <div className="bg-black/5 p-4 border border-black/10 rounded-sm">
+                      <div className="text-xs font-mono text-black/50 uppercase tracking-wider mb-1">
+                        Status
+                      </div>
+                      <div className="text-xl font-playfairDisplay font-bold text-dnd-crimson">
+                        {selectedPlace.status}
+                      </div>
+                    </div>
+                    <div className="bg-black/5 p-4 border border-black/10 rounded-sm">
+                      <div className="text-xs font-mono text-black/50 uppercase tracking-wider mb-1">
+                        First Appearance
+                      </div>
+                      <div
+                        className="text-lg font-playfairDisplay font-bold text-dnd-text truncate"
+                        title={selectedPlace.book}
+                      >
+                        {selectedPlace.book}
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-                 {/* Decorative Overlay */}
-                 <div className="absolute inset-0 pointer-events-none border-[16px] border-dnd-parchment opacity-50" />
-                 <div className="dnd-ornate-corner dnd-ornate-corner-tl" />
-                 <div className="dnd-ornate-corner dnd-ornate-corner-tr" />
-                 <div className="dnd-ornate-corner dnd-ornate-corner-bl" />
-                 <div className="dnd-ornate-corner dnd-ornate-corner-br" />
+                {/* Decorative Overlay */}
+                <div className="absolute inset-0 pointer-events-none border-[16px] border-dnd-parchment opacity-50" />
+                <div className="dnd-ornate-corner dnd-ornate-corner-tl" />
+                <div className="dnd-ornate-corner dnd-ornate-corner-tr" />
+                <div className="dnd-ornate-corner dnd-ornate-corner-bl" />
+                <div className="dnd-ornate-corner dnd-ornate-corner-br" />
               </motion.div>
             </div>
           )}

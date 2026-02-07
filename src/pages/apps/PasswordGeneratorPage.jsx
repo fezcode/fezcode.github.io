@@ -92,7 +92,11 @@ const PasswordGeneratorPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <BreadcrumbTitle title="Access Key Gen" slug="pg" variant="brutalist" />
+              <BreadcrumbTitle
+                title="Access Key Gen"
+                slug="pg"
+                variant="brutalist"
+              />
               <p className="text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
                 Entropy extraction protocol. Generate high-density cryptographic
                 sequences for secure authentication cycles.

@@ -1,5 +1,5 @@
-import React, {useState, useEffect, useCallback, useContext} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect, useCallback, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   CardsThreeIcon,
@@ -11,21 +11,35 @@ import {
   EyeIcon,
   TargetIcon,
 } from '@phosphor-icons/react';
-import {motion, AnimatePresence} from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
-import {ToastContext} from '../../context/ToastContext';
+import { ToastContext } from '../../context/ToastContext';
 import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 import GenerativeArt from '../../components/GenerativeArt';
-import {useAchievements} from '../../context/AchievementContext';
+import { useAchievements } from '../../context/AchievementContext';
 
 const suits = ['♠', '♥', '♦', '♣'];
-const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+const ranks = [
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '10',
+  'J',
+  'Q',
+  'K',
+  'A',
+];
 
 const getDeck = () => {
   const deck = [];
   for (const suit of suits) {
     for (const rank of ranks) {
-      deck.push({suit, rank, value: ranks.indexOf(rank) + 2});
+      deck.push({ suit, rank, value: ranks.indexOf(rank) + 2 });
     }
   }
   return shuffleDeck(deck);
@@ -42,8 +56,8 @@ const shuffleDeck = (deck) => {
 const CardGamePage = () => {
   const appName = 'Higher or Lower';
 
-  const {addToast} = useContext(ToastContext);
-  const {unlockAchievement} = useAchievements();
+  const { addToast } = useContext(ToastContext);
+  const { unlockAchievement } = useAchievements();
   const [deck, setDeck] = useState([]);
   const [currentCard, setCurrentCard] = useState(null);
   const [nextCard, setNextCard] = useState(null);
@@ -61,7 +75,7 @@ const CardGamePage = () => {
     setScore(0);
     setGameOver(false);
     setGameStarted(true);
-    addToast({message: 'DECK_INITIALIZED: Sequence ready.', type: 'info'});
+    addToast({ message: 'DECK_INITIALIZED: Sequence ready.', type: 'info' });
   }, [addToast]);
 
   useEffect(() => {
@@ -79,7 +93,7 @@ const CardGamePage = () => {
     setNextCard(drawnNextCard);
 
     // Short delay for visual tension
-    await new Promise(resolve => setTimeout(resolve, 600));
+    await new Promise((resolve) => setTimeout(resolve, 600));
 
     const isHigher = drawnNextCard.value > currentCard.value;
     const isLower = drawnNextCard.value < currentCard.value;
@@ -89,7 +103,10 @@ const CardGamePage = () => {
     if (guess === 'higher' && isHigher) correct = true;
     else if (guess === 'lower' && isLower) correct = true;
     else if (isSame) {
-      addToast({message: 'PROBABILITY_STALEMATE: Value parity detected.', type: 'warning'});
+      addToast({
+        message: 'PROBABILITY_STALEMATE: Value parity detected.',
+        type: 'warning',
+      });
       setCurrentCard(drawnNextCard);
       setNextCard(null);
       setIsProcessing(false);
@@ -97,32 +114,38 @@ const CardGamePage = () => {
     }
 
     if (correct) {
-      setScore(s => s + 1);
+      setScore((s) => s + 1);
       setCurrentCard(drawnNextCard);
       setNextCard(null);
-      addToast({message: 'PREDICTION_VERIFIED', type: 'success'});
+      addToast({ message: 'PREDICTION_VERIFIED', type: 'success' });
     } else {
       setGameOver(true);
       if (score > 20) unlockAchievement('legendary_gambler');
       if (score > 14) unlockAchievement('high_roller');
       if (score > 7) unlockAchievement('card_shark');
-      addToast({message: 'PREDICTION_FAILED: Sequence terminated.', type: 'error'});
+      addToast({
+        message: 'PREDICTION_FAILED: Sequence terminated.',
+        type: 'error',
+      });
     }
     setIsProcessing(false);
   };
 
   const renderCard = (card, isNext = false) => {
-    if (!card) return (
-      <div className="w-32 h-48 md:w-40 md:h-56 border-2 border-dashed border-white/10 rounded-sm flex items-center justify-center bg-white/[0.02]">
-        <span className="font-mono text-4xl font-black text-white/5 uppercase">Null</span>
-      </div>
-    );
+    if (!card)
+      return (
+        <div className="w-32 h-48 md:w-40 md:h-56 border-2 border-dashed border-white/10 rounded-sm flex items-center justify-center bg-white/[0.02]">
+          <span className="font-mono text-4xl font-black text-white/5 uppercase">
+            Null
+          </span>
+        </div>
+      );
 
     const isRed = card.suit === '♥' || card.suit === '♦';
     return (
       <motion.div
-        initial={isNext ? {y: 20, opacity: 0} : {scale: 0.95, opacity: 0}}
-        animate={{y: 0, scale: 1, opacity: 1}}
+        initial={isNext ? { y: 20, opacity: 0 } : { scale: 0.95, opacity: 0 }}
+        animate={{ y: 0, scale: 1, opacity: 1 }}
         className={`w-32 h-48 md:w-40 md:h-56 bg-white border-4 border-black rounded-sm relative flex flex-col justify-between p-4 shadow-[8px_8px_0px_rgba(16,185,129,0.2)] ${isRed ? 'text-rose-600' : 'text-black'}`}
       >
         <div className="flex flex-col items-start leading-none">
@@ -145,7 +168,13 @@ const CardGamePage = () => {
       <Seo
         title="Higher or Lower | Fezcodex"
         description="Guess if the next card is higher or lower in this high-contrast tactical environment."
-        keywords={['Fezcodex', 'card game', 'higher or lower', 'game', 'brutalist']}
+        keywords={[
+          'Fezcodex',
+          'card game',
+          'higher or lower',
+          'game',
+          'brutalist',
+        ]}
       />
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-12">
         {/* Header Section */}
@@ -154,7 +183,7 @@ const CardGamePage = () => {
             to="/apps"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeftIcon weight="bold"/>
+            <ArrowLeftIcon weight="bold" />
             <span>Applications</span>
           </Link>
           <BreadcrumbTitle title={appName} slug="card" variant="brutalist" />
@@ -163,7 +192,9 @@ const CardGamePage = () => {
             <div>
               <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest leading-relaxed">
                 Probability forecasting protocol. Predict the next{' '}
-                <span className="text-emerald-400 font-bold">numerical value</span>{' '}
+                <span className="text-emerald-400 font-bold">
+                  numerical value
+                </span>{' '}
                 within the shuffled sequence.
               </p>
             </div>
@@ -192,17 +223,14 @@ const CardGamePage = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Controls Column */}
           <div className="lg:col-span-4 space-y-8">
-            <div
-              className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
+            <div className="relative border border-white/10 bg-white/[0.02] backdrop-blur-sm p-8 rounded-sm overflow-hidden group">
               <div className="absolute inset-0 opacity-5 pointer-events-none">
-                <GenerativeArt seed={appName} className="w-full h-full"/>
+                <GenerativeArt seed={appName} className="w-full h-full" />
               </div>
-              <div
-                className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500"/>
+              <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
 
-              <h3
-                className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
-                <TargetIcon weight="fill"/>
+              <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-12 flex items-center gap-2">
+                <TargetIcon weight="fill" />
                 Decision_Matrix
               </h3>
 
@@ -214,7 +242,7 @@ const CardGamePage = () => {
                       disabled={isProcessing}
                       className="w-full py-6 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 disabled:opacity-50 transition-all text-sm flex items-center justify-center gap-3"
                     >
-                      <ArrowUpIcon weight="bold" size={20}/>
+                      <ArrowUpIcon weight="bold" size={20} />
                       Predict_Higher
                     </button>
                     <button
@@ -222,7 +250,7 @@ const CardGamePage = () => {
                       disabled={isProcessing}
                       className="w-full py-6 border-2 border-white text-white font-black uppercase tracking-[0.3em] hover:bg-white hover:text-black disabled:opacity-50 transition-all text-sm flex items-center justify-center gap-3"
                     >
-                      <ArrowDownIcon weight="bold" size={20}/>
+                      <ArrowDownIcon weight="bold" size={20} />
                       Predict_Lower
                     </button>
                   </div>
@@ -231,7 +259,7 @@ const CardGamePage = () => {
                     onClick={startGame}
                     className="w-full py-6 bg-rose-600 text-white font-black uppercase tracking-[0.3em] hover:bg-rose-500 transition-all text-sm flex items-center justify-center gap-3"
                   >
-                    <ArrowsClockwiseIcon weight="bold" size={20}/>
+                    <ArrowsClockwiseIcon weight="bold" size={20} />
                     Reboot_Sequence
                   </button>
                 )}
@@ -240,20 +268,23 @@ const CardGamePage = () => {
 
             <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
               <div className="flex items-center gap-3 mb-4 text-emerald-500">
-                <ChartBarIcon size={20} weight="bold"/>
+                <ChartBarIcon size={20} weight="bold" />
                 <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest">
                   Tactical_Metrics
                 </h4>
               </div>
               <ul className="space-y-3 text-xs font-mono text-gray-500 uppercase tracking-wider">
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">01</span> ACE ranks as 14 (Highest).
+                  <span className="text-emerald-500">01</span> ACE ranks as 14
+                  (Highest).
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">02</span> Matching values result in a DRAW (Safety).
+                  <span className="text-emerald-500">02</span> Matching values
+                  result in a DRAW (Safety).
                 </li>
                 <li className="flex gap-3">
-                  <span className="text-emerald-500">03</span> Goal: Maximize chain length without failure.
+                  <span className="text-emerald-500">03</span> Goal: Maximize
+                  chain length without failure.
                 </li>
               </ul>
             </div>
@@ -261,33 +292,42 @@ const CardGamePage = () => {
 
           {/* Matrix Column */}
           <div className="lg:col-span-8 flex flex-col gap-6">
-            <h3
-              className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
-              <EyeIcon weight="fill" className="text-emerald-500"/>
+            <h3 className="font-mono text-[10px] font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2 px-2">
+              <EyeIcon weight="fill" className="text-emerald-500" />
               Observation_Deck
             </h3>
 
             <div className="flex-grow border border-white/10 bg-white/[0.01] rounded-sm p-8 flex items-center justify-center relative overflow-hidden min-h-[400px]">
               <div className="flex flex-col md:flex-row items-center gap-12 relative z-10">
                 <div className="flex flex-col items-center gap-4">
-                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.3em]">Current_Base</span>
+                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.3em]">
+                    Current_Base
+                  </span>
                   {renderCard(currentCard)}
                 </div>
 
                 <div className="flex flex-col items-center gap-2">
-                  <div className={`text-4xl font-black font-mono transition-colors ${isProcessing ? 'text-emerald-500 animate-pulse' : 'text-white/10'}`}>VS</div>
+                  <div
+                    className={`text-4xl font-black font-mono transition-colors ${isProcessing ? 'text-emerald-500 animate-pulse' : 'text-white/10'}`}
+                  >
+                    VS
+                  </div>
                   <div className="h-24 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
                 </div>
 
                 <div className="flex flex-col items-center gap-4">
-                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.3em]">Prediction_Target</span>
+                  <span className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.3em]">
+                    Prediction_Target
+                  </span>
                   <AnimatePresence mode="wait">
-                    {nextCard ? renderCard(nextCard, true) : (
+                    {nextCard ? (
+                      renderCard(nextCard, true)
+                    ) : (
                       <motion.div
                         key="placeholder"
-                        initial={{opacity: 0}}
-                        animate={{opacity: 1}}
-                        exit={{opacity: 0}}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                       >
                         {renderCard(null, true)}
                       </motion.div>
@@ -298,15 +338,23 @@ const CardGamePage = () => {
 
               {gameOver && (
                 <motion.div
-                  initial={{opacity: 0}}
-                  animate={{opacity: 1}}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   className="absolute inset-0 bg-black/80 backdrop-blur-sm z-20 flex items-center justify-center p-8"
                 >
                   <div className="text-center space-y-6">
-                    <TrophyIcon size={64} weight="fill" className="mx-auto text-rose-500" />
+                    <TrophyIcon
+                      size={64}
+                      weight="fill"
+                      className="mx-auto text-rose-500"
+                    />
                     <div className="space-y-2">
-                      <h2 className="text-4xl font-black font-mono uppercase tracking-tighter text-rose-500">System_Failure</h2>
-                      <p className="font-mono text-sm text-gray-400 uppercase tracking-widest">Final_Yield: {score}</p>
+                      <h2 className="text-4xl font-black font-mono uppercase tracking-tighter text-rose-500">
+                        System_Failure
+                      </h2>
+                      <p className="font-mono text-sm text-gray-400 uppercase tracking-widest">
+                        Final_Yield: {score}
+                      </p>
                     </div>
                     <button
                       onClick={startGame}
@@ -319,7 +367,9 @@ const CardGamePage = () => {
               )}
 
               <div className="absolute bottom-8 left-8 right-8 flex justify-between items-center opacity-20 font-mono text-[8px] uppercase tracking-[0.5em] text-gray-500">
-                <span className="flex items-center gap-2"><CardsThreeIcon /> LOCAL_SESSION_ACTIVE</span>
+                <span className="flex items-center gap-2">
+                  <CardsThreeIcon /> LOCAL_SESSION_ACTIVE
+                </span>
                 <span>HL_v4.0.2</span>
               </div>
             </div>

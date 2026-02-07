@@ -6,9 +6,24 @@ import GenerativeArt from './GenerativeArt';
 const TransmissionTile = ({ item, categoryKey, onClick }) => {
   const getCategoryTheme = (key) => {
     switch (key) {
-      case 'friends': return { color: '#10b981', bg: 'rgba(16, 185, 129, 0.1)', badge: 'Signal' };
-      case 'books': return { color: '#06b6d4', bg: 'rgba(6, 182, 212, 0.1)', badge: 'Archive' };
-      default: return { color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.1)', badge: 'Node' };
+      case 'friends':
+        return {
+          color: '#10b981',
+          bg: 'rgba(16, 185, 129, 0.1)',
+          badge: 'Signal',
+        };
+      case 'books':
+        return {
+          color: '#06b6d4',
+          bg: 'rgba(6, 182, 212, 0.1)',
+          badge: 'Archive',
+        };
+      default:
+        return {
+          color: '#f59e0b',
+          bg: 'rgba(245, 158, 11, 0.1)',
+          badge: 'Node',
+        };
     }
   };
 
@@ -40,7 +55,7 @@ const TransmissionTile = ({ item, categoryKey, onClick }) => {
         {/* Visual Header */}
         <div className="relative h-48 w-full overflow-hidden border-b border-white/5">
           <GenerativeArt
-            seed={"2"+title+"[]"}
+            seed={'2' + title + '[]'}
             className="w-full h-full opacity-40 transition-transform duration-1000 ease-out group-hover:scale-125 group-hover:opacity-60 sepia-[0.2]"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#0c0a09] via-[#0c0a09]/20 to-transparent" />

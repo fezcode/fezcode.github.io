@@ -33,9 +33,9 @@ export const fetchGraphData = async () => {
     });
 
     // Increase tag node size (popularity)
-    const tagNode = nodes.find(n => n.id === tagMap.get(normalizedTag));
+    const tagNode = nodes.find((n) => n.id === tagMap.get(normalizedTag));
     if (tagNode) {
-        tagNode.val += 0.5;
+      tagNode.val += 0.5;
     }
   };
 
@@ -53,16 +53,16 @@ export const fetchGraphData = async () => {
           group: 'post',
           color: POST_COLOR,
           val: 2,
-          desc: post.description
+          desc: post.description,
         });
 
         // Link Tags
         if (post.tags && Array.isArray(post.tags)) {
-          post.tags.forEach(tag => addTagLink(id, tag));
+          post.tags.forEach((tag) => addTagLink(id, tag));
         }
         // Link Category
         if (post.category) {
-            addTagLink(id, post.category);
+          addTagLink(id, post.category);
         }
       });
     }
@@ -74,23 +74,23 @@ export const fetchGraphData = async () => {
       // Apps are grouped by category key
       Object.entries(appsData).forEach(([category, catData]) => {
         if (catData.apps && Array.isArray(catData.apps)) {
-          catData.apps.forEach(app => {
-             const id = `app-${app.slug}`;
-             nodes.push({
-               id,
-               slug: app.slug,
-               to: app.to, // Some apps might have custom paths
-               name: app.title,
-               group: 'app',
-               color: APP_COLOR,
-               val: 2,
-               desc: app.description
-             });
+          catData.apps.forEach((app) => {
+            const id = `app-${app.slug}`;
+            nodes.push({
+              id,
+              slug: app.slug,
+              to: app.to, // Some apps might have custom paths
+              name: app.title,
+              group: 'app',
+              color: APP_COLOR,
+              val: 2,
+              desc: app.description,
+            });
 
-             // Link Category as Tag
-             addTagLink(id, category);
-             // Apps might not have tags, but we can treat 'App' as a tag
-             addTagLink(id, 'App');
+            // Link Category as Tag
+            addTagLink(id, category);
+            // Apps might not have tags, but we can treat 'App' as a tag
+            addTagLink(id, 'App');
           });
         }
       });
@@ -104,41 +104,42 @@ export const fetchGraphData = async () => {
 
       let projectList = [];
       if (parsed.projects && Array.isArray(parsed.projects)) {
-          projectList = parsed.projects;
+        projectList = parsed.projects;
       } else if (Array.isArray(parsed)) {
-          projectList = parsed;
+        projectList = parsed;
       }
 
-      projectList.forEach(proj => {
-          const id = `project-${proj.slug}`;
-          nodes.push({
-              id,
-              slug: proj.slug,
-              name: proj.title,
-              group: 'project',
-              color: PROJECT_COLOR,
-              val: 3, // Projects are big
-              desc: proj.description
-          });
+      projectList.forEach((proj) => {
+        const id = `project-${proj.slug}`;
+        nodes.push({
+          id,
+          slug: proj.slug,
+          name: proj.title,
+          group: 'project',
+          color: PROJECT_COLOR,
+          val: 3, // Projects are big
+          desc: proj.description,
+        });
 
-          // Technologies -> Tags
-          if (proj.technologies) {
-              const techs = typeof proj.technologies === 'string'
-                ? proj.technologies.split(',')
-                : proj.technologies;
+        // Technologies -> Tags
+        if (proj.technologies) {
+          const techs =
+            typeof proj.technologies === 'string'
+              ? proj.technologies.split(',')
+              : proj.technologies;
 
-              if (Array.isArray(techs)) {
-                  techs.forEach(t => addTagLink(id, t));
-              }
+          if (Array.isArray(techs)) {
+            techs.forEach((t) => addTagLink(id, t));
           }
-          // Type -> Tag
-          if (proj.type) {
-              addTagLink(id, proj.type);
-          }
+        }
+        // Type -> Tag
+        if (proj.type) {
+          addTagLink(id, proj.type);
+        }
       });
     }
   } catch (error) {
-    console.error("Failed to build knowledge graph:", error);
+    console.error('Failed to build knowledge graph:', error);
   }
 
   return { nodes, links };

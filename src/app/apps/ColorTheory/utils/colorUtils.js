@@ -25,23 +25,27 @@ export const hslToRgb = (h, s, l) => {
 };
 
 export const hexToHsl = (hex) => {
-  let r = 0, g = 0, b = 0;
+  let r = 0,
+    g = 0,
+    b = 0;
   if (hex.length === 4) {
-    r = "0x" + hex[1] + hex[1];
-    g = "0x" + hex[2] + hex[2];
-    b = "0x" + hex[3] + hex[3];
+    r = '0x' + hex[1] + hex[1];
+    g = '0x' + hex[2] + hex[2];
+    b = '0x' + hex[3] + hex[3];
   } else if (hex.length === 7) {
-    r = "0x" + hex[1] + hex[2];
-    g = "0x" + hex[3] + hex[4];
-    b = "0x" + hex[5] + hex[6];
+    r = '0x' + hex[1] + hex[2];
+    g = '0x' + hex[3] + hex[4];
+    b = '0x' + hex[5] + hex[6];
   }
   r /= 255;
   g /= 255;
   b /= 255;
   const cmin = Math.min(r, g, b),
-        cmax = Math.max(r, g, b),
-        delta = cmax - cmin;
-  let h = 0, s = 0, l = 0;
+    cmax = Math.max(r, g, b),
+    delta = cmax - cmin;
+  let h = 0,
+    s = 0,
+    l = 0;
 
   if (delta === 0) h = 0;
   else if (cmax === r) h = ((g - b) / delta) % 6;
@@ -61,16 +65,18 @@ export const hexToHsl = (hex) => {
 };
 
 export const getContrastColor = (hex) => {
-    const { r, g, b } = hexToRgb(hex);
-    const yiq = ((r * 299) + (g * 587) + (b * 114)) / 1000;
-    return (yiq >= 128) ? '#000000' : '#ffffff';
+  const { r, g, b } = hexToRgb(hex);
+  const yiq = (r * 299 + g * 587 + b * 114) / 1000;
+  return yiq >= 128 ? '#000000' : '#ffffff';
 };
 
 const hexToRgb = (hex) => {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result ? {
-    r: parseInt(result[1], 16),
-    g: parseInt(result[2], 16),
-    b: parseInt(result[3], 16)
-  } : null;
-}
+  return result
+    ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16),
+      }
+    : null;
+};
