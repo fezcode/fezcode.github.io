@@ -7,7 +7,7 @@ import DndAuthorCard from '../../components/dnd/DndAuthorCard';
 import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
 import { useAchievements } from '../../context/AchievementContext';
-import { Users } from '@phosphor-icons/react';
+import { UsersIcon } from '@phosphor-icons/react';
 
 function DndAuthorsPage() {
   const { setBreadcrumbs, language } = useContext(DndContext);
@@ -75,7 +75,7 @@ function DndAuthorsPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">
-             <Users size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+             <UsersIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
           <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none">
             The Scribes

@@ -1,6 +1,6 @@
 import React from 'react';
 import Label from '../Label';
-import { Star, ArrowSquareOut } from '@phosphor-icons/react';
+import { StarIcon, ArrowSquareOutIcon } from '@phosphor-icons/react';
 import colors from '../../config/colors';
 
 const LogMetadata = ({ metadata }) => {
@@ -13,11 +13,11 @@ const LogMetadata = ({ metadata }) => {
     for (let i = 0; i < 5; i++) {
       if (i < rating) {
         stars.push(
-          <Star key={i} size={16} weight="fill" className="text-yellow-400" />,
+          <StarIcon key={i} size={16} weight="fill" className="text-yellow-400" />,
         );
       } else {
         stars.push(
-          <Star key={i} size={16} weight="fill" className="text-gray-500" />,
+          <StarIcon key={i} size={16} weight="fill" className="text-gray-500" />,
         );
       }
     }
@@ -132,7 +132,7 @@ const LogMetadata = ({ metadata }) => {
                   rel="noopener noreferrer"
                   className="text-amber-500 hover:text-amber-400 inline-flex items-center gap-1"
                 >
-                  View <ArrowSquareOut size={14} />
+                  View <ArrowSquareOutIcon size={14} />
                 </a>
               </p>
             </div>

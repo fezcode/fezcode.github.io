@@ -7,7 +7,7 @@ import DndSearchInput from '../../components/dnd/DndSearchInput';
 import StoryTreeView from '../../components/dnd/StoryTreeView';
 import Seo from '../../components/Seo';
 import piml from 'piml';
-import { BookOpen, Scroll } from '@phosphor-icons/react';
+import { BookOpenIcon, ScrollIcon } from '@phosphor-icons/react';
 
 function DndLorePage() {
   const { setBreadcrumbs, language } = useContext(DndContext);
@@ -55,7 +55,7 @@ function DndLorePage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-16 relative">
           <div className="flex justify-center mb-6">
-             <Scroll size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+             <ScrollIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
           <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
             The Chronicles
@@ -83,14 +83,13 @@ function DndLorePage() {
                 <DndCard
                   title={book.bookTitle}
                   description={
-                    book.episodes && book.episodes.length > 0
-                      ? `Authored by ${book.episodes[0].author}`
-                      : 'Ancient scripts of unknown origin.'
-                  }
-                  link={`/stories/books/${book.bookId}`}
-                  icon={<BookOpen size={48} weight="duotone" />}
-                />
-              </motion.div>
+                                          book.episodes && book.episodes.length > 0
+                                          ? `Authored by ${book.episodes[0].author}`
+                                          : 'Ancient scripts of unknown origin.'
+                                      }
+                                      link={`/stories/books/${book.bookId}`}
+                                      icon={<BookOpenIcon size={48} weight="duotone" />}
+                                    />              </motion.div>
             ))}
             {filteredBooks.length === 0 && (
               <div className="col-span-full text-center py-12 text-white/60 font-arvo italic">

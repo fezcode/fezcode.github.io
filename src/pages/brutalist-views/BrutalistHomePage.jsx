@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowRight,
-  Terminal,
-  Cube,
-  AppWindow,
-  ArrowUpRight,
-  Gear,
-  Broadcast,
-  Lightning,
-  Cpu,
+  ArrowRightIcon,
+  TerminalIcon,
+  CubeIcon,
+  AppWindowIcon,
+  ArrowUpRightIcon,
+  GearIcon,
+  BroadcastIcon,
+  LightningIcon,
+  CpuIcon,
 } from '@phosphor-icons/react';
 import PostTile from '../../components/PostTile';
 import ProjectTile from '../../components/ProjectTile';
@@ -86,7 +86,7 @@ const StatusPill = () => {
               )}
                <Link to="/welcome" className="flex items-center justify-between group hover:bg-white hover:text-black transition-colors text-gray-500 pt-2 mt-1 border-t-2 border-white/10 px-1 -mx-1">
                   <span>INTRO</span>
-                  <ArrowRight weight="bold" />
+                  <ArrowRightIcon weight="bold" />
                 </Link>
             </div>
           </motion.div>
@@ -101,7 +101,7 @@ const StatusPill = () => {
           <span className={`w-2 h-2 bg-emerald-500 ${!isOpen && 'animate-pulse'}`} />
           <span>STATUS</span>
         </div>
-        <Gear weight="fill" className={`transition-transform duration-500 ${isOpen ? 'rotate-90' : ''}`} />
+        <GearIcon weight="fill" className={`transition-transform duration-500 ${isOpen ? 'rotate-90' : ''}`} />
       </button>
     </div>
   );
@@ -130,7 +130,7 @@ const Hero = () => {
           className="flex flex-col items-start border-l-4 border-emerald-600 pl-6 md:pl-12"
         >
           <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.1em] mb-8 transform -rotate-1 shadow-[4px_4px_0px_0px_rgba(50,205,50,0.5)]">
-            <Broadcast size={16} weight="bold" />
+            <BroadcastIcon size={16} weight="bold" />
             <span>ONLINE</span>
           </div>
 
@@ -156,7 +156,7 @@ const Hero = () => {
             >
               <span className="relative flex items-center gap-3">
                 VIEW ARCHIVE
-                <ArrowRight weight="bold" />
+                <ArrowRightIcon weight="bold" />
               </span>
             </Link>
             <Link
@@ -181,10 +181,10 @@ const Hero = () => {
 
 const QuickLinks = () => {
   const favorites = [
-    { title: 'Logic Architect', to: '/apps/logic-architect', icon: Cube, desc: 'Circuit Design' },
-    { title: 'Fezynth', to: '/apps/fezynth', icon: Broadcast, desc: 'Audio Synthesis' },
-    { title: 'Notepad', to: '/apps/notepad', icon: AppWindow, desc: 'Text Buffer' },
-    { title: 'Sprite Editor', to: '/apps/sprite-editor', icon: Terminal, desc: 'Pixel Matrix' },
+    { title: 'Logic Architect', to: '/apps/logic-architect', icon: CubeIcon, desc: 'Circuit Design' },
+    { title: 'Fezynth', to: '/apps/fezynth', icon: BroadcastIcon, desc: 'Audio Synthesis' },
+    { title: 'Notepad', to: '/apps/notepad', icon: AppWindowIcon, desc: 'Text Buffer' },
+    { title: 'Sprite Editor', to: '/apps/sprite-editor', icon: TerminalIcon, desc: 'Pixel Matrix' },
   ];
 
   return (
@@ -210,7 +210,7 @@ const QuickLinks = () => {
               </p>
             </div>
 
-            <ArrowUpRight
+            <ArrowUpRightIcon
                 size={24}
                 weight="bold"
                 className="absolute top-4 right-4 opacity-0 -translate-y-2 translate-x-2 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all duration-300"
@@ -238,7 +238,7 @@ const SectionHeader = ({ num, title, link, linkText }) => (
         className="hidden md:flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-[0.2em] text-white hover:text-emerald-400 transition-colors"
       >
         [{linkText}]
-        <ArrowRight weight="bold" />
+        <ArrowRightIcon weight="bold" />
       </Link>
     )}
   </div>
@@ -367,22 +367,22 @@ const HomePage = () => {
               <div className="lg:col-span-4 space-y-12 pt-4 lg:pt-0">
                  <div className="p-8 border-2 border-white/10 bg-[#0a0a0a] relative overflow-hidden group hover:border-white/30 transition-colors">
                     <div className="absolute top-0 right-0 p-2 opacity-10">
-                        <Terminal size={64} />
+                        <TerminalIcon size={64} />
                     </div>
                     <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-500 mb-8 flex items-center gap-2">
                        <span className="w-2 h-2 bg-emerald-500" /> NAVIGATION
                     </h3>
                     <div className="space-y-1">
-                        <ExploreLink to="/apps" title="APPS" icon={AppWindow} />
-                        <ExploreLink to="/roadmap" title="ROADMAP" icon={Cube} />
-                        <ExploreLink to="/terminal" title="TERMINAL" icon={Terminal} />
-                        <ExploreLink to="/about" title="ABOUT" icon={Cpu} />
+                        <ExploreLink to="/apps" title="APPS" icon={AppWindowIcon} />
+                        <ExploreLink to="/roadmap" title="ROADMAP" icon={CubeIcon} />
+                        <ExploreLink to="/terminal" title="TERMINAL" icon={TerminalIcon} />
+                        <ExploreLink to="/about" title="ABOUT" icon={CpuIcon} />
                     </div>
                  </div>
 
                  <div className="p-6 border border-dashed border-blue-100/20">
                      <div className="flex items-center gap-2 text-gray-500 font-mono text-xs uppercase mb-4">
-                        <Lightning weight="fill" className="text-yellow-500" />
+                        <LightningIcon weight="fill" className="text-yellow-500" />
                         <span>TIP</span>
                      </div>
                      <p className="text-sm text-gray-400 leading-relaxed font-mono">
@@ -441,7 +441,7 @@ const ExploreLink = ({ to, title, icon: Icon }) => (
         {title}
       </span>
     </div>
-    <ArrowRight
+    <ArrowRightIcon
       weight="bold"
       size={14}
       className="text-white opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all"

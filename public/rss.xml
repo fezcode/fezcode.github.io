@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 05 Feb 2026 01:56:02 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 07 Feb 2026 01:35:32 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 05 Feb 2026 01:56:02 GMT</pubDate>
+        <pubDate>Sat, 07 Feb 2026 01:35:32 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Understanding Database Normalization: The Path to Third Normal Form (3NF)]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/understanding-database-normalization-3nf</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/understanding-database-normalization-3nf</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 06 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Database Normalization: A Clear Guide to 1NF, 2NF, and 3NF</h1>
+<p><a href="https://fezcode.com/blog/understanding-database-normalization-3nf">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[CQRS: Command Query Responsibility Segregation in Modern Architecture]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/cqrs-in-go-for-geniuses</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/cqrs-in-go-for-geniuses</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 06 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>CQRS: Command Query Responsibility Segregation in Modern Architecture</h1>
+<p><a href="https://fezcode.com/blog/cqrs-in-go-for-geniuses">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Hyrum's Law: Why Your Bug Fix Broke My Spacebar Heating Workflow]]></title>
             <description><![CDATA[[object Object]]]></description>

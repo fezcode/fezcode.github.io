@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, ArrowRight, Star, Hash } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowRightIcon, StarIcon, HashIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import Seo from '../../components/Seo';
 import { appIcons } from '../../utils/appIcons';
 import GenerativeArt from '../../components/GenerativeArt';
 
 const PinnedAppCard = ({ app, index }) => {
-  const Icon = appIcons[app.icon] || Star;
+  const Icon = appIcons[app.icon] || StarIcon;
 
   return (
     <motion.div
@@ -42,7 +42,7 @@ const PinnedAppCard = ({ app, index }) => {
         <div className="flex flex-col flex-grow p-6">
           <div className="flex items-center gap-2 mb-3">
             <span className="font-mono text-[10px] text-gray-500 uppercase tracking-widest flex items-center gap-1">
-              <Hash size={12} className="text-emerald-500" />
+              <HashIcon size={12} className="text-emerald-500" />
               ID: {String(app.pinned_order).padStart(3, '0')}
             </span>
             <span className="text-gray-700 text-[10px]">•</span>
@@ -63,7 +63,7 @@ const PinnedAppCard = ({ app, index }) => {
             <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">
               Open Application
             </span>
-            <ArrowRight
+            <ArrowRightIcon
               weight="bold"
               size={16}
               className="text-emerald-500 transform -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
@@ -109,7 +109,7 @@ const BrutalistPinnedAppPage = () => {
             to="/apps"
             className="mb-12 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon weight="bold" />
             <span>All Applications</span>
           </Link>
 

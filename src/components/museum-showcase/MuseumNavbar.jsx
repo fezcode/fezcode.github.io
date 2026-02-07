@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft } from '@phosphor-icons/react';
+import { ArrowLeftIcon } from '@phosphor-icons/react';
 
 const MuseumNavbar = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const MuseumNavbar = () => {
           className="flex items-center gap-3 group text-[#1a1a1a]"
         >
           <div className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-500">
-            <ArrowLeft size={14} />
+            <ArrowLeftIcon size={14} />
           </div>
           <span className="text-[10px] font-bold uppercase tracking-[0.3em] font-ibm-plex-mono">
             Collection

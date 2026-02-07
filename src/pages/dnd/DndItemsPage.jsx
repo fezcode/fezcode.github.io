@@ -5,7 +5,7 @@ import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
 import Seo from '../../components/Seo';
 import piml from 'piml';
-import { Sword, X, Flask } from '@phosphor-icons/react';
+import { SwordIcon, XIcon, FlaskIcon } from '@phosphor-icons/react';
 
 function DndItemsPage() {
   const { setBreadcrumbs } = useContext(DndContext);
@@ -57,7 +57,7 @@ function DndItemsPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">
-             <Sword size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+             <SwordIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
           <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
             The Armory
@@ -101,7 +101,7 @@ function DndItemsPage() {
                      <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
 
                      <div className="mb-6 text-dnd-crimson group-hover:scale-110 transition-transform duration-500 relative z-10">
-                        {item.type.toLowerCase().includes('potion') ? <Flask size={48} weight="duotone" /> : <Sword size={48} weight="duotone" />}
+                        {item.type.toLowerCase().includes('potion') ? <FlaskIcon size={48} weight="duotone" /> : <SwordIcon size={48} weight="duotone" />}
                      </div>
 
                      <h3 className="text-3xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2 relative z-10">
@@ -153,13 +153,13 @@ function DndItemsPage() {
                    onClick={() => setSelectedItem(null)}
                    className="absolute top-4 right-4 text-dnd-crimson/60 hover:text-dnd-crimson hover:rotate-90 transition-all duration-300 z-50"
                  >
-                   <X size={32} />
+                   <XIcon size={32} />
                  </button>
 
                  {/* Modal Content */}
                  <div className="relative z-10 flex flex-col items-center text-center">
                     <div className="mb-4 text-dnd-crimson opacity-80">
-                        {selectedItem.type.toLowerCase().includes('potion') ? <Flask size={48} weight="duotone" /> : <Sword size={48} weight="duotone" />}
+                        {selectedItem.type.toLowerCase().includes('potion') ? <FlaskIcon size={48} weight="duotone" /> : <SwordIcon size={48} weight="duotone" />}
                      </div>
 
                     <h2 className="text-4xl md:text-6xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2">

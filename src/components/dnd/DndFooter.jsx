@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { DndContext } from '../../context/DndContext';
-import { Scroll } from '@phosphor-icons/react';
+import { ScrollIcon } from '@phosphor-icons/react';
 
 const DndFooter = () => {
   const { bgImageName } = useContext(DndContext);
@@ -20,7 +20,7 @@ const DndFooter = () => {
         </div>
 
         <div className="flex flex-col items-center gap-4 text-white">
-          <Scroll size={32} weight="duotone" className="opacity-60" />
+          <ScrollIcon size={32} weight="duotone" className="opacity-60" />
           <p className="font-arvo italic text-sm text-white max-w-xs text-center leading-relaxed">
             "Every chronicle is a living memory of those who braved the dark."
           </p>

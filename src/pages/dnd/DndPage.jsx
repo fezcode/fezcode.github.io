@@ -5,7 +5,7 @@ import DndCard from '../../components/dnd/DndCard';
 import DndLayout from '../../components/dnd/DndLayout';
 import Seo from '../../components/Seo';
 import { useAchievements } from '../../context/AchievementContext';
-import { BookOpen, Scroll, UsersThree, MapTrifold, Sword } from '@phosphor-icons/react';
+import { BookOpenIcon, ScrollIcon, UsersThreeIcon, MapTrifoldIcon, SwordIcon } from '@phosphor-icons/react';
 
 const DndPage = () => {
   const { setBreadcrumbs } = useContext(DndContext);
@@ -32,7 +32,7 @@ const DndPage = () => {
         >
           <div className="flex justify-center mb-8">
              <div className="h-px w-24 bg-dnd-gold/40 self-center" />
-             <Scroll size={40} className="mx-6 text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+             <ScrollIcon size={40} className="mx-6 text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
              <div className="h-px w-24 bg-dnd-gold/40 self-center" />
           </div>
 
@@ -61,31 +61,31 @@ const DndPage = () => {
             title="Chronicles"
             description="The documented history and lore of the realms."
             link="/stories/lore"
-            icon={<Scroll size={48} weight="duotone" />}
+            icon={<ScrollIcon size={48} weight="duotone" />}
           />
           <DndCard
             title="Dramatis Personae"
             description="The heroes, villains, and bystanders of our tales."
             link="/stories/characters"
-            icon={<UsersThree size={48} weight="duotone" />}
+            icon={<UsersThreeIcon size={48} weight="duotone" />}
           />
           <DndCard
             title="The Atlas"
             description="Landmarks, cities, and hidden corners of the world."
             link="/stories/places"
-            icon={<MapTrifold size={48} weight="duotone" />}
+            icon={<MapTrifoldIcon size={48} weight="duotone" />}
           />
           <DndCard
             title="The Armory"
             description="Artifacts, curiosities, and tools of the trade."
             link="/stories/items"
-            icon={<Sword size={48} weight="duotone" />}
+            icon={<SwordIcon size={48} weight="duotone" />}
           />
           <DndCard
             title="Creators"
             description="Meeting the scribes behind the legend."
             link="/stories/authors"
-            icon={<BookOpen size={48} weight="duotone" />}
+            icon={<BookOpenIcon size={48} weight="duotone" />}
           />
         </div>
 

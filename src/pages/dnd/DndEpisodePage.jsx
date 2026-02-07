@@ -7,7 +7,7 @@ import Seo from '../../components/Seo';
 import piml from 'piml';
 import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
-import { Scroll, CaretLeft, CaretRight, List, ShieldCheck } from '@phosphor-icons/react';
+import { ScrollIcon, CaretLeftIcon, CaretRightIcon, ListIcon, ShieldCheckIcon } from '@phosphor-icons/react';
 
 const WaxSeal = ({ text = 'FC' }) => (
   <div className="dnd-wax-seal group-hover:scale-110 dnd-magical-pulse transition-transform duration-500">
@@ -123,13 +123,13 @@ function DndEpisodePage() {
       />
       <div className="max-w-7xl mx-auto px-6 py-12">
 
-        <header className="text-center mb-12 md:mb-24 px-4">
+                <header className="text-center mb-12 md:mb-24 px-4">
 
-          <div className="flex justify-center mb-6">
+                  <div className="flex justify-center mb-6">
 
-             <Scroll size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+                     <ScrollIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
 
-          </div>
+                  </div>
 
                     <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
 
@@ -191,17 +191,17 @@ function DndEpisodePage() {
 
                             </div>
 
-                            <div>
+                                                        <div>
 
-                              <div className="dnd-stat-block-label">Seal</div>
+                                                          <div className="dnd-stat-block-label">Seal</div>
 
-                              <div className="flex justify-center mt-1">
+                                                          <div className="flex justify-center mt-1">
 
-                                <ShieldCheck size={16} className="text-dnd-crimson" weight="fill" />
+                                                            <ShieldCheckIcon size={16} className="text-dnd-crimson" weight="fill" />
 
-                              </div>
+                                                          </div>
 
-                            </div>
+                                                        </div>
 
                           </div>
 
@@ -323,13 +323,13 @@ function DndEpisodePage() {
 
                                       >
 
-                                        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-dnd-gold opacity-40 group-hover:opacity-100" />
+                                                                                <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                                        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-dnd-gold opacity-40 group-hover:opacity-100" />
+                                                                                <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                                        <CaretLeft size={24} weight="bold" className="text-dnd-crimson group-hover:scale-125 transition-transform" />
+                                                                                <CaretLeftIcon size={24} weight="bold" className="text-dnd-crimson group-hover:scale-125 transition-transform" />
 
-                                        <div className="flex flex-col text-left relative z-10">
+                                                                                <div className="flex flex-col text-left relative z-10">
 
                                           <span className="text-[8px] font-mono uppercase tracking-widest text-black/40">Prior Entry</span>
 
@@ -343,17 +343,17 @@ function DndEpisodePage() {
 
                                   </div>
 
-                                  <Link to="/stories/lore" className="group relative flex items-center justify-center gap-3 px-10 py-5 dnd-parchment-container border-2 border-black/10 hover:border-dnd-gold/50 transition-all shadow-xl hover:-translate-y-1 min-w-[240px] overflow-hidden">
+                                                                    <Link to="/stories/lore" className="group relative flex items-center justify-center gap-3 px-10 py-5 dnd-parchment-container border-2 border-black/10 hover:border-dnd-gold/50 transition-all shadow-xl hover:-translate-y-1 min-w-[240px] overflow-hidden">
 
-                                    <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-dnd-gold opacity-40 group-hover:opacity-100" />
+                                                                      <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-dnd-gold opacity-40 group-hover:opacity-100" />
+                                                                      <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-dnd-gold opacity-40 group-hover:opacity-100" />
 
-                                    <List size={20} weight="bold" className="text-dnd-crimson" />
+                                                                      <ListIcon size={20} weight="bold" className="text-dnd-crimson" />
 
-                                    <span className="font-mono font-black text-xs tracking-[0.4em] text-dnd-crimson">Show Index</span>
+                                                                      <span className="font-mono font-black text-xs tracking-[0.4em] text-dnd-crimson">Show Index</span>
 
-                                  </Link>
+                                                                    </Link>
 
                                   <div className="w-full md:w-1/3 flex justify-end">
 
@@ -375,13 +375,13 @@ function DndEpisodePage() {
 
                                           <span className="text-[8px] font-mono uppercase tracking-widest text-black/40">Next Entry</span>
 
-                                          <span className="text-sm font-arvo font-bold text-dnd-crimson line-clamp-1">{nextEpisode.title}</span>
+                                                                                    <span className="text-sm font-arvo font-bold text-dnd-crimson line-clamp-1">{nextEpisode.title}</span>
 
-                                        </div>
+                                                                                  </div>
 
-                                        <CaretRight size={24} weight="bold" className="text-dnd-crimson group-hover:scale-125 transition-transform" />
+                                                                                  <CaretRightIcon size={24} weight="bold" className="text-dnd-crimson group-hover:scale-125 transition-transform" />
 
-                                      </Link>
+                                                                                </Link>
 
                                     )}
 

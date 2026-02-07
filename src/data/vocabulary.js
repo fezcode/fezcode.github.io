@@ -1,4 +1,8 @@
 export const vocabulary = {
+  antikythera: {
+    title: 'Antikythera Mechanism',
+    loader: () => import('./vocab/antikythera'),
+  },
   'prop-drilling': {
     title: 'Prop Drilling',
     loader: () => import('./vocab/prop-drilling'),

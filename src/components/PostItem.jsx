@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Folder } from '@phosphor-icons/react';
+import { ArrowRightIcon, FolderIcon } from '@phosphor-icons/react';
 
 const PostItem = ({
   slug,
@@ -98,7 +98,7 @@ const PostItem = ({
           {/* Title Area */}
           <div className="flex items-start gap-3 min-w-0 flex-1">
              {isSeries && (
-                <Folder size={24} weight="fill" className="text-amber-400 shrink-0 mt-0.5" />
+                <FolderIcon size={24} weight="fill" className="text-amber-400 shrink-0 mt-0.5" />
              )}
              <div className="flex flex-col gap-1">
                 <h3
@@ -134,7 +134,7 @@ const PostItem = ({
           </span>
 
           <div className="w-10 flex justify-end">
-            <ArrowRight
+            <ArrowRightIcon
               weight="bold"
               size={20}
               className={`transition-all duration-300 ${

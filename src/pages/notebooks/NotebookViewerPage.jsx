@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../styles/notebook.css';
-import { CaretLeft, CaretRight } from '@phosphor-icons/react';
+import { CaretLeftIcon, CaretRightIcon } from '@phosphor-icons/react';
 import piml from 'piml';
 import Seo from '../../components/Seo';
 
@@ -134,13 +134,13 @@ const NotebookViewerPage = () => {
       <div className="book">
         {currentPage > 0 && (
           <div className="clickable-edge left" onClick={handlePrevPage}>
-            <CaretLeft size={32} />
+            <CaretLeftIcon size={32} />
           </div>
         )}
         {renderPages()}
         {notebook && currentPage < notebook.pages.length + 1 && (
           <div className="clickable-edge right" onClick={handleNextPage}>
-            <CaretRight size={32} />
+            <CaretRightIcon size={32} />
           </div>
         )}
       </div>

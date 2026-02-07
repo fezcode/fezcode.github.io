@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Globe, BookOpen } from '@phosphor-icons/react';
+import { GlobeIcon, BookOpenIcon } from '@phosphor-icons/react';
 
 const DndAuthorCard = ({
   authorName,
@@ -45,14 +45,14 @@ const DndAuthorCard = ({
             rel="noopener noreferrer"
             className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-dnd-crimson/60 hover:text-dnd-crimson transition-colors mb-8"
           >
-            <Globe size={14} />
+            <GlobeIcon size={14} />
             Digital Signal
           </a>
         )}
         {booksWritten && booksWritten.length > 0 && (
           <div className="w-full pt-6 border-t border-dnd-crimson/10">
             <div className="flex items-center justify-center gap-2 mb-4 opacity-40">
-              <BookOpen size={16} />
+              <BookOpenIcon size={16} />
               <span className="text-[9px] font-mono font-bold uppercase tracking-[0.3em]">Compiled Tomes</span>
             </div>
             <div className="space-y-2">

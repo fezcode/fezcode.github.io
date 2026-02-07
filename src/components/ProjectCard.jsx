@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRightIcon } from '@phosphor-icons/react';
 
 const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
   return (
@@ -53,7 +53,7 @@ const ProjectCard = ({ project, index, isActive, onHover = () => {} }) => {
               : '-translate-x-4 opacity-0 text-gray-500'
           }`}
         >
-          <ArrowRight size={32} weight="light" />
+          <ArrowRightIcon size={32} weight="light" />
         </div>
       </Link>
     </motion.div>

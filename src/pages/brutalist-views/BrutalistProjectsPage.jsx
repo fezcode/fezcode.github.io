@@ -5,7 +5,7 @@ import ProjectCard from '../../components/ProjectCard';
 import GenerativeArt from '../../components/GenerativeArt';
 import { useProjects } from '../../utils/projectParser';
 import Seo from '../../components/Seo';
-import { CpuIcon, ArrowLeft } from '@phosphor-icons/react'; // Fixed import
+import { CpuIcon, ArrowLeftIcon } from '@phosphor-icons/react'; // Fixed import
 import { useAchievements } from '../../context/AchievementContext';
 
 const BrutalistProjectsPage = () => {
@@ -81,7 +81,7 @@ const BrutalistProjectsPage = () => {
             to="/"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon weight="bold" />
             <span>Home</span>
           </Link>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none">
@@ -174,7 +174,7 @@ const BrutalistProjectsPage = () => {
                       <span className="text-sm font-bold uppercase tracking-widest">
                         {activeProject.demo_link ? 'Visit Live Site' : 'View Source'}
                       </span>
-                      <ArrowLeft className="rotate-135" weight="bold" />
+                      <ArrowLeftIcon className="rotate-135" weight="bold" />
                     </a>
                   </motion.div>
                 )}

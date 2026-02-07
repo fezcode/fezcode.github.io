@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { GithubLogo, Globe, ArrowRight } from '@phosphor-icons/react';
+import { GithubLogoIcon, GlobeIcon, ArrowRightIcon } from '@phosphor-icons/react';
 
 const MuseumFooter = ({ project }) => {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ const MuseumFooter = ({ project }) => {
               className="group flex flex-col items-center gap-4"
             >
               <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-500">
-                <GithubLogo size={20} />
+                <GithubLogoIcon size={20} />
               </div>
               <span className="text-[9px] font-black uppercase tracking-[0.3em] font-ibm-plex-mono text-black/30 group-hover:text-black transition-colors">Source Code</span>
             </a>
@@ -43,7 +43,7 @@ const MuseumFooter = ({ project }) => {
               className="group flex flex-col items-center gap-4"
             >
               <div className="w-12 h-12 rounded-full border border-black/10 flex items-center justify-center group-hover:bg-black group-hover:text-white transition-all duration-500">
-                <Globe size={20} />
+                <GlobeIcon size={20} />
               </div>
               <span className="text-[9px] font-black uppercase tracking-[0.3em] font-ibm-plex-mono text-black/30 group-hover:text-black transition-colors">Live Preview</span>
             </a>
@@ -62,7 +62,7 @@ const MuseumFooter = ({ project }) => {
               Return
             </h2>
             <div className="w-24 h-24 md:w-32 md:h-32 rounded-full border border-black/10 flex items-center justify-center group-hover:scale-90 group-hover:bg-black group-hover:text-white transition-all duration-700 ease-[0.16,1,0.3,1]">
-              <ArrowRight size={48} weight="light" className="group-hover:translate-x-2 transition-transform duration-700" />
+              <ArrowRightIcon size={48} weight="light" className="group-hover:translate-x-2 transition-transform duration-700" />
             </div>
           </div>
           <p className="text-xs font-bold uppercase tracking-[0.4em] text-black/20 font-ibm-plex-mono group-hover:text-black/40 transition-colors">

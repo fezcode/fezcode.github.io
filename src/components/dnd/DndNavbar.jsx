@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DndContext } from '../../context/DndContext';
-import { CaretRight, House } from '@phosphor-icons/react';
+import { CaretRightIcon, HouseIcon } from '@phosphor-icons/react';
 
 const DndNavbar = () => {
   const { breadcrumbs, language, setLanguage } = useContext(DndContext);
@@ -16,14 +16,14 @@ const DndNavbar = () => {
       <div className="bg-black/40 px-4 md:px-12 py-2 flex items-center justify-between border-b border-white/5 md:mt-[25px]">
         <div className="flex items-center gap-4">
           <Link to="/" className="text-white hover:text-dnd-gold transition-colors">
-            <House size={18} weight="fill" />
+            <HouseIcon size={18} weight="fill" />
           </Link>
 
           {breadcrumbs && breadcrumbs.length > 0 && (
             <div className="hidden sm:flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em]">
               {breadcrumbs.map((crumb, index) => (
                 <React.Fragment key={crumb.path || index}>
-                  <CaretRight size={10} className="text-white/40" />
+                  <CaretRightIcon size={10} className="text-white/40" />
                   {crumb.path ? (
                     <Link to={crumb.path} className="text-white/60 hover:text-white transition-colors">
                       {formatBreadcrumbLabel(crumb.label)}

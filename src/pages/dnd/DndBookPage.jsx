@@ -5,7 +5,7 @@ import { DndContext } from '../../context/DndContext';
 import DndLayout from '../../components/dnd/DndLayout';
 import Seo from '../../components/Seo';
 import piml from 'piml';
-import { Scroll, BookmarkSimple } from '@phosphor-icons/react';
+import { ScrollIcon, BookmarkSimpleIcon } from '@phosphor-icons/react';
 
 function DndBookPage() {
   const { bookId } = useParams();
@@ -54,7 +54,7 @@ function DndBookPage() {
       <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-12">
         <header className="text-center mb-12 md:mb-24">
           <div className="flex justify-center mb-6">
-             <BookmarkSimple size={48} className="text-dnd-gold" weight="duotone" />
+             <BookmarkSimpleIcon size={48} className="text-dnd-gold" weight="duotone" />
           </div>
           <h1 className="text-4xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 leading-none dnd-header-pulse">
             {pageTitle}
@@ -79,7 +79,7 @@ function DndBookPage() {
 
             <div className="relative z-10">
               <div className="flex items-center gap-4 mb-8 pb-4 border-b border-dnd-crimson/10">
-                <Scroll size={32} className="text-dnd-crimson" weight="duotone" />
+                <ScrollIcon size={32} className="text-dnd-crimson" weight="duotone" />
                 <h2 className="text-3xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter">
                   Recorded Episodes
                 </h2>

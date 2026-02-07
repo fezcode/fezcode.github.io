@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PostItem from '../../components/PostItem';
-import { ArrowLeft, Clock, Tag, BookOpen } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ClockIcon, TagIcon, BookOpenIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import GenerativeArt from '../../components/GenerativeArt';
@@ -96,7 +96,7 @@ const BrutalistSeriesPage = () => {
             to="/blog"
             className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
           >
-            <ArrowLeft weight="bold" />
+            <ArrowLeftIcon weight="bold" />
             <span>Archive</span>
           </Link>
           <h1 className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-4 leading-none uppercase">
@@ -150,7 +150,7 @@ const BrutalistSeriesPage = () => {
               <div className="absolute bottom-0 left-0 w-full p-16 z-10 flex flex-col gap-8">
                 <div className="flex items-center gap-6">
                   <div className="flex items-center gap-2 text-emerald-400 font-mono text-[10px] tracking-widest uppercase">
-                    <Clock size={16} />
+                    <ClockIcon size={16} />
                     <span>
                       {new Date(
                         activePost.updated || activePost.date,
@@ -158,7 +158,7 @@ const BrutalistSeriesPage = () => {
                     </span>
                   </div>
                   <div className="flex items-center gap-2 text-white font-mono text-[10px] tracking-widest uppercase bg-white/10 px-2 py-1 border border-white/10 rounded-sm">
-                    <Tag size={14} />
+                    <TagIcon size={14} />
                     <span>{activePost.category || 'Episode'}</span>
                   </div>
                 </div>
@@ -186,7 +186,7 @@ const BrutalistSeriesPage = () => {
                     <span className="text-sm font-black uppercase tracking-[0.2em]">
                       Access_Episode
                     </span>
-                    <BookOpen weight="bold" size={20} />
+                    <BookOpenIcon weight="bold" size={20} />
                   </Link>
                 </motion.div>
               </div>

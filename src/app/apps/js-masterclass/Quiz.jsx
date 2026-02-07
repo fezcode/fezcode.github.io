@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Check, X, Trophy, ArrowRight, Warning, Code, ArrowsLeftRight, TextT } from '@phosphor-icons/react';
+import { CheckIcon, XIcon, TrophyIcon, ArrowRightIcon, WarningIcon, CodeIcon, ArrowsLeftRightIcon, TextTIcon } from '@phosphor-icons/react';
 
 // --- Sub-Components ---
 
@@ -12,10 +12,10 @@ const MultipleChoiceQuestion = ({ question, showResult, isCorrect, selectedOptio
         if (showResult) {
             if (index === question.answer) {
                 containerClass = "bg-emerald-500/10 border-emerald-500/50";
-                icon = <div className="w-4 h-4 bg-emerald-500 flex items-center justify-center text-black"><Check weight="bold" size={10} /></div>;
+                icon = <div className="w-4 h-4 bg-emerald-500 flex items-center justify-center text-black"><CheckIcon weight="bold" size={10} /></div>;
             } else if (index === selectedOption && !isCorrect) {
                 containerClass = "bg-rose-500/10 border-rose-500/50";
-                icon = <div className="w-4 h-4 bg-rose-500 flex items-center justify-center text-black"><X weight="bold" size={10} /></div>;
+                icon = <div className="w-4 h-4 bg-rose-500 flex items-center justify-center text-black"><XIcon weight="bold" size={10} /></div>;
             } else {
                 containerClass = "opacity-30 border-white/5 grayscale pointer-events-none";
             }
@@ -67,7 +67,7 @@ const FillInTheBlanksQuestion = ({ question, showResult, isCorrect, fillAnswer, 
         </div>
         {showResult && !isCorrect && (
             <div className="p-4 border border-emerald-500/20 bg-emerald-500/5 text-[10px] font-mono text-emerald-500 uppercase tracking-widest flex items-center gap-3">
-                <Check weight="bold" /> Correct Answer: <span className="text-white bg-black/50 px-2 py-1 rounded-sm">{question.answer}</span>
+                <CheckIcon weight="bold" /> Correct Answer: <span className="text-white bg-black/50 px-2 py-1 rounded-sm">{question.answer}</span>
             </div>
         )}
     </div>
@@ -95,7 +95,7 @@ const CodeWritingQuestion = ({ question, showResult, isCorrect, codeAnswer, onCo
         {showResult && !isCorrect && (
             <div className="p-4 border border-rose-500/20 bg-rose-500/5 mt-4 space-y-2">
                 <div className="text-rose-500 text-xs font-mono font-bold uppercase tracking-widest flex items-center gap-2">
-                    <X weight="bold" /> Verification Failed
+                    <XIcon weight="bold" /> Verification Failed
                 </div>
                 <div className="text-[10px] font-mono text-gray-400">
                     The code did not satisfy the test case requirements. Ensure you are returning the expected value or performing the required action.
@@ -186,7 +186,7 @@ const MatchingQuestion = ({ question, showResult, matches, onMatch }) => {
                         {question.pairs.map((pair, idx) => (
                             <div key={idx} className="flex items-center gap-3 text-xs font-mono text-gray-400 border border-white/5 p-2 bg-black/20">
                                 <span className="text-white">{pair.left}</span>
-                                <ArrowRight size={12} className="text-emerald-500/50" />
+                                <ArrowRightIcon size={12} className="text-emerald-500/50" />
                                 <span className="text-emerald-400">{pair.right}</span>
                             </div>
                         ))}
@@ -274,14 +274,14 @@ const Quiz = ({ questions, onComplete }) => {
       <div className="bg-[#050505] border border-emerald-500/30 p-12 text-center relative overflow-hidden group">
         <div className="absolute inset-0 bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
         <div className="inline-flex p-4 border border-emerald-500/20 bg-emerald-500/10 mb-8 rounded-sm">
-            <Trophy size={48} className="text-emerald-500" weight="fill" />
+            <TrophyIcon size={48} className="text-emerald-500" weight="fill" />
         </div>
         <h3 className="text-2xl font-black text-white uppercase tracking-widest mb-4">Assessment_Complete</h3>
         <p className="text-gray-400 font-mono text-xs uppercase tracking-wider mb-8 max-w-md mx-auto leading-relaxed">
           Neural pathways established. Concept integration verified at 100% efficiency.
         </p>
         <div className="inline-flex items-center gap-3 text-black font-black bg-emerald-500 px-6 py-3 text-[10px] uppercase tracking-[0.2em] hover:bg-white transition-colors cursor-default">
-            <Check weight="bold" size={14} /> PROTOCOL_PASSED
+            <CheckIcon weight="bold" size={14} /> PROTOCOL_PASSED
         </div>
       </div>
     );
@@ -289,10 +289,10 @@ const Quiz = ({ questions, onComplete }) => {
 
   const getIconForType = () => {
       switch(questionType) {
-          case 'matching': return <ArrowsLeftRight size={16} weight="fill" className="text-emerald-500"/>;
-          case 'code-writing': return <Code size={16} weight="fill" className="text-emerald-500"/>;
-          case 'fill-in-the-blanks': return <TextT size={16} weight="fill" className="text-emerald-500"/>;
-          default: return <Warning size={16} weight="fill" className="text-emerald-500"/>;
+          case 'matching': return <ArrowsLeftRightIcon size={16} weight="fill" className="text-emerald-500"/>;
+          case 'code-writing': return <CodeIcon size={16} weight="fill" className="text-emerald-500"/>;
+          case 'fill-in-the-blanks': return <TextTIcon size={16} weight="fill" className="text-emerald-500"/>;
+          default: return <WarningIcon size={16} weight="fill" className="text-emerald-500"/>;
       }
   };
 
@@ -384,14 +384,14 @@ const Quiz = ({ questions, onComplete }) => {
               }`}
             >
               <span>{currentQuestionIndex < questions.length - 1 ? 'NEXT_NODE' : 'FINALIZE'}</span>
-              <ArrowRight weight="bold" size={14} />
+              <ArrowRightIcon weight="bold" size={14} />
             </button>
           )}
         </div>
 
         {showResult && !isCorrect && (
             <div className="mt-6 flex items-start gap-4 p-4 border border-rose-500/20 bg-rose-500/5 text-rose-500">
-                <Warning size={20} className="flex-shrink-0" weight="fill" />
+                <WarningIcon size={20} className="flex-shrink-0" weight="fill" />
                 <div className="space-y-1">
                     <p className="font-bold text-[10px] uppercase tracking-widest">Error_Detected</p>
                     <p className="font-mono text-[10px] opacity-70">Review the correct output above. Logic adjustment required.</p>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Label from '../Label';
-import { ArrowUp, ArrowDown } from '@phosphor-icons/react';
+import { ArrowUpIcon, ArrowDownIcon } from '@phosphor-icons/react';
 
 const getCategoryStyles = (category) => {
   switch (category) {
@@ -215,7 +215,7 @@ const PostMetadata = ({
           >
             {isAtTop ? (
               <>
-                <ArrowDown
+                <ArrowDownIcon
                   className="mr-2 group-hover:translate-y-1 transition-transform"
                   size={16}
                 />
@@ -223,7 +223,7 @@ const PostMetadata = ({
               </>
             ) : (
               <>
-                <ArrowUp
+                <ArrowUpIcon
                   className="mr-2 group-hover:-translate-y-1 transition-transform"
                   size={16}
                 />

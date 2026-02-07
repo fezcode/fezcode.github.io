@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import DndLayout from '../../components/dnd/DndLayout';
 import Seo from '../../components/Seo';
-import { WarningCircle } from '@phosphor-icons/react';
+import { WarningCircleIcon } from '@phosphor-icons/react';
 
 function DndNotFoundPage() {
   return (
@@ -19,7 +19,7 @@ function DndNotFoundPage() {
           transition={{ duration: 0.5 }}
         >
           <div className="flex justify-center mb-12">
-             <WarningCircle size={80} className="text-dnd-gold animate-pulse" weight="duotone" />
+             <WarningCircleIcon size={80} className="text-dnd-gold animate-pulse" weight="duotone" />
           </div>
 
           <h1 className="text-7xl md:text-9xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-8">

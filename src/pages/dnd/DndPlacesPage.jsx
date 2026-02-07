@@ -5,7 +5,7 @@ import DndLayout from '../../components/dnd/DndLayout';
 import DndSearchInput from '../../components/dnd/DndSearchInput';
 import Seo from '../../components/Seo';
 import piml from 'piml';
-import { MapTrifold, X, MapPin } from '@phosphor-icons/react';
+import { MapTrifoldIcon, XIcon, MapPinIcon } from '@phosphor-icons/react';
 
 function DndPlacesPage() {
   const { setBreadcrumbs } = useContext(DndContext);
@@ -69,7 +69,7 @@ function DndPlacesPage() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <header className="text-center mb-12 relative">
           <div className="flex justify-center mb-6">
-             <MapTrifold size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
+             <MapTrifoldIcon size={48} className="text-dnd-gold-light drop-shadow-[0_0_8px_rgba(249,224,118,0.4)]" weight="duotone" />
           </div>
           <h1 className="text-5xl md:text-8xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter mb-4 dnd-header-pulse">
             The Atlas
@@ -91,7 +91,7 @@ function DndPlacesPage() {
               <div className="flex items-center gap-4 mb-8">
                  <div className="h-px flex-grow bg-dnd-gold/20" />
                  <h2 className="text-3xl md:text-4xl font-playfairDisplay italic font-black dnd-gold-gradient-text uppercase tracking-tighter flex items-center gap-3">
-                    <MapPin size={32} weight="duotone" className="text-dnd-gold" />
+                    <MapPinIcon size={32} weight="duotone" className="text-dnd-gold" />
                     {category}
                  </h2>
                  <div className="h-px flex-grow bg-dnd-gold/20" />
@@ -124,7 +124,7 @@ function DndPlacesPage() {
                       <div className="absolute bottom-4 right-4 w-8 h-8 border-b-2 border-r-2 border-dnd-gold opacity-60 group-hover:opacity-100 transition-all duration-500" />
 
                       <div className="mb-6 text-dnd-crimson group-hover:scale-110 transition-transform duration-500 relative z-10">
-                          <MapTrifold size={48} weight="duotone" />
+                          <MapTrifoldIcon size={48} weight="duotone" />
                       </div>
 
                       <h3 className="text-2xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2 relative z-10">
@@ -180,13 +180,13 @@ function DndPlacesPage() {
                    onClick={() => setSelectedPlace(null)}
                    className="absolute top-4 right-4 text-dnd-crimson/60 hover:text-dnd-crimson hover:rotate-90 transition-all duration-300 z-50"
                  >
-                   <X size={32} />
+                   <XIcon size={32} />
                  </button>
 
                  {/* Modal Content */}
                  <div className="relative z-10 flex flex-col items-center text-center">
                     <div className="mb-8 text-dnd-crimson animate-bounce-slow">
-                        <MapTrifold size={64} weight="duotone" />
+                        <MapTrifoldIcon size={64} weight="duotone" />
                      </div>
 
                     <h2 className="text-4xl md:text-5xl font-playfairDisplay italic font-black text-dnd-crimson uppercase tracking-tighter mb-2">

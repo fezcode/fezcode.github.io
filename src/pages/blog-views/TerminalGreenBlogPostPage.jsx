@@ -6,7 +6,7 @@ import remarkMath from 'remark-math';
 import rehypeRaw from 'rehype-raw';
 import rehypeKatex from 'rehype-katex';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { ArrowLeft, ArrowsOutSimple } from '@phosphor-icons/react';
+import { ArrowLeftIcon, ArrowsOutSimpleIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import MarkdownLink from '../../components/MarkdownLink';
@@ -135,7 +135,7 @@ const TerminalGreenBlogPostPage = () => {
                 }
                 className="text-emerald-400 bg-black border border-emerald-500/30 p-1.5 hover:bg-emerald-500 hover:text-black transition-all"
               >
-                <ArrowsOutSimple size={16} />
+                <ArrowsOutSimpleIcon size={16} />
               </button>
             </div>
             <SyntaxHighlighter
@@ -230,7 +230,7 @@ const TerminalGreenBlogPostPage = () => {
             }
             className="inline-flex items-center gap-2 border border-emerald-500/30 px-4 py-1 text-[10px] uppercase tracking-[0.2em] hover:bg-emerald-500 hover:text-black transition-all mb-8"
           >
-            <ArrowLeft weight="bold" /> [{' '}
+            <ArrowLeftIcon weight="bold" /> [{' '}
             {post.attributes.series ? 'BACK_TO_SERIES' : 'BACK_TO_INDEX'} ]
           </Link>
           <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-tight drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">

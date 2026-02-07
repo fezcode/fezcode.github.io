@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from '@phosphor-icons/react';
+import { ArrowUpRightIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import GenerativeArt from './GenerativeArt';
 
@@ -28,7 +28,7 @@ const ProjectTile = ({ project }) => {
           {/* Hover Button */}
           <div className="absolute top-3 right-3 opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black shadow-lg">
-              <ArrowUpRight weight="bold" size={16} />
+              <ArrowUpRightIcon weight="bold" size={16} />
             </div>
           </div>
         </div>

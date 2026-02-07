@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight } from '@phosphor-icons/react';
+import { ArrowRightIcon } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
 import GenerativeArt from './GenerativeArt';
 
@@ -89,7 +89,7 @@ const PostTile = ({ post }) => {
             <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-gray-500 group-hover:text-white transition-colors">
               Read Intel
             </span>
-            <ArrowRight
+            <ArrowRightIcon
               weight="bold"
               size={14}
               className="text-emerald-500 transform -translate-x-2 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100"
