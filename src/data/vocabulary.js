@@ -83,4 +83,12 @@ export const vocabulary = {
     title: 'ETL (Extract, Transform, Load)',
     loader: () => import('./vocab/etl'),
   },
+  staccato: {
+    title: 'Staccato',
+    loader: () => import('./vocab/staccato'),
+  },
+  legato: {
+    title: 'Legato',
+    loader: () => import('./vocab/legato'),
+  },
 };

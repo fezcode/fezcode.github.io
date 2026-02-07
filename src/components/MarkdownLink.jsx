@@ -3,7 +3,7 @@ import { useSidePanel } from '../context/SidePanelContext';
 import { vocabulary } from '../data/vocabulary';
 import { ArrowSquareOut, CircleNotch } from '@phosphor-icons/react';
 
-const MarkdownLink = ({ href, children, className, ...props }) => {
+const MarkdownLink = ({ href, children, width = 450, className, ...props }) => {
   const { openSidePanel } = useSidePanel();
   const isExternal = href?.startsWith('http') || href?.startsWith('https');
   const isVocab =
@@ -35,6 +35,7 @@ const MarkdownLink = ({ href, children, className, ...props }) => {
               >
                 <LazyVocabComponent />
               </Suspense>,
+              width,
             );
           } else {
             console.warn(`Vocabulary term or loader not found: ${term}`);
