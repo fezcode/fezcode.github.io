@@ -1,9 +1,21 @@
 [
   {
+    "slug": "linux-vs-unix-the-kernel-wars",
+    "title": "Linux vs. Unix: The Kernel Wars and the Philosophy of Modular Design",
+    "date": "2026-02-08",
+    "updated": "2026-02-08",
+    "description": "A deep dive into the history, kernel architectures, and the uncompromising philosophy that shaped modern computing. Monoliths, microkernels, and the power of the pipe.",
+    "tags": ["linux", "unix", "kernel", "os", "architecture", "history", "dev"],
+    "category": "dev",
+    "filename": "linux-vs-unix-the-kernel-wars.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg"
+  },
+  {
     "slug": "the-halo-effect",
     "title": "The Halo Effect: Why We Trust Idiots with Good Hair",
-    "date": "2026-02-07",
-    "updated": "2026-02-07",
+    "date": "2026-02-08",
+    "updated": "2026-02-08",
     "description": "The Halo Effect is the silent killer of technical debt. Exploring why we mistake a shiny coat of paint for a functional engine in software engineering.",
     "tags": ["psychology", "halo-effect", "bias", "software-engineering", "management", "rant"],
     "category": "rant",
