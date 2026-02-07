@@ -4,22 +4,20 @@ import { motion } from 'framer-motion';
 import { ArrowRightIcon, FolderIcon } from '@phosphor-icons/react';
 
 const PostItem = ({
-  slug,
-  title,
-  date,
-  updatedDate,
-  category,
-  series,
-  seriesIndex,
-  isSeries,
-  description,
-  tags,
-  authors,
-  image,
+  post,
   isActive,
   onHover = () => {},
-  ...rest
 }) => {
+  const {
+    slug,
+    title,
+    date,
+    category,
+    series,
+    seriesIndex,
+    isSeries,
+  } = post;
+
   const formattedDate = new Date(date).toLocaleDateString('en-GB', {
     day: '2-digit',
     month: '2-digit',
@@ -56,23 +54,7 @@ const PostItem = ({
     <motion.div
       initial={{ opacity: 0, x: -10 }}
       animate={{ opacity: 1, x: 0 }}
-      onMouseEnter={() =>
-        onHover({
-          slug,
-          title,
-          date,
-          updatedDate,
-          category,
-          series,
-          seriesIndex,
-          isSeries,
-          description,
-          tags,
-          authors,
-          image,
-          ...rest,
-        })
-      }
+      onMouseEnter={() => onHover(post)}
       className="relative mr-4 md:mr-12"
     >
       <Link

@@ -120,12 +120,13 @@ const BrutalistSeriesPage = () => {
           {seriesPosts.map((post) => (
             <PostItem
               key={post.slug}
-              {...post}
-              seriesIndex={post.seriesIndex}
-              slug={`series/${seriesSlug}/${post.slug}`}
+              post={{
+                ...post,
+                slug: `series/${seriesSlug}/${post.slug}`,
+                isSeries: false
+              }}
               isActive={activePost?.slug === post.slug}
               onHover={setActivePost}
-              isSeries={false}
             />
           ))}
         </div>

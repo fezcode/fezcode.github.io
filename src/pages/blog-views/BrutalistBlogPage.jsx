@@ -203,7 +203,7 @@ const BrutalistBlogPage = () => {
           {filteredItems.map((item) => (
             <PostItem
               key={item.slug}
-              {...item}
+              post={item}
               isActive={activePost?.slug === item.slug}
               onHover={setActivePost}
             />
