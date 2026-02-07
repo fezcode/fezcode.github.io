@@ -1,0 +1,43 @@
+# Philosophy 101: René Descartes - The Father of Modern Philosophy
+
+## The Reset Button
+
+For centuries, philosophy was dominated by Aristotle and the Church. Then came René Descartes (1596–1650), a French mathematician and scientist who decided to burn the whole house down and start over.
+
+He famously locked himself in a room with a stove and decided to doubt *everything* that could possibly be doubted.
+
+## The Method of Doubt
+
+Descartes asked: "What can I know for certain?"
+*   Can I trust my senses? No, they deceive me (optical illusions).
+*   Can I trust reality? No, I could be dreaming (or in a Matrix).
+*   Can I trust math? No, an "Evil Demon" could be tricking me into thinking 2+2=4.
+
+## The Bedrock: Cogito, Ergo Sum
+
+He eventually hit something he couldn't doubt.
+Even if he is being deceived, *he* must exist to *be* deceived. Even if he is doubting, *he* must exist to *doubt*.
+
+**[Cogito, ergo sum](/vocab/cogito-ergo-sum)**: "I think, therefore I am."
+
+This single sentence shifted the focus of philosophy from "What is the world?" to "What can *I* know?" This focus on the subject (the self) is the birth of **Modern Philosophy**.
+
+## Dualism
+
+Descartes concluded that because he could imagine himself without a body, but not without a mind, they must be different things.
+*   **Res Extensa:** Extended things (Matter, the body, physics).
+*   **Res Cogitans:** Thinking things (Mind, soul, consciousness).
+
+This created the **Mind-Body Problem** that still haunts us today (and is the root of the "Ghost in the Machine" concept).
+
+## Why He Matters
+
+Descartes made philosophy about **Epistemology** (Knowledge) first. He championed **Rationalism**—the idea that reason, not just observation, is the path to truth. He also invented the Cartesian coordinate system (X and Y axes), so you can thank (or blame) him for your algebra homework.
+
+## Recommended Resources
+
+**1. The Book:**
+*   **"Meditations on First Philosophy" by René Descartes**.
+*   It's actually quite short and readable. It reads like a diary of a man having an existential crisis.
+
+Next time, we jump forward to the man who declared God dead: **Nietzsche**.
