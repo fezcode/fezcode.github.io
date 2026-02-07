@@ -23,9 +23,10 @@ export const fetchAllBlogPosts = async () => {
     const processedPosts = [];
     allPostsData.forEach((item) => {
       if (item.series) {
-        item.series.posts.forEach((seriesPost) => {
+        item.series.posts.forEach((seriesPost, index) => {
           processedPosts.push({
             ...seriesPost,
+            seriesIndex: index + 1,
             filename: seriesPost.filename.startsWith('/')
               ? seriesPost.filename.substring(1)
               : seriesPost.filename,
