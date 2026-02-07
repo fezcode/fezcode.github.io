@@ -1,15 +1,245 @@
 [
   {
+    "slug": "linux-vs-unix-the-kernel-wars",
+    "title": "Linux vs. Unix: The Kernel Wars and the Philosophy of Modular Design",
+    "date": "2026-02-08",
+    "updated": "2026-02-08",
+    "description": "A deep dive into the history, kernel architectures, and the uncompromising philosophy that shaped modern computing. Monoliths, microkernels, and the power of the pipe.",
+    "tags": ["linux", "unix", "kernel", "os", "architecture", "history", "dev"],
+    "category": "dev",
+    "filename": "linux-vs-unix-the-kernel-wars.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg"
+  },
+  {
+    "slug": "the-halo-effect",
+    "title": "The Halo Effect: Why We Trust Idiots with Good Hair",
+    "date": "2026-02-08",
+    "updated": "2026-02-08",
+    "description": "The Halo Effect is the silent killer of technical debt. Exploring why we mistake a shiny coat of paint for a functional engine in software engineering.",
+    "tags": ["psychology", "halo-effect", "bias", "software-engineering", "management", "rant"],
+    "category": "rant",
+    "filename": "halo-effect.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
+    "slug": "mastering-git-worktrees-and-ai",
+    "title": "Mastering Git Worktrees: Parallel Development with AI Agents",
+    "date": "2026-02-08",
+    "updated": "2026-02-08",
+    "description": "Stop context switching. Learn how to use Git Worktrees to manage multiple features simultaneously and orchestrate parallel AI agents.",
+    "tags": ["git", "worktrees", "ai", "workflow", "productivity", "dev"],
+    "category": "dev",
+    "filename": "mastering-git-worktrees-and-ai.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
+    "title": "Philosophy 101",
+    "date": "2026-02-07",
+    "updated": "2026-02-07",
+    "slug": "philosophy-101",
+    "series": {
+      "posts": [
+        {
+          "slug": "introduction",
+          "title": "Introduction - The Examined Life",
+          "filename": "/philosophy-101/01-introduction.txt",
+          "date": "2026-02-01",
+          "updated": "2026-02-01",
+          "category": "rant",
+          "tags": ["philosophy", "education", "series", "rant", "intro"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "logic-and-arguments",
+          "title": "Logic - The Toolbox",
+          "filename": "/philosophy-101/02-logic-and-arguments.txt",
+          "date": "2026-02-01",
+          "category": "rant",
+          "tags": ["philosophy", "logic", "arguments", "critical-thinking"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "epistemology",
+          "title": "Epistemology - How Do You Know That?",
+          "filename": "/philosophy-101/03-epistemology.txt",
+          "date": "2026-02-01",
+          "category": "rant",
+          "tags": ["philosophy", "epistemology", "knowledge", "matrix"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "metaphysics",
+          "title": "Metaphysics - What is Real?",
+          "filename": "/philosophy-101/04-metaphysics.txt",
+          "date": "2026-02-01",
+          "category": "rant",
+          "tags": ["philosophy", "metaphysics", "reality", "ontology"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "ethics",
+          "title": "Ethics - What Should We Do?",
+          "filename": "/philosophy-101/05-ethics.txt",
+          "date": "2026-02-02",
+          "category": "rant",
+          "tags": ["philosophy", "ethics", "morality", "trolley-problem"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "the-big-three",
+          "title": "The Big Three - Socrates, Plato, Aristotle",
+          "filename": "/philosophy-101/06-socrates-plato-aristotle.txt",
+          "date": "2026-02-02",
+          "category": "rant",
+          "tags": ["philosophy", "socrates", "plato", "aristotle", "history"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "al-ghazali",
+          "title": "Al-Ghazali - The Incoherence of the Philosophers",
+          "filename": "/philosophy-101/06-al-ghazali-and-skepticism.txt",
+          "date": "2026-02-02",
+          "category": "rant",
+          "tags": ["philosophy", "al-ghazali", "skepticism", "occasionalism", "islamic-golden-age"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "descartes",
+          "title": "René Descartes - The Father of Modern Philosophy",
+          "filename": "/philosophy-101/07-descartes-and-modern-philosophy.txt",
+          "date": "2026-02-03",
+          "category": "rant",
+          "tags": ["philosophy", "descartes", "modern-philosophy", "dualism"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "kant",
+          "title": "Immanuel Kant - The Thing-in-Itself",
+          "filename": "/philosophy-101/10-kant-and-the-thing-in-itself.txt",
+          "date": "2026-02-03",
+          "category": "rant",
+          "tags": ["philosophy", "kant", "transcendental-idealism", "categorical-imperative"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "hegel",
+          "title": "Hegel - The Dialectic and World Spirit",
+          "filename": "/philosophy-101/11-hegel-and-the-dialectic.txt",
+          "date": "2026-02-04",
+          "category": "rant",
+          "tags": ["philosophy", "hegel", "dialectic", "geist", "history"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "schopenhauer",
+          "title": "Schopenhauer - The Will and Pessimism",
+          "filename": "/philosophy-101/12-schopenhauer-and-pessimism.txt",
+          "date": "2026-02-04",
+          "category": "rant",
+          "tags": ["philosophy", "schopenhauer", "pessimism", "will", "art"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "kierkegaard",
+          "title": "Kierkegaard - The Leap of Faith",
+          "filename": "/philosophy-101/13-kierkegaard-and-faith.txt",
+          "date": "2026-02-05",
+          "category": "rant",
+          "tags": ["philosophy", "kierkegaard", "faith", "existentialism", "anxiety"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "nietzsche",
+          "title": "Nietzsche - The Death of God and the Übermensch",
+          "filename": "/philosophy-101/08-nietzsche-and-nihilism.txt",
+          "date": "2026-02-06",
+          "category": "rant",
+          "tags": ["philosophy", "nietzsche", "nihilism", "ubermensch"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "heidegger",
+          "title": "Heidegger - Being and Time",
+          "filename": "/philosophy-101/14-heidegger-and-being.txt",
+          "date": "2026-02-06",
+          "category": "rant",
+          "tags": ["philosophy", "heidegger", "dasein", "phenomenology", "being"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "existentialism",
+          "title": "Sartre & Camus - Existentialism and Absurdism",
+          "filename": "/philosophy-101/09-existentialism-and-camus.txt",
+          "date": "2026-02-07",
+          "category": "rant",
+          "tags": ["philosophy", "sartre", "camus", "existentialism", "absurdism"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        },
+        {
+          "slug": "wittgenstein",
+          "title": "Wittgenstein - The Fly in the Fly-Bottle",
+          "filename": "/philosophy-101/15-wittgenstein-and-language.txt",
+          "date": "2026-02-07",
+          "category": "rant",
+          "tags": ["philosophy", "wittgenstein", "language", "logic", "games"],
+          "authors": ["fezcode"],
+          "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+        }
+      ]
+    },
+    "authors": ["fezcode"],
+    "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
+  },
+  {
+    "slug": "understanding-database-normalization-3nf",
+    "title": "Understanding Database Normalization: The Path to Third Normal Form (3NF)",
+    "date": "2026-02-06",
+    "updated": "2026-02-06",
+    "description": "A professional guide to database normalization, explaining the journey from 1NF to 3NF with clear examples and architectural diagrams.",
+    "tags": ["database", "sql", "normalization", "3nf", "data-integrity", "dev"],
+    "category": "dev",
+    "filename": "understanding-database-normalization-3nf.txt",
+    "authors": ["fezcode"]
+  },
+  {
+    "slug": "cqrs-in-go-for-geniuses",
+    "title": "CQRS: Command Query Responsibility Segregation in Modern Architecture",
+    "date": "2026-02-06",
+    "updated": "2026-02-06",
+    "description": "An authoritative guide to CQRS (Command Query Responsibility Segregation) following Martin Fowler's principles, implemented in Golang.",
+    "tags": ["golang", "architecture", "cqrs", "design-patterns", "backend", "dev"],
+    "category": "dev",
+    "filename": "cqrs-in-go-for-geniuses.txt",
+    "authors": ["fezcode"]
+  },
+  {
     "slug": "hyrums-law",
     "title": "Hyrum's Law: Why Your Bug Fix Broke My Spacebar Heating Workflow",
     "date": "2026-02-05",
     "updated": "2026-02-05",
     "description": "With a sufficient number of users, every bug becomes a feature. Exploring why you can't fix anything without breaking someone's weird workflow.",
     "tags": ["software-engineering", "hyrums-law", "xkcd", "philosophy", "bugs", "dev"],
-    "category": "rant",
+    "category": "dev",
     "filename": "hyrums-law.txt",
-    "authors": ["fezcode"],
-    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+    "authors": ["fezcode"]
   },
   {
     "slug": "architecting-trust-preventing-insider-threats",
@@ -20,8 +250,7 @@
     "tags": ["architecture", "security", "design-patterns", "maker-checker", "event-sourcing", "devops"],
     "category": "dev",
     "filename": "architecting-trust-preventing-insider-threats.txt",
-    "authors": ["fezcode"],
-    "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
+    "authors": ["fezcode"]
   },
   {
     "slug": "deep-link-configuration-with-url-parameters",
@@ -579,19 +808,126 @@
     "series": {
       "posts": [
         {
-          "slug": "react-memoization-hooks",
-          "title": "React Memoization Hooks",
-          "filename": "/react-of-fezcode/017-react-memoization-hooks.txt",
+          "slug": "project-overview",
+          "title": "Project Overview",
+          "filename": "/react-of-fezcode/001-project-overview.txt",
           "date": "2025-10-25",
-          "updated": "2025-10-26",
           "category": "dev",
           "authors": ["fezcode"],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
-          "slug": "react-refs-useref",
-          "title": "React Refs Useref",
-          "filename": "/react-of-fezcode/016-react-refs-useref.txt",
+          "slug": "package-json-explained",
+          "title": "Package Json Explained",
+          "filename": "/react-of-fezcode/002-package-json-explained.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "index-js-entry-point",
+          "title": "Index Js Entry Point",
+          "filename": "/react-of-fezcode/003-index-js-entry-point.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "app-js-main-component",
+          "title": "App Js Main Component",
+          "filename": "/react-of-fezcode/004-app-js-main-component.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "blog-post-page-component",
+          "title": "Blog Post Page Component",
+          "filename": "/react-of-fezcode/005-blog-post-page-component.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "react-basics-components-props",
+          "title": "React Basics Components Props",
+          "filename": "/react-of-fezcode/006-react-basics-components-props.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "react-hooks-usestate-useeffect",
+          "title": "React Hooks Usestate Useeffect",
+          "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "react-context-usecontext",
+          "title": "React Context Usecontext",
+          "filename": "/react-of-fezcode/008-react-context-usecontext.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "routing-with-react-router-dom",
+          "title": "Routing With React Router Dom",
+          "filename": "/react-of-fezcode/009-routing-with-react-router-dom.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "css-and-tailwind-css",
+          "title": "Css And Tailwind Css",
+          "filename": "/react-of-fezcode/010-css-and-tailwind-css.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "javascript-fundamentals",
+          "title": "Javascript Fundamentals",
+          "filename": "/react-of-fezcode/011-javascript-fundamentals.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "html-structure",
+          "title": "Html Structure",
+          "filename": "/react-of-fezcode/012-html-structure.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "document-fetching-api",
+          "title": "Document Fetching Api",
+          "filename": "/react-of-fezcode/013-document-fetching-api.txt",
+          "date": "2025-10-25",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
+        },
+        {
+          "slug": "react-custom-hooks",
+          "title": "React Custom Hooks",
+          "filename": "/react-of-fezcode/014-react-custom-hooks.txt",
           "date": "2025-10-25",
           "category": "dev",
           "authors": ["fezcode"],
@@ -608,127 +944,20 @@
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
-          "slug": "react-custom-hooks",
-          "title": "React Custom Hooks",
-          "filename": "/react-of-fezcode/014-react-custom-hooks.txt",
+          "slug": "react-refs-useref",
+          "title": "React Refs Useref",
+          "filename": "/react-of-fezcode/016-react-refs-useref.txt",
           "date": "2025-10-25",
           "category": "dev",
           "authors": ["fezcode"],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
-          "slug": "document-fetching-api",
-          "title": "Document Fetching Api",
-          "filename": "/react-of-fezcode/013-document-fetching-api.txt",
+          "slug": "react-memoization-hooks",
+          "title": "React Memoization Hooks",
+          "filename": "/react-of-fezcode/017-react-memoization-hooks.txt",
           "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "html-structure",
-          "title": "Html Structure",
-          "filename": "/react-of-fezcode/012-html-structure.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "javascript-fundamentals",
-          "title": "Javascript Fundamentals",
-          "filename": "/react-of-fezcode/011-javascript-fundamentals.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "css-and-tailwind-css",
-          "title": "Css And Tailwind Css",
-          "filename": "/react-of-fezcode/010-css-and-tailwind-css.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "routing-with-react-router-dom",
-          "title": "Routing With React Router Dom",
-          "filename": "/react-of-fezcode/009-routing-with-react-router-dom.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "react-context-usecontext",
-          "title": "React Context Usecontext",
-          "filename": "/react-of-fezcode/008-react-context-usecontext.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "react-hooks-usestate-useeffect",
-          "title": "React Hooks Usestate Useeffect",
-          "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "react-basics-components-props",
-          "title": "React Basics Components Props",
-          "filename": "/react-of-fezcode/006-react-basics-components-props.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "blog-post-page-component",
-          "title": "Blog Post Page Component",
-          "filename": "/react-of-fezcode/005-blog-post-page-component.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "app-js-main-component",
-          "title": "App Js Main Component",
-          "filename": "/react-of-fezcode/004-app-js-main-component.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "index-js-entry-point",
-          "title": "Index Js Entry Point",
-          "filename": "/react-of-fezcode/003-index-js-entry-point.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "package-json-explained",
-          "title": "Package Json Explained",
-          "filename": "/react-of-fezcode/002-package-json-explained.txt",
-          "date": "2025-10-25",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
-        },
-        {
-          "slug": "project-overview",
-          "title": "Project Overview",
-          "filename": "/react-of-fezcode/001-project-overview.txt",
-          "date": "2025-10-25",
+          "updated": "2025-10-26",
           "category": "dev",
           "authors": ["fezcode"],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
@@ -746,24 +975,6 @@
     "series": {
       "posts": [
         {
-          "slug": "gemini-explains-how-hooks-work-with-toast-component",
-          "title": "Gemini Explains How Hooks Work with Toast Component",
-          "filename": "gemini-explains-how-hooks-work-with-toast-component.txt",
-          "tags": [
-            "react",
-            "hooks",
-            "toast",
-            "explanation",
-            "ai",
-            "gemini",
-            "gemini-2.5-flash"
-          ],
-          "date": "2025-10-18",
-          "category": "dev",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
-        },
-        {
           "slug": "gemini-explains-how-image-modal-works",
           "title": "Gemini 2.5 Flash Explains me How Image Modal Works",
           "filename": "gemini-explains-how-image-modal-works.txt",
@@ -778,6 +989,24 @@
             "gemini-2.5-flash"
           ],
           "date": "2024-01-05",
+          "category": "dev",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+        },
+        {
+          "slug": "gemini-explains-how-hooks-work-with-toast-component",
+          "title": "Gemini Explains How Hooks Work with Toast Component",
+          "filename": "gemini-explains-how-hooks-work-with-toast-component.txt",
+          "tags": [
+            "react",
+            "hooks",
+            "toast",
+            "explanation",
+            "ai",
+            "gemini",
+            "gemini-2.5-flash"
+          ],
+          "date": "2025-10-18",
           "category": "dev",
           "authors": ["fezcode"],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
@@ -843,6 +1072,61 @@
     "series": {
       "posts": [
         {
+          "slug": "wquwpc",
+          "title": "Weighted Quick-Union with Path Compression",
+          "date": "2025-11-04",
+          "description": "Weighted Quick-Union with Path Compression",
+          "tags": ["cs", "algorithms", "graphs"],
+          "category": "dev",
+          "filename": "/algos/weighted-quick-union-with-path-compression.txt",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+        },
+        {
+          "slug": "monotonic-stack",
+          "title": "Monotonic Stack with Daily Temperatures",
+          "date": "2025-11-05",
+          "description": "Monotonic Stack with Daily Temperatures",
+          "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
+          "category": "dev",
+          "filename": "/algos/monotonic-stack.txt",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+        },
+        {
+          "slug": "lca",
+          "title": "Lowest Common Ancestor with Binary Search Tree",
+          "date": "2025-11-07",
+          "description": "Lowest Common Ancestor with Binary Search Tree",
+          "tags": ["cs", "algorithms", "tree", "bst", "recursion", "iterative"],
+          "category": "dev",
+          "filename": "/algos/lowest-common-ancestor-of-a-binary-search-tree.txt",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+        },
+        {
+          "slug": "find-minimum-in-rotated-sorted-array",
+          "title": "Find Minimum in Rotated Sorted Array",
+          "date": "2025-11-08",
+          "description": "LeetCode problem: Find Minimum in Rotated Sorted Array",
+          "tags": ["cs", "algorithms", "binary-search", "array"],
+          "category": "dev",
+          "filename": "/algos/find-minimum-in-rotated-sorted-array.txt",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+        },
+        {
+          "slug": "minimum-number-of-steps-to-make-two-strings-anagram",
+          "title": "Minimum Number of Steps to Make Two Strings Anagram",
+          "date": "2025-11-17",
+          "description": "LeetCode problem: Minimum Number of Steps to Make Two Strings Anagram",
+          "tags": ["cs", "algorithms", "string", "frequency-array"],
+          "category": "dev",
+          "filename": "/algos/minimum-number-of-steps-to-make-two-strings-anagram.txt",
+          "authors": ["fezcode"],
+          "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
+        },
+        {
           "slug": "leetcode-62-unique-paths",
           "title": "LeetCode 62: Unique Paths - A Dynamic Programming Approach",
           "date": "2025-11-24",
@@ -860,61 +1144,6 @@
           "filename": "/algos/leetcode-62-unique-paths.txt",
           "authors": ["fezcode"],
           "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
-        },
-        {
-          "slug": "minimum-number-of-steps-to-make-two-strings-anagram",
-          "title": "Minimum Number of Steps to Make Two Strings Anagram",
-          "date": "2025-11-17",
-          "description": "LeetCode problem: Minimum Number of Steps to Make Two Strings Anagram",
-          "tags": ["cs", "algorithms", "string", "frequency-array"],
-          "category": "dev",
-          "filename": "/algos/minimum-number-of-steps-to-make-two-strings-anagram.txt",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
-        },
-        {
-          "slug": "find-minimum-in-rotated-sorted-array",
-          "title": "Find Minimum in Rotated Sorted Array",
-          "date": "2025-11-08",
-          "description": "LeetCode problem: Find Minimum in Rotated Sorted Array",
-          "tags": ["cs", "algorithms", "binary-search", "array"],
-          "category": "dev",
-          "filename": "/algos/find-minimum-in-rotated-sorted-array.txt",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
-        },
-        {
-          "slug": "lca",
-          "title": "Lowest Common Ancestor with Binary Search Tree",
-          "date": "2025-11-07",
-          "description": "Lowest Common Ancestor with Binary Search Tree",
-          "tags": ["cs", "algorithms", "tree", "bst", "recursion", "iterative"],
-          "category": "dev",
-          "filename": "/algos/lowest-common-ancestor-of-a-binary-search-tree.txt",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
-        },
-        {
-          "slug": "monotonic-stack",
-          "title": "Monotonic Stack with Daily Temperatures",
-          "date": "2025-11-05",
-          "description": "Monotonic Stack with Daily Temperatures",
-          "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
-          "category": "dev",
-          "filename": "/algos/monotonic-stack.txt",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
-        },
-        {
-          "slug": "wquwpc",
-          "title": "Weighted Quick-Union with Path Compression",
-          "date": "2025-11-04",
-          "description": "Weighted Quick-Union with Path Compression",
-          "tags": ["cs", "algorithms", "graphs"],
-          "category": "dev",
-          "filename": "/algos/weighted-quick-union-with-path-compression.txt",
-          "authors": ["fezcode"],
-          "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         }
       ]
     },

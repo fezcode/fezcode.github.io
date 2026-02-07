@@ -1,0 +1,41 @@
+# Philosophy 101: Metaphysics - What is Real?
+
+## Beyond Physics
+
+If Physics is the study of how the physical world moves and interacts, **Metaphysics** is the study of what the world *is*.
+
+It asks the questions that science takes for granted. Science asks "How does gravity work?" Metaphysics asks "What is a 'law of nature'?"
+
+## Ontology: The Furniture of the Universe
+
+**[Ontology](/vocab/ontology)** is the study of *being*. It's like taking an inventory of the universe.
+*   Do chairs exist? Yes.
+*   Do numbers exist? Ideally, yes, but you can't trip over the number 4.
+*   Do holes exist? A hole is just the *absence* of stuff, so is it a "thing"?
+
+## The Mind-Body Problem
+
+This is the big one.
+*   **Materialism:** Everything is physical matter. Your thoughts are just neurons firing. Love is just dopamine.
+*   **Dualism:** The mind and body are separate. There is a "ghost in the machine."
+
+If you are just atoms, how do you have **[Qualia](/vocab/qualia)**—the subjective feeling of the redness of a rose? Atoms aren't red. They don't feel. How does meat become magic?
+
+## Free Will vs. Determinism
+
+If the universe follows physical laws, and your brain is physical, then every thought you have is just the result of the previous physical state.
+*   **Determinism:** You have no free will. You were always going to read this sentence.
+*   **Libertarian Free Will:** You genuinely could have done otherwise.
+*   **Compatibilism:** A messy middle ground where we redefine "free will" to make everyone happy.
+
+## Recommended Resources
+
+**1. The Book:**
+*   **"Metaphysics: A Very Short Introduction" by Stephen Mumford**.
+*   Does exactly what it says on the tin.
+
+**2. The Thought Experiment:**
+*   **The Ship of Theseus.**
+*   If you replace every plank of a ship one by one, is it still the same ship? If you teleport to Mars, but the machine destroys your body here and builds a copy there, is it still *you*?
+
+Next, we finish with the most practical question: **How should we live?** (Ethics).
