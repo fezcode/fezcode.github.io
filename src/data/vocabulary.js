@@ -75,6 +75,10 @@ export const vocabulary = {
     title: 'Legato (Music)',
     loader: () => import('./vocab/legato'),
   },
+  'magnum-opus': {
+    title: 'Magnum Opus',
+    loader: () => import('./vocab/magnum-opus'),
+  },
   'lingua-franca': {
     title: 'Lingua Franca',
     loader: () => import('./vocab/lingua-franca'),

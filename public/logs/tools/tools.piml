@@ -1,6 +1,15 @@
 (logs)
   > (item)
     (category) Tools
+    (date) 2026-02-07
+    (link) https://github.com/originalankur/maptoposter
+    (slug) maptoposter
+    (title) MapToPoster
+    (description) Transform your favorite cities into beautiful, minimalist designs with code.
+    (rating) 5
+
+  > (item)
+    (category) Tools
     (date) 2026-01-13
     (link) https://posthog.com/
     (slug) posthog
