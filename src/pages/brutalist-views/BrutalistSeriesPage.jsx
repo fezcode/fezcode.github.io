@@ -2,10 +2,23 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import PostItem from '../../components/PostItem';
-import { ArrowLeftIcon, ClockIcon, TagIcon, BookOpenIcon } from '@phosphor-icons/react';
+import { ArrowLeftIcon, TagIcon, BookOpenIcon, CalendarIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import GenerativeArt from '../../components/GenerativeArt';
+
+const SpecItem = ({ icon: Icon, label, value, isAccent }) => (
+  <div className="flex flex-col gap-1">
+    <span className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-gray-500">
+      <Icon size={14} /> {label}
+    </span>
+    <span
+      className={`font-mono text-sm uppercase ${isAccent ? 'text-emerald-400 font-bold' : 'text-white'}`}
+    >
+      {value}
+    </span>
+  </div>
+);
 
 const BrutalistSeriesPage = () => {
   const { seriesSlug } = useParams();
@@ -144,27 +157,27 @@ const BrutalistSeriesPage = () => {
               </div>
 
               {/* Details Overlay */}
-              <div className="absolute bottom-0 left-0 w-full p-16 z-10 flex flex-col gap-8">
-                <div className="flex items-center gap-6">
-                  <div className="flex items-center gap-2 text-emerald-400 font-mono text-[10px] tracking-widest uppercase">
-                    <ClockIcon size={16} />
-                    <span>
-                      {new Date(
-                        activePost.updated || activePost.date,
-                      ).toLocaleDateString('en-GB')}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2 text-white font-mono text-[10px] tracking-widest uppercase bg-white/10 px-2 py-1 border border-white/10 rounded-sm">
-                    <TagIcon size={14} />
-                    <span>{activePost.category || 'Episode'}</span>
-                  </div>
+              <div className="absolute bottom-0 left-0 w-full p-16 z-10 flex flex-col gap-12">
+
+                <div className="space-y-6 border-l border-white/10 pl-6">
+                    <SpecItem
+                        icon={CalendarIcon}
+                        label="Date"
+                        value={new Date(activePost.updated || activePost.date).toLocaleDateString('en-GB')}
+                    />
+                    <SpecItem
+                        icon={TagIcon}
+                        label="Category"
+                        value={activePost.category || 'Episode'}
+                        isAccent
+                    />
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <h2 className="text-4xl font-black text-white uppercase tracking-tighter leading-none">
+                  <h2 className="text-4xl md:text-5xl font-medium font-playfairDisplay text-white uppercase tracking-tighter leading-none">
                     {activePost.title}
                   </h2>
-                  <p className="text-lg text-gray-300 font-light leading-relaxed max-w-xl">
+                  <p className="text-lg text-gray-300 font-light leading-relaxed max-w-xl font-arvo">
                     {activePost.description ||
                       'Part of a sequential data stream. Analysis and implementation logs curated for technical review.'}
                   </p>
@@ -174,7 +187,7 @@ const BrutalistSeriesPage = () => {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="mt-8"
+                  className="mt-4"
                 >
                   <Link
                     to={`/blog/series/${seriesSlug}/${activePost.slug}`}

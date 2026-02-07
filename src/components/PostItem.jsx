@@ -18,6 +18,7 @@ const PostItem = ({
   image,
   isActive,
   onHover = () => {},
+  ...rest
 }) => {
   const formattedDate = new Date(date).toLocaleDateString('en-GB', {
     day: '2-digit',
@@ -69,6 +70,7 @@ const PostItem = ({
           tags,
           authors,
           image,
+          ...rest,
         })
       }
       className="relative mr-4 md:mr-12"

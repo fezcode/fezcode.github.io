@@ -48,8 +48,8 @@ const LuxeBlogPage = () => {
               seriesMap.set(post.series.slug, {
                 title: post.series.title,
                 slug: post.series.slug,
-                date: post.date,
-                updated: post.updated,
+                date: post.series.date || post.date,
+                updated: post.series.updated || post.updated,
                 image: post.series.image,
                 isSeries: true,
                 posts: [],
