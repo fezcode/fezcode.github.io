@@ -131,6 +131,10 @@ export const vocabulary = {
     title: 'Qualia',
     loader: () => import('./vocab/qualia'),
   },
+  regex: {
+    title: 'Regular Expressions (RegEx)',
+    loader: () => import('./vocab/regex'),
+  },
   'side-effects': {
     title: 'Side Effects',
     loader: () => import('./vocab/side-effects'),

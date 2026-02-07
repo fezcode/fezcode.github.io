@@ -1,5 +1,17 @@
 [
   {
+    "slug": "the-halo-effect",
+    "title": "The Halo Effect: Why We Trust Idiots with Good Hair",
+    "date": "2026-02-07",
+    "updated": "2026-02-07",
+    "description": "The Halo Effect is the silent killer of technical debt. Exploring why we mistake a shiny coat of paint for a functional engine in software engineering.",
+    "tags": ["psychology", "halo-effect", "bias", "software-engineering", "management", "rant"],
+    "category": "rant",
+    "filename": "halo-effect.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "slug": "mastering-git-worktrees-and-ai",
     "title": "Mastering Git Worktrees: Parallel Development with AI Agents",
     "date": "2026-02-08",
