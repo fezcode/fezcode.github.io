@@ -1,5 +1,17 @@
 [
   {
+    "slug": "mastering-git-worktrees-and-ai",
+    "title": "Mastering Git Worktrees: Parallel Development with AI Agents",
+    "date": "2026-02-08",
+    "updated": "2026-02-08",
+    "description": "Stop context switching. Learn how to use Git Worktrees to manage multiple features simultaneously and orchestrate parallel AI agents.",
+    "tags": ["git", "worktrees", "ai", "workflow", "productivity", "dev"],
+    "category": "dev",
+    "filename": "mastering-git-worktrees-and-ai.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "title": "Philosophy 101",
     "date": "2026-02-07",
     "updated": "2026-02-07",
