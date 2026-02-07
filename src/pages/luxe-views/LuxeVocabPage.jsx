@@ -30,7 +30,7 @@ const LuxeVocabPage = () => {
     return vocabEntries.filter(
       (entry) =>
         entry.title.toLowerCase().includes(query) ||
-        entry.definition.toLowerCase().includes(query),
+        entry.slug.toLowerCase().includes(query),
     );
   }, [vocabEntries, searchQuery]);
 
@@ -145,9 +145,6 @@ const LuxeVocabPage = () => {
                     <h3 className="font-playfairDisplay text-3xl text-[#1A1A1A] group-hover:italic transition-all leading-tight">
                       {entry.title}
                     </h3>
-                    <p className="font-outfit text-sm text-[#1A1A1A]/60 leading-relaxed line-clamp-3 italic">
-                      {entry.definition}
-                    </p>
                     {entry.tags && (
                       <div className="flex flex-wrap gap-2 pt-2">
                         {entry.tags.map((tag) => (

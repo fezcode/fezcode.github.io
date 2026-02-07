@@ -13,17 +13,17 @@ export default function PowerLaw() {
       <div className="space-y-8 my-6">
         <div className="border border-emerald-500/20 p-4 bg-emerald-500/[0.02]">
           <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3">The "Pizza Party" Analogy</h4>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-xs leading-relaxed opacity-80">
             Imagine a party with 100 people and 100 slices of pizza.
           </p>
           <ul className="mt-3 space-y-2 text-xs">
             <li className="flex gap-2">
               <span className="text-emerald-500 font-bold">Normal:</span>
-              <span className="text-gray-500">Everyone gets exactly 1 slice. (Bell Curve)</span>
+              <span className="opacity-70">Everyone gets exactly 1 slice. (Bell Curve)</span>
             </li>
             <li className="flex gap-2">
               <span className="text-emerald-500 font-bold">Power Law:</span>
-              <span className="text-gray-300">1 person eats 80 slices, and the other 99 people have to share the remaining 20 slices.</span>
+              <span>1 person eats 80 slices, and the other 99 people have to share the remaining 20 slices.</span>
             </li>
           </ul>
           <p className="mt-4 text-[10px] text-emerald-500/50 uppercase italic font-bold">
@@ -33,7 +33,7 @@ export default function PowerLaw() {
 
         <div className="border-l-2 border-yellow-500/50 pl-4 py-1">
           <h4 className="text-xs font-bold text-yellow-400 uppercase tracking-widest mb-3">Key Characteristics</h4>
-          <ul className="space-y-3 text-xs text-gray-400">
+          <ul className="space-y-3 text-xs opacity-90">
             <li>
               <strong className="text-current block mb-1">Scale Invariance</strong>
               The distribution looks the same regardless of the scale at which you observe it.
@@ -51,7 +51,7 @@ export default function PowerLaw() {
 
         <div className="border-l-2 border-green-500/50 pl-4 py-1">
           <h4 className="text-xs font-bold text-green-400 uppercase tracking-widest mb-3">Real-World Examples</h4>
-          <ul className="space-y-3 text-xs text-gray-400">
+          <ul className="space-y-3 text-xs opacity-90">
             <li><strong className="text-current">Wealth Distribution:</strong> A small percentage of the population holds the majority of the wealth.</li>
             <li><strong className="text-current">City Populations:</strong> A few mega-cities vs. thousands of small towns.</li>
             <li><strong className="text-current">Word Frequency (Zipf's Law):</strong> The most common words in a language appear significantly more often than the rest.</li>

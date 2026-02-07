@@ -9,7 +9,7 @@ export default function Staccato() {
         <strong className="text-current">Staccato</strong> is a form of musical articulation. In modern notation, it signifies a note of shortened duration, separated from the note that may follow by silence.
       </p>
 
-      <div className="border-l-2 border-orange-500/50 pl-4 py-1 italic text-gray-400 text-xs">
+      <div className="border-l-2 border-orange-500/50 pl-4 py-1 italic opacity-70 text-xs">
         "Detached, disconnected, and sharp."
       </div>
 
@@ -17,8 +17,8 @@ export default function Staccato() {
         It is often indicated with a small dot above or below the note head.
       </p>
 
-      <div className="flex flex-col gap-4 pt-4 border-t border-white/10">
-        <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold text-gray-500">
+      <div className="flex flex-col gap-4 pt-4 border-t border-current/10">
+        <div className="flex items-center gap-2 text-xs uppercase tracking-widest font-bold">
           <span>See also:</span>
           <MarkdownLink href="/vocab/legato" className="text-blue-400 hover:underline" width={600} >Legato</MarkdownLink>
         </div>
