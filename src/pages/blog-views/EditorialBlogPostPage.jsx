@@ -286,8 +286,8 @@ const EditorialBlogPostPage = () => {
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
-  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
-  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+  const prevPost = post.seriesPosts?.[currentPostIndex - 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex + 1];
 
   return (
     <div className={`min-h-screen transition-colors duration-500 font-instr-serif ${isInvert ? 'bg-[#1a1a1a] text-[#f4f4f4]' : 'bg-[#f4f4f4] text-[#1a1a1a]'}`}>

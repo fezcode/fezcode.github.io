@@ -215,8 +215,8 @@ const BrutalistBlogPostPage = () => {
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
-  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
-  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+  const prevPost = post.seriesPosts?.[currentPostIndex - 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex + 1];
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative">

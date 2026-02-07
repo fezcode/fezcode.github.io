@@ -363,8 +363,8 @@ const DossierBlogPostPage = () => {
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
-  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
-  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+  const prevPost = post.seriesPosts?.[currentPostIndex - 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex + 1];
 
   return (
     <div className="min-h-screen bg-[#f3f3f3] text-[#111] overflow-y-auto selection:bg-black selection:text-white custom-scrollbar font-sans relative">

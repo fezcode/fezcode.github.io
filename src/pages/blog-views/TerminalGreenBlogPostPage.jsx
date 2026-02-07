@@ -180,8 +180,8 @@ const TerminalGreenBlogPostPage = () => {
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
-  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
-  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+  const prevPost = post.seriesPosts?.[currentPostIndex - 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex + 1];
 
   return (
     <div className="min-h-screen bg-black text-emerald-500 font-mono relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">

@@ -354,8 +354,8 @@ const DokumentBlogPostPage = () => {
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
-  const prevPost = post.seriesPosts?.[currentPostIndex + 1];
-  const nextPost = post.seriesPosts?.[currentPostIndex - 1];
+  const prevPost = post.seriesPosts?.[currentPostIndex - 1];
+  const nextPost = post.seriesPosts?.[currentPostIndex + 1];
 
   return (
     <div className="min-h-screen bg-[#f3f3f3] text-[#111] font-sans relative overflow-x-hidden selection:bg-emerald-500/20">

@@ -19,14 +19,7 @@ const LuxeSeriesPage = () => {
 
         const filteredPosts = processedPosts
           .filter((post) => post.series && post.series.slug === seriesSlug)
-          .sort((a, b) => {
-            const dateA = new Date(a.updated || a.date);
-            const dateB = new Date(b.updated || b.date);
-            // Default to oldest first for series reading order?
-            // Original code used newest first (B-A). Let's stick to reading order (A-B) for Luxe UX if it's a sequence?
-            // Actually, Brutalist was B-A. Let's keep B-A for consistency unless specified.
-            return dateB - dateA;
-          });
+          .sort((a, b) => (a.seriesIndex || 0) - (b.seriesIndex || 0));
 
         if (filteredPosts.length > 0) {
           setSeriesPosts(filteredPosts);
@@ -100,7 +93,7 @@ const LuxeSeriesPage = () => {
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                         <div className="flex items-start gap-6">
                             <span className="font-playfairDisplay text-4xl text-[#1A1A1A]/10 group-hover:text-[#8D4004]/20 transition-colors">
-                                {String(seriesPosts.length - index).padStart(2, '0')}
+                                {String(post.seriesIndex).padStart(2, '0')}
                             </span>
                             <div>
                                 <h3 className="font-playfairDisplay text-2xl text-[#1A1A1A] group-hover:italic transition-all mb-2">

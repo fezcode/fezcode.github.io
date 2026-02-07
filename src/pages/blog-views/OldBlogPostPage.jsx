@@ -281,11 +281,11 @@ const OldBlogPostPage = () => {
     ? post.seriesPosts.findIndex((item) => item.slug === currentSlug)
     : -1;
   const prevPost =
-    post.seriesPosts && currentPostIndex < post.seriesPosts.length - 1
-      ? post.seriesPosts[currentPostIndex + 1]
+    post.seriesPosts && currentPostIndex > 0
+      ? post.seriesPosts[currentPostIndex - 1]
       : null;
   const nextPost =
-    currentPostIndex > 0 ? post.seriesPosts[currentPostIndex - 1] : null;
+    currentPostIndex < post.seriesPosts.length - 1 ? post.seriesPosts[currentPostIndex + 1] : null;
 
   const backLink = post.attributes.series
     ? `/blog/series/${post.attributes.series.slug}`

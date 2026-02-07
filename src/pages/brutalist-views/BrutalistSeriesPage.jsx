@@ -21,11 +21,7 @@ const BrutalistSeriesPage = () => {
 
         const filteredPosts = processedPosts
           .filter((post) => post.series && post.series.slug === seriesSlug)
-          .sort((a, b) => {
-            const dateA = new Date(a.updated || a.date);
-            const dateB = new Date(b.updated || b.date);
-            return dateB - dateA;
-          });
+          .sort((a, b) => (a.seriesIndex || 0) - (b.seriesIndex || 0));
 
         if (filteredPosts.length > 0) {
           setSeriesPosts(filteredPosts);
@@ -112,6 +108,7 @@ const BrutalistSeriesPage = () => {
             <PostItem
               key={post.slug}
               {...post}
+              seriesIndex={post.seriesIndex}
               slug={`series/${seriesSlug}/${post.slug}`}
               isActive={activePost?.slug === post.slug}
               onHover={setActivePost}
