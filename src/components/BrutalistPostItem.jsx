@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRightIcon, FolderIcon } from '@phosphor-icons/react';
 
-const PostItem = ({
+const BrutalistPostItem = ({
   post,
   isActive,
   onHover = () => {},
@@ -69,7 +69,7 @@ const PostItem = ({
           style={{ backgroundColor: categoryColor || 'var(--emerald-400)' }}
         />
 
-        <div className="flex flex-1 items-baseline gap-6 pl-4 md:pl-8 min-w-0 pr-12">
+        <div className="flex flex-1 items-center gap-6 pl-4 md:pl-8 min-w-0 pr-12">
           {/* Date */}
           <span
             className={`font-mono text-[10px] tracking-widest flex-shrink-0 transition-colors duration-300 ${
@@ -80,9 +80,14 @@ const PostItem = ({
           </span>
 
           {/* Title Area */}
-          <div className="flex items-start gap-3 min-w-0 flex-1">
+          <div className="flex items-center gap-3 min-w-0 flex-1">
              {isSeries && (
-                <FolderIcon size={24} weight="fill" className="text-amber-400 shrink-0 mt-0.5" />
+                <FolderIcon
+                  size={24}
+                  weight="fill"
+                  className="shrink-0"
+                  style={{ color: categoryColor }}
+                />
              )}
              <div className="flex flex-col gap-1">
                 <h3
@@ -135,4 +140,4 @@ const PostItem = ({
   );
 };
 
-export default PostItem;
+export default BrutalistPostItem;

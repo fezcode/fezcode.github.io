@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import PostItem from '../../components/PostItem';
+import BrutalistPostItem from '../../components/BrutalistPostItem';
 import GenerativeArt from '../../components/GenerativeArt';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
@@ -201,7 +201,7 @@ const BrutalistBlogPage = () => {
 
         <div className="flex flex-col pb-32">
           {filteredItems.map((item) => (
-            <PostItem
+            <BrutalistPostItem
               key={item.slug}
               post={item}
               isActive={activePost?.slug === item.slug}

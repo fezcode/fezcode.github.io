@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import PostItem from '../../components/PostItem';
+import BrutalistPostItem from '../../components/BrutalistPostItem';
 import { ArrowLeftIcon, TagIcon, BookOpenIcon, CalendarIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
@@ -118,7 +118,7 @@ const BrutalistSeriesPage = () => {
 
         <div className="flex flex-col pb-32">
           {seriesPosts.map((post) => (
-            <PostItem
+            <BrutalistPostItem
               key={post.slug}
               post={{
                 ...post,
