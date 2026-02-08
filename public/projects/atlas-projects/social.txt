@@ -12,3 +12,8 @@ link: https://github.com/fezcode/atlas.stats
 fezcode
 +3 -0 ~0
 link: https://github.com/fezcode/atlas.websearch
+---
+# Compass
+fezcode
++4 -0 ~0
+link: https://github.com/fezcode/atlas.compass

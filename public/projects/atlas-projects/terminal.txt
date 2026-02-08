@@ -1,3 +1,4 @@
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.todo add "Finish Gemini integration @work !high"
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.websearch -e wiki "Go programming language"
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.stats
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.compass
