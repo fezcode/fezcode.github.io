@@ -19,6 +19,9 @@ const LuxeProjectDetailPage = lazy(
   () => import('../pages/luxe-views/LuxeProjectDetailPage'),
 );
 const BentoProjectPage = lazy(() => import('../pages/project-pages/BentoProjectPage'));
+const LandscapeProjectPage = lazy(
+  () => import('../pages/project-pages/LandscapeProjectPage'),
+);
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -76,6 +79,14 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <BentoProjectPage />
+      </Suspense>
+    );
+  }
+
+  if (projectStyle === 'landscape') {
+    return (
+      <Suspense fallback={<Loading />}>
+        <LandscapeProjectPage />
       </Suspense>
     );
   }
