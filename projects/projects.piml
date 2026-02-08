@@ -51,6 +51,45 @@
     (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
 
   > (project)
+    (slug) cartogo
+    (title) CartoGo
+    (style) landscape
+    (size) 2
+    (repo_link) https://github.com/fezcode/CartoGo
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > Go
+      > OpenStreetMap
+      > 300 DPI Rendering
+      > gg library
+      > Data Viz
+      > Algorithms
+    (shortDescription) High-performance Go implementation of the City Map Poster Generator. Generate beautiful, minimalist map posters for any city in the world.
+    (date) 2026-02-08
+    (image) /projects/cartogo/maps/london.webp
+
+  > (project)
+    (slug) atlas-projects
+    (title) Atlas Projects
+    (style) editorial
+    (size) 1
+    (repo_link) https://github.com/stars/fezcode/lists/atlas
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Go
+      > TUI
+      > Bubble Tea
+      > Productivity
+    (shortDescription) A collection of minimalist, high-performance CLI tools for daily productivity, including todo management, system statistics, and web searching.
+    (date) 2026-02-08
+    (image) /images/bg/emre.jpg
+    (backgroundImage) /images/bg/emre.jpg
+    (photoCreditText) Photo by Emre on Unsplash
+    (photoCreditLink) https://unsplash.com/photos/green-leafed-plant-in-closeup-shot-CBh4D3l0EwM
+
+  > (project)
     (slug) dush
     (title) Dush
     (style) editorial
