@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.11.2",
+  "version": "0.15.3",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
