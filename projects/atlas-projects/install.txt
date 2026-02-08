@@ -16,6 +16,11 @@ go build -o atlas-stats .
 git clone https://github.com/fezcode/atlas.websearch
 cd atlas.websearch
 go build -o atlas .
+
+# atlas.compass
+git clone https://github.com/fezcode/atlas.compass
+cd atlas.compass
+go run scripts/build.go
 ```
 
 To build for all platforms, run `go run scripts/build.go` in the respective repository.

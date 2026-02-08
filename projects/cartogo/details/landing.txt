@@ -8,7 +8,8 @@
     { "role": "Original Project Vision", "name": "Ankur Gupta (maptoposter)" }
   ],
   "buttons": [
-    { "label": "See Project", "link": "https://github.com/fezcode/CartoGo", "type": "primary" }
+    { "label": "See Project", "link": "https://github.com/fezcode/CartoGo", "type": "primary" },
+    { "label": "Original Project", "link": "https://github.com/originalankur/maptoposter", "type": "secondary" }
   ],
   "stats": [
     { "value": "1ms", "label": "Cache Access" },
