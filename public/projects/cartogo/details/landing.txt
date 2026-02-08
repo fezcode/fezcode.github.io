@@ -1,0 +1,18 @@
+{
+  "title": "CartoGo",
+  "subtitle": "Artistic City Mapping",
+  "description": "A high-performance Go implementation of the City Map Poster Generator. Generate beautiful, minimalist map posters for any city in the world with 1-to-1 aesthetic parity.",
+  "backgroundImage": "ankara.webp",
+  "credits": [
+    { "role": "Technical Port & Optimization", "name": "Fezcode" },
+    { "role": "Original Project Vision", "name": "Ankur Gupta (maptoposter)" }
+  ],
+  "buttons": [
+    { "label": "See Project", "link": "https://github.com/fezcode/CartoGo", "type": "primary" }
+  ],
+  "stats": [
+    { "value": "1ms", "label": "Cache Access" },
+    { "value": "300", "label": "Target DPI" },
+    { "value": "17", "label": "Design Themes" }
+  ]
+}
