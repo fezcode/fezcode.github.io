@@ -150,7 +150,7 @@
     (title) Villain Couch
     (size) 2
     (repo_link) https://github.com/fezcode/Villain-Couch
-    (pinned) true
+    (pinned) false
     (isActive) true
     (technologies)
       > VLC
