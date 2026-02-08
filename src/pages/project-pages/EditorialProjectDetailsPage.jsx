@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import EditorialNavbar from '../components/editorial-project/EditorialNavbar';
-import EditorialHero from '../components/editorial-project/EditorialHero';
-import EditorialTerminal from '../components/editorial-project/EditorialTerminal';
-import EditorialInstall from '../components/editorial-project/EditorialInstall';
-import EditorialSocial from '../components/editorial-project/EditorialSocial';
-import EditorialFooter from '../components/editorial-project/EditorialFooter';
-import EditorialDescription from '../components/editorial-project/EditorialDescription';
-import EditorialGridBackground from '../components/editorial-project/EditorialGridBackground';
-import { useProjects } from '../utils/projectParser';
-import Seo from '../components/Seo';
-import Loading from '../components/Loading';
+import EditorialNavbar from '../../components/editorial-project/EditorialNavbar';
+import EditorialHero from '../../components/editorial-project/EditorialHero';
+import EditorialTerminal from '../../components/editorial-project/EditorialTerminal';
+import EditorialInstall from '../../components/editorial-project/EditorialInstall';
+import EditorialSocial from '../../components/editorial-project/EditorialSocial';
+import EditorialFooter from '../../components/editorial-project/EditorialFooter';
+import EditorialDescription from '../../components/editorial-project/EditorialDescription';
+import EditorialGridBackground from '../../components/editorial-project/EditorialGridBackground';
+import { useProjects } from '../../utils/projectParser';
+import Seo from '../../components/Seo';
+import Loading from '../../components/Loading';
 
 const EditorialProjectDetailsPage = () => {
   const { slug } = useParams();

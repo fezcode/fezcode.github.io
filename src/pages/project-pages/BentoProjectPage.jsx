@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useProjects } from '../utils/projectParser';
-import { useProjectContent } from '../hooks/useProjectContent';
-import Loading from '../components/Loading';
-import Seo from '../components/Seo';
-import MarkdownContent from '../components/MarkdownContent';
+import { useProjects } from '../../utils/projectParser';
+import { useProjectContent } from '../../hooks/useProjectContent';
+import Loading from '../../components/Loading';
+import Seo from '../../components/Seo';
+import MarkdownContent from '../../components/MarkdownContent';
 import {
   GithubLogo as GithubIcon,
   Globe as GlobeIcon,

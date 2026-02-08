@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useProjects } from '../utils/projectParser';
-import Loading from '../components/Loading';
-import Seo from '../components/Seo';
-import MuseumNavbar from '../components/museum-showcase/MuseumNavbar';
-import MuseumHero from '../components/museum-showcase/MuseumHero';
-import MuseumSection from '../components/museum-showcase/MuseumSection';
-import MuseumFooter from '../components/museum-showcase/MuseumFooter';
+import { useProjects } from '../../utils/projectParser';
+import Loading from '../../components/Loading';
+import Seo from '../../components/Seo';
+import MuseumNavbar from '../../components/museum-showcase/MuseumNavbar';
+import MuseumHero from '../../components/museum-showcase/MuseumHero';
+import MuseumSection from '../../components/museum-showcase/MuseumSection';
+import MuseumFooter from '../../components/museum-showcase/MuseumFooter';
 
 const MuseumProjectPage = () => {
   const { slug } = useParams();

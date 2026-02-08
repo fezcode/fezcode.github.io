@@ -3,15 +3,15 @@ import { useParams, Link } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
-import ProductNavbar from '../components/stylish-project/ProductNavbar';
-import TypewriterHeader from '../components/stylish-project/TypewriterHeader';
-import FeatureCard from '../components/stylish-project/FeatureCard';
-import ProjectUrlLine from '../components/stylish-project/ProjectUrlLine';
-import PartnerLogos from '../components/stylish-project/PartnerLogos';
-import TerminalTabs from '../components/stylish-project/TerminalTabs';
-import { useProjects } from '../utils/projectParser';
-import Seo from '../components/Seo';
-import Loading from '../components/Loading';
+import ProductNavbar from '../../components/stylish-project/ProductNavbar';
+import TypewriterHeader from '../../components/stylish-project/TypewriterHeader';
+import FeatureCard from '../../components/stylish-project/FeatureCard';
+import ProjectUrlLine from '../../components/stylish-project/ProjectUrlLine';
+import PartnerLogos from '../../components/stylish-project/PartnerLogos';
+import TerminalTabs from '../../components/stylish-project/TerminalTabs';
+import { useProjects } from '../../utils/projectParser';
+import Seo from '../../components/Seo';
+import Loading from '../../components/Loading';
 
 const StylishProjectDetailsPage = () => {
   const { slug } = useParams();

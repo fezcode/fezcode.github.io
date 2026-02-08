@@ -8,10 +8,10 @@ import {
   MoonIcon,
 } from '@phosphor-icons/react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useProjects } from '../utils/projectParser';
-import Loading from '../components/Loading';
+import { useProjects } from '../../utils/projectParser';
+import Loading from '../../components/Loading';
 import ReactMarkdown from 'react-markdown';
-import Seo from '../components/Seo';
+import Seo from '../../components/Seo';
 
 const MinimalModernProjectPage = () => {
   const { slug } = useParams();

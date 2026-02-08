@@ -6,19 +6,19 @@ import Loading from './Loading';
 
 const ProjectPage = lazy(() => import('../pages/ProjectPage'));
 const StylishProjectDetailsPage = lazy(
-  () => import('../pages/StylishProjectDetailsPage'),
+  () => import('../pages/project-pages/StylishProjectDetailsPage'),
 );
 const EditorialProjectDetailsPage = lazy(
-  () => import('../pages/EditorialProjectDetailsPage'),
+  () => import('../pages/project-pages/EditorialProjectDetailsPage'),
 );
 const MinimalModernProjectPage = lazy(
-  () => import('../pages/MinimalModernProjectPage'),
+  () => import('../pages/project-pages/MinimalModernProjectPage'),
 );
-const MuseumProjectPage = lazy(() => import('../pages/MuseumProjectPage'));
+const MuseumProjectPage = lazy(() => import('../pages/project-pages/MuseumProjectPage'));
 const LuxeProjectDetailPage = lazy(
   () => import('../pages/luxe-views/LuxeProjectDetailPage'),
 );
-const BentoProjectPage = lazy(() => import('../pages/BentoProjectPage'));
+const BentoProjectPage = lazy(() => import('../pages/project-pages/BentoProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
