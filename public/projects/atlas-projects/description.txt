@@ -1,0 +1,16 @@
+## Overview
+
+The Atlas Suite is a family of minimalist, high-performance command-line tools built with Go. Each tool is designed to solve one problem exceptionally well, adhering to the Unix philosophy and leveraging the power of Bubble Tea for beautiful TUIs.
+
+### Tools in the Suite
+
+1. **[atlas.todo](https://github.com/fezcode/atlas.todo)**: A fast, minimalist, local-first TUI task manager. Features Vim-bindings, smart grouping, and CLI quick-add support.
+2. **[atlas.stats](https://github.com/fezcode/atlas.stats)**: Real-time system monitoring. View CPU, memory, disk, and network usage in a responsive terminal interface.
+3. **[atlas.websearch](https://github.com/fezcode/atlas.websearch)**: A blazing fast, interactive CLI search tool. Search DuckDuckGo, Wikipedia, Hacker News, and Reddit with zero configuration.
+
+### Why Atlas?
+
+*   **Go-Powered**: Built for speed and portability.
+*   **Beautiful TUIs**: Uses Bubble Tea and Lip Gloss for a modern terminal experience.
+*   **Minimalist**: No bloated interfaces, just the features you need.
+*   **Local-First**: Your data stays on your machine.

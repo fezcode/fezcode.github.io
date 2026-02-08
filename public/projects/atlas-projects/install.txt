@@ -1,0 +1,21 @@
+### Installation
+## Each tool can be installed by cloning the repository and building from source:
+
+```bash
+# atlas.todo
+git clone https://github.com/fezcode/atlas.todo
+cd atlas.todo
+go build -o atlas.todo .
+
+# atlas.stats
+git clone https://github.com/fezcode/atlas.stats
+cd atlas.stats
+go build -o atlas-stats .
+
+# atlas.websearch
+git clone https://github.com/fezcode/atlas.websearch
+cd atlas.websearch
+go build -o atlas .
+```
+
+To build for all platforms, run `go run scripts/build.go` in the respective repository.

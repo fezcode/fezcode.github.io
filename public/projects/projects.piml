@@ -70,6 +70,26 @@
     (image) /projects/cartogo/maps/london.webp
 
   > (project)
+    (slug) atlas-projects
+    (title) Atlas Projects
+    (style) editorial
+    (size) 1
+    (repo_link) https://github.com/stars/fezcode/lists/atlas
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Go
+      > TUI
+      > Bubble Tea
+      > Productivity
+    (shortDescription) A collection of minimalist, high-performance CLI tools for daily productivity, including todo management, system statistics, and web searching.
+    (date) 2026-02-08
+    (image) /images/bg/emre.jpg
+    (backgroundImage) /images/bg/emre.jpg
+    (photoCreditText) Photo by Emre on Unsplash
+    (photoCreditLink) https://unsplash.com/photos/green-leafed-plant-in-closeup-shot-CBh4D3l0EwM
+
+  > (project)
     (slug) dush
     (title) Dush
     (style) editorial

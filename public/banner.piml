@@ -108,3 +108,13 @@
     (isActive) true
     (link) /projects/cartogo
     (linkText) Explore CartoGo
+
+  > (banner)
+    (id) atlas-projects-launch
+    (type) info
+    (from) 2026-02-16T00:00:00Z
+    (to) 2026-02-19T23:59:59Z
+    (text) ATLAS PROJECTS ARE ONLINE: A COLLECTİON OF HiGH-PERFORMANCE GO CLI TOOLS. ACCESS AT /PROJECTS/ATLAS-PROJECTS.
+    (isActive) true
+    (link) /projects/atlas-projects
+    (linkText) Explore Atlas
