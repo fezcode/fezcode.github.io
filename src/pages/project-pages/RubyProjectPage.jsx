@@ -194,7 +194,7 @@ const RubyProjectPage = () => {
 
                 <div className="flex flex-col items-center">
                    <p className="text-base md:text-lg text-[#E2D1AA] tracking-[0.2em] drop-shadow-sm whitespace-nowrap mb-2 md:mb-3 font-semibold uppercase">
-                     Since 2026
+                     From Fezcode
                    </p>
 
                    <div className="relative -mt-4 md:-mt-6 mb-4 md:mb-6 px-4">
