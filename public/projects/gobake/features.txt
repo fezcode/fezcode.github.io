@@ -1,0 +1,31 @@
+:::feature
+title: Go-Native
+icon: Code
+creator: Fezcode
+role: CREATOR
+description: Write your build scripts in Go. No new syntax to learn. Benefit from Go's type safety and performance.
+:::
+
+:::feature
+title: Zero Dependencies
+icon: ShieldCheck
+creator: Samil B.
+role: ARCHITECT
+description: The build system is just a Go program. It compiles itself on the fly, requiring nothing but the Go toolchain.
+:::
+
+:::feature
+title: Metadata Management
+icon: NewspaperClipping
+creator: Fezcoddy
+role: DESIGNER
+description: Manage versions, tools, and dependencies in a central `recipe.piml` file.
+:::
+
+:::feature
+title: Self-Bootstrapping
+icon: Cpu
+creator: Neural Nexus
+role: KERNEL
+description: Just run `gobake`. It handles the rest, ensuring your build environment is always consistent.
+:::

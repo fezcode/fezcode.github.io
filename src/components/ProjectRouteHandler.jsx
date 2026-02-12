@@ -22,6 +22,7 @@ const BentoProjectPage = lazy(() => import('../pages/project-pages/BentoProjectP
 const LandscapeProjectPage = lazy(
   () => import('../pages/project-pages/LandscapeProjectPage'),
 );
+const RubyProjectPage = lazy(() => import('../pages/project-pages/RubyProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -87,6 +88,14 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <LandscapeProjectPage />
+      </Suspense>
+    );
+  }
+
+  if (projectStyle === 'ruby') {
+    return (
+      <Suspense fallback={<Loading />}>
+        <RubyProjectPage />
       </Suspense>
     );
   }

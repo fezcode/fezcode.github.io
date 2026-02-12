@@ -1,0 +1,48 @@
+## Installation
+
+```bash
+go install github.com/fezcode/gobake/cmd/gobake@latest
+```
+
+## Quick Start
+
+1.  **Initialize a new project:**
+
+    ```bash
+    mkdir my-project
+    cd my-project
+    gobake init
+    ```
+
+    This creates a `recipe.piml` and a `Recipe.go`.
+
+2.  **Run a task:**
+
+    ```bash
+    gobake build
+    ```
+
+## Usage
+
+### Commands
+
+*   `gobake init`: Scaffolds a new `Recipe.go` and `recipe.piml`.
+*   `gobake version`: Displays the current version of gobake.
+*   `gobake help`: Displays the list of commands and available tasks.
+*   `gobake bump [patch|minor|major]`: Increments the version in `recipe.piml`.
+
+### The `Recipe.go` File
+
+```go
+package main
+import "github.com/fezcode/gobake"
+
+func main() {
+	bake := gobake.NewEngine()
+	bake.LoadRecipeInfo("recipe.piml")
+	bake.Task("build", "Builds the binary", func(ctx *gobake.Context) error {
+		return ctx.BakeBinary("linux", "amd64", "bin/app")
+	})
+	bake.Execute()
+}
+```

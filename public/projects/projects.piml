@@ -110,6 +110,22 @@
     (photoCreditLink) https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE
 
   > (project)
+    (slug) gobake
+    (title) gobake
+    (style) ruby
+    (repo_link) https://github.com/fezcode/gobake
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > Go
+      > Build Tool
+      > Orchestrator
+      > Automation
+    (shortDescription) gobake is a Go-native build orchestrator. It replaces Makefiles and shell scripts with a single, type-safe Recipe.go file.
+    (date) 2026-02-12
+    (image) /images/projects/gobake/gobake-banner.png
+
+  > (project)
     (slug) nocturnote
     (title) Nocturnote
     (size) 2
