@@ -1149,5 +1149,35 @@
     },
     "authors": ["fezcode"],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
+    "title": "Interview Journal",
+    "date": "2025-01-01",
+    "updated": "2025-01-01",
+    "slug": "interview-journal",
+    "description": "A series dedicated to technical interview preparation, architectural patterns, and deep dives into software engineering fundamentals.",
+    "series": {
+      "posts": [
+        {
+          "slug": "solid-principles",
+          "title": "Interview Journal: #1 - SOLID Principles",
+          "filename": "/interview-journal/01-solid-principles.txt",
+          "date": "2025-01-01",
+          "category": "dev",
+          "tags": ["solid", "architecture", "interview", "clean-code", "dev"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "cpp-rule-of-5",
+          "title": "Interview Journal: #2 - CPP Rule of 5",
+          "filename": "/interview-journal/02-cpp-rule-of-5.txt",
+          "date": "2025-01-01",
+          "category": "dev",
+          "tags": ["cpp", "cplusplus", "memory-management", "rule-of-five", "interview", "dev"],
+          "authors": ["fezcode"]
+        }
+      ]
+    },
+    "authors": ["fezcode"]
   }
 ]
