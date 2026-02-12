@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 08 Feb 2026 04:26:16 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 12 Feb 2026 22:23:32 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 08 Feb 2026 04:26:15 GMT</pubDate>
+        <pubDate>Thu, 12 Feb 2026 22:23:32 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -7051,6 +7051,131 @@ And when I&#39;m not gaming, I&#39;m probably lost in a good book, binging a cap
 If you&#39;re looking for polished, perfectly curated content,
 you might find some of that, but mostly, you&#39;ll find genuine, unadulterated me. Dive in, explore, and enjoy the ride!</p>
 <p><a href="https://fezcode.com/blog/about-fezcodex">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Interview Journal: #1 - SOLID Principles]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/solid-principles</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/solid-principles</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 01 Jan 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Interview Journal: #1 - SOLID Principles</h1>
+<p>In the world of software engineering, specifically object-oriented design, the SOLID principles are the bedrock of clean, maintainable, and scalable code. Coined by Robert C. Martin (Uncle Bob), these five principles help developers avoid &quot;code rot&quot; and build systems that are easy to refactor and extend.</p>
+<p>As this is the first entry in my <strong>Interview Journal</strong>, I want to dive deep into these principles, explaining them with clear examples and why they matter in a professional environment.</p>
+<hr>
+<h2>1. Single Responsibility Principle (SRP)</h2>
+<blockquote>
+<p>&quot;A class should have one, and only one, reason to change.&quot;</p>
+</blockquote>
+<p>This is perhaps the most misunderstood principle. It doesn&#39;t mean a class should only have one method. It means a class should be responsible for one <em>actor</em> or one specific part of the functionality.</p>
+<p><strong>Bad Example:</strong>
+A <code>User</code> class that handles both user data and saving that data to a database.
+<strong>Good Example:</strong>
+A <code>User</code> class for data and a <code>UserRepository</code> class for persistence.</p>
+<h2>2. Open/Closed Principle (OCP)</h2>
+<blockquote>
+<p>&quot;Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.&quot;</p>
+</blockquote>
+<p>You should be able to add new functionality without changing existing code. This is usually achieved through interfaces and abstract classes.</p>
+<p><strong>Scenario:</strong>
+If you have a <code>DiscountService</code>, instead of using a giant <code>switch</code> statement for every new discount type, you define a <code>DiscountStrategy</code> interface. Adding a new discount means adding a new class, not touching the <code>DiscountService</code>.</p>
+<h2>3. Liskov Substitution Principle (LSP)</h2>
+<blockquote>
+<p>&quot;Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.&quot;</p>
+</blockquote>
+<p>If <code>Class B</code> is a subclass of <code>Class A</code>, you should be able to pass <code>B</code> anywhere <code>A</code> is expected without the program breaking.</p>
+<p><strong>Common Violation:</strong>
+The classic Square-Rectangle problem. If a <code>Square</code> inherits from <code>Rectangle</code> but overrides the <code>setHeight</code> to also change the <code>width</code>, it breaks the expectations of a <code>Rectangle</code> user.</p>
+<h2>4. Interface Segregation Principle (ISP)</h2>
+<blockquote>
+<p>&quot;Many client-specific interfaces are better than one general-purpose interface.&quot;</p>
+</blockquote>
+<p>Clients should not be forced to depend on methods they do not use. Split large interfaces into smaller, more specific ones.</p>
+<p><strong>Example:</strong>
+Instead of a <code>SmartDevice</code> interface with <code>print()</code>, <code>fax()</code>, and <code>scan()</code>, create <code>Printer</code>, <code>Fax</code>, and <code>Scanner</code> interfaces. A basic printer shouldn&#39;t be forced to implement a <code>fax()</code> method.</p>
+<h2>5. Dependency Inversion Principle (DIP)</h2>
+<blockquote>
+<p>&quot;Depend upon abstractions, [not] concretions.&quot;</p>
+</blockquote>
+<ol>
+<li>High-level modules should not depend on low-level modules. Both should depend on abstractions.</li>
+<li>Abstractions should not depend on details. Details should depend on abstractions.</li>
+</ol>
+<p><strong>In Practice:</strong>
+Instead of a <code>Store</code> class instantiating a <code>StripePayment</code> object directly, it should depend on an <code>IPaymentProvider</code> interface. This allows you to swap Stripe for PayPal without changing the <code>Store</code> logic.</p>
+<hr>
+<h2>Why SOLID Matters in Interviews</h2>
+<p>Interviewers look for more than just &quot;I know what the letters stand for.&quot; They want to see:</p>
+<ul>
+<li><strong>Trade-offs:</strong> When <em>not</em> to over-engineer with SOLID.</li>
+<li><strong>Real-world application:</strong> Can you spot a violation in a code review?</li>
+<li><strong>Architectural Thinking:</strong> How these principles lead to patterns like Strategy, Factory, and Dependency Injection.</li>
+</ul>
+<p>In the next journal entry, we&#39;ll look at <strong>Design Patterns</strong> and how they implement these SOLID foundations.</p>
+<hr>
+<p><em>Date: 2026-02-12</em>
+<em>Category: dev</em>
+<em>Tags: solid, architecture, interview, clean-code, dev</em></p>
+<p><a href="https://fezcode.com/blog/solid-principles">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Interview Journal: #2 - CPP Rule of 5]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/cpp-rule-of-5</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/cpp-rule-of-5</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 01 Jan 2025 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Interview Journal: #2 - C++ Rule of Five (and Three and Zero)</h1>
+<p>In C++, resource management is a critical skill. Unlike languages with garbage collection, C++ gives you direct control over the lifecycle of your objects. This power comes with the responsibility of correctly managing memory, file handles, and network sockets.</p>
+<p>The <strong>Rule of Five</strong> is a guideline for modern C++ (C++11 and later) that defines which special member functions you need to implement if your class manages resources.</p>
+<hr>
+<h2>The Evolution: The Rule of Three</h2>
+<p>Before C++11, we had the <strong>Rule of Three</strong>. It stated that if you needed to define any of the following, you probably needed to define all three:</p>
+<ol>
+<li><strong>Destructor:</strong> To release resources.</li>
+<li><strong>Copy Constructor:</strong> To perform a deep copy.</li>
+<li><strong>Copy Assignment Operator:</strong> To handle assignment (like <code>a = b</code>).</li>
+</ol>
+<p>If you didn&#39;t define these, the compiler would generate default versions that perform shallow copies, leading to double-free errors or memory leaks.</p>
+<h2>The Modern Standard: The Rule of Five</h2>
+<p>With the introduction of <strong>Move Semantics</strong> in C++11, the Rule of Three expanded to the Rule of Five. We added two more functions to handle &quot;moving&quot; resources instead of copying them:
+4.  <strong>Move Constructor:</strong> Transfer ownership of resources from a temporary object.
+5.  <strong>Move Assignment Operator:</strong> Transfer ownership during assignment.</p>
+<h3>The Functions at a Glance:</h3>
+<pre><code class="language-cpp">class MyResource {
+public:
+    // 1. Destructor
+    ~MyResource();
+
+    // 2. Copy Constructor
+    MyResource(const MyResource&amp; other);
+
+    // 3. Copy Assignment
+    MyResource&amp; operator=(const MyResource&amp; other);
+
+    // 4. Move Constructor
+    MyResource(MyResource&amp;&amp; other) noexcept;
+
+    // 5. Move Assignment
+    MyResource&amp; operator=(MyResource&amp;&amp; other) noexcept;
+};
+</code></pre>
+<hr>
+<h2>The Rule of Zero</h2>
+<p>The <strong>Rule of Zero</strong> suggests that you should design your classes so that you don&#39;t have to define <em>any</em> of the special five functions. </p>
+<p>How? By using <strong>RAII (Resource Acquisition Is Initialization)</strong> wrappers like <code>std::unique_ptr</code>, <code>std::shared_ptr</code>, or <code>std::vector</code>. These classes already handle the Rule of Five correctly. If your class only contains such members, the compiler-generated defaults will work perfectly.</p>
+<hr>
+<h2>Interview Tips:</h2>
+<ul>
+<li><strong>Why <code>noexcept</code>?</strong> Move constructors and move assignment operators should be marked <code>noexcept</code>. This is crucial for performance, as containers like <code>std::vector</code> will only use moves during resizing if they are guaranteed not to throw.</li>
+<li><strong>Copy-and-Swap Idiom:</strong> Mentioning this idiom shows deep knowledge. It&#39;s a robust way to implement copy/move assignment operators that provides strong exception safety.</li>
+<li><strong>Resource Management:</strong> Always relate these rules back to <em>ownership</em>. Who owns the memory? When is it released?</li>
+</ul>
+<hr>
+<p><em>Date: 2026-02-12</em>
+<em>Category: dev</em>
+<em>Tags: cpp, cplusplus, memory-management, rule-of-five, interview, dev</em></p>
+<p><a href="https://fezcode.com/blog/cpp-rule-of-5">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Gemini 2.5 Flash Explains me How Image Modal Works]]></title>

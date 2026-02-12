@@ -1,0 +1,25 @@
+:::card
+type: install
+title: Quick Installation
+code: go install github.com/fezcode/gobake/cmd/gobake@latest
+btnText: INSTALL!
+btnLink: #installation
+:::
+
+:::card
+type: code
+title: Define Recipe
+code: bake.Task("build", func(ctx) {
+    return ctx.Bake("bin/app")
+})
+btnText: GUIDE!
+btnLink: #docs
+:::
+
+:::card
+type: command
+title: Run Task
+code: gobake build
+btnText: SOURCE!
+btnLink: https://github.com/fezcode/gobake
+:::

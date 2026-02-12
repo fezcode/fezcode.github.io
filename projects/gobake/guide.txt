@@ -1,0 +1,52 @@
+# Core Concepts
+
+`gobake` operates on a simple principle: **Your build system should be as robust as your application.**
+
+Instead of relying on fragile shell scripts or complex Makefiles, `gobake` uses:
+1.  **Engine:** The core Go library that manages tasks.
+2.  **Context:** A helper object passed to every task, providing access to the shell, logging, and metadata.
+3.  **Recipe:** The `Recipe.go` file that ties it all together.
+
+# CLI Command Reference
+
+## Project Management
+
+*   **`gobake init`**: Initialize a new project in the current directory.
+*   **`gobake version`**: Show the current version of gobake.
+*   **`gobake help`**: Show the list of available commands and project tasks.
+*   **`gobake template <git-url>`**: Clone a repository and initialize it.
+
+## Dependency & Tool Management
+
+*   **`gobake add-tool <url>`**: Adds a tool to the `(tools)` list in `recipe.piml`.
+*   **`gobake add-dep <url>`**: Adds a library dependency to `go.mod`.
+
+## Versioning
+
+*   **`gobake bump [patch|minor|major]`**: Increments the project version in `recipe.piml`.
+
+# Metadata (`recipe.piml`)
+
+The `recipe.piml` file is the single source of truth for your project.
+
+```piml
+(name) my-project
+(version) 1.2.3
+(authors)
+    > Ahmed <ahmed@example.com>
+(tools)
+    > github.com/swaggo/swag/cmd/swag@latest
+```
+
+# Task Management
+
+Tasks are defined using `bake.Task(name, description, function)`.
+
+## Task Dependencies
+
+You can define tasks that depend on other tasks using `bake.TaskWithDeps`.
+
+```go
+bake.Task("test", "Run tests", func(ctx *gobake.Context) error { ... })
+bake.TaskWithDeps("build", "Build app", []string{"test"}, func(ctx *gobake.Context) error { ... })
+```
