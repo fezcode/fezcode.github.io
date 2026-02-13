@@ -1175,6 +1175,15 @@
           "category": "dev",
           "tags": ["cpp", "cplusplus", "memory-management", "rule-of-five", "interview", "dev"],
           "authors": ["fezcode"]
+        },
+        {
+          "slug": "max-heap-min-heap-golang",
+          "title": "Interview Journal: #3 - Max Heap and Min Heap in Golang",
+          "filename": "/interview-journal/03-max-heap-min-heap-golang.txt",
+          "date": "2026-02-13",
+          "category": "dev",
+          "tags": ["golang", "go", "heap", "data-structures", "interview", "dev"],
+          "authors": ["fezcode"]
         }
       ]
     },
