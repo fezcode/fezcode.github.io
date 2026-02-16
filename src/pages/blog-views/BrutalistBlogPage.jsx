@@ -18,6 +18,7 @@ import {
 const FILTERS = [
   { id: 'all', label: 'All' },
   { id: 'dev', label: 'Dev' },
+  { id: 'ai', label: 'AI' },
   { id: 'feat', label: 'Feat' },
   { id: 'rant', label: 'Rant' },
   { id: 'series', label: 'Series' },
@@ -86,7 +87,7 @@ const BrutalistBlogPage = () => {
     const matchesFilter = () => {
       if (activeFilter === 'all') return true;
       if (activeFilter === 'series') return item.isSeries;
-      return item.category === activeFilter && !item.isSeries;
+      return item.category === activeFilter;
     };
     const matchesSearch = () => {
       if (!searchQuery) return true;

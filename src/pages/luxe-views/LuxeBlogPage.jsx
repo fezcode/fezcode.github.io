@@ -14,6 +14,7 @@ import LuxeArt from '../../components/LuxeArt';
 const FILTERS = [
   { id: 'all', label: 'All' },
   { id: 'dev', label: 'Dev' },
+  { id: 'ai', label: 'AI' },
   { id: 'feat', label: 'Feat' },
   { id: 'rant', label: 'Rant' },
   { id: 'series', label: 'Series' },

@@ -123,6 +123,12 @@ code {
   --bg-feat-card-hover: rgba(126, 34, 206, 0.275);
   --title-hover-feat: #a855f7; /* purple-500 */
 
+  /*ai card*/
+  --color-ai-badge: #84cc16; /* lime-500 */
+  --bg-ai-card: rgba(132, 204, 22, 0.175);
+  --bg-ai-card-hover: rgba(132, 204, 22, 0.275);
+  --title-hover-ai: #a3e635; /* lime-400 */
+
   /*fezccode colors*/
   --fzcdx-background: #ffffff;
   --fzcdx-text-primary: #2d2d2d;

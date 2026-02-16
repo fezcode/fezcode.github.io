@@ -23,7 +23,9 @@ const BrutalistPostItem = ({ post, isActive, onHover = () => {} }) => {
             ? 'var(--color-gist-badge)'
             : category === 'feat'
               ? 'var(--color-feat-badge)'
-              : 'var(--color-rant-badge)';
+              : category === 'ai'
+                ? 'var(--color-ai-badge)'
+                : 'var(--color-rant-badge)';
 
   const categoryBg =
     category === 'dev'
@@ -36,7 +38,9 @@ const BrutalistPostItem = ({ post, isActive, onHover = () => {} }) => {
             ? 'rgba(245, 158, 11, 0.3)'
             : category === 'feat'
               ? 'rgba(168, 85, 247, 0.3)'
-              : 'rgba(16, 185, 129, 0.2)';
+              : category === 'ai'
+                ? 'rgba(132, 204, 22, 0.2)'
+                : 'rgba(16, 185, 129, 0.2)';
 
   return (
     <motion.div

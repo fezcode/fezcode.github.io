@@ -25,7 +25,9 @@ const PostTile = ({ post }) => {
             ? 'var(--color-gist-badge)'
             : post.category === 'feat'
               ? 'var(--color-feat-badge)'
-              : 'var(--color-rant-badge)';
+              : post.category === 'ai'
+                ? 'var(--color-ai-badge)'
+                : 'var(--color-rant-badge)';
 
   const categoryBg =
     post.category === 'dev'
@@ -38,7 +40,9 @@ const PostTile = ({ post }) => {
             ? 'rgba(245, 158, 11, 0.3)'
             : post.category === 'feat'
               ? 'rgba(168, 85, 247, 0.3)'
-              : 'rgba(16, 185, 129, 0.2)';
+              : post.category === 'ai'
+                ? 'rgba(132, 204, 22, 0.2)'
+                : 'rgba(16, 185, 129, 0.2)';
 
   return (
     <motion.div

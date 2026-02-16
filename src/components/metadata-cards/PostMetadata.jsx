@@ -16,6 +16,8 @@ const getCategoryStyles = (category) => {
       return 'text-amber-300 bg-amber-900/20 border border-amber-900/50 hover:bg-amber-900/40';
     case 'feat':
       return 'text-purple-300 bg-purple-900/20 border border-purple-900/50 hover:bg-purple-900/40';
+    case 'ai':
+      return 'text-lime-400 bg-lime-900/20 border border-lime-900/50 hover:bg-lime-900/40';
     case 'rant':
       return 'text-emerald-300 bg-emerald-900/20 border border-emerald-900/50 hover:bg-emerald-900/40';
     default:
