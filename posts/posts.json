@@ -1,5 +1,71 @@
 [
   {
+    "title": "Prompt Engineering University",
+    "date": "2026-02-17",
+    "updated": "2026-02-22",
+    "slug": "prompt-engineering-university",
+    "description": "A comprehensive, university-style curriculum on Prompt Engineering. From foundational strategies to advanced agentic workflows.",
+    "series": {
+      "posts": [
+        {
+          "slug": "prompting-strategies",
+          "title": "Zero-shot, One-shot, Many-shot, and Metaprompting",
+          "filename": "/prompt-engineering/01-prompting-strategies.txt",
+          "date": "2026-02-17",
+          "category": "ai",
+          "tags": ["prompt-engineering", "ai", "llm", "zero-shot", "few-shot", "metaprompting"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "structure-and-formatting",
+          "title": "Structure & Formatting: Taming the Output",
+          "filename": "/prompt-engineering/02-structure-and-formatting.txt",
+          "date": "2026-02-18",
+          "category": "ai",
+          "tags": ["prompt-engineering", "ai", "llm", "json", "markdown", "output-format"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "reasoning-and-logic",
+          "title": "Reasoning & Logic: Chain of Thought and Decomposition",
+          "filename": "/prompt-engineering/03-reasoning-and-logic.txt",
+          "date": "2026-02-19",
+          "category": "ai",
+          "tags": ["prompt-engineering", "ai", "llm", "cot", "tot", "decomposition", "reasoning"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "persona-and-context",
+          "title": "Persona & Context: Role-Playing and The Art of Context Management",
+          "filename": "/prompt-engineering/04-persona-and-context.txt",
+          "date": "2026-02-20",
+          "category": "ai",
+          "tags": ["prompt-engineering", "ai", "llm", "persona", "context", "rag"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "evaluation-and-optimization",
+          "title": "Evaluation & Optimization: How to Measure and Improve Your Prompts",
+          "filename": "/prompt-engineering/05-evaluation-and-optimization.txt",
+          "date": "2026-02-21",
+          "category": "ai",
+          "tags": ["prompt-engineering", "ai", "llm", "evaluation", "optimization", "temperature"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "advanced-agents-and-tools",
+          "title": "Advanced Agents & Tools: From Chatbots to Problem Solvers",
+          "filename": "/prompt-engineering/06-advanced-agents-and-tools.txt",
+          "date": "2026-02-22",
+          "category": "ai",
+          "tags": ["prompt-engineering", "ai", "llm", "agents", "react", "tools", "function-calling"],
+          "authors": ["fezcode"]
+        }
+      ]
+    },
+    "authors": ["fezcode"]
+  },
+  {
     "slug": "linux-vs-unix-the-kernel-wars",
     "title": "Linux vs. Unix: The Kernel Wars and the Philosophy of Modular Design",
     "date": "2026-02-08",
@@ -1174,6 +1240,24 @@
           "date": "2025-01-01",
           "category": "dev",
           "tags": ["cpp", "cplusplus", "memory-management", "rule-of-five", "interview", "dev"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "max-heap-min-heap-golang",
+          "title": "Interview Journal: #3 - Max Heap and Min Heap in Golang",
+          "filename": "/interview-journal/03-max-heap-min-heap-golang.txt",
+          "date": "2026-02-13",
+          "category": "dev",
+          "tags": ["golang", "go", "heap", "data-structures", "interview", "dev"],
+          "authors": ["fezcode"]
+        },
+        {
+          "slug": "sliding-window-and-fruit-into-baskets",
+          "title": "Interview Journal: #4 - Sliding Window Algorithms and Fruit Into Baskets",
+          "filename": "/interview-journal/04-sliding-window-and-fruit-into-baskets.txt",
+          "date": "2026-02-17",
+          "category": "dev",
+          "tags": ["golang", "go", "algorithms", "sliding-window", "interview", "dev"],
           "authors": ["fezcode"]
         }
       ]

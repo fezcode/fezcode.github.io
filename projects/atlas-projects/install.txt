@@ -1,26 +1,13 @@
 ### Installation
-## Each tool can be installed by cloning the repository and building from source:
+## Each tool can be installed using **gobake** for a native build experience:
 
 ```bash
-# atlas.todo
+# Example for atlas.todo
 git clone https://github.com/fezcode/atlas.todo
 cd atlas.todo
-go build -o atlas.todo .
-
-# atlas.stats
-git clone https://github.com/fezcode/atlas.stats
-cd atlas.stats
-go build -o atlas-stats .
-
-# atlas.websearch
-git clone https://github.com/fezcode/atlas.websearch
-cd atlas.websearch
-go build -o atlas .
-
-# atlas.compass
-git clone https://github.com/fezcode/atlas.compass
-cd atlas.compass
-go run scripts/build.go
+gobake build
 ```
 
-To build for all platforms, run `go run scripts/build.go` in the respective repository.
+The same process applies to **atlas.stats**, **atlas.websearch**, **atlas.compass**, and **atlas.clock**.
+
+To build for all platforms, simply run `gobake build` in any of the tool repositories.

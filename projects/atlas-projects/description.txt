@@ -8,6 +8,7 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 2. **[atlas.stats](https://github.com/fezcode/atlas.stats)**: Real-time system monitoring. View CPU, memory, disk, and network usage in a responsive terminal interface.
 3. **[atlas.websearch](https://github.com/fezcode/atlas.websearch)**: A blazing fast, interactive CLI search tool. Search DuckDuckGo, Wikipedia, Hacker News, and Reddit with zero configuration.
 4. **[atlas.compass](https://github.com/fezcode/atlas.compass)**: A secure, local-first terminal password manager. Features AES-256-GCM encryption and Argon2id key derivation for high-stakes security.
+5. **[atlas.clock](https://github.com/fezcode/atlas.clock)**: A high-visibility world clock dashboard. Features millisecond-precision real-time counters and a searchable IANA timezone list.
 
 ### Why Atlas?
 
