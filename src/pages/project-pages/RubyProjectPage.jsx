@@ -31,7 +31,8 @@ const RubyProjectPage = () => {
     repo_link: '',
     shortDescription: '',
     image: '',
-    technologies: []
+    technologies: [],
+    version: '0.1.0'
   });
   const [loading, setLoading] = useState(true);
   const [copied, setCopied] = useState(false);
@@ -66,6 +67,10 @@ const RubyProjectPage = () => {
         const title = heroLines[0]?.replace('#', '').trim() || productSlug;
         const tagline = heroLines[1]?.trim() || '';
 
+        // Extract version from hero.txt if available (PIML style)
+        const versionMatch = hero.match(/\(version\)\s*([^\n\r]+)/);
+        const version = versionMatch ? versionMatch[1].trim() : '0.1.0';
+
         // Extract repo link from terminal.txt if available
         const repoMatch = terminal.match(/btnLink:\s*(https:\/\/github\.com\/[^\s\n]+)/);
         const repo_link = repoMatch ? repoMatch[1] : '';
@@ -76,7 +81,8 @@ const RubyProjectPage = () => {
           repo_link,
           shortDescription: tagline,
           image: `/images/projects/${productSlug}/${productSlug}-banner.png`,
-          technologies: ['Go', 'Build Tool']
+          technologies: ['Go', 'Build Tool'],
+          version
         });
       } catch (error) {
         console.error('Error fetching project content:', error);
@@ -207,7 +213,7 @@ const RubyProjectPage = () => {
                       <p className="text-base md:text-xl tracking-wide text-[#E2D1AA] whitespace-nowrap uppercase">
                         <span className="font-light text-white/70 tracking-normal">Latest Version:</span>{' '}
                         <span className="font-extrabold text-white relative inline-block">
-                          0.2.0
+                          {metadata.version}
                           <img src={`/projects/${productSlug}/version-line.svg`} alt="" className="absolute -bottom-[4px] md:-bottom-[6px] left-0 w-full h-auto opacity-50" />
                         </span>
                       </p>
