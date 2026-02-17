@@ -17,3 +17,8 @@ link: https://github.com/fezcode/atlas.websearch
 fezcode
 +4 -0 ~0
 link: https://github.com/fezcode/atlas.compass
+---
+# Cam
+fezcode
++5 -0 ~0
+link: https://github.com/fezcode/atlas.cam
