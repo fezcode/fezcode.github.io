@@ -10,6 +10,8 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 4. **[atlas.compass](https://github.com/fezcode/atlas.compass)**: A secure, local-first terminal password manager. Features AES-256-GCM encryption and Argon2id key derivation for high-stakes security.
 5. **[atlas.clock](https://github.com/fezcode/atlas.clock)**: A high-visibility world clock dashboard. Features millisecond-precision real-time counters and a searchable IANA timezone list.
 6. **[atlas.cam](https://github.com/fezcode/atlas.cam)**: A terminal webcam viewer and ASCII camera. Features real-time edge detection, image filters, and GIF recording.
+7. **[atlas.games](https://github.com/fezcode/atlas.games)**: A terminal-based game collection. Featuring Wilson's Revenge directly in your shell.
+8. **[atlas.bench](https://github.com/fezcode/atlas.bench)**: A high-performance benchmarking tool for terminal applications and command-line processes. Measure CPU, memory, and latency with millisecond precision.
 
 ### Why Atlas?
 

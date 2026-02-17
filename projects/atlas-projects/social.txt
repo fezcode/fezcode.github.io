@@ -18,7 +18,22 @@ fezcode
 +4 -0 ~0
 link: https://github.com/fezcode/atlas.compass
 ---
-# Cam
+# Clock
 fezcode
 +5 -0 ~0
+link: https://github.com/fezcode/atlas.clock
+---
+# Cam
+fezcode
++6 -0 ~0
 link: https://github.com/fezcode/atlas.cam
+---
+# Games
+fezcode
++7 -0 ~0
+link: https://github.com/fezcode/atlas.games
+---
+# Bench
+fezcode
++8 -0 ~0
+link: https://github.com/fezcode/atlas.bench
