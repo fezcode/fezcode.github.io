@@ -59,11 +59,16 @@ async function createPost(args) {
   await fs.writeFile(filePath, content, 'utf-8');
 
   // Add to metadata
+  const today = new Date();
+  const dateStr = today.getFullYear() + '-' +
+    String(today.getMonth() + 1).padStart(2, '0') + '-' +
+    String(today.getDate()).padStart(2, '0');
+
   const newPost = {
     slug,
     title,
-    date: new Date().toISOString().split('T')[0],
-    updated: new Date().toISOString().split('T')[0],
+    date: dateStr,
+    updated: dateStr,
     description,
     tags: tags ? tags.split(',').map(t => t.trim()) : [],
     category: category || 'dev',
