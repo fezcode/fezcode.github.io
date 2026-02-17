@@ -55,7 +55,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
-    "lint": "eslint \"src/**/*.{js,jsx}\" \"scripts/**/*.js\" --fix",
+    "lint": "eslint \"src/**/*.{js,jsx}\" \"scripts/**/*.{js,mjs}\" --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,css,json}\"",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build -b gh-pages",

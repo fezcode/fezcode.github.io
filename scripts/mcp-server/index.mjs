@@ -9,10 +9,7 @@ import {
 import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { exec } from 'child_process';
-import util from 'util';
-
-const execPromise = util.promisify(exec);
+import piml from 'piml';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,7 +17,7 @@ const __dirname = path.dirname(__filename);
 // Constants
 const POSTS_DIR = path.resolve(__dirname, '../../public/posts');
 const POSTS_JSON = path.join(POSTS_DIR, 'posts.json');
-const PROJECT_ROOT = path.resolve(__dirname, '../../');
+const LOGS_DIR = path.resolve(__dirname, '../../public/logs');
 
 // Helper functions
 async function readPosts() {
@@ -83,17 +80,71 @@ async function createPost(args) {
   posts.unshift(newPost); // Add to beginning
   await writePosts(posts);
 
-  // Generate RSS and Sitemap
-  try {
-    await execPromise('npm run generate-rss', { cwd: PROJECT_ROOT });
-    await execPromise('npm run generate-sitemap', { cwd: PROJECT_ROOT });
-  } catch (error) {
-    console.error('Error generating RSS/Sitemap:', error);
-    // Don't fail the whole operation if generation fails, but log it
-    return `Blog post "${title}" created at ${filePath}, but RSS/Sitemap generation failed: ${error.message}`;
+  return `Blog post "${title}" created successfully at ${filePath}.`;
+}
+
+async function createDiscoveryLog(args) {
+  const { type, title, slug, rating, description, content, date, ...otherFields } = args;
+
+  // Validate slug
+  if (!/^[a-z0-9-]+$/.test(slug)) {
+    throw new Error('Slug must contain only lowercase letters, numbers, and hyphens.');
   }
 
-  return `Blog post "${title}" created successfully at ${filePath}. RSS and Sitemap updated.`;
+  const typeLower = type.toLowerCase();
+  const categoryDir = path.join(LOGS_DIR, typeLower);
+  const pimlPath = path.join(categoryDir, `${typeLower}.piml`);
+
+  // Ensure directory exists
+  await fs.mkdir(categoryDir, { recursive: true });
+
+  // Read existing PIML
+  let logs = [];
+  try {
+    const pimlString = await fs.readFile(pimlPath, 'utf-8');
+    const parsed = piml.parse(pimlString);
+    logs = parsed.logs || [];
+  } catch (error) {
+    if (error.code !== 'ENOENT') {
+      throw error;
+    }
+  }
+
+  // Check if log exists
+  if (logs.some(item => item.slug === slug)) {
+    throw new Error(`Log with slug "${slug}" already exists in ${typeLower}.`);
+  }
+
+  // Create new item
+  const today = new Date();
+  const dateStr = date || today.getFullYear() + '-' +
+    String(today.getMonth() + 1).padStart(2, '0') + '-' +
+    String(today.getDate()).padStart(2, '0');
+
+  const newItem = {
+    category: type.charAt(0).toUpperCase() + type.slice(1),
+    date: dateStr,
+    rating: parseInt(rating, 10),
+    slug,
+    title,
+    description,
+    ...otherFields
+  };
+
+  // Add to beginning
+  logs.unshift(newItem);
+
+  // Write back PIML
+  const newPimlString = piml.stringify({ logs });
+  await fs.writeFile(pimlPath, newPimlString, 'utf-8');
+
+  // Create detailed content if provided
+  if (content) {
+    const txtPath = path.join(categoryDir, `${slug}.txt`);
+    await fs.writeFile(txtPath, content, 'utf-8');
+  }
+
+  return `Discovery log "${title}" created successfully in ${typeLower}.`;
 }
 
 // Server setup
@@ -153,6 +204,60 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           required: ["title", "slug", "description", "content"],
         },
       },
+      {
+        name: "create_discovery_log",
+        description: "Add a new log to discovery logs. This updates the .piml file and creates an optional .txt file.",
+        inputSchema: {
+          type: "object",
+          properties: {
+            type: {
+              type: "string",
+              description: "Log category (e.g., 'book', 'movie', 'video', 'game', 'article', 'music', 'series', 'food', 'websites', 'tools', 'event')",
+              enum: ["book", "movie", "video", "game", "article", "music", "series", "food", "websites", "tools", "event"]
+            },
+            title: {
+              type: "string",
+              description: "The title of the log entry",
+            },
+            slug: {
+              type: "string",
+              description: "The URL-friendly slug for the log (lowercase, hyphens only)",
+            },
+            date: {
+              type: "string",
+              description: "Date of the discovery (YYYY-MM-DD). Defaults to today.",
+            },
+            rating: {
+              type: "number",
+              description: "Rating from 1 to 5",
+              minimum: 1,
+              maximum: 5
+            },
+            description: {
+              type: "string",
+              description: "A short description/summary of the discovery",
+            },
+            content: {
+              type: "string",
+              description: "Optional detailed thoughts (will be saved in a .txt file)",
+            },
+            link: {
+              type: "string",
+              description: "Optional URL link to the item",
+            },
+            image: {
+              type: "string",
+              description: "Optional URL/path to a cover image",
+            },
+            artist: { type: "string", description: "Artist name (for music)" },
+            author: { type: "string", description: "Author name (for books/articles)" },
+            director: { type: "string", description: "Director name (for movies/series)" },
+            platform: { type: "string", description: "Platform name (for games/tools)" },
+            album: { type: "string", description: "Album name (for music)" },
+          },
+          required: ["type", "title", "slug", "rating", "description"],
+        },
+      },
     ],
   };
 });
@@ -176,6 +281,30 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           {
             type: "text",
             text: `Error creating post: ${error.message}`,
+          },
+        ],
+        isError: true,
+      };
+    }
+  }
+
+  if (request.params.name === "create_discovery_log") {
+    try {
+      const result = await createDiscoveryLog(request.params.arguments);
+      return {
+        content: [
+          {
+            type: "text",
+            text: result,
+          },
+        ],
+      };
+    } catch (error) {
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Error creating discovery log: ${error.message}`,
           },
         ],
         isError: true,
