@@ -23,8 +23,24 @@ Imagine you have a giant digital toy box. Inside, you keep the cool things you'v
 - **Content**: Markdown and **PIML** (Plain Old Markup Language) for structured content.
 - **Build Tools**: Craco (CRA Configuration Override) for custom build pipelines.
 - **Persistence**: Local Storage for settings, achievements, and persistent state.
+- **AI Tooling**: **Model Context Protocol (MCP)** server for automated content management.
 
 ---
+
+## Model Context Protocol (MCP)
+Fezcodex includes a custom MCP server to assist AI agents (like Gemini) in managing content.
+
+### Tools Provided:
+- `create_blog_post`: Automates the creation of blog posts, including file generation, metadata registry updates, and RSS/Sitemap regeneration.
+
+### Integration with Gemini CLI:
+To use this server with your Gemini CLI, run:
+```bash
+gemini mcp add fezcodex-blog-writer --command "node scripts/mcp-server/index.mjs"
+# or
+gemini mcp add --scope project fezcodex npm run mcp
+```
+Once added, the AI can create blog posts directly through its toolset.
 
 ## Project Structure
 - `src/app/`: Domain logic, core features, and views (Achievements, OS, Command Palette, etc.).
@@ -108,6 +124,11 @@ Every core component should be **Theme-Aware**:
 ### 4. Global State & Persistence
 - Use `VisualSettingsContext.jsx` for any UI state that needs to survive a page refresh (Invert mode, Theme selection, etc.).
 - Use `usePersistentState` hook to automatically sync your context variables with `localStorage`.
+
+### 5. AI-Assisted Content Creation (MCP)
+If you are using an AI agent with MCP support:
+- **Blog Posts:** Use the `create_blog_post` tool provided by the local MCP server. It handles file creation, metadata indexing, and build script execution in one step.
+- **Verification:** Always run `npm run lint` after AI-generated changes to ensure style compliance.
 
 ---
 

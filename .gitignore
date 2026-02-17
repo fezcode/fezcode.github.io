@@ -11,6 +11,10 @@
 # production
 /build
 
+# ai
+.gemini
+GEMINI.md
+
 # misc
 .DS_Store
 .env.local
