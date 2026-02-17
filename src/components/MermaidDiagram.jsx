@@ -10,7 +10,17 @@ const MermaidDiagram = ({ chart }) => {
       startOnLoad: false,
       theme: 'dark',
       securityLevel: 'loose',
-      fontFamily: 'monospace',
+      fontFamily: "'JetBrains Mono', monospace",
+      useMaxWidth: false,
+      htmlLabels: true,
+      flowchart: {
+        padding: 15,
+        useMaxWidth: false,
+        htmlLabels: true,
+      },
+      themeVariables: {
+        fontSize: '16px',
+      },
     });
   }, []);
 
@@ -43,10 +53,27 @@ const MermaidDiagram = ({ chart }) => {
   }
 
   return (
-    <div
-      className="mermaid-container flex justify-center my-8 bg-gray-900/30 p-6 rounded-lg overflow-x-auto"
-      dangerouslySetInnerHTML={{ __html: svg }}
-    />
+    <div className="mermaid-container my-8 bg-gray-900/30 p-6 rounded-lg overflow-x-auto">
+      <style>
+        {`
+          .mermaid-container svg {
+            overflow: visible !important;
+            max-width: none !important;
+            height: auto !important;
+          }
+          .mermaid-container foreignObject {
+            overflow: visible !important;
+          }
+          .mermaid-container .label {
+            color: inherit;
+          }
+        `}
+      </style>
+      <div
+        className="flex justify-center min-w-full"
+        dangerouslySetInnerHTML={{ __html: svg }}
+      />
+    </div>
   );
 };
 

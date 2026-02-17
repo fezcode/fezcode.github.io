@@ -1,8 +1,20 @@
 [
   {
+    "slug": "model-context-protocol-mcp",
+    "title": "The Model Context Protocol (MCP): Bridging the Gap Between AI and Data",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "An introductory guide to Anthropic's Model Context Protocol (MCP). Learn how it standardizes AI connectivity with data sources and tools.",
+    "tags": ["mcp", "ai", "anthropic", "standard", "protocol", "dev"],
+    "category": "ai",
+    "filename": "model-context-protocol-mcp.txt",
+    "authors": ["fezcode"],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "title": "Prompt Engineering University",
     "date": "2026-02-17",
-    "updated": "2026-02-22",
+    "updated": "2026-02-17",
     "slug": "prompt-engineering-university",
     "description": "A comprehensive, university-style curriculum on Prompt Engineering. From foundational strategies to advanced agentic workflows.",
     "series": {
