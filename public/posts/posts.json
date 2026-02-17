@@ -2,8 +2,8 @@
   {
     "slug": "building-the-fezcodex-mcp-server",
     "title": "Bridging the Gap: How We Built the Fezcodex MCP Server",
-    "date": "2026-02-17",
-    "updated": "2026-02-17",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
     "description": "A deep dive into creating a Model Context Protocol (MCP) server for Fezcodex, enabling AI agents to autonomously author and manage blog content.",
     "tags": [
       "mcp",

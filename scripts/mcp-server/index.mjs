@@ -69,8 +69,11 @@ async function createPost(args) {
     category: category || 'dev',
     filename,
     authors: ['fezcode'], // Default author
-    image: image || '/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg'
   };
+
+  if (image) {
+    newPost.image = image;
+  }
 
   posts.unshift(newPost); // Add to beginning
   await writePosts(posts);
