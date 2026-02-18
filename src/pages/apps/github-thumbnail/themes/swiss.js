@@ -3,6 +3,7 @@ import { wrapText } from '../utils';
 export const swiss = (ctx, width, height, scale, data) => {
   const {
     primaryColor,
+    secondaryColor,
     repoOwner,
     repoName,
     description,
@@ -12,7 +13,7 @@ export const swiss = (ctx, width, height, scale, data) => {
     supportUrl,
   } = data;
   // SWISS GRID Style
-  ctx.fillStyle = '#f1f1f1'; // Off-white background
+  ctx.fillStyle = secondaryColor; // Background base
   ctx.fillRect(0, 0, width, height);
 
   // Bold Asymmetry
@@ -24,7 +25,7 @@ export const swiss = (ctx, width, height, scale, data) => {
 
   // Grid Lines
   ctx.strokeStyle = '#000';
-  ctx.lineWidth = 2 * scale;
+  ctx.lineWidth = 4 * scale;
   ctx.beginPath();
   ctx.moveTo(col1, 0);
   ctx.lineTo(col1, height); // Vertical split
@@ -39,24 +40,24 @@ export const swiss = (ctx, width, height, scale, data) => {
   ctx.stroke();
 
   // Typography - Helvetica style (Arial/Inter fallback)
-  const fontStack = '"Helvetica Neue", "Arial", sans-serif';
+  const fontStack = '"Inter", "Helvetica Neue", "Arial", sans-serif';
   const padding = 40 * scale;
 
   // 1. Top Right: Project Info
   ctx.fillStyle = '#000';
-  ctx.font = `bold ${30 * scale}px ${fontStack}`;
+  ctx.font = `bold ${32 * scale}px ${fontStack}`;
   ctx.textAlign = 'left';
   ctx.fillText(
     repoOwner.toUpperCase(),
     col1 + padding,
-    row1 - padding - 30 * scale,
+    row1 - padding - 35 * scale,
   );
 
   // 2. Center Right: Description & Name
   // Repo Name huge
   ctx.fillStyle = '#000';
-  ctx.font = `900 ${100 * scale}px ${fontStack}`;
-  ctx.fillText(repoName, col1 + padding, row1 + 120 * scale);
+  ctx.font = `900 ${110 * scale}px ${fontStack}`;
+  ctx.fillText(repoName, col1 + padding, row1 + 130 * scale);
 
   // Description
   ctx.font = `normal ${32 * scale}px ${fontStack}`;

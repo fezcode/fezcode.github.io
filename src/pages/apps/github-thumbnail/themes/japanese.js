@@ -11,23 +11,27 @@ export const japanese = (ctx, width, height, scale, data) => {
   } = data;
   // JAPANESE POP Style
 
-  // Dynamic background pattern (Halftone / Stripes)                    ctx.fillStyle = secondaryColor; // Bg base
+  // Dynamic background pattern (Sunburst)
   ctx.fillStyle = secondaryColor;
   ctx.fillRect(0, 0, width, height);
 
-  // Sunburst or Stripes
+  // Sunburst rays
   ctx.save();
   ctx.translate(width / 2, height / 2);
   ctx.fillStyle = primaryColor;
-  for (let i = 0; i < 12; i++) {
-    ctx.rotate(Math.PI / 6);
-    ctx.fillRect(0, 0, width, height);
+  const rays = 16;
+  for (let i = 0; i < rays; i++) {
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.arc(0, 0, width, (i * 2 * Math.PI) / rays, ((i * 2 + 1) * Math.PI) / rays);
+    ctx.lineTo(0, 0);
+    ctx.fill();
   }
   ctx.restore();
 
   // Center Circle (Sun)
   ctx.beginPath();
-  ctx.arc(width / 2, height / 2, 300 * scale, 0, Math.PI * 2);
+  ctx.arc(width / 2, height / 2, 220 * scale, 0, Math.PI * 2);
   ctx.fillStyle = '#ffffff';
   ctx.fill();
 
@@ -36,10 +40,10 @@ export const japanese = (ctx, width, height, scale, data) => {
   ctx.textBaseline = 'middle';
 
   // Repo Name (Bold, Stroke)
-  ctx.font = `900 ${120 * scale}px "Arial Black", sans-serif`;
+  ctx.font = `900 ${100 * scale}px "Arial Black", sans-serif`;
   ctx.fillStyle = '#000';
   ctx.strokeStyle = '#fff';
-  ctx.lineWidth = 8 * scale;
+  ctx.lineWidth = 10 * scale;
 
   ctx.strokeText(repoName.toUpperCase(), width / 2, height / 2);
   ctx.fillText(repoName.toUpperCase(), width / 2, height / 2);

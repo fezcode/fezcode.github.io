@@ -35,13 +35,13 @@ export const neon = (ctx, width, height, scale, data) => {
   ctx.font = `900 ${100 * scale}px "Arial Black", sans-serif`;
   ctx.textAlign = 'left';
 
-  ctx.fillStyle = 'red';
+  ctx.fillStyle = secondaryColor;
   ctx.fillText(
     repoName.toUpperCase(),
     padding - 4 * scale,
     padding + 100 * scale,
   );
-  ctx.fillStyle = 'cyan';
+  ctx.fillStyle = primaryColor;
   ctx.fillText(
     repoName.toUpperCase(),
     padding + 4 * scale,

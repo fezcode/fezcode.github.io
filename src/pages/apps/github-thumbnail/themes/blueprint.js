@@ -1,10 +1,9 @@
 import { wrapText } from '../utils';
 
 export const blueprint = (ctx, width, height, scale, data) => {
-  const { repoOwner, repoName, description, stars, supportUrl } = data;
+  const { primaryColor, repoOwner, repoName, description, stars, supportUrl } = data;
   // Improved Blueprint CAD Style
-  const blueBg = '#004ecb'; // Deeper, more authentic blueprint blue
-  ctx.fillStyle = blueBg;
+  ctx.fillStyle = primaryColor; // Use selected primary color for background
   ctx.fillRect(0, 0, width, height);
 
   const padding = 60 * scale;

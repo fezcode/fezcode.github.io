@@ -1,13 +1,13 @@
 import { wrapText } from '../utils';
 
 export const popart = (ctx, width, height, scale, data) => {
-  const { repoOwner, repoName, description, stars } = data;
+  const { primaryColor, secondaryColor, repoOwner, repoName, description, stars } = data;
   // POP_ART_COMIC
-  ctx.fillStyle = '#FFE600'; // Bright Yellow
+  ctx.fillStyle = primaryColor; // Primary background
   ctx.fillRect(0, 0, width, height);
 
-  // Halftone Pattern (Red dots)
-  ctx.fillStyle = '#FF0000';
+  // Halftone Pattern (Secondary color dots)
+  ctx.fillStyle = secondaryColor;
   const dotSize = 4 * scale;
   const spacing = 12 * scale;
   for (let x = 0; x < width; x += spacing) {
@@ -58,7 +58,7 @@ export const popart = (ctx, width, height, scale, data) => {
   // Shadow effect
   ctx.fillStyle = '#000';
   ctx.fillText(repoName.toUpperCase(), 80 * scale, height - 120 * scale);
-  ctx.fillStyle = '#0099ff';
+  ctx.fillStyle = secondaryColor;
   ctx.fillText(repoName.toUpperCase(), 70 * scale, height - 130 * scale);
 
   // Speech Bubble for description
