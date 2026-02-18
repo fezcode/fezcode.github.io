@@ -8,6 +8,6 @@ cd atlas.todo
 gobake build
 ```
 
-The same process applies to **atlas.stats**, **atlas.websearch**, **atlas.compass**, **atlas.clock**, **atlas.cam**, **atlas.games**, and **atlas.bench**.
+The same process applies to **atlas.stats**, **atlas.websearch**, **atlas.compass**, **atlas.clock**, **atlas.cam**, **atlas.games**, **atlas.bench**, and **atlas.radar**.
 
 To build for all platforms, simply run `gobake build` in any of the tool repositories.

@@ -5,13 +5,13 @@
 Instead of relying on fragile shell scripts or complex Makefiles, `gobake` uses:
 1.  **Engine:** The core Go library that manages tasks.
 2.  **Context:** A helper object passed to every task, providing access to the shell, logging, and metadata.
-3.  **Recipe:** The `Recipe.go` file that ties it all together.
+3.  **Recipe:** The `Recipe.go` file (using `//go:build gobake`) that ties it all together.
 
 # CLI Command Reference
 
 ## Project Management
 
-*   **`gobake init`**: Initialize a new project in the current directory.
+*   **`gobake init`**: Initialize a new project in the current directory. Automates `go mod` and dependencies.
 *   **`gobake version`**: Show the current version of gobake.
 *   **`gobake help`**: Show the list of available commands and project tasks.
 *   **`gobake template <git-url>`**: Clone a repository and initialize it.
@@ -20,6 +20,8 @@ Instead of relying on fragile shell scripts or complex Makefiles, `gobake` uses:
 
 *   **`gobake add-tool <url>`**: Adds a tool to the `(tools)` list in `recipe.piml`.
 *   **`gobake add-dep <url>`**: Adds a library dependency to `go.mod`.
+*   **`gobake remove-tool <url>`**: Removes a tool from `recipe.piml`.
+*   **`gobake remove-dep <url>`**: Removes a dependency.
 
 ## Versioning
 
@@ -40,7 +42,7 @@ The `recipe.piml` file is the single source of truth for your project.
 
 # Task Management
 
-Tasks are defined using `bake.Task(name, description, function)`.
+Tasks are defined in the `Run(*gobake.Engine)` function using `bake.Task(name, description, function)`.
 
 ## Task Dependencies
 

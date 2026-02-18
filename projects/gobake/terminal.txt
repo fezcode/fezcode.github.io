@@ -9,9 +9,7 @@ btnLink: #installation
 :::card
 type: code
 title: Define Recipe
-code: bake.Task("build", func(ctx) {
-    return ctx.Bake("bin/app")
-})
+code: bake.Task("build", "Build app", func(ctx) { return ctx.Bake("bin/app") })
 btnText: GUIDE!
 btnLink: #docs
 :::

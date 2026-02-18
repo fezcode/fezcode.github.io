@@ -1,8 +1,70 @@
 [
   {
+    "slug": "gobake-go-build-orchestrator",
+    "title": "gobake: The Build Orchestrator Go Was Missing",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "Introducing gobake, a Go-native build orchestrator that replaces Makefiles with type-safe Go recipes.",
+    "tags": [
+      "go",
+      "golang",
+      "build-system",
+      "automation",
+      "gobake",
+      "devops"
+    ],
+    "category": "dev",
+    "filename": "gobake-go-build-orchestrator.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "building-the-fezcodex-mcp-server",
+    "title": "Bridging the Gap: How We Built the Fezcodex MCP Server",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "A deep dive into creating a Model Context Protocol (MCP) server for Fezcodex, enabling AI agents to autonomously author and manage blog content.",
+    "tags": [
+      "mcp",
+      "ai",
+      "nodejs",
+      "automation",
+      "blog",
+      "dev"
+    ],
+    "category": "dev",
+    "filename": "building-the-fezcodex-mcp-server.txt",
+    "authors": [
+      "fezcode"
+    ],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
+    "slug": "model-context-protocol-mcp",
+    "title": "The Model Context Protocol (MCP): Bridging the Gap Between AI and Data",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "An introductory guide to Anthropic's Model Context Protocol (MCP). Learn how it standardizes AI connectivity with data sources and tools.",
+    "tags": [
+      "mcp",
+      "ai",
+      "anthropic",
+      "standard",
+      "protocol",
+      "dev"
+    ],
+    "category": "ai",
+    "filename": "model-context-protocol-mcp.txt",
+    "authors": [
+      "fezcode"
+    ],
+    "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
+  },
+  {
     "title": "Prompt Engineering University",
     "date": "2026-02-17",
-    "updated": "2026-02-22",
+    "updated": "2026-02-17",
     "slug": "prompt-engineering-university",
     "description": "A comprehensive, university-style curriculum on Prompt Engineering. From foundational strategies to advanced agentic workflows.",
     "series": {
@@ -13,8 +75,17 @@
           "filename": "/prompt-engineering/01-prompting-strategies.txt",
           "date": "2026-02-17",
           "category": "ai",
-          "tags": ["prompt-engineering", "ai", "llm", "zero-shot", "few-shot", "metaprompting"],
-          "authors": ["fezcode"]
+          "tags": [
+            "prompt-engineering",
+            "ai",
+            "llm",
+            "zero-shot",
+            "few-shot",
+            "metaprompting"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "structure-and-formatting",
@@ -22,8 +93,17 @@
           "filename": "/prompt-engineering/02-structure-and-formatting.txt",
           "date": "2026-02-18",
           "category": "ai",
-          "tags": ["prompt-engineering", "ai", "llm", "json", "markdown", "output-format"],
-          "authors": ["fezcode"]
+          "tags": [
+            "prompt-engineering",
+            "ai",
+            "llm",
+            "json",
+            "markdown",
+            "output-format"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "reasoning-and-logic",
@@ -31,8 +111,18 @@
           "filename": "/prompt-engineering/03-reasoning-and-logic.txt",
           "date": "2026-02-19",
           "category": "ai",
-          "tags": ["prompt-engineering", "ai", "llm", "cot", "tot", "decomposition", "reasoning"],
-          "authors": ["fezcode"]
+          "tags": [
+            "prompt-engineering",
+            "ai",
+            "llm",
+            "cot",
+            "tot",
+            "decomposition",
+            "reasoning"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "persona-and-context",
@@ -40,8 +130,17 @@
           "filename": "/prompt-engineering/04-persona-and-context.txt",
           "date": "2026-02-20",
           "category": "ai",
-          "tags": ["prompt-engineering", "ai", "llm", "persona", "context", "rag"],
-          "authors": ["fezcode"]
+          "tags": [
+            "prompt-engineering",
+            "ai",
+            "llm",
+            "persona",
+            "context",
+            "rag"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "evaluation-and-optimization",
@@ -49,8 +148,17 @@
           "filename": "/prompt-engineering/05-evaluation-and-optimization.txt",
           "date": "2026-02-21",
           "category": "ai",
-          "tags": ["prompt-engineering", "ai", "llm", "evaluation", "optimization", "temperature"],
-          "authors": ["fezcode"]
+          "tags": [
+            "prompt-engineering",
+            "ai",
+            "llm",
+            "evaluation",
+            "optimization",
+            "temperature"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "advanced-agents-and-tools",
@@ -58,12 +166,24 @@
           "filename": "/prompt-engineering/06-advanced-agents-and-tools.txt",
           "date": "2026-02-22",
           "category": "ai",
-          "tags": ["prompt-engineering", "ai", "llm", "agents", "react", "tools", "function-calling"],
-          "authors": ["fezcode"]
+          "tags": [
+            "prompt-engineering",
+            "ai",
+            "llm",
+            "agents",
+            "react",
+            "tools",
+            "function-calling"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         }
       ]
     },
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "linux-vs-unix-the-kernel-wars",
@@ -71,10 +191,20 @@
     "date": "2026-02-08",
     "updated": "2026-02-08",
     "description": "A deep dive into the history, kernel architectures, and the uncompromising philosophy that shaped modern computing. Monoliths, microkernels, and the power of the pipe.",
-    "tags": ["linux", "unix", "kernel", "os", "architecture", "history", "dev"],
+    "tags": [
+      "linux",
+      "unix",
+      "kernel",
+      "os",
+      "architecture",
+      "history",
+      "dev"
+    ],
     "category": "dev",
     "filename": "linux-vs-unix-the-kernel-wars.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg"
   },
   {
@@ -83,10 +213,19 @@
     "date": "2026-02-08",
     "updated": "2026-02-08",
     "description": "The Halo Effect is the silent killer of technical debt. Exploring why we mistake a shiny coat of paint for a functional engine in software engineering.",
-    "tags": ["psychology", "halo-effect", "bias", "software-engineering", "management", "rant"],
+    "tags": [
+      "psychology",
+      "halo-effect",
+      "bias",
+      "software-engineering",
+      "management",
+      "rant"
+    ],
     "category": "rant",
     "filename": "halo-effect.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -95,10 +234,19 @@
     "date": "2026-02-08",
     "updated": "2026-02-08",
     "description": "Stop context switching. Learn how to use Git Worktrees to manage multiple features simultaneously and orchestrate parallel AI agents.",
-    "tags": ["git", "worktrees", "ai", "workflow", "productivity", "dev"],
+    "tags": [
+      "git",
+      "worktrees",
+      "ai",
+      "workflow",
+      "productivity",
+      "dev"
+    ],
     "category": "dev",
     "filename": "mastering-git-worktrees-and-ai.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -115,8 +263,16 @@
           "date": "2026-02-01",
           "updated": "2026-02-01",
           "category": "rant",
-          "tags": ["philosophy", "education", "series", "rant", "intro"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "education",
+            "series",
+            "rant",
+            "intro"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -125,8 +281,15 @@
           "filename": "/philosophy-101/02-logic-and-arguments.txt",
           "date": "2026-02-01",
           "category": "rant",
-          "tags": ["philosophy", "logic", "arguments", "critical-thinking"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "logic",
+            "arguments",
+            "critical-thinking"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -135,8 +298,15 @@
           "filename": "/philosophy-101/03-epistemology.txt",
           "date": "2026-02-01",
           "category": "rant",
-          "tags": ["philosophy", "epistemology", "knowledge", "matrix"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "epistemology",
+            "knowledge",
+            "matrix"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -145,8 +315,15 @@
           "filename": "/philosophy-101/04-metaphysics.txt",
           "date": "2026-02-01",
           "category": "rant",
-          "tags": ["philosophy", "metaphysics", "reality", "ontology"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "metaphysics",
+            "reality",
+            "ontology"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -155,8 +332,15 @@
           "filename": "/philosophy-101/05-ethics.txt",
           "date": "2026-02-02",
           "category": "rant",
-          "tags": ["philosophy", "ethics", "morality", "trolley-problem"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "ethics",
+            "morality",
+            "trolley-problem"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -165,8 +349,16 @@
           "filename": "/philosophy-101/06-socrates-plato-aristotle.txt",
           "date": "2026-02-02",
           "category": "rant",
-          "tags": ["philosophy", "socrates", "plato", "aristotle", "history"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "socrates",
+            "plato",
+            "aristotle",
+            "history"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -175,8 +367,16 @@
           "filename": "/philosophy-101/06-al-ghazali-and-skepticism.txt",
           "date": "2026-02-02",
           "category": "rant",
-          "tags": ["philosophy", "al-ghazali", "skepticism", "occasionalism", "islamic-golden-age"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "al-ghazali",
+            "skepticism",
+            "occasionalism",
+            "islamic-golden-age"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -185,8 +385,15 @@
           "filename": "/philosophy-101/07-descartes-and-modern-philosophy.txt",
           "date": "2026-02-03",
           "category": "rant",
-          "tags": ["philosophy", "descartes", "modern-philosophy", "dualism"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "descartes",
+            "modern-philosophy",
+            "dualism"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -195,8 +402,15 @@
           "filename": "/philosophy-101/10-kant-and-the-thing-in-itself.txt",
           "date": "2026-02-03",
           "category": "rant",
-          "tags": ["philosophy", "kant", "transcendental-idealism", "categorical-imperative"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "kant",
+            "transcendental-idealism",
+            "categorical-imperative"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -205,8 +419,16 @@
           "filename": "/philosophy-101/11-hegel-and-the-dialectic.txt",
           "date": "2026-02-04",
           "category": "rant",
-          "tags": ["philosophy", "hegel", "dialectic", "geist", "history"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "hegel",
+            "dialectic",
+            "geist",
+            "history"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -215,8 +437,16 @@
           "filename": "/philosophy-101/12-schopenhauer-and-pessimism.txt",
           "date": "2026-02-04",
           "category": "rant",
-          "tags": ["philosophy", "schopenhauer", "pessimism", "will", "art"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "schopenhauer",
+            "pessimism",
+            "will",
+            "art"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -225,8 +455,16 @@
           "filename": "/philosophy-101/13-kierkegaard-and-faith.txt",
           "date": "2026-02-05",
           "category": "rant",
-          "tags": ["philosophy", "kierkegaard", "faith", "existentialism", "anxiety"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "kierkegaard",
+            "faith",
+            "existentialism",
+            "anxiety"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -235,8 +473,15 @@
           "filename": "/philosophy-101/08-nietzsche-and-nihilism.txt",
           "date": "2026-02-06",
           "category": "rant",
-          "tags": ["philosophy", "nietzsche", "nihilism", "ubermensch"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "nietzsche",
+            "nihilism",
+            "ubermensch"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -245,8 +490,16 @@
           "filename": "/philosophy-101/14-heidegger-and-being.txt",
           "date": "2026-02-06",
           "category": "rant",
-          "tags": ["philosophy", "heidegger", "dasein", "phenomenology", "being"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "heidegger",
+            "dasein",
+            "phenomenology",
+            "being"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -255,8 +508,16 @@
           "filename": "/philosophy-101/09-existentialism-and-camus.txt",
           "date": "2026-02-07",
           "category": "rant",
-          "tags": ["philosophy", "sartre", "camus", "existentialism", "absurdism"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "sartre",
+            "camus",
+            "existentialism",
+            "absurdism"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         },
         {
@@ -265,13 +526,23 @@
           "filename": "/philosophy-101/15-wittgenstein-and-language.txt",
           "date": "2026-02-07",
           "category": "rant",
-          "tags": ["philosophy", "wittgenstein", "language", "logic", "games"],
-          "authors": ["fezcode"],
+          "tags": [
+            "philosophy",
+            "wittgenstein",
+            "language",
+            "logic",
+            "games"
+          ],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
@@ -280,10 +551,19 @@
     "date": "2026-02-06",
     "updated": "2026-02-06",
     "description": "A professional guide to database normalization, explaining the journey from 1NF to 3NF with clear examples and architectural diagrams.",
-    "tags": ["database", "sql", "normalization", "3nf", "data-integrity", "dev"],
+    "tags": [
+      "database",
+      "sql",
+      "normalization",
+      "3nf",
+      "data-integrity",
+      "dev"
+    ],
     "category": "dev",
     "filename": "understanding-database-normalization-3nf.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "cqrs-in-go-for-geniuses",
@@ -291,10 +571,19 @@
     "date": "2026-02-06",
     "updated": "2026-02-06",
     "description": "An authoritative guide to CQRS (Command Query Responsibility Segregation) following Martin Fowler's principles, implemented in Golang.",
-    "tags": ["golang", "architecture", "cqrs", "design-patterns", "backend", "dev"],
+    "tags": [
+      "golang",
+      "architecture",
+      "cqrs",
+      "design-patterns",
+      "backend",
+      "dev"
+    ],
     "category": "dev",
     "filename": "cqrs-in-go-for-geniuses.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "hyrums-law",
@@ -302,10 +591,19 @@
     "date": "2026-02-05",
     "updated": "2026-02-05",
     "description": "With a sufficient number of users, every bug becomes a feature. Exploring why you can't fix anything without breaking someone's weird workflow.",
-    "tags": ["software-engineering", "hyrums-law", "xkcd", "philosophy", "bugs", "dev"],
+    "tags": [
+      "software-engineering",
+      "hyrums-law",
+      "xkcd",
+      "philosophy",
+      "bugs",
+      "dev"
+    ],
     "category": "dev",
     "filename": "hyrums-law.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "architecting-trust-preventing-insider-threats",
@@ -313,10 +611,19 @@
     "date": "2026-01-23",
     "updated": "2026-01-23",
     "description": "Developers have God-mode access, but absolute power creates absolute risk. Here are 5 architectural patterns to prevent internal fraud and system abuse.",
-    "tags": ["architecture", "security", "design-patterns", "maker-checker", "event-sourcing", "devops"],
+    "tags": [
+      "architecture",
+      "security",
+      "design-patterns",
+      "maker-checker",
+      "event-sourcing",
+      "devops"
+    ],
     "category": "dev",
     "filename": "architecting-trust-preventing-insider-threats.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "deep-link-configuration-with-url-parameters",
@@ -324,10 +631,20 @@
     "date": "2026-01-21",
     "updated": "2026-01-21",
     "description": "How to implement a global URL parameter observer that silently updates application state and cleans up the address bar for a seamless user experience.",
-    "tags": ["react", "webdev", "url-parameters", "ux", "browser-api", "frontend", "dev"],
+    "tags": [
+      "react",
+      "webdev",
+      "url-parameters",
+      "ux",
+      "browser-api",
+      "frontend",
+      "dev"
+    ],
     "category": "dev",
     "filename": "deep-link-configuration-with-url-parameters.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/asset/url-magic.webp"
   },
   {
@@ -336,10 +653,20 @@
     "date": "2026-01-20",
     "updated": "2026-01-20",
     "description": "A deep dive into the philosophy and implementation of the new Fezluxe design language. Moving beyond brutalism to find sophisticated digital calm.",
-    "tags": ["design", "luxe", "ui/ux", "refactor", "architectural", "frontend", "feat"],
+    "tags": [
+      "design",
+      "luxe",
+      "ui/ux",
+      "refactor",
+      "architectural",
+      "frontend",
+      "feat"
+    ],
     "category": "feat",
     "filename": "introducing-fezluxe-refined-architectural-elegance.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/asset/luxe-design.webp"
   },
   {
@@ -348,10 +675,23 @@
     "date": "2026-01-19",
     "updated": "2026-01-19",
     "description": "In the gaming world, there is a pervasive stereotype: \"Shooters and Sports games are trash for casuals, while RPGs and Strategy games are high art for intellectuals.\". Any truth?",
-    "tags": ["data science", "math", "python", "games", "gun", "ball", "fifa", "cod", "uv", "dev"],
+    "tags": [
+      "data science",
+      "math",
+      "python",
+      "games",
+      "gun",
+      "ball",
+      "fifa",
+      "cod",
+      "uv",
+      "dev"
+    ],
     "category": "dev",
     "filename": "gun-and-ball.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "what-genre-should-i-watch",
@@ -359,10 +699,20 @@
     "date": "2026-01-18",
     "updated": "2026-01-18",
     "description": "Deconstructing Hollywood: A Data Science Journey from Raw Data to p99 Insights. Why you need a 6.5 filter for laughs, but can fly blind with a Documentary.",
-    "tags": ["data science", "math", "python", "imdb", "movies", "uv", "dev"],
+    "tags": [
+      "data science",
+      "math",
+      "python",
+      "imdb",
+      "movies",
+      "uv",
+      "dev"
+    ],
     "category": "dev",
     "filename": "what-genre-should-i-watch.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "debian-upgrade-path",
@@ -370,10 +720,18 @@
     "date": "2026-01-12",
     "updated": "2026-01-12",
     "description": "A quick gist on how to safely upgrade from Debian 11 to Debian 13 by following the required sequential path.",
-    "tags": ["linux", "debian", "upgrade", "sysadmin", "gist"],
+    "tags": [
+      "linux",
+      "debian",
+      "upgrade",
+      "sysadmin",
+      "gist"
+    ],
     "category": "gist",
     "filename": "debian-upgrade-path.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -382,10 +740,20 @@
     "date": "2026-01-12",
     "updated": "2026-01-12",
     "description": "A technical deep dive into Least Significant Bit (LSB) steganography and how we implemented it for the Fezcodex Steganography Tool.",
-    "tags": ["steganography", "lsb", "security", "image-processing", "canvas", "javascript", "dev"],
+    "tags": [
+      "steganography",
+      "lsb",
+      "security",
+      "image-processing",
+      "canvas",
+      "javascript",
+      "dev"
+    ],
     "category": "dev",
     "filename": "steganography-lsb-deep-dive.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -394,10 +762,19 @@
     "date": "2026-01-12",
     "updated": "2026-01-12",
     "description": "A curated list of essential tools, websites, and guides to start or level up your pixel art journey, inspired by JuniperDev.",
-    "tags": ["pixel-art", "resources", "tools", "aseprite", "art", "tutorial"],
+    "tags": [
+      "pixel-art",
+      "resources",
+      "tools",
+      "aseprite",
+      "art",
+      "tutorial"
+    ],
     "category": "dev",
     "filename": "pixel-art-resources-guide.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -406,10 +783,18 @@
     "date": "2026-01-10",
     "updated": "2026-01-10",
     "description": "A deep dive into building a robust drag-and-drop system for Tier Forge using the native HTML5 Drag and Drop API.",
-    "tags": ["react", "drag-and-drop", "javascript", "tutorial", "frontend"],
+    "tags": [
+      "react",
+      "drag-and-drop",
+      "javascript",
+      "tutorial",
+      "frontend"
+    ],
     "category": "dev",
     "filename": "implementing-drag-and-drop-in-react.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "gh-pages-enametoolong-fix",
@@ -417,10 +802,18 @@
     "date": "2026-01-08",
     "updated": "2026-01-08",
     "description": "A quick guide on how to fix the spawn ENAMETOOLONG error in gh-pages by switching to the latest GitHub version.",
-    "tags": ["gh-pages", "bug", "deployment", "npm", "fix"],
+    "tags": [
+      "gh-pages",
+      "bug",
+      "deployment",
+      "npm",
+      "fix"
+    ],
     "category": "dev",
     "filename": "gh-pages-enametoolong-fix.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -429,10 +822,18 @@
     "date": "2026-01-08",
     "updated": "2026-01-08",
     "description": "A comprehensive Git cheatsheet covering daily workflows, advanced history searching, and repository maintenance.",
-    "tags": ["git", "gist", "tutorial", "cheatsheet", "dev"],
+    "tags": [
+      "git",
+      "gist",
+      "tutorial",
+      "cheatsheet",
+      "dev"
+    ],
     "category": "gist",
     "filename": "git-cheatsheet-gist.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -441,10 +842,19 @@
     "date": "2026-01-06",
     "updated": "2026-01-06",
     "description": "Introducing Aether, a cloud-based, data-driven music player with a high-fidelity cyberpunk aesthetic and generative art.",
-    "tags": ["feat", "music", "cyberpunk", "react", "piml", "generative-art"],
+    "tags": [
+      "feat",
+      "music",
+      "cyberpunk",
+      "react",
+      "piml",
+      "generative-art"
+    ],
     "category": "feat",
     "filename": "aether-music-player.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/apps/aether.png"
   },
   {
@@ -453,10 +863,18 @@
     "date": "2025-12-24",
     "updated": "2025-12-24",
     "description": "A quick reference guide to the five main argument passing mechanisms in URLs and HTTP requests.",
-    "tags": ["gist", "http", "api", "url", "webdev"],
+    "tags": [
+      "gist",
+      "http",
+      "api",
+      "url",
+      "webdev"
+    ],
     "category": "gist",
     "filename": "5-ways-to-pass-arguments-in-a-url.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -465,10 +883,18 @@
     "date": "2025-12-23",
     "updated": "2025-12-23",
     "description": "A quick guide on using PowerShell to batch rename React files from .js to .jsx, ensuring your editor recognizes them correctly.",
-    "tags": ["gist", "powershell", "react", "dev", "script"],
+    "tags": [
+      "gist",
+      "powershell",
+      "react",
+      "dev",
+      "script"
+    ],
     "category": "gist",
     "filename": "renaming-js-to-jsx-gist.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -477,10 +903,19 @@
     "date": "2025-12-21",
     "updated": "2025-12-21",
     "description": "A rant about the WoW Corrupted Blood incident, how it modeled real-world pandemics, and the GDC lessons we ignored.",
-    "tags": ["rant", "wow", "gaming", "pandemic", "gdc", "glitch"],
+    "tags": [
+      "rant",
+      "wow",
+      "gaming",
+      "pandemic",
+      "gdc",
+      "glitch"
+    ],
     "category": "rant",
     "filename": "corrupted-blood-incident.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/posts/asset/symbol-flow.webp",
     "ogImage": "/images/posts/the_corrupted_blood_incident.webp"
   },
@@ -490,10 +925,18 @@
     "date": "2025-12-21",
     "updated": "2025-12-21",
     "description": "A technical deep dive into how I built the 3D 'Neural Net' graph visualization using React, Three.js, and force-directed graph theory.",
-    "tags": ["React", "Three.js", "Data Visualization", "Graph Theory", "UI/UX"],
+    "tags": [
+      "React",
+      "Three.js",
+      "Data Visualization",
+      "Graph Theory",
+      "UI/UX"
+    ],
     "category": "dev",
     "filename": "building-the-knowledge-graph.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/posts/asset/shapes-1.webp"
   },
   {
@@ -502,10 +945,17 @@
     "date": "2025-12-21",
     "updated": "2025-12-21",
     "description": "A technical deep dive into migrating from HashRouter to BrowserRouter using Static Site Generation (SSG) for perfect SEO on GitHub Pages.",
-    "tags": ["React", "SEO", "SSG", "WebDev"],
+    "tags": [
+      "React",
+      "SEO",
+      "SSG",
+      "WebDev"
+    ],
     "category": "dev",
     "filename": "routing-revolution-ssg-and-seo.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/posts/asset/poster-loom.webp"
   },
   {
@@ -514,10 +964,19 @@
     "date": "2025-12-20",
     "updated": "2025-12-20",
     "description": "How Fezcodex uses math, randomness, and recursion to turn code into art. Exploring GenerativeArt, BlendLab, and more.",
-    "tags": ["art", "generative", "math", "eli5", "algorithms", "blendlab"],
+    "tags": [
+      "art",
+      "generative",
+      "math",
+      "eli5",
+      "algorithms",
+      "blendlab"
+    ],
     "category": "dev",
     "filename": "art-generation-in-fezcodex.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/posts/asset/shapes-1.webp"
   },
   {
@@ -526,10 +985,18 @@
     "date": "2025-12-19",
     "updated": "2025-12-19",
     "description": "A short and simple explanation of the major architectural and aesthetic refactor of Fezcodex.",
-    "tags": ["feat", "refactor", "brutalist", "eli5", "update"],
+    "tags": [
+      "feat",
+      "refactor",
+      "brutalist",
+      "eli5",
+      "update"
+    ],
     "category": "feat",
     "filename": "brutalist-refactor.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/posts/asset/poster-loom.webp"
   },
   {
@@ -538,10 +1005,21 @@
     "date": "2025-12-17",
     "updated": "2025-12-17",
     "description": "Explore Fezcodex blogpost like never before with our new reading modes.",
-    "tags": ["feat", "blogpost", "modes", "reading", "fun", "vintage", "terminal", "dossier"],
+    "tags": [
+      "feat",
+      "blogpost",
+      "modes",
+      "reading",
+      "fun",
+      "vintage",
+      "terminal",
+      "dossier"
+    ],
     "category": "feat",
     "filename": "introducing-reading-experience.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg"
   },
   {
@@ -550,10 +1028,17 @@
     "date": "2025-12-17",
     "updated": "2025-12-17",
     "description": "Typeface vs. Font: The Music Analogy.",
-    "tags": ["rant", "font", "typeface", "eli5"],
+    "tags": [
+      "rant",
+      "font",
+      "typeface",
+      "eli5"
+    ],
     "category": "rant",
     "filename": "typeface-vs-font.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/brett-jordan-M9NVqELEtHU-unsplash.jpg"
   },
   {
@@ -562,10 +1047,17 @@
     "date": "2025-12-17",
     "updated": "2025-12-17",
     "description": "A ELI5 version of the irrelevant speech effect.",
-    "tags": ["rant", "music", "eli5", "psychological"],
+    "tags": [
+      "rant",
+      "music",
+      "eli5",
+      "psychological"
+    ],
     "category": "rant",
     "filename": "the-irrelevant-speech-effect.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/bhautik-patel-4R8CLj_mf2A-unsplash.jpg"
   },
   {
@@ -574,10 +1066,18 @@
     "date": "2025-12-15",
     "updated": "2025-12-15",
     "description": "A comprehensive comparison of React's most commonly used hooks, explaining when and why to use each.",
-    "tags": ["react", "hooks", "frontend", "javascript", "webdev"],
+    "tags": [
+      "react",
+      "hooks",
+      "frontend",
+      "javascript",
+      "webdev"
+    ],
     "category": "gist",
     "filename": "react-hooks-comparison.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -586,10 +1086,18 @@
     "date": "2025-12-12",
     "updated": "2025-12-12",
     "description": "How to trigger complex React interactions and render dynamic components directly from static Markdown links.",
-    "tags": ["react", "markdown", "ui/ux", "frontend", "patterns"],
+    "tags": [
+      "react",
+      "markdown",
+      "ui/ux",
+      "frontend",
+      "patterns"
+    ],
     "category": "dev",
     "filename": "react-magic-markdown-components.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/mick-haupt-k79O94hqj5U-unsplash.jpg"
   },
   {
@@ -598,10 +1106,18 @@
     "date": "2025-12-11",
     "updated": "2025-12-11",
     "description": "How I built a context-driven, global sliding side panel system for Fezcodex using React and Framer Motion.",
-    "tags": ["react", "framer-motion", "context-api", "ui/ux", "frontend"],
+    "tags": [
+      "react",
+      "framer-motion",
+      "context-api",
+      "ui/ux",
+      "frontend"
+    ],
     "category": "dev",
     "filename": "implementing-a-sliding-side-panel.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/red-shuheart-b7LOLPVrn4s-unsplash.jpg"
   },
   {
@@ -610,10 +1126,19 @@
     "date": "2025-12-02",
     "updated": "2025-12-02",
     "description": "A deep dive into the engineering behind the interactive Rotary Phone app: trigonometry, Framer Motion, and React state management.",
-    "tags": ["react", "framer-motion", "math", "interactive", "frontend", "project"],
+    "tags": [
+      "react",
+      "framer-motion",
+      "math",
+      "interactive",
+      "frontend",
+      "project"
+    ],
     "category": "dev",
     "filename": "building-a-digital-rotary-phone.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/mike-meyers--haAxbjiHds-unsplash.jpg"
   },
   {
@@ -622,10 +1147,19 @@
     "date": "2025-12-01",
     "updated": "2025-12-01",
     "description": "Introducing Nocturnote, a cross-platform, customizable text editor built with Electron, Svelte, and Tailwind CSS.",
-    "tags": ["electron", "svelte", "typescript", "tailwind", "project", "editor"],
+    "tags": [
+      "electron",
+      "svelte",
+      "typescript",
+      "tailwind",
+      "project",
+      "editor"
+    ],
     "category": "dev",
     "filename": "nocturnote.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
   },
   {
@@ -634,10 +1168,21 @@
     "date": "2025-11-28",
     "updated": "2025-11-29",
     "description": "Dive into the mesmerizing world of fractal trees. Learn the simple recursive rules that generate infinite digital flora, and explore the math behind their organic beauty.",
-    "tags": ["fractal", "recursion", "generative-art", "canvas", "math", "algorithms", "dev"],
+    "tags": [
+      "fractal",
+      "recursion",
+      "generative-art",
+      "canvas",
+      "math",
+      "algorithms",
+      "dev"
+    ],
     "category": "dev",
     "filename": "how-fractal-flora-works.txt",
-    "authors": ["fezcode", "Constellation"],
+    "authors": [
+      "fezcode",
+      "Constellation"
+    ],
     "image": "/images/projects/fractal-flora.png"
   },
   {
@@ -646,10 +1191,18 @@
     "date": "2025-11-28",
     "updated": "2025-11-28",
     "description": "Explore Fezcodex like never before with our new achievement system. Discover hidden features, unlock unique badges, and track your progress through the site's gamified world.",
-    "tags": ["feat", "gamification", "achievements", "update", "fun"],
+    "tags": [
+      "feat",
+      "gamification",
+      "achievements",
+      "update",
+      "fun"
+    ],
     "category": "feat",
     "filename": "the-fezcodex-achievement-system.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/fauzan-saari-AmhdN68wjPc-unsplash.jpg"
   },
   {
@@ -658,10 +1211,18 @@
     "date": "2025-11-27",
     "updated": "2025-11-27",
     "description": "Introducing Invert, Retro, Party, Mirror, and Noir modes. Discover how to access these hidden visual treats via the Command Palette and Settings.",
-    "tags": ["feat", "easter-eggs", "css", "design", "fun"],
+    "tags": [
+      "feat",
+      "easter-eggs",
+      "css",
+      "design",
+      "fun"
+    ],
     "category": "feat",
     "filename": "visual-modes-easter-eggs.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
   },
   {
@@ -670,10 +1231,18 @@
     "date": "2025-11-27",
     "updated": "2025-11-27",
     "description": "How I reduced the main bundle size by over 70% using code splitting and disabling source maps.",
-    "tags": ["react", "performance", "optimization", "lazy-loading", "craco"],
+    "tags": [
+      "react",
+      "performance",
+      "optimization",
+      "lazy-loading",
+      "craco"
+    ],
     "category": "dev",
     "filename": "reducing-react-app-size.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
   },
   {
@@ -682,10 +1251,18 @@
     "date": "2025-11-26",
     "updated": "2025-11-26",
     "description": "Learn how to perfectly center a title while keeping a side element positioned absolutely, ensuring a balanced layout regardless of content size.",
-    "tags": ["tailwind", "css", "frontend", "layout", "tutorial"],
+    "tags": [
+      "tailwind",
+      "css",
+      "frontend",
+      "layout",
+      "tutorial"
+    ],
     "category": "gist",
     "filename": "mastering-tailwind-centering.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -703,7 +1280,9 @@
     ],
     "category": "dev",
     "filename": "gaussian-elimination.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/antoine-dautry-05A-kdOH6Hw-unsplash.jpg"
   },
   {
@@ -712,10 +1291,16 @@
     "date": "2025-11-22",
     "updated": "2025-11-22",
     "description": "A quick fix for problems caused by Grub Customizer",
-    "tags": ["linux", "grub", "grub-customizer"],
+    "tags": [
+      "linux",
+      "grub",
+      "grub-customizer"
+    ],
     "category": "dev",
     "filename": "fixing-grub.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/visuals-2TS23o0-pUc-unsplash.jpg"
   },
   {
@@ -733,7 +1318,9 @@
     ],
     "category": "rant",
     "filename": "floating-point-precision-in-javascript.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/mohammad-rahmani-8qEB0fTe9Vw-unsplash.jpg"
   },
   {
@@ -742,10 +1329,17 @@
     "date": "2025-11-18",
     "updated": "2025-11-18",
     "description": "Explore Kaprekar's Routine, a fascinating number game that always leads to the constant 6174 for most four-digit numbers.",
-    "tags": ["mathematics", "number-theory", "kaprekar", "fun"],
+    "tags": [
+      "mathematics",
+      "number-theory",
+      "kaprekar",
+      "fun"
+    ],
     "category": "rant",
     "filename": "kaprekars-routine.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/elimende-inagella-4ApmfdVo32Q-unsplash.jpg"
   },
   {
@@ -754,10 +1348,18 @@
     "date": "2025-11-18",
     "updated": "2025-11-18",
     "description": "A philosophical rant on Chaos Theory, unpredictability, and the illusion of control.",
-    "tags": ["philosophy", "chaos-theory", "rant", "unpredictability"],
+    "tags": [
+      "philosophy",
+      "chaos-theory",
+      "rant",
+      "unpredictability"
+    ],
     "category": "rant",
     "filename": "chaos-theory-philosophical-rant.txt",
-    "authors": ["fezcode", "Constellation"],
+    "authors": [
+      "fezcode",
+      "Constellation"
+    ],
     "image": "/images/defaults/pascal-meier-1uVCTVSn-2o-unsplash.jpg"
   },
   {
@@ -779,7 +1381,9 @@
     ],
     "category": "dev",
     "filename": "decoding-the-digital-alphabet-base-xx-encodings.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/shreya-thomas-HyKOTe-gIkY-unsplash.jpg"
   },
   {
@@ -788,10 +1392,17 @@
     "date": "2025-11-14",
     "updated": "2025-11-14",
     "description": "A short explanation of git subtrees",
-    "tags": ["git", "subtree", "dnd", "stories"],
+    "tags": [
+      "git",
+      "subtree",
+      "dnd",
+      "stories"
+    ],
     "category": "dev",
     "filename": "fezcodex-stories-with-git-subtrees.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/joel-jasmin-forestbird-xzPMUMDDsfk-unsplash.jpg"
   },
   {
@@ -800,10 +1411,18 @@
     "date": "2025-11-13",
     "updated": "2025-11-13",
     "description": "A short explanation of publishing NPM packages",
-    "tags": ["npm", "piml", "data-format", "serialization", "markup"],
+    "tags": [
+      "npm",
+      "piml",
+      "data-format",
+      "serialization",
+      "markup"
+    ],
     "category": "dev",
     "filename": "publishing-to-npm.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -812,10 +1431,18 @@
     "date": "2025-11-12",
     "updated": "2025-11-14",
     "description": "A deep dive into PIML, a human-readable data serialization format, its syntax, data types, and comparison with JSON, YAML, and TOML.",
-    "tags": ["piml", "data-format", "serialization", "markup", "dev"],
+    "tags": [
+      "piml",
+      "data-format",
+      "serialization",
+      "markup",
+      "dev"
+    ],
     "category": "dev",
     "filename": "piml.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/piml.png"
   },
   {
@@ -824,10 +1451,18 @@
     "date": "2025-11-10",
     "updated": "2025-11-10",
     "description": "A deep dive into the implementation of the Image Toolkit app.",
-    "tags": ["canvas", "react", "css", "image-processing", "tailwind"],
+    "tags": [
+      "canvas",
+      "react",
+      "css",
+      "image-processing",
+      "tailwind"
+    ],
     "category": "dev",
     "filename": "image-toolkit-deep-dive.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -836,10 +1471,18 @@
     "date": "2025-11-09",
     "updated": "2025-11-09",
     "description": "A deep dive into the implementation of the Picker Wheel app.",
-    "tags": ["canvas", "react", "css", "animation", "tailwind"],
+    "tags": [
+      "canvas",
+      "react",
+      "css",
+      "animation",
+      "tailwind"
+    ],
     "category": "dev",
     "filename": "picker-wheel-deep-dive.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -848,10 +1491,17 @@
     "date": "2025-11-07",
     "updated": "2025-11-07",
     "description": "Demystifying Tailwind CSS",
-    "tags": ["tailwind", "css", "fezcodex", "react"],
+    "tags": [
+      "tailwind",
+      "css",
+      "fezcodex",
+      "react"
+    ],
     "category": "dev",
     "filename": "demystifying-tailwind-css.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -860,10 +1510,16 @@
     "date": "2025-10-29",
     "updated": "2025-10-29",
     "description": "Ubuntu 25.10",
-    "tags": ["ubuntu", "linux", "gnome"],
+    "tags": [
+      "ubuntu",
+      "linux",
+      "gnome"
+    ],
     "category": "dev",
     "filename": "ubuntu-once-more.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/gabriel-heinzer-4Mw7nkQDByk-unsplash.jpg"
   },
   {
@@ -879,7 +1535,9 @@
           "filename": "/react-of-fezcode/001-project-overview.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -888,7 +1546,9 @@
           "filename": "/react-of-fezcode/002-package-json-explained.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -897,7 +1557,9 @@
           "filename": "/react-of-fezcode/003-index-js-entry-point.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -906,7 +1568,9 @@
           "filename": "/react-of-fezcode/004-app-js-main-component.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -915,7 +1579,9 @@
           "filename": "/react-of-fezcode/005-blog-post-page-component.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -924,7 +1590,9 @@
           "filename": "/react-of-fezcode/006-react-basics-components-props.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -933,7 +1601,9 @@
           "filename": "/react-of-fezcode/007-react-hooks-usestate-useeffect.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -942,7 +1612,9 @@
           "filename": "/react-of-fezcode/008-react-context-usecontext.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -951,7 +1623,9 @@
           "filename": "/react-of-fezcode/009-routing-with-react-router-dom.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -960,7 +1634,9 @@
           "filename": "/react-of-fezcode/010-css-and-tailwind-css.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -969,7 +1645,9 @@
           "filename": "/react-of-fezcode/011-javascript-fundamentals.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -978,7 +1656,9 @@
           "filename": "/react-of-fezcode/012-html-structure.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -987,7 +1667,9 @@
           "filename": "/react-of-fezcode/013-document-fetching-api.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -996,7 +1678,9 @@
           "filename": "/react-of-fezcode/014-react-custom-hooks.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -1006,7 +1690,9 @@
           "date": "2025-10-25",
           "updated": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -1015,7 +1701,9 @@
           "filename": "/react-of-fezcode/016-react-refs-useref.txt",
           "date": "2025-10-25",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         },
         {
@@ -1025,12 +1713,16 @@
           "date": "2025-10-25",
           "updated": "2025-10-26",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/max-tcvetkov-CK_n5A2Mmpo-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -1056,7 +1748,9 @@
           ],
           "date": "2024-01-05",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -1074,12 +1768,16 @@
           ],
           "date": "2025-10-18",
           "category": "dev",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -1088,10 +1786,16 @@
     "date": "2025-10-21",
     "updated": "2025-11-03",
     "description": "An introduction to my D&D adventures.",
-    "tags": ["dnd", "rpg", "adventure"],
+    "tags": [
+      "dnd",
+      "rpg",
+      "adventure"
+    ],
     "category": "d&d",
     "filename": "dnd-content.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -1100,10 +1804,16 @@
     "date": "2025-10-16",
     "updated": "2025-10-16",
     "description": "a journey to create my first golang package",
-    "tags": ["go", "lib", "pkg.go.dev"],
+    "tags": [
+      "go",
+      "lib",
+      "pkg.go.dev"
+    ],
     "category": "dev",
     "filename": "do-i-need-to-create-a-lib-for-that.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -1112,10 +1822,17 @@
     "date": "2025-10-15",
     "updated": "2025-10-16",
     "description": "Why am I using HashRouter for github pages",
-    "tags": ["react", "webdev", "gh-pages", "router"],
+    "tags": [
+      "react",
+      "webdev",
+      "gh-pages",
+      "router"
+    ],
     "category": "dev",
     "filename": "hashrouter-vs-browserrouter.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -1123,10 +1840,15 @@
     "title": "About Fezcodex",
     "date": "2025-10-14",
     "updated": "2025-11-03",
-    "tags": ["writing", "updates"],
+    "tags": [
+      "writing",
+      "updates"
+    ],
     "category": "rant",
     "filename": "about-fezcodex.txt",
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -1134,7 +1856,11 @@
     "title": "Algorithms",
     "date": "2025-10-01",
     "description": "Algorithms",
-    "tags": ["cs", "algorithms", "graphs"],
+    "tags": [
+      "cs",
+      "algorithms",
+      "graphs"
+    ],
     "series": {
       "posts": [
         {
@@ -1142,10 +1868,16 @@
           "title": "Weighted Quick-Union with Path Compression",
           "date": "2025-11-04",
           "description": "Weighted Quick-Union with Path Compression",
-          "tags": ["cs", "algorithms", "graphs"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "graphs"
+          ],
           "category": "dev",
           "filename": "/algos/weighted-quick-union-with-path-compression.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -1153,10 +1885,17 @@
           "title": "Monotonic Stack with Daily Temperatures",
           "date": "2025-11-05",
           "description": "Monotonic Stack with Daily Temperatures",
-          "tags": ["cs", "algorithms", "stack", "monotonic-stack"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "stack",
+            "monotonic-stack"
+          ],
           "category": "dev",
           "filename": "/algos/monotonic-stack.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -1164,10 +1903,19 @@
           "title": "Lowest Common Ancestor with Binary Search Tree",
           "date": "2025-11-07",
           "description": "Lowest Common Ancestor with Binary Search Tree",
-          "tags": ["cs", "algorithms", "tree", "bst", "recursion", "iterative"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "tree",
+            "bst",
+            "recursion",
+            "iterative"
+          ],
           "category": "dev",
           "filename": "/algos/lowest-common-ancestor-of-a-binary-search-tree.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -1175,10 +1923,17 @@
           "title": "Find Minimum in Rotated Sorted Array",
           "date": "2025-11-08",
           "description": "LeetCode problem: Find Minimum in Rotated Sorted Array",
-          "tags": ["cs", "algorithms", "binary-search", "array"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "binary-search",
+            "array"
+          ],
           "category": "dev",
           "filename": "/algos/find-minimum-in-rotated-sorted-array.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
         },
         {
@@ -1186,10 +1941,17 @@
           "title": "Minimum Number of Steps to Make Two Strings Anagram",
           "date": "2025-11-17",
           "description": "LeetCode problem: Minimum Number of Steps to Make Two Strings Anagram",
-          "tags": ["cs", "algorithms", "string", "frequency-array"],
+          "tags": [
+            "cs",
+            "algorithms",
+            "string",
+            "frequency-array"
+          ],
           "category": "dev",
           "filename": "/algos/minimum-number-of-steps-to-make-two-strings-anagram.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
         },
         {
@@ -1208,12 +1970,16 @@
           ],
           "category": "dev",
           "filename": "/algos/leetcode-62-unique-paths.txt",
-          "authors": ["fezcode"],
+          "authors": [
+            "fezcode"
+          ],
           "image": "/images/defaults/kaja-kadlecova-e04R6GDZdvY-unsplash.jpg"
         }
       ]
     },
-    "authors": ["fezcode"],
+    "authors": [
+      "fezcode"
+    ],
     "image": "/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg"
   },
   {
@@ -1230,8 +1996,16 @@
           "filename": "/interview-journal/01-solid-principles.txt",
           "date": "2025-01-01",
           "category": "dev",
-          "tags": ["solid", "architecture", "interview", "clean-code", "dev"],
-          "authors": ["fezcode"]
+          "tags": [
+            "solid",
+            "architecture",
+            "interview",
+            "clean-code",
+            "dev"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "cpp-rule-of-5",
@@ -1239,8 +2013,17 @@
           "filename": "/interview-journal/02-cpp-rule-of-5.txt",
           "date": "2025-01-01",
           "category": "dev",
-          "tags": ["cpp", "cplusplus", "memory-management", "rule-of-five", "interview", "dev"],
-          "authors": ["fezcode"]
+          "tags": [
+            "cpp",
+            "cplusplus",
+            "memory-management",
+            "rule-of-five",
+            "interview",
+            "dev"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "max-heap-min-heap-golang",
@@ -1248,8 +2031,17 @@
           "filename": "/interview-journal/03-max-heap-min-heap-golang.txt",
           "date": "2026-02-13",
           "category": "dev",
-          "tags": ["golang", "go", "heap", "data-structures", "interview", "dev"],
-          "authors": ["fezcode"]
+          "tags": [
+            "golang",
+            "go",
+            "heap",
+            "data-structures",
+            "interview",
+            "dev"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         },
         {
           "slug": "sliding-window-and-fruit-into-baskets",
@@ -1257,11 +2049,22 @@
           "filename": "/interview-journal/04-sliding-window-and-fruit-into-baskets.txt",
           "date": "2026-02-17",
           "category": "dev",
-          "tags": ["golang", "go", "algorithms", "sliding-window", "interview", "dev"],
-          "authors": ["fezcode"]
+          "tags": [
+            "golang",
+            "go",
+            "algorithms",
+            "sliding-window",
+            "interview",
+            "dev"
+          ],
+          "authors": [
+            "fezcode"
+          ]
         }
       ]
     },
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   }
 ]

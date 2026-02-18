@@ -4,14 +4,15 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 
 ### Tools in the Suite
 
-1. **[atlas.todo](https://github.com/fezcode/atlas.todo)**: A fast, minimalist, local-first TUI task manager. Features Vim-bindings, smart grouping, and CLI quick-add support.
-2. **[atlas.stats](https://github.com/fezcode/atlas.stats)**: Real-time system monitoring. View CPU, memory, disk, and network usage in a responsive terminal interface.
-3. **[atlas.websearch](https://github.com/fezcode/atlas.websearch)**: A blazing fast, interactive CLI search tool. Search DuckDuckGo, Wikipedia, Hacker News, and Reddit with zero configuration.
-4. **[atlas.compass](https://github.com/fezcode/atlas.compass)**: A secure, local-first terminal password manager. Features AES-256-GCM encryption and Argon2id key derivation for high-stakes security.
-5. **[atlas.clock](https://github.com/fezcode/atlas.clock)**: A high-visibility world clock dashboard. Features millisecond-precision real-time counters and a searchable IANA timezone list.
-6. **[atlas.cam](https://github.com/fezcode/atlas.cam)**: A terminal webcam viewer and ASCII camera. Features real-time edge detection, image filters, and GIF recording.
-7. **[atlas.games](https://github.com/fezcode/atlas.games)**: A terminal-based game collection. Featuring Wilson's Revenge directly in your shell.
-8. **[atlas.bench](https://github.com/fezcode/atlas.bench)**: A high-performance benchmarking tool for terminal applications and command-line processes. Measure CPU, memory, and latency with millisecond precision.
+- 1. **[atlas.todo](https://github.com/fezcode/atlas.todo)**: A fast, minimalist, local-first TUI task manager. Features Vim-bindings, smart grouping, and CLI quick-add support.
+- 2. **[atlas.stats](https://github.com/fezcode/atlas.stats)**: Real-time system monitoring. View CPU, memory, disk, and network usage in a responsive terminal interface.
+- 3. **[atlas.websearch](https://github.com/fezcode/atlas.websearch)**: A blazing fast, interactive CLI search tool. Search DuckDuckGo, Wikipedia, Hacker News, and Reddit with zero configuration.
+- 4. **[atlas.compass](https://github.com/fezcode/atlas.compass)**: A secure, local-first terminal password manager. Features AES-256-GCM encryption and Argon2id key derivation for high-stakes security.
+- 5. **[atlas.clock](https://github.com/fezcode/atlas.clock)**: A high-visibility world clock dashboard. Features millisecond-precision real-time counters and a searchable IANA timezone list.
+- 6. **[atlas.cam](https://github.com/fezcode/atlas.cam)**: A terminal webcam viewer and ASCII camera. Features real-time edge detection, image filters, and GIF recording.
+- 7. **[atlas.games](https://github.com/fezcode/atlas.games)**: A terminal-based game collection. Featuring Wilson's Revenge directly in your shell.
+- 8. **[atlas.bench](https://github.com/fezcode/atlas.bench)**: A high-performance benchmarking tool for terminal applications and command-line processes. Measure CPU, memory, and latency with millisecond precision.
+- 9. **[atlas.radar](https://github.com/fezcode/atlas.radar)**: A high-performance Git workspace monitor. Scan, monitor, and sync multiple repositories simultaneously with a beautiful, minimalist CLI.
 
 ### Why Atlas?
 

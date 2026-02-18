@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 17 Feb 2026 16:17:10 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 18 Feb 2026 01:37:53 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 17 Feb 2026 16:17:09 GMT</pubDate>
+        <pubDate>Wed, 18 Feb 2026 01:37:53 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -402,6 +402,76 @@ Let&#39;s think step by step.</p>
 </tbody></table>
 <p>In the next module, we will explore <strong>Persona &amp; Context</strong>, learning how to make the model adopt specific roles and handle large amounts of information.</p>
 <p><a href="https://fezcode.com/blog/reasoning-and-logic">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[gobake: The Build Orchestrator Go Was Missing]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/gobake-go-build-orchestrator</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/gobake-go-build-orchestrator</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>gobake: The Build Orchestrator Go Was Missing</h1>
+<p><a href="https://fezcode.com/blog/gobake-go-build-orchestrator">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Bridging the Gap: How We Built the Fezcodex MCP Server]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/building-the-fezcodex-mcp-server</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/building-the-fezcodex-mcp-server</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Bridging the Gap: How We Built the Fezcodex MCP Server</h1>
+<p><a href="https://fezcode.com/blog/building-the-fezcodex-mcp-server">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Model Context Protocol (MCP): Bridging the Gap Between AI and Data]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/model-context-protocol-mcp</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/model-context-protocol-mcp</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 18 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Model Context Protocol (MCP): Bridging the Gap Between AI and Data</h1>
+<p>In the rapidly evolving landscape of Artificial Intelligence, one of the biggest hurdles has been the &quot;last mile&quot; connectivity: how do we give AI models safe, standardized, and efficient access to the real-world data and tools they need to be truly useful?</p>
+<p>Enter the <strong>Model Context Protocol (MCP)</strong>.</p>
+<p>Introduced by Anthropic, MCP is an open standard that enables developers to build secure, two-way connections between their data sources and AI-powered tools. Think of it as USB for AI models.</p>
+<h2>What is MCP?</h2>
+<p>MCP is an open-source protocol that allows AI models (like Claude, GPT, or local Llama instances) to interact with external data and systems using a universal interface. Before MCP, every AI integration was a &quot;snowflake&quot;—a custom-built piece of code that was brittle and hard to maintain.</p>
+<p>MCP standardizes this interaction into three main components:</p>
+<ol>
+<li><strong>MCP Hosts:</strong> The applications (like Claude Desktop, IDEs, or custom AI agents) that want to access data.</li>
+<li><strong>MCP Clients:</strong> The interface within the host that communicates with servers.</li>
+<li><strong>MCP Servers:</strong> Lightweight programs that expose specific data or tools (e.g., a GitHub server, a Google Drive server, or a local file system server).</li>
+</ol>
+<h2>Why Does It Matter?</h2>
+<h3>1. Standardization</h3>
+<p>Instead of writing custom code for every tool, you write an MCP server once, and it works with any MCP-compatible host. This creates a &quot;plug-and-play&quot; ecosystem.</p>
+<h3>2. Security</h3>
+<p>MCP is designed with security in mind. Servers only expose the specific tools and resources they are programmed to, and hosts can control exactly what the model can see and do.</p>
+<h3>3. Real-time Data</h3>
+<p>AI models are often limited by their training data cutoff. MCP allows them to pull in live data—from your local files, your database, or your Slack channels—right when they need it.</p>
+<h2>The MCP Hub (Smithery &amp; Beyond)</h2>
+<p>Is there a hub for it? <strong>Yes.</strong></p>
+<p>The ecosystem is growing fast. <strong>Smithery</strong> and various GitHub repositories act as community hubs where developers share pre-built MCP servers. You can find servers for:</p>
+<ul>
+<li><strong>Database access:</strong> PostgreSQL, MySQL, SQLite.</li>
+<li><strong>Developer tools:</strong> GitHub, GitLab, Terminal, Sentry.</li>
+<li><strong>Productivity:</strong> Google Drive, Slack, Notion.</li>
+<li><strong>Web browsing:</strong> Brave Search, Puppeteer.</li>
+</ul>
+<h2>Is it a Standard?</h2>
+<p>Yes, it is designed to be an <strong>open standard</strong>. While initiated by Anthropic, it is open-source and intended to be adopted by the entire AI industry. We are already seeing IDEs (like Cursor and VS Code via extensions) and other AI providers starting to embrace it.</p>
+<h2>Architecture at a Glance</h2>
+<pre><code class="language-mermaid">graph LR
+    A[AI Model] --&gt; B[MCP Host]
+    B --&gt; C[MCP Client]
+    C &lt;--&gt; D[MCP Server]
+    D &lt;--&gt; E[(Data / Tool)]
+</code></pre>
+<p>In this architecture, the <strong>MCP Server</strong> is the star. It defines &quot;Resources&quot; (data) and &quot;Tools&quot; (actions) that the model can use.</p>
+<h2>Getting Started</h2>
+<p>If you want to dive deeper, you can start building your own MCP server using the official TypeScript or Python SDKs. The protocol uses JSON-RPC for communication, making it lightweight and easy to implement.</p>
+<p>Stay tuned for our <strong>Detailed MCP Course</strong> where we build a custom server from scratch!</p>
+<p><a href="https://fezcode.com/blog/model-context-protocol-mcp">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Structure & Formatting: Taming the Output]]></title>

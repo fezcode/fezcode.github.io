@@ -14,7 +14,7 @@ go install github.com/fezcode/gobake/cmd/gobake@latest
     gobake init
     ```
 
-    This creates a `recipe.piml` and a `Recipe.go`.
+    The `init` command is smart: it handles `go mod init` (if needed), scaffolds your `recipe.piml` and `Recipe.go`, and runs `go mod tidy` to automatically pull in the `github.com/fezcode/gobake` library as a dependency.
 
 2.  **Run a task:**
 
@@ -26,7 +26,7 @@ go install github.com/fezcode/gobake/cmd/gobake@latest
 
 ### Commands
 
-*   `gobake init`: Scaffolds a new `Recipe.go` and `recipe.piml`.
+*   `gobake init`: Scaffolds a new `Recipe.go` and `recipe.piml`. Handles `go.mod` and dependencies.
 *   `gobake version`: Displays the current version of gobake.
 *   `gobake help`: Displays the list of commands and available tasks.
 *   `gobake bump [patch|minor|major]`: Increments the version in `recipe.piml`.
@@ -34,15 +34,23 @@ go install github.com/fezcode/gobake/cmd/gobake@latest
 ### The `Recipe.go` File
 
 ```go
-package main
-import "github.com/fezcode/gobake"
+//go:build gobake
+package bake_recipe
 
-func main() {
-	bake := gobake.NewEngine()
-	bake.LoadRecipeInfo("recipe.piml")
-	bake.Task("build", "Builds the binary", func(ctx *gobake.Context) error {
-		return ctx.BakeBinary("linux", "amd64", "bin/app")
-	})
-	bake.Execute()
+import (
+        "fmt"
+        "github.com/fezcode/gobake"
+)
+
+func Run(bake *gobake.Engine) error {
+        if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
+                return fmt.Errorf("error loading recipe.piml: %v", err)
+        }
+
+        bake.Task("build", "Builds the binary", func(ctx *gobake.Context) error {
+                return ctx.BakeBinary("linux", "amd64", "bin/app")
+        })
+
+        return nil
 }
 ```

@@ -6,3 +6,4 @@
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.cam
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.games
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.bench "ls" "dir"
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.radar --show unclean --watch ..
