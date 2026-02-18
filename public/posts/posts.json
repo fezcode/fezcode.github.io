@@ -1,5 +1,25 @@
 [
   {
+    "slug": "gobake-go-build-orchestrator",
+    "title": "gobake: The Build Orchestrator Go Was Missing",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "Introducing gobake, a Go-native build orchestrator that replaces Makefiles with type-safe Go recipes.",
+    "tags": [
+      "go",
+      "golang",
+      "build-system",
+      "automation",
+      "gobake",
+      "devops"
+    ],
+    "category": "dev",
+    "filename": "gobake-go-build-orchestrator.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "building-the-fezcodex-mcp-server",
     "title": "Bridging the Gap: How We Built the Fezcodex MCP Server",
     "date": "2026-02-18",

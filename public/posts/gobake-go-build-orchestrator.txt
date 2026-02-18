@@ -1,0 +1,124 @@
+# gobake: The Build Orchestrator Go Was Missing
+
+If you've spent any significant time in the JavaScript ecosystem, you know the comfort of `package.json`. It's the source of truth for your project—metadata, dependencies, and a unified task runner. If you're coming from C++, you might have a love-hate relationship with CMake. But what about Go?
+
+Go has an incredible toolchain (`go build`, `go test`, `go install`), but it lacks a standardized **orchestrator**. When your project grows beyond a single binary, you inevitably reach for `Makefile` or a collection of brittle `.sh` scripts.
+
+That's why I built **gobake**.
+
+## The Gap in the Go Toolchain
+
+Go is famous for its "batteries included" philosophy. However, once you need to manage:
+1.  **Project Metadata:** Versioning, authors, and descriptions.
+2.  **Task Orchestration:** Running tests, then building, then tagging a release.
+3.  **Cross-Platform Binaries:** Building for multiple architectures with specific flags.
+4.  **Dev-Tool Management:** Ensuring everyone on the team has the same linting tools.
+
+...you're suddenly out of the Go world and back into the wild west of shell scripts. `gobake` fixes this by allowing you to write your build logic in the language you already love: **Go**.
+
+## What is gobake?
+
+`gobake` is a Go-native build orchestrator. It replaces static configuration with a type-safe `Recipe.go` file. It's inspired by projects like `nob.h`, but tailored specifically for the Gopher workflow.
+
+```mermaid
+graph TD
+    A["recipe.piml (Metadata)"] --> B["gobake Engine"]
+    C["Recipe.go (Logic)"] --> B
+    B --> D{Task Runner}
+    D --> E["Build Binary"]
+    D --> F["Run Tests"]
+    D --> G["Git Tag/Release"]
+    D --> H["Auto-Versioning"]
+```
+
+### The Anatomy of a Baked Project
+
+A `gobake` project centers around two files:
+
+1.  **`recipe.piml`**: A [PIML](https://fezcode.github.io/posts/piml) file for project metadata.
+2.  **`Recipe.go`**: A Go file where you define your tasks and logic.
+
+### Type-Safe Tasks
+
+Instead of worrying about tab vs. space in a Makefile, you define tasks with a clean Go API. Since version 0.3.0, we use the `//go:build gobake` tag to ensure your recipe stays separated from your main application logic while remaining perfectly valid Go:
+
+```go
+//go:build gobake
+package bake_recipe
+
+import (
+    "fmt"
+    "github.com/fezcode/gobake"
+)
+
+func Run(bake *gobake.Engine) error {
+    bake.LoadRecipeInfo("recipe.piml")
+
+    bake.Task("build", "Builds the binary", func(ctx *gobake.Context) error {
+        ctx.Log("Building v%s...", bake.Info.Version)
+        return ctx.Run("go", "build", "-o", "bin/app", "./cmd/main.go")
+    })
+
+    bake.TaskWithDeps("release", "Build and Tag", []string{"build"}, func(ctx *bake.Context) error {
+        return ctx.Run("git", "tag", "v"+bake.Info.Version)
+    })
+
+    return nil
+}
+```
+
+## Why Choose gobake?
+
+### 1. Zero New Syntax
+If you know Go, you know `gobake`. You don't need to learn the esoteric syntax of `make` or the sprawling configuration of a CI/CD YAML just to run a local build.
+
+### 2. Built-in Versioning
+Managing semantic versions is a chore. `gobake` handles it natively:
+```bash
+gobake bump patch  # Increments 1.0.0 to 1.0.1 in recipe.piml
+```
+
+### 3. Dependency & Tool Management
+`gobake` can manage your `go get` dependencies and development tools (like `golangci-lint`) directly through the CLI, keeping your `recipe.piml` updated as the source of truth. The `init` command now automatically handles `go mod` setup and library acquisition.
+
+### 4. Cross-Compilation Made Easy
+Baking binaries for different platforms is a first-class citizen:
+```go
+ctx.BakeBinary("linux", "amd64", "dist/app-linux")
+```
+
+## Getting Started
+
+To use `gobake`, you need two things: the **CLI tool** for running tasks and the **library** as a dependency in your project (since your `Recipe.go` will import it).
+
+### 1. Install the CLI
+```bash
+go install github.com/fezcode/gobake/cmd/gobake@latest
+```
+
+### 2. Initialize Your Project
+The easiest way to get started is with the `init` command (refined in v0.3.0):
+```bash
+gobake init
+```
+
+The `init` command is smart: it handles `go mod init` (if needed), scaffolds your `recipe.piml` and `Recipe.go`, and runs `go mod tidy` to automatically pull in the `github.com/fezcode/gobake` library as a dependency.
+
+If you are adding it to an existing project and want to do it manually:
+```bash
+go get github.com/fezcode/gobake
+```
+
+And run your first task:
+```bash
+gobake build
+```
+
+## Conclusion
+
+Go deserves a build system that feels like Go. `gobake` aims to provide that missing orchestration layer—giving you the "package.json feel" without sacrificing the performance and type-safety of the Go ecosystem.
+
+Check it out on GitHub: [github.com/fezcode/gobake](https://github.com/fezcode/gobake)
+Or visit the project page: [/projects/gobake](/projects/gobake)
+
+Happy baking! 🥐
