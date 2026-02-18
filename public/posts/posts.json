@@ -1,5 +1,43 @@
 [
   {
+    "slug": "tag-file-systems-explained-go-implementation",
+    "title": "Escape the Hierarchy Trap: How Tag File Systems Work",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "Ditch the folders! A deep dive into Tag-based File Systems, why hierarchical organization is failing us, and how FUSE and databases make tagging possible. Includes a Go implementation!",
+    "tags": [
+      "filesystems",
+      "go",
+      "databases",
+      "architecture",
+      "productivity"
+    ],
+    "category": "dev",
+    "filename": "tag-file-systems-explained-go-implementation.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "dht-distributed-hash-tables-go-educational-guide",
+    "title": "The Chaos Coordinator: Mastering Distributed Hash Tables (DHT)",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "A deep dive into Distributed Hash Tables (DHTs), Kademlia, XOR metrics, and building decentralized routing in Go. Fun, fast, and very educational.",
+    "tags": [
+      "go",
+      "distributed-systems",
+      "p2p",
+      "networking",
+      "dht"
+    ],
+    "category": "dev",
+    "filename": "dht-distributed-hash-tables-go-educational-guide.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "gobake-go-build-orchestrator",
     "title": "gobake: The Build Orchestrator Go Was Missing",
     "date": "2026-02-18",
