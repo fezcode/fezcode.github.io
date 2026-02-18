@@ -5,15 +5,15 @@
 This recipe builds your application for Windows, Linux, and macOS.
 
 ```go
-package main
+//go:build gobake
+package bake_recipe
 
 import (
     "fmt"
     "github.com/fezcode/gobake"
 )
 
-func main() {
-    bake := gobake.NewEngine()
+func Run(bake *gobake.Engine) error {
     bake.LoadRecipeInfo("recipe.piml")
 
     bake.Task("release", "Build for all platforms", func(ctx *gobake.Context) error {
@@ -28,9 +28,9 @@ func main() {
         }
 
         for _, p := range platforms {
-            output := fmt.Sprintf("dist/%s-%s-%s%s", 
+            output := fmt.Sprintf("dist/%s-%s-%s%s",
                 bake.Info.Name, p.OS, p.Arch, p.Ext)
-            
+
             err := ctx.BakeBinary(p.OS, p.Arch, output, "-ldflags", "-s -w")
             if err != nil {
                 return err
@@ -39,7 +39,7 @@ func main() {
         return nil
     })
 
-    bake.Execute()
+    return nil
 }
 ```
 
@@ -56,12 +56,12 @@ This recipe installs `stringer` and uses it to generate code before building.
 
 **Recipe.go:**
 ```go
-package main
+//go:build gobake
+package bake_recipe
 
 import "github.com/fezcode/gobake"
 
-func main() {
-    bake := gobake.NewEngine()
+func Run(bake *gobake.Engine) error {
     bake.LoadRecipeInfo("recipe.piml")
 
     bake.Task("generate", "Generates code", func(ctx *gobake.Context) error {
@@ -73,13 +73,10 @@ func main() {
         return ctx.Run("go", "generate", "./...")
     })
 
-    bake.Task("build", "Builds app", func(ctx *gobake.Context) error {
-        if err := ctx.Run("gobake", "generate"); err != nil {
-            return err
-        }
+    bake.TaskWithDeps("build", "Builds app", []string{"generate"}, func(ctx *gobake.Context) error {
         return ctx.Run("go", "build", ".")
     })
 
-    bake.Execute()
+    return nil
 }
 ```
