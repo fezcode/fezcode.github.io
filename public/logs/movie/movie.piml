@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-02-18
+    (link) https://www.imdb.com/title/tt0086935/
+    (rating) 3
+    (slug) balkanski-spijun-1984
+    (title) Balkanski špijun (1984)
+    (image) 
+    (description) A legendary Yugoslav dark comedy about a paranoid man who becomes convinced his neighbor is a foreign spy, leading to a hilarious yet chilling spiral of surveillance.
+    (director) Dušan Kovačević, Božidar Nikolić
+  > (item)
+    (category) Movie
     (date) 2026-02-06
     (link) https://www.imdb.com/title/tt0118715/
     (director) Joel Coen, Ethan Coen
@@ -8,7 +18,6 @@
     (slug) the-big-lebowski
     (title) The Big Lebowski (1998)
     (description) Jeffrey "The Dude" Lebowski, a Los Angeles slacker and avid bowler, is mistakenly assaulted and finds himself caught in a complex kidnapping scheme involving a millionaire with the same name. An absurdist take on classic noir.
-
   > (item)
     (category) Movie
     (date) 2026-02-05
@@ -18,7 +27,6 @@
     (slug) eternal-sunshine-of-the-spotless-mind-2004
     (title) Eternal Sunshine of the Spotless Mind (2004)
     (description) Eternal Sunshine of the Spotless Mind (2004) is a romantic sci-fi drama directed by Michel Gondry. It follows an estranged couple who erase each other from their memories, only to rediscover their love.
-
   > (item)
     (category) Movie
     (date) 2026-02-05
@@ -28,7 +36,6 @@
     (slug) crash-2004
     (title) Crash (2004)
     (description) Crash (2004) is a drama film directed by Paul Haggis that explores racial and social tensions in Los Angeles through the interweaving stories of strangers.
-
   > (item)
     (category) Movie
     (date) 2026-01-30
@@ -38,7 +45,6 @@
     (slug) children-of-men-2006
     (title) Children of Men (2006)
     (description) In 2027, in a chaotic world in which women have become somehow infertile, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea. The atmosphere is perfect, the set is superb, and the dystopian setup is consistently brilliant.
-
   > (item)
     (category) Movie
     (date) 2026-01-17
@@ -48,7 +54,6 @@
     (slug) unleashed-2005
     (title) Unleashed (2005)
     (description) A man raised as a fighting dog by a mobster escapes and starts a new life with a blind piano tuner and his stepdaughter, but his past soon catches up with him.
-
   > (item)
     (category) Movie
     (date) 2026-01-17
@@ -58,7 +63,6 @@
     (slug) mr-and-mrs-smith-2005
     (title) Mr. & Mrs. Smith (2005)
     (description) A bored married couple is surprised to learn that they are both assassins working for competing agencies, and that they have been assigned to kill each other.
-
   > (item)
     (category) Movie
     (date) 2025-12-26
@@ -69,7 +73,6 @@
     (title) Meet Joe Black (1998)
     (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
     (description) Meet Joe Black (1998) is a romantic fantasy drama directed by Martin Brest. Death, taking the form of a young man (Brad Pitt), visits a media tycoon (Anthony Hopkins) and asks to be shown life on Earth in exchange for prolonging the tycoon's life.
-
   > (item)
     (category) Movie
     (date) 2025-12-25
@@ -80,7 +83,6 @@
     (title) Jerry Maguire (1996)
     (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
     (description) Jerry Maguire (1996) is a romantic comedy-drama written and directed by Cameron Crowe. It follows a successful sports agent who has a moral epiphany, gets fired, and attempts to rebuild his career with his one remaining client and a single mother who believes in his vision. Famous for iconic lines and Tom Cruise's charismatic performance.
-
   > (item)
     (category) Movie
     (date) 2025-12-25
@@ -91,7 +93,6 @@
     (title) Tucker & Dale vs. Evil (2010)
     (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
     (description) Tucker & Dale vs. Evil (2010) is a horror comedy that subverts slasher tropes. It follows two well-meaning hillbillies who are mistaken for killers by a group of college students. Celebrated for its clever script, great performances by Alan Tudyk and Tyler Labine, and its perfect blend of gore and humor.
-
   > (item)
     (category) Movie
     (date) 2025-12-12
@@ -102,7 +103,6 @@
     (title) Taxi Driver (1976)
     (image) /images/logs/movie/taxi-driver-1976.jpg
     (description) Travis Bickle is a mentally unstable Vietnam War veteran who takes a job as a night-time taxi driver in New York City. Suffering from chronic insomnia and deep loneliness, he becomes increasingly disgusted by the crime and decay he sees on the streets at night. As his mental state deteriorates, he fixates on "saving" a young child prostitute named Iris and plotting an assassination of a presidential candidate, leading to a violent climax where he attempts to wash the "scum" off the streets.
-
   > (item)
     (category) Movie
     (date) 2025-11-29
@@ -113,7 +113,6 @@
     (title) Caught Stealing (2025)
     (image) /images/logs/movie/caught-stealing.png
     (description) Burned-out ex-baseball player Hank Thompson unexpectedly finds himself embroiled in a dangerous struggle for survival amidst the criminal underbelly of 1990s New York City, forced to navigate a treacherous underworld he never imagined.
-
   > (item)
     (category) Movie
     (date) 2024-11-28
@@ -124,7 +123,6 @@
     (title) Lucky Number Slevin (2006)
     (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
     (description) Lucky Number Slevin (2006) is a neo-noir crime thriller directed by Paul McGuigan. It follows Slevin, who finds himself caught in a war between two rival crime bosses, while also being hunted by a notorious assassin and investigated by a persistent detective. Praised for its intricate plot, witty dialogue, stylish visuals, and surprise twists.
-
   > (item)
     (category) Movie
     (date) 2024-11-28
@@ -135,7 +133,6 @@
     (title) Lock, Stock and Two Smoking Barrels (1998)
     (image) /images/defaults/movie/myke-simon-atsUqIm3wxo-unsplash.jpg
     (description) Lock, Stock and Two Smoking Barrels (1998) is a crime comedy film directed by Guy Ritchie. It follows four friends who lose a large sum of money in a rigged card game and must find a way to pay it back within a week, leading them into a series of escalating criminal endeavors. Praised for its stylish direction, witty dialogue, and intricate interlocking plotlines.
-
   > (item)
     (category) Movie
     (date) 2023-11-28
@@ -146,7 +143,6 @@
     (title) John Wick: Chapter 4 (2023)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
     (description) John Wick: Chapter 4 (2023) is an action thriller directed by Chad Stahelski. John Wick uncovers a path to defeating the High Table, but before he can earn his freedom, he must face a new enemy with powerful alliances across the globe. Praised for its groundbreaking action set pieces, epic scale, and a satisfying culmination of the franchise's mythology.
-
   > (item)
     (category) Movie
     (date) 2021-01-01
@@ -157,7 +153,6 @@
     (title) John Wick: Chapter 3 – Parabellum (2019)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
     (description) John Wick: Chapter 3 – Parabellum (2019) is an action thriller directed by Chad Stahelski. Picking up directly after Chapter 2, John Wick is excommunicado and on the run in New York City, targeted by the world's most ruthless assassins. Praised for its breathtaking action sequences, further expansion of the intricate world of the High Table, and unwavering commitment to Wick's desperate fight for survival.
-
   > (item)
     (category) Movie
     (date) 2020-01-01
@@ -168,7 +163,6 @@
     (title) John Wick: Chapter 2 (2017)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
     (description) John Wick: Chapter 2 (2017) is an action thriller directed by Chad Stahelski, and the sequel to John Wick. It sees legendary hitman John Wick forced back into the criminal underworld to repay a debt, leading him to Rome and a global network of assassins. Praised for expanding the intricate world-building, escalating the action choreography, and deepening the mythology of the High Table.
-
   > (item)
     (category) Movie
     (date) 2019-01-01
@@ -179,7 +173,6 @@
     (title) John Wick: Chapter 1 (2014)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
     (description) John Wick: Chapter 1 (2014) is an action thriller directed by Chad Stahelski. It follows a legendary hitman, John Wick, who is forced out of retirement after his car is stolen and his puppy, a final gift from his deceased wife, is killed. Praised for its stylish action choreography, minimalist storytelling, and unique world-building of an assassin underworld.
-
   > (item)
     (category) Movie
     (date) 2025-08-28
@@ -190,7 +183,6 @@
     (title) Heat (1995)
     (image) /images/logs/movie/heat.jpg
     (description) Heat (1995) is a crime drama directed by Michael Mann, featuring the iconic first on-screen pairing of Al Pacino and Robert De Niro. It follows a meticulous professional thief, Neil McCauley, and the obsessive LAPD detective, Vincent Hanna, hunting him. Celebrated for its realistic action sequences, complex characterizations, and atmospheric portrayal of Los Angeles.
-
   > (item)
     (category) Movie
     (date) 2023-09-09
@@ -201,7 +193,6 @@
     (title) Decision to Leave (2022)
     (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
     (description) Decision to Leave (2022) is a romantic mystery film directed by Park Chan-wook. It follows a detective who falls for a mysterious widow while investigating her husband's death. Praised for its intricate plot, stunning visuals, and the director's signature style that blends suspense, romance, and dark humor. Awarded Best Director at Cannes Film Festival.
-
   > (item)
     (category) Movie
     (date) 2021-05-05
@@ -212,7 +203,6 @@
     (title) Blade (1998)
     (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
     (description) Blade (1998) is a superhero horror film based on the Marvel Comics character. Wesley Snipes stars as Eric Brooks, a half-human, half-vampire 'Daywalker' who hunts vampires to protect humanity. Credited with paving the way for the modern superhero film genre with its dark, gritty tone, stylish action, and innovative take on vampire lore.
-
   > (item)
     (category) Movie
     (date) 2016-01-01
@@ -223,7 +213,6 @@
     (title) 28 Weeks Later (2007)
     (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
     (description) 28 Weeks Later (2007) is a post-apocalyptic horror film directed by Juan Carlos Fresnadillo, and a sequel to 28 Days Later. It depicts the attempt to re-establish civilization in London after the Rage virus outbreak, which quickly goes awry. Praised for its intense action, bleak atmosphere, and terrifying portrayal of human nature under duress.
-
   > (item)
     (category) Movie
     (date) 2016-01-01
@@ -234,7 +223,6 @@
     (title) Manchester By The Sea (2016)
     (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
     (description) Manchester By The Sea (2016) is an American drama film written and directed by Kenneth Lonergan. The film stars Casey Affleck as Lee Chandler, a quiet and emotionally withdrawn handyman living in Boston.
-
   > (item)
     (category) Movie
     (date) 2016-01-01
@@ -245,7 +233,6 @@
     (title) 28 Days Later (2002)
     (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
     (description) 28 Days Later (2002) is a post-apocalyptic horror film directed by Danny Boyle. It follows a bicycle courier who awakens from a coma to find London deserted after a rapidly spreading 'Rage' virus has turned most of the population into bloodthirsty infected. Credited with revitalizing the zombie genre with its fast-moving infected and stark, unsettling atmosphere.
-
   > (item)
     (category) Movie
     (date) 2025-11-28
@@ -256,7 +243,6 @@
     (title) 22 Jump Street (2014)
     (image) /images/logs/movie/ice-cube.jpg
     (description) 22 Jump Street (2014) is an action-comedy film directed by Phil Lord and Christopher Miller, and the sequel to 21 Jump Street. It stars Jonah Hill and Channing Tatum as undercover police officers who this time go undercover in a college to bust a new drug ring. Praised for its self-aware humor, continuation of the comedic chemistry, and clever deconstruction of sequel tropes.
-
   > (item)
     (category) Movie
     (date) 2025-11-28
@@ -267,7 +253,6 @@
     (title) 21 Jump Street (2012)
     (image) /images/logs/movie/ice-cube.jpg
     (description) 21 Jump Street (2012) is an action-comedy film directed by Phil Lord and Christopher Miller, based on the TV series. It stars Jonah Hill and Channing Tatum as two incompetent police officers who go undercover as high school students to bust a drug ring. Praised for its unexpected humor, satirical take on high school tropes, and chemistry between the leads.
-
   > (item)
     (category) Movie
     (date) 2025-11-28
@@ -278,7 +263,6 @@
     (title) No Country for Old Men
     (image) /images/logs/movie/no-country-for-old-men.webp
     (description) No Country for Old Men (2007) is a neo-western thriller directed by the Coen Brothers. Set in 1980 rural Texas, it follows a hunter who stumbles upon a drug deal gone wrong, leading him into a relentless pursuit by a psychopathic killer. Critically acclaimed for its tense atmosphere, philosophical depth, and unflinching portrayal of violence.
-
   > (item)
     (category) Movie
     (date) 2025-11-28
@@ -289,7 +273,6 @@
     (title) Collateral (2004)
     (image) /images/logs/movie/collateral.jpg
     (description) Collateral (2004) is a neo-noir action thriller directed by Michael Mann. It follows a hitman, Vincent (Tom Cruise), who takes a Los Angeles taxi driver, Max (Jamie Foxx), hostage for a night of contract killings. Praised for its intense atmosphere, stunning cinematography of LA nights, and compelling performances from its leads.
-
   > (item)
     (category) Movie
     (date) 2025-10-16
