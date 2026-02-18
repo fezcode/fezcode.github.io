@@ -1,6 +1,15 @@
 (logs)
   > (item)
     (category) Event
+    (date) 2026-02-17
+    (rating) 5
+    (slug) galatasaray-juventus-2026
+    (title) Galatasaray - Juventus (17.02.2026)
+    (description) An incredible comeback by Galatasaray against Juventus. Features Osimhen and Noa Lang's great performance.
+    (link) https://www.youtube.com/watch?v=IRjyK-YS3f8
+
+  > (item)
+    (category) Event
     (by) Geoff Keighley
     (date) 2025-12-12
     (link) https://www.twitch.tv/thegameawards
