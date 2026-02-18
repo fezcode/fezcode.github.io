@@ -36,6 +36,16 @@ async function writePosts(posts) {
   await fs.writeFile(POSTS_JSON, JSON.stringify(posts, null, 2), 'utf-8');
 }
 
+function getYoutubeEmbedUrl(url) {
+  if (!url) return null;
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
+  const match = url.match(regExp);
+  if (match && match[2].length === 11) {
+    return `https://www.youtube.com/embed/${match[2]}`;
+  }
+  return null;
+}
+
 async function createPost(args) {
   const { title, slug, description, content, tags, category, image } = args;
 
@@ -84,7 +94,7 @@ async function createPost(args) {
 }
 
 async function createDiscoveryLog(args) {
-  const { type, title, slug, rating, description, content, date, ...otherFields } = args;
+  const { type, title, slug, rating, description, content, date, link, image, ...otherFields } = args;
 
   // Validate slug
   if (!/^[a-z0-9-]+$/.test(slug)) {
@@ -92,7 +102,7 @@ async function createDiscoveryLog(args) {
   }
 
   const typeLower = type.toLowerCase();
-  const categoryDir = path.join(LOGS_DIR, typeLower);
+  const categoryDir = path.resolve(LOGS_DIR, typeLower);
   const pimlPath = path.join(categoryDir, `${typeLower}.piml`);
 
   // Ensure directory exists
@@ -124,9 +134,11 @@ async function createDiscoveryLog(args) {
   const newItem = {
     category: type.charAt(0).toUpperCase() + type.slice(1),
     date: dateStr,
+    link: link || '',
     rating: parseInt(rating, 10),
     slug,
     title,
+    image: image || '',
     description,
     ...otherFields
   };
@@ -138,13 +150,21 @@ async function createDiscoveryLog(args) {
   const newPimlString = piml.stringify({ logs });
   await fs.writeFile(pimlPath, newPimlString, 'utf-8');
 
-  // Create detailed content if provided
-  if (content) {
-    const txtPath = path.join(categoryDir, `${slug}.txt`);
-    await fs.writeFile(txtPath, content, 'utf-8');
-  }
+  // Create detailed content (.txt)
+  const txtPath = path.join(categoryDir, `${slug}.txt`);
+  let finalContent = content || description;
 
-  return `Discovery log "${title}" created successfully in ${typeLower}.`;
+  const embedUrl = getYoutubeEmbedUrl(link);
+  let txtBody = `# ${title}\n\n`;
+  if (embedUrl) {
+    txtBody += `<iframe width="100%" height="450" src="${embedUrl}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>\n\n`;
+  }
+  txtBody += `${finalContent}\n\n`;
+  txtBody += `Rating: ${rating}/5`;
+
+  await fs.writeFile(txtPath, txtBody, 'utf-8');
+
+  return `Discovery log "${title}" created successfully in ${typeLower} with file ${txtPath}.`;
 }
 
 // Server setup
