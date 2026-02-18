@@ -15,6 +15,42 @@
     ],
     "category": "dev",
     "filename": "gobake-go-build-orchestrator.txt",
+    "authors": ["fezcode"]
+  },
+  {
+    "slug": "tag-file-systems-explained-go-implementation",
+    "title": "Escape the Hierarchy Trap: How Tag File Systems Work",
+    "date": "2026-02-18",
+    "updated": "2026-02-18",
+    "description": "Ditch the folders! A deep dive into Tag-based File Systems, why hierarchical organization is failing us, and how FUSE and databases make tagging possible. Includes a Go implementation!",
+    "tags": [
+      "filesystems",
+      "go",
+      "databases",
+      "architecture",
+      "productivity"
+    ],
+    "category": "dev",
+    "filename": "tag-file-systems-explained-go-implementation.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "dht-distributed-hash-tables-go-educational-guide",
+    "title": "The Chaos Coordinator: Mastering Distributed Hash Tables (DHT)",
+    "date": "2026-02-17",
+    "updated": "2026-02-17",
+    "description": "A deep dive into Distributed Hash Tables (DHTs), Kademlia, XOR metrics, and building decentralized routing in Go. Fun, fast, and very educational.",
+    "tags": [
+      "go",
+      "distributed-systems",
+      "p2p",
+      "networking",
+      "dht"
+    ],
+    "category": "dev",
+    "filename": "dht-distributed-hash-tables-go-educational-guide.txt",
     "authors": [
       "fezcode"
     ]
@@ -22,8 +58,8 @@
   {
     "slug": "building-the-fezcodex-mcp-server",
     "title": "Bridging the Gap: How We Built the Fezcodex MCP Server",
-    "date": "2026-02-18",
-    "updated": "2026-02-18",
+    "date": "2026-02-16",
+    "updated": "2026-02-16",
     "description": "A deep dive into creating a Model Context Protocol (MCP) server for Fezcodex, enabling AI agents to autonomously author and manage blog content.",
     "tags": [
       "mcp",
@@ -43,8 +79,8 @@
   {
     "slug": "model-context-protocol-mcp",
     "title": "The Model Context Protocol (MCP): Bridging the Gap Between AI and Data",
-    "date": "2026-02-18",
-    "updated": "2026-02-18",
+    "date": "2026-02-16",
+    "updated": "2026-02-16",
     "description": "An introductory guide to Anthropic's Model Context Protocol (MCP). Learn how it standardizes AI connectivity with data sources and tools.",
     "tags": [
       "mcp",
@@ -63,8 +99,8 @@
   },
   {
     "title": "Prompt Engineering University",
-    "date": "2026-02-17",
-    "updated": "2026-02-17",
+    "date": "2026-02-16",
+    "updated": "2026-02-16",
     "slug": "prompt-engineering-university",
     "description": "A comprehensive, university-style curriculum on Prompt Engineering. From foundational strategies to advanced agentic workflows.",
     "series": {
@@ -73,7 +109,7 @@
           "slug": "prompting-strategies",
           "title": "Zero-shot, One-shot, Many-shot, and Metaprompting",
           "filename": "/prompt-engineering/01-prompting-strategies.txt",
-          "date": "2026-02-17",
+          "date": "2026-02-16",
           "category": "ai",
           "tags": [
             "prompt-engineering",
@@ -91,7 +127,7 @@
           "slug": "structure-and-formatting",
           "title": "Structure & Formatting: Taming the Output",
           "filename": "/prompt-engineering/02-structure-and-formatting.txt",
-          "date": "2026-02-18",
+          "date": "2026-02-16",
           "category": "ai",
           "tags": [
             "prompt-engineering",
@@ -109,7 +145,7 @@
           "slug": "reasoning-and-logic",
           "title": "Reasoning & Logic: Chain of Thought and Decomposition",
           "filename": "/prompt-engineering/03-reasoning-and-logic.txt",
-          "date": "2026-02-19",
+          "date": "2026-02-16",
           "category": "ai",
           "tags": [
             "prompt-engineering",
@@ -128,7 +164,7 @@
           "slug": "persona-and-context",
           "title": "Persona & Context: Role-Playing and The Art of Context Management",
           "filename": "/prompt-engineering/04-persona-and-context.txt",
-          "date": "2026-02-20",
+          "date": "2026-02-16",
           "category": "ai",
           "tags": [
             "prompt-engineering",
@@ -146,7 +182,7 @@
           "slug": "evaluation-and-optimization",
           "title": "Evaluation & Optimization: How to Measure and Improve Your Prompts",
           "filename": "/prompt-engineering/05-evaluation-and-optimization.txt",
-          "date": "2026-02-21",
+          "date": "2026-02-16",
           "category": "ai",
           "tags": [
             "prompt-engineering",
@@ -164,7 +200,7 @@
           "slug": "advanced-agents-and-tools",
           "title": "Advanced Agents & Tools: From Chatbots to Problem Solvers",
           "filename": "/prompt-engineering/06-advanced-agents-and-tools.txt",
-          "date": "2026-02-22",
+          "date": "2026-02-16",
           "category": "ai",
           "tags": [
             "prompt-engineering",
@@ -188,8 +224,8 @@
   {
     "slug": "linux-vs-unix-the-kernel-wars",
     "title": "Linux vs. Unix: The Kernel Wars and the Philosophy of Modular Design",
-    "date": "2026-02-08",
-    "updated": "2026-02-08",
+    "date": "2026-02-15",
+    "updated": "2026-02-15",
     "description": "A deep dive into the history, kernel architectures, and the uncompromising philosophy that shaped modern computing. Monoliths, microkernels, and the power of the pipe.",
     "tags": [
       "linux",
@@ -210,8 +246,8 @@
   {
     "slug": "the-halo-effect",
     "title": "The Halo Effect: Why We Trust Idiots with Good Hair",
-    "date": "2026-02-08",
-    "updated": "2026-02-08",
+    "date": "2026-02-14",
+    "updated": "2026-02-14",
     "description": "The Halo Effect is the silent killer of technical debt. Exploring why we mistake a shiny coat of paint for a functional engine in software engineering.",
     "tags": [
       "psychology",
@@ -231,8 +267,8 @@
   {
     "slug": "mastering-git-worktrees-and-ai",
     "title": "Mastering Git Worktrees: Parallel Development with AI Agents",
-    "date": "2026-02-08",
-    "updated": "2026-02-08",
+    "date": "2026-02-13",
+    "updated": "2026-02-13",
     "description": "Stop context switching. Learn how to use Git Worktrees to manage multiple features simultaneously and orchestrate parallel AI agents.",
     "tags": [
       "git",

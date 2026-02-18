@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-02-18
+    (title) Syntax, the Codex Companion Deployed
+    (description) Introduced 'Syntax', an autonomous digital entity that lives at the bottom of the Fezcodex interface. Syntax features a persistent virtual-pet logic with real-time screen traversal, technical 'thought' generation, and contextual awareness. It adapts its molecular structure to match active themes (Brutalist/Luxe) and reacts to the user's journey through the digital garden.
+    (type) feature
+    (icon) BrainIcon
+    (link) /settings#companion
+
+  > (item)
     (date) 2026-01-20
     (title) Fezluxe: Architectural Elegance Launched
     (description) Deployed 'Fezluxe', a major design overhaul introducing a sophisticated digital sanctuary theme. Features a cinematic sliding-window project stack, Playfair Display typography, and a refined parchment-based color palette. Every core component now supports theme-polymorphism.

@@ -105,7 +105,7 @@
     (from) 2026-02-08T00:00:00Z
     (to) 2026-02-15T23:59:59Z
     (text) CARTOGO IS ONLINE: GENERATE ARTISTIC CITY MAP POSTERS WITH HIGH-PERFORMANCE GO RENDERING. ACCESS AT /PROJECTS/CARTOGO.
-    (isActive) true
+    (isActive) false
     (link) /projects/cartogo
     (linkText) Explore CartoGo
 
@@ -115,6 +115,16 @@
     (from) 2026-02-16T00:00:00Z
     (to) 2026-02-19T23:59:59Z
     (text) ATLAS PROJECTS ARE ONLINE: A COLLECTİON OF HiGH-PERFORMANCE GO CLI TOOLS. ACCESS AT /PROJECTS/ATLAS-PROJECTS.
-    (isActive) true
+    (isActive) false
     (link) /projects/atlas-projects
     (linkText) Explore Atlas
+
+  > (banner)
+    (id) syntax-buddy-launch
+    (type) info
+    (from) 2026-02-18T00:00:00Z
+    (to) 2026-02-25T23:59:59Z
+    (text) SYNTAX, THE CODEX COMPANION IS ONLINE: AN AUTONOMOUS DIGITAL ENTITY HAS MATERIALIZED AT THE BOTTOM OF YOUR SCREEN. CONFIGURE STATUS VIA SETTINGS.
+    (isActive) true
+    (link) /settings#companion
+    (linkText) Configure Syntax
