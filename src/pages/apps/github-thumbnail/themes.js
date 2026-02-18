@@ -23,6 +23,10 @@ import { abstract } from './themes/abstract';
 import { nature } from './themes/nature';
 import { graphicNovel } from './themes/graphicNovel';
 import { win95 } from './themes/win95';
+import { minimalDark } from './themes/minimalDark';
+import { gradient } from './themes/gradient';
+import { comic } from './themes/comic';
+import { cybernetic } from './themes/cybernetic';
 
 export const themeRenderers = {
   modern,
@@ -50,4 +54,8 @@ export const themeRenderers = {
   nature,
   graphicNovel,
   win95,
+  minimalDark,
+  gradient,
+  comic,
+  cybernetic,
 };

@@ -43,6 +43,10 @@ const THEME_OPTIONS = [
   { value: 'nature', label: 'NATURE_VIBES' },
   { value: 'graphicNovel', label: 'SIN_CITY_STYLE' },
   { value: 'win95', label: 'RETRO_WINDOWS_95' },
+  { value: 'minimalDark', label: 'MINIMAL_DARK' },
+  { value: 'gradient', label: 'GRADIENT_MESH' },
+  { value: 'comic', label: 'COMIC_BOOK' },
+  { value: 'cybernetic', label: 'CYBERNETIC_HUD' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
