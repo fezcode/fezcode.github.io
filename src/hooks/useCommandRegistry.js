@@ -149,10 +149,22 @@ export const useCommandRegistry = ({
     toggleFalloutOverlay,
     falloutVariant,
     setFalloutVariant,
+    isSyntaxSpriteEnabled,
+    toggleSyntaxSprite,
   } = useVisualSettings();
 
   const commandHandlers = useMemo(
     () => ({
+      toggleSyntaxSprite: () => {
+        toggleSyntaxSprite();
+        addToast({
+          title: isSyntaxSpriteEnabled ? 'Buddy Stowed' : 'Buddy Deployed',
+          message: isSyntaxSpriteEnabled
+            ? 'Syntax has returned to the molecular buffer.'
+            : 'Syntax has materialized at the bottom of the screen.',
+          type: 'success',
+        });
+      },
       toggleAnimations: () => {
         toggleReduceMotion();
         addToast({

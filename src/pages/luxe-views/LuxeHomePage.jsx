@@ -186,7 +186,7 @@ const JournalCard = ({ post, index, isStacked }) => {
 
 // --- Omniverse Hero (Three.js - Maximalist) ---
 
-const OmniverseHero = () => {
+const OmniverseHero = ({ isSyntaxSpriteEnabled, toggleSyntaxSprite }) => {
   const mountRef = useRef(null);
 
   useEffect(() => {
@@ -551,12 +551,17 @@ const OmniverseHero = () => {
 
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
         <div className="text-center animate-fade-in-up bg-white/5 backdrop-blur-sm p-8 rounded-2xl border border-white/10 shadow-2xl">
-          <div className="inline-flex items-center gap-3 px-4 py-2 border border-black/10 rounded-full bg-white/40 mb-8">
-            <GlobeIcon size={16} className="text-[#8D4004] animate-spin-slow" />
+          <motion.button
+            onClick={toggleSyntaxSprite}
+            whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.6)' }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-flex items-center gap-3 px-4 py-2 border border-black/10 rounded-full bg-white/40 mb-8 pointer-events-auto transition-colors"
+          >
+            <GlobeIcon size={16} className={`${isSyntaxSpriteEnabled ? 'text-[#8D4004] animate-spin-slow' : 'text-black/40'}`} />
             <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-black/80">
-              Omniverse::Online
+              Syntax::{isSyntaxSpriteEnabled ? 'Online' : 'Stealth'}
             </span>
-          </div>
+          </motion.button>
           <h1 className="font-instr-serif text-8xl md:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 px-16 tracking-tighter mix-blend-overlay">
             <span className="italic">FEZ</span>
             <br />
@@ -576,7 +581,7 @@ const OmniverseHero = () => {
 const LuxeHomePage = () => {
   const navigate = useNavigate();
   const { projects, loading: loadingProjects } = useProjects(true);
-  const { setFezcodexTheme } = useVisualSettings();
+  const { setFezcodexTheme, isSyntaxSpriteEnabled, toggleSyntaxSprite } = useVisualSettings();
   const [posts, setPosts] = useState([]);
   const [layoutMode, setLayoutMode] = useState('stack');
 
@@ -596,7 +601,10 @@ const LuxeHomePage = () => {
     <div className="min-h-full w-full bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black pb-20">
       <Seo title="Fezcodex | Luxe" description="A digital sanctuary." />
 
-      <OmniverseHero />
+      <OmniverseHero
+        isSyntaxSpriteEnabled={isSyntaxSpriteEnabled}
+        toggleSyntaxSprite={toggleSyntaxSprite}
+      />
 
       <div className="border-y border-black/10 bg-white/40 backdrop-blur-md sticky top-0 z-40">
         <div className="flex justify-center divide-x divide-black/10 max-w-[1800px] mx-auto overflow-x-auto no-scrollbar">

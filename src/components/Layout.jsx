@@ -16,6 +16,7 @@ import NaturalRain from './NaturalRain';
 import FalloutOverlay from './FalloutOverlay';
 import SidePanel from './SidePanel';
 import Banner from './Banner';
+import SyntaxSprite from './SyntaxSprite';
 import { useProjects } from '../utils/projectParser';
 
 import { DndProvider } from '../context/DndContext';
@@ -146,6 +147,7 @@ const Layout = ({
       />
       {!hideLayout && <SidePanel />}
       {mainContent}
+      <SyntaxSprite />
     </>
   );
 };

@@ -12,6 +12,7 @@ import {
   ArrowCounterClockwiseIcon,
   MagicWandIcon,
   ArticleIcon,
+  BrainIcon,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../../context/AnimationContext';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
@@ -119,6 +120,8 @@ const SettingsPage = () => {
     toggleSplashText,
     isAppFullscreen,
     toggleAppFullscreen,
+    isSyntaxSpriteEnabled,
+    toggleSyntaxSprite,
     fezcodexTheme,
     setFezcodexTheme,
     blogPostViewMode,
@@ -483,6 +486,33 @@ const SettingsPage = () => {
                 label={showAchievementToast ? 'Active' : 'Silent'}
                 checked={showAchievementToast}
                 onChange={toggleAchievementToast}
+                fontClass="font-outfit"
+              />
+            </div>
+          </Section>
+
+          {/* Companion Configuration */}
+          <Section
+            id="companion"
+            title="Companion Protocol"
+            icon={<BrainIcon />}
+            delay={0.25}
+          >
+            <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex items-center justify-between gap-6">
+              <div>
+                <h3 className="text-lg font-bold text-white mb-1">
+                  Syntax, the Codex Companion
+                </h3>
+                <p className="text-sm text-gray-500">
+                  Enable the autonomous digital entity that lives at the bottom
+                  of your screen.
+                </p>
+              </div>
+              <CustomToggle
+                id="enable-syntax-sprite"
+                label={isSyntaxSpriteEnabled ? 'Active' : 'Stowed'}
+                checked={isSyntaxSpriteEnabled}
+                onChange={toggleSyntaxSprite}
                 fontClass="font-outfit"
               />
             </div>

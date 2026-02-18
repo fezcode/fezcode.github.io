@@ -28,7 +28,7 @@ const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='ht
 const StatusPill = () => {
   const [time, setTime] = useState('');
   const { config } = useSiteConfig();
-  const { isSplashTextEnabled, fezcodexTheme, setFezcodexTheme } =
+  const { isSplashTextEnabled, fezcodexTheme, setFezcodexTheme, isSyntaxSpriteEnabled, toggleSyntaxSprite } =
     useVisualSettings();
   const { showAchievementToast } = useAchievements();
   const [isOpen, setIsOpen] = useState(false);
@@ -75,6 +75,16 @@ const StatusPill = () => {
                   className="text-[10px] border border-white/40 text-white px-2 py-0.5 hover:bg-white hover:text-black transition-colors"
                 >
                   [{fezcodexTheme}]
+                </button>
+              </div>
+
+              <div className="flex justify-between items-center text-gray-400">
+                <span>BUDDY</span>
+                <button
+                  onClick={toggleSyntaxSprite}
+                  className="text-[10px] border border-white/40 text-white px-2 py-0.5 hover:bg-white hover:text-black transition-colors"
+                >
+                  [{isSyntaxSpriteEnabled ? 'ACTIVE' : 'STOWED'}]
                 </button>
               </div>
 

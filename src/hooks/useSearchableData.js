@@ -167,6 +167,11 @@ const useSearchableData = () => {
 
         const customCommands = [
           {
+            title: 'Toggle Syntax Sprite (Buddy)',
+            type: 'command',
+            commandId: 'toggleSyntaxSprite',
+          },
+          {
             title: 'Switch Visual Theme',
             type: 'command',
             commandId: 'switchTheme',

@@ -12,6 +12,7 @@ import {
   MagicWandIcon,
   ArticleIcon,
   CheckCircleIcon,
+  BrainIcon,
 } from '@phosphor-icons/react';
 import { useAnimation } from '../../context/AnimationContext';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
@@ -117,6 +118,8 @@ const LuxeSettingsPage = () => {
     toggleSplashText,
     isAppFullscreen,
     toggleAppFullscreen,
+    isSyntaxSpriteEnabled,
+    toggleSyntaxSprite,
     fezcodexTheme,
     setFezcodexTheme,
     blogPostViewMode,
@@ -693,6 +696,23 @@ const LuxeSettingsPage = () => {
               label="Achievement Toasts"
               checked={showAchievementToast}
               onChange={toggleAchievementToast}
+              colorTheme="amber"
+              {...toggleClasses}
+            />
+          </LuxeSection>
+
+          {/* Companion */}
+          <LuxeSection
+            id="companion"
+            title="Companion"
+            icon={<BrainIcon />}
+            delay={0.42}
+          >
+            <CustomToggle
+              id="enable-syntax-sprite"
+              label="Syntax, the Codex Companion"
+              checked={isSyntaxSpriteEnabled}
+              onChange={toggleSyntaxSprite}
               colorTheme="amber"
               {...toggleClasses}
             />

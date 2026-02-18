@@ -91,6 +91,10 @@ export const VisualSettingsProvider = ({ children }) => {
     'is-app-fullscreen',
     false,
   );
+  const [isSyntaxSpriteEnabled, setIsSyntaxSpriteEnabled] = usePersistentState(
+    'is-syntax-sprite-enabled',
+    true,
+  );
   const [fezcodexTheme, setFezcodexTheme] = usePersistentState(
     'fezcodex-theme',
     'brutalist',
@@ -358,6 +362,7 @@ export const VisualSettingsProvider = ({ children }) => {
     setIsFalloutVignetteEnabled((prev) => !prev);
   const toggleSplashText = () => setIsSplashTextEnabled((prev) => !prev);
   const toggleAppFullscreen = () => setIsAppFullscreen((prev) => !prev);
+  const toggleSyntaxSprite = () => setIsSyntaxSpriteEnabled((prev) => !prev);
 
   return (
     <VisualSettingsContext.Provider
@@ -419,6 +424,8 @@ export const VisualSettingsProvider = ({ children }) => {
         toggleSplashText,
         isAppFullscreen,
         toggleAppFullscreen,
+        isSyntaxSpriteEnabled,
+        toggleSyntaxSprite,
         fezcodexTheme,
         setFezcodexTheme,
         isSidebarOpen,
