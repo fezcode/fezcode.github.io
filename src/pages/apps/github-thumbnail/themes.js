@@ -27,6 +27,9 @@ import { minimalDark } from './themes/minimalDark';
 import { gradient } from './themes/gradient';
 import { comic } from './themes/comic';
 import { cybernetic } from './themes/cybernetic';
+import { neoBrutalist } from './themes/neoBrutalist';
+import { quantumOverlay } from './themes/quantumOverlay';
+import { terminalPro } from './themes/terminalPro';
 
 export const themeRenderers = {
   modern,
@@ -58,4 +61,7 @@ export const themeRenderers = {
   gradient,
   comic,
   cybernetic,
+  neoBrutalist,
+  quantumOverlay,
+  terminalPro,
 };

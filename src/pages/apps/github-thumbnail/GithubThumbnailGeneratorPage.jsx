@@ -47,6 +47,9 @@ const THEME_OPTIONS = [
   { value: 'gradient', label: 'GRADIENT_MESH' },
   { value: 'comic', label: 'COMIC_BOOK' },
   { value: 'cybernetic', label: 'CYBERNETIC_HUD' },
+  { value: 'neoBrutalist', label: 'NEO_BRUTALIST' },
+  { value: 'quantumOverlay', label: 'QUANTUM_OVERLAY' },
+  { value: 'terminalPro', label: 'TERMINAL_PRO_CLI' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
@@ -87,7 +90,7 @@ const GithubThumbnailGeneratorPage = () => {
         ctx.globalAlpha = 0.05;
         ctx.fillStyle = '#ffffff';
 
-        if (theme === 'brutalist') {
+        if (['brutalist', 'neoBrutalist', 'terminalPro'].includes(theme)) {
           // Grid Pattern
           const gridSize = 40 * scale;
           for (let x = 0; x < width; x += gridSize) {
