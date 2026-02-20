@@ -1,13 +1,8 @@
-### Installation
-## The recommended way to install the Atlas Suite is via **atlas.hub**:
+# macOS / Linux (Bash)
+curl -fsSL https://raw.githubusercontent.com/fezcode/atlas.hub/main/scripts/install.sh | bash
 
-```bash
-# 1. Bootstrap the hub
-git clone https://github.com/fezcode/atlas.hub
-cd atlas.hub
-./scripts/install.sh  # or scripts/install.ps1 on Windows
-```
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/fezcode/atlas.hub/main/scripts/install.ps1 | iex
 
-Once installed, simply run `atlas.hub` to interactively select and install any tool in the suite. The hub automates the cloning, building (via **gobake**), and path management for you.
-
-To manually build for all platforms, you can still run `gobake build` in any individual tool repository.
+# After installing, run 'atlas.hub' to select tools.
+# Automated by gobake.
