@@ -42,3 +42,23 @@ link: https://github.com/fezcode/atlas.bench
 fezcode
 +9 -0 ~0
 link: https://github.com/fezcode/atlas.radar
+---
+# OTP
+fezcode
++10 -0 ~0
+link: https://github.com/fezcode/atlas.otp
+---
+# Diff
+fezcode
++11 -0 ~0
+link: https://github.com/fezcode/atlas.diff
+---
+# Hub
+fezcode
++12 -0 ~0
+link: https://github.com/fezcode/atlas.hub
+---
+# Screensaver
+fezcode
++13 -0 ~0
+link: https://github.com/fezcode/atlas.screensaver

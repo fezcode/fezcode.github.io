@@ -13,6 +13,9 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 - 7. **[atlas.games](https://github.com/fezcode/atlas.games)**: A terminal-based game collection. Featuring Wilson's Revenge directly in your shell.
 - 8. **[atlas.bench](https://github.com/fezcode/atlas.bench)**: A high-performance benchmarking tool for terminal applications and command-line processes. Measure CPU, memory, and latency with millisecond precision.
 - 9. **[atlas.radar](https://github.com/fezcode/atlas.radar)**: A high-performance Git workspace monitor. Scan, monitor, and sync multiple repositories simultaneously with a beautiful, minimalist CLI.
+- 10. **[atlas.otp](https://github.com/fezcode/atlas.otp)**: A high-visibility, minimalist terminal TOTP (2FA) manager. Securely manage and copy one-time passwords with a sleek Onyx & Gold theme.
+- 11. **[atlas.diff](https://github.com/fezcode/atlas.diff)**: A high-visibility, side-by-side terminal diff tool. Compare files with statistical clarity and a clean Atlas-inspired aesthetic.
+- 12. **[atlas.screensaver](https://github.com/fezcode/atlas.screensaver)**: A collection of aesthetic terminal screensavers. Enjoy nostalgic Starfield and Pipes animations directly in your terminal.
 
 ### Why Atlas?
 

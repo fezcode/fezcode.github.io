@@ -98,8 +98,8 @@
       > TUI
       > Bubble Tea
       > Productivity
-    (shortDescription) A collection of minimalist, high-performance CLI tools for daily productivity, including todo management, system statistics, web searching, and terminal-based gaming.
-    (date) 2026-02-08
+    (shortDescription) A collection of minimalist, high-performance CLI tools for daily productivity, including todo management, system stats, web search, password management, world clocks, secure TOTP (2FA), and aesthetic screensavers.
+    (date) 2026-02-20
     (image) /images/bg/emre.jpg
     (backgroundImage) /images/bg/emre.jpg
     (photoCreditText) Photo by Emre on Unsplash

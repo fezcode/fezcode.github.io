@@ -1,13 +1,13 @@
 ### Installation
-## Each tool can be installed using **gobake** for a native build experience:
+## The recommended way to install the Atlas Suite is via **atlas.hub**:
 
 ```bash
-# Example for atlas.todo
-git clone https://github.com/fezcode/atlas.todo
-cd atlas.todo
-gobake build
+# 1. Bootstrap the hub
+git clone https://github.com/fezcode/atlas.hub
+cd atlas.hub
+./scripts/install.sh  # or scripts/install.ps1 on Windows
 ```
 
-The same process applies to **atlas.stats**, **atlas.websearch**, **atlas.compass**, **atlas.clock**, **atlas.cam**, **atlas.games**, **atlas.bench**, and **atlas.radar**.
+Once installed, simply run `atlas.hub` to interactively select and install any tool in the suite. The hub automates the cloning, building (via **gobake**), and path management for you.
 
-To build for all platforms, simply run `gobake build` in any of the tool repositories.
+To manually build for all platforms, you can still run `gobake build` in any individual tool repository.
