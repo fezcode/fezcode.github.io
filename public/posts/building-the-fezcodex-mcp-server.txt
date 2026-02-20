@@ -44,18 +44,32 @@ To start using this integration locally:
     ```bash
     npm run mcp
     ```
-2.  **Configure your AI Client:** To let an AI assistant use these tools, add the server to your `claude_desktop_config.json`:
-    ```json
-    {
-      "mcpServers": {
-        "fezcodex": {
-          "command": "npm",
-          "args": ["run", "mcp"],
-          "cwd": "/absolute/path/to/fezcodex"
+2.  **Configure your AI Client:** 
+    -   **For Gemini CLI:** We use a project-local configuration. Ensure the `.gemini/settings.json` file exists in your project root:
+        ```json
+        {
+          "mcpServers": {
+            "fezcodex": {
+              "command": "npm",
+              "args": ["run", "mcp"]
+            }
+          }
         }
-      }
-    }
-    ```
+        ```
+        The Gemini CLI will automatically detect and load this server when you are in the project directory.
+
+    -   **For Claude Desktop:** Add the server to your `claude_desktop_config.json`:
+        ```json
+        {
+          "mcpServers": {
+            "fezcodex": {
+              "command": "npm",
+              "args": ["run", "mcp"],
+              "cwd": "/absolute/path/to/fezcodex"
+            }
+          }
+        }
+        ```
 3.  **Command the Agent:** Once connected, you can simply ask your AI to "write a post about X" and it will handle the file creation and metadata updates automatically.
 
 ## What's Next?
