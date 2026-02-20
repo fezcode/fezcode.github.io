@@ -30,6 +30,9 @@ import { cybernetic } from './themes/cybernetic';
 import { neoBrutalist } from './themes/neoBrutalist';
 import { quantumOverlay } from './themes/quantumOverlay';
 import { terminalPro } from './themes/terminalPro';
+import { neonVapor } from './themes/neonVapor';
+import { cadTech } from './themes/cadTech';
+import { retroDos } from './themes/retroDos';
 
 export const themeRenderers = {
   modern,
@@ -64,4 +67,7 @@ export const themeRenderers = {
   neoBrutalist,
   quantumOverlay,
   terminalPro,
+  neonVapor,
+  cadTech,
+  retroDos,
 };
