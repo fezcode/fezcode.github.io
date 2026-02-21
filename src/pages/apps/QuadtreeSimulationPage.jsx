@@ -372,10 +372,10 @@ const QuadtreeSimulationPage = () => {
               <ArrowLeftIcon className="text-xl group-hover:-translate-x-1 transition-transform" />
             </Link>
             <div>
-              <BreadcrumbTitle title="SPATIAL_INDEX_TERMINAL" slug="quadtree" className="!text-[#00ff41]" />
+              <BreadcrumbTitle title="Quadtree Simulation" />
               <div className="flex items-center gap-2 text-[10px] opacity-50 tracking-[0.3em] uppercase">
                 <ActivityIcon size={12} className="animate-pulse" />
-                <span>Protocol Active: Recursive Partitioning v4.2</span>
+                <span>Objective: Recursive Partitioning</span>
               </div>
             </div>
           </div>
@@ -418,7 +418,7 @@ const QuadtreeSimulationPage = () => {
                       : 'border-[#00ff41] text-[#00ff41] bg-[#00ff41]/10 hover:bg-[#00ff41]/20 shadow-[0_0_20px_rgba(0,255,65,0.2)]'
                   }`}
                 >
-                  {isPlaying ? 'SUSPEND_SYSTEM' : 'INIT_PROCESS'}
+                  {isPlaying ? 'Pause' : 'Continue'}
                 </button>
               </div>
 
@@ -475,7 +475,7 @@ const QuadtreeSimulationPage = () => {
                   }}
                   className="w-full py-2 text-[10px] text-rose-500 border border-rose-500/30 hover:bg-rose-500/10 transition-colors uppercase tracking-[0.4em] font-bold"
                 >
-                  Purge Data
+                  Purge Nodes
               </button>
             </div>
 
