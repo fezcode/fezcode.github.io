@@ -188,6 +188,9 @@ const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
 const CsvFlashcardsPage = lazy(() => import('../pages/apps/CsvFlashcardsPage'));
 const ColorTheoryPage = lazy(() => import('../pages/apps/ColorTheoryPage'));
 const TierForgePage = lazy(() => import('../pages/apps/TierForgePage'));
+const QuadtreeSimulationPage = lazy(
+  () => import('../pages/apps/QuadtreeSimulationPage'),
+);
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
 const GokturkishConverterPage = lazy(
   () => import('../pages/apps/GokturkishConverterPage'),
@@ -1404,6 +1407,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <TierForgePage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/quadtree-sim"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <QuadtreeSimulationPage />
               </Suspense>
             </motion.div>
           }
