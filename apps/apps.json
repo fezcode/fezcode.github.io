@@ -871,6 +871,14 @@
         "created_at": "2026-01-20T12:00:00+03:00"
       },
       {
+        "slug": "quadtree-sim",
+        "to": "/apps/quadtree-sim",
+        "title": "Quadtree Simulation",
+        "description": "Visualize spatial partitioning and search optimization with a recursive Quadtree.",
+        "icon": "GridFourIcon",
+        "created_at": "2026-02-21T12:00:00+03:00"
+      },
+      {
         "slug": "js-masterclass",
         "to": "/apps/js-masterclass",
         "title": "JS Masterclass",

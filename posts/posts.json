@@ -1,5 +1,25 @@
 [
   {
+    "slug": "quadtree-algorithm-spatial-indexing",
+    "title": "The Quadtree: Solving the O(N^2) Spatial Nightmare",
+    "date": "2026-02-21",
+    "updated": "2026-02-21",
+    "description": "A deep dive into spatial partitioning with Quadtrees, explaining how to avoid O(N^2) nightmares with recursive decomposition.",
+    "tags": [
+      "algorithms",
+      "spatial-indexing",
+      "quadtree",
+      "dev",
+      "math",
+      "optimization"
+    ],
+    "category": "dev",
+    "filename": "quadtree-algorithm-spatial-indexing.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "gobake-go-build-orchestrator",
     "title": "gobake: The Build Orchestrator Go Was Missing",
     "date": "2026-02-18",
@@ -15,7 +35,9 @@
     ],
     "category": "dev",
     "filename": "gobake-go-build-orchestrator.txt",
-    "authors": ["fezcode"]
+    "authors": [
+      "fezcode"
+    ]
   },
   {
     "slug": "tag-file-systems-explained-go-implementation",
