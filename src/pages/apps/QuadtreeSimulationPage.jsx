@@ -555,8 +555,8 @@ const QuadtreeSimulationPage = () => {
                   </div>
                </div>
                <div className="bg-[#111] border border-[#00ff4122] p-4 flex flex-col gap-1">
-                  <span className="text-[9px] opacity-40 uppercase">Memory Offset</span>
-                  <span className="font-bold text-xs">0x4F2A9B</span>
+                  <span className="text-[9px] opacity-40 uppercase">Author Offset</span>
+                  <span className="font-bold text-xs">0xFE2C0DE</span>
                </div>
                <div className="bg-[#111] border border-[#00ff4122] p-4 flex flex-col gap-1">
                   <span className="text-[9px] opacity-40 uppercase">Protocol Mode</span>
