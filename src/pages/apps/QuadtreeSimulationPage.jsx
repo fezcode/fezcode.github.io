@@ -166,7 +166,7 @@ const QuadtreeSimulationPage = () => {
 
   // Simulation State
   const [particles, setParticles] = useState([]);
-  const [count, setCount] = useState(2500);
+  const [count, setCount] = useState(1);
   const [capacity, setCapacity] = useState(4);
   const [isPlaying, setIsPlaying] = useState(true);
   const [showGrid, setShowGrid] = useState(true);

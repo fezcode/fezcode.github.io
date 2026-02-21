@@ -9,14 +9,27 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 20 Feb 2026 22:23:04 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 21 Feb 2026 17:23:39 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 20 Feb 2026 22:23:04 GMT</pubDate>
+        <pubDate>Sat, 21 Feb 2026 17:23:39 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Quadtree: Solving the O(N^2) Spatial Nightmare]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/quadtree-algorithm-spatial-indexing</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/quadtree-algorithm-spatial-indexing</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 21 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p>This analysis was built by a Software Engineer who once tried to simulate 10,000 particles and watched his CPU melt into a puddle of $O(N^2)$ regret.
+If the recursion depth makes your head spin, just imagine you&#39;re looking at a very organized square pizza.</p>
+</blockquote>
+<p><a href="https://fezcode.com/blog/quadtree-algorithm-spatial-indexing">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[gobake: The Build Orchestrator Go Was Missing]]></title>
             <description><![CDATA[[object Object]]]></description>
