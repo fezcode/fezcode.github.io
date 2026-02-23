@@ -294,7 +294,7 @@ const RubyProjectPage = () => {
                       <img src={`/projects/${productSlug}/line.svg`} alt="" className="absolute left-0 -bottom-[22px] w-full max-w-[430px] h-auto opacity-30 group-hover:opacity-100 transition-opacity" />
                    </div>
                    <p className="text-xl sm:text-2xl font-bold text-white mb-4 leading-relaxed uppercase tracking-tight">
-                     {feature.title} is Go-native.<br/>Fast and elegant.
+                     {feature.subtitle}
                    </p>
                    <div className="text-sm sm:text-base text-stone-300 mb-6 leading-relaxed font-medium">
                      {feature.description}
@@ -304,7 +304,7 @@ const RubyProjectPage = () => {
                       <div className="flex-1 relative text-sm sm:text-base font-medium text-stone-300 leading-relaxed border border-[#CEB372] p-6 md:p-8 rounded-3xl bg-stone-800/20 shadow-sm">
                          <span className="absolute -top-10 -left-4 text-[140px] text-[#CEB372] opacity-20 font-serif leading-none select-none pointer-events-none">“</span>
                          <p className="relative z-10 italic">
-                           {feature.title} changed how we build. It's the most natural build tool I've ever experienced.
+                           {feature.quote}
                          </p>
                       </div>
                       <div className="flex-shrink-0 flex flex-col items-center text-center w-32">

@@ -3,29 +3,31 @@ title: Go-Native
 icon: Code
 creator: Fezcode
 role: CREATOR
+subtitle: Native Execution. Fast and elegant.
+quote: Go-Native changed how we build. It's the most natural build tool I've ever experienced.
 description: Write your build scripts in Go. No new syntax to learn. Benefit from Go's type safety and performance.
 :::
 
 :::feature
 title: Zero Dependencies
 icon: ShieldCheck
-creator: Samil B.
-role: ARCHITECT
+subtitle: Pure Go. No external mess.
+quote: Zero Dependencies means no more dependency hell. It's a breath of fresh air for our CI/CD.
 description: The build system is just a Go program. It compiles itself on the fly, requiring nothing but the Go toolchain.
 :::
 
 :::feature
 title: Metadata Management
 icon: NewspaperClipping
-creator: Fezcoddy
-role: DESIGNER
+subtitle: Centralized control. Single Source.
+quote: Metadata Management brings sanity to our versioning. Absolute game changer for release engineering.
 description: Manage versions, tools, and dependencies in a central `recipe.piml` file.
 :::
 
 :::feature
 title: Self-Bootstrapping
 icon: Cpu
-creator: Neural Nexus
-role: KERNEL
+subtitle: Autonomous builds. Self-healing.
+quote: Self-Bootstrapping is magic. It handles its own lifecycle perfectly so I don't have to.
 description: Just run `gobake`. It handles the rest, ensuring your build environment is always consistent.
 :::
