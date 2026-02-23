@@ -3,25 +3,25 @@
 `gobake` operates on a simple principle: **Your build system should be as robust as your application.**
 
 Instead of relying on fragile shell scripts or complex Makefiles, `gobake` uses:
-1.  **Engine:** The core Go library that manages tasks.
-2.  **Context:** A helper object passed to every task, providing access to the shell, logging, and metadata.
+1.  **Engine:** The core Go library that manages tasks and metadata.
+2.  **Context:** A helper object passed to every task, providing access to the shell, logging, and environment.
 3.  **Recipe:** The `Recipe.go` file (using `//go:build gobake`) that ties it all together.
 
 # CLI Command Reference
 
 ## Project Management
 
-*   **`gobake init`**: Initialize a new project in the current directory. Automates `go mod` and dependencies.
+*   **`gobake init`**: Initialize a new project in the current directory. Automates `go mod` and dependency setup.
 *   **`gobake version`**: Show the current version of gobake.
 *   **`gobake help`**: Show the list of available commands and project tasks.
-*   **`gobake template <git-url>`**: Clone a repository and initialize it.
+*   **`gobake template <git-url>`**: Clone a repository and initialize it as a gobake project.
 
 ## Dependency & Tool Management
 
 *   **`gobake add-tool <url>`**: Adds a tool to the `(tools)` list in `recipe.piml`.
-*   **`gobake add-dep <url>`**: Adds a library dependency to `go.mod`.
 *   **`gobake remove-tool <url>`**: Removes a tool from `recipe.piml`.
-*   **`gobake remove-dep <url>`**: Removes a dependency.
+*   **`gobake add-dep <url>`**: Adds a library dependency using `go get`.
+*   **`gobake remove-dep <url>`**: Removes a library dependency.
 
 ## Versioning
 
@@ -35,7 +35,7 @@ The `recipe.piml` file is the single source of truth for your project.
 (name) my-project
 (version) 1.2.3
 (authors)
-    > Ahmed <ahmed@example.com>
+    > Fezcode
 (tools)
     > github.com/swaggo/swag/cmd/swag@latest
 ```
@@ -51,4 +51,14 @@ You can define tasks that depend on other tasks using `bake.TaskWithDeps`.
 ```go
 bake.Task("test", "Run tests", func(ctx *gobake.Context) error { ... })
 bake.TaskWithDeps("build", "Build app", []string{"test"}, func(ctx *gobake.Context) error { ... })
+```
+
+## Cross-Compilation
+
+Use `ctx.BakeBinary(os, arch, output, flags...)` for simple cross-compilation tasks.
+
+```go
+bake.Task("release", "Cross-compile", func(ctx *gobake.Context) error {
+    return ctx.BakeBinary("linux", "amd64", "bin/app")
+})
 ```

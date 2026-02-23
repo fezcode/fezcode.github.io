@@ -26,10 +26,11 @@ go install github.com/fezcode/gobake/cmd/gobake@latest
 
 ### Commands
 
-*   `gobake init`: Scaffolds a new `Recipe.go` and `recipe.piml`. Handles `go.mod` and dependencies.
-*   `gobake version`: Displays the current version of gobake.
-*   `gobake help`: Displays the list of commands and available tasks.
-*   `gobake bump [patch|minor|major]`: Increments the version in `recipe.piml`.
+*   **`gobake init`**: Scaffolds a new `Recipe.go` and `recipe.piml`. Handles `go.mod` and dependencies.
+*   **`gobake version`**: Displays the current version of gobake.
+*   **`gobake help`**: Displays the list of commands and available tasks.
+*   **`gobake bump [patch|minor|major]`**: Increments the version in `recipe.piml`.
+*   **`gobake template <git-url>`**: Initialize from a remote repository template.
 
 ### The `Recipe.go` File
 
@@ -47,7 +48,11 @@ func Run(bake *gobake.Engine) error {
                 return fmt.Errorf("error loading recipe.piml: %v", err)
         }
 
-        bake.Task("build", "Builds the binary", func(ctx *gobake.Context) error {
+        bake.Task("test", "Runs project tests", func(ctx *gobake.Context) error {
+                return ctx.Run("go", "test", "./...")
+        })
+
+        bake.TaskWithDeps("build", "Builds the binary", []string{"test"}, func(ctx *gobake.Context) error {
                 return ctx.BakeBinary("linux", "amd64", "bin/app")
         })
 

@@ -14,7 +14,9 @@ import (
 )
 
 func Run(bake *gobake.Engine) error {
-    bake.LoadRecipeInfo("recipe.piml")
+    if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
+        return err
+    }
 
     bake.Task("release", "Build for all platforms", func(ctx *gobake.Context) error {
         platforms := []struct {
@@ -59,10 +61,15 @@ This recipe installs `stringer` and uses it to generate code before building.
 //go:build gobake
 package bake_recipe
 
-import "github.com/fezcode/gobake"
+import (
+    "fmt"
+    "github.com/fezcode/gobake"
+)
 
 func Run(bake *gobake.Engine) error {
-    bake.LoadRecipeInfo("recipe.piml")
+    if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
+        return fmt.Errorf("error loading recipe.piml: %v", err)
+    }
 
     bake.Task("generate", "Generates code", func(ctx *gobake.Context) error {
         // Ensure tools are installed first
@@ -75,6 +82,36 @@ func Run(bake *gobake.Engine) error {
 
     bake.TaskWithDeps("build", "Builds app", []string{"generate"}, func(ctx *gobake.Context) error {
         return ctx.Run("go", "build", ".")
+    })
+
+    return nil
+}
+```
+
+## 3. Injecting Version with ldflags
+
+Inject project version from `recipe.piml` into your binary.
+
+**Recipe.go:**
+```go
+//go:build gobake
+package bake_recipe
+
+import (
+    "fmt"
+    "github.com/fezcode/gobake"
+)
+
+func Run(bake *gobake.Engine) error {
+    if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
+        return err
+    }
+
+    bake.Task("build", "Build with version", func(ctx *gobake.Context) error {
+        ldflags := fmt.Sprintf("-X main.Version=%s", bake.Info.Version)
+        
+        ctx.Log("Building version %s...", bake.Info.Version)
+        return ctx.Run("go", "build", "-ldflags", ldflags, "-o", "bin/app")
     })
 
     return nil
