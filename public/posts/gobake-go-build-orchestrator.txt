@@ -35,7 +35,7 @@ graph TD
 
 A `gobake` project centers around two files:
 
-1.  **`recipe.piml`**: A [PIML](https://fezcode.github.io/posts/piml) file for project metadata.
+1.  **`recipe.piml`**: A [PIML](/projects/piml) file for project metadata.
 2.  **`Recipe.go`**: A Go file where you define your tasks and logic.
 
 ### Type-Safe Tasks
