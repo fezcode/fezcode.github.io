@@ -11,6 +11,7 @@ import {
   BroadcastIcon,
   LightningIcon,
   CpuIcon,
+  SpeakerHighIcon,
 } from '@phosphor-icons/react';
 import PostTile from '../../components/PostTile';
 import ProjectTile from '../../components/ProjectTile';
@@ -41,6 +42,11 @@ const StatusPill = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const playAttackSound = () => {
+    const audio = new Audio('/sounds/faah.mp3');
+    audio.play().catch((e) => console.error('Audio play failed', e));
+  };
+
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end gap-0">
       <AnimatePresence>
@@ -65,6 +71,17 @@ const StatusPill = () => {
               <div className="h-px bg-transparent border-t border-dashed border-blue-100/30 my-1" />
 
               <div className="flex justify-between items-center text-gray-400">
+                <span>AUDIO</span>
+                <button
+                  onClick={playAttackSound}
+                  className="text-[10px] border border-white/40 text-white px-2 py-0.5 hover:bg-white hover:text-black transition-colors flex items-center gap-2"
+                >
+                  <span>[ATTACK!!!]</span>
+                  <SpeakerHighIcon size={12} weight="fill" />
+                </button>
+              </div>
+
+              <div className="flex justify-between items-center text-gray-400">
                 <span>THEME</span>
                 <button
                   onClick={() =>
@@ -74,7 +91,7 @@ const StatusPill = () => {
                   }
                   className="text-[10px] border border-white/40 text-white px-2 py-0.5 hover:bg-white hover:text-black transition-colors"
                 >
-                  [{fezcodexTheme}]
+                  [{fezcodexTheme.toUpperCase()}]
                 </button>
               </div>
 
