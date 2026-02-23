@@ -316,6 +316,7 @@ const LuxeSettingsPage = () => {
                   variant="paper"
                   label="Select View"
                   options={[
+                    { label: 'Default', value: 'standard' },
                     { label: 'Brutalist', value: 'brutalist' },
                     { label: 'Editorial', value: 'editorial' },
                     { label: 'Classic', value: 'old' },

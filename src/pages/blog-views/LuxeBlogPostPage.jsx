@@ -92,7 +92,13 @@ const LuxeBlogPostPage = () => {
       const isMermaid = match && match[1] === 'mermaid';
 
       if (!inline && isMermaid) {
-        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+        return (
+          <MermaidDiagram
+            chart={String(children).replace(/\n$/, '')}
+            theme="neutral"
+            className="my-12 bg-white border border-[#1A1A1A]/5 p-6 rounded-sm overflow-x-auto shadow-sm"
+          />
+        );
       }
 
       const handleCopy = () => {

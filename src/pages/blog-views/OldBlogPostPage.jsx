@@ -21,6 +21,7 @@ import rehypeKatex from 'rehype-katex';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { useAchievements } from '../../context/AchievementContext';
 import MarkdownLink from '../../components/MarkdownLink';
+import MermaidDiagram from '../../components/MermaidDiagram';
 
 const OldBlogPostPage = () => {
   const { slug, seriesSlug, episodeSlug } = useParams();
@@ -186,6 +187,9 @@ const OldBlogPostPage = () => {
     };
 
     if (!inline && match) {
+      if (match[1] === 'mermaid') {
+        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+      }
       return (
         <div className="relative group my-6">
           <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">

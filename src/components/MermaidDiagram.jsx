@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import mermaid from 'mermaid';
 
-const MermaidDiagram = ({ chart }) => {
+const MermaidDiagram = ({ chart, theme = 'dark', className }) => {
   const [svg, setSvg] = useState('');
   const [error, setError] = useState(null);
 
   useEffect(() => {
     mermaid.initialize({
       startOnLoad: false,
-      theme: 'dark',
+      theme: theme,
       securityLevel: 'loose',
       fontFamily: "'JetBrains Mono', monospace",
       useMaxWidth: false,
@@ -22,7 +22,7 @@ const MermaidDiagram = ({ chart }) => {
         fontSize: '16px',
       },
     });
-  }, []);
+  }, [theme]);
 
   useEffect(() => {
     const renderChart = async () => {
@@ -52,8 +52,10 @@ const MermaidDiagram = ({ chart }) => {
     );
   }
 
+  const containerClass = className || "mermaid-container my-8 bg-gray-900/30 p-6 rounded-lg overflow-x-auto";
+
   return (
-    <div className="mermaid-container my-8 bg-gray-900/30 p-6 rounded-lg overflow-x-auto">
+    <div className={containerClass}>
       <style>
         {`
           .mermaid-container svg {

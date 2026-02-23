@@ -208,7 +208,13 @@ const DossierBlogPostPage = () => {
       const isMermaid = match && match[1] === 'mermaid';
 
       if (!inline && isMermaid) {
-        return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
+        return (
+          <MermaidDiagram
+            chart={String(children).replace(/\n$/, '')}
+            theme="neutral"
+            className="my-8 border border-black bg-[#f0f0f0] p-6 shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)] overflow-x-auto"
+          />
+        );
       }
 
       const handleCopy = () => {

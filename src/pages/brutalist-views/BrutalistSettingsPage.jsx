@@ -363,6 +363,7 @@ const SettingsPage = () => {
                   variant="brutalist"
                   label="Select View"
                   options={[
+                    { label: 'Default', value: 'standard' },
                     { label: 'Brutalist', value: 'brutalist' },
                     { label: 'Editorial', value: 'editorial' },
                     { label: 'Classic', value: 'old' },

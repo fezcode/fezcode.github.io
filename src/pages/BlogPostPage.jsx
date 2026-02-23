@@ -33,16 +33,17 @@ const BlogPostPage = () => {
       return themeParam;
     }
 
-    // Auto-switch to luxe if global theme is luxe and user hasn't explicitly chosen another non-brutalist mode
-    // or if they have selected 'luxe' explicitly in settings
-    if (blogPostViewMode === 'luxe') return 'luxe';
-    if (
-      fezcodexTheme === 'luxe' &&
-      (blogPostViewMode === 'brutalist' || blogPostViewMode === 'standard')
-    )
-      return 'luxe';
+    // If user has explicitly chosen a mode (other than standard), respect it
+    if (blogPostViewMode !== 'standard') {
+      return blogPostViewMode;
+    }
 
-    return blogPostViewMode === 'standard' ? 'brutalist' : blogPostViewMode;
+    // Otherwise, adapt to the global theme
+    if (fezcodexTheme === 'luxe') {
+      return 'luxe';
+    }
+
+    return 'brutalist';
   })();
 
   if (effectiveViewMode === 'luxe') {
