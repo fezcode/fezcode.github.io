@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Series
+    (date) 2026-02-23
+    (link) 
+    (rating) 5
+    (slug) 11-22-63
+    (title) 11.22.63
+    (image) 
+    (description) A gripping miniseries adaptation of Stephen King's novel, where a high school teacher travels back in time to prevent the JFK assassination. Mastery of suspense, period detail, and emotional depth.
+    (director) Bridget Carpenter
+  > (item)
+    (category) Series
     (date) 2026-01-28
     (link) https://www.imdb.com/title/tt12809802/
     (platform) Netflix
@@ -8,7 +18,6 @@
     (slug) splinter-cell-deathwatch
     (title) Splinter Cell: Deathwatch
     (description) An animated espionage action series based on the Splinter Cell video games. It follows Sam Fisher in a new covert operation.
-
   > (item)
     (category) Series
     (creator) Justin Halpern, Patrick Schumacker, Dean Lorey
@@ -19,7 +28,6 @@
     (slug) harley-quinn-tv-series
     (title) Harley Quinn (TV Series)
     (description) Harley Quinn (2019) is an adult animated superhero comedy series. It follows Harley Quinn's adventures after she breaks up with the Joker and attempts to join the Legion of Doom with the help of Poison Ivy and a ragtag crew of DC outcasts. Known for its dark humor, meta-commentary, and strong character development.
-
   > (item)
     (category) Series
     (date) 2025-12-25
@@ -29,7 +37,6 @@
     (slug) firefly-tv-series
     (title) Firefly (TV Series)
     (description) Firefly (2002) is a space western drama created by Joss Whedon. It follows the renegade crew of the spaceship Serenity as they navigate life on the fringes of space. Known for its witty dialogue, deep character development, and unique blend of sci-fi and western elements.
-
   > (item)
     (category) Series
     (date) 2025-12-12
@@ -39,7 +46,6 @@
     (slug) common-side-effects
     (title) Common Side Effects (TV Series)
     (description) Common Side Effects is an adult animated sci-fi comedy created by Joe Bennett and Steve Hely. It follows two former lab partners who discover a mushroom that cures all diseases, only to face a massive conspiracy.
-
   > (item)
     (category) Series
     (date) 2025-12-08
@@ -49,7 +55,6 @@
     (slug) pluribus-tv-series
     (title) Pluribus (TV Series)
     (description) "Pluribus" is a post-apocalyptic sci-fi series created by Vince Gilligan. Starring Rhea Seehorn as Carol Sturka, an author who remains an individual in a world where humanity has been assimilated into a peaceful hive mind.
-
   > (item)
     (category) Series
     (date) 2025-12-02
@@ -59,7 +64,6 @@
     (slug) 1670-tv-series
     (title) 1670 (TV Series)
     (description) 1670 is a Polish satirical comedy series on Netflix, presented in a mockumentary style.
-
   > (item)
     (category) Series
     (date) 2021-12-12
@@ -69,7 +73,6 @@
     (slug) halt-and-catch-fire-tv-series
     (title) Halt and Catch Fire (TV Series)
     (description) Halt and Catch Fire (2014) is a drama series that chronicles the personal computing boom of the 1980s and the rise of the World Wide Web in the 1990s. It follows a visionary, an engineer, and a coding prodigy as they navigate the shifting tech landscape. Praised for its accurate portrayal of tech history, character-driven storytelling, and exploration of innovation and ambition.
-
   > (item)
     (category) Series
     (date) 2012-01-01
@@ -79,7 +82,6 @@
     (slug) person-of-interest-tv-series
     (title) Person of Interest (TV Series)
     (description) Person of Interest (2011) is a sci-fi crime drama created by Jonathan Nolan. It follows an enigmatic billionaire and a former CIA agent who use an AI to prevent violent crimes before they happen. Praised for its complex serialized storytelling, exploration of AI ethics, and compelling character arcs.
-
   > (item)
     (category) Series
     (date) 2015-02-02
@@ -89,7 +91,6 @@
     (slug) community-tv-series
     (title) Community (TV Series)
     (description) Community (2009) is a sitcom created by Dan Harmon. It follows a diverse study group at a quirky community college in Colorado, known for its meta-humor, pop culture references, and innovative episode concepts that often parody film and television genres. Celebrated for its sharp writing and character development.
-
   > (item)
     (category) Series
     (date) 2022-12-12
@@ -99,7 +100,6 @@
     (slug) black-bird-tv-series
     (title) Black Bird (TV Series)
     (description) Black Bird (2022) is a crime drama miniseries created by Dennis Lehane, based on the true-crime novel 'In with the Devil'. It stars Taron Egerton as Jimmy Keene, who is offered freedom from prison if he can elicit a confession from suspected serial killer Larry Hall. Praised for its intense psychological drama, stellar performances, and gripping narrative.
-
   > (item)
     (category) Series
     (date) 2024-11-11
@@ -109,7 +109,6 @@
     (slug) marvels-the-punisher-tv-series
     (title) Marvel's The Punisher (TV Series)
     (description) Marvel's The Punisher (2017) is an American television series created by Steve Lightfoot for Netflix (now on Disney+), based on the Marvel Comics character. It follows Frank Castle, a vigilante who uses lethal methods to fight crime after the murder of his family. Known for its gritty realism, psychological depth, and intense action sequences.
-
   > (item)
     (category) Series
     (date) 2018-01-01
@@ -119,7 +118,6 @@
     (slug) justice-league-unlimited-tv-series
     (title) Justice League Unlimited (TV Series)
     (description) Justice League Unlimited (2004) is an animated superhero series, a direct continuation of Justice League. It expands the roster to over 50 DC characters, focusing on a larger, more interconnected universe. Praised for its intricate storytelling, character development, and ambitious scope.
-
   > (item)
     (category) Series
     (date) 2022-12-12
@@ -129,7 +127,6 @@
     (slug) the-orville-tv-series
     (title) The Orville (TV Series)
     (description) The Orville (2017) is a sci-fi comedy-drama created by Seth MacFarlane. Set 400 years in the future, it follows the crew of the USS Orville as they navigate the wonders and dangers of deep space, while also exploring contemporary social issues with a blend of humor and thoughtful storytelling, reminiscent of classic Star Trek.
-
   > (item)
     (category) Series
     (date) 2025-10-10
@@ -139,7 +136,6 @@
     (slug) invincible-tv-series
     (title) Invincible (TV Series)
     (description) Invincible (2021) is an adult animated superhero series based on the comic book by Robert Kirkman. It follows Mark Grayson, a teenager who inherits superpowers from his alien father, Omni-Man. The series subverts superhero tropes, delivering brutal action, complex characters, and a compelling narrative about family, betrayal, and the cost of heroism.
-
   > (item)
     (category) Series
     (date) 2025-09-09
@@ -149,7 +145,6 @@
     (slug) tokyo-vice-tv-series
     (title) Tokyo Vice (TV Series)
     (description) Tokyo Vice (2022) is an American crime drama based on Jake Adelstein's non-fiction book. It follows an American journalist in late 1990s Tokyo, navigating the yakuza underworld. Praised for its authentic portrayal of Japanese culture, gripping plot, and stylish direction.
-
   > (item)
     (category) Series
     (date) 2025-10-27
@@ -159,7 +154,6 @@
     (slug) shogun-tv-series
     (title) Shogun (TV Series)
     (description) Shogun (2024) is a historical drama miniseries based on James Clavell's novel, set in feudal Japan (1600). It follows John Blackthorne, Lord Yoshii Toranaga, and Lady Mariko through political intrigue and culture clashes. Renowned for historical detail, cinematography, and authentic portrayal of Japanese culture.
-
   > (item)
     (category) Series
     (creator) Christopher Storer
@@ -170,7 +164,6 @@
     (title) The Bear
     (updated) 2025-10-25
     (description) The Bear is a brilliant series created by Christopher Storer, praised for its top-notch pacing, character development, and intense kitchen environment. The show, which follows a fine-dining chef returning to run his family's sandwich shop, is a must-watch for its great storytelling, raw intensity, and captivating acting, with specific episodes noted for their emotional depth.
-
   > (item)
     (category) Series
     (date) 2025-09-02
@@ -180,7 +173,6 @@
     (slug) midnight-mass-tv-series
     (title) Midnight Mass (TV Series)
     (description) Midnight Mass (2021) is a supernatural horror miniseries from Mike Flanagan. Set on a remote island community, it explores faith, fanaticism, and miracles when a charismatic young priest arrives. Praised for its intense dialogue, deep philosophical themes, and slow-burn horror that builds to a powerful and thought-provoking conclusion.
-
   > (item)
     (category) Series
     (date) 2025-08-30
@@ -190,7 +182,6 @@
     (slug) smiling-friends-tv-series
     (title) Smiling Friends (TV Series)
     (description) Smiling Friends (2020) is an adult animated comedy created by Zach Hadel and Michael Cusack. It follows two employees of a small company dedicated to making people smile. Known for its surreal humor, absurdist animation, and dark undertones that blend grotesque imagery with genuinely funny situations.
-
   > (item)
     (category) Series
     (date) 2025-07-28
@@ -200,7 +191,6 @@
     (slug) the-expanse-tv-series
     (title) The Expanse (TV Series)
     (description) The Expanse (2015) is a sci-fi series based on the novels by James S.A. Corey. Set in a colonized solar system, it follows a hardened detective and a rogue ship's captain as they uncover a conspiracy that threatens peace. Praised for its complex plot, realistic physics, political intrigue, and compelling characters, it's considered one of the best contemporary sci-fi shows.
-
   > (item)
     (category) Series
     (date) 2018-12-12
@@ -210,7 +200,6 @@
     (slug) last-man-on-earth-tv-series
     (title) Last Man on Earth (TV Series)
     (description) A post-apocalyptic comedy television series that follows Phil Miller, seemingly the only survivor of a deadly virus, as he searches for other signs of life. It explores themes of loneliness, human connection, and the challenges of rebuilding society with dark humor and absurdity.
-
   > (item)
     (category) Series
     (date) 2018-12-12
@@ -220,7 +209,6 @@
     (slug) man-seeking-woman-tv-series
     (title) Man Seeking Woman (TV Series)
     (description) An American surrealist romantic comedy television series that follows Josh Greenberg as he navigates the bizarre and often literalized struggles of modern dating. It uses elaborate visual metaphors and absurd scenarios to depict the universal anxieties, humiliations, and occasional triumphs of seeking love.
-
   > (item)
     (category) Series
     (date) 2026-01-09
