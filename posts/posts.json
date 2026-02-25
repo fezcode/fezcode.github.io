@@ -1,5 +1,24 @@
 [
   {
+    "slug": "the-basics-of-time-travel",
+    "title": "The Basics of Time Travel: Theories, Paradoxes, and Spacetime",
+    "date": "2026-02-23",
+    "updated": "2026-02-23",
+    "description": "A deep dive into the theoretical physics of time travel, exploring Einstein's relativity, wormholes, and the paradoxes that challenge our understanding of causality.",
+    "tags": [
+      "physics",
+      "time-travel",
+      "relativity",
+      "science",
+      "theory"
+    ],
+    "category": "rant",
+    "filename": "the-basics-of-time-travel.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "quadtree-algorithm-spatial-indexing",
     "title": "The Quadtree: Solving the O(N^2) Spatial Nightmare",
     "date": "2026-02-21",
