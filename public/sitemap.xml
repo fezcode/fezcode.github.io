@@ -2,57 +2,75 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://fezcode.com/</loc>
-    <lastmod>2026-02-21T17:23:39.717Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.376Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://fezcode.com/about</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/blog</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/projects</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/logs</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/settings</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/apps</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/lore</loc>
-    <lastmod>2026-02-21T17:23:39.718Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.377Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/blog/encyclopedia-of-bad-arguments</loc>
+    <lastmod>2026-02-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/blog/a-colossal-rant-on-logic</loc>
+    <lastmod>2026-02-28T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://fezcode.com/blog/the-basics-of-time-travel</loc>
+    <lastmod>2026-02-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://fezcode.com/blog/quadtree-algorithm-spatial-indexing</loc>
@@ -1441,6 +1459,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://fezcode.com/logs/series/11-22-63</loc>
+    <lastmod>2026-02-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://fezcode.com/logs/series/splinter-cell-deathwatch</loc>
     <lastmod>2026-01-28T00:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
@@ -1718,385 +1742,385 @@
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.386Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/6</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/7</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/8</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.726Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.387Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/1/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/2/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/6</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/7</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/3/pages/8</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/4/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/1</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/2</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/3</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/4</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://fezcode.com/stories/books/5/pages/5</loc>
-    <lastmod>2026-02-21T17:23:39.727Z</lastmod>
+    <lastmod>2026-02-28T04:20:44.388Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>

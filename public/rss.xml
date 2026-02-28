@@ -9,14 +9,44 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 21 Feb 2026 17:23:39 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 28 Feb 2026 04:20:43 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 21 Feb 2026 17:23:39 GMT</pubDate>
+        <pubDate>Sat, 28 Feb 2026 04:20:43 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Encyclopedia of Bad Arguments: A Guide to Logical Fallacies]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/encyclopedia-of-bad-arguments</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/encyclopedia-of-bad-arguments</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Encyclopedia of Bad Arguments: A Guide to Logical Fallacies</h1>
+<p><a href="https://fezcode.com/blog/encyclopedia-of-bad-arguments">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Lost Art of Thinking: A Colossal Rant on Logic]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/a-colossal-rant-on-logic</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/a-colossal-rant-on-logic</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Lost Art of Thinking: A Colossal Rant on Logic (and How to Actually Use It)</h1>
+<p><a href="https://fezcode.com/blog/a-colossal-rant-on-logic">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Basics of Time Travel: Theories, Paradoxes, and Spacetime]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/the-basics-of-time-travel</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/the-basics-of-time-travel</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 23 Feb 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Time travel has long been the crown jewel of science fiction, but its roots are firmly planted in the soil of theoretical physics. From Einstein&#39;s revolutionary theories to the mind-bending paradoxes of quantum mechanics, the possibility of moving through time remains one of the most intriguing questions in science.</p>
+<p><a href="https://fezcode.com/blog/the-basics-of-time-travel">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Quadtree: Solving the O(N^2) Spatial Nightmare]]></title>
             <description><![CDATA[[object Object]]]></description>
