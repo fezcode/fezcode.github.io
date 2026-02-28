@@ -6,7 +6,6 @@ import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import * as Icons from '@phosphor-icons/react';
 import {
-  CaretRightIcon,
   GlobeHemisphereWestIcon,
   BuildingsIcon,
 } from '@phosphor-icons/react';
