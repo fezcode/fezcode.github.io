@@ -165,6 +165,9 @@ const CipherStudioPage = lazy(() => import('../pages/apps/CipherStudioPage'));
 const LogicArchitectPage = lazy(
   () => import('../pages/apps/LogicArchitectPage'),
 );
+const LogicalFallaciesBingoPage = lazy(
+  () => import('../pages/apps/LogicalFallaciesBingoPage'),
+);
 const AtmosphereMixerPage = lazy(
   () => import('../pages/apps/AtmosphereMixerPage'),
 );
@@ -1579,6 +1582,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <LogicArchitectPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/logical-fallacy-bingo"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <LogicalFallaciesBingoPage />
               </Suspense>
             </motion.div>
           }

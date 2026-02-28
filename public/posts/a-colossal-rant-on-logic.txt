@@ -155,9 +155,25 @@ Consider the following sentence:
 * If the statement is True, then what it says must be the case. So, it is False.
 * If the statement is False, then what it says is incorrect. So, it must be True.
 
-It contradicts itself perfectly. It breaks the very foundation of Aristotle's logic (the Law of Non-Contradiction, which states something cannot be both true and false at the same time in the same way). 
+It contradicts itself perfectly. It breaks the very foundation of Aristotle's logic (the **[Law of Non-Contradiction](/vocab/law-of-non-contradiction)**, which states something cannot be both true and false at the same time in the same way). 
 
-This isn't just a fun word game. In the 1930s, Kurt Gödel proved his **Incompleteness Theorems**, basically demonstrating mathematically that in any sufficiently complex logical system (like arithmetic), there will always be true statements that cannot be proven within that system. Logic has its limits.
+This isn't just a fun word game. In the 1930s, Kurt Gödel took this concept of self-reference and applied it to mathematics, proving his devastating **[Incompleteness Theorems](/vocab/incompleteness-theorems)**. 
+
+### Gödel's Incompleteness: The Math that Broke Math
+
+Before Gödel, mathematicians like David Hilbert believed that mathematics was a perfect, sealed system. They believed that given enough time, every single mathematical truth could be formally proven using a strict set of rules (axioms), without any contradictions.
+
+Gödel proved this was mathematically impossible. He translated the Liar's Paradox into mathematical code. Instead of saying "This statement is false," he created an equation that essentially said:
+
+> **"This mathematical statement cannot be proven."**
+
+This created a massive dilemma for the foundation of math:
+*   **Scenario A:** If the statement *can* be proven, then it is false (because it says it can't be proven). This means the mathematical system is contradictory (inconsistent).
+*   **Scenario B:** If the statement *cannot* be proven, then it is true! But because it cannot be proven, the mathematical system is **incomplete**.
+
+Gödel demonstrated that any formal logical system complex enough to do basic arithmetic will *always* contain true statements that simply cannot be proven within that system. Furthermore, <span style="background-color: rgba(250, 128, 114, 0.3); color: #ef4444; font-weight: bold; padding: 2px 6px; border-radius: 4px;">he proved that a system cannot prove its own consistency</span>. 
+
+Logic, it turns out, has mathematically proven its own limits.
 
 ## The Conclusion of the Rant
 

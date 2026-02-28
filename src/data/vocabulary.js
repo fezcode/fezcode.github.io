@@ -27,6 +27,10 @@ export const vocabulary = {
     title: 'Context API',
     loader: () => import('./vocab/context-api'),
   },
+  'correlation-vs-relation': {
+    title: 'Correlation vs Relation',
+    loader: () => import('./vocab/correlation-vs-relation'),
+  },
   crawler: {
     title: 'Search Engine Crawler',
     loader: () => import('./vocab/crawler'),
@@ -75,9 +79,17 @@ export const vocabulary = {
     title: 'Inductive Reasoning',
     loader: () => import('./vocab/inductive-reasoning'),
   },
+  'incompleteness-theorems': {
+    title: 'Incompleteness Theorems',
+    loader: () => import('./vocab/incompleteness-theorems'),
+  },
   'language-games': {
     title: 'Language Games',
     loader: () => import('./vocab/language-games'),
+  },
+  'law-of-non-contradiction': {
+    title: 'Law of Non-Contradiction',
+    loader: () => import('./vocab/law-of-non-contradiction'),
   },
   'leap-of-faith': {
     title: 'Leap of Faith',

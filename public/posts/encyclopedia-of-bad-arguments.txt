@@ -1,0 +1,158 @@
+# The Encyclopedia of Bad Arguments: A Guide to Logical Fallacies
+
+If you read my previous colossal rant on logic, you know that the foundation of a good argument requires sound premises and valid structure. But what happens when things go wrong? Welcome to the dark side of reasoning.
+
+*(Want to put this knowledge to the test while surviving the internet? Play **[Logical Fallacies Bingo](/apps/logical-fallacy-bingo)**!)*
+
+Today, we are taking a comprehensive tour through the Hall of Shame: **[Logical Fallacies](/vocab/logical-fallacy)**.
+
+A logical fallacy is, quite simply, a flaw in reasoning. It's a trick of logic—an illusion of thought—that makes a bad argument look good, or a good argument look bad. Sometimes they are used accidentally by people who don't know any better. Often, they are used intentionally by politicians, marketers, and internet trolls to manipulate you.
+
+To defend your mind, you must know your enemy. Let's break them down.
+
+---
+
+## Part I: Formal vs. Informal Fallacies
+
+Before we get to the fun stuff, we need to understand the two main categories of fallacies.
+
+### 1. Formal Fallacies (The Math is Wrong)
+A formal fallacy means the actual structure of the argument is broken. It doesn't matter what you are arguing *about*; the logic itself is fundamentally flawed. These usually occur in [Deductive Reasoning](/vocab/deductive-reasoning).
+
+**Example: Affirming the Consequent**
+*   **Premise 1:** If it is raining, the streets are wet. (If A, then B)
+*   **Premise 2:** The streets are wet. (B is true)
+*   **Conclusion:** Therefore, it is raining. (Therefore, A is true)
+
+*Why it's broken:* The streets could be wet because a fire hydrant exploded, or someone is washing their car. The structure assumes the effect *only* has one cause.
+
+### 2. Informal Fallacies (The Content is Garbage)
+Informal fallacies might actually have a valid structure, but the content of the premises is flawed, irrelevant, or deceptive. This is what you see 99% of the time in daily life.
+
+Let's dive into the most common offenders.
+
+---
+
+## Part II: The Heavy Hitters (Informal Fallacies)
+
+### 1. The Ad Hominem (Attacking the Person)
+Translates to "to the man." Instead of engaging with the argument, you attack the character, motive, or other attribute of the person making the argument.
+
+*   **The Setup:** "We need to reform the tax code to help the middle class."
+*   **The Fallacy:** "Why should we listen to you? You're a wealthy elite who has never worked a blue-collar job in your life!"
+*   **Why it's wrong:** The person's wealth has zero bearing on the mathematical or economic validity of the tax proposal.
+
+**Sub-variant: Tu Quoque ("You Too")**
+Answering criticism with criticism instead of addressing the point.
+*   "You shouldn't eat so much fast food, it's bad for your heart." -> "Well, you smoke a pack a day, so shut up!"
+
+### 2. The Straw Man vs. The Steel Man
+**The Straw Man** occurs when someone takes an opponent's argument, drastically exaggerates or misrepresents it, and then attacks that fake, weakened version (the "straw man").
+
+*   **Person A:** "I think we should put more money into public schools."
+*   **Person B:** "Oh, so you want to defund the military and leave our country completely defenseless? That's treasonous!"
+
+**The Antidote: The Steel Man**
+The opposite of a Straw Man is a "Steel Man." To steel man an argument means to reconstruct your opponent's argument in the strongest, most charitable way possible before you try to defeat it. If you can defeat the *strongest* version of their argument, you've actually won.
+
+*   **Person A:** "I think we need to raise taxes on large corporations."
+*   **Person B (Steel Manning):** "It sounds like your primary concern is wealth inequality and ensuring that highly profitable companies contribute their fair share to public infrastructure and services. Is that an accurate summary? Assuming that's true, here is why I think raising the corporate tax rate might actually harm the middle class..."
+
+### 3. The Slippery Slope
+Assuming that a relatively small, often harmless first step will inevitably lead to a chain reaction of catastrophic events.
+
+*   **The Fallacy:** "If we let students choose their own reading material, next they'll be ignoring the curriculum entirely, then they'll drop out of school, turn to a life of crime, and society will collapse!"
+*   **Why it's wrong:** It assumes extreme causality without evidence. A does not automatically equal Z.
+
+### 4. The False Dilemma (Black-and-White Thinking)
+Presenting only two extreme options as the *only* possibilities, when in reality, a spectrum of options exists.
+
+*   **The Fallacy:** "You are either completely with us, or you are a traitor to the cause."
+*   **Why it's wrong:** It artificially limits the debate. You can agree with a cause but disagree with the methods, or remain neutral.
+
+### 5. No True Scotsman (Appeal to Purity)
+This happens when someone makes a universal claim ("All X do Y"), gets presented with a counter-example, and instead of admitting they were wrong, they shift the definition of the group to exclude the counter-example.
+
+*   **Alice:** "No Scotsman puts sugar on his porridge."
+*   **Bob:** "But my uncle Angus is Scottish, and he loves sugar on his porridge."
+*   **Alice:** "Ah, yes, but no *true* Scotsman puts sugar on his porridge."
+*   **Why it's wrong:** It's an ad-hoc rescue of a flawed argument. You change the rules mid-game to avoid being wrong.
+
+---
+
+## Part III: The Causation Conundrum
+
+Human brains are pattern-recognition machines. We love finding connections, even when they don't exist. This leads to massive errors in [Inductive Reasoning](/vocab/inductive-reasoning).
+
+### 1. Post Hoc Ergo Propter Hoc (After this, therefore because of this)
+Assuming that because Event B happened *after* Event A, Event A must have *caused* Event B.
+
+*   **The Fallacy:** "The rooster crows at 5:00 AM. The sun rises at 5:05 AM. Therefore, the rooster's crowing causes the sun to rise."
+*   **Why it's wrong:** Chronology does not equal causality.
+
+### 2. Cum Hoc Ergo Propter Hoc (With this, therefore because of this)
+Also known as confusing **[correlation](/vocab/correlation-vs-relation)** with causation. Assuming that because two things happen at the same time, one causes the other.
+
+*   **The Fallacy:** "Ice cream sales and shark attacks both spike in July. Therefore, eating ice cream attracts sharks."
+*   **The Reality:** There is a hidden third variable: Summer heat. People eat ice cream when it's hot, and they swim in the ocean when it's hot.
+
+### 3. The Texas Sharpshooter
+Imagine a cowboy shooting his gun randomly at the side of a barn. Afterward, he walks up, paints a bullseye around the tightest cluster of bullet holes, and claims he's a sharpshooter.
+
+This fallacy occurs when a person emphasizes similarities in data but ignores the differences, artificially creating a pattern where none exists. (This is common in conspiracy theories and numerology).
+
+---
+
+## Part IV: Weapons of Distraction
+
+These fallacies aren't really about logic; they are about changing the subject to avoid losing.
+
+### 1. The Red Herring
+Introducing a completely irrelevant topic into an argument to distract attention from the original issue.
+
+*   **Interviewer:** "Senator, your new environmental bill seems to have a massive loophole for corporate polluters."
+*   **Senator:** "What we really need to be talking about is the devastating impact of video game violence on our youth!"
+*   (The name comes from the old practice of dragging a smelly fish across a trail to distract hunting dogs).
+
+### 2. Whataboutism (A modern variant of Tu Quoque)
+Deflecting a difficult question or accusation by bringing up a completely different issue regarding the opponent.
+
+*   "Yes, my client embezzled funds, but *what about* the mayor who was caught taking bribes last year? Why aren't we talking about that?"
+
+>
+> ### *Side Note: Intellectual Bullying (Proof by Intimidation)*
+> While not a strict structural fallacy, a very common weapon of distraction is **Argumentum Verbosium** (Proof by Intimidation). This happens when someone intentionally uses extremely complex jargon, overly academic language, or an overwhelming volume of dense information to make the other person feel uneducated, unqualified, or too exhausted to argue back.
+>
+> The underlying, unspoken premise is: *"I am using words you don't understand; therefore, I am smarter than you; therefore, I am right."* This is often tied to **Obscurantism**—the deliberate practice of making things vague or incredibly complex to hide the fact that the actual argument is weak.
+>
+> As the famous quote (often attributed to Albert Einstein) goes: <span style="background-color: rgba(16, 52, 166, 0.85); color: #e0f2fe; font-weight: bold; padding: 2px 6px; border-radius: 4px;">"If you can't explain it to a six-year-old, you don't understand it yourself."</span> A master of logic can explain a complex topic simply; a fraud overcomplicates a simple topic to hide.
+>
+---
+
+## Part V: Cognitive Biases (The Brain's Operating System Bugs)
+
+While logical fallacies are errors in arguments, **Cognitive Biases** are errors in human psychology. They are the subconscious shortcuts our brains take that lead us away from rationality.
+
+### 1. Confirmation Bias
+The tendency to search for, interpret, favor, and recall information in a way that confirms or supports your prior beliefs or values.
+*   If you believe the earth is flat, you will ignore thousands of satellite photos and focus entirely on one blurry YouTube video of a horizon that looks straight.
+
+### 2. Sunk Cost Fallacy
+Continuing a behavior or endeavor as a result of previously invested resources (time, money, or effort), even when it clearly isn't working.
+*   "I've already watched 6 seasons of this terrible show, I have to finish the last two." (No, you don't. Your past time is gone; don't waste your future time).
+
+### 3. Dunning-Kruger Effect
+A cognitive bias whereby people with low ability, expertise, or experience regarding a certain type of task or area of knowledge tend to overestimate their ability or knowledge.
+*   Essentially: The less you know about a subject, the simpler it seems, leading to overconfidence. (See: Every person who argues with an epidemiologist on Twitter).
+
+---
+
+## Conclusion: How to Survive the Noise
+
+The world is noisy, and bad arguments are loud. But armed with the knowledge of these fallacies, you possess a mental filter.
+
+When you hear a claim, evaluate the **[premises](/vocab/premise)**. Look at the structure. Ask yourself: *Is this person attacking the argument or the person? Are they presenting a false choice? Are they assuming causation where there is only correlation?*
+
+Learn to recognize these fallacies in others, but more importantly, **learn to recognize them in yourself.** We are all guilty of using them when we are emotional or defensive. True rationality requires the humility to admit when your own logic has failed.
+
+Argue better. Demand better arguments. And please, stop attacking the straw men.
