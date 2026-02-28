@@ -11,6 +11,10 @@ export const vocabulary = {
     title: 'Anti-Pattern',
     loader: () => import('./vocab/anti-pattern'),
   },
+  'boolean-algebra': {
+    title: 'Boolean Algebra',
+    loader: () => import('./vocab/boolean-algebra'),
+  },
   'box-plot': {
     title: 'Box Plot',
     loader: () => import('./vocab/box-plot'),
@@ -34,6 +38,10 @@ export const vocabulary = {
   dasein: {
     title: 'Dasein',
     loader: () => import('./vocab/dasein'),
+  },
+  'deductive-reasoning': {
+    title: 'Deductive Reasoning',
+    loader: () => import('./vocab/deductive-reasoning'),
   },
   dialectic: {
     title: 'Dialectic (Hegelian)',
@@ -63,6 +71,10 @@ export const vocabulary = {
     title: 'Hydration',
     loader: () => import('./vocab/hydration'),
   },
+  'inductive-reasoning': {
+    title: 'Inductive Reasoning',
+    loader: () => import('./vocab/inductive-reasoning'),
+  },
   'language-games': {
     title: 'Language Games',
     loader: () => import('./vocab/language-games'),
@@ -82,6 +94,10 @@ export const vocabulary = {
   'lingua-franca': {
     title: 'Lingua Franca',
     loader: () => import('./vocab/lingua-franca'),
+  },
+  'logical-fallacy': {
+    title: 'Logical Fallacy',
+    loader: () => import('./vocab/logical-fallacy'),
   },
   'modules-vs-includes': {
     title: 'Modules vs. Includes',
@@ -127,6 +143,10 @@ export const vocabulary = {
     title: 'Power Law (Long-tail)',
     loader: () => import('./vocab/power-law'),
   },
+  premise: {
+    title: 'Premise',
+    loader: () => import('./vocab/premise'),
+  },
   'prop-drilling': {
     title: 'Prop Drilling',
     loader: () => import('./vocab/prop-drilling'),
@@ -158,6 +178,10 @@ export const vocabulary = {
   ssg: {
     title: 'Static Site Generation (SSG)',
     loader: () => import('./vocab/ssg'),
+  },
+  syllogism: {
+    title: 'Syllogism',
+    loader: () => import('./vocab/syllogism'),
   },
   staccato: {
     title: 'Staccato (Music)',

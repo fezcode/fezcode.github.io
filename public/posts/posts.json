@@ -1,5 +1,24 @@
 [
   {
+    "slug": "a-colossal-rant-on-logic",
+    "title": "The Lost Art of Thinking: A Colossal Rant on Logic",
+    "date": "2026-02-28",
+    "updated": "2026-02-28",
+    "description": "A deep dive into the absolute fundamentals of logic, from ancient Greece to Boolean algebra, and a rant on why modern society desperately needs to relearn how to think.",
+    "tags": [
+      "logic",
+      "philosophy",
+      "rant",
+      "education",
+      "history"
+    ],
+    "category": "rant",
+    "filename": "a-colossal-rant-on-logic.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "the-basics-of-time-travel",
     "title": "The Basics of Time Travel: Theories, Paradoxes, and Spacetime",
     "date": "2026-02-23",
