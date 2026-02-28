@@ -3,6 +3,10 @@ export const vocabulary = {
     title: 'Absurdism',
     loader: () => import('./vocab/absurdism'),
   },
+  'ad-hoc': {
+    title: 'Ad Hoc',
+    loader: () => import('./vocab/ad-hoc'),
+  },
   antikythera: {
     title: 'Antikythera Mechanism',
     loader: () => import('./vocab/antikythera'),

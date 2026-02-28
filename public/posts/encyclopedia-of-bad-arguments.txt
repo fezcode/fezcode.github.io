@@ -76,7 +76,7 @@ This happens when someone makes a universal claim ("All X do Y"), gets presented
 *   **Alice:** "No Scotsman puts sugar on his porridge."
 *   **Bob:** "But my uncle Angus is Scottish, and he loves sugar on his porridge."
 *   **Alice:** "Ah, yes, but no *true* Scotsman puts sugar on his porridge."
-*   **Why it's wrong:** It's an ad-hoc rescue of a flawed argument. You change the rules mid-game to avoid being wrong.
+*   **Why it's wrong:** It's an **[ad-hoc](/vocab/ad-hoc)** rescue of a flawed argument. You change the rules mid-game to avoid being wrong.
 
 ---
 
@@ -97,10 +97,12 @@ Also known as confusing **[correlation](/vocab/correlation-vs-relation)** with c
 *   **The Reality:** There is a hidden third variable: Summer heat. People eat ice cream when it's hot, and they swim in the ocean when it's hot.
 
 ### 3. The Texas Sharpshooter
-Imagine a cowboy shooting his gun randomly at the side of a barn. Afterward, he walks up, paints a bullseye around the tightest cluster of bullet holes, and claims he's a sharpshooter.
+Imagine a cowboy shooting his gun randomly at the side of a barn. Afterward, he walks up, paints a bullseye around the tightest cluster of bullet holes, and claims he's a sharpshooter. 
 
 This fallacy occurs when a person emphasizes similarities in data but ignores the differences, artificially creating a pattern where none exists. (This is common in conspiracy theories and numerology).
 
+*   **The Fallacy:** "Look at these three successful tech CEOs. They all dropped out of college, they all drink green tea, and they all own golden retrievers. Therefore, dropping out of college and drinking green tea with a golden retriever is the secret formula for building a billion-dollar startup!"
+*   **Why it's wrong:** The speaker is ignoring the thousands of college dropouts with green tea and golden retrievers who went bankrupt, cherry-picking only the data points that fit their desired narrative.
 ---
 
 ## Part IV: Weapons of Distraction
@@ -144,6 +146,8 @@ Continuing a behavior or endeavor as a result of previously invested resources (
 ### 3. Dunning-Kruger Effect
 A cognitive bias whereby people with low ability, expertise, or experience regarding a certain type of task or area of knowledge tend to overestimate their ability or knowledge.
 *   Essentially: The less you know about a subject, the simpler it seems, leading to overconfidence. (See: Every person who argues with an epidemiologist on Twitter).
+
+![Dunning-Kruger Effect Curve](https://upload.wikimedia.org/wikipedia/commons/4/46/Dunning%E2%80%93Kruger_Effect_01.svg)
 
 ---
 
