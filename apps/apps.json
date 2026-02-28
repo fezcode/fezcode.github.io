@@ -15,6 +15,14 @@
         "pinned_order": 5
       },
       {
+        "slug": "logical-fallacy-bingo",
+        "to": "/apps/logical-fallacy-bingo",
+        "title": "Fallacy Bingo",
+        "description": "A playable bingo game based on common logical fallacies.",
+        "icon": "BrainIcon",
+        "created_at": "2026-02-28T12:00:00+03:00"
+      },
+      {
         "slug": "feztype",
         "to": "/apps/feztype",
         "title": "FezType (Typing Speed Tester)",
