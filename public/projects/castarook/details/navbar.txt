@@ -1,0 +1,9 @@
+{
+  "logo": {
+    "label": "CASTAROOK"
+  },
+  "cta": {
+    "label": "PLAY THE GAME",
+    "link": "/castarook"
+  }
+}

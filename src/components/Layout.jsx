@@ -65,6 +65,7 @@ const Layout = ({
     projectStyle === 'museum' ||
     projectStyle === 'landscape' ||
     projectStyle === 'ruby' ||
+    projectStyle === 'neon-slideshow' ||
     projectStyle === 'bento';
   // Check if we are inside a specific app (but not the apps listing page)
   const isAppDetail =

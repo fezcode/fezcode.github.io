@@ -23,6 +23,7 @@ const LandscapeProjectPage = lazy(
   () => import('../pages/project-pages/LandscapeProjectPage'),
 );
 const RubyProjectPage = lazy(() => import('../pages/project-pages/RubyProjectPage'));
+const NeonSlideshowProjectPage = lazy(() => import('../pages/project-pages/NeonSlideshowProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -96,6 +97,14 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <RubyProjectPage />
+      </Suspense>
+    );
+  }
+
+  if (projectStyle === 'neon-slideshow') {
+    return (
+      <Suspense fallback={<Loading />}>
+        <NeonSlideshowProjectPage />
       </Suspense>
     );
   }

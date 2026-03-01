@@ -1,0 +1,42 @@
+[
+  {
+    "id": "combat",
+    "title": "COMBAT",
+    "subtitle": "BATTLE PHASE",
+    "image": "/images/projects/castarook/battle-screen.webp",
+    "file": "combat.txt",
+    "accent": "text-yellow-400",
+    "bgAccent": "bg-yellow-400",
+    "outlineAccent": "border-yellow-400"
+  },
+  {
+    "id": "scenery",
+    "title": "PROCEDURAL LOW-POLY",
+    "subtitle": "ENVIRONMENT",
+    "image": "/images/projects/castarook/scenery.webp",
+    "file": "scenery.txt",
+    "accent": "text-teal-400",
+    "bgAccent": "bg-teal-400",
+    "outlineAccent": "border-teal-400"
+  },
+  {
+    "id": "siege",
+    "title": "SIEGE WEAPONS",
+    "subtitle": "ONAGERS",
+    "image": "/images/projects/castarook/onagers.webp",
+    "file": "siege.txt",
+    "accent": "text-blue-500",
+    "bgAccent": "bg-blue-500",
+    "outlineAccent": "border-blue-500"
+  },
+  {
+    "id": "night",
+    "title": "DAY & NIGHT",
+    "subtitle": "DYNAMIC WEATHER",
+    "image": "/images/projects/castarook/night-mode.webp",
+    "file": "night.txt",
+    "accent": "text-green-500",
+    "bgAccent": "bg-green-500",
+    "outlineAccent": "border-green-500"
+  }
+]
