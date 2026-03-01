@@ -49,6 +49,22 @@
     (image) /images/projects/gobake/gobake-banner.png
 
   > (project)
+    (slug) castarook
+    (title) Castarook
+    (style) neon-slideshow
+    (size) 2
+    (repo_link) https://github.com/fezcode/castarook
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > React
+      > Three.js
+      > Game Dev
+    (shortDescription) Castarook is an immersive 3D chess game built with React and Three.js that integrates D&D-inspired RPG mechanics.
+    (date) 2026-03-02
+    (image) /images/projects/castarook/main-menu.webp
+
+  > (project)
     (slug) bm
     (title) bm - bookmark manager
     (style) editorial
@@ -131,7 +147,7 @@
     (size) 2
     (repo_link) https://github.com/fezcode/nocturnote
     (demo_link) https://github.com/fezcode/nocturnote
-    (pinned) true
+    (pinned) false
     (isActive) true
     (technologies)
       > Electron
