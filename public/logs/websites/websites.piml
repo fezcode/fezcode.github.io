@@ -1,6 +1,14 @@
 (logs)
   > (item)
     (category) Websites
+    (date) 2026-03-01
+    (link) https://www.soundjay.com
+    (rating) 5
+    (slug) soundjay
+    (title) SoundJay
+    (description) A comprehensive resource for high-quality, free sound effects suitable for any project, commercial or not.
+  > (item)
+    (category) Websites
     (date) 2026-01-17
     (link) https://noyaml.com
     (slug) noyaml
