@@ -21,13 +21,13 @@
   },
   {
     "id": "siege",
-    "title": "SIEGE WEAPONS",
+    "title": "Tormenta, mittite!",
     "subtitle": "ONAGERS",
     "image": "/images/projects/castarook/onagers.webp",
     "file": "siege.txt",
-    "accent": "text-blue-500",
-    "bgAccent": "bg-blue-500",
-    "outlineAccent": "border-blue-500"
+    "accent": "text-rose-400",
+    "bgAccent": "bg-rose-400",
+    "outlineAccent": "border-rose-400"
   },
   {
     "id": "night",
