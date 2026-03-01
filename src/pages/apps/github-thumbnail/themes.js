@@ -33,6 +33,7 @@ import { terminalPro } from './themes/terminalPro';
 import { neonVapor } from './themes/neonVapor';
 import { cadTech } from './themes/cadTech';
 import { retroDos } from './themes/retroDos';
+import { darkMedieval } from './themes/darkMedieval';
 
 export const themeRenderers = {
   modern,
@@ -70,4 +71,5 @@ export const themeRenderers = {
   neonVapor,
   cadTech,
   retroDos,
+  darkMedieval,
 };

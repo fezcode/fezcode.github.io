@@ -53,6 +53,7 @@ const THEME_OPTIONS = [
   { value: 'neonVapor', label: 'NEON_VAPORWAVE' },
   { value: 'cadTech', label: 'CAD_TECHNICAL' },
   { value: 'retroDos', label: 'RETRO_DOS_SHELL' },
+  { value: 'darkMedieval', label: 'DARK_MEDIEVAL' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
