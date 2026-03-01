@@ -147,7 +147,7 @@
     (size) 2
     (repo_link) https://github.com/fezcode/nocturnote
     (demo_link) https://github.com/fezcode/nocturnote
-    (pinned) true
+    (pinned) false
     (isActive) true
     (technologies)
       > Electron
