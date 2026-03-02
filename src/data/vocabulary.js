@@ -15,6 +15,10 @@ export const vocabulary = {
     title: 'Anti-Pattern',
     loader: () => import('./vocab/anti-pattern'),
   },
+  'baader-meinhof': {
+    title: 'Baader-Meinhof Phenomenon',
+    loader: () => import('./vocab/baader-meinhof'),
+  },
   'barnum-effect': {
     title: 'Barnum Effect',
     loader: () => import('./vocab/barnum-effect'),
