@@ -137,13 +137,28 @@ const Banner = () => {
                 {banner.text}
               </p>
               {banner.link && (
-                <Link
-                  to={banner.link}
-                  className="shrink-0 inline-flex items-center gap-1 bg-black/20 hover:bg-black/40 px-3 py-1 rounded-sm border border-white/20 transition-all font-bold text-[10px] uppercase"
-                >
-                  {banner.linkText || 'VIEW_DETAILS'}
-                  <ArrowRightIcon size={12} weight="bold" />
-                </Link>
+                banner.link.startsWith('http') ? (
+                  /* 
+                    Use native <a> tag for external absolute URLs to bypass React Router.
+                    This allows the browser to perform a normal page navigation instead of 
+                    React Router attempting to resolve it internally which causes a 404. 
+                  */
+                  <a
+                    href={banner.link}
+                    className="shrink-0 inline-flex items-center gap-1 bg-black/20 hover:bg-black/40 px-3 py-1 rounded-sm border border-white/20 transition-all font-bold text-[10px] uppercase"
+                  >
+                    {banner.linkText || 'VIEW_DETAILS'}
+                    <ArrowRightIcon size={12} weight="bold" />
+                  </a>
+                ) : (
+                  <Link
+                    to={banner.link}
+                    className="shrink-0 inline-flex items-center gap-1 bg-black/20 hover:bg-black/40 px-3 py-1 rounded-sm border border-white/20 transition-all font-bold text-[10px] uppercase"
+                  >
+                    {banner.linkText || 'VIEW_DETAILS'}
+                    <ArrowRightIcon size={12} weight="bold" />
+                  </Link>
+                )
               )}
             </div>
 

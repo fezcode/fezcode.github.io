@@ -214,13 +214,16 @@ const LuxeSidebar = ({
                         >
                           {items.map((item, idx) => {
                             const Icon = ICON_MAP[item.icon] || ArrowRightIcon;
-                            if (item.external === 'true' || item.url) {
+                            if (item.external === 'true' || item.url || (item.to && item.to.startsWith('http'))) {
+                              /* 
+                                Use native <a> tag for external absolute URLs to bypass React Router.
+                                This allows the browser to perform a normal page navigation instead of 
+                                React Router attempting to resolve it internally which causes a 404. 
+                              */
                               return (
                                 <a
                                   key={idx}
                                   href={item.url || item.to}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
                                   className="group flex items-center justify-between px-8 py-3 transition-all duration-300 border-l-2 border-transparent text-[#1A1A1A]/60 hover:text-[#1A1A1A] hover:bg-[#1A1A1A]/5"
                                 >
                                   <div className="flex items-center gap-4">

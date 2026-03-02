@@ -210,13 +210,16 @@ const BrutalistSidebar = ({
                       <nav className="flex flex-col">
                         {items.map((item, idx) => {
                           const Icon = ICON_MAP[item.icon] || ArrowRightIcon;
-                          if (item.external === 'true' || item.url) {
+                          if (item.external === 'true' || item.url || (item.to && item.to.startsWith('http'))) {
+                            /* 
+                              Use native <a> tag for external absolute URLs to bypass React Router.
+                              This allows the browser to perform a normal page navigation instead of 
+                              React Router attempting to resolve it internally which causes a 404. 
+                            */
                             return (
                               <a
                                 key={idx}
                                 href={item.url || item.to}
-                                target="_blank"
-                                rel="noopener noreferrer"
                                 className="group flex items-center justify-between px-6 py-3 transition-all duration-300 border-b border-white/5 text-gray-300 hover:text-white hover:bg-white/5"
                               >
                                 <div className="flex items-center gap-4">
