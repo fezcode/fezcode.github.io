@@ -114,6 +114,13 @@ import {
   ImageSquareIcon,
   PenNibIcon,
   CoffeeIcon,
+  CrownIcon,
+  CastleTurretIcon,
+  SwordIcon,
+  FilePdfIcon,
+  BookBookmarkIcon,
+  HouseIcon,
+  UserIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -232,4 +239,11 @@ export const appIcons = {
   ImageSquareIcon,
   PenNibIcon,
   CoffeeIcon,
+  CrownIcon,
+  CastleTurretIcon,
+  SwordIcon,
+  FilePdfIcon,
+  BookBookmarkIcon,
+  HouseIcon,
+  UserIcon,
 };

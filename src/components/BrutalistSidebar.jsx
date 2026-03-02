@@ -2,31 +2,13 @@ import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { NavLink, Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  HouseIcon,
-  UserIcon,
-  BookOpenIcon,
-  WrenchIcon,
-  ArticleIcon,
-  SquaresFourIcon,
-  GearSixIcon,
-  MagnifyingGlassIcon,
-  TimerIcon,
-  PushPinIcon,
-  TrophyIcon,
-  ShuffleIcon,
-  PaletteIcon,
-  EnvelopeSimpleIcon,
-  BugBeetleIcon,
-  ArrowRightIcon,
-  SwordIcon,
-  RssIcon,
-  GraphIcon,
   CaretDoubleDownIcon,
   CaretDoubleUpIcon,
-  FlaskIcon,
-  BookBookmarkIcon,
-  FilePdfIcon,
-  TerminalWindowIcon,
+  ArrowRightIcon,
+  MagnifyingGlassIcon,
+  GearSixIcon,
+  ShuffleIcon,
+  EnvelopeSimpleIcon,
 } from '@phosphor-icons/react';
 
 import { version } from '../version';
@@ -34,35 +16,8 @@ import usePersistentState from '../hooks/usePersistentState';
 import { KEY_SIDEBAR_STATE } from '../utils/LocalStorageManager';
 import { useAchievements } from '../context/AchievementContext';
 import { useSiteConfig } from '../context/SiteConfigContext';
+import { appIcons as ICON_MAP } from '../utils/appIcons';
 import piml from 'piml';
-
-const ICON_MAP = {
-  HouseIcon,
-  UserIcon,
-  BookOpenIcon,
-  WrenchIcon,
-  ArticleIcon,
-  SquaresFourIcon,
-  GearSixIcon,
-  MagnifyingGlassIcon,
-  TimerIcon,
-  PushPinIcon,
-  TrophyIcon,
-  ShuffleIcon,
-  PaletteIcon,
-  EnvelopeSimpleIcon,
-  BugBeetleIcon,
-  ArrowRightIcon,
-  SwordIcon,
-  RssIcon,
-  GraphIcon,
-  CaretDoubleDownIcon,
-  CaretDoubleUpIcon,
-  FlaskIcon,
-  BookBookmarkIcon,
-  FilePdfIcon,
-  TerminalWindowIcon,
-};
 
 const BrutalistSidebar = ({
   isOpen,
