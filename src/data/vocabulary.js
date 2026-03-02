@@ -15,6 +15,10 @@ export const vocabulary = {
     title: 'Anti-Pattern',
     loader: () => import('./vocab/anti-pattern'),
   },
+  'barnum-effect': {
+    title: 'Barnum Effect',
+    loader: () => import('./vocab/barnum-effect'),
+  },
   'boolean-algebra': {
     title: 'Boolean Algebra',
     loader: () => import('./vocab/boolean-algebra'),
