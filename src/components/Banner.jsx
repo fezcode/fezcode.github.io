@@ -138,10 +138,10 @@ const Banner = () => {
               </p>
               {banner.link && (
                 banner.link.startsWith('http') ? (
-                  /* 
+                  /*
                     Use native <a> tag for external absolute URLs to bypass React Router.
-                    This allows the browser to perform a normal page navigation instead of 
-                    React Router attempting to resolve it internally which causes a 404. 
+                    This allows the browser to perform a normal page navigation instead of
+                    React Router attempting to resolve it internally which causes a 404.
                   */
                   <a
                     href={banner.link}

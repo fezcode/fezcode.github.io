@@ -211,10 +211,10 @@ const BrutalistSidebar = ({
                         {items.map((item, idx) => {
                           const Icon = ICON_MAP[item.icon] || ArrowRightIcon;
                           if (item.external === 'true' || item.url || (item.to && item.to.startsWith('http'))) {
-                            /* 
+                            /*
                               Use native <a> tag for external absolute URLs to bypass React Router.
-                              This allows the browser to perform a normal page navigation instead of 
-                              React Router attempting to resolve it internally which causes a 404. 
+                              This allows the browser to perform a normal page navigation instead of
+                              React Router attempting to resolve it internally which causes a 404.
                             */
                             return (
                               <a
