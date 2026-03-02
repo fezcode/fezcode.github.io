@@ -51,7 +51,7 @@
     (content)
       > (item)
         (label) Castarook
-        (to) /castarook
+        (to) https://fezcode.com/castarook/
         (icon) CrownIcon
 
   > (section)
