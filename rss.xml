@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Mon, 02 Mar 2026 20:21:35 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 Mar 2026 22:07:45 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Mon, 02 Mar 2026 20:21:35 GMT</pubDate>
+        <pubDate>Mon, 02 Mar 2026 22:07:45 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Deep End: Distributed Systems, Consensus, and State]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/distributed-systems-consensus-and-state</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/distributed-systems-consensus-and-state</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 03 Mar 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>When you write a single-threaded program running on a single machine, life is easy. You write a variable to memory, and the next line reads it back. It&#39;s there. It&#39;s correct. </p>
+<p><a href="https://fezcode.com/blog/distributed-systems-consensus-and-state">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[MBTI & Astrology: The Modern Quest for Identity]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/mbti-and-astrology-modern-identity</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/mbti-and-astrology-modern-identity</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 02 Mar 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Humans are wonderfully, hopelessly complex. We are walking paradoxes, changing our minds, our moods, and our habits from one day to the next. So, it&#39;s really no surprise that we are constantly searching for a map to navigate our own minds. </p>
+<p><a href="https://fezcode.com/blog/mbti-and-astrology-modern-identity">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Encyclopedia of Bad Arguments: A Guide to Logical Fallacies]]></title>
             <description><![CDATA[[object Object]]]></description>

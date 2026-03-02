@@ -1,5 +1,42 @@
 [
   {
+    "slug": "distributed-systems-consensus-and-state",
+    "title": "The Deep End: Distributed Systems, Consensus, and State",
+    "date": "2026-03-03",
+    "updated": "2026-03-03",
+    "description": "A comprehensive deep dive into the engineering behind distributed systems. Unpacking logical clocks, the CAP theorem, Raft consensus, split-brain fencing, Sagas, and idempotency with pseudocode and examples.",
+    "tags": [
+      "architecture",
+      "distributed-systems",
+      "raft",
+      "consensus",
+      "engineering",
+      "backend"
+    ],
+    "category": "dev",
+    "filename": "distributed-systems-consensus-and-state.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "mbti-and-astrology-modern-identity",
+    "title": "MBTI & Astrology: The Modern Quest for Identity",
+    "date": "2026-03-02",
+    "updated": "2026-03-02",
+    "description": "A gentle exploration of why we love personality frameworks like MBTI and Astrology, even if the science behind them might be a little fuzzy.",
+    "tags": [
+      "psychology",
+      "society",
+      "philosophy"
+    ],
+    "category": "rant",
+    "filename": "mbti-and-astrology-modern-identity.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "encyclopedia-of-bad-arguments",
     "title": "The Encyclopedia of Bad Arguments: A Guide to Logical Fallacies",
     "date": "2026-02-28",
