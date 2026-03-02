@@ -47,6 +47,7 @@ const LuxeSidebar = ({
     {
       isMainOpen: true,
       isContentOpen: true,
+      isSoftwareOpen: true,
       isAppsOpen: true,
       isStatusOpen: false,
       isExtrasOpen: false,
