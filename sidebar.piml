@@ -46,6 +46,15 @@
         (icon) FilePdfIcon
 
   > (section)
+    (id) isSoftwareOpen
+    (label) Applications
+    (content)
+      > (item)
+        (label) Castarook
+        (to) /castarook
+        (icon) CrownIcon
+
+  > (section)
     (id) isAppsOpen
     (label) Utilities
     (content)
@@ -94,10 +103,9 @@
       > (item)
         (label) Serfs & Frauds
         (to) /stories
-        (icon) SwordIcon
+        (icon) CastleTurretIcon
       > (item)
         (label) RSS_Feed
         (url) /rss.xml
         (icon) RssIcon
         (external) true
-
