@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-03-03
+    (link) 
+    (rating) 4
+    (slug) twinless-2025
+    (title) Twinless
+    (image) 
+    (description) A darkly comedic exploration of grief, following a chronic liar navigating the loss of his twin through a bereavement support group.
+    (director) James Sweeney
+  > (item)
+    (category) Movie
     (date) 2026-02-18
     (link) https://www.imdb.com/title/tt0086935/
     (rating) 3
