@@ -12,3 +12,4 @@
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.diff file1.go file2.go
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.screensaver
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.facade --file routes.piml
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.pq -q "tools.0.version" manifest.piml

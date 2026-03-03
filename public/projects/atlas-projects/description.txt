@@ -17,6 +17,7 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 - 11. **[atlas.diff](https://github.com/fezcode/atlas.diff)**: A high-visibility, side-by-side terminal diff tool. Compare files with statistical clarity and a clean Atlas-inspired aesthetic.
 - 12. **[atlas.screensaver](https://github.com/fezcode/atlas.screensaver)**: A collection of aesthetic terminal screensavers. Enjoy nostalgic Starfield, Pipes, Matrix, DNA, and Waves animations directly in your terminal.
 - 13. **[atlas.facade](https://github.com/fezcode/atlas.facade)**: A retro-future Pip-Boy style mock API server. Prototype frontends instantly by forging backend responses from simple PIML blueprints.
+- 14. **[atlas.pq](https://github.com/fezcode/atlas.pq)**: A minimalist command-line PIML processor. Slice, filter, and map PIML data with simple dot notation, similar to jq.
 
 ### Why Atlas?
 
