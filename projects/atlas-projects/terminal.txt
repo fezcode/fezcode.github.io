@@ -16,3 +16,4 @@
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.hash my_file.zip
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.grave
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.radio
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.deck
