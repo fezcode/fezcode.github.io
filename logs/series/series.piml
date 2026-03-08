@@ -1,12 +1,21 @@
 (logs)
   > (item)
     (category) Series
+    (date) 2026-03-08
+    (link) https://www.imdb.com/title/tt14824792/
+    (rating) 4
+    (slug) ted-2024-series
+    (title) Ted
+    (by) Seth MacFarlane
+    (description) A surprisingly heartfelt and hilarious 90s prequel. Susan Bennett (Alanna Ubach) is the absolute standout, providing a grounded contrast to the chaos.
+  > (item)
+    (category) Series
     (date) 2026-02-23
-    (link) 
+    (link)
     (rating) 5
     (slug) 11-22-63
     (title) 11.22.63
-    (image) 
+    (image)
     (description) A gripping miniseries adaptation of Stephen King's novel, where a high school teacher travels back in time to prevent the JFK assassination. Mastery of suspense, period detail, and emotional depth.
     (director) Bridget Carpenter
   > (item)
