@@ -1,12 +1,21 @@
 (logs)
   > (item)
     (category) Music
+    (date) 2026-03-08
+    (link)
+    (rating) 4
+    (slug) born-to-die-lana-del-rey
+    (title) Born To Die (Album)
+    (artist) Lana Del Rey
+    (description) A cinematic plunge into "sadcore" pop. Highlights include the sweeping 'Ride' and the bouncy, dangerous 'Diet Mountain Dew'.
+  > (item)
+    (category) Music
     (date) 2026-02-21
-    (link) 
+    (link)
     (rating) 5
     (slug) dying-light-ost
     (title) Dying Light Original Soundtrack
-    (image) 
+    (image)
     (description) An atmospheric and melancholic survival horror OST by Pawel Blaszczak, drawing inspiration from 70s and 80s cinema.
     (album) Dying Light OST
     (artist) Pawel Blaszczak
