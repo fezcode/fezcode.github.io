@@ -102,3 +102,8 @@ link: https://github.com/fezcode/atlas.convert
 fezcode
 +21 -0 ~0
 link: https://github.com/fezcode/atlas.conquistador
+---
+# Horizon
+fezcode
++22 -0 ~0
+link: https://github.com/fezcode/atlas.horizon

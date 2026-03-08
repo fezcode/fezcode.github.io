@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 03 Mar 2026 01:37:54 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 08 Mar 2026 14:39:33 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 03 Mar 2026 01:37:54 GMT</pubDate>
+        <pubDate>Sun, 08 Mar 2026 14:39:33 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Side Character Conspiracy: Solving the Sitcom's Greatest Mystery]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/side-character-conspiracy-sitcom-rant</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/side-character-conspiracy-sitcom-rant</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 08 Mar 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Side Character Conspiracy: Solving the Sitcom&#39;s Greatest Mystery</h1>
+<p><a href="https://fezcode.com/blog/side-character-conspiracy-sitcom-rant">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Wave Function Collapse: Taming Entropy in Procedural Generation]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/wave-function-collapse-explained</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/wave-function-collapse-explained</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 07 Mar 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Wave Function Collapse (WFC) is one of those algorithms that feels like magic when you first see it in action. Originally popularized by Maxim Gumin, it’s a powerful tool for procedural generation that can create complex, non-repeating patterns from a small set of example tiles and adjacency rules.</p>
+<p><a href="https://fezcode.com/blog/wave-function-collapse-explained">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Deep End: Distributed Systems, Consensus, and State]]></title>
             <description><![CDATA[[object Object]]]></description>
