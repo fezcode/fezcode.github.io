@@ -127,6 +127,10 @@ export const vocabulary = {
     title: 'Modules vs. Includes',
     loader: () => import('./vocab/modules-vs-includes'),
   },
+  msg: {
+    title: 'MSG (Monosodium Glutamate)',
+    loader: () => import('./vocab/msg'),
+  },
   murakami: {
     title: 'Murakami, Takashi',
     loader: () => import('./vocab/murakami'),
@@ -223,9 +227,9 @@ export const vocabulary = {
     title: 'Tremolo (Music)',
     loader: () => import('./vocab/tremolo'),
   },
-  ubermensch: {
-    title: 'Übermensch',
-    loader: () => import('./vocab/ubermensch'),
+  'trope-purity': {
+    title: 'Trope Purity',
+    loader: () => import('./vocab/trope-purity'),
   },
   utilitarianism: {
     title: 'Utilitarianism',
