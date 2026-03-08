@@ -1,5 +1,43 @@
 [
   {
+    "slug": "side-character-conspiracy-sitcom-rant",
+    "title": "The Side Character Conspiracy: Solving the Sitcom's Greatest Mystery",
+    "date": "2026-03-08",
+    "updated": "2026-03-08",
+    "description": "A detective's deep-dive into the \"Side Character Conspiracy,\" proving why the protagonists of sitcoms are often the most boring part of the show.",
+    "tags": [
+      "sitcoms",
+      "pop-culture",
+      "rant",
+      "side-characters",
+      "analysis"
+    ],
+    "category": "rant",
+    "filename": "side-character-conspiracy-sitcom-rant.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "wave-function-collapse-explained",
+    "title": "Wave Function Collapse: Taming Entropy in Procedural Generation",
+    "date": "2026-03-07",
+    "updated": "2026-03-07",
+    "description": "An in-depth guide to the Wave Function Collapse algorithm, featuring visual explanations and implementations in JavaScript and Golang.",
+    "tags": [
+      "algorithms",
+      "gamedev",
+      "javascript",
+      "golang",
+      "procedural-generation"
+    ],
+    "category": "dev",
+    "filename": "wave-function-collapse-explained.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "distributed-systems-consensus-and-state",
     "title": "The Deep End: Distributed Systems, Consensus, and State",
     "date": "2026-03-03",
