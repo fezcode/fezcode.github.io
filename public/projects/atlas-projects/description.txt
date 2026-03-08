@@ -25,7 +25,7 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 - 19. **[atlas.deck](https://github.com/fezcode/atlas.deck)**: An interactive TUI command deck for project workflows. Organize and trigger your daily terminal tasks through a customizable grid of "pads."
 - 20. **[atlas.convert](https://github.com/fezcode/atlas.convert)**: A fast, minimalist terminal image conversion utility. Effortlessly convert between JPEG, PNG, and HEIC formats with a simple CLI.
 - 21. **[atlas.conquistador](https://github.com/fezcode/atlas.conquistador)**: A powerful and beautiful terminal-based file explorer. Navigate, manage, and preview your files with a modern TUI experience similar to Finder or Windows Explorer.
-- 21. **[atlas.horizon](https://github.com/fezcode/atlas.horizon)**: A high-fidelity environmental and weather dashboard. It provides real-time atmospheric monitoring, including temperature, humidity, wind patterns, and UV index.
+- 22. **[atlas.horizon](https://github.com/fezcode/atlas.horizon)**: A high-fidelity environmental and weather dashboard. It provides real-time atmospheric monitoring, including temperature, humidity, wind patterns, and UV index.
 
 ### Why Atlas?
 
