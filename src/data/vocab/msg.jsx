@@ -11,7 +11,7 @@ export default function MSG() {
         "A little bit of MSG makes a good dish great, but too much makes it all you can taste."
       </div>
 
-      <p>When we talk about MSG in the context of characters or media, we’re talking about **Flavor Enhancers**: elements that don't provide the "substance" of a story, but make the experience much more enjoyable.</p>
+      <p>When we talk about MSG in the context of characters or media, we’re talking about <strong>Flavor Enhancers</strong>: elements that don't provide the "substance" of a story, but make the experience much more enjoyable.</p>
 
       <ul className="space-y-4 text-xs opacity-80 list-disc pl-4">
         <li>
