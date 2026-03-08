@@ -147,6 +147,10 @@ export const vocabulary = {
     title: 'Occasionalism',
     loader: () => import('./vocab/occasionalism'),
   },
+  omarchy: {
+    title: 'Omarchy',
+    loader: () => import('./vocab/omarchy'),
+  },
   ontology: {
     title: 'Ontology',
     loader: () => import('./vocab/ontology'),
