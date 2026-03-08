@@ -92,3 +92,13 @@ link: https://github.com/fezcode/atlas.radio
 fezcode
 +19 -0 ~0
 link: https://github.com/fezcode/atlas.deck
+---
+# Convert
+fezcode
++20 -0 ~0
+link: https://github.com/fezcode/atlas.convert
+---
+# Conquistador
+fezcode
++21 -0 ~0
+link: https://github.com/fezcode/atlas.conquistador
