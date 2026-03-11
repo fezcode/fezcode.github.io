@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 08 Mar 2026 20:34:09 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 11 Mar 2026 16:43:29 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 08 Mar 2026 20:34:09 GMT</pubDate>
+        <pubDate>Wed, 11 Mar 2026 16:43:29 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Lost Art of the Tactile: Why 90s Cinema Ruined Modern Movies]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/the-lost-art-of-the-tactile-90s-cinema</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/the-lost-art-of-the-tactile-90s-cinema</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 11 Mar 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Lost Art of the Tactile: Why 90s Cinema Ruined Modern Movies</h1>
+<p><a href="https://fezcode.com/blog/the-lost-art-of-the-tactile-90s-cinema">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Side Character Conspiracy: Solving the Sitcom's Greatest Mystery]]></title>
             <description><![CDATA[[object Object]]]></description>
