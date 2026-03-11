@@ -34,6 +34,7 @@ import { neonVapor } from './themes/neonVapor';
 import { cadTech } from './themes/cadTech';
 import { retroDos } from './themes/retroDos';
 import { darkMedieval } from './themes/darkMedieval';
+import { tacticalMap } from './themes/tacticalMap';
 
 export const themeRenderers = {
   modern,
@@ -72,4 +73,5 @@ export const themeRenderers = {
   cadTech,
   retroDos,
   darkMedieval,
+  tacticalMap,
 };

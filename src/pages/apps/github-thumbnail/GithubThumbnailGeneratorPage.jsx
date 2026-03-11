@@ -54,6 +54,7 @@ const THEME_OPTIONS = [
   { value: 'cadTech', label: 'CAD_TECHNICAL' },
   { value: 'retroDos', label: 'RETRO_DOS_SHELL' },
   { value: 'darkMedieval', label: 'DARK_MEDIEVAL' },
+  { value: 'tacticalMap', label: 'TACTICAL_MAP' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
@@ -94,7 +95,7 @@ const GithubThumbnailGeneratorPage = () => {
         ctx.globalAlpha = 0.05;
         ctx.fillStyle = '#ffffff';
 
-        if (['brutalist', 'neoBrutalist', 'terminalPro', 'retroDos', 'cadTech'].includes(theme)) {
+        if (['brutalist', 'neoBrutalist', 'terminalPro', 'retroDos', 'cadTech', 'tacticalMap'].includes(theme)) {
           // Grid Pattern
           const gridSize = 40 * scale;
           for (let x = 0; x < width; x += gridSize) {
@@ -132,6 +133,7 @@ const GithubThumbnailGeneratorPage = () => {
           primaryColor,
           secondaryColor,
           bgColor,
+          showPattern,
         });
       }
     },

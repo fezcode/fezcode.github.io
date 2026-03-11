@@ -408,6 +408,14 @@
         "created_at": "2025-12-20T14:00:00+03:00"
       },
       {
+        "slug": "crt-tactical-map",
+        "to": "/apps/crt-tactical-map",
+        "title": "CRT Tactical Map",
+        "description": "80s cinema style CRT tactical map with glowing vectors and telemetry.",
+        "icon": "MonitorIcon",
+        "created_at": "2026-03-11T16:00:00+03:00"
+      },
+      {
         "slug": "poster-loom",
         "to": "/apps/poster-loom",
         "title": "Poster Loom",

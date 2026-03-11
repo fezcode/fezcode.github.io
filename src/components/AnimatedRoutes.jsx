@@ -180,6 +180,9 @@ const OgImageGeneratorPage = lazy(
 const FantasyMapGeneratorPage = lazy(
   () => import('../pages/apps/FantasyMapGeneratorPage'),
 );
+const CRTTacticalMapPage = lazy(
+  () => import('../pages/apps/CRTTacticalMapPage'),
+);
 const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
 const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(
@@ -1296,6 +1299,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::stego"
           element={<Navigate to="/apps/steganography" replace />}
+        />
+        <Route
+          path="/apps::crt"
+          element={<Navigate to="/apps/crt-tactical-map" replace />}
         />
         <Route
           path="/apps::metrics"
@@ -2608,6 +2615,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <FantasyMapGeneratorPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/crt-tactical-map"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CRTTacticalMapPage />
               </Suspense>
             </motion.div>
           }
