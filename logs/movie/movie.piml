@@ -1,8 +1,28 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-03-11
+    (link) 
+    (rating) 5
+    (slug) die-hard
+    (title) Die Hard
+    (image) 
+    (description) The blueprint for the perfect action movie. Grounded, vulnerable, and perfectly paced.
+    (director) John McTiernan
+  > (item)
+    (category) Movie
+    (date) 2026-03-11
+    (link) 
+    (rating) 4
+    (slug) the-hunt-for-red-october
+    (title) The Hunt for Red October
+    (image) 
+    (description) A masterclass in tension, spatial geometry, and technical authenticity. The zenith of the submarine thriller.
+    (director) John McTiernan
+  > (item)
+    (category) Movie
     (date) 2026-03-03
-    (link) https://www.imdb.com/title/tt31322753/ 
+    (link) https://www.imdb.com/title/tt31322753/
     (rating) 4
     (slug) twinless-2025
     (title) Twinless
