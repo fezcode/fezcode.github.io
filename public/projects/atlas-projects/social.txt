@@ -107,3 +107,43 @@ link: https://github.com/fezcode/atlas.conquistador
 fezcode
 +22 -0 ~0
 link: https://github.com/fezcode/atlas.horizon
+---
+# Cat
+fezcode
++23 -0 ~0
+link: https://github.com/fezcode/atlas.cat
+---
+# Ed
+fezcode
++24 -0 ~0
+link: https://github.com/fezcode/atlas.ed
+---
+# Git
+fezcode
++25 -0 ~0
+link: https://github.com/fezcode/atlas.git
+---
+# IP
+fezcode
++26 -0 ~0
+link: https://github.com/fezcode/atlas.ip
+---
+# Sand
+fezcode
++27 -0 ~0
+link: https://github.com/fezcode/atlas.sand
+---
+# SQL
+fezcode
++28 -0 ~0
+link: https://github.com/fezcode/atlas.sql
+---
+# Chat
+fezcode
++29 -0 ~0
+link: https://github.com/fezcode/atlas.chat
+---
+# Color
+fezcode
++30 -0 ~0
+link: https://github.com/fezcode/atlas.color

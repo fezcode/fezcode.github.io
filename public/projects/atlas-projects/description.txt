@@ -26,6 +26,14 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 - 20. **[atlas.convert](https://github.com/fezcode/atlas.convert)**: A fast, minimalist terminal image conversion utility. Effortlessly convert between JPEG, PNG, and HEIC formats with a simple CLI.
 - 21. **[atlas.conquistador](https://github.com/fezcode/atlas.conquistador)**: A powerful and beautiful terminal-based file explorer. Navigate, manage, and preview your files with a modern TUI experience similar to Finder or Windows Explorer.
 - 22. **[atlas.horizon](https://github.com/fezcode/atlas.horizon)**: A high-fidelity environmental and weather dashboard. It provides real-time atmospheric monitoring, including temperature, humidity, wind patterns, and UV index.
+- 23. **[atlas.cat](https://github.com/fezcode/atlas.cat)**: A beautiful, high-performance terminal text viewer with syntax highlighting and line numbers.
+- 24. **[atlas.ed](https://github.com/fezcode/atlas.ed)**: A beautiful, high-performance terminal text editor with syntax highlighting, line numbers, and search.
+- 25. **[atlas.git](https://github.com/fezcode/atlas.git)**: Comprehensive TUI git client with graphs, branch, tag, and multi-repo management.
+- 26. **[atlas.ip](https://github.com/fezcode/atlas.ip)**: Fast, minimal tool to fetch your local and public IP address with geolocation data.
+- 27. **[atlas.sand](https://github.com/fezcode/atlas.sand)**: Interactive terminal-based falling sand and particle physics simulator.
+- 28. **[atlas.sql](https://github.com/fezcode/atlas.sql)**: Terminal-based SQL client for SQLite and PostgreSQL with syntax highlighting.
+- 29. **[atlas.chat](https://github.com/fezcode/atlas.chat)**: Modern TUI chat terminal for the Atlas Suite.
+- 30. **[atlas.color](https://github.com/fezcode/atlas.color)**: Interactive TUI color picker and converter (Hex, RGB, HSL).
 
 ### Why Atlas?
 
