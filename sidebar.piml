@@ -53,6 +53,10 @@
         (label) Castarook
         (to) https://fezcode.com/castarook/
         (icon) CrownIcon
+      > (item)
+        (label) Swat Tactics
+        (to) https://fezcode.com/Swat-Tactics/
+        (icon) ShieldCheckIcon
 
   > (section)
     (id) isAppsOpen

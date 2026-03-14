@@ -37,7 +37,7 @@
     (title) gobake
     (style) ruby
     (repo_link) https://github.com/fezcode/gobake
-    (pinned) false
+    (pinned) true
     (isActive) true
     (technologies)
       > Go
@@ -65,6 +65,25 @@
     (image) /images/projects/castarook/main-menu.webp
 
   > (project)
+    (slug) swat-tactics
+    (title) Swat Tactics
+    (style) minimal-modern
+    (size) 2
+    (demo_link) https://fezcode.com/Swat-Tactics/
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > React 19
+      > TypeScript
+      > Three.js
+      > Rapier Physics
+      > Zustand
+      > Tailwind CSS 4
+    (shortDescription) Swat Tactics is a high-stakes strategic encounter game where precision and planning are the keys to victory.
+    (date) 2026-03-14
+    (image) https://raw.githubusercontent.com/fezcode/Swat-Tactics/main/branding/banner.png
+
+  > (project)
     (slug) bm
     (title) bm - bookmark manager
     (style) editorial
@@ -88,7 +107,7 @@
     (style) landscape
     (size) 2
     (repo_link) https://github.com/fezcode/CartoGo
-    (pinned) false
+    (pinned) true
     (isActive) true
     (technologies)
       > Go

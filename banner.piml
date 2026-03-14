@@ -135,6 +135,16 @@
     (from) 2026-03-01T00:00:00Z
     (to) 2026-03-10T23:59:59Z
     (text) CASTAROOK IS ONLINE: EXPERIENCE THE IMMERSIVE 3D CHESS AND D&D COMBAT GAME. ACCESS AT /CASTAROOK.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/castarook/
     (linkText) Play Castarook
+
+  > (banner)
+    (id) swat-tactics-launch
+    (type) info
+    (from) 2026-03-14T00:00:00Z
+    (to) 2026-03-24T23:59:59Z
+    (text) SWAT TACTICS IS ONLINE: ENGAGE IN HIGH-STAKES STRATEGIC ENCOUNTERS. ACCESS AT /SWAT-TACTICS.
+    (isActive) true
+    (link) https://fezcode.com/Swat-Tactics/
+    (linkText) Play Swat Tactics
