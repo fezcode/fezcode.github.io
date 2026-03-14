@@ -1,0 +1,14 @@
+(name) "Atlas Deck - Mission Control"
+(version) "0.1.0"
+(pads)
+  > (pad)
+    (key) p
+    (label) Run Prod
+    (cmd) npm run prod
+    (color) gold
+  
+  > (pad)
+    (key) r
+    (label) NPM START
+    (cmd) npm start
+    (color) red
