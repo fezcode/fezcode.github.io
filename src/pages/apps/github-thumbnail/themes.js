@@ -37,6 +37,7 @@ import { darkMedieval } from './themes/darkMedieval';
 import { tacticalMap } from './themes/tacticalMap';
 import { modernEdge } from './themes/modernEdge';
 import { auroraWave } from './themes/auroraWave';
+import { newspaper } from './themes/newspaper';
 
 export const themeRenderers = {
   modern,
@@ -78,4 +79,5 @@ export const themeRenderers = {
   tacticalMap,
   modernEdge,
   auroraWave,
+  newspaper,
 };

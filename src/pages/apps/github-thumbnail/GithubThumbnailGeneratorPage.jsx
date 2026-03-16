@@ -57,6 +57,7 @@ const THEME_OPTIONS = [
   { value: 'tacticalMap', label: 'TACTICAL_MAP' },
   { value: 'modernEdge', label: 'MODERN_EDGE' },
   { value: 'auroraWave', label: 'AURORA_WAVE' },
+  { value: 'newspaper', label: 'NEWSPRINT_HERALD' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
