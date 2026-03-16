@@ -148,3 +148,13 @@
     (isActive) true
     (link) https://fezcode.com/Swat-Tactics/
     (linkText) Play Swat Tactics
+
+  > (banner)
+    (id) climb-the-tall-building-0-launch
+    (type) info
+    (from) 2026-03-24T00:00:00Z
+    (to) 2026-03-30T23:59:59Z
+    (text) CLIMB THE TALL BUILDING 0 IS ONLINE: BUILD YOUR DECK AND CLIMB. ACCESS AT /CLIMB-THE-TALL-BUILDING-0.
+    (isActive) true
+    (link) https://fezcode.com/climb-the-tall-building-0/
+    (linkText) Play Climb the Tall Building 0

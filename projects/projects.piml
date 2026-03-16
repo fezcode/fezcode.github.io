@@ -102,6 +102,24 @@
     (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
 
   > (project)
+    (slug) climb-the-tall-building-0
+    (title) Climb the Tall Building 0
+    (style) minimal-modern
+    (size) 2
+    (demo_link) https://fezcode.com/climb-the-tall-building-0/
+    (repo_link) https://github.com/fezcode/climb-the-tall-building-0
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > React 19
+      > TypeScript
+      > Tailwind CSS 4
+      > Zustand
+    (shortDescription) A premium dark fantasy deck-building roguelike card game.
+    (date) 2026-03-16
+    (image) https://raw.githubusercontent.com/fezcode/climb-the-tall-building-0/main/banner.png
+
+  > (project)
     (slug) cartogo
     (title) CartoGo
     (style) landscape
