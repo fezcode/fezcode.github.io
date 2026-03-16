@@ -62,6 +62,7 @@ const THEME_OPTIONS = [
   { value: 'topographic', label: 'TOPOGRAPHIC_SURVEY' },
   { value: 'starChart', label: 'STELLAR_CHART' },
   { value: 'sonarPing', label: 'SONAR_PING' },
+  { value: 'macosGlass', label: 'MACOS_GLASS' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

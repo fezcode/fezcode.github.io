@@ -42,6 +42,7 @@ import { postModern } from './themes/postModern';
 import { topographic } from './themes/topographic';
 import { starChart } from './themes/starChart';
 import { sonarPing } from './themes/sonarPing';
+import { macosGlass } from './themes/macosGlass';
 
 export const themeRenderers = {
   modern,
@@ -88,4 +89,5 @@ export const themeRenderers = {
   topographic,
   starChart,
   sonarPing,
+  macosGlass,
 };
