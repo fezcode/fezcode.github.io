@@ -60,6 +60,7 @@ const THEME_OPTIONS = [
   { value: 'newspaper', label: 'NEWSPRINT_HERALD' },
   { value: 'postModern', label: 'POST_MODERN_ARTSY' },
   { value: 'topographic', label: 'TOPOGRAPHIC_SURVEY' },
+  { value: 'starChart', label: 'STELLAR_CHART' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

@@ -40,6 +40,7 @@ import { auroraWave } from './themes/auroraWave';
 import { newspaper } from './themes/newspaper';
 import { postModern } from './themes/postModern';
 import { topographic } from './themes/topographic';
+import { starChart } from './themes/starChart';
 
 export const themeRenderers = {
   modern,
@@ -84,4 +85,5 @@ export const themeRenderers = {
   newspaper,
   postModern,
   topographic,
+  starChart,
 };
