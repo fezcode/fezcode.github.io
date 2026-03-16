@@ -36,6 +36,7 @@ import { retroDos } from './themes/retroDos';
 import { darkMedieval } from './themes/darkMedieval';
 import { tacticalMap } from './themes/tacticalMap';
 import { modernEdge } from './themes/modernEdge';
+import { auroraWave } from './themes/auroraWave';
 
 export const themeRenderers = {
   modern,
@@ -76,4 +77,5 @@ export const themeRenderers = {
   darkMedieval,
   tacticalMap,
   modernEdge,
+  auroraWave,
 };

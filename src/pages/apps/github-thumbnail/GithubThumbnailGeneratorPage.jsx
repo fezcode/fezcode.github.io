@@ -56,6 +56,7 @@ const THEME_OPTIONS = [
   { value: 'darkMedieval', label: 'DARK_MEDIEVAL' },
   { value: 'tacticalMap', label: 'TACTICAL_MAP' },
   { value: 'modernEdge', label: 'MODERN_EDGE' },
+  { value: 'auroraWave', label: 'AURORA_WAVE' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
