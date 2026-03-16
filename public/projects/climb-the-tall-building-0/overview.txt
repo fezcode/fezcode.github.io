@@ -1,0 +1,5 @@
+LABEL: Overview
+SUBTEXT: Card Roguelike
+IMAGE: /images/projects/climb-the-tall-building-0/1.png
+
+CLIMB THE TALL BUILDING 0 is a deck-building roguelike card game where you build a powerful deck, fight enemies, and climb the tall building. Inspired by the legendary *Slay the Spire*, rebuilt from the ground up with a premium dark fantasy aesthetic. You must strategically manage your hand, energy, and health to reach the top.

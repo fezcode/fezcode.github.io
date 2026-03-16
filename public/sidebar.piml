@@ -57,6 +57,10 @@
         (label) Swat Tactics
         (to) https://fezcode.com/Swat-Tactics/
         (icon) ShieldCheckIcon
+      > (item)
+        (label) CTTB-0
+        (to) https://fezcode.com/climb-the-tall-building-0/
+        (icon) SwordIcon
 
   > (section)
     (id) isAppsOpen
