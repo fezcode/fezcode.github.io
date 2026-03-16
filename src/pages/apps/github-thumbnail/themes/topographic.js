@@ -228,12 +228,13 @@ export const topographic = (ctx, width, height, scale, data) => {
   ctx.restore();
 
   // --- Title block (top-left, like a survey legend) ---
-  const titleBlockW = 420 * scale;
-  const titleBlockH = 200 * scale;
+  const tbPad = 24 * scale;
+  const titleBlockW = 520 * scale;
+  const titleBlockH = 260 * scale;
 
   ctx.save();
   ctx.fillStyle = '#000000';
-  ctx.globalAlpha = 0.6;
+  ctx.globalAlpha = 0.65;
   ctx.fillRect(padding, padding, titleBlockW, titleBlockH);
   ctx.restore();
 
@@ -249,70 +250,72 @@ export const topographic = (ctx, width, height, scale, data) => {
   ctx.textAlign = 'left';
   ctx.fillStyle = secondaryColor;
   ctx.globalAlpha = 0.5;
-  ctx.font = `500 ${11 * scale}px "JetBrains Mono", monospace`;
-  ctx.fillText('GEOLOGICAL SURVEY — OPEN SOURCE REGISTRY', padding + 16 * scale, padding + 22 * scale);
+  ctx.font = `500 ${12 * scale}px "JetBrains Mono", monospace`;
+  ctx.fillText('GEOLOGICAL SURVEY — OPEN SOURCE REGISTRY', padding + tbPad, padding + 28 * scale);
   ctx.globalAlpha = 1;
 
   // Thin separator
   ctx.fillStyle = primaryColor;
   ctx.globalAlpha = 0.3;
-  ctx.fillRect(padding + 16 * scale, padding + 30 * scale, titleBlockW - 32 * scale, 1 * scale);
+  ctx.fillRect(padding + tbPad, padding + 40 * scale, titleBlockW - tbPad * 2, 1 * scale);
   ctx.globalAlpha = 1;
 
   // Owner
   ctx.fillStyle = primaryColor;
-  ctx.font = `600 ${16 * scale}px "JetBrains Mono", monospace`;
-  ctx.fillText(repoOwner, padding + 16 * scale, padding + 54 * scale);
+  ctx.font = `600 ${18 * scale}px "JetBrains Mono", monospace`;
+  ctx.fillText(repoOwner, padding + tbPad, padding + 68 * scale);
 
   // Repo name — main title
   ctx.fillStyle = '#ffffff';
-  ctx.font = `800 ${48 * scale}px "Inter", sans-serif`;
+  ctx.font = `800 ${52 * scale}px "Inter", sans-serif`;
   // Scale down if needed
-  let tFontSize = 48;
-  while (ctx.measureText(repoName).width > titleBlockW - 32 * scale && tFontSize > 24) {
+  let tFontSize = 52;
+  while (ctx.measureText(repoName).width > titleBlockW - tbPad * 2 && tFontSize > 28) {
     tFontSize -= 2;
     ctx.font = `800 ${tFontSize * scale}px "Inter", sans-serif`;
   }
-  ctx.fillText(repoName, padding + 16 * scale, padding + 104 * scale);
+  ctx.fillText(repoName, padding + tbPad, padding + 124 * scale);
 
   // Language & datum info
   ctx.fillStyle = secondaryColor;
-  ctx.font = `400 ${13 * scale}px "JetBrains Mono", monospace`;
-  ctx.fillText(`DATUM: ${language.toUpperCase()}  |  PROJECTION: OPEN-SRC`, padding + 16 * scale, padding + 130 * scale);
+  ctx.font = `400 ${14 * scale}px "JetBrains Mono", monospace`;
+  ctx.fillText(`DATUM: ${language.toUpperCase()}  |  PROJECTION: OPEN-SRC`, padding + tbPad, padding + 156 * scale);
 
   // Color legend
-  const legendY = padding + 155 * scale;
-  ctx.fillStyle = 'rgba(255,255,255,0.3)';
-  ctx.font = `400 ${10 * scale}px "JetBrains Mono", monospace`;
-  ctx.fillText('LEGEND:', padding + 16 * scale, legendY);
+  const legendY = padding + 195 * scale;
+  ctx.fillStyle = 'rgba(255,255,255,0.35)';
+  ctx.font = `500 ${11 * scale}px "JetBrains Mono", monospace`;
+  ctx.fillText('LEGEND:', padding + tbPad, legendY);
 
-  const swatchS = 12 * scale;
+  const swatchS = 14 * scale;
   const swatches = [
     { color: bgColor, label: 'BASE' },
     { color: primaryColor, label: 'CONTOUR' },
     { color: secondaryColor, label: 'MARKER' },
   ];
-  let swX = padding + 70 * scale;
+  let swX = padding + tbPad + 75 * scale;
   swatches.forEach(({ color, label }) => {
     ctx.fillStyle = color;
-    ctx.fillRect(swX, legendY - 9 * scale, swatchS, swatchS);
+    ctx.fillRect(swX, legendY - 10 * scale, swatchS, swatchS);
     ctx.strokeStyle = 'rgba(255,255,255,0.2)';
     ctx.lineWidth = 1 * scale;
-    ctx.strokeRect(swX, legendY - 9 * scale, swatchS, swatchS);
-    ctx.fillStyle = 'rgba(255,255,255,0.3)';
-    ctx.font = `400 ${10 * scale}px "JetBrains Mono", monospace`;
-    ctx.fillText(label, swX + swatchS + 4 * scale, legendY);
-    swX += ctx.measureText(label).width + swatchS + 20 * scale;
+    ctx.strokeRect(swX, legendY - 10 * scale, swatchS, swatchS);
+    ctx.fillStyle = 'rgba(255,255,255,0.35)';
+    ctx.font = `500 ${11 * scale}px "JetBrains Mono", monospace`;
+    ctx.fillText(label, swX + swatchS + 6 * scale, legendY);
+    swX += ctx.measureText(label).width + swatchS + 24 * scale;
   });
 
   // --- Description block (bottom-left) ---
-  const descBlockY = height - padding - 120 * scale;
-  const descBlockW = width * 0.45;
+  const descPad = 20 * scale;
+  const descBlockH = 130 * scale;
+  const descBlockW = width * 0.5;
+  const descBlockY = height - padding - descBlockH;
 
   ctx.save();
   ctx.fillStyle = '#000000';
-  ctx.globalAlpha = 0.45;
-  ctx.fillRect(padding, descBlockY, descBlockW, 100 * scale);
+  ctx.globalAlpha = 0.5;
+  ctx.fillRect(padding, descBlockY, descBlockW, descBlockH);
   ctx.restore();
 
   ctx.save();
@@ -320,27 +323,28 @@ export const topographic = (ctx, width, height, scale, data) => {
   ctx.globalAlpha = 0.2;
   ctx.lineWidth = 1 * scale;
   ctx.setLineDash([3 * scale, 3 * scale]);
-  ctx.strokeRect(padding, descBlockY, descBlockW, 100 * scale);
+  ctx.strokeRect(padding, descBlockY, descBlockW, descBlockH);
   ctx.setLineDash([]);
   ctx.restore();
 
-  ctx.fillStyle = 'rgba(255,255,255,0.15)';
-  ctx.font = `500 ${10 * scale}px "JetBrains Mono", monospace`;
-  ctx.fillText('FIELD NOTES', padding + 12 * scale, descBlockY + 18 * scale);
+  ctx.fillStyle = 'rgba(255,255,255,0.18)';
+  ctx.font = `500 ${11 * scale}px "JetBrains Mono", monospace`;
+  ctx.fillText('FIELD NOTES', padding + descPad, descBlockY + 24 * scale);
 
   ctx.fillStyle = 'rgba(255,255,255,0.55)';
-  ctx.font = `300 ${18 * scale}px "Inter", sans-serif`;
-  wrapText(ctx, description, padding + 12 * scale, descBlockY + 42 * scale, descBlockW - 24 * scale, 26 * scale);
+  ctx.font = `300 ${19 * scale}px "Inter", sans-serif`;
+  wrapText(ctx, description, padding + descPad, descBlockY + 52 * scale, descBlockW - descPad * 2, 28 * scale);
 
   // --- Stats panel (bottom-right) ---
-  const statPanelW = 200 * scale;
-  const statPanelH = 100 * scale;
+  const metPad = 20 * scale;
+  const statPanelW = 240 * scale;
+  const statPanelH = 130 * scale;
   const statPanelX = width - padding - statPanelW;
-  const statPanelY = height - padding - statPanelH - 20 * scale;
+  const statPanelY = height - padding - statPanelH;
 
   ctx.save();
   ctx.fillStyle = '#000000';
-  ctx.globalAlpha = 0.45;
+  ctx.globalAlpha = 0.5;
   ctx.fillRect(statPanelX, statPanelY, statPanelW, statPanelH);
   ctx.restore();
 
@@ -351,35 +355,31 @@ export const topographic = (ctx, width, height, scale, data) => {
   ctx.strokeRect(statPanelX, statPanelY, statPanelW, statPanelH);
   ctx.restore();
 
-  ctx.fillStyle = 'rgba(255,255,255,0.15)';
-  ctx.font = `500 ${10 * scale}px "JetBrains Mono", monospace`;
+  ctx.fillStyle = 'rgba(255,255,255,0.18)';
+  ctx.font = `500 ${11 * scale}px "JetBrains Mono", monospace`;
   ctx.textAlign = 'left';
-  ctx.fillText('SURVEY METRICS', statPanelX + 12 * scale, statPanelY + 18 * scale);
+  ctx.fillText('SURVEY METRICS', statPanelX + metPad, statPanelY + 24 * scale);
 
-  let metricY = statPanelY + 42 * scale;
+  let metricY = statPanelY + 58 * scale;
   if (stars) {
     ctx.fillStyle = primaryColor;
-    ctx.font = `800 ${28 * scale}px "Inter", sans-serif`;
-    ctx.fillText(stars, statPanelX + 12 * scale, metricY);
-    ctx.fillStyle = 'rgba(255,255,255,0.3)';
-    ctx.font = `400 ${12 * scale}px "JetBrains Mono", monospace`;
+    ctx.font = `800 ${30 * scale}px "Inter", sans-serif`;
+    ctx.fillText(stars, statPanelX + metPad, metricY);
     const starsW = ctx.measureText(stars).width;
-    ctx.font = `800 ${28 * scale}px "Inter", sans-serif`;
-    ctx.font = `400 ${12 * scale}px "JetBrains Mono", monospace`;
-    ctx.fillText('STARS', statPanelX + 12 * scale + starsW + 8 * scale, metricY);
-    metricY += 34 * scale;
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.font = `400 ${13 * scale}px "JetBrains Mono", monospace`;
+    ctx.fillText('STARS', statPanelX + metPad + starsW + 10 * scale, metricY);
+    metricY += 36 * scale;
   }
 
   if (forks) {
     ctx.fillStyle = secondaryColor;
-    ctx.font = `800 ${28 * scale}px "Inter", sans-serif`;
-    ctx.fillText(forks, statPanelX + 12 * scale, metricY);
-    ctx.fillStyle = 'rgba(255,255,255,0.3)';
-    ctx.font = `400 ${12 * scale}px "JetBrains Mono", monospace`;
+    ctx.font = `800 ${30 * scale}px "Inter", sans-serif`;
+    ctx.fillText(forks, statPanelX + metPad, metricY);
     const forksW = ctx.measureText(forks).width;
-    ctx.font = `800 ${28 * scale}px "Inter", sans-serif`;
-    ctx.font = `400 ${12 * scale}px "JetBrains Mono", monospace`;
-    ctx.fillText('FORKS', statPanelX + 12 * scale + forksW + 8 * scale, metricY);
+    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    ctx.font = `400 ${13 * scale}px "JetBrains Mono", monospace`;
+    ctx.fillText('FORKS', statPanelX + metPad + forksW + 10 * scale, metricY);
   }
 
   // --- Pattern / grid status indicator ---
