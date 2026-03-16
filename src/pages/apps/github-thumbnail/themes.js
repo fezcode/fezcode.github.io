@@ -41,6 +41,7 @@ import { newspaper } from './themes/newspaper';
 import { postModern } from './themes/postModern';
 import { topographic } from './themes/topographic';
 import { starChart } from './themes/starChart';
+import { sonarPing } from './themes/sonarPing';
 
 export const themeRenderers = {
   modern,
@@ -86,4 +87,5 @@ export const themeRenderers = {
   postModern,
   topographic,
   starChart,
+  sonarPing,
 };

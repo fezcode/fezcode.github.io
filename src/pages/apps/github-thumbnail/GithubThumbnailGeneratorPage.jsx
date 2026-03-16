@@ -61,6 +61,7 @@ const THEME_OPTIONS = [
   { value: 'postModern', label: 'POST_MODERN_ARTSY' },
   { value: 'topographic', label: 'TOPOGRAPHIC_SURVEY' },
   { value: 'starChart', label: 'STELLAR_CHART' },
+  { value: 'sonarPing', label: 'SONAR_PING' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
