@@ -35,6 +35,7 @@ import { cadTech } from './themes/cadTech';
 import { retroDos } from './themes/retroDos';
 import { darkMedieval } from './themes/darkMedieval';
 import { tacticalMap } from './themes/tacticalMap';
+import { modernEdge } from './themes/modernEdge';
 
 export const themeRenderers = {
   modern,
@@ -74,4 +75,5 @@ export const themeRenderers = {
   retroDos,
   darkMedieval,
   tacticalMap,
+  modernEdge,
 };

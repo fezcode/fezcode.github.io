@@ -55,6 +55,7 @@ const THEME_OPTIONS = [
   { value: 'retroDos', label: 'RETRO_DOS_SHELL' },
   { value: 'darkMedieval', label: 'DARK_MEDIEVAL' },
   { value: 'tacticalMap', label: 'TACTICAL_MAP' },
+  { value: 'modernEdge', label: 'MODERN_EDGE' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
