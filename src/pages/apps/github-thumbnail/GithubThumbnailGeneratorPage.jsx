@@ -63,6 +63,7 @@ const THEME_OPTIONS = [
   { value: 'starChart', label: 'STELLAR_CHART' },
   { value: 'sonarPing', label: 'SONAR_PING' },
   { value: 'macosGlass', label: 'MACOS_GLASS' },
+  { value: 'aeroGlass', label: 'AERO_GLASS_7' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

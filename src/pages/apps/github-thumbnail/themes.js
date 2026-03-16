@@ -43,6 +43,7 @@ import { topographic } from './themes/topographic';
 import { starChart } from './themes/starChart';
 import { sonarPing } from './themes/sonarPing';
 import { macosGlass } from './themes/macosGlass';
+import { aeroGlass } from './themes/aeroGlass';
 
 export const themeRenderers = {
   modern,
@@ -90,4 +91,5 @@ export const themeRenderers = {
   starChart,
   sonarPing,
   macosGlass,
+  aeroGlass,
 };
