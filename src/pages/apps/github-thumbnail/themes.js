@@ -38,6 +38,7 @@ import { tacticalMap } from './themes/tacticalMap';
 import { modernEdge } from './themes/modernEdge';
 import { auroraWave } from './themes/auroraWave';
 import { newspaper } from './themes/newspaper';
+import { postModern } from './themes/postModern';
 
 export const themeRenderers = {
   modern,
@@ -80,4 +81,5 @@ export const themeRenderers = {
   modernEdge,
   auroraWave,
   newspaper,
+  postModern,
 };

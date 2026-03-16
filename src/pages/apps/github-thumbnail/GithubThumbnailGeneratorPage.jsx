@@ -58,6 +58,7 @@ const THEME_OPTIONS = [
   { value: 'modernEdge', label: 'MODERN_EDGE' },
   { value: 'auroraWave', label: 'AURORA_WAVE' },
   { value: 'newspaper', label: 'NEWSPRINT_HERALD' },
+  { value: 'postModern', label: 'POST_MODERN_ARTSY' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
