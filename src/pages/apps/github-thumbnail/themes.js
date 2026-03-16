@@ -39,6 +39,7 @@ import { modernEdge } from './themes/modernEdge';
 import { auroraWave } from './themes/auroraWave';
 import { newspaper } from './themes/newspaper';
 import { postModern } from './themes/postModern';
+import { topographic } from './themes/topographic';
 
 export const themeRenderers = {
   modern,
@@ -82,4 +83,5 @@ export const themeRenderers = {
   auroraWave,
   newspaper,
   postModern,
+  topographic,
 };
