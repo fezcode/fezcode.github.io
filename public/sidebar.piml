@@ -61,6 +61,10 @@
         (label) CTTB-0
         (to) https://fezcode.com/climb-the-tall-building-0/
         (icon) SwordIcon
+      > (item)
+        (label) Net Run
+        (to) https://fezcode.com/net_run/
+        (icon) CubeIcon
 
   > (section)
     (id) isAppsOpen

@@ -158,3 +158,14 @@
     (isActive) true
     (link) https://fezcode.com/climb-the-tall-building-0/
     (linkText) Play Climb the Tall Building 0
+
+  > (banner)
+    (id) netrun-launch
+    (type) info
+    (from) 2026-03-30T00:00:00Z
+    (to) 2026-04-05T23:59:59Z
+    (text) NET_RUN IS ONLINE: A WORDLE CLONE IN SPACE. ACCESS AT /NET_RUN.
+    (isActive) true
+    (link) https://fezcode.com/net_run
+    (linkText) Play net_run
+
