@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-03-22
+    (link) 
+    (rating) 3
+    (slug) vanilla-sky
+    (title) Vanilla Sky
+    (image) 
+    (description) A mind-bending psychological thriller that explores the blurred lines between reality and dreams. While visually striking and ambitious, it occasionally feels overly convoluted.
+    (director) Cameron Crowe
+  > (item)
+    (category) Movie
     (date) 2026-03-11
     (link) 
     (rating) 5

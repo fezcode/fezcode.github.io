@@ -64,6 +64,8 @@ const THEME_OPTIONS = [
   { value: 'sonarPing', label: 'SONAR_PING' },
   { value: 'macosGlass', label: 'MACOS_GLASS' },
   { value: 'aeroGlass', label: 'AERO_GLASS_7' },
+  { value: 'circlesBg', label: 'CIRCLES_BG' },
+  { value: 'cassetteJCard', label: 'CASSETTE_J_CARD' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

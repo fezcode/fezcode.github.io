@@ -44,6 +44,8 @@ import { starChart } from './themes/starChart';
 import { sonarPing } from './themes/sonarPing';
 import { macosGlass } from './themes/macosGlass';
 import { aeroGlass } from './themes/aeroGlass';
+import { circlesBg } from './themes/circlesBg';
+import { cassetteJCard } from './themes/cassetteJCard';
 
 export const themeRenderers = {
   modern,
@@ -92,4 +94,6 @@ export const themeRenderers = {
   sonarPing,
   macosGlass,
   aeroGlass,
+  circlesBg,
+  cassetteJCard,
 };

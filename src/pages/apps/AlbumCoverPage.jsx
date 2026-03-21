@@ -25,6 +25,10 @@ const STYLES = [
   { value: 'elite', label: 'ELITE_MINIMAL' },
   { value: 'glassy', label: 'GLASSY_FLUX' },
   { value: 'detective', label: 'CONSPIRACY_NOIR' },
+  { value: 'cassette', label: 'CASSETTE_TAPE' },
+  { value: 'vaporwave', label: 'VAPORWAVE_SUNSET' },
+  { value: 'punkZine', label: 'PUNK_ZINE' },
+  { value: 'lofi', label: 'LO_FI_VINYL' },
 ];
 
 const BG_MODES = [
@@ -33,6 +37,10 @@ const BG_MODES = [
   { value: 'waves', label: 'ABSTRACT_WAVES' },
   { value: 'topo', label: 'TOPOGRAPHIC_SCAN' },
   { value: 'glass', label: 'GLASSY_GRADIENT' },
+  { value: 'cassetteBg', label: 'CASSETTE_DECK' },
+  { value: 'sunsetGrad', label: 'SUNSET_GRADIENT' },
+  { value: 'halftone', label: 'HALFTONE_DOTS' },
+  { value: 'vinyl', label: 'VINYL_GROOVES' },
 ];
 
 const FONTS = [
@@ -137,6 +145,42 @@ const AlbumCoverPage = () => {
         albumTitle: { ...prev.albumTitle, font: 'Arvo', size: 50 },
         artistName: { ...prev.artistName, font: 'Space Mono', size: 20 },
       }));
+    } else if (style === 'cassette') {
+      setBgMode('cassetteBg');
+      setPrimaryColor('#1a1a1a');
+      setAccentColor('#e8d5b7');
+      setInputs((prev) => ({
+        ...prev,
+        albumTitle: { ...prev.albumTitle, font: 'Space Mono', size: 55 },
+        artistName: { ...prev.artistName, font: 'Space Mono', size: 18 },
+      }));
+    } else if (style === 'vaporwave') {
+      setBgMode('sunsetGrad');
+      setPrimaryColor('#1a0533');
+      setAccentColor('#ff71ce');
+      setInputs((prev) => ({
+        ...prev,
+        albumTitle: { ...prev.albumTitle, font: 'Playfair Display', size: 75 },
+        artistName: { ...prev.artistName, font: 'Inter', size: 20 },
+      }));
+    } else if (style === 'punkZine') {
+      setBgMode('halftone');
+      setPrimaryColor('#f5f0e1');
+      setAccentColor('#d41920');
+      setInputs((prev) => ({
+        ...prev,
+        albumTitle: { ...prev.albumTitle, font: 'Arvo', size: 70 },
+        artistName: { ...prev.artistName, font: 'JetBrains Mono', size: 22 },
+      }));
+    } else if (style === 'lofi') {
+      setBgMode('vinyl');
+      setPrimaryColor('#1c1c1c');
+      setAccentColor('#c9a96e');
+      setInputs((prev) => ({
+        ...prev,
+        albumTitle: { ...prev.albumTitle, font: 'Playfair Display', size: 65 },
+        artistName: { ...prev.artistName, font: 'Inter', size: 16 },
+      }));
     }
   }, [style]);
 
@@ -236,6 +280,196 @@ const AlbumCoverPage = () => {
             200 * scale,
           );
         }
+        ctx.restore();
+      } else if (bgMode === 'cassetteBg') {
+        // Cassette deck: tape window with reels, label area
+        ctx.save();
+        // Subtle warm gradient
+        const cGrad = ctx.createLinearGradient(0, 0, 0, height);
+        cGrad.addColorStop(0, '#2a2420');
+        cGrad.addColorStop(1, '#0e0c0a');
+        ctx.fillStyle = cGrad;
+        ctx.fillRect(0, 0, width, height);
+        // Tape window
+        const winY = height * 0.58;
+        const winH = height * 0.28;
+        const winX = width * 0.15;
+        const winW = width * 0.7;
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.beginPath();
+        ctx.roundRect(winX, winY, winW, winH, 40 * scale);
+        ctx.fill();
+        ctx.strokeStyle = accentColor;
+        ctx.globalAlpha = 0.25;
+        ctx.lineWidth = 2 * scale;
+        ctx.beginPath();
+        ctx.roundRect(winX, winY, winW, winH, 40 * scale);
+        ctx.stroke();
+        // Reels
+        const reelR = 55 * scale;
+        const reelCY = winY + winH / 2;
+        const r1x = winX + winW * 0.28;
+        const r2x = winX + winW * 0.72;
+        [r1x, r2x].forEach((rx) => {
+          ctx.globalAlpha = 0.2;
+          ctx.strokeStyle = accentColor;
+          ctx.lineWidth = 2 * scale;
+          ctx.beginPath();
+          ctx.arc(rx, reelCY, reelR, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(rx, reelCY, 18 * scale, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.globalAlpha = 0.08;
+          for (let s = 0; s < 3; s++) {
+            const a = (s * Math.PI * 2) / 3;
+            ctx.beginPath();
+            ctx.moveTo(rx + Math.cos(a) * 18 * scale, reelCY + Math.sin(a) * 18 * scale);
+            ctx.lineTo(rx + Math.cos(a) * reelR, reelCY + Math.sin(a) * reelR);
+            ctx.stroke();
+          }
+        });
+        // Tape line
+        ctx.globalAlpha = 0.06;
+        ctx.lineWidth = 1 * scale;
+        ctx.beginPath();
+        ctx.moveTo(r1x + reelR, reelCY);
+        ctx.lineTo(r2x - reelR, reelCY);
+        ctx.stroke();
+        // Spec text below window
+        ctx.globalAlpha = 0.15;
+        ctx.fillStyle = accentColor;
+        ctx.font = `500 ${12 * scale}px "Space Mono", monospace`;
+        ctx.textAlign = 'center';
+        ctx.fillText('SIDE A  \u00B7  TYPE II  \u00B7  CrO\u2082  \u00B7  DOLBY NR', width / 2, winY + winH + 22 * scale);
+        // Label stripe at top
+        ctx.globalAlpha = 0.08;
+        ctx.fillRect(width * 0.1, height * 0.06, width * 0.8, 4 * scale);
+        ctx.restore();
+      } else if (bgMode === 'sunsetGrad') {
+        // Vaporwave sunset gradient
+        const sGrad = ctx.createLinearGradient(0, 0, 0, height);
+        sGrad.addColorStop(0, '#0d0221');
+        sGrad.addColorStop(0.3, '#261447');
+        sGrad.addColorStop(0.5, '#6b1d5e');
+        sGrad.addColorStop(0.65, '#d4458b');
+        sGrad.addColorStop(0.8, '#ff8c69');
+        sGrad.addColorStop(1, '#f9dc5c');
+        ctx.fillStyle = sGrad;
+        ctx.fillRect(0, 0, width, height);
+        // Sun circle
+        ctx.save();
+        const sunY = height * 0.52;
+        const sunR = 140 * scale;
+        const sunGrad = ctx.createRadialGradient(width / 2, sunY, 0, width / 2, sunY, sunR);
+        sunGrad.addColorStop(0, '#ff6ec7');
+        sunGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = sunGrad;
+        ctx.globalAlpha = 0.5;
+        ctx.beginPath();
+        ctx.arc(width / 2, sunY, sunR, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+        // Horizontal scan lines through sun
+        ctx.save();
+        ctx.globalAlpha = 0.15;
+        for (let i = 0; i < 8; i++) {
+          const ly = sunY - sunR + i * (sunR * 2) / 8;
+          ctx.fillStyle = '#0d0221';
+          ctx.fillRect(0, ly, width, 3 * scale);
+        }
+        ctx.restore();
+        // Grid floor (perspective)
+        ctx.save();
+        ctx.strokeStyle = '#ff71ce';
+        ctx.globalAlpha = 0.15;
+        ctx.lineWidth = 1 * scale;
+        const horizon = height * 0.7;
+        // Horizontal lines
+        for (let i = 0; i < 15; i++) {
+          const t = i / 15;
+          const ly = horizon + t * t * (height - horizon);
+          ctx.beginPath();
+          ctx.moveTo(0, ly);
+          ctx.lineTo(width, ly);
+          ctx.stroke();
+        }
+        // Vertical lines (converging)
+        for (let i = -8; i <= 8; i++) {
+          const bx = width / 2 + i * (width / 8);
+          ctx.beginPath();
+          ctx.moveTo(width / 2, horizon);
+          ctx.lineTo(bx, height);
+          ctx.stroke();
+        }
+        ctx.restore();
+      } else if (bgMode === 'halftone') {
+        // Punk zine halftone dots
+        ctx.save();
+        const dotSpacing = 18 * scale;
+        const maxDotR = 6 * scale;
+        ctx.fillStyle = accentColor;
+        ctx.globalAlpha = 0.12;
+        for (let x = 0; x < width; x += dotSpacing) {
+          for (let y = 0; y < height; y += dotSpacing) {
+            const dist = Math.hypot(x - width / 2, y - height / 2) / (width * 0.7);
+            const r = maxDotR * (1 - dist * 0.7);
+            if (r > 0.5) {
+              ctx.beginPath();
+              ctx.arc(x, y, r, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+        ctx.restore();
+        // Rough diagonal lines
+        ctx.save();
+        ctx.strokeStyle = accentColor;
+        ctx.globalAlpha = 0.05;
+        ctx.lineWidth = 1 * scale;
+        for (let i = -20; i < 40; i++) {
+          ctx.beginPath();
+          ctx.moveTo(i * 60 * scale, 0);
+          ctx.lineTo(i * 60 * scale - height, height);
+          ctx.stroke();
+        }
+        ctx.restore();
+      } else if (bgMode === 'vinyl') {
+        // Vinyl grooves - concentric rings
+        ctx.save();
+        ctx.strokeStyle = accentColor;
+        const cx = width / 2;
+        const cy = height / 2;
+        const maxR = width * 0.48;
+        for (let i = 0; i < 80; i++) {
+          const r = 30 * scale + (i / 80) * maxR;
+          ctx.globalAlpha = 0.03 + (i % 4 === 0 ? 0.04 : 0);
+          ctx.lineWidth = (0.5 + (i % 3) * 0.3) * scale;
+          ctx.beginPath();
+          ctx.arc(cx, cy, r, 0, Math.PI * 2);
+          ctx.stroke();
+        }
+        // Center label circle
+        ctx.globalAlpha = 0.1;
+        ctx.fillStyle = accentColor;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 60 * scale, 0, Math.PI * 2);
+        ctx.fill();
+        // Spindle hole
+        ctx.globalAlpha = 0.2;
+        ctx.fillStyle = primaryColor;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 8 * scale, 0, Math.PI * 2);
+        ctx.fill();
+        // Highlight reflection
+        ctx.globalAlpha = 0.03;
+        const refGrad = ctx.createLinearGradient(0, 0, width, height);
+        refGrad.addColorStop(0, 'transparent');
+        refGrad.addColorStop(0.45, '#ffffff');
+        refGrad.addColorStop(0.55, '#ffffff');
+        refGrad.addColorStop(1, 'transparent');
+        ctx.fillStyle = refGrad;
+        ctx.fillRect(0, 0, width, height);
         ctx.restore();
       }
 
@@ -467,6 +701,73 @@ const AlbumCoverPage = () => {
         ctx.lineWidth = 4 * scale;
         ctx.setLineDash([20 * scale, 10 * scale]);
         ctx.strokeRect(fPad, fPad, fw, fh);
+      } else if (style === 'cassette') {
+        // Rounded cassette shell border with screw holes
+        ctx.lineWidth = 3 * scale;
+        ctx.globalAlpha = 0.25;
+        ctx.beginPath();
+        ctx.roundRect(fPad, fPad, fw, fh, 12 * scale);
+        ctx.stroke();
+        // Screw holes in corners
+        const screwOff = 28 * scale;
+        const screwR = 6 * scale;
+        [
+          [fPad + screwOff, fPad + screwOff],
+          [fPad + fw - screwOff, fPad + screwOff],
+          [fPad + screwOff, fPad + fh - screwOff],
+          [fPad + fw - screwOff, fPad + fh - screwOff],
+        ].forEach(([sx, sy]) => {
+          ctx.beginPath();
+          ctx.arc(sx, sy, screwR, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(sx - screwR * 0.6, sy);
+          ctx.lineTo(sx + screwR * 0.6, sy);
+          ctx.stroke();
+        });
+      } else if (style === 'vaporwave') {
+        // Double-line neon border with glow
+        ctx.save();
+        ctx.shadowBlur = 20 * scale;
+        ctx.shadowColor = accentColor;
+        ctx.lineWidth = 3 * scale;
+        ctx.strokeRect(fPad, fPad, fw, fh);
+        ctx.restore();
+        ctx.lineWidth = 1 * scale;
+        ctx.globalAlpha = 0.4;
+        ctx.strokeRect(fPad + 10 * scale, fPad + 10 * scale, fw - 20 * scale, fh - 20 * scale);
+      } else if (style === 'punkZine') {
+        // Rough, uneven hand-drawn border (jagged)
+        ctx.lineWidth = 4 * scale;
+        ctx.globalAlpha = 0.8;
+        const jag = 4 * scale;
+        ctx.beginPath();
+        ctx.moveTo(fPad, fPad);
+        for (let x = fPad; x <= fPad + fw; x += 12 * scale) {
+          ctx.lineTo(x, fPad + (getRand() - 0.5) * jag);
+        }
+        for (let y = fPad; y <= fPad + fh; y += 12 * scale) {
+          ctx.lineTo(fPad + fw + (getRand() - 0.5) * jag, y);
+        }
+        for (let x = fPad + fw; x >= fPad; x -= 12 * scale) {
+          ctx.lineTo(x, fPad + fh + (getRand() - 0.5) * jag);
+        }
+        for (let y = fPad + fh; y >= fPad; y -= 12 * scale) {
+          ctx.lineTo(fPad + (getRand() - 0.5) * jag, y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+      } else if (style === 'lofi') {
+        // Thin elegant circle frame (vinyl edge)
+        ctx.lineWidth = 2 * scale;
+        ctx.globalAlpha = 0.15;
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, Math.min(fw, fh) / 2 + 5 * scale, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.globalAlpha = 0.06;
+        ctx.beginPath();
+        ctx.arc(width / 2, height / 2, Math.min(fw, fh) / 2 - 10 * scale, 0, Math.PI * 2);
+        ctx.stroke();
       }
       ctx.restore();
     },

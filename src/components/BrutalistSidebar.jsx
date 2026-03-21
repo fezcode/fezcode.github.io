@@ -262,17 +262,17 @@ const BrutalistSidebar = ({
           )}
         </div>
 
-        <div className="p-6 border-t border-white/10 bg-black/50">
-          <div className="grid grid-cols-2 gap-2 mb-6">
+        <div className="p-4 border-t border-white/10 bg-black/50">
+          <div className="grid grid-cols-4 gap-2 mb-4">
             <FooterButton
               onClick={() => setIsPaletteOpen(true)}
               icon={MagnifyingGlassIcon}
-              label="CMDS"
+              title="COMMANDS"
             />
             <FooterButton
               onClick={() => navigate('/settings')}
               icon={GearSixIcon}
-              label="SETTINGS"
+              title="SETTINGS"
             />
             <FooterButton
               onClick={() => {
@@ -280,12 +280,12 @@ const BrutalistSidebar = ({
                 unlockAchievement('feeling_lucky');
               }}
               icon={ShuffleIcon}
-              label="RANDOM"
+              title="RANDOM"
             />
             <FooterButton
               onClick={toggleModal}
               icon={EnvelopeSimpleIcon}
-              label="CONTACT"
+              title="CONTACT"
             />
           </div>
           <div className="text-center">
@@ -314,17 +314,15 @@ const SidebarLink = ({ to, icon: Icon, label, getLinkClass }) => (
   </NavLink>
 );
 
-const FooterButton = ({ onClick, icon: Icon, label }) => (
+const FooterButton = ({ onClick, icon: Icon, title }) => (
   <button
     onClick={onClick}
-    className="group flex flex-col items-center gap-2 p-2 border border-white/5 bg-white/5 hover:bg-white hover:border-white transition-all rounded-sm"
+    title={title}
+    className="group flex flex-col items-center justify-center p-2 border border-white/5 bg-white/5 hover:bg-white hover:border-white transition-all rounded-sm aspect-square"
   >
-    <div className="p-2 text-white group-hover:text-black transition-all">
+    <div className="text-white group-hover:text-black transition-all">
       <Icon size={18} weight="bold" />
     </div>
-    <span className="font-arvo text-[10px] font-medium tracking-widest text-gray-500 group-hover:text-black transition-colors">
-      {label}
-    </span>
   </button>
 );
 export default BrutalistSidebar;
