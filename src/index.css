@@ -216,6 +216,15 @@ input[type='number'] {
   animation: grid-animation 30s linear infinite;
 }
 
+@keyframes progress {
+  0% { transform: scaleX(0); }
+  50% { transform: scaleX(1); }
+  100% { transform: scaleX(0); }
+}
+.animate-progress {
+  animation: progress 1.5s ease-in-out infinite;
+}
+
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;

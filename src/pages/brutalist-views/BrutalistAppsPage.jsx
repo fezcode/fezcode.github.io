@@ -99,7 +99,9 @@ function BrutalistAppsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30">
+    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 relative">
+      {/* Subtle dot texture */}
+      <div className="fixed inset-0 pointer-events-none opacity-60" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23ffffff' opacity='0.04'/%3E%3C/svg%3E")` }} />
       <Seo
         title="Apps | Fezcodex"
         description="A collection of tools, games, and utilities created within Fezcodex."
@@ -129,7 +131,8 @@ function BrutalistAppsPage() {
         </header>
 
         {/* Controls: Search & Sort */}
-        <div className="sticky top-0 z-30 bg-[#050505]/95 backdrop-blur-sm border-b border-white/10 pb-6 pt-2 mb-12">
+        <div className="sticky top-0 z-30 bg-[#050505]/90 backdrop-blur-md border-b border-white/[0.08] pb-6 pt-2 mb-12 relative">
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-emerald-500/20 via-transparent to-amber-500/10" />
           <div className="flex flex-col md:flex-row gap-6 items-center">
             <div className="relative flex-1 group">
               <MagnifyingGlass
@@ -166,7 +169,7 @@ function BrutalistAppsPage() {
             {[...Array(6)].map((_, i) => (
               <div
                 key={i}
-                className="h-64 w-full bg-white/5 border border-white/10 rounded-sm animate-pulse"
+                className="h-64 w-full bg-white/5 border border-white/10 animate-pulse"
               />
             ))}
           </div>
@@ -187,7 +190,7 @@ function BrutalistAppsPage() {
                 return (
                   <div key={categoryKey} className="relative">
                     <button
-                      className="w-full flex items-center justify-between py-4 border-b border-white/10 group mb-8"
+                      className="w-full flex items-center justify-between py-4 border-b border-white/[0.08] group mb-8 relative"
                       onClick={() => toggleCategoryCollapse(categoryKey)}
                     >
                       <div className="flex items-center gap-4">

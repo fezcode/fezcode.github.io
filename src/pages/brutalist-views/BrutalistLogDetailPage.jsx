@@ -195,17 +195,17 @@ const BrutalistLogDetailPage = () => {
 
           <div className="flex flex-wrap items-center gap-4 mb-8">
             <span
-              className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest border rounded-full bg-opacity-20 backdrop-blur-md"
+              className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest border backdrop-blur-md"
               style={{
                 color: accentColor,
-                borderColor: `${accentColor}44`,
-                backgroundColor: `${accentColor}10`,
+                borderColor: `${accentColor}33`,
+                backgroundColor: `${accentColor}15`,
               }}
             >
               {category}
             </span>
             {attributes.updated && (
-              <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-rose-400 border border-rose-400/20 rounded-full bg-rose-400/5">
+              <span className="px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-rose-400 border border-rose-400/20 bg-rose-400/5">
                 Updated
               </span>
             )}
@@ -242,7 +242,7 @@ const BrutalistLogDetailPage = () => {
                          prose-p:text-gray-300 prose-p:leading-relaxed
                          prose-a:text-emerald-400 prose-a:no-underline hover:prose-a:underline
                          prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 prose-blockquote:bg-white/5 prose-blockquote:py-1 prose-blockquote:px-6
-                         prose-strong:text-white prose-code:text-emerald-300 prose-code:bg-emerald-500/10 prose-code:px-1 prose-code:rounded-sm`}
+                         prose-strong:text-white prose-code:text-emerald-300 prose-code:bg-emerald-500/10 prose-code:px-1 prose-code:`}
             >
               <MarkdownContent
                 content={body}
@@ -264,7 +264,7 @@ const BrutalistLogDetailPage = () => {
                   {attributes.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-[10px] font-mono text-gray-400 uppercase tracking-widest hover:text-white hover:border-white transition-colors cursor-default"
+                      className="px-3 py-1.5 bg-white/[0.03] border border-white/[0.08] text-[10px] font-mono text-gray-500 uppercase tracking-widest hover:text-emerald-400 hover:border-emerald-500/30 hover:bg-emerald-500/5 transition-colors cursor-default"
                     >
                       #{tag}
                     </span>
@@ -277,9 +277,11 @@ const BrutalistLogDetailPage = () => {
           {/* Sidebar Metadata */}
           <aside className="lg:col-span-4">
             <div className="sticky top-24 space-y-12">
-              <div className="border border-white/10 p-8 bg-white/[0.02] backdrop-blur-sm rounded-sm relative overflow-hidden group">
+              <div className="border border-white/[0.08] p-8 bg-white/[0.015] backdrop-blur-sm relative overflow-hidden group">
+                {/* Top accent gradient */}
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-500/40 via-transparent to-transparent" />
                 {/* Background accent line */}
-                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500/60 transition-all duration-500" />
                 <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
                   <Tag weight="fill" />
                   Manifest Data
@@ -337,9 +339,10 @@ const BrutalistLogDetailPage = () => {
               </div>
 
               {/* Typography Lab */}
-              <div className="border border-white/10 p-8 bg-white/[0.02] backdrop-blur-sm rounded-sm relative overflow-hidden group">
-                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-emerald-500 transition-all duration-500" />
-                <h3 className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-8 flex items-center gap-2">
+              <div className="border border-white/[0.08] p-8 bg-white/[0.015] backdrop-blur-sm relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-amber-500/30 via-transparent to-transparent" />
+                <div className="absolute top-0 left-0 w-1 h-0 group-hover:h-full bg-amber-500/60 transition-all duration-500" />
+                <h3 className="font-mono text-[10px] font-bold text-amber-400 uppercase tracking-widest mb-8 flex items-center gap-2">
                   <Tag weight="fill" />
                   Typography Lab
                 </h3>

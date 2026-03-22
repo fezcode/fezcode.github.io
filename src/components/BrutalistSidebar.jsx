@@ -148,9 +148,10 @@ const BrutalistSidebar = ({
         initial={false}
         animate={isOpen ? 'open' : 'closed'}
         variants={sidebarVariants}
-        className="fixed top-0 left-0 h-screen w-72 bg-[#050505] z-50 flex flex-col border-r border-white/10 shadow-2xl"
+        className="fixed top-0 left-0 h-screen w-72 bg-[#060608] z-50 flex flex-col border-r border-white/10 shadow-2xl"
       >
-        <div className="p-8 border-b border-white/10 flex flex-col gap-2 bg-black/50">
+        <div className="p-8 border-b border-white/10 flex flex-col gap-2 bg-black/50 relative">
+          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-500/60 via-amber-500/30 to-transparent" />
           <Link
             to="/"
             className="flex items-center gap-3 group"
@@ -318,7 +319,7 @@ const FooterButton = ({ onClick, icon: Icon, title }) => (
   <button
     onClick={onClick}
     title={title}
-    className="group flex flex-col items-center justify-center p-2 border border-white/5 bg-white/5 hover:bg-white hover:border-white transition-all rounded-sm aspect-square"
+    className="group flex flex-col items-center justify-center p-2 border border-white/[0.08] bg-white/[0.03] hover:bg-emerald-400 hover:border-emerald-400 transition-all aspect-square"
   >
     <div className="text-white group-hover:text-black transition-all">
       <Icon size={18} weight="bold" />

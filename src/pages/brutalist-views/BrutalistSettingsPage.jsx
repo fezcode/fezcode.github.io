@@ -36,14 +36,17 @@ const Section = ({ title, icon, children, delay = 0, id }) => (
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.5, delay }}
-    className="bg-white/[0.02] border border-white/10 rounded-sm p-8 shadow-2xl relative group overflow-hidden"
+    className="bg-white/[0.015] border border-white/[0.08] p-8 shadow-2xl relative group overflow-hidden"
   >
-    <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500 pointer-events-none grayscale">
+    {/* Top accent gradient */}
+    <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-500/30 via-transparent to-amber-500/20" />
+
+    <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500 pointer-events-none grayscale">
       {React.cloneElement(icon, { size: 160, weight: 'fill' })}
     </div>
 
     <div className="flex items-center gap-4 mb-10 relative z-10">
-      <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-sm text-emerald-500">
+      <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-500">
         {React.cloneElement(icon, { size: 24, weight: 'bold' })}
       </div>
       <h2 className="text-3xl text-white uppercase tracking-tighter">
@@ -248,7 +251,7 @@ const SettingsPage = () => {
               </p>
             </div>
 
-            <div className="hidden xl:flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 font-mono text-[10px] text-gray-500 uppercase tracking-widest rounded-sm">
+            <div className="hidden xl:flex items-center gap-3 px-6 py-3 border border-white/10 bg-white/5 font-mono text-[10px] text-gray-500 uppercase tracking-widest ">
               <DatabaseIcon size={16} />
               <span>Local Storage Only</span>
             </div>
@@ -264,7 +267,7 @@ const SettingsPage = () => {
             delay={0.0}
           >
             <div className="space-y-8">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] ">
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1">
                     Section Priority
@@ -297,7 +300,7 @@ const SettingsPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] ">
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1">
                     App Experience
@@ -317,7 +320,7 @@ const SettingsPage = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 p-6 border border-white/5 bg-white/[0.01] ">
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1">
                     Fezcodex Theme
@@ -350,7 +353,7 @@ const SettingsPage = () => {
             delay={0.05}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
+              <div className="p-6 border border-white/5 bg-white/[0.01]space-y-6">
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1">
                     Visual Mode
@@ -389,7 +392,7 @@ const SettingsPage = () => {
             delay={0.07}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
+              <div className="p-6 border border-white/5 bg-white/[0.01]space-y-6">
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1">
                     Header Font
@@ -411,7 +414,7 @@ const SettingsPage = () => {
                 />
               </div>
 
-              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm space-y-6">
+              <div className="p-6 border border-white/5 bg-white/[0.01]space-y-6">
                 <div>
                   <h3 className="text-lg font-bold text-white mb-1">
                     Body Font
@@ -443,7 +446,7 @@ const SettingsPage = () => {
             delay={0.1}
           >
             <div className="space-y-8">
-              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm">
+              <div className="p-6 border border-white/5 bg-white/[0.01] ">
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-lg font-bold text-white mb-1">
@@ -473,7 +476,7 @@ const SettingsPage = () => {
             icon={<TrophyIcon />}
             delay={0.2}
           >
-            <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex items-center justify-between gap-6">
+            <div className="p-6 border border-white/5 bg-white/[0.01]flex items-center justify-between gap-6">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">
                   Achievement Toasts
@@ -499,7 +502,7 @@ const SettingsPage = () => {
             icon={<BrainIcon />}
             delay={0.25}
           >
-            <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex items-center justify-between gap-6">
+            <div className="p-6 border border-white/5 bg-white/[0.01]flex items-center justify-between gap-6">
               <div>
                 <h3 className="text-lg font-bold text-white mb-1">
                   Syntax, the Codex Companion
@@ -684,7 +687,7 @@ const SettingsPage = () => {
                 fontClass="font-outfit"
               />
               {isFalloutOverlay && (
-                <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-4 p-6 border border-white/10 bg-white/5 rounded-sm space-y-6">
+                <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-4 p-6 border border-white/10 bg-white/5space-y-6">
                   <div className="flex items-center gap-4">
                     <span className="font-mono text-[10px] uppercase tracking-widest text-gray-400">
                       Overlay Variant:
@@ -861,7 +864,7 @@ const SettingsPage = () => {
             delay={0.4}
           >
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex flex-col justify-between gap-6">
+              <div className="p-6 border border-white/5 bg-white/[0.01]flex flex-col justify-between gap-6">
                 <div>
                   <h3 className="text-base font-bold text-white mb-1 uppercase tracking-wider">
                     Sidebar State
@@ -878,7 +881,7 @@ const SettingsPage = () => {
                 </button>
               </div>
 
-              <div className="p-6 border border-white/5 bg-white/[0.01] rounded-sm flex flex-col justify-between gap-6">
+              <div className="p-6 border border-white/5 bg-white/[0.01]flex flex-col justify-between gap-6">
                 <div>
                   <h3 className="text-base font-bold text-white mb-1 uppercase tracking-wider">
                     App Categories
@@ -904,9 +907,9 @@ const SettingsPage = () => {
             icon={<TrashIcon />}
             delay={0.5}
           >
-            <div className="border-4 border-red-500/20 bg-red-500/5 p-8 rounded-sm">
+            <div className="border-4 border-red-500/20 bg-red-500/5 p-8 ">
               <div className="flex flex-col md:flex-row items-center gap-8">
-                <div className="p-4 bg-red-500 text-black rounded-sm shrink-0">
+                <div className="p-4 bg-red-500 text-black shrink-0">
                   <WarningIcon size={32} weight="bold" />
                 </div>
                 <div className="flex-1 text-center md:text-left">
@@ -920,7 +923,7 @@ const SettingsPage = () => {
                 </div>
                 <button
                   onClick={handleClearStorage}
-                  className="w-full md:w-auto px-8 py-4 bg-red-500 text-black hover:bg-red-400 transition-colors uppercase tracking-widest text-sm rounded-sm shadow-[0_0_30px_rgba(239,68,68,0.2)]"
+                  className="w-full md:w-auto px-8 py-4 bg-red-500 text-black hover:bg-red-400 transition-colors uppercase tracking-widest text-sm shadow-[0_0_30px_rgba(239,68,68,0.2)]"
                 >
                   Reset Everything
                 </button>

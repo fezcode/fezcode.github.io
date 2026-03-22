@@ -26,6 +26,10 @@ import { useAchievements } from '../../context/AchievementContext';
 
 const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23n)' opacity='0.4'/%3E%3C/svg%3E")`;
 
+const CROSSHATCH_BG = `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40' fill='none' stroke='%23ffffff' stroke-width='0.5' opacity='0.04'/%3E%3C/svg%3E")`;
+
+const DOT_BG = `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23ffffff' opacity='0.07'/%3E%3C/svg%3E")`;
+
 const StatusPill = () => {
   const [time, setTime] = useState('');
   const { config } = useSiteConfig();
@@ -55,7 +59,7 @@ const StatusPill = () => {
             initial={{ opacity: 0, y: 10, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="bg-black border-2 border-white p-4 mb-4 min-w-[240px] shadow-[8px_8px_0px_0px_rgba(255,255,255,0.1)]"
+            className="bg-[#0a0a0c] border-2 border-white p-4 mb-4 min-w-[240px] shadow-[8px_8px_0px_0px_rgba(255,255,255,0.08)] relative overflow-hidden"
           >
             <div className="flex flex-col gap-3 text-xs font-mono uppercase tracking-wider">
               <div className="flex justify-between items-center text-gray-400">
@@ -68,7 +72,7 @@ const StatusPill = () => {
                 <span>LOCAL TIME</span>
                 <span className="text-white">{time}</span>
               </div>
-              <div className="h-px bg-transparent border-t border-dashed border-blue-100/30 my-1" />
+              <div className="h-px bg-transparent border-t border-dashed border-white/15 my-1" />
 
               <div className="flex justify-between items-center text-gray-400">
                 <span>AUDIO</span>
@@ -105,7 +109,7 @@ const StatusPill = () => {
                 </button>
               </div>
 
-              <div className="h-px bg-transparent border-t border-dashed border-blue-100/30 my-1" />
+              <div className="h-px bg-transparent border-t border-dashed border-white/15 my-1" />
 
               {isSplashTextEnabled && (
                 <Link
@@ -168,9 +172,13 @@ const Hero = () => {
   const subTitle = heroTitle.toLowerCase().endsWith('codex') ? 'codex' : '';
 
   return (
-    <div className="relative pt-32 pb-24 md:pt-48 md:pb-36 border-b border-dashed border-blue-100/20 bg-[#080808]">
+    <div className="relative pt-32 pb-24 md:pt-48 md:pb-36 border-b-2 border-white/10 bg-[#070709]">
       {/* Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#111_1px,transparent_1px),linear-gradient(to_bottom,#111_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] pointer-events-none" />
+      {/* Crosshatch texture */}
+      <div className="absolute inset-0 pointer-events-none opacity-40" style={{ backgroundImage: CROSSHATCH_BG }} />
+      {/* Subtle warm gradient bleed in corner */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-amber-900/10 via-transparent to-transparent pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-6 relative z-10">
         <motion.div
@@ -179,7 +187,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: 'circOut' }}
           className="flex flex-col items-start border-l-4 border-emerald-600 pl-6 md:pl-12"
         >
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-white text-black text-xs font-mono font-bold uppercase tracking-[0.1em] mb-8 transform -rotate-1 shadow-[4px_4px_0px_0px_rgba(50,205,50,0.5)]">
+          <div className="inline-flex items-center gap-3 px-4 py-1.5 bg-amber-400 text-black text-xs font-mono font-bold uppercase tracking-[0.1em] mb-8 transform -rotate-1 shadow-[4px_4px_0px_0px_rgba(245,158,11,0.4)]">
             <BroadcastIcon size={16} weight="bold" />
             <span>ONLINE</span>
           </div>
@@ -189,13 +197,13 @@ const Hero = () => {
             <span className="text-emerald-600 opacity-50">{subTitle}</span>
           </h1>
 
-          <div className="h-16 flex items-center justify-start mb-10 w-full max-w-3xl border-t border-b border-dashed border-blue-100/20 py-4">
+          <div className="h-16 flex items-center justify-start mb-10 w-full max-w-3xl border-t border-b border-dashed border-white/10 py-4">
             <div className="opacity-90 w-full">
               <SplashText />
             </div>
           </div>
 
-          <p className="max-w-2xl text-xl md:text-2xl text-gray-400 font-mono leading-relaxed text-balance mb-12 border-l border-blue-100/20 pl-6">
+          <p className="max-w-2xl text-xl md:text-2xl text-gray-400 font-mono leading-relaxed text-balance mb-12 border-l-2 border-amber-500/20 pl-6">
             {heroTagline}
           </p>
 
@@ -225,7 +233,7 @@ const Hero = () => {
       </div>
 
       <div className="absolute right-0 bottom-0 p-4 font-mono text-[10px] text-gray-700 opacity-50 hidden md:block">
-        COORDS: {Math.random().toFixed(4)}, {Math.random().toFixed(4)}
+        COORDS: 0.7734, 0.4219
       </div>
     </div>
   );
@@ -238,43 +246,61 @@ const QuickLinks = () => {
       to: '/apps/logic-architect',
       icon: CubeIcon,
       desc: 'Circuit Design',
+      accent: 'emerald',
+      hoverBg: 'hover:bg-emerald-400',
+      borderAccent: 'border-l-emerald-500',
+      iconHover: 'group-hover:text-emerald-900',
     },
     {
       title: 'Fezynth',
       to: '/apps/fezynth',
       icon: BroadcastIcon,
       desc: 'Audio Synthesis',
+      accent: 'amber',
+      hoverBg: 'hover:bg-amber-400',
+      borderAccent: 'border-l-amber-500',
+      iconHover: 'group-hover:text-amber-900',
     },
     {
       title: 'Notepad',
       to: '/apps/notepad',
       icon: AppWindowIcon,
       desc: 'Text Buffer',
+      accent: 'cyan',
+      hoverBg: 'hover:bg-cyan-400',
+      borderAccent: 'border-l-cyan-500',
+      iconHover: 'group-hover:text-cyan-900',
     },
     {
       title: 'Sprite Editor',
       to: '/apps/sprite-editor',
       icon: TerminalIcon,
       desc: 'Pixel Matrix',
+      accent: 'rose',
+      hoverBg: 'hover:bg-rose-400',
+      borderAccent: 'border-l-rose-500',
+      iconHover: 'group-hover:text-rose-900',
     },
   ];
 
   return (
-    <div className="border-b border-dashed border-blue-100/20 bg-black">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-dashed divide-blue-100/20">
+    <div className="border-b-2 border-white/10 bg-[#0a0a0c] relative">
+      {/* Dot texture behind cards */}
+      <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: DOT_BG }} />
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/5 relative z-10">
         {favorites.map((app, idx) => (
           <Link
             key={app.to}
             to={app.to}
-            className="group relative p-8 hover:bg-white hover:text-black transition-colors duration-200 h-48 flex flex-col justify-between overflow-hidden"
+            className={`group relative p-8 ${app.hoverBg} hover:text-black transition-all duration-200 h-48 flex flex-col justify-between overflow-hidden border-l-2 ${app.borderAccent} md:border-l-0`}
           >
             <div className="flex justify-between items-start">
               <app.icon
                 size={32}
                 weight="fill"
-                className="text-gray-500 group-hover:text-black transition-colors"
+                className={`text-gray-600 ${app.iconHover} transition-colors`}
               />
-              <span className="font-mono text-[10px] opacity-40">
+              <span className="font-mono text-[10px] opacity-30">
                 0{idx + 1}
               </span>
             </div>
@@ -283,7 +309,7 @@ const QuickLinks = () => {
               <h3 className="text-lg font-bold font-mono uppercase tracking-wider mb-1 group-hover:translate-x-1 transition-transform">
                 {app.title}
               </h3>
-              <p className="text-xs text-gray-500 group-hover:text-gray-600 font-mono uppercase tracking-tight">
+              <p className="text-xs text-gray-500 group-hover:text-black/60 font-mono uppercase tracking-tight">
                 {app.desc}
               </p>
             </div>
@@ -301,9 +327,9 @@ const QuickLinks = () => {
 };
 
 const SectionHeader = ({ num, title, link, linkText }) => (
-  <div className="flex items-end justify-between mb-12 border-b-4 border-white pb-6">
+  <div className="flex items-end justify-between mb-12 border-b-4 border-white pb-6 border-l-4 border-l-emerald-500 pl-6">
     <div className="flex items-baseline gap-4">
-      <span className="bg-emerald-600 text-black font-mono text-lg font-bold px-3 py-1 -skew-x-12">
+      <span className="bg-emerald-600 text-black font-mono text-lg font-bold px-3 py-1 -skew-x-12 shadow-[4px_4px_0px_0px_rgba(16,185,129,0.3)]">
         0{num}
       </span>
       <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-white">
@@ -380,7 +406,9 @@ const HomePage = () => {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center p-6">
         <div className="flex flex-col items-center gap-6">
-          <div className="w-16 h-16 border-4 border-white border-t-emerald-500 rounded-none animate-spin" />
+          <div className="w-16 h-1 bg-white/10 relative overflow-hidden">
+            <div className="absolute inset-0 bg-emerald-500 animate-[pulse_1s_ease-in-out_infinite] origin-left" />
+          </div>
           <span className="font-mono text-sm uppercase tracking-[0.3em] animate-pulse">
             System_Boot...
           </span>
@@ -406,8 +434,9 @@ const HomePage = () => {
               {pinnedProjects.map((project) => (
                 <div
                   key={project.slug}
-                  className="group border border-white/10 hover:border-emerald-500/50 transition-colors p-1 bg-[#0a0a0a]"
+                  className="group border border-white/[0.08] hover:border-emerald-500/40 transition-all p-1 bg-[#0a0a0c] hover:shadow-[0_0_20px_rgba(16,185,129,0.06)] relative overflow-hidden"
                 >
+                  <div className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" style={{ backgroundImage: DOT_BG }} />
                   <ProjectTile project={project} />
                 </div>
               ))}
@@ -424,7 +453,7 @@ const HomePage = () => {
         );
       case 'blogposts':
         return (
-          <section className="py-24 border-t border-dashed border-blue-100/20">
+          <section className="py-24 border-t border-dashed border-white/10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
               <div className="lg:col-span-8">
                 <SectionHeader
@@ -458,11 +487,14 @@ const HomePage = () => {
               </div>
 
               <div className="lg:col-span-4 space-y-12 pt-4 lg:pt-0">
-                <div className="p-8 border-2 border-white/10 bg-[#0a0a0a] relative overflow-hidden group hover:border-white/30 transition-colors">
-                  <div className="absolute top-0 right-0 p-2 opacity-10">
-                    <TerminalIcon size={64} />
+                <div className="p-8 border-2 border-white/10 bg-[#0a0a0c] relative overflow-hidden group hover:border-emerald-500/30 transition-colors">
+                  {/* Subtle crosshatch texture */}
+                  <div className="absolute inset-0 pointer-events-none opacity-60" style={{ backgroundImage: CROSSHATCH_BG }} />
+                  <div className="absolute top-0 right-0 p-2 opacity-[0.06]">
+                    <TerminalIcon size={80} />
                   </div>
-                  <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-500 mb-8 flex items-center gap-2">
+                  <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-emerald-500/40 via-transparent to-transparent" />
+                  <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-500 mb-8 flex items-center gap-2 relative z-10">
                     <span className="w-2 h-2 bg-emerald-500" /> NAVIGATION
                   </h3>
                   <div className="space-y-1">
@@ -481,9 +513,10 @@ const HomePage = () => {
                   </div>
                 </div>
 
-                <div className="p-6 border border-dashed border-blue-100/20">
-                  <div className="flex items-center gap-2 text-gray-500 font-mono text-xs uppercase mb-4">
-                    <LightningIcon weight="fill" className="text-yellow-500" />
+                <div className="p-6 border border-dashed border-amber-500/20 bg-amber-500/[0.02] relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-1 h-full bg-amber-500/30" />
+                  <div className="flex items-center gap-2 text-amber-400/80 font-mono text-xs uppercase mb-4">
+                    <LightningIcon weight="fill" className="text-amber-400" />
                     <span>TIP</span>
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed font-mono">
@@ -517,11 +550,13 @@ const HomePage = () => {
         ]}
       />
 
-      {/* Background Noise */}
+      {/* Background Noise + Film Grain */}
       <div
-        className="pointer-events-none fixed inset-0 z-50 opacity-[0.03] mix-blend-overlay"
+        className="pointer-events-none fixed inset-0 z-50 opacity-[0.035] mix-blend-overlay"
         style={{ backgroundImage: NOISE_BG }}
       />
+      {/* Subtle vignette */}
+      <div className="pointer-events-none fixed inset-0 z-40 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.4)_100%)]" />
 
       <StatusPill />
 
