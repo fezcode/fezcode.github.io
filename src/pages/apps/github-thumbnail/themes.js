@@ -52,6 +52,7 @@ import { passportStamp } from './themes/passportStamp';
 import { vinylRecord } from './themes/vinylRecord';
 import { hauteCouture } from './themes/hauteCouture';
 import { missionControl } from './themes/missionControl';
+import { etherealGlow } from './themes/etherealGlow';
 
 export const themeRenderers = {
   modern,
@@ -108,4 +109,5 @@ export const themeRenderers = {
   vinylRecord,
   hauteCouture,
   missionControl,
+  etherealGlow,
 };
