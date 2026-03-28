@@ -46,6 +46,7 @@ import { macosGlass } from './themes/macosGlass';
 import { aeroGlass } from './themes/aeroGlass';
 import { circlesBg } from './themes/circlesBg';
 import { cassetteJCard } from './themes/cassetteJCard';
+import { modernNature } from './themes/modernNature';
 
 export const themeRenderers = {
   modern,
@@ -96,4 +97,5 @@ export const themeRenderers = {
   aeroGlass,
   circlesBg,
   cassetteJCard,
+  modernNature,
 };

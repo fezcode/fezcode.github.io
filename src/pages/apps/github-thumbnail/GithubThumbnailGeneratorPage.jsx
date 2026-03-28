@@ -66,6 +66,7 @@ const THEME_OPTIONS = [
   { value: 'aeroGlass', label: 'AERO_GLASS_7' },
   { value: 'circlesBg', label: 'CIRCLES_BG' },
   { value: 'cassetteJCard', label: 'CASSETTE_J_CARD' },
+  { value: 'modernNature', label: 'MODERN_NATURE' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
