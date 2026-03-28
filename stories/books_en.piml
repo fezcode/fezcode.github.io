@@ -227,3 +227,46 @@
         (date) 2026-01-27
         (updated) 2026-01-27
     (overlay) darkslategray
+
+  > (book)
+    (bookId) 6
+    (bookTitle) Volume VI: The Fifth Death
+    (phase) 6
+    (phaseTitle) Phase VI: The Fifth Death
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-6-the-fifth-death/the-rat-kings-toll/the-rat-king_en.txt
+        (title) The Rat King's Toll
+        (author) fezcode
+        (date) 2026-03-23
+        (updated) 2026-03-23
+      > (episode)
+        (id) 2
+        (filename) vol-6-the-fifth-death/the-man-who-wasnt-corrigan/the-corrigan_en.txt
+        (title) The Man Who Wasn't Corrigan
+        (author) fezcode
+        (date) 2026-03-23
+        (updated) 2026-03-23
+      > (episode)
+        (id) 3
+        (filename) vol-6-the-fifth-death/eleven-hours/eleven-hours_en.txt
+        (title) Eleven Hours
+        (author) fezcode
+        (date) 2026-03-23
+        (updated) 2026-03-23
+      > (episode)
+        (id) 4
+        (filename) vol-6-the-fifth-death/the-butterfly-and-the-blade/the-butterfly_en.txt
+        (title) The Butterfly and the Blade
+        (author) fezcode
+        (date) 2026-03-23
+        (updated) 2026-03-23
+      > (episode)
+        (id) 5
+        (filename) vol-6-the-fifth-death/the-fifth-death/the-fifth-death_en.txt
+        (title) The Fifth Death
+        (author) fezcode
+        (date) 2026-03-23
+        (updated) 2026-03-23
+    (overlay) maroon
