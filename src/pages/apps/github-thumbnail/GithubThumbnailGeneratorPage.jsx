@@ -73,6 +73,7 @@ const THEME_OPTIONS = [
   { value: 'hauteCouture', label: 'HAUTE_COUTURE' },
   { value: 'missionControl', label: 'MISSION_CONTROL' },
   { value: 'etherealGlow', label: 'ETHEREAL_GLOW' },
+  { value: 'boldMinimal', label: 'CLASSIFIED_DOC' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

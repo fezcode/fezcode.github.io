@@ -53,6 +53,7 @@ import { vinylRecord } from './themes/vinylRecord';
 import { hauteCouture } from './themes/hauteCouture';
 import { missionControl } from './themes/missionControl';
 import { etherealGlow } from './themes/etherealGlow';
+import { boldMinimal } from './themes/boldMinimal';
 
 export const themeRenderers = {
   modern,
@@ -110,4 +111,5 @@ export const themeRenderers = {
   hauteCouture,
   missionControl,
   etherealGlow,
+  boldMinimal,
 };
