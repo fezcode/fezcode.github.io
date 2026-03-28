@@ -67,6 +67,7 @@ const THEME_OPTIONS = [
   { value: 'circlesBg', label: 'CIRCLES_BG' },
   { value: 'cassetteJCard', label: 'CASSETTE_J_CARD' },
   { value: 'modernNature', label: 'MODERN_NATURE' },
+  { value: 'splitFlap', label: 'SPLIT_FLAP_BOARD' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
