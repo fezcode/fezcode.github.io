@@ -49,6 +49,7 @@ import { cassetteJCard } from './themes/cassetteJCard';
 import { modernNature } from './themes/modernNature';
 import { splitFlap } from './themes/splitFlap';
 import { passportStamp } from './themes/passportStamp';
+import { vinylRecord } from './themes/vinylRecord';
 
 export const themeRenderers = {
   modern,
@@ -102,4 +103,5 @@ export const themeRenderers = {
   modernNature,
   splitFlap,
   passportStamp,
+  vinylRecord,
 };

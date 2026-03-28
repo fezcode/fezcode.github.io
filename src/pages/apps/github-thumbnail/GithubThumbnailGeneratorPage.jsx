@@ -69,6 +69,7 @@ const THEME_OPTIONS = [
   { value: 'modernNature', label: 'MODERN_NATURE' },
   { value: 'splitFlap', label: 'SPLIT_FLAP_BOARD' },
   { value: 'passportStamp', label: 'PASSPORT_STAMP' },
+  { value: 'vinylRecord', label: 'VINYL_RECORD' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
