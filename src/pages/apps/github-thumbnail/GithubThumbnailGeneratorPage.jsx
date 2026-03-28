@@ -71,6 +71,7 @@ const THEME_OPTIONS = [
   { value: 'passportStamp', label: 'PASSPORT_STAMP' },
   { value: 'vinylRecord', label: 'VINYL_RECORD' },
   { value: 'hauteCouture', label: 'HAUTE_COUTURE' },
+  { value: 'missionControl', label: 'MISSION_CONTROL' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

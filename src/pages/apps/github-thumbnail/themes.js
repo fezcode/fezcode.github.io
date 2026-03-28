@@ -51,6 +51,7 @@ import { splitFlap } from './themes/splitFlap';
 import { passportStamp } from './themes/passportStamp';
 import { vinylRecord } from './themes/vinylRecord';
 import { hauteCouture } from './themes/hauteCouture';
+import { missionControl } from './themes/missionControl';
 
 export const themeRenderers = {
   modern,
@@ -106,4 +107,5 @@ export const themeRenderers = {
   passportStamp,
   vinylRecord,
   hauteCouture,
+  missionControl,
 };
