@@ -70,6 +70,7 @@ const THEME_OPTIONS = [
   { value: 'splitFlap', label: 'SPLIT_FLAP_BOARD' },
   { value: 'passportStamp', label: 'PASSPORT_STAMP' },
   { value: 'vinylRecord', label: 'VINYL_RECORD' },
+  { value: 'hauteCouture', label: 'HAUTE_COUTURE' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

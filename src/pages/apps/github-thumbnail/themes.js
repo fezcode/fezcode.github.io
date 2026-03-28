@@ -50,6 +50,7 @@ import { modernNature } from './themes/modernNature';
 import { splitFlap } from './themes/splitFlap';
 import { passportStamp } from './themes/passportStamp';
 import { vinylRecord } from './themes/vinylRecord';
+import { hauteCouture } from './themes/hauteCouture';
 
 export const themeRenderers = {
   modern,
@@ -104,4 +105,5 @@ export const themeRenderers = {
   splitFlap,
   passportStamp,
   vinylRecord,
+  hauteCouture,
 };
