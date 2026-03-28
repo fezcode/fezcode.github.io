@@ -68,6 +68,7 @@ const THEME_OPTIONS = [
   { value: 'cassetteJCard', label: 'CASSETTE_J_CARD' },
   { value: 'modernNature', label: 'MODERN_NATURE' },
   { value: 'splitFlap', label: 'SPLIT_FLAP_BOARD' },
+  { value: 'passportStamp', label: 'PASSPORT_STAMP' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

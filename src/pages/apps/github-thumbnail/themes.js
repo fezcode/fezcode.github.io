@@ -48,6 +48,7 @@ import { circlesBg } from './themes/circlesBg';
 import { cassetteJCard } from './themes/cassetteJCard';
 import { modernNature } from './themes/modernNature';
 import { splitFlap } from './themes/splitFlap';
+import { passportStamp } from './themes/passportStamp';
 
 export const themeRenderers = {
   modern,
@@ -100,4 +101,5 @@ export const themeRenderers = {
   cassetteJCard,
   modernNature,
   splitFlap,
+  passportStamp,
 };

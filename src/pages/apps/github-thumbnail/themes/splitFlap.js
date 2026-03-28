@@ -171,7 +171,7 @@ export const splitFlap = (ctx, width, height, scale, data) => {
   ctx.font = `bold ${16 * scale}px "JetBrains Mono"`;
   const descUpper = description.toUpperCase();
   const descRows = Math.ceil(descUpper.length / descMaxPerRow);
-  const maxRows = 2;
+  const maxRows = 4;
   for (let row = 0; row < Math.min(descRows, maxRows); row++) {
     const slice = descUpper.substring(row * descMaxPerRow, (row + 1) * descMaxPerRow);
     drawFlapRow(contentX, descY + row * (descCellH + 4 * scale), slice, descCellW, descCellH, descGap, 'rgba(255,255,255,0.7)', slice.length);
