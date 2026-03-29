@@ -118,10 +118,10 @@ fezcode
 +24 -0 ~0
 link: https://github.com/fezcode/atlas.ed
 ---
-# Git
+# Gitty
 fezcode
 +25 -0 ~0
-link: https://github.com/fezcode/atlas.git
+link: https://github.com/fezcode/atlas.gitty
 ---
 # IP
 fezcode
@@ -138,12 +138,32 @@ fezcode
 +28 -0 ~0
 link: https://github.com/fezcode/atlas.sql
 ---
-# Chat
-fezcode
-+29 -0 ~0
-link: https://github.com/fezcode/atlas.chat
----
 # Color
 fezcode
-+30 -0 ~0
++29 -0 ~0
 link: https://github.com/fezcode/atlas.color
+---
+# Archive
+fezcode
++30 -0 ~0
+link: https://github.com/fezcode/atlas.archive
+---
+# Burner
+fezcode
++31 -0 ~0
+link: https://github.com/fezcode/atlas.burner
+---
+# Batchdown
+fezcode
++32 -0 ~0
+link: https://github.com/fezcode/atlas.batchdown
+---
+# Guide
+fezcode
++33 -0 ~0
+link: https://github.com/fezcode/atlas.guide
+---
+# Notes
+fezcode
++34 -0 ~0
+link: https://github.com/fezcode/atlas.notes
