@@ -4,36 +4,40 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 
 ### Tools in the Suite
 
-- 1. **[atlas.hub](https://github.com/fezcode/atlas.hub)**: The central entry point and interactive installer for the Atlas Suite. Discover, build, and maintain your entire Atlas toolkit from a single, unified interface.
-- 2. **[atlas.todo](https://github.com/fezcode/atlas.todo)**: A fast, minimalist, local-first TUI task manager. Features Vim-bindings, smart grouping, and CLI quick-add support.
-- 3. **[atlas.stats](https://github.com/fezcode/atlas.stats)**: Real-time system monitoring. View CPU, memory, disk, and network usage in a responsive terminal interface.
-- 4. **[atlas.websearch](https://github.com/fezcode/atlas.websearch)**: A blazing fast, interactive CLI search tool. Search DuckDuckGo, Wikipedia, Hacker News, and Reddit with zero configuration.
-- 5. **[atlas.compass](https://github.com/fezcode/atlas.compass)**: A secure, local-first terminal password manager. Features AES-256-GCM encryption and Argon2id key derivation for high-stakes security.
-- 6. **[atlas.clock](https://github.com/fezcode/atlas.clock)**: A high-visibility world clock dashboard. Features millisecond-precision real-time counters and a searchable IANA timezone list.
-- 7. **[atlas.cam](https://github.com/fezcode/atlas.cam)**: A terminal webcam viewer and ASCII camera. Features real-time edge detection, image filters, and GIF recording.
-- 8. **[atlas.games](https://github.com/fezcode/atlas.games)**: A terminal-based game collection. Featuring Wilson's Revenge directly in your shell.
-- 9. **[atlas.bench](https://github.com/fezcode/atlas.bench)**: A high-performance benchmarking tool for terminal applications and command-line processes. Measure CPU, memory, and latency with millisecond precision.
-- 10. **[atlas.radar](https://github.com/fezcode/atlas.radar)**: A high-performance Git workspace monitor. Scan, monitor, and sync multiple repositories simultaneously with a beautiful, minimalist CLI.
-- 11. **[atlas.otp](https://github.com/fezcode/atlas.otp)**: A high-visibility, minimalist terminal TOTP (2FA) manager. Securely manage and copy one-time passwords with a sleek Onyx & Gold theme.
-- 12. **[atlas.diff](https://github.com/fezcode/atlas.diff)**: A high-visibility, side-by-side terminal diff tool. Compare files with statistical clarity and a clean Atlas-inspired aesthetic.
-- 13. **[atlas.screensaver](https://github.com/fezcode/atlas.screensaver)**: A collection of aesthetic terminal screensavers. Enjoy nostalgic Starfield, Pipes, Matrix, DNA, and Waves animations directly in your terminal.
-- 14. **[atlas.facade](https://github.com/fezcode/atlas.facade)**: A retro-future Pip-Boy style mock API server. Prototype frontends instantly by forging backend responses from simple PIML blueprints.
-- 15. **[atlas.pq](https://github.com/fezcode/atlas.pq)**: A minimalist command-line PIML processor. Slice, filter, and map PIML data with simple dot notation, similar to jq.
-- 16. **[atlas.hash](https://github.com/fezcode/atlas.hash)**: A fast, minimalist terminal utility for computing and comparing file hashes. Features an interactive TUI and supports MD5, SHA1, SHA256, and SHA512.
-- 17. **[atlas.grave](https://github.com/fezcode/atlas.grave)**: A high-fidelity, interactive process reaper. Hunt down resource-heavy processes and "bury" them in an Onyx graveyard with a Pip-Boy inspired TUI.
-- 18. **[atlas.radio](https://github.com/fezcode/atlas.radio)**: A high-fidelity world radio receiver. Tune into thousands of live stations globally directly from your terminal with a pure Go audio engine.
-- 19. **[atlas.deck](https://github.com/fezcode/atlas.deck)**: An interactive TUI command deck for project workflows. Organize and trigger your daily terminal tasks through a customizable grid of "pads."
-- 20. **[atlas.convert](https://github.com/fezcode/atlas.convert)**: A fast, minimalist terminal image conversion utility. Effortlessly convert between JPEG, PNG, and HEIC formats with a simple CLI.
-- 21. **[atlas.conquistador](https://github.com/fezcode/atlas.conquistador)**: A powerful and beautiful terminal-based file explorer. Navigate, manage, and preview your files with a modern TUI experience similar to Finder or Windows Explorer.
-- 22. **[atlas.horizon](https://github.com/fezcode/atlas.horizon)**: A high-fidelity environmental and weather dashboard. It provides real-time atmospheric monitoring, including temperature, humidity, wind patterns, and UV index.
+- 1. **[atlas.hub](https://github.com/fezcode/atlas.hub)**: The centralized installer and manager for the Atlas Suite. Discover, build, and maintain your entire Atlas toolkit from a single, unified interface.
+- 2. **[atlas.todo](https://github.com/fezcode/atlas.todo)**: Fast, keyboard-centric terminal user interface for task management. Features Vim-bindings, smart grouping, and CLI quick-add support.
+- 3. **[atlas.stats](https://github.com/fezcode/atlas.stats)**: Fast, interactive terminal user interface for real-time system monitoring. View CPU, memory, disk, and network usage.
+- 4. **[atlas.websearch](https://github.com/fezcode/atlas.websearch)**: Fast, interactive terminal user interface for web searching across DuckDuckGo, Wikipedia, Hacker News, and Reddit.
+- 5. **[atlas.compass](https://github.com/fezcode/atlas.compass)**: Secure, local-first password manager for the terminal featuring AES-256-GCM encryption.
+- 6. **[atlas.clock](https://github.com/fezcode/atlas.clock)**: High-visibility, multi-timezone dashboard with millisecond precision and searchable IANA timezone list.
+- 7. **[atlas.cam](https://github.com/fezcode/atlas.cam)**: Terminal webcam viewer and ASCII camera with real-time edge detection and filters.
+- 8. **[atlas.games](https://github.com/fezcode/atlas.games)**: Terminal-based game collection including Wilson's Revenge and Wave Function Collapse.
+- 9. **[atlas.bench](https://github.com/fezcode/atlas.bench)**: High-precision, multi-command benchmarking tool with visual TUI comparison and millisecond accuracy.
+- 10. **[atlas.radar](https://github.com/fezcode/atlas.radar)**: A tool to monitor git statuses across multiple repositories simultaneously.
+- 11. **[atlas.otp](https://github.com/fezcode/atlas.otp)**: High-visibility, minimalist terminal TOTP (2FA) manager with a sleek Onyx & Gold theme.
+- 12. **[atlas.diff](https://github.com/fezcode/atlas.diff)**: High-visibility, side-by-side terminal diff tool for file comparison.
+- 13. **[atlas.screensaver](https://github.com/fezcode/atlas.screensaver)**: A collection of nostalgic and aesthetic terminal screensavers (Pipes, Stars, Matrix, DNA, Waves).
+- 14. **[atlas.facade](https://github.com/fezcode/atlas.facade)**: Retro-future Pip-Boy style mock API server for instant frontend prototyping.
+- 15. **[atlas.pq](https://github.com/fezcode/atlas.pq)**: Minimalist PIML processor (inspired by jq) for slicing, filtering, and mapping data.
+- 16. **[atlas.hash](https://github.com/fezcode/atlas.hash)**: Fast, minimalist terminal utility for generating and comparing file hashes (MD5, SHA1, SHA256, SHA512).
+- 17. **[atlas.grave](https://github.com/fezcode/atlas.grave)**: High-fidelity interactive process reaper with a Pip-Boy inspired TUI.
+- 18. **[atlas.radio](https://github.com/fezcode/atlas.radio)**: Global terminal radio receiver with access to thousands of live stations.
+- 19. **[atlas.deck](https://github.com/fezcode/atlas.deck)**: Interactive TUI command deck for project workflows and automation through a grid of "pads."
+- 20. **[atlas.convert](https://github.com/fezcode/atlas.convert)**: Image conversion tool for JPEG, PNG, and HEIC formats.
+- 21. **[atlas.conquistador](https://github.com/fezcode/atlas.conquistador)**: A powerful and beautiful terminal-based file explorer like Finder or Windows Explorer.
+- 22. **[atlas.horizon](https://github.com/fezcode/atlas.horizon)**: High-fidelity environmental and weather dashboard with atmospheric monitoring.
 - 23. **[atlas.cat](https://github.com/fezcode/atlas.cat)**: A beautiful, high-performance terminal text viewer with syntax highlighting and line numbers.
 - 24. **[atlas.ed](https://github.com/fezcode/atlas.ed)**: A beautiful, high-performance terminal text editor with syntax highlighting, line numbers, and search.
-- 25. **[atlas.git](https://github.com/fezcode/atlas.git)**: Comprehensive TUI git client with graphs, branch, tag, and multi-repo management.
+- 25. **[atlas.gitty](https://github.com/fezcode/atlas.gitty)**: Comprehensive TUI git client with graphs, branch, tag, and multi-repo management.
 - 26. **[atlas.ip](https://github.com/fezcode/atlas.ip)**: Fast, minimal tool to fetch your local and public IP address with geolocation data.
 - 27. **[atlas.sand](https://github.com/fezcode/atlas.sand)**: Interactive terminal-based falling sand and particle physics simulator.
 - 28. **[atlas.sql](https://github.com/fezcode/atlas.sql)**: Terminal-based SQL client for SQLite and PostgreSQL with syntax highlighting.
-- 29. **[atlas.chat](https://github.com/fezcode/atlas.chat)**: Modern TUI chat terminal for the Atlas Suite.
-- 30. **[atlas.color](https://github.com/fezcode/atlas.color)**: Interactive TUI color picker and converter (Hex, RGB, HSL).
+- 29. **[atlas.color](https://github.com/fezcode/atlas.color)**: Interactive TUI color picker and converter (Hex, RGB, HSL).
+- 30. **[atlas.archive](https://github.com/fezcode/atlas.archive)**: An interactive step-by-step archiver and extractor for managing compressed files.
+- 31. **[atlas.burner](https://github.com/fezcode/atlas.burner)**: A beautiful TUI image burner application for OS images and USB drives.
+- 32. **[atlas.batchdown](https://github.com/fezcode/atlas.batchdown)**: A powerful batch downloader that processes multiple URLs from text files sequentially.
+- 33. **[atlas.guide](https://github.com/fezcode/atlas.guide)**: A personal health and wellness tracker for calories, gym activities, and mood.
+- 34. **[atlas.notes](https://github.com/fezcode/atlas.notes)**: A beautiful terminal-based markdown note manager with built-in editor and high-fidelity rendering.
 
 ### Why Atlas?
 
