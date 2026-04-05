@@ -1,5 +1,23 @@
 [
   {
+    "slug": "quantum-physics-101",
+    "title": "Quantum Physics 101: A Beautiful Journey into the Microscopic",
+    "date": "2026-04-05",
+    "updated": "2026-04-05",
+    "description": "An elegant introduction to the bizarre world of quantum mechanics, covering Superposition, Wave Function Collapse, Entanglement, and the EPR Paradox.",
+    "tags": [
+      "physics",
+      "science",
+      "quantum",
+      "education"
+    ],
+    "category": "dev",
+    "filename": "quantum-physics-101.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "the-lost-art-of-the-tactile-90s-cinema",
     "title": "The Lost Art of the Tactile: Why 90s Cinema Ruined Modern Movies",
     "date": "2026-03-11",

@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 29 Mar 2026 15:22:38 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 05 Apr 2026 16:37:01 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 29 Mar 2026 15:22:37 GMT</pubDate>
+        <pubDate>Sun, 05 Apr 2026 16:37:00 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Quantum Physics 101: A Beautiful Journey into the Microscopic]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/quantum-physics-101</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/quantum-physics-101</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 05 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Quantum Physics 101: A Beautiful Journey into the Microscopic</h1>
+<p><a href="https://fezcode.com/blog/quantum-physics-101">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Lost Art of the Tactile: Why 90s Cinema Ruined Modern Movies]]></title>
             <description><![CDATA[[object Object]]]></description>
