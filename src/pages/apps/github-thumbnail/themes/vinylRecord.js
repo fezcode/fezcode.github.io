@@ -146,7 +146,6 @@ export const vinylRecord = (ctx, width, height, scale, data) => {
   ctx.font = `bold ${52 * scale}px "Inter", sans-serif`;
 
   // Word wrap for long names
-  const nameWords = repoName.split('');
   let fittedName = repoName;
   ctx.font = `bold ${52 * scale}px "Inter", sans-serif`;
   if (ctx.measureText(repoName).width > infoW) {
@@ -156,7 +155,6 @@ export const vinylRecord = (ctx, width, height, scale, data) => {
   ctx.fillText(fittedName, infoX, infoY);
 
   // Artist line (owner)
-  const titleMetrics = ctx.measureText(fittedName);
   const artistY = infoY + (ctx.measureText('M').actualBoundingBoxAscent + ctx.measureText('M').actualBoundingBoxDescent) + 16 * scale;
   ctx.fillStyle = 'rgba(255,255,255,0.5)';
   ctx.font = `${20 * scale}px "JetBrains Mono"`;

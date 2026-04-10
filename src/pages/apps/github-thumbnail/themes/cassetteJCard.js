@@ -1,5 +1,3 @@
-import { wrapText } from '../utils';
-
 export const cassetteJCard = (ctx, width, height, scale, data) => {
   const {
     primaryColor,
@@ -209,7 +207,6 @@ export const cassetteJCard = (ctx, width, height, scale, data) => {
 
   // --- Title block (main content area above the tape window) ---
   const titleBlockY = frontY + 10 * scale;
-  const titleBlockH = windowY - titleBlockY - 30 * scale;
 
   // Label / brand stripe at top
   ctx.save();

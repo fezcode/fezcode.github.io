@@ -1,5 +1,3 @@
-import { wrapText } from '../utils';
-
 export const splitFlap = (ctx, width, height, scale, data) => {
   const {
     primaryColor,

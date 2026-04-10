@@ -140,7 +140,6 @@ export const topographic = (ctx, width, height, scale, data) => {
     ctx.fillStyle = '#ffffff';
     ctx.font = `400 ${9 * scale}px "JetBrains Mono", monospace`;
     ctx.textAlign = 'left';
-    let coordIdx = 0;
     for (let x = gridStep; x < width; x += gridStep * 2) {
       for (let y = gridStep; y < height; y += gridStep * 2) {
         ctx.fillText(
@@ -148,7 +147,6 @@ export const topographic = (ctx, width, height, scale, data) => {
           x + 3 * scale,
           y - 3 * scale,
         );
-        coordIdx++;
       }
     }
     ctx.restore();

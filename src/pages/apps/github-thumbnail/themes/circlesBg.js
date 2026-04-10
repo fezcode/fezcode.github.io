@@ -91,7 +91,6 @@ export const circlesBg = (ctx, width, height, scale, data) => {
 
   // --- Text content ---
   const padding = 50 * scale;
-  const contentX = cardX + padding;
   const contentCenterX = width / 2;
 
   // Owner
