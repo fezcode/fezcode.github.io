@@ -9,7 +9,6 @@ import {
 } from '@phosphor-icons/react';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import Seo from '../../components/Seo';
-import LuxeArt from '../../components/LuxeArt';
 
 const FILTERS = [
   { id: 'all', label: 'All' },
@@ -170,7 +169,7 @@ const LuxeBlogPage = () => {
             Synchronizing Archive...
           </div>
         ) : layoutMode === 'grid' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 animate-fade-in">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 animate-fade-in">
             {filteredItems.map((item) => (
               <Link
                 key={item.slug}
@@ -179,58 +178,52 @@ const LuxeBlogPage = () => {
                     ? `/blog/series/${item.slug}`
                     : `/blog/${item.slug}`
                 }
-                className="group block"
+                className="block h-full group"
               >
-                <div className="relative aspect-[4/5] bg-[#EBEBEB] overflow-hidden mb-6 border border-[#1A1A1A]/5 shadow-sm group-hover:shadow-2xl transition-all duration-700">
-                  {/* Art/Image */}
-                  <div className="absolute inset-0 transition-transform duration-1000 group-hover:scale-105">
-                    <LuxeArt
-                      seed={item.title}
-                      className="w-full h-full opacity-80 mix-blend-multiply"
-                    />
-                  </div>
-
-                  {/* Date Badge */}
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-white/80 backdrop-blur-sm px-3 py-1 font-outfit text-[10px] uppercase tracking-widest border border-[#1A1A1A]/5">
+                <div className="relative aspect-[3/4] md:aspect-[4/5] w-full bg-white rounded-xl overflow-hidden border border-[#1A1A1A]/5 flex flex-col shadow-sm hover:shadow-xl transition-all duration-500">
+                  <div className="p-6 md:p-8 border-b border-[#1A1A1A]/5 flex justify-between items-center bg-[#FAFAF8] z-10">
+                    <span className="font-outfit text-xs uppercase tracking-widest text-[#1A1A1A]/50">
                       {new Date(item.date).toLocaleDateString('en-US', {
                         month: 'short',
                         day: 'numeric',
                         year: 'numeric',
                       })}
                     </span>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3">
-                    <span className="font-outfit text-[10px] uppercase tracking-widest text-[#8D4004] font-bold">
+                    <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40 border border-[#1A1A1A]/10 px-2 py-1 rounded flex items-center gap-1">
+                      {item.isSeries && <FolderIcon size={10} weight="fill" />}
                       {item.category}
                     </span>
-                    {item.isSeries && (
-                      <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40 border border-[#1A1A1A]/10 px-1.5 py-0.5 rounded-sm bg-white/50 flex items-center gap-1">
-                        <FolderIcon size={12} weight="fill" /> Series
-                      </span>
-                    )}
                   </div>
-
-                  <h2 className="font-playfairDisplay text-3xl text-[#1A1A1A] group-hover:italic transition-all leading-tight">
-                    {item.title}
-                  </h2>
-
-                  <p className="font-outfit text-sm text-[#1A1A1A]/60 line-clamp-2 leading-relaxed">
-                    {item.description}
-                  </p>
-
-                  <div className="pt-4 flex items-center gap-2 text-[#1A1A1A]/40 font-outfit text-[10px] uppercase tracking-[0.2em] group-hover:text-[#8D4004] group-hover:gap-4 transition-all">
-                    Read Entry <ArrowRightIcon />
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-center items-center text-center bg-[#FDFCFB] group-hover:bg-[#FFF] transition-colors relative overflow-hidden z-10">
+                    <div
+                      className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                      style={{
+                        backgroundImage: 'radial-gradient(#1A1A1A 1px, transparent 1px)',
+                        backgroundSize: '20px 20px',
+                      }}
+                    />
+                    <h2 className="font-playfairDisplay text-[#1A1A1A] leading-tight group-hover:scale-105 transition-transform duration-700 ease-out text-3xl md:text-4xl">
+                      {item.title}
+                    </h2>
+                    <p className="font-outfit text-xs md:text-sm text-[#1A1A1A]/60 line-clamp-2 mt-4 max-w-xs mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                      {item.description}
+                    </p>
+                  </div>
+                  <div className="p-6 border-t border-[#1A1A1A]/5 flex justify-between items-center bg-[#FAFAF8] z-10">
+                    <span className="font-outfit text-xs font-bold uppercase tracking-widest text-[#1A1A1A]/40 group-hover:text-[#8D4004] transition-colors">
+                      Read Entry
+                    </span>
+                    <ArrowRightIcon
+                      size={20}
+                      className="text-[#1A1A1A]/30 group-hover:text-[#8D4004] group-hover:translate-x-2 transition-all"
+                    />
                   </div>
                 </div>
               </Link>
             ))}
           </div>
         ) : (
-          <div className="max-w-5xl mx-auto flex flex-col divide-y divide-[#1A1A1A]/5 animate-fade-in">
+          <div className="max-w-5xl mx-auto flex flex-col gap-6 animate-fade-in">
             {filteredItems.map((item) => (
               <Link
                 key={item.slug}
@@ -239,48 +232,48 @@ const LuxeBlogPage = () => {
                     ? `/blog/series/${item.slug}`
                     : `/blog/${item.slug}`
                 }
-                className="group py-12 first:pt-0 flex flex-col md:flex-row gap-8 items-start md:items-center"
+                className="group relative block border border-[#1A1A1A]/5 bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
               >
-                <div className="w-full md:w-48 lg:w-64 shrink-0">
-                  <div className="relative aspect-[16/9] md:aspect-square bg-[#EBEBEB] overflow-hidden border border-[#1A1A1A]/5 group-hover:shadow-xl transition-all duration-500">
-                    <LuxeArt
-                      seed={item.title}
-                      className="w-full h-full opacity-60 mix-blend-multiply transition-transform duration-1000 group-hover:scale-110"
-                    />
+                <div className="flex flex-col md:flex-row items-stretch">
+                  <div className="hidden md:flex w-48 bg-[#FAFAF8] border-r border-[#1A1A1A]/5 items-center justify-center p-6 relative overflow-hidden shrink-0">
+                    <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#1A1A1A 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+                    <div className="text-center relative z-10">
+                      <div className="font-playfairDisplay text-4xl text-[#1A1A1A] group-hover:italic transition-all">
+                        {new Date(item.date).getDate().toString().padStart(2, '0')}
+                      </div>
+                      <div className="font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/40 mt-2">
+                        {new Date(item.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex-1 space-y-4">
-                  <div className="flex items-center gap-4 text-[10px] font-outfit uppercase tracking-[0.2em]">
-                    <span className="text-[#8D4004] font-bold">
-                      {item.category}
-                    </span>
-                    <span className="text-[#1A1A1A]/30">/</span>
-                    <span className="text-[#1A1A1A]/40">
-                      {new Date(item.date).toLocaleDateString('en-US', {
-                        month: 'long',
-                        day: 'numeric',
-                        year: 'numeric',
-                      })}
-                    </span>
-                    {item.isSeries && (
-                      <span className="bg-[#1A1A1A]/5 px-2 py-0.5 rounded text-[9px] text-[#1A1A1A]/60 flex items-center gap-1">
-                        <FolderIcon size={12} weight="bold" /> Series
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="font-outfit text-[10px] uppercase tracking-widest text-[#8D4004] font-bold">
+                        {item.category}
                       </span>
-                    )}
+                      {item.isSeries && (
+                        <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40 border border-[#1A1A1A]/10 px-1.5 py-0.5 rounded-sm flex items-center gap-1">
+                          <FolderIcon size={12} weight="fill" /> Series
+                        </span>
+                      )}
+                      <div className="md:hidden font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/30">
+                         {new Date(item.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </div>
+                    </div>
+
+                    <h2 className="font-playfairDisplay text-2xl md:text-3xl lg:text-4xl text-[#1A1A1A] group-hover:translate-x-2 transition-transform duration-500 leading-tight mb-3">
+                      {item.title}
+                    </h2>
+
+                    <p className="font-outfit text-sm text-[#1A1A1A]/60 line-clamp-2 max-w-2xl leading-relaxed">
+                      {item.description}
+                    </p>
                   </div>
 
-                  <h2 className="font-playfairDisplay text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] group-hover:italic group-hover:translate-x-2 transition-all duration-500 leading-tight">
-                    {item.title}
-                  </h2>
-
-                  <p className="font-outfit text-sm text-[#1A1A1A]/60 line-clamp-2 max-w-2xl leading-relaxed italic">
-                    {item.description}
-                  </p>
-                </div>
-
-                <div className="hidden md:flex shrink-0 w-12 h-12 rounded-full border border-[#1A1A1A]/10 items-center justify-center group-hover:bg-[#1A1A1A] group-hover:text-white transition-all duration-500">
-                  <ArrowRightIcon size={20} />
+                  <div className="hidden md:flex items-center justify-center p-8 border-l border-[#1A1A1A]/5 bg-[#FAFAF8] group-hover:bg-[#1A1A1A] transition-colors duration-500 w-24 shrink-0">
+                    <ArrowRightIcon size={24} className="text-[#1A1A1A]/20 group-hover:text-white transition-colors" />
+                  </div>
                 </div>
               </Link>
             ))}
