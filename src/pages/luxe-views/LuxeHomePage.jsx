@@ -562,7 +562,7 @@ const OmniverseHero = ({ isSyntaxSpriteEnabled, toggleSyntaxSprite }) => {
               Syntax::{isSyntaxSpriteEnabled ? 'Online' : 'Stealth'}
             </span>
           </motion.button>
-          <h1 className="font-instr-serif text-8xl md:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 px-16 tracking-tighter mix-blend-overlay">
+          <h1 className="font-instr-serif text-7xl md:text-8xl lg:text-[10rem] text-[#1A1A1A] leading-[0.8] mb-6 px-4 md:px-16 tracking-tighter mix-blend-overlay">
             <span className="italic">FEZ</span>
             <br />
             <span className="text-black/40">CODEX</span>
@@ -606,8 +606,8 @@ const LuxeHomePage = () => {
         toggleSyntaxSprite={toggleSyntaxSprite}
       />
 
-      <div className="border-y border-black/10 bg-white/40 backdrop-blur-md sticky top-0 z-40">
-        <div className="flex justify-center divide-x divide-black/10 max-w-[1800px] mx-auto overflow-x-auto no-scrollbar">
+      <div className="border-y border-black/10 bg-white/40 backdrop-blur-md sticky top-0 z-40 w-full overflow-hidden">
+        <div className="flex justify-start lg:justify-center divide-x divide-black/10 max-w-[1800px] mx-auto overflow-x-auto no-scrollbar w-full">
           <StatusItem
             label="View Mode"
             value={layoutMode === 'stack' ? 'Stacked' : 'Grid'}
