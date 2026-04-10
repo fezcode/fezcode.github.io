@@ -90,7 +90,7 @@ export const luxe = (ctx, width, height, scale, data) => {
   ctx.restore();
 
   // Typography & Content
-  const serifFont = '"Playfair Display", "Times New Roman", serif';
+  const serifFont = '"Instrument Serif", "Playfair Display", serif';
   const monoFont = '"JetBrains Mono", "Courier New", monospace';
 
   // Decorative Line
@@ -108,14 +108,20 @@ export const luxe = (ctx, width, height, scale, data) => {
   ctx.letterSpacing = '10px';
   ctx.fillText(repoOwner.toUpperCase(), width * 0.1, height * 0.15);
 
-  // Repo Name
-  ctx.font = `normal 900 ${120 * scale}px ${serifFont}`;
-  ctx.letterSpacing = 'normal';
+  // Repo Name - Refined with Instrument Serif and lighter weight
+  ctx.font = `italic 400 ${140 * scale}px ${serifFont}`;
+  ctx.letterSpacing = '-2px';
+  ctx.fillStyle = '#1a1a1a';
   ctx.fillText(repoName, width * 0.1, height * 0.45);
+
+  // Optional: Add a subtle thin stroke for "etched" look if needed, but let's keep it clean first
+  // ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+  // ctx.lineWidth = 0.5 * scale;
+  // ctx.strokeText(repoName, width * 0.1, height * 0.45);
 
   // Description
   ctx.font = `italic 300 ${32 * scale}px ${serifFont}`;
-  ctx.fillStyle = '#333';
+  ctx.fillStyle = '#444';
   wrapText(ctx, description, width * 0.1, height * 0.6, width * 0.6, 45 * scale);
 
   // Language & Stats (Bottom Bar)

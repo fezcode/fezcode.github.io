@@ -86,6 +86,34 @@ const QUOTES = [
   "Software is like entropy: it's difficult to grasp, weighs nothing, and obeys the second law of thermodynamics.",
   "Why do Java developers wear glasses? Because they can't C#!",
   "Debugging is like being the detective in a crime movie where you are also the murderer.",
+  "The first bug was a literal moth found in a Mark II computer in 1947.",
+  "Git was created by Linus Torvalds in just two weeks to manage Linux development.",
+  "The term 'bit' (Binary Digit) was coined by John Tukey in 1946.",
+  "JavaScript's 'typeof null' is 'object'. A legacy bug from the first version.",
+  "Python was named after Monty Python's Flying Circus, not the reptile.",
+  "The first website ever (info.cern.ch) went live on August 6, 1991.",
+  "SpaceX's Crew Dragon runs on a customized Linux OS and Chromium-based UI.",
+  "The Linux kernel surpassed 30 million lines of code in 2024.",
+  "Nintendo started as a playing card company in 1889.",
+  "The 'Save' icon is a 3.5-inch floppy disk. It held 1.44 MB of data.",
+  "Ada Lovelace wrote the first algorithm intended for a machine in 1843.",
+  "The C language was born at Bell Labs to rewrite the Unix operating system.",
+  "A Yottabyte is 1,024 Zettabytes. We haven't even reached the Zettabyte era fully.",
+  "The first computer mouse was made of wood and had only one button.",
+  "The QWERTY keyboard layout was designed to slow down typists to prevent jams.",
+  "Apollo 11's guidance computer had less processing power than a modern calculator.",
+  "CAPTCHA stands for 'Completely Automated Public Turing test to tell Computers and Humans Apart'.",
+  "The '404 Not Found' error was named after Room 404 at CERN where the first servers were.",
+  "Domain names were free until 1995.",
+  "The first banner ad was used in 1994 and had a 44% click-through rate.",
+  "Linux is everywhere: from Android phones to the International Space Station.",
+  "The 'Gopher' in Go isn't just a mascot; it's a symbol of efficiency and speed.",
+  "Docker was originally an internal project at a company called dotCloud.",
+  "Kubernetes is Greek for 'Helmsman' or 'Pilot'.",
+  "The first 1GB hard drive (1980) weighed 550 pounds and cost $40,000.",
+  "Programming is the art of telling a computer what to do. It's also the art of arguing with it.",
+  "If you ever feel useless, remember that someone is maintaining the 'Scroll Lock' key.",
+  "Wi-Fi doesn't stand for anything. It's just a catchy name.",
 ];
 
 const SyntaxSprite = () => {
@@ -94,10 +122,11 @@ const SyntaxSprite = () => {
   const [position, setPosition] = useState({ x: 100, direction: -1 }); // Spawn right, walk left
   const [state, setState] = useState('walking'); // idle, walking, thinking
   const [thought, setThought] = useState('');
+  const [isJumping, setIsJumping] = useState(false);
 
   // Walking Logic
   useEffect(() => {
-    if (!isSyntaxSpriteEnabled || state === 'thinking') return;
+    if (!isSyntaxSpriteEnabled || state === 'thinking' || isJumping) return;
 
     const moveInterval = setInterval(() => {
       setPosition((prev) => {
@@ -116,7 +145,24 @@ const SyntaxSprite = () => {
     }, 50);
 
     return () => clearInterval(moveInterval);
-  }, [isSyntaxSpriteEnabled, state]);
+  }, [isSyntaxSpriteEnabled, state, isJumping]);
+
+  // Jumping Logic
+  useEffect(() => {
+    if (!isSyntaxSpriteEnabled) return;
+
+    const jumpInterval = setInterval(() => {
+      // 5% chance every 4 seconds to jump if not already jumping or thinking
+      if (Math.random() > 0.95 && !isJumping && state !== 'thinking') {
+        setIsJumping(true);
+        setTimeout(() => {
+            setIsJumping(false);
+        }, 800);
+      }
+    }, 4000);
+
+    return () => clearInterval(jumpInterval);
+  }, [isSyntaxSpriteEnabled, isJumping, state]);
 
   // Thinking Logic - MORE FREQUENT
   useEffect(() => {
@@ -150,11 +196,13 @@ const SyntaxSprite = () => {
   }, [location.pathname]);
 
   const handleSpriteClick = () => {
+    setIsJumping(true);
     setThought("I am Syntax, the Codex Companion. You can stow me in Settings anytime!");
     setState('thinking');
     setTimeout(() => {
         setState('idle');
         setThought('');
+        setIsJumping(false);
     }, 8000);
   };
 
@@ -218,13 +266,19 @@ const SyntaxSprite = () => {
             className="relative"
         >
             <motion.div
-                animate={state === 'walking' ? {
+                animate={isJumping ? {
+                    y: [0, -40, 0],
+                    rotate: [0, 360, 0]
+                } : (state === 'walking' ? {
                     y: [0, -4, 0],
                     rotate: [0, 5, -5, 0]
                 } : {
                     scale: [1, 1.05, 1]
-                }}
-                transition={{
+                })}
+                transition={isJumping ? {
+                    duration: 0.8,
+                    ease: "easeInOut"
+                } : {
                     repeat: Infinity,
                     duration: state === 'walking' ? 0.4 : 2
                 }}
@@ -246,13 +300,13 @@ const SyntaxSprite = () => {
             {/* Little Feet */}
             <div className="flex justify-around mt-[-4px]">
                 <motion.div
-                    animate={state === 'walking' ? { y: [0, -2, 0] } : {}}
+                    animate={state === 'walking' || isJumping ? { y: [0, -2, 0] } : {}}
                     transition={{ repeat: Infinity, duration: 0.2 }}
                     className="w-3 h-2 rounded-full bg-current opacity-50"
                     style={{ color: spriteColor }}
                 />
                 <motion.div
-                    animate={state === 'walking' ? { y: [0, -2, 0] } : {}}
+                    animate={state === 'walking' || isJumping ? { y: [0, -2, 0] } : {}}
                     transition={{ repeat: Infinity, duration: 0.2, delay: 0.1 }}
                     className="w-3 h-2 rounded-full bg-current opacity-50"
                     style={{ color: spriteColor }}
