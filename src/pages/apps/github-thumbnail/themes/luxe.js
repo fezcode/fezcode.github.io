@@ -1,7 +1,7 @@
 import { wrapText } from '../utils';
 
 export const luxe = (ctx, width, height, scale, data) => {
-  const { repoOwner, repoName, description, language, stars, primaryColor, secondaryColor, bgColor } = data;
+  const { repoOwner, repoName, description, language, stars } = data;
 
   // LCG Random Generator (Ported from LuxeArt.jsx)
   const seed = repoName + repoOwner;

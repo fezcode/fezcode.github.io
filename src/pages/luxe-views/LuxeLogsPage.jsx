@@ -181,7 +181,7 @@ const LuxeLogsPage = () => {
                     className="group relative block aspect-square bg-white rounded-xl overflow-hidden border border-[#1A1A1A]/5 shadow-sm hover:shadow-xl transition-all duration-500"
                   >
                     <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#1A1A1A 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
-                    <div className="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none">
+                    <div className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none overflow-hidden rounded-xl">
                       <LuxeArt seed={log.title} colorful={true} className="w-full h-full mix-blend-multiply transition-transform duration-1000 group-hover:scale-110" />
                     </div>
                     <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">

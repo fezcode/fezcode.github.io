@@ -203,7 +203,7 @@ const LuxeBlogPage = () => {
                         backgroundSize: '20px 20px',
                       }}
                     />
-                    <div className="absolute inset-0 opacity-0 group-hover:opacity-[0.04] transition-opacity duration-1000 pointer-events-none">
+                    <div className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.12] transition-opacity duration-1000 pointer-events-none">
                        <LuxeArt seed={item.title} colorful={false} className="w-full h-full mix-blend-multiply" />
                     </div>
                     <h2 className="font-playfairDisplay text-[#1A1A1A] leading-tight group-hover:scale-105 transition-transform duration-700 ease-out text-3xl md:text-4xl relative z-10">
