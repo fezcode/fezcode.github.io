@@ -55,6 +55,8 @@ import { missionControl } from './themes/missionControl';
 import { etherealGlow } from './themes/etherealGlow';
 import { boldMinimal } from './themes/boldMinimal';
 
+import { luxe } from './themes/luxe';
+
 export const themeRenderers = {
   modern,
   brutalist,
@@ -112,4 +114,5 @@ export const themeRenderers = {
   missionControl,
   etherealGlow,
   boldMinimal,
+  luxe,
 };

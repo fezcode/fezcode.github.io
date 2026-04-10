@@ -9,6 +9,7 @@ import {
 } from '@phosphor-icons/react';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import Seo from '../../components/Seo';
+import LuxeArt from '../../components/LuxeArt';
 
 const FILTERS = [
   { id: 'all', label: 'All' },
@@ -202,7 +203,10 @@ const LuxeBlogPage = () => {
                         backgroundSize: '20px 20px',
                       }}
                     />
-                    <h2 className="font-playfairDisplay text-[#1A1A1A] leading-tight group-hover:scale-105 transition-transform duration-700 ease-out text-3xl md:text-4xl">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-[0.04] transition-opacity duration-1000 pointer-events-none">
+                       <LuxeArt seed={item.title} colorful={false} className="w-full h-full mix-blend-multiply" />
+                    </div>
+                    <h2 className="font-playfairDisplay text-[#1A1A1A] leading-tight group-hover:scale-105 transition-transform duration-700 ease-out text-3xl md:text-4xl relative z-10">
                       {item.title}
                     </h2>
                     <p className="font-outfit text-xs md:text-sm text-[#1A1A1A]/60 line-clamp-2 mt-4 max-w-xs mx-auto opacity-0 group-hover:opacity-100 transition-opacity duration-500">
@@ -237,6 +241,9 @@ const LuxeBlogPage = () => {
                 <div className="flex flex-col md:flex-row items-stretch">
                   <div className="hidden md:flex w-48 bg-[#FAFAF8] border-r border-[#1A1A1A]/5 items-center justify-center p-6 relative overflow-hidden shrink-0">
                     <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#1A1A1A 1px, transparent 1px)', backgroundSize: '10px 10px' }} />
+                    <div className="absolute inset-0 opacity-[0.02] group-hover:opacity-[0.06] transition-opacity duration-700 pointer-events-none">
+                      <LuxeArt seed={item.title} colorful={false} className="w-full h-full mix-blend-multiply transition-transform duration-1000 group-hover:scale-110" />
+                    </div>
                     <div className="text-center relative z-10">
                       <div className="font-playfairDisplay text-4xl text-[#1A1A1A] group-hover:italic transition-all">
                         {new Date(item.date).getDate().toString().padStart(2, '0')}

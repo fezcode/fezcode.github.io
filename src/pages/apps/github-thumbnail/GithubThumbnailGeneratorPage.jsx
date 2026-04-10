@@ -74,6 +74,7 @@ const THEME_OPTIONS = [
   { value: 'missionControl', label: 'MISSION_CONTROL' },
   { value: 'etherealGlow', label: 'ETHEREAL_GLOW' },
   { value: 'boldMinimal', label: 'CLASSIFIED_DOC' },
+  { value: 'luxe', label: 'LUXE_ART' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
