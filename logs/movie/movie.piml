@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-04-11
+    (link) 
+    (rating) 4
+    (slug) project-hail-mary-2026
+    (title) Project Hail Mary (2026)
+    (image) 
+    (description) A breathtaking cinematic adaptation of Andy Weir's sci-fi masterpiece, bringing the solitary struggle of Ryland Grace and the incredible Rocky to the big screen.
+    (director) Phil Lord & Christopher Miller
+  > (item)
+    (category) Movie
     (date) 2026-03-22
     (link) 
     (rating) 3
