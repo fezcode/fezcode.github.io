@@ -165,7 +165,17 @@
     (from) 2026-03-30T00:00:00Z
     (to) 2026-04-05T23:59:59Z
     (text) NET_RUN IS ONLINE: A WORDLE CLONE IN SPACE. ACCESS AT /NET_RUN.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/net_run
     (linkText) Play net_run
+
+  > (banner)
+    (id) urban-rogue-launch
+    (type) info
+    (from) 2026-04-11T00:00:00Z
+    (to) 2026-04-20T23:59:59Z
+    (text) URBAN ROGUE IS ONLINE: THE ELEGANT NEW YORK ARCHITECTURAL PROTOCOL. ACCESS AT https://fezcode.com/urban-rogue/.
+    (isActive) true
+    (link) https://fezcode.com/urban-rogue/
+    (linkText) Play Urban Rogue
 
