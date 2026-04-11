@@ -54,6 +54,10 @@
         (to) https://fezcode.com/castarook/
         (icon) CrownIcon
       > (item)
+        (label) Urban Rogue
+        (to) https://fezcode.com/urban-rogue/
+        (icon) TargetIcon
+      > (item)
         (label) Swat Tactics
         (to) https://fezcode.com/Swat-Tactics/
         (icon) ShieldCheckIcon
