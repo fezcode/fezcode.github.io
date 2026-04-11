@@ -1,5 +1,79 @@
 [
   {
+    "slug": "why-i-built-dush",
+    "title": "Why I Built Dush",
+    "date": "2026-04-11",
+    "updated": "2026-04-11",
+    "description": "The story behind Dush, a 'Dumb Shell' that turned into a powerful Go-native scripting platform.",
+    "tags": [
+      "go",
+      "golang",
+      "shell",
+      "dush",
+      "dev"
+    ],
+    "category": "dev",
+    "filename": "why-i-built-dush.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "shell-architecture-in-go",
+    "title": "Shell Architecture in Go: From Lexer to Execution",
+    "date": "2026-04-11",
+    "updated": "2026-04-11",
+    "description": "A deep dive into the internal architecture of Dush, exploring its lexer, Pratt parser, and tree-walking evaluator.",
+    "tags": [
+      "go",
+      "architecture",
+      "parser",
+      "lexer",
+      "shell"
+    ],
+    "category": "dev",
+    "filename": "shell-architecture-in-go.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "implementing-everything-in-go",
+    "title": "Implementing Everything in Go: Built-ins, Pipes, and Jobs",
+    "date": "2026-04-11",
+    "updated": "2026-04-11",
+    "description": "How Dush implements core shell features like pipes, redirects, and job control using Go's standard library.",
+    "tags": [
+      "go",
+      "golang",
+      "shell",
+      "systems-programming"
+    ],
+    "category": "dev",
+    "filename": "implementing-everything-in-go.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "modernizing-the-shell-dush-scripting-language",
+    "title": "Modernizing the Shell: The Dush Scripting Language",
+    "date": "2026-04-11",
+    "updated": "2026-04-11",
+    "description": "Exploring the @ sigil system and the clean, modern scripting syntax that makes Dush a joy to use.",
+    "tags": [
+      "dush",
+      "scripting",
+      "programming-languages",
+      "go"
+    ],
+    "category": "dev",
+    "filename": "modernizing-the-shell-dush-scripting-language.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "quantum-physics-101",
     "title": "Quantum Physics 101: A Beautiful Journey into the Microscopic",
     "date": "2026-04-05",

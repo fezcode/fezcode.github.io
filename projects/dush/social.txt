@@ -1,12 +1,22 @@
-# Why I built Dush
+# Why I Built Dush
 fezcode
-+10 -2 ~1
-link: https://github.com/fezcode/dush
++15 -2 ~5
+link: /blog/why-i-built-dush
 ---
-# Shell Architecture in Go
+# Shell Architecture in Go: From Lexer to Execution
 fezcode
-+5 -0 ~0
-link: https://github.com/fezcode/dush
++12 -0 ~3
+link: /blog/shell-architecture-in-go
+---
+# Implementing Everything in Go: Built-ins, Pipes, and Jobs
+fezcode
++10 -1 ~2
+link: /blog/implementing-everything-in-go
+---
+# Modernizing the Shell: The Dush Scripting Language
+fezcode
++8 -0 ~4
+link: /blog/modernizing-the-shell-dush-scripting-language
 ---
 # Implementing cd in Go
 fezcode

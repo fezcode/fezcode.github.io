@@ -9,14 +9,207 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 11 Apr 2026 00:40:18 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 11 Apr 2026 22:22:13 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 11 Apr 2026 00:40:18 GMT</pubDate>
+        <pubDate>Sat, 11 Apr 2026 22:22:13 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Why I Built Dush]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/why-i-built-dush</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/why-i-built-dush</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Why I Built Dush</h1>
+<p>The terminal is my home, but Bash has always felt like a guest who stayed too long and forgot their manners. Don&#39;t get me wrong—Bash is legendary. It runs the world. But have you ever tried to remember the difference between <code>$@</code> and <code>$*</code>? Or spent an hour debugging a script only to realize you forgot a space inside a <code>[</code> bracket?</p>
+<p>That&#39;s why I built <strong>Dush</strong> (Dumb Shell). It started as a weekend experiment to see if I could write a simple command runner in Go. It ended up becoming a full-blown shell with its own scripting language, a Pratt parser, and a philosophy of &quot;explicit is better than cryptic.&quot;</p>
+<h2>The Frustration</h2>
+<p>Bash syntax is rooted in the 1970s. It was designed for a world where every byte of memory was precious and every keystroke counted. But in 2026, we have the luxury of clarity.</p>
+<p>In Bash:</p>
+<pre><code class="language-bash">if [ &quot;$VAR&quot; == &quot;val&quot; ]; then
+    echo &quot;equal&quot;
+fi
+</code></pre>
+<p>In Dush:</p>
+<pre><code class="language-bash">if (@VAR == &quot;val&quot;) {
+    echo &quot;equal&quot;
+}
+</code></pre>
+<p>Dush replaces the <code>$VAR</code>, <code>${VAR}</code>, and <code>$(VAR)</code> madness with a single, unambiguous sigil: <code>@</code>. If you see an <code>@</code>, you know it&#39;s a Dush variable or expression.</p>
+<h2>Why Go?</h2>
+<p>Go was the obvious choice for this project. </p>
+<ol>
+<li><strong>Static Binaries</strong>: I wanted a shell I could drop onto any machine without worrying about dependencies.</li>
+<li><strong>Standard Library</strong>: <code>os/exec</code> is powerful, and <code>io.Pipe</code> makes implementing pipelines almost trivial.</li>
+<li><strong>Concurrency</strong>: Job control and background processes are much easier to manage with Go&#39;s goroutines and channels.</li>
+</ol>
+<h2>From Wrapper to Language</h2>
+<p>What started as an <code>os.Stdin</code> scanner wrapping <code>os/exec.Command</code> quickly grew. I realized that to truly improve the shell experience, I needed a real language. I implemented a <strong>Pratt Parser</strong> (Top Down Operator Precedence) because it handles expressions beautifully and allowed me to add features like method syntax:</p>
+<pre><code class="language-bash">@name = &quot;fezcode&quot;
+echo @name.upper() # FEZCODE
+</code></pre>
+<h2>More Than a Scripting Language</h2>
+<p>Dush isn&#39;t just about scripts. It&#39;s about the interactive experience. I built a modern <code>ls</code> directly into the shell with icons and colors, implemented a customizable prompt system similar to Oh-My-Zsh (but faster), and added cross-platform job control.</p>
+<p>Dush is still &quot;Dumb&quot; in name, but it&#39;s becoming the smartest tool in my kit.</p>
+<p>Check out the project on GitHub: <a href="https://github.com/fezcode/dush">https://github.com/fezcode/dush</a></p>
+<p><a href="https://fezcode.com/blog/why-i-built-dush">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Shell Architecture in Go: From Lexer to Execution]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/shell-architecture-in-go</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/shell-architecture-in-go</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Shell Architecture in Go: From Lexer to Execution</h1>
+<p>Building a shell is often seen as a rite of passage for systems engineers. While most start with a simple loop and <code>execvp</code>, <strong>Dush</strong> takes a more architectural approach. In this post, we&#39;ll dive into the internal plumbing of Dush and see how a string of text becomes a running process.</p>
+<h2>The High-Level Flow</h2>
+<p>Dush follows a classic compiler/interpreter pipeline, but optimized for the immediate nature of a shell:</p>
+<ol>
+<li><strong>REPL / Script Reader</strong>: Captures raw input.</li>
+<li><strong>Lexer</strong>: Breaks the input into tokens (keywords, sigils, commands, arguments).</li>
+<li><strong>Parser (AST)</strong>: Builds an Abstract Syntax Tree using a Pratt Parser.</li>
+<li><strong>Evaluator</strong>: Walks the tree and executes Go code or spawns external processes.</li>
+<li><strong>Environment</strong>: Manages scopes, variables, and exported environment variables.</li>
+</ol>
+<h2>1. The Lexer: Understanding <code>@</code></h2>
+<p>The lexer is responsible for recognizing the difference between a shell command and a language expression. When it sees an <code>@</code>, it switches modes to handle variable names, numbers, or string literals. This unambiguous start is what makes Dush&#39;s syntax so much cleaner than Bash.</p>
+<h2>2. The Pratt Parser: Handling Complexity</h2>
+<p>For the parser, I chose a <strong>Pratt Parser</strong>. Unlike traditional recursive descent, Pratt parsers are exceptional at handling operator precedence and infix expressions. This allows Dush to support complex math and method chaining:</p>
+<pre><code class="language-bash">@result = (10 + 5) * 2
+echo @text.trim().lower()
+</code></pre>
+<p>Each token has an associated &quot;parsing function&quot; for both prefix and infix positions. It&#39;s elegant, fast, and very easy to extend with new language features.</p>
+<h2>3. The Evaluator: Tree Walking</h2>
+<p>The evaluator is a tree-walking interpreter. It takes an AST node and returns an <code>Object</code> (Dush&#39;s internal type system). </p>
+<p>If the node is a <code>CommandExpression</code>, the evaluator:</p>
+<ul>
+<li>Resolves all arguments (expanding globs like <code>*.go</code> and tildes like <code>~</code>).</li>
+<li>Checks if the command is a <strong>Built-in</strong> (like <code>cd</code> or <code>exit</code>).</li>
+<li>If not, it uses <code>os/exec</code> to spawn an external process.</li>
+</ul>
+<h2>4. The Environment: Scoped State</h2>
+<p>Dush uses a linked-list style environment for scoping. When you enter a <code>proc</code> (procedure) or an <code>if</code> block, a new environment is created that points back to its parent. This provides native support for closures and local variables without leaking state into the global shell.</p>
+<h2>5. Job Control and Pipes</h2>
+<p>The architecture is designed for concurrency. Pipelines (<code>cmd1 | cmd2</code>) are implemented by connecting the <code>Stdout</code> of one command&#39;s <code>exec.Cmd</code> to the <code>Stdin</code> of the next via <code>io.Pipe</code>. Background jobs (<code>cmd &amp;</code>) are managed by a global <code>JobManager</code> that tracks PIDs and handles signal forwarding.</p>
+<p>Building Dush has been a masterclass in Go&#39;s systems capabilities.</p>
+<p>Explore the source code: <a href="https://github.com/fezcode/dush">https://github.com/fezcode/dush</a></p>
+<p><a href="https://fezcode.com/blog/shell-architecture-in-go">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Implementing Everything in Go: Built-ins, Pipes, and Jobs]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/implementing-everything-in-go</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/implementing-everything-in-go</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Implementing Everything in Go: Built-ins, Pipes, and Jobs</h1>
+<p>When you write a shell in Go, you quickly realize that the standard library is your best friend. In <strong>Dush</strong>, we don&#39;t just call out to external binaries for everything—we implement as much as possible in pure Go to ensure cross-platform consistency and speed.</p>
+<h2>The &quot;Everything in Go&quot; Philosophy</h2>
+<p>Many shells are just thin wrappers around <code>libc</code>. Dush aims to be different. By implementing core utilities as built-ins, we avoid the overhead of process spawning for common tasks.</p>
+<h3>1. The Modern <code>ls</code></h3>
+<p>One of the most visible parts of Dush is the built-in <code>ls</code>. Instead of relying on the system&#39;s <code>ls</code>, Dush uses <code>os.ReadDir</code> and a custom renderer. This allows us to:</p>
+<ul>
+<li>Inject icons based on file extensions.</li>
+<li>Provide consistent coloring across Windows, Linux, and macOS.</li>
+<li>Build in human-readable sizes and grid layouts without extra flags.</li>
+</ul>
+<h3>2. The Pipeline Engine</h3>
+<p>Implementing pipes (<code>|</code>) in Go is surprisingly elegant. We use <code>io.Pipe()</code> to create a connected reader and writer.</p>
+<pre><code class="language-go">// Conceptual Go implementation
+reader, writer := io.Pipe()
+cmd1.Stdout = writer
+cmd2.Stdin = reader
+
+go func() {
+    cmd1.Run()
+    writer.Close()
+}()
+cmd2.Run()
+</code></pre>
+<p>This &quot;pure Go&quot; approach to plumbing ensures that Dush handles data streams efficiently without hitting OS-specific pipe buffer limits too early.</p>
+<h3>3. Job Control: The <code>JobManager</code></h3>
+<p>Handling background processes (<code>&amp;</code>) and bringing them back to the foreground (<code>fg</code>) is one of the hardest parts of shell development. Dush uses a centralized <code>JobManager</code> that:</p>
+<ul>
+<li>Wraps <code>os/exec.Cmd</code>.</li>
+<li>Monitors process state via goroutines.</li>
+<li>Handles <code>SIGINT</code> and <code>SIGTSTP</code> forwarding.</li>
+<li>Provides a clean <code>jobs</code> command to see what&#39;s running.</li>
+</ul>
+<h3>4. Cross-Platform Built-ins</h3>
+<p>Commands like <code>cd</code>, <code>pwd</code>, <code>mkdir</code>, and <code>rm</code> are all implemented using Go&#39;s <code>os</code> and <code>path/filepath</code> packages. This means a Dush script written on a Mac will run perfectly on Windows without needing a Mingw or Cygwin environment.</p>
+<h2>Why it Matters</h2>
+<p>By implementing these features in Go, Dush achieves a level of &quot;portability as a feature.&quot; You get the power of a Unix-like environment on any platform Go can compile to.</p>
+<p>Dush is a testament to the power of the Go ecosystem for systems programming.</p>
+<p>Check out the implementation: <a href="https://github.com/fezcode/dush">https://github.com/fezcode/dush</a></p>
+<p><a href="https://fezcode.com/blog/implementing-everything-in-go">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Modernizing the Shell: The Dush Scripting Language]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/modernizing-the-shell-dush-scripting-language</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/modernizing-the-shell-dush-scripting-language</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 11 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Modernizing the Shell: The Dush Scripting Language</h1>
+<p>The biggest problem with shell scripting today is that it doesn&#39;t feel like <em>programming</em>. It feels like incantation. You&#39;re not writing logic; you&#39;re writing strings that happen to be interpreted as logic. <strong>Dush</strong> changes that.</p>
+<h2>The Sigil: <code>@</code></h2>
+<p>In Dush, variables are first-class citizens. We use the <code>@</code> sigil to denote any language-level entity. This solves the &quot;is this a string or a variable?&quot; problem that plagues Bash.</p>
+<pre><code class="language-bash"># Bash
+VAR=&quot;hello&quot;
+echo $VAR   # Is it $VAR or ${VAR}?
+
+# Dush
+@var = &quot;hello&quot;
+echo @var   # Unambiguous.
+</code></pre>
+<h2>Data Types that Matter</h2>
+<p>Dush isn&#39;t just strings. It supports integers, floats, booleans, arrays, and maps natively.</p>
+<pre><code class="language-bash">@items = [&quot;apple&quot;, &quot;banana&quot;, &quot;cherry&quot;]
+@user = {&quot;name&quot;: &quot;fezcode&quot;, &quot;role&quot;: &quot;admin&quot;}
+
+loop (@x : @items) {
+    echo &quot;Item: @x&quot;
+}
+</code></pre>
+<h2>Method Syntax</h2>
+<p>Why should we have to pipe to <code>tr</code> or <code>awk</code> just to change a string&#39;s case? Dush brings modern method syntax to the shell:</p>
+<pre><code class="language-bash">@path = &quot;/usr/local/bin&quot;
+@parts = @path.split(&quot;/&quot;)
+echo @parts.join(&quot;-&quot;)
+</code></pre>
+<p>This keeps your logic inside the shell&#39;s memory space, making scripts faster and much easier to read.</p>
+<h2>Pattern Matching with <code>match</code></h2>
+<p>Forget the clunky <code>case</code> statements of old. Dush features a modern <code>match</code> block with wildcard support:</p>
+<pre><code class="language-bash">match (@status) {
+    case 0 { echo &quot;Success!&quot; }
+    case 1 { echo &quot;Warning...&quot; }
+    case _ { echo &quot;Unknown error: @status&quot; }
+}
+</code></pre>
+<h2>Procedures and Scoping</h2>
+<p>Dush supports procedures with local scoping and parameters. They feel like Go functions but work like shell commands.</p>
+<pre><code class="language-bash">proc greet(@name, @shout=false) {
+    let @msg = &quot;Hello, @name!&quot;
+    if (@shout) {
+        echo @msg.upper()
+    } else {
+        echo @msg
+    }
+}
+
+greet(&quot;Dush&quot;, true)
+</code></pre>
+<h2>Conclusion</h2>
+<p>Dush isn&#39;t trying to be Bash. It&#39;s trying to be what a shell would look like if it were designed today, with 50 years of programming language theory at its back.</p>
+<p>It&#39;s time to stop scripting and start programming.</p>
+<p>Join the revolution: <a href="https://github.com/fezcode/dush">https://github.com/fezcode/dush</a></p>
+<p><a href="https://fezcode.com/blog/modernizing-the-shell-dush-scripting-language">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Quantum Physics 101: A Beautiful Journey into the Microscopic]]></title>
             <description><![CDATA[[object Object]]]></description>
