@@ -75,6 +75,7 @@ const THEME_OPTIONS = [
   { value: 'etherealGlow', label: 'ETHEREAL_GLOW' },
   { value: 'boldMinimal', label: 'CLASSIFIED_DOC' },
   { value: 'luxe', label: 'LUXE_ART' },
+  { value: 'urbanRogue', label: 'URBAN_ROGUE' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

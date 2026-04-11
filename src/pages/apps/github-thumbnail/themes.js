@@ -57,6 +57,8 @@ import { boldMinimal } from './themes/boldMinimal';
 
 import { luxe } from './themes/luxe';
 
+import { urbanRogue } from './themes/urbanRogue';
+
 export const themeRenderers = {
   modern,
   brutalist,
@@ -115,4 +117,5 @@ export const themeRenderers = {
   etherealGlow,
   boldMinimal,
   luxe,
+  urbanRogue,
 };
