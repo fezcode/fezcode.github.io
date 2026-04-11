@@ -49,6 +49,19 @@
     (image) /images/projects/gobake/gobake-banner.png
 
   > (project)
+    (slug) urban-tasks
+    (title) Urban Tasks
+    (redirect_url) https://fezcode.com/urban-tasks/
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > TypeScript
+      > To-Do
+      > Management
+    (shortDescription) Urban Tasks is a task management platform for people.
+    (date) 2026-04-12
+
+  > (project)
     (slug) runir
     (title) Runir
     (redirect_url) https://fezcode.com/runir/
@@ -59,6 +72,46 @@
       > Documentation
     (shortDescription) Runir is a modern documentation platform with extended markdown support.
     (date) 2026-04-12
+
+  > (project)
+    (slug) atlas-projects
+    (title) Atlas Projects
+    (style) editorial
+    (size) 1
+    (repo_link) https://github.com/stars/fezcode/lists/atlas
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Go
+      > TUI
+      > Bubble Tea
+      > Productivity
+    (shortDescription) A collection of 34+ minimalist, high-performance CLI tools for productivity, including todo management, system stats, file exploration, image conversion, web search, password management, secure TOTP (2FA), world radio, text editing, and git management.
+    (date) 2026-02-20
+    (image) /images/bg/emre.jpg
+    (backgroundImage) /images/bg/emre.jpg
+    (photoCreditText) Photo by Emre on Unsplash
+    (photoCreditLink) https://unsplash.com/photos/green-leafed-plant-in-closeup-shot-CBh4D3l0EwM
+
+  > (project)
+    (slug) dush
+    (title) Dush
+    (style) editorial
+    (size) 1
+    (repo_link) https://github.com/fezcode/dush
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > Go
+      > Shell
+      > CLI
+      > System
+    (shortDescription) Dush (Dumb Shell) is a custom terminal shell written in Go, intended as a Bash alternative and a learning platform for shell mechanics.
+    (date) 2026-01-12
+    (image) https://raw.githubusercontent.com/fezcode/dush/main/title-card.png
+    (backgroundImage) /images/bg/tim_simon.jpg
+    (photoCreditText) Photo by Tim Simon
+    (photoCreditLink) https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE
 
   > (project)
     (slug) castarook
@@ -114,24 +167,6 @@
     (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
 
   > (project)
-    (slug) climb-the-tall-building-0
-    (title) Climb the Tall Building 0
-    (style) minimal-modern
-    (size) 2
-    (demo_link) https://fezcode.com/climb-the-tall-building-0/
-    (repo_link) https://github.com/fezcode/climb-the-tall-building-0
-    (pinned) false
-    (isActive) true
-    (technologies)
-      > React 19
-      > TypeScript
-      > Tailwind CSS 4
-      > Zustand
-    (shortDescription) A premium dark fantasy deck-building roguelike card game.
-    (date) 2026-03-16
-    (image) https://raw.githubusercontent.com/fezcode/climb-the-tall-building-0/main/banner.png
-
-  > (project)
     (slug) cartogo
     (title) CartoGo
     (style) landscape
@@ -151,44 +186,22 @@
     (image) /projects/cartogo/maps/london.webp
 
   > (project)
-    (slug) atlas-projects
-    (title) Atlas Projects
-    (style) editorial
-    (size) 1
-    (repo_link) https://github.com/stars/fezcode/lists/atlas
-    (pinned) true
+    (slug) climb-the-tall-building-0
+    (title) Climb the Tall Building 0
+    (style) minimal-modern
+    (size) 2
+    (demo_link) https://fezcode.com/climb-the-tall-building-0/
+    (repo_link) https://github.com/fezcode/climb-the-tall-building-0
+    (pinned) false
     (isActive) true
     (technologies)
-      > Go
-      > TUI
-      > Bubble Tea
-      > Productivity
-    (shortDescription) A collection of 34+ minimalist, high-performance CLI tools for productivity, including todo management, system stats, file exploration, image conversion, web search, password management, secure TOTP (2FA), world radio, text editing, and git management.
-    (date) 2026-02-20
-    (image) /images/bg/emre.jpg
-    (backgroundImage) /images/bg/emre.jpg
-    (photoCreditText) Photo by Emre on Unsplash
-    (photoCreditLink) https://unsplash.com/photos/green-leafed-plant-in-closeup-shot-CBh4D3l0EwM
-
-  > (project)
-    (slug) dush
-    (title) Dush
-    (style) editorial
-    (size) 1
-    (repo_link) https://github.com/fezcode/dush
-    (pinned) true
-    (isActive) true
-    (technologies)
-      > Go
-      > Shell
-      > CLI
-      > System
-    (shortDescription) Dush (Dumb Shell) is a custom terminal shell written in Go, intended as a Bash alternative and a learning platform for shell mechanics.
-    (date) 2026-01-12
-    (image) https://raw.githubusercontent.com/fezcode/dush/main/title-card.png
-    (backgroundImage) /images/bg/tim_simon.jpg
-    (photoCreditText) Photo by Tim Simon
-    (photoCreditLink) https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE
+      > React 19
+      > TypeScript
+      > Tailwind CSS 4
+      > Zustand
+    (shortDescription) A premium dark fantasy deck-building roguelike card game.
+    (date) 2026-03-16
+    (image) https://raw.githubusercontent.com/fezcode/climb-the-tall-building-0/main/banner.png
 
   > (project)
     (slug) nocturnote
