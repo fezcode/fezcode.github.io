@@ -59,6 +59,17 @@ import { luxe } from './themes/luxe';
 
 import { urbanRogue } from './themes/urbanRogue';
 
+import { newModernAbstract } from './themes/newModernAbstract';
+import { cubic } from './themes/cubic';
+import { darkDeco } from './themes/darkDeco';
+import { artNouveau } from './themes/artNouveau';
+import { cyberGlitch } from './themes/cyberGlitch';
+import { stellarMap } from './themes/stellarMap';
+import { jungle } from './themes/jungle';
+import { dithered } from './themes/dithered';
+import { abstractNonsense } from './themes/abstractNonsense';
+import { needForSpeed } from './themes/needForSpeed';
+
 export const themeRenderers = {
   modern,
   brutalist,
@@ -118,4 +129,14 @@ export const themeRenderers = {
   boldMinimal,
   luxe,
   urbanRogue,
+  newModernAbstract,
+  cubic,
+  darkDeco,
+  artNouveau,
+  cyberGlitch,
+  stellarMap,
+  jungle,
+  dithered,
+  abstractNonsense,
+  needForSpeed,
 };

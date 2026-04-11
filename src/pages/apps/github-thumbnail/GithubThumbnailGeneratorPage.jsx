@@ -76,6 +76,16 @@ const THEME_OPTIONS = [
   { value: 'boldMinimal', label: 'CLASSIFIED_DOC' },
   { value: 'luxe', label: 'LUXE_ART' },
   { value: 'urbanRogue', label: 'URBAN_ROGUE' },
+  { value: 'newModernAbstract', label: 'NEW_MODERN_ABSTRACT' },
+  { value: 'cubic', label: 'CUBIC_BLOCKS' },
+  { value: 'darkDeco', label: 'DARK_ART_DECO' },
+  { value: 'artNouveau', label: 'ART_NOUVEAU' },
+  { value: 'cyberGlitch', label: 'CYBER_GLITCH' },
+  { value: 'stellarMap', label: 'STELLAR_MAP' },
+  { value: 'jungle', label: 'JUNGLE_VINES' },
+  { value: 'dithered', label: 'RETRO_DITHERED' },
+  { value: 'abstractNonsense', label: 'ABSTRACT_NONSENSE' },
+  { value: 'needForSpeed', label: 'NEED_FOR_SPEED' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {
