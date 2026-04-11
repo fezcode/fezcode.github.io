@@ -121,6 +121,7 @@ import {
   BookBookmarkIcon,
   HouseIcon,
   UserIcon,
+  TargetIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -246,4 +247,5 @@ export const appIcons = {
   BookBookmarkIcon,
   HouseIcon,
   UserIcon,
+  TargetIcon,
 };
