@@ -40,6 +40,12 @@ const ProjectPage = () => {
   const project = projects.find((p) => p.slug === slug);
   const fullProject = project && content ? { ...project, ...content } : null;
 
+  React.useEffect(() => {
+    if (project && project.redirect_url) {
+      window.location.href = project.redirect_url;
+    }
+  }, [project]);
+
   if (loadingProjects || loadingContent) {
     return (
       <div className="min-h-screen bg-[#050505] flex items-center justify-center text-white font-mono uppercase tracking-widest text-xs">

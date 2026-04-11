@@ -49,6 +49,18 @@
     (image) /images/projects/gobake/gobake-banner.png
 
   > (project)
+    (slug) runir
+    (title) Runir
+    (redirect_url) https://fezcode.com/runir/
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > TypeScript
+      > Documentation
+    (shortDescription) Runir is a modern documentation platform with extended markdown support.
+    (date) 2026-04-12
+
+  > (project)
     (slug) castarook
     (title) Castarook
     (style) neon-slideshow

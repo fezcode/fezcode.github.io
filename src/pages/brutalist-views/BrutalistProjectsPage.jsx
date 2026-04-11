@@ -164,7 +164,9 @@ const BrutalistProjectsPage = () => {
                 </div>
 
                 {/* External Link Button (Optional) */}
-                {(activeProject.demo_link || activeProject.repo_link) && (
+                {(activeProject.redirect_url ||
+                  activeProject.demo_link ||
+                  activeProject.repo_link) && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -172,13 +174,17 @@ const BrutalistProjectsPage = () => {
                     className="mt-4"
                   >
                     <a
-                      href={activeProject.demo_link || activeProject.repo_link}
+                      href={
+                        activeProject.redirect_url ||
+                        activeProject.demo_link ||
+                        activeProject.repo_link
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center gap-3 text-white border-b border-white pb-1 hover:text-emerald-400 hover:border-emerald-400 transition-colors"
                     >
                       <span className="text-sm font-bold uppercase tracking-widest">
-                        {activeProject.demo_link
+                        {activeProject.redirect_url || activeProject.demo_link
                           ? 'Visit Live Site'
                           : 'View Source'}
                       </span>
