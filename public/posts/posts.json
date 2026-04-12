@@ -1,5 +1,23 @@
 [
   {
+    "slug": "linguistic-shackles-sapir-whorf-hypothesis",
+    "title": "Linguistic Shackles: The Sapir-Whorf Hypothesis",
+    "date": "2026-04-12",
+    "updated": "2026-04-12",
+    "description": "A deep dive into the Sapir-Whorf hypothesis, exploring how linguistic structures influence human cognition and perception.",
+    "tags": [
+      "linguistics",
+      "psychology",
+      "philosophy",
+      "sapir-whorf"
+    ],
+    "category": "rant",
+    "filename": "linguistic-shackles-sapir-whorf-hypothesis.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "why-i-built-dush",
     "title": "Why I Built Dush",
     "date": "2026-04-11",
