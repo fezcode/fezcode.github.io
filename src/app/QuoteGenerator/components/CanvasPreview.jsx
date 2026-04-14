@@ -5,7 +5,11 @@ const CanvasPreview = ({
   author,
   width,
   height,
+  backgroundType,
   backgroundColor,
+  gradientColor1,
+  gradientColor2,
+  gradientAngle,
   textColor,
   fontFamily,
   fontSize,
@@ -137,84 +141,145 @@ const CanvasPreview = ({
   );
 
   const drawContent = useCallback(
-    (ctx) => {
-      // 3. Text Configuration
-      ctx.fillStyle = textColor;
-      ctx.font = `${fontWeight} ${fontSize}px "${fontFamily}"`;
-      ctx.textBaseline = 'top';
+  (ctx) => {
+    // 3. Text Configuration
+    ctx.fillStyle = textColor;
+    ctx.font = `${fontWeight} ${fontSize}px "${fontFamily}"`;
+    ctx.textBaseline = 'top';
 
-      const maxWidth = width - padding * 2;
-      const lines = getWrappedLines(ctx, text, maxWidth);
-      const totalTextHeight = lines.length * (fontSize * lineHeight);
+    if (themeType === 'neon') {
+      ctx.shadowColor = textColor;
+      ctx.shadowBlur = fontSize * 0.4;
+    } else {
+      ctx.shadowColor = 'transparent';
+      ctx.shadowBlur = 0;
+    }
 
-      // Vertical Center Calculation
-      let startY = (height - totalTextHeight) / 2;
+    const maxWidth = width - padding * 2;
+    const lines = getWrappedLines(ctx, text, maxWidth);
+    const totalTextHeight = lines.length * (fontSize * lineHeight);
 
-      // Adjust if there is an author
-      if (author) {
-        startY -= fontSize * 0.8;
+    // Vertical Center Calculation
+    let startY = (height - totalTextHeight) / 2;
+
+    // Adjust if there is an author
+    if (author) {
+      startY -= fontSize * 0.8;
+    }
+
+    if (themeType === 'polaroid') {
+       startY = height - padding - totalTextHeight - (author ? fontSize * 1.5 : 0);
+    }
+
+    // Drawing Text
+    lines.forEach((line, index) => {
+      const lineWidth = ctx.measureText(line).width;
+      let x;
+      if (textAlign === 'center') x = (width - lineWidth) / 2;
+      else if (textAlign === 'right') x = width - padding - lineWidth;
+      else x = padding;
+
+      const y = startY + index * fontSize * lineHeight;
+
+      if (themeType === 'wordbox') {
+        const bgPadding = fontSize * 0.2;
+        ctx.save();
+        ctx.shadowColor = 'transparent';
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = textColor;
+        ctx.fillRect(
+          x - bgPadding,
+          y - bgPadding,
+          lineWidth + bgPadding * 2,
+          fontSize * lineHeight,
+        );
+
+        ctx.fillStyle = backgroundColor;
+        ctx.fillText(line, x, y);
+        ctx.restore();
+      } else if (themeType === 'brutalist') {
+         const offset = fontSize * 0.1;
+         ctx.save();
+         ctx.shadowColor = 'transparent';
+         ctx.shadowBlur = 0;
+         ctx.fillStyle = textColor;
+         ctx.fillText(line, x - offset, y - offset);
+         ctx.fillStyle = backgroundColor;
+         ctx.fillText(line, x, y);
+         ctx.restore();
+      } else {
+        ctx.fillText(line, x, y);
       }
+    });
 
-      // Drawing Text
-      lines.forEach((line, index) => {
-        const lineWidth = ctx.measureText(line).width;
-        let x;
-        if (textAlign === 'center') x = (width - lineWidth) / 2;
-        else if (textAlign === 'right') x = width - padding - lineWidth;
-        else x = padding;
+    // 4. Draw Author
+    if (author) {
+      const authorFontSize = fontSize * 0.5;
+      ctx.font = `italic ${fontWeight} ${authorFontSize}px "${fontFamily}"`;
+      const authorY = startY + totalTextHeight + fontSize * 1.5;
+      const authorWidth = ctx.measureText('- ' + author).width;
 
-        const y = startY + index * fontSize * lineHeight;
+      let authorX;
+      if (textAlign === 'center') authorX = (width - authorWidth) / 2;
+      else if (textAlign === 'right') authorX = width - padding - authorWidth;
+      else authorX = padding;
 
-        if (themeType === 'wordbox') {
-          const bgPadding = fontSize * 0.2;
-          ctx.save();
-          ctx.fillStyle = textColor;
-          ctx.fillRect(
-            x - bgPadding,
-            y - bgPadding,
-            lineWidth + bgPadding * 2,
-            fontSize * lineHeight,
-          );
-
-          ctx.fillStyle = backgroundColor;
-          ctx.fillText(line, x, y);
-          ctx.restore();
-        } else {
-          ctx.fillText(line, x, y);
-        }
-      });
-
-      // 4. Draw Author
-      if (author) {
-        const authorFontSize = fontSize * 0.5;
-        ctx.font = `italic ${fontWeight} ${authorFontSize}px "${fontFamily}"`;
-        const authorY = startY + totalTextHeight + fontSize * 1.5;
-        const authorWidth = ctx.measureText('- ' + author).width;
-
-        let authorX;
-        if (textAlign === 'center') authorX = (width - authorWidth) / 2;
-        else if (textAlign === 'right') authorX = width - padding - authorWidth;
-        else authorX = padding;
-
-        ctx.fillText('- ' + author, authorX, authorY);
+      if (themeType === 'brutalist') {
+         const offset = authorFontSize * 0.1;
+         ctx.save();
+         ctx.shadowColor = 'transparent';
+         ctx.shadowBlur = 0;
+         ctx.fillStyle = textColor;
+         ctx.fillText('- ' + author, authorX - offset, authorY - offset);
+         ctx.fillStyle = backgroundColor;
+         ctx.fillText('- ' + author, authorX, authorY);
+         ctx.restore();
+      } else {
+         ctx.fillText('- ' + author, authorX, authorY);
       }
-    },
-    [
-      textColor,
-      fontWeight,
-      fontSize,
-      fontFamily,
-      width,
-      padding,
-      text,
-      lineHeight,
-      height,
-      author,
-      textAlign,
-      themeType,
-      backgroundColor,
-    ],
+    }
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur = 0;
+  },
+  [
+    textColor,
+    fontWeight,
+    fontSize,
+    fontFamily,
+    width,
+    padding,
+    text,
+    lineHeight,
+    height,
+    author,
+    textAlign,
+    themeType,
+    backgroundColor,
+  ],
   );
+  const getBackgroundFillStyle = useCallback((ctx, w, h) => {
+    if (backgroundType === 'linear') {
+      const rad = (gradientAngle * Math.PI) / 180;
+      const r = Math.sqrt(w*w + h*h) / 2;
+      const x1 = w / 2 - Math.cos(rad) * r;
+      const y1 = h / 2 - Math.sin(rad) * r;
+      const x2 = w / 2 + Math.cos(rad) * r;
+      const y2 = h / 2 + Math.sin(rad) * r;
+      const gradient = ctx.createLinearGradient(x1, y1, x2, y2);
+      gradient.addColorStop(0, gradientColor1);
+      gradient.addColorStop(1, gradientColor2);
+      return gradient;
+    } else if (backgroundType === 'radial') {
+      const cx = w / 2;
+      const cy = h / 2;
+      const r = Math.max(w, h) / 1.2;
+      const gradient = ctx.createRadialGradient(cx, cy, 0, cx, cy, r);
+      gradient.addColorStop(0, gradientColor1);
+      gradient.addColorStop(1, gradientColor2);
+      return gradient;
+    }
+    return backgroundColor;
+  }, [backgroundType, backgroundColor, gradientColor1, gradientColor2, gradientAngle]);
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
@@ -229,7 +294,7 @@ const CanvasPreview = ({
     if (themeType === 'newspaper') {
       drawNewspaperBg(ctx, width, height);
     } else {
-      ctx.fillStyle = backgroundColor;
+      ctx.fillStyle = getBackgroundFillStyle(ctx, width, height);
       ctx.fillRect(0, 0, width, height);
     }
 
@@ -246,19 +311,261 @@ const CanvasPreview = ({
       }
     }
 
+    if (themeType === 'polaroid') {
+      // Draw white polaroid frame
+      const framePadding = width * 0.05;
+      const bottomPadding = height * 0.25;
+
+      ctx.fillStyle = '#ffffff';
+      // Fill the entire canvas with white first (this is the polaroid frame)
+      ctx.fillRect(0, 0, width, height);
+
+      // Then draw the background image or color inside the "photo" area
+      ctx.fillStyle = getBackgroundFillStyle(ctx, width, height);
+      ctx.fillRect(framePadding, framePadding, width - (framePadding * 2), height - framePadding - bottomPadding);
+
+      if (backgroundImage) {
+        const img = new Image();
+        img.src = backgroundImage;
+        if (img.complete) {
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(framePadding, framePadding, width - (framePadding * 2), height - framePadding - bottomPadding);
+          ctx.clip();
+          drawImageCover(ctx, img, width, height);
+          ctx.restore();
+        }
+      }
+    }
+
     // Overlay
     if (overlayOpacity > 0) {
-      ctx.fillStyle = overlayColor || '#000000';
-      ctx.globalAlpha = overlayOpacity;
-      ctx.fillRect(0, 0, width, height);
-      ctx.globalAlpha = 1.0;
+      if (themeType === 'polaroid') {
+        const framePadding = width * 0.05;
+        const bottomPadding = height * 0.25;
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(framePadding, framePadding, width - (framePadding * 2), height - framePadding - bottomPadding);
+        ctx.clip();
+        ctx.fillStyle = overlayColor || '#000000';
+        ctx.globalAlpha = overlayOpacity;
+        ctx.fillRect(0, 0, width, height);
+        ctx.restore();
+      } else {
+        ctx.fillStyle = overlayColor || '#000000';
+        ctx.globalAlpha = overlayOpacity;
+        ctx.fillRect(0, 0, width, height);
+        ctx.globalAlpha = 1.0;
+      }
+    }
+
+    // Thematic Enhancements
+    if (themeType === 'science') {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(0, 255, 65, 0.1)';
+      ctx.lineWidth = 1;
+      for (let i = 0; i < width; i += 40) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke();
+      }
+      for (let i = 0; i < height; i += 40) {
+        ctx.beginPath(); ctx.moveTo(0, i); ctx.lineTo(width, i); ctx.stroke();
+      }
+      ctx.restore();
+    } else if (themeType === 'kings') {
+      ctx.save();
+      ctx.strokeStyle = '#ffd700';
+      ctx.lineWidth = 10;
+      ctx.strokeRect(30, 30, width - 60, height - 60);
+      ctx.lineWidth = 2;
+      ctx.strokeRect(45, 45, width - 90, height - 90);
+      ctx.restore();
+    } else if (themeType === 'birds') {
+      ctx.save();
+      ctx.strokeStyle = textColor;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.5;
+      for(let i=0; i<7; i++) {
+        const bx = Math.random() * width;
+        const by = Math.random() * height * 0.5;
+        ctx.beginPath();
+        ctx.moveTo(bx, by);
+        ctx.quadraticCurveTo(bx + 10, by - 10, bx + 20, by);
+        ctx.quadraticCurveTo(bx + 30, by - 10, bx + 40, by);
+        ctx.stroke();
+      }
+      ctx.restore();
+    } else if (themeType === 'rome') {
+      ctx.save();
+      ctx.fillStyle = 'rgba(0,0,0,0.05)';
+      ctx.fillRect(20, 0, 40, height);
+      ctx.fillRect(width - 60, 0, 40, height);
+      ctx.strokeStyle = 'rgba(0,0,0,0.1)';
+      for(let i=25; i<=55; i+=10) {
+         ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke();
+         ctx.beginPath(); ctx.moveTo(width - 80 + i, 0); ctx.lineTo(width - 80 + i, height); ctx.stroke();
+      }
+      ctx.restore();
+    } else if (themeType === 'french-girl') {
+      // Charcoal sketch effect / noise
+      const imgData = ctx.getImageData(0,0,width,height);
+      const data = imgData.data;
+      for (let i = 0; i < data.length; i += 4) {
+         const noise = (Math.random() - 0.5) * 30;
+         data[i] = Math.min(255, Math.max(0, data[i] + noise));
+         data[i+1] = Math.min(255, Math.max(0, data[i+1] + noise));
+         data[i+2] = Math.min(255, Math.max(0, data[i+2] + noise));
+      }
+      ctx.putImageData(imgData, 0, 0);
+    } else if (themeType === 'cia' || themeType === 'fbi' || themeType === 'espionage') {
+      ctx.save();
+
+      if (themeType === 'cia' || themeType === 'fbi') {
+        // Red stamp
+        ctx.translate(width / 2, height / 2);
+        ctx.rotate(-Math.PI / 6);
+        ctx.fillStyle = 'rgba(200, 0, 0, 0.6)';
+        ctx.strokeStyle = 'rgba(200, 0, 0, 0.6)';
+        ctx.lineWidth = 10;
+        const stampText = themeType === 'cia' ? 'TOP SECRET' : 'CONFIDENTIAL';
+        ctx.font = `bold ${width * 0.15}px Impact`;
+        ctx.textBaseline = 'middle';
+        ctx.textAlign = 'center';
+        const tw = ctx.measureText(stampText).width;
+        ctx.strokeRect(-tw/2 - 20, -width*0.075 - 20, tw + 40, width*0.15 + 40);
+        ctx.fillText(stampText, 0, 0);
+        ctx.rotate(Math.PI / 6);
+        ctx.translate(-width / 2, -height / 2);
+      }
+
+      if (themeType === 'espionage') {
+        // Radar/Crosshair
+        ctx.strokeStyle = 'rgba(0, 255, 0, 0.4)';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.moveTo(0, height/2); ctx.lineTo(width, height/2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(width/2, 0); ctx.lineTo(width/2, height); ctx.stroke();
+
+        ctx.beginPath(); ctx.arc(width/2, height/2, width*0.2, 0, Math.PI*2); ctx.stroke();
+        ctx.beginPath(); ctx.arc(width/2, height/2, width*0.4, 0, Math.PI*2); ctx.stroke();
+      }
+
+      ctx.restore();
+    } else if (themeType === 'control-panel') {
+      ctx.save();
+      ctx.fillStyle = 'rgba(255,255,255,0.1)';
+      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+      ctx.lineWidth = 3;
+
+      // Top LEDs
+      for(let i=0; i<5; i++) {
+        ctx.beginPath(); ctx.arc(50 + i*40, 50, 10, 0, Math.PI*2); ctx.fill(); ctx.stroke();
+      }
+      // Dials bottom
+      for(let i=0; i<3; i++) {
+        const cx = width - 80 - i*80;
+        const cy = height - 80;
+        ctx.beginPath(); ctx.arc(cx, cy, 25, 0, Math.PI*2); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + Math.cos(Math.PI/4 + i)*20, cy + Math.sin(Math.PI/4 + i)*20); ctx.stroke();
+      }
+      ctx.restore();
+    } else if (themeType === 'basketball') {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(0,0,0,0.4)';
+      ctx.lineWidth = 15;
+
+      // Court lines
+      ctx.beginPath(); ctx.moveTo(0, height/2); ctx.lineTo(width, height/2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(width/2, height/2, width*0.2, 0, Math.PI*2); ctx.stroke();
+
+      // Arc lines like a ball
+      ctx.beginPath(); ctx.moveTo(width*0.2, 0); ctx.quadraticCurveTo(width*0.8, height/2, width*0.2, height); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(width*0.8, 0); ctx.quadraticCurveTo(width*0.2, height/2, width*0.8, height); ctx.stroke();
+
+      ctx.restore();
+    } else if (themeType === 'football') {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.8)';
+      ctx.lineWidth = 4;
+
+      // Yard lines
+      for(let i=100; i<width; i+=100) {
+        ctx.beginPath(); ctx.moveTo(i, 0); ctx.lineTo(i, height); ctx.stroke();
+        // hash marks
+        ctx.beginPath(); ctx.moveTo(i-10, height*0.3); ctx.lineTo(i+10, height*0.3); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(i-10, height*0.7); ctx.lineTo(i+10, height*0.7); ctx.stroke();
+      }
+      ctx.restore();
+    } else if (themeType === 'river') {
+      ctx.save();
+      ctx.strokeStyle = 'rgba(255,255,255,0.3)';
+      ctx.lineWidth = 20;
+      ctx.lineCap = 'round';
+
+      for(let i=0; i<5; i++) {
+        ctx.beginPath();
+        ctx.moveTo(-100, height * (0.2 + i*0.15));
+        ctx.bezierCurveTo(
+          width * 0.3, height * (0.1 + i*0.2),
+          width * 0.7, height * (0.4 + i*0.1),
+          width + 100, height * (0.2 + i*0.15)
+        );
+        ctx.stroke();
+      }
+      ctx.restore();
+    } else if (themeType === 'mountain') {
+      ctx.save();
+      ctx.fillStyle = 'rgba(0,0,0,0.5)';
+      ctx.beginPath();
+      ctx.moveTo(0, height);
+      ctx.lineTo(0, height*0.7);
+      ctx.lineTo(width*0.2, height*0.5);
+      ctx.lineTo(width*0.4, height*0.8);
+      ctx.lineTo(width*0.7, height*0.4);
+      ctx.lineTo(width*0.9, height*0.6);
+      ctx.lineTo(width, height*0.5);
+      ctx.lineTo(width, height);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(255,255,255,0.2)';
+      ctx.beginPath();
+      ctx.moveTo(0, height*0.7);
+      ctx.lineTo(width*0.1, height*0.75);
+      ctx.lineTo(width*0.2, height*0.5);
+      ctx.fill();
+
+      ctx.restore();
+    } else if (themeType === 'cats') {
+      ctx.save();
+      ctx.fillStyle = 'rgba(255,255,255,0.4)';
+      const drawPaw = (x, y, angle, scale) => {
+         ctx.save();
+         ctx.translate(x,y);
+         ctx.rotate(angle);
+         ctx.scale(scale, scale);
+         // Main pad
+         ctx.beginPath(); ctx.ellipse(0, 0, 15, 12, 0, 0, Math.PI*2); ctx.fill();
+         // Toes
+         ctx.beginPath(); ctx.arc(-15, -15, 6, 0, Math.PI*2); ctx.fill();
+         ctx.beginPath(); ctx.arc(-5, -22, 6, 0, Math.PI*2); ctx.fill();
+         ctx.beginPath(); ctx.arc(5, -22, 6, 0, Math.PI*2); ctx.fill();
+         ctx.beginPath(); ctx.arc(15, -15, 6, 0, Math.PI*2); ctx.fill();
+         ctx.restore();
+      };
+
+      drawPaw(width*0.1, height*0.2, Math.PI/4, 2);
+      drawPaw(width*0.8, height*0.8, -Math.PI/3, 1.5);
+      drawPaw(width*0.85, height*0.15, Math.PI/6, 1);
+      drawPaw(width*0.15, height*0.85, -Math.PI/6, 3);
+      drawPaw(width*0.5, height*0.9, Math.PI/12, 1.2);
+
+      ctx.restore();
     }
 
     drawContent(ctx);
   }, [
     width,
     height,
-    backgroundColor,
+    getBackgroundFillStyle,
     backgroundImage,
     overlayOpacity,
     overlayColor,
@@ -266,6 +573,7 @@ const CanvasPreview = ({
     drawContent,
     themeType,
     drawNewspaperBg,
+    textColor,
   ]);
   useEffect(() => {
     draw();
@@ -274,7 +582,11 @@ const CanvasPreview = ({
 
   useEffect(() => {
     if (triggerDownload && onDownload && canvasRef.current) {
-      onDownload(canvasRef.current.toDataURL('image/png'));
+      let mimeType = 'image/png';
+      if (triggerDownload === 'jpeg' || triggerDownload === 'jpg') mimeType = 'image/jpeg';
+      else if (triggerDownload === 'webp') mimeType = 'image/webp';
+
+      onDownload(canvasRef.current.toDataURL(mimeType, 0.9), triggerDownload);
     }
   }, [triggerDownload, onDownload]);
 

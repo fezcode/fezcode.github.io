@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 11 Apr 2026 23:25:46 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 14 Apr 2026 21:40:36 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 11 Apr 2026 23:25:46 GMT</pubDate>
+        <pubDate>Tue, 14 Apr 2026 21:40:33 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Linguistic Shackles: The Sapir-Whorf Hypothesis]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/linguistic-shackles-sapir-whorf-hypothesis</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/linguistic-shackles-sapir-whorf-hypothesis</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 12 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Linguistic Shackles: The Sapir-Whorf Hypothesis</h1>
+<p><a href="https://fezcode.com/blog/linguistic-shackles-sapir-whorf-hypothesis">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Why I Built Dush]]></title>
             <description><![CDATA[[object Object]]]></description>

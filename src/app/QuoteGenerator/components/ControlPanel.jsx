@@ -10,7 +10,6 @@ import {
 import CustomSlider from '../../../components/CustomSlider';
 import CustomColorPicker from '../../../components/CustomColorPicker';
 import CustomDropdown from '../../../components/CustomDropdown';
-import CustomToggle from '../../../components/CustomToggle';
 
 const FONT_OPTIONS = [
   { value: 'Inter', label: 'Inter (Modern)' },
@@ -96,6 +95,301 @@ const THEME_PRESETS = [
       fontWeight: 700,
       themeType: 'newspaper',
       textAlign: 'left',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Minimalist',
+    config: {
+      fontFamily: 'Inter',
+      backgroundColor: '#f8f9fa',
+      textColor: '#343a40',
+      fontWeight: 400,
+      themeType: 'standard',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Neon Nights',
+    config: {
+      fontFamily: 'Space Mono',
+      backgroundColor: '#0a0a0a',
+      textColor: '#00ffcc',
+      fontWeight: 700,
+      themeType: 'neon',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Polaroid',
+    config: {
+      fontFamily: 'Caveat',
+      backgroundColor: '#222222', // Photo background if no image
+      textColor: '#111111', // Text color on white polaroid frame
+      fontWeight: 700,
+      themeType: 'polaroid',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Brutalism',
+    config: {
+      fontFamily: 'Impact',
+      backgroundColor: '#ff3366',
+      textColor: '#ffffff',
+      fontWeight: 900,
+      themeType: 'brutalist',
+      textAlign: 'left',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Cinematic',
+    config: {
+      fontFamily: 'Cinzel',
+      backgroundColor: '#050505',
+      textColor: '#e5e5e5',
+      fontWeight: 400,
+      themeType: 'standard',
+      textAlign: 'center',
+      overlayOpacity: 0.3,
+    },
+  },
+  {
+    name: 'Rome',
+    config: {
+      fontFamily: 'Cinzel',
+      backgroundType: 'radial',
+      gradientColor1: '#ffffff',
+      gradientColor2: '#d4c5b9',
+      textColor: '#3b2f2f',
+      fontWeight: 700,
+      themeType: 'rome',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Science',
+    config: {
+      fontFamily: 'Space Mono',
+      backgroundType: 'solid',
+      backgroundColor: '#02040a',
+      textColor: '#00ff41',
+      fontWeight: 400,
+      themeType: 'science',
+      textAlign: 'left',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Drama',
+    config: {
+      fontFamily: 'Playfair Display',
+      backgroundType: 'solid',
+      backgroundColor: '#000000',
+      textColor: '#ff0033',
+      fontWeight: 900,
+      themeType: 'wordbox',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Comedy',
+    config: {
+      fontFamily: 'Caveat',
+      backgroundType: 'linear',
+      gradientColor1: '#ffeb3b',
+      gradientColor2: '#ff9800',
+      gradientAngle: 45,
+      textColor: '#000000',
+      fontWeight: 700,
+      themeType: 'standard',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Life',
+    config: {
+      fontFamily: 'Montserrat',
+      backgroundType: 'radial',
+      gradientColor1: '#a8e063',
+      gradientColor2: '#56ab2f',
+      textColor: '#ffffff',
+      fontWeight: 800,
+      themeType: 'standard',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Birds',
+    config: {
+      fontFamily: 'Inter',
+      backgroundType: 'linear',
+      gradientColor1: '#87ceeb',
+      gradientColor2: '#e0f6ff',
+      gradientAngle: 180,
+      textColor: '#1a4f66',
+      fontWeight: 400,
+      themeType: 'birds',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Kings & Queens',
+    config: {
+      fontFamily: 'UnifrakturMaguntia',
+      backgroundType: 'solid',
+      backgroundColor: '#2e0b3c',
+      textColor: '#ffd700',
+      fontWeight: 400,
+      themeType: 'kings',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'French Girl',
+    config: {
+      fontFamily: 'Caveat',
+      backgroundType: 'solid',
+      backgroundColor: '#f5efe6',
+      textColor: '#3e3e3e',
+      fontWeight: 700,
+      themeType: 'french-girl',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'CIA',
+    config: {
+      fontFamily: 'Courier New',
+      backgroundType: 'solid',
+      backgroundColor: '#e6e6e6',
+      textColor: '#1a1a1a',
+      fontWeight: 800,
+      themeType: 'cia',
+      textAlign: 'left',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'FBI',
+    config: {
+      fontFamily: 'Impact',
+      backgroundType: 'solid',
+      backgroundColor: '#0a1b3f',
+      textColor: '#f1c40f',
+      fontWeight: 400,
+      themeType: 'fbi',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Espionage',
+    config: {
+      fontFamily: 'Space Mono',
+      backgroundType: 'radial',
+      gradientColor1: '#1a1a1a',
+      gradientColor2: '#000000',
+      textColor: '#ffb300',
+      fontWeight: 400,
+      themeType: 'espionage',
+      textAlign: 'left',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Control Panel',
+    config: {
+      fontFamily: 'Inter',
+      backgroundType: 'linear',
+      gradientColor1: '#2c3e50',
+      gradientColor2: '#3498db',
+      gradientAngle: 90,
+      textColor: '#ffffff',
+      fontWeight: 700,
+      themeType: 'control-panel',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Basketball',
+    config: {
+      fontFamily: 'Oswald',
+      backgroundType: 'radial',
+      gradientColor1: '#ff8c00',
+      gradientColor2: '#d35400',
+      textColor: '#ffffff',
+      fontWeight: 700,
+      themeType: 'basketball',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Football',
+    config: {
+      fontFamily: 'Impact',
+      backgroundType: 'solid',
+      backgroundColor: '#2ecc71',
+      textColor: '#ffffff',
+      fontWeight: 400,
+      themeType: 'football',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'River',
+    config: {
+      fontFamily: 'Caveat',
+      backgroundType: 'linear',
+      gradientColor1: '#2980b9',
+      gradientColor2: '#6dd5fa',
+      gradientAngle: 180,
+      textColor: '#ffffff',
+      fontWeight: 700,
+      themeType: 'river',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Mountain',
+    config: {
+      fontFamily: 'Cinzel',
+      backgroundType: 'linear',
+      gradientColor1: '#bdc3c7',
+      gradientColor2: '#2c3e50',
+      gradientAngle: 180,
+      textColor: '#ffffff',
+      fontWeight: 700,
+      themeType: 'mountain',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Cats',
+    config: {
+      fontFamily: 'Caveat',
+      backgroundType: 'solid',
+      backgroundColor: '#ffb6c1',
+      textColor: '#4a148c',
+      fontWeight: 700,
+      themeType: 'cats',
+      textAlign: 'center',
       overlayOpacity: 0,
     },
   },
@@ -229,6 +523,33 @@ const ControlPanel = ({ state, updateState }) => {
         />
       </div>
 
+      {/* Canvas */}
+      <div className="bg-[#111] border border-white/5 p-4 rounded-lg space-y-4">
+        <h3 className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
+          <PaletteIcon weight="fill" />
+          Canvas
+        </h3>
+
+        <CustomSlider
+          variant="brutalist"
+          label="Width"
+          min={500}
+          max={2000}
+          step={10}
+          value={state.width}
+          onChange={(val) => handleChange('width', val)}
+        />
+        <CustomSlider
+          variant="brutalist"
+          label="Height"
+          min={500}
+          max={2000}
+          step={10}
+          value={state.height}
+          onChange={(val) => handleChange('height', val)}
+        />
+      </div>
+
       {/* Colors & Visuals */}
       <div className="bg-[#111] border border-white/5 p-4 rounded-lg space-y-4">
         <h3 className="font-mono text-xs font-bold text-gray-500 uppercase tracking-widest flex items-center gap-2">
@@ -236,12 +557,52 @@ const ControlPanel = ({ state, updateState }) => {
           Visuals
         </h3>
 
-        <CustomColorPicker
-          label="Background Color"
-          value={state.backgroundColor}
-          onChange={(val) => handleChange('backgroundColor', val)}
+        <CustomDropdown
+          label="Background Type"
+          options={[
+            { value: 'solid', label: 'Solid Color' },
+            { value: 'linear', label: 'Linear Gradient' },
+            { value: 'radial', label: 'Radial Gradient' },
+          ]}
+          value={state.backgroundType || 'solid'}
+          onChange={(val) => handleChange('backgroundType', val)}
           variant="brutalist"
         />
+
+        {(!state.backgroundType || state.backgroundType === 'solid') ? (
+          <CustomColorPicker
+            label="Background Color"
+            value={state.backgroundColor}
+            onChange={(val) => handleChange('backgroundColor', val)}
+            variant="brutalist"
+          />
+        ) : (
+          <div className="space-y-4 pt-2 border-t border-white/5">
+            <CustomColorPicker
+              label="Color 1"
+              value={state.gradientColor1 || '#ff0000'}
+              onChange={(val) => handleChange('gradientColor1', val)}
+              variant="brutalist"
+            />
+            <CustomColorPicker
+              label="Color 2"
+              value={state.gradientColor2 || '#0000ff'}
+              onChange={(val) => handleChange('gradientColor2', val)}
+              variant="brutalist"
+            />
+            {state.backgroundType === 'linear' && (
+              <CustomSlider
+                variant="brutalist"
+                label="Gradient Angle"
+                min={0}
+                max={360}
+                value={state.gradientAngle || 135}
+                onChange={(val) => handleChange('gradientAngle', val)}
+              />
+            )}
+          </div>
+        )}
+
         <CustomColorPicker
           label="Text Color"
           value={state.textColor}
@@ -260,20 +621,34 @@ const ControlPanel = ({ state, updateState }) => {
           />
         </div>
 
-        {/* Wordbox Toggle */}
-        <div className="flex items-center justify-between pt-2">
-          <span className="text-xs font-mono text-gray-500 uppercase">
-            Text Highlight Box
-          </span>
-          <CustomToggle
+        <div className="pt-4 border-t border-white/5">
+          <CustomDropdown
+            label="Theme Style"
+            options={[
+              { value: 'standard', label: 'Standard' },
+              { value: 'wordbox', label: 'Wordbox' },
+              { value: 'typewriter', label: 'Typewriter' },
+              { value: 'newspaper', label: 'Newspaper' },
+              { value: 'neon', label: 'Neon' },
+              { value: 'polaroid', label: 'Polaroid' },
+              { value: 'brutalist', label: 'Brutalist' },
+              { value: 'science', label: 'Science' },
+              { value: 'french-girl', label: 'French Girl' },
+              { value: 'kings', label: 'Kings' },
+              { value: 'birds', label: 'Birds' },
+              { value: 'cia', label: 'CIA' },
+              { value: 'fbi', label: 'FBI' },
+              { value: 'espionage', label: 'Espionage' },
+              { value: 'control-panel', label: 'Control Panel' },
+              { value: 'basketball', label: 'Basketball' },
+              { value: 'football', label: 'Football' },
+              { value: 'river', label: 'River' },
+              { value: 'mountain', label: 'Mountain' },
+              { value: 'cats', label: 'Cats' },
+            ]}
+            value={state.themeType}
+            onChange={(val) => handleChange('themeType', val)}
             variant="brutalist"
-            checked={state.themeType === 'wordbox'}
-            onChange={() =>
-              handleChange(
-                'themeType',
-                state.themeType === 'wordbox' ? 'standard' : 'wordbox',
-              )
-            }
           />
         </div>
       </div>

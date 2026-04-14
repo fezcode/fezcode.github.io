@@ -13,7 +13,11 @@ const QuoteGeneratorApp = () => {
     author: 'Albert Camus',
     width: 1080,
     height: 1080, // Square by default, maybe customizable later
+    backgroundType: 'solid', // 'solid', 'linear', 'radial'
     backgroundColor: '#ffffff',
+    gradientColor1: '#ff0000',
+    gradientColor2: '#0000ff',
+    gradientAngle: 135,
     textColor: '#000000',
     fontFamily: 'Inter',
     fontSize: 48,
@@ -27,7 +31,7 @@ const QuoteGeneratorApp = () => {
     themeType: 'standard', // 'standard', 'wordbox', 'typewriter'
   });
 
-  const [triggerDownload, setTriggerDownload] = useState(false);
+  const [triggerDownload, setTriggerDownload] = useState(null);
 
   const updateState = (newState) => {
     setState((prev) => ({ ...prev, ...newState }));
@@ -57,16 +61,16 @@ const QuoteGeneratorApp = () => {
     };
   }, []);
 
-  const handleDownload = (dataUrl) => {
+  const handleDownload = (dataUrl, format) => {
     const link = document.createElement('a');
-    link.download = `quote-${Date.now()}.png`;
+    link.download = `quote-${Date.now()}.${format || 'png'}`;
     link.href = dataUrl;
     link.click();
-    setTriggerDownload(false);
+    setTriggerDownload(null);
 
     addToast({
       title: 'Quote Downloaded',
-      message: 'Your quote has been saved successfully.',
+      message: `Your quote has been saved successfully as ${format?.toUpperCase() || 'PNG'}.`,
       type: 'success',
     });
   };
@@ -86,13 +90,27 @@ const QuoteGeneratorApp = () => {
           triggerDownload={triggerDownload}
         />
 
-        <div className="flex justify-end">
+        <div className="flex justify-end gap-2">
           <button
-            onClick={() => setTriggerDownload(true)}
-            className="flex items-center gap-2 px-6 py-3 bg-white text-black hover:bg-primary-500 hover:text-white transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm"
+            onClick={() => setTriggerDownload('png')}
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white hover:text-black transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm border border-white/20"
           >
-            <DownloadSimpleIcon weight="bold" size={18} />
-            <span>Download PNG</span>
+            <DownloadSimpleIcon weight="bold" size={16} />
+            <span>PNG</span>
+          </button>
+          <button
+            onClick={() => setTriggerDownload('jpeg')}
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white hover:text-black transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm border border-white/20"
+          >
+            <DownloadSimpleIcon weight="bold" size={16} />
+            <span>JPEG</span>
+          </button>
+          <button
+            onClick={() => setTriggerDownload('webp')}
+            className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white hover:text-black transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm border border-white/20"
+          >
+            <DownloadSimpleIcon weight="bold" size={16} />
+            <span>WebP</span>
           </button>
         </div>
       </div>
