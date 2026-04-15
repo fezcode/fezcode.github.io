@@ -1,0 +1,57 @@
+If you’ve ever worked in a "modern" software environment,
+you’ve likely stared at a Jira board that looks less like a task tracker and more like a circuit diagram for a nuclear reactor.
+We have "Todo", "Selected for Development", "In Progress", "In Review", "Ready for QA", "In QA", "UAT", and finally—if the gods are kind—"Done".
+
+I have a radical, perhaps offensive, suggestion: **Most of those columns are lies.**
+
+Your fourteen-step workflow isn’t a sign of organizational maturity.
+It’s a testament to a lack of trust and a fundamental misunderstanding of what "work" actually is.
+In the real world, there are only three states that matter:
+
+1. **Todo:** We haven't started.
+2. **In Progress:** Someone is responsible for it.
+3. **Done:** The user is using it.
+
+Everything else is just **In Progress** in a fancy hat.
+
+## The "In Review" Illusion
+
+The most egregious offender is the "In Review" column.
+Project managers love it because it gives them a sense of "velocity."
+They see tickets moving out of "In Progress" and think, *“Ah, the developers are fast!”*
+
+No, they aren't. Moving a ticket to "In Review" doesn't mean the work is done.
+It means the developer has finished their part and is now waiting for someone else to find their mistakes.
+The task is still **In Progress**. It is still consuming mental overhead, it is still a line item in your WIP (Work In Progress) limit,
+and most importantly, **it is not generating value for the customer.**
+
+If a feature is "In Review" for three days, it was "In Progress" for those three days. Period.
+
+## The Power of the Trinity: Todo, In-Progress, Done
+
+The "Todo, In-Progress, Done" trinity is disciplined. It’s honest. It forces you to confront the reality of your bottlenecks.
+
+*   **Todo:** The backlog. The "someday" pile.
+*   **In-Progress:** The focus zone. If a ticket is here, someone is actively ensuring it moves toward completion. If it requires a review, the review is part of the "Progress." If it needs testing, the testing is part of the "Progress."
+*   **Done:** It’s in production. It’s shipped. It’s dead to us.
+
+When you limit your columns, you limit your ability to hide inefficiency.
+You can't hide 50 tickets in "Ready for QA" if there is no "Ready for QA" column.
+They stay in "In Progress," and suddenly, the "In Progress" column looks terrifyingly full.
+**That’s a good thing.** It forces you to stop starting and start finishing.
+
+## Stop Pretending
+
+Complexity is the refuge of the unproductive.
+We create granular workflows to make ourselves feel busy while we ignore the fact that nothing is actually shipping. 
+
+If you want to move faster, stop adding columns. Start deleting them. If it's not "Done", it's "In Progress".
+Accept the responsibility, face the bottleneck, and ship the damn code.
+
+---
+
+## Further Reading
+
+*   **"The Phoenix Project" by Gene Kim:** A classic look at how invisible work and complex workflows destroy productivity in IT.
+*   **"Making Work Visible" by Dominica DeGrandis:** Excellent insights on how to spot the "time thieves" in your workflow (like "In Review" wait times).
+*   **"Kanban: Successful Evolutionary Change for Your Technology Business" by David J. Anderson:** Learn the actual philosophy of WIP limits and why column bloat is the enemy of flow.
