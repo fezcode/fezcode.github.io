@@ -9,14 +9,26 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Tue, 14 Apr 2026 23:52:12 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 15 Apr 2026 16:44:46 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Tue, 14 Apr 2026 23:52:12 GMT</pubDate>
+        <pubDate>Wed, 15 Apr 2026 16:44:44 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[In Review is In Progress]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/in-review-is-in-progress</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/in-review-is-in-progress</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 15 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>If you’ve ever worked in a &quot;modern&quot; software environment,
+you’ve likely stared at a Jira board that looks less like a task tracker and more like a circuit diagram for a nuclear reactor.
+We have &quot;Todo&quot;, &quot;Selected for Development&quot;, &quot;In Progress&quot;, &quot;In Review&quot;, &quot;Ready for QA&quot;, &quot;In QA&quot;, &quot;UAT&quot;, and finally—if the gods are kind—&quot;Done&quot;.</p>
+<p><a href="https://fezcode.com/blog/in-review-is-in-progress">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Linguistic Shackles: The Sapir-Whorf Hypothesis]]></title>
             <description><![CDATA[[object Object]]]></description>

@@ -1,5 +1,24 @@
 [
   {
+    "slug": "in-review-is-in-progress",
+    "title": "In Review is In Progress",
+    "date": "2026-04-15",
+    "updated": "2026-04-15",
+    "description": "A critique of bloated project management workflows and the fallacy of the 'In Review' state. If it's not 'Done', it's 'In Progress'.",
+    "tags": [
+      "agile",
+      "jira",
+      "productivity",
+      "workflow",
+      "management"
+    ],
+    "category": "rant",
+    "filename": "in-review-is-in-progress.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "linguistic-shackles-sapir-whorf-hypothesis",
     "title": "Linguistic Shackles: The Sapir-Whorf Hypothesis",
     "date": "2026-04-12",
