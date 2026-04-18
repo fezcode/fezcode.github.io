@@ -21,26 +21,25 @@ import ArcaneSigil from '../../components/ArcaneSigil';
 
 const SectionBackground = ({ seed }) => {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
-      <svg width="100%" height="100%" className="absolute inset-0">
-        <pattern id={`pattern-${seed}`} x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
-          <motion.path
-            d="M 10 10 L 90 10 L 90 90 L 10 90 Z"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="0.5"
-            animate={{
-              rotate: [0, 90, 180, 270, 360],
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 1, 0.3]
-            }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          />
-          <circle cx="50" cy="50" r="1" fill="currentColor" />
-        </pattern>
-        <rect width="100%" height="100%" fill={`url(#pattern-${seed})`} />
-      </svg>
-    </div>
+    <>
+      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-[0.03]">
+        <svg width="100%" height="100%" className="absolute inset-0">
+          <pattern id={`pattern-${seed}`} x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+            <path
+              d="M 10 10 L 90 10 L 90 90 L 10 90 Z"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="0.5"
+            />
+            <circle cx="50" cy="50" r="1" fill="currentColor" />
+          </pattern>
+          <rect width="100%" height="100%" fill={`url(#pattern-${seed})`} />
+        </svg>
+      </div>
+      <div className="absolute right-0 top-0 w-96 h-96 -mr-32 -mt-32 pointer-events-none opacity-10">
+        <ArcaneSigil seed={seed} color="currentColor" className="w-full h-full" />
+      </div>
+    </>
   );
 };
 
@@ -64,9 +63,9 @@ const AppModule = ({ app, index, categoryName }) => {
         to={app.to}
         className="block relative aspect-square md:aspect-auto md:h-64 bg-[#08080a] border border-white/10 overflow-hidden hover:bg-white transition-all duration-300 shadow-2xl"
       >
-        {/* Vault Sigil Background */}
+        {/* Vault Background */}
         <div className="absolute inset-0 flex items-center justify-center opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-700 overflow-hidden pointer-events-none">
-           <ArcaneSigil seed={app.title} color="currentColor" className="w-[120%] h-[120%] rotate-45" />
+           <div className="w-full h-full border-[0.5px] border-current opacity-20 rotate-45 scale-150" />
         </div>
 
         {/* Header Label */}
@@ -129,6 +128,9 @@ const BrutalistAppsPage = () => {
           });
           return next;
         });
+      })
+      .catch((err) => {
+        console.error('Failed to fetch apps:', err);
       })
       .finally(() => setIsLoading(false));
   }, [setCollapsedCategories]);
