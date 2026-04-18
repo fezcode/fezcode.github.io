@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-04-19
+    (title) Application Archive Optimization
+    (description) Resolved critical performance bottleneck and navigation timeout on the Brutalist Apps page. Optimized the ArcaneSigil rendering to significantly reduce CPU overhead and implemented graceful error handling for registry connections.
+    (type) refactor
+    (icon) WrenchIcon
+    (link) /apps
+
+  > (item)
     (date) 2026-02-18
     (title) Syntax, the Codex Companion Deployed
     (description) Introduced 'Syntax', an autonomous digital entity that lives at the bottom of the Fezcodex interface. Syntax features a persistent virtual-pet logic with real-time screen traversal, technical 'thought' generation, and contextual awareness. It adapts its molecular structure to match active themes (Brutalist/Luxe) and reacts to the user's journey through the digital garden.

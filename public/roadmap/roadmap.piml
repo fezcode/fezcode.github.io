@@ -381,3 +381,14 @@
     (assignee) Gemini
     (created_at) 2026-01-20T10:00:00+03:00
     (notes) Toggleable via Settings or Command Palette.
+
+  > (issues)
+    (id) FEZ-31
+    (title) Brutalist Apps Page Optimization
+    (description) Optimize the performance of the Brutalist Apps page, moving ArcaneSigil to the background to prevent rendering timeouts and CPU overload, and adding error handling to the fetch request.
+    (category) Performance
+    (epic) Core Infrastructure
+    (status) Completed
+    (priority) High
+    (assignee) Gemini
+    (created_at) 2026-04-19T10:00:00+03:00
