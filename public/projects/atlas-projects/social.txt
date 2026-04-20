@@ -167,3 +167,23 @@ link: https://github.com/fezcode/atlas.guide
 fezcode
 +34 -0 ~0
 link: https://github.com/fezcode/atlas.notes
+---
+# Pilot
+fezcode
++35 -0 ~0
+link: https://github.com/fezcode/atlas.pilot
+---
+# Record
+fezcode
++36 -0 ~0
+link: https://github.com/fezcode/atlas.record
+---
+# Subs
+fezcode
++37 -0 ~0
+link: https://github.com/fezcode/atlas.subs
+---
+# Tones
+fezcode
++38 -0 ~0
+link: https://github.com/fezcode/atlas.tones

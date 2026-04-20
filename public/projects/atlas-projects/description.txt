@@ -38,6 +38,10 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 - 32. **[atlas.batchdown](https://github.com/fezcode/atlas.batchdown)**: A powerful batch downloader that processes multiple URLs from text files sequentially.
 - 33. **[atlas.guide](https://github.com/fezcode/atlas.guide)**: A personal health and wellness tracker for calories, gym activities, and mood.
 - 34. **[atlas.notes](https://github.com/fezcode/atlas.notes)**: A beautiful terminal-based markdown note manager with built-in editor and high-fidelity rendering.
+- 35. **[atlas.pilot](https://github.com/fezcode/atlas.pilot)**: Premium remote PC pilot - Control windows, mouse, and system over WiFi.
+- 36. **[atlas.record](https://github.com/fezcode/atlas.record)**: Ultimate screen and audio recorder for Windows, leveraging FFmpeg for hardware-accelerated capture.
+- 37. **[atlas.subs](https://github.com/fezcode/atlas.subs)**: A beautiful terminal-based subtitle searcher and downloader.
+- 38. **[atlas.tones](https://github.com/fezcode/atlas.tones)**: iPhone Ringtone and Notification Sound Manager.
 
 ### Why Atlas?
 
