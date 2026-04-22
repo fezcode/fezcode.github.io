@@ -6,6 +6,8 @@ import LuxeSidebar from './LuxeSidebar';
 import LuxeNavbar from './LuxeNavbar';
 import LuxeFooter from './LuxeFooter';
 import TerracottaSidebar from './TerracottaSidebar';
+import TerracottaNavbar from './TerracottaNavbar';
+import TerracottaFooter from './TerracottaFooter';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
@@ -118,7 +120,14 @@ const Layout = ({
         className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? 'md:ml-72' : 'md:ml-0'}`}
       >
         {!hideLayout &&
-          (fezcodexTheme === 'luxe' || fezcodexTheme === 'terracotta' ? (
+          (fezcodexTheme === 'terracotta' ? (
+            <TerracottaNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
+          ) : fezcodexTheme === 'luxe' ? (
             <LuxeNavbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
@@ -141,7 +150,13 @@ const Layout = ({
           location.pathname !== '/projects' &&
           location.pathname !== '/blog' &&
           location.pathname !== '/commands' &&
-          (fezcodexTheme === 'luxe' || fezcodexTheme === 'terracotta' ? <LuxeFooter /> : <Footer />)}
+          (fezcodexTheme === 'terracotta' ? (
+            <TerracottaFooter />
+          ) : fezcodexTheme === 'luxe' ? (
+            <LuxeFooter />
+          ) : (
+            <Footer />
+          ))}
       </div>
     </div>
   );
