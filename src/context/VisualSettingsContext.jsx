@@ -98,7 +98,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const [fezcodexTheme, setFezcodexTheme] = usePersistentState(
     'fezcodex-theme',
     'brutalist',
-  ); // 'brutalist' or 'luxe'
+  ); // 'brutalist' | 'luxe' | 'terracotta'
 
   // URL Parameter Observer - Consumes ?fezTheme=... and ?fezBlogMode=...
   useEffect(() => {
@@ -107,7 +107,7 @@ export const VisualSettingsProvider = ({ children }) => {
     const blogModeParam = params.get('fezBlogMode');
     let changed = false;
 
-    if (themeParam && ['brutalist', 'luxe'].includes(themeParam)) {
+    if (themeParam && ['brutalist', 'luxe', 'terracotta'].includes(themeParam)) {
       setFezcodexTheme(themeParam);
       changed = true;
     }
