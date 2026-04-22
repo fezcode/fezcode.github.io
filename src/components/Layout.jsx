@@ -42,55 +42,7 @@ const Layout = ({
     toggleSidebar,
     isAppFullscreen,
     fezcodexTheme,
-    headerFont,
-    bodyFont,
   } = useVisualSettings();
-
-  const FONT_FAMILY = {
-    'font-sans': "'Space Mono', monospace",
-    'font-mono': "'JetBrains Mono', monospace",
-    'font-inter': "'Inter', sans-serif",
-    'font-arvo': "'Arvo', serif",
-    'font-playfairDisplay': "'Playfair Display', serif",
-    'font-syne': "'Syne', sans-serif",
-    'font-outfit': "'Outfit', sans-serif",
-    'font-ibm-plex-mono': "'IBM Plex Mono', monospace",
-    'font-instr-serif': "'Instrument Serif', serif",
-    'font-nunito': "'Nunito', sans-serif",
-    'font-fraunces': "'Fraunces', 'Times New Roman', serif",
-  };
-
-  const themedFontCss =
-    fezcodexTheme === 'terracotta' || fezcodexTheme === 'luxe'
-      ? `
-        [data-fezcodex-theme="${fezcodexTheme}"],
-        [data-fezcodex-theme="${fezcodexTheme}"] p,
-        [data-fezcodex-theme="${fezcodexTheme}"] li,
-        [data-fezcodex-theme="${fezcodexTheme}"] span,
-        [data-fezcodex-theme="${fezcodexTheme}"] div,
-        [data-fezcodex-theme="${fezcodexTheme}"] a,
-        [data-fezcodex-theme="${fezcodexTheme}"] button,
-        [data-fezcodex-theme="${fezcodexTheme}"] blockquote {
-          font-family: ${FONT_FAMILY[bodyFont] || FONT_FAMILY['font-outfit']};
-        }
-        [data-fezcodex-theme="${fezcodexTheme}"] h1,
-        [data-fezcodex-theme="${fezcodexTheme}"] h2,
-        [data-fezcodex-theme="${fezcodexTheme}"] h3,
-        [data-fezcodex-theme="${fezcodexTheme}"] h4,
-        [data-fezcodex-theme="${fezcodexTheme}"] h5,
-        [data-fezcodex-theme="${fezcodexTheme}"] h6 {
-          font-family: ${FONT_FAMILY[headerFont] || FONT_FAMILY['font-outfit']};
-        }
-        /* Respect explicit monospace labels — mono stays mono regardless */
-        [data-fezcodex-theme="${fezcodexTheme}"] code,
-        [data-fezcodex-theme="${fezcodexTheme}"] pre,
-        [data-fezcodex-theme="${fezcodexTheme}"] kbd,
-        [data-fezcodex-theme="${fezcodexTheme}"] .font-mono,
-        [data-fezcodex-theme="${fezcodexTheme}"] .font-ibm-plex-mono {
-          font-family: 'IBM Plex Mono', 'JetBrains Mono', monospace;
-        }
-      `
-      : '';
   const location = useLocation();
   const { projects } = useProjects();
 
@@ -133,7 +85,6 @@ const Layout = ({
     <DndProvider>{children}</DndProvider>
   ) : (
     <div
-      data-fezcodex-theme={fezcodexTheme}
       className={`${
         fezcodexTheme === 'luxe'
           ? 'bg-[#F5F5F0]'
@@ -142,7 +93,6 @@ const Layout = ({
             : 'bg-[#050505]'
       } min-h-screen font-sans flex`}
     >
-      {themedFontCss && <style>{themedFontCss}</style>}
       {!hideLayout &&
         (fezcodexTheme === 'luxe' ? (
           <LuxeSidebar
