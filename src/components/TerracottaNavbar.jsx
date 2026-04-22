@@ -28,11 +28,11 @@ const TerracottaNavbar = ({
 
   return (
     <header
-      className={`sticky top-0 z-40 transition-all duration-300 ${
+      className={`sticky top-0 z-40 bg-[#F3ECE0]/95 backdrop-blur-md border-b transition-shadow duration-300 ${
         scrolled
-          ? 'bg-[#F3ECE0]/92 backdrop-blur-md border-[#1A161320]'
-          : 'bg-transparent border-transparent'
-      } border-b`}
+          ? 'border-[#1A161320] shadow-[0_4px_14px_-10px_rgba(26,22,19,0.25)]'
+          : 'border-[#1A161310] shadow-none'
+      }`}
     >
       <div className="mx-auto max-w-[1800px] px-5 md:px-12">
         <div className="grid grid-cols-[auto_1fr_auto] items-center gap-6 py-3.5">
