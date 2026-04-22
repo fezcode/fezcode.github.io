@@ -98,6 +98,8 @@ const THEME_OPTIONS = [
   { value: 'abstractNonsense', label: 'Abstract Nonsense' },
   { value: 'needForSpeed', label: 'Need For Speed' },
   { value: 'terracotta', label: 'Terracotta Plate' },
+  { value: 'atelierGallery', label: 'Atelier Gallery' },
+  { value: 'risoPrint', label: 'Riso Print' },
 ];
 
 const PALETTE_BANK = [

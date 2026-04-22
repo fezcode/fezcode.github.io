@@ -70,6 +70,8 @@ import { dithered } from './themes/dithered';
 import { abstractNonsense } from './themes/abstractNonsense';
 import { needForSpeed } from './themes/needForSpeed';
 import { terracotta } from './themes/terracotta';
+import { atelierGallery } from './themes/atelierGallery';
+import { risoPrint } from './themes/risoPrint';
 
 export const themeRenderers = {
   modern,
@@ -141,4 +143,6 @@ export const themeRenderers = {
   abstractNonsense,
   needForSpeed,
   terracotta,
+  atelierGallery,
+  risoPrint,
 };
