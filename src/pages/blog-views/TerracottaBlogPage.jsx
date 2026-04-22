@@ -1,19 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import TerracottaPostItem from '../../components/TerracottaPostItem';
-import GenerativeArt from '../../components/GenerativeArt';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import {
-  ArrowLeft,
-  XCircle,
-  Clock,
-  Tag,
-  BookOpen,
-  MagnifyingGlass,
-  Hash,
-} from '@phosphor-icons/react';
+  TerracottaStrip,
+  TerracottaChapter,
+  ChapterEm,
+  TerracottaMark,
+  TerracottaColophon,
+  TerracottaSpec,
+} from '../../components/terracotta';
+
+const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.28 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
+const PAPER_GRADIENT =
+  'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
+
+const CATEGORY_COLOR = {
+  dev: '#6B8E23',
+  ai: '#8A6A32',
+  feat: '#B88532',
+  rant: '#9E4A2F',
+  gist: '#C96442',
+  series: '#B88532',
+  'd&d': '#9E4A2F',
+  dnd: '#9E4A2F',
+  default: '#2E2620',
+};
 
 const FILTERS = [
   { id: 'all', label: 'All' },
@@ -26,21 +39,91 @@ const FILTERS = [
   { id: 'd&d', label: 'D&D' },
 ];
 
+const formatCodexDate = (d) =>
+  new Date(d)
+    .toLocaleDateString('en-GB', {
+      year: '2-digit',
+      month: '2-digit',
+      day: '2-digit',
+    })
+    .replace(/\//g, ' · ');
+
+const LogRow = ({ item, index }) => {
+  const href = item.isSeries ? `/blog/series/${item.slug}` : `/blog/${item.slug}`;
+  const categoryKey = (item.category || 'default').toLowerCase();
+  const color = CATEGORY_COLOR[categoryKey] || CATEGORY_COLOR.default;
+  const displayCategory = item.isSeries ? 'series' : categoryKey;
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.35, delay: Math.min(index, 12) * 0.03 }}
+      className="group"
+    >
+      <Link
+        to={href}
+        className="grid grid-cols-[auto_1fr_auto] md:grid-cols-[140px_1fr_auto_20px] gap-4 md:gap-8 items-baseline py-8 border-b border-[#1A161320] hover:border-[#1A1613]/40 transition-colors"
+      >
+        <span className="font-ibm-plex-mono text-[11px] tracking-[0.2em] uppercase text-[#2E2620]/70">
+          {formatCodexDate(item.updated || item.date)}
+        </span>
+
+        <div className="min-w-0">
+          <h3
+            className="font-fraunces text-[22px] md:text-[30px] leading-[1.15] tracking-[-0.015em] text-[#1A1613] group-hover:text-[#9E4A2F] transition-colors"
+            style={{
+              fontStyle: 'italic',
+              fontVariationSettings:
+                '"opsz" 36, "SOFT" 80, "WONK" 1, "wght" 400',
+            }}
+          >
+            {item.title}
+          </h3>
+          {item.description && (
+            <p className="mt-1.5 font-ibm-plex-mono text-[11.5px] leading-[1.55] text-[#2E2620] max-w-[68ch] line-clamp-2">
+              {item.description}
+            </p>
+          )}
+        </div>
+
+        <span
+          className="hidden md:inline-flex font-ibm-plex-mono text-[9.5px] tracking-[0.22em] uppercase px-2 py-0.5 border"
+          style={{
+            borderColor: color,
+            color: color,
+            backgroundColor: `${color}10`,
+          }}
+        >
+          {displayCategory}
+        </span>
+
+        <span
+          aria-hidden="true"
+          className="hidden md:inline-block font-ibm-plex-mono text-sm justify-self-end opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+          style={{ color }}
+        >
+          →
+        </span>
+      </Link>
+    </motion.article>
+  );
+};
+
 const TerracottaBlogPage = () => {
-  const [displayItems, setDisplayItems] = useState([]);
+  const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeFilter, setActiveFilter] = useState('all');
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activePost, setActivePost] = useState(null);
+  const [query, setQuery] = useState('');
 
   useEffect(() => {
-    const fetchPosts = async () => {
+    let cancelled = false;
+    (async () => {
       try {
         const { processedPosts } = await fetchAllBlogPosts();
-
         const seriesMap = new Map();
-        const individualPosts = [];
-
+        const individual = [];
         processedPosts.forEach((post) => {
           if (post.series) {
             if (!seriesMap.has(post.series.slug)) {
@@ -49,254 +132,247 @@ const TerracottaBlogPage = () => {
                 slug: post.series.slug,
                 date: post.series.date || post.date,
                 updated: post.series.updated || post.updated,
-                image: post.series.image,
                 isSeries: true,
+                category: 'series',
+                description: post.series.description || post.description,
                 posts: [],
                 tags: post.tags,
-                category: post.category,
-                description: post.series.description || post.description,
               });
             }
             seriesMap.get(post.series.slug).posts.push(post);
           } else {
-            individualPosts.push(post);
+            individual.push(post);
           }
         });
-
-        const combinedItems = [...Array.from(seriesMap.values()), ...individualPosts];
-        combinedItems.sort(
-          (a, b) => new Date(b.updated || b.date) - new Date(a.updated || a.date),
+        const combined = [...Array.from(seriesMap.values()), ...individual];
+        combined.sort(
+          (a, b) =>
+            new Date(b.updated || b.date) - new Date(a.updated || a.date),
         );
-
-        setDisplayItems(combinedItems);
-        if (combinedItems.length > 0) setActivePost(combinedItems[0]);
-      } catch (error) {
-        console.error('Error fetching blog data:', error);
+        if (!cancelled) setItems(combined);
+      } catch (e) {
+        // ignore
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
+    })();
+    return () => {
+      cancelled = true;
     };
-    fetchPosts();
   }, []);
 
-  const filteredItems = displayItems.filter((item) => {
-    const matchesFilter = () => {
-      if (activeFilter === 'all') return true;
-      if (activeFilter === 'series') return item.isSeries;
-      return item.category === activeFilter;
-    };
-    const matchesSearch = () => {
-      if (!searchQuery) return true;
-      const q = searchQuery.toLowerCase();
-      return item.title?.toLowerCase().includes(q) || item.slug?.toLowerCase().includes(q);
-    };
-    return matchesFilter() && matchesSearch();
+  const filtered = items.filter((item) => {
+    if (activeFilter !== 'all') {
+      if (activeFilter === 'series' && !item.isSeries) return false;
+      if (activeFilter !== 'series' && item.category !== activeFilter) return false;
+    }
+    if (query) {
+      const q = query.toLowerCase();
+      if (
+        !item.title?.toLowerCase().includes(q) &&
+        !item.description?.toLowerCase().includes(q) &&
+        !item.slug?.toLowerCase().includes(q)
+      ) {
+        return false;
+      }
+    }
+    return true;
   });
-
-  const isPlaceholder = (post) => !post?.image || post.image.includes('placeholder');
 
   if (loading) {
     return (
-      <div className="flex h-screen items-center justify-center bg-[#F3ECE0] text-[#1A1613]">
-        <div className="flex flex-col items-center gap-4">
-          <div className="h-px w-24 bg-[#1A161320] relative overflow-hidden">
-            <div className="absolute inset-0 bg-[#C96442] animate-progress origin-left"></div>
-          </div>
-          <span className="font-mono text-[10px] text-[#2E2620]/60 uppercase tracking-[0.3em]">
-            Loading_Archive
+      <div
+        className="min-h-screen flex items-center justify-center"
+        style={{ background: '#F3ECE0', backgroundImage: PAPER_GRADIENT }}
+      >
+        <div className="flex flex-col items-center gap-5">
+          <TerracottaMark size={52} color="#C96442" sway />
+          <span className="font-ibm-plex-mono text-[10.5px] tracking-[0.32em] uppercase text-[#2E2620]/80">
+            Pulling the field notes
           </span>
         </div>
       </div>
     );
   }
 
+  const seriesCount = items.filter((i) => i.isSeries).length;
+
   return (
-    <div className="flex min-h-screen bg-[#F3ECE0] text-[#1A1613] overflow-hidden relative selection:bg-[#C96442]/25">
-      <Seo title="Archive | Fezcodex Blog" description="Curated thoughts, insights, and digital rants." />
+    <div
+      className="min-h-screen relative text-[#1A1613] font-fraunces selection:bg-[#C96442]/25"
+      style={{
+        background: '#F3ECE0',
+        backgroundImage: PAPER_GRADIENT,
+        fontFeatureSettings: '"ss01", "ss02", "kern"',
+      }}
+    >
+      <Seo
+        title="Field Notes | Fezcodex"
+        description="Rants, dev diaries, dossiers — drafted in ink, held to the line."
+      />
 
-      <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
-        {activePost &&
-          (isPlaceholder(activePost) ? (
-            <GenerativeArt seed={activePost.title} className="w-full h-full filter blur-3xl" />
-          ) : (
-            <img src={activePost.image} alt="bg" className="w-full h-full object-cover filter blur-3xl" />
-          ))}
-      </div>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-40 opacity-[0.32] mix-blend-multiply"
+        style={{ backgroundImage: PAPER_GRAIN }}
+      />
 
-      <div className="w-full 4xl:pr-[50vw] relative z-10 flex flex-col min-h-screen py-24 px-6 md:pl-20 overflow-y-auto overflow-x-hidden no-scrollbar transition-all duration-300">
-        <header className="mb-16">
-          <Link
-            to="/"
-            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-[#2E2620]/60 hover:text-[#1A1613] transition-colors uppercase tracking-widest"
-          >
-            <ArrowLeft weight="bold" />
-            <span>Home</span>
-          </Link>
-          <h1 className="text-6xl md:text-8xl font-fraunces italic tracking-tight text-[#1A1613] mb-4 leading-none">
-            Intel
-          </h1>
-          <p className="text-[#2E2620]/60 font-mono text-[10px] uppercase tracking-[0.2em]">
-            {'//'} DATA_LOGS & ARCHIVED_THOUGHTS
-          </p>
-        </header>
+      <div className="relative z-10 mx-auto max-w-[1280px] px-6 md:px-14 pb-[120px]">
+        <TerracottaStrip
+          left="Folio III · field notes"
+          center="Written slow. Read loud."
+          right={`${filtered.length} of ${items.length}`}
+        />
 
-        <div className="mb-12 border-b border-[#1A161320] pb-8 space-y-6">
-          <div className="flex flex-wrap items-center gap-2">
-            {FILTERS.map((f) => (
-              <button
-                key={f.id}
-                onClick={() => setActiveFilter(f.id)}
-                className={`rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-widest transition-all ${
-                  activeFilter === f.id
-                    ? 'bg-[#C96442] text-[#F3ECE0] shadow-[0_10px_20px_-10px_#C9644250]'
-                    : 'bg-[#E8DECE]/50 text-[#2E2620]/60 hover:text-[#1A1613] hover:bg-[#E8DECE] border border-[#1A161320]'
-                }`}
+        {/* hero */}
+        <section className="pt-20 md:pt-28 pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-10 md:gap-20 items-end">
+            <div>
+              <div className="font-ibm-plex-mono text-[11px] tracking-[0.2em] uppercase text-[#9E4A2F] mb-6 flex items-center gap-3">
+                <span>Codex entry · §</span>
+                <span aria-hidden="true" className="h-px flex-1 max-w-[80px] bg-[#9E4A2F]/50" />
+                <span>III</span>
+              </div>
+              <h1
+                className="font-fraunces text-[72px] md:text-[128px] leading-[0.86] tracking-[-0.035em] text-[#1A1613]"
+                style={{
+                  fontVariationSettings:
+                    '"opsz" 144, "SOFT" 30, "WONK" 1, "wght" 460',
+                }}
               >
-                {f.label}
-              </button>
-            ))}
-          </div>
-
-          <div className="relative group w-full max-w-md">
-            <div className="flex items-center gap-2 bg-[#E8DECE]/50 border border-[#1A161320] rounded-sm px-3 py-1.5 focus-within:border-[#C96442]/60 focus-within:bg-[#E8DECE] transition-all">
-              <MagnifyingGlass
-                size={14}
-                className="text-[#2E2620]/50 group-focus-within:text-[#9E4A2F]"
-              />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search Blogposts..."
-                className="bg-transparent border-none outline-none text-[10px] font-mono uppercase tracking-widest text-[#1A1613] placeholder-[#2E2620]/30 w-full"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="text-[#2E2620]/50 hover:text-[#9E4A2F] transition-colors"
+                Field<br />
+                <ChapterEm>notes</ChapterEm>
+                <span
+                  aria-hidden="true"
+                  className="text-[#C96442]"
+                  style={{ fontVariationSettings: '"wght" 800' }}
                 >
-                  <XCircle size={14} weight="fill" />
-                </button>
-              )}
+                  .
+                </span>
+              </h1>
             </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col pb-32">
-          {filteredItems.map((item) => (
-            <TerracottaPostItem
-              key={item.slug}
-              post={item}
-              isActive={activePost?.slug === item.slug}
-              onHover={setActivePost}
-            />
-          ))}
-          {filteredItems.length === 0 && (
-            <div className="py-12 text-center border border-dashed border-[#1A161320] rounded-sm">
-              <p className="font-mono text-xs text-[#2E2620]/50 uppercase tracking-widest">
-                No_Intel_Found
+            <aside className="flex flex-col gap-5 lg:border-l border-[#1A161320] lg:pl-10">
+              <p
+                className="font-fraunces italic text-[20px] leading-[1.4] text-[#1A1613] max-w-[34ch]"
+                style={{
+                  fontVariationSettings:
+                    '"opsz" 48, "SOFT" 100, "WONK" 0, "wght" 380',
+                }}
+              >
+                Dossiers, rants, and dev diaries — written{' '}
+                <span
+                  className="not-italic text-[#9E4A2F]"
+                  style={{
+                    fontStyle: 'normal',
+                    fontVariationSettings: '"wght" 560',
+                  }}
+                >
+                  slow
+                </span>{' '}
+                on purpose.
               </p>
-            </div>
-          )}
-        </div>
-
-        <div className="mt-auto pt-20 border-t border-[#1A161320] text-[#2E2620]/50 font-mono text-[10px] uppercase tracking-widest">
-          Total Stored Entries: {displayItems.length}
-        </div>
-      </div>
-
-      <div className="hidden 4xl:block fixed right-0 top-0 h-screen w-1/2 bg-[#1A1613] overflow-hidden border-l border-[#1A161320] z-20">
-        <AnimatePresence mode="wait">
-          {activePost && (
-            <motion.div
-              key={activePost.slug}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="absolute inset-0"
-            >
-              <div className="absolute inset-0 z-0">
-                <GenerativeArt seed={activePost.title} className="w-full h-full opacity-60" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1613] via-transparent to-[#1A1613]/40" />
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#1A161320]">
+                <TerracottaSpec label="Entries" value={`${items.length}`} />
+                <TerracottaSpec label="Series" value={`${seriesCount}`} />
+                <TerracottaSpec label="Cadence" value="Irregular" />
+                <TerracottaSpec label="Medium" value="Ink on bone" />
               </div>
+            </aside>
+          </div>
+        </section>
 
-              <div className="absolute bottom-0 left-0 w-full p-16 z-10 flex flex-col gap-8">
-                <div className="flex items-center gap-6">
-                  <div className="flex items-center gap-2 text-[#C96442] font-mono text-[10px] tracking-widest uppercase">
-                    <Clock size={16} />
-                    <span>{new Date(activePost.updated || activePost.date).toLocaleDateString('en-GB')}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-[#F3ECE0] font-mono text-[10px] tracking-widest uppercase bg-[#F3ECE0]/10 px-2 py-1 border border-[#F3ECE0]/10 rounded-sm">
-                    <Tag size={14} />
-                    <span>{activePost.category || 'Post'}</span>
-                  </div>
-                </div>
+        {/* filter strip */}
+        <section className="py-6 border-y border-[#1A161320] flex flex-col md:flex-row gap-5 md:items-center">
+          <div className="flex items-baseline gap-3 font-ibm-plex-mono text-[10.5px] tracking-[0.22em] uppercase text-[#2E2620]/80">
+            <span>Filter</span>
+            <span aria-hidden="true" className="h-px w-8 bg-[#1A161320]" />
+          </div>
 
-                <div className="flex flex-col gap-4">
-                  <h2 className="text-6xl md:text-7xl font-fraunces italic text-[#F3ECE0] tracking-tight leading-none">
-                    {activePost.title}
-                  </h2>
-                  <p className="text-lg text-[#F3ECE0]/80 leading-relaxed max-w-xl">
-                    {activePost.description || 'Archived content from the digital vault.'}
-                  </p>
-                </div>
-
-                {activePost.tags && activePost.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 max-w-xl">
-                    {activePost.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-flex items-center gap-1 text-[9px] font-mono font-bold uppercase tracking-wider text-[#F3ECE0]/70 bg-[#1A1613]/60 px-2 py-1 rounded-sm border border-[#F3ECE0]/5"
-                      >
-                        <Hash size={10} /> {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                {activePost.isSeries && (
-                  <div className="mt-4 flex flex-col gap-4">
-                    <span className="font-mono text-[10px] text-[#C96442] font-bold tracking-widest uppercase">
-                      {'//'} SERIES_MANIFEST
-                    </span>
-                    <div className="grid grid-cols-1 gap-2">
-                      {activePost.posts?.slice(0, 3).map((p, i) => (
-                        <div
-                          key={p.slug}
-                          className="flex items-center gap-3 text-[#F3ECE0]/60 font-mono text-[10px] uppercase"
-                        >
-                          <span>{String(i + 1).padStart(2, '0')}</span>
-                          <span className="h-px w-4 bg-[#F3ECE0]/20" />
-                          <span className="truncate">{p.title}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="mt-8"
+          <div className="flex flex-wrap gap-1.5 flex-1">
+            {FILTERS.map((f) => {
+              const isActive = activeFilter === f.id;
+              const color = CATEGORY_COLOR[f.id] || CATEGORY_COLOR.default;
+              return (
+                <button
+                  key={f.id}
+                  type="button"
+                  onClick={() => setActiveFilter(f.id)}
+                  className={`font-ibm-plex-mono text-[9.5px] tracking-[0.18em] uppercase px-2 py-1 border transition-colors ${
+                    isActive
+                      ? 'text-[#F3ECE0]'
+                      : 'border-[#1A161320] text-[#2E2620] hover:border-[#1A1613]/50'
+                  }`}
+                  style={
+                    isActive
+                      ? {
+                          backgroundColor: color,
+                          borderColor: color,
+                        }
+                      : undefined
+                  }
                 >
-                  <Link
-                    to={
-                      activePost.isSeries
-                        ? `/blog/series/${activePost.slug}`
-                        : `/blog/${activePost.slug}`
-                    }
-                    className="inline-flex items-center gap-4 text-[#F3ECE0] border-b-2 border-[#C96442] pb-2 hover:bg-[#C96442] hover:text-[#F3ECE0] transition-all px-2 py-2"
-                  >
-                    <span className="text-sm uppercase tracking-[0.2em]">Read Post</span>
-                    <BookOpen weight="bold" size={20} />
-                  </Link>
-                </motion.div>
+                  {f.label}
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="relative md:max-w-[260px] w-full">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search notes…"
+              className="w-full bg-transparent border-b border-[#1A161320] focus:border-[#C96442] focus:outline-none py-2 font-fraunces italic text-[15px] text-[#1A1613] placeholder:text-[#2E2620]/40 transition-colors"
+            />
+          </div>
+        </section>
+
+        {/* list */}
+        <section className="pt-20">
+          <TerracottaChapter
+            numeral="I"
+            label="Entries, in reverse"
+            title={
+              <>
+                Most <ChapterEm>recent first.</ChapterEm>
+              </>
+            }
+            blurb="Dated, categorised, and read without hurry."
+          />
+          <div className="border-t border-[#1A1613]/25">
+            <AnimatePresence mode="popLayout">
+              {filtered.map((item, i) => (
+                <LogRow key={item.slug} item={item} index={i} />
+              ))}
+            </AnimatePresence>
+            {filtered.length === 0 && (
+              <div className="py-24 text-center">
+                <p className="font-fraunces italic text-[22px] text-[#2E2620]/60">
+                  Nothing filed under that mark.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setQuery('');
+                    setActiveFilter('all');
+                  }}
+                  className="mt-4 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase text-[#9E4A2F] hover:text-[#C96442]"
+                >
+                  Reset filter →
+                </button>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            )}
+          </div>
+        </section>
+
+        <TerracottaColophon
+          signature={
+            <>
+              <span>© {new Date().getFullYear()} · Fezcode</span>
+              <span>Field Notes · folio {String(items.length).padStart(3, '0')}</span>
+            </>
+          }
+        />
       </div>
     </div>
   );
