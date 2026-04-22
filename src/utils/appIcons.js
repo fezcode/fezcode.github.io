@@ -122,6 +122,8 @@ import {
   HouseIcon,
   UserIcon,
   TargetIcon,
+  MagnifyingGlassIcon,
+  BugBeetleIcon,
 } from '@phosphor-icons/react';
 
 export const appIcons = {
@@ -248,4 +250,6 @@ export const appIcons = {
   HouseIcon,
   UserIcon,
   TargetIcon,
+  MagnifyingGlassIcon,
+  BugBeetleIcon,
 };
