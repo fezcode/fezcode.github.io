@@ -69,7 +69,8 @@ const Layout = ({
     projectStyle === 'landscape' ||
     projectStyle === 'ruby' ||
     projectStyle === 'neon-slideshow' ||
-    projectStyle === 'bento';
+    projectStyle === 'bento' ||
+    projectStyle === 'atlas';
   // Check if we are inside a specific app (but not the apps listing page)
   const isAppDetail =
     location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
