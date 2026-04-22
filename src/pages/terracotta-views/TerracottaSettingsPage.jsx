@@ -345,6 +345,7 @@ const TerracottaSettingsPage = () => {
                     { label: 'Terminal (Emerald)',  value: 'terminal-green' },
                     { label: 'Luxe',                value: 'luxe' },
                     { label: 'Terracotta',          value: 'terracotta' },
+                    { label: 'Galley Proof',        value: 'galley' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

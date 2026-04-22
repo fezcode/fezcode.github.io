@@ -123,6 +123,8 @@ export const VisualSettingsProvider = ({ children }) => {
         'terminal-green',
         'old',
         'luxe',
+        'terracotta',
+        'galley',
       ].includes(blogModeParam)
     ) {
       setBlogPostViewMode(blogModeParam);

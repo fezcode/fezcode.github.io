@@ -10,6 +10,7 @@ import TerminalBlogPostPage from './blog-views/TerminalBlogPostPage';
 import TerminalGreenBlogPostPage from './blog-views/TerminalGreenBlogPostPage';
 import LuxeBlogPostPage from './blog-views/LuxeBlogPostPage';
 import TerracottaBlogPostPage from './blog-views/TerracottaBlogPostPage';
+import GalleyBlogPostPage from './blog-views/GalleyBlogPostPage';
 
 const BlogPostPage = () => {
   const { blogPostViewMode, fezcodexTheme } = useVisualSettings();
@@ -29,6 +30,7 @@ const BlogPostPage = () => {
         'old',
         'luxe',
         'terracotta',
+        'galley',
       ].includes(themeParam)
     ) {
       return themeParam;
@@ -46,6 +48,7 @@ const BlogPostPage = () => {
 
   if (effectiveViewMode === 'luxe') return <LuxeBlogPostPage />;
   if (effectiveViewMode === 'terracotta') return <TerracottaBlogPostPage />;
+  if (effectiveViewMode === 'galley') return <GalleyBlogPostPage />;
   if (effectiveViewMode === 'old') return <OldBlogPostPage />;
   if (effectiveViewMode === 'dossier') return <DossierBlogPostPage />;
   if (effectiveViewMode === 'dokument') return <DokumentBlogPostPage />;

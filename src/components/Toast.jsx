@@ -20,8 +20,8 @@ const Toast = ({
   icon,
   links,
 }) => {
-  const { fezcodexTheme } = useVisualSettings();
-  const isTerracotta = fezcodexTheme === 'terracotta';
+  const visualSettings = useVisualSettings();
+  const isTerracotta = visualSettings?.fezcodexTheme === 'terracotta';
 
   useEffect(() => {
     const timer = setTimeout(() => {
