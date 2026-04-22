@@ -18,7 +18,7 @@ import { useAnimation } from '../../context/AnimationContext';
 import { useVisualSettings } from '../../context/VisualSettingsContext';
 import { useAchievements } from '../../context/AchievementContext';
 import { DndContext } from '../../context/DndContext';
-import CustomToggle from '../../components/CustomToggle';
+import TerracottaToggle from '../../components/TerracottaToggle';
 import CustomDropdown from '../../components/CustomDropdown';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
@@ -139,7 +139,7 @@ const TerracottaSettingsPage = () => {
   const panelCell = 'p-6 border border-[#1A161320] bg-[#E8DECE]/40 space-y-6';
 
   return (
-    <div className="min-h-screen bg-[#F3ECE0] py-24 px-6 md:px-12 selection:bg-[#C96442]/25 font-mono relative overflow-x-hidden text-[#1A1613]">
+    <div className="min-h-screen bg-[#F3ECE0] py-24 px-6 md:px-12 selection:bg-[#C96442]/25 font-fraunces relative overflow-x-hidden text-[#1A1613]">
       <Seo title="Settings | Fezcodex" description="Customize your experience." />
 
       <div className="fixed inset-0 opacity-[0.04] pointer-events-none">
@@ -193,12 +193,12 @@ const TerracottaSettingsPage = () => {
                   >
                     <ArrowCounterClockwiseIcon size={14} /> Reset
                   </button>
-                  <CustomToggle
+                  <TerracottaToggle
                     id="homepage-section-order"
                     label="Blogposts First"
                     checked={sectionOrder[0] === 'blogposts'}
                     onChange={toggleSectionOrder}
-                    fontClass="font-outfit"
+
                   />
                 </div>
               </div>
@@ -209,12 +209,12 @@ const TerracottaSettingsPage = () => {
                   <p className="text-sm text-[#2E2620]/70">Control how applications are displayed.</p>
                 </div>
                 <div className="flex items-center gap-4">
-                  <CustomToggle
+                  <TerracottaToggle
                     id="app-fullscreen"
                     label="Fullscreen Apps"
                     checked={isAppFullscreen}
                     onChange={toggleAppFullscreen}
-                    fontClass="font-outfit"
+
                   />
                 </div>
               </div>
@@ -315,12 +315,12 @@ const TerracottaSettingsPage = () => {
                       Disables all Framer Motion animations across the application.
                     </p>
                   </div>
-                  <CustomToggle
+                  <TerracottaToggle
                     id="reduce-motion"
                     label={reduceMotion ? 'Enabled' : 'Disabled'}
                     checked={reduceMotion}
                     onChange={toggleReduceMotion}
-                    fontClass="font-outfit"
+
                   />
                 </div>
               </div>
@@ -335,12 +335,12 @@ const TerracottaSettingsPage = () => {
                   Show a notification when you unlock a new achievement.
                 </p>
               </div>
-              <CustomToggle
+              <TerracottaToggle
                 id="enable-achievement-toasts"
                 label={showAchievementToast ? 'Active' : 'Silent'}
                 checked={showAchievementToast}
                 onChange={toggleAchievementToast}
-                fontClass="font-outfit"
+
               />
             </div>
           </Section>
@@ -353,12 +353,12 @@ const TerracottaSettingsPage = () => {
                   Enable the autonomous digital entity that lives at the bottom of your screen.
                 </p>
               </div>
-              <CustomToggle
+              <TerracottaToggle
                 id="enable-syntax-sprite"
                 label={isSyntaxSpriteEnabled ? 'Active' : 'Stowed'}
                 checked={isSyntaxSpriteEnabled}
                 onChange={toggleSyntaxSprite}
-                fontClass="font-outfit"
+
               />
             </div>
           </Section>
@@ -368,25 +368,25 @@ const TerracottaSettingsPage = () => {
               Apply experimental filters to the entire application. Combine with caution.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <CustomToggle id="fx-invert" colorTheme="rose" label="Invert Colors" checked={isInverted} onChange={toggleInvert} fontClass="font-outfit" />
-              <CustomToggle id="fx-retro" colorTheme="blue" label="Retro CRT" checked={isRetro} onChange={toggleRetro} fontClass="font-outfit" />
-              <CustomToggle id="fx-party" colorTheme="green" label="Party Mode" checked={isParty} onChange={toggleParty} fontClass="font-outfit" />
-              <CustomToggle id="fx-mirror" colorTheme="amber" label="Mirror World" checked={isMirror} onChange={toggleMirror} fontClass="font-outfit" />
-              <CustomToggle id="fx-noir" colorTheme="purple" label="Film Noir" checked={isNoir} onChange={toggleNoir} fontClass="font-outfit" />
-              <CustomToggle id="fx-terminal" colorTheme="cyan" label="Emerald Term" checked={isTerminal} onChange={toggleTerminal} fontClass="font-outfit" />
-              <CustomToggle id="fx-blueprint" colorTheme="indigo" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint} fontClass="font-outfit" />
-              <CustomToggle id="fx-sepia" colorTheme="rose" label="Vintage Sepia" checked={isSepia} onChange={toggleSepia} fontClass="font-outfit" />
-              <CustomToggle id="fx-vaporwave" colorTheme="blue" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave} fontClass="font-outfit" />
-              <CustomToggle id="fx-cyberpunk" colorTheme="green" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk} fontClass="font-outfit" />
-              <CustomToggle id="fx-gameboy" colorTheme="amber" label="Legacy Handheld" checked={isGameboy} onChange={toggleGameboy} fontClass="font-outfit" />
-              <CustomToggle id="fx-comic" colorTheme="purple" label="Comic Array" checked={isComic} onChange={toggleComic} fontClass="font-outfit" />
-              <CustomToggle id="fx-sketchbook" colorTheme="cyan" label="Graphite Map" checked={isSketchbook} onChange={toggleSketchbook} fontClass="font-outfit" />
-              <CustomToggle id="fx-hellenic" colorTheme="indigo" label="Classical Agora" checked={isHellenic} onChange={toggleHellenic} fontClass="font-outfit" />
-              <CustomToggle id="fx-glitch" colorTheme="rose" label="Data Corruption" checked={isGlitch} onChange={toggleGlitch} fontClass="font-outfit" />
-              <CustomToggle id="fx-garden" colorTheme="blue" label="Flora Protocol" checked={isGarden} onChange={toggleGarden} fontClass="font-outfit" />
-              <CustomToggle id="fx-autumn" colorTheme="green" label="Seasonal Decay" checked={isAutumn} onChange={toggleAutumn} fontClass="font-outfit" />
-              <CustomToggle id="fx-rain" colorTheme="amber" label="Hydraulic Filter" checked={isRain} onChange={toggleRain} fontClass="font-outfit" />
-              <CustomToggle id="fx-fallout" colorTheme="purple" label="Fallout Overlay" checked={isFalloutOverlay} onChange={toggleFalloutOverlay} fontClass="font-outfit" />
+              <TerracottaToggle id="fx-invert" colorTheme="rose" label="Invert Colors" checked={isInverted} onChange={toggleInvert}  />
+              <TerracottaToggle id="fx-retro" colorTheme="blue" label="Retro CRT" checked={isRetro} onChange={toggleRetro}  />
+              <TerracottaToggle id="fx-party" colorTheme="green" label="Party Mode" checked={isParty} onChange={toggleParty}  />
+              <TerracottaToggle id="fx-mirror" colorTheme="amber" label="Mirror World" checked={isMirror} onChange={toggleMirror}  />
+              <TerracottaToggle id="fx-noir" colorTheme="purple" label="Film Noir" checked={isNoir} onChange={toggleNoir}  />
+              <TerracottaToggle id="fx-terminal" colorTheme="cyan" label="Emerald Term" checked={isTerminal} onChange={toggleTerminal}  />
+              <TerracottaToggle id="fx-blueprint" colorTheme="indigo" label="Blueprint" checked={isBlueprint} onChange={toggleBlueprint}  />
+              <TerracottaToggle id="fx-sepia" colorTheme="rose" label="Vintage Sepia" checked={isSepia} onChange={toggleSepia}  />
+              <TerracottaToggle id="fx-vaporwave" colorTheme="blue" label="Vaporwave" checked={isVaporwave} onChange={toggleVaporwave}  />
+              <TerracottaToggle id="fx-cyberpunk" colorTheme="green" label="Cyberpunk" checked={isCyberpunk} onChange={toggleCyberpunk}  />
+              <TerracottaToggle id="fx-gameboy" colorTheme="amber" label="Legacy Handheld" checked={isGameboy} onChange={toggleGameboy}  />
+              <TerracottaToggle id="fx-comic" colorTheme="purple" label="Comic Array" checked={isComic} onChange={toggleComic}  />
+              <TerracottaToggle id="fx-sketchbook" colorTheme="cyan" label="Graphite Map" checked={isSketchbook} onChange={toggleSketchbook}  />
+              <TerracottaToggle id="fx-hellenic" colorTheme="indigo" label="Classical Agora" checked={isHellenic} onChange={toggleHellenic}  />
+              <TerracottaToggle id="fx-glitch" colorTheme="rose" label="Data Corruption" checked={isGlitch} onChange={toggleGlitch}  />
+              <TerracottaToggle id="fx-garden" colorTheme="blue" label="Flora Protocol" checked={isGarden} onChange={toggleGarden}  />
+              <TerracottaToggle id="fx-autumn" colorTheme="green" label="Seasonal Decay" checked={isAutumn} onChange={toggleAutumn}  />
+              <TerracottaToggle id="fx-rain" colorTheme="amber" label="Hydraulic Filter" checked={isRain} onChange={toggleRain}  />
+              <TerracottaToggle id="fx-fallout" colorTheme="purple" label="Fallout Overlay" checked={isFalloutOverlay} onChange={toggleFalloutOverlay}  />
               {isFalloutOverlay && (
                 <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-4 p-6 border border-[#1A161320] bg-[#E8DECE]/50 space-y-6">
                   <div className="flex items-center gap-4">
@@ -407,13 +407,13 @@ const TerracottaSettingsPage = () => {
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-[#1A161320]">
-                    <CustomToggle id="fallout-noise" label="Signal Noise" checked={isFalloutNoiseEnabled} onChange={toggleFalloutNoise} fontClass="font-outfit" />
-                    <CustomToggle id="fallout-scanlines" label="CRT Scanlines" checked={isFalloutScanlinesEnabled} onChange={toggleFalloutScanlines} fontClass="font-outfit" />
-                    <CustomToggle id="fallout-vignette" label="Screen Vignette" checked={isFalloutVignetteEnabled} onChange={toggleFalloutVignette} fontClass="font-outfit" />
+                    <TerracottaToggle id="fallout-noise" label="Signal Noise" checked={isFalloutNoiseEnabled} onChange={toggleFalloutNoise}  />
+                    <TerracottaToggle id="fallout-scanlines" label="CRT Scanlines" checked={isFalloutScanlinesEnabled} onChange={toggleFalloutScanlines}  />
+                    <TerracottaToggle id="fallout-vignette" label="Screen Vignette" checked={isFalloutVignetteEnabled} onChange={toggleFalloutVignette}  />
                   </div>
                 </div>
               )}
-              <CustomToggle id="fx-splash" label="Splash Text" checked={isSplashTextEnabled} onChange={toggleSplashText} fontClass="font-outfit" />
+              <TerracottaToggle id="fx-splash" label="Splash Text" checked={isSplashTextEnabled} onChange={toggleSplashText}  />
             </div>
           </Section>
 
@@ -423,11 +423,11 @@ const TerracottaSettingsPage = () => {
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-              <CustomToggle id="dnd-lightning" label="Lightning Strikes" checked={isLightningEnabled} onChange={toggleLightning} fontClass="font-outfit" />
-              <CustomToggle id="dnd-loot" label="Loot Discovery" checked={isLootDiscoveryEnabled} onChange={toggleLootDiscovery} fontClass="font-outfit" />
-              <CustomToggle id="dnd-fire-overlay" label="Fire Overlay" checked={isFireOverlayEnabled} onChange={toggleFireOverlay} fontClass="font-outfit" />
-              <CustomToggle id="dnd-fire-particles" label="Fire Particles" checked={isFireParticlesEnabled} onChange={toggleFireParticles} fontClass="font-outfit" />
-              <CustomToggle id="dnd-frame" label="Viewport Frame" checked={isViewportFrameEnabled} onChange={toggleViewportFrame} fontClass="font-outfit" />
+              <TerracottaToggle id="dnd-lightning" label="Lightning Strikes" checked={isLightningEnabled} onChange={toggleLightning}  />
+              <TerracottaToggle id="dnd-loot" label="Loot Discovery" checked={isLootDiscoveryEnabled} onChange={toggleLootDiscovery}  />
+              <TerracottaToggle id="dnd-fire-overlay" label="Fire Overlay" checked={isFireOverlayEnabled} onChange={toggleFireOverlay}  />
+              <TerracottaToggle id="dnd-fire-particles" label="Fire Particles" checked={isFireParticlesEnabled} onChange={toggleFireParticles}  />
+              <TerracottaToggle id="dnd-frame" label="Viewport Frame" checked={isViewportFrameEnabled} onChange={toggleViewportFrame}  />
             </div>
           </Section>
 
