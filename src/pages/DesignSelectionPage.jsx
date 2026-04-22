@@ -9,6 +9,9 @@ import {
   LayoutIcon,
   ArrowLeftIcon,
   LineSegmentsIcon,
+  PaintBrushBroadIcon,
+  ScrollIcon,
+  TerminalWindowIcon,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
@@ -171,6 +174,282 @@ const DesignSelectionPage = () => {
               </div>
             </motion.div>
           </Link>
+        </div>
+
+        {/* ── INNER DESIGN LANGUAGES ───────────────────────────────── */}
+        <div className="mt-32">
+          <div className="flex items-end justify-between mb-12 pb-6 border-b border-black/10">
+            <div>
+              <div className="font-outfit text-[10px] uppercase tracking-[0.3em] text-[#1A1A1A]/40 mb-2">
+                Part II
+              </div>
+              <h2 className="font-playfairDisplay text-4xl md:text-5xl text-[#1A1A1A] leading-none">
+                Inner Design Languages
+              </h2>
+            </div>
+            <p className="font-outfit text-xs text-[#1A1A1A]/50 max-w-sm leading-relaxed hidden md:block">
+              Sub-systems used inside specific surfaces — apps, readers, and
+              project catalogues — each with its own vocabulary.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+
+            {/* ── ATELIER ── */}
+            <Link to="/apps/github-thumbnail-generator" className="group block relative">
+              <motion.div
+                whileHover={{ y: -10 }}
+                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                style={{
+                  background: '#F5EFEC',
+                  borderRadius: 8,
+                  boxShadow:
+                    '0 0 0 1px #B89968 inset, 0 1px 0 rgba(255,255,255,0.5) inset, 0 30px 60px -30px rgba(45,31,46,0.25)',
+                }}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-60"
+                  style={{
+                    background:
+                      'radial-gradient(500px 300px at 85% -10%, #E4D9D6 0%, transparent 55%), radial-gradient(400px 400px at -10% 110%, #EDE4E1 0%, transparent 55%)',
+                  }}
+                />
+                <div className="space-y-8 relative z-10">
+                  <div
+                    className="w-16 h-16 flex items-center justify-center transition-all duration-500"
+                    style={{
+                      background: '#3F7D6B14',
+                      color: '#3F7D6B',
+                      borderRadius: 8,
+                      boxShadow: '0 0 0 1px #B89968 inset',
+                    }}
+                  >
+                    <PaintBrushBroadIcon size={32} weight="regular" />
+                  </div>
+                  <div className="space-y-4">
+                    <div
+                      className="text-[10px] uppercase tracking-[0.28em]"
+                      style={{ color: '#6B5A65' }}
+                    >
+                      App Chrome
+                    </div>
+                    <h3
+                      className="text-5xl leading-none tracking-tight"
+                      style={{
+                        fontFamily: "'EB Garamond', serif",
+                        color: '#2D1F2E',
+                      }}
+                    >
+                      Atelier
+                      <span style={{ color: '#3F7D6B' }}>.</span>
+                    </h3>
+                    <p
+                      className="text-sm italic leading-relaxed"
+                      style={{
+                        fontFamily: "'EB Garamond', serif",
+                        color: '#6B5A65',
+                      }}
+                    >
+                      Gallery-studio contemporary. Dusty mauve walls, cream
+                      matted cards, jade as the single jewel accent. Garamond
+                      italic plates.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="mt-12 pt-8 flex justify-between items-center relative z-10 border-t"
+                  style={{ borderColor: '#C7B8B4' }}
+                >
+                  <span
+                    className="text-[10px] uppercase tracking-[0.3em] transition-colors"
+                    style={{ color: '#6B5A65' }}
+                  >
+                    Enter_Studio
+                  </span>
+                  <ArrowRightIcon
+                    className="group-hover:translate-x-2 transition-all"
+                    size={24}
+                    style={{ color: '#3F7D6B' }}
+                  />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* ── GALLEY (terracotta inner reader) ── */}
+            <Link to="/blog" className="group block relative">
+              <motion.div
+                whileHover={{ y: -10 }}
+                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                style={{
+                  background: '#F3ECE0',
+                  borderRadius: 4,
+                  boxShadow:
+                    '0 0 0 1px #1A161320 inset, 0 30px 60px -30px #1A161330',
+                }}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      'repeating-linear-gradient(0deg, #1A161308 0 1px, transparent 1px 4px)',
+                    opacity: 0.4,
+                  }}
+                />
+                <div className="space-y-8 relative z-10">
+                  <div
+                    className="w-16 h-16 flex items-center justify-center transition-all duration-500"
+                    style={{
+                      background: '#C9644215',
+                      color: '#9E4A2F',
+                      borderRadius: 2,
+                      border: '1px solid #C9644240',
+                    }}
+                  >
+                    <ScrollIcon size={32} weight="light" />
+                  </div>
+                  <div className="space-y-4">
+                    <div
+                      className="text-[10px] uppercase tracking-[0.28em]"
+                      style={{
+                        color: '#2E2620',
+                        fontFamily: "'IBM Plex Mono', monospace",
+                      }}
+                    >
+                      Terracotta · Reader
+                    </div>
+                    <h3
+                      className="text-5xl italic leading-none tracking-tight"
+                      style={{
+                        fontFamily: "'Fraunces', serif",
+                        color: '#1A1613',
+                      }}
+                    >
+                      Galley
+                    </h3>
+                    <p
+                      className="text-xs uppercase tracking-widest leading-relaxed"
+                      style={{
+                        color: '#2E2620',
+                        fontFamily: "'IBM Plex Mono', monospace",
+                        opacity: 0.7,
+                      }}
+                    >
+                      A letterpress galley-proof for long reading. Registration
+                      marks, drop-caps, and 38em measure — enable from settings.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="mt-12 pt-8 flex justify-between items-center relative z-10 border-t"
+                  style={{ borderColor: '#1A161320' }}
+                >
+                  <span
+                    className="text-[10px] uppercase tracking-[0.3em]"
+                    style={{
+                      color: '#2E2620',
+                      fontFamily: "'IBM Plex Mono', monospace",
+                      opacity: 0.6,
+                    }}
+                  >
+                    Open_Proof
+                  </span>
+                  <ArrowRightIcon
+                    className="group-hover:translate-x-2 transition-all"
+                    size={24}
+                    style={{ color: '#C96442' }}
+                  />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* ── ATLAS (terracotta inner catalog) ── */}
+            <Link to="/projects/atlas-projects" className="group block relative">
+              <motion.div
+                whileHover={{ y: -10 }}
+                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                style={{
+                  background: '#0A0906',
+                  borderRadius: 4,
+                  boxShadow:
+                    'inset 0 0 0 1px #FFB00020, 0 30px 60px -30px rgba(0,0,0,0.5)',
+                }}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none opacity-30"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(#FFB00012 1px, transparent 1px), linear-gradient(90deg, #FFB00012 1px, transparent 1px)',
+                    backgroundSize: '24px 24px',
+                  }}
+                />
+                <div className="space-y-8 relative z-10">
+                  <div
+                    className="w-16 h-16 flex items-center justify-center transition-all duration-500"
+                    style={{
+                      background: '#FFB00010',
+                      color: '#FFB000',
+                      borderRadius: 2,
+                      border: '1px solid #FFB00040',
+                    }}
+                  >
+                    <TerminalWindowIcon size={32} weight="regular" />
+                  </div>
+                  <div className="space-y-4">
+                    <div
+                      className="text-[10px] uppercase tracking-[0.28em]"
+                      style={{
+                        color: '#9AAF4F',
+                        fontFamily: "'JetBrains Mono', monospace",
+                      }}
+                    >
+                      Terracotta · Catalog
+                    </div>
+                    <h3
+                      className="text-5xl leading-none tracking-tight uppercase font-bold"
+                      style={{
+                        fontFamily: "'JetBrains Mono', monospace",
+                        color: '#FFB000',
+                      }}
+                    >
+                      Atlas
+                    </h3>
+                    <p
+                      className="text-xs uppercase tracking-widest leading-relaxed"
+                      style={{
+                        color: '#E8DBB7',
+                        fontFamily: "'JetBrains Mono', monospace",
+                        opacity: 0.8,
+                      }}
+                    >
+                      Phosphor-amber CRT tool-catalog. 38 entries, 9 categories,
+                      boot sequence, clipboard installers — pure terminal
+                      instrument.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="mt-12 pt-8 flex justify-between items-center relative z-10 border-t"
+                  style={{ borderColor: '#FFB00020' }}
+                >
+                  <span
+                    className="text-[10px] uppercase tracking-[0.3em]"
+                    style={{
+                      color: '#9AAF4F',
+                      fontFamily: "'JetBrains Mono', monospace",
+                    }}
+                  >
+                    $ ./boot.sh
+                  </span>
+                  <ArrowRightIcon
+                    className="group-hover:translate-x-2 transition-all"
+                    size={24}
+                    style={{ color: '#FFB000' }}
+                  />
+                </div>
+              </motion.div>
+            </Link>
+
+          </div>
         </div>
 
         <footer className="mt-24 pt-12 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-6 text-black/30 font-outfit text-[10px] uppercase tracking-[0.3em]">
