@@ -19,11 +19,13 @@ import ClassifiedDossier from './about-views/ClassifiedDossier';
 import Brutalist from './about-views/Brutalist';
 import SkillDeck from './about-views/SkillDeck';
 import LuxeAboutView from './about-views/LuxeAboutView';
+import TerracottaAboutView from './about-views/Terracotta';
 import { useAchievements } from '../context/AchievementContext';
 import Seo from '../components/Seo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
+    { id: 'terracotta', icon: BookBookmarkIcon, label: 'Terracotta' },
     { id: 'luxe', icon: IdentificationCardIcon, label: 'Luxe' },
     { id: 'brutalist', icon: BugIcon, label: 'Brutalist' },
     { id: 'skills', icon: IdentificationCardIcon, label: 'Skill Deck' },
@@ -34,20 +36,30 @@ const ViewSwitcher = ({ currentView }) => {
   ];
 
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-black/50 backdrop-blur-md p-2 rounded-full border border-white/10 shadow-2xl flex gap-2">
+    <div
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-50 p-2 shadow-2xl flex gap-2 ${
+        currentView === 'terracotta'
+          ? 'bg-[#F3ECE0] border border-[#1A161320] backdrop-blur-md'
+          : 'bg-black/50 backdrop-blur-md rounded-full border border-white/10'
+      }`}
+    >
       {views.map((view) => (
         <Link
           key={view.id}
           to={`/about/${view.id}`}
-          className={`relative px-4 py-2 rounded-full flex items-center gap-2 transition-all ${
-            currentView === view.id
-              ? 'bg-white text-black font-bold shadow-lg'
-              : 'text-white/60 hover:text-white hover:bg-white/10'
+          className={`relative px-4 py-2 flex items-center gap-2 transition-all ${
+            currentView === 'terracotta'
+              ? view.id === currentView
+                ? 'bg-[#1A1613] text-[#F3ECE0]'
+                : 'text-[#2E2620]/70 hover:text-[#1A1613] hover:bg-[#E8DECE]/80'
+              : view.id === currentView
+                ? 'bg-white text-black font-bold shadow-lg rounded-full'
+                : 'text-white/60 hover:text-white hover:bg-white/10 rounded-full'
           }`}
         >
           <view.icon size={20} />
           <span className="text-sm hidden md:inline">{view.label}</span>
-          {currentView === view.id && (
+          {currentView === view.id && currentView !== 'terracotta' && (
             <motion.div
               layoutId="view-pill"
               className="absolute inset-0 bg-white rounded-full mix-blend-difference -z-10"
@@ -62,6 +74,7 @@ const ViewSwitcher = ({ currentView }) => {
 const AboutPage = () => {
   const { viewId } = useParams();
   const validViews = [
+    'terracotta',
     'luxe',
     'dossier',
     'hud',
@@ -85,6 +98,8 @@ const AboutPage = () => {
 
   const getButtonStyle = (currentView) => {
     switch (currentView) {
+      case 'terracotta':
+        return 'bg-[#F3ECE0] text-[#1A1613] border border-[#1A161320] font-ibm-plex-mono uppercase tracking-widest text-[10px] hover:bg-[#1A1613] hover:text-[#F3ECE0] hover:border-[#1A1613] rounded-none shadow-none';
       case 'luxe':
         return 'bg-white/80 text-black border-black/10 border font-outfit uppercase tracking-widest text-[10px] hover:bg-black hover:text-white rounded-full shadow-sm backdrop-blur-md';
       case 'dossier':
@@ -104,7 +119,11 @@ const AboutPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black relative">
+    <div
+      className={`min-h-screen relative ${
+        view === 'terracotta' ? 'bg-[#F3ECE0]' : 'bg-black'
+      }`}
+    >
       <Seo
         title="Fezcodex | About"
         description="Learn more about the creator of Fezcodex."
@@ -167,6 +186,7 @@ const AboutPage = () => {
           transition={{ duration: 0.5 }}
           className="w-full h-full"
         >
+          {view === 'terracotta' && <TerracottaAboutView />}
           {view === 'luxe' && <LuxeAboutView />}
           {view === 'hud' && <NeuromancerHUD />}
           {view === 'blueprint' && <SystemArchitecture />}
