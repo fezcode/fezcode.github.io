@@ -345,6 +345,12 @@ const LuxeSettingsPage = () => {
             icon={<LayoutIcon />}
             delay={0.2}
           >
+            <div className="mb-8 px-5 py-4 border-l-2 border-[#8D4004] bg-[#FAFAF8] font-outfit text-[13px] leading-relaxed text-[#1A1A1A]/70 italic">
+              Only the <span className="not-italic font-semibold text-[#1A1A1A]">Brutalist</span>{' '}
+              theme applies these font choices. Luxe keeps Playfair Display and Outfit
+              as its set faces; Terracotta holds Fraunces with IBM Plex Mono. Your
+              selection here is still saved for whenever you return to Brutalist.
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-6">
                 <h3 className="font-outfit text-[10px] uppercase tracking-[0.3em] text-black/30">

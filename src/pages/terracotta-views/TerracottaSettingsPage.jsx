@@ -404,6 +404,15 @@ const TerracottaSettingsPage = () => {
             title={<>How the <ChapterEm>ink lies.</ChapterEm></>}
             blurb="Font choices for long-form reading."
           />
+          <div className="mt-4 mb-2 px-4 py-3 border border-[#1A161320] bg-[#E8DECE]/60 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase text-[#2E2620]/80 flex items-start gap-3">
+            <span className="text-[#C96442]">†</span>
+            <span className="normal-case tracking-normal font-fraunces italic text-[13px] text-[#1A1613] leading-snug">
+              Note — only the <strong>Brutalist</strong> theme responds to these
+              font picks. Luxe and Terracotta keep their set typography (Playfair /
+              Outfit and Fraunces / IBM Plex Mono respectively) so the identity
+              holds. The selection here still saves for when you switch themes.
+            </span>
+          </div>
           <ol className="border-t border-[#1A161320]">
             <SettingRow
               number={5}

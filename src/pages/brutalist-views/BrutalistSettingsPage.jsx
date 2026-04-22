@@ -394,6 +394,15 @@ const SettingsPage = () => {
             icon={<LayoutIcon />}
             delay={0.07}
           >
+            <div className="mb-6 px-4 py-3 border border-emerald-500/20 bg-emerald-500/5 font-mono text-[11px] leading-relaxed text-emerald-300/80 rounded-sm">
+              <span className="font-black uppercase tracking-widest text-emerald-400 mr-2">
+                {'// note'}
+              </span>
+              Only the <span className="text-white">Brutalist</span> theme respects these
+              font picks. Luxe and Terracotta hold their set typography (Playfair/Outfit
+              and Fraunces/IBM Plex Mono) so their identity stays intact. Your selection
+              here persists and reapplies whenever Brutalist is active.
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-6 border border-white/5 bg-white/[0.01]space-y-6">
                 <div>
