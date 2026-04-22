@@ -88,11 +88,12 @@ const StatusPill = () => {
               <div className="flex justify-between items-center text-gray-400">
                 <span>THEME</span>
                 <button
-                  onClick={() =>
-                    setFezcodexTheme(
-                      fezcodexTheme === 'brutalist' ? 'luxe' : 'brutalist',
-                    )
-                  }
+                  onClick={() => {
+                    const order = ['brutalist', 'luxe', 'terracotta'];
+                    const next =
+                      order[(order.indexOf(fezcodexTheme) + 1) % order.length];
+                    setFezcodexTheme(next);
+                  }}
                   className="text-[10px] border border-white/40 text-white px-2 py-0.5 hover:bg-white hover:text-black transition-colors"
                 >
                   [{fezcodexTheme.toUpperCase()}]
