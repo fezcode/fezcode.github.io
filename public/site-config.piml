@@ -1,6 +1,10 @@
 (config)
   (kernel)
-    (codename) Plumb_Line
+    (codename) Bonewright
+    # codename roadmap — bump on a major design / identity shift
+    #   v0.24.x  Stone_Set
+    #   v0.25.x  Loadbearing
+    #   v0.26.x  Chisel_Mark
 
   (hero)
     (title) Fezcodex
