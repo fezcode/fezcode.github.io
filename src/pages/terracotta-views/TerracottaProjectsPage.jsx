@@ -159,8 +159,11 @@ const TerracottaProjectsPage = () => {
     );
   }
 
-  const first = filtered[0];
-  const rest = filtered.slice(1);
+  const isFiltering = activeTag !== 'all' || Boolean(query.trim());
+  // Cornerstone only appears when no filter is active, so filtering always
+  // produces a visible change — the entire list below reflects the filter.
+  const first = isFiltering ? null : filtered[0];
+  const rest = isFiltering ? filtered : filtered.slice(1);
 
   return (
     <div
@@ -354,15 +357,66 @@ const TerracottaProjectsPage = () => {
         {/* rest — editorial list */}
         <section className="pt-20">
           <TerracottaChapter
-            numeral="II"
-            label="Further entries"
+            numeral={isFiltering ? 'I' : 'II'}
+            label={isFiltering ? 'Matched entries' : 'Further entries'}
             title={
-              <>
-                In <ChapterEm>order.</ChapterEm>
-              </>
+              isFiltering ? (
+                <>
+                  By <ChapterEm>this measure.</ChapterEm>
+                </>
+              ) : (
+                <>
+                  In <ChapterEm>order.</ChapterEm>
+                </>
+              )
             }
-            blurb="Catalogued sequentially; each read on its own, each measured on the same line."
+            blurb={
+              isFiltering
+                ? `${filtered.length} of ${(projects || []).length} entries meet the filter.`
+                : 'Catalogued sequentially; each read on its own, each measured on the same line.'
+            }
           />
+          {isFiltering && (
+            <div className="flex items-center gap-3 pt-3 pb-5 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase">
+              <span className="text-[#2E2620]/60">Filtering</span>
+              {activeTag !== 'all' && (
+                <span className="inline-flex items-center gap-1.5 border border-[#C96442] bg-[#C96442]/10 text-[#9E4A2F] px-2 py-1">
+                  tag · {activeTag}
+                  <button
+                    type="button"
+                    onClick={() => setActiveTag('all')}
+                    className="hover:text-[#1A1613]"
+                    aria-label="Clear tag filter"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              {query.trim() && (
+                <span className="inline-flex items-center gap-1.5 border border-[#1A161340] text-[#1A1613] px-2 py-1">
+                  query · “{query.trim()}”
+                  <button
+                    type="button"
+                    onClick={() => setQuery('')}
+                    className="hover:text-[#9E4A2F]"
+                    aria-label="Clear search"
+                  >
+                    ×
+                  </button>
+                </span>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  setQuery('');
+                  setActiveTag('all');
+                }}
+                className="ml-auto text-[#9E4A2F] hover:text-[#C96442]"
+              >
+                Reset →
+              </button>
+            </div>
+          )}
           <div className="border-t border-[#1A1613]/25">
             <AnimatePresence mode="popLayout">
               {rest.map((p, i) => (
