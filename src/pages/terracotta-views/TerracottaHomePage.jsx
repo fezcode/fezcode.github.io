@@ -68,12 +68,11 @@ const useClock = () => {
    HERO WORDMARK — the plumb line dangles above the 'd' of "codex"
    ========================================================================= */
 const HeroWordmark = ({ title = 'Fezcodex' }) => {
-  // split: "Fezco" + "d" (anchor) + "ex"  +  terra period
+  // split: "Fez" + "c" (anchor — plumb hangs from it) + "odex" + terra period
   const endsInCodex = title.toLowerCase().endsWith('codex');
-  const pre = endsInCodex ? title.slice(0, title.length - 4) : title.slice(0, -1);
-  // we want to hang above the 'd' in codex — if title doesn't contain it, we anchor on the last char.
-  const anchor = endsInCodex ? 'c' : title.slice(-1);
-  const post = endsInCodex ? title.slice(-3) : '';
+  const pre = endsInCodex ? title.slice(0, title.length - 5) : title.slice(0, -1);
+  const anchor = endsInCodex ? title.slice(title.length - 5, title.length - 4) : title.slice(-1);
+  const post = endsInCodex ? title.slice(-4) : '';
 
   return (
     <h1
