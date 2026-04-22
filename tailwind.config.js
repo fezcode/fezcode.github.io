@@ -38,6 +38,7 @@ module.exports = {
         'instr-sans': fonts.instrSans,
         'nunito': fonts.nunito,
         'garamond': fonts.garamond,
+        'fraunces': fonts.fraunces,
       },
       colors: colors,
       typography: (theme) => ({

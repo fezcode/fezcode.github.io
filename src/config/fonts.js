@@ -9,4 +9,5 @@ module.exports = {
   instrSans: ['Instrument Sans', 'sans-serif'],
   nunito: ['Nunito', 'sans-serif'],
   garamond: ['"EB Garamond"', 'serif'],
+  fraunces: ['Fraunces', '"Times New Roman"', 'serif'],
 };
