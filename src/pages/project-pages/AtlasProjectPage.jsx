@@ -243,7 +243,8 @@ const BootSequence = () => {
     const tick = () => {
       if (cancelled) return;
       if (i < BOOT_LINES.length) {
-        setLines((prev) => [...prev, BOOT_LINES[i]]);
+        const value = BOOT_LINES[i];
+        setLines((prev) => [...prev, value]);
         i += 1;
         setTimeout(tick, 140);
       }
@@ -262,7 +263,9 @@ const BootSequence = () => {
     >
       {lines.map((line, i) => (
         <span key={i} className="block">
-          {line.startsWith('[OK]') ? (
+          {!line ? (
+            <>&nbsp;</>
+          ) : line.startsWith('[OK]') ? (
             <>
               <span style={{ color: SAGE }}>{'[OK]'}</span>
               {line.slice(4)}
