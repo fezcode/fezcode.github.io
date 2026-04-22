@@ -1,249 +1,325 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import {
-  ArrowLeftIcon,
-  TrophyIcon,
   LockIcon,
-  InfoIcon,
-  BellSlashIcon,
-  FunnelIcon,
-  XCircleIcon,
   CalendarBlankIcon,
+  TrophyIcon,
+  BellSlashIcon,
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { useAchievements } from '../../context/AchievementContext';
 import { ACHIEVEMENTS } from '../../config/achievements';
+import {
+  TerracottaStrip,
+  TerracottaChapter,
+  ChapterEm,
+  TerracottaMark,
+  TerracottaColophon,
+  TerracottaSpec,
+} from '../../components/terracotta';
+
+const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.28 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
+const PAPER_GRADIENT =
+  'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
+
+const AchievementMark = ({ achievement, status, unlockedAt }) => {
+  const isUnlocked = status === 'unlocked';
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 6 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.35 }}
+      className={`relative border p-6 transition-colors ${
+        isUnlocked
+          ? 'bg-[#F3ECE0] border-[#1A161320] hover:border-[#C96442]/60'
+          : 'bg-[#E8DECE]/30 border-dashed border-[#1A161320] grayscale opacity-70 hover:opacity-90'
+      }`}
+    >
+      <div className="flex items-start justify-between pb-4 border-b border-dashed border-[#1A161320] font-ibm-plex-mono text-[9.5px] tracking-[0.22em] uppercase">
+        <span
+          className={isUnlocked ? 'text-[#9E4A2F]' : 'text-[#2E2620]/50'}
+        >
+          {achievement.category}
+        </span>
+        <span className={isUnlocked ? 'text-[#2E2620]/70' : 'text-[#2E2620]/40'}>
+          {isUnlocked ? 'held' : 'locked'}
+        </span>
+      </div>
+
+      <div className="pt-6 grid grid-cols-[56px_1fr] gap-4 items-start">
+        <div
+          className={`w-[56px] h-[56px] flex items-center justify-center border ${
+            isUnlocked
+              ? 'bg-[#C96442]/10 border-[#C96442]/60 text-[#9E4A2F]'
+              : 'bg-[#E8DECE]/60 border-[#1A161320] text-[#2E2620]/50'
+          }`}
+        >
+          {isUnlocked ? (
+            <span className="scale-[1.3]">{achievement.icon}</span>
+          ) : (
+            <LockIcon size={22} weight="regular" />
+          )}
+        </div>
+        <div className="min-w-0">
+          <h3
+            className={`font-fraunces leading-[1.1] tracking-[-0.02em] text-[18px] md:text-[22px] ${
+              isUnlocked ? 'text-[#1A1613]' : 'text-[#2E2620]/55'
+            }`}
+            style={{
+              fontVariationSettings: isUnlocked
+                ? '"opsz" 28, "SOFT" 40, "WONK" 1, "wght" 460'
+                : '"opsz" 28, "SOFT" 30, "WONK" 0, "wght" 420',
+            }}
+          >
+            {achievement.title}
+          </h3>
+          <p
+            className={`mt-1.5 font-fraunces italic text-[13.5px] leading-[1.4] ${
+              isUnlocked ? 'text-[#2E2620]' : 'text-[#2E2620]/55'
+            }`}
+            style={{
+              fontVariationSettings: '"opsz" 18, "SOFT" 100, "wght" 360',
+            }}
+          >
+            {achievement.description}
+          </p>
+        </div>
+      </div>
+
+      <div
+        className={`mt-6 pt-4 border-t border-dashed flex items-center justify-center gap-2 font-ibm-plex-mono text-[9px] tracking-[0.22em] uppercase ${
+          isUnlocked
+            ? 'border-[#1A161320] text-[#9E4A2F]/80'
+            : 'border-[#1A161320] text-[#2E2620]/40'
+        }`}
+      >
+        {isUnlocked && unlockedAt ? (
+          <>
+            <CalendarBlankIcon size={11} weight="regular" />
+            <span>
+              Unlocked ·{' '}
+              {new Date(unlockedAt).toLocaleDateString(undefined, {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+              })}
+            </span>
+          </>
+        ) : (
+          <>
+            <LockIcon size={11} />
+            <span>Still to find</span>
+          </>
+        )}
+      </div>
+    </motion.article>
+  );
+};
 
 const TerracottaAchievementsPage = () => {
   const { unlockedAchievements, showAchievementToast } = useAchievements();
-  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [activeCat, setActiveCat] = useState('all');
 
-  const uniqueCategories = ['All', ...new Set(ACHIEVEMENTS.map((ach) => ach.category))].sort();
+  const categories = useMemo(
+    () => ['All', ...[...new Set(ACHIEVEMENTS.map((a) => a.category))].sort()],
+    [],
+  );
 
-  const unlockedCount = Object.keys(unlockedAchievements).filter(
-    (key) => unlockedAchievements[key].unlocked,
-  ).length;
-  const totalCount = ACHIEVEMENTS.length;
-  const progressPercentage = Math.round((unlockedCount / totalCount) * 100);
+  const unlockedCount = useMemo(
+    () =>
+      Object.keys(unlockedAchievements).filter(
+        (k) => unlockedAchievements[k].unlocked,
+      ).length,
+    [unlockedAchievements],
+  );
+  const total = ACHIEVEMENTS.length;
+  const pct = Math.round((unlockedCount / total) * 100);
 
-  const toggleCategory = (category) => {
-    if (category === 'All') {
-      setSelectedCategories([]);
-    } else {
-      setSelectedCategories((prev) =>
-        prev.includes(category) ? prev.filter((c) => c !== category) : [...prev, category],
-      );
-    }
-  };
-
-  const clearFilters = () => setSelectedCategories([]);
-
-  const filteredAchievements = ACHIEVEMENTS.filter((achievement) => {
-    const matchesCategory =
-      selectedCategories.length === 0 || selectedCategories.includes(achievement.category);
-    return matchesCategory;
-  });
+  const filtered = useMemo(
+    () =>
+      ACHIEVEMENTS.filter(
+        (a) => activeCat === 'all' || a.category === activeCat,
+      ),
+    [activeCat],
+  );
 
   return (
-    <div className="py-16 sm:py-24 bg-[#F3ECE0] min-h-screen">
-      <Seo title="Achievements | Fezcodex" description="Track your progress and unlocked secrets." />
+    <div
+      className="min-h-screen relative text-[#1A1613] font-fraunces selection:bg-[#C96442]/25"
+      style={{
+        background: '#F3ECE0',
+        backgroundImage: PAPER_GRADIENT,
+        fontFeatureSettings: '"ss01", "ss02", "kern"',
+      }}
+    >
+      <Seo
+        title="Honors | Fezcodex"
+        description="Marks held and marks still to find."
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-0 z-40 opacity-[0.32] mix-blend-multiply"
+        style={{ backgroundImage: PAPER_GRAIN }}
+      />
 
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <Link
-          to="/"
-          className="group text-[#9E4A2F] hover:text-[#C96442] flex items-center justify-center gap-2 text-lg mb-4 transition-all font-fraunces italic"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Home
-        </Link>
+      <div className="relative z-10 mx-auto max-w-[1280px] px-6 md:px-14 pb-[120px]">
+        <TerracottaStrip
+          left="Folio X · honors"
+          center="Marks held, marks still to find"
+          right={`${unlockedCount} / ${total}`}
+        />
 
-        <div className="mx-auto max-w-2xl text-center relative z-10">
-          <h1 className="text-4xl font-fraunces italic tracking-tight text-[#1A1613] sm:text-6xl flex flex-col sm:flex-row items-center justify-center gap-4">
-            <div className="relative">
-              <div className="absolute inset-0 bg-[#C96442] blur-2xl opacity-20 rounded-full"></div>
-              <TrophyIcon
-                size={56}
-                weight="duotone"
-                className="text-[#C96442] relative z-10 drop-shadow-[0_0_15px_rgba(201,100,66,0.4)]"
-              />
+        {/* hero */}
+        <section className="pt-20 md:pt-28 pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-[1.35fr_1fr] gap-10 md:gap-20 items-end">
+            <div>
+              <div className="font-ibm-plex-mono text-[11px] tracking-[0.2em] uppercase text-[#9E4A2F] mb-6 flex items-center gap-3">
+                <TrophyIcon size={14} weight="regular" />
+                <span>Codex entry · §</span>
+                <span aria-hidden="true" className="h-px flex-1 max-w-[60px] bg-[#9E4A2F]/50" />
+                <span>X</span>
+              </div>
+              <h1
+                className="font-fraunces text-[72px] md:text-[128px] leading-[0.86] tracking-[-0.035em] text-[#1A1613]"
+                style={{
+                  fontVariationSettings:
+                    '"opsz" 144, "SOFT" 30, "WONK" 1, "wght" 460',
+                }}
+              >
+                Honors<br />
+                <ChapterEm>held.</ChapterEm>
+              </h1>
             </div>
-            Achievements
-            <TrophyIcon
-              size={56}
-              weight="duotone"
-              className="text-[#C96442] relative z-10 drop-shadow-[0_0_15px_rgba(201,100,66,0.4)]"
-            />
-          </h1>
-          <p className="mt-6 text-lg leading-8 text-[#2E2620]">
-            Discover the secrets hidden within Fezcodex.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-2 mt-8 max-w-2xl mx-auto font-mono">
-            <div className="flex items-center gap-2 mr-2 text-[#2E2620]/50 text-sm">
-              <FunnelIcon size={16} />
-              <span>Filter:</span>
-            </div>
-            {uniqueCategories.map((category) => {
-              const isSelected =
-                selectedCategories.includes(category) ||
-                (category === 'All' && selectedCategories.length === 0);
-              const colorClass = isSelected
-                ? 'bg-[#C96442]/15 text-[#9E4A2F] border-[#C96442]/50 shadow-[0_0_10px_rgba(201,100,66,0.15)]'
-                : 'bg-[#E8DECE]/60 text-[#2E2620]/60 border-[#1A161320] hover:border-[#1A1613] hover:text-[#1A1613]';
-              return (
-                <button
-                  key={category}
-                  onClick={() => toggleCategory(category)}
-                  className={`px-3 py-1 rounded-full text-sm font-medium border transition-colors duration-200 ${colorClass}`}
+            <aside className="flex flex-col gap-5 lg:border-l border-[#1A161320] lg:pl-10">
+              <p
+                className="font-fraunces italic text-[19px] leading-[1.4] text-[#1A1613] max-w-[36ch]"
+                style={{
+                  fontVariationSettings:
+                    '"opsz" 48, "SOFT" 100, "WONK" 0, "wght" 380',
+                }}
+              >
+                An audit of the{' '}
+                <span
+                  className="not-italic text-[#9E4A2F]"
+                  style={{
+                    fontStyle: 'normal',
+                    fontVariationSettings: '"wght" 560',
+                  }}
                 >
-                  {category}
-                </button>
-              );
-            })}
-
-            {selectedCategories.length > 0 && (
-              <button
-                onClick={clearFilters}
-                className="ml-2 text-sm text-[#9E4A2F] hover:text-[#C96442] flex items-center gap-1 transition-colors"
-              >
-                <XCircleIcon size={20} /> Clear
-              </button>
-            )}
-          </div>
-
-          <div className="mt-8 max-w-md mx-auto">
-            <div className="flex justify-between text-sm text-[#2E2620] mb-2">
-              <span>Progress</span>
-              <span>
-                {unlockedCount} / {totalCount}
-              </span>
-            </div>
-            <div className="w-full bg-[#E8DECE]/80 rounded-full h-4 overflow-hidden border border-[#1A161320] shadow-inner">
-              <div
-                className="bg-gradient-to-r from-[#9E4A2F] via-[#C96442] to-[#B88532] h-4 rounded-full transition-all duration-1000 ease-out shadow-[0_0_10px_rgba(201,100,66,0.4)]"
-                style={{ width: `${progressPercentage}%` }}
-              ></div>
-            </div>
-
-            <div
-              className={`mt-8 flex items-center gap-4 p-4 rounded-sm border backdrop-blur-sm transition-all duration-300 ${
-                showAchievementToast
-                  ? 'bg-[#C96442]/10 border-[#C96442]/40 text-[#9E4A2F]'
-                  : 'bg-[#E8DECE]/40 border-[#1A161320] text-[#2E2620]'
-              }`}
-            >
-              <div
-                className={`p-2.5 rounded-full shrink-0 ${
-                  showAchievementToast ? 'bg-[#C96442]/20 text-[#C96442]' : 'bg-[#1A161320] text-[#2E2620]/60'
-                }`}
-              >
-                {showAchievementToast ? <InfoIcon size={24} weight="duotone" /> : <BellSlashIcon size={24} weight="duotone" />}
-              </div>
-              <div className="flex-1 text-left">
-                <p className="font-medium text-sm tracking-wide">
-                  NOTIFICATIONS:{' '}
-                  <span className="font-bold">{showAchievementToast ? 'ACTIVE' : 'MUTED'}</span>
-                </p>
-                <p className={`text-xs mt-1 ${showAchievementToast ? 'text-[#9E4A2F]/70' : 'text-[#2E2620]/60'}`}>
-                  Manage in{' '}
-                  <Link to="/settings" className="underline underline-offset-2 hover:text-[#1A1613] transition-colors">
-                    Settings
-                  </Link>
-                  .
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-16">
-          {filteredAchievements.map((achievement) => {
-            const isUnlocked = unlockedAchievements[achievement.id]?.unlocked;
-            const unlockedDate = isUnlocked ? new Date(unlockedAchievements[achievement.id].unlockedAt) : null;
-
-            return (
-              <div
-                key={achievement.id}
-                className={`relative group flex flex-col h-full overflow-hidden rounded-sm border transition-all duration-500 ease-out ${
-                  isUnlocked
-                    ? 'border-[#C96442]/40 hover:-translate-y-2 hover:shadow-[0_15px_40px_-10px_rgba(201,100,66,0.35)]'
-                    : 'border-[#1A161320] bg-[#E8DECE]/30 grayscale opacity-70 hover:opacity-100 hover:border-[#1A1613]'
-                }`}
-              >
-                <div
-                  className={`absolute inset-0 z-0 transition-all duration-500 ${
-                    isUnlocked
-                      ? 'bg-gradient-to-br from-[#C96442]/15 via-[#F3ECE0] to-[#F3ECE0] opacity-100'
-                      : 'bg-[#F3ECE0]'
-                  }`}
+                  small true things
+                </span>{' '}
+                this codex has done — and the ones still waiting.
+              </p>
+              <div className="grid grid-cols-2 gap-4 pt-4 border-t border-[#1A161320]">
+                <TerracottaSpec label="Held" value={`${unlockedCount}`} />
+                <TerracottaSpec label="Total" value={`${total}`} />
+                <TerracottaSpec label="Fidelity" value={`${pct}%`} />
+                <TerracottaSpec
+                  label="Notices"
+                  value={showAchievementToast ? 'on' : 'off'}
                 />
+              </div>
 
-                <div className="relative z-10 flex flex-col items-center text-center p-6 flex-grow">
-                  <span
-                    className={`mb-6 px-3 py-1 text-[10px] font-bold tracking-widest uppercase rounded-full border ${
-                      isUnlocked
-                        ? 'bg-[#C96442]/10 text-[#9E4A2F] border-[#C96442]/40'
-                        : 'bg-[#E8DECE] text-[#2E2620]/50 border-[#1A161320]'
-                    }`}
-                  >
-                    {achievement.category}
-                  </span>
-
-                  <div className="relative mb-6 group-hover:scale-105 transition-transform duration-300">
-                    {isUnlocked && (
-                      <div className="absolute inset-0 bg-[#C96442] blur-2xl opacity-20 rounded-full animate-pulse-slow"></div>
-                    )}
-
-                    <div
-                      className={`relative h-24 w-24 rounded-full flex items-center justify-center border-[3px] shadow-2xl ${
-                        isUnlocked
-                          ? 'bg-gradient-to-b from-[#F3ECE0] to-[#E8DECE] border-[#C96442]/60 text-[#9E4A2F] ring-4 ring-[#C96442]/10'
-                          : 'bg-[#E8DECE]/60 border-[#1A161320] text-[#2E2620]/40'
-                      }`}
-                    >
-                      <div className="scale-[1.4] drop-shadow-lg">
-                        {isUnlocked ? achievement.icon : <LockIcon weight="fill" />}
-                      </div>
-                    </div>
-                  </div>
-
-                  <h3
-                    className={`text-2xl font-fraunces italic tracking-tight mb-3 ${
-                      isUnlocked ? 'text-[#1A1613]' : 'text-[#2E2620]/40'
-                    }`}
-                  >
-                    {achievement.title}
-                  </h3>
-                  <p className={`text-sm leading-relaxed ${isUnlocked ? 'text-[#2E2620]' : 'text-[#2E2620]/40'}`}>
-                    {achievement.description}
-                  </p>
+              {/* progress rule — a literal "line" */}
+              <div className="pt-2">
+                <div className="font-ibm-plex-mono text-[9.5px] tracking-[0.22em] uppercase text-[#2E2620]/70 mb-2">
+                  Plumb progress
                 </div>
-
-                <div
-                  className={`relative z-10 mt-auto p-4 w-full border-t ${
-                    isUnlocked ? 'border-[#C96442]/20 bg-[#C96442]/5' : 'border-[#1A161320] bg-[#E8DECE]/20'
-                  }`}
-                >
-                  {isUnlocked ? (
-                    <div className="flex items-center justify-center gap-2 text-xs text-[#9E4A2F]/80 font-medium font-mono uppercase tracking-widest">
-                      <CalendarBlankIcon weight="duotone" size={16} />
-                      <span>
-                        Unlocked:{' '}
-                        {unlockedDate.toLocaleDateString(undefined, {
-                          year: 'numeric',
-                          month: 'short',
-                          day: 'numeric',
-                        })}
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="text-center text-xs text-[#2E2620]/40 font-mono uppercase tracking-widest flex items-center justify-center gap-2">
-                      <LockIcon size={14} /> Locked
-                    </div>
-                  )}
+                <div className="relative h-[3px] w-full bg-[#1A161320]">
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: `${pct}%` }}
+                    transition={{ duration: 1.2, ease: 'easeOut' }}
+                    className="absolute inset-y-0 left-0 bg-[#C96442]"
+                  />
                 </div>
               </div>
+
+              {!showAchievementToast && (
+                <div className="flex items-center gap-3 pt-2 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase text-[#2E2620]/70">
+                  <BellSlashIcon size={12} />
+                  <span>
+                    Notices are muted ·{' '}
+                    <Link
+                      to="/settings"
+                      className="text-[#9E4A2F] hover:text-[#C96442]"
+                    >
+                      settings
+                    </Link>
+                  </span>
+                </div>
+              )}
+            </aside>
+          </div>
+        </section>
+
+        {/* filter */}
+        <section className="py-6 border-y border-[#1A161320] flex flex-wrap items-baseline gap-3 font-ibm-plex-mono text-[10px] tracking-[0.2em] uppercase">
+          <span className="text-[#2E2620]/70">Filter</span>
+          {categories.map((c) => {
+            const val = c === 'All' ? 'all' : c;
+            const active = activeCat === val;
+            return (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setActiveCat(val)}
+                className={`px-2 py-1 border transition-colors ${
+                  active
+                    ? 'border-[#1A1613] bg-[#1A1613] text-[#F3ECE0]'
+                    : 'border-[#1A161320] text-[#2E2620] hover:border-[#1A1613]/50'
+                }`}
+              >
+                {c}
+              </button>
             );
           })}
+        </section>
+
+        {/* grid */}
+        <section className="pt-16">
+          <TerracottaChapter
+            numeral="I"
+            label="Known marks"
+            title={
+              <>
+                The <ChapterEm>record.</ChapterEm>
+              </>
+            }
+            blurb="Each honor is a small true thing — held, dated, and archived here."
+          />
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-5">
+            {filtered.map((a) => {
+              const entry = unlockedAchievements[a.id];
+              const unlocked = !!entry?.unlocked;
+              return (
+                <AchievementMark
+                  key={a.id}
+                  achievement={a}
+                  status={unlocked ? 'unlocked' : 'locked'}
+                  unlockedAt={entry?.unlockedAt}
+                />
+              );
+            })}
+          </div>
+        </section>
+
+        <TerracottaColophon
+          signature={
+            <>
+              <span>© {new Date().getFullYear()} · Fezcode</span>
+              <span>
+                Honors · {unlockedCount} of {total} held
+              </span>
+            </>
+          }
+        />
+
+        <div className="fixed bottom-6 right-6 opacity-40 pointer-events-none z-20 hidden md:block">
+          <TerracottaMark size={18} color="#C96442" />
         </div>
       </div>
     </div>
