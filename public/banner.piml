@@ -170,6 +170,16 @@
     (linkText) Play net_run
 
   > (banner)
+    (id) fezterracotta-launch
+    (type) info
+    (from) 2026-04-22T00:00:00Z
+    (to) 2026-05-05T23:59:59Z
+    (text) FEZTERRACOTTA IS ONLINE: A WEIGHTED CODEX OF BONE PAPER AND TERRA INK. ENABLE VIA SETTINGS OR COMMAND PALETTE.
+    (isActive) true
+    (link) /settings#fezcodex-theme
+    (linkText) Enable Terracotta
+
+  > (banner)
     (id) urban-rogue-launch
     (type) info
     (from) 2026-04-11T00:00:00Z

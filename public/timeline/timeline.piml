@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-04-22
+    (title) Fezterracotta: The Weighted Codex
+    (description) Deployed 'Fezterracotta', a third design language built around the Plumb identity — bone paper, terra ink, brass and sage accents, Fraunces variable serif and IBM Plex Mono. Every page was rebuilt from scratch as editorial matter: chapter-numbered layouts, dictionary entries, plumb-line hero wordmark, registration-crosshair generative plates, a new Galley Proof blog reader, and theme-aware Mermaid, Toasts, Contact Modal, and Banner.
+    (type) feature
+    (icon) PaletteIcon
+    (link) /settings#fezcodex-theme
+
+  > (item)
     (date) 2026-04-19
     (title) Application Archive Optimization
     (description) Resolved critical performance bottleneck and navigation timeout on the Brutalist Apps page. Optimized the ArcaneSigil rendering to significantly reduce CPU overhead and implemented graceful error handling for registry connections.
