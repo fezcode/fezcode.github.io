@@ -15,6 +15,7 @@ import {
   GearIcon,
   BookIcon,
 } from '@phosphor-icons/react';
+import { TerracottaMark } from './terracotta';
 
 const QUOTES = [
   "Go's defer statement executes in LIFO order (Last-In, First-Out).",
@@ -222,7 +223,161 @@ const SyntaxSprite = () => {
 
   if (!isSyntaxSpriteEnabled) return null;
 
-  const spriteColor = fezcodexTheme === 'luxe' ? '#8D4004' : '#10B981';
+  const isTerracotta = fezcodexTheme === 'terracotta';
+  const spriteColor = isTerracotta
+    ? '#C96442'
+    : fezcodexTheme === 'luxe'
+      ? '#8D4004'
+      : '#10B981';
+
+  /* -------------------------------------------------------------
+   * TERRACOTTA COMPANION — a plumb bob on a short cord.
+   * The bob swings as it "walks" (the cord translates to the sway);
+   * jumping lifts the cord, thinking shows a bone-paper editorial note.
+   * ------------------------------------------------------------- */
+  if (isTerracotta) {
+    return (
+      <div className="fixed bottom-0 left-0 w-full h-36 pointer-events-none z-[9999]">
+        <motion.div
+          animate={{ x: `${position.x}vw` }}
+          transition={{ type: 'spring', stiffness: 100, damping: 20, mass: 0.1 }}
+          className="absolute bottom-3 flex flex-col items-center pointer-events-auto cursor-help"
+          style={{ width: '60px' }}
+          onClick={handleSpriteClick}
+        >
+          {/* Editorial thought card — bone paper, hairline rule, terra dot */}
+          <AnimatePresence>
+            {thought && (
+              <motion.div
+                initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 24 }}
+                className="absolute bottom-full mb-5 max-w-[320px] w-max"
+                style={{ right: 'auto', left: '50%', translate: '-50% 0' }}
+              >
+                <div className="relative bg-[#F3ECE0] border border-[#1A161320] shadow-[0_20px_40px_-20px_rgba(26,22,19,0.25)] px-4 pt-2.5 pb-3">
+                  {/* top mono label strip */}
+                  <div className="flex items-center gap-2 pb-2 mb-2 border-b border-dashed border-[#1A161320] font-ibm-plex-mono text-[8.5px] tracking-[0.22em] uppercase text-[#9E4A2F]">
+                    <span
+                      aria-hidden="true"
+                      className="inline-block w-[5px] h-[5px] rounded-full bg-[#C96442]"
+                    />
+                    <span>Syntax · margin note</span>
+                  </div>
+                  {/* italic quote */}
+                  <p
+                    className="font-fraunces italic text-[13px] leading-[1.45] text-[#1A1613] max-w-[46ch]"
+                    style={{
+                      fontVariationSettings:
+                        '"opsz" 18, "SOFT" 100, "WONK" 0, "wght" 380',
+                    }}
+                  >
+                    {thought}
+                  </p>
+                  {/* caret at bottom, centered — a small ink tick */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-px"
+                    style={{
+                      width: 0,
+                      height: 0,
+                      borderLeft: '6px solid transparent',
+                      borderRight: '6px solid transparent',
+                      borderTop: '6px solid #F3ECE0',
+                      filter: 'drop-shadow(0 1px 0 rgba(26,22,19,0.12))',
+                    }}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* The cord + bob — cord anchors invisibly above, bob bobs below */}
+          <motion.div
+            className="relative flex flex-col items-center"
+            animate={{ scaleX: position.direction }}
+            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          >
+            {/* cord — stretches up and off the sprite box, swinging gently */}
+            <motion.span
+              aria-hidden="true"
+              className="block absolute left-1/2 -translate-x-1/2"
+              style={{
+                top: -28,
+                width: 1.5,
+                height: 28,
+                backgroundColor: '#1A1613',
+                transformOrigin: 'top center',
+              }}
+              animate={
+                isJumping
+                  ? { rotate: [0, 12, -8, 0] }
+                  : state === 'walking'
+                    ? { rotate: [3, -3, 3] }
+                    : { rotate: [1, -1, 1] }
+              }
+              transition={{
+                duration: isJumping ? 0.8 : state === 'walking' ? 0.8 : 3.5,
+                ease: 'easeInOut',
+                repeat: isJumping ? 0 : Infinity,
+              }}
+            />
+
+            {/* the plumb-bob body — lifts on jump, idles with a slow breathe */}
+            <motion.div
+              animate={
+                isJumping
+                  ? { y: [0, -34, 0] }
+                  : state === 'walking'
+                    ? { y: [0, -2, 0] }
+                    : { y: [0, -1, 0] }
+              }
+              transition={
+                isJumping
+                  ? { duration: 0.8, ease: 'easeInOut' }
+                  : {
+                      repeat: Infinity,
+                      duration: state === 'walking' ? 0.5 : 3,
+                      ease: 'easeInOut',
+                    }
+              }
+              className="relative"
+              title="Syntax — the codex companion"
+            >
+              <TerracottaMark size={22} color="#C96442" />
+              {/* thinking halo — a small terra ring that pulses when Syntax has a note */}
+              <AnimatePresence>
+                {state === 'thinking' && (
+                  <motion.span
+                    initial={{ opacity: 0, scale: 0.6 }}
+                    animate={{ opacity: [0.6, 0.15, 0.6], scale: [1, 1.25, 1] }}
+                    exit={{ opacity: 0, scale: 0.6 }}
+                    transition={{ duration: 1.8, repeat: Infinity }}
+                    aria-hidden="true"
+                    className="absolute inset-0 -m-2 rounded-full border border-[#C96442]/60 pointer-events-none"
+                  />
+                )}
+              </AnimatePresence>
+            </motion.div>
+
+            {/* a single hairline tick as the "floor shadow" under the bob */}
+            <motion.span
+              aria-hidden="true"
+              animate={
+                state === 'walking' || isJumping
+                  ? { scaleX: [1, 0.7, 1], opacity: [0.55, 0.3, 0.55] }
+                  : { opacity: 0.45 }
+              }
+              transition={{ repeat: Infinity, duration: 0.5 }}
+              className="block mt-1 bg-[#1A1613]"
+              style={{ width: 18, height: 1 }}
+            />
+          </motion.div>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="fixed bottom-0 left-0 w-full h-32 pointer-events-none z-[9999]">
