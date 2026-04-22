@@ -5,6 +5,7 @@ import Footer from './Footer';
 import LuxeSidebar from './LuxeSidebar';
 import LuxeNavbar from './LuxeNavbar';
 import LuxeFooter from './LuxeFooter';
+import TerracottaSidebar from './TerracottaSidebar';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
@@ -82,11 +83,24 @@ const Layout = ({
     <DndProvider>{children}</DndProvider>
   ) : (
     <div
-      className={`${fezcodexTheme === 'luxe' ? 'bg-[#F5F5F0]' : 'bg-[#050505]'} min-h-screen font-sans flex`}
+      className={`${
+        fezcodexTheme === 'luxe'
+          ? 'bg-[#F5F5F0]'
+          : fezcodexTheme === 'terracotta'
+            ? 'bg-[#F3ECE0]'
+            : 'bg-[#050505]'
+      } min-h-screen font-sans flex`}
     >
       {!hideLayout &&
         (fezcodexTheme === 'luxe' ? (
           <LuxeSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
+        ) : fezcodexTheme === 'terracotta' ? (
+          <TerracottaSidebar
             isOpen={isSidebarOpen}
             toggleSidebar={toggleSidebar}
             toggleModal={toggleModal}
@@ -104,7 +118,7 @@ const Layout = ({
         className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? 'md:ml-72' : 'md:ml-0'}`}
       >
         {!hideLayout &&
-          (fezcodexTheme === 'luxe' ? (
+          (fezcodexTheme === 'luxe' || fezcodexTheme === 'terracotta' ? (
             <LuxeNavbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
@@ -127,7 +141,7 @@ const Layout = ({
           location.pathname !== '/projects' &&
           location.pathname !== '/blog' &&
           location.pathname !== '/commands' &&
-          (fezcodexTheme === 'luxe' ? <LuxeFooter /> : <Footer />)}
+          (fezcodexTheme === 'luxe' || fezcodexTheme === 'terracotta' ? <LuxeFooter /> : <Footer />)}
       </div>
     </div>
   );
