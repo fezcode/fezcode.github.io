@@ -26,13 +26,23 @@ export const VisualSettingsProvider = ({ children }) => {
     { id: 'font-fraunces', name: 'Fraunces' },
   ];
 
-  const [headerFont, setHeaderFont] = usePersistentState(
-    'header-font',
-    'font-outfit',
+  // Font picks are persisted per-theme so switching themes does not reset
+  // your typography preferences in the other themes.
+  const [headerFontsByTheme, setHeaderFontsByTheme] = usePersistentState(
+    'header-fonts-by-theme',
+    {
+      brutalist: 'font-outfit',
+      luxe: 'font-playfairDisplay',
+      terracotta: 'font-fraunces',
+    },
   );
-  const [bodyFont, setBodyFont] = usePersistentState(
-    'body-font',
-    'font-outfit',
+  const [bodyFontsByTheme, setBodyFontsByTheme] = usePersistentState(
+    'body-fonts-by-theme',
+    {
+      brutalist: 'font-outfit',
+      luxe: 'font-outfit',
+      terracotta: 'font-ibm-plex-mono',
+    },
   );
   const [isInverted, setIsInverted] = usePersistentState('is-inverted', false);
   const [isRetro, setIsRetro] = usePersistentState('is-retro', false);
@@ -100,6 +110,17 @@ export const VisualSettingsProvider = ({ children }) => {
     'fezcodex-theme',
     'brutalist',
   ); // 'brutalist' | 'luxe' | 'terracotta'
+
+  // Derived font values for the active theme. Setting these updates only the
+  // active theme's entry, preserving the other themes' picks.
+  const headerFont =
+    headerFontsByTheme?.[fezcodexTheme] || 'font-outfit';
+  const bodyFont =
+    bodyFontsByTheme?.[fezcodexTheme] || 'font-outfit';
+  const setHeaderFont = (value) =>
+    setHeaderFontsByTheme((prev) => ({ ...(prev || {}), [fezcodexTheme]: value }));
+  const setBodyFont = (value) =>
+    setBodyFontsByTheme((prev) => ({ ...(prev || {}), [fezcodexTheme]: value }));
 
   // URL Parameter Observer - Consumes ?fezTheme=... and ?fezBlogMode=...
   useEffect(() => {
