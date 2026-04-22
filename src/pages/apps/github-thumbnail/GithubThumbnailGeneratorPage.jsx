@@ -86,6 +86,7 @@ const THEME_OPTIONS = [
   { value: 'dithered', label: 'RETRO_DITHERED' },
   { value: 'abstractNonsense', label: 'ABSTRACT_NONSENSE' },
   { value: 'needForSpeed', label: 'NEED_FOR_SPEED' },
+  { value: 'terracotta', label: 'TERRACOTTA_PLATE' },
 ];
 
 const GithubThumbnailGeneratorPage = () => {

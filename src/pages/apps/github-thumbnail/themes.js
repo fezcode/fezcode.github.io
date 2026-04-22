@@ -69,6 +69,7 @@ import { jungle } from './themes/jungle';
 import { dithered } from './themes/dithered';
 import { abstractNonsense } from './themes/abstractNonsense';
 import { needForSpeed } from './themes/needForSpeed';
+import { terracotta } from './themes/terracotta';
 
 export const themeRenderers = {
   modern,
@@ -139,4 +140,5 @@ export const themeRenderers = {
   dithered,
   abstractNonsense,
   needForSpeed,
+  terracotta,
 };
