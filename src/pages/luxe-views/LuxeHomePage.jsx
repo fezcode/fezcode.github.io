@@ -581,7 +581,7 @@ const OmniverseHero = ({ isSyntaxSpriteEnabled, toggleSyntaxSprite }) => {
 const LuxeHomePage = () => {
   const navigate = useNavigate();
   const { projects, loading: loadingProjects } = useProjects(true);
-  const { setFezcodexTheme, isSyntaxSpriteEnabled, toggleSyntaxSprite } = useVisualSettings();
+  const { fezcodexTheme, setFezcodexTheme, isSyntaxSpriteEnabled, toggleSyntaxSprite } = useVisualSettings();
   const [posts, setPosts] = useState([]);
   const [layoutMode, setLayoutMode] = useState('stack');
 
@@ -633,7 +633,11 @@ const LuxeHomePage = () => {
             label="Interface"
             value="Luxe"
             icon={ToggleLeftIcon}
-            onClick={() => setFezcodexTheme('brutalist')}
+            onClick={() => {
+              const order = ['brutalist', 'luxe', 'terracotta'];
+              const next = order[(order.indexOf(fezcodexTheme) + 1) % order.length];
+              setFezcodexTheme(next);
+            }}
             actionLabel="Switch"
           />
         </div>

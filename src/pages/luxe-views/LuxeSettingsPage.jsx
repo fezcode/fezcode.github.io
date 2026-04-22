@@ -248,6 +248,7 @@ const LuxeSettingsPage = () => {
                     options={[
                       { label: 'Brutalist (Dark)', value: 'brutalist' },
                       { label: 'Luxe (Refined)', value: 'luxe' },
+                      { label: 'Terracotta (Warm)', value: 'terracotta' },
                     ]}
                     value={fezcodexTheme}
                     onChange={setFezcodexTheme}
