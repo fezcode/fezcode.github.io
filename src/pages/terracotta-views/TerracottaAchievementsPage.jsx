@@ -51,13 +51,13 @@ const TerracottaAchievementsPage = () => {
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <Link
           to="/"
-          className="group text-[#9E4A2F] hover:text-[#C96442] flex items-center justify-center gap-2 text-lg mb-4 transition-all font-playfairDisplay italic"
+          className="group text-[#9E4A2F] hover:text-[#C96442] flex items-center justify-center gap-2 text-lg mb-4 transition-all font-fraunces italic"
         >
           <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" /> Back to Home
         </Link>
 
         <div className="mx-auto max-w-2xl text-center relative z-10">
-          <h1 className="text-4xl font-playfairDisplay italic tracking-tight text-[#1A1613] sm:text-6xl flex flex-col sm:flex-row items-center justify-center gap-4">
+          <h1 className="text-4xl font-fraunces italic tracking-tight text-[#1A1613] sm:text-6xl flex flex-col sm:flex-row items-center justify-center gap-4">
             <div className="relative">
               <div className="absolute inset-0 bg-[#C96442] blur-2xl opacity-20 rounded-full"></div>
               <TrophyIcon
@@ -207,7 +207,7 @@ const TerracottaAchievementsPage = () => {
                   </div>
 
                   <h3
-                    className={`text-2xl font-playfairDisplay italic tracking-tight mb-3 ${
+                    className={`text-2xl font-fraunces italic tracking-tight mb-3 ${
                       isUnlocked ? 'text-[#1A1613]' : 'text-[#2E2620]/40'
                     }`}
                   >

@@ -91,7 +91,7 @@ const TerracottaLogsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 font-playfairDisplay">
+    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 font-fraunces">
       <Seo title="Logs | Fezcodex" description="A collection of logs and writings." />
       <div className="mx-auto max-w-5xl px-6 py-24 md:px-12">
         <header className="mb-20">
@@ -105,7 +105,7 @@ const TerracottaLogsPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div>
-              <h1 className="text-6xl md:text-8xl font-playfairDisplay italic tracking-tight text-[#1A1613] mb-4 leading-none">
+              <h1 className="text-6xl md:text-8xl font-fraunces italic tracking-tight text-[#1A1613] mb-4 leading-none">
                 Logs
               </h1>
               <p className="text-[#2E2620]/60 font-mono text-sm max-w-sm uppercase tracking-widest">
@@ -157,7 +157,7 @@ const TerracottaLogsPage = () => {
               placeholder="Search logs..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-transparent border-b border-[#1A161320] text-xl md:text-2xl text-[#1A1613] placeholder-[#2E2620]/30 focus:border-[#C96442] focus:outline-none py-2 transition-colors font-playfairDisplay italic"
+              className="w-full bg-transparent border-b border-[#1A161320] text-xl md:text-2xl text-[#1A1613] placeholder-[#2E2620]/30 focus:border-[#C96442] focus:outline-none py-2 transition-colors font-fraunces italic"
             />
           </div>
 

@@ -194,7 +194,7 @@ const Hero = () => {
             <span>ONLINE</span>
           </div>
 
-          <h1 className="text-[15vw] md:text-[11vw] font-playfairDisplay italic leading-[0.82] tracking-tighter text-[#1A1613] mb-6 relative select-none">
+          <h1 className="text-[15vw] md:text-[11vw] font-fraunces italic leading-[0.82] tracking-tighter text-[#1A1613] mb-6 relative select-none">
             <span>{mainTitle}</span>
             <span className="text-[#C96442]">{subTitle}</span>
             <span className="text-[#C96442] font-black">.</span>
@@ -206,7 +206,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <p className="max-w-2xl text-xl md:text-2xl text-[#2E2620] font-playfairDisplay leading-relaxed text-balance mb-12 border-l-2 border-[#B88532]/40 pl-6">
+          <p className="max-w-2xl text-xl md:text-2xl text-[#2E2620] font-fraunces leading-relaxed text-balance mb-12 border-l-2 border-[#B88532]/40 pl-6">
             {heroTagline}
           </p>
 
@@ -263,7 +263,7 @@ const QuickLinks = () => {
             </div>
 
             <div className="relative z-10">
-              <h3 className="text-2xl font-playfairDisplay italic tracking-tight mb-1 group-hover:translate-x-1 transition-transform text-[#1A1613] group-hover:text-[#F3ECE0]">
+              <h3 className="text-2xl font-fraunces italic tracking-tight mb-1 group-hover:translate-x-1 transition-transform text-[#1A1613] group-hover:text-[#F3ECE0]">
                 {app.title}
               </h3>
               <p className="text-xs text-[#2E2620]/60 group-hover:text-[#F3ECE0]/70 font-mono uppercase tracking-tight">
@@ -289,7 +289,7 @@ const SectionHeader = ({ num, title, link, linkText }) => (
       <span className="bg-[#C96442] text-[#F3ECE0] font-mono text-lg font-bold px-3 py-1">
         0{num}
       </span>
-      <h2 className="text-4xl md:text-5xl font-playfairDisplay italic tracking-tight text-[#1A1613]">
+      <h2 className="text-4xl md:text-5xl font-fraunces italic tracking-tight text-[#1A1613]">
         {title}
       </h2>
     </div>
@@ -476,7 +476,7 @@ const TerracottaHomePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 selection:text-[#1A1613] relative overflow-x-hidden font-playfairDisplay">
+    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 selection:text-[#1A1613] relative overflow-x-hidden font-fraunces">
       <Seo
         title="Fezcodex // Terracotta"
         description="Experimental software vault rendered in warm editorial tones."

@@ -49,7 +49,7 @@ const TerracottaModal = ({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between p-6 border-b border-[#1A161320] bg-[#E8DECE]/60">
-              <h2 className="text-2xl font-playfairDisplay italic tracking-tight text-[#1A1613]">
+              <h2 className="text-2xl font-fraunces italic tracking-tight text-[#1A1613]">
                 {title}
               </h2>
               <button

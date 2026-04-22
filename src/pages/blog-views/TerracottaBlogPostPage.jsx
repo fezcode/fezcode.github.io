@@ -267,7 +267,7 @@ const TerracottaBlogPostPage = () => {
             </span>
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-playfairDisplay italic tracking-tight text-[#1A1613] leading-none max-w-5xl">
+          <h1 className="text-4xl md:text-7xl font-fraunces italic tracking-tight text-[#1A1613] leading-none max-w-5xl">
             {post.attributes.title}
           </h1>
         </div>
@@ -277,7 +277,7 @@ const TerracottaBlogPostPage = () => {
         <div className="lg:col-span-8">
           <div
             className="prose prose-lg max-w-none
-                prose-headings:font-playfairDisplay prose-headings:italic prose-headings:tracking-tight prose-headings:text-[#1A1613]
+                prose-headings:font-fraunces prose-headings:italic prose-headings:tracking-tight prose-headings:text-[#1A1613]
                 prose-p:text-[#2E2620] prose-p:leading-relaxed
                 prose-li:text-[#2E2620]
                 prose-a:text-[#9E4A2F] prose-a:underline prose-a:decoration-[#C96442]/40 prose-a:underline-offset-4 hover:prose-a:decoration-[#C96442]
@@ -302,7 +302,7 @@ const TerracottaBlogPostPage = () => {
                   <span className="block font-mono text-[10px] uppercase text-[#2E2620]/60 mb-2">
                     Previous Intel
                   </span>
-                  <span className="text-xl font-playfairDisplay italic">{prevPost.title}</span>
+                  <span className="text-xl font-fraunces italic">{prevPost.title}</span>
                 </Link>
               ) : (
                 <div />
@@ -319,7 +319,7 @@ const TerracottaBlogPostPage = () => {
                   <span className="block font-mono text-[10px] uppercase text-[#2E2620]/60 mb-2">
                     Next Intel
                   </span>
-                  <span className="text-xl font-playfairDisplay italic">{nextPost.title}</span>
+                  <span className="text-xl font-fraunces italic">{nextPost.title}</span>
                 </Link>
               )}
             </div>

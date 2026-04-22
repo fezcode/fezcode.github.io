@@ -157,7 +157,7 @@ const TerracottaCommandPalette = ({
                 ref={inputRef}
                 type="text"
                 placeholder={isLoading ? 'Initialising...' : 'Search registry...'}
-                className="w-full bg-transparent text-xl md:text-2xl font-playfairDisplay italic placeholder-[#2E2620]/30 focus:outline-none tracking-tight text-[#1A1613]"
+                className="w-full bg-transparent text-xl md:text-2xl font-fraunces italic placeholder-[#2E2620]/30 focus:outline-none tracking-tight text-[#1A1613]"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 disabled={isLoading}
@@ -182,7 +182,7 @@ const TerracottaCommandPalette = ({
                   >
                     <div className="flex flex-col gap-0.5">
                       <span
-                        className={`text-lg font-playfairDisplay italic tracking-tight ${
+                        className={`text-lg font-fraunces italic tracking-tight ${
                           selectedIndex === index ? 'text-[#1A1613]' : 'text-[#2E2620]/80'
                         }`}
                       >

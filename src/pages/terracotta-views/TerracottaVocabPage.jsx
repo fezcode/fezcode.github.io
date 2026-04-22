@@ -62,7 +62,7 @@ const TerracottaVocabPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 font-playfairDisplay relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 font-fraunces relative overflow-x-hidden">
       <Seo title="Glossary | Fezcodex" description="A dictionary of technical concepts and patterns." />
 
       <div
@@ -83,7 +83,7 @@ const TerracottaVocabPage = () => {
             <span>Fezcodex Index</span>
           </Link>
 
-          <h1 className="text-7xl md:text-9xl font-playfairDisplay italic tracking-tight mb-6 text-[#1A1613] leading-none">
+          <h1 className="text-7xl md:text-9xl font-fraunces italic tracking-tight mb-6 text-[#1A1613] leading-none">
             Glossary
           </h1>
           <p className="text-xl text-[#2E2620] max-w-2xl">
@@ -138,7 +138,7 @@ const TerracottaVocabPage = () => {
               className="scroll-mt-40"
             >
               <div className="flex items-baseline gap-6 mb-10 border-b border-[#1A161320] pb-4">
-                <h2 className="text-6xl font-playfairDisplay italic text-[#1A161320]">{letter}</h2>
+                <h2 className="text-6xl font-fraunces italic text-[#1A161320]">{letter}</h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -155,7 +155,7 @@ const TerracottaVocabPage = () => {
                       <ArrowUpRightIcon size={18} className="text-[#2E2620]/40 group-hover:text-[#1A1613] transition-colors" />
                     </div>
 
-                    <h3 className="text-2xl font-playfairDisplay italic text-[#1A1613] mb-3 group-hover:underline decoration-1 underline-offset-4 decoration-[#C96442] relative z-10">
+                    <h3 className="text-2xl font-fraunces italic text-[#1A1613] mb-3 group-hover:underline decoration-1 underline-offset-4 decoration-[#C96442] relative z-10">
                       {entry.title}
                     </h3>
                   </button>
@@ -166,7 +166,7 @@ const TerracottaVocabPage = () => {
 
           {filteredEntries.length === 0 && (
             <div className="py-32 text-center">
-              <p className="font-playfairDisplay italic text-2xl text-[#2E2620]/40">
+              <p className="font-fraunces italic text-2xl text-[#2E2620]/40">
                 No definitions found for "{searchQuery}"
               </p>
             </div>

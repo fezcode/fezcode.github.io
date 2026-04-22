@@ -50,7 +50,7 @@ const TerracottaDialog = ({
 
             <div className="relative z-10 space-y-8">
               <div className="flex justify-between items-start gap-4">
-                <h3 className="text-3xl font-playfairDisplay italic tracking-tight leading-none text-[#1A1613]">
+                <h3 className="text-3xl font-fraunces italic tracking-tight leading-none text-[#1A1613]">
                   {title}
                 </h3>
                 <button

@@ -96,7 +96,7 @@ const TerracottaSidePanel = () => {
                 <span className="font-mono text-[9px] text-[#9E4A2F] uppercase tracking-[0.3em] font-bold">
                   Side_Panel
                 </span>
-                <h2 className="text-3xl font-playfairDisplay italic tracking-tight text-[#1A1613] leading-none pr-2">
+                <h2 className="text-3xl font-fraunces italic tracking-tight text-[#1A1613] leading-none pr-2">
                   {panelTitle}
                 </h2>
               </div>

@@ -52,7 +52,7 @@ const PinnedAppCard = ({ app, index }) => {
             </span>
           </div>
 
-          <h3 className="text-2xl font-playfairDisplay italic text-[#1A1613] mb-3 group-hover:text-[#9E4A2F] transition-colors tracking-tight">
+          <h3 className="text-2xl font-fraunces italic text-[#1A1613] mb-3 group-hover:text-[#9E4A2F] transition-colors tracking-tight">
             {app.title}
           </h3>
 
@@ -110,7 +110,7 @@ const TerracottaPinnedAppPage = () => {
           </Link>
 
           <div className="flex flex-col gap-4">
-            <h1 className="text-6xl md:text-8xl font-playfairDisplay italic tracking-tight text-[#1A1613] mb-4 leading-none">
+            <h1 className="text-6xl md:text-8xl font-fraunces italic tracking-tight text-[#1A1613] mb-4 leading-none">
               Featured
             </h1>
             <p className="text-[#2E2620]/70 font-mono text-sm max-w-2xl uppercase tracking-[0.2em] leading-relaxed mx-auto md:mx-0">

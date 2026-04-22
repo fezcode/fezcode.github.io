@@ -73,7 +73,7 @@ const AppModule = ({ app, index, categoryName }) => {
           </div>
 
           <div>
-            <h3 className="text-2xl font-playfairDisplay italic leading-tight mb-2 text-[#1A1613] group-hover:text-[#F3ECE0] transition-colors">
+            <h3 className="text-2xl font-fraunces italic leading-tight mb-2 text-[#1A1613] group-hover:text-[#F3ECE0] transition-colors">
               {app.title}
             </h3>
             <p className="text-xs font-mono text-[#2E2620]/60 line-clamp-2 leading-relaxed group-hover:text-[#F3ECE0]/60 transition-colors">
@@ -150,7 +150,7 @@ const TerracottaAppsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 font-playfairDisplay overflow-x-hidden">
+    <div className="min-h-screen bg-[#F3ECE0] text-[#1A1613] selection:bg-[#C96442]/25 font-fraunces overflow-x-hidden">
       <Seo title="Archive // Fezcodex" description="A collection of digital tools and artifacts." />
 
       <div className="fixed inset-0 z-0 pointer-events-none opacity-20">
@@ -168,7 +168,7 @@ const TerracottaAppsPage = () => {
               <span>Return to Home</span>
             </Link>
 
-            <h1 className="text-6xl md:text-9xl font-playfairDisplay italic tracking-tight leading-[0.85] mb-8 text-[#1A1613]">
+            <h1 className="text-6xl md:text-9xl font-fraunces italic tracking-tight leading-[0.85] mb-8 text-[#1A1613]">
               Application
               <br />
               Archive
@@ -200,7 +200,7 @@ const TerracottaAppsPage = () => {
                 placeholder="Filter by name..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-transparent border-b-2 border-[#1A161320] py-6 px-2 focus:border-[#C96442] focus:outline-none transition-all font-playfairDisplay italic text-3xl placeholder-[#2E2620]/15 text-[#1A1613]"
+                className="w-full bg-transparent border-b-2 border-[#1A161320] py-6 px-2 focus:border-[#C96442] focus:outline-none transition-all font-fraunces italic text-3xl placeholder-[#2E2620]/15 text-[#1A1613]"
               />
               <MagnifyingGlassIcon size={32} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#2E2620]/30" />
             </div>
@@ -227,7 +227,7 @@ const TerracottaAppsPage = () => {
                       to={app.to}
                       className="group block p-4 bg-[#E8DECE]/40 border border-[#1A161320] hover:border-[#1A1613] transition-all"
                     >
-                      <span className="block text-sm font-playfairDisplay italic mb-1 group-hover:text-[#1A1613] text-[#2E2620] transition-colors">
+                      <span className="block text-sm font-fraunces italic mb-1 group-hover:text-[#1A1613] text-[#2E2620] transition-colors">
                         {app.title}
                       </span>
                       <span className="block text-[9px] font-mono text-[#2E2620]/50 uppercase tracking-widest">
@@ -271,7 +271,7 @@ const TerracottaAppsPage = () => {
                         className="relative w-full flex items-center justify-between p-6 md:p-10 hover:bg-[#E8DECE]/40 transition-colors group z-10"
                       >
                         <div className="flex items-center gap-6">
-                          <div className="text-4xl md:text-6xl font-playfairDisplay italic group-hover:translate-x-2 transition-transform text-[#1A1613]">
+                          <div className="text-4xl md:text-6xl font-fraunces italic group-hover:translate-x-2 transition-transform text-[#1A1613]">
                             {category.name}
                           </div>
                           <div className="hidden md:block h-[1px] w-32 bg-[#1A161320] group-hover:w-40 transition-all" />
@@ -309,7 +309,7 @@ const TerracottaAppsPage = () => {
             {!isLoading && Object.keys(filteredData).length === 0 && (
               <div className="py-32 text-center">
                 <XIcon size={64} weight="thin" className="mx-auto mb-8 text-[#1A161320]" />
-                <h2 className="text-4xl font-playfairDisplay italic mb-4 text-[#1A1613]">No Entries Found</h2>
+                <h2 className="text-4xl font-fraunces italic mb-4 text-[#1A1613]">No Entries Found</h2>
                 <p className="text-[#2E2620]/50 uppercase tracking-[0.2em] text-[10px]">Modify filter and retry</p>
               </div>
             )}
@@ -341,7 +341,7 @@ const TerracottaAppsPage = () => {
           <div className="text-right flex flex-col items-end justify-between">
             <div className="flex items-center gap-4">
               <div className="flex flex-col items-end">
-                <span className="text-sm font-playfairDisplay italic leading-none mb-1 text-[#1A1613]">
+                <span className="text-sm font-fraunces italic leading-none mb-1 text-[#1A1613]">
                   Ahmed Samil Bulbul
                 </span>
                 <span className="font-mono text-[8px] text-[#2E2620]/50 tracking-[0.2em] uppercase">

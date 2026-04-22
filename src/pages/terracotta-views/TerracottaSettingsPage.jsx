@@ -48,7 +48,7 @@ const Section = ({ title, icon, children, delay = 0, id }) => (
       <div className="p-3 bg-[#C96442]/10 border border-[#C96442]/30 text-[#9E4A2F]">
         {React.cloneElement(icon, { size: 24, weight: 'bold' })}
       </div>
-      <h2 className="text-3xl text-[#1A1613] font-playfairDisplay italic tracking-tight">{title}</h2>
+      <h2 className="text-3xl text-[#1A1613] font-fraunces italic tracking-tight">{title}</h2>
     </div>
     <div className="relative z-10">{children}</div>
   </motion.div>
@@ -158,7 +158,7 @@ const TerracottaSettingsPage = () => {
 
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
             <div className="space-y-4">
-              <h1 className="text-6xl md:text-8xl font-playfairDisplay italic tracking-tight text-[#1A1613] leading-none">
+              <h1 className="text-6xl md:text-8xl font-fraunces italic tracking-tight text-[#1A1613] leading-none">
                 Settings
               </h1>
               <p className="text-xl text-[#2E2620] max-w-2xl leading-relaxed">
@@ -504,7 +504,7 @@ const TerracottaSettingsPage = () => {
                   <WarningIcon size={32} weight="bold" />
                 </div>
                 <div className="flex-1 text-center md:text-left">
-                  <h3 className="text-2xl text-[#1A1613] font-playfairDisplay italic mb-2">
+                  <h3 className="text-2xl text-[#1A1613] font-fraunces italic mb-2">
                     Factory Reset
                   </h3>
                   <p className="text-[#2E2620] max-w-xl">

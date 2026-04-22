@@ -29,7 +29,7 @@ const CommandListItem = ({ cmd, isActive, onHover, onClick }) => {
 
       <div className="flex items-baseline justify-between pr-4">
         <h3
-          className={`text-lg font-playfairDisplay transition-all duration-300 ${
+          className={`text-lg font-fraunces transition-all duration-300 ${
             isActive
               ? 'text-[#1A1613] italic translate-x-2'
               : 'text-[#2E2620]/60 group-hover:text-[#1A1613]'
@@ -73,7 +73,7 @@ function TerracottaCommandsPage() {
             <ArrowLeftIcon weight="bold" />
             <span>Back to Home</span>
           </Link>
-          <h1 className="text-6xl md:text-8xl font-playfairDisplay italic tracking-tight text-[#1A1613] mb-4 leading-none">
+          <h1 className="text-6xl md:text-8xl font-fraunces italic tracking-tight text-[#1A1613] mb-4 leading-none">
             Commands
           </h1>
           <p className="text-[#2E2620]/60 font-mono text-sm max-w-sm uppercase tracking-widest mb-8">
@@ -135,7 +135,7 @@ function TerracottaCommandsPage() {
                     </span>
                   </div>
 
-                  <h2 className="text-5xl font-playfairDisplay italic text-[#F3ECE0] mb-6 leading-tight">
+                  <h2 className="text-5xl font-fraunces italic text-[#F3ECE0] mb-6 leading-tight">
                     {activeCommand.title}
                   </h2>
 
@@ -154,7 +154,7 @@ function TerracottaCommandsPage() {
               >
                 <div className="relative z-10 max-w-lg">
                   <TerminalWindowIcon size={64} className="mx-auto mb-8 text-[#C96442]/60" />
-                  <h2 className="text-4xl font-playfairDisplay italic text-[#F3ECE0] mb-6">
+                  <h2 className="text-4xl font-fraunces italic text-[#F3ECE0] mb-6">
                     Command Palette
                   </h2>
                   <p className="text-[#F3ECE0]/60 mb-8 leading-relaxed">

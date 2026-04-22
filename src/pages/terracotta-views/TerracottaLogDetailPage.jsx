@@ -131,7 +131,7 @@ const TerracottaLogDetailPage = () => {
     'font-mono': "'JetBrains Mono', monospace",
     'font-inter': "'Inter', sans-serif",
     'font-arvo': "'Arvo', serif",
-    'font-playfairDisplay': "'Playfair Display', serif",
+    'font-fraunces': "'Playfair Display', serif",
     'font-syne': "'Syne', sans-serif",
     'font-outfit': "'Outfit', sans-serif",
     'font-ibm-plex-mono': "'IBM Plex Mono', monospace",
@@ -150,7 +150,7 @@ const TerracottaLogDetailPage = () => {
         {`
           .custom-prose h1, .custom-prose h2, .custom-prose h3,
           .custom-prose h4, .custom-prose h5, .custom-prose h6 {
-            font-family: ${fontMap[headerFont] || fontMap['font-playfairDisplay']} !important;
+            font-family: ${fontMap[headerFont] || fontMap['font-fraunces']} !important;
           }
         `}
       </style>
@@ -188,7 +188,7 @@ const TerracottaLogDetailPage = () => {
             )}
           </div>
 
-          <h1 className="text-5xl md:text-8xl font-playfairDisplay italic tracking-tight leading-none mb-8 max-w-4xl text-[#1A1613]">
+          <h1 className="text-5xl md:text-8xl font-fraunces italic tracking-tight leading-none mb-8 max-w-4xl text-[#1A1613]">
             {attributes.title}
           </h1>
 

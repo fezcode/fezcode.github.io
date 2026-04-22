@@ -107,7 +107,7 @@ const TerracottaSearch = ({ isVisible, toggleSearch }) => {
                   className="flex items-center justify-between px-6 py-4 border-b border-[#1A161320] hover:bg-[#C96442]/10 hover:border-l-4 hover:border-l-[#C96442] transition-all group"
                 >
                   <div className="flex flex-col gap-1">
-                    <span className="font-playfairDisplay italic text-[#1A1613] uppercase tracking-tight text-lg truncate">
+                    <span className="font-fraunces italic text-[#1A1613] uppercase tracking-tight text-lg truncate">
                       {result.title}
                     </span>
                     {result.description && (

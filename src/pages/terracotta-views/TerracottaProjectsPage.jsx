@@ -74,7 +74,7 @@ const TerracottaProjectsPage = () => {
             <ArrowLeftIcon weight="bold" />
             <span>Home</span>
           </Link>
-          <h1 className="text-6xl md:text-8xl font-playfairDisplay italic tracking-tight text-[#1A1613] mb-4 leading-none">
+          <h1 className="text-6xl md:text-8xl font-fraunces italic tracking-tight text-[#1A1613] mb-4 leading-none">
             Work
           </h1>
           <p className="text-[#2E2620]/70 font-mono text-sm max-w-sm uppercase tracking-widest">
@@ -123,7 +123,7 @@ const TerracottaProjectsPage = () => {
                   <span>{new Date(activeProject.date).getFullYear()}</span>
                 </div>
 
-                <p className="text-xl md:text-2xl text-[#F3ECE0] font-playfairDisplay italic leading-relaxed max-w-2xl">
+                <p className="text-xl md:text-2xl text-[#F3ECE0] font-fraunces italic leading-relaxed max-w-2xl">
                   {activeProject.shortDescription}
                 </p>
 

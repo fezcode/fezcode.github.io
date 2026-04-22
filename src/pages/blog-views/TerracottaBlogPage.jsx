@@ -132,7 +132,7 @@ const TerracottaBlogPage = () => {
             <ArrowLeft weight="bold" />
             <span>Home</span>
           </Link>
-          <h1 className="text-6xl md:text-8xl font-playfairDisplay italic tracking-tight text-[#1A1613] mb-4 leading-none">
+          <h1 className="text-6xl md:text-8xl font-fraunces italic tracking-tight text-[#1A1613] mb-4 leading-none">
             Intel
           </h1>
           <p className="text-[#2E2620]/60 font-mono text-[10px] uppercase tracking-[0.2em]">
@@ -234,7 +234,7 @@ const TerracottaBlogPage = () => {
                 </div>
 
                 <div className="flex flex-col gap-4">
-                  <h2 className="text-6xl md:text-7xl font-playfairDisplay italic text-[#F3ECE0] tracking-tight leading-none">
+                  <h2 className="text-6xl md:text-7xl font-fraunces italic text-[#F3ECE0] tracking-tight leading-none">
                     {activePost.title}
                   </h2>
                   <p className="text-lg text-[#F3ECE0]/80 leading-relaxed max-w-xl">

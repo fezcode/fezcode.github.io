@@ -78,7 +78,7 @@ const TerracottaPostItem = ({ post, isActive, onHover = () => {} }) => {
             )}
             <div className="flex flex-col gap-1">
               <h3
-                className={`text-xl md:text-2xl font-playfairDisplay tracking-tight transition-all duration-300 break-words leading-tight ${
+                className={`text-xl md:text-2xl font-fraunces tracking-tight transition-all duration-300 break-words leading-tight ${
                   isActive
                     ? 'translate-x-1 text-[#1A1613] italic'
                     : 'text-[#2E2620]/60 group-hover:text-[#1A1613]'

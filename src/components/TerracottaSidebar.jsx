@@ -141,7 +141,7 @@ const TerracottaSidebar = ({ isOpen, toggleSidebar, toggleModal, setIsPaletteOpe
             className="flex items-center gap-3 group"
             onClick={isOpen && window.innerWidth < 768 ? toggleSidebar : undefined}
           >
-            <span className="text-2xl font-playfairDisplay italic tracking-tight text-[#1A1613]">
+            <span className="text-2xl font-fraunces italic tracking-tight text-[#1A1613]">
               {config?.hero?.title?.toLowerCase().endsWith('codex') ? (
                 <>
                   {config.hero.title.slice(0, -5)}
