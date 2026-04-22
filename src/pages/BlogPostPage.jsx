@@ -9,12 +9,12 @@ import OldBlogPostPage from './blog-views/OldBlogPostPage';
 import TerminalBlogPostPage from './blog-views/TerminalBlogPostPage';
 import TerminalGreenBlogPostPage from './blog-views/TerminalGreenBlogPostPage';
 import LuxeBlogPostPage from './blog-views/LuxeBlogPostPage';
+import TerracottaBlogPostPage from './blog-views/TerracottaBlogPostPage';
 
 const BlogPostPage = () => {
   const { blogPostViewMode, fezcodexTheme } = useVisualSettings();
   const [searchParams] = useSearchParams();
 
-  // Determine the effective view mode
   const effectiveViewMode = (() => {
     const themeParam = searchParams.get('theme');
     if (
@@ -28,51 +28,30 @@ const BlogPostPage = () => {
         'terminal-green',
         'old',
         'luxe',
+        'terracotta',
       ].includes(themeParam)
     ) {
       return themeParam;
     }
 
-    // If user has explicitly chosen a mode (other than standard), respect it
     if (blogPostViewMode !== 'standard') {
       return blogPostViewMode;
     }
 
-    // Otherwise, adapt to the global theme
-    if (fezcodexTheme === 'luxe') {
-      return 'luxe';
-    }
+    if (fezcodexTheme === 'luxe') return 'luxe';
+    if (fezcodexTheme === 'terracotta') return 'terracotta';
 
     return 'brutalist';
   })();
 
-  if (effectiveViewMode === 'luxe') {
-    return <LuxeBlogPostPage />;
-  }
-
-  if (effectiveViewMode === 'old') {
-    return <OldBlogPostPage />;
-  }
-
-  if (effectiveViewMode === 'dossier') {
-    return <DossierBlogPostPage />;
-  }
-
-  if (effectiveViewMode === 'dokument') {
-    return <DokumentBlogPostPage />;
-  }
-
-  if (effectiveViewMode === 'editorial') {
-    return <EditorialBlogPostPage />;
-  }
-
-  if (effectiveViewMode === 'terminal-green') {
-    return <TerminalGreenBlogPostPage />;
-  }
-
-  if (effectiveViewMode === 'terminal') {
-    return <TerminalBlogPostPage />;
-  }
+  if (effectiveViewMode === 'luxe') return <LuxeBlogPostPage />;
+  if (effectiveViewMode === 'terracotta') return <TerracottaBlogPostPage />;
+  if (effectiveViewMode === 'old') return <OldBlogPostPage />;
+  if (effectiveViewMode === 'dossier') return <DossierBlogPostPage />;
+  if (effectiveViewMode === 'dokument') return <DokumentBlogPostPage />;
+  if (effectiveViewMode === 'editorial') return <EditorialBlogPostPage />;
+  if (effectiveViewMode === 'terminal-green') return <TerminalGreenBlogPostPage />;
+  if (effectiveViewMode === 'terminal') return <TerminalBlogPostPage />;
 
   return <BrutalistBlogPostPage />;
 };
