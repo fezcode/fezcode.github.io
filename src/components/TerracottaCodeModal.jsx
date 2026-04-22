@@ -4,7 +4,7 @@ import { X, Code } from '@phosphor-icons/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../utils/customTheme';
-import GenerativeArt from './GenerativeArt';
+import TerracottaGenerativeArt from './TerracottaGenerativeArt';
 
 const TerracottaCodeModal = ({ isOpen, onClose, children, language }) => {
   useEffect(() => {
@@ -34,7 +34,7 @@ const TerracottaCodeModal = ({ isOpen, onClose, children, language }) => {
             transition={{ duration: 0.3, ease: 'circOut' }}
           >
             <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-              <GenerativeArt seed="CODE_MODAL" className="w-full h-full" />
+              <TerracottaGenerativeArt seed="CODE_MODAL" className="w-full h-full" />
             </div>
             <div className="flex items-center justify-between px-6 py-4 border-b border-[#1A161320] bg-[#E8DECE]/60 z-10">
               <div className="flex items-center gap-3">

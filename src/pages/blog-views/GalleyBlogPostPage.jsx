@@ -16,6 +16,7 @@ import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MermaidDiagram from '../../components/MermaidDiagram';
+import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 
 /*
  * GALLEY reader — a letterpress proof pulled for correction.
@@ -372,6 +373,16 @@ const GalleyBlogPostPage = () => {
             <span className="text-[#2E2620]/60">
               {estimatedReadingTime}′ read · stet ✓
             </span>
+          </div>
+        </div>
+
+        {/* generative plate — a small woodcut keyed to the title */}
+        <div className="mb-12 border border-[#1A161340] relative">
+          <div className="absolute top-0 left-4 -translate-y-1/2 bg-[#F3ECE0] px-2 font-ibm-plex-mono text-[9px] tracking-[0.3em] uppercase text-[#2E2620]/70">
+            Plate
+          </div>
+          <div className="w-full aspect-[16/5]">
+            <TerracottaGenerativeArt seed={post.attributes.title} className="w-full h-full" />
           </div>
         </div>
 

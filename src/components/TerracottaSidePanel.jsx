@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XIcon, InfoIcon } from '@phosphor-icons/react';
 import { useSidePanel } from '../context/SidePanelContext';
-import GenerativeArt from './GenerativeArt';
+import TerracottaGenerativeArt from './TerracottaGenerativeArt';
 
 const TerracottaSidePanel = () => {
   const {
@@ -79,7 +79,7 @@ const TerracottaSidePanel = () => {
             className="fixed top-0 right-0 h-full bg-[#F3ECE0] border-l border-[#1A161320] shadow-[0_40px_80px_-40px_#1A161340] z-[110] flex flex-col overflow-hidden"
           >
             <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-              <GenerativeArt seed={panelTitle} className="w-full h-full" />
+              <TerracottaGenerativeArt seed={panelTitle} className="w-full h-full" />
             </div>
 
             <div

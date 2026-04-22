@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XIcon } from '@phosphor-icons/react';
-import GenerativeArt from './GenerativeArt';
+import TerracottaGenerativeArt from './TerracottaGenerativeArt';
 
 const TerracottaDialog = ({
   isOpen,
@@ -40,7 +40,7 @@ const TerracottaDialog = ({
             onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
-              <GenerativeArt seed={title} className="w-full h-full" />
+              <TerracottaGenerativeArt seed={title} className="w-full h-full" />
             </div>
 
             <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#C96442]" />

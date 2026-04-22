@@ -13,7 +13,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../../utils/customTheme';
 import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
-import GenerativeArt from '../../components/GenerativeArt';
+import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { useToast } from '../../hooks/useToast';
@@ -243,9 +243,9 @@ const TerracottaBlogPostPage = () => {
       />
 
       <div className="relative h-[35vh] w-full overflow-hidden border-b border-[#1A161320]">
-        <GenerativeArt
+        <TerracottaGenerativeArt
           seed={post.attributes.title}
-          className="w-full h-full opacity-45"
+          className="w-full h-full opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#F3ECE0] to-transparent" />
 

@@ -10,7 +10,7 @@ import {
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
-import GenerativeArt from '../../components/GenerativeArt';
+import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 
 const SpecItem = ({ icon: Icon, label, value, isAccent }) => (
   <div className="flex flex-col gap-1">
@@ -88,7 +88,7 @@ const TerracottaSeriesPage = () => {
       <div className="absolute inset-0 opacity-20 pointer-events-none z-0">
         {activePost &&
           (isPlaceholder(activePost) ? (
-            <GenerativeArt seed={activePost.title} className="w-full h-full filter blur-3xl" />
+            <TerracottaGenerativeArt seed={activePost.title} className="w-full h-full filter blur-3xl" />
           ) : (
             <img src={activePost.image} alt="bg" className="w-full h-full object-cover filter blur-3xl" />
           ))}
@@ -143,7 +143,7 @@ const TerracottaSeriesPage = () => {
               className="absolute inset-0"
             >
               <div className="absolute inset-0 z-0">
-                <GenerativeArt seed={activePost.title} className="w-full h-full opacity-60" />
+                <TerracottaGenerativeArt seed={activePost.title} className="w-full h-full opacity-80" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A1613] via-transparent to-[#1A1613]/40" />
               </div>
 
