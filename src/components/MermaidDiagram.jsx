@@ -116,11 +116,11 @@ const MermaidDiagram = ({ chart, theme, className }) => {
       theme: mermaidTheme,
       securityLevel: 'loose',
       fontFamily: preset.fontFamily,
-      useMaxWidth: false,
+      useMaxWidth: true,
       htmlLabels: true,
       flowchart: {
         padding: 15,
-        useMaxWidth: false,
+        useMaxWidth: true,
         htmlLabels: true,
       },
       themeVariables: preset.themeVariables,
@@ -168,8 +168,9 @@ const MermaidDiagram = ({ chart, theme, className }) => {
       <style>
         {`
           .mermaid-container svg {
-            overflow: visible !important;
-            max-width: none !important;
+            display: block;
+            width: 100% !important;
+            max-width: 100% !important;
             height: auto !important;
           }
           .mermaid-container foreignObject {
@@ -181,7 +182,7 @@ const MermaidDiagram = ({ chart, theme, className }) => {
         `}
       </style>
       <div
-        className="flex justify-center min-w-full"
+        className="w-full"
         dangerouslySetInnerHTML={{ __html: svg }}
       />
     </div>
