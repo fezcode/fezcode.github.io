@@ -8,6 +8,7 @@ import {
   TerminalIcon,
 } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 
 const Toast = ({
   id,
@@ -19,13 +20,188 @@ const Toast = ({
   icon,
   links,
 }) => {
+  const { fezcodexTheme } = useVisualSettings();
+  const isTerracotta = fezcodexTheme === 'terracotta';
+
   useEffect(() => {
     const timer = setTimeout(() => {
       removeToast(id);
     }, duration);
-
     return () => clearTimeout(timer);
   }, [id, duration, removeToast]);
+
+  /* ============================================================
+   * TERRACOTTA TOAST — editorial margin note on bone paper
+   * ============================================================ */
+  if (isTerracotta) {
+    const terraAccent = (() => {
+      switch (type) {
+        case 'error':
+          return { color: '#9E4A2F', bg: '#9E4A2F' };
+        case 'gold':
+          return { color: '#B88532', bg: '#B88532' };
+        case 'techno':
+          return { color: '#6B8E23', bg: '#6B8E23' };
+        default:
+          return { color: '#C96442', bg: '#C96442' };
+      }
+    })();
+
+    const terraIcon = (() => {
+      if (icon) return icon;
+      switch (type) {
+        case 'error':
+          return (
+            <WarningCircleIcon weight="duotone" style={{ color: terraAccent.color }} />
+          );
+        case 'gold':
+          return (
+            <TrophyIcon weight="duotone" style={{ color: terraAccent.color }} />
+          );
+        case 'techno':
+          return (
+            <TerminalIcon weight="duotone" style={{ color: terraAccent.color }} />
+          );
+        default:
+          return (
+            <CheckCircleIcon weight="duotone" style={{ color: terraAccent.color }} />
+          );
+      }
+    })();
+
+    const badgeLabel = (() => {
+      switch (type) {
+        case 'error':
+          return 'Stop · error';
+        case 'gold':
+          return 'Honor · unlocked';
+        case 'techno':
+          return 'System · note';
+        default:
+          return 'Notice · confirmed';
+      }
+    })();
+
+    return (
+      <motion.div
+        layout
+        initial={{ x: 80, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 80, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+        className="relative w-80 md:w-96 bg-[#F3ECE0] border border-[#1A161320] shadow-[0_20px_40px_-20px_rgba(26,22,19,0.25)] overflow-hidden mb-4 group font-fraunces"
+      >
+        {/* left terra rule — the "ink stripe" down the side */}
+        <span
+          aria-hidden="true"
+          className="absolute left-0 top-0 bottom-0 w-[3px]"
+          style={{ backgroundColor: terraAccent.color }}
+        />
+
+        {/* timer bar along the bottom */}
+        <motion.div
+          initial={{ width: '100%' }}
+          animate={{ width: 0 }}
+          transition={{ duration: duration / 1000, ease: 'linear' }}
+          className="absolute bottom-0 left-0 h-[2px] z-20"
+          style={{ backgroundColor: terraAccent.bg, opacity: 0.55 }}
+        />
+
+        <div className="pl-6 pr-4 pt-4 pb-5 flex gap-4 items-start">
+          <div className="flex-shrink-0 mt-0.5 text-[22px]">{terraIcon}</div>
+
+          <div className="flex-grow min-w-0 space-y-1.5">
+            {/* mono badge */}
+            <div className="font-ibm-plex-mono text-[9.5px] tracking-[0.22em] uppercase flex items-center gap-2">
+              <span
+                aria-hidden="true"
+                className="inline-block w-[5px] h-[5px] rounded-full"
+                style={{ backgroundColor: terraAccent.color }}
+              />
+              <span style={{ color: terraAccent.color }}>{badgeLabel}</span>
+            </div>
+
+            {/* title — Fraunces italic */}
+            <h4
+              className="text-[17px] italic tracking-tight text-[#1A1613] leading-tight"
+              style={{
+                fontVariationSettings:
+                  '"opsz" 24, "SOFT" 80, "WONK" 1, "wght" 440',
+              }}
+            >
+              {title}
+            </h4>
+
+            {/* message — mono body */}
+            <p className="font-ibm-plex-mono text-[11px] leading-[1.55] text-[#2E2620]">
+              {message}
+            </p>
+
+            {links && links.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-2">
+                {links.map((link, index) => {
+                  const btnClass =
+                    'font-ibm-plex-mono text-[9px] tracking-[0.2em] uppercase px-2.5 py-1 border border-[#1A161320] text-[#1A1613] hover:bg-[#1A1613] hover:text-[#F3ECE0] hover:border-[#1A1613] transition-colors';
+                  if (link.to)
+                    return (
+                      <Link
+                        key={index}
+                        to={link.to}
+                        className={btnClass}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  if (link.href)
+                    return (
+                      <a
+                        key={index}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={btnClass}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  if (link.onClick)
+                    return (
+                      <button
+                        type="button"
+                        key={index}
+                        onClick={() => {
+                          link.onClick();
+                          removeToast(id);
+                        }}
+                        className={btnClass}
+                      >
+                        {link.label}
+                      </button>
+                    );
+                  return null;
+                })}
+              </div>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => removeToast(id)}
+            className="flex-shrink-0 text-[#2E2620]/50 hover:text-[#9E4A2F] transition-colors p-1"
+            aria-label="Dismiss"
+          >
+            <XIcon size={14} weight="bold" />
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
+
+  /* ============================================================
+   * DEFAULT TOAST (brutalist / luxe / retained legacy styling)
+   * ============================================================ */
 
   const getIcon = () => {
     if (icon) return icon;
@@ -88,7 +264,6 @@ const Toast = ({
       exit={{ x: 100, opacity: 0 }}
       className={`relative w-80 md:w-96 bg-[#050505]/95 backdrop-blur-xl border-2 ${getBorderColor()} rounded-sm shadow-2xl ${getGlowColor()} overflow-hidden mb-4 group`}
     >
-      {/* Dynamic Timer Bar */}
       <motion.div
         initial={{ width: '100%' }}
         animate={{ width: 0 }}
@@ -141,6 +316,7 @@ const Toast = ({
                 if (link.onClick)
                   return (
                     <button
+                      type="button"
                       key={index}
                       onClick={() => {
                         link.onClick();
@@ -158,6 +334,7 @@ const Toast = ({
         </div>
 
         <button
+          type="button"
           onClick={() => removeToast(id)}
           className="flex-shrink-0 text-gray-600 hover:text-white transition-colors p-1"
         >
@@ -165,7 +342,6 @@ const Toast = ({
         </button>
       </div>
 
-      {/* Glossy Overlay */}
       <div className="absolute inset-0 bg-gradient-to-tr from-white/[0.02] to-transparent pointer-events-none" />
     </motion.div>
   );
