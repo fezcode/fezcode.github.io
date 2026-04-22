@@ -454,7 +454,7 @@ const NavigateChapter = () => (
           headword="fezcodex"
           superscript="n. / v."
           pronunciation="/ˈfɛz.koʊ.dɛks/"
-          also="also: the archive · the atlas · the codex"
+          also="the archive · the atlas · the codex"
         >
           <EntryPos label="verb">
             <EntryItem to="/projects" suffix="/projects">
