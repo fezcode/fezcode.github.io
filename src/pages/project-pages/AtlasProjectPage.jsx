@@ -598,6 +598,14 @@ const AtlasProjectPage = () => {
         keywords={['atlas', 'atlas suite', 'go', 'cli', 'tui', 'bubble tea', 'productivity']}
       />
 
+      <style>{`
+        @keyframes atlas-blink {
+          0%, 49% { opacity: 1; }
+          50%, 100% { opacity: 0; }
+        }
+        .atlas-caret { animation: atlas-blink 0.9s steps(1, end) infinite; }
+      `}</style>
+
       <Overlays />
       <TopBar project={project} />
 
@@ -639,12 +647,15 @@ const AtlasProjectPage = () => {
               <span style={{ color: AMBER }}>.</span>
               <br />
               <span style={{ color: AMBER_DIM }}>suite</span>
-              <motion.span
+              <span
                 aria-hidden="true"
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.9, repeat: Infinity, ease: 'steps(1)' }}
-                className="inline-block ml-2 align-middle"
-                style={{ width: '0.45em', height: '0.85em', backgroundColor: AMBER, boxShadow: `0 0 14px ${AMBER}` }}
+                className="inline-block ml-2 align-middle atlas-caret"
+                style={{
+                  width: '0.45em',
+                  height: '0.85em',
+                  backgroundColor: AMBER,
+                  boxShadow: `0 0 14px ${AMBER}`,
+                }}
               />
             </motion.h1>
 
