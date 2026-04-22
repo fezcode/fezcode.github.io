@@ -8,7 +8,7 @@ import {
   TerminalIcon,
 } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
-import { useVisualSettings } from '../context/VisualSettingsContext';
+import * as LocalStorageManager from '../utils/LocalStorageManager';
 
 const Toast = ({
   id,
@@ -20,8 +20,11 @@ const Toast = ({
   icon,
   links,
 }) => {
-  const visualSettings = useVisualSettings();
-  const theme = visualSettings?.fezcodexTheme;
+  // ToastProvider sits above VisualSettingsProvider in the tree (circular
+  // constraint — AchievementProvider toasts, VisualSettings depends on
+  // Achievement), so we read the theme straight from localStorage. Toasts are
+  // short-lived so reading once at mount is fine.
+  const theme = LocalStorageManager.get('fezcodex-theme', 'brutalist');
   const isTerracotta = theme === 'terracotta';
   const isLuxe = theme === 'luxe';
 
