@@ -158,37 +158,40 @@ const Banner = () => {
             exit={{ height: 0, opacity: 0 }}
             className="relative z-[100] bg-[#E8DECE] border-b border-[#1A161320]"
           >
-            <div className="max-w-[1800px] mx-auto px-5 md:px-12 py-3 grid grid-cols-[auto_1fr_auto] items-center gap-5">
-              <div className="flex items-center gap-3 min-w-0">
+            <div className="max-w-[1800px] mx-auto px-5 md:px-12 py-3 flex items-start md:items-center gap-4 md:gap-6">
+              <div className="flex items-center gap-3 shrink-0 pt-0.5 md:pt-0">
                 <span
                   aria-hidden="true"
                   className="inline-block w-[7px] h-[7px] rounded-full"
                   style={{ backgroundColor: typePalette.dot }}
                 />
                 <span
-                  className="font-ibm-plex-mono text-[9.5px] tracking-[0.3em] uppercase"
+                  className="font-ibm-plex-mono text-[9.5px] tracking-[0.3em] uppercase hidden sm:inline"
                   style={{ color: typePalette.accent }}
                 >
                   {typePalette.kicker}
                 </span>
               </div>
 
-              <div className="flex items-center gap-4 min-w-0">
-                <span aria-hidden="true" className="hidden md:inline text-[#2E2620]/50">
-                  {iconFor(bannerType, 'duotone', 16)}
-                </span>
-                <p className="font-fraunces italic text-[14px] md:text-[15.5px] leading-snug text-[#1A1613] truncate">
+              <div className="flex-1 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 min-w-0">
+                <p className="font-fraunces italic text-[14px] md:text-[15.5px] leading-snug text-[#1A1613] flex-1">
+                  <span
+                    aria-hidden="true"
+                    className="inline-block align-middle mr-2 text-[#2E2620]/50"
+                  >
+                    {iconFor(bannerType, 'duotone', 15)}
+                  </span>
                   {banner.text}
                 </p>
                 {renderLink(
-                  'shrink-0 hidden md:inline-flex items-center gap-1 font-ibm-plex-mono text-[9.5px] tracking-[0.24em] uppercase text-[#1A1613] border border-[#1A161340] px-2.5 py-1 hover:bg-[#1A1613] hover:text-[#F3ECE0] transition-colors',
+                  'self-start md:self-auto shrink-0 inline-flex items-center gap-1 font-ibm-plex-mono text-[9.5px] tracking-[0.24em] uppercase text-[#1A1613] border border-[#1A161340] px-2.5 py-1 hover:bg-[#1A1613] hover:text-[#F3ECE0] transition-colors',
                 )}
               </div>
 
               <button
                 type="button"
                 onClick={handleDismiss}
-                className="p-1 text-[#2E2620]/50 hover:text-[#9E4A2F] transition-colors shrink-0"
+                className="p-1 text-[#2E2620]/50 hover:text-[#9E4A2F] transition-colors shrink-0 mt-0.5 md:mt-0"
                 aria-label="Dismiss"
               >
                 <XIcon size={16} weight="bold" />
@@ -241,7 +244,7 @@ const Banner = () => {
                 >
                   {typePalette.label}
                 </span>
-                <p className="font-playfairDisplay italic text-[15px] md:text-[17px] leading-snug text-[#1A1A1A] truncate">
+                <p className="font-playfairDisplay italic text-[15px] md:text-[17px] leading-snug text-[#1A1A1A] flex-1">
                   {banner.text}
                 </p>
                 {renderLink(
