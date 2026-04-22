@@ -314,7 +314,7 @@ const TerracottaLogDetailPage = () => {
                       options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
                       value={headerFont}
                       onChange={setHeaderFont}
-                      variant="brutalist"
+                      variant="terracotta"
                       fullWidth={true}
                     />
                   </div>
@@ -327,7 +327,7 @@ const TerracottaLogDetailPage = () => {
                       options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
                       value={bodyFont}
                       onChange={setBodyFont}
-                      variant="brutalist"
+                      variant="terracotta"
                       fullWidth={true}
                     />
                   </div>

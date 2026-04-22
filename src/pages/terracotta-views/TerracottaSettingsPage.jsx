@@ -227,7 +227,7 @@ const TerracottaSettingsPage = () => {
                   </p>
                 </div>
                 <CustomDropdown
-                  variant="brutalist"
+                  variant="terracotta"
                   label="Select Theme"
                   options={[
                     { label: 'Brutalist (Dark)', value: 'brutalist' },
@@ -250,7 +250,7 @@ const TerracottaSettingsPage = () => {
                   <p className="text-sm text-[#2E2620]/70">Default rendering style for long-form content.</p>
                 </div>
                 <CustomDropdown
-                  variant="brutalist"
+                  variant="terracotta"
                   label="Select View"
                   options={[
                     { label: 'Default', value: 'standard' },
@@ -279,7 +279,7 @@ const TerracottaSettingsPage = () => {
                   <p className="text-sm text-[#2E2620]/70">Font for log headings and titles.</p>
                 </div>
                 <CustomDropdown
-                  variant="brutalist"
+                  variant="terracotta"
                   label="Select Header Font"
                   options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
                   value={headerFont}
@@ -294,7 +294,7 @@ const TerracottaSettingsPage = () => {
                   <p className="text-sm text-[#2E2620]/70">Primary typeface for body text.</p>
                 </div>
                 <CustomDropdown
-                  variant="brutalist"
+                  variant="terracotta"
                   label="Select Body Font"
                   options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
                   value={bodyFont}
@@ -394,7 +394,7 @@ const TerracottaSettingsPage = () => {
                       Overlay Variant:
                     </span>
                     <CustomDropdown
-                      variant="brutalist"
+                      variant="terracotta"
                       label="Variant"
                       options={[
                         { label: 'New Vegas (Amber)', value: 'amber' },
