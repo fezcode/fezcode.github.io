@@ -23,6 +23,7 @@ export const VisualSettingsProvider = ({ children }) => {
     { id: 'font-ibm-plex-mono', name: 'IBM Plex Mono' },
     { id: 'font-instr-serif', name: 'Instrument Serif' },
     { id: 'font-nunito', name: 'Nunito' },
+    { id: 'font-fraunces', name: 'Fraunces' },
   ];
 
   const [headerFont, setHeaderFont] = usePersistentState(

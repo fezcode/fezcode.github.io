@@ -21,7 +21,9 @@ const Toast = ({
   links,
 }) => {
   const visualSettings = useVisualSettings();
-  const isTerracotta = visualSettings?.fezcodexTheme === 'terracotta';
+  const theme = visualSettings?.fezcodexTheme;
+  const isTerracotta = theme === 'terracotta';
+  const isLuxe = theme === 'luxe';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -200,7 +202,160 @@ const Toast = ({
   }
 
   /* ============================================================
-   * DEFAULT TOAST (brutalist / luxe / retained legacy styling)
+   * LUXE TOAST — refined cream card with bronze rule + serif title
+   * ============================================================ */
+  if (isLuxe) {
+    const luxeAccent = (() => {
+      switch (type) {
+        case 'error':
+          return '#7A2020';
+        case 'gold':
+          return '#B88532';
+        case 'techno':
+          return '#355E3B';
+        default:
+          return '#8D4004';
+      }
+    })();
+
+    const luxeIcon = (() => {
+      if (icon) return icon;
+      const common = { weight: 'duotone', style: { color: luxeAccent } };
+      switch (type) {
+        case 'error':
+          return <WarningCircleIcon {...common} />;
+        case 'gold':
+          return <TrophyIcon {...common} />;
+        case 'techno':
+          return <TerminalIcon {...common} />;
+        default:
+          return <CheckCircleIcon {...common} />;
+      }
+    })();
+
+    const luxeKicker = (() => {
+      switch (type) {
+        case 'error':
+          return 'Alert';
+        case 'gold':
+          return 'Accolade';
+        case 'techno':
+          return 'System';
+        default:
+          return 'Notice';
+      }
+    })();
+
+    return (
+      <motion.div
+        layout
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -20, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 26 }}
+        className="relative w-80 md:w-[380px] bg-[#FAFAF8] border border-[#1A1A1A]/10 shadow-[0_24px_48px_-24px_rgba(26,26,26,0.28)] rounded-sm overflow-hidden mb-4 group"
+      >
+        {/* top hairline accent */}
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 right-0 h-[2px]"
+          style={{ backgroundColor: luxeAccent, opacity: 0.55 }}
+        />
+        {/* bottom timer */}
+        <motion.div
+          initial={{ width: '100%' }}
+          animate={{ width: 0 }}
+          transition={{ duration: duration / 1000, ease: 'linear' }}
+          className="absolute bottom-0 left-0 h-[1px] z-20"
+          style={{ backgroundColor: luxeAccent, opacity: 0.55 }}
+        />
+
+        <div className="px-6 py-5 flex gap-4 items-start">
+          <div
+            className="flex-shrink-0 mt-0.5 text-[22px] w-9 h-9 flex items-center justify-center rounded-full"
+            style={{ backgroundColor: `${luxeAccent}12` }}
+          >
+            {luxeIcon}
+          </div>
+
+          <div className="flex-grow min-w-0 space-y-1.5">
+            <div
+              className="font-outfit text-[9.5px] tracking-[0.24em] uppercase"
+              style={{ color: luxeAccent }}
+            >
+              {luxeKicker}
+            </div>
+            <h4 className="font-playfairDisplay text-[19px] italic leading-tight text-[#1A1A1A]">
+              {title}
+            </h4>
+            <p className="font-outfit text-[12.5px] leading-[1.55] text-[#1A1A1A]/70">
+              {message}
+            </p>
+
+            {links && links.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-2.5">
+                {links.map((link, index) => {
+                  const btnClass =
+                    'font-outfit text-[10px] tracking-[0.18em] uppercase px-3 py-1.5 border border-[#1A1A1A]/15 text-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#FAFAF8] hover:border-[#1A1A1A] transition-colors rounded-sm';
+                  if (link.to)
+                    return (
+                      <Link
+                        key={index}
+                        to={link.to}
+                        className={btnClass}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  if (link.href)
+                    return (
+                      <a
+                        key={index}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={btnClass}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  if (link.onClick)
+                    return (
+                      <button
+                        type="button"
+                        key={index}
+                        onClick={() => {
+                          link.onClick();
+                          removeToast(id);
+                        }}
+                        className={btnClass}
+                      >
+                        {link.label}
+                      </button>
+                    );
+                  return null;
+                })}
+              </div>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => removeToast(id)}
+            className="flex-shrink-0 text-[#1A1A1A]/30 hover:text-[#1A1A1A] transition-colors p-1"
+            aria-label="Dismiss"
+          >
+            <XIcon size={14} weight="bold" />
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
+
+  /* ============================================================
+   * DEFAULT TOAST — brutalist dark card (legacy)
    * ============================================================ */
 
   const getIcon = () => {
