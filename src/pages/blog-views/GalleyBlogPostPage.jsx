@@ -7,7 +7,7 @@ import {
   ClipboardText,
 } from '@phosphor-icons/react';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { customTheme } from '../../utils/customTheme';
+import { galleyTheme } from '../../utils/galleyTheme';
 import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
 import { calculateReadingTime } from '../../utils/readingTime';
@@ -197,7 +197,7 @@ const GalleyBlogPostPage = () => {
                 </span>
               </div>
               <SyntaxHighlighter
-                style={customTheme}
+                style={galleyTheme}
                 language={match ? match[1] : 'text'}
                 PreTag="div"
                 CodeTag="code"
