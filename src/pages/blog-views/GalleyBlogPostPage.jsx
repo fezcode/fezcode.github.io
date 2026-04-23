@@ -187,7 +187,7 @@ const GalleyBlogPostPage = () => {
                 Lift
               </button>
             </div>
-            <div className="border border-[#1A161340] bg-[#EDE3D2] overflow-hidden">
+            <div className="galley-code border border-[#1A161340] bg-[#EDE3D2] overflow-hidden">
               <div className="flex items-center justify-between px-4 py-1.5 border-b border-[#1A161320] bg-[#E8DECE]">
                 <span className="font-ibm-plex-mono text-[8.5px] uppercase tracking-[0.28em] text-[#2E2620]/70">
                   Font tray · {match ? match[1] : 'text'}
@@ -506,43 +506,45 @@ const GalleyBlogPostPage = () => {
               font-style: normal;
             }
 
-            /* syntax theme — nuclear option: hit code + every token with high specificity */
-            .galley-body code[class*="language-"],
-            .galley-body pre[class*="language-"],
-            .galley-body code[class*="language-"] * {
+            /* syntax theme — the syntax-highlighter code element ships with no class,
+               so we anchor on the wrapper .galley-code + descendant code/span. */
+            .galley-code code,
+            .galley-code code span,
+            .galley-code code * {
               color: #1A1613 !important;
               text-shadow: none !important;
+              background: transparent !important;
             }
-            .galley-body code[class*="language-"] .token.comment,
-            .galley-body code[class*="language-"] .token.prolog,
-            .galley-body code[class*="language-"] .token.doctype,
-            .galley-body code[class*="language-"] .token.cdata { color: #8A7C68 !important; font-style: italic; }
-            .galley-body code[class*="language-"] .token.punctuation { color: #3A302A !important; }
-            .galley-body code[class*="language-"] .token.property,
-            .galley-body code[class*="language-"] .token.class-name,
-            .galley-body code[class*="language-"] .token.constant,
-            .galley-body code[class*="language-"] .token.symbol,
-            .galley-body code[class*="language-"] .token.deleted { color: #8A4A1B !important; font-weight: 600; }
-            .galley-body code[class*="language-"] .token.number,
-            .galley-body code[class*="language-"] .token.boolean { color: #8A3E1C !important; }
-            .galley-body code[class*="language-"] .token.selector,
-            .galley-body code[class*="language-"] .token.string,
-            .galley-body code[class*="language-"] .token.char,
-            .galley-body code[class*="language-"] .token.inserted,
-            .galley-body code[class*="language-"] .token.attr-name,
-            .galley-body code[class*="language-"] .token.attr-value { color: #556B2F !important; }
-            .galley-body code[class*="language-"] .token.operator,
-            .galley-body code[class*="language-"] .token.entity,
-            .galley-body code[class*="language-"] .token.url { color: #7A3020 !important; }
-            .galley-body code[class*="language-"] .token.keyword,
-            .galley-body code[class*="language-"] .token.atrule,
-            .galley-body code[class*="language-"] .token.regex,
-            .galley-body code[class*="language-"] .token.tag { color: #5C3A87 !important; font-weight: 600; }
-            .galley-body code[class*="language-"] .token.function,
-            .galley-body code[class*="language-"] .token.builtin { color: #1F4A78 !important; font-weight: 600; }
-            .galley-body code[class*="language-"] .token.important { color: #7A3020 !important; font-weight: bold; }
-            .galley-body code[class*="language-"] .token.bold { font-weight: bold; }
-            .galley-body code[class*="language-"] .token.italic { font-style: italic; }
+            .galley-code .token.comment,
+            .galley-code .token.prolog,
+            .galley-code .token.doctype,
+            .galley-code .token.cdata { color: #8A7C68 !important; font-style: italic; }
+            .galley-code .token.punctuation { color: #3A302A !important; }
+            .galley-code .token.property,
+            .galley-code .token.class-name,
+            .galley-code .token.constant,
+            .galley-code .token.symbol,
+            .galley-code .token.deleted { color: #8A4A1B !important; font-weight: 600; }
+            .galley-code .token.number,
+            .galley-code .token.boolean { color: #8A3E1C !important; }
+            .galley-code .token.selector,
+            .galley-code .token.string,
+            .galley-code .token.char,
+            .galley-code .token.inserted,
+            .galley-code .token.attr-name,
+            .galley-code .token.attr-value { color: #556B2F !important; }
+            .galley-code .token.operator,
+            .galley-code .token.entity,
+            .galley-code .token.url { color: #7A3020 !important; }
+            .galley-code .token.keyword,
+            .galley-code .token.atrule,
+            .galley-code .token.regex,
+            .galley-code .token.tag { color: #5C3A87 !important; font-weight: 600; }
+            .galley-code .token.function,
+            .galley-code .token.builtin { color: #1F4A78 !important; font-weight: 600; }
+            .galley-code .token.important { color: #7A3020 !important; font-weight: bold; }
+            .galley-code .token.bold { font-weight: bold; }
+            .galley-code .token.italic { font-style: italic; }
           `}</style>
 
           <MarginMark glyph="¶" note="set" />
