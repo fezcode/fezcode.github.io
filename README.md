@@ -21,7 +21,7 @@ Imagine you have a giant digital toy box. Inside, you keep the cool things you'v
 - **Frontend**: React 19, Tailwind CSS, and Framer Motion for smooth animations.
 - **3D & Graphics**: Three.js and react-force-graph-3d for the knowledge graph.
 - **Content**: Markdown and **PIML** (Plain Old Markup Language) for structured content.
-- **Build Tools**: Craco (CRA Configuration Override) for custom build pipelines.
+- **Build Tools**: Vite + Vike for the SPA build and shell generation; a Puppeteer-based crawler hydrates dynamic routes into static HTML for GitHub Pages.
 - **Persistence**: Local Storage for settings, achievements, and persistent state.
 - **AI Tooling**: **Model Context Protocol (MCP)** server for automated content management.
 
@@ -76,13 +76,27 @@ This will open the site at http://localhost:3000.
 ---
 
 ## Routing and SEO
-This project uses `BrowserRouter` for clean URLs. To support this on static hosts like GitHub Pages, we use `react-snap` to pre-render routes into static HTML files during the build process.
+This project uses `BrowserRouter` for clean URLs. To support this on static hosts like GitHub Pages, the build runs in two passes:
+
+1. **Vite + Vike** produces the JS bundles and writes one empty-shell `index.html` per route listed in `pages/routes.js` plus every dynamic route discovered by `pages/discoverRoutes.js` (blog posts, series episodes, log entries, story book pages — ~460 routes total).
+2. **`scripts/prerender-crawl.mjs`** spins up a Vite preview server, loads each shell in headless Chromium, and replaces the empty `#react-root` with the hydrated HTML. Skipped routes fall back to SPA rendering at runtime — not a build failure.
+
+### Build variants
+| Command | What it does | When to use |
+| --- | --- | --- |
+| `npm run build` | Vite build + post-build + full prerender crawl | Default. Produces a fully SSG'd `dist/client/`. |
+| `npm run build:fast` | Vite build + post-build only (no crawl) | Fast iteration on components; skip the ~2–5 min crawler. |
+| `npm run build:retry` | Full crawl, then re-attempts any routes that missed the render gate | Use when the default build reports many skipped routes (flaky JS/fetch under load). |
+
+Tune the crawler via env vars: `PRERENDER_CONCURRENCY=6` (default `6`), `PRERENDER_RETRY=1` (same as `--retry`).
 
 ### Deployment
-The standard `npm run deploy` command handles the build, pre-rendering, and deployment to GitHub Pages automatically.
 ```bash
-npm run deploy
+npm run deploy           # build (full crawl) + push dist/client to gh-pages
+npm run deploy:fast      # shell-only build + push (skipped routes become SPA-only)
+npm run deploy:retry     # full crawl with retry pass + push
 ```
+`gh-pages` publishes the contents of `dist/client/` to the `gh-pages` branch of the repo.
 
 ### Content Syncing
 Stories are managed via git subtrees. Because subtree remotes are not tracked by git, you must initialize the remote once after cloning:

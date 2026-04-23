@@ -12,7 +12,7 @@ const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 6;
 const PAGE_TIMEOUT = 30000;
 const RENDER_SETTLE_MS = 300;
 const SELECTOR_TIMEOUT = 8000;
-const RETRY = process.env.PRERENDER_RETRY === '1';
+const RETRY = process.env.PRERENDER_RETRY === '1' || process.argv.includes('--retry');
 
 function routeToFile(route) {
   if (route === '/') return join(DIST, 'index.html');
