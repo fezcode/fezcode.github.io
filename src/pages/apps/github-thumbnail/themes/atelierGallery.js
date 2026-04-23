@@ -22,7 +22,6 @@ export const atelierGallery = (ctx, width, height, scale, data) => {
     bgColor,
   } = data;
 
-  const WALL = '#E4D9D6';
   const PAPER = '#F5EFEC';
   const PAPER_SOFT = '#EEE7E2';
   const INK = '#2D1F2E';

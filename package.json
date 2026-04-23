@@ -62,12 +62,6 @@
     "prod": "npm run lint && git push && npm run deploy",
     "prepare": "git config core.hooksPath git-hooks"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -93,6 +87,8 @@
     "autoprefixer": "^10.4.21",
     "baseline-browser-mapping": "^2.9.9",
     "cross-env": "^10.1.0",
+    "eslint": "^8.57.1",
+    "eslint-config-react-app": "^7.0.1",
     "gh-pages": "github:tschaub/gh-pages",
     "husky": "^9.1.7",
     "jsdom": "^25.0.1",

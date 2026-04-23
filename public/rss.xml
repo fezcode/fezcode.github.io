@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 23 Apr 2026 07:11:13 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 23 Apr 2026 21:53:53 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 23 Apr 2026 07:11:13 GMT</pubDate>
+        <pubDate>Thu, 23 Apr 2026 21:53:52 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Migrating Fezcodex From CRA to Vite + Vike: A Static-Site-Generation Deep Dive]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/vite-vike-ssg-migration</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/vite-vike-ssg-migration</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Migrating Fezcodex From CRA to Vite + Vike: A Static-Site-Generation Deep Dive</h1>
+<p><a href="https://fezcode.com/blog/vite-vike-ssg-migration">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[atlas.llm: A Deep Dive Into a Single-Binary, On-Device Coding Companion]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -24,7 +34,7 @@
             <guid isPermaLink="false">https://fezcode.com/blog/atlas-llm-deep-dive</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h1><code>atlas.llm</code>: A Deep Dive Into a Single-Binary, On-Device Coding Companion</h1>
+            <content:encoded><![CDATA[<h1>atlas.llm: A Deep Dive Into a Single-Binary, On-Device Coding Companion</h1>
 <p><a href="https://fezcode.com/blog/atlas-llm-deep-dive">Read more...</a></p>]]></content:encoded>
         </item>
         <item>

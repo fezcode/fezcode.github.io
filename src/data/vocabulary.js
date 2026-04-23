@@ -19,6 +19,10 @@ export const vocabulary = {
     title: 'Baader-Meinhof Phenomenon',
     loader: () => import('./vocab/baader-meinhof'),
   },
+  baladirmak: {
+    title: 'Baladırmak',
+    loader: () => import('./vocab/baladirmak'),
+  },
   'barnum-effect': {
     title: 'Barnum Effect',
     loader: () => import('./vocab/barnum-effect'),

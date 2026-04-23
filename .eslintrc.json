@@ -1,6 +1,10 @@
 {
   "env": {
-    "node": true
+    "node": true,
+    "browser": true
+  },
+  "globals": {
+    "vi": "readonly"
   },
   "extends": [
     "react-app",

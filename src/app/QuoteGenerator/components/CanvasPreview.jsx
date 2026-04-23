@@ -776,6 +776,7 @@ const CanvasPreview = ({
     themeType,
     drawNewspaperBg,
     textColor,
+    backgroundColor,
   ]);
   useEffect(() => {
     draw();
