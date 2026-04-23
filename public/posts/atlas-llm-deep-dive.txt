@@ -1,4 +1,4 @@
-# `atlas.llm`: A Deep Dive Into a Single-Binary, On-Device Coding Companion
+# atlas.llm: A Deep Dive Into a Single-Binary, On-Device Coding Companion
 
 > _A study in systems-level glue code: how ~2,900 lines of Go turn a prebuilt
 > `llama.cpp` server into a usable local AI coding assistant, and the
@@ -54,29 +54,19 @@ consequence of these three.
 
 The program is a Go process that performs three roles simultaneously:
 
-```
-┌────────────────────────────────────────────────────────────────┐
-│                        atlas.llm (Go)                          │
-│                                                                │
-│   ┌───────────────────┐       ┌──────────────────────────┐     │
-│   │  TUI / CLI layer  │──────▶│  Orchestration & config  │     │
-│   │  (bubbletea +     │       │  (download, registry,    │     │
-│   │   lipgloss +      │       │   chat history, slash    │     │
-│   │   glamour)        │◀──────│   commands)              │     │
-│   └───────────────────┘       └───────────┬──────────────┘     │
-│                                           │                    │
-│                                ┌──────────▼──────────┐         │
-│                                │ llama-server client │         │
-│                                │ (net/http + JSON)   │         │
-│                                └──────────┬──────────┘         │
-└───────────────────────────────────────────┼────────────────────┘
-                                            │ HTTP on localhost
-                                            ▼
-                             ┌──────────────────────────────┐
-                             │   llama-server (C++)         │
-                             │   GGUF mmap + KV cache +     │
-                             │   chat template from weights │
-                             └──────────────────────────────┘
+```mermaid
+graph TB
+  subgraph atlas["atlas.llm (Go)"]
+    direction TB
+    TUI["TUI / CLI layer<br/>(bubbletea + lipgloss + glamour)"]
+    Orch["Orchestration & config<br/>(download, registry,<br/>chat history, slash commands)"]
+    Client["llama-server client<br/>(net/http + JSON)"]
+    TUI -->|command| Orch
+    Orch -->|reply| TUI
+    Orch --> Client
+  end
+  Server["llama-server (C++)<br/>GGUF mmap + KV cache +<br/>chat template from weights"]
+  Client -->|HTTP on localhost| Server
 ```
 
 The Go process **never performs inference itself**. It spawns one long-
@@ -476,10 +466,20 @@ The terminal UI is built on [`bubbletea`](https://github.com/charmbracelet/bubbl
 an Elm-Architecture implementation for Go. Every bubbletea program is
 a triple:
 
-```
-state  ←──  Update(state, msg) ──→  (state', cmd)
-  │
-  └──────── View(state) ──────────→ string  (full screen, redrawn)
+```mermaid
+graph LR
+  state(("state"))
+  update["Update(state, msg)"]
+  next(("state'"))
+  cmd["cmd<br/>(async thunk)"]
+  view["View(state)"]
+  frame["string<br/>(full screen, redrawn)"]
+  state --> update
+  update --> next
+  update --> cmd
+  cmd -.->|msg| update
+  state --> view
+  view --> frame
 ```
 
 Input events (`tea.KeyMsg`, `tea.WindowSizeMsg`, spinner ticks, HTTP
