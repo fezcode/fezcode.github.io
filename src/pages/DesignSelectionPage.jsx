@@ -12,6 +12,7 @@ import {
   PaintBrushBroadIcon,
   ScrollIcon,
   TerminalWindowIcon,
+  PlantIcon,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
@@ -193,7 +194,7 @@ const DesignSelectionPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
 
             {/* ── ATELIER ── */}
             <Link to="/apps/github-thumbnail-generator" className="group block relative">
@@ -444,6 +445,147 @@ const DesignSelectionPage = () => {
                     className="group-hover:translate-x-2 transition-all"
                     size={24}
                     style={{ color: '#FFB000' }}
+                  />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* ── HERBARIUM ── */}
+            <Link to="/apps/fractal-flora" className="group block relative">
+              <motion.div
+                whileHover={{ y: -10 }}
+                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                style={{
+                  background: '#F0E9D9',
+                  borderRadius: 2,
+                  boxShadow:
+                    '0 0 0 1px rgba(30,58,43,0.2) inset, 0 30px 60px -30px rgba(30,58,43,0.3)',
+                }}
+              >
+                {/* rust corner pins */}
+                {['tl','tr','bl','br'].map((c) => {
+                  const pos = {
+                    tl: { top: 10, left: 10 },
+                    tr: { top: 10, right: 10 },
+                    bl: { bottom: 10, left: 10 },
+                    br: { bottom: 10, right: 10 },
+                  }[c];
+                  return (
+                    <span
+                      key={c}
+                      aria-hidden
+                      className="absolute w-2.5 h-2.5 rounded-full z-20"
+                      style={{
+                        ...pos,
+                        background:
+                          'radial-gradient(circle at 35% 35%, #E38866 0%, #A65B3A 50%, #8B4A2D 100%)',
+                        boxShadow:
+                          '0 2px 3px rgba(30,58,43,0.3), inset 0 1px 1px rgba(255,255,255,0.3)',
+                      }}
+                    />
+                  );
+                })}
+                {/* fern silhouette watermark */}
+                <svg
+                  viewBox="0 0 200 640"
+                  className="absolute pointer-events-none"
+                  style={{
+                    top: 10,
+                    right: -40,
+                    width: 180,
+                    color: '#2E5E3B',
+                    opacity: 0.09,
+                    zIndex: 0,
+                  }}
+                  aria-hidden
+                >
+                  <path
+                    d="M100 10 Q 94 220, 98 580 Q 100 610, 96 628"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  {Array.from({ length: 14 }).map((_, i) => {
+                    const y = 36 + i * ((580 - 36) / 14);
+                    const size = 68 - i * (58 / 14);
+                    const droop = 8 + i * 0.4;
+                    return (
+                      <g key={i}>
+                        <path
+                          d={`M98 ${y} Q ${98 - size * 0.55} ${y + droop * 0.3}, ${98 - size} ${y + droop} Q ${98 - size * 0.7} ${y - droop * 0.6}, 98 ${y}`}
+                          fill="currentColor"
+                        />
+                        <path
+                          d={`M98 ${y} Q ${98 + size * 0.55} ${y + droop * 0.3}, ${98 + size} ${y + droop} Q ${98 + size * 0.7} ${y - droop * 0.6}, 98 ${y}`}
+                          fill="currentColor"
+                        />
+                      </g>
+                    );
+                  })}
+                </svg>
+
+                <div className="space-y-8 relative z-10">
+                  <div
+                    className="w-16 h-16 flex items-center justify-center transition-all duration-500"
+                    style={{
+                      background: 'rgba(166,91,58,0.08)',
+                      color: '#2E5E3B',
+                      borderRadius: 2,
+                      border: '1px solid rgba(30,58,43,0.2)',
+                    }}
+                  >
+                    <PlantIcon size={32} weight="regular" />
+                  </div>
+                  <div className="space-y-4">
+                    <div
+                      className="inline-flex items-center gap-2 px-2.5 py-1 text-[9px] uppercase tracking-[0.28em] font-bold"
+                      style={{
+                        background: '#A65B3A',
+                        color: '#F0E9D9',
+                        fontFamily: "'Space Mono', monospace",
+                      }}
+                    >
+                      Pressed · Mounted
+                    </div>
+                    <h3
+                      className="text-5xl italic leading-none tracking-tight"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        color: '#1E3A2B',
+                      }}
+                    >
+                      Herbarium
+                    </h3>
+                    <p
+                      className="text-sm italic leading-relaxed"
+                      style={{
+                        fontFamily: "'Playfair Display', 'EB Garamond', serif",
+                        color: '#6B4423',
+                      }}
+                    >
+                      A naturalist's pressed-specimen atlas. Ecru paper, rust
+                      pins, twine-tied taxonomic labels, Latin binomials.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="mt-12 pt-8 flex justify-between items-center relative z-10 border-t"
+                  style={{ borderColor: 'rgba(30,58,43,0.2)' }}
+                >
+                  <span
+                    className="text-[10px] uppercase tracking-[0.3em]"
+                    style={{
+                      color: '#3E5A4A',
+                      fontFamily: "'Space Mono', monospace",
+                    }}
+                  >
+                    Hortus_Digitalis
+                  </span>
+                  <ArrowRightIcon
+                    className="group-hover:translate-x-2 transition-all"
+                    size={24}
+                    style={{ color: '#A65B3A' }}
                   />
                 </div>
               </motion.div>
