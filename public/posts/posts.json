@@ -1,5 +1,26 @@
 [
   {
+    "slug": "vite-vike-ssg-migration",
+    "title": "Migrating Fezcodex From CRA to Vite + Vike: A Static-Site-Generation Deep Dive",
+    "date": "2026-04-23",
+    "updated": "2026-04-23",
+    "description": "A deep dive into retiring Create React App and react-snap in favor of Vite + Vike and a purpose-built Puppeteer prerender crawler — with the specific traps, fixes, and instrumentation that got us from 59/460 routes rendering to 457/460.",
+    "tags": [
+      "vite",
+      "vike",
+      "ssg",
+      "react",
+      "build-tools",
+      "puppeteer",
+      "architecture"
+    ],
+    "category": "dev",
+    "filename": "vite-vike-ssg-migration.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "atlas-llm-deep-dive",
     "title": "atlas.llm: A Deep Dive Into a Single-Binary, On-Device Coding Companion",
     "date": "2026-04-23",
