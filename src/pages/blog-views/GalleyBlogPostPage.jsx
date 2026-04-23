@@ -432,7 +432,9 @@ const GalleyBlogPostPage = () => {
             prose-hr:border-t prose-hr:border-[#1A161330] prose-hr:my-10
             prose-strong:text-[#1A1613]
             prose-em:text-[#9E4A2F]
-            prose-img:border prose-img:border-[#1A161340]"
+            prose-img:border prose-img:border-[#1A161340]
+            prose-code:before:content-none prose-code:after:content-none
+            prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0 prose-pre:text-[#1A1613]"
         >
           {/* drop cap via :first-letter on the first paragraph */}
           <style>{`

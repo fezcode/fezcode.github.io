@@ -6,7 +6,7 @@ const base = {
   wordSpacing: 'normal',
   wordBreak: 'normal',
   wordWrap: 'normal',
-  lineHeight: '1.55',
+  lineHeight: '1.65',
   MozTabSize: '4',
   OTabSize: '4',
   tabSize: '4',
@@ -16,66 +16,72 @@ const base = {
   hyphens: 'none',
 };
 
+const INK = '#1A1613';
+const INK_SOFT = '#3A302A';
+const COMMENT = '#8A7C68';
+const KEYWORD = '#5C3A87';
+const STRING = '#556B2F';
+const NUMBER = '#8A3E1C';
+const FUNCTION = '#1F4A78';
+const CLASS = '#8A4A1B';
+const CONSTANT = '#8A3E1C';
+const OPERATOR = '#7A3020';
+const TAG = '#5C3A87';
+const BG = '#EDE3D2';
+const SELECTION = 'rgba(201,100,66,0.28)';
+
 export const galleyTheme = {
   'code[class*="language-"]': {
     ...base,
-    color: '#1A1613',
+    color: INK,
     background: 'none',
     fontSize: '0.92em',
   },
   'pre[class*="language-"]': {
     ...base,
-    color: '#1A1613',
-    background: '#EDE3D2',
+    color: INK,
+    background: BG,
     padding: '1em',
     margin: '0.5em 0',
     overflow: 'auto',
     fontSize: '0.92em',
   },
-  'pre[class*="language-"]::selection': {
-    background: 'rgba(201,100,66,0.25)',
-  },
-  'code[class*="language-"]::selection': {
-    background: 'rgba(201,100,66,0.25)',
-  },
-  ':not(pre) > code[class*="language-"]': {
-    color: '#9E4A2F',
-    background: 'rgba(201,100,66,0.08)',
-    padding: '0.12em 0.35em',
-    borderRadius: '2px',
-  },
-  comment: { color: '#7A6E5E', fontStyle: 'italic' },
-  prolog: { color: '#7A6E5E', fontStyle: 'italic' },
-  doctype: { color: '#7A6E5E', fontStyle: 'italic' },
-  cdata: { color: '#7A6E5E', fontStyle: 'italic' },
-  punctuation: { color: '#3A302A' },
-  namespace: { opacity: '0.7' },
-  property: { color: '#8A4A1B' },
-  tag: { color: '#8A4A1B' },
-  boolean: { color: '#8A4A1B' },
-  number: { color: '#8A4A1B' },
-  constant: { color: '#8A4A1B' },
-  symbol: { color: '#8A4A1B' },
-  deleted: { color: '#8A4A1B' },
-  selector: { color: '#5F6F3E' },
-  'attr-name': { color: '#5F6F3E' },
-  string: { color: '#5F6F3E' },
-  char: { color: '#5F6F3E' },
-  builtin: { color: '#5F6F3E' },
-  inserted: { color: '#5F6F3E' },
-  operator: { color: '#9E4A2F' },
-  entity: { color: '#9E4A2F', cursor: 'help' },
-  url: { color: '#9E4A2F' },
-  '.language-css .token.string': { color: '#9E4A2F' },
-  '.style .token.string': { color: '#9E4A2F' },
-  atrule: { color: '#6B4AA0' },
-  'attr-value': { color: '#5F6F3E' },
-  keyword: { color: '#6B4AA0', fontWeight: '600' },
-  function: { color: '#3E5F8A', fontWeight: '600' },
-  'class-name': { color: '#8A4A1B', fontWeight: '600' },
-  regex: { color: '#6B4AA0' },
-  important: { color: '#9E4A2F', fontWeight: 'bold' },
-  variable: { color: '#1A1613' },
+  'pre[class*="language-"]::selection': { background: SELECTION },
+  'code[class*="language-"]::selection': { background: SELECTION },
+  'pre[class*="language-"] ::selection': { background: SELECTION },
+  'code[class*="language-"] ::selection': { background: SELECTION },
+  comment: { color: COMMENT, fontStyle: 'italic' },
+  prolog: { color: COMMENT, fontStyle: 'italic' },
+  doctype: { color: COMMENT, fontStyle: 'italic' },
+  cdata: { color: COMMENT, fontStyle: 'italic' },
+  punctuation: { color: INK_SOFT },
+  namespace: { opacity: '0.75' },
+  property: { color: CLASS },
+  tag: { color: TAG, fontWeight: '600' },
+  boolean: { color: NUMBER, fontWeight: '600' },
+  number: { color: NUMBER },
+  constant: { color: CONSTANT },
+  symbol: { color: CONSTANT },
+  deleted: { color: '#B14B2F' },
+  selector: { color: STRING },
+  'attr-name': { color: STRING },
+  string: { color: STRING },
+  char: { color: STRING },
+  builtin: { color: FUNCTION, fontWeight: '600' },
+  inserted: { color: STRING },
+  operator: { color: OPERATOR },
+  entity: { color: OPERATOR, cursor: 'help' },
+  url: { color: OPERATOR },
+  '.language-css .token.string': { color: STRING },
+  '.style .token.string': { color: STRING },
+  atrule: { color: KEYWORD },
+  'attr-value': { color: STRING },
+  keyword: { color: KEYWORD, fontWeight: '600' },
+  function: { color: FUNCTION, fontWeight: '600' },
+  'class-name': { color: CLASS, fontWeight: '600' },
+  regex: { color: KEYWORD },
+  important: { color: OPERATOR, fontWeight: 'bold' },
+  variable: { color: INK },
   bold: { fontWeight: 'bold' },
   italic: { fontStyle: 'italic' },
 };
