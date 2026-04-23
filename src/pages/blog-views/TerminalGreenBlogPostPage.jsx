@@ -126,7 +126,7 @@ const TerminalGreenBlogPostPage = () => {
         return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
       }
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-6 border border-emerald-500/20 bg-black shadow-lg">
             <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
@@ -141,7 +141,7 @@ const TerminalGreenBlogPostPage = () => {
             </div>
             <SyntaxHighlighter
               style={emeraldTerminalTheme}
-              language={match[1]}
+              language={match ? match[1] : 'text'}
               PreTag="div"
               CodeTag="code"
               customStyle={{ background: 'transparent', padding: '1.5rem' }}

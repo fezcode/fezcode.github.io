@@ -111,7 +111,7 @@ const LuxeBlogPostPage = () => {
         });
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-12">
             {/* Action Overlay */}
@@ -137,12 +137,12 @@ const LuxeBlogPostPage = () => {
             <div className="rounded-sm overflow-hidden border border-[#1A1A1A]/5 shadow-sm bg-white">
               <div className="bg-[#FAFAF8] px-6 py-3 border-b border-[#1A1A1A]/5 flex justify-between items-center">
                 <span className="font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/30 font-bold">
-                  Source Specimen: {match[1]}
+                  Source Specimen: {match ? match[1] : 'text'}
                 </span>
               </div>
               <SyntaxHighlighter
                 style={coy}
-                language={match[1]}
+                language={match ? match[1] : 'text'}
                 PreTag="div"
                 customStyle={{
                   margin: 0,

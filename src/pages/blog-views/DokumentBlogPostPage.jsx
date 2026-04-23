@@ -199,7 +199,7 @@ const DokumentBlogPostPage = () => {
         );
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-8">
             <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -224,7 +224,7 @@ const DokumentBlogPostPage = () => {
 
             <SyntaxHighlighter
               style={dokumentCodeTheme}
-              language={match[1]}
+              language={match ? match[1] : 'text'}
               PreTag="div"
               CodeTag="code"
               customStyle={{

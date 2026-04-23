@@ -130,7 +130,7 @@ const TerracottaBlogPostPage = () => {
         );
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-8">
             <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -152,12 +152,12 @@ const TerracottaBlogPostPage = () => {
             <div className="border border-[#1A161320] rounded-sm overflow-hidden shadow-[0_20px_40px_-25px_#1A161330] bg-[#15110E]">
               <div className="bg-[#1A1613] px-4 py-2 border-b border-[#F3ECE0]/10 flex justify-between items-center">
                 <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[#F3ECE0]/50">
-                  DATA_NODE: {match[1]}
+                  DATA_NODE: {match ? match[1] : 'text'}
                 </span>
               </div>
               <SyntaxHighlighter
                 style={customTheme}
-                language={match[1]}
+                language={match ? match[1] : 'text'}
                 PreTag="div"
                 CodeTag="code"
                 customStyle={{

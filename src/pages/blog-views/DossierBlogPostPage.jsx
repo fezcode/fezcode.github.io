@@ -237,7 +237,7 @@ const DossierBlogPostPage = () => {
         );
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-8">
             <div className="absolute -top-3 right-4 flex gap-2 z-10">
@@ -261,12 +261,12 @@ const DossierBlogPostPage = () => {
             <div className="border border-black bg-[#f0f0f0] shadow-[4px_4px_0px_0px_rgba(0,0,0,0.2)]">
               <div className="bg-black text-white px-2 py-1 text-xs font-mono uppercase tracking-widest border-b border-black flex justify-between">
                 <span>
-                  {'//'} ATTACHMENT: {match[1]}
+                  {'//'} ATTACHMENT: {match ? match[1] : 'text'}
                 </span>
               </div>
               <SyntaxHighlighter
                 style={dossierCodeTheme}
-                language={match[1]}
+                language={match ? match[1] : 'text'}
                 PreTag="div"
                 CodeTag="code"
                 customStyle={{

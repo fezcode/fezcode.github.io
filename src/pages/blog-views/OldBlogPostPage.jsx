@@ -186,7 +186,7 @@ const OldBlogPostPage = () => {
       );
     };
 
-    if (!inline && match) {
+    if (!inline && (match || /\n/.test(String(children)))) {
       if (match[1] === 'mermaid') {
         return <MermaidDiagram chart={String(children).replace(/\n$/, '')} />;
       }
@@ -213,7 +213,7 @@ const OldBlogPostPage = () => {
           <div className="rounded-lg overflow-hidden border border-gray-700/50 shadow-2xl">
             <SyntaxHighlighter
               style={customTheme}
-              language={match[1]}
+              language={match ? match[1] : 'text'}
               PreTag="div"
               CodeTag="code"
               customStyle={{

@@ -120,7 +120,7 @@ const BrutalistBlogPostPage = () => {
         );
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-8">
             <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -144,12 +144,12 @@ const BrutalistBlogPostPage = () => {
             <div className="border border-white/10 rounded-sm overflow-hidden shadow-2xl bg-zinc-950">
               <div className="bg-white/5 px-4 py-2 border-b border-white/10 flex justify-between items-center">
                 <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-gray-500">
-                  DATA_NODE: {match[1]}
+                  DATA_NODE: {match ? match[1] : 'text'}
                 </span>
               </div>
               <SyntaxHighlighter
                 style={customTheme}
-                language={match[1]}
+                language={match ? match[1] : 'text'}
                 PreTag="div"
                 CodeTag="code"
                 customStyle={{

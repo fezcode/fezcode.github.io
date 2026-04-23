@@ -231,7 +231,7 @@ const TerminalBlogPostPage = () => {
         );
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-6 border border-orange-500 shadow-orange-glow">
             <div className="absolute -top-3 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
@@ -256,7 +256,7 @@ const TerminalBlogPostPage = () => {
 
             <SyntaxHighlighter
               style={terminalCodeTheme}
-              language={match[1]}
+              language={match ? match[1] : 'text'}
               PreTag="div"
               CodeTag="code"
               customStyle={{

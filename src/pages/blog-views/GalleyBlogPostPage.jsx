@@ -166,7 +166,7 @@ const GalleyBlogPostPage = () => {
         );
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div className="relative group my-10 -mx-4 md:-mx-8">
             <div className="absolute -top-3 right-4 flex gap-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -190,7 +190,7 @@ const GalleyBlogPostPage = () => {
             <div className="border border-[#1A161340] bg-[#EDE3D2] overflow-hidden">
               <div className="flex items-center justify-between px-4 py-1.5 border-b border-[#1A161320] bg-[#E8DECE]">
                 <span className="font-ibm-plex-mono text-[8.5px] uppercase tracking-[0.28em] text-[#2E2620]/70">
-                  Font tray · {match[1]}
+                  Font tray · {match ? match[1] : 'text'}
                 </span>
                 <span className="font-ibm-plex-mono text-[8.5px] uppercase tracking-[0.28em] text-[#C96442]">
                   {'//'} composed
@@ -198,7 +198,7 @@ const GalleyBlogPostPage = () => {
               </div>
               <SyntaxHighlighter
                 style={customTheme}
-                language={match[1]}
+                language={match ? match[1] : 'text'}
                 PreTag="div"
                 CodeTag="code"
                 customStyle={{

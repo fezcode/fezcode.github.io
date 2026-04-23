@@ -119,7 +119,7 @@ const EditorialBlogPostPage = () => {
         );
       };
 
-      if (!inline && match) {
+      if (!inline && (match || /\n/.test(String(children)))) {
         return (
           <div
             className={`relative group my-8 border ${isInvert ? 'border-white/10' : 'border-black/10'}`}
@@ -149,12 +149,12 @@ const EditorialBlogPostPage = () => {
                 <span
                   className={`font-instr-sans text-[9px] uppercase tracking-[0.2em] ${isInvert ? 'text-white/50' : 'text-black/50'}`}
                 >
-                  {match[1]}
+                  {match ? match[1] : 'text'}
                 </span>
               </div>
               <SyntaxHighlighter
                 style={isInvert ? darkTheme : lightTheme}
-                language={match[1]}
+                language={match ? match[1] : 'text'}
                 PreTag="div"
                 CodeTag="code"
                 customStyle={{
