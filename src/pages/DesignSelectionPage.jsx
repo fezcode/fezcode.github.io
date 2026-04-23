@@ -593,7 +593,7 @@ const DesignSelectionPage = () => {
             </Link>
 
             {/* ── WORKBENCH ── */}
-            <Link to="/apps/quote-generator" className="group block relative">
+            <Link to="/apps/pattern-generator" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
                 className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
