@@ -793,7 +793,14 @@ const CanvasPreview = ({
   }, [triggerDownload, onDownload]);
 
   return (
-    <div className="w-full flex justify-center items-center overflow-hidden bg-[#111] border border-white/10 rounded-lg p-4">
+    <div
+      className="w-full flex justify-center items-center overflow-hidden p-4"
+      style={{
+        background: 'var(--wb-surface, #FFFFFF)',
+        border: '1px solid var(--wb-hair, rgba(25,23,22,0.08))',
+        borderRadius: 14,
+      }}
+    >
       <canvas
         ref={canvasRef}
         style={{

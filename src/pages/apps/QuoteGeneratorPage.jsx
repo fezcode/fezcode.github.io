@@ -9,23 +9,23 @@ import {
 import Seo from '../../components/Seo';
 import QuoteGeneratorApp from '../../app/QuoteGenerator/QuoteGeneratorApp';
 
-// ─── WORKBENCH :: calm modern dev-tool aesthetic ───────────────────────
-// Inspired by Claude Code and Codex — warm near-black, cream ink, a single
-// muted terracotta accent. Fraunces regular for display (no italic), Instrument
-// Sans for body, JetBrains Mono for micro-labels. Minimal motion, generous
-// breathing room, compact chrome so the app gets the space.
+// ─── WORKBENCH :: calm modern dev-tool aesthetic (light) ───────────────
+// Warm cream ground, deep ink text, a single muted terracotta accent.
+// Fraunces regular for display (no italic), Instrument Sans for body,
+// JetBrains Mono for micro-labels. Inspired by Claude / Codex.
 const W = {
-  bg: '#0F0F10',
-  bgSoft: '#141415',
-  surface: '#17171A',
-  surface2: '#1E1E22',
-  hair: 'rgba(239,236,228,0.08)',
-  hairHi: 'rgba(239,236,228,0.14)',
-  ink: '#EFECE4',
-  inkSoft: '#A8A49B',
-  inkDim: '#6E6B64',
+  bg: '#FAF7F0',
+  bgSoft: '#F4EFE4',
+  surface: '#FFFFFF',
+  surface2: '#F6F1E4',
+  hair: 'rgba(25,23,22,0.08)',
+  hairHi: 'rgba(25,23,22,0.16)',
+  ink: '#1A1918',
+  inkSoft: '#6B6A65',
+  inkDim: '#A8A49B',
   accent: '#C4643A',
-  accentSoft: 'rgba(196,100,58,0.14)',
+  accentSoft: 'rgba(196,100,58,0.10)',
+  accentRing: 'rgba(196,100,58,0.22)',
 };
 
 const QuoteGeneratorPage = () => {
@@ -55,46 +55,33 @@ const QuoteGeneratorPage = () => {
         .wb-display { font-family: 'Fraunces', 'EB Garamond', serif; font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0; }
         .wb-mono { font-family: 'JetBrains Mono', 'Space Mono', monospace; }
 
-        /* Subtle film grain — barely there */
         .workbench-page::before {
           content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-          background-image:
-            radial-gradient(circle at 30% 30%, rgba(239,236,228,0.015) 1px, transparent 1px);
+          background-image: radial-gradient(circle at 30% 30%, rgba(25,23,22,0.025) 1px, transparent 1px);
           background-size: 3px 3px;
           opacity: 0.6;
         }
-
-        /* Warm vignette glow anchored top */
         .workbench-page::after {
           content: ''; position: fixed; inset: 0; z-index: 0; pointer-events: none;
-          background:
-            radial-gradient(60% 30% at 50% 0%, rgba(196,100,58,0.05), transparent 70%);
+          background: radial-gradient(60% 30% at 50% 0%, rgba(196,100,58,0.06), transparent 70%);
         }
 
-        .wb-surface {
-          background: ${W.surface};
-          border: 1px solid ${W.hair};
-          border-radius: 14px;
-        }
-
-        /* kbd chip */
         .wb-kbd {
           display: inline-flex; align-items: center; gap: 4px;
           padding: 2px 6px; border-radius: 5px;
-          background: ${W.surface2};
-          border: 1px solid ${W.hairHi};
+          background: ${W.surface};
+          border: 1px solid ${W.hair};
           font-family: 'JetBrains Mono', monospace;
           font-size: 10px; color: ${W.inkSoft};
         }
 
-        /* Pill link */
         .wb-pill {
           display: inline-flex; align-items: center; gap: 6px;
           padding: 4px 10px; border-radius: 999px;
           border: 1px solid ${W.hair};
           background: ${W.surface};
           font-family: 'JetBrains Mono', monospace;
-          font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase;
+          font-size: 10px; letter-spacing: 0.12em;
           color: ${W.inkSoft};
         }
 
@@ -104,94 +91,28 @@ const QuoteGeneratorPage = () => {
         }
         .wb-reveal { animation: wb-reveal .5s cubic-bezier(.2,.7,.2,1) both; }
 
-        /* ─── ControlPanel overrides ─── */
-        .wb-controls .bg-\\[\\#111\\] {
-          background: ${W.surface} !important;
-          border: 1px solid ${W.hair} !important;
-          border-radius: 12px !important;
-          box-shadow: none !important;
-        }
-        .wb-controls .border-white\\/5,
-        .wb-controls .border-white\\/10 {
-          border-color: ${W.hair} !important;
-        }
-        .wb-controls h3 {
-          font-family: 'JetBrains Mono', monospace !important;
-          color: ${W.inkSoft} !important;
-          letter-spacing: 0.18em !important;
-          font-size: 10px !important;
-          text-transform: uppercase !important;
-        }
-        .wb-controls .text-gray-500,
-        .wb-controls .text-gray-600 {
-          color: ${W.inkSoft} !important;
-          font-family: 'JetBrains Mono', monospace !important;
-        }
-        .wb-controls .text-gray-400,
-        .wb-controls .text-gray-300,
-        .wb-controls .text-white {
-          color: ${W.ink} !important;
-        }
-        .wb-controls .bg-black {
-          background: ${W.bg} !important;
-          border-radius: 8px !important;
-        }
-        .wb-controls .bg-white\\/5,
-        .wb-controls .bg-white\\/10 {
-          background: ${W.surface2} !important;
-          border: 1px solid ${W.hair} !important;
-          border-radius: 8px !important;
-          color: ${W.ink} !important;
-          font-family: 'Instrument Sans', sans-serif !important;
-          text-transform: none !important;
-          letter-spacing: 0 !important;
-        }
-        .wb-controls .bg-white\\/5:hover,
-        .wb-controls .bg-white\\/10:hover {
-          background: ${W.accentSoft} !important;
-          border-color: ${W.accent} !important;
-          color: ${W.accent} !important;
-        }
-        .wb-controls textarea,
-        .wb-controls input[type="text"],
-        .wb-controls input[type="number"] {
-          font-family: 'Instrument Sans', sans-serif !important;
-          font-size: 14px !important;
-          color: ${W.ink} !important;
-          border-radius: 8px !important;
-        }
-        .wb-controls textarea:focus,
-        .wb-controls input[type="text"]:focus {
-          border-color: ${W.accent} !important;
-          box-shadow: 0 0 0 3px ${W.accentSoft} !important;
-          outline: none !important;
-        }
-
-        .wb-downloads button {
-          background: ${W.surface} !important;
-          border: 1px solid ${W.hair} !important;
-          color: ${W.ink} !important;
-          font-family: 'JetBrains Mono', monospace !important;
-          text-transform: lowercase !important;
-          border-radius: 8px !important;
-          letter-spacing: 0.04em !important;
-          transition: all .15s ease !important;
-        }
-        .wb-downloads button:hover {
-          background: ${W.accent} !important;
-          color: ${W.bg} !important;
-          border-color: ${W.accent} !important;
-          transform: none !important;
-        }
-
-        /* Preview panel frame */
-        .wb-controls > div {
-          gap: 32px !important;
-        }
+        /* Only element tints remain here — widget styling now lives in
+           ControlPanel via native Workbench components. */
 
         .wb-focus-ring *:focus-visible {
           outline: 2px solid ${W.accent};
           outline-offset: 2px;
+          border-radius: 4px;
+        }
+
+        /* Workbench-themed widget tokens (read by ControlPanel widgets) */
+        :root {
+          --wb-bg: ${W.bg};
+          --wb-surface: ${W.surface};
+          --wb-surface-2: ${W.surface2};
+          --wb-hair: ${W.hair};
+          --wb-hair-hi: ${W.hairHi};
+          --wb-ink: ${W.ink};
+          --wb-ink-soft: ${W.inkSoft};
+          --wb-ink-dim: ${W.inkDim};
+          --wb-accent: ${W.accent};
+          --wb-accent-soft: ${W.accentSoft};
+          --wb-accent-ring: ${W.accentRing};
         }
       `}</style>
 
@@ -276,7 +197,6 @@ const QuoteGeneratorPage = () => {
             </p>
           </div>
 
-          {/* quick stats / chips */}
           <div className="flex flex-wrap items-center gap-2 md:justify-end">
             <span className="wb-pill">
               <span style={{ color: W.ink }}>25</span> surfaces
@@ -291,7 +211,6 @@ const QuoteGeneratorPage = () => {
           </div>
         </div>
 
-        {/* hairline rule with a single accent notch */}
         <div className="mt-10 relative" style={{ height: 1 }}>
           <div className="absolute inset-0" style={{ background: W.hair }} />
           <div
@@ -303,12 +222,10 @@ const QuoteGeneratorPage = () => {
 
       {/* ─── Workspace ───────────────────────────────────────────── */}
       <main
-        className="wb-reveal relative z-10 mx-auto max-w-[1440px] px-6 md:px-10 pb-16"
+        className="wb-reveal relative z-10 mx-auto max-w-[1440px] px-6 md:px-10 pb-16 wb-focus-ring"
         style={{ animationDelay: '.08s' }}
       >
-        <div className="wb-controls wb-downloads wb-focus-ring">
-          <QuoteGeneratorApp />
-        </div>
+        <QuoteGeneratorApp />
       </main>
 
       {/* ─── Footer ──────────────────────────────────────────────── */}

@@ -103,31 +103,20 @@ const QuoteGeneratorApp = () => {
 
           {/* download row */}
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="qg-mono text-[10px] qg-dim" style={{ letterSpacing: '0.1em' }}>
+            <div className="qg-mono text-[10px]" style={{ letterSpacing: '0.1em', color: 'var(--wb-ink-soft, #6B6A65)' }}>
               export as
             </div>
             <div className="flex items-center gap-2">
-              <button
-                onClick={() => setTriggerDownload('png')}
-                className="flex items-center gap-2 px-4 py-2 border text-xs font-mono uppercase tracking-widest font-bold rounded-sm bg-white/10 text-white border-white/20 hover:bg-white hover:text-black transition-all"
-              >
-                <DownloadSimpleIcon weight="bold" size={14} />
-                <span>PNG</span>
-              </button>
-              <button
-                onClick={() => setTriggerDownload('jpeg')}
-                className="flex items-center gap-2 px-4 py-2 border text-xs font-mono uppercase tracking-widest font-bold rounded-sm bg-white/10 text-white border-white/20 hover:bg-white hover:text-black transition-all"
-              >
-                <DownloadSimpleIcon weight="bold" size={14} />
-                <span>JPEG</span>
-              </button>
-              <button
-                onClick={() => setTriggerDownload('webp')}
-                className="flex items-center gap-2 px-4 py-2 border text-xs font-mono uppercase tracking-widest font-bold rounded-sm bg-white/10 text-white border-white/20 hover:bg-white hover:text-black transition-all"
-              >
-                <DownloadSimpleIcon weight="bold" size={14} />
-                <span>WebP</span>
-              </button>
+              {['png', 'jpeg', 'webp'].map((fmt) => (
+                <button
+                  key={fmt}
+                  onClick={() => setTriggerDownload(fmt)}
+                  className="wb-dl-btn"
+                >
+                  <DownloadSimpleIcon weight="regular" size={13} />
+                  <span>{fmt.toUpperCase()}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>
@@ -141,8 +130,25 @@ const QuoteGeneratorApp = () => {
       {/* Host-page can restyle labels via these classes */}
       <style>{`
         .qg-mono { font-family: 'JetBrains Mono', 'Space Mono', monospace; }
-        .qg-label { color: currentColor; text-transform: lowercase; }
-        .qg-dim { color: currentColor; opacity: 0.55; text-transform: lowercase; }
+        .qg-label { color: var(--wb-ink-soft, #6B6A65); text-transform: lowercase; }
+        .qg-dim { color: var(--wb-ink-dim, #A8A49B); text-transform: lowercase; }
+        .wb-dl-btn {
+          display: inline-flex; align-items: center; gap: 6px;
+          padding: 7px 12px;
+          font-family: 'JetBrains Mono', monospace;
+          font-size: 11px; letter-spacing: 0.08em;
+          background: var(--wb-surface, #FFFFFF);
+          color: var(--wb-ink, #1A1918);
+          border: 1px solid var(--wb-hair, rgba(25,23,22,0.08));
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all .15s ease;
+        }
+        .wb-dl-btn:hover {
+          background: var(--wb-accent, #C4643A);
+          color: var(--wb-bg, #FAF7F0);
+          border-color: var(--wb-accent, #C4643A);
+        }
       `}</style>
     </div>
   );
