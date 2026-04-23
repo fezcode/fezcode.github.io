@@ -435,8 +435,8 @@ const GalleyBlogPostPage = () => {
             prose-img:border prose-img:border-[#1A161340]
             prose-code:before:content-none prose-code:after:content-none
             prose-code:font-normal
-            prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0 prose-pre:text-[#1A1613]
-            [&_pre]:bg-transparent [&_pre_code]:!text-[#1A1613]
+            prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0
+            [&_code[class*='language-']]:!text-[#1A1613]
             [&_.token.keyword]:!text-[#5C3A87] [&_.token.keyword]:font-semibold
             [&_.token.string]:!text-[#556B2F]
             [&_.token.function]:!text-[#1F4A78] [&_.token.function]:font-semibold
@@ -447,7 +447,14 @@ const GalleyBlogPostPage = () => {
             [&_.token.punctuation]:!text-[#3A302A]
             [&_.token.class-name]:!text-[#8A4A1B] [&_.token.class-name]:font-semibold
             [&_.token.builtin]:!text-[#1F4A78]
-            [&_.token.property]:!text-[#8A4A1B]"
+            [&_.token.property]:!text-[#8A4A1B]
+            [&_.token.constant]:!text-[#8A3E1C]
+            [&_.token.tag]:!text-[#5C3A87]
+            [&_.token.attr-name]:!text-[#556B2F]
+            [&_.token.attr-value]:!text-[#556B2F]
+            [&_.token.regex]:!text-[#5C3A87]
+            [&_.token.variable]:!text-[#1A1613]
+            [&_.token.symbol]:!text-[#8A3E1C]"
         >
           {/* drop cap via :first-letter on the first paragraph */}
           <style>{`
