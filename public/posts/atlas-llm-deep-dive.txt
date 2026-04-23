@@ -758,7 +758,7 @@ isn't the right answer — sometimes you want to paste your project into
 Claude or Gemini for a deep architectural question. The mode flattens
 the directory into a single Markdown file:
 
-```markdown
+````markdown
 ## main.go
 ```go
 package main
@@ -769,7 +769,7 @@ package main
 ```go
 // ...
 ```
-```
+````
 
 With `--with-summaries`, each block is prepended by an AI summary
 delivered as a Markdown blockquote:
