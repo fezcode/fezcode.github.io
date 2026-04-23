@@ -55,9 +55,9 @@ consequence of these three.
 The program is a Go process that performs three roles simultaneously:
 
 ```mermaid
-graph TB
+graph LR
   subgraph atlas["atlas.llm (Go)"]
-    direction TB
+    direction LR
     TUI["TUI / CLI layer<br/>(bubbletea + lipgloss + glamour)"]
     Orch["Orchestration & config<br/>(download, registry,<br/>chat history, slash commands)"]
     Client["llama-server client<br/>(net/http + JSON)"]
