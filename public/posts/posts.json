@@ -1,5 +1,25 @@
 [
   {
+    "slug": "atlas-llm-deep-dive",
+    "title": "atlas.llm: A Deep Dive Into a Single-Binary, On-Device Coding Companion",
+    "date": "2026-04-23",
+    "updated": "2026-04-23",
+    "description": "A detailed technical exploration of how atlas.llm turns llama.cpp into a usable local AI coding assistant, covering architecture, challenges, and design decisions.",
+    "tags": [
+      "go",
+      "ai",
+      "llm",
+      "llamacpp",
+      "architecture",
+      "dev-tools"
+    ],
+    "category": "dev",
+    "filename": "atlas-llm-deep-dive.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "in-review-is-in-progress",
     "title": "In Review is In Progress",
     "date": "2026-04-15",
