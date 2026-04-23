@@ -505,6 +505,44 @@ const GalleyBlogPostPage = () => {
               line-height: 1;
               font-style: normal;
             }
+
+            /* syntax theme — nuclear option: hit code + every token with high specificity */
+            .galley-body code[class*="language-"],
+            .galley-body pre[class*="language-"],
+            .galley-body code[class*="language-"] * {
+              color: #1A1613 !important;
+              text-shadow: none !important;
+            }
+            .galley-body code[class*="language-"] .token.comment,
+            .galley-body code[class*="language-"] .token.prolog,
+            .galley-body code[class*="language-"] .token.doctype,
+            .galley-body code[class*="language-"] .token.cdata { color: #8A7C68 !important; font-style: italic; }
+            .galley-body code[class*="language-"] .token.punctuation { color: #3A302A !important; }
+            .galley-body code[class*="language-"] .token.property,
+            .galley-body code[class*="language-"] .token.class-name,
+            .galley-body code[class*="language-"] .token.constant,
+            .galley-body code[class*="language-"] .token.symbol,
+            .galley-body code[class*="language-"] .token.deleted { color: #8A4A1B !important; font-weight: 600; }
+            .galley-body code[class*="language-"] .token.number,
+            .galley-body code[class*="language-"] .token.boolean { color: #8A3E1C !important; }
+            .galley-body code[class*="language-"] .token.selector,
+            .galley-body code[class*="language-"] .token.string,
+            .galley-body code[class*="language-"] .token.char,
+            .galley-body code[class*="language-"] .token.inserted,
+            .galley-body code[class*="language-"] .token.attr-name,
+            .galley-body code[class*="language-"] .token.attr-value { color: #556B2F !important; }
+            .galley-body code[class*="language-"] .token.operator,
+            .galley-body code[class*="language-"] .token.entity,
+            .galley-body code[class*="language-"] .token.url { color: #7A3020 !important; }
+            .galley-body code[class*="language-"] .token.keyword,
+            .galley-body code[class*="language-"] .token.atrule,
+            .galley-body code[class*="language-"] .token.regex,
+            .galley-body code[class*="language-"] .token.tag { color: #5C3A87 !important; font-weight: 600; }
+            .galley-body code[class*="language-"] .token.function,
+            .galley-body code[class*="language-"] .token.builtin { color: #1F4A78 !important; font-weight: 600; }
+            .galley-body code[class*="language-"] .token.important { color: #7A3020 !important; font-weight: bold; }
+            .galley-body code[class*="language-"] .token.bold { font-weight: bold; }
+            .galley-body code[class*="language-"] .token.italic { font-style: italic; }
           `}</style>
 
           <MarginMark glyph="¶" note="set" />
