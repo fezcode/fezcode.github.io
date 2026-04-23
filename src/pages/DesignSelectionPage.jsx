@@ -13,7 +13,7 @@ import {
   ScrollIcon,
   TerminalWindowIcon,
   PlantIcon,
-  MaskHappyIcon,
+  SparkleIcon,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
@@ -592,115 +592,119 @@ const DesignSelectionPage = () => {
               </motion.div>
             </Link>
 
-            {/* ── LIBRETTO ── */}
+            {/* ── PROSE ── */}
             <Link to="/apps/quote-generator" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
                 className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
-                  background: '#2A0E14',
-                  borderRadius: 2,
+                  background: '#0A0A0B',
+                  borderRadius: 20,
                   boxShadow:
-                    '0 0 0 1px #C8A255 inset, 0 0 0 5px #2A0E14, 0 0 0 6px #C8A25566, 0 30px 60px -30px rgba(0,0,0,0.7)',
+                    'inset 0 0 0 1px rgba(255,255,255,0.08), 0 30px 60px -30px rgba(0,0,0,0.7)',
                 }}
               >
-                {/* subtle gilt damask dots */}
+                {/* aurora mesh */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      'radial-gradient(45% 35% at 20% 15%, rgba(197,242,75,0.18), transparent 70%), radial-gradient(40% 30% at 80% 85%, rgba(236,72,153,0.12), transparent 70%), radial-gradient(35% 25% at 85% 15%, rgba(56,189,248,0.1), transparent 70%)',
+                    filter: 'blur(30px)',
+                  }}
+                />
+                {/* dotted grid */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     backgroundImage:
-                      'radial-gradient(circle at 25% 25%, rgba(200,162,85,0.08) 1px, transparent 2px), radial-gradient(circle at 75% 75%, rgba(200,162,85,0.08) 1px, transparent 2px)',
-                    backgroundSize: '36px 36px',
-                    opacity: 0.8,
+                      'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
+                    backgroundSize: '22px 22px',
+                    maskImage:
+                      'radial-gradient(ellipse at center, black 40%, transparent 85%)',
                   }}
                 />
-                {/* top stage curtain */}
-                <svg
-                  viewBox="0 0 600 60"
-                  preserveAspectRatio="none"
-                  className="absolute left-0 right-0 top-0 pointer-events-none"
-                  style={{ height: 30 }}
-                  aria-hidden
-                >
-                  <rect x="0" y="0" width="600" height="9" fill="#5A0F18" />
-                  <rect x="0" y="8" width="600" height="1" fill="#C8A255" />
-                  {Array.from({ length: 6 }).map((_, i) => {
-                    const x = i * 100;
-                    const drop = 30 + (i % 2) * 8;
-                    return (
-                      <g key={i}>
-                        <path
-                          d={`M${x} 9 Q${x + 50} ${drop}, ${x + 100} 9 L${x + 100} 0 L${x} 0 Z`}
-                          fill="#7E1A24"
-                        />
-                        <circle cx={x + 50} cy={drop - 2} r="1.5" fill="#C8A255" />
-                      </g>
-                    );
-                  })}
-                </svg>
+                {/* gradient hairline */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    padding: 1,
+                    borderRadius: 20,
+                    background:
+                      'linear-gradient(140deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04) 40%, rgba(197,242,75,0.25))',
+                    WebkitMask:
+                      'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
+                    WebkitMaskComposite: 'xor',
+                    maskComposite: 'exclude',
+                  }}
+                />
 
-                <div className="space-y-8 relative z-10 mt-6">
+                <div className="space-y-8 relative z-10">
                   <div
                     className="w-16 h-16 flex items-center justify-center transition-all duration-500"
                     style={{
-                      background: 'rgba(200,162,85,0.1)',
-                      color: '#C8A255',
-                      borderRadius: 2,
-                      border: '1px solid #C8A25566',
+                      background: 'rgba(197,242,75,0.08)',
+                      color: '#C5F24B',
+                      borderRadius: 14,
+                      border: '1px solid rgba(197,242,75,0.28)',
                     }}
                   >
-                    <MaskHappyIcon size={32} weight="regular" />
+                    <SparkleIcon size={30} weight="regular" />
                   </div>
                   <div className="space-y-4">
                     <div
-                      className="text-[10px] uppercase tracking-[0.3em]"
+                      className="text-[10px] uppercase tracking-[0.28em] flex items-center gap-2"
                       style={{
-                        color: '#C8A255',
-                        fontFamily: "'Cinzel', serif",
+                        color: '#A1A1AA',
+                        fontFamily: "'JetBrains Mono', monospace",
                       }}
                     >
-                      Grand Théâtre · MMXXVI
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ background: '#C5F24B', boxShadow: '0 0 8px rgba(197,242,75,0.5)' }}
+                      />
+                      Composer · v2026.1
                     </div>
                     <h3
-                      className="text-5xl italic leading-none tracking-tight"
+                      className="text-6xl italic leading-none tracking-[-0.02em]"
                       style={{
-                        fontFamily: "'Playfair Display', serif",
-                        color: '#F0E4C8',
-                        textShadow: '0 2px 0 #1A0609, 0 4px 16px rgba(200,162,85,0.3)',
+                        fontFamily: "'Fraunces', serif",
+                        fontVariationSettings: "'opsz' 144, 'SOFT' 20, 'WONK' 0",
+                        color: '#F5F5F4',
                       }}
                     >
-                      Libretto
+                      Prose<span style={{ color: '#C5F24B' }}>.</span>
                     </h3>
                     <p
-                      className="text-sm italic leading-relaxed"
+                      className="text-sm leading-relaxed"
                       style={{
-                        fontFamily: "'Playfair Display', 'EB Garamond', serif",
-                        color: 'rgba(240,228,200,0.75)',
+                        fontFamily: "'Instrument Sans', sans-serif",
+                        color: '#A1A1AA',
                       }}
                     >
-                      Opera program in velvet and gilt. Stage-curtain pelmet,
-                      gold tassels, parchment acts, Playfair italic with
-                      Cinzel capitals.
+                      2026 writing-tool aesthetic. Off-black canvas, a single
+                      electric-lime accent, drifting aurora gradient, Fraunces
+                      italic where the type does the talking.
                     </p>
                   </div>
                 </div>
                 <div
-                  className="mt-12 pt-8 flex justify-between items-center relative z-10 border-t"
-                  style={{ borderColor: '#8A6B2F' }}
+                  className="mt-12 pt-8 flex justify-between items-center relative z-10"
+                  style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
                 >
                   <span
-                    className="text-[10px] uppercase tracking-[0.3em]"
+                    className="text-[10px] uppercase tracking-[0.28em] flex items-center gap-2"
                     style={{
-                      color: '#C8A255',
-                      fontFamily: "'Cinzel', serif",
+                      color: '#C5F24B',
+                      fontFamily: "'JetBrains Mono', monospace",
                     }}
                   >
-                    Act I · Scena Prima
+                    start composing
                   </span>
                   <ArrowRightIcon
                     className="group-hover:translate-x-2 transition-all"
                     size={24}
-                    style={{ color: '#C8A255' }}
+                    style={{ color: '#C5F24B' }}
                   />
                 </div>
               </motion.div>
