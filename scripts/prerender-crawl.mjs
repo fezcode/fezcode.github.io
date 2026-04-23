@@ -8,9 +8,10 @@ import { discoverAllRoutes } from '../pages/discoverRoutes.js';
 const allRoutes = discoverAllRoutes();
 
 const DIST = 'dist/client';
-const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 8;
-const PAGE_TIMEOUT = 20000;
-const RENDER_SETTLE_MS = 250;
+const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 6;
+const PAGE_TIMEOUT = 30000;
+const RENDER_SETTLE_MS = 300;
+const SELECTOR_TIMEOUT = 8000;
 
 function routeToFile(route) {
   if (route === '/') return join(DIST, 'index.html');
@@ -36,9 +37,9 @@ async function crawlOne(browser, baseUrl, route) {
     });
     await page.goto(target, { waitUntil: 'domcontentloaded', timeout: PAGE_TIMEOUT });
     try {
-      await page.waitForSelector('#react-root > *', { timeout: 5000 });
+      await page.waitForSelector('#react-root > *', { timeout: SELECTOR_TIMEOUT });
     } catch {
-      return { route, skipped: 'no children rendered within 5s' };
+      return { route, skipped: `no children rendered within ${SELECTOR_TIMEOUT}ms` };
     }
     await new Promise((r) => setTimeout(r, RENDER_SETTLE_MS));
 
