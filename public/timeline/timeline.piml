@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-04-23
+    (title) Vite + Vike Migration: Replacing CRA and react-snap
+    (description) Retired Create React App and the unmaintained react-snap prerender in favor of Vite + Vike and a purpose-built Puppeteer crawler. Dynamic route enumeration now walks posts.json, log directories, and story PIML manifests to emit ~460 shells. Added a preview-server warm-up ping that fixed a cold-start stampede (59/460 -> 438/460 rendered), an opt-in sequential retry pass, per-phase and per-route timing instrumentation, and three build variants: build, build:fast, build:retry. Also fixed a react-markdown v10 regression where unlanguaged fenced code blocks rendered as pill-per-line inline <code>.
+    (type) refactor
+    (icon) LightningIcon
+    (link) /blog/vite-vike-ssg-migration
+
+  > (item)
     (date) 2026-04-22
     (title) Fezterracotta: The Weighted Codex
     (description) Deployed 'Fezterracotta', a third design language built around the Plumb identity — bone paper, terra ink, brass and sage accents, Fraunces variable serif and IBM Plex Mono. Every page was rebuilt from scratch as editorial matter: chapter-numbered layouts, dictionary entries, plumb-line hero wordmark, registration-crosshair generative plates, a new Galley Proof blog reader, and theme-aware Mermaid, Toasts, Contact Modal, and Banner.
