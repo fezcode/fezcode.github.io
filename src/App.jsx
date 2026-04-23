@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import Layout from './components/Layout';
 import AnimatedRoutes from './components/AnimatedRoutes';
 import { ToastProvider } from './context/ToastContext';
@@ -68,7 +67,6 @@ function App() {
   return (
     <AnimationProvider>
       <MotionConfigWrapper>
-        <Router>
           <ToastProvider>
             <SiteConfigProvider>
               <CloudMusicProvider>
@@ -113,7 +111,6 @@ function App() {
               </CloudMusicProvider>
             </SiteConfigProvider>
           </ToastProvider>
-        </Router>
       </MotionConfigWrapper>
     </AnimationProvider>
   );

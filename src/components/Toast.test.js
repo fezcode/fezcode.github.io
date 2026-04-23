@@ -12,10 +12,10 @@ const renderToast = (props) => {
 };
 
 describe('Toast Component', () => {
-  const mockRemoveToast = jest.fn();
+  const mockRemoveToast = vi.fn();
 
   afterEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   test('renders toast with message', () => {
@@ -34,7 +34,7 @@ describe('Toast Component', () => {
     const links = [
       { label: 'Internal Link', to: '/internal' },
       { label: 'External Link', href: 'https://example.com' },
-      { label: 'Action Button', onClick: jest.fn() },
+      { label: 'Action Button', onClick: vi.fn() },
     ];
 
     renderToast({

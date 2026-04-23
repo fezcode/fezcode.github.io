@@ -25,7 +25,7 @@ function DndLorePage() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`,
+          `${''}/stories/books_${language || 'en'}.piml`,
         );
         if (response.ok) {
           const pimlText = await response.text();

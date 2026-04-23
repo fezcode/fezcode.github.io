@@ -25,7 +25,7 @@ function DndCharactersPage() {
     const fetchData = async () => {
       try {
         const charactersResponse = await fetch(
-          `${process.env.PUBLIC_URL}/stories/characters.piml`,
+          `${''}/stories/characters.piml`,
         );
 
         if (charactersResponse.ok) {

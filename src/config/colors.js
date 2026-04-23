@@ -1,4 +1,4 @@
-module.exports = {
+const colors = {
   primary: {
     400: '#f87171', // red-400
     500: '#ef4444', // red-500
@@ -178,3 +178,5 @@ module.exports = {
     'line-highlight-end': '#3c526d55',
   },
 };
+
+export default colors;

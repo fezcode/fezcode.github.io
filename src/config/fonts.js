@@ -1,4 +1,4 @@
-module.exports = {
+const fonts = {
   arvo: ['Arvo', 'serif'],
   playfairDisplay: ['Playfair Display', 'serif'],
   inter: ['Inter', 'sans-serif'],
@@ -11,3 +11,5 @@ module.exports = {
   garamond: ['"EB Garamond"', 'serif'],
   fraunces: ['Fraunces', '"Times New Roman"', 'serif'],
 };
+
+export default fonts;

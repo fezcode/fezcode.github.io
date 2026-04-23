@@ -41,7 +41,7 @@ export const CloudMusicProvider = ({ children }) => {
   useEffect(() => {
     const fetchMusics = async () => {
       try {
-        const publicUrl = process.env.PUBLIC_URL || '';
+        const publicUrl = '' || '';
         const response = await fetch(`${publicUrl}/media_player/musics.piml`);
         if (response.ok) {
           const text = await response.text();
@@ -125,7 +125,7 @@ export const CloudMusicProvider = ({ children }) => {
     if (playlist.length > 0 && playlist[currentTrackIndex]) {
       const audio = audioRef.current;
       const currentTrack = playlist[currentTrackIndex];
-      const publicUrl = process.env.PUBLIC_URL || '';
+      const publicUrl = '' || '';
 
       const trackUrl = currentTrack.url.startsWith('http')
         ? currentTrack.url

@@ -23,9 +23,9 @@ function DndAuthorsPage() {
     const fetchData = async () => {
       try {
         const [authRes, booksRes] = await Promise.all([
-          fetch(`${process.env.PUBLIC_URL}/stories/authors.piml`),
+          fetch(`${''}/stories/authors.piml`),
           fetch(
-            `${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`,
+            `${''}/stories/books_${language || 'en'}.piml`,
           ),
         ]);
 

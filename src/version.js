@@ -1,2 +1,2 @@
-const pjson = require('../package.json');
+import pjson from '../package.json';
 export const version = pjson.version;

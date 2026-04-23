@@ -34,7 +34,7 @@ function DndEpisodePage() {
     const fetchAllBooks = async () => {
       try {
         const response = await fetch(
-          `${process.env.PUBLIC_URL}/stories/books_${language || 'en'}.piml`,
+          `${''}/stories/books_${language || 'en'}.piml`,
         );
 
         if (response.ok) {
@@ -87,7 +87,7 @@ function DndEpisodePage() {
           const fetchEpisodeContent = async () => {
             try {
               const response = await fetch(
-                `${process.env.PUBLIC_URL}/stories/${currentEp.filename}`,
+                `${''}/stories/${currentEp.filename}`,
               );
 
               if (response.ok) {

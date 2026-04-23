@@ -25,7 +25,7 @@ function DndPlacesPage() {
     const fetchData = async () => {
       try {
         const placesResponse = await fetch(
-          `${process.env.PUBLIC_URL}/stories/places.piml`,
+          `${''}/stories/places.piml`,
         );
 
         if (placesResponse.ok) {

@@ -25,7 +25,7 @@ function DndItemsPage() {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${process.env.PUBLIC_URL}/stories/meta-items/items.piml`,
+          `${''}/stories/meta-items/items.piml`,
         );
 
         if (response.ok) {

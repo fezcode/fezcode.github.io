@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 22 Apr 2026 22:22:41 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 23 Apr 2026 06:39:17 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 22 Apr 2026 22:22:41 GMT</pubDate>
+        <pubDate>Thu, 23 Apr 2026 06:39:17 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[atlas.llm: A Deep Dive Into a Single-Binary, On-Device Coding Companion]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/atlas-llm-deep-dive</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/atlas-llm-deep-dive</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Thu, 23 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1><code>atlas.llm</code>: A Deep Dive Into a Single-Binary, On-Device Coding Companion</h1>
+<p><a href="https://fezcode.com/blog/atlas-llm-deep-dive">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[In Review is In Progress]]></title>
             <description><![CDATA[[object Object]]]></description>
