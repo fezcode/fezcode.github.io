@@ -7,13 +7,12 @@ import { DownloadSimpleIcon } from '@phosphor-icons/react';
 const QuoteGeneratorApp = () => {
   const { addToast } = useToast();
 
-  // State
   const [state, setState] = useState({
     text: 'The only way to deal with an unfree world is to become so absolutely free that your very existence is an act of rebellion.',
     author: 'Albert Camus',
     width: 1080,
-    height: 1080, // Square by default, maybe customizable later
-    backgroundType: 'solid', // 'solid', 'linear', 'radial'
+    height: 1080,
+    backgroundType: 'solid',
     backgroundColor: '#ffffff',
     gradientColor1: '#ff0000',
     gradientColor2: '#0000ff',
@@ -28,7 +27,7 @@ const QuoteGeneratorApp = () => {
     backgroundImage: null,
     overlayOpacity: 0,
     overlayColor: '#000000',
-    themeType: 'standard', // 'standard', 'wordbox', 'typewriter'
+    themeType: 'standard',
   });
 
   const [triggerDownload, setTriggerDownload] = useState(null);
@@ -37,7 +36,6 @@ const QuoteGeneratorApp = () => {
     setState((prev) => ({ ...prev, ...newState }));
   };
 
-  // Font Loading
   useEffect(() => {
     const fonts = [
       'Inter:wght@400;700;900',
@@ -70,50 +68,82 @@ const QuoteGeneratorApp = () => {
 
     addToast({
       title: 'Quote Downloaded',
-      message: `Your quote has been saved successfully as ${format?.toUpperCase() || 'PNG'}.`,
+      message: `Saved as ${format?.toUpperCase() || 'PNG'}.`,
       type: 'success',
     });
   };
 
+  const charCount = state.text.length;
+  const wordCount = state.text.trim().split(/\s+/).filter(Boolean).length;
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-      {/* Controls */}
-      <div className="lg:col-span-4 h-fit lg:sticky lg:top-8">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+      {/* ── PREVIEW · sticky on lg, larger column ── */}
+      <div className="lg:col-span-7 xl:col-span-8 order-1 lg:order-1">
+        <div className="lg:sticky lg:top-20 space-y-4">
+          {/* meta row above canvas */}
+          <div className="flex items-center justify-between text-[11px]">
+            <div className="flex items-center gap-4 qg-mono" style={{ letterSpacing: '0.08em' }}>
+              <span className="qg-label">preview</span>
+              <span className="qg-dim">·</span>
+              <span className="qg-dim">{state.width} × {state.height}</span>
+            </div>
+            <div className="flex items-center gap-3 qg-mono" style={{ letterSpacing: '0.08em' }}>
+              <span className="qg-dim">{wordCount} words</span>
+              <span className="qg-dim">·</span>
+              <span className="qg-dim">{charCount} chars</span>
+            </div>
+          </div>
+
+          <CanvasPreview
+            {...state}
+            onDownload={handleDownload}
+            triggerDownload={triggerDownload}
+          />
+
+          {/* download row */}
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="qg-mono text-[10px] qg-dim" style={{ letterSpacing: '0.1em' }}>
+              export as
+            </div>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => setTriggerDownload('png')}
+                className="flex items-center gap-2 px-4 py-2 border text-xs font-mono uppercase tracking-widest font-bold rounded-sm bg-white/10 text-white border-white/20 hover:bg-white hover:text-black transition-all"
+              >
+                <DownloadSimpleIcon weight="bold" size={14} />
+                <span>PNG</span>
+              </button>
+              <button
+                onClick={() => setTriggerDownload('jpeg')}
+                className="flex items-center gap-2 px-4 py-2 border text-xs font-mono uppercase tracking-widest font-bold rounded-sm bg-white/10 text-white border-white/20 hover:bg-white hover:text-black transition-all"
+              >
+                <DownloadSimpleIcon weight="bold" size={14} />
+                <span>JPEG</span>
+              </button>
+              <button
+                onClick={() => setTriggerDownload('webp')}
+                className="flex items-center gap-2 px-4 py-2 border text-xs font-mono uppercase tracking-widest font-bold rounded-sm bg-white/10 text-white border-white/20 hover:bg-white hover:text-black transition-all"
+              >
+                <DownloadSimpleIcon weight="bold" size={14} />
+                <span>WebP</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── CONTROLS · scrollable right column ── */}
+      <div className="lg:col-span-5 xl:col-span-4 order-2 lg:order-2">
         <ControlPanel state={state} updateState={updateState} />
       </div>
 
-      {/* Preview */}
-      <div className="lg:col-span-8 space-y-4">
-        <CanvasPreview
-          {...state}
-          onDownload={handleDownload}
-          triggerDownload={triggerDownload}
-        />
-
-        <div className="flex justify-end gap-2">
-          <button
-            onClick={() => setTriggerDownload('png')}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white hover:text-black transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm border border-white/20"
-          >
-            <DownloadSimpleIcon weight="bold" size={16} />
-            <span>PNG</span>
-          </button>
-          <button
-            onClick={() => setTriggerDownload('jpeg')}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white hover:text-black transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm border border-white/20"
-          >
-            <DownloadSimpleIcon weight="bold" size={16} />
-            <span>JPEG</span>
-          </button>
-          <button
-            onClick={() => setTriggerDownload('webp')}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 text-white hover:bg-white hover:text-black transition-all font-mono uppercase tracking-widest text-xs font-bold rounded-sm border border-white/20"
-          >
-            <DownloadSimpleIcon weight="bold" size={16} />
-            <span>WebP</span>
-          </button>
-        </div>
-      </div>
+      {/* Host-page can restyle labels via these classes */}
+      <style>{`
+        .qg-mono { font-family: 'JetBrains Mono', 'Space Mono', monospace; }
+        .qg-label { color: currentColor; text-transform: lowercase; }
+        .qg-dim { color: currentColor; opacity: 0.55; text-transform: lowercase; }
+      `}</style>
     </div>
   );
 };

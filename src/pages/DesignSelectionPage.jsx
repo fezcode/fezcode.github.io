@@ -13,7 +13,7 @@ import {
   ScrollIcon,
   TerminalWindowIcon,
   PlantIcon,
-  SparkleIcon,
+  TerminalIcon,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
@@ -592,119 +592,107 @@ const DesignSelectionPage = () => {
               </motion.div>
             </Link>
 
-            {/* ── PROSE ── */}
+            {/* ── WORKBENCH ── */}
             <Link to="/apps/quote-generator" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
                 className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
-                  background: '#0A0A0B',
-                  borderRadius: 20,
+                  background: '#0F0F10',
+                  borderRadius: 14,
                   boxShadow:
-                    'inset 0 0 0 1px rgba(255,255,255,0.08), 0 30px 60px -30px rgba(0,0,0,0.7)',
+                    'inset 0 0 0 1px rgba(239,236,228,0.08), 0 30px 60px -30px rgba(0,0,0,0.6)',
                 }}
               >
-                {/* aurora mesh */}
+                {/* warm top vignette */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     background:
-                      'radial-gradient(45% 35% at 20% 15%, rgba(197,242,75,0.18), transparent 70%), radial-gradient(40% 30% at 80% 85%, rgba(236,72,153,0.12), transparent 70%), radial-gradient(35% 25% at 85% 15%, rgba(56,189,248,0.1), transparent 70%)',
-                    filter: 'blur(30px)',
+                      'radial-gradient(60% 40% at 50% 0%, rgba(196,100,58,0.08), transparent 65%)',
                   }}
                 />
-                {/* dotted grid */}
+                {/* subtle film grain */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     backgroundImage:
-                      'radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)',
-                    backgroundSize: '22px 22px',
-                    maskImage:
-                      'radial-gradient(ellipse at center, black 40%, transparent 85%)',
-                  }}
-                />
-                {/* gradient hairline */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    padding: 1,
-                    borderRadius: 20,
-                    background:
-                      'linear-gradient(140deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04) 40%, rgba(197,242,75,0.25))',
-                    WebkitMask:
-                      'linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)',
-                    WebkitMaskComposite: 'xor',
-                    maskComposite: 'exclude',
+                      'radial-gradient(circle at 30% 30%, rgba(239,236,228,0.02) 1px, transparent 1px)',
+                    backgroundSize: '3px 3px',
+                    opacity: 0.6,
                   }}
                 />
 
                 <div className="space-y-8 relative z-10">
                   <div
-                    className="w-16 h-16 flex items-center justify-center transition-all duration-500"
+                    className="w-14 h-14 flex items-center justify-center"
                     style={{
-                      background: 'rgba(197,242,75,0.08)',
-                      color: '#C5F24B',
-                      borderRadius: 14,
-                      border: '1px solid rgba(197,242,75,0.28)',
+                      background: 'rgba(196,100,58,0.12)',
+                      color: '#C4643A',
+                      borderRadius: 10,
+                      border: '1px solid rgba(196,100,58,0.3)',
                     }}
                   >
-                    <SparkleIcon size={30} weight="regular" />
+                    <TerminalIcon size={26} weight="regular" />
                   </div>
                   <div className="space-y-4">
                     <div
-                      className="text-[10px] uppercase tracking-[0.28em] flex items-center gap-2"
+                      className="text-[10px] flex items-center gap-2"
                       style={{
-                        color: '#A1A1AA',
+                        color: '#A8A49B',
                         fontFamily: "'JetBrains Mono', monospace",
+                        letterSpacing: '0.08em',
                       }}
                     >
                       <span
                         className="h-1.5 w-1.5 rounded-full"
-                        style={{ background: '#C5F24B', boxShadow: '0 0 8px rgba(197,242,75,0.5)' }}
+                        style={{ background: '#C4643A' }}
                       />
-                      Composer · v2026.1
+                      <span>composer · v2026.1</span>
                     </div>
                     <h3
-                      className="text-6xl italic leading-none tracking-[-0.02em]"
+                      className="leading-none tracking-[-0.01em]"
                       style={{
                         fontFamily: "'Fraunces', serif",
-                        fontVariationSettings: "'opsz' 144, 'SOFT' 20, 'WONK' 0",
-                        color: '#F5F5F4',
+                        fontVariationSettings: "'opsz' 72, 'SOFT' 0, 'WONK' 0",
+                        color: '#EFECE4',
+                        fontSize: 56,
+                        fontWeight: 400,
                       }}
                     >
-                      Prose<span style={{ color: '#C5F24B' }}>.</span>
+                      Workbench
                     </h3>
                     <p
                       className="text-sm leading-relaxed"
                       style={{
                         fontFamily: "'Instrument Sans', sans-serif",
-                        color: '#A1A1AA',
+                        color: '#A8A49B',
                       }}
                     >
-                      2026 writing-tool aesthetic. Off-black canvas, a single
-                      electric-lime accent, drifting aurora gradient, Fraunces
-                      italic where the type does the talking.
+                      Calm 2026 dev-tool aesthetic — Claude Code, Codex. Warm
+                      near-black canvas, a single muted terracotta accent,
+                      Fraunces and Instrument Sans. No noise.
                     </p>
                   </div>
                 </div>
                 <div
                   className="mt-12 pt-8 flex justify-between items-center relative z-10"
-                  style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}
+                  style={{ borderTop: '1px solid rgba(239,236,228,0.08)' }}
                 >
                   <span
-                    className="text-[10px] uppercase tracking-[0.28em] flex items-center gap-2"
+                    className="text-[10px] flex items-center gap-2"
                     style={{
-                      color: '#C5F24B',
+                      color: '#C4643A',
                       fontFamily: "'JetBrains Mono', monospace",
+                      letterSpacing: '0.1em',
                     }}
                   >
-                    start composing
+                    open workbench
                   </span>
                   <ArrowRightIcon
                     className="group-hover:translate-x-2 transition-all"
-                    size={24}
-                    style={{ color: '#C5F24B' }}
+                    size={22}
+                    style={{ color: '#C4643A' }}
                   />
                 </div>
               </motion.div>
