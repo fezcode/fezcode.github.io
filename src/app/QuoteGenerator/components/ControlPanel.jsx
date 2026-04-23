@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import {
   TextTIcon,
   PaletteIcon,
@@ -8,6 +8,7 @@ import {
   QuotesIcon,
   CaretDownIcon,
 } from '@phosphor-icons/react';
+import CustomColorPicker from '../../../components/CustomColorPicker';
 
 // ─── Workbench-native widgets ───────────────────────────────────────────
 // Reads CSS variables set by the host page (QuoteGeneratorPage) so the
@@ -250,38 +251,12 @@ const WbDropdown = ({ label, options, value, onChange, icon: Icon }) => (
   </div>
 );
 
-const WbColorPicker = ({ label, value, onChange }) => {
-  const ref = useRef(null);
-  return (
-    <div className="flex items-center gap-3">
-      <div
-        className="wb-swatch"
-        style={{ background: value }}
-        onClick={() => ref.current?.click()}
-        role="button"
-        aria-label={`Pick ${label}`}
-      >
-        <input
-          ref={ref}
-          type="color"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          style={{ opacity: 0, width: 0, height: 0, pointerEvents: 'none' }}
-        />
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="wb-label mb-1">{label}</div>
-        <input
-          type="text"
-          value={(value || '').toUpperCase()}
-          onChange={(e) => onChange(e.target.value)}
-          className="wb-input wb-hex"
-          style={{ padding: '6px 10px', fontSize: 13 }}
-        />
-      </div>
-    </div>
-  );
-};
+const WbColorPicker = ({ label, value, onChange }) => (
+  <div>
+    {label && <div className="wb-label mb-2">{label}</div>}
+    <CustomColorPicker value={value} onChange={onChange} variant="brutalist" />
+  </div>
+);
 
 // ─── THEME PRESETS ──────────────────────────────────────────────────────
 const FONT_OPTIONS = [

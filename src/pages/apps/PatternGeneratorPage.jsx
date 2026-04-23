@@ -14,22 +14,29 @@ import {
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
+import CustomColorPicker from '../../components/CustomColorPicker';
 
-// ─── WORKBENCH :: calm modern dev-tool aesthetic (light) ───────────────
+// ─── WORKBENCH :: calm modern dev-tool aesthetic (dark) ────────────────
 const W = {
-  bg: '#FAF7F0',
-  bgSoft: '#F4EFE4',
-  surface: '#FFFFFF',
-  surface2: '#F6F1E4',
-  hair: 'rgba(25,23,22,0.08)',
-  hairHi: 'rgba(25,23,22,0.16)',
-  ink: '#1A1918',
-  inkSoft: '#6B6A65',
-  inkDim: '#A8A49B',
+  bg: '#0F0F10',
+  bgSoft: '#141415',
+  surface: '#17171A',
+  surface2: '#1E1E22',
+  hair: 'rgba(239,236,228,0.08)',
+  hairHi: 'rgba(239,236,228,0.16)',
+  ink: '#EFECE4',
+  inkSoft: '#A8A49B',
+  inkDim: '#6E6B64',
   accent: '#C4643A',
-  accentSoft: 'rgba(196,100,58,0.10)',
-  accentRing: 'rgba(196,100,58,0.22)',
+  accentSoft: 'rgba(196,100,58,0.14)',
+  accentRing: 'rgba(196,100,58,0.28)',
 };
+
+const randomHex = () =>
+  '#' +
+  Math.floor(Math.random() * 0xFFFFFF)
+    .toString(16)
+    .padStart(6, '0');
 
 // ─── Workbench widgets (local copies, drive off CSS vars) ───────────────
 const WB_CSS = `
@@ -148,6 +155,20 @@ const WB_CSS = `
     background: #A85430;
     border-color: #A85430;
   }
+  .wb-micro-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    background: transparent;
+    border: none;
+    color: var(--wb-ink-soft);
+    cursor: pointer;
+    transition: background .15s ease, color .15s ease;
+  }
+  .wb-micro-btn:hover {
+    background: var(--wb-accent-soft);
+    color: var(--wb-accent);
+  }
   .wb-kbd {
     display: inline-flex; align-items: center; gap: 4px;
     padding: 2px 6px; border-radius: 5px;
@@ -244,38 +265,6 @@ const WbDropdown = ({ label, options, value, onChange, icon: Icon }) => (
     </div>
   </div>
 );
-
-const WbColorRow = ({ label, value, onChange }) => {
-  const ref = useRef(null);
-  return (
-    <div className="flex items-center gap-3">
-      <div
-        className="wb-swatch"
-        style={{ background: value }}
-        onClick={() => ref.current?.click()}
-        role="button"
-        aria-label={`Pick ${label}`}
-      >
-        <input
-          ref={ref}
-          type="color"
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          style={{ opacity: 0, width: 0, height: 0, pointerEvents: 'none' }}
-        />
-      </div>
-      <div className="flex-1 min-w-0">
-        <div className="wb-label mb-1">{label}</div>
-        <input
-          type="text"
-          value={(value || '').toUpperCase()}
-          onChange={(e) => onChange(e.target.value)}
-          className="wb-input"
-        />
-      </div>
-    </div>
-  );
-};
 
 // ─── data ─────────────────────────────────────────────────────────────
 const PREDEFINED_PALETTES = [
@@ -775,14 +764,26 @@ const PatternGeneratorPage = () => {
                 </button>
               </div>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {palette.map((color, i) => (
-                  <WbColorRow
-                    key={i}
-                    label={`Color ${i + 1}`}
-                    value={color}
-                    onChange={(newColor) => updateColor(i, newColor)}
-                  />
+                  <div key={i} className="space-y-1.5">
+                    <div className="flex items-center justify-between">
+                      <span className="wb-label">Color {i + 1}</span>
+                      <button
+                        onClick={() => updateColor(i, randomHex())}
+                        className="wb-micro-btn"
+                        title="Randomize this color"
+                        aria-label="Randomize this color"
+                      >
+                        <ShuffleIcon size={11} />
+                      </button>
+                    </div>
+                    <CustomColorPicker
+                      value={color}
+                      onChange={(newColor) => updateColor(i, newColor)}
+                      variant="brutalist"
+                    />
+                  </div>
                 ))}
               </div>
             </div>

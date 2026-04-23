@@ -592,7 +592,111 @@ const DesignSelectionPage = () => {
               </motion.div>
             </Link>
 
-            {/* ── WORKBENCH ── */}
+            {/* ── WORKBENCH · LIGHT ── */}
+            <Link to="/apps/quote-generator" className="group block relative">
+              <motion.div
+                whileHover={{ y: -10 }}
+                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                style={{
+                  background: '#FAF7F0',
+                  borderRadius: 14,
+                  boxShadow:
+                    'inset 0 0 0 1px rgba(25,23,22,0.08), 0 30px 60px -30px rgba(25,23,22,0.18)',
+                }}
+              >
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      'radial-gradient(60% 40% at 50% 0%, rgba(196,100,58,0.08), transparent 65%)',
+                  }}
+                />
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      'radial-gradient(circle at 30% 30%, rgba(25,23,22,0.025) 1px, transparent 1px)',
+                    backgroundSize: '3px 3px',
+                    opacity: 0.6,
+                  }}
+                />
+
+                <div className="space-y-8 relative z-10">
+                  <div
+                    className="w-14 h-14 flex items-center justify-center"
+                    style={{
+                      background: 'rgba(196,100,58,0.12)',
+                      color: '#C4643A',
+                      borderRadius: 10,
+                      border: '1px solid rgba(196,100,58,0.3)',
+                    }}
+                  >
+                    <TerminalIcon size={26} weight="regular" />
+                  </div>
+                  <div className="space-y-4">
+                    <div
+                      className="text-[10px] flex items-center gap-2"
+                      style={{
+                        color: '#6B6A65',
+                        fontFamily: "'JetBrains Mono', monospace",
+                        letterSpacing: '0.08em',
+                      }}
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full"
+                        style={{ background: '#C4643A' }}
+                      />
+                      <span>light · v2026.1</span>
+                    </div>
+                    <h3
+                      className="leading-none tracking-[-0.01em]"
+                      style={{
+                        fontFamily: "'Fraunces', serif",
+                        fontVariationSettings: "'opsz' 72, 'SOFT' 0, 'WONK' 0",
+                        color: '#1A1918',
+                        fontSize: 52,
+                        fontWeight: 400,
+                      }}
+                    >
+                      Workbench
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed"
+                      style={{
+                        fontFamily: "'Instrument Sans', sans-serif",
+                        color: '#6B6A65',
+                      }}
+                    >
+                      Calm 2026 light dev-tool aesthetic — warm cream canvas,
+                      muted terracotta accent, Fraunces and Instrument Sans.
+                      Applied to the quote composer.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="mt-12 pt-8 flex justify-between items-center relative z-10"
+                  style={{ borderTop: '1px solid rgba(25,23,22,0.08)' }}
+                >
+                  <span
+                    className="text-[10px] flex items-center gap-2"
+                    style={{
+                      color: '#C4643A',
+                      fontFamily: "'JetBrains Mono', monospace",
+                      letterSpacing: '0.1em',
+                    }}
+                  >
+                    open composer
+                  </span>
+                  <ArrowRightIcon
+                    className="group-hover:translate-x-2 transition-all"
+                    size={22}
+                    style={{ color: '#C4643A' }}
+                  />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* ── WORKBENCH · DARK ── */}
             <Link to="/apps/pattern-generator" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
@@ -604,7 +708,6 @@ const DesignSelectionPage = () => {
                     'inset 0 0 0 1px rgba(239,236,228,0.08), 0 30px 60px -30px rgba(0,0,0,0.6)',
                 }}
               >
-                {/* warm top vignette */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
@@ -612,7 +715,6 @@ const DesignSelectionPage = () => {
                       'radial-gradient(60% 40% at 50% 0%, rgba(196,100,58,0.08), transparent 65%)',
                   }}
                 />
-                {/* subtle film grain */}
                 <div
                   className="absolute inset-0 pointer-events-none"
                   style={{
@@ -648,7 +750,7 @@ const DesignSelectionPage = () => {
                         className="h-1.5 w-1.5 rounded-full"
                         style={{ background: '#C4643A' }}
                       />
-                      <span>composer · v2026.1</span>
+                      <span>dark · v2026.1</span>
                     </div>
                     <h3
                       className="leading-none tracking-[-0.01em]"
@@ -656,7 +758,7 @@ const DesignSelectionPage = () => {
                         fontFamily: "'Fraunces', serif",
                         fontVariationSettings: "'opsz' 72, 'SOFT' 0, 'WONK' 0",
                         color: '#EFECE4',
-                        fontSize: 56,
+                        fontSize: 52,
                         fontWeight: 400,
                       }}
                     >
@@ -669,9 +771,9 @@ const DesignSelectionPage = () => {
                         color: '#A8A49B',
                       }}
                     >
-                      Calm 2026 dev-tool aesthetic — Claude Code, Codex. Warm
-                      near-black canvas, a single muted terracotta accent,
-                      Fraunces and Instrument Sans. No noise.
+                      Same Workbench vocabulary after hours — warm near-black
+                      canvas, cream ink, the same terracotta accent. Applied
+                      to the pattern generator.
                     </p>
                   </div>
                 </div>
@@ -687,7 +789,7 @@ const DesignSelectionPage = () => {
                       letterSpacing: '0.1em',
                     }}
                   >
-                    open workbench
+                    open pattern lab
                   </span>
                   <ArrowRightIcon
                     className="group-hover:translate-x-2 transition-all"
