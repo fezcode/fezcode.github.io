@@ -393,6 +393,62 @@ const THEME_PRESETS = [
       overlayOpacity: 0,
     },
   },
+  {
+    name: 'Libretto',
+    config: {
+      fontFamily: 'Playfair Display',
+      backgroundType: 'radial',
+      backgroundColor: '#F0E4C8',
+      gradientColor1: '#F0E4C8',
+      gradientColor2: '#E8D9B5',
+      textColor: '#1A0A0D',
+      fontWeight: 400,
+      themeType: 'libretto',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Chalkboard',
+    config: {
+      fontFamily: 'Caveat',
+      backgroundType: 'solid',
+      backgroundColor: '#1F3228',
+      textColor: '#F5F1E3',
+      fontWeight: 400,
+      themeType: 'chalkboard',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Tarot',
+    config: {
+      fontFamily: 'Cinzel',
+      backgroundType: 'radial',
+      backgroundColor: '#1A0A2E',
+      gradientColor1: '#2D1B4F',
+      gradientColor2: '#0F0520',
+      textColor: '#E8C878',
+      fontWeight: 700,
+      themeType: 'tarot',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
+  {
+    name: 'Ransom',
+    config: {
+      fontFamily: 'Impact',
+      backgroundType: 'solid',
+      backgroundColor: '#F5E8C9',
+      textColor: '#0A0A0A',
+      fontWeight: 900,
+      themeType: 'ransom',
+      textAlign: 'center',
+      overlayOpacity: 0,
+    },
+  },
 ];
 
 const ControlPanel = ({ state, updateState }) => {

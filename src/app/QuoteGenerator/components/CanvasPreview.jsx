@@ -559,6 +559,208 @@ const CanvasPreview = ({
       drawPaw(width*0.5, height*0.9, Math.PI/12, 1.2);
 
       ctx.restore();
+    } else if (themeType === 'libretto') {
+      // Opera program — velvet curtain top, gilt fleuron, parchment center
+      ctx.save();
+      // Gilt hairline double frame
+      const inset = Math.min(width, height) * 0.035;
+      ctx.strokeStyle = '#C8A255';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(inset, inset, width - inset * 2, height - inset * 2);
+      ctx.lineWidth = 0.8;
+      ctx.strokeRect(inset + 6, inset + 6, width - inset * 2 - 12, height - inset * 2 - 12);
+
+      // Top curtain swag — crimson
+      const cH = height * 0.08;
+      const curtainGrad = ctx.createLinearGradient(0, inset, 0, inset + cH);
+      curtainGrad.addColorStop(0, '#7E1A24');
+      curtainGrad.addColorStop(1, '#5A0F18');
+      ctx.fillStyle = curtainGrad;
+      for (let i = 0; i < 8; i++) {
+        const segW = (width - inset * 2) / 8;
+        const x = inset + i * segW;
+        ctx.beginPath();
+        ctx.moveTo(x, inset);
+        ctx.quadraticCurveTo(x + segW / 2, inset + cH * (0.8 + (i % 2) * 0.2), x + segW, inset);
+        ctx.closePath();
+        ctx.fill();
+        // gilt tassel
+        ctx.fillStyle = '#C8A255';
+        ctx.beginPath();
+        ctx.arc(x + segW / 2, inset + cH * (0.8 + (i % 2) * 0.2) - 2, 3, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = curtainGrad;
+      }
+
+      // Gilt filigree corners (quarter-circle flourish)
+      ctx.strokeStyle = '#C8A255';
+      ctx.lineWidth = 1.5;
+      const drawFlourish = (cx, cy, flip) => {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.scale(flip, 1);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.quadraticCurveTo(30, 0, 36, 30);
+        ctx.moveTo(0, 0);
+        ctx.quadraticCurveTo(0, 30, 30, 36);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(14, 14, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = '#C8A255';
+        ctx.fill();
+        ctx.restore();
+      };
+      drawFlourish(inset + 14, inset + cH + 14, 1);
+      drawFlourish(width - inset - 14, inset + cH + 14, -1);
+      drawFlourish(inset + 14, height - inset - 14, 1);
+      drawFlourish(width - inset - 14, height - inset - 14, -1);
+
+      // Fleuron centered near top, just below curtain
+      const fY = inset + cH + 22;
+      ctx.fillStyle = '#C8A255';
+      ctx.beginPath();
+      ctx.moveTo(width / 2, fY - 8);
+      ctx.quadraticCurveTo(width / 2 - 12, fY, width / 2 - 18, fY);
+      ctx.quadraticCurveTo(width / 2 - 12, fY, width / 2, fY + 8);
+      ctx.quadraticCurveTo(width / 2 + 12, fY, width / 2 + 18, fY);
+      ctx.quadraticCurveTo(width / 2 + 12, fY, width / 2, fY - 8);
+      ctx.fill();
+
+      ctx.restore();
+    } else if (themeType === 'chalkboard') {
+      // Green chalkboard — slate texture + chalk dust
+      ctx.save();
+      // Chalk dust speckles
+      ctx.globalAlpha = 0.12;
+      ctx.fillStyle = '#ffffff';
+      for (let i = 0; i < 900; i++) {
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        const r = Math.random() * 1.2;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 1;
+      // Chalk border
+      ctx.strokeStyle = 'rgba(255,255,255,0.55)';
+      ctx.lineWidth = 3;
+      ctx.setLineDash([10, 6]);
+      ctx.strokeRect(40, 40, width - 80, height - 80);
+      ctx.setLineDash([]);
+      // Chalk corner doodle — a star
+      ctx.strokeStyle = 'rgba(255,255,255,0.4)';
+      ctx.lineWidth = 2;
+      const drawStar = (cx, cy, r) => {
+        ctx.beginPath();
+        for (let i = 0; i < 5; i++) {
+          const a1 = -Math.PI / 2 + (i * Math.PI * 2) / 5;
+          const a2 = a1 + Math.PI / 5;
+          ctx.lineTo(cx + Math.cos(a1) * r, cy + Math.sin(a1) * r);
+          ctx.lineTo(cx + Math.cos(a2) * (r * 0.45), cy + Math.sin(a2) * (r * 0.45));
+        }
+        ctx.closePath();
+        ctx.stroke();
+      };
+      drawStar(width - 100, 100, 30);
+      // Underline scribble near bottom center
+      ctx.beginPath();
+      ctx.moveTo(width * 0.3, height - 100);
+      ctx.quadraticCurveTo(width * 0.5, height - 90, width * 0.7, height - 100);
+      ctx.stroke();
+      ctx.restore();
+    } else if (themeType === 'tarot') {
+      // Tarot card — gold ornate border, sun/moon symbols, mystic dots
+      ctx.save();
+      // Double gold border
+      ctx.strokeStyle = '#D4A94A';
+      ctx.lineWidth = 8;
+      ctx.strokeRect(30, 30, width - 60, height - 60);
+      ctx.lineWidth = 2;
+      ctx.strokeRect(48, 48, width - 96, height - 96);
+      // Corner rosettes
+      const rosette = (cx, cy) => {
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.fillStyle = '#D4A94A';
+        for (let i = 0; i < 8; i++) {
+          ctx.rotate((Math.PI * 2) / 8);
+          ctx.beginPath();
+          ctx.ellipse(0, -12, 3, 8, 0, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        ctx.beginPath();
+        ctx.arc(0, 0, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      };
+      rosette(70, 70);
+      rosette(width - 70, 70);
+      rosette(70, height - 70);
+      rosette(width - 70, height - 70);
+
+      // Sun top-center
+      ctx.fillStyle = '#E8C878';
+      ctx.beginPath();
+      ctx.arc(width / 2, 100, 18, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.strokeStyle = '#E8C878';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 12; i++) {
+        const a = (i * Math.PI * 2) / 12;
+        ctx.beginPath();
+        ctx.moveTo(width / 2 + Math.cos(a) * 24, 100 + Math.sin(a) * 24);
+        ctx.lineTo(width / 2 + Math.cos(a) * 34, 100 + Math.sin(a) * 34);
+        ctx.stroke();
+      }
+      // Moon bottom-center (crescent)
+      ctx.fillStyle = '#E8C878';
+      ctx.beginPath();
+      ctx.arc(width / 2, height - 100, 16, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = backgroundColor;
+      ctx.beginPath();
+      ctx.arc(width / 2 - 6, height - 100, 14, 0, Math.PI * 2);
+      ctx.fill();
+      // Mystic dots scattered
+      ctx.fillStyle = 'rgba(232,200,120,0.35)';
+      for (let i = 0; i < 40; i++) {
+        const x = 60 + Math.random() * (width - 120);
+        const y = 140 + Math.random() * (height - 280);
+        const r = Math.random() * 1.8;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    } else if (themeType === 'ransom') {
+      // Ransom note — torn paper rects with different text colors and rotations
+      ctx.save();
+      ctx.globalAlpha = 0.08;
+      ctx.fillStyle = '#000';
+      for (let i = 0; i < 1600; i++) {
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        ctx.fillRect(x, y, 1.2, 1.2);
+      }
+      ctx.globalAlpha = 1;
+      // Random torn paper strips behind
+      const colors = ['#F5E8C9', '#E8D5B0', '#F0E0C0', '#D9C79E'];
+      for (let i = 0; i < 18; i++) {
+        const w = 70 + Math.random() * 140;
+        const h = 50 + Math.random() * 90;
+        const x = Math.random() * (width - w);
+        const y = Math.random() * (height - h);
+        ctx.save();
+        ctx.translate(x + w / 2, y + h / 2);
+        ctx.rotate((Math.random() - 0.5) * 0.4);
+        ctx.fillStyle = colors[i % colors.length];
+        ctx.globalAlpha = 0.25;
+        ctx.fillRect(-w / 2, -h / 2, w, h);
+        ctx.restore();
+      }
+      ctx.restore();
     }
 
     drawContent(ctx);

@@ -13,6 +13,7 @@ import {
   ScrollIcon,
   TerminalWindowIcon,
   PlantIcon,
+  MaskHappyIcon,
 } from '@phosphor-icons/react';
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
@@ -194,7 +195,7 @@ const DesignSelectionPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
 
             {/* ── ATELIER ── */}
             <Link to="/apps/github-thumbnail-generator" className="group block relative">
@@ -586,6 +587,120 @@ const DesignSelectionPage = () => {
                     className="group-hover:translate-x-2 transition-all"
                     size={24}
                     style={{ color: '#A65B3A' }}
+                  />
+                </div>
+              </motion.div>
+            </Link>
+
+            {/* ── LIBRETTO ── */}
+            <Link to="/apps/quote-generator" className="group block relative">
+              <motion.div
+                whileHover={{ y: -10 }}
+                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                style={{
+                  background: '#2A0E14',
+                  borderRadius: 2,
+                  boxShadow:
+                    '0 0 0 1px #C8A255 inset, 0 0 0 5px #2A0E14, 0 0 0 6px #C8A25566, 0 30px 60px -30px rgba(0,0,0,0.7)',
+                }}
+              >
+                {/* subtle gilt damask dots */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage:
+                      'radial-gradient(circle at 25% 25%, rgba(200,162,85,0.08) 1px, transparent 2px), radial-gradient(circle at 75% 75%, rgba(200,162,85,0.08) 1px, transparent 2px)',
+                    backgroundSize: '36px 36px',
+                    opacity: 0.8,
+                  }}
+                />
+                {/* top stage curtain */}
+                <svg
+                  viewBox="0 0 600 60"
+                  preserveAspectRatio="none"
+                  className="absolute left-0 right-0 top-0 pointer-events-none"
+                  style={{ height: 30 }}
+                  aria-hidden
+                >
+                  <rect x="0" y="0" width="600" height="9" fill="#5A0F18" />
+                  <rect x="0" y="8" width="600" height="1" fill="#C8A255" />
+                  {Array.from({ length: 6 }).map((_, i) => {
+                    const x = i * 100;
+                    const drop = 30 + (i % 2) * 8;
+                    return (
+                      <g key={i}>
+                        <path
+                          d={`M${x} 9 Q${x + 50} ${drop}, ${x + 100} 9 L${x + 100} 0 L${x} 0 Z`}
+                          fill="#7E1A24"
+                        />
+                        <circle cx={x + 50} cy={drop - 2} r="1.5" fill="#C8A255" />
+                      </g>
+                    );
+                  })}
+                </svg>
+
+                <div className="space-y-8 relative z-10 mt-6">
+                  <div
+                    className="w-16 h-16 flex items-center justify-center transition-all duration-500"
+                    style={{
+                      background: 'rgba(200,162,85,0.1)',
+                      color: '#C8A255',
+                      borderRadius: 2,
+                      border: '1px solid #C8A25566',
+                    }}
+                  >
+                    <MaskHappyIcon size={32} weight="regular" />
+                  </div>
+                  <div className="space-y-4">
+                    <div
+                      className="text-[10px] uppercase tracking-[0.3em]"
+                      style={{
+                        color: '#C8A255',
+                        fontFamily: "'Cinzel', serif",
+                      }}
+                    >
+                      Grand Théâtre · MMXXVI
+                    </div>
+                    <h3
+                      className="text-5xl italic leading-none tracking-tight"
+                      style={{
+                        fontFamily: "'Playfair Display', serif",
+                        color: '#F0E4C8',
+                        textShadow: '0 2px 0 #1A0609, 0 4px 16px rgba(200,162,85,0.3)',
+                      }}
+                    >
+                      Libretto
+                    </h3>
+                    <p
+                      className="text-sm italic leading-relaxed"
+                      style={{
+                        fontFamily: "'Playfair Display', 'EB Garamond', serif",
+                        color: 'rgba(240,228,200,0.75)',
+                      }}
+                    >
+                      Opera program in velvet and gilt. Stage-curtain pelmet,
+                      gold tassels, parchment acts, Playfair italic with
+                      Cinzel capitals.
+                    </p>
+                  </div>
+                </div>
+                <div
+                  className="mt-12 pt-8 flex justify-between items-center relative z-10 border-t"
+                  style={{ borderColor: '#8A6B2F' }}
+                >
+                  <span
+                    className="text-[10px] uppercase tracking-[0.3em]"
+                    style={{
+                      color: '#C8A255',
+                      fontFamily: "'Cinzel', serif",
+                    }}
+                  >
+                    Act I · Scena Prima
+                  </span>
+                  <ArrowRightIcon
+                    className="group-hover:translate-x-2 transition-all"
+                    size={24}
+                    style={{ color: '#C8A255' }}
                   />
                 </div>
               </motion.div>
