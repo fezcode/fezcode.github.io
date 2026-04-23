@@ -434,7 +434,20 @@ const GalleyBlogPostPage = () => {
             prose-em:text-[#9E4A2F]
             prose-img:border prose-img:border-[#1A161340]
             prose-code:before:content-none prose-code:after:content-none
-            prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0 prose-pre:text-[#1A1613]"
+            prose-code:font-normal
+            prose-pre:bg-transparent prose-pre:p-0 prose-pre:m-0 prose-pre:text-[#1A1613]
+            [&_pre]:bg-transparent [&_pre_code]:!text-[#1A1613]
+            [&_.token.keyword]:!text-[#5C3A87] [&_.token.keyword]:font-semibold
+            [&_.token.string]:!text-[#556B2F]
+            [&_.token.function]:!text-[#1F4A78] [&_.token.function]:font-semibold
+            [&_.token.number]:!text-[#8A3E1C]
+            [&_.token.boolean]:!text-[#8A3E1C]
+            [&_.token.comment]:!text-[#8A7C68] [&_.token.comment]:italic
+            [&_.token.operator]:!text-[#7A3020]
+            [&_.token.punctuation]:!text-[#3A302A]
+            [&_.token.class-name]:!text-[#8A4A1B] [&_.token.class-name]:font-semibold
+            [&_.token.builtin]:!text-[#1F4A78]
+            [&_.token.property]:!text-[#8A4A1B]"
         >
           {/* drop cap via :first-letter on the first paragraph */}
           <style>{`
