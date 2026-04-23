@@ -12,6 +12,7 @@ const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 6;
 const PAGE_TIMEOUT = 30000;
 const RENDER_SETTLE_MS = 300;
 const SELECTOR_TIMEOUT = 8000;
+const RETRY = process.env.PRERENDER_RETRY === '1';
 
 function routeToFile(route) {
   if (route === '/') return join(DIST, 'index.html');
@@ -97,6 +98,30 @@ async function main() {
     }
   });
   await Promise.all(workers);
+
+  if (RETRY) {
+    const flaky = results
+      .filter((r) => r.skipped && /within \d+ms|empty root/.test(r.skipped))
+      .map((r) => r.route);
+    if (flaky.length) {
+      console.log(`\nprerender-crawl: retrying ${flaky.length} flaky route(s) sequentially...`);
+      const retryResults = new Map();
+      for (const route of flaky) {
+        const r = await crawlOne(browser, url, route);
+        retryResults.set(route, r);
+        if (r.bytes) console.log(`  . ${route}  (retry: ${r.bytes} bytes, ${r.errors} console errors)`);
+        else if (r.skipped) console.log(`  - ${route}: retry ${r.skipped}`);
+        else if (r.error) console.log(`  x ${route}: retry ${r.error}`);
+      }
+      for (let i = 0; i < results.length; i++) {
+        const r = results[i];
+        if (retryResults.has(r.route)) {
+          const next = retryResults.get(r.route);
+          if (next.bytes || next.error) results[i] = next;
+        }
+      }
+    }
+  }
 
   await browser.close();
   await new Promise((resolve) => server.httpServer.close(resolve));
