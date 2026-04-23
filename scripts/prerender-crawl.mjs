@@ -3,12 +3,14 @@ import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { preview } from 'vite';
 import puppeteer from 'puppeteer';
-import { staticRoutes } from '../pages/routes.js';
+import { discoverAllRoutes } from '../pages/discoverRoutes.js';
+
+const allRoutes = discoverAllRoutes();
 
 const DIST = 'dist/client';
-const CONCURRENCY = 4;
-const PAGE_TIMEOUT = 45000;
-const RENDER_SETTLE_MS = 800;
+const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 8;
+const PAGE_TIMEOUT = 20000;
+const RENDER_SETTLE_MS = 250;
 
 function routeToFile(route) {
   if (route === '/') return join(DIST, 'index.html');
@@ -26,11 +28,17 @@ async function crawlOne(browser, baseUrl, route) {
     page.on('console', (m) => {
       if (m.type() === 'error') consoleErrors.push(m.text());
     });
-    await page.goto(target, { waitUntil: 'networkidle0', timeout: PAGE_TIMEOUT });
+    await page.setRequestInterception(true);
+    page.on('request', (req) => {
+      const t = req.resourceType();
+      if (t === 'image' || t === 'font' || t === 'media') return req.abort();
+      req.continue();
+    });
+    await page.goto(target, { waitUntil: 'domcontentloaded', timeout: PAGE_TIMEOUT });
     try {
-      await page.waitForSelector('#react-root > *', { timeout: 10000 });
+      await page.waitForSelector('#react-root > *', { timeout: 5000 });
     } catch {
-      return { route, skipped: 'no children rendered within 10s' };
+      return { route, skipped: 'no children rendered within 5s' };
     }
     await new Promise((r) => setTimeout(r, RENDER_SETTLE_MS));
 
@@ -59,7 +67,7 @@ async function crawlOne(browser, baseUrl, route) {
 }
 
 async function main() {
-  console.log(`prerender-crawl: ${staticRoutes.length} routes, concurrency ${CONCURRENCY}`);
+  console.log(`prerender-crawl: ${allRoutes.length} routes, concurrency ${CONCURRENCY}`);
 
   const server = await preview({
     preview: { port: 4287, strictPort: true, host: '127.0.0.1' },
@@ -72,7 +80,7 @@ async function main() {
   });
 
   const results = [];
-  const queue = [...staticRoutes];
+  const queue = [...allRoutes];
   const workers = Array.from({ length: CONCURRENCY }, async () => {
     while (queue.length) {
       const route = queue.shift();

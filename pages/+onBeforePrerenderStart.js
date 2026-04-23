@@ -1,5 +1,5 @@
-import { staticRoutes } from './routes.js';
+import { discoverAllRoutes } from './discoverRoutes.js';
 
 export default function onBeforePrerenderStart() {
-  return staticRoutes;
+  return discoverAllRoutes();
 }
