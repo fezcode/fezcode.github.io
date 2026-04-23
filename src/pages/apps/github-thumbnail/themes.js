@@ -72,6 +72,12 @@ import { needForSpeed } from './themes/needForSpeed';
 import { terracotta } from './themes/terracotta';
 import { atelierGallery } from './themes/atelierGallery';
 import { risoPrint } from './themes/risoPrint';
+import { heraldic } from './themes/heraldic';
+import { royalBanner } from './themes/royalBanner';
+import { stainedGlass } from './themes/stainedGlass';
+import { constructivist } from './themes/constructivist';
+import { tarotCard } from './themes/tarotCard';
+import { illuminatedManuscript } from './themes/illuminatedManuscript';
 
 export const themeRenderers = {
   modern,
@@ -145,4 +151,10 @@ export const themeRenderers = {
   terracotta,
   atelierGallery,
   risoPrint,
+  heraldic,
+  royalBanner,
+  stainedGlass,
+  constructivist,
+  tarotCard,
+  illuminatedManuscript,
 };

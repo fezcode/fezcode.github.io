@@ -100,6 +100,12 @@ const THEME_OPTIONS = [
   { value: 'terracotta', label: 'Terracotta Plate' },
   { value: 'atelierGallery', label: 'Atelier Gallery' },
   { value: 'risoPrint', label: 'Riso Print' },
+  { value: 'heraldic', label: 'Heraldic Crest' },
+  { value: 'royalBanner', label: 'Royal Banner' },
+  { value: 'stainedGlass', label: 'Stained Glass' },
+  { value: 'constructivist', label: 'Constructivist' },
+  { value: 'tarotCard', label: 'Tarot Card' },
+  { value: 'illuminatedManuscript', label: 'Illuminated Manuscript' },
 ];
 
 const PALETTE_BANK = [

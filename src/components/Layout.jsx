@@ -150,6 +150,7 @@ const Layout = ({
         {!hideLayout &&
           location.pathname !== '/projects' &&
           location.pathname !== '/blog' &&
+          !location.pathname.startsWith('/blog/series') &&
           location.pathname !== '/commands' &&
           (fezcodexTheme === 'terracotta' ? (
             <TerracottaFooter />

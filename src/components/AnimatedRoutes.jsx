@@ -405,7 +405,7 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/about"
-          element={<Navigate to="/about/brutalist" replace />}
+          element={<Navigate to="/about/terracotta" replace />}
         />
         <Route
           path="/about/:viewId"
