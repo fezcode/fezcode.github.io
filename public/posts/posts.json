@@ -1,5 +1,26 @@
 [
   {
+    "slug": "debugging-opengl-samplercube-bug",
+    "title": "The Case of the Invisible Geometry: Debugging a Silent OpenGL Driver Validation Failure",
+    "date": "2026-04-24",
+    "updated": "2026-04-24",
+    "description": "How a samplerCube uniform guarded by `if (false)` made the entire 3D scene vanish — a silent OpenGL driver validation quirk, the bisect that caught it, and the one-paragraph fix.",
+    "tags": [
+      "opengl",
+      "graphics",
+      "debugging",
+      "shaders",
+      "cpp",
+      "rendering",
+      "norlong"
+    ],
+    "category": "dev",
+    "filename": "debugging-opengl-samplercube-bug.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "vite-vike-ssg-migration",
     "title": "Migrating Fezcodex From CRA to Vite + Vike: A Static-Site-Generation Deep Dive",
     "date": "2026-04-23",
