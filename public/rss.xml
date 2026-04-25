@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 23 Apr 2026 23:50:41 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 25 Apr 2026 01:38:48 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 23 Apr 2026 23:50:41 GMT</pubDate>
+        <pubDate>Sat, 25 Apr 2026 01:38:46 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Spec-Driven Development: Writing the Thing Before You Build the Thing]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/spec-driven-development</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/spec-driven-development</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 25 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Spec-Driven Development: Writing the Thing Before You Build the Thing</h1>
+<p><a href="https://fezcode.com/blog/spec-driven-development">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Case of the Invisible Geometry: Debugging a Silent OpenGL Driver Validation Failure]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/debugging-opengl-samplercube-bug</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/debugging-opengl-samplercube-bug</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 24 Apr 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Case of the Invisible Geometry: Debugging a Silent OpenGL Driver Validation Failure</h1>
+<p><a href="https://fezcode.com/blog/debugging-opengl-samplercube-bug">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Migrating Fezcodex From CRA to Vite + Vike: A Static-Site-Generation Deep Dive]]></title>
             <description><![CDATA[[object Object]]]></description>

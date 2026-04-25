@@ -1,5 +1,25 @@
 [
   {
+    "slug": "spec-driven-development",
+    "title": "Spec-Driven Development: Writing the Thing Before You Build the Thing",
+    "date": "2026-04-25",
+    "updated": "2026-04-25",
+    "description": "A practical, end-to-end guide to spec-driven development: what a spec really is, why it became load-bearing once LLMs joined the team, the full intent→spec→plan→implement→verify→evolve loop, a fully worked example, when to use SDD and when to skip it, mechanics for working with an LLM, and the failure modes to watch for.",
+    "tags": [
+      "process",
+      "spec-driven-development",
+      "llm",
+      "ai-coding",
+      "engineering-practice",
+      "methodology"
+    ],
+    "category": "dev",
+    "filename": "spec-driven-development.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "debugging-opengl-samplercube-bug",
     "title": "The Case of the Invisible Geometry: Debugging a Silent OpenGL Driver Validation Failure",
     "date": "2026-04-24",
