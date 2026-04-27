@@ -36,6 +36,7 @@
     (slug) gobake
     (title) gobake
     (style) ruby
+    (version) 0.4.0
     (repo_link) https://github.com/fezcode/gobake
     (pinned) true
     (isActive) true
@@ -44,8 +45,8 @@
       > Build Tool
       > Orchestrator
       > Automation
-    (shortDescription) gobake is a Go-native build orchestrator. It replaces Makefiles and shell scripts with a single, type-safe Recipe.go file.
-    (date) 2026-02-18
+    (shortDescription) gobake is a Go-native build orchestrator. It replaces Makefiles and shell scripts with a single, type-safe Recipe.go file. v0.4.0 adds multi-task CLI invocation, RunIn for scoped working directories, and RunOutput for captured stdout.
+    (date) 2026-04-27
     (image) /images/projects/gobake/gobake-banner.png
 
   > (project)

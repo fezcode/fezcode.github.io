@@ -1,8 +1,55 @@
-# gobake Examples
+# Signature Recipes
 
-## 1. Cross-Compilation for Multiple Platforms
+## 1. Multi-Task Pipelines with Captured Git SHA
 
-This recipe builds your application for Windows, Linux, and macOS.
+Chain tasks on the CLI and embed your commit SHA into the binary using `ctx.RunOutput`.
+
+```go
+//go:build gobake
+package bake_recipe
+
+import (
+    "fmt"
+    "github.com/fezcode/gobake"
+)
+
+func Run(bake *gobake.Engine) error {
+    if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
+        return err
+    }
+
+    bake.Task("test", "Run tests", func(ctx *gobake.Context) error {
+        return ctx.Run("go", "test", "./...")
+    })
+
+    bake.TaskWithDeps("build", "Build with embedded git SHA", []string{"test"}, func(ctx *gobake.Context) error {
+        sha, err := ctx.RunOutput("git", "rev-parse", "--short", "HEAD")
+        if err != nil {
+            return err
+        }
+        ldflags := fmt.Sprintf("-X main.Version=%s -X main.Commit=%s", bake.Info.Version, sha)
+        ctx.Log("Building %s @ %s", bake.Info.Version, sha)
+        return ctx.Run("go", "build", "-ldflags", ldflags, "-o", "bin/app")
+    })
+
+    bake.TaskWithDeps("deploy", "Ship it", []string{"build"}, func(ctx *gobake.Context) error {
+        ctx.Log("Deploying %s...", bake.Info.Version)
+        return ctx.Run("scp", "bin/app", "deploy@server:/srv/app")
+    })
+
+    return nil
+}
+```
+
+Then run the whole pipeline in one breath:
+
+```bash
+gobake test build deploy
+```
+
+## 2. Cross-Compilation for Multiple Platforms
+
+Build for Windows, Linux, and macOS in a single task.
 
 ```go
 //go:build gobake
@@ -20,9 +67,7 @@ func Run(bake *gobake.Engine) error {
 
     bake.Task("release", "Build for all platforms", func(ctx *gobake.Context) error {
         platforms := []struct {
-            OS   string
-            Arch string
-            Ext  string
+            OS, Arch, Ext string
         }{
             {"linux", "amd64", ""},
             {"windows", "amd64", ".exe"},
@@ -32,9 +77,7 @@ func Run(bake *gobake.Engine) error {
         for _, p := range platforms {
             output := fmt.Sprintf("dist/%s-%s-%s%s",
                 bake.Info.Name, p.OS, p.Arch, p.Ext)
-
-            err := ctx.BakeBinary(p.OS, p.Arch, output, "-ldflags", "-s -w")
-            if err != nil {
+            if err := ctx.BakeBinary(p.OS, p.Arch, output, "-ldflags", "-s -w"); err != nil {
                 return err
             }
         }
@@ -45,60 +88,15 @@ func Run(bake *gobake.Engine) error {
 }
 ```
 
-## 2. Using External Tools
+## 3. Polyglot Builds with `RunIn`
 
-This recipe installs `stringer` and uses it to generate code before building.
+Drive a JavaScript frontend and a Go backend from a single recipe.
 
-**recipe.piml:**
-```piml
-(name) my-app
-(tools)
-    > golang.org/x/tools/cmd/stringer@latest
-```
-
-**Recipe.go:**
 ```go
 //go:build gobake
 package bake_recipe
 
 import (
-    "fmt"
-    "github.com/fezcode/gobake"
-)
-
-func Run(bake *gobake.Engine) error {
-    if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
-        return fmt.Errorf("error loading recipe.piml: %v", err)
-    }
-
-    bake.Task("generate", "Generates code", func(ctx *gobake.Context) error {
-        // Ensure tools are installed first
-        if err := ctx.InstallTools(); err != nil {
-            return err
-        }
-        ctx.Log("Running stringer...")
-        return ctx.Run("go", "generate", "./...")
-    })
-
-    bake.TaskWithDeps("build", "Builds app", []string{"generate"}, func(ctx *gobake.Context) error {
-        return ctx.Run("go", "build", ".")
-    })
-
-    return nil
-}
-```
-
-## 3. Injecting Version with ldflags
-
-Inject project version from `recipe.piml` into your binary.
-
-**Recipe.go:**
-```go
-//go:build gobake
-package bake_recipe
-
-import (
-    "fmt"
     "github.com/fezcode/gobake"
 )
 
@@ -107,13 +105,19 @@ func Run(bake *gobake.Engine) error {
         return err
     }
 
-    bake.Task("build", "Build with version", func(ctx *gobake.Context) error {
-        ldflags := fmt.Sprintf("-X main.Version=%s", bake.Info.Version)
-        
-        ctx.Log("Building version %s...", bake.Info.Version)
-        return ctx.Run("go", "build", "-ldflags", ldflags, "-o", "bin/app")
+    bake.Task("frontend", "Build the SPA", func(ctx *gobake.Context) error {
+        if err := ctx.RunIn("web", "npm", "ci"); err != nil {
+            return err
+        }
+        return ctx.RunIn("web", "npm", "run", "build")
+    })
+
+    bake.TaskWithDeps("backend", "Embed dist and build server", []string{"frontend"}, func(ctx *gobake.Context) error {
+        return ctx.BakeBinary("linux", "amd64", "bin/server")
     })
 
     return nil
 }
 ```
+
+A single `gobake backend` walks the dependency tree, builds the SPA in `web/`, then compiles the Go server with the embedded assets.

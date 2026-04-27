@@ -16,11 +16,14 @@ go install github.com/fezcode/gobake/cmd/gobake@latest
 
     The `init` command is smart: it handles `go mod init` (if needed), scaffolds your `recipe.piml` and `Recipe.go`, and runs `go mod tidy` to automatically pull in the `github.com/fezcode/gobake` library as a dependency.
 
-2.  **Run a task:**
+2.  **Run a task — or several:**
 
     ```bash
     gobake build
+    gobake test build deploy
     ```
+
+    Trailing arguments that aren't task names are passed to the last task as `ctx.Args`.
 
 ## Usage
 
@@ -28,9 +31,10 @@ go install github.com/fezcode/gobake/cmd/gobake@latest
 
 *   **`gobake init`**: Scaffolds a new `Recipe.go` and `recipe.piml`. Handles `go.mod` and dependencies.
 *   **`gobake version`**: Displays the current version of gobake.
-*   **`gobake help`**: Displays the list of commands and available tasks.
+*   **`gobake help`**: Sorted list of CLI commands and project tasks.
 *   **`gobake bump [patch|minor|major]`**: Increments the version in `recipe.piml`.
 *   **`gobake template <git-url>`**: Initialize from a remote repository template.
+*   **`gobake <task> [<task>...] [args]`**: Run one or more defined tasks in order.
 
 ### The `Recipe.go` File
 
@@ -39,23 +43,23 @@ go install github.com/fezcode/gobake/cmd/gobake@latest
 package bake_recipe
 
 import (
-        "fmt"
-        "github.com/fezcode/gobake"
+    "fmt"
+    "github.com/fezcode/gobake"
 )
 
 func Run(bake *gobake.Engine) error {
-        if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
-                return fmt.Errorf("error loading recipe.piml: %v", err)
-        }
+    if err := bake.LoadRecipeInfo("recipe.piml"); err != nil {
+        return fmt.Errorf("error loading recipe.piml: %v", err)
+    }
 
-        bake.Task("test", "Runs project tests", func(ctx *gobake.Context) error {
-                return ctx.Run("go", "test", "./...")
-        })
+    bake.Task("test", "Runs project tests", func(ctx *gobake.Context) error {
+        return ctx.Run("go", "test", "./...")
+    })
 
-        bake.TaskWithDeps("build", "Builds the binary", []string{"test"}, func(ctx *gobake.Context) error {
-                return ctx.BakeBinary("linux", "amd64", "bin/app")
-        })
+    bake.TaskWithDeps("build", "Builds the binary", []string{"test"}, func(ctx *gobake.Context) error {
+        return ctx.BakeBinary("linux", "amd64", "bin/app")
+    })
 
-        return nil
+    return nil
 }
 ```
