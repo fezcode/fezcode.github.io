@@ -29,6 +29,7 @@ const CATEGORY_COLOR = {
   websites: '#6B8E23',
   tools: '#2E2620',
   event: '#B88532',
+  quote: '#4B6B8A',
 };
 
 const formatLong = (d) =>

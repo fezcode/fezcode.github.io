@@ -34,6 +34,7 @@ const colors = {
   'websites-light': '#4dff99',
   'tools-light': '#F0DFFF',
   'event-light': '#34d399',
+  'quote-light': '#8ab4f8',
   'reading-light': '#5eead4', // Teal-300
   'feat-light': '#d8b4fe',
   'newspaper-background': '#fdfdf5',

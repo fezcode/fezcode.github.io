@@ -32,6 +32,7 @@ const categories = [
   'Websites',
   'Tools',
   'Event',
+  'Quote',
 ];
 
 const BrutalistLogsPage = () => {

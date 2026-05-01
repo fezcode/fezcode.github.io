@@ -14,6 +14,8 @@ const categories = [
   'Food',
   'Websites',
   'Tools',
+  'Event',
+  'Quote',
 ];
 
 categories.forEach(category => {

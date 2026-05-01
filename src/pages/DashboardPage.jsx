@@ -267,6 +267,7 @@ const DashboardPage = () => {
           'tools',
           'video',
           'websites',
+          'quote',
         ];
         const logsData = {};
 

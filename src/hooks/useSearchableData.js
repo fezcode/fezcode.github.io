@@ -18,6 +18,7 @@ const useSearchableData = () => {
       'Websites',
       'Tools',
       'Event',
+      'Quote',
     ],
     [],
   );

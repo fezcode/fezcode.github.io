@@ -232,8 +232,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
           properties: {
             type: {
               type: "string",
-              description: "Log category (e.g., 'book', 'movie', 'video', 'game', 'article', 'music', 'series', 'food', 'websites', 'tools', 'event')",
-              enum: ["book", "movie", "video", "game", "article", "music", "series", "food", "websites", "tools", "event"]
+              description: "Log category (e.g., 'book', 'movie', 'video', 'game', 'article', 'music', 'series', 'food', 'websites', 'tools', 'event', 'quote')",
+              enum: ["book", "movie", "video", "game", "article", "music", "series", "food", "websites", "tools", "event", "quote"]
             },
             title: {
               type: "string",

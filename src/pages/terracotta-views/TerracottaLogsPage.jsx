@@ -31,7 +31,7 @@ const PAPER_GRADIENT =
   'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
 
 const CATEGORIES = [
-  'Book', 'Movie', 'Video', 'Game', 'Article', 'Music', 'Series', 'Food', 'Websites', 'Tools', 'Event',
+  'Book', 'Movie', 'Video', 'Game', 'Article', 'Music', 'Series', 'Food', 'Websites', 'Tools', 'Event', 'Quote',
 ];
 
 const CATEGORY_COLOR = {
@@ -46,6 +46,7 @@ const CATEGORY_COLOR = {
   websites: '#6B8E23',
   tools: '#2E2620',
   event: '#B88532',
+  quote: '#4B6B8A',
 };
 
 const formatDate = (d) =>

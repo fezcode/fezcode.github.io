@@ -24,6 +24,7 @@ const categories = [
   'Websites',
   'Tools',
   'Event',
+  'Quote',
 ];
 
 const LuxeLogsPage = () => {
