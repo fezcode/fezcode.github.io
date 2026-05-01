@@ -1,5 +1,24 @@
 [
   {
+    "slug": "happy-path-bias-in-gemini",
+    "title": "Happy Path Bias in Gemini: Why the Code Looks Right Until It Isn't",
+    "date": "2026-05-01",
+    "updated": "2026-05-01",
+    "description": "A recurring failure mode of Gemini-scaffolded systems code: surface polish that reads as senior, paired with a near-total absence of edge-case thinking. What it looks like, where it shows up, why it happens, and how to read around it.",
+    "tags": [
+      "llm",
+      "ai-coding",
+      "gemini",
+      "code-review",
+      "engineering-practice"
+    ],
+    "category": "dev",
+    "filename": "happy-path-bias-in-gemini.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "spec-driven-development",
     "title": "Spec-Driven Development: Writing the Thing Before You Build the Thing",
     "date": "2026-04-25",
