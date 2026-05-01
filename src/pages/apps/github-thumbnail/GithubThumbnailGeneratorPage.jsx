@@ -108,6 +108,7 @@ const THEME_OPTIONS = [
   { value: 'illuminatedManuscript', label: 'Illuminated Manuscript' },
   { value: 'charon', label: 'Charon Editorial' },
   { value: 'macMiller', label: 'Mac Miller — Swimming in Circles' },
+  { value: 'squarified', label: 'Squarified Treemap' },
 ];
 
 const PALETTE_BANK = [

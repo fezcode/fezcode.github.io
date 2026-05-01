@@ -80,6 +80,7 @@ import { tarotCard } from './themes/tarotCard';
 import { illuminatedManuscript } from './themes/illuminatedManuscript';
 import { charon } from './themes/charon';
 import { macMiller } from './themes/macMiller';
+import { squarified } from './themes/squarified';
 
 export const themeRenderers = {
   modern,
@@ -161,4 +162,5 @@ export const themeRenderers = {
   illuminatedManuscript,
   charon,
   macMiller,
+  squarified,
 };
