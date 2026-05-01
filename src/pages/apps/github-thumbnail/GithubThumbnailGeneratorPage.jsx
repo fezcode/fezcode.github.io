@@ -107,6 +107,7 @@ const THEME_OPTIONS = [
   { value: 'tarotCard', label: 'Tarot Card' },
   { value: 'illuminatedManuscript', label: 'Illuminated Manuscript' },
   { value: 'charon', label: 'Charon Editorial' },
+  { value: 'macMiller', label: 'Mac Miller — Swimming in Circles' },
 ];
 
 const PALETTE_BANK = [

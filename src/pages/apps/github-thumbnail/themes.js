@@ -79,6 +79,7 @@ import { constructivist } from './themes/constructivist';
 import { tarotCard } from './themes/tarotCard';
 import { illuminatedManuscript } from './themes/illuminatedManuscript';
 import { charon } from './themes/charon';
+import { macMiller } from './themes/macMiller';
 
 export const themeRenderers = {
   modern,
@@ -159,4 +160,5 @@ export const themeRenderers = {
   tarotCard,
   illuminatedManuscript,
   charon,
+  macMiller,
 };
