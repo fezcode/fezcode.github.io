@@ -37,9 +37,19 @@ function logsRoutes() {
     if (!category.isDirectory()) continue;
     const dir = join(root, category.name);
     for (const file of readdirSync(dir)) {
-      if (!file.endsWith('.txt')) continue;
-      const slug = file.slice(0, -4);
-      out.add(`/logs/${category.name}/${slug}`);
+      if (file.endsWith('.txt')) {
+        out.add(`/logs/${category.name}/${file.slice(0, -4)}`);
+      }
+    }
+    // Some categories (e.g. quote) keep their entries inline in the
+    // category piml with no per-slug .txt — pull slugs from there too.
+    const pimlPath = join(dir, `${category.name}.piml`);
+    if (existsSync(pimlPath)) {
+      const text = readFileSync(pimlPath, 'utf8');
+      for (const line of text.split(/\r?\n/)) {
+        const m = line.match(/^\s*\(slug\)\s*(\S+)/);
+        if (m) out.add(`/logs/${category.name}/${m[1]}`);
+      }
     }
   }
   return out;
