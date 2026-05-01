@@ -1,5 +1,24 @@
 [
   {
+    "slug": "squarified-treemaps",
+    "title": "Squarified Treemaps: Trading Order for Readable Rectangles",
+    "date": "2026-05-01",
+    "updated": "2026-05-01",
+    "description": "A short summary of Bruls, Huijsmans & van Wijk (2000): why slice-and-dice produces unreadable slivers, how the squarified row-packing algorithm works step by step with a worked example, and the stability tradeoff that comes with it.",
+    "tags": [
+      "algorithms",
+      "visualization",
+      "treemap",
+      "data-structures",
+      "paper-summary"
+    ],
+    "category": "dev",
+    "filename": "squarified-treemaps.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "happy-path-bias-in-gemini",
     "title": "Happy Path Bias in Gemini: Why the Code Looks Right Until It Isn't",
     "date": "2026-05-01",
