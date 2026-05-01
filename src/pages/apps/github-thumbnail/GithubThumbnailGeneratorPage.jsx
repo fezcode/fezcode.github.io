@@ -106,6 +106,7 @@ const THEME_OPTIONS = [
   { value: 'constructivist', label: 'Constructivist' },
   { value: 'tarotCard', label: 'Tarot Card' },
   { value: 'illuminatedManuscript', label: 'Illuminated Manuscript' },
+  { value: 'charon', label: 'Charon Editorial' },
 ];
 
 const PALETTE_BANK = [

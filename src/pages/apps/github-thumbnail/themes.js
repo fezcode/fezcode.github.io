@@ -78,6 +78,7 @@ import { stainedGlass } from './themes/stainedGlass';
 import { constructivist } from './themes/constructivist';
 import { tarotCard } from './themes/tarotCard';
 import { illuminatedManuscript } from './themes/illuminatedManuscript';
+import { charon } from './themes/charon';
 
 export const themeRenderers = {
   modern,
@@ -157,4 +158,5 @@ export const themeRenderers = {
   constructivist,
   tarotCard,
   illuminatedManuscript,
+  charon,
 };
