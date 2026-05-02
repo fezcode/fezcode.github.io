@@ -1,5 +1,25 @@
 [
   {
+    "slug": "a-gentlemans-lexicon-of-pejoratives",
+    "title": "A Gentleman's Lexicon of Pejoratives: How to Insult Your Friends Without Cursing",
+    "date": "2026-05-02",
+    "updated": "2026-05-02",
+    "description": "A bilingual (English / Turkish) armory of precise, mostly archaic pejoratives — mountebank, mooncalf, ninnyhammer, midwit, muhallebi çocuğu, çeyrek aydın — organized by which kind of friend-flaw they target, with field rules and a short defense of why naming a failure beats cursing at it.",
+    "tags": [
+      "language",
+      "etymology",
+      "vocabulary",
+      "turkish",
+      "essay",
+      "playful"
+    ],
+    "category": "essay",
+    "filename": "a-gentlemans-lexicon-of-pejoratives.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "squarified-treemaps",
     "title": "Squarified Treemaps: Trading Order for Readable Rectangles",
     "date": "2026-05-01",
