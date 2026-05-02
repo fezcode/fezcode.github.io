@@ -9,14 +9,44 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 01 May 2026 12:34:38 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 02 May 2026 22:55:09 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 01 May 2026 12:34:37 GMT</pubDate>
+        <pubDate>Sat, 02 May 2026 22:55:09 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[A Gentleman's Lexicon of Pejoratives: How to Insult Your Friends Without Cursing]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/a-gentlemans-lexicon-of-pejoratives</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/a-gentlemans-lexicon-of-pejoratives</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 02 May 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>A Gentleman&#39;s Lexicon of Pejoratives: How to Insult Your Friends Without Cursing</h1>
+<p><a href="https://fezcode.com/blog/a-gentlemans-lexicon-of-pejoratives">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Squarified Treemaps: Trading Order for Readable Rectangles]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/squarified-treemaps</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/squarified-treemaps</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Squarified Treemaps: Trading Order for Readable Rectangles</h1>
+<p><a href="https://fezcode.com/blog/squarified-treemaps">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Happy Path Bias in Gemini: Why the Code Looks Right Until It Isn't]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/happy-path-bias-in-gemini</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/happy-path-bias-in-gemini</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 01 May 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h2>TL;DR</h2>
+<p><a href="https://fezcode.com/blog/happy-path-bias-in-gemini">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Spec-Driven Development: Writing the Thing Before You Build the Thing]]></title>
             <description><![CDATA[[object Object]]]></description>

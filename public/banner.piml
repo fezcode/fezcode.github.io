@@ -173,10 +173,10 @@
     (id) fezterracotta-launch
     (type) info
     (from) 2026-04-22T00:00:00Z
-    (to) 2026-05-05T23:59:59Z
+    (to) 2026-08-31T23:59:59Z
     (text) FEZTERRACOTTA IS ONLINE: A WEIGHTED CODEX OF BONE PAPER AND TERRA INK. ENABLE VIA SETTINGS OR COMMAND PALETTE.
     (isActive) true
-    (link) /settings#fezcodex-theme
+    (link) https://fezcode.com/settings?fezTheme=terracotta&fezBlogMode=terracotta#fezcodex-theme
     (linkText) Enable Terracotta
 
   > (banner)
