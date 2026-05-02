@@ -1,841 +1,535 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import {
   ArrowLeftIcon,
   DownloadSimpleIcon,
   DiceFiveIcon,
-  ScrollIcon,
+  ShuffleIcon,
 } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
+import { random } from './fantasy-map-generator/noise';
+import {
+  NAMING,
+  WORLD_PRESETS,
+  STYLES,
+  NAMING_OPTIONS,
+} from './fantasy-map-generator/data';
+import {
+  Slider,
+  Toggle,
+  Select,
+  Tab,
+  DISPLAY,
+  SANS,
+  MONO,
+} from './fantasy-map-generator/components';
+import { generateMap } from './fantasy-map-generator/generateMap';
 
-// --- Utility: Noise Functions ---
-const random = (s) => {
-  let t = s + 0x6d2b79f5;
-  t = Math.imul(t ^ (t >>> 15), t | 1);
-  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-};
-
-const noise2D = (x, y, seed) => {
-  const fract = (n) => n - Math.floor(n);
-  const hash = (n) => {
-    n = Math.sin(n) * 43758.5453123;
-    return n - Math.floor(n);
-  };
-  const lerp = (a, b, t) => a + t * (b - a);
-
-  const ix = Math.floor(x);
-  const iy = Math.floor(y);
-  const fx = fract(x);
-  const fy = fract(y);
-
-  const a = hash(ix + iy * 57 + seed);
-  const b = hash(ix + 1 + iy * 57 + seed);
-  const c = hash(ix + (iy + 1) * 57 + seed);
-  const d = hash(ix + 1 + (iy + 1) * 57 + seed);
-
-  const ux = fx * fx * (3.0 - 2.0 * fx);
-  const uy = fy * fy * (3.0 - 2.0 * fy);
-
-  return lerp(lerp(a, b, ux), lerp(c, d, ux), uy);
-};
-
-const fbm = (x, y, seed, octaves) => {
-  let val = 0;
-  let amp = 0.5;
-  let freq = 1;
-  for (let i = 0; i < octaves; i++) {
-    val += noise2D(x * freq, y * freq, seed) * amp;
-    freq *= 2;
-    amp *= 0.5;
-  }
-  return val;
-};
-
-const ridgedFbm = (x, y, seed, octaves) => {
-  let val = 0;
-  let amp = 0.5;
-  let freq = 1;
-  for (let i = 0; i < octaves; i++) {
-    let n = noise2D(x * freq, y * freq, seed);
-    n = 1.0 - Math.abs(n * 2.0 - 1.0);
-    n = n * n;
-    val += n * amp;
-    freq *= 2;
-    amp *= 0.5;
-  }
-  return val;
-};
-
-// --- Custom Components ---
-
-const MedievalSlider = ({ label, value, min, max, step, onChange }) => {
-  const percentage = ((value - min) / (max - min)) * 100;
-
-  return (
-    <div className="flex flex-col gap-1 w-full font-serif">
-      <div className="flex justify-between items-end mb-1">
-        <label className="text-xs font-bold tracking-widest text-[#3E2F26] uppercase">
-          {label}
-        </label>
-        <span className="text-xs font-bold text-[#8C7B6C]">{value}</span>
-      </div>
-      <div className="relative h-4 w-full flex items-center group cursor-pointer">
-        <div className="absolute w-full h-1 bg-[#8C7B6C] rounded-full border border-[#3E2F26] shadow-[inset_0_1px_2px_rgba(0,0,0,0.3)]"></div>
-        <div
-          className="absolute h-1 bg-[#4A3C31] rounded-l-full"
-          style={{ width: `${percentage}%` }}
-        ></div>
-        <div
-          className="absolute w-3 h-3 bg-[#D6C4A6] border-2 border-[#3E2F26] rounded-full shadow-md transform -translate-x-1/2 transition-transform group-hover:scale-110"
-          style={{ left: `${percentage}%` }}
-        ></div>
-        <input
-          type="range"
-          min={min}
-          max={max}
-          step={step}
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-        />
-      </div>
-    </div>
-  );
-};
+const TABS = [
+  { id: 'realm', num: '01', label: 'Realm' },
+  { id: 'land',  num: '02', label: 'Land' },
+  { id: 'wilds', num: '03', label: 'Wilds' },
+  { id: 'cities', num: '04', label: 'Cities' },
+  { id: 'sea',   num: '05', label: 'Sea' },
+  { id: 'rule',  num: '06', label: 'Rule' },
+  { id: 'paper', num: '07', label: 'Paper' },
+];
 
 const FantasyMapGeneratorPage = () => {
   const { addToast } = useToast();
   const canvasRef = useRef(null);
+  const [rendering, setRendering] = useState(false);
+  const [activeTab, setActiveTab] = useState('realm');
 
-  const [seed, setSeed] = useState(Date.now());
-  const [roughness, setRoughness] = useState(0.6);
-  const [vegetation, setVegetation] = useState(0.5);
-  const [hillDensity, setHillDensity] = useState(0.3);
-  const [waterLevel, setWaterLevel] = useState(0.35);
-  const [cityCount, setCityCount] = useState(8);
-  const [castleCount, setCastleCount] = useState(4);
+  const [seed, setSeed] = useState(() => Math.floor(Math.random() * 1e9));
+  const [nameSeed, setNameSeed] = useState(() => Math.floor(Math.random() * 1e9));
+
+  // World identity
+  const [preset, setPreset] = useState('continent');
+  const [style, setStyle] = useState('riso');
+  const [naming, setNaming] = useState('westron');
+
+  // Topography
+  const [waterLevel, setWaterLevel] = useState(0.40);
+  const [mountains, setMountains] = useState(0.7);
+  const [hills, setHills] = useState(0.4);
+  const [climate, setClimate] = useState(0.55);
+  const [roughness, setRoughness] = useState(0.55);
+
+  // Biomes & wilds
+  const [forestDensity, setForestDensity] = useState(0.55);
+  const [swampiness, setSwampiness] = useState(0.5);
+  const [stoneCount, setStoneCount] = useState(3);
+  const [volcanoCount, setVolcanoCount] = useState(0);
+
+  // Settlements
+  const [cityCount, setCityCount] = useState(10);
+  const [castleCount, setCastleCount] = useState(5);
+  const [villageCount, setVillageCount] = useState(8);
+  const [capitalCount, setCapitalCount] = useState(2);
+
+  // Landmarks
+  const [ruinCount, setRuinCount] = useState(4);
+  const [towerCount, setTowerCount] = useState(2);
+  const [monasteryCount, setMonasteryCount] = useState(2);
+  const [lighthouseCount, setLighthouseCount] = useState(2);
+
+  // Sea
   const [shipCount, setShipCount] = useState(3);
+  const [krakenCount, setKrakenCount] = useState(1);
+  const [wreckCount, setWreckCount] = useState(2);
+  const [seaMonsters, setSeaMonsters] = useState(2);
   const [lakeCount, setLakeCount] = useState(4);
+  const [riverCount, setRiverCount] = useState(15);
 
-  const [colors] = useState({
-    paper: '#F0E6D2',
-    water: '#C5D6D8',
-    waterOutline: '#8DA3A6',
-    ink: '#3E2F26',
-    mountainLight: '#F0E6D2',
-    mountainShadow: '#A69580',
-    tree: '#6B7A59',
-    road: '#A69580',
-    text: '#2C1B11',
-  });
+  // Politics
+  const [realmCount, setRealmCount] = useState(4);
+  const [showBorders, setShowBorders] = useState(true);
+  const [shadeRealms, setShadeRealms] = useState(true);
+  const [showRoads, setShowRoads] = useState(true);
 
-  const generateMap = useCallback(
-    (ctx, width, height) => {
-      ctx.clearRect(0, 0, width, height);
-      ctx.fillStyle = colors.paper;
-      ctx.fillRect(0, 0, width, height);
+  // Ornament
+  const [showCompass, setShowCompass] = useState(true);
+  const [showCartouche, setShowCartouche] = useState(true);
+  const [showLegend, setShowLegend] = useState(true);
+  const [showScale, setShowScale] = useState(true);
+  const [showGrid, setShowGrid] = useState(false);
+  const [showLabels, setShowLabels] = useState(true);
 
-      for (let i = 0; i < width * height * 0.02; i++) {
-        const x = Math.random() * width;
-        const y = Math.random() * height;
-        ctx.fillStyle =
-          Math.random() > 0.5 ? 'rgba(0,0,0,0.02)' : 'rgba(255,255,255,0.03)';
-        ctx.fillRect(x, y, 2, 2);
-      }
+  const palette = STYLES[style];
+  const theme = palette.ui;
+  const presetCfg = WORLD_PRESETS[preset];
+  const bank = NAMING[naming];
 
-      const w = 200;
-      const h = 150;
-      const cellW = width / w;
-      const cellH = height / h;
-      const heightMap = new Float32Array(w * h);
-      const moistureMap = new Float32Array(w * h);
+  const worldTitle = useMemo(() => {
+    const realm = bank.realm[Math.floor(random(nameSeed) * bank.realm.length)];
+    const honor = ['Atlas of', 'Map of', 'Chart of', 'Codex of', 'Charta', 'Mappa', 'Cosmographia of'];
+    const h = honor[Math.floor(random(nameSeed + 1) * honor.length)];
+    return `${h} ${realm}`;
+  }, [nameSeed, bank]);
 
-      const scale = 3;
-      for (let y = 0; y < h; y++) {
-        for (let x = 0; x < w; x++) {
-          const nx = (x / w) * scale;
-          const ny = (y / h) * scale;
-          const dx = x / w - 0.5;
-          const dy = y / h - 0.5;
-          const dist = Math.sqrt(dx * dx + dy * dy) * 2.0;
-          const mask = Math.max(0, 1.0 - Math.pow(dist, 2));
-          let elev = fbm(nx, ny, seed, 5);
-          elev = (elev + mask) * 0.5;
-          let mountains = ridgedFbm(nx, ny, seed + 100, 4);
-          heightMap[y * w + x] = elev * 0.7 + mountains * 0.3 * roughness;
-          moistureMap[y * w + x] = fbm(nx + 10, ny + 10, seed + 200, 3);
-        }
-      }
-
-      const getElev = (x, y) => {
-        if (x < 0 || x >= w || y < 0 || y >= h) return 0;
-        return heightMap[y * w + x];
-      };
-
-      ctx.fillStyle = colors.water;
-      ctx.beginPath();
-      for (let y = 0; y < h; y++) {
-        for (let x = 0; x < w; x++) {
-          if (heightMap[y * w + x] < waterLevel) {
-            ctx.rect(x * cellW, y * cellH, cellW + 1, cellH + 1);
-          }
-        }
-      }
-      ctx.fill();
-
-      ctx.strokeStyle = colors.waterOutline;
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      for (let y = 0; y < h - 1; y++) {
-        for (let x = 0; x < w - 1; x++) {
-          const isLand = heightMap[y * w + x] >= waterLevel;
-          const isLandR = heightMap[y * w + (x + 1)] >= waterLevel;
-          const isLandB = heightMap[(y + 1) * w + x] >= waterLevel;
-          if (isLand !== isLandR) {
-            ctx.moveTo((x + 1) * cellW, y * cellH);
-            ctx.lineTo((x + 1) * cellW, (y + 1) * cellH);
-          }
-          if (isLand !== isLandB) {
-            ctx.moveTo(x * cellW, (y + 1) * cellH);
-            ctx.lineTo((x + 1) * cellW, (y + 1) * cellH);
-          }
-        }
-      }
-      ctx.stroke();
-
-      const drawLake = (cx, cy, size) => {
-        ctx.fillStyle = colors.water;
-        ctx.strokeStyle = colors.waterOutline;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        const segments = 10;
-        for (let i = 0; i <= segments; i++) {
-          const angle = (i / segments) * Math.PI * 2;
-          const r =
-            size *
-            (0.8 +
-              0.4 *
-                noise2D(Math.cos(angle) * 2, Math.sin(angle) * 2, seed + cx));
-          const lx = cx * cellW + Math.cos(angle) * r * cellW;
-          const ly = cy * cellH + Math.sin(angle) * r * cellH;
-          if (i === 0) ctx.moveTo(lx, ly);
-          else ctx.lineTo(lx, ly);
-        }
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-      };
-
-      let pl = 0;
-      for (let i = 0; i < 100 && pl < lakeCount; i++) {
-        const lx = Math.floor(random(seed + i * 3) * w);
-        const ly = Math.floor(random(seed + i * 4) * h);
-        if (getElev(lx, ly) > waterLevel + 0.05 && getElev(lx, ly) < 0.5) {
-          drawLake(lx, ly, 2 + random(lx + ly) * 2);
-          pl++;
-        }
-      }
-
-      const numRivers = 15;
-      ctx.strokeStyle = colors.waterOutline;
-      ctx.lineWidth = 2;
-      ctx.lineCap = 'round';
-      for (let i = 0; i < numRivers; i++) {
-        let rx = Math.floor(random(seed + i) * w);
-        let ry = Math.floor(random(seed + i * 2) * h);
-        if (getElev(rx, ry) > waterLevel + 0.2) {
-          const path = [];
-          let cx = rx,
-            cy = ry,
-            flow = true;
-          while (flow && path.length < 200) {
-            path.push({ x: cx, y: cy });
-            if (getElev(cx, cy) < waterLevel) break;
-            let minE = getElev(cx, cy),
-              nx = cx,
-              ny = cy;
-            for (let dy = -1; dy <= 1; dy++) {
-              for (let dx = -1; dx <= 1; dx++) {
-                const e = getElev(cx + dx, cy + dy);
-                if (e < minE) {
-                  minE = e;
-                  nx = cx + dx;
-                  ny = cy + dy;
-                }
-              }
-            }
-            if (nx === cx && ny === cy) {
-              flow = false;
-              drawLake(cx, cy, 1);
-            } else {
-              cx = nx;
-              cy = ny;
-            }
-          }
-          if (path.length > 5) {
-            ctx.beginPath();
-            ctx.moveTo(path[0].x * cellW, path[0].y * cellH);
-            for (let p = 1; p < path.length; p++) {
-              const jx = (random(seed + p) - 0.5) * 3;
-              const jy = (random(seed + p * 2) - 0.5) * 3;
-              ctx.lineTo(path[p].x * cellW + jx, path[p].y * cellH + jy);
-            }
-            ctx.stroke();
-          }
-        }
-      }
-
-      const cities = [];
-      const usedNames = new Set();
-      const prefixes = [
-        'West',
-        'North',
-        'Iron',
-        'Deep',
-        'Grey',
-        'Misty',
-        'High',
-        'Red',
-        'Blue',
-        'Black',
-        'White',
-        'Silver',
-        'Gold',
-        'Green',
-        'Old',
-        'New',
-        'Lost',
-        'Dark',
-        'Light',
-        'Stone',
-        'Raven',
-        'Wolf',
-        'Bear',
-      ];
-      const suffixes = [
-        'wood',
-        'mount',
-        'peak',
-        'river',
-        'fall',
-        'bridge',
-        'field',
-        'haven',
-        'watch',
-        'guard',
-        'dale',
-        'vale',
-        'gate',
-        'port',
-        'bay',
-        'isle',
-        'keep',
-        'hold',
-        'bury',
-        'ton',
-        'grad',
-        'heim',
-      ];
-      const castPrefixes = [
-        'Dread',
-        'Storm',
-        'Iron',
-        'Shadow',
-        'Doom',
-        'Blood',
-        'Cloud',
-        'Void',
-        'Kings',
-        'Oath',
-      ];
-      const castSuffixes = [
-        'fort',
-        'tower',
-        'citadel',
-        'bastion',
-        'spire',
-        'stronghold',
-        'reach',
-        'crag',
-        'wall',
-      ];
-
-      const getUniqueName = (s, pArr, sArr) => {
-        let attempts = 0,
-          name = '';
-        do {
-          name =
-            pArr[Math.floor(random(s + attempts) * pArr.length)] +
-            sArr[Math.floor(random(s + attempts + 0.5) * sArr.length)];
-          attempts++;
-        } while (usedNames.has(name) && attempts < 50);
-        usedNames.add(name);
-        return name;
-      };
-
-      let att = 0;
-      while (cities.length < cityCount && att < 200) {
-        const rx = Math.floor(random(seed + att * 1.1) * w),
-          ry = Math.floor(random(seed + att * 1.2) * h);
-        if (
-          getElev(rx, ry) > waterLevel &&
-          getElev(rx, ry) < 0.5 &&
-          !cities.some((c) => Math.hypot(c.x - rx, c.y - ry) < 15)
-        ) {
-          cities.push({
-            x: rx,
-            y: ry,
-            name: getUniqueName(seed + att, prefixes, suffixes),
-          });
-        }
-        att++;
-      }
-
-      const castles = [];
-      att = 0;
-      while (castles.length < castleCount && att < 300) {
-        const rx = Math.floor(random(seed + 500 + att) * w),
-          ry = Math.floor(random(seed + 600 + att) * h);
-        const e = getElev(rx, ry);
-        if (
-          e > 0.55 &&
-          e < 0.75 &&
-          !cities.some((c) => Math.hypot(c.x - rx, c.y - ry) < 20) &&
-          !castles.some((c) => Math.hypot(c.x - rx, c.y - ry) < 20)
-        ) {
-          castles.push({
-            x: rx,
-            y: ry,
-            name: getUniqueName(seed + 700 + att, castPrefixes, castSuffixes),
-          });
-        }
-        att++;
-      }
-
-      ctx.strokeStyle = colors.road;
-      ctx.lineWidth = 1.5;
-      ctx.setLineDash([5, 5]);
-      ctx.beginPath();
-      cities.forEach((city, i) => {
-        let nearest = null,
-          minD = Infinity;
-        cities.forEach((other, j) => {
-          if (i === j) return;
-          const d = Math.hypot(city.x - other.x, city.y - other.y);
-          if (d < minD) {
-            minD = d;
-            nearest = other;
-          }
-        });
-        if (nearest) {
-          const sx = city.x * cellW,
-            sy = city.y * cellH,
-            ex = nearest.x * cellW,
-            ey = nearest.y * cellH;
-          const mx = (sx + ex) / 2,
-            my = (sy + ey) / 2,
-            offset = (random(seed + i) - 0.5) * 30;
-          ctx.moveTo(sx, sy);
-          ctx.quadraticCurveTo(mx + offset, my + offset, ex, ey);
-        }
-      });
-      ctx.stroke();
-      ctx.setLineDash([]);
-
-      const features = [];
-      for (let y = 0; y < h; y++) {
-        for (let x = 0; x < w; x++) {
-          const e = heightMap[y * w + x],
-            m = moistureMap[y * w + x],
-            px = x * cellW,
-            py = y * cellH;
-          if (e < waterLevel) continue;
-          if (e > 0.65) {
-            if (random(x * y + seed) < 0.3 * roughness)
-              features.push({ type: 'mountain', x: px, y: py, h: e });
-          } else if (e > waterLevel && e < 0.6 && m > 1 - vegetation) {
-            if (random(x * y + seed) < 0.4)
-              features.push({ type: 'tree', x: px, y: py });
-          } else if (e > 0.5 && e < 0.65) {
-            if (random(x * y + seed) < 0.2 * hillDensity)
-              features.push({ type: 'hill', x: px, y: py });
-          }
-        }
-      }
-      features.sort((a, b) => a.y - b.y);
-      features.forEach((f) => {
-        const jitter = (random(f.x + f.y) - 0.5) * 8,
-          fx = f.x + jitter,
-          fy = f.y + jitter;
-        ctx.strokeStyle = colors.ink;
-        if (f.type === 'mountain') {
-          const size = 25 + (f.h - 0.6) * 60;
-          ctx.fillStyle = colors.mountainLight;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(fx - size / 2, fy);
-          ctx.lineTo(fx, fy - size);
-          ctx.lineTo(fx + size / 2, fy);
-          ctx.fill();
-          ctx.fillStyle = colors.mountainShadow;
-          ctx.beginPath();
-          ctx.moveTo(fx, fy - size);
-          ctx.lineTo(fx + size / 2, fy);
-          ctx.lineTo(fx, fy);
-          ctx.fill();
-          ctx.beginPath();
-          ctx.moveTo(fx - size / 2, fy);
-          ctx.lineTo(fx, fy - size);
-          ctx.lineTo(fx + size / 2, fy);
-          ctx.stroke();
-        } else if (f.type === 'tree') {
-          const size = 10 + random(fx) * 6;
-          ctx.fillStyle = colors.tree;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.arc(fx, fy - size / 2, size / 2, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.beginPath();
-          ctx.arc(fx, fy - size / 2, size / 2, 0, Math.PI, false);
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(fx, fy);
-          ctx.lineTo(fx, fy + 3);
-          ctx.stroke();
-        } else if (f.type === 'hill') {
-          const size = 12 + random(fx) * 6;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.arc(fx, fy, size, Math.PI, 0);
-          ctx.stroke();
-        }
-      });
-
-      castles.forEach((c) => {
-        const cx = c.x * cellW,
-          cy = c.y * cellH;
-        const s = 28;
-        ctx.strokeStyle = colors.ink;
-        ctx.lineWidth = 2;
-
-        ctx.fillStyle = '#A6A6A6';
-        ctx.fillRect(cx - s / 2, cy - s * 0.8, s * 0.25, s * 0.8);
-        ctx.strokeRect(cx - s / 2, cy - s * 0.8, s * 0.25, s * 0.8);
-        ctx.fillRect(cx + s / 4, cy - s * 0.8, s * 0.25, s * 0.8);
-        ctx.strokeRect(cx + s / 4, cy - s * 0.8, s * 0.25, s * 0.8);
-
-        ctx.fillRect(cx - s / 4, cy - s * 0.6, s / 2, s * 0.6);
-        ctx.strokeRect(cx - s / 4, cy - s * 0.6, s / 2, s * 0.6);
-
-        ctx.fillStyle = '#7A2F2F';
-        ctx.beginPath();
-        ctx.moveTo(cx - s / 2 - 2, cy - s * 0.8);
-        ctx.lineTo(cx - s / 2 + s * 0.125, cy - s * 1.2);
-        ctx.lineTo(cx - s / 2 + s * 0.25 + 2, cy - s * 0.8);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.moveTo(cx + s / 4 - 2, cy - s * 0.8);
-        ctx.lineTo(cx + s / 4 + s * 0.125, cy - s * 1.2);
-        ctx.lineTo(cx + s / 4 + s * 0.25 + 2, cy - s * 0.8);
-        ctx.closePath();
-        ctx.fill();
-        ctx.stroke();
-
-        ctx.fillStyle = colors.ink;
-        ctx.beginPath();
-        ctx.arc(cx, cy, 4, Math.PI, 0);
-        ctx.lineTo(cx + 4, cy);
-        ctx.lineTo(cx - 4, cy);
-        ctx.closePath();
-        ctx.fill();
-
-        ctx.fillStyle = colors.text;
-        ctx.font = 'bold 20px serif';
-        ctx.fillText(c.name, cx, cy + 24);
-      });
-
-      let sc = 0;
-      for (let i = 0; i < 100 && sc < shipCount; i++) {
-        const sx = Math.floor(random(seed + i * 20) * w),
-          sy = Math.floor(random(seed + i * 21) * h);
-        if (getElev(sx, sy) < waterLevel - 0.05) {
-          const px = sx * cellW,
-            py = sy * cellH;
-          ctx.fillStyle = colors.paper;
-          ctx.strokeStyle = colors.ink;
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(px, py);
-          ctx.lineTo(px + 15, py);
-          ctx.lineTo(px + 7, py + 5);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(px + 7, py);
-          ctx.lineTo(px + 7, py - 15);
-          ctx.lineTo(px + 18, py - 8);
-          ctx.closePath();
-          ctx.stroke();
-          sc++;
-        }
-      }
-
-      ctx.fillStyle = colors.text;
-      ctx.font = 'bold 18px "Cinzel", serif';
-      ctx.textAlign = 'center';
-      cities.forEach((city) => {
-        const cx = city.x * cellW,
-          cy = city.y * cellH;
-        ctx.fillStyle = colors.paper;
-        ctx.strokeStyle = colors.ink;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(cx, cy, 5, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-        ctx.fillStyle = colors.text;
-        ctx.beginPath();
-        ctx.arc(cx, cy, 2, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillText(city.name, cx, cy - 12);
-      });
-
-      const lx = 60,
-        ly = height - 160;
-      ctx.fillStyle = 'rgba(240, 230, 210, 0.8)';
-      ctx.strokeStyle = colors.ink;
-      ctx.lineWidth = 3;
-      ctx.fillRect(lx, ly, 180, 120);
-      ctx.strokeRect(lx, ly, 180, 120);
-      ctx.fillStyle = colors.text;
-      ctx.font = 'bold 14px serif';
-      ctx.textAlign = 'left';
-      ctx.fillText('MAP LEGEND', lx + 15, ly + 25);
-      ctx.font = '12px serif';
-      ctx.fillText('●  Settlement', lx + 15, ly + 50);
-
-      const lcx = lx + 20,
-        lcy = ly + 75;
-      ctx.fillStyle = '#A6A6A6';
-      ctx.strokeStyle = colors.ink;
-      ctx.lineWidth = 1;
-      ctx.fillRect(lcx - 5, lcy - 8, 3, 8);
-      ctx.strokeRect(lcx - 5, lcy - 8, 3, 8);
-      ctx.fillRect(lcx + 2, lcy - 8, 3, 8);
-      ctx.strokeRect(lcx + 2, lcy - 8, 3, 8);
-      ctx.fillRect(lcx - 2, lcy - 5, 4, 5);
-      ctx.strokeRect(lcx - 2, lcy - 5, 4, 5);
-      ctx.fillStyle = colors.text;
-      ctx.fillText('Castle', lx + 35, ly + 75);
-
-      ctx.fillText('▲  Mountain', lx + 15, ly + 95);
-      ctx.fillText('☁  Forest', lx + 15, ly + 115);
-
-      const compX = width - 80,
-        compY = height - 80;
-      ctx.strokeStyle = colors.ink;
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.moveTo(compX, compY - 40);
-      ctx.lineTo(compX + 8, compY - 8);
-      ctx.lineTo(compX + 40, compY);
-      ctx.lineTo(compX + 8, compY + 8);
-      ctx.lineTo(compX, compY + 40);
-      ctx.lineTo(compX - 8, compY + 8);
-      ctx.lineTo(compX - 40, compY);
-      ctx.lineTo(compX - 8, compY - 8);
-      ctx.closePath();
-      ctx.stroke();
-      ctx.fillStyle = colors.text;
-      ctx.font = 'bold 24px serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('N', compX, compY - 50);
-    },
-    [
-      seed,
-      roughness,
-      vegetation,
-      hillDensity,
-      waterLevel,
-      cityCount,
-      castleCount,
-      shipCount,
-      lakeCount,
-      colors,
-    ],
-  );
+  const draw = useCallback(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    canvas.width = 2400;
+    canvas.height = 1500;
+    const ctx = canvas.getContext('2d');
+    generateMap(ctx, canvas.width, canvas.height, {
+      seed, nameSeed, showLabels, palette, presetCfg, bank, worldTitle,
+      waterLevel, mountains, hills, climate, roughness,
+      forestDensity, swampiness,
+      cityCount, castleCount, villageCount, capitalCount,
+      ruinCount, towerCount, monasteryCount, stoneCount, volcanoCount, lighthouseCount,
+      shipCount, krakenCount, wreckCount, seaMonsters, lakeCount, riverCount,
+      realmCount, showBorders, shadeRealms, showRoads,
+      showCompass, showCartouche, showLegend, showScale, showGrid,
+    });
+  }, [
+    seed, nameSeed, showLabels, palette, presetCfg, bank, worldTitle,
+    waterLevel, mountains, hills, climate, roughness,
+    forestDensity, swampiness,
+    cityCount, castleCount, villageCount, capitalCount,
+    ruinCount, towerCount, monasteryCount, stoneCount, volcanoCount, lighthouseCount,
+    shipCount, krakenCount, wreckCount, seaMonsters, lakeCount, riverCount,
+    realmCount, showBorders, shadeRealms, showRoads,
+    showCompass, showCartouche, showLegend, showScale, showGrid,
+  ]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      canvas.width = 2048;
-      canvas.height = 1536;
-      const ctx = canvas.getContext('2d');
-      generateMap(ctx, canvas.width, canvas.height);
-    }
-  }, [generateMap]);
+    setRendering(true);
+    const id = requestAnimationFrame(() => {
+      draw();
+      setRendering(false);
+    });
+    return () => cancelAnimationFrame(id);
+  }, [draw]);
 
   const handleDownload = () => {
     const canvas = canvasRef.current;
+    if (!canvas) return;
     const link = document.createElement('a');
-    link.download = `fantasy_map_${seed}.png`;
-    link.href = canvas.toDataURL();
+    link.download = `${worldTitle.replace(/\s+/g, '_')}_${seed}.png`;
+    link.href = canvas.toDataURL('image/png');
     link.click();
     addToast({
-      title: 'Decree Issued',
-      message: 'The map has been inscribed into your archives.',
-      duration: 3000,
+      title: 'Folio Pressed',
+      message: 'The map has been added to your archives.',
+      duration: 2500,
     });
   };
 
+  const presetOptions = useMemo(
+    () => Object.entries(WORLD_PRESETS).map(([k, v]) => ({ value: k, label: v.label })),
+    [],
+  );
+  const styleOptions = useMemo(
+    () => Object.entries(STYLES).map(([k, v]) => ({ value: k, label: v.label })),
+    [],
+  );
+
   return (
-    <div className="min-h-screen bg-stone-100 flex flex-col font-serif selection:bg-[#8C7B6C] selection:text-[#F0E6D2]">
+    <div
+      className="min-h-screen flex flex-col"
+      style={{
+        background: theme.bg,
+        color: theme.ink,
+        fontFamily: SANS,
+        transition: 'background 250ms ease, color 250ms ease',
+      }}
+    >
       <Seo
-        title="Fantasy Map Generator | Fezcodex"
-        description="Generate Middle-earth style fantasy maps with mountains, rivers, and castles."
-        keywords={[
-          'fantasy',
-          'map',
-          'generator',
-          'middle-earth',
-          'castle',
-          'rpg',
-          'dnd',
-        ]}
+        title="Cartographia | Fezcodex"
+        description="A risograph cartographer's atelier. Generate fantasy maps — continents, archipelagos, Middle-earth, deserts, frozen wastes — with realms, ruins, krakens and more."
+        keywords={['fantasy', 'map', 'generator', 'middle-earth', 'kraken', 'realm', 'cartography', 'risograph']}
       />
-      <div className="container mx-auto px-4 py-8 flex-grow flex flex-col max-w-7xl relative z-10">
-        <Link
-          to="/apps"
-          className="group text-stone-600 hover:text-stone-900 hover:underline flex items-center justify-center gap-2 text-lg mb-4"
-        >
-          <ArrowLeftIcon className="text-xl transition-transform group-hover:-translate-x-1" />{' '}
-          Back to Apps
-        </Link>
-        <div className="flex flex-col items-center mb-8">
-          <h1 className="text-5xl md:text-6xl font-black text-[#2C1B11] tracking-tighter mb-2">
-            Cartographer
-          </h1>
-          <div className="w-24 h-1 bg-[#8C7B6C] mb-2"></div>
-          <p className="text-[#5C4936] italic text-lg">
-            "The world is not in your books and maps, it's out there."
-          </p>
+
+      {/* paper-grain overlay */}
+      <div
+        className="pointer-events-none fixed inset-0 opacity-[0.05] mix-blend-multiply z-[1]"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
+      />
+
+      <div className="relative z-10 max-w-[1500px] w-full mx-auto px-5 lg:px-8 py-5 flex flex-col flex-grow">
+        {/* Top bar */}
+        <div className="flex items-center justify-between mb-5">
+          <Link
+            to="/apps"
+            className="group inline-flex items-center gap-2 text-[12px] tracking-wide"
+            style={{ color: theme.muted, fontFamily: SANS }}
+          >
+            <ArrowLeftIcon className="transition-transform group-hover:-translate-x-1" />
+            <span className="uppercase">Library</span>
+          </Link>
+          <div
+            className="text-[10px] tabular-nums tracking-[0.3em] uppercase"
+            style={{ fontFamily: MONO, color: theme.muted }}
+          >
+            <span style={{ color: theme.spot }}>●</span>{' '}
+            issue №{String(seed).slice(-4)} · folio {Math.floor(random(seed) * 240) + 1}/240
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 flex-grow">
-          <div className="lg:col-span-1 space-y-6 bg-[#EADBC4] p-6 rounded-sm shadow-xl border-4 border-[#3E2F26] h-fit relative">
-            <div className="border-b-2 border-[#8C7B6C] pb-4 mb-4">
-              <h2 className="text-xl font-bold uppercase tracking-widest text-[#3E2F26] flex items-center gap-2">
-                <ScrollIcon size={24} /> Parameters
-              </h2>
-            </div>
-            <div className="flex flex-col gap-2 mb-6">
-              <button
-                onClick={() => setSeed(Date.now())}
-                className="w-full py-3 px-4 bg-[#3E2F26] text-[#F0E6D2] rounded-sm hover:bg-[#2C1B11] flex items-center justify-center gap-2 transition-all font-serif uppercase tracking-widest font-bold shadow-md"
+        {/* Editorial masthead */}
+        <header className="relative mb-6">
+          <div
+            className="absolute left-0 right-0 top-0 h-[2px]"
+            style={{ background: theme.ink }}
+          />
+          <div className="pt-5 grid grid-cols-12 gap-4 items-end">
+            <div className="col-span-12 md:col-span-9 min-w-0">
+              <div
+                className="text-[10px] tracking-[0.5em] uppercase mb-2"
+                style={{ fontFamily: MONO, color: theme.spot }}
               >
-                <DiceFiveIcon size={20} /> Discover
+                ✦ The Cartographia · A Field Atlas of Imagined Lands ✦
+              </div>
+              <h1
+                className="leading-[0.88] tracking-tight"
+                style={{
+                  fontFamily: DISPLAY,
+                  color: theme.ink,
+                  fontSize: 'clamp(3rem, 8vw, 6.5rem)',
+                  fontStyle: 'italic',
+                }}
+              >
+                {worldTitle}
+              </h1>
+            </div>
+            <div className="col-span-12 md:col-span-3 flex flex-col items-end gap-2">
+              <button
+                onClick={() => {
+                  setSeed(Math.floor(Math.random() * 1e9));
+                  setNameSeed(Math.floor(Math.random() * 1e9));
+                }}
+                className="group flex items-center gap-2 px-4 py-2.5 transition-all hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                style={{
+                  background: theme.spot,
+                  color: theme.spotInk,
+                  border: `1.5px solid ${theme.ink}`,
+                  fontFamily: SANS,
+                  boxShadow: `4px 4px 0 ${theme.ink}`,
+                }}
+              >
+                <ShuffleIcon size={14} weight="bold" />
+                <span className="text-[11px] uppercase tracking-[0.2em] font-semibold">
+                  New World
+                </span>
+              </button>
+              <button
+                onClick={() => setNameSeed(Math.floor(Math.random() * 1e9))}
+                className="group flex items-center gap-2 px-4 py-2 transition-all hover:translate-x-[-1px] hover:translate-y-[-1px]"
+                style={{
+                  background: theme.surface,
+                  color: theme.ink,
+                  border: `1.5px solid ${theme.ink}`,
+                  fontFamily: SANS,
+                  boxShadow: `2px 2px 0 ${theme.spot}`,
+                }}
+                title="Re-roll all place names without changing the map"
+              >
+                <DiceFiveIcon size={13} weight="bold" />
+                <span className="text-[11px] uppercase tracking-[0.2em]">
+                  Rename
+                </span>
               </button>
               <button
                 onClick={handleDownload}
-                className="w-full py-3 bg-[#8C7B6C] text-[#F0E6D2] rounded-sm hover:bg-[#7A6A5C] shadow-md transition-all flex items-center justify-center gap-2 font-serif uppercase tracking-widest font-bold"
+                className="group flex items-center gap-2 px-4 py-2 transition-all hover:translate-x-[-1px] hover:translate-y-[-1px]"
+                style={{
+                  background: theme.surface,
+                  color: theme.ink,
+                  border: `1.5px solid ${theme.ink}`,
+                  fontFamily: SANS,
+                  boxShadow: `2px 2px 0 ${theme.ink}`,
+                }}
               >
-                <DownloadSimpleIcon size={20} /> Download
+                <DownloadSimpleIcon size={13} />
+                <span className="text-[11px] uppercase tracking-[0.2em]">
+                  Press a Print
+                </span>
               </button>
             </div>
-            <div className="space-y-6">
-              <MedievalSlider
-                label="Mountains"
-                value={roughness}
-                onChange={setRoughness}
-                min={0}
-                max={1.5}
-                step={0.1}
-              />
-              <MedievalSlider
-                label="Forests"
-                value={vegetation}
-                onChange={setVegetation}
-                min={0}
-                max={1}
-                step={0.1}
-              />
-              <MedievalSlider
-                label="Hills"
-                value={hillDensity}
-                onChange={setHillDensity}
-                min={0}
-                max={1}
-                step={0.1}
-              />
-              <MedievalSlider
-                label="Sea Level"
-                value={waterLevel}
-                onChange={setWaterLevel}
-                min={0.1}
-                max={0.8}
-                step={0.05}
-              />
-              <MedievalSlider
-                label="Cities"
-                value={cityCount}
-                onChange={setCityCount}
-                min={1}
-                max={30}
-                step={1}
-              />
-              <MedievalSlider
-                label="Castles"
-                value={castleCount}
-                onChange={setCastleCount}
-                min={0}
-                max={10}
-                step={1}
-              />
-              <MedievalSlider
-                label="Lakes"
-                value={lakeCount}
-                onChange={setLakeCount}
-                min={0}
-                max={15}
-                step={1}
-              />
-              <MedievalSlider
-                label="Ships"
-                value={shipCount}
-                onChange={setShipCount}
-                min={0}
-                max={10}
-                step={1}
-              />
+          </div>
+        </header>
+
+        {/* Map — full width */}
+        <div className="relative">
+          <div
+            className="relative overflow-hidden"
+            style={{
+              background: palette.paper,
+              border: `2px solid ${theme.ink}`,
+              boxShadow: `10px 10px 0 ${theme.spot}, 0 24px 60px ${theme.ink}25`,
+            }}
+          >
+            <canvas
+              ref={canvasRef}
+              className="w-full h-auto block"
+              style={{ aspectRatio: '8/5', maxHeight: '72vh' }}
+            />
+            {rendering && (
+              <div
+                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+                style={{ background: theme.bg + 'AA' }}
+              >
+                <div
+                  className="text-[10px] tracking-[0.4em] uppercase animate-pulse"
+                  style={{ fontFamily: MONO, color: theme.spot }}
+                >
+                  Pressing the Plate…
+                </div>
+              </div>
+            )}
+          </div>
+          <div
+            className="mt-2 flex flex-wrap items-center justify-between gap-2 text-[10px] tracking-[0.25em] uppercase"
+            style={{ fontFamily: MONO, color: theme.muted }}
+          >
+            <span>
+              Fig.{String(seed).slice(-2)} — {presetCfg.label} ·{' '}
+              <span style={{ color: theme.ink }}>{palette.label}</span> printing
+            </span>
+            <span>folio №{seed}</span>
+          </div>
+        </div>
+
+        {/* Controls — horizontal strip beneath the map */}
+        <section className="mt-5">
+          {/* Tab strip */}
+          <div
+            className="relative overflow-x-auto custom-scroll"
+            style={{ borderBottom: `1.5px solid ${theme.ink}` }}
+          >
+            <div className="flex items-baseline gap-1 min-w-max">
+              {TABS.map((t) => (
+                <Tab
+                  key={t.id}
+                  active={activeTab === t.id}
+                  onClick={() => setActiveTab(t.id)}
+                  num={t.num}
+                  label={t.label}
+                  theme={theme}
+                />
+              ))}
             </div>
           </div>
 
-          <div className="lg:col-span-3 relative">
-            <div className="absolute -inset-2 bg-[#3E2F26] rounded-sm shadow-2xl"></div>
-            <div className="absolute -inset-1 bg-[#8C7B6C] rounded-sm"></div>
-            <div className="relative bg-[#F0E6D2] rounded-sm overflow-hidden h-full flex items-center justify-center">
-              <canvas
-                ref={canvasRef}
-                className="max-w-full h-auto"
-                style={{
-                  maxHeight: '750px',
-                  aspectRatio: '4/3',
-                  filter: 'sepia(0.15) contrast(1.05)',
-                }}
-              />
-              <div className="absolute inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(44,27,17,0.3)]"></div>
+          {/* Tab body — horizontal grid */}
+          <div
+            className="px-5 py-4 grid gap-x-6 gap-y-3 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 items-start"
+            style={{
+              background: theme.surface,
+              border: `1.5px solid ${theme.ink}`,
+              borderTop: 'none',
+            }}
+          >
+            <div className="col-span-2 sm:col-span-3 md:col-span-1 lg:col-span-1">
+              <SectionTitle theme={theme} num={TABS.find(t => t.id === activeTab).num}>
+                {{
+                  realm: 'The Realm',
+                  land: 'Land',
+                  wilds: 'Wilds',
+                  cities: 'Cities',
+                  sea: 'Sea',
+                  rule: 'Rule',
+                  paper: 'Paper',
+                }[activeTab]}
+              </SectionTitle>
             </div>
+
+            {activeTab === 'realm' && (
+              <>
+                <Select theme={theme} label="World Type" value={preset} options={presetOptions} onChange={setPreset} />
+                <Select theme={theme} label="Style" value={style} options={styleOptions} onChange={setStyle} />
+                <Select theme={theme} label="Naming" value={naming} options={NAMING_OPTIONS} onChange={setNaming} />
+                <div className="col-span-2 sm:col-span-3 md:col-span-1 lg:col-span-2">
+                  <PaletteStrip theme={theme} palette={palette} />
+                </div>
+              </>
+            )}
+
+            {activeTab === 'land' && (
+              <>
+                <Slider theme={theme} label="Sea Level" value={waterLevel} min={0.15} max={0.7} step={0.01} onChange={setWaterLevel} />
+                <Slider theme={theme} label="Mountains" value={mountains} min={0} max={1.5} step={0.05} onChange={setMountains} />
+                <Slider theme={theme} label="Hills" value={hills} min={0} max={1} step={0.05} onChange={setHills} />
+                <Slider theme={theme} label="Roughness" value={roughness} min={0} max={1} step={0.05} onChange={setRoughness} />
+                <Slider theme={theme} label="Climate" value={climate} min={0.1} max={1.0} step={0.05} onChange={setClimate} />
+                <Slider theme={theme} label="Rivers" value={riverCount} min={0} max={30} step={1} onChange={setRiverCount} />
+                <Slider theme={theme} label="Lakes" value={lakeCount} min={0} max={15} step={1} onChange={setLakeCount} />
+              </>
+            )}
+
+            {activeTab === 'wilds' && (
+              <>
+                <Slider theme={theme} label="Forests" value={forestDensity} min={0} max={1} step={0.05} onChange={setForestDensity} />
+                <Slider theme={theme} label="Swampiness" value={swampiness} min={0} max={1} step={0.05} onChange={setSwampiness} />
+                <Slider theme={theme} label="Volcanoes" value={volcanoCount} min={0} max={6} step={1} onChange={setVolcanoCount} />
+                <Slider theme={theme} label="Standing Stones" value={stoneCount} min={0} max={8} step={1} onChange={setStoneCount} />
+                <Slider theme={theme} label="Ruins" value={ruinCount} min={0} max={10} step={1} onChange={setRuinCount} />
+                <Slider theme={theme} label="Wizard Towers" value={towerCount} min={0} max={6} step={1} onChange={setTowerCount} />
+                <Slider theme={theme} label="Monasteries" value={monasteryCount} min={0} max={6} step={1} onChange={setMonasteryCount} />
+              </>
+            )}
+
+            {activeTab === 'cities' && (
+              <>
+                <Slider theme={theme} label="Capitals" value={capitalCount} min={0} max={6} step={1} onChange={setCapitalCount} />
+                <Slider theme={theme} label="Cities" value={cityCount} min={0} max={30} step={1} onChange={setCityCount} />
+                <Slider theme={theme} label="Villages" value={villageCount} min={0} max={20} step={1} onChange={setVillageCount} />
+                <Slider theme={theme} label="Castles" value={castleCount} min={0} max={12} step={1} onChange={setCastleCount} />
+                <Slider theme={theme} label="Lighthouses" value={lighthouseCount} min={0} max={6} step={1} onChange={setLighthouseCount} />
+              </>
+            )}
+
+            {activeTab === 'sea' && (
+              <>
+                <Slider theme={theme} label="Ships" value={shipCount} min={0} max={10} step={1} onChange={setShipCount} />
+                <Slider theme={theme} label="Sea Serpents" value={seaMonsters} min={0} max={6} step={1} onChange={setSeaMonsters} />
+                <Slider theme={theme} label="Krakens" value={krakenCount} min={0} max={4} step={1} onChange={setKrakenCount} />
+                <Slider theme={theme} label="Shipwrecks" value={wreckCount} min={0} max={6} step={1} onChange={setWreckCount} />
+              </>
+            )}
+
+            {activeTab === 'rule' && (
+              <>
+                <Slider theme={theme} label="Realms" value={realmCount} min={0} max={6} step={1} onChange={setRealmCount} />
+                <Toggle theme={theme} label="Shade realms" value={shadeRealms} onChange={setShadeRealms} />
+                <Toggle theme={theme} label="Show borders" value={showBorders} onChange={setShowBorders} />
+                <Toggle theme={theme} label="Trade roads" value={showRoads} onChange={setShowRoads} />
+              </>
+            )}
+
+            {activeTab === 'paper' && (
+              <>
+                <Toggle theme={theme} label="Place names" value={showLabels} onChange={setShowLabels} />
+                <Toggle theme={theme} label="Compass rose" value={showCompass} onChange={setShowCompass} />
+                <Toggle theme={theme} label="Cartouche" value={showCartouche} onChange={setShowCartouche} />
+                <Toggle theme={theme} label="Legend" value={showLegend} onChange={setShowLegend} />
+                <Toggle theme={theme} label="Scale bar" value={showScale} onChange={setShowScale} />
+                <Toggle theme={theme} label="Latitude grid" value={showGrid} onChange={setShowGrid} />
+              </>
+            )}
           </div>
-        </div>
+        </section>
       </div>
+
+      <style>{`
+        .custom-scroll::-webkit-scrollbar { width: 6px; }
+        .custom-scroll::-webkit-scrollbar-track { background: transparent; }
+        .custom-scroll::-webkit-scrollbar-thumb {
+          background: ${theme.muted}80;
+          border-radius: 3px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb:hover { background: ${theme.spot}; }
+        select option { background: ${theme.surface}; color: ${theme.ink}; }
+      `}</style>
     </div>
   );
 };
+
+const SectionTitle = ({ theme, num, hint, children }) => (
+  <div className="mb-1">
+    <div className="flex items-baseline gap-3">
+      <span
+        className="text-[10px] tabular-nums tracking-[0.3em]"
+        style={{ fontFamily: MONO, color: theme.spot }}
+      >
+        №{num}
+      </span>
+      <h2
+        className="leading-none"
+        style={{
+          fontFamily: DISPLAY,
+          fontStyle: 'italic',
+          fontSize: '1.65rem',
+          color: theme.ink,
+        }}
+      >
+        {children}
+      </h2>
+    </div>
+    {hint && (
+      <p
+        className="mt-1 text-[11px] italic"
+        style={{ fontFamily: SANS, color: theme.muted }}
+      >
+        {hint}
+      </p>
+    )}
+    <div
+      className="mt-3 h-px w-full"
+      style={{ background: theme.ink + '20' }}
+    />
+  </div>
+);
+
+const PaletteStrip = ({ theme, palette }) => (
+  <div className="mt-2">
+    <div
+      className="text-[10px] tracking-[0.18em] uppercase mb-1.5"
+      style={{ fontFamily: SANS, color: theme.muted }}
+    >
+      Inks on the Press
+    </div>
+    <div className="flex h-7 w-full" style={{ border: `1.5px solid ${theme.ink}` }}>
+      {[
+        palette.paper,
+        palette.water,
+        palette.waterDeep,
+        palette.forest,
+        palette.desert,
+        palette.realmInk,
+        palette.ink,
+      ].map((c, i) => (
+        <div key={i} className="flex-1" style={{ background: c }} />
+      ))}
+    </div>
+  </div>
+);
 
 export default FantasyMapGeneratorPage;
