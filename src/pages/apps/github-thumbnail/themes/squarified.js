@@ -316,4 +316,3 @@ function pickFontSize(ctx, text, maxWidth, ladder, fontTemplate) {
   }
   return ladder[ladder.length - 1];
 }
-

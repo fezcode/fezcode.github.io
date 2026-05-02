@@ -25,7 +25,9 @@ const TerracottaPostItem = ({ post, isActive, onHover = () => {} }) => {
               ? '#8A6A32'
               : category === 'ai'
                 ? '#6B8E23'
-                : '#C96442';
+                : category === 'essay'
+                  ? '#7A5C3A'
+                  : '#C96442';
 
   const categoryBg =
     category === 'dev'
@@ -40,7 +42,9 @@ const TerracottaPostItem = ({ post, isActive, onHover = () => {} }) => {
               ? 'rgba(138, 106, 50, 0.2)'
               : category === 'ai'
                 ? 'rgba(107, 142, 35, 0.15)'
-                : 'rgba(201, 100, 66, 0.18)';
+                : category === 'essay'
+                  ? 'rgba(122, 92, 58, 0.2)'
+                  : 'rgba(201, 100, 66, 0.18)';
 
   return (
     <motion.div

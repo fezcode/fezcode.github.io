@@ -130,6 +130,12 @@ code {
   --bg-ai-card-hover: rgba(132, 204, 22, 0.275);
   --title-hover-ai: #a3e635; /* lime-400 */
 
+  /*essay card*/
+  --color-essay-badge: #4338ca; /* indigo-700 */
+  --bg-essay-card: rgba(67, 56, 202, 0.175);
+  --bg-essay-card-hover: rgba(99, 102, 241, 0.275);
+  --title-hover-essay: #818cf8; /* indigo-400 */
+
   /*fezccode colors*/
   --fzcdx-background: #ffffff;
   --fzcdx-text-primary: #2d2d2d;

@@ -34,6 +34,7 @@ const FILTERS = [
   { id: 'ai', label: 'AI' },
   { id: 'feat', label: 'Feat' },
   { id: 'rant', label: 'Rant' },
+  { id: 'essay', label: 'Essay' },
   { id: 'series', label: 'Series' },
   { id: 'gist', label: 'Gist' },
   { id: 'd&d', label: 'D&D' },
