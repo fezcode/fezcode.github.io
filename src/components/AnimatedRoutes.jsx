@@ -197,6 +197,9 @@ const TierForgePage = lazy(() => import('../pages/apps/TierForgePage'));
 const QuadtreeSimulationPage = lazy(
   () => import('../pages/apps/QuadtreeSimulationPage'),
 );
+const ChladniPlatePage = lazy(
+  () => import('../pages/apps/ChladniPlatePage'),
+);
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
 const GokturkishConverterPage = lazy(
   () => import('../pages/apps/GokturkishConverterPage'),
@@ -1433,6 +1436,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <QuadtreeSimulationPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/chladni-plate"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <ChladniPlatePage />
               </Suspense>
             </motion.div>
           }
