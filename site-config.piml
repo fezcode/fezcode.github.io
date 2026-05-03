@@ -1,0 +1,54 @@
+(config)
+  (kernel)
+    (codename) Bonewright
+    # codename roadmap — bump on a major design / identity shift
+    #   v0.24.x  Stone_Set
+    #   v0.25.x  Loadbearing
+    #   v0.26.x  Chisel_Mark
+
+  (hero)
+    (title) Fezcodex
+    (tagline) A digital vault of experimental software, architectural thoughts, and the pursuit of code as an art form. The personal portfolio of Samil.
+
+  (socials)
+    > (link)
+      (id) github
+      (label) GITHUB
+      (url) https://github.com/fezcode
+      (icon) GithubLogo
+
+    > (link)
+      (id) twitter
+      (label) TWITTER
+      (url) https://x.com/fezcoddy
+      (icon) XLogo
+
+    > (link)
+      (id) linkedin
+      (label) LINKEDIN
+      (url) https://www.linkedin.com/in/ahmed-samil-bulbul/?locale=en_US
+      (icon) LinkedinLogo
+
+    # > (link)
+    #   (id) reddit
+    #   (label) REDDIT
+    #   (url) https://www.reddit.com/r/fezcodex/
+    #   (icon) RedditLogo
+
+    > (link)
+      (id) email
+      (label) EMAIL
+      (url) mailto:samil.bulbul@gmail.com
+      (icon) EnvelopeSimple
+
+    > (link)
+      (id) repo
+      (label) REPO
+      (url) https://github.com/fezcode/fezcode.github.io
+      (icon) GitBranch
+
+    > (link)
+      (id) website
+      (label) WEBSITE
+      (url) https://fezcode.com
+      (icon) Globe

@@ -1,0 +1,12 @@
+# CartoGo Overview
+
+**CartoGo** is a high-performance Go implementation of the original City Map Poster Generator. It is designed for speed, reliability, and 1-to-1 aesthetic parity with the original Python project.
+
+## Project Vision
+To generate beautiful, minimalist map posters for any city in the world, leveraging the concurrency and safety of the Go programming language.
+
+## Architecture
+- **Language**: Go 1.25+
+- **Graphics**: `gg` library
+- **Data**: OpenStreetMap (Overpass API)
+- **Geocoding**: Nominatim

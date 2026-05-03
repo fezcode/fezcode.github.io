@@ -1,0 +1,37 @@
+(logs)
+  > (item)
+    (category) Tools
+    (date) 2026-02-07
+    (link) https://github.com/originalankur/maptoposter
+    (slug) maptoposter
+    (title) MapToPoster
+    (description) Transform your favorite cities into beautiful, minimalist designs with code.
+    (rating) 5
+
+  > (item)
+    (category) Tools
+    (date) 2026-01-13
+    (link) https://posthog.com/
+    (slug) posthog
+    (title) PostHog
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) The all-in-one platform for product analytics, feature flags, session replays, and more.
+    (rating) 5
+  > (item)
+    (category) Tools
+    (date) 2026-01-12
+    (link) https://www.aseprite.org/
+    (slug) aseprite
+    (title) Aseprite
+    (image) /images/logs/website/pixel-art.webp
+    (description) The industry standard for creating pixel art and animations.
+    (rating) 5
+  > (item)
+    (category) Tools
+    (date) 2025-11-03
+    (link) https://mastra.ai/
+    (rating) 5
+    (slug) tool-mastra-ai
+    (title) Mastra AI
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) Mastra AI is an open-source AI Agent Framework for TypeScript. A demo and its GitHub repository are available, showcasing its capabilities.

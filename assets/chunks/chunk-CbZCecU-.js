@@ -1,0 +1,1 @@
+import{h as s,bz as n,N as c,r as i}from"../entries/pages.DMdlyjfO.js";import{v as r}from"./chunk-CNUT7BxI.js";import"./chunk-BXl3LOEh.js";/* empty css              */const f=()=>{const{term:e}=s(),t=n(),{openSidePanel:a}=c();return i.useEffect(()=>{if(e&&r[e]){const o=r[e];a(o.title,o.content)}t("/",{replace:!0})},[e,t,a]),null};export{f as default};

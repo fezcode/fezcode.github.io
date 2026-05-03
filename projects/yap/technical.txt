@@ -1,0 +1,9 @@
+LABEL: Technical
+SUBTEXT: The Stack
+IMAGE: /images/projects/yap/02.webp
+
+- **Language**: Go
+- **TUI Framework**: Bubble Tea
+- **Audio Decoding**: FFmpeg
+- **Audio Playback**: Beep
+- **Data Parsing**: go-piml

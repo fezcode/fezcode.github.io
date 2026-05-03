@@ -1,0 +1,51 @@
+## Overview
+
+The Atlas Suite is a family of minimalist, high-performance command-line tools built with Go. Each tool is designed to solve one problem exceptionally well, adhering to the Unix philosophy and leveraging the power of Bubble Tea for beautiful TUIs.
+
+### Tools in the Suite
+
+- 1. **[atlas.hub](https://github.com/fezcode/atlas.hub)**: The centralized installer and manager for the Atlas Suite. Discover, build, and maintain your entire Atlas toolkit from a single, unified interface.
+- 2. **[atlas.todo](https://github.com/fezcode/atlas.todo)**: Fast, keyboard-centric terminal user interface for task management. Features Vim-bindings, smart grouping, and CLI quick-add support.
+- 3. **[atlas.stats](https://github.com/fezcode/atlas.stats)**: Fast, interactive terminal user interface for real-time system monitoring. View CPU, memory, disk, and network usage.
+- 4. **[atlas.websearch](https://github.com/fezcode/atlas.websearch)**: Fast, interactive terminal user interface for web searching across DuckDuckGo, Wikipedia, Hacker News, and Reddit.
+- 5. **[atlas.compass](https://github.com/fezcode/atlas.compass)**: Secure, local-first password manager for the terminal featuring AES-256-GCM encryption.
+- 6. **[atlas.clock](https://github.com/fezcode/atlas.clock)**: High-visibility, multi-timezone dashboard with millisecond precision and searchable IANA timezone list.
+- 7. **[atlas.cam](https://github.com/fezcode/atlas.cam)**: Terminal webcam viewer and ASCII camera with real-time edge detection and filters.
+- 8. **[atlas.games](https://github.com/fezcode/atlas.games)**: Terminal-based game collection including Wilson's Revenge and Wave Function Collapse.
+- 9. **[atlas.bench](https://github.com/fezcode/atlas.bench)**: High-precision, multi-command benchmarking tool with visual TUI comparison and millisecond accuracy.
+- 10. **[atlas.radar](https://github.com/fezcode/atlas.radar)**: A tool to monitor git statuses across multiple repositories simultaneously.
+- 11. **[atlas.otp](https://github.com/fezcode/atlas.otp)**: High-visibility, minimalist terminal TOTP (2FA) manager with a sleek Onyx & Gold theme.
+- 12. **[atlas.diff](https://github.com/fezcode/atlas.diff)**: High-visibility, side-by-side terminal diff tool for file comparison.
+- 13. **[atlas.screensaver](https://github.com/fezcode/atlas.screensaver)**: A collection of nostalgic and aesthetic terminal screensavers (Pipes, Stars, Matrix, DNA, Waves).
+- 14. **[atlas.facade](https://github.com/fezcode/atlas.facade)**: Retro-future Pip-Boy style mock API server for instant frontend prototyping.
+- 15. **[atlas.pq](https://github.com/fezcode/atlas.pq)**: Minimalist PIML processor (inspired by jq) for slicing, filtering, and mapping data.
+- 16. **[atlas.hash](https://github.com/fezcode/atlas.hash)**: Fast, minimalist terminal utility for generating and comparing file hashes (MD5, SHA1, SHA256, SHA512).
+- 17. **[atlas.grave](https://github.com/fezcode/atlas.grave)**: High-fidelity interactive process reaper with a Pip-Boy inspired TUI.
+- 18. **[atlas.radio](https://github.com/fezcode/atlas.radio)**: Global terminal radio receiver with access to thousands of live stations.
+- 19. **[atlas.deck](https://github.com/fezcode/atlas.deck)**: Interactive TUI command deck for project workflows and automation through a grid of "pads."
+- 20. **[atlas.convert](https://github.com/fezcode/atlas.convert)**: Image conversion tool for JPEG, PNG, and HEIC formats.
+- 21. **[atlas.conquistador](https://github.com/fezcode/atlas.conquistador)**: A powerful and beautiful terminal-based file explorer like Finder or Windows Explorer.
+- 22. **[atlas.horizon](https://github.com/fezcode/atlas.horizon)**: High-fidelity environmental and weather dashboard with atmospheric monitoring.
+- 23. **[atlas.cat](https://github.com/fezcode/atlas.cat)**: A beautiful, high-performance terminal text viewer with syntax highlighting and line numbers.
+- 24. **[atlas.ed](https://github.com/fezcode/atlas.ed)**: A beautiful, high-performance terminal text editor with syntax highlighting, line numbers, and search.
+- 25. **[atlas.gitty](https://github.com/fezcode/atlas.gitty)**: Comprehensive TUI git client with graphs, branch, tag, and multi-repo management.
+- 26. **[atlas.ip](https://github.com/fezcode/atlas.ip)**: Fast, minimal tool to fetch your local and public IP address with geolocation data.
+- 27. **[atlas.sand](https://github.com/fezcode/atlas.sand)**: Interactive terminal-based falling sand and particle physics simulator.
+- 28. **[atlas.sql](https://github.com/fezcode/atlas.sql)**: Terminal-based SQL client for SQLite and PostgreSQL with syntax highlighting.
+- 29. **[atlas.color](https://github.com/fezcode/atlas.color)**: Interactive TUI color picker and converter (Hex, RGB, HSL).
+- 30. **[atlas.archive](https://github.com/fezcode/atlas.archive)**: An interactive step-by-step archiver and extractor for managing compressed files.
+- 31. **[atlas.burner](https://github.com/fezcode/atlas.burner)**: A beautiful TUI image burner application for OS images and USB drives.
+- 32. **[atlas.batchdown](https://github.com/fezcode/atlas.batchdown)**: A powerful batch downloader that processes multiple URLs from text files sequentially.
+- 33. **[atlas.guide](https://github.com/fezcode/atlas.guide)**: A personal health and wellness tracker for calories, gym activities, and mood.
+- 34. **[atlas.notes](https://github.com/fezcode/atlas.notes)**: A beautiful terminal-based markdown note manager with built-in editor and high-fidelity rendering.
+- 35. **[atlas.pilot](https://github.com/fezcode/atlas.pilot)**: Premium remote PC pilot - Control windows, mouse, and system over WiFi.
+- 36. **[atlas.record](https://github.com/fezcode/atlas.record)**: Ultimate screen and audio recorder for Windows, leveraging FFmpeg for hardware-accelerated capture.
+- 37. **[atlas.subs](https://github.com/fezcode/atlas.subs)**: A beautiful terminal-based subtitle searcher and downloader.
+- 38. **[atlas.tones](https://github.com/fezcode/atlas.tones)**: iPhone Ringtone and Notification Sound Manager.
+
+### Why Atlas?
+
+*   **Go-Powered**: Built for speed and portability.
+*   **Beautiful TUIs**: Uses Bubble Tea and Lip Gloss for a modern terminal experience.
+*   **Minimalist**: No bloated interfaces, just the features you need.
+*   **Local-First**: Your data stays on your machine.

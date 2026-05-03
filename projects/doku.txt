@@ -1,0 +1,29 @@
+![Doku.js Header](/images/projects/doku-header.webp)
+
+Doku.js is a terminal UI text/document viewer that supports a custom documentation syntax called `doky`.
+
+## Features:
+
+*   **Customizable Display:** Border colors, centered content, frame positioning, and text sliding.
+*   **Pattern Transformation:** Automatically converts common text patterns into more visually appealing characters (e.g., `---` to `▔`, `==>` to `⇒`).
+*   **Text Search:** Built-in functionality for searching within documents.
+*   **App Commands:** Interactive commands for navigation (next/previous line/page), jumping to specific lines, cycling border colors, centering content, toggling text slide, and more.
+*   **Command Line Interface:** Provides a command line within the application for advanced actions like `switch`, `toggle`, `find`, and `time` settings.
+*   **Events:** Supports `doku-start` and `doku-end` events for integration into other Node.js applications.
+*   **Parsing:** Efficiently parses plain text files, adapting to terminal size changes.
+
+## Installation:
+
+Install globally via npm: `npm install -g doku.js`. Can also be used locally with `npx doku` or integrated as a dependency in Node.js projects.
+
+![Doku.js Image](../images/projects/doku-image.png)
+
+## Doky - Custom Documentation Syntax:
+
+`doky` allows for custom commands to control terminal display, including:
+
+*   **Tables:** Define tabular data with `@{begin-table}@` and `@{end-table}@` commands.
+*   **Code Blocks:** Display inline or multiline code using triple backticks (```).
+*   **Coloring:** Extensive commands for foreground, background, and text effects (e.g., `c.fg.red`, `c.bg.blue`, `c.underscore`).
+*   **Extras:** Commands like `shrug` (¯\\_(ツ)_/¯) and `startdate`.
+*   **Escaping:** Mechanism to escape commands for literal display.

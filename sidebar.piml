@@ -1,0 +1,127 @@
+(sidebar)
+  > (section)
+    (id) isMainOpen
+    (label) Main
+    (content)
+      > (item)
+        (label) Home
+        (to) /
+        (icon) HouseIcon
+      > (item)
+        (label) Terminal
+        (to) /terminal
+        (icon) TerminalWindowIcon
+      > (item)
+        (label) About
+        (to) /about
+        (icon) UserIcon
+      > (item)
+        (label) Achievements
+        (to) /achievements
+        (icon) TrophyIcon
+
+  > (section)
+    (id) isContentOpen
+    (label) Feed
+    (content)
+      > (item)
+        (label) Blogposts
+        (to) /blog
+        (icon) BookOpenIcon
+      > (item)
+        (label) Projects
+        (to) /projects
+        (icon) WrenchIcon
+      > (item)
+        (label) Discovery Logs
+        (to) /logs
+        (icon) ArticleIcon
+      > (item)
+        (label) Glossary
+        (to) /vocab
+        (icon) BookBookmarkIcon
+      > (item)
+        (label) The Vague
+        (to) /the-vague
+        (icon) FilePdfIcon
+
+  > (section)
+    (id) isSoftwareOpen
+    (label) Applications
+    (content)
+      > (item)
+        (label) Castarook
+        (to) https://fezcode.com/castarook/
+        (icon) CrownIcon
+      > (item)
+        (label) Urban Rogue
+        (to) https://fezcode.com/urban-rogue/
+        (icon) TargetIcon
+      > (item)
+        (label) Swat Tactics
+        (to) https://fezcode.com/Swat-Tactics/
+        (icon) ShieldCheckIcon
+      > (item)
+        (label) CTTB-0
+        (to) https://fezcode.com/climb-the-tall-building-0/
+        (icon) SwordIcon
+      > (item)
+        (label) Net Run
+        (to) https://fezcode.com/net_run/
+        (icon) CubeIcon
+
+  > (section)
+    (id) isAppsOpen
+    (label) Utilities
+    (content)
+      > (item)
+        (label) Favorites
+        (to) /pinned-apps
+        (icon) PushPinIcon
+      > (item)
+        (label) App Center
+        (to) /apps
+        (icon) SquaresFourIcon
+      > (item)
+        (label) Manuals
+        (to) /commands
+        (icon) MagnifyingGlassIcon
+
+  > (section)
+    (id) isStatusOpen
+    (label) System
+    (content)
+      > (item)
+        (label) Dashboard
+        (to) /dashboard
+        (icon) TerminalWindowIcon
+      > (item)
+        (label) History
+        (to) /timeline
+        (icon) TimerIcon
+      > (item)
+        (label) Fezzilla
+        (to) /roadmap
+        (icon) BugBeetleIcon
+      > (item)
+        (label) Design System
+        (to) /design
+        (icon) PaletteIcon
+
+  > (section)
+    (id) isExtrasOpen
+    (label) External Nodes
+    (content)
+      > (item)
+        (label) Neural Net
+        (to) /graph
+        (icon) GraphIcon
+      > (item)
+        (label) Serfs & Frauds
+        (to) /stories
+        (icon) CastleTurretIcon
+      > (item)
+        (label) RSS_Feed
+        (url) /rss.xml
+        (icon) RssIcon
+        (external) true

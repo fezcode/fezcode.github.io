@@ -1,0 +1,15 @@
+# Downwell
+
+Downwell is a masterclass in minimalist game design. Developed by Moppin and published by Devolver Digital, it task you with one simple goal: fall as deep as you can.
+
+## Gunboots and Gravity
+The core of the game is your "Gunboots". They serve as both your primary weapon and your primary means of controlling your descent. Firing downwards kills enemies and provides a slight hover, allowing you to chain together combos without touching the ground. The deeper you go, the more complex the enemies and environments become, but the mechanics remain elegantly simple.
+
+## Aesthetic and Style
+The game uses a striking three-color palette (initially black, white, and red), which you can customize by unlocking different color palettes as you play. This minimalist approach ensures that the high-speed action remains readable even when the screen is filled with enemies and projectiles.
+
+## Screenshots
+
+![Downwell Gameplay 1](/images/logs/games/downwell.jpg)
+
+Downwell is a perfect example of how a few well-executed mechanics can create a deeply satisfying and addictive gameplay loop. It's a "just one more run" kind of game that respects your time while providing a significant challenge.

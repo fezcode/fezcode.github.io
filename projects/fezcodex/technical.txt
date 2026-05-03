@@ -1,0 +1,23 @@
+# Tech Stack & Architecture
+
+Built on a modern stack designed for scalability and developer experience:
+
+:::tech
+**Frontend:** React (CRA + Craco) for component-based architecture.
+:::
+
+:::tech
+**Styling:** Tailwind CSS + Framer Motion for high-fidelity animations.
+:::
+
+:::tech
+**Routing:** React Router DOM for seamless navigation.
+:::
+
+:::tech
+**Content:** Custom Markdown pipeline using remark/rehype.
+:::
+
+:::tech
+**State:** Context API for global themes, audio, and preferences.
+:::

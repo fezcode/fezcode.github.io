@@ -1,0 +1,159 @@
+(cards)
+  > (item)
+    (id) core
+    (title) Core Systems & Languages
+    (description) Mastery of multi-paradigm programming with a focus on high-performance, memory-safe, and concurrent system development.
+    (variant) dark
+    (topBadge) Lvl_Senior
+    (bgImage) /images/bg/8.webp
+    (tags)
+      > (tag)
+        (label) Golang (Go)
+        (icon) CodeIcon
+      > (tag)
+        (label) Rust / C++ / C
+        (icon) TerminalWindowIcon
+      > (tag)
+        (label) Java / JavaFX
+        (icon) CpuIcon
+      > (tag)
+        (label) Python
+        (icon) CodeIcon
+      > (tag)
+        (label) TS / JS / Node
+        (icon) LightningIcon
+      > (tag)
+        (label) SQL / NoSQL
+        (icon) DatabaseIcon
+
+  > (item)
+    (id) distributed
+    (title) Distributed Architecture
+    (description) Designing the skeleton of modern scale. Expertise in microservices, event-driven systems, and high-availability patterns.
+    (variant) emerald
+    (topBadge) Arch_Specialist
+    (bgImage) /images/bg/1.webp
+    (tags)
+      > (tag)
+        (label) Microservices
+        (icon) HardDrivesIcon
+      > (tag)
+        (label) gRPC / Protobuf
+        (icon) TreeStructureIcon
+      > (tag)
+        (label) Message Queues
+        (icon) LightningIcon
+      > (tag)
+        (label) Redis / Caching
+        (icon) DatabaseIcon
+      > (tag)
+        (label) API Gateway
+        (icon) GlobeIcon
+      > (tag)
+        (label) Sys Design
+        (icon) CodeIcon
+
+  > (item)
+    (id) cloud
+    (title) Infrastructure & DevOps
+    (description) Automating the bridge between code and production. Full-cycle CI/CD, cloud orchestration, and security-first deployment.
+    (variant) amber
+    (topBadge) Ops_Lead
+    (bgImage) /images/bg/2.webp
+    (tags)
+      > (tag)
+        (label) Kubernetes
+        (icon) CloudIcon
+      > (tag)
+        (label) Docker / Podman
+        (icon) HardDrivesIcon
+      > (tag)
+        (label) Terraform / IaC
+        (icon) WrenchIcon
+      > (tag)
+        (label) AWS / GCP / Azure
+        (icon) GlobeIcon
+      > (tag)
+        (label) CI/CD (Jenkins)
+        (icon) CpuIcon
+      > (tag)
+        (label) Ansible / Chef
+        (icon) WrenchIcon
+
+  > (item)
+    (id) smartcities
+    (title) Smart Cities & IoT
+    (description) Developing critical urban infrastructure. Toll collection, smart transport, and large-scale IoT data processing.
+    (variant) crimson
+    (topBadge) Urban_Tech
+    (bgImage) /images/bg/4.webp
+    (tags)
+      > (tag)
+        (label) Aselsan SC
+        (icon) TreeStructureIcon
+      > (tag)
+        (label) Toll Systems
+        (icon) HardDrivesIcon
+      > (tag)
+        (label) Smart Transport
+        (icon) GlobeIcon
+      > (tag)
+        (label) IoT Gateways
+        (icon) CpuIcon
+      > (tag)
+        (label) Data Streaming
+        (icon) LightningIcon
+
+  > (item)
+    (id) research
+    (title) Academic & Visual Labs
+    (description) Merging behavioral science with immersive technology. Published research in usability and food education environments.
+    (variant) light
+    (topBadge) Scholar
+    (bgImage) /images/bg/7.webp
+    (tags)
+      > (tag)
+        (label) Virtual Cafeteria
+        (icon) EyeIcon
+        (href) https://doi.org/10.1016/j.jneb.2020.08.001
+      > (tag)
+        (label) Usability Study
+        (icon) FlaskIcon
+      > (tag)
+        (label) ACM / JNEB
+        (icon) BookOpenIcon
+      > (tag)
+        (label) Immersive Tech
+        (icon) SparkleIcon
+      > (tag)
+        (label) VR / AR / MR
+        (icon) EyeIcon
+
+  > (item)
+    (id) creative
+    (title) Creative Synthesis
+    (description) Exploring the space where code meets art. Music production, custom hardware, and digital storytelling.
+    (variant) crimson
+    (topBadge) Synth_Artist
+    (bgImage) /images/bg/6.webp
+    (tags)
+      > (tag)
+        (label) Music Prod.
+        (icon) MusicNotesIcon
+      > (tag)
+        (label) Mech Keyboards
+        (icon) KeyboardIcon
+      > (tag)
+        (label) Narrative Games
+        (icon) GlobeIcon
+      > (tag)
+        (label) Audio Eng.
+        (icon) MusicNotesIcon
+      > (tag)
+        (label) Github
+        (icon) GithubLogoIcon
+        (href) https://github.com/fezcode
+      > (tag)
+        (label) LinkedIn
+        (icon) LinkedinLogoIcon
+        (href) https://www.linkedin.com/in/ahmed-samil-bulbul/

@@ -1,0 +1,6 @@
+# Built for
+explorers, thinkers, hackers, tinkerers, developers, builders, creators, digital gardeners
+
+image: /images/projects/fezcodex/fezcodex.webp
+
+Fezcodex is more than just a portfolio; it's a living digital garden, a personal operating system, and a testament to the brutalist aesthetic of the modern web.

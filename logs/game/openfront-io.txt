@@ -1,0 +1,32 @@
+# OpenFront.io
+
+- **Category:** Game
+- **Platform:** Web
+- **Date:** 2025-09-20
+- **Rating:** 4/5
+- **Duration:** 5-40 minutes
+- **Link:** [OpenFront.io](https://openfront.io/)
+
+## What is OpenFront.io
+**OpenFront.io** is an engaging and straightforward real-time strategy game.
+Players start with land and can expand their influence by building cities, factories, ports, missile launchers, and defensive structures.
+To conquer new territories, you'll send ships to claim distant lands.
+The core gameplay revolves around forming alliances, establishing automated trades, and ultimately conquering opponents.
+It's particularly enjoyable when played with friends. However, be warned: the late game often descends into an 'armageddon'
+where players amass wealth to unleash devastating bombs upon each other. Betrayal is not just a possibility, but an expectation,
+as alliances crumble under the weight of ambition. As of October 17, 2025, the game is in its alpha stage. Being open-source,
+players are encouraged to contribute to its development and shape its future. You can always join the community and make OpenFront.io better.
+
+![All but Canvas element removed from a game of OpenFront](images/logs/openfront/late-game.png)
+
+> So what you see here, in this image, is the late stages of a free for all game. They are going to drop bombs to each other in a minute...
+
+There are lots of options. You can create private lobbies. You can choose your map, your bots difficulty, whether bots should exist, the mode
+`Free for All` or `Teams`, how many bot nations should be there (upto 400), instant build for all types of buildings, infinite money and troops... to make your friends even *MORE* angrier.
+
+![All maps](images/logs/openfront/maps.png)
+
+## Conclusion
+
+With or without friends, it is one of the greatest strategy games of all time, AAA titles included. I was craving for some *Starcraft* or *Warcraft* style action but found enjoyment in this one.
+Wonderful game, play it!

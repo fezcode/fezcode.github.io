@@ -1,0 +1,5 @@
+# gobake
+The Go-native build orchestrator. Type-safe, dependency-free, baked fresh.
+(version) 0.4.0
+
+**gobake** replaces Makefiles, shell scripts, and yet-another-build-tool with a single, type-safe `Recipe.go` file. Inspired by `nob.h`, your build logic is written in Go and compiled on the fly. Version **0.4.0** introduces multi-task CLI invocation, scoped working directories via `RunIn`, and captured stdout via `RunOutput`.

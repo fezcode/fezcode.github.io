@@ -1,0 +1,8 @@
+# macOS / Linux (Bash)
+curl -fsSL https://raw.githubusercontent.com/fezcode/atlas.hub/main/scripts/install.sh | bash
+
+# Windows (PowerShell)
+irm https://raw.githubusercontent.com/fezcode/atlas.hub/main/scripts/install.ps1 | iex
+
+# After installing, run 'atlas.hub' to select tools.
+# Automated by gobake.

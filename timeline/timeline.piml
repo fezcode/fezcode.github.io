@@ -1,0 +1,333 @@
+(timeline)
+  > (item)
+    (date) 2026-04-23
+    (title) Vite + Vike Migration: Replacing CRA and react-snap
+    (description) Retired Create React App and the unmaintained react-snap prerender in favor of Vite + Vike and a purpose-built Puppeteer crawler. Dynamic route enumeration now walks posts.json, log directories, and story PIML manifests to emit ~460 shells. Added a preview-server warm-up ping that fixed a cold-start stampede (59/460 -> 438/460 rendered), an opt-in sequential retry pass, per-phase and per-route timing instrumentation, and three build variants: build, build:fast, build:retry. Also fixed a react-markdown v10 regression where unlanguaged fenced code blocks rendered as pill-per-line inline <code>.
+    (type) refactor
+    (icon) LightningIcon
+    (link) /blog/vite-vike-ssg-migration
+
+  > (item)
+    (date) 2026-04-22
+    (title) Fezterracotta: The Weighted Codex
+    (description) Deployed 'Fezterracotta', a third design language built around the Plumb identity — bone paper, terra ink, brass and sage accents, Fraunces variable serif and IBM Plex Mono. Every page was rebuilt from scratch as editorial matter: chapter-numbered layouts, dictionary entries, plumb-line hero wordmark, registration-crosshair generative plates, a new Galley Proof blog reader, and theme-aware Mermaid, Toasts, Contact Modal, and Banner.
+    (type) feature
+    (icon) PaletteIcon
+    (link) /settings#fezcodex-theme
+
+  > (item)
+    (date) 2026-04-19
+    (title) Application Archive Optimization
+    (description) Resolved critical performance bottleneck and navigation timeout on the Brutalist Apps page. Optimized the ArcaneSigil rendering to significantly reduce CPU overhead and implemented graceful error handling for registry connections.
+    (type) refactor
+    (icon) WrenchIcon
+    (link) /apps
+
+  > (item)
+    (date) 2026-02-18
+    (title) Syntax, the Codex Companion Deployed
+    (description) Introduced 'Syntax', an autonomous digital entity that lives at the bottom of the Fezcodex interface. Syntax features a persistent virtual-pet logic with real-time screen traversal, technical 'thought' generation, and contextual awareness. It adapts its molecular structure to match active themes (Brutalist/Luxe) and reacts to the user's journey through the digital garden.
+    (type) feature
+    (icon) BrainIcon
+    (link) /settings#companion
+
+  > (item)
+    (date) 2026-01-20
+    (title) Fezluxe: Architectural Elegance Launched
+    (description) Deployed 'Fezluxe', a major design overhaul introducing a sophisticated digital sanctuary theme. Features a cinematic sliding-window project stack, Playfair Display typography, and a refined parchment-based color palette. Every core component now supports theme-polymorphism.
+    (type) feature
+    (icon) SparkleIcon
+    (link) /blog/introducing-fezluxe-refined-architectural-elegance
+
+  > (item)
+    (date) 2026-01-18
+    (title) Multimodal Project Layouts
+    (description) Implemented a polymorphic layout system for project pages, allowing projects to define their own visual identity via specialized 'Styles'. Launched four distinct protocols: 'Stylish' (e.g., Fezcodex), 'Museum' (e.g., PIML), 'Editorial' (e.g., Dush, BM), and 'Minimal Modern' (e.g., Yap). Each style adapts the UI to match the project's unique character.
+    (type) feature
+    (icon) PaletteIcon
+    (link) /projects
+
+  > (item)
+    (date) 2026-01-17
+    (title) The Vague: Editorial Refactor
+    (description) Refactored The Vague page to align with the new Editorial design style. The page now features a sophisticated, text-centric layout that emphasizes readability and typographic elegance.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /the_vague
+
+  > (item)
+    (date) 2026-01-12
+    (title) Major SEO Refactoring: Declarative Metadata
+    (description) Executed a site-wide architectural shift from imperative 'useSeo' hooks to a declarative '<Seo />' component system. This transition ensures that React 19 metadata hoisting is correctly utilized during Static Site Generation (SSG) via react-snap, enabling crawlers to capture full SEO payloads before hydration. Optimized 130+ pages and implemented standard path mapping for improved compatibility.
+    (icon) MagnifyingGlassIcon
+    (link) /blog/routing-revolution-ssg-and-seo
+    (type) refactor
+
+  > (item)
+    (date) 2026-01-06
+    (title) Aether: Cyberpunk Audio Interface
+    (description) Deployed 'Aether', a cloud-based music player with a high-fidelity cyberpunk aesthetic. Features a generative audio visualizer, seamless playback across the site via a tiny persistent player, and a fully data-driven playlist system powered by PIML.
+    (icon) HeadphonesIcon
+    (link) /apps/aether
+    (type) feature
+
+  > (item)
+    (date) 2025-12-22
+    (title) Brufez: Design Language Formalized
+    (description) Formalized the 'Brufez' design language spec. Deployed a comprehensive documentation system at /brufez demonstrating geometric rigidity, chromatic absolutism, and systemic transparency. Updated core interactive components and domain entities to follow the new brutalist protocol.
+    (icon) FlaskIcon
+    (link) /brufez
+    (type) refactor
+
+  > (item)
+    (date) 2025-12-21
+    (title) Neural Net Online
+    (description) Deployed the 3D Knowledge Graph Visualization Protocol. Now users can navigate the site via an interactive neural network.
+    (type) feature
+    (icon) Graph
+    (link) /graph
+
+  > (item)
+    (date) 2025-12-21
+    (title) Brutalist Fezcodex: Major Refactor
+    (description) Executed a sweeping architectural and aesthetic refactor. Introduced high-contrast brutalist layouts, immersive hero sections with real-time generative art, and a massive codebase sanitization. Overhauled the Timeline and Memory Game components to match the new digital-first identity.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /
+
+  > (item)
+    (date) 2025-12-17
+    (title) Reading Experience Modes & Sidebar Colors
+    (description) Implemented a Dossier and Terminal reader modes for blogposts which can be set in Settings. Dossier having a Classified Dossier look while Terminal uses Dark Orange tones. Also sidebar background can be changed now. Isn't that the best?
+    (type) content
+    (icon) ArticleIcon
+    (link) /blog/introducing-reading-experience
+
+  > (item)
+    (date) 2025-12-12
+    (title) About Me Page Overhaul
+    (description) Added 4 major version of the about me page.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /about
+
+  > (item)
+    (date) 2025-12-12
+    (title) Home Page Overhaul Refactor
+    (description) Modernized Home Page section.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /
+
+  > (item)
+    (date) 2025-12-11
+    (title) Global Side Panel & Vocabulary Links
+    (description) Implemented a resizable, global side panel for contextual information, with vocabulary links in Markdown content that dynamically open the panel with lazy-loaded React components.
+    (type) feature
+    (icon) SidebarIcon
+    (link) /blog/react-magic-markdown-components
+
+  > (item)
+    (date) 2025-11-30
+    (title) Settings Page UI/UX Redesign
+    (description) Overhauled the Settings page with a modern glassmorphism design, animated sections, custom icons, and improved layout for better user experience.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /settings
+
+  > (item)
+    (date) 2025-11-30
+    (title) Enhanced CustomToggle Component
+    (description) Reworked the CustomToggle component with a modern, animated switch design supporting multiple color themes.
+    (type) refactor
+    (icon) SparkleIcon
+
+  > (item)
+    (date) 2025-11-30
+    (title) Achievement Notification Improvements
+    (description) Added configurable achievement toast notifications with direct links to relevant pages (Settings, Trophy Room).
+    (type) feature
+    (icon) BellIcon
+    (link) /achievements
+
+  > (item)
+    (date) 2025-11-29
+    (title) Blog & Series Styling Overhaul
+    (description) Applied the new futuristic design language to Blog Post and Series pages, including enhanced typography, sticky metadata, and improved code block styling.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /blog
+
+  > (item)
+    (date) 2025-11-29
+    (title) Projects Overhaul Refactor
+    (description) Modernized Projects section with a futuristic cyan theme, enhanced animations, and improved metadata cards.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /projects
+
+  > (item)
+    (date) 2025-11-29
+    (title) Fezzilla: Issue Tracking Roadmap
+    (description) Implemented Fezzilla, an issue tracking roadmap to visualize project statuses and progress.
+    (type) feature
+    (icon) KanbanIcon
+    (link) /roadmap
+
+  > (item)
+    (date) 2025-11-29
+    (title) Introduction of Achievements
+    (description) Launched the achievements for different use cases of the Fezcodex.
+    (type) app
+    (icon) TrophyIcon
+    (link) /achievements
+
+  > (item)
+    (date) 2025-11-27
+    (title) Pinned Apps Hall of Fame
+    (description) Introduced a dedicated, techno-styled page for my most used and favorite tools.
+    (type) feature
+    (icon) PushPinIcon
+    (link) /pinned-apps
+
+  > (item)
+    (date) 2025-11-27
+    (title) New Blogpost Page
+    (description) A new overhauled version of the blogposts page.
+    (type) refactor
+    (icon) RocketLaunchIcon
+    (link) /blog/
+
+  > (item)
+    (date) 2025-11-27
+    (title) Visual Modes
+    (description) Implemented different visual modes that can be set in settings page or via Command Palette.
+    (type) feature
+    (icon) RocketLaunchIcon
+    (link) /settings
+
+  > (item)
+    (date) 2025-11-27
+    (title) Bundle Size Optimization
+    (description) Reduced main bundle size by ~70% via code splitting (React.lazy) and disabling production source maps.
+    (type) refactor
+    (icon) RocketLaunchIcon
+    (link) /blog/reducing-react-app-size
+
+  > (item)
+    (date) 2025-11-26
+    (title) Timeline Feature Introduced
+    (description) Implemented a chronological overview of project milestones and achievements.
+    (type) feature
+    (icon) TimerIcon
+    (link) /timeline
+
+  > (item)
+    (date) 2025-11-26
+    (title) Major Refactors and UI Improvements
+    (description) Significant refactoring of Logs and App pages, along with UI enhancements across the site.
+    (type) refactor
+    (icon) SparkleIcon
+    (link) /logs
+
+  > (item)
+    (date) 2025-11-23
+    (title) Command Palette and Games
+    (description) Introduced a command palette for navigation and new games like Nonogram and Lights Out.
+    (type) feature
+    (icon) GameControllerIcon
+    (link) /commands
+
+  > (item)
+    (date) 2025-11-18
+    (title) Wallpapers Script and New Apps
+    (description) Added a script for generating wallpapers and introduced new interactive apps.
+    (type) feature
+    (icon) ImagesIcon
+    (link) /apps
+
+  > (item)
+    (date) 2025-11-14
+    (title) Stories Section Rework
+    (description) Reworked the stories section with PIML integration and new structure.
+    (type) content
+    (icon) BookIcon
+    (link) /stories
+
+  > (item)
+    (date) 2025-11-13
+    (title) PIML and SEO Implementation
+    (description) Integrated PIML for content management and enhanced SEO capabilities.
+    (type) project
+    (icon) FileSearchIcon
+
+  > (item)
+    (date) 2025-11-07
+    (title) Introduction of Apps Section
+    (description) Launched the interactive applications section with various tools and games.
+    (type) app
+    (icon) RocketLaunchIcon
+    (link) /apps
+
+  > (item)
+    (date) 2025-11-04
+    (title) RSS Feed and Contact Modal
+    (description) Implemented RSS feed generation and a contact modal.
+    (type) feature
+    (icon) RssIcon
+    (link) /rss.xml
+
+  > (item)
+    (date) 2025-10-23
+    (title) DND Content Section Introduced
+    (description) Introduced the Dungeons & Dragons content section with the 'From Serfs and Frauds' series.
+    (type) content
+    (icon) MeteorIcon
+    (link) /dnd
+
+  > (item)
+    (date) 2025-10-17
+    (title) Toast Notifications and Markdown Theming
+    (description) Added toast notification system and custom markdown rendering with themes.
+    (type) feature
+    (icon) BellIcon
+
+  > (item)
+    (date) 2025-10-16
+    (title) Introduction of Blogposts and Projects
+    (description) Implemented initial blogpost and project display functionalities.
+    (type) content
+    (icon) ArticleIcon
+    (link) /posts
+
+  > (item)
+    (date) 2025-10-15
+    (title) Projects Page Introduced
+    (description) Initial implementation of the Projects page to showcase various works.
+    (type) project
+    (icon) CodeIcon
+    (link) /projects
+
+  > (item)
+    (date) 2025-10-15
+    (title) About Page Introduced
+    (description) Initial implementation of the About Me page.
+    (type) content
+    (icon) BriefcaseIcon
+    (link) /about
+
+  > (item)
+    (date) 2025-10-15
+    (title) Blog Page Introduced
+    (description) Initial setup and display of the blog section.
+    (type) content
+    (icon) ArticleIcon
+    (link) /posts
+
+  > (item)
+    (date) 2025-10-15
+    (title) Project Initialization
+    (description) Initialized project using Create React App and set up basic structure.
+    (type) project
+    (icon) CodeIcon
+    (link) /
