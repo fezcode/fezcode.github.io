@@ -200,6 +200,8 @@ const QuadtreeSimulationPage = lazy(
 const ChladniPlatePage = lazy(
   () => import('../pages/apps/ChladniPlatePage'),
 );
+const PillowBookPage = lazy(() => import('../pages/apps/PillowBookPage'));
+const LetterPressPage = lazy(() => import('../pages/apps/LetterPressPage'));
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
 const GokturkishConverterPage = lazy(
   () => import('../pages/apps/GokturkishConverterPage'),
@@ -1452,6 +1454,38 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <ChladniPlatePage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/pillow-book"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <PillowBookPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/letter-press"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <LetterPressPage />
               </Suspense>
             </motion.div>
           }

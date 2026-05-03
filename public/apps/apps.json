@@ -447,6 +447,14 @@
         "description": "High-fidelity coffee extraction protocol. Calibrate ratios and execute extraction sequences.",
         "icon": "CoffeeIcon",
         "created_at": "2026-02-06T12:00:00+03:00"
+      },
+      {
+        "slug": "pillow-book",
+        "to": "/apps/pillow-book",
+        "title": "The Pillow Book",
+        "description": "A Heian-era categorical diary in the voice of Sei Shōnagon. Things that quicken the heart, things that should be short.",
+        "icon": "BookOpenIcon",
+        "created_at": "2026-05-03T12:00:00+03:00"
       }
     ]
   },
@@ -463,6 +471,14 @@
         "description": "Vibrate a square plate at modal frequencies and watch sand settle along the nodal lines.",
         "icon": "WaveformIcon",
         "created_at": "2026-05-02T12:00:00+03:00"
+      },
+      {
+        "slug": "letter-press",
+        "to": "/apps/letter-press",
+        "title": "Letter Press",
+        "description": "A 19th-century jobbing print shop. Set type into a composing stick, ink, and pull a faithful broadside impression.",
+        "icon": "NewspaperIcon",
+        "created_at": "2026-05-03T12:00:00+03:00"
       },
       {
         "slug": "quote-generator",
