@@ -23,6 +23,15 @@
         "created_at": "2026-02-28T12:00:00+03:00"
       },
       {
+        "slug": "constellation-cartographer",
+        "to": "/apps/constellation-cartographer",
+        "title": "Constellation Cartographer",
+        "description": "Trace constellations on a celestial atlas in the manner of the 1660 Cellarius Harmonia Macrocosmica.",
+        "icon": "StarIcon",
+        "created_at": "2026-05-04T12:00:00+03:00",
+        "pinned_order": 9
+      },
+      {
         "slug": "feztype",
         "to": "/apps/feztype",
         "title": "FezType (Typing Speed Tester)",

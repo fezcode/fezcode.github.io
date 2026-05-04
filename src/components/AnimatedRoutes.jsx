@@ -63,6 +63,9 @@ const QuoteGeneratorPage = lazy(
 const SoulsBannerGeneratorPage = lazy(
   () => import('../pages/apps/SoulsBannerGeneratorPage'),
 );
+const ConstellationCartographerPage = lazy(
+  () => import('../pages/apps/ConstellationCartographerPage'),
+);
 const PasswordGeneratorPage = lazy(
   () => import('../pages/apps/PasswordGeneratorPage'),
 );
@@ -2139,6 +2142,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <SoulsBannerGeneratorPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/constellation-cartographer"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <ConstellationCartographerPage />
               </Suspense>
             </motion.div>
           }
