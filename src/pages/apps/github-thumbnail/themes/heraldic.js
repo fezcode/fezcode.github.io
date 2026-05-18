@@ -53,28 +53,6 @@ const guilloche = (ctx, cx, cy, rInner, rOuter, petals, color, lw, alpha) => {
   ctx.restore();
 };
 
-// Banknote-style border of tiny fleurs between two rules.
-const ornamentBand = (ctx, x, y, w, h, primary, gold, ink, scale) => {
-  ctx.save();
-  // Outer/inner hairlines
-  ctx.strokeStyle = ink;
-  ctx.lineWidth = 1.2 * scale;
-  ctx.strokeRect(x, y, w, h);
-  ctx.lineWidth = 0.6 * scale;
-  ctx.strokeRect(x + 5 * scale, y + 5 * scale, w - 10 * scale, h - 10 * scale);
-  // Fleur repeats along top/bottom
-  const step = 18 * scale;
-  ctx.fillStyle = primary;
-  ctx.font = `${12 * scale}px "EB Garamond", serif`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  for (let px = x + step / 2; px < x + w; px += step) {
-    ctx.fillText('⚜', px, y + h / 2);
-    ctx.fillText('⚜', px, y + h / 2);
-  }
-  ctx.restore();
-};
-
 // Shield path — classic "heater" profile.
 const shieldPath = (ctx, cx, cy, w, h) => {
   const hw = w / 2;

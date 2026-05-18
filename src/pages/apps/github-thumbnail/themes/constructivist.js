@@ -19,7 +19,7 @@ const seedRng = (seed) => {
 
 export const constructivist = (ctx, width, height, scale, data) => {
   const {
-    primaryColor, secondaryColor, bgColor,
+    primaryColor, secondaryColor,
     repoOwner, repoName, description, language, stars, forks, supportUrl,
     showPattern,
   } = data;
@@ -295,7 +295,6 @@ export const constructivist = (ctx, width, height, scale, data) => {
   ctx.font = `900 ${11 * scale}px "JetBrains Mono", monospace`;
   ctx.fillText('AUTHOR', 0, -28 * scale);
   ctx.fillText('───', 0, -16 * scale);
-  const ownerFontStack = `900 28px "Syne", "Bebas Neue", "Oswald", sans-serif`;
   // Fit owner
   const ownerUpper = (repoOwner || '').toUpperCase();
   let ownerSize = 28 * scale;

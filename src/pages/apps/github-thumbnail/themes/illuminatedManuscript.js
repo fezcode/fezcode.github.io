@@ -1,5 +1,3 @@
-import { wrapText } from '../utils';
-
 /*
  * ILLUMINATED_MANUSCRIPT — two-column codex folio on aged vellum. Dense
  * acanthus vine marginalia fills the border; the historiated initial holds
@@ -190,7 +188,7 @@ const interlaceKnot = (ctx, cx, cy, size, color, bgCol, scale) => {
 
 export const illuminatedManuscript = (ctx, width, height, scale, data) => {
   const {
-    primaryColor, secondaryColor, bgColor,
+    primaryColor, secondaryColor,
     repoOwner, repoName, description, language, stars, forks, supportUrl,
     showPattern,
   } = data;
@@ -347,7 +345,6 @@ export const illuminatedManuscript = (ctx, width, height, scale, data) => {
   const tx = fIn + 60 * scale;
   const ty = fIn + 26 * scale;
   const tw = width - (fIn + 60 * scale) * 2;
-  const th = height - (fIn + 26 * scale) * 2;
 
   ctx.save();
   ctx.fillStyle = ruby;

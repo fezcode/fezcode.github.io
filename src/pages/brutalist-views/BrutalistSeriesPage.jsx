@@ -3,9 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowLeftIcon,
-  TagIcon,
   BookOpenIcon,
-  CalendarIcon,
   CircleIcon,
   CaretRightIcon,
   TerminalIcon,
@@ -285,7 +283,7 @@ const BrutalistSeriesPage = () => {
             })}
             {seriesPosts.length === 0 && (
               <li className="px-8 py-14 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">
-                // No transmission archived under this identifier.
+                {'// No transmission archived under this identifier.'}
               </li>
             )}
           </ul>
@@ -411,11 +409,11 @@ const BrutalistSeriesPage = () => {
             {[0, 1].map((k) => (
               <span key={k} className="flex items-center gap-6 px-6 text-white/40">
                 <span>▲ STREAM_OK</span>
-                <span>// SERIES · {seriesTitle.toUpperCase()}</span>
-                <span>// PACKETS · {pad(seriesPosts.length, 3)}</span>
-                <span>// LAST · {activePost ? formatEpoch(activePost.updated || activePost.date) : '—'}</span>
-                <span>// MISSION · {missionCode}</span>
-                <span>// COORD · {coordinates}</span>
+                <span>{'//'} SERIES · {seriesTitle.toUpperCase()}</span>
+                <span>{'//'} PACKETS · {pad(seriesPosts.length, 3)}</span>
+                <span>{'//'} LAST · {activePost ? formatEpoch(activePost.updated || activePost.date) : '—'}</span>
+                <span>{'//'} MISSION · {missionCode}</span>
+                <span>{'//'} COORD · {coordinates}</span>
                 <span>◆ FEZCODEX_OS v0.24.31</span>
               </span>
             ))}

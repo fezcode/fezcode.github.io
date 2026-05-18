@@ -9,8 +9,6 @@ export const squarified = (ctx, width, height, scale, data) => {
     primaryColor,
     secondaryColor,
     bgColor,
-    repoOwner,
-    repoName,
     description,
     language,
     stars,

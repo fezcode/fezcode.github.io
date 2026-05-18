@@ -1,5 +1,3 @@
-import { wrapText } from '../utils';
-
 /*
  * TAROT_CARD — occult card rendered with sacred geometry, hand-drawn stroke
  * variation, dense starfield, ornate gilt border with repeating tracery, and
@@ -26,20 +24,6 @@ const toRoman = (num) => {
   return out;
 };
 
-// Hand-drawn line: break into many tiny segments with slight jitter.
-const sketchLine = (ctx, x1, y1, x2, y2, rng, jitter = 1) => {
-  const segs = Math.max(4, Math.floor(Math.hypot(x2 - x1, y2 - y1) / 8));
-  ctx.beginPath();
-  ctx.moveTo(x1, y1);
-  for (let i = 1; i <= segs; i++) {
-    const t = i / segs;
-    const x = x1 + (x2 - x1) * t + (rng() - 0.5) * jitter;
-    const y = y1 + (y2 - y1) * t + (rng() - 0.5) * jitter;
-    ctx.lineTo(x, y);
-  }
-  ctx.stroke();
-};
-
 // Star at (cx,cy) filled
 const star = (ctx, cx, cy, rOut, rIn, points = 5) => {
   ctx.beginPath();
@@ -55,7 +39,7 @@ const star = (ctx, cx, cy, rOut, rIn, points = 5) => {
 
 export const tarotCard = (ctx, width, height, scale, data) => {
   const {
-    primaryColor, secondaryColor, bgColor,
+    primaryColor, bgColor,
     repoOwner, repoName, description, language, stars, forks, supportUrl,
     showPattern,
   } = data;
@@ -208,9 +192,7 @@ export const tarotCard = (ctx, width, height, scale, data) => {
 
   // --- Inner card area ---
   const iPad = 38 * scale;
-  const iX = cardX + iPad;
   const iY = cardY + iPad;
-  const iW = cardW - iPad * 2;
 
   // --- Top: Roman numeral between two filigree dividers ---
   const numeral = toRoman(stars || forks || repoName.length);

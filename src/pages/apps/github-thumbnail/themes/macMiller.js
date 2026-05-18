@@ -26,7 +26,6 @@ export const macMiller = (ctx, width, height, scale, data) => {
     : '#F4C9A8';
   const sunsetMid = '#E8A38E';
   const sunsetBottom = '#A8B8C4';
-  const cream = '#F2E4D2';
   const ink = '#2B2522';
   const inkSoft = '#5C504A';
   const inkFaint = '#8A7E76';

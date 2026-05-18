@@ -1,5 +1,3 @@
-import { wrapText } from '../utils';
-
 /*
  * ROYAL_BANNER — a draped ceremonial flag hanging on a marble wall.
  * Folds are built from many overlapping transparent light/shadow bands,
@@ -21,10 +19,6 @@ const hexRgb = (hex) => {
   const c = (hex || '').replace('#', '');
   const f = c.length === 3 ? c.split('').map((x) => x + x).join('') : c;
   return [parseInt(f.slice(0, 2), 16) || 0, parseInt(f.slice(2, 4), 16) || 0, parseInt(f.slice(4, 6), 16) || 0];
-};
-const rgba = (hex, a) => {
-  const [r, g, b] = hexRgb(hex);
-  return `rgba(${r},${g},${b},${a})`;
 };
 const shade = (hex, k) => {
   const [r, g, b] = hexRgb(hex);
