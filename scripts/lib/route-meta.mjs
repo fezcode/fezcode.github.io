@@ -92,8 +92,8 @@ export function buildRouteMetaMap() {
 }
 
 export function routeToOgPath(route) {
-  // /blog/foo -> images/og/blog/foo.png
-  // /logs/book/bar -> images/og/logs/book/bar.png
+  // /blog/foo -> images/og/blog/foo.webp
+  // /logs/book/bar -> images/og/logs/book/bar.webp
   const clean = route.replace(/^\//, '').replace(/\/$/, '');
-  return `images/og/${clean}.png`;
+  return `images/og/${clean}.webp`;
 }

@@ -1,6 +1,6 @@
 {
   "name": "fezcodex",
-  "version": "0.26.0",
+  "version": "0.26.2",
   "private": true,
   "homepage": "https://fezcode.com",
   "dependencies": {
@@ -96,6 +96,7 @@
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "puppeteer": "^24.42.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^3.4.18",
     "vike": "^0.4.258",
     "vite": "^7.3.2",

@@ -1,8 +1,11 @@
 import { Resvg } from '@resvg/resvg-js';
+import sharp from 'sharp';
 import { writeFile, mkdir } from 'node:fs/promises';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { dirname, join, extname } from 'node:path';
 import { buildRouteMetaMap, routeToOgPath, DIST, PUBLIC } from './lib/route-meta.mjs';
+
+const WEBP_QUALITY = 80;
 
 const W = 1200;
 const H = 630;
@@ -157,13 +160,14 @@ function buildSvg({ title, slug, art }) {
 </svg>`;
 }
 
-async function renderPng(svg) {
+async function renderWebp(svg) {
   const resvg = new Resvg(svg, {
     background: '#0a0a0a',
     font: { loadSystemFonts: true, defaultFontFamily: 'Georgia' },
     fitTo: { mode: 'width', value: W },
   });
-  return resvg.render().asPng();
+  const png = resvg.render().asPng();
+  return sharp(png).webp({ quality: WEBP_QUALITY, effort: 4 }).toBuffer();
 }
 
 async function main() {
@@ -185,20 +189,25 @@ async function main() {
     if (!meta.title) continue;
     targets.push({ route, meta });
   }
-  console.log(`generate-og-images: ${targets.length} route(s) need a fallback PNG`);
+  console.log(`generate-og-images: ${targets.length} route(s) need a fallback image`);
 
   let written = 0;
+  let totalBytes = 0;
   for (const { route, meta } of targets) {
     const slug = route.split('/').filter(Boolean).pop() || 'fezcodex';
     const svg = buildSvg({ title: meta.title, slug, art: pickArt(art, slug) });
-    const png = await renderPng(svg);
+    const webp = await renderWebp(svg);
     const outAbs = join(DIST, routeToOgPath(route));
     if (!existsSync(dirname(outAbs))) await mkdir(dirname(outAbs), { recursive: true });
-    await writeFile(outAbs, png);
+    await writeFile(outAbs, webp);
     written++;
+    totalBytes += webp.length;
   }
 
-  console.log(`generate-og-images: wrote ${written} PNG(s) (${Date.now() - t0}ms)`);
+  const avgKb = written ? Math.round(totalBytes / written / 1024) : 0;
+  console.log(
+    `generate-og-images: wrote ${written} WebP(s), avg ${avgKb} KB (${Date.now() - t0}ms)`
+  );
 }
 
 await main();
