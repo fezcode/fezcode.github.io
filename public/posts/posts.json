@@ -1,5 +1,27 @@
 [
   {
+    "slug": "paseto-vs-jwt",
+    "title": "PASETO vs JWT: Choosing the Right Token for the Job",
+    "date": "2026-05-18",
+    "updated": "2026-05-18",
+    "description": "A side-by-side deep dive on JWT and PASETO: how each format is structured, the cryptographic primitives involved, JWT's recurring footguns (algorithm confusion, the 'none' attack, JWE neglect), how PASETO's versioned protocols eliminate those bug classes by design, and a Go implementation of both for issuing and verifying tokens.",
+    "tags": [
+      "security",
+      "authentication",
+      "jwt",
+      "paseto",
+      "tokens",
+      "cryptography",
+      "go",
+      "deep-dive"
+    ],
+    "category": "dev",
+    "filename": "paseto-vs-jwt.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "a-gentlemans-lexicon-of-pejoratives",
     "title": "A Gentleman's Lexicon of Pejoratives: How to Insult Your Friends Without Cursing",
     "date": "2026-05-02",
