@@ -14,6 +14,16 @@ if (!FAST) {
     cmd: 'node',
     args: ['scripts/prerender-crawl.mjs', ...(RETRY ? ['--retry'] : [])],
   });
+  steps.push({
+    name: 'generate-og-images',
+    cmd: 'node',
+    args: ['scripts/generate-og-images.mjs'],
+  });
+  steps.push({
+    name: 'inject-meta',
+    cmd: 'node',
+    args: ['scripts/inject-meta.mjs'],
+  });
 }
 
 function run(step) {
