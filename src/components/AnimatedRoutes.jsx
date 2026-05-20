@@ -239,6 +239,7 @@ const NotebookViewerPage = lazy(
 const CommandsPage = lazy(() => import('../pages/CommandsPage'));
 const AchievementsPage = lazy(() => import('../pages/AchievementsPage'));
 const VocabPage = lazy(() => import('../pages/VocabPage'));
+const SitemapPage = lazy(() => import('../pages/SitemapPage'));
 const WelcomePage = lazy(() => import('../pages/WelcomePage'));
 const DashboardPage = lazy(() => import('../pages/DashboardPage'));
 const KnowledgeGraphPage = lazy(() => import('../pages/KnowledgeGraphPage'));
@@ -865,6 +866,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <AchievementsPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/sitemap"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <SitemapPage />
               </Suspense>
             </motion.div>
           }

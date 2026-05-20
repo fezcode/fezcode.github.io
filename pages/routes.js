@@ -129,6 +129,7 @@ export const staticRoutes = [
   "/reading",
   "/roadmap",
   "/settings",
+  "/sitemap",
   "/stories",
   "/stories/authors",
   "/stories/characters",
