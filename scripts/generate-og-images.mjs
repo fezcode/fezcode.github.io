@@ -1,11 +1,17 @@
 import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
-import { writeFile, mkdir } from 'node:fs/promises';
+import { writeFile, mkdir, copyFile, stat } from 'node:fs/promises';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join, extname } from 'node:path';
 import { buildRouteMetaMap, routeToOgPath, DIST, PUBLIC } from './lib/route-meta.mjs';
 
 const WEBP_QUALITY = 80;
+
+// Bump when the rendering algorithm changes (layout, gradient logic, font, etc.)
+// — invalidates every cached WebP.
+const CACHE_VERSION = 'v1';
+const CACHE_DIR = join('node_modules', '.cache', 'og-images');
 
 const W = 1200;
 const H = 630;
@@ -16,6 +22,10 @@ const ART_DIR = join(PUBLIC, 'images', 'og-art');
 // resvg-js supports JPEG/PNG/GIF only — WebP/AVIF are silently skipped.
 const MIME = { '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.png': 'image/png', '.gif': 'image/gif' };
 const UNSUPPORTED_EXT = new Set(['.webp', '.avif', '.heic', '.heif', '.tiff', '.tif']);
+
+function sha256Hex(input) {
+  return createHash('sha256').update(input).digest('hex');
+}
 
 function loadArt() {
   if (!existsSync(ART_DIR)) return [];
@@ -29,7 +39,11 @@ function loadArt() {
     }
     if (!MIME[ext]) continue;
     const buf = readFileSync(join(ART_DIR, f));
-    out.push({ name: f, dataUri: `data:${MIME[ext]};base64,${buf.toString('base64')}` });
+    out.push({
+      name: f,
+      dataUri: `data:${MIME[ext]};base64,${buf.toString('base64')}`,
+      hash: sha256Hex(buf),
+    });
   }
   if (skipped.length) {
     console.warn(
@@ -37,6 +51,18 @@ function loadArt() {
     );
   }
   return out;
+}
+
+function cacheKeyFor({ title, slug, art }) {
+  return sha256Hex(
+    JSON.stringify({
+      v: CACHE_VERSION,
+      title,
+      slug,
+      artName: art?.name ?? null,
+      artHash: art?.hash ?? null,
+    })
+  );
 }
 
 function hashSlug(s) {
@@ -191,22 +217,39 @@ async function main() {
   }
   console.log(`generate-og-images: ${targets.length} route(s) need a fallback image`);
 
-  let written = 0;
+  if (!existsSync(CACHE_DIR)) await mkdir(CACHE_DIR, { recursive: true });
+
+  let rendered = 0;
+  let cached = 0;
   let totalBytes = 0;
   for (const { route, meta } of targets) {
     const slug = route.split('/').filter(Boolean).pop() || 'fezcodex';
-    const svg = buildSvg({ title: meta.title, slug, art: pickArt(art, slug) });
-    const webp = await renderWebp(svg);
+    const chosenArt = pickArt(art, slug);
+    const key = cacheKeyFor({ title: meta.title, slug, art: chosenArt });
+    const cachePath = join(CACHE_DIR, `${key}.webp`);
     const outAbs = join(DIST, routeToOgPath(route));
     if (!existsSync(dirname(outAbs))) await mkdir(dirname(outAbs), { recursive: true });
+
+    if (existsSync(cachePath)) {
+      await copyFile(cachePath, outAbs);
+      const st = await stat(cachePath);
+      cached++;
+      totalBytes += st.size;
+      continue;
+    }
+
+    const svg = buildSvg({ title: meta.title, slug, art: chosenArt });
+    const webp = await renderWebp(svg);
     await writeFile(outAbs, webp);
-    written++;
+    await writeFile(cachePath, webp);
+    rendered++;
     totalBytes += webp.length;
   }
 
+  const written = rendered + cached;
   const avgKb = written ? Math.round(totalBytes / written / 1024) : 0;
   console.log(
-    `generate-og-images: wrote ${written} WebP(s), avg ${avgKb} KB (${Date.now() - t0}ms)`
+    `generate-og-images: wrote ${written} WebP(s) (${rendered} rendered, ${cached} cached), avg ${avgKb} KB (${Date.now() - t0}ms)`
   );
 }
 
