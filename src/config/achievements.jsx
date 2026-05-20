@@ -656,13 +656,6 @@ export const ACHIEVEMENTS = [
     category: 'Secret',
   },
   {
-    id: 'the_cartographer',
-    title: 'The Cartographer',
-    description: 'Map the territory.',
-    icon: <CompassIcon size={32} weight="duotone" />,
-    category: 'Secret',
-  },
-  {
     id: 'the_emergency',
     title: 'The Emergency',
     description: 'Is everything okay?',

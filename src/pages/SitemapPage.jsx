@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
-import { useAchievements } from '../context/AchievementContext';
 
 const SitemapPage = () => {
-  const { unlockAchievement } = useAchievements();
-
   useEffect(() => {
-    unlockAchievement('the_cartographer');
-    window.location.href = '/sitemap.xml';
-  }, [unlockAchievement]);
+    window.location.replace('/sitemap.xml');
+  }, []);
 
   return (
     <div className="p-10 text-center text-white text-xl">
-      <h1>Redirecting to Sitemap...</h1>
+      <meta httpEquiv="refresh" content="0; url=/sitemap.xml" />
+      <h1>
+        Redirecting to <a href="/sitemap.xml" className="underline">sitemap.xml</a>...
+      </h1>
     </div>
   );
 };
