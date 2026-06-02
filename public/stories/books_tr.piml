@@ -270,3 +270,18 @@
         (date) 2026-03-23
         (updated) 2026-03-23
     (overlay) maroon
+
+  > (book)
+    (bookId) 7
+    (bookTitle) Cilt VII: Ağıt
+    (phase) 7
+    (phaseTitle) Faz VII: Ağıt
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-7-agit/the-eleventh-hour/the-eleventh-hour_tr.txt
+        (title) On Birinci Saat
+        (author) fezcode
+        (date) 2026-06-02
+        (updated) 2026-06-02
+    (overlay) steelblue

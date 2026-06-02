@@ -270,3 +270,18 @@
         (date) 2026-03-23
         (updated) 2026-03-23
     (overlay) maroon
+
+  > (book)
+    (bookId) 7
+    (bookTitle) Volume VII: The Elegy
+    (phase) 7
+    (phaseTitle) Phase VII: The Elegy
+    (episodes)
+      > (episode)
+        (id) 1
+        (filename) vol-7-agit/the-eleventh-hour/the-eleventh-hour_en.txt
+        (title) The Eleventh Hour
+        (author) fezcode
+        (date) 2026-06-02
+        (updated) 2026-06-02
+    (overlay) steelblue
