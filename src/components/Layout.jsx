@@ -23,6 +23,7 @@ import SyntaxSprite from './SyntaxSprite';
 import { useProjects } from '../utils/projectParser';
 
 import { DndProvider } from '../context/DndContext';
+import { SnfProvider } from '../context/SnfContext';
 
 const Layout = ({
   children,
@@ -51,6 +52,7 @@ const Layout = ({
   const isAboutPage = location.pathname.startsWith('/about');
   const isGraphPage = location.pathname.startsWith('/graph');
   const isTerminalPage = location.pathname.startsWith('/terminal');
+  const isSnfPage = location.pathname.startsWith('/snf');
 
   // Check for special project styles that require hiding the default layout
   const projectSlug = location.pathname.startsWith('/projects/')
@@ -80,10 +82,13 @@ const Layout = ({
     isSpecialProject ||
     isTheVaguePage ||
     isTerminalPage ||
+    isSnfPage ||
     (isAppDetail && isAppFullscreen);
 
   const mainContent = location.pathname.startsWith('/stories') ? (
     <DndProvider>{children}</DndProvider>
+  ) : isSnfPage ? (
+    <SnfProvider>{children}</SnfProvider>
   ) : (
     <div
       className={`${
@@ -165,8 +170,8 @@ const Layout = ({
 
   return (
     <>
-      <Banner />
-      <FalloutOverlay />
+      {!isSnfPage && <Banner />}
+      {!isSnfPage && <FalloutOverlay />}
       {isGarden && !hideLayout && <DigitalFlowers />}
       {isAutumn && !hideLayout && <DigitalLeaves />}
       {isRain && !hideLayout && <NaturalRain />}
@@ -179,7 +184,7 @@ const Layout = ({
       />
       {!hideLayout && <SidePanel />}
       {mainContent}
-      <SyntaxSprite />
+      {!isSnfPage && <SyntaxSprite />}
     </>
   );
 };

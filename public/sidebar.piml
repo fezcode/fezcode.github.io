@@ -121,6 +121,10 @@
         (to) /stories
         (icon) CastleTurretIcon
       > (item)
+        (label) S&F // Terminal
+        (to) /snf
+        (icon) TerminalWindowIcon
+      > (item)
         (label) RSS_Feed
         (url) /rss.xml
         (icon) RssIcon

@@ -23,6 +23,18 @@ const DndPlacesPage = lazy(() => import('../pages/dnd/DndPlacesPage'));
 const DndItemsPage = lazy(() => import('../pages/dnd/DndItemsPage'));
 const DndBookPage = lazy(() => import('../pages/dnd/DndBookPage'));
 const DndAuthorsPage = lazy(() => import('../pages/dnd/DndAuthorsPage'));
+// Serfs & Frauds — "Black Ragnarok" retro-futuristic archive terminal (/snf)
+const SnfHubPage = lazy(() => import('../pages/snf/SnfHubPage'));
+const SnfArchivePage = lazy(() => import('../pages/snf/SnfArchivePage'));
+const SnfVolumePage = lazy(() => import('../pages/snf/SnfVolumePage'));
+const SnfDossierPage = lazy(() => import('../pages/snf/SnfDossierPage'));
+const SnfPersonnelPage = lazy(() => import('../pages/snf/SnfPersonnelPage'));
+const SnfSitesPage = lazy(() => import('../pages/snf/SnfSitesPage'));
+const SnfEvidencePage = lazy(() => import('../pages/snf/SnfEvidencePage'));
+const SnfAgentsPage = lazy(() => import('../pages/snf/SnfAgentsPage'));
+const SnfBoardPage = lazy(() => import('../pages/snf/SnfBoardPage'));
+const SnfSettingsPage = lazy(() => import('../pages/snf/SnfSettingsPage'));
+const SnfNotFoundPage = lazy(() => import('../pages/snf/SnfNotFoundPage'));
 const AppPage = lazy(() => import('../pages/AppPage'));
 const IpPage = lazy(() => import('../pages/apps/IpPage'));
 const WordCounterPage = lazy(() => import('../pages/apps/WordCounterPage'));
@@ -716,6 +728,95 @@ const AnimatedRoutes = ({
                 <DndAuthorsPage />
               </Suspense>
             </motion.div>
+          }
+        />
+        {/* ===== Serfs & Frauds // Black Ragnarok Archive Terminal (/snf) ===== */}
+        <Route
+          path="/snf"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfHubPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/archive"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfArchivePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/archive/:bookId"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfVolumePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/archive/:bookId/:episodeId"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfDossierPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/personnel"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfPersonnelPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/sites"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfSitesPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/evidence"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfEvidencePage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/agents"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfAgentsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/board"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfBoardPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/settings"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfSettingsPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/snf/*"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfNotFoundPage />
+            </Suspense>
           }
         />
         <Route
