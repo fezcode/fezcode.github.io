@@ -198,3 +198,11 @@
     (book) The Sanity Ward
     (description) The ancestral home of the Children of the Mountain. A towering, desolate peak containing pressurized pockets of Sansu Syrup. It is currently a restricted military excavation site.
     (status) Restricted
+
+  > (place)
+    (name) The Gauntlet
+    (type) Arena
+    (category) Establishments
+    (book) Blood
+    (description) A roaring blood-sport arena in the neon vice city of Glareach, where fixed prizefights end in real deaths and the house always collects. Like everything in Glareach, it was built on bones—and it is fed fresh ones nightly.
+    (status) Active
