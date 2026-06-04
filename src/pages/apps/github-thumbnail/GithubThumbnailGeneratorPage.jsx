@@ -110,6 +110,9 @@ const THEME_OPTIONS = [
   { value: 'macMiller', label: 'Mac Miller — Swimming in Circles' },
   { value: 'squarified', label: 'Squarified Treemap' },
   { value: 'markdownEditor', label: 'Markdown Editor' },
+  { value: 'boardingPass', label: 'Boarding Pass' },
+  { value: 'periodicElement', label: 'Periodic Element' },
+  { value: 'thermalReceipt', label: 'Thermal Receipt' },
 ];
 
 const PALETTE_BANK = [

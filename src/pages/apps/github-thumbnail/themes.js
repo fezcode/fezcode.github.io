@@ -82,6 +82,9 @@ import { charon } from './themes/charon';
 import { macMiller } from './themes/macMiller';
 import { squarified } from './themes/squarified';
 import { markdownEditor } from './themes/markdownEditor';
+import { boardingPass } from './themes/boardingPass';
+import { periodicElement } from './themes/periodicElement';
+import { thermalReceipt } from './themes/thermalReceipt';
 
 export const themeRenderers = {
   modern,
@@ -165,4 +168,7 @@ export const themeRenderers = {
   macMiller,
   squarified,
   markdownEditor,
+  boardingPass,
+  periodicElement,
+  thermalReceipt,
 };
