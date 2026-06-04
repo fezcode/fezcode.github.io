@@ -113,6 +113,15 @@ const THEME_OPTIONS = [
   { value: 'boardingPass', label: 'Boarding Pass' },
   { value: 'periodicElement', label: 'Periodic Element' },
   { value: 'thermalReceipt', label: 'Thermal Receipt' },
+  { value: 'nutritionFacts', label: 'Nutrition Facts' },
+  { value: 'tradingCard', label: 'Trading Card' },
+  { value: 'patentDrawing', label: 'Patent Drawing' },
+  { value: 'wantedPoster', label: 'Wanted Poster' },
+  { value: 'polaroid', label: 'Polaroid' },
+  { value: 'seedPacket', label: 'Seed Packet' },
+  { value: 'spotifyNowPlaying', label: 'Now Playing' },
+  { value: 'transitRoundel', label: 'Transit Roundel' },
+  { value: 'stockTicker', label: 'Stock Ticker' },
 ];
 
 const PALETTE_BANK = [

@@ -85,6 +85,15 @@ import { markdownEditor } from './themes/markdownEditor';
 import { boardingPass } from './themes/boardingPass';
 import { periodicElement } from './themes/periodicElement';
 import { thermalReceipt } from './themes/thermalReceipt';
+import { nutritionFacts } from './themes/nutritionFacts';
+import { tradingCard } from './themes/tradingCard';
+import { patentDrawing } from './themes/patentDrawing';
+import { wantedPoster } from './themes/wantedPoster';
+import { polaroid } from './themes/polaroid';
+import { seedPacket } from './themes/seedPacket';
+import { spotifyNowPlaying } from './themes/spotifyNowPlaying';
+import { transitRoundel } from './themes/transitRoundel';
+import { stockTicker } from './themes/stockTicker';
 
 export const themeRenderers = {
   modern,
@@ -171,4 +180,13 @@ export const themeRenderers = {
   boardingPass,
   periodicElement,
   thermalReceipt,
+  nutritionFacts,
+  tradingCard,
+  patentDrawing,
+  wantedPoster,
+  polaroid,
+  seedPacket,
+  spotifyNowPlaying,
+  transitRoundel,
+  stockTicker,
 };
