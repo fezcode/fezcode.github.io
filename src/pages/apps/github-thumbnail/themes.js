@@ -81,6 +81,7 @@ import { illuminatedManuscript } from './themes/illuminatedManuscript';
 import { charon } from './themes/charon';
 import { macMiller } from './themes/macMiller';
 import { squarified } from './themes/squarified';
+import { markdownEditor } from './themes/markdownEditor';
 
 export const themeRenderers = {
   modern,
@@ -163,4 +164,5 @@ export const themeRenderers = {
   charon,
   macMiller,
   squarified,
+  markdownEditor,
 };
