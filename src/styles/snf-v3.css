@@ -1,0 +1,522 @@
+/* ============================================================================
+   THE READING ROOM — a warm, tactile bookstore for From Serfs and Frauds.
+   Refined skeuomorphism (early-iOS materials) tempered with modern restraint.
+   Prefix: snf3-
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+.snf3 {
+  --snf3-ui: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Segoe UI',
+    system-ui, sans-serif;
+  --snf3-serif: 'Lora', Georgia, 'Times New Roman', serif;
+
+  /* room / wood (fixed) */
+  --snf3-wall-1: #463528;
+  --snf3-wall-2: #2c2017;
+  --snf3-wood-top: #7a5d3c;
+  --snf3-wood: #5b4329;
+  --snf3-wood-dark: #3a2a18;
+  --snf3-gold: #d9b873;
+
+  /* reading surface (themed) */
+  --snf3-paper: #f4ecd8;
+  --snf3-paper-edge: #e7dcc1;
+  --snf3-ink: #2c2418;
+  --snf3-ink-soft: #6a5d46;
+  --snf3-bar-1: #bda079;
+  --snf3-bar-2: #a2855a;
+  --snf3-ribbon: #9e2b25;
+
+  /* popover sheets (themed) */
+  --snf3-sheet-1: #fdf8ec;
+  --snf3-sheet-2: #efe5cf;
+  --snf3-sheet-ink: #44392a;
+  --snf3-sheet-muted: #6a5a39;
+  --snf3-sheet-border: rgba(0, 0, 0, 0.22);
+  --snf3-sheet-line: rgba(0, 0, 0, 0.1);
+
+  --snf3-reading-size: 1.2rem;
+
+  font-family: var(--snf3-ui);
+  color: var(--snf3-ink);
+  -webkit-font-smoothing: antialiased;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.snf3[data-snf3-theme='sepia'] {
+  --snf3-paper: #e8d7b4;
+  --snf3-paper-edge: #d8c49b;
+  --snf3-ink: #3c2d18;
+  --snf3-ink-soft: #7a6645;
+}
+.snf3[data-snf3-theme='night'] {
+  --snf3-paper: #16130e;
+  --snf3-paper-edge: #221d15;
+  --snf3-ink: #d7ccb5;
+  --snf3-ink-soft: #8f836b;
+  --snf3-bar-1: #4a3c28;
+  --snf3-bar-2: #34291a;
+  --snf3-sheet-1: #2c261d;
+  --snf3-sheet-2: #221c15;
+  --snf3-sheet-ink: #e8dec8;
+  --snf3-sheet-muted: #b2a487;
+  --snf3-sheet-border: rgba(255, 255, 255, 0.16);
+  --snf3-sheet-line: rgba(255, 255, 255, 0.12);
+}
+.snf3[data-snf3-size='sm'] { --snf3-reading-size: 1.06rem; }
+.snf3[data-snf3-size='md'] { --snf3-reading-size: 1.2rem; }
+.snf3[data-snf3-size='lg'] { --snf3-reading-size: 1.4rem; }
+
+.snf3 ::selection { background: rgba(158, 43, 37, 0.25); }
+
+/* shared faint grain */
+.snf3-grain {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+}
+
+/* ---------------------------------------------------------------------------
+   THE ROOM (shelf page)
+   --------------------------------------------------------------------------- */
+.snf3-room {
+  min-height: 100%;
+  background:
+    radial-gradient(120% 70% at 50% -8%, rgba(255, 226, 170, 0.22), transparent 55%),
+    radial-gradient(120% 90% at 50% 120%, rgba(0, 0, 0, 0.55), transparent 60%),
+    linear-gradient(180deg, var(--snf3-wall-1), var(--snf3-wall-2));
+  position: relative;
+}
+.snf3-room::after {
+  /* warm vignette */
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 220px rgba(0, 0, 0, 0.55);
+}
+.snf3-room::before {
+  /* faint wall paneling */
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.6) 0 1px,
+    transparent 1px 220px
+  );
+}
+
+/* hanging sign */
+.snf3-sign {
+  font-family: var(--snf3-serif);
+  color: #f0e2c4;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 220, 160, 0.25);
+}
+
+/* ---------------------------------------------------------------------------
+   WOOD SHELF
+   --------------------------------------------------------------------------- */
+.snf3-shelf {
+  position: relative;
+}
+.snf3-shelf-books {
+  display: flex;
+  align-items: flex-end;
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+  /* generous top headroom so the 3D hover isn't clipped by overflow-x */
+  padding: 56px clamp(1rem, 4vw, 3rem) 8px;
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+}
+.snf3-shelf-books::-webkit-scrollbar { display: none; }
+.snf3-plank {
+  position: relative;
+  height: 30px;
+  margin-top: -2px;
+  background:
+    linear-gradient(180deg, var(--snf3-wood-top) 0 5px, var(--snf3-wood) 5px 9px, var(--snf3-wood-dark) 9px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.06) 0 2px, transparent 2px 26px);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 235, 200, 0.4),
+    inset 0 -8px 14px rgba(0, 0, 0, 0.45),
+    0 16px 26px rgba(0, 0, 0, 0.5);
+}
+.snf3-plank::before {
+  /* front lip highlight */
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 9px;
+  height: 1px;
+  background: rgba(255, 235, 200, 0.18);
+}
+
+/* ---------------------------------------------------------------------------
+   BOOK (face-out cloth cover)
+   --------------------------------------------------------------------------- */
+.snf3-book {
+  position: relative;
+  width: clamp(116px, 12vw, 158px);
+  aspect-ratio: 31 / 45;
+  flex: none;
+  border-radius: 2px 6px 6px 2px;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  /* cloth bevel + lift shadow */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.14),
+    inset -3px -4px 8px rgba(0, 0, 0, 0.35),
+    0 14px 22px -8px rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.1rem 0.85rem 1rem 1.1rem;
+  isolation: isolate;
+  transition: box-shadow 0.28s ease, filter 0.28s ease;
+}
+.snf3-book:hover {
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.18),
+    inset -3px -4px 8px rgba(0, 0, 0, 0.32),
+    0 30px 50px -14px rgba(0, 0, 0, 0.7);
+  filter: brightness(1.03);
+}
+.snf3-book-shadow {
+  transition: transform 0.28s ease, opacity 0.28s ease, filter 0.28s ease;
+}
+.snf3-book-wrap:hover .snf3-book-shadow {
+  opacity: 0.65;
+  transform: scale(1.1) translateY(3px);
+  filter: blur(6px);
+}
+/* cloth grain overlay */
+.snf3-book::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  opacity: 0.16;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='c'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23c)'/%3E%3C/svg%3E");
+  background-size: 120px;
+  pointer-events: none;
+}
+/* bound spine on the left */
+.snf3-book::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 7px;
+  border-radius: 2px 0 0 2px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.12) 60%,
+    rgba(255, 255, 255, 0.18) 92%,
+    rgba(0, 0, 0, 0.15)
+  );
+  pointer-events: none;
+}
+/* page block on the right edge */
+.snf3-book-pages {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  right: -4px;
+  width: 5px;
+  border-radius: 0 2px 2px 0;
+  background: repeating-linear-gradient(
+    180deg,
+    #efe6cf 0 1px,
+    #c9b894 1px 2.5px
+  );
+  box-shadow: 1px 0 1px rgba(0, 0, 0, 0.3);
+  z-index: -1;
+}
+/* contact shadow under the book on the plank */
+.snf3-book-shadow {
+  position: absolute;
+  left: 6%;
+  right: 6%;
+  bottom: -10px;
+  height: 16px;
+  background: radial-gradient(50% 60% at 50% 50%, rgba(0, 0, 0, 0.55), transparent 75%);
+  filter: blur(3px);
+  z-index: -2;
+}
+.snf3-book-num {
+  font-family: var(--snf3-serif);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  color: var(--snf3-gold);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+.snf3-book-title {
+  font-family: var(--snf3-serif);
+  font-weight: 600;
+  font-size: clamp(0.86rem, 1.1vw, 1.02rem);
+  line-height: 1.18;
+  color: var(--snf3-gold);
+  text-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.55),
+    0 -1px 0 rgba(255, 255, 255, 0.08);
+}
+.snf3-book-rule {
+  width: 26px;
+  height: 1px;
+  background: var(--snf3-gold);
+  opacity: 0.7;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  margin: 0.5rem 0;
+}
+
+/* ---------------------------------------------------------------------------
+   GLOSSY BUTTON (early-iOS)
+   --------------------------------------------------------------------------- */
+.snf3-btn {
+  font-family: var(--snf3-ui);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #463a28;
+  background: linear-gradient(180deg, #fefdf9, #e6dcc4);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 9px;
+  padding: 0.55rem 1rem;
+  cursor: pointer;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(0, 0, 0, 0.08),
+    0 1px 2px rgba(0, 0, 0, 0.22);
+  transition: transform 0.06s ease, box-shadow 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.snf3-btn:active {
+  background: linear-gradient(180deg, #e6dcc4, #f3ebd6);
+  box-shadow:
+    inset 0 1px 3px rgba(0, 0, 0, 0.25),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(1px);
+}
+.snf3-btn:focus-visible { outline: 2px solid var(--snf3-ribbon); outline-offset: 2px; }
+.snf3-btn-cta {
+  color: #fff;
+  background: linear-gradient(180deg, #b0463f, #8a2520);
+  border-color: rgba(0, 0, 0, 0.35);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    inset 0 -2px 3px rgba(0, 0, 0, 0.25),
+    0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* red, bookish page-turn affordance — hover nudges toward the turn */
+.snf3-turn {
+  color: var(--snf3-ribbon);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.8;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.snf3-turn:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   LINEN / LEATHER TOP BAR (reader)
+   --------------------------------------------------------------------------- */
+.snf3-bar {
+  position: relative;
+  background: linear-gradient(180deg, var(--snf3-bar-1), var(--snf3-bar-2));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 3px 8px rgba(0, 0, 0, 0.3);
+}
+.snf3-bar-title {
+  font-family: var(--snf3-serif);
+  font-weight: 600;
+  color: #3c2c18;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.snf3[data-snf3-theme='night'] .snf3-bar-title {
+  color: #e6d8bb;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+.snf3-bar-btn {
+  font-family: var(--snf3-ui);
+  font-size: 0.82rem;
+  color: #3c2c18;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.snf3[data-snf3-theme='night'] .snf3-bar-btn { color: #d8c9aa; text-shadow: 0 1px 0 rgba(0,0,0,.5); }
+.snf3-bar-btn:hover { opacity: 0.7; }
+
+/* ---------------------------------------------------------------------------
+   READING PAGE (paper)
+   --------------------------------------------------------------------------- */
+.snf3-page {
+  position: relative;
+  background: var(--snf3-paper);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 30px 60px -30px rgba(0, 0, 0, 0.5);
+}
+.snf3-page::before {
+  /* binding gutter shadow on the left */
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent);
+}
+.snf3-page-grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+.snf3-read {
+  font-family: var(--snf3-serif);
+  font-size: var(--snf3-reading-size);
+  line-height: 1.64;
+  color: var(--snf3-ink);
+  max-width: 62ch;
+  margin: 0 auto;
+}
+.snf3[data-snf3-typeface='sans'] .snf3-read { font-family: var(--snf3-ui); line-height: 1.7; }
+.snf3-read p { margin: 0; text-indent: 1.5em; text-wrap: pretty; }
+.snf3-read > p:first-of-type { text-indent: 0; }
+.snf3-read > p:first-of-type::first-letter {
+  font-weight: 600;
+  font-size: 1.1em;
+}
+.snf3-read strong { font-weight: 600; }
+.snf3-read em { font-style: italic; }
+.snf3-read a { color: var(--snf3-ribbon); text-decoration: underline; text-underline-offset: 2px; }
+.snf3-read blockquote {
+  margin: 1.2em 1.5em;
+  font-style: italic;
+  color: var(--snf3-ink-soft);
+}
+.snf3-read h1, .snf3-read h2, .snf3-read h3 {
+  font-weight: 600;
+  text-indent: 0;
+  margin: 1.4em 0 0.4em;
+}
+.snf3-read hr {
+  border: 0;
+  text-align: center;
+  margin: 1.6em 0;
+}
+.snf3-read hr::before {
+  content: '❦';
+  color: var(--snf3-ink-soft);
+  font-size: 1.2em;
+}
+
+/* bookmark ribbon */
+.snf3-ribbon {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 64px;
+  background: linear-gradient(90deg, #7c211c, #b23a32 50%, #7c211c);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 82%, 0 100%);
+}
+
+/* progress */
+.snf3-progress-track {
+  height: 4px;
+  border-radius: 99px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25);
+}
+.snf3[data-snf3-theme='night'] .snf3-progress-track { background: rgba(255, 255, 255, 0.12); }
+.snf3-progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(180deg, #c98a3f, #9c6326);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* prefs sheet (a small wood/paper card) */
+.snf3-sheet {
+  background: linear-gradient(180deg, var(--snf3-sheet-1), var(--snf3-sheet-2));
+  border: 1px solid var(--snf3-sheet-border);
+  border-radius: 14px;
+  color: var(--snf3-sheet-ink);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.32),
+    0 22px 50px -18px rgba(0, 0, 0, 0.6);
+}
+.snf3-sheet-item {
+  color: var(--snf3-sheet-ink);
+  transition: background 0.15s ease;
+}
+.snf3-sheet-item:hover {
+  background: var(--snf3-sheet-line);
+}
+.snf3-swatch {
+  width: 30px; height: 30px; border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.25); cursor: pointer; position: relative;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 2px rgba(0,0,0,0.2);
+}
+.snf3-swatch[data-on='1']::after {
+  content: ''; position: absolute; inset: -4px; border-radius: 50%;
+  border: 2px solid var(--snf3-ribbon);
+}
+.snf3-seg {
+  font-family: var(--snf3-ui); font-size: 0.78rem; color: var(--snf3-sheet-ink);
+  background: transparent; border: 1px solid var(--snf3-sheet-border); padding: 0.35rem 0.7rem;
+  cursor: pointer;
+}
+.snf3-seg[data-on='1'] {
+  background: linear-gradient(180deg, #b0463f, #8a2520); color: #fff;
+  border-color: rgba(0,0,0,0.35); text-shadow: 0 -1px 0 rgba(0,0,0,0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .snf3 *, .snf3 *::before, .snf3 *::after { animation: none !important; transition: none !important; }
+}
+
+.snf3 ::-webkit-scrollbar { width: 12px; }
+.snf3 ::-webkit-scrollbar-track { background: transparent; }
+.snf3 ::-webkit-scrollbar-thumb {
+  background: rgba(120, 92, 56, 0.6);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 99px;
+}

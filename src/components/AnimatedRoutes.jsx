@@ -35,6 +35,9 @@ const SnfAgentsPage = lazy(() => import('../pages/snf/SnfAgentsPage'));
 const SnfBoardPage = lazy(() => import('../pages/snf/SnfBoardPage'));
 const SnfSettingsPage = lazy(() => import('../pages/snf/SnfSettingsPage'));
 const SnfNotFoundPage = lazy(() => import('../pages/snf/SnfNotFoundPage'));
+// The Reading Room — skeuomorphic bookstore (/snf-v3)
+const SnfV3ShelfPage = lazy(() => import('../pages/snf-v3/SnfV3ShelfPage'));
+const SnfV3ReadPage = lazy(() => import('../pages/snf-v3/SnfV3ReadPage'));
 const AppPage = lazy(() => import('../pages/AppPage'));
 const IpPage = lazy(() => import('../pages/apps/IpPage'));
 const WordCounterPage = lazy(() => import('../pages/apps/WordCounterPage'));
@@ -816,6 +819,31 @@ const AnimatedRoutes = ({
           element={
             <Suspense fallback={<Loading />}>
               <SnfNotFoundPage />
+            </Suspense>
+          }
+        />
+        {/* ===== The Reading Room — bookstore (/snf-v3) ===== */}
+        <Route
+          path="/bookshelf"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfV3ShelfPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/bookshelf/read/:bookId/:episodeId"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfV3ReadPage />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/bookshelf/*"
+          element={
+            <Suspense fallback={<Loading />}>
+              <SnfV3ShelfPage />
             </Suspense>
           }
         />

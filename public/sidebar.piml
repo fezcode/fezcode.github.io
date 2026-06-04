@@ -125,6 +125,10 @@
         (to) /snf
         (icon) TerminalWindowIcon
       > (item)
+        (label) SnF Bookshelf
+        (to) /bookshelf
+        (icon) BookOpenIcon
+      > (item)
         (label) RSS_Feed
         (url) /rss.xml
         (icon) RssIcon
