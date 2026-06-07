@@ -482,6 +482,14 @@
     "order": 3,
     "apps": [
       {
+        "slug": "morphogenesis",
+        "to": "/apps/morphogenesis",
+        "title": "Morphogenesis",
+        "description": "Grow living Turing patterns — spots, coral, mazes, fingerprints — from a Gray-Scott reaction-diffusion culture. Inoculate the dish and watch it unfold.",
+        "icon": "CirclesThreeIcon",
+        "created_at": "2026-06-08T12:00:00+03:00"
+      },
+      {
         "slug": "chladni-plate",
         "to": "/apps/chladni-plate",
         "title": "Chladni Plate",
