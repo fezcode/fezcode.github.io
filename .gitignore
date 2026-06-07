@@ -28,3 +28,6 @@ yarn-debug.log*
 yarn-error.log*
 
 /templates
+
+# Superpowers brainstorming visual companion
+.superpowers/
