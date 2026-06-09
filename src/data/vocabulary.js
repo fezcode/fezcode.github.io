@@ -127,6 +127,10 @@ export const vocabulary = {
     title: 'Logical Fallacy',
     loader: () => import('./vocab/logical-fallacy'),
   },
+  million: {
+    title: 'Million',
+    loader: () => import('./vocab/million'),
+  },
   'modules-vs-includes': {
     title: 'Modules vs. Includes',
     loader: () => import('./vocab/modules-vs-includes'),
