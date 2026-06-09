@@ -105,7 +105,7 @@ const HeroWordmark = ({ title = 'Fezcodex' }) => {
    ========================================================================= */
 const HeroBlock = ({ config }) => {
   const heroTitle = config?.hero?.title || 'Fezcodex';
-  const codename = config?.kernel?.codename || 'bonewright';
+  const codename = config?.kernel?.codename;
 
   return (
     <section
@@ -605,7 +605,7 @@ const TerracottaHomePage = () => {
 
   if (loadingProjects || loadingPosts) return <LoadingBone />;
 
-  const codename = config?.kernel?.codename || 'bonewright';
+  const codename = config?.kernel?.codename;
   const kernelVersion = config?.kernel?.version || '';
 
   const chapters = {

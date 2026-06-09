@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-06-10
+    (title) Fezmist: The Hypnagogic Codex
+    (description) Deployed 'Mist', a fourth design language built on hypnagogia — the threshold between waking and sleep. Fog paper, eucalyptus ink, drift-blue glows, Instrument Serif display and lowercase IBM Plex Mono whispers. Every page rebuilt as a drift: fading horizon rules, veil-glass surfaces, blur-dissolve motion, a breathing orb mark, and theme-aware Search, Command Palette, Side Panel, Toasts, Modals — plus a fog-wisp form for Syntax. Kernel codename bumped to Mistwright (v0.27.x).
+    (type) feature
+    (icon) CloudIcon
+    (link) /settings#fezcodex-theme
+
+  > (item)
     (date) 2026-04-23
     (title) Vite + Vike Migration: Replacing CRA and react-snap
     (description) Retired Create React App and the unmaintained react-snap prerender in favor of Vite + Vike and a purpose-built Puppeteer crawler. Dynamic route enumeration now walks posts.json, log directories, and story PIML manifests to emit ~460 shells. Added a preview-server warm-up ping that fixed a cold-start stampede (59/460 -> 438/460 rendered), an opt-in sequential retry pass, per-phase and per-route timing instrumentation, and three build variants: build, build:fast, build:retry. Also fixed a react-markdown v10 regression where unlanguaged fenced code blocks rendered as pill-per-line inline <code>.

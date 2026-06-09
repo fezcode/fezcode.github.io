@@ -75,7 +75,7 @@ const TerracottaNavbar = ({
           {/* center: folio slug — shown only when sidebar closed */}
           {!isSidebarOpen && (
             <div className="hidden lg:block text-center font-ibm-plex-mono text-[10.5px] tracking-[0.22em] uppercase text-[#2E2620]/60">
-              folio 001 · {(config?.kernel?.codename || 'bonewright').toLowerCase()}
+              folio 001 · {config?.kernel?.codename?.toLowerCase()}
             </div>
           )}
           {isSidebarOpen && <span aria-hidden="true" />}

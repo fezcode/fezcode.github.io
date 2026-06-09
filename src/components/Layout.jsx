@@ -8,6 +8,9 @@ import LuxeFooter from './LuxeFooter';
 import TerracottaSidebar from './TerracottaSidebar';
 import TerracottaNavbar from './TerracottaNavbar';
 import TerracottaFooter from './TerracottaFooter';
+import MistSidebar from './MistSidebar';
+import MistNavbar from './MistNavbar';
+import MistFooter from './MistFooter';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
@@ -101,7 +104,9 @@ const Layout = ({
           ? 'bg-[#F5F5F0]'
           : fezcodexTheme === 'terracotta'
             ? 'bg-[#F3ECE0]'
-            : 'bg-[#050505]'
+            : fezcodexTheme === 'mist'
+              ? 'bg-[#EEF2F1]'
+              : 'bg-[#050505]'
       } min-h-screen font-sans flex`}
     >
       {!hideLayout &&
@@ -114,6 +119,13 @@ const Layout = ({
           />
         ) : fezcodexTheme === 'terracotta' ? (
           <TerracottaSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
+        ) : fezcodexTheme === 'mist' ? (
+          <MistSidebar
             isOpen={isSidebarOpen}
             toggleSidebar={toggleSidebar}
             toggleModal={toggleModal}
@@ -145,6 +157,13 @@ const Layout = ({
               isSearchVisible={isSearchVisible}
               toggleSearch={toggleSearch}
             />
+          ) : fezcodexTheme === 'mist' ? (
+            <MistNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
           ) : (
             <Navbar
               toggleSidebar={toggleSidebar}
@@ -166,6 +185,8 @@ const Layout = ({
             <TerracottaFooter />
           ) : fezcodexTheme === 'luxe' ? (
             <LuxeFooter />
+          ) : fezcodexTheme === 'mist' ? (
+            <MistFooter />
           ) : (
             <Footer />
           ))}

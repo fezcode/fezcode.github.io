@@ -19,6 +19,7 @@ const Banner = () => {
   const { fezcodexTheme } = useVisualSettings() || {};
   const isLuxe = fezcodexTheme === 'luxe';
   const isTerracotta = fezcodexTheme === 'terracotta';
+  const isMist = fezcodexTheme === 'mist';
 
   useEffect(() => {
     const fetchBanner = async () => {
@@ -258,6 +259,81 @@ const Banner = () => {
                 aria-label="Dismiss"
               >
                 <XIcon size={18} weight="bold" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+  }
+
+  /* ============================================================
+   * MIST BANNER — a veil strip surfacing from the fog
+   * ============================================================ */
+  if (isMist) {
+    const typePalette = (() => {
+      switch (bannerType) {
+        case 'error':
+          return { accent: '#A87E7E', kicker: 'signal · lost' };
+        case 'warning':
+          return { accent: '#A89B7E', kicker: 'caveat · gentle' };
+        case 'info':
+        default:
+          return { accent: '#5F837B', kicker: 'drift · notice' };
+      }
+    })();
+
+    return (
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="relative z-[100] bg-[#EEF2F1]/90 backdrop-blur-md selection:bg-[#8FA8BC]/30"
+          >
+            {/* bottom edge — a horizon, never a hard rule */}
+            <span
+              aria-hidden="true"
+              className="absolute bottom-0 left-0 right-0 h-px"
+              style={{
+                background: `linear-gradient(90deg, transparent, ${typePalette.accent}80, transparent)`,
+              }}
+            />
+            <div className="max-w-[1800px] mx-auto px-5 md:px-12 py-3 flex items-start md:items-center gap-4 md:gap-6">
+              <div className="flex items-center gap-3 shrink-0 pt-0.5 md:pt-0">
+                <span
+                  aria-hidden="true"
+                  className="inline-block w-[7px] h-[7px] rounded-full"
+                  style={{
+                    background: `radial-gradient(circle at 40% 35%, #FFFFFF 0%, ${typePalette.accent} 100%)`,
+                    boxShadow: `0 0 8px 2px ${typePalette.accent}55`,
+                  }}
+                />
+                <span
+                  className="font-ibm-plex-mono text-[9.5px] tracking-[0.26em] lowercase hidden sm:inline"
+                  style={{ color: typePalette.accent }}
+                >
+                  {typePalette.kicker}
+                </span>
+              </div>
+
+              <div className="flex-1 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 min-w-0">
+                <p className="font-instr-serif italic text-[14.5px] md:text-[16px] leading-snug lowercase text-[#3C4845] flex-1">
+                  {banner.text}
+                </p>
+                {renderLink(
+                  'self-start md:self-auto shrink-0 inline-flex items-center gap-1 font-ibm-plex-mono text-[9.5px] tracking-[0.2em] lowercase px-3 py-1.5 rounded-full bg-white/60 shadow-[0_1px_3px_rgba(60,72,69,0.12)] text-[#5C6B67] hover:bg-[#8FA8BC]/15 hover:text-[#5F837B] transition-colors',
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleDismiss}
+                className="p-1 text-[#8A9894] hover:text-[#5F837B] transition-colors shrink-0 mt-0.5 md:mt-0"
+                aria-label="Dismiss"
+              >
+                <XIcon size={16} weight="light" />
               </button>
             </div>
           </motion.div>

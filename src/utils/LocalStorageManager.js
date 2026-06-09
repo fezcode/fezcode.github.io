@@ -45,6 +45,12 @@ export const get = (key, defaultValue) => {
 export const set = (key, value) => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
+    // Same-tab listeners don't get native 'storage' events; announce writes
+    // so theme-sensitive components outside the provider tree (e.g. Toast)
+    // can react to late persists.
+    window.dispatchEvent(
+      new CustomEvent('fezcodex-storage', { detail: { key, value } }),
+    );
   } catch (error) {
     console.error(`Error writing '${key}' to localStorage`, error);
   }

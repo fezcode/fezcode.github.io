@@ -22,11 +22,35 @@ const Toast = ({
 }) => {
   // ToastProvider sits above VisualSettingsProvider in the tree (circular
   // constraint — AchievementProvider toasts, VisualSettings depends on
-  // Achievement), so we read the theme straight from localStorage. Toasts are
-  // short-lived so reading once at mount is fine.
-  const theme = LocalStorageManager.get('fezcodex-theme', 'brutalist');
+  // Achievement), so we read the theme straight from localStorage instead of
+  // context. The persisted value can lag behind the active theme (it is
+  // written in a post-commit effect, and ?fezTheme=... is stripped from the
+  // URL before it lands), so we also listen for the manager's write events
+  // and restyle in place.
+  const readTheme = () => {
+    const urlTheme = new URLSearchParams(window.location.search).get(
+      'fezTheme',
+    );
+    return ['brutalist', 'luxe', 'terracotta', 'mist'].includes(urlTheme)
+      ? urlTheme
+      : LocalStorageManager.get('fezcodex-theme', 'brutalist');
+  };
+  const [theme, setTheme] = React.useState(readTheme);
+
+  useEffect(() => {
+    const onStorageWrite = (e) => {
+      if (e.detail?.key === 'fezcodex-theme') setTheme(readTheme());
+    };
+    window.addEventListener('fezcodex-storage', onStorageWrite);
+    // the theme persist may have landed between our render and this effect —
+    // re-read once so we don't depend on catching that event
+    setTheme(readTheme());
+    return () => window.removeEventListener('fezcodex-storage', onStorageWrite);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const isTerracotta = theme === 'terracotta';
   const isLuxe = theme === 'luxe';
+  const isMist = theme === 'mist';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -57,7 +81,10 @@ const Toast = ({
       switch (type) {
         case 'error':
           return (
-            <WarningCircleIcon weight="duotone" style={{ color: terraAccent.color }} />
+            <WarningCircleIcon
+              weight="duotone"
+              style={{ color: terraAccent.color }}
+            />
           );
         case 'gold':
           return (
@@ -65,11 +92,17 @@ const Toast = ({
           );
         case 'techno':
           return (
-            <TerminalIcon weight="duotone" style={{ color: terraAccent.color }} />
+            <TerminalIcon
+              weight="duotone"
+              style={{ color: terraAccent.color }}
+            />
           );
         default:
           return (
-            <CheckCircleIcon weight="duotone" style={{ color: terraAccent.color }} />
+            <CheckCircleIcon
+              weight="duotone"
+              style={{ color: terraAccent.color }}
+            />
           );
       }
     })();
@@ -351,6 +384,168 @@ const Toast = ({
             aria-label="Dismiss"
           >
             <XIcon size={14} weight="bold" />
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
+
+  /* ============================================================
+   * MIST TOAST — a veil surface drifting in from the fog
+   * ============================================================ */
+  if (isMist) {
+    const mistAccent = (() => {
+      switch (type) {
+        case 'error':
+          return '#A87E7E';
+        case 'gold':
+          return '#8FA8BC';
+        case 'techno':
+          return '#5C6B67';
+        default:
+          return '#5F837B';
+      }
+    })();
+
+    const mistIcon = (() => {
+      // callers pass icons tinted for other themes (e.g. the amber trophy);
+      // mist keeps its own quiet set so the fog stays coherent
+      const common = { weight: 'light', style: { color: mistAccent } };
+      switch (type) {
+        case 'error':
+          return <WarningCircleIcon {...common} />;
+        case 'gold':
+          return <TrophyIcon {...common} />;
+        case 'techno':
+          return <TerminalIcon {...common} />;
+        default:
+          return <CheckCircleIcon {...common} />;
+      }
+    })();
+
+    const mistBadge = (() => {
+      switch (type) {
+        case 'error':
+          return 'signal · lost';
+        case 'gold':
+          return 'honor · surfaced';
+        case 'techno':
+          return 'system · murmur';
+        default:
+          return 'notice · settled';
+      }
+    })();
+
+    return (
+      <motion.div
+        layout
+        initial={{ opacity: 0, y: 14, filter: 'blur(6px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        exit={{ opacity: 0, y: 14, filter: 'blur(6px)' }}
+        transition={{ duration: 0.4, ease: 'easeOut' }}
+        className="relative w-80 md:w-96 bg-white/70 backdrop-blur-md rounded-2xl shadow-[0_18px_50px_rgba(60,72,69,0.18)] overflow-hidden mb-4 group selection:bg-[#8FA8BC]/30"
+      >
+        {/* top edge — a horizon, never a hard rule */}
+        <span
+          aria-hidden="true"
+          className="absolute top-0 left-0 right-0 h-px"
+          style={{
+            background: `linear-gradient(90deg, transparent, ${mistAccent}99, transparent)`,
+          }}
+        />
+
+        {/* timer — a fading breath along the bottom */}
+        <motion.div
+          initial={{ width: '100%' }}
+          animate={{ width: 0 }}
+          transition={{ duration: duration / 1000, ease: 'linear' }}
+          className="absolute bottom-0 left-0 h-px z-20"
+          style={{
+            background: `linear-gradient(90deg, transparent, ${mistAccent}, transparent)`,
+            opacity: 0.6,
+          }}
+        />
+
+        <div className="px-6 py-5 flex gap-4 items-start">
+          <div className="flex-shrink-0 mt-0.5 text-[22px]">{mistIcon}</div>
+
+          <div className="flex-grow min-w-0 space-y-1.5">
+            {/* whispering mono badge */}
+            <div className="font-ibm-plex-mono text-[9px] tracking-[0.22em] lowercase flex items-center gap-2">
+              <span
+                aria-hidden="true"
+                className="inline-block w-[5px] h-[5px] rounded-full"
+                style={{ backgroundColor: mistAccent }}
+              />
+              <span style={{ color: mistAccent }}>{mistBadge}</span>
+            </div>
+
+            {/* title — Instrument Serif italic */}
+            <h4 className="font-instr-serif italic text-[18px] leading-tight text-[#3C4845]">
+              {title}
+            </h4>
+
+            {/* message — light body */}
+            <p className="font-outfit font-light text-[12.5px] leading-[1.55] text-[#5C6B67]">
+              {message}
+            </p>
+
+            {links && links.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-2">
+                {links.map((link, index) => {
+                  const btnClass =
+                    'font-ibm-plex-mono text-[9px] tracking-[0.2em] lowercase px-3 py-1.5 rounded-full bg-white/60 shadow-[0_1px_3px_rgba(60,72,69,0.12)] text-[#5C6B67] hover:bg-[#8FA8BC]/15 hover:text-[#5F837B] transition-colors';
+                  if (link.to)
+                    return (
+                      <Link
+                        key={index}
+                        to={link.to}
+                        className={btnClass}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  if (link.href)
+                    return (
+                      <a
+                        key={index}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={btnClass}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  if (link.onClick)
+                    return (
+                      <button
+                        type="button"
+                        key={index}
+                        onClick={() => {
+                          link.onClick();
+                          removeToast(id);
+                        }}
+                        className={btnClass}
+                      >
+                        {link.label}
+                      </button>
+                    );
+                  return null;
+                })}
+              </div>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => removeToast(id)}
+            className="flex-shrink-0 text-[#8A9894] hover:text-[#5F837B] transition-colors p-1"
+            aria-label="Dismiss"
+          >
+            <XIcon size={14} weight="light" />
           </button>
         </div>
       </motion.div>

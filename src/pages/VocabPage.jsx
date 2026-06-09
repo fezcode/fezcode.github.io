@@ -3,12 +3,14 @@ import { useVisualSettings } from '../context/VisualSettingsContext';
 import BrutalistVocabPage from './brutalist-views/BrutalistVocabPage';
 import LuxeVocabPage from './luxe-views/LuxeVocabPage';
 import TerracottaVocabPage from './terracotta-views/TerracottaVocabPage';
+import MistVocabPage from './mist-views/MistVocabPage';
 
 const VocabPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
   if (fezcodexTheme === 'luxe') return <LuxeVocabPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaVocabPage />;
+  if (fezcodexTheme === 'mist') return <MistVocabPage />;
   return <BrutalistVocabPage />;
 };
 

@@ -25,10 +25,12 @@ const ContactModal = ({ isOpen, onClose }) => {
   const { fezcodexTheme } = useVisualSettings();
   const isLuxe = fezcodexTheme === 'luxe';
   const isTerracotta = fezcodexTheme === 'terracotta';
+  const isMist = fezcodexTheme === 'mist';
 
   const title = (() => {
     if (isLuxe) return 'Establish Contact';
     if (isTerracotta) return 'Correspondence';
+    if (isMist) return 'Through the Fog';
     return 'Contact';
   })();
 
@@ -49,7 +51,22 @@ const ContactModal = ({ isOpen, onClose }) => {
             </p>
           </div>
         )}
-        {!isLuxe && !isTerracotta && (
+        {isMist && (
+          <div className="mb-1 flex items-center gap-3">
+            <span
+              aria-hidden="true"
+              className="h-px w-[36px]"
+              style={{
+                background:
+                  'linear-gradient(90deg, rgba(95,131,123,0.6), transparent)',
+              }}
+            />
+            <p className="font-ibm-plex-mono lowercase text-[10px] tracking-[0.26em] text-[#8A9894]">
+              channels · reachable in the half-light
+            </p>
+          </div>
+        )}
+        {!isLuxe && !isTerracotta && !isMist && (
           <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-[10px]">
             {'//'} Establish connection via established protocols:
           </p>
@@ -57,7 +74,13 @@ const ContactModal = ({ isOpen, onClose }) => {
 
         <div
           className={`grid grid-cols-1 ${
-            isLuxe ? 'gap-4' : isTerracotta ? 'gap-0 border-t border-[#1A161320]' : 'gap-3'
+            isLuxe
+              ? 'gap-4'
+              : isTerracotta
+                ? 'gap-0 border-t border-[#1A161320]'
+                : isMist
+                  ? 'gap-0'
+                  : 'gap-3'
           }`}
         >
           {config?.socials &&
@@ -80,6 +103,17 @@ const ContactModal = ({ isOpen, onClose }) => {
               if (isTerracotta) {
                 return (
                   <TerracottaContactLink
+                    key={link.id}
+                    href={link.url}
+                    icon={Icon}
+                    label={link.label}
+                    value={cleaned}
+                  />
+                );
+              }
+              if (isMist) {
+                return (
+                  <MistContactLink
                     key={link.id}
                     href={link.url}
                     icon={Icon}
@@ -128,6 +162,38 @@ const TerracottaContactLink = ({ href, icon: Icon, label, value }) => (
       size={14}
       weight="bold"
       className="text-[#1A161340] group-hover:text-[#9E4A2F] transition-colors"
+    />
+  </a>
+);
+
+const MistContactLink = ({ href, icon: Icon, label, value }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="group relative grid grid-cols-[52px_140px_1fr_auto] items-center gap-4 rounded-xl px-4 py-4 transition-colors hover:bg-[#E5EBE9]/70"
+  >
+    <span
+      aria-hidden="true"
+      className="absolute bottom-0 left-0 right-0 h-px"
+      style={{
+        background:
+          'linear-gradient(90deg, transparent, rgba(60,72,69,0.14), transparent)',
+      }}
+    />
+    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/70 text-[#5C6B67] shadow-[0_6px_18px_rgba(60,72,69,0.10)] group-hover:text-[#5F837B] transition-colors">
+      <Icon size={20} weight="light" />
+    </div>
+    <span className="font-ibm-plex-mono lowercase text-[10px] tracking-[0.26em] text-[#8A9894] group-hover:text-[#5F837B] transition-colors">
+      {label}
+    </span>
+    <span className="font-instr-serif italic text-[17px] text-[#3C4845] truncate">
+      {value}
+    </span>
+    <ArrowUpRightIcon
+      size={14}
+      weight="light"
+      className="text-[#8A9894] group-hover:text-[#5F837B] transition-colors"
     />
   </a>
 );

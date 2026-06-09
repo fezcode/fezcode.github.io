@@ -16,6 +16,7 @@ import {
   BookIcon,
 } from '@phosphor-icons/react';
 import { TerracottaMark } from './terracotta';
+import { MistOrb } from './mist';
 
 const QUOTES = [
   "Go's defer statement executes in LIFO order (Last-In, First-Out).",
@@ -301,11 +302,160 @@ const SyntaxSprite = () => {
   if (!isSyntaxSpriteEnabled) return null;
 
   const isTerracotta = fezcodexTheme === 'terracotta';
+  const isMist = fezcodexTheme === 'mist';
   const spriteColor = isTerracotta
     ? '#C96442'
     : fezcodexTheme === 'luxe'
       ? '#8D4004'
       : '#10B981';
+
+  /* -------------------------------------------------------------
+   * MIST COMPANION — a small wisp of fog that drifts, never walks.
+   * The orb hovers above its own soft shadow; jumping is a slow
+   * float upward, thinking surfaces a veil card with a whispered
+   * note in Instrument Serif italic.
+   * ------------------------------------------------------------- */
+  if (isMist) {
+    return (
+      <div
+        key="mist-syntax"
+        className="fixed bottom-0 left-0 w-full h-36 pointer-events-none z-[9999]"
+      >
+        <motion.div
+          key="mist-wisp"
+          animate={{ x: `${position.x}vw` }}
+          transition={{ type: 'spring', stiffness: 60, damping: 22, mass: 0.3 }}
+          className="absolute bottom-3 flex flex-col items-center pointer-events-auto cursor-help"
+          style={{ width: '60px' }}
+          onClick={handleSpriteClick}
+        >
+          {/* Veil thought card — frosted white, fading rule, whispered note */}
+          <AnimatePresence>
+            {thought && (
+              <motion.div
+                initial={{ opacity: 0, y: 8, filter: 'blur(6px)' }}
+                animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, y: 8, filter: 'blur(6px)' }}
+                transition={{ duration: 0.45, ease: 'easeOut' }}
+                className="absolute bottom-full mb-5 max-w-[320px] w-max"
+                style={{ right: 'auto', left: '50%', translate: '-50% 0' }}
+              >
+                <div className="relative bg-white/75 backdrop-blur-md rounded-2xl shadow-[0_18px_50px_rgba(60,72,69,0.18)] px-4 pt-2.5 pb-3">
+                  {/* top whisper strip */}
+                  <div className="flex items-center gap-2 pb-2 mb-2 font-ibm-plex-mono text-[8.5px] tracking-[0.22em] lowercase text-[#5F837B]">
+                    <span
+                      aria-hidden="true"
+                      className="inline-block w-[5px] h-[5px] rounded-full"
+                      style={{
+                        background:
+                          'radial-gradient(circle at 40% 35%, #FFFFFF 0%, #8FA8BC 100%)',
+                        boxShadow: '0 0 6px 1px rgba(143,168,188,0.5)',
+                      }}
+                    />
+                    <span>syntax · a passing thought</span>
+                  </div>
+                  <div
+                    aria-hidden="true"
+                    className="h-px w-full mb-2"
+                    style={{
+                      background:
+                        'linear-gradient(90deg, transparent, rgba(60,72,69,0.2), transparent)',
+                    }}
+                  />
+                  {/* whispered quote */}
+                  <p className="font-instr-serif italic text-[13.5px] leading-[1.45] text-[#3C4845] max-w-[46ch]">
+                    {thought}
+                  </p>
+                  {/* caret — a soft white tick */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-px"
+                    style={{
+                      width: 0,
+                      height: 0,
+                      borderLeft: '6px solid transparent',
+                      borderRight: '6px solid transparent',
+                      borderTop: '6px solid rgba(255,255,255,0.78)',
+                    }}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* The wisp — hovers and breathes; floats higher on a "jump" */}
+          <motion.div
+            animate={
+              isJumping
+                ? { y: [0, -30, 0] }
+                : state === 'walking'
+                  ? { y: [0, -5, 0] }
+                  : { y: [0, -3, 0] }
+            }
+            transition={
+              isJumping
+                ? { duration: 0.8, ease: 'easeInOut' }
+                : {
+                    repeat: Infinity,
+                    duration: state === 'walking' ? 1.6 : 3.2,
+                    ease: 'easeInOut',
+                  }
+            }
+            className="relative"
+            title="Syntax — the codex companion"
+          >
+            {/* drift-blue halo so the wisp reads against the fog */}
+            <span
+              aria-hidden="true"
+              className="absolute inset-0 -m-2 rounded-full"
+              style={{
+                background:
+                  'radial-gradient(circle, rgba(143,168,188,0.6) 0%, rgba(143,168,188,0) 70%)',
+                filter: 'blur(3px)',
+              }}
+            />
+            <MistOrb size={30} className="relative" />
+            {/* defined edge — a faint eucalyptus ring so the orb holds its shape */}
+            <span
+              aria-hidden="true"
+              className="absolute rounded-full pointer-events-none"
+              style={{
+                inset: 5,
+                boxShadow:
+                  'inset 0 0 0 1px rgba(95,131,123,0.35), 0 3px 8px rgba(60,72,69,0.25)',
+              }}
+            />
+            {/* thinking halo — drift-blue ring, pulsing like held breath */}
+            <AnimatePresence>
+              {state === 'thinking' && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: [0.55, 0.15, 0.55], scale: [1, 1.3, 1] }}
+                  exit={{ opacity: 0, scale: 0.6 }}
+                  transition={{ duration: 2.2, repeat: Infinity }}
+                  aria-hidden="true"
+                  className="absolute inset-0 -m-2 rounded-full border border-[#8FA8BC]/60 pointer-events-none"
+                />
+              )}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* soft ground shadow — the only proof it has somewhere to land */}
+          <motion.span
+            aria-hidden="true"
+            animate={
+              state === 'walking' || isJumping
+                ? { scaleX: [1, 0.65, 1], opacity: [0.25, 0.12, 0.25] }
+                : { opacity: 0.2 }
+            }
+            transition={{ repeat: Infinity, duration: 1.6 }}
+            className="block mt-1.5 rounded-full bg-[#3C4845]"
+            style={{ width: 18, height: 3, filter: 'blur(2px)' }}
+          />
+        </motion.div>
+      </div>
+    );
+  }
 
   /* -------------------------------------------------------------
    * TERRACOTTA COMPANION — a plumb bob on a short cord.

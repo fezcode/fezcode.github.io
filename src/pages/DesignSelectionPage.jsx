@@ -9,6 +9,7 @@ import {
   LayoutIcon,
   ArrowLeftIcon,
   LineSegmentsIcon,
+  CloudIcon,
   PaintBrushBroadIcon,
   ScrollIcon,
   TerminalWindowIcon,
@@ -25,6 +26,11 @@ const DesignSelectionPage = () => {
 
   const activateTerracotta = () => {
     setFezcodexTheme('terracotta');
+    navigate('/');
+  };
+
+  const activateMist = () => {
+    setFezcodexTheme('mist');
     navigate('/');
   };
 
@@ -131,6 +137,51 @@ const DesignSelectionPage = () => {
                 </span>
                 <ArrowRightIcon
                   className="text-[#2E2620]/40 group-hover:text-[#C96442] group-hover:translate-x-2 transition-all"
+                  size={24}
+                />
+              </div>
+            </motion.div>
+          </button>
+
+          {/* MIST CARD */}
+          <button
+            type="button"
+            onClick={activateMist}
+            className="group block relative text-left"
+          >
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="h-full bg-[#EEF2F1] p-12 flex flex-col justify-between rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(60,72,69,0.45)] transition-all duration-500 relative"
+            >
+              <div
+                className="absolute inset-0 pointer-events-none"
+                style={{
+                  background:
+                    'radial-gradient(600px 400px at 80% -10%, #FFFFFF 0%, transparent 55%), radial-gradient(500px 500px at 0% 110%, #D2DBD8 0%, transparent 50%)',
+                }}
+              />
+
+              <div className="space-y-8 relative z-10">
+                <div className="w-16 h-16 flex items-center justify-center bg-white/60 text-[#5F837B] rounded-full shadow-[0_10px_30px_rgba(95,131,123,0.2)] backdrop-blur-sm group-hover:bg-[#5F837B] group-hover:text-[#EEF2F1] transition-all duration-500">
+                  <CloudIcon size={32} weight="light" />
+                </div>
+                <div className="space-y-4">
+                  <h2 className="text-5xl font-instr-serif italic text-[#3C4845] leading-none tracking-tight">
+                    Mist
+                  </h2>
+                  <p className="font-mono text-xs text-[#5C6B67] lowercase tracking-widest leading-relaxed">
+                    hypnagogic fog. pale eucalyptus veils, fading horizons,
+                    type that breathes — half-remembered, half-imagined.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-12 pt-8 border-t border-[#3C4845]/10 flex justify-between items-center relative z-10">
+                <span className="font-mono text-[10px] lowercase tracking-[0.3em] text-[#8A9894] group-hover:text-[#5F837B] transition-colors">
+                  drift_in
+                </span>
+                <ArrowRightIcon
+                  className="text-[#8A9894] group-hover:text-[#5F837B] group-hover:translate-x-2 transition-all"
                   size={24}
                 />
               </div>
@@ -806,7 +857,7 @@ const DesignSelectionPage = () => {
         <footer className="mt-24 pt-12 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-6 text-black/30 font-outfit text-[10px] uppercase tracking-[0.3em]">
           <div className="flex items-center gap-2">
             <LayoutIcon size={14} />
-            <span>Tri Theme Protocol Alpha</span>
+            <span>Quad Theme Protocol Alpha</span>
           </div>
           <span>Fezcodex Studio — 2026</span>
         </footer>

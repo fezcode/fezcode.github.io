@@ -175,7 +175,7 @@
     (from) 2026-04-22T00:00:00Z
     (to) 2026-08-31T23:59:59Z
     (text) FEZTERRACOTTA IS ONLINE: A WEIGHTED CODEX OF BONE PAPER AND TERRA INK. ENABLE VIA SETTINGS OR COMMAND PALETTE.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/settings?fezTheme=terracotta&fezBlogMode=terracotta#fezcodex-theme
     (linkText) Enable Terracotta
 
@@ -188,4 +188,14 @@
     (isActive) true
     (link) https://fezcode.com/urban-rogue/
     (linkText) Play Urban Rogue
+
+  > (banner)
+    (id) fezmist-launch
+    (type) info
+    (from) 2026-06-09T00:00:00Z
+    (to) 2026-09-30T23:59:59Z
+    (text) FEZMIST IS ONLINE: A CODEX HALF-REMEMBERED — FOG PAPER, EUCALYPTUS INK, HORIZONS THAT FADE. ENABLE VIA SETTINGS OR COMMAND PALETTE.
+    (isActive) true
+    (link) https://fezcode.com/settings?fezTheme=mist#fezcodex-theme
+    (linkText) Enable Mist
 

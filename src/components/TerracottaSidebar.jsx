@@ -233,7 +233,7 @@ const TerracottaSidebar = ({
   };
 
   const brandTitle = config?.hero?.title || 'Fezcodex';
-  const kernelName = config?.kernel?.codename || 'bonewright';
+  const kernelName = config?.kernel?.codename;
 
   return (
     <>

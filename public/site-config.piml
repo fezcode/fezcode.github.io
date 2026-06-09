@@ -1,10 +1,13 @@
 (config)
   (kernel)
-    (codename) Bonewright
+    (codename) Mistwright
+    # (codename) StoneSet
+    # (codename) Bonewright
     # codename roadmap — bump on a major design / identity shift
     #   v0.24.x  Stone_Set
     #   v0.25.x  Loadbearing
     #   v0.26.x  Chisel_Mark
+    #   v0.27.x  Mistwright
 
   (hero)
     (title) Fezcodex
