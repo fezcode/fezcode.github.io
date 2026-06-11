@@ -169,6 +169,7 @@ const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
 const EbruPage = lazy(() => import('../pages/apps/EbruPage'));
+const VitrayPage = lazy(() => import('../pages/apps/VitrayPage'));
 const MorphogenesisLabPage = lazy(() => import('../pages/apps/MorphogenesisLabPage'));
 const AlchemyLabPage = lazy(() => import('../pages/apps/AlchemyLabPage'));
 const CloudMusicPlayerPage = lazy(
@@ -3154,6 +3155,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <EbruPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/vitray"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <VitrayPage />
               </Suspense>
             </motion.div>
           }
