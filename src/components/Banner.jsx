@@ -120,14 +120,14 @@ const Banner = () => {
     const label = banner.linkText || 'VIEW_DETAILS';
     if (isExternalLink) {
       return (
-        <a href={banner.link} className={className}>
+        <a href={banner.link} className={className} onClick={handleDismiss}>
           {label}
           <ArrowRightIcon size={12} weight="bold" />
         </a>
       );
     }
     return (
-      <Link to={banner.link} className={className}>
+      <Link to={banner.link} className={className} onClick={handleDismiss}>
         {label}
         <ArrowRightIcon size={12} weight="bold" />
       </Link>
