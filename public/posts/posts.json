@@ -1,5 +1,24 @@
 [
   {
+    "slug": "dashcam-music-theory",
+    "title": "Dashcam Music Theory: The Only Honest Soundtrack Left",
+    "date": "2026-06-13",
+    "updated": "2026-06-13",
+    "description": "A quick rant on the one medium where the music was chosen before the event with zero knowledge of what the event would be: the dashcam. Why an accidental Spotify shuffle is a better music supervisor than any director, and why deliberate film scoring feels cheap once you've noticed the trick.",
+    "tags": [
+      "music",
+      "rant",
+      "culture",
+      "soundtrack",
+      "dashcam"
+    ],
+    "category": "rant",
+    "filename": "dashcam-music-theory.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "paseto-vs-jwt",
     "title": "PASETO vs JWT: Choosing the Right Token for the Job",
     "date": "2026-05-18",
