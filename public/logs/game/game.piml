@@ -1,6 +1,20 @@
 (logs)
   > (item)
     (category) Game
+    (date) 2026-06-18
+    (link) https://bandle.app/
+    (platform) Web, iOS, Android
+    (rating) 3
+    (slug) bandle
+    (tags)
+      > music
+      > daily
+      > puzzle
+    (title) Bandle
+    (description) Bandle is a daily music guessing game: name the song one instrument at a time, with each wrong guess layering in another (drums, bass, guitar, piano) across up to six clues. A smart, replayable Wordle/Heardle-style puzzle — but only the latest songs are free, with the back catalogue and themed packs paywalled, which knocks it down a notch.
+
+  > (item)
+    (category) Game
     (date) 2026-06-13
     (link) https://en.wikipedia.org/wiki/Resident_Evil_Requiem
     (platform) PC, PlayStation 5, Xbox Series X/S
