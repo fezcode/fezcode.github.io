@@ -390,7 +390,7 @@ const TheVagueTerminal = ({ issues, onExit, onOpenIssue }) => {
 
                {!isBooting && !activeProcess && (
                    <div className="flex items-center gap-2 mt-2">
-                       <span>{cwd.join('/')}></span>
+                       <span>{cwd.join('/')}&gt;</span>
                        <input
                          ref={inputRef}
                          type="text"

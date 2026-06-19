@@ -429,11 +429,11 @@ const CloudMusicPlayer = () => {
 
             {/* Footer Logs */}
             <div className="h-24 bg-black border border-cyan-900/30 p-2 font-mono text-[10px] text-cyan-800 overflow-hidden flex flex-col justify-end">
-                <div className="opacity-50"> > SYSTEM_INIT... OK</div>
-                <div className="opacity-60"> > AUDIO_DRIVER... LOADED</div>
-                <div className="opacity-70"> > CONNECTING_TO_CLOUD_NODE... SUCCESS</div>
-                <div className="text-cyan-600"> > LISTENING_ON_PORT_8080...</div>
-                {isPlaying && <div className="text-cyan-400 animate-pulse"> > STREAMING_DATA_PACKETS...</div>}
+                <div className="opacity-50"> &gt; SYSTEM_INIT... OK</div>
+                <div className="opacity-60"> &gt; AUDIO_DRIVER... LOADED</div>
+                <div className="opacity-70"> &gt; CONNECTING_TO_CLOUD_NODE... SUCCESS</div>
+                <div className="text-cyan-600"> &gt; LISTENING_ON_PORT_8080...</div>
+                {isPlaying && <div className="text-cyan-400 animate-pulse"> &gt; STREAMING_DATA_PACKETS...</div>}
             </div>
 
         </div>
