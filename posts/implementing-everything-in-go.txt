@@ -1,0 +1,49 @@
+# Implementing Everything in Go: Built-ins, Pipes, and Jobs
+
+When you write a shell in Go, you quickly realize that the standard library is your best friend. In **Dush**, we don't just call out to external binaries for everything—we implement as much as possible in pure Go to ensure cross-platform consistency and speed.
+
+## The "Everything in Go" Philosophy
+
+Many shells are just thin wrappers around `libc`. Dush aims to be different. By implementing core utilities as built-ins, we avoid the overhead of process spawning for common tasks.
+
+### 1. The Modern `ls`
+One of the most visible parts of Dush is the built-in `ls`. Instead of relying on the system's `ls`, Dush uses `os.ReadDir` and a custom renderer. This allows us to:
+- Inject icons based on file extensions.
+- Provide consistent coloring across Windows, Linux, and macOS.
+- Build in human-readable sizes and grid layouts without extra flags.
+
+### 2. The Pipeline Engine
+Implementing pipes (`|`) in Go is surprisingly elegant. We use `io.Pipe()` to create a connected reader and writer.
+
+```go
+// Conceptual Go implementation
+reader, writer := io.Pipe()
+cmd1.Stdout = writer
+cmd2.Stdin = reader
+
+go func() {
+    cmd1.Run()
+    writer.Close()
+}()
+cmd2.Run()
+```
+
+This "pure Go" approach to plumbing ensures that Dush handles data streams efficiently without hitting OS-specific pipe buffer limits too early.
+
+### 3. Job Control: The `JobManager`
+Handling background processes (`&`) and bringing them back to the foreground (`fg`) is one of the hardest parts of shell development. Dush uses a centralized `JobManager` that:
+- Wraps `os/exec.Cmd`.
+- Monitors process state via goroutines.
+- Handles `SIGINT` and `SIGTSTP` forwarding.
+- Provides a clean `jobs` command to see what's running.
+
+### 4. Cross-Platform Built-ins
+Commands like `cd`, `pwd`, `mkdir`, and `rm` are all implemented using Go's `os` and `path/filepath` packages. This means a Dush script written on a Mac will run perfectly on Windows without needing a Mingw or Cygwin environment.
+
+## Why it Matters
+
+By implementing these features in Go, Dush achieves a level of "portability as a feature." You get the power of a Unix-like environment on any platform Go can compile to.
+
+Dush is a testament to the power of the Go ecosystem for systems programming.
+
+Check out the implementation: [https://github.com/fezcode/dush](https://github.com/fezcode/dush)

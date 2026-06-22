@@ -1,0 +1,10 @@
+## Core Philosophy
+Fezcodex was designed to break away from the sterile, corporate look of standard portfolios. It embraces brutalism, raw honesty, and a level of interactivity that rewards exploration.
+
+image: /images/projects/fezcodex/about-my-page.webp
+
+image: /images/projects/fezcodex/terminal.webp
+
+
+## Tech Stack
+Built on a modern foundation of React and Tailwind CSS, utilizing a custom Markdown pipeline for rich, dynamic content delivery and Framer Motion for high-fidelity animations.

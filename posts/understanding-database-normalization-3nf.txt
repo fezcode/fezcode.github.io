@@ -1,0 +1,115 @@
+# Database Normalization: A Clear Guide to 1NF, 2NF, and 3NF
+
+Database normalization often sounds like high-level math, but it's actually just a set of common-sense rules for organizing data. The goal is simple: **Don't repeat yourself.** 
+
+When data is repeated, you run into "Anomalies"—bugs where you update a piece of info in one row but forget it in another. Here is how we get to the industry standard: **Third Normal Form (3NF).**
+
+---
+
+## 1. First Normal Form (1NF): No Lists in Cells
+
+The first rule is that every cell must contain exactly **one** value. You cannot have a list of items inside a single column.
+
+### The "Messy" Table (Not in 1NF)
+Notice how "Courses" has multiple values. This makes it impossible to search for everyone taking "Math."
+
+| StudentID | Name | Courses |
+| :--- | :--- | :--- |
+| 101 | Alice | Math, Physics |
+| 102 | Bob | Biology |
+
+### The 1NF Solution
+We split the rows so every cell is "Atomic" (indivisible).
+
+| StudentID | Name | Course |
+| :--- | :--- | :--- |
+| 101 | Alice | Math |
+| 101 | Alice | Physics |
+| 102 | Bob | Biology |
+
+---
+
+## 2. Second Normal Form (2NF): The "Whole Key" Rule
+
+2NF only matters when you have a **Composite Key** (a primary key made of two or more columns). It says: "Every column must depend on the *entire* key, not just part of it."
+
+### The Problem (In 1NF, but not 2NF)
+In this table, the Primary Key is `(StudentID + CourseID)`. 
+
+| StudentID (PK) | CourseID (PK) | Grade | Teacher_Office |
+| :--- | :--- | :--- | :--- |
+| 101 | CS50 | A | Room 402 |
+| 102 | CS50 | B | Room 402 |
+
+**The Issue:** `Grade` depends on both the student and the course. But `Teacher_Office` depends *only* on the `CourseID`. Alice's grade doesn't change the teacher's office. This is a "Partial Dependency."
+
+```mermaid
+graph TD
+    subgraph PrimaryKey
+        A[StudentID]
+        B[CourseID]
+    end
+    A & B --> Grade
+    B -->|Partial Dependency| Office[Teacher_Office]
+```
+
+### The 2NF Solution
+Move the partial dependency into its own table. Now, if the teacher moves offices, you only change it in one row.
+
+**Table: Enrollments**
+| StudentID | CourseID | Grade |
+| :--- | :--- | :--- |
+
+**Table: Courses**
+| CourseID | Teacher_Office |
+| :--- | :--- |
+
+---
+
+## 3. Third Normal Form (3NF): No "Friends of Friends"
+
+3NF says: "A column cannot depend on another column that isn't the primary key." This is called a **Transitive Dependency**.
+
+### The Problem (In 2NF, but not 3NF)
+Here, the Primary Key is `EmployeeID`.
+
+| EmployeeID (PK) | Name | DeptID | DeptName |
+| :--- | :--- | :--- | :--- |
+| E01 | Alice | D01 | Engineering |
+| E02 | Bob | D01 | Engineering |
+
+**The Issue:** `Name` depends on `EmployeeID` (Good). `DeptID` depends on `EmployeeID` (Good). But `DeptName` depends on `DeptID`. It only knows the EmployeeID *through* the Department. 
+
+```mermaid
+graph LR
+    ID[EmployeeID] --> DeptID
+    DeptID --> DeptName
+    ID -.->|Indirect / Transitive| DeptName
+```
+
+If you hire a new department head but have no employees in that department yet, you can't even put the department name in the database!
+
+### The 3NF Solution
+Split them so non-keys only talk to the Primary Key.
+
+**Table: Employees**
+| EmployeeID | Name | DeptID |
+| :--- | :--- | :--- |
+
+**Table: Departments**
+| DeptID | DeptName |
+| :--- | :--- |
+
+---
+
+## The Golden Rule
+
+To remember all of this, software engineers use a famous quote by Bill Kent. He said that in a normalized database, every column must depend on:
+
+> **"The Key, the Whole Key, and Nothing but the Key."**
+
+1. **The Key:** (1NF) Everything belongs to a key.
+2. **The Whole Key:** (2NF) Don't depend on just *part* of a composite key.
+3. **Nothing but the Key:** (3NF) Don't depend on other non-key columns.
+
+By following these steps, you ensure your data is lean, accurate, and incredibly hard to break during updates.

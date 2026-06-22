@@ -1,0 +1,59 @@
+_Okay, gather 'round_, fellow nerds and accidental epidemiologists.
+I need to talk about something that happened in *World of Warcraft* back in 2005.
+It's called the **Corrupted Blood incident**, and it's basically the coolest (and most terrifying) accidental science experiment in gaming history.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/vj-mz5piYYY?si=RlcxH-t2Q7-2bYIJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## ELI5: What the Heck Happened?
+
+Imagine you're playing a game, right? You and your 19 closest friends decide to go punch a giant blood god named **Hakkar the Soulflayer** in the face. This raid boss has a nasty spell called "Corrupted Blood."
+
+Here's how it worked:
+1.  **You catch it:** It drains your health. Fast.
+2.  **It spreads:** If you stand near anyone else, they catch it too. Like a super-flu.
+3.  **It's meant for the boss room:** The disease was programmed to disappear when you died or left the dungeon.
+
+**BUT HERE'S THE GLITCH.**
+
+Hunter pets (animals that players control) could catch the disease. If a player dismissed their pet while it was sick, the game "froze" the pet's state.
+When they summoned the pet back in a major city (like Ironforge or Orgrimmar), the pet came back... *still sick*.
+
+_Boom. Patient Zero._
+
+## The Virtual Apocalypse
+
+Suddenly, high-level players' pets were nuking entire cities. Low-level players (newbies) were dropping dead instantly just by walking past the auction house.
+High-level players were scrambling to keep themselves alive, healing frantically.
+
+It was chaos.
+*   **The Cities:** Zones of death. Skeletons everywhere.
+*   **The Players:** Panic. Some fled to the wilderness (social distancing!). Some deliberately spread it (trolls/bioterrorists). Healers tried to set up triage centers.
+*   **Blizzard (The Devs):** They tried quarantines. Failed. They tried warnings. Failed. Eventually, they had to do a hard server reset to scrub the disease from existence.
+
+## Why Real Scientists Cared
+
+Here's the wild part. Real-world epidemiologists (the doctors who study diseases) looked at this and went, *"Holy crap, this is better than our computer models."*
+
+Usually, scientific models assume people act rationally. "If there is a plague, people will stay home." But in *WoW*, people did **human** things:
+*   **Curiosity:** "What's happening over there?" -> *Dies.*
+*   **Malice:** "Imma go infect the newbies lol." -> *Spreads plague.*
+*   **Altruism:** "I'll heal you!" -> *Gets infected, spreads it further.*
+
+This accidental glitch provided a perfect, unscripted look at human behavior during a crisis. It showed how fast things spread when people don't follow rules,
+how asymptomatic carriers (pets/high-level players) can destroy vulnerable populations (low-level players), and how hard it is to contain stupidity.
+
+## The GDC Legacy
+
+This wasn't just a "remember when" moment. It became a serious case study. At **GDC (Game Developers Conference)**,
+this incident is often cited as a prime example of emergent gameplay and complex systems gone wrong (or right, depending on your view).
+
+It taught developers that players will *always* find a way to break containment.
+It taught scientists that "Gamer Behavior" might actually be a decent proxy for "Human Panic."
+
+## The Rant
+
+It drives me crazy that we had this perfect simulation in 2005, and when 2020 rolled around, we saw the *exact same behaviors* IRL.
+The deniers, the spreaders, the people fleeing to the countryside. We didn't learn! We leveled up, but we didn't put any points into Wisdom!
+
+**TL;DR:** A coding bug in a fantasy game predicted modern pandemic behavior better than some government models.
+Hakkar the Soulflayer is the ultimate teacher. Wash your hands, dismiss your pets responsibly, and for the love of Azeroth, stop standing in the fire.

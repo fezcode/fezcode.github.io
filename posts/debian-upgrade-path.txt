@@ -1,0 +1,72 @@
+# Upgrading Debian 11 to 13: The Safe Path
+
+So, you're on Debian 11 (Bullseye) and want to jump to Debian 13 (Trixie). Maybe you saw some shiny new package, or you just want to be on the cutting edge (or as cutting edge as Debian gets).
+
+But here's the catch: **You can't skip a version.**
+
+Debian upgrades are designed to be sequential. Jumping from 11 straight to 13 is a recipe for a broken system (frankstein packages, dependency hell, the works). The safe path is **11 → 12 → 13**.
+
+Here is the quick gist of how to do it properly.
+
+## Phase 1: Bullseye (11) to Bookworm (12)
+
+First, make sure your current system is fully updated and clean.
+
+```bash
+# Clean up any broken sources first!
+# If you have 404 errors on backports, comment them out in /etc/apt/sources.list
+sudo apt update
+sudo apt full-upgrade -y
+```
+
+Now, switch your sources to Bookworm.
+
+```bash
+sudo sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list
+```
+
+Run the upgrade. This is the big one.
+
+```bash
+sudo apt update
+sudo apt full-upgrade -y
+```
+
+**Reboot your system.**
+
+## Phase 2: Bookworm (12) to Trixie (13)
+
+Welcome back. You are now on Debian 12. Let's keep going.
+
+Update your sources to Trixie.
+
+```bash
+sudo sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
+```
+
+Run the upgrade again.
+
+```bash
+sudo apt update
+sudo apt full-upgrade -y
+```
+
+## Phase 3: Cleanup
+
+You made it. Now clean up the leftovers.
+
+```bash
+sudo apt autoremove -y
+sudo reboot
+```
+
+## Verification
+
+When you're back, check your version:
+
+```bash
+cat /etc/debian_version
+# Should output 13.x (or testing/trixie)
+```
+
+And that's it. You have successfully time traveled.
