@@ -1,8 +1,18 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-06-23
+    (link)
+    (rating) 5
+    (slug) batman-mask-of-the-phantasm
+    (title) Batman: Mask of the Phantasm (1993)
+    (image)
+    (description) "Maybe they already have. Maybe they sent me."
+    (director) Eric Radomski, Bruce Timm
+  > (item)
+    (category) Movie
     (date) 2026-04-14
-    (link) 
+    (link)
     (rating) 4
     (slug) black-dynamite-2009
     (title) Black Dynamite
