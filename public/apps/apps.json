@@ -843,22 +843,13 @@
         "created_at": "2025-11-27T14:00:00+03:00"
       },
       {
-        "slug": "image-toolkit",
-        "to": "/apps/image-toolkit",
-        "title": "Image Toolkit",
-        "description": "A toolkit for basic image manipulations.",
-        "icon": "ImageIcon",
+        "slug": "image-studio",
+        "to": "/apps/image-studio",
+        "title": "Darkroom",
+        "description": "A complete image studio — apply creative filters, compress to shrink file size, resize and scale, and convert to WebP/PNG/JPEG with favicon and social-card presets. Single or bulk, all in your browser.",
+        "icon": "ImagesIcon",
         "pinned_order": 13,
-        "created_at": "2025-11-10T23:58:16+03:00"
-      },
-      {
-        "slug": "image-compressor",
-        "to": "/apps/image-compressor",
-        "title": "Image Compressor",
-        "description": "Compress images to reduce file size while maintaining quality.",
-        "icon": "ArrowsInLineHorizontalIcon",
-        "pinned_order": 14,
-        "created_at": "2025-11-23T12:54:58+03:00"
+        "created_at": "2026-06-18T12:00:00+03:00"
       },
       {
         "slug": "stopwatch",
@@ -917,15 +908,6 @@
         "description": "A minimal, visual map for tracking your daily objectives.",
         "icon": "CheckSquareOffsetIcon",
         "created_at": "2025-12-20T14:00:00+03:00"
-      },
-      {
-        "slug": "asset-studio",
-        "to": "/apps/asset-studio",
-        "title": "Asset Studio",
-        "description": "Convert source images into optimized web assets, including favicons and social media previews.",
-        "icon": "AppWindowIcon",
-        "created_at": "2025-12-20T16:00:00+03:00",
-        "pinned_order": 22
       }
     ]
   },

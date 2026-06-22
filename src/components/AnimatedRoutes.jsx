@@ -71,7 +71,7 @@ const PickerWheelPage = lazy(() => import('../pages/apps/PickerWheelPage'));
 const CodenameGeneratorPage = lazy(
   () => import('../pages/apps/CodenameGeneratorPage'),
 );
-const ImageToolkitPage = lazy(() => import('../pages/apps/ImageToolkitPage'));
+const ImageStudioPage = lazy(() => import('../pages/apps/ImageStudioPage'));
 const QuoteGeneratorPage = lazy(
   () => import('../pages/apps/QuoteGeneratorPage'),
 );
@@ -115,9 +115,6 @@ const RockPaperScissorsPage = lazy(
 );
 const TicTacToePage = lazy(() => import('../pages/apps/TicTacToePage'));
 const ConnectFourPage = lazy(() => import('../pages/apps/ConnectFourPage'));
-const ImageCompressorPage = lazy(
-  () => import('../pages/apps/ImageCompressorPage'),
-);
 const StopwatchAppPage = lazy(() => import('../pages/apps/StopwatchAppPage'));
 const PomodoroTimerPage = lazy(() => import('../pages/apps/PomodoroTimerPage'));
 const MorseCodeTranslatorPage = lazy(
@@ -194,7 +191,6 @@ const AtmosphereMixerPage = lazy(
 );
 const TaskGridPage = lazy(() => import('../pages/apps/TaskGridPage'));
 const BlendLabPage = lazy(() => import('../pages/apps/BlendLabPage'));
-const AssetStudioPage = lazy(() => import('../pages/apps/AssetStudioPage'));
 const OgImageGeneratorPage = lazy(
   () => import('../pages/apps/OgImageGeneratorPage'),
 );
@@ -1122,7 +1118,7 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/apps::as"
-          element={<Navigate to="/apps/asset-studio" replace />}
+          element={<Navigate to="/apps/image-studio" replace />}
         />
         <Route
           path="/apps::ascii"
@@ -1174,7 +1170,7 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/apps::itk"
-          element={<Navigate to="/apps/image-toolkit" replace />}
+          element={<Navigate to="/apps/image-studio" replace />}
         />
         <Route
           path="/apps::qg"
@@ -1226,7 +1222,7 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/apps::imc"
-          element={<Navigate to="/apps/image-compressor" replace />}
+          element={<Navigate to="/apps/image-studio" replace />}
         />
         <Route
           path="/apps::excuse"
@@ -2231,7 +2227,7 @@ const AnimatedRoutes = ({
           }
         />
         <Route
-          path="/apps/image-toolkit"
+          path="/apps/image-studio"
           element={
             <motion.div
               initial="initial"
@@ -2241,10 +2237,15 @@ const AnimatedRoutes = ({
               transition={pageTransition}
             >
               <Suspense fallback={<Loading />}>
-                <ImageToolkitPage />
+                <ImageStudioPage />
               </Suspense>
             </motion.div>
           }
+        />
+        {/* Merged into Darkroom (image-studio); keep old URLs alive as redirects */}
+        <Route
+          path="/apps/image-toolkit"
+          element={<Navigate to="/apps/image-studio" replace />}
         />
         <Route
           path="/apps/quote-generator"
@@ -2376,19 +2377,7 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/apps/image-compressor"
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <ImageCompressorPage />
-              </Suspense>
-            </motion.div>
-          }
+          element={<Navigate to="/apps/image-studio" replace />}
         />
         <Route
           path="/apps/stopwatch"
@@ -2697,19 +2686,7 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/apps/asset-studio"
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <AssetStudioPage />
-              </Suspense>
-            </motion.div>
-          }
+          element={<Navigate to="/apps/image-studio" replace />}
         />
         <Route
           path="/apps/magaziner"

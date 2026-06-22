@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 10 Jun 2026 23:52:06 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 19 Jun 2026 20:09:46 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 10 Jun 2026 23:52:05 GMT</pubDate>
+        <pubDate>Fri, 19 Jun 2026 20:09:46 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The 20 Mile March: Consistency Beats Heroics]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/the-20-mile-march</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/the-20-mile-march</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 19 Jun 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>There is a business idea I keep coming back to, and it is almost insultingly simple: <strong>march twenty miles a day, every day, no matter what.</strong> It comes from Jim Collins and Morten Hansen&#39;s <em>Great by Choice</em> (2011), and once you understand it, you start seeing the failure to do it everywhere.</p>
+<p><a href="https://fezcode.com/blog/the-20-mile-march">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[Dashcam Music Theory: The Only Honest Soundtrack Left]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/dashcam-music-theory</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/dashcam-music-theory</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 13 Jun 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Every other piece of footage you have ever watched was <strong>lying to you about how it felt</strong>. The film, the ad, the slow-motion sports montage, the wedding reel — somebody sat in a dark room and decided, with surgical intent, exactly which chord should land the instant the dog dies. That&#39;s not emotion. That&#39;s <em>manipulation with a tempo map</em>. And then, gloriously, there is the <strong>dashcam</strong>.</p>
+<p><a href="https://fezcode.com/blog/dashcam-music-theory">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[PASETO vs JWT: Choosing the Right Token for the Job]]></title>
             <description><![CDATA[[object Object]]]></description>
