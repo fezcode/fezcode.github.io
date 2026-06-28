@@ -1,6 +1,20 @@
 (logs)
   > (item)
     (category) Game
+    (date) 2026-06-28
+    (link) https://www.alanwake.com/
+    (platform) PC, PlayStation 5, Xbox Series X/S
+    (rating) 5
+    (slug) alan-wake-2
+    (tags)
+      > horror
+      > story
+      > single-player
+    (title) Alan Wake 2
+    (description) Alan Wake 2 is Remedy's survival horror sequel, splitting its campaign between writer Alan Wake escaping the Dark Place and FBI agent Saga Anderson investigating ritual murders in Bright Falls. The mid-game pacing sags, but the bookends are confident, gorgeous horror — and the whole thing kinda made me miss Alan Wake 1. A 5/5.
+
+  > (item)
+    (category) Game
     (date) 2026-06-18
     (link) https://bandle.app/
     (platform) Web, iOS, Android
