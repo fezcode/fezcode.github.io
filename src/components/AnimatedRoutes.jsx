@@ -200,6 +200,9 @@ const FantasyMapGeneratorPage = lazy(
 const CRTTacticalMapPage = lazy(
   () => import('../pages/apps/CRTTacticalMapPage'),
 );
+const MapBuilderPage = lazy(
+  () => import('../pages/apps/map-builder/MapBuilderPage'),
+);
 const PosterLoomPage = lazy(() => import('../pages/apps/PosterLoomPage'));
 const MagazinerPage = lazy(() => import('../pages/apps/MagazinerPage'));
 const WallpaperEnginePage = lazy(
@@ -2812,6 +2815,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <CRTTacticalMapPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/map-builder"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <MapBuilderPage />
               </Suspense>
             </motion.div>
           }
