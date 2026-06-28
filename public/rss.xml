@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 19 Jun 2026 20:09:46 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 28 Jun 2026 21:25:17 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 19 Jun 2026 20:09:46 GMT</pubDate>
+        <pubDate>Sun, 28 Jun 2026 21:25:17 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Penney's Game: The Coin-Flip Bet Where Going Second Always Wins]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/penneys-game</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/penneys-game</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Penney&#39;s Game: The Coin-Flip Bet Where Going Second Always Wins</h1>
+<p><a href="https://fezcode.com/blog/penneys-game">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The 20 Mile March: Consistency Beats Heroics]]></title>
             <description><![CDATA[[object Object]]]></description>
