@@ -1,0 +1,60 @@
+# Interview Journal: #2 - C++ Rule of Five (and Three and Zero)
+
+In C++, resource management is a critical skill. Unlike languages with garbage collection, C++ gives you direct control over the lifecycle of your objects. This power comes with the responsibility of correctly managing memory, file handles, and network sockets.
+
+The **Rule of Five** is a guideline for modern C++ (C++11 and later) that defines which special member functions you need to implement if your class manages resources.
+
+---
+
+## The Evolution: The Rule of Three
+Before C++11, we had the **Rule of Three**. It stated that if you needed to define any of the following, you probably needed to define all three:
+1.  **Destructor:** To release resources.
+2.  **Copy Constructor:** To perform a deep copy.
+3.  **Copy Assignment Operator:** To handle assignment (like `a = b`).
+
+If you didn't define these, the compiler would generate default versions that perform shallow copies, leading to double-free errors or memory leaks.
+
+## The Modern Standard: The Rule of Five
+With the introduction of **Move Semantics** in C++11, the Rule of Three expanded to the Rule of Five. We added two more functions to handle "moving" resources instead of copying them:
+4.  **Move Constructor:** Transfer ownership of resources from a temporary object.
+5.  **Move Assignment Operator:** Transfer ownership during assignment.
+
+### The Functions at a Glance:
+```cpp
+class MyResource {
+public:
+    // 1. Destructor
+    ~MyResource();
+
+    // 2. Copy Constructor
+    MyResource(const MyResource& other);
+
+    // 3. Copy Assignment
+    MyResource& operator=(const MyResource& other);
+
+    // 4. Move Constructor
+    MyResource(MyResource&& other) noexcept;
+
+    // 5. Move Assignment
+    MyResource& operator=(MyResource&& other) noexcept;
+};
+```
+
+---
+
+## The Rule of Zero
+The **Rule of Zero** suggests that you should design your classes so that you don't have to define *any* of the special five functions. 
+
+How? By using **RAII (Resource Acquisition Is Initialization)** wrappers like `std::unique_ptr`, `std::shared_ptr`, or `std::vector`. These classes already handle the Rule of Five correctly. If your class only contains such members, the compiler-generated defaults will work perfectly.
+
+---
+
+## Interview Tips:
+- **Why `noexcept`?** Move constructors and move assignment operators should be marked `noexcept`. This is crucial for performance, as containers like `std::vector` will only use moves during resizing if they are guaranteed not to throw.
+- **Copy-and-Swap Idiom:** Mentioning this idiom shows deep knowledge. It's a robust way to implement copy/move assignment operators that provides strong exception safety.
+- **Resource Management:** Always relate these rules back to *ownership*. Who owns the memory? When is it released?
+
+---
+*Date: 2026-02-12*
+*Category: dev*
+*Tags: cpp, cplusplus, memory-management, rule-of-five, interview, dev*

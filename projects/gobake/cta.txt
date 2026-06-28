@@ -1,0 +1,5 @@
+# Get started with gobake today
+
+```bash
+go install github.com/fezcode/gobake/cmd/gobake@latest
+```

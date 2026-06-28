@@ -1,0 +1,25 @@
+(logs)
+  > (item)
+    (category) Food
+    (date) 2026-03-14
+    (rating) 5
+    (slug) mushroom-saute-tomato-paste
+    (title) Mushroom Saute with Tomato Paste
+    (image) /images/logs/food/mushroom.webp
+    (description) A minimalist mushroom sauté recipe emphasizing moisture control and high-heat techniques. Includes a progressive rock soundtrack recommendation for preparation.
+  > (item)
+    (category) Food
+    (date) 2025-11-03
+    (rating) 5
+    (slug) food-omelette
+    (title) Omelette
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) This entry describes the omelette as a versatile culinary staple, offering a recipe for a classic French-style omelette with instructions and optional fillings. It also provides a brief history, tracing its origins to ancient Persia and its modern form to 16th-century France, highlighting its enduring popularity across all social classes.
+  > (item)
+    (category) Food
+    (date) 2026-01-18
+    (rating) 5
+    (slug) tiftik-street-food
+    (title) Tiftik Street Food
+    (link) https://maps.app.goo.gl/nZ6jmFYoh8BmW2M8A
+    (description) Skull burger, Parmesan Truffle Fries and Hardaliye drink are amazing. A little pricey.

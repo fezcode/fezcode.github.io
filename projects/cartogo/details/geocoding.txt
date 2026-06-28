@@ -1,0 +1,8 @@
+# Geocoding Integration
+
+Precise location targeting via the Nominatim API.
+
+## Features
+- **Structured Search**: Targets specific cities and countries.
+- **Centroid Calculation**: Uses geocoded coordinates as the map center.
+- **Radius Tuning**: Allows users to zoom in or out from the geocoded point.

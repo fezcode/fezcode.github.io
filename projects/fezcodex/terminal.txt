@@ -1,0 +1,20 @@
+:::tab
+id: search
+label: Search
+command: fezcodex, search "brutalist design"
+output: Searching digital archive... Found 12 posts related to brutalism. Opening search results...
+:::
+
+:::tab
+id: theme
+label: Theme
+command: fezcodex, set theme to "cyberpunk"
+output: Applying visual overrides... Injecting neon-green CSS... Rebooting UI components... Theme set to Cyberpunk.
+:::
+
+:::tab
+id: archive
+label: Archive
+command: fezcodex, get "latest archive"
+output: Fetching latest transmissions... Retrieved "Building the Knowledge Graph". Rendering content...
+:::

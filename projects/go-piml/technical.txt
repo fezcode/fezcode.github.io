@@ -1,0 +1,8 @@
+LABEL: Architecture
+SUBTEXT: High Performance
+
+- **Spec Version**: v1.1.0
+- **Serialization**: Efficient reflection-based marshaling/unmarshaling.
+- **Reflection**: Uses custom `piml` struct tags for mapping.
+- **Concurrency**: Thread-safe operations for high-load environments.
+- **Standards**: Native support for `time.Time` and RFC3339Nano.
