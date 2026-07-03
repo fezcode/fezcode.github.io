@@ -123,15 +123,53 @@ Dush is a minimalist shell...
 - Feature 2
 ```
 
-## 4. Assets
+## 4. Hi-Fi Layout
+
+The **Hi-Fi** style (`(style) hifi`) turns the project page into a working music
+player. It was built for **Timp** but is fully data-driven and reusable for any
+audio/media project. Warm near-black ink, cream type (Unbounded display, Hanken
+Grotesk body, Spline Sans Mono labels), and — the signature — a transport that
+"plays" a queue of color palettes: every record re-samples the whole page's
+accent colors, exactly like Timp samples its accent from album art.
+
+Sections mirror the app's own panels: **Now Playing** (hero player + record
+rack), **The Queue** (features as tracks, keyed with real hotkeys), **Lyrics**
+(manifesto with scroll-synced karaoke highlight), **Equalizer** (source modules
+as faders, heights = real file sizes), **Screens**, and **Liner Notes** (stats,
+build snippet, credits). A mini-player bar docks to the bottom once the hero
+scrolls away.
+
+### Directory Structure
+
+All content lives in a single JSON config:
+
+```text
+public/projects/my-player/
+└── hifi.txt          # One JSON config for the whole page
+```
+
+### `hifi.txt` keys
+
+*   `wordmark`, `tagline`, `artist`, `version`, `repo`, `download`, `formats`
+*   `trackSeconds`: how long each palette "track" plays (default 24)
+*   `queue[]`: `{ title, desc, keys[], palette: { name, a, b } }` — one entry
+    per feature; `a`/`b` are the two gradient stops sampled into `--acc`/`--acc2`
+*   `lyrics`: `{ caption, lines[] }`
+*   `eq`: `{ heading, note, bands[]: { file, kb, level (0..1), role } }`
+*   `screens[]`: `{ src, caption }`
+*   `stats[]`: `{ value, label }`
+*   `build`: `{ caption, lines[] }` (rendered with a copy button)
+*   `liner[]`: paragraphs, `credits[]`: `{ name, role, href }`, `license`
+
+## 5. Assets
 
 *   **Images**: Place images in `public/images/projects/` or `public/images/bg/`.
 *   **Icons**: Use Phosphor icons where applicable in code, or SVG assets.
 
-## 5. Adding a New Project Checklist
+## 6. Adding a New Project Checklist
 
 1.  Create the folder `public/projects/[your-slug]`.
-2.  Choose your style: `stylish` or `editorial`.
+2.  Choose your style: `stylish`, `editorial`, `hifi`, etc.
 3.  Create the corresponding `.txt` files based on the chosen style's structure.
 4.  Add the project to `public/projects/projects.piml` with the correct `(style)` field.
 5.  Run `npm run lint` to ensure code quality.

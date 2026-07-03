@@ -50,6 +50,27 @@
     (image) /images/projects/gobake/gobake-banner.png
 
   > (project)
+    (slug) timp
+    (title) Timp
+    (style) hifi
+    (version) 0.9.0
+    (size) 2
+    (repo_link) https://github.com/fezcode/timp
+    (demo_link) https://github.com/fezcode/timp/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C11
+      > raylib
+      > miniaudio
+      > Audio
+      > Native
+      > Windows
+    (shortDescription) Timp is a small, native, album-art-forward music player written in C with raylib. Borderless Hi-Fi window, accent color sampled from the artwork, live spectrum, 10-band EQ, synced lyrics, and a slide-out playlist drawer — all statically linked into a single timp.exe.
+    (date) 2026-07-04
+    (image) /images/projects/timp/main.png
+
+  > (project)
     (slug) urban-tasks
     (title) Urban Tasks
     (redirect_url) https://fezcode.com/urban-tasks/

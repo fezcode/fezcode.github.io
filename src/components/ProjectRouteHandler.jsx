@@ -25,6 +25,7 @@ const LandscapeProjectPage = lazy(
 const RubyProjectPage = lazy(() => import('../pages/project-pages/RubyProjectPage'));
 const NeonSlideshowProjectPage = lazy(() => import('../pages/project-pages/NeonSlideshowProjectPage'));
 const AtlasProjectPage = lazy(() => import('../pages/project-pages/AtlasProjectPage'));
+const HifiProjectPage = lazy(() => import('../pages/project-pages/HifiProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -114,6 +115,14 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <AtlasProjectPage />
+      </Suspense>
+    );
+  }
+
+  if (projectStyle === 'hifi') {
+    return (
+      <Suspense fallback={<Loading />}>
+        <HifiProjectPage />
       </Suspense>
     );
   }
