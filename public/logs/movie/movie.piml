@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-07-19
+    (link) https://www.imdb.com/title/tt32565993/
+    (rating) 3
+    (slug) the-sheep-detectives
+    (title) The Sheep Detectives (2026)
+    (image)
+    (description) A flock of sheep solves the murder of their shepherd. Charming while the premise is doing the work, but underneath it's a conventional inheritance mystery that stops needing sheep once the plot takes over.
+    (director) Kyle Balda
+  > (item)
+    (category) Movie
     (date) 2026-06-23
     (link)
     (rating) 5
