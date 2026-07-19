@@ -1,0 +1,7 @@
+### Mastra - The Typescript AI Agent Framework
+
+A demo of Mastra, the open-source Agent Framework for Typescript.
+
+[Mastra Demo - The Typescript AI Agent Framework](https://www.youtube.com/watch?v=8o_Ejbcw5s8)
+
+Check the [Github Repo](https://github.com/mastra-ai/mastra)

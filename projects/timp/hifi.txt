@@ -1,0 +1,125 @@
+{
+  "wordmark": "TIMP",
+  "tagline": "A small, native, album-art-forward music player. The cover is the interface — and the interface takes its color from the cover.",
+  "artist": "fezcode · Şamil Bülbül",
+  "version": "0.9.0",
+  "repo": "https://github.com/fezcode/timp",
+  "download": "https://github.com/fezcode/timp/releases",
+  "formats": ["MP3", "FLAC", "OGG", "WAV"],
+  "trackSeconds": 24,
+  "rackLabel": "Timp samples its accent color from the album art. So does this page — drop the needle on a record.",
+  "queue": [
+    {
+      "title": "Sampled accents",
+      "desc": "Embedded covers (ID3v2 APIC, FLAC PICTURE), sibling cover.jpg, or a generated gradient — and the whole UI re-tints from the artwork.",
+      "keys": ["CLICK"],
+      "palette": { "name": "Midnight City", "a": "#F27BB4", "b": "#6C5BD4" }
+    },
+    {
+      "title": "Playlist drawer",
+      "desc": "The queue slides out beside the player. Drag files in, reorder rows, save it as a real .m3u8 that other players can open.",
+      "keys": ["Q"],
+      "palette": { "name": "Lagoon", "a": "#38C8C0", "b": "#2274A8" }
+    },
+    {
+      "title": "10-band equalizer",
+      "desc": "60 Hz to 16 kHz with ON and FLAT. Per-band gains persist in config.ini between sessions.",
+      "keys": ["E"],
+      "palette": { "name": "Golden Hour", "a": "#F5A524", "b": "#E4572E" }
+    },
+    {
+      "title": "Synced lyrics",
+      "desc": "Karaoke-style .lrc, plain .txt, embedded USLT / Vorbis LYRICS — with an lrclib.net fallback fetched on a background thread.",
+      "keys": ["Y"],
+      "palette": { "name": "Ultraviolet", "a": "#B478F0", "b": "#4A3AB8" }
+    },
+    {
+      "title": "Spectrum & waveform",
+      "desc": "Click the album art to cycle cover → spectrum bars → waveform. A mini spectrum always dances under the title.",
+      "keys": ["CLICK"],
+      "palette": { "name": "Tangerine Dream", "a": "#FF8A3C", "b": "#D6486B" }
+    },
+    {
+      "title": "Shuffle & repeat",
+      "desc": "Fixed-order shuffle — the list is shuffled once and prev/next follow that order — plus 3-state repeat: off, one, all.",
+      "keys": ["S", "L"],
+      "palette": { "name": "Neon Meadow", "a": "#A5E63A", "b": "#2F9E63" }
+    },
+    {
+      "title": "System integration",
+      "desc": "System-wide media keys, always-on-top, a procedurally drawn taskbar icon, and window position that survives restarts.",
+      "keys": ["T"],
+      "palette": { "name": "Glacier", "a": "#7FB5F5", "b": "#5C5CD6" }
+    },
+    {
+      "title": "Four formats, every glyph",
+      "desc": "MP3, FLAC, OGG and WAV decoded by miniaudio. File open and decode go through the Win32 wide API, so Unicode paths work end to end.",
+      "keys": ["O"],
+      "palette": { "name": "Ember Days", "a": "#F4435E", "b": "#8B2E6B" }
+    }
+  ],
+  "lyrics": {
+    "caption": "timp.lrc — synced",
+    "lines": [
+      "One window, borderless.",
+      "The cover is the interface.",
+      "Every record repaints the room.",
+      "Decoded in C, drawn at refresh rate.",
+      "No installer. No runtime. No telemetry.",
+      "One exe, statically linked.",
+      "Your folders, your glyphs, your music.",
+      "Press space. That's it."
+    ]
+  },
+  "eq": {
+    "heading": "The whole player fits on an equalizer",
+    "note": "Ten modules of pure C11. Band height is each file's real share of the codebase — rl_main.c is the master fader.",
+    "bands": [
+      { "file": "osdialog.c", "kb": "3.7", "level": 0.38, "role": "Native open dialog + DWM rounded corners" },
+      { "file": "audio.c", "kb": "7.2", "level": 0.53, "role": "miniaudio engine — thread-safe decode, Unicode paths" },
+      { "file": "tags.c", "kb": "10.1", "level": 0.6, "role": "ID3v2 / Vorbis metadata + embedded lyrics" },
+      { "file": "art.c", "kb": "6.1", "level": 0.49, "role": "Embedded + folder cover-art extraction" },
+      { "file": "lyrics.c", "kb": "11.3", "level": 0.62, "role": ".lrc / .txt parsing + lrclib.net fetch" },
+      { "file": "eq.c + fft.c", "kb": "6.3", "level": 0.5, "role": "10-band EQ + spectrum FFT" },
+      { "file": "playlist.c", "kb": "7.9", "level": 0.55, "role": "Queue, index + fixed-order shuffle" },
+      { "file": "playlistio.c", "kb": "5.0", "level": 0.45, "role": "Save / load / list .m3u8 playlists" },
+      { "file": "mediakeys.c", "kb": "1.8", "level": 0.25, "role": "System-wide media-key hotkeys" },
+      { "file": "rl_main.c", "kb": "82.8", "level": 1, "role": "Window, event loop, UI, every panel (raylib)" }
+    ]
+  },
+  "screens": [
+    { "src": "/images/projects/timp/main.png", "caption": "Now playing — accent sampled from the art" },
+    { "src": "/images/projects/timp/queue.png", "caption": "Queue drawer — reorder, remove, save as .m3u8" },
+    { "src": "/images/projects/timp/eq.png", "caption": "10-band EQ — 60 Hz to 16 kHz" },
+    { "src": "/images/projects/timp/lyrics.png", "caption": "Synced lyrics — karaoke highlight" },
+    { "src": "/images/projects/timp/settings.png", "caption": "Settings — drawer side, on-top, library" }
+  ],
+  "stats": [
+    { "value": "C11", "label": "pure, no runtime" },
+    { "value": "1", "label": "exe, zero DLLs" },
+    { "value": "4", "label": "audio formats" },
+    { "value": "10", "label": "EQ bands" },
+    { "value": "0", "label": "telemetry" },
+    { "value": "v0.9.0", "label": "anchored shuffle" }
+  ],
+  "build": {
+    "caption": "MSYS2 / MinGW64",
+    "lines": [
+      "pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-pkgconf mingw-w64-x86_64-raylib",
+      ".\\build.ps1",
+      ".\\build\\timp.exe"
+    ]
+  },
+  "liner": [
+    "Timp is what happens when a music player is built like a hi-fi component instead of a web app: one borderless window, large cover art, anti-aliased type, and an accent color sampled live from whatever record is playing.",
+    "Under the hood it is pure C11. raylib draws the window at monitor refresh rate, miniaudio decodes MP3, FLAC, OGG and WAV on a worker thread, and everything links statically into a single timp.exe — no installer, no runtime, no telemetry.",
+    "Playlists are honest .m3u8 files with absolute UTF-8 paths, settings live in a plain config.ini under %APPDATA%\\Timp, and lyrics arrive from .lrc files, embedded tags, or lrclib.net when the shelf is empty."
+  ],
+  "credits": [
+    { "name": "raylib", "role": "window, input, rendering — zlib", "href": "https://www.raylib.com/" },
+    { "name": "miniaudio", "role": "audio decode + output — MIT-0", "href": "https://miniaud.io/" },
+    { "name": "stb_image", "role": "cover-art decoding — public domain", "href": "https://github.com/nothings/stb" },
+    { "name": "lrclib.net", "role": "community lyrics database", "href": "https://lrclib.net/" }
+  ],
+  "license": "All code written for Timp is released into the public domain."
+}

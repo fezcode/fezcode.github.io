@@ -1,0 +1,68 @@
+[
+  {
+    "id": "overview",
+    "title": "System Overview",
+    "image": "london.webp",
+    "file": "overview.txt"
+  },
+  {
+    "id": "rendering",
+    "title": "Rendering Engine",
+    "image": "new_york.webp",
+    "file": "rendering.txt"
+  },
+  {
+    "id": "typography",
+    "title": "High-Fidelity Type",
+    "image": "paris.webp",
+    "file": "typography.txt"
+  },
+  {
+    "id": "data-pipeline",
+    "title": "OSM Data Pipeline",
+    "image": "venice.webp",
+    "file": "data-pipeline.txt"
+  },
+  {
+    "id": "caching",
+    "title": "Binary Caching",
+    "image": "barcelona.webp",
+    "file": "caching.txt"
+  },
+  {
+    "id": "smart-radius",
+    "title": "Dynamic Scaling",
+    "image": "san_francisco.webp",
+    "file": "smart-radius.txt"
+  },
+  {
+    "id": "theming",
+    "title": "JSON Theme Engine",
+    "image": "marrakech.webp",
+    "file": "theming.txt"
+  },
+  {
+    "id": "geocoding",
+    "title": "Nominatim Integration",
+    "image": "amsterdam.webp",
+    "file": "geocoding.txt"
+  },
+  {
+    "id": "high-resolution",
+    "title": "300 DPI Export",
+    "image": "dubai.webp",
+    "file": "high-resolution.txt"
+  },
+  {
+    "id": "performance",
+    "title": "Go Concurrency",
+    "image": "istanbul.webp",
+    "file": "performance.txt"
+  },
+  {
+    "id": "cli-usage",
+    "title": "Automation & CLI",
+    "image": "sydney.webp",
+    "file": "cli-usage.txt"
+  }
+]

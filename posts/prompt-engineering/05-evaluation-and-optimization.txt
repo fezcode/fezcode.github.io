@@ -1,0 +1,75 @@
+# Evaluation & Optimization: How to Measure and Improve Your Prompts
+
+Module 5. By now, you've written a lot of prompts. But are they *good* prompts? How do you know? This module focuses on the crucial step of **Evaluation & Optimization**.
+
+## 1. The Subjectivity Problem
+
+LLM outputs are inherently subjective. "Write a funny joke" has no single correct answer. "Summarize this article" can result in 10 different valid summaries.
+
+### So, how do we evaluate?
+We need to define **criteria** and **metrics**.
+
+-   **Correctness:** Fact-checking against a source.
+-   **Style Adherence:** Did it sound like a pirate? (Yes/No).
+-   **Completeness:** Did it include all 3 key points?
+-   **Conciseness:** Was it under 50 words?
+
+## 2. LLM-as-a-Judge
+
+Using an LLM to evaluate another LLM's output is a powerful and surprisingly effective technique.
+
+**Prompt for the Judge:**
+> You are an impartial judge. Evaluate the following summary based on the original text.
+>
+> Original Text: """..."""
+>
+> Summary: """..."""
+>
+> Score (1-5):
+> Reasoning:
+
+This allows you to scale your evaluation process without manually reading thousands of outputs.
+
+## 3. Golden Datasets
+
+Create a "Golden Dataset" of 50-100 inputs with **perfect** human-written outputs. Run your prompt on these inputs and compare the results.
+
+-   **Exact Match:** Rarely useful for text generation.
+-   **Semantic Similarity:** Using embeddings to see if the meaning is close.
+-   **Rubric Grading:** Using the LLM-Judge approach with specific criteria.
+
+## 4. Iterative Refinement
+
+Prompt engineering is an **iterative** process.
+1.  Write a baseline prompt.
+2.  Run it on 10 examples.
+3.  Find where it failed.
+4.  Update the prompt to fix the failure.
+5.  Repeat.
+
+**Example:**
+-   *Failure:* The model hallucinated a date.
+-   *Fix:* Add "If the date is not mentioned, write 'N/A'." to the instructions.
+-   *Run again.*
+
+## 5. Temperature & Parameters
+
+-   **Temperature (0.0 - 1.0+):** Controls randomness.
+    -   **Low (0.0 - 0.3):** Deterministic, focused, factual. (Code, Math).
+    -   **High (0.7 - 1.0):** Creative, diverse, unpredictable. (Storytelling, Brainstorming).
+-   **Top P (Nucleus Sampling):** Another way to control diversity. Usually, just tune Temperature.
+
+**Rule of Thumb:**
+-   **Extraction/Classification:** Temp = 0.
+-   **Summarization/Writing:** Temp = 0.7.
+
+## Summary
+
+| Metric | Definition | Tool |
+| :--- | :--- | :--- |
+| **Correctness** | Factual accuracy. | Golden Dataset / Judge. |
+| **Style** | Tone/Voice matching. | LLM-Judge. |
+| **Completeness** | Missing info. | Regex / LLM-Judge. |
+| **Temperature** | Randomness control. | Model Parameter. |
+
+In the final module, we will explore the cutting edge: **Advanced Agents & Tools**, where LLMs stop just talking and start *doing*.

@@ -1,0 +1,13 @@
+`go-piml` is a Go package that provides functionality to marshal and unmarshal data to and from the PIML (Parenthesis Intended Markup Language) format. PIML is a human-readable, indentation-based data serialization format designed for configuration files and simple data structures.
+
+## Go Integration
+
+Define your Go struct with `piml` tags:
+
+```go
+type Config struct {
+	SiteName    string    `piml:"site_name"`
+	Port        int       `piml:"port"`
+	IsProduction bool      `piml:"is_production"`
+}
+```

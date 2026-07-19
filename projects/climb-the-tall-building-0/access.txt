@@ -1,0 +1,12 @@
+LABEL: Access
+SUBTEXT: Play Now
+IMAGE: /images/projects/climb-the-tall-building-0/4.png
+
+CLIMB THE TALL BUILDING 0 is available for immediate browser-based play at:
+**[Launch Game](https://fezcode.com/climb-the-tall-building-0/)**
+
+**Controls:**
+- **Select Card**: `Left Click`
+- **Target Enemy**: `Left Click` on enemy when attack card is selected
+- **End Turn**: `Click 'END TURN'`
+- **Navigate Map**: `Click Node`
