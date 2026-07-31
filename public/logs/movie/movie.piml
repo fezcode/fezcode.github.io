@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-07-31
+    (link) https://www.imdb.com/title/tt0258463/
+    (rating) 5
+    (slug) the-jason-bourne-series
+    (title) The Jason Bourne Series (2002–2007)
+    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (description) The definitive modern spy action trilogy that redefined kinetic action cinema. Following amnesiac black-ops assassin Jason Bourne as he uncovers the sinister Treadstone and Blackbriar programs across three relentless, masterfully directed films.
+    (director) Doug Liman, Paul Greengrass
+  > (item)
+    (category) Movie
     (date) 2026-07-19
     (link) https://www.imdb.com/title/tt32565993/
     (rating) 3
