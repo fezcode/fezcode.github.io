@@ -1,0 +1,27 @@
+id: synthwave
+rank: 03
+name: SYNTHWAVE / CYBERPUNK
+years: 1980 → 1999
+tag: CYBER-SYNTH
+origin: Worldwide Cyber Underground
+signature: Arpeggiated analog synthlines, gated reverb snare, neon melodies
+keyGear: Roland Juno-106, LinnDrum, Oberheim OB-Xa
+audio: /demystify/genre/synthwave.mp3
+freqs: 130.81, 164.81, 196.0, 246.94
+synthType: sawtooth
+
+breakdown:
+The definitive sound of retro-futurism. Demystified: synthesizes 90s arcade soundtracks, sci-fi synth pulses, and neon night-drive nostalgia.
+
+ascii:
++-----------------------------------------+
+| [* *] SYNTHWAVE NEON ARPEGGIATOR [* *]  |
+| .oO0Oo..oO0Oo..oO0Oo..oO0Oo..oO0Oo..oO  |
+| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ |
++-----------------------------------------+
+
+examples:
+- Kavinsky - Nightcall (2011) | Iconic Drive soundtrack anthem, vocoder vocals, heavy 80s drum beat
+- CARPENTER BRUT - Turbo Killer (2015) | Fast cyberpunk synth arpeggios, heavy distorted basslines
+- THE MIDNIGHT - Sunset (2016) | Nostalgic synthpop melodies, sax solos, warm analog textures
+- GUNSHIP - Tech Noir (2015) | Atmospheric sci-fi synths, John Carpenter speech intro

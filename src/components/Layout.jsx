@@ -83,6 +83,7 @@ const Layout = ({
   // Check if we are inside a specific app (but not the apps listing page)
   const isAppDetail =
     location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
+  const isDemystifyPage = location.pathname.startsWith('/demystify');
   const hideLayout =
     isAboutPage ||
     isGraphPage ||
@@ -90,6 +91,7 @@ const Layout = ({
     isTheVaguePage ||
     isTerminalPage ||
     isSnfAny ||
+    isDemystifyPage ||
     (isAppDetail && isAppFullscreen);
 
   const mainContent = location.pathname.startsWith('/stories') ? (

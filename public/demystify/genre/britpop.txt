@@ -1,0 +1,27 @@
+id: britpop
+rank: 07
+name: BRITPOP
+years: 1993 → 1997
+tag: UK-INDIE
+origin: London & Manchester
+signature: Catchy 60s guitar pop hooks, swagger, anthemic singalong choruses
+keyGear: Epiphone Riviera, Vox AC30, Rickenbacker 330
+audio: /demystify/genre/britpop.mp3
+freqs: 196.0, 246.94, 293.66, 392.0
+synthType: sine
+
+breakdown:
+Celebrated British identity in response to US grunge. Demystified: rewrote 60s Kinks & Beatles melody craft with 90s swagger, loud amplifiers, and terrace chant choruses.
+
+ascii:
++-----------------------------------------+
+| [UK]  BRITPOP ANTHEM SWAGGER     [UK]   |
+| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
+| ======================================= |
++-----------------------------------------+
+
+examples:
+- Oasis - Live Forever (1994) | Sky-scraping guitar solos, anthemic vocal melody, classic 90s British rock
+- Blur - Parklife (1994) | Witty spoken word verses, catchy ska-pop brass and guitar chords
+- Pulp - Common People (1995) | Dramatic synth buildup, social commentary lyrics, disco-indie climax
+- The Verve - Bitter Sweet Symphony (1997) | Iconic orchestral string loop, swaggering urban stride

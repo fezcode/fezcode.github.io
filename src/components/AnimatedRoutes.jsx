@@ -272,6 +272,7 @@ const FezluxeDesignPage = lazy(
   () => import('../pages/luxe-views/FezluxeDesignPage'),
 );
 const RetroTerminalPage = lazy(() => import('../pages/RetroTerminalPage'));
+const DemystifiedGenrePage = lazy(() => import('../pages/DemystifiedGenrePage'));
 const ProjectRouteHandler = lazy(
   () => import('../components/ProjectRouteHandler'),
 );
@@ -1080,6 +1081,34 @@ const AnimatedRoutes = ({
               </Suspense>
             </motion.div>
           }
+        />
+        <Route
+          path="/demystify"
+          element={<Navigate to="/demystify/genre" replace />}
+        />
+        <Route
+          path="/demystify/genre"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DemystifiedGenrePage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/demystified-genre"
+          element={<Navigate to="/demystify/genre" replace />}
+        />
+        <Route
+          path="/apps/demystified-genre"
+          element={<Navigate to="/demystify/genre" replace />}
         />
         {/* Hardcoded redirects for fc::apps:: paths */}
         <Route

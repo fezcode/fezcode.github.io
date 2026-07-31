@@ -1,0 +1,27 @@
+id: acidhouse
+rank: 09
+name: ACID HOUSE
+years: 1988 → 1995
+tag: HOUSE
+origin: Chicago & Manchester
+signature: Resonant Roland TB-303 squelches, 707 drum accents, hypnotic loop
+keyGear: Roland TB-303 Bassline, Roland TR-909 / TR-707
+audio: /demystify/genre/acidhouse.mp3
+freqs: 130.81, 261.63, 196.0, 146.83
+synthType: sawtooth
+
+breakdown:
+Pioneered in Chicago and embraced by UK Summer of Love. Demystified: built entirely around turning the 303 filter resonance knobs to produce squelchy psychedelic bass textures.
+
+ascii:
++-----------------------------------------+
+| (:-) ACID HOUSE 303 RESONANCE    (-:)   |
+| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ |
+| o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o |
++-----------------------------------------+
+
+examples:
+- Phuture - Acid Tracks (1987) | The origin track of Chicago Acid House, 11 minutes of 303 filter tweaks
+- 808 State - Pacific State (1989) | UK acid house classic, bird calls, soprano sax over 808 rhythms
+- Josh Wink - Higher State of Consciousness (1995) | Screaming 303 filter sweep pitch bends at 130 BPM
+- A Guy Called Gerald - Voodoo Ray (1988) | Haunting vocal sample, squelchy 303 bassline, Haçienda classic

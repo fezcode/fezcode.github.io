@@ -1,0 +1,27 @@
+id: shoegaze
+rank: 06
+name: SHOEGAZE
+years: 1988 → 1997
+tag: DREAM-POP
+origin: Thames Valley, UK
+signature: Wall-of-sound guitar reverb, glide guitar bend, submerged vocals
+keyGear: Yamaha SPX90 Reverse Reverb, Fender Jazzmaster, Big Muff
+audio: /demystify/genre/shoegaze.mp3
+freqs: 146.83, 220.0, 293.66, 370.0
+synthType: triangle
+
+breakdown:
+Coined by UK music press observing guitarists gazing at pedalboards. Demystified: created ethereal noise-pop landscapes where melody is enveloped in beautiful textured distortion.
+
+ascii:
++-----------------------------------------+
+| (~~~) SHOEGAZE NOISE REVERB WALL (~~~)  |
+| ::::::::::::::::::::::::::::::::::::::: |
+| ....................................... |
++-----------------------------------------+
+
+examples:
+- My Bloody Valentine - Only Shallow (1991) | Iconic glide guitar whammy technique, wall-of-sound distortion
+- Slowdive - Alison (1993) | Dreamy ambient guitar textures, lush reverb washes, delicate vocal duet
+- Ride - Vapour Trail (1990) | Driving indie pop drums, shimmering guitar feedback, cello outro
+- Cocteau Twins - Heaven or Las Vegas (1990) | Ethereal vocal glossolalia, crystalline chorus guitars

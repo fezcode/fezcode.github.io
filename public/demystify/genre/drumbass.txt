@@ -1,0 +1,27 @@
+id: drumbass
+rank: 05
+name: DRUM & BASS / JUNGLE
+years: 1992 → 2026
+tag: BREAKBEAT
+origin: London Underground
+signature: 160-180 BPM chopped Amen breaks, sub-bass pressure, reggae dub stabs
+keyGear: E-mu E6400 Sampler, Novation Bass Station, Logic Audio
+audio: /demystify/genre/drumbass.mp3
+freqs: 65.41, 130.81, 196.0, 261.63
+synthType: square
+
+breakdown:
+Evolved out of UK rave sounds. Demystified: complex polyrhythmic drum manipulation combined with deep sub-woofer basslines and atmospheric synth stabs.
+
+ascii:
++-----------------------------------------+
+| [!!!] D&B AMEN BREAK 174 BPM    [!!!]   |
+| | | || | | || | | || | | || | | || | |  |
+| _______________________________________ |
++-----------------------------------------+
+
+examples:
+- Goldie - Inner City Life (1994) | Soulful vocals over hyper-edited jungle breakbeats
+- LTJ Bukem - Atlantis (1993) | Atmospheric liquid drum & bass pioneer, lush ambient synths
+- Pendulum - Tarantula (2005) | High-energy stadium drum & bass with rock guitar fusion
+- Shy FX - Original Nuttah (1994) | Classic ragga jungle anthem, pitch-shifted snare rolls

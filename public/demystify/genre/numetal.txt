@@ -1,0 +1,27 @@
+id: numetal
+rank: 08
+name: NU METAL
+years: 1994 → 2003
+tag: RAP-ROCK
+origin: Bakersfield & Los Angeles
+signature: 7-string down-tuned groove riffs, hip-hop bounce, DJ turntables
+keyGear: Ibanez Universe 7-String, Mesa Boogie Dual Rectifier
+audio: /demystify/genre/numetal.mp3
+freqs: 82.41, 123.47, 164.81, 82.41
+synthType: sawtooth
+
+breakdown:
+Dominant late-90s metal sound. Demystified: abandoned traditional solos for rhythm-heavy bounce, aggressive vocal dynamics, and hip-hop turntablism fusion.
+
+ascii:
++-----------------------------------------+
+| [XXX] NU METAL 7-STRING BOUNCE   [XXX]  |
+| ||  ||  ||  ||  ||  ||  ||  ||  ||  ||  |
+| vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv |
++-----------------------------------------+
+
+examples:
+- Korn - Blind (1994) | Low-tuned 7-string guitar intro ("Are You Ready?!"), heavy slap bass
+- Limp Bizkit - Break Stuff (1999) | Hip-hop vocal delivery, heavy groove guitar riff, turntablism
+- Linkin Park - In the End (2000) | Piano intro, rap/singing dual dynamics, turntable scratches
+- System of a Down - Chop Suey! (2001) | Staccato acoustic guitar to explosive metal riffing, opera vocals

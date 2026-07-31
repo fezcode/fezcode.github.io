@@ -1,0 +1,27 @@
+id: eurodance
+rank: 01
+name: EURODANCE
+years: 1992 → 1999
+tag: DANCE / TECHNO
+origin: Frankfurt & Amsterdam
+signature: 135-145 BPM pulse, euphoric female hooks, hyper rap stabs
+keyGear: Roland JP-8000 (SuperSaw), Korg M1 Organ, E-mu Orbit
+audio: /demystify/genre/eurodance.mp3
+freqs: 261.63, 329.63, 392.0, 523.25
+synthType: square
+
+breakdown:
+Conquered European charts & global club floors. Demystified: driven by fast synth stabs, 4-on-the-floor kick drums, and unshakeable hooks designed for peak energy dancefloors.
+
+ascii:
++-----------------------------------------+
+| [>>>]  EURODANCE  138 BPM PULSE  [<<<]  |
+| ||||||||||||||||||||||||||||||||||||||| |
+| /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/  |
++-----------------------------------------+
+
+examples:
+- Snap! - Rhythm Is a Dancer (1992) | Classic Korg M1 organ lead, iconic 90s dance arrangement
+- Corona - The Rhythm of the Night (1993) | Uplifting vocal hook, energetic synth bassline
+- 2 Unlimited - No Limit (1993) | Aggressive synth lead stab, high-octane 145 BPM rave energy
+- Real McCoy - Another Night (1994) | US chart-topping Eurodance anthem with vocal duals
