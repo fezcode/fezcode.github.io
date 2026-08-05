@@ -14,11 +14,12 @@ breakdown:
 Replaced 80s glam hair metal polish with heavy distorted riffs, raw emotional intensity, and unvarnished realism. Demystified: blended Black Sabbath heaviness with punk irreverence.
 
 ascii:
-+-----------------------------------------+
-| [###]  GRUNGE FUZZ SLUDGE RAGE   [###]  |
-| ####################################### |
-| %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% |
-+-----------------------------------------+
+┌────────────────────────────────────────┐
+│ ▁▁▂▁▁▂▁▁    ███████████    ▁▁▂▁▁▂▁▁    │
+│ ░░░░░░░░  ▓▓███████████▓▓  ░░░░░░░░    │
+│ ── QUIET ──────  LOUD  ────── QUIET ── │
+│ FUZZ ░▒▓█  BIG MUFF ─ DROP D ─ 112 BPM │
+└────────────────────────────────────────┘
 
 examples:
 - Nirvana - Smells Like Teen Spirit (1991) | Benchmark quiet verse to explosive chorus dynamic

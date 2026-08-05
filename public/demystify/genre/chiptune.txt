@@ -14,11 +14,12 @@ breakdown:
 Crafted from early gaming hardware limitations. Demystified: sound programmers used rapid arpeggios to simulate chordal harmony on hardware with limited monophonic tone channels.
 
 ascii:
-+-----------------------------------------+
-| [8BIT] CHIPTUNE PULSE WAVE       [8BIT] |
-| _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ |
-| +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-+-----------------------------------------+
+┌───────────────────────────────────────┐
+│ PULSE ▁▁▁▁████▁▁▁▁████▁▁▁▁████▁▁▁▁    │
+│ SQR   ████▁▁▁▁████▁▁▁▁████▁▁▁▁████    │
+│ NOISE ░▒░▓░▒░░▓▒░▓░▒░░▓▒░▓░▒░░▓▒░     │
+│ ──── 2A03 ── 4 CHANNELS ── 8 BIT ──── │
+└───────────────────────────────────────┘
 
 examples:
 - Anamanaguchi - Endless Fantasy (2013) | NES synth hardware mixed with modern pop-punk live drums

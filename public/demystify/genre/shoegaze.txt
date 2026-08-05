@@ -14,11 +14,13 @@ breakdown:
 Coined by UK music press observing guitarists gazing at pedalboards. Demystified: created ethereal noise-pop landscapes where melody is enveloped in beautiful textured distortion.
 
 ascii:
-+-----------------------------------------+
-| (~~~) SHOEGAZE NOISE REVERB WALL (~~~)  |
-| ::::::::::::::::::::::::::::::::::::::: |
-| ....................................... |
-+-----------------------------------------+
+┌───────────────────────────────────────┐
+│ ████████████████████████████████████  │
+│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  │
+│ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│ ····· VOCALS BURIED IN THE WALL ····· │
+└───────────────────────────────────────┘
 
 examples:
 - My Bloody Valentine - Only Shallow (1991) | Iconic glide guitar whammy technique, wall-of-sound distortion

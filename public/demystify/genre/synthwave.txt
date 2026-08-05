@@ -14,11 +14,15 @@ breakdown:
 The definitive sound of retro-futurism. Demystified: synthesizes 90s arcade soundtracks, sci-fi synth pulses, and neon night-drive nostalgia.
 
 ascii:
-+-----------------------------------------+
-| [* *] SYNTHWAVE NEON ARPEGGIATOR [* *]  |
-| .oO0Oo..oO0Oo..oO0Oo..oO0Oo..oO0Oo..oO  |
-| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ |
-+-----------------------------------------+
+┌────────────────────────────────────┐
+│        ▄▄████████████▄▄            │
+│      ▄████████████████████▄        │
+│      ██████████████████████        │
+│      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀        │
+│      ██████████████████████        │
+│ ──────┴──────┴──────┴──────┴────── │
+│    ╱        ╱      ╲        ╲      │
+└────────────────────────────────────┘
 
 examples:
 - Kavinsky - Nightcall (2011) | Iconic Drive soundtrack anthem, vocoder vocals, heavy 80s drum beat

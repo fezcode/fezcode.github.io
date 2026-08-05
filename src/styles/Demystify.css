@@ -1,0 +1,674 @@
+/* ==========================================================================
+   Demystify — a minimal, p.cv-flavoured monospace archive.
+   One stylesheet for /demystify and every collection beneath it.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* --- Palette -------------------------------------------------------------
+   The active theme is stamped onto <html> by useDemystifyTheme.
+   Theme 3 (dark) is also the :root default so the first paint is never bare. */
+
+:root,
+html[data-demystify-theme='3'] {
+  --dm-bg: #11111a;
+  --dm-fg: #dddddd;
+  --dm-accent: #6acac9;
+  --dm-muted: #666677;
+  --dm-highlight: #ffffff;
+  --dm-sunken: rgba(0, 0, 0, 0.22);
+}
+
+html[data-demystify-theme='1'] {
+  --dm-bg: #ffffff;
+  --dm-fg: #222226;
+  --dm-accent: #0044ff;
+  --dm-muted: #888899;
+  --dm-highlight: #000000;
+  --dm-sunken: rgba(0, 0, 0, 0.04);
+}
+
+html[data-demystify-theme='2'] {
+  --dm-bg: #95abc0;
+  --dm-fg: #2b303b;
+  --dm-accent: #002266;
+  --dm-muted: #506070;
+  --dm-highlight: #0d121c;
+  --dm-sunken: rgba(13, 18, 28, 0.08);
+}
+
+html[data-demystify-theme='4'] {
+  --dm-bg: #0d0e12;
+  --dm-fg: #00ff66;
+  --dm-accent: #ffb000;
+  --dm-muted: #008833;
+  --dm-highlight: #00ffaa;
+  --dm-sunken: rgba(0, 255, 102, 0.05);
+}
+
+/* --- Frame --------------------------------------------------------------- */
+
+.dm-root {
+  background-color: var(--dm-bg);
+  color: var(--dm-fg);
+  font-family: 'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+  font-size: 15px;
+  line-height: 1.55;
+  min-height: 100vh;
+  padding: 2.5rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+.dm-container {
+  width: 100%;
+  max-width: 940px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 5rem);
+}
+
+.dm-main {
+  flex: 1;
+}
+
+/* --- Masthead ------------------------------------------------------------ */
+
+.dm-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dm-muted);
+}
+
+.dm-brand {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--dm-highlight);
+}
+
+.dm-tagline {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+}
+
+.dm-subbrand {
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-accent);
+  white-space: nowrap;
+}
+
+.dm-uplink {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dm-uplink:hover,
+.dm-uplink:focus-visible {
+  color: var(--dm-accent);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .dm-root {
+    padding: 1.75rem 1.1rem;
+  }
+
+  .dm-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* --- Copy ---------------------------------------------------------------- */
+
+.dm-intro {
+  max-width: 62ch;
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+  color: var(--dm-fg);
+}
+
+.dm-intro strong {
+  color: var(--dm-highlight);
+}
+
+.dm-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 1.5rem;
+  margin: 0 0 1.5rem;
+  font-size: 0.76rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+}
+
+.dm-stats strong {
+  color: var(--dm-accent);
+}
+
+.dm-notice {
+  margin: 0;
+  padding: 1.75rem 1rem;
+  border: 1px dashed var(--dm-muted);
+  font-size: 0.82rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--dm-muted);
+}
+
+.dm-notice-error {
+  border-style: solid;
+  border-color: var(--dm-accent);
+  color: var(--dm-accent);
+}
+
+.dm-notice-error p {
+  margin: 0 0 0.75rem;
+}
+
+.dm-section-title {
+  margin: 0 0 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dm-accent);
+}
+
+.dm-rank {
+  font-weight: 700;
+  color: var(--dm-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Hub: collection cards ----------------------------------------------- */
+
+.dm-cards,
+.dm-list,
+.dm-example-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dm-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dm-card {
+  border: 1px solid var(--dm-muted);
+  border-radius: 2px;
+}
+
+.dm-card.is-pending {
+  border-style: dashed;
+  opacity: 0.55;
+}
+
+.dm-card-link {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0.85rem 1rem;
+  color: var(--dm-fg);
+  text-decoration: none;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+a.dm-card-link:hover,
+a.dm-card-link:focus-visible {
+  background: var(--dm-fg);
+  color: var(--dm-bg);
+  outline: none;
+}
+
+a.dm-card-link:hover :is(.dm-rank, .dm-card-blurb, .dm-card-count),
+a.dm-card-link:focus-visible :is(.dm-rank, .dm-card-blurb, .dm-card-count) {
+  color: inherit;
+  opacity: 0.75;
+}
+
+a.dm-card-link:hover :is(.dm-card-tag, .dm-card-status),
+a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
+  color: inherit;
+}
+
+.dm-card-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 0.92rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.dm-card-name {
+  flex: 1;
+  font-weight: 700;
+}
+
+.dm-card-count,
+.dm-card-status {
+  font-size: 0.74rem;
+  white-space: nowrap;
+}
+
+.dm-card-count {
+  color: var(--dm-muted);
+}
+
+.dm-card-status {
+  font-weight: 700;
+  color: var(--dm-accent);
+}
+
+.is-pending .dm-card-status,
+.is-pending .dm-card-tag {
+  color: var(--dm-muted);
+}
+
+.dm-card-blurb {
+  font-size: 0.8rem;
+  color: var(--dm-muted);
+}
+
+.dm-card-tag {
+  margin-right: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-accent);
+}
+
+/* --- Collection index rows ----------------------------------------------- */
+
+.dm-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.dm-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.dm-row-link {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 3ch minmax(0, 1fr) auto auto 1.5rem;
+  align-items: baseline;
+  gap: 0 1rem;
+  padding: 0.5rem 0.6rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-fg);
+  text-decoration: none;
+  border-radius: 2px;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.dm-row-link:hover,
+.dm-row-link:focus-visible {
+  background: var(--dm-fg);
+  color: var(--dm-bg);
+  outline: none;
+}
+
+.dm-row-link:hover :is(.dm-rank, .dm-row-years, .dm-row-tag),
+.dm-row-link:focus-visible :is(.dm-rank, .dm-row-years, .dm-row-tag) {
+  color: inherit;
+  opacity: 0.8;
+}
+
+.dm-row-name {
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dm-row-years,
+.dm-row-tag {
+  font-size: 0.76rem;
+  color: var(--dm-muted);
+  white-space: nowrap;
+}
+
+.dm-row-open {
+  font-weight: 700;
+  text-align: right;
+}
+
+@media (max-width: 760px) {
+  .dm-row-link {
+    grid-template-columns: 3ch minmax(0, 1fr) 1.5rem;
+    row-gap: 2px;
+  }
+
+  .dm-row-years {
+    grid-column: 2;
+  }
+
+  .dm-row-tag {
+    grid-column: 2;
+  }
+
+  .dm-row-open {
+    grid-column: 3;
+    grid-row: 1;
+  }
+}
+
+/* --- Audition button ----------------------------------------------------- */
+
+.dm-audition {
+  flex-shrink: 0;
+  align-self: center;
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--dm-accent);
+  border-radius: 2px;
+  color: var(--dm-accent);
+  padding: 3px 9px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dm-audition.is-wide {
+  padding: 6px 16px;
+  font-size: 0.8rem;
+}
+
+.dm-audition:hover:not(:disabled),
+.dm-audition:focus-visible:not(:disabled) {
+  background: var(--dm-accent);
+  color: var(--dm-bg);
+  outline: none;
+}
+
+.dm-audition:disabled {
+  border-color: var(--dm-muted);
+  color: var(--dm-muted);
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* --- Entry detail -------------------------------------------------------- */
+
+.dm-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dm-entry-head {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dm-muted);
+}
+
+.dm-entry-title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-highlight);
+}
+
+.dm-entry-meta {
+  margin: 6px 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-accent);
+}
+
+/* The art carries its own ┌─┐ frame, so the box here is only a tint — a CSS
+   border on top of it would read as a double frame. `line-height: 1` lets
+   stacked █ rows tile without hairline gaps; every glyph used is uppercase or
+   a box/block character, so nothing has a descender to clip. */
+.dm-ascii {
+  align-self: flex-start;
+  max-width: 100%;
+  margin: 0;
+  padding: 0.9rem 1rem;
+  overflow-x: auto;
+  background: var(--dm-sunken);
+  border-radius: 2px;
+  color: var(--dm-accent);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  white-space: pre;
+  user-select: none;
+}
+
+.dm-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.dm-meta-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.dm-meta-label {
+  flex-shrink: 0;
+  width: 16ch;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+}
+
+.dm-meta-value {
+  margin: 0;
+  color: var(--dm-highlight);
+}
+
+.dm-meta-value q {
+  color: var(--dm-accent);
+  font-style: italic;
+}
+
+@media (max-width: 640px) {
+  .dm-meta-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .dm-meta-label {
+    width: auto;
+  }
+}
+
+.dm-entry-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.dm-breakdown {
+  padding-top: 1rem;
+  border-top: 1px dashed var(--dm-muted);
+  font-size: 0.88rem;
+}
+
+.dm-breakdown p {
+  margin: 0;
+  max-width: 72ch;
+}
+
+.dm-examples {
+  padding-top: 1rem;
+  border-top: 1px dashed var(--dm-muted);
+}
+
+.dm-example-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.dm-example {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 0.65rem 0.9rem;
+  background: var(--dm-sunken);
+  border: 1px solid var(--dm-muted);
+  border-radius: 2px;
+  font-size: 0.85rem;
+}
+
+.dm-example-title {
+  font-weight: 700;
+  color: var(--dm-highlight);
+}
+
+.dm-example-note {
+  font-size: 0.78rem;
+  color: var(--dm-muted);
+}
+
+.dm-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dm-muted);
+}
+
+.dm-pager-link {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.dm-pager-link.is-next {
+  margin-left: auto;
+  text-align: right;
+}
+
+.dm-pager-link:hover,
+.dm-pager-link:focus-visible {
+  color: var(--dm-accent);
+  outline: none;
+}
+
+/* --- Footer -------------------------------------------------------------- */
+
+.dm-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dm-muted);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+}
+
+.dm-dot {
+  margin: 0 8px;
+  opacity: 0.5;
+}
+
+.dm-toolbar {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dm-toggle {
+  font-family: inherit;
+  font-size: 0.76rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--dm-muted);
+  border-radius: 2px;
+  color: var(--dm-fg);
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dm-toggle:hover,
+.dm-toggle:focus-visible {
+  background: var(--dm-fg);
+  color: var(--dm-bg);
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .dm-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dm-root,
+  .dm-card-link,
+  .dm-row-link,
+  .dm-audition,
+  .dm-toggle,
+  .dm-uplink,
+  .dm-pager-link {
+    transition: none;
+  }
+}

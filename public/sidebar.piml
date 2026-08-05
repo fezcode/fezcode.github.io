@@ -41,6 +41,10 @@
         (to) /vocab
         (icon) BookBookmarkIcon
       > (item)
+        (label) Demystify
+        (to) /demystify
+        (icon) MagicWandIcon
+      > (item)
         (label) The Vague
         (to) /the-vague
         (icon) FilePdfIcon

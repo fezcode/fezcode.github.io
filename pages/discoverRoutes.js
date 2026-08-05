@@ -86,10 +86,44 @@ function storyBookRoutes() {
   return out;
 }
 
+/**
+ * /demystify is driven entirely by text files: public/demystify/index.txt
+ * registers the collections, and each collection's index.txt registers its
+ * entries. Reading them here means a new collection or entry is prerendered
+ * and sitemapped without touching this file.
+ */
+function demystifyRoutes() {
+  const out = new Set();
+  const root = join(PUBLIC, 'demystify');
+  const registry = join(root, 'index.txt');
+  if (!existsSync(registry)) return out;
+
+  const idsIn = (file) => {
+    const ids = [];
+    for (const line of readFileSync(file, 'utf8').split(/\r?\n/)) {
+      const m = line.match(/^id:\s*(\S+)/);
+      if (m) ids.push(m[1]);
+    }
+    return ids;
+  };
+
+  out.add('/demystify');
+  for (const collection of idsIn(registry)) {
+    const index = join(root, collection, 'index.txt');
+    if (!existsSync(index)) continue;
+    out.add(`/demystify/${collection}`);
+    for (const entry of idsIn(index)) {
+      out.add(`/demystify/${collection}/${entry}`);
+    }
+  }
+  return out;
+}
+
 export function discoverAllRoutes() {
   const all = new Set(staticRoutes);
   for (const r of blogRoutes()) all.add(r);
   for (const r of logsRoutes()) all.add(r);
   for (const r of storyBookRoutes()) all.add(r);
+  for (const r of demystifyRoutes()) all.add(r);
   return Array.from(all);
 }

@@ -14,11 +14,13 @@ breakdown:
 Conquered European charts & global club floors. Demystified: driven by fast synth stabs, 4-on-the-floor kick drums, and unshakeable hooks designed for peak energy dancefloors.
 
 ascii:
-+-----------------------------------------+
-| [>>>]  EURODANCE  138 BPM PULSE  [<<<]  |
-| ||||||||||||||||||||||||||||||||||||||| |
-| /\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/  |
-+-----------------------------------------+
+┌───────────────────────────────────────────┐
+│  ▄▄▄     ▄▄▄     ▄▄▄     ▄▄▄    4/4 KICK  │
+│ █████   █████   █████   █████             │
+│ ────────────────────────────────  138 BPM │
+│ ╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲╱╲  SUPERSAW  │
+│ ▁▃▅▇█▇▅▃▁▃▅▇█▇▅▃▁▃▅▇█▇▅▃▁▃▅▇█▇  EUPHORIA  │
+└───────────────────────────────────────────┘
 
 examples:
 - Snap! - Rhythm Is a Dancer (1992) | Classic Korg M1 organ lead, iconic 90s dance arrangement

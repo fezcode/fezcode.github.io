@@ -14,11 +14,12 @@ breakdown:
 Celebrated British identity in response to US grunge. Demystified: rewrote 60s Kinks & Beatles melody craft with 90s swagger, loud amplifiers, and terrace chant choruses.
 
 ascii:
-+-----------------------------------------+
-| [UK]  BRITPOP ANTHEM SWAGGER     [UK]   |
-| ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ |
-| ======================================= |
-+-----------------------------------------+
+┌────────────────────────────────────────┐
+│ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐     │
+│ │██│ │██│ │██│ │██│ │██│ │██│ │██│     │
+│ ┴──┴─┴──┴─┴──┴─┴──┴─┴──┴─┴──┴─┴──┴     │
+│ TERRACE CHORUS ─ JANGLE ─ RICKENBACKER │
+└────────────────────────────────────────┘
 
 examples:
 - Oasis - Live Forever (1994) | Sky-scraping guitar solos, anthemic vocal melody, classic 90s British rock

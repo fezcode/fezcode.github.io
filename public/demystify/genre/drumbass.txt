@@ -14,11 +14,12 @@ breakdown:
 Evolved out of UK rave sounds. Demystified: complex polyrhythmic drum manipulation combined with deep sub-woofer basslines and atmospheric synth stabs.
 
 ascii:
-+-----------------------------------------+
-| [!!!] D&B AMEN BREAK 174 BPM    [!!!]   |
-| | | || | | || | | || | | || | | || | |  |
-| _______________________________________ |
-+-----------------------------------------+
+┌─────────────────────────────────────────┐
+│ AMEN  ██·█·██·█·█··██·█·██·█·█··██      │
+│ BREAK ▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░▓▒░       │
+│ SUB   ▇▇▇▇▇▇▁▁▁▁▁▁▇▇▇▇▇▇▁▁▁▁▁▁▇▇▇       │
+│ ──────────────────────────────  174 BPM │
+└─────────────────────────────────────────┘
 
 examples:
 - Goldie - Inner City Life (1994) | Soulful vocals over hyper-edited jungle breakbeats

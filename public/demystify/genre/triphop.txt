@@ -14,11 +14,12 @@ breakdown:
 Pioneered in Bristol (Massive Attack, Portishead). Demystified: fused hip-hop rhythm textures with film noir atmospheres, soulful vocals, and hypnotic electronic production.
 
 ascii:
-+-----------------------------------------+
-| ((o)) TRIP HOP BRISTOL DUB BEAT ((o))   |
-| ======================================= |
-| ....................................... |
-+-----------------------------------------+
+┌───────────────────────────────────────┐
+│ KICK  █·······█···········█·······█   │
+│ SNARE ····████········████·········   │
+│ DUB   ▂▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▁▂▃▄▅▆▇█▇▆▅    │
+│ VINYL ░·░░·░·░░░·░·░░·░·░░░·░  86 BPM │
+└───────────────────────────────────────┘
 
 examples:
 - Massive Attack - Unfinished Sympathy (1991) | Orchestral strings over hip-hop vinyl breakbeats

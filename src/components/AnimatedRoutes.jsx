@@ -272,7 +272,12 @@ const FezluxeDesignPage = lazy(
   () => import('../pages/luxe-views/FezluxeDesignPage'),
 );
 const RetroTerminalPage = lazy(() => import('../pages/RetroTerminalPage'));
-const DemystifiedGenrePage = lazy(() => import('../pages/DemystifiedGenrePage'));
+const DemystifyHubPage = lazy(
+  () => import('../pages/demystify/DemystifyHubPage'),
+);
+const GenreCollectionPage = lazy(
+  () => import('../pages/demystify/GenreCollectionPage'),
+);
 const ProjectRouteHandler = lazy(
   () => import('../components/ProjectRouteHandler'),
 );
@@ -1084,7 +1089,19 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/demystify"
-          element={<Navigate to="/demystify/genre" replace />}
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DemystifyHubPage />
+              </Suspense>
+            </motion.div>
+          }
         />
         <Route
           path="/demystify/genre"
@@ -1097,7 +1114,23 @@ const AnimatedRoutes = ({
               transition={pageTransition}
             >
               <Suspense fallback={<Loading />}>
-                <DemystifiedGenrePage />
+                <GenreCollectionPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/demystify/genre/:entryId"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <GenreCollectionPage />
               </Suspense>
             </motion.div>
           }

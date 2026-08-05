@@ -14,11 +14,12 @@ breakdown:
 Pioneered in Chicago and embraced by UK Summer of Love. Demystified: built entirely around turning the 303 filter resonance knobs to produce squelchy psychedelic bass textures.
 
 ascii:
-+-----------------------------------------+
-| (:-) ACID HOUSE 303 RESONANCE    (-:)   |
-| ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ |
-| o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o |
-+-----------------------------------------+
+┌──────────────────────────────────────────┐
+│ CUTOFF ▁▂▃▅▇█▇▅▃▂▁▂▃▅▇█▇▅▃▂▁▂▃▅▇█        │
+│ RESO   ╱╲     ╱╲     ╱╲     ╱╲           │
+│ SEQ    █·█··█·█··█·█··█·█··█·█··         │
+│ ── SQUELCH ── TB-303 ── TR-909 ── 125 ── │
+└──────────────────────────────────────────┘
 
 examples:
 - Phuture - Acid Tracks (1987) | The origin track of Chicago Acid House, 11 minutes of 303 filter tweaks
