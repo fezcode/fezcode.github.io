@@ -390,10 +390,55 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
 
 /* --- Full track index table ---------------------------------------------- */
 
+/* Collapsed by default — 60 rows below the genre list is a wall, and every
+   track already appears on its own genre's page. */
 .dm-trackindex {
   margin-top: 2.5rem;
   padding-top: 1.5rem;
   border-top: 1px solid var(--dm-muted);
+}
+
+.dm-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dm-accent);
+  list-style: none;
+}
+
+.dm-summary::-webkit-details-marker {
+  display: none;
+}
+
+.dm-summary::before {
+  content: '▸';
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+
+.dm-trackindex[open] .dm-summary::before {
+  transform: rotate(90deg);
+}
+
+.dm-summary:hover,
+.dm-summary:focus-visible {
+  color: var(--dm-highlight);
+  outline: none;
+}
+
+.dm-summary-count {
+  margin-left: auto;
+  font-weight: 400;
+  color: var(--dm-muted);
+}
+
+.dm-trackindex[open] .dm-summary {
+  margin-bottom: 0.75rem;
 }
 
 .dm-tablewrap {
@@ -653,14 +698,6 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   color: var(--dm-highlight);
 }
 
-.dm-entry-meta {
-  margin: 6px 0 0;
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--dm-accent);
-}
-
 /* The art carries its own ┌─┐ frame, so the box here is only a tint — a CSS
    border on top of it would read as a double frame. `line-height: 1` lets
    stacked █ rows tile without hairline gaps; every glyph used is uppercase or
@@ -725,11 +762,6 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   }
 }
 
-.dm-entry-actions {
-  display: flex;
-  gap: 0.75rem;
-}
-
 /* --- Prose sections ------------------------------------------------------ */
 
 .dm-prose {
@@ -778,13 +810,60 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   color: var(--dm-muted);
 }
 
+/* --- Track list with per-track excerpt controls --------------------------- */
+
+.dm-tracklist {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.dm-track {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0.9rem;
+  background: var(--dm-sunken);
+  border: 1px solid var(--dm-muted);
+  border-radius: 2px;
+  font-size: 0.85rem;
+}
+
+.dm-track-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.dm-track-title {
+  font-weight: 700;
+  color: var(--dm-highlight);
+}
+
+.dm-track-artist {
+  font-size: 0.78rem;
+  color: var(--dm-muted);
+}
+
 .dm-track-pos {
   display: inline-block;
   min-width: 6ch;
   margin-right: 0.75rem;
   font-size: 0.72rem;
+  font-weight: 400;
   color: var(--dm-accent);
   font-variant-numeric: tabular-nums;
+}
+
+.dm-hint {
+  margin: 0 0 0.75rem;
+  font-size: 0.76rem;
+  color: var(--dm-muted);
 }
 
 .dm-example-list {

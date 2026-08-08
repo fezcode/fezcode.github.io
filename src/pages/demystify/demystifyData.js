@@ -102,10 +102,23 @@ export const items = (fields, key) =>
     .map(([title, note = '']) => ({ title, note }))
     .filter((entry) => entry.title);
 
-/** Reads `- position | title | artist` lines out of a field. */
+/**
+ * Reads `- position | title | artist | start` lines out of a field.
+ *
+ * `start` is optional: seconds into the preview clip where the significant part
+ * begins. Without it the player centres its window on the clip instead.
+ */
 export const tracks = (fields, key) =>
   rows(fields, key)
-    .map(([pos, title = '', artist = '']) => ({ pos, title, artist }))
+    .map(([pos, title = '', artist = '', start]) => {
+      const startAt = Number.parseFloat(start);
+      return {
+        pos,
+        title,
+        artist,
+        start: Number.isFinite(startAt) ? startAt : null,
+      };
+    })
     .filter((track) => track.title);
 
 export const numbers = (fields, key, fallback) => {

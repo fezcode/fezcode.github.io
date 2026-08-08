@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import Seo from '../../components/Seo';
 import usePersistentState from '../../hooks/usePersistentState';
+import AuditionButton from './AuditionButton';
 import DemystifyShell from './DemystifyShell';
 import EntryDetail from './EntryDetail';
 import useAudioSample from './useAudioSample';
@@ -57,7 +58,9 @@ const GenreCollectionPage = () => {
     'demystify-audio',
     true,
   );
-  const { play, playingId } = useAudioSample({ enabled: audioEnabled });
+  const { play, activeId, status: audioStatus } = useAudioSample({
+    enabled: audioEnabled,
+  });
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'auto' });
@@ -164,7 +167,8 @@ const GenreCollectionPage = () => {
           basePath={BASE_PATH}
           prev={prev}
           next={next}
-          isPlaying={playingId === entry.id}
+          activeId={activeId}
+          audioStatus={audioStatus}
           audioEnabled={audioEnabled}
           onPlay={play}
         />
@@ -267,19 +271,20 @@ const GenreCollectionPage = () => {
                         →
                       </span>
                     </Link>
-                    <button
-                      type="button"
-                      className="dm-audition"
-                      onClick={() => play(item)}
-                      disabled={!audioEnabled}
-                      aria-label={`Play a sample of ${item.name}`}
-                    >
-                      {!audioEnabled
-                        ? '[MUTED]'
-                        : playingId === item.id
-                          ? '[■]'
-                          : '[►]'}
-                    </button>
+                    <AuditionButton
+                      id={item.id}
+                      activeId={activeId}
+                      status={audioStatus}
+                      enabled={audioEnabled}
+                      label={item.name}
+                      onPlay={() =>
+                        play({
+                          id: item.id,
+                          track: item.tracks[0],
+                          entry: item,
+                        })
+                      }
+                    />
                   </li>
                 ))}
               </ul>
@@ -287,8 +292,13 @@ const GenreCollectionPage = () => {
           )}
 
           {allTracks.length > 0 && (
-            <section className="dm-trackindex">
-              <h3 className="dm-section-title">FULL TRACK INDEX</h3>
+            <details className="dm-trackindex">
+              <summary className="dm-summary">
+                FULL TRACK INDEX
+                <span className="dm-summary-count">
+                  {allTracks.length} TRACKS
+                </span>
+              </summary>
               <p className="dm-resultcount">
                 P1 = first screenshot, P2 = second. Every position accounted
                 for.
@@ -319,7 +329,7 @@ const GenreCollectionPage = () => {
                   </tbody>
                 </table>
               </div>
-            </section>
+            </details>
           )}
         </>
       )}

@@ -1,19 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { findPreview } from './trackPreview';
+
+/** Seconds of a clip to play. */
+export const WINDOW_SECONDS = 10;
 
 /**
- * Plays a collection entry's audio sample, falling back to a short synthesised
- * chord built from the entry's own `freqs` / `synthType` when the file is
- * missing or the browser refuses to decode it.
+ * Plays a ten-second excerpt of a track.
  *
- * One <audio> element is reused for every entry and the "now playing" state is
- * driven by real media events, so the UI stays truthful if playback stalls,
- * fails, or the reader pauses from OS media keys.
+ * Source order: the track's catalogue preview, then the genre's local sample if
+ * it has one, then a chord synthesised from the genre's own spectrum. The
+ * synth exists because most genres have neither a preview match nor a file, and
+ * silence on press reads as a broken button.
+ *
+ * One <audio> element is reused, and playback state comes from real media
+ * events so the UI stays truthful if a clip stalls or the reader pauses from OS
+ * media keys.
  */
 const useAudioSample = ({ enabled = true } = {}) => {
-  const [playingId, setPlayingId] = useState(null);
+  // status: idle | resolving | playing | synth
+  const [state, setState] = useState({ id: null, status: 'idle' });
+
   const elementRef = useRef(null);
   const audioCtxRef = useRef(null);
   const requestRef = useRef(null);
+  // Guards against a slow lookup applying after the reader moved on.
+  const tokenRef = useRef(0);
 
   const playSynth = useCallback((entry) => {
     if (typeof window === 'undefined') return;
@@ -25,14 +36,14 @@ const useAudioSample = ({ enabled = true } = {}) => {
       const ctx = audioCtxRef.current;
       if (ctx.state === 'suspended') ctx.resume();
 
-      const freqs = entry.freqs?.length ? entry.freqs : [220, 330, 440];
+      const freqs = entry?.freqs?.length ? entry.freqs : [220, 330, 440];
       freqs.forEach((freq, idx) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         const startAt = ctx.currentTime + idx * 0.08;
         const stopAt = startAt + 0.7;
 
-        osc.type = entry.synthType || 'sawtooth';
+        osc.type = entry?.synthType || 'sawtooth';
         osc.frequency.setValueAtTime(freq, startAt);
         gain.gain.setValueAtTime(0.14, startAt);
         gain.gain.exponentialRampToValueAtTime(0.001, stopAt);
@@ -47,79 +58,148 @@ const useAudioSample = ({ enabled = true } = {}) => {
     }
   }, []);
 
+  const clear = useCallback(() => {
+    requestRef.current = null;
+    setState({ id: null, status: 'idle' });
+  }, []);
+
   const getElement = useCallback(() => {
     if (elementRef.current) return elementRef.current;
 
     const element = new Audio();
-    element.preload = 'none';
+    element.preload = 'metadata';
+    element.crossOrigin = 'anonymous';
 
-    const clear = () => {
-      requestRef.current = null;
-      setPlayingId(null);
-    };
+    // Seek to the window start once the clip's duration is known.
+    element.addEventListener('loadedmetadata', () => {
+      const request = requestRef.current;
+      if (!request) return;
+      const duration = Number.isFinite(element.duration) ? element.duration : 0;
+      const explicit = request.startAt;
+      const centred = Math.max(0, duration / 2 - WINDOW_SECONDS / 2);
+      const start =
+        explicit === null || explicit === undefined
+          ? centred
+          : Math.min(Math.max(0, explicit), Math.max(0, duration - 1));
+      request.stopAt = duration
+        ? Math.min(duration, start + WINDOW_SECONDS)
+        : start + WINDOW_SECONDS;
+      try {
+        element.currentTime = start;
+      } catch {
+        // Some browsers refuse a seek before the clip is seekable; the window
+        // then simply starts at zero.
+      }
+    });
+
+    // Enforce the ten-second window.
+    element.addEventListener('timeupdate', () => {
+      const request = requestRef.current;
+      if (!request?.stopAt) return;
+      if (element.currentTime >= request.stopAt) {
+        element.pause();
+        element.currentTime = 0;
+        clear();
+      }
+    });
 
     element.addEventListener('playing', () => {
-      setPlayingId(requestRef.current?.id ?? null);
+      const request = requestRef.current;
+      if (request) setState({ id: request.id, status: 'playing' });
     });
     element.addEventListener('ended', clear);
-    element.addEventListener('pause', clear);
+    element.addEventListener('pause', () => {
+      // A pause driven by our own window stop has already cleared the request.
+      if (requestRef.current) clear();
+    });
     element.addEventListener('error', () => {
       const request = requestRef.current;
-      clear();
-      if (request) playSynth(request.entry);
+      requestRef.current = null;
+      if (!request) return;
+      setState({ id: request.id, status: 'synth' });
+      playSynth(request.entry);
     });
 
     elementRef.current = element;
     return element;
-  }, [playSynth]);
+  }, [clear, playSynth]);
 
   const stop = useCallback(() => {
-    const element = elementRef.current;
+    tokenRef.current += 1;
     requestRef.current = null;
-    setPlayingId(null);
+    setState({ id: null, status: 'idle' });
+    const element = elementRef.current;
     if (!element) return;
     element.pause();
-    element.currentTime = 0;
+    try {
+      element.currentTime = 0;
+    } catch {
+      /* nothing to rewind */
+    }
   }, []);
 
+  /**
+   * @param {{id: string, track?: object, entry?: object}} target
+   */
   const play = useCallback(
-    (entry) => {
-      if (!enabled || !entry?.id) return;
+    async (target) => {
+      const { id, track, entry } = target || {};
+      if (!enabled || !id) return;
 
-      // Second click on the entry that is already sounding stops it.
-      if (playingId === entry.id) {
+      // Pressing the control that is already sounding stops it.
+      if (state.id === id && state.status === 'playing') {
         stop();
         return;
       }
 
-      // Most genres have no recorded sample — go straight to the chord derived
-      // from their spectrum rather than firing a request that will 404.
-      if (!entry.audio) {
+      stop();
+      const token = tokenRef.current;
+      setState({ id, status: 'resolving' });
+
+      let src = null;
+      let startAt = null;
+
+      if (track?.title) {
+        try {
+          const preview = await findPreview(track);
+          if (preview) {
+            src = preview.url;
+            startAt = track.start;
+          }
+        } catch {
+          // Fall through to the local sample or the synth.
+        }
+      }
+
+      if (tokenRef.current !== token) return; // superseded while resolving
+
+      if (!src && entry?.audio) {
+        src = entry.audio;
+        startAt = 0;
+      }
+
+      if (!src) {
+        setState({ id, status: 'synth' });
         playSynth(entry);
         return;
       }
 
       const element = getElement();
-      const src = entry.audio;
-
-      element.pause();
-      element.currentTime = 0;
-      requestRef.current = { id: entry.id, entry };
+      requestRef.current = { id, startAt, stopAt: null, entry };
       element.src = src;
 
       const attempt = element.play();
       if (attempt?.catch) {
         attempt.catch(() => {
-          // Autoplay rejections and decode failures both land here; the `error`
-          // event does not fire for the former, so cover it explicitly.
-          if (requestRef.current?.id !== entry.id) return;
+          // Autoplay rejections do not raise the `error` event.
+          if (requestRef.current?.id !== id) return;
           requestRef.current = null;
-          setPlayingId(null);
+          setState({ id, status: 'synth' });
           playSynth(entry);
         });
       }
     },
-    [enabled, getElement, playSynth, playingId, stop],
+    [enabled, getElement, playSynth, state.id, state.status, stop],
   );
 
   useEffect(
@@ -143,7 +223,13 @@ const useAudioSample = ({ enabled = true } = {}) => {
     if (!enabled) stop();
   }, [enabled, stop]);
 
-  return { play, stop, playingId };
+  return {
+    play,
+    stop,
+    activeId: state.id,
+    status: state.status,
+    playingId: state.status === 'playing' ? state.id : null,
+  };
 };
 
 export default useAudioSample;

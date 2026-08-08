@@ -7,6 +7,7 @@ import DemystifyHubPage from './DemystifyHubPage';
 import GenreCollectionPage from './GenreCollectionPage';
 import { clearDemystifyCache } from './demystifyData';
 import { renderSpectrum } from './spectrum';
+import { previewQuery } from './trackPreview';
 // Aliased: the testing-library lint rule treats any `render*` call as a
 // component render and objects to how its result is named.
 import { renderInline as inline } from './RichText';
@@ -155,6 +156,42 @@ describe('renderSpectrum', () => {
   });
 });
 
+describe('previewQuery', () => {
+  // The catalogue does not know our display strings, so the search term has to
+  // be looser than the text shown on screen.
+  it.each([
+    [
+      { title: 'Trains — 2017 Remaster', artist: 'Porcupine Tree' },
+      'Trains Porcupine Tree',
+    ],
+    [
+      { title: 'Hemorrhage (In My Hands)', artist: 'Fuel' },
+      'Hemorrhage Fuel',
+    ],
+    [
+      { title: 'Mad About You — Live with Orchestra', artist: 'Hooverphonic' },
+      'Mad About You Hooverphonic',
+    ],
+    // Multi-artist credits only match on the lead name.
+    [{ title: 'Snake Eyes', artist: 'Feint, CoMa' }, 'Snake Eyes Feint'],
+    [
+      { title: 'Stylo', artist: 'Gorillaz, Bobby Womack, Mos Def' },
+      'Stylo Gorillaz',
+    ],
+    [
+      { title: "Peace of Akatosh (From 'Oblivion')", artist: 'Dreyma' },
+      'Peace of Akatosh Dreyma',
+    ],
+  ])('cleans %o', (track, expected) => {
+    expect(previewQuery(track)).toBe(expected);
+  });
+
+  it('is empty for a track with nothing to search on', () => {
+    expect(previewQuery({})).toBe('');
+    expect(previewQuery(undefined)).toBe('');
+  });
+});
+
 describe('renderInline', () => {
   it('turns *bold* and _italic_ into elements and leaves the rest as text', () => {
     const parts = inline('a *bee* and _cee_');
@@ -278,8 +315,19 @@ describe('GenreCollectionPage — index', () => {
     const row = list().getByRole('link', { name: /TRIP HOP/ });
     expect(within(row).queryByRole('button')).toBeNull();
     expect(
-      screen.getByRole('button', { name: /Play a sample of TRIP HOP/ }),
+      list().getByRole('button', { name: /ten-second excerpt.*TRIP HOP/ }),
     ).toBeInTheDocument();
+  });
+
+  it('keeps the full track index collapsed rather than listing all of it', async () => {
+    renderGenre('/demystify/genre');
+    await settle();
+
+    const disclosure = screen.getByText(/FULL TRACK INDEX/);
+    expect(disclosure.tagName).toBe('SUMMARY');
+    expect(screen.getByText('2 TRACKS')).toBeInTheDocument();
+    // The rows exist in the DOM but the disclosure ships closed.
+    expect(screen.getByRole('group')).not.toHaveAttribute('open');
   });
 });
 
@@ -309,6 +357,17 @@ describe('GenreCollectionPage — detail', () => {
     expect(screen.getByText('ON REPEAT')).toBeInTheDocument();
     expect(screen.getByText('Easier Said Than Done')).toBeInTheDocument();
     expect(screen.getByText('Morcheeba')).toBeInTheDocument();
+  });
+
+  it('gives each track its own ten-second excerpt control', async () => {
+    renderGenre('/demystify/genre/trip-hop');
+    await screen.findByRole('heading', { name: /TRIP HOP/ });
+
+    expect(
+      screen.getByRole('button', {
+        name: /ten-second excerpt.*Easier Said Than Done by Morcheeba/,
+      }),
+    ).toBeInTheDocument();
   });
 
   it('offers the next entry from a detail page', async () => {

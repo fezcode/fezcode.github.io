@@ -91,13 +91,13 @@ describe('atlas fields', () => {
     expect(fields.Note).toBeUndefined();
   });
 
-  it('reads three-field track lines', () => {
+  it('reads track lines, with an optional excerpt start', () => {
     const [fields] = parseBlocks(
-      '===\ntracks:\n - P1·01 | Snake Eyes | Feint, CoMa\n - P2·30 | Saltwater | Chicane\n',
+      '===\ntracks:\n - P1·01 | Snake Eyes | Feint, CoMa\n - P2·30 | Saltwater | Chicane | 42.5\n',
     );
     expect(tracks(fields, 'tracks')).toEqual([
-      { pos: 'P1·01', title: 'Snake Eyes', artist: 'Feint, CoMa' },
-      { pos: 'P2·30', title: 'Saltwater', artist: 'Chicane' },
+      { pos: 'P1·01', title: 'Snake Eyes', artist: 'Feint, CoMa', start: null },
+      { pos: 'P2·30', title: 'Saltwater', artist: 'Chicane', start: 42.5 },
     ]);
   });
 

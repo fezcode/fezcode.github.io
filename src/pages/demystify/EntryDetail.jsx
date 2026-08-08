@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import AuditionButton from './AuditionButton';
 import RichText from './RichText';
 import { renderSpectrum } from './spectrum';
 
@@ -20,7 +21,8 @@ const EntryDetail = ({
   basePath,
   prev,
   next,
-  isPlaying,
+  activeId,
+  audioStatus,
   audioEnabled,
   onPlay,
 }) => {
@@ -70,23 +72,6 @@ const EntryDetail = ({
         </dl>
       )}
 
-      {entry.audio && (
-        <div className="dm-entry-actions">
-          <button
-            type="button"
-            className="dm-audition is-wide"
-            onClick={() => onPlay(entry)}
-            disabled={!audioEnabled}
-          >
-            {!audioEnabled
-              ? '[MUTED]'
-              : isPlaying
-                ? '[■ STOP SAMPLE]'
-                : '[► PLAY SAMPLE]'}
-          </button>
-        </div>
-      )}
-
       <RichText label="WHAT IT IS / WHEN" paragraphs={entry.what} />
       <RichText label="SIGNIFICANT ARTISTS" paragraphs={entry.artists} />
       <RichText label="TRIVIA" paragraphs={entry.trivia} />
@@ -97,18 +82,37 @@ const EntryDetail = ({
       {entry.tracks.length > 0 && (
         <section className="dm-prose">
           <h3 className="dm-section-title">ON REPEAT — TRACKS IN THIS GENRE</h3>
-          <ul className="dm-example-list">
-            {entry.tracks.map((track) => (
-              <li className="dm-example" key={`${track.pos}-${track.title}`}>
-                <span className="dm-example-title">
-                  {track.pos && <span className="dm-track-pos">{track.pos}</span>}
-                  {track.title}
-                </span>
-                {track.artist && (
-                  <span className="dm-example-note">{track.artist}</span>
-                )}
-              </li>
-            ))}
+          <p className="dm-hint">
+            Each control plays a ten-second excerpt of the track, taken from its
+            catalogue preview clip.
+          </p>
+          <ul className="dm-tracklist">
+            {entry.tracks.map((track) => {
+              const id = `${entry.id}:${track.pos}:${track.title}`;
+              return (
+                <li className="dm-track" key={id}>
+                  <span className="dm-track-text">
+                    <span className="dm-track-title">
+                      {track.pos && (
+                        <span className="dm-track-pos">{track.pos}</span>
+                      )}
+                      {track.title}
+                    </span>
+                    {track.artist && (
+                      <span className="dm-track-artist">{track.artist}</span>
+                    )}
+                  </span>
+                  <AuditionButton
+                    id={id}
+                    activeId={activeId}
+                    status={audioStatus}
+                    enabled={audioEnabled}
+                    label={`${track.title} by ${track.artist}`}
+                    onPlay={() => onPlay({ id, track, entry })}
+                  />
+                </li>
+              );
+            })}
           </ul>
         </section>
       )}
