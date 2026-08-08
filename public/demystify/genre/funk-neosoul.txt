@@ -1,0 +1,31 @@
+id: funk-neosoul
+rank: 24
+name: FUNK & NEO-SOUL
+family: Pop & Soul
+years: 1995 → present
+source: ON REPEAT
+sub: Live-band soul and funk rebuilt with hip-hop timing and a drummer who sings
+spec: 84,88,82,66,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
+synthType: triangle
+freqs: 55, 68.94, 86.41
+
+what:
+ Neo-soul emerged in the mid-1990s — D'Angelo, Erykah Badu, the Soulquarians collective — as a live-instrument response to sample-based R&B, with rhythm sections that played deliberately behind the beat to imitate a slack drum machine. The 2010s revival, centred on Los Angeles and the Stones Throw/Brainfeeder orbit, added funk and hip hop back in: *Anderson .Paak* is its most complete practitioner, singing and rapping from behind a drum kit.
+
+artists:
+ D'Angelo, Erykah Badu, Bilal, Musiq Soulchild; then Anderson .Paak, Thundercat, Kaytranada, Hiatus Kaiyote, Moonchild. Producers: J Dilla (whose rhythmic influence is total), Questlove, *Hi-Tek* — who produced "Come Down."
+
+trivia:
+ D'Angelo's *Voodoo* (2000) was recorded with the band instructed to play consistently _late_, chasing the feel of a J Dilla beat — the "drunk" pocket that defined the next twenty years of the genre. .Paak's *Malibu* (2016) was his breakout after Dr. Dre put him on six tracks of Compton; he had been releasing music as Breezy Lovejoy and was, shortly before, homeless.
+
+sonic:
+ Live drums with the snare pushed slightly late and the hats slightly early, creating an unquantisable lope. Bass is fat and round with a lot of fundamental. Horns and Rhodes fill the mids; the vocal is rasping and mixed dry and close. "Come Down" is the funk end — a straight-ahead breakbeat, a clavinet-ish riff, and a horn stab arrangement.
+
+gear:
+ Fender Rhodes and Wurlitzer, Hohner Clavinet D6, Moog bass, vintage Ludwig or Gretsch drums tuned low with tape on the heads, and a horn section recorded to tape. Producers track through vintage Neve or API preamps and mix with hardware compression — the genre's value proposition is analogue warmth and human timing.
+
+prod:
+ Recorded largely *live in a room with minimal grid editing*, which is the whole point — quantising the performance destroys the pocket. Drums get room mics compressed to breaking, then blended under close mics. Vocals are usually first or second takes to preserve the rasp. Masters are left with real dynamic range so the arrangement's builds actually build.
+
+tracks:
+ - P1·28 | Come Down | Anderson .Paak

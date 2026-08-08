@@ -5,7 +5,7 @@ name: GENRE
 tag: MUSIC
 status: LIVE
 route: /demystify/genre
-blurb: The world's best music genres taken apart — sonic signatures, the gear that made them, and the benchmark tracks worth studying.
+blurb: Every genre worth understanding, taken apart — the dates, the people who built each one, the gear that gave it its sound, and why it was produced that way.
 
 ===
 id: movie

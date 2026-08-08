@@ -1,0 +1,31 @@
+id: prog-sludge-metal
+rank: 03
+name: PROGRESSIVE & SLUDGE METAL
+family: Rock & Metal
+years: 1991 → present
+source: ON REPEAT
+sub: Southern-US heaviness with prog time signatures and concept-album ambition
+spec: 78,86,90,80,70,72,76,80,78,74,72,76,80,84,80,72,64,56,48,40
+synthType: square
+freqs: 68.94, 86.41, 108.31
+
+what:
+ Sludge came out of New Orleans and the American South in the early 1990s — Eyehategod, Crowbar — as Black Sabbath riffs slowed to a crawl and covered in feedback. *Mastodon*, formed in Atlanta in 2000, spliced that onto progressive metal's polyrhythms and Neurosis's post-metal builds, then wrote concept albums about Moby-Dick (Leviathan, 2004) and out-of-body travel (Crack the Skye, 2009).
+
+artists:
+ Eyehategod, Crowbar, Neurosis, Isis, Baroness, High on Fire, Gojira, Elder. Mastodon's line-up is unusual for having *three singers* — Troy Sanders, Brent Hinds and drummer Brann Dailor — and a drummer who plays lead-guitar-density fills as a matter of course.
+
+trivia:
+ *The Hunter* (2011) is named for and dedicated to Brent Hinds' brother Brad, who died of a heart attack while hunting during the writing sessions. "The Sparrow" closes the album on a single repeated mantra — _pursue happiness with diligence_ — over an eight-minute crescendo, and it is the closest the band has come to writing an elegy outright.
+
+sonic:
+ Guitars tuned down (usually to C# or drop-C) with a mid-scooped but grainy tone, bass playing a genuinely independent melodic line rather than doubling the riff, and drums that never settle into a straight backbeat. The Sparrow specifically inverts the formula: clean arpeggios, layered choral vocals, and a slow additive build where each pass adds one more instrument.
+
+gear:
+ Gibson Flying V and Silvertone guitars, Diezel VH4 and Marshall JMP heads, Emperor cabs, a Sunn/Ampeg bass rig split into clean and distorted paths. Dailor plays a large Tama kit with two rack toms and an oversized ride, tuned high so fills read as melodic. Analogue fuzz — Big Muff, Fuzz Factory — is used for texture, not saturation.
+
+prod:
+ The Hunter was produced by *Mike Elizondo*, who came from a pop/hip-hop background (Dr. Dre, Eminem, Fiona Apple), and the choice was deliberate: shorter songs, clearer vocal placement, less murk. Guitars are double-tracked and panned wide, the bass is DI'd and re-amped so it survives the mid-scoop, and the room mics on the drums are pushed up hard during the final build.
+
+tracks:
+ - P1·02 | The Sparrow | Mastodon

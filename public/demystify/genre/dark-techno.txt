@@ -1,0 +1,31 @@
+id: dark-techno
+rank: 19
+name: DARK TECHNO & FRENCH ELECTRO
+family: Electronic
+years: 2008 → present
+source: ON REPEAT
+sub: Cold, minimal, menacing electronic pop from the Bromance/Ed Banger lineage
+spec: 94,90,70,46,40,46,54,62,66,64,60,62,68,74,72,64,56,48,42,36
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+
+what:
+ The French electro wave — Justice, Ed Banger Records, and then Brodinski and Gesaffelstein's *Bromance* label from 2011 — took the distorted maximalism of the mid-2000s and stripped it into something colder and slower. *Gesaffelstein* (Mike Lévy) built an aesthetic of monochrome severity: black suits, no smiling, industrial techno at pop tempos.
+
+artists:
+ Justice, SebastiAn, Brodinski, Gesaffelstein, Boys Noize; the darker techno adjacency of Perturbator and Carpenter Brut. *The Weeknd* is the pop half of this specific collaboration — *Hyperion* (2019) is the album, and Lévy also produced parts of it with Pharrell and Haim.
+
+trivia:
+ Before this, Gesaffelstein co-produced two of the harshest tracks on Kanye West's *Yeezus* (2013) — "Black Skinhead" and "Send It Up" — which is where his industrial-minimal approach entered American pop. The name is a portmanteau of Gesamtkunstwerk (Wagner's "total work of art") and Einstein, which tells you exactly how seriously the project takes itself.
+
+sonic:
+ Slow for techno (around 100–110 BPM), with a distorted kick that occupies enormous space, almost no midrange, and a single detuned analogue synth motif repeating without variation. Reverb is short and metallic. The Weeknd's falsetto is placed dry and close against that emptiness, which is the entire dramatic effect.
+
+gear:
+ Analogue monosynths — Moog, Korg MS-20 — run through guitar distortion and analogue delay; Roland TR-909 kicks driven into saturation; hardware compressors used as an effect rather than for control. Lévy works largely with hardware and prints his synth parts rather than keeping them recallable.
+
+prod:
+ The productions are deliberately under-arranged: four or five elements total, no build-ups, and no filter sweeps. Loudness is achieved through distortion and clipping on individual sources rather than a limiter on the master, which preserves transient snap while still reading as aggressive. The vocal is left almost unprocessed against it — a pop record wearing a techno record's clothes.
+
+tracks:
+ - P2·15 | Lost in the Fire | Gesaffelstein, The Weeknd

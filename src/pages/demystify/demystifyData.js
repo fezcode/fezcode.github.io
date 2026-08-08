@@ -71,24 +71,42 @@ export const raw = (fields, key, fallback = '') => {
   return trimmed.length ? trimmed.join('\n') : fallback;
 };
 
-/** Reads `- title | note` lines out of a field. */
-export const items = (fields, key) => {
+/**
+ * Prose fields hold one paragraph per line. Lines are written indented so a
+ * sentence that happens to begin `Word:` can never be mistaken for a new key.
+ */
+export const paragraphs = (fields, key) => {
+  const lines = fields[key];
+  if (!lines) return [];
+  return lines.map((line) => line.trim()).filter(Boolean);
+};
+
+/** Splits `- a | b | c` lines into their pipe-separated parts. */
+const rows = (fields, key) => {
   const lines = fields[key];
   if (!lines) return [];
   return lines
     .map((line) => line.trim())
     .filter((line) => line.startsWith('-'))
-    .map((line) => {
-      const content = line.slice(1).trim();
-      const pipeIdx = content.indexOf('|');
-      if (pipeIdx === -1) return { title: content, note: '' };
-      return {
-        title: content.slice(0, pipeIdx).trim(),
-        note: content.slice(pipeIdx + 1).trim(),
-      };
-    })
-    .filter((entry) => entry.title);
+    .map((line) =>
+      line
+        .slice(1)
+        .split('|')
+        .map((part) => part.trim()),
+    );
 };
+
+/** Reads `- title | note` lines out of a field. */
+export const items = (fields, key) =>
+  rows(fields, key)
+    .map(([title, note = '']) => ({ title, note }))
+    .filter((entry) => entry.title);
+
+/** Reads `- position | title | artist` lines out of a field. */
+export const tracks = (fields, key) =>
+  rows(fields, key)
+    .map(([pos, title = '', artist = '']) => ({ pos, title, artist }))
+    .filter((track) => track.title);
 
 export const numbers = (fields, key, fallback) => {
   const parsed = text(fields, key)
@@ -117,7 +135,11 @@ export const toEntry = (fields) => ({
   id: text(fields, 'id'),
   rank: text(fields, 'rank'),
   name: text(fields, 'name'),
+  family: text(fields, 'family'),
   years: text(fields, 'years'),
+  source: text(fields, 'source'),
+  sub: text(fields, 'sub'),
+  spec: numbers(fields, 'spec', []),
   tag: text(fields, 'tag'),
   origin: text(fields, 'origin'),
   signature: text(fields, 'signature'),
@@ -125,8 +147,15 @@ export const toEntry = (fields) => ({
   audio: text(fields, 'audio'),
   synthType: text(fields, 'synthType', 'sawtooth'),
   freqs: numbers(fields, 'freqs', [220, 330, 440]),
-  breakdown: text(fields, 'breakdown'),
   ascii: raw(fields, 'ascii'),
+  // The six prose sections carried over from the genre atlas.
+  what: paragraphs(fields, 'what'),
+  artists: paragraphs(fields, 'artists'),
+  trivia: paragraphs(fields, 'trivia'),
+  sonic: paragraphs(fields, 'sonic'),
+  gear: paragraphs(fields, 'gear'),
+  prod: paragraphs(fields, 'prod'),
+  tracks: tracks(fields, 'tracks'),
   examples: items(fields, 'examples'),
 });
 

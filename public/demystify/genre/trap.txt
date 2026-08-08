@@ -1,0 +1,33 @@
+id: trap
+rank: 12
+name: TRAP & SOUTHERN RAP
+family: Hip Hop
+years: 2003 → present
+source: ON REPEAT
+sub: Atlanta-born, 808-driven rap that became the default rhythmic language of global pop
+spec: 99,96,78,52,42,46,52,58,64,62,58,62,70,76,74,66,58,50,44,38
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ Trap named itself with T.I.'s *Trap Muzik* (2003) and was built in Atlanta by producers Shawty Redd, Zaytoven and DJ Toomp. Lex Luger's 2010–11 run industrialised the template; by the mid-2010s Metro Boomin, Southside and Mike WiLL Made-It had made 808-and-hi-hat production the default sound of all commercial pop, not just rap.
+
+artists:
+ *T.I.*, Gucci Mane, Young Jeezy, Future, *Young Thug*, *21 Savage*, Migos, Lil Baby. On the boards: *Metro Boomin*, Zaytoven, Lex Luger, Southside, Wheezy (who produced "Wyclef Jean").
+
+trivia:
+ The video for Young Thug's "Wyclef Jean" is the best joke in modern rap: Thug never showed up to the shoot, so director Ryan Staake cut the unusable footage together with deadpan on-screen text explaining what was supposed to happen, released it as *"We Had to Cancel This Video,"* and it became more famous than any conventional version would have been. Wyclef Jean himself later appeared in a follow-up. On the other side of the tone spectrum: *Savage Mode II* (2020) is narrated throughout by *Morgan Freeman*.
+
+sonic:
+ Tempo is written at 130–150 BPM but felt at half that. The 808 kick is pitched and glides between notes, doing bass and drum duty simultaneously. Hi-hats are the melodic-rhythmic interest — triplets, 32nd rolls, ratcheting speed changes. Melody is sparse: a single detuned bell, marimba or orchestral pluck loop, usually in a minor or Phrygian mode.
+
+gear:
+ FL Studio is the genre's workstation. The 808 sound is a sampled Roland TR-808 kick pitched to note and distorted; hats come from Vengeance-style sample packs; the lead is Nexus, Omnisphere or a Zaytoven-style Yamaha Motif piano/bell patch. Vocal chains run Auto-Tune in low-retune-speed mode as a texture rather than a corrective.
+
+prod:
+ Producers build the beat first and let the artist write to it in the booth — most trap vocals are composed at the mic, not on paper, which is why ad-libs function as a second rhythmic layer panned wide. The 808 is deliberately distorted so its harmonics survive on small speakers, and the mix leaves an unusual amount of empty space in the mids for exactly that reason.
+
+tracks:
+ - P1·03 | Wyclef Jean | Young Thug
+ - P1·23 | Runnin | 21 Savage, Metro Boomin
+ - P2·18 | Go Get It | T.I.

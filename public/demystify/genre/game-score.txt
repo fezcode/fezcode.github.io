@@ -1,0 +1,34 @@
+id: game-score
+rank: 20
+name: VIDEO GAME SCORE
+family: Score & Ambient
+years: 1978 → present
+source: ON REPEAT
+sub: Functional music written to loop indefinitely and react to a player, now a concert repertoire
+spec: 70,72,68,60,58,62,68,74,78,80,78,76,78,80,78,72,66,58,50,42
+synthType: sine
+freqs: 335.14, 420.08, 526.55
+
+what:
+ Game music went from chip-tune constraint (1978–1990) to CD-audio (1994) to fully orchestral (2000s) to the current state: adaptive, layered scores that recombine in real time based on player action. It is now the largest employer of orchestral composers in the world by volume of new work, and its concert circuit outsells most contemporary classical programming.
+
+artists:
+ Koji Kondo, Nobuo Uematsu, Yasunori Mitsuda; Jeremy Soule (*Oblivion* and Skyrim — the source material for the "Peace of Akatosh" arrangement); *Jesper Kyd*, the Danish composer behind Hitman, Assassin's Creed, Darksiders II and Borderlands 3; *Guillaume David*, whose Warhammer 40,000: Mechanicus score (2018) is one of the most acclaimed of the last decade; *Bastian Kieslinger* on SpellForce III.
+
+trivia:
+ Jesper Kyd came out of the *Amiga demoscene* in the late 1980s — he was in the Danish group The Silents, writing tracker music under severe memory limits, before scoring Hitman. That constraint-first background shows up in how economically he writes: a Kyd cue is usually two or three elements doing a great deal. Mechanicus' score is a genuinely strange proposition — Gregorian-style Latin chant sung to a machine god, over glitching electronics — and it works because David committed to the theology of the setting completely.
+
+sonic:
+ Built in *stems that can be muted and added independently*: a base ambient layer, a rhythm layer, a tension layer, a combat layer. Cues are written to loop with no audible seam, which forces harmonic writing that avoids strong cadences. Mechanicus layers real choral recording over granular synthesis and metallic percussion; Kyd's Borderlands work fuses live players with electronic beds; SpellForce sits in the straight orchestral-fantasy tradition.
+
+gear:
+ Orchestral sample libraries (Spitfire, Orchestral Tools, Cinesamples) as the working canvas, real ensembles recorded in Prague, Budapest or Bratislava for budget reasons, plus custom instruments and processed field recordings. Middleware — Wwise and FMOD — is where the adaptive layering actually lives, and composers now write to its constraints from the outset.
+
+prod:
+ The composer delivers not a finished piece but a *system*: stems, transition markers, loop points and intensity tiers, which the audio programmer wires to game state. The soundtrack album release is a separate edit — the linear "track" you hear on Spotify is assembled afterward from material that never plays that way in-game. That's why game OSTs often feel like they arrive somewhere and then stop.
+
+tracks:
+ - P2·03 | Children of the Omnissiah | Guillaume David
+ - P2·17 | MainMenu (Day) | Jesper Kyd
+ - P2·14 | Awakening | Bastian Kieslinger
+ - P2·06 | Peace of Akatosh (From 'Oblivion') | Dreyma

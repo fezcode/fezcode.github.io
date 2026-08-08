@@ -1,0 +1,33 @@
+id: classic-rock-aor
+rank: 04
+name: CLASSIC ROCK & AOR
+family: Rock & Metal
+years: 1965 → 1989
+source: ON REPEAT
+sub: Album-oriented radio rock — big choruses, session-grade musicianship, arena-scale mixes
+spec: 55,66,74,72,66,68,72,76,78,74,70,72,76,78,72,64,56,48,40,34
+synthType: square
+freqs: 86.41, 267.37, 335.14
+
+what:
+ AOR — album-oriented rock — was a US radio format before it was a genre. Between roughly 1976 and 1986 it defined a sound: melodic hard rock with keyboard beds, multi-tracked harmony vocals and a guitar solo in the third minute. The Who predate it and sit in the older classic-rock lineage; Journey are its commercial peak; America represent its soft-rock, folk-descended wing.
+
+artists:
+ *The Who* (Townshend, Daltrey, Entwistle, Moon — with Kenney Jones drumming by 1982), *Journey* (Steve Perry's tenor over Neal Schon's guitar), *America* (Beckley, Bunnell, Peek), plus Boston, Foreigner, Toto, Styx, REO Speedwagon.
+
+trivia:
+ "Eminence Front" (1982) is one of the rare Who songs with *Pete Townshend, not Roger Daltrey, on lead vocal* — it's a sneer at cocaine-era self-delusion, sung by someone who was inside it. Journey's "Separate Ways" video, shot on the Astoria, Oregon docks with the band miming on painted-on instruments, was mocked for decades and then reclaimed as an artefact. And America's *Silent Letter* (1979) was produced by *George Martin*, who took over their records after Beatles duties ended and stayed for six albums.
+
+sonic:
+ Mid-forward and dense. Rhythm guitars chorused and doubled, keys filling every gap, snare with plate reverb and a long decay, and lead vocals compressed hard so they sit above a wall of harmony. "Eminence Front" is the outlier: it's built on a locked synth arpeggio and a clean funk guitar figure, closer to a groove record than a rock one.
+
+gear:
+ Fender Rhodes, Hammond B3, and by 1982 polysynths — Yamaha CS-80, Oberheim OB-Xa, Prophet-5 — for the arpeggios and pads. Guitars: Les Pauls and Strats into Marshall or Boogie stacks. Studios ran *Neve or SSL desks to 24-track 2-inch tape*, with EMT plate reverbs and the then-new Lexicon 224 digital reverb on snare and vocals.
+
+prod:
+ Everything is arranged around the chorus arriving in the first minute, because radio programmers auditioned records on a small speaker. Vocal stacks are recorded as three or four separate passes rather than copied, which is why the harmonies shimmer instead of phasing. The mix leaves a deliberate hole around 2–4 kHz for the lead vocal — the "AOR pocket" — and the bass is played with a pick for definition on car speakers.
+
+tracks:
+ - P1·07 | Eminence Front | The Who
+ - P1·16 | Separate Ways (Worlds Apart) | Journey
+ - P2·22 | No Fortune | America

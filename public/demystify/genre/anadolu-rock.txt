@@ -1,0 +1,37 @@
+id: anadolu-rock
+rank: 06
+name: ANADOLU ROCK & TURKISH ALTERNATIVE
+family: Turkish
+years: 1965 → present
+source: ON REPEAT
+sub: Turkish melody and lyric tradition run through rock instrumentation — the country's longest-running hybrid
+spec: 64,72,78,74,66,68,74,78,80,76,72,74,78,76,70,62,54,46,40,34
+synthType: triangle
+freqs: 86.41, 267.37, 335.14
+
+what:
+ Anadolu rock began in the mid-1960s when Turkish musicians started setting *türkü* melodies and Divan poetry to electric guitars and drum kits — Erkin Koray, Barış Manço, Cem Karaca and Moğollar are the founding generation, and the 1970s Altın Mikrofon competitions institutionalised it. The 1990s produced a second wave with Western alt-rock production values, and the 2010s a third: lo-fi, wry, lyric-first indie bands like Adamlar and Yüzyüzeyken Konuşuruz.
+
+artists:
+ Erkin Koray, Barış Manço, Cem Karaca, Moğollar, Selda Bağcan. Then *mor ve ötesi* (İstanbul, 1995; Harun Tekin on vocals; represented Turkey at Eurovision 2008), *Redd* (Ankara, fronted by Doğan Duru), *Seksendört*, and the newer İzmir/İstanbul indie wing: Adamlar, Yüzyüzeyken Konuşuruz, Kuytu, Gaye Su Akyol.
+
+trivia:
+ Anadolu rock is one of the few cases where a national scene solved a real technical problem: Turkish makam melodies use microtonal intervals that a fretted guitar cannot play, so *Erkin Koray had custom fretless electric guitars built* in the early 1970s — years before Western fretless-guitar experiments. "Bir Derdim Var" is a Barış Manço–era phrase reworked by mor ve ötesi on *Dünya Yalan Söylüyor* (2004), an album that became the reference point for the 2000s scene.
+
+sonic:
+ Melodies built on makam scales — Hicaz and Kürdi especially — over Western rock harmony, which produces the characteristic minor-with-a-flattened-second colour. Rhythms frequently sit in 9/8 or 7/8 even under a rock kit. The newer indie wing mixes deliberately narrow and mid-heavy, vocals close-mic'd and conversational, guitars thin and jangly rather than saturated.
+
+gear:
+ Bağlama (saz) and its electrified version, sometimes fed through fuzz and wah; darbuka and bendir alongside the kit; zurna and ney for hooks. Modern bands use Fender offsets, Vox AC30-style cleans, and Turkish-made pedals. Koray's fretless is the single most influential piece of gear in the genre's history.
+
+prod:
+ Classic-era records were tracked live to four or eight tracks at TRT or Istanbul studios with minimal overdubs, which is why they swing. The 2000s wave (mor ve ötesi, Redd) adopted Western multi-track and loudness practice. The 2010s indie bands went the other direction on purpose — home and small-studio recording, audible room, little compression — because the appeal is the writing and the deadpan delivery, not the polish.
+
+tracks:
+ - P1·30 | Bir Derdim Var | mor ve ötesi
+ - P1·26 | Vicdani Redd | Redd
+ - P1·06 | Acının İlacı | Adamlar
+ - P1·15 | Hikaye | Adamlar
+ - P1·08 | Anlayamazsın | Seksendört
+ - P1·27 | Ne Farkeder | Yüzyüzeyken Konuşuruz
+ - P2·08 | Ada | Kuytu

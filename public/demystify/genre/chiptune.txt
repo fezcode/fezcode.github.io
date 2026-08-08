@@ -1,17 +1,18 @@
 id: chiptune
-rank: 10
+rank: 33
 name: CHIPTUNE / 8-BIT
+family: Electronic
 years: 1989 → 1999
+source: ARCHIVE
+sub: Music written for the sound chips of 8-bit consoles, then kept as a discipline
+spec: 20,28,42,56,66,72,78,82,86,88,86,82,84,88,90,86,78,68,58,48
 tag: JEU-VIDEO
 origin: Arcades & Consoles
 signature: Pulse waves, noise percussion, ultra-fast arpeggios
 keyGear: Game Boy (LSDJ), NES RP2A03 Sound Chip, Commodore 64 SID
 audio: /demystify/genre/chiptune.mp3
-freqs: 440.0, 554.37, 659.25, 880.0
-synthType: square
-
-breakdown:
-Crafted from early gaming hardware limitations. Demystified: sound programmers used rapid arpeggios to simulate chordal harmony on hardware with limited monophonic tone channels.
+synthType: sawtooth
+freqs: 335.14, 420.08, 526.55
 
 ascii:
 ┌───────────────────────────────────────┐
@@ -22,7 +23,7 @@ ascii:
 └───────────────────────────────────────┘
 
 examples:
-- Anamanaguchi - Endless Fantasy (2013) | NES synth hardware mixed with modern pop-punk live drums
-- Rob Hubbard - Commando Theme (1985) | Commodore 64 SID chip arpeggio masterpiece
-- Disasterpeace - FEZ Original Soundtrack (2012) | Ambient chiptune, detuned square waves, tape warmth
-- Koji Kondo - Super Mario Bros. Theme (1985) | World famous 8-bit Latin jazz syncopated pulse lead
+ - Anamanaguchi - Endless Fantasy (2013) | NES synth hardware mixed with modern pop-punk live drums
+ - Rob Hubbard - Commando Theme (1985) | Commodore 64 SID chip arpeggio masterpiece
+ - Disasterpeace - FEZ Original Soundtrack (2012) | Ambient chiptune, detuned square waves, tape warmth
+ - Koji Kondo - Super Mario Bros. Theme (1985) | World famous 8-bit Latin jazz syncopated pulse lead

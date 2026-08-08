@@ -1,0 +1,32 @@
+id: turkish-trap
+rank: 10
+name: TURKISH TRAP, DRILL & RAP
+family: Turkish
+years: 1995 → present
+source: ON REPEAT
+sub: Turkish-language rap that went from diaspora subculture to the country's dominant youth genre in about five years
+spec: 96,94,80,58,48,52,58,64,68,66,62,64,70,74,72,64,56,48,42,36
+synthType: triangle
+freqs: 55, 68.94, 86.41
+
+what:
+ Turkish rap started in Germany, not Turkey — *Cartel*, a Turkish-German crew, released the record that defined it in 1995, and the genre travelled back home from Berlin and Frankfurt. Domestic scenes formed in the 2000s (Ceza, Sagopa Kajmer), and then in 2019 the collective single "Susamam" and Ezhel's crossover pushed rap to the top of the national charts, where it has stayed. The current wave is trap- and drill-derived: *UZI* is its biggest star.
+
+artists:
+ Cartel, Ceza — whose extreme-speed Turkish delivery is a genre landmark — Sagopa Kajmer, Şanışer, Ezhel, Ben Fero, Motive, Blok3, UZI. *Wegh* and *Keskin* belong to the melodic, emo-adjacent end of the current scene, where autotuned singing and rap sit in the same verse.
+
+trivia:
+ Turkish is agglutinative — words extend with stacked suffixes — which gives rappers a supply of multi-syllable internal rhymes no English rapper can match structurally. *Ceza* built an international reputation on exactly this, and clips of his speed are a recurring curiosity outside Turkey. The flipside: Turkish stress patterns fight the English-derived triplet flow, and the current generation's main technical achievement is making trap cadences sit naturally on Turkish syllables.
+
+sonic:
+ 808 sub-bass sliding between notes, hi-hats in rolling triplets and 32nd-note bursts, sparse dark minor loops — often built on a Turkish sample, a kanun or ney phrase, or a Hicaz-mode synth line. Vocals are heavily autotuned in the melodic wing and dry and forward in the drill wing. Drill adds the sliding, detuned 808 pattern imported from Chicago via UK drill.
+
+gear:
+ FL Studio almost universally, 808 samples derived from the Roland TR-808 kick, Serum for leads, Antares Auto-Tune or Waves Tune on the vocal, and sample packs of Middle Eastern instrument phrases. Most of it is made on laptops in bedrooms — the barrier to entry is what let the scene scale so fast.
+
+prod:
+ Mixed for phone speakers and YouTube: the 808 is deliberately given harmonic content in the 100–200 Hz range so it survives playback on devices with no sub. Vocals are compressed flat and sit very loud. Release strategy is single-first, video-first — the genre operates on YouTube and Spotify release cadence rather than albums, which is why so much of it appears in On Repeat playlists.
+
+tracks:
+ - P1·14 | Sil Baştan | UZI
+ - P2·26 | Yanlışlarla Karşılaştım | Wegh, Keskin

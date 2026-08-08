@@ -1,10 +1,15 @@
 import React from 'react';
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DemystifyHubPage from './DemystifyHubPage';
 import GenreCollectionPage from './GenreCollectionPage';
 import { clearDemystifyCache } from './demystifyData';
+import { renderSpectrum } from './spectrum';
+// Aliased: the testing-library lint rule treats any `render*` call as a
+// component render and objects to how its result is named.
+import { renderInline as inline } from './RichText';
 
 const COLLECTIONS = `===
 id: genre
@@ -26,42 +31,73 @@ blurb: Cinema decoded.
 `;
 
 const GENRE_INDEX = `===
-id: grunge
+id: trip-hop
 rank: 01
-name: GRUNGE
-years: 1989 → 1996
-tag: ALT-ROCK
+name: TRIP HOP & DOWNTEMPO
+family: Electronic
+years: 1991 → present
+source: ON REPEAT
+sub: Bristol-born slow-motion hip hop
+spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
+audio: /demystify/genre/triphop.mp3
+tracks:
+ - P2·13 | Easier Said Than Done | Morcheeba
 
 ===
-id: britpop
+id: prog-rock
 rank: 02
-name: BRITPOP
-years: 1993 → 1997
-tag: UK GUITAR POP
+name: PROGRESSIVE ROCK
+family: Rock & Metal
+years: 1967 → present
+source: ON REPEAT
+sub: Long-form rock that borrowed structure from classical music
+spec: 62,70,74,66,58,60,64,68,70,72,68,64,66,70,74,72,66,58,50,42
+tracks:
+ - P1·04 | Trains | Porcupine Tree
+
+===
+id: chiptune
+rank: 03
+name: CHIPTUNE
+family: Electronic
+years: 1980 → present
+source: ARCHIVE
+sub: Music written for the sound chips of 8-bit consoles
+spec: 20,28,42,56,66,72,78,82,86,88,86,82,84,88,90,86,78,68,58,48
 `;
 
-const GRUNGE = `===
-id: grunge
+const TRIP_HOP = `id: trip-hop
 rank: 01
-name: GRUNGE
-years: 1989 → 1996
-tag: ALT-ROCK
-origin: Seattle, WA
-signature: Loud-quiet-loud dynamics
-keyGear: Big Muff, Fender Jaguar
-breakdown: Born in Seattle, sharpened by Sub Pop.
+name: TRIP HOP & DOWNTEMPO
+family: Electronic
+years: 1991 → present
+source: ON REPEAT
+sub: Bristol-born slow-motion hip hop
+spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
+origin: Bristol, UK
+signature: Slow moody vinyl breakbeats
+audio: /demystify/genre/triphop.mp3
+
 ascii:
-+-----------+
-| GRUNGE    |
-+-----------+
-examples:
-- Nevermind (1991) | Butch Vig production
++---+
+| X |
++---+
+
+what:
+ Trip hop was named by the music press in 1994.
+ Portishead added film-noir strings.
+
+trivia:
+ Portishead recorded to *acetate* and sampled that back.
+
+tracks:
+ - P2·13 | Easier Said Than Done | Morcheeba
 `;
 
 const routeFile = (url) => {
   if (url === '/demystify/index.txt') return COLLECTIONS;
   if (url === '/demystify/genre/index.txt') return GENRE_INDEX;
-  if (url === '/demystify/genre/grunge.txt') return GRUNGE;
+  if (url === '/demystify/genre/trip-hop.txt') return TRIP_HOP;
   return null;
 };
 
@@ -97,6 +133,40 @@ afterEach(() => {
   clearDemystifyCache();
 });
 
+describe('renderSpectrum', () => {
+  it('draws a rectangular chart plus an axis ruler and labels', () => {
+    const lines = renderSpectrum([100, 50, 0], { rows: 4, cell: 2 }).split('\n');
+    // 4 chart rows + ruler + labels
+    expect(lines).toHaveLength(6);
+    expect(lines[0].startsWith('██')).toBe(true); // full-height first band
+    expect(lines[3].slice(4)).toBe(''); // empty band leaves no ink
+    expect(lines[4]).toMatch(/^┴/); // ruler tick under band 0
+    expect(lines[5]).toMatch(/^SUB/);
+  });
+
+  it('returns nothing when a genre has no spectrum data', () => {
+    expect(renderSpectrum([])).toBe('');
+    expect(renderSpectrum(undefined)).toBe('');
+  });
+
+  it('clamps out-of-range values instead of overflowing the chart', () => {
+    const lines = renderSpectrum([500, -20], { rows: 3, cell: 1 }).split('\n');
+    expect(lines[0]).toBe('█');
+  });
+});
+
+describe('renderInline', () => {
+  it('turns *bold* and _italic_ into elements and leaves the rest as text', () => {
+    const parts = inline('a *bee* and _cee_');
+    expect(parts.filter((p) => typeof p !== 'string')).toHaveLength(2);
+    expect(parts.filter((p) => typeof p === 'string').join('')).toBe('a  and ');
+  });
+
+  it('leaves a lone asterisk alone', () => {
+    expect(inline('2 * 3').every((p) => typeof p === 'string')).toBe(true);
+  });
+});
+
 describe('DemystifyHubPage', () => {
   it('links live collections and leaves pending ones inert', async () => {
     render(
@@ -108,84 +178,147 @@ describe('DemystifyHubPage', () => {
     const live = await screen.findByRole('link', { name: /GENRE/ });
     expect(live).toHaveAttribute('href', '/demystify/genre');
 
-    // Scoped to the card list: the summary line above it also says "PENDING".
     const cards = within(screen.getByRole('list'));
     expect(cards.getByText('MOVIE')).toBeInTheDocument();
     expect(cards.getByText('PENDING')).toBeInTheDocument();
     expect(screen.queryByRole('link', { name: /MOVIE/ })).toBeNull();
   });
 
-  it('counts live collections from their own index rather than a stale field', async () => {
+  it('counts live collections from their own index', async () => {
     render(
       <MemoryRouter>
         <DemystifyHubPage />
       </MemoryRouter>,
     );
-
-    // GENRE_INDEX holds two entries; nothing declares a count anywhere.
-    expect(await screen.findByText('2 ENTRIES')).toBeInTheDocument();
+    expect(await screen.findByText('3 ENTRIES')).toBeInTheDocument();
   });
 
   it('reports a missing registry instead of rendering an empty page', async () => {
     global.fetch = vi.fn(() => Promise.resolve({ ok: false, status: 404 }));
-
     render(
       <MemoryRouter>
         <DemystifyHubPage />
       </MemoryRouter>,
     );
-
     expect(await screen.findByText(/COULD NOT READ/)).toBeInTheDocument();
   });
 });
 
-describe('GenreCollectionPage', () => {
-  it('lists entries as deep links to their own page', async () => {
-    renderGenre('/demystify/genre');
+describe('GenreCollectionPage — index', () => {
+  // The genre list and the track-index table both link to a genre, so row
+  // lookups are scoped to the list.
+  const list = () => within(screen.getByRole('list'));
+  const settle = () => screen.findByRole('list');
 
-    const grunge = await screen.findByRole('link', { name: /GRUNGE/ });
-    expect(grunge).toHaveAttribute('href', '/demystify/genre/grunge');
-    expect(screen.getByRole('link', { name: /BRITPOP/ })).toHaveAttribute(
+  it('lists entries as deep links and summarises the collection', async () => {
+    renderGenre('/demystify/genre');
+    await settle();
+
+    expect(list().getByRole('link', { name: /TRIP HOP/ })).toHaveAttribute(
       'href',
-      '/demystify/genre/britpop',
+      '/demystify/genre/trip-hop',
     );
+
+    // 3 genres, 2 tracks, 2 families, span derived from the years fields.
+    expect(screen.getByText('GENRES')).toBeInTheDocument();
+    expect(screen.getByText('3')).toBeInTheDocument();
+    expect(screen.getByText('TRACKS')).toBeInTheDocument();
+    expect(screen.getByText('FAMILIES')).toBeInTheDocument();
+    expect(screen.getByText('1967–1991')).toBeInTheDocument();
+  });
+
+  it('filters by family when a chip is pressed', async () => {
+    renderGenre('/demystify/genre');
+    await settle();
+
+    await userEvent.click(screen.getByRole('button', { name: 'Rock & Metal' }));
+
+    expect(
+      list().getByRole('link', { name: /PROGRESSIVE ROCK/ }),
+    ).toBeInTheDocument();
+    expect(list().queryByRole('link', { name: /TRIP HOP/ })).toBeNull();
+    expect(screen.getByText('SHOWING 1 OF 3 GENRES')).toBeInTheDocument();
+  });
+
+  it('searches across track and artist names, not just genre names', async () => {
+    renderGenre('/demystify/genre');
+    await settle();
+
+    // "Morcheeba" appears only in trip-hop's track list.
+    await userEvent.type(screen.getByRole('searchbox'), 'morcheeba');
+
+    expect(list().getByRole('link', { name: /TRIP HOP/ })).toBeInTheDocument();
+    expect(list().queryByRole('link', { name: /PROGRESSIVE ROCK/ })).toBeNull();
+  });
+
+  it('says so when nothing matches instead of showing an empty list', async () => {
+    renderGenre('/demystify/genre');
+    await settle();
+
+    await userEvent.type(screen.getByRole('searchbox'), 'zzzznothing');
+    expect(screen.getByText(/NOTHING MATCHES THAT FILTER/)).toBeInTheDocument();
+    expect(screen.queryByRole('list')).toBeNull();
+  });
+
+  it('builds a full track index ordered by playlist position', async () => {
+    renderGenre('/demystify/genre');
+    await settle();
+
+    const rows = within(screen.getByRole('table')).getAllByRole('row');
+    // header + 2 tracks, P1 before P2
+    expect(rows).toHaveLength(3);
+    expect(rows[1]).toHaveTextContent('P1·04');
+    expect(rows[2]).toHaveTextContent('P2·13');
   });
 
   it('gives every row its own audition control, outside the link', async () => {
     renderGenre('/demystify/genre');
+    await settle();
 
-    const row = await screen.findByRole('link', { name: /GRUNGE/ });
-    // Nesting a button inside the row link would be invalid HTML and would
-    // swallow the click; the control must be a sibling of the anchor.
+    const row = list().getByRole('link', { name: /TRIP HOP/ });
     expect(within(row).queryByRole('button')).toBeNull();
     expect(
-      screen.getByRole('button', { name: /Play a sample of GRUNGE/ }),
+      screen.getByRole('button', { name: /Play a sample of TRIP HOP/ }),
     ).toBeInTheDocument();
   });
+});
 
-  it('renders a single entry from its own route', async () => {
-    renderGenre('/demystify/genre/grunge');
+describe('GenreCollectionPage — detail', () => {
+  it('renders the atlas prose sections with their emphasis intact', async () => {
+    renderGenre('/demystify/genre/trip-hop');
 
     expect(
-      await screen.findByRole('heading', { name: /GRUNGE/ }),
+      await screen.findByRole('heading', { name: /TRIP HOP/ }),
     ).toBeInTheDocument();
-    expect(screen.getByText('Loud-quiet-loud dynamics')).toBeInTheDocument();
     expect(
-      screen.getByText('Born in Seattle, sharpened by Sub Pop.'),
+      screen.getByText(/Trip hop was named by the music press in 1994/),
     ).toBeInTheDocument();
-    expect(screen.getByText('Nevermind (1991)')).toBeInTheDocument();
+    // Second paragraph stayed a separate paragraph.
+    expect(
+      screen.getByText('Portishead added film-noir strings.'),
+    ).toBeInTheDocument();
+    // *acetate* became real emphasis rather than literal asterisks.
+    expect(screen.getByText('acetate').tagName).toBe('STRONG');
+  });
+
+  it('shows the family and source badges and the playlist tracks', async () => {
+    renderGenre('/demystify/genre/trip-hop');
+    await screen.findByRole('heading', { name: /TRIP HOP/ });
+
+    expect(screen.getByText('Electronic')).toBeInTheDocument();
+    expect(screen.getByText('ON REPEAT')).toBeInTheDocument();
+    expect(screen.getByText('Easier Said Than Done')).toBeInTheDocument();
+    expect(screen.getByText('Morcheeba')).toBeInTheDocument();
   });
 
   it('offers the next entry from a detail page', async () => {
-    renderGenre('/demystify/genre/grunge');
-
-    const next = await screen.findByRole('link', { name: /BRITPOP/ });
-    expect(next).toHaveAttribute('href', '/demystify/genre/britpop');
+    renderGenre('/demystify/genre/trip-hop');
+    const next = await screen.findByRole('link', { name: /PROGRESSIVE ROCK/ });
+    expect(next).toHaveAttribute('href', '/demystify/genre/prog-rock');
   });
 
   it('shows a not-found state for an unknown entry', async () => {
     renderGenre('/demystify/genre/nonexistent');
-
     expect(await screen.findByText(/NO ENTRY FILED UNDER/)).toBeInTheDocument();
   });
 });

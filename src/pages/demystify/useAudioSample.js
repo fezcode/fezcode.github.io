@@ -92,8 +92,15 @@ const useAudioSample = ({ enabled = true } = {}) => {
         return;
       }
 
+      // Most genres have no recorded sample — go straight to the chord derived
+      // from their spectrum rather than firing a request that will 404.
+      if (!entry.audio) {
+        playSynth(entry);
+        return;
+      }
+
       const element = getElement();
-      const src = entry.audio || `/demystify/genre/${entry.id}.mp3`;
+      const src = entry.audio;
 
       element.pause();
       element.currentTime = 0;

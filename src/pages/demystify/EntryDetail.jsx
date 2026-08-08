@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
+import RichText from './RichText';
+import { renderSpectrum } from './spectrum';
 
 const MetaRow = ({ label, children }) =>
   children ? (
@@ -21,86 +23,130 @@ const EntryDetail = ({
   isPlaying,
   audioEnabled,
   onPlay,
-}) => (
-  <article className="dm-entry">
-    <header className="dm-entry-head">
-      <h2 className="dm-entry-title">
-        {entry.rank && <span className="dm-rank">{entry.rank}</span>}
-        {entry.name}
-      </h2>
-      <p className="dm-entry-meta">
-        {[entry.tag, entry.years, entry.origin].filter(Boolean).join('  //  ')}
-      </p>
-    </header>
+}) => {
+  const spectrum = useMemo(() => renderSpectrum(entry.spec), [entry.spec]);
 
-    {entry.ascii && (
-      <pre className="dm-ascii" aria-hidden="true">
-        {entry.ascii}
-      </pre>
-    )}
+  return (
+    <article className="dm-entry">
+      <header className="dm-entry-head">
+        <div className="dm-entry-tags">
+          {entry.family && <span className="dm-badge">{entry.family}</span>}
+          {entry.source && (
+            <span className="dm-badge is-quiet">{entry.source}</span>
+          )}
+          {entry.years && <span className="dm-entry-years">{entry.years}</span>}
+        </div>
+        <h2 className="dm-entry-title">
+          {entry.rank && <span className="dm-rank">{entry.rank}</span>}
+          {entry.name}
+        </h2>
+        {entry.sub && <p className="dm-entry-sub">{entry.sub}</p>}
+      </header>
 
-    <dl className="dm-meta">
-      <MetaRow label="SONIC SIGNATURE">
-        {entry.signature && <q>{entry.signature}</q>}
-      </MetaRow>
-      <MetaRow label="KEY GEAR">{entry.keyGear}</MetaRow>
-    </dl>
+      {entry.ascii && (
+        <pre className="dm-ascii" aria-hidden="true">
+          {entry.ascii}
+        </pre>
+      )}
 
-    <div className="dm-entry-actions">
-      <button
-        type="button"
-        className="dm-audition is-wide"
-        onClick={() => onPlay(entry)}
-        disabled={!audioEnabled}
-      >
-        {!audioEnabled
-          ? '[MUTED]'
-          : isPlaying
-            ? '[■ STOP SAMPLE]'
-            : '[► PLAY SAMPLE]'}
-      </button>
-    </div>
+      {spectrum && (
+        <figure className="dm-figure">
+          <pre className="dm-ascii is-spectrum" aria-hidden="true">
+            {spectrum}
+          </pre>
+          <figcaption className="dm-figcaption">
+            Characteristic frequency-energy profile
+          </figcaption>
+        </figure>
+      )}
 
-    {entry.breakdown && (
-      <section className="dm-breakdown">
-        <h3 className="dm-section-title">RATIONALE & PRODUCTION</h3>
-        <p>{entry.breakdown}</p>
-      </section>
-    )}
+      {(entry.signature || entry.keyGear || entry.origin) && (
+        <dl className="dm-meta">
+          <MetaRow label="ORIGIN">{entry.origin}</MetaRow>
+          <MetaRow label="SONIC SIGNATURE">
+            {entry.signature && <q>{entry.signature}</q>}
+          </MetaRow>
+          <MetaRow label="KEY GEAR">{entry.keyGear}</MetaRow>
+        </dl>
+      )}
 
-    {entry.examples.length > 0 && (
-      <section className="dm-examples">
-        <h3 className="dm-section-title">BENCHMARK TRACKS</h3>
-        <ul className="dm-example-list">
-          {entry.examples.map((example) => (
-            <li className="dm-example" key={example.title}>
-              <span className="dm-example-title">{example.title}</span>
-              {example.note && (
-                <span className="dm-example-note">{example.note}</span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </section>
-    )}
+      {entry.audio && (
+        <div className="dm-entry-actions">
+          <button
+            type="button"
+            className="dm-audition is-wide"
+            onClick={() => onPlay(entry)}
+            disabled={!audioEnabled}
+          >
+            {!audioEnabled
+              ? '[MUTED]'
+              : isPlaying
+                ? '[■ STOP SAMPLE]'
+                : '[► PLAY SAMPLE]'}
+          </button>
+        </div>
+      )}
 
-    {(prev || next) && (
-      <nav className="dm-pager" aria-label="Adjacent entries">
-        {prev ? (
-          <Link className="dm-pager-link" to={`${basePath}/${prev.id}`}>
-            ← {prev.name}
-          </Link>
-        ) : (
-          <span />
-        )}
-        {next && (
-          <Link className="dm-pager-link is-next" to={`${basePath}/${next.id}`}>
-            {next.name} →
-          </Link>
-        )}
-      </nav>
-    )}
-  </article>
-);
+      <RichText label="WHAT IT IS / WHEN" paragraphs={entry.what} />
+      <RichText label="SIGNIFICANT ARTISTS" paragraphs={entry.artists} />
+      <RichText label="TRIVIA" paragraphs={entry.trivia} />
+      <RichText label="SONIC SIGNATURE" paragraphs={entry.sonic} />
+      <RichText label="KEY GEAR" paragraphs={entry.gear} />
+      <RichText label="RATIONALE & PRODUCTION" paragraphs={entry.prod} />
+
+      {entry.tracks.length > 0 && (
+        <section className="dm-prose">
+          <h3 className="dm-section-title">ON REPEAT — TRACKS IN THIS GENRE</h3>
+          <ul className="dm-example-list">
+            {entry.tracks.map((track) => (
+              <li className="dm-example" key={`${track.pos}-${track.title}`}>
+                <span className="dm-example-title">
+                  {track.pos && <span className="dm-track-pos">{track.pos}</span>}
+                  {track.title}
+                </span>
+                {track.artist && (
+                  <span className="dm-example-note">{track.artist}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {entry.examples.length > 0 && (
+        <section className="dm-prose">
+          <h3 className="dm-section-title">BENCHMARK TRACKS</h3>
+          <ul className="dm-example-list">
+            {entry.examples.map((example) => (
+              <li className="dm-example" key={example.title}>
+                <span className="dm-example-title">{example.title}</span>
+                {example.note && (
+                  <span className="dm-example-note">{example.note}</span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {(prev || next) && (
+        <nav className="dm-pager" aria-label="Adjacent entries">
+          {prev ? (
+            <Link className="dm-pager-link" to={`${basePath}/${prev.id}`}>
+              ← {prev.name}
+            </Link>
+          ) : (
+            <span />
+          )}
+          {next && (
+            <Link className="dm-pager-link is-next" to={`${basePath}/${next.id}`}>
+              {next.name} →
+            </Link>
+          )}
+        </nav>
+      )}
+    </article>
+  );
+};
 
 export default EntryDetail;

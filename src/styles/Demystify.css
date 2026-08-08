@@ -89,6 +89,10 @@ html[data-demystify-theme='4'] {
   border-bottom: 1px solid var(--dm-muted);
 }
 
+.dm-masthead {
+  min-width: 0;
+}
+
 .dm-brand {
   margin: 0;
   font-size: 1.25rem;
@@ -310,6 +314,149 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   color: var(--dm-accent);
 }
 
+/* --- Filters ------------------------------------------------------------- */
+
+.dm-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--dm-muted);
+}
+
+.dm-search {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--dm-fg);
+  background: var(--dm-sunken);
+  border: 1px solid var(--dm-muted);
+  border-radius: 2px;
+  padding: 8px 11px;
+}
+
+.dm-search::placeholder {
+  color: var(--dm-muted);
+}
+
+.dm-search:focus-visible {
+  outline: 2px solid var(--dm-accent);
+  outline-offset: 1px;
+  border-color: transparent;
+}
+
+.dm-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.dm-chip {
+  font-family: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: transparent;
+  border: 1px solid var(--dm-muted);
+  border-radius: 2px;
+  color: var(--dm-muted);
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dm-chip:hover,
+.dm-chip:focus-visible {
+  color: var(--dm-fg);
+  border-color: var(--dm-fg);
+  outline: none;
+}
+
+.dm-chip[aria-pressed='true'] {
+  background: var(--dm-accent);
+  border-color: var(--dm-accent);
+  color: var(--dm-bg);
+  font-weight: 700;
+}
+
+.dm-resultcount {
+  margin: 0 0 0.75rem;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+}
+
+/* --- Full track index table ---------------------------------------------- */
+
+.dm-trackindex {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--dm-muted);
+}
+
+.dm-tablewrap {
+  overflow-x: auto;
+}
+
+.dm-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.dm-table th {
+  text-align: left;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+  padding: 0 0.75rem 8px 0;
+  border-bottom: 1px solid var(--dm-muted);
+  white-space: nowrap;
+}
+
+.dm-table td {
+  padding: 7px 0.75rem 7px 0;
+  border-bottom: 1px solid var(--dm-sunken);
+  vertical-align: top;
+}
+
+.dm-td-pos {
+  font-size: 0.72rem;
+  color: var(--dm-muted);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.dm-td-artist {
+  color: var(--dm-muted);
+}
+
+.dm-td-genre a {
+  font-size: 0.76rem;
+  color: var(--dm-accent);
+  text-decoration: none;
+}
+
+.dm-td-genre a:hover,
+.dm-td-genre a:focus-visible {
+  text-decoration: underline;
+  outline: none;
+}
+
+@media (max-width: 640px) {
+  .dm-td-artist {
+    display: none;
+  }
+
+  .dm-table th:nth-child(3) {
+    display: none;
+  }
+}
+
 /* --- Collection index rows ----------------------------------------------- */
 
 .dm-list {
@@ -328,7 +475,7 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   flex: 1;
   min-width: 0;
   display: grid;
-  grid-template-columns: 3ch minmax(0, 1fr) auto auto 1.5rem;
+  grid-template-columns: 3ch minmax(0, 1fr) auto auto 3ch 1.5rem;
   align-items: baseline;
   gap: 0 1rem;
   padding: 0.5rem 0.6rem;
@@ -350,10 +497,19 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   outline: none;
 }
 
-.dm-row-link:hover :is(.dm-rank, .dm-row-years, .dm-row-tag),
-.dm-row-link:focus-visible :is(.dm-rank, .dm-row-years, .dm-row-tag) {
+.dm-row-link:hover :is(.dm-rank, .dm-row-years, .dm-row-tag, .dm-row-count),
+.dm-row-link:focus-visible
+  :is(.dm-rank, .dm-row-years, .dm-row-tag, .dm-row-count) {
   color: inherit;
   opacity: 0.8;
+}
+
+/* Track count for the row — em dash when the genre has none. */
+.dm-row-count {
+  font-size: 0.76rem;
+  color: var(--dm-accent);
+  text-align: right;
+  font-variant-numeric: tabular-nums;
 }
 
 .dm-row-name {
@@ -375,22 +531,24 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   text-align: right;
 }
 
-@media (max-width: 760px) {
+@media (max-width: 860px) {
   .dm-row-link {
-    grid-template-columns: 3ch minmax(0, 1fr) 1.5rem;
+    grid-template-columns: 3ch minmax(0, 1fr) 3ch 1.5rem;
     row-gap: 2px;
   }
 
+  .dm-row-tag,
   .dm-row-years {
     grid-column: 2;
   }
 
-  .dm-row-tag {
-    grid-column: 2;
+  .dm-row-count {
+    grid-column: 3;
+    grid-row: 1;
   }
 
   .dm-row-open {
-    grid-column: 3;
+    grid-column: 4;
     grid-row: 1;
   }
 }
@@ -444,6 +602,43 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
 .dm-entry-head {
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--dm-muted);
+}
+
+.dm-entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 8px;
+}
+
+.dm-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--dm-accent);
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  padding: 1px 7px;
+}
+
+.dm-badge.is-quiet {
+  color: var(--dm-muted);
+}
+
+.dm-entry-years {
+  margin-left: auto;
+  font-size: 0.76rem;
+  letter-spacing: 1px;
+  color: var(--dm-muted);
+}
+
+.dm-entry-sub {
+  margin: 8px 0 0;
+  max-width: 68ch;
+  font-size: 0.88rem;
+  color: var(--dm-muted);
 }
 
 .dm-entry-title {
@@ -535,20 +730,61 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   gap: 0.75rem;
 }
 
-.dm-breakdown {
+/* --- Prose sections ------------------------------------------------------ */
+
+.dm-prose {
   padding-top: 1rem;
   border-top: 1px dashed var(--dm-muted);
   font-size: 0.88rem;
 }
 
-.dm-breakdown p {
-  margin: 0;
-  max-width: 72ch;
+.dm-prose p {
+  margin: 0 0 0.75rem;
+  max-width: 74ch;
 }
 
-.dm-examples {
-  padding-top: 1rem;
-  border-top: 1px dashed var(--dm-muted);
+.dm-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.dm-prose strong {
+  color: var(--dm-highlight);
+  font-weight: 700;
+}
+
+.dm-prose em {
+  color: var(--dm-accent);
+  font-style: italic;
+}
+
+/* --- Spectrum figure ----------------------------------------------------- */
+
+.dm-figure {
+  align-self: flex-start;
+  max-width: 100%;
+  margin: 0;
+}
+
+.dm-ascii.is-spectrum {
+  color: var(--dm-fg);
+  letter-spacing: 0;
+}
+
+.dm-figcaption {
+  margin-top: 6px;
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--dm-muted);
+}
+
+.dm-track-pos {
+  display: inline-block;
+  min-width: 6ch;
+  margin-right: 0.75rem;
+  font-size: 0.72rem;
+  color: var(--dm-accent);
+  font-variant-numeric: tabular-nums;
 }
 
 .dm-example-list {
@@ -621,6 +857,12 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--dm-muted);
+}
+
+.dm-footer-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
 }
 
 .dm-dot {

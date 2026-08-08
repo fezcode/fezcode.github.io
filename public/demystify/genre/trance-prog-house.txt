@@ -1,0 +1,33 @@
+id: trance-prog-house
+rank: 18
+name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
+family: Electronic
+years: 1990 → present
+source: ON REPEAT
+sub: Long-build euphoric dance music — and the ambient/chillout records made by the same producers
+spec: 88,84,66,48,44,50,58,66,72,74,76,78,82,86,88,84,76,66,56,46
+synthType: sawtooth
+freqs: 55, 68.94, 660
+
+what:
+ Trance formed in Frankfurt around 1990 — Sven Väth, Harthouse, Eye Q — and by the late 1990s had split into a hard European wing and a melodic, ambient-leaning British one. *Chicane* (Nick Bracegirdle) defined the latter: "Offshore" and "Saltwater" invented the Balearic-chillout crossover single. Meanwhile in San Francisco, *Scott Hardkiss* recording as God Within made ambient/progressive house that pointed a completely different direction, and UK labels like *Platipus* — Kansai's home — built a catalogue of progressive breaks and trance that has aged unusually well.
+
+artists:
+ Sven Väth, Paul van Dyk, Sasha & John Digweed, BT, Chicane, Above & Beyond. The San Francisco strand: the Hardkiss brothers, Scott Hardkiss (God Within), who died in 2013. Platipus: Art of Trance, Union Jack, Kansai.
+
+trivia:
+ "Saltwater" is built on *Clannad's "Theme from Harry's Game"* (1982) — and rather than merely sample it, Chicane brought in *Moya Brennan*, Clannad's own vocalist, to re-record the part. Clannad are Enya's family band, which makes Saltwater a direct line from Donegal Gaelic folk to a Balearic dancefloor. Chicane's "Offshore" is the record that effectively created the "sunset chillout compilation" as a commercial category.
+
+sonic:
+ Structure over sound: eight or sixteen bars of build, a filtered breakdown that removes the kick entirely, and a drop where a supersaw lead enters with heavy reverb and delay. Chords are simple and diatonic — usually a four-chord minor loop — because the emotional payload is carried by *filter automation and reverb depth*, not harmony. Chillout versions keep the pads and lose the kick.
+
+gear:
+ Roland TB-303 and JP-8000 (whose supersaw waveform is the genre's single most recognisable sound), Access Virus, Korg M1 for the organ bass, Roland TR-909 for the kick and open hat, Akai samplers for vocal chops. Effects: long hall reverbs, ping-pong delays, and resonant low-pass filters automated over 32-bar spans.
+
+prod:
+ Arranged for the DJ before the listener — intros and outros run 32 bars of drums alone for beatmatching, and the radio edit is a separate assembly. The breakdown is engineered as a loudness trough so the drop reads as louder by contrast, which is why heavily limited masters flatten these records. The Platipus back catalogue has been remastered repeatedly precisely because the originals were cut for vinyl and need re-levelling for streaming.
+
+tracks:
+ - P2·30 | Saltwater | Chicane, Moya Brennan
+ - P2·16 | Rococco — Original Mix (Remastered) | Kansai
+ - P2·20 | Raincry (Spiritual Thirst) | God Within

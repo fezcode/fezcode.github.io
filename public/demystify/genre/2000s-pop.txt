@@ -1,0 +1,33 @@
+id: 2000s-pop
+rank: 22
+name: 2000S POP-PUNK & RADIO R&B-POP
+family: Pop & Soul
+years: 1999 → 2010
+source: ON REPEAT
+sub: The last era of monoculture radio pop, built by a handful of songwriting teams
+spec: 82,86,80,64,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
+synthType: triangle
+freqs: 55, 68.94, 86.41
+
+what:
+ Two parallel formulas dominated 2002–2009 radio. One: pop-punk with a female lead, guitars mixed like pop and choruses written by professionals (Avril Lavigne, via the writing team *The Matrix*). The other: R&B-pop rebuilt around *Timbaland's* rhythmic vocabulary — stuttered, syncopated, space-heavy — which took over the charts almost completely after Nelly Furtado's Loose (2006). *Jay Sean* represents the British-Asian R&B wing that crossed to the US at the end of the decade.
+
+artists:
+ Avril Lavigne, Kelly Clarkson, Paramore on the rock side; Nelly Furtado, Justin Timberlake, Nelly, Jay Sean on the R&B side. The real authors: *The Matrix* (Lauren Christy, Graham Edwards, Scott Spock), *Timbaland* and *Danja*, Max Martin's Cheiron team, and Dr. Luke.
+
+trivia:
+ "Complicated" was written by The Matrix, who had originally pitched Lavigne much softer material and rebuilt her sound after she rejected it — the resulting authorship arguments defined her early press. *"Say It Right"* was reportedly written and cut in a single night at the end of the Loose sessions, almost as an afterthought, and became the album's biggest US hit; its airy, minor-key restraint is atypical of everything else Timbaland and Danja were doing that year.
+
+sonic:
+ Verse-chorus-verse-chorus-bridge-chorus, chorus by 0:45. Pop-punk side: palm-muted power chords, snare on 2 and 4 with heavy gate, vocals doubled and pitch-corrected transparently. Timbaland side: almost no bass in the traditional sense, a spare syncopated kick pattern, vocal chops used as percussion, and huge amounts of empty space in the arrangement.
+
+gear:
+ Pro Tools plus Antares Auto-Tune, which by 2003 was standard and inaudible when used correctly. Timbaland worked on an Ensoniq ASR-10 for years, plus Korg Triton and Roland V-Synth. Guitars on the pop-punk records are usually a session player through a Mesa or Vox, DI'd and re-amped for control.
+
+prod:
+ This is the peak of the *loudness war* — masters from 2005–2008 routinely sit at DR4–6 with visible clipping — because CD and radio processing rewarded it. Vocals are comped syllable by syllable from dozens of takes. The pop-punk records deliberately mix guitars quieter than a rock record would, so the vocal never has to compete; the R&B records leave the low end almost empty so the kick and vocal own it.
+
+tracks:
+ - P1·22 | Complicated | Avril Lavigne
+ - P1·05 | Ride It | Jay Sean
+ - P2·11 | Say It Right | Nelly Furtado

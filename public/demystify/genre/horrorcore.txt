@@ -1,0 +1,32 @@
+id: horrorcore
+rank: 14
+name: HORRORCORE & CHOPPER RAP
+family: Hip Hop
+years: 1991 → present
+source: ON REPEAT
+sub: Extreme-content, extreme-technique rap operating almost entirely outside the majors
+spec: 84,90,84,66,56,60,68,74,78,74,70,72,78,82,80,72,64,56,48,40
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ Horrorcore takes the horror-film register literally — the Geto Boys' "Mind Playing Tricks on Me" (1991) is the ancestor, Gravediggaz and Brotha Lynch Hung the codifiers. "Chopper" is a separate technical label for very high-density syllable delivery, associated with Midwest artists — Bone Thugs-n-Harmony, Twista, and above all *Tech N9ne*, who combines both.
+
+artists:
+ Geto Boys, Gravediggaz, Brotha Lynch Hung, Esham, Insane Clown Posse; *Tech N9ne* and the Strange Music roster; *Necro*, a Brooklyn producer-rapper who calls his own subgenre "death rap" and runs Psycho+Logical-Records. Necro's brother is Ill Bill of Non Phixion.
+
+trivia:
+ Tech N9ne co-founded *Strange Music* with businessman Travis O'Guin in 1999 after major-label deals fell through, and turned it into one of the most profitable independent labels in American music — _Forbes_ has repeatedly listed him among the highest-earning rappers despite near-zero radio play. The business model is relentless touring and direct merchandise sales, not streaming.
+
+sonic:
+ Minor-key, often orchestral or horror-organ loops with the drums mixed aggressively hot. Tech N9ne's delivery uses triplet and sextuplet subdivisions sustained across whole verses — the "chopper" style — with multi-tracked vocals doubling the fastest passages so the consonants stay legible. Necro sits at the opposite end: slow, heavy, sample-based, with the loop deliberately left crude.
+
+gear:
+ MPC and hardware samplers for Necro; Strange Music's in-house production (Seven, Michael "Seven" Summers) uses full DAW arrangement with orchestral libraries and live guitar. Vocal doubling is the key technique — often four or more takes stacked and gated tightly.
+
+prod:
+ Because the delivery is the product, the vocal recording is unusually careful: fast passages are punched in phrase by phrase and time-aligned so the stacks are sample-accurate. Beats are arranged to leave a rhythmic gap where the flow will land. Both artists master loud and mid-forward — this is music built for a van tour PA and a car system, not a streaming loudness target.
+
+tracks:
+ - P2·01 | Suicide Letters | Tech N9ne
+ - P2·19 | The Dispensation of Life and Death | Necro

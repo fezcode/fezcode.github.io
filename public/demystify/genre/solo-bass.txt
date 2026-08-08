@@ -1,0 +1,31 @@
+id: solo-bass
+rank: 26
+name: SOLO INSTRUMENTAL BASS
+family: Score & Ambient
+years: 1976 → present
+source: ON REPEAT
+sub: The bass guitar played as a complete solo instrument — chords, melody and percussion at once
+spec: 96,92,80,64,52,48,50,54,58,60,58,56,58,62,64,60,52,44,38,32
+synthType: sine
+freqs: 55, 68.94, 86.41
+
+what:
+ Jaco Pastorius established in 1976 that the electric bass could be a lead voice; Michael Manring, Stuart Hamm and Victor Wooten built the solo repertoire that followed. The modern strand — where *Aram Bedrosian* works — combines two-handed tapping, harmonics, percussive body hits and live looping so that one player produces a full arrangement in real time, usually with no overdubs.
+
+artists:
+ Jaco Pastorius, Michael Manring, Victor Wooten, Stuart Hamm, Steve Lawson, Adam Ben Ezra, Aram Bedrosian. The technique overlaps heavily with solo acoustic guitarists like Michael Hedges and Andy McKee.
+
+trivia:
+ Michael Manring plays a custom *Zon Hyperbass* with detuners on every string and at the bridge, letting him retune mid-phrase — a single piece of gear that opened an entire compositional space. The genre's central constraint is also its appeal: because it is nearly always performed live in one take, the recordings document a physical feat as much as a composition.
+
+sonic:
+ Enormous fundamental in the 40–80 Hz range coexisting with harmonics up past 4 kHz, because the same instrument is playing bass line, chord and melody simultaneously. Natural harmonics ring long against fretted notes; the body of the instrument is struck for percussion. Very little processing — the interest is in the transient detail and the decay.
+
+gear:
+ Fretless and extended-range basses (five and six string), Zon and custom luthier instruments, piezo bridge pickups blended with magnetic ones for acoustic detail, and looping pedals for real-time layering. Amplification is usually full-range/flat rather than a bass amp, because the treble content matters as much as the low end.
+
+prod:
+ Recorded with the widest possible dynamic range and almost no compression — compression would flatten the difference between a tapped harmonic and a struck body, which is where the music lives. Usually a blend of DI, piezo and a room mic on the instrument itself. This is one of the few genres where the mastering brief is essentially "don't."
+
+tracks:
+ - P1·18 | A Dark Light | Aram Bedrosian

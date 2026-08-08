@@ -1,17 +1,18 @@
 id: grunge
-rank: 02
+rank: 28
 name: GRUNGE
+family: Rock & Metal
 years: 1989 → 1996
+source: ARCHIVE
+sub: Seattle's loud-quiet-loud answer to hair metal, played through a Big Muff
+spec: 72,84,88,80,70,72,78,82,84,80,74,72,74,76,72,62,54,46,38,32
 tag: ALT-ROCK
 origin: Seattle, WA
 signature: Sludge guitar fuzz, quiet-loud acoustic dynamics, tortured vocals
 keyGear: Boss DS-1, EHX Small Clone Chorus, Fender Jaguar
 audio: /demystify/genre/grunge.mp3
-freqs: 110.0, 164.81, 220.0, 164.81
-synthType: sawtooth
-
-breakdown:
-Replaced 80s glam hair metal polish with heavy distorted riffs, raw emotional intensity, and unvarnished realism. Demystified: blended Black Sabbath heaviness with punk irreverence.
+synthType: square
+freqs: 68.94, 86.41, 335.14
 
 ascii:
 ┌────────────────────────────────────────┐
@@ -22,7 +23,7 @@ ascii:
 └────────────────────────────────────────┘
 
 examples:
-- Nirvana - Smells Like Teen Spirit (1991) | Benchmark quiet verse to explosive chorus dynamic
-- Soundgarden - Black Hole Sun (1994) | Psychedelic Leslie speaker guitar swirl, heavy Drop-D chorus
-- Alice in Chains - Man in the Box (1990) | Talk-box guitar riff, eerie vocal harmonies
-- Pearl Jam - Alive (1991) | Anthemic stadium chorus, blues-infused Seattle alt-rock guitar solos
+ - Nirvana - Smells Like Teen Spirit (1991) | Benchmark quiet verse to explosive chorus dynamic
+ - Soundgarden - Black Hole Sun (1994) | Psychedelic Leslie speaker guitar swirl, heavy Drop-D chorus
+ - Alice in Chains - Man in the Box (1990) | Talk-box guitar riff, eerie vocal harmonies
+ - Pearl Jam - Alive (1991) | Anthemic stadium chorus, blues-infused Seattle alt-rock guitar solos
