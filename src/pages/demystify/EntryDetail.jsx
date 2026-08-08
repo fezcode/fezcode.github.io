@@ -42,17 +42,16 @@ const EntryDetail = ({
         {entry.sub && <p className="dm-entry-sub">{entry.sub}</p>}
       </header>
 
+      {/* No newline between the tag and the expression: a leading line break
+          inside <pre> is stripped by the HTML parser on first paint but kept by
+          React after hydration, which shifts the art by one row. */}
       {entry.ascii && (
-        <pre className="dm-ascii" aria-hidden="true">
-          {entry.ascii}
-        </pre>
+        <pre className="dm-ascii" aria-hidden="true">{entry.ascii}</pre>
       )}
 
       {spectrum && (
         <figure className="dm-figure">
-          <pre className="dm-ascii is-spectrum" aria-hidden="true">
-            {spectrum}
-          </pre>
+          <pre className="dm-ascii is-spectrum" aria-hidden="true">{spectrum}</pre>
           <figcaption className="dm-figcaption">
             Characteristic frequency-energy profile
           </figcaption>

@@ -135,10 +135,49 @@ describe('renderSpectrum', () => {
     const lines = renderSpectrum([100, 50, 0], { rows: 4, cell: 2 }).split('\n');
     // 4 chart rows + ruler + labels
     expect(lines).toHaveLength(6);
-    expect(lines[0].startsWith('██')).toBe(true); // full-height first band
-    expect(lines[3].slice(4)).toBe(''); // empty band leaves no ink
+    expect(lines[0].startsWith('██')).toBe(true); // tallest band reaches the top
     expect(lines[4]).toMatch(/^┴/); // ruler tick under band 0
     expect(lines[5]).toMatch(/^SUB/);
+  });
+
+  // These profiles sit in a narrow band, so an absolute 0–100 scale renders the
+  // bottom two thirds as a featureless slab. Bars are scaled to the genre's own
+  // range instead, which is the difference between a chart and a rectangle.
+  it('scales to the range present, not to an absolute 0–100', () => {
+    const narrow = renderSpectrum([44, 84, 60], { rows: 6, cell: 1 }).split(
+      '\n',
+    );
+    // The top row carries ink — nothing has to hit 100 for the chart to fill.
+    expect(narrow[0].trim()).not.toBe('');
+    // …and the quietest band still shows a sliver rather than vanishing.
+    expect(narrow[5][0]).not.toBe(' ');
+  });
+
+  it('never leaves an empty row at the top of the chart', () => {
+    // No genre in the collection reaches 100, which used to waste the top row.
+    const lines = renderSpectrum([68, 74, 72, 62, 84], { rows: 7 }).split('\n');
+    expect(lines[0].trim()).not.toBe('');
+    // A leading newline would shift the whole chart down a row inside <pre>.
+    expect(renderSpectrum([68, 74, 72, 62, 84]).startsWith('\n')).toBe(false);
+  });
+
+  it('leaves no featureless slab across the bottom rows', () => {
+    // The old absolute scale rendered every row below the minimum as solid
+    // blocks, so most of the chart carried no information at all.
+    const rows = 9;
+    const lines = renderSpectrum(
+      [68, 74, 72, 62, 58, 62, 68, 74, 80, 82, 80, 78, 80, 84, 82, 76, 68, 60, 52, 44],
+      { rows },
+    ).split('\n');
+    const chart = lines.slice(0, rows);
+    const solid = chart.filter((l) => /^█+$/.test(l)).length;
+    expect(solid).toBeLessThan(3);
+  });
+
+  it('renders a flat profile without dividing by zero', () => {
+    const lines = renderSpectrum([50, 50, 50], { rows: 4, cell: 1 }).split('\n');
+    expect(lines.every((l) => !l.includes('NaN'))).toBe(true);
+    expect(lines[3]).toBe('███');
   });
 
   it('returns nothing when a genre has no spectrum data', () => {
