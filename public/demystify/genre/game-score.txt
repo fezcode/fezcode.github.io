@@ -3,7 +3,6 @@ rank: 20
 name: VIDEO GAME SCORE
 family: Score & Ambient
 years: 1978 → present
-source: ON REPEAT
 sub: Functional music written to loop indefinitely and react to a player, now a concert repertoire
 spec: 70,72,68,60,58,62,68,74,78,80,78,76,78,80,78,72,66,58,50,42
 synthType: sine
@@ -28,7 +27,7 @@ prod:
  The composer delivers not a finished piece but a *system*: stems, transition markers, loop points and intensity tiers, which the audio programmer wires to game state. The soundtrack album release is a separate edit — the linear "track" you hear on Spotify is assembled afterward from material that never plays that way in-game. That's why game OSTs often feel like they arrive somewhere and then stop.
 
 tracks:
- - P2·03 | Children of the Omnissiah | Guillaume David
- - P2·17 | MainMenu (Day) | Jesper Kyd
- - P2·14 | Awakening | Bastian Kieslinger
- - P2·06 | Peace of Akatosh (From 'Oblivion') | Dreyma
+ - Children of the Omnissiah | Guillaume David
+ - MainMenu (Day) | Jesper Kyd
+ - Awakening | Bastian Kieslinger
+ - Peace of Akatosh (From 'Oblivion') | Dreyma

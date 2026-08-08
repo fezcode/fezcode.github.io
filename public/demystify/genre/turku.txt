@@ -3,7 +3,6 @@ rank: 07
 name: TÜRKÜ — TURKISH FOLK
 family: Turkish
 years: centuries → present
-source: ON REPEAT
 sub: Regional folk song: bağlama, kemençe and a repertoire transmitted by anonymous authorship
 spec: 38,46,58,66,72,76,78,74,70,72,76,80,78,72,66,58,50,44,38,32
 synthType: triangle
@@ -28,6 +27,6 @@ prod:
  The production ethic is transparency: capture the instrument and the voice, add nothing that obscures the ornament. Modern recordings are close-mic'd with condensers, minimal compression, and a short natural reverb — because heavy processing smears the microtonal detail that identifies the region. Where a rhythm section is added, it stays low in the mix and never doubles the melody.
 
 tracks:
- - P2·10 | Deniz Üstünde Fener | Selçuk Balcı
- - P2·27 | Sendeki Kaşlar | Hüseyin Turan
- - P2·28 | İki Keklik | Orhan Hakalmaz
+ - Deniz Üstünde Fener | Selçuk Balcı
+ - Sendeki Kaşlar | Hüseyin Turan
+ - İki Keklik | Orhan Hakalmaz

@@ -3,7 +3,6 @@ rank: 04
 name: CLASSIC ROCK & AOR
 family: Rock & Metal
 years: 1965 → 1989
-source: ON REPEAT
 sub: Album-oriented radio rock — big choruses, session-grade musicianship, arena-scale mixes
 spec: 55,66,74,72,66,68,72,76,78,74,70,72,76,78,72,64,56,48,40,34
 synthType: square
@@ -28,6 +27,6 @@ prod:
  Everything is arranged around the chorus arriving in the first minute, because radio programmers auditioned records on a small speaker. Vocal stacks are recorded as three or four separate passes rather than copied, which is why the harmonies shimmer instead of phasing. The mix leaves a deliberate hole around 2–4 kHz for the lead vocal — the "AOR pocket" — and the bass is played with a pick for definition on car speakers.
 
 tracks:
- - P1·07 | Eminence Front | The Who
- - P1·16 | Separate Ways (Worlds Apart) | Journey
- - P2·22 | No Fortune | America
+ - Eminence Front | The Who
+ - Separate Ways (Worlds Apart) | Journey
+ - No Fortune | America

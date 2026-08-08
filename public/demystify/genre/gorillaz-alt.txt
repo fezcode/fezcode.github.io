@@ -3,7 +3,6 @@ rank: 15
 name: GENRE-FLUID ALTERNATIVE HIP HOP
 family: Hip Hop
 years: 1998 → present
-source: ON REPEAT
 sub: Rap as one ingredient in a producer-led collage rather than the frame around it
 spec: 80,86,78,60,54,60,66,72,76,74,70,72,76,78,74,68,62,54,46,40
 synthType: square
@@ -28,4 +27,4 @@ prod:
  Albarn builds the bed first, then invites guests in and lets them do what they do — the record is assembled from sessions recorded in different cities and stitched. That accounts for the collage quality and also for the consistency: the glue is Albarn's mixing choices, heavy on tape emulation and a narrow low-mid focus that makes wildly different sources sound like the same room.
 
 tracks:
- - P2·07 | Stylo | Gorillaz, Bobby Womack, Mos Def
+ - Stylo | Gorillaz, Bobby Womack, Mos Def

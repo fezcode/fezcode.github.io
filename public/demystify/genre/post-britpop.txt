@@ -3,7 +3,6 @@ rank: 25
 name: POST-BRITPOP
 family: Rock & Metal
 years: 1997 → 2008
-source: ON REPEAT
 sub: Melancholy, melodic, stadium-scaled British guitar rock after Britpop's swagger collapsed
 spec: 62,70,74,70,64,66,72,76,80,78,74,74,78,80,76,68,60,52,44,38
 synthType: square
@@ -28,4 +27,4 @@ prod:
  The defining choice is restraint: these records are mixed with far more space than their contemporaries, and the emotional lift comes from adding an instrument rather than raising a fader. Vocals are recorded close with the compressor doing very little, so breath and cracks survive. Masters from this scene are noticeably quieter than the American radio rock of the same years.
 
 tracks:
- - P1·29 | Closer | Travis
+ - Closer | Travis

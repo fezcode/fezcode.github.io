@@ -3,7 +3,6 @@ rank: 10
 name: TURKISH TRAP, DRILL & RAP
 family: Turkish
 years: 1995 → present
-source: ON REPEAT
 sub: Turkish-language rap that went from diaspora subculture to the country's dominant youth genre in about five years
 spec: 96,94,80,58,48,52,58,64,68,66,62,64,70,74,72,64,56,48,42,36
 synthType: triangle
@@ -25,8 +24,8 @@ gear:
  FL Studio almost universally, 808 samples derived from the Roland TR-808 kick, Serum for leads, Antares Auto-Tune or Waves Tune on the vocal, and sample packs of Middle Eastern instrument phrases. Most of it is made on laptops in bedrooms — the barrier to entry is what let the scene scale so fast.
 
 prod:
- Mixed for phone speakers and YouTube: the 808 is deliberately given harmonic content in the 100–200 Hz range so it survives playback on devices with no sub. Vocals are compressed flat and sit very loud. Release strategy is single-first, video-first — the genre operates on YouTube and Spotify release cadence rather than albums, which is why so much of it appears in On Repeat playlists.
+ Mixed for phone speakers and YouTube: the 808 is deliberately given harmonic content in the 100–200 Hz range so it survives playback on devices with no sub. Vocals are compressed flat and sit very loud. Release strategy is single-first, video-first — the genre operates on YouTube and Spotify release cadence rather than albums, which is why individual tracks travel much further than any album does.
 
 tracks:
- - P1·14 | Sil Baştan | UZI
- - P2·26 | Yanlışlarla Karşılaştım | Wegh, Keskin
+ - Sil Baştan | UZI
+ - Yanlışlarla Karşılaştım | Wegh, Keskin

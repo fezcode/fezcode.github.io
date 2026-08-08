@@ -84,13 +84,15 @@ const GenreCollectionPage = () => {
       .map(({ entry: e }) => e);
   }, [searchable, family, query]);
 
+  // Grouped by the genre's own rank, then alphabetical — the source playlist's
+  // ordering is not something these pages surface.
   const allTracks = useMemo(
     () =>
-      entries
-        .flatMap((e) => e.tracks.map((t) => ({ ...t, genre: e.name, id: e.id })))
-        .sort((a, b) =>
-          a.pos.localeCompare(b.pos, undefined, { numeric: true }),
-        ),
+      entries.flatMap((e) =>
+        [...e.tracks]
+          .sort((a, b) => a.title.localeCompare(b.title))
+          .map((t) => ({ ...t, genre: e.name, id: e.id })),
+      ),
     [entries],
   );
 
@@ -299,15 +301,10 @@ const GenreCollectionPage = () => {
                   {allTracks.length} TRACKS
                 </span>
               </summary>
-              <p className="dm-resultcount">
-                P1 = first screenshot, P2 = second. Every position accounted
-                for.
-              </p>
               <div className="dm-tablewrap">
                 <table className="dm-table">
                   <thead>
                     <tr>
-                      <th scope="col">POS</th>
                       <th scope="col">TRACK</th>
                       <th scope="col">ARTIST</th>
                       <th scope="col">GENRE</th>
@@ -315,8 +312,7 @@ const GenreCollectionPage = () => {
                   </thead>
                   <tbody>
                     {allTracks.map((track) => (
-                      <tr key={`${track.pos}-${track.title}`}>
-                        <td className="dm-td-pos">{track.pos}</td>
+                      <tr key={`${track.id}-${track.title}`}>
                         <td>{track.title}</td>
                         <td className="dm-td-artist">{track.artist}</td>
                         <td className="dm-td-genre">

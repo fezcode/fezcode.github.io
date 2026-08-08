@@ -3,7 +3,6 @@ rank: 03
 name: PROGRESSIVE & SLUDGE METAL
 family: Rock & Metal
 years: 1991 → present
-source: ON REPEAT
 sub: Southern-US heaviness with prog time signatures and concept-album ambition
 spec: 78,86,90,80,70,72,76,80,78,74,72,76,80,84,80,72,64,56,48,40
 synthType: square
@@ -28,4 +27,4 @@ prod:
  The Hunter was produced by *Mike Elizondo*, who came from a pop/hip-hop background (Dr. Dre, Eminem, Fiona Apple), and the choice was deliberate: shorter songs, clearer vocal placement, less murk. Guitars are double-tracked and panned wide, the bass is DI'd and re-amped so it survives the mid-scoop, and the room mics on the drums are pushed up hard during the final build.
 
 tracks:
- - P1·02 | The Sparrow | Mastodon
+ - The Sparrow | Mastodon

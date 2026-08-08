@@ -469,13 +469,6 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   vertical-align: top;
 }
 
-.dm-td-pos {
-  font-size: 0.72rem;
-  color: var(--dm-muted);
-  white-space: nowrap;
-  font-variant-numeric: tabular-nums;
-}
-
 .dm-td-artist {
   color: var(--dm-muted);
 }
@@ -497,7 +490,8 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
     display: none;
   }
 
-  .dm-table th:nth-child(3) {
+  /* ARTIST is the second column now that POS is gone. */
+  .dm-table th:nth-child(2) {
     display: none;
   }
 }
@@ -666,10 +660,6 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   border: 1px solid currentColor;
   border-radius: 2px;
   padding: 1px 7px;
-}
-
-.dm-badge.is-quiet {
-  color: var(--dm-muted);
 }
 
 .dm-entry-years {
@@ -848,16 +838,6 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
 .dm-track-artist {
   font-size: 0.78rem;
   color: var(--dm-muted);
-}
-
-.dm-track-pos {
-  display: inline-block;
-  min-width: 6ch;
-  margin-right: 0.75rem;
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--dm-accent);
-  font-variant-numeric: tabular-nums;
 }
 
 .dm-hint {

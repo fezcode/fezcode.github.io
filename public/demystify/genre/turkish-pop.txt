@@ -3,7 +3,6 @@ rank: 09
 name: TURKISH POP
 family: Turkish
 years: 1985 → present
-source: ON REPEAT
 sub: Western pop production married to Turkish melodic phrasing — an export industry built in the 1990s
 spec: 70,80,84,74,64,66,72,78,80,76,72,74,78,80,76,68,60,52,44,38
 synthType: triangle
@@ -28,4 +27,4 @@ prod:
  Produced for two markets at once — domestic cassette/CD and a European diaspora dance floor — so most singles get a club remix built into the release plan. The vocal is compressed hard and doubled at the octave in choruses; the darbuka is layered with a sampled electronic percussion track so the groove reads on both a wedding PA and a car stereo.
 
 tracks:
- - P2·21 | Uzak | Tarkan
+ - Uzak | Tarkan

@@ -93,12 +93,17 @@ describe('atlas fields', () => {
 
   it('reads track lines, with an optional excerpt start', () => {
     const [fields] = parseBlocks(
-      '===\ntracks:\n - P1·01 | Snake Eyes | Feint, CoMa\n - P2·30 | Saltwater | Chicane | 42.5\n',
+      '===\ntracks:\n - Snake Eyes | Feint, CoMa\n - Saltwater | Chicane | 42.5\n',
     );
     expect(tracks(fields, 'tracks')).toEqual([
-      { pos: 'P1·01', title: 'Snake Eyes', artist: 'Feint, CoMa', start: null },
-      { pos: 'P2·30', title: 'Saltwater', artist: 'Chicane', start: 42.5 },
+      { title: 'Snake Eyes', artist: 'Feint, CoMa', start: null },
+      { title: 'Saltwater', artist: 'Chicane', start: 42.5 },
     ]);
+  });
+
+  it('carries no playlist position field', () => {
+    const [fields] = parseBlocks('===\ntracks:\n - Saltwater | Chicane\n');
+    expect(tracks(fields, 'tracks')[0]).not.toHaveProperty('pos');
   });
 
   it('parses the 20-band spectrum, defaulting to empty', () => {
@@ -107,15 +112,15 @@ describe('atlas fields', () => {
     expect(toEntry(parseBlocks('===\nid: x\n')[0]).spec).toEqual([]);
   });
 
-  it('maps family, source and sub onto the entry', () => {
+  it('maps family and sub onto the entry', () => {
     const [fields] = parseBlocks(
-      '===\nid: trip-hop\nfamily: Electronic\nsource: ON REPEAT\nsub: Bristol slow-motion hip hop\n',
+      '===\nid: trip-hop\nfamily: Electronic\nsub: Bristol slow-motion hip hop\n',
     );
     expect(toEntry(fields)).toMatchObject({
       family: 'Electronic',
-      source: 'ON REPEAT',
       sub: 'Bristol slow-motion hip hop',
     });
+    expect(toEntry(fields)).not.toHaveProperty('source');
   });
 });
 

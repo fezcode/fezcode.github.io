@@ -3,7 +3,6 @@ rank: 05
 name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
 family: Rock & Metal
 years: 1994 → 2008 (revived 2019 →)
-source: ON REPEAT
 sub: Down-tuned riffs, sampled/programmed layers, and lyrics about interior damage
 spec: 88,92,86,72,62,66,72,78,82,78,72,70,74,78,74,66,58,50,42,36
 tag: RAP-ROCK
@@ -41,11 +40,11 @@ prod:
  Nu metal was the first rock genre *arranged in a DAW rather than a rehearsal room*. Producers Ross Robinson (Korn, Slipknot) and Don Gilmore (Linkin Park) worked opposite ends: Robinson chased raw performance in one take, Gilmore edited relentlessly to a grid. The loudness war peaked here — Meteora is mastered around DR5 — which is why these records feel physically compressed next to the prog entries above.
 
 tracks:
- - P1·12 | Breaking the Habit | Linkin Park
- - P1·19 | Hemorrhage (In My Hands) | Fuel
- - P1·17 | You're Too Young | Vast
- - P1·20 | Yalan | maNga
- - P1·11 | Fırtınam | Hayko Cepkin
+ - Breaking the Habit | Linkin Park
+ - Hemorrhage (In My Hands) | Fuel
+ - You're Too Young | Vast
+ - Yalan | maNga
+ - Fırtınam | Hayko Cepkin
 
 examples:
  - Korn - Blind (1994) | Low-tuned 7-string guitar intro ("Are You Ready?!"), heavy slap bass

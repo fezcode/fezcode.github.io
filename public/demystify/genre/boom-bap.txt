@@ -3,7 +3,6 @@ rank: 11
 name: BOOM BAP & UNDERGROUND HIP HOP
 family: Hip Hop
 years: 1988 → present
-source: ON REPEAT
 sub: Sample-based, drum-machine-driven rap built on crate-digging and technical rhyme
 spec: 72,86,90,74,60,62,68,74,76,72,68,70,76,80,78,70,62,54,46,38
 synthType: square
@@ -28,8 +27,8 @@ prod:
  The signature swing is a sequencer setting, not a performance: the MPC's timing-correct/swing parameter set around 54–62% pushes every off-beat late by a few milliseconds. Producers deliberately record loops through the sampler's low bit-depth and sometimes through a cassette deck for saturation. Modern practitioners recreate this with plugins but many, Alchemist and Evidence included, still track through hardware because the artefacts are the point.
 
 tracks:
- - P1·24 | Stakes Is High | De La Soul
- - P2·05 | The Red Carpet | Evidence, Raekwon, Ras Kass
- - P2·29 | Masking | ASM, MF DOOM
- - P2·25 | KITCHEN LIGHTS | Westside Gunn, Stove God Cooks
- - P2·23 | Still Dreaming | Nas, Kanye West, Chrisette Michele
+ - Stakes Is High | De La Soul
+ - The Red Carpet | Evidence, Raekwon, Ras Kass
+ - Masking | ASM, MF DOOM
+ - KITCHEN LIGHTS | Westside Gunn, Stove God Cooks
+ - Still Dreaming | Nas, Kanye West, Chrisette Michele

@@ -3,7 +3,6 @@ rank: 08
 name: ÖZGÜN MÜZIK — PROTEST SONG
 family: Turkish
 years: 1970s → 1990s
-source: ON REPEAT
 sub: Folk instrumentation, political lyrics, and the enormous personal cost that came with them
 spec: 42,52,64,70,74,76,78,76,72,70,72,76,74,68,60,52,44,38,32,28
 synthType: triangle
@@ -28,4 +27,4 @@ prod:
  Recorded fast and cheaply — often a handful of days — because the market was cassette-driven and turnaround mattered more than fidelity. The vocal is mixed unusually loud and dry relative to Western practice, sitting on top of the arrangement rather than inside it, because the words are the product. Cassette duplication added its own compression and hiss that became part of the expected sound.
 
 tracks:
- - P1·13 | Şiire Gazele | Ahmet Kaya
+ - Şiire Gazele | Ahmet Kaya

@@ -3,7 +3,6 @@ rank: 26
 name: SOLO INSTRUMENTAL BASS
 family: Score & Ambient
 years: 1976 → present
-source: ON REPEAT
 sub: The bass guitar played as a complete solo instrument — chords, melody and percussion at once
 spec: 96,92,80,64,52,48,50,54,58,60,58,56,58,62,64,60,52,44,38,32
 synthType: sine
@@ -28,4 +27,4 @@ prod:
  Recorded with the widest possible dynamic range and almost no compression — compression would flatten the difference between a tapped harmonic and a struck body, which is where the music lives. Usually a blend of DI, piezo and a room mic on the instrument itself. This is one of the few genres where the mastering brief is essentially "don't."
 
 tracks:
- - P1·18 | A Dark Light | Aram Bedrosian
+ - A Dark Light | Aram Bedrosian

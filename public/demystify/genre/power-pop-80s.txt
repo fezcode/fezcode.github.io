@@ -3,7 +3,6 @@ rank: 23
 name: 80S POWER POP & NEW WAVE
 family: Pop & Soul
 years: 1978 → 1989
-source: ON REPEAT
 sub: Sixties melodic craft played with eighties gloss and a very high male vocal
 spec: 58,68,74,70,64,66,72,78,82,80,76,78,82,84,80,72,64,56,48,40
 synthType: triangle
@@ -28,4 +27,4 @@ prod:
  Recorded to 24-track analogue with heavy use of noise gates keyed to the snare — the gated-reverb sound was originally an accident from an SSL desk's reverse-talkback and became the decade's signature. Guitars are double-tracked and hard-panned; the bass is compressed heavily and given more high-mid than a modern mix would allow, which is why it cuts through so clearly on a small speaker.
 
 tracks:
- - P2·02 | Your Love | The Outfield
+ - Your Love | The Outfield

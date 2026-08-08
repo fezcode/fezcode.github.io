@@ -3,7 +3,6 @@ rank: 21
 name: ART POP & THE STUDIO AUTEUR
 family: Pop & Soul
 years: 1997 → present
-source: ON REPEAT
 sub: Pop songwriting where the producer, engineer and performer are the same person
 spec: 68,74,72,62,58,62,68,74,80,82,80,78,80,84,82,76,68,60,52,44
 synthType: triangle
@@ -28,4 +27,4 @@ prod:
  Because one person does everything, arrangement decisions happen at the same moment as sound-design decisions, and it shows: the vocal harmony _is_ the reverb, the percussion _is_ a processed breath. Vocal comping runs into the hundreds of takes. Mixes are made on headphones and small monitors for headphone playback, which is why they translate so well to earbuds and so poorly to a club system.
 
 tracks:
- - P2·09 | Headlock | Imogen Heap
+ - Headlock | Imogen Heap

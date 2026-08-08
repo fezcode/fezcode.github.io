@@ -3,7 +3,6 @@ rank: 19
 name: DARK TECHNO & FRENCH ELECTRO
 family: Electronic
 years: 2008 → present
-source: ON REPEAT
 sub: Cold, minimal, menacing electronic pop from the Bromance/Ed Banger lineage
 spec: 94,90,70,46,40,46,54,62,66,64,60,62,68,74,72,64,56,48,42,36
 synthType: sawtooth
@@ -28,4 +27,4 @@ prod:
  The productions are deliberately under-arranged: four or five elements total, no build-ups, and no filter sweeps. Loudness is achieved through distortion and clipping on individual sources rather than a limiter on the master, which preserves transient snap while still reading as aggressive. The vocal is left almost unprocessed against it — a pop record wearing a techno record's clothes.
 
 tracks:
- - P2·15 | Lost in the Fire | Gesaffelstein, The Weeknd
+ - Lost in the Fire | Gesaffelstein, The Weeknd

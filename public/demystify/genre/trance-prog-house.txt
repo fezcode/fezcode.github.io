@@ -3,7 +3,6 @@ rank: 18
 name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
 family: Electronic
 years: 1990 → present
-source: ON REPEAT
 sub: Long-build euphoric dance music — and the ambient/chillout records made by the same producers
 spec: 88,84,66,48,44,50,58,66,72,74,76,78,82,86,88,84,76,66,56,46
 synthType: sawtooth
@@ -28,6 +27,6 @@ prod:
  Arranged for the DJ before the listener — intros and outros run 32 bars of drums alone for beatmatching, and the radio edit is a separate assembly. The breakdown is engineered as a loudness trough so the drop reads as louder by contrast, which is why heavily limited masters flatten these records. The Platipus back catalogue has been remastered repeatedly precisely because the originals were cut for vinyl and need re-levelling for streaming.
 
 tracks:
- - P2·30 | Saltwater | Chicane, Moya Brennan
- - P2·16 | Rococco — Original Mix (Remastered) | Kansai
- - P2·20 | Raincry (Spiritual Thirst) | God Within
+ - Saltwater | Chicane, Moya Brennan
+ - Rococco — Original Mix (Remastered) | Kansai
+ - Raincry (Spiritual Thirst) | God Within

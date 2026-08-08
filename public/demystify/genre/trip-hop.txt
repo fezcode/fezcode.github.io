@@ -3,7 +3,6 @@ rank: 16
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present
-source: ON REPEAT
 sub: Bristol-born slow-motion hip hop with a female lead vocal and a jazz-noir palette
 spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
 tag: DOWNTEMPO
@@ -41,9 +40,9 @@ prod:
  The production philosophy is *subtraction*: strip the arrangement until only three or four elements remain, then make each one enormous. Because there are so few parts, every one gets individual treatment — drums heavily compressed and EQ'd dark, vocal bright and de-essed, bass rolled off above 800 Hz. Live-with-orchestra versions like Hooverphonic's invert this, replacing the sampled bed with real players and gaining dynamics at the cost of the grit.
 
 tracks:
- - P2·13 | Easier Said Than Done | Morcheeba
- - P2·24 | Mad About You — Live with Orchestra | Hooverphonic
- - P1·09 | Four Three | All India Radio
+ - Easier Said Than Done | Morcheeba
+ - Mad About You — Live with Orchestra | Hooverphonic
+ - Four Three | All India Radio
 
 examples:
  - Massive Attack - Unfinished Sympathy (1991) | Orchestral strings over hip-hop vinyl breakbeats

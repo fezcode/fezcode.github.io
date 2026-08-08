@@ -3,7 +3,6 @@ rank: 12
 name: TRAP & SOUTHERN RAP
 family: Hip Hop
 years: 2003 → present
-source: ON REPEAT
 sub: Atlanta-born, 808-driven rap that became the default rhythmic language of global pop
 spec: 99,96,78,52,42,46,52,58,64,62,58,62,70,76,74,66,58,50,44,38
 synthType: square
@@ -28,6 +27,6 @@ prod:
  Producers build the beat first and let the artist write to it in the booth — most trap vocals are composed at the mic, not on paper, which is why ad-libs function as a second rhythmic layer panned wide. The 808 is deliberately distorted so its harmonics survive on small speakers, and the mix leaves an unusual amount of empty space in the mids for exactly that reason.
 
 tracks:
- - P1·03 | Wyclef Jean | Young Thug
- - P1·23 | Runnin | 21 Savage, Metro Boomin
- - P2·18 | Go Get It | T.I.
+ - Wyclef Jean | Young Thug
+ - Runnin | 21 Savage, Metro Boomin
+ - Go Get It | T.I.

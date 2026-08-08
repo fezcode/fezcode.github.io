@@ -3,7 +3,6 @@ rank: 13
 name: CONFESSIONAL & CONSCIOUS MAINSTREAM RAP
 family: Hip Hop
 years: 2010 → present
-source: ON REPEAT
 sub: Album-form storytelling rap that sells at pop scale without abandoning craft
 spec: 86,90,80,62,54,58,64,70,74,72,68,70,74,78,74,66,58,50,44,38
 synthType: square
@@ -28,6 +27,6 @@ prod:
  These are *sequenced albums* in an era of playlists: track order carries meaning, interludes connect songs, and the mastering keeps enough dynamic range that a quiet passage stays quiet. The tradeoff is deliberate — individual tracks read as slightly less loud than trap singles on shuffle, which the artists accept in exchange for the album working as a single object.
 
 tracks:
- - P1·21 | MIDDLE CHILD | J. Cole
- - P1·25 | No Role Modelz | J. Cole
- - P2·12 | Swimming Pools (Drank) | Kendrick Lamar
+ - MIDDLE CHILD | J. Cole
+ - No Role Modelz | J. Cole
+ - Swimming Pools (Drank) | Kendrick Lamar

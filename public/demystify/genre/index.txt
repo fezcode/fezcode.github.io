@@ -4,14 +4,13 @@ rank: 01
 name: LIQUID DRUM & BASS
 family: Electronic
 years: c. 1995 → present
-source: ON REPEAT
 sub: Melodic, vocal-led offshoot of jungle — 174 BPM with the aggression traded for air
 spec: 95,88,60,35,28,30,38,45,50,52,55,58,62,66,72,80,86,90,84,70
 synthType: sawtooth
 freqs: 55, 68.94, 86.41
 audio: /demystify/genre/drumbass.mp3
 tracks:
- - P1·01 | Snake Eyes | Feint, CoMa
+ - Snake Eyes | Feint, CoMa
 
 ===
 id: prog-rock
@@ -19,13 +18,12 @@ rank: 02
 name: PROGRESSIVE ROCK
 family: Rock & Metal
 years: 1967 → present
-source: ON REPEAT
 sub: Long-form rock that borrowed structure from classical music and studio craft from Pink Floyd
 spec: 62,70,74,66,58,60,64,68,70,72,68,64,66,70,74,72,66,58,50,42
 synthType: square
 freqs: 68.94, 86.41, 420.08
 tracks:
- - P1·04 | Trains — 2017 Remaster | Porcupine Tree
+ - Trains — 2017 Remaster | Porcupine Tree
 
 ===
 id: prog-sludge-metal
@@ -33,13 +31,12 @@ rank: 03
 name: PROGRESSIVE & SLUDGE METAL
 family: Rock & Metal
 years: 1991 → present
-source: ON REPEAT
 sub: Southern-US heaviness with prog time signatures and concept-album ambition
 spec: 78,86,90,80,70,72,76,80,78,74,72,76,80,84,80,72,64,56,48,40
 synthType: square
 freqs: 68.94, 86.41, 108.31
 tracks:
- - P1·02 | The Sparrow | Mastodon
+ - The Sparrow | Mastodon
 
 ===
 id: classic-rock-aor
@@ -47,15 +44,14 @@ rank: 04
 name: CLASSIC ROCK & AOR
 family: Rock & Metal
 years: 1965 → 1989
-source: ON REPEAT
 sub: Album-oriented radio rock — big choruses, session-grade musicianship, arena-scale mixes
 spec: 55,66,74,72,66,68,72,76,78,74,70,72,76,78,72,64,56,48,40,34
 synthType: square
 freqs: 86.41, 267.37, 335.14
 tracks:
- - P1·07 | Eminence Front | The Who
- - P1·16 | Separate Ways (Worlds Apart) | Journey
- - P2·22 | No Fortune | America
+ - Eminence Front | The Who
+ - Separate Ways (Worlds Apart) | Journey
+ - No Fortune | America
 
 ===
 id: numetal-postgrunge
@@ -63,18 +59,17 @@ rank: 05
 name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
 family: Rock & Metal
 years: 1994 → 2008 (revived 2019 →)
-source: ON REPEAT
 sub: Down-tuned riffs, sampled/programmed layers, and lyrics about interior damage
 spec: 88,92,86,72,62,66,72,78,82,78,72,70,74,78,74,66,58,50,42,36
 synthType: square
 freqs: 55, 68.94, 86.41
 audio: /demystify/genre/numetal.mp3
 tracks:
- - P1·12 | Breaking the Habit | Linkin Park
- - P1·19 | Hemorrhage (In My Hands) | Fuel
- - P1·17 | You're Too Young | Vast
- - P1·20 | Yalan | maNga
- - P1·11 | Fırtınam | Hayko Cepkin
+ - Breaking the Habit | Linkin Park
+ - Hemorrhage (In My Hands) | Fuel
+ - You're Too Young | Vast
+ - Yalan | maNga
+ - Fırtınam | Hayko Cepkin
 
 ===
 id: anadolu-rock
@@ -82,19 +77,18 @@ rank: 06
 name: ANADOLU ROCK & TURKISH ALTERNATIVE
 family: Turkish
 years: 1965 → present
-source: ON REPEAT
 sub: Turkish melody and lyric tradition run through rock instrumentation — the country's longest-running hybrid
 spec: 64,72,78,74,66,68,74,78,80,76,72,74,78,76,70,62,54,46,40,34
 synthType: triangle
 freqs: 86.41, 267.37, 335.14
 tracks:
- - P1·30 | Bir Derdim Var | mor ve ötesi
- - P1·26 | Vicdani Redd | Redd
- - P1·06 | Acının İlacı | Adamlar
- - P1·15 | Hikaye | Adamlar
- - P1·08 | Anlayamazsın | Seksendört
- - P1·27 | Ne Farkeder | Yüzyüzeyken Konuşuruz
- - P2·08 | Ada | Kuytu
+ - Bir Derdim Var | mor ve ötesi
+ - Vicdani Redd | Redd
+ - Acının İlacı | Adamlar
+ - Hikaye | Adamlar
+ - Anlayamazsın | Seksendört
+ - Ne Farkeder | Yüzyüzeyken Konuşuruz
+ - Ada | Kuytu
 
 ===
 id: turku
@@ -102,15 +96,14 @@ rank: 07
 name: TÜRKÜ — TURKISH FOLK
 family: Turkish
 years: centuries → present
-source: ON REPEAT
 sub: Regional folk song: bağlama, kemençe and a repertoire transmitted by anonymous authorship
 spec: 38,46,58,66,72,76,78,74,70,72,76,80,78,72,66,58,50,44,38,32
 synthType: triangle
 freqs: 170.18, 213.31, 660
 tracks:
- - P2·10 | Deniz Üstünde Fener | Selçuk Balcı
- - P2·27 | Sendeki Kaşlar | Hüseyin Turan
- - P2·28 | İki Keklik | Orhan Hakalmaz
+ - Deniz Üstünde Fener | Selçuk Balcı
+ - Sendeki Kaşlar | Hüseyin Turan
+ - İki Keklik | Orhan Hakalmaz
 
 ===
 id: ozgun-protest
@@ -118,13 +111,12 @@ rank: 08
 name: ÖZGÜN MÜZIK — PROTEST SONG
 family: Turkish
 years: 1970s → 1990s
-source: ON REPEAT
 sub: Folk instrumentation, political lyrics, and the enormous personal cost that came with them
 spec: 42,52,64,70,74,76,78,76,72,70,72,76,74,68,60,52,44,38,32,28
 synthType: triangle
 freqs: 170.18, 213.31, 267.37
 tracks:
- - P1·13 | Şiire Gazele | Ahmet Kaya
+ - Şiire Gazele | Ahmet Kaya
 
 ===
 id: turkish-pop
@@ -132,13 +124,12 @@ rank: 09
 name: TURKISH POP
 family: Turkish
 years: 1985 → present
-source: ON REPEAT
 sub: Western pop production married to Turkish melodic phrasing — an export industry built in the 1990s
 spec: 70,80,84,74,64,66,72,78,80,76,72,74,78,80,76,68,60,52,44,38
 synthType: triangle
 freqs: 68.94, 86.41, 335.14
 tracks:
- - P2·21 | Uzak | Tarkan
+ - Uzak | Tarkan
 
 ===
 id: turkish-trap
@@ -146,14 +137,13 @@ rank: 10
 name: TURKISH TRAP, DRILL & RAP
 family: Turkish
 years: 1995 → present
-source: ON REPEAT
 sub: Turkish-language rap that went from diaspora subculture to the country's dominant youth genre in about five years
 spec: 96,94,80,58,48,52,58,64,68,66,62,64,70,74,72,64,56,48,42,36
 synthType: triangle
 freqs: 55, 68.94, 86.41
 tracks:
- - P1·14 | Sil Baştan | UZI
- - P2·26 | Yanlışlarla Karşılaştım | Wegh, Keskin
+ - Sil Baştan | UZI
+ - Yanlışlarla Karşılaştım | Wegh, Keskin
 
 ===
 id: boom-bap
@@ -161,17 +151,16 @@ rank: 11
 name: BOOM BAP & UNDERGROUND HIP HOP
 family: Hip Hop
 years: 1988 → present
-source: ON REPEAT
 sub: Sample-based, drum-machine-driven rap built on crate-digging and technical rhyme
 spec: 72,86,90,74,60,62,68,74,76,72,68,70,76,80,78,70,62,54,46,38
 synthType: square
 freqs: 68.94, 86.41, 335.14
 tracks:
- - P1·24 | Stakes Is High | De La Soul
- - P2·05 | The Red Carpet | Evidence, Raekwon, Ras Kass
- - P2·29 | Masking | ASM, MF DOOM
- - P2·25 | KITCHEN LIGHTS | Westside Gunn, Stove God Cooks
- - P2·23 | Still Dreaming | Nas, Kanye West, Chrisette Michele
+ - Stakes Is High | De La Soul
+ - The Red Carpet | Evidence, Raekwon, Ras Kass
+ - Masking | ASM, MF DOOM
+ - KITCHEN LIGHTS | Westside Gunn, Stove God Cooks
+ - Still Dreaming | Nas, Kanye West, Chrisette Michele
 
 ===
 id: trap
@@ -179,15 +168,14 @@ rank: 12
 name: TRAP & SOUTHERN RAP
 family: Hip Hop
 years: 2003 → present
-source: ON REPEAT
 sub: Atlanta-born, 808-driven rap that became the default rhythmic language of global pop
 spec: 99,96,78,52,42,46,52,58,64,62,58,62,70,76,74,66,58,50,44,38
 synthType: square
 freqs: 55, 68.94, 86.41
 tracks:
- - P1·03 | Wyclef Jean | Young Thug
- - P1·23 | Runnin | 21 Savage, Metro Boomin
- - P2·18 | Go Get It | T.I.
+ - Wyclef Jean | Young Thug
+ - Runnin | 21 Savage, Metro Boomin
+ - Go Get It | T.I.
 
 ===
 id: confessional-rap
@@ -195,15 +183,14 @@ rank: 13
 name: CONFESSIONAL & CONSCIOUS MAINSTREAM RAP
 family: Hip Hop
 years: 2010 → present
-source: ON REPEAT
 sub: Album-form storytelling rap that sells at pop scale without abandoning craft
 spec: 86,90,80,62,54,58,64,70,74,72,68,70,74,78,74,66,58,50,44,38
 synthType: square
 freqs: 55, 68.94, 86.41
 tracks:
- - P1·21 | MIDDLE CHILD | J. Cole
- - P1·25 | No Role Modelz | J. Cole
- - P2·12 | Swimming Pools (Drank) | Kendrick Lamar
+ - MIDDLE CHILD | J. Cole
+ - No Role Modelz | J. Cole
+ - Swimming Pools (Drank) | Kendrick Lamar
 
 ===
 id: horrorcore
@@ -211,14 +198,13 @@ rank: 14
 name: HORRORCORE & CHOPPER RAP
 family: Hip Hop
 years: 1991 → present
-source: ON REPEAT
 sub: Extreme-content, extreme-technique rap operating almost entirely outside the majors
 spec: 84,90,84,66,56,60,68,74,78,74,70,72,78,82,80,72,64,56,48,40
 synthType: square
 freqs: 55, 68.94, 86.41
 tracks:
- - P2·01 | Suicide Letters | Tech N9ne
- - P2·19 | The Dispensation of Life and Death | Necro
+ - Suicide Letters | Tech N9ne
+ - The Dispensation of Life and Death | Necro
 
 ===
 id: gorillaz-alt
@@ -226,13 +212,12 @@ rank: 15
 name: GENRE-FLUID ALTERNATIVE HIP HOP
 family: Hip Hop
 years: 1998 → present
-source: ON REPEAT
 sub: Rap as one ingredient in a producer-led collage rather than the frame around it
 spec: 80,86,78,60,54,60,66,72,76,74,70,72,76,78,74,68,62,54,46,40
 synthType: square
 freqs: 55, 68.94, 86.41
 tracks:
- - P2·07 | Stylo | Gorillaz, Bobby Womack, Mos Def
+ - Stylo | Gorillaz, Bobby Womack, Mos Def
 
 ===
 id: trip-hop
@@ -240,16 +225,15 @@ rank: 16
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present
-source: ON REPEAT
 sub: Bristol-born slow-motion hip hop with a female lead vocal and a jazz-noir palette
 spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
 synthType: sawtooth
 freqs: 55, 68.94, 86.41
 audio: /demystify/genre/triphop.mp3
 tracks:
- - P2·13 | Easier Said Than Done | Morcheeba
- - P2·24 | Mad About You — Live with Orchestra | Hooverphonic
- - P1·09 | Four Three | All India Radio
+ - Easier Said Than Done | Morcheeba
+ - Mad About You — Live with Orchestra | Hooverphonic
+ - Four Three | All India Radio
 
 ===
 id: dark-ambient
@@ -257,14 +241,13 @@ rank: 17
 name: DARK AMBIENT & POST-BLACK ELECTRONICA
 family: Score & Ambient
 years: 1984 → present
-source: ON REPEAT
 sub: Atmosphere as the entire composition — plus the Norwegian black metal band that abandoned metal for it
 spec: 86,78,60,44,38,40,44,48,52,54,56,58,60,62,64,66,64,58,50,42
 synthType: sine
 freqs: 55, 68.94, 86.41
 tracks:
- - P2·04 | Teleology | Black Chamber
- - P1·10 | Machine Guns and Peacock Feathers | Ulver
+ - Teleology | Black Chamber
+ - Machine Guns and Peacock Feathers | Ulver
 
 ===
 id: trance-prog-house
@@ -272,15 +255,14 @@ rank: 18
 name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
 family: Electronic
 years: 1990 → present
-source: ON REPEAT
 sub: Long-build euphoric dance music — and the ambient/chillout records made by the same producers
 spec: 88,84,66,48,44,50,58,66,72,74,76,78,82,86,88,84,76,66,56,46
 synthType: sawtooth
 freqs: 55, 68.94, 660
 tracks:
- - P2·30 | Saltwater | Chicane, Moya Brennan
- - P2·16 | Rococco — Original Mix (Remastered) | Kansai
- - P2·20 | Raincry (Spiritual Thirst) | God Within
+ - Saltwater | Chicane, Moya Brennan
+ - Rococco — Original Mix (Remastered) | Kansai
+ - Raincry (Spiritual Thirst) | God Within
 
 ===
 id: dark-techno
@@ -288,13 +270,12 @@ rank: 19
 name: DARK TECHNO & FRENCH ELECTRO
 family: Electronic
 years: 2008 → present
-source: ON REPEAT
 sub: Cold, minimal, menacing electronic pop from the Bromance/Ed Banger lineage
 spec: 94,90,70,46,40,46,54,62,66,64,60,62,68,74,72,64,56,48,42,36
 synthType: sawtooth
 freqs: 55, 68.94, 86.41
 tracks:
- - P2·15 | Lost in the Fire | Gesaffelstein, The Weeknd
+ - Lost in the Fire | Gesaffelstein, The Weeknd
 
 ===
 id: game-score
@@ -302,16 +283,15 @@ rank: 20
 name: VIDEO GAME SCORE
 family: Score & Ambient
 years: 1978 → present
-source: ON REPEAT
 sub: Functional music written to loop indefinitely and react to a player, now a concert repertoire
 spec: 70,72,68,60,58,62,68,74,78,80,78,76,78,80,78,72,66,58,50,42
 synthType: sine
 freqs: 335.14, 420.08, 526.55
 tracks:
- - P2·03 | Children of the Omnissiah | Guillaume David
- - P2·17 | MainMenu (Day) | Jesper Kyd
- - P2·14 | Awakening | Bastian Kieslinger
- - P2·06 | Peace of Akatosh (From 'Oblivion') | Dreyma
+ - Children of the Omnissiah | Guillaume David
+ - MainMenu (Day) | Jesper Kyd
+ - Awakening | Bastian Kieslinger
+ - Peace of Akatosh (From 'Oblivion') | Dreyma
 
 ===
 id: art-pop
@@ -319,13 +299,12 @@ rank: 21
 name: ART POP & THE STUDIO AUTEUR
 family: Pop & Soul
 years: 1997 → present
-source: ON REPEAT
 sub: Pop songwriting where the producer, engineer and performer are the same person
 spec: 68,74,72,62,58,62,68,74,80,82,80,78,80,84,82,76,68,60,52,44
 synthType: triangle
 freqs: 335.14, 420.08, 526.55
 tracks:
- - P2·09 | Headlock | Imogen Heap
+ - Headlock | Imogen Heap
 
 ===
 id: 2000s-pop
@@ -333,15 +312,14 @@ rank: 22
 name: 2000S POP-PUNK & RADIO R&B-POP
 family: Pop & Soul
 years: 1999 → 2010
-source: ON REPEAT
 sub: The last era of monoculture radio pop, built by a handful of songwriting teams
 spec: 82,86,80,64,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
 synthType: triangle
 freqs: 55, 68.94, 86.41
 tracks:
- - P1·22 | Complicated | Avril Lavigne
- - P1·05 | Ride It | Jay Sean
- - P2·11 | Say It Right | Nelly Furtado
+ - Complicated | Avril Lavigne
+ - Ride It | Jay Sean
+ - Say It Right | Nelly Furtado
 
 ===
 id: power-pop-80s
@@ -349,13 +327,12 @@ rank: 23
 name: 80S POWER POP & NEW WAVE
 family: Pop & Soul
 years: 1978 → 1989
-source: ON REPEAT
 sub: Sixties melodic craft played with eighties gloss and a very high male vocal
 spec: 58,68,74,70,64,66,72,78,82,80,76,78,82,84,80,72,64,56,48,40
 synthType: triangle
 freqs: 267.37, 335.14, 420.08
 tracks:
- - P2·02 | Your Love | The Outfield
+ - Your Love | The Outfield
 
 ===
 id: funk-neosoul
@@ -363,13 +340,12 @@ rank: 24
 name: FUNK & NEO-SOUL
 family: Pop & Soul
 years: 1995 → present
-source: ON REPEAT
 sub: Live-band soul and funk rebuilt with hip-hop timing and a drummer who sings
 spec: 84,88,82,66,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
 synthType: triangle
 freqs: 55, 68.94, 86.41
 tracks:
- - P1·28 | Come Down | Anderson .Paak
+ - Come Down | Anderson .Paak
 
 ===
 id: post-britpop
@@ -377,13 +353,12 @@ rank: 25
 name: POST-BRITPOP
 family: Rock & Metal
 years: 1997 → 2008
-source: ON REPEAT
 sub: Melancholy, melodic, stadium-scaled British guitar rock after Britpop's swagger collapsed
 spec: 62,70,74,70,64,66,72,76,80,78,74,74,78,80,76,68,60,52,44,38
 synthType: square
 freqs: 267.37, 335.14, 420.08
 tracks:
- - P1·29 | Closer | Travis
+ - Closer | Travis
 
 ===
 id: solo-bass
@@ -391,101 +366,9 @@ rank: 26
 name: SOLO INSTRUMENTAL BASS
 family: Score & Ambient
 years: 1976 → present
-source: ON REPEAT
 sub: The bass guitar played as a complete solo instrument — chords, melody and percussion at once
 spec: 96,92,80,64,52,48,50,54,58,60,58,56,58,62,64,60,52,44,38,32
 synthType: sine
 freqs: 55, 68.94, 86.41
 tracks:
- - P1·18 | A Dark Light | Aram Bedrosian
-
-===
-id: eurodance
-rank: 27
-name: EURODANCE
-family: Electronic
-years: 1992 → 1999
-source: ARCHIVE
-sub: Peak-time European dance pop — 4-on-the-floor, supersaw stabs and a hook engineered for a full room
-spec: 88,84,66,44,40,48,58,68,74,76,74,72,76,82,86,84,76,66,56,46
-synthType: sawtooth
-freqs: 55, 68.94, 420.08
-audio: /demystify/genre/eurodance.mp3
-
-===
-id: grunge
-rank: 28
-name: GRUNGE
-family: Rock & Metal
-years: 1989 → 1996
-source: ARCHIVE
-sub: Seattle's loud-quiet-loud answer to hair metal, played through a Big Muff
-spec: 72,84,88,80,70,72,78,82,84,80,74,72,74,76,72,62,54,46,38,32
-synthType: square
-freqs: 68.94, 86.41, 335.14
-audio: /demystify/genre/grunge.mp3
-
-===
-id: synthwave
-rank: 29
-name: SYNTHWAVE / CYBERPUNK
-family: Electronic
-years: 1980 → 1999
-source: ARCHIVE
-sub: Retro-futurist synth music built from 1980s film scores and arcade nostalgia
-spec: 80,82,70,52,46,50,58,66,72,76,78,80,84,88,86,80,72,62,52,44
-synthType: sawtooth
-freqs: 55, 68.94, 660
-audio: /demystify/genre/synthwave.mp3
-
-===
-id: shoegaze
-rank: 30
-name: SHOEGAZE
-family: Rock & Metal
-years: 1988 → 1997
-source: ARCHIVE
-sub: Melody buried under a wall of layered guitar noise and reverb, by design
-spec: 70,78,84,82,78,80,84,86,88,86,84,82,84,86,84,78,70,62,54,46
-synthType: square
-freqs: 267.37, 335.14, 420.08
-audio: /demystify/genre/shoegaze.mp3
-
-===
-id: britpop
-rank: 31
-name: BRITPOP
-family: Rock & Metal
-years: 1993 → 1997
-source: ARCHIVE
-sub: Mid-90s British guitar pop with Sixties melodic craft and a national argument attached
-spec: 58,70,78,76,70,72,78,82,84,80,76,78,82,84,78,70,62,54,46,38
-synthType: square
-freqs: 267.37, 335.14, 420.08
-audio: /demystify/genre/britpop.mp3
-
-===
-id: acidhouse
-rank: 32
-name: ACID HOUSE
-family: Electronic
-years: 1988 → 1995
-source: ARCHIVE
-sub: The sound of one misused Roland TB-303 and the scene that grew around it
-spec: 86,88,72,50,44,50,60,70,78,82,80,76,74,78,80,74,64,54,44,36
-synthType: sawtooth
-freqs: 55, 68.94, 420.08
-audio: /demystify/genre/acidhouse.mp3
-
-===
-id: chiptune
-rank: 33
-name: CHIPTUNE / 8-BIT
-family: Electronic
-years: 1989 → 1999
-source: ARCHIVE
-sub: Music written for the sound chips of 8-bit consoles, then kept as a discipline
-spec: 20,28,42,56,66,72,78,82,86,88,86,82,84,88,90,86,78,68,58,48
-synthType: sawtooth
-freqs: 335.14, 420.08, 526.55
-audio: /demystify/genre/chiptune.mp3
+ - A Dark Light | Aram Bedrosian

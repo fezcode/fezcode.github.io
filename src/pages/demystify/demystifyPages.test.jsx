@@ -37,12 +37,11 @@ rank: 01
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present
-source: ON REPEAT
 sub: Bristol-born slow-motion hip hop
 spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
 audio: /demystify/genre/triphop.mp3
 tracks:
- - P2·13 | Easier Said Than Done | Morcheeba
+ - Easier Said Than Done | Morcheeba
 
 ===
 id: prog-rock
@@ -50,11 +49,10 @@ rank: 02
 name: PROGRESSIVE ROCK
 family: Rock & Metal
 years: 1967 → present
-source: ON REPEAT
 sub: Long-form rock that borrowed structure from classical music
 spec: 62,70,74,66,58,60,64,68,70,72,68,64,66,70,74,72,66,58,50,42
 tracks:
- - P1·04 | Trains | Porcupine Tree
+ - Trains | Porcupine Tree
 
 ===
 id: chiptune
@@ -62,7 +60,6 @@ rank: 03
 name: CHIPTUNE
 family: Electronic
 years: 1980 → present
-source: ARCHIVE
 sub: Music written for the sound chips of 8-bit consoles
 spec: 20,28,42,56,66,72,78,82,86,88,86,82,84,88,90,86,78,68,58,48
 `;
@@ -72,7 +69,6 @@ rank: 01
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present
-source: ON REPEAT
 sub: Bristol-born slow-motion hip hop
 spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
 origin: Bristol, UK
@@ -92,7 +88,7 @@ trivia:
  Portishead recorded to *acetate* and sampled that back.
 
 tracks:
- - P2·13 | Easier Said Than Done | Morcheeba
+ - Easier Said Than Done | Morcheeba
 `;
 
 const routeFile = (url) => {
@@ -302,10 +298,19 @@ describe('GenreCollectionPage — index', () => {
     await settle();
 
     const rows = within(screen.getByRole('table')).getAllByRole('row');
-    // header + 2 tracks, P1 before P2
+    // header + 2 tracks, grouped by the genre's rank rather than playlist order
     expect(rows).toHaveLength(3);
-    expect(rows[1]).toHaveTextContent('P1·04');
-    expect(rows[2]).toHaveTextContent('P2·13');
+    expect(rows[1]).toHaveTextContent('Easier Said Than Done');
+    expect(rows[2]).toHaveTextContent('Trains');
+  });
+
+  it('publishes no playlist positions', async () => {
+    renderGenre('/demystify/genre');
+    await settle();
+
+    const table = within(screen.getByRole('table'));
+    expect(table.queryByText(/^P[12]·/)).toBeNull();
+    expect(table.queryByRole('columnheader', { name: 'POS' })).toBeNull();
   });
 
   it('gives every row its own audition control, outside the link', async () => {
@@ -349,14 +354,16 @@ describe('GenreCollectionPage — detail', () => {
     expect(screen.getByText('acetate').tagName).toBe('STRONG');
   });
 
-  it('shows the family and source badges and the playlist tracks', async () => {
+  it('shows the family badge and the tracks, without provenance', async () => {
     renderGenre('/demystify/genre/trip-hop');
     await screen.findByRole('heading', { name: /TRIP HOP/ });
 
     expect(screen.getByText('Electronic')).toBeInTheDocument();
-    expect(screen.getByText('ON REPEAT')).toBeInTheDocument();
     expect(screen.getByText('Easier Said Than Done')).toBeInTheDocument();
     expect(screen.getByText('Morcheeba')).toBeInTheDocument();
+    // Nothing on the page frames these as a personal rotation.
+    expect(screen.queryByText(/ON REPEAT/i)).toBeNull();
+    expect(screen.queryByText(/^P[12]·/)).toBeNull();
   });
 
   it('gives each track its own ten-second excerpt control', async () => {

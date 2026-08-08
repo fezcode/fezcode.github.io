@@ -3,7 +3,6 @@ rank: 24
 name: FUNK & NEO-SOUL
 family: Pop & Soul
 years: 1995 → present
-source: ON REPEAT
 sub: Live-band soul and funk rebuilt with hip-hop timing and a drummer who sings
 spec: 84,88,82,66,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
 synthType: triangle
@@ -28,4 +27,4 @@ prod:
  Recorded largely *live in a room with minimal grid editing*, which is the whole point — quantising the performance destroys the pocket. Drums get room mics compressed to breaking, then blended under close mics. Vocals are usually first or second takes to preserve the rasp. Masters are left with real dynamic range so the arrangement's builds actually build.
 
 tracks:
- - P1·28 | Come Down | Anderson .Paak
+ - Come Down | Anderson .Paak

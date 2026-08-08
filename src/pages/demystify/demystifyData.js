@@ -103,17 +103,19 @@ export const items = (fields, key) =>
     .filter((entry) => entry.title);
 
 /**
- * Reads `- position | title | artist | start` lines out of a field.
+ * Reads `- title | artist | start` lines out of a field.
  *
  * `start` is optional: seconds into the preview clip where the significant part
  * begins. Without it the player centres its window on the clip instead.
+ *
+ * Deliberately no position field — track order in the source playlist is not
+ * something these pages publish.
  */
 export const tracks = (fields, key) =>
   rows(fields, key)
-    .map(([pos, title = '', artist = '', start]) => {
+    .map(([title, artist = '', start]) => {
       const startAt = Number.parseFloat(start);
       return {
-        pos,
         title,
         artist,
         start: Number.isFinite(startAt) ? startAt : null,
@@ -150,7 +152,6 @@ export const toEntry = (fields) => ({
   name: text(fields, 'name'),
   family: text(fields, 'family'),
   years: text(fields, 'years'),
-  source: text(fields, 'source'),
   sub: text(fields, 'sub'),
   spec: numbers(fields, 'spec', []),
   tag: text(fields, 'tag'),

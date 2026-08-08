@@ -33,9 +33,6 @@ const EntryDetail = ({
       <header className="dm-entry-head">
         <div className="dm-entry-tags">
           {entry.family && <span className="dm-badge">{entry.family}</span>}
-          {entry.source && (
-            <span className="dm-badge is-quiet">{entry.source}</span>
-          )}
           {entry.years && <span className="dm-entry-years">{entry.years}</span>}
         </div>
         <h2 className="dm-entry-title">
@@ -81,23 +78,18 @@ const EntryDetail = ({
 
       {entry.tracks.length > 0 && (
         <section className="dm-prose">
-          <h3 className="dm-section-title">ON REPEAT — TRACKS IN THIS GENRE</h3>
+          <h3 className="dm-section-title">TRACKS IN THIS GENRE</h3>
           <p className="dm-hint">
             Each control plays a ten-second excerpt of the track, taken from its
             catalogue preview clip.
           </p>
           <ul className="dm-tracklist">
             {entry.tracks.map((track) => {
-              const id = `${entry.id}:${track.pos}:${track.title}`;
+              const id = `${entry.id}:${track.title}`;
               return (
                 <li className="dm-track" key={id}>
                   <span className="dm-track-text">
-                    <span className="dm-track-title">
-                      {track.pos && (
-                        <span className="dm-track-pos">{track.pos}</span>
-                      )}
-                      {track.title}
-                    </span>
+                    <span className="dm-track-title">{track.title}</span>
                     {track.artist && (
                       <span className="dm-track-artist">{track.artist}</span>
                     )}

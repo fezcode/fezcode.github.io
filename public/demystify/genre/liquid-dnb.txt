@@ -3,7 +3,6 @@ rank: 01
 name: LIQUID DRUM & BASS
 family: Electronic
 years: c. 1995 → present
-source: ON REPEAT
 sub: Melodic, vocal-led offshoot of jungle — 174 BPM with the aggression traded for air
 spec: 95,88,60,35,28,30,38,45,50,52,55,58,62,66,72,80,86,90,84,70
 tag: BREAKBEAT
@@ -41,7 +40,7 @@ prod:
  Mixed for the *drop-into-space* contrast: 16 bars of sparse pads and vocal, then full break plus sub. Because the sub carries the melody, the kick is usually short and midrange-heavy so it punches through without fighting the bass. Monstercat-era liquid is mastered loud and bright for headphone and stream playback rather than a soundsystem, which is why it reads as glossy next to a Good Looking record from 1996.
 
 tracks:
- - P1·01 | Snake Eyes | Feint, CoMa
+ - Snake Eyes | Feint, CoMa
 
 examples:
  - Goldie - Inner City Life (1994) | Soulful vocals over hyper-edited jungle breakbeats

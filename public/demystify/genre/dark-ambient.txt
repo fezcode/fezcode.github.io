@@ -3,7 +3,6 @@ rank: 17
 name: DARK AMBIENT & POST-BLACK ELECTRONICA
 family: Score & Ambient
 years: 1984 → present
-source: ON REPEAT
 sub: Atmosphere as the entire composition — plus the Norwegian black metal band that abandoned metal for it
 spec: 86,78,60,44,38,40,44,48,52,54,56,58,60,62,64,66,64,58,50,42
 synthType: sine
@@ -28,5 +27,5 @@ prod:
  Dark ambient is *mastered quiet on purpose*: the genre needs 20+ dB of dynamic range for a drone to feel like it's approaching from a distance, so loudness normalisation actively harms it — headphones and a quiet room are the intended playback system. Ulver went the other way and had Flowers of Evil mixed with period-accurate gated-reverb drum treatment, which is a production quotation as much as a sound choice.
 
 tracks:
- - P2·04 | Teleology | Black Chamber
- - P1·10 | Machine Guns and Peacock Feathers | Ulver
+ - Teleology | Black Chamber
+ - Machine Guns and Peacock Feathers | Ulver

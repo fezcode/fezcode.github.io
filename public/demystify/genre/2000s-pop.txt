@@ -3,7 +3,6 @@ rank: 22
 name: 2000S POP-PUNK & RADIO R&B-POP
 family: Pop & Soul
 years: 1999 → 2010
-source: ON REPEAT
 sub: The last era of monoculture radio pop, built by a handful of songwriting teams
 spec: 82,86,80,64,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
 synthType: triangle
@@ -28,6 +27,6 @@ prod:
  This is the peak of the *loudness war* — masters from 2005–2008 routinely sit at DR4–6 with visible clipping — because CD and radio processing rewarded it. Vocals are comped syllable by syllable from dozens of takes. The pop-punk records deliberately mix guitars quieter than a rock record would, so the vocal never has to compete; the R&B records leave the low end almost empty so the kick and vocal own it.
 
 tracks:
- - P1·22 | Complicated | Avril Lavigne
- - P1·05 | Ride It | Jay Sean
- - P2·11 | Say It Right | Nelly Furtado
+ - Complicated | Avril Lavigne
+ - Ride It | Jay Sean
+ - Say It Right | Nelly Furtado
