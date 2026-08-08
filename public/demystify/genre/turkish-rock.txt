@@ -33,6 +33,7 @@ tracks:
  - Ben Nası Büyük Adam Olucam | Pinhani
  - Böyle Ayrılık Olmaz | Kolpa
  - Beni Boş Yere Yorma | Gripin
+ - Y.o.k. | Çilekeş
  - Kafile | Yüksek Sadakat
  - Senin Gibi | Aylin Aslım
  - Unutamam Seni | Murat Kekilli

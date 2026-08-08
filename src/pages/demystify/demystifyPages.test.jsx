@@ -7,7 +7,7 @@ import DemystifyHubPage from './DemystifyHubPage';
 import GenreCollectionPage from './GenreCollectionPage';
 import { clearDemystifyCache } from './demystifyData';
 import { renderSpectrum } from './spectrum';
-import { previewQuery } from './trackPreview';
+import { previewQuery, isMatch } from './trackPreview';
 // Aliased: the testing-library lint rule treats any `render*` call as a
 // component render and objects to how its result is named.
 import { renderInline as inline } from './RichText';
@@ -185,6 +185,62 @@ describe('previewQuery', () => {
   it('is empty for a track with nothing to search on', () => {
     expect(previewQuery({})).toBe('');
     expect(previewQuery(undefined)).toBe('');
+  });
+});
+
+describe('isMatch', () => {
+  // Apple's search always returns something. These are the actual wrong
+  // results it gave for tracks it has no entry for — each must be rejected.
+  it.each([
+    [
+      { title: 'Wyclef Jean', artist: 'Young Thug' },
+      { trackName: 'I Swear (feat. Young Thug)', artistName: 'Wyclef Jean' },
+    ],
+    [
+      { title: 'Ghost', artist: 'Dizzee Rascal' },
+      {
+        trackName: 'Here 2 China (feat. Dizzee Rascal & Dillon Francis)',
+        artistName: 'Calvin Harris',
+      },
+    ],
+    [
+      { title: "Wat's Wrong", artist: 'Isaiah Rashad, Zacari, Kendrick Lamar' },
+      { trackName: 'Warm Winds (feat. Isaiah Rashad)', artistName: 'SZA' },
+    ],
+    [
+      // Right title, wrong artist entirely.
+      { title: 'KITCHEN LIGHTS', artist: 'Westside Gunn, Stove God Cooks' },
+      { trackName: 'Kitchen Lights (Instrumental)', artistName: 'Outcrowd.' },
+    ],
+  ])('rejects %o', (track, result) => {
+    expect(isMatch(track, result)).toBe(false);
+  });
+
+  // …while still accepting the legitimate variations the catalogue returns.
+  it.each([
+    [
+      { title: 'Snake Eyes', artist: 'Feint, CoMa' },
+      { trackName: 'Snake Eyes (feat. CoMa)', artistName: 'Feint' },
+    ],
+    [
+      { title: 'Trains — 2017 Remaster', artist: 'Porcupine Tree' },
+      { trackName: 'Trains', artistName: 'Porcupine Tree' },
+    ],
+    [
+      { title: 'Rococco - Original Mix - Remastered', artist: 'Kansai' },
+      { trackName: 'Rococco (- Remastered)', artistName: 'Kansai' },
+    ],
+    [
+      // Match on a credited artist other than the lead.
+      { title: 'Masking', artist: 'ASM, MF DOOM' },
+      { trackName: 'Masking', artistName: 'A State of Mind & MF DOOM' },
+    ],
+    [
+      { title: 'Bir Derdim Var', artist: 'mor ve ötesi' },
+      { trackName: 'Bir Derdim Var', artistName: 'mor ve ötesi' },
+    ],
+  ])('accepts %o', (track, result) => {
+    expect(isMatch(track, result)).toBe(true);
   });
 });
 

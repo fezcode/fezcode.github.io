@@ -103,21 +103,24 @@ export const items = (fields, key) =>
     .filter((entry) => entry.title);
 
 /**
- * Reads `- title | artist | start` lines out of a field.
+ * Reads `- title | artist | preview | start` lines out of a field.
  *
- * `start` is optional: seconds into the preview clip where the significant part
- * begins. Without it the player centres its window on the clip instead.
+ * `preview` overrides catalogue lookup: `none` when Apple has no entry for the
+ * track, an iTunes track id to pin an exact result, or a replacement search
+ * term. `start` is seconds into the clip where the significant part begins;
+ * without it the player centres its window instead.
  *
  * Deliberately no position field — track order in the source playlist is not
  * something these pages publish.
  */
 export const tracks = (fields, key) =>
   rows(fields, key)
-    .map(([title, artist = '', start]) => {
+    .map(([title, artist = '', preview = '', start]) => {
       const startAt = Number.parseFloat(start);
       return {
         title,
         artist,
+        preview,
         start: Number.isFinite(startAt) ? startAt : null,
       };
     })

@@ -1,5 +1,5 @@
 id: neoclassical
-rank: 54
+rank: 53
 name: NEOCLASSICAL & CHAMBER
 family: Score & Ambient
 years: 1980 → present

@@ -1,5 +1,5 @@
 id: turku
-rank: 40
+rank: 39
 name: TÜRKÜ — TURKISH FOLK
 family: Turkish
 years: centuries → present

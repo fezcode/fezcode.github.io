@@ -1,5 +1,5 @@
 id: folk-metal
-rank: 10
+rank: 09
 name: FOLK, PAGAN & MEDIEVAL METAL
 family: Rock & Metal
 years: 1993 → present

@@ -91,13 +91,14 @@ describe('atlas fields', () => {
     expect(fields.Note).toBeUndefined();
   });
 
-  it('reads track lines, with an optional excerpt start', () => {
+  it('reads track lines, with optional preview override and excerpt start', () => {
     const [fields] = parseBlocks(
-      '===\ntracks:\n - Snake Eyes | Feint, CoMa\n - Saltwater | Chicane | 42.5\n',
+      '===\ntracks:\n - Snake Eyes | Feint, CoMa\n - Ghost | Dizzee Rascal | none\n - Saltwater | Chicane | 12345 | 42.5\n',
     );
     expect(tracks(fields, 'tracks')).toEqual([
-      { title: 'Snake Eyes', artist: 'Feint, CoMa', start: null },
-      { title: 'Saltwater', artist: 'Chicane', start: 42.5 },
+      { title: 'Snake Eyes', artist: 'Feint, CoMa', preview: '', start: null },
+      { title: 'Ghost', artist: 'Dizzee Rascal', preview: 'none', start: null },
+      { title: 'Saltwater', artist: 'Chicane', preview: '12345', start: 42.5 },
     ]);
   });
 

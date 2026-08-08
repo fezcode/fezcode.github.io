@@ -1,5 +1,5 @@
 id: prog-rock
-rank: 09
+rank: 10
 name: PROGRESSIVE ROCK
 family: Rock & Metal
 years: 1967 → present
@@ -31,6 +31,5 @@ tracks:
  - Blackest Eyes - 2017 Remaster | Porcupine Tree
  - The Sound Of Muzak - 2017 Remaster | Porcupine Tree
  - Welcome To The Machine - 2011 Remaster | Pink Floyd
- - Ice | Camel
  - Eye In The Sky | The Alan Parsons Project
  - Old and Wise | The Alan Parsons Project

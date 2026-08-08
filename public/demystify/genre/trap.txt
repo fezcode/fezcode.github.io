@@ -27,7 +27,7 @@ prod:
  Producers build the beat first and let the artist write to it in the booth — most trap vocals are composed at the mic, not on paper, which is why ad-libs function as a second rhythmic layer panned wide. The 808 is deliberately distorted so its harmonics survive on small speakers, and the mix leaves an unusual amount of empty space in the mids for exactly that reason.
 
 tracks:
- - Wyclef Jean | Young Thug
+ - Wyclef Jean | Young Thug | none
  - Headlines | Drake
  - Am I Dreaming | Metro Boomin, A$AP Rocky, Roisee
  - We Still Don't Trust You | Future, Metro Boomin, The Weeknd

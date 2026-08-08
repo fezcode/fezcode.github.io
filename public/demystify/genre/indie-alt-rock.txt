@@ -27,7 +27,6 @@ prod:
  Restraint is the house style: minimal compression on the way in, little or no pitch correction, and arrangements that leave audible space. Where mainstream rock double-tracks and hard-pans guitars, indie records often keep a single take slightly off-centre. Masters are noticeably quieter than radio rock of the same years, which is why these tracks sound thin on shuffle next to a trap record and correct on their own.
 
 tracks:
- - Ode To The Mets | The Strokes
  - Get Away With It | Animal Kingdom
  - Roscoe | Midlake
  - It's Alright | The Mystery Lights
@@ -38,7 +37,6 @@ tracks:
  - Goodbye Song | STRANGE POP
  - Ali in the Jungle - Orchestra Mix | The Hours
  - Push Off | The Palms
- - Arsh | The Grand Duchy
  - Let's Go | Stuck in the Sound
  - Black Betty - Single Edit | Spiderbait
  - French Disko | Stereolab
@@ -62,6 +60,5 @@ tracks:
  - Duvet | bôa
  - Way to be Loved | TOPS
  - Little One | Highly Suspect
- - Say It Ain't So - Original Mix | Weezer
  - Zero | Electric Guest
  - Come with Me Now | KONGOS

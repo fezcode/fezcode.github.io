@@ -27,14 +27,14 @@ prod:
  These are *sequenced albums* in an era of playlists: track order carries meaning, interludes connect songs, and the mastering keeps enough dynamic range that a quiet passage stays quiet. The tradeoff is deliberate — individual tracks read as slightly less loud than trap singles on shuffle, which the artists accept in exchange for the album working as a single object.
 
 tracks:
+ - Power Trip | J. Cole, Miguel
  - Blackberry Marmalade | Vince Staples
  - ALL THE LOVE | Kanye West, Ye, Andre Troutman
  - Good Flirts | Baby Keem, Kendrick Lamar, Momo Boyd
  - Two Six | J. Cole
  - The Let Out | J. Cole
  - Rain | Mac Miller, Vince Staples
- - Wat's Wrong | Isaiah Rashad, Zacari, Kendrick Lamar
- - Power Trip | J. Cole, Miguel
+ - Wat's Wrong | Isaiah Rashad, Zacari, Kendrick Lamar | none
  - Work Out | J. Cole
  - Money Trees | Kendrick Lamar, Jay Rock
  - The Return | Logic
