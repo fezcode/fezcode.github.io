@@ -160,6 +160,54 @@ const generateSitemap = async () => {
     }
   }
 
+  // Add /demystify: the collection registry and each collection's entry index
+  // are plain text files, so the hub, every collection and every entry are
+  // discovered here rather than listed by hand.
+  try {
+    const demystifyRoot = path.join(publicDirectory, 'demystify');
+    const registry = path.join(demystifyRoot, 'index.txt');
+
+    if (fs.existsSync(registry)) {
+      const idsIn = (file) =>
+        fs
+          .readFileSync(file, 'utf-8')
+          .split(/\r?\n/)
+          .map(line => line.match(/^id:\s*(\S+)/))
+          .filter(Boolean)
+          .map(match => match[1]);
+
+      urls.push({
+        loc: `${baseUrl}/demystify`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'monthly',
+        priority: '0.8',
+      });
+
+      idsIn(registry).forEach(collection => {
+        const collectionIndex = path.join(demystifyRoot, collection, 'index.txt');
+        if (!fs.existsSync(collectionIndex)) return;
+
+        urls.push({
+          loc: `${baseUrl}/demystify/${collection}`,
+          lastmod: new Date().toISOString(),
+          changefreq: 'weekly',
+          priority: '0.7',
+        });
+
+        idsIn(collectionIndex).forEach(entry => {
+          urls.push({
+            loc: `${baseUrl}/demystify/${collection}/${entry}`,
+            lastmod: new Date().toISOString(),
+            changefreq: 'monthly',
+            priority: '0.6',
+          });
+        });
+      });
+    }
+  } catch (error) {
+    console.error('Error reading demystify index files:', error);
+  }
+
   // Construct XML sitemap content
   let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
