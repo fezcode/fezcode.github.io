@@ -1,5 +1,5 @@
 id: turkish-pop
-rank: 09
+rank: 37
 name: TURKISH POP
 family: Turkish
 years: 1985 → present
@@ -27,4 +27,19 @@ prod:
  Produced for two markets at once — domestic cassette/CD and a European diaspora dance floor — so most singles get a club remix built into the release plan. The vocal is compressed hard and doubled at the octave in choruses; the darbuka is layered with a sampled electronic percussion track so the groove reads on both a wedding PA and a car stereo.
 
 tracks:
+ - Benmişim | Nev
+ - Unut Onu Kalbim | Yusuf Güney
+ - Adı İntikamdı | Mustafa Sandal
+ - Bir Beyaz Orkide | Cihan Mürtezaoğlu
+ - Sevdik Sevdalandık | Reyhan Karaca
+ - Günaydın - Remastered | Yalın
+ - Ya Bu İşler Ne | Mabel Matiz
+ - Açık Adres | Sertab Erener
+ - Nedenini Sorma | Hepsi
+ - Gözyaşlarım Anlatır | Şahsenem
+ - Yalan | Candan Erçetin
+ - Bu Kadar Mı | Emre Altuğ
+ - Gitti Gideli | Tarkan
+ - Adımı Kalbine Yaz | Tarkan
+ - İsyankar | Mustafa Sandal
  - Uzak | Tarkan

@@ -1,0 +1,60 @@
+id: synthwave
+rank: 29
+name: SYNTHWAVE & OUTRUN
+family: Electronic
+years: 2005 → present
+sub: A soundtrack for 1984 written thirty years later, by people who mostly weren't there
+spec: 82,84,72,54,48,52,60,68,74,78,80,82,86,90,88,82,74,64,54,44
+synthType: sawtooth
+freqs: 55, 68.94, 660
+
+ascii:
+┌────────────────────────────────────┐
+│        ▄▄████████████▄▄            │
+│      ▄████████████████████▄        │
+│      ██████████████████████        │
+│      ▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀        │
+│      ██████████████████████        │
+│ ──────┴──────┴──────┴──────┴────── │
+│    ╱        ╱      ╲        ╲      │
+└────────────────────────────────────┘
+
+what:
+ Synthwave began in the mid-2000s among French and American producers scoring imaginary films — the reference points were John Carpenter, Tangerine Dream, Vangelis and 1980s arcade cabinets rather than any 1980s pop record. *Drive* (2011) took the sound mainstream, _Stranger Things_ confirmed it, and the scene has since split into a bright "outrun" wing and a harder, horror-scored one.
+
+artists:
+ Kavinsky, College, *Mega Drive*, Dynatron, FM Attack, Perturbator, Carpenter Brut, Magic Sword, Dance With the Dead, Mareux; *S U R V I V E*, two of whose members scored _Stranger Things_, sit at the darker, more analogue end.
+
+trivia:
+ The genre's defining instrument is arguably a misunderstanding: the *Roland Juno-106* and Jupiter-8 patches everyone reaches for were, in period, the sound of expensive studio pop, not of the low-budget horror scores synthwave actually imitates — Carpenter mostly worked on a Prophet-5 and an ARP. Mareux's cover of The Cure's "The Perfect Girl" was recorded in a bedroom and only became a hit years later when it was rediscovered by TikTok.
+
+sonic:
+ Arpeggiated 16th-note bass sequences, gated-reverb snares, brass-stab pads and a lead line drenched in chorus and long hall reverb. Tempos cluster at 80–110 BPM but the arpeggios read as double time. Harmony is minor and diatonic, usually a four-chord loop, and the mix is deliberately bright — the high end is where the nostalgia lives.
+
+gear:
+ Roland Juno-106, Jupiter-8 and TR-707/909; Sequential Prophet-5; Yamaha DX7 for bells and electric-piano stabs; LinnDrum. Almost all of it is now emulated in software (Diva, Repro, TAL-U-NO-LX) with tape and VHS saturation plugins layered on top to add the artefacts the originals did not have.
+
+prod:
+ Production is period-imitation done deliberately: gated reverb keyed to the snare, chorus on everything, and a top end rolled off just enough to suggest cassette. Because the arrangements are loops, interest comes from filter and reverb automation across 8- and 16-bar spans. The genre lives on streaming playlists and game soundtracks rather than clubs, so masters are loud and mixed for headphones.
+
+tracks:
+ - Time (Goes On) | Hypnogaja, ShyBoy
+ - They Don't Care | Hypnogaja, ShyBoy
+ - Hourglass | S U R V I V E
+ - Hello Juliet | Clarion
+ - Venom | Dance With the Dead
+ - Intergalactic Highway | Dynatron
+ - Plasma Storm | Beds and Beats
+ - In The Face Of Evil | Magic Sword
+ - Attack Vector | Covox
+ - The scarlett empress | College
+ - NARC | Mega Drive
+ - Héritage | College
+ - Omniverse | S U R V I V E
+ - Distant Lights | Sand Circles
+ - The Perfect Girl - The Motion Retrowave Remix | Mareux, The Motion
+ - Sleepless Nights | FM Attack
+ - Flashbacks - Tee & Hawk Remix | Warlocks
+ - East Of Oslo | Warlocks
+ - A.H.B. | S U R V I V E
+ - Gillette | 199X, DrDisrespect

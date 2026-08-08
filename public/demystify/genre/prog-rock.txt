@@ -1,5 +1,5 @@
 id: prog-rock
-rank: 02
+rank: 09
 name: PROGRESSIVE ROCK
 family: Rock & Metal
 years: 1967 → present
@@ -27,4 +27,10 @@ prod:
  Prog is arranged before it is recorded — parts are written to interlock rather than jammed. In Absentia was tracked at Avatar Studios in New York with the drums given a large live room, which is why the 2017 remaster reads as spacious rather than compressed. The remaster exists because the original CD masters were squashed by 2002 standards; the reissue restores 6–8 dB of headroom.
 
 tracks:
- - Trains — 2017 Remaster | Porcupine Tree
+ - Trains - 2017 Remaster | Porcupine Tree
+ - Blackest Eyes - 2017 Remaster | Porcupine Tree
+ - The Sound Of Muzak - 2017 Remaster | Porcupine Tree
+ - Welcome To The Machine - 2011 Remaster | Pink Floyd
+ - Ice | Camel
+ - Eye In The Sky | The Alan Parsons Project
+ - Old and Wise | The Alan Parsons Project

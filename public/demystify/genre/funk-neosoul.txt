@@ -1,5 +1,5 @@
 id: funk-neosoul
-rank: 24
+rank: 47
 name: FUNK & NEO-SOUL
 family: Pop & Soul
 years: 1995 → present
@@ -28,3 +28,7 @@ prod:
 
 tracks:
  - Come Down | Anderson .Paak
+ - Cómo Me Quieres | Khruangbin
+ - Two Fish and an Elephant | Khruangbin
+ - Stainless | The Game, Anderson .Paak
+ - Unshaken | D'Angelo

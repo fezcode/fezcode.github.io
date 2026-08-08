@@ -1,5 +1,5 @@
 id: dark-techno
-rank: 19
+rank: 34
 name: DARK TECHNO & FRENCH ELECTRO
 family: Electronic
 years: 2008 → present
@@ -27,4 +27,7 @@ prod:
  The productions are deliberately under-arranged: four or five elements total, no build-ups, and no filter sweeps. Loudness is achieved through distortion and clipping on individual sources rather than a limiter on the master, which preserves transient snap while still reading as aggressive. The vocal is left almost unprocessed against it — a pop record wearing a techno record's clothes.
 
 tracks:
+ - LEGACY | KAS:ST
+ - Ernstige - Original Mix | Pedram
+ - Risky Business | ZHU
  - Lost in the Fire | Gesaffelstein, The Weeknd

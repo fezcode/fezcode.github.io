@@ -1,5 +1,5 @@
 id: dark-ambient
-rank: 17
+rank: 53
 name: DARK AMBIENT & POST-BLACK ELECTRONICA
 family: Score & Ambient
 years: 1984 → present
@@ -27,5 +27,7 @@ prod:
  Dark ambient is *mastered quiet on purpose*: the genre needs 20+ dB of dynamic range for a drone to feel like it's approaching from a distance, so loudness normalisation actively harms it — headphones and a quiet room are the intended playback system. Ulver went the other way and had Flowers of Evil mixed with period-accurate gated-reverb drum treatment, which is a production quotation as much as a sound choice.
 
 tracks:
- - Teleology | Black Chamber
  - Machine Guns and Peacock Feathers | Ulver
+ - Teleology | Black Chamber
+ - Together | Nine Inch Nails
+ - Hope We Can Again | Nine Inch Nails

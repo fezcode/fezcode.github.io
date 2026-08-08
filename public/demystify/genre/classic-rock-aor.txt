@@ -1,5 +1,5 @@
 id: classic-rock-aor
-rank: 04
+rank: 05
 name: CLASSIC ROCK & AOR
 family: Rock & Metal
 years: 1965 → 1989
@@ -28,5 +28,11 @@ prod:
 
 tracks:
  - Eminence Front | The Who
- - Separate Ways (Worlds Apart) | Journey
+ - Sultans Of Swing | Dire Straits
+ - Ain't Talkin' 'Bout Love - 2015 Remaster | Van Halen
+ - Separate Ways (Worlds Apart) [2023 Remaster] | Journey
  - No Fortune | America
+ - The Joker | Steve Miller Band
+ - Let 'Em In - 2014 Remaster | Wings
+ - While My Guitar Gently Weeps - Remastered 2009 | The Beatles
+ - Paint It Black | The Rolling Stones

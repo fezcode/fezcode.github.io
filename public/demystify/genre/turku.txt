@@ -1,5 +1,5 @@
 id: turku
-rank: 07
+rank: 40
 name: TÜRKÜ — TURKISH FOLK
 family: Turkish
 years: centuries → present
@@ -27,6 +27,8 @@ prod:
  The production ethic is transparency: capture the instrument and the voice, add nothing that obscures the ornament. Modern recordings are close-mic'd with condensers, minimal compression, and a short natural reverb — because heavy processing smears the microtonal detail that identifies the region. Where a rhythm section is added, it stays low in the mix and never doubles the melody.
 
 tracks:
+ - Ha Bu Ander Sevdaluk | Aytekin Ataş
+ - Zahid Bizi Ta'n Eyleme (Zahid Don't Decry Us) | Aytekin Ataş
+ - İki Keklik | Orhan Hakalmaz
  - Deniz Üstünde Fener | Selçuk Balcı
  - Sendeki Kaşlar | Hüseyin Turan
- - İki Keklik | Orhan Hakalmaz

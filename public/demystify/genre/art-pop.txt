@@ -1,5 +1,5 @@
 id: art-pop
-rank: 21
+rank: 45
 name: ART POP & THE STUDIO AUTEUR
 family: Pop & Soul
 years: 1997 → present
@@ -27,4 +27,9 @@ prod:
  Because one person does everything, arrangement decisions happen at the same moment as sound-design decisions, and it shows: the vocal harmony _is_ the reverb, the percussion _is_ a processed breath. Vocal comping runs into the hundreds of takes. Mixes are made on headphones and small monitors for headphone playback, which is why they translate so well to earbuds and so poorly to a club system.
 
 tracks:
+ - Laughing with a Mouth of Blood | St. Vincent
+ - Lazarus | David Bowie
  - Headlock | Imogen Heap
+ - Mercy Street | Peter Gabriel
+ - Across the Universe - Radio Edit | Fiona Apple
+ - Something of an End | My Brightest Diamond

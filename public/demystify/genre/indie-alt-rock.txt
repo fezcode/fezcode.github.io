@@ -1,0 +1,67 @@
+id: indie-alt-rock
+rank: 01
+name: INDIE & ALTERNATIVE ROCK
+family: Rock & Metal
+years: 1994 → present
+sub: Guitar bands after the majors stopped caring — smaller rooms, sharper hooks, no anthem obligation
+spec: 62,72,80,76,70,72,78,82,84,80,76,76,80,82,78,70,62,54,46,38
+synthType: square
+freqs: 86.41, 267.37, 335.14
+
+what:
+ What "indie" names is a distribution model that became a sound: guitar music made for a mid-size room, with the arena ambition removed. The 2001 New York revival — The Strokes, Interpol, Yeah Yeah Yeahs — reset the template to short songs and trebly guitars, and the two decades since have run through Modest Mouse's ragged Americana, alt-J's folk-electronics, Metric's synth-rock and a large bedroom-recorded tail.
+
+artists:
+ *The Strokes*, Modest Mouse, Bloc Party, Phantogram, Metric, alt-J, Weezer, Stereolab, The Neighbourhood, Mac DeMarco, TOPS, Djo, Highly Suspect, Caveman, Electric Guest; John Frusciante's solo records sit adjacent, as does the Turkish-Istanbul indie wing of The Away Days.
+
+trivia:
+ The Strokes recorded *Is This It* with producer Gordon Raphael in a basement studio on Avenue A, deliberately degrading the drums and putting Julian Casablancas' vocal through a small guitar amp — the record that defined a decade of guitar tone was chasing the sound of a cheap demo. Weezer's "Say It Ain't So" is about Rivers Cuomo finding a beer in the fridge and assuming his stepfather's marriage was collapsing; it wasn't.
+
+sonic:
+ Two guitars in conversation rather than stacked, bass carrying real melodic weight, and drums recorded dry and close. Vocals sit lower in the mix than in mainstream rock and are frequently doubled or distorted rather than polished. The frequency profile is mid-forward and slightly thin by design — these records are meant to sound like a band in a room, not a wall.
+
+gear:
+ Fender Jazzmasters, Jaguars and Telecasters into Vox AC30 or Fender Twin cleans; Rickenbacker and Höfner basses; small vintage kits tuned high. Effects run to spring reverb, analogue chorus and fuzz rather than modern high-gain. A lot of the current wave is tracked in home studios into Logic or Ableton with a single decent preamp.
+
+prod:
+ Restraint is the house style: minimal compression on the way in, little or no pitch correction, and arrangements that leave audible space. Where mainstream rock double-tracks and hard-pans guitars, indie records often keep a single take slightly off-centre. Masters are noticeably quieter than radio rock of the same years, which is why these tracks sound thin on shuffle next to a trap record and correct on their own.
+
+tracks:
+ - Ode To The Mets | The Strokes
+ - Get Away With It | Animal Kingdom
+ - Roscoe | Midlake
+ - It's Alright | The Mystery Lights
+ - Ramparts | John Frusciante
+ - Layers | The Away Days
+ - January | Telenova
+ - Oddloop | frederic
+ - Goodbye Song | STRANGE POP
+ - Ali in the Jungle - Orchestra Mix | The Hours
+ - Push Off | The Palms
+ - Arsh | The Grand Duchy
+ - Let's Go | Stuck in the Sound
+ - Black Betty - Single Edit | Spiderbait
+ - French Disko | Stereolab
+ - Come And Play In The Milky Night (Demo) | Stereolab
+ - When I'm Small | Phantogram
+ - Skeleton | Bloc Party
+ - Taro | alt-J
+ - Never Going Back | Caveman
+ - Fall Into Place | Apartment
+ - End of Beginning | Djo
+ - Who Would You Be For Me | Metric
+ - Risk | Metric
+ - The Adults Are Talking | The Strokes
+ - Float On | Modest Mouse
+ - All That We've Become | Society
+ - Superstition Future | TOPS
+ - PEOPLE | Whitey
+ - World Horizon | The Away Days
+ - The Invisible Man | Built to Fade
+ - Sweater Weather | The Neighbourhood
+ - Duvet | bôa
+ - Way to be Loved | TOPS
+ - Little One | Highly Suspect
+ - Say It Ain't So - Original Mix | Weezer
+ - Zero | Electric Guest
+ - Come with Me Now | KONGOS

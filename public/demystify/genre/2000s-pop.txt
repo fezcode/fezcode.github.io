@@ -1,5 +1,5 @@
 id: 2000s-pop
-rank: 22
+rank: 48
 name: 2000S POP-PUNK & RADIO R&B-POP
 family: Pop & Soul
 years: 1999 → 2010
@@ -28,5 +28,6 @@ prod:
 
 tracks:
  - Complicated | Avril Lavigne
- - Ride It | Jay Sean
+ - Crush | Jennifer Paige
  - Say It Right | Nelly Furtado
+ - Ride It | Jay Sean

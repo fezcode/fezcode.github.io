@@ -1,0 +1,37 @@
+id: extreme-metal
+rank: 06
+name: MELODIC DEATH, BLACK & DOOM METAL
+family: Rock & Metal
+years: 1990 → present
+sub: Metal's northern European wing — harmonised minor riffs, harsh vocals, and a taste for the elegiac
+spec: 80,88,90,80,70,72,78,82,80,76,74,78,82,86,82,74,64,54,46,38
+synthType: square
+freqs: 68.94, 86.41, 267.37
+
+what:
+ Two Scandinavian scenes formed almost simultaneously around 1990: Gothenburg's melodic death metal, which married thrash speed to twin harmonised guitar lines, and Norwegian black metal, which went the other way into treble, tremolo and atmosphere. Britain's Peaceville bands — Anathema, Paradise Lost, My Dying Bride — supplied the doom-laden third strand, and several of these bands ended up somewhere else entirely: Anathema became an atmospheric rock act, Enslaved a progressive one.
+
+artists:
+ At the Gates, In Flames and Dark Tranquillity in Gothenburg; *Enslaved*, Emperor and Ulver in Norway; *Amorphis* in Finland; *Anathema* and Paradise Lost in England; Australia's *Be'lakor* and the atmospheric black metal of Sweden's *Lustre* represent the long tail.
+
+trivia:
+ Amorphis built *Tales from the Thousand Lakes* (1994) entirely on verses from the _Kalevala_, the Finnish national epic assembled from oral folk poetry in the 1830s — a death metal album whose lyrics are 19th-century ethnography. Anathema, meanwhile, abandoned growled vocals after 1996 and by 2010 were making records that share more with Pink Floyd than with anything in this list.
+
+sonic:
+ Guitars tuned down and tracked in harmonised pairs — thirds and sixths over a minor or Phrygian tonality — which is what makes the aggression sound mournful rather than angry. Drums use blast beats and double kick but resolve into half-time for the melodic passages. Vocals are growled or shrieked, mixed lower than in American metal so the guitars carry the melody.
+
+gear:
+ Ibanez and Jackson guitars into Peavey 5150 and Marshall JCM800 heads; the Boss HM-2 pedal, cranked flat out, is the entire Swedish guitar sound. Doom and atmospheric acts add Mellotron, real strings and clean-channel Fender amps. Drums are frequently triggered for the fast passages and left acoustic for the slow ones.
+
+prod:
+ The Gothenburg records were cut at Studio Fredman with heavily gated, tightly edited drums and a scooped guitar tone. Black metal went the opposite way on purpose — thin, hissing, deliberately lo-fi productions meant to sound like a rehearsal-room tape. Modern releases in both traditions are dense and loud, and the melodic layers are usually quadruple-tracked so the harmony survives the compression.
+
+tracks:
+ - Deep - Remastered | Anathema
+ - One Last Goodbye - Remastered | Anathema
+ - Angelica | Anathema
+ - House of Sleep | Amorphis
+ - By Moon and Star | Be'lakor
+ - Part 1 | Lustre
+ - What Else Is There - Bonus Version | Enslaved
+ - Frost | Enslaved

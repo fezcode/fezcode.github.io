@@ -1,5 +1,5 @@
 id: trance-prog-house
-rank: 18
+rank: 33
 name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
 family: Electronic
 years: 1990 → present
@@ -27,6 +27,8 @@ prod:
  Arranged for the DJ before the listener — intros and outros run 32 bars of drums alone for beatmatching, and the radio edit is a separate assembly. The breakdown is engineered as a loudness trough so the drop reads as louder by contrast, which is why heavily limited masters flatten these records. The Platipus back catalogue has been remastered repeatedly precisely because the originals were cut for vinyl and need re-levelling for streaming.
 
 tracks:
+ - Rococco - Original Mix - Remastered | Kansai
+ - Raincry (Spiritual Thirst) | God Within, Scott Hardkiss
  - Saltwater | Chicane, Moya Brennan
- - Rococco — Original Mix (Remastered) | Kansai
- - Raincry (Spiritual Thirst) | God Within
+ - So Smooth - 12" Version | Krystal Davis
+ - Night Trip - Original Mix | Rautu

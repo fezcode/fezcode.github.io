@@ -1,5 +1,5 @@
 id: gorillaz-alt
-rank: 15
+rank: 27
 name: GENRE-FLUID ALTERNATIVE HIP HOP
 family: Hip Hop
 years: 1998 → present
@@ -28,3 +28,5 @@ prod:
 
 tracks:
  - Stylo | Gorillaz, Bobby Womack, Mos Def
+ - November Has Come | Gorillaz, MF DOOM
+ - Feel Good Inc. | Gorillaz, De La Soul

@@ -1,5 +1,5 @@
 id: confessional-rap
-rank: 13
+rank: 17
 name: CONFESSIONAL & CONSCIOUS MAINSTREAM RAP
 family: Hip Hop
 years: 2010 → present
@@ -27,6 +27,65 @@ prod:
  These are *sequenced albums* in an era of playlists: track order carries meaning, interludes connect songs, and the mastering keeps enough dynamic range that a quiet passage stays quiet. The tradeoff is deliberate — individual tracks read as slightly less loud than trap singles on shuffle, which the artists accept in exchange for the album working as a single object.
 
 tracks:
- - MIDDLE CHILD | J. Cole
+ - Blackberry Marmalade | Vince Staples
+ - ALL THE LOVE | Kanye West, Ye, Andre Troutman
+ - Good Flirts | Baby Keem, Kendrick Lamar, Momo Boyd
+ - Two Six | J. Cole
+ - The Let Out | J. Cole
+ - Rain | Mac Miller, Vince Staples
+ - Wat's Wrong | Isaiah Rashad, Zacari, Kendrick Lamar
+ - Power Trip | J. Cole, Miguel
+ - Work Out | J. Cole
+ - Money Trees | Kendrick Lamar, Jay Rock
+ - The Return | Logic
+ - Bruuuh (with Denzel Curry) - Remix | JID, Denzel Curry
+ - Soundtrack 2 My Life | Kid Cudi
+ - 3005 | Childish Gambino
+ - Swimming Pools (Drank) - Extended Version | Kendrick Lamar
+ - I Wonder | Kanye West
+ - Good News | Mac Miller
+ - Day 'N' Nite (Nightmare) | Kid Cudi
+ - The Prayer | Kid Cudi
  - No Role Modelz | J. Cole
- - Swimming Pools (Drank) | Kendrick Lamar
+ - Young Jesus | Logic, Big Lenbo
+ - Murder To Excellence | JAY-Z, Kanye West
+ - Low-Key | Hopsin
+ - Scott Mescudi Vs. The World | Kid Cudi, CeeLo Green
+ - Sky Might Fall | Kid Cudi
+ - Mr. Rager | Kid Cudi
+ - Don't Play This Song | Kid Cudi, Mary J. Blige
+ - Marijuana | Kid Cudi
+ - Man of the Year (feat. Curley the 5th) | Logic?, Curley The 5th
+ - Welcome To Heartbreak | Kanye West, Kid Cudi
+ - MIDDLE CHILD | J. Cole
+ - No Dope On Sundays (feat. Pusha T) | CyHi, Pusha T
+ - N95 | Kendrick Lamar
+ - The Art of Peer Pressure | Kendrick Lamar
+ - Silent Hill | Kendrick Lamar, Kodak Black
+ - the.climb.back | J. Cole
+ - Two Words | Kanye West, Mos Def, Freeway, The Boys Choir Of Harlem
+ - Deep Reverence (feat. Nipsey Hussle) | Big Sean, Nipsey Hussle
+ - CALLIGRAPHY | Saba
+ - Ego Check | Wynne, JID
+ - Young Man | WELL$, Sylvan Esso
+ - She Knows (feat. Amber Coffman & Cults) | J. Cole, Amber Coffman, Cults
+ - Run This Town | JAY-Z, Rihanna, Kanye West
+ - Lost In The World | Kanye West, Bon Iver
+ - Runaway | Kanye West, Pusha T
+ - All Of The Lights | Kanye West
+ - Devil In A New Dress | Kanye West, Rick Ross
+ - Cudi Zone | Kid Cudi
+ - Down (feat. Nikki Jean) | Lupe Fiasco, Nikki Jean
+ - Beautiful | Eminem
+ - Battle Scars (with Guy Sebastian) | Lupe Fiasco, Guy Sebastian
+ - House (feat. Mick Jenkins) | EARTHGANG, Mick Jenkins
+ - Crown Me | Hopsin
+ - Reborn | KIDS SEE GHOSTS
+ - The Fool Pt 3 (Frame Of Mind) | Shad, KAYTRANADA
+ - Drunk and Hot Girls | Kanye West, Mos Def
+ - Insomniac Dreaming | A.Dd+
+ - Red Dot Music | Mac Miller, Action Bronson
+ - So Appalled | Kanye West, JAY-Z, Pusha T, CyHi, Swizz Beatz, RZA
+ - King's Dead (with Kendrick Lamar, Future & James Blake) | Jay Rock, Kendrick Lamar, Future, James Blake
+ - Ni**as In Paris | JAY-Z, Kanye West
+ - A Tale of 2 Citiez | J. Cole

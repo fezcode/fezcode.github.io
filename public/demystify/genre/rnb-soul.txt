@@ -1,0 +1,42 @@
+id: rnb-soul
+rank: 44
+name: CONTEMPORARY R&B AND SOUL
+family: Pop & Soul
+years: 2000 → present
+sub: Soul singing after neo-soul — looser, quieter, and mixed like a hip-hop record
+spec: 84,88,80,64,56,60,68,76,80,80,76,76,80,82,78,70,60,52,44,36
+synthType: triangle
+freqs: 55, 68.94, 86.41
+
+what:
+ The generation after D'Angelo and Erykah Badu kept the live-band rhythmic feel but absorbed hip-hop's production values and, increasingly, its release patterns. Britain contributed a distinct strand through Jorja Smith and GoldLink's collaborators; Los Angeles produced the psychedelic-soul revival of Ravyn Lenae and Kadhja Bonet; and Thee Sacred Souls represent a deliberate return to 1960s sweet soul recorded on period equipment.
+
+artists:
+ *Jorja Smith*, *Ravyn Lenae*, Kadhja Bonet, GoldLink, Brent Faiyaz, Anthony Hamilton, Raury, Buddy, Iyeoka, Soia; *Thee Sacred Souls* on the retro-soul side, working with Daptone-adjacent production.
+
+trivia:
+ Thee Sacred Souls were signed by *Daptone Records* off a single demo and record to analogue tape in a converted house in Riverside, using period microphones and no digital editing — the result is frequently mistaken for a 1968 reissue. Jorja Smith released "Blue Lights," built on a Dizzee Rascal sample and written about police stop-and-search, while still a teenager working shifts at a Starbucks.
+
+sonic:
+ Live or live-feeling drums placed behind the beat, warm round bass, Rhodes and muted guitar filling the mids, and a vocal recorded close with audible breath. Harmony is far richer than in pop — extended and altered chords are standard. The mix is dark and intimate rather than bright, and the vocal is compressed gently so dynamics survive.
+
+gear:
+ Fender Rhodes and Wurlitzer, Hofner and Fender basses, vintage ribbon and tube microphones, and outboard compression on the vocal chain. The retro wing records to 8- or 16-track tape deliberately; the contemporary wing tracks live players into Pro Tools and adds tape emulation on the bus.
+
+prod:
+ Vocals are usually kept from early takes to preserve the imperfections, and background stacks are sung rather than copied. Producers resist quantising the rhythm section, since the whole feel depends on the drift between players. Masters run quieter than pop, with the low-mids left full — brightening an R&B record of this kind immediately makes it sound like something else.
+
+tracks:
+ - Easier Said Than Done | Thee Sacred Souls
+ - You Can Say Hi | Soia
+ - Closer (Ode 2 U) | Ravyn Lenae
+ - Computer Luv (feat. Steve Lacy) | Ravyn Lenae, Steve Lacy
+ - Remember the Rain | Kadhja Bonet
+ - Comin' from Where I'm From - Radio Mix | Anthony Hamilton
+ - Who Do We Think We Are (feat. Rick Ross) | John Legend, Rick Ross
+ - Crew (feat. Brent Faiyaz & Shy Glizzy) | GoldLink, Brent Faiyaz, Shy Glizzy
+ - Crystal Express | Raury
+ - Trippin' (feat. Khalid) | Buddy, Khalid
+ - Simply Falling | Iyeoka
+ - Blue Lights | Jorja Smith
+ - Zulu Screams (feat. Maleek Berry & Bibi Bourelly) | GoldLink, Bibi Bourelly, Maleek Berry

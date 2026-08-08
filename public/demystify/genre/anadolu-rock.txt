@@ -1,5 +1,5 @@
 id: anadolu-rock
-rank: 06
+rank: 38
 name: ANADOLU ROCK & TURKISH ALTERNATIVE
 family: Turkish
 years: 1965 → present
@@ -27,10 +27,16 @@ prod:
  Classic-era records were tracked live to four or eight tracks at TRT or Istanbul studios with minimal overdubs, which is why they swing. The 2000s wave (mor ve ötesi, Redd) adopted Western multi-track and loudness practice. The 2010s indie bands went the other direction on purpose — home and small-studio recording, audible room, little compression — because the appeal is the writing and the deadpan delivery, not the polish.
 
 tracks:
- - Bir Derdim Var | mor ve ötesi
  - Vicdani Redd | Redd
- - Acının İlacı | Adamlar
- - Hikaye | Adamlar
  - Anlayamazsın | Seksendört
+ - Utanmazsan Unutmam | Adamlar
+ - Hikaye | Adamlar
+ - Acının İlacı | Adamlar
+ - Dünyaya Bedel | mor ve ötesi
+ - Ölürüm Hasretinle | Seksendört
+ - Adımız Miskindir Bizim | MFÖ
+ - Bir Derdim Var | mor ve ötesi
  - Ne Farkeder | Yüzyüzeyken Konuşuruz
+ - Ele Güne Karşı | MFÖ
+ - Sandal | Yüzyüzeyken Konuşuruz
  - Ada | Kuytu

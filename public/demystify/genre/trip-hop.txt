@@ -1,5 +1,5 @@
 id: trip-hop
-rank: 16
+rank: 31
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present
@@ -40,9 +40,22 @@ prod:
  The production philosophy is *subtraction*: strip the arrangement until only three or four elements remain, then make each one enormous. Because there are so few parts, every one gets individual treatment — drums heavily compressed and EQ'd dark, vocal bright and de-essed, bass rolled off above 800 Hz. Live-with-orchestra versions like Hooverphonic's invert this, replacing the sampled bed with real players and gaining dynamics at the cost of the grit.
 
 tracks:
- - Easier Said Than Done | Morcheeba
- - Mad About You — Live with Orchestra | Hooverphonic
+ - Persist | All India Radio
  - Four Three | All India Radio
+ - Enjoy the Ride | Morcheeba, Judie Tzuke
+ - Easier Said Than Done | Morcheeba
+ - The Rip | Portishead
+ - Bullets | Archive
+ - Again | Archive
+ - Mad About You - Live at Koningin Elisabethzaal 2012 | Hooverphonic
+ - So Com Voce | Thievery Corporation
+ - Teardrop | Massive Attack, Elizabeth Fraser
+ - Roads | Portishead
+ - Horrible Person | Hooverphonic
+ - Were You Thinking of Me? | Yonderboi
+ - Even Though | Morcheeba
+ - Everybody Loves A Loser | Morcheeba
+ - Mezcal Dream - Brecon Remix | Morcheeba, Brecon, Amanda Zamolo
 
 examples:
  - Massive Attack - Unfinished Sympathy (1991) | Orchestral strings over hip-hop vinyl breakbeats

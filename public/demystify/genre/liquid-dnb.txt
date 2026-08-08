@@ -1,5 +1,5 @@
 id: liquid-dnb
-rank: 01
+rank: 35
 name: LIQUID DRUM & BASS
 family: Electronic
 years: c. 1995 → present
@@ -40,6 +40,7 @@ prod:
  Mixed for the *drop-into-space* contrast: 16 bars of sparse pads and vocal, then full break plus sub. Because the sub carries the melody, the kick is usually short and midrange-heavy so it punches through without fighting the bass. Monstercat-era liquid is mastered loud and bright for headphone and stream playback rather than a soundsystem, which is why it reads as glossy next to a Good Looking record from 1996.
 
 tracks:
+ - The Flute Tune (Soulpride Remix) | Jaycut, Kolt Siewerts, Soulpride
  - Snake Eyes | Feint, CoMa
 
 examples:

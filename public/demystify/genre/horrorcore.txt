@@ -1,5 +1,5 @@
 id: horrorcore
-rank: 14
+rank: 23
 name: HORRORCORE & CHOPPER RAP
 family: Hip Hop
 years: 1991 → present
@@ -27,5 +27,22 @@ prod:
  Because the delivery is the product, the vocal recording is unusually careful: fast passages are punched in phrase by phrase and time-aligned so the stacks are sample-accurate. Beats are arranged to leave a rhythmic gap where the flow will land. Both artists master loud and mid-forward — this is music built for a van tour PA and a car system, not a streaming loudness target.
 
 tracks:
- - Suicide Letters | Tech N9ne
  - The Dispensation of Life and Death | Necro
+ - La Montagna Del Dio Cannibale (Interlude) | Jedi Mind Tricks, Yes Alexander
+ - Them (feat. Ill Bill) | Mr. Hyde, Necro, ILL BILL
+ - Switch Lanes | Rittz, Mike Posner
+ - Psychopath Killer | Slaughterhouse, Yelawolf, Eminem
+ - Brick Wall | Vinnie Paz, ILL BILL, Demoz
+ - Last Breath | Vinnie Paz, Chris Rivers, whispers
+ - Gat O' 9 Tales | Necro
+ - Cheesesteaks | Vinnie Paz
+ - Curse of the Pharaohs | Army Of The Pharaohs, Vinnie Paz, Apathy, Celph Titled, Esoteric, Reef The Lost Cauze
+ - Walk The Line | Big Scoob, Wrekonize
+ - Worldwide Choppers | Tech N9ne, Ceza, JL B.Hood, Uso, Yelawolf, Twista, Busta Rhymes, D-Loc
+ - Hollow Man | C-Mob
+ - Jake LaMotta | Vinnie Paz
+ - Gangsta Gangsta | C-Mob, T-Rock, Slikk
+ - Crazy Man - Straitjacket Remix | Block McCloud
+ - Deathless Light | Jedi Mind Tricks
+ - My Mind Playin Tricks On Me | Geto Boys
+ - Suicide Letters | Tech N9ne

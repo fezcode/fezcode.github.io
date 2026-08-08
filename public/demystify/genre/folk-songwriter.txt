@@ -1,0 +1,53 @@
+id: folk-songwriter
+rank: 42
+name: FOLK & SINGER-SONGWRITER
+family: Pop & Soul
+years: 1968 → present
+sub: A voice, an acoustic guitar, and the assumption that the words will carry it
+spec: 46,58,70,74,72,74,80,84,86,82,78,78,82,84,78,70,60,50,42,34
+synthType: triangle
+freqs: 267.37, 335.14, 420.08
+
+what:
+ The tradition runs from the late-1960s confessional writers through the 1990s alt-country revival to the current wave, where a laptop and a condenser microphone replaced the label advance. Fleet Foxes and Band of Horses brought close harmony back into indie; Lord Huron and The Innocence Mission work the reverberant, cinematic end; Mitski and Laura Marling write literary songs that happen to use folk instrumentation.
+
+artists:
+ *Fleet Foxes*, Band of Horses, *Lord Huron*, José González, *Mitski*, Laura Marling, Damien Rice, The Innocence Mission, Courtney Marie Andrews, Daughter, CLOVES, Alec Benjamin, Beta Radio, John Mayer at his acoustic end, and country writers including Billy Walker in the older line.
+
+trivia:
+ Fleet Foxes recorded much of their debut's vocal harmony live around a single microphone in a stairwell, chasing the sound of Appalachian shape-note singing rather than studio stacking. José González's "Heartbeats" — a cover of a Knife song — was licensed for a Sony television advert involving 250,000 bouncing rubber balls, and that thirty seconds funded most of his subsequent career.
+
+sonic:
+ Fingerpicked or strummed acoustic guitar recorded close enough to hear the fret noise, a voice mixed forward and dry, and very little else — a brushed kit, an upright bass, occasionally strings. The frequency profile is midrange-dominant with almost nothing below 80 Hz, which is why these records feel intimate rather than large.
+
+gear:
+ Martin and Gibson acoustics, nylon-string guitars for the José González end, large-diaphragm condensers and ribbon microphones, and increasingly a single good preamp into a laptop. Reverb is usually a real space — a church, a stairwell, a room — rather than a plugin, because the early reflections are the character.
+
+prod:
+ The performance is the record: takes are kept whole rather than comped, and breath, string squeak and chair noise are left in deliberately. Compression is light, and mastering keeps real dynamic range. This is one of the few remaining commercial genres where a producer's main job is to not interfere.
+
+tracks:
+ - Dante - 2012 Remaster | Tír na nÓg
+ - Mykonos | Fleet Foxes
+ - The Night We Met | Lord Huron
+ - Last Train Home | John Mayer
+ - Far Away | José González
+ - Kissing You Goodbye | The Pierces
+ - Lakes Of Canada | Karen Peris, Don Peris, The Innocence Mission
+ - Everybody Wants To Go To Heaven | Glenn Yarbrough & The Limeliters
+ - The Funeral | Band of Horses
+ - For | A.O. Gerber
+ - Reverie | Chris Isaak
+ - Funny How Time Slips Away - Single Version | Billy Walker
+ - I Got You | The White Buffalo
+ - First Love/Late Spring | Mitski
+ - Burlap String | Courtney Marie Andrews
+ - A Simple Life | melissa moshé
+ - Don't Forget About Me | CLOVES
+ - Green Bus | The Innocence Mission
+ - Match In The Rain | Alec Benjamin
+ - What He Wrote | Laura Marling
+ - Candles | Daughter
+ - Volcano | Damien Rice
+ - On the Frame | Beta Radio
+ - Send Me on My Way | Rusted Root

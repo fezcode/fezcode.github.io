@@ -1,0 +1,62 @@
+id: abstract-underground
+rank: 19
+name: ABSTRACT & EXPERIMENTAL HIP HOP
+family: Hip Hop
+years: 1993 → present
+sub: Rap that treats the beat as a puzzle and the persona as fiction
+spec: 76,86,82,64,56,60,66,72,76,74,72,74,78,82,80,72,64,54,46,38
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ A parallel tradition to the mainstream, running from Digable Planets' jazz surrealism through Deltron 3030's science fiction to MF DOOM's villain persona and, more recently, Danny Brown, Earl Sweatshirt and JPEGMAFIA. The common thread is refusal: of straightforward song structure, of autobiographical sincerity, and increasingly of the drum grid itself.
+
+artists:
+ Digable Planets, Deltron 3030, *MF DOOM* in his many aliases (Viktor Vaughn, King Geedorah, Madvillain with Madlib), Aesop Rock, Tyler The Creator, *Danny Brown*, Earl Sweatshirt, JPEGMAFIA, BROCKHAMPTON, Flying Lotus, SHAHMEN, The Doppelgangaz.
+
+trivia:
+ Daniel Dumile adopted the *MF DOOM* mask after his brother and DJ, Subroc, was killed in 1993 and his group was dropped — the persona let him return without being himself. He later sent impostors in the mask to perform at his own shows, which split audiences between outrage and delight at the consistency of the bit. Aesop Rock has the largest measured vocabulary in recorded rap by a considerable margin.
+
+sonic:
+ Loops that refuse to resolve, drums that arrive late or not at all, and rhyme schemes that ignore the bar. Vocals are frequently mixed quietly, buried in the beat, or run through telephone filters. Where mainstream rap leaves the midrange empty for the voice, this tradition fills it and makes the listener work.
+
+gear:
+ MPC and SP-303 for the classic era; Madlib famously assembled _Madvillainy_ largely on an SP-303 and a portable turntable in a Brazilian hotel room. The modern end runs on Ableton with heavy granular and spectral processing, plus deliberately degraded sampling — VHS, cassette and telephone codecs used as instruments.
+
+prod:
+ Tracks are short — ninety seconds is common — and end without a chorus or a fade. Producers leave sample artefacts, vinyl noise and even count-ins in the mix as texture. Mastering is often deliberately muddy or clipped, because polish would contradict the premise; the records are meant to sound found rather than made.
+
+tracks:
+ - E. Coli | The Alchemist, Earl Sweatshirt
+ - BALLSKIN | MF DOOM
+ - Faucet | Earl Sweatshirt
+ - I'll Be Right There | JPEGMAFIA
+ - NO HALO | BROCKHAMPTON
+ - Dog It | Digable Planets
+ - Bird's Eye View | Zion I
+ - Black Balloons Reprise | Flying Lotus, Denzel Curry
+ - Savage Nomad | Danny Brown
+ - I Wish I Knew Natalie Portman | K-OS, Saukrates, Nelly Furtado
+ - Born To Run | K-OS
+ - Man I Used To Be | K-OS
+ - Mastermind | Deltron 3030, Del The Funky Homosapien, Dan The Automator, Kid Koala
+ - Cycles To Gehenna | Aesop Rock
+ - 3 Tearz | Danny Brown, Run The Jewels
+ - Where I'm From | Digable Planets
+ - Headstone | Flatbush Zombies
+ - 2010 | Earl Sweatshirt
+ - More Soup (feat. MF Doom) | Moka Only
+ - Accordion | Madvillain, Madlib, MF DOOM
+ - LUMBERJACK | Tyler, The Creator
+ - Figaro | Madvillain, Madlib, MF DOOM
+ - BUZZCUT (feat. Danny Brown) | BROCKHAMPTON, Danny Brown
+ - ALASKA | BROCKHAMPTON
+ - Anti-Matter | King Geedorah, Mr Fantastik
+ - Can I Watch? (feat. Apani B as Nikki) | Viktor Vaughn, MF DOOM, Apani B
+ - Hollow | SHAHMEN
+ - Zero Dark Thirty | Aesop Rock
+ - I THINK | Tyler, The Creator
+ - Part of the Crow | Bless Of Shahmen, Arts The Beatdoctor
+ - Shell Dweller (Remastered) [feat. Unorthadox] | SHAHMEN, Unorthadox
+ - Potato Salad | Tyler, The Creator, A$AP Rocky
+ - E.W.W. | The Doppelgangaz

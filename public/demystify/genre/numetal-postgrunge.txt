@@ -1,5 +1,5 @@
 id: numetal-postgrunge
-rank: 05
+rank: 04
 name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
 family: Rock & Metal
 years: 1994 → 2008 (revived 2019 →)
@@ -40,11 +40,16 @@ prod:
  Nu metal was the first rock genre *arranged in a DAW rather than a rehearsal room*. Producers Ross Robinson (Korn, Slipknot) and Don Gilmore (Linkin Park) worked opposite ends: Robinson chased raw performance in one take, Gilmore edited relentlessly to a grid. The loudness war peaked here — Meteora is mastered around DR5 — which is why these records feel physically compressed next to the prog entries above.
 
 tracks:
- - Breaking the Habit | Linkin Park
- - Hemorrhage (In My Hands) | Fuel
  - You're Too Young | Vast
+ - Breaking the Habit | Linkin Park
  - Yalan | maNga
+ - Not Strong Enough | Apocalyptica, Brent Smith
+ - Numb | Linkin Park
+ - One Last Breath | Creed
+ - Nutshell | Alice In Chains
+ - Hemorrhage (In My Hands) | Fuel
  - Fırtınam | Hayko Cepkin
+ - War | Poets of the Fall
 
 examples:
  - Korn - Blind (1994) | Low-tuned 7-string guitar intro ("Are You Ready?!"), heavy slap bass

@@ -1,5 +1,5 @@
 id: post-britpop
-rank: 25
+rank: 12
 name: POST-BRITPOP
 family: Rock & Metal
 years: 1997 → 2008
@@ -27,4 +27,7 @@ prod:
  The defining choice is restraint: these records are mixed with far more space than their contemporaries, and the emotional lift comes from adding an instrument rather than raising a fader. Vocals are recorded close with the compressor doing very little, so breath and cracks survive. Masters from this scene are noticeably quieter than the American radio rock of the same years.
 
 tracks:
+ - Paradise | Coldplay
+ - Yellow | Coldplay
+ - Somewhere Only We Know | Keane
  - Closer | Travis

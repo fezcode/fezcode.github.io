@@ -1,5 +1,5 @@
 id: trap
-rank: 12
+rank: 18
 name: TRAP & SOUTHERN RAP
 family: Hip Hop
 years: 2003 → present
@@ -28,5 +28,56 @@ prod:
 
 tracks:
  - Wyclef Jean | Young Thug
+ - Headlines | Drake
+ - Am I Dreaming | Metro Boomin, A$AP Rocky, Roisee
+ - We Still Don't Trust You | Future, Metro Boomin, The Weeknd
+ - Back Up | Don Toliver, Wiz Khalifa
+ - SET IT | Denzel Curry, Maxo Kream
+ - BIG PERSONA (feat. Tyler, The Creator) | Maxo Kream, Tyler, The Creator
+ - Gook | Denzel Curry
+ - Soul Survivor | Jeezy, Akon
+ - Smoke | 50 Cent, Trey Songz
+ - Htk | VatoSmokiii.x
+ - Pound Cake / Paris Morton Music 2 | Drake, JAY-Z
+ - Porsche Cayenne | B.A.R.S. Murre, Riff Raff Sodmg
+ - I'm On One | DJ Khaled, Drake, Rick Ross, Lil Wayne
+ - Gospel | Rich Brian, Keith Ape, XXXTENTACION
+ - Plain Jane | A$AP Ferg
+ - MAZEL TOV | IDK, A$AP Ferg
  - Runnin | 21 Savage, Metro Boomin
+ - 1Train | A$AP Rocky, Kendrick Lamar, Joey Bada$$, Yelawolf, Danny Brown, Action Bronson, Big K.R.I.T.
+ - Never Recover (Lil Baby & Gunna, Drake) | Lil Baby, Gunna, Drake
+ - No New Friends - SFTB Remix | DJ Khaled, Drake, Rick Ross, Lil Wayne
+ - Dead And Gone | T.I., Justin Timberlake
+ - Disco Shit (feat. Freddie Gibbs) | 03 Greedo, Kenny Beats, Freddie Gibbs
+ - DON'T DIE | Tory Lanez
+ - Hard Piano | Pusha T, Rick Ross
+ - Aston Martin Music | Rick Ross, Drake, Chrisette Michele
+ - No Such Thing As Free | Yelawolf
+ - a lot | 21 Savage
+ - Ambition (feat. Meek Mill & Rick Ross) | Wale, Meek Mill, Rick Ross
+ - ONCE UPON A TIME (FREESTYLE) | IDK, Denzel Curry
+ - Walls Talking | Kevin Gates
+ - Forever (feat. Lil Wayne) | Lil Baby, Lil Wayne
+ - GANG GANG | JACKBOYS, Sheck Wes
+ - GATTI | JACKBOYS, Pop Smoke, Travis Scott
+ - Stay Schemin | Rick Ross, French Montana, Drake
+ - Orange Soda (feat. Kidd Upstairs) | X.O., Kidd Upstairs
+ - Crazy (feat. PnB Rock) | 50 Cent, PnB Rock
+ - CHopstix (feat. Travis Scott) | ScHoolboy Q, Travis Scott
+ - Whip Game | Kareem Kalokoh
+ - E36 | Le$
+ - Time Ticking (feat. Bobby Shmurda & Rowdy Rebel) | Juelz Santana, Dave East, Bobby Shmurda, Rowdy Rebel
+ - Pay You Back (feat. 21 Savage) | Meek Mill, 21 Savage
+ - ULT | Denzel Curry
+ - Man Of The Year | ScHoolboy Q
+ - Over Here | Yelawolf
+ - Forever and a Day | Freddie Gibbs
+ - Confetti | Big K.R.I.T.
+ - Praise The Lord (Da Shine) (feat. Skepta) | A$AP Rocky, Skepta
+ - One Of Us | Rick Ross, Nas
+ - Till It's Gone | Yelawolf
+ - Hurt - feat. Alfamega & Busta Rhymes Explicit | T.I.
+ - Guns and Roses (feat. P!nk) | T.I., P!nk
  - Go Get It | T.I.
+ - Top Back | T.I.

@@ -1,5 +1,5 @@
 id: turkish-trap
-rank: 10
+rank: 39
 name: TURKISH TRAP, DRILL & RAP
 family: Turkish
 years: 1995 → present
@@ -27,5 +27,12 @@ prod:
  Mixed for phone speakers and YouTube: the 808 is deliberately given harmonic content in the 100–200 Hz range so it survives playback on devices with no sub. Vocals are compressed flat and sit very loud. Release strategy is single-first, video-first — the genre operates on YouTube and Spotify release cadence rather than albums, which is why individual tracks travel much further than any album does.
 
 tracks:
+ - Makina | UZI
+ - Y.o.k. | Çilekeş
+ - TIMELESS | NAMEDARUMAAZ
+ - Ekinoks | Silahsız Kuvvet
+ - Geceler | Ezhel
+ - Çıktık Yine Yollara | Norm Ender
+ - İntro | Sagopa Kajmer
  - Sil Baştan | UZI
  - Yanlışlarla Karşılaştım | Wegh, Keskin

@@ -1,0 +1,47 @@
+id: turkish-rock
+rank: 36
+name: TURKISH ROCK & POP-ROCK
+family: Turkish
+years: 1990 → present
+sub: The mainstream rock generation that followed Anadolu rock — arena-scale, radio-shaped, still unmistakably Turkish
+spec: 66,76,82,76,68,70,76,80,82,78,74,76,80,80,74,66,56,48,40,34
+synthType: triangle
+freqs: 86.41, 267.37, 335.14
+
+what:
+ Where Anadolu rock fused folk and rock in the 1960s and 70s, the generation after 1990 wrote straightforward rock songs in Turkish for a mass audience. Private television and radio arrived in 1990 and created the market almost overnight. Şebnem Ferah came from the all-female metal band Volvox to become the country's biggest rock vocalist; Ogün Sanlısoy, Pinhani, Gripin and Kolpa built careers on the same circuit.
+
+artists:
+ *Şebnem Ferah*, *Ogün Sanlısoy*, Pinhani, Gripin, Kolpa, Yüksek Sadakat, Vega, İkilem, Aylin Aslım, Koray Candemir (of Kargo), and *Murat Kekilli*, whose "Bu Akşam Ölürüm" is one of the most-covered Turkish songs of the era.
+
+trivia:
+ Şebnem Ferah has written and produced most of her own catalogue and played the Harbiye open-air amphitheatre so consistently that the venue is effectively associated with her; she began in *Volvox*, an all-woman hard rock band formed in Yalova in the late 1980s when there was essentially no precedent for one in Turkey. Yüksek Sadakat represented Turkey at Eurovision in 2011.
+
+sonic:
+ Western rock instrumentation and song form, but melodies that keep the makam-derived contours of Turkish pop — minor with a lowered second, phrases that descend rather than resolve upward. Vocals are the focus and are recorded close and dry. Arrangements often add strings or a bağlama line in the bridge without changing the underlying rock structure.
+
+gear:
+ Standard rock rigs — Gibson and Fender guitars, Marshall and Mesa amps — with Turkish studios by the late 1990s running the same Pro Tools and SSL chains as Europe. Bağlama, ney and darbuka appear as colour instruments rather than as the rhythmic basis.
+
+prod:
+ Produced for radio and television first: choruses arrive early, the vocal sits far forward, and the low end is kept tight so the mix survives broadcast compression. Istanbul studios adopted loudness-war mastering aggressively in the 2000s, and records from that decade are noticeably flatter than either the 1990s originals or the current indie wing.
+
+tracks:
+ - Bu Şehir | İkilem
+ - Hayat Tesadüflerle Gülümser | Kayıp Efsanenin Tuhaf İzleri
+ - Hadi Beni Güldür | Ogün Sanlısoy
+ - Ben Nası Büyük Adam Olucam | Pinhani
+ - Böyle Ayrılık Olmaz | Kolpa
+ - Beni Boş Yere Yorma | Gripin
+ - Kafile | Yüksek Sadakat
+ - Senin Gibi | Aylin Aslım
+ - Unutamam Seni | Murat Kekilli
+ - İsim - Şehir | Vega
+ - Bana Bir Sor | Ogün Sanlısoy
+ - Ben de Özledim | Ogün Sanlısoy
+ - Saydım | Ogün Sanlısoy
+ - Bugün | Şebnem Ferah
+ - Kaybettik Severken | Ogün Sanlısoy
+ - Gel Öpem Seni | Murat Kekilli
+ - Avara | Murat Kekilli
+ - İçini Dök | Koray Candemir

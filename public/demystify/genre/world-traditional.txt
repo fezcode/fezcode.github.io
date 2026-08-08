@@ -1,0 +1,35 @@
+id: world-traditional
+rank: 52
+name: TRADITIONAL & WORLD MUSIC
+family: Score & Ambient
+years: centuries → present
+sub: Living regional traditions, recorded rather than composed
+spec: 48,58,68,74,78,80,82,78,74,76,80,82,80,74,66,58,50,42,36,30
+synthType: sine
+freqs: 170.18, 213.31, 660
+
+what:
+ A catch-all only in the archive's sense: these are distinct, unrelated traditions that share the property of predating the recording industry and continuing regardless of it. West African griot music, Bulgarian polyphonic choir, Persian and Central Asian ensemble music, and South Indian film song each carry centuries of transmission, and each has been reshaped by the microphone in different ways.
+
+artists:
+ *Foday Musa Suso*, a Gambian griot and kora master who has recorded with Philip Glass and Herbie Hancock; *Salif Keita*, the Malian singer descended from the founder of the Mali Empire; the Bulgarian State Radio and Television Female Vocal Choir tradition represented by *Kaval Sviri*; Iran's Otagh Band; and *Anirudh Ravichander* in Tamil film music.
+
+trivia:
+ Salif Keita was born an albino into a family of Malian nobility descended from *Sundiata Keita*, which made his becoming a musician a double transgression — caste forbade nobles from performing, a role reserved for griots — and he was disowned for it. The Bulgarian choir tradition's astringent, close-interval harmony is not folk practice preserved but a 20th-century arrangement style built on folk material, largely by Filip Kutev from the 1950s.
+
+sonic:
+ Modal rather than harmonic, with tuning systems that Western notation cannot represent — the kora's heptatonic tunings, Persian dastgah intervals, and the deliberate close seconds of Bulgarian choir. Ornamentation carries the identity, and rhythm frequently sits in additive metres that read as irregular only from outside.
+
+gear:
+ Kora, ngoni and balafon in West Africa; tar, setar and daf in Iran; kaval and gaida in Bulgaria; and, in Tamil film music, a full orchestra alongside programmed production. Most of these instruments are built by hand and no two are identical, which is itself a recording problem.
+
+prod:
+ The engineering brief is to capture without flattening — heavy compression destroys the ornament and stereo processing destroys the ensemble's natural placement. Field and studio recordings alike favour a simple spaced pair and minimal correction. Where a Western rhythm section is added, as in modern Malian records, it is usually kept low and never doubles the melodic line.
+
+tracks:
+ - Kaval Sviri | Petar Liondev, Tanya Parvanova
+ - Ondor Bondor | Otagh Band
+ - Sunjata (Sauta Tuning) | Foday Musa Suso
+ - Time Waits for No-One | Native Deen, Junaid Jamshed
+ - Why This Kolaveri Di? - The Soup of Love | Anirudh Ravichander, Dhanush
+ - Tomorrow (Sadio) | Salif Keita

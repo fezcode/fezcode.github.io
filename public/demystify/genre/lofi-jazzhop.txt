@@ -1,0 +1,58 @@
+id: lofi-jazzhop
+rank: 20
+name: LO-FI & JAZZ-HOP
+family: Hip Hop
+years: 1997 → present
+sub: Instrumental hip hop built for concentration — the beat as furniture, in the best sense
+spec: 72,80,76,60,54,60,68,76,80,78,74,74,78,80,76,68,58,50,42,34
+synthType: square
+freqs: 68.94, 335.14, 420.08
+
+what:
+ Nujabes in Tokyo and J Dilla in Detroit independently arrived at the same idea around 2000: hip-hop drums, jazz harmony, no rapper. Nujabes' work on the _Samurai Champloo_ soundtrack gave it an audience outside music, and by the mid-2010s the style had become the default sound of study playlists — an odd fate for music this carefully made.
+
+artists:
+ *Nujabes*, J Dilla, Blockhead, Clams Casino, Oddisee, Emancipator; the modern wing of Tom Misch, Bastien Keb, Kno, Lushlife, Smoke Trees, Fdel and a very large field of self-released producers.
+
+trivia:
+ Nujabes — Jun Seba, spelled backwards — died in a Tokyo expressway accident in 2010 at 36, and gave almost no interviews in his lifetime; most listeners discovered him through anime credits rather than any music press. J Dilla delivered *Donuts* from a hospital bed on an SP-303 and a small record player, and it was released three days before his death.
+
+sonic:
+ Drums swung hard and left unquantised, so the snare lands audibly late. Jazz and soul samples are chopped and left with their original room and tape noise. There is no vocal, or only a fragment of one used as texture. The top end is deliberately rolled off, giving the whole style its warm, slightly closed character.
+
+gear:
+ Akai MPC — the 3000 for Dilla, the 2000XL for Nujabes — plus vinyl as the sole sound source for the classic era. Modern producers add Rhodes, upright bass and live horns, and reintroduce tape hiss, vinyl crackle and wow deliberately, sometimes by literally pressing test acetates and resampling them.
+
+prod:
+ The defining choice is to leave the timing wrong. Dilla's technique was to program the hi-hats and kick on slightly different timing grids so the two never align, producing a lurch no quantiser will reproduce. Mastering is deliberately quiet and dark; loudness or brightness both destroy the effect, and the genre is one of the few where a low master is a mark of competence.
+
+tracks:
+ - I'm Sick of Missing You | Niah Steiner, Swim. Søul
+ - It Runs Through Me | Tom Misch, De La Soul
+ - Tidal Wave | Tom Misch, Yussef Dayes
+ - Classique | Adieu Aru
+ - Caroline | Pause
+ - Rhythm of the Rain | Kno, Tom Hardison, Tunji
+ - Thelema | Ødfream
+ - I Wanna Kno | 2 Mello
+ - The Hardest | Gasoline
+ - Olov's Party | Yes Alexander
+ - Gorilla | Clams Casino
+ - 緣分 | Felax
+ - Fahkeet | Light Club
+ - Miami | Oddisee
+ - In Soft Focus feat. Ariel Pink and Elzhi | Lushlife
+ - Don't Sleep | Matlock
+ - Rocksteady | Fdel
+ - With You | Arts The Beatdoctor
+ - Fit Rare | Bastien Keb, Cappo
+ - Special | Strange Fruit Project, Thesis
+ - Insomniac Olympics | Blockhead
+ - This Place Is Built | Cannonhead
+ - Treetop | Clams Casino
+ - Feather (feat. Cise Starr & Akin from CYNE) | Nujabes, Cise Starr & Akin from CYNE
+ - Cool Vibes & Shit | Na$ty
+ - Vertigo | Smoke Trees
+ - Too Heavy | Freddie Future
+ - Healing | Clams Casino
+ - Feather | Ostrich Head

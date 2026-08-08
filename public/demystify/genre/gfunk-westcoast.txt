@@ -1,0 +1,51 @@
+id: gfunk-westcoast
+rank: 22
+name: G-FUNK & WEST COAST RAP
+family: Hip Hop
+years: 1992 → present
+sub: Parliament basslines, a whining synth lead, and the Californian version of menace
+spec: 92,90,74,54,46,52,60,68,74,72,68,70,76,82,80,70,60,50,42,34
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ Dr. Dre's *The Chronic* (1992) rebuilt West Coast rap around slow tempos, live-played Moog basslines and a high portamento synth lead, all lifted conceptually from Parliament-Funkadelic. The style dominated commercially for five years, splintered into Bay Area mobb music and hyphy, and remains the default sound of Californian rap thirty years later.
+
+artists:
+ Dr. Dre, Snoop Dogg, Warren G, *Tha Dogg Pound*, Above The Law; the Bay Area lineage of *Too $hort*, *Luniz*, Rappin' 4-Tay, 3X Krazy, MC Breed and San Quinn; *2Pac* across both; and the modern revival through YG, Mozzy, Larry June and the LNDN DRGS/Jay Worthy axis.
+
+trivia:
+ Above The Law have a reasonable claim to inventing G-funk before _The Chronic_ — their 1990 *Livin' Like Hustlers*, produced with Dre, has most of the elements already — and Cold 187um has said so publicly for three decades. The Luniz' "I Got 5 On It" is built on a sample of Club Nouveau's "Why You Treat Me So Bad," which is itself a reworking of a Timex Social Club song by the same people.
+
+sonic:
+ Tempos at 90–100 BPM, a synthesised bassline with heavy portamento playing an actual melodic figure, and a thin, nasal lead synth on top. Live bass, guitar and female backing vocals are common — these are band records disguised as rap records. The low end is enormous and tuned, because the music was mixed for car systems first.
+
+gear:
+ Moog and Minimoog for the bass, Roland Juno and the ubiquitous whining lead patch, Akai MPC60 and SP-1200 for drums, plus session players on bass and guitar. The Bay Area records were often cut far cheaper on Ensoniq workstations, which gives them a distinctly harder, thinner character than the Los Angeles productions.
+
+prod:
+ Mixed explicitly for automotive playback: the bass is tuned to the resonance of a car cabin, the snare is bright enough to cut through road noise, and the vocal is compressed flat. Dre's method was to re-play samples with live musicians rather than clear them, which is why _The Chronic_ sounds like a band and cost less in publishing than it should have.
+
+tracks:
+ - Hittin Corners | K-Dee
+ - Playaz Club | Rappin' 4-Tay
+ - Just Another Day | Too $hort
+ - Leave It Up To Me | Jay Worthy, Larry June, LNDN DRGS
+ - Ayy (feat. YG & Logic) | Berner, Mozzy, YG, Logic
+ - Soon As I Get Home | 2Pac, Yaki Kadafi
+ - Cold Blooded Highway | Ron Santee
+ - Breathin | 2Pac, Outlawz
+ - Keep It On The Real | 3X Krazy
+ - I Got 5 On It | Luniz, Michael Marshall
+ - Susan | LNDN DRGS, Jay Worthy
+ - Fuck Yo Mouth | Mitchy Slick, Lil Mitch
+ - Paid | San Quinn, Los Rakas, Stylolive
+ - At The Speed Of Life | Xzibit
+ - Don't Come To LA | YG, Sad Boy, AD, Bricc Baby
+ - Gangsta Gangsta | 18 Karat
+ - Gettin High as Fuck | Suge, The Bali Club, Otis
+ - Two Presidents (feat. Kendrick Lamar) | YG Hootie, Kendrick Lamar
+ - Gotta Get Mine | MC Breed
+ - Black Superman | Above The Law
+ - Cali Iz Active - Dirty | Tha Dogg Pound
+ - The Testimony | Mack 10, Young Soprano, Pastor Steven Hamilton

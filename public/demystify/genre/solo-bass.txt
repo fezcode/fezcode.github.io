@@ -1,5 +1,5 @@
 id: solo-bass
-rank: 26
+rank: 56
 name: SOLO INSTRUMENTAL BASS
 family: Score & Ambient
 years: 1976 → present

@@ -1,5 +1,5 @@
 id: game-score
-rank: 20
+rank: 50
 name: VIDEO GAME SCORE
 family: Score & Ambient
 years: 1978 → present
@@ -27,7 +27,53 @@ prod:
  The composer delivers not a finished piece but a *system*: stems, transition markers, loop points and intensity tiers, which the audio programmer wires to game state. The soundtrack album release is a separate edit — the linear "track" you hear on Spotify is assembled afterward from material that never plays that way in-game. That's why game OSTs often feel like they arrive somewhere and then stop.
 
 tracks:
- - Children of the Omnissiah | Guillaume David
- - MainMenu (Day) | Jesper Kyd
  - Awakening | Bastian Kieslinger
+ - Children of the Omnissiah | Guillaume David
+ - Room Of Angel | Akira Yamaoka
  - Peace of Akatosh (From 'Oblivion') | Dreyma
+ - Catalyst | Solar Fields
+ - Hello, Contentment | Interleave, Antonio Gradanti, Mason Lieberman
+ - Prison Air 2 | LudoWic
+ - Welcome To Los Santos | Oh No
+ - Full Confession | LudoWic
+ - MAX: PANAMA | HEALTH
+ - Elwynn Forest | Jason Hayes
+ - On the Edge of Light | Pawel Blaszczak
+ - Sabotage | Remi Gallego
+ - Forged in Fire | Alex Bhore, Eternal Time & Space
+ - Surviving Exile | Darren Korb
+ - Echoes of the Eye | Andrew Prahlow
+ - Battlefield 3 Main Theme | Johan Skugge, Jukka Rintamäki
+ - The Grip | Tangerine Dream, Woody Jackson, The Alchemist, Oh No, DJ Shadow
+ - Master Plan | Starbreeze Entertainment, Simon Viklund
+ - The Gathering Storm | Jeremy Soule
+ - Steel on Steel | Jeremy Soule
+ - Theme of Q | Capcom Sound Team
+ - Horizon | Pawel Blaszczak
+ - Simple And Clean | Hikaru Utada
+ - Second Reality (Unreal 2) | Purple Motion
+ - Ada's Theme | Capcom Sound Team
+ - Strife | Pawel Blaszczak
+ - Paused Time | Pawel Blaszczak
+ - The Saboteur Theme | EA Games Soundtrack
+ - Chapel | Joel Corelitz
+ - Corridors of Time | Malcolm Robinson
+ - MainMenu (Day) | Jesper Kyd
+ - Kingdom of Wessex | Jesper Kyd
+ - TEARS | HEALTH
+ - Malware Injection (Hacknet Official Soundtrack) | Remi Gallego
+ - Divinity - Original Sin 2 - Main Theme | Borislav Slavov
+ - Warning Call | CHVRCHES
+ - Fear not this Night | Jeremy Soule, Lzn02, Sharm
+ - UNATCO | Marc Armitage
+ - Harvest Dawn | Jeremy Soule
+ - Pound For Pound | Konrad OldMoney, EA Games Soundtrack
+ - 117 | Kazuma Jinnouchi
+ - We Were Set Up | Tangerine Dream, Woody Jackson, The Alchemist, Oh No, DJ Shadow
+ - I Am Rock | rock
+ - Save Room (Model Screen) | Masami Ueda
+ - Awaken | League of Legends, Valerie Broussard, Ray Chen
+ - Faster Than Light (From Stellaris) - Instrumental | Andreas Waldetoft
+ - Passage | Pawel Blaszczak
+ - Return | Pawel Blaszczak
+ - Estancia | Bill Elm & Woody Jackson
