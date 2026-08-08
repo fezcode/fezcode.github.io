@@ -1,5 +1,5 @@
 id: folk-songwriter
-rank: 41
+rank: 42
 name: FOLK & SINGER-SONGWRITER
 family: Pop & Soul
 years: 1968 → present

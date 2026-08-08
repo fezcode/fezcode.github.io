@@ -1,5 +1,5 @@
 id: modern-pop
-rank: 42
+rank: 43
 name: MODERN POP
 family: Pop & Soul
 years: 2010 → present
@@ -45,3 +45,5 @@ tracks:
  - Late Night Feelings (feat. Lykke Li) | Mark Ronson, Lykke Li
  - Kiss from a Rose | Seal
  - Drive | Oh Wonder
+ - Counting Stars | OneRepublic
+ - Mercy | OneRepublic

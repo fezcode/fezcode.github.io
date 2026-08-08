@@ -1,5 +1,5 @@
 id: boom-bap
-rank: 16
+rank: 17
 name: BOOM BAP & UNDERGROUND HIP HOP
 family: Hip Hop
 years: 1988 → present

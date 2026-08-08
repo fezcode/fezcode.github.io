@@ -1,5 +1,5 @@
 id: turkish-pop
-rank: 37
+rank: 38
 name: TURKISH POP
 family: Turkish
 years: 1985 → present
@@ -43,3 +43,4 @@ tracks:
  - Adımı Kalbine Yaz | Tarkan
  - İsyankar | Mustafa Sandal
  - Uzak | Tarkan
+ - Git | Irem

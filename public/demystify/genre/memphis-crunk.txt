@@ -1,5 +1,5 @@
 id: memphis-crunk
-rank: 26
+rank: 27
 name: MEMPHIS RAP & CRUNK
 family: Hip Hop
 years: 1991 → present

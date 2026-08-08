@@ -1,5 +1,5 @@
 id: trip-hop
-rank: 31
+rank: 32
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present

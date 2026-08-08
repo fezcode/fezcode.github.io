@@ -1,5 +1,5 @@
 id: synthwave
-rank: 29
+rank: 30
 name: SYNTHWAVE & OUTRUN
 family: Electronic
 years: 2005 → present
@@ -58,3 +58,4 @@ tracks:
  - East Of Oslo | Warlocks
  - A.H.B. | S U R V I V E
  - Gillette | 199X, DrDisrespect
+ - Nightcall | Kavinsky

@@ -44,10 +44,36 @@ tracks:
  - Little One | Highly Suspect
  - Zero | Electric Guest
  - Come with Me Now | KONGOS
+ - Monster | The Automatic
+
+===
+id: numetal-postgrunge
+rank: 02
+name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
+family: Rock & Metal
+years: 1994 → 2008 (revived 2019 →)
+sub: Down-tuned riffs, sampled/programmed layers, and lyrics about interior damage
+spec: 88,92,86,72,62,66,72,78,82,78,72,70,74,78,74,66,58,50,42,36
+synthType: square
+freqs: 55, 68.94, 86.41
+audio: /demystify/genre/numetal.mp3
+tracks:
+ - You're Too Young | Vast
+ - Breaking the Habit | Linkin Park
+ - Yalan | maNga
+ - Not Strong Enough | Apocalyptica, Brent Smith
+ - Numb | Linkin Park
+ - One Last Breath | Creed
+ - Hemorrhage (In My Hands) | Fuel
+ - Fırtınam | Hayko Cepkin
+ - War | Poets of the Fall
+ - I Don't Care | Apocalyptica
+ - Yad Eller | maNga
+ - Castle of Glass | Linkin Park
 
 ===
 id: shoegaze
-rank: 02
+rank: 03
 name: SHOEGAZE & DREAM POP
 family: Rock & Metal
 years: 1988 → present
@@ -71,7 +97,7 @@ tracks:
 
 ===
 id: new-wave-80s
-rank: 03
+rank: 04
 name: NEW WAVE & COLLEGE ROCK
 family: Rock & Metal
 years: 1978 → 1992
@@ -90,29 +116,7 @@ tracks:
  - In The Heat Of The Night | Sandra
  - Time After Time | Cyndi Lauper
  - Fever Fever | Melody Club
-
-===
-id: numetal-postgrunge
-rank: 04
-name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
-family: Rock & Metal
-years: 1994 → 2008 (revived 2019 →)
-sub: Down-tuned riffs, sampled/programmed layers, and lyrics about interior damage
-spec: 88,92,86,72,62,66,72,78,82,78,72,70,74,78,74,66,58,50,42,36
-synthType: square
-freqs: 55, 68.94, 86.41
-audio: /demystify/genre/numetal.mp3
-tracks:
- - You're Too Young | Vast
- - Breaking the Habit | Linkin Park
- - Yalan | maNga
- - Not Strong Enough | Apocalyptica, Brent Smith
- - Numb | Linkin Park
- - One Last Breath | Creed
- - Nutshell | Alice In Chains
- - Hemorrhage (In My Hands) | Fuel
- - Fırtınam | Hayko Cepkin
- - War | Poets of the Fall
+ - Spent the Day in Bed | Morrissey
 
 ===
 id: classic-rock-aor
@@ -134,6 +138,7 @@ tracks:
  - Let 'Em In - 2014 Remaster | Wings
  - While My Guitar Gently Weeps - Remastered 2009 | The Beatles
  - Paint It Black | The Rolling Stones
+ - Africa | Toto
 
 ===
 id: extreme-metal
@@ -194,8 +199,27 @@ tracks:
  - Delirium | Lacuna Coil
 
 ===
-id: folk-metal
+id: prog-rock
 rank: 09
+name: PROGRESSIVE ROCK
+family: Rock & Metal
+years: 1967 → present
+sub: Long-form rock that borrowed structure from classical music and studio craft from Pink Floyd
+spec: 62,70,74,66,58,60,64,68,70,72,68,64,66,70,74,72,66,58,50,42
+synthType: square
+freqs: 68.94, 86.41, 420.08
+tracks:
+ - Trains - 2017 Remaster | Porcupine Tree
+ - Blackest Eyes - 2017 Remaster | Porcupine Tree
+ - The Sound Of Muzak - 2017 Remaster | Porcupine Tree
+ - Welcome To The Machine - 2011 Remaster | Pink Floyd
+ - Eye In The Sky | The Alan Parsons Project
+ - Old and Wise | The Alan Parsons Project
+ - Time | Pink Floyd
+
+===
+id: folk-metal
+rank: 10
 name: FOLK, PAGAN & MEDIEVAL METAL
 family: Rock & Metal
 years: 1993 → present
@@ -212,24 +236,6 @@ tracks:
  - Metnotstand im Märchenland | Feuerschwanz
 
 ===
-id: prog-rock
-rank: 10
-name: PROGRESSIVE ROCK
-family: Rock & Metal
-years: 1967 → present
-sub: Long-form rock that borrowed structure from classical music and studio craft from Pink Floyd
-spec: 62,70,74,66,58,60,64,68,70,72,68,64,66,70,74,72,66,58,50,42
-synthType: square
-freqs: 68.94, 86.41, 420.08
-tracks:
- - Trains - 2017 Remaster | Porcupine Tree
- - Blackest Eyes - 2017 Remaster | Porcupine Tree
- - The Sound Of Muzak - 2017 Remaster | Porcupine Tree
- - Welcome To The Machine - 2011 Remaster | Pink Floyd
- - Eye In The Sky | The Alan Parsons Project
- - Old and Wise | The Alan Parsons Project
-
-===
 id: metalcore-punk
 rank: 11
 name: MELODIC HARDCORE & PUNK
@@ -244,6 +250,7 @@ tracks:
  - Behind Closed Doors | Rise Against
  - Ouija | Harley Poe
  - Bridges Burned | Tattoo the Scars
+ - 21 Guns | Green Day
 
 ===
 id: post-britpop
@@ -260,6 +267,7 @@ tracks:
  - Yellow | Coldplay
  - Somewhere Only We Know | Keane
  - Closer | Travis
+ - Clocks | Coldplay
 
 ===
 id: heavy-power-metal
@@ -277,8 +285,22 @@ tracks:
  - Sur | Pentagram
 
 ===
-id: post-rock
+id: grunge
 rank: 14
+name: GRUNGE
+family: Rock & Metal
+years: 1988 → 1996
+sub: Seattle's loud-quiet-loud answer to hair metal — played through a Big Muff, sung like an apology
+spec: 72,84,88,80,70,72,78,82,84,80,74,72,74,76,72,62,54,46,38,32
+synthType: square
+freqs: 68.94, 86.41, 335.14
+tracks:
+ - Nutshell | Alice In Chains
+ - Alive | Pearl Jam
+
+===
+id: post-rock
+rank: 15
 name: POST-ROCK
 family: Rock & Metal
 years: 1994 → present
@@ -292,7 +314,7 @@ tracks:
 
 ===
 id: prog-sludge-metal
-rank: 15
+rank: 16
 name: PROGRESSIVE & SLUDGE METAL
 family: Rock & Metal
 years: 1991 → present
@@ -305,7 +327,7 @@ tracks:
 
 ===
 id: boom-bap
-rank: 16
+rank: 17
 name: BOOM BAP & UNDERGROUND HIP HOP
 family: Hip Hop
 years: 1988 → present
@@ -430,7 +452,7 @@ tracks:
 
 ===
 id: confessional-rap
-rank: 17
+rank: 18
 name: CONFESSIONAL & CONSCIOUS MAINSTREAM RAP
 family: Hip Hop
 years: 2010 → present
@@ -501,10 +523,11 @@ tracks:
  - King's Dead (with Kendrick Lamar, Future & James Blake) | Jay Rock, Kendrick Lamar, Future, James Blake
  - Ni**as In Paris | JAY-Z, Kanye West
  - A Tale of 2 Citiez | J. Cole
+ - Homecoming | Kanye West, Chris Martin
 
 ===
 id: trap
-rank: 18
+rank: 19
 name: TRAP & SOUTHERN RAP
 family: Hip Hop
 years: 2003 → present
@@ -567,10 +590,11 @@ tracks:
  - Guns and Roses (feat. P!nk) | T.I., P!nk
  - Go Get It | T.I.
  - Top Back | T.I.
+ - Moonlight | Juice WRLD | none
 
 ===
 id: abstract-underground
-rank: 19
+rank: 20
 name: ABSTRACT & EXPERIMENTAL HIP HOP
 family: Hip Hop
 years: 1993 → present
@@ -615,7 +639,7 @@ tracks:
 
 ===
 id: lofi-jazzhop
-rank: 20
+rank: 21
 name: LO-FI & JAZZ-HOP
 family: Hip Hop
 years: 1997 → present
@@ -656,7 +680,7 @@ tracks:
 
 ===
 id: golden-age-rap
-rank: 21
+rank: 22
 name: GOLDEN AGE RAP
 family: Hip Hop
 years: 1986 → 1996
@@ -694,7 +718,7 @@ tracks:
 
 ===
 id: gfunk-westcoast
-rank: 22
+rank: 23
 name: G-FUNK & WEST COAST RAP
 family: Hip Hop
 years: 1992 → present
@@ -725,10 +749,11 @@ tracks:
  - Black Superman | Above The Law
  - Cali Iz Active - Dirty | Tha Dogg Pound
  - The Testimony | Mack 10, Young Soprano, Pastor Steven Hamilton
+ - Riders On the Storm | Snoop Dogg, The Doors
 
 ===
 id: horrorcore
-rank: 23
+rank: 24
 name: HORRORCORE & CHOPPER RAP
 family: Hip Hop
 years: 1991 → present
@@ -759,7 +784,7 @@ tracks:
 
 ===
 id: world-rap
-rank: 24
+rank: 25
 name: NON-ANGLOPHONE RAP
 family: Hip Hop
 years: 1990 → present
@@ -781,7 +806,7 @@ tracks:
 
 ===
 id: drill-modern
-rank: 25
+rank: 26
 name: DRILL & GRIME
 family: Hip Hop
 years: 2011 → present
@@ -800,7 +825,7 @@ tracks:
 
 ===
 id: memphis-crunk
-rank: 26
+rank: 27
 name: MEMPHIS RAP & CRUNK
 family: Hip Hop
 years: 1991 → present
@@ -819,7 +844,7 @@ tracks:
 
 ===
 id: gorillaz-alt
-rank: 27
+rank: 28
 name: GENRE-FLUID ALTERNATIVE HIP HOP
 family: Hip Hop
 years: 1998 → present
@@ -834,7 +859,7 @@ tracks:
 
 ===
 id: idm-ambient
-rank: 28
+rank: 29
 name: IDM & AMBIENT TECHNO
 family: Electronic
 years: 1992 → present
@@ -878,7 +903,7 @@ tracks:
 
 ===
 id: synthwave
-rank: 29
+rank: 30
 name: SYNTHWAVE & OUTRUN
 family: Electronic
 years: 2005 → present
@@ -907,10 +932,11 @@ tracks:
  - East Of Oslo | Warlocks
  - A.H.B. | S U R V I V E
  - Gillette | 199X, DrDisrespect
+ - Nightcall | Kavinsky
 
 ===
 id: french-house
-rank: 30
+rank: 31
 name: FRENCH HOUSE & NU-DISCO
 family: Electronic
 years: 1995 → present
@@ -938,7 +964,7 @@ tracks:
 
 ===
 id: trip-hop
-rank: 31
+rank: 32
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present
@@ -967,7 +993,7 @@ tracks:
 
 ===
 id: big-beat
-rank: 32
+rank: 33
 name: BIG BEAT & TURNTABLISM
 family: Electronic
 years: 1993 → present
@@ -988,7 +1014,7 @@ tracks:
 
 ===
 id: trance-prog-house
-rank: 33
+rank: 34
 name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
 family: Electronic
 years: 1990 → present
@@ -1005,7 +1031,7 @@ tracks:
 
 ===
 id: dark-techno
-rank: 34
+rank: 35
 name: DARK TECHNO & FRENCH ELECTRO
 family: Electronic
 years: 2008 → present
@@ -1021,7 +1047,7 @@ tracks:
 
 ===
 id: liquid-dnb
-rank: 35
+rank: 36
 name: LIQUID DRUM & BASS
 family: Electronic
 years: c. 1995 → present
@@ -1033,10 +1059,11 @@ audio: /demystify/genre/drumbass.mp3
 tracks:
  - The Flute Tune (Soulpride Remix) | Jaycut, Kolt Siewerts, Soulpride
  - Snake Eyes | Feint, CoMa
+ - Sun King | State of Mind
 
 ===
 id: turkish-rock
-rank: 36
+rank: 37
 name: TURKISH ROCK & POP-ROCK
 family: Turkish
 years: 1990 → present
@@ -1064,10 +1091,15 @@ tracks:
  - Gel Öpem Seni | Murat Kekilli
  - Avara | Murat Kekilli
  - İçini Dök | Koray Candemir
+ - Beni Yakan Aşkın | Özlem Tekin
+ - Sen Anla | Özlem Tekin
+ - Delinin Yıldızı | Vega
+ - Beş | gripin
+ - Sakinleştim | Pinhani
 
 ===
 id: turkish-pop
-rank: 37
+rank: 38
 name: TURKISH POP
 family: Turkish
 years: 1985 → present
@@ -1092,10 +1124,11 @@ tracks:
  - Adımı Kalbine Yaz | Tarkan
  - İsyankar | Mustafa Sandal
  - Uzak | Tarkan
+ - Git | Irem
 
 ===
 id: anadolu-rock
-rank: 38
+rank: 39
 name: ANADOLU ROCK & TURKISH ALTERNATIVE
 family: Turkish
 years: 1965 → present
@@ -1117,10 +1150,12 @@ tracks:
  - Ele Güne Karşı | MFÖ
  - Sandal | Yüzyüzeyken Konuşuruz
  - Ada | Kuytu
+ - Kapısı Kapalı | Adamlar
+ - Söyle | Seksendört
 
 ===
 id: turku
-rank: 39
+rank: 40
 name: TÜRKÜ — TURKISH FOLK
 family: Turkish
 years: centuries → present
@@ -1137,7 +1172,7 @@ tracks:
 
 ===
 id: ozgun-protest
-rank: 40
+rank: 41
 name: ÖZGÜN MÜZIK — PROTEST SONG
 family: Turkish
 years: 1970s → 1990s
@@ -1150,7 +1185,7 @@ tracks:
 
 ===
 id: folk-songwriter
-rank: 41
+rank: 42
 name: FOLK & SINGER-SONGWRITER
 family: Pop & Soul
 years: 1968 → present
@@ -1186,7 +1221,7 @@ tracks:
 
 ===
 id: modern-pop
-rank: 42
+rank: 43
 name: MODERN POP
 family: Pop & Soul
 years: 2010 → present
@@ -1213,10 +1248,12 @@ tracks:
  - Late Night Feelings (feat. Lykke Li) | Mark Ronson, Lykke Li
  - Kiss from a Rose | Seal
  - Drive | Oh Wonder
+ - Counting Stars | OneRepublic
+ - Mercy | OneRepublic
 
 ===
 id: rnb-soul
-rank: 43
+rank: 44
 name: CONTEMPORARY R&B AND SOUL
 family: Pop & Soul
 years: 2000 → present
@@ -1241,7 +1278,7 @@ tracks:
 
 ===
 id: art-pop
-rank: 44
+rank: 45
 name: ART POP & THE STUDIO AUTEUR
 family: Pop & Soul
 years: 1997 → present
@@ -1259,7 +1296,7 @@ tracks:
 
 ===
 id: classic-soul-funk
-rank: 45
+rank: 46
 name: CLASSIC SOUL, FUNK & BLUES
 family: Pop & Soul
 years: 1965 → 1990
@@ -1276,8 +1313,25 @@ tracks:
  - Mean Ol' Man | The Heavy
 
 ===
+id: 2000s-pop
+rank: 47
+name: 2000S POP-PUNK & RADIO R&B-POP
+family: Pop & Soul
+years: 1999 → 2010
+sub: The last era of monoculture radio pop, built by a handful of songwriting teams
+spec: 82,86,80,64,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
+synthType: triangle
+freqs: 55, 68.94, 86.41
+tracks:
+ - Complicated | Avril Lavigne
+ - Crush | Jennifer Paige
+ - Say It Right | Nelly Furtado
+ - Temperature | Sean Paul
+ - Apologize | Timbaland, OneRepublic
+
+===
 id: funk-neosoul
-rank: 46
+rank: 48
 name: FUNK & NEO-SOUL
 family: Pop & Soul
 years: 1995 → present
@@ -1293,23 +1347,8 @@ tracks:
  - Unshaken | D'Angelo
 
 ===
-id: 2000s-pop
-rank: 47
-name: 2000S POP-PUNK & RADIO R&B-POP
-family: Pop & Soul
-years: 1999 → 2010
-sub: The last era of monoculture radio pop, built by a handful of songwriting teams
-spec: 82,86,80,64,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
-synthType: triangle
-freqs: 55, 68.94, 86.41
-tracks:
- - Complicated | Avril Lavigne
- - Crush | Jennifer Paige
- - Say It Right | Nelly Furtado
-
-===
 id: power-pop-80s
-rank: 48
+rank: 49
 name: 80S POWER POP & NEW WAVE
 family: Pop & Soul
 years: 1978 → 1989
@@ -1322,7 +1361,7 @@ tracks:
 
 ===
 id: game-score
-rank: 49
+rank: 50
 name: VIDEO GAME SCORE
 family: Score & Ambient
 years: 1978 → present
@@ -1381,10 +1420,12 @@ tracks:
  - Passage | Pawel Blaszczak
  - Return | Pawel Blaszczak
  - Estancia | Bill Elm & Woody Jackson
+ - Phantom Liberty | Dawid Podsiadło, P.T. Adamczyk
+ - Hydrogen | M.O.O.N. | none
 
 ===
 id: screen-score
-rank: 50
+rank: 51
 name: FILM & TELEVISION SCORE
 family: Score & Ambient
 years: 1960 → present
@@ -1411,7 +1452,7 @@ tracks:
 
 ===
 id: world-traditional
-rank: 51
+rank: 52
 name: TRADITIONAL & WORLD MUSIC
 family: Score & Ambient
 years: centuries → present
@@ -1429,7 +1470,7 @@ tracks:
 
 ===
 id: dark-ambient
-rank: 52
+rank: 53
 name: DARK AMBIENT & POST-BLACK ELECTRONICA
 family: Score & Ambient
 years: 1984 → present
@@ -1445,7 +1486,7 @@ tracks:
 
 ===
 id: neoclassical
-rank: 53
+rank: 54
 name: NEOCLASSICAL & CHAMBER
 family: Score & Ambient
 years: 1980 → present
@@ -1460,7 +1501,7 @@ tracks:
 
 ===
 id: doom-jazz
-rank: 54
+rank: 55
 name: DOOM JAZZ & DARK CABARET
 family: Score & Ambient
 years: 1994 → present
@@ -1473,7 +1514,7 @@ tracks:
 
 ===
 id: solo-bass
-rank: 55
+rank: 56
 name: SOLO INSTRUMENTAL BASS
 family: Score & Ambient
 years: 1976 → present
@@ -1486,7 +1527,7 @@ tracks:
 
 ===
 id: jazz-standards
-rank: 56
+rank: 57
 name: JAZZ
 family: Jazz
 years: 1917 → present

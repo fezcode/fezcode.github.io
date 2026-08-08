@@ -30,3 +30,5 @@ tracks:
  - Complicated | Avril Lavigne
  - Crush | Jennifer Paige
  - Say It Right | Nelly Furtado
+ - Temperature | Sean Paul
+ - Apologize | Timbaland, OneRepublic

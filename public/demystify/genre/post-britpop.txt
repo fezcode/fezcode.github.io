@@ -31,3 +31,4 @@ tracks:
  - Yellow | Coldplay
  - Somewhere Only We Know | Keane
  - Closer | Travis
+ - Clocks | Coldplay

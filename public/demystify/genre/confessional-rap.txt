@@ -1,5 +1,5 @@
 id: confessional-rap
-rank: 17
+rank: 18
 name: CONFESSIONAL & CONSCIOUS MAINSTREAM RAP
 family: Hip Hop
 years: 2010 → present
@@ -89,3 +89,4 @@ tracks:
  - King's Dead (with Kendrick Lamar, Future & James Blake) | Jay Rock, Kendrick Lamar, Future, James Blake
  - Ni**as In Paris | JAY-Z, Kanye West
  - A Tale of 2 Citiez | J. Cole
+ - Homecoming | Kanye West, Chris Martin

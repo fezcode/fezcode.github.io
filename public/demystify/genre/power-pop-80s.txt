@@ -1,5 +1,5 @@
 id: power-pop-80s
-rank: 48
+rank: 49
 name: 80S POWER POP & NEW WAVE
 family: Pop & Soul
 years: 1978 → 1989

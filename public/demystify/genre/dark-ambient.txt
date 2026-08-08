@@ -1,5 +1,5 @@
 id: dark-ambient
-rank: 52
+rank: 53
 name: DARK AMBIENT & POST-BLACK ELECTRONICA
 family: Score & Ambient
 years: 1984 → present

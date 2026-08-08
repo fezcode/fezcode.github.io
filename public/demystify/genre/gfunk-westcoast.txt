@@ -1,5 +1,5 @@
 id: gfunk-westcoast
-rank: 22
+rank: 23
 name: G-FUNK & WEST COAST RAP
 family: Hip Hop
 years: 1992 → present
@@ -49,3 +49,4 @@ tracks:
  - Black Superman | Above The Law
  - Cali Iz Active - Dirty | Tha Dogg Pound
  - The Testimony | Mack 10, Young Soprano, Pastor Steven Hamilton
+ - Riders On the Storm | Snoop Dogg, The Doors

@@ -1,5 +1,5 @@
 id: numetal-postgrunge
-rank: 04
+rank: 02
 name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
 family: Rock & Metal
 years: 1994 → 2008 (revived 2019 →)
@@ -46,10 +46,12 @@ tracks:
  - Not Strong Enough | Apocalyptica, Brent Smith
  - Numb | Linkin Park
  - One Last Breath | Creed
- - Nutshell | Alice In Chains
  - Hemorrhage (In My Hands) | Fuel
  - Fırtınam | Hayko Cepkin
  - War | Poets of the Fall
+ - I Don't Care | Apocalyptica
+ - Yad Eller | maNga
+ - Castle of Glass | Linkin Park
 
 examples:
  - Korn - Blind (1994) | Low-tuned 7-string guitar intro ("Are You Ready?!"), heavy slap bass

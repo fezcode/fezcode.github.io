@@ -1,5 +1,5 @@
 id: prog-sludge-metal
-rank: 15
+rank: 16
 name: PROGRESSIVE & SLUDGE METAL
 family: Rock & Metal
 years: 1991 → present

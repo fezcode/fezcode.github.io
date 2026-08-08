@@ -1,5 +1,5 @@
 id: abstract-underground
-rank: 19
+rank: 20
 name: ABSTRACT & EXPERIMENTAL HIP HOP
 family: Hip Hop
 years: 1993 → present

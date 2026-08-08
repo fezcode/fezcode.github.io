@@ -1,5 +1,5 @@
 id: liquid-dnb
-rank: 35
+rank: 36
 name: LIQUID DRUM & BASS
 family: Electronic
 years: c. 1995 → present
@@ -42,6 +42,7 @@ prod:
 tracks:
  - The Flute Tune (Soulpride Remix) | Jaycut, Kolt Siewerts, Soulpride
  - Snake Eyes | Feint, CoMa
+ - Sun King | State of Mind
 
 examples:
  - Goldie - Inner City Life (1994) | Soulful vocals over hyper-edited jungle breakbeats

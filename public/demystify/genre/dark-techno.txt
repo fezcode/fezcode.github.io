@@ -1,5 +1,5 @@
 id: dark-techno
-rank: 34
+rank: 35
 name: DARK TECHNO & FRENCH ELECTRO
 family: Electronic
 years: 2008 → present

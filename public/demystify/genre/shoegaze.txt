@@ -1,5 +1,5 @@
 id: shoegaze
-rank: 02
+rank: 03
 name: SHOEGAZE & DREAM POP
 family: Rock & Metal
 years: 1988 → present

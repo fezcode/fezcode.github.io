@@ -1,5 +1,5 @@
 id: lofi-jazzhop
-rank: 20
+rank: 21
 name: LO-FI & JAZZ-HOP
 family: Hip Hop
 years: 1997 → present

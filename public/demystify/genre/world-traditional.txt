@@ -1,5 +1,5 @@
 id: world-traditional
-rank: 51
+rank: 52
 name: TRADITIONAL & WORLD MUSIC
 family: Score & Ambient
 years: centuries → present

@@ -1,5 +1,5 @@
 id: classic-soul-funk
-rank: 45
+rank: 46
 name: CLASSIC SOUL, FUNK & BLUES
 family: Pop & Soul
 years: 1965 → 1990

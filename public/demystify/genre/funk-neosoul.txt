@@ -1,5 +1,5 @@
 id: funk-neosoul
-rank: 46
+rank: 48
 name: FUNK & NEO-SOUL
 family: Pop & Soul
 years: 1995 → present

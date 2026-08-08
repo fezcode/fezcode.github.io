@@ -1,5 +1,5 @@
 id: idm-ambient
-rank: 28
+rank: 29
 name: IDM & AMBIENT TECHNO
 family: Electronic
 years: 1992 → present

@@ -31,3 +31,4 @@ tracks:
  - Behind Closed Doors | Rise Against
  - Ouija | Harley Poe
  - Bridges Burned | Tattoo the Scars
+ - 21 Guns | Green Day

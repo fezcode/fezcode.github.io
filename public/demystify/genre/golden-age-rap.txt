@@ -1,5 +1,5 @@
 id: golden-age-rap
-rank: 21
+rank: 22
 name: GOLDEN AGE RAP
 family: Hip Hop
 years: 1986 → 1996

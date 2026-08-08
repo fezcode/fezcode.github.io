@@ -1,5 +1,5 @@
 id: horrorcore
-rank: 23
+rank: 24
 name: HORRORCORE & CHOPPER RAP
 family: Hip Hop
 years: 1991 → present

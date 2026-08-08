@@ -1,5 +1,5 @@
 id: anadolu-rock
-rank: 38
+rank: 39
 name: ANADOLU ROCK & TURKISH ALTERNATIVE
 family: Turkish
 years: 1965 → present
@@ -40,3 +40,5 @@ tracks:
  - Ele Güne Karşı | MFÖ
  - Sandal | Yüzyüzeyken Konuşuruz
  - Ada | Kuytu
+ - Kapısı Kapalı | Adamlar
+ - Söyle | Seksendört

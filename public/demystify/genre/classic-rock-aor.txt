@@ -36,3 +36,4 @@ tracks:
  - Let 'Em In - 2014 Remaster | Wings
  - While My Guitar Gently Weeps - Remastered 2009 | The Beatles
  - Paint It Black | The Rolling Stones
+ - Africa | Toto

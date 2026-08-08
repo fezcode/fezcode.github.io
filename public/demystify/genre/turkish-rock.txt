@@ -1,5 +1,5 @@
 id: turkish-rock
-rank: 36
+rank: 37
 name: TURKISH ROCK & POP-ROCK
 family: Turkish
 years: 1990 → present
@@ -46,3 +46,8 @@ tracks:
  - Gel Öpem Seni | Murat Kekilli
  - Avara | Murat Kekilli
  - İçini Dök | Koray Candemir
+ - Beni Yakan Aşkın | Özlem Tekin
+ - Sen Anla | Özlem Tekin
+ - Delinin Yıldızı | Vega
+ - Beş | gripin
+ - Sakinleştim | Pinhani

@@ -62,3 +62,4 @@ tracks:
  - Little One | Highly Suspect
  - Zero | Electric Guest
  - Come with Me Now | KONGOS
+ - Monster | The Automatic

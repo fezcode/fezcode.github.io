@@ -1,5 +1,5 @@
 id: art-pop
-rank: 44
+rank: 45
 name: ART POP & THE STUDIO AUTEUR
 family: Pop & Soul
 years: 1997 → present

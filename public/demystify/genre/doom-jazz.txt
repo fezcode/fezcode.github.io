@@ -1,5 +1,5 @@
 id: doom-jazz
-rank: 54
+rank: 55
 name: DOOM JAZZ & DARK CABARET
 family: Score & Ambient
 years: 1994 → present

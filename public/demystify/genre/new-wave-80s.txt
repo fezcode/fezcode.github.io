@@ -1,5 +1,5 @@
 id: new-wave-80s
-rank: 03
+rank: 04
 name: NEW WAVE & COLLEGE ROCK
 family: Rock & Metal
 years: 1978 → 1992
@@ -37,3 +37,4 @@ tracks:
  - In The Heat Of The Night | Sandra
  - Time After Time | Cyndi Lauper
  - Fever Fever | Melody Club
+ - Spent the Day in Bed | Morrissey
