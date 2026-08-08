@@ -1,5 +1,5 @@
 id: synthwave
-rank: 30
+rank: 29
 name: SYNTHWAVE & OUTRUN
 family: Electronic
 years: 2005 → present

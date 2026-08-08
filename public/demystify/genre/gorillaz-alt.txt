@@ -1,5 +1,5 @@
 id: gorillaz-alt
-rank: 28
+rank: 27
 name: GENRE-FLUID ALTERNATIVE HIP HOP
 family: Hip Hop
 years: 1998 → present

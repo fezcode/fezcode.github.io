@@ -1,5 +1,5 @@
 id: screen-score
-rank: 51
+rank: 50
 name: FILM & TELEVISION SCORE
 family: Score & Ambient
 years: 1960 → present

@@ -1,5 +1,5 @@
 id: jazz-standards
-rank: 57
+rank: 56
 name: JAZZ
 family: Jazz
 years: 1917 → present

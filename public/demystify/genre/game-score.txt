@@ -1,5 +1,5 @@
 id: game-score
-rank: 50
+rank: 49
 name: VIDEO GAME SCORE
 family: Score & Ambient
 years: 1978 → present

@@ -1,5 +1,5 @@
 id: rnb-soul
-rank: 44
+rank: 43
 name: CONTEMPORARY R&B AND SOUL
 family: Pop & Soul
 years: 2000 → present

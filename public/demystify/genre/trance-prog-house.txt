@@ -1,5 +1,5 @@
 id: trance-prog-house
-rank: 34
+rank: 33
 name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
 family: Electronic
 years: 1990 → present

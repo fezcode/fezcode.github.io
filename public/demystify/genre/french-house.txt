@@ -1,5 +1,5 @@
 id: french-house
-rank: 31
+rank: 30
 name: FRENCH HOUSE & NU-DISCO
 family: Electronic
 years: 1995 → present

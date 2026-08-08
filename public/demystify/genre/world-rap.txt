@@ -1,5 +1,5 @@
 id: world-rap
-rank: 25
+rank: 24
 name: NON-ANGLOPHONE RAP
 family: Hip Hop
 years: 1990 → present

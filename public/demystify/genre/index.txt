@@ -752,39 +752,8 @@ tracks:
  - Riders On the Storm | Snoop Dogg, The Doors
 
 ===
-id: horrorcore
-rank: 24
-name: HORRORCORE & CHOPPER RAP
-family: Hip Hop
-years: 1991 → present
-sub: Extreme-content, extreme-technique rap operating almost entirely outside the majors
-spec: 84,90,84,66,56,60,68,74,78,74,70,72,78,82,80,72,64,56,48,40
-synthType: square
-freqs: 55, 68.94, 86.41
-tracks:
- - The Dispensation of Life and Death | Necro
- - La Montagna Del Dio Cannibale (Interlude) | Jedi Mind Tricks, Yes Alexander
- - Them (feat. Ill Bill) | Mr. Hyde, Necro, ILL BILL
- - Switch Lanes | Rittz, Mike Posner
- - Psychopath Killer | Slaughterhouse, Yelawolf, Eminem
- - Brick Wall | Vinnie Paz, ILL BILL, Demoz
- - Last Breath | Vinnie Paz, Chris Rivers, whispers
- - Gat O' 9 Tales | Necro
- - Cheesesteaks | Vinnie Paz
- - Curse of the Pharaohs | Army Of The Pharaohs, Vinnie Paz, Apathy, Celph Titled, Esoteric, Reef The Lost Cauze
- - Walk The Line | Big Scoob, Wrekonize
- - Worldwide Choppers | Tech N9ne, Ceza, JL B.Hood, Uso, Yelawolf, Twista, Busta Rhymes, D-Loc
- - Hollow Man | C-Mob
- - Jake LaMotta | Vinnie Paz
- - Gangsta Gangsta | C-Mob, T-Rock, Slikk
- - Crazy Man - Straitjacket Remix | Block McCloud
- - Deathless Light | Jedi Mind Tricks
- - My Mind Playin Tricks On Me | Geto Boys
- - Suicide Letters | Tech N9ne
-
-===
 id: world-rap
-rank: 25
+rank: 24
 name: NON-ANGLOPHONE RAP
 family: Hip Hop
 years: 1990 → present
@@ -806,7 +775,7 @@ tracks:
 
 ===
 id: drill-modern
-rank: 26
+rank: 25
 name: DRILL & GRIME
 family: Hip Hop
 years: 2011 → present
@@ -825,7 +794,7 @@ tracks:
 
 ===
 id: memphis-crunk
-rank: 27
+rank: 26
 name: MEMPHIS RAP & CRUNK
 family: Hip Hop
 years: 1991 → present
@@ -844,7 +813,7 @@ tracks:
 
 ===
 id: gorillaz-alt
-rank: 28
+rank: 27
 name: GENRE-FLUID ALTERNATIVE HIP HOP
 family: Hip Hop
 years: 1998 → present
@@ -859,7 +828,7 @@ tracks:
 
 ===
 id: idm-ambient
-rank: 29
+rank: 28
 name: IDM & AMBIENT TECHNO
 family: Electronic
 years: 1992 → present
@@ -903,7 +872,7 @@ tracks:
 
 ===
 id: synthwave
-rank: 30
+rank: 29
 name: SYNTHWAVE & OUTRUN
 family: Electronic
 years: 2005 → present
@@ -936,7 +905,7 @@ tracks:
 
 ===
 id: french-house
-rank: 31
+rank: 30
 name: FRENCH HOUSE & NU-DISCO
 family: Electronic
 years: 1995 → present
@@ -964,7 +933,7 @@ tracks:
 
 ===
 id: trip-hop
-rank: 32
+rank: 31
 name: TRIP HOP & DOWNTEMPO
 family: Electronic
 years: 1991 → present
@@ -993,7 +962,7 @@ tracks:
 
 ===
 id: big-beat
-rank: 33
+rank: 32
 name: BIG BEAT & TURNTABLISM
 family: Electronic
 years: 1993 → present
@@ -1014,7 +983,7 @@ tracks:
 
 ===
 id: trance-prog-house
-rank: 34
+rank: 33
 name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
 family: Electronic
 years: 1990 → present
@@ -1031,7 +1000,7 @@ tracks:
 
 ===
 id: dark-techno
-rank: 35
+rank: 34
 name: DARK TECHNO & FRENCH ELECTRO
 family: Electronic
 years: 2008 → present
@@ -1047,7 +1016,7 @@ tracks:
 
 ===
 id: liquid-dnb
-rank: 36
+rank: 35
 name: LIQUID DRUM & BASS
 family: Electronic
 years: c. 1995 → present
@@ -1059,11 +1028,11 @@ audio: /demystify/genre/drumbass.mp3
 tracks:
  - The Flute Tune (Soulpride Remix) | Jaycut, Kolt Siewerts, Soulpride
  - Snake Eyes | Feint, CoMa
- - Sun King | State of Mind
+ - Sunking | State of Mind | 214331933
 
 ===
 id: turkish-rock
-rank: 37
+rank: 36
 name: TURKISH ROCK & POP-ROCK
 family: Turkish
 years: 1990 → present
@@ -1099,7 +1068,7 @@ tracks:
 
 ===
 id: turkish-pop
-rank: 38
+rank: 37
 name: TURKISH POP
 family: Turkish
 years: 1985 → present
@@ -1128,7 +1097,7 @@ tracks:
 
 ===
 id: anadolu-rock
-rank: 39
+rank: 38
 name: ANADOLU ROCK & TURKISH ALTERNATIVE
 family: Turkish
 years: 1965 → present
@@ -1155,7 +1124,7 @@ tracks:
 
 ===
 id: turku
-rank: 40
+rank: 39
 name: TÜRKÜ — TURKISH FOLK
 family: Turkish
 years: centuries → present
@@ -1172,7 +1141,7 @@ tracks:
 
 ===
 id: ozgun-protest
-rank: 41
+rank: 40
 name: ÖZGÜN MÜZIK — PROTEST SONG
 family: Turkish
 years: 1970s → 1990s
@@ -1185,7 +1154,7 @@ tracks:
 
 ===
 id: folk-songwriter
-rank: 42
+rank: 41
 name: FOLK & SINGER-SONGWRITER
 family: Pop & Soul
 years: 1968 → present
@@ -1221,7 +1190,7 @@ tracks:
 
 ===
 id: modern-pop
-rank: 43
+rank: 42
 name: MODERN POP
 family: Pop & Soul
 years: 2010 → present
@@ -1253,7 +1222,7 @@ tracks:
 
 ===
 id: rnb-soul
-rank: 44
+rank: 43
 name: CONTEMPORARY R&B AND SOUL
 family: Pop & Soul
 years: 2000 → present
@@ -1278,7 +1247,7 @@ tracks:
 
 ===
 id: art-pop
-rank: 45
+rank: 44
 name: ART POP & THE STUDIO AUTEUR
 family: Pop & Soul
 years: 1997 → present
@@ -1296,7 +1265,7 @@ tracks:
 
 ===
 id: classic-soul-funk
-rank: 46
+rank: 45
 name: CLASSIC SOUL, FUNK & BLUES
 family: Pop & Soul
 years: 1965 → 1990
@@ -1314,7 +1283,7 @@ tracks:
 
 ===
 id: 2000s-pop
-rank: 47
+rank: 46
 name: 2000S POP-PUNK & RADIO R&B-POP
 family: Pop & Soul
 years: 1999 → 2010
@@ -1331,7 +1300,7 @@ tracks:
 
 ===
 id: funk-neosoul
-rank: 48
+rank: 47
 name: FUNK & NEO-SOUL
 family: Pop & Soul
 years: 1995 → present
@@ -1348,7 +1317,7 @@ tracks:
 
 ===
 id: power-pop-80s
-rank: 49
+rank: 48
 name: 80S POWER POP & NEW WAVE
 family: Pop & Soul
 years: 1978 → 1989
@@ -1361,7 +1330,7 @@ tracks:
 
 ===
 id: game-score
-rank: 50
+rank: 49
 name: VIDEO GAME SCORE
 family: Score & Ambient
 years: 1978 → present
@@ -1425,7 +1394,7 @@ tracks:
 
 ===
 id: screen-score
-rank: 51
+rank: 50
 name: FILM & TELEVISION SCORE
 family: Score & Ambient
 years: 1960 → present
@@ -1452,7 +1421,7 @@ tracks:
 
 ===
 id: world-traditional
-rank: 52
+rank: 51
 name: TRADITIONAL & WORLD MUSIC
 family: Score & Ambient
 years: centuries → present
@@ -1470,7 +1439,7 @@ tracks:
 
 ===
 id: dark-ambient
-rank: 53
+rank: 52
 name: DARK AMBIENT & POST-BLACK ELECTRONICA
 family: Score & Ambient
 years: 1984 → present
@@ -1486,7 +1455,7 @@ tracks:
 
 ===
 id: neoclassical
-rank: 54
+rank: 53
 name: NEOCLASSICAL & CHAMBER
 family: Score & Ambient
 years: 1980 → present
@@ -1501,7 +1470,7 @@ tracks:
 
 ===
 id: doom-jazz
-rank: 55
+rank: 54
 name: DOOM JAZZ & DARK CABARET
 family: Score & Ambient
 years: 1994 → present
@@ -1514,7 +1483,7 @@ tracks:
 
 ===
 id: solo-bass
-rank: 56
+rank: 55
 name: SOLO INSTRUMENTAL BASS
 family: Score & Ambient
 years: 1976 → present
@@ -1527,7 +1496,7 @@ tracks:
 
 ===
 id: jazz-standards
-rank: 57
+rank: 56
 name: JAZZ
 family: Jazz
 years: 1917 → present

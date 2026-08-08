@@ -1,5 +1,5 @@
 id: big-beat
-rank: 33
+rank: 32
 name: BIG BEAT & TURNTABLISM
 family: Electronic
 years: 1993 → present

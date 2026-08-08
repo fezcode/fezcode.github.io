@@ -1,5 +1,5 @@
 id: modern-pop
-rank: 43
+rank: 42
 name: MODERN POP
 family: Pop & Soul
 years: 2010 → present

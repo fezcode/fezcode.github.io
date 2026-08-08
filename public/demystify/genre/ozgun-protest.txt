@@ -1,5 +1,5 @@
 id: ozgun-protest
-rank: 41
+rank: 40
 name: ÖZGÜN MÜZIK — PROTEST SONG
 family: Turkish
 years: 1970s → 1990s

@@ -1,5 +1,5 @@
 id: anadolu-rock
-rank: 39
+rank: 38
 name: ANADOLU ROCK & TURKISH ALTERNATIVE
 family: Turkish
 years: 1965 → present

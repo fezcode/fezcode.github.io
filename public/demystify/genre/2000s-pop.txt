@@ -1,5 +1,5 @@
 id: 2000s-pop
-rank: 47
+rank: 46
 name: 2000S POP-PUNK & RADIO R&B-POP
 family: Pop & Soul
 years: 1999 → 2010
