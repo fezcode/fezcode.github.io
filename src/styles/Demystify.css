@@ -6,19 +6,13 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 /* --- Palette -------------------------------------------------------------
-   The active theme is stamped onto <html> by useDemystifyTheme.
-   Theme 3 (dark) is also the :root default so the first paint is never bare. */
+   The active theme is stamped onto <html> by useDemystifyTheme. Theme 1
+   (light) also sits on bare :root, because that is what governs the
+   prerendered HTML and the first paint before hydration sets the attribute —
+   if the two disagree the page flashes the wrong palette on every load. Keep
+   :root in step with the default in useDemystifyTheme.js. */
 
 :root,
-html[data-demystify-theme='3'] {
-  --dm-bg: #11111a;
-  --dm-fg: #dddddd;
-  --dm-accent: #6acac9;
-  --dm-muted: #666677;
-  --dm-highlight: #ffffff;
-  --dm-sunken: rgba(0, 0, 0, 0.22);
-}
-
 html[data-demystify-theme='1'] {
   --dm-bg: #ffffff;
   --dm-fg: #222226;
@@ -26,6 +20,15 @@ html[data-demystify-theme='1'] {
   --dm-muted: #888899;
   --dm-highlight: #000000;
   --dm-sunken: rgba(0, 0, 0, 0.04);
+}
+
+html[data-demystify-theme='3'] {
+  --dm-bg: #11111a;
+  --dm-fg: #dddddd;
+  --dm-accent: #6acac9;
+  --dm-muted: #666677;
+  --dm-highlight: #ffffff;
+  --dm-sunken: rgba(0, 0, 0, 0.22);
 }
 
 html[data-demystify-theme='2'] {
@@ -787,9 +790,36 @@ a.dm-card-link:focus-visible :is(.dm-card-tag, .dm-card-status) {
   margin: 0;
 }
 
-.dm-ascii.is-spectrum {
-  color: var(--dm-fg);
-  letter-spacing: 0;
+/* Drawn as SVG rather than block characters, so the bars tile exactly at any
+   size and never pick up glyph-metric seams or subpixel colour fringing. */
+.dm-spectrum {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  padding: 0.9rem 1rem;
+  background: var(--dm-sunken);
+  border-radius: 2px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.dm-spectrum-bars rect {
+  fill: var(--dm-accent);
+  shape-rendering: crispEdges;
+}
+
+.dm-spectrum-axis {
+  stroke: var(--dm-muted);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.dm-spectrum-label {
+  fill: var(--dm-muted);
+  font-family: inherit;
+  font-size: 8px;
+  letter-spacing: 0.8px;
 }
 
 .dm-figcaption {

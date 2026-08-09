@@ -1,8 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import AuditionButton from './AuditionButton';
 import RichText from './RichText';
-import { renderSpectrum } from './spectrum';
+import Spectrum from './Spectrum';
 
 const MetaRow = ({ label, children }) =>
   children ? (
@@ -26,8 +26,6 @@ const EntryDetail = ({
   audioEnabled,
   onPlay,
 }) => {
-  const spectrum = useMemo(() => renderSpectrum(entry.spec), [entry.spec]);
-
   return (
     <article className="dm-entry">
       <header className="dm-entry-head">
@@ -49,14 +47,7 @@ const EntryDetail = ({
         <pre className="dm-ascii" aria-hidden="true">{entry.ascii}</pre>
       )}
 
-      {spectrum && (
-        <figure className="dm-figure">
-          <pre className="dm-ascii is-spectrum" aria-hidden="true">{spectrum}</pre>
-          <figcaption className="dm-figcaption">
-            Characteristic frequency-energy profile
-          </figcaption>
-        </figure>
-      )}
+      <Spectrum spec={entry.spec} />
 
       {(entry.signature || entry.keyGear || entry.origin) && (
         <dl className="dm-meta">

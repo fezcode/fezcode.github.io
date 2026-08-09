@@ -6,7 +6,8 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import DemystifyHubPage from './DemystifyHubPage';
 import GenreCollectionPage from './GenreCollectionPage';
 import { clearDemystifyCache } from './demystifyData';
-import { renderSpectrum } from './spectrum';
+import { spectrumBars } from './spectrumScale';
+import Spectrum from './Spectrum';
 import {
   previewQuery,
   isMatch,
@@ -135,66 +136,88 @@ afterEach(() => {
   clearDemystifyCache();
 });
 
-describe('renderSpectrum', () => {
-  it('draws a rectangular chart plus an axis ruler and labels', () => {
-    const lines = renderSpectrum([100, 50, 0], { rows: 4, cell: 2 }).split('\n');
-    // 4 chart rows + ruler + labels
-    expect(lines).toHaveLength(6);
-    expect(lines[0].startsWith('██')).toBe(true); // tallest band reaches the top
-    expect(lines[4]).toMatch(/^┴/); // ruler tick under band 0
-    expect(lines[5]).toMatch(/^SUB/);
-  });
-
+describe('spectrumBars', () => {
   // These profiles sit in a narrow band, so an absolute 0–100 scale renders the
   // bottom two thirds as a featureless slab. Bars are scaled to the genre's own
   // range instead, which is the difference between a chart and a rectangle.
   it('scales to the range present, not to an absolute 0–100', () => {
-    const narrow = renderSpectrum([44, 84, 60], { rows: 6, cell: 1 }).split(
-      '\n',
-    );
-    // The top row carries ink — nothing has to hit 100 for the chart to fill.
-    expect(narrow[0].trim()).not.toBe('');
-    // …and the quietest band still shows a sliver rather than vanishing.
-    expect(narrow[5][0]).not.toBe(' ');
+    const bars = spectrumBars([44, 84, 60]);
+    expect(bars[1]).toBe(1); // the loudest band fills the chart…
+    expect(bars[0]).toBeGreaterThan(0); // …and the quietest still shows
+    expect(bars[0]).toBeLessThan(0.2);
+    expect(bars[2]).toBeGreaterThan(bars[0]);
+    expect(bars[2]).toBeLessThan(bars[1]);
   });
 
-  it('never leaves an empty row at the top of the chart', () => {
-    // No genre in the collection reaches 100, which used to waste the top row.
-    const lines = renderSpectrum([68, 74, 72, 62, 84], { rows: 7 }).split('\n');
-    expect(lines[0].trim()).not.toBe('');
-    // A leading newline would shift the whole chart down a row inside <pre>.
-    expect(renderSpectrum([68, 74, 72, 62, 84]).startsWith('\n')).toBe(false);
-  });
-
-  it('leaves no featureless slab across the bottom rows', () => {
-    // The old absolute scale rendered every row below the minimum as solid
-    // blocks, so most of the chart carried no information at all.
-    const rows = 9;
-    const lines = renderSpectrum(
-      [68, 74, 72, 62, 58, 62, 68, 74, 80, 82, 80, 78, 80, 84, 82, 76, 68, 60, 52, 44],
-      { rows },
-    ).split('\n');
-    const chart = lines.slice(0, rows);
-    const solid = chart.filter((l) => /^█+$/.test(l)).length;
-    expect(solid).toBeLessThan(3);
+  it('fills the chart even though no genre reaches 100', () => {
+    const bars = spectrumBars([68, 74, 72, 62, 84]);
+    expect(Math.max(...bars)).toBe(1);
   });
 
   it('renders a flat profile without dividing by zero', () => {
-    const lines = renderSpectrum([50, 50, 50], { rows: 4, cell: 1 }).split('\n');
-    expect(lines.every((l) => !l.includes('NaN'))).toBe(true);
-    expect(lines[3]).toBe('███');
-  });
-
-  it('returns nothing when a genre has no spectrum data', () => {
-    expect(renderSpectrum([])).toBe('');
-    expect(renderSpectrum(undefined)).toBe('');
+    const bars = spectrumBars([50, 50, 50]);
+    expect(bars.every(Number.isFinite)).toBe(true);
+    expect(new Set(bars).size).toBe(1);
   });
 
   it('clamps out-of-range values instead of overflowing the chart', () => {
-    const lines = renderSpectrum([500, -20], { rows: 3, cell: 1 }).split('\n');
-    expect(lines[0]).toBe('█');
+    const bars = spectrumBars([500, -20]);
+    expect(Math.max(...bars)).toBe(1);
+    expect(Math.min(...bars)).toBeGreaterThan(0);
+    expect(bars.every((b) => b <= 1)).toBe(true);
+  });
+
+  it('returns nothing when a genre has no spectrum data', () => {
+    expect(spectrumBars([])).toEqual([]);
+    expect(spectrumBars(undefined)).toEqual([]);
   });
 });
+
+/* The assertions below are about SVG shape geometry, which has no accessible
+   query — the chart exposes one role, `img`, and the bars inside it are not
+   individually addressable. Querying the container is the only way to check
+   that the rects actually line up. */
+/* eslint-disable testing-library/no-container, testing-library/no-node-access */
+describe('Spectrum', () => {
+  // The block-character version could not tile exactly in a browser: a font's
+  // FULL BLOCK glyph is not the height of a `line-height: 1` line box, so bars
+  // showed seams and ragged edges. SVG rects have no such dependency.
+  it('draws one rect per band plus the axis, with no gaps between rows', () => {
+    const { container } = render(<Spectrum spec={[44, 84, 60]} />);
+    const rects = container.querySelectorAll('.dm-spectrum-bars rect');
+    expect(rects).toHaveLength(3);
+
+    // Every bar sits on the same baseline: y + height is identical throughout.
+    const baselines = [...rects].map(
+      (r) => Number(r.getAttribute('y')) + Number(r.getAttribute('height')),
+    );
+    expect(new Set(baselines.map((b) => b.toFixed(3))).size).toBe(1);
+
+    // The tallest band reaches the top of the plot.
+    expect(Math.min(...[...rects].map((r) => Number(r.getAttribute('y'))))).toBe(
+      0,
+    );
+    expect(container.querySelector('.dm-spectrum-axis')).toBeTruthy();
+  });
+
+  it('labels the axis and carries an accessible name', () => {
+    const { container } = render(<Spectrum spec={new Array(20).fill(60)} />);
+    const labels = [...container.querySelectorAll('.dm-spectrum-label')].map(
+      (n) => n.textContent,
+    );
+    expect(labels).toEqual(['SUB', 'LOW', 'MID', 'UPPER', 'AIR']);
+    expect(screen.getByRole('img')).toHaveAttribute(
+      'aria-label',
+      expect.stringContaining('frequency-energy'),
+    );
+  });
+
+  it('renders nothing when a genre has no spectrum data', () => {
+    const { container } = render(<Spectrum spec={[]} />);
+    expect(container.querySelector('svg')).toBeNull();
+  });
+});
+/* eslint-enable testing-library/no-container, testing-library/no-node-access */
 
 describe('previewQuery', () => {
   // The catalogue does not know our display strings, so the search term has to

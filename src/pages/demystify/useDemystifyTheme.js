@@ -13,7 +13,9 @@ export const DEMYSTIFY_THEMES = [
   { id: '4', label: 'MATRIX' },
 ];
 
-const DEFAULT_THEME = '3';
+// Light. Bare :root in Demystify.css carries the same palette so the first
+// paint matches — change both together.
+const DEFAULT_THEME = '1';
 
 /**
  * Keeps the demystify palette consistent across the hub and its collections,
