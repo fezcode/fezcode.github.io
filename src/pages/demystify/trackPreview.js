@@ -89,6 +89,7 @@ const request = (url, pick) =>
 /**
  * `track.preview` overrides the lookup:
  *   'none'   — this track is not in the catalogue; do not search
+ *   a URL    — a clip to play as-is, for tracks the search cannot reach
  *   a number — an iTunes track id, fetched directly and trusted
  *   any text — a replacement search term
  *
@@ -97,6 +98,15 @@ const request = (url, pick) =>
 export const findPreview = (track) => {
   const override = String(track?.preview || '').trim();
   if (override.toLowerCase() === 'none') return Promise.resolve(null);
+
+  // A pinned clip needs no resolution at all.
+  if (/^https?:\/\//i.test(override)) {
+    return Promise.resolve({
+      url: override,
+      title: track?.title || '',
+      artist: track?.artist || '',
+    });
+  }
 
   const byId = /^\d+$/.test(override);
   const term = override && !byId ? override : previewQuery(track);

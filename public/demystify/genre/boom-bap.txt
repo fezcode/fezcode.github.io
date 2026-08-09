@@ -37,7 +37,7 @@ tracks:
  - 4 More | De La Soul, Zhane
  - Stakes Is High | De La Soul
  - Baby Blue | Action Bronson, Chance the Rapper
- - KITCHEN LIGHTS | Westside Gunn, Stove God Cooks | none
+ - KITCHEN LIGHTS | Westside Gunn, Stove God Cooks | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7a/63/e9/7a63e9a3-ad46-9a88-1a90-9191d1b6d16b/mzaf_1122702822486154811.plus.aac.ep.m4a
  - Above The Clouds | Gang Starr, Inspectah Deck
  - Meet Joe Black | Nas
  - What It's Worth | Black Milk

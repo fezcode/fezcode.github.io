@@ -7,7 +7,12 @@ import DemystifyHubPage from './DemystifyHubPage';
 import GenreCollectionPage from './GenreCollectionPage';
 import { clearDemystifyCache } from './demystifyData';
 import { renderSpectrum } from './spectrum';
-import { previewQuery, isMatch } from './trackPreview';
+import {
+  previewQuery,
+  isMatch,
+  findPreview,
+  clearPreviewCache,
+} from './trackPreview';
 // Aliased: the testing-library lint rule treats any `render*` call as a
 // component render and objects to how its result is named.
 import { renderInline as inline } from './RichText';
@@ -224,6 +229,31 @@ describe('previewQuery', () => {
   it('is empty for a track with nothing to search on', () => {
     expect(previewQuery({})).toBe('');
     expect(previewQuery(undefined)).toBe('');
+  });
+});
+
+describe('findPreview overrides', () => {
+  afterEach(() => clearPreviewCache());
+
+  it('plays a pinned URL as-is, without contacting the catalogue', async () => {
+    global.fetch = vi.fn();
+    const url = 'https://audio-ssl.itunes.apple.com/clip.m4a';
+    await expect(
+      findPreview({ title: 'KITCHEN LIGHTS', artist: 'Westside Gunn', preview: url }),
+    ).resolves.toEqual({
+      url,
+      title: 'KITCHEN LIGHTS',
+      artist: 'Westside Gunn',
+    });
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  it('does not search for a track marked as absent from the catalogue', async () => {
+    global.fetch = vi.fn();
+    await expect(
+      findPreview({ title: 'Ghost', artist: 'Dizzee Rascal', preview: 'none' }),
+    ).resolves.toBeNull();
+    expect(global.fetch).not.toHaveBeenCalled();
   });
 });
 
