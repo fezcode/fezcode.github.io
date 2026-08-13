@@ -24,7 +24,7 @@ Klaude laughed—a dry, mirthless sound like sand pouring through broken clockwo
 
 Soren said nothing.
 
-The workshop was a cathedral of broken time. Clocks covered every surface—grandfather clocks, pocket watches, pendulums, sundials, hourglasses filled with grey ash instead of sand. Some ticked. Most didn't. The ones that did seemed to tick at different speeds, creating a polyrhythmic symphony that made the air feel thick and syncopated.
+The workshop was a cathedral of broken time. The tower had been a guild horologium before the fire, and its dead inventory still crowded every surface—grandfather clocks, pocket watches, pendulums, sundials, hourglasses filled with grey ash instead of sand. None of the great pieces were Klaude's; his own kit fit in two scuffed cases by the door, packed and ready, the habit of a man who moves every time the pulse comes hunting. Some of the clocks ticked. Most didn't. The ones that did seemed to tick at different speeds, creating a polyrhythmic symphony that made the air feel thick and syncopated.
 
 In the center of the room, on a workbench scarred with acid burns and blood, sat the **Chronometer of Ash**. The brass sphere caught the candlelight and held it, jealously, like a dragon hoarding gold.
 
@@ -54,7 +54,7 @@ Then the Chronometer took him.
 
 ---
 
-**He was there.** In his office, two days before the end of everything. The brandy in his hand. The dismissive sneer on his face. Niva was standing across from him, panting, a file in her hands, her eyes burning with the certainty he had refused to see.
+**He was there.** In his office, two hours before the end of everything. The brandy in his hand. The dismissive sneer on his face. Niva was standing across from him, panting, a file in her hands, her eyes burning with the certainty he had refused to see.
 
 *"They're going for the Mayor, Granold. The Road of Lion is a diversion."*
 
@@ -68,15 +68,17 @@ The Chronometer's glass flared white-hot against his palm. The pain was blinding
 
 He watched Niva leave. He watched himself toss the file aside. He watched the clock on the wall tick toward the hour that would unwrite everything.
 
-But the file—the file she had slammed on his desk. In the memory, his past self had barely glanced at it. Now, trapped in the determinism of his own idiocy, he could *read* it. The Chronometer's perfect sensory recall captured every line, every word, every damning piece of evidence.
+But the file—the file she had slammed on his desk. In the memory, his past self had glanced at the top page for three seconds before tossing it aside. A glance is a photograph, and the Chronometer developed it. He could not turn pages his past hands had never turned—but that one page, Niva's summary memo in her small, furious hand, hung before his locked eyes in perfect focus.
 
-**Cytrox: Operational Genesis Report.** Origin: Military Intelligence Division, Sub-Committee 12. Authorization: Cloudwear, A. Oversight: Corshield, B.
+*Target is not the Road. Target is Lynnia at the City Market. Source: captured Cytrox foot soldier, interrogated personally—he fears his own paymasters more than our cells. The Road intel is too clean. Someone built it to be believed.*
 
-It was all there. Cytrox was a fabrication. A paper army. Every "attack" had been a controlled demolition designed to justify the expansion of Corshield's surveillance programs—and the RedLink experiments hidden beneath St. Jude's.
+And at the bottom, three lines his past self had refused to find important:
 
-The massacre wasn't a failure of intelligence. It was a *success*. The Mayor had discovered the RedLink program and threatened to expose it. The "Cytrox attack" was a surgical assassination disguised as terrorism.
+*Cross-reference: military comms on the Road go dark on an eleven-hour cycle. The bearings climb the hill and die at St. Jude's. Whatever they are running in that asylum, it is not medicine.*
 
-And at the bottom of the file, in Niva's handwriting: *"The eleven-hour pulse originates from St. Jude's Asylum. The RedLink subjects are the source. They are not patients. They are an antenna. They are broadcasting."*
+That was all. It was enough. Paired with what Rolnifeld himself had known and buried—the fortification order for the Road that had arrived from above his head, pre-packaged, citing sources no one ever produced; the way Niva's warning had been purged from the archive the morning after the massacre; the speed of his own quiet demotion—the shape assembled itself with the cold click of gears meshing.
+
+Cytrox had not outsmarted Intelligence. Cytrox *was* Intelligence. The Mayor had been asking questions about the money that vanished uphill into St. Jude's, and the "attack" had been a surgical assassination disguised as terrorism. The massacre wasn't a failure. It was a *success*.
 
 ---
 
@@ -88,7 +90,7 @@ His hands were smoking. The Chronometer fell from his grip and rolled across the
 
 Rolnifeld looked up. His eyes were wide, wet, and utterly destroyed.
 
-"Everything," he whispered. "She saw everything. She tried to tell me and I—" He choked. "Cytrox doesn't exist. It never existed. The massacre was them. The government killed the Mayor. They killed her father. And the pulse—the signal—it's coming from the asylum. From the people with the Rose."
+"Everything," he whispered. "She saw everything. She tried to tell me and I—" He choked. "The Road intel was built to be believed. The order came from over my head, and her warning was purged from the archive the morning after. It was them. The government killed the Mayor. They killed her father. And the pulse—she traced it before any of us had ever heard it. The bearings die on the hill. At St. Jude's."
 
 The room fell silent.
 

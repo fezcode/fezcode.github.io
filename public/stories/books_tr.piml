@@ -11,35 +11,35 @@
         (title) Ayna Adam Davası
         (author) Constellation
         (date) 2025-11-23
-        (updated) 2025-11-23
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-1-thornus/the-diplomats-journal/kafatasi.txt
         (title) Tavandaki Kafatasları
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-1-thornus/the-whispering-rats/lagim-kehaneti.txt
         (title) Izgaranın Altındaki Gerçek
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-1-thornus/niva-derosa/episode1_tr.txt
         (title) Kanalizasyonun Tacı
         (author) fezcode
         (date) 2026-01-11
-        (updated) 2026-01-11
+        (updated) 2026-08-13
       > (episode)
         (id) 5
         (filename) vol-1-thornus/niva-derosa/episode2_tr.txt
         (title) Grenadier Katliamı
         (author) fezcode
         (date) 2026-01-11
-        (updated) 2026-01-11
+        (updated) 2026-08-13
     (overlay) dodgerblue
 
   > (book)
@@ -61,7 +61,7 @@
         (title) Fredsound Mirası
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-2-sin/the-chronomancers-dust/hayaletler-saati.txt
@@ -90,7 +90,7 @@
         (title) Çalınan Yıldız
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-3-redlink/doctor-blade/alilberry-curesi.txt
@@ -104,7 +104,7 @@
         (title) Güve Histerisi
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-3-redlink/the-sanity-ward/redlink-protokolu.txt
@@ -118,7 +118,7 @@
         (title) Gizli Tohum
         (author) fezcode
         (date) 2026-01-09
-        (updated) 2026-01-09
+        (updated) 2026-08-13
       > (episode)
         (id) 6
         (filename) vol-3-redlink/the-architecture-of-ghosts/tr/fosillesmis-dusunce.txt
@@ -161,14 +161,14 @@
         (title) Tohumun Günahı
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-4-resistance/the-harvest-of-silence/golgelerdeki-dinleyici.txt
         (title) Gölgelerdeki Dinleyici
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-4-resistance/the-butterflys-jest/son-kahkaha.txt
@@ -211,21 +211,21 @@
         (title) Kül Feneri
         (author) fezcode
         (date) 2026-01-27
-        (updated) 2026-01-27
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-5-black-ragnarok/signal-on-the-road/the-signal_tr.txt
         (title) Yoldaki Sinyal
         (author) fezcode
         (date) 2026-01-27
-        (updated) 2026-01-27
+        (updated) 2026-08-13
       > (episode)
         (id) 5
         (filename) vol-5-black-ragnarok/the-miserable-trail/the-trail_tr.txt
         (title) Sefillerin İzi
         (author) fezcode
         (date) 2026-01-27
-        (updated) 2026-01-27
+        (updated) 2026-08-13
     (overlay) darkslategray
 
   > (book)
@@ -240,35 +240,35 @@
         (title) Fare Kralı'nın Bedeli
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-6-the-fifth-death/the-man-who-wasnt-corrigan/the-corrigan_tr.txt
         (title) Corrigan Olmayan Adam
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-6-the-fifth-death/eleven-hours/eleven-hours_tr.txt
         (title) On Bir Saat
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-6-the-fifth-death/the-butterfly-and-the-blade/the-butterfly_tr.txt
         (title) Kelebek ve Bıçak
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 5
         (filename) vol-6-the-fifth-death/the-fifth-death/the-fifth-death_tr.txt
         (title) Beşinci Ölüm
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
     (overlay) maroon
 
   > (book)
@@ -283,7 +283,7 @@
         (title) On Birinci Saat
         (author) fezcode
         (date) 2026-06-02
-        (updated) 2026-06-02
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-7-agit/blood/blood_tr.txt

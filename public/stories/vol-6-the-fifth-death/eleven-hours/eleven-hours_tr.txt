@@ -24,7 +24,7 @@ Klaude güldü—kırık bir saatin içinden dökülen kum gibi kuru, neşesiz b
 
 Soren hiçbir şey söylemedi.
 
-Atölye, kırılmış zamanın bir katedraliydi. Her yüzeyi saatler kaplamıştı—büyükbaba saatleri, cep saatleri, sarkaçlar, kum yerine gri külle dolu kum saatleri. Bazıları tıkırdıyordu. Çoğu tıkırdamıyordu. Tıkırdayanlar farklı hızlarda tıkırdıyor gibiydi; havayı kalın ve senkoplu hissettiren çok-ritmik bir senfoni yaratıyordu.
+Atölye, kırılmış zamanın bir katedraliydi. Kule, yangından önce bir lonca saathanesiydi ve ölü envanteri hâlâ her yüzeyi kaplıyordu—büyükbaba saatleri, cep saatleri, sarkaçlar, kum yerine gri külle dolu kum saatleri. Büyük parçaların hiçbiri Klaude'un değildi; kendi takımı kapının yanındaki iki hırpalanmış çantaya sığıyordu—toplanmış, hazır; nabız her avlanmaya çıktığında taşınan bir adamın alışkanlığı. Saatlerin bazıları tıkırdıyordu. Çoğu tıkırdamıyordu. Tıkırdayanlar farklı hızlarda tıkırdıyor gibiydi; havayı kalın ve senkoplu hissettiren çok-ritmik bir senfoni yaratıyordu.
 
 Odanın merkezinde, asit yanıkları ve kanla yaralı bir tezgâhın üzerinde **Kül Kronometresi** duruyordu. Pirinç küre mum ışığını yakalıyor ve bir ejderhanın altın biriktirmesi gibi kıskançlıkla tutuyordu.
 
@@ -54,7 +54,7 @@ Sonra Kronometre onu aldı.
 
 ---
 
-**Oradaydı.** Ofisinde, her şeyin sona ermesinden iki gün önce. Elindeki konyak. Yüzündeki küçümseyici sırıtma. Niva karşısında duruyordu, nefes nefese, elinde bir dosya, gözleri onun görmeyi reddettiği kesinlikle yanıyordu.
+**Oradaydı.** Ofisinde, her şeyin sona ermesinden iki saat önce. Elindeki konyak. Yüzündeki küçümseyici sırıtma. Niva karşısında duruyordu, nefes nefese, elinde bir dosya, gözleri onun görmeyi reddettiği kesinlikle yanıyordu.
 
 *"Belediye başkanını hedef alıyorlar, Granold. Aslan Yolu bir aldatmaca."*
 
@@ -68,15 +68,17 @@ Kronometrenin camı avuç içinde beyaz-sıcak olarak parladı. Acı kör ediciy
 
 Niva'nın gidişini izledi. Dosyayı kenara fırlatışını izledi. Duvardaki saatin her şeyi silecek saate doğru tıkırdamasını izledi.
 
-Ama dosya—Niva'nın masasına fırlattığı dosya. Anıda, geçmişteki benliği ona zar zor göz atmıştı. Şimdi, kendi aptallığının determinizminde hapsedilmiş halde, onu *okuyabiliyordu*. Kronometrenin kusursuz duyusal geri çağırımı her satırı, her kelimeyi, her lanetli kanıtı yakalıyordu.
+Ama dosya—Niva'nın masasına fırlattığı dosya. Anıda, geçmişteki benliği en üst sayfaya üç saniye göz atıp kenara fırlatmıştı. Bir bakış bir fotoğraftır ve Kronometre onu banyo etti. Geçmişteki ellerinin hiç çevirmediği sayfaları çeviremezdi—ama o tek sayfa, Niva'nın küçük, öfkeli el yazısıyla yazılmış özet notu, kilitli gözlerinin önünde kusursuz bir netlikte asılı duruyordu.
 
-**Cytrox: Operasyonel Doğuş Raporu.** Kaynak: Askeri İstihbarat Birimi, Alt Komite 12. Yetkilendirme: Cloudwear, A. Denetim: Corshield, B.
+*Hedef Yol değil. Hedef, Şehir Pazarı'ndaki Lynnia. Kaynak: yakalanan Cytrox piyadesi, bizzat sorgulandı—kendi efendilerinden, bizim hücrelerimizden korktuğundan daha çok korkuyor. Yol istihbaratı fazla temiz. Biri onu inanılsın diye inşa etmiş.*
 
-Her şey oradaydı. Cytrox bir uydurmaydı. Kâğıttan bir ordu. Her "saldırı," Corshield'in gözetleme programlarının—ve St. Jude'un altında gizlenen RedLink deneylerinin—genişletilmesini haklı çıkarmak için tasarlanmış kontrollü bir yıkımdı.
+Ve en altta, geçmişteki benliğinin önemsemeyi reddettiği üç satır:
 
-Katliam bir istihbarat başarısızlığı değildi. Bir *başarıydı*. Belediye başkanı RedLink programını keşfetmiş ve ifşa etmekle tehdit etmişti. "Cytrox saldırısı" terör kılığına sokulmuş cerrahi bir suikasttı.
+*Çapraz referans: Yol'daki askeri telsizler on bir saatlik bir döngüyle susuyor. Kerterizler tepeyi tırmanıp St. Jude'da ölüyor. O hastanede her ne çalıştırıyorlarsa, tıp değil.*
 
-Ve dosyanın en altında, Niva'nın el yazısıyla: *"On bir saatlik nabzın kaynağı St. Jude Akıl Hastanesi. RedLink denekleri kaynak. Onlar hasta değil. Bir anten. Yayın yapıyorlar."*
+Hepsi buydu. Yeterliydi. Rolnifeld'in kendi bilip gömdükleriyle yan yana koyunca—Yol için tahkimat emrinin başının üstünden, paketlenmiş halde, kimsenin asla gösteremediği kaynaklara atıfla gelişi; Niva'nın uyarısının katliamın ertesi sabahı arşivden silinmesi; kendi sessiz rütbe düşüşünün hızı—şekil, dişlilerin birbirine geçişinin soğuk tıkırtısıyla kendini kurdu.
+
+Cytrox, İstihbaratı alt etmemişti. Cytrox, İstihbaratın *ta kendisiydi*. Belediye başkanı, tepeye, St. Jude'a doğru kaybolan paralar hakkında sorular sormaya başlamıştı ve "saldırı," terör kılığına sokulmuş cerrahi bir suikasttı. Katliam bir başarısızlık değildi. Bir *başarıydı*.
 
 ---
 
@@ -88,7 +90,7 @@ Elleri tütüyordu. Kronometre elinden düşüp yerde yuvarlandı, içindeki kü
 
 Rolnifeld başını kaldırdı. Gözleri açık, ıslak ve tamamen yıkılmıştı.
 
-"Her şeyi," diye fısıldadı. "O her şeyi gördü. Bana söylemeye çalıştı ve ben—" Boğuldu. "Cytrox yok. Hiç var olmadı. Katliamı onlar yaptı. Hükümet belediye başkanını öldürdü. Babasını öldürdüler. Ve nabız—sinyal—akıl hastanesinden geliyor. Gül işaretli insanlardan."
+"Her şeyi," diye fısıldadı. "O her şeyi gördü. Bana söylemeye çalıştı ve ben—" Boğuldu. "Yol istihbaratı inanılsın diye inşa edilmişti. Emir başımın üstünden geldi ve onun uyarısı ertesi sabah arşivden silindi. Onlardı. Hükümet belediye başkanını öldürdü. Babasını öldürdüler. Ve nabız—daha hiçbirimiz onu duymadan o izini sürmüştü. Kerterizler tepede ölüyor. St. Jude'da."
 
 Oda sessizliğe gömüldü.
 

@@ -11,35 +11,35 @@
         (title) The Case of the Mirror Man
         (author) Constellation
         (date) 2025-11-23
-        (updated) 2025-11-23
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-1-thornus/the-diplomats-journal/the-skulls.txt
         (title) The Skulls in the Ceiling
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-1-thornus/the-whispering-rats/the-sewer-prophecy.txt
         (title) The Truth Under the Grate
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-1-thornus/niva-derosa/episode1_en.txt
         (title) The Crown of the Sewer
         (author) fezcode
         (date) 2026-01-11
-        (updated) 2026-01-11
+        (updated) 2026-08-13
       > (episode)
         (id) 5
         (filename) vol-1-thornus/niva-derosa/episode2_en.txt
         (title) The Massacre of the Grenadiers
         (author) fezcode
         (date) 2026-01-11
-        (updated) 2026-01-11
+        (updated) 2026-08-13
     (overlay) dodgerblue
 
   > (book)
@@ -61,7 +61,7 @@
         (title) The Fredsound Legacy
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-2-sin/the-chronomancers-dust/the-hour-of-ghosts.txt
@@ -90,7 +90,7 @@
         (title) The Stolen Star
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-3-redlink/doctor-blade/the-alilberry-cure.txt
@@ -104,7 +104,7 @@
         (title) The Hysteria of the Moth
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-3-redlink/the-sanity-ward/redlink-log.txt
@@ -118,7 +118,7 @@
         (title) The Secret Seed
         (author) fezcode
         (date) 2026-01-09
-        (updated) 2026-01-09
+        (updated) 2026-08-13
       > (episode)
         (id) 6
         (filename) vol-3-redlink/the-architecture-of-ghosts/en/the-fossilized-thought.txt
@@ -161,14 +161,14 @@
         (title) The Sin of the Seed
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-4-resistance/the-harvest-of-silence/the-listener-in-the-shadows.txt
         (title) The Listener in the Shadows
         (author) fezcode
         (date) 2026-01-08
-        (updated) 2026-01-08
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-4-resistance/the-butterflys-jest/the-last-laugh.txt
@@ -211,21 +211,21 @@
         (title) The Lighthouse of Ash
         (author) fezcode
         (date) 2026-01-27
-        (updated) 2026-01-27
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-5-black-ragnarok/signal-on-the-road/the-signal_en.txt
         (title) The Signal on the Road
         (author) fezcode
         (date) 2026-01-27
-        (updated) 2026-01-27
+        (updated) 2026-08-13
       > (episode)
         (id) 5
         (filename) vol-5-black-ragnarok/the-miserable-trail/the-trail_en.txt
         (title) The Miserable Trail
         (author) fezcode
         (date) 2026-01-27
-        (updated) 2026-01-27
+        (updated) 2026-08-13
     (overlay) darkslategray
 
   > (book)
@@ -240,35 +240,35 @@
         (title) The Rat King's Toll
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-6-the-fifth-death/the-man-who-wasnt-corrigan/the-corrigan_en.txt
         (title) The Man Who Wasn't Corrigan
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 3
         (filename) vol-6-the-fifth-death/eleven-hours/eleven-hours_en.txt
         (title) Eleven Hours
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 4
         (filename) vol-6-the-fifth-death/the-butterfly-and-the-blade/the-butterfly_en.txt
         (title) The Butterfly and the Blade
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
       > (episode)
         (id) 5
         (filename) vol-6-the-fifth-death/the-fifth-death/the-fifth-death_en.txt
         (title) The Fifth Death
         (author) fezcode
         (date) 2026-03-23
-        (updated) 2026-03-23
+        (updated) 2026-08-13
     (overlay) maroon
 
   > (book)
@@ -283,7 +283,7 @@
         (title) The Eleventh Hour
         (author) fezcode
         (date) 2026-06-02
-        (updated) 2026-06-02
+        (updated) 2026-08-13
       > (episode)
         (id) 2
         (filename) vol-7-agit/blood/blood_en.txt
