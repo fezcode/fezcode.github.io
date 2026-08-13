@@ -23,6 +23,7 @@ const DndPlacesPage = lazy(() => import('../pages/dnd/DndPlacesPage'));
 const DndItemsPage = lazy(() => import('../pages/dnd/DndItemsPage'));
 const DndBookPage = lazy(() => import('../pages/dnd/DndBookPage'));
 const DndAuthorsPage = lazy(() => import('../pages/dnd/DndAuthorsPage'));
+const DndTimelinePage = lazy(() => import('../pages/dnd/DndTimelinePage'));
 // Serfs & Frauds — "Black Ragnarok" retro-futuristic archive terminal (/snf)
 const SnfHubPage = lazy(() => import('../pages/snf/SnfHubPage'));
 const SnfArchivePage = lazy(() => import('../pages/snf/SnfArchivePage'));
@@ -737,6 +738,23 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <DndAuthorsPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        {/* D&D Timeline Page */}
+        <Route
+          path="/stories/timeline"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <DndTimelinePage />
               </Suspense>
             </motion.div>
           }

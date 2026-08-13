@@ -137,6 +137,7 @@ export const staticRoutes = [
   "/stories/items",
   "/stories/lore",
   "/stories/places",
+  "/stories/timeline",
   "/terminal",
   "/the-vague",
   "/timeline",

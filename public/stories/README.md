@@ -31,6 +31,7 @@ public/stories/
 *   `books_en.piml` / `books_tr.piml`: These PIML files serve as the main index for all story books and their respective episodes, separated by language.
 *   `characters.piml`: This PIML file contains the definitions for all characters (Dramatis Personae).
 *   `places.piml`: This PIML file contains the definitions for all places and locations (The Atlas).
+*   `timeline.piml`: This PIML file contains the in-world chronology (The Chronology), grouped into eras of events dated in A.W. (After the War).
 *   `meta-items/`: Contains item definitions and their respective images.
     *   `items.piml`: Definitions for artifacts and tools (The Armory).
 *   `vol-[id]-[slug]/`: Content is organized into "Volumes" (Phases).
@@ -146,6 +147,40 @@ The `books_*.piml` files are PIML documents that, when parsed, result in an obje
 *   `book` (String): The book/volume where it is featured.
 *   `description` (String): Description of the atmosphere.
 *   `status` (String): Current status (e.g., Active, Destroyed).
+
+## Timeline Structure (timeline.piml)
+
+```piml
+(timeline)
+  > (era)
+    (eraId) 1
+    (eraTitle) After the War
+    (eraSpan) 0 - 37 A.W.
+    (eraDescription) The guns of the Great War fall silent...
+    (events)
+      > (event)
+        (year) 0 A.W.
+        (title) The Great War Ends
+        (description) The Great War ends and the calendar of Thornus...
+        (book) Volume I: The Streets of Thornus
+        (bookId) 1
+```
+
+### Era Object Properties:
+
+*   `eraId` (Number): A unique identifier for the era, used for ordering.
+*   `eraTitle` (String): The name of the era.
+*   `eraSpan` (String): The range of years the era covers, in A.W.
+*   `eraDescription` (String): A one-line summary of the era's mood and stakes.
+*   `events` (Array): An array of event objects belonging to this era, in chronological order.
+
+### Event Object Properties:
+
+*   `year` (String): The in-world date (e.g., `38 A.W.`, `c. 55 A.W.`, `Undated`).
+*   `title` (String): The name of the event.
+*   `description` (String): What happened, spoiler-tolerant but concise.
+*   `book` (String, Optional): The volume where the event is told, matching a `bookTitle` in `books_en.piml`.
+*   `bookId` (Number, Optional): The `bookId` of that volume, used to link the event to `/stories/books/{bookId}`.
 
 ## Item Structure (meta-items/items.piml)
 

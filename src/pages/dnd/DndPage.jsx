@@ -11,6 +11,7 @@ import {
   UsersThreeIcon,
   MapTrifoldIcon,
   SwordIcon,
+  HourglassIcon,
 } from '@phosphor-icons/react';
 
 const DndPage = () => {
@@ -90,6 +91,12 @@ const DndPage = () => {
             description="Artifacts, curiosities, and tools of the trade."
             link="/stories/items"
             icon={<SwordIcon size={48} weight="duotone" />}
+          />
+          <DndCard
+            title="The Chronology"
+            description="The measured years of Thornus, era by era."
+            link="/stories/timeline"
+            icon={<HourglassIcon size={48} weight="duotone" />}
           />
           <DndCard
             title="Creators"
