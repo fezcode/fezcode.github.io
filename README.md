@@ -71,7 +71,7 @@ npm install
 ```bash
 npm start
 ```
-This will open the site at http://localhost:3000.
+This will open the site at http://localhost:5190 (the dev server port set in `vite.config.mjs`; if that port is busy, Vite falls back to the next free one — check the terminal output).
 
 ---
 
