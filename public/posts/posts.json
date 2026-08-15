@@ -1,5 +1,26 @@
 [
   {
+    "slug": "the-death-of-arkadas",
+    "title": "The Death of \"Arkadaş\": A Retrospective on How Turks Stopped Caring and Started Generalizing",
+    "date": "2026-08-15",
+    "updated": "2026-08-15",
+    "description": "A linguistic rant on how an ancient steppe combat pact (\"arka-taş\") devolved into hollow corporate jargon, paired with a chronological survey of what Seljuks, Ottomans, and modern street-dwellers called each other when precision still mattered.",
+    "tags": [
+      "language",
+      "etymology",
+      "turkish",
+      "history",
+      "rant",
+      "culture",
+      "sociology"
+    ],
+    "category": "rant",
+    "filename": "the-death-of-arkadas.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "penneys-game",
     "title": "Penney's Game: The Coin-Flip Bet Where Going Second Always Wins",
     "date": "2026-06-24",

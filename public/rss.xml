@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 09 Aug 2026 19:46:08 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 15 Aug 2026 13:28:18 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 09 Aug 2026 19:46:07 GMT</pubDate>
+        <pubDate>Sat, 15 Aug 2026 13:28:17 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Death of "Arkadaş": A Retrospective on How Turks Stopped Caring and Started Generalizing]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/the-death-of-arkadas</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/the-death-of-arkadas</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 15 Aug 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Death of &quot;Arkadaş&quot;: A Retrospective on How Turks Stopped Caring and Started Generalizing</h1>
+<p><a href="https://fezcode.com/blog/the-death-of-arkadas">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Penney's Game: The Coin-Flip Bet Where Going Second Always Wins]]></title>
             <description><![CDATA[[object Object]]]></description>
