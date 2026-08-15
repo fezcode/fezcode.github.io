@@ -15,7 +15,7 @@
     "katex": "^0.16.27",
     "marked": "^16.4.1",
     "mermaid": "^11.12.2",
-    "piml": "^1.1.1",
+    "piml": "github:fezcode/piml.js#v1.2.0",
     "prismjs": "^1.30.0",
     "qrcode.react": "^4.2.0",
     "react": "^19.2.0",

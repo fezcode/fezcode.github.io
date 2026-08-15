@@ -4,8 +4,8 @@
     (title) A Scandal in Bohemia
     (author) Arthur Conan Doyle
     (date) 1891
-    (backgroundColor) #9EC5AB
+    (backgroundColor) \#9EC5AB
     (fontFamily) font-playfairDisplay
-    (textColor) #1f2937
-    (hoverBackgroundColor) #7a9e8a
-    (hoverTextColor) #ffffff
+    (textColor) \#1f2937
+    (hoverBackgroundColor) \#7a9e8a
+    (hoverTextColor) \#ffffff

@@ -125,10 +125,10 @@
     (owner) Wulf Kosnak
 
   > (item)
-    (name) Nitrogen Booster (Batch #4)
+    (name) Nitrogen Booster (Batch \#4)
     (type) Industrial Chemical
     (book) Volume IV: The Resistance
-    (description) A standard agricultural supplement. The empty canister of Batch #4 stands in Avalia's lab as a reminder of the night Willare reached for the wrong shelf.
+    (description) A standard agricultural supplement. The empty canister of Batch \#4 stands in Avalia's lab as a reminder of the night Willare reached for the wrong shelf.
     (owner) Krones Research Lab
 
   > (item)
