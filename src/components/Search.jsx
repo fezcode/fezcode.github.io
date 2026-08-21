@@ -4,6 +4,7 @@ import BrutalistSearch from './BrutalistSearch';
 import LuxeSearch from './LuxeSearch';
 import TerracottaSearch from './TerracottaSearch';
 import MistSearch from './MistSearch';
+import LedgerSearch from './LedgerSearch';
 
 const Search = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -11,6 +12,7 @@ const Search = (props) => {
   if (fezcodexTheme === 'luxe') return <LuxeSearch {...props} />;
   if (fezcodexTheme === 'terracotta') return <TerracottaSearch {...props} />;
   if (fezcodexTheme === 'mist') return <MistSearch {...props} />;
+  if (fezcodexTheme === 'ledger') return <LedgerSearch {...props} />;
   return <BrutalistSearch {...props} />;
 };
 

@@ -195,7 +195,17 @@
     (from) 2026-06-09T00:00:00Z
     (to) 2026-09-30T23:59:59Z
     (text) FEZMIST IS ONLINE: A CODEX HALF-REMEMBERED — FOG PAPER, EUCALYPTUS INK, HORIZONS THAT FADE. ENABLE VIA SETTINGS OR COMMAND PALETTE.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/settings?fezTheme=mist#fezcodex-theme
     (linkText) Enable Mist
+
+  > (banner)
+    (id) fezledger-launch
+    (type) info
+    (from) 2026-08-21T00:00:00Z
+    (to) 2026-11-30T23:59:59Z
+    (text) FEZLEDGER IS ONLINE: THE CODEX RULED AND FILED — ONE MONOSPACE INK, DOTTED LEADERS, FIVE REGISTERS, NO ERASURES. ENABLE VIA SETTINGS OR COMMAND PALETTE.
+    (isActive) true
+    (link) https://fezcode.com/settings?fezTheme=ledger#interface
+    (linkText) Enable Ledger
 

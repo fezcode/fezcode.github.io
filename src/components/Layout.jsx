@@ -11,6 +11,10 @@ import TerracottaFooter from './TerracottaFooter';
 import MistSidebar from './MistSidebar';
 import MistNavbar from './MistNavbar';
 import MistFooter from './MistFooter';
+import LedgerSidebar from './LedgerSidebar';
+import LedgerNavbar from './LedgerNavbar';
+import LedgerFooter from './LedgerFooter';
+import '../styles/Ledger.css';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
 import CommandPalette from './CommandPalette';
@@ -109,7 +113,9 @@ const Layout = ({
             ? 'bg-[#F3ECE0]'
             : fezcodexTheme === 'mist'
               ? 'bg-[#EEF2F1]'
-              : 'bg-[#050505]'
+              : fezcodexTheme === 'ledger'
+                ? 'ldg-appframe'
+                : 'bg-[#050505]'
       } min-h-screen font-sans flex`}
     >
       {!hideLayout &&
@@ -129,6 +135,13 @@ const Layout = ({
           />
         ) : fezcodexTheme === 'mist' ? (
           <MistSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
+        ) : fezcodexTheme === 'ledger' ? (
+          <LedgerSidebar
             isOpen={isSidebarOpen}
             toggleSidebar={toggleSidebar}
             toggleModal={toggleModal}
@@ -167,6 +180,13 @@ const Layout = ({
               isSearchVisible={isSearchVisible}
               toggleSearch={toggleSearch}
             />
+          ) : fezcodexTheme === 'ledger' ? (
+            <LedgerNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
           ) : (
             <Navbar
               toggleSidebar={toggleSidebar}
@@ -190,6 +210,8 @@ const Layout = ({
             <LuxeFooter />
           ) : fezcodexTheme === 'mist' ? (
             <MistFooter />
+          ) : fezcodexTheme === 'ledger' ? (
+            <LedgerFooter />
           ) : (
             <Footer />
           ))}

@@ -31,7 +31,9 @@ const Toast = ({
     const urlTheme = new URLSearchParams(window.location.search).get(
       'fezTheme',
     );
-    return ['brutalist', 'luxe', 'terracotta', 'mist'].includes(urlTheme)
+    return ['brutalist', 'luxe', 'terracotta', 'mist', 'ledger'].includes(
+      urlTheme,
+    )
       ? urlTheme
       : LocalStorageManager.get('fezcodex-theme', 'brutalist');
   };
@@ -51,6 +53,7 @@ const Toast = ({
   const isTerracotta = theme === 'terracotta';
   const isLuxe = theme === 'luxe';
   const isMist = theme === 'mist';
+  const isLedger = theme === 'ledger';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -546,6 +549,166 @@ const Toast = ({
             aria-label="Dismiss"
           >
             <XIcon size={14} weight="light" />
+          </button>
+        </div>
+      </motion.div>
+    );
+  }
+
+  /* ============================================================
+   * LEDGER TOAST — a receipt slip pulled from the register. Colors come
+   * from the --ldg-* vars so the slip re-inks with the active register.
+   * ============================================================ */
+  if (isLedger) {
+    const ledgerBadge = (() => {
+      switch (type) {
+        case 'error':
+          return 'ERROR · FLAGGED';
+        case 'gold':
+          return 'HONOR · RECORDED';
+        case 'techno':
+          return 'SYSTEM · MINUTE';
+        default:
+          return 'ENTRY · FILED';
+      }
+    })();
+
+    const ledgerIcon = (() => {
+      // one ink only — the register's accent carries every type; the badge
+      // text does the differentiating, as a ledger would.
+      const common = { weight: 'bold', style: { color: 'var(--ldg-accent)' } };
+      switch (type) {
+        case 'error':
+          return <WarningCircleIcon {...common} />;
+        case 'gold':
+          return <TrophyIcon {...common} />;
+        case 'techno':
+          return <TerminalIcon {...common} />;
+        default:
+          return <CheckCircleIcon {...common} />;
+      }
+    })();
+
+    const ledgerBtnStyle = {
+      fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+      fontSize: '9px',
+      fontWeight: 700,
+      letterSpacing: '1px',
+      textTransform: 'uppercase',
+      padding: '3px 9px',
+      border: '1px solid var(--ldg-rule)',
+      borderRadius: 2,
+      color: 'var(--ldg-fg)',
+      background: 'transparent',
+    };
+
+    return (
+      <motion.div
+        layout
+        initial={{ x: 80, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={{ x: 80, opacity: 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 28 }}
+        className="relative w-80 md:w-96 overflow-hidden mb-4 group"
+        style={{
+          background: 'var(--ldg-bg)',
+          color: 'var(--ldg-fg)',
+          border: '1px solid var(--ldg-rule)',
+          borderRadius: 2,
+          boxShadow:
+            '0 0 0 3px var(--ldg-bg), 0 0 0 4px var(--ldg-rule), 0 18px 40px -18px rgba(0,0,0,0.4)',
+          fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+        }}
+      >
+        {/* timer — the entry's ink drying along the bottom rule */}
+        <motion.div
+          initial={{ width: '100%' }}
+          animate={{ width: 0 }}
+          transition={{ duration: duration / 1000, ease: 'linear' }}
+          className="absolute bottom-0 left-0 h-[2px] z-20"
+          style={{ background: 'var(--ldg-accent)', opacity: 0.7 }}
+        />
+
+        <div className="px-5 py-4 flex gap-4 items-start">
+          <div className="flex-shrink-0 mt-0.5 text-[20px]">{ledgerIcon}</div>
+
+          <div className="flex-grow min-w-0 space-y-1.5">
+            <div
+              className="text-[9px] font-bold uppercase"
+              style={{ letterSpacing: '2px', color: 'var(--ldg-accent)' }}
+            >
+              {ledgerBadge}
+            </div>
+
+            <h4
+              className="text-[13px] font-bold uppercase leading-tight"
+              style={{ letterSpacing: '1px', color: 'var(--ldg-highlight)' }}
+            >
+              {title}
+            </h4>
+
+            <p
+              className="text-[11px] leading-[1.55]"
+              style={{ color: 'var(--ldg-muted)' }}
+            >
+              {message}
+            </p>
+
+            {links && links.length > 0 && (
+              <div className="flex flex-wrap gap-2 pt-2">
+                {links.map((link, index) => {
+                  if (link.to)
+                    return (
+                      <Link
+                        key={index}
+                        to={link.to}
+                        style={ledgerBtnStyle}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  if (link.href)
+                    return (
+                      <a
+                        key={index}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={ledgerBtnStyle}
+                        onClick={() => removeToast(id)}
+                      >
+                        {link.label}
+                      </a>
+                    );
+                  if (link.onClick)
+                    return (
+                      <button
+                        type="button"
+                        key={index}
+                        onClick={() => {
+                          link.onClick();
+                          removeToast(id);
+                        }}
+                        style={ledgerBtnStyle}
+                      >
+                        {link.label}
+                      </button>
+                    );
+                  return null;
+                })}
+              </div>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => removeToast(id)}
+            className="flex-shrink-0 p-1 transition-colors"
+            style={{ color: 'var(--ldg-muted)' }}
+            aria-label="Dismiss"
+          >
+            <XIcon size={14} weight="bold" />
           </button>
         </div>
       </motion.div>

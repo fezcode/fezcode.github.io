@@ -321,6 +321,7 @@ const TerracottaSettingsPage = () => {
                     { label: 'Luxe (Refined)',     value: 'luxe' },
                     { label: 'Terracotta (Warm)',  value: 'terracotta' },
                     { label: 'Mist (Hazy)',        value: 'mist' },
+                    { label: 'Ledger (Archive)',   value: 'ledger' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}

@@ -34,6 +34,11 @@ const DesignSelectionPage = () => {
     navigate('/');
   };
 
+  const activateLedger = () => {
+    setFezcodexTheme('ledger');
+    navigate('/');
+  };
+
   return (
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
@@ -183,6 +188,80 @@ const DesignSelectionPage = () => {
                 <ArrowRightIcon
                   className="text-[#8A9894] group-hover:text-[#5F837B] group-hover:translate-x-2 transition-all"
                   size={24}
+                />
+              </div>
+            </motion.div>
+          </button>
+
+          {/* LEDGER CARD */}
+          <button
+            type="button"
+            onClick={activateLedger}
+            className="group block relative text-left"
+          >
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="h-full bg-[#FBFAF7] p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+              style={{
+                borderRadius: 2,
+                boxShadow:
+                  '0 0 0 1px rgba(33,34,42,0.25) inset, 0 0 0 5px #FBFAF7 inset, 0 0 0 6px rgba(33,34,42,0.25) inset, 0 30px 60px -30px rgba(33,34,42,0.3)',
+              }}
+            >
+              <div className="space-y-8 relative z-10">
+                <div
+                  className="w-16 h-16 flex items-center justify-center transition-all duration-500 group-hover:bg-[#0037D0] group-hover:text-[#FBFAF7]"
+                  style={{
+                    background: 'rgba(0,55,208,0.06)',
+                    color: '#0037D0',
+                    borderRadius: 2,
+                    border: '1px solid rgba(0,55,208,0.4)',
+                  }}
+                >
+                  <ScrollIcon size={32} weight="regular" />
+                </div>
+                <div className="space-y-4">
+                  <h2
+                    className="text-5xl font-bold uppercase leading-none"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: '#08080A',
+                      letterSpacing: '2px',
+                    }}
+                  >
+                    Ledger
+                  </h2>
+                  <p
+                    className="text-xs uppercase tracking-widest leading-relaxed"
+                    style={{
+                      fontFamily: "'JetBrains Mono', monospace",
+                      color: '#6D6E7C',
+                    }}
+                  >
+                    The registrar's archive. One monospace ink, hairline
+                    rules, dotted leaders, five cycling registers — no
+                    erasures.
+                  </p>
+                </div>
+              </div>
+
+              <div
+                className="mt-12 pt-8 flex justify-between items-center relative z-10 border-t"
+                style={{ borderColor: 'rgba(33,34,42,0.25)' }}
+              >
+                <span
+                  className="text-[10px] uppercase tracking-[0.3em] transition-colors group-hover:text-[#0037D0]"
+                  style={{
+                    color: '#6D6E7C',
+                    fontFamily: "'JetBrains Mono', monospace",
+                  }}
+                >
+                  Open_The_Book
+                </span>
+                <ArrowRightIcon
+                  className="group-hover:translate-x-2 transition-all"
+                  size={24}
+                  style={{ color: '#0037D0' }}
                 />
               </div>
             </motion.div>
@@ -857,7 +936,7 @@ const DesignSelectionPage = () => {
         <footer className="mt-24 pt-12 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-6 text-black/30 font-outfit text-[10px] uppercase tracking-[0.3em]">
           <div className="flex items-center gap-2">
             <LayoutIcon size={14} />
-            <span>Quad Theme Protocol Alpha</span>
+            <span>Quint Theme Protocol Alpha</span>
           </div>
           <span>Fezcodex Studio — 2026</span>
         </footer>

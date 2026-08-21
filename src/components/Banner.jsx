@@ -20,6 +20,7 @@ const Banner = () => {
   const isLuxe = fezcodexTheme === 'luxe';
   const isTerracotta = fezcodexTheme === 'terracotta';
   const isMist = fezcodexTheme === 'mist';
+  const isLedger = fezcodexTheme === 'ledger';
 
   useEffect(() => {
     const fetchBanner = async () => {
@@ -133,6 +134,81 @@ const Banner = () => {
       </Link>
     );
   };
+
+  /* ============================================================
+   * LEDGER BANNER — a minute pinned above the register. Inked with the
+   * --ldg-* vars so it follows the active register.
+   * ============================================================ */
+  if (isLedger) {
+    const kicker = (() => {
+      switch (bannerType) {
+        case 'error':
+          return 'ERRATUM';
+        case 'warning':
+          return 'CAVEAT';
+        case 'info':
+        default:
+          return 'MINUTE';
+      }
+    })();
+
+    return (
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="relative z-[100]"
+            style={{
+              background: 'var(--ldg-bg)',
+              borderBottom: '1px solid var(--ldg-rule)',
+              fontFamily: "'JetBrains Mono', ui-monospace, monospace",
+            }}
+          >
+            <div className="max-w-[1800px] mx-auto px-5 md:px-12 py-2.5 flex items-start md:items-center gap-4 md:gap-6">
+              <div className="flex items-center gap-3 shrink-0 pt-0.5 md:pt-0">
+                <span
+                  aria-hidden="true"
+                  style={{ color: 'var(--ldg-accent)' }}
+                >
+                  {iconFor(bannerType, 'bold', 14)}
+                </span>
+                <span
+                  className="text-[9.5px] font-bold uppercase hidden sm:inline"
+                  style={{ letterSpacing: '3px', color: 'var(--ldg-accent)' }}
+                >
+                  {kicker}
+                </span>
+              </div>
+
+              <div className="flex-1 flex flex-col md:flex-row md:items-center gap-2 md:gap-4 min-w-0">
+                <p
+                  className="text-[12px] leading-snug flex-1"
+                  style={{ color: 'var(--ldg-fg)' }}
+                >
+                  {banner.text}
+                </p>
+                {renderLink(
+                  'self-start md:self-auto shrink-0 inline-flex items-center gap-1 text-[9.5px] font-bold uppercase tracking-[0.2em] px-2.5 py-1 transition-colors ldg-banner-link',
+                )}
+              </div>
+
+              <button
+                type="button"
+                onClick={handleDismiss}
+                className="p-1 transition-colors shrink-0 mt-0.5 md:mt-0"
+                style={{ color: 'var(--ldg-muted)' }}
+                aria-label="Dismiss"
+              >
+                <XIcon size={14} weight="bold" />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    );
+  }
 
   /* ============================================================
    * TERRACOTTA BANNER — editorial bone strip with terra dot

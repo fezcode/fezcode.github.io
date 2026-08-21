@@ -4,6 +4,7 @@ import BrutalistImageModal from './BrutalistImageModal';
 import LuxeImageModal from './LuxeImageModal';
 import TerracottaImageModal from './TerracottaImageModal';
 import MistImageModal from './MistImageModal';
+import LedgerImageModal from './LedgerImageModal';
 
 const ImageModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -12,6 +13,7 @@ const ImageModal = (props) => {
   if (fezcodexTheme === 'terracotta')
     return <TerracottaImageModal {...props} />;
   if (fezcodexTheme === 'mist') return <MistImageModal {...props} />;
+  if (fezcodexTheme === 'ledger') return <LedgerImageModal {...props} />;
   return <BrutalistImageModal {...props} />;
 };
 

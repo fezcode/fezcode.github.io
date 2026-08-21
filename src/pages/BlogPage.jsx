@@ -4,6 +4,7 @@ import BrutalistBlogPage from './blog-views/BrutalistBlogPage';
 import LuxeBlogPage from './luxe-views/LuxeBlogPage';
 import TerracottaBlogPage from './blog-views/TerracottaBlogPage';
 import MistBlogPage from './blog-views/MistBlogPage';
+import LedgerBlogPage from './blog-views/LedgerBlogPage';
 
 const BlogPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -11,6 +12,7 @@ const BlogPage = () => {
   if (fezcodexTheme === 'luxe') return <LuxeBlogPage />;
   if (fezcodexTheme === 'terracotta') return <TerracottaBlogPage />;
   if (fezcodexTheme === 'mist') return <MistBlogPage />;
+  if (fezcodexTheme === 'ledger') return <LedgerBlogPage />;
   return <BrutalistBlogPage />;
 };
 

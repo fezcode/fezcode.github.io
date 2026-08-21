@@ -26,11 +26,13 @@ const ContactModal = ({ isOpen, onClose }) => {
   const isLuxe = fezcodexTheme === 'luxe';
   const isTerracotta = fezcodexTheme === 'terracotta';
   const isMist = fezcodexTheme === 'mist';
+  const isLedger = fezcodexTheme === 'ledger';
 
   const title = (() => {
     if (isLuxe) return 'Establish Contact';
     if (isTerracotta) return 'Correspondence';
     if (isMist) return 'Through the Fog';
+    if (isLedger) return 'REGISTERED POST';
     return 'Contact';
   })();
 
@@ -66,7 +68,12 @@ const ContactModal = ({ isOpen, onClose }) => {
             </p>
           </div>
         )}
-        {!isLuxe && !isTerracotta && !isMist && (
+        {isLedger && (
+          <p className="ldg-eyebrow mb-1">
+            CHANNELS · ENTRIES ACCEPTED IN ANY INK
+          </p>
+        )}
+        {!isLuxe && !isTerracotta && !isMist && !isLedger && (
           <p className="text-gray-400 mb-2 font-mono uppercase tracking-widest text-[10px]">
             {'//'} Establish connection via established protocols:
           </p>
@@ -80,7 +87,9 @@ const ContactModal = ({ isOpen, onClose }) => {
                 ? 'gap-0 border-t border-[#1A161320]'
                 : isMist
                   ? 'gap-0'
-                  : 'gap-3'
+                  : isLedger
+                    ? 'gap-1'
+                    : 'gap-3'
           }`}
         >
           {config?.socials &&
@@ -114,6 +123,17 @@ const ContactModal = ({ isOpen, onClose }) => {
               if (isMist) {
                 return (
                   <MistContactLink
+                    key={link.id}
+                    href={link.url}
+                    icon={Icon}
+                    label={link.label}
+                    value={cleaned}
+                  />
+                );
+              }
+              if (isLedger) {
+                return (
+                  <LedgerContactLink
                     key={link.id}
                     href={link.url}
                     icon={Icon}
@@ -195,6 +215,30 @@ const MistContactLink = ({ href, icon: Icon, label, value }) => (
       weight="light"
       className="text-[#8A9894] group-hover:text-[#5F837B] transition-colors"
     />
+  </a>
+);
+
+const LedgerContactLink = ({ href, icon: Icon, label, value }) => (
+  <a
+    href={href}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="ldg-row-link"
+  >
+    <Icon size={16} weight="bold" className="shrink-0 self-center" />
+    <span
+      className="ldg-label font-bold shrink-0"
+      style={{ width: '10ch' }}
+    >
+      {label}
+    </span>
+    <span className="ldg-leader" aria-hidden="true" />
+    <span className="truncate" style={{ textTransform: 'lowercase' }}>
+      {value}
+    </span>
+    <span className="ldg-accent" aria-hidden="true">
+      ↗
+    </span>
   </a>
 );
 

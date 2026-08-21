@@ -417,6 +417,7 @@ const MistSettingsPage = () => {
                     { label: 'luxe (refined)', value: 'luxe' },
                     { label: 'terracotta (warm)', value: 'terracotta' },
                     { label: 'mist (this fog)', value: 'mist' },
+                    { label: 'ledger (archive)', value: 'ledger' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
