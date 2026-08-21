@@ -1,0 +1,8 @@
+# Concurrent Performance
+
+Leveraging Go's Goroutines to accelerate the rendering pipeline.
+
+## Go vs Python
+- **Speed**: Significant performance uplift over Matplotlib rendering.
+- **Type Safety**: Reduces bugs in coordinate transformation.
+- **Distribution**: Compiles to a single static binary for easy use.

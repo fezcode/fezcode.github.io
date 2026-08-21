@@ -1,0 +1,46 @@
+id: turkish-pop
+rank: 37
+name: TURKISH POP
+family: Turkish
+years: 1985 → present
+sub: Western pop production married to Turkish melodic phrasing — an export industry built in the 1990s
+spec: 70,80,84,74,64,66,72,78,80,76,72,74,78,80,76,68,60,52,44,38
+synthType: triangle
+freqs: 68.94, 86.41, 335.14
+
+what:
+ Modern Turkish pop dates to the mid-1980s liberalisation, when private media and imported studio technology arrived at once. By the 1990s it had a distinct formula: pop songwriting and dance production carrying melodies still shaped by makam, with darbuka and clarinet worked into the rhythm section. *Tarkan* is the genre's global breakout — "Şımarık" (1997) charted across Europe and Latin America.
+
+artists:
+ Sezen Aksu is the architect — as songwriter and producer she wrote or shaped much of the canon and mentored the generation that followed. Then Tarkan, Sertab Erener (Eurovision winner, 2003), Mustafa Sandal, Hadise, Kenan Doğulu; more recently Sıla and Simge.
+
+trivia:
+ Sezen Aksu is known nationally as *"Minik Serçe"* (Little Sparrow) and her influence is closer to that of a national institution than a pop star — she co-wrote Tarkan's early hits and Sertab's Eurovision winner. Tarkan's *Karma* (2001), which "Uzak" comes from, was released simultaneously in Turkish and English-language versions in a push at the US market that never quite landed.
+
+sonic:
+ Four-on-the-floor or a darbuka-driven _çiftetelli_ groove, glossy synth strings, and a lead vocal that uses folk ornamentation over pop harmony. Songs typically stay in a minor makam-derived mode but resolve like Western pop, which is what makes them travel. Choruses are dense with backing vocal stacks and heavy reverb.
+
+gear:
+ Darbuka and bendir alongside programmed drums; clarinet, ud and kanun as hook instruments; Roland and Korg workstations for the string and brass pads. Studios in Istanbul (Stüdyo Sound, İmaj) ran the same SSL/Pro Tools chains as their European counterparts by the mid-1990s.
+
+prod:
+ Produced for two markets at once — domestic cassette/CD and a European diaspora dance floor — so most singles get a club remix built into the release plan. The vocal is compressed hard and doubled at the octave in choruses; the darbuka is layered with a sampled electronic percussion track so the groove reads on both a wedding PA and a car stereo.
+
+tracks:
+ - Benmişim | Nev
+ - Unut Onu Kalbim | Yusuf Güney
+ - Adı İntikamdı | Mustafa Sandal
+ - Bir Beyaz Orkide | Cihan Mürtezaoğlu
+ - Sevdik Sevdalandık | Reyhan Karaca
+ - Günaydın - Remastered | Yalın
+ - Ya Bu İşler Ne | Mabel Matiz
+ - Açık Adres | Sertab Erener
+ - Nedenini Sorma | Hepsi
+ - Gözyaşlarım Anlatır | Şahsenem
+ - Yalan | Candan Erçetin
+ - Bu Kadar Mı | Emre Altuğ
+ - Gitti Gideli | Tarkan
+ - Adımı Kalbine Yaz | Tarkan
+ - İsyankar | Mustafa Sandal
+ - Uzak | Tarkan
+ - Git | Irem

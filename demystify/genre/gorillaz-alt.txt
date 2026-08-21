@@ -1,0 +1,32 @@
+id: gorillaz-alt
+rank: 27
+name: GENRE-FLUID ALTERNATIVE HIP HOP
+family: Hip Hop
+years: 1998 → present
+sub: Rap as one ingredient in a producer-led collage rather than the frame around it
+spec: 80,86,78,60,54,60,66,72,76,74,70,72,76,78,74,68,62,54,46,40
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ *Gorillaz* — Damon Albarn (Blur) and comics artist Jamie Hewlett — launched in 1998 as a fictional four-piece band, which freed the project from genre expectation entirely. Each album is a curated guest list spanning rap, soul, dub, Afrobeat and electronic music, held together by Albarn's melancholy melodic writing.
+
+artists:
+ Gorillaz themselves; the wider lineage includes DJ Shadow, Massive Attack's guest-vocalist model, Danger Mouse (who produced *Demon Days*), and Anderson .Paak's later collaborations. "Stylo" features *Bobby Womack* and *Mos Def*.
+
+trivia:
+ Bobby Womack was *66, in poor health and had not made a significant record in years* when Albarn brought him in for Plastic Beach; he sang until he physically could not continue, and the take on "Stylo" is that performance. The collaboration restarted his career — Albarn went on to produce Womack's 2012 comeback album. The song's video is a car chase starring *Bruce Willis*, playing himself, shooting at the band.
+
+sonic:
+ A single hypnotic synth-bass motorik pulse under a slow, four-on-the-floor kick, with everything else — Albarn's low-register verse, Mos Def's rap, Womack's soul screaming — layered on top of an unchanging bed. The mix is deliberately murky, drenched in tape saturation, with the guest vocal always the brightest thing in the field.
+
+gear:
+ Albarn's toolkit is famously cheap and portable: melodica, a Korg MicroKORG, an old Casio, an iPad (Plastic Beach's successor was partly recorded on one), plus a real Rhodes and dub-style spring reverbs and tape echoes. Hewlett's visual identity does as much work as the instruments in defining the project.
+
+prod:
+ Albarn builds the bed first, then invites guests in and lets them do what they do — the record is assembled from sessions recorded in different cities and stitched. That accounts for the collage quality and also for the consistency: the glue is Albarn's mixing choices, heavy on tape emulation and a narrow low-mid focus that makes wildly different sources sound like the same room.
+
+tracks:
+ - Stylo | Gorillaz, Bobby Womack, Mos Def
+ - November Has Come | Gorillaz, MF DOOM
+ - Feel Good Inc. | Gorillaz, De La Soul

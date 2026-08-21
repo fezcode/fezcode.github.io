@@ -1,0 +1,7 @@
+LABEL: Related Artifacts
+SUBTEXT: SEE ALSO
+
+- [piml.js](/projects/piml.js) - JavaScript implementation.
+- [go-piml](/projects/go-piml) - Go implementation.
+- [PIML Highlighter](/projects/piml-highlighter) - VS Code extension.
+- [PIML Lab](/apps/piml-lab) - Interactive playground.

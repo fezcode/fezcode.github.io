@@ -1,0 +1,48 @@
+# Philosophy 101: The Big Three - Socrates, Plato, Aristotle
+
+## The Foundation
+
+If Western Philosophy is a building, these three guys are the basement, the foundation, and the ground floor. Almost everything that came after is a response to them.
+
+## 1. Socrates (c. 470–399 BC) - The Gadfly
+
+Socrates didn't write anything down. We only know him through his student, Plato. He spent his life wandering around Athens, annoying important people by asking them to define things like "Justice" or "Piety" and then dismantling their answers.
+
+*   **The [Socratic Method](/vocab/socratic-method):** Teaching by asking questions, not by giving answers. It's about exposing ignorance to clear the way for truth.
+*   **The Examined Life:** He believed that the only thing worth knowing was how to live a virtuous life.
+*   **The End:** He annoyed Athens so much they voted to execute him (by drinking hemlock). He accepted his death rather than flee, arguing that he had to obey the laws of the city that raised him.
+
+## 2. Plato (c. 428–348 BC) - The Idealist
+
+Plato was Socrates' student. He was traumatized by Socrates' death and lost faith in democracy.
+
+*   **The [Theory of Forms](/vocab/theory-of-forms):** Plato believed that the physical world is just a shadow of a higher, perfect reality. There is a perfect "Form" of Goodness, Justice, and even a Chair, which we can only grasp with our minds, not our senses.
+*   **The Allegory of the Cave:** Imagine prisoners chained in a cave, seeing only shadows on the wall. That's us. The philosopher is the one who breaks free, sees the sun (the Truth), and comes back to tell the others (who usually try to kill him).
+*   **The Republic:** His vision of a perfect society run by "Philosopher Kings" (because he thought philosophers were the smartest, obviously).
+
+## 3. Aristotle (384–322 BC) - The Realist
+
+Aristotle was Plato's student, but he disagreed with his teacher. If Plato pointed up to the heavens (Forms), Aristotle pointed down to the earth (Reality).
+
+*   **Empiricism:** Aristotle believed truth is found *in* the world around us, through observation and categorization. He essentially invented Biology, Logic, and Zoology.
+*   **Virtue Ethics:** As we discussed in [Ethics](/blog/series/philosophy-101/ethics), he believed the goal of life is *Eudaimonia* (flourishing), achieved by practicing virtues (the "Golden Mean" between extremes).
+*   **The Polymath:** He wrote about everything—physics, poetry, politics, theater, music. He was the tutor of Alexander the Great.
+
+## The Lineage
+
+Socrates taught Plato.
+Plato taught Aristotle.
+Aristotle taught Alexander the Great.
+Alexander the Great conquered the known world.
+
+Not a bad lineage for a guy who just liked to ask annoying questions.
+
+## Recommended Resources
+
+**1. The Book:**
+*   **"The Last Days of Socrates" by Plato**.
+*   Contains the *Apology* (his defense at trial) and *Crito*. Essential reading.
+
+**2. The YouTube Channel:**
+*   **Philosophize This!**
+*   Start from Episode 1. It's the best podcast/series on the history of philosophy.

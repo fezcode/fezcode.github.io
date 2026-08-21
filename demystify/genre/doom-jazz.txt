@@ -1,0 +1,30 @@
+id: doom-jazz
+rank: 54
+name: DOOM JAZZ & DARK CABARET
+family: Score & Ambient
+years: 1994 → present
+sub: Jazz instrumentation slowed to a crawl and scored for a film that does not exist
+spec: 88,84,72,58,52,56,62,68,72,74,72,70,72,76,74,68,60,52,44,36
+synthType: sine
+freqs: 55, 68.94, 420.08
+
+what:
+ Germany's Bohren & der Club of Gore invented the form in the 1990s by playing jazz ballads at a fraction of their tempo with metal's sense of dread. The Netherlands' Kilimanjaro Darkjazz Ensemble took the same idea toward film scoring, adding electronics and processed strings. It is a small tradition with an outsized influence on television scoring and on ambient music generally.
+
+artists:
+ Bohren & der Club of Gore as the originators; *The Kilimanjaro Darkjazz Ensemble* and its offshoots The Mount Fuji Doomjazz Corporation and Sunken; Dale Cooper Quartet in France; Angelo Badalamenti's _Twin Peaks_ work as the acknowledged ancestor of the whole register.
+
+trivia:
+ Bohren & der Club of Gore began as a hardcore punk band and switched entirely, keeping the name — which means roughly "drilling and the club of gore" — and the same personnel. The Kilimanjaro Darkjazz Ensemble started by writing alternative scores to silent films including _Nosferatu_ and performing them live to the projection, which is why the music sounds like it is waiting for an image.
+
+sonic:
+ Tempos below 60 BPM, brushed drums, upright bass, muted trumpet or saxophone playing long single notes, and Rhodes or vibraphone underneath. Everything is drenched in reverb and frequently processed beyond the instrument's natural decay. There is no resolution — chords hang unresolved for minutes at a time, which is the entire emotional mechanism.
+
+gear:
+ Upright bass, brushed kit, Fender Rhodes, vibraphone, muted trumpet and tenor saxophone, recorded acoustically and then run through tape delay, convolution reverb and granular processing. Several of these groups perform with a laptop as a full member of the ensemble.
+
+prod:
+ Recorded in real rooms with the natural decay captured, then extended electronically — the join between acoustic and processed space is deliberately hidden. Mastering is quiet and dark, preserving enormous dynamic range, because the music depends on a listener leaning in. It is effectively unplayable on a phone speaker and the artists know it.
+
+tracks:
+ - Embers | The Kilimanjaro Darkjazz Ensemble

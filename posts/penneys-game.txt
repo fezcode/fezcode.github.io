@@ -1,0 +1,61 @@
+# Penney's Game: The Coin-Flip Bet Where Going Second Always Wins
+
+*A short tour of a non-transitive coin game where the smart move is to let your opponent choose first.*
+
+---
+
+## TL;DR
+
+Penney's Game is a two-player coin game. Each player picks a length-three sequence of heads and tails, like `HHT`. You then flip a fair coin over and over until one of the two chosen sequences shows up as three flips in a row — that player wins. The catch is that the game is **non-transitive**, just like rock-paper-scissors: whatever the first player picks, the second player can always pick something that beats it, sometimes by a mile. The whole trick is to never pick first.
+
+---
+
+## The rules
+
+1. Player 1 announces a sequence of three, say `HHH`.
+2. Player 2, having heard it, announces their own, say `THH`.
+3. Flip a fair coin, tracking the running stream, until one player's pattern appears as three consecutive flips.
+4. That player wins.
+
+It *feels* perfectly symmetric. It is not.
+
+---
+
+## Why going second wins
+
+Take `HHH` vs `THH`. For `HHH` to win, the very first three flips must all be heads — probability `1/8`. If they aren't, then a tails has appeared somewhere before the run of heads finished, and the instant that tails is followed by two heads, `THH` has already won. So out of the gate, `THH` wins **7 times out of 8**.
+
+The same logic, more gently, gives `THH` the edge over `HHT` at `3/4`. Your sequence is essentially lying in wait to swallow the opponent's.
+
+---
+
+## The second player's recipe
+
+There's a one-line rule for the optimal response. Given Player 1's sequence `ABC`, Player 2 picks:
+
+> the **opposite of the middle letter**, then the **first two letters** → `(not B) A B`.
+
+So `HTH` → middle is `T`, flip to `H`, prepend to `HT` → Player 2 plays `HHT`.
+
+The full table of best responses and the odds they give the second player:
+
+| Player 1 | Player 2 | Odds for P2 |
+|----------|----------|-------------|
+| `HHH`    | `THH`    | 7 : 1       |
+| `HHT`    | `THH`    | 3 : 1       |
+| `HTH`    | `HHT`    | 2 : 1       |
+| `HTT`    | `HHT`    | 2 : 1       |
+| `THH`    | `TTH`    | 2 : 1       |
+| `THT`    | `TTH`    | 2 : 1       |
+| `TTH`    | `HTT`    | 3 : 1       |
+| `TTT`    | `HTT`    | 7 : 1       |
+
+Every row is a winning bet for the player who moved second.
+
+---
+
+## The surprising part
+
+There is **no best sequence**. Notice the loop: `HHT` beats `HTH`, `HTH` beats `HTT`... and `THH` beats `HHT`, which would beat something that beats `THH`. Pick any sequence and another one beats it — exactly the rock-paper-scissors structure, except here the imbalance can be a brutal 7-to-1 rather than a fair third.
+
+Our intuition assumes that "more likely to win than X" is a transitive ranking. Penney's Game is the cleanest possible demonstration that it doesn't have to be. So the next time someone offers to let you pick your three coin flips first, decline — and make them go first instead.

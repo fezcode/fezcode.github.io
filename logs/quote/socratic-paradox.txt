@@ -1,0 +1,41 @@
+# The only true wisdom is in knowing you know nothing
+
+> *"The only true wisdom is in knowing you know nothing."*
+
+## The phrase
+
+| Language | Form |
+| --- | --- |
+| Greek (paraphrase) | *ἓν οἶδα ὅτι οὐδὲν οἶδα* — *hen oîda hóti oudèn oîda* |
+| Literal | "One thing I know: that I know nothing." |
+| Common English | The only true wisdom is in knowing you know nothing. |
+
+The widely circulated English version is a popular paraphrase, often attributed to Socrates by way of Plato. The exact wording does not appear in the dialogues; the closest source is the **Apology** (21d), where Socrates, recounting his conversation with a man reputed to be wise, concludes:
+
+> *"I am wiser than this man; for neither of us really knows anything fine and good, but this man thinks he knows something when he does not, whereas I, as I do not know anything, do not think I do either."*
+
+The compressed proverb we quote today is a later distillation of that passage.
+
+## Origin
+
+Socrates (c. 470–399 BC) never wrote anything down. Everything attributed to him reaches us through his students — primarily **Plato** and, to a lesser extent, **Xenophon**. The "I know that I know nothing" formulation is sometimes called the *Socratic paradox*, though Socrates himself uses it not as a paradox but as a procedural starting point: if you don't grant that you might be wrong, you cannot inquire honestly.
+
+## Why it endures
+
+Two reasons it has survived 2,400 years of quotation:
+
+1. **It is a precondition for inquiry, not a conclusion of it.** The line is usually read as humility, but its real function is methodological. You can only investigate a question seriously if you treat your current answer as provisional. Every research practice — from science to law to debugging — depends on this move.
+2. **It distinguishes confidence from knowledge.** Most people who *think* they know something have not separated "I have a strong intuition" from "I have verified this." Socrates' contribution was to make that gap visible and uncomfortable.
+
+## In practice
+
+Useful as a check on two reflexes:
+
+- **When you find yourself certain.** Ask what would have to be true for you to be wrong. If you can't name anything, the certainty is probably a feeling, not a finding.
+- **When you find yourself dismissive of someone else.** Ask what they might know that you don't. The Socratic move is to assume there is something, and to look for it before deciding they're confused.
+
+## See also
+
+- Plato, *Apology*, 21a–23b — the source passage.
+- Xenophon, *Memorabilia* — a parallel, less philosophical portrait of Socrates.
+- The Dunning–Kruger effect — the modern empirical cousin: people with the least knowledge are often the most confident.

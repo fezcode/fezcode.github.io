@@ -1,0 +1,4 @@
+Aseprite is the industry standard for creating pixel art and animations.
+It provides a specialized environment with features like pixel-perfect drawing,
+a dedicated animation timeline, and seamless sprite sheet exporting.
+It's a must-have tool for any serious pixel artist or game developer.

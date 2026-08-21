@@ -1,0 +1,11 @@
+# Powerful CLI Automation
+
+A tool for designers and developers alike. Fully automatable via command line.
+
+## Basic Usage
+```bash
+./CartoGo.exe -city "Sydney" -country "Australia"
+```
+
+## Batch Processing
+Easily scriptable to generate a collection of posters for entire countries or regions using simple shell loops.

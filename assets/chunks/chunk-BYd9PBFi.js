@@ -1,0 +1,1 @@
+import{j as t}from"../entries/pages.d-G5-okW.js";const a=({error:e=!1,children:o,className:s=""})=>t.jsx("p",{className:`ldg-notice ${e?"ldg-notice-error":""} ${s}`,role:e?"alert":void 0,children:o});export{a as L};
