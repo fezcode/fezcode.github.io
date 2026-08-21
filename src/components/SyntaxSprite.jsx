@@ -303,6 +303,7 @@ const SyntaxSprite = () => {
 
   const isTerracotta = fezcodexTheme === 'terracotta';
   const isMist = fezcodexTheme === 'mist';
+  const isLedger = fezcodexTheme === 'ledger';
   const spriteColor = isTerracotta
     ? '#C96442'
     : fezcodexTheme === 'luxe'
@@ -451,6 +452,158 @@ const SyntaxSprite = () => {
             transition={{ repeat: Infinity, duration: 1.6 }}
             className="block mt-1.5 rounded-full bg-[#3C4845]"
             style={{ width: 18, height: 3, filter: 'blur(2px)' }}
+          />
+        </motion.div>
+      </div>
+    );
+  }
+
+  /* -------------------------------------------------------------
+   * LEDGER COMPANION — the registrar's seal. A small square stamp
+   * bearing § that rocks along the bottom rule of the page; jumping
+   * is a press-and-lift, thinking produces a double-ruled marginal
+   * note. Inked entirely from the --ldg-* vars, so the seal follows
+   * whichever register the reader has open.
+   * ------------------------------------------------------------- */
+  if (isLedger) {
+    return (
+      <div
+        key="ledger-syntax"
+        className="fixed bottom-0 left-0 w-full h-32 pointer-events-none z-[9999]"
+        style={{ fontFamily: "'JetBrains Mono', ui-monospace, monospace" }}
+      >
+        <motion.div
+          key="ledger-seal"
+          animate={{ x: `${position.x}vw` }}
+          transition={{ type: 'spring', stiffness: 100, damping: 20, mass: 0.1 }}
+          className="absolute bottom-2 flex flex-col items-center pointer-events-auto cursor-help"
+          style={{ width: '60px' }}
+          onClick={handleSpriteClick}
+        >
+          {/* Marginal note — a double-ruled slip in the register's ink */}
+          <AnimatePresence>
+            {thought && (
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 8 }}
+                transition={{ duration: 0.2, ease: 'easeOut' }}
+                className="absolute bottom-full mb-5 max-w-[320px] w-max"
+                style={{ right: 'auto', left: '50%', translate: '-50% 0' }}
+              >
+                <div
+                  className="relative px-4 pt-2.5 pb-3"
+                  style={{
+                    background: 'var(--ldg-bg)',
+                    color: 'var(--ldg-fg)',
+                    border: '1px solid var(--ldg-rule)',
+                    borderRadius: 2,
+                    boxShadow:
+                      '0 0 0 3px var(--ldg-bg), 0 0 0 4px var(--ldg-rule), 0 18px 40px -18px rgba(0,0,0,0.4)',
+                  }}
+                >
+                  <div
+                    className="flex items-center gap-2 pb-2 mb-2 text-[8.5px] font-bold uppercase"
+                    style={{
+                      letterSpacing: '0.22em',
+                      color: 'var(--ldg-accent)',
+                      borderBottom: '1px dashed var(--ldg-rule)',
+                    }}
+                  >
+                    <span aria-hidden="true">§</span>
+                    <span>SYNTAX · MARGINAL NOTE</span>
+                  </div>
+                  <p
+                    className="text-[11px] leading-[1.55] max-w-[46ch]"
+                    style={{ color: 'var(--ldg-fg)' }}
+                  >
+                    {thought}
+                  </p>
+                  <span
+                    aria-hidden="true"
+                    className="absolute top-full left-1/2 -translate-x-1/2 -translate-y-px"
+                    style={{
+                      width: 0,
+                      height: 0,
+                      borderLeft: '6px solid transparent',
+                      borderRight: '6px solid transparent',
+                      borderTop: '6px solid var(--ldg-rule)',
+                    }}
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* The seal — rocks on its edge as it walks, presses down on a jump */}
+          <motion.div
+            animate={
+              isJumping
+                ? { y: [0, -30, 2, 0], rotate: [0, 0, 0, 0] }
+                : state === 'walking'
+                  ? { rotate: [-4, 4, -4], y: [0, -1.5, 0] }
+                  : { rotate: [0, 1, 0, -1, 0] }
+            }
+            transition={
+              isJumping
+                ? { duration: 0.8, ease: 'easeInOut' }
+                : {
+                    repeat: Infinity,
+                    duration: state === 'walking' ? 0.6 : 4,
+                    ease: 'easeInOut',
+                  }
+            }
+            className="relative w-10 h-10 flex items-center justify-center"
+            title="Syntax — the codex companion"
+            style={{
+              background: 'var(--ldg-bg)',
+              border: '1.5px solid var(--ldg-accent)',
+              borderRadius: 2,
+              boxShadow:
+                '0 0 0 3px var(--ldg-bg), 0 0 0 4px var(--ldg-accent), 0 6px 14px -6px rgba(0,0,0,0.45)',
+            }}
+          >
+            <span
+              className="text-[20px] font-bold select-none"
+              style={{ color: 'var(--ldg-accent)', lineHeight: 1 }}
+              aria-hidden="true"
+            >
+              §
+            </span>
+            {/* thinking ring — the seal considering where to stamp */}
+            <AnimatePresence>
+              {state === 'thinking' && (
+                <motion.span
+                  initial={{ opacity: 0, scale: 0.6 }}
+                  animate={{ opacity: [0.6, 0.15, 0.6], scale: [1, 1.25, 1] }}
+                  exit={{ opacity: 0, scale: 0.6 }}
+                  transition={{ duration: 1.8, repeat: Infinity }}
+                  aria-hidden="true"
+                  className="absolute -inset-2 pointer-events-none"
+                  style={{
+                    border: '1px solid var(--ldg-accent)',
+                    borderRadius: 2,
+                  }}
+                />
+              )}
+            </AnimatePresence>
+          </motion.div>
+
+          {/* the rule it walks on — a hairline tick, inked heavier on a press */}
+          <motion.span
+            aria-hidden="true"
+            animate={
+              state === 'walking' || isJumping
+                ? { scaleX: [1, 0.7, 1], opacity: [0.7, 0.4, 0.7] }
+                : { opacity: 0.55 }
+            }
+            transition={{ repeat: Infinity, duration: 0.6 }}
+            className="block mt-1.5"
+            style={{
+              width: 20,
+              height: 1,
+              background: 'var(--ldg-rule)',
+            }}
           />
         </motion.div>
       </div>

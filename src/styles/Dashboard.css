@@ -1,0 +1,288 @@
+/* ==========================================================================
+   FZX Control Surface — /dashboard as a piece of hardware.
+   Warm grey plastic panel, silkscreen micro-labels, corner screws,
+   recessed phosphor-mint LCDs, segmented LED meters, colored function
+   keycaps, and one working rotary knob. Cassette futurism, in service of
+   real numbers.
+   ========================================================================== */
+
+:root {
+  --fzx-bench: #b9b3a4;
+  --fzx-panel: #e6e2d6;
+  --fzx-panel-deep: #d9d4c5;
+  --fzx-ink: #33322c;
+  --fzx-ink-soft: rgba(51, 50, 44, 0.62);
+  --fzx-screen: #161d18;
+  --fzx-phosphor: #a7ecbf;
+  --fzx-phosphor-dim: rgba(167, 236, 191, 0.28);
+  --fzx-orange: #ef7233;
+  --fzx-teal: #2e9e8f;
+  --fzx-yellow: #f0c53c;
+  --fzx-red: #dd5340;
+  --fzx-emboss-dark: rgba(51, 50, 44, 0.22);
+  --fzx-emboss-light: rgba(255, 255, 255, 0.65);
+}
+
+/* --- Bench & panel ---------------------------------------------------------- */
+
+.fzx-bench {
+  min-height: 100vh;
+  background-color: var(--fzx-bench);
+  background-image: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.25),
+    transparent 60%
+  );
+}
+
+.fzx-panel {
+  background-color: var(--fzx-panel);
+  /* brushed plastic tooth */
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.16) 0 1px,
+    transparent 1px 3px
+  );
+  border-radius: 18px;
+  border: 1px solid rgba(51, 50, 44, 0.35);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -3px 0 rgba(51, 50, 44, 0.15),
+    0 24px 60px -24px rgba(30, 28, 22, 0.6);
+  color: var(--fzx-ink);
+}
+
+.fzx-panel ::selection {
+  background: var(--fzx-orange);
+  color: #fff;
+}
+
+.fzx-panel a:focus-visible,
+.fzx-panel button:focus-visible {
+  outline: 2px solid var(--fzx-ink);
+  outline-offset: 3px;
+}
+
+/* A module well: slightly recessed area grouping controls. */
+.fzx-module {
+  background: var(--fzx-panel-deep);
+  border-radius: 12px;
+  box-shadow:
+    inset 0 2px 4px rgba(51, 50, 44, 0.18),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.55);
+  padding: 14px;
+}
+
+/* Engraved divider. */
+.fzx-divider {
+  height: 2px;
+  border: 0;
+  background: linear-gradient(
+    180deg,
+    var(--fzx-emboss-dark) 0 1px,
+    var(--fzx-emboss-light) 1px 2px
+  );
+}
+
+/* --- Silkscreen ------------------------------------------------------------- */
+
+.fzx-silk {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fzx-ink);
+}
+
+.fzx-silk.is-soft {
+  color: var(--fzx-ink-soft);
+}
+
+/* Engraved wordmark. */
+.fzx-engrave {
+  color: var(--fzx-ink);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* --- Screws & LEDs ----------------------------------------------------------- */
+
+.fzx-led {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fzx-red);
+  box-shadow:
+    0 0 6px 1px rgba(221, 83, 64, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+.fzx-led.is-green {
+  background: #63d68d;
+  box-shadow:
+    0 0 6px 1px rgba(99, 214, 141, 0.7),
+    inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* --- Screens ----------------------------------------------------------------- */
+
+.fzx-screen {
+  background-color: var(--fzx-screen);
+  /* pixel grid */
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(167, 236, 191, 0.045) 0 1px,
+      transparent 1px 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(167, 236, 191, 0.03) 0 1px,
+      transparent 1px 3px
+    );
+  border-radius: 8px;
+  border: 1px solid rgba(20, 24, 20, 0.9);
+  box-shadow:
+    inset 0 4px 14px rgba(0, 0, 0, 0.65),
+    inset 0 0 40px rgba(167, 236, 191, 0.06),
+    0 1px 0 rgba(255, 255, 255, 0.5);
+  color: var(--fzx-phosphor);
+}
+
+.fzx-digits {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--fzx-phosphor);
+  text-shadow: 0 0 8px rgba(167, 236, 191, 0.55);
+}
+
+.fzx-screen-label {
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--fzx-phosphor-dim);
+}
+
+.fzx-screen-line {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--fzx-phosphor);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fzx-cursor::after {
+  content: '▮';
+  margin-left: 4px;
+  animation: fzx-blink 1.1s steps(1) infinite;
+}
+
+@keyframes fzx-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* --- Meters ------------------------------------------------------------------ */
+
+.fzx-meter {
+  display: flex;
+  gap: 3px;
+}
+
+.fzx-seg {
+  flex: 1;
+  height: 12px;
+  border-radius: 2px;
+  background: rgba(51, 50, 44, 0.15);
+  box-shadow: inset 0 1px 2px rgba(51, 50, 44, 0.25);
+}
+
+.fzx-seg.is-lit {
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.4),
+    0 0 5px 0 currentColor;
+  background: currentColor;
+}
+
+/* --- Keycaps ------------------------------------------------------------------ */
+
+.fzx-key {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  text-decoration: none;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.fzx-key > .fzx-silk {
+  font-size: 0.52rem;
+  letter-spacing: 0.16em;
+}
+
+.fzx-keycap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--fzx-cap, var(--fzx-panel-deep));
+  color: rgba(0, 0, 0, 0.75);
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: 1px solid rgba(51, 50, 44, 0.4);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -4px 0 rgba(51, 50, 44, 0.28),
+    0 3px 4px rgba(51, 50, 44, 0.3);
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease;
+}
+
+.fzx-key:hover .fzx-keycap,
+.fzx-key:focus-visible .fzx-keycap {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 0 rgba(255, 255, 255, 0.45),
+    inset 0 -2px 0 rgba(51, 50, 44, 0.28),
+    0 1px 2px rgba(51, 50, 44, 0.3);
+}
+
+/* --- Knob --------------------------------------------------------------------- */
+
+.fzx-knob {
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.fzx-knob-face {
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 5px 6px rgba(51, 50, 44, 0.4));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fzx-keycap,
+  .fzx-knob-face {
+    transition: none;
+  }
+
+  .fzx-cursor::after {
+    animation: none;
+  }
+}
