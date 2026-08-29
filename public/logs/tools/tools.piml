@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Tools
+    (date) 2026-08-23
+    (link) https://openlogi.org/
+    (slug) openlogi
+    (title) OpenLogi
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) A native, local-first alternative to Logitech Options+ written in Rust. Remap buttons, drive DPI, and configure SmartShift over HID++ with zero telemetry.
+    (rating) 5
+
+  > (item)
+    (category) Tools
     (date) 2026-02-07
     (link) https://github.com/originalankur/maptoposter
     (slug) maptoposter

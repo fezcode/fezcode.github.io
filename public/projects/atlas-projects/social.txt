@@ -187,3 +187,33 @@ link: https://github.com/fezcode/atlas.subs
 fezcode
 +38 -0 ~0
 link: https://github.com/fezcode/atlas.tones
+---
+# Yap
+fezcode
++39 -0 ~0
+link: https://github.com/fezcode/yap
+---
+# Quote
+fezcode
++40 -0 ~0
+link: https://github.com/fezcode/atlas.quote
+---
+# LLM
+fezcode
++41 -0 ~0
+link: https://github.com/fezcode/atlas.llm
+---
+# Tail
+fezcode
++42 -0 ~0
+link: https://github.com/fezcode/atlas.tail
+---
+# Doomwalker
+fezcode
++43 -0 ~0
+link: https://github.com/fezcode/atlas.doomwalker
+---
+# Dict
+fezcode
++44 -0 ~0
+link: https://github.com/fezcode/atlas.dict

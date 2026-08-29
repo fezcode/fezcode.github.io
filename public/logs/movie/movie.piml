@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-08-29
+    (link) https://www.imdb.com/title/tt27131358/
+    (rating) 3
+    (slug) we-live-in-time
+    (title) We Live in Time (2024)
+    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (description) A tender, nonlinear romantic drama powered by undeniable chemistry between Florence Pugh and Andrew Garfield. While the fractured timeline occasionally softens the emotional gut-punch of its central health crisis, it remains an earnest, poignant, and beautifully acted exploration of love, parenthood, and making peace with the fleeting nature of time.
+    (director) John Crowley
+  > (item)
+    (category) Movie
     (date) 2026-07-31
     (link) https://www.imdb.com/title/tt0258463/
     (rating) 5

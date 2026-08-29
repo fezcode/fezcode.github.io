@@ -19,13 +19,13 @@ import { useProjects } from '../../utils/projectParser';
 import { useToast } from '../../hooks/useToast';
 
 /*
- * Atlas Suite project page — a command-center catalogue of 38+ Go CLI tools.
+ * Atlas Suite project page — a command-center catalogue of 44+ Go CLI tools.
  *
  * Aesthetic: phosphor-amber CRT terminal meets product index.
  * Monospace everywhere. Subtle scanlines, corner registration crosshairs,
  * and a boot-sequence reveal on load. Tool cards expose their actual
  * `atlas.<name>` invocation on hover. Category filter + fuzzy search keep
- * 38 entries discoverable without any wall-of-text scroll.
+ * 44 entries discoverable without any wall-of-text scroll.
  */
 
 /* ============================================================
@@ -96,6 +96,12 @@ const TOOLS = [
   { n: 36, name: 'record',        cat: 'media',        blurb: 'Screen & audio recorder leveraging FFmpeg for hardware capture.',                   sample: 'atlas.record' },
   { n: 37, name: 'subs',          cat: 'media',        blurb: 'Beautiful terminal subtitle searcher and downloader.',                              sample: 'atlas.subs' },
   { n: 38, name: 'tones',         cat: 'media',        blurb: 'iPhone ringtone and notification sound manager.',                                   sample: 'atlas.tones' },
+  { n: 39, name: 'yap',           cat: 'media',        blurb: 'YouTube audio player TUI with search (Windows only).',                              sample: 'atlas.yap', url: 'https://github.com/fezcode/yap' },
+  { n: 40, name: 'quote',         cat: 'media',        blurb: 'Cowsay-like quote generator with a rainbow color mode.',                            sample: 'atlas.quote --color' },
+  { n: 41, name: 'llm',           cat: 'dev',          blurb: 'Local AI chat — GPU offload, agentic tools, MCP, LAN serving.',                     sample: 'atlas.llm --summarize ./src' },
+  { n: 42, name: 'tail',          cat: 'dev',          blurb: 'High-performance log follower — tail -f with highlighting.',                        sample: 'atlas.tail server.log' },
+  { n: 43, name: 'doomwalker',    cat: 'system',       blurb: 'Lightning-fast disk space analyzer with a terminal treemap.',                       sample: 'atlas.doomwalker C:\\' },
+  { n: 44, name: 'dict',          cat: 'productivity', blurb: 'Fast, offline terminal dictionary with delicate design.',                           sample: 'atlas.dict -f en -t tr -q "eminence"' },
 ];
 
 const REPO_BASE = 'https://github.com/fezcode';
@@ -116,7 +122,7 @@ const INSTALL_CMDS = [
 
 const BOOT_LINES = [
   '[OK] loading /atlas/manifest.piml',
-  '[OK] scanning bin/… 38 tools discovered',
+  '[OK] scanning bin/… 44 tools discovered',
   '[OK] verifying signatures · ed25519',
   '[OK] resolving categories · 8 groups',
   '[OK] handshake · atlas.hub v1.0.0',
@@ -409,7 +415,7 @@ const ToolCard = ({ tool }) => {
   const [hover, setHover] = useState(false);
   return (
     <motion.a
-      href={toolUrl(tool.name)}
+      href={tool.url || toolUrl(tool.name)}
       target="_blank"
       rel="noopener noreferrer"
       layout
@@ -597,7 +603,7 @@ const AtlasProjectPage = () => {
     >
       <Seo
         title="Atlas Suite | Fezcodex"
-        description="A family of 38+ minimalist, high-performance Go CLI tools built with Bubble Tea — one install line, one philosophy, eight categories."
+        description="A family of 44+ minimalist, high-performance Go CLI tools built with Bubble Tea — one install line, one philosophy, eight categories."
         keywords={['atlas', 'atlas suite', 'go', 'cli', 'tui', 'bubble tea', 'productivity']}
       />
 
@@ -669,7 +675,7 @@ const AtlasProjectPage = () => {
               className="mt-6 max-w-[56ch] text-[15px] md:text-[17px] leading-relaxed"
               style={{ color: TEXT }}
             >
-              A family of <span style={{ color: AMBER }}>38 minimalist</span>, high-performance
+              A family of <span style={{ color: AMBER }}>44 minimalist</span>, high-performance
               command-line tools built with Go and Bubble Tea. Each one solves a single
               problem well. Together, they form a terminal-native productivity stack.
             </motion.p>

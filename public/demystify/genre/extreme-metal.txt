@@ -35,3 +35,4 @@ tracks:
  - Part 1 | Lustre
  - What Else Is There - Bonus Version | Enslaved
  - Frost | Enslaved
+ - Pale Tortured Blue | Draconian
