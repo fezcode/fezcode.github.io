@@ -1,6 +1,14 @@
 (logs)
   > (item)
     (category) Food
+    (date) 2026-08-30
+    (rating) 5
+    (slug) masala-chai
+    (title) Masala Chai
+    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (description) A bold, spice-infused black tea simmered in milk with cardamom, ginger, cloves, and cinnamon. Far punchier than commercial chai tea lattes and with a brisk spiced warmth that rivals sahlep on cold days.
+  > (item)
+    (category) Food
     (date) 2026-03-14
     (rating) 5
     (slug) mushroom-saute-tomato-paste
