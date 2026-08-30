@@ -1,6 +1,20 @@
 (logs)
   > (item)
     (category) Game
+    (date) 2026-08-30
+    (link) https://store.steampowered.com/app/371660/Far_Cry_Primal/
+    (platform) PC, PlayStation 4, Xbox One
+    (rating) 2
+    (slug) far-cry-primal
+    (tags)
+      > action
+      > open-world
+      > fps
+    (title) Far Cry Primal
+    (description) Far Cry Primal transposes the signature Ubisoft open-world formula to 10,000 BCE Stone Age Oros. Stripping away modern gunplay exposes the repetitive loop, resulting in clunky melee combat, monotonous resource grinding, and an overall gameplay experience that simply does not feel good to play.
+
+  > (item)
+    (category) Game
     (date) 2026-06-28
     (link) https://www.alanwake.com/
     (platform) PC, PlayStation 5, Xbox Series X/S
