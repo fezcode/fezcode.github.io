@@ -1,0 +1,50 @@
+id: shoegaze
+rank: 03
+name: SHOEGAZE & DREAM POP
+family: Rock & Metal
+years: 1988 → present
+sub: Melody buried under a wall of layered guitar noise and reverb, entirely on purpose
+spec: 70,78,84,82,78,80,84,86,88,86,84,82,84,86,84,78,70,62,54,46
+synthType: square
+freqs: 267.37, 335.14, 420.08
+
+ascii:
+┌───────────────────────────────────────┐
+│ ████████████████████████████████████  │
+│ ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  │
+│ ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒  │
+│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  │
+│ ····· VOCALS BURIED IN THE WALL ····· │
+└───────────────────────────────────────┘
+
+what:
+ The British music press coined "shoegazing" as an insult — the bands stared at their effects pedals instead of the audience — and the label stuck to a scene built on My Bloody Valentine, Slowdive and Ride. The defining record, *Loveless* (1991), reportedly took two years and nearly bankrupted Creation Records. The style went dormant, then returned permanently in the 2000s through M83, Beach House and a large bedroom-recording revival.
+
+artists:
+ My Bloody Valentine, *Slowdive*, Ride, Lush, Cocteau Twins as the dream-pop precursor; the revival wing of *M83*, *Beach House*, Blonde Redhead, Still Corners, Men I Trust, Porcelain Raft, Sweet Trip and a deep bench of self-released bedroom artists.
+
+trivia:
+ Kevin Shields produced *Loveless*'s central effect — the "glide guitar" — by holding the tremolo arm while strumming so every note bends microtonally out of tune, then layering dozens of such takes. Nothing is chorused or pitch-shifted; the shimmer is real detuning. Slowdive were savaged by the UK press in 1995, split, and reformed in 2014 to the best reviews of their career.
+
+sonic:
+ Guitars processed past recognition — reverse reverb, long modulated delay, octave fuzz — and mixed louder than the voice. Vocals are treated as another texture: buried, doubled, often androgynous and unintelligible. The frequency plot is unusually flat and full across the whole range, which is what makes the wall feel like a wall rather than a mix.
+
+gear:
+ Fender Jazzmasters and Jaguars for the floating tremolo; the pedalboard is the instrument — Boss DD-3 and RV-3, Electro-Harmonix Big Muff and POG, Roland Space Echo, and reverse-reverb rack units. Amps are set clean and loud so the pedals do the distorting.
+
+prod:
+ Guitars are layered in the double figures and summed, so no individual take is audible — the point is a composite texture. Vocals are printed with reverb rather than treated later, which makes the balance irreversible and is why these records cannot be remixed convincingly. Mastering keeps the midrange dense; anything that carves space around the vocal destroys the effect.
+
+tracks:
+ - Misery Is a Butterfly | Blonde Redhead
+ - Dsco | Sweet Trip
+ - shanty | Slowdive
+ - Pro: Lov: Ad | Sweet Trip
+ - Cluster | Porcelain Raft
+ - Drunk in L.A. | Beach House
+ - Black Lagoon | Still Corners
+ - You Appearing | M83
+ - F Song | Strawberry Guy
+ - Midnight City | M83
+ - Show Me How | Men I Trust
+ - Leaving Me | Lucy Daydream

@@ -1,0 +1,5 @@
+# Shell Bookmarks
+# Simplified
+
+BM is a simple, yet powerful command-line bookmark manager for your shell.
+Built with Rust to be more secure.

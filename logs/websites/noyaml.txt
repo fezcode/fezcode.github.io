@@ -1,0 +1,9 @@
+NoYAML (noyaml.com) is a humorous yet poignant critique of the ubiquity of YAML in modern DevOps and infrastructure tooling. Described by its creator as a "silly emotional rant about the state of devops tooling in 2018," the site has become a classic piece of internet tech culture.
+
+It highlights the common frustrations developers face with YAML, such as:
+- The "Norway Problem" (where 'no' is interpreted as a boolean false).
+- Significant whitespace sensitivity.
+- Complex and often counter-intuitive parsing rules.
+- The absurdity of writing massive programs entirely in configuration files.
+
+The site is an entertaining read for anyone who has spent too much time debugging a Kubernetes manifest or a CI/CD pipeline, reminding us that sometimes, our tools might be making things more complicated than they need to be.

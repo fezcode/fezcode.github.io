@@ -1,0 +1,7 @@
+# Explore the Source
+
+Fezcodex is open-source. Clone the repository to see how it works under the hood:
+
+```bash
+git clone https://github.com/fezcode/fezcode.github.io.git
+```

@@ -1,0 +1,101 @@
+# Sliding Window Algorithms and "Fruit Into Baskets" in Golang
+
+The **Sliding Window** technique is a powerful algorithmic pattern used to solve problems involving arrays or strings. It converts certain nested loops into a single loop, optimizing the time complexity from $O(N^2)$ (or worse) to $O(N)$.
+
+## What is a Sliding Window?
+
+Imagine a window that slides over an array or string. This window is a sub-array (or sub-string) that satisfies certain conditions. The window can be:
+
+1.  **Fixed Size:** The window size remains constant (e.g., "Find the maximum sum of any contiguous subarray of size `k`").
+2.  **Dynamic Size:** The window grows or shrinks based on constraints (e.g., "Find the smallest subarray with a sum greater than or equal to `S`").
+
+### How it Works
+
+The general idea is to maintain two pointers, `left` and `right`.
+- **Expand (`right`):** Increase the `right` pointer to include more elements into the window.
+- **Contract (`left`):** If the window violates the condition (or to optimize), increase the `left` pointer to remove elements from the start.
+
+## 904. Fruit Into Baskets
+
+This LeetCode problem is a classic example of a **dynamic sliding window**.
+
+### The Problem
+
+You are visiting a farm that has a single row of fruit trees arranged from left to right. The trees are represented by an integer array `fruits` where `fruits[i]` is the **type** of fruit the `ith` tree produces.
+
+You want to collect as much fruit as possible. However, the owner has some strict rules:
+
+1.  You only have **two** baskets, and each basket can only hold a **single type** of fruit. There is no limit on the amount of fruit each basket can hold.
+2.  Starting from any tree of your choice, you must pick exactly one fruit from every tree (including the start tree) while moving to the right. The picked fruits must fit in one of your baskets.
+3.  Once you reach a tree with fruit that cannot fit in your baskets, you must stop.
+
+Given the integer array `fruits`, return the **maximum** number of fruits you can pick.
+
+### The Strategy
+
+The problem effectively asks: **"What is the length of the longest contiguous subarray that contains at most 2 unique numbers?"**
+
+1.  **Initialize:** `left` pointer at 0, `maxLen` at 0. Use a map (or hash table) to count the frequency of each fruit type in the current window.
+2.  **Expand:** Iterate with `right` pointer from 0 to end of array. Add `fruits[right]` to our count map.
+3.  **Check Constraint:** If the map size exceeds 2 (meaning we have 3 types of fruits), we must shrink the window from the left.
+4.  **Contract:** Increment `left` pointer. Decrease the count of `fruits[left]`. If the count becomes 0, remove that fruit type from the map. Repeat until map size is <= 2.
+5.  **Update Result:** Calculate current window size (`right - left + 1`) and update `maxLen`.
+
+### The Code (Golang)
+
+```go
+package main
+
+import "fmt"
+
+func totalFruit(fruits []int) int {
+    // Map to store the frequency of fruit types in the current window
+    // Key: fruit type, Value: count
+    basket := make(map[int]int)
+    
+    left := 0
+    maxFruits := 0
+    
+    // Iterate through the array with the right pointer
+    for right := 0; right < len(fruits); right++ {
+        // Add the current fruit to the basket
+        basket[fruits[right]]++
+        
+        // If we have more than 2 types of fruits, shrink the window from the left
+        for len(basket) > 2 {
+            basket[fruits[left]]--
+            
+            // If count drops to 0, remove the fruit type from the map
+            // to correctly track the number of unique types
+            if basket[fruits[left]] == 0 {
+                delete(basket, fruits[left])
+            }
+            left++
+        }
+        
+        // Update the maximum length found so far
+        // Window size is (right - left + 1)
+        currentWindowSize := right - left + 1
+        if currentWindowSize > maxFruits {
+            maxFruits = currentWindowSize
+        }
+    }
+    
+    return maxFruits
+}
+
+func main() {
+    fmt.Println(totalFruit([]int{1, 2, 1}))             // Output: 3
+    fmt.Println(totalFruit([]int{0, 1, 2, 2}))          // Output: 3
+    fmt.Println(totalFruit([]int{1, 2, 3, 2, 2}))       // Output: 4
+}
+```
+
+### Complexity Analysis
+
+-   **Time Complexity:** $O(N)$. although there is a nested loop (the `for` loop for `right` and the `for` loop for `left`), each element is added to the window exactly once and removed from the window at most once. Therefore, the total operations are proportional to $N$.
+-   **Space Complexity:** $O(1)$. The map will contain at most 3 entries (2 allowed types + 1 extra before shrinking). Thus, the space used is constant regardless of input size.
+
+## Summary
+
+The Sliding Window pattern is essential for contiguous subarray problems. For "Fruit Into Baskets," identifying the problem as "Longest Subarray with K Distinct Characters" (where K=2) makes the solution straightforward using the expand-contract strategy.

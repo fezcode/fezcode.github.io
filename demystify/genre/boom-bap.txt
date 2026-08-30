@@ -1,0 +1,137 @@
+id: boom-bap
+rank: 17
+name: BOOM BAP & UNDERGROUND HIP HOP
+family: Hip Hop
+years: 1988 → present
+sub: Sample-based, drum-machine-driven rap built on crate-digging and technical rhyme
+spec: 72,86,90,74,60,62,68,74,76,72,68,70,76,80,78,70,62,54,46,38
+synthType: square
+freqs: 68.94, 86.41, 335.14
+
+what:
+ "Boom bap" is onomatopoeia for the kick-snare pattern that defined East Coast rap from about 1988 to 1996 — DJ Premier, Pete Rock, Large Professor, RZA. Its afterlife has been unusually long: the Griselda camp out of Buffalo (Westside Gunn, Conway, Benny) revived it wholesale in the late 2010s, sometimes stripping the drums out entirely for a "drumless" variant.
+
+artists:
+ Gang Starr, Pete Rock & CL Smooth, A Tribe Called Quest, *De La Soul*, Wu-Tang Clan, Nas. The underground continuum: *MF DOOM*, Evidence (of Dilated Peoples, and a producer in his own right), The Alchemist, Roc Marciano, Ka, and Griselda. *ASM* (A State of Mind) is a French duo — DOOM guested widely with European acts in his later years.
+
+trivia:
+ The title track of De La Soul's *Stakes Is High* (1996) was the first beat the group took from a young Detroit producer named *J Dilla*, and it introduced him to a national audience. Separately, De La Soul's catalogue was *absent from all streaming services until March 2023* because of unresolved 1980s sample clearances — three decades of a foundational discography effectively invisible. MF DOOM's death in October 2020 was not announced until December 31 of that year.
+
+sonic:
+ Dusty, band-limited loops — usually a 2–4 bar chop from a soul, jazz or library record — with the drums sitting slightly behind or ahead of the grid rather than quantised flat. Kick around 60–80 Hz, snare thick and mid-heavy at 200 Hz with a short room tail. Griselda-era production pushes this further: loops left unlooped, tape hiss audible, sometimes no drums at all under the verse.
+
+gear:
+ The *Akai MPC60 and MPC3000* are the genre's defining instruments — their 12-bit converters and slightly loose internal timing produce the grit and the swing. Also the E-mu SP-1200 (even lower fidelity, prized for it), Technics 1200 turntables for the digging and the scratches, and a Roland TR-808/909 for supplementary drums.
+
+prod:
+ The signature swing is a sequencer setting, not a performance: the MPC's timing-correct/swing parameter set around 54–62% pushes every off-beat late by a few milliseconds. Producers deliberately record loops through the sampler's low bit-depth and sometimes through a cassette deck for saturation. Modern practitioners recreate this with plugins but many, Alchemist and Evidence included, still track through hardware because the artefacts are the point.
+
+tracks:
+ - Still Dreaming | Nas, Kanye West, Chrisette Michele
+ - Love is... | Common
+ - Scottie Pippens | Curren$y, The Alchemist, Freddie Gibbs
+ - Battle Cry | Joell Ortiz, Just Blaze
+ - Fist Full of Dollars | Nature, Dr. Dre
+ - Johnny P's Caddy | Benny The Butcher, J. Cole
+ - 4 More | De La Soul, Zhane
+ - Stakes Is High | De La Soul
+ - Baby Blue | Action Bronson, Chance the Rapper
+ - KITCHEN LIGHTS | Westside Gunn, Stove God Cooks | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7a/63/e9/7a63e9a3-ad46-9a88-1a90-9191d1b6d16b/mzaf_1122702822486154811.plus.aac.ep.m4a
+ - Above The Clouds | Gang Starr, Inspectah Deck
+ - Meet Joe Black | Nas
+ - What It's Worth | Black Milk
+ - Rollin' Down The Freeway | Statik Selektah, Glasses Malone, Kali, Termanology | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/7c/25/d3/7c25d3cf-16b2-cff4-142b-8fa04e35d25d/mzaf_8807513309246383750.plus.aac.ep.m4a
+ - Trouble in the Water | dj honda, De La Soul
+ - Welcome To New York City | Cam'ron, JAY-Z, Juelz Santana
+ - TEMPTATION | Joey Bada$$
+ - Cheers | Obie Trice
+ - Circle Gang Anthem - Feat. Kobe | KXNG Crooked, Kobe
+ - The Red Carpet (feat. Raekwon & Ras Kass) | Evidence
+ - My Way | Nas
+ - Rock Bottom | Eminem
+ - Mic Jack (feat. Adam Levine, Scar & Sleepy Brown) | Big Boi, Adam Levine, Scar, Sleepy Brown
+ - Invincible | Capone-N-Noreaga
+ - When The Sky Falls | Black Milk
+ - Masking | ASM, MF DOOM
+ - Be (Intro) | Common
+ - EPMD 2 (feat. Eminem & EPMD) | Nas, Eminem, EPMD
+ - I Gave You Power | Nas
+ - You're da Man | Nas
+ - Trouble Man | Juggaknots
+ - Belize (feat. MF DOOM) | Danger Mouse, Black Thought, MF DOOM
+ - Sniper Elite | J Dilla, MF DOOM
+ - Survival Test | Jaylib, Madlib, J Dilla
+ - Book Of Rhymes | Nas
+ - Chef Dreds | Griselda
+ - Publicity | GZA
+ - Real Ni***s | The Diplomats | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c4/69/c6/c469c6d3-944a-e472-7beb-432e2c057b25/mzaf_7043771456860144142.plus.aac.ep.m4a
+ - Exhibit C | JAYELECTRONICA
+ - Live On Live Long | Capone-N-Noreaga | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/8e/3a/92/8e3a92fb-34c6-a6fd-628b-81cf37966b19/mzaf_165728014347235677.plus.aac.ep.m4a
+ - Plane Gang | Reks, Akrobatik, Edo. G, Termanology, DJ Deadeye
+ - Bad Name - Remix | Gang Starr, Redman, Method Man
+ - The Ghetto | Beanie Sigel
+ - 100 | Dice Raw
+ - For The Record | Torae
+ - Under Their Radar, Over Their Heads feat. J-Rome | illmaculate, J-rome
+ - Bad Name | Gang Starr
+ - Remind My Soul | Akrobatik
+ - Hero | Pivot Gang, Frsh Waters, MFnMelo, Saba
+ - Rare | Nas
+ - Mighty Healthy | Ghostface Killah
+ - Rising Down | The Roots, Mos Def, Styles P
+ - Powder Cocaine (feat. Slug & Catero) | Evidence, Slug, Catero
+ - Everything To Gain | Papoose, AG
+ - Wake Up | Obie Trice
+ - God Help Me | Apollo Brown, Black Milk, Ketchphraze, DJ Los
+ - If - Bonus Track | Kenn Starr, Asheru, Talib Kweli
+ - Hardknock | Joey Bada$$, CJ Fly
+ - Get Off the Ground | Snowgoons, Termanology, Sean Price, H-Staxx, Justin Tyme, Ruste Juxx, Lil Fame
+ - Self Conscience - Dirty Version | Prodigy, Nas
+ - Watch How It Go Down | Termanology
+ - Hustle | M.O.P., Mr. Probz
+ - Losing Out (feat. Royce Da 5'9) | Black Milk, Royce Da 5'9"
+ - Bullet (feat. Citizen Cope) | Rhymefest, Citizen Cope
+ - We As Americans | Eminem
+ - Better Future | Mr. Green, DJ Kool Herc
+ - That's Hard | Pete Rock, Smif-N-Wessun, Sean Price, Styles P
+ - Grown Man Sport | Pete Rock, InI
+ - RING THE ALARM | Joey Bada$$, Nyck Caution, Kirk Knight, Meechy Darko
+ - Violet (The Upper Room) | CunninLynguists
+ - Uncle Sam Goddamn | Brother Ali
+ - Meddle with Metal - 7l's Nytyme Mix | CZARFACE, MF DOOM
+ - Ms. Jackson | Outkast
+ - Yesterday | Atmosphere
+ - The Matrix (feat. Pharoahe Monch, Sean Price & DJ Premier) | Black Milk, DJ Premier, Pharoahe Monch, Sean Price
+ - Kid U Not | Viro The Virus
+ - All In Your Mind | Viro The Virus, Snowgoons, Savage Brothers
+ - Rising to the Top (Grand Theft Auto Theme Song) | Sean Price
+ - Don't Say Nuthin' | The Roots
+ - Winds Of Change | EMC
+ - Assassination Day (feat. Raekwon, RZA & Inspectah Deck) | Ghostface Killah, Raekwon, RZA, Inspectah Deck
+ - Da Grind (Featuring Apocalypse) | Masta Ace, Apocalypse
+ - I Got the Juice | Dream Junkies, Beleaf, Ruslan, John Givez
+ - Think Differently | Casual, Roc Marciano, Vordul Mega, Tragedy Khadafi, Wu-Tang Clan
+ - Every Ghetto (feat. Blitz The Ambassador) | Nas, Blitz The Ambassador
+ - Shadows | The Evil Genius DJ Green Lantern, Styles P
+ - Breathe | Fabolous
+ - Highs and Lows (feat. DOOM, Phonte) | PRhyme, Doom, Phonte
+ - 82 92 (feat. Mac Miller) | Statik Selektah, Termanology, Mac Miller
+ - A Couple Dollars | Apollo Brown, Skyzoo, Joell Ortiz
+ - Be You | Mark Battles, Curren$y
+ - Slang Blade (feat. Senim Silla) | Binary Star, Senim Silla
+ - Survival Tactics | Joey Bada$$, Capital Steez
+ - Shame (feat. BJ The Chicago Kid) | Freddie Gibbs, Madlib, BJ The Chicago Kid
+ - Mr. | The Crest, Suparanks
+ - ROCKABYE BABY (feat. ScHoolboy Q) | Joey Bada$$, ScHoolboy Q
+ - DEVASTATED | Joey Bada$$
+ - FOR MY PEOPLE | Joey Bada$$
+ - Conception | Black Thought, Salaam Remi, Reek Ruffin
+ - Ape in His Apex | Sean Price, Ruste Juxx
+ - I Know | Heiruspecs
+ - The Spark | GZA
+ - That'll Work | The Alchemist
+ - New Thangs | Curren$y, Freddie Gibbs, The Alchemist
+ - Assassination Day | DJ Muggs, MF DOOM, Kool G Rap
+ - Fine And Free (feat. Vivian Green) | Guru, Solar, Vivian Green
+ - Moment Of Truth | Gang Starr
+ - Feel It In The Air | Beanie Sigel, Melissa Jay

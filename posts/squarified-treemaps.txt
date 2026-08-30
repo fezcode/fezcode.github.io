@@ -1,0 +1,63 @@
+# Squarified Treemaps: Trading Order for Readable Rectangles
+
+*A short summary of Bruls, Huijsmans & van Wijk (2000), the paper that quietly powers every disk-usage visualizer you've ever used.*
+
+---
+
+## TL;DR
+
+A treemap turns a weighted tree into nested rectangles whose areas match the weights. The original "slice-and-dice" algorithm is trivial — alternate horizontal and vertical cuts at each level — but it produces long, thin slivers that are useless to read. Squarified treemaps fix that by greedily packing children into rows along the shorter side of the remaining space, accepting children only while the worst aspect ratio in the row keeps improving. The cost: ordering is no longer preserved, so the layout reshuffles when the data changes.
+
+---
+
+## Why slice-and-dice fails
+
+Slice-and-dice splits a rectangle into strips proportional to the children's weights, alternating direction by depth. It's easy, it's stable (insertion order is preserved), and it's awful at aspect ratio: a child with 1% of its parent's weight inside a 1000×500 rectangle becomes a 10×500 sliver. You can technically *see* it. You can't compare it to anything.
+
+The aspect ratio of a w×h rectangle is `max(w/h, h/w)` — 1 is a square, larger is worse. Real-world hierarchies (filesystems, budgets, market caps) are heavily skewed, so slice-and-dice routinely produces ratios in the dozens or hundreds.
+
+---
+
+## The squarified algorithm
+
+Given a rectangle with shorter side `w` and a list of children sorted by weight (descending):
+
+1. Open an empty current row along the shorter side.
+2. Tentatively add the next child to the row.
+3. Compute the worst aspect ratio in the row if we laid it out now. Call it `worst(row, w)`.
+4. If adding that child *improved* (decreased) `worst`, keep it in the row and go to step 2.
+5. If adding it *worsened* `worst`, undo the addition, lay out the current row as one strip along the shorter side, subtract that strip from the rectangle, and start over from step 1 on the remaining space.
+6. When children run out, lay out the final row.
+7. Recurse into each placed child rectangle with its own children.
+
+The "worst aspect ratio in a row" has a tidy closed form. If the row's children have weights summing to `s`, the row occupies a strip of width `w` and height `s/w` (assuming the shorter side is horizontal). Each child within the row gets a sub-rectangle of the same height `s/w` and width proportional to its weight. The worst aspect ratio is then a simple max over the children — see equation (1) of the paper. You evaluate it twice per candidate: once with the child added, once without, and compare.
+
+Always splitting along the shorter side keeps the rows themselves close to square, which is what makes the greedy choice work.
+
+---
+
+## A worked example
+
+Children with weights `[6, 6, 4, 3, 2, 2, 1]` inside a 6×4 rectangle (shorter side = 4).
+
+- Start row with `6`. Strip would be 4 tall × 1.5 wide → ratio 4/1.5 ≈ 2.67. Worst = 2.67.
+- Add `6`. Two children share a 4-tall strip; total weight 12 means strip width 3. Each child is 2 tall × 3 wide → ratio 1.5. Worst = 1.5. Better — keep.
+- Add `4`. Strip width becomes 16/4 = 4. Heights: `6/4=1.5`, `6/4=1.5`, `4/4=1`, all 4 wide. Ratios: 4/1.5≈2.67, 4/1.5≈2.67, 4/1=4. Worst = 4. Worse — reject.
+- Lay out row `[6, 6]` as a 4×3 strip on the left.
+- Remaining rectangle is 3×4 (shorter side = 3). Continue with `[4, 3, 2, 2, 1]` recursively.
+
+You can do this on a napkin. The full algorithm is maybe 40 lines of straightforward code.
+
+---
+
+## What it costs you
+
+The paper is honest about the tradeoff: **stability**. Slice-and-dice respects input order, so a small change in one weight perturbs one rectangle. Squarified sorts by weight and packs greedily, so a small change can promote or demote a child between rows and reshuffle large parts of the layout. If your view is a snapshot — a disk usage browser, a single-frame report — that doesn't matter. If your view is animated over time or compared frame-by-frame, it does, and later work (ordered, strip, spiral treemaps) trades a bit of aspect ratio back for stability.
+
+Aspect ratio results in the paper: on representative datasets, squarified holds the worst-case ratio in single digits where slice-and-dice runs into the dozens. The algorithm itself is O(n) per level once children are sorted, O(n log n) overall.
+
+---
+
+## Why it stuck
+
+The squarified treemap is the rare visualization algorithm that is simultaneously easy to implement, fast, and produces output that's clearly better than the obvious alternative. That's why it shows up in WinDirStat, Disk Inventory X, the Linux `baobab` tool, financial heatmaps, profiler flame-equivalents, and roughly every "where did my disk space go" UI shipped in the last two decades. The paper is six pages. It's worth reading.

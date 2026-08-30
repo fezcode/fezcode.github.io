@@ -1,0 +1,73 @@
+# Neither Holy, nor Roman, nor an Empire
+
+> *"This agglomeration which was called and which still calls itself the Holy Roman Empire was neither holy, nor Roman, nor an empire."*
+
+## The phrase
+
+| Language | Form |
+| --- | --- |
+| French | *Ce corps qui s'appelait et qui s'appelle encore le saint empire romain n'était en aucune manière ni saint, ni romain, ni empire.* |
+| English | This body which called itself, and still calls itself, the Holy Roman Empire was in no way holy, nor Roman, nor an empire. |
+| Popular short form | "Neither holy, nor Roman, nor an empire." |
+
+## Origin
+
+The line comes from **Voltaire**'s *Essai sur les mœurs et l'esprit des nations* (1756), chapter 70, in his discussion of the German princes and the imperial title under Charles IV. It is one of the most quoted single sentences in European historiography — partly because it is funny, and partly because by the time Voltaire wrote it, it was already obviously true.
+
+By 1756 the *Heiliges Römisches Reich Deutscher Nation* — the Holy Roman Empire of the German Nation — was a confederation of more than 300 sovereign-ish territories: kingdoms, duchies, prince-bishoprics, free cities, imperial knights. The Emperor was elected (usually a Habsburg) but had no real fiscal or military authority over the member states. The Peace of Westphalia (1648) had formalized that arrangement a century earlier. What remained was a legal framework, an imperial diet, and a title.
+
+Voltaire was writing during the Seven Years' War, in which the *Reich* had just been thoroughly outclassed by Frederick the Great's Prussia — itself one of its own member states.
+
+## The three-part dismissal
+
+Voltaire's structure is the joke. He attacks each adjective in the official name in order:
+
+### 1. "Holy"
+
+The Empire claimed sacral legitimacy as the continuation of Charlemagne's empire crowned by the Pope in 800. By the 18th century:
+
+- The Pope and the Emperor had been in open conflict for centuries (the Investiture Controversy, the various excommunications, the Reformation).
+- Half the member states were Protestant after 1555 (Peace of Augsburg) and 1648 (Westphalia). A "Holy" empire that contained Lutheran Saxony, Calvinist Brandenburg, and Catholic Bavaria as theological equals had abandoned the original meaning of the word.
+
+### 2. "Roman"
+
+The claim of continuity with ancient Rome was always thin and by Voltaire's time was archaeological. The Empire was:
+
+- Centered in Germany and ruled in German.
+- Composed mostly of territories Rome never controlled (everything east of the Rhine and north of the Danube).
+- Politically and legally a feudal Germanic structure, not a Mediterranean imperial one.
+
+### 3. "An Empire"
+
+This was the cleanest hit. An empire implies central authority over subordinate territories. By 1756:
+
+- The Emperor could not levy taxes without the Diet's consent.
+- He could not raise an army from member states except by negotiation.
+- Princes signed their own treaties, fought their own wars (sometimes against the Emperor), and minted their own coins.
+- Prussia and Austria — the two largest member states — were currently at war with each other.
+
+Whatever this was, it was not an empire in any working sense of the word.
+
+## Why the line endures
+
+Three reasons:
+
+1. **It is a complete argument in one sentence.** Voltaire isolates a name, breaks it into three claims, and refutes each. The form is itself the lesson: when an institution's official self-description has drifted from reality, list the words and check them one by one.
+
+2. **It models a specific kind of historical skepticism.** Take an institution at its own word, then check whether the word still means anything. This is a transferable move — it works on "People's Republic of —", "Democratic —", "Free —", and most corporate mission statements.
+
+3. **It outlived its target.** The Holy Roman Empire was formally dissolved fifty years later, in 1806, when Francis II abdicated the imperial title under pressure from Napoleon. Voltaire's sentence had already buried it rhetorically.
+
+## In practice
+
+Useful as a check on any name that does heavy lifting:
+
+- **When an institution insists on a label.** The insistence is usually a tell. Things that are obviously holy, Roman, or imperial don't need to keep saying so.
+- **When a name has survived its meaning.** Names are sticky; the things they refer to are not. The gap between the two is where Voltaire's joke lives, and it is almost always worth measuring.
+
+## See also
+
+- Voltaire, *Essai sur les mœurs et l'esprit des nations* (1756), ch. 70.
+- Peace of Westphalia (1648) — the treaty that turned the Empire into a confederation in fact if not in name.
+- Dissolution of the Holy Roman Empire (6 August 1806) — the formal end, fifty years after Voltaire's verdict.
+- James Bryce, *The Holy Roman Empire* (1864) — the standard 19th-century English history, which opens by quoting Voltaire and then spends 500 pages arguing with him.

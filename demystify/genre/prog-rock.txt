@@ -1,0 +1,36 @@
+id: prog-rock
+rank: 09
+name: PROGRESSIVE ROCK
+family: Rock & Metal
+years: 1967 → present
+sub: Long-form rock that borrowed structure from classical music and studio craft from Pink Floyd
+spec: 62,70,74,66,58,60,64,68,70,72,68,64,66,70,74,72,66,58,50,42
+synthType: square
+freqs: 68.94, 86.41, 420.08
+
+what:
+ Prog crystallised in Britain in 1969 with King Crimson's *In the Court of the Crimson King*: odd time signatures, suite-length pieces, Mellotrons, and lyrics that took themselves seriously. Punk buried it commercially by 1977; it returned in the 1990s through a quieter, darker strain — Porcupine Tree, Anathema, later Steven Wilson solo — that swapped the fantasy imagery for depression, suburbia and surveillance.
+
+artists:
+ King Crimson, Yes, Genesis, Pink Floyd, Rush, Camel. The modern lineage runs through *Porcupine Tree* (Steven Wilson's project, which began in 1987 as a fake band with an invented backstory), Opeth, Riverside, Leprous and Tool. "Trains" comes from *In Absentia* (2002), the album where drummer Gavin Harrison joined and the band pivoted toward heavier, Meshuggah-influenced riffing.
+
+trivia:
+ "Trains" hides a banjo breakdown and a handclap section in the middle of what is otherwise a melancholy acoustic-to-heavy song — Wilson has said the album was built to be accessible on the surface and strange underneath. Wilson has since become the go-to *5.1/Atmos remix engineer* for the entire prog canon: King Crimson, Jethro Tull, Yes, Tears for Fears and XTC catalogues have all passed through his desk.
+
+sonic:
+ Dynamic range is the whole point — verses at whisper level, choruses with layered vocal harmony and saturated guitar, and long instrumental middles. Acoustic guitar recorded close and dry, drums recorded in a real room with audible cymbal decay, and a deliberately wide stereo field where guitars sit hard left/right and vocals dead centre.
+
+gear:
+ Classic era: Mellotron M400, Hammond B3 through a Leslie, Moog Minimoog, Rickenbacker bass. Porcupine Tree era: PRS and Fender guitars, Mesa/Boogie amps, an actual Mellotron plus Roland/Korg pads, Gretsch drums, and analogue-tape-emulation on the mix bus. Wilson is a public sceptic of loudness-war mastering and prints his records quiet.
+
+prod:
+ Prog is arranged before it is recorded — parts are written to interlock rather than jammed. In Absentia was tracked at Avatar Studios in New York with the drums given a large live room, which is why the 2017 remaster reads as spacious rather than compressed. The remaster exists because the original CD masters were squashed by 2002 standards; the reissue restores 6–8 dB of headroom.
+
+tracks:
+ - Trains - 2017 Remaster | Porcupine Tree
+ - Blackest Eyes - 2017 Remaster | Porcupine Tree
+ - The Sound Of Muzak - 2017 Remaster | Porcupine Tree
+ - Welcome To The Machine - 2011 Remaster | Pink Floyd
+ - Eye In The Sky | The Alan Parsons Project
+ - Old and Wise | The Alan Parsons Project
+ - Time | Pink Floyd

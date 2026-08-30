@@ -1,0 +1,35 @@
+id: art-pop
+rank: 44
+name: ART POP & THE STUDIO AUTEUR
+family: Pop & Soul
+years: 1997 → present
+sub: Pop songwriting where the producer, engineer and performer are the same person
+spec: 68,74,72,62,58,62,68,74,80,82,80,78,80,84,82,76,68,60,52,44
+synthType: triangle
+freqs: 335.14, 420.08, 526.55
+
+what:
+ A strand of pop defined by total authorship — the artist writes, plays, engineers, produces and mixes. Kate Bush is the precedent; Björk the 1990s standard-bearer; *Imogen Heap* the case that most directly shaped 2010s production, and her influence on vocal processing as an expressive tool is everywhere in current pop.
+
+artists:
+ Kate Bush, Björk, Imogen Heap (solo and as half of Frou Frou), Bat for Lashes, FKA twigs, Grimes, Caroline Polachek. Producers who absorbed the approach: Guy Sigsworth, Jon Brion, BJ Burton.
+
+trivia:
+ Heap was dropped by her label and made *Speak for Yourself* (2005) alone in her home studio, funding it by remortgaging — she is credited as writer, performer, producer and engineer on every track. It became her breakthrough. She later co-invented the *Mi.Mu gloves*, wearable controllers that let a performer shape audio effects with hand gesture, and released "Tiny Human" as the first song ever paid out through blockchain-based royalty distribution.
+
+sonic:
+ Voice as the primary instrument in every role — lead, pad, percussion, bass. Heap stacks dozens of vocal takes into choral beds, then processes them into textures that no longer read as voices. Underneath: piano or Rhodes, restrained programmed drums, and a mid-heavy, close, headphone-scale mix. Nothing is loud; the density does the work.
+
+gear:
+ A Digitech Vocalist / harmoniser pedal used live (the "Hide and Seek" technique that spawned a thousand imitations), Logic Pro, an mbox-scale home setup, a Yamaha upright, and Mi.Mu gloves from 2014 onward. The point is that the gear list is modest — the technique is what's expensive.
+
+prod:
+ Because one person does everything, arrangement decisions happen at the same moment as sound-design decisions, and it shows: the vocal harmony _is_ the reverb, the percussion _is_ a processed breath. Vocal comping runs into the hundreds of takes. Mixes are made on headphones and small monitors for headphone playback, which is why they translate so well to earbuds and so poorly to a club system.
+
+tracks:
+ - Laughing with a Mouth of Blood | St. Vincent
+ - Lazarus | David Bowie
+ - Headlock | Imogen Heap
+ - Mercy Street | Peter Gabriel
+ - Across the Universe - Radio Edit | Fiona Apple
+ - Something of an End | My Brightest Diamond

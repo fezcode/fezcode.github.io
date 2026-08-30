@@ -1,0 +1,40 @@
+id: new-wave-80s
+rank: 04
+name: NEW WAVE & COLLEGE ROCK
+family: Rock & Metal
+years: 1978 → 1992
+sub: Punk's melodic aftermath — synthesizers, jangle guitars and songwriting aimed at radio
+spec: 58,70,78,74,68,70,76,82,86,84,80,80,84,86,82,74,64,54,46,38
+synthType: square
+freqs: 267.37, 335.14, 420.08
+
+what:
+ New wave is what happened when punk's energy met people who could actually play and wanted a hit. By 1982 the term covered synth-pop, jangle guitar bands and the entire first generation of MTV. American college radio ran a parallel track — R.E.M., the Pixies, the Smiths' UK equivalent — that stayed off the mainstream charts and eventually produced everything called alternative in the 1990s.
+
+artists:
+ *Tears For Fears*, Spandau Ballet, Duran Duran, The Human League and Cyndi Lauper on the pop side; *The Smiths*, *R.E.M.* and the *Pixies* on the college-radio side; Germany's Sandra and Sweden's later revivalists represent the continental version.
+
+trivia:
+ The Pixies' "Where Is My Mind?" was written after Black Francis went scuba diving in the Caribbean and had a fish follow him around; it has since scored more films about mental collapse than any other song of its era. Tears For Fears took their name and much of their early lyrical material from *Arthur Janov's primal therapy*, which they had both undergone — "Everybody Wants to Rule the World" is the point where they stopped writing about it and got a number one.
+
+sonic:
+ Bright, chorused guitars playing arpeggios rather than chords; melodic bass well forward; gated snare with a short bright plate; and a synth pad filling everything between. Songs are short, the chorus arrives early, and harmony stays major-key and diatonic with one surprising borrowed chord — usually in the pre-chorus.
+
+gear:
+ Rickenbacker 330 and Fender Telecaster into Roland JC-120 chorus amps; Yamaha DX7, Roland Juno-106 and Oberheim OB-X for pads and bell tones; LinnDrum and Simmons pads layered under acoustic kits; and the era's signature — an AMS or Lexicon gated reverb on the snare.
+
+prod:
+ Recorded to 24-track analogue with gates keyed to the snare, guitars double-tracked and hard-panned, and the vocal compressed hard so it floats above a dense bed. The mix leaves a deliberate notch at 2–4 kHz for the voice. These masters are relatively quiet by modern standards, which is why 1980s reissues so often sound better than the loudness-war remasters that replaced them.
+
+tracks:
+ - Everybody Wants To Rule The World | Tears For Fears
+ - I Know It's Over - 2011 Remaster | The Smiths
+ - Please, Please, Please, Let Me Get What I Want - 2011 Remaster | The Smiths
+ - Gold - 2003 Remaster | Spandau Ballet
+ - Losing My Religion | R.E.M.
+ - Where Is My Mind? - 2007 Remaster | Pixies
+ - Everything's Coming Up Roses | Black
+ - In The Heat Of The Night | Sandra
+ - Time After Time | Cyndi Lauper
+ - Fever Fever | Melody Club
+ - Spent the Day in Bed | Morrissey

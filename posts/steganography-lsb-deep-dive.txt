@@ -1,0 +1,111 @@
+Steganography is the art and science of hiding information within other non-secret data. Unlike cryptography, which scrambles a message so it can't be read, steganography hides the very existence of the message.
+
+In this deep dive, we'll explore the implementation of the **Steganography Tool** added to Fezcodex, focusing on the **Least Significant Bit (LSB)** technique.
+
+## The Core Concept: Least Significant Bit (LSB)
+
+Digital images are made up of pixels. In a standard 24-bit RGB image, each pixel has three color channels: Red, Green, and Blue. Each channel is represented by 8 bits (a value from 0 to 255).
+
+Example of a pixel's color:
+- **Red:** 1011010**1** (181)
+- **Green:** 0110011**0** (102)
+- **Blue:** 1100101**1** (203)
+
+The **Least Significant Bit** is the rightmost bit in these binary strings. If we change this single bit, the decimal value of the color channel only changes by 1. For example, changing the Red channel from `10110101` (181) to `10110100` (180) is a change so subtle that the human eye cannot detect it in a complex image.
+
+By replacing the LSB of each color channel with a bit from our secret message, we can embed data directly into the image.
+
+## The Protocol: FEZ Steganography
+
+To make the extraction process reliable, we've implemented a simple protocol:
+
+1.  **Magic Header (`FEZ`):** The first 24 bits (3 bytes) of the hidden data always spell "FEZ". This allows the decoder to verify if an image actually contains a hidden message from our tool.
+2.  **Length (32-bit):** The next 32 bits represent the length of the message in bytes. This tells the decoder exactly when to stop reading.
+3.  **The Message:** The remaining bits are the actual UTF-8 encoded message.
+
+### Tracing the Magic: Encoding "FEZ"
+
+Let's look at how the magic header `FEZ` is scattered across the first few pixels.
+
+**Step 1: Convert characters to binary**
+*   **F** (70): `0 1 0 0 0 1 1 0`
+*   **E** (69): `0 1 0 0 0 1 0 1`
+*   **Z** (90): `0 1 0 1 1 0 1 0`
+
+Combined Bitstream: `01000110` + `01000101` + `01011010` (24 bits total)
+
+**Step 2: Embed into pixels**
+Since each pixel has 3 channels (R, G, B), we need 8 pixels to hide these 24 bits.
+
+| Pixel | Channel | Original Byte | Bit to Hide | Modified Byte |
+| :--- | :--- | :--- | :--- | :--- |
+| **Pixel 1** | Red | `1011010`**`1`** | **0** (from F) | `1011010`**`0`** |
+| | Green | `0110011`**`0`** | **1** (from F) | `0110011`**`1`** |
+| | Blue | `1100101`**`1`** | **0** (from F) | `1100101`**`0`** |
+| **Pixel 2** | Red | `0101010`**`0`** | **0** (from F) | `0101010`**`0`** |
+| | Green | `1111001`**`1`** | **0** (from F) | `1111001`**`0`** |
+| | Blue | `0011001`**`1`** | **1** (from F) | `0011001`**`1`** |
+| **Pixel 3** | Red | `1010101`**`0`** | **1** (from F) | `1010101`**`1`** |
+| | Green | `1100110`**`1`** | **0** (from F) | `1100110`**`0`** |
+| | Blue | `0001111`**`0`** | **0** (from E) | `0001111`**`0`** |
+| **Pixel 4** | Red | `1011001`**`0`** | **1** (from E) | `1011001`**`1`** |
+| | Green | `0110110`**`1`** | **0** (from E) | `0110110`**`0`** |
+| | Blue | `1110001`**`1`** | **0** (from E) | `1110001`**`0`** |
+| **Pixel 5** | Red | `0101010`**`1`** | **0** (from E) | `0101010`**`0`** |
+| | Green | `1111001`**`0`** | **1** (from E) | `1111001`**`1`** |
+| | Blue | `0011001`**`1`** | **0** (from E) | `0011001`**`0`** |
+| **Pixel 6** | Red | `1010101`**`0`** | **1** (from E) | `1010101`**`1`** |
+| | Green | `1100110`**`1`** | **0** (from Z) | `1100110`**`0`** |
+| | Blue | `0101111`**`0`** | **1** (from Z) | `0101111`**`1`** |
+| **Pixel 7** | Red | `1011001`**`1`** | **0** (from Z) | `1011001`**`0`** |
+| | Green | `0110110`**`0`** | **1** (from Z) | `0110110`**`1`** |
+| | Blue | `1110001`**`1`** | **1** (from Z) | `1110001`**`1`** |
+| **Pixel 8** | Red | `0101010`**`1`** | **0** (from Z) | `0101010`**`0`** |
+| | Green | `1111001`**`0`** | **1** (from Z) | `1111001`**`1`** |
+| | Blue | `0011001`**`1`** | **0** (from Z) | `0011001`**`0`** |
+
+By the time we reach Pixel 8, all 24 bits of "FEZ" are woven into the image. If you open this in a hex editor, you might see that the color `181` became `180`, but the text "FEZ" is nowhere to be found in the raw bytes!
+
+### Why PNG and not JPEG?
+
+Our tool works best with **PNG** files. Why?
+- **PNG (Portable Network Graphics)** is a *lossless* format. It preserves every single bit exactly as it was saved.
+- **JPEG (Joint Photographic Experts Group)** is a *lossy* format. It uses compression algorithms that slightly alter pixel values to reduce file size. These tiny changes are fine for human viewing, but they destroy the data we've hidden in the LSBs.
+
+## The Implementation (JavaScript/Canvas)
+
+We use the HTML5 `<canvas>` API to access and manipulate image data at the pixel level.
+
+### Encoding Logic
+
+```javascript
+const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+const data = imageData.data; // Uint8ClampedArray [R, G, B, A, R, G, B, A, ...]
+
+// ... transform message to bits ...
+
+let bitIndex = 0;
+for (let i = 0; i < data.length && bitIndex < allBits.length; i += 4) {
+  for (let j = 0; j < 3 && bitIndex < allBits.length; j++) {
+    // Replace LSB of R, G, or B
+    // (data[i + j] & 0xfe) clears the last bit
+    // | allBits[bitIndex++] sets it to our secret bit
+    data[i + j] = (data[i + j] & 0xfe) | allBits[bitIndex++];
+  }
+}
+ctx.putImageData(imageData, 0, 0);
+```
+
+### Decoding Logic
+
+Decoding is the reverse process. We iterate through the pixels, extract the LSB of each R, G, and B channel, and rebuild the bitstream until we've parsed the header, the length, and finally the message content.
+
+## Challenges and Limitations
+
+- **Capacity:** The amount of data you can hide depends on the image resolution. Each pixel can hold 3 bits (1 for each RGB channel). A 1080p image (1920x1080) can theoretically hold about 777 KB of hidden data.
+- **Robustness:** LSB steganography is very fragile. Resizing, cropping, or re-saving the image as a JPEG will likely corrupt the hidden message.
+- **Security:** Pure LSB is "security through obscurity." Anyone who knows the technique can extract the message. For true security, you should encrypt the message *before* hiding it in the image.
+
+## Try it out!
+
+Check out the **Steganography Tool** in the Applications section and start sending your own cryptic signals through the digital aether.

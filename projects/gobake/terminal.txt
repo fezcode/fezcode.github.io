@@ -1,0 +1,23 @@
+:::card
+type: install
+title: Pour Into Your Toolchain
+code: go install github.com/fezcode/gobake/cmd/gobake@latest
+btnText: COPY RECIPE
+btnLink: #installation
+:::
+
+:::card
+type: code
+title: Chain Tasks Like Courses
+code: bake.Task("test", "Run tests", run); bake.TaskWithDeps("build", "Build app", []string{"test"}, run); // gobake test build deploy
+btnText: READ THE GUIDE
+btnLink: #docs
+:::
+
+:::card
+type: command
+title: Bake Once. Ship Everywhere.
+code: gobake test build deploy
+btnText: VIEW SOURCE
+btnLink: https://github.com/fezcode/gobake
+:::

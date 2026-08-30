@@ -1,0 +1,65 @@
+# Interview Journal: #1 - SOLID Principles
+
+In the world of software engineering, specifically object-oriented design, the SOLID principles are the bedrock of clean, maintainable, and scalable code. Coined by Robert C. Martin (Uncle Bob), these five principles help developers avoid "code rot" and build systems that are easy to refactor and extend.
+
+As this is the first entry in my **Interview Journal**, I want to dive deep into these principles, explaining them with clear examples and why they matter in a professional environment.
+
+---
+
+## 1. Single Responsibility Principle (SRP)
+> "A class should have one, and only one, reason to change."
+
+This is perhaps the most misunderstood principle. It doesn't mean a class should only have one method. It means a class should be responsible for one *actor* or one specific part of the functionality.
+
+**Bad Example:**
+A `User` class that handles both user data and saving that data to a database.
+**Good Example:**
+A `User` class for data and a `UserRepository` class for persistence.
+
+## 2. Open/Closed Principle (OCP)
+> "Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification."
+
+You should be able to add new functionality without changing existing code. This is usually achieved through interfaces and abstract classes.
+
+**Scenario:**
+If you have a `DiscountService`, instead of using a giant `switch` statement for every new discount type, you define a `DiscountStrategy` interface. Adding a new discount means adding a new class, not touching the `DiscountService`.
+
+## 3. Liskov Substitution Principle (LSP)
+> "Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program."
+
+If `Class B` is a subclass of `Class A`, you should be able to pass `B` anywhere `A` is expected without the program breaking.
+
+**Common Violation:**
+The classic Square-Rectangle problem. If a `Square` inherits from `Rectangle` but overrides the `setHeight` to also change the `width`, it breaks the expectations of a `Rectangle` user.
+
+## 4. Interface Segregation Principle (ISP)
+> "Many client-specific interfaces are better than one general-purpose interface."
+
+Clients should not be forced to depend on methods they do not use. Split large interfaces into smaller, more specific ones.
+
+**Example:**
+Instead of a `SmartDevice` interface with `print()`, `fax()`, and `scan()`, create `Printer`, `Fax`, and `Scanner` interfaces. A basic printer shouldn't be forced to implement a `fax()` method.
+
+## 5. Dependency Inversion Principle (DIP)
+> "Depend upon abstractions, [not] concretions."
+
+1. High-level modules should not depend on low-level modules. Both should depend on abstractions.
+2. Abstractions should not depend on details. Details should depend on abstractions.
+
+**In Practice:**
+Instead of a `Store` class instantiating a `StripePayment` object directly, it should depend on an `IPaymentProvider` interface. This allows you to swap Stripe for PayPal without changing the `Store` logic.
+
+---
+
+## Why SOLID Matters in Interviews
+Interviewers look for more than just "I know what the letters stand for." They want to see:
+- **Trade-offs:** When *not* to over-engineer with SOLID.
+- **Real-world application:** Can you spot a violation in a code review?
+- **Architectural Thinking:** How these principles lead to patterns like Strategy, Factory, and Dependency Injection.
+
+In the next journal entry, we'll look at **Design Patterns** and how they implement these SOLID foundations.
+
+---
+*Date: 2026-02-12*
+*Category: dev*
+*Tags: solid, architecture, interview, clean-code, dev*

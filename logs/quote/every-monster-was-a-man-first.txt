@@ -1,0 +1,53 @@
+# Every monster was a man first
+
+> *"Every monster was a man first."*
+
+## Where it comes from
+
+| | |
+| --- | --- |
+| Author | **Edward Albee** (1928–2016) |
+| Work | *Tiny Alice* |
+| Premiere | Billy Rose Theatre, Broadway — 29 December 1964; 167 performances, closed 22 May 1965 |
+| Published | 1965 |
+| Original cast | John Gielgud (Julian), Irene Worth (Miss Alice), William Hutt (Lawyer), John Heffernan (Butler), Eric Berry (Cardinal) |
+
+The attribution is worth stating carefully, because online the line almost never travels with the play attached — it circulates as "Edward Albee" and a full stop, which is how a sentence written for a specific character in a specific scene turns into a poster. The compilations that do source it point to *Tiny Alice*, page 64 of the Dramatists Play Service edition. What none of them record is **who says it**. The play has five characters and no narrator, and the quote circuit has never bothered to name the speaker — so anyone quoting it, including this entry, is quoting a line whose dramatic context has been thrown away.
+
+That matters more than usual here, because *Tiny Alice* is a play in which everybody lies.
+
+## The play it falls out of
+
+Julian is a lay brother, secretary to a Cardinal — devout, credulous, with a history of losing his grip on reality. A vast fortune is offered to the Church by Miss Alice, brokered by her Lawyer, on one condition: Julian must come and collect it in person.
+
+He goes. He is absorbed into the house, seduced, married to Miss Alice — and then discovers what the household actually serves. In the center of the mansion sits a scale model of the mansion, and inside the model, allegedly, lives Alice: not the woman he married but the abstraction she has been standing in for. The woman was the intermediary. The marriage was procurement. At the end the Lawyer shoots him and the household packs up and leaves, and Julian dies alone at the foot of the model, still talking to whatever is inside it.
+
+Critics hated it. The initial response was, in the standard phrasing, negative and puzzled; Philip Roth went after its "pretentiousness" and "ghastly" rhetoric. Revivals in 1998 and 2000 were treated more kindly, once the play could be read as a deliberate enigma rather than a failed thriller.
+
+## What the line is actually claiming
+
+There are two readings, and the internet only ever uses one of them.
+
+**The soft reading — the one that gets shared.** Every villain has a human origin. Nobody starts out evil. Therefore: look for the person behind the monstrousness, extend some understanding, resist the urge to demonize. It's a decent sentiment and it makes the sentence a compassion slogan.
+
+**The hard reading — the one the play supports.** Monstrousness is not a separate species. It is a *destination*, and the road to it starts from an ordinary place, which means it is reachable from where you are standing. The line isn't reassurance. It's proximity.
+
+Look at the grammar. The load-bearing word is **first**. Not "every monster was once a man" — a fact about the past — but *first*, which imposes a sequence: there was a man, and then there was a monster, and the second came out of the first. The sentence is about a transition it declines to describe. Something happened in between, and Albee doesn't tell you what, because the play is the demonstration: five well-dressed people in a beautiful house, being perfectly civil, dismantling a man for an abstraction. Nobody in *Tiny Alice* announces that they have become a monster. They just conduct business.
+
+## Why the stripped version is weaker
+
+Cut loose from the play, "every monster was a man first" points backward — toward the villain's sad childhood, toward explanation, toward forgiveness. Put back inside a play about an innocent destroyed by an institution and a concept, it points forward, at the reader: this is a thing men turn into, and it happens in rooms like this one, politely.
+
+It also refuses the consolation the horror genre exists to provide. The monster in horror is *other* — that's the load-bearing assumption; the whole apparatus of fangs and shadows is there to establish a category boundary between it and you. Albee's sentence deletes the boundary. Whatever it is, it used to be what you are.
+
+## The trap in it
+
+The line is a favorite of anyone who wants to launder cruelty as backstory — quote it, gesture at the wound, and the harm becomes a symptom. But read literally it grants nothing of the sort. It says the man came first. It never says the man is still in there, never says the transformation is reversible, never suggests the monster retains anything owed a hearing.
+
+*Was* is past tense and it is doing deliberate work. Origin is not a defense. Explanation is not absolution. The most the sentence concedes is that the thing in front of you started somewhere recognizable — which, if anything, makes it worse, because it means nothing exotic was required.
+
+## See also
+
+- **Nietzsche**, *Beyond Good and Evil* §146: *"He who fights with monsters should look to it that he himself does not become a monster. And if you gaze long into an abyss, the abyss also gazes into you."* The same claim from the opposite end — Albee describes the finished product, Nietzsche describes the mechanism, and both deny that the categories are sealed.
+- **Jung's** roots-in-hell line — you cannot grow tall without descending into your own capacity for exactly this. The descent is how you find out which direction you are travelling.
+- **Albee**, *Who's Afraid of Virginia Woolf?* (1962) — the famous one, and the better introduction to how he writes people who destroy each other while remaining scrupulously well-mannered.
