@@ -1,6 +1,37 @@
 (logs)
   > (item)
     (category) Series
+    (creator) Nic Pizzolatto
+    (date) 2026-09-11
+    (link) https://www.imdb.com/title/tt2356777/
+    (platform) HBO Max
+    (rating) 5
+    (slug) true-detective-tv-series
+    (title) True Detective (Season 1)
+    (year) 2014
+    (description) HBO's anthology crime drama by Nic Pizzolatto. Season one follows Louisiana detectives Rust Cohle and Marty Hart across seventeen years of a ritualistic murder case. Written entirely by Pizzolatto, directed entirely by Cary Joji Fukunaga — one of the great single runs in television.
+  > (item)
+    (category) Series
+    (creator) Kadri Beran Taşkın
+    (date) 2026-09-11
+    (link) https://tr.wikipedia.org/wiki/S%C4%B1f%C4%B1r_Bir
+    (platform) HBO Max
+    (rating) 5
+    (slug) sifir-bir-tv-series
+    (title) Sıfır Bir (TV Series)
+    (description) Turkish crime drama following three young men from Adana's Hürriyet neighbourhood through drugs, gangs, and the mafia above them. Started on YouTube, made by locals, and ran six seasons — unmatched for its authenticity of place and dialect.
+  > (item)
+    (category) Series
+    (creator) Bill Lawrence, Matt Tarses
+    (date) 2026-09-11
+    (link) https://www.imdb.com/title/tt32420734/
+    (platform) HBO Max
+    (rating) 2
+    (slug) rooster-tv-series
+    (title) Rooster (TV Series)
+    (description) HBO comedy from Bill Lawrence and Matt Tarses. Steve Carell plays a beach-read novelist who takes a Writer in Residence post at a small college to be near his daughter after both their marriages collapse. A stacked cast stranded in a show with no reason to exist.
+  > (item)
+    (category) Series
     (creator) Neil Cross
     (date) 2026-08-28
     (link) https://www.imdb.com/title/tt1474684/
