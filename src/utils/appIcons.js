@@ -1,4 +1,5 @@
 import {
+  ChartBarIcon,
   ShapesIcon,
   BookmarkSimpleIcon,
   ListNumbersIcon,
@@ -130,6 +131,7 @@ import {
 } from '@phosphor-icons/react';
 
 export const appIcons = {
+  ChartBarIcon,
   ShapesIcon,
   BookmarkSimpleIcon,
   ListNumbersIcon,

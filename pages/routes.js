@@ -79,6 +79,7 @@ export const staticRoutes = [
   "/apps/pomodoro-timer",
   "/apps/poster-loom",
   "/apps/qr-code-generator",
+  "/apps/probability-cabinet",
   "/apps/quadtree-sim",
   "/apps/quote-generator",
   "/apps/rock-paper-scissors",

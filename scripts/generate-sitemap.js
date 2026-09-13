@@ -18,6 +18,7 @@ const generateSitemap = async () => {
     '/stories',
     '/settings',
     '/apps',
+    '/apps/probability-cabinet',
     '/stories/lore',
   ];
 

@@ -168,7 +168,9 @@ const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
 const EbruPage = lazy(() => import('../pages/apps/EbruPage'));
 const VitrayPage = lazy(() => import('../pages/apps/VitrayPage'));
-const MorphogenesisLabPage = lazy(() => import('../pages/apps/MorphogenesisLabPage'));
+const MorphogenesisLabPage = lazy(
+  () => import('../pages/apps/MorphogenesisLabPage'),
+);
 const AlchemyLabPage = lazy(() => import('../pages/apps/AlchemyLabPage'));
 const CloudMusicPlayerPage = lazy(
   () => import('../pages/apps/CloudMusicPlayerPage'),
@@ -215,12 +217,14 @@ const JsMasterclassPage = lazy(() => import('../pages/apps/JsMasterclassPage'));
 const CsvFlashcardsPage = lazy(() => import('../pages/apps/CsvFlashcardsPage'));
 const ColorTheoryPage = lazy(() => import('../pages/apps/ColorTheoryPage'));
 const TierForgePage = lazy(() => import('../pages/apps/TierForgePage'));
+const ProbabilityCabinetPage = lazy(
+  () => import('../pages/apps/ProbabilityCabinetPage'),
+);
+
 const QuadtreeSimulationPage = lazy(
   () => import('../pages/apps/QuadtreeSimulationPage'),
 );
-const ChladniPlatePage = lazy(
-  () => import('../pages/apps/ChladniPlatePage'),
-);
+const ChladniPlatePage = lazy(() => import('../pages/apps/ChladniPlatePage'));
 const PillowBookPage = lazy(() => import('../pages/apps/PillowBookPage'));
 const LetterPressPage = lazy(() => import('../pages/apps/LetterPressPage'));
 const FezGlyphPage = lazy(() => import('../pages/apps/FezGlyphPage'));
@@ -437,7 +441,11 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/about"
-          element={<Suspense fallback={<Loading />}><AboutPage /></Suspense>}
+          element={
+            <Suspense fallback={<Loading />}>
+              <AboutPage />
+            </Suspense>
+          }
         />
         <Route
           path="/about/:viewId"
@@ -1638,6 +1646,14 @@ const AnimatedRoutes = ({
                 <TierForgePage />
               </Suspense>
             </motion.div>
+          }
+        />
+        <Route
+          path="/apps/probability-cabinet"
+          element={
+            <Suspense fallback={<Loading />}>
+              <ProbabilityCabinetPage />
+            </Suspense>
           }
         />
         <Route
