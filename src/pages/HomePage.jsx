@@ -5,6 +5,7 @@ import LuxeHomePage from './luxe-views/LuxeHomePage';
 import TerracottaHomePage from './terracotta-views/TerracottaHomePage';
 import MistHomePage from './mist-views/MistHomePage';
 import LedgerHomePage from './ledger-views/LedgerHomePage';
+import OrbitHomePage from './orbit-views/OrbitHomePage';
 
 const HomePage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -13,6 +14,7 @@ const HomePage = () => {
   if (fezcodexTheme === 'terracotta') return <TerracottaHomePage />;
   if (fezcodexTheme === 'mist') return <MistHomePage />;
   if (fezcodexTheme === 'ledger') return <LedgerHomePage />;
+  if (fezcodexTheme === 'orbit') return <OrbitHomePage />;
   return <BrutalistHomePage />;
 };
 

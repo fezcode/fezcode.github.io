@@ -356,6 +356,7 @@ const LedgerSettingsPage = () => {
                     { label: 'TERRACOTTA', value: 'terracotta' },
                     { label: 'MIST', value: 'mist' },
                     { label: 'LEDGER', value: 'ledger' },
+                    { label: 'Orbit (Observatory)', value: 'orbit' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -461,6 +462,7 @@ const LedgerSettingsPage = () => {
                     { label: 'LUXE', value: 'luxe' },
                     { label: 'TERRACOTTA', value: 'terracotta' },
                     { label: 'GALLEY', value: 'galley' },
+                    { label: 'Orbit', value: 'orbit' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

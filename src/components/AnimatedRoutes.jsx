@@ -437,7 +437,7 @@ const AnimatedRoutes = ({
         />
         <Route
           path="/about"
-          element={<Navigate to="/about/terracotta" replace />}
+          element={<Suspense fallback={<Loading />}><AboutPage /></Suspense>}
         />
         <Route
           path="/about/:viewId"

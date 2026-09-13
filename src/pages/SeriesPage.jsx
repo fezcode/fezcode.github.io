@@ -5,6 +5,7 @@ import LuxeSeriesPage from './luxe-views/LuxeSeriesPage';
 import TerracottaSeriesPage from './terracotta-views/TerracottaSeriesPage';
 import MistSeriesPage from './mist-views/MistSeriesPage';
 import LedgerSeriesPage from './ledger-views/LedgerSeriesPage';
+import OrbitSeriesPage from './orbit-views/OrbitSeriesPage';
 
 const SeriesPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -13,6 +14,7 @@ const SeriesPage = () => {
   if (fezcodexTheme === 'terracotta') return <TerracottaSeriesPage />;
   if (fezcodexTheme === 'mist') return <MistSeriesPage />;
   if (fezcodexTheme === 'ledger') return <LedgerSeriesPage />;
+  if (fezcodexTheme === 'orbit') return <OrbitSeriesPage />;
   return <BrutalistSeriesPage />;
 };
 

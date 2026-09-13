@@ -5,6 +5,7 @@ import LuxeAchievementsPage from './luxe-views/LuxeAchievementsPage';
 import TerracottaAchievementsPage from './terracotta-views/TerracottaAchievementsPage';
 import MistAchievementsPage from './mist-views/MistAchievementsPage';
 import LedgerAchievementsPage from './ledger-views/LedgerAchievementsPage';
+import OrbitAchievementsPage from './orbit-views/OrbitAchievementsPage';
 
 const AchievementsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -13,6 +14,7 @@ const AchievementsPage = () => {
   if (fezcodexTheme === 'terracotta') return <TerracottaAchievementsPage />;
   if (fezcodexTheme === 'mist') return <MistAchievementsPage />;
   if (fezcodexTheme === 'ledger') return <LedgerAchievementsPage />;
+  if (fezcodexTheme === 'orbit') return <OrbitAchievementsPage />;
   return <BrutalistAchievementsPage />;
 };
 

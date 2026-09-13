@@ -9,6 +9,8 @@ import {
 } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import * as LocalStorageManager from '../utils/LocalStorageManager';
+import { isSiteTheme } from '../utils/siteThemes';
+import '../styles/Orbit.css';
 
 const Toast = ({
   id,
@@ -31,9 +33,7 @@ const Toast = ({
     const urlTheme = new URLSearchParams(window.location.search).get(
       'fezTheme',
     );
-    return ['brutalist', 'luxe', 'terracotta', 'mist', 'ledger'].includes(
-      urlTheme,
-    )
+    return isSiteTheme(urlTheme)
       ? urlTheme
       : LocalStorageManager.get('fezcodex-theme', 'brutalist');
   };
@@ -61,6 +61,80 @@ const Toast = ({
     }, duration);
     return () => clearTimeout(timer);
   }, [id, duration, removeToast]);
+
+  if (theme === 'orbit') {
+    const Icon =
+      type === 'error'
+        ? WarningCircleIcon
+        : type === 'gold'
+          ? TrophyIcon
+          : type === 'techno'
+            ? TerminalIcon
+            : CheckCircleIcon;
+    return (
+      <div
+        className="orb-toast relative w-80 md:w-96 max-w-[calc(100vw-2rem)] mb-4"
+        role={type === 'error' ? 'alert' : 'status'}
+      >
+        <div className="flex items-start gap-3">
+          <span className="orb-accent shrink-0 mt-1">
+            {icon || <Icon size={22} />}
+          </span>
+          <div className="min-w-0 flex-1">
+            <h4 className="font-medium text-base">{title}</h4>
+            <p className="orb-muted text-sm mt-1">{message}</p>
+            {links?.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3">
+                {links.map((link, i) =>
+                  link.to ? (
+                    <Link
+                      key={i}
+                      to={link.to}
+                      className="orb-btn"
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </Link>
+                  ) : link.href ? (
+                    <a
+                      key={i}
+                      href={link.href}
+                      className="orb-btn"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </a>
+                  ) : link.onClick ? (
+                    <button
+                      key={i}
+                      type="button"
+                      className="orb-btn"
+                      onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                      }}
+                    >
+                      {link.label}
+                    </button>
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            className="orb-link p-1"
+            onClick={() => removeToast(id)}
+            aria-label="Dismiss notification"
+          >
+            <XIcon size={17} />
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   /* ============================================================
    * TERRACOTTA TOAST — editorial margin note on bone paper

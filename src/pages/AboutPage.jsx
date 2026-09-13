@@ -11,6 +11,7 @@ import {
   HandHeartIcon,
   BookBookmarkIcon,
   IdentificationCardIcon,
+  PlanetIcon,
 } from '@phosphor-icons/react';
 import NeuromancerHUD from './about-views/NeuromancerHUD';
 import SystemArchitecture from './about-views/SystemArchitecture';
@@ -20,11 +21,14 @@ import Brutalist from './about-views/Brutalist';
 import SkillDeck from './about-views/SkillDeck';
 import LuxeAboutView from './about-views/LuxeAboutView';
 import TerracottaAboutView from './about-views/Terracotta';
+import OrbitAboutView from './about-views/OrbitAboutView';
 import { useAchievements } from '../context/AchievementContext';
+import { useVisualSettings } from '../context/VisualSettingsContext';
 import Seo from '../components/Seo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
+    { id: 'orbit', icon: PlanetIcon, label: 'Orbit' },
     { id: 'terracotta', icon: BookBookmarkIcon, label: 'Terracotta' },
     { id: 'luxe', icon: IdentificationCardIcon, label: 'Luxe' },
     { id: 'brutalist', icon: BugIcon, label: 'Brutalist' },
@@ -35,9 +39,27 @@ const ViewSwitcher = ({ currentView }) => {
     { id: 'map', icon: GraphIcon, label: 'Mind Map' },
   ];
 
+  if (currentView === 'orbit') {
+    return (
+      <nav className="flex flex-wrap gap-2" aria-label="About page styles">
+        {views.map(({ id, label, icon: Icon }) => (
+          <Link
+            key={id}
+            className={`orb-btn ${id === currentView ? 'orb-btn-accent' : ''}`}
+            to={`/about/${id}`}
+            aria-current={id === currentView ? 'page' : undefined}
+          >
+            <Icon size={16} />
+            {label}
+          </Link>
+        ))}
+      </nav>
+    );
+  }
+
   return (
     <div
-      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-50 p-2 shadow-2xl flex gap-2 ${
+      className={`fixed bottom-8 left-1/2 -translate-x-1/2 z-50 p-2 shadow-2xl flex gap-2 max-w-[calc(100vw-2rem)] overflow-x-auto ${
         currentView === 'terracotta'
           ? 'bg-[#F3ECE0] border border-[#1A161320] backdrop-blur-md'
           : 'bg-black/50 backdrop-blur-md rounded-full border border-white/10'
@@ -46,6 +68,8 @@ const ViewSwitcher = ({ currentView }) => {
       {views.map((view) => (
         <Link
           key={view.id}
+          aria-label={`${view.label} about style`}
+          title={view.label}
           to={`/about/${view.id}`}
           className={`relative px-4 py-2 flex items-center gap-2 transition-all ${
             currentView === 'terracotta'
@@ -73,7 +97,9 @@ const ViewSwitcher = ({ currentView }) => {
 
 const AboutPage = () => {
   const { viewId } = useParams();
+  const { fezcodexTheme } = useVisualSettings();
   const validViews = [
+    'orbit',
     'terracotta',
     'luxe',
     'dossier',
@@ -90,11 +116,23 @@ const AboutPage = () => {
     unlockAchievement('curious_soul');
   }, [unlockAchievement]);
 
+  if (!viewId)
+    return (
+      <Navigate
+        to={`/about/${fezcodexTheme === 'orbit' ? 'orbit' : 'terracotta'}`}
+        replace
+      />
+    );
   if (!validViews.includes(viewId)) {
     return <Navigate to="/404" replace />;
   }
 
   const view = viewId;
+
+  if (view === 'orbit')
+    return (
+      <OrbitAboutView viewSwitcher={<ViewSwitcher currentView="orbit" />} />
+    );
 
   const getButtonStyle = (currentView) => {
     switch (currentView) {

@@ -11,6 +11,7 @@ import TerminalGreenBlogPostPage from './blog-views/TerminalGreenBlogPostPage';
 import LuxeBlogPostPage from './blog-views/LuxeBlogPostPage';
 import TerracottaBlogPostPage from './blog-views/TerracottaBlogPostPage';
 import GalleyBlogPostPage from './blog-views/GalleyBlogPostPage';
+import OrbitBlogPostPage from './blog-views/OrbitBlogPostPage';
 
 const BlogPostPage = () => {
   const { blogPostViewMode, fezcodexTheme } = useVisualSettings();
@@ -31,6 +32,7 @@ const BlogPostPage = () => {
         'luxe',
         'terracotta',
         'galley',
+        'orbit',
       ].includes(themeParam)
     ) {
       return themeParam;
@@ -42,6 +44,7 @@ const BlogPostPage = () => {
 
     if (fezcodexTheme === 'luxe') return 'luxe';
     if (fezcodexTheme === 'terracotta') return 'terracotta';
+    if (fezcodexTheme === 'orbit') return 'orbit';
 
     return 'brutalist';
   })();
@@ -49,6 +52,7 @@ const BlogPostPage = () => {
   if (effectiveViewMode === 'luxe') return <LuxeBlogPostPage />;
   if (effectiveViewMode === 'terracotta') return <TerracottaBlogPostPage />;
   if (effectiveViewMode === 'galley') return <GalleyBlogPostPage />;
+  if (effectiveViewMode === 'orbit') return <OrbitBlogPostPage />;
   if (effectiveViewMode === 'old') return <OldBlogPostPage />;
   if (effectiveViewMode === 'dossier') return <DossierBlogPostPage />;
   if (effectiveViewMode === 'dokument') return <DokumentBlogPostPage />;

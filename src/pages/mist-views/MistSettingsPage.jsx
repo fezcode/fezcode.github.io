@@ -418,6 +418,7 @@ const MistSettingsPage = () => {
                     { label: 'terracotta (warm)', value: 'terracotta' },
                     { label: 'mist (this fog)', value: 'mist' },
                     { label: 'ledger (archive)', value: 'ledger' },
+                    { label: 'Orbit (Observatory)', value: 'orbit' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -443,6 +444,7 @@ const MistSettingsPage = () => {
                     { label: 'luxe', value: 'luxe' },
                     { label: 'terracotta', value: 'terracotta' },
                     { label: 'galley proof', value: 'galley' },
+                    { label: 'Orbit', value: 'orbit' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

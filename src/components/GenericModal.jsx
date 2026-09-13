@@ -5,6 +5,7 @@ import LuxeModal from './LuxeModal';
 import TerracottaModal from './TerracottaModal';
 import MistModal from './MistModal';
 import LedgerModal from './LedgerModal';
+import OrbitModal from './OrbitModal';
 
 const GenericModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -13,6 +14,7 @@ const GenericModal = (props) => {
   if (fezcodexTheme === 'terracotta') return <TerracottaModal {...props} />;
   if (fezcodexTheme === 'mist') return <MistModal {...props} />;
   if (fezcodexTheme === 'ledger') return <LedgerModal {...props} />;
+  if (fezcodexTheme === 'orbit') return <OrbitModal {...props} />;
   return <BrutalistModal {...props} />;
 };
 

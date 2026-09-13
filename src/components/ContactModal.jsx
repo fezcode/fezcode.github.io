@@ -36,6 +36,32 @@ const ContactModal = ({ isOpen, onClose }) => {
     return 'Contact';
   })();
 
+  if (fezcodexTheme === 'orbit') {
+    return (
+      <GenericModal isOpen={isOpen} onClose={onClose} title="Say hello">
+        <p className="orb-muted mb-5">A few ways to find Samil.</p>
+        <div className="flex flex-col gap-2">
+          {(config?.socials || []).map((link) => {
+            const Icon = socialIcons[link.icon] || GlobeIcon;
+            return (
+              <a
+                key={link.id}
+                href={link.url}
+                className="orb-row-link"
+                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+              >
+                <Icon size={20} className="orb-accent shrink-0" />
+                <span className="flex-1 min-w-0">{link.label}</span>
+                <ArrowUpRightIcon size={16} />
+              </a>
+            );
+          })}
+        </div>
+      </GenericModal>
+    );
+  }
+
   return (
     <GenericModal isOpen={isOpen} onClose={onClose} title={title}>
       <div className="flex flex-col gap-6">
@@ -226,10 +252,7 @@ const LedgerContactLink = ({ href, icon: Icon, label, value }) => (
     className="ldg-row-link"
   >
     <Icon size={16} weight="bold" className="shrink-0 self-center" />
-    <span
-      className="ldg-label font-bold shrink-0"
-      style={{ width: '10ch' }}
-    >
+    <span className="ldg-label font-bold shrink-0" style={{ width: '10ch' }}>
       {label}
     </span>
     <span className="ldg-leader" aria-hidden="true" />

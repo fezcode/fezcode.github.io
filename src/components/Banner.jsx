@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import piml from 'piml';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -16,11 +16,33 @@ const DISMISSED_BANNERS_KEY = 'dismissed-banners';
 const Banner = () => {
   const [banner, setBanner] = useState(null);
   const [isVisible, setIsVisible] = useState(true);
+  const orbitBannerRef = useRef(null);
   const { fezcodexTheme } = useVisualSettings() || {};
   const isLuxe = fezcodexTheme === 'luxe';
   const isTerracotta = fezcodexTheme === 'terracotta';
   const isMist = fezcodexTheme === 'mist';
   const isLedger = fezcodexTheme === 'ledger';
+
+  useEffect(() => {
+    if (fezcodexTheme !== 'orbit' || !banner || !isVisible) return undefined;
+    const element = orbitBannerRef.current;
+    if (!element) return undefined;
+    const updateOffset = () => {
+      document.documentElement.style.setProperty(
+        '--orb-banner-offset',
+        `${Math.max(0, element.getBoundingClientRect().bottom)}px`,
+      );
+    };
+    const observer = new ResizeObserver(updateOffset);
+    observer.observe(element);
+    document.addEventListener('scroll', updateOffset, true);
+    updateOffset();
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('scroll', updateOffset, true);
+      document.documentElement.style.removeProperty('--orb-banner-offset');
+    };
+  }, [fezcodexTheme, banner, isVisible]);
 
   useEffect(() => {
     const fetchBanner = async () => {
@@ -135,6 +157,30 @@ const Banner = () => {
     );
   };
 
+  if (fezcodexTheme === 'orbit') {
+    return (
+      <div ref={orbitBannerRef} className="orb-banner relative z-[100]">
+        <div className="max-w-[1800px] mx-auto flex items-start sm:items-center gap-4">
+          <span className="orb-accent pt-1">
+            {iconFor(bannerType, 'regular', 17)}
+          </span>
+          <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-3">
+            <span>{banner.text}</span>
+            {renderLink('orb-link shrink-0')}
+          </div>
+          <button
+            type="button"
+            onClick={handleDismiss}
+            className="orb-link shrink-0 p-1"
+            aria-label="Dismiss banner"
+          >
+            <XIcon size={18} />
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   /* ============================================================
    * LEDGER BANNER — a minute pinned above the register. Inked with the
    * --ldg-* vars so it follows the active register.
@@ -168,10 +214,7 @@ const Banner = () => {
           >
             <div className="max-w-[1800px] mx-auto px-5 md:px-12 py-2.5 flex items-start md:items-center gap-4 md:gap-6">
               <div className="flex items-center gap-3 shrink-0 pt-0.5 md:pt-0">
-                <span
-                  aria-hidden="true"
-                  style={{ color: 'var(--ldg-accent)' }}
-                >
+                <span aria-hidden="true" style={{ color: 'var(--ldg-accent)' }}>
                   {iconFor(bannerType, 'bold', 14)}
                 </span>
                 <span

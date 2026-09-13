@@ -203,9 +203,18 @@
     (id) fezledger-launch
     (type) info
     (from) 2026-08-21T00:00:00Z
-    (to) 2026-11-30T23:59:59Z
+    (to) 2026-09-30T23:59:59Z
     (text) FEZLEDGER IS ONLINE: THE CODEX RULED AND FILED — ONE MONOSPACE INK, DOTTED LEADERS, FIVE REGISTERS, NO ERASURES. ENABLE VIA SETTINGS OR COMMAND PALETTE.
     (isActive) true
     (link) https://fezcode.com/settings?fezTheme=ledger#interface
     (linkText) Enable Ledger
 
+  > (banner)
+    (id) fezorbit-launch
+    (type) info
+    (from) 2026-10-01T00:00:00Z
+    (to) 2026-12-31T23:59:59Z
+    (text) ORBIT IS ONLINE: A PERSONAL OBSERVATORY — WARM PAPER, COBALT DETAILS, CONNECTED DISCOVERIES. EXPLORE IN DAYLIGHT OR NIGHT VIA SETTINGS OR COMMAND PALETTE.
+    (isActive) true
+    (link) https://fezcode.com/settings?fezTheme=orbit&fezBlogMode=orbit#interface
+    (linkText) Enable Orbit

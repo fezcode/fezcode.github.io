@@ -1,19 +1,25 @@
 import React from 'react';
 import Navbar from './Navbar';
-import BrutalistSidebar from './BrutalistSidebar';
 import Footer from './Footer';
-import LuxeSidebar from './LuxeSidebar';
 import LuxeNavbar from './LuxeNavbar';
 import LuxeFooter from './LuxeFooter';
-import TerracottaSidebar from './TerracottaSidebar';
 import TerracottaNavbar from './TerracottaNavbar';
 import TerracottaFooter from './TerracottaFooter';
-import MistSidebar from './MistSidebar';
 import MistNavbar from './MistNavbar';
 import MistFooter from './MistFooter';
-import LedgerSidebar from './LedgerSidebar';
 import LedgerNavbar from './LedgerNavbar';
 import LedgerFooter from './LedgerFooter';
+import BrutalistSidebar from './BrutalistSidebar';
+import LuxeSidebar from './LuxeSidebar';
+import TerracottaSidebar from './TerracottaSidebar';
+import MistSidebar from './MistSidebar';
+import LedgerSidebar from './LedgerSidebar';
+import OrbitSidebar from './OrbitSidebar';
+import OrbitNavbar from './OrbitNavbar';
+import OrbitFooter from './OrbitFooter';
+import { useOrbitPalette } from './orbit';
+import { useAnimation } from '../context/AnimationContext';
+import '../styles/Orbit.css';
 import '../styles/Ledger.css';
 import { useLocation } from 'react-router-dom';
 import Search from './Search';
@@ -43,6 +49,8 @@ const Layout = ({
   toggleBSOD,
 }) => {
   const { isPaletteOpen, setIsPaletteOpen } = useCommandPalette();
+  useOrbitPalette();
+  const { reduceMotion } = useAnimation();
   const {
     isGarden,
     isAutumn,
@@ -58,6 +66,11 @@ const Layout = ({
   // Check if we are on the about page or graph page to conditionally render layout elements
   const isTheVaguePage = location.pathname.startsWith('/the-vague');
   const isAboutPage = location.pathname.startsWith('/about');
+  const isOrbitAboutPage =
+    fezcodexTheme === 'orbit' &&
+    ['/about', '/about/', '/about/orbit', '/about/orbit/'].includes(
+      location.pathname,
+    );
   const isGraphPage = location.pathname.startsWith('/graph');
   const isTerminalPage = location.pathname.startsWith('/terminal');
   const isBookshelfPage = location.pathname.startsWith('/bookshelf');
@@ -99,7 +112,7 @@ const Layout = ({
     location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
   const isDemystifyPage = location.pathname.startsWith('/demystify');
   const hideLayout =
-    isAboutPage ||
+    (isAboutPage && !isOrbitAboutPage) ||
     isGraphPage ||
     isSpecialProject ||
     isTheVaguePage ||
@@ -125,7 +138,9 @@ const Layout = ({
               ? 'bg-[#EEF2F1]'
               : fezcodexTheme === 'ledger'
                 ? 'ldg-appframe'
-                : 'bg-[#050505]'
+                : fezcodexTheme === 'orbit'
+                  ? `orb-appframe ${reduceMotion ? 'orb-reduce-motion' : ''}`
+                  : 'bg-[#050505]'
       } min-h-screen font-sans flex`}
     >
       {!hideLayout &&
@@ -157,6 +172,13 @@ const Layout = ({
             toggleModal={toggleModal}
             setIsPaletteOpen={setIsPaletteOpen}
           />
+        ) : fezcodexTheme === 'orbit' ? (
+          <OrbitSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
         ) : (
           <BrutalistSidebar
             isOpen={isSidebarOpen}
@@ -166,7 +188,7 @@ const Layout = ({
           />
         ))}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? 'md:ml-72' : 'md:ml-0'}`}
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : 'md:ml-72') : 'md:ml-0'}`}
       >
         {!hideLayout &&
           (fezcodexTheme === 'terracotta' ? (
@@ -197,6 +219,13 @@ const Layout = ({
               isSearchVisible={isSearchVisible}
               toggleSearch={toggleSearch}
             />
+          ) : fezcodexTheme === 'orbit' ? (
+            <OrbitNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
           ) : (
             <Navbar
               toggleSidebar={toggleSidebar}
@@ -206,7 +235,7 @@ const Layout = ({
             />
           ))}
         {!hideLayout && isSearchVisible && (
-          <Search isVisible={isSearchVisible} />
+          <Search isVisible={isSearchVisible} toggleSearch={toggleSearch} />
         )}
         <main className="flex-grow">{children}</main>
         {!hideLayout &&
@@ -222,6 +251,8 @@ const Layout = ({
             <MistFooter />
           ) : fezcodexTheme === 'ledger' ? (
             <LedgerFooter />
+          ) : fezcodexTheme === 'orbit' ? (
+            <OrbitFooter />
           ) : (
             <Footer />
           ))}

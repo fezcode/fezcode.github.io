@@ -5,6 +5,7 @@ import LuxeCommandPalette from './LuxeCommandPalette';
 import TerracottaCommandPalette from './TerracottaCommandPalette';
 import MistCommandPalette from './MistCommandPalette';
 import LedgerCommandPalette from './LedgerCommandPalette';
+import OrbitCommandPalette from './OrbitCommandPalette';
 
 const CommandPalette = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -14,6 +15,7 @@ const CommandPalette = (props) => {
     return <TerracottaCommandPalette {...props} />;
   if (fezcodexTheme === 'mist') return <MistCommandPalette {...props} />;
   if (fezcodexTheme === 'ledger') return <LedgerCommandPalette {...props} />;
+  if (fezcodexTheme === 'orbit') return <OrbitCommandPalette {...props} />;
   return <BrutalistCommandPalette {...props} />;
 };
 

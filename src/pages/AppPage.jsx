@@ -5,6 +5,7 @@ import LuxeAppsPage from './luxe-views/LuxeAppsPage';
 import TerracottaAppsPage from './terracotta-views/TerracottaAppsPage';
 import MistAppsPage from './mist-views/MistAppsPage';
 import LedgerAppsPage from './ledger-views/LedgerAppsPage';
+import OrbitAppsPage from './orbit-views/OrbitAppsPage';
 
 const AppPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -13,6 +14,7 @@ const AppPage = () => {
   if (fezcodexTheme === 'terracotta') return <TerracottaAppsPage />;
   if (fezcodexTheme === 'mist') return <MistAppsPage />;
   if (fezcodexTheme === 'ledger') return <LedgerAppsPage />;
+  if (fezcodexTheme === 'orbit') return <OrbitAppsPage />;
   return <BrutalistAppsPage />;
 };
 

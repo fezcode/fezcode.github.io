@@ -251,6 +251,7 @@ const LuxeSettingsPage = () => {
                       { label: 'Terracotta (Warm)', value: 'terracotta' },
                       { label: 'Mist (Hazy)', value: 'mist' },
                       { label: 'Ledger (Archive)', value: 'ledger' },
+                    { label: 'Orbit (Observatory)', value: 'orbit' },
                     ]}
                     value={fezcodexTheme}
                     onChange={setFezcodexTheme}
@@ -330,6 +331,7 @@ const LuxeSettingsPage = () => {
                     { label: 'Luxe', value: 'luxe' },
                     { label: 'Terracotta', value: 'terracotta' },
                     { label: 'Galley Proof', value: 'galley' },
+                    { label: 'Orbit', value: 'orbit' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

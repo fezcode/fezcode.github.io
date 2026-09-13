@@ -304,6 +304,36 @@ const SyntaxSprite = () => {
   const isTerracotta = fezcodexTheme === 'terracotta';
   const isMist = fezcodexTheme === 'mist';
   const isLedger = fezcodexTheme === 'ledger';
+  if (fezcodexTheme === 'orbit') {
+    return (
+      <div
+        className="fixed bottom-4 right-4 z-[9999] max-w-[calc(100vw-2rem)]"
+        style={{ fontFamily: "'DM Sans', sans-serif" }}
+      >
+        {thought && (
+          <div className="orb-toast mb-3 max-w-xs">
+            <p className="orb-eyebrow mb-2">Syntax · a passing thought</p>
+            <p className="text-sm">{thought}</p>
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={handleSpriteClick}
+          aria-label="Talk to Syntax, the codex companion"
+          className="orb-btn float-right"
+          style={{
+            borderRadius: '50%',
+            width: 42,
+            height: 42,
+            color: 'var(--orb-accent)',
+            fontSize: 23,
+          }}
+        >
+          ◎
+        </button>
+      </div>
+    );
+  }
   const spriteColor = isTerracotta
     ? '#C96442'
     : fezcodexTheme === 'luxe'

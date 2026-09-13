@@ -12,6 +12,7 @@ import {
   CloudIcon,
   PaintBrushBroadIcon,
   ScrollIcon,
+  PlanetIcon,
   TerminalWindowIcon,
   PlantIcon,
   TerminalIcon,
@@ -43,10 +44,10 @@ const DesignSelectionPage = () => {
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
         title="Design System | Fezcodex"
-        description="Choose your design exploration: Brutalist Brufez or Refined Fezluxe."
+        description="Explore six Fezcodex themes, from Brutalist to Orbit, a personal observatory."
       />
 
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
+      <div className="w-full min-w-0 max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
         <header className="mb-24 pt-12 border-b border-black/10 pb-12 text-center md:text-left">
           <Link
             to="/"
@@ -54,12 +55,12 @@ const DesignSelectionPage = () => {
           >
             <ArrowLeftIcon /> Back to Root
           </Link>
-          <h1 className="font-playfairDisplay text-7xl md:text-9xl text-[#1A1A1A] mb-6">
+          <h1 className="font-playfairDisplay text-5xl sm:text-7xl md:text-9xl text-[#1A1A1A] mb-6">
             Aesthetics
           </h1>
           <p className="font-outfit text-sm text-[#1A1A1A]/60 max-w-lg leading-relaxed">
-            Explore the visual foundations of Fezcodex. Choose between raw
-            systemic brutalism or refined architectural elegance.
+            Explore the visual foundations of Fezcodex. Six ways to make the
+            codex feel like your corner of the web.
           </p>
         </header>
 
@@ -68,7 +69,7 @@ const DesignSelectionPage = () => {
           <Link to="/design/brufez" className="group block relative">
             <motion.div
               whileHover={{ y: -10 }}
-              className="h-full bg-[#050505] border border-white/5 p-12 flex flex-col justify-between rounded-sm overflow-hidden shadow-2xl transition-all duration-500"
+              className="h-full bg-[#050505] border border-white/5 p-6 sm:p-12 flex flex-col justify-between rounded-sm overflow-hidden shadow-2xl transition-all duration-500"
             >
               <div className="absolute inset-0 opacity-[0.05] pointer-events-none group-hover:opacity-[0.1] transition-opacity">
                 <GenerativeArt
@@ -112,7 +113,7 @@ const DesignSelectionPage = () => {
           >
             <motion.div
               whileHover={{ y: -10 }}
-              className="h-full bg-[#F3ECE0] border border-[#1A161320] p-12 flex flex-col justify-between rounded-sm overflow-hidden shadow-[0_30px_60px_-30px_#1A161330] transition-all duration-500 relative"
+              className="h-full bg-[#F3ECE0] border border-[#1A161320] p-6 sm:p-12 flex flex-col justify-between rounded-sm overflow-hidden shadow-[0_30px_60px_-30px_#1A161330] transition-all duration-500 relative"
             >
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -131,7 +132,8 @@ const DesignSelectionPage = () => {
                     Terracotta
                   </h2>
                   <p className="font-mono text-xs text-[#2E2620]/70 uppercase tracking-widest leading-relaxed">
-                    Weighted editorial. Bone paper, hairline rules, serif wordmarks that hang true.
+                    Weighted editorial. Bone paper, hairline rules, serif
+                    wordmarks that hang true.
                   </p>
                 </div>
               </div>
@@ -156,7 +158,7 @@ const DesignSelectionPage = () => {
           >
             <motion.div
               whileHover={{ y: -10 }}
-              className="h-full bg-[#EEF2F1] p-12 flex flex-col justify-between rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(60,72,69,0.45)] transition-all duration-500 relative"
+              className="h-full bg-[#EEF2F1] p-6 sm:p-12 flex flex-col justify-between rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(60,72,69,0.45)] transition-all duration-500 relative"
             >
               <div
                 className="absolute inset-0 pointer-events-none"
@@ -175,8 +177,8 @@ const DesignSelectionPage = () => {
                     Mist
                   </h2>
                   <p className="font-mono text-xs text-[#5C6B67] lowercase tracking-widest leading-relaxed">
-                    hypnagogic fog. pale eucalyptus veils, fading horizons,
-                    type that breathes — half-remembered, half-imagined.
+                    hypnagogic fog. pale eucalyptus veils, fading horizons, type
+                    that breathes — half-remembered, half-imagined.
                   </p>
                 </div>
               </div>
@@ -201,7 +203,7 @@ const DesignSelectionPage = () => {
           >
             <motion.div
               whileHover={{ y: -10 }}
-              className="h-full bg-[#FBFAF7] p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+              className="h-full bg-[#FBFAF7] p-6 sm:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
               style={{
                 borderRadius: 2,
                 boxShadow:
@@ -238,9 +240,8 @@ const DesignSelectionPage = () => {
                       color: '#6D6E7C',
                     }}
                   >
-                    The registrar's archive. One monospace ink, hairline
-                    rules, dotted leaders, five cycling registers — no
-                    erasures.
+                    The registrar's archive. One monospace ink, hairline rules,
+                    dotted leaders, five cycling registers — no erasures.
                   </p>
                 </div>
               </div>
@@ -271,7 +272,7 @@ const DesignSelectionPage = () => {
           <Link to="/design/fezluxe" className="group block relative">
             <motion.div
               whileHover={{ y: -10 }}
-              className="h-full bg-white border border-black/5 p-12 flex flex-col justify-between rounded-sm overflow-hidden shadow-xl transition-all duration-500"
+              className="h-full bg-white border border-black/5 p-6 sm:p-12 flex flex-col justify-between rounded-sm overflow-hidden shadow-xl transition-all duration-500"
             >
               <div className="absolute inset-0 opacity-[0.03] pointer-events-none group-hover:opacity-[0.08] transition-opacity">
                 <LuxeArt
@@ -306,6 +307,49 @@ const DesignSelectionPage = () => {
               </div>
             </motion.div>
           </Link>
+
+          {/* ORBIT CARD */}
+          <button
+            id="orbit"
+            aria-label="Activate Orbit theme"
+            type="button"
+            onClick={() => {
+              setFezcodexTheme('orbit');
+              navigate('/');
+            }}
+            className="group block relative text-left"
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+          >
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="h-full bg-[#F5F4EF] text-[#222D35] border border-[#DCDED8] p-6 sm:p-12 flex flex-col justify-between rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(34,45,53,0.3)] transition-all duration-500 relative"
+            >
+              <div className="space-y-8 relative z-10">
+                <div className="w-16 h-16 flex items-center justify-center bg-[#3157CE]/10 text-[#3157CE] border border-[#3157CE]/20 rounded-full group-hover:bg-[#3157CE] group-hover:text-[#FFFEFA] transition-all duration-500">
+                  <PlanetIcon size={32} weight="light" />
+                </div>
+                <div className="space-y-4">
+                  <h2 className="text-5xl tracking-tight leading-none">
+                    Orbit
+                  </h2>
+                  <p className="text-sm leading-relaxed text-[#626C72]">
+                    A personal observatory. Warm paper, cobalt details,
+                    connected discoveries, and a quieter place to read. Daylight
+                    and night.
+                  </p>
+                </div>
+              </div>
+              <div className="mt-12 pt-8 border-t border-[#DCDED8] flex justify-between items-center relative z-10">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#626C72] group-hover:text-[#3157CE] transition-colors">
+                  Use Orbit
+                </span>
+                <ArrowRightIcon
+                  className="text-[#626C72] group-hover:text-[#3157CE] group-hover:translate-x-2 transition-all"
+                  size={24}
+                />
+              </div>
+            </motion.div>
+          </button>
         </div>
 
         {/* ── INNER DESIGN LANGUAGES ───────────────────────────────── */}
@@ -326,12 +370,14 @@ const DesignSelectionPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
-
             {/* ── ATELIER ── */}
-            <Link to="/apps/github-thumbnail-generator" className="group block relative">
+            <Link
+              to="/apps/github-thumbnail-generator"
+              className="group block relative"
+            >
               <motion.div
                 whileHover={{ y: -10 }}
-                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                className="h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
                   background: '#F5EFEC',
                   borderRadius: 8,
@@ -411,7 +457,7 @@ const DesignSelectionPage = () => {
             <Link to="/blog" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
-                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                className="h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
                   background: '#F3ECE0',
                   borderRadius: 4,
@@ -495,10 +541,13 @@ const DesignSelectionPage = () => {
             </Link>
 
             {/* ── ATLAS (terracotta inner catalog) ── */}
-            <Link to="/projects/atlas-projects" className="group block relative">
+            <Link
+              to="/projects/atlas-projects"
+              className="group block relative"
+            >
               <motion.div
                 whileHover={{ y: -10 }}
-                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                className="h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
                   background: '#0A0906',
                   borderRadius: 4,
@@ -585,7 +634,7 @@ const DesignSelectionPage = () => {
             <Link to="/apps/fractal-flora" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
-                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                className="h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
                   background: '#F0E9D9',
                   borderRadius: 2,
@@ -594,7 +643,7 @@ const DesignSelectionPage = () => {
                 }}
               >
                 {/* rust corner pins */}
-                {['tl','tr','bl','br'].map((c) => {
+                {['tl', 'tr', 'bl', 'br'].map((c) => {
                   const pos = {
                     tl: { top: 10, left: 10 },
                     tr: { top: 10, right: 10 },
@@ -726,7 +775,7 @@ const DesignSelectionPage = () => {
             <Link to="/apps/quote-generator" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
-                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                className="h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
                   background: '#FAF7F0',
                   borderRadius: 14,
@@ -784,7 +833,7 @@ const DesignSelectionPage = () => {
                         fontFamily: "'Fraunces', serif",
                         fontVariationSettings: "'opsz' 72, 'SOFT' 0, 'WONK' 0",
                         color: '#1A1918',
-                        fontSize: 52,
+                        fontSize: 'clamp(2rem, 6vw, 52px)',
                         fontWeight: 400,
                       }}
                     >
@@ -830,7 +879,7 @@ const DesignSelectionPage = () => {
             <Link to="/apps/pattern-generator" className="group block relative">
               <motion.div
                 whileHover={{ y: -10 }}
-                className="h-full p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
+                className="h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden transition-all duration-500 relative"
                 style={{
                   background: '#0F0F10',
                   borderRadius: 14,
@@ -888,7 +937,7 @@ const DesignSelectionPage = () => {
                         fontFamily: "'Fraunces', serif",
                         fontVariationSettings: "'opsz' 72, 'SOFT' 0, 'WONK' 0",
                         color: '#EFECE4',
-                        fontSize: 52,
+                        fontSize: 'clamp(2rem, 6vw, 52px)',
                         fontWeight: 400,
                       }}
                     >
@@ -902,8 +951,8 @@ const DesignSelectionPage = () => {
                       }}
                     >
                       Same Workbench vocabulary after hours — warm near-black
-                      canvas, cream ink, the same terracotta accent. Applied
-                      to the pattern generator.
+                      canvas, cream ink, the same terracotta accent. Applied to
+                      the pattern generator.
                     </p>
                   </div>
                 </div>
@@ -929,14 +978,13 @@ const DesignSelectionPage = () => {
                 </div>
               </motion.div>
             </Link>
-
           </div>
         </div>
 
         <footer className="mt-24 pt-12 border-t border-black/10 flex flex-col md:flex-row justify-between items-center gap-6 text-black/30 font-outfit text-[10px] uppercase tracking-[0.3em]">
           <div className="flex items-center gap-2">
             <LayoutIcon size={14} />
-            <span>Quint Theme Protocol Alpha</span>
+            <span>Fezcodex design collection</span>
           </div>
           <span>Fezcodex Studio — 2026</span>
         </footer>

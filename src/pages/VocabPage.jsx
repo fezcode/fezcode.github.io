@@ -5,6 +5,7 @@ import LuxeVocabPage from './luxe-views/LuxeVocabPage';
 import TerracottaVocabPage from './terracotta-views/TerracottaVocabPage';
 import MistVocabPage from './mist-views/MistVocabPage';
 import LedgerVocabPage from './ledger-views/LedgerVocabPage';
+import OrbitVocabPage from './orbit-views/OrbitVocabPage';
 
 const VocabPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -13,6 +14,7 @@ const VocabPage = () => {
   if (fezcodexTheme === 'terracotta') return <TerracottaVocabPage />;
   if (fezcodexTheme === 'mist') return <MistVocabPage />;
   if (fezcodexTheme === 'ledger') return <LedgerVocabPage />;
+  if (fezcodexTheme === 'orbit') return <OrbitVocabPage />;
   return <BrutalistVocabPage />;
 };
 

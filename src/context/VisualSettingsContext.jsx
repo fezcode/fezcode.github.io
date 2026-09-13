@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useRef } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useAchievements } from './AchievementContext';
+import { isSiteTheme } from '../utils/siteThemes';
 
 const VisualSettingsContext = createContext();
 
@@ -99,7 +100,7 @@ export const VisualSettingsProvider = ({ children }) => {
   const [fezcodexTheme, setFezcodexTheme] = usePersistentState(
     'fezcodex-theme',
     'brutalist',
-  ); // 'brutalist' | 'luxe' | 'terracotta' | 'mist' | 'ledger'
+  ); // Theme ids are registered in utils/siteThemes.js.
 
   // URL Parameter Observer - Consumes ?fezTheme=... and ?fezBlogMode=...
   useEffect(() => {
@@ -108,10 +109,7 @@ export const VisualSettingsProvider = ({ children }) => {
     const blogModeParam = params.get('fezBlogMode');
     let changed = false;
 
-    if (
-      themeParam &&
-      ['brutalist', 'luxe', 'terracotta', 'mist', 'ledger'].includes(themeParam)
-    ) {
+    if (themeParam && isSiteTheme(themeParam)) {
       setFezcodexTheme(themeParam);
       changed = true;
     }
@@ -129,6 +127,7 @@ export const VisualSettingsProvider = ({ children }) => {
         'luxe',
         'terracotta',
         'galley',
+        'orbit',
       ].includes(blogModeParam)
     ) {
       setBlogPostViewMode(blogModeParam);
