@@ -83,7 +83,17 @@ const Layout = ({
     projectStyle === 'neon-slideshow' ||
     projectStyle === 'bento' ||
     projectStyle === 'atlas' ||
-    projectStyle === 'hifi';
+    projectStyle === 'hifi' ||
+    [
+      'eaves',
+      'panes',
+      'graph',
+      'filmstrip',
+      'shelf',
+      'document',
+      'page',
+      'gallery',
+    ].includes(projectStyle);
   // Check if we are inside a specific app (but not the apps listing page)
   const isAppDetail =
     location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';

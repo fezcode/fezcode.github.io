@@ -26,6 +26,14 @@ const RubyProjectPage = lazy(() => import('../pages/project-pages/RubyProjectPag
 const NeonSlideshowProjectPage = lazy(() => import('../pages/project-pages/NeonSlideshowProjectPage'));
 const AtlasProjectPage = lazy(() => import('../pages/project-pages/AtlasProjectPage'));
 const HifiProjectPage = lazy(() => import('../pages/project-pages/HifiProjectPage'));
+const EavesProjectPage = lazy(() => import('../pages/project-pages/EavesProjectPage'));
+const PanesProjectPage = lazy(() => import('../pages/project-pages/PanesProjectPage'));
+const GraphProjectPage = lazy(() => import('../pages/project-pages/GraphProjectPage'));
+const FilmstripProjectPage = lazy(() => import('../pages/project-pages/FilmstripProjectPage'));
+const ShelfProjectPage = lazy(() => import('../pages/project-pages/ShelfProjectPage'));
+const DocumentProjectPage = lazy(() => import('../pages/project-pages/DocumentProjectPage'));
+const PageProjectPage = lazy(() => import('../pages/project-pages/PageProjectPage'));
+const GalleryProjectPage = lazy(() => import('../pages/project-pages/GalleryProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -123,6 +131,25 @@ const ProjectRouteHandler = () => {
     return (
       <Suspense fallback={<Loading />}>
         <HifiProjectPage />
+      </Suspense>
+    );
+  }
+
+  const APP_STYLES = {
+    eaves: EavesProjectPage,
+    panes: PanesProjectPage,
+    graph: GraphProjectPage,
+    filmstrip: FilmstripProjectPage,
+    shelf: ShelfProjectPage,
+    document: DocumentProjectPage,
+    page: PageProjectPage,
+    gallery: GalleryProjectPage,
+  };
+  const AppStyled = APP_STYLES[projectStyle];
+  if (AppStyled) {
+    return (
+      <Suspense fallback={<Loading />}>
+        <AppStyled />
       </Suspense>
     );
   }
