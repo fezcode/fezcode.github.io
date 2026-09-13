@@ -1,0 +1,5 @@
+## Roll for Damage
+
+Players engage in a unique **Battle Phase** when capturing pieces. Instead of standard instant captures, combat is determined by piece-specific dice rolls (ranging from D6 to D20) combined with veteran attributes. 
+
+Victory is not achieved by standard checkmate logic, but by fully depleting the enemy King's HP to zero. Plan your strikes carefully, a lucky roll can turn the tide of the war!

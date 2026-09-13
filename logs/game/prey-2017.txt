@@ -1,0 +1,15 @@
+# Prey (2017)
+
+- **Category:** Game
+- **Platform:** PC (Steam), PlayStation 4, Xbox One
+- **Date:** 2025-01-13
+- **Rating:** 5/5
+- **Link:** [Steam](https://store.steampowered.com/app/480490/Prey/)
+
+## About
+
+**Prey (2017)** is a first-person shooter action role-playing game developed by Arkane Studios and published by Bethesda Softworks. Released in May 2017, it is a psychological sci-fi thriller set aboard the Talos I space station, a marvel of corporate ingenuity orbiting the Moon. The game is not a sequel to the 2006 *Prey* but a spiritual successor to "immersive sim" games like *System Shock* and *BioShock*.
+
+Players assume the role of Morgan Yu, a scientist who awakens on Talos I only to discover that the station has been overrun by a hostile alien entity known as the Typhon. The Typhon can mimic inanimate objects, leading to constant paranoia and jump scares. Morgan must navigate the increasingly dangerous station, uncover the truth behind the experiment that went horribly wrong, and decide the fate of humanity.
+
+Gameplay in *Prey* emphasizes player choice and emergent gameplay. Players can approach challenges in multiple ways, utilizing a vast array of weapons, unique Typhon-based alien abilities (neuromods), and human skills. The game features a non-linear open-world-like design within the space station, allowing for extensive exploration, backtracking, and discovery of hidden secrets and alternate paths. Resource management, environmental interaction, and psychological horror are core tenets of the experience, complemented by a compelling narrative and multiple endings that reflect the player's moral choices.

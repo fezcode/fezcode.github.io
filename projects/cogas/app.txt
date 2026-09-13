@@ -1,0 +1,92 @@
+{
+  "name": "Cogas",
+  "windowTitle": "Cogas — library",
+  "tagline": "One library for every store.",
+  "subtitle": "Cogas — common gaming software — collects the games already installed on this PC across seven storefronts into a single cover grid, and launches every one of them through its own platform.",
+  "accent": "#6B3AA0",
+  "accent2": "#1F4F86",
+  "version": "0.15.2",
+  "platforms": [
+    "Windows"
+  ],
+  "stack": [
+    ".NET",
+    "Avalonia"
+  ],
+  "download": "https://github.com/fezcode/Cogas/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/Cogas",
+  "summary": [
+    "Cogas never asks a launcher what you own. It reads what each one already wrote to disk — registry keys, Valve KeyValues manifests, Epic .item files, Game Pass configs and MSIX packages — then merges a game owned on several stores into one entry carrying each platform's mark.",
+    "Everything stays local. The library index, cached art and encrypted keys live in one folder that Settings will open for you, and API keys and refresh tokens are encrypted with Windows DPAPI."
+  ],
+  "panelsHeading": "What it does",
+  "panelsWindowTitle": "Cogas — panels",
+  "panels": [
+    {
+      "title": "Unified library",
+      "body": "Steam, Epic, GOG, Ubisoft Connect, Battle.net, EA and the Microsoft Store in one cover grid, plus anything you add yourself."
+    },
+    {
+      "title": "One-click launch",
+      "body": "Each game starts through its native platform, so overlays, achievements and cloud saves all keep working."
+    },
+    {
+      "title": "Store and Game Pass",
+      "body": "Game Pass installs are read from their MicrosoftGame.config; every other MSIX package is classified against Microsoft's own storefront catalog."
+    },
+    {
+      "title": "Critic scores",
+      "body": "Metacritic aggregates on the cover art, from Steam where it has them and Wikidata where it does not. No key required."
+    },
+    {
+      "title": "Deals and wishlist",
+      "body": "Search every store at once with historical lows, browse the discount feed, and set target prices."
+    },
+    {
+      "title": "Owned versus installed",
+      "body": "Connect Steam, GOG and Epic to also see games you own but have not installed. Ubisoft, Battle.net and EA publish no library API."
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "PowerShell — .NET 8 SDK",
+    "lines": [
+      "git clone https://github.com/fezcode/Cogas.git",
+      "cd Cogas; dotnet run",
+      "dotnet test Tests/Cogas.Tests   # parsers, matching, merge logic",
+      ".\\installer.ps1                # -> Cogas-Setup-0.15.2.exe"
+    ]
+  },
+  "notesTitle": "Setting it up",
+  "notes": "The library itself needs no accounts — launch Cogas and everything installed locally appears. The optional pieces each unlock one feature:\n\n| To enable | Do this |\n|---|---|\n| Store, deals, wishlist | Get a free [IsThereAnyDeal key](https://isthereanydeal.com/apps/), paste it into Settings, hit *Test Key* |\n| Extra critic scores | Get a free [RAWG key](https://rawg.io/apidocs) — optional, since Steam and Wikidata work without it |\n| Steam owned games | A [Web API key](https://steamcommunity.com/dev/apikey) plus your SteamID64, then *Sync owned games* |\n| GOG / Epic owned games | Sign in on the login page, paste back the URL or JSON, *Connect*, then *Sync* |",
+  "colophon": [
+    [
+      "Config",
+      "%APPDATA%\\fezcode\\cogas"
+    ],
+    [
+      "Secrets",
+      "Windows DPAPI"
+    ],
+    [
+      "Themes",
+      "5 palettes, 7 typefaces"
+    ],
+    [
+      "Prices",
+      "IsThereAnyDeal"
+    ],
+    [
+      "License",
+      "MIT"
+    ]
+  ],
+  "shots": [
+    {
+      "src": "/images/projects/cogas/library.png",
+      "caption": "The unified library — 928 games, 84 installed, critic scores on the art"
+    }
+  ],
+  "shotsHeading": "On screen"
+}

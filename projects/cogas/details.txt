@@ -1,0 +1,22 @@
+## Setup
+
+The library itself needs no accounts — launch Cogas and everything installed locally appears. The optional pieces each unlock one feature:
+
+| To enable | Do this |
+|---|---|
+| Store, Deals, Wishlist | Get a free [IsThereAnyDeal key](https://isthereanydeal.com/apps/), paste it into **Settings**, hit *Test Key* |
+| Extra critic scores | Get a free [RAWG key](https://rawg.io/apidocs) and paste it into **Settings** — optional, since Steam and Wikidata work without it |
+| Steam owned games | Get a [Web API key](https://steamcommunity.com/dev/apikey), enter it with your SteamID64 or vanity name, then *Sync owned games*. Your Steam game details must be public. |
+| GOG / Epic owned games | In **Settings**, open the login page, sign in, paste back the URL (GOG) or the JSON the page shows (Epic), *Connect*, then *Sync owned games* |
+
+## Owned versus installed
+
+Connecting Steam, GOG and Epic also shows games you own but have not installed. Ubisoft, Battle.net and EA publish no library API, so their games appear once installed — an honest limit rather than a silent gap.
+
+## Non-store games
+
+Add any executable — emulators, itch builds, DRM-free games — with optional cover art and launch arguments. They sit in the same grid as everything else.
+
+## Where things live
+
+Settings, the library index, cached art and the encrypted keys all live in `%APPDATA%\fezcode\cogas`. **Settings → Local Data** shows the exact path and opens the folder.

@@ -1,0 +1,44 @@
+id: britpop
+rank: 07
+name: BRITPOP & 90S UK GUITAR POP
+family: Rock & Metal
+years: 1993 → 2004
+sub: British bands writing about Britain, loudly, in the last decade before the internet fragmented the charts
+spec: 60,72,80,78,72,74,80,84,86,82,78,78,82,84,78,70,60,52,44,36
+synthType: square
+freqs: 267.37, 335.14, 420.08
+
+ascii:
+┌────────────────────────────────────────┐
+│ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐ ┌──┐     │
+│ │██│ │██│ │██│ │██│ │██│ │██│ │██│     │
+│ ┴──┴─┴──┴─┴──┴─┴──┴─┴──┴─┴──┴─┴──┴     │
+│ TERRACE CHORUS ─ JANGLE ─ RICKENBACKER │
+└────────────────────────────────────────┘
+
+what:
+ Britpop was a press construction that became real: a mid-90s wave of British guitar bands who rejected American grunge in favour of The Kinks, The Beatles and Small Faces, and who sang in their own accents about their own streets. The Blur–Oasis chart battle of August 1995 was front-page news. The movement burned out by 1997, but its melodic habits carried on through The Cranberries, Kasabian and Richard Ashcroft's solo work.
+
+artists:
+ Oasis, Blur, Pulp, Suede, Supergrass, Elastica; the wider orbit of *The Cranberries* (Irish, and always slightly apart from it), *The Verve* and Richard Ashcroft's solo career, and the later, heavier *Kasabian*. Radiohead began here and spent the rest of their career escaping it.
+
+trivia:
+ Radiohead have disowned "Creep" repeatedly and dropped it from setlists for years; the song's crunching pre-chorus guitar was Jonny Greenwood attempting to sabotage a track he disliked, and it became the hook. The Cranberries' Dolores O'Riordan wrote "Zombie" about the 1993 Warrington bombings — the band's biggest song is a protest record that their label did not want as a single.
+
+sonic:
+ Big major-key choruses, layered vocal harmony, and guitars that jangle more than they crunch. Rhythm sections play simply and slightly behind. The signature is the arrangement rather than the tone: verses withhold, the chorus arrives with everything at once, and there is nearly always a string or Mellotron pad buried underneath doing the emotional work.
+
+gear:
+ Epiphone Casinos and Rickenbackers into Vox AC30s and Marshall combos; Hammond organ and Mellotron for the pads; Ludwig kits recorded in real rooms. The era's British studios — Maison Rouge, RAK, Rockfield — ran Neve desks to 24-track tape, and the resulting midrange thickness is half the sound.
+
+prod:
+ Recorded fast and largely live, with vocals stacked in three or four passes for the chorus. Producers left the room mics up, so the drums have real ambience rather than plate reverb. Masters from 1994–96 are still relatively dynamic; the loudness war arrives in this scene around 1997 and the later reissues are noticeably flatter than the original CDs.
+
+tracks:
+ - My Favourite Game | The Cardigans
+ - Club Foot | Kasabian
+ - Creep | Radiohead
+ - Animal Instinct | The Cranberries
+ - A Song For The Lovers | Richard Ashcroft
+ - Wake Me When It's Over - Edit | The Cranberries
+ - All Over Now - Edit | The Cranberries

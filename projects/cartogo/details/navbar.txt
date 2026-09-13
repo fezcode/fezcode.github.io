@@ -1,0 +1,15 @@
+{
+  "logo": {
+    "label": "CartoGo",
+    "icon": "MapTrifold"
+  },
+  "links": [
+    { "label": "Home", "link": "/" },
+    { "label": "Projects", "link": "/projects" }
+  ],
+  "cta": {
+    "label": "See Project",
+    "link": "https://github.com/fezcode/CartoGo",
+    "icon": "GithubLogo"
+  }
+}

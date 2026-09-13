@@ -1,0 +1,49 @@
+# Why I Built Dush
+
+The terminal is my home, but Bash has always felt like a guest who stayed too long and forgot their manners. Don't get me wrong—Bash is legendary. It runs the world. But have you ever tried to remember the difference between `$@` and `$*`? Or spent an hour debugging a script only to realize you forgot a space inside a `[` bracket?
+
+That's why I built **Dush** (Dumb Shell). It started as a weekend experiment to see if I could write a simple command runner in Go. It ended up becoming a full-blown shell with its own scripting language, a Pratt parser, and a philosophy of "explicit is better than cryptic."
+
+## The Frustration
+
+Bash syntax is rooted in the 1970s. It was designed for a world where every byte of memory was precious and every keystroke counted. But in 2026, we have the luxury of clarity.
+
+In Bash:
+```bash
+if [ "$VAR" == "val" ]; then
+    echo "equal"
+fi
+```
+
+In Dush:
+```bash
+if (@VAR == "val") {
+    echo "equal"
+}
+```
+
+Dush replaces the `$VAR`, `${VAR}`, and `$(VAR)` madness with a single, unambiguous sigil: `@`. If you see an `@`, you know it's a Dush variable or expression.
+
+## Why Go?
+
+Go was the obvious choice for this project. 
+1. **Static Binaries**: I wanted a shell I could drop onto any machine without worrying about dependencies.
+2. **Standard Library**: `os/exec` is powerful, and `io.Pipe` makes implementing pipelines almost trivial.
+3. **Concurrency**: Job control and background processes are much easier to manage with Go's goroutines and channels.
+
+## From Wrapper to Language
+
+What started as an `os.Stdin` scanner wrapping `os/exec.Command` quickly grew. I realized that to truly improve the shell experience, I needed a real language. I implemented a **Pratt Parser** (Top Down Operator Precedence) because it handles expressions beautifully and allowed me to add features like method syntax:
+
+```bash
+@name = "fezcode"
+echo @name.upper() # FEZCODE
+```
+
+## More Than a Scripting Language
+
+Dush isn't just about scripts. It's about the interactive experience. I built a modern `ls` directly into the shell with icons and colors, implemented a customizable prompt system similar to Oh-My-Zsh (but faster), and added cross-platform job control.
+
+Dush is still "Dumb" in name, but it's becoming the smartest tool in my kit.
+
+Check out the project on GitHub: [https://github.com/fezcode/dush](https://github.com/fezcode/dush)

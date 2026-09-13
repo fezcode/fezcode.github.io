@@ -1,0 +1,26 @@
+===
+id: genre
+rank: 01
+name: GENRE
+tag: MUSIC
+status: LIVE
+route: /demystify/genre
+blurb: Fifty-seven traditions taken apart — the dates, the people who built each one, the gear that gave it its sound, and why it was produced the way it was.
+
+===
+id: movie
+rank: 02
+name: MOVIE
+tag: FILM
+status: PENDING
+route: /demystify/movie
+blurb: Cinema decoded — what the frame, the cut and the score are actually doing, and why it lands.
+
+===
+id: game
+rank: 03
+name: GAME
+tag: INTERACTIVE
+status: PENDING
+route: /demystify/game
+blurb: Games pulled apart — the systems, the loops, and the design decisions behind how they feel to play.

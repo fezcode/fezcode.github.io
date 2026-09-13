@@ -1,0 +1,123 @@
+{
+  "name": "Atelier",
+  "windowTitle": "Atelier",
+  "tagline": "An image viewer that gets out of the way of the picture.",
+  "subtitle": "High-performance viewing with GPU-accelerated SkiaSharp rendering, infinite zoom on vector graphics, and native HEIC, AVIF and WebP support.",
+  "accent": "#8A2226",
+  "accent2": "#4A0205",
+  "version": "0.3.3",
+  "platforms": [
+    "Windows"
+  ],
+  "stack": [
+    ".NET",
+    "Avalonia",
+    "SkiaSharp"
+  ],
+  "download": "https://github.com/fezcode/Atelier/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/Atelier",
+  "summary": [
+    "SVG is rendered as vector, not as a rasterized preview, so zoom stays sharp at any magnification. HEIC and HEIF from a phone open directly through Magick.NET, alongside AVIF, WebP and ICO.",
+    "Set as Wallpaper offers Fill, Fit, Stretch, Centre, Tile and Span, converting SVG, HEIC, AVIF, WebP and ICO first — Windows itself only accepts JPG, PNG and BMP."
+  ],
+  "panelsHeading": "What it does",
+  "panelsWindowTitle": "Atelier — panels",
+  "panels": [
+    {
+      "title": "Hardware acceleration",
+      "body": "SkiaSharp does the rendering on the GPU, so panning and zooming stay smooth on large images."
+    },
+    {
+      "title": "SVG, natively",
+      "body": "Infinite zoom on vector graphics with full fidelity."
+    },
+    {
+      "title": "Modern formats",
+      "body": "HEIC and HEIF via Magick.NET, plus AVIF, WebP and ICO."
+    },
+    {
+      "title": "Fluid navigation",
+      "body": "Seamless directory browsing and centred zooming, with left and right moving through the folder.",
+      "keys": "f"
+    },
+    {
+      "title": "Metadata panel",
+      "body": "Toggle it from View, or close it with the mark in its own header."
+    },
+    {
+      "title": "Hisashi menu bar",
+      "body": "Opt in under View and the viewer's menus move up to Hisashi's bar while it is running; the in-app strip hides itself."
+    }
+  ],
+  "keysHeading": "From the keyboard",
+  "keys": [
+    {
+      "k": "ctrl+wheel",
+      "a": "Zoom in and out"
+    },
+    {
+      "k": "shift+wheel",
+      "a": "Pan horizontally"
+    },
+    {
+      "k": "left",
+      "a": "Previous image in the folder"
+    },
+    {
+      "k": "right",
+      "a": "Next image in the folder"
+    },
+    {
+      "k": "f",
+      "a": "Fullscreen"
+    },
+    {
+      "k": "ctrl+o",
+      "a": "Open"
+    },
+    {
+      "k": "ctrl+s",
+      "a": "Save as"
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "PowerShell — .NET 8 SDK",
+    "lines": [
+      "git clone https://github.com/fezcode/Atelier.git",
+      "cd Atelier; dotnet run",
+      "dotnet test Tests/Atelier.ZoomTests   # headless, no window",
+      ".\\build-installer.ps1                 # -> Atelier-Setup-<version>.exe"
+    ]
+  },
+  "colophon": [
+    [
+      "Config",
+      "%APPDATA%\\fezcode\\Atelier"
+    ],
+    [
+      "Rendering",
+      "SkiaSharp, GPU"
+    ],
+    [
+      "Formats",
+      "SVG, HEIC, AVIF, WebP, ICO"
+    ],
+    [
+      "Wallpaper",
+      "6 modes, auto-converted"
+    ],
+    [
+      "Version",
+      "read off the assembly"
+    ]
+  ],
+  "shots": [
+    {
+      "src": "/images/projects/atelier/viewer.png",
+      "caption": "Atelier — a 2400×1600 photo, zoom and frame controls"
+    }
+  ],
+  "shotsHeading": "The application itself"
+}

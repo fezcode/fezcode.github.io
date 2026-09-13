@@ -1,0 +1,10 @@
+LABEL: Technical
+SUBTEXT: Stack
+IMAGE: /images/projects/swat-tactics/3.png
+
+The project utilizes a modern web-based 3D stack to achieve high performance and physics-based interactions:
+- **Frontend**: React 19 (TypeScript)
+- **Rendering**: @react-three/fiber & three.js
+- **Physics**: @react-three/rapier
+- **State Management**: Zustand
+- **Styling**: Tailwind CSS 4

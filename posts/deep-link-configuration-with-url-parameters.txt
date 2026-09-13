@@ -1,0 +1,63 @@
+# Deep Link Configuration: Achieving a Global Parameter Observer in React
+
+Have you ever wanted to share a link that not only takes a user to a specific page but also **configures the entire site's vibe** the moment they arrive? 
+
+In the latest update to **Fezcodex**, we implemented a global "Deep Link Configuration" system. This allows us to set the theme, reading modes, and other preferences directly via URL parameters—and then make those parameters vanish so the user is left with a clean address bar.
+
+## The Challenge
+
+Standard routing (like `/set-theme/luxe`) is clunky. It requires a dedicated route, a redirect, and often a full page reload which breaks the immersion. We wanted something that:
+1. Works on **any** URL.
+2. Updates global state (not just one page).
+3. Leaves the URL clean after consumption.
+
+## The Implementation
+
+We achieved this by placing a **URL Observer** inside our `VisualSettingsContext`. Since this context wraps the entire application, it's one of the first things to mount.
+
+### 1. Intercepting Parameters
+Inside a `useEffect` hook, we use the native `URLSearchParams` API to look for specific "Reserved Keywords":
+
+```javascript
+const params = new URLSearchParams(window.location.search);
+const themeParam = params.get('fezTheme'); // Looks for ?fezTheme=...
+```
+
+### 2. Updating Persistent State
+If a valid parameter is found, we trigger our state update functions. Because we use **Persistent State** (synced with `localStorage`), the change is instantly saved for the user's future visits.
+
+### 3. The Vanishing Act
+To maintain a premium user experience, we don't want `?fezTheme=luxe` sitting in the address bar forever. We use the **Browser History API** to strip the parameters without triggering a reload:
+
+```javascript
+const newUrl = window.location.pathname + window.location.hash;
+window.history.replaceState({}, '', newUrl);
+```
+
+## Try it Yourself
+
+Experience the "magic" by clicking these links (they will open in a new tab and configure your session instantly):
+
+- **[Switch to Luxe Theme Globally](?fezTheme=luxe)**
+- **[Switch to Brutalist Theme Globally](?fezTheme=brutalist)**
+- **[Set Blog Mode to Terminal (Emerald)](?fezBlogMode=terminal-green)**
+- **[Set Blog Mode to Editorial (Default)](?fezBlogMode=editorial)**
+
+## Why This Matters
+
+This pattern is incredibly powerful for:
+- **Marketing:** Sharing specific themes or "night modes" in social media previews.
+- **A/B Testing:** Directing segments of users to different visual experiences.
+- **Accessibility:** Providing one-click links that enable "Reduce Motion" or high-contrast modes for users who need them.
+
+It’s a simple solution that bridges the gap between static URLs and dynamic application states. 
+
+## Sidenote: Solving the "Ghost Navbar" with `createPortal`
+
+During the development of the Luxe expansion, we hit a classic CSS stacking context issue. Even with a `z-index` of 1000, our new high-fidelity modals were appearing *underneath* the persistent Navbar and Sidebar. This happens because the modals were nested deep within the page content, and their "max height" was being capped by the parent container's layout logic.
+
+We solved this using **React Portals** (`createPortal`).
+
+Instead of rendering the modal where it's declared, we "teleport" it to the very end of the `document.body`. This makes the modal a direct child of the body, allowing it to escape all parent constraints and sit physically on top of every other element on the site. Now, when you enlarge a specimen or expand code, the immersion is absolute—no ghost layout elements required.
+
+Happy Deep Linking!

@@ -1,0 +1,48 @@
+# A wealth of information, a poverty of attention
+
+> *"What information consumes is rather obvious: it consumes the attention of its recipients. Hence a wealth of information creates a poverty of attention, and a need to allocate that attention efficiently among the overabundance of information sources that might consume it."*
+
+## Where it comes from
+
+The line is from **Herbert A. Simon**, in a 1971 essay called *"Designing Organizations for an Information-Rich World"* (published in *Computers, Communications, and the Public Interest*, Johns Hopkins Press). It's the sentence usually credited as the origin of the phrase **"the attention economy."**
+
+Simon (1916–2001) is worth knowing, because the quote is doing real intellectual work, not just sounding clever. He was a genuine polymath: he won the **Nobel Prize in Economics** (1978) for the idea of *bounded rationality* — that people don't optimize perfectly, they make do with limited time, info, and brainpower — *and* the **Turing Award** (1975) for foundational work in artificial intelligence. So when he talks about information and attention, he's talking as both an economist and a cognitive scientist. This sentence is him applying the logic of economics to your own head.
+
+## What it actually means (the plain version)
+
+Economics is, at heart, the study of **scarcity** — of things there isn't enough of. You only ever have to *manage*, *budget*, or *fight over* something that's in short supply. Nobody rations air.
+
+Simon's move is to point out a flip:
+
+1. **Information used to be the scarce thing.** For most of history it was hard to get — books were expensive, news was slow, expertise was locked up in a few heads. If you *had* information, you had an advantage.
+2. **Now information is the abundant thing.** It's effectively infinite and mostly free — the internet, feeds, articles, videos, notifications, this very file. There is far more of it than anyone could ever read.
+3. **So information stopped being the bottleneck.** When something becomes overwhelmingly abundant, it stops being valuable in itself. The valuable, scarce thing becomes *whatever that abundant thing eats up.*
+4. **What information eats up is your attention.** Every article, tweet, or notification costs you a slice of your focus to take in. And your attention is hard-capped — you've only got so many waking hours and so much mental bandwidth in a day.
+
+Put those together and you get the sentence: a **wealth** (flood) of information automatically creates a **poverty** (shortage) of attention — because the flood drains the limited pool. The more there is to read, the *less* of your finite focus is left for any single thing.
+
+And the kicker — *"a need to allocate that attention efficiently"* — is the practical consequence: since attention is now the scarce resource, the real skill is no longer *finding* information, it's **choosing what to ignore.**
+
+## A way to picture it
+
+Think of your attention as a small, fixed amount of **money**, and every piece of information as something in a shop you can "buy" by paying attention to it.
+
+- When there were three shops in town, your budget was plenty. You could afford to look at everything.
+- Now there are infinite shops, all open 24/7, all free to walk into. Your budget didn't grow — it's still the same small wallet.
+- The shelves being infinitely full doesn't make you richer. It makes your wallet feel *poorer*, because now it has to be spread across an impossible number of things.
+
+The abundance on the shelves (information) is exactly what bankrupts the wallet (attention). That's the whole quote.
+
+## Why it matters now
+
+Simon wrote this in 1971, before the internet existed — which is the impressive part. He predicted the central problem of the modern web decades early:
+
+- **Attention is the product being sold.** Social media, news sites, and streaming services are mostly free *to you* because *you* aren't the customer — your attention is the inventory they sell to advertisers. The "attention economy" he named is now a literal, multi-billion-dollar industry.
+- **"Information overload" is the symptom, not the disease.** The disease is that supply (information) outran the one thing that can't scale — your capacity to attend to it.
+- **Curation beats accumulation.** Saving 400 articles "to read later," following 50 newsletters, having 90 browser tabs open — none of that helps, because the constraint was never access. The constraint is attention. The win is in *subtracting*.
+
+## See also
+
+- **Bounded rationality** — Simon's bigger idea, that human decisions are limited by time, information, and mental capacity. The attention quote is one application of it.
+- **Satisficing** — another Simon coinage: choosing the *first good-enough* option instead of exhaustively searching for the best, precisely because attention and time are scarce.
+- **The attention economy** — the whole field of thought (later writers like Tim Wu, *The Attention Merchants*) that grows out of this single sentence.
