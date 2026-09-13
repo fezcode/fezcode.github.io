@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import Seo from '../../components/Seo';
 import Loading from '../../components/Loading';
+import { useProjects } from '../../utils/projectParser';
 import MarkdownContent from '../../components/MarkdownContent';
 import {
   GithubLogoIcon,
@@ -198,6 +199,8 @@ const RecipeNumber = ({ n }) => {
 const RubyProjectPage = () => {
   const { slug } = useParams();
   const productSlug = slug || 'gobake';
+  const { projects } = useProjects();
+  const entry = projects.find((p) => p.slug === productSlug);
 
   const [content, setContent] = useState({
     hero: '',
@@ -307,10 +310,41 @@ const RubyProjectPage = () => {
   const installCommand = installBlock ? installBlock.code : '';
 
   const heroBody = content.hero
+    .replace(/:::[\s\S]*?:::/g, '')
     .split('\n')
     .filter((l) => !l.startsWith('#') && !l.startsWith('(') && l.trim().length > 0)
     .join(' ')
     .trim();
+
+  // The cookbook furniture below defaults to gobake's own figures; any project
+  // using this style can override them with :::spec, :::colophon and :::seal
+  // blocks in its hero.txt.
+  const heroSpec = parseBlocks(content.hero, 'spec')[0];
+  const specEntries = heroSpec
+    ? Object.entries(heroSpec)
+    : [
+        ['Yield', 'one binary, any platform'],
+        ['Prep', '~30 seconds'],
+        ['Difficulty', 'beginner — go install'],
+        ['Pantry', 'Go toolchain only'],
+      ];
+
+  const heroColophon = parseBlocks(content.hero, 'colophon')[0];
+  const colophonEntries = heroColophon
+    ? Object.entries(heroColophon)
+    : [
+        ['License', 'MIT'],
+        ['Runtime', 'Go ≥ 1.21'],
+        ['Deps', 'zero'],
+        ['Yields', 'one binary'],
+        ['Cross-compile', 'all GOOS/GOARCH'],
+        ['Source', 'github.com/fezcode'],
+      ];
+
+  const heroSeal = parseBlocks(content.hero, 'seal')[0];
+  const sealItems = heroSeal?.items
+    ? heroSeal.items.split('|').map((s) => s.trim())
+    : ['multi-task cli', 'runin · runout', 'sorted help'];
 
   const renderCardCode = (card) => {
     if (card.type === 'install') {
@@ -509,8 +543,8 @@ const RubyProjectPage = () => {
       <Seo
         title={`${metadata.title} · The Engineer's Cookbook | Fezcodex`}
         description={metadata.shortDescription}
-        image={metadata.image}
-        keywords={metadata.technologies}
+        image={entry?.image || metadata.image}
+        keywords={entry?.technologies || metadata.technologies}
       />
 
       {/* ───────── Top edition strip ───────── */}
@@ -613,12 +647,7 @@ const RubyProjectPage = () => {
             <Fleuron className="mx-auto mt-10 w-72 md:w-96 text-[#c5642a]" />
 
             <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 max-w-3xl mx-auto text-left">
-              {[
-                ['Yield', 'one binary, any platform'],
-                ['Prep', '~30 seconds'],
-                ['Difficulty', 'beginner — go install'],
-                ['Pantry', 'Go toolchain only'],
-              ].map(([k, v]) => (
+              {specEntries.map(([k, v]) => (
                 <div key={k} className="border-t border-[#4a1a1f]/30 pt-3">
                   <div className="text-[9px] tracking-[0.4em] uppercase font-bold text-[#c5642a] mb-1">
                     {k}
@@ -638,7 +667,7 @@ const RubyProjectPage = () => {
             <WaxSeal
               version={metadata.version}
               kicker="Fresh Edition"
-              items={['multi-task cli', 'runin · runout', 'sorted help']}
+              items={sealItems}
             />
             <div className="gb-script text-[#4a1a1f] text-2xl mt-3 text-center -rotate-[6deg] -ml-4">
               hot from the oven!
@@ -1075,14 +1104,7 @@ const RubyProjectPage = () => {
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-5 py-4 text-left">
-                  {[
-                    ['License', 'MIT'],
-                    ['Runtime', 'Go ≥ 1.21'],
-                    ['Deps', 'zero'],
-                    ['Yields', 'one binary'],
-                    ['Cross-compile', 'all GOOS/GOARCH'],
-                    ['Source', 'github.com/fezcode'],
-                  ].map(([k, v]) => (
+                  {colophonEntries.map(([k, v]) => (
                     <div key={k} className="text-[#4a1a1f]">
                       <div className="text-[9px] tracking-[0.4em] uppercase text-[#c5642a] font-bold mb-0.5">
                         {k}
