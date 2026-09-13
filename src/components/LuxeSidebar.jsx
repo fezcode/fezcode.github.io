@@ -106,23 +106,29 @@ const LuxeSidebar = ({
         : 'border-transparent text-[#1A1A1A]/60 hover:text-[#1A1A1A] hover:bg-[#1A1A1A]/5'
     }`;
 
-  const SectionHeader = ({ id, label, isOpen, active }) => (
-    <button
-      onClick={() => toggleSection(id)}
-      className={`flex items-center justify-between w-full px-8 py-5 transition-all duration-300 ${
-        active ? 'text-[#8D4004]' : 'text-[#1A1A1A] hover:text-[#8D4004]'
-      }`}
-    >
-      <span className="font-playfairDisplay text-sm italic font-medium">
-        {label}
-      </span>
-      <span
-        className={`transform transition-transform duration-300 text-[#1A1A1A]/40 text-xs ${isOpen ? 'rotate-180' : ''}`}
+  const SectionHeader = ({ id, label, isOpen, active, collapsible = true }) => {
+    const Header = collapsible ? 'button' : 'div';
+    return (
+      <Header
+        aria-expanded={collapsible ? Boolean(isOpen) : undefined}
+        onClick={collapsible ? () => toggleSection(id) : undefined}
+        className={`flex items-center justify-between w-full px-8 py-5 transition-all duration-300 ${
+          active ? 'text-[#8D4004]' : 'text-[#1A1A1A] hover:text-[#8D4004]'
+        }`}
       >
-        ▼
-      </span>
-    </button>
-  );
+        <span className="font-playfairDisplay text-sm italic font-medium">
+          {label}
+        </span>
+        {collapsible && (
+          <span
+            className={`transform transition-transform duration-300 text-[#1A1A1A]/40 text-xs ${isOpen ? 'rotate-180' : ''}`}
+          >
+            ▼
+          </span>
+        )}
+      </Header>
+    );
+  };
 
   const sidebarVariants = {
     open: { x: 0, transition: { type: 'spring', stiffness: 300, damping: 30 } },
@@ -185,6 +191,8 @@ const LuxeSidebar = ({
                 const items = Array.isArray(section.content)
                   ? section.content
                   : [];
+                const collapsible = String(section.collapsible) !== 'false';
+                const sectionOpen = !collapsible || Boolean(sidebarState[section.id]);
                 const isActive = items.some((item) =>
                   item.to === '/'
                     ? location.pathname === '/'
@@ -196,11 +204,12 @@ const LuxeSidebar = ({
                     <SectionHeader
                       id={section.id}
                       label={section.label}
-                      isOpen={sidebarState[section.id]}
+                      isOpen={sectionOpen}
+                      collapsible={collapsible}
                       active={isActive}
                     />
                     <AnimatePresence initial={false}>
-                      {sidebarState[section.id] && (
+                      {sectionOpen && (
                         <motion.nav
                           initial="collapsed"
                           animate="open"

@@ -78,30 +78,43 @@ const TerracottaNavLink = ({ to, label, icon: Icon }) => (
 /* ---------------------------------------------------------------
  * Section header — the § I — LABEL primitive, collapsible.
  * ------------------------------------------------------------- */
-const SectionHeader = ({ index, label, isOpen, active, onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={`w-full flex items-baseline justify-between gap-3 pl-6 pr-5 py-3 transition-colors border-l-2 ${
-      active
-        ? 'border-[#C96442]/60 text-[#9E4A2F]'
-        : 'border-transparent text-[#2E2620]/70 hover:text-[#1A1613]'
-    }`}
-  >
-    <span className="flex items-baseline gap-2.5 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase">
-      <span className="text-[#9E4A2F]">§ {ROMAN[index] || index + 1}</span>
-      <span>{label}</span>
-    </span>
-    <span
-      aria-hidden="true"
-      className={`font-ibm-plex-mono text-[10px] text-[#2E2620]/50 transition-transform ${
-        isOpen ? 'rotate-0' : '-rotate-90'
+const SectionHeader = ({
+  index,
+  label,
+  isOpen,
+  active,
+  onClick,
+  collapsible = true,
+}) => {
+  const Header = collapsible ? 'button' : 'div';
+  return (
+    <Header
+      aria-expanded={collapsible ? Boolean(isOpen) : undefined}
+      type={collapsible ? 'button' : undefined}
+      onClick={collapsible ? onClick : undefined}
+      className={`w-full flex items-baseline justify-between gap-3 pl-6 pr-5 py-3 transition-colors border-l-2 ${
+        active
+          ? 'border-[#C96442]/60 text-[#9E4A2F]'
+          : 'border-transparent text-[#2E2620]/70 hover:text-[#1A1613]'
       }`}
     >
-      ↓
-    </span>
-  </button>
-);
+      <span className="flex items-baseline gap-2.5 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase">
+        <span className="text-[#9E4A2F]">§ {ROMAN[index] || index + 1}</span>
+        <span>{label}</span>
+      </span>
+      {collapsible && (
+        <span
+          aria-hidden="true"
+          className={`font-ibm-plex-mono text-[10px] text-[#2E2620]/50 transition-transform ${
+            isOpen ? 'rotate-0' : '-rotate-90'
+          }`}
+        >
+          ↓
+        </span>
+      )}
+    </Header>
+  );
+};
 
 /* ---------------------------------------------------------------
  * External link row — small chevron + superscript ↗ to signal off-site.
@@ -320,7 +333,8 @@ const TerracottaSidebar = ({
               sidebarConfig.map((section, sectionIdx) => {
                 const items = Array.isArray(section.content) ? section.content : [];
                 const sectionId = section.id;
-                const sectionOpen = sidebarState[sectionId];
+                const collapsible = String(section.collapsible) !== 'false';
+                const sectionOpen = !collapsible || Boolean(sidebarState[sectionId]);
                 const sectionActive = items.some((item) =>
                   item.to === '/'
                     ? location.pathname === '/'
@@ -333,6 +347,7 @@ const TerracottaSidebar = ({
                       index={sectionIdx}
                       label={section.label}
                       isOpen={sectionOpen}
+                      collapsible={collapsible}
                       active={sectionActive}
                       onClick={() => toggleSection(sectionId)}
                     />

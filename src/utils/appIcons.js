@@ -1,4 +1,6 @@
 import {
+  ShapesIcon,
+  BookmarkSimpleIcon,
   ListNumbersIcon,
   SparkleIcon,
   TextTIcon,
@@ -128,6 +130,8 @@ import {
 } from '@phosphor-icons/react';
 
 export const appIcons = {
+  ShapesIcon,
+  BookmarkSimpleIcon,
   ListNumbersIcon,
   SparkleIcon,
   TextTIcon,

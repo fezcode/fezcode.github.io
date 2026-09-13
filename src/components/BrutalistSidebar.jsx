@@ -108,25 +108,31 @@ const BrutalistSidebar = ({
         : 'text-gray-300 hover:text-white hover:bg-white/5'
     }`;
 
-  const SectionHeader = ({ id, label, isOpen, active }) => (
-    <button
-      onClick={() => toggleSection(id)}
-      className={`flex items-center justify-between w-full px-6 py-4 border-b border-white/10 transition-all duration-300 ${
-        active
-          ? 'bg-emerald-500/5 text-emerald-400 border-l-2 border-emerald-500'
-          : 'text-gray-600 hover:text-gray-400 border-l-2 border-transparent'
-      }`}
-    >
-      <span className="font-arvo text-[11px] uppercase tracking-[0.2em]">
-        {'//'} {label}
-      </span>
-      <span
-        className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+  const SectionHeader = ({ id, label, isOpen, active, collapsible = true }) => {
+    const Header = collapsible ? 'button' : 'div';
+    return (
+      <Header
+        aria-expanded={collapsible ? Boolean(isOpen) : undefined}
+        onClick={collapsible ? () => toggleSection(id) : undefined}
+        className={`flex items-center justify-between w-full px-6 py-4 border-b border-white/10 transition-all duration-300 ${
+          active
+            ? 'bg-emerald-500/5 text-emerald-400 border-l-2 border-emerald-500'
+            : 'text-gray-600 hover:text-gray-400 border-l-2 border-transparent'
+        }`}
       >
-        ↓
-      </span>
-    </button>
-  );
+        <span className="font-arvo text-[11px] uppercase tracking-[0.2em]">
+          {'//'} {label}
+        </span>
+        {collapsible && (
+          <span
+            className={`transform transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
+          >
+            ↓
+          </span>
+        )}
+      </Header>
+    );
+  };
 
   const sidebarVariants = {
     open: { x: 0, transition: { type: 'circOut', duration: 0.4 } },
@@ -193,6 +199,8 @@ const BrutalistSidebar = ({
                 const items = Array.isArray(section.content)
                   ? section.content
                   : [];
+                const collapsible = String(section.collapsible) !== 'false';
+                const sectionOpen = !collapsible || Boolean(sidebarState[section.id]);
                 const isActive = items.some((item) =>
                   item.to === '/'
                     ? location.pathname === '/'
@@ -204,10 +212,11 @@ const BrutalistSidebar = ({
                     <SectionHeader
                       id={section.id}
                       label={section.label}
-                      isOpen={sidebarState[section.id]}
+                      isOpen={sectionOpen}
+                      collapsible={collapsible}
                       active={isActive}
                     />
-                    {sidebarState[section.id] && (
+                    {sectionOpen && (
                       <nav className="flex flex-col">
                         {items.map((item, idx) => {
                           const Icon = ICON_MAP[item.icon] || ArrowRightIcon;

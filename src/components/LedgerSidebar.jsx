@@ -19,30 +19,42 @@ import '../styles/Ledger.css';
  */
 
 /* Collapsible section head — ▸ rotates open, matching .ldg-summary. */
-const SectionHeader = ({ index, label, isOpen, active, onClick }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    aria-expanded={Boolean(isOpen)}
-    className="w-full flex items-baseline justify-between gap-3 px-5 py-3 bg-transparent border-0 cursor-pointer text-left"
-  >
-    <span
-      className="ldg-eyebrow flex items-baseline gap-2"
-      style={{ color: active ? 'var(--ldg-accent)' : 'var(--ldg-muted)' }}
+const SectionHeader = ({
+  index,
+  label,
+  isOpen,
+  active,
+  onClick,
+  collapsible = true,
+}) => {
+  const Header = collapsible ? 'button' : 'div';
+  return (
+    <Header
+      type={collapsible ? 'button' : undefined}
+      onClick={collapsible ? onClick : undefined}
+      aria-expanded={collapsible ? Boolean(isOpen) : undefined}
+      className="w-full flex items-baseline justify-between gap-3 px-5 py-3 bg-transparent border-0 cursor-pointer text-left"
     >
       <span
-        aria-hidden="true"
-        className="inline-block transition-transform"
-        style={{ transform: isOpen ? 'rotate(90deg)' : 'none' }}
+        className="ldg-eyebrow flex items-baseline gap-2"
+        style={{ color: active ? 'var(--ldg-accent)' : 'var(--ldg-muted)' }}
       >
-        ▸
+        {collapsible && (
+          <span
+            aria-hidden="true"
+            className="inline-block transition-transform"
+            style={{ transform: isOpen ? 'rotate(90deg)' : 'none' }}
+          >
+            ▸
+          </span>
+        )}
+        <span>
+          § {String(index + 1).padStart(2, '0')} {label}
+        </span>
       </span>
-      <span>
-        § {String(index + 1).padStart(2, '0')} {label}
-      </span>
-    </span>
-  </button>
-);
+    </Header>
+  );
+};
 
 /* Internal entry — rank, name, leader, arrow; sunken when current. */
 const LedgerNavRow = ({ to, label, rank, onNavigate }) => (
@@ -257,7 +269,8 @@ const LedgerSidebar = ({
                   ? section.content
                   : [];
                 const sectionId = section.id;
-                const sectionOpen = sidebarState[sectionId];
+                const collapsible = String(section.collapsible) !== 'false';
+                const sectionOpen = !collapsible || Boolean(sidebarState[sectionId]);
                 const sectionActive = items.some((item) =>
                   item.to === '/'
                     ? location.pathname === '/'
@@ -270,6 +283,7 @@ const LedgerSidebar = ({
                       index={sectionIdx}
                       label={section.label}
                       isOpen={sectionOpen}
+                      collapsible={collapsible}
                       active={sectionActive}
                       onClick={() => toggleSection(sectionId)}
                     />
