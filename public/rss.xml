@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 13 Sep 2026 17:06:38 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 13 Sep 2026 19:38:29 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 13 Sep 2026 17:06:37 GMT</pubDate>
+        <pubDate>Sun, 13 Sep 2026 19:38:29 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Pirate Game: How to Keep 98 Coins and Survive the Vote]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/the-pirate-game</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/the-pirate-game</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 13 Sep 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>The Pirate Game: How to Keep 98 Coins and Survive the Vote</h1>
+<p>Interactive experiment: Divide 100 coins, win the vote, and trace the crew’s incentives backward. <a href="https://fezcode.com/apps/probability-cabinet?experiment=pirate-game&amp;pirates=5&amp;rule=half">Open Pirate Council in the Probability Cabinet</a>.</p><p><a href="https://fezcode.com/blog/the-pirate-game">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Death of "Arkadaş": A Retrospective on How Turks Stopped Caring and Started Generalizing]]></title>
             <description><![CDATA[[object Object]]]></description>
@@ -35,7 +45,7 @@
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>Penney&#39;s Game: The Coin-Flip Bet Where Going Second Always Wins</h1>
-<p><a href="https://fezcode.com/blog/penneys-game">Read more...</a></p>]]></content:encoded>
+<p>Interactive experiment: Race two coin-flip patterns and compare observed results with theoretical odds. <a href="https://fezcode.com/apps/probability-cabinet?experiment=penneys-game&amp;first=HHH&amp;second=THH">Open Penney’s Game in the Probability Cabinet</a>.</p><p><a href="https://fezcode.com/blog/penneys-game">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[The 20 Mile March: Consistency Beats Heroics]]></title>
@@ -1205,179 +1215,7 @@ The opposite of a Straw Man is a &quot;Steel Man.&quot; To steel man an argument
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Sat, 28 Feb 2026 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<h1>The Lost Art of Thinking: A Colossal Rant on Logic (and How to Actually Use It)</h1>
-<p>Have you ever looked at a Twitter thread, a political debate, or a family argument at Thanksgiving and thought, <em>“Are these people even speaking the same language?”</em> </p>
-<p>Spoiler alert: They aren&#39;t. They are speaking the language of emotion, tribalism, and sheer, unfiltered logical fallacy. We have supercomputers in our pockets and access to the sum of all human knowledge, yet the basic ability to construct a coherent, rational argument seems to be going the way of the dodo.</p>
-<p>So, buckle up. We are going to strip away the noise and dive deep into the absolute fundamentals of <strong>Logic</strong>. We’re going back to the beginning, back to the dusty streets of ancient civilizations, to understand what logic is, how it works, and why society&#39;s current lack of it is driving me absolutely insane.</p>
-<h2>Part I: The Dawn of Reason (Before the Internet Ruined Us)</h2>
-<p>Logic didn&#39;t just fall out of the sky. It was born out of necessity. </p>
-<p>While ancient Egyptians and Babylonians used practical mathematics and basic reasoning for things like land measurement after floods or calculating taxes, they didn&#39;t explicitly formalize the <em>rules</em> of thought. They knew <em>how</em> to calculate, but they didn&#39;t spend much time philosophizing about the <em>nature</em> of the calculation itself.</p>
-<p>Enter Ancient Greece, specifically around the 4th century BCE. The Greeks loved to argue. They argued about politics, nature, gods, and what makes a good life. But to win an argument, you need rules. </p>
-<h3>Aristotle: The Godfather of &quot;Making Sense&quot;</h3>
-<p>If logic is a religion, <strong>Aristotle</strong> is its supreme deity. He was the first to systematically compile the rules of correct reasoning in a collection of works known as the <em>Organon</em> (meaning &quot;instrument&quot; or &quot;tool&quot;). </p>
-<p>Aristotle gave us the <strong><a href="/vocab/syllogism">Syllogism</a></strong>. This is the absolute bedrock of deductive logic. A syllogism is a kind of logical argument that applies deductive reasoning to arrive at a conclusion based on two propositions that are asserted or assumed to be true.</p>
-<p>The classic, undefeated champion of syllogisms goes like this:</p>
-<ol>
-<li><strong>Major Premise:</strong> All men are mortal.</li>
-<li><strong>Minor Premise:</strong> Socrates is a man.</li>
-<li><strong>Conclusion:</strong> Therefore, Socrates is mortal.</li>
-</ol>
-<p><em>Boom.</em> That’s it. If premise 1 is true, and premise 2 is true, the conclusion <em>must</em> logically follow. It is inescapable. If someone disagrees with the conclusion, they must prove that one of the premises is false. This simple framework was the primary system of logic in the Western world for nearly two thousand years!</p>
-<h2>Part II: The Anatomy of an Argument</h2>
-<p>To understand logic, you have to understand its anatomy. An argument in logic isn&#39;t a shouting match; it&#39;s a structured presentation of evidence.</p>
-<h3>1. Propositions</h3>
-<p>A proposition is simply a statement that is either true or false. </p>
-<ul>
-<li>&quot;The sky is blue.&quot; (True)</li>
-<li>&quot;Dogs can speak fluent Spanish.&quot; (False)</li>
-<li>&quot;Ouch!&quot; (Not a proposition, it&#39;s an exclamation.)</li>
-<li>&quot;Is it raining?&quot; (Not a proposition, it&#39;s a question.)</li>
-</ul>
-<h3>2. Premises</h3>
-<p>A <strong><a href="/vocab/premise">premise</a></strong> is a proposition used as evidence in an argument. It&#39;s the foundation you are building your house on. If your foundation is made of sand (false premises), your logical house will collapse.</p>
-<h3>3. The Conclusion</h3>
-<p>This is the proposition that is affirmed on the basis of the other propositions (the premises). </p>
-<h3>4. Inference</h3>
-<p>The magical leap from premises to conclusion. It’s the process of drawing a logical consequence from the given facts. </p>
-<h2>Part III: The Two Flavors of Reasoning</h2>
-<p>Not all arguments are created equal. Broadly speaking, there are two main ways human beings reason: Deductive and Inductive.</p>
-<h3><a href="/vocab/deductive-reasoning">Deductive Reasoning</a>: Top-Down Logic</h3>
-<p>This is what Aristotle was all about. You start with general rules and apply them to specific cases to reach a <strong>certain</strong> conclusion.</p>
-<ul>
-<li><strong>Premise 1:</strong> All planets in our solar system orbit the sun.</li>
-<li><strong>Premise 2:</strong> Earth is a planet in our solar system.</li>
-<li><strong>Conclusion:</strong> Earth orbits the sun.</li>
-</ul>
-<p>If the premises are true, the conclusion is 100% guaranteed. Deductive logic is about preserving truth. </p>
-<p><strong>Validity vs. Soundness:</strong> This is crucial. </p>
-<ul>
-<li>An argument is <strong>valid</strong> if the structure is correct, even if the facts are crazy. 
-<em>(e.g., All birds are mammals. A penguin is a bird. Therefore, a penguin is a mammal. Valid structure, false premises).</em></li>
-<li>An argument is <strong>sound</strong> if it is valid AND all its premises are actually true. This is the gold standard.</li>
-</ul>
-<h3><a href="/vocab/inductive-reasoning">Inductive Reasoning</a>: Bottom-Up Logic</h3>
-<p>Inductive logic takes specific observations and builds them into a general theory. It deals in <strong>probabilities</strong>, not certainties.</p>
-<ul>
-<li><strong>Observation 1:</strong> The sun came up yesterday.</li>
-<li><strong>Observation 2:</strong> The sun came up today.</li>
-<li><strong>Conclusion:</strong> The sun will come up tomorrow.</li>
-</ul>
-<p>Is it guaranteed? Technically, no. The sun could explode tonight. But it is <em>highly probable</em>. Science operates heavily on inductive reasoning. We observe gravity working a million times, so we induce that it is a universal law.</p>
-<p>The problem? Inductive reasoning can be flawed. </p>
-<ul>
-<li><strong>Observation:</strong> I saw a white swan. My neighbor saw a white swan. Every swan in this lake is white.</li>
-<li><strong>Conclusion:</strong> All swans are white. 
-<em>(Until you travel to Australia and see a black swan, instantly destroying your theory.)</em></li>
-</ul>
-<h2>Part IV: Logical Fallacies - Why the Internet is a Dumpster Fire</h2>
-<p>This is the rant part. A <strong><a href="/vocab/logical-fallacy">logical fallacy</a></strong> is an error in reasoning that renders an argument invalid or unsound. They are illusions of thought. People use them constantly—sometimes maliciously to manipulate you, and sometimes out of pure ignorance.</p>
-<p>Here is a survival guide to the most common intellectual crimes:</p>
-<h3>1. The Ad Hominem (Attacking the Person)</h3>
-<p>Instead of addressing the argument, you attack the character of the person making it.</p>
-<ul>
-<li><em>Argument:</em> &quot;We should invest more in renewable energy to fight climate change.&quot;</li>
-<li><em>Fallacy:</em> &quot;You&#39;re just a dirty hippie who doesn&#39;t understand economics, why should I listen to you?&quot; 
-<em>(The person&#39;s hygiene or economic credentials don&#39;t invalidate the math on climate change).</em></li>
-</ul>
-<h3>2. The Straw Man</h3>
-<p>You misrepresent someone&#39;s argument to make it easier to attack.</p>
-<ul>
-<li><em>Person A:</em> &quot;I think we should rethink our current military spending.&quot;</li>
-<li><em>Person B:</em> &quot;So you want to leave our country completely defenseless against terrorists?! You hate our troops!&quot;
-<em>(Person A never said &quot;leave us defenseless.&quot; Person B built a fake &quot;straw man&quot; argument to easily knock down).</em></li>
-</ul>
-<h3>3. The Slippery Slope</h3>
-<p>Assuming that a relatively small first step will inevitably lead to a chain of related (and catastrophic) events.</p>
-<ul>
-<li><em>Fallacy:</em> &quot;If we allow students to dye their hair pink, next they&#39;ll be wearing pyjamas to school, then they&#39;ll stop doing homework, and society will collapse into anarchy!&quot;</li>
-</ul>
-<h3>4. The Appeal to Ignorance (Argumentum ad Ignorantiam)</h3>
-<p>Asserting that a proposition is true because it has not yet been proven false (or vice versa).</p>
-<ul>
-<li><em>Fallacy:</em> &quot;You can&#39;t prove that aliens haven&#39;t visited Earth, therefore, aliens have visited Earth.&quot;
-<em>(The burden of proof is always on the person making the claim).</em></li>
-</ul>
-<h3>5. The False Dilemma (Black-and-White Fallacy)</h3>
-<p>Presenting only two options when, in reality, there are more.</p>
-<ul>
-<li><em>Fallacy:</em> &quot;You are either with us, or you are with the enemy.&quot;
-<em>(What about staying neutral? What about agreeing with some points and disagreeing with others?)</em></li>
-</ul>
-<h3>6. The Post Hoc Fallacy (Correlation vs. Causation)</h3>
-<p>Assuming that because Event B followed Event A, Event A caused Event B.</p>
-<ul>
-<li><em>Fallacy:</em> &quot;I wore my lucky socks, and my team won. My socks caused the victory.&quot;
-<em>(No, your team won because they scored more points. The socks were just smelly bystanders).</em></li>
-</ul>
-<h3>7. The Appeal to Authority</h3>
-<p>Claiming something must be true because an &quot;expert&quot; said so, regardless of whether the expert is actually an authority on <em>that specific topic</em>, or without providing the actual evidence.</p>
-<ul>
-<li><em>Fallacy:</em> &quot;My dentist says this new stock is a guaranteed winner, so I&#39;m investing my life savings.&quot;</li>
-</ul>
-<h2>Part V: Enter the Machine - Boolean Logic</h2>
-<p>Fast forward to the 19th century. A mathematician named <strong>George Boole</strong> had an idea that would change the course of human history. He decided to turn logic into algebra.</p>
-<p>Before Boole, math was about numbers. Boole said, &quot;What if math was about truth?&quot;</p>
-<p>He created <strong><a href="/vocab/boolean-algebra">Boolean Algebra</a></strong>, a system where variables represent truth values: <strong>True (1)</strong> or <strong>False (0)</strong>. 
-He introduced basic logical operations:</p>
-<ul>
-<li><strong>AND:</strong> Both inputs must be True for the output to be True.</li>
-<li><strong>OR:</strong> At least one input must be True for the output to be True.</li>
-<li><strong>NOT:</strong> Inverts the input (True becomes False, False becomes True).</li>
-</ul>
-<p>Why does this matter? Because a century later, engineers realized that Boolean logic was the perfect framework for electrical circuits. A switch is either ON (1/True) or OFF (0/False). </p>
-<p>By combining transistors into logic gates (AND gates, OR gates, NOT gates), we built the modern computer. <strong>Every single digital device you use, including the screen you are reading this on, is fundamentally built on the rules of logic formalized by George Boole.</strong></p>
-<p>The irony is staggering: The device you use to scroll through logically flawed arguments on social media only exists because of pure, flawless logic.</p>
-<h2>Part VI: The Deep End - Symbolic Logic and Paradoxes</h2>
-<p>As logic advanced into the 20th century (with titans like Gottlob Frege and Bertrand Russell), it became highly symbolic and mathematical. They wanted to strip away the ambiguity of human language completely.</p>
-<p>Instead of saying &quot;If it rains, the grass is wet,&quot; they write:
-$P \rightarrow Q$
-(Where P is &quot;it rains&quot; and Q is &quot;the grass is wet&quot;, and $\rightarrow$ means &quot;implies&quot;).</p>
-<p>This symbolic logic is incredibly powerful for mathematics and computer science, but it also led logicians down a rabbit hole where they found the limits of logic itself: <strong>Paradoxes</strong>.</p>
-<h3>The Liar&#39;s Paradox</h3>
-<p>Consider the following sentence:</p>
-<blockquote>
-<p><strong>&quot;This statement is false.&quot;</strong></p>
-</blockquote>
-<ul>
-<li>If the statement is True, then what it says must be the case. So, it is False.</li>
-<li>If the statement is False, then what it says is incorrect. So, it must be True.</li>
-</ul>
-<p>It contradicts itself perfectly. It breaks the very foundation of Aristotle&#39;s logic (the <strong><a href="/vocab/law-of-non-contradiction">Law of Non-Contradiction</a></strong>, which states something cannot be both true and false at the same time in the same way). </p>
-<p>This isn&#39;t just a fun word game. In the 1930s, Kurt Gödel took this concept of self-reference and applied it to mathematics, proving his devastating <strong><a href="/vocab/incompleteness-theorems">Incompleteness Theorems</a></strong>. </p>
-<h3>Gödel&#39;s Incompleteness: The Math that Broke Math</h3>
-<p>Before Gödel, mathematicians like David Hilbert believed that mathematics was a perfect, sealed system. They believed that given enough time, every single mathematical truth could be formally proven using a strict set of rules (axioms), without any contradictions.</p>
-<p>Gödel proved this was mathematically impossible. He translated the Liar&#39;s Paradox into mathematical code. Instead of saying &quot;This statement is false,&quot; he created an equation that essentially said:</p>
-<blockquote>
-<p><strong>&quot;This mathematical statement cannot be proven.&quot;</strong></p>
-</blockquote>
-<p>This created a massive dilemma for the foundation of math:</p>
-<ul>
-<li><strong>Scenario A:</strong> If the statement <em>can</em> be proven, then it is false (because it says it can&#39;t be proven). This means the mathematical system is contradictory (inconsistent).</li>
-<li><strong>Scenario B:</strong> If the statement <em>cannot</em> be proven, then it is true! But because it cannot be proven, the mathematical system is <strong>incomplete</strong>.</li>
-</ul>
-<p>Gödel demonstrated that any formal logical system complex enough to do basic arithmetic will <em>always</em> contain true statements that simply cannot be proven within that system. Furthermore, <span style="background-color: rgba(250, 128, 114, 0.3); color: #ef4444; font-weight: bold; padding: 2px 6px; border-radius: 4px;">he proved that a system cannot prove its own consistency</span>. </p>
-<p>Logic, it turns out, has mathematically proven its own limits.</p>
-<h2>The Conclusion of the Rant</h2>
-<p>Logic is not a weapon to make you sound smart. It is a filter. It is a lens through which we can view the chaotic, messy world and try to discern what is actually true from what is merely persuasive.</p>
-<p>When we abandon logic, we abandon our defense against manipulation. We fall prey to politicians who use fear instead of facts. We get scammed by snake-oil salesmen who use false premises. We destroy our own relationships by arguing against straw men instead of listening to what our loved ones are actually saying.</p>
-<p>The basics of logic—understanding premises, demanding valid structures, and spotting fallacies—should be taught in every school, alongside reading and basic math. </p>
-<p>So the next time you find yourself getting heated in a debate, stop. Take a breath. Ask yourself: <em>What is my premise? Is my argument valid? Am I attacking the person or the idea?</em></p>
-<p>Be better. Be logical. End of rant.</p>
-<hr>
-<h2>Further Reading and Sources</h2>
-<p>If you want to actually learn how to think properly instead of just yelling at strangers on the internet, check out these excellent resources:</p>
-<h3>Books</h3>
-<ul>
-<li><strong>&quot;Thinking, Fast and Slow&quot; by Daniel Kahneman:</strong> A deep dive into how our minds work, the two systems of thought, and why we are so prone to cognitive biases and logical errors.</li>
-<li><strong>&quot;The Art of Thinking Clearly&quot; by Rolf Dobelli:</strong> A fantastic, digestible catalogue of 99 common thinking errors, cognitive biases, and logical fallacies.</li>
-<li><strong>&quot;An Introduction to Traditional Logic&quot; by Scott M. Sullivan:</strong> If you want to dive deep into Aristotelian logic, syllogisms, and classical deduction, this is a great starting point.</li>
-<li><strong>&quot;Gödel, Escher, Bach: an Eternal Golden Braid&quot; by Douglas Hofstadter:</strong> A Pulitzer Prize-winning masterpiece exploring logic, paradoxes, mathematics, and consciousness. Not for the faint of heart, but life-changing.</li>
-</ul>
-<h3>Links &amp; Resources</h3>
-<ul>
-<li><a href="https://yourlogicalfallacyis.com/">Your Logical Fallacy Is</a>: A beautifully designed, easy-to-understand website that catalogues all the major logical fallacies. Keep it bookmarked for your next internet argument.</li>
-<li><a href="https://plato.stanford.edu/">Stanford Encyclopedia of Philosophy (SEP)</a>: The gold standard for philosophy on the internet. Check out their entries on <a href="https://plato.stanford.edu/entries/aristotle-logic/">Aristotle&#39;s Logic</a> or <a href="https://plato.stanford.edu/entries/logic-classical/">Classical Logic</a>.</li>
-</ul>
-<p><a href="https://fezcode.com/blog/a-colossal-rant-on-logic">Read more...</a></p>]]></content:encoded>
+<p>Interactive experiment: Divide 100 coins, win the vote, and trace the crew’s incentives backward. <a href="https://fezcode.com/apps/probability-cabinet?experiment=pirate-game&amp;pirates=5&amp;rule=half">Open Pirate Council in the Probability Cabinet</a>.</p><p><a href="https://fezcode.com/blog/a-colossal-rant-on-logic">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[The Basics of Time Travel: Theories, Paradoxes, and Spacetime]]></title>
@@ -4797,152 +4635,7 @@ as proven by the <strong>Figure 2</strong> playtime gap.</p>
 If the math looks wrong, just assume it&#39;s a feature, not a bug.
 You can always contact me.</p>
 </blockquote>
-<h2>Deconstructing Hollywood: A Data Science Journey from Raw Data to p99 Insights</h2>
-<p>As software engineers, we are used to deterministic systems. If <code>a = b</code>, then a equals b.
-Data Science, however, deals with probability, distributions, and noise.
-It&#39;s less about &quot;<strong>what is the answer</strong>&quot; and more about &quot;<strong>how confident are we in this trend?</strong>&quot;</p>
-<p>Recently, I wanted to bridge my engineering background with data science to answer a simple pop-culture question:
-<strong>How do different movie genres actually perform?</strong></p>
-<p>Are &quot;<strong>Action</strong>&quot; movies inherently rated lower than &quot;<strong>Dramas</strong>&quot;? Is it harder to make a masterpiece &quot;<strong>Horror</strong>&quot; movie than a masterpiece &quot;<strong>Biography</strong>&quot;?</p>
-<p>To answer this, I didn&#39;t just want to run a script; I wanted to build a production-grade Data Science lab?!. (/s)
-This post details the entire journey—from choosing the modern Python stack and engineering the data pipeline to defining
-the statistical metrics that reveal the &quot;truth&quot; behind average ratings.</p>
-<h2>Part 1: The Engineering Foundation</h2>
-<p>A data project is only as good as its environment. I wanted a setup that was fast, reproducible, and clean.</p>
-<h3>The Stack Decision</h3>
-<p>I chose Python because it is the undisputed <strong><a href="/vocab/lingua-franca">lingua franca</a></strong> of data science.
-The ecosystem (Pandas for data crunching, Seaborn for visualization) is unmatched.</p>
-<h3>The Package Manager: Why <code>uv</code>?</h3>
-<p>Traditionally, Python data science relies on Conda because it manages complex C-library dependencies used by
-math libraries like NumPy. However, Conda can be slow and bloated.</p>
-<p>For this project, I chose <code>uv</code>.</p>
-<p><code>uv</code> is a modern, blazing-fast Python package manager written in Rust.
-It replaces <code>pip</code>, <code>poetry</code>, and <code>virtualenv</code>. It resolves dependencies in milliseconds and creates deterministic environments instantly.
-For a project relying on standard wheels like Pandas, <code>uv</code> provides a vastly superior developer experience.</p>
-<pre><code class="language-bash"># Setting up the environment took seconds
-$ uv init movie-analysis
-$ uv python install 3.10
-$ uv add pandas matplotlib seaborn scipy jupyter ipykernel
-</code></pre>
-<p>Then connected VS Code to this <code>.venv</code> created by <code>uv</code>, giving me a robust Jupyter Notebook experience right in the IDE.</p>
-<h2>Part 2: The Data Pipeline (ETL)</h2>
-<p>I needed data with genres, votes, and ratings, went straight to the source: the <strong>IMDb Non-Commercial Datasets</strong>.</p>
-<p>Then I faced a classic data engineering challenge: these are massive TSV (Tab Separated Values) files.
-Loading the entirety of IMDb into RAM on a laptop is a bad idea.</p>
-<p>Solution? Build a Python ETL script to handle ingestion smartly:</p>
-<ol>
-<li><strong>Stream &amp; Filter</strong>: used Pandas to read the raw files in chunks, filtering immediately for <code>titleType == &#39;movie&#39;</code> and excluding older films. This kept memory usage low.</li>
-<li><strong>Merge</strong>: joined the <code>title.basics</code> (genres/names) with <code>title.ratings</code> (scores/votes) on their unique IDs.</li>
-<li><strong>The &quot;Explode&quot;</strong>: This was the crucial data transformation step. IMDb lists genres as a single string: &quot;Action,Adventure,Sci-Fi&quot;. To analyze by category, I had to split that string and &quot;explode&quot; the dataset, duplicating the movie row for each genre it belongs to.</li>
-</ol>
-<pre><code class="language-python"># Transforming &quot;Action,Comedy&quot; into two distinct analysis rows
-df[&#39;genres&#39;] = df[&#39;genres&#39;].str.split(&#39;,&#39;)
-df_exploded = df.explode(&#39;genres&#39;)
-</code></pre>
-<h2>Part 3: The Science (Beyond Averages)</h2>
-<p>With clean data in hand, we moved into a Jupyter Notebook for Exploratory Data Analysis (EDA).</p>
-<h3>1. Removing the Noise (The Long Tail)</h3>
-<p>If you average every movie on IMDb, your data is polluted by home videos with 5 votes from the director&#39;s family.
-In statistics, vote counts often follow a <a href="/vocab/power-law">&quot;Power Law&quot;</a> or long-tail distribution.</p>
-<p>To analyze global sentiment, we had to filter out the noise. We set a threshold, dropping any movie with fewer than 100 votes.
-This ensured our statistical analysis was based on titles with a minimum level of public engagement.</p>
-<h3>2. Visualizing the Truth (The Box Plot)</h3>
-<p>A simple average rating is misleading. If a genre has many <code>1/10</code>s and many <code>10/10</code>s, the average is <code>5/10</code> - but that doesn&#39;t tell the story of how polarizing it is.</p>
-<p>I used a <a href="/vocab/box-plot">Box Plot</a> to visualize the distribution. It shows the median (the center line), the Interquartile Range (the colored box containing the middle 50% of data), and outliers (the dots).</p>
-<p><img src="/images/posts/wgsiw/boxplot.png" alt="The Box Plot"></p>
-<p><strong>Initial Observations:</strong></p>
-<ul>
-<li><strong>Documentary/Biography</strong>: High medians, compact boxes. They are consistently rated highly.</li>
-<li><strong>Horror</strong>: The lowest median and a wide spread. It’s very easy to make a bad horror movie.</li>
-</ul>
-<h3>3. The Metrics: Weighted Ratings &amp; p99</h3>
-<p>To get deeper insights, I needed better math than simple means.</p>
-<h4>Metric A: The Weighted Rating (Bayesian Average)</h4>
-<p>How do you compare a movie with a 9.0 rating and 105 votes against an 8.2 rating with 500,000 votes? The latter score is more statistically significant.</p>
-<p>I adopted IMDb&#39;s own <strong>Weighted Rating</strong> formula. This &quot;Bayesian average&quot; pulls a movie&#39;s rating toward the global average $C$ if it has few votes $v$,
-only allowing it to deviate as it gains more votes over a threshold $m$.</p>
-<p>$$
-WR = \left( \frac{v}{v+m} \cdot R \right) + \left( \frac{m}{v+m} \cdot C \right)
-$$</p>
-<p><strong>Where:</strong></p>
-<ul>
-<li>$R$ = Average Rating of the movie</li>
-<li>$v$ = Number of votes for the movie</li>
-<li>$m$ = Minimum votes required to be listed (Threshold: 100)</li>
-<li>$C$ = Mean vote across the whole dataset</li>
-</ul>
-<p>This provided a fair &quot;Quality Score&quot; for every movie.</p>
-<h4>Metric B: The p99 Ceiling</h4>
-<p>I wanted to know the &quot;potential&quot; of a genre. Even if most Action movies are mediocre, how good are the very best ones?</p>
-<p>For this, I calculated the <a href="/vocab/p99">99th Percentile (p99)</a> rating for each genre. This is the rating value below which 99% of the genre falls.
-It represents the elite tier, the &quot;Masterpiece Ceiling.&quot;</p>
-<h3>Part 4: The Deductions (The Gap Analysis)</h3>
-<p>By combining the Average Weighted Rating (the typical experience) and the p99 Rating (the elite potential), we created a &quot;Gap Analysis&quot; chart.</p>
-<p>The dark green bar is the average quality. The total height of the bar is the p99 ceiling. The light green area represents the &quot;Masterpiece Gap&quot;.</p>
-<p><img src="/images/posts/wgsiw/gap.png" alt="Masterpiece Gap"></p>
-<h4>The Data Science Deductions</h4>
-<p>This single chart reveals the &quot;personality&quot; of every genre:</p>
-<ol>
-<li><p><strong>The &quot;Safe Bets&quot; (Documentary, History, Biography)</strong>:
-They have very high averages (tall dark bars) and a small gap to the ceiling.
-<em>Deduction</em>: It is difficult to make a poorly rated documentary. Audience selection bias likely plays a role here
-(people only watch docs on topics they already like).</p>
-</li>
-<li><p><strong>The &quot;High Risk / High Reward&quot; (Horror, Sci-Fi)</strong>: They have the lowest averages (short dark bars),
-indicating the typical output is poor. However, their p99 ceilings remain high.
-<em>Deduction</em>: The gap is huge. It is incredibly difficult to execute these genres well, but when it&#39;s done right
-(e.g., Alien, The Exorcist), they are revered just as highly as dramas.</p>
-</li>
-<li><p><strong>The Animation Anomaly</strong>: Animation has a high average and a very high ceiling.
-<em>Deduction</em>: Statistically, this is perhaps the most consistently high-quality genre in modern cinema.</p>
-</li>
-</ol>
-<h2>Conclusion</h2>
-<p>This project demonstrated that with a solid engineering setup using modern tools like <code>uv</code>,
-and by applying statistical concepts beyond simple averages, we can uncover nuanced truths hidden in raw data.
-Averages tell you what is probable; distributions and percentiles tell you what is possible.</p>
-<h3>Question A: Which genre is &quot;easier&quot; to make? (Action vs. Drama vs. Comedy)</h3>
-<p><strong>The Data Verdict:</strong> It is significantly &quot;easier&quot; to make an acceptable <strong>Drama</strong> than an acceptable <strong>Action</strong> or <strong>Comedy</strong> movie.</p>
-<ul>
-<li><strong>Evidence:</strong> Look at the box plot, kindly.<ul>
-<li><strong>Drama</strong> has a high median and a &quot;tight&quot; box (smaller Interquartile Range). This means even &quot;average&quot; Dramas are usually rated around 6.5–7.0. The &quot;floor&quot; is high.</li>
-<li><strong>Action</strong> has a lower median. Action movies require budget, stunts, and effects. If those look cheap, the rating tanks immediately.
-A bad drama is just &quot;boring&quot; (5/10); a bad action movie looks &quot;broken&quot; (3/10).</li>
-<li><strong>Comedy</strong> is arguably the <em>hardest</em> to get a high rating for. Humor is subjective.
-If a joke lands for 50% of the audience but annoys the other 50%, the rating averages out to a 5.0.
-<strong>Drama is universal; Comedy is divisive</strong>.</li>
-</ul>
-</li>
-</ul>
-<h3>Question B: Should I use lower search bounds for Comedy compared to Drama?</h3>
-<p><strong>The Data Verdict:</strong> <strong>YES. Absolutely.</strong></p>
-<ul>
-<li><strong>The &quot;Genre Inflation&quot; Factor:</strong> Users rate genres differently. A <strong>7.0</strong> in Horror or Comedy is effectively an <strong>8.0</strong> in Drama or Biography.<ul>
-<li><strong>The Strategy:</strong> If you filter for <code>Rating &gt; 7.5</code>, you will see hundreds of Biographies, but you will filter out some of the funniest Comedies ever made (which often sit at 6.8 - 7.2).</li>
-<li><strong>Action/Comedy Filter:</strong> Set your threshold to <strong>6.5</strong>.</li>
-<li><strong>Drama/Doc Filter:</strong> Set your threshold to <strong>7.5</strong>.</li>
-</ul>
-</li>
-</ul>
-<h3>Question C: The &quot;Blindfold Test&quot; (Documentary vs. Sci-Fi)</h3>
-<p><strong>The Data Verdict:</strong> You will be statistically safer picking the <strong>Documentary</strong>.</p>
-<ul>
-<li><p><strong>The &quot;Floor&quot; Concept:</strong> Look at the &quot;Whiskers&quot; (the lines extending from the boxes) on the box plot.</p>
-<ul>
-<li><strong>Sci-Fi:</strong> The bottom whisker goes deep down (towards 1.0 or 2.0). There is a significant statistical probability that a random Sci-Fi movie is unwatchable <em>garbage</em>.</li>
-<li><strong>Documentary:</strong> The bottom whisker rarely dips below 5.0 or 6.0.</li>
-</ul>
-</li>
-<li><p><strong>The Psychology:</strong></p>
-<ul>
-<li><strong>Documentaries</strong> are usually made by passionate experts about specific topics. They rarely &quot;fail&quot; completely.</li>
-<li><strong>Sci-Fi</strong> is high-risk. It attempts to build new worlds. When that fails, it looks ridiculous, leading to &quot;hate-watching&quot; and 1-star reviews.</li>
-<li><strong>Conclusion:</strong> If you are tired and just want a &quot;guaranteed decent watch&quot; (Low Variance), pick <strong>Documentary</strong>. If you want to gamble for a potentially mind-blowing experience (High Variance), pick <strong>Sci-Fi</strong>.</li>
-</ul>
-</li>
-</ul>
-<p>You can check the project here: <a href="https://github.com/fezcode/IMDbayes">IMDbayes</a></p>
-<p><a href="https://fezcode.com/blog/what-genre-should-i-watch">Read more...</a></p>]]></content:encoded>
+<p>Interactive experiment: See how vote counts and a shared prior change a movie’s weighted score. <a href="https://fezcode.com/apps/probability-cabinet?experiment=bayesian-ratings&amp;rating=9&amp;votes=105&amp;prior=6.5&amp;weight=100">Open Bayesian Ratings in the Probability Cabinet</a>.</p><p><a href="https://fezcode.com/blog/what-genre-should-i-watch">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[Upgrading Debian 11 to 13: The Safe Path]]></title>
@@ -7064,68 +6757,7 @@ For now, we&#39;ll have to stick to our practical solutions. But one can dream o
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Tue, 18 Nov 2025 00:00:00 GMT</pubDate>
             <content:encoded><![CDATA[<p>Have you ever played with numbers and found a surprising pattern? One such fascinating pattern is hidden within <strong>Kaprekar&#39;s Routine</strong>, named after the Indian mathematician D.R. Kaprekar. It&#39;s a simple game that, for most four-digit numbers, always leads to the same result: <strong>6174</strong>.</p>
-<p>Let&#39;s dive in and see how it works!</p>
-<h2>The Rules of the Game</h2>
-<ol>
-<li><strong>Pick a four-digit number</strong> with at least two different digits. (Numbers like 1111, 2222, etc., won&#39;t work).</li>
-<li><strong>Arrange the digits</strong> to form the largest possible number.</li>
-<li><strong>Arrange the same digits</strong> to form the smallest possible number.</li>
-<li><strong>Subtract</strong> the smallest number from the largest number.</li>
-<li><strong>Repeat</strong> steps 2-4 with the new number you get.</li>
-</ol>
-<p>You&#39;ll be amazed at what happens!</p>
-<h2>Example 1: Starting with 3524</h2>
-<p>Let&#39;s try with the number <strong>3524</strong>:</p>
-<ul>
-<li><strong>Step 1:</strong> Our number is 3524. It has different digits.</li>
-<li><strong>Step 2:</strong> Largest number: 5432</li>
-<li><strong>Step 3:</strong> Smallest number: 2345</li>
-<li><strong>Step 4:</strong> Subtract: 5432 - 2345 = <strong>3087</strong></li>
-</ul>
-<p>Now, we repeat the process with <strong>3087</strong>:</p>
-<ul>
-<li><strong>Step 2:</strong> Largest number: 8730</li>
-<li><strong>Step 3:</strong> Smallest number: 0378 (remember to include leading zeros to keep it a four-digit number)</li>
-<li><strong>Step 4:</strong> Subtract: 8730 - 0378 = <strong>8352</strong></li>
-</ul>
-<p>Repeat with <strong>8352</strong>:</p>
-<ul>
-<li><strong>Step 2:</strong> Largest number: 8532</li>
-<li><strong>Step 3:</strong> Smallest number: 2358</li>
-<li><strong>Step 4:</strong> Subtract: 8532 - 2358 = <strong>6174</strong></li>
-</ul>
-<p>And there it is! We reached 6174.</p>
-<h2>Example 2: Starting with 1987</h2>
-<p>Let&#39;s try another one with <strong>1987</strong>:</p>
-<ul>
-<li><strong>Step 1:</strong> Our number is 1987.</li>
-<li><strong>Step 2:</strong> Largest number: 9871</li>
-<li><strong>Step 3:</strong> Smallest number: 1789</li>
-<li><strong>Step 4:</strong> Subtract: 9871 - 1789 = <strong>8082</strong></li>
-</ul>
-<p>Repeat with <strong>8082</strong>:</p>
-<ul>
-<li><strong>Step 2:</strong> Largest number: 8820</li>
-<li><strong>Step 3:</strong> Smallest number: 0288</li>
-<li><strong>Step 4:</strong> Subtract: 8820 - 0288 = <strong>8532</strong></li>
-</ul>
-<p>Repeat with <strong>8532</strong>:</p>
-<ul>
-<li><strong>Step 2:</strong> Largest number: 8532</li>
-<li><strong>Step 3:</strong> Smallest number: 2358</li>
-<li><strong>Step 4:</strong> Subtract: 8532 - 2358 = <strong>6174</strong></li>
-</ul>
-<p>Again, we arrived at 6174!</p>
-<h2>The Magic of 6174</h2>
-<p>This number, 6174, is known as <strong>Kaprekar&#39;s Constant</strong>. For almost any four-digit number (with at least two different digits), if you keep applying Kaprekar&#39;s routine, you will eventually reach 6174. Once you reach 6174, the next step will always be:</p>
-<ul>
-<li>Largest: 7641</li>
-<li>Smallest: 1467</li>
-<li>Subtract: 7641 - 1467 = <strong>6174</strong></li>
-</ul>
-<p>It&#39;s a loop!</p>
-<p>Kaprekar&#39;s routine is a wonderful example of how simple arithmetic operations can lead to unexpected and beautiful mathematical constants. Try it with your own four-digit numbers and see the magic unfold!</p>
-<p><a href="https://fezcode.com/blog/kaprekars-routine">Read more...</a></p>]]></content:encoded>
+<p>Interactive experiment: Sort, subtract, and follow a four-digit number to its fixed point. <a href="https://fezcode.com/apps/probability-cabinet?experiment=kaprekars-routine&amp;start=3524">Open The 6174 Machine in the Probability Cabinet</a>.</p><p><a href="https://fezcode.com/blog/kaprekars-routine">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
             <title><![CDATA[The Inevitable Dance of Entropy: A Rant on Chaos]]></title>
