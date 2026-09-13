@@ -5,20 +5,22 @@ Compare the elegance of PIML against traditional formats. Notice how the vertica
 
 ### PIML Schema
 ```piml
+# Spec v1.2.0
 (project)
   (name) piml
-  (version) 1.0.0
+  (version) 1.2.0
   (description) Parenthesis Intended Markup Language
   (author)
     (name) fezcode
-    (github) https://github.com/fezcode
+    (github) https://github.com/fezcode   # a glued # stays literal
   (tags)
     > markup
     > data-serialization
     > minimalist
   (isActive) true
+  (build) "0080"                          # quoted, so it stays a string
   (spec)
-    (version) 4.3
+    (version) 1.2.0
     (status) stable
 ```
 
@@ -27,7 +29,7 @@ Compare the elegance of PIML against traditional formats. Notice how the vertica
 {
   "project": {
     "name": "piml",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "Parenthesis Intended Markup Language",
     "author": {
       "name": "fezcode",
@@ -39,8 +41,9 @@ Compare the elegance of PIML against traditional formats. Notice how the vertica
       "minimalist"
     ],
     "isActive": true,
+    "build": "0080",
     "spec": {
-      "version": 4.3,
+      "version": "1.2.0",
       "status": "stable"
     }
   }

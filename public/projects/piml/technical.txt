@@ -1,8 +1,15 @@
 LABEL: ECOSYSTEM
 SUBTEXT: INTEGRATION
 
-PIML is supported by a growing ecosystem of tools:
-- **go-piml**: A high-performance Go parser and serializer.
-- **piml.js**: Full support for JavaScript/TypeScript environments.
+Three official libraries implement spec v1.2.0, and every one of them is validated against the same compliance suite of valid and must-fail cases:
+
+- **go-piml v1.3.0**: The reference implementation for compiled languages. Marshal and unmarshal with `piml:"tag"` struct tags, a recursive-descent parser tuned for minimal allocations.
+- **piml.js v1.2.0**: Parsing and stringifying for JavaScript and TypeScript environments — the parser this site uses in the browser.
+- **piml.net v1.0.0**: The official .NET library, published as the `Piml` package for C# and F# projects.
+
+Tooling:
+
+- **tree-sitter-piml**: A tree-sitter grammar, so editors get real incremental parsing, structural selection and highlighting rather than regex approximations.
 - **VS Code Extension**: Syntax highlighting and snippets for visual clarity.
 - **PIML Lab**: A live playground to test and convert your data.
+- **atlas.pq**: A jq-style command-line processor for slicing, filtering and mapping PIML from the shell.

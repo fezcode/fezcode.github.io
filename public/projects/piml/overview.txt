@@ -1,6 +1,6 @@
 # PIML: Parenthesis Intended Markup Language
 
-**Spec version**: v1.1.0
+**Spec version**: v1.2.0
 
 PIML (Parenthesis Intended Markup Language) is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing. It was created to solve the frustrations found in JSON (too many brackets and quotes) and YAML (ambiguous indentation and type coercion).
 
@@ -41,9 +41,23 @@ Objects are created by placing key-value pairs or list items inside a parent key
 PIML handles complex types with ease:
 - **Booleans**: `true` and `false`.
 - **Numbers**: Integers and floating-point numbers.
-- **Nulls**: Represented by `nil`.
+- **Nulls**: Represented by `nil`. A bare key with no value is also `nil`.
+- **Quoted strings**: Wrapping a value in `"..."` forces the string type, so `(zip) "08080"` keeps its leading zero instead of inferring an integer.
 - **Text Blocks**: Multi-line strings are handled by indenting text under a key, maintaining all line breaks and internal formatting.
+
+## What v1.2.0 Changed
+
+The 1.2.0 revision turned PIML from a well-understood convention into a precisely specified format:
+
+- **Inline comments** — whitespace followed by `#` starts a comment; a `#` glued to other text stays literal, so `https://example.com/page#section` needs no escaping. `\#` forces a literal where the rule would otherwise fire.
+- **Quoted strings** — `"..."` forces string type, and **type inference** is now formally defined: int, float, bool and nil patterns are spelled out, and everything else is a string.
+- **Strict indentation** — exactly two spaces per level. Tabs, odd indents and skipped levels are syntax errors rather than parser-specific guesses.
+- **Multi-line strings fully specified** — base indent is the key's indent plus two, deeper indentation is preserved, interior blank lines are kept, trailing whitespace is trimmed, and the block's type is fixed by its first content line.
+- **Duplicate keys in one object are a syntax error**, and bare keys evaluate to `nil`.
+- **Nested lists** and label-less object items via a bare `>` followed by a block.
+- **Removals** — the general `\n` / `\t` / `\\` escapes (never implemented, and hostile to Windows paths) and the undocumented "set" concept are both gone.
+- **A rewritten compliance suite** of valid and must-fail cases, shared by every official implementation.
 
 ## Adoption
 
-PIML is ideally suited for configuration files, manifest declarations, and any data storage where humans are expected to interact with the raw file regularly.
+PIML is ideally suited for configuration files, manifest declarations, and any data storage where humans are expected to interact with the raw file regularly. This very site is built on it: projects, logs, notebooks and site configuration are all PIML documents parsed in the browser.

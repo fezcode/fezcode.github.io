@@ -1,7 +1,9 @@
 LABEL: Related Artifacts
 SUBTEXT: SEE ALSO
 
-- [piml.js](/projects/piml.js) - JavaScript implementation.
-- [go-piml](/projects/go-piml) - Go implementation.
+- [piml.js](/projects/piml.js) - JavaScript implementation, v1.2.0.
+- [go-piml](/projects/go-piml) - Go implementation, v1.3.0.
+- [piml.net](https://github.com/fezcode/piml.net) - .NET implementation, v1.0.0.
+- [tree-sitter-piml](https://github.com/fezcode/piml/tree/main/tree-sitter-piml) - Incremental parsing grammar.
 - [PIML Highlighter](/projects/piml-highlighter) - VS Code extension.
 - [PIML Lab](/apps/piml-lab) - Interactive playground.
