@@ -544,7 +544,7 @@ const HifiProjectPage = () => {
                   >
                     <DownloadSimpleIcon size={20} weight="bold" />
                     <span>
-                      One exe, no installer
+                      {cfg.downloadLabel || 'One exe, no installer'}
                     </span>
                   </a>
                 )}
