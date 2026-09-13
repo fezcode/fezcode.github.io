@@ -1,0 +1,32 @@
+[
+  {
+    "id": "codecs",
+    "title": "EVERY CODEC",
+    "subtitle": "FFMPEG + GPU",
+    "image": "/images/projects/tivi/main.png",
+    "file": "codecs.txt",
+    "accent": "text-amber-400",
+    "bgAccent": "bg-amber-400",
+    "outlineAccent": "border-amber-400"
+  },
+  {
+    "id": "subtitles",
+    "title": "SUBTITLES, DONE RIGHT",
+    "subtitle": "LIBASS",
+    "image": "/images/projects/tivi/settings.png",
+    "file": "subtitles.txt",
+    "accent": "text-sky-400",
+    "bgAccent": "bg-sky-400",
+    "outlineAccent": "border-sky-400"
+  },
+  {
+    "id": "shell",
+    "title": "A HI-FI SHELL",
+    "subtitle": "BORDERLESS",
+    "image": "/images/projects/tivi/hero.png",
+    "file": "shell.txt",
+    "accent": "text-rose-400",
+    "bgAccent": "bg-rose-400",
+    "outlineAccent": "border-rose-400"
+  }
+]

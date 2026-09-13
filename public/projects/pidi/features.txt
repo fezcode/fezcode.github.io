@@ -1,0 +1,13 @@
+LABEL: Capabilities
+SUBTEXT: FEATURES
+
+- **Renders everything**: Text, vector and image content all go through PDFium, so any PDF it supports opens crisply — including **password-protected** files.
+- **Resizable, borderless window**: Drag any edge or corner to resize, drag the top bar to move, double-click or `F11` for fullscreen, maximize, always-on-top. Win11 DWM rounded corners and drop shadow, with a fully fluid centered layout.
+- **Layouts & zoom**: Continuous scroll, single page, or two-up spreads; fit-width, fit-page and actual-size; Ctrl+wheel zoom-to-cursor; rotate.
+- **Navigate**: Page next/prev, click-to-type go-to, an **Outline / TOC** panel, a **Thumbnails** panel, internal and external hyperlinks, recent files.
+- **Text**: Drag-select and copy (`Ctrl+C`), plus full-text **search** with all-match highlighting, next/prev, match count, case and whole-word toggles.
+- **Markup**: Highlight, underline, strikeout, freehand ink and sticky notes, from a styled right-click context menu on a selection — and **saved back into the PDF**.
+- **Forms**: Fill AcroForm text fields, toggle checkboxes, radios and buttons, then save the filled form.
+- **Print**: The native Windows print dialog, rendered at up to 300 DPI and fit-to-page.
+- **System integration**: Single-instance — a second launch hands its file to the running window — persistent settings, and drag-and-drop.
+- **Hisashi menubar**: While [Hisashi](/projects/hisashi) is running, pidi's File / Edit / View / Go / Tools / Window menus appear in its macOS-style bar with live checkmarks and greyed-out rows.

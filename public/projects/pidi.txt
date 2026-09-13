@@ -1,0 +1,12 @@
+`pidi` is a small, native, resizable PDF reader written in C with [raylib](https://www.raylib.com/) and [PDFium](https://pdfium.googlesource.com/pdfium/) — Adobe-Reader-class features wrapped in the borderless, warm Hi-Fi interface shared with [tivi](/projects/tivi) and [Timp](/projects/timp).
+
+It renders everything PDFium renders, selects and copies text, searches the full document, writes highlights, ink and sticky notes back into the file, fills AcroForms, and prints through the native Windows dialog at up to 300 DPI.
+
+```text
+pidi [files...]      Open a PDF
+pidi -h | --help     Show help
+pidi -v | --version  Show version
+pidi --probe FILE    Print page count / title / size (diagnostic)
+```
+
+Settings live in `config.ini` under `%APPDATA%\fezcode\pidi\`.

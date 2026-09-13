@@ -1,0 +1,16 @@
+LABEL: Overview
+SUBTEXT: The Vault
+IMAGE: /images/projects/descry/preview.png
+
+# Descry
+
+A keyboard-driven markdown editor in C, SDL2 and Lua. It aims at Obsidian and Lite XL ergonomics — vault sidebar, wiki links, full preview rendering, plugin host — without the Electron tax.
+
+The whole editor is a native binary. There is no browser engine underneath it, no node process beside it, and no telemetry leaving it. What you get instead is a text buffer, a renderer, and a Lua interpreter you can actually reach.
+
+## What that buys you
+
+- **Live preview** of CommonMark via md4c — headings, lists, task lists, code fences, block quotes, tables, inline styles, links, soft and hard breaks.
+- **A real editor** underneath it: undo/redo, multi-byte caret, selection, smart Enter for lists, auto-pairs, find and replace. Soft word wrap by default, `Alt+Z` for a horizontal scrollbar instead.
+- **Tabs** that keep their text, cursor, scroll and undo history across a switch, and come back on the next launch. `Ctrl+\` splits the active file source-left, preview-right.
+- **Navigation history** — every note you open and every deliberate jump records where you were, so `Ctrl+[` walks back with caret and scroll intact and `Ctrl+]` returns.

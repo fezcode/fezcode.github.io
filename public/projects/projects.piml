@@ -21,6 +21,7 @@
     (slug) piml
     (title) piml
     (style) museum
+    (version) 1.2.0
     (size) 1
     (repo_link) https://github.com/fezcode/piml
     (demo_link) /apps/piml-lab
@@ -28,8 +29,8 @@
     (isActive) true
     (technologies)
       > Markup Language
-    (shortDescription) piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing.
-    (date) 2025-11-08
+    (shortDescription) piml is a data serialization format designed to be exceptionally human-readable and writable, while maintaining a clear and unambiguous structure for machine parsing. Spec v1.2.0 is implemented by three official libraries - go-piml, piml.js and piml.net - plus a tree-sitter grammar, all validated against one shared compliance suite.
+    (date) 2026-09-10
     (image) /images/projects/piml.webp
 
   > (project)
@@ -53,7 +54,7 @@
     (slug) timp
     (title) Timp
     (style) hifi
-    (version) 0.9.0
+    (version) 0.12.2
     (size) 2
     (repo_link) https://github.com/fezcode/timp
     (demo_link) https://github.com/fezcode/timp/releases
@@ -66,22 +67,175 @@
       > Audio
       > Native
       > Windows
-    (shortDescription) Timp is a small, native, album-art-forward music player written in C with raylib. Borderless Hi-Fi window, accent color sampled from the artwork, live spectrum, 10-band EQ, synced lyrics, and a slide-out playlist drawer — all statically linked into a single timp.exe.
-    (date) 2026-07-04
+      > macOS
+    (shortDescription) Timp is a small, native, album-art-forward music player written in C with raylib. Borderless Hi-Fi window, accent color sampled from the artwork, live spectrum, 10-band EQ, synced lyrics, saved .m3u8 playlists and a slide-out drawer. v0.12.2 ships a real Windows installer built with Forge, a self-contained Timp.app for macOS, and a Hisashi menu bar.
+    (date) 2026-09-01
     (image) /images/projects/timp/main.png
 
   > (project)
-    (slug) urban-tasks
-    (title) Urban Tasks
-    (redirect_url) https://fezcode.com/urban-tasks/
+    (slug) hisashi
+    (title) Hisashi
+    (style) eaves
+    (version) 0.6.13
+    (size) 2
+    (repo_link) https://github.com/fezcode/hisashi
+    (demo_link) https://github.com/fezcode/hisashi/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 9
+      > Avalonia UI
+      > Windows
+      > Plugins
+    (shortDescription) Hisashi (庇, Japanese for "eaves") is a plugin-driven top bar for Windows that sits at the top of every monitor. Per-monitor configuration, three zones, 24 bundled plugins, 20 contrast-checked themes, host-rendered toasts, and an OS Window Layer that lets any app in any language publish its menus into a macOS-style menu bar.
+    (date) 2026-09-12
+    (image) /images/projects/hisashi/banner.svg
+
+  > (project)
+    (slug) clockt
+    (title) clockt
+    (style) panes
+    (version) 0.5.11
+    (size) 2
+    (repo_link) https://github.com/fezcode/clockt
+    (demo_link) https://github.com/fezcode/clockt/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 9
+      > Avalonia UI
+      > ConPTY
+      > Terminal
+      > Windows
+    (shortDescription) clockt is a terminal emulator and multiplexer for Windows. Sessions live in a background daemon, so a closed window never kills your shell. Workspaces, tabs and splits, developer panels, an embedded browser pane, a plugin-driven status bar, and fourteen themes that style the terminal itself - not just the chrome.
+    (date) 2026-09-12
+    (image) /images/projects/clockt/terminal.png
+
+  > (project)
+    (slug) descry
+    (title) Descry
+    (style) graph
+    (version) 0.87.0
+    (size) 2
+    (repo_link) https://github.com/fezcode/Descry
+    (demo_link) https://github.com/fezcode/Descry/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C
+      > SDL2
+      > Lua
+      > md4c
+      > Markdown
+      > Editor
+    (shortDescription) Descry is a keyboard-driven markdown editor in C, SDL2 and Lua. Vault sidebar, wiki links, tags and backlinks, a force-directed graph view, live CommonMark preview, typographic math, and a real Lua plugin host - Obsidian ergonomics without the Electron tax.
+    (date) 2026-09-07
+    (image) /images/projects/descry/preview.png
+
+  > (project)
+    (slug) tivi
+    (title) tivi
+    (style) filmstrip
+    (version) 0.4.1
+    (size) 2
+    (repo_link) https://github.com/fezcode/tivi
+    (demo_link) https://github.com/fezcode/tivi/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C11
+      > raylib
+      > FFmpeg
+      > libass
+      > Video
+      > Windows
+      > macOS
+    (shortDescription) tivi is a small, native video player that plays everything. FFmpeg demux and decode with D3D11VA / VideoToolbox hardware acceleration, libass subtitles rasterized at display resolution, pitch-preserving 0.25-2x speed, and GPU color adjustments - all inside a borderless Hi-Fi shell styled after Timp.
+    (date) 2026-09-01
+    (image) /images/projects/tivi/hero.png
+
+  > (project)
+    (slug) cogas
+    (title) Cogas
+    (style) shelf
+    (version) 0.15.2
+    (size) 2
+    (repo_link) https://github.com/fezcode/Cogas
+    (demo_link) https://github.com/fezcode/Cogas/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET
+      > Avalonia UI
+      > MVVM
+      > Desktop
+    (shortDescription) Cogas (common gaming software) is one library for every store. It collects the games installed across Steam, Epic, GOG, Ubisoft Connect, Battle.net, EA and the Microsoft Store into a single cover grid, launches each through its own platform, and searches every storefront at once for prices, deals and critic scores.
+    (date) 2026-09-01
+    (image) /images/projects/cogas/library.png
+
+  > (project)
+    (slug) pidi
+    (title) pidi
+    (style) document
+    (version) 0.2.2
+    (size) 1
+    (repo_link) https://github.com/fezcode/pidi
+    (demo_link) https://github.com/fezcode/pidi/releases
     (pinned) false
     (isActive) true
     (technologies)
-      > TypeScript
-      > To-Do
-      > Management
-    (shortDescription) Urban Tasks is a task management platform for people.
-    (date) 2026-04-12
+      > C
+      > raylib
+      > PDFium
+      > PDF
+      > Windows
+    (shortDescription) pidi is a small, native, resizable PDF reader written in C with raylib and PDFium. Outline and thumbnail panels, full-text search, text selection and copy, highlight / ink / sticky-note markup saved back into the file, AcroForm filling and 300 DPI printing - in the warm Hi-Fi interface of tivi and Timp.
+    (date) 2026-09-01
+    (image) /images/projects/covers/pidi.svg
+
+  > (project)
+    (slug) typewriter
+    (title) Typewriter
+    (style) page
+    (version) 0.4.0
+    (size) 2
+    (repo_link) https://github.com/fezcode/typewriter
+    (demo_link) https://github.com/fezcode/typewriter/releases
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > C
+      > SDL2
+      > Editor
+      > Windows
+      > Linux
+      > macOS
+    (shortDescription) A distraction-free text editor with the soul of a mechanical typewriter. Recorded key strikes embedded in the binary, warm paper themes with optional coffee rings and ink spills, and a bell at column 80 - one self-contained executable in C and SDL2.
+    (date) 2026-09-05
+    (image) /images/projects/typewriter/banner.png
+
+  > (project)
+    (slug) atelier
+    (title) Atelier
+    (style) gallery
+    (version) 0.3.3
+    (size) 2
+    (repo_link) https://github.com/fezcode/Atelier
+    (demo_link) https://github.com/fezcode/Atelier/releases
+    (pinned) false
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET
+      > Avalonia UI
+      > SkiaSharp
+      > Image Viewer
+    (shortDescription) Atelier is a high-performance image and SVG viewer built with Avalonia UI and C#. GPU-accelerated SkiaSharp rendering, infinite vector zoom, native HEIC / AVIF / WebP support, six wallpaper modes, and a minimalist dark interface that stays out of the way of the picture.
+    (date) 2026-09-01
+    (image) /images/projects/atelier/viewer.png
 
   > (project)
     (slug) runir
@@ -94,6 +248,7 @@
       > Documentation
     (shortDescription) Runir is a modern documentation platform with extended markdown support.
     (date) 2026-04-12
+    (image) /images/projects/runir/banner.png
 
   > (project)
     (slug) atlas-projects
@@ -108,8 +263,8 @@
       > TUI
       > Bubble Tea
       > Productivity
-    (shortDescription) A collection of 38+ minimalist, high-performance CLI tools for productivity, including todo management, system stats, file exploration, image conversion, web search, password management, secure TOTP (2FA), world radio, text editing, and git management.
-    (date) 2026-02-20
+    (shortDescription) A collection of 45 minimalist, high-performance CLI tools for productivity, including todo management, system stats, file exploration, image conversion, web search, password management, secure TOTP (2FA), world radio, network speedtests, DDC/CI monitor control, text editing, and git management.
+    (date) 2026-09-12
     (image) /images/bg/emre.jpg
     (backgroundImage) /images/bg/emre.jpg
     (photoCreditText) Photo by Emre on Unsplash
@@ -130,7 +285,7 @@
       > System
     (shortDescription) Dush (Dumb Shell) is a custom terminal shell written in Go, intended as a Bash alternative and a learning platform for shell mechanics.
     (date) 2026-01-12
-    (image) https://raw.githubusercontent.com/fezcode/dush/main/title-card.png
+    (image) /images/projects/covers/dush.svg
     (backgroundImage) /images/bg/tim_simon.jpg
     (photoCreditText) Photo by Tim Simon
     (photoCreditLink) https://unsplash.com/photos/a-plane-flying-in-the-sky-with-a-lot-of-clouds-g3XW9EerLmE
@@ -168,7 +323,7 @@
       > Tailwind CSS 4
     (shortDescription) Swat Tactics is a high-stakes strategic encounter game where precision and planning are the keys to victory.
     (date) 2026-03-14
-    (image) https://raw.githubusercontent.com/fezcode/Swat-Tactics/main/branding/banner.png
+    (image) /images/projects/swat-tactics/1.png
 
   > (project)
     (slug) bm
@@ -183,7 +338,7 @@
       > TOML
     (shortDescription) BM is a simple command-line bookmark manager for your shell. It stores bookmarks in a `store.toml` file within a `~/.bm` directory.
     (date) 2025-11-06
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/bm.svg
     (backgroundImage) /images/bg/nik.jpg
     (photoCreditText) Photo by Nik on Unsplash
     (photoCreditLink) https://unsplash.com/photos/palm-fronds-against-a-sunset-sky-3ZMkvC45R_E
@@ -223,7 +378,7 @@
       > Zustand
     (shortDescription) A premium dark fantasy deck-building roguelike card game.
     (date) 2026-03-16
-    (image) https://raw.githubusercontent.com/fezcode/climb-the-tall-building-0/main/banner.png
+    (image) /images/projects/climb-the-tall-building-0/banner.png
 
   > (project)
     (slug) nocturnote
@@ -308,7 +463,7 @@
       > go
     (shortDescription) go-piml is a Go package that provides functionality to marshal and unmarshal data to and from the PIML format.
     (date) 2025-11-01
-    (image) /images/defaults/piml-red.png
+    (image) /images/projects/covers/go-piml.svg
 
   > (project)
     (slug) piml.js
@@ -325,7 +480,7 @@
       > js
     (shortDescription) piml.js is a JavaScript library for parsing and stringifying data in the PIML format.
     (date) 2025-11-01
-    (image) /images/defaults/piml-red.png
+    (image) /images/projects/covers/piml.js.svg
 
   > (project)
     (slug) doku
@@ -354,7 +509,7 @@
       > SVG
     (shortDescription) Stroque is a project for procedural box art generation. It draws boxes on a `2000 x 2000` SVG canvas and utilizes a backtracking algorithm.
     (date) 2024-01-01
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/stroque.svg
 
   > (project)
     (slug) scrappy
@@ -367,7 +522,7 @@
       > JavaScript
     (shortDescription) Scrappy.js is a simple command-line web scraper.
     (date) 2024-01-01
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/scrappy.svg
 
   > (project)
     (slug) piml-highlighter
@@ -383,7 +538,7 @@
       > Extension
     (shortDescription) This extension provides comprehensive syntax highlighting for PIML (Parenthesis Intended Markup Language) files in Visual Studio Code.
     (date) 2025-11-11
-    (image) /images/defaults/piml-red.png
+    (image) /images/projects/covers/piml-highlighter.svg
 
   > (project)
     (slug) go-homo-sapiens-time
@@ -396,7 +551,7 @@
       > Go
     (shortDescription) Go Homo Sapiens Time is a Go package that provides utilities for converting human-readable time strings to milliseconds and vice-versa. It's a Go port of the popular JavaScript library homo-sapiens-time.
     (date) 2025-11-07
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/go-homo-sapiens-time.svg
 
   > (project)
     (slug) go-tournament-brackets
@@ -410,7 +565,7 @@
       > Go
     (shortDescription) Go Tournament Bracket Generator Lib is a simple and flexible Go library for creating and managing single-elimination tournament brackets. It also includes a fully interactive command-line application to run a tournament from start to finish.
     (date) 2025-11-05
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/go-tournament-brackets.svg
 
   > (project)
     (slug) open-tab-with-respect
@@ -428,7 +583,7 @@
       > CSS
     (shortDescription) "Open Tab With Respect" is a Firefox/WebExtension that allows users to open new tabs in specific positions relative to the current tab.
     (date) 2024-01-01
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/open-tab-with-respect.svg
 
   > (project)
     (slug) clipboard-concat
@@ -446,7 +601,7 @@
       > CSS
     (shortDescription) "Clipboard Concat" is a Firefox/WebExtension that allows users to concatenate copied links and selections into their clipboard.
     (date) 2024-01-01
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/clipboard-concat.svg
 
   > (project)
     (slug) boxer
@@ -464,7 +619,7 @@
       > Archiver
     (shortDescription) Boxer is a tool that creates archive files based on instructions provided in a boxerfile. Uses CMake and Ninja for its build system.
     (date) 2024-01-01
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/boxer.svg
 
   > (project)
     (slug) firefox-themes
@@ -482,4 +637,4 @@
       > CSS
     (shortDescription) These are themes created for Firefox.
     (date) 2024-01-01
-    (image) /images/defaults/esma-melike-sezer-YpUj3dD0YzU-unsplash.jpg
+    (image) /images/projects/covers/firefox-themes.svg

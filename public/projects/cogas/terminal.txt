@@ -1,0 +1,15 @@
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> git clone https://github.com/fezcode/Cogas.git
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> cd Cogas; dotnet run
+
+  Scanning Steam libraryfolders.vdf ............ 84 installed
+  Scanning Epic .item manifests ................ 12 installed
+  Scanning GOG Galaxy registry ................. 31 installed
+  Scanning Ubisoft Connect ..................... 6 installed
+  Scanning Battle.net .......................... 4 installed
+  Scanning MSIX / Game Pass .................... 19 packages, 7 games
+  Merging duplicates across platforms .......... 164 -> 151 entries
+  Fetching critic scores (Steam, Wikidata) ..... 138 matched
+
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> dotnet test Tests/Cogas.Tests   <span class="text-[#b8bb26]"># parsers, matching, merge logic</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> .\version.ps1 -Bump patch       <span class="text-[#b8bb26]"># six places, kept in lockstep</span>
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> .\installer.ps1                 <span class="text-[#b8bb26]"># -> Cogas-Setup-0.15.2.exe</span>
