@@ -2,6 +2,7 @@ const fs = require('fs');
 const RSS = require('rss');
 const path = require('path');
 const { marked } = require('marked'); // Import marked
+const { experimentRssLinks } = require('./experiment-rss.cjs');
 
 const postsDirectory = path.join(__dirname, '../public/posts');
 const publicDirectory = path.join(__dirname, '../public');
@@ -77,7 +78,9 @@ const generateRssFeed = () => {
 
     // Create a preview for content:encoded (first paragraph or ~250 chars)
     const firstParagraph = postContent.split('\n\n')[0] || postContent.substring(0, 250);
-    const contentHtml = marked(firstParagraph) + `<p><a href="${url}">Read more...</a></p>`;
+    const experimentLinks = experimentRssLinks(postContent);
+    const previewContent = firstParagraph.replace(/<probability-experiment\b[^>]*>[\s\S]*?<\/probability-experiment>/g, (tag) => experimentRssLinks(tag));
+    const contentHtml = marked(previewContent) + (firstParagraph.includes('<probability-experiment') ? '' : experimentLinks) + `<p><a href="${url}">Read more...</a></p>`;
 
     feed.item({
       title: post.title,

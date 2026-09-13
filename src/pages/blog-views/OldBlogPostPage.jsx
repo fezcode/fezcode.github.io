@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
+import ReactMarkdown from '../../components/ExperimentMarkdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import {
   ArrowsOutSimpleIcon,
