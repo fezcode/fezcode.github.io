@@ -39,15 +39,16 @@ The Atlas Suite is a family of minimalist, high-performance command-line tools b
 - 33. **[atlas.guide](https://github.com/fezcode/atlas.guide)**: A personal health and wellness tracker for calories, gym activities, and mood.
 - 34. **[atlas.notes](https://github.com/fezcode/atlas.notes)**: A beautiful terminal-based markdown note manager with built-in editor and high-fidelity rendering.
 - 35. **[atlas.pilot](https://github.com/fezcode/atlas.pilot)**: Premium remote PC pilot - Control windows, mouse, and system over WiFi.
-- 36. **[atlas.record](https://github.com/fezcode/atlas.record)**: Ultimate screen and audio recorder for Windows, leveraging FFmpeg for hardware-accelerated capture.
-- 37. **[atlas.subs](https://github.com/fezcode/atlas.subs)**: A beautiful terminal-based subtitle searcher and downloader.
-- 38. **[atlas.tones](https://github.com/fezcode/atlas.tones)**: iPhone Ringtone and Notification Sound Manager.
-- 39. **[atlas.yap](https://github.com/fezcode/yap)**: YouTube Audio Player TUI with search (Windows only).
-- 40. **[atlas.quote](https://github.com/fezcode/atlas.quote)**: A cowsay-like quote generator for the terminal with a rainbow color mode.
-- 41. **[atlas.llm](https://github.com/fezcode/atlas.llm)**: Local AI chat with GPU offload, agentic tools, and MCP servers. Serves a model over the LAN; also one-shot summarize, grep, and dump modes.
-- 42. **[atlas.tail](https://github.com/fezcode/atlas.tail)**: A beautiful, high-performance terminal log follower (tail -f with syntax highlighting).
-- 43. **[atlas.doomwalker](https://github.com/fezcode/atlas.doomwalker)**: A lightning-fast disk space analyzer with a luxury terminal treemap.
-- 44. **[atlas.dict](https://github.com/fezcode/atlas.dict)**: Fast, offline terminal dictionary with delicate design.
+- 36. **[atlas.subs](https://github.com/fezcode/atlas.subs)**: A beautiful terminal-based subtitle searcher and downloader.
+- 37. **[atlas.tones](https://github.com/fezcode/atlas.tones)**: iPhone Ringtone and Notification Sound Manager.
+- 38. **[atlas.yap](https://github.com/fezcode/yap)**: YouTube Audio Player TUI with search (Windows only).
+- 39. **[atlas.quote](https://github.com/fezcode/atlas.quote)**: A cowsay-like quote generator for the terminal with a rainbow color mode.
+- 40. **[atlas.llm](https://github.com/fezcode/atlas.llm)**: Local AI chat with GPU offload, agentic tools, and MCP servers. Serves a model over the LAN; also one-shot summarize, grep, and dump modes.
+- 41. **[atlas.tail](https://github.com/fezcode/atlas.tail)**: A beautiful, high-performance terminal log follower (tail -f with syntax highlighting).
+- 42. **[atlas.doomwalker](https://github.com/fezcode/atlas.doomwalker)**: A lightning-fast disk space analyzer with a luxury terminal treemap.
+- 43. **[atlas.dict](https://github.com/fezcode/atlas.dict)**: Fast, offline terminal dictionary with delicate design.
+- 44. **[atlas.pulse](https://github.com/fezcode/atlas.pulse)**: Real-network speedtest for the terminal. Pings major endpoints across the world and measures true download and upload bandwidth.
+- 45. **[atlas.monitors](https://github.com/fezcode/atlas.monitors)**: Control your monitors from the command line over DDC/CI — brightness, contrast, input, volume, power and any raw VCP feature.
 
 ### Why Atlas?
 

@@ -19,13 +19,13 @@ import { useProjects } from '../../utils/projectParser';
 import { useToast } from '../../hooks/useToast';
 
 /*
- * Atlas Suite project page — a command-center catalogue of 44+ Go CLI tools.
+ * Atlas Suite project page — a command-center catalogue of 45 Go CLI tools.
  *
  * Aesthetic: phosphor-amber CRT terminal meets product index.
  * Monospace everywhere. Subtle scanlines, corner registration crosshairs,
  * and a boot-sequence reveal on load. Tool cards expose their actual
  * `atlas.<name>` invocation on hover. Category filter + fuzzy search keep
- * 44 entries discoverable without any wall-of-text scroll.
+ * 45 entries discoverable without any wall-of-text scroll.
  */
 
 /* ============================================================
@@ -58,50 +58,51 @@ const CATEGORIES = [
 ];
 
 const TOOLS = [
-  { n: 1,  name: 'hub',           cat: 'dev',          blurb: 'Centralized installer and manager for the whole suite.',                          sample: 'atlas.hub' },
-  { n: 2,  name: 'todo',          cat: 'productivity', blurb: 'Keyboard-centric task TUI with Vim bindings and CLI quick-add.',                  sample: 'atlas.todo add "Finish Gemini @work !high"' },
-  { n: 3,  name: 'stats',         cat: 'system',       blurb: 'Real-time system monitor — CPU, memory, disk, network.',                          sample: 'atlas.stats' },
-  { n: 4,  name: 'websearch',     cat: 'network',      blurb: 'Web search across DuckDuckGo, Wikipedia, HN, and Reddit.',                         sample: 'atlas.websearch -e wiki "Go programming"' },
-  { n: 5,  name: 'compass',       cat: 'security',     blurb: 'Local-first password manager with AES-256-GCM encryption.',                       sample: 'atlas.compass' },
-  { n: 6,  name: 'clock',         cat: 'productivity', blurb: 'Multi-timezone dashboard with ms precision and IANA search.',                      sample: 'atlas.clock' },
-  { n: 7,  name: 'cam',           cat: 'media',        blurb: 'Terminal webcam viewer with ASCII rendering and filters.',                         sample: 'atlas.cam' },
-  { n: 8,  name: 'games',         cat: 'games',        blurb: "Collection including Wilson's Revenge and Wave Function Collapse.",               sample: 'atlas.games' },
-  { n: 9,  name: 'bench',         cat: 'dev',          blurb: 'High-precision multi-command benchmarking with visual comparison.',                sample: 'atlas.bench "ls" "dir"' },
-  { n: 10, name: 'radar',         cat: 'dev',          blurb: 'Monitor git statuses across multiple repositories simultaneously.',                 sample: 'atlas.radar --show unclean --watch ..' },
-  { n: 11, name: 'otp',           cat: 'security',     blurb: 'Minimalist TOTP (2FA) manager with an onyx & gold theme.',                         sample: 'atlas.otp' },
-  { n: 12, name: 'diff',          cat: 'dev',          blurb: 'Side-by-side terminal file diff with high visibility.',                            sample: 'atlas.diff file1.go file2.go' },
-  { n: 13, name: 'screensaver',   cat: 'system',       blurb: 'Terminal screensavers — Pipes, Stars, Matrix, DNA, Waves.',                        sample: 'atlas.screensaver' },
-  { n: 14, name: 'facade',        cat: 'network',      blurb: 'Retro-future mock API server for instant frontend prototyping.',                   sample: 'atlas.facade --file routes.piml' },
-  { n: 15, name: 'pq',            cat: 'data',         blurb: 'Minimalist PIML processor — slice, filter, and map data.',                         sample: 'atlas.pq -q "tools.0.version" manifest.piml' },
-  { n: 16, name: 'hash',          cat: 'data',         blurb: 'Generate and compare MD5, SHA1, SHA256, SHA512 hashes.',                           sample: 'atlas.hash my_file.zip' },
-  { n: 17, name: 'grave',         cat: 'system',       blurb: 'Interactive process reaper with a Pip-Boy inspired TUI.',                          sample: 'atlas.grave' },
-  { n: 18, name: 'radio',         cat: 'network',      blurb: 'Global terminal radio receiver with thousands of live stations.',                   sample: 'atlas.radio' },
-  { n: 19, name: 'deck',          cat: 'productivity', blurb: 'Interactive TUI command deck — workflows as a grid of pads.',                      sample: 'atlas.deck' },
-  { n: 20, name: 'convert',       cat: 'media',        blurb: 'Image conversion for JPEG, PNG, and HEIC formats.',                                sample: 'atlas.convert -s "*.heic" -t png' },
-  { n: 21, name: 'conquistador',  cat: 'data',         blurb: 'Beautiful terminal file explorer — Finder/Explorer, re-done.',                     sample: 'atlas.conquistador' },
-  { n: 22, name: 'horizon',       cat: 'system',       blurb: 'Environmental & weather dashboard with atmospheric monitoring.',                    sample: 'atlas.horizon' },
-  { n: 23, name: 'cat',           cat: 'dev',          blurb: 'High-performance text viewer with syntax highlighting.',                           sample: 'atlas.cat main.go' },
-  { n: 24, name: 'ed',            cat: 'dev',          blurb: 'High-performance text editor with highlighting, line nos, search.',               sample: 'atlas.ed README.md' },
-  { n: 25, name: 'gitty',         cat: 'dev',          blurb: 'Comprehensive TUI git client — graphs, branches, multi-repo.',                    sample: 'atlas.gitty' },
-  { n: 26, name: 'ip',            cat: 'system',       blurb: 'Fetch local and public IP addresses with geolocation data.',                       sample: 'atlas.ip' },
-  { n: 27, name: 'sand',          cat: 'games',        blurb: 'Interactive falling sand and particle physics simulator.',                         sample: 'atlas.sand' },
-  { n: 28, name: 'sql',           cat: 'data',         blurb: 'Terminal SQL client for SQLite & PostgreSQL with highlighting.',                    sample: 'atlas.sql' },
-  { n: 29, name: 'color',         cat: 'dev',          blurb: 'Interactive color picker & converter (Hex, RGB, HSL).',                            sample: 'atlas.color' },
-  { n: 30, name: 'archive',       cat: 'system',       blurb: 'Step-by-step archiver and extractor for compressed files.',                         sample: 'atlas.archive' },
-  { n: 31, name: 'burner',        cat: 'media',        blurb: 'TUI image burner for OS images and USB drives.',                                    sample: 'atlas.burner' },
-  { n: 32, name: 'batchdown',     cat: 'media',        blurb: 'Batch downloader that processes URLs sequentially.',                               sample: 'atlas.batchdown links.txt' },
-  { n: 33, name: 'guide',         cat: 'productivity', blurb: 'Personal health & wellness — calories, gym activities, mood.',                     sample: 'atlas.guide' },
-  { n: 34, name: 'notes',         cat: 'productivity', blurb: 'Markdown notes manager with editor and high-fidelity render.',                      sample: 'atlas.notes' },
-  { n: 35, name: 'pilot',         cat: 'system',       blurb: 'Remote PC pilot — control windows, mouse, system over WiFi.',                      sample: 'atlas.pilot' },
-  { n: 36, name: 'record',        cat: 'media',        blurb: 'Screen & audio recorder leveraging FFmpeg for hardware capture.',                   sample: 'atlas.record' },
-  { n: 37, name: 'subs',          cat: 'media',        blurb: 'Beautiful terminal subtitle searcher and downloader.',                              sample: 'atlas.subs' },
-  { n: 38, name: 'tones',         cat: 'media',        blurb: 'iPhone ringtone and notification sound manager.',                                   sample: 'atlas.tones' },
-  { n: 39, name: 'yap',           cat: 'media',        blurb: 'YouTube audio player TUI with search (Windows only).',                              sample: 'atlas.yap', url: 'https://github.com/fezcode/yap' },
-  { n: 40, name: 'quote',         cat: 'media',        blurb: 'Cowsay-like quote generator with a rainbow color mode.',                            sample: 'atlas.quote --color' },
-  { n: 41, name: 'llm',           cat: 'dev',          blurb: 'Local AI chat — GPU offload, agentic tools, MCP, LAN serving.',                     sample: 'atlas.llm --summarize ./src' },
-  { n: 42, name: 'tail',          cat: 'dev',          blurb: 'High-performance log follower — tail -f with highlighting.',                        sample: 'atlas.tail server.log' },
-  { n: 43, name: 'doomwalker',    cat: 'system',       blurb: 'Lightning-fast disk space analyzer with a terminal treemap.',                       sample: 'atlas.doomwalker C:\\' },
-  { n: 44, name: 'dict',          cat: 'productivity', blurb: 'Fast, offline terminal dictionary with delicate design.',                           sample: 'atlas.dict -f en -t tr -q "eminence"' },
+  { n: 1,  name: 'hub',          cat: 'dev',          blurb: 'Centralized installer and manager for the whole suite.',              sample: 'atlas.hub' },
+  { n: 2,  name: 'todo',         cat: 'productivity', blurb: 'Keyboard-centric task TUI with Vim bindings and CLI quick-add.',      sample: 'atlas.todo add "Finish Gemini @work !high"' },
+  { n: 3,  name: 'stats',        cat: 'system',       blurb: 'Real-time system monitor — CPU, memory, disk, network.',              sample: 'atlas.stats' },
+  { n: 4,  name: 'websearch',    cat: 'network',      blurb: 'Web search across DuckDuckGo, Wikipedia, HN, and Reddit.',            sample: 'atlas.websearch -e wiki "Go programming"' },
+  { n: 5,  name: 'compass',      cat: 'security',     blurb: 'Local-first password manager with AES-256-GCM encryption.',           sample: 'atlas.compass' },
+  { n: 6,  name: 'clock',        cat: 'productivity', blurb: 'Multi-timezone dashboard with ms precision and IANA search.',         sample: 'atlas.clock' },
+  { n: 7,  name: 'cam',          cat: 'media',        blurb: 'Terminal webcam viewer with ASCII rendering and filters.',            sample: 'atlas.cam' },
+  { n: 8,  name: 'games',        cat: 'games',        blurb: "Collection including Wilson's Revenge and Wave Function Collapse.",   sample: 'atlas.games' },
+  { n: 9,  name: 'bench',        cat: 'dev',          blurb: 'High-precision multi-command benchmarking with visual comparison.',   sample: 'atlas.bench "ls" "dir"' },
+  { n: 10, name: 'radar',        cat: 'dev',          blurb: 'Monitor git statuses across multiple repositories simultaneously.',   sample: 'atlas.radar --show unclean --watch ..' },
+  { n: 11, name: 'otp',          cat: 'security',     blurb: 'Minimalist TOTP (2FA) manager with an onyx & gold theme.',            sample: 'atlas.otp' },
+  { n: 12, name: 'diff',         cat: 'dev',          blurb: 'Side-by-side terminal file diff with high visibility.',               sample: 'atlas.diff file1.go file2.go' },
+  { n: 13, name: 'screensaver',  cat: 'system',       blurb: 'Terminal screensavers — Pipes, Stars, Matrix, DNA, Waves.',           sample: 'atlas.screensaver' },
+  { n: 14, name: 'facade',       cat: 'network',      blurb: 'Retro-future mock API server for instant frontend prototyping.',      sample: 'atlas.facade --file routes.piml' },
+  { n: 15, name: 'pq',           cat: 'data',         blurb: 'Minimalist PIML processor — slice, filter, and map data.',            sample: 'atlas.pq -q "tools.0.version" manifest.piml' },
+  { n: 16, name: 'hash',         cat: 'data',         blurb: 'Generate and compare MD5, SHA1, SHA256, SHA512 hashes.',              sample: 'atlas.hash my_file.zip' },
+  { n: 17, name: 'grave',        cat: 'system',       blurb: 'Interactive process reaper with a Pip-Boy inspired TUI.',             sample: 'atlas.grave' },
+  { n: 18, name: 'radio',        cat: 'network',      blurb: 'Global terminal radio receiver with thousands of live stations.',     sample: 'atlas.radio' },
+  { n: 19, name: 'deck',         cat: 'productivity', blurb: 'Interactive TUI command deck — workflows as a grid of pads.',         sample: 'atlas.deck' },
+  { n: 20, name: 'convert',      cat: 'media',        blurb: 'Image conversion for JPEG, PNG, and HEIC formats.',                   sample: 'atlas.convert -s "*.heic" -t png' },
+  { n: 21, name: 'conquistador', cat: 'data',         blurb: 'Beautiful terminal file explorer — Finder/Explorer, re-done.',        sample: 'atlas.conquistador' },
+  { n: 22, name: 'horizon',      cat: 'system',       blurb: 'Environmental & weather dashboard with atmospheric monitoring.',      sample: 'atlas.horizon' },
+  { n: 23, name: 'cat',          cat: 'dev',          blurb: 'High-performance text viewer with syntax highlighting.',              sample: 'atlas.cat main.go' },
+  { n: 24, name: 'ed',           cat: 'dev',          blurb: 'High-performance text editor with highlighting, line nos, search.',   sample: 'atlas.ed README.md' },
+  { n: 25, name: 'gitty',        cat: 'dev',          blurb: 'Comprehensive TUI git client — graphs, branches, multi-repo.',        sample: 'atlas.gitty' },
+  { n: 26, name: 'ip',           cat: 'system',       blurb: 'Fetch local and public IP addresses with geolocation data.',          sample: 'atlas.ip' },
+  { n: 27, name: 'sand',         cat: 'games',        blurb: 'Interactive falling sand and particle physics simulator.',            sample: 'atlas.sand' },
+  { n: 28, name: 'sql',          cat: 'data',         blurb: 'Terminal SQL client for SQLite & PostgreSQL with highlighting.',      sample: 'atlas.sql' },
+  { n: 29, name: 'color',        cat: 'dev',          blurb: 'Interactive color picker & converter (Hex, RGB, HSL).',               sample: 'atlas.color' },
+  { n: 30, name: 'archive',      cat: 'system',       blurb: 'Step-by-step archiver and extractor for compressed files.',           sample: 'atlas.archive' },
+  { n: 31, name: 'burner',       cat: 'media',        blurb: 'TUI image burner for OS images and USB drives.',                      sample: 'atlas.burner' },
+  { n: 32, name: 'batchdown',    cat: 'media',        blurb: 'Batch downloader that processes URLs sequentially.',                  sample: 'atlas.batchdown links.txt' },
+  { n: 33, name: 'guide',        cat: 'productivity', blurb: 'Personal health & wellness — calories, gym activities, mood.',        sample: 'atlas.guide' },
+  { n: 34, name: 'notes',        cat: 'productivity', blurb: 'Markdown notes manager with editor and high-fidelity render.',        sample: 'atlas.notes' },
+  { n: 35, name: 'pilot',        cat: 'system',       blurb: 'Remote PC pilot — control windows, mouse, system over WiFi.',         sample: 'atlas.pilot' },
+  { n: 36, name: 'subs',         cat: 'media',        blurb: 'Beautiful terminal subtitle searcher and downloader.',                sample: 'atlas.subs' },
+  { n: 37, name: 'tones',        cat: 'media',        blurb: 'iPhone ringtone and notification sound manager.',                     sample: 'atlas.tones' },
+  { n: 38, name: 'yap',          cat: 'media',        blurb: 'YouTube audio player TUI with search (Windows only).',                sample: 'atlas.yap', url: 'https://github.com/fezcode/yap' },
+  { n: 39, name: 'quote',        cat: 'media',        blurb: 'Cowsay-like quote generator with a rainbow color mode.',              sample: 'atlas.quote --color' },
+  { n: 40, name: 'llm',          cat: 'dev',          blurb: 'Local AI chat — GPU offload, agentic tools, MCP, LAN serving.',       sample: 'atlas.llm --summarize ./src' },
+  { n: 41, name: 'tail',         cat: 'dev',          blurb: 'High-performance log follower — tail -f with highlighting.',          sample: 'atlas.tail server.log' },
+  { n: 42, name: 'doomwalker',   cat: 'system',       blurb: 'Lightning-fast disk space analyzer with a terminal treemap.',         sample: 'atlas.doomwalker C:\\' },
+  { n: 43, name: 'dict',         cat: 'productivity', blurb: 'Fast, offline terminal dictionary with delicate design.',             sample: 'atlas.dict -f en -t tr -q "eminence"' },
+  { n: 44, name: 'pulse',        cat: 'network',      blurb: 'Real-network speedtest — world-wide pings, true bandwidth.',          sample: 'atlas.pulse' },
+  { n: 45, name: 'monitors',     cat: 'system',       blurb: 'DDC/CI monitor control — brightness, input, volume, power.',          sample: 'atlas.monitors --brightness 60' },
 ];
 
 const REPO_BASE = 'https://github.com/fezcode';
@@ -122,7 +123,7 @@ const INSTALL_CMDS = [
 
 const BOOT_LINES = [
   '[OK] loading /atlas/manifest.piml',
-  '[OK] scanning bin/… 44 tools discovered',
+  '[OK] scanning bin/… 45 tools discovered',
   '[OK] verifying signatures · ed25519',
   '[OK] resolving categories · 8 groups',
   '[OK] handshake · atlas.hub v1.0.0',
@@ -603,7 +604,7 @@ const AtlasProjectPage = () => {
     >
       <Seo
         title="Atlas Suite | Fezcodex"
-        description="A family of 44+ minimalist, high-performance Go CLI tools built with Bubble Tea — one install line, one philosophy, eight categories."
+        description="A family of 45 minimalist, high-performance Go CLI tools built with Bubble Tea — one install line, one philosophy, eight categories."
         keywords={['atlas', 'atlas suite', 'go', 'cli', 'tui', 'bubble tea', 'productivity']}
       />
 
@@ -675,7 +676,7 @@ const AtlasProjectPage = () => {
               className="mt-6 max-w-[56ch] text-[15px] md:text-[17px] leading-relaxed"
               style={{ color: TEXT }}
             >
-              A family of <span style={{ color: AMBER }}>44 minimalist</span>, high-performance
+              A family of <span style={{ color: AMBER }}>45 minimalist</span>, high-performance
               command-line tools built with Go and Bubble Tea. Each one solves a single
               problem well. Together, they form a terminal-native productivity stack.
             </motion.p>

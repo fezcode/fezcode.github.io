@@ -173,47 +173,52 @@ fezcode
 +35 -0 ~0
 link: https://github.com/fezcode/atlas.pilot
 ---
-# Record
-fezcode
-+36 -0 ~0
-link: https://github.com/fezcode/atlas.record
----
 # Subs
 fezcode
-+37 -0 ~0
++36 -0 ~0
 link: https://github.com/fezcode/atlas.subs
 ---
 # Tones
 fezcode
-+38 -0 ~0
++37 -0 ~0
 link: https://github.com/fezcode/atlas.tones
 ---
 # Yap
 fezcode
-+39 -0 ~0
++38 -0 ~0
 link: https://github.com/fezcode/yap
 ---
 # Quote
 fezcode
-+40 -0 ~0
++39 -0 ~0
 link: https://github.com/fezcode/atlas.quote
 ---
 # LLM
 fezcode
-+41 -0 ~0
++40 -0 ~0
 link: https://github.com/fezcode/atlas.llm
 ---
 # Tail
 fezcode
-+42 -0 ~0
++41 -0 ~0
 link: https://github.com/fezcode/atlas.tail
 ---
 # Doomwalker
 fezcode
-+43 -0 ~0
++42 -0 ~0
 link: https://github.com/fezcode/atlas.doomwalker
 ---
 # Dict
 fezcode
-+44 -0 ~0
++43 -0 ~0
 link: https://github.com/fezcode/atlas.dict
+---
+# Pulse
+fezcode
++44 -0 ~0
+link: https://github.com/fezcode/atlas.pulse
+---
+# Monitors
+fezcode
++45 -0 ~0
+link: https://github.com/fezcode/atlas.monitors

@@ -1,7 +1,7 @@
 <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.hub
-  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.todo add "Finish Gemini integration @work !high"
-  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.websearch -e wiki "Go programming language"
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.todo add "Finish Gemini @work !high"
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.stats
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.websearch -e wiki "Go programming"
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.compass
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.clock
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.cam
@@ -17,7 +17,7 @@
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.grave
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.radio
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.deck
-  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.convert -s "*.heic" -d "outputs/" -t png
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.convert -s "*.heic" -t png
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.conquistador
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.horizon
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.cat main.go
@@ -33,7 +33,6 @@
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.guide
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.notes
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.pilot
-  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.record
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.subs
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.tones
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.yap
@@ -42,3 +41,5 @@
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.tail server.log
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.doomwalker C:\
   <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.dict -f en -t tr -q "eminence"
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.pulse
+  <span class="text-[#b8bb26]">➜</span> <span class="text-[#fabd2f]">~</span> atlas.monitors --brightness 60
