@@ -65,6 +65,14 @@ If the premises are true, the conclusion is 100% guaranteed. Deductive logic is 
   *(e.g., All birds are mammals. A penguin is a bird. Therefore, a penguin is a mammal. Valid structure, false premises).*
 * An argument is **sound** if it is valid AND all its premises are actually true. This is the gold standard.
 
+### Try the premises: a pirate vote
+
+Five pirates must divide 100 coins. The senior pirate proposes, everybody votes, and a rejected captain goes overboard. Start from the final possible round and reason backward: who would accept one coin because the next captain would give them nothing?
+
+This is **backward induction** in game theory: a deductive calculation under explicit assumptions, rather than generalizing from observations. Try a proposal below, then switch the voting rule and see why the result changes. The [full pirate-game walkthrough](/blog/the-pirate-game) explains each round.
+
+<probability-experiment experiment="pirate-game" pirates="5" rule="half"></probability-experiment>
+
 ### [Inductive Reasoning](/vocab/inductive-reasoning): Bottom-Up Logic
 Inductive logic takes specific observations and builds them into a general theory. It deals in **probabilities**, not certainties.
 

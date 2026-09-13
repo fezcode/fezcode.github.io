@@ -19,6 +19,10 @@ Penney's Game is a two-player coin game. Each player picks a length-three sequen
 
 It *feels* perfectly symmetric. It is not.
 
+Try the race yourself. Pick two patterns, flip one coin at a time, or run a thousand fresh games. The theoretical bar is calculated; the observed bar records your trials.
+
+<probability-experiment experiment="penneys-game" first="HHH" second="THH"></probability-experiment>
+
 ---
 
 ## Why going second wins

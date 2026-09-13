@@ -1,5 +1,25 @@
 [
   {
+    "slug": "the-pirate-game",
+    "title": "The Pirate Game: How to Keep 98 Coins and Survive the Vote",
+    "date": "2026-09-13",
+    "updated": "2026-09-13",
+    "description": "Five pirates, 100 coins, and a vote. Play the classic bargaining puzzle, trace its backward-induction solution, and discover why changing the voting rule changes the split.",
+    "tags": [
+      "game theory",
+      "logic",
+      "math",
+      "puzzles",
+      "backward induction",
+      "interactive"
+    ],
+    "category": "dev",
+    "filename": "the-pirate-game.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "the-death-of-arkadas",
     "title": "The Death of \"Arkadaş\": A Retrospective on How Turks Stopped Caring and Started Generalizing",
     "date": "2026-08-15",
@@ -24,7 +44,7 @@
     "slug": "penneys-game",
     "title": "Penney's Game: The Coin-Flip Bet Where Going Second Always Wins",
     "date": "2026-06-24",
-    "updated": "2026-06-24",
+    "updated": "2026-09-13",
     "description": "A short explainer on Penney's Game, the non-transitive coin-flip game where the second player can always pick a three-flip sequence that beats the first player's — sometimes 7 to 1. Includes the optimal-response rule and the full odds table.",
     "tags": [
       "probability",
@@ -488,7 +508,7 @@
     "slug": "a-colossal-rant-on-logic",
     "title": "The Lost Art of Thinking: A Colossal Rant on Logic",
     "date": "2026-02-28",
-    "updated": "2026-02-28",
+    "updated": "2026-09-13",
     "description": "A deep dive into the absolute fundamentals of logic, from ancient Greece to Boolean algebra, and a rant on why modern society desperately needs to relearn how to think.",
     "tags": [
       "logic",
@@ -1278,7 +1298,7 @@
     "slug": "what-genre-should-i-watch",
     "title": "Dying is Easy, Comedy is Statistically Impossible: An IMDbayes Analysis",
     "date": "2026-01-18",
-    "updated": "2026-01-18",
+    "updated": "2026-09-13",
     "description": "Deconstructing Hollywood: A Data Science Journey from Raw Data to p99 Insights. Why you need a 6.5 filter for laughs, but can fly blind with a Documentary.",
     "tags": [
       "data science",
@@ -1908,7 +1928,7 @@
     "slug": "kaprekars-routine",
     "title": "Kaprekar's Routine: A Curious Number Game",
     "date": "2025-11-18",
-    "updated": "2025-11-18",
+    "updated": "2026-09-13",
     "description": "Explore Kaprekar's Routine, a fascinating number game that always leads to the constant 6174 for most four-digit numbers.",
     "tags": [
       "mathematics",

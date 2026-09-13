@@ -12,6 +12,12 @@ Let's dive in and see how it works!
 
 You'll be amazed at what happens!
 
+## Try the 6174 machine
+
+Choose four digits and step through the subtraction yourself. Keep leading zeros: `1000` is a valid starting point. Try `1111` too to see why the rule excludes numbers whose digits are all identical. This is a deterministic number pattern, not a probability simulation.
+
+<probability-experiment experiment="kaprekars-routine" start="3524"></probability-experiment>
+
 ## Example 1: Starting with 3524
 
 Let's try with the number **3524**:
