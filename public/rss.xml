@@ -9,14 +9,27 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sun, 13 Sep 2026 19:38:29 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 15 Sep 2026 21:34:59 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sun, 13 Sep 2026 19:38:29 GMT</pubDate>
+        <pubDate>Tue, 15 Sep 2026 21:34:58 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Please Continue: A Short Rant About the Milgram Experiments]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/please-continue-a-milgram-rant</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/please-continue-a-milgram-rant</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Tue, 15 Sep 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>⚠️ Warning: You Are About to Think You Would Have Walked Out</strong></p>
+<p>Everyone who reads about this experiment believes they would have been one of the fourteen. Statistically, you were one of the twenty-six. Sit with that.</p>
+</blockquote>
+<p>Interactive experiment: Sit at Milgram’s machine, feel the four prods, and compare where you stop with 40 real subjects. <a href="https://fezcode.com/apps/probability-cabinet?experiment=milgram-obedience&amp;guess=10">Open The Shock Generator in the Probability Cabinet</a>.</p><p><a href="https://fezcode.com/blog/please-continue-a-milgram-rant">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[The Pirate Game: How to Keep 98 Coins and Survive the Vote]]></title>
             <description><![CDATA[[object Object]]]></description>
