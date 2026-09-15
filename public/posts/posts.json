@@ -1,5 +1,25 @@
 [
   {
+    "slug": "please-continue-a-milgram-rant",
+    "title": "Please Continue: A Short Rant About the Milgram Experiments",
+    "date": "2026-09-15",
+    "updated": "2026-09-15",
+    "description": "Four polite sentences got 65% of ordinary people to press a switch marked XXX. Sit at the shock generator, count how many clicks it takes you to refuse, and stop telling yourself you would have walked out.",
+    "tags": [
+      "psychology",
+      "milgram",
+      "obedience",
+      "authority",
+      "rant",
+      "interactive"
+    ],
+    "category": "rant",
+    "filename": "please-continue-a-milgram-rant.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "the-pirate-game",
     "title": "The Pirate Game: How to Keep 98 Coins and Survive the Vote",
     "date": "2026-09-13",
