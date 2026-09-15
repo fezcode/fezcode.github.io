@@ -17,7 +17,7 @@ export default function ProbabilityCabinetPage() {
     <main className="probability-cabinet">
       <Seo
         title="Probability Cabinet | Fezcodex"
-        description="Interactive experiments in probability, game theory, statistics, and number patterns. Flip coins, bargain with pirates, weight movie ratings, and explore 6174."
+        description="Interactive experiments in probability, game theory, statistics, number patterns, and social psychology. Flip coins, bargain with pirates, weight movie ratings, explore 6174, and sit at Milgram’s shock generator."
       />
       <div className="pc-shell">
         <nav className="pc-nav">

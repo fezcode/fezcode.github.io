@@ -927,7 +927,7 @@
         "slug": "probability-cabinet",
         "to": "/apps/probability-cabinet",
         "title": "Probability Cabinet",
-        "description": "Explore chance, strategy, and number patterns: coin races, pirate votes, Bayesian ratings, and the 6174 machine.",
+        "description": "Explore chance, strategy, number patterns, and obedience: coin races, pirate votes, Bayesian ratings, the 6174 machine, and Milgram’s shock generator.",
         "icon": "ChartBarIcon",
         "created_at": "2026-09-13T12:00:00+03:00"
       },

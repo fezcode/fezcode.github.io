@@ -296,7 +296,7 @@
 
 .pc-collection {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 12px;
   margin-bottom: 28px;
 }
@@ -460,6 +460,53 @@
   padding-left: 20px;
   list-style: disc;
 }
+.pc-switches {
+  display: grid;
+  grid-template-columns: repeat(15, minmax(0, 1fr));
+  gap: 4px;
+  margin: 20px 0;
+}
+.pc-switch {
+  display: grid;
+  place-items: center;
+  height: 34px;
+  font: 9px monospace;
+  border: 1px solid #8885;
+  border-top: 3px solid #8885;
+  opacity: 0.7;
+}
+.pc-switch-used {
+  background: #794438;
+  border-color: #794438;
+  color: #fff;
+  opacity: 1;
+}
+.pc-dial {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 18px 20px;
+  margin: 0 0 8px;
+  border: 1px solid #8885;
+  background: #a6784612;
+}
+.pc-dial strong {
+  font:
+    44px Georgia,
+    serif;
+  line-height: 1.1;
+}
+.pc-dial > span:last-child {
+  font: 12px monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.pc-you .pc-result-label {
+  font-weight: bold;
+}
+.pc-you .pc-bar > span {
+  background: #794438;
+}
 @media (max-width: 900px) {
   .pc-collection {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -485,6 +532,9 @@
   }
   .pc-collection button {
     padding: 12px;
+  }
+  .pc-switches {
+    grid-template-columns: repeat(10, minmax(0, 1fr));
   }
   .pc-collection strong {
     font-size: 19px;

@@ -135,6 +135,12 @@ it.each([
     'The 6174 Machine experiment',
     'Starting number · four digits',
   ],
+  [
+    'milgram-obedience',
+    'guess="3"',
+    'The Shock Generator experiment',
+    'Take the teacher’s seat',
+  ],
 ])('renders %s from its custom Markdown tag', async (id, attrs, name, text) => {
   render(
     <MemoryRouter>
@@ -164,4 +170,78 @@ it('opens a deep-linked experiment and switches cabinet entries', () => {
   expect(
     screen.getByRole('region', { name: 'Pirate Council experiment' }),
   ).toBeInTheDocument();
+});
+
+it('ends the shock session only after all four prods and compares the break-off', () => {
+  render(
+    <MemoryRouter>
+      <ProbabilityExperiment experiment="milgram-obedience" guess="3" />
+    </MemoryRouter>,
+  );
+  expect(screen.getByRole('spinbutton')).toHaveValue(3);
+  fireEvent.click(
+    screen.getByRole('button', { name: 'Take the teacher’s seat' }),
+  );
+  for (let v = 15; v <= 150; v += 15) {
+    fireEvent.click(screen.getByRole('button', { name: `Administer ${v} V` }));
+  }
+  expect(screen.getByText(/heart trouble/)).toBeInTheDocument();
+  expect(screen.getByText('165 V')).toBeInTheDocument();
+  const stop = () =>
+    fireEvent.click(screen.getByRole('button', { name: 'I want to stop' }));
+  stop();
+  expect(screen.getByText('Please continue.')).toBeInTheDocument();
+  // Administering a shock restarts the prod sequence, as in the original.
+  fireEvent.click(screen.getByRole('button', { name: 'Administer 165 V' }));
+  stop();
+  expect(screen.getByText('Please continue.')).toBeInTheDocument();
+  stop();
+  stop();
+  stop();
+  expect(
+    screen.getByText('You have no other choice. You must go on.'),
+  ).toBeInTheDocument();
+  fireEvent.click(
+    screen.getByRole('button', { name: 'I refuse. End the experiment.' }),
+  );
+  expect(screen.getByText('You stopped at 165 V.')).toBeInTheDocument();
+  expect(
+    screen.getByText(
+      /1 of 40 subjects stopped exactly here, 6 stopped earlier, and 33 went further/,
+    ),
+  ).toBeInTheDocument();
+  expect(screen.getByText(/You predicted 3 in 100/)).toBeInTheDocument();
+  expect(screen.getByText('Stopped at 165 V · you')).toBeInTheDocument();
+  expect(
+    screen.getByRole('link', { name: /Open in Probability Cabinet/ }),
+  ).toHaveAttribute(
+    'href',
+    '/apps/probability-cabinet?experiment=milgram-obedience&guess=3',
+  );
+  fireEvent.click(
+    screen.getByRole('button', { name: 'Reveal what moved the number' }),
+  );
+  expect(
+    screen.getByText('Two fellow teachers refuse first'),
+  ).toBeInTheDocument();
+  fireEvent.click(screen.getByRole('button', { name: 'Sit down again' }));
+  expect(
+    screen.getByRole('button', { name: 'Take the teacher’s seat' }),
+  ).toBeInTheDocument();
+});
+
+it('reports full obedience at 450 V', () => {
+  render(
+    <MemoryRouter>
+      <ProbabilityExperiment experiment="milgram-obedience" />
+    </MemoryRouter>,
+  );
+  fireEvent.click(
+    screen.getByRole('button', { name: 'Take the teacher’s seat' }),
+  );
+  for (let v = 15; v <= 450; v += 15) {
+    fireEvent.click(screen.getByRole('button', { name: `Administer ${v} V` }));
+  }
+  expect(screen.getByText('Fully obedient.')).toBeInTheDocument();
+  expect(screen.getByText(/So were 26 of the 40 people/)).toBeInTheDocument();
 });

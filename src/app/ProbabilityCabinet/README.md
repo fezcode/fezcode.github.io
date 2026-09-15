@@ -1,6 +1,6 @@
 # Probability Cabinet
 
-The app and article embeds share `ProbabilityExperiment`. The cabinet includes probability, strategy, statistics, and deterministic number experiments; every card labels its type.
+The app and article embeds share `ProbabilityExperiment`. The cabinet includes probability, strategy, statistics, deterministic number, and social-psychology experiments; every card labels its type.
 
 | Experiment ID       | Settings                                          | Embedded in                               |
 | ------------------- | ------------------------------------------------- | ----------------------------------------- |
@@ -8,8 +8,9 @@ The app and article embeds share `ProbabilityExperiment`. The cabinet includes p
 | `pirate-game`       | `pirates="5" rule="half"`                         | The Pirate Game; The Lost Art of Thinking |
 | `bayesian-ratings`  | `rating="9" votes="105" prior="6.5" weight="100"` | An IMDbayes Analysis                      |
 | `kaprekars-routine` | `start="3524"`                                    | Kaprekar's Routine                        |
+| `milgram-obedience` | `guess="10"`                                      | Please Continue (Milgram rant)            |
 
-`pirates` accepts 1–5. `rule` is `half` (ties pass) or `majority` (ties fail). Coins are fixed at 100. Numeric Bayesian inputs are bounded; zero votes are valid and return the prior. `start` is four digits, including leading zeros; identical digits demonstrate the 0000 exception.
+`pirates` accepts 1–5. `rule` is `half` (ties pass) or `majority` (ties fail). Coins are fixed at 100. Numeric Bayesian inputs are bounded; zero votes are valid and return the prior. `start` is four digits, including leading zeros; identical digits demonstrate the 0000 exception. `guess` is the reader's predicted obedience rate out of 100 and only seeds the prediction field; the shock schedule, prods, and break-off data are fixed to Milgram's Experiment 5.
 
 The pirate model prioritizes survival, then coins, then rejection on equal outcomes. An eliminated pirate is represented by `null`, which is distinct from surviving with zero coins. This matters under strict majority. Equal-cost coalitions choose more senior eligible pirates first.
 

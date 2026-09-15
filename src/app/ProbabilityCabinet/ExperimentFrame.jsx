@@ -2,6 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import experiments from './experiments.json';
 
+const MODEL_KIND = {
+  'pirate-game': 'Strategic model',
+  'milgram-obedience': 'Historical data',
+};
+
 export default function ExperimentFrame({
   id,
   embedded = true,
@@ -20,8 +25,7 @@ export default function ExperimentFrame({
           Experiment {String(experiments.indexOf(entry) + 1).padStart(2, '0')}
         </span>
         <span>
-          {entry.kind} ·{' '}
-          {id === 'pirate-game' ? 'Strategic model' : 'Deterministic model'}
+          {entry.kind} · {MODEL_KIND[id] || 'Deterministic model'}
         </span>
       </div>
       <h2>{entry.title}</h2>

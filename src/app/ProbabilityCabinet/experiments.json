@@ -30,5 +30,13 @@
     "description": "Sort, subtract, and follow a four-digit number to its fixed point.",
     "post": "kaprekars-routine",
     "attributes": ["start"]
+  },
+  {
+    "id": "milgram-obedience",
+    "title": "The Shock Generator",
+    "kind": "Social psychology",
+    "description": "Sit at Milgram’s machine, feel the four prods, and compare where you stop with 40 real subjects.",
+    "post": "please-continue-a-milgram-rant",
+    "attributes": ["guess"]
   }
 ]

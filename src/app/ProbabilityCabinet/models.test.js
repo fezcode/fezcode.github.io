@@ -3,6 +3,12 @@ import {
   boundedNumber,
   kaprekarStep,
   kaprekarTrace,
+  learnerResponse,
+  milgramComparison,
+  MILGRAM_BREAKOFFS,
+  MILGRAM_PRODS,
+  MILGRAM_VARIATIONS,
+  shockLabel,
   pirateSolution,
   pirateVote,
 } from './models';
@@ -120,6 +126,11 @@ it('creates safe RSS links for all experiments, including multiline and single-q
   expect(html).toContain('pirates=3&amp;rule=majority');
   expect(html).toContain('votes=0&amp;prior=6.5');
   expect(html).toContain('start=1000');
+  expect(
+    experimentRssLinks(
+      '<probability-experiment experiment="milgram-obedience" guess="3"></probability-experiment>',
+    ),
+  ).toContain('experiment=milgram-obedience&amp;guess=3');
   expect(html).not.toContain('<probability-experiment');
   expect(
     experimentRssLinks(
@@ -131,4 +142,56 @@ it('creates safe RSS links for all experiments, including multiline and single-q
       '<probability-experiment experiment="pirate-game" rule="javascript:alert(1)"></probability-experiment>',
     ),
   ).not.toMatch(/javascript:/);
+});
+
+describe('Milgram shock generator', () => {
+  it('matches the Experiment 5 break-off table', () => {
+    const total = Object.values(MILGRAM_BREAKOFFS).reduce((a, b) => a + b, 0);
+    expect(total).toBe(40);
+    expect(MILGRAM_BREAKOFFS[450]).toBe(26);
+    expect(Math.min(...Object.keys(MILGRAM_BREAKOFFS).map(Number))).toBe(150);
+    expect(milgramComparison(150)).toEqual({
+      total: 40,
+      stoppedHere: 6,
+      stoppedEarlier: 0,
+      wentFurther: 34,
+      obedient: 26,
+    });
+    expect(milgramComparison(330)).toMatchObject({
+      stoppedHere: 0,
+      stoppedEarlier: 12,
+      wentFurther: 28,
+    });
+    expect(milgramComparison(450)).toMatchObject({
+      stoppedHere: 26,
+      wentFurther: 0,
+    });
+    expect(milgramComparison(0)).toMatchObject({
+      stoppedEarlier: 0,
+      wentFurther: 40,
+    });
+  });
+  it('labels the generator and scripts the learner in Milgram’s order', () => {
+    expect(shockLabel(15)).toBe('Slight shock');
+    expect(shockLabel(60)).toBe('Slight shock');
+    expect(shockLabel(75)).toBe('Moderate shock');
+    expect(shockLabel(150)).toBe('Strong shock');
+    expect(shockLabel(375)).toBe('Danger: severe shock');
+    expect(shockLabel(435)).toBe('XXX');
+    expect(shockLabel(450)).toBe('XXX');
+    expect(learnerResponse(60)).toMatch(/No sound/);
+    expect(learnerResponse(150)).toMatch(/heart trouble/);
+    expect(learnerResponse(300)).toMatch(/refuse to answer/);
+    expect(learnerResponse(345)).toMatch(/Silence/);
+    expect(MILGRAM_PRODS).toHaveLength(4);
+    expect(MILGRAM_PRODS[3]).toMatch(/no other choice/);
+  });
+  it('keeps every variation within its sample size', () => {
+    MILGRAM_VARIATIONS.forEach((row) => {
+      expect(row.obedient).toBeLessThanOrEqual(row.total);
+      expect(row.obedient).toBeGreaterThanOrEqual(0);
+    });
+    const baseline = MILGRAM_VARIATIONS.find((row) => row.id === 'baseline');
+    expect(baseline.obedient / baseline.total).toBe(0.65);
+  });
 });

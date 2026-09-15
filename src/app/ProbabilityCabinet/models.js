@@ -85,3 +85,138 @@ export function kaprekarTrace(value) {
   }
   return rows;
 }
+
+// Milgram's shock generator: 30 switches from 15 V to 450 V in 15 V steps.
+export const MILGRAM_MAX_VOLTS = 450;
+
+export function shockLabel(volts) {
+  const labels = [
+    'Slight shock',
+    'Moderate shock',
+    'Strong shock',
+    'Very strong shock',
+    'Intense shock',
+    'Extreme intensity shock',
+    'Danger: severe shock',
+    'XXX',
+  ];
+  return labels[Math.min(7, Math.floor((volts - 15) / 60))];
+}
+
+// The learner is a confederate. Paraphrased from the schedule Milgram used
+// in his Experiment 5, where the learner mentions a heart condition.
+export function learnerResponse(volts) {
+  if (volts < 75) return 'No sound from the other room.';
+  if (volts < 120) return 'A grunt.';
+  if (volts < 135) return 'A grunt. "Hey, this really hurts."';
+  if (volts < 150) return 'A louder grunt.';
+  if (volts < 165)
+    return '"That\'s all. Get me out of here. I told you I had heart trouble. I refuse to go on."';
+  if (volts < 195) return '"Let me out! I can\'t stand the pain!"';
+  if (volts < 210)
+    return '"Let me out of here! My heart\'s bothering me. You have no right to keep me here!"';
+  if (volts < 225)
+    return '"Experimenter! Get me out of here. I\'ve had enough. I won\'t be in the experiment any more."';
+  if (volts < 270) return 'A cry of pain. "Get me out of here."';
+  if (volts < 300) return 'An agonized scream. "Let me out of here!"';
+  if (volts < 330)
+    return 'An agonized scream. "I absolutely refuse to answer any more. I\'m no longer part of this experiment."';
+  if (volts < 345)
+    return 'A prolonged, agonized scream. "My heart\'s bothering me. Let me out, I tell you."';
+  return 'Silence. No answer is treated as a wrong answer.';
+}
+
+export const MILGRAM_PRODS = [
+  'Please continue.',
+  'The experiment requires that you continue.',
+  'It is absolutely essential that you continue.',
+  'You have no other choice. You must go on.',
+];
+
+// Break-off points of the 40 subjects in Milgram's Experiment 5 (New Baseline),
+// from Table 2 of Obedience to Authority (1974). 450 means fully obedient.
+export const MILGRAM_BREAKOFFS = {
+  150: 6,
+  165: 1,
+  180: 1,
+  210: 1,
+  300: 1,
+  315: 2,
+  345: 1,
+  360: 1,
+  450: 26,
+};
+
+// Fully obedient subjects in a selection of Milgram's variations.
+export const MILGRAM_VARIATIONS = [
+  {
+    id: 'baseline',
+    title: 'Baseline: learner heard through the wall',
+    obedient: 26,
+    total: 40,
+  },
+  {
+    id: 'proximity',
+    title: 'Learner in the same room',
+    obedient: 16,
+    total: 40,
+  },
+  {
+    id: 'touch',
+    title: 'Teacher forces the learner’s hand onto the plate',
+    obedient: 12,
+    total: 40,
+  },
+  {
+    id: 'phone',
+    title: 'Experimenter gives orders by telephone',
+    obedient: 9,
+    total: 40,
+  },
+  {
+    id: 'office',
+    title: 'Run-down office instead of Yale',
+    obedient: 19,
+    total: 40,
+  },
+  {
+    id: 'ordinary',
+    title: 'An ordinary man gives the orders',
+    obedient: 4,
+    total: 20,
+  },
+  {
+    id: 'peers',
+    title: 'Two fellow teachers refuse first',
+    obedient: 4,
+    total: 40,
+  },
+  {
+    id: 'delegate',
+    title: 'Someone else presses the switch',
+    obedient: 37,
+    total: 40,
+  },
+  {
+    id: 'choice',
+    title: 'Teacher chooses the shock level',
+    obedient: 1,
+    total: 40,
+  },
+];
+
+export function milgramComparison(volts) {
+  const points = Object.keys(MILGRAM_BREAKOFFS).map(Number);
+  const total = points.reduce((sum, p) => sum + MILGRAM_BREAKOFFS[p], 0);
+  const stoppedHere = MILGRAM_BREAKOFFS[volts] || 0;
+  const stoppedEarlier = points
+    .filter((p) => p < volts)
+    .reduce((sum, p) => sum + MILGRAM_BREAKOFFS[p], 0);
+  return {
+    total,
+    stoppedHere,
+    stoppedEarlier,
+    wentFurther: total - stoppedEarlier - stoppedHere,
+    obedient: MILGRAM_BREAKOFFS[MILGRAM_MAX_VOLTS],
+  };
+}
