@@ -675,6 +675,15 @@ a.ldg-card-link:focus-visible .ldg-leader {
   outline: none;
 }
 
+/* Emphasis inside a link carries its own colour, which would survive the
+   invert and leave the text the same shade as the surface behind it. */
+.ldg-prose a:hover em,
+.ldg-prose a:hover strong,
+.ldg-prose a:focus-visible em,
+.ldg-prose a:focus-visible strong {
+  color: inherit;
+}
+
 .ldg-prose code {
   font-family: inherit;
   background: var(--ldg-sunken);
