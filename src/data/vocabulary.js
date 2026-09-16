@@ -35,6 +35,10 @@ export const vocabulary = {
     title: 'Box Plot',
     loader: () => import('./vocab/box-plot'),
   },
+  'cent-anni': {
+    title: "Cent'anni",
+    loader: () => import('./vocab/cent-anni'),
+  },
   'cogito-ergo-sum': {
     title: 'Cogito, Ergo Sum',
     loader: () => import('./vocab/cogito-ergo-sum'),
