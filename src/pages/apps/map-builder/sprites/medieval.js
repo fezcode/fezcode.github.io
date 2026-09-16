@@ -1,8 +1,8 @@
 import { family } from './registry';
 import {
-  makeRng, rand, randInt, pick, chance, jitter,
+  rand, randInt, chance, jitter,
   mix, darken, lighten, withAlpha,
-  roundRect, polygonPath, ngon, star, blob, fillStroke, hatch,
+  roundRect, star, blob, fillStroke,
   softShadow, clearShadow, groundShadow,
 } from './draw';
 
@@ -63,21 +63,6 @@ function pennant(ctx, x, y, len, drop, color, ink, lw, dir) {
   ctx.moveTo(x, y);
   ctx.lineTo(x + dir * len, y + drop * 0.45);
   ctx.lineTo(x, y + drop);
-  ctx.closePath();
-  fillStroke(ctx, color, ink, lw);
-}
-
-// rectangular flag flying from a pole top at (x,y)
-function flag(ctx, x, y, w, h, color, ink, lw, dir, rng) {
-  dir = dir || 1;
-  const wob = rng ? jitter(rng, h * 0.14) : 0;
-  ctx.beginPath();
-  ctx.moveTo(x, y);
-  ctx.lineTo(x + dir * w * 0.5, y - wob * 0.5);
-  ctx.lineTo(x + dir * w, y + wob);
-  ctx.lineTo(x + dir * w, y + h + wob);
-  ctx.lineTo(x + dir * w * 0.5, y + h - wob * 0.5);
-  ctx.lineTo(x, y + h);
   ctx.closePath();
   fillStroke(ctx, color, ink, lw);
 }
@@ -923,7 +908,7 @@ family({
   tags: ['shrine', 'altar', 'icon', 'religion', 'roadside'], size: 56, variants: 5,
   draw(ctx, { size, rng, theme, tint }) {
     const s = size, t = theme.sprite, ink = t.ink, lw = LW(s);
-    const wood = t.wood, roof = tint || t.roof;
+    const roof = tint || t.roof;
     groundShadow(ctx, 0, s * 0.34, s * 0.24, s * 0.06);
     roundRect(ctx, -s * 0.2, s * 0.24, s * 0.4, s * 0.06, s * 0.01);
     fillStroke(ctx, t.stone, ink, lw * 0.9);

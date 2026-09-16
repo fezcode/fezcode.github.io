@@ -1,9 +1,8 @@
 import { family } from './registry';
 import {
-  makeRng, rand, randInt, pick, chance, jitter,
+  rand, randInt, chance, jitter,
   mix, darken, lighten, withAlpha,
-  roundRect, polygonPath, ngon, star, blob, fillStroke, hatch,
-  softShadow, clearShadow, groundShadow,
+  roundRect, star, blob, fillStroke,
 } from './draw';
 
 // ---------------------------------------------------------------------------

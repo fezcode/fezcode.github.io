@@ -2,9 +2,9 @@
 // Segments span edge-to-edge so they tile when placed in a line and rotated.
 import { family } from './registry';
 import {
-  makeRng, rand, randInt, pick, chance, jitter,
+  rand, randInt, pick, chance, jitter,
   mix, darken, lighten, withAlpha,
-  roundRect, polygonPath, ngon, star, blob, fillStroke, hatch,
+  roundRect, polygonPath, ngon, fillStroke,
   softShadow, clearShadow, groundShadow,
 } from './draw';
 

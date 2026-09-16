@@ -1,9 +1,9 @@
 import { family } from './registry';
 import {
-  makeRng, rand, randInt, pick, chance, jitter,
+  rand, randInt, pick, chance, jitter,
   mix, darken, lighten, withAlpha,
-  roundRect, polygonPath, ngon, star, blob, fillStroke, hatch,
-  softShadow, clearShadow, groundShadow,
+  roundRect, polygonPath, fillStroke, hatch,
+  groundShadow,
 } from './draw';
 
 // Procedural sprites for the 'modern' category: houses, towers, civic and
@@ -1074,7 +1074,7 @@ family({
   tags: ['cell', 'tower', 'antenna', 'mast', 'telecom'], size: 80, variants: 6,
   draw(ctx, { size, rng, theme, tint }) {
     ctx.save();
-    const s = size, t = theme.sprite, lw = Math.max(1, s * 0.014);
+    const s = size, t = theme.sprite;
     const body = tint || t.metal;
     const base = s * 0.44, topY = -s * 0.34;
     groundShadow(ctx, 0, base, s * 0.18, s * 0.04);
