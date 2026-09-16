@@ -18,6 +18,7 @@ GEMINI.md
 
 # misc
 .DS_Store
+*.stackdump
 .env.local
 .env.development.local
 .env.test.local
