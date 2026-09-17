@@ -1,20 +1,198 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  ArrowLeftIcon,
-  TimerIcon,
-  TargetIcon,
-  ArrowsClockwiseIcon,
-} from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
-import '../../styles/MemoryGamePage.css';
 import { useAchievements } from '../../context/AchievementContext';
-import GenerativeArt from '../../components/GenerativeArt';
-import BreadcrumbTitle from '../../components/BreadcrumbTitle';
 
-const NOISE_BG = `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E")`;
+// ---------------------------------------------------------------------------
+// Bespoke design system, scoped to this page only. No shared chrome.
+// Aesthetic: an engraved deck. Backs carry a guilloche lattice, faces carry a
+// single line-engraved emblem. A found pair is not hidden away — it stays on
+// the table, struck in gold, so the board reads as a record of what you know.
+// ---------------------------------------------------------------------------
 
-const CARD_VALUES = ['🍎', '🍌', '🍒', '🍇', '🍋', '🍊', '🍓', '🍉'];
+const CSS = `
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Karla:wght@400;500;600&display=swap');
+
+.mem {
+  --table:     #17202b;
+  --table-2:   #0f151d;
+  --stock:     #f1ead8;
+  --stock-2:   #ddd3ba;
+  --indigo:    #2c4a72;
+  --indigo-2:  #1d3050;
+  --gold:      #c2a049;
+  --gold-2:    #8d7328;
+  --quiet:     #8a99ab;
+
+  font-family: 'Karla', system-ui, sans-serif;
+  color: var(--stock);
+  min-height: 100vh; width: 100%;
+  position: relative; overflow-x: hidden;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(160,190,225,0.09), transparent 70%),
+    var(--table);
+  padding: 40px 20px 80px;
+}
+
+.mem__shell { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
+
+.mem__back {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13.5px; color: var(--quiet); text-decoration: none;
+  transition: color .15s;
+}
+.mem__back:hover { color: var(--stock); }
+.mem__back:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.mem__back svg { width: 13px; height: 13px; }
+
+.mem__head {
+  margin: 26px 0 0;
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap;
+  border-bottom: 1px solid rgba(241,234,216,0.16); padding-bottom: 18px;
+}
+.mem__title {
+  font-family: 'EB Garamond', Garamond, serif;
+  font-weight: 500; font-size: clamp(32px, 6vw, 46px);
+  line-height: 1; margin: 0; letter-spacing: -0.008em;
+}
+.mem__sub {
+  font-size: 14.5px; line-height: 1.55; color: var(--quiet);
+  margin: 9px 0 0; max-width: 42ch;
+}
+
+/* — the readouts, set as a plain line of figures — */
+.mem__figures { display: flex; gap: 26px; align-items: baseline; }
+.mem__fig-n {
+  font-family: 'EB Garamond', serif; font-size: 30px; font-weight: 500;
+  line-height: 1; font-variant-numeric: tabular-nums;
+}
+.mem__fig-k { font-size: 12.5px; color: var(--quiet); margin-top: 3px; }
+.mem__fig--done .mem__fig-n { color: var(--gold); }
+
+/* — the table — */
+.mem__grid {
+  margin: 32px 0 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
+}
+@media (min-width: 620px) { .mem__grid { grid-template-columns: repeat(8, 1fr); } }
+
+.mem__slot { perspective: 900px; }
+.mem__card {
+  position: relative; display: block; width: 100%; aspect-ratio: 5 / 7;
+  border: 0; padding: 0; background: none; cursor: pointer;
+  border-radius: 5px;
+}
+.mem__card:disabled { cursor: default; }
+.mem__card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+/* a button cannot hold a 3D context reliably, so an inner box does the turning */
+.mem__inner {
+  position: absolute; inset: 0;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: transform .42s cubic-bezier(.3,.8,.35,1);
+}
+.mem__inner--up { transform: rotateY(180deg); }
+
+.mem__face {
+  position: absolute; inset: 0; display: block;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.45);
+}
+.mem__face--front { display: grid; place-items: center; }
+
+/* back: guilloche lattice engraved on indigo */
+.mem__face--back {
+  background-color: #2c4a72;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(241,234,216,0.20) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgba(241,234,216,0.20) 0 1px, transparent 1px 7px);
+  border: 1px solid #16283f;
+}
+.mem__face--back::after {
+  content: ""; position: absolute; inset: 5px;
+  border: 1px solid rgba(241,234,216,0.45);
+  border-radius: 2px;
+}
+
+/* face: ivory stock, engraved emblem */
+.mem__face--front {
+  transform: rotateY(180deg);
+  background: linear-gradient(170deg, var(--stock), var(--stock-2));
+  border: 1px solid #b9ac8d;
+}
+.mem__face--front::after {
+  content: ""; position: absolute; inset: 4px;
+  border: 1px solid rgba(44,74,114,0.35);
+  border-radius: 2px;
+}
+.mem__emblem { width: 64%; height: 64%; }
+.mem__emblem path, .mem__emblem circle {
+  fill: none; stroke: #2c4a72; stroke-width: 4;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+/* a found pair stays on the table, struck in gold */
+.mem__card--done .mem__face--front {
+  background: linear-gradient(170deg, #f4edda, #e6d9b4);
+  border-color: var(--gold-2);
+  box-shadow: 0 0 0 1px var(--gold-2), 0 2px 10px rgba(194,160,73,0.25);
+}
+.mem__card--done .mem__emblem path, .mem__card--done .mem__emblem circle { stroke: var(--gold-2); }
+.mem__card--done { opacity: 0.92; }
+
+/* — the deal / result bar — */
+.mem__bar {
+  margin: 30px 0 0; padding-top: 18px;
+  border-top: 1px solid rgba(241,234,216,0.16);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; flex-wrap: wrap;
+}
+.mem__note {
+  font-family: 'EB Garamond', serif; font-size: 17px; font-style: italic;
+  color: var(--quiet);
+}
+.mem__note b { font-style: normal; font-weight: 500; color: var(--gold); }
+
+.mem__btn {
+  font-family: 'Karla', sans-serif; font-size: 14px; font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--stock); color: #17202b;
+  border: 0; border-radius: 3px; padding: 11px 24px; cursor: pointer;
+  transition: background-color .15s, color .15s;
+}
+.mem__btn:hover { background: var(--gold); }
+.mem__btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.mem__btn--quiet {
+  background: transparent; color: var(--quiet);
+  box-shadow: inset 0 0 0 1px rgba(241,234,216,0.3);
+}
+.mem__btn--quiet:hover { background: transparent; color: var(--stock); box-shadow: inset 0 0 0 1px var(--stock); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mem__inner { transition: none; }
+}
+`;
+
+// Eight line-engraved emblems — the vocabulary of an engraved deck, and far
+// easier to tell apart at a glance than eight pieces of fruit.
+const EMBLEMS = {
+  anchor:
+    'M50 22v58M50 22a7 7 0 1 0 0 1M32 40h36M24 62c0 14 12 22 26 22s26-8 26-22',
+  crown: 'M24 72h52M24 72 20 34l17 14 13-22 13 22 17-14-4 38',
+  key: 'M38 38a13 13 0 1 0 0 1M48 48l30 30M66 66l8 8M58 58l8 8',
+  star: 'M50 20 60 43l24 3-18 17 5 24-21-12-21 12 5-24-18-17 24-3z',
+  moon: 'M62 22a32 32 0 1 0 0 56 26 26 0 0 1 0-56z',
+  bell: 'M30 68c6-6 6-12 6-22a14 14 0 0 1 28 0c0 10 0 16 6 22zM42 76a8 8 0 0 0 16 0',
+  wheel:
+    'M50 20a30 30 0 1 0 0 60 30 30 0 0 0 0-60zM50 12v16M50 72v16M12 50h16M72 50h16M23 23l11 11M66 66l11 11M77 23 66 34M34 66 23 77',
+  glass:
+    'M30 18h40M30 82h40M34 18c0 16 16 24 16 32s-16 16-16 32M66 18c0 16-16 24-16 32s16 16 16 32',
+};
+const CARD_VALUES = Object.keys(EMBLEMS);
 
 const MemoryGamePage = () => {
   const { unlockAchievement } = useAchievements();
@@ -34,7 +212,6 @@ const MemoryGamePage = () => {
       isFlipped: false,
       isMatched: false,
     }));
-
     for (let i = initialCards.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [initialCards[i], initialCards[j]] = [initialCards[j], initialCards[i]];
@@ -43,8 +220,7 @@ const MemoryGamePage = () => {
   }, []);
 
   const initializeGame = useCallback(() => {
-    const shuffledCards = shuffleCards(CARD_VALUES);
-    setCards(shuffledCards);
+    setCards(shuffleCards(CARD_VALUES));
     setFlippedCards([]);
     setMatchesFound(0);
     setMoves(0);
@@ -73,7 +249,6 @@ const MemoryGamePage = () => {
       ) {
         return;
       }
-
       setCards((prevCards) =>
         prevCards.map((card) =>
           card.id === clickedCard.id ? { ...card, isFlipped: true } : card,
@@ -130,10 +305,11 @@ const MemoryGamePage = () => {
   }, [matchesFound, moves, unlockAchievement, startTime, gameStarted]);
 
   return (
-    <div className="min-h-screen bg-[#050505] text-white selection:bg-emerald-500/30 pb-32 relative font-sans">
+    <div className="mem">
+      <style>{CSS}</style>
       <Seo
         title="Memory Game | Fezcodex"
-        description="A classic memory game to test your concentration."
+        description="Turn the cards two at a time and remember where the pairs are."
         keywords={[
           'Fezcodex',
           'memory game',
@@ -143,176 +319,102 @@ const MemoryGamePage = () => {
         ]}
         ogImage="/images/asset/ogtitle.png"
       />
-      <div
-        className="pointer-events-none fixed inset-0 z-50 opacity-20 mix-blend-overlay"
-        style={{ backgroundImage: NOISE_BG }}
-      />
 
-      {/* Hero Section */}
-      <div className="relative h-[40vh] w-full overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0">
-          <GenerativeArt
-            seed="Memory Protocol"
-            className="w-full h-full opacity-40 filter brightness-50"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] to-transparent" />
-        </div>
-      </div>
-
-      <div className="mx-auto max-w-7xl px-6 -mt-32 relative z-10">
-        <header className="mb-20">
-          <Link
-            to="/apps"
-            className="mb-8 inline-flex items-center gap-2 text-xs font-mono text-gray-500 hover:text-white transition-colors uppercase tracking-widest"
+      <div className="mem__shell">
+        <Link to="/apps" className="mem__back">
+          <svg
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
           >
-            <ArrowLeftIcon weight="bold" />
-            <span>Archive</span>
-          </Link>
+            <path
+              d="M10 3 L5 8 L10 13"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          Back to apps
+        </Link>
 
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="space-y-4">
-              <BreadcrumbTitle
-                title="Memory Game"
-                slug="mg"
-                variant="brutalist"
-              />
-              <p className="text-gray-400 font-mono text-sm max-w-md uppercase tracking-widest">
-                Cognitive evaluation protocol. Match identical data points
-                within minimal move sequences.
-              </p>
-            </div>
+        <div className="mem__head">
+          <div>
+            <h1 className="mem__title">Memory</h1>
+            <p className="mem__sub">
+              Sixteen cards, eight pairs. Turn two at a time and remember where
+              everything was.
+            </p>
           </div>
-        </header>
-      </div>
-
-      {/* Main Content Grid */}
-      <div className="mx-auto max-w-[1400px] px-6 py-16 md:px-12 lg:grid lg:grid-cols-12 lg:gap-24">
-        <div className="lg:col-span-8">
-          <div className="memory-game-area relative">
-            {/* Overlay for start/end */}
-            {!gameStarted && !gameOver && (
-              <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/60 backdrop-blur-sm border border-white/5 p-12 text-center">
-                <div className="max-w-md">
-                  <h2 className="text-3xl font-black uppercase tracking-tighter mb-6">
-                    Initialise Protocol
-                  </h2>
-                  <p className="text-gray-400 font-mono text-sm mb-12">
-                    Click below to begin the pattern identification sequence.
-                  </p>
-                  <button
-                    onClick={startGame}
-                    className="w-full py-4 bg-white text-black font-black uppercase tracking-[0.3em] hover:bg-emerald-400 transition-all text-sm flex items-center justify-center gap-3"
-                  >
-                    <TargetIcon weight="bold" size={18} />
-                    Execute_Start
-                  </button>
-                </div>
+          <div className="mem__figures">
+            <div>
+              <div className="mem__fig-n">{moves}</div>
+              <div className="mem__fig-k">turns</div>
+            </div>
+            <div className={gameOver ? 'mem__fig--done' : ''}>
+              <div className="mem__fig-n">
+                {matchesFound}/{CARD_VALUES.length}
               </div>
-            )}
-
-            {gameOver && (
-              <div className="absolute inset-0 z-20 flex items-center justify-center bg-black/80 backdrop-blur-md border border-emerald-500/20 p-12 text-center">
-                <div className="max-w-md">
-                  <div className="inline-flex p-4 rounded-full bg-emerald-500/10 text-emerald-500 mb-6">
-                    <ArrowsClockwiseIcon
-                      size={48}
-                      weight="bold"
-                      className="animate-spin-slow"
-                    />
-                  </div>
-                  <h2 className="text-4xl font-black uppercase tracking-tighter mb-2 text-emerald-400">
-                    Success
-                  </h2>
-                  <p className="text-gray-400 font-mono text-xs uppercase tracking-widest mb-12">
-                    Total_Moves: {moves} {'//'} Data_Integrity: 100%
-                  </p>
-                  <button
-                    onClick={initializeGame}
-                    className="w-full py-4 bg-emerald-500 text-black font-black uppercase tracking-[0.3em] hover:bg-white transition-all text-sm"
-                  >
-                    Re-Initialise
-                  </button>
-                </div>
-              </div>
-            )}
-
-            <div
-              className={`cards-grid ${!gameStarted || gameOver ? 'opacity-20 pointer-events-none' : ''}`}
-            >
-              {cards.map((card) => (
-                <div
-                  key={card.id}
-                  className={`memory-card ${card.isFlipped || card.isMatched ? 'flipped' : ''} ${card.isMatched ? 'matched' : ''}`}
-                  onClick={() => handleCardClick(card)}
-                >
-                  <div className="memory-card-inner">
-                    <div className="memory-card-face memory-card-back bg-white/5 border border-white/10 flex items-center justify-center group-hover:border-emerald-500 transition-colors">
-                      <div className="w-4 h-4 border border-white/20 rotate-45" />
-                    </div>
-                    <div className="memory-card-face memory-card-front bg-emerald-500 text-black border border-emerald-400">
-                      {card.value}
-                    </div>
-                  </div>
-                </div>
-              ))}
+              <div className="mem__fig-k">pairs</div>
             </div>
           </div>
         </div>
 
-        {/* Sidebar */}
-        <div className="mt-16 lg:col-span-4 lg:mt-0">
-          <div className="sticky top-24 space-y-12">
-            <div>
-              <h3 className="mb-6 font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500">
-                {'//'} SESSION_METRICS
-              </h3>
-              <div className="space-y-6 border-l border-white/10 pl-6">
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                    <TargetIcon size={12} /> Move_Count
-                  </span>
-                  <span className="font-mono text-2xl uppercase text-white font-black">
-                    {moves}
-                  </span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                    <ArrowsClockwiseIcon size={12} /> Sequence_Matches
-                  </span>
-                  <span className="font-mono text-2xl uppercase text-emerald-500 font-black">
-                    {matchesFound}
-                    <span className="text-gray-700 text-lg">
-                      /{CARD_VALUES.length}
+        <div className="mem__grid">
+          {cards.map((card) => {
+            const up = card.isFlipped || card.isMatched;
+            return (
+              <div className="mem__slot" key={card.id}>
+                <button
+                  className={`mem__card${card.isMatched ? ' mem__card--done' : ''}`}
+                  onClick={() => handleCardClick(card)}
+                  disabled={!gameStarted || card.isMatched || up}
+                  aria-label={up ? card.value : 'Face-down card'}
+                >
+                  <span className={`mem__inner${up ? ' mem__inner--up' : ''}`}>
+                    <span className="mem__face mem__face--back" />
+                    <span className="mem__face mem__face--front">
+                      <svg
+                        className="mem__emblem"
+                        viewBox="0 0 100 100"
+                        aria-hidden="true"
+                      >
+                        <path d={EMBLEMS[card.value]} />
+                      </svg>
                     </span>
                   </span>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <span className="font-mono text-[9px] uppercase tracking-widest text-gray-500 flex items-center gap-2">
-                    <TimerIcon size={12} /> Uptime
-                  </span>
-                  <span className="font-mono text-sm uppercase text-white font-bold">
-                    {startTime
-                      ? Math.floor((Date.now() - startTime) / 1000)
-                      : 0}
-                    S
-                  </span>
-                </div>
+                </button>
               </div>
-            </div>
+            );
+          })}
+        </div>
 
-            <div className="bg-white/5 border border-white/10 p-6 rounded-sm">
-              <h4 className="font-mono text-[10px] font-bold uppercase tracking-widest text-gray-500 mb-4">
-                Instructions
-              </h4>
-              <ul className="space-y-3 text-[10px] font-mono text-gray-500 uppercase tracking-wider">
-                <li>• Select any two modules to reveal their identifiers.</li>
-                <li>• If module values align, module is secured.</li>
-                <li>
-                  • Align all modules to complete the identification protocol.
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div className="mem__bar">
+          <p className="mem__note" role="status">
+            {gameOver ? (
+              <>
+                All eight found in <b>{moves}</b> turns.
+              </>
+            ) : gameStarted ? (
+              'Turn any two cards.'
+            ) : (
+              'The deck is shuffled and face down.'
+            )}
+          </p>
+          {gameStarted && !gameOver ? (
+            <button
+              className="mem__btn mem__btn--quiet"
+              onClick={initializeGame}
+            >
+              Shuffle again
+            </button>
+          ) : (
+            <button
+              className="mem__btn"
+              onClick={gameOver ? initializeGame : startGame}
+            >
+              {gameOver ? 'Deal again' : 'Deal'}
+            </button>
+          )}
         </div>
       </div>
     </div>
