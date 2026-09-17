@@ -1,5 +1,5 @@
 import React from 'react';
-import { hydrateRoot, createRoot } from 'react-dom/client';
+import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 export default async function onRenderClient(pageContext) {
@@ -10,9 +10,12 @@ export default async function onRenderClient(pageContext) {
       <Page {...(pageProps || {})} />
     </BrowserRouter>
   );
-  if (container.innerHTML && container.children.length > 0) {
-    hydrateRoot(container, tree);
-  } else {
-    createRoot(container).render(tree);
-  }
+  // The markup already in #react-root is not a server render of this tree — it
+  // is a snapshot prerender-crawl took of the app *after* it had mounted,
+  // fetched its data and run its effects. React's first client render has none
+  // of that yet, so hydration could never match: every page threw "hydration
+  // failed" (#418) and React discarded the DOM and re-rendered regardless.
+  // Rendering fresh skips the doomed attempt. The snapshot still does its job —
+  // it is what crawlers read and what paints before the bundle runs.
+  createRoot(container).render(tree);
 }
