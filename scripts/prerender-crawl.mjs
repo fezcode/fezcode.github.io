@@ -12,7 +12,8 @@ const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 6;
 const PAGE_TIMEOUT = 30000;
 const RENDER_SETTLE_MS = 300;
 const SELECTOR_TIMEOUT = 8000;
-const RETRY = process.env.PRERENDER_RETRY === '1' || process.argv.includes('--retry');
+const RETRY =
+  process.env.PRERENDER_RETRY === '1' || process.argv.includes('--retry');
 
 function routeToFile(route) {
   if (route === '/') return join(DIST, 'index.html');
@@ -35,25 +36,47 @@ async function crawlOne(browser, baseUrl, route) {
   const t0 = Date.now();
   const target = baseUrl + route;
   const file = routeToFile(route);
-  if (!existsSync(file)) return { route, skipped: 'no prerendered shell', ms: Date.now() - t0 };
+  if (!existsSync(file))
+    return { route, skipped: 'no prerendered shell', ms: Date.now() - t0 };
 
   const page = await browser.newPage();
   try {
     const consoleErrors = [];
+    // Images, fonts and media are aborted below to keep the crawl fast. The
+    // browser reports every one of those as a failed load, so counting them
+    // would just be counting our own optimisation — track what we blocked and
+    // drop those messages, or the tally is pure noise that swings run to run.
+    const blocked = new Set();
     page.on('console', (m) => {
-      if (m.type() === 'error') consoleErrors.push(m.text());
+      if (m.type() !== 'error') return;
+      const url = m.location()?.url;
+      if (url && blocked.has(url)) return;
+      consoleErrors.push(m.text());
     });
+    page.on('pageerror', (e) => consoleErrors.push(`page error: ${e.message}`));
     await page.setRequestInterception(true);
     page.on('request', (req) => {
       const t = req.resourceType();
-      if (t === 'image' || t === 'font' || t === 'media') return req.abort();
+      if (t === 'image' || t === 'font' || t === 'media') {
+        blocked.add(req.url());
+        return req.abort();
+      }
       req.continue();
     });
-    await page.goto(target, { waitUntil: 'domcontentloaded', timeout: PAGE_TIMEOUT });
+    await page.goto(target, {
+      waitUntil: 'domcontentloaded',
+      timeout: PAGE_TIMEOUT,
+    });
     try {
-      await page.waitForSelector('#react-root > *', { timeout: SELECTOR_TIMEOUT });
+      await page.waitForSelector('#react-root > *', {
+        timeout: SELECTOR_TIMEOUT,
+      });
     } catch {
-      return { route, skipped: `no children rendered within ${SELECTOR_TIMEOUT}ms`, ms: Date.now() - t0 };
+      return {
+        route,
+        skipped: `no children rendered within ${SELECTOR_TIMEOUT}ms`,
+        ms: Date.now() - t0,
+      };
     }
     await new Promise((r) => setTimeout(r, RENDER_SETTLE_MS));
 
@@ -62,18 +85,29 @@ async function crawlOne(browser, baseUrl, route) {
       return root ? root.innerHTML : '';
     });
 
-    if (!rendered) return { route, skipped: 'empty root after render', ms: Date.now() - t0 };
+    if (!rendered)
+      return { route, skipped: 'empty root after render', ms: Date.now() - t0 };
 
     const shell = await readFile(file, 'utf8');
     const replaced = shell.replace(
       /<div id="react-root"><\/div>/,
-      `<div id="react-root">${rendered}</div>`
+      `<div id="react-root">${rendered}</div>`,
     );
     if (replaced === shell) {
-      return { route, skipped: 'root placeholder not found', ms: Date.now() - t0 };
+      return {
+        route,
+        skipped: 'root placeholder not found',
+        ms: Date.now() - t0,
+      };
     }
     await writeFile(file, replaced, 'utf8');
-    return { route, bytes: rendered.length, errors: consoleErrors.length, ms: Date.now() - t0 };
+    return {
+      route,
+      bytes: rendered.length,
+      errors: consoleErrors.length,
+      messages: consoleErrors,
+      ms: Date.now() - t0,
+    };
   } catch (e) {
     return { route, error: e.message, ms: Date.now() - t0 };
   } finally {
@@ -100,18 +134,24 @@ function logRoute(r) {
   } else if (r.skipped) {
     console.log(`  - ${r.route}: ${r.skipped} (${t})`);
   } else {
-    console.log(`  . ${r.route}  (${r.bytes} bytes, ${r.errors} console errors, ${t})`);
+    console.log(
+      `  . ${r.route}  (${r.bytes} bytes, ${r.errors} console errors, ${t})`,
+    );
   }
 }
 
 async function main() {
   const tStart = Date.now();
-  console.log(`prerender-crawl: ${allRoutes.length} routes, concurrency ${CONCURRENCY}`);
+  console.log(
+    `prerender-crawl: ${allRoutes.length} routes, concurrency ${CONCURRENCY}`,
+  );
 
   const server = await preview({
     preview: { port: 4287, strictPort: true, host: '127.0.0.1' },
   });
-  const url = server.resolvedUrls?.local?.[0]?.replace(/\/$/, '') || 'http://127.0.0.1:4287';
+  const url =
+    server.resolvedUrls?.local?.[0]?.replace(/\/$/, '') ||
+    'http://127.0.0.1:4287';
   console.log(`preview up at ${url}`);
 
   const warmStart = Date.now();
@@ -139,7 +179,9 @@ async function main() {
       .filter((r) => r.skipped && /within \d+ms|empty root/.test(r.skipped))
       .map((r) => r.route);
     if (flaky.length) {
-      console.log(`\nprerender-crawl: retrying ${flaky.length} flaky route(s) sequentially...`);
+      console.log(
+        `\nprerender-crawl: retrying ${flaky.length} flaky route(s) sequentially...`,
+      );
       const retryResults = new Map();
       for (const route of flaky) {
         const r = await crawlOne(browser, url, route);
@@ -164,14 +206,50 @@ async function main() {
   const errs = results.filter((r) => r.error).length;
   const skipped = results.filter((r) => r.skipped).length;
   const routeTimes = results.map((r) => r.ms || 0);
-  const avgMs = routeTimes.length ? routeTimes.reduce((a, b) => a + b, 0) / routeTimes.length : 0;
+  const avgMs = routeTimes.length
+    ? routeTimes.reduce((a, b) => a + b, 0) / routeTimes.length
+    : 0;
   const maxMs = routeTimes.length ? Math.max(...routeTimes) : 0;
   const pct = total ? ((ok / total) * 100).toFixed(1) : '0.0';
   const elapsed = Date.now() - tStart;
 
-  console.log(`\nprerender-crawl: ${ok}/${total} rendered (${pct}% success), ${skipped} skipped, ${errs} errored`);
-  console.log(`prerender-crawl: per-route avg ${fmtMs(Math.round(avgMs))}, max ${fmtMs(maxMs)}`);
+  console.log(
+    `\nprerender-crawl: ${ok}/${total} rendered (${pct}% success), ${skipped} skipped, ${errs} errored`,
+  );
+  console.log(
+    `prerender-crawl: per-route avg ${fmtMs(Math.round(avgMs))}, max ${fmtMs(maxMs)}`,
+  );
   console.log(`prerender-crawl: total elapsed ${fmtSec(elapsed)}`);
+
+  // Say what the errors actually were. A bare count sends anyone reading this
+  // log guessing, which is exactly how the blocked-resource noise above went
+  // unexplained for so long.
+  const byMessage = new Map();
+  for (const r of results) {
+    for (const m of r.messages || []) {
+      const key = m.slice(0, 140);
+      const hit = byMessage.get(key) || { n: 0, routes: [] };
+      hit.n += 1;
+      if (hit.routes.length < 5 && !hit.routes.includes(r.route)) {
+        hit.routes.push(r.route);
+      }
+      byMessage.set(key, hit);
+    }
+  }
+  const noisy = results.filter((r) => (r.errors || 0) > 0).length;
+  if (byMessage.size) {
+    console.log(`
+prerender-crawl: ${noisy} route(s) logged console errors`);
+    [...byMessage.entries()]
+      .sort((a, b) => b[1].n - a[1].n)
+      .slice(0, 12)
+      .forEach(([msg, hit]) => {
+        console.log(`  ${String(hit.n).padStart(4)}x  ${msg}`);
+        console.log(`        on ${hit.routes.join(', ')}`);
+      });
+  } else {
+    console.log('prerender-crawl: no console errors');
+  }
 
   try {
     const home = await readFile(join(DIST, 'index.html'), 'utf8');
