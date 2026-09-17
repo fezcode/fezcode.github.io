@@ -12,7 +12,7 @@ id: movie
 rank: 02
 name: MOVIE
 tag: FILM
-status: PENDING
+status: LIVE
 route: /demystify/movie
 blurb: Cinema decoded — what the frame, the cut and the score are actually doing, and why it lands.
 

@@ -283,6 +283,9 @@ const DemystifyHubPage = lazy(
 const GenreCollectionPage = lazy(
   () => import('../pages/demystify/GenreCollectionPage'),
 );
+const MovieCollectionPage = lazy(
+  () => import('../pages/demystify/MovieCollectionPage'),
+);
 const ProjectRouteHandler = lazy(
   () => import('../components/ProjectRouteHandler'),
 );
@@ -1157,6 +1160,38 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <GenreCollectionPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/demystify/movie"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <MovieCollectionPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/demystify/movie/:entryId"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <MovieCollectionPage />
               </Suspense>
             </motion.div>
           }

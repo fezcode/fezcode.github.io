@@ -13,6 +13,21 @@ const MetaRow = ({ label, children }) =>
   ) : null;
 
 /**
+ * Section headings. The fields are shared across collections but what they mean
+ * is not: `gear` is a rack of synths in GENRE and a camera rig in MOVIE. A
+ * collection passes its own wording; the genre atlas gets these by default.
+ */
+export const GENRE_LABELS = {
+  what: 'WHAT IT IS / WHEN',
+  artists: 'SIGNIFICANT ARTISTS',
+  trivia: 'TRIVIA',
+  sonic: 'SONIC SIGNATURE',
+  gear: 'KEY GEAR',
+  prod: 'RATIONALE & PRODUCTION',
+  examples: 'BENCHMARK TRACKS',
+};
+
+/**
  * The full page for a single collection entry. `prev` / `next` come from the
  * collection index so a reader can walk the ranking without going back up.
  */
@@ -25,6 +40,7 @@ const EntryDetail = ({
   audioStatus,
   audioEnabled,
   onPlay,
+  labels = GENRE_LABELS,
 }) => {
   return (
     <article className="dm-entry">
@@ -44,7 +60,9 @@ const EntryDetail = ({
           inside <pre> is stripped by the HTML parser on first paint but kept by
           React after hydration, which shifts the art by one row. */}
       {entry.ascii && (
-        <pre className="dm-ascii" aria-hidden="true">{entry.ascii}</pre>
+        <pre className="dm-ascii" aria-hidden="true">
+          {entry.ascii}
+        </pre>
       )}
 
       <Spectrum spec={entry.spec} />
@@ -59,12 +77,12 @@ const EntryDetail = ({
         </dl>
       )}
 
-      <RichText label="WHAT IT IS / WHEN" paragraphs={entry.what} />
-      <RichText label="SIGNIFICANT ARTISTS" paragraphs={entry.artists} />
-      <RichText label="TRIVIA" paragraphs={entry.trivia} />
-      <RichText label="SONIC SIGNATURE" paragraphs={entry.sonic} />
-      <RichText label="KEY GEAR" paragraphs={entry.gear} />
-      <RichText label="RATIONALE & PRODUCTION" paragraphs={entry.prod} />
+      <RichText label={labels.what} paragraphs={entry.what} />
+      <RichText label={labels.artists} paragraphs={entry.artists} />
+      <RichText label={labels.trivia} paragraphs={entry.trivia} />
+      <RichText label={labels.sonic} paragraphs={entry.sonic} />
+      <RichText label={labels.gear} paragraphs={entry.gear} />
+      <RichText label={labels.prod} paragraphs={entry.prod} />
 
       {entry.tracks.length > 0 && (
         <section className="dm-prose">
@@ -101,7 +119,7 @@ const EntryDetail = ({
 
       {entry.examples.length > 0 && (
         <section className="dm-prose">
-          <h3 className="dm-section-title">BENCHMARK TRACKS</h3>
+          <h3 className="dm-section-title">{labels.examples}</h3>
           <ul className="dm-example-list">
             {entry.examples.map((example) => (
               <li className="dm-example" key={example.title}>
@@ -125,7 +143,10 @@ const EntryDetail = ({
             <span />
           )}
           {next && (
-            <Link className="dm-pager-link is-next" to={`${basePath}/${next.id}`}>
+            <Link
+              className="dm-pager-link is-next"
+              to={`${basePath}/${next.id}`}
+            >
               {next.name} →
             </Link>
           )}

@@ -1,0 +1,45 @@
+id: whip-pan-and-smash-cut
+rank: 08
+name: WHIP PAN & SMASH CUT
+family: Cut
+years: 1998 → present
+sub: Editing at the speed of a punchline, with the camera and the cut treated as comic instruments
+
+ascii:
+┌────────────────────────────────────────┐
+│  ███▓▒░  ▶▶▶▶  ░▒▓███    SMASH         │
+│  blur ── whip ── land on the joke      │
+│  3 frames in, 3 frames out, no easing  │
+└────────────────────────────────────────┘
+
+what:
+ A cluster of devices used together: the whip pan that smears one shot into the next, the smash cut that lands hard on an unprepared image, and the rapid insert montage that fires three or four frames at a time. Individually they are old. Used as a house style rather than as punctuation, they became the defining British comic grammar of the last twenty-five years, where the edit is the funniest thing in the scene.
+
+artists:
+ Edgar Wright is the whole school: *Shaun of the Dead*, *Hot Fuzz* and *The World's End* treat mundane action, pulling a pint or filling in a form, with the cutting pattern of a shootout, and the mismatch is the joke. Guy Ritchie built the parallel version around narration and freeze frames in *Lock, Stock and Two Smoking Barrels* and *Snatch*, later polished into *The Gentlemen* and *The Man from U.N.C.L.E.*
+
+trivia:
+ Wright storyboards and animates almost the entire film before shooting, which is why the cutting pattern survives contact with production: the joke is timed at the boarding stage and the shoot is essentially executing an edit that already exists. It is the opposite of finding the film in post, and it is why these sequences cannot be assembled from ordinary coverage.
+
+sonic:
+ Speed reads as confidence, and confidence is most of comedy. The rhythm also does exposition for free, since a four-shot burst can establish an entire routine, a week or a plan without a line of dialogue. The risk is monotony: a film cut at one relentless tempo has nowhere left to go when it needs to accelerate.
+
+gear:
+ A camera that can be yanked, an editor with frame-level patience, and a sound designer, because half the effect is the whoosh, the impact and the abrupt silence. Most whip pans hide a cut inside the blur, which means the two shots need matching motion direction and speed.
+
+prod:
+ Expensive in preparation and cheap in execution. Every insert is another setup, so a three-second burst can eat an hour on the floor. It also demands total commitment from the crew, since none of it works if the coverage is ordinary, and when it fails it fails loudly because the audience can hear the film trying.
+
+examples:
+ - Hot Fuzz | paperwork cut like a firefight
+ - Shaun of the Dead | two identical walks to the shop
+ - The World's End | the crawl, mapped and re-mapped
+ - Snatch | freeze frame, narration, gone
+ - Lock, Stock and Two Smoking Barrels | four plots braided at speed
+ - The Gentlemen | the story told as a pitch meeting
+ - The Man from U.N.C.L.E. | split screen used as a punchline
+ - Deadpool | the edit breaking the scene on purpose
+ - Free Guy | game logic cut as comedy
+ - Game Night | comic geography, whipped between rooms
+ - Tropic Thunder | the trailers cut as their own film
+ - Kung Fu Panda | comic timing held in animation
