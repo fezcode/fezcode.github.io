@@ -40,7 +40,6 @@ const SnfNotFoundPage = lazy(() => import('../pages/snf/SnfNotFoundPage'));
 const SnfV3ShelfPage = lazy(() => import('../pages/snf-v3/SnfV3ShelfPage'));
 const SnfV3ReadPage = lazy(() => import('../pages/snf-v3/SnfV3ReadPage'));
 const AppPage = lazy(() => import('../pages/AppPage'));
-const IpPage = lazy(() => import('../pages/apps/IpPage'));
 const WordCounterPage = lazy(() => import('../pages/apps/WordCounterPage'));
 const TournamentBracketPage = lazy(
   () => import('../pages/apps/TournamentBracketPage'),
@@ -1218,7 +1217,6 @@ const AnimatedRoutes = ({
           path="/apps::pinned"
           element={<Navigate to="/pinned-apps" replace />}
         />
-        <Route path="/apps::ip" element={<Navigate to="/apps/ip" replace />} />
         <Route
           path="/apps::vt"
           element={<Navigate to="/apps/voyager-terminal" replace />}
@@ -1791,22 +1789,6 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::mhub"
           element={<Navigate to="/apps/metabolic-hub" replace />}
-        />
-        <Route
-          path="/apps/ip"
-          element={
-            <motion.div
-              initial="initial"
-              animate="in"
-              exit="out"
-              variants={pageVariants}
-              transition={pageTransition}
-            >
-              <Suspense fallback={<Loading />}>
-                <IpPage />
-              </Suspense>
-            </motion.div>
-          }
         />
         <Route
           path="/apps/feztype"
