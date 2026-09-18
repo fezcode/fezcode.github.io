@@ -1,0 +1,148 @@
+{
+  "name": "Descry",
+  "windowTitle": "descry — vault",
+  "tagline": "A markdown editor that starts instantly.",
+  "subtitle": "Keyboard-driven, written in C with SDL2 and Lua. Vault sidebar, wiki links, tags, backlinks, a graph view and a real plugin host — Obsidian ergonomics without the Electron tax.",
+  "accent": "#C98A5C",
+  "accent2": "#A2663C",
+  "version": "0.87.0",
+  "platforms": [
+    "Windows",
+    "macOS",
+    "Linux"
+  ],
+  "stack": [
+    "C",
+    "SDL2",
+    "Lua",
+    "md4c"
+  ],
+  "download": "https://github.com/fezcode/Descry/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/Descry",
+  "summary": [
+    "There is no browser engine underneath it and no node process beside it. What you get instead is a text buffer, a renderer, and a Lua interpreter you can actually reach.",
+    "A vault is not a folder of files; it is a graph. Wiki links point at one note, tags name a subject any number of notes can share, and the graph view draws both — one node per note, one per tag, an edge per link and per mention."
+  ],
+  "panelsHeading": "What works",
+  "panelsWindowTitle": "descry — panels",
+  "panels": [
+    {
+      "title": "Live preview",
+      "body": "CommonMark through md4c: headings, lists, task lists, code fences, quotes, tables, inline styles and links.",
+      "node": "preview"
+    },
+    {
+      "title": "A real editor underneath",
+      "body": "Undo/redo, multi-byte caret, selection, smart Enter for lists, auto-pairs, find and replace, soft word wrap.",
+      "keys": "alt+z",
+      "node": "editor"
+    },
+    {
+      "title": "Wiki links and tags",
+      "body": "[[note]] resolves case-insensitively across the vault; #tag names a subject. Both auto-complete with a path column.",
+      "node": "links"
+    },
+    {
+      "title": "Graph view",
+      "body": "A force-directed map of the vault. Node size scales with degree; drag to pan, scroll to zoom, click to open.",
+      "keys": "ctrl+shift+m",
+      "node": "graph"
+    },
+    {
+      "title": "Lua plugin host",
+      "body": "Drop a .lua file in data/plugins and it is a plugin. No build step, no manifest, no packaging.",
+      "node": "plugins"
+    },
+    {
+      "title": "Navigation history",
+      "body": "Every note and every deliberate jump is recorded, so you walk back with caret and scroll intact.",
+      "keys": "ctrl+[",
+      "node": "history"
+    }
+  ],
+  "shotsHeading": "On screen",
+  "shots": [
+    {
+      "src": "/images/projects/descry/preview.png",
+      "caption": "descry — preview mode"
+    },
+    {
+      "src": "/images/projects/descry/wiki-links.png",
+      "caption": "wiki links and quote blocks"
+    },
+    {
+      "src": "/images/projects/descry/tags-and-lists.png",
+      "caption": "tags, lists and mid-line styling"
+    },
+    {
+      "src": "/images/projects/descry/images.png",
+      "caption": "image embeds in preview"
+    }
+  ],
+  "keysHeading": "From the keyboard",
+  "keys": [
+    {
+      "k": "ctrl+p",
+      "a": "Quick switcher, recents first"
+    },
+    {
+      "k": "ctrl+shift+p",
+      "a": "Command palette, plugin actions included"
+    },
+    {
+      "k": "ctrl+\\",
+      "a": "Split live preview"
+    },
+    {
+      "k": "ctrl+shift+m",
+      "a": "Graph view"
+    },
+    {
+      "k": "ctrl+shift+g",
+      "a": "Tag panel"
+    },
+    {
+      "k": "ctrl+[",
+      "a": "Back, caret and scroll restored"
+    },
+    {
+      "k": "alt+z",
+      "a": "Toggle soft word wrap"
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "CMake + Ninja",
+    "lines": [
+      ".\\build.ps1              # -> build\\descry.exe",
+      ".\\build_installer.ps1    # -> dist\\Descry-Setup-<version>.exe",
+      "./build.sh               # Linux / macOS",
+      "./package_macos.sh       # -> Descry.app"
+    ]
+  },
+  "notesTitle": "The plugin API",
+  "notes": "`descry.register_action(\"name\", fn)` puts your function in the command palette with a category chip and a bindable shortcut. `descry.buffer.*` reads and edits the open document; `descry.vault.*` lists and refreshes notes; `descry.on` subscribes to `open`, `save`, `text_change`, `mode_change` and `vault_change`.\n\nDeclare a typed setting with `descry.config(key, default, {type=…})` and it gets a real editor for free — toggles, choices and validated numbers in a per-plugin settings modal, with a hot-reload button beside it.",
+  "colophon": [
+    [
+      "License",
+      "see repository"
+    ],
+    [
+      "Rendering",
+      "md4c + SDL2"
+    ],
+    [
+      "Plugins",
+      "Lua, hot-reloadable"
+    ],
+    [
+      "Title bar",
+      "drawn by the app"
+    ],
+    [
+      "Spell check",
+      "opt-in, dictionary-driven"
+    ]
+  ]
+}

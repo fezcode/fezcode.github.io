@@ -1,0 +1,79 @@
+# Modernizing the Shell: The Dush Scripting Language
+
+The biggest problem with shell scripting today is that it doesn't feel like *programming*. It feels like incantation. You're not writing logic; you're writing strings that happen to be interpreted as logic. **Dush** changes that.
+
+## The Sigil: `@`
+
+In Dush, variables are first-class citizens. We use the `@` sigil to denote any language-level entity. This solves the "is this a string or a variable?" problem that plagues Bash.
+
+```bash
+# Bash
+VAR="hello"
+echo $VAR   # Is it $VAR or ${VAR}?
+
+# Dush
+@var = "hello"
+echo @var   # Unambiguous.
+```
+
+## Data Types that Matter
+
+Dush isn't just strings. It supports integers, floats, booleans, arrays, and maps natively.
+
+```bash
+@items = ["apple", "banana", "cherry"]
+@user = {"name": "fezcode", "role": "admin"}
+
+loop (@x : @items) {
+    echo "Item: @x"
+}
+```
+
+## Method Syntax
+
+Why should we have to pipe to `tr` or `awk` just to change a string's case? Dush brings modern method syntax to the shell:
+
+```bash
+@path = "/usr/local/bin"
+@parts = @path.split("/")
+echo @parts.join("-")
+```
+
+This keeps your logic inside the shell's memory space, making scripts faster and much easier to read.
+
+## Pattern Matching with `match`
+
+Forget the clunky `case` statements of old. Dush features a modern `match` block with wildcard support:
+
+```bash
+match (@status) {
+    case 0 { echo "Success!" }
+    case 1 { echo "Warning..." }
+    case _ { echo "Unknown error: @status" }
+}
+```
+
+## Procedures and Scoping
+
+Dush supports procedures with local scoping and parameters. They feel like Go functions but work like shell commands.
+
+```bash
+proc greet(@name, @shout=false) {
+    let @msg = "Hello, @name!"
+    if (@shout) {
+        echo @msg.upper()
+    } else {
+        echo @msg
+    }
+}
+
+greet("Dush", true)
+```
+
+## Conclusion
+
+Dush isn't trying to be Bash. It's trying to be what a shell would look like if it were designed today, with 50 years of programming language theory at its back.
+
+It's time to stop scripting and start programming.
+
+Join the revolution: [https://github.com/fezcode/dush](https://github.com/fezcode/dush)

@@ -1,0 +1,84 @@
+id: trap
+rank: 19
+name: TRAP & SOUTHERN RAP
+family: Hip Hop
+years: 2003 → present
+sub: Atlanta-born, 808-driven rap that became the default rhythmic language of global pop
+spec: 99,96,78,52,42,46,52,58,64,62,58,62,70,76,74,66,58,50,44,38
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ Trap named itself with T.I.'s *Trap Muzik* (2003) and was built in Atlanta by producers Shawty Redd, Zaytoven and DJ Toomp. Lex Luger's 2010–11 run industrialised the template; by the mid-2010s Metro Boomin, Southside and Mike WiLL Made-It had made 808-and-hi-hat production the default sound of all commercial pop, not just rap.
+
+artists:
+ *T.I.*, Gucci Mane, Young Jeezy, Future, *Young Thug*, *21 Savage*, Migos, Lil Baby. On the boards: *Metro Boomin*, Zaytoven, Lex Luger, Southside, Wheezy (who produced "Wyclef Jean").
+
+trivia:
+ The video for Young Thug's "Wyclef Jean" is the best joke in modern rap: Thug never showed up to the shoot, so director Ryan Staake cut the unusable footage together with deadpan on-screen text explaining what was supposed to happen, released it as *"We Had to Cancel This Video,"* and it became more famous than any conventional version would have been. Wyclef Jean himself later appeared in a follow-up. On the other side of the tone spectrum: *Savage Mode II* (2020) is narrated throughout by *Morgan Freeman*.
+
+sonic:
+ Tempo is written at 130–150 BPM but felt at half that. The 808 kick is pitched and glides between notes, doing bass and drum duty simultaneously. Hi-hats are the melodic-rhythmic interest — triplets, 32nd rolls, ratcheting speed changes. Melody is sparse: a single detuned bell, marimba or orchestral pluck loop, usually in a minor or Phrygian mode.
+
+gear:
+ FL Studio is the genre's workstation. The 808 sound is a sampled Roland TR-808 kick pitched to note and distorted; hats come from Vengeance-style sample packs; the lead is Nexus, Omnisphere or a Zaytoven-style Yamaha Motif piano/bell patch. Vocal chains run Auto-Tune in low-retune-speed mode as a texture rather than a corrective.
+
+prod:
+ Producers build the beat first and let the artist write to it in the booth — most trap vocals are composed at the mic, not on paper, which is why ad-libs function as a second rhythmic layer panned wide. The 808 is deliberately distorted so its harmonics survive on small speakers, and the mix leaves an unusual amount of empty space in the mids for exactly that reason.
+
+tracks:
+ - Wyclef Jean | Young Thug | none
+ - Headlines | Drake
+ - Am I Dreaming | Metro Boomin, A$AP Rocky, Roisee
+ - We Still Don't Trust You | Future, Metro Boomin, The Weeknd
+ - Back Up | Don Toliver, Wiz Khalifa
+ - SET IT | Denzel Curry, Maxo Kream
+ - BIG PERSONA (feat. Tyler, The Creator) | Maxo Kream, Tyler, The Creator
+ - Gook | Denzel Curry
+ - Soul Survivor | Jeezy, Akon
+ - Smoke | 50 Cent, Trey Songz
+ - Htk | VatoSmokiii.x
+ - Pound Cake / Paris Morton Music 2 | Drake, JAY-Z
+ - Porsche Cayenne | B.A.R.S. Murre, Riff Raff Sodmg
+ - I'm On One | DJ Khaled, Drake, Rick Ross, Lil Wayne
+ - Gospel | Rich Brian, Keith Ape, XXXTENTACION
+ - Plain Jane | A$AP Ferg
+ - MAZEL TOV | IDK, A$AP Ferg
+ - Runnin | 21 Savage, Metro Boomin
+ - 1Train | A$AP Rocky, Kendrick Lamar, Joey Bada$$, Yelawolf, Danny Brown, Action Bronson, Big K.R.I.T.
+ - Never Recover (Lil Baby & Gunna, Drake) | Lil Baby, Gunna, Drake
+ - No New Friends - SFTB Remix | DJ Khaled, Drake, Rick Ross, Lil Wayne
+ - Dead And Gone | T.I., Justin Timberlake
+ - Disco Shit (feat. Freddie Gibbs) | 03 Greedo, Kenny Beats, Freddie Gibbs
+ - DON'T DIE | Tory Lanez
+ - Hard Piano | Pusha T, Rick Ross
+ - Aston Martin Music | Rick Ross, Drake, Chrisette Michele
+ - No Such Thing As Free | Yelawolf
+ - a lot | 21 Savage
+ - Ambition (feat. Meek Mill & Rick Ross) | Wale, Meek Mill, Rick Ross
+ - ONCE UPON A TIME (FREESTYLE) | IDK, Denzel Curry
+ - Walls Talking | Kevin Gates
+ - Forever (feat. Lil Wayne) | Lil Baby, Lil Wayne
+ - GANG GANG | JACKBOYS, Sheck Wes
+ - GATTI | JACKBOYS, Pop Smoke, Travis Scott
+ - Stay Schemin | Rick Ross, French Montana, Drake
+ - Orange Soda (feat. Kidd Upstairs) | X.O., Kidd Upstairs
+ - Crazy (feat. PnB Rock) | 50 Cent, PnB Rock
+ - CHopstix (feat. Travis Scott) | ScHoolboy Q, Travis Scott
+ - Whip Game | Kareem Kalokoh
+ - E36 | Le$
+ - Time Ticking (feat. Bobby Shmurda & Rowdy Rebel) | Juelz Santana, Dave East, Bobby Shmurda, Rowdy Rebel
+ - Pay You Back (feat. 21 Savage) | Meek Mill, 21 Savage
+ - ULT | Denzel Curry
+ - Man Of The Year | ScHoolboy Q
+ - Over Here | Yelawolf
+ - Forever and a Day | Freddie Gibbs
+ - Confetti | Big K.R.I.T.
+ - Praise The Lord (Da Shine) (feat. Skepta) | A$AP Rocky, Skepta
+ - One Of Us | Rick Ross, Nas
+ - Till It's Gone | Yelawolf
+ - Hurt - feat. Alfamega & Busta Rhymes Explicit | T.I.
+ - Guns and Roses (feat. P!nk) | T.I., P!nk
+ - Go Get It | T.I.
+ - Top Back | T.I.
+ - Moonlight | Juice WRLD | none

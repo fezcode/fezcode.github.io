@@ -1,0 +1,37 @@
+LABEL: Features
+SUBTEXT: The v1.2.0 Set
+
+:::feature
+title: Inline comments
+description: Whitespace followed by # starts a comment. A # glued to other text stays literal, so https://example.com/page#section needs no escaping, and \# forces a literal where the rule would otherwise fire.
+:::
+
+:::feature
+title: Quoted strings
+description: Wrapping a value in "..." forces the string type, so (zip) "08080" keeps its leading zero instead of being inferred as an integer.
+:::
+
+:::feature
+title: Defined type inference
+description: The int, float, bool and nil patterns are spelled out in the spec. Everything that matches none of them is a string — no parser-specific guessing, no Norway problem.
+:::
+
+:::feature
+title: Strict indentation
+description: Exactly two spaces per level. Tabs, odd indents and skipped levels are syntax errors rather than something each implementation resolves its own way.
+:::
+
+:::feature
+title: Multi-line strings, fully specified
+description: Base indent is the key's indent plus two. Deeper indentation is preserved, interior blank lines are kept, trailing whitespace is trimmed, and the block's type is fixed by its first content line.
+:::
+
+:::feature
+title: Errors that are errors
+description: Duplicate keys within one object are a syntax error, and a bare key evaluates to nil. Nested lists and label-less object items arrive via a bare > followed by a block.
+:::
+
+:::feature
+title: A shared compliance suite
+description: Valid cases and must-fail cases in one file, run by go-piml, piml.js and piml.net alike — so "implements v1.2.0" means the same thing in three languages.
+:::

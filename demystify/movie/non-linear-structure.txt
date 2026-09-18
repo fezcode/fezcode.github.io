@@ -1,0 +1,48 @@
+id: non-linear-structure
+rank: 06
+name: NON-LINEAR STRUCTURE
+family: Structure
+years: 1941 → present
+sub: The order withheld, so that understanding arrives as a second event after the scene itself
+
+ascii:
+┌────────────────────────────────────────┐
+│  told:   ▓▓  ██    ▒▒  ██  ▓▓   ▒▒     │
+│           4   1     6   2   5    3     │
+│  lived:  ██  ██  ▓▓  ▓▓  ▒▒  ▒▒        │
+│           1   2   3   4   5   6        │
+└────────────────────────────────────────┘
+
+what:
+ Telling events in an order other than the one in which they happen. This covers several different machines: the flashback investigation of *Citizen Kane*, the reverse chronology of a memory being erased, the shuffled comparison of two timelines, the reveal that re-sorts everything you have already seen. What they share is that the shape of the telling is itself an argument — the film is claiming that meaning lives in juxtaposition rather than in sequence.
+
+artists:
+ Charlie Kaufman and Michel Gondry run *Eternal Sunshine of the Spotless Mind* backwards through a mind being wiped, so the audience loses the relationship in the same order the character does. Marc Webb cuts day 1 against day 290 in *500 Days of Summer* so the same woman reads as two people. Lynch withholds the sorting key in *Mulholland Drive* entirely. The Daniels use branching as structure rather than spectacle in *Everything Everywhere All at Once*.
+
+trivia:
+ *500 Days of Summer* announces its own device with an on-screen day counter, which is the opposite of how these films usually behave — most hide the scaffolding and hope you assemble it late. Putting the numbers on screen turns the structure into a game the audience is invited to play, and it is the reason the film's most quoted sequence, the split-screen of expectation against reality, lands without a word of explanation.
+
+sonic:
+ It converts a plot into a puzzle and an audience into a participant. Because you are assembling the order yourself, you hold the film in working memory instead of receiving it, and anything you assemble yourself feels earned. The risk is the same as the reward: a structure that is merely scrambled produces effort without insight, and audiences can tell the difference almost immediately.
+
+gear:
+ Continuity and signposting. Non-linear films live or die on whether the audience can place a scene within two seconds — hair length, a wardrobe change, a colour grade, a lens that belongs to one timeline. *Eternal Sunshine* leaned on practical in-camera tricks for its collapsing memories, keeping the disintegration physical so each stratum of the past feels materially different.
+
+prod:
+ It is written in the edit as much as the script, so it demands either an unusually disciplined screenplay or an unusually long post. Test screenings punish it: confusion and intrigue score identically on a card, and a studio reading that data will ask for the timeline to be straightened. Most non-linear films have a linear cut somewhere in their history, and a few of them shipped it.
+
+examples:
+ - Eternal Sunshine of the Spotless Mind | the erasure running backwards
+ - 500 Days of Summer | day 1 and day 290, side by side
+ - Mulholland Drive | the reveal that reassigns everything
+ - Everything Everywhere All at Once | branching used as structure, not spectacle
+ - Memories of Murder | an investigation that refuses to resolve
+ - Edge of Tomorrow | the loop as the structure
+ - Lucky Number Slevin | the setup withheld until the end
+ - Deja Vu | surveillance as a second timeline
+ - Vanilla Sky | the dream ordered as memory
+ - Predestination | the loop closing on itself
+ - Decision to Leave | an investigation told out of order
+ - Manchester By The Sea | grief arriving out of order
+ - Never Let Me Go | the childhood withheld and returned to
+ - Serenity | the flashback as the explanation

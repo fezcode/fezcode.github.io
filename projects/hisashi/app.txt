@@ -1,0 +1,98 @@
+{
+  "name": "Hisashi",
+  "windowTitle": "hisashi.exe",
+  "mark": "庇",
+  "tagline": "A bar at the top of every monitor you own.",
+  "subtitle": "Hisashi (庇) is Japanese for eaves — the protruding edge of a roof, the strip at the top of a structure. It is a plugin-driven top bar for Windows, and every display gets its own with its own widgets, theme and behaviour.",
+  "accent": "#F472B6",
+  "accent2": "#A78BFA",
+  "version": "0.6.13",
+  "platforms": [
+    "Windows 10",
+    "Windows 11"
+  ],
+  "stack": [
+    ".NET 9",
+    "Avalonia"
+  ],
+  "download": "https://github.com/fezcode/hisashi/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/hisashi",
+  "summary": [
+    "Windows gives you one taskbar, at one edge, on terms decided in 1995. Hisashi takes the other strip and hands it back: every monitor independently configured, with a widget stack you arrange yourself across three zones.",
+    "Plugins ship as .hsh bundles and load into isolated contexts behind a permission gate, so a widget only reaches what its manifest asked for. Twenty themes ship in the box, and every foreground token is contrast-checked against the painted bar until it clears 4.5:1 — an accent ramp can never produce unreadable text."
+  ],
+  "panelsHeading": "Three zones, twenty-four widgets",
+  "panelsWindowTitle": "hisashi — zones",
+  "panels": [
+    {
+      "title": "Per-monitor bars",
+      "body": "Every display gets its own bar with its own widget stack, theme and behaviour, in four width modes and three zones."
+    },
+    {
+      "title": "Pinned, auto-hide, fullscreen-only",
+      "body": "Auto-hide reveals the bar through a 10-pixel peek zone at the top edge and leaves the moment you do."
+    },
+    {
+      "title": "Twenty-four bundled plugins",
+      "body": "Clock, system stats, battery, weather, media controls, volume mixer, pomodoro, clipboard history, app dock, Docker, dev toolbox and more."
+    },
+    {
+      "title": "Contrast-checked themes",
+      "body": "Twenty themes, from Pulse and Aether through Fluent Accent to Phosphor CRT and Newsprint. Selectable globally or per bar."
+    },
+    {
+      "title": "Toasts that never steal focus",
+      "body": "Plugins raise themed, click-to-open notifications that stack under the bar and play the system sound."
+    },
+    {
+      "title": "The OS Window Layer",
+      "body": "Any app, in any language, can publish its menus over a named pipe. The Menubar widget renders them macOS-style behind a Windows-logo menu."
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "PowerShell — .NET 9 SDK",
+    "lines": [
+      "git clone https://github.com/fezcode/hisashi.git",
+      "dotnet build",
+      ".\\build.ps1 -Rid win-x64 -Config Release",
+      ".\\dist\\win-x64\\hisashi.exe"
+    ]
+  },
+  "notesTitle": "Writing a widget",
+  "notes": "Implement `IHisashiPlugin` and `IWidget` against `Hisashi.Sdk`, drop in a `manifest.json`, and pack it with `hsh-pack`. The plugin context hands you themed controls, per-plugin storage, config, logging, and an `INotifier` for host-rendered toasts.\n\nPermissions are declared in the manifest and granted at load: `storage`, `network`, `shell.exec`, `clipboard`, `media.session`, `notifications`, `filesystem.read`.",
+  "colophon": [
+    [
+      "Config",
+      "%AppData%\\Hisashi"
+    ],
+    [
+      "Plugins",
+      ".hsh bundles"
+    ],
+    [
+      "Themes",
+      "20 bundled"
+    ],
+    [
+      "Binary",
+      "self-contained, single file"
+    ],
+    [
+      "Crash log",
+      "%AppData%\\Hisashi\\crash.log"
+    ]
+  ],
+  "shots": [
+    {
+      "src": "/images/projects/hisashi/bar-left.png",
+      "caption": "Left zone — the Windows menu, the active app's menus over hoswl, and the app dock with running counts"
+    },
+    {
+      "src": "/images/projects/hisashi/bar-right.png",
+      "caption": "Right zone — CPU, RAM, disk, weather, now playing, volume and power"
+    }
+  ],
+  "shotsHeading": "The real bar, at native size"
+}

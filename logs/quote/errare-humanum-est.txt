@@ -1,0 +1,44 @@
+# Errare humanum est, ignoscere divinum
+
+> *"To err is human; to forgive, divine."*
+
+## The phrase
+
+| Language | Form |
+| --- | --- |
+| Latin | *Errare humanum est, ignoscere divinum.* |
+| English | To err is human; to forgive, divine. |
+| Literal | "To be wrong is human; to pardon, godlike." |
+
+## Origin
+
+The Latin half — *errare humanum est* — is older and proverbial. A close form ("*errare humanum est, perseverare autem diabolicum*" — "to err is human, but to persist in error is diabolical") is commonly attributed to **Seneca the Younger** (1st century AD), though the exact wording does not appear verbatim in his surviving texts. Variants circulated through medieval Latin as a school maxim.
+
+The familiar bilingual pairing we use today — joining the Latin proverb to "to forgive, divine" — comes from **Alexander Pope**'s *An Essay on Criticism* (1711), lines 524–525:
+
+> *Good-nature and good-sense must ever join;*
+> *To err is human, to forgive, divine.*
+
+Pope was writing about literary critics: his point was that critics, like everyone else, will make mistakes, and the mark of a generous reader is to forgive small faults rather than seize on them. The line escaped its original context almost immediately and has been quoted in moral, religious, and legal settings ever since.
+
+## Why it endures
+
+The phrase compresses two ideas that are usually argued separately:
+
+1. **Error is the baseline condition of being human.** Not a failure mode, not an exception — the default. Any framework that treats mistakes as aberrations is built on a wrong model of people.
+2. **Forgiveness is harder than error.** It is the active part. Erring takes no effort; pardoning does. Calling it *divine* is not flattery — it is an honest admission that it costs something, and most people will not pay.
+
+The asymmetry is the whole point. Pairing the two halves makes the second one impossible to read as cheap.
+
+## In practice
+
+Useful as a check on two reflexes:
+
+- **When you catch someone in a mistake.** The first line says: of course they made one. So did you, last week. The interesting question is what you do next.
+- **When you catch yourself.** The same line applies. Self-flagellation over an error is just a different way of treating the error as exceptional. It wasn't.
+
+## See also
+
+- Seneca, *Epistulae Morales*, on human fallibility.
+- Alexander Pope, *An Essay on Criticism* (1711).
+- The shorter modern fragment "*to err is human*" — usually quoted alone, which loses Pope's whole argument.

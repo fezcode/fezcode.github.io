@@ -1,0 +1,17 @@
+## Overview
+Dush (Dumb Shell) is a custom terminal shell written in Go, intended as a Bash alternative and a learning platform for shell mechanics.
+
+## Design Philosophy
+Dush follows a minimalist approach, focusing on core shell functionalities without the bloat. It's designed to be understandable, hackable, and a great starting point for anyone interested in how shells work under the hood.
+
+## Key Features
+- **Command Execution**: Run standard system commands seamlessly.
+- **Built-in Commands**: Includes essential built-ins like `cd`, `exit`, and `help`.
+- **Pipeline Support**: Basic support for piping commands.
+- **Go-Powered**: Leverages the performance and concurrency features of Go.
+
+## In-Progress Features
+- **Command History**: Quick access to your previous commands for maximum efficiency.
+- **I/O Redirection**: Support for input/output redirection (`>`, `>>`, `<`).
+- **Environment Management**: Control over environment variables.
+- **Customizable Prompt**: A dynamic and informative shell prompt.

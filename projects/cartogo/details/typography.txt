@@ -1,0 +1,8 @@
+# Professional Typography
+
+Typography is critical for the aesthetic. CartoGo includes an advanced text layout engine that handles city names and coordinates with professional elegance.
+
+## Features
+- **Dynamic Font Scaling**: Automatically fits long city names to canvas width.
+- **Tracking**: Applies elegant letter spacing to Latin scripts.
+- **DPI Scaling**: Ensures point sizes match physical inches at 300 DPI.

@@ -1,0 +1,1 @@
+import{j as r}from"../entries/pages.oA0Bx7eH.js";const i=({error:o=!1,children:t,className:e=""})=>r.jsx("p",{className:`orb-notice ${o?"orb-notice-error":""} ${e}`,role:o?"alert":void 0,children:t});export{i as O};

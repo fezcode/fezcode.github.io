@@ -1,0 +1,49 @@
+# The Pirate Game: How to Keep 98 Coins and Survive the Vote
+
+Five pirates find 100 gold coins. The captain proposes a split. Everyone gets a vote. Somehow, the captain can keep 98 coins and still get the plan accepted.
+
+The trick is to ask what each voter expects **after rejecting the proposal**.
+
+## The ship's rules
+
+Call the pirates A, B, C, D, and E, from most senior to least senior. A proposes first.
+
+- Coins are indivisible, and the proposal must distribute all 100.
+- Every remaining pirate votes, including the proposer. At least half must vote yes; a tied vote passes.
+- Rejection sends the proposer overboard. The next pirate proposes a fresh split of the same coins.
+- Pirates prefer survival first, then more coins. If survival and coins are equal either way, they prefer rejecting the proposer.
+- Everyone reasons perfectly and knows that everyone else does too.
+
+Those assumptions define the classic version presented in [Waterloo's game-theory lesson](https://cemc.uwaterloo.ca/sites/default/files/documents/2024/Junior7_8_20211124_Game_Theory.pdf). They are the rules of a puzzle, not a prediction about an actual crew.
+
+## Take the captain's chair
+
+Start with an equal split, then try to keep more. Change the crew's offers and put the proposal to a vote. The captain automatically keeps the remainder. Reveal the solution when you want to inspect the reasoning.
+
+<probability-experiment experiment="pirate-game" pirates="5" rule="half"></probability-experiment>
+
+## Work backward from the last pirate
+
+With only E left, E keeps everything. With D and E, D's own vote is enough: D keeps 100 and E receives zero.
+
+That makes E cheap to persuade in the preceding round. C offers E one coin, which beats the zero E would get under D. Continue that reasoning:
+
+| Pirates remaining | Optimal split in seniority order |
+| --- | --- |
+| E | 100 |
+| D, E | 100, 0 |
+| C, D, E | 99, 0, 1 |
+| B, C, D, E | 99, 0, 1, 0 |
+| A, B, C, D, E | **98, 0, 1, 0, 1** |
+
+This is the backward-induction solution also developed in the [University of Houston's game-theory slides](https://www2.cs.uh.edu/~ceick/ai/G2.pdf).
+
+A wins with votes from A, C, and E. C and E each prefer one coin now to zero under B. D rejects: one coin from A would merely match D's next-round payoff, and equal payoffs favor rejection.
+
+## Change one rule, change the bargain
+
+Switch the experiment to **strict majority**, where tied votes fail. Its calculation now produces a different five-pirate proposal: **97, 0, 1, 2, 0**. This follows from the alternate rules in the model; it is not the classic table above.
+
+The distinction begins with two pirates: the captain can no longer approve a proposal alone. Work forward again and every earlier bargaining position shifts.
+
+This is a useful companion to [deductive reasoning](/blog/a-colossal-rant-on-logic): make the assumptions explicit, solve the final decision, and reason backward. There are no coin tosses in this experiment. The uncertainty is in our intuition about incentives.

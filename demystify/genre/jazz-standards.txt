@@ -1,0 +1,33 @@
+id: jazz-standards
+rank: 56
+name: JAZZ
+family: Jazz
+years: 1917 → present
+sub: The tradition every other genre in this archive has borrowed from, sampled or misunderstood
+spec: 58,68,76,76,72,74,80,84,86,84,80,78,80,82,78,70,62,52,44,36
+synthType: sine
+freqs: 267.37, 335.14, 420.08
+
+what:
+ The cool-school West Coast jazz of the 1950s, and the Brubeck quartet in particular, is where jazz became a mass-market album genre — *Time Out* (1959) was the first jazz LP to sell a million copies and did it with pieces in 5/4 and 9/8. The tradition continues in a quieter contemporary form: Denmark's Bremer/McCoy play jazz through a dub producer's sensibility, which is closer to this archive's ambient corner than to bebop.
+
+artists:
+ *The Dave Brubeck Quartet* and *Paul Desmond*, whose dry alto tone he described as wanting to sound like a dry martini; the wider cool tradition of Chet Baker and Gerry Mulligan; and the modern minimal-jazz wing of *Bremer/McCoy* and Jakob Bro.
+
+trivia:
+ Paul Desmond wrote *"Take Five"*, the best-selling jazz single ever recorded, and left his performance royalties from it to the American Red Cross on his death — the charity has received millions of dollars from a piece its donor wrote almost as an exercise in an unusual metre. Brubeck turned down lucrative Southern tour dates in the 1950s rather than replace his Black bassist, Eugene Wright.
+
+sonic:
+ Acoustic quartet in a real room: piano, upright bass, brushed or lightly-struck kit, and a horn stating a theme before improvising over its harmony. The cool style favours a light, vibrato-free tone and restrained dynamics. Contemporary minimal jazz slows this further and adds tape delay and spring reverb from the dub tradition.
+
+gear:
+ A concert grand, an upright bass with a single microphone rather than a pickup, a small kit with brushes and a ride cymbal doing most of the work, and a Selmer alto or tenor. Recorded on Columbia's 30th Street studio and its equivalents, with three or four microphones and no isolation.
+
+prod:
+ Recorded live to two- or three-track with the balance set in the room rather than at the desk — the engineer's decisions were made before the take, not after. There is no editing beyond splicing whole takes. The dynamic range is enormous and the room is audible on every instrument, which is precisely why these recordings have remained reference material for sixty years.
+
+tracks:
+ - Take Five | Dave Brubeck, The Dave Brubeck Quartet
+ - She's Alive | Bremer/McCoy
+ - Autumn Leaves | Paul Desmond
+ - The Theme from "Black Orpheus" | Paul Desmond

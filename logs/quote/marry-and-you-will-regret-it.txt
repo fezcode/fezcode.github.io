@@ -1,0 +1,107 @@
+# Marry, and you will regret it
+
+> *"Marry, and you will regret it; do not marry, you will also regret it; marry or do not marry, you will regret it either way. […] Hang yourself, you will regret it; do not hang yourself, you will also regret it. […] This, gentlemen, is the sum of all the wisdom of life."*
+
+## The attribution is half wrong
+
+| | |
+| --- | --- |
+| Circulates as | **Søren Kierkegaard** (1813–1855) |
+| Signed by | **Victor Eremita**, who says he found the papers in a second-hand secretary desk |
+| Spoken by | **"A"**, the unnamed aesthete whose papers make up Part I |
+| Work | *Enten – Eller. Et Livs-Fragment* (*Either/Or: A Fragment of Life*), Copenhagen, **20 February 1843** |
+| Location | Part I, the opening aphorisms: **ΔΙΑΨΑΛΜΑΤΑ** *ad se ipsum* |
+| Heading in the original | ***Enten – Eller. Et exstatisk Foredrag*** — "Either/Or. An ecstatic lecture" |
+
+Kierkegaard wrote the sentence. That part is not in dispute, and this is not one of those quotes that turns out to belong to a Dutch theosophist. The problem is narrower and stranger: he wrote it as a character, published it under a pseudonym who was himself only the *editor* of a third man's papers, spent the next three years constructing an argument against it, and then asked in print that nobody put his name on it.
+
+Everyone ignored the last part.
+
+## The author left instructions
+
+In 1846 Kierkegaard appended to the *Concluding Unscientific Postscript* a short piece called **"A First and Last Declaration"** — the only place in the pseudonymous authorship where he signs his own name and admits to being behind Victor Eremita, Johannes de Silentio, Constantin Constantius, Vigilius Haufniensis, Johannes Climacus and the rest.
+
+Having confessed, he immediately asks the reader not to make use of the confession:
+
+> "In the pseudonymous books there is not a single word which is mine."
+
+> "My wish, my prayer, is that, if it might occur to anyone to quote a particular saying from the books, he would do me the favor to cite the name of the respective pseudonymous author."
+
+So: every poster, tote bag, and caption that reads *"Marry, and you will regret it" — Søren Kierkegaard* is doing the one thing the author explicitly asked not to be done, and doing it in the very form he anticipated, the isolated saying lifted out of the book.
+
+This is not authorial vanity or a legal dodge. The pseudonyms are not masks over a single face; they are **positions**, each held by someone constructed to hold it all the way down. A is not a mouthpiece with a funny name. A is a specimen — a man of enormous intelligence and no commitments, presented at full strength so that the failure of his life-view can be shown rather than asserted. Quoting him as Kierkegaard is quoting Iago as Shakespeare's considered advice on marriage.
+
+## The passage entire
+
+The internet keeps one clause out of four. The original runs:
+
+> *"Gift Dig, Du vil fortryde det; gift Dig ikke, Du vil ogsaa fortryde det; gift Dig eller gift Dig ikke, Du vil fortryde begge Dele; enten Du gifter Dig, eller Du ikke gifter Dig, Du fortryder begge Dele.*
+>
+> *Lee ad Verdens Daarskaber, Du vil fortryde det; græd over dem, Du vil ogsaa fortryde det […]*
+>
+> *Tro en Pige, Du vil fortryde det; tro hende ikke, Du vil ogsaa fortryde det […]*
+>
+> *Hæng Dig, Du vil fortryde det; hæng Dig ikke, Du vil ogsaa fortryde det; hæng Dig eller hæng Dig ikke, Du vil fortryde begge Dele […]*
+>
+> *Dette, mine Herrer, er Indbegrebet af al Leve-Viisdom."*
+
+Four subjects — marriage, whether to laugh at the world's follies or weep over them, whether to trust a girl, and whether to hang yourself — each run through the same four movements: do it and regret it, don't and regret it, do-or-don't and regret both, and then the whole thing restated with the grammar inverted so the symmetry closes like a lid.
+
+Note where it ends. **If you hang yourself, you will regret it.** Regret is being extended past the point where there is anyone left to do the regretting, and the sentence does not blink. That is the tell that this was never a claim about outcomes. A is not saying marriage disappoints, or that girls are untrustworthy, or that the world is bad. He is saying that *he* will regret, invariably, whatever happens — that regret is not a response to events but a permanent condition he brings to them. The argument is airtight because it is not about the world at all.
+
+## The heading nobody prints
+
+The Diapsalmata are unheaded fragments. This one is the exception: it carries a title, and the title is **the title of the book**.
+
+Eight hundred pages called *Either/Or*, and the phrase surfaces inside them as the header on a joke whose entire content is that either/or makes no difference. Kierkegaard put his thesis statement in the mouth of the man who denies there is anything to choose.
+
+The rest of the heading earns its keep too. *Et exstatisk Foredrag* — an **ecstatic** lecture, from *ekstasis*, standing outside. The speaker is not choosing badly between marriage and bachelorhood. He is standing outside both, examining them at equal distance, which is precisely the vantage from which every option looks identical and nothing can be preferred. The symmetry of the sentence is not wisdom about life. It is a description of where the speaker is standing.
+
+## What the book does to it next
+
+Part I is A's papers: the Diapsalmata, the Mozart essay, "The Rotation of Crops," *The Seducer's Diary*. Part II is two enormous letters from **Judge William**, a married civil servant, addressed to A and concerned with almost nothing else.
+
+The Judge's move is not to argue that marriage is nice. He grants A most of his premises and then reframes the question. A's either/or is a choice *between options*, weighed from outside by a spectator — and viewed that way, yes, the options cancel, because a spectator never has to land anywhere. The real either/or, the Judge says, is prior to that: it is whether you will step into your own life and choose at all, or go on hovering. The alternative to the aesthetic life is not a better set of options. It is choosing in a way that makes you responsible for the result — which is the one thing A has organised his entire existence to avoid.
+
+Seen from there, the ecstatic lecture stops being a verdict on life and becomes a **symptom**, and the book's structure is the argument: give the position its best possible statement, then spend the second volume showing what kind of person has to hold it. Kierkegaard ends the whole thing with a sermon from a Jutland priest on the edifying thought that against God we are always in the wrong — the final refusal of the spectator's seat.
+
+The passage everyone quotes is the position the book was built to demolish. It is also, reliably, the only part of the book most people have read.
+
+## Where the translations drift
+
+| | |
+| --- | --- |
+| Danish (1843) | *"**Gift Dig**, Du vil fortryde det…"* — imperative |
+| Swenson, Princeton 1944 | *"**If you marry**, you will regret it…"* — conditional |
+| The circulating English | *"**Marry**, and you will regret it…"* — imperative |
+
+For once, the internet's version is the more faithful one. The Danish gives an order; Swenson softens it into a hypothetical, and the hypothetical is tamer, because a conditional invites you to weigh a case while an imperative dares you to act.
+
+The closing sentence drifts the other way:
+
+| | |
+| --- | --- |
+| Danish | *"Indbegrebet af al **Leve-Viisdom**"* — the sum of all **life-wisdom**, wisdom about how to live |
+| Swenson | *"the sum and substance of all **philosophy**"* |
+
+A is parodying the pub-wisdom register — the tone of a man at the end of a dinner party summing up How Things Are. Promote *Leve-Viisdom* to *philosophy* and the parody quietly becomes the thing it parodies, which is roughly what happened to the passage afterwards.
+
+## The engagement
+
+The dates sit there and refuse to be ignored. Kierkegaard proposed to **Regine Olsen** in September 1840, broke the engagement in October 1841 against her family's pleading, left for Berlin, and published *Either/Or* in February 1843. A man who had just declined to marry, writing *marry and you will regret it, do not marry and you will regret it too* — and then not marrying anyone, ever, and leaving her his estate in a will she had no use for, having married Fritz Schlegel in 1847.
+
+Two things are true at once and it is worth keeping them apart. The timing is a fact. The inference is a reading — and it is the exact reading the Declaration was written to block, the one where every pseudonym collapses back into a biography and the argument becomes a mood. A is not Kierkegaard with the serial numbers filed off; if he were, Part II would be incoherent, since the Judge wins.
+
+But the book is not innocent of its author either. What it looks like is a man who knew the position from the inside well enough to state it better than any of its adherents, and who therefore knew exactly what it would cost to be refuted.
+
+## A note on what is verified here
+
+The Danish is transcribed from a text of *Enten – Eller* Part I, restored where the source's encoding mangled *æ* and *ø*. The heading and closing sentence of the Swenson translation are from the 1944 Princeton edition. The Declaration is quoted in Walter Lowrie's rendering; the Hongs title the same piece "A First and Last Explanation," and their wording differs. The Hong *Either/Or* Part I location is commonly cited at pp. 38–39; that page reference is taken on the strength of the citation record rather than checked against the printed page.
+
+## See also
+
+- **Kierkegaard**, *Either/Or* Part II — Judge William's letters, the reply to the lecture, and the reason the lecture is in the book.
+- **"Life is not a problem to be solved, but a reality to be experienced"** — the other Kierkegaard attribution problem in this log, and the opposite case: there the sentence is not his at all.
+- **"Life must be understood backwards; but it must be lived forwards"** — from the journals of 1843, signed, unpseudonymous, actually his, and quoted perhaps a tenth as often.
+- **Buridan's ass** — the scholastic version of the same paralysis, minus the wit: a donkey equidistant between two identical bales, starving on the symmetry.
+- **Camus**, *The Myth of Sisyphus* (1942) — hangs the whole question on the same clause A throws away in passing, and comes out the other side.

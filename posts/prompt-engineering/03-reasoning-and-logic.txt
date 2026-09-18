@@ -1,0 +1,68 @@
+# Reasoning & Logic: Chain of Thought and Decomposition
+
+In Module 3, we move into the realm of **reasoning**. LLMs are not inherently logical; they are probabilistic. However, with the right techniques, you can guide them to simulate complex logical reasoning.
+
+## 1. Chain of Thought (CoT) Prompting
+
+Chain of Thought (CoT) is the most significant breakthrough in prompt engineering since few-shot prompting. The core idea is simple: **Ask the model to "think step by step" before answering.**
+
+### The Problem with Direct Answers
+If you ask a complex math question directly, the model might guess the answer immediately, which often leads to errors.
+
+**Standard Prompt:**
+> If I have 5 apples, eat 2, buy 3 more, and give half to my friend, how many do I have?
+**Model Output (Guessing):**
+> 3
+
+### The CoT Solution
+**CoT Prompt:**
+> If I have 5 apples, eat 2, buy 3 more, and give half to my friend, how many do I have?
+> Let's think step by step.
+
+**Model Output:**
+> 1. Start with 5 apples.
+> 2. Eat 2: 5 - 2 = 3 apples.
+> 3. Buy 3 more: 3 + 3 = 6 apples.
+> 4. Give half to friend: 6 / 2 = 3 apples.
+> **Answer: 3**
+
+By generating the intermediate steps, the model gives itself more "computational time" (more tokens) to reason correctly.
+
+## 2. Zero-Shot CoT vs. Few-Shot CoT
+
+-   **Zero-Shot CoT:** Just adding "Let's think step by step." (Simple, effective).
+-   **Few-Shot CoT:** Providing examples of step-by-step reasoning in the prompt. (Much more powerful for specific domains).
+
+## 3. Tree of Thoughts (ToT)
+
+Tree of Thoughts (ToT) extends CoT by asking the model to explore multiple reasoning paths simultaneously.
+
+**Prompt Strategy:**
+> "Imagine three different experts are answering this question. Each expert will write down 1 step of their thinking, then share it with the group. Then, they will critique each other's steps and decide which is the most promising path to follow."
+
+This is great for creative writing, planning, or complex problem-solving where linear thinking might miss the best solution.
+
+## 4. Problem Decomposition
+
+For very large tasks, CoT might still fail because the context window gets cluttered or the reasoning chain breaks. The solution is **Decomposition**.
+
+**Technique:** Break the problem down into sub-problems explicitly.
+
+**Prompt:**
+> To solve the user's request, first identify the key components needed. Then, solve each component individually. Finally, combine the solutions.
+
+**Example:** "Write a Python script to scrape a website and save it to a database."
+1.  **Sub-task 1:** Write the scraping code.
+2.  **Sub-task 2:** Write the database schema.
+3.  **Sub-task 3:** Write the database insertion code.
+4.  **Sub-task 4:** Combine them.
+
+## Summary
+
+| Technique | Description | Best Use Case |
+| :--- | :--- | :--- |
+| **Chain of Thought (CoT)** | "Let's think step by step" | Math, Logic, Word Problems. |
+| **Tree of Thoughts (ToT)** | Exploring multiple paths. | Creative Writing, Planning. |
+| **Decomposition** | Breaking down big tasks. | Coding, Long-form Writing. |
+
+In the next module, we will explore **Persona & Context**, learning how to make the model adopt specific roles and handle large amounts of information.
