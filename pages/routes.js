@@ -49,7 +49,6 @@ export const staticRoutes = [
   "/apps/gokturkish-converter",
   "/apps/hash-generator",
   "/apps/image-studio",
-  "/apps/ip",
   "/apps/js-masterclass",
   "/apps/json-formatter",
   "/apps/json-generator",
