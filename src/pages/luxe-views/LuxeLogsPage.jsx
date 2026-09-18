@@ -11,23 +11,14 @@ import Seo from '../../components/Seo';
 import piml from 'piml';
 import colors from '../../config/colors';
 import LuxeArt from '../../components/LuxeArt';
-
-const categories = [
-  'Book',
-  'Movie',
-  'Video',
-  'Game',
-  'Article',
-  'Music',
-  'Series',
-  'Food',
-  'Websites',
-  'Tools',
-  'Event',
-  'Quote',
-];
+import {
+  FALLBACK_CATEGORIES,
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../../utils/logCategories';
 
 const LuxeLogsPage = () => {
+  const [categories, setCategories] = useState(FALLBACK_CATEGORIES);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState('All');
@@ -37,18 +28,9 @@ const LuxeLogsPage = () => {
   useEffect(() => {
     const fetchLogs = async () => {
       try {
-        const fetchPromises = categories.map(async (category) => {
-          const response = await fetch(
-            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.piml`,
-          );
-          if (!response.ok) return [];
-          const text = await response.text();
-          const data = piml.parse(text);
-          return data.logs || [];
-        });
-
-        const allLogsArrays = await Promise.all(fetchPromises);
-        const combinedLogs = allLogsArrays.flat();
+        const cats = await fetchLogCategories();
+        setCategories(cats);
+        const combinedLogs = await fetchLogsForCategories(cats, piml.parse);
 
         const logsWithId = combinedLogs
           .map((log, index) => ({
@@ -156,7 +138,7 @@ const LuxeLogsPage = () => {
                         ? 'black'
                         : 'white',
                     borderColor: !isActive ? undefined : color,
-                    boxShadow: isActive ? `0 4px 14px 0 ${color}40` : 'none'
+                    boxShadow: isActive ? `0 4px 14px 0 ${color}40` : 'none',
                   }}
                 >
                   {cat}
@@ -181,38 +163,68 @@ const LuxeLogsPage = () => {
                     to={`/logs/${log.category.toLowerCase()}/${log.slug}`}
                     className="group relative block aspect-square bg-white rounded-xl overflow-hidden border border-[#1A1A1A]/5 shadow-sm hover:shadow-xl transition-all duration-500"
                   >
-                    <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{ backgroundImage: 'radial-gradient(#1A1A1A 1px, transparent 1px)', backgroundSize: '16px 16px' }} />
+                    <div
+                      className="absolute inset-0 opacity-[0.02] pointer-events-none"
+                      style={{
+                        backgroundImage:
+                          'radial-gradient(#1A1A1A 1px, transparent 1px)',
+                        backgroundSize: '16px 16px',
+                      }}
+                    />
                     <div className="absolute inset-0 opacity-[0.05] group-hover:opacity-[0.15] transition-opacity duration-700 pointer-events-none overflow-hidden rounded-xl">
-                      <LuxeArt seed={log.title} colorful={true} className="w-full h-full mix-blend-multiply transition-transform duration-1000 group-hover:scale-110" />
+                      <LuxeArt
+                        seed={log.title}
+                        colorful={true}
+                        className="w-full h-full mix-blend-multiply transition-transform duration-1000 group-hover:scale-110"
+                      />
                     </div>
                     <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-between">
                       <div className="flex justify-between items-start">
-                         <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40">
-                           {new Date(log.date).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-                         </span>
-                         <span className="font-outfit text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border rounded flex items-center transition-colors" style={{ color: color, borderColor: `${color}40`, backgroundColor: `${color}10` }}>
-                           {log.category}
-                         </span>
+                        <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40">
+                          {new Date(log.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            year: 'numeric',
+                          })}
+                        </span>
+                        <span
+                          className="font-outfit text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border rounded flex items-center transition-colors"
+                          style={{
+                            color: color,
+                            borderColor: `${color}40`,
+                            backgroundColor: `${color}10`,
+                          }}
+                        >
+                          {log.category}
+                        </span>
                       </div>
                       <div className="flex-1 flex flex-col justify-center text-center">
-                         <h2 className="font-playfairDisplay text-2xl md:text-3xl text-[#1A1A1A] group-hover:scale-105 transition-transform duration-500 leading-tight">
-                           {log.title}
-                         </h2>
-                         {log.author && (
-                           <p className="font-outfit text-[10px] text-[#1A1A1A]/40 mt-2 uppercase tracking-[0.2em]">
-                             {log.author}
-                           </p>
-                         )}
+                        <h2 className="font-playfairDisplay text-2xl md:text-3xl text-[#1A1A1A] group-hover:scale-105 transition-transform duration-500 leading-tight">
+                          {log.title}
+                        </h2>
+                        {log.author && (
+                          <p className="font-outfit text-[10px] text-[#1A1A1A]/40 mt-2 uppercase tracking-[0.2em]">
+                            {log.author}
+                          </p>
+                        )}
                       </div>
                       <div className="flex justify-between items-end">
-                         <div className="flex gap-0.5">
-                           {[...Array(5)].map((_, i) => (
-                             <StarIcon key={i} size={12} weight="fill" className={i < (log.rating || 0) ? 'text-[#8D4004]' : 'text-[#1A1A1A]/10'} />
-                           ))}
-                         </div>
-                         <div className="w-8 h-8 rounded-full border border-[#1A1A1A]/10 flex items-center justify-center group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
-                           <ArrowUpRightIcon size={14} />
-                         </div>
+                        <div className="flex gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <StarIcon
+                              key={i}
+                              size={12}
+                              weight="fill"
+                              className={
+                                i < (log.rating || 0)
+                                  ? 'text-[#8D4004]'
+                                  : 'text-[#1A1A1A]/10'
+                              }
+                            />
+                          ))}
+                        </div>
+                        <div className="w-8 h-8 rounded-full border border-[#1A1A1A]/10 flex items-center justify-center group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
+                          <ArrowUpRightIcon size={14} />
+                        </div>
                       </div>
                     </div>
                   </Link>
@@ -232,33 +244,48 @@ const LuxeLogsPage = () => {
                     <div className="flex flex-col md:flex-row md:items-center p-6 gap-6 md:gap-8">
                       <div className="flex items-center gap-6 w-full md:w-48 shrink-0">
                         <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40 w-16">
-                          {new Date(log.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                          {new Date(log.date).toLocaleDateString('en-US', {
+                            month: 'short',
+                            day: 'numeric',
+                          })}
                         </span>
-                        <span className="font-outfit text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border rounded transition-colors text-black" style={{ backgroundColor: color, borderColor: color }}>
+                        <span
+                          className="font-outfit text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 border rounded transition-colors text-black"
+                          style={{ backgroundColor: color, borderColor: color }}
+                        >
                           {log.category}
                         </span>
                       </div>
                       <div className="flex-1 min-w-0 w-full">
                         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4">
-                           <h2 className="font-playfairDisplay text-xl md:text-2xl text-[#1A1A1A] group-hover:italic transition-all leading-tight truncate">
-                             {log.title}
-                           </h2>
-                           {log.author && (
-                             <p className="font-outfit text-[10px] text-[#1A1A1A]/40 uppercase tracking-[0.2em] truncate">
-                               — {log.author}
-                             </p>
-                           )}
+                          <h2 className="font-playfairDisplay text-xl md:text-2xl text-[#1A1A1A] group-hover:italic transition-all leading-tight truncate">
+                            {log.title}
+                          </h2>
+                          {log.author && (
+                            <p className="font-outfit text-[10px] text-[#1A1A1A]/40 uppercase tracking-[0.2em] truncate">
+                              — {log.author}
+                            </p>
+                          )}
                         </div>
                       </div>
                       <div className="flex items-center justify-between md:justify-end gap-8 w-full md:w-48 shrink-0 border-t md:border-t-0 pt-4 md:pt-0 border-[#1A1A1A]/5">
-                         <div className="flex gap-0.5">
-                           {[...Array(5)].map((_, i) => (
-                             <StarIcon key={i} size={12} weight="fill" className={i < (log.rating || 0) ? 'text-[#8D4004]' : 'text-[#1A1A1A]/10'} />
-                           ))}
-                         </div>
-                         <div className="w-8 h-8 rounded-full border border-[#1A1A1A]/10 flex items-center justify-center group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
-                           <ArrowUpRightIcon size={14} />
-                         </div>
+                        <div className="flex gap-0.5">
+                          {[...Array(5)].map((_, i) => (
+                            <StarIcon
+                              key={i}
+                              size={12}
+                              weight="fill"
+                              className={
+                                i < (log.rating || 0)
+                                  ? 'text-[#8D4004]'
+                                  : 'text-[#1A1A1A]/10'
+                              }
+                            />
+                          ))}
+                        </div>
+                        <div className="w-8 h-8 rounded-full border border-[#1A1A1A]/10 flex items-center justify-center group-hover:bg-[#1A1A1A] group-hover:text-white transition-colors">
+                          <ArrowUpRightIcon size={14} />
+                        </div>
                       </div>
                     </div>
                   </Link>

@@ -1,52 +1,25 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import piml from 'piml';
+import {
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../utils/logCategories';
 
 const useSearchableData = () => {
   const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const categories = useMemo(
-    () => [
-      'Book',
-      'Movie',
-      'Video',
-      'Game',
-      'Article',
-      'Music',
-      'Series',
-      'Food',
-      'Websites',
-      'Tools',
-      'Event',
-      'Quote',
-    ],
-    [],
-  );
-
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const fetchLogPromises = categories.map(async (category) => {
-          const response = await fetch(
-            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.piml`,
-          );
-          if (!response.ok) {
-            console.warn(
-              `Category PIML not found for ${category}: ${response.statusText}`,
-            );
-            return [];
-          }
-          const text = await response.text();
-          const data = piml.parse(text);
-          return data.logs || [];
-        });
+        const categories = await fetchLogCategories();
 
-        const [postsRes, projectsRes, allLogsArrays, appsRes] =
+        const [postsRes, projectsRes, combinedLogs, appsRes] =
           await Promise.all([
             fetch('/posts/posts.json'),
             fetch('/projects/projects.piml'),
-            Promise.all(fetchLogPromises), // Await all log category fetches
+            fetchLogsForCategories(categories, piml.parse),
             fetch('/apps/apps.json'),
           ]);
 
@@ -88,7 +61,6 @@ const useSearchableData = () => {
         }));
 
         const appsData = await appsRes.json();
-        const combinedLogs = allLogsArrays.flat(); // Flatten the array of arrays from logs
 
         // Process Apps
         const allApps = Object.values(appsData)
@@ -174,7 +146,8 @@ const useSearchableData = () => {
           },
           {
             title: 'Switch Visual Theme',
-            description: 'Choose Brufez, Fezluxe, Terracotta, Mist, Ledger, or Orbit.',
+            description:
+              'Choose Brufez, Fezluxe, Terracotta, Mist, Ledger, or Orbit.',
             type: 'command',
             commandId: 'switchTheme',
           },
@@ -418,7 +391,7 @@ const useSearchableData = () => {
     };
 
     fetchData();
-  }, [categories]);
+  }, []);
 
   return { items, isLoading };
 };

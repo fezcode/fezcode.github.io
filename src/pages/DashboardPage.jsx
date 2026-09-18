@@ -4,6 +4,7 @@ import Seo from '../components/Seo';
 import piml from 'piml';
 import { version } from '../version';
 import Loading from '../components/Loading';
+import { fetchLogCategories } from '../utils/logCategories';
 import '../styles/Dashboard.css';
 
 /**
@@ -190,25 +191,12 @@ const DashboardPage = () => {
         const projects = piml.parse(await projectsRes.text()).projects || [];
         const vague = piml.parse(await vagueRes.text()).issues || [];
 
-        const logCategories = [
-          'article',
-          'book',
-          'event',
-          'food',
-          'game',
-          'movie',
-          'music',
-          'reading',
-          'series',
-          'tools',
-          'video',
-          'websites',
-          'quote',
-        ];
+        const logCategories = await fetchLogCategories();
         let logCount = 0;
         const logDates = [];
         await Promise.all(
-          logCategories.map(async (cat) => {
+          logCategories.map(async (category) => {
+            const cat = category.toLowerCase();
             try {
               const res = await fetch(`/logs/${cat}/${cat}.piml`);
               if (!res.ok) return;
@@ -313,8 +301,14 @@ const DashboardPage = () => {
 
   if (loading) return <Loading />;
 
-  const { counts, postsByCategory, appsByCategory, projectStatus, months, feed } =
-    state;
+  const {
+    counts,
+    postsByCategory,
+    appsByCategory,
+    projectStatus,
+    months,
+    feed,
+  } = state;
   const total =
     counts.posts + counts.apps + counts.projects + counts.logs + counts.vague;
   const monthMax = Math.max(1, ...months.map((m) => m.count));
@@ -323,10 +317,7 @@ const DashboardPage = () => {
       Math.max(1, projectStatus.active + projectStatus.archived)) *
       100,
   );
-  const today = new Date()
-    .toISOString()
-    .slice(0, 10)
-    .replaceAll('-', '.');
+  const today = new Date().toISOString().slice(0, 10).replaceAll('-', '.');
 
   const pull = () => {
     setTimeout(() => navigate('/random'), 300);
@@ -344,7 +335,13 @@ const DashboardPage = () => {
       <Seo
         title="Dashboard | Fezcodex"
         description="The FZX Control Surface — fezcodex metrics on phosphor LCDs, LED meters, and a knob that pulls random entries from the archive."
-        keywords={['dashboard', 'metrics', 'stats', 'fezcodex', 'control surface']}
+        keywords={[
+          'dashboard',
+          'metrics',
+          'stats',
+          'fezcodex',
+          'control surface',
+        ]}
       />
 
       <div className="fzx-panel relative max-w-6xl mx-auto px-5 md:px-10 py-8">
@@ -428,10 +425,7 @@ const DashboardPage = () => {
               </div>
               <div className="flex gap-2 mt-2">
                 {months.map((m, i) => (
-                  <span
-                    key={i}
-                    className="flex-1 text-center fzx-screen-label"
-                  >
+                  <span key={i} className="flex-1 text-center fzx-screen-label">
                     {m.letter}
                   </span>
                 ))}
@@ -598,9 +592,7 @@ const DashboardPage = () => {
           <span className="fzx-silk is-soft">
             Designed at fezcode · no user-serviceable parts inside
           </span>
-          <span className="fzx-silk is-soft">
-            Recounted on every power-on
-          </span>
+          <span className="fzx-silk is-soft">Recounted on every power-on</span>
         </div>
       </div>
     </div>

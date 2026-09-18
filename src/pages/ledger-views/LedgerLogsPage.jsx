@@ -13,21 +13,11 @@ import {
   LedgerStamp,
 } from '../../components/ledger';
 import '../../styles/Ledger.css';
-
-const CATEGORIES = [
-  'Book',
-  'Movie',
-  'Video',
-  'Game',
-  'Article',
-  'Music',
-  'Series',
-  'Food',
-  'Websites',
-  'Tools',
-  'Event',
-  'Quote',
-];
+import {
+  FALLBACK_CATEGORIES,
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../../utils/logCategories';
 
 const MONTHS = [
   'JANUARY',
@@ -69,6 +59,7 @@ const creatorOf = (log) =>
  * newest first, exactly as a daybook is kept.
  */
 const LedgerLogsPage = () => {
+  const [categories, setCategories] = useState(FALLBACK_CATEGORIES);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState([]);
@@ -82,16 +73,9 @@ const LedgerLogsPage = () => {
     let cancelled = false;
     (async () => {
       try {
-        const fetches = CATEGORIES.map(async (c) => {
-          const r = await fetch(
-            `/logs/${c.toLowerCase()}/${c.toLowerCase()}.piml`,
-          );
-          if (!r.ok) return [];
-          const txt = await r.text();
-          const data = piml.parse(txt);
-          return data.logs || [];
-        });
-        const all = (await Promise.all(fetches)).flat();
+        const cats = await fetchLogCategories();
+        setCategories(cats);
+        const all = await fetchLogsForCategories(cats, piml.parse);
         const withId = all
           .map((log, i) => ({
             ...log,
@@ -172,7 +156,7 @@ const LedgerLogsPage = () => {
               <strong>{String(logs.length).padStart(3, '0')}</strong> ENTRIES
             </span>
             <span>
-              <strong>{String(CATEGORIES.length).padStart(2, '0')}</strong>{' '}
+              <strong>{String(categories.length).padStart(2, '0')}</strong>{' '}
               CATEGORIES
             </span>
             <span>
@@ -185,7 +169,10 @@ const LedgerLogsPage = () => {
         </LedgerFolio>
 
         {/* filters */}
-        <div className="flex flex-col gap-3 mb-6 pb-4" style={{ borderBottom: '1px solid var(--ldg-rule)' }}>
+        <div
+          className="flex flex-col gap-3 mb-6 pb-4"
+          style={{ borderBottom: '1px solid var(--ldg-rule)' }}
+        >
           <input
             className="ldg-input"
             value={query}
@@ -194,7 +181,7 @@ const LedgerLogsPage = () => {
             aria-label="Search logs"
           />
           <div className="flex flex-wrap gap-1.5 items-baseline">
-            {CATEGORIES.map((c) => (
+            {categories.map((c) => (
               <button
                 key={c}
                 type="button"
@@ -219,7 +206,10 @@ const LedgerLogsPage = () => {
             >
               RATING SCALE
             </button>
-            <Link to="/reading" className="ldg-label no-underline hover:text-[var(--ldg-accent)]">
+            <Link
+              to="/reading"
+              className="ldg-label no-underline hover:text-[var(--ldg-accent)]"
+            >
               READING LIST →
             </Link>
           </div>
@@ -245,7 +235,10 @@ const LedgerLogsPage = () => {
           groups.map((group) => (
             <section key={group.key} className="mb-6">
               <LedgerRule label={group.key} className="mb-2" />
-              <ul className="list-none m-0 p-0 flex flex-col" style={{ gap: 2 }}>
+              <ul
+                className="list-none m-0 p-0 flex flex-col"
+                style={{ gap: 2 }}
+              >
                 {group.entries.map((log) => {
                   const category = (log.category || 'log').toLowerCase();
                   const creator = creatorOf(log);
@@ -277,7 +270,9 @@ const LedgerLogsPage = () => {
                         <span className="ldg-leader" aria-hidden="true" />
                         <span
                           className="ldg-accent shrink-0"
-                          aria-label={rating > 0 ? `Rated ${rating} of 5` : 'Unrated'}
+                          aria-label={
+                            rating > 0 ? `Rated ${rating} of 5` : 'Unrated'
+                          }
                         >
                           {starLine(rating)}
                         </span>
@@ -334,7 +329,11 @@ const LedgerLogsPage = () => {
             className="ldg-btn ldg-btn-accent mt-5 w-full"
             onClick={() => {
               setShowInfo(false);
-              openSidePanel('Rating System Details', <RatingSystemDetail />, 600);
+              openSidePanel(
+                'Rating System Details',
+                <RatingSystemDetail />,
+                600,
+              );
             }}
           >
             READ THE FULL GUIDE →

@@ -27,13 +27,14 @@ import {
   MistSpec,
   MistColophon,
 } from '../../components/mist';
+import {
+  FALLBACK_CATEGORIES,
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../../utils/logCategories';
 
 const FOG_GRADIENT =
   'radial-gradient(1100px 600px at 80% -10%, #FFFFFF 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #D2DBD8 0%, transparent 50%), radial-gradient(700px 500px at 95% 90%, #E5EBE9 0%, transparent 45%)';
-
-const CATEGORIES = [
-  'Book', 'Movie', 'Video', 'Game', 'Article', 'Music', 'Series', 'Food', 'Websites', 'Tools', 'Event', 'Quote',
-];
 
 const CATEGORY_TINT = {
   book: '#5F837B',
@@ -154,7 +155,10 @@ const MistLogCard = ({ log, index, viewMode = 'grid' }) => {
                 boxShadow: `0 0 8px 1px ${tint}66`,
               }}
             />
-            no. {String(log.originalIndex != null ? log.originalIndex + 1 : index + 1).padStart(3, '0')}
+            no.{' '}
+            {String(
+              log.originalIndex != null ? log.originalIndex + 1 : index + 1,
+            ).padStart(3, '0')}
           </span>
           <span className="flex items-center gap-2">
             <span style={{ color: tint }}>{category}</span>
@@ -212,6 +216,7 @@ const MistLogCard = ({ log, index, viewMode = 'grid' }) => {
 };
 
 const MistLogsPage = () => {
+  const [categories, setCategories] = useState(FALLBACK_CATEGORIES);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState([]);
@@ -229,14 +234,9 @@ const MistLogsPage = () => {
     let cancelled = false;
     (async () => {
       try {
-        const fetches = CATEGORIES.map(async (c) => {
-          const r = await fetch(`/logs/${c.toLowerCase()}/${c.toLowerCase()}.piml`);
-          if (!r.ok) return [];
-          const txt = await r.text();
-          const data = piml.parse(txt);
-          return data.logs || [];
-        });
-        const all = (await Promise.all(fetches)).flat();
+        const cats = await fetchLogCategories();
+        setCategories(cats);
+        const all = await fetchLogsForCategories(cats, piml.parse);
         const withId = all
           .map((log, i) => ({
             ...log,
@@ -327,14 +327,17 @@ const MistLogsPage = () => {
               className="flex flex-col gap-5"
             >
               <p className="font-instr-serif text-[20px] md:text-[22px] leading-[1.45] text-[#3C4845] max-w-[32ch]">
-                Things <em className="italic text-[#5F837B]">seen, read, played, tasted</em>{' '}
+                Things{' '}
+                <em className="italic text-[#5F837B]">
+                  seen, read, played, tasted
+                </em>{' '}
                 — written down before the fog could take them back.
               </p>
               <div className="pt-4">
                 <MistHorizon />
                 <div className="grid grid-cols-2 gap-4 pt-4">
                   <MistSpec label="entries" value={`${logs.length}`} />
-                  <MistSpec label="categories" value={`${CATEGORIES.length}`} />
+                  <MistSpec label="categories" value={`${categories.length}`} />
                   <MistSpec label="scale" value="1 ★ to 5 ★" />
                   <MistSpec label="ordered by" value="most recent waking" />
                 </div>
@@ -347,7 +350,9 @@ const MistLogsPage = () => {
                 >
                   <InfoIcon size={12} /> rating scale
                 </button>
-                <span aria-hidden="true" className="text-[#8A9894]">·</span>
+                <span aria-hidden="true" className="text-[#8A9894]">
+                  ·
+                </span>
                 <Link
                   to="/reading"
                   className="inline-flex items-center gap-2 text-[#5C6B67] hover:text-[#5F837B] transition-colors duration-[250ms]"
@@ -369,7 +374,7 @@ const MistLogsPage = () => {
             </div>
 
             <div className="flex flex-wrap gap-1.5 flex-1">
-              {CATEGORIES.map((c) => {
+              {categories.map((c) => {
                 const key = c.toLowerCase();
                 const isActive = selected.includes(c);
                 const tint = CATEGORY_TINT[key] || '#5C6B67';
@@ -473,7 +478,12 @@ const MistLogsPage = () => {
               <MistHorizon />
               <AnimatePresence mode="popLayout">
                 {filtered.map((log, i) => (
-                  <MistLogCard key={log.id} log={log} index={i} viewMode="list" />
+                  <MistLogCard
+                    key={log.id}
+                    log={log}
+                    index={i}
+                    viewMode="list"
+                  />
                 ))}
               </AnimatePresence>
             </div>
@@ -481,7 +491,12 @@ const MistLogsPage = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <AnimatePresence mode="popLayout">
                 {filtered.map((log, i) => (
-                  <MistLogCard key={log.id} log={log} index={i} viewMode="grid" />
+                  <MistLogCard
+                    key={log.id}
+                    log={log}
+                    index={i}
+                    viewMode="grid"
+                  />
                 ))}
               </AnimatePresence>
             </div>
@@ -527,18 +542,24 @@ const MistLogsPage = () => {
         <div className="font-outfit font-light text-[15px] leading-[1.7] text-[#5C6B67] space-y-5">
           <p>
             every entry is weighed the same way — five marks, read by
-            half-light. stars are not preference; they are how much of the
-            thing survived the waking.
+            half-light. stars are not preference; they are how much of the thing
+            survived the waking.
           </p>
           <ol className="list-none p-0">
             {[
-              ['5 ★', 'luminous — would press into a friend’s hands, still warm.'],
+              [
+                '5 ★',
+                'luminous — would press into a friend’s hands, still warm.',
+              ],
               ['4 ★', 'clear — recommended without hesitation.'],
               ['3 ★', 'worthwhile — has its hour; it might be yours.'],
               ['2 ★', 'thin — a caveat drifts beside every virtue.'],
               ['1 ★', 'dissolved — let the fog have it.'],
             ].map(([label, desc]) => (
-              <li key={label} className="py-2.5 pl-[68px] relative border-b border-[#3C4845]/10 last:border-b-0">
+              <li
+                key={label}
+                className="py-2.5 pl-[68px] relative border-b border-[#3C4845]/10 last:border-b-0"
+              >
                 <span className="absolute left-0 top-2.5 font-ibm-plex-mono text-[11px] tracking-[0.18em] lowercase text-[#5F837B]">
                   {label}
                 </span>
@@ -552,7 +573,11 @@ const MistLogsPage = () => {
             type="button"
             onClick={() => {
               setShowInfo(false);
-              openSidePanel('Rating System Details', <RatingSystemDetail />, 600);
+              openSidePanel(
+                'Rating System Details',
+                <RatingSystemDetail />,
+                600,
+              );
             }}
             className="w-full py-3 mt-4 rounded-full bg-[#5F837B]/10 text-[#5F837B] hover:bg-[#5F837B] hover:text-[#EEF2F1] transition-colors duration-[250ms] font-ibm-plex-mono text-[10.5px] tracking-[0.22em] lowercase"
           >

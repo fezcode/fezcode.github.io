@@ -25,14 +25,15 @@ import {
   TerracottaColophon,
   TerracottaSpec,
 } from '../../components/terracotta';
+import {
+  FALLBACK_CATEGORIES,
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../../utils/logCategories';
 
 const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.28 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
 const PAPER_GRADIENT =
   'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
-
-const CATEGORIES = [
-  'Book', 'Movie', 'Video', 'Game', 'Article', 'Music', 'Series', 'Food', 'Websites', 'Tools', 'Event', 'Quote',
-];
 
 const CATEGORY_COLOR = {
   book: '#9E4A2F',
@@ -123,8 +124,7 @@ const TerracottaLogCard = ({ log, index, viewMode = 'grid' }) => {
               <span
                 className="block mt-0.5 font-fraunces italic text-[13px] text-[#2E2620]"
                 style={{
-                  fontVariationSettings:
-                    '"opsz" 18, "SOFT" 100, "wght" 360',
+                  fontVariationSettings: '"opsz" 18, "SOFT" 100, "wght" 360',
                 }}
               >
                 by {creator}
@@ -172,7 +172,10 @@ const TerracottaLogCard = ({ log, index, viewMode = 'grid' }) => {
               className="inline-block w-[5px] h-[5px] rounded-full"
               style={{ backgroundColor: color }}
             />
-            No. {String(log.originalIndex != null ? log.originalIndex + 1 : index + 1).padStart(3, '0')}
+            No.{' '}
+            {String(
+              log.originalIndex != null ? log.originalIndex + 1 : index + 1,
+            ).padStart(3, '0')}
           </span>
           <span className="flex items-center gap-2">
             <span style={{ color }}>{category}</span>
@@ -185,8 +188,7 @@ const TerracottaLogCard = ({ log, index, viewMode = 'grid' }) => {
         <h3
           className="mt-5 font-fraunces text-[22px] md:text-[26px] leading-[1.1] tracking-[-0.02em] text-[#1A1613] group-hover:text-[#9E4A2F] transition-colors"
           style={{
-            fontVariationSettings:
-              '"opsz" 32, "SOFT" 40, "WONK" 1, "wght" 460',
+            fontVariationSettings: '"opsz" 32, "SOFT" 40, "WONK" 1, "wght" 460',
           }}
         >
           {log.title}
@@ -195,8 +197,7 @@ const TerracottaLogCard = ({ log, index, viewMode = 'grid' }) => {
           <p
             className="mt-1.5 font-fraunces italic text-[14px] text-[#2E2620]"
             style={{
-              fontVariationSettings:
-                '"opsz" 18, "SOFT" 100, "wght" 360',
+              fontVariationSettings: '"opsz" 18, "SOFT" 100, "wght" 360',
             }}
           >
             by {creator}
@@ -245,6 +246,7 @@ const TerracottaLogCard = ({ log, index, viewMode = 'grid' }) => {
 };
 
 const TerracottaLogsPage = () => {
+  const [categories, setCategories] = useState(FALLBACK_CATEGORIES);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState([]);
@@ -262,14 +264,9 @@ const TerracottaLogsPage = () => {
     let cancelled = false;
     (async () => {
       try {
-        const fetches = CATEGORIES.map(async (c) => {
-          const r = await fetch(`/logs/${c.toLowerCase()}/${c.toLowerCase()}.piml`);
-          if (!r.ok) return [];
-          const txt = await r.text();
-          const data = piml.parse(txt);
-          return data.logs || [];
-        });
-        const all = (await Promise.all(fetches)).flat();
+        const cats = await fetchLogCategories();
+        setCategories(cats);
+        const all = await fetchLogsForCategories(cats, piml.parse);
         const withId = all
           .map((log, i) => ({
             ...log,
@@ -341,7 +338,10 @@ const TerracottaLogsPage = () => {
             <div>
               <div className="font-ibm-plex-mono text-[11px] tracking-[0.2em] uppercase text-[#9E4A2F] mb-6 flex items-center gap-3">
                 <span>Codex entry · §</span>
-                <span aria-hidden="true" className="h-px flex-1 max-w-[60px] bg-[#9E4A2F]/50" />
+                <span
+                  aria-hidden="true"
+                  className="h-px flex-1 max-w-[60px] bg-[#9E4A2F]/50"
+                />
                 <span>VIII</span>
               </div>
               <h1
@@ -351,7 +351,8 @@ const TerracottaLogsPage = () => {
                     '"opsz" 144, "SOFT" 30, "WONK" 1, "wght" 460',
                 }}
               >
-                Discovery<br />
+                Discovery
+                <br />
                 <ChapterEm>logs</ChapterEm>
                 <span
                   aria-hidden="true"
@@ -386,7 +387,7 @@ const TerracottaLogsPage = () => {
                 <TerracottaSpec label="Entries" value={`${logs.length}`} />
                 <TerracottaSpec
                   label="Categories"
-                  value={`${CATEGORIES.length}`}
+                  value={`${categories.length}`}
                 />
                 <TerracottaSpec label="Scale" value="1 ★ to 5 ★" />
                 <TerracottaSpec label="Sort" value="Newest first" />
@@ -399,7 +400,9 @@ const TerracottaLogsPage = () => {
                 >
                   <InfoIcon size={12} /> Rating scale
                 </button>
-                <span aria-hidden="true" className="text-[#2E2620]/30">·</span>
+                <span aria-hidden="true" className="text-[#2E2620]/30">
+                  ·
+                </span>
                 <Link
                   to="/reading"
                   className="inline-flex items-center gap-2 text-[#2E2620] hover:text-[#1A1613]"
@@ -419,7 +422,7 @@ const TerracottaLogsPage = () => {
           </div>
 
           <div className="flex flex-wrap gap-1.5 flex-1">
-            {CATEGORIES.map((c) => {
+            {categories.map((c) => {
               const key = c.toLowerCase();
               const isActive = selected.includes(c);
               const color = CATEGORY_COLOR[key] || '#2E2620';
@@ -586,12 +589,12 @@ const TerracottaLogsPage = () => {
             Every entry is measured the same way — a plumb line of five marks.
             Stars are not preference; they are fit to purpose.
           </p>
-          <ol
-            className="list-none p-0"
-            style={{ counterReset: 'ratings' }}
-          >
+          <ol className="list-none p-0" style={{ counterReset: 'ratings' }}>
             {[
-              ['5 ★', 'Masterwork — would hand to a friend without hesitation.'],
+              [
+                '5 ★',
+                'Masterwork — would hand to a friend without hesitation.',
+              ],
               ['4 ★', 'Strong — recommended without caveat.'],
               ['3 ★', 'Worthwhile — has its audience, might be yours.'],
               ['2 ★', 'Flawed — a caveat for every virtue.'],
@@ -614,7 +617,11 @@ const TerracottaLogsPage = () => {
             type="button"
             onClick={() => {
               setShowInfo(false);
-              openSidePanel('Rating System Details', <RatingSystemDetail />, 600);
+              openSidePanel(
+                'Rating System Details',
+                <RatingSystemDetail />,
+                600,
+              );
             }}
             className="w-full py-3 mt-4 border border-[#C96442] text-[#9E4A2F] hover:bg-[#C96442] hover:text-[#F3ECE0] transition-colors font-ibm-plex-mono text-[10.5px] tracking-[0.22em] uppercase"
           >

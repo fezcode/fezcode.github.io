@@ -13,21 +13,11 @@ import {
   OrbitStamp,
 } from '../../components/orbit';
 import '../../styles/Orbit.css';
-
-const CATEGORIES = [
-  'Book',
-  'Movie',
-  'Video',
-  'Game',
-  'Article',
-  'Music',
-  'Series',
-  'Food',
-  'Websites',
-  'Tools',
-  'Event',
-  'Quote',
-];
+import {
+  FALLBACK_CATEGORIES,
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../../utils/logCategories';
 
 const MONTHS = [
   'JANUARY',
@@ -63,6 +53,7 @@ const creatorOf = (log) =>
   '';
 
 const OrbitLogsPage = () => {
+  const [categories, setCategories] = useState(FALLBACK_CATEGORIES);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState([]);
@@ -76,16 +67,9 @@ const OrbitLogsPage = () => {
     let cancelled = false;
     (async () => {
       try {
-        const fetches = CATEGORIES.map(async (c) => {
-          const r = await fetch(
-            `/logs/${c.toLowerCase()}/${c.toLowerCase()}.piml`,
-          );
-          if (!r.ok) return [];
-          const txt = await r.text();
-          const data = piml.parse(txt);
-          return data.logs || [];
-        });
-        const all = (await Promise.all(fetches)).flat();
+        const cats = await fetchLogCategories();
+        setCategories(cats);
+        const all = await fetchLogsForCategories(cats, piml.parse);
         const withId = all
           .map((log, i) => ({
             ...log,
@@ -166,7 +150,7 @@ const OrbitLogsPage = () => {
               <strong>{String(logs.length).padStart(3, '0')}</strong> ENTRIES
             </span>
             <span>
-              <strong>{String(CATEGORIES.length).padStart(2, '0')}</strong>{' '}
+              <strong>{String(categories.length).padStart(2, '0')}</strong>{' '}
               CATEGORIES
             </span>
             <span>
@@ -191,7 +175,7 @@ const OrbitLogsPage = () => {
             aria-label="Search logs"
           />
           <div className="flex flex-wrap gap-1.5 items-baseline">
-            {CATEGORIES.map((c) => (
+            {categories.map((c) => (
               <button
                 key={c}
                 type="button"

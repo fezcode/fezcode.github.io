@@ -19,23 +19,14 @@ import piml from 'piml';
 import GenericModal from '../../components/GenericModal';
 import { useSidePanel } from '../../context/SidePanelContext';
 import RatingSystemDetail from '../../components/RatingSystemDetail';
-
-const categories = [
-  'Book',
-  'Movie',
-  'Video',
-  'Game',
-  'Article',
-  'Music',
-  'Series',
-  'Food',
-  'Websites',
-  'Tools',
-  'Event',
-  'Quote',
-];
+import {
+  FALLBACK_CATEGORIES,
+  fetchLogCategories,
+  fetchLogsForCategories,
+} from '../../utils/logCategories';
 
 const BrutalistLogsPage = () => {
+  const [categories, setCategories] = useState(FALLBACK_CATEGORIES);
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCategories, setSelectedCategories] = useState([]);
@@ -53,18 +44,9 @@ const BrutalistLogsPage = () => {
     unlockAchievement('log_diver');
     const fetchLogs = async () => {
       try {
-        const fetchPromises = categories.map(async (category) => {
-          const response = await fetch(
-            `/logs/${category.toLowerCase()}/${category.toLowerCase()}.piml`,
-          );
-          if (!response.ok) return [];
-          const text = await response.text();
-          const data = piml.parse(text);
-          return data.logs || [];
-        });
-
-        const allLogsArrays = await Promise.all(fetchPromises);
-        const combinedLogs = allLogsArrays.flat();
+        const cats = await fetchLogCategories();
+        setCategories(cats);
+        const combinedLogs = await fetchLogsForCategories(cats, piml.parse);
 
         const logsWithId = combinedLogs
           .map((log, index) => ({
