@@ -111,6 +111,7 @@ const Layout = ({
   const isAppDetail =
     location.pathname.startsWith('/apps/') && location.pathname !== '/apps/';
   const isDemystifyPage = location.pathname.startsWith('/demystify');
+  const isColophonPage = location.pathname.startsWith('/colophon');
   const hideLayout =
     (isAboutPage && !isOrbitAboutPage) ||
     isGraphPage ||
@@ -119,6 +120,7 @@ const Layout = ({
     isTerminalPage ||
     isSnfAny ||
     isDemystifyPage ||
+    isColophonPage ||
     (isAppDetail && isAppFullscreen);
 
   const mainContent = location.pathname.startsWith('/stories') ? (

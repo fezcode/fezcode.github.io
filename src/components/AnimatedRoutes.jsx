@@ -277,6 +277,7 @@ const FezluxeDesignPage = lazy(
   () => import('../pages/luxe-views/FezluxeDesignPage'),
 );
 const RetroTerminalPage = lazy(() => import('../pages/RetroTerminalPage'));
+const ColophonPage = lazy(() => import('../pages/ColophonPage'));
 const DemystifyHubPage = lazy(
   () => import('../pages/demystify/DemystifyHubPage'),
 );
@@ -1114,6 +1115,14 @@ const AnimatedRoutes = ({
                 <TheVaguePage />
               </Suspense>
             </motion.div>
+          }
+        />
+        <Route
+          path="/colophon"
+          element={
+            <Suspense fallback={<Loading />}>
+              <ColophonPage />
+            </Suspense>
           }
         />
         <Route

@@ -110,6 +110,10 @@
         (to) /dashboard
         (icon) TerminalWindowIcon
       > (item)
+        (label) Colophon
+        (to) /colophon
+        (icon) PenNibIcon
+      > (item)
         (label) History
         (to) /timeline
         (icon) TimerIcon
