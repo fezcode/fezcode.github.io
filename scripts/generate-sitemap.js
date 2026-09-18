@@ -101,9 +101,13 @@ const generateSitemap = async () => {
   // Add dynamic routes from logs (category-based)
   try {
     const logsDirectory = path.join(publicDirectory, 'logs');
-    const logCategories = fs.readdirSync(logsDirectory, { withFileTypes: true })
-      .filter(dirent => dirent.isDirectory())
-      .map(dirent => dirent.name);
+    // Same list the site reads, written by generate-logs-manifest a step
+    // earlier. Reading the directory directly picked up `reading`, which is a
+    // reading list rather than a log category — its items have no slug, so it
+    // put four /logs/reading/undefined URLs in the sitemap.
+    const { categories: logCategories } = JSON.parse(
+      fs.readFileSync(path.join(logsDirectory, 'index.json'), 'utf-8'),
+    );
 
     for (const category of logCategories) {
       const categoryPimlPath = path.join(logsDirectory, category, `${category}.piml`);

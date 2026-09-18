@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Wed, 16 Sep 2026 22:29:07 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 18 Sep 2026 21:25:51 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Wed, 16 Sep 2026 22:29:07 GMT</pubDate>
+        <pubDate>Fri, 18 Sep 2026 21:25:51 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Kanije, 1601: Tiryaki Hasan Pasha and a Siege of Seventy-One Days]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/kanije-1601-tiryaki-hasan-pasha</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/kanije-1601-tiryaki-hasan-pasha</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Kanije, 1601: Tiryaki Hasan Pasha and a Siege of Seventy-One Days</h1>
+<p><a href="https://fezcode.com/blog/kanije-1601-tiryaki-hasan-pasha">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[A Drawer Full of Razors: Definitions, Origins, and Worked Examples]]></title>
+            <description><![CDATA[[object Object]]]></description>
+            <link>https://fezcode.com/blog/a-drawer-full-of-razors</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/a-drawer-full-of-razors</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 18 Sep 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>A Drawer Full of Razors: Definitions, Origins, and Worked Examples</h1>
+<p>Interactive experiment: Pick the razor you would reach for, then meet the razors that reach the opposite conclusion from the same facts. <a href="https://fezcode.com/apps/probability-cabinet?experiment=razor-drawer&amp;case=payroll">Open The Razor Drawer in the Probability Cabinet</a>.</p><p><a href="https://fezcode.com/blog/a-drawer-full-of-razors">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Please Continue: A Short Rant About the Milgram Experiments]]></title>
             <description><![CDATA[[object Object]]]></description>
