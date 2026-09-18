@@ -1,5 +1,48 @@
 [
   {
+    "slug": "kanije-1601-tiryaki-hasan-pasha",
+    "title": "Kanije, 1601: Tiryaki Hasan Pasha and a Siege of Seventy-One Days",
+    "date": "2026-09-18",
+    "updated": "2026-09-18",
+    "description": "A seventy-one-year-old Ottoman governor held the fortress of Kanizsa for seventy-one days against a Habsburg-led coalition several times his strength, and no relief ever came. An objective account of the 1601 siege — the disputed numbers, the course of the campaign, and where the documented record ends and the gazavatname legend begins.",
+    "tags": [
+      "history",
+      "ottoman",
+      "habsburg",
+      "siege",
+      "hungary",
+      "military history",
+      "historiography"
+    ],
+    "category": "rant",
+    "filename": "kanije-1601-tiryaki-hasan-pasha.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "a-drawer-full-of-razors",
+    "title": "A Drawer Full of Razors: Definitions, Origins, and Worked Examples",
+    "date": "2026-09-18",
+    "updated": "2026-09-18",
+    "description": "Fourteen philosophical razors — Occam, Hume, Hitchens, Sagan, Popper, Einstein, Hanlon, Grey, Chesterton and the rest — each with its definition, its real origin, one worked example of correct use and one of misuse. Plus an interactive drawer where the razors contradict each other on five ordinary cases.",
+    "tags": [
+      "philosophy",
+      "logic",
+      "epistemology",
+      "heuristics",
+      "definitions",
+      "reference",
+      "critical thinking",
+      "interactive"
+    ],
+    "category": "rant",
+    "filename": "a-drawer-full-of-razors.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "please-continue-a-milgram-rant",
     "title": "Please Continue: A Short Rant About the Milgram Experiments",
     "date": "2026-09-15",
