@@ -119,11 +119,65 @@ function demystifyRoutes() {
   return out;
 }
 
+// The vocabulary registry is an ES module the app bundles rather than a data
+// file under public/, so the slugs are read off its top-level keys — the same
+// keys /vocab/:term routes on. Without this the 70 entries were never
+// prerendered and fell through to 404.html, which GitHub Pages serves with a
+// 404 status: fine for a reader, invisible to a crawler.
+function vocabRoutes() {
+  const out = new Set();
+  const source = (() => {
+    try {
+      return readFileSync(join('src', 'data', 'vocabulary.js'), 'utf8');
+    } catch {
+      return '';
+    }
+  })();
+
+  for (const match of source.matchAll(/^ {2}'?([a-zA-Z0-9-]+)'?:\s*\{/gm)) {
+    out.add(`/vocab/${match[1]}`);
+  }
+  return out;
+}
+
+// Apps are listed by hand in routes.js, which had fallen six behind apps.json —
+// chladni-plate, map-builder, ebru, vitray, morphogenesis and
+// constellation-cartographer were all live but never prerendered. Reading the
+// same file the apps page reads keeps the two from drifting again. This only
+// adds; anything in routes.js that apps.json does not know about is kept.
+function appRoutes() {
+  const apps = readJson(join(PUBLIC, 'apps', 'apps.json')) || {};
+  const out = new Set();
+  for (const category of Object.values(apps)) {
+    for (const app of category?.apps || []) {
+      if (app?.to?.startsWith('/apps/')) out.add(app.to);
+    }
+  }
+  return out;
+}
+
+// Project pages were in the sitemap but never in the prerender list, so all 36
+// of them have been served to crawlers as 404.html. Slugs are pulled off the
+// piml by line, the way logsRoutes does it, rather than pulling in a parser.
+function projectRoutes() {
+  const out = new Set();
+  const file = join(PUBLIC, 'projects', 'projects.piml');
+  if (!existsSync(file)) return out;
+  for (const line of readFileSync(file, 'utf8').split(/\r?\n/)) {
+    const match = line.match(/^\s*\(slug\)\s*(\S+)/);
+    if (match) out.add(`/projects/${match[1]}`);
+  }
+  return out;
+}
+
 export function discoverAllRoutes() {
   const all = new Set(staticRoutes);
+  for (const r of appRoutes()) all.add(r);
+  for (const r of projectRoutes()) all.add(r);
   for (const r of blogRoutes()) all.add(r);
   for (const r of logsRoutes()) all.add(r);
   for (const r of storyBookRoutes()) all.add(r);
   for (const r of demystifyRoutes()) all.add(r);
+  for (const r of vocabRoutes()) all.add(r);
   return Array.from(all);
 }

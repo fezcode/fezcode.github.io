@@ -8,19 +8,24 @@ const baseUrl = 'https://fezcode.com'; // Replace with your actual base URL
 const generateSitemap = async () => {
   let urls = [];
 
-  // Add static routes
-  const staticRoutes = [
-    '/',
-    '/about',
-    '/blog',
-    '/projects',
-    '/logs',
-    '/stories',
-    '/settings',
-    '/apps',
-    '/apps/probability-cabinet',
-    '/stories/lore',
+  // The static routes are the ones the build prerenders, read from the list the
+  // prerender crawl itself uses. A sitemap entry that is not prerendered falls
+  // through to 404.html, which GitHub Pages serves with a 404 status, so
+  // advertising a route the build does not produce is worse than omitting it.
+  // Keeping one list means the two cannot drift, which is how the hand-written
+  // version here ended up ten routes long against forty real pages.
+  //
+  // /apps/* is dropped here and re-added from apps.json below, which carries
+  // real dates for lastmod.
+  const NOT_INDEXABLE = [
+    '/pinned-apps', // per-visitor localStorage; a crawler sees an empty page
+    '/random', // redirects somewhere different every time
   ];
+
+  const { staticRoutes: builtRoutes } = await import('../pages/routes.js');
+  const staticRoutes = builtRoutes.filter(
+    route => !route.startsWith('/apps/') && !NOT_INDEXABLE.includes(route),
+  );
 
   staticRoutes.forEach(route => {
     urls.push({
@@ -96,6 +101,49 @@ const generateSitemap = async () => {
     });
   } catch (error) {
     console.error('Error reading projects.piml:', error);
+  }
+
+  // Add every app. Only probability-cabinet used to be listed, so 110 app
+  // pages were absent from the sitemap entirely.
+  try {
+    const appsJsonPath = path.join(publicDirectory, 'apps', 'apps.json');
+    const appsData = JSON.parse(fs.readFileSync(appsJsonPath, 'utf-8'));
+
+    Object.values(appsData)
+      .flatMap(category => category.apps || [])
+      .filter(app => app.to)
+      .forEach(app => {
+        urls.push({
+          loc: `${baseUrl}${app.to}`,
+          lastmod: new Date(app.updated_at || app.created_at || new Date()).toISOString(),
+          changefreq: 'monthly',
+          priority: '0.7',
+        });
+      });
+  } catch (error) {
+    console.error('Error reading apps.json:', error);
+  }
+
+  // Add every vocabulary entry. The registry is an ES module the build bundles
+  // rather than a data file this CommonJS script can require, so the top-level
+  // keys are read off it — they are the slugs /vocab/:term routes on.
+  try {
+    const vocabularyPath = path.join(__dirname, '..', 'src', 'data', 'vocabulary.js');
+    const source = fs.readFileSync(vocabularyPath, 'utf-8');
+    const terms = [...source.matchAll(/^ {2}'?([a-zA-Z0-9-]+)'?:\s*\{/gm)].map(
+      match => match[1],
+    );
+
+    terms.forEach(term => {
+      urls.push({
+        loc: `${baseUrl}/vocab/${term}`,
+        lastmod: new Date().toISOString(),
+        changefreq: 'monthly',
+        priority: '0.6',
+      });
+    });
+  } catch (error) {
+    console.error('Error reading vocabulary.js:', error);
   }
 
   // Add dynamic routes from logs (category-based)
@@ -213,11 +261,21 @@ const generateSitemap = async () => {
     console.error('Error reading demystify index files:', error);
   }
 
+  // Several sections legitimately reach the same URL — the story books are
+  // listed once per language, and /demystify is both a prerendered page and the
+  // root of its own section — so the first entry for a location wins.
+  const seen = new Set();
+  const uniqueUrls = urls.filter(url => {
+    if (seen.has(url.loc)) return false;
+    seen.add(url.loc);
+    return true;
+  });
+
   // Construct XML sitemap content
   let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`;
 
-  urls.forEach(url => {
+  uniqueUrls.forEach(url => {
     sitemapContent += `
   <url>
     <loc>${url.loc}</loc>

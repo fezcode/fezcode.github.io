@@ -114,6 +114,7 @@ export const staticRoutes = [
   "/blog",
   "/brufez",
   "/brufez/panels",
+  "/colophon",
   "/commands",
   "/dashboard",
   "/demystify",
