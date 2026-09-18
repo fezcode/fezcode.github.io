@@ -84,7 +84,11 @@ const generateRssFeed = () => {
 
     feed.item({
       title: post.title,
-      description: { _cdata: itemDescription + '...' }, // Short, plain-text summary
+      // A plain string: the rss package CDATA-wraps description itself. The
+      // { _cdata } form is the xml package's, which only reaches the feed
+      // through custom_elements below — passed here it stringifies, and every
+      // item in the feed read "[object Object]".
+      description: `${itemDescription}...`, // Short, plain-text summary
       url: url,
       guid: url, // Use full URL as guid (isPermaLink defaults to true)
       date: new Date(post.date).toUTCString(),
