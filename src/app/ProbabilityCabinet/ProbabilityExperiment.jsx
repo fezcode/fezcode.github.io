@@ -5,6 +5,7 @@ import PirateExperiment from './PirateExperiment';
 import BayesianExperiment from './BayesianExperiment';
 import KaprekarExperiment from './KaprekarExperiment';
 import MilgramExperiment from './MilgramExperiment';
+import RazorExperiment from './RazorExperiment';
 import './probability.css';
 
 const components = {
@@ -13,6 +14,7 @@ const components = {
   'bayesian-ratings': BayesianExperiment,
   'kaprekars-routine': KaprekarExperiment,
   'milgram-obedience': MilgramExperiment,
+  'razor-drawer': RazorExperiment,
 };
 export default function ProbabilityExperiment({
   experiment = 'penneys-game',

@@ -39,6 +39,10 @@ export const vocabulary = {
     title: "Cent'anni",
     loader: () => import('./vocab/cent-anni'),
   },
+  'chestertons-fence': {
+    title: 'Chesterton’s Fence',
+    loader: () => import('./vocab/chestertons-fence'),
+  },
   'cogito-ergo-sum': {
     title: 'Cogito, Ergo Sum',
     loader: () => import('./vocab/cogito-ergo-sum'),
@@ -83,6 +87,10 @@ export const vocabulary = {
     title: 'Existentialism',
     loader: () => import('./vocab/existentialism'),
   },
+  falsifiability: {
+    title: 'Falsifiability',
+    loader: () => import('./vocab/falsifiability'),
+  },
   'game-of-the-year': {
     title: 'Game of the Year (GOTY)',
     loader: () => import('./vocab/game-of-the-year'),
@@ -90,6 +98,14 @@ export const vocabulary = {
   geist: {
     title: 'Geist',
     loader: () => import('./vocab/geist'),
+  },
+  'hanlons-razor': {
+    title: 'Hanlon’s Razor',
+    loader: () => import('./vocab/hanlons-razor'),
+  },
+  'hitchens-razor': {
+    title: 'Hitchens’s Razor',
+    loader: () => import('./vocab/hitchens-razor'),
   },
   hydration: {
     title: 'Hydration',
@@ -154,6 +170,10 @@ export const vocabulary = {
   nihilism: {
     title: 'Nihilism',
     loader: () => import('./vocab/nihilism'),
+  },
+  'occams-razor': {
+    title: 'Occam’s Razor',
+    loader: () => import('./vocab/occams-razor'),
   },
   occasionalism: {
     title: 'Occasionalism',

@@ -141,6 +141,12 @@ it.each([
     'The Shock Generator experiment',
     'Take the teacher’s seat',
   ],
+  [
+    'razor-drawer',
+    'case="deploy-check"',
+    'The Razor Drawer experiment',
+    'Do not remove a fence until you know why it was put there.',
+  ],
 ])('renders %s from its custom Markdown tag', async (id, attrs, name, text) => {
   render(
     <MemoryRouter>
@@ -244,4 +250,55 @@ it('reports full obedience at 450 V', () => {
   }
   expect(screen.getByText('Fully obedient.')).toBeInTheDocument();
   expect(screen.getByText(/So were 26 of the 40 people/)).toBeInTheDocument();
+});
+
+it('confronts a razor pick with the razors that disagree, then tallies the drawer', () => {
+  render(
+    <MemoryRouter>
+      <ProbabilityExperiment experiment="razor-drawer" case="deploy-check" />
+    </MemoryRouter>,
+  );
+  expect(screen.getByText(/Case 01 of 05/)).toHaveTextContent(
+    'The ninety-second sleep',
+  );
+  fireEvent.click(
+    screen.getByRole('button', { name: /Chesterton’s Fence/ }),
+  );
+  expect(
+    screen.getByText('Chesterton’s Fence: Leave it until you know.'),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText('Reaches the opposite conclusion · same facts'),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText(/Occam’s Razor: Take it out\./),
+  ).toBeInTheDocument();
+  expect(
+    screen.getByText(/Popper’s Criterion: Make it forbid something\./),
+  ).toBeInTheDocument();
+  expect(screen.getByText(/slowest cold start/)).toBeInTheDocument();
+
+  // Walk the remaining four cases so the tally has something to count.
+  for (let i = 0; i < 4; i++) {
+    fireEvent.click(screen.getByRole('button', { name: 'Next case →' }));
+    fireEvent.click(screen.getAllByRole('button', { name: /Razor/ })[0]);
+  }
+  fireEvent.click(
+    screen.getByRole('button', { name: 'See what that says about you' }),
+  );
+  expect(screen.getByText('Your cuts')).toBeInTheDocument();
+  expect(screen.getByText(/a razor you did not pick/)).toBeInTheDocument();
+});
+
+it('names a razor that has no jurisdiction over the facts', () => {
+  render(
+    <MemoryRouter>
+      <ProbabilityExperiment experiment="razor-drawer" case="smart-meter" />
+    </MemoryRouter>,
+  );
+  fireEvent.click(screen.getByRole('button', { name: /Hanlon’s Razor/ }));
+  expect(screen.getByText(/no jurisdiction over these facts/)).toBeVisible();
+  fireEvent.click(screen.getByRole('button', { name: 'Open the whole drawer' }));
+  expect(screen.getByText('Every razor in the drawer')).toBeInTheDocument();
+  expect(screen.getAllByRole('row')).toHaveLength(9);
 });

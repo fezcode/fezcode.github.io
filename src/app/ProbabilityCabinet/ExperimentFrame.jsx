@@ -5,6 +5,7 @@ import experiments from './experiments.json';
 const MODEL_KIND = {
   'pirate-game': 'Strategic model',
   'milgram-obedience': 'Historical data',
+  'razor-drawer': 'Heuristics, not proofs',
 };
 
 export default function ExperimentFrame({

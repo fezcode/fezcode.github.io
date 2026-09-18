@@ -38,5 +38,13 @@
     "description": "Sit at Milgram’s machine, feel the four prods, and compare where you stop with 40 real subjects.",
     "post": "please-continue-a-milgram-rant",
     "attributes": ["guess"]
+  },
+  {
+    "id": "razor-drawer",
+    "title": "The Razor Drawer",
+    "kind": "Epistemics",
+    "description": "Pick the razor you would reach for, then meet the razors that reach the opposite conclusion from the same facts.",
+    "post": "a-drawer-full-of-razors",
+    "attributes": ["case"]
   }
 ]

@@ -11,6 +11,11 @@ import {
   shockLabel,
   pirateSolution,
   pirateVote,
+  RAZORS,
+  RAZOR_CASES,
+  razorDissent,
+  razorTally,
+  razorVerdicts,
 } from './models';
 import { experimentRssLinks } from '../../../scripts/experiment-rss.cjs';
 
@@ -193,5 +198,100 @@ describe('Milgram shock generator', () => {
     });
     const baseline = MILGRAM_VARIATIONS.find((row) => row.id === 'baseline');
     expect(baseline.obedient / baseline.total).toBe(0.65);
+  });
+});
+
+describe('Razor drawer', () => {
+  it('only offers razors that exist in the drawer', () => {
+    const known = RAZORS.map((razor) => razor.id);
+    RAZOR_CASES.forEach((entry) => {
+      Object.keys(entry.verdicts).forEach((id) => {
+        expect(known).toContain(id);
+      });
+      expect(razorVerdicts(entry.id).length).toBeGreaterThanOrEqual(3);
+    });
+  });
+
+  it('mixes split cases with unanimous ones so the drawer is not rigged', () => {
+    const stanceCounts = RAZOR_CASES.map(
+      (entry) =>
+        new Set(
+          razorVerdicts(entry.id)
+            .map((verdict) => verdict.stance)
+            .filter((stance) => stance !== 'abstain'),
+        ).size,
+    );
+    // Every case needs at least one razor with jurisdiction over it.
+    stanceCounts.forEach((size) => expect(size).toBeGreaterThanOrEqual(1));
+    // The post's claim only holds if the drawer really does split on ordinary
+    // facts, and it is only honest if it sometimes agrees.
+    expect(stanceCounts.filter((size) => size > 1).length).toBeGreaterThanOrEqual(
+      3,
+    );
+    expect(stanceCounts.filter((size) => size === 1).length).toBeGreaterThanOrEqual(
+      1,
+    );
+  });
+
+  it('splits the drawer into agreement, dissent, and no jurisdiction', () => {
+    const fence = razorDissent('deploy-check', 'chesterton');
+    expect(fence.picked.stance).toBe('keep');
+    expect(fence.agrees).toHaveLength(0);
+    expect(fence.dissents.map((razor) => razor.id)).toEqual([
+      'occam',
+      'hitchens',
+      'popper',
+    ]);
+
+    const cut = razorDissent('deploy-check', 'occam');
+    expect(cut.agrees.map((razor) => razor.id)).toEqual(['hitchens']);
+    expect(cut.dissents.map((razor) => razor.id)).toEqual([
+      'popper',
+      'chesterton',
+    ]);
+  });
+
+  it('reports abstentions without counting them as dissent', () => {
+    const payroll = razorDissent('payroll', 'hanlon');
+    expect(payroll.abstains).toHaveLength(0);
+
+    const study = razorDissent('study', 'occam');
+    expect(study.abstains.map((razor) => razor.id)).toEqual(['hitchens']);
+    expect(study.dissents).toHaveLength(0);
+
+    // A razor with no jurisdiction still reports the razors that did rule.
+    const misapplied = razorDissent('study', 'hitchens');
+    expect(misapplied.picked.stance).toBe('abstain');
+    expect(misapplied.abstains).toHaveLength(0);
+    expect(misapplied.dissents.map((razor) => razor.id)).toEqual([
+      'occam',
+      'sagan',
+      'popper',
+    ]);
+  });
+
+  it('returns an empty split for a razor the case never offered', () => {
+    expect(razorDissent('payroll', 'popper')).toMatchObject({
+      picked: null,
+      agrees: [],
+      dissents: [],
+      abstains: [],
+    });
+  });
+
+  it('tallies contested cuts, misapplied razors, and the favourite', () => {
+    const tally = razorTally([
+      { caseId: 'payroll', razorId: 'hanlon' },
+      { caseId: 'deploy-check', razorId: 'occam' },
+      { caseId: 'study', razorId: 'occam' },
+      { caseId: 'smart-meter', razorId: 'hanlon' },
+    ]);
+    expect(tally.total).toBe(4);
+    // Every case but the study, where the whole drawer rejects the paper.
+    expect(tally.contested).toBe(3);
+    expect(tally.misapplied).toBe(1);
+    expect(tally.distinct).toBe(2);
+    expect(tally.favourite.id).toBe('hanlon');
+    expect(tally.favouriteCount).toBe(2);
   });
 });
