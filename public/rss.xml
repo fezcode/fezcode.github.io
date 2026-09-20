@@ -9,14 +9,26 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 18 Sep 2026 22:27:21 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 20 Sep 2026 04:41:02 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 18 Sep 2026 22:27:20 GMT</pubDate>
+        <pubDate>Sun, 20 Sep 2026 04:41:02 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Nobody Walks Away: A Short Rant About Three HBO Max Crime Shows]]></title>
+            <description><![CDATA[Sıfır Bir, The Penguin and Barry, watched back to back on HBO Max. Three completely different shows arriving at the same verdict: crime is a debt with compounding interest, nobody gets an exit ramp, and the bill is always handed to whoever nearby sti...]]></description>
+            <link>https://fezcode.com/blog/nobody-walks-away</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/nobody-walks-away</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sun, 20 Sep 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>⚠️ Spoilers for all three shows. The endings especially. That is the whole subject.</strong></p>
+</blockquote>
+<p><a href="https://fezcode.com/blog/nobody-walks-away">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Kanije, 1601: Tiryaki Hasan Pasha and a Siege of Seventy-One Days]]></title>
             <description><![CDATA[A seventy-one-year-old Ottoman governor held the fortress of Kanizsa for seventy-one days against a Habsburg-led coalition several times his strength, and no relief ever came. An objective account of the 1601 siege — the disputed numbers, the course ...]]></description>
