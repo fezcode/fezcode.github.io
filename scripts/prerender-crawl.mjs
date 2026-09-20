@@ -256,7 +256,13 @@ prerender-crawl: ${noisy} route(s) logged console errors`);
     await writeFile(join(DIST, '404.html'), home, 'utf8');
   } catch {}
 
-  if (errs > 0) process.exit(1);
+  // Exit explicitly instead of waiting for the event loop to drain. Puppeteer
+  // can leave an orphaned renderer or crashpad handler holding the pipe it
+  // inherited, and build.mjs then blocks forever on a crawl that has already
+  // written every page. Flush stdout first so the summary above is not cut off.
+  const code = errs > 0 ? 1 : 0;
+  await new Promise((resolve) => process.stdout.write('', resolve));
+  process.exit(code);
 }
 
 await main();
