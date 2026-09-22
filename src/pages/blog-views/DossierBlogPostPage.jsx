@@ -15,6 +15,7 @@ import {
 import GrainOverlay from '../../components/GrainOverlay';
 import CoffeeStain from '../../components/CoffeeStain';
 import CensoredPolaroid from '../../components/CensoredPolaroid';
+import { getCategoryColor } from '../../utils/categoryColors';
 import Seo from '../../components/Seo';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { useAchievements } from '../../context/AchievementContext';
@@ -447,7 +448,17 @@ const DossierBlogPostPage = () => {
             )}
             <div>
               <span className="text-gray-400 block mb-1">Category</span>
-              <span className="text-black">{post.attributes.category}</span>
+              <span
+                className="font-bold"
+                style={{
+                  color: getCategoryColor(
+                    'dossier',
+                    post.attributes.category,
+                  ),
+                }}
+              >
+                {post.attributes.category}
+              </span>
             </div>
             <div>
               <span className="text-gray-400 block mb-1">

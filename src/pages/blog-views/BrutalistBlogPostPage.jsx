@@ -16,6 +16,7 @@ import Seo from '../../components/Seo';
 import GenerativeArt from '../../components/GenerativeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
@@ -212,6 +213,11 @@ const BrutalistBlogPostPage = () => {
 
   if (!post) return null;
 
+  const categoryColor = getCategoryColor(
+    'brutalist',
+    post.attributes.category,
+  );
+
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
@@ -262,7 +268,14 @@ const BrutalistBlogPostPage = () => {
                 {post.attributes.series ? 'Back to Series' : 'Back to Intel'}
               </span>
             </Link>
-            <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest border border-emerald-500/20 px-2 py-1.5 rounded-full bg-emerald-500/5 backdrop-blur-sm">
+            <span
+              className="font-mono text-[10px] uppercase tracking-widest border px-2 py-1.5 rounded-full backdrop-blur-sm"
+              style={{
+                color: categoryColor,
+                borderColor: `${categoryColor}33`,
+                backgroundColor: `${categoryColor}0d`,
+              }}
+            >
               Category: {post.attributes.category || 'Brutalist'}
             </span>
           </div>
@@ -357,6 +370,7 @@ const BrutalistBlogPostPage = () => {
                   label="Category"
                   value={post.attributes.category || 'Misc'}
                   isAccent
+                  accentColor={categoryColor}
                 />
               </div>
             </div>
@@ -403,13 +417,14 @@ const BrutalistBlogPostPage = () => {
   );
 };
 
-const SpecItem = ({ icon: Icon, label, value, isAccent }) => (
+const SpecItem = ({ icon: Icon, label, value, isAccent, accentColor }) => (
   <div className="flex flex-col gap-1">
     <span className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-gray-500">
       <Icon size={14} /> {label}
     </span>
     <span
       className={`font-mono text-sm uppercase ${isAccent ? 'text-emerald-400 font-bold' : 'text-white'}`}
+      style={isAccent && accentColor ? { color: accentColor } : undefined}
     >
       {value}
     </span>

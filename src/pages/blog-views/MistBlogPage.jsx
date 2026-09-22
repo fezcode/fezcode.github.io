@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import {
   MistVeil,
   MistOrb,
@@ -16,19 +17,6 @@ import {
 
 const FOG_GRADIENT =
   'radial-gradient(1100px 600px at 80% -10%, #FFFFFF 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #D2DBD8 0%, transparent 50%), radial-gradient(700px 500px at 95% 90%, #E5EBE9 0%, transparent 45%)';
-
-const CATEGORY_TINT = {
-  dev: '#5F837B',
-  ai: '#8FA8BC',
-  feat: '#6E8E9C',
-  rant: '#7B8E5F',
-  gist: '#5F837B',
-  essay: '#8FA8BC',
-  series: '#5F837B',
-  'd&d': '#7B8E5F',
-  dnd: '#7B8E5F',
-  default: '#5C6B67',
-};
 
 const FILTERS = [
   { id: 'all', label: 'all' },
@@ -54,7 +42,7 @@ const formatDriftDate = (d) =>
 const DriftRow = ({ item, index }) => {
   const href = item.isSeries ? `/blog/series/${item.slug}` : `/blog/${item.slug}`;
   const categoryKey = (item.category || 'default').toLowerCase();
-  const tint = CATEGORY_TINT[categoryKey] || CATEGORY_TINT.default;
+  const tint = getCategoryColor('mist', categoryKey);
   const displayCategory = item.isSeries ? 'series' : categoryKey;
 
   return (

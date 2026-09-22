@@ -11,6 +11,7 @@ import ImageModal from '../../components/ImageModal';
 import Seo from '../../components/Seo';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
@@ -415,6 +416,12 @@ const EditorialBlogPostPage = () => {
                   <Link
                     to={`/blog?category=${post.attributes.category}`}
                     className="hover:underline underline-offset-4 font-bold"
+                    style={{
+                      color: getCategoryColor(
+                        isInvert ? 'editorial-invert' : 'editorial',
+                        post.attributes.category,
+                      ),
+                    }}
                   >
                     {post.attributes.category || 'Article'}
                   </Link>

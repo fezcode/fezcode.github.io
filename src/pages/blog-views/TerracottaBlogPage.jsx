@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import {
   TerracottaStrip,
   TerracottaChapter,
@@ -15,18 +16,6 @@ import {
 const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.28 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
 const PAPER_GRADIENT =
   'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
-
-const CATEGORY_COLOR = {
-  dev: '#6B8E23',
-  ai: '#8A6A32',
-  feat: '#B88532',
-  rant: '#9E4A2F',
-  gist: '#C96442',
-  series: '#B88532',
-  'd&d': '#9E4A2F',
-  dnd: '#9E4A2F',
-  default: '#2E2620',
-};
 
 const FILTERS = [
   { id: 'all', label: 'All' },
@@ -52,7 +41,7 @@ const formatCodexDate = (d) =>
 const LogRow = ({ item, index }) => {
   const href = item.isSeries ? `/blog/series/${item.slug}` : `/blog/${item.slug}`;
   const categoryKey = (item.category || 'default').toLowerCase();
-  const color = CATEGORY_COLOR[categoryKey] || CATEGORY_COLOR.default;
+  const color = getCategoryColor('terracotta', categoryKey);
   const displayCategory = item.isSeries ? 'series' : categoryKey;
 
   return (
@@ -292,7 +281,7 @@ const TerracottaBlogPage = () => {
           <div className="flex flex-wrap gap-1.5 flex-1">
             {FILTERS.map((f) => {
               const isActive = activeFilter === f.id;
-              const color = CATEGORY_COLOR[f.id] || CATEGORY_COLOR.default;
+              const color = getCategoryColor('terracotta', f.id);
               return (
                 <button
                   key={f.id}

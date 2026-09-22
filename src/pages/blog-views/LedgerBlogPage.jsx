@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Seo from '../../components/Seo';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import {
   LedgerFolio,
   LedgerNotice,
@@ -195,8 +196,15 @@ const LedgerBlogPage = () => {
                     </span>
                     <span className="ldg-leader" aria-hidden="true" />
                     <span
-                      className="ldg-accent hidden sm:inline"
-                      style={{ fontSize: '0.72rem', fontWeight: 700 }}
+                      className="hidden sm:inline"
+                      style={{
+                        fontSize: '0.72rem',
+                        fontWeight: 700,
+                        color: getCategoryColor(
+                          'ledger',
+                          item.isSeries ? 'series' : item.category,
+                        ),
+                      }}
                     >
                       {item.isSeries
                         ? `VOL · ${String(item.posts.length).padStart(2, '0')}`

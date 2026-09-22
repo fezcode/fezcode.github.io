@@ -25,6 +25,7 @@ import CodeModal from '../../components/CodeModal';
 import Seo from '../../components/Seo';
 import { useToast } from '../../hooks/useToast';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import MermaidDiagram from '../../components/MermaidDiagram';
 
 const dokumentCodeTheme = {
@@ -295,6 +296,8 @@ const DokumentBlogPostPage = () => {
     );
   if (!post) return null;
 
+  const categoryColor = getCategoryColor('dokument', post.attributes.category);
+
   const currentPostIndex = post.seriesPosts?.findIndex(
     (item) => item.slug === currentSlug,
   );
@@ -341,7 +344,15 @@ const DokumentBlogPostPage = () => {
                 {post.attributes.series ? 'Back to Series' : 'Back to Archives'}
               </span>
             </Link>
-            <div className="border-2 border-emerald-600 px-3 py-1.5 font-mono text-[10px] font-black uppercase tracking-widest text-emerald-700 bg-emerald-50 shadow-[4px_4px_0px_0px_rgba(5,150,105,1)]">
+            <div
+              className="border-2 px-3 py-1.5 font-mono text-[10px] font-black uppercase tracking-widest"
+              style={{
+                color: categoryColor,
+                borderColor: categoryColor,
+                backgroundColor: `${categoryColor}14`,
+                boxShadow: `4px 4px 0px 0px ${categoryColor}`,
+              }}
+            >
               CLASSIFIED // {post.attributes.category}
             </div>
           </div>

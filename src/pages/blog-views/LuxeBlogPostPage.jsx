@@ -16,6 +16,7 @@ import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
@@ -190,6 +191,8 @@ const LuxeBlogPostPage = () => {
 
   if (!post) return null;
 
+  const categoryColor = getCategoryColor('luxe', post.attributes.category);
+
   return (
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] selection:bg-[#C0B298] selection:text-black">
       <Seo
@@ -237,7 +240,13 @@ const LuxeBlogPostPage = () => {
           </h1>
 
           {post.attributes.category && (
-            <span className="inline-block border border-[#1A1A1A]/20 px-4 py-1 rounded-full font-outfit text-[10px] uppercase tracking-[0.2em] text-[#1A1A1A]/60">
+            <span
+              className="inline-block border px-4 py-1 rounded-full font-outfit text-[10px] uppercase tracking-[0.2em]"
+              style={{
+                color: categoryColor,
+                borderColor: `${categoryColor}40`,
+              }}
+            >
               {post.attributes.category}
             </span>
           )}

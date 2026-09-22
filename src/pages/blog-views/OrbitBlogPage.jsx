@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowUpRightIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
+import { getCategoryColor } from '../../utils/categoryColors';
 import { OrbitNotice } from '../../components/orbit';
 import {
   useOrbitIndex,
@@ -101,8 +102,18 @@ const OrbitBlogPage = () => {
                 >
                   <div>
                     <p className="orb-label mb-3">
-                      {post.series ? 'Series' : post.category || 'Writing'} ·{' '}
-                      {orbitDate(post.updated || post.date)}
+                      <span
+                        style={{
+                          color: getCategoryColor(
+                            'orbit',
+                            post.series ? 'series' : post.category,
+                          ),
+                          fontWeight: 500,
+                        }}
+                      >
+                        {post.series ? 'Series' : post.category || 'Writing'}
+                      </span>{' '}
+                      · {orbitDate(post.updated || post.date)}
                     </p>
                     <h2 className="text-2xl md:text-3xl tracking-tight mb-3">
                       {post.title}

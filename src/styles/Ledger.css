@@ -37,6 +37,17 @@ html[data-ledger-register='1'] {
   --ldg-rule: rgba(33, 34, 42, 0.25);
   --ldg-veil: rgba(251, 250, 247, 0.9);
   --ldg-scheme: light;
+
+  /* category inks */
+  --ldg-cat-dev: #1d4ed8;
+  --ldg-cat-rant: #b91c1c;
+  --ldg-cat-ai: #047857;
+  --ldg-cat-feat: #7e22ce;
+  --ldg-cat-gist: #b45309;
+  --ldg-cat-essay: #4338ca;
+  --ldg-cat-series: #be185d;
+  --ldg-cat-dnd: #be123c;
+  --ldg-cat-default: #21222a;
 }
 
 html[data-ledger-register='2'] {
@@ -49,6 +60,17 @@ html[data-ledger-register='2'] {
   --ldg-rule: rgba(13, 18, 28, 0.35);
   --ldg-veil: rgba(149, 171, 192, 0.9);
   --ldg-scheme: light;
+
+  /* category inks */
+  --ldg-cat-dev: #0b2f8f;
+  --ldg-cat-rant: #8c1010;
+  --ldg-cat-ai: #05543c;
+  --ldg-cat-feat: #59108f;
+  --ldg-cat-gist: #7a3a00;
+  --ldg-cat-essay: #2a1f9e;
+  --ldg-cat-series: #8c1050;
+  --ldg-cat-dnd: #8c1030;
+  --ldg-cat-default: #222834;
 }
 
 html[data-ledger-register='3'] {
@@ -61,6 +83,17 @@ html[data-ledger-register='3'] {
   --ldg-rule: rgba(214, 214, 220, 0.22);
   --ldg-veil: rgba(19, 19, 24, 0.9);
   --ldg-scheme: dark;
+
+  /* category inks */
+  --ldg-cat-dev: #60a5fa;
+  --ldg-cat-rant: #fb923c;
+  --ldg-cat-ai: #34d399;
+  --ldg-cat-feat: #c084fc;
+  --ldg-cat-gist: #fbbf24;
+  --ldg-cat-essay: #818cf8;
+  --ldg-cat-series: #f472b6;
+  --ldg-cat-dnd: #fb7185;
+  --ldg-cat-default: #d6d6dc;
 }
 
 html[data-ledger-register='4'] {
@@ -73,6 +106,17 @@ html[data-ledger-register='4'] {
   --ldg-rule: rgba(0, 232, 102, 0.35);
   --ldg-veil: rgba(12, 15, 12, 0.9);
   --ldg-scheme: dark;
+
+  /* category inks */
+  --ldg-cat-dev: #00e866;
+  --ldg-cat-rant: #ffb000;
+  --ldg-cat-ai: #7affd9;
+  --ldg-cat-feat: #c8ff4d;
+  --ldg-cat-gist: #ffd166;
+  --ldg-cat-essay: #4dffb0;
+  --ldg-cat-series: #eaffea;
+  --ldg-cat-dnd: #ff7a3d;
+  --ldg-cat-default: #00e866;
 }
 
 html[data-ledger-register='5'] {
@@ -85,6 +129,17 @@ html[data-ledger-register='5'] {
   --ldg-rule: rgba(240, 180, 41, 0.35);
   --ldg-veil: rgba(18, 13, 5, 0.9);
   --ldg-scheme: dark;
+
+  /* category inks */
+  --ldg-cat-dev: #f0b429;
+  --ldg-cat-rant: #ff6b35;
+  --ldg-cat-ai: #b9cf5a;
+  --ldg-cat-feat: #ffe9a8;
+  --ldg-cat-gist: #d97706;
+  --ldg-cat-essay: #e0c36a;
+  --ldg-cat-series: #ffb38a;
+  --ldg-cat-dnd: #e05a2b;
+  --ldg-cat-default: #f0b429;
 }
 
 /* --- Frame ---------------------------------------------------------------- */

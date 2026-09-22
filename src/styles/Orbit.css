@@ -14,6 +14,17 @@ html[data-orbit-register='day'] {
   --orb-sunken: #eaece6;
   --orb-veil: #fffefa;
   --orb-scheme: light;
+
+  /* category inks */
+  --orb-cat-dev: #1d4ed8;
+  --orb-cat-rant: #c2410c;
+  --orb-cat-ai: #047857;
+  --orb-cat-feat: #7e22ce;
+  --orb-cat-gist: #b45309;
+  --orb-cat-essay: #4338ca;
+  --orb-cat-series: #be185d;
+  --orb-cat-dnd: #be123c;
+  --orb-cat-default: #626c72;
 }
 
 html[data-orbit-register='night'] {
@@ -29,6 +40,17 @@ html[data-orbit-register='night'] {
   --orb-sunken: #252e33;
   --orb-veil: #1c2226;
   --orb-scheme: dark;
+
+  /* category inks */
+  --orb-cat-dev: #60a5fa;
+  --orb-cat-rant: #fb923c;
+  --orb-cat-ai: #34d399;
+  --orb-cat-feat: #c084fc;
+  --orb-cat-gist: #fbbf24;
+  --orb-cat-essay: #818cf8;
+  --orb-cat-series: #f472b6;
+  --orb-cat-dnd: #fb7185;
+  --orb-cat-default: #a5b0b7;
 }
 
 .orb-appframe,

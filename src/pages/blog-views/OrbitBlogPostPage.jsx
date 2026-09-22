@@ -9,6 +9,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { customTheme } from '../../utils/customTheme';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { calculateReadingTime } from '../../utils/readingTime';
+import { getCategoryColor } from '../../utils/categoryColors';
 import Seo from '../../components/Seo';
 import MarkdownContent from '../../components/MarkdownContent';
 import MarkdownLink from '../../components/MarkdownLink';
@@ -210,8 +211,16 @@ const OrbitBlogPostPage = () => {
           </Link>
           <header className="mt-10">
             <p className="orb-eyebrow">
-              {post.category || 'Writing'} · {orbitDate(post.date)} ·{' '}
-              {calculateReadingTime(post.content)} min read
+              <span
+                style={{
+                  color: getCategoryColor('orbit', post.category),
+                  fontWeight: 500,
+                }}
+              >
+                {post.category || 'Writing'}
+              </span>{' '}
+              · {orbitDate(post.date)} · {calculateReadingTime(post.content)} min
+              read
             </p>
             <h1 className="orb-reader-heading">{post.title}</h1>
             {post.description && (

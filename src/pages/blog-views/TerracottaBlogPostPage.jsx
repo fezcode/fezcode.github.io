@@ -16,6 +16,7 @@ import Seo from '../../components/Seo';
 import TerracottaGenerativeArt from '../../components/TerracottaGenerativeArt';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import { useToast } from '../../hooks/useToast';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
@@ -23,13 +24,14 @@ import MermaidDiagram from '../../components/MermaidDiagram';
 
 const PAPER_GRAIN = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0.2 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")`;
 
-const SpecItem = ({ icon: Icon, label, value, isAccent }) => (
+const SpecItem = ({ icon: Icon, label, value, isAccent, accentColor }) => (
   <div className="flex flex-col gap-1">
     <span className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-widest text-[#2E2620]/60">
       <Icon size={14} /> {label}
     </span>
     <span
       className={`font-mono text-sm uppercase ${isAccent ? 'text-[#9E4A2F] font-bold' : 'text-[#1A1613]'}`}
+      style={isAccent && accentColor ? { color: accentColor } : undefined}
     >
       {value}
     </span>
@@ -217,6 +219,11 @@ const TerracottaBlogPostPage = () => {
 
   if (!post) return null;
 
+  const categoryColor = getCategoryColor(
+    'terracotta',
+    post.attributes.category,
+  );
+
   const currentPostIndex = post.seriesPosts?.findIndex((item) => item.slug === currentSlug);
   const prevPost = post.seriesPosts?.[currentPostIndex - 1];
   const nextPost = post.seriesPosts?.[currentPostIndex + 1];
@@ -262,7 +269,14 @@ const TerracottaBlogPostPage = () => {
               <ArrowLeft weight="bold" />
               <span>{post.attributes.series ? 'Back to Series' : 'Back to Intel'}</span>
             </Link>
-            <span className="font-mono text-[10px] text-[#9E4A2F] uppercase tracking-widest border border-[#C96442]/40 px-2 py-1.5 rounded-full bg-[#C96442]/10 backdrop-blur-sm">
+            <span
+              className="font-mono text-[10px] uppercase tracking-widest border px-2 py-1.5 rounded-full backdrop-blur-sm"
+              style={{
+                color: categoryColor,
+                borderColor: `${categoryColor}66`,
+                backgroundColor: `${categoryColor}1a`,
+              }}
+            >
               Category: {post.attributes.category || 'Terracotta'}
             </span>
           </div>
@@ -339,7 +353,13 @@ const TerracottaBlogPostPage = () => {
                   value={new Date(post.attributes.date).toLocaleDateString('en-GB')}
                 />
                 <SpecItem icon={Clock} label="Reading Time" value={`${estimatedReadingTime} Min`} />
-                <SpecItem icon={Tag} label="Category" value={post.attributes.category || 'Misc'} isAccent />
+                <SpecItem
+                  icon={Tag}
+                  label="Category"
+                  value={post.attributes.category || 'Misc'}
+                  isAccent
+                  accentColor={categoryColor}
+                />
               </div>
             </div>
 

@@ -13,6 +13,7 @@ import Seo from '../../components/Seo';
 import { calculateReadingTime } from '../../utils/readingTime';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
 import { useToast } from '../../hooks/useToast';
+import { getCategoryColor } from '../../utils/categoryColors';
 import MarkdownLink from '../../components/MarkdownLink';
 import MarkdownContent from '../../components/MarkdownContent';
 import MermaidDiagram from '../../components/MermaidDiagram';
@@ -366,7 +367,11 @@ const GalleyBlogPostPage = () => {
           <div className="border-t border-dashed border-[#1A161320] px-5 py-2 flex items-center justify-between font-ibm-plex-mono text-[9px] tracking-[0.28em] uppercase">
             <span className="text-[#2E2620]/60">
               Category ·{' '}
-              <span className="text-[#9E4A2F]">
+              <span
+                style={{
+                  color: getCategoryColor('galley', post.attributes.category),
+                }}
+              >
                 {post.attributes.category || 'Miscellany'}
               </span>
             </span>

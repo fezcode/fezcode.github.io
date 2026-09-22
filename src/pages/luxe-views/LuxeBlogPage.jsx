@@ -8,6 +8,7 @@ import {
   FolderIcon,
 } from '@phosphor-icons/react';
 import { fetchAllBlogPosts } from '../../utils/dataUtils';
+import { getCategoryColor } from '../../utils/categoryColors';
 import Seo from '../../components/Seo';
 import LuxeArt from '../../components/LuxeArt';
 
@@ -191,7 +192,13 @@ const LuxeBlogPage = () => {
                         year: 'numeric',
                       })}
                     </span>
-                    <span className="font-outfit text-[10px] uppercase tracking-widest text-[#1A1A1A]/40 border border-[#1A1A1A]/10 px-2 py-1 rounded flex items-center gap-1">
+                    <span
+                      className="font-outfit text-[10px] uppercase tracking-widest border px-2 py-1 rounded flex items-center gap-1"
+                      style={{
+                        color: getCategoryColor('luxe', item.category),
+                        borderColor: `${getCategoryColor('luxe', item.category)}33`,
+                      }}
+                    >
                       {item.isSeries && <FolderIcon size={10} weight="fill" />}
                       {item.category}
                     </span>
@@ -257,7 +264,10 @@ const LuxeBlogPage = () => {
 
                   <div className="flex-1 p-6 md:p-8 flex flex-col justify-center">
                     <div className="flex items-center gap-3 mb-4">
-                      <span className="font-outfit text-[10px] uppercase tracking-widest text-[#8D4004] font-bold">
+                      <span
+                        className="font-outfit text-[10px] uppercase tracking-widest font-bold"
+                        style={{ color: getCategoryColor('luxe', item.category) }}
+                      >
                         {item.category}
                       </span>
                       {item.isSeries && (
