@@ -106,6 +106,7 @@ const Layout = ({
       'document',
       'page',
       'gallery',
+      'bentos',
     ].includes(projectStyle);
   // Check if we are inside a specific app (but not the apps listing page)
   const isAppDetail =

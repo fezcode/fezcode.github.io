@@ -51,6 +51,26 @@
     (image) /images/projects/gobake/gobake-banner.png
 
   > (project)
+    (slug) airlift
+    (title) Airlift
+    (style) bentos
+    (version) 0.3.3
+    (size) 2
+    (repo_link) https://github.com/fezcode/Airlift
+    (demo_link) https://github.com/fezcode/Airlift/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 10
+      > Avalonia UI
+      > SQLite
+      > App Manager
+    (shortDescription) Airlift is a modern app manager for independent software. Discover apps, follow their public GitHub releases, and install, update and remove them from one place - with SHA-256 and Forge identity checks before any installer runs, opt-in silent updates, collections, two themes, and an airlift-cli that shares the same core.
+    (date) 2026-09-22
+    (image) /images/projects/airlift/discover.webp
+
+  > (project)
     (slug) timp
     (title) Timp
     (style) hifi
