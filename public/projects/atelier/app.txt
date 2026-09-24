@@ -5,7 +5,7 @@
   "subtitle": "High-performance viewing with GPU-accelerated SkiaSharp rendering, infinite zoom on vector graphics, and native HEIC, AVIF and WebP support.",
   "accent": "#8A2226",
   "accent2": "#4A0205",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "platforms": [
     "Windows"
   ],
@@ -34,7 +34,7 @@
     },
     {
       "title": "Modern formats",
-      "body": "HEIC and HEIF via Magick.NET, plus AVIF, WebP and ICO."
+      "body": "HEIC and HEIF via Magick.NET, plus AVIF, WebP, animated GIF and ICO."
     },
     {
       "title": "Fluid navigation",
@@ -53,32 +53,134 @@
   "keysHeading": "From the keyboard",
   "keys": [
     {
-      "k": "ctrl+wheel",
-      "a": "Zoom in and out"
+      "group": "Move",
+      "k": [
+        "←"
+      ],
+      "a": "Previous image, in Explorer order"
     },
     {
-      "k": "shift+wheel",
-      "a": "Pan horizontally"
+      "group": "Move",
+      "k": [
+        "→"
+      ],
+      "a": "Next image, in Explorer order"
     },
     {
-      "k": "left",
-      "a": "Previous image in the folder"
-    },
-    {
-      "k": "right",
-      "a": "Next image in the folder"
-    },
-    {
-      "k": "f",
+      "group": "Move",
+      "k": [
+        "F"
+      ],
       "a": "Fullscreen"
     },
     {
-      "k": "ctrl+o",
+      "group": "Zoom",
+      "k": [
+        "Ctrl",
+        "Wheel"
+      ],
+      "a": "Zoom in and out"
+    },
+    {
+      "group": "Zoom",
+      "k": [
+        "Shift",
+        "Wheel"
+      ],
+      "a": "Pan horizontally"
+    },
+    {
+      "group": "Zoom",
+      "k": [
+        "Ctrl",
+        "0"
+      ],
+      "a": "Fit to window"
+    },
+    {
+      "group": "Zoom",
+      "k": [
+        "Ctrl",
+        "1"
+      ],
+      "a": "Actual size"
+    },
+    {
+      "group": "Edit",
+      "k": [
+        "R"
+      ],
+      "a": "Rotate right"
+    },
+    {
+      "group": "Edit",
+      "k": [
+        "Shift",
+        "R"
+      ],
+      "a": "Rotate left"
+    },
+    {
+      "group": "Edit",
+      "k": [
+        "F2"
+      ],
+      "a": "Rename"
+    },
+    {
+      "group": "Edit",
+      "k": [
+        "Del"
+      ],
+      "a": "Move to the Recycle Bin"
+    },
+    {
+      "group": "Edit",
+      "k": [
+        "Space"
+      ],
+      "a": "Pause an animation"
+    },
+    {
+      "group": "File",
+      "k": [
+        "Ctrl",
+        "O"
+      ],
       "a": "Open"
     },
     {
-      "k": "ctrl+s",
+      "group": "File",
+      "k": [
+        "Ctrl",
+        "S"
+      ],
+      "a": "Save, baking in any rotation"
+    },
+    {
+      "group": "File",
+      "k": [
+        "Ctrl",
+        "Shift",
+        "S"
+      ],
       "a": "Save as"
+    },
+    {
+      "group": "File",
+      "k": [
+        "Ctrl",
+        "C"
+      ],
+      "a": "Copy pixels, file and path"
+    },
+    {
+      "group": "File",
+      "k": [
+        "Ctrl",
+        "V"
+      ],
+      "a": "Open from the clipboard"
     }
   ],
   "terminalHeading": "Build it yourself",
@@ -102,15 +204,19 @@
     ],
     [
       "Formats",
-      "SVG, HEIC, AVIF, WebP, ICO"
+      "SVG, HEIC, AVIF, WebP, GIF, ICO"
     ],
     [
       "Wallpaper",
       "6 modes, auto-converted"
     ],
     [
-      "Version",
-      "read off the assembly"
+      "Tests",
+      "199, headless"
+    ],
+    [
+      "License",
+      "MIT"
     ]
   ],
   "shots": [
@@ -119,5 +225,166 @@
       "caption": "Atelier — a 2400×1600 photo, zoom and frame controls"
     }
   ],
-  "shotsHeading": "The application itself"
+  "shotsHeading": "The application itself",
+  "announcement": {
+    "badge": "New in 0.4.0",
+    "text": "Photos no longer open on their side — plus rotate, clipboard, rename, Recycle Bin delete and animated GIF/WebP.",
+    "href": "https://github.com/fezcode/Atelier/releases/latest"
+  },
+  "formats": [
+    {
+      "name": "SVG",
+      "via": "rendered as vector",
+      "kind": "vector"
+    },
+    {
+      "name": "HEIC",
+      "via": "Magick.NET",
+      "kind": "phone"
+    },
+    {
+      "name": "HEIF",
+      "via": "Magick.NET",
+      "kind": "phone"
+    },
+    {
+      "name": "AVIF",
+      "via": "Magick.NET",
+      "kind": "modern"
+    },
+    {
+      "name": "WebP",
+      "via": "still or animated",
+      "kind": "modern"
+    },
+    {
+      "name": "GIF",
+      "via": "plays at its own delays",
+      "kind": "animated"
+    },
+    {
+      "name": "ICO",
+      "via": "every frame size",
+      "kind": "classic"
+    },
+    {
+      "name": "PNG",
+      "via": "SkiaSharp",
+      "kind": "classic"
+    },
+    {
+      "name": "JPEG",
+      "via": "EXIF-aware",
+      "kind": "classic"
+    },
+    {
+      "name": "BMP",
+      "via": "SkiaSharp",
+      "kind": "classic"
+    }
+  ],
+  "stats": [
+    {
+      "value": "199",
+      "label": "headless tests"
+    },
+    {
+      "value": "8",
+      "label": "EXIF orientations handled"
+    },
+    {
+      "value": "6",
+      "label": "wallpaper modes"
+    },
+    {
+      "value": "10",
+      "label": "formats it opens"
+    }
+  ],
+  "whatsNew": {
+    "eyebrow": "New in 0.4.0",
+    "title": "Photos stand up straight now.",
+    "body": "Avalonia's decoder ignores the EXIF orientation tag, so a portrait phone photo always opened sideways. 0.4.0 fixes it as part of rotation rather than beside it: all eight EXIF values and every rotate and flip are one value, and the tag is simply where it starts.",
+    "items": [
+      {
+        "key": "R",
+        "title": "Rotate and flip",
+        "body": "R and Shift+R turn the picture; flip it horizontally or vertically from Edit. Nothing touches the disk until you save."
+      },
+      {
+        "key": "Ctrl C",
+        "title": "Copy three ways at once",
+        "body": "Pixels, the file and its path, all together — it pastes into an editor, an Explorer window or a text box alike."
+      },
+      {
+        "key": "Ctrl V",
+        "title": "Open from the clipboard",
+        "body": "Paste a copied file or loose pixels straight into the viewer; a copied file wins."
+      },
+      {
+        "key": "F2",
+        "title": "Rename in place",
+        "body": "Type a bare name and the extension is kept for you."
+      },
+      {
+        "key": "Del",
+        "title": "Recycle Bin, never gone",
+        "body": "Delete moves the picture to the Recycle Bin and shows the next one. There is no permanent delete, so a mis-tap is always recoverable."
+      },
+      {
+        "key": "Space",
+        "title": "Animated GIF and WebP",
+        "body": "They play at their own frame delays and Space pauses. A very long animation falls back to a still first frame instead of filling memory."
+      },
+      {
+        "key": "Ctrl 0",
+        "title": "Fit, actual size, steps",
+        "body": "Ctrl+0 fits, Ctrl+1 is 100%, Ctrl+plus and minus step the zoom."
+      },
+      {
+        "key": "Ctrl S",
+        "title": "Save bakes the turn in",
+        "body": "Saving writes the rotation into the pixels and clears the tag, or the next open would turn it again. Save As moved to Ctrl+Shift+S."
+      }
+    ]
+  },
+  "explorer": {
+    "eyebrow": "Since 0.3.4",
+    "title": "Next means what Explorer shows next.",
+    "body": "Atelier reads the item order out of the live Explorer window showing the folder, so Next and Previous follow that window's sort, grouping and filter — even the shell's composite Date column, which no app can faithfully reimplement.",
+    "files": [
+      {
+        "name": "harbour-at-dawn.heic",
+        "date": "2026-09-18"
+      },
+      {
+        "name": "IMG_2291.jpg",
+        "date": "2026-09-12"
+      },
+      {
+        "name": "balcony.avif",
+        "date": "2026-09-20"
+      },
+      {
+        "name": "cat-on-radiator.webp",
+        "date": "2026-08-30"
+      },
+      {
+        "name": "map-sketch.svg",
+        "date": "2026-09-02"
+      }
+    ]
+  },
+  "related": [
+    {
+      "name": "Hisashi",
+      "body": "Opt in under View and Atelier's menus move up to Hisashi's bar.",
+      "href": "/projects/hisashi"
+    },
+    {
+      "name": "Airlift",
+      "body": "Install Atelier and keep it current from Airlift’s catalog.",
+      "href": "/projects/airlift"
+    }
+  ]
 }

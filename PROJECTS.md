@@ -214,12 +214,40 @@ public/projects/my-app/
 *   `closing { title, body, primary, secondary, links[] { title, body, href }, tagline }`
 *   `footer { title, body, columns[] { title, links[] { label, href } } }`
 
-## 6. Assets
+## 6. Flow Layout
+
+The **Flow** style (`(style) flow`) is a warm editorial page after the Wispr Flow
+landing page, built for **Hisashi**. Cream paper, EB Garamond display with italic
+turns, Figtree body, a floating pill nav and lavender CTAs. The product is drawn
+rather than pictured: a live top bar (`HisashiBar`) painted from the app's real
+theme tokens appears in the hero ribbon, the step cards and the theme switcher.
+
+Bands: announcement strip, hero with text flowing along SVG curves into the bar,
+a dark **built-with** marquee, a green **one bar on every screen** comparison, a
+sticky scroll-told **how it works** (steps advance with scroll on desktop, stack
+on mobile), a **theme switcher** over all themes, **focus rows** that ink in as
+they reach the middle of the viewport, a privacy card, a dark **wall** of tilted
+coloured cards, a chat-style **FAQ**, a photographic closing band and a product
+footer.
+
+Content lives in the shared `app.txt` under a `flow` key: `announcement`,
+`ctaLabel`, `nav { tabs[], links[] }`, `hero { eyebrow, line1, line2, subtitle,
+note, messy, clean }`, `logos { label, items[] }`, `speed { title, italic, body,
+before, after, image }`, `how { eyebrow, title, italic, steps[] { nav, title,
+body, demo (peek|zones|menu|toast), image } }`, `themesSection`, `features[] {
+title, body, demo (themes|contrast|plugins|code) }`, `plugins[]`, `privacy`,
+`wall { eyebrow, title, italic, cards[] { kind (feature|quote), color, name,
+role, quote, image?, stats?, href?, flip? } }`, `faq { items[] { q, a } }`,
+`closing`, `footer { products[], columns[] }` and `themes[] { id, name, group,
+dark, bg, fg, border, sep, accent, muted, icon, chip, radius, font }` — the
+theme list is extracted from the app's own theme JSON files.
+
+## 7. Assets
 
 *   **Images**: Place images in `public/images/projects/` or `public/images/bg/`.
 *   **Icons**: Use Phosphor icons where applicable in code, or SVG assets.
 
-## 7. Adding a New Project Checklist
+## 8. Adding a New Project Checklist
 
 1.  Create the folder `public/projects/[your-slug]`.
 2.  Choose your style: `stylish`, `editorial`, `hifi`, etc.

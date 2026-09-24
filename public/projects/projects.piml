@@ -95,8 +95,8 @@
   > (project)
     (slug) hisashi
     (title) Hisashi
-    (style) eaves
-    (version) 0.6.13
+    (style) flow
+    (version) 0.6.19
     (size) 2
     (repo_link) https://github.com/fezcode/hisashi
     (demo_link) https://github.com/fezcode/hisashi/releases
@@ -108,7 +108,7 @@
       > Avalonia UI
       > Windows
       > Plugins
-    (shortDescription) Hisashi (庇, Japanese for "eaves") is a plugin-driven top bar for Windows that sits at the top of every monitor. Per-monitor configuration, three zones, 24 bundled plugins, 20 contrast-checked themes, host-rendered toasts, and an OS Window Layer that lets any app in any language publish its menus into a macOS-style menu bar.
+    (shortDescription) Hisashi (庇, Japanese for "eaves") is a plugin-driven top bar for Windows that sits at the top of every monitor. Per-monitor configuration, three zones, 25 bundled plugins, 22 contrast-checked themes, host-rendered toasts, and an OS Window Layer that lets any app in any language publish its menus into a macOS-style menu bar.
     (date) 2026-09-12
     (image) /images/projects/hisashi/banner.svg
 
@@ -137,7 +137,7 @@
     (slug) descry
     (title) Descry
     (style) graph
-    (version) 0.87.0
+    (version) 0.90.1
     (size) 2
     (repo_link) https://github.com/fezcode/Descry
     (demo_link) https://github.com/fezcode/Descry/releases
@@ -180,7 +180,7 @@
     (slug) cogas
     (title) Cogas
     (style) shelf
-    (version) 0.15.2
+    (version) 0.17.0
     (size) 2
     (repo_link) https://github.com/fezcode/Cogas
     (demo_link) https://github.com/fezcode/Cogas/releases
@@ -241,7 +241,7 @@
     (slug) atelier
     (title) Atelier
     (style) gallery
-    (version) 0.3.3
+    (version) 0.4.0
     (size) 2
     (repo_link) https://github.com/fezcode/Atelier
     (demo_link) https://github.com/fezcode/Atelier/releases
@@ -253,7 +253,7 @@
       > Avalonia UI
       > SkiaSharp
       > Image Viewer
-    (shortDescription) Atelier is a high-performance image and SVG viewer built with Avalonia UI and C#. GPU-accelerated SkiaSharp rendering, infinite vector zoom, native HEIC / AVIF / WebP support, six wallpaper modes, and a minimalist dark interface that stays out of the way of the picture.
+    (shortDescription) Atelier is a high-performance image and SVG viewer built with Avalonia UI and C#. GPU-accelerated SkiaSharp rendering, infinite vector zoom, native HEIC / AVIF / WebP support, EXIF-correct rotation, animated GIF and WebP, six wallpaper modes, and a minimalist dark interface that stays out of the way of the picture.
     (date) 2026-09-01
     (image) /images/projects/atelier/viewer.png
 

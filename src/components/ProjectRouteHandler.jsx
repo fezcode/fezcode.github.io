@@ -35,6 +35,7 @@ const DocumentProjectPage = lazy(() => import('../pages/project-pages/DocumentPr
 const PageProjectPage = lazy(() => import('../pages/project-pages/PageProjectPage'));
 const GalleryProjectPage = lazy(() => import('../pages/project-pages/GalleryProjectPage'));
 const BentosProjectPage = lazy(() => import('../pages/project-pages/BentosProjectPage'));
+const FlowProjectPage = lazy(() => import('../pages/project-pages/FlowProjectPage'));
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -146,6 +147,7 @@ const ProjectRouteHandler = () => {
     page: PageProjectPage,
     gallery: GalleryProjectPage,
     bentos: BentosProjectPage,
+    flow: FlowProjectPage,
   };
   const AppStyled = APP_STYLES[projectStyle];
   if (AppStyled) {

@@ -5,7 +5,7 @@
   "subtitle": "Keyboard-driven, written in C with SDL2 and Lua. Vault sidebar, wiki links, tags, backlinks, a graph view and a real plugin host — Obsidian ergonomics without the Electron tax.",
   "accent": "#C98A5C",
   "accent2": "#A2663C",
-  "version": "0.87.0",
+  "version": "0.90.1",
   "platforms": [
     "Windows",
     "macOS",
@@ -126,7 +126,7 @@
   "colophon": [
     [
       "License",
-      "see repository"
+      "MIT"
     ],
     [
       "Rendering",
@@ -141,8 +141,380 @@
       "drawn by the app"
     ],
     [
-      "Spell check",
-      "opt-in, dictionary-driven"
+      "Builds",
+      "Windows, macOS, Linux"
     ]
-  ]
+  ],
+  "downloads": [
+    {
+      "os": "windows",
+      "label": "Windows installer",
+      "file": "Descry-Setup-0.90.1.exe",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-Setup-0.90.1.exe"
+    },
+    {
+      "os": "windows",
+      "label": "Windows portable",
+      "file": "Descry-0.90.1-windows-x64-portable.zip",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1-windows-x64-portable.zip"
+    },
+    {
+      "os": "mac",
+      "label": "macOS (Apple Silicon)",
+      "file": "Descry-0.90.1.dmg",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1.dmg"
+    },
+    {
+      "os": "mac",
+      "label": "macOS zip",
+      "file": "Descry-0.90.1-macos-arm64.zip",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1-macos-arm64.zip"
+    },
+    {
+      "os": "linux",
+      "label": "Linux AppImage",
+      "file": "Descry-0.90.1-x86_64.AppImage",
+      "href": "https://github.com/fezcode/Descry/releases/download/v0.90.1/Descry-0.90.1-x86_64.AppImage"
+    }
+  ],
+  "sample": "# Field notes\n\nA vault is a graph, not a folder. See [[graph view]] and the [[plugins]] note for the Lua host. #descry\n\n## What survives a restart\n\n- [x] tab text, caret and scroll\n- [x] undo history per tab\n- [ ] the coffee\n\n> Obsidian ergonomics, no Electron tax. #editor\n\n| Key | Does |\n|---|---|\n| `Ctrl+P` | quick switcher |\n| `Ctrl+Shift+M` | [[graph view]] |\n\nMath renders typographically: $\\sum_{i=1}^{n} x_i^2$ #math",
+  "vault": {
+    "notes": [
+      "vault",
+      "preview",
+      "editor",
+      "links",
+      "graph view",
+      "plugins",
+      "history",
+      "tabs",
+      "daily notes",
+      "math",
+      "search",
+      "settings"
+    ],
+    "links": [
+      [
+        "vault",
+        "preview"
+      ],
+      [
+        "vault",
+        "editor"
+      ],
+      [
+        "vault",
+        "links"
+      ],
+      [
+        "vault",
+        "graph view"
+      ],
+      [
+        "vault",
+        "plugins"
+      ],
+      [
+        "vault",
+        "history"
+      ],
+      [
+        "editor",
+        "tabs"
+      ],
+      [
+        "editor",
+        "search"
+      ],
+      [
+        "preview",
+        "math"
+      ],
+      [
+        "links",
+        "graph view"
+      ],
+      [
+        "plugins",
+        "settings"
+      ],
+      [
+        "history",
+        "tabs"
+      ],
+      [
+        "daily notes",
+        "vault"
+      ],
+      [
+        "search",
+        "links"
+      ]
+    ],
+    "tags": {
+      "#lua": [
+        "plugins",
+        "settings"
+      ],
+      "#markdown": [
+        "preview",
+        "editor",
+        "math"
+      ],
+      "#keyboard": [
+        "history",
+        "search",
+        "tabs"
+      ],
+      "#graph": [
+        "graph view",
+        "links"
+      ]
+    },
+    "blurbs": {
+      "vault": "The root of it all: a folder Descry reads as a graph.",
+      "preview": "CommonMark through md4c, with tables, task lists and images.",
+      "editor": "Undo/redo, multi-byte caret, smart Enter, find and replace.",
+      "links": "[[note]] resolves case-insensitively; backlinks show who points here.",
+      "graph view": "One node per note and per tag, an edge per link and mention.",
+      "plugins": "Drop a .lua file in data/plugins and it is a plugin.",
+      "history": "Ctrl+[ walks back, caret and scroll included.",
+      "tabs": "Each tab keeps its text, cursor, scroll and undo — reopened on launch.",
+      "daily notes": "Ctrl+D opens today’s note.",
+      "math": "Inline and display math, set typographically in real Unicode glyphs.",
+      "search": "Vault-wide search with a results overlay; regex find in the file.",
+      "settings": "Keybindings, theme and plugin settings persist to settings.lua."
+    }
+  },
+  "whatsNew": [
+    {
+      "v": "0.90.1",
+      "title": "Labels sit dead centre",
+      "body": "Button, pill and row labels are centred on the capitals’ midpoint for any font, and a title-bar double-click zooms on macOS."
+    },
+    {
+      "v": "0.90.0",
+      "title": "Copy buttons in preview",
+      "body": "Hover a table or code block for a Copy pill. Tables copy as their exact Markdown source, code without the fences."
+    },
+    {
+      "v": "0.89.1",
+      "title": "Select inside tables",
+      "body": "Drag across cells and rows; the copy stays tab-separated and pastes straight into a spreadsheet."
+    },
+    {
+      "v": "0.89.0",
+      "title": "Links in table cells",
+      "body": "Cells render styled runs — links, [[wiki]], #tags, bold and code — and preview selection follows the mouse exactly."
+    },
+    {
+      "v": "0.88.0",
+      "title": "README badges render",
+      "body": "SVG badges keep their text, logos and rounded corners, so shields.io rows look right."
+    },
+    {
+      "v": "CI",
+      "title": "Three platforms per tag",
+      "body": "Every tag builds a .dmg, an AppImage and a portable Windows zip on GitHub Actions."
+    }
+  ],
+  "features": [
+    {
+      "t": "Tabs that remember",
+      "b": "Several files open, lossless switching, reopened on next launch."
+    },
+    {
+      "t": "Split live preview",
+      "b": "Ctrl+\\ renders the active file source-left, preview-right."
+    },
+    {
+      "t": "Backlinks panel",
+      "b": "Every note that points at the current one."
+    },
+    {
+      "t": "Tag panel",
+      "b": "Ctrl+Shift+G ranks every tag in the vault by use."
+    },
+    {
+      "t": "Outline",
+      "b": "Auto-generated from headings, pinned or modal."
+    },
+    {
+      "t": "Find and replace",
+      "b": "Regex, whole word, live match count, in edit or preview."
+    },
+    {
+      "t": "Vault search",
+      "b": "Every note, one results overlay."
+    },
+    {
+      "t": "Images in preview",
+      "b": "Local png, jpg and svg, or http(s) fetched and cached."
+    },
+    {
+      "t": "Spell check",
+      "b": "Opt-in, dictionary-driven, with Add to dictionary."
+    },
+    {
+      "t": "In-app modals",
+      "b": "Save, Rename and New File without native dialogs."
+    },
+    {
+      "t": "Its own title bar",
+      "b": "Menus, aero snap and drag-to-move, drawn by the app."
+    },
+    {
+      "t": "Hisashi menubar",
+      "b": "On Windows, File/Edit/View/Help move up into Hisashi’s bar."
+    }
+  ],
+  "palette": [
+    [
+      "Toggle edit / preview",
+      "Ctrl+E",
+      "View"
+    ],
+    [
+      "Save",
+      "Ctrl+S",
+      "File"
+    ],
+    [
+      "Save As",
+      "Ctrl+Shift+S",
+      "File"
+    ],
+    [
+      "New file",
+      "Ctrl+N",
+      "File"
+    ],
+    [
+      "Rename",
+      "F2",
+      "File"
+    ],
+    [
+      "Quick switcher",
+      "Ctrl+P",
+      "Go"
+    ],
+    [
+      "Back",
+      "Ctrl+[",
+      "Go"
+    ],
+    [
+      "Forward",
+      "Ctrl+]",
+      "Go"
+    ],
+    [
+      "Go to line",
+      "Ctrl+G",
+      "Go"
+    ],
+    [
+      "Command palette",
+      "Ctrl+Shift+P",
+      "View"
+    ],
+    [
+      "Plugins overlay",
+      "Ctrl+Alt+P",
+      "Plugins"
+    ],
+    [
+      "Find",
+      "Ctrl+F",
+      "Edit"
+    ],
+    [
+      "Find / Replace",
+      "Ctrl+H",
+      "Edit"
+    ],
+    [
+      "Vault search",
+      "Ctrl+Shift+F",
+      "Go"
+    ],
+    [
+      "Outline",
+      "Ctrl+Shift+O",
+      "View"
+    ],
+    [
+      "Backlinks",
+      "Ctrl+Shift+B",
+      "View"
+    ],
+    [
+      "Tags",
+      "Ctrl+Shift+G",
+      "View"
+    ],
+    [
+      "Graph view",
+      "Ctrl+Shift+M",
+      "View"
+    ],
+    [
+      "Daily note",
+      "Ctrl+D",
+      "File"
+    ],
+    [
+      "Toggle sidebar",
+      "Ctrl+B",
+      "View"
+    ],
+    [
+      "Toggle word wrap",
+      "Alt+Z",
+      "Edit"
+    ],
+    [
+      "Help & Keybindings",
+      "F1",
+      "Help"
+    ],
+    [
+      "Settings",
+      "Ctrl+,",
+      "Help"
+    ],
+    [
+      "word count",
+      "",
+      "word_count.lua"
+    ],
+    [
+      "format table",
+      "",
+      "format.lua"
+    ],
+    [
+      "rainbow",
+      "",
+      "rainbow.lua"
+    ]
+  ],
+  "plugin": {
+    "file": "data/plugins/word_count.lua",
+    "code": "-- word_count.lua — a real word/character counter built on the document API.\n--\n-- Before the buffer bridge existed this plugin could only fake a 0. Now it\n-- reads the live document with descry.buffer.text(), so the counts are real,\n-- and it updates a status-bar tally on every edit via descry.on(\"text_change\").\n\nlocal function counts()\n    local t = descry.buffer.text()\n    local _, words = t:gsub(\"%S+\", \"\")   -- runs of non-space = words\n    return words, #t\nend\n\n-- Ctrl+Shift+P → \"word count\": pop a dialog with the totals.\ndescry.register_action(\"word_count\", function()\n    local words, chars = counts()\n    descry.dialog(\"Word count\",\n        string.format(\"%d words\\n%d characters\", words, chars))\nend)\n\n-- Live tally in the status bar as you type.\ndescry.on(\"text_change\", function()\n    descry.notify(\"words: \" .. (select(1, counts())))\nend)\n\ndescry.notify(\"[word_count] loaded\")",
+    "api": [
+      "descry.register_action",
+      "descry.buffer.*",
+      "descry.vault.*",
+      "descry.open",
+      "descry.invoke",
+      "descry.on",
+      "descry.notify",
+      "descry.dialog",
+      "descry.confirm",
+      "descry.prompt",
+      "descry.config"
+    ]
+  }
 }
