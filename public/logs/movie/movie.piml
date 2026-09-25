@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-09-25
+    (link) https://www.imdb.com/title/tt6334354/
+    (rating) 3
+    (slug) the-suicide-squad-2021
+    (title) The Suicide Squad (2021)
+    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (description) James Gunn's do-over of the 2016 film: expendable supervillains dropped on Corto Maltese to destroy a Nazi-era lab. Expected it to be awful, turned out okay. Loud, gory and funny enough to be redeemable, though not great.
+    (director) James Gunn
+  > (item)
+    (category) Movie
     (date) 2026-08-29
     (link) https://www.imdb.com/title/tt27131358/
     (rating) 3
