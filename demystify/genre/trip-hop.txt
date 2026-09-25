@@ -1,0 +1,64 @@
+id: trip-hop
+rank: 31
+name: TRIP HOP & DOWNTEMPO
+family: Electronic
+years: 1991 → present
+sub: Bristol-born slow-motion hip hop with a female lead vocal and a jazz-noir palette
+spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
+tag: DOWNTEMPO
+origin: Bristol, UK
+signature: Slow moody vinyl breakbeats, dub basslines, melancholic jazz samples
+keyGear: Akai S1000 Sampler, Technics SL-1200, Fender Rhodes
+audio: /demystify/genre/triphop.mp3
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+
+ascii:
+┌───────────────────────────────────────┐
+│ KICK  █·······█···········█·······█   │
+│ SNARE ····████········████·········   │
+│ DUB   ▂▁▂▃▄▅▆▇█▇▆▅▄▃▂▁▂▁▂▃▄▅▆▇█▇▆▅    │
+│ VINYL ░·░░·░·░░░·░·░░·░·░░░·░  86 BPM │
+└───────────────────────────────────────┘
+
+what:
+ Trip hop was named by the music press in 1994 for what Bristol had already been doing: Massive Attack's *Blue Lines* (1991) slowed hip hop to 80–90 BPM, replaced the rapper with a soul singer, and soaked it in dub reverb. Portishead added film-noir strings and vinyl crackle; Morcheeba added blues guitar; Belgium's Hooverphonic went full cinematic orchestral. The instrumental wing became "downtempo," where *All India Radio* (Australia, led by Martin Kennedy) sits.
+
+artists:
+ Massive Attack, Portishead, Tricky, *Morcheeba* (the Godfrey brothers with Skye Edwards), *Hooverphonic* (with Geike Arnaert as the defining voice of their peak years), Zero 7, Thievery Corporation, Bonobo, All India Radio.
+
+trivia:
+ Portishead recorded original material to acetate, then *played the acetates back on a turntable and sampled that* — deliberately manufacturing the surface noise and wow that the genre is known for, rather than sampling old records. Morcheeba's *Blood Like Lemonade* (2010) marked Skye Edwards' return after seven years and three albums away; Hooverphonic have cycled through several lead singers, which makes their orchestral live records a kind of catalogue re-audition.
+
+sonic:
+ Tempo 70–95 BPM. Enormous, slack, mixed-forward drums; upright or fuzz bass; Rhodes electric piano; a female vocal recorded close and intimate. Reverb is used as a spatial device — vocals dry and forward, everything else deep in a hall. The frequency profile is deliberately old: rolled-off highs, boosted low-mids, tape or vinyl artefacts left audible.
+
+gear:
+ Akai S1000/MPC samplers, Fender Rhodes, Roland Space Echo RE-201 and spring reverbs, Theremin (Portishead), vintage guitar amps for the noir tremolo, and real string sections where budget allowed. All India Radio's downtempo end leans on ambient guitar processed through delays and granular processing.
+
+prod:
+ The production philosophy is *subtraction*: strip the arrangement until only three or four elements remain, then make each one enormous. Because there are so few parts, every one gets individual treatment — drums heavily compressed and EQ'd dark, vocal bright and de-essed, bass rolled off above 800 Hz. Live-with-orchestra versions like Hooverphonic's invert this, replacing the sampled bed with real players and gaining dynamics at the cost of the grit.
+
+tracks:
+ - Persist | All India Radio
+ - Four Three | All India Radio
+ - Enjoy the Ride | Morcheeba, Judie Tzuke
+ - Easier Said Than Done | Morcheeba
+ - The Rip | Portishead
+ - Bullets | Archive
+ - Again | Archive
+ - Mad About You - Live at Koningin Elisabethzaal 2012 | Hooverphonic
+ - So Com Voce | Thievery Corporation
+ - Teardrop | Massive Attack, Elizabeth Fraser
+ - Roads | Portishead
+ - Horrible Person | Hooverphonic
+ - Were You Thinking of Me? | Yonderboi
+ - Even Though | Morcheeba
+ - Everybody Loves A Loser | Morcheeba
+ - Mezcal Dream - Brecon Remix | Morcheeba, Brecon, Amanda Zamolo
+
+examples:
+ - Massive Attack - Unfinished Sympathy (1991) | Orchestral strings over hip-hop vinyl breakbeats
+ - Portishead - Glory Box (1994) | Slow blues guitar sample, cinematic turntable scratches, haunting vocals
+ - Tricky - Overcome (1995) | Murky Bristol dub atmosphere, whispered vocals, dense sampler loops
+ - DJ Shadow - Building Steam With a Grain of Salt (1996) | Piano loop over complex MPC sampler drum breaks

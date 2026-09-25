@@ -1,0 +1,8 @@
+# High-Resolution Print Export
+
+Engineered for the physical world. Export high-fidelity posters ready for professional printing.
+
+## Print Specifications
+- **300 DPI**: Standard professional print resolution.
+- **Custom Dimensions**: Support for any size (A4, A3, 18x24, etc.).
+- **Vector Parity**: Ensures sharp lines and smooth gradients on large scales.

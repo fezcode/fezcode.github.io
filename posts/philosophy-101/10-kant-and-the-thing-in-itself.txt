@@ -1,0 +1,38 @@
+# Philosophy 101: Immanuel Kant - The Thing-in-Itself
+
+## The Clockwork Philosopher
+
+Immanuel Kant (1724–1804) was so routine-oriented that his neighbors in Königsberg set their clocks by his daily walks. But inside his head, he was revolutionizing how we understand reality.
+
+## The Problem: Hume's Wrecking Ball
+
+David Hume (an Empiricist) argued that we can't truly know *anything* about cause and effect. We just see one billiard ball hit another; we don't see the "force" transferring. This threatened to destroy science.
+
+Kant woke up from his "dogmatic slumber" to fix this.
+
+## The Copernican Revolution in Philosophy
+
+Kant flipped the script. Instead of asking "How does our mind conform to the world?", he asked "How does the world conform to our mind?"
+
+*   **[Transcendental Idealism](/vocab/transcendental-idealism):** We don't experience the world directly. We experience it through the "glasses" of our mind (Space, Time, Causality).
+*   **Phenomena:** The world as we see it.
+*   **Noumena:** The "Thing-in-Itself" (Ding an sich). Reality as it actually is, which we can never access.
+
+## Ethics: The Categorical Imperative
+
+Kant didn't care about outcomes (Utilitarianism). He cared about **Duty**.
+
+*   **Categorical Imperative:** "Act only according to that maxim whereby you can, at the same time, will that it should become a universal law."
+*   Basically: Don't do it if you wouldn't want *everyone* to do it. No exceptions for yourself.
+
+## Why He Matters
+
+Kant built the bridge between Rationalism and Empiricism. He is the gatekeeper of modern philosophy. You basically have to go through him to get anywhere else.
+
+## Recommended Resources
+
+**1. The Book:**
+*   **"Critique of Pure Reason" (Summary)**.
+*   Don't try to read the original unless you want a headache. Read a good guide or summary first.
+
+Next, we meet the man who took Kant's ideas and turned them into a history-spanning spirit: **Hegel**.

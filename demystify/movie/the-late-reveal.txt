@@ -1,0 +1,51 @@
+id: the-late-reveal
+rank: 10
+name: THE LATE REVEAL
+family: Structure
+years: 1941 → present
+sub: A last-act fact that re-sorts everything already seen, so the film is watched twice at once
+
+ascii:
+┌────────────────────────────────────────┐
+│  scene ─ scene ─ scene ─ scene ─ [KEY] │
+│                                 ↓      │
+│  ▒▒▒▒▒ ─ ▒▒▒▒▒ ─ ▒▒▒▒▒ ─ ▒▒▒▒▒ reread  │
+└────────────────────────────────────────┘
+
+what:
+ Withholding one fact, an identity or a relationship or a timeline, until late enough that its arrival forces a re-reading of the whole film. This is distinct from a plot twist, which merely surprises. A true late reveal has to be compatible with every scene before it, which means the film has been playing fair and lying at the same time, and the second viewing is part of the design rather than a bonus.
+
+artists:
+ M. Night Shyamalan built a career on it and then built a trilogy out of the fact, with *Unbreakable*, *Split* and *Glass* each withholding a different kind of key. Fincher reveals the engine of *Gone Girl* at the midpoint rather than the end, which is the harder version. Park Chan-wook reveals by retelling in *The Handmaiden*. Bong Joon-ho hides an entire floor in *Parasite*.
+
+trivia:
+ *Split* withholds that it is a sequel at all until its final scene, which arrives as a cut to a diner and a face from a film released sixteen years earlier. The reveal is not inside the story, it is about which story you have been watching, which is a category of twist almost unique to a franchise era.
+
+sonic:
+ It converts memory into plot. For the length of the reveal you are not watching the screen at all, you are rifling backwards through everything you have already seen, and the film gets credit for scenes it played completely straight an hour ago. The failure mode is cheating: if the reveal contradicts an earlier scene rather than recontextualising it, the audience feels conned rather than outplayed.
+
+gear:
+ Discipline in coverage and in performance. Actors have to play two readings at once, which usually means shooting a scene several ways and choosing the most ambiguous take. The edit then polices every frame for the tell, because a glance held a beat too long gives the game away three reels early.
+
+prod:
+ Cheap to make and expensive to protect. Marketing has to sell the film without its shape, test screenings leak, and a single review can void the whole apparatus. It also caps rewatchability in a specific way, since a film that works only as a delivery system for its final minute is a film nobody returns to.
+
+examples:
+ - Unbreakable | the last line reassigns the genre
+ - Split | the reveal is which film you were in
+ - Glass | three films collapsed into one
+ - Shutter Island | the institution as the tell
+ - Gone Girl | the diary, dismantled at the midpoint
+ - The Handmaiden | the same events, told honestly the second time
+ - Parasite | the house has a basement
+ - Predestination | the loop closing on itself
+ - The Girl with the Dragon Tattoo | the archive as the reveal
+ - Memories of Murder | the reveal withheld on purpose
+ - Ex-Machina | the test was never the one described
+ - Vanilla Sky | the contract revealed last
+ - Lucky Number Slevin | the whole film re-sorted
+ - Conclave | the last ballot changes the subject
+ - The House of Yes | the family fact withheld
+ - Room | the world revealed by leaving it
+ - Pirates of Silicon Valley | the framing revealed as a pitch
+ - He Was a Quiet Man | the fantasy revealed as one

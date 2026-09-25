@@ -1,0 +1,8 @@
+# Swat God
+
+Swat God is a tactical shooter that excels in creating high-stakes, atmospheric encounters.
+
+- **Wonderful AI:** The intelligence of the enemies is a standout feature; they realistically notice your presence and react to your position, keeping you constantly on your toes.
+- **Perfect Level Design:** Each level is masterfully crafted to place the player in engaging and believable scenarios, forcing tactical thinking and careful planning.
+- **Enemy Variety:** The game features a good variety of enemy types, each requiring different approaches to neutralize.
+- **Highly Addictive:** Between the tight mechanics and the "just one more try" feeling of the scenarios, it's incredibly hard to put down.

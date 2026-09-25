@@ -1,0 +1,46 @@
+id: diegetic-music
+rank: 11
+name: MUSIC INSIDE THE FRAME
+family: Sound
+years: 1952 → present
+sub: Music the characters can hear, so the score has to survive being a physical object in the room
+
+ascii:
+┌────────────────────────────────────────┐
+│  ♪ ─────────── in the world ────────── │
+│  radio · headphones · band · piano     │
+│  volume obeys the door, the wall, the  │
+│  car window closing on the chorus      │
+└────────────────────────────────────────┘
+
+what:
+ Music that exists inside the story: a radio, a record, a band on stage, headphones in a character's ears. The distinction from score matters because diegetic music has physics. It gets quieter through a wall, it stops when someone pulls the plug, and somebody in the scene chose to put it on, which makes it characterisation rather than commentary. The most interesting films slide across the line deliberately, letting a source cue swell past what the room could produce.
+
+artists:
+ Edgar Wright made an entire film out of the device in *Baby Driver*, where the music is a tinnitus treatment and therefore always motivated. Damien Chazelle stages *La La Land* on the border, with numbers that begin in the world and end in a musical. John Carney builds *Begin Again* around recording in real locations. Ryan Coogler puts a juke joint at the centre of *Sinners*, where the performance is the supernatural event.
+
+trivia:
+ In *Baby Driver* the songs are literally diegetic and structural at once: the character's tinnitus is the in-story reason he always has music playing, which gives the film permission to cut every action beat to a track without the artifice ever breaking. It is a rare case of a technique and a plot device being the same decision.
+
+sonic:
+ It gives music a location, and location makes a scene feel solid. Because the sound has to obey doors and distance, your ear places you in the space more precisely than the image does. It is also the cleanest way to make a needle drop feel earned rather than imposed, since someone in the film chose the track and that choice tells you who they are.
+
+gear:
+ Playback on set, usually to an earpiece so performances lock to tempo, and then careful re-recording in the mix: worldising, where a track is played through a real speaker in a real space and recorded again, so it carries the room. Any moment where music crosses from source to score is built in the mix rather than on the floor.
+
+prod:
+ Licensing costs the same as any needle drop, but the shoot is harder because timing is fixed before the cameras roll. It also constrains the edit permanently: once a scene is locked to a performance tempo, shortening it means re-cutting the music, and audiences hear a bad music edit long before they notice a bad picture edit.
+
+examples:
+ - Baby Driver | the tinnitus that justifies the soundtrack
+ - La La Land | numbers that begin in the world
+ - Begin Again | the city as the recording studio
+ - Sinners | the juke joint as the event
+ - Straight Outta Compton | the catalogue performed, not scored
+ - Entergalactic | the album and the film as one object
+ - Chungking Express | California Dreamin on repeat, in the room
+ - Guardians of the Galaxy | the Walkman as a character
+ - Kneecap | the group performing itself
+ - Mickey 17 | broadcast as the ambient score
+ - The Worst Person in the World | the song playing in the flat
+ - Jersey Girl | performance staged in the room

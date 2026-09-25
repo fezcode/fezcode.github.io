@@ -1,0 +1,55 @@
+id: golden-age-rap
+rank: 22
+name: GOLDEN AGE RAP
+family: Hip Hop
+years: 1986 → 1996
+sub: The decade when the form settled its rules — sampling was free, and every record was an argument
+spec: 70,84,88,72,58,60,66,72,76,74,70,72,78,82,80,72,62,54,46,38
+synthType: square
+freqs: 68.94, 86.41, 335.14
+
+what:
+ The stretch from roughly Rakim's *Paid in Full* (1987) to the mid-90s is where rap worked out what it was: multisyllabic internal rhyme replaced end-rhyme, producers moved from drum machines to samplers, and the album displaced the single. It ended for a specific legal reason — the 1991 _Grand Upright_ ruling made uncleared sampling actionable, and the dense collage records of 1988 became financially impossible almost overnight.
+
+artists:
+ *Eric B. & Rakim*, Public Enemy, EPMD, Big Daddy Kane, Kool G Rap, KRS-One, Brand Nubian, Das EFX, The Beatnuts, Souls of Mischief, Cypress Hill, Craig Mack, Big L, Jurassic 5; *Nas*' _Illmatic_ and *JAY-Z*'s _Reasonable Doubt_ close the period out.
+
+trivia:
+ Rakim changed the technical ceiling of the form single-handedly: before him, rappers rhymed on the bar line in a sing-song cadence; he rhymed internally, across bars, in a conversational monotone, and every rapper since has worked in his idiom. Souls of Mischief were teenagers when they recorded *93 'til Infinity* — A-Plus and Opio were 17.
+
+sonic:
+ Hard, dry drums around 90–100 BPM with the kick and snare doing all the rhythmic work, over a looped horn, bassline or jazz chord. Basslines are frequently played rather than sampled. Vocals are recorded loud and close with minimal effect — no doubling except on the last word of a bar, and no autotune, because the delivery is the instrument.
+
+gear:
+ E-mu SP-1200 and Akai MPC60 for the drums and chops, Technics 1200s for the scratched hook, and an Ensoniq ASR-10 for the later, smoother end of the period. The SP-1200's 12-bit, 26 kHz sampling is not a limitation anyone works around — the aliasing is the sound.
+
+prod:
+ Producers looped two or four bars and left them alone, letting the rapper carry the variation. Because the source records were already mixed, the loop arrives pre-glued and the engineer's job is mainly to fit the drums around it. Records were mastered for vinyl and cassette with real dynamic range; the CD reissues of this era are frequently louder and worse than the originals.
+
+tracks:
+ - Neva Go Back | Special Ed
+ - Lyrics Of Fury | Eric B. & Rakim
+ - One Love | Nas, Q-Tip
+ - Claimin' I'm a Criminal | Brand Nubian
+ - Lyrics To Go - Dan The Automator Remix | Dan The Automator, A Tribe Called Quest
+ - Harder Than You Think | Public Enemy
+ - Keep It Real | Jamal
+ - Flava in Ya Ear | Craig Mack
+ - Flamboyant | Big L
+ - Infinite | Eminem
+ - Dead Presidents II | JAY-Z
+ - Da Joint | EPMD
+ - Resurrection | Common
+ - 93 'Til Infinity | Souls Of Mischief
+ - Intro | DMX
+ - Gangsta Bitch | Apache
+ - Hey Mister Mister | Kool G Rap
+ - Nite & Day | Marco Polo, Big Daddy Kane
+ - Quality Control | Jurassic 5
+ - (Rap) Superstar (feat. Eminem & Noreaga) | Cypress Hill, Eminem, N.O.R.E.
+ - Real Hip-Hop | Das EFX
+ - Let 'Em Know | Souls Of Mischief
+ - Victory (feat. The Notorious B.I.G. & Busta Rhymes) - 2016 Remaster | Diddy, The Notorious B.I.G., Busta Rhymes
+ - Sound of Da Police | KRS-One
+ - Insane in the Brain | Cypress Hill
+ - Watch Out Now | The Beatnuts

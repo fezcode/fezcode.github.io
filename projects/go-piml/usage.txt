@@ -1,0 +1,21 @@
+LABEL: Practical Implementation
+SUBTEXT: USAGE
+
+### Marshalling Go Structs to PIML
+
+```go
+cfg := Config{
+    SiteName: "My Awesome Site",
+    Port: 8080,
+    IsProduction: true,
+}
+
+pimlData, err := piml.Marshal(cfg)
+```
+
+### Unmarshalling PIML to Go Structs
+
+```go
+var cfg Config
+err := piml.Unmarshal(pimlData, &cfg)
+```

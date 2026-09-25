@@ -1,0 +1,28 @@
+LABEL: Installation
+SUBTEXT: GET IT
+
+Grab the installer from the [latest release](https://github.com/fezcode/pidi/releases), or build it yourself.
+
+### Dependencies (MSYS2 / MinGW-w64)
+
+```powershell
+pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-pkgconf mingw-w64-x86_64-raylib
+.\tools\fetch-pdfium.ps1      # downloads prebuilt PDFium + builds a MinGW import lib
+```
+
+### Build
+
+```powershell
+.\build.ps1
+.\build\pidi.exe "C:\path\to\document.pdf"
+```
+
+`build.ps1` compiles `src/*.c`, links raylib statically and the prebuilt PDFium from `vendor\pdfium`, and copies `pdfium.dll` next to `build\pidi.exe`.
+
+### Ship it
+
+| Script | Does |
+| --- | --- |
+| `build.ps1` | Compiles and links `build\pidi.exe`. |
+| `bundle.ps1` | Stages a standalone `dist\win-x64\` — exe plus every DLL it needs. |
+| `installer.ps1` | Packages that folder into a Windows `Setup.exe` via [Forge](https://github.com/fezcode/Forge). |

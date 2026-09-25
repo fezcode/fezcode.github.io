@@ -1,0 +1,17 @@
+## Why a bar and not a dock
+
+Windows gives you one taskbar, at one edge, on terms decided in 1995. Hisashi takes the other strip — the eaves — and hands it back: every monitor, independently configured, with a widget stack you arrange yourself.
+
+image: /images/projects/hisashi/banner.svg
+
+## The plugin contract
+
+Plugins ship as `.hsh` bundles: a zip holding `manifest.json`, the plugin DLL, and optional `styles/`, `fonts/` and `assets/`. The host loads each one through an isolated `AssemblyLoadContext` behind a permission gate — `storage`, `network`, `shell.exec`, `clipboard`, `media.session`, `notifications`, `filesystem.read` — so a widget only reaches what its manifest asked for and you approved.
+
+Build your own against `Hisashi.Sdk`: implement `IHisashiPlugin` and `IWidget`, drop in a manifest, pack with `hsh-pack`. The plugin context hands you themed controls, per-plugin storage, config, logging, and an `INotifier` for host-rendered toasts.
+
+## Theming that cannot go wrong
+
+Twenty themes ship in the box, from `Pulse Dark` and `Aether` through `Fluent Accent` — which follows the live Windows accent color — to `Phosphor CRT`, `Newsprint` and `Neon Tokyo`. Themes are selectable globally or per bar.
+
+The interesting part is the guard rail. Every foreground token is contrast-checked against the painted bar background and nudged lighter or darker, along the same hue, until it reaches WCAG 4.5:1. `widget.spacing` is the only gap between widgets and `surface.padding` the only inset inside one, so widgets never add padding of their own and the row stays optically even no matter which plugins you stack.

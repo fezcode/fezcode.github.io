@@ -1,0 +1,118 @@
+{
+  "name": "Typewriter",
+  "windowTitle": "Typewriter",
+  "tagline": "Every keystroke clicks. The bell rings at column 80.",
+  "subtitle": "A distraction-free editor with the soul of a mechanical typewriter. Recorded key strikes are embedded in the binary, the paper is warm, and there is nothing in the window but the page.",
+  "accent": "#9E4A38",
+  "accent2": "#6F3226",
+  "version": "0.4.0",
+  "platforms": [
+    "Windows",
+    "macOS",
+    "Linux"
+  ],
+  "stack": [
+    "C",
+    "SDL2",
+    "FreeType"
+  ],
+  "download": "https://github.com/fezcode/typewriter/releases",
+  "downloadLabel": "Download the binary",
+  "repo": "https://github.com/fezcode/typewriter",
+  "summary": [
+    "There is no sidebar, no minimap, and no status bar full of extensions. There is a page, and the sound of typing on it — recorded mechanical strikes with concurrent playback, so fast typing sounds like fast typing.",
+    "One C file, near-zero CPU at idle, and a single self-contained executable: sounds, icon and the typewriter face are all embedded, and SDL2 links in statically."
+  ],
+  "panelsHeading": "What it does",
+  "panelsWindowTitle": "Typewriter — options",
+  "panels": [
+    {
+      "title": "Real typewriter sounds",
+      "body": "Recorded key strikes compiled into the binary as headers, with overlapping playback for a genuinely tactile feel."
+    },
+    {
+      "title": "Paper themes",
+      "body": "Classic Cream, Dark Mode and Terminal Green, with optional coffee rings, ink spills and creases drawn procedurally."
+    },
+    {
+      "title": "Find and replace",
+      "body": "A custom dialog in keeping with the rest of the machine, rather than a system one.",
+      "keys": "ctrl+f"
+    },
+    {
+      "title": "Undo",
+      "body": "A 512-entry history, so a bad paragraph is never final.",
+      "keys": "ctrl+z"
+    },
+    {
+      "title": "Settings that persist",
+      "body": "Sounds, line numbers and theme are saved to typewriter.ini beside the executable."
+    },
+    {
+      "title": "Hisashi menu bar",
+      "body": "With Hisashi running, File / Edit / View / Help appear in its menu bar with every option and shortcut. Off by default."
+    }
+  ],
+  "shotsHeading": "On screen",
+  "shots": [
+    {
+      "src": "/images/projects/typewriter/example.png",
+      "caption": "Typewriter — Classic Cream"
+    }
+  ],
+  "keysHeading": "From the keyboard",
+  "keys": [
+    {
+      "k": "ctrl+k",
+      "a": "Options — sounds, line numbers, themes"
+    },
+    {
+      "k": "ctrl+f",
+      "a": "Find and replace"
+    },
+    {
+      "k": "ctrl+z",
+      "a": "Undo"
+    },
+    {
+      "k": "ctrl+o",
+      "a": "Open a .txt, .md or .ini file"
+    },
+    {
+      "k": "ctrl+s",
+      "a": "Save"
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "Make — SDL2 + SDL2_ttf",
+    "lines": [
+      "pacman -S mingw-w64-x86_64-SDL2 mingw-w64-x86_64-SDL2_ttf",
+      "mingw32-make",
+      "mingw32-make STATIC=1   # links SDL2, SDL2_ttf and FreeType in",
+      "make                    # macOS and Linux"
+    ]
+  },
+  "colophon": [
+    [
+      "Settings",
+      "typewriter.ini, beside the exe"
+    ],
+    [
+      "Binary",
+      "self-contained, nothing to install"
+    ],
+    [
+      "Formats",
+      ".txt, .md, .ini"
+    ],
+    [
+      "Signing",
+      "not code-signed"
+    ],
+    [
+      "Themes",
+      "3, plus paper effects"
+    ]
+  ]
+}
