@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowUpRightIcon } from '@phosphor-icons/react';
 import Seo from '../../components/Seo';
@@ -29,13 +29,19 @@ const OrbitHomePage = () => {
   const workbench = ['ebru', 'fezynth', 'logic-architect']
     .map((slug) => apps.find((app) => app.slug === slug))
     .filter(Boolean);
-  const preferred = ['piml', 'timp']
-    .map((slug) => projects.find((project) => project.slug === slug))
-    .filter(Boolean);
-  const featured = [
-    ...preferred,
-    ...projects.filter((project) => !preferred.includes(project)),
-  ].slice(0, 4);
+  // A random four of the pinned projects on each visit. The draw happens after
+  // mount so the prerendered HTML (the first four) and hydration agree.
+  const [shuffled, setShuffled] = useState(null);
+  useEffect(() => {
+    if (!projects.length) return;
+    const deck = [...projects];
+    for (let i = deck.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+    setShuffled(deck.slice(0, 4));
+  }, [projects]);
+  const featured = shuffled || projects.slice(0, 4);
   const sections = {
     projects: (
       <section className="orb-section" key="projects">

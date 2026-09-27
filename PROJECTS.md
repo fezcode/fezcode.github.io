@@ -242,12 +242,31 @@ role, quote, image?, stats?, href?, flip? } }`, `faq { items[] { q, a } }`,
 dark, bg, fg, border, sep, accent, muted, icon, chip, radius, font }` — the
 theme list is extracted from the app's own theme JSON files.
 
-## 7. Assets
+## 7. Capsules Layout
+
+The **Capsules** style (`(style) capsules`) follows capsules.moyra.co and was
+built for **Qemik**: Host Grotesk on warm near-black, a giant wordmark inside a
+rounded hero card, a floating Menu pill, "(Scroll)" markers, pill tags, an intro
+paragraph that inks in word by word with scroll, a screenshot that grows from a
+thumbnail to full screen behind a moving wordmark, full-screen machine cards that
+stack as you scroll (each with a details drawer), a "Why X?*" marquee over stacked
+feature cards, levelled draggable settings cards, a quote carousel, a clickable
+closing ribbon and a gradient wordmark footer. Moyra's "Reserve" drawer becomes a
+three-step machine wizard. Calls to action open the wizard, jump to build steps,
+or link to `follow` — the page never invents a repository or download (`repo` may
+be `null` while a project is unpublished).
+
+Content lives in `app.txt`: `hero`, `intro`, `choose`, `machines[] { name, image,
+blurb, details[][2], cost }`, `steps`, `why { marquee, cards[] }`, `settings
+{ levels, cards[] }`, `quotes`, `wizard { systems, memory, cpus }`, `build[]`,
+`closing`, `footer`, plus `status`, `version` and `follow`.
+
+## 8. Assets
 
 *   **Images**: Place images in `public/images/projects/` or `public/images/bg/`.
 *   **Icons**: Use Phosphor icons where applicable in code, or SVG assets.
 
-## 8. Adding a New Project Checklist
+## 9. Adding a New Project Checklist
 
 1.  Create the folder `public/projects/[your-slug]`.
 2.  Choose your style: `stylish`, `editorial`, `hifi`, etc.

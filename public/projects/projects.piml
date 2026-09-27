@@ -71,6 +71,26 @@
     (image) /images/projects/airlift/discover.webp
 
   > (project)
+    (slug) qemik
+    (title) Qemik
+    (style) capsules
+    (version) 0.1.0
+    (size) 2
+    (repo_link) https://github.com/fezcode/Qemik
+    (demo_link) https://github.com/fezcode/Qemik/releases
+    (pinned) true
+    (isActive) true
+    (technologies)
+      > C#
+      > .NET 10
+      > Avalonia UI
+      > QEMU
+      > Virtual Machines
+    (shortDescription) Qemik is a native QEMU desktop for Windows, inspired by UTM. Create a Linux workspace, keep a Windows sandbox, or give an old system another life - with verified OS downloads, per-machine hardware settings, WHPX acceleration, VirGL graphics in its own guest window, a two-way clipboard, shared folders and reusable blueprints.
+    (date) 2026-09-27
+    (image) /images/projects/qemik/banner.webp
+
+  > (project)
     (slug) timp
     (title) Timp
     (style) hifi
