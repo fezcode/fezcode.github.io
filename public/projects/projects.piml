@@ -37,7 +37,7 @@
     (slug) gobake
     (title) gobake
     (style) ruby
-    (version) 0.4.0
+    (version) 0.5.0
     (repo_link) https://github.com/fezcode/gobake
     (pinned) true
     (isActive) true
@@ -46,7 +46,7 @@
       > Build Tool
       > Orchestrator
       > Automation
-    (shortDescription) gobake is a Go-native build orchestrator. It replaces Makefiles and shell scripts with a single, type-safe Recipe.go file. v0.4.0 adds multi-task CLI invocation, RunIn for scoped working directories, and RunOutput for captured stdout.
+    (shortDescription) gobake is a Go-native build orchestrator. It replaces Makefiles and shell scripts with a single, type-safe Recipe.go file. v0.5.0 moves recipe.piml parsing to go-piml v1.3.0, enforcing PIML spec v1.2.0 (strict 2-space indentation, inline comments, quoted strings, duplicate-key errors).
     (date) 2026-04-27
     (image) /images/projects/gobake/gobake-banner.png
 
@@ -74,7 +74,7 @@
     (slug) qemik
     (title) Qemik
     (style) capsules
-    (version) 0.1.0
+    (version) 0.1.1
     (size) 2
     (repo_link) https://github.com/fezcode/Qemik
     (demo_link) https://github.com/fezcode/Qemik/releases
@@ -94,7 +94,7 @@
     (slug) timp
     (title) Timp
     (style) hifi
-    (version) 0.12.2
+    (version) 0.13.0
     (size) 2
     (repo_link) https://github.com/fezcode/timp
     (demo_link) https://github.com/fezcode/timp/releases
@@ -108,7 +108,7 @@
       > Native
       > Windows
       > macOS
-    (shortDescription) Timp is a small, native, album-art-forward music player written in C with raylib. Borderless Hi-Fi window, accent color sampled from the artwork, live spectrum, 10-band EQ, synced lyrics, saved .m3u8 playlists and a slide-out drawer. v0.12.2 ships a real Windows installer built with Forge, a self-contained Timp.app for macOS, and a Hisashi menu bar.
+    (shortDescription) Timp is a small, native, album-art-forward music player written in C with raylib. Borderless Hi-Fi window, accent color sampled from the artwork, live spectrum, 10-band EQ, synced lyrics, saved .m3u8 playlists and a slide-out drawer. Ships as a real Windows installer built with Forge, a self-contained Timp.app for macOS, and a Hisashi menu bar. v0.13.0 adds eight EQ presets, output-device selection and a sleep timer.
     (date) 2026-09-01
     (image) /images/projects/timp/main.png
 
@@ -116,7 +116,7 @@
     (slug) hisashi
     (title) Hisashi
     (style) flow
-    (version) 0.6.19
+    (version) 0.6.27
     (size) 2
     (repo_link) https://github.com/fezcode/hisashi
     (demo_link) https://github.com/fezcode/hisashi/releases
@@ -136,7 +136,7 @@
     (slug) clockt
     (title) clockt
     (style) panes
-    (version) 0.5.11
+    (version) 0.5.25
     (size) 2
     (repo_link) https://github.com/fezcode/clockt
     (demo_link) https://github.com/fezcode/clockt/releases
@@ -157,7 +157,7 @@
     (slug) descry
     (title) Descry
     (style) graph
-    (version) 0.90.1
+    (version) 0.91.0
     (size) 2
     (repo_link) https://github.com/fezcode/Descry
     (demo_link) https://github.com/fezcode/Descry/releases
@@ -178,7 +178,7 @@
     (slug) tivi
     (title) tivi
     (style) filmstrip
-    (version) 0.4.1
+    (version) 0.5.0
     (size) 2
     (repo_link) https://github.com/fezcode/tivi
     (demo_link) https://github.com/fezcode/tivi/releases
@@ -200,7 +200,7 @@
     (slug) cogas
     (title) Cogas
     (style) shelf
-    (version) 0.17.0
+    (version) 0.18.0
     (size) 2
     (repo_link) https://github.com/fezcode/Cogas
     (demo_link) https://github.com/fezcode/Cogas/releases
@@ -240,7 +240,7 @@
     (slug) typewriter
     (title) Typewriter
     (style) page
-    (version) 0.4.0
+    (version) 0.5.0
     (size) 2
     (repo_link) https://github.com/fezcode/typewriter
     (demo_link) https://github.com/fezcode/typewriter/releases
@@ -419,42 +419,6 @@
     (shortDescription) A premium dark fantasy deck-building roguelike card game.
     (date) 2026-03-16
     (image) /images/projects/climb-the-tall-building-0/banner.png
-
-  > (project)
-    (slug) nocturnote
-    (title) Nocturnote
-    (size) 2
-    (repo_link) https://github.com/fezcode/nocturnote
-    (demo_link) https://github.com/fezcode/nocturnote
-    (pinned) false
-    (isActive) true
-    (technologies)
-      > Electron
-      > Svelte
-      > TypeScript
-      > Tailwind CSS
-      > Editor
-    (shortDescription) Nocturnote is a sleek, modern, and highly customizable note-taking application built with Electron, Svelte, TypeScript, and Tailwind CSS.
-    (date) 2025-12-01
-    (image) /images/projects/nocturenote-header.webp
-
-  > (project)
-    (slug) workhammer
-    (title) WorkHammer
-    (size) 2
-    (repo_link) https://github.com/fezcode/WorkHammer
-    (demo_link) https://github.com/fezcode/WorkHammer/releases
-    (pinned) false
-    (isActive) true
-    (technologies)
-      > C#
-      > .NET
-      > Avalonia UI
-      > MVVM
-      > Desktop
-    (shortDescription) WorkHammer is a high-fidelity, professional local-only job application tracker designed for developers, built with C# and Avalonia UI.
-    (date) 2026-01-06
-    (image) /images/projects/workhammer.webp
 
   > (project)
     (slug) villain-couch
