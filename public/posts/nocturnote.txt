@@ -1,3 +1,5 @@
+> **Deprecated:** Nocturnote is no longer maintained. Its spiritual successor is [Descry](/projects/descry), a keyboard-driven markdown editor in C, SDL2 and Lua - grab it from the [Descry releases](https://github.com/fezcode/Descry/releases).
+
 ## Nocturnote: The Text Editor I Always Wanted
 Have you ever felt like your text editor is either doing too much or too little? That's exactly how I felt before I started building **Nocturnote**.
 
