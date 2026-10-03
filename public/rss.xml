@@ -9,9 +9,9 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Fri, 25 Sep 2026 00:20:33 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 03 Oct 2026 18:02:49 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Fri, 25 Sep 2026 00:20:32 GMT</pubDate>
+        <pubDate>Sat, 03 Oct 2026 18:02:49 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
@@ -6185,41 +6185,15 @@ rotation.set(newRotation);
 <p><a href="https://fezcode.com/blog/building-a-digital-rotary-phone">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
-            <title><![CDATA[Nocturnote: A Sleek and Modern Text Editor]]></title>
-            <description><![CDATA[Introducing Nocturnote, a cross-platform, customizable text editor built with Electron, Svelte, and Tailwind CSS....]]></description>
+            <title><![CDATA[Nocturnote: A Sleek and Modern Text Editor (Deprecated)]]></title>
+            <description><![CDATA[Deprecated - succeeded by Descry. Introducing Nocturnote, a cross-platform, customizable text editor built with Electron, Svelte, and Tailwind CSS....]]></description>
             <link>https://fezcode.com/blog/nocturnote</link>
             <guid isPermaLink="false">https://fezcode.com/blog/nocturnote</guid>
             <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
             <pubDate>Mon, 01 Dec 2025 00:00:00 GMT</pubDate>
-            <content:encoded><![CDATA[<h2>Nocturnote: The Text Editor I Always Wanted</h2>
-<p>Have you ever felt like your text editor is either doing too much or too little? That&#39;s exactly how I felt before I started building <strong>Nocturnote</strong>.</p>
-<p><img src="/images/projects/nocturnote.png" alt="Nocturnote Notepad Mode"></p>
-<blockquote>
-<p>Notepad Mode in Nocturnote</p>
+            <content:encoded><![CDATA[<blockquote>
+<p><strong>Deprecated:</strong> Nocturnote is no longer maintained. Its spiritual successor is <a href="/projects/descry">Descry</a>, a keyboard-driven markdown editor in C, SDL2 and Lua - grab it from the <a href="https://github.com/fezcode/Descry/releases">Descry releases</a>.</p>
 </blockquote>
-<p><strong>Nocturnote</strong> is my take on a modern, distraction-free writing environment. It&#39;s a sleek, cross-platform desktop application designed for those who want to just <em>write</em>, but with the comfort of modern tools.</p>
-<h2>Why Nocturnote?</h2>
-<p>I wanted something that looked good, felt fast, and offered just the right amount of customization without being overwhelming.</p>
-<h3>Key Features</h3>
-<ul>
-<li><strong>Distraction-Free Interface</strong>: Clean lines, subtle colors, and a focus on your text.</li>
-<li><strong>Rain Mode</strong>: This is one of my favorites. Toggle it on for a soothing visual effect that adds a cozy atmosphere to your writing sessions.</li>
-<li><strong>Notepad Mode</strong>: Sometimes you just want that classic, stripped-back aesthetic. Nocturnote has you covered.</li>
-<li><strong>Full Customization</strong>: Change fonts, sizes, line heights, and more. Make it yours.</li>
-</ul>
-<h2>Under the Hood</h2>
-<p>For the tech-savvy, Nocturnote is built using a robust modern stack:</p>
-<ul>
-<li><strong>Electron</strong>: Ensuring it runs smoothly on Windows, macOS, and Linux.</li>
-<li><strong>Svelte 5</strong>: For a blazing fast and reactive user interface.</li>
-<li><strong>TypeScript</strong>: Because type safety is non-negotiable.</li>
-<li><strong>Tailwind CSS</strong>: For rapid and beautiful styling.</li>
-<li><strong>Electron-Vite</strong>: For a lightning-fast development experience.</li>
-</ul>
-<h2>Get It</h2>
-<p>Nocturnote is open source! You can check out the code, contribute, or download it from the repository.</p>
-<p><a href="https://github.com/fezcode/nocturnote">Check out Nocturnote on GitHub</a></p>
-<p>Whether you&#39;re coding, journaling, or taking quick notes, I hope Nocturnote provides the calm, productive space you need.</p>
 <p><a href="https://fezcode.com/blog/nocturnote">Read more...</a></p>]]></content:encoded>
         </item>
         <item>
