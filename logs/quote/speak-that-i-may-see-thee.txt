@@ -1,0 +1,34 @@
+# Speak, that I may see thee
+
+> *"Language most shows a man; speak that I may see thee."*
+
+## Who actually said it
+
+Not Goethe — though the line floats around the internet under half a dozen names. The attribution chain is unusually well documented:
+
+| Stage | Source | Form |
+| --- | --- | --- |
+| Origin | **Socrates** (anecdote) | Said to a silent young man brought to him for assessment: *"Speak, so that I may see you."* |
+| First record | **Apuleius**, *Florida* (2nd century AD) | Retells the Socrates anecdote in Latin — *loquere ut te videam*. |
+| Transmission | **Petrarch**, then **Erasmus**, *Apophthegmata* (1531) | Erasmus' collection of classical sayings carried the line into Renaissance Europe. |
+| Famous English form | **Ben Jonson**, *Timber: or, Discoveries* (published 1641) | *"Language most shewes a man: speake that I may see thee."* |
+
+So the short answer: **the idea is Socrates', the English sentence is Ben Jonson's.** Jonson wasn't claiming it as his own — *Discoveries* is his commonplace book, a collection of borrowed classical wisdom reworked into English — but his phrasing is the one that stuck.
+
+## What it means
+
+The line is a deliberate paradox: you don't *see* with your ears. Socrates is told to evaluate a young man, looks at him standing there silently, and says the looking is useless — *speak, that I may see thee*. The claim underneath:
+
+- **A face shows a body; speech shows a mind.** Appearance tells you almost nothing about who someone actually is. The moment they talk — what they notice, what they value, how their thoughts connect — the person becomes visible.
+- **Language is involuntary self-portraiture.** Jonson's surrounding passage makes this explicit: speech *"springs out of the most retired and inmost parts of us, and is the image of the parent of it, the mind. No glass renders a man's form or likeness so true as his speech."* You can compose your face. Your sentences compose you.
+- **Silence is invisibility.** Until someone speaks, they are — in the sense that matters — not yet there. Erasmus glossed it: a man's character is reflected less in his face than in his speech.
+
+## Why it endures
+
+It's one of the oldest formulations of an idea that keeps getting rediscovered: style is character. How someone uses language — precision or vagueness, generosity or cruelty, curiosity or cliché — is a more honest biography than anything they could tell you about themselves, because it's produced constantly and mostly without control. Twenty-four centuries later it doubles as a one-line argument for why interviews exist, why writing reveals its author, and why you don't really know anyone you've only looked at.
+
+## See also
+
+- Ben Jonson, *Timber: or, Discoveries Made upon Men and Matter* — the commonplace book the English line comes from; the whole passage on language is worth reading.
+- Erasmus, *Apophthegmata* — the Renaissance bestseller that kept thousands of classical anecdotes like this one alive.
+- "Le style c'est l'homme même" — Buffon, 1753: "the style is the man himself." The same idea, restated in the Enlightenment.

@@ -1,0 +1,14 @@
+## Overview
+
+BM is a simple, yet powerful command-line bookmark manager for your shell. Designed for terminal enthusiasts, it allows you to save, tag, and quickly retrieve your favorite files and directories directly from the command line.
+
+Forget alias-based bookmarks or clunky UI applications. BM integrates seamlessly into your workflow, making it effortless to manage your bookmarks.
+
+### Why BM?
+
+*   **Lightning Fast:** Built with Rust, BM operates with near-zero overhead, ensuring instant responses.
+*   **Terminal Native:** Live and breathe in your terminal? BM is your perfect companion.
+*   **TOML-based Storage:** Your bookmarks are stored in a human-readable `store.toml` file, easy to backup and edit.
+*   **Privacy-Focused:** Your data stays local, under your control.
+*   **Open Source:** Contribute, customize, and make it truly yours.
+

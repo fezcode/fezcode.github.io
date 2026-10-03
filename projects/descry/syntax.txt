@@ -1,0 +1,21 @@
+LABEL: Relations
+SUBTEXT: Links & Tags
+IMAGE: /images/projects/descry/wiki-links.png
+
+A vault is not a folder of files; it is a graph. Descry gives you two edges to draw with.
+
+## Wiki links
+
+`[[note name]]` resolves case-insensitively across the whole vault. Type `[[` and an auto-complete list of every note appears, each row showing its path relative to the vault root — so two notes called "index" stay distinguishable.
+
+The backlinks panel answers the other direction: every note that points at the one you are reading.
+
+## Tags
+
+Where `[[…]]` points at one file, `#…` names a subject any number of notes can share. Tags are highlighted in both edit and preview, clickable in preview to search the vault for them, and offered by the same auto-complete list — with the same path column — when you type `#` mid-line.
+
+The tag panel (`Ctrl+Shift+G`) ranks every tag in the vault by use.
+
+## The graph
+
+`Ctrl+Shift+M` draws the whole thing: a force-directed map with one node per note and one per tag, an edge per wiki link and per tag mention. Node size scales with degree, the current note is highlighted. Drag to pan, scroll to zoom, click a note to open it or a tag to search for it.

@@ -1,0 +1,56 @@
+id: palette-as-story
+rank: 13
+name: PALETTE AS STORY
+family: Light
+years: 1995 → present
+sub: Colour assigned before a frame is shot, so the film changes hue as the character changes
+
+ascii:
+┌────────────────────────────────────────┐
+│ ████ ████ ████ ████ ████ ████ ████     │
+│ warm  cool  drain  cool  warm  full    │
+│ act 1 ──────── act 2 ──────── act 3    │
+└────────────────────────────────────────┘
+
+what:
+ Planning the colour of a film as a curve across its whole length rather than scene by scene. Animation formalised this as the colour script, a strip of small paintings covering every sequence, approved before any shot is built. Live action does the same thing through production design, costume and the grade. Either way the intent is that saturation and hue carry the emotional argument, so an audience registers a change of state before the dialogue confirms it.
+
+artists:
+ Pixar institutionalised the colour script, and *Inside Out* is the most literal case ever made, since the emotions are colours and the palette is the cast. *WALL-E* runs rust to clinical white to green, *Soul* separates a blown-out New York from a pastel hereafter, and *Ratatouille* keeps its kitchen warm against a cold city. In live action, Wes Anderson assigns each era of *The Grand Budapest Hotel* its own palette, and *Her* removes blue from the world almost entirely.
+
+trivia:
+ *Her* has essentially no blue in its costume or production design, a restriction held across the entire film to keep the world warm, soft and slightly unreal. It is the kind of rule that is invisible while you are watching and obvious the moment somebody names it, which is the ideal condition for this technique.
+
+sonic:
+ Colour reaches you before anything else in the frame does, faster than composition and much faster than dialogue. A palette shift is therefore the most efficient way to tell an audience that the rules have changed. It also survives bad viewing conditions: a colour scheme still works on a phone in daylight, where lighting nuance and shadow detail are long gone.
+
+gear:
+ A colour script or lookbook, and then discipline across departments, because a single wrong costume can undo a sequence. In live action the grade finishes the job, and the digital intermediate is where a film's palette is finally imposed. In animation the constraint is cheaper to enforce and consequently pushed much further.
+
+prod:
+ Costly in preproduction and cheap afterwards, which is the reverse of most techniques here. The risk is legibility: a heavily drained act reads as a broken television to some viewers, and a palette that is too systematic starts to feel like a chart rather than a world.
+
+examples:
+ - Inside Out | the cast are the palette
+ - WALL-E | rust, then white, then green
+ - Soul | a blown-out city against a pastel hereafter
+ - Ratatouille | a warm kitchen in a cold city
+ - Her | a world with the blue taken out
+ - The Grand Budapest Hotel | a palette per era
+ - La La Land | primaries pushed to musical levels
+ - Zootopia | district by district, biome by biome
+ - Cold War | monochrome as the whole argument
+ - The Wild Robot | painterly light as the subject
+ - Kung Fu Panda | the colour script as the storyboard
+ - Kung Fu Panda 2 | ink-wash flashback against solid colour
+ - Kung Fu Panda 3 | the spirit realm given its own key
+ - Big Hero 6 | a city built from two palettes
+ - Brave | one colour carried through a forest
+ - The Book of Life | three worlds, three schemes
+ - Sonic the Hedgehog | saturation as a character trait
+ - Midnight in Paris | a different era, a different grade
+ - Spider-Man Into The Spider-Verse | palette per dimension
+ - Frances Ha | monochrome as a budget and a mood
+ - Ralph Breaks the Internet | the web given its own spectrum
+ - Brooklyn | two countries, two temperatures
+ - Doctor Strange | the mirror dimension as a colour event

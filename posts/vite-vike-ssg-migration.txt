@@ -1,0 +1,694 @@
+# Migrating Fezcodex From CRA to Vite + Vike: A Static-Site-Generation Deep Dive
+
+> _The story of replacing a Create React App build with Vite + Vike, swapping
+> `react-snap` for a purpose-built Puppeteer crawler, and learning — again —
+> that a static-site generator is one-half bundler and one-half distributed
+> systems problem in a trench coat._
+
+---
+
+## 0. The opening brief
+
+Every side project that survives long enough to matter eventually has to
+answer an uncomfortable question: _is the toolchain still the right fit,
+or is it just the one we started with?_
+
+For Fezcodex, the answer arrived on a Tuesday. Cold-start dev builds had
+crept past twenty seconds. `npm audit` was lighting up with transitive
+vulnerabilities we couldn't reach through our own `package.json`. The
+pre-render step relied on a mature but no-longer-maintained library that
+was writing 500+ HTML files by spidering `<a>` tags at runtime, and a
+single flaky route could crash the whole deploy. Babel, webpack 4, and
+a `craco.config.js` full of CRA-override hacks were doing their best,
+but the best was no longer good enough.
+
+This post documents the migration to a Vite + Vike build, the retirement
+of `react-snap` in favor of a purpose-built Puppeteer crawler, and the
+month of sharp edges we hit along the way — cache ordering, nested code
+fences, preview-server stampedes, and a react-markdown upgrade that
+quietly removed a prop the entire codebase depended on. Every section
+is a fix we actually shipped and a trap we'd warn a future maintainer
+about.
+
+---
+
+## 1. Why CRA had to go
+
+Create React App was, for years, the default frontend starter for
+anything that didn't need an opinion. By late 2025 the calculus had
+shifted hard. Three specific failure modes had become load-bearing:
+
+1. **Build speed.** CRA dev starts with webpack's cold compile. Our dev
+   server bootstrap was 20–25 seconds on every `npm start`, even with
+   nothing changed. HMR was fine — it was the initial walk that hurt.
+   Every context switch back to the site cost a fresh coffee.
+
+2. **Transitive dependency rot.** CRA 5 pinned a version of webpack and
+   a dependency tree that had stopped receiving security patches. We
+   could upgrade our direct deps, but the shape of `react-scripts` kept
+   pulling in old `@babel/runtime`, old `postcss`, old `svgo`. Every
+   `npm audit` was a ritual in learning to live with yellow warnings.
+
+3. **Router/prerender friction.** The site is a SPA with 460+ routes —
+   blog posts, logs across ten categories, series episodes, story
+   pages. Serving it as a SPA on GitHub Pages (no server-side routing)
+   required prerendering every URL into a static HTML file. CRA had no
+   opinion on that, so we'd bolted on [`react-snap`][snap] as a
+   post-build crawler. It worked, but it was unmaintained, it used an
+   older Puppeteer, and its "crawl from links" model meant every flaky
+   page was an opaque timeout.
+
+The underlying tool we needed was simple: _build React SPAs quickly,
+emit a static HTML shell per route, let us drop in our own prerender
+logic._ That description is practically the Vite + Vike pitch.
+
+[snap]: https://github.com/stereobooster/react-snap
+
+---
+
+## 2. What we replaced, with what
+
+A short replacement table captures the whole migration:
+
+| Concern | Before (CRA era) | After (Vite era) |
+| --- | --- | --- |
+| Bundler | webpack 4 (via `react-scripts`) | Vite (Rollup + esbuild) |
+| Config override | `craco.config.js` | `vite.config.mjs` |
+| Dev server | `react-scripts start` | `vite` |
+| Tests | `jest` | `vitest` |
+| Tailwind config | `tailwind.config.js` (CJS) | `tailwind.config.mjs` (ESM) |
+| Route emission | react-snap link crawl | Vike `onBeforePrerenderStart` + hand-written enumerator |
+| Prerender | `react-snap` (unmaintained) | `scripts/prerender-crawl.mjs` (our own Puppeteer) |
+| Dynamic route discovery | implicit (link graph) | explicit (`pages/discoverRoutes.js`) |
+| Post-build 404 copy | react-snap side effect | `scripts/post-build.mjs` |
+| Build orchestration | `react-scripts build` | `scripts/build.mjs` (timed, three-phase) |
+
+Everything else — the React 19 code, context providers, Tailwind styles,
+the 60+ app modules under `src/app/apps/` — is byte-for-byte unchanged.
+Migration was purely a toolchain swap.
+
+---
+
+## 3. The new build pipeline, at one altitude
+
+The build is now three explicit phases, orchestrated by a wrapper
+script so we can time each one and report a summary:
+
+```mermaid
+graph LR
+  subgraph build["npm run build"]
+    direction LR
+    vite["vite build<br/>(bundle + emit shells)"]
+    pb["post-build.mjs<br/>(copy 404.html)"]
+    crawl["prerender-crawl.mjs<br/>(Puppeteer hydrate)"]
+    vite --> pb --> crawl
+  end
+  routes["pages/discoverRoutes.js<br/>(enumerate ~460 routes)"] --> vite
+  routes --> crawl
+  dist["dist/client/<br/>(static site)"]
+  crawl --> dist
+  ghp["gh-pages branch"]
+  dist -->|gh-pages deploy| ghp
+```
+
+The wrapper (`scripts/build.mjs`) is deliberately small:
+
+```js
+const globalStart = Date.now();
+for (const step of steps) {
+  const s = Date.now();
+  await run(step);
+  timings.push({ name: step.name, ms: Date.now() - s });
+}
+const total = Date.now() - globalStart;
+```
+
+…and its output is the first thing we look at when a build feels off:
+
+```
+[build] vite build: 3.21s
+[build] post-build: 12ms
+[build] prerender-crawl: 2m 18.4s
+
+[build] ── summary ──
+  vite build         3.21s  ( 2%)
+  post-build         12ms  ( 0%)
+  prerender-crawl    2m 18.4s  (97%)
+  total              2m 21.6s
+```
+
+The percentages matter more than the absolutes. When prerender-crawl is
+97% of wall time, every optimization attempt aimed at Vite is noise.
+
+---
+
+## 4. Vite + Vike: the shell-emission problem
+
+Switching to Vite was the easy half. A CRA-to-Vite diff is
+well-documented and mostly amounts to deleting files. The interesting
+decision was how to emit one `index.html` per route — Vite on its own
+only emits _one_ `index.html`, and we needed 460.
+
+[Vike] (the project formerly known as `vite-plugin-ssr`) provides
+exactly that: file-based routing over a Vite build, with a prerender
+mode that writes a per-route `dist/client/<route>/index.html` shell.
+The catch is that Vike wants to know which routes to emit before it
+runs. Two hooks matter:
+
+[Vike]: https://vike.dev/
+
+- `pages/+route.js` — our project uses `'/*'` so that the SPA's
+  `react-router-dom` can handle everything at runtime.
+- `pages/+onBeforePrerenderStart.js` — returns the array of URL paths
+  Vike should pre-render shells for.
+
+```js
+// pages/+onBeforePrerenderStart.js
+import { discoverAllRoutes } from './discoverRoutes.js';
+export default function onBeforePrerenderStart() {
+  return discoverAllRoutes();
+}
+```
+
+Everything interesting has been punted to `discoverAllRoutes`, which
+is where we pay off the debt `react-snap` was quietly carrying.
+
+---
+
+## 5. Route enumeration: the quiet part loud
+
+`react-snap` discovered routes by crawling. It loaded `/`, parsed
+`<a href="…">` elements, visited the unseen ones, repeated until the
+frontier was empty. That's a pragmatic strategy — it requires zero
+configuration, it picks up new routes automatically — but it has
+three lethal failure modes in practice:
+
+1. **One flaky page poisons the crawl.** If a route's JS hangs, the
+   whole deploy is late.
+2. **Routes behind conditional links never get discovered.** If the
+   homepage only links to your blog index when `isDebug=true`, blog
+   posts get skipped.
+3. **The crawl order is non-deterministic.** Repeat builds emit the
+   same files but at different times, which breaks cache keys and
+   build reports.
+
+The Vite + Vike pipeline forces the question the other way: _you must
+tell the build what the routes are._ For static pages that's trivial —
+a hand-maintained list works:
+
+```js
+// pages/routes.js
+export const staticRoutes = [
+  "/",
+  "/about",
+  "/achievements",
+  "/apps",
+  "/apps/abstract-waves",
+  // ... 140 entries total
+];
+```
+
+The hard part is the _dynamic_ routes. The site has 128 blog posts
+(some grouped into 6 series of 2–17 episodes), 148 log entries across
+ten categories, and 32 story pages across 6 books. `react-snap` found
+those by following links. Vike needs them enumerated in advance.
+
+`pages/discoverRoutes.js` is that enumeration:
+
+```js
+function blogRoutes() {
+  const posts = readJson('public/posts/posts.json') || [];
+  const out = new Set();
+  for (const entry of posts) {
+    if (!entry?.slug) continue;
+    if (entry.series?.posts?.length) {
+      out.add(`/blog/series/${entry.slug}`);
+      for (const ep of entry.series.posts) {
+        if (ep?.slug) out.add(`/blog/series/${entry.slug}/${ep.slug}`);
+      }
+    } else {
+      out.add(`/blog/${entry.slug}`);
+    }
+  }
+  return out;
+}
+```
+
+`logsRoutes()` walks `public/logs/<category>/` directories, strips
+`.txt`, and emits `/logs/<category>/<slug>`. `storyBookRoutes()` parses
+`public/stories/books_en.piml` and `books_tr.piml` with a tiny
+line-at-a-time PIML reader and yields `/stories/books/<id>` plus every
+`/stories/books/<id>/pages/<episodeId>`.
+
+```js
+export function discoverAllRoutes() {
+  const all = new Set(staticRoutes);
+  for (const r of blogRoutes()) all.add(r);
+  for (const r of logsRoutes()) all.add(r);
+  for (const r of storyBookRoutes()) all.add(r);
+  return Array.from(all);
+}
+```
+
+The replacement is trivial Node code — fifty lines, zero dependencies
+beyond `node:fs`. The win isn't cleverness. It's that we now have a
+single source of truth for _what the site contains_, decoupled from
+how it's linked. New category? Edit one file. Missing route? It shows
+up as a diff in `discoverRoutes.js`, not as a silently broken deploy.
+
+---
+
+## 6. The prerender crawler: Puppeteer, hydration, and `#react-root`
+
+Vike writes shell HTMLs with an empty `<div id="react-root"></div>`.
+Rendered at runtime in the browser, React takes over and fills the
+div. That's fine for users; it's catastrophic for search engines and
+link previews.
+
+`scripts/prerender-crawl.mjs` closes that gap. It:
+
+1. Starts a Vite `preview` server on 127.0.0.1:4287.
+2. Launches headless Chromium via Puppeteer.
+3. For each route, opens the shell's URL, waits until React renders
+   something inside `#react-root`, reads the rendered HTML, and
+   rewrites the on-disk shell with the hydrated content inlined.
+
+The core of the worker is:
+
+```js
+await page.goto(target, { waitUntil: 'domcontentloaded' });
+await page.waitForSelector('#react-root > *', { timeout: 8000 });
+await new Promise(r => setTimeout(r, 300)); // render settle
+
+const rendered = await page.evaluate(() => {
+  const root = document.getElementById('react-root');
+  return root ? root.innerHTML : '';
+});
+
+const shell = await readFile(file, 'utf8');
+const replaced = shell.replace(
+  /<div id="react-root"><\/div>/,
+  `<div id="react-root">${rendered}</div>`
+);
+await writeFile(file, replaced, 'utf8');
+```
+
+That's twenty lines. The next four sections are the twenty lines'
+worth of lessons we learned by running it in anger.
+
+---
+
+## 7. `networkidle0` is a trap
+
+Our first version used `waitUntil: 'networkidle0'` — Puppeteer's
+"wait until the page has had zero network requests for 500ms"
+condition. The documentation suggests it; tutorials suggest it; it
+sounds correct.
+
+In practice, `networkidle0` is the slowest legitimate condition you
+can wait on, and for a React SPA it waits on the wrong thing. The
+first bundle parse completes fast. React mounts. But somewhere deep
+in our app, Google Fonts is fetching CSS, a lazy-loaded chunk is
+resolving, and a `<script>` tag is pinging analytics. The crawler
+sits on `networkidle0` until all of that drains, even though the DOM
+it wants to capture was ready three seconds ago.
+
+The fix is to wait on the _signal we actually care about_: the
+presence of a child inside `#react-root`. That tells us React has
+rendered at least once, which is exactly the precondition for reading
+the innerHTML.
+
+```js
+await page.goto(target, { waitUntil: 'domcontentloaded' });
+await page.waitForSelector('#react-root > *', { timeout: 8000 });
+```
+
+`domcontentloaded` is cheap — it fires as soon as Chrome finishes
+parsing the HTML, before any `<script>` has finished downloading.
+`waitForSelector('#react-root > *')` then gates on the thing we
+actually care about. Same semantics, 5–10x faster per route.
+
+For completeness we also disable three resource types at the request
+layer — they're useless to a crawler that only reads innerHTML:
+
+```js
+await page.setRequestInterception(true);
+page.on('request', (req) => {
+  const t = req.resourceType();
+  if (t === 'image' || t === 'font' || t === 'media') return req.abort();
+  req.continue();
+});
+```
+
+Aborting images and fonts shaves ~40% off average route time. The
+hydrated HTML doesn't care about an image's bytes, only its `src`
+attribute — and the `src` is in the rendered markup regardless.
+
+---
+
+## 8. The cold-start stampede
+
+Our first run with six concurrent workers, 460 routes, and the new
+selector-based wait produced the following summary:
+
+```
+prerender-crawl: 59 rendered, 401 skipped, 0 errored
+```
+
+Fifty-nine out of four hundred and sixty. The console was a wall of
+`no children rendered within 8000ms`. Running the same build five
+minutes later produced 438/460. The difference was uncomfortable —
+this was not a timing variance inside the 8-second window, it was a
+systemic failure of the first few hundred routes.
+
+The cause is subtle and obvious, in that order. Vite's `preview`
+server takes a short but nonzero time to warm up after
+`preview()` resolves. Its route handler is ready _as a function_
+immediately, but the underlying module graph and asset tree are still
+being walked and memoized on the first few requests. When six workers
+stampede the server simultaneously with the first six routes, the
+first routes pay a 2–4 second initialization tax on top of their
+normal service time. That tax eats the 8-second budget. The pages
+bail, the workers move on, and the _next_ batch sees a fully warm
+server — which is why the later routes succeed.
+
+The fix is a single pre-flight request before we release the workers:
+
+```js
+async function warmUp(baseUrl) {
+  const deadline = Date.now() + 10000;
+  while (Date.now() < deadline) {
+    try {
+      const res = await fetch(baseUrl + '/');
+      if (res.ok) return Date.now();
+    } catch {}
+    await new Promise(r => setTimeout(r, 200));
+  }
+  throw new Error('preview server did not respond within 10s');
+}
+
+await warmUp(url);
+```
+
+By the time `warmUp` resolves, the preview server has served one full
+request, paid its one-time initialization cost, and is ready for the
+concurrent workers. The success ratio jumped from 59/460 to 438/460
+on the next run — the remaining 22 skips are genuine flakiness in
+specific pages, not build infrastructure noise.
+
+The lesson generalizes. _A cold dependency that's about to be hit by
+N concurrent consumers must be hit once, sequentially, by one
+consumer first._ Web servers. Databases. Redis connections. Chromium
+itself. The pre-flight is three lines of code and it eliminates an
+entire class of "flaky in CI, fine on laptop" bug.
+
+---
+
+## 9. The optional retry pass
+
+The remaining 4–8% of routes were a tail of genuinely flaky pages —
+complex apps like `/apps/fractal-flora`, series episodes with heavy
+markdown rendering, story pages that fetch large PIML files. They
+render correctly on a second attempt _sequentially_, while the
+concurrent crawl is over. That's a hint that the failure is load on
+the preview server, not the page itself.
+
+The retry is opt-in:
+
+```bash
+npm run build:retry
+# or
+PRERENDER_RETRY=1 npm run build
+```
+
+When enabled, after the concurrent workers finish the crawler runs
+one more pass, sequentially, on only the routes that skipped:
+
+```js
+if (RETRY) {
+  const flaky = results
+    .filter((r) => r.skipped && /within \d+ms|empty root/.test(r.skipped))
+    .map((r) => r.route);
+  for (const route of flaky) {
+    const r = await crawlOne(browser, url, route);
+    // update the result in place if it now succeeds
+  }
+}
+```
+
+Critically, the retry pass is single-threaded. If the first pass
+failed a page because the server was saturated by five other pages,
+the second pass gives that page the full server. On a representative
+run we see the retry rescue 19 of 22 initial skips, bringing the final
+ratio to 457/460.
+
+The retry is opt-in, not default, because it doubles worst-case build
+time for the last few percent. For routine pushes the baseline build
+is sufficient — skipped routes fall back to SPA rendering at runtime,
+which degrades discoverability but not functionality. We run
+`build:retry` before any release that touches content across many
+routes and before any deploy that aims for maximum SEO coverage.
+
+---
+
+## 10. Reporting: ratio, averages, and per-route timing
+
+The crawler's final summary grew through three iterations. The first
+version just counted outcomes: `N rendered, M skipped, K errored`.
+The second added a success ratio, because staring at "438, 22, 0"
+was doing division in our heads wrong. The third added per-route
+timing, because the average and max per-route time are the fastest
+signal when the build feels slow.
+
+```
+prerender-crawl: 457/460 rendered (99.3% success), 3 skipped, 0 errored
+prerender-crawl: per-route avg 287ms, max 4820ms
+prerender-crawl: total elapsed 2m 18.4s
+```
+
+Each route also prints its own timing inline, which makes outliers
+visible at a glance:
+
+```
+  . /apps/color-contrast-checker  (56202 bytes, 4 console errors, 412ms)
+  . /blog/atlas-llm-deep-dive     (89451 bytes, 3 console errors, 1.84s)
+  - /apps/fractal-flora: no children rendered within 8000ms (8.01s)
+```
+
+An 8-second skip always shows up as `~8000ms` on its row. A 4-second
+success tells us where our budget is actually going. Instrumentation
+is cheap; invisible time is expensive.
+
+---
+
+## 11. The react-markdown v10 gotcha
+
+One fix in this migration isn't about the build at all — it's about
+a dependency's breaking change that we only noticed in production.
+
+All ten of our blog-view React components render the post body through
+`react-markdown`. Every component maps custom renderers for `code`,
+specifically distinguishing inline code (single backticks) from
+fenced code (triple backticks):
+
+```jsx
+code: ({ inline, className, children, ...props }) => {
+  if (inline) {
+    return <code className="font-mono px-1.5 py-0.5 border">...</code>;
+  }
+  return <CodeBlock className={className}>{children}</CodeBlock>;
+},
+```
+
+That code worked for years. Then `react-markdown` shipped v10 and
+_removed the `inline` prop_. Now `inline` is always `undefined`, the
+guard always reads as falsy, and every `<code>` — inline or fenced —
+hits the block renderer. The block renderer's own guard reads
+`if (!inline && match)`, where `match` is the language from
+`className="language-go"` or similar.
+
+For a fenced block _with_ a language — `\`\`\`go` — nothing changed,
+because `match` exists and the block renders normally. The bug lives
+in fenced blocks _without_ a language:
+
+```
+\`\`\`
+┌───────────────┐
+│  ASCII art    │
+└───────────────┘
+\`\`\`
+```
+
+Here `match` is `null`, the block renderer's outer `if` fails, and
+the code falls through to the _fallback_ inline `<code>` — with its
+`display: inline`, `font-mono`, `border`, `padding`. That's where the
+pathology begins. An inline element with a border, wrapping across
+lines of box-drawing characters, renders a _pill per wrapped line_.
+The page looks like someone shredded a code block into ribbon
+confetti.
+
+The fix is one line of guard-widening, applied across all ten blog
+views:
+
+```diff
+- if (!inline && match) {
++ if (!inline && (match || /\n/.test(String(children)))) {
+```
+
+If the content contains a newline, it's a block — render it in the
+block path even without a language tag. When the language is missing,
+default `SyntaxHighlighter` to `'text'` so it does a no-op highlight
+and hands us back a proper `<pre><code>` wrapped in our container.
+
+```diff
+- language={match[1]}
++ language={match ? match[1] : 'text'}
+```
+
+Two-line patch, ten files, one commit. The takeaway: _when upgrading
+a markdown renderer, test every kind of fenced code block_ — with
+language, without language, inline code, and especially code blocks
+containing ASCII diagrams, since those will surface rendering bugs
+that regular code never touches.
+
+---
+
+## 12. The nested-fence fix
+
+Not strictly build-related, but discovered during the same audit:
+the atlas.llm deep-dive post had a _nested_ markdown fence block —
+a `\`\`\`markdown` block whose content itself contained `\`\`\`go`
+inner blocks. Standard markdown parsers see the inner triple-backticks
+as the _end_ of the outer block, and everything after renders as
+plain prose. CommonMark's solution is to use a longer fence for the
+outer block:
+
+````markdown
+````markdown
+## main.go
+```go
+package main
+// ... full file contents ...
+```
+````
+````
+
+Four backticks open, four backticks close, three-backtick pairs
+nested inside render literally. The rule: the closing fence must be
+at least as long as the opening fence. It's a tiny detail that saves
+every technical post that ever needs to show another post's
+markdown.
+
+---
+
+## 13. The scripts table
+
+For a maintainer skimming this post six months from now, the new
+`package.json` scripts tell the whole story:
+
+| Script | What it does | When to use |
+| --- | --- | --- |
+| `npm start` | Vite dev server | local development |
+| `npm run build` | three-phase build with full crawl | default — `dist/client/` fully SSG'd |
+| `npm run build:fast` | Vite + post-build only, no crawl | iterating on UI; skip the ~2 min crawler |
+| `npm run build:retry` | full crawl + sequential retry of skipped routes | completeness-first builds |
+| `npm run deploy` | `build` then push to gh-pages | standard deploy |
+| `npm run deploy:fast` | `build:fast` then push (SPA-fallback only) | emergency content push |
+| `npm run deploy:retry` | `build:retry` then push | release-quality deploy |
+
+The three-level `build` / `build:fast` / `build:retry` split is
+deliberate. It maps directly to the three questions an engineer
+actually asks: _am I iterating_ (`fast`), _am I shipping_ (default),
+or _am I preparing a release_ (`retry`).
+
+---
+
+## 14. What we actually gained
+
+Measured against the pre-migration baseline, on a mid-range laptop:
+
+| Metric | Before (CRA) | After (Vite + crawler) |
+| --- | --- | --- |
+| Cold dev-server start | 22s | 0.6s |
+| HMR edit round-trip | 400–900ms | 60–150ms |
+| Production bundler | webpack 4 | Vite (Rollup + esbuild) |
+| Full build (with SSG) | 4m 12s | 2m 18s |
+| `build:fast` (no SSG) | n/a | 3.2s |
+| Unit test bootstrap | 8.4s (jest) | 1.1s (vitest) |
+| `npm audit` criticals | 4 | 0 |
+| Lines of build config | 87 (craco + react-scripts) | 34 (vite + scripts) |
+
+The numbers are nice. The larger win is structural. The build is now
+readable in three files — `vite.config.mjs`, `scripts/build.mjs`,
+`scripts/prerender-crawl.mjs` — and each of them is under 200 lines.
+When a future deploy misbehaves, the first question is "which phase?",
+and the timing summary answers it before we've finished typing the
+`git log` command.
+
+---
+
+## 15. What we'd still change
+
+A post-mortem that pretends everything is perfect is a marketing
+document, not an engineering one. Three open items we're deliberately
+deferring:
+
+1. **Incremental prerender.** The crawler currently re-renders every
+   route on every build, even though most routes haven't changed.
+   A content hash cache (`public/posts/<slug>.txt` + its ancestors →
+   an etag, reused if the shell bytes haven't changed) would collapse
+   the 2-minute crawl to under 10 seconds on typical pushes. We know
+   how to build it; we haven't felt the pain enough to prioritize it.
+
+2. **Puppeteer → Playwright.** Puppeteer works and we know it. But
+   Playwright has superior tracing, faster cold-start, and better
+   multi-context isolation. The migration is mechanical and worth
+   doing the next time we have a spare afternoon.
+
+3. **Vike SSR.** We use Vike strictly for shell emission, not for
+   server-side rendering. For a GitHub Pages deploy that's correct
+   — there is no server. But if we ever move to a Node host, flipping
+   from "crawl shells with Puppeteer" to "render pages on the server"
+   is a short diff, and it would eliminate the flakiness tail entirely.
+
+---
+
+## 16. The broader lesson
+
+Frontend toolchains are not permanent. They are the current answer to
+a question that keeps being re-asked: _how do we ship interactive
+HTML to a browser, and can we do it faster and with fewer surprises
+than last year?_ CRA was a good answer for 2018. Vite + Vike + our
+own crawler is a good answer for 2026. In 2029, this whole post will
+read as a charming period piece, and the migration from Vite to
+whatever-comes-next will have its own deep-dive.
+
+What persists across the transitions is the discipline: measure the
+phases, instrument the bottlenecks, make the implicit explicit, and
+never trust a crawler that can't tell you which route it skipped or
+how long it took. The tools change. The engineering doesn't.
+
+---
+
+## 17. Appendix: the five scripts that do everything
+
+For anyone reimplementing this pipeline:
+
+- **`vite.config.mjs`** — base Vite config, Vike plugin enabled,
+  `build.outDir = 'dist/client'`.
+- **`pages/+onBeforePrerenderStart.js`** — returns the route list to
+  Vike. Delegates to `discoverRoutes.js`.
+- **`pages/discoverRoutes.js`** — enumerates static + dynamic routes.
+  Pure Node, no Vite context needed.
+- **`scripts/post-build.mjs`** — copies `index.html` → `404.html`
+  so GitHub Pages' 404 handler returns the SPA shell.
+- **`scripts/prerender-crawl.mjs`** — the crawler. 180 lines.
+  Preview server lifecycle, Puppeteer browser pool, worker queue,
+  warm-up ping, optional retry pass, timing instrumentation, final
+  summary.
+- **`scripts/build.mjs`** — the three-phase orchestrator with per-step
+  timing and a final percentage-weighted summary.
+
+Six files. Zero runtime dependencies beyond `vite`, `vike`,
+`puppeteer`. No webpack plugins. No `craco` overrides. The whole
+static-site generator fits in a PR review.

@@ -1,0 +1,46 @@
+id: the-long-take
+rank: 01
+name: THE LONG TAKE
+family: Camera
+years: 1948 → present
+sub: No cut to hide behind — blocking, focus and nerve doing the work an edit would normally do
+
+ascii:
+┌────────────────────────────────────────┐
+│  ████████████████████████████████████  │
+│  └─ one shot ──────────────────────┘   │
+│  ┆      ┆        ┆         ┆           │
+│  beat   beat     beat      beat        │
+│  NO CUT ─ NO COVERAGE ─ NO SAFETY NET  │
+└────────────────────────────────────────┘
+
+what:
+ A single continuous shot held far past the point where a film would normally cut — anywhere from thirty seconds to the length of a reel. The cut is cinema's basic unit of mercy: it lets a performance be assembled from the best fragments, lets a stunt be faked across three angles, lets a mistake be discarded. Withholding it puts everything on the table at once. What the long take buys is contiguity — the audience knows, without being told, that the space is real and the time is unbroken, because they have not been allowed to look away.
+
+artists:
+ Alfonso Cuarón and Emmanuel Lubezki made it the house style of *Children of Men*. Park Chan-wook staged *Oldboy*'s corridor as a side-on brawl with no way out of frame. Michael Mann runs long on geography rather than violence, letting a crew cross real Los Angeles blocks in real time. Edgar Wright uses it against type in *Hot Fuzz*, where the unbroken shot is applied to paperwork and the joke is the seriousness of the technique.
+
+trivia:
+ The *Oldboy* corridor fight runs close to three minutes and took seventeen takes over two days, with Choi Min-sik performing while genuinely exhausted — the staggering is not entirely acting. *Children of Men*'s most famous "single shots" are not single at all: the ambush and the battle sequence are stitched from several takes with the joins hidden in whip-pans, smoke and passes behind foreground objects, which is the open secret of almost every celebrated oner since.
+
+sonic:
+ It removes your escape route. In a cut sequence you are watching a report of an event; in a long take you are stuck inside its duration, and duration is what makes dread accumulate. It also changes where your eye goes — with no editor to point at the important thing, you start hunting the frame yourself, which is why the technique makes an audience lean forward.
+
+gear:
+ Stabilisation is the whole problem. Steadicam gets a body through a doorway; a crane or a Technocrane covers distance a person cannot; a car rig like the Doggicam built for *Children of Men* lets a camera travel inside a vehicle and then out of it. Modern gimbals collapsed the cost of all of this, which is why the oner went from a flourish to a commonplace after about 2015. Focus is pulled blind, by marks and distance, for minutes at a stretch.
+
+prod:
+ Rehearsal replaces coverage, so the cost moves from post to the floor: days of blocking for a few minutes of film, and a single fluffed line at minute three means going back to zero. There is no safety net in the edit, which is exactly why directors reach for it and why producers resist it. Done badly it announces itself — a shot that is clearly showing off its own continuity has already lost the effect, because the audience is now watching the camera instead of the scene.
+
+examples:
+ - Children of Men | the car ambush on the forest road
+ - Oldboy | the corridor, one hammer, twelve men
+ - Hot Fuzz | the paperwork, played as an action sequence
+ - Heat | the bank exit into downtown Los Angeles
+ - Upgrade | the fight staged by moving the camera with the body
+ - Dog Day Afternoon | the bank held in real time
+ - Game Night | the house crossed in one move
+ - Twinless | conversation allowed to run
+ - Past Lives | the final wait, held to the end
+ - Flight | the inversion, played without cutting away
+ - Manchester By The Sea | conversations left to run past comfort

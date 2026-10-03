@@ -1,0 +1,150 @@
+# 007 - React Hooks: `useState` and `useEffect`
+
+React Hooks are functions that let you "hook into" React state and lifecycle features from functional components. They allow you to use state and other React features without writing a class. The two most fundamental hooks are `useState` and `useEffect`.
+
+## `useState` Hook
+
+`useState` is a Hook that lets you add React state to functional components. It returns a pair of values: the current state, and a function that updates it.
+
+### Syntax
+
+```javascript
+const [stateVariable, setStateVariable] = useState(initialValue);
+```
+
+*   `stateVariable`: The current value of the state.
+*   `setStateVariable`: A function to update the `stateVariable`. When this function is called, React will re-render the component.
+*   `initialValue`: The initial value for the state. This can be any JavaScript data type (number, string, boolean, object, array, etc.).
+
+### Example from `src/pages/BlogPostPage.js`
+
+```javascript
+// src/pages/BlogPostPage.js
+const BlogPostPage = () => {
+  // ...
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [readingProgress, setReadingProgress] = useState(0);
+  const [isAtTop, setIsAtTop] = useState(true); // New state for tracking if at top
+  const [isModalOpen, setIsModalToOpen] = useState(false);
+  const [modalContent, setModalContent] = useState('');
+  // ...
+};
+```
+
+In `BlogPostPage`:
+*   `[post, setPost] = useState(null)`: `post` will hold the blog post data (attributes, body, series posts). It's initialized to `null` because the data is fetched asynchronously.
+*   `[loading, setLoading] = useState(true)`: `loading` is a boolean that indicates whether the post data is currently being fetched. It starts as `true`.
+*   `[readingProgress, setReadingProgress] = useState(0)`: `readingProgress` stores the user's scroll progress on the page, initialized to `0`.
+*   `[isAtTop, setIsAtTop] = useState(true)`: Tracks if the user is at the top of the page.
+*   `[isModalOpen, setIsModalToOpen] = useState(false)`: Controls the visibility of a modal, initialized to `false` (closed).
+*   `[modalContent, setModalContent] = useState('')`: Stores the content to be displayed inside the modal.
+
+### Example from `src/components/Layout.js`
+
+```javascript
+// src/components/Layout.js
+const Layout = ({ children }) => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768);
+  // ...
+};
+```
+
+In `Layout`:
+*   `[isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth > 768)`: `isSidebarOpen` controls the visibility of the sidebar. Its initial value depends on the window width, making the sidebar open by default on larger screens.
+
+## `useEffect` Hook
+
+`useEffect` is a Hook that lets you perform side effects in functional components. Side effects include data fetching, subscriptions, manually changing the DOM, and other operations that interact with the outside world. It runs after every render of the component by default, but you can control when it runs using its dependency array.
+
+### Syntax
+
+```javascript
+useEffect(() => {
+  // Side effect code here
+  return () => {
+    // Cleanup function (optional)
+  };
+}, [dependency1, dependency2]); // Dependency array (optional)
+```
+
+*   **First argument (function)**: This is where you put your side effect code. It can optionally return a cleanup function.
+*   **Second argument (dependency array)**: This array controls when the effect re-runs.
+    *   If omitted, the effect runs after every render.
+    *   If an empty array `[]`, the effect runs only once after the initial render (like `componentDidMount`). The cleanup runs on unmount (like `componentWillUnmount`).
+    *   If it contains variables (e.g., `[prop1, state1]`), the effect runs after the initial render and whenever any of the variables in the array change.
+
+### Example from `src/pages/BlogPostPage.js` (Data Fetching)
+
+```javascript
+// src/pages/BlogPostPage.js
+useEffect(() => {
+  const fetchPost = async () => {
+    setLoading(true);
+    // ... data fetching logic using fetch API ...
+    setLoading(false);
+  };
+
+  fetchPost();
+}, [currentSlug]); // Effect re-runs when currentSlug changes
+```
+
+This `useEffect` hook is responsible for fetching the blog post data. 
+*   It defines an `async` function `fetchPost` to handle the asynchronous data retrieval.
+*   `setLoading(true)` is called at the start to show a loading indicator.
+*   The `fetch` API is used to get the `.txt` content and `shownPosts.json` metadata.
+*   Crucially, the dependency array `[currentSlug]` ensures that this effect runs only when the `currentSlug` (derived from the URL parameters) changes. This prevents unnecessary re-fetches and ensures the correct post is loaded when navigating between posts.
+
+### Example from `src/pages/BlogPostPage.js` (Scroll Event Listener)
+
+```javascript
+// src/pages/BlogPostPage.js
+useEffect(() => {
+  const handleScroll = () => {
+    if (contentRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
+      const totalHeight = scrollHeight - clientHeight;
+      const currentProgress = (scrollTop / totalHeight) * 100;
+      setReadingProgress(currentProgress);
+      setIsAtTop(scrollTop === 0); // Update isAtTop based on scroll position
+    }
+  };
+
+  window.addEventListener('scroll', handleScroll);
+  return () => window.removeEventListener('scroll', handleScroll);
+}, [post]); // Re-attach scroll listener if post changes
+```
+
+This `useEffect` manages a scroll event listener to calculate reading progress and determine if the user is at the top of the page.
+*   It adds an event listener to the `window` when the component mounts or when the `post` state changes.
+*   The `return () => { ... }` part is a **cleanup function**. This function runs when the component unmounts or before the effect re-runs due to a dependency change. It's essential here to remove the event listener to prevent memory leaks and unexpected behavior.
+*   The dependency array `[post]` means the effect (and its cleanup) will re-run if the `post` object changes, ensuring the scroll listener is correctly attached to the relevant content.
+
+### Example from `src/components/Layout.js` (Window Resize Listener)
+
+```javascript
+// src/components/Layout.js
+useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
+    }
+  };
+
+  window.addEventListener('resize', handleResize);
+
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []); // Empty dependency array: runs once on mount, cleans up on unmount
+```
+
+This `useEffect` in `Layout.js` handles the sidebar's initial state and responsiveness.
+*   It adds a `resize` event listener to the window.
+*   The `handleResize` function closes the sidebar if the window width drops below 768 pixels.
+*   The empty dependency array `[]` ensures that this effect runs only once after the initial render and its cleanup function runs only when the component unmounts. This is perfect for setting up global event listeners that don't need to be re-initialized unless the component is completely removed from the DOM.
+
+## Summary
+
+`useState` and `useEffect` are powerful tools that bring state management and side effect handling to functional components, making them as capable as class components while often being more concise and easier to reason about. Understanding their usage, especially the role of the dependency array in `useEffect`, is fundamental to building robust React applications.

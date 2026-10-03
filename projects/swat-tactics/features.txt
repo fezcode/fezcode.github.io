@@ -1,0 +1,11 @@
+LABEL: Features
+SUBTEXT: Mechanics
+IMAGE: /images/projects/swat-tactics/2.png
+
+- **Fast-Paced Combat**: Continuous free-movement 3D shooting. No turns, just action.
+- **Retro-Neon Aesthetic**: VHS scanline overlays, CRT flicker, and a pulsing industrial color palette.
+- **Advanced AI**: Enemies with 360-degree awareness, tactical line-of-sight checks, and barrel-avoidance logic.
+- **Physics-Driven World**: Fully simulated collisions, smooth wall-sliding, and physical projectiles.
+- **Explosive Hazards**: Functional barrels with AoE damage and chain reactions.
+- **Dynamic HUD**: Real-time health monitoring, ammo tracking, and mission briefings.
+- **Immersive Audio**: Retro SFX and an atmospheric electronic score.

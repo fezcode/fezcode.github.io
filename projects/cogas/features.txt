@@ -1,0 +1,59 @@
+:::feature
+title: Unified Library
+icon: SquaresFour
+creator: Every launcher
+role: ONE COVER GRID
+subtitle: Seven storefronts, one shelf.
+quote: I stopped alt-tabbing between five launchers to remember what I already own. It is all one grid now, and the grid is right.
+description: Scans every launcher's local installs — registry keys, Valve KeyValues manifests, Epic .item files, Game Pass folders, MSIX packages — and shows one cover grid. A game owned on several stores merges into a single entry carrying each platform's mark.
+:::
+
+:::feature
+title: One-Click Launch
+icon: GameController
+creator: Native handoff
+role: NO WRAPPER
+subtitle: Each game starts through its own platform.
+quote: No shim, no proxy process, no broken overlay. It hands off to the launcher that owns the game and gets out of the way.
+description: steam://, com.epicgames.launcher://, uplay://, GOG Galaxy, Battle.net, origin2://, and shell:AppsFolder for Store games — so achievements, overlays and cloud saves all keep working.
+:::
+
+:::feature
+title: Store & Game Pass
+icon: Storefront
+creator: MSIX classification
+role: THE HARD PART
+subtitle: Telling a Store game from a Store app.
+quote: Every other library either misses Game Pass entirely or floods your shelf with Calculator. Checking Microsoft's own catalog is the only thing that actually works.
+description: Game Pass installs are read from their MicrosoftGame.config, and every other MSIX package is classified against Microsoft's own storefront catalog — the only reliable way to tell a Store game from a Store app.
+:::
+
+:::feature
+title: Critic Scores
+icon: Star
+creator: Steam + Wikidata
+role: NO KEY REQUIRED
+subtitle: Metacritic aggregates on the cover art.
+quote: The score is on the tile before I open anything. Wikidata fills in what Steam does not carry, and neither asks me for an account.
+description: Metacritic aggregates appear on the cover art and in the detail pane, from Steam where it has them and Wikidata where it does not. An optional RAWG key widens coverage further.
+:::
+
+:::feature
+title: Deals & Wishlist
+icon: CurrencyDollar
+creator: IsThereAnyDeal
+role: PRICE WATCH
+subtitle: Search every store at once.
+quote: Historical lows next to the current price, and a target price that actually tells me when it is hit. That is the whole feature I wanted.
+description: Search every store at once with historical lows, browse the current discount feed, and set target prices — all powered by IsThereAnyDeal.
+:::
+
+:::feature
+title: Private by Design
+icon: Lock
+creator: DPAPI
+role: LOCAL ONLY
+subtitle: Nothing leaves the machine.
+quote: The library index and the art cache sit in one folder I can open from Settings. The keys are encrypted by Windows itself.
+description: Everything stays local. API keys and refresh tokens are encrypted with Windows DPAPI, and Settings → Local Data shows you the exact path and opens the folder.
+:::

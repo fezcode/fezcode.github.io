@@ -1,0 +1,49 @@
+id: modern-pop
+rank: 42
+name: MODERN POP
+family: Pop & Soul
+years: 2010 → present
+sub: Pop after streaming — shorter, quieter, sadder, and built around a single voice
+spec: 88,90,80,60,52,58,66,74,80,80,76,76,80,84,82,74,64,54,46,38
+synthType: triangle
+freqs: 55, 68.94, 86.41
+
+what:
+ Streaming changed pop's incentives: the first fifteen seconds decide whether a track is skipped, loudness normalisation removed the reward for brickwalled masters, and the album became a delivery vehicle for playlist placements. The music got quieter and more intimate as a result — Lana Del Rey's cinematic melancholy, The Weeknd's retro-synth reinvention, and a large field of bedroom-scale production that would have been unreleasable in 2005.
+
+artists:
+ *Lana Del Rey*, *The Weeknd*, Doja Cat, PinkPantheress, Florence + The Machine, Justin Timberlake, Santigold, Mark Ronson, Oh Wonder, Anna of the North, Seal and Enrique Iglesias as the older guard, and the sped-up-and-reverbed edit culture that now generates hits on its own.
+
+trivia:
+ PinkPantheress built her early catalogue on two-minute tracks made in a bedroom over drum-and-bass and UK garage breaks, released to TikTok before any label involvement — several were shorter than the average 1960s single. The "sped up + reverb" edit, once a piracy artefact, is now commissioned by labels and released officially alongside the original.
+
+sonic:
+ A single voice mixed very close and very forward, minimal instrumentation behind it, and a low end that is felt rather than heard. Tempos have fallen steadily since 2010. Song structures front-load the hook and often omit the bridge entirely; two-and-a-half minutes is now a normal length.
+
+gear:
+ Everything in-the-box — Logic and Ableton, Serum and Omnisphere, and stock plugin chains that are shared across the industry. Vocal production runs Auto-Tune or Melodyne as a matter of course, frequently as an audible texture rather than a correction, plus heavy parallel compression.
+
+prod:
+ Mastered for loudness normalisation rather than against it: because streaming platforms turn everything down to a common level, a quieter, more dynamic master now sounds _better_ than a crushed one, reversing twenty years of practice. Mixes are checked on phone speakers first. Arrangements leave the low-mid deliberately empty so the vocal reads on any device.
+
+tracks:
+ - Pain | PinkPantheress
+ - Diet Mountain Dew | Lana Del Rey
+ - Open Hearts | The Weeknd
+ - TKO | Justin Timberlake
+ - Starboy | The Weeknd, Daft Punk
+ - Bailamos - From "Wild Wild West" | Enrique Iglesias
+ - wicked game - sped up + reverb | pearl, fast forward >>
+ - Disparate Youth | Santigold
+ - Money | Anna of the North
+ - Coming Home | Diddy - Dirty Money, Skylar Grey
+ - Ride | Lana Del Rey
+ - Spectrum (Say My Name) - Calvin Harris Remix | Florence + The Machine, Calvin Harris
+ - Streets | Doja Cat
+ - Tôt ou tard | Eli Rose
+ - Breathing | Jason Derulo
+ - Late Night Feelings (feat. Lykke Li) | Mark Ronson, Lykke Li
+ - Kiss from a Rose | Seal
+ - Drive | Oh Wonder
+ - Counting Stars | OneRepublic
+ - Mercy | OneRepublic

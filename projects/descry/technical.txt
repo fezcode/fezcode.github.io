@@ -1,0 +1,22 @@
+LABEL: Technical
+SUBTEXT: Under the Hood
+
+Descry is C with SDL2 for the window and input, md4c for CommonMark parsing, and Lua for everything the user wants to add. It builds with CMake.
+
+## The window is hand-made
+
+The title bar is the editor's own — File / Edit / View / Help menus, aero snap, drag-to-move, minimize/maximize/close — drawn under `SDL_WINDOW_BORDERLESS` via a `WS_THICKFRAME` + `WM_NCCALCSIZE` trick, so it keeps native resize and snap behavior while looking nothing like a stock Win32 frame.
+
+Live resize shows a centered `W x H` badge and a window outline. The resize loop pumps through an SDL event watch, so the indicator animates *during* the drag rather than after it.
+
+## No native dialogs
+
+Save, Save As, Rename and New File are in-app modals with full keyboard navigation and a sidebar-style file browser. Nothing hands you a Win32 common dialog mid-flow.
+
+## Hisashi menu bar
+
+Opt in under Settings and File/Edit/View/Help move into [Hisashi](/projects/hisashi)'s macOS-style menu bar over the `hoswl` named-pipe protocol; the in-app strip hides itself while connected.
+
+## Also in the box
+
+Spell check (opt-in via `spellcheck = true` in `settings.lua`, pointed at a system word list or your own `dictionary_path`, with "Add to dictionary" remembering words in `data/.dictionary_user`), Ctrl+click on external links, an About dialog, settings persistence, a theme picker, a keybinding editor, daily notes, HTML export, and an ASCII-art table aligner.

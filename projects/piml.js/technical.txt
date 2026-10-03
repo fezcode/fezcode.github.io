@@ -1,0 +1,8 @@
+LABEL: Core Spec
+SUBTEXT: Technical Details
+
+- **Spec Version**: v1.1.0
+- **Parsing**: Recursive descent parser with indentation tracking.
+- **Output**: Clean, structured JavaScript objects.
+- **Extensibility**: Support for custom data types via post-processing.
+- **Type Safety**: Fully compatible with TypeScript environments.

@@ -1,0 +1,3 @@
+Repository: https://github.com/fezcode/clockt
+License: https://github.com/fezcode/clockt/blob/main/LICENSE.txt
+Issues: https://github.com/fezcode/clockt/issues

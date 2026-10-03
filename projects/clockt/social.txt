@@ -1,0 +1,34 @@
+# Automation
+scripting surface
+ls · send · read · cmd
+link: https://github.com/fezcode/clockt/blob/main/docs/automation.md
+---
+# Plugin SDK
+IClocktPlugin + IStatusWidget
+.ckt bundles
+link: https://github.com/fezcode/clockt/blob/main/docs/plugin-sdk.md
+---
+# Developer panels
+tasks · timeline · problems
+ctrl+alt+j
+link: https://github.com/fezcode/clockt/blob/main/docs/developer-panels.md
+---
+# Keybindings
+every binding rebindable
+Settings → Keys
+link: https://github.com/fezcode/clockt/blob/main/docs/keybindings.md
+---
+# Session updates
+detach · attach · kill
+window.closeAction
+link: https://github.com/fezcode/clockt/blob/main/docs/session-updates.md
+---
+# Releases
+Windows installer
+latest build
+link: https://github.com/fezcode/clockt/releases
+---
+# Hisashi
+the same architecture
+top bar for Windows
+link: /projects/hisashi

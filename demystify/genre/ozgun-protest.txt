@@ -1,0 +1,30 @@
+id: ozgun-protest
+rank: 40
+name: ÖZGÜN MÜZIK — PROTEST SONG
+family: Turkish
+years: 1970s → 1990s
+sub: Folk instrumentation, political lyrics, and the enormous personal cost that came with them
+spec: 42,52,64,70,74,76,78,76,72,70,72,76,74,68,60,52,44,38,32,28
+synthType: triangle
+freqs: 170.18, 213.31, 267.37
+
+what:
+ *Özgün müzik* — literally "original music" — emerged in the politically charged 1970s as a left-leaning song form that used folk instruments and arabesk's emotional register to carry explicitly political and social lyrics. It was heavily suppressed after the 1980 coup, and its major figures spent years banned, imprisoned or in exile.
+
+artists:
+ *Ahmet Kaya* (1957–2000) is the towering figure — a Kurdish-Turkish singer from Malatya whose records sold in the millions while he was under continuous political pressure. Alongside him: Selda Bağcan, Zülfü Livaneli, Edip Akbayram, Grup Yorum.
+
+trivia:
+ At a 1999 awards ceremony Kaya announced he intended to record a song in Kurdish; the room turned on him, cutlery was thrown, and a media campaign followed. He left for Paris and *died there in exile in 2000, aged 43*. His body was buried at Père Lachaise. The album "Şiire Gazele" comes from, *Sevgi Duvarı* (1985), takes its title and much of its material from published Turkish poetry — setting poets like Can Yücel to music was itself a political act.
+
+sonic:
+ A baritone voice pushed to the edge of breaking, with bağlama and strings arranged in the arabesk tradition — sweeping unison violin lines, hammered rhythmic bağlama, and long held vocal notes with heavy vibrato. The emotional architecture is arabesk; the lyric content is protest poetry, and the tension between the two is the genre.
+
+gear:
+ Bağlama, string section (often a small ensemble multi-tracked to sound large), ud, kanun, and by the late 1980s Yamaha DX7 and Casio keyboard strings standing in for the orchestra on budget productions. Vocals through whatever large-diaphragm condenser the Istanbul studio had.
+
+prod:
+ Recorded fast and cheaply — often a handful of days — because the market was cassette-driven and turnaround mattered more than fidelity. The vocal is mixed unusually loud and dry relative to Western practice, sitting on top of the arrangement rather than inside it, because the words are the product. Cassette duplication added its own compression and hiss that became part of the expected sound.
+
+tracks:
+ - Şiire Gazele | Ahmet Kaya

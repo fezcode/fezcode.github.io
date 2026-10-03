@@ -1,0 +1,423 @@
+===
+id: the-long-take
+rank: 01
+name: THE LONG TAKE
+family: Camera
+years: 1948 → present
+sub: No cut to hide behind — blocking, focus and nerve doing the work an edit would normally do
+examples:
+ - Children of Men | the car ambush on the forest road
+ - Oldboy | the corridor, one hammer, twelve men
+ - Hot Fuzz | the paperwork, played as an action sequence
+ - Heat | the bank exit into downtown Los Angeles
+ - Upgrade | the fight staged by moving the camera with the body
+ - Dog Day Afternoon | the bank held in real time
+ - Game Night | the house crossed in one move
+ - Twinless | conversation allowed to run
+ - Past Lives | the final wait, held to the end
+ - Flight | the inversion, played without cutting away
+ - Manchester By The Sea | conversations left to run past comfort
+
+===
+id: handheld
+rank: 02
+name: HANDHELD
+family: Camera
+years: 1960 → present
+sub: The operator's body left in the shot, so the frame breathes and flinches with whoever is holding it
+examples:
+ - The Bourne Ultimatum | Waterloo station
+ - 28 Days Later | the empty London morning
+ - Saving Private Ryan | the landing at Omaha
+ - Captain Phillips | the bridge, once the ladder comes over
+ - Four Lions | the camera as another panicking participant
+ - Civil War | the camera as a press photographer
+ - Cold in July | the frame tightening with the panic
+ - Black Dynamite | handheld quoted as period pastiche
+ - The Bourne Identity | where the style starts
+ - The Bourne Supremacy | the Moscow chase, barely held
+ - Camp X Ray | proximity used as pressure
+
+===
+id: cross-cutting
+rank: 03
+name: CROSS-CUTTING
+family: Cut
+years: 1915 → present
+sub: Two places, one clock — the edit insisting that these things are happening to each other
+examples:
+ - Heat | the crew and the cops assembling in parallel
+ - The Departed | two moles, one phone call
+ - Tenet | the same siege run forwards and backwards at once
+ - Inglourious Basterds | the cinema and the basement burning together
+ - Batman The Dark Knight Returns Part 1 | the raid intercut with the broadcast
+ - American Gangster | the dealer and the detective, kept apart
+ - Inside Man | the siege against the interviews after it
+ - Takers | the crew and the pursuit, braided
+ - The Hunt for Red October | two navies, one ocean
+ - Die Hard | the tower against the street below
+ - Rogue One | the transmission against the fleet
+ - Dawn of the Planet of the Apes | two societies, one fuse
+
+===
+id: the-needle-drop
+rank: 04
+name: THE NEEDLE DROP
+family: Sound
+years: 1969 → present
+sub: A pre-existing song dropped in whole, doing the work a score would do more politely
+examples:
+ - Baby Driver | the coffee run, cut to Harlem Shuffle
+ - Guardians of the Galaxy | Come and Get Your Love, first landing
+ - Django Unchained | anachronism used as a weapon
+ - Shaun of the Dead | Don't Stop Me Now, pool cue in hand
+ - Straight Outta Compton | the catalogue as the plot
+ - The Big Lebowski | the dream sequence, scored by the era
+ - Jojo Rabbit | the Beatles in German, over a rally
+ - Guardians Of The Galaxy Vol 2 | the mixtape, side two
+ - Tropic Thunder | the drop played for satire
+ - Zack and Miri Make a Porno | the drop against the squalor
+
+===
+id: low-key-light
+rank: 05
+name: LOW-KEY LIGHT
+family: Light
+years: 1941 → present
+sub: Lighting for the shadow instead of the face — most of the frame given up on purpose
+examples:
+ - Collateral | Los Angeles at night, shot digital to keep it
+ - The Batman | practicals in frame, nothing filled
+ - Sin City | contrast pushed until only the shape survives
+ - Taxi Driver | neon as the only source that matters
+ - Citizen Kane | ceilings, shadow and depth at once
+ - Blade | the blood rave, lit by strobe
+ - The Girl with the Dragon Tattoo | Swedish winter, underexposed
+ - Nocturnal Animals | two stories separated by light
+ - Prisoners | rain, headlights and nothing else
+ - Eastern Promises | the bathhouse, tiled and unforgiving
+ - Relay | surveillance light as the palette
+
+===
+id: non-linear-structure
+rank: 06
+name: NON-LINEAR STRUCTURE
+family: Structure
+years: 1941 → present
+sub: The order withheld, so that understanding arrives as a second event after the scene itself
+examples:
+ - Eternal Sunshine of the Spotless Mind | the erasure running backwards
+ - 500 Days of Summer | day 1 and day 290, side by side
+ - Mulholland Drive | the reveal that reassigns everything
+ - Everything Everywhere All at Once | branching used as structure, not spectacle
+ - Memories of Murder | an investigation that refuses to resolve
+ - Edge of Tomorrow | the loop as the structure
+ - Lucky Number Slevin | the setup withheld until the end
+ - Deja Vu | surveillance as a second timeline
+ - Vanilla Sky | the dream ordered as memory
+ - Predestination | the loop closing on itself
+ - Decision to Leave | an investigation told out of order
+ - Manchester By The Sea | grief arriving out of order
+ - Never Let Me Go | the childhood withheld and returned to
+ - Serenity | the flashback as the explanation
+
+===
+id: the-match-cut
+rank: 07
+name: THE MATCH CUT
+family: Cut
+years: 1962 → present
+sub: Two unrelated shots joined on a shared shape, so the cut itself makes the argument
+examples:
+ - The Handmaiden | objects matched across two tellings
+ - Prisoners | one father cut into another
+ - Hot Fuzz | an evening compressed into rhyming frames
+ - Eternal Sunshine of the Spotless Mind | rooms bleeding into rooms
+ - Everything Everywhere All at Once | the same gesture across universes
+ - Wreck-It Ralph | worlds joined on a matching silhouette
+ - Inside Out | memory spheres matched to the world outside
+ - Decision to Leave | a watcher matched into the watched
+ - Soul | the fall between worlds, matched
+
+===
+id: whip-pan-and-smash-cut
+rank: 08
+name: WHIP PAN & SMASH CUT
+family: Cut
+years: 1998 → present
+sub: Editing at the speed of a punchline, with the camera and the cut treated as comic instruments
+examples:
+ - Hot Fuzz | paperwork cut like a firefight
+ - Shaun of the Dead | two identical walks to the shop
+ - The World's End | the crawl, mapped and re-mapped
+ - Snatch | freeze frame, narration, gone
+ - Lock, Stock and Two Smoking Barrels | four plots braided at speed
+ - The Gentlemen | the story told as a pitch meeting
+ - The Man from U.N.C.L.E. | split screen used as a punchline
+ - Deadpool | the edit breaking the scene on purpose
+ - Free Guy | game logic cut as comedy
+ - Game Night | comic geography, whipped between rooms
+ - Tropic Thunder | the trailers cut as their own film
+ - Kung Fu Panda | comic timing held in animation
+
+===
+id: speed-ramping
+rank: 09
+name: SPEED RAMPING
+family: Camera
+years: 1998 → present
+sub: Speed changed inside the shot, so a moment can be inspected without stopping the scene
+examples:
+ - Watchmen | the opening, every beat held
+ - Zack Snyders Justice League | ramping as the film's pulse
+ - Man of Steel | flight built out of speed changes
+ - Batman v Superman - Dawn of Justice | the warehouse, ramped throughout
+ - Sin City | frames held to match the panel
+ - Kingsman The Secret Service | the church, ramped and un-ramped
+ - Mortal Kombat Legends Scorpions Revenge | the animated version of the same move
+ - Upgrade | speed shifting as the implant takes over
+ - Wonder Woman | No Mans Land, ramped at every impact
+ - Injustice | the animated version of the same grammar
+ - Justice League Crisis on Two Earths | impact held, then released
+ - Blade | the fight slowed to read the choreography
+ - Spider-Man No Way Home | impact held across three films
+ - Spider-Man Homecoming | the ferry, ramped at the tear
+
+===
+id: the-late-reveal
+rank: 10
+name: THE LATE REVEAL
+family: Structure
+years: 1941 → present
+sub: A last-act fact that re-sorts everything already seen, so the film is watched twice at once
+examples:
+ - Unbreakable | the last line reassigns the genre
+ - Split | the reveal is which film you were in
+ - Glass | three films collapsed into one
+ - Shutter Island | the institution as the tell
+ - Gone Girl | the diary, dismantled at the midpoint
+ - The Handmaiden | the same events, told honestly the second time
+ - Parasite | the house has a basement
+ - Predestination | the loop closing on itself
+ - The Girl with the Dragon Tattoo | the archive as the reveal
+ - Memories of Murder | the reveal withheld on purpose
+ - Ex-Machina | the test was never the one described
+ - Vanilla Sky | the contract revealed last
+ - Lucky Number Slevin | the whole film re-sorted
+ - Conclave | the last ballot changes the subject
+ - The House of Yes | the family fact withheld
+ - Room | the world revealed by leaving it
+ - Pirates of Silicon Valley | the framing revealed as a pitch
+ - He Was a Quiet Man | the fantasy revealed as one
+
+===
+id: diegetic-music
+rank: 11
+name: MUSIC INSIDE THE FRAME
+family: Sound
+years: 1952 → present
+sub: Music the characters can hear, so the score has to survive being a physical object in the room
+examples:
+ - Baby Driver | the tinnitus that justifies the soundtrack
+ - La La Land | numbers that begin in the world
+ - Begin Again | the city as the recording studio
+ - Sinners | the juke joint as the event
+ - Straight Outta Compton | the catalogue performed, not scored
+ - Entergalactic | the album and the film as one object
+ - Chungking Express | California Dreamin on repeat, in the room
+ - Guardians of the Galaxy | the Walkman as a character
+ - Kneecap | the group performing itself
+ - Mickey 17 | broadcast as the ambient score
+ - The Worst Person in the World | the song playing in the flat
+ - Jersey Girl | performance staged in the room
+
+===
+id: sound-dropout
+rank: 12
+name: SOUND DROPOUT
+family: Sound
+years: 1998 → present
+sub: The mix cut away to almost nothing, so the audience is deafened alongside the character
+examples:
+ - Saving Private Ryan | the landing, stripped to a ringing tone
+ - Tenet | dialogue buried under the design
+ - The Revenant | the mix falling away around the attack
+ - Upgrade | the implant taking over the soundtrack
+ - Sinners | the room going quiet around the performance
+ - Train To Busan | the carriage, heard through glass
+ - Mad Max Fury Road | the pause between engines
+ - No Country for Old Men | no score at all, as a principle
+ - Prisoners | rain filling the space a score would take
+ - Ex-Machina | the hum of the house as the only bed
+ - Flight | the cabin going quiet before it does not
+ - Southpaw | the crowd dropping away in the ring
+
+===
+id: palette-as-story
+rank: 13
+name: PALETTE AS STORY
+family: Light
+years: 1995 → present
+sub: Colour assigned before a frame is shot, so the film changes hue as the character changes
+examples:
+ - Inside Out | the cast are the palette
+ - WALL-E | rust, then white, then green
+ - Soul | a blown-out city against a pastel hereafter
+ - Ratatouille | a warm kitchen in a cold city
+ - Her | a world with the blue taken out
+ - The Grand Budapest Hotel | a palette per era
+ - La La Land | primaries pushed to musical levels
+ - Zootopia | district by district, biome by biome
+ - Cold War | monochrome as the whole argument
+ - The Wild Robot | painterly light as the subject
+ - Kung Fu Panda | the colour script as the storyboard
+ - Kung Fu Panda 2 | ink-wash flashback against solid colour
+ - Kung Fu Panda 3 | the spirit realm given its own key
+ - Big Hero 6 | a city built from two palettes
+ - Brave | one colour carried through a forest
+ - The Book of Life | three worlds, three schemes
+ - Sonic the Hedgehog | saturation as a character trait
+ - Midnight in Paris | a different era, a different grade
+ - Spider-Man Into The Spider-Verse | palette per dimension
+ - Frances Ha | monochrome as a budget and a mood
+ - Ralph Breaks the Internet | the web given its own spectrum
+ - Brooklyn | two countries, two temperatures
+ - Doctor Strange | the mirror dimension as a colour event
+
+===
+id: frame-rate-as-style
+rank: 14
+name: FRAME RATE AS STYLE
+family: Animation
+years: 1917 → present
+sub: Animating on twos and threes on purpose, so the image stutters with intent instead of gliding
+examples:
+ - Spider-Man Into The Spider-Verse | competence as a frame rate
+ - Lupin III The First | limited cadence, full staging
+ - Halo Legends | an anthology of house styles
+ - Mortal Kombat Legends Scorpions Revenge | impact held on twos
+ - Batman The Dark Knight Returns Part 1 | drawings spent on the panel
+ - Batman Under The Red Hood | motion budgeted for the fight
+ - Justice League The Flashpoint Paradox | cadence shifting with the timeline
+ - Entergalactic | a look built on print texture
+ - The Wild Robot | painterly frames over smooth motion
+ - Batman Year One | drawings spent on stillness
+ - Batman Assault on Arkham | cadence shifting with the ensemble
+ - Batman Gotham Knight | six studios, six cadences
+ - Batman The Killing Joke | held frames over movement
+ - Batman vs Robin | fight animation on ones, talk on twos
+ - Batman Bad Blood | television cadence, feature staging
+ - Batman The Long Halloween Part One | limited motion, heavy design
+ - Justice League Doom | ensemble animated on a budget
+ - Justice League War | impact frames over fluidity
+ - Justice League The New Frontier | period style, period cadence
+ - Justice League Throne of Atlantis | water animated on twos
+ - Justice League Gods and Monsters | design carrying the motion
+ - Superman Unbound | clean line, limited frames
+ - Superman Batman Apocalypse | held poses between hits
+ - Teen Titans The Judas Contract | cadence by character
+ - Wonder Woman | the 2009 animated cadence
+ - Lupin The Third Goemons Blood Spray | the cut held on the strike
+ - The Batman Superman Movie | the television house style
+ - Justice League Vs Teen Titans | two casts, two cadences
+ - Batman The Long Halloween Part 2 | held frames across the mystery
+ - Batman The Dark Knight Returns Part 2 | the panel cadence sustained
+
+===
+id: the-legible-fight
+rank: 15
+name: THE LEGIBLE FIGHT
+family: Action
+years: 2003 → present
+sub: Wide, long and practical, so an audience can follow who is where and what it is costing them
+examples:
+ - John Wick | the reload as a clock
+ - John Wick Chapter 2 | geography held across a gallery
+ - John Wick Chapter 4 | the staircase, shot for comprehension
+ - Mad Max Fury Road | centred framing, practical vehicles
+ - Nobody | the bus, one confined space
+ - Upgrade | the body moved by the camera
+ - Unleashed | choreography given room
+ - Train To Busan | a fight legible inside a carriage
+ - Oldboy | the corridor as the argument
+ - Kingsman The Secret Service | the church as the counter-example
+ - Eastern Promises | the bathhouse, nothing hidden
+ - The Equalizer | the hardware store, geography kept
+ - The Fast and the Furious Tokyo Drift | practical drifting, wide
+ - Man On Fire | the opposite approach, for comparison
+ - Kung Fu Panda | choreography readable because it is drawn
+ - Warcraft | the legibility problem at scale
+ - Blade | choreography given room to read
+ - Spider-Man 2 | the train, staged to be read
+ - Spider-Man | practical web-swinging, wide
+ - Southpaw | the ring shot for geography
+ - Rogue One | the beach, legible at scale
+ - The Amazing Spider-Man | the same fight, cut tighter
+ - Mean Machine | the pitch as an arena
+
+===
+id: aspect-ratio-as-a-device
+rank: 16
+name: ASPECT RATIO AS A DEVICE
+family: Camera
+years: 2012 → present
+sub: The shape of the frame changed mid-film, so the border itself carries information
+examples:
+ - The Grand Budapest Hotel | one ratio per decade
+ - The Tragedy of Macbeth | 1.19, pressed around the actors
+ - Cold War | two people in one narrow rectangle
+ - Zack Snyders Justice League | 4:3 preserved on purpose
+ - Sin City | frames shaped to match panels
+ - Citizen Kane | the academy frame used for ceilings
+ - Mad Max Fury Road | centred for the eye, wide for the road
+ - Lupin III The First | ratio matched to its source
+
+===
+id: direct-address
+rank: 17
+name: DIRECT ADDRESS & THE CHAPTER CARD
+family: Structure
+years: 1998 → present
+sub: The film admitting it is a film, then using the admission to move faster than realism allows
+examples:
+ - Snatch | freeze frame, nickname, move on
+ - Lock, Stock and Two Smoking Barrels | narration braiding four plots
+ - The Gentlemen | the entire film as a pitch
+ - Deadpool | the audience addressed by name
+ - Jojo Rabbit | the imaginary friend as commentary
+ - Knives Out | captions and rewinds keeping it fair
+ - Kingsman The Golden Circle | the briefing as a device
+ - Clerks | chapter cards over a day behind a counter
+ - Team America World Police | artifice made the entire joke
+ - Clerks II | the same device, older and tireder
+ - Tropic Thunder | the fake trailers as an opening statement
+ - Free Guy | the game admitting it is a game
+ - Mean Girls | narration as survival guide
+ - Easy A | the confession told straight to camera
+ - Clueless | narration as the voice of the film
+ - Zack and Miri Make a Porno | the aside to the audience
+ - Swiss Army Man | artifice admitted and then insisted upon
+
+===
+id: the-braided-ensemble
+rank: 18
+name: THE BRAIDED ENSEMBLE
+family: Structure
+years: 1993 → present
+sub: Several unrelated lives cut together until an accident of contact makes them one story
+examples:
+ - Love Actually | the benign version, connections as comfort
+ - Crash | the hostile version, contact as damage
+ - Knives Out | one household, a braid of accounts
+ - Four Lions | four plots, one catastrophe
+ - Movie 43 | the form pushed to its absurd limit
+ - Everything Everywhere All at Once | the braid across universes
+ - The Death of Stalin | an ensemble with no protagonist
+ - Game Night | one night, several couples, one plot
+ - The Big Sick | two families braided around a bed
+ - Three Billboards Outside Ebbing, Missouri | a town as the ensemble
+ - In Bruges | the two-hander that keeps widening
+ - Much Ado About Nothing | the ensemble as the form
+ - The Breakfast Club | one room, five threads
+ - Crazy, Stupid, Love | couples braided and collided
+ - Intouchables | two lives braided by contract

@@ -1,0 +1,3 @@
+Repository: https://github.com/fezcode/dush
+License: https://github.com/fezcode/dush/blob/main/LICENSE
+Issues: https://github.com/fezcode/dush/issues

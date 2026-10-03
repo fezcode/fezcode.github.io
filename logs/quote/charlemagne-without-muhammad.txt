@@ -1,0 +1,109 @@
+# Charlemagne, without Mahomet, would be inconceivable
+
+> *"Without Islam, the Frankish Empire would probably never have existed and Charlemagne, without Mahomet, would be inconceivable."*
+
+## Where it comes from
+
+| | |
+| --- | --- |
+| Author | **Henri Pirenne** (1862–1935), Belgian medievalist, University of Ghent |
+| Work | *Medieval Cities: Their Origins and the Revival of Trade*, ch. II, p. 26 |
+| Translator | Frank D. Halsey (Princeton University Press, 1925) |
+| Origin | Lectures given on an American tour, Oct–Dec 1922 |
+| French edition | *Les villes du moyen âge*, Brussels, 1927 — two years **after** the English |
+
+The attribution needs correcting before anything else, because this line is almost universally credited to *Mohammed and Charlemagne* (1937), the book that made the argument famous. It isn't from there. It is from *Medieval Cities*, a slim volume of lectures Pirenne delivered in America in 1922 and published in English three years later — one of the rare books whose translation precedes its original.
+
+Here is the passage it sits in, which is worth having whole, because the famous sentence is the last of five and does not stand up well alone:
+
+> *"There is obviously more than mere coincidence in the simultaneity of the closing of the Mediterranean by Islam and the entry of the Carolingians on the scene. There is the distinct relation of cause and effect between the two. The Frankish Empire was fated to lay the foundations of the Europe of the Middle Ages. But the mission which it fulfilled had as an essential prior condition the overthrow of the traditional world-order. The Carolingians would never have been called upon to play the part they did if historical evolution had not been turned aside from its course... Without Islam, the Frankish Empire would probably never have existed and Charlemagne, without Mahomet, would be inconceivable."*
+
+Two notes on wording. The printed text says **Mahomet**, Halsey's 1925 spelling; "Muhammad" is a later modernization that circulates without noting itself. And the sentence has no comma before *and Charlemagne* — the version with one is a copyist's improvement.
+
+The book everyone credits does contain a close cousin, and that one *is* a conclusion: **"It is therefore strictly correct to say that without Mohammed Charlemagne would have been inconceivable."** So the idea appears twice, fifteen years apart, in two different books. What gets quoted is the 1925 phrasing wearing the 1937 title.
+
+## The man who wrote it
+
+The dates matter here more than they usually do. Pirenne's son Pierre was killed in October 1914 at the Yser. Pirenne himself was arrested in March 1916 for supporting the protest against the Germanization of Ghent, deported, and moved through Krefeld, Holzminden, Jena, and finally Creuzburg an der Werra, where he spent roughly a year and a half. He was released in November 1918. In captivity, with no library, he wrote a history of Europe **from memory**.
+
+He came out of it hostile to nationalist historiography and to race-based explanation of the past, and turned toward comparative and economic history — which is the immediate context for the thesis. He first stated it in 1922, in the inaugural issue of the *Revue belge de philologie et d'histoire*, in an article already titled "Mahomet et Charlemagne." The lectures came the same year.
+
+*Mahomet et Charlemagne* itself is posthumous and unrevised. Pirenne died in 1935 leaving a manuscript that, by his son Jacques's account in the preface, was a **first draft** — Pirenne's practice was to write everything twice, and this one never got its second pass. Jacques Pirenne and the historian F. Vercauteren completed the references and checked the facts, leaving the argument untouched. The most influential book in early medieval historiography is a draft its author would not have considered finished.
+
+## The argument, in his terms
+
+**Step one: Rome did not fall in 476.** Pirenne's opening move is a denial. The Germanic invasions, he argues, destroyed the imperial administration in the West but not the civilization — what the Germans wrecked was "the imperial government *in partibus occidentis*," not the Empire as a going concern. Under Theodoric the Senate still sat, the civil magistrates were Roman, the law was Roman, the taxes were still collected, and the coins were struck in the Emperor's name. There is not a single surviving charter in a Germanic language. The barbarian kings did not replace Rome; they moved into it and kept the fittings.
+
+Above all, the **Mediterranean still worked**. Syrian and Jewish merchants ran the sea lanes, Marseilles was a functioning port, and papyrus, spices, oil, silk, and eastern wine moved north into Gaul as they always had. The Roman lake was still a lake.
+
+**Step two: the seventh century closed it.** The Arab conquests took Syria, Egypt, North Africa, and Spain, and in Pirenne's reading turned the sea from a highway into a frontier. *"The Mediterranean had been a Roman lake; it now became, for the most part, a Moslem lake."* Navigation with the East thins out from around 650 and, he argues, is effectively gone by the early eighth century.
+
+**Step three: the evidence.** The thesis is built on absences, and the list is specific:
+
+- **Papyrus.** Egyptian papyrus stops arriving; northern chanceries switch to parchment.
+- **Spices, silk, oil.** Eastern goods that pepper Merovingian records vanish from Carolingian ones.
+- **Gold.** Minting of gold ceases north of the Alps; the West goes to silver, formalized by Pepin the Short's reform of 755. The gold *solidus* survives only as a unit of account.
+- **Merchants.** The Syrian trading diaspora disappears from Gaul.
+- **The papacy.** Cut off from a Byzantium that can no longer protect it, Rome turns north and allies with the Franks.
+
+**Step four: the consequence.** With the sea shut, the West is thrown back on itself. The economic centre of gravity migrates from the Mediterranean coast to the Frankish interior — the Rhine, the Meuse, the north. Commerce collapses into a closed agrarian economy, which is the material basis of feudal society. And the Frankish kings, no longer a provincial power on the edge of a Mediterranean world, become the centre of a new one. The coronation of 800 is the result.
+
+Hence his periodization: the Middle Ages begin not in 476 but around 700. *"It was the end of the classic tradition. It was the beginning of the Middle Ages."*
+
+## What the sentence is actually doing
+
+It is a **counterfactual**, and it is worth being precise about which kind.
+
+The claim is not that Islam built the Frankish Empire, or influenced it, or contributed to it. It is that Islam **removed the alternative**. Pirenne's West, left alone, was drifting toward the Byzantine orbit — his own barb is that the rupture came "at the very moment when Europe was on the way to becoming Byzantinized." A Mediterranean that stayed open produces a Latin province of a Greek-facing world. Cut the sea, and the north has nowhere to look but at itself.
+
+So the sentence is not about causation in the ordinary sense of one thing producing another. It is about **subtraction**: an identity formed by what was taken away. Charlemagne is conceivable only in a world where the older, richer, more obvious centre is no longer reachable. Europe, on this reading, is not an achievement but a residue — what was left standing when the sea closed.
+
+Note also what the grammar concedes. "Would **probably** never have existed" is hedged; "would be **inconceivable**" is not. Pirenne is more confident about the imaginative claim than the historical one. He is saying: whatever the exact chain of events, you cannot *think* Charlemagne without thinking the conquests, because the thing Charlemagne is the answer to is the closed sea.
+
+## The case against
+
+This is one of the most attacked arguments in medieval history, and it has been attacked from every direction. The main lines:
+
+**No blockade.** Daniel Dennett's "Pirenne and Muhammad" (*Speculum*, 1948) found no evidence that the Arabs either wished to close the Mediterranean or did so; there was no religious prohibition on trading with Christians. This is the oldest and most durable objection.
+
+**The polarity is backwards.** Maurice Lombard (*Annales*, 1947) argued the conquests **released** gold that had been sitting immobilized in Byzantine and Sasanian treasuries, and created a vast integrated market from Central Asia to the Atlantic. Sture Bolin's "Mohammed, Charlemagne and Ruric" (1953) added the missing third party: Arab silver dirhams reached the north in bulk via the Russian rivers and Scandinavia. Contact never stopped; it **moved**, off the Mediterranean and onto the northern routes. On this reading Islam enlarged the exchange sphere Pirenne says it severed.
+
+**The timing is wrong.** Richard Hodges and David Whitehouse (*Mohammed, Charlemagne and the Origins of Europe*, 1983) brought archaeology to bear and concluded that large-scale Mediterranean commerce was already largely finished in the **sixth** century — before Islam existed. The Arabs arrived at a system that had already broken.
+
+**The mechanism is wrong.** Chris Wickham (*Framing the Early Middle Ages*, 2005) relocated the cause entirely: what carried Mediterranean bulk shipping was not commerce but the Roman **tax system** — the *annona*, the state-funded movement of grain and oil to feed the capitals and pay the armies. When the successor kingdoms shifted from tax-based to land-based finance, the state-subsidized shipping that trade rode along on disappeared. He credits the Vandals, not the Arabs, and describes the result as regionalization rather than collapse: exchange within regions often got *more* complex. His flat rejection of the counterfactual: Charlemagne's papal politics "would probably not have been significantly different had the eastern Roman empire maintained its Mediterranean compass."
+
+**The absences don't hold up.** The disappearances Pirenne stacked are not synchronous with each other or with the conquests, and several items turn out to be attested in the Carolingian era anyway. The papyrus pillar has taken the sharpest recent hit: Caroline Goodson and Benjamin Savill (*Past & Present*, 2026) show papyrus remained **available** after 700 — what changed was that it left state-subsidized pricing and entered commercial markets at 400–600% markups, becoming a luxury rather than a commodity. The papal chancery issued papyrus documents continuously from 788 to 1051. Egyptian production itself only ceased around 950–975, three centuries after the conquest. On coinage, the Merovingian gold *tremissis* was already debased to roughly 30% fine by 670 — the slide predates any plausible blockade effect.
+
+**The frame itself is suspect.** Bonnie Effros ("The Enduring Attraction of the Pirenne Thesis," *Speculum*, 2017) argues the thesis needs reading in its **imperial** as well as its nationalist context — Pirenne lectured in Algeria in 1931, a year after the centenary of the French conquest, and his portrait of Arab expansion as essentially destructive tracked the Orientalist commonplaces of his moment. She notes Edward Said made the point as early as 1979 and nobody followed it up. Her verdict is that the model is "too broad in its strokes and problematic in its implications."
+
+Effros is equally firm on the other half, and it belongs in any honest summary: Pirenne's subject "was not Islam, but rather the contribution of the Arab conquest to the Carolingian renaissance," his book ends on a positive note, and the contemporary right-wing use of decontextualized passages to cast Islam as a standing threat to the West is an appropriation his text does not support.
+
+## What survived
+
+Enough that the thesis is still assigned rather than merely remembered.
+
+**The periodization.** That 476 is a bad hinge, that late antiquity ran deep into the sixth century, that the interesting rupture is later and more gradual — this is now standard, and Pirenne is a recognized ancestor of the Late Antiquity school that Peter Brown's *The World of Late Antiquity* (1971) opened up. Brown disagrees with him on chronology and credits him for breaking the field out of the sterile Romanist-versus-Germanist quarrel.
+
+**The reorientation.** Nobody disputes that the centre of gravity moved north and inland. The argument is only about why.
+
+**The impoverishment.** Bryan Ward-Perkins (*The Fall of Rome and the End of Civilization*, 2005) documents it from the material record — the end of empire-wide pottery distribution, peasant housing reverting from mortared stone and tile to wood and thatch, coinage and monumental building contracting. He is not arguing for Pirenne, but the eighth-century West really was poorer and more local than the fifth.
+
+**The method.** This is arguably the largest bequest. Pirenne replaced political narrative and ethnic-origin stories with trade volumes, coinage, and commodities. He mentored Lucien Febvre and Marc Bloch, published in the first volume of *Annales* (1929), and sat on its editorial committee; the Lyons' edition of their letters to him is titled *The Birth of Annales History*. Braudel encountered him in Algiers at the turn of the 1930s and dated his own turn toward the Mediterranean-as-subject to it — though Braudel's sea is a unity that Islam does not break, which is close to the inverse of Pirenne's. Even *Framing the Early Middle Ages*, which dismantles him, is written in the genre he established.
+
+**The variable, if not the sign.** Michael McCormick's *Origins of the European Economy* (2001) — built on a database of 669 documented travellers, plus coin movements and shipping records — found contact never fully ceased, and argued that Islam mattered enormously to the Carolingian economy as a **market**: from the mid-eighth century, European merchants exported slaves south and east to the Abbasid Caliphate, and that traffic was a first great impetus to European commercial development. Islam remains decisive for Charlemagne. It is stimulus rather than barrier. The aphorism survives with its causality reversed.
+
+## Why it won't die
+
+This entry doesn't adjudicate, and it's worth being clear about why it can't.
+
+The evidentiary claims have been tested and mostly gone against Pirenne — that part is not really open. But the sentence itself is a counterfactual, and counterfactuals are not the kind of thing evidence settles. "Charlemagne would be inconceivable" makes a claim about a world that did not happen. You can show that the Mediterranean was already failing, that the Arabs blockaded nothing, that papyrus kept coming, that the tax state died before the conquests did — and still not have shown what the eighth-century West would have looked like had Islam not existed. There is no version of the archive that answers that.
+
+Which is also why the field keeps returning to it. Effros, who wants it retired, gives the best account of its grip: it endures because of its "beauty and simplicity," and because scholars keep letting the larger framework stand as "the nearest we may come to what Pirenne's biographer Bryce Lyon characterized as the unsolvable enigma of the end of the ancient world." Current explanations are deliberately multi-causal — the Gothic Wars, the Justinianic plague of 541 (itself contested: minimalists and maximalists are still fighting), the volcanic cooling of the Late Antique Little Ice Age from 536, fiscal fragmentation, the conquests as one input among several. That is almost certainly closer to true. It is also unquotable.
+
+Pirenne wrote a sentence, and the sentence outlived the argument. It gets remembered because it does something a multi-factor model structurally cannot: it makes a civilization's identity depend on an absence, and names the absence.
+
+## See also
+
+- **Voltaire**, on the Holy Roman Empire — *"neither holy, nor Roman, nor an empire."* The other famous one-line demolition of the polity Charlemagne's coronation founded, aimed at the same institution from the far end of its life.
+- **Fernand Braudel**, *The Mediterranean and the Mediterranean World in the Age of Philip II* (1949) — the sea as a historical subject in its own right, from the man who met Pirenne in Algiers, arriving at a Mediterranean unity that Pirenne's thesis denies.
+- **Chris Wickham**, *Framing the Early Middle Ages* (2005) — the fullest modern answer, and the clearest demonstration that you can reject every one of Pirenne's conclusions while writing the kind of history he invented.

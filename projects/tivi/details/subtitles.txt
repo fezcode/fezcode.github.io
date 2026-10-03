@@ -1,0 +1,11 @@
+## Rasterized where it counts
+
+Embedded and external `.srt`, `.ass`, `.ssa`, `.vtt` and `.sub`, plus image subs — PGS, VOBSUB, DVB — with full ASS/SSA styling through libass.
+
+The important detail is *where* they are drawn: at display resolution, not video resolution, so the anti-aliasing stays crisp when a 720p file fills a 4K panel. Plain-text subs get font, size, color, outline and shadow options; authored ASS styling is respected rather than overridden.
+
+Drag a subtitle file onto the window to load it, or pick one from the CC panel. `C` cycles subtitle tracks, `X` cycles audio tracks.
+
+## Speed that keeps voices
+
+Playback from 0.25× to 2× uses VLC-style time-stretch, so voices stay natural at 1.5×. The classic pitch-shifting mode is one toggle away if you prefer the chipmunks.

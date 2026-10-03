@@ -1,0 +1,9 @@
+LABEL: Overview
+SUBTEXT: The Machine
+IMAGE: /images/projects/typewriter/banner.png
+
+Typewriter is a distraction-free text editor with the soul of a mechanical typewriter.
+
+Built in C with SDL2 — fast, lightweight, cross-platform. Every keystroke clicks. Every carriage return clunks. The paper is warm, the cursor blinks, and the bell rings at column 80.
+
+There is no sidebar, no minimap, no status bar full of extensions. There is a page, and the sound of typing on it.

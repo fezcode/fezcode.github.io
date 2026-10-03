@@ -1,0 +1,7 @@
+LABEL: Related Artifacts
+SUBTEXT: SEE ALSO
+
+- [piml](/projects/piml) - The core specification.
+- [go-piml](/projects/go-piml) - PIML for the Go ecosystem.
+- [PIML Highlighter](/projects/piml-highlighter) - VS Code extension.
+- [PIML Lab](/apps/piml-lab) - Interactive playground.

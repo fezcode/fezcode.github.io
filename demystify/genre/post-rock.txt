@@ -1,0 +1,31 @@
+id: post-rock
+rank: 15
+name: POST-ROCK
+family: Rock & Metal
+years: 1994 → present
+sub: Rock instruments used for texture and structure rather than songs — crescendo as the main event
+spec: 68,74,76,70,64,66,72,78,82,84,82,80,82,86,84,78,70,60,50,42
+synthType: square
+freqs: 335.14, 420.08, 526.55
+
+what:
+ Post-rock names what happens when a rock band keeps the instruments and discards the verse-chorus form: long instrumental pieces built on repetition and dynamic build. Talk Talk's *Spirit of Eden* (1988) and Slint's *Spiderland* (1991) are the ancestors, Mogwai and Godspeed You! Black Emperor the codifiers, and the form has since fed directly into film and game scoring.
+
+artists:
+ Slint, Mogwai, *Godspeed You! Black Emperor*, Explosions in the Sky, Sigur Rós, This Will Destroy You; the heavier instrumental wing of *If These Trees Could Talk* and Somali Yacht Club, which borrows sludge tone without the vocals.
+
+trivia:
+ Godspeed You! Black Emperor operate without a frontman, rarely give interviews, play in near-darkness behind projected 16mm film, and have twice used award money to make political statements about the award itself. Explosions in the Sky wrote the _Friday Night Lights_ score, which is why a genre built on twenty-minute instrumentals is now shorthand for emotional montage in American television.
+
+sonic:
+ Clean, heavily delayed guitars stating a figure that repeats and accretes for minutes before distortion arrives. No vocals, or vocals used as a wordless instrument. Drums enter late and stay simple. The dynamic range is enormous by modern standards — a quiet passage may sit 25 dB below the peak, and that gap is the composition.
+
+gear:
+ Telecasters and Jazzmasters into Fender and Orange amps, with delay (DD-series, Memory Man) and reverb doing the arranging; e-bows and violin bows for sustain; glockenspiel and strings for the top line. Godspeed add tape loops and field recordings played from portable decks on stage.
+
+prod:
+ Recorded live in large rooms with the ambience captured rather than added, because the crescendo depends on real room response. Compression is used sparingly and mastering deliberately preserves the dynamic gap — these are among the few contemporary rock records that lose badly to loudness normalisation, and the artists accept that trade.
+
+tracks:
+ - Signals | Somali Yacht Club
+ - From Roots to Needles | If These Trees Could Talk

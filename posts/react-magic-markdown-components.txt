@@ -1,0 +1,101 @@
+Static text is boring. In a modern React application, your content should be alive.
+
+Today I want to share a fun pattern I implemented in **Fezcodex**: triggering dynamic UI interactions directly from standard Markdown links. Specifically, clicking a link in a blog post to open a side panel with a live React component, rather than navigating to a new page.
+
+## The Idea
+
+I wanted to explain technical terms like **[Prop Drilling](/vocab/prop-drilling)** without forcing the reader to leave the article. A tooltip is too small; a new tab is too distracting. The solution? My global **Side Panel**.
+
+But how do you tell a static Markdown file to "render a React component in the side panel"?
+
+## The Solution
+
+The secret sauce lies in `react-markdown`'s ability to customize how HTML elements are rendered. We can intercept every `<a>` tag and check if it's a "special" link.
+
+### 1. The Interceptor (`MarkdownLink`)
+
+I created a custom component that replaces standard HTML anchors. It checks the `href` for a specific pattern (in my case, `/vocab/`).
+
+```javascript
+const MarkdownLink = ({ href, children }) => {
+  const { openSidePanel } = useSidePanel();
+
+  // Check if this is a "vocabulary" link
+  const isVocab = href && href.includes('/vocab/');
+
+  if (isVocab) {
+    // 1. Extract the term ID (e.g., "prop-drilling")
+    const term = href.split('/vocab/')[1];
+
+    // 2. Look up the definition/component
+    const definition = vocabulary[term];
+
+    return (
+      <a
+        href={href}
+        onClick={(e) => {
+          e.preventDefault(); // Stop navigation!
+          if (definition) {
+            // 3. Trigger the global UI
+            openSidePanel(definition.title, definition.content);
+          }
+        }}
+        className="text-pink-400 dashed-underline cursor-help"
+      >
+        {children}
+      </a>
+    );
+  }
+
+  // Fallback for normal links
+  return <a href={href}>{children}</a>;
+};
+```
+
+### 2. The Data (`vocabulary.js`)
+
+I store the actual content in a simple lookup object. The beauty is that `content` can be *anything*--text, images, or fully interactive React components.
+
+```javascript
+export const vocabulary = {
+  'prop-drilling': {
+    title: 'Prop Drilling',
+    content: <PropDrillingDiagram /> // A real component!
+  },
+  // ...
+};
+```
+
+### 3. Handling "Deep Links"
+
+What if someone actually copies the URL `https://fezcodex.com/vocab/prop-drilling` and sends it to a friend? The `onClick` handler won't fire because they aren't clicking a link—they are loading the app.
+
+To handle this, I added a "phantom" route in my Router:
+
+```javascript
+// VocabRouteHandler.js
+const VocabRouteHandler = () => {
+  const { term } = useParams();
+  const navigate = useNavigate();
+  const { openSidePanel } = useSidePanel();
+
+  useEffect(() => {
+    // 1. Open the panel immediately
+    if (vocabulary[term]) {
+      openSidePanel(vocabulary[term].title, vocabulary[term].content);
+    }
+    // 2. Redirect to home (so the background isn't blank)
+    navigate('/', { replace: true });
+  }, [term]);
+
+  return null;
+};
+```
+
+## Why this rocks
+
+This pattern effectively turns your static Markdown content into a control surface for your application. You can write:
+
+> "Check out this `[interactive demo](/demos/sorting-algo)`..."
+
+And have it launch a full-screen visualization, a game, or a configuration wizard, all without leaving the flow of your writing. It bridges the gap between "content" and "app".

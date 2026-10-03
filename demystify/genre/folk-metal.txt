@@ -1,0 +1,35 @@
+id: folk-metal
+rank: 10
+name: FOLK, PAGAN & MEDIEVAL METAL
+family: Rock & Metal
+years: 1993 → present
+sub: Traditional European melody and instrumentation welded to amplified guitars — and played at festivals in costume
+spec: 64,74,80,76,70,74,80,84,86,82,78,80,84,82,76,68,58,50,42,34
+synthType: square
+freqs: 267.37, 335.14, 420.08
+
+what:
+ Folk metal took the harmonised aggression of extreme metal and swapped the lead guitar for a hurdy-gurdy, a bagpipe or a fiddle. Finland's Skyclad and Korpiklaani, Switzerland's Eluveitie and Germany's medieval scene — Faun, Feuerschwanz, In Extremo — built a live circuit around historical festivals that is now larger than the record market. Norway's *Kalandra* represent the current, quieter Nordic-folk end of the same impulse.
+
+artists:
+ *Eluveitie*, who write in reconstructed Gaulish; Korpiklaani, Ensiferum, Finntroll; the German medieval wing of *Faun* and *Feuerschwanz*; Heilung and *Kalandra* at the ritual-and-ambient end.
+
+trivia:
+ Eluveitie research their lyrics from surviving inscriptions and academic reconstructions of *Gaulish*, a Celtic language with no fluent speakers for roughly 1,500 years — the band employ a linguistic consultant. Faun perform on reconstructions of medieval instruments including the nyckelharpa and bray harp, and several members are trained early-music players who arrived at metal festivals by accident.
+
+sonic:
+ A folk melody stated on an acoustic instrument, then doubled by distorted guitar an octave down — the doubling is the genre. Rhythms borrow from dance forms, so 6/8 and 3/4 appear far more often than in other metal. Vocals alternate between harsh and clean choral singing, frequently in the round, and the mix has to leave a clear midrange window for instruments that cannot compete with a half stack.
+
+gear:
+ Hurdy-gurdy, nyckelharpa, tin whistle, bagpipes (Galician and Scottish), bodhrán, davul and hammered dulcimer, all close-mic'd or fitted with pickups. Against them: standard down-tuned metal rigs, usually with the guitars mid-scooped specifically to make room. Live shows rely heavily on in-ear monitoring because the acoustic instruments feed back instantly at stage volume.
+
+prod:
+ The engineering problem is dynamic range: a fiddle and a distorted guitar occupy the same frequencies with wildly different envelopes. The standard solution is aggressive multiband compression on the folk instruments plus dynamic EQ that carves the guitars whenever the melody enters. Records are mixed brighter than other metal so the acoustic detail survives, which is why folk metal sounds thinner and more legible than its neighbours.
+
+tracks:
+ - Emerge | Eluveitie
+ - Helheim - Extended | Kalandra
+ - Oyneng yar | Faun
+ - Viking Raid | Marcusbresslermusic
+ - Federkleid | Faun
+ - Metnotstand im Märchenland | Feuerschwanz

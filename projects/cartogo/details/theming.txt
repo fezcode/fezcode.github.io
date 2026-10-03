@@ -1,0 +1,8 @@
+# Modular JSON Themes
+
+Separating data from design. CartoGo features a fully customizable JSON-based theme engine.
+
+## Theme Architecture
+- **JSON Definitions**: Backgrounds, road weights, and hex colors.
+- **Built-in Styles**: 17 curated themes (Noir, Terracotta, Cyberpunk, etc.).
+- **Extensibility**: Add new artistic styles without modifying core rendering code.

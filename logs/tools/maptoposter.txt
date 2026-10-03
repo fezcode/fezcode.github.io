@@ -1,0 +1,15 @@
+# MapToPoster
+
+MapToPoster is a brilliant tool for anyone who appreciates the intersection of cartography and minimalist design. It allows you to transform city maps into aesthetically pleasing posters using code.
+
+## Key Features
+
+*   **City Map Poster Generator:** Generates minimalist map posters for any city in the world.
+*   **Customization:** Offers extensive options including 17 pre-defined themes, adjustable map radius, and custom image dimensions.
+*   **Multilingual Support:** City and country names can be displayed in various languages using Google Fonts.
+*   **Resolution Guide:** Helps target specific output resolutions for Instagram, wallpapers, or A4 prints.
+*   **Ease of Use:** Supports modern dependency management with `uv`.
+
+It's a great example of how small, focused tools can provide high value and beautiful output.
+
+Rating: 5/5 - Highly Recommended.

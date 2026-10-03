@@ -1,0 +1,5 @@
+LABEL: Overview
+SUBTEXT: Tactical Shooter
+IMAGE: /images/projects/swat-tactics/1.png
+
+SWAT TACTICS is a high-octane, top-down 3D action shooter inspired by the fast-paced gameplay and retro-neon aesthetic of *Hotline Miami*. Step into the boots of a tactical operator, clear sectors of hostile targets, and survive the chaos of continuous physics-based combat.

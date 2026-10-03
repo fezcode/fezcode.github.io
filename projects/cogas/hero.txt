@@ -1,0 +1,25 @@
+# Cogas
+One library for every store.
+(version) 0.15.2
+
+**Cogas** — *common gaming software* — collects the games already installed on this PC across **Steam, Epic, GOG, Ubisoft Connect, Battle.net, EA and the Microsoft Store**, plus anything you point it at yourself, into a single cover grid. Every one of them launches through its own platform. It also searches every storefront at once, compares prices, tracks a wishlist, and puts critic scores on the art.
+
+:::spec
+Yield: one library, seven stores
+Prep: ~30 seconds, no accounts
+Difficulty: beginner — run the installer
+Pantry: Windows only
+:::
+
+:::seal
+items: unified library | game pass | deals
+:::
+
+:::colophon
+License: MIT
+Runtime: .NET 8, self-contained
+Deps: no account required
+Yields: one Setup.exe
+Platforms: Windows
+Source: github.com/fezcode/Cogas
+:::

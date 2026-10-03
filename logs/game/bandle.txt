@@ -1,0 +1,15 @@
+# Bandle
+
+- **Category:** Game
+- **Platform:** Web, iOS, Android
+- **Date:** 2026-06-18
+- **Rating:** 3/5
+- **Link:** [Bandle](https://bandle.app/)
+
+## What is Bandle
+
+A daily music guessing game: name the song one instrument at a time. Each track starts as a single layer (usually drums), and every wrong guess or skip adds another — bass, guitar, piano — across up to six clues. The fewer layers you need, the higher your score. Release year, YouTube view count, and a difficulty rating help point the way.
+
+## Conclusion
+
+A smart, moreish Wordle/Heardle-style ritual — pegging a track off the drum loop alone is genuinely satisfying. The catch is the pay-to-play model: only the latest songs are free, while the back catalogue and themed packs (TV themes, video game scores) sit behind paid bundles. That paywall on a "just one more" format is what knocks it down. 3/5.

@@ -1,0 +1,10 @@
+- **Detachable sessions** — shells run in a separate session host outside the installation folder, so an update can replace the UI without ending them.
+- **Workspaces, tabs and splits** — grouped, renameable, draggable, with layout restored on launch.
+- **Developer panels** — project tasks for CMake/Ninja, Go, .NET, Maven/Gradle and JS/TS, plus a command timeline, Problems panel and agent dashboard.
+- **A real emulator** — VT100/xterm, 24-bit colour, synchronized output, OSC 8/133/7/9/777, bracketed paste, mouse reporting, kitty key encoding, scrollback reflow.
+- **Terminal links** — hover to underline with a tooltip, Ctrl + click to open; soft-wrapped URLs are stitched back together.
+- **Browser pane** — an embedded WebView2 beside your shells, scriptable with navigate, js and dom.
+- **Status bar plugins** — `.ckt` bundles in isolated load contexts behind a permission gate; four ship in the box.
+- **Fourteen themes** — the ANSI palette, cursor, selection, tab pills and pane borders are all tokens.
+- **Shell integration** — PowerShell profiles get prompt marks, cwd and titles automatically; bash/zsh via `clockt.sh`.
+- **CLI and automation** — `clockt new | ls | attach | kill | ssh`, plus `ls --json | read | send | cmd` for scripts and agents.

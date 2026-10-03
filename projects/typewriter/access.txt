@@ -1,0 +1,21 @@
+LABEL: Access
+SUBTEXT: Get Typing
+IMAGE: /images/projects/typewriter/example.png
+
+Prebuilt self-contained executables are attached to every [GitHub release](https://github.com/fezcode/typewriter/releases):
+
+| File | Platform |
+|------|----------|
+| `typewriter-windows-x86_64.exe` | Windows 10/11 (64-bit) — just run it |
+| `typewriter-linux-x86_64.tar.gz` | Linux x86_64, glibc ≥ 2.35 — `tar xzf` and run `./typewriter` |
+| `typewriter-macos-universal.tar.gz` | macOS 11+, Apple Silicon and Intel — `tar xzf` and run `./typewriter` |
+
+The binaries are not code-signed. On macOS, Gatekeeper may refuse a downloaded copy; run `xattr -d com.apple.quarantine typewriter` once to clear the quarantine flag.
+
+Settings are stored in `typewriter.ini` next to the executable, so keep it somewhere writable.
+
+**Controls**
+- **Options menu**: `Ctrl+K`
+- **Find & Replace**: `Ctrl+F`
+- **Undo**: `Ctrl+Z`
+- **Open a file**: drag it onto the window

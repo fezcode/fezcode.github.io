@@ -1,0 +1,60 @@
+id: numetal-postgrunge
+rank: 02
+name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
+family: Rock & Metal
+years: 1994 → 2008 (revived 2019 →)
+sub: Down-tuned riffs, sampled/programmed layers, and lyrics about interior damage
+spec: 88,92,86,72,62,66,72,78,82,78,72,70,74,78,74,66,58,50,42,36
+tag: RAP-ROCK
+origin: Bakersfield & Los Angeles
+signature: 7-string down-tuned groove riffs, hip-hop bounce, DJ turntables
+keyGear: Ibanez Universe 7-String, Mesa Boogie Dual Rectifier
+audio: /demystify/genre/numetal.mp3
+synthType: square
+freqs: 55, 68.94, 86.41
+
+ascii:
+┌────────────────────────────────────┐
+│ CHUG   █▁█▁██▁▁█▁█▁██▁▁█▁█▁██▁▁    │
+│ 7-STR  B E A D G B E ── DROP TUNED │
+│ DROP   ▇▆▅▄▃▂▁  ▇▆▅▄▃▂▁  ▇▆▅▄▃▂▁   │
+│ BOUNCE ░▒▓█▓▒░  ░▒▓█▓▒░  ░▒▓█▓▒░   │
+└────────────────────────────────────┘
+
+what:
+ Nu metal fused hip-hop rhythm and DJ/sampler layers onto seven-string, drop-tuned guitars — Korn's 1994 debut is the starting gun, Limp Bizkit and Linkin Park the commercial ceiling. Post-grunge (Fuel, Creed, Nickelback) ran alongside it as the cleaner, more melodic radio option. *Vast* sits off to the side in industrial rock: Jon Crosby layering Bulgarian and Gregorian choir samples under distorted guitar.
+
+artists:
+ Korn, Deftones, Linkin Park, Limp Bizkit, System of a Down, Slipknot; Fuel, Staind, Creed on the post-grunge side; Nine Inch Nails and Vast on the industrial side. Turkey has a genuine national wing of this: *maNga*, formed in Ankara in 2001, took second place at Eurovision 2010, and *Hayko Cepkin*, whose theatrical live shows made him the country's definitive heavy frontman.
+
+trivia:
+ Mike Shinoda worked on "Breaking the Habit" for roughly *six years* before it was finished — it's the Meteora track with no rapping and a full string arrangement, and the anime video was directed by Kazuto Nakazawa (Kill Bill's animated sequence). Fuel's "Hemorrhage" was written by guitarist Carl Bell, not singer Brett Scallions, which is why the vocal sits so oddly high in his range.
+
+sonic:
+ Guitars in drop-D or lower with the mids scooped out; bass carrying the note information the guitars gave up; a snare tuned tight and gated. Nu metal's signature is the *dynamic cliff* — near-silent verse with clean guitar or a sampled loop, then everything at once. Vocals alternate whisper and scream inside a single phrase.
+
+gear:
+ Ibanez seven-strings and ESP/Schecter baritones, Mesa Dual Rectifier and Diezel heads, Line 6 POD for the clean/filtered verse tones. On the electronic side: Akai MPC and E-mu samplers, Roland V-Drums triggers, Pro Tools for the loop layer. Vast built its records on early sampling of choral CDs plus a Mellotron-ish pad stack.
+
+prod:
+ Nu metal was the first rock genre *arranged in a DAW rather than a rehearsal room*. Producers Ross Robinson (Korn, Slipknot) and Don Gilmore (Linkin Park) worked opposite ends: Robinson chased raw performance in one take, Gilmore edited relentlessly to a grid. The loudness war peaked here — Meteora is mastered around DR5 — which is why these records feel physically compressed next to the prog entries above.
+
+tracks:
+ - You're Too Young | Vast
+ - Breaking the Habit | Linkin Park
+ - Yalan | maNga
+ - Not Strong Enough | Apocalyptica, Brent Smith
+ - Numb | Linkin Park
+ - One Last Breath | Creed
+ - Hemorrhage (In My Hands) | Fuel
+ - Fırtınam | Hayko Cepkin
+ - War | Poets of the Fall
+ - I Don't Care | Apocalyptica
+ - Yad Eller | maNga
+ - Castle of Glass | Linkin Park
+
+examples:
+ - Korn - Blind (1994) | Low-tuned 7-string guitar intro ("Are You Ready?!"), heavy slap bass
+ - Limp Bizkit - Break Stuff (1999) | Hip-hop vocal delivery, heavy groove guitar riff, turntablism
+ - Linkin Park - In the End (2000) | Piano intro, rap/singing dual dynamics, turntable scratches
+ - System of a Down - Chop Suey! (2001) | Staccato acoustic guitar to explosive metal riffing, opera vocals

@@ -1,0 +1,21 @@
+# SoundJay
+
+SoundJay is an exceptional resource for creators seeking high-quality, free sound effects without the hassle of complex licensing or hidden fees. It stands out for its simplicity and the sheer utility of its collection.
+
+### Key Features
+- **Extensive Variety**: The site offers a wide range of categories including background noises, button clicks, nature sounds, mechanical effects, and human sounds.
+- **High-Quality Audio**: Most sounds are available in both WAV (uncompressed) and MP3 formats, catering to different project needs.
+- **Simple Navigation**: The interface is straightforward, making it easy to preview and download sounds quickly.
+
+### Licensing & Use Cases
+One of the biggest advantages of SoundJay is its clear and generous licensing. The sounds can be used for:
+- **Commercial Projects**: Professional videos, monetized YouTube channels, and commercial applications.
+- **Non-Commercial Projects**: Student films, personal apps, and hobbyist games.
+- **No Attribution Required**: While always appreciated, credit is not strictly mandatory for use.
+
+*Note: While free to use in your projects, you are not permitted to redistribute the sound files themselves as a collection or on other websites.*
+
+### Why It’s a 5/5
+In a world of subscription-based asset stores, SoundJay remains a reliable, high-quality, and truly free "no-nonsense" tool for developers, filmmakers, and sound designers alike.
+
+Rating: 5/5

@@ -1,0 +1,9 @@
+LABEL: Technical
+SUBTEXT: STACK
+
+- **C + raylib** for the window, input and GPU-side compositing — the same shell used by [tivi](/projects/tivi) and [Timp](/projects/timp), so the three feel like one product line.
+- **PDFium (BSD)** for parsing, rendering, text extraction, search, annotations and forms. Prebuilt binaries are fetched by `tools/fetch-pdfium.ps1`, which also builds a MinGW import library.
+- **Win32 wide API** for file open and paths, so non-ASCII filenames work end to end.
+- **DWM** for Win11 rounded corners and drop shadow under a borderless window.
+- **hoswl** — a named-pipe client for the [Hisashi](/projects/hisashi) menu bar, on by default and harmless when Hisashi is not running.
+- **Forge** for the Windows installer, driven from `forge.toml`.

@@ -1,0 +1,229 @@
+# The Case of the Invisible Geometry: Debugging a Silent OpenGL Driver Validation Failure
+
+*How a `samplerCube` uniform guarded by `if (false)` made the entire scene vanish.*
+
+---
+
+## TL;DR
+
+After a commit that added reflection probes and point shadow cubemaps to the main PBR shader, the editor scene view went black: no 3D geometry, no text on UI buttons, only particle emitters and UI button rectangles were visible. `glDrawArrays` executed for the right entities, the shader compiled without errors, and the framebuffer was configured correctly — yet every pixel was the exact clear color.
+
+The root cause was a driver validation quirk: `default.frag` declared five `samplerCube` uniforms (a reflection probe and four point-shadow maps), but only bound real cubemap textures to their units when those features were actively used. When a scene had no reflection probe and no shadow-casting point lights, those texture units had *no cubemap bound at all*. The driver silently dropped every draw call against the main shader because the declared samplers had no valid backing texture — even though the code paths that would have actually sampled them were guarded by a uniform `bool` that was `false`.
+
+The fix was to create a 1×1 black dummy cubemap at engine initialization and bind it to every `samplerCube` unit. Real cubemaps replace the binding when features are active.
+
+---
+
+## Symptoms
+
+Two screenshots from the editor told the same story:
+
+1. **Main menu scene**: the UI canvas's button rectangles rendered in their button colors, but no text appeared on them. The 3D background props (`BG Cube 1`, `BG Sphere`, `BG Teapot`, etc.) listed in the hierarchy were completely invisible.
+2. **Castle throne room scene**: a large 3D scene with 87 entities. Only the torch particle emitters were visible. No walls, no pillars, no floor, no text overlays.
+
+The `Tris:` counter in the status bar read `0`, but that turned out to be a red herring — the counter is only incremented inside `Engine::Render()`, which in editor mode just clears the back buffer to dark gray and hands off to ImGui. The actual scene rendering goes through `Engine::RenderSceneToFBO()`, which doesn't touch the counter. So `Tris: 0` is expected in editor mode regardless of whether geometry is rendering.
+
+The informative observation was what *did* render:
+
+| System | Shader | Status |
+| --- | --- | --- |
+| UI button quads | `uiShader` | ✅ rendering |
+| Light/camera billboards | `spriteShader` | ✅ rendering |
+| Particle emitters | `particleShader` | ✅ rendering |
+| Text on buttons | `mainShader` via `TextRenderer` | ❌ missing |
+| 3D entity geometry | `mainShader` | ❌ missing |
+
+Everything that used `mainShader` was broken. Everything that used a different shader worked. That narrowed the problem to the shader program itself or to how it was being used.
+
+---
+
+## Initial Hypotheses (and why they were wrong)
+
+Before we could see actual data, we burned through several plausible-sounding theories.
+
+**Hypothesis 1: `mainShader` failed to compile.** Plausible because I had recently added an L2 spherical harmonics function and new uniforms for irradiance probes. The `Shader` class runs `checkCompileErrors` which prints to `std::cerr`. I redirected `std::cout`/`std::cerr` to a log file at startup (the engine links as `WIN32` subsystem so stdout is discarded by default), and the log showed no shader errors. The shaders compiled and linked fine. Hypothesis ruled out.
+
+**Hypothesis 2: Alpha clipping.** `default.frag` has an `if (albedoAlpha.a < alphaThreshold) discard;` test. If the texture format returned `alpha = 0` for RGB textures in violation of the spec, every fragment would be discarded. I forced `albedoAlpha.a = 1.0` at the top of the shader. No change. Ruled out.
+
+**Hypothesis 3: Depth test rejection.** If the depth buffer was somehow pre-populated with `0.0`, `GL_LESS` would reject every new fragment. Added a `glDisable(GL_DEPTH_TEST)` in the diagnostic frame and read the pre-draw depth buffer (came back as `1.0`, correct). Ruled out.
+
+**Hypothesis 4: Lighting math producing NaN.** If `finalColor` came out as NaN, some drivers drop the write. Added `if (any(isnan(finalColor))) FragColor = vec4(1,0,1,1);` magenta overrride — magenta never appeared, so no NaN. Ruled out.
+
+**Hypothesis 5: Viewport / matrix corruption.** Logged camera position, view dimensions, and entity world matrices. All values were sensible: camera at `(0, 2, 10)`, viewport `800×600` then resized to `1300×743`, entity world matrices non-degenerate. Ruled out.
+
+Each dead end was only dead in retrospect, but each one added diagnostic scaffolding that became load-bearing for the actual diagnosis.
+
+---
+
+## Getting Observability into a WIN32 GUI App
+
+The first practical blocker was simply *seeing* anything. Norlong is linked as a Windows GUI app (`add_executable(Norlong WIN32 ...)`), which means there's no inherited console. Any `std::cout` goes nowhere by default, and capturing it with `Start-Process -RedirectStandardOutput` didn't produce output either.
+
+The fix was one of the smallest patches of this debug session:
+
+```cpp
+// main.cpp
+static std::ofstream engineLog("engine.log", std::ios::trunc);
+std::cout.rdbuf(engineLog.rdbuf());
+std::cerr.rdbuf(engineLog.rdbuf());
+```
+
+This redirects the standard streams into a file on disk. After rebuild, the engine wrote a readable log that confirmed shader compilation succeeded, scene loaded, and the main loop was running. That gave us a signal channel for everything that followed.
+
+---
+
+## Turning the GPU Into a Debugger
+
+The key insight for actually finding the bug was to treat the fragment shader and framebuffer as an instrumentation surface. Two kinds of probes, composed:
+
+**CPU-side, per-frame:** inside `RenderSceneToFBO`, before returning, blit the framebuffer color attachment back to CPU memory with `glReadPixels` and scan it for non-clear-color pixels. Log interesting aggregate stats (min/max R/G/B values, count of non-sky pixels, sample RGB triples) and a handful of OpenGL state variables (`GL_DEPTH_WRITEMASK`, `GL_COLOR_WRITEMASK`, `GL_DEPTH_FUNC`, current draw buffers):
+
+```cpp
+std::vector<unsigned char> buf(W * H * 3);
+glBindFramebuffer(GL_READ_FRAMEBUFFER, sceneViewFBO);
+glReadBuffer(GL_COLOR_ATTACHMENT0);
+glReadPixels(0, 0, W, H, GL_RGB, GL_UNSIGNED_BYTE, buf.data());
+
+int maxR = 0, diffFromSky = 0;
+for (int i = 0; i < W * H; ++i) {
+    int r = buf[i*3], g = buf[i*3+1], b = buf[i*3+2];
+    if (r > maxR) maxR = r;
+    if (r != 10 || g != 10 || b != 25) diffFromSky++;
+}
+```
+
+That last check is the one that unlocked everything. The scene's clear color was `(0.04, 0.04, 0.1)` in linear space, which becomes `(10, 10, 25)` when written to an 8-bit framebuffer. Counting pixels that *differ* from exactly that value — not just pixels that are "bright" — distinguishes three very different failure modes:
+
+- If fragments write `(0,0,0)` the count is high (the pixels are black, not sky).
+- If fragments write `finalColor` that happens to be very small positive, the count is also nonzero.
+- If fragments are never written at all, the count is `0` because every pixel is still the cleared value.
+
+The diagnostic said `diffFromSky = 0`: every pixel was **exactly** the clear color. That is not "dark lighting". That is "no write happened". Fragments were either discarded via `discard` or never reached the output stage.
+
+**Shader-side, per-fragment:** to distinguish *which* intermediate computation was breaking the pipeline, I temporarily replaced the final `FragColor = vec4(finalColor, alpha)` write with diagnostic variants and ran each one:
+
+| Shader output line | Result | What it told us |
+| --- | --- | --- |
+| `FragColor = vec4(1.0, 1.0, 0.0, 1.0)` | Yellow pixels appear | The fragment shader executes and the framebuffer write path works. |
+| `FragColor = vec4(alpha, alpha, alpha, 1)` | White pixels | The local `alpha` variable is valid (`= 1.0`). |
+| `FragColor = vec4(0.5, 0.25, 0.75, 1)` | Purple pixels | Writing arbitrary literals works. |
+| `FragColor = vec4(albedoAlpha.rgb, 1)` | White pixels (texture color) | Sampling `texture1` works. |
+| `FragColor = vec4(albedoLinear, 1)` | Tinted colors appear | PBR albedo math works. |
+| `FragColor = vec4(Lo * 5.0, 1)` | **Zero pixels differ from sky** | Something upstream of `Lo` is wrong. |
+| `FragColor = vec4(finalColor * 1e6, 1)` | **Zero pixels differ from sky** | Not a magnitude problem. |
+
+The critical clue: when the shader's output only depended on values the optimizer could compute without touching samplers, pixels appeared. When it depended on values that required the lighting path to run (which keeps the sampler-access code alive from a dead-code-elimination perspective), pixels did not appear.
+
+That pattern — "the shader runs, writes *sometimes* work, and whether they work correlates with whether certain samplers are live" — is the fingerprint of a sampler-binding validation issue.
+
+---
+
+## The Bisect
+
+To isolate which sampler was the culprit, I checked out `default.frag` from commit `949d50b` — a version from *before* the MRT/normal-output/reflection-probe refactor. It has a single `out vec4 FragColor` and no `samplerCube reflectionProbe`. With that shader, the scene rendered. Dim, because the ambient is low in the main menu, but *rendered*.
+
+From there I ran a careful incremental merge: take the old working shader and add pieces of the new shader one at a time, re-running after each edit:
+
+1. Add `layout(location = 1) out vec4 NormalOutput;` and write to it at the end → still works.
+2. Add the `samplerCube reflectionProbe` uniform declaration (but no usage in `main()`) → still works.
+3. Add the irradiance-probe SH uniforms (`uniform vec3 shCoeffs[9]`, etc.) → still works.
+4. Add the reflection-probe sampling block:
+
+   ```glsl
+   if (hasReflectionProbe && metallic > 0.01) {
+       ...
+       vec3 envColor = textureLod(reflectionProbe, R, mip).rgb;
+       Lo += envColor * F0 * ...;
+   }
+   ```
+   → **renders go black.**
+
+Commenting just that block back out restored rendering. The `textureLod(reflectionProbe, ...)` call was the discriminating line.
+
+Crucially, `hasReflectionProbe` was `false` in this scene. The branch body *never executed at runtime*. But removing the code inside the branch fixed the problem. That could only mean one thing: the driver wasn't checking whether the sampler was *accessed*, it was checking whether it was *declared* and had a valid texture bound to its assigned unit.
+
+---
+
+## The Bug
+
+`default.frag` declares several `samplerCube` uniforms:
+
+```glsl
+uniform samplerCube pointShadowMap0;
+uniform samplerCube pointShadowMap1;
+uniform samplerCube pointShadowMap2;
+uniform samplerCube pointShadowMap3;
+uniform samplerCube reflectionProbe;
+```
+
+At engine initialization, the C++ side assigns these samplers to dedicated texture units:
+
+```cpp
+mainShader->setInt("pointShadowMap0", 7);
+mainShader->setInt("pointShadowMap1", 8);
+mainShader->setInt("pointShadowMap2", 9);
+mainShader->setInt("pointShadowMap3", 10);
+// reflectionProbe was implicitly unit 15, set only inside the baking code
+```
+
+During normal scene rendering — say, a main menu with no active point shadows and no reflection probe — *nothing ever binds a cubemap to units 7, 8, 9, 10, or 15*. The C++ code only touches those units when a real point shadow or reflection probe is being rendered.
+
+According to the OpenGL 3.3 core specification, this is not supposed to matter. Section 2.11.7 ("Shader Execution → Texture Access") defines incomplete-texture results: if no texture is bound to the unit a sampler reads from, the sampled value is `(0, 0, 0, 1)`. Spec-compliant drivers handle this by returning that default value.
+
+But *some* drivers — typically Windows OpenGL drivers bundled with certain GPU stacks — run a stricter validation pass at draw time: every `samplerCube` declared in the linked program must have a cubemap texture bound to its assigned unit, even if the shader's control flow would never actually sample it. When that validation fails, the draw is silently dropped. No `GL_INVALID_OPERATION`, no error callback — just no pixels.
+
+That matches the symptoms exactly:
+
+- The fragment shader executed as far as the GPU compiler could see it would (the CPU-side flag `_dbgDrawn` counted 4 draws per frame).
+- Writes that used values the compiler could *prove* were independent of the guarded sampler access (constants, `alpha`, `albedoAlpha`) produced visible pixels, because the optimizer collapsed the shader to a short path that didn't keep the samplers live.
+- Writes that depended on `Lo` or `finalColor` — which required the lighting loop, which contains the reflection-probe block — kept the sampler references live, triggered the draw-time validation, and resulted in a silently-dropped draw.
+
+The old single-output shader worked coincidentally: it had the same `samplerCube pointShadowMap0..3` declarations, but for some scenes those were bound by the point-shadow rendering pass earlier in the same frame, and the bindings persisted across state changes because nothing explicitly rebound unit 7-10 to anything else. The reflection-probe sampler was added *after* the old shader, so the coincidence broke.
+
+This is exactly the class of bug that is very hard to trigger in CI or in validation layers for OpenGL, because the spec says it shouldn't happen. But it reliably happens on some production drivers, and you won't see a diagnostic message — just an empty frame.
+
+---
+
+## The Fix
+
+Create a 1×1 black cubemap at engine startup and bind it to every `samplerCube` texture unit. Real cubemaps replace the binding when a feature needs them and fall back to the dummy otherwise:
+
+```cpp
+glGenTextures(1, &dummyCubemap);
+glBindTexture(GL_TEXTURE_CUBE_MAP, dummyCubemap);
+unsigned char black[4] = {0, 0, 0, 255};
+for (int face = 0; face < 6; ++face)
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X + face, 0, GL_RGBA, 1, 1, 0,
+                 GL_RGBA, GL_UNSIGNED_BYTE, black);
+glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+
+for (int unit : {7, 8, 9, 10, 15}) {
+    glActiveTexture(GL_TEXTURE0 + unit);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, dummyCubemap);
+}
+glActiveTexture(GL_TEXTURE0);
+```
+
+Six `glTexImage2D` calls, five texture-unit bindings, one `glGenTextures`. Zero runtime cost in the draw path. The `hasReflectionProbe` uniform still gates the actual `textureLod` at runtime, so the dummy cubemap is only ever *sampled* when the shader would have sampled it anyway (which it doesn't, in scenes without probes), and when it *is* sampled, it contributes `(0,0,0)` which is the spec-correct default for an incomplete texture.
+
+---
+
+## Lessons
+
+**Always bind something to every sampler unit you declare.** Relying on uniform-bool guards to prevent sampler access is legal by the spec but not portable in practice. Create a dummy texture per sampler type (`sampler2D`, `samplerCube`, `sampler2DArray`, whatever you use) and use it as a default binding. It costs nothing.
+
+**Use the framebuffer as a debugger.** When output looks wrong, the fastest diagnostic is to temporarily replace the final color with something that isolates one intermediate value. Constants rule out the whole pipeline. Individual uniforms or samplers rule in/out specific inputs. Scaled intermediates reveal magnitude problems. Count pixels that *differ from the clear color* rather than pixels that are "visible" — black pixels are a valid output, and treating them as invisible hides information.
+
+**Trust bisecting more than reasoning.** Several hypotheses above were sensible and ruled out quickly. The actual bug — a sampler validation pass that isn't in the spec — would not have been on any list of hypotheses to check. But a clean "works vs. doesn't work" bisect on the shader source converged on it in a few edits.
+
+**Redirect stdout/stderr to a log file in GUI apps from day one.** Shader compile errors, GL debug messages, any `std::cerr` you write for diagnostics — none of them are visible in a `WIN32`-subsystem executable without either a console allocation or a file redirect. A three-line addition to `main()` would have surfaced all of this ten minutes earlier.
+
+**If you can, turn on `GL_KHR_debug`.** Register a debug callback with `glDebugMessageCallback` in debug builds and log every error, performance warning, and undefined-behavior report the driver is willing to give you. The draw wasn't producing a `GL_INVALID_OPERATION`, so even this wouldn't have flagged the exact bug here, but in the general case it converts silent driver quirks into explicit log lines and is free instrumentation.
+
+---
+
+*Commit: `2b5def6` of norlong — "Fix missing text/geometry in editor scene view".*

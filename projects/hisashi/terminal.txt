@@ -1,0 +1,20 @@
+:::tab
+id: build
+label: Build
+command: .\build.ps1 -Rid win-x64 -Config Release
+output: Restoring... Packing 24 plugins into .hsh bundles... Staging themes... Publishing self-contained single-file host... -> dist\win-x64\hisashi.exe
+:::
+
+:::tab
+id: plugin
+label: Plugin
+command: dotnet new classlib -n MyWidget && hsh-pack .\MyWidget
+output: Reading manifest.json... Permissions requested: storage, network. Packing MyWidget.dll + styles/ + assets/... -> MyWidget.hsh. Drop it in %AppData%\Hisashi\plugins.
+:::
+
+:::tab
+id: hoswl
+label: hoswl
+command: cc myapp.c -o myapp.exe   # #include "hoswl.h"
+output: Connected to \\.\pipe\hoswl. Published menu: File, Edit, View, Help. Hisashi Menubar widget now renders myapp's menus behind the Windows logo.
+:::

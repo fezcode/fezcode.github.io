@@ -1,0 +1,65 @@
+## Overview
+
+**Atelier** is a high-performance image and SVG viewer built with **Avalonia UI** and **C#**. It gives you a buttery-smooth viewing experience with native support for modern formats and proper vector rendering — and then gets out of the way of the picture.
+
+![Atelier](/images/projects/atelier/banner.png)
+
+## Features
+
+- **Avalonia UI core** — high-performance, cross-platform XAML-based UI.
+- **Hardware acceleration** — SkiaSharp does the rendering on the GPU.
+- **SVG, natively** — infinite zoom on vector graphics with full fidelity, not a rasterized preview.
+- **HEIC / HEIF** — modern smartphone photos open directly via Magick.NET, alongside AVIF, WebP and ICO.
+- **Fluid navigation** — seamless directory browsing and centered zooming.
+- **Drag & drop** — open any supported file or folder instantly.
+- **Metadata panel** — toggle it from **View → Image Metadata**, or close it with the **✕** in its header.
+- **Minimalist design** — a clean, dark interface focused on your content.
+- **Hisashi menubar** — opt in under **View → Hisashi** and File / View / Edit / Help move into [Hisashi](/projects/hisashi)'s macOS-style menu bar while it is running; the in-app strip hides itself. It speaks the tiny `hoswl` named-pipe protocol, so there is no hard dependency on Hisashi.
+
+## Set as wallpaper
+
+**File → Set as Wallpaper** offers Fill, Fit, Stretch, Center, Tile and Span. SVG, HEIC, AVIF, WebP and ICO are converted automatically first, since Windows itself only accepts JPG, PNG and BMP.
+
+## Controls
+
+| Input | Action |
+| --- | --- |
+| **Mouse wheel + Ctrl** | Zoom in / out |
+| **Mouse wheel + Shift** | Pan horizontally |
+| **Left / Right arrow** | Previous / next image in the folder |
+| **`F`** | Toggle fullscreen |
+| **Ctrl+O / Ctrl+S** | Open / Save As |
+| **Drag & drop** | Drop any file to view it |
+| **File → Open File Location** | Reveal the current image in File Explorer |
+
+## Building
+
+Requires the **.NET 8.0 SDK**.
+
+```bash
+git clone https://github.com/fezcode/Atelier.git
+cd Atelier
+dotnet run
+```
+
+Run the tests — headless Avalonia, no window is shown:
+
+```bash
+dotnet test Tests/Atelier.ZoomTests
+```
+
+## Packaging
+
+The Windows installer is built with [Forge](https://github.com/fezcode/Forge) from `forge.toml`:
+
+```powershell
+.\build-installer.ps1     # publish + bundle -> dist\Atelier-Setup-<version>.exe
+```
+
+The version lives in `<Version>` in `Atelier.csproj` — the About dialog reads it back off the assembly, so `[app] version` in `forge.toml` is kept in step with it.
+
+Settings live in `%APPDATA%\fezcode\Atelier\settings.json`, including both Hisashi toggles.
+
+## Download
+
+Pre-built binaries are on the [Releases](https://github.com/fezcode/Atelier/releases) page.

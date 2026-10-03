@@ -1,0 +1,18 @@
+# OpenLogi
+
+OpenLogi is a native, local-first alternative to Logitech Options+ written in Rust. It communicates directly with Logitech devices over the HID++ protocol (supporting Bolt, Unifying, Bluetooth, and wired USB connections) without requiring accounts, logins, or background telemetry.
+
+## Key Features
+
+- **Direct HID++ Communication:** Controls device parameters natively over HID++ 2.0 (DPI adjustments, SmartShift sensitivity, and button remapping).
+- **Comprehensive Button Remapping:** Map physical mouse and keyboard buttons to any of 44 built-in actions, custom shortcuts, app launchers, or scripts.
+- **DPI Control & Presets:** Adjust sensor resolution precisely and cycle through custom DPI presets on the fly.
+- **SmartShift Control:** Switch the scroll wheel between ratchet and free-spin modes, or tune auto-disengage thresholds based on scroll velocity.
+- **Local-First & Transparent:** All configurations are stored locally in plain TOML (`~/.config/openlogi/config.toml`). Zero cloud sync, zero bloat, zero tracking.
+- **Cross-Platform:** Available across macOS (`.dmg`, Homebrew cask `openlogi`), Linux (`.deb`, `.rpm`, `.pkg.tar.zst`), and Windows (`.msi`).
+
+## Evaluation
+
+OpenLogi solves the major pain points of official peripheral software—sluggish performance, forced cloud logins, and persistent telemetry—by delivering a fast, lightweight, and completely local utility in Rust.
+
+Rating: 5/5

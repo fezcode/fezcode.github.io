@@ -1,0 +1,8 @@
+LABEL: Key Features
+SUBTEXT: CAPABILITIES
+
+- **Intuitive Syntax:** Easy-to-read key-value pairs, supporting nested structures.
+- **Primitive Types:** Supports strings, numbers, booleans, and null.
+- **Complex Types:** Handles objects and arrays.
+- **Multi-line Strings:** Supports multi-line string values with indentation.
+- **Comments:** Allows single-line comments using `#` (only lines starting with `#` are treated as comments).

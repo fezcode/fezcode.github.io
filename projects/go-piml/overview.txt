@@ -1,0 +1,60 @@
+# go-piml
+
+**Spec version**: v1.1.0
+
+`go-piml` is a high-performance, production-ready Go package for marshalling and unmarshalling PIML data. It is designed to feel native to Go developers, leveraging the standard library's idioms and providing a powerful reflection-based API similar to `encoding/json`.
+
+As the PIML specification evolves, `go-piml` serves as the reference implementation for compiled languages, ensuring that performance and type safety are never compromised.
+
+## Core Principles
+
+- **Developer Ergonomics**: Use standard Go struct tags (`piml:"key_name"`) to map your data structures effortlessly.
+- **Strict Typing**: Seamlessly convert PIML primitives into Go's rich type system, including support for `time.Time`, custom pointers, and nested slices.
+- **Performant Parsing**: The recursive descent parser is optimized for minimal allocations and high throughput.
+
+## Struct Tagging & Mapping
+
+PIML allows for clean separation between your code's data structures and the serialized format:
+
+```go
+type Project struct {
+    ID          int      `piml:"id"`
+    Title       string   `piml:"title"`
+    Tags        []string `piml:"tags"`
+    Released    bool     `piml:"is_released"`
+    Maintenance struct {
+        Active bool `piml:"active"`
+    } `piml:"maintenance"`
+}
+```
+
+## Advanced PIML Example
+
+```piml
+(project_registry)
+  > (Project)
+    (id) 101
+    (title) Warp Drive Engine
+    (tags)
+      > physics
+      > propulsion
+    (is_released) true
+    (maintenance)
+      (active) true
+
+(system_metrics)
+  (uptime) 14500
+  (load_averages)
+    > 0.15
+    > 0.22
+    > 0.08
+
+(description)
+  Go implementation allows for deep nesting
+  of structures without losing the 
+  human-readable quality of the file.
+```
+
+## Go Ecosystem Integration
+
+`go-piml` is built to fit into the Go ecosystem. Whether you are building a CLI tool that needs a readable config file, or a microservice that processes structured data, `go-piml` provides the reliability and speed expected of Go software.

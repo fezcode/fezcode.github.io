@@ -1,0 +1,42 @@
+# Can you solve the pirate riddle? - Alex Gendler
+
+- **Category:** Video
+- **Date:** 2026-01-08
+- **Rating:** 5/5
+- **Link:** [YouTube - Can you solve the pirate riddle?](https://www.youtube.com/watch?v=Mc6VA7Q1vXQ)
+
+## The Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Mc6VA7Q1vXQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+## About
+
+It’s a resting day on the pirate ship. The five pirates: Amaro, Bart, Charlotte, Daniel, and Elizabeth have found a treasure chest with 100 gold coins. They must decide how to partition them.
+
+Pirates are ranked by seniority: Amaro is #1, Bart is #2, Charlotte is #3, Daniel is #4, and Elizabeth is the most junior, #5.
+
+The rules of pirate democracy are as follows: the most senior pirate proposes a distribution. Then, everyone, including the proposer, votes. If at least 50% of the pirates agree, the gold is distributed as proposed. If not, the proposer is thrown overboard, and the process starts again with the next most senior pirate.
+
+Pirates are perfectly rational, but they also have a hierarchy of goals:
+1. Stay alive.
+2. Maximize their own gold.
+3. If all else is equal, they prefer to see others thrown overboard.
+
+Can you figure out what Amaro should propose?
+
+## The Solution
+
+To solve this, we work backward from the most junior pirates:
+
+1. **Two Pirates (Daniel, Elizabeth):** Daniel needs only 50% of the vote. He votes for himself and wins. He takes all 100 coins, and Elizabeth gets 0.
+2. **Three Pirates (Charlotte, Daniel, Elizabeth):** Charlotte needs one other vote. She knows Elizabeth will get 0 if it goes to Daniel's turn, so she offers Elizabeth 1 coin. Elizabeth accepts. Distribution: **99, 0, 1**.
+3. **Four Pirates (Bart, Charlotte, Daniel, Elizabeth):** Bart needs one other vote. He knows Daniel gets 0 in Charlotte's plan, so he offers Daniel 1 coin. Daniel accepts. Distribution: **99, 0, 1, 0**.
+4. **Five Pirates (Amaro, Bart, Charlotte, Daniel, Elizabeth):** Amaro needs two other votes besides his own. He knows Charlotte and Elizabeth both get 0 in Bart's plan. By offering them each 1 coin, they are better off and will vote with him.
+
+**Final Proposal:**
+- **Amaro:** 98 coins
+- **Bart:** 0 coins
+- **Charlotte:** 1 coin
+- **Daniel:** 0 coins
+- **Elizabeth:** 1 coin
+

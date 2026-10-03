@@ -1,0 +1,45 @@
+# Philosophy 101: Introduction - The Examined Life
+
+## Welcome to Class
+
+Sit down, grab a coffee (black, preferably, like the abyss we're about to stare into). Welcome to **Philosophy 101**.
+
+You might be here because you want to win arguments on the internet, or maybe you're having an existential crisis at 3 AM. Whatever the reason, you've taken the first step into a larger world.
+
+This series is going to be a "university-style" crash course in Philosophy. We aren't just going to quote dead guys in togas; we're going to learn how to *think*.
+
+## What is Philosophy?
+
+The word comes from the Greek *philosophia*, meaning **"love of wisdom."** But that's a bit fluffy, isn't it?
+
+In practice, philosophy is the critical examination of the most fundamental questions of human existence. It's the art of asking "Why?" until people get annoyed with you, and then asking "Why does that annoy you?"
+
+It's not just about having opinions. Everyone has opinions. Philosophy is about **arguments**. It's about building a structure of logic to support a conclusion.
+
+## Why Study This?
+
+1.  **Critical Thinking:** You will learn to spot bullshit from a mile away.
+2.  **Clarity:** You'll learn to express complex ideas simply.
+3.  **The Examined Life:** Socrates said, "The examined life is not worth living." (Wait, no, he said "The **unexamined** life is not worth living." See? We need to pay attention to details).
+
+## Course Syllabus
+
+Over the next few posts, we will cover:
+*   Logic and Arguments (The Toolset)
+*   Epistemology (What can we know?)
+*   Metaphysics (What is real?)
+*   Ethics (What should we do?)
+
+## Required Reading & Resources
+
+For this session, your homework is simple:
+
+**1. The Website:**
+[Stanford Encyclopedia of Philosophy (SEP)](https://plato.stanford.edu/)
+*   This is the bible of online philosophy. It's peer-reviewed, academic, and free. Bookmark it.
+
+**2. The Book:**
+*   **"Think" by Simon Blackburn**.
+*   It's a fantastic, readable introduction that doesn't get bogged down in jargon too early.
+
+See you in the next lecture, where we learn how to actually construct an argument without looking like a fool.
