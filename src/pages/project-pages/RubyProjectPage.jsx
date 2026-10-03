@@ -829,7 +829,7 @@ const RubyProjectPage = () => {
             style={{ columnRule: '1px solid rgba(74,26,31,0.2)' }}
           >
             {heroBody ||
-              'gobake replaces Makefiles, shell scripts, and yet-another-build-tool with a single, type-safe Recipe.go. Inspired by nob.h, your build logic compiles on the fly. Version 0.4.0 introduces multi-task CLI invocation, scoped working directories via RunIn, and captured stdout via RunOutput.'}
+              'gobake replaces Makefiles, shell scripts, and yet-another-build-tool with a single, type-safe Recipe.go. Inspired by nob.h, your build logic compiles on the fly. Version 0.5.0 moves recipe.piml parsing to go-piml v1.3.0, enforcing PIML spec v1.2.0: strict 2-space indentation, inline comments, quoted strings and duplicate-key errors.'}
           </div>
           <div className="mt-10 flex items-center gap-4 text-[10px] tracking-[0.4em] uppercase text-[#4a1a1f]/70 font-bold">
             <span>Filed by</span>
