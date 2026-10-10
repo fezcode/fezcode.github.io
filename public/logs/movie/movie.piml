@@ -1,6 +1,16 @@
 (logs)
   > (item)
     (category) Movie
+    (date) 2026-10-11
+    (link) https://www.imdb.com/title/tt30144839/
+    (rating) 3
+    (slug) one-battle-after-another-2025
+    (title) One Battle After Another (2025)
+    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (description) Watched on HBO Max. Meh. Well made, but never grabbed me.
+    (director) Paul Thomas Anderson
+  > (item)
+    (category) Movie
     (date) 2026-09-25
     (link) https://www.imdb.com/title/tt6334354/
     (rating) 3
