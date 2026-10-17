@@ -119,7 +119,8 @@ const MermaidDiagram = ({ chart, theme, className }) => {
       useMaxWidth: true,
       htmlLabels: true,
       flowchart: {
-        padding: 15,
+        padding: 16,
+        wrappingWidth: 260,
         useMaxWidth: true,
         htmlLabels: true,
       },
@@ -153,7 +154,7 @@ const MermaidDiagram = ({ chart, theme, className }) => {
     );
   }
 
-  const containerClass = className || preset.container;
+  const containerClass = `${className || preset.container} not-prose`;
 
   return (
     <div ref={containerRef} className={containerClass}>
@@ -175,6 +176,22 @@ const MermaidDiagram = ({ chart, theme, className }) => {
           }
           .mermaid-container foreignObject {
             overflow: visible !important;
+          }
+          .mermaid-container p,
+          .mermaid-container .label p,
+          .mermaid-container .nodeLabel p,
+          .mermaid-container .edgeLabel p {
+            margin: 0 !important;
+            padding: 0 !important;
+            line-height: 1.25 !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            color: inherit !important;
+          }
+          .mermaid-container .nodeLabel,
+          .mermaid-container .edgeLabel {
+            line-height: 1.25 !important;
+            font-family: inherit !important;
           }
           .mermaid-container .label {
             color: inherit;

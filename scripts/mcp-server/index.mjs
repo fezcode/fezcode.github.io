@@ -212,8 +212,8 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
             },
             category: {
               type: "string",
-              description: "Category of the post (e.g., 'dev', 'rant', 'feat')",
-              enum: ["dev", "rant", "feat", "d&d", "gist", "ai"],
+              description: "Category of the post (e.g., 'dev', 'rant', 'feat', 'essay')",
+              enum: ["dev", "rant", "feat", "d&d", "gist", "ai", "essay"],
               default: "dev"
             },
             image: {

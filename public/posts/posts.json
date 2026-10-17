@@ -1,5 +1,44 @@
 [
   {
+    "slug": "five-monkeys-and-the-bananas",
+    "title": "Five Monkeys, a Ladder, and a Bunch of Bananas: Why We Follow Rules Nobody Remembers Making",
+    "date": "2026-10-16",
+    "updated": "2026-10-16",
+    "description": "A short, kind reflection on the famous Five Monkeys experiment — how a group of newcomers ends up guarding a ladder from a cold-water hose none of them have ever seen, and how to gently check whether the water is still turned on.",
+    "tags": [
+      "psychology",
+      "habits",
+      "culture",
+      "five monkeys",
+      "essay"
+    ],
+    "category": "essay",
+    "filename": "five-monkeys-and-the-bananas.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
+    "slug": "curse-of-knowledge-and-false-consensus",
+    "title": "The Song in Your Head and the Sign on Your Chest: On the Curse of Knowledge and the False Consensus Effect",
+    "date": "2026-10-16",
+    "updated": "2026-10-16",
+    "description": "A plain-English essay on two everyday thinking traps that come from only ever living inside your own head: the Curse of Knowledge (why knowing something makes you terrible at explaining it) and the False Consensus Effect (why we quietly assume most normal people agree with us).",
+    "tags": [
+      "psychology",
+      "cognitive bias",
+      "communication",
+      "curse of knowledge",
+      "false consensus",
+      "essay"
+    ],
+    "category": "essay",
+    "filename": "curse-of-knowledge-and-false-consensus.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "nobody-walks-away",
     "title": "Nobody Walks Away: A Short Rant About Three HBO Max Crime Shows",
     "date": "2026-09-20",

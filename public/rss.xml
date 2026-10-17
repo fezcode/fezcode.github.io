@@ -9,14 +9,34 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 03 Oct 2026 18:02:49 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 17 Oct 2026 00:36:59 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 03 Oct 2026 18:02:49 GMT</pubDate>
+        <pubDate>Sat, 17 Oct 2026 00:36:57 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Five Monkeys, a Ladder, and a Bunch of Bananas: Why We Follow Rules Nobody Remembers Making]]></title>
+            <description><![CDATA[A short, kind reflection on the famous Five Monkeys experiment — how a group of newcomers ends up guarding a ladder from a cold-water hose none of them have ever seen, and how to gently check whether the water is still turned on....]]></description>
+            <link>https://fezcode.com/blog/five-monkeys-and-the-bananas</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/five-monkeys-and-the-bananas</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>There is a famous story people tell about five monkeys, a ladder, and a bunch of bananas. Even if you have heard it before, it is worth sitting with for a minute — because almost all of us have been both the monkey reaching for the fruit and the monkey pulling someone else down.</p>
+<p><a href="https://fezcode.com/blog/five-monkeys-and-the-bananas">Read more...</a></p>]]></content:encoded>
+        </item>
+        <item>
+            <title><![CDATA[The Song in Your Head and the Sign on Your Chest: On the Curse of Knowledge and the False Consensus Effect]]></title>
+            <description><![CDATA[A plain-English essay on two everyday thinking traps that come from only ever living inside your own head: the Curse of Knowledge (why knowing something makes you terrible at explaining it) and the False Consensus Effect (why we quietly assume most n...]]></description>
+            <link>https://fezcode.com/blog/curse-of-knowledge-and-false-consensus</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/curse-of-knowledge-and-false-consensus</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 16 Oct 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>There is a small, quiet problem with having a brain, and it is that you only ever get to live inside one of them.</p>
+<p><a href="https://fezcode.com/blog/curse-of-knowledge-and-false-consensus">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Nobody Walks Away: A Short Rant About Three HBO Max Crime Shows]]></title>
             <description><![CDATA[Sıfır Bir, The Penguin and Barry, watched back to back on HBO Max. Three completely different shows arriving at the same verdict: crime is a debt with compounding interest, nobody gets an exit ramp, and the bill is always handed to whoever nearby sti...]]></description>
