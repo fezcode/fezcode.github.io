@@ -1,0 +1,37 @@
+Here at Fezcodex, we believe exploration should be rewarded. That's why we're thrilled to unveil the brand-new **Achievement System** – a fun and engaging way to discover all the hidden corners and cool features of the site!
+
+## What is it?
+
+The Achievement System gamifies your experience on Fezcodex. As you navigate, interact with our apps, explore visual modes, or simply read through our content, you'll be secretly unlocking various badges and trophies. Think of it as a personalized quest log for your journey through the digital world of Fezcodex!
+
+## Why Achievements?
+
+We wanted to make exploring the site more interactive and rewarding. With achievements, you can:
+*   **Discover Hidden Gems:** Uncover features you might not have found otherwise.
+*   **Track Your Progress:** See how much of Fezcodex you've truly experienced.
+*   **Engage More:** Turn casual browsing into a rewarding adventure.
+
+## How it Works
+
+The system operates quietly in the background, tracking specific actions:
+
+1.  **Triggers:** Certain interactions, like opening the Command Palette, enabling a unique visual mode, or visiting a specific page, act as triggers.
+2.  **Local Storage:** Your progress is saved securely and anonymously in your browser's local storage. No data is sent to any server – your achievements are yours alone!
+3.  **Toast Notifications:** When you unlock a new achievement, a subtle (but celebratory!) toast notification will appear to let you know.
+
+## A Glimpse at Some Achievements
+
+Here are just a few examples of the achievements you can strive for:
+
+*   **Hello World:** The very first step on your Fezcodex journey.
+*   **The Hacker:** For those who master the Command Palette.
+*   **Curious Soul:** For taking the time to learn more about the creator.
+*   **The Architect:** For appreciating the structural beauty of certain visual modes.
+*   **Retro Futurist:** For embracing the aesthetics of a bygone era.
+*   **Novice Reader, Avid Reader, Bookworm:** For delving into our blog posts and expanding your knowledge!
+
+## Visit the Trophy Room!
+
+Want to see your collection? Head over to the new [Trophy Room page](/achievements) (accessible via the sidebar) to view all the achievements you've unlocked and see what challenges still await!
+
+We hope this new feature adds an extra layer of fun and discovery to your Fezcodex experience. Happy hunting!

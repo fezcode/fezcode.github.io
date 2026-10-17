@@ -1,0 +1,48 @@
+# When Asses Are Needed
+
+> *"You will never get the crowd to cry Hosanna until you ride into town on an ass."*
+
+## The phrase
+
+| Language | Form |
+| --- | --- |
+| German | *Wann Esel not tun. — Man wird die Menge nicht eher zum Hosianna-rufen bringen, bis man auf einem Esel in die Stadt einreitet.* |
+| English (Hollingdale) | When asses are needed. — You will never get the crowd to cry Hosanna until you ride into town on an ass. |
+| Literal | "When asses are needed. — One will not get the crowd to cry Hosanna until one rides into the town on an ass." |
+
+## Origin
+
+The line is **aphorism §313** of Friedrich Nietzsche's *Vermischte Meinungen und Sprüche* (Assorted Opinions and Maxims), 1879 — the first part of the second volume of *Menschliches, Allzumenschliches* (Human, All Too Human). Its German heading is *Wann Esel not tun*, "When asses are needed." The familiar English wording comes from R. J. Hollingdale's translation.
+
+This is Nietzsche's "aphoristic" middle period, where he writes in short, dry, self-contained observations rather than building systems. Many of them — like this one — are deadpan jokes with a serious mechanism underneath.
+
+## What it actually means
+
+The whole sentence is built on a single biblical reference, and if you don't catch it the line is opaque. Decoded:
+
+- **"Cry Hosanna"** — On Palm Sunday, the Gospels describe Jesus entering Jerusalem to a crowd that throws down cloaks and palm branches and shouts *"Hosanna!"* (Matthew 21, Mark 11, Luke 19, John 12). *Hosanna* is a Hebrew acclamation — it originally meant "save us," but had hardened into a pure shout of praise. So "to cry Hosanna" = **to greet someone with mass adoration**.
+- **"Ride into town on an ass"** — In that same scene, Jesus arrives not on a war-horse but on a donkey — a deliberately humble mount, chosen to fulfil the prophecy in Zechariah 9:9 ("your king comes to you... humble, and mounted on a donkey"). So riding in on an ass = **the public gesture of humility**.
+
+Put the two halves back together and the plain meaning is: *the crowd will not worship you until you perform humility for them.* You don't win mass adulation by showing up powerful, rich, or magnificent. You win it with the staged, recognizable image of lowliness — the borrowed donkey, the modest entrance, the role the audience already knows how to cheer.
+
+Nietzsche's title twists the knife. *"When asses are needed"* puns on the donkey: to be carried into town on the crowd's love, you need the ass — the prop, the act, and (he implies) a willingness to look like one. His opinion of *die Menge*, "the crowd," is consistently low: it cannot recognize greatness directly, only the familiar script. So acclaim is theatre, and the price of admission is self-abasement.
+
+## The paradox
+
+It runs on an inversion you have to do a double-take on:
+
+- **Triumph requires humility — but as technique, not virtue.** The donkey is usually read as genuine meekness. Nietzsche reads it as stagecraft: the most reliable route to being *exalted* by a crowd is to *appear to lower* yourself. Grandeur repels the mob; performed modesty draws it in.
+- **The worshippers are the marks.** The crowd believes it is honouring humility. It is actually responding to a cue. That gap — between what the audience thinks it admires and what is actually moving it — is the real subject of the aphorism.
+
+## In practice
+
+A useful, slightly cynical check on how popular approval gets manufactured:
+
+- **When a powerful figure stages humility.** The billionaire in the plain T-shirt, the politician at the diner, the CEO who's "just one of the team." Ask whether the modesty *is* the message — i.e. whether you are watching the donkey.
+- **When you find a crowd adoring someone.** Separate "what are they cheering" from "what cued the cheer." Often the second is a gesture of lowliness that flatters the audience into feeling it discovered the virtue all by itself.
+
+## See also
+
+- The Triumphal Entry / Palm Sunday — Matthew 21:1–11; and the prophecy it stages, Zechariah 9:9 (the king who comes on a donkey).
+- Nietzsche, *Human, All Too Human II*, §313 — and the surrounding *Assorted Opinions and Maxims*, more worldly and cynical than the famous later books.
+- David Mitchell, *Cloud Atlas* (2004) — Robert Frobisher reworks the line almost verbatim: *"To get the crowd to cry Hosanna, you must first ride to town on an ass."*

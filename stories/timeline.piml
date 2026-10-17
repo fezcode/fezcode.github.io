@@ -1,0 +1,213 @@
+(timeline)
+  > (era)
+    (eraId) 1
+    (eraTitle) After the War
+    (eraSpan) 0 - 37 A.W.
+    (eraDescription) The guns of the Great War fall silent, and Thornus begins counting its years. A long, uneasy peace in which the next fire is quietly arranged.
+    (events)
+      > (event)
+        (year) 0 A.W.
+        (title) The Great War Ends
+        (description) The Great War ends and the calendar of Thornus begins counting After the War—a reckoning built on the promise that nothing so terrible could happen twice. The promise does not hold.
+      > (event)
+        (year) 16 A.W.
+        (title) A Daughter in Glareach
+        (description) Lenia Krauper is born to the soldier Lorhud Krauper in the poor town of Glareach. She will live twenty-two years, and sew twenty-two silver stars into a dark green beret.
+        (book) Volume II: The Cost of Sin
+        (bookId) 2
+      > (event)
+        (year) c. 30 A.W.
+        (title) The Agency That Does Not Exist
+        (description) A young Soren Perborn enters the service of Black Ragnarok—the agency that doesn't exist, serving the kingdom that doesn't care. Freya Haelmar, Vancelor "The Fox" Ivarel, and Palwin Condervale share his shadows.
+        (book) Volume V: The Black Ragnarok
+        (bookId) 5
+      > (event)
+        (year) c. 34 A.W.
+        (title) The Refusal of Isabylle Fredsound
+        (description) Aester Cloudwear proposes the gentrification of Glareach. Isabylle Fredsound refuses to destroy the city's soul; her reward is a staged car "accident." A street orphan named Kramen Mandora pulls her from the wreckage and earns a household.
+        (book) Volume II: The Cost of Sin
+        (bookId) 2
+      > (event)
+        (year) 36 A.W.
+        (title) The Shadow That Glowed
+        (description) Galarian Freiton begins his thirteen-year pursuit of the Soul of Viyu—a vantablack star he believes will give the world free energy. He does not know he is digging a very deep, very bright grave.
+        (book) Volume IV: The Resistance
+        (bookId) 4
+
+  > (era)
+    (eraId) 2
+    (eraTitle) The Burning of Glareach
+    (eraSpan) 38 A.W.
+    (eraDescription) One year, two fires. A city is erased from the map, and a king is born beneath another one.
+    (events)
+      > (event)
+        (year) 38 A.W.
+        (title) The War of Fourbournes
+        (description) Aester Cloudwear manipulates the front lines, drawing the artillery onto the shanties of Glareach. The town burns off the map. To the calendar-makers, it is a footnote; to those who lived there, it is the end of the world.
+        (book) Volume II: The Cost of Sin
+        (bookId) 2
+      > (event)
+        (year) 38 A.W.
+        (title) Twenty-Two Stars Go Dark
+        (description) During the razing, Lenia Krauper—twenty-two years old—is dragged from her home and murdered by Aester Cloudwear while her father watches helplessly from the shadows. Her blood becomes the mortar of the first casino of new Glareach.
+        (book) Volume II: The Cost of Sin
+        (bookId) 2
+      > (event)
+        (year) 38 A.W.
+        (title) The Crown Is Born
+        (description) In Predymesh, a daughter is born to the sewer worker Donlane DeRosa. Niva will grow up tracing the crown-shaped birthmark on her father's hand, calling him the King of the Sewers.
+        (book) Volume I: The Streets of Thornus
+        (bookId) 1
+
+  > (era)
+    (eraId) 3
+    (eraTitle) The Age of Neon
+    (eraSpan) 39 - 55 A.W.
+    (eraDescription) New Glareach rises on old bones. The kingdom learns to look away, and the men who profit learn there is no price for anything.
+    (events)
+      > (event)
+        (year) c. 45 A.W.
+        (title) New Glareach Rises
+        (description) Cloudwear rebuilds only what turns a profit: a neon-soaked metropolis of casinos and legalized vice. The old districts and the rocky coastline are left to the ash and the ghosts.
+        (book) Volume II: The Cost of Sin
+        (bookId) 2
+      > (event)
+        (year) 49 A.W.
+        (title) The Needle at the Festival
+        (description) At the "Last Breath" festival, Agents Sprite and Laozi slip an Alilberry needle into Galarian Freiton's arm while Hellbound plays. The coroner writes heart failure. His widow begins an eleven-year plan—and a comedy career in Craninal.
+        (book) Volume IV: The Resistance
+        (bookId) 4
+      > (event)
+        (year) c. 55 A.W.
+        (title) The Stolen Mountain
+        (description) Avalia Krones recovers Proxanian Seeds and a cache of Sansu Syrup from an illegal excavation, shortly before the military seizes Proxan Mountain. The Krones Formula—and the Agricultural Revolution—follow.
+        (book) Volume IV: The Resistance
+        (bookId) 4
+      > (event)
+        (year) 55 A.W.
+        (title) A Fisherman and a White Coat
+        (description) Soren Perborn walks away from Black Ragnarok and buys a boat in Oakhaven. The same year, a money-hungry young researcher named Muatti takes a post behind the white walls of St. Jude's, where a word drifts the corridors like a draft: RedLink.
+        (book) Volume V: The Black Ragnarok
+        (bookId) 5
+
+  > (era)
+    (eraId) 4
+    (eraTitle) The Rose and the Link
+    (eraSpan) 56 - 59 A.W.
+    (eraDescription) A wrong canister, a red wheat, and a door beneath a mountain that should have stayed shut.
+    (events)
+      > (event)
+        (year) 56 A.W.
+        (title) The Wrong Shelf
+        (description) On a night shift at the Krones Research Lab, Willare Frindjen feeds the bioreactor from a mislabeled canister—the Crimson Binder. The reactor vents its spores over the slums of Predymesh for six hours before she burns the evidence.
+        (book) Volume IV: The Resistance
+        (bookId) 4
+      > (event)
+        (year) 56 A.W.
+        (title) Patient Zero
+        (description) Nine-year-old Pellera Orlong wakes with a crimson rose-leaf on her brow. The slums name the slow sickness the Touch of Rose. Her father Nex will trade his mason's hammer for a thief's shim to fund a single drop of Alilberry.
+        (book) Volume III: The RedLink Arc
+        (bookId) 3
+      > (event)
+        (year) c. 57 A.W.
+        (title) Two Silences
+        (description) Avalia Krones stands over Patient Zero with Willare at her side. Each woman recognizes her own share of the sin. Neither speaks. The Gilded Sickness remains a mystery—by choice.
+        (book) Volume III: The RedLink Arc
+        (bookId) 3
+      > (event)
+        (year) 57 A.W.
+        (title) RedLink Protocol 0-12
+        (description) In the Transistor Ward beneath St. Jude's, twelve Rose-Marked subjects are infused with Agitated Sansu. A river of liquid ruby tethers them into a single twelve-core engine. Corshield orders the 24-unit expansion immediately.
+        (book) Volume III: The RedLink Arc
+        (bookId) 3
+      > (event)
+        (year) 58 A.W.
+        (title) Bed Fourteen
+        (description) Freya Haelmar, hunting the rot inside her own agency, volunteers into the expanded ward. They give her the Rose by transfusion and plug her into the network. Palwin Condervale begins buying time.
+        (book) Volume VI: The Fifth Death
+        (bookId) 6
+      > (event)
+        (year) 58 A.W.
+        (title) The Winter of Doctor Crale
+        (description) Prolonged exposure to the Echo shatters Doctor Crale across a single winter—twelve hearts beating as one drum, a black sun beneath the mountain. Muatti is promoted to fill the vacancy, and begins to hear the rhythm.
+        (book) Volume VII: The Elegy
+        (bookId) 7
+      > (event)
+        (year) 58 A.W.
+        (title) Class of 58
+        (description) Niva DeRosa graduates third in her class from the Military Academy of Thornus and pins on an intelligence officer's badge. In the crowd, a stooped man with a crown on his hand wipes tears from his eyes.
+        (book) Volume I: The Streets of Thornus
+        (bookId) 1
+      > (event)
+        (year) c. 59 A.W.
+        (title) The Hollow Detective
+        (description) In Predymesh, the detective Corrigan hunts his own double through a hall of mirrors and fires the final shot of the Case of the Mirror Man. The reflection does not break. It escapes.
+        (book) Volume I: The Streets of Thornus
+        (bookId) 1
+      > (event)
+        (year) c. 59 A.W.
+        (title) The Gun That Lowered
+        (description) Hired through three shell companies to kill the Sultan of Butterflies, Lorhud Krauper follows her into the alley behind The Laughing Stock—and takes her hand instead of the contract. The failed bullet becomes Corshield's "clinical" warrant.
+        (book) Volume II: The Cost of Sin
+        (bookId) 2
+      > (event)
+        (year) c. 59 A.W.
+        (title) The Notebook Changes Hands
+        (description) Valeth Vanceshire dines beneath the skulls in the ceiling of the Kosnak Estate and walks out with the truth in his pocket. He does not keep it long: outside the gates, Nex Orlong lifts the navy blue notebook with the silver star.
+        (book) Volume III: The RedLink Arc
+        (bookId) 3
+
+  > (era)
+    (eraId) 5
+    (eraTitle) The Fifth Death
+    (eraSpan) 60 A.W.
+    (eraDescription) Eleven hours, twenty-two stars, one burning asylum. The year the calling stopped.
+    (events)
+      > (event)
+        (year) 60 A.W.
+        (title) A Letter Smelling of Salt
+        (description) A yellowed envelope reaches a fisherman in Oakhaven: "It was cold in the mountains." Code 7-Alpha. Soren Perborn stops fishing. The sender is not who he believes.
+        (book) Volume V: The Black Ragnarok
+        (bookId) 5
+      > (event)
+        (year) 60 A.W.
+        (title) The Massacre of the Grenadiers
+        (description) At the City Market, a "Cytrox" attack kills Mayor Lynnia and thirteen civilians—among them Donlane DeRosa, buying flowers for his sister. Niva DeRosa walks into the smoke and out of her own name.
+        (book) Volume I: The Streets of Thornus
+        (bookId) 1
+      > (event)
+        (year) 60 A.W.
+        (title) The Lighthouse of Ash
+        (description) Soren, the Fox, and Palwin raise a command post in the one corner of Glareach the developers left to the ghosts—and hear the massacre break on the radio. Grenades, Palwin. Whom do you lure with grenades?
+        (book) Volume V: The Black Ragnarok
+        (bookId) 5
+      > (event)
+        (year) 60 A.W.
+        (title) The Cathedral of Red String
+        (description) The trio lifts Major Rolnifeld off the busiest street in Predymesh. The sewer rats set their price in names. Behind a dead neon sign, Fox finds Niva's unfinished war—and a ring engraved N.D.R., Class of 58 A.W.
+        (book) Volume VI: The Fifth Death
+        (bookId) 6
+      > (event)
+        (year) 60 A.W.
+        (title) The Hour That Burned
+        (description) In a condemned Glareach clock tower, Rolnifeld bleeds on the Chronometer and relives the hour he refused to listen. Klaude Barral goes pale at what follows: the mountain is not broadcasting. It is calling.
+        (book) Volume VI: The Fifth Death
+        (bookId) 6
+      > (event)
+        (year) 60 A.W.
+        (title) The Eleventh Hour of Muatti
+        (description) Muatti resolves to unfind the eleven hours. Project Glacier sends quiet professionals. Bleeding out in a locked wing, he pours the truth down into the under-city instead—where the forgotten live, listen, and never forget.
+        (book) Volume VII: The Elegy
+        (bookId) 7
+      > (event)
+        (year) 60 A.W.
+        (title) The Fall of St. Jude's
+        (description) The Sultan screams eleven years of grief through the RedLink. The Viyu pours down the link and closes like a mouth on the caller beneath the mountain. Freya wakes. Fox holds the corridor and counts to five. The asylum burns; the pulse dies.
+        (book) Volume VI: The Fifth Death
+        (bookId) 6
+      > (event)
+        (year) Undated
+        (title) The Dark at the Edge of the Ring
+        (description) In the Gauntlet of Glareach, the prizefighter Pugion wins one last time, tastes blood that is not his own, makes the sign—it's done—and walks slowly out of the light.
+        (book) Volume VII: The Elegy
+        (bookId) 7

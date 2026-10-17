@@ -1,0 +1,32 @@
+id: heavy-power-metal
+rank: 13
+name: HEAVY & POWER METAL
+family: Rock & Metal
+years: 1975 → present
+sub: The twin-guitar, high-vocal tradition that defined metal before it fragmented
+spec: 70,80,86,80,72,74,80,84,86,84,80,80,84,88,86,78,68,58,48,40
+synthType: square
+freqs: 86.41, 267.37, 335.14
+
+what:
+ Judas Priest assembled the template in the mid-1970s — twin lead guitars, a four-octave vocal, leather and studs — and everything from the New Wave of British Heavy Metal onward is a variation on it. Power metal is the continental European descendant: faster, major-key, keyboard-augmented and unashamedly narrative, with Sweden's *Sabaton* turning military history into stadium anthems.
+
+artists:
+ *Judas Priest*, Iron Maiden, Accept, Dio; the power-metal wing of Helloween, Blind Guardian, Rhapsody, Hammerfall and *Sabaton*; and Turkey's *Pentagram* (known abroad as Mezarkabul), who have been the country's flagship metal band since 1987.
+
+trivia:
+ Judas Priest were tried in a Nevada court in 1990 over alleged subliminal messages in a Spandau Ballet cover; the band won, partly by demonstrating that backmasked audio produces intelligible-sounding phrases essentially at random. Sabaton research their lyrics from military history and have been invited to war museums and commemorations — "The Attack of the Dead Men" recounts a 1915 counter-attack by gassed Russian defenders at Osowiec.
+
+sonic:
+ Two guitars playing harmonised leads over a galloping palm-muted rhythm, bass locked to the kick, and a vocal at the top of a tenor or countertenor range. Harmony is diatonic minor with heavy use of the flattened sixth. Power metal adds orchestral keyboards and choir stacks, and pushes tempos to 160–200 BPM with continuous double kick.
+
+gear:
+ Gibson Flying V and Explorer, Fender Stratocasters, and later Jackson and ESP superstrats; Marshall JMP and JCM800 stacks. Power metal adds full orchestral sample libraries and layered choir. Vocals are recorded with minimal processing because the range itself is the effect.
+
+prod:
+ Guitars are double-tracked and hard-panned so the harmony sits in stereo, and the bass is mixed to fill the centre the guitars vacate. Drums are heavily gated with a bright, clicky kick that survives the wall of guitar. Modern power metal is mastered extremely loud and dense — the orchestral layers make dynamic mixing nearly impossible, so producers commit to a flat, maximal wall.
+
+tracks:
+ - The Attack of the Dead Men | Sabaton
+ - Breaking the Law | Judas Priest
+ - Sur | Pentagram

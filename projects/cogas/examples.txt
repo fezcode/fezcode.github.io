@@ -1,0 +1,25 @@
+# What it looks like in practice
+
+## One entry, several platforms
+
+A game you bought on Steam years ago and picked up again in an Epic giveaway is one tile, not two. The detail pane carries both marks, and the launch button asks which platform you meant only when it genuinely matters.
+
+## Themes
+
+Five editorial palettes and seven typefaces, switchable live — the library is a room you spend time in, so it should look like somewhere you chose.
+
+## Credits
+
+Cogas leans on work it did not do:
+
+| Source | For |
+|---|---|
+| [IsThereAnyDeal](https://isthereanydeal.com) | Store search, historical lows, the discount feed |
+| [Steam Web API](https://steamcommunity.com/dev) | Owned libraries and critic scores |
+| [Wikidata](https://www.wikidata.org) | Critic scores Steam does not carry |
+| Microsoft storefront catalog | Telling Store games from Store apps |
+| [RAWG](https://rawg.io) | Optional wider score coverage |
+| [Simple Icons](https://simpleicons.org) | The platform marks (CC0) |
+| [Avalonia UI](https://avaloniaui.net) | The application framework |
+
+The About panel credits them inside the app too, with links.

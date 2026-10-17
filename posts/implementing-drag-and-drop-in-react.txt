@@ -1,0 +1,102 @@
+When building **Tier Forge**, I needed a flexible way to move items between the "pool" and various "tiers". While libraries like `react-beautiful-dnd` or `dnd-kit` are excellent, sometimes you just want full control without the overhead.
+
+Here is how I implemented a robust drag-and-drop system using only the native HTML5 API and React state.
+
+## The State Architecture
+
+The key to a good DnD system is centralized state. In `TierForge`, the state is held in the parent component:
+
+```javascript
+const [tiers, setTiers] = useState(DEFAULT_TIERS); // The board
+const [poolItems, setPoolItems] = useState([]);    // The unranked items
+const [dragData, setDragData] = useState(null);    // What are we dragging?
+```
+
+We track `dragData` to know *what* is moving (`itemId`) and *where* it came from (`sourceId`).
+
+## The Handlers
+
+We need three main handlers: `onDragStart`, `onDragOver`, and `onDrop`.
+
+### 1. Starting the Drag
+
+When a user grabs an item, we store its ID and source container ID. We also set `dataTransfer` for compatibility.
+
+```javascript
+const handleDragStart = (e, itemId, sourceId) => {
+  setDragData({ itemId, sourceId });
+  e.dataTransfer.effectAllowed = 'move';
+  // Fallback for some browsers
+  e.dataTransfer.setData('text/plain', JSON.stringify({ itemId, sourceId }));
+};
+```
+
+### 2. Allowing the Drop
+
+By default, HTML elements don't accept drops. We must prevent the default behavior.
+
+```javascript
+const handleDragOver = (e) => {
+  e.preventDefault();
+  e.dataTransfer.dropEffect = 'move';
+};
+```
+
+### 3. Handling the Drop
+
+This is where the magic happens. When an item is dropped, we:
+1. Identify the **Source** (where it came from) and **Target** (where it landed).
+2. If Source === Target, do nothing (or reorder).
+3. Find the item in the Source array.
+4. Remove it from the Source.
+5. Add it to the Target.
+
+```javascript
+const handleDrop = (e, targetId) => {
+  e.preventDefault();
+  const data = dragData || JSON.parse(e.dataTransfer.getData('text/plain'));
+  if (!data) return;
+
+  const { itemId, sourceId } = data;
+  if (sourceId === targetId) return;
+
+  // ... Logic to find item, remove from source, add to target ...
+  // This involves setTiers() and setPoolItems() updates.
+};
+```
+
+## The Components
+
+### Draggable Item
+The item itself needs the `draggable` attribute and the start handler.
+
+```jsx
+<div
+  draggable
+  onDragStart={(e) => onDragStart(e, item.id, sourceId)}
+  className="cursor-grab active:cursor-grabbing ..."
+>
+  {/* Content */}
+</div>
+```
+
+### Drop Zone
+The container (Tier or Pool) listens for drag-over and drop events.
+
+```jsx
+<div
+  onDragOver={handleDragOver}
+  onDrop={(e) => handleDrop(e, containerId)}
+  className="..."
+>
+  {/* Render Items */}
+</div>
+```
+
+## Why Native API?
+
+1.  **Zero Dependencies:** Keeps the bundle size small.
+2.  **Full Control:** I can define exactly how state updates happen.
+3.  **Performance:** Direct DOM events are highly performant.
+
+This pattern powers the entire Tier Forge experience, allowing smooth transitions of assets between the chaotic pool and the structured tiers.

@@ -1,0 +1,45 @@
+id: handheld
+rank: 02
+name: HANDHELD
+family: Camera
+years: 1960 → present
+sub: The operator's body left in the shot, so the frame breathes and flinches with whoever is holding it
+
+ascii:
+┌────────────────────────────────────────┐
+│   ╱╲    ╱╲  ╱╲      ╱╲   ╱╲            │
+│  ╱  ╲╱╲╱  ╲╱  ╲╱╲╱╲╱  ╲ ╱  ╲╱╲         │
+│  horizon never settles — operator      │
+│  breathing, walking, arriving late     │
+└────────────────────────────────────────┘
+
+what:
+ The camera carried rather than mounted, so every step, breath and correction stays in the image. It arrived with the lightweight 16mm rigs of the late 1950s — Direct Cinema and the French New Wave could suddenly follow a person down a street — and it has meant "unstaged" ever since, whether or not anything about the scene is unstaged. The grammar is inverted: instead of the camera knowing where to look, it appears to find out at the same moment you do, arriving late on the important thing.
+
+artists:
+ Paul Greengrass is the modern extreme, shooting *The Bourne Supremacy* onward as though a documentary crew had been embedded with an assassin. Danny Boyle used consumer digital for *28 Days Later* because the cameras could be everywhere at dawn before London woke. Spielberg put shutter angle and shake in service of newsreel memory on Omaha Beach rather than energy, and Greengrass returned to the restrained version for *Captain Phillips*.
+
+trivia:
+ *28 Days Later* was shot largely on Canon XL-1 MiniDV camcorders — consumer kit, chosen partly because several could run at once and partly because central London could only be closed for minutes at a time. The degraded, smeary image was a consequence rather than the goal, and the aesthetic outlived the practical reason for it.
+
+sonic:
+ Instability reads as truth, which is an entirely learned response — decades of news footage taught audiences that a shaking frame means nobody had time to set up. It also creates deniability in action: a blow that lands off-frame is a blow you did not quite see, so your brain fills it in harder than a clean wide would have. Overused it stops meaning urgency and starts meaning that nobody could afford a dolly.
+
+gear:
+ A shoulder rig and a wide lens, because long glass amplifies every tremor beyond use. Operators work at the edge of their own balance on purpose. The modern compromise is a gimbal with the stabilisation dialled down, or handheld noise added back in post — which gets the movement without the fatigue, and reads slightly false to anyone who knows what to look for, because a gimbal never breathes.
+
+prod:
+ Cheap to shoot, punishing to sit through if uncontrolled. It shifts the burden onto the operator, who is now effectively performing, and onto post, where stabilisation can rescue a take or flatten the whole point of it. Continuity gets brutal: no two takes frame alike, so an editor cannot cut between them as freely as with locked-off coverage.
+
+examples:
+ - The Bourne Ultimatum | Waterloo station
+ - 28 Days Later | the empty London morning
+ - Saving Private Ryan | the landing at Omaha
+ - Captain Phillips | the bridge, once the ladder comes over
+ - Four Lions | the camera as another panicking participant
+ - Civil War | the camera as a press photographer
+ - Cold in July | the frame tightening with the panic
+ - Black Dynamite | handheld quoted as period pastiche
+ - The Bourne Identity | where the style starts
+ - The Bourne Supremacy | the Moscow chase, barely held
+ - Camp X Ray | proximity used as pressure

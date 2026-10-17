@@ -1,0 +1,136 @@
+{
+  "name": "pidi",
+  "windowTitle": "pidi",
+  "tagline": "A PDF reader that opens before you finish letting go.",
+  "subtitle": "Written in C with raylib and PDFium. Outline and thumbnails, full-text search, text selection, markup saved back into the file, AcroForm filling and 300 DPI printing — in one small resizable window.",
+  "accent": "#B8763C",
+  "accent2": "#8E5527",
+  "version": "0.2.2",
+  "platforms": [
+    "Windows"
+  ],
+  "stack": [
+    "C",
+    "raylib",
+    "PDFium"
+  ],
+  "download": "https://github.com/fezcode/pidi/releases",
+  "downloadLabel": "Download installer",
+  "repo": "https://github.com/fezcode/pidi",
+  "summary": [
+    "The two ends of the PDF spectrum are both unpleasant: a 600 MB suite that wants an account, or a browser tab that cannot fill a form or save a highlight. pidi sits in the middle — it renders everything PDFium renders, writes markup and form data back into the file, and starts instantly because there is nothing to start.",
+    "Text, vector and image content all go through PDFium, so any PDF it supports opens crisply, password-protected files included. File open and decoding use the Win32 wide API, so non-ASCII paths work end to end."
+  ],
+  "panelsHeading": "What it does",
+  "panelsWindowTitle": "pidi — panels",
+  "panels": [
+    {
+      "title": "Layouts and zoom",
+      "body": "Continuous scroll, single page or two-up spreads; fit-width, fit-page and actual-size; Ctrl+wheel zoom to the cursor; rotate.",
+      "keys": "ctrl+0"
+    },
+    {
+      "title": "Navigate",
+      "body": "An outline panel, a thumbnails panel, internal and external hyperlinks, click-to-type go-to, and recent files.",
+      "keys": "o"
+    },
+    {
+      "title": "Text",
+      "body": "Drag-select and copy, plus full-text search with all-match highlighting, match count, case and whole-word toggles.",
+      "keys": "ctrl+f"
+    },
+    {
+      "title": "Markup",
+      "body": "Highlight, underline, strikeout, freehand ink and sticky notes — saved back into the PDF, not into a sidecar file."
+    },
+    {
+      "title": "Forms",
+      "body": "Fill AcroForm text fields, toggle checkboxes, radios and buttons, then save the filled form.",
+      "keys": "ctrl+s"
+    },
+    {
+      "title": "Print",
+      "body": "The native Windows print dialog, rendered at up to 300 DPI and fit to page.",
+      "keys": "ctrl+p"
+    }
+  ],
+  "keysHeading": "From the keyboard",
+  "keys": [
+    {
+      "k": "ctrl+o",
+      "a": "Open"
+    },
+    {
+      "k": "ctrl+f",
+      "a": "Find, with next and previous"
+    },
+    {
+      "k": "ctrl+0",
+      "a": "Fit page"
+    },
+    {
+      "k": "ctrl+2",
+      "a": "Fit width"
+    },
+    {
+      "k": "ctrl+c",
+      "a": "Copy the selection"
+    },
+    {
+      "k": "ctrl+s",
+      "a": "Save, markup and form data included"
+    },
+    {
+      "k": "o",
+      "a": "Outline panel"
+    },
+    {
+      "k": "t",
+      "a": "Thumbnails panel"
+    },
+    {
+      "k": "f11",
+      "a": "Fullscreen"
+    }
+  ],
+  "terminalHeading": "Build it yourself",
+  "terminal": {
+    "caption": "MSYS2 / MinGW-w64",
+    "lines": [
+      "pacman -S mingw-w64-x86_64-gcc mingw-w64-x86_64-raylib",
+      ".\\tools\\fetch-pdfium.ps1   # prebuilt PDFium + MinGW import lib",
+      ".\\build.ps1",
+      ".\\bundle.ps1               # -> dist\\win-x64\\",
+      ".\\installer.ps1            # -> Setup.exe via Forge"
+    ]
+  },
+  "colophon": [
+    [
+      "Config",
+      "%APPDATA%\\fezcode\\pidi"
+    ],
+    [
+      "Engine",
+      "PDFium (BSD)"
+    ],
+    [
+      "Window",
+      "borderless, resizable"
+    ],
+    [
+      "Instance",
+      "single, hands files over"
+    ],
+    [
+      "Menus",
+      "Hisashi, via hoswl"
+    ]
+  ],
+  "shots": [
+    {
+      "src": "/images/projects/pidi/banner.png",
+      "caption": "pidi — reading the PIML specification"
+    }
+  ],
+  "shotsHeading": "On screen"
+}

@@ -1,0 +1,18 @@
+LABEL: Features
+SUBTEXT: Functionality
+IMAGE: /images/projects/yap/01.webp
+
+- **Direct Streaming**: Stream audio directly from YouTube URLs.
+- **Playback Queuing**: Queue up multiple songs.
+- **Synced Lyrics**: Display lyrics synced with the music (fetched via LRCLib API).
+- **TUI Interface**: Built with Bubble Tea and Lip Gloss for a modern terminal user interface.
+- **Advanced Controls**:
+    - Pause/Resume (Space)
+    - Volume Adjustment (+/-)
+    - Mute/Unmute (M)
+    - Toggle Synced Lyrics (L)
+    - Toggle Playlist View (V)
+    - Shuffle (R)
+    - Skip Next (N)
+    - Previous Track (P)
+    - Seek (Left/Right Arrow)

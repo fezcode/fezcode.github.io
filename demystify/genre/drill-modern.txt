@@ -1,0 +1,36 @@
+id: drill-modern
+rank: 25
+name: DRILL & GRIME
+family: Hip Hop
+years: 2011 → present
+sub: Chicago's bleakest export, rebuilt in London and sent back to New York
+spec: 98,94,76,50,42,46,54,60,66,64,60,62,70,76,74,64,54,46,38,32
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ Drill began in Chicago around 2011 — Chief Keef, Young Chop — as a slower, colder cousin of trap. UK producers picked it up, slowed it further and replaced the 808 pattern with a sliding, detuned bass; Brooklyn then imported the UK version wholesale, which is why New York drill is built on beats made in London. Grime is the older, faster London relative running at 140 BPM.
+
+artists:
+ Chief Keef and Young Chop in Chicago; Headie One, Central Cee and producers 808Melo and AXL in London; *Pop Smoke*, *Fivio Foreign* and Sheff G in Brooklyn; *Dizzee Rascal* as grime's foundational figure, and *Lil Uzi Vert* at the pop-facing edge.
+
+trivia:
+ Pop Smoke's breakthrough came from beats by *808Melo*, a producer in east London whom he had never met — the two worked entirely over the internet, and the transatlantic loop that created New York drill happened before either had left their own city. Dizzee Rascal was 18 when *Boy in da Corner* won the Mercury Prize in 2003; he made most of it on a school computer in a music technology class.
+
+sonic:
+ Tempos around 138–145 BPM felt at half time, sliding 808 bass that changes pitch mid-note, and sparse, dark minor melodies — often a single bell, plucked string or choir sample. Hi-hats are rolled and ratcheted. Vocals are dry, low and conversational, with almost no autotune in the UK strain and a great deal of it in the melodic American one.
+
+gear:
+ FL Studio, sliding 808 samples pitched with portamento, and stock or cheap sample-pack melodic sources. The sound is deliberately cheap to produce — the entire style is built for a bedroom setup, and its dominance is partly a function of that accessibility.
+
+prod:
+ The 808 is the arrangement: because it carries both bass and drum, producers distort it heavily so its harmonics survive on phone speakers with no low-end reproduction. Mixes leave large empty spaces in the midrange. Releases are video-first and the mastering targets streaming loudness rather than any physical format.
+
+tracks:
+ - Wetty | Fivio Foreign
+ - Just Wanna Rock | Lil Uzi Vert
+ - Ghost | Dizzee Rascal | none
+ - Big Drip | Fivio Foreign
+ - Christopher Walking | Pop Smoke
+ - Die in the End | YNG Martyr
+ - Flexin' | Pop Smoke

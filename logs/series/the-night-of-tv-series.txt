@@ -1,0 +1,28 @@
+# The Night Of (Miniseries)
+
+- **Category:** Series
+- **Creator:** Richard Price, Steven Zaillian
+- **Date:** 2026-09-15
+- **Rating:** 5/5
+- **Platform:** HBO Max
+- **Link:** [IMDb](https://www.imdb.com/title/tt2401256/)
+
+## About
+
+**The Night Of (2016)** is HBO's eight-part miniseries from Richard Price and Steven Zaillian, adapted from the BBC's *Criminal Justice*. Nasir "Naz" Khan (Riz Ahmed), a Pakistani-American college student from Queens, borrows his father's cab, ends up at a stranger's apartment, and wakes to find her stabbed to death. John Turturro's eczema-ridden lawyer John Stone takes the case nobody else wants.
+
+## What Gets Overlooked
+
+Naz is guilty from the moment Detective Box decides he is. The show dramatises what Findley and Scott call tunnel vision: once the police fix on a suspect, confirmation bias turns every ambiguous fact into proof and every alternative lead into noise. The stepfather, the hearse driver, the financial adviser each get one glance and are filed away. Nobody lies. The system stops looking. Meanwhile the state's indifference does its own work on Naz: months on Rikers strip the boy away and build a prisoner in his place, so by the verdict the question of innocence barely matters.
+
+## Further Reading
+
+- Findley & Scott, [The Multiple Dimensions of Tunnel Vision in Criminal Cases](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=911240), *Wisconsin Law Review* (2006). The foundational paper on how cognitive bias and institutional pressure narrow an investigation.
+- Elaad, [Tunnel Vision and Confirmation Bias Among Police Investigators and Laypeople](https://journals.sagepub.com/doi/10.1177/21582440221095022), *SAGE Open* (2022). Experimental evidence that investigators are no more immune than the rest of us.
+- Kassin et al., [Police-Induced Confessions: Risk Factors and Recommendations](https://link.springer.com/article/10.1007/s10979-009-9188-6), *Law and Human Behavior* (2010). Why the Box interrogation scenes are so quietly frightening.
+- Haney, [The Psychological Impact of Incarceration](https://aspe.hhs.gov/reports/psychological-impact-incarceration-implications-post-prison-adjustment) (2001). The clinical account of what Rikers does to Naz: institutionalisation, hypervigilance, the loss of self.
+- Vera Institute, [The Harmful and Lasting Effects of Pretrial Detention](https://vera-institute.files.svdcdn.com/production/downloads/publications/Justice-Denied-Evidence-Brief.pdf) (2019). How detention itself pushes innocent people toward guilty pleas.
+- [The Night Of](https://jaapl.org/content/45/1/126), *Journal of the American Academy of Psychiatry and the Law* (2017). A forensic psychiatry review of the series itself.
+- Darley & Latané, [Bystander Intervention in Emergencies: Diffusion of Responsibility](https://www.researchgate.net/publication/17539629_Bystander_intervention_in_emergencies_diffusion_of_responsibility) (1968). Everyone in the chain assumes someone else checked.
+
+**5/5.** The best thing HBO made that year.

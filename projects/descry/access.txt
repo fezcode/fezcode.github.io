@@ -1,0 +1,29 @@
+LABEL: Access
+SUBTEXT: Get It
+
+Descry ships as a Windows installer built with Forge, alongside a macOS package.
+
+[Download the latest release](https://github.com/fezcode/Descry/releases) · [Read the source](https://github.com/fezcode/Descry)
+
+## Build it yourself
+
+```powershell
+.\build.ps1              # CMake + Ninja -> build\descry.exe
+.\build_installer.ps1    # -> dist\Descry-Setup-<version>.exe
+```
+
+```sh
+./build.sh               # Linux / macOS
+./package_macos.sh       # -> Descry.app
+```
+
+## Keyboard
+
+| Keys | Action |
+| --- | --- |
+| `Ctrl+P` / `Ctrl+Shift+P` | Quick switcher / command palette |
+| `Ctrl+\` | Split live preview |
+| `Ctrl+Shift+M` | Graph view |
+| `Ctrl+Shift+G` | Tag panel |
+| `Ctrl+[` / `Ctrl+]` | Navigate back / forward |
+| `Alt+Z` | Toggle soft word wrap |

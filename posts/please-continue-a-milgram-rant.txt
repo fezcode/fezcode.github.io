@@ -1,0 +1,91 @@
+> **⚠️ Warning: You Are About to Think You Would Have Walked Out**
+>
+> Everyone who reads about this experiment believes they would have been one of the fourteen. Statistically, you were one of the twenty-six. Sit with that.
+
+# Please Continue: A Short Rant About the Milgram Experiments
+
+**New Haven, summer of 1961.**
+
+You answered an ad in the paper. Four dollars and fifty cents for an hour of your time, paid the moment you walk in. It's a memory study, they say. A man in a grey lab coat introduces you to another volunteer, a pleasant guy in his fifties with a heart condition. You draw lots. You are the *teacher*. He is the *learner*.
+
+He gets strapped into a chair in the next room. You get a machine with thirty switches, from 15 volts to 450, labelled all the way up: **Slight Shock**, **Strong Shock**, **Danger: Severe Shock**, and then, gloriously, **XXX**.
+
+Every wrong answer, you press the next switch. That's it. That's the job.
+
+At 75 volts he grunts. At 150 he says his heart is bothering him and he wants out. At 300 he screams and refuses to answer. After 330 there is nothing. No answer counts as a wrong answer. Press the next switch.
+
+---
+
+## 1. The Part Everyone Gets Wrong
+
+The shocks were fake. The learner was an actor. The real subject was **you**, and the real question was: *how far will a normal person go when a stranger in a lab coat tells them to keep going?*
+
+Before running it, Stanley Milgram asked psychiatrists, students and ordinary adults to predict the results. The psychiatrists figured roughly **one in a thousand** would go all the way to 450 volts. That's the sadist rate. The lunatic rate.
+
+The actual number in the baseline was **26 out of 40**. Sixty-five percent.
+
+And here's the bit that makes me want to throw the book across the room: **nobody stopped before 150 volts.** Not one. Every single person worked through ten switches and heard the man say his heart was bothering him before anyone so much as looked at the door.
+
+---
+
+## 2. The Weapon Was Four Sentences
+
+I need you to understand what the "authority" actually did, because your brain is already rewriting it into something scarier than it was.
+
+Nobody was threatened. Nobody's money was on the line; they'd been paid at the door and told it was theirs to keep. The man in the coat wasn't a general or a professor. He was a high-school biology teacher in a costume, reading from a card.
+
+When you hesitated, he said: *"Please continue."*
+
+If you hesitated again: *"The experiment requires that you continue."*
+
+Then: *"It is absolutely essential that you continue."*
+
+And finally: *"You have no other choice, you must go on."*
+
+That's the whole arsenal. If you refused after the fourth one, the experiment ended and you were free. Four polite sentences, delivered flatly, and two thirds of people walked a stranger up to a switch marked XXX.
+
+So no, this is not a story about Nazis, or Germans, or "that generation", or *those* people. Milgram got the same 65% from women, and a still-ugly 47.5% from a run-down office in Bridgeport with no Yale logo anywhere. It's a story about the room.
+
+---
+
+## 3. Sit Down
+
+Enough reading. Take the chair. Make a prediction first, then see how many clicks it takes you to say no when the only thing pushing back is a sentence.
+
+<probability-experiment experiment="milgram-obedience" guess="10"></probability-experiment>
+
+Refusing costs you five clicks here. It cost the real subjects sweating, trembling, nervous laughter, and in three cases full-blown seizures. They were not enjoying it. They did it anyway.
+
+---
+
+## 4. What Actually Moved the Number
+
+This is the part the pop-psych summaries skip, and it's the only part that's useful.
+
+Milgram ran the thing more than twenty times, changing one variable each run. Put the learner in the same room: obedience drops to 40%. Make the teacher physically press the learner's hand onto the plate: 30%. Have the experimenter phone in his orders from another room: around 20%, and people started *lying to him*, quietly pressing the lowest switch while reporting the right one. Let two fellow teachers refuse first: **10%**. Let the subject merely read the word pairs while someone else pressed the switch: **92.5%**.
+
+Same people. Same machine. Same prods. The only thing that changed was the geometry of the room: how close the victim was, how close the authority was, and whether anyone else had already said no.
+
+**Character didn't move the number. Distance did. Peers did.**
+
+---
+
+## 5. The Fair Caveats
+
+Because a rant without caveats is just yelling:
+
+- Milgram's ethics were terrible by any modern standard, and the debriefing was often sloppy. Nobody should run this again as designed.
+- Gina Perry went through the Yale archives and found the experimenter frequently went off-script and pushed harder than the four prods. Some subjects also suspected the shocks were fake, though the sweating and the seizures suggest plenty didn't.
+- A 2009 replication by Jerry Burger, capped at 150 volts for ethical reasons, found around **70%** were still willing to continue past the point where the learner demanded out. So it's not a 1961 artefact either.
+
+---
+
+## Conclusion
+
+Every time this study comes up, the reaction is the same: *"Well, I would have stopped."* And that reaction is precisely the problem, because it locates the danger inside other people's character instead of inside the room you're standing in right now.
+
+You are not going to be tested with a shock generator. You're going to be tested with a deploy nobody wants to sign off on, a hiring decision that's already been made, a number that everyone in the meeting knows is wrong. And the prod won't be *"you have no other choice."* It'll be *"let's just move on."*
+
+Be the fellow teacher who refuses first. It cuts the number by six times.
+
+> **Lesson:** Obedience is a property of the room, not the person. Change the room.

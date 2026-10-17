@@ -1,0 +1,36 @@
+id: memphis-crunk
+rank: 26
+name: MEMPHIS RAP & CRUNK
+family: Hip Hop
+years: 1991 → present
+sub: Tape-hiss horror, triplet chants and the low end that eventually swallowed pop music
+spec: 96,92,76,52,44,48,56,64,70,68,64,66,72,78,76,66,56,46,38,32
+synthType: square
+freqs: 55, 68.94, 86.41
+
+what:
+ Memphis built its own scene in the early 1990s on cassette releases sold hand to hand — DJ Spanish Fly, Tommy Wright III, Three 6 Mafia — with a sound defined by cheap equipment, horror-film samples and chanted hooks. Crunk is the louder Atlanta descendant. The Memphis template was largely ignored outside the South for twenty years and then became, via trap and phonk, the rhythmic basis of global pop.
+
+artists:
+ *Three 6 Mafia* (DJ Paul and Juicy J), Project Pat, *Gangsta Pat*, Tommy Wright III, 8Ball & MJG; Bone Thugs-n-Harmony and *Bizzy Bone* in the adjacent Cleveland fast-rap tradition; Young Dolph and the modern Memphis wave.
+
+trivia:
+ Three 6 Mafia won the *Academy Award for Best Original Song* in 2006 for "It's Hard Out Here for a Pimp" — beating Dolly Parton — and performed it at the ceremony, which remains the single strangest juxtaposition in the genre's history. Their early cassettes, recorded on four-track with pitched-down vocals and horror samples, are now the direct stylistic source of phonk, a genre made mostly by teenagers who were not born when they came out.
+
+sonic:
+ Slow tempos felt at half time, distorted 808 kicks, and hi-hats in triplets long before trap formalised them. Vocals are chanted in unison rather than rapped over each other, frequently pitched down. The recordings are saturated to the point of clipping, and that distortion is inseparable from the style — cleaned up, these tracks lose their menace entirely.
+
+gear:
+ Ensoniq ASR-10, Roland TR-808 samples, four-track cassette decks, and whatever horror soundtrack was to hand — Halloween and Phantasm both turn up repeatedly. Modern crunk and phonk producers deliberately reintroduce cassette saturation and pitch drift in software to recover the artefacts.
+
+prod:
+ Mixed hot into the red on purpose. The kick and vocal share the same frequency space and are simply allowed to fight, which produces the characteristic pumping. Because the originals were duplicated on cassette, generational loss became part of the expected sound — several canonical Memphis tracks exist only as transfers of transfers, and reissues that clean them up are widely considered wrong.
+
+tracks:
+ - Mo Murder | Gangsta Pat
+ - Stay Fly | Three 6 Mafia
+ - Some Bodies Gonna Get It (Mark Henry) | WWE, Three 6 Mafia
+ - Uptown Downtown | Bizzy Bone
+ - Deadly Verses | Gangsta Pat, The Villian
+ - That's Right (feat. Akon) - Explicit Album Version | Three 6 Mafia, Akon
+ - By Mistake (Remix) (feat. Juicy J & Project Pat) | Young Dolph, Juicy J, Project Pat

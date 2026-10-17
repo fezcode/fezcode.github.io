@@ -1,0 +1,15 @@
+LABEL: Features
+SUBTEXT: The Feel
+IMAGE: /images/projects/typewriter/example.png
+
+- **Real typewriter sounds** — recorded mechanical key strikes, embedded directly in the binary, with concurrent overlapping playback so fast typing sounds like fast typing.
+- **Paper aesthetic** — Classic Cream, Dark Mode and Terminal Green.
+- **Paper effects** — optional coffee rings, ink spills and creases, drawn procedurally and coloured to suit the theme. Off by default; switch them on in the Options menu.
+- **Lightweight** — a single C file, near-zero CPU at idle.
+- **Self-contained** — one executable, nothing to install: sounds, icon and the typewriter font are embedded, and SDL2 links in statically.
+- **Find & Replace** — a custom dialog on `Ctrl+F`, in keeping with the rest of the machine.
+- **Settings persistence** — sounds, line numbers and theme are saved to `typewriter.ini`.
+- **File support** — open and save `.txt`, `.md` and `.ini` through native system dialogs, or drop a file onto the window.
+- **Undo** — `Ctrl+Z`, with a 512-entry history.
+- **Options menu** — `Ctrl+K` toggles sounds, line numbers and notebook lines, and cycles themes.
+- **Hisashi menubar** — with [Hisashi](/projects/hisashi) running, File / Edit / View / Help appear in its macOS-style bar with every option and shortcut. Off by default.

@@ -1,0 +1,82 @@
+# Mastering Git Worktrees: Parallel Development with AI Agents
+
+## The Context Switching Nightmare
+
+We've all been there. You're deep in the zone, refactoring a complex component on `feature-branch-A`. Suddenly, a critical bug report comes in.
+
+**The Old Way:**
+1.  `git stash` (Hope you remember what was in there).
+2.  `git checkout main`.
+3.  `git pull`.
+4.  `git checkout -b hotfix-critical-bug`.
+5.  `npm install` (Wait 2 minutes because `package-lock.json` changed).
+6.  Fix the bug.
+7.  Switch back, `npm install` *again*, `git stash pop`.
+8.  Where was I?
+
+**The Worktree Way:**
+1.  Go to a new folder.
+2.  Fix the bug.
+3.  Close the folder.
+
+## What are Git Worktrees?
+
+Git Worktrees allow you to have **multiple branches of the same repository checked out at the same time** in different directories.
+
+Instead of swapping the files in your current directory (which `git checkout` does), a worktree creates a *new* directory linked to the same `.git` history but with a different branch checked out.
+
+### Basic Commands
+
+```bash
+# Add a new worktree for a feature branch
+git worktree add ../my-app-feature feature-branch
+
+# List active worktrees
+git worktree list
+
+# Remove a worktree when done
+git worktree remove ../my-app-feature
+```
+
+## The Power of Parallelism
+
+With worktrees, you can:
+1.  **Run different versions of your app simultaneously.** Have `localhost:3000` running `main` (for reference) and `localhost:3001` running your `feature` (for dev).
+2.  **Zero `npm install` fatigue.** Each worktree has its own `node_modules`. Switching context is instant because you aren't actually switching *files*, just windows.
+
+## Worktrees + AI Agents: The Multi-Agent Workflow
+
+This is where it gets sci-fi.
+
+If you are using LLM agents like Gemini CLI, Devin (does anyone remember Devin???), or GitHub Copilot Workspace, they usually lock your terminal or editor while working.
+
+**With Worktrees, you can act as a Manager for multiple AI Agents working in parallel.**
+
+### The Setup
+
+Imagine a project structure like this:
+```text
+/workhammer
+  /main (Your "stable" repo)
+  /feat-ui (Worktree: Agent 1 refactoring CSS)
+  /feat-backend (Worktree: Agent 2 migrating database)
+  /fix-auth (Worktree: Agent 3 fixing login bug)
+```
+
+### The Workflow
+
+1.  **Delegate Task A:** Open a terminal in `/feat-ui`. Tell the AI: *"Refactor the sidebar to use Tailwind Grid."* Let it run.
+2.  **Delegate Task B:** Open a terminal in `/feat-backend`. Tell the AI: *"Update the Prisma schema for the new User model."* Let it run.
+3.  **Review:** While they work, you sit in `/main` and review Pull Requests or plan the next sprint.
+
+Because worktrees are isolated directories, the Agents don't step on each other's toes. They don't fight over `git.lock` files or overwrite each other's uncommitted changes.
+
+## Best Practices
+
+*   **Gitignore:** Make sure your `.gitignore` is solid. You don't want build artifacts from one tree leaking (though usually, they are separated by folders anyway).
+*   **Disk Space:** Remember, `node_modules` is heavy. 5 worktrees = 5x the `node_modules` size. Prune your worktrees (`git worktree prune`) often.
+*   **VS Code Profiles:** Use VS Code Workspaces to manage these multi-root setups easily.
+
+## Conclusion
+
+Git Worktrees are a developer superpower. Combined with AI agents, they transform you from a single-threaded coder into a parallel-processing technical lead. Stop context switching; start forking your environment.

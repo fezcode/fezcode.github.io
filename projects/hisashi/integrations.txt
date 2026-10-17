@@ -1,0 +1,45 @@
+# Apps that speak hoswl
+
+The OS Window Layer is a named pipe and a handful of JSON messages. Any app can publish its menus into Hisashi's macOS-style bar — these already do.
+
+:::integration
+title: Timp
+description: File / Playback / Audio / View / Help, with live checkmarks for shuffle, repeat and always-on-top.
+image: /images/projects/timp/main.png
+link: /projects/timp
+:::
+
+:::integration
+title: tivi
+description: Playback, audio and subtitle menus — including the file's own audio and subtitle tracks as submenus.
+image: /images/projects/tivi/hero.png
+link: /projects/tivi
+:::
+
+:::integration
+title: Descry
+description: File / Edit / View / Help move into the bar and the editor's in-app strip hides itself while connected.
+image: /images/projects/descry/preview.png
+link: /projects/descry
+:::
+
+:::integration
+title: pidi
+description: File / Edit / View / Go / Tools / Window, with live checkmarks and greyed-out rows.
+image: /images/defaults/piml-red.png
+link: /projects/pidi
+:::
+
+:::integration
+title: Atelier
+description: Opt in under View to Hisashi and the viewer's menus move up to the bar.
+image: /images/projects/atelier/banner.png
+link: /projects/atelier
+:::
+
+:::integration
+title: Typewriter
+description: A C app with the single-header client — a dozen lines to publish File / Edit / View / Help.
+image: /images/projects/typewriter/example.png
+link: /projects/typewriter
+:::
