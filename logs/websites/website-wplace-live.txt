@@ -1,0 +1,7 @@
+### wplace Live
+
+A new collaborative drawing website appeared, built from scratch using OpenFreeMap.
+
+[wplace.live](https://wplace.live/)
+
+There is a website for scripting. [life not live](https://wplace.life/)

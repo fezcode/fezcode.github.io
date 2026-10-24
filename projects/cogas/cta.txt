@@ -1,0 +1,5 @@
+# Put every store on one shelf
+
+```powershell
+git clone https://github.com/fezcode/Cogas.git; cd Cogas; dotnet run
+```

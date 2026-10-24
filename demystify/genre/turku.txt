@@ -1,0 +1,34 @@
+id: turku
+rank: 39
+name: TÜRKÜ — TURKISH FOLK
+family: Turkish
+years: centuries → present
+sub: Regional folk song: bağlama, kemençe and a repertoire transmitted by anonymous authorship
+spec: 38,46,58,66,72,76,78,74,70,72,76,80,78,72,66,58,50,44,38,32
+synthType: triangle
+freqs: 170.18, 213.31, 660
+
+what:
+ *Türkü* covers the anonymous regional song repertoire of Anatolia — most pieces have no known author and exist in multiple regional variants. The state radio TRT began systematically collecting and notating them from the 1920s onward, which fixed "official" versions of songs that had previously been fluid. Each region has its own instrumentation and rhythmic identity: Karadeniz (Black Sea) is fast, 7/8, kemençe-led; Central Anatolian is bağlama-led and slower.
+
+artists:
+ Neşet Ertaş and Âşık Veysel are the canonical figures. *Selçuk Balcı* is a leading modern Karadeniz musician and kemençe player from the Trabzon tradition; *Hüseyin Turan* and *Orhan Hakalmaz* both work the bağlama-centred repertoire, Hakalmaz especially known for straight, unornamented readings of standards like "İki Keklik."
+
+trivia:
+ The *âşık* tradition — travelling bard-poets who improvise sung verse while accompanying themselves on bağlama — is a live oral form still practised, and it functions as the origin story for almost every genre in this Turkish section, including protest song and rap. Âşık Veysel, blind from childhood, is on Turkish currency and school curricula.
+
+sonic:
+ Modal rather than harmonic — the melody carries everything and chords, when present, are a modern addition. Vocals use heavy ornamentation and a nasal, forward placement. Karadeniz material runs in fast asymmetric metres (7/8, 5/8) with the kemençe playing double-stops; Central Anatolian türkü sits in long-form free-metre *uzun hava* openings before settling into rhythm.
+
+gear:
+ *Bağlama/saz* in its family of sizes (cura, bağlama, divan sazı), played with a plectrum or the _şelpe_ fingerstyle technique; *kemençe*, the three-string Black Sea fiddle held upright; tulum (bagpipe), zurna, kaval, davul and darbuka. Frets are movable and set to microtonal positions no Western instrument reproduces.
+
+prod:
+ The production ethic is transparency: capture the instrument and the voice, add nothing that obscures the ornament. Modern recordings are close-mic'd with condensers, minimal compression, and a short natural reverb — because heavy processing smears the microtonal detail that identifies the region. Where a rhythm section is added, it stays low in the mix and never doubles the melody.
+
+tracks:
+ - Ha Bu Ander Sevdaluk | Aytekin Ataş
+ - Zahid Bizi Ta'n Eyleme (Zahid Don't Decry Us) | Aytekin Ataş
+ - İki Keklik | Orhan Hakalmaz
+ - Deniz Üstünde Fener | Selçuk Balcı
+ - Sendeki Kaşlar | Hüseyin Turan

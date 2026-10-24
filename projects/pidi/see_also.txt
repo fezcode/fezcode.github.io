@@ -1,0 +1,7 @@
+LABEL: Related Artifacts
+SUBTEXT: SEE ALSO
+
+- [tivi](/projects/tivi) - The video player in the same shell.
+- [Timp](/projects/timp) - The music player the shell started with.
+- [Hisashi](/projects/hisashi) - The menu bar pidi publishes into.
+- [Descry](/projects/descry) - Markdown, for when the document is yours.

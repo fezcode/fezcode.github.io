@@ -1,0 +1,34 @@
+id: post-britpop
+rank: 12
+name: POST-BRITPOP
+family: Rock & Metal
+years: 1997 → 2008
+sub: Melancholy, melodic, stadium-scaled British guitar rock after Britpop's swagger collapsed
+spec: 62,70,74,70,64,66,72,76,80,78,74,74,78,80,76,68,60,52,44,38
+synthType: square
+freqs: 267.37, 335.14, 420.08
+
+what:
+ When Britpop burnt out around 1997, the bands that followed kept the melodic craft and dropped the laddishness: introspective lyrics, acoustic-led arrangements, and choruses built for a field full of people. *Travis'* _The Man Who_ (1999) is the template record, and Coldplay, Keane and Snow Patrol all built directly on it.
+
+artists:
+ Travis (Fran Healy writing), Coldplay, Doves, Elbow, Starsailor, Keane, Snow Patrol; producer *Nigel Godrich*, whose work on The Man Who set the sonic template for the entire wave.
+
+trivia:
+ Chris Martin has said outright that Coldplay exist because of Travis — a rare case of a genre's biggest band publicly crediting the smaller one. The video for *"Closer"* (2007) stars *Ben Stiller* as a supermarket manager, filmed while he was in London; Travis have a long habit of casting comedians in their videos.
+
+sonic:
+ Acoustic guitar as the rhythmic bed with electric added for lift, a Rhodes or upright piano in the mids, and a vocal in a high, plaintive register with light double-tracking. Drums are recorded roomy and played simply. The arrangement withholds — the full band typically doesn't arrive until the second chorus.
+
+gear:
+ Gibson J-45 and Martin acoustics, Telecasters through Vox AC30s, Wurlitzer and Hammond, and a lot of tape-delay and plate reverb. Godrich's approach — analogue front end into Pro Tools, minimal compression on the way in, heavy character processing on the way out — became the house sound of British studios for a decade.
+
+prod:
+ The defining choice is restraint: these records are mixed with far more space than their contemporaries, and the emotional lift comes from adding an instrument rather than raising a fader. Vocals are recorded close with the compressor doing very little, so breath and cracks survive. Masters from this scene are noticeably quieter than the American radio rock of the same years.
+
+tracks:
+ - Paradise | Coldplay
+ - Yellow | Coldplay
+ - Somewhere Only We Know | Keane
+ - Closer | Travis
+ - Clocks | Coldplay

@@ -1,0 +1,1507 @@
+===
+id: indie-alt-rock
+rank: 01
+name: INDIE & ALTERNATIVE ROCK
+family: Rock & Metal
+years: 1994 → present
+sub: Guitar bands after the majors stopped caring — smaller rooms, sharper hooks, no anthem obligation
+spec: 62,72,80,76,70,72,78,82,84,80,76,76,80,82,78,70,62,54,46,38
+synthType: square
+freqs: 86.41, 267.37, 335.14
+tracks:
+ - Get Away With It | Animal Kingdom
+ - Roscoe | Midlake
+ - It's Alright | The Mystery Lights
+ - Ramparts | John Frusciante
+ - Layers | The Away Days
+ - January | Telenova
+ - Oddloop | frederic
+ - Goodbye Song | STRANGE POP
+ - Ali in the Jungle - Orchestra Mix | The Hours
+ - Push Off | The Palms
+ - Let's Go | Stuck in the Sound
+ - Black Betty - Single Edit | Spiderbait
+ - French Disko | Stereolab
+ - Come And Play In The Milky Night (Demo) | Stereolab
+ - When I'm Small | Phantogram
+ - Skeleton | Bloc Party
+ - Taro | alt-J
+ - Never Going Back | Caveman
+ - Fall Into Place | Apartment
+ - End of Beginning | Djo
+ - Who Would You Be For Me | Metric
+ - Risk | Metric
+ - The Adults Are Talking | The Strokes
+ - Float On | Modest Mouse
+ - All That We've Become | Society
+ - Superstition Future | TOPS
+ - PEOPLE | Whitey
+ - World Horizon | The Away Days
+ - The Invisible Man | Built to Fade
+ - Sweater Weather | The Neighbourhood
+ - Duvet | bôa
+ - Way to be Loved | TOPS
+ - Little One | Highly Suspect
+ - Zero | Electric Guest
+ - Come with Me Now | KONGOS
+ - Monster | The Automatic
+
+===
+id: numetal-postgrunge
+rank: 02
+name: NU METAL, POST-GRUNGE & INDUSTRIAL ROCK
+family: Rock & Metal
+years: 1994 → 2008 (revived 2019 →)
+sub: Down-tuned riffs, sampled/programmed layers, and lyrics about interior damage
+spec: 88,92,86,72,62,66,72,78,82,78,72,70,74,78,74,66,58,50,42,36
+synthType: square
+freqs: 55, 68.94, 86.41
+audio: /demystify/genre/numetal.mp3
+tracks:
+ - You're Too Young | Vast
+ - Breaking the Habit | Linkin Park
+ - Yalan | maNga
+ - Not Strong Enough | Apocalyptica, Brent Smith
+ - Numb | Linkin Park
+ - One Last Breath | Creed
+ - Hemorrhage (In My Hands) | Fuel
+ - Fırtınam | Hayko Cepkin
+ - War | Poets of the Fall
+ - I Don't Care | Apocalyptica
+ - Yad Eller | maNga
+ - Castle of Glass | Linkin Park
+
+===
+id: shoegaze
+rank: 03
+name: SHOEGAZE & DREAM POP
+family: Rock & Metal
+years: 1988 → present
+sub: Melody buried under a wall of layered guitar noise and reverb, entirely on purpose
+spec: 70,78,84,82,78,80,84,86,88,86,84,82,84,86,84,78,70,62,54,46
+synthType: square
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - Misery Is a Butterfly | Blonde Redhead
+ - Dsco | Sweet Trip
+ - shanty | Slowdive
+ - Pro: Lov: Ad | Sweet Trip
+ - Cluster | Porcelain Raft
+ - Drunk in L.A. | Beach House
+ - Black Lagoon | Still Corners
+ - You Appearing | M83
+ - F Song | Strawberry Guy
+ - Midnight City | M83
+ - Show Me How | Men I Trust
+ - Leaving Me | Lucy Daydream
+
+===
+id: new-wave-80s
+rank: 04
+name: NEW WAVE & COLLEGE ROCK
+family: Rock & Metal
+years: 1978 → 1992
+sub: Punk's melodic aftermath — synthesizers, jangle guitars and songwriting aimed at radio
+spec: 58,70,78,74,68,70,76,82,86,84,80,80,84,86,82,74,64,54,46,38
+synthType: square
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - Everybody Wants To Rule The World | Tears For Fears
+ - I Know It's Over - 2011 Remaster | The Smiths
+ - Please, Please, Please, Let Me Get What I Want - 2011 Remaster | The Smiths
+ - Gold - 2003 Remaster | Spandau Ballet
+ - Losing My Religion | R.E.M.
+ - Where Is My Mind? - 2007 Remaster | Pixies
+ - Everything's Coming Up Roses | Black
+ - In The Heat Of The Night | Sandra
+ - Time After Time | Cyndi Lauper
+ - Fever Fever | Melody Club
+ - Spent the Day in Bed | Morrissey
+
+===
+id: classic-rock-aor
+rank: 05
+name: CLASSIC ROCK & AOR
+family: Rock & Metal
+years: 1965 → 1989
+sub: Album-oriented radio rock — big choruses, session-grade musicianship, arena-scale mixes
+spec: 55,66,74,72,66,68,72,76,78,74,70,72,76,78,72,64,56,48,40,34
+synthType: square
+freqs: 86.41, 267.37, 335.14
+tracks:
+ - Eminence Front | The Who
+ - Sultans Of Swing | Dire Straits
+ - Ain't Talkin' 'Bout Love - 2015 Remaster | Van Halen
+ - Separate Ways (Worlds Apart) [2023 Remaster] | Journey
+ - No Fortune | America
+ - The Joker | Steve Miller Band
+ - Let 'Em In - 2014 Remaster | Wings
+ - While My Guitar Gently Weeps - Remastered 2009 | The Beatles
+ - Paint It Black | The Rolling Stones
+ - Africa | Toto
+
+===
+id: extreme-metal
+rank: 06
+name: MELODIC DEATH, BLACK & DOOM METAL
+family: Rock & Metal
+years: 1990 → present
+sub: Metal's northern European wing — harmonised minor riffs, harsh vocals, and a taste for the elegiac
+spec: 80,88,90,80,70,72,78,82,80,76,74,78,82,86,82,74,64,54,46,38
+synthType: square
+freqs: 68.94, 86.41, 267.37
+tracks:
+ - Deep - Remastered | Anathema
+ - One Last Goodbye - Remastered | Anathema
+ - Angelica | Anathema
+ - House of Sleep | Amorphis
+ - By Moon and Star | Be'lakor
+ - Part 1 | Lustre
+ - What Else Is There - Bonus Version | Enslaved
+ - Frost | Enslaved
+ - Pale Tortured Blue | Draconian
+
+===
+id: britpop
+rank: 07
+name: BRITPOP & 90S UK GUITAR POP
+family: Rock & Metal
+years: 1993 → 2004
+sub: British bands writing about Britain, loudly, in the last decade before the internet fragmented the charts
+spec: 60,72,80,78,72,74,80,84,86,82,78,78,82,84,78,70,60,52,44,36
+synthType: square
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - My Favourite Game | The Cardigans
+ - Club Foot | Kasabian
+ - Creep | Radiohead
+ - Animal Instinct | The Cranberries
+ - A Song For The Lovers | Richard Ashcroft
+ - Wake Me When It's Over - Edit | The Cranberries
+ - All Over Now - Edit | The Cranberries
+
+===
+id: goth-darkwave
+rank: 08
+name: GOTH, DARKWAVE & COLDWAVE
+family: Rock & Metal
+years: 1979 → present
+sub: Post-punk turned inward — chorused bass, cavernous reverb, and melody used as mourning
+spec: 76,82,78,66,60,64,70,76,80,80,78,76,80,84,82,76,68,58,48,40
+synthType: square
+freqs: 68.94, 335.14, 420.08
+tracks:
+ - To Die Among Strangers | ROME
+ - Suffocation | Crystal Castles
+ - Cherry | Chromatics
+ - Gone With The Sin | HIM
+ - Lullaby - Remastered | The Cure
+ - Heir | Public Memory
+ - Delirium | Lacuna Coil
+
+===
+id: prog-rock
+rank: 09
+name: PROGRESSIVE ROCK
+family: Rock & Metal
+years: 1967 → present
+sub: Long-form rock that borrowed structure from classical music and studio craft from Pink Floyd
+spec: 62,70,74,66,58,60,64,68,70,72,68,64,66,70,74,72,66,58,50,42
+synthType: square
+freqs: 68.94, 86.41, 420.08
+tracks:
+ - Trains - 2017 Remaster | Porcupine Tree
+ - Blackest Eyes - 2017 Remaster | Porcupine Tree
+ - The Sound Of Muzak - 2017 Remaster | Porcupine Tree
+ - Welcome To The Machine - 2011 Remaster | Pink Floyd
+ - Eye In The Sky | The Alan Parsons Project
+ - Old and Wise | The Alan Parsons Project
+ - Time | Pink Floyd
+
+===
+id: folk-metal
+rank: 10
+name: FOLK, PAGAN & MEDIEVAL METAL
+family: Rock & Metal
+years: 1993 → present
+sub: Traditional European melody and instrumentation welded to amplified guitars — and played at festivals in costume
+spec: 64,74,80,76,70,74,80,84,86,82,78,80,84,82,76,68,58,50,42,34
+synthType: square
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - Emerge | Eluveitie
+ - Helheim - Extended | Kalandra
+ - Oyneng yar | Faun
+ - Viking Raid | Marcusbresslermusic
+ - Federkleid | Faun
+ - Metnotstand im Märchenland | Feuerschwanz
+
+===
+id: metalcore-punk
+rank: 11
+name: MELODIC HARDCORE & PUNK
+family: Rock & Metal
+years: 1980 → present
+sub: Punk speed with metal precision and a conscience — songs about politics, guilt and getting out
+spec: 74,84,88,80,72,74,80,84,84,80,76,76,80,84,80,72,62,52,44,36
+synthType: square
+freqs: 68.94, 86.41, 267.37
+tracks:
+ - Red Sky | Thrice
+ - Behind Closed Doors | Rise Against
+ - Ouija | Harley Poe
+ - Bridges Burned | Tattoo the Scars
+ - 21 Guns | Green Day
+
+===
+id: post-britpop
+rank: 12
+name: POST-BRITPOP
+family: Rock & Metal
+years: 1997 → 2008
+sub: Melancholy, melodic, stadium-scaled British guitar rock after Britpop's swagger collapsed
+spec: 62,70,74,70,64,66,72,76,80,78,74,74,78,80,76,68,60,52,44,38
+synthType: square
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - Paradise | Coldplay
+ - Yellow | Coldplay
+ - Somewhere Only We Know | Keane
+ - Closer | Travis
+ - Clocks | Coldplay
+
+===
+id: heavy-power-metal
+rank: 13
+name: HEAVY & POWER METAL
+family: Rock & Metal
+years: 1975 → present
+sub: The twin-guitar, high-vocal tradition that defined metal before it fragmented
+spec: 70,80,86,80,72,74,80,84,86,84,80,80,84,88,86,78,68,58,48,40
+synthType: square
+freqs: 86.41, 267.37, 335.14
+tracks:
+ - The Attack of the Dead Men | Sabaton
+ - Breaking the Law | Judas Priest
+ - Sur | Pentagram
+
+===
+id: grunge
+rank: 14
+name: GRUNGE
+family: Rock & Metal
+years: 1988 → 1996
+sub: Seattle's loud-quiet-loud answer to hair metal — played through a Big Muff, sung like an apology
+spec: 72,84,88,80,70,72,78,82,84,80,74,72,74,76,72,62,54,46,38,32
+synthType: square
+freqs: 68.94, 86.41, 335.14
+tracks:
+ - Nutshell | Alice In Chains
+ - Alive | Pearl Jam
+
+===
+id: post-rock
+rank: 15
+name: POST-ROCK
+family: Rock & Metal
+years: 1994 → present
+sub: Rock instruments used for texture and structure rather than songs — crescendo as the main event
+spec: 68,74,76,70,64,66,72,78,82,84,82,80,82,86,84,78,70,60,50,42
+synthType: square
+freqs: 335.14, 420.08, 526.55
+tracks:
+ - Signals | Somali Yacht Club
+ - From Roots to Needles | If These Trees Could Talk
+
+===
+id: prog-sludge-metal
+rank: 16
+name: PROGRESSIVE & SLUDGE METAL
+family: Rock & Metal
+years: 1991 → present
+sub: Southern-US heaviness with prog time signatures and concept-album ambition
+spec: 78,86,90,80,70,72,76,80,78,74,72,76,80,84,80,72,64,56,48,40
+synthType: square
+freqs: 68.94, 86.41, 108.31
+tracks:
+ - The Sparrow | Mastodon
+
+===
+id: boom-bap
+rank: 17
+name: BOOM BAP & UNDERGROUND HIP HOP
+family: Hip Hop
+years: 1988 → present
+sub: Sample-based, drum-machine-driven rap built on crate-digging and technical rhyme
+spec: 72,86,90,74,60,62,68,74,76,72,68,70,76,80,78,70,62,54,46,38
+synthType: square
+freqs: 68.94, 86.41, 335.14
+tracks:
+ - Still Dreaming | Nas, Kanye West, Chrisette Michele
+ - Love is... | Common
+ - Scottie Pippens | Curren$y, The Alchemist, Freddie Gibbs
+ - Battle Cry | Joell Ortiz, Just Blaze
+ - Fist Full of Dollars | Nature, Dr. Dre
+ - Johnny P's Caddy | Benny The Butcher, J. Cole
+ - 4 More | De La Soul, Zhane
+ - Stakes Is High | De La Soul
+ - Baby Blue | Action Bronson, Chance the Rapper
+ - KITCHEN LIGHTS | Westside Gunn, Stove God Cooks | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview211/v4/7a/63/e9/7a63e9a3-ad46-9a88-1a90-9191d1b6d16b/mzaf_1122702822486154811.plus.aac.ep.m4a
+ - Above The Clouds | Gang Starr, Inspectah Deck
+ - Meet Joe Black | Nas
+ - What It's Worth | Black Milk
+ - Rollin' Down The Freeway | Statik Selektah, Glasses Malone, Kali, Termanology | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/7c/25/d3/7c25d3cf-16b2-cff4-142b-8fa04e35d25d/mzaf_8807513309246383750.plus.aac.ep.m4a
+ - Trouble in the Water | dj honda, De La Soul
+ - Welcome To New York City | Cam'ron, JAY-Z, Juelz Santana
+ - TEMPTATION | Joey Bada$$
+ - Cheers | Obie Trice
+ - Circle Gang Anthem - Feat. Kobe | KXNG Crooked, Kobe
+ - The Red Carpet (feat. Raekwon & Ras Kass) | Evidence
+ - My Way | Nas
+ - Rock Bottom | Eminem
+ - Mic Jack (feat. Adam Levine, Scar & Sleepy Brown) | Big Boi, Adam Levine, Scar, Sleepy Brown
+ - Invincible | Capone-N-Noreaga
+ - When The Sky Falls | Black Milk
+ - Masking | ASM, MF DOOM
+ - Be (Intro) | Common
+ - EPMD 2 (feat. Eminem & EPMD) | Nas, Eminem, EPMD
+ - I Gave You Power | Nas
+ - You're da Man | Nas
+ - Trouble Man | Juggaknots
+ - Belize (feat. MF DOOM) | Danger Mouse, Black Thought, MF DOOM
+ - Sniper Elite | J Dilla, MF DOOM
+ - Survival Test | Jaylib, Madlib, J Dilla
+ - Book Of Rhymes | Nas
+ - Chef Dreds | Griselda
+ - Publicity | GZA
+ - Real Ni***s | The Diplomats | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview221/v4/c4/69/c6/c469c6d3-944a-e472-7beb-432e2c057b25/mzaf_7043771456860144142.plus.aac.ep.m4a
+ - Exhibit C | JAYELECTRONICA
+ - Live On Live Long | Capone-N-Noreaga | https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview116/v4/8e/3a/92/8e3a92fb-34c6-a6fd-628b-81cf37966b19/mzaf_165728014347235677.plus.aac.ep.m4a
+ - Plane Gang | Reks, Akrobatik, Edo. G, Termanology, DJ Deadeye
+ - Bad Name - Remix | Gang Starr, Redman, Method Man
+ - The Ghetto | Beanie Sigel
+ - 100 | Dice Raw
+ - For The Record | Torae
+ - Under Their Radar, Over Their Heads feat. J-Rome | illmaculate, J-rome
+ - Bad Name | Gang Starr
+ - Remind My Soul | Akrobatik
+ - Hero | Pivot Gang, Frsh Waters, MFnMelo, Saba
+ - Rare | Nas
+ - Mighty Healthy | Ghostface Killah
+ - Rising Down | The Roots, Mos Def, Styles P
+ - Powder Cocaine (feat. Slug & Catero) | Evidence, Slug, Catero
+ - Everything To Gain | Papoose, AG
+ - Wake Up | Obie Trice
+ - God Help Me | Apollo Brown, Black Milk, Ketchphraze, DJ Los
+ - If - Bonus Track | Kenn Starr, Asheru, Talib Kweli
+ - Hardknock | Joey Bada$$, CJ Fly
+ - Get Off the Ground | Snowgoons, Termanology, Sean Price, H-Staxx, Justin Tyme, Ruste Juxx, Lil Fame
+ - Self Conscience - Dirty Version | Prodigy, Nas
+ - Watch How It Go Down | Termanology
+ - Hustle | M.O.P., Mr. Probz
+ - Losing Out (feat. Royce Da 5'9) | Black Milk, Royce Da 5'9"
+ - Bullet (feat. Citizen Cope) | Rhymefest, Citizen Cope
+ - We As Americans | Eminem
+ - Better Future | Mr. Green, DJ Kool Herc
+ - That's Hard | Pete Rock, Smif-N-Wessun, Sean Price, Styles P
+ - Grown Man Sport | Pete Rock, InI
+ - RING THE ALARM | Joey Bada$$, Nyck Caution, Kirk Knight, Meechy Darko
+ - Violet (The Upper Room) | CunninLynguists
+ - Uncle Sam Goddamn | Brother Ali
+ - Meddle with Metal - 7l's Nytyme Mix | CZARFACE, MF DOOM
+ - Ms. Jackson | Outkast
+ - Yesterday | Atmosphere
+ - The Matrix (feat. Pharoahe Monch, Sean Price & DJ Premier) | Black Milk, DJ Premier, Pharoahe Monch, Sean Price
+ - Kid U Not | Viro The Virus
+ - All In Your Mind | Viro The Virus, Snowgoons, Savage Brothers
+ - Rising to the Top (Grand Theft Auto Theme Song) | Sean Price
+ - Don't Say Nuthin' | The Roots
+ - Winds Of Change | EMC
+ - Assassination Day (feat. Raekwon, RZA & Inspectah Deck) | Ghostface Killah, Raekwon, RZA, Inspectah Deck
+ - Da Grind (Featuring Apocalypse) | Masta Ace, Apocalypse
+ - I Got the Juice | Dream Junkies, Beleaf, Ruslan, John Givez
+ - Think Differently | Casual, Roc Marciano, Vordul Mega, Tragedy Khadafi, Wu-Tang Clan
+ - Every Ghetto (feat. Blitz The Ambassador) | Nas, Blitz The Ambassador
+ - Shadows | The Evil Genius DJ Green Lantern, Styles P
+ - Breathe | Fabolous
+ - Highs and Lows (feat. DOOM, Phonte) | PRhyme, Doom, Phonte
+ - 82 92 (feat. Mac Miller) | Statik Selektah, Termanology, Mac Miller
+ - A Couple Dollars | Apollo Brown, Skyzoo, Joell Ortiz
+ - Be You | Mark Battles, Curren$y
+ - Slang Blade (feat. Senim Silla) | Binary Star, Senim Silla
+ - Survival Tactics | Joey Bada$$, Capital Steez
+ - Shame (feat. BJ The Chicago Kid) | Freddie Gibbs, Madlib, BJ The Chicago Kid
+ - Mr. | The Crest, Suparanks
+ - ROCKABYE BABY (feat. ScHoolboy Q) | Joey Bada$$, ScHoolboy Q
+ - DEVASTATED | Joey Bada$$
+ - FOR MY PEOPLE | Joey Bada$$
+ - Conception | Black Thought, Salaam Remi, Reek Ruffin
+ - Ape in His Apex | Sean Price, Ruste Juxx
+ - I Know | Heiruspecs
+ - The Spark | GZA
+ - That'll Work | The Alchemist
+ - New Thangs | Curren$y, Freddie Gibbs, The Alchemist
+ - Assassination Day | DJ Muggs, MF DOOM, Kool G Rap
+ - Fine And Free (feat. Vivian Green) | Guru, Solar, Vivian Green
+ - Moment Of Truth | Gang Starr
+ - Feel It In The Air | Beanie Sigel, Melissa Jay
+
+===
+id: confessional-rap
+rank: 18
+name: CONFESSIONAL & CONSCIOUS MAINSTREAM RAP
+family: Hip Hop
+years: 2010 → present
+sub: Album-form storytelling rap that sells at pop scale without abandoning craft
+spec: 86,90,80,62,54,58,64,70,74,72,68,70,74,78,74,66,58,50,44,38
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - Power Trip | J. Cole, Miguel
+ - Blackberry Marmalade | Vince Staples
+ - ALL THE LOVE | Kanye West, Ye, Andre Troutman
+ - Good Flirts | Baby Keem, Kendrick Lamar, Momo Boyd
+ - Two Six | J. Cole
+ - The Let Out | J. Cole
+ - Rain | Mac Miller, Vince Staples
+ - Wat's Wrong | Isaiah Rashad, Zacari, Kendrick Lamar | none
+ - Work Out | J. Cole
+ - Money Trees | Kendrick Lamar, Jay Rock
+ - The Return | Logic
+ - Bruuuh (with Denzel Curry) - Remix | JID, Denzel Curry
+ - Soundtrack 2 My Life | Kid Cudi
+ - 3005 | Childish Gambino
+ - Swimming Pools (Drank) - Extended Version | Kendrick Lamar
+ - I Wonder | Kanye West
+ - Good News | Mac Miller
+ - Day 'N' Nite (Nightmare) | Kid Cudi
+ - The Prayer | Kid Cudi
+ - No Role Modelz | J. Cole
+ - Young Jesus | Logic, Big Lenbo
+ - Murder To Excellence | JAY-Z, Kanye West
+ - Low-Key | Hopsin
+ - Scott Mescudi Vs. The World | Kid Cudi, CeeLo Green
+ - Sky Might Fall | Kid Cudi
+ - Mr. Rager | Kid Cudi
+ - Don't Play This Song | Kid Cudi, Mary J. Blige
+ - Marijuana | Kid Cudi
+ - Man of the Year (feat. Curley the 5th) | Logic?, Curley The 5th
+ - Welcome To Heartbreak | Kanye West, Kid Cudi
+ - MIDDLE CHILD | J. Cole
+ - No Dope On Sundays (feat. Pusha T) | CyHi, Pusha T
+ - N95 | Kendrick Lamar
+ - The Art of Peer Pressure | Kendrick Lamar
+ - Silent Hill | Kendrick Lamar, Kodak Black
+ - the.climb.back | J. Cole
+ - Two Words | Kanye West, Mos Def, Freeway, The Boys Choir Of Harlem
+ - Deep Reverence (feat. Nipsey Hussle) | Big Sean, Nipsey Hussle
+ - CALLIGRAPHY | Saba
+ - Ego Check | Wynne, JID
+ - Young Man | WELL$, Sylvan Esso
+ - She Knows (feat. Amber Coffman & Cults) | J. Cole, Amber Coffman, Cults
+ - Run This Town | JAY-Z, Rihanna, Kanye West
+ - Lost In The World | Kanye West, Bon Iver
+ - Runaway | Kanye West, Pusha T
+ - All Of The Lights | Kanye West
+ - Devil In A New Dress | Kanye West, Rick Ross
+ - Cudi Zone | Kid Cudi
+ - Down (feat. Nikki Jean) | Lupe Fiasco, Nikki Jean
+ - Beautiful | Eminem
+ - Battle Scars (with Guy Sebastian) | Lupe Fiasco, Guy Sebastian
+ - House (feat. Mick Jenkins) | EARTHGANG, Mick Jenkins
+ - Crown Me | Hopsin
+ - Reborn | KIDS SEE GHOSTS
+ - The Fool Pt 3 (Frame Of Mind) | Shad, KAYTRANADA
+ - Drunk and Hot Girls | Kanye West, Mos Def
+ - Insomniac Dreaming | A.Dd+
+ - Red Dot Music | Mac Miller, Action Bronson
+ - So Appalled | Kanye West, JAY-Z, Pusha T, CyHi, Swizz Beatz, RZA
+ - King's Dead (with Kendrick Lamar, Future & James Blake) | Jay Rock, Kendrick Lamar, Future, James Blake
+ - Ni**as In Paris | JAY-Z, Kanye West
+ - A Tale of 2 Citiez | J. Cole
+ - Homecoming | Kanye West, Chris Martin
+
+===
+id: trap
+rank: 19
+name: TRAP & SOUTHERN RAP
+family: Hip Hop
+years: 2003 → present
+sub: Atlanta-born, 808-driven rap that became the default rhythmic language of global pop
+spec: 99,96,78,52,42,46,52,58,64,62,58,62,70,76,74,66,58,50,44,38
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - Wyclef Jean | Young Thug | none
+ - Headlines | Drake
+ - Am I Dreaming | Metro Boomin, A$AP Rocky, Roisee
+ - We Still Don't Trust You | Future, Metro Boomin, The Weeknd
+ - Back Up | Don Toliver, Wiz Khalifa
+ - SET IT | Denzel Curry, Maxo Kream
+ - BIG PERSONA (feat. Tyler, The Creator) | Maxo Kream, Tyler, The Creator
+ - Gook | Denzel Curry
+ - Soul Survivor | Jeezy, Akon
+ - Smoke | 50 Cent, Trey Songz
+ - Htk | VatoSmokiii.x
+ - Pound Cake / Paris Morton Music 2 | Drake, JAY-Z
+ - Porsche Cayenne | B.A.R.S. Murre, Riff Raff Sodmg
+ - I'm On One | DJ Khaled, Drake, Rick Ross, Lil Wayne
+ - Gospel | Rich Brian, Keith Ape, XXXTENTACION
+ - Plain Jane | A$AP Ferg
+ - MAZEL TOV | IDK, A$AP Ferg
+ - Runnin | 21 Savage, Metro Boomin
+ - 1Train | A$AP Rocky, Kendrick Lamar, Joey Bada$$, Yelawolf, Danny Brown, Action Bronson, Big K.R.I.T.
+ - Never Recover (Lil Baby & Gunna, Drake) | Lil Baby, Gunna, Drake
+ - No New Friends - SFTB Remix | DJ Khaled, Drake, Rick Ross, Lil Wayne
+ - Dead And Gone | T.I., Justin Timberlake
+ - Disco Shit (feat. Freddie Gibbs) | 03 Greedo, Kenny Beats, Freddie Gibbs
+ - DON'T DIE | Tory Lanez
+ - Hard Piano | Pusha T, Rick Ross
+ - Aston Martin Music | Rick Ross, Drake, Chrisette Michele
+ - No Such Thing As Free | Yelawolf
+ - a lot | 21 Savage
+ - Ambition (feat. Meek Mill & Rick Ross) | Wale, Meek Mill, Rick Ross
+ - ONCE UPON A TIME (FREESTYLE) | IDK, Denzel Curry
+ - Walls Talking | Kevin Gates
+ - Forever (feat. Lil Wayne) | Lil Baby, Lil Wayne
+ - GANG GANG | JACKBOYS, Sheck Wes
+ - GATTI | JACKBOYS, Pop Smoke, Travis Scott
+ - Stay Schemin | Rick Ross, French Montana, Drake
+ - Orange Soda (feat. Kidd Upstairs) | X.O., Kidd Upstairs
+ - Crazy (feat. PnB Rock) | 50 Cent, PnB Rock
+ - CHopstix (feat. Travis Scott) | ScHoolboy Q, Travis Scott
+ - Whip Game | Kareem Kalokoh
+ - E36 | Le$
+ - Time Ticking (feat. Bobby Shmurda & Rowdy Rebel) | Juelz Santana, Dave East, Bobby Shmurda, Rowdy Rebel
+ - Pay You Back (feat. 21 Savage) | Meek Mill, 21 Savage
+ - ULT | Denzel Curry
+ - Man Of The Year | ScHoolboy Q
+ - Over Here | Yelawolf
+ - Forever and a Day | Freddie Gibbs
+ - Confetti | Big K.R.I.T.
+ - Praise The Lord (Da Shine) (feat. Skepta) | A$AP Rocky, Skepta
+ - One Of Us | Rick Ross, Nas
+ - Till It's Gone | Yelawolf
+ - Hurt - feat. Alfamega & Busta Rhymes Explicit | T.I.
+ - Guns and Roses (feat. P!nk) | T.I., P!nk
+ - Go Get It | T.I.
+ - Top Back | T.I.
+ - Moonlight | Juice WRLD | none
+
+===
+id: abstract-underground
+rank: 20
+name: ABSTRACT & EXPERIMENTAL HIP HOP
+family: Hip Hop
+years: 1993 → present
+sub: Rap that treats the beat as a puzzle and the persona as fiction
+spec: 76,86,82,64,56,60,66,72,76,74,72,74,78,82,80,72,64,54,46,38
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - E. Coli | The Alchemist, Earl Sweatshirt
+ - BALLSKIN | MF DOOM
+ - Faucet | Earl Sweatshirt
+ - I'll Be Right There | JPEGMAFIA
+ - NO HALO | BROCKHAMPTON
+ - Dog It | Digable Planets
+ - Bird's Eye View | Zion I
+ - Black Balloons Reprise | Flying Lotus, Denzel Curry
+ - Savage Nomad | Danny Brown
+ - I Wish I Knew Natalie Portman | K-OS, Saukrates, Nelly Furtado
+ - Born To Run | K-OS
+ - Man I Used To Be | K-OS
+ - Mastermind | Deltron 3030, Del The Funky Homosapien, Dan The Automator, Kid Koala
+ - Cycles To Gehenna | Aesop Rock
+ - 3 Tearz | Danny Brown, Run The Jewels
+ - Where I'm From | Digable Planets
+ - Headstone | Flatbush Zombies
+ - 2010 | Earl Sweatshirt
+ - More Soup (feat. MF Doom) | Moka Only
+ - Accordion | Madvillain, Madlib, MF DOOM
+ - LUMBERJACK | Tyler, The Creator
+ - Figaro | Madvillain, Madlib, MF DOOM
+ - BUZZCUT (feat. Danny Brown) | BROCKHAMPTON, Danny Brown
+ - ALASKA | BROCKHAMPTON
+ - Anti-Matter | King Geedorah, Mr Fantastik
+ - Can I Watch? (feat. Apani B as Nikki) | Viktor Vaughn, MF DOOM, Apani B
+ - Hollow | SHAHMEN
+ - Zero Dark Thirty | Aesop Rock
+ - I THINK | Tyler, The Creator
+ - Part of the Crow | Bless Of Shahmen, Arts The Beatdoctor
+ - Shell Dweller (Remastered) [feat. Unorthadox] | SHAHMEN, Unorthadox
+ - Potato Salad | Tyler, The Creator, A$AP Rocky
+ - E.W.W. | The Doppelgangaz
+
+===
+id: lofi-jazzhop
+rank: 21
+name: LO-FI & JAZZ-HOP
+family: Hip Hop
+years: 1997 → present
+sub: Instrumental hip hop built for concentration — the beat as furniture, in the best sense
+spec: 72,80,76,60,54,60,68,76,80,78,74,74,78,80,76,68,58,50,42,34
+synthType: square
+freqs: 68.94, 335.14, 420.08
+tracks:
+ - I'm Sick of Missing You | Niah Steiner, Swim. Søul
+ - It Runs Through Me | Tom Misch, De La Soul
+ - Tidal Wave | Tom Misch, Yussef Dayes
+ - Classique | Adieu Aru
+ - Caroline | Pause
+ - Rhythm of the Rain | Kno, Tom Hardison, Tunji
+ - Thelema | Ødfream
+ - I Wanna Kno | 2 Mello
+ - The Hardest | Gasoline
+ - Olov's Party | Yes Alexander
+ - Gorilla | Clams Casino
+ - 緣分 | Felax
+ - Fahkeet | Light Club
+ - Miami | Oddisee
+ - In Soft Focus feat. Ariel Pink and Elzhi | Lushlife
+ - Don't Sleep | Matlock
+ - Rocksteady | Fdel
+ - With You | Arts The Beatdoctor
+ - Fit Rare | Bastien Keb, Cappo
+ - Special | Strange Fruit Project, Thesis
+ - Insomniac Olympics | Blockhead
+ - This Place Is Built | Cannonhead
+ - Treetop | Clams Casino
+ - Feather (feat. Cise Starr & Akin from CYNE) | Nujabes, Cise Starr & Akin from CYNE
+ - Cool Vibes & Shit | Na$ty
+ - Vertigo | Smoke Trees
+ - Too Heavy | Freddie Future
+ - Healing | Clams Casino
+ - Feather | Ostrich Head
+
+===
+id: golden-age-rap
+rank: 22
+name: GOLDEN AGE RAP
+family: Hip Hop
+years: 1986 → 1996
+sub: The decade when the form settled its rules — sampling was free, and every record was an argument
+spec: 70,84,88,72,58,60,66,72,76,74,70,72,78,82,80,72,62,54,46,38
+synthType: square
+freqs: 68.94, 86.41, 335.14
+tracks:
+ - Neva Go Back | Special Ed
+ - Lyrics Of Fury | Eric B. & Rakim
+ - One Love | Nas, Q-Tip
+ - Claimin' I'm a Criminal | Brand Nubian
+ - Lyrics To Go - Dan The Automator Remix | Dan The Automator, A Tribe Called Quest
+ - Harder Than You Think | Public Enemy
+ - Keep It Real | Jamal
+ - Flava in Ya Ear | Craig Mack
+ - Flamboyant | Big L
+ - Infinite | Eminem
+ - Dead Presidents II | JAY-Z
+ - Da Joint | EPMD
+ - Resurrection | Common
+ - 93 'Til Infinity | Souls Of Mischief
+ - Intro | DMX
+ - Gangsta Bitch | Apache
+ - Hey Mister Mister | Kool G Rap
+ - Nite & Day | Marco Polo, Big Daddy Kane
+ - Quality Control | Jurassic 5
+ - (Rap) Superstar (feat. Eminem & Noreaga) | Cypress Hill, Eminem, N.O.R.E.
+ - Real Hip-Hop | Das EFX
+ - Let 'Em Know | Souls Of Mischief
+ - Victory (feat. The Notorious B.I.G. & Busta Rhymes) - 2016 Remaster | Diddy, The Notorious B.I.G., Busta Rhymes
+ - Sound of Da Police | KRS-One
+ - Insane in the Brain | Cypress Hill
+ - Watch Out Now | The Beatnuts
+
+===
+id: gfunk-westcoast
+rank: 23
+name: G-FUNK & WEST COAST RAP
+family: Hip Hop
+years: 1992 → present
+sub: Parliament basslines, a whining synth lead, and the Californian version of menace
+spec: 92,90,74,54,46,52,60,68,74,72,68,70,76,82,80,70,60,50,42,34
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - Hittin Corners | K-Dee
+ - Playaz Club | Rappin' 4-Tay
+ - Just Another Day | Too $hort
+ - Leave It Up To Me | Jay Worthy, Larry June, LNDN DRGS
+ - Ayy (feat. YG & Logic) | Berner, Mozzy, YG, Logic
+ - Soon As I Get Home | 2Pac, Yaki Kadafi
+ - Cold Blooded Highway | Ron Santee
+ - Breathin | 2Pac, Outlawz
+ - Keep It On The Real | 3X Krazy
+ - I Got 5 On It | Luniz, Michael Marshall
+ - Susan | LNDN DRGS, Jay Worthy
+ - Fuck Yo Mouth | Mitchy Slick, Lil Mitch
+ - Paid | San Quinn, Los Rakas, Stylolive
+ - At The Speed Of Life | Xzibit
+ - Don't Come To LA | YG, Sad Boy, AD, Bricc Baby
+ - Gangsta Gangsta | 18 Karat
+ - Gettin High as Fuck | Suge, The Bali Club, Otis
+ - Two Presidents (feat. Kendrick Lamar) | YG Hootie, Kendrick Lamar
+ - Gotta Get Mine | MC Breed
+ - Black Superman | Above The Law
+ - Cali Iz Active - Dirty | Tha Dogg Pound
+ - The Testimony | Mack 10, Young Soprano, Pastor Steven Hamilton
+ - Riders On the Storm | Snoop Dogg, The Doors
+
+===
+id: world-rap
+rank: 24
+name: NON-ANGLOPHONE RAP
+family: Hip Hop
+years: 1990 → present
+sub: The form exported, then rebuilt in languages whose stress patterns fight the beat
+spec: 92,90,78,56,48,52,60,66,70,68,64,66,72,78,76,66,56,48,40,34
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - Le son qui tue (avec Natty) | Rohff, Natty
+ - Better Way To Live | KNEECAP, Grian Chatten
+ - Cut Cut Cut (feat. Nucksal, Huckleberry P) | DEEPFLOW, Nucksal, Huckleberry P
+ - Gheddo Reloaded | Eko Fresh, Sido
+ - Runner | RAIZA BIZA, REMI, Baro Sura
+ - Bilder im Kopf | Sido
+ - Stop | Pezet, Onar, Płomień 81
+ - Gheddo (feat. Bushido) | Eko Fresh, Bushido
+ - Bombay (feat. Sembem & Sjaak) | CHO, Sem Bem, Sjaak
+ - Another Galaxy | Natti
+
+===
+id: drill-modern
+rank: 25
+name: DRILL & GRIME
+family: Hip Hop
+years: 2011 → present
+sub: Chicago's bleakest export, rebuilt in London and sent back to New York
+spec: 98,94,76,50,42,46,54,60,66,64,60,62,70,76,74,64,54,46,38,32
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - Wetty | Fivio Foreign
+ - Just Wanna Rock | Lil Uzi Vert
+ - Ghost | Dizzee Rascal | none
+ - Big Drip | Fivio Foreign
+ - Christopher Walking | Pop Smoke
+ - Die in the End | YNG Martyr
+ - Flexin' | Pop Smoke
+
+===
+id: memphis-crunk
+rank: 26
+name: MEMPHIS RAP & CRUNK
+family: Hip Hop
+years: 1991 → present
+sub: Tape-hiss horror, triplet chants and the low end that eventually swallowed pop music
+spec: 96,92,76,52,44,48,56,64,70,68,64,66,72,78,76,66,56,46,38,32
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - Mo Murder | Gangsta Pat
+ - Stay Fly | Three 6 Mafia
+ - Some Bodies Gonna Get It (Mark Henry) | WWE, Three 6 Mafia
+ - Uptown Downtown | Bizzy Bone
+ - Deadly Verses | Gangsta Pat, The Villian
+ - That's Right (feat. Akon) - Explicit Album Version | Three 6 Mafia, Akon
+ - By Mistake (Remix) (feat. Juicy J & Project Pat) | Young Dolph, Juicy J, Project Pat
+
+===
+id: gorillaz-alt
+rank: 27
+name: GENRE-FLUID ALTERNATIVE HIP HOP
+family: Hip Hop
+years: 1998 → present
+sub: Rap as one ingredient in a producer-led collage rather than the frame around it
+spec: 80,86,78,60,54,60,66,72,76,74,70,72,76,78,74,68,62,54,46,40
+synthType: square
+freqs: 55, 68.94, 86.41
+tracks:
+ - Stylo | Gorillaz, Bobby Womack, Mos Def
+ - November Has Come | Gorillaz, MF DOOM
+ - Feel Good Inc. | Gorillaz, De La Soul
+
+===
+id: idm-ambient
+rank: 28
+name: IDM & AMBIENT TECHNO
+family: Electronic
+years: 1992 → present
+sub: Electronic music written to be listened to rather than danced to — machine rhythm as composition
+spec: 90,82,62,44,40,44,50,56,62,66,68,70,74,78,80,78,72,64,54,44
+synthType: sawtooth
+freqs: 55, 68.94, 660
+tracks:
+ - Anvil | Lorn
+ - Runaway | Vacant
+ - A Walk | Tycho
+ - Null & Void | o k h o, Saito
+ - war | We Are Not Friends, Nextime
+ - Goodbye | Apparat, Soap&Skin
+ - Secrets of the Earth | Lama House
+ - Seconds | Ghost Loft
+ - IZ-US | Aphex Twin
+ - #3 | Aphex Twin
+ - Don't Fight It | Melano
+ - Memory Arc | Rival Consoles
+ - offense mechanism | defsharp
+ - Dayvan Cowboy | Boards of Canada
+ - Coda | Rival Consoles
+ - Remembrance | Elfrieda
+ - What Else Is There? | Röyksopp
+ - Batty's Theme | Lorn
+ - Stoney Street | Amon Tobin
+ - At The End Of The Day | Amon Tobin
+ - FAST LAND | Moderat
+ - Hummingbird | ID3, Soundmouse
+ - Lost & Found | Amon Tobin
+ - El Cargo | Amon Tobin
+ - Mighty Micro People | Amon Tobin
+ - Acid Rain | Lorn
+ - Hard To Find | Robot Koch
+ - BLINK | Lorn
+ - Wish U Were Here | Bliss
+ - Cleopatra | Parra for Cuva, May
+ - Swarm | Forest Swords
+ - L'APPEL DU VIDE | Lorn
+
+===
+id: synthwave
+rank: 29
+name: SYNTHWAVE & OUTRUN
+family: Electronic
+years: 2005 → present
+sub: A soundtrack for 1984 written thirty years later, by people who mostly weren't there
+spec: 82,84,72,54,48,52,60,68,74,78,80,82,86,90,88,82,74,64,54,44
+synthType: sawtooth
+freqs: 55, 68.94, 660
+tracks:
+ - Time (Goes On) | Hypnogaja, ShyBoy
+ - They Don't Care | Hypnogaja, ShyBoy
+ - Hourglass | S U R V I V E
+ - Hello Juliet | Clarion
+ - Venom | Dance With the Dead
+ - Intergalactic Highway | Dynatron
+ - Plasma Storm | Beds and Beats
+ - In The Face Of Evil | Magic Sword
+ - Attack Vector | Covox
+ - The scarlett empress | College
+ - NARC | Mega Drive
+ - Héritage | College
+ - Omniverse | S U R V I V E
+ - Distant Lights | Sand Circles
+ - The Perfect Girl - The Motion Retrowave Remix | Mareux, The Motion
+ - Sleepless Nights | FM Attack
+ - Flashbacks - Tee & Hawk Remix | Warlocks
+ - East Of Oslo | Warlocks
+ - A.H.B. | S U R V I V E
+ - Gillette | 199X, DrDisrespect
+ - Nightcall | Kavinsky
+
+===
+id: french-house
+rank: 30
+name: FRENCH HOUSE & NU-DISCO
+family: Electronic
+years: 1995 → present
+sub: Filtered disco loops and vocoders — the sound of Paris rebuilding American dance music
+spec: 86,88,72,52,48,56,66,74,80,82,80,78,80,84,82,74,64,54,44,36
+synthType: sawtooth
+freqs: 55, 68.94, 420.08
+tracks:
+ - Gamesofluck | Parcels
+ - End of Line | Daft Punk
+ - Holocene | Klangphonics, Anna Metko
+ - Lucky I Got What I Want | Jungle
+ - La femme d'argent | Air
+ - Parfum thérémine | L'Impératrice
+ - All I Need | Air, Beth Hirsch
+ - Lose Yourself to Dance | Daft Punk, Pharrell Williams
+ - Instant Crush | Daft Punk, Julian Casablancas
+ - Bad Feeling | Cobra Man
+ - Mer du Japon | Air
+ - There Is Still Pain Left - Laolu Remix | Sophie Hunger, Laolu
+ - Paris - Aeroplane Remix | Friendly Fires, Aeroplane
+ - Pogo | Digitalism
+ - Night Owl | Metronomy
+ - For Your Love (feat. VIAA) | NZCA LINES, VIAA
+
+===
+id: trip-hop
+rank: 31
+name: TRIP HOP & DOWNTEMPO
+family: Electronic
+years: 1991 → present
+sub: Bristol-born slow-motion hip hop with a female lead vocal and a jazz-noir palette
+spec: 80,88,82,64,52,54,60,66,70,68,64,66,72,76,74,68,60,52,44,38
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+audio: /demystify/genre/triphop.mp3
+tracks:
+ - Persist | All India Radio
+ - Four Three | All India Radio
+ - Enjoy the Ride | Morcheeba, Judie Tzuke
+ - Easier Said Than Done | Morcheeba
+ - The Rip | Portishead
+ - Bullets | Archive
+ - Again | Archive
+ - Mad About You - Live at Koningin Elisabethzaal 2012 | Hooverphonic
+ - So Com Voce | Thievery Corporation
+ - Teardrop | Massive Attack, Elizabeth Fraser
+ - Roads | Portishead
+ - Horrible Person | Hooverphonic
+ - Were You Thinking of Me? | Yonderboi
+ - Even Though | Morcheeba
+ - Everybody Loves A Loser | Morcheeba
+ - Mezcal Dream - Brecon Remix | Morcheeba, Brecon, Amanda Zamolo
+
+===
+id: big-beat
+rank: 32
+name: BIG BEAT & TURNTABLISM
+family: Electronic
+years: 1993 → present
+sub: Breakbeats at rock volume — the crate-digger's answer to the dancefloor
+spec: 84,90,80,58,52,58,66,72,76,74,70,72,78,82,80,72,62,52,44,36
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+tracks:
+ - Galvanize | The Chemical Brothers, Q-Tip
+ - Ain't Talkin' 'Bout Dub | Apollo 440
+ - Ordinary Man | Chinese Man
+ - Dusty Fingers - Live | DJ Williams
+ - Lift Me Up (Radio Mix) | Moby
+ - Meteorology | Overseer
+ - Building Steam With A Grain Of Salt | DJ Shadow
+ - The Rockafeller Skank | Fatboy Slim
+ - Transmission Mountain - Live At Albert Hall | DJ Shadow
+
+===
+id: trance-prog-house
+rank: 33
+name: TRANCE, PROGRESSIVE HOUSE & CHILLOUT
+family: Electronic
+years: 1990 → present
+sub: Long-build euphoric dance music — and the ambient/chillout records made by the same producers
+spec: 88,84,66,48,44,50,58,66,72,74,76,78,82,86,88,84,76,66,56,46
+synthType: sawtooth
+freqs: 55, 68.94, 660
+tracks:
+ - Rococco - Original Mix - Remastered | Kansai
+ - Raincry (Spiritual Thirst) | God Within, Scott Hardkiss
+ - Saltwater | Chicane, Moya Brennan
+ - So Smooth - 12" Version | Krystal Davis
+ - Night Trip - Original Mix | Rautu
+
+===
+id: dark-techno
+rank: 34
+name: DARK TECHNO & FRENCH ELECTRO
+family: Electronic
+years: 2008 → present
+sub: Cold, minimal, menacing electronic pop from the Bromance/Ed Banger lineage
+spec: 94,90,70,46,40,46,54,62,66,64,60,62,68,74,72,64,56,48,42,36
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+tracks:
+ - LEGACY | KAS:ST
+ - Ernstige - Original Mix | Pedram
+ - Risky Business | ZHU
+ - Lost in the Fire | Gesaffelstein, The Weeknd
+
+===
+id: liquid-dnb
+rank: 35
+name: LIQUID DRUM & BASS
+family: Electronic
+years: c. 1995 → present
+sub: Melodic, vocal-led offshoot of jungle — 174 BPM with the aggression traded for air
+spec: 95,88,60,35,28,30,38,45,50,52,55,58,62,66,72,80,86,90,84,70
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+audio: /demystify/genre/drumbass.mp3
+tracks:
+ - The Flute Tune (Soulpride Remix) | Jaycut, Kolt Siewerts, Soulpride
+ - Snake Eyes | Feint, CoMa
+ - Sunking | State of Mind | 214331933
+
+===
+id: turkish-rock
+rank: 36
+name: TURKISH ROCK & POP-ROCK
+family: Turkish
+years: 1990 → present
+sub: The mainstream rock generation that followed Anadolu rock — arena-scale, radio-shaped, still unmistakably Turkish
+spec: 66,76,82,76,68,70,76,80,82,78,74,76,80,80,74,66,56,48,40,34
+synthType: triangle
+freqs: 86.41, 267.37, 335.14
+tracks:
+ - Bu Şehir | İkilem
+ - Hayat Tesadüflerle Gülümser | Kayıp Efsanenin Tuhaf İzleri
+ - Hadi Beni Güldür | Ogün Sanlısoy
+ - Ben Nası Büyük Adam Olucam | Pinhani
+ - Böyle Ayrılık Olmaz | Kolpa
+ - Beni Boş Yere Yorma | Gripin
+ - Y.o.k. | Çilekeş
+ - Kafile | Yüksek Sadakat
+ - Senin Gibi | Aylin Aslım
+ - Unutamam Seni | Murat Kekilli
+ - İsim - Şehir | Vega
+ - Bana Bir Sor | Ogün Sanlısoy
+ - Ben de Özledim | Ogün Sanlısoy
+ - Saydım | Ogün Sanlısoy
+ - Bugün | Şebnem Ferah
+ - Kaybettik Severken | Ogün Sanlısoy
+ - Gel Öpem Seni | Murat Kekilli
+ - Avara | Murat Kekilli
+ - İçini Dök | Koray Candemir
+ - Beni Yakan Aşkın | Özlem Tekin
+ - Sen Anla | Özlem Tekin
+ - Delinin Yıldızı | Vega
+ - Beş | gripin
+ - Sakinleştim | Pinhani
+
+===
+id: turkish-pop
+rank: 37
+name: TURKISH POP
+family: Turkish
+years: 1985 → present
+sub: Western pop production married to Turkish melodic phrasing — an export industry built in the 1990s
+spec: 70,80,84,74,64,66,72,78,80,76,72,74,78,80,76,68,60,52,44,38
+synthType: triangle
+freqs: 68.94, 86.41, 335.14
+tracks:
+ - Benmişim | Nev
+ - Unut Onu Kalbim | Yusuf Güney
+ - Adı İntikamdı | Mustafa Sandal
+ - Bir Beyaz Orkide | Cihan Mürtezaoğlu
+ - Sevdik Sevdalandık | Reyhan Karaca
+ - Günaydın - Remastered | Yalın
+ - Ya Bu İşler Ne | Mabel Matiz
+ - Açık Adres | Sertab Erener
+ - Nedenini Sorma | Hepsi
+ - Gözyaşlarım Anlatır | Şahsenem
+ - Yalan | Candan Erçetin
+ - Bu Kadar Mı | Emre Altuğ
+ - Gitti Gideli | Tarkan
+ - Adımı Kalbine Yaz | Tarkan
+ - İsyankar | Mustafa Sandal
+ - Uzak | Tarkan
+ - Git | Irem
+
+===
+id: anadolu-rock
+rank: 38
+name: ANADOLU ROCK & TURKISH ALTERNATIVE
+family: Turkish
+years: 1965 → present
+sub: Turkish melody and lyric tradition run through rock instrumentation — the country's longest-running hybrid
+spec: 64,72,78,74,66,68,74,78,80,76,72,74,78,76,70,62,54,46,40,34
+synthType: triangle
+freqs: 86.41, 267.37, 335.14
+tracks:
+ - Vicdani Redd | Redd
+ - Anlayamazsın | Seksendört
+ - Utanmazsan Unutmam | Adamlar
+ - Hikaye | Adamlar
+ - Acının İlacı | Adamlar
+ - Dünyaya Bedel | mor ve ötesi
+ - Ölürüm Hasretinle | Seksendört
+ - Adımız Miskindir Bizim | MFÖ
+ - Bir Derdim Var | mor ve ötesi
+ - Ne Farkeder | Yüzyüzeyken Konuşuruz
+ - Ele Güne Karşı | MFÖ
+ - Sandal | Yüzyüzeyken Konuşuruz
+ - Ada | Kuytu
+ - Kapısı Kapalı | Adamlar
+ - Söyle | Seksendört
+
+===
+id: turku
+rank: 39
+name: TÜRKÜ — TURKISH FOLK
+family: Turkish
+years: centuries → present
+sub: Regional folk song: bağlama, kemençe and a repertoire transmitted by anonymous authorship
+spec: 38,46,58,66,72,76,78,74,70,72,76,80,78,72,66,58,50,44,38,32
+synthType: triangle
+freqs: 170.18, 213.31, 660
+tracks:
+ - Ha Bu Ander Sevdaluk | Aytekin Ataş
+ - Zahid Bizi Ta'n Eyleme (Zahid Don't Decry Us) | Aytekin Ataş
+ - İki Keklik | Orhan Hakalmaz
+ - Deniz Üstünde Fener | Selçuk Balcı
+ - Sendeki Kaşlar | Hüseyin Turan
+
+===
+id: ozgun-protest
+rank: 40
+name: ÖZGÜN MÜZIK — PROTEST SONG
+family: Turkish
+years: 1970s → 1990s
+sub: Folk instrumentation, political lyrics, and the enormous personal cost that came with them
+spec: 42,52,64,70,74,76,78,76,72,70,72,76,74,68,60,52,44,38,32,28
+synthType: triangle
+freqs: 170.18, 213.31, 267.37
+tracks:
+ - Şiire Gazele | Ahmet Kaya
+
+===
+id: folk-songwriter
+rank: 41
+name: FOLK & SINGER-SONGWRITER
+family: Pop & Soul
+years: 1968 → present
+sub: A voice, an acoustic guitar, and the assumption that the words will carry it
+spec: 46,58,70,74,72,74,80,84,86,82,78,78,82,84,78,70,60,50,42,34
+synthType: triangle
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - Dante - 2012 Remaster | Tír na nÓg
+ - Mykonos | Fleet Foxes
+ - The Night We Met | Lord Huron
+ - Last Train Home | John Mayer
+ - Far Away | José González
+ - Kissing You Goodbye | The Pierces
+ - Lakes Of Canada | Karen Peris, Don Peris, The Innocence Mission
+ - Everybody Wants To Go To Heaven | Glenn Yarbrough & The Limeliters
+ - The Funeral | Band of Horses
+ - For | A.O. Gerber
+ - Reverie | Chris Isaak
+ - Funny How Time Slips Away - Single Version | Billy Walker
+ - I Got You | The White Buffalo
+ - First Love/Late Spring | Mitski
+ - Burlap String | Courtney Marie Andrews
+ - A Simple Life | melissa moshé
+ - Don't Forget About Me | CLOVES
+ - Green Bus | The Innocence Mission
+ - Match In The Rain | Alec Benjamin
+ - What He Wrote | Laura Marling
+ - Candles | Daughter
+ - Volcano | Damien Rice
+ - On the Frame | Beta Radio
+ - Send Me on My Way | Rusted Root
+
+===
+id: modern-pop
+rank: 42
+name: MODERN POP
+family: Pop & Soul
+years: 2010 → present
+sub: Pop after streaming — shorter, quieter, sadder, and built around a single voice
+spec: 88,90,80,60,52,58,66,74,80,80,76,76,80,84,82,74,64,54,46,38
+synthType: triangle
+freqs: 55, 68.94, 86.41
+tracks:
+ - Pain | PinkPantheress
+ - Diet Mountain Dew | Lana Del Rey
+ - Open Hearts | The Weeknd
+ - TKO | Justin Timberlake
+ - Starboy | The Weeknd, Daft Punk
+ - Bailamos - From "Wild Wild West" | Enrique Iglesias
+ - wicked game - sped up + reverb | pearl, fast forward >>
+ - Disparate Youth | Santigold
+ - Money | Anna of the North
+ - Coming Home | Diddy - Dirty Money, Skylar Grey
+ - Ride | Lana Del Rey
+ - Spectrum (Say My Name) - Calvin Harris Remix | Florence + The Machine, Calvin Harris
+ - Streets | Doja Cat
+ - Tôt ou tard | Eli Rose
+ - Breathing | Jason Derulo
+ - Late Night Feelings (feat. Lykke Li) | Mark Ronson, Lykke Li
+ - Kiss from a Rose | Seal
+ - Drive | Oh Wonder
+ - Counting Stars | OneRepublic
+ - Mercy | OneRepublic
+
+===
+id: rnb-soul
+rank: 43
+name: CONTEMPORARY R&B AND SOUL
+family: Pop & Soul
+years: 2000 → present
+sub: Soul singing after neo-soul — looser, quieter, and mixed like a hip-hop record
+spec: 84,88,80,64,56,60,68,76,80,80,76,76,80,82,78,70,60,52,44,36
+synthType: triangle
+freqs: 55, 68.94, 86.41
+tracks:
+ - Easier Said Than Done | Thee Sacred Souls
+ - You Can Say Hi | Soia
+ - Closer (Ode 2 U) | Ravyn Lenae
+ - Computer Luv (feat. Steve Lacy) | Ravyn Lenae, Steve Lacy
+ - Remember the Rain | Kadhja Bonet
+ - Comin' from Where I'm From - Radio Mix | Anthony Hamilton
+ - Who Do We Think We Are (feat. Rick Ross) | John Legend, Rick Ross
+ - Crew (feat. Brent Faiyaz & Shy Glizzy) | GoldLink, Brent Faiyaz, Shy Glizzy
+ - Crystal Express | Raury
+ - Trippin' (feat. Khalid) | Buddy, Khalid
+ - Simply Falling | Iyeoka
+ - Blue Lights | Jorja Smith
+ - Zulu Screams (feat. Maleek Berry & Bibi Bourelly) | GoldLink, Bibi Bourelly, Maleek Berry
+
+===
+id: art-pop
+rank: 44
+name: ART POP & THE STUDIO AUTEUR
+family: Pop & Soul
+years: 1997 → present
+sub: Pop songwriting where the producer, engineer and performer are the same person
+spec: 68,74,72,62,58,62,68,74,80,82,80,78,80,84,82,76,68,60,52,44
+synthType: triangle
+freqs: 335.14, 420.08, 526.55
+tracks:
+ - Laughing with a Mouth of Blood | St. Vincent
+ - Lazarus | David Bowie
+ - Headlock | Imogen Heap
+ - Mercy Street | Peter Gabriel
+ - Across the Universe - Radio Edit | Fiona Apple
+ - Something of an End | My Brightest Diamond
+
+===
+id: classic-soul-funk
+rank: 45
+name: CLASSIC SOUL, FUNK & BLUES
+family: Pop & Soul
+years: 1965 → 1990
+sub: The rhythm section as the whole argument — recorded live, by people who could not fix it later
+spec: 80,88,86,72,64,68,76,82,84,80,76,76,80,82,78,68,58,48,40,32
+synthType: triangle
+freqs: 68.94, 86.41, 335.14
+tracks:
+ - Easy Lover | Philip Bailey, Phil Collins
+ - I Thought It Took A Little Time | Diana Ross
+ - Maggot Brain | Funkadelic
+ - Get Down On It - Single Version | Kool & The Gang
+ - Beat It | Michael Jackson
+ - Mean Ol' Man | The Heavy
+
+===
+id: 2000s-pop
+rank: 46
+name: 2000S POP-PUNK & RADIO R&B-POP
+family: Pop & Soul
+years: 1999 → 2010
+sub: The last era of monoculture radio pop, built by a handful of songwriting teams
+spec: 82,86,80,64,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
+synthType: triangle
+freqs: 55, 68.94, 86.41
+tracks:
+ - Complicated | Avril Lavigne
+ - Crush | Jennifer Paige
+ - Say It Right | Nelly Furtado
+ - Temperature | Sean Paul
+ - Apologize | Timbaland, OneRepublic
+
+===
+id: funk-neosoul
+rank: 47
+name: FUNK & NEO-SOUL
+family: Pop & Soul
+years: 1995 → present
+sub: Live-band soul and funk rebuilt with hip-hop timing and a drummer who sings
+spec: 84,88,82,66,58,62,70,76,80,78,74,76,80,82,78,70,62,54,46,40
+synthType: triangle
+freqs: 55, 68.94, 86.41
+tracks:
+ - Come Down | Anderson .Paak
+ - Cómo Me Quieres | Khruangbin
+ - Two Fish and an Elephant | Khruangbin
+ - Stainless | The Game, Anderson .Paak
+ - Unshaken | D'Angelo
+
+===
+id: power-pop-80s
+rank: 48
+name: 80S POWER POP & NEW WAVE
+family: Pop & Soul
+years: 1978 → 1989
+sub: Sixties melodic craft played with eighties gloss and a very high male vocal
+spec: 58,68,74,70,64,66,72,78,82,80,76,78,82,84,80,72,64,56,48,40
+synthType: triangle
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - Your Love | The Outfield
+
+===
+id: game-score
+rank: 49
+name: VIDEO GAME SCORE
+family: Score & Ambient
+years: 1978 → present
+sub: Functional music written to loop indefinitely and react to a player, now a concert repertoire
+spec: 70,72,68,60,58,62,68,74,78,80,78,76,78,80,78,72,66,58,50,42
+synthType: sine
+freqs: 335.14, 420.08, 526.55
+tracks:
+ - Awakening | Bastian Kieslinger
+ - Children of the Omnissiah | Guillaume David
+ - Room Of Angel | Akira Yamaoka
+ - Peace of Akatosh (From 'Oblivion') | Dreyma
+ - Catalyst | Solar Fields
+ - Hello, Contentment | Interleave, Antonio Gradanti, Mason Lieberman
+ - Prison Air 2 | LudoWic
+ - Welcome To Los Santos | Oh No
+ - Full Confession | LudoWic
+ - MAX: PANAMA | HEALTH
+ - Elwynn Forest | Jason Hayes
+ - On the Edge of Light | Pawel Blaszczak
+ - Sabotage | Remi Gallego
+ - Forged in Fire | Alex Bhore, Eternal Time & Space
+ - Surviving Exile | Darren Korb
+ - Echoes of the Eye | Andrew Prahlow
+ - Battlefield 3 Main Theme | Johan Skugge, Jukka Rintamäki
+ - The Grip | Tangerine Dream, Woody Jackson, The Alchemist, Oh No, DJ Shadow
+ - Master Plan | Starbreeze Entertainment, Simon Viklund
+ - The Gathering Storm | Jeremy Soule
+ - Steel on Steel | Jeremy Soule
+ - Theme of Q | Capcom Sound Team
+ - Horizon | Pawel Blaszczak
+ - Simple And Clean | Hikaru Utada
+ - Second Reality (Unreal 2) | Purple Motion
+ - Ada's Theme | Capcom Sound Team
+ - Strife | Pawel Blaszczak
+ - Paused Time | Pawel Blaszczak
+ - The Saboteur Theme | EA Games Soundtrack
+ - Chapel | Joel Corelitz
+ - Corridors of Time | Malcolm Robinson
+ - MainMenu (Day) | Jesper Kyd
+ - Kingdom of Wessex | Jesper Kyd
+ - TEARS | HEALTH
+ - Malware Injection (Hacknet Official Soundtrack) | Remi Gallego
+ - Divinity - Original Sin 2 - Main Theme | Borislav Slavov
+ - Warning Call | CHVRCHES
+ - Fear not this Night | Jeremy Soule, Lzn02, Sharm
+ - UNATCO | Marc Armitage
+ - Harvest Dawn | Jeremy Soule
+ - Pound For Pound | Konrad OldMoney, EA Games Soundtrack
+ - 117 | Kazuma Jinnouchi
+ - We Were Set Up | Tangerine Dream, Woody Jackson, The Alchemist, Oh No, DJ Shadow
+ - I Am Rock | rock
+ - Save Room (Model Screen) | Masami Ueda
+ - Awaken | League of Legends, Valerie Broussard, Ray Chen
+ - Faster Than Light (From Stellaris) - Instrumental | Andreas Waldetoft
+ - Passage | Pawel Blaszczak
+ - Return | Pawel Blaszczak
+ - Estancia | Bill Elm & Woody Jackson
+ - Phantom Liberty | Dawid Podsiadło, P.T. Adamczyk
+ - Hydrogen | M.O.O.N. | none
+
+===
+id: screen-score
+rank: 50
+name: FILM & TELEVISION SCORE
+family: Score & Ambient
+years: 1960 → present
+sub: Music written to serve a picture — and increasingly listened to without one
+spec: 74,76,72,62,58,62,70,76,80,82,80,78,80,84,82,76,68,58,50,42
+synthType: sine
+freqs: 335.14, 420.08, 526.55
+tracks:
+ - Electric Blue | Daniel Edwardson, Seamus Sell
+ - Under the Paving-Stones, the Beach! | Jonny Greenwood
+ - Innocent | Volker Bertelmann
+ - Renaissance - From "Medici: Masters of Florence" | Paolo Buonvino, Skin
+ - Ma Meilleure Ennemie (from the series Arcane League of Legends) | Stromae, Pomme, Arcane
+ - Arrival of the Birds | The Cinematic Orchestra, London Metropolitan Orchestra
+ - Running Away - Extended | Infinity Train
+ - Frank's Choice | Tyler Bates
+ - The Egg | Epic Mountain
+ - Gallows (feat. Shelby Merry) | Final Space, Shelby Merry
+ - Ring of Fire | Lera Lynn
+ - Main Titles (Doom Patrol) | Clint Mansell, Kevin Kiner, Sean Kiner
+ - The Beginning | Stephen Barton
+ - Lately - From The HBO Series True Detective | Lera Lynn
+ - Beautiful Lie (From "Batman v Superman: Dawn of Justice") | Hans Zimmer, Junkie XL
+
+===
+id: world-traditional
+rank: 51
+name: TRADITIONAL & WORLD MUSIC
+family: Score & Ambient
+years: centuries → present
+sub: Living regional traditions, recorded rather than composed
+spec: 48,58,68,74,78,80,82,78,74,76,80,82,80,74,66,58,50,42,36,30
+synthType: sine
+freqs: 170.18, 213.31, 660
+tracks:
+ - Kaval Sviri | Petar Liondev, Tanya Parvanova
+ - Ondor Bondor | Otagh Band
+ - Sunjata (Sauta Tuning) | Foday Musa Suso
+ - Time Waits for No-One | Native Deen, Junaid Jamshed
+ - Why This Kolaveri Di? - The Soup of Love | Anirudh Ravichander, Dhanush
+ - Tomorrow (Sadio) | Salif Keita
+
+===
+id: dark-ambient
+rank: 52
+name: DARK AMBIENT & POST-BLACK ELECTRONICA
+family: Score & Ambient
+years: 1984 → present
+sub: Atmosphere as the entire composition — plus the Norwegian black metal band that abandoned metal for it
+spec: 86,78,60,44,38,40,44,48,52,54,56,58,60,62,64,66,64,58,50,42
+synthType: sine
+freqs: 55, 68.94, 86.41
+tracks:
+ - Machine Guns and Peacock Feathers | Ulver
+ - Teleology | Black Chamber
+ - Together | Nine Inch Nails
+ - Hope We Can Again | Nine Inch Nails
+
+===
+id: neoclassical
+rank: 53
+name: NEOCLASSICAL & CHAMBER
+family: Score & Ambient
+years: 1980 → present
+sub: Written music for small forces — minimalism's descendants, recorded like folk records
+spec: 52,62,70,72,70,72,78,82,84,84,80,78,80,84,80,72,62,52,44,36
+synthType: sine
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - La Serenissima | Rondò Veneziano
+ - Naar Vinden Graater | Váli
+ - Ab Ovo | Joep Beving
+
+===
+id: doom-jazz
+rank: 54
+name: DOOM JAZZ & DARK CABARET
+family: Score & Ambient
+years: 1994 → present
+sub: Jazz instrumentation slowed to a crawl and scored for a film that does not exist
+spec: 88,84,72,58,52,56,62,68,72,74,72,70,72,76,74,68,60,52,44,36
+synthType: sine
+freqs: 55, 68.94, 420.08
+tracks:
+ - Embers | The Kilimanjaro Darkjazz Ensemble
+
+===
+id: solo-bass
+rank: 55
+name: SOLO INSTRUMENTAL BASS
+family: Score & Ambient
+years: 1976 → present
+sub: The bass guitar played as a complete solo instrument — chords, melody and percussion at once
+spec: 96,92,80,64,52,48,50,54,58,60,58,56,58,62,64,60,52,44,38,32
+synthType: sine
+freqs: 55, 68.94, 86.41
+tracks:
+ - A Dark Light | Aram Bedrosian
+
+===
+id: jazz-standards
+rank: 56
+name: JAZZ
+family: Jazz
+years: 1917 → present
+sub: The tradition every other genre in this archive has borrowed from, sampled or misunderstood
+spec: 58,68,76,76,72,74,80,84,86,84,80,78,80,82,78,70,62,52,44,36
+synthType: sine
+freqs: 267.37, 335.14, 420.08
+tracks:
+ - Take Five | Dave Brubeck, The Dave Brubeck Quartet
+ - She's Alive | Bremer/McCoy
+ - Autumn Leaves | Paul Desmond
+ - The Theme from "Black Orpheus" | Paul Desmond

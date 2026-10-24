@@ -1,0 +1,279 @@
+# Spec-Driven Development: Writing the Thing Before You Build the Thing
+
+*A practical guide to using a written specification as the source of truth, why this stopped being optional once LLMs joined the team, and how to actually do it without ceremony swallowing your week.*
+
+---
+
+## TL;DR
+
+Spec-driven development (SDD) is the discipline of writing a precise, structured specification *before* you write code, and then treating that specification as the source of truth that drives implementation, tests, review, and future change. The spec is not a Word document that dies the moment coding starts. It is a living artifact that lives in the repo next to the code, evolves with it, and is consulted on every meaningful change.
+
+It matters more now than it did five years ago for one specific reason: large language models are extraordinarily good at translating a precise specification into working code, and extraordinarily bad at guessing what you actually meant from a one-sentence prompt. The spec is the leverage point. It is the part a human must get right. Once it is right, code becomes a relatively cheap output, not a prized possession.
+
+This post is the long version. By the end you should be able to (1) recognize when a task warrants a spec and when it does not, (2) write a spec that is detailed enough to drive implementation but small enough that you actually finish it, and (3) wire the spec into your workflow so it does not rot the moment the first PR lands.
+
+---
+
+## 1. What a "spec" actually is
+
+The word *specification* suffers from being applied to too many different artifacts, ranging from a single Jira ticket to a 200-page IEEE document. For the purposes of this post, a spec is a written document that answers, at minimum, the following six questions, in this order:
+
+1. **Intent.** What problem are we solving, in user-facing or business-facing terms? Why now?
+2. **Scope.** What is included, what is explicitly excluded (the "non-goals"), and what is deferred to a future iteration?
+3. **Behavior.** Given inputs *X*, the system produces outputs *Y*, subject to invariants *Z*. Edge cases are enumerated, not waved at.
+4. **Interfaces.** Concrete shapes: function signatures, request/response schemas, database columns, event payloads, CLI arguments. Whatever crosses a boundary is named and typed.
+5. **Acceptance criteria.** A checklist of testable conditions that, when all true, mean the work is done. Not "it works" — concrete predicates.
+6. **Risks and open questions.** What could go wrong? What did we decide *not* to decide yet, and who owns resolving each open question?
+
+This is a deliberately small list. A specification that answers these six things in two pages is more useful than one that buries the same answers inside thirty pages of background. Brevity is a feature.
+
+The key property of a useful spec is that **a competent person — or a competent model — should be able to implement it without needing to ask the author what they meant.** If a reader has to guess about behavior, the spec has a hole. Holes are fine; they are the open questions in section 6. Pretending the holes are not there is what fails.
+
+---
+
+## 2. Why this is suddenly load-bearing
+
+Spec-driven development is not new. It is older than most of the people writing about it today. NASA shipped Apollo on it. Telecom standards bodies have run on it for half a century. What changed in the last two years is that the cost-benefit ratio shifted dramatically for ordinary application code, for two reasons.
+
+**Reason one: LLMs collapsed the cost of code generation.** The mechanical translation from "here is a precise description of a function" to "here is the function" used to cost an engineer somewhere between fifteen minutes and three hours. It now costs roughly the price of a few thousand tokens and somewhere between five seconds and a minute of wall-clock time. That means the bottleneck of a software project has shifted upstream. The hard part is no longer typing the code. The hard part is knowing precisely what code to type.
+
+**Reason two: LLMs have a specific, well-documented failure mode under vague prompts.** Ask a model to "build a login system" and you will get a plausible-looking login system that may or may not match anything you actually need. Ask the same model to implement a spec that says *"POST /auth/login accepts {email, password}, returns 200 with a httpOnly session cookie scoped to .example.com on success, 401 with no body on bad credentials, and rate-limits to 5 attempts per IP per minute returning 429 thereafter"* — and you will get something close to correct on the first try.
+
+The second prompt is not magic. It is a spec. A small one, but a spec.
+
+The combination of these two facts means that the engineers who write good specs now produce code at a rate that looks like cheating to engineers who do not. It is not cheating. It is leverage applied in the right place.
+
+---
+
+## 3. The full loop, in one diagram
+
+The lifecycle of an SDD task looks like this:
+
+```
+intent  →  spec  →  plan  →  implement  →  verify  →  ship  →  evolve
+   ↑                                                              │
+   └──────────────────── spec is updated ◄────────────────────────┘
+```
+
+Each arrow is a deliberate step. None of them are skipped. The crucial property of the loop is that the **last arrow points back at the spec**. When the system changes after shipping, the spec changes first, and then the code follows. If you only ever update the code, the spec rots, and within a few months it is worse than no spec at all because it is a confidently-written document that is now lying to readers.
+
+Let us walk through each phase.
+
+### 3.1 Intent
+
+Someone — a user, a product manager, you yourself — has a desire. The desire is usually expressed in fuzzy human terms: "the upload page is too slow," "we need a way for users to share their dashboards," "I want a CLI flag for this." Intent is the raw material. It is rarely complete. Your first job in SDD is to interrogate the intent until you understand the *underlying* desire well enough to scope it.
+
+A useful trick: ask "and then what?" until the answers stop changing.
+- "I want a share button on dashboards." → And then what?
+- "Then a user clicks it and gets a link." → And then what?
+- "Then they paste it to a colleague." → And then what?
+- "Then the colleague opens it and sees the dashboard read-only." → And then what?
+- "Then maybe they edit a copy of it." → *(Now we are in copy semantics, which is a different feature.)*
+
+You stop when you have a stable set of behaviors. The intent section of the spec captures the stable set. It does not capture the speculative drift past the stable point — that is for a future spec.
+
+### 3.2 Spec
+
+You now write the document described in section 1. Two practical notes:
+
+- **Write the spec in a file that lives in the repo.** Not Confluence, not Notion, not a Google doc. The spec lives next to the code it describes, ideally in a `specs/` or `docs/specs/` directory, named after the feature: `specs/2026-04-share-link.md`. Reviewers can read the spec in the same PR they review the code. Diffs to the spec are tracked just like diffs to the code.
+- **Write the spec at the level of detail where ambiguity becomes painful.** If you write *"validates the email field"* and you cannot tell from the sentence alone whether `user@localhost` is allowed, the sentence is too vague. Write it more precisely. Conversely, do not specify the indentation style of the implementation — that belongs in the linter, not the spec.
+
+A useful exercise while drafting: read your spec aloud and try to catch yourself on sentences that hand-wave. The phrases *"handle errors gracefully," "appropriate validation," "reasonable performance,"* and *"as expected"* are tells. Each one is a hole. Either fill it, or move it to section 6 and assign an owner.
+
+### 3.3 Plan
+
+The plan is the bridge from spec to code. It breaks the spec into a sequence of changes, each of which is small enough to review in one sitting. A plan is not a Gantt chart. It is a numbered list:
+
+1. Add `share_links` table with columns `(id, dashboard_id, token, expires_at, created_by, created_at)`.
+2. Add `POST /dashboards/:id/share` endpoint per spec §4.2.
+3. Add `GET /shared/:token` route that renders dashboard in read-only mode per spec §4.3.
+4. Add link-generation UI in dashboard header per spec §5.
+5. Add E2E test that walks the create-link / open-link / read-only-render flow.
+
+Each item maps to a section of the spec. Each item is a candidate PR. If an item does not map to anything in the spec, you have either discovered missing scope (update the spec) or discovered scope creep (delete the item).
+
+### 3.4 Implement
+
+This is where, if you are working with an LLM, you hand it the spec, the relevant section, and the surrounding code, and ask it to produce the change. If you are working without one, this is where you write the code yourself. The crucial discipline is that **the spec is the contract.** If the implementation diverges from the spec, one of two things has happened:
+
+- The spec was wrong. Stop, fix the spec, then continue. Do not let the code silently drift from the document.
+- The implementation is wrong. Fix the implementation.
+
+The temptation, especially under deadline pressure, is to silently let the code win and "fix the spec later." Later does not come. The spec dies the day you do this. Discipline here is what separates SDD-as-practiced from SDD-as-aspiration.
+
+### 3.5 Verify
+
+The acceptance criteria from section 5 of the spec become test cases. Every numbered criterion gets at least one test. If a criterion cannot be tested — for instance, *"the page feels snappy"* — that is a sign the criterion is not concrete enough; rewrite it as *"95th-percentile interaction latency is under 100 ms on a mid-range laptop on a wired connection."* Now it is a test.
+
+Code review in SDD has a specific shape: the reviewer reads the spec first, then the code, and asks one core question for each diff hunk: *"does this hunk implement something the spec calls for, and does it do so correctly?"* Code that does something the spec does not call for is suspicious. Code that fails to do something the spec does call for is incomplete. This focuses review on the right axis.
+
+### 3.6 Ship and evolve
+
+Ship the change. The spec ships with the code, in the same PR, and lives forever in the repo. When the next change to this feature comes — and it will — the spec is the first file you open and the first file you edit. The order of operations on a follow-up change is identical to the original loop: intent, spec update, plan, implement, verify.
+
+This is the discipline that prevents specs from rotting. A spec that is only ever appended to during the original feature build will be useless within a quarter. A spec that is the first file edited on every change to its feature will still be accurate years later.
+
+---
+
+## 4. A worked example: a small spec, end to end
+
+Let us write a real spec for a small feature, so the abstractions in section 3 have something concrete to land on. The feature: a CLI tool that takes a directory and produces a single Markdown file containing the contents of every text file in the directory, suitable for pasting into an LLM.
+
+Here is the spec.
+
+---
+
+> **Feature:** `flatten-dir` CLI
+>
+> **Status:** Draft, 2026-04-25
+>
+> **Author:** fezcode
+>
+> ### 1. Intent
+> Users of frontier LLMs frequently want to paste an entire small project as context. Manually concatenating files is tedious. This tool produces a single Markdown document from a directory tree, with each file rendered as a fenced code block annotated with its path and a language tag.
+>
+> ### 2. Scope
+> **In scope:**
+> - Reading every text file under a given root directory.
+> - Producing a single Markdown document on stdout.
+> - Filtering by extension, with sensible defaults.
+> - Respecting `.gitignore`.
+>
+> **Out of scope:**
+> - Binary file handling (these are skipped, not encoded).
+> - Files larger than 1 MB (skipped with a warning to stderr).
+> - Watching for changes; this is a one-shot tool.
+> - Any kind of LLM call. This tool only produces text.
+>
+> **Deferred:**
+> - A `--max-tokens` flag that truncates intelligently. (Open question: which tokenizer?)
+>
+> ### 3. Behavior
+> Given a root directory `R`:
+>
+> 1. Walk `R` recursively. For each file `F` encountered:
+>    - If `F` matches a pattern in any `.gitignore` ancestor, skip.
+>    - If `F`'s extension is not in the allowed list (default: `.py .js .ts .tsx .jsx .go .rs .md .txt .json .yaml .yml .toml .css .html`), skip.
+>    - If `F`'s size exceeds 1 MB, skip and emit a warning to stderr in the form `skipped <path>: 1.0 MB > limit`.
+>    - Otherwise, append the file's contents to the output document, formatted per §4.
+> 2. After all files are processed, the document is written to stdout in full. No partial flushes mid-file.
+> 3. Exit code: `0` if at least one file was emitted, `2` if zero files matched, `1` on any I/O error.
+>
+> ### 4. Output format
+> Each file produces a section of exactly this form:
+>
+> ```
+> ## `<relative path from root, with forward slashes>`
+>
+> ```<lang tag>
+> <file contents verbatim>
+> ```
+>
+> ```
+>
+> The language tag is derived from the extension via a fixed lookup table (see appendix). Unknown extensions get the empty string (still produces a valid fenced block).
+>
+> Files are emitted in lexicographic order of their relative path.
+>
+> ### 5. Acceptance criteria
+> - [ ] Running `flatten-dir ./testdata/simple` on the fixture in `testdata/simple` produces byte-for-byte the contents of `testdata/simple.expected.md`.
+> - [ ] Running on a directory with a `.gitignore` containing `secret.txt` does not include `secret.txt` in the output.
+> - [ ] Running on an empty directory exits with code `2` and produces no stdout output.
+> - [ ] Running on a directory containing a 2 MB file produces a stderr warning and exits `0` if any other file was emitted.
+> - [ ] Output is deterministic: two consecutive runs on the same input produce identical output.
+>
+> ### 6. Risks and open questions
+> - **Open:** symlinks. Should we follow them? Default proposal: no, with a `--follow-symlinks` flag deferred. *(Owner: fezcode)*
+> - **Risk:** very large directories may exhaust memory because we buffer the whole document. Acceptable for v1; revisit if users hit it.
+
+---
+
+That is a complete spec for a real tool. It fits on one screen. It is precise enough that an LLM, handed this document and an empty Go project, can produce a working implementation in one shot — and I have verified this empirically more than once. It is also precise enough that a reviewer can look at a PR and say "this does not match §3 step 3" with no ambiguity.
+
+Notice what the spec does *not* contain: the choice of language, the package layout, the name of the function that walks the directory, the way the lookup table is encoded. Those are implementation choices. They belong in the code.
+
+---
+
+## 5. When SDD pays off, and when it does not
+
+Spec-driven development has a real cost. Writing the spec for the example above took roughly twenty minutes. For tasks where the implementation itself takes twenty minutes, that is a 100% overhead. The honest accounting is:
+
+**SDD pays off clearly when:**
+- The work involves more than one engineer or one engineer plus an LLM.
+- The behavior is subtle enough that "I'll figure it out as I go" tends to produce bugs.
+- The interface crosses a boundary (API, CLI, file format, schema) where future compatibility matters.
+- You will need to come back to this code in three months and remember why it does what it does.
+- You are using an LLM to write significant portions of the code.
+
+**SDD is overkill when:**
+- The change is a one-line bug fix.
+- The change is a pure refactor with no behavior change. (Though: the *test suite* is then your spec, and it had better be worth its name.)
+- The work is exploratory — you are trying to find out whether something is even possible. Specs come after the spike, not before.
+
+A useful heuristic: if you are about to spend more than half a day on a task, you almost certainly want a spec. If you are about to spend more than two days on a task, the spec is non-negotiable. Below half a day, use judgment.
+
+---
+
+## 6. SDD with an LLM: practical mechanics
+
+If you are using an LLM as a coding partner — which, statistically, you are — there are some specific practices that make SDD dramatically more effective.
+
+**Put the spec in the prompt, not in your head.** When you ask the model to implement section §3.2, paste section §3.2 into the prompt, verbatim. Do not paraphrase. The model is good at faithful translation and bad at reading your mind.
+
+**Ask the model to find holes in the spec before implementing.** A useful first prompt is: *"Here is a spec for feature X. Before writing any code, list every place where the spec is ambiguous, contradictory, or silent on a behavior you would need to decide. Do not propose answers; just enumerate the gaps."* This converts the model into a free spec reviewer. The output is often startling — the holes you missed are obvious in retrospect, and almost always worth filling before any code is generated.
+
+**Treat the model's questions as inputs to the spec, not the code.** When the model asks "should this support negative integers?" the answer goes into the spec, not into a code comment. Then you (or the model) implement against the now-extended spec.
+
+**Generate tests from the acceptance criteria first.** Before generating any production code, hand the model the acceptance criteria and ask it to produce a test file. Review the tests against the spec. Then have the model produce the implementation against the tests. This is TDD wrapped inside SDD; the spec drives the tests, the tests drive the code, and you have two layers of review before any production code is written.
+
+**Keep the spec in the repo so the model can find it.** If you are using an agentic coding assistant that can read your filesystem, putting `specs/feature.md` in the repo means the model can re-read it any time you ask it to make a change. This solves the "the spec drifted from the code three months later" problem almost for free, because every change request starts with the model re-reading the spec.
+
+---
+
+## 7. Common ways SDD goes wrong
+
+The pattern fails in predictable ways. Recognizing them is most of the battle.
+
+**The spec is written but never updated.** This is the dominant failure mode. Six months in, the spec describes a system that no longer exists. Fix: make spec edits part of the PR template. A code change without a corresponding spec change should require a sentence in the PR description explaining why the spec did not need to change.
+
+**The spec is too detailed and becomes a second codebase.** If the spec specifies the variable names, indentation, and exact algorithm, you are now maintaining the same software twice in two different languages, and one of them is English. Fix: specs describe *behavior at the boundary*. They do not describe internals. If you find yourself writing pseudocode in the spec, stop and ask whether the boundary is really at that level of detail.
+
+**The spec is written after the code.** This is sometimes called "spec-washing." It produces a document that is technically true but useless, because every implementation choice is post-rationalized as a requirement. Fix: write the spec first. If you cannot, mark the document as a *retrospective design note*, not a spec, and do not pretend it drove the work.
+
+**One giant spec for a giant feature.** Specs over ~5 pages tend to be unread, which is worse than nonexistent. Fix: split. A feature with five subsystems gets six specs (one parent, five children) or just five sibling specs that cross-reference each other.
+
+**The spec disagrees with the code and nobody knows which is right.** This means the discipline broke at some point. Fix: pick the document the team trusts more, declare it the source of truth for this resolution, and commit a corrective change to bring the other in line. Then write a one-line postmortem in the spec's changelog explaining how they drifted, so the next person knows.
+
+---
+
+## 8. SDD adjacent to other disciplines
+
+A few quick contrasts, because spec-driven development gets confused with neighboring practices.
+
+- **TDD (Test-Driven Development).** Tests-first is a strict subset of SDD: the tests *are* the executable portion of the spec. SDD adds the prose, the schemas, the non-goals, the open questions — the parts of intent that do not fit in an assertion. You can do TDD inside SDD. You cannot do SDD inside TDD without smuggling a lot of comments into your test file.
+- **Design docs.** A design doc traditionally describes *how* a system will be built. A spec describes *what* the system must do. The two are complementary; many teams write both. The spec is the contract; the design doc is the construction plan.
+- **BDD (Behavior-Driven Development).** Gherkin-style "given/when/then" is one specific syntax for the behavior section of a spec. It works well for user-facing flows and poorly for type-level invariants. Use it where it fits; do not let it become a religion.
+- **Vibe coding.** The opposite end of the dial: prompt the model, accept what comes out, ship it if it runs. SDD is the disciplined response to vibe coding. The two are not enemies — vibe coding is genuinely the right tool for throwaway scripts and exploratory spikes — but they should not be confused for each other.
+
+---
+
+## 9. Starting tomorrow
+
+If you want to begin practicing SDD without committing your team or your project to a process change, here is the smallest possible adoption path:
+
+1. **Pick one upcoming task** that will take you more than a day. Not a tiny one, not a giant one.
+2. **Before writing any code, write the spec** in a single Markdown file. Use the six-section structure from section 1. Time-box the writing to ninety minutes. If it spills over, the task is probably too big and needs splitting.
+3. **Commit the spec to the repo** in a `specs/` directory, on its own branch, in its own PR. Get it reviewed independently of any code. Reviewers should be able to imagine the implementation from reading it; if they cannot, fix the spec.
+4. **Build against the merged spec.** Treat the spec as the contract; if you discover the spec is wrong, update the spec in the same PR as the code that revealed the problem.
+5. **Look back after shipping.** Ask yourself whether the spec saved time, cost time, or broke even. Honest accounting compounds. If it saved time, do it again on the next task. If it cost time, ask why — was the spec too detailed, too vague, written too late?
+
+Five or six iterations of that loop and you will have a working sense of what level of spec your work actually needs. That sense — the calibration of how much specification is enough — is the real skill. The format is the easy part.
+
+---
+
+## 10. Closing
+
+Spec-driven development is, at heart, a wager that the cost of writing a careful description of what you intend to build is lower than the cost of building the wrong thing twice. For most non-trivial work, the wager pays off. With LLMs in the loop, it pays off by a wider margin than it ever did before, because the cost of *building* dropped, while the cost of *deciding what to build* did not.
+
+The discipline is not glamorous. The spec is rarely the part of a project anyone shows off. But it is the part that makes the rest of the project tractable — for your future self, for your colleagues, and for the increasingly capable models you are inviting into your editor. Write the thing before you build the thing. The thing will be better.

@@ -1,0 +1,36 @@
+id: goth-darkwave
+rank: 08
+name: GOTH, DARKWAVE & COLDWAVE
+family: Rock & Metal
+years: 1979 → present
+sub: Post-punk turned inward — chorused bass, cavernous reverb, and melody used as mourning
+spec: 76,82,78,66,60,64,70,76,80,80,78,76,80,84,82,76,68,58,48,40
+synthType: square
+freqs: 68.94, 335.14, 420.08
+
+what:
+ Goth grew directly out of British post-punk around 1979 — Bauhaus, Siouxsie, Joy Division — and hardened into a scene with its own clubs and dress code. The Cure moved from that austerity into something far more melodic without ever losing the register. Darkwave and coldwave are the continental synthesizer-led branches, and the strain has proven remarkably durable: Chromatics, Crystal Castles and Public Memory are all playing recognisably the same music forty years on.
+
+artists:
+ Bauhaus, Siouxsie and the Banshees, Joy Division and *The Cure*; Clan of Xymox and Dead Can Dance on the darkwave side; Finland's *HIM* and Italy's Lacuna Coil at the gothic-metal crossover; the modern wing of *Chromatics*, Crystal Castles, Public Memory and the neofolk of *ROME*.
+
+trivia:
+ The Cure recorded *Disintegration* (1989) while Robert Smith was convinced he was wasting his thirtieth year; the label thought it was commercial suicide and it became their biggest album. Chromatics finished and then deleted an entire album, _Dear Tommy_, reportedly destroying the physical stock — it has never been released, and the band dissolved in 2021 with it still unheard.
+
+sonic:
+ Bass is the lead instrument, played high on the neck through chorus. Guitars provide texture — flanged, tremolo-picked, drenched in reverb — rather than riffs. Drums are simple and often machine-assisted, with a heavy gated snare. Vocals sit in a low baritone or a detached high register, and the whole mix is deliberately reverberant enough to blur the transients.
+
+gear:
+ Fender Bass VI and Rickenbacker basses; Boss CE-2 chorus and Electro-Harmonix Electric Mistress flanger; Roland Space Echo and large-plate or hall reverbs; Roland Juno and Korg Poly-6 for the pads. The modern wing works largely in-the-box but with careful analogue emulation, because the period reverb character is the genre marker.
+
+prod:
+ Reverb is applied at tracking rather than in the mix, so it is baked in and non-negotiable — a deliberate refusal of clarity. The bass is compressed hard and given more high-mid than a rock record would allow so the chorus is audible. Mastering keeps the low-mids full and the top end soft; brightening these records makes them sound cheap immediately.
+
+tracks:
+ - To Die Among Strangers | ROME
+ - Suffocation | Crystal Castles
+ - Cherry | Chromatics
+ - Gone With The Sin | HIM
+ - Lullaby - Remastered | The Cure
+ - Heir | Public Memory
+ - Delirium | Lacuna Coil

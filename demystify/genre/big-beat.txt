@@ -1,0 +1,38 @@
+id: big-beat
+rank: 32
+name: BIG BEAT & TURNTABLISM
+family: Electronic
+years: 1993 → present
+sub: Breakbeats at rock volume — the crate-digger's answer to the dancefloor
+spec: 84,90,80,58,52,58,66,72,76,74,70,72,78,82,80,72,62,52,44,36
+synthType: sawtooth
+freqs: 55, 68.94, 86.41
+
+what:
+ Big beat was Britain's mid-90s collision of hip-hop breaks, acid house and rock dynamics — loud, funny, and built for festival tents. The Chemical Brothers and Fatboy Slim took it to number one; alongside it ran a quieter, more studious tradition of pure turntable composition, where *DJ Shadow's Endtroducing* (1996) proved an album could be built entirely from other people's records.
+
+artists:
+ The Chemical Brothers, *Fatboy Slim* (Norman Cook), The Prodigy, Propellerheads, Apollo 440, Overseer; the turntablist line through *DJ Shadow*, Cut Chemist, Kid Koala and, later, Chinese Man and the French cut-and-paste scene.
+
+trivia:
+ *Endtroducing* was built almost entirely on an Akai MPC60 II from records dug out of a Sacramento basement store, and the _Guinness Book of Records_ once certified it as the first album made solely from samples — a claim that is arguable but stuck. Fatboy Slim's "The Rockafeller Skank" loops a surf-guitar break from The Just Brothers over a vocal lifted from a 1980s hip-hop record, which is roughly the whole genre in one track.
+
+sonic:
+ Breakbeats — usually a real drum loop, filtered and compressed until it distorts — under a repeating riff and a shouted or sampled vocal hook. Tempos sit around 110–140 BPM. The mix is deliberately crushed: the drums occupy far more of the spectrum than a dance record normally allows, and the bass is a fuzzed-out mid-heavy line rather than a clean sub.
+
+gear:
+ Akai MPC60/S950 samplers, Technics SL-1200 turntables, a Roland SH-101 or Juno for the acid line, and vintage fuzz and filter pedals used on the drum bus. DJ Shadow famously worked almost entirely within the MPC's limited memory, which forced the terse, looping structures.
+
+prod:
+ The drums are the record. Producers overdrive the break through a preamp or tape, then compress it again on the way out, accepting the pumping as character. Arrangement is built for a big room — long builds, an abrupt drop, and a breakdown that removes everything but the vocal. Masters from the era are among the loudest of the 1990s, which suits music whose whole aesthetic is excess.
+
+tracks:
+ - Galvanize | The Chemical Brothers, Q-Tip
+ - Ain't Talkin' 'Bout Dub | Apollo 440
+ - Ordinary Man | Chinese Man
+ - Dusty Fingers - Live | DJ Williams
+ - Lift Me Up (Radio Mix) | Moby
+ - Meteorology | Overseer
+ - Building Steam With A Grain Of Salt | DJ Shadow
+ - The Rockafeller Skank | Fatboy Slim
+ - Transmission Mountain - Live At Albert Hall | DJ Shadow

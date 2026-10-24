@@ -1,0 +1,14 @@
+LABEL: Syntax
+SUBTEXT: The Grammar
+
+In a world of configuration hell, PIML offers a sanctuary of clarity. Our architecture prioritizes human vertical scanning and structural clarity over machine-centric verbosity.
+
+- **No Quotes**: Keys and simple strings don't need them — `"..."` is there when you want to force a string.
+- **No Trailing Commas**: End of line means end of value.
+- **Explicit Structure**: Parentheses (key) clearly denote fields.
+- **Lists**: Denoted by > for clear, vertical scanning — and they nest.
+- **Comments**: Native # support, full-line and inline; a glued # stays literal, so URLs need no escaping.
+- **Multi-line Strings**: Indentation-based text blocks, with interior blank lines preserved.
+- **Strict Indentation**: Exactly two spaces per level. Tabs and skipped levels are errors, not guesses.
+
+PIML is designed to be the "Anti-JSON" — removing the noise and keeping the signal. It's not just a format; it's a way of organizing thought.

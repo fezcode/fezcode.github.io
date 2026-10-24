@@ -1,0 +1,300 @@
+{
+  "name": "Qemik",
+  "version": "0.1.0",
+  "status": "Available now",
+  "tagline": "Virtual machines, with backbone.",
+  "subtitle": "A native QEMU desktop for Windows. Create a Linux workspace. Keep a Windows sandbox. Give an old system another life.",
+  "platforms": [
+    "Windows x64"
+  ],
+  "stack": [
+    "C#",
+    ".NET 10",
+    "Avalonia 12",
+    "SQLite",
+    "QEMU"
+  ],
+  "repo": "https://github.com/fezcode/Qemik",
+  "follow": "https://github.com/fezcode",
+  "hero": {
+    "wordmark": "qemik",
+    "corner": "Virtual machines—\nwith backbone",
+    "note": "A native QEMU desktop for Windows, from—Fezcode.",
+    "image": "/images/projects/qemik/artwork.webp"
+  },
+  "intro": {
+    "lead": "Welcome to a workspace where every machine has room to breathe. Qemik brings QEMU's flexibility into a native Windows desktop—machines, settings, installation media and guest controls, living together in one local place.",
+    "aside": [
+      "The name is QEMU + kemik—the Turkish word for bone.",
+      "Inspired by UTM. Built on Airlift's C# and Avalonia stack."
+    ],
+    "thumbs": [
+      "/images/projects/qemik/library.webp",
+      "/images/projects/qemik/os-catalog.webp"
+    ]
+  },
+  "choose": {
+    "eyebrow": "Discover what you can run",
+    "title": "Choose the machine you need",
+    "body": "Linux and Windows templates, a searchable library and per-machine options. Every machine gets its own disks, its own settings and its own window.",
+    "rulesLabel": "Every Qemik® machine—is built on the same rules:",
+    "rules": [
+      "Local",
+      "WHPX-fast",
+      "VirGL",
+      "Blueprints",
+      "Clipboard",
+      "Shared folders"
+    ]
+  },
+  "machines": [
+    {
+      "name": "Linux Workspace",
+      "short": "Linux W®",
+      "image": "/images/projects/qemik/machine.webp",
+      "blurb": "Ubuntu, Fedora, Linux Mint, openSUSE or Debian—downloaded, verified and mounted for you, then accelerated with VirGL inside Qemik's own window.",
+      "details": [
+        [
+          "Guest",
+          "Linux · x86_64"
+        ],
+        [
+          "CPUs",
+          "4 virtual"
+        ],
+        [
+          "Memory",
+          "4 GB"
+        ],
+        [
+          "Display",
+          "VirtIO · VirGL"
+        ],
+        [
+          "Clipboard",
+          "spice-vdagent"
+        ],
+        [
+          "Shared folders",
+          "WebDAV"
+        ]
+      ],
+      "cost": "Free to create"
+    },
+    {
+      "name": "Windows Sandbox",
+      "short": "Windows S®",
+      "image": "/images/projects/qemik/library.webp",
+      "blurb": "Keep a disposable Windows next to your real one. Bring the publisher's ISO, tune the hardware, and throw it away without touching your host.",
+      "details": [
+        [
+          "Guest",
+          "Windows · x86_64"
+        ],
+        [
+          "CPUs",
+          "4 virtual"
+        ],
+        [
+          "Memory",
+          "8 GB"
+        ],
+        [
+          "Acceleration",
+          "WHPX"
+        ],
+        [
+          "Sound",
+          "Intel HD Audio"
+        ],
+        [
+          "Media",
+          "Live ISO swap"
+        ]
+      ],
+      "cost": "Bring your own ISO"
+    },
+    {
+      "name": "Blueprint",
+      "short": "Blueprint®",
+      "image": "/images/projects/qemik/blueprint-details.webp",
+      "blurb": "Turn a stopped machine into a starting point, then stamp out independent copies with fresh machine IDs and MAC addresses—ISOs stay shared read-only.",
+      "details": [
+        [
+          "Source",
+          "Any stopped VM"
+        ],
+        [
+          "Copies",
+          "As many as you like"
+        ],
+        [
+          "Machine IDs",
+          "Regenerated"
+        ],
+        [
+          "MAC addresses",
+          "Regenerated"
+        ],
+        [
+          "ISOs",
+          "Shared, read-only"
+        ],
+        [
+          "Disks",
+          "Independent"
+        ]
+      ],
+      "cost": "One click"
+    }
+  ],
+  "steps": {
+    "eyebrow": "From download to first boot",
+    "title": "Your first machine is",
+    "link": "five steps away.",
+    "items": [
+      [
+        "Set up QEMU",
+        "Open QEMU engine, check the build, download and verify it, then launch the publisher's setup—or locate an engine you already have."
+      ],
+      [
+        "Choose a system",
+        "Open Download an OS, or create a machine and attach a local ISO."
+      ],
+      [
+        "Review the hardware",
+        "Memory, CPUs, storage, boot firmware and display—each on its own page."
+      ],
+      [
+        "Start and install",
+        "Open the guest display and follow the operating system's installer."
+      ],
+      [
+        "Boot from disk",
+        "Eject the installer and put the system disk first in the boot order."
+      ]
+    ]
+  },
+  "why": {
+    "marquee": "Why Qemik?*",
+    "eyebrow": "Want to know what makes—Qemik different?",
+    "cards": [
+      {
+        "title": "A guest window\nthat feels\nat home",
+        "body": "Grouped display, keyboard, device, clipboard and power controls. One button hides the toolbar and leaves just the guest.",
+        "image": "/images/projects/qemik/display-settings.webp"
+      },
+      {
+        "title": "Resolution that\nfollows—the window",
+        "body": "Resize the window and the guest follows, up to 4K on the integrated viewer. Text travels both ways through the clipboard.",
+        "image": "/images/projects/qemik/system-settings.webp"
+      },
+      {
+        "title": "Your machines\nstay—yours",
+        "body": "The library lives on your computer. Removing an entry keeps its files unless you choose them, one by one, for deletion.",
+        "image": "/images/projects/qemik/library-empty.webp"
+      }
+    ]
+  },
+  "settings": {
+    "eyebrow": "Ready to tinker?",
+    "title": "Tune every part of the machine",
+    "levelsLabel": "Qemik® settings come in three depths:",
+    "levels": [
+      [
+        "Everyday",
+        "templates & catalog"
+      ],
+      [
+        "Tinkerer",
+        "CPU, memory, display"
+      ],
+      [
+        "Expert",
+        "raw QEMU arguments"
+      ]
+    ],
+    "body": "Configure each machine through dedicated settings pages. While a VM runs, View settings shows its startup configuration and current mounted media without allowing hardware edits.",
+    "cards": [
+      {
+        "title": "Official images,\nverified",
+        "level": "Everyday",
+        "body": "Publisher metadata, resumable downloads, checksum verification and installer mounting.",
+        "image": "/images/projects/qemik/os-catalog.webp"
+      },
+      {
+        "title": "CPU, memory\n& acceleration",
+        "level": "Tinkerer",
+        "body": "WHPX for fast compatible x86 guests; TCG emulation for everything else.",
+        "image": "/images/projects/qemik/system-settings.webp"
+      },
+      {
+        "title": "Drives, boot\n& firmware",
+        "level": "Tinkerer",
+        "body": "Attach disks and ISOs, set cache modes and boot order, choose UEFI firmware.",
+        "image": "/images/projects/qemik/settings-drives.webp"
+      },
+      {
+        "title": "An engine you\ncan inspect",
+        "level": "Expert",
+        "body": "Find, download, verify and set up QEMU for Windows from inside the app.",
+        "image": "/images/projects/qemik/engine.webp"
+      }
+    ]
+  },
+  "quotes": {
+    "eyebrow": "In its own words",
+    "items": [
+      {
+        "text": "A little space for a whole other system.",
+        "who": "Qemik",
+        "where": "Virtual machines page"
+      },
+      {
+        "text": "Make room for another world. Run a Linux workspace, test Windows, or bring an older system back to life.",
+        "who": "Qemik",
+        "where": "Empty library"
+      },
+      {
+        "text": "Ready. Your machines stay on your computer.",
+        "who": "Qemik",
+        "where": "Status bar"
+      }
+    ]
+  },
+  "wizard": {
+    "systems": [
+      "Ubuntu",
+      "Fedora",
+      "Linux Mint",
+      "openSUSE",
+      "Debian",
+      "Windows"
+    ],
+    "memory": [
+      2,
+      4,
+      8,
+      16
+    ],
+    "cpus": [
+      1,
+      2,
+      4,
+      8
+    ]
+  },
+  "build": [
+    ".\\build.ps1 -Test -Publish",
+    ".\\dist\\win-x64\\Qemik.exe"
+  ],
+  "closing": {
+    "eyebrow": "Interested in another world?\nBuild one of your own",
+    "marquee": "Boot your machine—"
+  },
+  "footer": {
+    "note": "Qemik 0.1.0 is out for Windows x64. Grab it from GitHub Releases, or build it from source with the .NET 10 SDK.",
+    "blurb": "Meet Qemik®—virtual machines\nwith backbone, on Windows."
+  },
+  "releases": "https://github.com/fezcode/Qemik/releases"
+}

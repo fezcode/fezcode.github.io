@@ -1,0 +1,42 @@
+id: aspect-ratio-as-a-device
+rank: 16
+name: ASPECT RATIO AS A DEVICE
+family: Camera
+years: 2012 → present
+sub: The shape of the frame changed mid-film, so the border itself carries information
+
+ascii:
+┌────────────────────────────────────────┐
+│ ┌────────┐  ┌──────────┐  ┌───────────┐│
+│ │ 1.37:1 │  │  1.85:1  │  │  2.39:1   ││
+│ └────────┘  └──────────┘  └───────────┘│
+│  memory      present       the myth     │
+└────────────────────────────────────────┘
+
+what:
+ Treating the frame's proportions as a variable rather than a fixed format. A film may switch between ratios to separate timelines, open up for a set piece, or squeeze to a near-square box to make a world feel enclosed. Ratios carry inherited associations: 1.37 reads as archival, 1.85 as ordinary, 2.39 as epic, and a film can borrow those associations simply by changing shape.
+
+artists:
+ Wes Anderson gives each of the three time periods in *The Grand Budapest Hotel* its own ratio, so the audience is told which decade they are in before a word is spoken. Joel Coen shoots *The Tragedy of Macbeth* in a boxy 1.19 to press the frame around its actors. Paweł Pawlikowski keeps *Cold War* in 4:3 to trap two people inside the same narrow rectangle. Zack Snyder released *Justice League* in 4:3 to preserve a composition intended for tall screens.
+
+trivia:
+ *The Grand Budapest Hotel* uses 1.37:1 for its 1930s sections, 2.35:1 for the 1960s and 1.85:1 for the 1980s, matching each era to the format that era actually shot in. The joke is archival accuracy used as a wayfinding device, and it works on audiences who could not name a single one of those numbers.
+
+sonic:
+ Shape is felt rather than read. A narrower frame crowds a face and makes a room feel shorter; a wider one isolates a figure in landscape. Because the change happens at a cut, it can mark a transition more cleanly than any dissolve, and because almost nobody consciously tracks ratios, the information arrives without announcing itself.
+
+gear:
+ Mostly a decision about framing charts and monitoring, since modern sensors are cropped rather than reshot. The complication is downstream: every deliverable, from a cinema DCP to a streaming master, has to carry the changes intact, and a careless conversion will letterbox or crop them into uniformity.
+
+prod:
+ Cheap to shoot and awkward to distribute. Television and streaming platforms have historically fought variable ratios, some players stretch or zoom automatically, and phone viewing punishes a boxy frame. Several films with deliberate ratio changes have shipped flattened versions, which is why directors who care about it tend to say so loudly.
+
+examples:
+ - The Grand Budapest Hotel | one ratio per decade
+ - The Tragedy of Macbeth | 1.19, pressed around the actors
+ - Cold War | two people in one narrow rectangle
+ - Zack Snyders Justice League | 4:3 preserved on purpose
+ - Sin City | frames shaped to match panels
+ - Citizen Kane | the academy frame used for ceilings
+ - Mad Max Fury Road | centred for the eye, wide for the road
+ - Lupin III The First | ratio matched to its source

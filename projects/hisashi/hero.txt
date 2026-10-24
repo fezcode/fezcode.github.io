@@ -1,0 +1,6 @@
+# A bar at the top of
+every monitor you own
+
+image: /images/projects/hisashi/banner.svg
+
+Hisashi (庇) is Japanese for *eaves* — the protruding edge of a roof, the strip at the top of a structure. It is a plugin-driven top bar for Windows, built on .NET 9 and Avalonia, and every display gets its own with its own widgets, theme and behavior.

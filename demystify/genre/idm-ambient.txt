@@ -1,0 +1,61 @@
+id: idm-ambient
+rank: 28
+name: IDM & AMBIENT TECHNO
+family: Electronic
+years: 1992 → present
+sub: Electronic music written to be listened to rather than danced to — machine rhythm as composition
+spec: 90,82,62,44,40,44,50,56,62,66,68,70,74,78,80,78,72,64,54,44
+synthType: sawtooth
+freqs: 55, 68.94, 660
+
+what:
+ The name came from a 1993 mailing list and the artists have resented it ever since, but the music is real enough: Warp's *Artificial Intelligence* series (1992) explicitly framed techno as home listening, and Aphex Twin, Autechre and Boards of Canada spent the next decade dismantling the grid. The strain has never really ended — it re-emerges as Amon Tobin's sample-cinema, Lorn's crushed low end, Rival Consoles' modular melodies and Tycho's daylight version of the same palette.
+
+artists:
+ *Aphex Twin* (Richard D. James), Autechre, *Boards of Canada*, Squarepusher, Plaid; the sample-collage wing of *Amon Tobin*; the Berlin axis of Apparat, Modeselektor and their joint project *Moderat*; and the current melodic end — Rival Consoles, Tycho, Robot Koch, Forest Swords, Lorn.
+
+trivia:
+ Boards of Canada built *Music Has the Right to Children* (1998) around degraded tape of 1970s Canadian public-information films, which is where the half-remembered, slightly-wrong nostalgia comes from — the pitch drift is real tape wow, not an effect. Aphex Twin has released music under at least a dozen aliases and once claimed to have bought a decommissioned bank and an armoured car; roughly half of what he says in interviews turns out to be true.
+
+sonic:
+ Rhythm is programmed rather than played, then deliberately broken — swing pushed past musical, hits displaced by milliseconds, or metre abandoned entirely. Melody tends toward simple modal figures repeated with slow timbral change rather than harmonic movement. The frequency picture is unusually full at both extremes: sub-bass you feel and a wash of high-frequency detail, with the midrange left oddly empty.
+
+gear:
+ Roland TB-303 and TR-909 in the early years, then Nord Lead and Access Virus, then everything at once. Autechre and Aphex both built custom Max/MSP and generative patches. The sampler is the genre's real instrument — Akai S-series then Kontakt — and granular processing, convolution reverb and bit-crushing carry most of the texture. Modular synthesis returned as the dominant tool after about 2012.
+
+prod:
+ Mixed for headphones and a quiet room, with mastering that keeps 12–18 dB of dynamic range rather than the 6 a club record wants. Because the arrangements are sparse, every element is individually sculpted — a hi-hat may have its own reverb, EQ curve and distortion chain. Producers routinely resample their own mixes, printing a section to audio and chopping it, so the final track is several generations away from the source.
+
+tracks:
+ - Anvil | Lorn
+ - Runaway | Vacant
+ - A Walk | Tycho
+ - Null & Void | o k h o, Saito
+ - war | We Are Not Friends, Nextime
+ - Goodbye | Apparat, Soap&Skin
+ - Secrets of the Earth | Lama House
+ - Seconds | Ghost Loft
+ - IZ-US | Aphex Twin
+ - #3 | Aphex Twin
+ - Don't Fight It | Melano
+ - Memory Arc | Rival Consoles
+ - offense mechanism | defsharp
+ - Dayvan Cowboy | Boards of Canada
+ - Coda | Rival Consoles
+ - Remembrance | Elfrieda
+ - What Else Is There? | Röyksopp
+ - Batty's Theme | Lorn
+ - Stoney Street | Amon Tobin
+ - At The End Of The Day | Amon Tobin
+ - FAST LAND | Moderat
+ - Hummingbird | ID3, Soundmouse
+ - Lost & Found | Amon Tobin
+ - El Cargo | Amon Tobin
+ - Mighty Micro People | Amon Tobin
+ - Acid Rain | Lorn
+ - Hard To Find | Robot Koch
+ - BLINK | Lorn
+ - Wish U Were Here | Bliss
+ - Cleopatra | Parra for Cuva, May
+ - Swarm | Forest Swords
+ - L'APPEL DU VIDE | Lorn

@@ -1,0 +1,42 @@
+# The Stranger
+
+- **Category:** Book
+- **Original title**: L'Étranger
+- **Author:** [Albert Camus](https://www.goodreads.com/author/show/957894.Albert_Camus)
+- **Genre:** Philosophical/Absurdist Fiction
+- **Release Date:** 1942-05-19
+- **Date:** 2025-10-30
+- **Rating:** 4/5
+- **Link:** [Goodreads](https://www.goodreads.com/book/show/49552.The_Stranger)
+
+![The Stranger](images/logs/book/albert-camus-the-stranger.jpg)
+
+## Albert Camus's The Stranger (L'Étranger): Review
+
+Albert Camus’s The Stranger is a stark masterpiece of **Absurdism**,
+the philosophy asserting the conflict between humanity’s search for _meaning_ and the universe’s _indifferent silence_.
+
+The novel follows **Meursault**, a French Algerian who is profoundly detached from life.
+His emotional apathy is established immediately by his indifference to his mother's death.
+Meursault lives on the surface, his actions dictated by physical sensations (like the heat of the sun, which he blames for his later crime)
+rather than **moral or emotional reasoning**.
+
+The core of the book lies in his trial. Meursault is condemned less for murdering an Arab man and more for his refusal to conform to social rituals—specifically,
+his failure to show grief and his general lack of remorse. He is persecuted for his authenticity in a world that demands lies and conventional feelings.
+
+In his final, furious realization, Meursault achieves peace by accepting the universe's "**benign indifference**".
+By embracing the absurdity and meaninglessness of his existence,
+he finds a unique form of freedom and happiness. The novel is a chillingly simple yet profound critique of
+societal judgment and the human need for conventional meaning.
+
+## Abstract: Albert Camus's Philosophy of Absurdism
+
+Albert Camus's core philosophy, **Absurdism**, centers on the fundamental conflict between humanity's inherent need to find _meaning_
+and the universe's _cold_, _permanent indifference_ and _silence_.
+This collision —the human call for logic meeting the world's irrationality— is what Camus terms the **Absurd**.
+His work is a sustained argument against seeking false comfort in religion or ideology ("**philosophical suicide**") or succumbing to true despair (**literal suicide**).
+Instead, Camus proposes a path of revolt: the conscious, passionate, and lucid acceptance of the Absurd.
+
+By recognizing that life is inherently meaningless, one gains absolute freedom and can choose to live fully and defiantly,
+maximizing human experience and solidarity in the face of certain death.
+The goal is not to resolve the Absurd, but to confront it with integrity.

@@ -1,0 +1,51 @@
+id: direct-address
+rank: 17
+name: DIRECT ADDRESS & THE CHAPTER CARD
+family: Structure
+years: 1998 → present
+sub: The film admitting it is a film, then using the admission to move faster than realism allows
+
+ascii:
+┌────────────────────────────────────────┐
+│  ╔══════════════════╗                  │
+│  ║  CHAPTER THREE   ║   ◀── to camera  │
+│  ╚══════════════════╝      "still with │
+│  freeze · caption · resume    us?"     │
+└────────────────────────────────────────┘
+
+what:
+ A family of devices that break the fourth wall: a character speaking to camera, a narrator naming people as they freeze on screen, an on-screen caption or chapter title, a rewind to show what really happened. What they share is an admission of artifice, traded for enormous narrative speed. A caption introduces six criminals in nine seconds and no scene could do it faster.
+
+artists:
+ Guy Ritchie made it a house style in *Lock, Stock and Two Smoking Barrels* and *Snatch*, with freeze frames, nicknames and narration doing the work of three acts, then formalised it in *The Gentlemen* as a story pitched aloud. Taika Waititi puts himself inside *Jojo Rabbit* as an imaginary friend. *Deadpool* addresses the audience about the film it is in. *Knives Out* uses captions and rewinds to keep a whodunnit legible.
+
+trivia:
+ The device is far older than its current reputation, running back through Brecht to the silent intertitle, and every revival is really a rediscovery that audiences do not need realism to stay invested. What changed recently is tone: the modern version is almost always comic, whereas the mid-century version was mostly solemn.
+
+sonic:
+ It buys trust cheaply. A film that admits it is constructed gets permission to be constructed, and the audience relaxes about coincidence and compression. It also creates intimacy, since being spoken to directly is flattering. The danger is that it deflates stakes: a character who can wink at you can rarely be in real danger, which is why these films are mostly comedies.
+
+gear:
+ Typography, mainly, and a graphics department that treats captions as part of the design rather than an afterthought. Ritchie's freeze frames require the edit and the titles to be conceived together, and Wright's captions are boarded alongside the shots they interrupt.
+
+prod:
+ Almost free, and correspondingly overused. The failure mode is a film that uses the device once, at the start, and then abandons it, which reads as a discarded idea rather than a choice. Consistency is the whole discipline: establish the contract early and honour it, or leave it alone.
+
+examples:
+ - Snatch | freeze frame, nickname, move on
+ - Lock, Stock and Two Smoking Barrels | narration braiding four plots
+ - The Gentlemen | the entire film as a pitch
+ - Deadpool | the audience addressed by name
+ - Jojo Rabbit | the imaginary friend as commentary
+ - Knives Out | captions and rewinds keeping it fair
+ - Kingsman The Golden Circle | the briefing as a device
+ - Clerks | chapter cards over a day behind a counter
+ - Team America World Police | artifice made the entire joke
+ - Clerks II | the same device, older and tireder
+ - Tropic Thunder | the fake trailers as an opening statement
+ - Free Guy | the game admitting it is a game
+ - Mean Girls | narration as survival guide
+ - Easy A | the confession told straight to camera
+ - Clueless | narration as the voice of the film
+ - Zack and Miri Make a Porno | the aside to the audience
+ - Swiss Army Man | artifice admitted and then insisted upon
