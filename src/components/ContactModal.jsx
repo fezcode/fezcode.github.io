@@ -11,6 +11,7 @@ import {
 import GenericModal from './GenericModal';
 import { useSiteConfig } from '../context/SiteConfigContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
+import { KnitIcon, YARN } from './knit';
 
 const socialIcons = {
   GithubLogo: GithubLogoIcon,
@@ -35,6 +36,41 @@ const ContactModal = ({ isOpen, onClose }) => {
     if (isLedger) return 'REGISTERED POST';
     return 'Contact';
   })();
+
+  if (fezcodexTheme === 'knit') {
+    return (
+      <GenericModal isOpen={isOpen} onClose={onClose} title="Say hello">
+        <p className="knt-muted mb-4">A few ways to find Samil.</p>
+        <div className="flex flex-col gap-2">
+          {(config?.socials || []).map((link) => {
+            const Icon = socialIcons[link.icon] || GlobeIcon;
+            return (
+              <a
+                key={link.id}
+                href={link.url}
+                className="knt-row !mb-0"
+                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+              >
+                <Icon
+                  size={20}
+                  className="shrink-0"
+                  style={{ color: 'var(--knt-gold)' }}
+                />
+                <span
+                  className="flex-1 min-w-0 font-bold"
+                  style={{ color: 'var(--knt-fg)' }}
+                >
+                  {link.label}
+                </span>
+                <KnitIcon name="arrowUpRight" fg={YARN.gold} />
+              </a>
+            );
+          })}
+        </div>
+      </GenericModal>
+    );
+  }
 
   if (fezcodexTheme === 'orbit') {
     return (

@@ -363,7 +363,7 @@ const DashboardPage = () => {
             className="fzx-silk is-soft"
             style={{ fontVariantNumeric: 'tabular-nums' }}
           >
-            Model FZX-33 · v{version} · Inkwright
+            Model FZX-33 · v{version} · Purlwright
           </span>
         </div>
 

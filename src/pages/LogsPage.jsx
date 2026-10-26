@@ -6,6 +6,7 @@ import TerracottaLogsPage from './terracotta-views/TerracottaLogsPage';
 import MistLogsPage from './mist-views/MistLogsPage';
 import LedgerLogsPage from './ledger-views/LedgerLogsPage';
 import OrbitLogsPage from './orbit-views/OrbitLogsPage';
+import KnitLogsPage from './knit-views/KnitLogsPage';
 
 const LogsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -15,6 +16,7 @@ const LogsPage = () => {
   if (fezcodexTheme === 'mist') return <MistLogsPage />;
   if (fezcodexTheme === 'ledger') return <LedgerLogsPage />;
   if (fezcodexTheme === 'orbit') return <OrbitLogsPage />;
+  if (fezcodexTheme === 'knit') return <KnitLogsPage />;
   return <BrutalistLogsPage />;
 };
 

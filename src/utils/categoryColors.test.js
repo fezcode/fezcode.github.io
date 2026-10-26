@@ -18,6 +18,7 @@ const PALETTE_NAMES = [
   'mist',
   'ledger',
   'orbit',
+  'knit',
   'dossier',
   'dokument',
   'editorial',

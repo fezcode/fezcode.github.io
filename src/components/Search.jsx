@@ -6,6 +6,7 @@ import TerracottaSearch from './TerracottaSearch';
 import MistSearch from './MistSearch';
 import LedgerSearch from './LedgerSearch';
 import OrbitSearch from './OrbitSearch';
+import KnitSearch from './KnitSearch';
 
 const Search = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -15,6 +16,7 @@ const Search = (props) => {
   if (fezcodexTheme === 'mist') return <MistSearch {...props} />;
   if (fezcodexTheme === 'ledger') return <LedgerSearch {...props} />;
   if (fezcodexTheme === 'orbit') return <OrbitSearch {...props} />;
+  if (fezcodexTheme === 'knit') return <KnitSearch {...props} />;
   return <BrutalistSearch {...props} />;
 };
 

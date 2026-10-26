@@ -218,3 +218,13 @@
     (isActive) true
     (link) https://fezcode.com/settings?fezTheme=orbit&fezBlogMode=orbit#interface
     (linkText) Enable Orbit
+
+  > (banner)
+    (id) fezknit-launch
+    (type) info
+    (from) 2026-10-26T00:00:00Z
+    (to) 2027-01-31T23:59:59Z
+    (text) KNIT IS ONLINE: THE CODEX AS A HAND-KNITTED SWEATER — EVERY STITCH A V, TITLES KNITTED INTO THE WOOL, FAIR ISLE BANDS AND FELT PATCHES TO READ ON. ENABLE VIA SETTINGS OR COMMAND PALETTE.
+    (isActive) true
+    (link) https://fezcode.com/settings?fezTheme=knit&fezBlogMode=knit#interface
+    (linkText) Enable Knit

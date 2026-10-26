@@ -1,6 +1,7 @@
 (config)
   (kernel)
-    (codename) Inkwright
+    (codename) Purlwright
+    # (codename) Inkwright
     # (codename) Mistwright
     # (codename) StoneSet
     # (codename) Bonewright
@@ -10,6 +11,7 @@
     #   v0.26.x  Chisel_Mark
     #   v0.27.x  Mistwright
     #   v0.33.x  Inkwright
+    #   v0.50.x  Purlwright
 
   (hero)
     (title) Fezcodex

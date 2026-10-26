@@ -18,6 +18,11 @@ import OrbitSidebar from './OrbitSidebar';
 import OrbitNavbar from './OrbitNavbar';
 import OrbitFooter from './OrbitFooter';
 import { useOrbitPalette } from './orbit';
+import KnitSidebar from './KnitSidebar';
+import KnitNavbar from './KnitNavbar';
+import KnitFooter from './KnitFooter';
+import { useKnitTextures } from './knit';
+import '../styles/Knit.css';
 import { useAnimation } from '../context/AnimationContext';
 import '../styles/Orbit.css';
 import '../styles/Ledger.css';
@@ -60,17 +65,22 @@ const Layout = ({
     isAppFullscreen,
     fezcodexTheme,
   } = useVisualSettings();
+  useKnitTextures(fezcodexTheme === 'knit');
   const location = useLocation();
   const { projects } = useProjects();
 
   // Check if we are on the about page or graph page to conditionally render layout elements
   const isTheVaguePage = location.pathname.startsWith('/the-vague');
   const isAboutPage = location.pathname.startsWith('/about');
+  // Orbit and Knit keep their sidebar on their own About view.
   const isOrbitAboutPage =
-    fezcodexTheme === 'orbit' &&
-    ['/about', '/about/', '/about/orbit', '/about/orbit/'].includes(
-      location.pathname,
-    );
+    (fezcodexTheme === 'orbit' || fezcodexTheme === 'knit') &&
+    [
+      '/about',
+      '/about/',
+      `/about/${fezcodexTheme}`,
+      `/about/${fezcodexTheme}/`,
+    ].includes(location.pathname);
   const isGraphPage = location.pathname.startsWith('/graph');
   const isTerminalPage = location.pathname.startsWith('/terminal');
   const isBookshelfPage = location.pathname.startsWith('/bookshelf');
@@ -145,7 +155,9 @@ const Layout = ({
                 ? 'ldg-appframe'
                 : fezcodexTheme === 'orbit'
                   ? `orb-appframe ${reduceMotion ? 'orb-reduce-motion' : ''}`
-                  : 'bg-[#050505]'
+                  : fezcodexTheme === 'knit'
+                    ? 'knt-appframe'
+                    : 'bg-[#050505]'
       } min-h-screen font-sans flex`}
     >
       {!hideLayout &&
@@ -177,6 +189,13 @@ const Layout = ({
             toggleModal={toggleModal}
             setIsPaletteOpen={setIsPaletteOpen}
           />
+        ) : fezcodexTheme === 'knit' ? (
+          <KnitSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
         ) : fezcodexTheme === 'orbit' ? (
           <OrbitSidebar
             isOpen={isSidebarOpen}
@@ -193,7 +212,7 @@ const Layout = ({
           />
         ))}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : 'md:ml-72') : 'md:ml-0'}`}
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : 'md:ml-72') : 'md:ml-0'}`}
       >
         {!hideLayout &&
           (fezcodexTheme === 'terracotta' ? (
@@ -219,6 +238,13 @@ const Layout = ({
             />
           ) : fezcodexTheme === 'ledger' ? (
             <LedgerNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
+          ) : fezcodexTheme === 'knit' ? (
+            <KnitNavbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
               isSearchVisible={isSearchVisible}
@@ -256,6 +282,8 @@ const Layout = ({
             <MistFooter />
           ) : fezcodexTheme === 'ledger' ? (
             <LedgerFooter />
+          ) : fezcodexTheme === 'knit' ? (
+            <KnitFooter />
           ) : fezcodexTheme === 'orbit' ? (
             <OrbitFooter />
           ) : (

@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 import * as LocalStorageManager from '../utils/LocalStorageManager';
 import { isSiteTheme } from '../utils/siteThemes';
 import '../styles/Orbit.css';
+import '../styles/Knit.css';
+import { KnitText, KnitIcon, YARN } from './knit';
 
 const Toast = ({
   id,
@@ -61,6 +63,91 @@ const Toast = ({
     }, duration);
     return () => clearTimeout(timer);
   }, [id, duration, removeToast]);
+
+  if (theme === 'knit') {
+    const knitIcon =
+      type === 'error'
+        ? 'close'
+        : type === 'gold'
+          ? 'trophy'
+          : type === 'techno'
+            ? 'terminal'
+            : 'heart';
+    const knitLink = 'knt-btn !min-h-0 !py-1.5';
+    const caption = (label) => (
+      <KnitText text={label} size="small" fg={YARN.cream} fit />
+    );
+    return (
+      <div
+        className="knt-toast relative w-80 md:w-96 max-w-[calc(100vw-2rem)] mb-4"
+        role={type === 'error' ? 'alert' : 'status'}
+      >
+        <div className="flex items-start gap-3">
+          <KnitIcon
+            name={knitIcon}
+            fg={type === 'error' ? YARN.poppy : YARN.gold}
+            className="mt-1"
+          />
+          <div className="min-w-0 flex-1">
+            <KnitText as="h4" text={title} size="small" fg={YARN.cream} />
+            <p className="text-sm mt-2" style={{ color: 'var(--knt-muted)' }}>
+              {message}
+            </p>
+            {links?.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3">
+                {links.map((link, i) =>
+                  link.to ? (
+                    <Link
+                      key={i}
+                      to={link.to}
+                      className={knitLink}
+                      aria-label={link.label}
+                      onClick={() => removeToast(id)}
+                    >
+                      {caption(link.label)}
+                    </Link>
+                  ) : link.href ? (
+                    <a
+                      key={i}
+                      href={link.href}
+                      className={knitLink}
+                      aria-label={link.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => removeToast(id)}
+                    >
+                      {caption(link.label)}
+                    </a>
+                  ) : link.onClick ? (
+                    <button
+                      key={i}
+                      type="button"
+                      className={knitLink}
+                      aria-label={link.label}
+                      onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                      }}
+                    >
+                      {caption(link.label)}
+                    </button>
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            className="p-1"
+            onClick={() => removeToast(id)}
+            aria-label="Dismiss notification"
+          >
+            <KnitIcon name="close" fg={YARN.cream} />
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (theme === 'orbit') {
     const Icon =

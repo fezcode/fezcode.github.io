@@ -17,6 +17,28 @@ import {
 } from '@phosphor-icons/react';
 import { TerracottaMark } from './terracotta';
 import { MistOrb } from './mist';
+import { KnitCanvas, YARN, MOTIFS } from './knit';
+import { makeGrid, stamp } from './knit/engine';
+
+/** Syntax in Knit: the hen from the yoke, its comb turning gold in thought. */
+const KnitHen = ({ thinking }) => (
+  <KnitCanvas
+    cols={12}
+    gauge={{ w: 3.5, h: 3 }}
+    build={() => {
+      const g = makeGrid(12, 12, null);
+      stamp(g, MOTIFS.hen, 1, 1, {
+        r: thinking ? YARN.gold : YARN.poppy,
+        W: YARN.snow,
+        k: YARN.jet,
+        y: YARN.gold,
+        H: YARN.oat,
+      });
+      return g;
+    }}
+    deps={[thinking]}
+  />
+);
 
 const QUOTES = [
   "Go's defer statement executes in LIFO order (Last-In, First-Out).",
@@ -304,6 +326,28 @@ const SyntaxSprite = () => {
   const isTerracotta = fezcodexTheme === 'terracotta';
   const isMist = fezcodexTheme === 'mist';
   const isLedger = fezcodexTheme === 'ledger';
+  /* KNIT COMPANION — Syntax as a little knitted hen pecking in the corner */
+  if (fezcodexTheme === 'knit') {
+    return (
+      <div className="fixed bottom-4 right-4 z-[9999] max-w-[calc(100vw-2rem)] flex flex-col items-end">
+        {thought && (
+          <div className="knt-patch knt-patch-tight mb-3 max-w-xs text-sm">
+            <p className="knt-label mb-1">Syntax · a passing thought</p>
+            <p>{thought}</p>
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={handleSpriteClick}
+          aria-label="Talk to Syntax, the codex companion"
+          className={`knt-btn knt-btn-icon !w-auto !p-1.5 ${isJumping ? '-translate-y-2' : ''}`}
+          style={{ transition: 'transform 0.2s ease' }}
+        >
+          <KnitHen thinking={state === 'thinking'} />
+        </button>
+      </div>
+    );
+  }
   if (fezcodexTheme === 'orbit') {
     return (
       <div

@@ -10,6 +10,7 @@ import {
 } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
+import { KnitText, KnitIcon, KnitBand, YARN } from './knit';
 
 const DISMISSED_BANNERS_KEY = 'dismissed-banners';
 
@@ -23,13 +24,20 @@ const Banner = () => {
   const isMist = fezcodexTheme === 'mist';
   const isLedger = fezcodexTheme === 'ledger';
 
+  // Orbit and Knit pin their sidebars below the banner while it shows.
+  const offsetVar =
+    fezcodexTheme === 'orbit'
+      ? '--orb-banner-offset'
+      : fezcodexTheme === 'knit'
+        ? '--knt-banner-offset'
+        : null;
   useEffect(() => {
-    if (fezcodexTheme !== 'orbit' || !banner || !isVisible) return undefined;
+    if (!offsetVar || !banner || !isVisible) return undefined;
     const element = orbitBannerRef.current;
     if (!element) return undefined;
     const updateOffset = () => {
       document.documentElement.style.setProperty(
-        '--orb-banner-offset',
+        offsetVar,
         `${Math.max(0, element.getBoundingClientRect().bottom)}px`,
       );
     };
@@ -40,9 +48,9 @@ const Banner = () => {
     return () => {
       observer.disconnect();
       document.removeEventListener('scroll', updateOffset, true);
-      document.documentElement.style.removeProperty('--orb-banner-offset');
+      document.documentElement.style.removeProperty(offsetVar);
     };
-  }, [fezcodexTheme, banner, isVisible]);
+  }, [offsetVar, banner, isVisible]);
 
   useEffect(() => {
     const fetchBanner = async () => {
@@ -156,6 +164,68 @@ const Banner = () => {
       </Link>
     );
   };
+
+  if (fezcodexTheme === 'knit') {
+    const caption = (
+      <KnitText
+        text={banner.linkText || 'View details'}
+        size="small"
+        fg={YARN.peat}
+        fit
+      />
+    );
+    return (
+      <div
+        ref={orbitBannerRef}
+        className="knt-chrome knt-wool-rust relative z-[100]"
+      >
+        <KnitBand pattern="peerie" />
+        <div className="max-w-[1800px] mx-auto px-4 py-3 flex items-center gap-4">
+          <KnitIcon
+            name={bannerType === 'info' ? 'heart' : 'star'}
+            fg={YARN.gold}
+          />
+          <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-3">
+            <KnitText
+              text={banner.text}
+              size="small"
+              fg={YARN.cream}
+              className="flex-1"
+            />
+            {banner.link &&
+              (isExternalLink ? (
+                <a
+                  href={banner.link}
+                  className="knt-btn knt-btn-gold shrink-0"
+                  aria-label={banner.linkText || 'View details'}
+                  onClick={handleDismiss}
+                >
+                  {caption}
+                </a>
+              ) : (
+                <Link
+                  to={banner.link}
+                  className="knt-btn knt-btn-gold shrink-0"
+                  aria-label={banner.linkText || 'View details'}
+                  onClick={handleDismiss}
+                >
+                  {caption}
+                </Link>
+              ))}
+          </div>
+          <button
+            type="button"
+            onClick={handleDismiss}
+            className="knt-btn knt-btn-icon shrink-0"
+            aria-label="Dismiss banner"
+          >
+            <KnitIcon name="close" fg={YARN.cream} />
+          </button>
+        </div>
+        <KnitBand pattern="peerie" />
+      </div>
+    );
+  }
 
   if (fezcodexTheme === 'orbit') {
     return (

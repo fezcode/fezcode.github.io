@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-10-26
+    (title) Fezknit: The Hand-Knitted Codex
+    (description) Deployed 'Knit', a seventh design language that turns the whole codex into a hand-knitted sweater. Every stitch is drawn live as a twisted V on canvas; titles, labels, dates and pictograms are knitted into the wool in two stitch fonts; Fair Isle bands of hens, flowers, stars and snowflakes divide each page, and long reading sits on felt patches stitched on with a red running stitch. Sidebar, navbar, footer, Search, Command Palette, Side Panel, Toasts, Modals and the banner are all knitted — plus a knitted hen for Syntax. Kernel codename bumped to Purlwright (v0.50.x).
+    (type) feature
+    (icon) PaletteIcon
+    (link) /settings#interface
+
+  > (item)
     (date) 2026-06-10
     (title) Fezmist: The Hypnagogic Codex
     (description) Deployed 'Mist', a fourth design language built on hypnagogia — the threshold between waking and sleep. Fog paper, eucalyptus ink, drift-blue glows, Instrument Serif display and lowercase IBM Plex Mono whispers. Every page rebuilt as a drift: fading horizon rules, veil-glass surfaces, blur-dissolve motion, a breathing orb mark, and theme-aware Search, Command Palette, Side Panel, Toasts, Modals — plus a fog-wisp form for Syntax. Kernel codename bumped to Mistwright (v0.27.x).

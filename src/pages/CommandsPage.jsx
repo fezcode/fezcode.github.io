@@ -6,6 +6,7 @@ import TerracottaCommandsPage from './terracotta-views/TerracottaCommandsPage';
 import MistCommandsPage from './mist-views/MistCommandsPage';
 import LedgerCommandsPage from './ledger-views/LedgerCommandsPage';
 import OrbitCommandsPage from './orbit-views/OrbitCommandsPage';
+import KnitCommandsPage from './knit-views/KnitCommandsPage';
 
 const CommandsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -15,6 +16,7 @@ const CommandsPage = () => {
   if (fezcodexTheme === 'mist') return <MistCommandsPage />;
   if (fezcodexTheme === 'ledger') return <LedgerCommandsPage />;
   if (fezcodexTheme === 'orbit') return <OrbitCommandsPage />;
+  if (fezcodexTheme === 'knit') return <KnitCommandsPage />;
   return <BrutalistCommandsPage />;
 };
 

@@ -47,6 +47,14 @@ export const SITE_THEMES = [
     foreground: '#222d35',
     accent: '#3157ce',
   },
+  {
+    id: 'knit',
+    name: 'Knit',
+    description: 'Colourwork wool, row by row',
+    background: '#4a3527',
+    foreground: '#f0e6d3',
+    accent: '#c9952b',
+  },
 ];
 
 export const isSiteTheme = (value) =>

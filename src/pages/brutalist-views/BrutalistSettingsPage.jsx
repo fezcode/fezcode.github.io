@@ -340,6 +340,7 @@ const SettingsPage = () => {
                     { label: 'Mist (Hazy)', value: 'mist' },
                     { label: 'Ledger (Archive)', value: 'ledger' },
                     { label: 'Orbit (Observatory)', value: 'orbit' },
+                    { label: 'Knit (Colourwork)', value: 'knit' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -382,6 +383,7 @@ const SettingsPage = () => {
                     { label: 'Terracotta', value: 'terracotta' },
                     { label: 'Galley Proof', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
+                    { label: 'Knit', value: 'knit' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

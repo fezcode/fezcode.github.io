@@ -20,6 +20,7 @@ import {
 import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import LuxeArt from '../components/LuxeArt';
+import { KnitText, KnitBand } from '../components/knit';
 
 const DesignSelectionPage = () => {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ const DesignSelectionPage = () => {
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
         title="Design System | Fezcodex"
-        description="Explore six Fezcodex themes, from Brutalist to Orbit, a personal observatory."
+        description="Explore seven Fezcodex themes, from Brutalist to Knit, the codex as a hand-knitted sweater."
       />
 
       <div className="w-full min-w-0 max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
@@ -345,6 +346,43 @@ const DesignSelectionPage = () => {
                 </span>
                 <ArrowRightIcon
                   className="text-[#626C72] group-hover:text-[#3157CE] group-hover:translate-x-2 transition-all"
+                  size={24}
+                />
+              </div>
+            </motion.div>
+          </button>
+
+          {/* KNIT CARD */}
+          <button
+            id="knit"
+            aria-label="Activate Knit theme"
+            type="button"
+            onClick={() => {
+              setFezcodexTheme('knit');
+              navigate('/');
+            }}
+            className="group block relative text-left"
+            style={{ fontFamily: "'Nunito', sans-serif" }}
+          >
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="h-full bg-[#2C4A7C] text-[#F0E6D3] p-6 sm:p-12 flex flex-col justify-between rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(24,43,74,0.6)] transition-all duration-500 relative"
+            >
+              <KnitBand pattern={['peerie', 'hens', 'peerie']} className="absolute top-0 left-0 right-0" />
+              <div className="space-y-8 relative z-10 pt-24">
+                <KnitText text="Knit" scale={2} fg="#e3d8c4" fit as="h2" />
+                <p className="text-sm leading-relaxed text-[#CBB99B]">
+                  The codex as a hand-knitted sweater. Every stitch a twisted
+                  V, titles knitted into the fabric, Fair Isle bands, and the
+                  reading kept on felt patches.
+                </p>
+              </div>
+              <div className="mt-12 pt-8 border-t-2 border-dashed border-[#C9952B]/40 flex justify-between items-center relative z-10">
+                <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-[#D2B26A] group-hover:text-[#E8C51A] transition-colors">
+                  Use Knit
+                </span>
+                <ArrowRightIcon
+                  className="text-[#D2B26A] group-hover:text-[#E8C51A] group-hover:translate-x-2 transition-all"
                   size={24}
                 />
               </div>

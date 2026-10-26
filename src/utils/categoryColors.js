@@ -117,6 +117,19 @@ export const CATEGORY_PALETTES = {
   // Day / night observatory.
   orbit: registerVars('--orb-cat-'),
 
+  // Yarns knitted onto dark wool — fixed hex because the canvas needs it.
+  knit: {
+    dev: '#8bc34a',
+    rant: '#f08a3c',
+    ai: '#4fd1b8',
+    feat: '#c792ea',
+    gist: '#e8c51a',
+    essay: '#9fb0ff',
+    series: '#f472a6',
+    'd&d': '#ff6b6b',
+    default: '#d2b26a',
+  },
+
   // Declassified dossier on #f3f3f3 — typewriter inks and stamp reds.
   dossier: {
     dev: '#1D4ED8',
