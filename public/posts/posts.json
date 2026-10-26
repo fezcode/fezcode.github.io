@@ -1,5 +1,23 @@
 [
   {
+    "slug": "tl-lgtm",
+    "title": "TL;LGTM",
+    "date": "2026-10-26",
+    "updated": "2026-10-26",
+    "description": "Too Long; Looks Good To Me — on the temptation to rubber-stamp agent-written code, and why you still have to read it even when it is better than yours.",
+    "tags": [
+      "ai",
+      "code review",
+      "agents",
+      "lgtm"
+    ],
+    "category": "dev",
+    "filename": "tl-lgtm.txt",
+    "authors": [
+      "fezcode"
+    ]
+  },
+  {
     "slug": "five-monkeys-and-the-bananas",
     "title": "Five Monkeys, a Ladder, and a Bunch of Bananas: Why We Follow Rules Nobody Remembers Making",
     "date": "2026-10-16",

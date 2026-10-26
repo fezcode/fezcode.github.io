@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 24 Oct 2026 11:58:24 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 26 Oct 2026 14:26:10 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 24 Oct 2026 11:58:24 GMT</pubDate>
+        <pubDate>Mon, 26 Oct 2026 14:26:10 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[TL;LGTM]]></title>
+            <description><![CDATA[Too Long; Looks Good To Me — on the temptation to rubber-stamp agent-written code, and why you still have to read it even when it is better than yours....]]></description>
+            <link>https://fezcode.com/blog/tl-lgtm</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/tl-lgtm</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Mon, 26 Oct 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p><strong>TL;LGTM</strong> — <em>Too Long; Looks Good To Me.</em> The review an agent&#39;s 2,000-line diff gets when nobody actually reads it.</p>
+<p><a href="https://fezcode.com/blog/tl-lgtm">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Five Monkeys, a Ladder, and a Bunch of Bananas: Why We Follow Rules Nobody Remembers Making]]></title>
             <description><![CDATA[A short, kind reflection on the famous Five Monkeys experiment — how a group of newcomers ends up guarding a ladder from a cold-water hose none of them have ever seen, and how to gently check whether the water is still turned on....]]></description>
