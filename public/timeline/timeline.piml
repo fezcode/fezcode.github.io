@@ -1,5 +1,13 @@
 (timeline)
   > (item)
+    (date) 2026-10-29
+    (title) Marquetry and Scheduled Themes
+    (description) Added Marquetry, an eighth design language with walnut navigation, maple reading surfaces, procedural veneer grain, geometric inlays and a wooden hen for Syntax. Added date-based default-theme flags in feature-flag.piml, with Knit selected from October 29 through December 31, 2026 in Istanbul time. Saved theme choices remain independent, and only the Knit launch banner stays active. Released as v0.51.0.
+    (type) feature
+    (icon) PaletteIcon
+    (link) /design
+
+  > (item)
     (date) 2026-10-26
     (title) Fezknit: The Hand-Knitted Codex
     (description) Deployed 'Knit', a seventh design language that turns the whole codex into a hand-knitted sweater. Every stitch is drawn live as a twisted V on canvas; titles, labels, dates and pictograms are knitted into the wool in two stitch fonts; Fair Isle bands of hens, flowers, stars and snowflakes divide each page, and long reading sits on felt patches stitched on with a red running stitch. Sidebar, navbar, footer, Search, Command Palette, Side Panel, Toasts, Modals and the banner are all knitted — plus a knitted hen for Syntax. Kernel codename bumped to Purlwright (v0.50.x).

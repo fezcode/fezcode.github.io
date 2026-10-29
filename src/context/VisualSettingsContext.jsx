@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useRef } from 'react';
 import usePersistentState from '../hooks/usePersistentState';
 import { useAchievements } from './AchievementContext';
 import { isSiteTheme } from '../utils/siteThemes';
+import useSiteTheme from '../hooks/useSiteTheme';
 
 const VisualSettingsContext = createContext();
 
@@ -83,7 +84,7 @@ export const VisualSettingsProvider = ({ children }) => {
     usePersistentState('fallout-vignette', true);
   const [blogPostViewMode, setBlogPostViewMode] = usePersistentState(
     'blog-post-view-mode',
-    'editorial',
+    'standard',
   );
   const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState(
     'is-splash-text-enabled',
@@ -97,10 +98,7 @@ export const VisualSettingsProvider = ({ children }) => {
     'is-syntax-sprite-enabled',
     true,
   );
-  const [fezcodexTheme, setFezcodexTheme] = usePersistentState(
-    'fezcodex-theme',
-    'brutalist',
-  ); // Theme ids are registered in utils/siteThemes.js.
+  const [fezcodexTheme, setFezcodexTheme] = useSiteTheme(); // Theme ids are registered in utils/siteThemes.js.
 
   // URL Parameter Observer - Consumes ?fezTheme=... and ?fezBlogMode=...
   useEffect(() => {
@@ -129,6 +127,7 @@ export const VisualSettingsProvider = ({ children }) => {
         'galley',
         'orbit',
         'knit',
+        'marquetry',
       ].includes(blogModeParam)
     ) {
       setBlogPostViewMode(blogModeParam);

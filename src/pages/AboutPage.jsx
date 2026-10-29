@@ -23,6 +23,7 @@ import SkillDeck from './about-views/SkillDeck';
 import LuxeAboutView from './about-views/LuxeAboutView';
 import TerracottaAboutView from './about-views/Terracotta';
 import OrbitAboutView from './about-views/OrbitAboutView';
+import MarquetryAboutView from './about-views/MarquetryAboutView';
 import KnitAboutView from './about-views/KnitAboutView';
 import { useAchievements } from '../context/AchievementContext';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -30,6 +31,7 @@ import Seo from '../components/Seo';
 
 const ViewSwitcher = ({ currentView }) => {
   const views = [
+    { id: 'marquetry', icon: BookBookmarkIcon, label: 'Marquetry' },
     { id: 'knit', icon: HeartIcon, label: 'Knit' },
     { id: 'orbit', icon: PlanetIcon, label: 'Orbit' },
     { id: 'terracotta', icon: BookBookmarkIcon, label: 'Terracotta' },
@@ -41,6 +43,24 @@ const ViewSwitcher = ({ currentView }) => {
     { id: 'blueprint', icon: TreeStructureIcon, label: 'Blueprint' },
     { id: 'map', icon: GraphIcon, label: 'Mind Map' },
   ];
+
+  if (currentView === 'marquetry') {
+    return (
+      <nav className="flex flex-wrap gap-2" aria-label="About page styles">
+        {views.map(({ id, label, icon: Icon }) => (
+          <Link
+            key={id}
+            className={`mqt-btn ${id === currentView ? 'mqt-btn-gold' : ''}`}
+            to={`/about/${id}`}
+            aria-current={id === currentView ? 'page' : undefined}
+          >
+            <Icon size={16} />
+            {label}
+          </Link>
+        ))}
+      </nav>
+    );
+  }
 
   if (currentView === 'knit') {
     return (
@@ -120,6 +140,7 @@ const AboutPage = () => {
   const { viewId } = useParams();
   const { fezcodexTheme } = useVisualSettings();
   const validViews = [
+    'marquetry',
     'knit',
     'orbit',
     'terracotta',
@@ -142,7 +163,7 @@ const AboutPage = () => {
     return (
       <Navigate
         to={`/about/${
-          fezcodexTheme === 'orbit' || fezcodexTheme === 'knit'
+          ['orbit', 'knit', 'marquetry'].includes(fezcodexTheme)
             ? fezcodexTheme
             : 'terracotta'
         }`}
@@ -154,6 +175,13 @@ const AboutPage = () => {
   }
 
   const view = viewId;
+
+  if (view === 'marquetry')
+    return (
+      <MarquetryAboutView
+        viewSwitcher={<ViewSwitcher currentView="marquetry" />}
+      />
+    );
 
   if (view === 'knit')
     return <KnitAboutView viewSwitcher={<ViewSwitcher currentView="knit" />} />;

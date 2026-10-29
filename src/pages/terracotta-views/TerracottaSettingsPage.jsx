@@ -34,9 +34,7 @@ const PAPER_GRADIENT =
   'radial-gradient(1100px 600px at 85% -10%, #E8DECE 0%, transparent 55%), radial-gradient(900px 700px at 0% 110%, #EDE3D3 0%, transparent 50%)';
 
 const SettingRow = ({ number, heading, description, control }) => (
-  <li
-    className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-10 items-center py-6 pl-[46px] border-b border-dashed border-[#1A161320]"
-  >
+  <li className="relative grid grid-cols-1 md:grid-cols-[1fr_auto] gap-4 md:gap-10 items-center py-6 pl-[46px] border-b border-dashed border-[#1A161320]">
     <span
       aria-hidden="true"
       className="absolute left-0 top-6 font-ibm-plex-mono text-[11px] tracking-[0.08em] text-[#9E4A2F] font-medium"
@@ -47,8 +45,7 @@ const SettingRow = ({ number, heading, description, control }) => (
       <h4
         className="font-fraunces text-[17px] md:text-[19px] tracking-[-0.01em] text-[#1A1613]"
         style={{
-          fontVariationSettings:
-            '"opsz" 22, "SOFT" 50, "WONK" 1, "wght" 440',
+          fontVariationSettings: '"opsz" 22, "SOFT" 50, "WONK" 1, "wght" 440',
         }}
       >
         {heading}
@@ -83,11 +80,8 @@ const TerracottaSettingsPage = () => {
     return undefined;
   }, [location.hash]);
 
-  const {
-    unlockAchievement,
-    showAchievementToast,
-    toggleAchievementToast,
-  } = useAchievements();
+  const { unlockAchievement, showAchievementToast, toggleAchievementToast } =
+    useAchievements();
 
   useEffect(() => {
     unlockAchievement('power_user');
@@ -96,45 +90,80 @@ const TerracottaSettingsPage = () => {
   const { reduceMotion, toggleReduceMotion } = useAnimation();
 
   const {
-    isInverted, toggleInvert,
-    isRetro, toggleRetro,
-    isParty, toggleParty,
-    isMirror, toggleMirror,
-    isNoir, toggleNoir,
-    isTerminal, toggleTerminal,
-    isBlueprint, toggleBlueprint,
-    isSepia, toggleSepia,
-    isVaporwave, toggleVaporwave,
-    isCyberpunk, toggleCyberpunk,
-    isGameboy, toggleGameboy,
-    isComic, toggleComic,
-    isSketchbook, toggleSketchbook,
-    isHellenic, toggleHellenic,
-    isGlitch, toggleGlitch,
-    isGarden, toggleGarden,
-    isAutumn, toggleAutumn,
-    isRain, toggleRain,
-    isSplashTextEnabled, toggleSplashText,
-    isAppFullscreen, toggleAppFullscreen,
-    isSyntaxSpriteEnabled, toggleSyntaxSprite,
-    fezcodexTheme, setFezcodexTheme,
-    blogPostViewMode, setBlogPostViewMode,
-    headerFont, setHeaderFont,
-    bodyFont, setBodyFont,
+    isInverted,
+    toggleInvert,
+    isRetro,
+    toggleRetro,
+    isParty,
+    toggleParty,
+    isMirror,
+    toggleMirror,
+    isNoir,
+    toggleNoir,
+    isTerminal,
+    toggleTerminal,
+    isBlueprint,
+    toggleBlueprint,
+    isSepia,
+    toggleSepia,
+    isVaporwave,
+    toggleVaporwave,
+    isCyberpunk,
+    toggleCyberpunk,
+    isGameboy,
+    toggleGameboy,
+    isComic,
+    toggleComic,
+    isSketchbook,
+    toggleSketchbook,
+    isHellenic,
+    toggleHellenic,
+    isGlitch,
+    toggleGlitch,
+    isGarden,
+    toggleGarden,
+    isAutumn,
+    toggleAutumn,
+    isRain,
+    toggleRain,
+    isSplashTextEnabled,
+    toggleSplashText,
+    isAppFullscreen,
+    toggleAppFullscreen,
+    isSyntaxSpriteEnabled,
+    toggleSyntaxSprite,
+    fezcodexTheme,
+    setFezcodexTheme,
+    blogPostViewMode,
+    setBlogPostViewMode,
+    headerFont,
+    setHeaderFont,
+    bodyFont,
+    setBodyFont,
     availableFonts,
-    isFalloutOverlay, toggleFalloutOverlay,
-    falloutVariant, setFalloutVariant,
-    isFalloutNoiseEnabled, toggleFalloutNoise,
-    isFalloutScanlinesEnabled, toggleFalloutScanlines,
-    isFalloutVignetteEnabled, toggleFalloutVignette,
+    isFalloutOverlay,
+    toggleFalloutOverlay,
+    falloutVariant,
+    setFalloutVariant,
+    isFalloutNoiseEnabled,
+    toggleFalloutNoise,
+    isFalloutScanlinesEnabled,
+    toggleFalloutScanlines,
+    isFalloutVignetteEnabled,
+    toggleFalloutVignette,
   } = useVisualSettings();
 
   const {
-    isLightningEnabled, toggleLightning,
-    isLootDiscoveryEnabled, toggleLootDiscovery,
-    isFireOverlayEnabled, toggleFireOverlay,
-    isFireParticlesEnabled, toggleFireParticles,
-    isViewportFrameEnabled, toggleViewportFrame,
+    isLightningEnabled,
+    toggleLightning,
+    isLootDiscoveryEnabled,
+    toggleLootDiscovery,
+    isFireOverlayEnabled,
+    toggleFireOverlay,
+    isFireParticlesEnabled,
+    toggleFireParticles,
+    isViewportFrameEnabled,
+    toggleViewportFrame,
   } = React.useContext(DndContext);
 
   const { addToast } = useToast();
@@ -187,33 +216,152 @@ const TerracottaSettingsPage = () => {
 
   const fxToggles = useMemo(
     () => [
-      { id: 'fx-invert',     label: 'Invert Colors',     checked: isInverted,     onChange: toggleInvert },
-      { id: 'fx-retro',      label: 'Retro CRT',         checked: isRetro,        onChange: toggleRetro },
-      { id: 'fx-party',      label: 'Party Mode',        checked: isParty,        onChange: toggleParty },
-      { id: 'fx-mirror',     label: 'Mirror World',      checked: isMirror,       onChange: toggleMirror },
-      { id: 'fx-noir',       label: 'Film Noir',         checked: isNoir,         onChange: toggleNoir },
-      { id: 'fx-terminal',   label: 'Emerald Terminal',  checked: isTerminal,     onChange: toggleTerminal },
-      { id: 'fx-blueprint',  label: 'Blueprint',         checked: isBlueprint,    onChange: toggleBlueprint },
-      { id: 'fx-sepia',      label: 'Vintage Sepia',     checked: isSepia,        onChange: toggleSepia },
-      { id: 'fx-vaporwave',  label: 'Vaporwave',         checked: isVaporwave,    onChange: toggleVaporwave },
-      { id: 'fx-cyberpunk',  label: 'Cyberpunk',         checked: isCyberpunk,    onChange: toggleCyberpunk },
-      { id: 'fx-gameboy',    label: 'Legacy Handheld',   checked: isGameboy,      onChange: toggleGameboy },
-      { id: 'fx-comic',      label: 'Comic Array',       checked: isComic,        onChange: toggleComic },
-      { id: 'fx-sketchbook', label: 'Graphite Map',      checked: isSketchbook,   onChange: toggleSketchbook },
-      { id: 'fx-hellenic',   label: 'Classical Agora',   checked: isHellenic,     onChange: toggleHellenic },
-      { id: 'fx-glitch',     label: 'Data Corruption',   checked: isGlitch,       onChange: toggleGlitch },
-      { id: 'fx-garden',     label: 'Flora Protocol',    checked: isGarden,       onChange: toggleGarden },
-      { id: 'fx-autumn',     label: 'Seasonal Decay',    checked: isAutumn,       onChange: toggleAutumn },
-      { id: 'fx-rain',       label: 'Hydraulic Filter',  checked: isRain,         onChange: toggleRain },
+      {
+        id: 'fx-invert',
+        label: 'Invert Colors',
+        checked: isInverted,
+        onChange: toggleInvert,
+      },
+      {
+        id: 'fx-retro',
+        label: 'Retro CRT',
+        checked: isRetro,
+        onChange: toggleRetro,
+      },
+      {
+        id: 'fx-party',
+        label: 'Party Mode',
+        checked: isParty,
+        onChange: toggleParty,
+      },
+      {
+        id: 'fx-mirror',
+        label: 'Mirror World',
+        checked: isMirror,
+        onChange: toggleMirror,
+      },
+      {
+        id: 'fx-noir',
+        label: 'Film Noir',
+        checked: isNoir,
+        onChange: toggleNoir,
+      },
+      {
+        id: 'fx-terminal',
+        label: 'Emerald Terminal',
+        checked: isTerminal,
+        onChange: toggleTerminal,
+      },
+      {
+        id: 'fx-blueprint',
+        label: 'Blueprint',
+        checked: isBlueprint,
+        onChange: toggleBlueprint,
+      },
+      {
+        id: 'fx-sepia',
+        label: 'Vintage Sepia',
+        checked: isSepia,
+        onChange: toggleSepia,
+      },
+      {
+        id: 'fx-vaporwave',
+        label: 'Vaporwave',
+        checked: isVaporwave,
+        onChange: toggleVaporwave,
+      },
+      {
+        id: 'fx-cyberpunk',
+        label: 'Cyberpunk',
+        checked: isCyberpunk,
+        onChange: toggleCyberpunk,
+      },
+      {
+        id: 'fx-gameboy',
+        label: 'Legacy Handheld',
+        checked: isGameboy,
+        onChange: toggleGameboy,
+      },
+      {
+        id: 'fx-comic',
+        label: 'Comic Array',
+        checked: isComic,
+        onChange: toggleComic,
+      },
+      {
+        id: 'fx-sketchbook',
+        label: 'Graphite Map',
+        checked: isSketchbook,
+        onChange: toggleSketchbook,
+      },
+      {
+        id: 'fx-hellenic',
+        label: 'Classical Agora',
+        checked: isHellenic,
+        onChange: toggleHellenic,
+      },
+      {
+        id: 'fx-glitch',
+        label: 'Data Corruption',
+        checked: isGlitch,
+        onChange: toggleGlitch,
+      },
+      {
+        id: 'fx-garden',
+        label: 'Flora Protocol',
+        checked: isGarden,
+        onChange: toggleGarden,
+      },
+      {
+        id: 'fx-autumn',
+        label: 'Seasonal Decay',
+        checked: isAutumn,
+        onChange: toggleAutumn,
+      },
+      {
+        id: 'fx-rain',
+        label: 'Hydraulic Filter',
+        checked: isRain,
+        onChange: toggleRain,
+      },
     ],
     [
-      isInverted, isRetro, isParty, isMirror, isNoir, isTerminal, isBlueprint,
-      isSepia, isVaporwave, isCyberpunk, isGameboy, isComic, isSketchbook,
-      isHellenic, isGlitch, isGarden, isAutumn, isRain,
-      toggleInvert, toggleRetro, toggleParty, toggleMirror, toggleNoir,
-      toggleTerminal, toggleBlueprint, toggleSepia, toggleVaporwave,
-      toggleCyberpunk, toggleGameboy, toggleComic, toggleSketchbook,
-      toggleHellenic, toggleGlitch, toggleGarden, toggleAutumn, toggleRain,
+      isInverted,
+      isRetro,
+      isParty,
+      isMirror,
+      isNoir,
+      isTerminal,
+      isBlueprint,
+      isSepia,
+      isVaporwave,
+      isCyberpunk,
+      isGameboy,
+      isComic,
+      isSketchbook,
+      isHellenic,
+      isGlitch,
+      isGarden,
+      isAutumn,
+      isRain,
+      toggleInvert,
+      toggleRetro,
+      toggleParty,
+      toggleMirror,
+      toggleNoir,
+      toggleTerminal,
+      toggleBlueprint,
+      toggleSepia,
+      toggleVaporwave,
+      toggleCyberpunk,
+      toggleGameboy,
+      toggleComic,
+      toggleSketchbook,
+      toggleHellenic,
+      toggleGlitch,
+      toggleGarden,
+      toggleAutumn,
+      toggleRain,
     ],
   );
 
@@ -249,7 +397,10 @@ const TerracottaSettingsPage = () => {
             <div>
               <div className="font-ibm-plex-mono text-[11px] tracking-[0.2em] uppercase text-[#9E4A2F] mb-6 flex items-center gap-3">
                 <span>Codex entry · §</span>
-                <span aria-hidden="true" className="h-px flex-1 max-w-[60px] bg-[#9E4A2F]/50" />
+                <span
+                  aria-hidden="true"
+                  className="h-px flex-1 max-w-[60px] bg-[#9E4A2F]/50"
+                />
                 <span>XI</span>
               </div>
               <h1
@@ -259,7 +410,8 @@ const TerracottaSettingsPage = () => {
                     '"opsz" 144, "SOFT" 30, "WONK" 1, "wght" 460',
                 }}
               >
-                The<br />
+                The
+                <br />
                 <ChapterEm>calibration</ChapterEm>
                 <span
                   aria-hidden="true"
@@ -304,7 +456,11 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="I"
             label="Interface"
-            title={<>How the <ChapterEm>page is held.</ChapterEm></>}
+            title={
+              <>
+                How the <ChapterEm>page is held.</ChapterEm>
+              </>
+            }
             blurb="Theme, reading mode, dashboard priority."
           />
           <ol className="border-t border-[#1A161320]">
@@ -317,13 +473,14 @@ const TerracottaSettingsPage = () => {
                   variant="terracotta"
                   label="Select theme"
                   options={[
-                    { label: 'Brutalist (Dark)',  value: 'brutalist' },
-                    { label: 'Luxe (Refined)',     value: 'luxe' },
-                    { label: 'Terracotta (Warm)',  value: 'terracotta' },
-                    { label: 'Mist (Hazy)',        value: 'mist' },
-                    { label: 'Ledger (Archive)',   value: 'ledger' },
+                    { label: 'Brutalist (Dark)', value: 'brutalist' },
+                    { label: 'Luxe (Refined)', value: 'luxe' },
+                    { label: 'Terracotta (Warm)', value: 'terracotta' },
+                    { label: 'Mist (Hazy)', value: 'mist' },
+                    { label: 'Ledger (Archive)', value: 'ledger' },
                     { label: 'Orbit (Observatory)', value: 'orbit' },
                     { label: 'Knit (Colourwork)', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -339,19 +496,20 @@ const TerracottaSettingsPage = () => {
                   variant="terracotta"
                   label="Select view"
                   options={[
-                    { label: 'Default',             value: 'standard' },
-                    { label: 'Brutalist',           value: 'brutalist' },
-                    { label: 'Editorial',           value: 'editorial' },
-                    { label: 'Classic',             value: 'old' },
-                    { label: 'Dossier',             value: 'dossier' },
-                    { label: 'Dokument',            value: 'dokument' },
-                    { label: 'Terminal (Amber)',    value: 'terminal' },
-                    { label: 'Terminal (Emerald)',  value: 'terminal-green' },
-                    { label: 'Luxe',                value: 'luxe' },
-                    { label: 'Terracotta',          value: 'terracotta' },
-                    { label: 'Galley Proof',        value: 'galley' },
+                    { label: 'Default', value: 'standard' },
+                    { label: 'Brutalist', value: 'brutalist' },
+                    { label: 'Editorial', value: 'editorial' },
+                    { label: 'Classic', value: 'old' },
+                    { label: 'Dossier', value: 'dossier' },
+                    { label: 'Dokument', value: 'dokument' },
+                    { label: 'Terminal (Amber)', value: 'terminal' },
+                    { label: 'Terminal (Emerald)', value: 'terminal-green' },
+                    { label: 'Luxe', value: 'luxe' },
+                    { label: 'Terracotta', value: 'terracotta' },
+                    { label: 'Galley Proof', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'Knit', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
@@ -407,16 +565,21 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="II"
             label="Typography"
-            title={<>How the <ChapterEm>ink lies.</ChapterEm></>}
+            title={
+              <>
+                How the <ChapterEm>ink lies.</ChapterEm>
+              </>
+            }
             blurb="Font choices for long-form reading."
           />
           <div className="mt-4 mb-2 px-4 py-3 border border-[#1A161320] bg-[#E8DECE]/60 font-ibm-plex-mono text-[10px] tracking-[0.22em] uppercase text-[#2E2620]/80 flex items-start gap-3">
             <span className="text-[#C96442]">†</span>
             <span className="normal-case tracking-normal font-fraunces italic text-[13px] text-[#1A1613] leading-snug">
               Note — only the <strong>Brutalist</strong> theme responds to these
-              font picks. Luxe and Terracotta keep their set typography (Playfair /
-              Outfit and Fraunces / IBM Plex Mono respectively) so the identity
-              holds. The selection here still saves for when you switch themes.
+              font picks. Luxe and Terracotta keep their set typography
+              (Playfair / Outfit and Fraunces / IBM Plex Mono respectively) so
+              the identity holds. The selection here still saves for when you
+              switch themes.
             </span>
           </div>
           <ol className="border-t border-[#1A161320]">
@@ -428,7 +591,10 @@ const TerracottaSettingsPage = () => {
                 <CustomDropdown
                   variant="terracotta"
                   label="Select face"
-                  options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
+                  options={availableFonts.map((f) => ({
+                    label: f.name,
+                    value: f.id,
+                  }))}
                   value={headerFont}
                   onChange={setHeaderFont}
                 />
@@ -442,7 +608,10 @@ const TerracottaSettingsPage = () => {
                 <CustomDropdown
                   variant="terracotta"
                   label="Select face"
-                  options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
+                  options={availableFonts.map((f) => ({
+                    label: f.name,
+                    value: f.id,
+                  }))}
                   value={bodyFont}
                   onChange={setBodyFont}
                 />
@@ -455,7 +624,11 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="III"
             label="Motion & Companion"
-            title={<>What <ChapterEm>moves</ChapterEm>, what stays still.</>}
+            title={
+              <>
+                What <ChapterEm>moves</ChapterEm>, what stays still.
+              </>
+            }
             blurb="Animation, splash text, and the companion who reads over your shoulder."
           />
           <ol className="border-t border-[#1A161320]">
@@ -518,7 +691,11 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="IV"
             label="Visual matrix"
-            title={<>Filters, <ChapterEm>with caution.</ChapterEm></>}
+            title={
+              <>
+                Filters, <ChapterEm>with caution.</ChapterEm>
+              </>
+            }
             blurb="Experimental overlays — combine one or two; reserve the rest."
           />
           <ol className="grid grid-cols-1 md:grid-cols-2 gap-x-10 border-t border-[#1A161320]">
@@ -598,8 +775,14 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="V"
             label="Serfs & Frauds"
-            title={<>The <ChapterEm>hearth-fire</ChapterEm> of the archive.</>}
-            blurb={'Immersive effects for the "From Serfs and Frauds" D&D archive.'}
+            title={
+              <>
+                The <ChapterEm>hearth-fire</ChapterEm> of the archive.
+              </>
+            }
+            blurb={
+              'Immersive effects for the "From Serfs and Frauds" D&D archive.'
+            }
           />
           <ol className="border-t border-[#1A161320]">
             <SettingRow
@@ -674,15 +857,19 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="VI"
             label="Feedback proofs"
-            title={<>Test a <ChapterEm>margin note.</ChapterEm></>}
+            title={
+              <>
+                Test a <ChapterEm>margin note.</ChapterEm>
+              </>
+            }
             blurb="Surface one of each toast variant to verify delivery."
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { type: 'success', label: 'Confirmed', copy: 'Held true.' },
-              { type: 'error',   label: 'Error',     copy: 'Misalignment found.' },
-              { type: 'gold',    label: 'Honor',     copy: 'A mark was held.' },
-              { type: 'techno',  label: 'Signal',    copy: 'Channel connected.' },
+              { type: 'error', label: 'Error', copy: 'Misalignment found.' },
+              { type: 'gold', label: 'Honor', copy: 'A mark was held.' },
+              { type: 'techno', label: 'Signal', copy: 'Channel connected.' },
             ].map((t) => (
               <button
                 key={t.type}
@@ -702,8 +889,7 @@ const TerracottaSettingsPage = () => {
                 <div
                   className="mt-1 font-fraunces italic text-[16px] text-[#1A1613]"
                   style={{
-                    fontVariationSettings:
-                      '"opsz" 18, "SOFT" 100, "wght" 400',
+                    fontVariationSettings: '"opsz" 18, "SOFT" 100, "wght" 400',
                   }}
                 >
                   {t.label} →
@@ -717,7 +903,11 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="VII"
             label="Data administration"
-            title={<>Reset <ChapterEm>small things.</ChapterEm></>}
+            title={
+              <>
+                Reset <ChapterEm>small things.</ChapterEm>
+              </>
+            }
             blurb="Restore sub-systems without losing the archive."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -770,7 +960,11 @@ const TerracottaSettingsPage = () => {
           <TerracottaChapter
             numeral="VIII"
             label="Clean slate"
-            title={<>Start the <ChapterEm>sheet afresh.</ChapterEm></>}
+            title={
+              <>
+                Start the <ChapterEm>sheet afresh.</ChapterEm>
+              </>
+            }
             blurb="The only irreversible action on this page."
           />
           <motion.div

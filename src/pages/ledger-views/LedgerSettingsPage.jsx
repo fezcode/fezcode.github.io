@@ -82,10 +82,7 @@ const LedgerSelect = ({ id, options, value, onChange, ariaLabel }) => (
 
 /** One numbered entry: NO. ·· NAME ·········· [CONTROL]. */
 const SettingRow = ({ number, heading, description, control, stacked }) => (
-  <li
-    className="py-4"
-    style={{ borderBottom: '1px solid var(--ldg-sunken)' }}
-  >
+  <li className="py-4" style={{ borderBottom: '1px solid var(--ldg-sunken)' }}>
     {stacked ? (
       <>
         <div className="ldg-leader-row">
@@ -183,45 +180,80 @@ const LedgerSettingsPage = () => {
   const { register, setRegister } = useLedgerPalette();
 
   const {
-    isInverted, toggleInvert,
-    isRetro, toggleRetro,
-    isParty, toggleParty,
-    isMirror, toggleMirror,
-    isNoir, toggleNoir,
-    isTerminal, toggleTerminal,
-    isBlueprint, toggleBlueprint,
-    isSepia, toggleSepia,
-    isVaporwave, toggleVaporwave,
-    isCyberpunk, toggleCyberpunk,
-    isGameboy, toggleGameboy,
-    isComic, toggleComic,
-    isSketchbook, toggleSketchbook,
-    isHellenic, toggleHellenic,
-    isGlitch, toggleGlitch,
-    isGarden, toggleGarden,
-    isAutumn, toggleAutumn,
-    isRain, toggleRain,
-    isSplashTextEnabled, toggleSplashText,
-    isAppFullscreen, toggleAppFullscreen,
-    isSyntaxSpriteEnabled, toggleSyntaxSprite,
-    fezcodexTheme, setFezcodexTheme,
-    blogPostViewMode, setBlogPostViewMode,
-    headerFont, setHeaderFont,
-    bodyFont, setBodyFont,
+    isInverted,
+    toggleInvert,
+    isRetro,
+    toggleRetro,
+    isParty,
+    toggleParty,
+    isMirror,
+    toggleMirror,
+    isNoir,
+    toggleNoir,
+    isTerminal,
+    toggleTerminal,
+    isBlueprint,
+    toggleBlueprint,
+    isSepia,
+    toggleSepia,
+    isVaporwave,
+    toggleVaporwave,
+    isCyberpunk,
+    toggleCyberpunk,
+    isGameboy,
+    toggleGameboy,
+    isComic,
+    toggleComic,
+    isSketchbook,
+    toggleSketchbook,
+    isHellenic,
+    toggleHellenic,
+    isGlitch,
+    toggleGlitch,
+    isGarden,
+    toggleGarden,
+    isAutumn,
+    toggleAutumn,
+    isRain,
+    toggleRain,
+    isSplashTextEnabled,
+    toggleSplashText,
+    isAppFullscreen,
+    toggleAppFullscreen,
+    isSyntaxSpriteEnabled,
+    toggleSyntaxSprite,
+    fezcodexTheme,
+    setFezcodexTheme,
+    blogPostViewMode,
+    setBlogPostViewMode,
+    headerFont,
+    setHeaderFont,
+    bodyFont,
+    setBodyFont,
     availableFonts,
-    isFalloutOverlay, toggleFalloutOverlay,
-    falloutVariant, setFalloutVariant,
-    isFalloutNoiseEnabled, toggleFalloutNoise,
-    isFalloutScanlinesEnabled, toggleFalloutScanlines,
-    isFalloutVignetteEnabled, toggleFalloutVignette,
+    isFalloutOverlay,
+    toggleFalloutOverlay,
+    falloutVariant,
+    setFalloutVariant,
+    isFalloutNoiseEnabled,
+    toggleFalloutNoise,
+    isFalloutScanlinesEnabled,
+    toggleFalloutScanlines,
+    isFalloutVignetteEnabled,
+    toggleFalloutVignette,
   } = useVisualSettings();
 
   const {
-    isLightningEnabled, toggleLightning,
-    isLootDiscoveryEnabled, toggleLootDiscovery,
-    isFireOverlayEnabled, toggleFireOverlay,
-    isFireParticlesEnabled, toggleFireParticles,
-    isViewportFrameEnabled, toggleViewportFrame,
+    isLightningEnabled,
+    toggleLightning,
+    isLootDiscoveryEnabled,
+    toggleLootDiscovery,
+    isFireOverlayEnabled,
+    toggleFireOverlay,
+    isFireParticlesEnabled,
+    toggleFireParticles,
+    isViewportFrameEnabled,
+    toggleViewportFrame,
   } = React.useContext(DndContext);
 
   const { addToast } = useToast();
@@ -265,7 +297,9 @@ const LedgerSettingsPage = () => {
         title: 'HONOR FILED · CLEAN SLATE',
         message: 'A FRESH LEDGER, RULED AND EMPTY.',
         duration: 3200,
-        icon: <TrophyIcon weight="duotone" style={{ color: 'var(--ldg-accent)' }} />,
+        icon: (
+          <TrophyIcon weight="duotone" style={{ color: 'var(--ldg-accent)' }} />
+        ),
         type: 'gold',
       });
     }, 400);
@@ -274,30 +308,128 @@ const LedgerSettingsPage = () => {
 
   const fxToggles = useMemo(
     () => [
-      { id: 'fx-invert',     label: 'INVERT COLORS',    checked: isInverted,   onChange: toggleInvert },
-      { id: 'fx-retro',      label: 'RETRO CRT',        checked: isRetro,      onChange: toggleRetro },
-      { id: 'fx-party',      label: 'PARTY MODE',       checked: isParty,      onChange: toggleParty },
-      { id: 'fx-mirror',     label: 'MIRROR WORLD',     checked: isMirror,     onChange: toggleMirror },
-      { id: 'fx-noir',       label: 'FILM NOIR',        checked: isNoir,       onChange: toggleNoir },
-      { id: 'fx-terminal',   label: 'EMERALD TERMINAL', checked: isTerminal,   onChange: toggleTerminal },
-      { id: 'fx-blueprint',  label: 'BLUEPRINT',        checked: isBlueprint,  onChange: toggleBlueprint },
-      { id: 'fx-sepia',      label: 'VINTAGE SEPIA',    checked: isSepia,      onChange: toggleSepia },
-      { id: 'fx-vaporwave',  label: 'VAPORWAVE',        checked: isVaporwave,  onChange: toggleVaporwave },
-      { id: 'fx-cyberpunk',  label: 'CYBERPUNK',        checked: isCyberpunk,  onChange: toggleCyberpunk },
-      { id: 'fx-gameboy',    label: 'LEGACY HANDHELD',  checked: isGameboy,    onChange: toggleGameboy },
-      { id: 'fx-comic',      label: 'COMIC ARRAY',      checked: isComic,      onChange: toggleComic },
-      { id: 'fx-sketchbook', label: 'GRAPHITE MAP',     checked: isSketchbook, onChange: toggleSketchbook },
-      { id: 'fx-hellenic',   label: 'CLASSICAL AGORA',  checked: isHellenic,   onChange: toggleHellenic },
-      { id: 'fx-glitch',     label: 'DATA CORRUPTION',  checked: isGlitch,     onChange: toggleGlitch },
+      {
+        id: 'fx-invert',
+        label: 'INVERT COLORS',
+        checked: isInverted,
+        onChange: toggleInvert,
+      },
+      {
+        id: 'fx-retro',
+        label: 'RETRO CRT',
+        checked: isRetro,
+        onChange: toggleRetro,
+      },
+      {
+        id: 'fx-party',
+        label: 'PARTY MODE',
+        checked: isParty,
+        onChange: toggleParty,
+      },
+      {
+        id: 'fx-mirror',
+        label: 'MIRROR WORLD',
+        checked: isMirror,
+        onChange: toggleMirror,
+      },
+      {
+        id: 'fx-noir',
+        label: 'FILM NOIR',
+        checked: isNoir,
+        onChange: toggleNoir,
+      },
+      {
+        id: 'fx-terminal',
+        label: 'EMERALD TERMINAL',
+        checked: isTerminal,
+        onChange: toggleTerminal,
+      },
+      {
+        id: 'fx-blueprint',
+        label: 'BLUEPRINT',
+        checked: isBlueprint,
+        onChange: toggleBlueprint,
+      },
+      {
+        id: 'fx-sepia',
+        label: 'VINTAGE SEPIA',
+        checked: isSepia,
+        onChange: toggleSepia,
+      },
+      {
+        id: 'fx-vaporwave',
+        label: 'VAPORWAVE',
+        checked: isVaporwave,
+        onChange: toggleVaporwave,
+      },
+      {
+        id: 'fx-cyberpunk',
+        label: 'CYBERPUNK',
+        checked: isCyberpunk,
+        onChange: toggleCyberpunk,
+      },
+      {
+        id: 'fx-gameboy',
+        label: 'LEGACY HANDHELD',
+        checked: isGameboy,
+        onChange: toggleGameboy,
+      },
+      {
+        id: 'fx-comic',
+        label: 'COMIC ARRAY',
+        checked: isComic,
+        onChange: toggleComic,
+      },
+      {
+        id: 'fx-sketchbook',
+        label: 'GRAPHITE MAP',
+        checked: isSketchbook,
+        onChange: toggleSketchbook,
+      },
+      {
+        id: 'fx-hellenic',
+        label: 'CLASSICAL AGORA',
+        checked: isHellenic,
+        onChange: toggleHellenic,
+      },
+      {
+        id: 'fx-glitch',
+        label: 'DATA CORRUPTION',
+        checked: isGlitch,
+        onChange: toggleGlitch,
+      },
     ],
     [
-      isInverted, isRetro, isParty, isMirror, isNoir, isTerminal, isBlueprint,
-      isSepia, isVaporwave, isCyberpunk, isGameboy, isComic, isSketchbook,
-      isHellenic, isGlitch,
-      toggleInvert, toggleRetro, toggleParty, toggleMirror, toggleNoir,
-      toggleTerminal, toggleBlueprint, toggleSepia, toggleVaporwave,
-      toggleCyberpunk, toggleGameboy, toggleComic, toggleSketchbook,
-      toggleHellenic, toggleGlitch,
+      isInverted,
+      isRetro,
+      isParty,
+      isMirror,
+      isNoir,
+      isTerminal,
+      isBlueprint,
+      isSepia,
+      isVaporwave,
+      isCyberpunk,
+      isGameboy,
+      isComic,
+      isSketchbook,
+      isHellenic,
+      isGlitch,
+      toggleInvert,
+      toggleRetro,
+      toggleParty,
+      toggleMirror,
+      toggleNoir,
+      toggleTerminal,
+      toggleBlueprint,
+      toggleSepia,
+      toggleVaporwave,
+      toggleCyberpunk,
+      toggleGameboy,
+      toggleComic,
+      toggleSketchbook,
+      toggleHellenic,
+      toggleGlitch,
     ],
   );
 
@@ -331,9 +463,9 @@ const LedgerSettingsPage = () => {
         </LedgerFolio>
 
         <p className="ldg-intro mb-2">
-          Every entry on this folio is kept in <strong>local storage</strong>{' '}
-          on this device. Nothing travels, nothing is logged — corrections are
-          new entries, never erasures.
+          Every entry on this folio is kept in <strong>local storage</strong> on
+          this device. Nothing travels, nothing is logged — corrections are new
+          entries, never erasures.
         </p>
 
         {/* ── DESIGN LANGUAGE ─────────────────────────────────────────── */}
@@ -358,6 +490,7 @@ const LedgerSettingsPage = () => {
                     { label: 'LEDGER', value: 'ledger' },
                     { label: 'Orbit (Observatory)', value: 'orbit' },
                     { label: 'Knit (Colourwork)', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -465,6 +598,7 @@ const LedgerSettingsPage = () => {
                     { label: 'GALLEY', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'Knit', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
@@ -793,9 +927,9 @@ const LedgerSettingsPage = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { type: 'success', label: 'CONFIRMED', copy: 'ENTRY FILED.' },
-              { type: 'error',   label: 'ERROR',     copy: 'ENTRY REFUSED.' },
-              { type: 'gold',    label: 'HONOR',     copy: 'A MARK WAS RECORDED.' },
-              { type: 'techno',  label: 'SIGNAL',    copy: 'CHANNEL CONNECTED.' },
+              { type: 'error', label: 'ERROR', copy: 'ENTRY REFUSED.' },
+              { type: 'gold', label: 'HONOR', copy: 'A MARK WAS RECORDED.' },
+              { type: 'techno', label: 'SIGNAL', copy: 'CHANNEL CONNECTED.' },
             ].map((t) => (
               <button
                 key={t.type}
@@ -836,7 +970,10 @@ const LedgerSettingsPage = () => {
               >
                 RESET SECTION STATE
               </span>
-              <span className="ldg-muted block mt-1" style={{ fontSize: '0.76rem' }}>
+              <span
+                className="ldg-muted block mt-1"
+                style={{ fontSize: '0.76rem' }}
+              >
                 Restore every drawer to its default open/closed state.
               </span>
             </button>
@@ -852,7 +989,10 @@ const LedgerSettingsPage = () => {
               >
                 REOPEN EVERY DRAWER
               </span>
-              <span className="ldg-muted block mt-1" style={{ fontSize: '0.76rem' }}>
+              <span
+                className="ldg-muted block mt-1"
+                style={{ fontSize: '0.76rem' }}
+              >
                 Reset the app-center category collapse state.
               </span>
             </button>
@@ -907,11 +1047,15 @@ const LedgerSettingsPage = () => {
         <div className="mt-12">
           <LedgerRule />
           <div className="pt-4 flex flex-col md:flex-row items-start md:items-baseline justify-between gap-2">
-            <Link to="/" className="ldg-label no-underline hover:text-[var(--ldg-accent)]">
+            <Link
+              to="/"
+              className="ldg-label no-underline hover:text-[var(--ldg-accent)]"
+            >
               ← BACK TO THE INDEX
             </Link>
             <span className="ldg-label">
-              SETTINGS · {String(entryCount).padStart(2, '0')} ENTRIES · LOCAL · IN INK
+              SETTINGS · {String(entryCount).padStart(2, '0')} ENTRIES · LOCAL ·
+              IN INK
             </span>
           </div>
         </div>

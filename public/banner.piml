@@ -145,7 +145,7 @@
     (from) 2026-03-14T00:00:00Z
     (to) 2026-03-24T23:59:59Z
     (text) SWAT TACTICS IS ONLINE: ENGAGE IN HIGH-STAKES STRATEGIC ENCOUNTERS. ACCESS AT /SWAT-TACTICS.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/Swat-Tactics/
     (linkText) Play Swat Tactics
 
@@ -155,7 +155,7 @@
     (from) 2026-03-24T00:00:00Z
     (to) 2026-03-30T23:59:59Z
     (text) CLIMB THE TALL BUILDING 0 IS ONLINE: BUILD YOUR DECK AND CLIMB. ACCESS AT /CLIMB-THE-TALL-BUILDING-0.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/climb-the-tall-building-0/
     (linkText) Play Climb the Tall Building 0
 
@@ -185,7 +185,7 @@
     (from) 2026-04-11T00:00:00Z
     (to) 2026-04-20T23:59:59Z
     (text) URBAN ROGUE IS ONLINE: THE URBAN TEXT ADVENTURE. ACCESS AT https://fezcode.com/urban-rogue/.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/urban-rogue/
     (linkText) Play Urban Rogue
 
@@ -205,7 +205,7 @@
     (from) 2026-08-21T00:00:00Z
     (to) 2026-09-30T23:59:59Z
     (text) FEZLEDGER IS ONLINE: THE CODEX RULED AND FILED — ONE MONOSPACE INK, DOTTED LEADERS, FIVE REGISTERS, NO ERASURES. ENABLE VIA SETTINGS OR COMMAND PALETTE.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/settings?fezTheme=ledger#interface
     (linkText) Enable Ledger
 
@@ -215,7 +215,7 @@
     (from) 2026-10-01T00:00:00Z
     (to) 2026-12-31T23:59:59Z
     (text) ORBIT IS ONLINE: A PERSONAL OBSERVATORY — WARM PAPER, COBALT DETAILS, CONNECTED DISCOVERIES. EXPLORE IN DAYLIGHT OR NIGHT VIA SETTINGS OR COMMAND PALETTE.
-    (isActive) true
+    (isActive) false
     (link) https://fezcode.com/settings?fezTheme=orbit&fezBlogMode=orbit#interface
     (linkText) Enable Orbit
 

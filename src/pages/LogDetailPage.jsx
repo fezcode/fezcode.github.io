@@ -6,6 +6,7 @@ import TerracottaLogDetailPage from './terracotta-views/TerracottaLogDetailPage'
 import MistLogDetailPage from './mist-views/MistLogDetailPage';
 import LedgerLogDetailPage from './ledger-views/LedgerLogDetailPage';
 import OrbitLogDetailPage from './orbit-views/OrbitLogDetailPage';
+import MarquetryLogDetailPage from './marquetry-views/MarquetryLogDetailPage';
 import KnitLogDetailPage from './knit-views/KnitLogDetailPage';
 
 const LogDetailPage = () => {
@@ -16,6 +17,7 @@ const LogDetailPage = () => {
   if (fezcodexTheme === 'mist') return <MistLogDetailPage />;
   if (fezcodexTheme === 'ledger') return <LedgerLogDetailPage />;
   if (fezcodexTheme === 'orbit') return <OrbitLogDetailPage />;
+  if (fezcodexTheme === 'marquetry') return <MarquetryLogDetailPage />;
   if (fezcodexTheme === 'knit') return <KnitLogDetailPage />;
   return <BrutalistLogDetailPage />;
 };

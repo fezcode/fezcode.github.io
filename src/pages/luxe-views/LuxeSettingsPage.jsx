@@ -251,8 +251,9 @@ const LuxeSettingsPage = () => {
                       { label: 'Terracotta (Warm)', value: 'terracotta' },
                       { label: 'Mist (Hazy)', value: 'mist' },
                       { label: 'Ledger (Archive)', value: 'ledger' },
-                    { label: 'Orbit (Observatory)', value: 'orbit' },
-                    { label: 'Knit (Colourwork)', value: 'knit' },
+                      { label: 'Orbit (Observatory)', value: 'orbit' },
+                      { label: 'Knit (Colourwork)', value: 'knit' },
+                      { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                     ]}
                     value={fezcodexTheme}
                     onChange={setFezcodexTheme}
@@ -334,6 +335,7 @@ const LuxeSettingsPage = () => {
                     { label: 'Galley Proof', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'Knit', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
@@ -352,10 +354,14 @@ const LuxeSettingsPage = () => {
             delay={0.2}
           >
             <div className="mb-8 px-5 py-4 border-l-2 border-[#8D4004] bg-[#FAFAF8] font-outfit text-[13px] leading-relaxed text-[#1A1A1A]/70 italic">
-              Only the <span className="not-italic font-semibold text-[#1A1A1A]">Brutalist</span>{' '}
-              theme applies these font choices. Luxe keeps Playfair Display and Outfit
-              as its set faces; Terracotta holds Fraunces with IBM Plex Mono. Your
-              selection here is still saved for whenever you return to Brutalist.
+              Only the{' '}
+              <span className="not-italic font-semibold text-[#1A1A1A]">
+                Brutalist
+              </span>{' '}
+              theme applies these font choices. Luxe keeps Playfair Display and
+              Outfit as its set faces; Terracotta holds Fraunces with IBM Plex
+              Mono. Your selection here is still saved for whenever you return
+              to Brutalist.
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="space-y-6">

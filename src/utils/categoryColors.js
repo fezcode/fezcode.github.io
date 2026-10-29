@@ -117,6 +117,19 @@ export const CATEGORY_PALETTES = {
   // Day / night observatory.
   orbit: registerVars('--orb-cat-'),
 
+  // Dyed veneer inks on pale maple.
+  marquetry: {
+    dev: '#245864',
+    rant: '#8e3d25',
+    ai: '#356149',
+    feat: '#6e4666',
+    gist: '#80571e',
+    essay: '#354e7a',
+    series: '#8a354e',
+    'd&d': '#8c332a',
+    default: '#5f4934',
+  },
+
   // Yarns knitted onto dark wool — fixed hex because the canvas needs it.
   knit: {
     dev: '#8bc34a',

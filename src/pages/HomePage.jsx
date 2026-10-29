@@ -6,6 +6,7 @@ import TerracottaHomePage from './terracotta-views/TerracottaHomePage';
 import MistHomePage from './mist-views/MistHomePage';
 import LedgerHomePage from './ledger-views/LedgerHomePage';
 import OrbitHomePage from './orbit-views/OrbitHomePage';
+import MarquetryHomePage from './marquetry-views/MarquetryHomePage';
 import KnitHomePage from './knit-views/KnitHomePage';
 
 const HomePage = () => {
@@ -16,6 +17,7 @@ const HomePage = () => {
   if (fezcodexTheme === 'mist') return <MistHomePage />;
   if (fezcodexTheme === 'ledger') return <LedgerHomePage />;
   if (fezcodexTheme === 'orbit') return <OrbitHomePage />;
+  if (fezcodexTheme === 'marquetry') return <MarquetryHomePage />;
   if (fezcodexTheme === 'knit') return <KnitHomePage />;
   return <BrutalistHomePage />;
 };

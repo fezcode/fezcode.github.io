@@ -147,7 +147,7 @@ const useSearchableData = () => {
           {
             title: 'Switch Visual Theme',
             description:
-              'Choose Brufez, Fezluxe, Terracotta, Mist, Ledger, Orbit, or Knit.',
+              'Choose Brufez, Fezluxe, Terracotta, Mist, Ledger, Orbit, Knit, or Marquetry.',
             type: 'command',
             commandId: 'switchTheme',
           },

@@ -1,3 +1,4 @@
+import { MarquetryIcon, WOOD } from './marquetry';
 import React from 'react';
 import {
   EnvelopeSimpleIcon,
@@ -36,6 +37,41 @@ const ContactModal = ({ isOpen, onClose }) => {
     if (isLedger) return 'REGISTERED POST';
     return 'Contact';
   })();
+
+  if (fezcodexTheme === 'marquetry') {
+    return (
+      <GenericModal isOpen={isOpen} onClose={onClose} title="Say hello">
+        <p className="mqt-muted mb-4">A few ways to find Samil.</p>
+        <div className="flex flex-col gap-2">
+          {(config?.socials || []).map((link) => {
+            const Icon = socialIcons[link.icon] || GlobeIcon;
+            return (
+              <a
+                key={link.id}
+                href={link.url}
+                className="mqt-row !mb-0"
+                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+              >
+                <Icon
+                  size={20}
+                  className="shrink-0"
+                  style={{ color: 'var(--mqt-teal)' }}
+                />
+                <span
+                  className="flex-1 min-w-0 font-bold"
+                  style={{ color: 'var(--mqt-fg)' }}
+                >
+                  {link.label}
+                </span>
+                <MarquetryIcon name="arrowUpRight" fg={WOOD.gold} />
+              </a>
+            );
+          })}
+        </div>
+      </GenericModal>
+    );
+  }
 
   if (fezcodexTheme === 'knit') {
     return (

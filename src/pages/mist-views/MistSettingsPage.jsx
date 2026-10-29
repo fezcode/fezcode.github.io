@@ -201,11 +201,8 @@ const MistSettingsPage = () => {
     return undefined;
   }, [location.hash]);
 
-  const {
-    unlockAchievement,
-    showAchievementToast,
-    toggleAchievementToast,
-  } = useAchievements();
+  const { unlockAchievement, showAchievementToast, toggleAchievementToast } =
+    useAchievements();
 
   useEffect(() => {
     unlockAchievement('power_user');
@@ -214,45 +211,80 @@ const MistSettingsPage = () => {
   const { reduceMotion, toggleReduceMotion } = useAnimation();
 
   const {
-    isInverted, toggleInvert,
-    isRetro, toggleRetro,
-    isParty, toggleParty,
-    isMirror, toggleMirror,
-    isNoir, toggleNoir,
-    isTerminal, toggleTerminal,
-    isBlueprint, toggleBlueprint,
-    isSepia, toggleSepia,
-    isVaporwave, toggleVaporwave,
-    isCyberpunk, toggleCyberpunk,
-    isGameboy, toggleGameboy,
-    isComic, toggleComic,
-    isSketchbook, toggleSketchbook,
-    isHellenic, toggleHellenic,
-    isGlitch, toggleGlitch,
-    isGarden, toggleGarden,
-    isAutumn, toggleAutumn,
-    isRain, toggleRain,
-    isSplashTextEnabled, toggleSplashText,
-    isAppFullscreen, toggleAppFullscreen,
-    isSyntaxSpriteEnabled, toggleSyntaxSprite,
-    fezcodexTheme, setFezcodexTheme,
-    blogPostViewMode, setBlogPostViewMode,
-    headerFont, setHeaderFont,
-    bodyFont, setBodyFont,
+    isInverted,
+    toggleInvert,
+    isRetro,
+    toggleRetro,
+    isParty,
+    toggleParty,
+    isMirror,
+    toggleMirror,
+    isNoir,
+    toggleNoir,
+    isTerminal,
+    toggleTerminal,
+    isBlueprint,
+    toggleBlueprint,
+    isSepia,
+    toggleSepia,
+    isVaporwave,
+    toggleVaporwave,
+    isCyberpunk,
+    toggleCyberpunk,
+    isGameboy,
+    toggleGameboy,
+    isComic,
+    toggleComic,
+    isSketchbook,
+    toggleSketchbook,
+    isHellenic,
+    toggleHellenic,
+    isGlitch,
+    toggleGlitch,
+    isGarden,
+    toggleGarden,
+    isAutumn,
+    toggleAutumn,
+    isRain,
+    toggleRain,
+    isSplashTextEnabled,
+    toggleSplashText,
+    isAppFullscreen,
+    toggleAppFullscreen,
+    isSyntaxSpriteEnabled,
+    toggleSyntaxSprite,
+    fezcodexTheme,
+    setFezcodexTheme,
+    blogPostViewMode,
+    setBlogPostViewMode,
+    headerFont,
+    setHeaderFont,
+    bodyFont,
+    setBodyFont,
     availableFonts,
-    isFalloutOverlay, toggleFalloutOverlay,
-    falloutVariant, setFalloutVariant,
-    isFalloutNoiseEnabled, toggleFalloutNoise,
-    isFalloutScanlinesEnabled, toggleFalloutScanlines,
-    isFalloutVignetteEnabled, toggleFalloutVignette,
+    isFalloutOverlay,
+    toggleFalloutOverlay,
+    falloutVariant,
+    setFalloutVariant,
+    isFalloutNoiseEnabled,
+    toggleFalloutNoise,
+    isFalloutScanlinesEnabled,
+    toggleFalloutScanlines,
+    isFalloutVignetteEnabled,
+    toggleFalloutVignette,
   } = useVisualSettings();
 
   const {
-    isLightningEnabled, toggleLightning,
-    isLootDiscoveryEnabled, toggleLootDiscovery,
-    isFireOverlayEnabled, toggleFireOverlay,
-    isFireParticlesEnabled, toggleFireParticles,
-    isViewportFrameEnabled, toggleViewportFrame,
+    isLightningEnabled,
+    toggleLightning,
+    isLootDiscoveryEnabled,
+    toggleLootDiscovery,
+    isFireOverlayEnabled,
+    toggleFireOverlay,
+    isFireParticlesEnabled,
+    toggleFireParticles,
+    isViewportFrameEnabled,
+    toggleViewportFrame,
   } = React.useContext(DndContext);
 
   const { addToast } = useToast();
@@ -305,33 +337,152 @@ const MistSettingsPage = () => {
 
   const fxToggles = useMemo(
     () => [
-      { id: 'fx-invert',     label: 'invert colors',     checked: isInverted,     onChange: toggleInvert },
-      { id: 'fx-retro',      label: 'retro crt',         checked: isRetro,        onChange: toggleRetro },
-      { id: 'fx-party',      label: 'party mode',        checked: isParty,        onChange: toggleParty },
-      { id: 'fx-mirror',     label: 'mirror world',      checked: isMirror,       onChange: toggleMirror },
-      { id: 'fx-noir',       label: 'film noir',         checked: isNoir,         onChange: toggleNoir },
-      { id: 'fx-terminal',   label: 'emerald terminal',  checked: isTerminal,     onChange: toggleTerminal },
-      { id: 'fx-blueprint',  label: 'blueprint',         checked: isBlueprint,    onChange: toggleBlueprint },
-      { id: 'fx-sepia',      label: 'vintage sepia',     checked: isSepia,        onChange: toggleSepia },
-      { id: 'fx-vaporwave',  label: 'vaporwave',         checked: isVaporwave,    onChange: toggleVaporwave },
-      { id: 'fx-cyberpunk',  label: 'cyberpunk',         checked: isCyberpunk,    onChange: toggleCyberpunk },
-      { id: 'fx-gameboy',    label: 'legacy handheld',   checked: isGameboy,      onChange: toggleGameboy },
-      { id: 'fx-comic',      label: 'comic array',       checked: isComic,        onChange: toggleComic },
-      { id: 'fx-sketchbook', label: 'graphite map',      checked: isSketchbook,   onChange: toggleSketchbook },
-      { id: 'fx-hellenic',   label: 'classical agora',   checked: isHellenic,     onChange: toggleHellenic },
-      { id: 'fx-glitch',     label: 'data corruption',   checked: isGlitch,       onChange: toggleGlitch },
-      { id: 'fx-garden',     label: 'flora protocol',    checked: isGarden,       onChange: toggleGarden },
-      { id: 'fx-autumn',     label: 'seasonal decay',    checked: isAutumn,       onChange: toggleAutumn },
-      { id: 'fx-rain',       label: 'hydraulic filter',  checked: isRain,         onChange: toggleRain },
+      {
+        id: 'fx-invert',
+        label: 'invert colors',
+        checked: isInverted,
+        onChange: toggleInvert,
+      },
+      {
+        id: 'fx-retro',
+        label: 'retro crt',
+        checked: isRetro,
+        onChange: toggleRetro,
+      },
+      {
+        id: 'fx-party',
+        label: 'party mode',
+        checked: isParty,
+        onChange: toggleParty,
+      },
+      {
+        id: 'fx-mirror',
+        label: 'mirror world',
+        checked: isMirror,
+        onChange: toggleMirror,
+      },
+      {
+        id: 'fx-noir',
+        label: 'film noir',
+        checked: isNoir,
+        onChange: toggleNoir,
+      },
+      {
+        id: 'fx-terminal',
+        label: 'emerald terminal',
+        checked: isTerminal,
+        onChange: toggleTerminal,
+      },
+      {
+        id: 'fx-blueprint',
+        label: 'blueprint',
+        checked: isBlueprint,
+        onChange: toggleBlueprint,
+      },
+      {
+        id: 'fx-sepia',
+        label: 'vintage sepia',
+        checked: isSepia,
+        onChange: toggleSepia,
+      },
+      {
+        id: 'fx-vaporwave',
+        label: 'vaporwave',
+        checked: isVaporwave,
+        onChange: toggleVaporwave,
+      },
+      {
+        id: 'fx-cyberpunk',
+        label: 'cyberpunk',
+        checked: isCyberpunk,
+        onChange: toggleCyberpunk,
+      },
+      {
+        id: 'fx-gameboy',
+        label: 'legacy handheld',
+        checked: isGameboy,
+        onChange: toggleGameboy,
+      },
+      {
+        id: 'fx-comic',
+        label: 'comic array',
+        checked: isComic,
+        onChange: toggleComic,
+      },
+      {
+        id: 'fx-sketchbook',
+        label: 'graphite map',
+        checked: isSketchbook,
+        onChange: toggleSketchbook,
+      },
+      {
+        id: 'fx-hellenic',
+        label: 'classical agora',
+        checked: isHellenic,
+        onChange: toggleHellenic,
+      },
+      {
+        id: 'fx-glitch',
+        label: 'data corruption',
+        checked: isGlitch,
+        onChange: toggleGlitch,
+      },
+      {
+        id: 'fx-garden',
+        label: 'flora protocol',
+        checked: isGarden,
+        onChange: toggleGarden,
+      },
+      {
+        id: 'fx-autumn',
+        label: 'seasonal decay',
+        checked: isAutumn,
+        onChange: toggleAutumn,
+      },
+      {
+        id: 'fx-rain',
+        label: 'hydraulic filter',
+        checked: isRain,
+        onChange: toggleRain,
+      },
     ],
     [
-      isInverted, isRetro, isParty, isMirror, isNoir, isTerminal, isBlueprint,
-      isSepia, isVaporwave, isCyberpunk, isGameboy, isComic, isSketchbook,
-      isHellenic, isGlitch, isGarden, isAutumn, isRain,
-      toggleInvert, toggleRetro, toggleParty, toggleMirror, toggleNoir,
-      toggleTerminal, toggleBlueprint, toggleSepia, toggleVaporwave,
-      toggleCyberpunk, toggleGameboy, toggleComic, toggleSketchbook,
-      toggleHellenic, toggleGlitch, toggleGarden, toggleAutumn, toggleRain,
+      isInverted,
+      isRetro,
+      isParty,
+      isMirror,
+      isNoir,
+      isTerminal,
+      isBlueprint,
+      isSepia,
+      isVaporwave,
+      isCyberpunk,
+      isGameboy,
+      isComic,
+      isSketchbook,
+      isHellenic,
+      isGlitch,
+      isGarden,
+      isAutumn,
+      isRain,
+      toggleInvert,
+      toggleRetro,
+      toggleParty,
+      toggleMirror,
+      toggleNoir,
+      toggleTerminal,
+      toggleBlueprint,
+      toggleSepia,
+      toggleVaporwave,
+      toggleCyberpunk,
+      toggleGameboy,
+      toggleComic,
+      toggleSketchbook,
+      toggleHellenic,
+      toggleGlitch,
+      toggleGarden,
+      toggleAutumn,
+      toggleRain,
     ],
   );
 
@@ -363,13 +514,15 @@ const MistSettingsPage = () => {
             <div>
               <div className="font-ibm-plex-mono text-[11px] tracking-[0.2em] lowercase text-[#5F837B] mb-6 flex items-center gap-3">
                 <span>codex entry</span>
-                <MistHorizon className="flex-1 max-w-[60px]" tint="rgba(95,131,123,0.5)" />
+                <MistHorizon
+                  className="flex-1 max-w-[60px]"
+                  tint="rgba(95,131,123,0.5)"
+                />
                 <span>drift xi</span>
               </div>
-              <h1
-                className="font-instr-serif text-[64px] md:text-[120px] leading-[0.9] tracking-[-0.025em] text-[#3C4845] font-normal"
-              >
-                the<br />
+              <h1 className="font-instr-serif text-[64px] md:text-[120px] leading-[0.9] tracking-[-0.025em] text-[#3C4845] font-normal">
+                the
+                <br />
                 <ChapterEm>calibration</ChapterEm>
                 <em aria-hidden="true" className="text-[#5F837B] not-italic">
                   .
@@ -400,7 +553,11 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="i"
             label="interface"
-            title={<>how the <ChapterEm>page is held.</ChapterEm></>}
+            title={
+              <>
+                how the <ChapterEm>page is held.</ChapterEm>
+              </>
+            }
             blurb="theme, reading mode, dashboard priority."
           />
           <ol>
@@ -420,6 +577,7 @@ const MistSettingsPage = () => {
                     { label: 'ledger (archive)', value: 'ledger' },
                     { label: 'Orbit (Observatory)', value: 'orbit' },
                     { label: 'Knit (Colourwork)', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -447,6 +605,7 @@ const MistSettingsPage = () => {
                     { label: 'galley proof', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'Knit', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
@@ -502,11 +661,17 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="ii"
             label="typography"
-            title={<>how the <ChapterEm>ink settles.</ChapterEm></>}
+            title={
+              <>
+                how the <ChapterEm>ink settles.</ChapterEm>
+              </>
+            }
             blurb="font choices for long-form reading."
           />
           <div className="mt-4 mb-2 px-5 py-4 rounded-2xl bg-white/40 backdrop-blur-sm shadow-[0_18px_50px_rgba(60,72,69,0.10)] flex items-start gap-3">
-            <span aria-hidden="true" className="text-[#8FA8BC]">◦</span>
+            <span aria-hidden="true" className="text-[#8FA8BC]">
+              ◦
+            </span>
             <span className="font-outfit font-light text-[13px] text-[#5C6B67] leading-relaxed">
               note — only the brutalist theme answers these font picks. luxe,
               terracotta and mist keep their set typography so each identity
@@ -523,7 +688,10 @@ const MistSettingsPage = () => {
               control={
                 <MistDropdown
                   label="select face"
-                  options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
+                  options={availableFonts.map((f) => ({
+                    label: f.name,
+                    value: f.id,
+                  }))}
                   value={headerFont}
                   onChange={setHeaderFont}
                 />
@@ -536,7 +704,10 @@ const MistSettingsPage = () => {
               control={
                 <MistDropdown
                   label="select face"
-                  options={availableFonts.map((f) => ({ label: f.name, value: f.id }))}
+                  options={availableFonts.map((f) => ({
+                    label: f.name,
+                    value: f.id,
+                  }))}
                   value={bodyFont}
                   onChange={setBodyFont}
                 />
@@ -549,7 +720,11 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="iii"
             label="motion & companion"
-            title={<>what <ChapterEm>drifts</ChapterEm>, what stays still.</>}
+            title={
+              <>
+                what <ChapterEm>drifts</ChapterEm>, what stays still.
+              </>
+            }
             blurb="animation, splash text, and the companion who reads over your shoulder."
           />
           <ol>
@@ -613,7 +788,11 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="iv"
             label="visual matrix"
-            title={<>filters, <ChapterEm>half-dreamt.</ChapterEm></>}
+            title={
+              <>
+                filters, <ChapterEm>half-dreamt.</ChapterEm>
+              </>
+            }
             blurb="experimental overlays — wake one or two; let the rest sleep."
           />
           <MistHorizon tint="rgba(60,72,69,0.18)" />
@@ -694,8 +873,14 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="v"
             label="serfs & frauds"
-            title={<>the <ChapterEm>hearth-fire</ChapterEm>, seen through fog.</>}
-            blurb={'immersive effects for the "from serfs and frauds" d&d archive.'}
+            title={
+              <>
+                the <ChapterEm>hearth-fire</ChapterEm>, seen through fog.
+              </>
+            }
+            blurb={
+              'immersive effects for the "from serfs and frauds" d&d archive.'
+            }
           />
           <ol>
             <MistHorizon tint="rgba(60,72,69,0.18)" />
@@ -771,15 +956,23 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="vi"
             label="feedback proofs"
-            title={<>test a <ChapterEm>whisper.</ChapterEm></>}
+            title={
+              <>
+                test a <ChapterEm>whisper.</ChapterEm>
+              </>
+            }
             blurb="surface one of each toast variant to verify delivery."
           />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { type: 'success', label: 'confirmed', copy: 'kept while waking.' },
-              { type: 'error',   label: 'error',     copy: 'something slipped.' },
-              { type: 'gold',    label: 'honor',     copy: 'a mark was held.' },
-              { type: 'techno',  label: 'signal',    copy: 'channel connected.' },
+              {
+                type: 'success',
+                label: 'confirmed',
+                copy: 'kept while waking.',
+              },
+              { type: 'error', label: 'error', copy: 'something slipped.' },
+              { type: 'gold', label: 'honor', copy: 'a mark was held.' },
+              { type: 'techno', label: 'signal', copy: 'channel connected.' },
             ].map((t, i) => (
               <motion.button
                 key={t.type}
@@ -812,7 +1005,11 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="vii"
             label="data administration"
-            title={<>reset <ChapterEm>small things.</ChapterEm></>}
+            title={
+              <>
+                reset <ChapterEm>small things.</ChapterEm>
+              </>
+            }
             blurb="restore sub-systems without losing the archive."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -853,7 +1050,11 @@ const MistSettingsPage = () => {
           <MistChapter
             numeral="viii"
             label="clean slate"
-            title={<>begin again, <ChapterEm>blank as dawn.</ChapterEm></>}
+            title={
+              <>
+                begin again, <ChapterEm>blank as dawn.</ChapterEm>
+              </>
+            }
             blurb="the only irreversible action on this page."
           />
           <motion.div

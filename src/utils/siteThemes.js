@@ -55,6 +55,14 @@ export const SITE_THEMES = [
     foreground: '#f0e6d3',
     accent: '#c9952b',
   },
+  {
+    id: 'marquetry',
+    name: 'Marquetry',
+    description: 'A codex inlaid in wood',
+    background: '#eee0c6',
+    foreground: '#35251c',
+    accent: '#275566',
+  },
 ];
 
 export const isSiteTheme = (value) =>

@@ -341,6 +341,7 @@ const SettingsPage = () => {
                     { label: 'Ledger (Archive)', value: 'ledger' },
                     { label: 'Orbit (Observatory)', value: 'orbit' },
                     { label: 'Knit (Colourwork)', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -384,6 +385,7 @@ const SettingsPage = () => {
                     { label: 'Galley Proof', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'Knit', value: 'knit' },
+                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
@@ -404,10 +406,11 @@ const SettingsPage = () => {
               <span className="font-black uppercase tracking-widest text-emerald-400 mr-2">
                 {'// note'}
               </span>
-              Only the <span className="text-white">Brutalist</span> theme respects these
-              font picks. Luxe and Terracotta hold their set typography (Playfair/Outfit
-              and Fraunces/IBM Plex Mono) so their identity stays intact. Your selection
-              here persists and reapplies whenever Brutalist is active.
+              Only the <span className="text-white">Brutalist</span> theme
+              respects these font picks. Luxe and Terracotta hold their set
+              typography (Playfair/Outfit and Fraunces/IBM Plex Mono) so their
+              identity stays intact. Your selection here persists and reapplies
+              whenever Brutalist is active.
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-6 border border-white/5 bg-white/[0.01]space-y-6">

@@ -13,12 +13,7 @@ import {
   KEY_APPS_COLLAPSED_CATEGORIES,
   remove as removeLocalStorageItem,
 } from '../../utils/LocalStorageManager';
-import {
-  KnitText,
-  KnitHero,
-  KnitBand,
-  YARN,
-} from '../../components/knit';
+import { KnitText, KnitHero, KnitBand, YARN } from '../../components/knit';
 import '../../styles/Knit.css';
 
 const KnitToggle = ({ id, checked, onChange, label }) => (
@@ -72,12 +67,25 @@ const SettingRow = ({ number, heading, description, control, stacked }) => (
   <li className="knt-setting">
     <div className={stacked ? '' : 'flex items-center gap-4'}>
       <div className="flex items-center gap-3 flex-1 min-w-0">
-        <KnitText text={number} size="small" fg={YARN.gold} fit aria-hidden="true" />
-        <KnitText text={heading} size="small" fg={YARN.cream} className="flex-1" />
+        <KnitText
+          text={number}
+          size="small"
+          fg={YARN.gold}
+          fit
+          aria-hidden="true"
+        />
+        <KnitText
+          text={heading}
+          size="small"
+          fg={YARN.cream}
+          className="flex-1"
+        />
       </div>
       <div className={stacked ? 'mt-3' : 'shrink-0'}>{control}</div>
     </div>
-    {description && <p className="knt-muted text-sm mt-2 mb-0">{description}</p>}
+    {description && (
+      <p className="knt-muted text-sm mt-2 mb-0">{description}</p>
+    )}
   </li>
 );
 
@@ -384,7 +392,6 @@ const KnitSettingsPage = () => {
         motif="flowers"
       />
       <div className="knt-page">
-
         {/* ── DESIGN LANGUAGE ─────────────────────────────────────────── */}
         <section id="interface">
           <SectionHead
@@ -407,6 +414,7 @@ const KnitSettingsPage = () => {
                     { label: 'LEDGER', value: 'ledger' },
                     { label: 'ORBIT', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
+                    { label: 'MARQUETRY', value: 'marquetry' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -488,6 +496,7 @@ const KnitSettingsPage = () => {
                     { label: 'GALLEY', value: 'galley' },
                     { label: 'ORBIT', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
+                    { label: 'MARQUETRY', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}
@@ -887,10 +896,7 @@ const KnitSettingsPage = () => {
             </button>
           </div>
 
-          <div
-            id="danger-zone"
-            className="knt-patch-dark mt-6"
-          >
+          <div id="danger-zone" className="knt-patch-dark mt-6">
             <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
               <div className="flex-1 min-w-0">
                 <p className="knt-label mb-1">RESET PREFERENCES</p>

@@ -1,3 +1,4 @@
+import { MarquetryText, MarquetryIcon, MarquetryBand, WOOD } from './marquetry';
 import React, { useState, useEffect, useRef } from 'react';
 import piml from 'piml';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,9 +29,11 @@ const Banner = () => {
   const offsetVar =
     fezcodexTheme === 'orbit'
       ? '--orb-banner-offset'
-      : fezcodexTheme === 'knit'
-        ? '--knt-banner-offset'
-        : null;
+      : fezcodexTheme === 'marquetry'
+        ? '--mqt-banner-offset'
+        : fezcodexTheme === 'knit'
+          ? '--knt-banner-offset'
+          : null;
   useEffect(() => {
     if (!offsetVar || !banner || !isVisible) return undefined;
     const element = orbitBannerRef.current;
@@ -164,6 +167,68 @@ const Banner = () => {
       </Link>
     );
   };
+
+  if (fezcodexTheme === 'marquetry') {
+    const caption = (
+      <MarquetryText
+        text={banner.linkText || 'View details'}
+        size="small"
+        fg={WOOD.peat}
+        fit
+      />
+    );
+    return (
+      <div
+        ref={orbitBannerRef}
+        className="mqt-chrome mqt-wool-rust relative z-[100]"
+      >
+        <MarquetryBand pattern="peerie" />
+        <div className="max-w-[1800px] mx-auto px-4 py-3 flex items-center gap-4">
+          <MarquetryIcon
+            name={bannerType === 'info' ? 'heart' : 'star'}
+            fg={WOOD.gold}
+          />
+          <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-3">
+            <MarquetryText
+              text={banner.text}
+              size="small"
+              fg={WOOD.ink}
+              className="flex-1"
+            />
+            {banner.link &&
+              (isExternalLink ? (
+                <a
+                  href={banner.link}
+                  className="mqt-btn mqt-btn-gold shrink-0"
+                  aria-label={banner.linkText || 'View details'}
+                  onClick={handleDismiss}
+                >
+                  {caption}
+                </a>
+              ) : (
+                <Link
+                  to={banner.link}
+                  className="mqt-btn mqt-btn-gold shrink-0"
+                  aria-label={banner.linkText || 'View details'}
+                  onClick={handleDismiss}
+                >
+                  {caption}
+                </Link>
+              ))}
+          </div>
+          <button
+            type="button"
+            onClick={handleDismiss}
+            className="mqt-btn mqt-btn-icon shrink-0"
+            aria-label="Dismiss banner"
+          >
+            <MarquetryIcon name="close" fg={WOOD.ink} />
+          </button>
+        </div>
+        <MarquetryBand pattern="peerie" />
+      </div>
+    );
+  }
 
   if (fezcodexTheme === 'knit') {
     const caption = (

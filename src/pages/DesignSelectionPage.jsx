@@ -1,3 +1,9 @@
+import {
+  MarquetryText,
+  MarquetryBand,
+  MarquetryInlay,
+} from '../components/marquetry';
+import '../styles/Marquetry.css';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -45,7 +51,7 @@ const DesignSelectionPage = () => {
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
         title="Design System | Fezcodex"
-        description="Explore seven Fezcodex themes, from Brutalist to Knit, the codex as a hand-knitted sweater."
+        description="Explore eight Fezcodex themes, from Brutalist to Marquetry, a codex inlaid in wood."
       />
 
       <div className="w-full min-w-0 max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
@@ -352,6 +358,41 @@ const DesignSelectionPage = () => {
             </motion.div>
           </button>
 
+          {/* MARQUETRY CARD */}
+          <button
+            id="marquetry"
+            aria-label="Activate Marquetry theme"
+            type="button"
+            onClick={() => {
+              setFezcodexTheme('marquetry');
+              navigate('/');
+            }}
+            className="group block relative text-left mqt-root"
+          >
+            <motion.div
+              whileHover={{ y: -6 }}
+              className="mqt-patch h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden relative"
+            >
+              <MarquetryBand className="absolute top-0 left-0 right-0" />
+              <div className="pt-8 space-y-6">
+                <MarquetryInlay
+                  seed="marquetry"
+                  size={160}
+                  className="mx-auto"
+                />
+                <MarquetryText text="Marquetry" as="h2" />
+                <p className="text-sm leading-relaxed mqt-muted">
+                  A codex inlaid in wood. Walnut navigation, maple reading
+                  panels, geometric veneer motifs, and a small wooden hen.
+                </p>
+              </div>
+              <div className="mt-10 pt-6 border-t border-[#725332]/30 flex justify-between items-center">
+                <span className="mqt-label">Use Marquetry</span>
+                <ArrowRightIcon size={24} />
+              </div>
+            </motion.div>
+          </button>
+
           {/* KNIT CARD */}
           <button
             id="knit"
@@ -368,12 +409,15 @@ const DesignSelectionPage = () => {
               whileHover={{ y: -10 }}
               className="h-full bg-[#2C4A7C] text-[#F0E6D3] p-6 sm:p-12 flex flex-col justify-between rounded-2xl overflow-hidden shadow-[0_30px_60px_-30px_rgba(24,43,74,0.6)] transition-all duration-500 relative"
             >
-              <KnitBand pattern={['peerie', 'hens', 'peerie']} className="absolute top-0 left-0 right-0" />
+              <KnitBand
+                pattern={['peerie', 'hens', 'peerie']}
+                className="absolute top-0 left-0 right-0"
+              />
               <div className="space-y-8 relative z-10 pt-24">
                 <KnitText text="Knit" scale={2} fg="#e3d8c4" fit as="h2" />
                 <p className="text-sm leading-relaxed text-[#CBB99B]">
-                  The codex as a hand-knitted sweater. Every stitch a twisted
-                  V, titles knitted into the fabric, Fair Isle bands, and the
+                  The codex as a hand-knitted sweater. Every stitch a twisted V,
+                  titles knitted into the fabric, Fair Isle bands, and the
                   reading kept on felt patches.
                 </p>
               </div>

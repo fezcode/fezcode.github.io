@@ -39,7 +39,9 @@ const Row = ({ label, hint, children, disabled }) => (
       <div className="snf-mono text-xs uppercase tracking-[0.14em] text-[var(--snf-ink)]">
         {label}
       </div>
-      {hint && <div className="snf-mono text-[10px] snf-dim mt-0.5">{hint}</div>}
+      {hint && (
+        <div className="snf-mono text-[10px] snf-dim mt-0.5">{hint}</div>
+      )}
     </div>
     <div className="flex-none">{children}</div>
   </div>
@@ -65,8 +67,15 @@ const Segmented = ({ value, onChange, options }) => (
 );
 
 const SnfSettingsPage = () => {
-  const { settings, setSetting, toggle, resetSettings, language, setLanguage, setBreadcrumbs } =
-    useSnf();
+  const {
+    settings,
+    setSetting,
+    toggle,
+    resetSettings,
+    language,
+    setLanguage,
+    setBreadcrumbs,
+  } = useSnf();
 
   useEffect(() => {
     setBreadcrumbs([{ label: 'SYSTEM CONFIG' }]);
@@ -127,10 +136,20 @@ const SnfSettingsPage = () => {
               ]}
             />
           </Row>
-          <Row label={tr ? 'Tarama Çizgileri' : 'Scanlines'} hint="CRT raster lines">
-            <SnfToggle on={settings.scanlines} onChange={() => flip('scanlines')} label="scanlines" />
+          <Row
+            label={tr ? 'Tarama Çizgileri' : 'Scanlines'}
+            hint="CRT raster lines"
+          >
+            <SnfToggle
+              on={settings.scanlines}
+              onChange={() => flip('scanlines')}
+              label="scanlines"
+            />
           </Row>
-          <Row label={tr ? 'Çizgi Yoğunluğu' : 'Scan Intensity'} disabled={!settings.scanlines}>
+          <Row
+            label={tr ? 'Çizgi Yoğunluğu' : 'Scan Intensity'}
+            disabled={!settings.scanlines}
+          >
             <Segmented
               value={settings.scanlineIntensity}
               onChange={(v) => change('scanlineIntensity', v)}
@@ -142,27 +161,70 @@ const SnfSettingsPage = () => {
             />
           </Row>
           <Row label={tr ? 'Titreme' : 'Flicker'} hint="screen instability">
-            <SnfToggle on={settings.flicker} onChange={() => flip('flicker')} label="flicker" />
+            <SnfToggle
+              on={settings.flicker}
+              onChange={() => flip('flicker')}
+              label="flicker"
+            />
           </Row>
-          <Row label={tr ? 'Fosfor Parıltısı' : 'Phosphor Glow'} hint="text bloom">
-            <SnfToggle on={settings.glow} onChange={() => flip('glow')} label="glow" />
+          <Row
+            label={tr ? 'Fosfor Parıltısı' : 'Phosphor Glow'}
+            hint="text bloom"
+          >
+            <SnfToggle
+              on={settings.glow}
+              onChange={() => flip('glow')}
+              label="glow"
+            />
           </Row>
-          <Row label={tr ? 'Renk Sapması' : 'Chromatic Aberration'} hint="RGB split">
-            <SnfToggle on={settings.aberration} onChange={() => flip('aberration')} label="aberration" />
+          <Row
+            label={tr ? 'Renk Sapması' : 'Chromatic Aberration'}
+            hint="RGB split"
+          >
+            <SnfToggle
+              on={settings.aberration}
+              onChange={() => flip('aberration')}
+              label="aberration"
+            />
           </Row>
-          <Row label={tr ? 'Eğrilik' : 'Curvature'} hint="screen bow + edge dark">
-            <SnfToggle on={settings.curvature} onChange={() => flip('curvature')} label="curvature" />
+          <Row
+            label={tr ? 'Eğrilik' : 'Curvature'}
+            hint="screen bow + edge dark"
+          >
+            <SnfToggle
+              on={settings.curvature}
+              onChange={() => flip('curvature')}
+              label="curvature"
+            />
           </Row>
           <Row label={tr ? 'Gren / Kir' : 'Grain / Grime'} hint="film noise">
-            <SnfToggle on={settings.grain} onChange={() => flip('grain')} label="grain" />
+            <SnfToggle
+              on={settings.grain}
+              onChange={() => flip('grain')}
+              label="grain"
+            />
           </Row>
           <Row label={tr ? 'Vinyet' : 'Vignette'}>
-            <SnfToggle on={settings.vignette} onChange={() => flip('vignette')} label="vignette" />
+            <SnfToggle
+              on={settings.vignette}
+              onChange={() => flip('vignette')}
+              label="vignette"
+            />
           </Row>
-          <Row label={tr ? 'Ekran Sarsıntısı' : 'Screen Shake'} hint="camera jitter + rotation">
-            <SnfToggle on={settings.shake} onChange={() => flip('shake')} label="screen shake" />
+          <Row
+            label={tr ? 'Ekran Sarsıntısı' : 'Screen Shake'}
+            hint="camera jitter + rotation"
+          >
+            <SnfToggle
+              on={settings.shake}
+              onChange={() => flip('shake')}
+              label="screen shake"
+            />
           </Row>
-          <Row label={tr ? 'Sarsıntı Şiddeti' : 'Shake Intensity'} disabled={!settings.shake}>
+          <Row
+            label={tr ? 'Sarsıntı Şiddeti' : 'Shake Intensity'}
+            disabled={!settings.shake}
+          >
             <Segmented
               value={settings.shakeIntensity}
               onChange={(v) => change('shakeIntensity', v)}
@@ -178,7 +240,10 @@ const SnfSettingsPage = () => {
         <div className="space-y-5">
           {/* TEXT */}
           <Group icon={<TextTIcon size={18} weight="bold" />} title="TEXT">
-            <Row label={tr ? 'Okuma Yazı Tipi' : 'Reading Font'} hint="report body">
+            <Row
+              label={tr ? 'Okuma Yazı Tipi' : 'Reading Font'}
+              hint="report body"
+            >
               <Segmented
                 value={settings.readingFont}
                 onChange={(v) => change('readingFont', v)}
@@ -199,15 +264,32 @@ const SnfSettingsPage = () => {
                 ]}
               />
             </Row>
-            <Row label={tr ? 'Şifre Çözme Efekti' : 'Decrypt Reveal'} hint="typewriter / scramble">
-              <SnfToggle on={settings.decrypt} onChange={() => flip('decrypt')} label="decrypt" />
+            <Row
+              label={tr ? 'Şifre Çözme Efekti' : 'Decrypt Reveal'}
+              hint="typewriter / scramble"
+            >
+              <SnfToggle
+                on={settings.decrypt}
+                onChange={() => flip('decrypt')}
+                label="decrypt"
+              />
             </Row>
           </Group>
 
           {/* AUDIO */}
-          <Group icon={<SpeakerHighIcon size={18} weight="bold" />} title="AUDIO">
-            <Row label={tr ? 'Ortam Sesi' : 'Ambient Audio'} hint="synthesised — never autoplays">
-              <SnfToggle on={settings.audio} onChange={() => flip('audio')} label="ambient audio" />
+          <Group
+            icon={<SpeakerHighIcon size={18} weight="bold" />}
+            title="AUDIO"
+          >
+            <Row
+              label={tr ? 'Ortam Sesi' : 'Ambient Audio'}
+              hint="synthesised — never autoplays"
+            >
+              <SnfToggle
+                on={settings.audio}
+                onChange={() => flip('audio')}
+                label="ambient audio"
+              />
             </Row>
             <Row label={tr ? 'Kanal' : 'Channel'} disabled={!settings.audio}>
               <Segmented
@@ -220,7 +302,10 @@ const SnfSettingsPage = () => {
                 ]}
               />
             </Row>
-            <Row label={tr ? 'Ses Düzeyi' : 'Volume'} disabled={!settings.audio}>
+            <Row
+              label={tr ? 'Ses Düzeyi' : 'Volume'}
+              disabled={!settings.audio}
+            >
               <SnfRange
                 value={settings.volume}
                 onChange={(v) => setSetting('volume', v)}
@@ -230,18 +315,39 @@ const SnfSettingsPage = () => {
                 className="w-32"
               />
             </Row>
-            <Row label={tr ? 'Arayüz Bipleri' : 'UI Beeps'} hint="control feedback">
-              <SnfToggle on={settings.beeps} onChange={() => flip('beeps')} label="ui beeps" />
+            <Row
+              label={tr ? 'Arayüz Bipleri' : 'UI Beeps'}
+              hint="control feedback"
+            >
+              <SnfToggle
+                on={settings.beeps}
+                onChange={() => flip('beeps')}
+                label="ui beeps"
+              />
             </Row>
           </Group>
 
           {/* SYSTEM */}
           <Group icon={<GearSixIcon size={18} weight="bold" />} title="SYSTEM">
-            <Row label={tr ? 'Önyükleme Dizisi' : 'Boot Sequence'} hint="on terminal entry">
-              <SnfToggle on={settings.boot} onChange={() => flip('boot')} label="boot sequence" />
+            <Row
+              label={tr ? 'Önyükleme Dizisi' : 'Boot Sequence'}
+              hint="on terminal entry"
+            >
+              <SnfToggle
+                on={settings.boot}
+                onChange={() => flip('boot')}
+                label="boot sequence"
+              />
             </Row>
-            <Row label={tr ? 'Hareketi Azalt' : 'Reduced Motion'} hint="stops all animation">
-              <SnfToggle on={settings.reducedMotion} onChange={() => flip('reducedMotion')} label="reduced motion" />
+            <Row
+              label={tr ? 'Hareketi Azalt' : 'Reduced Motion'}
+              hint="stops all animation"
+            >
+              <SnfToggle
+                on={settings.reducedMotion}
+                onChange={() => flip('reducedMotion')}
+                label="reduced motion"
+              />
             </Row>
             <Row label={tr ? 'Dil' : 'Language'}>
               <Segmented
@@ -257,7 +363,11 @@ const SnfSettingsPage = () => {
               />
             </Row>
             <Row label={tr ? 'Önyüklemeyi Tekrar Oynat' : 'Replay Boot'}>
-              <button type="button" onClick={replayBoot} className="snf-btn !px-3 !py-1.5 flex items-center gap-2">
+              <button
+                type="button"
+                onClick={replayBoot}
+                className="snf-btn !px-3 !py-1.5 flex items-center gap-2"
+              >
                 <PlayIcon size={13} weight="fill" /> RUN
               </button>
             </Row>

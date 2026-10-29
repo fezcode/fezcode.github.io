@@ -6,6 +6,7 @@ import TerracottaCodeModal from './TerracottaCodeModal';
 import MistCodeModal from './MistCodeModal';
 import LedgerCodeModal from './LedgerCodeModal';
 import OrbitCodeModal from './OrbitCodeModal';
+import MarquetryCodeModal from './MarquetryCodeModal';
 import KnitCodeModal from './KnitCodeModal';
 
 const CodeModal = (props) => {
@@ -16,6 +17,7 @@ const CodeModal = (props) => {
   if (fezcodexTheme === 'mist') return <MistCodeModal {...props} />;
   if (fezcodexTheme === 'ledger') return <LedgerCodeModal {...props} />;
   if (fezcodexTheme === 'orbit') return <OrbitCodeModal {...props} />;
+  if (fezcodexTheme === 'marquetry') return <MarquetryCodeModal {...props} />;
   if (fezcodexTheme === 'knit') return <KnitCodeModal {...props} />;
   return <BrutalistCodeModal {...props} />;
 };

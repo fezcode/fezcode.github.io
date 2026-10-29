@@ -136,7 +136,7 @@ export const commands = [
       {
         title: 'Switch Visual Theme',
         description:
-          'Choose Brufez, Fezluxe, Terracotta, Mist, Ledger, Orbit, or Knit.',
+          'Choose Brufez, Fezluxe, Terracotta, Mist, Ledger, Orbit, Knit, or Marquetry.',
         color: 'amber',
         commandId: 'switchTheme',
       },

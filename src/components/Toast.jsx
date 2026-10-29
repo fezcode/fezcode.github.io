@@ -1,3 +1,6 @@
+import { MarquetryText, MarquetryIcon, WOOD } from './marquetry';
+import '../styles/Marquetry.css';
+import { readActiveTheme } from '../utils/featureFlags';
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import {
@@ -8,8 +11,6 @@ import {
   TerminalIcon,
 } from '@phosphor-icons/react';
 import { Link } from 'react-router-dom';
-import * as LocalStorageManager from '../utils/LocalStorageManager';
-import { isSiteTheme } from '../utils/siteThemes';
 import '../styles/Orbit.css';
 import '../styles/Knit.css';
 import { KnitText, KnitIcon, YARN } from './knit';
@@ -31,25 +32,24 @@ const Toast = ({
   // written in a post-commit effect, and ?fezTheme=... is stripped from the
   // URL before it lands), so we also listen for the manager's write events
   // and restyle in place.
-  const readTheme = () => {
-    const urlTheme = new URLSearchParams(window.location.search).get(
-      'fezTheme',
-    );
-    return isSiteTheme(urlTheme)
-      ? urlTheme
-      : LocalStorageManager.get('fezcodex-theme', 'brutalist');
-  };
+  const readTheme = readActiveTheme;
   const [theme, setTheme] = React.useState(readTheme);
 
   useEffect(() => {
     const onStorageWrite = (e) => {
-      if (e.detail?.key === 'fezcodex-theme') setTheme(readTheme());
+      if (e.detail?.key === 'fezcodex-theme')
+        setTheme(e.detail.value || readTheme());
     };
+    const onThemeChange = () => setTheme(readTheme());
+    window.addEventListener('fezcodex-theme-change', onThemeChange);
     window.addEventListener('fezcodex-storage', onStorageWrite);
     // the theme persist may have landed between our render and this effect —
     // re-read once so we don't depend on catching that event
     setTheme(readTheme());
-    return () => window.removeEventListener('fezcodex-storage', onStorageWrite);
+    return () => {
+      window.removeEventListener('fezcodex-storage', onStorageWrite);
+      window.removeEventListener('fezcodex-theme-change', onThemeChange);
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const isTerracotta = theme === 'terracotta';
@@ -63,6 +63,91 @@ const Toast = ({
     }, duration);
     return () => clearTimeout(timer);
   }, [id, duration, removeToast]);
+
+  if (theme === 'marquetry') {
+    const marquetryIcon =
+      type === 'error'
+        ? 'close'
+        : type === 'gold'
+          ? 'trophy'
+          : type === 'techno'
+            ? 'terminal'
+            : 'heart';
+    const marquetryLink = 'mqt-btn !min-h-0 !py-1.5';
+    const caption = (label) => (
+      <MarquetryText text={label} size="small" fg={WOOD.ink} fit />
+    );
+    return (
+      <div
+        className="mqt-toast relative w-80 md:w-96 max-w-[calc(100vw-2rem)] mb-4"
+        role={type === 'error' ? 'alert' : 'status'}
+      >
+        <div className="flex items-start gap-3">
+          <MarquetryIcon
+            name={marquetryIcon}
+            fg={type === 'error' ? WOOD.poppy : WOOD.gold}
+            className="mt-1"
+          />
+          <div className="min-w-0 flex-1">
+            <MarquetryText as="h4" text={title} size="small" fg={WOOD.ink} />
+            <p className="text-sm mt-2" style={{ color: 'var(--mqt-muted)' }}>
+              {message}
+            </p>
+            {links?.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3">
+                {links.map((link, i) =>
+                  link.to ? (
+                    <Link
+                      key={i}
+                      to={link.to}
+                      className={marquetryLink}
+                      aria-label={link.label}
+                      onClick={() => removeToast(id)}
+                    >
+                      {caption(link.label)}
+                    </Link>
+                  ) : link.href ? (
+                    <a
+                      key={i}
+                      href={link.href}
+                      className={marquetryLink}
+                      aria-label={link.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => removeToast(id)}
+                    >
+                      {caption(link.label)}
+                    </a>
+                  ) : link.onClick ? (
+                    <button
+                      key={i}
+                      type="button"
+                      className={marquetryLink}
+                      aria-label={link.label}
+                      onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                      }}
+                    >
+                      {caption(link.label)}
+                    </button>
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            className="p-1"
+            onClick={() => removeToast(id)}
+            aria-label="Dismiss notification"
+          >
+            <MarquetryIcon name="close" fg={WOOD.ink} />
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (theme === 'knit') {
     const knitIcon =
