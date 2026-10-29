@@ -1,0 +1,201 @@
+# Interview Journal: #3 - Max Heap and Min Heap in Golang
+
+In this entry of the Interview Journal, we're diving into **Heaps**. Specifically, how to implement Max Heaps and Min Heaps in Go (Golang). This is a classic interview topic and a fundamental data structure for priority queues, graph algorithms (like Dijkstra's), and efficient sorting.
+
+## What is a Heap?
+
+A **Heap** is a specialized tree-based data structure which is essentially an almost complete tree that satisfies the **heap property**:
+
+*   **Max Heap:** For any given node `I`, the value of `I` is greater than or equal to the values of its children. The largest element is at the root.
+*   **Min Heap:** For any given node `I`, the value of `I` is less than or equal to the values of its children. The smallest element is at the root.
+
+Heaps are usually implemented using arrays (or slices in Go) because they are complete binary trees.
+
+*   **Parent Index:** `(i - 1) / 2`
+*   **Left Child Index:** `2*i + 1`
+*   **Right Child Index:** `2*i + 2`
+
+### Visualizing a Max Heap
+
+```mermaid
+graph TD
+    root((100))
+    child1((19))
+    child2((36))
+    child1_1((17))
+    child1_2((3))
+    child2_1((25))
+    child2_2((1))
+
+    root --- child1
+    root --- child2
+    child1 --- child1_1
+    child1 --- child1_2
+    child2 --- child2_1
+    child2 --- child2_2
+
+    classDef node fill:#240224,stroke:#333,stroke-width:2px;
+    class root,child1,child2,child1_1,child1_2,child2_1,child2_2 node;
+```
+
+**Array Representation:** `[100, 19, 36, 17, 3, 25, 1]`
+
+## Why do we need Heaps?
+
+Heaps solve a specific problem efficiently: **repeatedly accessing the minimum or maximum element** in a dynamic set of data.
+
+| Data Structure | Find Max | Insert | Remove Max |
+| :--- | :--- | :--- | :--- |
+| **Unsorted Array** | O(N) | O(1) | O(N) |
+| **Sorted Array** | O(1) | O(N) | O(1) |
+| **Heap** | **O(1)** | **O(log N)** | **O(log N)** |
+
+**Real-world Use Cases:**
+1.  **Priority Queues:** Scheduling jobs where "High Priority" tasks run before "Oldest" tasks (e.g., OS process scheduling, bandwidth management).
+2.  **Graph Algorithms:** Essential for **Dijkstra’s algorithm** (shortest path) and **Prim’s algorithm** (minimum spanning tree).
+3.  **Heapsort:** An efficient, in-place sorting algorithm with O(N log N) complexity.
+
+## Go's `container/heap`
+
+Go provides a standard library package `container/heap` that defines a heap interface. To use it, your type just needs to implement the `heap.Interface`.
+
+```go
+type Interface interface {
+    sort.Interface // Len, Less, Swap
+    Push(x any)    // add x as element Len()
+    Pop() any      // remove and return element Len() - 1.
+}
+```
+
+### Implementing a Min Heap
+
+Let's implement a simple `MinHeap` for integers.
+
+```go
+package main
+
+import (
+	"container/heap"
+	"fmt"
+)
+
+// IntHeap is a min-heap of ints.
+type IntHeap []int
+
+func (h IntHeap) Len() int           { return len(h) }
+func (h IntHeap) Less(i, j int) bool { return h[i] < h[j] } // < for MinHeap
+func (h IntHeap) Swap(i, j int)      { h[i], h[j] = h[j], h[i] }
+
+func (h *IntHeap) Push(x any) {
+	*h = append(*h, x.(int))
+}
+
+func (h *IntHeap) Pop() any {
+	old := *h
+	n := len(old)
+	x := old[n-1]
+	*h = old[0 : n-1]
+	return x
+}
+
+func main() {
+	h := &IntHeap{2, 1, 5}
+	heap.Init(h)
+	heap.Push(h, 3)
+	fmt.Printf("minimum: %d
+", (*h)[0]) // 1
+
+	for h.Len() > 0 {
+		fmt.Printf("%d ", heap.Pop(h))
+	}
+    // Output: 1 2 3 5
+}
+```
+
+### Implementing a Max Heap
+
+To turn the above into a `MaxHeap`, we only need to change the `Less` function.
+
+```go
+// For MaxHeap, we want the larger element to come "first" (be the root)
+func (h IntHeap) Less(i, j int) bool { return h[i] > h[j] } // > for MaxHeap
+```
+
+Alternatively, if you are just dealing with numbers, you can store negative values in a Min Heap to simulate a Max Heap, but implementing the interface is cleaner.
+
+## From Scratch (For Interviews)
+
+Sometimes interviewers ask you to implement `push` and `pop` logic without using the library. This tests your understanding of **Bubbling Up (Heapify Up)** and **Bubbling Down (Heapify Down)**.
+
+### Heapify Up (Push)
+
+When we add a new element, we append it to the end of the array. Then we check if it violates the heap property with its parent. If it does, we swap them. We repeat this until the property is restored or we reach the root.
+
+```go
+func (h *MaxHeap) Push(val int) {
+    h.slice = append(h.slice, val)
+    h.heapifyUp(len(h.slice) - 1)
+}
+
+func (h *MaxHeap) heapifyUp(index int) {
+    for h.slice[parent(index)] < h.slice[index] {
+        h.swap(parent(index), index)
+        index = parent(index)
+    }
+}
+```
+
+### Heapify Down (Pop)
+
+When we remove the root (max/min), we take the *last* element in the array and put it at the root. Then we compare it with its children. If it violates the heap property, we swap it with the larger (or smaller for min-heap) of the two children. Repeat until the property is restored or we reach a leaf.
+
+```go
+func (h *MaxHeap) Pop() int {
+    max := h.slice[0]
+    last := len(h.slice) - 1
+    h.slice[0] = h.slice[last]
+    h.slice = h.slice[:last]
+    h.heapifyDown(0)
+    return max
+}
+
+func (h *MaxHeap) heapifyDown(index int) {
+    lastIndex := len(h.slice) - 1
+    l, r := left(index), right(index)
+    childToCompare := 0
+
+    for l <= lastIndex {
+        if l == lastIndex { // only left child
+             childToCompare = l
+        } else if h.slice[l] > h.slice[r] { // left is larger
+             childToCompare = l
+        } else { // right is larger
+             childToCompare = r
+        }
+
+        if h.slice[index] < h.slice[childToCompare] {
+            h.swap(index, childToCompare)
+            index = childToCompare
+            l, r = left(index), right(index)
+        } else {
+            return
+        }
+    }
+}
+```
+
+## Time Complexity
+
+| Operation | Time Complexity |
+| :--- | :--- |
+| **Push** | O(log N) |
+| **Pop** | O(log N) |
+| **Peek (Top)** | O(1) |
+| **Build Heap** | O(N) |
+
+## Summary
+
+*   Use `container/heap` for production code.
+*   Remember `Less(i, j)` determines the order. `h[i] < h[j]` is Min Heap. `h[i] > h[j]` is Max Heap.
+*   Understand the array indices math: `2*i+1`, `2*i+2`, `(i-1)/2`.
+*   "Bubble Up" for insertion, "Bubble Down" for deletion.

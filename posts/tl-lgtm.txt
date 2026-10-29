@@ -1,0 +1,7 @@
+**TL;LGTM** — *Too Long; Looks Good To Me.* The review an agent's 2,000-line diff gets when nobody actually reads it.
+
+It is tempting. The code compiles, the tests pass, the names are clean, and it is often better than what we would have written ourselves. That is exactly the problem: reviewing code above your level is hard. You cannot spot what you do not understand.
+
+But you are the one shipping it. Read it anyway. Slowly. Ask it to explain. If you cannot defend a line, it is not yours to merge.
+
+Approval is not a vibe check.

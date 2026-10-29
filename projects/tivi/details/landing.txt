@@ -1,0 +1,9 @@
+{
+  "title": "tivi",
+  "subtitle": "PLAYS EVERYTHING",
+  "description": "A small, native video player built on raylib, FFmpeg and libass. Hardware-accelerated decode, subtitles rasterized at display resolution, pitch-preserving speed, and GPU color adjustments — inside a borderless Hi-Fi shell.",
+  "backgroundImage": "/images/projects/tivi/hero.png",
+  "playLink": "https://github.com/fezcode/tivi/releases/latest",
+  "repoLink": "https://github.com/fezcode/tivi",
+  "overlayOpacity": 0.55
+}

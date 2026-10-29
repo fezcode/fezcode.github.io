@@ -1,0 +1,130 @@
+# Kanije, 1601: Tiryaki Hasan Pasha and a Siege of Seventy-One Days
+
+> **On the numbers in this article**
+>
+> Almost every figure attached to this siege is disputed, and several of the most-repeated ones contradict each other inside the same paragraph. Where sources disagree, this piece gives the range and says which way the evidence leans, rather than picking the most dramatic number and moving on.
+
+Between 9 September and 18 November 1601, a Habsburg-led coalition army sat in the marshes outside the fortress of Kanizsa in south-western Hungary — Kanije to the Ottomans, Groß-Kanizsa to the Germans — and failed to take it. The garrison commander was an Ottoman officer of about seventy-one named Hasan Pasha, known then and since as **Tiryaki**: the addict.
+
+The siege lasted seventy-one days. What follows is what can be established about it, and what cannot.
+
+---
+
+## 1. The Fortress and Why It Mattered
+
+Kanizsa was not an impressive castle. It was a low, irregular work of earth and timber sitting in a swamp on the Kanizsa stream, and its defensive value came almost entirely from the water around it. Dry ground suitable for siege batteries was scarce, the approaches were soft, and an attacker who arrived late in the year could expect the ground to get worse rather than better.
+
+Strategically it anchored the western end of the Hungarian border, covering the routes toward Styria and the Austrian hereditary lands. This was the middle of the **Long War** of 1593–1606, a grinding, mostly indecisive Ottoman–Habsburg conflict fought largely through sieges of exactly this kind of fortress.
+
+The Ottomans took it on **23 October 1600**, after a siege begun on 10 September. The campaign was directed by the Grand Vizier, Damat İbrahim Pasha; Hasan Pasha served under him and, by most accounts, argued for taking the place rather than bypassing it, on the grounds that a hostile garrison there could cut the army's communications behind it. The Habsburg commander, **Georg Paradeiser**, negotiated terms and marched his German garrison out unmolested. The Ottomans took the fortress, its stores, and — by the figure most often cited — 76 guns.
+
+Kanizsa then became the seat of a new Ottoman province, the **Eyalet of Kanije**, the westernmost provincial capital the empire ever held in Hungary. Hasan Pasha was installed to govern it.
+
+Paradeiser's surrender was judged differently in Austria. He and several of his officers were condemned for giving up the fortress, and he was executed on **9 October 1601** — which is to say, thirty days into the campaign to take it back, and while that campaign was going badly.
+
+---
+
+## 2. The Commander, and His Age
+
+Tiryaki Hasan Pasha's birth year is usually given as **1530**, which would make him about seventy-one during the siege. That date is a reconstruction from later Ottoman biographical compilation — chiefly Mehmed Süreyya's *Sicill-i Osmanî* — rather than a contemporary record, and it should be held loosely. What is not in doubt is that he was old. His career had begun decades earlier in the household of Prince Murad at Manisa, before Murad became Sultan Murad III in 1574.
+
+For a field command in this period, seventy-one is genuinely unusual. Ottoman provincial governorships were often held by men of advanced years, but active defence of a frontier fortress under bombardment was not typically among an elderly governor's duties.
+
+His recorded career before Kanije runs through the Hungarian and Bosnian frontier: governorships including Szigetvár, then **beylerbey of Bosnia in 1594**, and participation in the campaigning of the mid-1590s.
+
+The nickname is worth a note, because it is the part of his name that survived. *Tiryaki* in Turkish means a habitual user — an addict. Sources differ on the substance: some accounts attribute it to coffee, others to opium, and the ambiguity is old rather than modern. It is not a flattering epithet, and its survival alongside his reputation as a hero produces the split image discussed in section 6.
+
+A caution on names: at least three prominent Ottoman commanders called Hasan Pasha were active in these same years. **Tiryaki** Hasan Pasha held Kanije. **Yemişçi** Hasan Pasha was Grand Vizier and commanded in the field further east. **Sokulluzade** Hasan Pasha was a separate figure again. Popular accounts routinely merge them.
+
+---
+
+## 3. The Numbers
+
+This is the part of the story that travels best and holds up worst. The commonly circulated figures are as follows.
+
+| Figure | Lower claim | Higher claim | Assessment |
+|---|---|---|---|
+| Ottoman garrison | ~7,000 | ~9,000 (given as 6,000 sipahi + 3,000 janissaries) | Both figures appear in the same reference works, sometimes in the same table. 7,000–9,000 is the plausible band. |
+| Coalition army | ~35,000 | 60,000, and 100,000 in Ottoman-derived tradition | 35,000–45,000 is the figure modern accounts generally settle on. 100,000 is not credible. |
+| Coalition guns | ~40 | ~100 | 40–50 siege guns is consistent with the captured totals. |
+| Guns captured by the Ottomans | 44 | 47 or 60 | The three figures come from different traditions; all are the same order of magnitude. |
+| Coalition dead | ~10,000 | "more than 30,000 killed, 6,000 sick and wounded" | The high figure cannot be reconciled with the low army estimate. |
+
+That last row is the one to sit with. If the coalition brought 35,000 men and lost more than 30,000 of them, the army would have effectively ceased to exist. It did not: Archduke Ferdinand withdrew a beaten and diminished but still-organised force, and the war continued into 1602 with the same armies manoeuvring in the same country. Both numbers nonetheless appear together in widely used summaries, including the infoboxes most casual readers will meet first.
+
+There are ordinary reasons for inflation that have nothing to do with dishonesty. Early modern siege losses mix categories that modern readers separate: men killed in assaults, men dead of dysentery and fever, men who deserted, men detached and never returned. A commander reporting "losses" and a chronicler reporting "killed" may be counting the same men under different words. Besieging armies in autumn marshes lost far more to disease than to defenders, and the coalition here demonstrably did.
+
+There is also a genre reason, addressed in section 6.
+
+---
+
+## 4. The Achievement, Stated Plainly
+
+None of the above touches the outcome, and the two should not be confused. What is disputed is the casualty arithmetic. What is not disputed is that the coalition came, sat for seventy-one days, and left without the fortress.
+
+That distinction matters because of where the evidence comes from. The withdrawal is attested by the losing side. Habsburg, Imperial and Italian sources had no motive whatsoever to invent an Ottoman success, and they record the failure, the retreat and the abandoned guns. When two hostile traditions agree on an event and differ only on the body count, the event is about as well established as early modern military history gets.
+
+On the merits, stripped of every inflated figure:
+
+* **The odds were real.** Take the conservative end of every range — roughly 8,000 defenders against 35,000 to 45,000 besiegers with a proper siege train — and it is still about five to one.
+* **No relief came, and the garrison knew it.** Most successful defences are holding actions until somebody arrives. The Ottoman field army was committed at Székesfehérvár, 250 kilometres east. Kanije was alone for the duration.
+* **The fortress was weak.** Earth and timber in a swamp, not a modern bastioned trace. The defence was not being carried by the engineering.
+* **The material loss was severe and countable.** Forty-odd siege guns were ruinously expensive and slow to replace. Guns are the part of the damage that can be verified, which is exactly why that figure is credible where the casualty figures are not.
+* **It cancelled out a Habsburg year.** The coalition had taken Székesfehérvár that same September. Failing at Kanije in the same season turned what should have been a clear Habsburg gain into a wash.
+* **The Long War produced very few decisive results.** This was one of them, and it held: Kanizsa stayed Ottoman for the next eighty-nine years.
+
+One honest qualification. Disease, autumn rain and a coalition command divided among Austrians, Italians and Hungarians did a great deal of the work. But that is true of nearly every successful defence in this period. Outlasting the besieger's logistics *is* the defender's task, and the only way to collect on it is to not break first. Seventy-one days of not breaking is the achievement, not a footnote to it.
+
+The age belongs in the same column. If the 1530 birth year is right, he was seventy-one. If that reconstruction is off by several years, he was still an old man conducting an active defence under bombardment — a thing his contemporaries in that role generally were not.
+
+---
+
+## 5. The Siege, 9 September – 18 November 1601
+
+The coalition that arrived at Kanizsa in September was genuinely international: Austrian and Imperial troops, Hungarians and Croats, Italians, Spanish, Walloons, a papal contingent financed by Clement VIII, and knights of Malta. Nominal command lay with **Archduke Ferdinand of Inner Austria** — the future Emperor Ferdinand II, then in his early twenties. **Giovanni de' Medici**, an experienced Florentine soldier and military engineer, was among the commanders.
+
+The papal contingent, reportedly around 14,000 strong, was led by **Gianfrancesco Aldobrandini**, a nephew of the Pope. He contracted marsh fever at Varaždin as the army moved up and died on **17 September**, roughly a week into the siege. It was an early and accurate indication of what the campaign's principal enemy would be.
+
+The siege itself followed a pattern that the ground largely dictated. Batteries had to be sited on what firm ground existed; bombardment and assaults were made and repulsed; the garrison sortied. Autumn rain then did what autumn rain does to a camp pitched around a swamp. Supply into the besieging lines degraded, sickness spread, and by November the besiegers were cold, hungry and ill in a position they could not improve.
+
+No Ottoman relief army came. This was not neglect. In the same weeks, an Imperial force under the **Duke of Mercœur** had taken Székesfehérvár — besieged 4 September, fallen 20 September — and the Ottoman field army under Grand Vizier Yemişçi Hasan Pasha was committed to the attempt to retake it, some 250 kilometres to the east. Kanije was on its own for the duration, and its commander knew it.
+
+On **18 November 1601**, the coalition abandoned the siege. Accounts agree that the withdrawal was disorderly and that the garrison sortied onto the camp as it broke up, taking the artillery that could not be moved along with stores and equipment. The captured guns — 44, 47 or 60, depending on which tradition you follow — are the best-attested single piece of evidence about the scale of what was abandoned, since guns are countable, expensive, and hard to exaggerate quietly.
+
+Kanizsa remained Ottoman for the next eighty-nine years, until 1690.
+
+---
+
+## 6. What Is Documented, and What the Story Added
+
+The famous version of this siege is considerably better than the reconstructable one. In the popular Turkish tradition, Tiryaki Hasan Pasha wins by a series of brilliant deceptions: releasing prisoners primed with false reports of secret alliances and imminent relief, staging displays of strength he did not possess, and reading the besiegers' intentions with something close to second sight.
+
+Some of this may be substantially true. Deception and counter-intelligence were standard practice in fortress warfare, and a garrison commander who was outnumbered five to one and expecting no relief had every incentive to use them. The difficulty is evidentiary, not moral: the detailed anecdotes descend largely from the **gazavatname** tradition — Ottoman campaign narratives written to celebrate a commander's holy war — rather than from administrative correspondence or contemporary dispatches.
+
+The genre's conventions matter for reading it. A gazavatname is structured to demonstrate the virtue and divine favour of its subject, and a wildly lopsided troop ratio serves that purpose directly. This is not a reason to discard such texts, but it is a reason not to read their arithmetic as a muster roll.
+
+The elaboration continued for centuries. A manuscript of the *Hikâye-i Tiryâkî Gazi Hasan Paşa* inscribed in **1789** attributes outright supernatural capacities to him, including foreknowledge of Habsburg movements derived from the behaviour of birds, and reports that the bodies of his fallen soldiers were found incorrupt when exhumed — a standard marker of sanctity, and an indication of what the story had become by the late eighteenth century.
+
+The most useful modern treatment is **Claire Norton's** work on the Nagykanizsa sieges, particularly *Plural Pasts* (2017). Her argument is more interesting than "the chronicles exaggerate." She examines how historians construct hierarchies among source types — treating documents as truthful and narratives as literary — and questions how much that hierarchy is doing genuine epistemic work versus reproducing a convention. She also notes a real split in how Tiryaki Hasan Pasha has been remembered in Turkish culture: simultaneously a legendary hero with mythical attributes, and a figure characterised as intemperate, treacherous, or an opium addict. Both images have been available continuously; which one surfaces has depended on what the telling was for.
+
+Mehmed Süreyya's judgement in the *Sicill-i Osmanî* — that Hasan Pasha never lost a battle he took part in — belongs to the same category. It is a nineteenth-century biographical assessment, not a campaign record.
+
+---
+
+## 7. Afterwards
+
+Hasan Pasha was rewarded. He held further senior provincial commands, with the beylerbeyliks of Bosnia, Budin and Rumelia attached to his name in the sources, and in **1604** he married Fatma Sultan, a daughter of Sultan Mehmed III — a marriage into the dynasty that marks how the defence was valued at court. He remained militarily active, with the recapture of Veszprém and Palota credited to him.
+
+He is recorded as having opposed the negotiated settlement that ended the Long War, the **Peace of Zsitvatorok** in 1606. Afterwards he served under Grand Vizier Kuyucu Murad Pasha in the suppression of the **Celali rebellions** in Anatolia, including the campaign against Canbolatoğlu Ali Pasha. He returned to Budin in 1608 and died there in **1611**, aged about eighty.
+
+The war he fought in ended without a decision. Zsitvatorok settled little beyond formalising an exhausted stalemate, and both empires went home with roughly what they had started with. Against that background, the defence of Kanije is unusual precisely because it produced a clear, datable, uncontested result in a conflict that produced very few of them — which is a large part of why it was remembered, retold, and eventually embroidered.
+
+---
+
+## Sources and Further Reading
+
+* **Claire Norton, *Plural Pasts: Power, Identity and the Ottoman Sieges of Nagykanizsa Castle* (Routledge, 2017)** — the standard scholarly treatment, covering both the 1600 and 1601 sieges through Ottoman documents, correspondence, histories and gazavatnames, and examining how historians rank those source types.
+* **Claire Norton, "Being Tiryaki Hasan Pasha: The Textual Appropriations of an Ottoman Hero,"** in Paul Stock (ed.), *The Uses of Space in Early Modern History* (Palgrave Macmillan, 2015) — on how the sieges were re-read in nineteenth- and twentieth-century Ottoman and Turkish national narratives.
+* **Mehmed Süreyya, *Sicill-i Osmanî*** (1890s; modern edition 1996) — the Ottoman biographical dictionary behind most of the career and date information, including the disputed 1530 birth year.
+* **Vâhid Çabuk, *Tiryaki Hasan Paşa'nın Gazaları ve Kanije Savunması*** (1978) — the Turkish account of the campaign narratives.
+* **William J. Griswold, *The Great Anatolian Rebellion, 1000–1020/1591–1611*** (Klaus Schwarz Verlag, 1983) — for his later service against the Celali revolts.

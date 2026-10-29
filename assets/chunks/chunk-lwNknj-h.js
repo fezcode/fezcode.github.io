@@ -1,0 +1,1 @@
+import{Q as a,R as u,r as t,S as c}from"../entries/pages.CP3xvj61.js";function f(o){const e=a(()=>u(o)),{isStatic:s}=t.useContext(c);if(s){const[,n]=t.useState(o);t.useEffect(()=>e.on("change",n),[])}return e}export{f as u};

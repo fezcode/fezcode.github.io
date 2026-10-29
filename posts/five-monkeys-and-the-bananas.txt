@@ -1,0 +1,79 @@
+There is a famous story people tell about five monkeys, a ladder, and a bunch of bananas. Even if you have heard it before, it is worth sitting with for a minute — because almost all of us have been both the monkey reaching for the fruit and the monkey pulling someone else down.
+
+---
+
+## 1. The Story of the Ladder
+
+Imagine a large cage with five monkeys inside. Hanging from the ceiling is a ripe bunch of bananas, and right underneath it sits a wooden ladder.
+
+Naturally, one of the monkeys spots the bananas and starts climbing. The moment its foot touches the ladder, the researchers spray the *other four* monkeys with ice-cold water.
+
+A little while later, a second monkey tries for the bananas. Again, the cold hose comes out and soaks everyone else. Pretty soon, the monkeys connect the dots: *ladder equals freezing water*. So the next time a monkey steps toward the ladder, the other four rush over and pull it back before the hose can turn on. After a few tries, nobody goes near the ladder anymore.
+
+Then the researchers do something interesting.
+
+They take one of the original monkeys out of the cage and replace it with a newcomer. The new monkey walks in, looks up, sees a perfectly good bunch of bananas, and heads straight for the ladder.
+
+Before it can climb two rungs, the other four monkeys grab it and pull it down. The newcomer has no idea why — it has never seen the hose or felt a drop of cold water — only that climbing the ladder is strictly against the rules of the room. After a few tries, it stops climbing too.
+
+Then the researchers swap out a second original monkey for another newcomer. When the new arrival goes for the ladder, everyone pulls it down — **including the first newcomer**, who joins in enthusiastically despite having no idea what the punishment was ever for.
+
+One by one, every original monkey is replaced.
+
+By the end, there are five monkeys sitting in the cage. Not a single one of them has ever been sprayed with cold water. And yet, if any monkey so much as touches the ladder, all the others will stop it immediately.
+
+If you could ask them why, the answer would be simple:
+
+*"I don't know. That's just how we have always done things around here."*
+
+```mermaid
+flowchart TD
+    G1["Group 1: Climbs ladder -> Cold water spray"]
+    G1 --> Rule["Rule forms: 'Don't touch the ladder'"]
+    Rule --> G2["Group 2 arrives: Never sees the water, learns the rule anyway"]
+    G2 --> G3["Group 3 arrives: Group 2 blocks Group 3 without knowing why"]
+    G3 --> End["No original members left, but the rule lives on"]
+```
+
+---
+
+## 2. Did It Actually Happen?
+
+Wait a second before you picture cruel scientists with a garden hose: the story, as it is usually told in office hallways and books, is mostly a **fable**.
+
+It grew out of a real, much smaller 1966 study by a researcher named **Gordon R. Stephenson**, who worked with rhesus monkeys. Instead of five monkeys, a ladder, and bananas, Stephenson trained pairs of monkeys using a plastic object and a puff of air, and noticed that a trained monkey would gently hold back a naive monkey from touching the object — passing a learned fear to a newcomer who had never experienced the air blast itself.
+
+Over the decades, people retelling the study added the bananas, the ladder, and the five-monkey rotation because it made the picture clearer. The experiment got exaggerated, as good stories often do.
+
+What didn't get exaggerated is how accurately it describes human beings.
+
+---
+
+## 3. Why We Pull Each Other Off the Ladder
+
+It is easy to laugh at the monkeys in the story, or to roll our eyes at stubborn habits at work, in our families, or in our communities.
+
+- The spreadsheet somebody fills out every Friday afternoon for a meeting that was cancelled three years ago.
+- The unspoken rule in a family about what you are and aren't allowed to talk about at dinner.
+- The small, anxious rules you carry in your own head — things you tell yourself you *"aren't the kind of person"* to try, because something went wrong once a long time ago.
+
+When we bump into a rule that makes no sense, our first instinct is usually frustration. Why are people guarding a ladder when nobody in the room has ever seen the hose?
+
+But if we look at it kindly, the second group of monkeys wasn't being foolish or mean for the sake of it. They were trying to keep the room safe. Somebody taught them, very convincingly, that touching the ladder hurts everyone — and when they stopped the third group, they thought they were helping.
+
+Most pointless rules started out as a real solution to real cold water. The trouble isn't that people made the rule; the trouble is that the water was turned off years ago and nobody checked the tap.
+
+---
+
+## 4. Checking the Tap
+
+Whenever you walk into a new team, a new project, or even an old habit of your own and hear *"we never touch that ladder"*, you don't have to kick the ladder over on your first day. You also don't have to sit on the floor forever staring at the bananas.
+
+All it takes is a quiet, friendly question:
+
+- **When you are the newcomer:** *"I know we avoid doing it this way — does anyone remember what went wrong the last time someone tried?"* Sometimes you will find out the cold water is very much still on, and the rule is saving you a headache. Other times, people will look around the room, smile, and realize nobody actually remembers.
+- **When you are the one guarding the ladder:** Before you tell someone *"that's not how we do it here,"* pause and ask yourself whether you have actually felt the cold water yourself, or whether you are just passing along a warning someone handed to you.
+
+We inherit a lot of invisible hoses from the people who came before us. Being kind to each other means understanding why people guard the ladder — and being brave enough, every once in a while, to reach up and test whether the water is still cold.
+
+> **Lesson:** Almost every strange rule was once someone's way of avoiding cold water. Respect the people who learned to be careful, but don't forget to check if the hose is still turned on.

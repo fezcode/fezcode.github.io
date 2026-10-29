@@ -1,0 +1,44 @@
+id: screen-score
+rank: 50
+name: FILM & TELEVISION SCORE
+family: Score & Ambient
+years: 1960 → present
+sub: Music written to serve a picture — and increasingly listened to without one
+spec: 74,76,72,62,58,62,70,76,80,82,80,78,80,84,82,76,68,58,50,42
+synthType: sine
+freqs: 335.14, 420.08, 526.55
+
+what:
+ Film scoring split in two around 2000. One branch stayed orchestral and thematic; the other, driven by Hans Zimmer's Remote Control operation and by television's expansion, became texture-led — sustained tones, ostinatos and sound design rather than melody. Prestige television then created a parallel market where a score can define a series' identity more than its cast does.
+
+artists:
+ *Hans Zimmer* and Junkie XL; *Volker Bertelmann* (Hauschka), whose prepared-piano background reached _Conclave_ and _All Quiet on the Western Front_; Clint Mansell, Tyler Bates, Jonny Greenwood, Stephen Barton, Paolo Buonvino; *Lera Lynn*, who performed on camera in _True Detective_; and The Cinematic Orchestra at the crossover point.
+
+trivia:
+ Jonny Greenwood scores films while remaining Radiohead's guitarist, and his _There Will Be Blood_ music was ruled ineligible for an Oscar because it incorporated his own earlier concert work. Volker Bertelmann built his reputation on *prepared piano* — inserting felt, tape and metal between the strings — a technique from mid-century avant-garde composition that he brought into mainstream cinema.
+
+sonic:
+ Long sustained textures with slow harmonic movement, ostinato figures under dialogue, and a dynamic range far wider than any commercial genre — a cue may sit at conversational level for three minutes before a full orchestral entry. Melody is deliberately unobtrusive; a theme that draws attention is usually a fault.
+
+gear:
+ Live orchestras recorded at Abbey Road, AIR and increasingly Budapest and Prague for cost; sample libraries (Spitfire, Orchestral Tools) for mockups that frequently survive into the final mix; prepared piano, cimbalom and processed solo strings for texture; and heavy convolution reverb built from real scoring stages.
+
+prod:
+ The composer delivers stems, not a mix — the dub stage balances music against dialogue and effects, and the soundtrack album is a separate assembly made afterwards. That is why album versions of cues often have material you never hear in the film, and why they end abruptly: the cue was written to stop when the scene cut.
+
+tracks:
+ - Electric Blue | Daniel Edwardson, Seamus Sell
+ - Under the Paving-Stones, the Beach! | Jonny Greenwood
+ - Innocent | Volker Bertelmann
+ - Renaissance - From "Medici: Masters of Florence" | Paolo Buonvino, Skin
+ - Ma Meilleure Ennemie (from the series Arcane League of Legends) | Stromae, Pomme, Arcane
+ - Arrival of the Birds | The Cinematic Orchestra, London Metropolitan Orchestra
+ - Running Away - Extended | Infinity Train
+ - Frank's Choice | Tyler Bates
+ - The Egg | Epic Mountain
+ - Gallows (feat. Shelby Merry) | Final Space, Shelby Merry
+ - Ring of Fire | Lera Lynn
+ - Main Titles (Doom Patrol) | Clint Mansell, Kevin Kiner, Sean Kiner
+ - The Beginning | Stephen Barton
+ - Lately - From The HBO Series True Detective | Lera Lynn
+ - Beautiful Lie (From "Batman v Superman: Dawn of Justice") | Hans Zimmer, Junkie XL

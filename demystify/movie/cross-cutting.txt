@@ -1,0 +1,46 @@
+id: cross-cutting
+rank: 03
+name: CROSS-CUTTING
+family: Cut
+years: 1915 → present
+sub: Two places, one clock — the edit insisting that these things are happening to each other
+
+ascii:
+┌────────────────────────────────────────┐
+│  A ──██──────██──────██────██──▓▓      │
+│  B ──────██──────██────██──██──▓▓      │
+│        alternating, intervals          │
+│        shortening, until they meet     │
+└────────────────────────────────────────┘
+
+what:
+ Alternating between two or more actions in different places so the audience reads them as simultaneous. Griffith formalised it a century ago and it has never needed improving, because the meaning is produced entirely by adjacency. Neither strand says anything about the other on its own; put them side by side and the film has argued that they are the same event. Tightening the interval between cuts is the oldest tension device in the medium, and it still works on people who know exactly what is being done to them.
+
+artists:
+ Michael Mann builds whole first acts from it in *Heat*, cutting between a crew and the detectives assembling in parallel long before they meet. Scorsese uses it in *The Departed* to keep two informants inside the same shrinking room. Tarantino runs two fires toward one another in *Inglourious Basterds*. Nolan pushes it past simultaneity in *Tenet*, where the two strands are the same operation moving in opposite temporal directions.
+
+trivia:
+ The technique's most quoted use — the baptism in *The Godfather* — is doing something subtler than suspense. The cutting is not asking whether Michael will be caught; it is making the vows and the murders comment on each other. That is cross-cutting used as argument rather than as a clock, and it is the reason the sequence is still taught.
+
+sonic:
+ It manufactures dread out of nothing but arrangement. Because you can see both halves and the characters cannot, you are handed superior knowledge and no way to use it, which is the precise definition of suspense. Shortening the intervals accelerates a heartbeat you never consented to. It also quietly asserts moral equivalence, which is why it is the default tool for films about a cop and a criminal who are the same man.
+
+gear:
+ None. This is the cheapest device in cinema and one of the most powerful, which is why it crossed from nitrate to digital without a single change. The only real requirement is that both strands are legible instantly — different light, different palette, different sound bed — so the audience never spends a beat working out where they are.
+
+prod:
+ The cost is structural rather than financial: both strands have to be worth watching, or the audience simply waits out the weaker one. It also commits the script to a collision. Cut between two things for an hour and never let them meet and the film feels cheated, because the grammar has been promising an intersection since the first alternation.
+
+examples:
+ - Heat | the crew and the cops assembling in parallel
+ - The Departed | two moles, one phone call
+ - Tenet | the same siege run forwards and backwards at once
+ - Inglourious Basterds | the cinema and the basement burning together
+ - Batman The Dark Knight Returns Part 1 | the raid intercut with the broadcast
+ - American Gangster | the dealer and the detective, kept apart
+ - Inside Man | the siege against the interviews after it
+ - Takers | the crew and the pursuit, braided
+ - The Hunt for Red October | two navies, one ocean
+ - Die Hard | the tower against the street below
+ - Rogue One | the transmission against the fleet
+ - Dawn of the Planet of the Apes | two societies, one fuse

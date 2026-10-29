@@ -1,0 +1,9 @@
+## Whatever you throw at it
+
+Demux and decode run through FFmpeg's `libav*`: H.264, HEVC, AV1, VP9, MPEG-2/4, VC-1, ProRes and Theora, with AAC, AC-3, E-AC-3, DTS, Opus, Vorbis, MP3, FLAC and TrueHD audio.
+
+Decode is hardware-accelerated — **D3D11VA** on Windows, **VideoToolbox** on macOS — with automatic software fallback, plus shader-side YUV→RGB conversion for 8-bit NV12 and 10-bit P010. That is smooth 1080p x265 10-bit on a modest CPU, with toggles and a live decode-path readout sitting in Settings so you can see which path you actually got.
+
+Seeking lands where you asked even on WEB-DLs with 10–20 second keyframe gaps, and the audio-master clock holds A/V sync through starvation freewheel, a background decode thread and late-frame scheduling.
+
+Open one episode and the rest of the folder queues behind it in natural order — `E2` before `E10`.

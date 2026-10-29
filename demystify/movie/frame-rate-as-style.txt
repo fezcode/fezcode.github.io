@@ -1,0 +1,64 @@
+id: frame-rate-as-style
+rank: 14
+name: FRAME RATE AS STYLE
+family: Animation
+years: 1917 → present
+sub: Animating on twos and threes on purpose, so the image stutters with intent instead of gliding
+
+ascii:
+┌────────────────────────────────────────┐
+│ on ones  ████████████████  24 drawings │
+│ on twos  ██  ██  ██  ██    12 drawings │
+│ mixed    ████  ██    ████  character-   │
+│          by-character cadence          │
+└────────────────────────────────────────┘
+
+what:
+ Choosing how many frames each drawing is held for. Animating on ones gives twenty-four drawings a second and reads as smooth; on twos gives twelve and reads as snappier and more deliberate; on threes slows further. For decades this was a budget decision disguised as a style. Recently it became a genuine authorial choice, with films mixing cadences inside a single shot so that different characters move at different rates in the same frame.
+
+artists:
+ *Spider-Man: Into the Spider-Verse* is the pivot: Miles animates on twos while more experienced characters animate on ones, so his growing competence is literally a frame-rate change. Japanese production has always treated limited animation as expressive rather than cheap, visible in *Lupin III The First* and across the *Halo Legends* anthology. The direct-to-video DC features work the same constraint from the other direction, choosing where to spend their drawings.
+
+trivia:
+ The Spider-Verse crew reportedly had to talk animators out of decades of training, because everything in the pipeline and every instinct pushed toward smoothness. The film also layered hand-drawn marks, chromatic aberration and printed halftone over CG geometry, chasing the look of cheap comics reproduction with extremely expensive tools.
+
+sonic:
+ Smoothness reads as realism and stutter reads as drawing, so cadence tells an audience how literally to take what they are seeing. The mixed approach is sharper still: when one character in a shot moves on twos and another on ones, you feel the difference between them without being able to name it, which is close to the ideal state for any technique.
+
+gear:
+ A pipeline that allows per-character cadence rather than a single global setting, plus compositing capable of the print artefacts that sell the style. The cost is not in the drawing, it is in building a system flexible enough to break its own rules per shot.
+
+prod:
+ Animating on twos halves the drawing count, which is why it began as economics. Doing it deliberately in a modern CG pipeline costs more, not less, because the tools default to smooth and every deviation is manual. Television-scale productions still use it the old way, and the difference between the two is usually visible in whether the choice is consistent.
+
+examples:
+ - Spider-Man Into The Spider-Verse | competence as a frame rate
+ - Lupin III The First | limited cadence, full staging
+ - Halo Legends | an anthology of house styles
+ - Mortal Kombat Legends Scorpions Revenge | impact held on twos
+ - Batman The Dark Knight Returns Part 1 | drawings spent on the panel
+ - Batman Under The Red Hood | motion budgeted for the fight
+ - Justice League The Flashpoint Paradox | cadence shifting with the timeline
+ - Entergalactic | a look built on print texture
+ - The Wild Robot | painterly frames over smooth motion
+ - Batman Year One | drawings spent on stillness
+ - Batman Assault on Arkham | cadence shifting with the ensemble
+ - Batman Gotham Knight | six studios, six cadences
+ - Batman The Killing Joke | held frames over movement
+ - Batman vs Robin | fight animation on ones, talk on twos
+ - Batman Bad Blood | television cadence, feature staging
+ - Batman The Long Halloween Part One | limited motion, heavy design
+ - Justice League Doom | ensemble animated on a budget
+ - Justice League War | impact frames over fluidity
+ - Justice League The New Frontier | period style, period cadence
+ - Justice League Throne of Atlantis | water animated on twos
+ - Justice League Gods and Monsters | design carrying the motion
+ - Superman Unbound | clean line, limited frames
+ - Superman Batman Apocalypse | held poses between hits
+ - Teen Titans The Judas Contract | cadence by character
+ - Wonder Woman | the 2009 animated cadence
+ - Lupin The Third Goemons Blood Spray | the cut held on the strike
+ - The Batman Superman Movie | the television house style
+ - Justice League Vs Teen Titans | two casts, two cadences
+ - Batman The Long Halloween Part 2 | held frames across the mystery
+ - Batman The Dark Knight Returns Part 2 | the panel cadence sustained

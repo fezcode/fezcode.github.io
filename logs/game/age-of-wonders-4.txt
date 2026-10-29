@@ -1,0 +1,21 @@
+# Age of Wonders 4
+- **Category:** Game
+- **Platform:** PC (Steam)
+- **Date:** 2025-11-25
+- **Rating:** 4/5
+- **Link:** [Steam](https://store.steampowered.com/app/1669000/Age_of_Wonders_4/)
+
+![Age of Wonders 4](/images/logs/games/age-of-wonders-4.webp)
+
+## A New Era of Fantasy 4X Strategy
+**Age of Wonders 4** is a captivating **4X turn-based strategy game** that immerses players in a vibrant high fantasy universe.
+As a ruler of a customizable fantasy realm, you embark on an epic journey to explore new magical realms, expand your empire,
+and engage in thrilling turn-based tactical combat.
+
+The game excels in its emphasis on **empire building**, offering deep strategic choices and extensive customization options for **factions** and **rulers**.
+With a rich role-playing experience and a robust warfare system, every decision shapes the destiny of your empire.
+A dynamic storytelling event system and highly customizable empires ensure endless replayability.
+Dive into the intricate mechanics of magic tomes and transformations to guide your empire's development and conquer your foes.
+
+Whether you're a veteran of 4X games or new to the genre, *Age of Wonders 4* provides an engaging and immersive experience,
+blending grand strategy with tactical depth in a beautifully crafted fantasy setting.

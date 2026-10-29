@@ -1,0 +1,5 @@
+## Beautiful Vistas
+
+The game takes place on a beautifully crafted, procedural **low-poly environment** that changes around the battlefield. 
+
+Vibrant colors and shifting terrains keep every match feeling visually fresh, enhancing the tabletop RPG vibe right inside your browser powered by Three.js.

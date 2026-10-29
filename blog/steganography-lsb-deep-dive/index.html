@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/assets/static/src_styles_Ledger-214aa5b6.Dju03fzq.css">
+    <link rel="stylesheet" type="text/css" href="/assets/static/src_styles_Marquetry-669dfbe0.DynXRvbp.css">
+    <link rel="stylesheet" type="text/css" href="/assets/static/src_styles_Orbit-0246c150.DwJ62F6O.css">
+    <link rel="stylesheet" type="text/css" href="/assets/static/src_styles_Knit-6370b591.CIFwNagz.css">
+    <link rel="stylesheet" type="text/css" href="/assets/static/src_index-b3c78705.Dv4nZ4CT.css">
+    
+  <meta charset="utf-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="alternate" type="application/rss+xml" title="Fezcodex RSS Feed" href="/rss.xml" />
+  <meta name="description" content="A technical deep dive into Least Significant Bit (LSB) steganography and how we implemented it for the Fezcodex Steganography Tool." />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://fezcode.com/blog/steganography-lsb-deep-dive" />
+  <meta property="og:title" content="Steganography: Hiding Secrets in Plain Sight with LSB" />
+  <meta property="og:description" content="A technical deep dive into Least Significant Bit (LSB) steganography and how we implemented it for the Fezcodex Steganography Tool." />
+  <meta property="og:image" content="https://fezcode.com/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://fezcode.com/blog/steganography-lsb-deep-dive" />
+  <meta name="twitter:title" content="Steganography: Hiding Secrets in Plain Sight with LSB" />
+  <meta name="twitter:description" content="A technical deep dive into Least Significant Bit (LSB) steganography and how we implemented it for the Fezcodex Steganography Tool." />
+  <meta name="twitter:image" content="https://fezcode.com/images/defaults/sina-salehian-HqmTUJD73mM-unsplash.jpg" />
+
+  <link rel="apple-touch-icon" href="/logo192.png" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Arvo&family=Inter&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,200..900,0..100,0..1;1,9..144,200..900,0..100,0..1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=IM+Fell+English:ital@0;1&family=IM+Fell+DW+Pica:ital@0;1&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <title>Steganography: Hiding Secrets in Plain Sight with LSB</title>
+
+  </head>
+  <body class="bg-slate-950">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="react-root"><div class="knt-chrome knt-wool-rust relative z-[100]"><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 12.6px;"><canvas width="800" height="13" style="width: 100%; height: 12.6px;"></canvas></span><div class="max-w-[1800px] mx-auto px-4 py-3 flex items-center gap-4"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><div class="flex-1 min-w-0 flex flex-col md:flex-row md:items-center gap-3"><span class="knt-text  flex-1"><span class="sr-only">KNIT IS ONLINE: THE CODEX AS A HAND-KNITTED SWEATER — EVERY STITCH A V, TITLES KNITTED INTO THE WOOL, FAIR ISLE BANDS AND FELT PATCHES TO READ ON. ENABLE VIA SETTINGS OR COMMAND PALETTE.</span><span aria-hidden="true" class="knt-canvas  " style="height: 159.8px;"><canvas width="452" height="160" style="width: 100%; height: 159.8px;"></canvas></span></span><a href="https://fezcode.com/settings?fezTheme=knit&amp;fezBlogMode=knit#interface" class="knt-btn knt-btn-gold shrink-0" aria-label="Enable Knit"><span class="knt-text knt-text-fit "><span class="sr-only">Enable Knit</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 176px;"><canvas width="176" height="17" style="width: 176px; height: 17px;"></canvas></span></span></a></div><button type="button" class="knt-btn knt-btn-icon shrink-0" aria-label="Dismiss banner"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span></button></div><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 12.6px;"><canvas width="800" height="13" style="width: 100%; height: 12.6px;"></canvas></span></div><div class="knt-appframe min-h-screen font-sans flex"><button type="button" aria-label="Close navigation" class="fixed inset-0 z-40 md:hidden bg-black/50"></button><aside class="knt-chrome knt-sidebar " aria-label="Site navigation"><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 12.6px;"><canvas width="300" height="13" style="width: 100%; height: 12.6px;"></canvas></span><div class="relative px-1 pt-4 pb-3"><a class="block" href="/" data-discover="true"><span class="knt-text  "><span class="sr-only">Fezcodex</span><span aria-hidden="true" class="knt-canvas  " style="height: 29.4px;"><canvas width="290" height="30" style="width: 100%; height: 29.4px;"></canvas></span></span></a><span class="knt-text  mt-3"><span class="sr-only">v0.51.0</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas width="292" height="17" style="width: 100%; height: 17px;"></canvas></span></span><button type="button" class="md:hidden knt-btn knt-btn-icon absolute right-2 top-2" aria-label="Close sidebar"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></button></div><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 21px;"><canvas width="300" height="21" style="width: 100%; height: 21px;"></canvas></span><div class="knt-sidebar-nav"><section><div class="knt-nav-head"><span class="knt-text knt-text-fit "><span class="sr-only">The Codex</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 136px;"><canvas width="136" height="17" style="width: 136px; height: 17px;"></canvas></span></span></div><nav aria-label="The Codex"><a class="knt-nav-link" href="/" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text  flex-1"><span class="sr-only">Overview</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas width="224" height="17" style="width: 100%; height: 17px;"></canvas></span></span></a><a class="knt-nav-link" href="/projects" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text  flex-1"><span class="sr-only">Projects</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas width="224" height="17" style="width: 100%; height: 17px;"></canvas></span></span></a><a aria-current="page" class="knt-nav-link active" href="/blog" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text  flex-1"><span class="sr-only">Writing</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas width="224" height="17" style="width: 100%; height: 17px;"></canvas></span></span></a><a class="knt-nav-link" href="/apps" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text  flex-1"><span class="sr-only">App collection</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas width="224" height="17" style="width: 100%; height: 17px;"></canvas></span></span></a><a class="knt-nav-link" href="/logs" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text  flex-1"><span class="sr-only">Discovery logs</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas width="224" height="17" style="width: 100%; height: 17px;"></canvas></span></span></a><a class="knt-nav-link" href="/graph" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text  flex-1"><span class="sr-only">Knowledge graph</span><span aria-hidden="true" class="knt-canvas  " style="height: 40.8px;"><canvas width="224" height="41" style="width: 100%; height: 40.8px;"></canvas></span></span></a><a class="knt-nav-link" href="/vocab" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text  flex-1"><span class="sr-only">Vocabulary</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas style="width: 100%; height: 17px;"></canvas></span></span></a></nav></section><section><button type="button" class="knt-nav-head" aria-expanded="false" aria-label="Main"><span class="knt-text knt-text-fit "><span class="sr-only">Main</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 72px;"><canvas style="width: 72px; height: 17px;"></canvas></span></span><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span></button></section><section><button type="button" class="knt-nav-head" aria-expanded="false" aria-label="Feed"><span class="knt-text knt-text-fit "><span class="sr-only">Feed</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 60px;"><canvas style="width: 60px; height: 17px;"></canvas></span></span><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span></button></section><section><button type="button" class="knt-nav-head" aria-expanded="false" aria-label="Applications"><span class="knt-text knt-text-fit "><span class="sr-only">Applications</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 192px;"><canvas style="width: 192px; height: 17px;"></canvas></span></span><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span></button></section><section><button type="button" class="knt-nav-head" aria-expanded="false" aria-label="Utilities"><span class="knt-text knt-text-fit "><span class="sr-only">Utilities</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 140px;"><canvas style="width: 140px; height: 17px;"></canvas></span></span><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span></button></section><section><button type="button" class="knt-nav-head" aria-expanded="false" aria-label="System"><span class="knt-text knt-text-fit "><span class="sr-only">System</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 100px;"><canvas style="width: 100px; height: 17px;"></canvas></span></span><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span></button></section><section><button type="button" class="knt-nav-head" aria-expanded="false" aria-label="External Nodes"><span class="knt-text knt-text-fit "><span class="sr-only">External Nodes</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 224px;"><canvas style="width: 224px; height: 17px;"></canvas></span></span><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span></button></section></div><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 16.8px;"><canvas width="300" height="17" style="width: 100%; height: 16.8px;"></canvas></span><div class="knt-sidebar-footer"><div class="grid grid-cols-4 gap-2 mb-3"><button type="button" class="knt-btn knt-btn-icon" aria-label="Open command palette" title="Open command palette"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span></button><a class="knt-btn knt-btn-icon" aria-label="Settings" title="Settings" href="/settings" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span></a><a class="knt-btn knt-btn-icon" aria-label="Random discovery" title="Random discovery" href="/random" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span></a><button type="button" class="knt-btn knt-btn-icon" aria-label="Contact Samil" title="Contact Samil"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span></button></div><span class="knt-text  "><span class="sr-only">Fezcodex · Knit</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas width="276" height="17" style="width: 100%; height: 17px;"></canvas></span></span></div></aside><div class="flex-1 flex flex-col min-w-0 transition-all duration-300 knt-content-open"><header class="knt-navbar knt-chrome"><div class="knt-navbar-row"><div class="flex items-center gap-3 min-w-0"><button type="button" class="knt-btn knt-btn-icon" aria-label="Toggle sidebar" aria-expanded="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span></button><a class="hidden lg:inline-flex" aria-label="Fezcodex home" href="/" data-discover="true"><span class="knt-text knt-text-fit "><span class="sr-only">Fezcodex /</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 152px;"><canvas style="width: 152px; height: 17px;"></canvas></span></span></a><span class="knt-text knt-text-fit "><span class="sr-only">Writing</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 120px;"><canvas width="120" height="17" style="width: 120px; height: 17px;"></canvas></span></span></div><div class="flex items-center gap-2"><button type="button" class="knt-btn hidden sm:inline-flex" aria-label="Open command palette"><span class="knt-text knt-text-fit "><span class="sr-only">Find something</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 232px;"><canvas width="232" height="17" style="width: 232px; height: 17px;"></canvas></span></span><kbd class="knt-kbd">⌘ K</kbd></button><button type="button" class="knt-btn knt-btn-icon" aria-label="Toggle search" aria-expanded="false"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas width="28" height="24" style="width: 28px; height: 23.8px;"></canvas></span></button></div></div><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 12.6px;"><canvas width="500" height="13" style="width: 100%; height: 12.6px;"></canvas></span></header><main class="flex-grow"><div style="opacity: 1;"><div class="knt-root"><header class="knt-wool-moss"><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 71.4px;"><canvas style="width: 100%; height: 71.4px;"></canvas></span><div class="knt-page knt-reader !pb-8"><a class="knt-btn" href="/blog" data-discover="true"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text knt-text-fit "><span class="sr-only">All writing</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 180px;"><canvas style="width: 180px; height: 17px;"></canvas></span></span></a><span class="knt-text  mt-8"><span class="sr-only">dev · 12 Jan 2026 · 6 min read</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas style="width: 100%; height: 17px;"></canvas></span></span><h1 class="knt-text  mt-4"><span class="sr-only">Steganography: Hiding Secrets in Plain Sight with LSB</span><span aria-hidden="true" class="knt-canvas  " style="height: 142.8px;"><canvas style="width: 100%; height: 142.8px;"></canvas></span></h1></div><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 12.6px;"><canvas style="width: 100%; height: 12.6px;"></canvas></span></header><div class="knt-page"><article class="knt-reader"><div class="knt-patch knt-reader-patch"><p class="knt-reader-deck">A technical deep dive into Least Significant Bit (LSB) steganography and how we implemented it for the Fezcodex Steganography Tool.</p><div class="knt-prose"><p>Steganography is the art and science of hiding information within other non-secret data. Unlike cryptography, which scrambles a message so it can't be read, steganography hides the very existence of the message.</p>
+<p>In this deep dive, we'll explore the implementation of the <strong>Steganography Tool</strong> added to Fezcodex, focusing on the <strong>Least Significant Bit (LSB)</strong> technique.</p>
+<h2>The Core Concept: Least Significant Bit (LSB)</h2>
+<p>Digital images are made up of pixels. In a standard 24-bit RGB image, each pixel has three color channels: Red, Green, and Blue. Each channel is represented by 8 bits (a value from 0 to 255).</p>
+<p>Example of a pixel's color:</p>
+<ul>
+<li><strong>Red:</strong> 1011010<strong>1</strong> (181)</li>
+<li><strong>Green:</strong> 0110011<strong>0</strong> (102)</li>
+<li><strong>Blue:</strong> 1100101<strong>1</strong> (203)</li>
+</ul>
+<p>The <strong>Least Significant Bit</strong> is the rightmost bit in these binary strings. If we change this single bit, the decimal value of the color channel only changes by 1. For example, changing the Red channel from <code>10110101</code> (181) to <code>10110100</code> (180) is a change so subtle that the human eye cannot detect it in a complex image.</p>
+<p>By replacing the LSB of each color channel with a bit from our secret message, we can embed data directly into the image.</p>
+<h2>The Protocol: FEZ Steganography</h2>
+<p>To make the extraction process reliable, we've implemented a simple protocol:</p>
+<ol>
+<li><strong>Magic Header (<code>FEZ</code>):</strong> The first 24 bits (3 bytes) of the hidden data always spell "FEZ". This allows the decoder to verify if an image actually contains a hidden message from our tool.</li>
+<li><strong>Length (32-bit):</strong> The next 32 bits represent the length of the message in bytes. This tells the decoder exactly when to stop reading.</li>
+<li><strong>The Message:</strong> The remaining bits are the actual UTF-8 encoded message.</li>
+</ol>
+<h3>Tracing the Magic: Encoding "FEZ"</h3>
+<p>Let's look at how the magic header <code>FEZ</code> is scattered across the first few pixels.</p>
+<p><strong>Step 1: Convert characters to binary</strong></p>
+<ul>
+<li><strong>F</strong> (70): <code>0 1 0 0 0 1 1 0</code></li>
+<li><strong>E</strong> (69): <code>0 1 0 0 0 1 0 1</code></li>
+<li><strong>Z</strong> (90): <code>0 1 0 1 1 0 1 0</code></li>
+</ul>
+<p>Combined Bitstream: <code>01000110</code> + <code>01000101</code> + <code>01011010</code> (24 bits total)</p>
+<p><strong>Step 2: Embed into pixels</strong>
+Since each pixel has 3 channels (R, G, B), we need 8 pixels to hide these 24 bits.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align: left;">Pixel</th><th style="text-align: left;">Channel</th><th style="text-align: left;">Original Byte</th><th style="text-align: left;">Bit to Hide</th><th style="text-align: left;">Modified Byte</th></tr></thead><tbody><tr><td style="text-align: left;"><strong>Pixel 1</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>1011010</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from F)</td><td style="text-align: left;"><code>1011010</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>0110011</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from F)</td><td style="text-align: left;"><code>0110011</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>1100101</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from F)</td><td style="text-align: left;"><code>1100101</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"><strong>Pixel 2</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>0101010</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>0</strong> (from F)</td><td style="text-align: left;"><code>0101010</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>1111001</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from F)</td><td style="text-align: left;"><code>1111001</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>0011001</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>1</strong> (from F)</td><td style="text-align: left;"><code>0011001</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"><strong>Pixel 3</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>1010101</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from F)</td><td style="text-align: left;"><code>1010101</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>1100110</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from F)</td><td style="text-align: left;"><code>1100110</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>0001111</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>0</strong> (from E)</td><td style="text-align: left;"><code>0001111</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"><strong>Pixel 4</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>1011001</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from E)</td><td style="text-align: left;"><code>1011001</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>0110110</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from E)</td><td style="text-align: left;"><code>0110110</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>1110001</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from E)</td><td style="text-align: left;"><code>1110001</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"><strong>Pixel 5</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>0101010</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from E)</td><td style="text-align: left;"><code>0101010</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>1111001</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from E)</td><td style="text-align: left;"><code>1111001</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>0011001</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from E)</td><td style="text-align: left;"><code>0011001</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"><strong>Pixel 6</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>1010101</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from E)</td><td style="text-align: left;"><code>1010101</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>1100110</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from Z)</td><td style="text-align: left;"><code>1100110</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>0101111</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from Z)</td><td style="text-align: left;"><code>0101111</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"><strong>Pixel 7</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>1011001</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from Z)</td><td style="text-align: left;"><code>1011001</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>0110110</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from Z)</td><td style="text-align: left;"><code>0110110</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>1110001</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>1</strong> (from Z)</td><td style="text-align: left;"><code>1110001</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"><strong>Pixel 8</strong></td><td style="text-align: left;">Red</td><td style="text-align: left;"><code>0101010</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from Z)</td><td style="text-align: left;"><code>0101010</code><strong><code>0</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Green</td><td style="text-align: left;"><code>1111001</code><strong><code>0</code></strong></td><td style="text-align: left;"><strong>1</strong> (from Z)</td><td style="text-align: left;"><code>1111001</code><strong><code>1</code></strong></td></tr><tr><td style="text-align: left;"></td><td style="text-align: left;">Blue</td><td style="text-align: left;"><code>0011001</code><strong><code>1</code></strong></td><td style="text-align: left;"><strong>0</strong> (from Z)</td><td style="text-align: left;"><code>0011001</code><strong><code>0</code></strong></td></tr></tbody></table>
+<p>By the time we reach Pixel 8, all 24 bits of "FEZ" are woven into the image. If you open this in a hex editor, you might see that the color <code>181</code> became <code>180</code>, but the text "FEZ" is nowhere to be found in the raw bytes!</p>
+<h3>Why PNG and not JPEG?</h3>
+<p>Our tool works best with <strong>PNG</strong> files. Why?</p>
+<ul>
+<li><strong>PNG (Portable Network Graphics)</strong> is a <em>lossless</em> format. It preserves every single bit exactly as it was saved.</li>
+<li><strong>JPEG (Joint Photographic Experts Group)</strong> is a <em>lossy</em> format. It uses compression algorithms that slightly alter pixel values to reduce file size. These tiny changes are fine for human viewing, but they destroy the data we've hidden in the LSBs.</li>
+</ul>
+<h2>The Implementation (JavaScript/Canvas)</h2>
+<p>We use the HTML5 <code>&lt;canvas&gt;</code> API to access and manipulate image data at the pixel level.</p>
+<h3>Encoding Logic</h3>
+<div class="knt-code-block"><div class="knt-code-tools"><span class="knt-text knt-text-fit "><span class="sr-only">javascript</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 156px;"><canvas style="width: 156px; height: 17px;"></canvas></span></span><div class="flex gap-2"><button type="button" class="knt-btn" aria-label="Copy code"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text knt-text-fit "><span class="sr-only">Copy</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 60px;"><canvas style="width: 60px; height: 17px;"></canvas></span></span></button><button type="button" class="knt-btn" aria-label="Expand code"><span aria-hidden="true" class="knt-canvas knt-canvas-fit knt-icon " style="height: 23.8px; width: 28px;"><canvas style="width: 28px; height: 23.8px;"></canvas></span><span class="knt-text knt-text-fit "><span class="sr-only">Expand</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 96px;"><canvas style="width: 96px; height: 17px;"></canvas></span></span></button></div></div><div style="background: transparent; font-family: &quot;JetBrains Mono&quot;, Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.7; tab-size: 4; hyphens: none; padding: 20px; margin: 0px; overflow: auto; font-size: 14px;"><code style="white-space: pre; font-family: &quot;IBM Plex Mono&quot;, ui-monospace, monospace; background: transparent;"><span class="token" style="color: rgb(233, 174, 126);">const</span><span> imageData </span><span class="token" style="color: rgb(233, 174, 126);">=</span><span> ctx</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token method" style="color: rgb(108, 184, 230);">getImageData</span><span class="token" style="color: rgb(227, 234, 242);">(</span><span class="token" style="color: rgb(230, 211, 122);">0</span><span class="token" style="color: rgb(227, 234, 242);">,</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">0</span><span class="token" style="color: rgb(227, 234, 242);">,</span><span> canvas</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token" style="color: rgb(108, 184, 230);">width</span><span class="token" style="color: rgb(227, 234, 242);">,</span><span> canvas</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token" style="color: rgb(108, 184, 230);">height</span><span class="token" style="color: rgb(227, 234, 242);">)</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span>
+</span><span></span><span class="token" style="color: rgb(233, 174, 126);">const</span><span> data </span><span class="token" style="color: rgb(233, 174, 126);">=</span><span> imageData</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token" style="color: rgb(108, 184, 230);">data</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span> </span><span class="token" style="color: rgb(141, 161, 185);">// Uint8ClampedArray [R, G, B, A, R, G, B, A, ...]</span><span>
+</span>
+<span></span><span class="token" style="color: rgb(141, 161, 185);">// ... transform message to bits ...</span><span>
+</span>
+<span></span><span class="token" style="color: rgb(233, 174, 126);">let</span><span> bitIndex </span><span class="token" style="color: rgb(233, 174, 126);">=</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">0</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span>
+</span><span></span><span class="token control-flow" style="color: rgb(233, 174, 126);">for</span><span> </span><span class="token" style="color: rgb(227, 234, 242);">(</span><span class="token" style="color: rgb(233, 174, 126);">let</span><span> i </span><span class="token" style="color: rgb(233, 174, 126);">=</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">0</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span> i </span><span class="token" style="color: rgb(233, 174, 126);">&lt;</span><span> data</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token" style="color: rgb(108, 184, 230);">length</span><span> </span><span class="token" style="color: rgb(233, 174, 126);">&amp;&amp;</span><span> bitIndex </span><span class="token" style="color: rgb(233, 174, 126);">&lt;</span><span> allBits</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token" style="color: rgb(108, 184, 230);">length</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span> i </span><span class="token" style="color: rgb(233, 174, 126);">+=</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">4</span><span class="token" style="color: rgb(227, 234, 242);">)</span><span> </span><span class="token" style="color: rgb(227, 234, 242);">{</span><span>
+</span><span>  </span><span class="token control-flow" style="color: rgb(233, 174, 126);">for</span><span> </span><span class="token" style="color: rgb(227, 234, 242);">(</span><span class="token" style="color: rgb(233, 174, 126);">let</span><span> j </span><span class="token" style="color: rgb(233, 174, 126);">=</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">0</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span> j </span><span class="token" style="color: rgb(233, 174, 126);">&lt;</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">3</span><span> </span><span class="token" style="color: rgb(233, 174, 126);">&amp;&amp;</span><span> bitIndex </span><span class="token" style="color: rgb(233, 174, 126);">&lt;</span><span> allBits</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token" style="color: rgb(108, 184, 230);">length</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span> j</span><span class="token" style="color: rgb(233, 174, 126);">++</span><span class="token" style="color: rgb(227, 234, 242);">)</span><span> </span><span class="token" style="color: rgb(227, 234, 242);">{</span><span>
+</span><span>    </span><span class="token" style="color: rgb(141, 161, 185);">// Replace LSB of R, G, or B</span><span>
+</span><span>    </span><span class="token" style="color: rgb(141, 161, 185);">// (data[i + j] &amp; 0xfe) clears the last bit</span><span>
+</span><span>    </span><span class="token" style="color: rgb(141, 161, 185);">// | allBits[bitIndex++] sets it to our secret bit</span><span>
+</span><span>    data</span><span class="token" style="color: rgb(227, 234, 242);">[</span><span>i </span><span class="token" style="color: rgb(233, 174, 126);">+</span><span> j</span><span class="token" style="color: rgb(227, 234, 242);">]</span><span> </span><span class="token" style="color: rgb(233, 174, 126);">=</span><span> </span><span class="token" style="color: rgb(227, 234, 242);">(</span><span>data</span><span class="token" style="color: rgb(227, 234, 242);">[</span><span>i </span><span class="token" style="color: rgb(233, 174, 126);">+</span><span> j</span><span class="token" style="color: rgb(227, 234, 242);">]</span><span> </span><span class="token" style="color: rgb(233, 174, 126);">&amp;</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">0xfe</span><span class="token" style="color: rgb(227, 234, 242);">)</span><span> </span><span class="token" style="color: rgb(233, 174, 126);">|</span><span> allBits</span><span class="token" style="color: rgb(227, 234, 242);">[</span><span>bitIndex</span><span class="token" style="color: rgb(233, 174, 126);">++</span><span class="token" style="color: rgb(227, 234, 242);">]</span><span class="token" style="color: rgb(227, 234, 242);">;</span><span>
+</span><span>  </span><span class="token" style="color: rgb(227, 234, 242);">}</span><span>
+</span><span></span><span class="token" style="color: rgb(227, 234, 242);">}</span><span>
+</span><span>ctx</span><span class="token" style="color: rgb(227, 234, 242);">.</span><span class="token method" style="color: rgb(108, 184, 230);">putImageData</span><span class="token" style="color: rgb(227, 234, 242);">(</span><span>imageData</span><span class="token" style="color: rgb(227, 234, 242);">,</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">0</span><span class="token" style="color: rgb(227, 234, 242);">,</span><span> </span><span class="token" style="color: rgb(230, 211, 122);">0</span><span class="token" style="color: rgb(227, 234, 242);">)</span><span class="token" style="color: rgb(227, 234, 242);">;</span></code></div></div>
+<h3>Decoding Logic</h3>
+<p>Decoding is the reverse process. We iterate through the pixels, extract the LSB of each R, G, and B channel, and rebuild the bitstream until we've parsed the header, the length, and finally the message content.</p>
+<h2>Challenges and Limitations</h2>
+<ul>
+<li><strong>Capacity:</strong> The amount of data you can hide depends on the image resolution. Each pixel can hold 3 bits (1 for each RGB channel). A 1080p image (1920x1080) can theoretically hold about 777 KB of hidden data.</li>
+<li><strong>Robustness:</strong> LSB steganography is very fragile. Resizing, cropping, or re-saving the image as a JPEG will likely corrupt the hidden message.</li>
+<li><strong>Security:</strong> Pure LSB is "security through obscurity." Anyone who knows the technique can extract the message. For true security, you should encrypt the message <em>before</em> hiding it in the image.</li>
+</ul>
+<h2>Try it out!</h2>
+<p>Check out the <strong>Steganography Tool</strong> in the Applications section and start sending your own cryptic signals through the digital aether.</p></div></div><div class="flex flex-wrap gap-2 mt-8"><a class="knt-tag" href="/blog?search=steganography" data-discover="true">steganography</a><a class="knt-tag" href="/blog?search=lsb" data-discover="true">lsb</a><a class="knt-tag" href="/blog?search=security" data-discover="true">security</a><a class="knt-tag" href="/blog?search=image-processing" data-discover="true">image-processing</a><a class="knt-tag" href="/blog?search=canvas" data-discover="true">canvas</a><a class="knt-tag" href="/blog?search=javascript" data-discover="true">javascript</a><a class="knt-tag" href="/blog?search=dev" data-discover="true">dev</a></div><div class="knt-section-head mt-10"><a class="knt-link" href="/blog" data-discover="true">More writing →</a><a class="knt-link" href="/graph" data-discover="true">Follow another thread ↗</a></div></article></div></div></div></main><footer class="knt-footer knt-chrome"><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 121.8px;"><canvas width="500" height="122" style="width: 100%; height: 121.8px;"></canvas></span><div class="knt-footer-body"><div class="knt-footer-text"><span class="knt-text  "><span class="sr-only">Independently built. Always on the needles.</span><span aria-hidden="true" class="knt-canvas  " style="height: 40.8px;"><canvas style="width: 100%; height: 40.8px;"></canvas></span></span><span class="knt-text  mt-2"><span class="sr-only">© 2026 Fezcode · Knit</span><span aria-hidden="true" class="knt-canvas  " style="height: 17px;"><canvas style="width: 100%; height: 17px;"></canvas></span></span></div><nav class="flex flex-wrap gap-3" aria-label="Footer"><a class="knt-btn" aria-label="Settings" href="/settings" data-discover="true"><span class="knt-text knt-text-fit "><span class="sr-only">Settings</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 128px;"><canvas style="width: 128px; height: 17px;"></canvas></span></span></a><a class="knt-btn" aria-label="Themes" href="/design" data-discover="true"><span class="knt-text knt-text-fit "><span class="sr-only">Themes</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 100px;"><canvas style="width: 100px; height: 17px;"></canvas></span></span></a><a class="knt-btn" href="/rss.xml" aria-label="RSS ↗"><span class="knt-text knt-text-fit "><span class="sr-only">RSS ↗</span><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 17px; width: 76px;"><canvas style="width: 76px; height: 17px;"></canvas></span></span></a></nav></div><span aria-hidden="true" class="knt-canvas  knt-band " style="height: 29.4px;"><canvas style="width: 100%; height: 29.4px;"></canvas></span></footer></div></div><div class="fixed bottom-4 right-4 z-[9999] max-w-[calc(100vw-2rem)] flex flex-col items-end"><div class="knt-patch knt-patch-tight mb-3 max-w-xs text-sm"><p class="knt-label mb-1">Syntax · a passing thought</p><p>Analyzing data structures... Delicious.</p></div><button type="button" aria-label="Talk to Syntax, the codex companion" class="knt-btn knt-btn-icon !w-auto !p-1.5 " style="transition: transform 0.2s;"><span aria-hidden="true" class="knt-canvas knt-canvas-fit " style="height: 36px; width: 42px;"><canvas width="42" height="36" style="width: 42px; height: 36px;"></canvas></span></button></div><div class="fixed top-24 right-6 md:right-12 z-[100] pointer-events-none flex flex-col items-end gap-2"><div class="pointer-events-auto flex flex-col-reverse gap-3"></div></div></div>
+    <script id="vike_pageContext" type="application/json">{"pageProps":{"is404":false},"urlPathname":"\\/blog\\/steganography-lsb-deep-dive","pageId":"\\/pages","routeParams":{"*":"blog\\/steganography-lsb-deep-dive"}}</script>
+    <script id="vike_globalContext" type="application/json">{}</script>
+    <script src="/assets/entries/entry-server-routing.CFleayYX.js" type="module" async></script>
+    <link rel="modulepreload" href="/assets/entries/pages.CP3xvj61.js" as="script" type="text/javascript">
+    <link rel="modulepreload" href="/assets/chunks/chunk-BXl3LOEh.js" as="script" type="text/javascript">
+  </body>
+</html>

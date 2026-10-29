@@ -1,0 +1,49 @@
+# Philosophy 101: Epistemology - How Do You Know That?
+
+## The Matrix and the Brain in a Vat
+
+How do you know you aren't a brain in a vat being fed electrical impulses by a mad scientist? How do you know this blog post isn't a hallucination?
+
+Welcome to **[Epistemology](/vocab/epistemology)**: the study of knowledge.
+
+Before we can claim to know anything about the world, we have to determine what "knowing" even means.
+
+## The Classic Definition: JTB
+
+For thousands of years, the gold standard for knowledge was **Justified True Belief (JTB)**.
+To say "I know X," three things must happen:
+1.  **You must believe X.** (You can't know it if you don't think it's true).
+2.  **X must actually be true.** (You can't "know" the earth is flat, even if you believe it).
+3.  **You must have justification.** (You can't just guess correctly; you need a reason).
+
+## The Crash Course: Rationalism vs. Empiricism
+
+This is the biggest cage match in the history of philosophy.
+
+**1. Rationalism (Team Descartes)**
+*   **Core Idea:** Reason is the chief source of knowledge.
+*   **The Vibe:** "I can figure out the universe just by thinking hard enough."
+*   **Key Figure:** René Descartes. He doubted everything—his senses, his memory, the physical world—until he hit bedrock: "I think, therefore I am." He couldn't doubt that he was doubting.
+
+**2. Empiricism (Team Locke/Hume)**
+*   **Core Idea:** Sensory experience is the source of knowledge.
+*   **The Vibe:** "Show me the data."
+*   **Key Concept:** *Tabula Rasa* (Blank Slate). We are born knowing nothing, and experience writes upon us.
+
+## Radical Skepticism and Solipsism
+
+If you take doubt far enough, you end up at **[Solipsism](/vocab/solipsism)**: the idea that only your own mind is sure to exist. Everyone else might be an NPC (Non-Playable Character).
+
+It's a lonely philosophy, but logically, it's incredibly hard to disprove. (Try it. Go ahead. Prove to me you exist. I'll wait).
+
+## Recommended Resources
+
+**1. The Website:**
+[SEP - Epistemology](https://plato.stanford.edu/entries/epistemology/)
+*   Dive into the deep end.
+
+**2. The Movie:**
+*   **The Matrix (1999)**
+*   It is literally just Plato's "Allegory of the Cave" with kung fu and leather trench coats. Essential viewing for this topic.
+
+Next up, we ask the question that usually follows a bong rip: **What is actually real?** (Metaphysics).

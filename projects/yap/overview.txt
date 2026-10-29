@@ -1,0 +1,5 @@
+LABEL: YAP
+SUBTEXT: The Overview
+IMAGE: /images/projects/yap/cover.webp
+
+Yap is a lightweight, terminal-based YouTube audio player written in Go. It allows users to stream audio directly from YouTube URLs, offering features such as playback queuing, synced lyrics, and advanced playback controls.
