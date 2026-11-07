@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   useAppConfig,
   useThemeFonts,
@@ -6,345 +7,758 @@ import {
   AppMissing,
   AppSeo,
 } from './app-shell';
-import { Link } from 'react-router-dom';
 import MarkdownContent from '../../components/MarkdownContent';
-
-/* ============================================================
- * "panes" — clockt.
- *
- * clockt tiles. So does the page: no centred column anywhere, every
- * section a pane running edge to edge, divided by the same hairlines
- * the app draws between splits. A tab strip on top, a status line
- * pinned at the bottom, and the whole thing recolours when you pick a
- * theme — because in clockt a theme reaches the ANSI palette, not just
- * the chrome.
- * ============================================================ */
+import '../../styles/ClocktProject.css';
 
 const FONTS =
-  'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap';
-
-const SANS = { fontFamily: "'IBM Plex Sans', system-ui, sans-serif" };
-const MONO = { fontFamily: "'IBM Plex Mono', ui-monospace, monospace" };
+  'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap';
 
 const THEMES = [
-  { id: 'Midnight', bg: '#12141C', pane: '#171A24', deep: '#0C0E15', fg: '#D6DAE6', dim: '#79839B', accent: '#6472E8', green: '#63F5A6', yellow: '#E8C56B', red: '#F2708E' },
-  { id: 'Phosphor', bg: '#07120C', pane: '#0B1A11', deep: '#050D08', fg: '#BFF5D2', dim: '#5E8F72', accent: '#4BF07A', green: '#4BF07A', yellow: '#B9F06B', red: '#F07A4B' },
-  { id: 'Solarized', bg: '#002B36', pane: '#073642', deep: '#00212B', fg: '#E3DCC6', dim: '#7B9098', accent: '#B58900', green: '#859900', yellow: '#B58900', red: '#DC322F' },
-  { id: 'Sakura', bg: '#1B1218', pane: '#241A22', deep: '#140D12', fg: '#F3DCE6', dim: '#9C7E8C', accent: '#F2A0C0', green: '#A8E6B0', yellow: '#F0D08A', red: '#F27B9D' },
-  { id: 'Newsprint', bg: '#EDE9E0', pane: '#E2DCD0', deep: '#F5F2EB', fg: '#20201D', dim: '#6B675E', accent: '#B2452F', green: '#4C7A3E', yellow: '#9A7A22', red: '#B2452F' },
-  { id: 'Neon Tokyo', bg: '#0F0B1E', pane: '#171130', deep: '#0A0716', fg: '#E6DEFF', dim: '#8579B5', accent: '#FF4D9D', green: '#5AF0C8', yellow: '#F5D76E', red: '#FF4D9D' },
+  {
+    id: 'Midnight',
+    bg: '#12141C',
+    fg: '#D6DAE6',
+    dim: '#929CB3',
+    accent: '#8793FF',
+    green: '#63F5A6',
+    yellow: '#E8C56B',
+    red: '#F2708E',
+  },
+  {
+    id: 'Phosphor',
+    bg: '#07120C',
+    fg: '#BFF5D2',
+    dim: '#8AB99B',
+    accent: '#4BF07A',
+    green: '#4BF07A',
+    yellow: '#B9F06B',
+    red: '#F07A4B',
+  },
+  {
+    id: 'Solarized',
+    bg: '#002B36',
+    fg: '#E3DCC6',
+    dim: '#9BB0B8',
+    accent: '#D9B549',
+    green: '#B1BB41',
+    yellow: '#D9B549',
+    red: '#F06F65',
+  },
+  {
+    id: 'Sakura',
+    bg: '#1B1218',
+    fg: '#F3DCE6',
+    dim: '#BC9EAC',
+    accent: '#F2A0C0',
+    green: '#A8E6B0',
+    yellow: '#F0D08A',
+    red: '#F27B9D',
+  },
+  {
+    id: 'Newsprint',
+    bg: '#EDE9E0',
+    fg: '#20201D',
+    dim: '#6B675E',
+    accent: '#B2452F',
+    green: '#416D35',
+    yellow: '#81651A',
+    red: '#B2452F',
+  },
+  {
+    id: 'Neon Tokyo',
+    bg: '#0F0B1E',
+    fg: '#E6DEFF',
+    dim: '#A699D1',
+    accent: '#FF73AF',
+    green: '#5AF0C8',
+    yellow: '#F5D76E',
+    red: '#FF4D9D',
+  },
 ];
 
-const SCRIPT = [
-  { cmd: 'clockt new -n build', out: [['[clockt] session "build" created · attached', 'dim']] },
-  { cmd: 'clockt ls', out: [['NAME     PANES  STATUS', 'dim'], ['build    1      attached', 'green'], ['agent    1      detached', 'dim']] },
-  { cmd: 'clockt cmd pane.split.right', out: [['[clockt] pane 2 opened →', 'yellow']], split: true },
-  { cmd: 'npm test', out: [['✓ 1519 passing', 'green']], pane: 2 },
-];
+const ICON_PATHS = {
+  arrow: 'M4 12h16m-6-6 6 6-6 6',
+  external: 'M7 17 17 7M7 7h10v10',
+  terminal: 'm5 7 5 5-5 5m8 0h6',
+  copy: 'M9 9h11v11H9zM15 9V4H4v11h5',
+  check: 'm5 12 4 4L19 6',
+  workspace: 'M3 4h18v16H3zM8 4v16M8 10h13',
+  split: 'M3 4h18v16H3zM12 4v16',
+  panels: 'M3 4h18v16H3zM3 14h18m-13 3h2m3 0h2',
+  browser: 'M3 4h18v16H3zM3 9h18M6 6.5h.01M9 6.5h.01',
+  palette:
+    'M12 3a9 9 0 1 0 0 18h1a2 2 0 0 0 0-4h-1a2 2 0 0 1 0-4h3a6 6 0 0 0 6-6c0-2-4-4-9-4ZM7 8h.01M12 6h.01M17 8h.01M6 13h.01',
+  session: 'M4 9a8 8 0 1 1 0 6m0-11v5h5m3-2v5l3 2',
+  plugin: 'M9 3h6v5h5v6h-5v7H9v-7H4V8h5z',
+};
 
-const useSession = (on) => {
-  const [step, setStep] = useState(on ? 0 : SCRIPT.length);
-  const [typed, setTyped] = useState(on ? '' : null);
-  const timer = useRef();
-  useEffect(() => {
-    if (!on) return undefined;
-    let i = 0;
-    let ch = 0;
-    let dead = false;
-    const run = () => {
-      if (dead) return;
-      const line = SCRIPT[i];
-      if (!line) {
-        timer.current = setTimeout(() => {
-          i = 0; ch = 0; setStep(0); run();
-        }, 4200);
-        return;
-      }
-      if (ch <= line.cmd.length) {
-        setTyped(line.cmd.slice(0, ch));
-        ch += 1;
-        timer.current = setTimeout(run, 34);
-      } else {
-        setStep(i + 1); setTyped(null); i += 1; ch = 0;
-        timer.current = setTimeout(run, 760);
-      }
-    };
-    timer.current = setTimeout(run, 600);
-    return () => { dead = true; clearTimeout(timer.current); };
-  }, [on]);
-  return { step, typed };
+const Icon = ({ name = 'arrow', ...props }) => (
+  <svg
+    className="ckt-icon"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="1.5"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    aria-hidden="true"
+    {...props}
+  >
+    <path d={ICON_PATHS[name] || ICON_PATHS.arrow} />
+  </svg>
+);
+
+const Wordmark = ({ name }) => (
+  <a
+    className="ckt-wordmark"
+    href="#clockt-top"
+    aria-label={`${name} — back to top`}
+  >
+    <svg
+      width="29"
+      height="29"
+      viewBox="0 0 29 29"
+      fill="none"
+      aria-hidden="true"
+    >
+      <rect
+        x="1"
+        y="1"
+        width="27"
+        height="27"
+        rx="7"
+        stroke="currentColor"
+        strokeOpacity=".5"
+      />
+      <path
+        d="m7 9 5 5-5 5m8 0h7"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+    {name}
+  </a>
+);
+
+const WindowTop = ({ title, children }) => (
+  <div className="ckt-window-top">
+    <span className="ckt-window-dots" aria-hidden="true">
+      <span />
+      <span />
+      <span />
+    </span>
+    <span>{title}</span>
+    {children}
+  </div>
+);
+
+const SessionDemo = () => {
+  const [stage, setStage] = useState(0);
+  const labels = ['Create a session', 'Detach the window', 'Reattach'];
+
+  return (
+    <div className="ckt-session-demo">
+      <WindowTop title="A session, from start to return" />
+      <div className="ckt-terminal-body" aria-live="polite" aria-atomic="true">
+        <p className="ckt-terminal-comment">
+          # A little demo. Your shell stays yours.
+        </p>
+        <pre>
+          <code>
+            <span className="ckt-terminal-prompt">❯</span> clockt new -n build
+          </code>
+        </pre>
+        <p className="ckt-terminal-output">
+          Session “build” created. Attached.
+        </p>
+        {stage >= 1 && (
+          <>
+            <pre>
+              <code>
+                <span className="ckt-terminal-comment">
+                  # ctrl + shift + alt + d
+                </span>
+              </code>
+            </pre>
+            <p className="ckt-terminal-output">
+              Window detached. Session “build” is still running.
+            </p>
+          </>
+        )}
+        {stage === 2 && (
+          <>
+            <pre>
+              <code>
+                <span className="ckt-terminal-prompt">❯</span> clockt attach
+                build
+              </code>
+            </pre>
+            <p className="ckt-terminal-output">
+              Reattached. Right where you left off.
+            </p>
+          </>
+        )}
+        <div
+          className={`ckt-session-status ${stage === 1 ? 'is-detached' : ''}`}
+        >
+          <span className="ckt-status-dot" />
+          <span>build</span>
+          <span>
+            {stage === 1 ? 'detached · running' : 'attached · running'}
+          </span>
+        </div>
+      </div>
+      <div
+        className="ckt-demo-controls"
+        aria-label="Explore the session lifecycle"
+      >
+        {labels.map((label, index) => (
+          <button
+            key={label}
+            type="button"
+            className={stage === index ? 'is-active' : ''}
+            aria-pressed={stage === index}
+            onClick={() => setStage(index)}
+          >
+            <span aria-hidden="true">0{index + 1}</span> {label}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const ThemeLab = ({ version }) => {
+  const [themeIndex, setThemeIndex] = useState(0);
+  const theme = THEMES[themeIndex];
+
+  return (
+    <div className="ckt-theme-lab">
+      <div
+        className="ckt-theme-preview"
+        style={{
+          '--terminal-bg': theme.bg,
+          '--terminal-fg': theme.fg,
+          '--terminal-dim': theme.dim,
+          '--terminal-accent': theme.accent,
+          '--terminal-green': theme.green,
+          '--terminal-yellow': theme.yellow,
+        }}
+      >
+        <WindowTop title={`${theme.id} / pwsh`} />
+        <div className="ckt-terminal-body">
+          <pre>
+            <code>
+              <span className="ckt-terminal-prompt">❯</span>{' '}
+              <span className="ckt-terminal-accent">clockt</span> --version
+            </code>
+          </pre>
+          <p className="ckt-terminal-output">clockt {version}</p>
+          <pre>
+            <code>
+              <span className="ckt-terminal-prompt">❯</span> git status --short
+            </code>
+          </pre>
+          <p className="ckt-terminal-output">
+            <span className="ckt-terminal-prompt"> M</span>{' '}
+            src/your-next-idea.cs
+          </p>
+          <p className="ckt-terminal-comment"># Make yourself at home.</p>
+          <div className="ckt-ansi-palette" aria-hidden="true">
+            {[
+              theme.fg,
+              theme.red,
+              theme.green,
+              theme.yellow,
+              theme.accent,
+              theme.dim,
+            ].map((color, index) => (
+              <span key={index} style={{ background: color }} />
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="ckt-theme-options" aria-label="Preview a terminal theme">
+        {THEMES.map((option, index) => (
+          <button
+            key={option.id}
+            type="button"
+            className={index === themeIndex ? 'is-active' : ''}
+            aria-pressed={index === themeIndex}
+            onClick={() => setThemeIndex(index)}
+          >
+            <span
+              className="ckt-theme-swatch"
+              style={{ background: option.accent }}
+              aria-hidden="true"
+            />
+            {option.id}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const PanesProjectPage = () => {
   const { cfg, failed, project, loading } = useAppConfig();
-  useThemeFonts(FONTS, 'panes');
-  const [ti, setTi] = useState(0);
-  const [animate, setAnimate] = useState(false);
+  useThemeFonts(FONTS, 'clockt-frontier');
+  const [copyState, setCopyState] = useState('');
+  const copyTimer = useRef();
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    setAnimate(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  }, []);
-
-  const { step, typed } = useSession(animate);
-  const t = THEMES[ti];
+  useEffect(() => () => clearTimeout(copyTimer.current), []);
 
   if (loading) return <AppLoading />;
-  if (failed || !cfg) return <AppMissing background="#12141C" color="#D6DAE6" />;
+  if (failed || !cfg)
+    return <AppMissing background="#071e20" color="#f3efe3" />;
 
-  const RULE = `${t.dim}3D`;
-  const shot = (cfg.shots || [])[0];
-  const visible = SCRIPT.slice(0, step);
-  const split = visible.some((l) => l.split);
-  const onDark = t.id !== 'Newsprint';
+  const version = project?.version || cfg.version;
+  const shot = cfg.shots?.[0];
+  const documentation = `${cfg.repo}/tree/main/docs`;
+  const featureIcons = [
+    'session',
+    'workspace',
+    'split',
+    'panels',
+    'browser',
+    'palette',
+  ];
+  const command =
+    cfg.terminal?.lines?.[0]?.split('#')[0].trim() || 'clockt new -n build';
 
-  const Pane = ({ children, className = '', style = {} }) => (
-    <div className={className} style={{ borderRight: `1px solid ${RULE}`, borderBottom: `1px solid ${RULE}`, ...style }}>
-      {children}
-    </div>
-  );
-
-  const PaneLabel = ({ children }) => (
-    <div className="px-5 pt-4 pb-3 text-[10.5px]" style={{ ...MONO, color: t.dim, letterSpacing: '0.14em' }}>
-      {children}
-    </div>
-  );
-
-  const Prompt = ({ children, caret }) => (
-    <div className="whitespace-pre overflow-hidden">
-      <span style={{ color: t.green }}>➜</span> <span style={{ color: t.accent }}>build</span>{' '}
-      <span style={{ color: t.fg }}>{children}</span>
-      {caret && (
-        <span
-          style={{
-            display: 'inline-block', width: 8, height: 14, background: t.fg,
-            verticalAlign: '-2px', animation: animate ? 'pn-caret 1s steps(1) infinite' : 'none',
-          }}
-        />
-      )}
-    </div>
-  );
-
-  const Term = ({ lines, label, caret }) => (
-    <div className="flex-1 min-w-0 px-5 pb-5" style={{ background: t.pane }}>
-      <div className="pt-4 pb-3 text-[10.5px]" style={{ ...MONO, color: t.dim }}>{label}</div>
-      <div className="text-[12.5px] leading-[1.8]" style={MONO}>
-        {lines.map((l, i) => (
-          <div key={i}>
-            <Prompt>{l.cmd}</Prompt>
-            {(l.out || []).map(([text, tone], j) => (
-              <div key={j} className="whitespace-pre overflow-hidden" style={{ color: t[tone] || t.fg }}>{text}</div>
-            ))}
-          </div>
-        ))}
-        {caret && typed !== null && <Prompt caret>{typed}</Prompt>}
-      </div>
-    </div>
-  );
+  const copyCommand = async () => {
+    clearTimeout(copyTimer.current);
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopyState('copied');
+    } catch {
+      setCopyState('failed');
+    }
+    copyTimer.current = setTimeout(() => setCopyState(''), 3500);
+  };
 
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: t.deep, color: t.fg, ...SANS, transition: 'background 300ms, color 300ms' }}>
+    <div className="clockt-page" id="clockt-top">
       <AppSeo cfg={cfg} project={project} />
-      <style>{`
-        @keyframes pn-caret { 0%,50%{opacity:1} 50.01%,100%{opacity:0} }
-        @keyframes pn-in { from{opacity:0;transform:translateX(12px)} to{opacity:1;transform:none} }
-        .pn-split { animation: pn-in 340ms cubic-bezier(.2,.7,.3,1) both; }
-        @media (prefers-reduced-motion: reduce){ .pn-split{animation:none} }
-      `}</style>
+      <a className="ckt-skip" href="#clockt-content">
+        Skip to content
+      </a>
 
-      {/* ── tab strip, edge to edge ── */}
-      <div className="flex items-stretch text-[12px] overflow-x-auto" style={{ ...MONO, background: t.bg, borderBottom: `1px solid ${RULE}` }}>
-        <Link to="/projects" className="px-4 flex items-center flex-none" style={{ color: t.dim, borderRight: `1px solid ${RULE}` }}>
-          ←
-        </Link>
-        <span className="px-5 py-3 flex-none" style={{ color: t.fg, background: t.pane, borderRight: `1px solid ${RULE}`, borderTop: `2px solid ${t.accent}` }}>
-          0: {cfg.name}
-        </span>
-        {['1: panes', '2: themes', '3: keys'].map((x) => (
-          <span key={x} className="px-5 py-3 flex-none hidden sm:block" style={{ color: t.dim, borderRight: `1px solid ${RULE}` }}>{x}</span>
-        ))}
-        <span className="ml-auto px-5 py-3 flex-none" style={{ color: t.dim }}>v{cfg.version}</span>
-      </div>
+      <div className="ckt-masthead">
+        <div className="ckt-atmosphere" aria-hidden="true" />
+        <header className="ckt-container ckt-nav">
+          <Wordmark name={cfg.name} />
+          <nav className="ckt-nav-links" aria-label="Clockt navigation">
+            <a href="#workspace">Overview</a>
+            <a href="#features">Features</a>
+            <a href="#command-line">CLI</a>
+            <a
+              className="ckt-nav-source"
+              href={cfg.repo}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              GitHub <Icon name="external" />
+            </a>
+            <a
+              className="ckt-button ckt-button-small"
+              href={cfg.download}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download <Icon />
+            </a>
+          </nav>
+        </header>
 
-      {/* ── hero: two panes, the window bleeding off the right edge ── */}
-      <div className="grid lg:grid-cols-[minmax(0,0.78fr)_minmax(0,1.22fr)]">
-        <Pane className="px-6 sm:px-10 py-12 sm:py-16 flex flex-col justify-center" style={{ background: t.bg }}>
-          <h1
-            className="font-bold leading-[0.98]"
-            style={{ fontSize: 'clamp(38px, 4.6vw, 68px)', letterSpacing: '-0.045em', maxWidth: '13ch' }}
-          >
-            {cfg.tagline}
-          </h1>
-          <p className="mt-7 text-[15.5px] leading-[1.75]" style={{ color: t.dim, maxWidth: '46ch' }}>
-            {cfg.subtitle}
-          </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            {cfg.download && (
-              <a href={cfg.download} target="_blank" rel="noopener noreferrer"
-                className="px-6 py-3 text-[14px] font-semibold"
-                style={{ background: t.accent, color: onDark ? '#0B0D14' : '#fff' }}>
-                {cfg.downloadLabel || 'Download'}
-              </a>
-            )}
-            {cfg.repo && (
-              <a href={cfg.repo} target="_blank" rel="noopener noreferrer"
-                className="px-6 py-3 text-[14px]" style={{ border: `1px solid ${RULE}`, color: t.fg }}>
-                Read the source
-              </a>
-            )}
+        <section className="ckt-hero" aria-labelledby="clockt-title">
+          <div className="ckt-floating-commands" aria-hidden="true">
+            <span>clockt new -n build</span>
+            <span>Split a pane. Find your flow.</span>
+            <span>npm run dev</span>
+            <span>One workspace for every idea.</span>
+            <span>clockt attach build</span>
+            <span>Your shells are still running.</span>
+            <span>git switch something-great</span>
           </div>
-          <p className="mt-8 text-[11.5px]" style={{ ...MONO, color: t.dim, letterSpacing: '0.08em' }}>
-            {(cfg.platforms || []).join('  ·  ')}  ·  {(cfg.stack || []).join('  /  ')}
-          </p>
-        </Pane>
-
-        <Pane className="relative overflow-hidden" style={{ background: t.pane, borderRight: 'none', minHeight: 340 }}>
-          {shot && (
-            <img
-              src={shot.src}
-              alt={shot.caption || cfg.name}
-              className="block"
-              style={{
-                position: 'absolute', top: 32, left: 34, width: 'calc(100% + 190px)', maxWidth: 'none',
-                border: `1px solid ${RULE}`, borderRadius: 6,
-                boxShadow: '0 40px 70px -34px rgba(0,0,0,0.95)',
-              }}
-            />
-          )}
-        </Pane>
-      </div>
-
-      {/* ── the live session + the palette, tiled ── */}
-      <div className="grid lg:grid-cols-[minmax(0,1.25fr)_minmax(0,0.75fr)]">
-        <Pane style={{ background: t.pane }}>
-          <PaneLabel>LIVE SESSION — SPLIT ARRIVES ON CUE</PaneLabel>
-          <div className="flex" style={{ borderTop: `1px solid ${RULE}`, minHeight: 228 }}>
-            <Term lines={visible.filter((l) => l.pane !== 2)} label="pane 1 — pwsh" caret={!split || typed !== null} />
-            {split && (
-              <>
-                <div aria-hidden style={{ width: 1, background: RULE }} />
-                <div className="flex-1 min-w-0 pn-split flex">
-                  <Term lines={visible.filter((l) => l.pane === 2)} label="pane 2 — pwsh" caret={false} />
-                </div>
-              </>
-            )}
-          </div>
-        </Pane>
-
-        <Pane style={{ background: t.bg, borderRight: 'none' }}>
-          <PaneLabel>FOURTEEN THEMES — THE PALETTE, NOT THE CHROME</PaneLabel>
-          <div className="grid" style={{ gridTemplateColumns: 'repeat(2, 1fr)', borderTop: `1px solid ${RULE}` }}>
-            {THEMES.map((th, i) => (
-              <button
-                key={th.id}
-                type="button"
-                onClick={() => setTi(i)}
-                aria-pressed={i === ti}
-                className="text-left px-4 py-4"
-                style={{
-                  background: th.bg, color: th.fg,
-                  borderRight: `1px solid ${RULE}`, borderBottom: `1px solid ${RULE}`,
-                  outline: i === ti ? `2px solid ${th.accent}` : 'none', outlineOffset: -2,
-                }}
+          <div className="ckt-hero-content">
+            <p className="ckt-eyebrow">YOUR TERMINAL. YOUR TERRITORY.</p>
+            <h1 id="clockt-title">
+              Close the window.
+              <br />
+              <em>Keep the shell.</em>
+            </h1>
+            <p className="ckt-hero-description">
+              A terminal that keeps your work alive. Persistent sessions,
+              thoughtful workspaces, and room for everything you’re building.
+            </p>
+            <div className="ckt-hero-actions">
+              <a
+                className="ckt-button"
+                href={cfg.download}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <span className="flex gap-1 mb-2.5" aria-hidden>
-                  {[th.accent, th.green, th.yellow, th.red].map((c) => (
-                    <span key={c} style={{ width: 14, height: 7, background: c }} />
-                  ))}
-                </span>
-                <span className="text-[12px]" style={{ ...MONO }}>{th.id}</span>
-              </button>
-            ))}
-          </div>
-        </Pane>
-      </div>
-
-      {/* ── summary, two panes ── */}
-      {(cfg.summary || []).length > 0 && (
-        <div className="grid md:grid-cols-2">
-          {cfg.summary.map((p, i) => (
-            <Pane key={i} className="px-6 sm:px-10 py-10" style={{ background: i ? t.bg : t.pane, borderRight: i ? 'none' : undefined }}>
-              <p className="text-[15.5px] leading-[1.85]" style={{ color: i ? t.dim : t.fg, maxWidth: '52ch' }}>{p}</p>
-            </Pane>
-          ))}
-        </div>
-      )}
-
-      {/* ── features: a tiled grid, full bleed ── */}
-      {(cfg.panels || []).length > 0 && (
-        <>
-          <div className="px-6 sm:px-10 py-7" style={{ background: t.deep, borderBottom: `1px solid ${RULE}` }}>
-            <h2 className="font-bold" style={{ fontSize: 'clamp(24px,2.6vw,34px)', letterSpacing: '-0.03em' }}>
-              {cfg.panelsHeading}
-            </h2>
-          </div>
-          <div className="grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px,1fr))' }}>
-            {cfg.panels.map((p, i) => (
-              <Pane key={i} className="px-6 sm:px-8 py-8" style={{ background: i % 2 ? t.pane : t.bg }}>
-                <span className="text-[11px]" style={{ ...MONO, color: t.accent }}>{String(i + 1).padStart(2, '0')}</span>
-                <h3 className="text-[16px] font-semibold mt-3 mb-2.5">{p.title}</h3>
-                <p className="text-[14px] leading-[1.78]" style={{ color: t.dim, maxWidth: '42ch' }}>{p.body}</p>
-                {p.keys && (
-                  <code className="mt-4 inline-block px-2.5 py-1.5 text-[12px]"
-                    style={{ ...MONO, background: t.deep, border: `1px solid ${RULE}`, color: t.accent }}>
-                    {p.keys}
-                  </code>
-                )}
-              </Pane>
-            ))}
-          </div>
-        </>
-      )}
-
-      {/* ── keys + cli, side by side ── */}
-      <div className="grid lg:grid-cols-2">
-        {(cfg.keys || []).length > 0 && (
-          <Pane style={{ background: t.bg }}>
-            <PaneLabel>{(cfg.keysHeading || 'KEYS').toUpperCase()}</PaneLabel>
-            <div style={{ borderTop: `1px solid ${RULE}` }}>
-              {cfg.keys.map((k, i) => (
-                <div key={i} className="flex flex-wrap items-baseline gap-x-5 px-5 py-2.5"
-                  style={{ borderBottom: i === cfg.keys.length - 1 ? 'none' : `1px solid ${RULE}` }}>
-                  <span className="text-[12.5px]" style={{ ...MONO, color: t.accent, minWidth: 172 }}>{k.k}</span>
-                  <span className="text-[14px]" style={{ color: t.dim }}>{k.a}</span>
-                </div>
-              ))}
+                Get clockt for Windows <Icon />
+              </a>
+              <a
+                className="ckt-text-link"
+                href={cfg.repo}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore the source <Icon name="external" />
+              </a>
             </div>
-          </Pane>
-        )}
-        {cfg.terminal && (
-          <Pane style={{ background: t.pane, borderRight: 'none' }}>
-            <PaneLabel>{(cfg.terminalHeading || 'CLI').toUpperCase()}</PaneLabel>
-            <pre className="px-5 pb-6 overflow-x-auto text-[12.5px] leading-[2.05]"
-              style={{ ...MONO, margin: 0, color: t.fg, borderTop: `1px solid ${RULE}`, paddingTop: 16 }}>
-              {(cfg.terminal.lines || []).map((l, i) => (
-                <div key={i}><span style={{ color: t.green }}>➜</span> {l}</div>
-              ))}
-            </pre>
-          </Pane>
-        )}
-      </div>
-
-      {cfg.notes && (
-        <Pane className="px-6 sm:px-10 py-10" style={{ background: t.bg, borderRight: 'none' }}>
-          <h2 className="text-[22px] font-bold mb-5" style={{ letterSpacing: '-0.025em' }}>{cfg.notesTitle}</h2>
-          <div className="text-[15px] leading-[1.85]" style={{ maxWidth: '72ch' }}>
-            <MarkdownContent content={cfg.notes} />
+            <p className="ckt-hero-meta">
+              Windows 10 & 11 <span aria-hidden="true">/</span> v{version}{' '}
+              <span aria-hidden="true">/</span> Built by fezcode
+            </p>
           </div>
-        </Pane>
-      )}
+        </section>
 
-      <div className="flex-1" style={{ background: t.deep }} />
-
-      {/* ── status line, pinned ── */}
-      <div className="sticky bottom-0 flex items-center gap-5 px-4 py-2 text-[11.5px] overflow-x-auto"
-        style={{ ...MONO, background: t.accent, color: onDark ? '#0B0D14' : '#fff' }}>
-        <span className="font-semibold flex-none">{cfg.name}</span>
-        {(cfg.colophon || []).slice(0, 3).map(([k, v], i) => (
-          <span key={i} className="flex-none hidden sm:inline" style={{ opacity: 0.88 }}>{k}: {v}</span>
-        ))}
-        <span className="ml-auto flex-none">{t.id}</span>
+        <p className="ckt-intro-line">
+          A terminal emulator and multiplexer for Windows.{' '}
+          <span>Built to pick up where you left off.</span>
+        </p>
       </div>
+
+      <div id="clockt-content">
+        <section
+          className="ckt-container ckt-section ckt-workspace"
+          id="workspace"
+          aria-labelledby="workspace-title"
+        >
+          <div className="ckt-section-heading">
+            <p className="ckt-eyebrow">A LITTLE SPACE TO DO GREAT WORK</p>
+            <h2 id="workspace-title">
+              Everything in its <em>right place.</em>
+            </h2>
+            <p>
+              One home for your shells, projects, and all the work in between.
+            </p>
+          </div>
+          <div className="ckt-feature-pills" aria-label="Workspace features">
+            <span>
+              <Icon name="workspace" /> Named workspaces
+            </span>
+            <span>
+              <Icon name="split" /> Tabs & splits
+            </span>
+            <span>
+              <Icon name="panels" /> Developer panels
+            </span>
+            <span>
+              <Icon name="palette" /> 14 built-in themes
+            </span>
+          </div>
+          {shot && (
+            <figure className="ckt-product-shot">
+              <img
+                src={shot.src}
+                alt={
+                  shot.caption ||
+                  'Clockt terminal with a workspace sidebar, colourful git output, and a plugin status bar'
+                }
+                width="1400"
+                height="880"
+                loading="lazy"
+              />
+              <figcaption>
+                <span>
+                  <span className="ckt-status-dot" /> A real workspace. A real
+                  terminal.
+                </span>
+                <span>VT100 / xterm · 24-bit colour</span>
+              </figcaption>
+            </figure>
+          )}
+          {cfg.summary?.[1] && (
+            <p className="ckt-emulator-note">{cfg.summary[1]}</p>
+          )}
+        </section>
+
+        <section
+          className="ckt-container ckt-section ckt-session-section"
+          aria-labelledby="sessions-title"
+        >
+          <div className="ckt-two-column">
+            <div className="ckt-section-copy">
+              <p className="ckt-eyebrow">PICK UP WHERE YOU LEFT OFF</p>
+              <h2 id="sessions-title">
+                A window closes.
+                <br />
+                <em>Your work lives on.</em>
+              </h2>
+              <p>{cfg.summary?.[0]}</p>
+              <p>
+                Detach on purpose. Reattach from any console. Your next session
+                starts right where this one ends.
+              </p>
+              <a
+                className="ckt-text-link"
+                href={`${cfg.repo}/blob/main/docs/session-updates.md`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Meet persistent sessions <Icon />
+              </a>
+            </div>
+            <SessionDemo />
+          </div>
+        </section>
+
+        <section
+          className="ckt-container ckt-section"
+          id="features"
+          aria-labelledby="features-title"
+        >
+          <div className="ckt-section-heading">
+            <p className="ckt-eyebrow">MADE FOR THE WAY YOU BUILD</p>
+            <h2 id="features-title">
+              Find your <em>flow.</em>
+            </h2>
+            <p>The small details that make a terminal feel like your own.</p>
+          </div>
+          <div className="ckt-feature-grid">
+            {(cfg.panels || []).map((panel, index) => (
+              <article className="ckt-feature" key={panel.title}>
+                <Icon name={featureIcons[index]} />
+                <h3>{panel.title}</h3>
+                <p>{panel.body}</p>
+                {panel.keys && <kbd>{panel.keys}</kbd>}
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section
+          className="ckt-container ckt-section ckt-themes-section"
+          id="themes"
+          aria-labelledby="themes-title"
+        >
+          <div className="ckt-two-column">
+            <div className="ckt-section-copy">
+              <p className="ckt-eyebrow">MAKE YOURSELF AT HOME</p>
+              <h2 id="themes-title">
+                Set the mood.
+                <br />
+                <em>Keep the focus.</em>
+              </h2>
+              <p>
+                Fourteen built-in themes reach all the way into your terminal:
+                the ANSI palette, cursor, selection, tab pills, and pane
+                borders.
+              </p>
+              <p>Try a few here. There’s a whole palette waiting in the app.</p>
+              <span className="ckt-eyebrow">SIX THEME PREVIEWS →</span>
+            </div>
+            <ThemeLab version={version} />
+          </div>
+        </section>
+
+        <section
+          className="ckt-container ckt-section ckt-cli-section"
+          id="command-line"
+          aria-labelledby="cli-title"
+        >
+          <div className="ckt-two-column">
+            <div className="ckt-section-copy">
+              <p className="ckt-eyebrow">A COMMAND AWAY</p>
+              <h2 id="cli-title">
+                Your terminal.
+                <br />
+                <em>On your terms.</em>
+              </h2>
+              <p>
+                Create sessions, send commands, read output, and drive your
+                workspace from scripts or agents. The same terminal, wherever
+                your workflow takes you.
+              </p>
+              <a
+                className="ckt-text-link"
+                href={`${cfg.repo}/blob/main/docs/automation.md`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Explore the CLI & automation <Icon />
+              </a>
+              <p className="ckt-copy-feedback" role="status">
+                {copyState === 'copied'
+                  ? 'Command copied. Paste it into your terminal.'
+                  : copyState === 'failed'
+                    ? `Select and copy the command: ${command}`
+                    : 'Install clockt, then make your first session.'}
+              </p>
+            </div>
+            <div className="ckt-cli-window">
+              <WindowTop title="clockt / command line">
+                <button
+                  type="button"
+                  className="ckt-copy-button"
+                  onClick={copyCommand}
+                  aria-label="Copy create session command"
+                >
+                  <Icon name={copyState === 'copied' ? 'check' : 'copy'} />
+                  {copyState === 'copied' ? 'Copied' : 'Copy'}
+                </button>
+              </WindowTop>
+              <div className="ckt-terminal-body">
+                {(cfg.terminal?.lines || []).map((line) => {
+                  const [input, comment] = line.split(/\s+#\s?/);
+                  return (
+                    <div className="ckt-code-line" key={line}>
+                      {comment && (
+                        <span className="ckt-terminal-comment">
+                          # {comment}
+                        </span>
+                      )}
+                      <code>
+                        <span className="ckt-terminal-prompt">❯</span>{' '}
+                        {input.trim()}
+                      </code>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section
+          className="ckt-container ckt-section ckt-toolbox"
+          aria-label="Keyboard shortcuts and plugins"
+        >
+          <div className="ckt-two-column">
+            <div className="ckt-keyboard">
+              <p className="ckt-eyebrow">STAY ON THE KEYS</p>
+              <h2>
+                A shortcut to <em>everything.</em>
+              </h2>
+              <div className="ckt-keyboard-list">
+                {(cfg.keys || []).map((binding) => (
+                  <div key={binding.k}>
+                    <span>{binding.a}</span>
+                    <kbd>{binding.k}</kbd>
+                  </div>
+                ))}
+              </div>
+              <a
+                className="ckt-text-link"
+                href={`${cfg.repo}/blob/main/docs/keybindings.md`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Every binding is rebindable <Icon />
+              </a>
+            </div>
+            <div className="ckt-plugin-copy">
+              <span className="ckt-plugin-mark" aria-hidden="true">
+                <Icon name="plugin" />
+              </span>
+              <p className="ckt-eyebrow">ROOM TO MAKE IT YOURS</p>
+              <h2>
+                Your very own <em>toolbox.</em>
+              </h2>
+              <div className="ckt-markdown">
+                <MarkdownContent content={cfg.notes || ''} />
+              </div>
+              <div className="ckt-tag-list">
+                <span>Sessions</span>
+                <span>Working directory</span>
+                <span>Git</span>
+                <span>Clock</span>
+              </div>
+              <a
+                className="ckt-text-link"
+                href={`${cfg.repo}/blob/main/docs/plugin-sdk.md`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Build a status bar plugin <Icon />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {(cfg.colophon || []).length > 0 && (
+          <dl
+            className="ckt-container ckt-specs"
+            aria-label="Technical details"
+          >
+            {cfg.colophon.map(([label, value]) => (
+              <div key={label}>
+                <dt>{label}</dt>
+                <dd>{value}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+
+        <section className="ckt-final-cta" aria-labelledby="download-title">
+          <div className="ckt-container">
+            <p className="ckt-eyebrow">GOOD WORK DESERVES A GOOD HOME</p>
+            <h2 id="download-title">
+              Make room for
+              <br />
+              <em>your next idea.</em>
+            </h2>
+            <p>Your shells. Your workspace. Right where you left them.</p>
+            <a
+              className="ckt-button"
+              href={cfg.download}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download clockt <Icon />
+            </a>
+            <p className="ckt-hero-meta">
+              {(cfg.platforms || []).join(' & ')} · v{version}
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <footer className="ckt-footer">
+        <div className="ckt-container">
+          <div className="ckt-footer-main">
+            <div>
+              <Wordmark name={cfg.name} />
+              <p>Your terminal. Your territory.</p>
+            </div>
+            <nav className="ckt-footer-links" aria-label="Clockt resources">
+              <a href={cfg.repo} target="_blank" rel="noopener noreferrer">
+                GitHub <Icon name="external" />
+              </a>
+              <a href={documentation} target="_blank" rel="noopener noreferrer">
+                Documentation <Icon name="external" />
+              </a>
+              <a
+                href={`${cfg.repo}/issues`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Report an issue <Icon name="external" />
+              </a>
+              <a
+                href={`${cfg.repo}/blob/main/LICENSE.txt`}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                License <Icon name="external" />
+              </a>
+            </nav>
+          </div>
+          <div className="ckt-footer-bottom">
+            <span>Made by fezcode · {(cfg.stack || []).join(' / ')}</span>
+            <Link to="/projects">← Back to projects</Link>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

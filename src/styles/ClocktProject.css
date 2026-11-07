@@ -1,0 +1,1436 @@
+.clockt-page {
+  --ckt-bg: #071e20;
+  --ckt-paper: #f3efe3;
+  --ckt-muted: #a9b9ad;
+  --ckt-orange: #ff873c;
+  --ckt-line: rgba(204, 219, 200, 0.15);
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--ckt-bg);
+  color: var(--ckt-paper);
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+.clockt-page *,
+.clockt-page *::before,
+.clockt-page *::after {
+  box-sizing: border-box;
+}
+
+.clockt-page::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  pointer-events: none;
+  content: '';
+  opacity: 0.32;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 55%,
+    var(--ckt-line) 55%
+  );
+  background-size: 1px 8px;
+  background-repeat: repeat-y;
+  background-position: calc(50% - 560px) 0;
+}
+
+.clockt-page ::selection {
+  background: #ff873c;
+  color: #071e20;
+}
+
+.clockt-page a,
+.clockt-page button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.clockt-page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.clockt-page button {
+  font: inherit;
+}
+
+.clockt-page a:focus-visible,
+.clockt-page button:focus-visible {
+  outline: 2px solid var(--ckt-orange);
+  outline-offset: 5px;
+}
+
+.clockt-page svg {
+  flex-shrink: 0;
+}
+
+.clockt-page h1,
+.clockt-page h2,
+.clockt-page h3,
+.clockt-page p,
+.clockt-page figure,
+.clockt-page pre {
+  margin: 0;
+}
+
+.clockt-page h1,
+.clockt-page h2 {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.clockt-page h2 {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.04;
+}
+
+.clockt-page h2 em,
+.clockt-page h1 em {
+  font-weight: 400;
+}
+
+.clockt-page .ckt-container {
+  width: calc(100% - 96px);
+  max-width: 1120px;
+  margin-inline: auto;
+}
+
+.clockt-page .ckt-skip {
+  position: fixed;
+  top: 12px;
+  left: 16px;
+  z-index: 100;
+  transform: translateY(-180%);
+  padding: 10px 18px;
+  background: var(--ckt-orange);
+  color: var(--ckt-bg);
+}
+
+.clockt-page .ckt-skip:focus {
+  transform: translateY(0);
+}
+
+.clockt-page .ckt-icon {
+  width: 19px;
+  height: 19px;
+}
+
+.clockt-page .ckt-masthead {
+  position: relative;
+  z-index: 3;
+}
+
+.clockt-page .ckt-nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  min-height: 100px;
+  border-bottom: 1px solid var(--ckt-line);
+}
+
+.clockt-page .ckt-wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -1.3px;
+}
+
+.clockt-page .ckt-wordmark > svg {
+  width: 30px;
+  height: 30px;
+  color: var(--ckt-orange);
+}
+
+.clockt-page .ckt-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin-left: auto;
+  font-size: 13px;
+  color: #c7d0c3;
+}
+
+.clockt-page .ckt-nav-links a,
+.clockt-page .ckt-footer-links a,
+.clockt-page .ckt-footer-bottom a {
+  transition: color 160ms ease;
+}
+
+.clockt-page .ckt-nav-links a:not(.ckt-button):hover,
+.clockt-page .ckt-footer-links a:hover,
+.clockt-page .ckt-footer-bottom a:hover {
+  color: var(--ckt-orange);
+}
+
+.clockt-page .ckt-nav-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+}
+
+.clockt-page .ckt-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 49px;
+  padding: 12px 24px;
+  border: 1px solid var(--ckt-orange);
+  border-radius: 4px;
+  background: var(--ckt-orange);
+  color: #152321;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  transition:
+    background 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
+}
+
+.clockt-page .ckt-button:hover {
+  transform: translateY(-2px);
+  border-color: #ffa76f;
+  background: #ffa76f;
+}
+
+.clockt-page .ckt-button-small {
+  min-height: 36px;
+  padding: 8px 15px;
+  font-size: 12px;
+  gap: 10px;
+}
+
+.clockt-page .ckt-button-secondary {
+  border-color: rgba(211, 223, 204, 0.3);
+  background: transparent;
+  color: var(--ckt-paper);
+}
+
+.clockt-page .ckt-button-secondary:hover {
+  border-color: var(--ckt-muted);
+  background: rgba(211, 223, 204, 0.06);
+}
+
+.clockt-page .ckt-hero {
+  position: relative;
+  display: grid;
+  min-height: 608px;
+  place-items: center;
+  padding-block: 78px 70px;
+  padding-inline: 20px;
+}
+
+.clockt-page .ckt-atmosphere {
+  position: absolute;
+  z-index: -1;
+  inset: -101px -25% -120px;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 19% 48%,
+      rgba(144, 83, 32, 0.25),
+      transparent 31%
+    ),
+    radial-gradient(ellipse at 58% 38%, rgba(43, 98, 67, 0.3), transparent 41%),
+    radial-gradient(ellipse at 80% 70%, rgba(25, 68, 56, 0.25), transparent 35%);
+  mask-image: linear-gradient(to bottom, #000 65%, transparent);
+}
+
+.clockt-page .ckt-hero-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 760px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.clockt-page .ckt-eyebrow {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  color: var(--ckt-muted);
+}
+
+.clockt-page .ckt-hero .ckt-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #d2cbb4;
+}
+
+.clockt-page .ckt-hero h1 {
+  margin-top: 24px;
+  font-size: clamp(66px, 7.7vw, 108px);
+  line-height: 0.97;
+}
+
+.clockt-page .ckt-hero h1 em {
+  color: #d8e2b1;
+}
+
+.clockt-page .ckt-hero-description {
+  max-width: 470px;
+  margin: 27px auto 0;
+  font-size: 15px;
+  line-height: 1.85;
+  color: #b8c4b5;
+}
+
+.clockt-page .ckt-hero-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 29px;
+}
+
+.clockt-page .ckt-hero-actions .ckt-text-link {
+  margin-top: 0;
+  min-height: 44px;
+}
+
+.clockt-page .ckt-hero-meta {
+  margin-top: 21px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  color: #8ca395;
+}
+
+.clockt-page .ckt-floating-commands {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+.clockt-page .ckt-floating-commands > span {
+  position: absolute;
+  padding: 8px 13px;
+  border: 1px solid rgba(180, 203, 166, 0.13);
+  border-radius: 5px;
+  background: rgba(3, 20, 21, 0.52);
+  color: #9baa8c;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.6;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  animation: ckt-drift 8s ease-in-out infinite alternate;
+}
+
+.clockt-page .ckt-floating-commands > span:nth-child(1) {
+  top: 17%;
+  left: 0;
+  rotate: -8deg;
+}
+
+.clockt-page .ckt-floating-commands > span:nth-child(2) {
+  top: 41%;
+  left: -3%;
+  rotate: 5deg;
+  animation-delay: -3s;
+}
+
+.clockt-page .ckt-floating-commands > span:nth-child(3) {
+  top: 72%;
+  left: 5%;
+  rotate: -5deg;
+  animation-delay: -5s;
+}
+
+.clockt-page .ckt-floating-commands > span:nth-child(4) {
+  top: 13%;
+  right: 2%;
+  rotate: 7deg;
+  animation-delay: -2s;
+}
+
+.clockt-page .ckt-floating-commands > span:nth-child(5) {
+  top: 40%;
+  right: -4%;
+  rotate: -5deg;
+  animation-delay: -6s;
+}
+
+.clockt-page .ckt-floating-commands > span:nth-child(6) {
+  top: 68%;
+  right: 0;
+  rotate: 7deg;
+  animation-delay: -4s;
+}
+
+.clockt-page .ckt-floating-commands > span:nth-child(7) {
+  bottom: 4%;
+  left: 24%;
+  rotate: -3deg;
+  opacity: 0.65;
+  animation-delay: -7s;
+}
+
+.clockt-page .ckt-intro-line {
+  padding-block: 27px 29px;
+  border-block: 1px solid var(--ckt-line);
+  text-align: center;
+  font-size: 15px;
+  color: #bdc7b7;
+}
+
+.clockt-page .ckt-intro-line strong {
+  color: var(--ckt-paper);
+  font-weight: 400;
+}
+
+.clockt-page .ckt-section {
+  padding-block: 96px;
+  scroll-margin-top: 30px;
+}
+
+.clockt-page .ckt-section-heading {
+  max-width: 660px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.clockt-page .ckt-section-heading h2,
+.clockt-page .ckt-section-copy h2,
+.clockt-page .ckt-keyboard h2,
+.clockt-page .ckt-plugin-copy h2 {
+  margin-top: 17px;
+}
+
+.clockt-page .ckt-section-heading > p:last-child {
+  max-width: 540px;
+  margin: 21px auto 0;
+  color: var(--ckt-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.clockt-page .ckt-feature-pills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 19px;
+  margin-block: 30px 32px;
+  color: #b3c1b1;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.clockt-page .ckt-feature-pills > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.clockt-page .ckt-feature-pills > span::before {
+  content: none;
+}
+
+.clockt-page .ckt-feature-pills .ckt-icon {
+  width: 15px;
+  height: 15px;
+  color: #b4c799;
+}
+
+.clockt-page .ckt-product-shot {
+  position: relative;
+  padding: 20px 20px 0;
+  border: 1px solid rgba(173, 196, 166, 0.2);
+  border-radius: 8px;
+  background: linear-gradient(
+    140deg,
+    rgba(89, 106, 59, 0.17),
+    rgba(8, 35, 32, 0.25)
+  );
+  box-shadow: 0 25px 80px -45px #000;
+}
+
+.clockt-page .ckt-product-shot::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0 -60px -60px;
+  pointer-events: none;
+  content: '';
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(123, 137, 58, 0.13),
+    transparent 65%
+  );
+}
+
+.clockt-page .ckt-product-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(195, 213, 180, 0.14);
+  border-radius: 5px;
+}
+
+.clockt-page .ckt-product-shot figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-block: 15px 16px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  color: #9daf9e;
+}
+
+.clockt-page .ckt-product-shot figcaption > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.clockt-page .ckt-emulator-note {
+  max-width: 750px;
+  margin: 28px auto 0;
+  text-align: center;
+  color: var(--ckt-muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.clockt-page .ckt-specs {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 24px;
+  padding-block: 26px 40px;
+  border-top: 1px solid var(--ckt-line);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.clockt-page .ckt-specs dt {
+  margin-bottom: 8px;
+  color: var(--ckt-muted);
+}
+
+.clockt-page .ckt-specs dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.clockt-page .ckt-status-dot {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #b7d48c;
+  box-shadow: 0 0 8px rgba(183, 212, 140, 0.3);
+}
+
+.clockt-page .ckt-two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  align-items: center;
+  gap: 80px;
+}
+
+.clockt-page .ckt-section-copy > p:not(.ckt-eyebrow) {
+  margin-top: 22px;
+  color: var(--ckt-muted);
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.clockt-page .ckt-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
+  color: var(--ckt-orange);
+  font-size: 13px;
+}
+
+.clockt-page .ckt-text-link:hover {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.clockt-page .ckt-session-section,
+.clockt-page .ckt-themes-section,
+.clockt-page .ckt-cli-section,
+.clockt-page .ckt-toolbox {
+  border-top: 1px solid var(--ckt-line);
+}
+
+.clockt-page .ckt-session-demo,
+.clockt-page .ckt-cli-window {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid rgba(169, 191, 163, 0.23);
+  border-radius: 7px;
+  background: #061718;
+  box-shadow: 0 20px 45px -30px rgba(0, 0, 0, 0.55);
+}
+
+.clockt-page .ckt-window-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 43px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--ckt-line);
+  color: #94a89a;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.clockt-page .ckt-window-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-right: 3px;
+}
+
+.clockt-page .ckt-window-dots > span {
+  width: 6px;
+  height: 6px;
+  border: 1px solid #718477;
+  border-radius: 50%;
+  opacity: 0.65;
+}
+
+.clockt-page .ckt-terminal-body {
+  min-width: 0;
+  padding: 25px 24px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 11px;
+  line-height: 1.95;
+  color: #d1d9c5;
+}
+
+.clockt-page .ckt-terminal-body pre {
+  overflow-x: auto;
+  max-width: 100%;
+  font: inherit;
+}
+
+.clockt-page .ckt-terminal-body code {
+  font: inherit;
+}
+
+.clockt-page .ckt-session-demo .ckt-terminal-body {
+  min-height: 300px;
+}
+
+.clockt-page .ckt-terminal-output {
+  color: #a8bd9d;
+}
+
+.clockt-page .ckt-terminal-prompt {
+  color: #d5eaa2;
+}
+
+.clockt-page .ckt-terminal-comment {
+  color: #81998d;
+}
+
+.clockt-page .ckt-terminal-accent {
+  color: #ffb277;
+}
+
+.clockt-page .ckt-session-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(182, 205, 147, 0.16);
+  border-radius: 3px;
+  background: rgba(150, 181, 107, 0.06);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  color: #b6cd93;
+}
+
+.clockt-page .ckt-session-status.is-detached {
+  color: #e4b581;
+  border-color: rgba(228, 181, 129, 0.25);
+  background: rgba(228, 181, 129, 0.05);
+}
+
+.clockt-page .ckt-demo-controls {
+  display: flex;
+  gap: 10px;
+  padding: 0 24px 24px;
+}
+
+.clockt-page .ckt-demo-controls button {
+  flex: 1;
+  min-height: 37px;
+  padding: 8px 12px;
+  border: 1px solid #375047;
+  border-radius: 3px;
+  background: transparent;
+  color: #b4c2af;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.clockt-page .ckt-demo-controls button:hover {
+  border-color: #9dab8d;
+}
+
+.clockt-page .ckt-demo-controls button.is-active {
+  border-color: #aabd8e;
+  background: rgba(170, 189, 142, 0.09);
+  color: #d8e6bd;
+}
+
+.clockt-page .ckt-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 49px;
+  border-top: 1px solid var(--ckt-line);
+}
+
+.clockt-page .ckt-feature {
+  padding: 31px 29px 34px 0;
+  border-bottom: 1px solid var(--ckt-line);
+}
+
+.clockt-page .ckt-feature:not(:nth-child(3n)) {
+  border-right: 1px solid var(--ckt-line);
+}
+
+.clockt-page .ckt-feature:not(:nth-child(3n + 1)) {
+  padding-left: 29px;
+}
+
+.clockt-page .ckt-feature > svg {
+  width: 22px;
+  height: 22px;
+  color: #b9cb9e;
+}
+
+.clockt-page .ckt-feature h3 {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #e7e9d8;
+}
+
+.clockt-page .ckt-feature p {
+  margin-top: 10px;
+  color: #a3b4a6;
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+.clockt-page .ckt-feature kbd {
+  display: inline-block;
+  margin-top: 19px;
+  padding: 2px 6px;
+  border: 1px solid #314940;
+  border-radius: 3px;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 9px;
+  color: #aabea0;
+}
+
+.clockt-page .ckt-themes-section {
+  background: linear-gradient(
+    110deg,
+    rgba(107, 123, 65, 0.055),
+    transparent 65%
+  );
+}
+
+.clockt-page .ckt-theme-lab {
+  min-width: 0;
+}
+
+.clockt-page .ckt-theme-preview {
+  overflow: hidden;
+  border: 1px solid var(--terminal-dim, #79839b);
+  border-radius: 7px;
+  background: var(--terminal-bg, #12141c);
+  color: var(--terminal-fg, #d6dae6);
+  transition:
+    background 220ms ease,
+    color 220ms ease,
+    border-color 220ms ease;
+}
+
+.clockt-page .ckt-theme-preview .ckt-window-top {
+  border-color: color-mix(in srgb, var(--terminal-dim) 30%, transparent);
+  color: var(--terminal-dim);
+}
+
+.clockt-page .ckt-theme-preview .ckt-window-dots > span {
+  border-color: var(--terminal-dim);
+}
+
+.clockt-page .ckt-theme-preview .ckt-terminal-body {
+  color: var(--terminal-fg);
+}
+
+.clockt-page .ckt-theme-preview .ckt-terminal-prompt {
+  color: var(--terminal-green);
+}
+
+.clockt-page .ckt-theme-preview .ckt-terminal-accent {
+  color: var(--terminal-accent);
+}
+
+.clockt-page .ckt-theme-preview .ckt-terminal-output {
+  color: var(--terminal-fg);
+}
+
+.clockt-page .ckt-theme-preview .ckt-terminal-comment {
+  color: var(--terminal-dim);
+}
+
+.clockt-page .ckt-ansi-palette {
+  display: flex;
+  gap: 0;
+  padding: 20px 0 0;
+}
+
+.clockt-page .ckt-ansi-palette > span {
+  flex: 1;
+  height: 10px;
+}
+
+.clockt-page .ckt-ansi-palette > span:first-child {
+  border-radius: 2px 0 0 2px;
+}
+
+.clockt-page .ckt-ansi-palette > span:last-child {
+  border-radius: 0 2px 2px 0;
+}
+
+.clockt-page .ckt-theme-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.clockt-page .ckt-theme-options button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 7px;
+  min-width: 0;
+  min-height: 39px;
+  padding: 8px 9px;
+  border: 1px solid #2b443b;
+  border-radius: 3px;
+  background: transparent;
+  color: #a8b6a3;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 9px;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.clockt-page .ckt-theme-options button:hover {
+  border-color: #74866a;
+}
+
+.clockt-page .ckt-theme-options button.is-active {
+  border-color: #b5c69b;
+  background: rgba(170, 189, 142, 0.07);
+  color: #e1e8cb;
+}
+
+.clockt-page .ckt-theme-swatch {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+}
+
+.clockt-page .ckt-copy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: auto;
+  padding: 3px 7px;
+  border: 1px solid #3a4c41;
+  border-radius: 3px;
+  background: transparent;
+  color: #b0bda7;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.clockt-page .ckt-copy-button:hover {
+  border-color: #b0bda7;
+}
+
+.clockt-page .ckt-copy-button .ckt-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.clockt-page .ckt-code-line {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.clockt-page .ckt-code-line:last-child {
+  margin-bottom: 0;
+}
+
+.clockt-page .ckt-code-line > span {
+  display: block;
+  color: #7f9889;
+  font-size: 10px;
+}
+
+.clockt-page .ckt-code-line > code {
+  display: block;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.clockt-page .ckt-cli-section .ckt-section-copy > p.ckt-copy-feedback {
+  min-height: 20px;
+  margin-top: 8px;
+  text-align: left;
+  color: #c7d8b1;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.clockt-page .ckt-toolbox .ckt-two-column {
+  align-items: start;
+}
+
+.clockt-page .ckt-keyboard h2,
+.clockt-page .ckt-plugin-copy h2 {
+  font-size: clamp(38px, 3.7vw, 48px);
+}
+
+.clockt-page .ckt-keyboard-list {
+  margin-top: 30px;
+  border-top: 1px solid var(--ckt-line);
+}
+
+.clockt-page .ckt-keyboard-list > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--ckt-line);
+}
+
+.clockt-page .ckt-keyboard-list span {
+  color: #b3c1ae;
+  font-size: 12px;
+}
+
+.clockt-page .ckt-keyboard-list kbd {
+  flex-shrink: 0;
+  color: #d2dab8;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 10px;
+}
+
+.clockt-page .ckt-plugin-mark {
+  display: none;
+}
+
+.clockt-page .ckt-plugin-mark svg {
+  width: 25px;
+  height: 25px;
+}
+
+.clockt-page .ckt-markdown {
+  margin-top: 20px;
+  color: var(--ckt-muted);
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.clockt-page .ckt-markdown p + p {
+  margin-top: 18px;
+}
+
+.clockt-page .ckt-markdown code {
+  padding: 2px 4px;
+  border-radius: 2px;
+  background: rgba(190, 209, 169, 0.07);
+  color: #cfddbd;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.87em;
+  overflow-wrap: anywhere;
+}
+
+.clockt-page .ckt-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.clockt-page .ckt-tag-list > span {
+  padding: 4px 9px;
+  border: 1px solid #30483b;
+  border-radius: 3px;
+  color: #a6b79e;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 9px;
+}
+
+.clockt-page .ckt-final-cta {
+  position: relative;
+  padding-block: 85px 91px;
+  border-block: 1px solid var(--ckt-line);
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(90, 115, 57, 0.16),
+    transparent 70%
+  );
+  text-align: center;
+}
+
+.clockt-page .ckt-final-cta h2 {
+  margin-top: 21px;
+  font-size: clamp(46px, 5.4vw, 72px);
+}
+
+.clockt-page .ckt-final-cta p:not(.ckt-eyebrow) {
+  margin-top: 21px;
+  color: var(--ckt-muted);
+  font-size: 14px;
+}
+
+.clockt-page .ckt-final-cta .ckt-button {
+  margin-top: 28px;
+}
+
+.clockt-page .ckt-footer {
+  padding-top: 42px;
+}
+
+.clockt-page .ckt-footer-main {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding-bottom: 35px;
+}
+
+.clockt-page .ckt-footer-main > div > p {
+  margin-top: 13px;
+  color: #8fa48f;
+  font-size: 11px;
+}
+
+.clockt-page .ckt-footer .ckt-wordmark {
+  font-size: 23px;
+}
+
+.clockt-page .ckt-footer .ckt-wordmark > svg {
+  width: 25px;
+  height: 25px;
+}
+
+.clockt-page .ckt-footer-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-left: auto;
+  font-size: 11px;
+  color: #b5c1aa;
+}
+
+.clockt-page .ckt-footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+}
+
+.clockt-page .ckt-footer-links .ckt-icon {
+  width: 13px;
+  height: 13px;
+}
+
+.clockt-page .ckt-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 15px 25px;
+  padding-block: 21px;
+  border-top: 1px solid var(--ckt-line);
+  color: #7f9886;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 9px;
+}
+
+@keyframes ckt-drift {
+  from {
+    transform: translateY(-5px);
+  }
+  to {
+    transform: translateY(5px);
+  }
+}
+
+@media (min-width: 1500px) {
+  .clockt-page .ckt-hero {
+    min-height: 660px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .clockt-page .ckt-nav {
+    gap: 25px;
+  }
+
+  .clockt-page .ckt-nav-links {
+    gap: 18px;
+  }
+
+  .clockt-page .ckt-two-column {
+    gap: 45px;
+  }
+
+  .clockt-page .ckt-floating-commands > span:nth-child(1),
+  .clockt-page .ckt-floating-commands > span:nth-child(2),
+  .clockt-page .ckt-floating-commands > span:nth-child(4),
+  .clockt-page .ckt-floating-commands > span:nth-child(5) {
+    opacity: 0.5;
+  }
+
+  .clockt-page .ckt-floating-commands > span:nth-child(2),
+  .clockt-page .ckt-floating-commands > span:nth-child(5) {
+    display: none;
+  }
+
+  .clockt-page .ckt-hero-content {
+    max-width: 680px;
+  }
+
+  .clockt-page .ckt-hero-description {
+    max-width: 440px;
+  }
+
+  .clockt-page .ckt-feature {
+    padding-right: 22px;
+  }
+
+  .clockt-page .ckt-feature:not(:nth-child(3n + 1)) {
+    padding-left: 22px;
+  }
+
+  .clockt-page .ckt-theme-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .clockt-page .ckt-specs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .clockt-page .ckt-container {
+    width: calc(100% - 40px);
+  }
+
+  .clockt-page .ckt-nav {
+    min-height: 77px;
+    gap: 18px;
+  }
+
+  .clockt-page .ckt-nav-links {
+    gap: 14px;
+    font-size: 11px;
+  }
+
+  .clockt-page .ckt-nav-links > a:not(.ckt-nav-source):not(.ckt-button) {
+    display: none;
+  }
+
+  .clockt-page .ckt-wordmark {
+    font-size: 24px;
+  }
+
+  .clockt-page .ckt-wordmark > svg {
+    width: 26px;
+    height: 26px;
+  }
+
+  .clockt-page .ckt-hero {
+    min-height: 570px;
+    padding-block: 85px 90px;
+  }
+
+  .clockt-page .ckt-hero h1 {
+    margin-top: 23px;
+    font-size: clamp(65px, 11.6vw, 88px);
+  }
+
+  .clockt-page .ckt-hero-description {
+    max-width: 440px;
+    font-size: 14px;
+  }
+
+  .clockt-page .ckt-hero .ckt-eyebrow {
+    font-size: 9px;
+  }
+
+  .clockt-page .ckt-floating-commands > span {
+    font-size: 8px;
+    padding: 6px 9px;
+    opacity: 0.5;
+  }
+
+  .clockt-page .ckt-floating-commands > span:nth-child(1) {
+    top: 3%;
+    left: 1%;
+  }
+
+  .clockt-page .ckt-floating-commands > span:nth-child(4) {
+    top: 6%;
+    right: -2%;
+  }
+
+  .clockt-page .ckt-floating-commands > span:nth-child(3) {
+    top: auto;
+    bottom: 4%;
+    left: 0;
+  }
+
+  .clockt-page .ckt-floating-commands > span:nth-child(6) {
+    top: auto;
+    bottom: 5%;
+    right: 0;
+  }
+
+  .clockt-page .ckt-floating-commands > span:nth-child(7) {
+    display: none;
+  }
+
+  .clockt-page .ckt-intro-line {
+    padding: 23px 20px;
+    font-size: 13px;
+  }
+
+  .clockt-page .ckt-section {
+    padding-block: 68px;
+  }
+
+  .clockt-page .ckt-two-column {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+
+  .clockt-page .ckt-section-copy {
+    max-width: 560px;
+  }
+
+  .clockt-page .ckt-section-heading > p:last-child,
+  .clockt-page .ckt-section-copy > p:not(.ckt-eyebrow) {
+    font-size: 14px;
+  }
+
+  .clockt-page .ckt-feature-pills {
+    gap: 10px 18px;
+    margin-block: 25px;
+    font-size: 9px;
+  }
+
+  .clockt-page .ckt-product-shot {
+    padding: 9px 9px 0;
+    border-radius: 5px;
+  }
+
+  .clockt-page .ckt-product-shot figcaption {
+    font-size: 9px;
+    padding-block: 11px;
+  }
+
+  .clockt-page .ckt-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 35px;
+  }
+
+  .clockt-page .ckt-feature {
+    padding: 26px 20px 28px 0;
+  }
+
+  .clockt-page .ckt-feature:not(:nth-child(3n + 1)) {
+    padding-left: 0;
+  }
+
+  .clockt-page .ckt-feature:not(:nth-child(3n)) {
+    border-right: 0;
+  }
+
+  .clockt-page .ckt-feature:nth-child(odd) {
+    border-right: 1px solid var(--ckt-line);
+  }
+
+  .clockt-page .ckt-feature:nth-child(even) {
+    padding-left: 20px;
+    padding-right: 0;
+  }
+
+  .clockt-page .ckt-feature h3 {
+    font-size: 15px;
+  }
+
+  .clockt-page .ckt-feature p {
+    font-size: 12px;
+  }
+
+  .clockt-page .ckt-feature kbd {
+    font-size: 8px;
+    overflow-wrap: anywhere;
+  }
+
+  .clockt-page .ckt-theme-options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .clockt-page .ckt-toolbox .ckt-two-column {
+    gap: 57px;
+  }
+
+  .clockt-page .ckt-final-cta {
+    padding-block: 68px;
+  }
+
+  .clockt-page .ckt-final-cta p:not(.ckt-eyebrow) {
+    max-width: 330px;
+    margin-inline: auto;
+  }
+
+  .clockt-page .ckt-footer-main {
+    flex-wrap: wrap;
+    gap: 17px;
+    padding-bottom: 29px;
+  }
+
+  .clockt-page .ckt-footer-main > div {
+    flex-basis: 100%;
+  }
+
+  .clockt-page .ckt-footer-links {
+    width: 100%;
+    gap: 24px;
+    margin: 8px 0 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .clockt-page .ckt-nav {
+    gap: 12px;
+  }
+
+  .clockt-page .ckt-nav-source {
+    font-size: 11px;
+    gap: 4px;
+  }
+
+  .clockt-page .ckt-nav-source .ckt-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .clockt-page .ckt-button-small {
+    padding-inline: 12px;
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .clockt-page .ckt-hero h1 {
+    font-size: clamp(46px, 14vw, 59px);
+  }
+
+  .clockt-page .ckt-hero-actions {
+    gap: 9px;
+  }
+
+  .clockt-page .ckt-hero-actions .ckt-button {
+    min-height: 45px;
+    padding: 11px 15px;
+    gap: 9px;
+    font-size: 12px;
+  }
+
+  .clockt-page .ckt-hero-meta {
+    font-size: 8px;
+  }
+
+  .clockt-page .ckt-terminal-body {
+    padding-inline: 16px;
+    font-size: 10px;
+  }
+
+  .clockt-page .ckt-session-status {
+    font-size: 9px;
+  }
+
+  .clockt-page .ckt-demo-controls {
+    padding-inline: 16px;
+  }
+
+  .clockt-page .ckt-theme-options {
+    gap: 6px;
+  }
+
+  .clockt-page .ckt-theme-options button {
+    padding-inline: 7px;
+    font-size: 8px;
+    gap: 5px;
+  }
+
+  .clockt-page .ckt-keyboard-list > div {
+    gap: 12px;
+  }
+
+  .clockt-page .ckt-keyboard-list kbd {
+    font-size: 8px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clockt-page *,
+  .clockt-page *::before,
+  .clockt-page *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

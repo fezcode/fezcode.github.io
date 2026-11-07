@@ -97,6 +97,7 @@ const Layout = ({
   const projectSlug = location.pathname.startsWith('/projects/')
     ? location.pathname.split('/')[2]
     : null;
+  const isClocktProject = projectSlug === 'clockt';
   const project = projectSlug
     ? projects.find((p) => p.slug === projectSlug)
     : null;
@@ -319,7 +320,7 @@ const Layout = ({
 
   return (
     <>
-      {!isSnfAny && <Banner />}
+      {!isSnfAny && !isClocktProject && <Banner />}
       {!isSnfAny && <FalloutOverlay />}
       {isGarden && !hideLayout && <DigitalFlowers />}
       {isAutumn && !hideLayout && <DigitalLeaves />}
@@ -333,7 +334,7 @@ const Layout = ({
       />
       {!hideLayout && <SidePanel />}
       {mainContent}
-      {!isSnfAny && <SyntaxSprite />}
+      {!isSnfAny && !isClocktProject && <SyntaxSprite />}
     </>
   );
 };
