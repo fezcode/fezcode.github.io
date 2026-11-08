@@ -1,6 +1,15 @@
 (logs)
   > (item)
     (category) Websites
+    (date) 2026-11-08
+    (link) https://weather.com/retro/
+    (rating) 5
+    (slug) weather-com-retro
+    (title) The Weather Channel Retro
+    (image) /images/logs/website/weather-com-retro.webp
+    (description) The Weather Channel's retro mode, rendering your live local forecast as a 90s cable TV "Local on the 8s" broadcast.
+  > (item)
+    (category) Websites
     (date) 2026-04-23
     (link) https://simonwillison.net/guides/agentic-engineering-patterns/
     (rating) 5

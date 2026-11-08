@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Thu, 29 Oct 2026 15:53:20 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 30 Oct 2026 20:24:23 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Thu, 29 Oct 2026 15:53:10 GMT</pubDate>
+        <pubDate>Fri, 30 Oct 2026 20:24:23 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[Elitism vs. Intellectualism: When Science Mistakes the Gate for the Work]]></title>
+            <description><![CDATA[Intellectualism treats difficulty as friction to be reduced; elitism treats it as a moat. On defensive jargon, the paywall protection racket, and how status games in science actively block discovery....]]></description>
+            <link>https://fezcode.com/blog/elitism-vs-intellectualism</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/elitism-vs-intellectualism</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<h1>Elitism vs. Intellectualism: When Science Mistakes the Gate for the Work</h1>
+<p><a href="https://fezcode.com/blog/elitism-vs-intellectualism">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[TL;LGTM]]></title>
             <description><![CDATA[Too Long; Looks Good To Me — on the temptation to rubber-stamp agent-written code, and why you still have to read it even when it is better than yours....]]></description>
