@@ -1,4 +1,3 @@
-import { MarquetryHen } from './marquetry';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
@@ -338,27 +337,6 @@ const SyntaxSprite = () => {
   const isMist = fezcodexTheme === 'mist';
   const isLedger = fezcodexTheme === 'ledger';
   /* KNIT COMPANION — Syntax as a little knitted hen pecking in the corner */
-  if (fezcodexTheme === 'marquetry') {
-    return (
-      <div className="fixed bottom-4 right-4 z-[9999] max-w-[calc(100vw-2rem)] flex flex-col items-end">
-        {thought && (
-          <div className="mqt-patch mqt-patch-tight mb-3 max-w-xs text-sm">
-            <p className="mqt-label mb-1">Syntax · a passing thought</p>
-            <p>{thought}</p>
-          </div>
-        )}
-        <button
-          type="button"
-          onClick={handleSpriteClick}
-          aria-label="Talk to Syntax, the codex companion"
-          className={`mqt-btn mqt-btn-icon !w-auto !p-1.5 ${isJumping ? '-translate-y-2' : ''}`}
-          style={{ transition: 'transform 0.2s ease' }}
-        >
-          <MarquetryHen thinking={state === 'thinking'} />
-        </button>
-      </div>
-    );
-  }
   if (fezcodexTheme === 'knit') {
     return (
       <div className="fixed bottom-4 right-4 z-[9999] max-w-[calc(100vw-2rem)] flex flex-col items-end">

@@ -414,7 +414,6 @@ const KnitSettingsPage = () => {
                     { label: 'LEDGER', value: 'ledger' },
                     { label: 'ORBIT', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
-                    { label: 'MARQUETRY', value: 'marquetry' },
                   ]}
                   value={fezcodexTheme}
                   onChange={setFezcodexTheme}
@@ -496,7 +495,6 @@ const KnitSettingsPage = () => {
                     { label: 'GALLEY', value: 'galley' },
                     { label: 'ORBIT', value: 'orbit' },
                     { label: 'KNIT', value: 'knit' },
-                    { label: 'MARQUETRY', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

@@ -6,6 +6,22 @@ import useSiteTheme from '../hooks/useSiteTheme';
 
 const VisualSettingsContext = createContext();
 
+const BLOG_POST_VIEW_MODES = [
+  'standard',
+  'brutalist',
+  'editorial',
+  'dossier',
+  'terminal',
+  'dokument',
+  'terminal-green',
+  'old',
+  'luxe',
+  'terracotta',
+  'galley',
+  'orbit',
+  'knit',
+];
+
 export const useVisualSettings = () => {
   return useContext(VisualSettingsContext);
 };
@@ -82,10 +98,18 @@ export const VisualSettingsProvider = ({ children }) => {
     usePersistentState('fallout-scanlines', true);
   const [isFalloutVignetteEnabled, setIsFalloutVignetteEnabled] =
     usePersistentState('fallout-vignette', true);
-  const [blogPostViewMode, setBlogPostViewMode] = usePersistentState(
+  const [savedBlogPostViewMode, setBlogPostViewMode] = usePersistentState(
     'blog-post-view-mode',
     'standard',
   );
+  const blogPostViewMode = BLOG_POST_VIEW_MODES.includes(savedBlogPostViewMode)
+    ? savedBlogPostViewMode
+    : 'standard';
+  useEffect(() => {
+    if (savedBlogPostViewMode !== blogPostViewMode) {
+      setBlogPostViewMode(blogPostViewMode);
+    }
+  }, [savedBlogPostViewMode, blogPostViewMode, setBlogPostViewMode]);
   const [isSplashTextEnabled, setIsSplashTextEnabled] = usePersistentState(
     'is-splash-text-enabled',
     true,
@@ -112,24 +136,7 @@ export const VisualSettingsProvider = ({ children }) => {
       changed = true;
     }
 
-    if (
-      blogModeParam &&
-      [
-        'brutalist',
-        'editorial',
-        'dossier',
-        'terminal',
-        'dokument',
-        'terminal-green',
-        'old',
-        'luxe',
-        'terracotta',
-        'galley',
-        'orbit',
-        'knit',
-        'marquetry',
-      ].includes(blogModeParam)
-    ) {
+    if (blogModeParam && BLOG_POST_VIEW_MODES.includes(blogModeParam)) {
       setBlogPostViewMode(blogModeParam);
       changed = true;
     }

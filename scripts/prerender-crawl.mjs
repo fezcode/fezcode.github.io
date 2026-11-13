@@ -12,6 +12,18 @@ const CONCURRENCY = Number(process.env.PRERENDER_CONCURRENCY) || 6;
 const PAGE_TIMEOUT = 30000;
 const RENDER_SETTLE_MS = 300;
 const SELECTOR_TIMEOUT = 8000;
+// These project showcases load their page and app.txt asynchronously. A root
+// child can still be the shared Loading component, so wait for real content.
+const PROJECT_CONTENT_ROUTES = new Set([
+  '/projects/tarman',
+  '/projects/osxos',
+  '/projects/gitland',
+  '/projects/sir-word-a-lot',
+  '/projects/lounge',
+  '/projects/hammeros',
+  '/projects/beetle',
+  '/projects/clockt',
+]);
 const RETRY =
   process.env.PRERENDER_RETRY === '1' || process.argv.includes('--retry');
 
@@ -77,6 +89,19 @@ async function crawlOne(browser, baseUrl, route) {
         skipped: `no children rendered within ${SELECTOR_TIMEOUT}ms`,
         ms: Date.now() - t0,
       };
+    }
+    if (PROJECT_CONTENT_ROUTES.has(route.replace(/\/$/, ''))) {
+      try {
+        await page.waitForSelector('#react-root h1', {
+          timeout: SELECTOR_TIMEOUT,
+        });
+      } catch {
+        return {
+          route,
+          skipped: `project heading not rendered within ${SELECTOR_TIMEOUT}ms`,
+          ms: Date.now() - t0,
+        };
+      }
     }
     await new Promise((r) => setTimeout(r, RENDER_SETTLE_MS));
 

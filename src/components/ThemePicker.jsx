@@ -28,13 +28,7 @@ const ThemePicker = ({ currentTheme, onSelect }) => {
               style={{ color: theme.accent }}
               aria-hidden="true"
             >
-              {theme.id === 'marquetry'
-                ? '✦'
-                : theme.id === 'orbit'
-                  ? '◎'
-                  : theme.id === 'knit'
-                    ? '♥'
-                    : 'Aa'}
+              {theme.id === 'orbit' ? '◎' : theme.id === 'knit' ? '♥' : 'Aa'}
             </span>
             {activeTheme === theme.id && (
               <CheckIcon size={20} aria-label="Selected" />

@@ -43,12 +43,12 @@ describe('theme preference and campaign precedence', () => {
   });
 
   it('preserves a saved preference and gives a valid URL choice priority', async () => {
-    localStorage.setItem('fezcodex-theme', JSON.stringify('marquetry'));
+    localStorage.setItem('fezcodex-theme', JSON.stringify('ledger'));
     const { result: savedResult, unmount } = renderHook(useSiteTheme);
     await act(async () => {
       await Promise.resolve();
     });
-    expect(savedResult.current[0]).toBe('marquetry');
+    expect(savedResult.current[0]).toBe('ledger');
     unmount();
     window.history.replaceState({}, '', '/?fezTheme=orbit');
     const { result: urlResult } = renderHook(useSiteTheme);
@@ -66,14 +66,12 @@ describe('theme preference and campaign precedence', () => {
       }),
     );
     const { result } = renderHook(useSiteTheme);
-    act(() => result.current[1]('marquetry'));
+    act(() => result.current[1]('ledger'));
     await act(async () => {
       resolveRequest({ ok: true, text: () => Promise.resolve(campaign()) });
     });
-    expect(result.current[0]).toBe('marquetry');
-    expect(JSON.parse(localStorage.getItem('fezcodex-theme'))).toBe(
-      'marquetry',
-    );
+    expect(result.current[0]).toBe('ledger');
+    expect(JSON.parse(localStorage.getItem('fezcodex-theme'))).toBe('ledger');
   });
 
   it('expires an open default-theme session without persisting the campaign', async () => {
@@ -93,6 +91,7 @@ describe('theme preference and campaign precedence', () => {
 
   it('keeps the bundled default offline and ignores invalid saved or selected themes', async () => {
     localStorage.setItem('fezcodex-theme', JSON.stringify('unknown'));
+    window.history.replaceState({}, '', '/?fezTheme=invalid');
     fetch.mockRejectedValue(new Error('offline'));
     const { result } = renderHook(useSiteTheme);
     await act(async () => {
@@ -100,5 +99,16 @@ describe('theme preference and campaign precedence', () => {
     });
     act(() => result.current[1]('invalid'));
     expect(result.current[0]).toBe('knit');
+  });
+
+  it('ignores an invalid URL theme when a valid preference is saved', async () => {
+    localStorage.setItem('fezcodex-theme', JSON.stringify('ledger'));
+    window.history.replaceState({}, '', '/?fezTheme=unknown');
+    const { result } = renderHook(useSiteTheme);
+    await act(async () => {
+      await Promise.resolve();
+    });
+    expect(result.current[0]).toBe('ledger');
+    expect(JSON.parse(localStorage.getItem('fezcodex-theme'))).toBe('ledger');
   });
 });

@@ -6,7 +6,6 @@ import TerracottaSeriesPage from './terracotta-views/TerracottaSeriesPage';
 import MistSeriesPage from './mist-views/MistSeriesPage';
 import LedgerSeriesPage from './ledger-views/LedgerSeriesPage';
 import OrbitSeriesPage from './orbit-views/OrbitSeriesPage';
-import MarquetrySeriesPage from './marquetry-views/MarquetrySeriesPage';
 import KnitSeriesPage from './knit-views/KnitSeriesPage';
 
 const SeriesPage = () => {
@@ -17,7 +16,6 @@ const SeriesPage = () => {
   if (fezcodexTheme === 'mist') return <MistSeriesPage />;
   if (fezcodexTheme === 'ledger') return <LedgerSeriesPage />;
   if (fezcodexTheme === 'orbit') return <OrbitSeriesPage />;
-  if (fezcodexTheme === 'marquetry') return <MarquetrySeriesPage />;
   if (fezcodexTheme === 'knit') return <KnitSeriesPage />;
   return <BrutalistSeriesPage />;
 };

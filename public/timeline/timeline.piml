@@ -1,8 +1,16 @@
 (timeline)
   > (item)
+    (date) 2026-11-14
+    (title) Seven New Project Worlds
+    (description) Added individually art-directed project pages for Tarman, osXos, Gitland, Sir Word-a-lot, Lounge, HammerOS, and Beetle, with interactive previews, native application artwork, and responsive layouts. Removed the Marquetry theme and retained the scheduled theme defaults. Released as v0.52.0.
+    (type) feature
+    (icon) PlanetIcon
+    (link) /projects
+
+  > (item)
     (date) 2026-10-29
-    (title) Marquetry and Scheduled Themes
-    (description) Added Marquetry, an eighth design language with walnut navigation, maple reading surfaces, procedural veneer grain, geometric inlays and a wooden hen for Syntax. Added date-based default-theme flags in feature-flag.piml, with Knit selected from October 29 through December 31, 2026 in Istanbul time. Saved theme choices remain independent, and only the Knit launch banner stays active. Released as v0.51.0.
+    (title) Scheduled Theme Defaults
+    (description) Added date-based default-theme flags in feature-flag.piml, with Knit selected from October 29 through December 31, 2026 in Istanbul time. Saved theme choices remain independent, and only the Knit launch banner stays active. Released as v0.51.0.
     (type) feature
     (icon) PaletteIcon
     (link) /design

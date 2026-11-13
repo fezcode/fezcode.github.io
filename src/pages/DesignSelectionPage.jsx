@@ -1,9 +1,3 @@
-import {
-  MarquetryText,
-  MarquetryBand,
-  MarquetryInlay,
-} from '../components/marquetry';
-import '../styles/Marquetry.css';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useVisualSettings } from '../context/VisualSettingsContext';
@@ -51,7 +45,7 @@ const DesignSelectionPage = () => {
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
         title="Design System | Fezcodex"
-        description="Explore eight Fezcodex themes, from Brutalist to Marquetry, a codex inlaid in wood."
+        description="Explore seven Fezcodex themes, from Brutalist to Knit."
       />
 
       <div className="w-full min-w-0 max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
@@ -66,7 +60,7 @@ const DesignSelectionPage = () => {
             Aesthetics
           </h1>
           <p className="font-outfit text-sm text-[#1A1A1A]/60 max-w-lg leading-relaxed">
-            Explore the visual foundations of Fezcodex. Six ways to make the
+            Explore the visual foundations of Fezcodex. Seven ways to make the
             codex feel like your corner of the web.
           </p>
         </header>
@@ -354,41 +348,6 @@ const DesignSelectionPage = () => {
                   className="text-[#626C72] group-hover:text-[#3157CE] group-hover:translate-x-2 transition-all"
                   size={24}
                 />
-              </div>
-            </motion.div>
-          </button>
-
-          {/* MARQUETRY CARD */}
-          <button
-            id="marquetry"
-            aria-label="Activate Marquetry theme"
-            type="button"
-            onClick={() => {
-              setFezcodexTheme('marquetry');
-              navigate('/');
-            }}
-            className="group block relative text-left mqt-root"
-          >
-            <motion.div
-              whileHover={{ y: -6 }}
-              className="mqt-patch h-full p-6 sm:p-12 flex flex-col justify-between overflow-hidden relative"
-            >
-              <MarquetryBand className="absolute top-0 left-0 right-0" />
-              <div className="pt-8 space-y-6">
-                <MarquetryInlay
-                  seed="marquetry"
-                  size={160}
-                  className="mx-auto"
-                />
-                <MarquetryText text="Marquetry" as="h2" />
-                <p className="text-sm leading-relaxed mqt-muted">
-                  A codex inlaid in wood. Walnut navigation, maple reading
-                  panels, geometric veneer motifs, and a small wooden hen.
-                </p>
-              </div>
-              <div className="mt-10 pt-6 border-t border-[#725332]/30 flex justify-between items-center">
-                <span className="mqt-label">Use Marquetry</span>
-                <ArrowRightIcon size={24} />
               </div>
             </motion.div>
           </button>

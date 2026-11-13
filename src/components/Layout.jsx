@@ -18,11 +18,6 @@ import OrbitSidebar from './OrbitSidebar';
 import OrbitNavbar from './OrbitNavbar';
 import OrbitFooter from './OrbitFooter';
 import { useOrbitPalette } from './orbit';
-import MarquetrySidebar from './MarquetrySidebar';
-import MarquetryNavbar from './MarquetryNavbar';
-import MarquetryFooter from './MarquetryFooter';
-import { useMarquetryTextures } from './marquetry';
-import '../styles/Marquetry.css';
 import KnitSidebar from './KnitSidebar';
 import KnitNavbar from './KnitNavbar';
 import KnitFooter from './KnitFooter';
@@ -71,7 +66,6 @@ const Layout = ({
     fezcodexTheme,
   } = useVisualSettings();
   useKnitTextures(fezcodexTheme === 'knit');
-  useMarquetryTextures(fezcodexTheme === 'marquetry');
   const location = useLocation();
   const { projects } = useProjects();
 
@@ -80,7 +74,7 @@ const Layout = ({
   const isAboutPage = location.pathname.startsWith('/about');
   // These themes keep their sidebar on their own About view.
   const isOrbitAboutPage =
-    ['orbit', 'knit', 'marquetry'].includes(fezcodexTheme) &&
+    ['orbit', 'knit'].includes(fezcodexTheme) &&
     [
       '/about',
       '/about/',
@@ -97,13 +91,23 @@ const Layout = ({
   const projectSlug = location.pathname.startsWith('/projects/')
     ? location.pathname.split('/')[2]
     : null;
-  const isClocktProject = projectSlug === 'clockt';
+  const isImmersiveShowcase = [
+    'clockt',
+    'tarman',
+    'osxos',
+    'gitland',
+    'sir-word-a-lot',
+    'lounge',
+    'hammeros',
+    'beetle',
+  ].includes(projectSlug);
   const project = projectSlug
     ? projects.find((p) => p.slug === projectSlug)
     : null;
 
   const projectStyle = project?.style || 'default';
   const isSpecialProject =
+    isImmersiveShowcase ||
     projectStyle === 'stylish' ||
     projectStyle === 'editorial' ||
     projectStyle === 'minimal-modern' ||
@@ -162,11 +166,9 @@ const Layout = ({
                 ? 'ldg-appframe'
                 : fezcodexTheme === 'orbit'
                   ? `orb-appframe ${reduceMotion ? 'orb-reduce-motion' : ''}`
-                  : fezcodexTheme === 'marquetry'
-                    ? 'mqt-appframe'
-                    : fezcodexTheme === 'knit'
-                      ? 'knt-appframe'
-                      : 'bg-[#050505]'
+                  : fezcodexTheme === 'knit'
+                    ? 'knt-appframe'
+                    : 'bg-[#050505]'
       } min-h-screen font-sans flex`}
     >
       {!hideLayout &&
@@ -198,13 +200,6 @@ const Layout = ({
             toggleModal={toggleModal}
             setIsPaletteOpen={setIsPaletteOpen}
           />
-        ) : fezcodexTheme === 'marquetry' ? (
-          <MarquetrySidebar
-            isOpen={isSidebarOpen}
-            toggleSidebar={toggleSidebar}
-            toggleModal={toggleModal}
-            setIsPaletteOpen={setIsPaletteOpen}
-          />
         ) : fezcodexTheme === 'knit' ? (
           <KnitSidebar
             isOpen={isSidebarOpen}
@@ -228,7 +223,7 @@ const Layout = ({
           />
         ))}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'marquetry' ? 'mqt-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : 'md:ml-72') : 'md:ml-0'}`}
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : 'md:ml-72') : 'md:ml-0'}`}
       >
         {!hideLayout &&
           (fezcodexTheme === 'terracotta' ? (
@@ -254,13 +249,6 @@ const Layout = ({
             />
           ) : fezcodexTheme === 'ledger' ? (
             <LedgerNavbar
-              toggleSidebar={toggleSidebar}
-              isSidebarOpen={isSidebarOpen}
-              isSearchVisible={isSearchVisible}
-              toggleSearch={toggleSearch}
-            />
-          ) : fezcodexTheme === 'marquetry' ? (
-            <MarquetryNavbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
               isSearchVisible={isSearchVisible}
@@ -305,8 +293,6 @@ const Layout = ({
             <MistFooter />
           ) : fezcodexTheme === 'ledger' ? (
             <LedgerFooter />
-          ) : fezcodexTheme === 'marquetry' ? (
-            <MarquetryFooter />
           ) : fezcodexTheme === 'knit' ? (
             <KnitFooter />
           ) : fezcodexTheme === 'orbit' ? (
@@ -320,7 +306,7 @@ const Layout = ({
 
   return (
     <>
-      {!isSnfAny && !isClocktProject && <Banner />}
+      {!isSnfAny && !isImmersiveShowcase && <Banner />}
       {!isSnfAny && <FalloutOverlay />}
       {isGarden && !hideLayout && <DigitalFlowers />}
       {isAutumn && !hideLayout && <DigitalLeaves />}
@@ -334,7 +320,7 @@ const Layout = ({
       />
       {!hideLayout && <SidePanel />}
       {mainContent}
-      {!isSnfAny && !isClocktProject && <SyntaxSprite />}
+      {!isSnfAny && !isImmersiveShowcase && <SyntaxSprite />}
     </>
   );
 };

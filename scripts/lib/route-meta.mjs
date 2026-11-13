@@ -1,5 +1,6 @@
 import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
+import piml from 'piml';
 
 export const PUBLIC = 'public';
 export const DIST = 'dist/client';
@@ -83,11 +84,28 @@ function logsMeta(routeMap) {
   }
 }
 
+function projectsMeta(routeMap) {
+  const registryPath = join(PUBLIC, 'projects', 'projects.piml');
+  if (!existsSync(registryPath)) return;
+  const { projects } = piml.parse(readFileSync(registryPath, 'utf8'));
+  if (!Array.isArray(projects)) return;
+  for (const project of projects) {
+    if (!project?.slug) continue;
+    routeMap.set(`/projects/${project.slug}`, {
+      title: `${project.title} | Fezcodex`,
+      description: project.shortDescription,
+      image: project.image,
+      type: 'website',
+    });
+  }
+}
+
 export function buildRouteMetaMap() {
   const map = new Map();
   const posts = readJson(join(PUBLIC, 'posts', 'posts.json')) || [];
   blogMeta(map, posts);
   logsMeta(map);
+  projectsMeta(map);
   return map;
 }
 

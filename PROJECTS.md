@@ -273,3 +273,31 @@ blurb, details[][2], cost }`, `steps`, `why { marquee, cards[] }`, `settings
 3.  Create the corresponding `.txt` files based on the chosen style's structure.
 4.  Add the project to `public/projects/projects.piml` with the correct `(style)` field.
 5.  Run `npm run lint` to ensure code quality.
+
+## 10. Authored Project Showcases
+
+These seven projects use dedicated React compositions rather than a shared
+landing-page template. Their `(style)` value matches their project slug:
+
+| Style / slug | Page | Visual direction | Interactive preview |
+| --- | --- | --- | --- |
+| `tarman` | `TarmanProjectPage.jsx` | Black-box telemetry instrument | Shared-clock history scrubber |
+| `osxos` | `OsxosProjectPage.jsx` | Porcelain orbital maintenance laboratory | Explain, Review, and Result walkthrough |
+| `gitland` | `GitlandProjectPage.jsx` | Ivory and lavender branch atlas | Revision selection and three-way merge |
+| `sir-word-a-lot` | `SirWordALotProjectPage.jsx` | Illuminated ultramarine lexicon | Connected words and recall exercise |
+| `lounge` | `LoungeProjectPage.jsx` | Personal cinema and media console | Keyboard-navigable media rooms |
+| `hammeros` | `HammerOsProjectPage.jsx` | Retrofuturist Department terminal | Desktop applications and workspace preview |
+| `beetle` | `BeetleProjectPage.jsx` | Sculptural chrome and responsive light | Colour, intensity, and lighting modes |
+
+Content lives in `public/projects/<slug>/app.txt`, with project metadata in
+`projects.piml`. Each page reads its configuration through `useAppConfig` and
+uses `AppSeo`. Artwork and optimized screenshots live in
+`public/images/projects/<slug>/`; styles are scoped under
+`src/styles/project-showcases/`. Keep new selectors and keyframes namespaced.
+
+The project router lazy-loads these pages. The main layout suppresses its own
+navigation, announcement banner, and companion widget for these immersive
+routes. Every page retains a link back to the project collection, real source
+and release links, keyboard-accessible controls, and a reduced-motion treatment.
+Preview data is illustrative: none of these web controls connects to Bluetooth,
+changes a repository, maintains a computer, or launches desktop applications.

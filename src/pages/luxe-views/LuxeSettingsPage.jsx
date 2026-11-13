@@ -253,7 +253,6 @@ const LuxeSettingsPage = () => {
                       { label: 'Ledger (Archive)', value: 'ledger' },
                       { label: 'Orbit (Observatory)', value: 'orbit' },
                       { label: 'Knit (Colourwork)', value: 'knit' },
-                      { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                     ]}
                     value={fezcodexTheme}
                     onChange={setFezcodexTheme}
@@ -335,7 +334,6 @@ const LuxeSettingsPage = () => {
                     { label: 'Galley Proof', value: 'galley' },
                     { label: 'Orbit', value: 'orbit' },
                     { label: 'Knit', value: 'knit' },
-                    { label: 'Marquetry (Wood Inlay)', value: 'marquetry' },
                   ]}
                   value={blogPostViewMode}
                   onChange={setBlogPostViewMode}

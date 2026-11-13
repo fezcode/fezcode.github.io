@@ -14,29 +14,84 @@ const EditorialProjectDetailsPage = lazy(
 const MinimalModernProjectPage = lazy(
   () => import('../pages/project-pages/MinimalModernProjectPage'),
 );
-const MuseumProjectPage = lazy(() => import('../pages/project-pages/MuseumProjectPage'));
+const MuseumProjectPage = lazy(
+  () => import('../pages/project-pages/MuseumProjectPage'),
+);
 const LuxeProjectDetailPage = lazy(
   () => import('../pages/luxe-views/LuxeProjectDetailPage'),
 );
-const BentoProjectPage = lazy(() => import('../pages/project-pages/BentoProjectPage'));
+const BentoProjectPage = lazy(
+  () => import('../pages/project-pages/BentoProjectPage'),
+);
 const LandscapeProjectPage = lazy(
   () => import('../pages/project-pages/LandscapeProjectPage'),
 );
-const RubyProjectPage = lazy(() => import('../pages/project-pages/RubyProjectPage'));
-const NeonSlideshowProjectPage = lazy(() => import('../pages/project-pages/NeonSlideshowProjectPage'));
-const AtlasProjectPage = lazy(() => import('../pages/project-pages/AtlasProjectPage'));
-const HifiProjectPage = lazy(() => import('../pages/project-pages/HifiProjectPage'));
-const EavesProjectPage = lazy(() => import('../pages/project-pages/EavesProjectPage'));
-const PanesProjectPage = lazy(() => import('../pages/project-pages/PanesProjectPage'));
-const GraphProjectPage = lazy(() => import('../pages/project-pages/GraphProjectPage'));
-const FilmstripProjectPage = lazy(() => import('../pages/project-pages/FilmstripProjectPage'));
-const ShelfProjectPage = lazy(() => import('../pages/project-pages/ShelfProjectPage'));
-const DocumentProjectPage = lazy(() => import('../pages/project-pages/DocumentProjectPage'));
-const PageProjectPage = lazy(() => import('../pages/project-pages/PageProjectPage'));
-const GalleryProjectPage = lazy(() => import('../pages/project-pages/GalleryProjectPage'));
-const BentosProjectPage = lazy(() => import('../pages/project-pages/BentosProjectPage'));
-const FlowProjectPage = lazy(() => import('../pages/project-pages/FlowProjectPage'));
-const CapsulesProjectPage = lazy(() => import('../pages/project-pages/CapsulesProjectPage'));
+const RubyProjectPage = lazy(
+  () => import('../pages/project-pages/RubyProjectPage'),
+);
+const NeonSlideshowProjectPage = lazy(
+  () => import('../pages/project-pages/NeonSlideshowProjectPage'),
+);
+const AtlasProjectPage = lazy(
+  () => import('../pages/project-pages/AtlasProjectPage'),
+);
+const HifiProjectPage = lazy(
+  () => import('../pages/project-pages/HifiProjectPage'),
+);
+const EavesProjectPage = lazy(
+  () => import('../pages/project-pages/EavesProjectPage'),
+);
+const PanesProjectPage = lazy(
+  () => import('../pages/project-pages/PanesProjectPage'),
+);
+const GraphProjectPage = lazy(
+  () => import('../pages/project-pages/GraphProjectPage'),
+);
+const FilmstripProjectPage = lazy(
+  () => import('../pages/project-pages/FilmstripProjectPage'),
+);
+const ShelfProjectPage = lazy(
+  () => import('../pages/project-pages/ShelfProjectPage'),
+);
+const DocumentProjectPage = lazy(
+  () => import('../pages/project-pages/DocumentProjectPage'),
+);
+const PageProjectPage = lazy(
+  () => import('../pages/project-pages/PageProjectPage'),
+);
+const GalleryProjectPage = lazy(
+  () => import('../pages/project-pages/GalleryProjectPage'),
+);
+const BentosProjectPage = lazy(
+  () => import('../pages/project-pages/BentosProjectPage'),
+);
+const FlowProjectPage = lazy(
+  () => import('../pages/project-pages/FlowProjectPage'),
+);
+const CapsulesProjectPage = lazy(
+  () => import('../pages/project-pages/CapsulesProjectPage'),
+);
+const TarmanProjectPage = lazy(
+  () => import('../pages/project-pages/TarmanProjectPage'),
+);
+const OsxosProjectPage = lazy(
+  () => import('../pages/project-pages/OsxosProjectPage'),
+);
+const GitlandProjectPage = lazy(
+  () => import('../pages/project-pages/GitlandProjectPage'),
+);
+const SirWordALotProjectPage = lazy(
+  () => import('../pages/project-pages/SirWordALotProjectPage'),
+);
+const LoungeProjectPage = lazy(
+  () => import('../pages/project-pages/LoungeProjectPage'),
+);
+const HammerOsProjectPage = lazy(
+  () => import('../pages/project-pages/HammerOsProjectPage'),
+);
+const BeetleProjectPage = lazy(
+  () => import('../pages/project-pages/BeetleProjectPage'),
+);
 
 const ProjectRouteHandler = () => {
   const { slug } = useParams();
@@ -139,6 +194,13 @@ const ProjectRouteHandler = () => {
   }
 
   const APP_STYLES = {
+    tarman: TarmanProjectPage,
+    osxos: OsxosProjectPage,
+    gitland: GitlandProjectPage,
+    'sir-word-a-lot': SirWordALotProjectPage,
+    lounge: LoungeProjectPage,
+    hammeros: HammerOsProjectPage,
+    beetle: BeetleProjectPage,
     eaves: EavesProjectPage,
     panes: PanesProjectPage,
     graph: GraphProjectPage,
