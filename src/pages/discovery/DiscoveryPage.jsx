@@ -7,7 +7,12 @@ import React, {
   lazy,
   Suspense,
 } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import {
+  Link,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom';
 import { LayoutGroup, motion, useReducedMotion } from 'framer-motion';
 import {
   ArrowLeftIcon,
@@ -17,6 +22,7 @@ import {
   BookOpenIcon,
   CaretDownIcon,
   CircleNotchIcon,
+  FunnelIcon,
   StarIcon,
   XIcon,
 } from '@phosphor-icons/react';
@@ -41,6 +47,9 @@ const PhysicalCover = lazy(() => import('./PhysicalCover'));
 
 const PAGE_SIZE = 24;
 const COVER_TRANSITION = { type: 'spring', stiffness: 180, damping: 26 };
+const filteredEntryPath = (entry, category) =>
+  entryPath(entry) +
+  (category === 'all' ? '' : `?category=${encodeURIComponent(category)}`);
 function EntryVideo({ src, title, allow, allowFullScreen, referrerPolicy }) {
   return (
     <iframe
@@ -134,10 +143,11 @@ const ShelfSpine = React.memo(function ShelfSpine({
   mediaLoaded,
   isVisible,
   openEntry,
+  categoryFilter,
 }) {
   return (
     <Link
-      to={entryPath(entry)}
+      to={filteredEntryPath(entry, categoryFilter)}
       className="dc-spine"
       style={entryStyle(entry)}
       data-category={entry.category}
@@ -173,7 +183,15 @@ const ShelfSpine = React.memo(function ShelfSpine({
   );
 });
 
-function Shelf({ entries, total, openEntry, shelfRef, sentinelRef, loadMore }) {
+function Shelf({
+  entries,
+  total,
+  openEntry,
+  shelfRef,
+  sentinelRef,
+  loadMore,
+  categoryFilter,
+}) {
   const windowed = useShelfWindow(shelfRef, entries.length);
   const reducedMotion = useReducedMotion();
   const more = entries.length < total;
@@ -230,6 +248,7 @@ function Shelf({ entries, total, openEntry, shelfRef, sentinelRef, loadMore }) {
                 mediaLoaded={index >= windowed.start && index < windowed.end}
                 isVisible={isVisible}
                 openEntry={openEntry}
+                categoryFilter={categoryFilter}
               />
             );
           })}
@@ -690,6 +709,7 @@ function Showcase({
 export default function DiscoveryPage() {
   const { category, slug } = useParams();
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const reducedMotion = useReducedMotion();
   const [data, setData] = useState({
     entries: [],
@@ -730,19 +750,54 @@ export default function DiscoveryPage() {
       });
     return () => controller.abort();
   }, [attempt]);
-  const entries = useMemo(
+  const allEntries = useMemo(
     () => filterDiscoveryEntries(data.entries, { sort: 'newest' }),
     [data.entries],
   );
+  const availableCategories = useMemo(
+    () =>
+      [...new Set(allEntries.map((entry) => entry.category))].sort((a, b) =>
+        getCategoryTheme(a).label.localeCompare(getCategoryTheme(b).label),
+      ),
+    [allEntries],
+  );
+  const requestedCategory = (searchParams.get('category') || '').toLowerCase();
+  const categoryFilter = availableCategories.includes(requestedCategory)
+    ? requestedCategory
+    : 'all';
+  const entries = useMemo(
+    () => filterDiscoveryEntries(allEntries, { category: categoryFilter }),
+    [allEntries, categoryFilter],
+  );
   const selected = useMemo(
     () =>
-      entries.find(
+      allEntries.find(
         (entry) =>
           entry.category === category?.toLowerCase() && entry.slug === slug,
       ),
-    [entries, category, slug],
+    [allEntries, category, slug],
   );
   const selectedIndex = entries.findIndex((entry) => entry.id === selected?.id);
+  useEffect(() => {
+    setLimit(PAGE_SIZE);
+    if (shelfRef.current) shelfRef.current.scrollLeft = 0;
+    returnPosition.current = null;
+    returnFocus.current = null;
+  }, [categoryFilter]);
+  const chooseCategory = (event) => {
+    const nextCategory = event.target.value;
+    setLimit(PAGE_SIZE);
+    if (shelfRef.current) shelfRef.current.scrollLeft = 0;
+    setSearchParams(
+      (current) => {
+        const next = new URLSearchParams(current);
+        if (nextCategory === 'all') next.delete('category');
+        else next.set('category', nextCategory);
+        return next;
+      },
+      { replace: true },
+    );
+  };
   const loadMore = useCallback(
     () => setLimit((value) => Math.min(value + PAGE_SIZE, entries.length)),
     [entries.length],
@@ -765,7 +820,7 @@ export default function DiscoveryPage() {
     );
     observer.observe(sentinel.current);
     return () => observer.disconnect();
-  }, [limit, entries.length, loading, hasSelection, loadMore]);
+  }, [limit, entries.length, loading, hasSelection, loadMore, categoryFilter]);
   useEffect(() => {
     const shelf = shelfRef.current;
     if (!shelf || hasSelection) return;
@@ -784,7 +839,7 @@ export default function DiscoveryPage() {
     };
     shelf.addEventListener('wheel', onWheel, { passive: false });
     return () => shelf.removeEventListener('wheel', onWheel);
-  }, [loading, hasSelection]);
+  }, [loading, hasSelection, categoryFilter]);
   useEffect(() => {
     if (!hasSelection) {
       clearTimeout(closeTimer.current);
@@ -821,7 +876,7 @@ export default function DiscoveryPage() {
     returnFocus.current = event?.currentTarget || document.activeElement;
     openedFromShelf.current = true;
     setClosing(false);
-    navigate(entryPath(entry));
+    navigate(filteredEntryPath(entry, categoryFilter));
   };
   const closeShowcase = useCallback(() => {
     if (closeTimer.current) return;
@@ -831,19 +886,26 @@ export default function DiscoveryPage() {
         if (document.fullscreenElement)
           document.exitFullscreen?.().catch(() => {});
         if (openedFromShelf.current) navigate(-1);
-        else navigate('/logs', { replace: true });
+        else
+          navigate(
+            '/logs' +
+              (categoryFilter === 'all'
+                ? ''
+                : `?category=${encodeURIComponent(categoryFilter)}`),
+            { replace: true },
+          );
         openedFromShelf.current = false;
         closeTimer.current = null;
       },
       reducedMotion ? 0 : 380,
     );
-  }, [navigate, reducedMotion]);
+  }, [navigate, reducedMotion, categoryFilter]);
   const navigateEntry = useCallback(
     (entry) => {
       if (entry && !closeTimer.current)
-        navigate(entryPath(entry), { replace: true });
+        navigate(filteredEntryPath(entry, categoryFilter), { replace: true });
     },
-    [navigate],
+    [navigate, categoryFilter],
   );
   useEffect(() => {
     if (!hasSelection || selected) return;
@@ -896,6 +958,29 @@ export default function DiscoveryPage() {
           inert={hasSelection ? true : undefined}
         >
           <h1 className="sr-only">Discovery shelf</h1>
+          <label
+            className="dc-category-filter"
+            style={{
+              '--filter-accent': getCategoryTheme(categoryFilter).accent,
+            }}
+          >
+            <FunnelIcon size={17} aria-hidden="true" />
+            <span className="sr-only">Filter by category</span>
+            <select
+              value={categoryFilter}
+              onChange={chooseCategory}
+              disabled={loading || !availableCategories.length}
+              aria-controls="discovery-shelf-scroll"
+            >
+              <option value="all">All categories</option>
+              {availableCategories.map((key) => (
+                <option key={key} value={key}>
+                  {getCategoryTheme(key).label}
+                </option>
+              ))}
+            </select>
+            <CaretDownIcon size={13} aria-hidden="true" />
+          </label>
           <Link
             className="dc-shelf-close"
             to="/"
@@ -928,12 +1013,14 @@ export default function DiscoveryPage() {
             </div>
           ) : entries.length ? (
             <Shelf
+              key={categoryFilter}
               entries={entries.slice(0, limit)}
               total={entries.length}
               openEntry={openEntry}
               shelfRef={shelfRef}
               sentinelRef={sentinel}
               loadMore={loadMore}
+              categoryFilter={categoryFilter}
             />
           ) : (
             <div className="dc-shelf-status">
@@ -954,7 +1041,7 @@ export default function DiscoveryPage() {
           <Showcase
             entry={selected}
             previous={entries[selectedIndex - 1]}
-            next={entries[selectedIndex + 1]}
+            next={selectedIndex >= 0 ? entries[selectedIndex + 1] : undefined}
             onNavigate={navigateEntry}
             onClose={closeShowcase}
             origin="shelf"

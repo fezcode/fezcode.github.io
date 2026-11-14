@@ -244,7 +244,7 @@ describe('the shelf-only discovery page', () => {
     expect(route()).toBe('/');
     expect(screen.getByText('Home page')).toBeInTheDocument();
   });
-  it('renders one mixed-category shelf, newest first, without header, hero, filters, or a collection grid', async () => {
+  it('renders one mixed-category shelf, newest first, without a header, hero, or collection grid', async () => {
     const view = mountPage('/discovery?type=game&order=oldest');
     await waitForShelf();
     expect(spines()).toHaveLength(24);
@@ -269,6 +269,9 @@ describe('the shelf-only discovery page', () => {
       inspectDiscoveryPresentation(view.container).legacyLayout,
     ).toBeNull();
     expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
+    expect(
+      screen.getByRole('combobox', { name: 'Filter by category' }),
+    ).toHaveValue('all');
     expect(
       screen.getByRole('heading', { name: 'Discovery shelf' }),
     ).toHaveClass('sr-only');
@@ -464,6 +467,173 @@ describe('the shelf-only discovery page', () => {
         screen.queryByRole('button', { name: 'Scroll shelf left' }),
       ).not.toBeInTheDocument(),
     );
+  });
+});
+
+describe('single-category shelf filtering', () => {
+  const filter = () =>
+    screen.getByRole('combobox', { name: 'Filter by category' });
+  const chooseCategory = (value) =>
+    fireEvent.change(filter(), { target: { value } });
+  const expectCategory = (category) => {
+    expect(
+      new Set(spines().map((spine) => spine.getAttribute('data-category'))),
+    ).toEqual(new Set([category]));
+  };
+
+  it('replaces the active category and lets All restore the mixed shelf without losing other query parameters', async () => {
+    mountPage('/logs?source=bookmark');
+    await waitForShelf();
+    expect(within(filter()).getAllByRole('option')).toHaveLength(4);
+
+    chooseCategory('game');
+    expect(filter()).toHaveValue('game');
+    expectCategory('game');
+    expect(spines()).toHaveLength(19);
+    expect(
+      spines()
+        .slice(0, 3)
+        .map((spine) => spine.getAttribute('aria-label')),
+    ).toEqual([
+      'Open Discovery 01 from the shelf',
+      'Open Discovery 04 from the shelf',
+      'Open Discovery 07 from the shelf',
+    ]);
+    expect(route()).toBe('/logs?source=bookmark&category=game');
+
+    chooseCategory('music');
+    expect(filter()).toHaveValue('music');
+    expectCategory('music');
+    expect(spines()).toHaveLength(18);
+    expect(route()).toBe('/logs?source=bookmark&category=music');
+
+    chooseCategory('all');
+    expect(filter()).toHaveValue('all');
+    expect(spines()).toHaveLength(24);
+    expect(route()).toBe('/logs?source=bookmark');
+    expect(fetchDiscoveryEntries).toHaveBeenCalledTimes(1);
+  });
+
+  it('restores a category directly from a bookmarked shelf URL', async () => {
+    mountPage('/logs?category=music');
+    await screen.findByRole('link', {
+      name: 'Open Discovery 02 from the shelf',
+      exact: true,
+    });
+    expect(filter()).toHaveValue('music');
+    expectCategory('music');
+    expect(spines()).toHaveLength(18);
+    expect(spines()[0]).toHaveAccessibleName(
+      'Open Discovery 02 from the shelf',
+    );
+  });
+
+  it('falls back to All for an unknown category rather than showing an empty shelf', async () => {
+    mountPage('/discovery?category=unknown-category');
+    await waitForShelf();
+    expect(filter()).toHaveValue('all');
+    expect(spines()).toHaveLength(24);
+    expect(
+      new Set(spines().map((spine) => spine.getAttribute('data-category'))),
+    ).toEqual(new Set(['game', 'music', 'book']));
+  });
+
+  it('starts each category at its newest segment and scroll position while paginating only that category', async () => {
+    fetchDiscoveryEntries.mockResolvedValueOnce({
+      ...result,
+      entries: Array.from({ length: 84 }, (_, index) =>
+        makeEntry(index),
+      ).reverse(),
+    });
+    mountPage('/logs');
+    await waitForShelf();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Load more discoveries' }),
+    );
+    expect(spines()).toHaveLength(48);
+    const region = shelf();
+    region.scrollLeft = 1120;
+
+    chooseCategory('game');
+    expectCategory('game');
+    expect(spines()).toHaveLength(24);
+    expect(screen.getByRole('status')).toHaveTextContent('24 of 28');
+    await waitFor(() => expect(shelf().scrollLeft).toBe(0));
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Load more discoveries' }),
+    );
+    expect(spines()).toHaveLength(28);
+    expectCategory('game');
+    expect(
+      screen.queryByRole('button', { name: 'Load more discoveries' }),
+    ).not.toBeInTheDocument();
+    shelf().scrollLeft = 640;
+
+    chooseCategory('book');
+    expectCategory('book');
+    expect(spines()).toHaveLength(24);
+    expect(spines()[0]).toHaveAccessibleName(
+      'Open Discovery 03 from the shelf',
+    );
+    await waitFor(() => expect(shelf().scrollLeft).toBe(0));
+
+    chooseCategory('all');
+    expect(spines()).toHaveLength(24);
+    expect(screen.getByRole('status')).toHaveTextContent('24 of 84');
+  });
+
+  it('keeps showcase navigation within the selected category and restores the filtered shelf on close', async () => {
+    fetchDiscoveryEntries.mockResolvedValueOnce({
+      ...result,
+      entries: Array.from({ length: 84 }, (_, index) =>
+        makeEntry(index),
+      ).reverse(),
+    });
+    mountPage('/logs?category=game');
+    await waitForShelf();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Load more discoveries' }),
+    );
+    expect(spines()).toHaveLength(28);
+    const region = shelf();
+    region.scrollLeft = 640;
+    const trigger = screen.getByRole('link', {
+      name: 'Open Discovery 76 from the shelf',
+      exact: true,
+    });
+    trigger.focus();
+    fireEvent.click(trigger);
+    let dialog = await screen.findByRole('dialog', { name: 'Discovery 76' });
+    expect(route()).toBe('/discovery/game/entry-76?category=game');
+    fireEvent.click(within(dialog).getByRole('button', { name: 'Previous' }));
+    dialog = await screen.findByRole('dialog', { name: 'Discovery 73' });
+    fireEvent.click(
+      within(dialog).getByRole('button', { name: 'Next discovery' }),
+    );
+    dialog = await screen.findByRole('dialog', { name: 'Discovery 76' });
+    fireEvent.click(
+      within(dialog).getByRole('button', { name: 'Next discovery' }),
+    );
+    await screen.findByRole('dialog', { name: 'Discovery 79' });
+    expect(route()).toBe('/discovery/game/entry-79?category=game');
+    region.scrollLeft = 0;
+
+    await closeDialog();
+    expect(route()).toBe('/logs?category=game');
+    expect(filter()).toHaveValue('game');
+    expectCategory('game');
+    expect(spines()).toHaveLength(28);
+    await waitFor(() => expect(region.scrollLeft).toBe(640));
+    await waitFor(() => expect(trigger).toHaveFocus());
+  });
+
+  it('resolves a directly linked entry even when its category differs from the shelf filter', async () => {
+    mountPage('/discovery/music/entry-02?category=game');
+    await screen.findByRole('dialog', { name: 'Discovery 02' });
+    await closeDialog();
+    expect(route()).toBe('/logs?category=game');
+    expect(filter()).toHaveValue('game');
+    expectCategory('game');
   });
 });
 
