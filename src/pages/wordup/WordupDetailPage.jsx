@@ -44,7 +44,7 @@ export default function WordupDetailPage() {
   const next = canBrowse ? words[(position + 1) % words.length] : null;
 
   return (
-    <WordupShell detail language={copy.language}>
+    <WordupShell detail language={copy.language} shareWord={word}>
       <Seo
         title={word ? `${word.word} — Wordup | Fezcodex` : 'Wordup | Fezcodex'}
         description={

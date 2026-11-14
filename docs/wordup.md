@@ -45,6 +45,8 @@ Write the longer explanation in the `.txt` file using ordinary Markdown. Use dis
 
 Each sculpture is deterministic: its seed comes from the normalized display word, preserving actual accented characters. Changing the slug, entry number or list order does not change that word's sculpture. No sculpture asset files are needed.
 
+The live sculpture initializes WebGL only when it first becomes visible. It renders at up to 30 fps while visible, and cancels its animation frame when offscreen, in a hidden tab, or behind the sharing dialog. Returning resumes its active animation time without jumping ahead. Reduced-motion preferences use a static pose, redrawn only when its word or size changes. Geometry, materials and the environment are reused until the word changes or the component unmounts; pausing retains these resources so resuming is inexpensive. The shared studio leaves rendering to the live scheduler, avoiding duplicate draws on resize and word changes. Static sharing cards keep their original rendering behavior.
+
 Search and language filters cover the collection and stay selected when switching views. The sculpture view shows six words at a time; hovering or focusing a word updates its preview. The A–Z index at `/wordup?view=index` lists every matching word, grouped by initial letter, with jump links and short meanings. Turkish and mixed collections use Turkish alphabetical order, keeping letters such as Ç, I, İ, Ö, Ş and Ü distinct; the English filter uses English order. Selecting a word in either view opens the same full entry. Rebuild after adding a word so its route appears in the static output.
 
 ## Sharing artwork
@@ -65,3 +67,22 @@ node scripts/generate-wordup-og.mjs --force --slug cancil
 ```
 
 While Vite is running, preview exported cards at `/images/og/wordup.webp` or `/images/og/wordup/cancil.webp`. The HTML renderer is served by the generator's isolated temporary Vite server, outside application routing and sitemap discovery. The exported WebP files are served in both development and production, and the same URLs are used by React metadata and the static metadata injector.
+
+The Share button on the collection and each loaded entry opens a card preview. Link copying uses the canonical `https://fezcode.com/wordup[/slug]` address, including during local development. Image copying converts the existing sharing image to PNG for the clipboard; it never renders a new sculpture or changes the stored artwork. Unsupported or denied image copying offers the original card as a download instead. The dialog follows the entry's interface language and supports Escape, keyboard focus containment and focus return.
+
+## Measure live rendering
+
+Run `node scripts/perf/wordup.mjs current 5198`, then open `http://127.0.0.1:5198/scripts/perf/wordup.html`. This builds an isolated production bundle without generating routes or touching OG artwork. Choose a word, let shaders warm up, then sample five seconds with the sculpture visible, offscreen, or paused. Use the same viewport and device pixel ratio when comparing builds. Labels create separate cached builds, so `before` and `after` can run on different ports for direct comparison. Stop the server with Ctrl+C.
+
+The profiler counts actual scene renders and measures CPU submission time around `renderer.render`; it does not measure GPU execution, battery use or power consumption. Three's transmissive material uses multiple passes, so reported rendered triangles exceed the unique geometry triangle count.
+
+An optimized-build comparison on 2026-11-14 used the same 750×700 drawing buffer at DPR 1 in the desktop in-app browser (approximately 120 Hz), after warmup:
+
+| Scene                 | Before: renders / sample | After: renders / sample |
+| --------------------- | ------------------------ | ----------------------- |
+| püfre, visible        | 601 / 5.006 s            | 150 / 5.002 s           |
+| cancıl, visible       | 601 / 5.008 s            | 151 / 5.005 s           |
+| püfre, offscreen      | 601 / 5.001 s            | 0 / 5.015 s             |
+| püfre, activity pause | —                        | 0 / 5.001 s             |
+
+Visible frame counts fell by approximately 75% on this 120 Hz display, with identical draw calls and rendered triangle counts per frame. Background-tab cancellation is covered by visibility-change tests; this in-app browser kept documents marked visible when switching its tabs, so it did not provide a real hidden-tab measurement. Browser tests also confirmed the live entry pauses behind the share dialog and resumes on close.

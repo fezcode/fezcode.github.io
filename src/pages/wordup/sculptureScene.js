@@ -52,6 +52,8 @@ export function createSculptureScene({
   height = 1,
   pixelRatio = 1,
   preserveDrawingBuffer = false,
+  renderOnUpdate = true,
+  onRender,
 } = {}) {
   let renderer;
   let environment;
@@ -124,6 +126,8 @@ export function createSculptureScene({
     scene.add(sculpture);
     let parameters = null;
     let lastElapsed = 0;
+    let currentWidth = 0;
+    let currentHeight = 0;
     const render = (elapsedSeconds = 0) => {
       if (disposed || !parameters) return;
       const elapsed = Number.isFinite(elapsedSeconds)
@@ -136,7 +140,15 @@ export function createSculptureScene({
         parameters.pose[2] + Math.sin(elapsed * 0.16) * 0.06,
       );
       sculpture.position.y = 0.04 + Math.sin(elapsed * 0.4) * 0.055;
+      const started = onRender ? performance.now() : 0;
       renderer.render(scene, camera);
+      onRender?.({
+        submissionMs: performance.now() - started,
+        calls: renderer.info.render.calls,
+        triangles: renderer.info.render.triangles,
+        width: renderer.domElement.width,
+        height: renderer.domElement.height,
+      });
     };
     const setSeed = (word) => {
       if (disposed) return false;
@@ -175,7 +187,8 @@ export function createSculptureScene({
       metal.iridescenceThicknessRange = [...next.film];
       seamMaterial.color.set(next.accent);
       parameters = next;
-      render(0);
+      lastElapsed = 0;
+      if (renderOnUpdate) render(0);
       return true;
     };
     const resize = (nextWidth, nextHeight) => {
@@ -184,14 +197,18 @@ export function createSculptureScene({
         !Number.isFinite(nextWidth) ||
         !Number.isFinite(nextHeight) ||
         nextWidth <= 0 ||
-        nextHeight <= 0
+        nextHeight <= 0 ||
+        (nextWidth === currentWidth && nextHeight === currentHeight)
       )
-        return;
+        return false;
+      currentWidth = nextWidth;
+      currentHeight = nextHeight;
       renderer.setSize(nextWidth, nextHeight, false);
       camera.aspect = nextWidth / nextHeight;
       camera.position.z = camera.aspect < 0.85 ? 8.2 : 6.7;
       camera.updateProjectionMatrix();
-      render(lastElapsed);
+      if (renderOnUpdate) render(lastElapsed);
+      return true;
     };
     setSeed(seed);
     resize(width, height);

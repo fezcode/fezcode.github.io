@@ -308,7 +308,7 @@
   gap: 15px;
   font-size: 12px;
 }
-.wf-back-home > span {
+.wf-back-home > span:not(.wf-back-home-label) {
   display: grid;
   place-items: center;
   width: 32px;
@@ -317,8 +317,213 @@
   border-radius: 50%;
   font-size: 18px;
 }
-.wf-back-home:hover > span {
+.wf-back-home:hover > span:not(.wf-back-home-label) {
   background: #fff;
+}
+.wf-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+.wf-share-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 17px;
+  border: 1px solid #fff;
+  border-radius: 28px;
+  background: #ffffff80;
+  font-size: 12px !important;
+}
+.wf-share-trigger:hover {
+  background: #fff;
+}
+.wf-share-dialog {
+  width: min(680px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(100dvh - 40px);
+  padding: 0;
+  border: 1px solid #fff;
+  border-radius: 28px;
+  color: var(--wf-ink);
+  background: #f1f3f8;
+  box-shadow: 0 30px 100px #26213c40;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.wf-share-dialog:not([open]) {
+  display: none;
+}
+.wf-share-dialog::backdrop {
+  background: #25293f75;
+  backdrop-filter: blur(9px);
+}
+.wf-share-panel {
+  padding: 27px;
+}
+.wf-share-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 22px;
+}
+.wf-share-heading h2 {
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 1.2;
+}
+.wf-share-heading p {
+  margin-top: 9px;
+  color: var(--wf-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  max-width: 44ch;
+}
+.wf-share-close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #fff9;
+}
+.wf-share-close:hover {
+  background: #fff;
+}
+.wf-share-preview {
+  aspect-ratio: 1200 / 630;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #e6eaf1;
+  box-shadow: 0 6px 25px #4b4a6812;
+}
+.wf-share-preview img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.wf-share-preview p {
+  max-width: 34ch;
+  padding: 20px;
+  color: var(--wf-muted);
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: center;
+}
+.wf-share-url {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 20px 0 14px;
+  padding: 12px 15px;
+  color: var(--wf-muted);
+  border: 1px solid #d6d9e4;
+  border-radius: 14px;
+}
+.wf-share-url input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+  outline-offset: 3px;
+}
+.wf-share-actions {
+  display: grid;
+  gap: 9px;
+}
+.wf-share-actions button {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  width: 100%;
+  min-height: 56px;
+  padding: 13px 17px;
+  text-align: left;
+  border: 1px solid #fff;
+  background: #ffffffa8;
+  border-radius: 16px;
+  font-size: 14px;
+}
+.wf-share-actions button > span {
+  flex: 1;
+}
+.wf-share-actions button > svg:first-child {
+  color: var(--wf-accent);
+}
+.wf-share-actions button > svg:last-child {
+  color: #9190a4;
+}
+.wf-share-actions button:hover:not(:disabled) {
+  background: #fff;
+  box-shadow: 0 4px 15px #3e3c6509;
+}
+.wf-share-feedback {
+  min-height: 23px;
+  margin-top: 15px;
+  color: var(--wf-accent);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.wf-share-feedback.is-error {
+  color: #944b61;
+}
+.wf-share-help {
+  margin-top: 13px !important;
+  color: var(--wf-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+.wf-share-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  color: var(--wf-muted) !important;
+  font-size: 12px;
+}
+.wf-share-download:hover {
+  color: var(--wf-accent) !important;
+}
+@media (max-width: 760px) {
+  .wf-header-actions {
+    gap: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .wf-header {
+    gap: 14px;
+  }
+  .wf-back-home-label {
+    display: none;
+  }
+  .wf-share-trigger {
+    padding: 0 13px;
+  }
+  .wf-share-panel {
+    padding: 20px;
+  }
+  .wf-share-heading {
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .wf-share-heading h2 {
+    font-size: 25px;
+  }
+  .wf-share-heading p {
+    font-size: 12px;
+  }
+  .wf-share-actions button {
+    font-size: 13px;
+    padding: 13px;
+  }
 }
 .wf-main {
   max-width: 1560px;

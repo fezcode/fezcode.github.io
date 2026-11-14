@@ -31,6 +31,27 @@ const english = {
   next: 'Next word',
   back: 'Back to the words',
   partsOfSpeech: {},
+  share: {
+    trigger: 'Share',
+    wordTitle: 'Share this word',
+    collectionTitle: 'Share Wordup',
+    description: 'Copy the link or the card, then paste it wherever you like.',
+    close: 'Close',
+    imageAlt: (title) => `${title} sharing card`,
+    linkLabel: 'Share link',
+    copyLink: 'Copy link',
+    copyImage: 'Copy card as image',
+    copying: 'Copying…',
+    linkCopied: 'Link copied.',
+    imageCopied: 'Card copied. You can now paste it as an image.',
+    linkManual: 'Select the link and copy it manually.',
+    imageUnsupported:
+      'This browser does not support copying images. You can download the card instead.',
+    imageFailed: 'The card could not be copied. You can download it instead.',
+    imageUnavailable:
+      'The card could not be loaded. You can still copy the link.',
+    download: 'Download card',
+  },
 };
 
 const turkish = {
@@ -65,6 +86,26 @@ const turkish = {
   previous: 'Önceki kelime',
   next: 'Sonraki kelime',
   back: 'Kelimelere dön',
+  share: {
+    trigger: 'Paylaş',
+    wordTitle: 'Bu kelimeyi paylaş',
+    collectionTitle: 'Wordup’ı paylaş',
+    description: 'Linkini ya da kartını kopyalayıp istediğin yere yapıştır.',
+    close: 'Kapat',
+    imageAlt: (title) => `${title} paylaşım kartı`,
+    linkLabel: 'Paylaşım linki',
+    copyLink: 'Linki kopyala',
+    copyImage: 'Kartı resim olarak kopyala',
+    copying: 'Kopyalanıyor…',
+    linkCopied: 'Link kopyalandı.',
+    imageCopied: 'Kart kopyalandı. Artık resim olarak yapıştırabilirsin.',
+    linkManual: 'Linki seçip elle kopyalayabilirsin.',
+    imageUnsupported:
+      'Bu tarayıcı resim kopyalamayı desteklemiyor. Kartı indirebilirsin.',
+    imageFailed: 'Kart kopyalanamadı. Bunun yerine indirebilirsin.',
+    imageUnavailable: 'Kart yüklenemedi. Linki yine de kopyalayabilirsin.',
+    download: 'Kartı indir',
+  },
   partsOfSpeech: {
     noun: 'isim',
     verb: 'fiil',
