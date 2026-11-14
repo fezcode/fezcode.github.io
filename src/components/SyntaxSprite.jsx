@@ -336,6 +336,38 @@ const SyntaxSprite = () => {
   const isTerracotta = fezcodexTheme === 'terracotta';
   const isMist = fezcodexTheme === 'mist';
   const isLedger = fezcodexTheme === 'ledger';
+  /* BLISS COMPANION — Syntax as a tray helper with a balloon tip */
+  if (fezcodexTheme === 'bliss') {
+    return (
+      <div
+        className="fixed right-4 z-[9999] max-w-[calc(100vw-2rem)] flex flex-col items-end bl-chrome"
+        style={{ bottom: 'calc(var(--bl-taskbar-h) + 12px)' }}
+      >
+        {thought && (
+          <div className="bl-balloon mb-3 max-w-xs" role="status">
+            <p className="m-0 mb-1 font-bold">Syntax</p>
+            <p className="m-0">{thought}</p>
+          </div>
+        )}
+        <button
+          type="button"
+          onClick={handleSpriteClick}
+          aria-label="Talk to Syntax, the codex companion"
+          className={`bl-icon ${isJumping ? '-translate-y-2' : ''}`}
+          style={{
+            width: 44,
+            height: 44,
+            border: 0,
+            cursor: 'pointer',
+            transition: 'transform 0.2s ease',
+            background: 'linear-gradient(180deg, #6aa8ff, #1e5fe0)',
+          }}
+        >
+          {getIcon()}
+        </button>
+      </div>
+    );
+  }
   /* KNIT COMPANION — Syntax as a little knitted hen pecking in the corner */
   if (fezcodexTheme === 'knit') {
     return (

@@ -130,6 +130,19 @@ export const CATEGORY_PALETTES = {
     default: '#d2b26a',
   },
 
+  // Cream window bodies and white list views — saturated 700-strength inks.
+  bliss: {
+    dev: '#047857',
+    rant: '#C2410C',
+    ai: '#0E7490',
+    feat: '#7E22CE',
+    gist: '#A16207',
+    essay: '#1D4ED8',
+    series: '#BE185D',
+    'd&d': '#B91C1C',
+    default: '#475569',
+  },
+
   // Declassified dossier on #f3f3f3 — typewriter inks and stamp reds.
   dossier: {
     dev: '#1D4ED8',

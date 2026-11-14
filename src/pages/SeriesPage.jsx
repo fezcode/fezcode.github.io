@@ -7,6 +7,7 @@ import MistSeriesPage from './mist-views/MistSeriesPage';
 import LedgerSeriesPage from './ledger-views/LedgerSeriesPage';
 import OrbitSeriesPage from './orbit-views/OrbitSeriesPage';
 import KnitSeriesPage from './knit-views/KnitSeriesPage';
+import BlissSeriesPage from './bliss-views/BlissSeriesPage';
 
 const SeriesPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -17,6 +18,7 @@ const SeriesPage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerSeriesPage />;
   if (fezcodexTheme === 'orbit') return <OrbitSeriesPage />;
   if (fezcodexTheme === 'knit') return <KnitSeriesPage />;
+  if (fezcodexTheme === 'bliss') return <BlissSeriesPage />;
   return <BrutalistSeriesPage />;
 };
 

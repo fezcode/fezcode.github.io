@@ -7,6 +7,7 @@ import MistProjectsPage from './mist-views/MistProjectsPage';
 import LedgerProjectsPage from './ledger-views/LedgerProjectsPage';
 import OrbitProjectsPage from './orbit-views/OrbitProjectsPage';
 import KnitProjectsPage from './knit-views/KnitProjectsPage';
+import BlissProjectsPage from './bliss-views/BlissProjectsPage';
 
 const ProjectsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -17,6 +18,7 @@ const ProjectsPage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerProjectsPage />;
   if (fezcodexTheme === 'orbit') return <OrbitProjectsPage />;
   if (fezcodexTheme === 'knit') return <KnitProjectsPage />;
+  if (fezcodexTheme === 'bliss') return <BlissProjectsPage />;
   return <BrutalistProjectsPage />;
 };
 

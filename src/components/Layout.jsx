@@ -23,6 +23,12 @@ import KnitNavbar from './KnitNavbar';
 import KnitFooter from './KnitFooter';
 import { useKnitTextures } from './knit';
 import '../styles/Knit.css';
+import BlissSidebar from './BlissSidebar';
+import BlissNavbar from './BlissNavbar';
+import BlissFooter from './BlissFooter';
+import BlissTaskbar from './BlissTaskbar';
+import { BlissWallpaper } from './bliss';
+import '../styles/Bliss.css';
 import { useAnimation } from '../context/AnimationContext';
 import '../styles/Orbit.css';
 import '../styles/Ledger.css';
@@ -74,7 +80,7 @@ const Layout = ({
   const isAboutPage = location.pathname.startsWith('/about');
   // These themes keep their sidebar on their own About view.
   const isOrbitAboutPage =
-    ['orbit', 'knit'].includes(fezcodexTheme) &&
+    ['orbit', 'knit', 'bliss'].includes(fezcodexTheme) &&
     [
       '/about',
       '/about/',
@@ -171,9 +177,12 @@ const Layout = ({
                   ? `orb-appframe ${reduceMotion ? 'orb-reduce-motion' : ''}`
                   : fezcodexTheme === 'knit'
                     ? 'knt-appframe'
-                    : 'bg-[#050505]'
+                    : fezcodexTheme === 'bliss'
+                      ? 'bl-appframe'
+                      : 'bg-[#050505]'
       } min-h-screen font-sans flex`}
     >
+      {fezcodexTheme === 'bliss' && !hideLayout && <BlissWallpaper />}
       {!hideLayout &&
         (fezcodexTheme === 'luxe' ? (
           <LuxeSidebar
@@ -203,6 +212,13 @@ const Layout = ({
             toggleModal={toggleModal}
             setIsPaletteOpen={setIsPaletteOpen}
           />
+        ) : fezcodexTheme === 'bliss' ? (
+          <BlissSidebar
+            isOpen={isSidebarOpen}
+            toggleSidebar={toggleSidebar}
+            toggleModal={toggleModal}
+            setIsPaletteOpen={setIsPaletteOpen}
+          />
         ) : fezcodexTheme === 'knit' ? (
           <KnitSidebar
             isOpen={isSidebarOpen}
@@ -226,7 +242,7 @@ const Layout = ({
           />
         ))}
       <div
-        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : 'md:ml-72') : 'md:ml-0'}`}
+        className={`flex-1 flex flex-col min-w-0 transition-all duration-300 ${isSidebarOpen && !hideLayout ? (fezcodexTheme === 'orbit' ? 'orb-content-open' : fezcodexTheme === 'knit' ? 'knt-content-open' : fezcodexTheme === 'bliss' ? 'bl-content-open' : 'md:ml-72') : 'md:ml-0'}`}
       >
         {!hideLayout &&
           (fezcodexTheme === 'terracotta' ? (
@@ -252,6 +268,13 @@ const Layout = ({
             />
           ) : fezcodexTheme === 'ledger' ? (
             <LedgerNavbar
+              toggleSidebar={toggleSidebar}
+              isSidebarOpen={isSidebarOpen}
+              isSearchVisible={isSearchVisible}
+              toggleSearch={toggleSearch}
+            />
+          ) : fezcodexTheme === 'bliss' ? (
+            <BlissNavbar
               toggleSidebar={toggleSidebar}
               isSidebarOpen={isSidebarOpen}
               isSearchVisible={isSearchVisible}
@@ -296,6 +319,8 @@ const Layout = ({
             <MistFooter />
           ) : fezcodexTheme === 'ledger' ? (
             <LedgerFooter />
+          ) : fezcodexTheme === 'bliss' ? (
+            <BlissFooter />
           ) : fezcodexTheme === 'knit' ? (
             <KnitFooter />
           ) : fezcodexTheme === 'orbit' ? (
@@ -304,6 +329,9 @@ const Layout = ({
             <Footer />
           ))}
       </div>
+      {fezcodexTheme === 'bliss' && !hideLayout && (
+        <BlissTaskbar toggleSearch={toggleSearch} />
+      )}
     </div>
   );
 

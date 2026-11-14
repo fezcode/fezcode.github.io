@@ -30,7 +30,9 @@ const Banner = () => {
       ? '--orb-banner-offset'
       : fezcodexTheme === 'knit'
         ? '--knt-banner-offset'
-        : null;
+        : fezcodexTheme === 'bliss'
+          ? '--bl-banner-offset'
+          : null;
   useEffect(() => {
     if (!offsetVar || !banner || !isVisible) return undefined;
     const element = orbitBannerRef.current;
@@ -223,6 +225,38 @@ const Banner = () => {
           </button>
         </div>
         <KnitBand pattern="peerie" />
+      </div>
+    );
+  }
+
+  if (fezcodexTheme === 'bliss') {
+    // An information bar across the top, the way old browsers asked things.
+    return (
+      <div
+        ref={orbitBannerRef}
+        className="bl-chrome relative z-[100]"
+        style={{
+          background: 'var(--bl-balloon)',
+          borderBottom: '1px solid #a7a28c',
+        }}
+      >
+        <div className="max-w-[1800px] mx-auto px-4 py-2 flex items-center gap-3">
+          <span style={{ color: '#1e5fe0' }} aria-hidden="true">
+            {iconFor(bannerType, 'fill', 18)}
+          </span>
+          <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:items-center gap-2 text-sm">
+            <span className="flex-1">{banner.text}</span>
+            {renderLink('bl-btn bl-btn-sm shrink-0')}
+          </div>
+          <button
+            type="button"
+            onClick={handleDismiss}
+            className="bl-tbtn bl-tbtn-close shrink-0"
+            aria-label="Dismiss banner"
+          >
+            <XIcon size={13} weight="bold" />
+          </button>
+        </div>
       </div>
     );
   }

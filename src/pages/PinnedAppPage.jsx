@@ -7,6 +7,7 @@ import MistPinnedAppPage from './mist-views/MistPinnedAppPage';
 import LedgerPinnedAppPage from './ledger-views/LedgerPinnedAppPage';
 import OrbitPinnedAppPage from './orbit-views/OrbitPinnedAppPage';
 import KnitPinnedAppPage from './knit-views/KnitPinnedAppPage';
+import BlissPinnedAppPage from './bliss-views/BlissPinnedAppPage';
 
 const PinnedAppPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -17,6 +18,7 @@ const PinnedAppPage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerPinnedAppPage />;
   if (fezcodexTheme === 'orbit') return <OrbitPinnedAppPage />;
   if (fezcodexTheme === 'knit') return <KnitPinnedAppPage />;
+  if (fezcodexTheme === 'bliss') return <BlissPinnedAppPage />;
   return <BrutalistPinnedAppPage />;
 };
 

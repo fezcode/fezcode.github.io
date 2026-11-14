@@ -55,6 +55,14 @@ export const SITE_THEMES = [
     foreground: '#f0e6d3',
     accent: '#c9952b',
   },
+  {
+    id: 'bliss',
+    name: 'Bliss',
+    description: 'Blue sky, green hill, glossy windows',
+    background: '#3f86ec',
+    foreground: '#1a1a1a',
+    accent: '#2f9e1e',
+  },
 ];
 
 export const isSiteTheme = (value) =>

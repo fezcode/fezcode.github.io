@@ -7,6 +7,7 @@ import MistImageModal from './MistImageModal';
 import LedgerImageModal from './LedgerImageModal';
 import OrbitImageModal from './OrbitImageModal';
 import KnitImageModal from './KnitImageModal';
+import BlissImageModal from './BlissImageModal';
 
 const ImageModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -18,6 +19,7 @@ const ImageModal = (props) => {
   if (fezcodexTheme === 'ledger') return <LedgerImageModal {...props} />;
   if (fezcodexTheme === 'orbit') return <OrbitImageModal {...props} />;
   if (fezcodexTheme === 'knit') return <KnitImageModal {...props} />;
+  if (fezcodexTheme === 'bliss') return <BlissImageModal {...props} />;
   return <BrutalistImageModal {...props} />;
 };
 

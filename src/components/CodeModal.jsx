@@ -7,6 +7,7 @@ import MistCodeModal from './MistCodeModal';
 import LedgerCodeModal from './LedgerCodeModal';
 import OrbitCodeModal from './OrbitCodeModal';
 import KnitCodeModal from './KnitCodeModal';
+import BlissCodeModal from './BlissCodeModal';
 
 const CodeModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -17,6 +18,7 @@ const CodeModal = (props) => {
   if (fezcodexTheme === 'ledger') return <LedgerCodeModal {...props} />;
   if (fezcodexTheme === 'orbit') return <OrbitCodeModal {...props} />;
   if (fezcodexTheme === 'knit') return <KnitCodeModal {...props} />;
+  if (fezcodexTheme === 'bliss') return <BlissCodeModal {...props} />;
   return <BrutalistCodeModal {...props} />;
 };
 

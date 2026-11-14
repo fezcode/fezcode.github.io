@@ -7,6 +7,7 @@ import MistModal from './MistModal';
 import LedgerModal from './LedgerModal';
 import OrbitModal from './OrbitModal';
 import KnitModal from './KnitModal';
+import BlissModal from './BlissModal';
 
 const GenericModal = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -17,6 +18,7 @@ const GenericModal = (props) => {
   if (fezcodexTheme === 'ledger') return <LedgerModal {...props} />;
   if (fezcodexTheme === 'orbit') return <OrbitModal {...props} />;
   if (fezcodexTheme === 'knit') return <KnitModal {...props} />;
+  if (fezcodexTheme === 'bliss') return <BlissModal {...props} />;
   return <BrutalistModal {...props} />;
 };
 

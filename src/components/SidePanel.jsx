@@ -7,6 +7,7 @@ import MistSidePanel from './MistSidePanel';
 import LedgerSidePanel from './LedgerSidePanel';
 import OrbitSidePanel from './OrbitSidePanel';
 import KnitSidePanel from './KnitSidePanel';
+import BlissSidePanel from './BlissSidePanel';
 
 const SidePanel = (props) => {
   const { fezcodexTheme } = useVisualSettings();
@@ -17,6 +18,7 @@ const SidePanel = (props) => {
   if (fezcodexTheme === 'ledger') return <LedgerSidePanel {...props} />;
   if (fezcodexTheme === 'orbit') return <OrbitSidePanel {...props} />;
   if (fezcodexTheme === 'knit') return <KnitSidePanel {...props} />;
+  if (fezcodexTheme === 'bliss') return <BlissSidePanel {...props} />;
   return <BrutalistSidePanel {...props} />;
 };
 

@@ -7,6 +7,7 @@ import MistSettingsPage from './mist-views/MistSettingsPage';
 import LedgerSettingsPage from './ledger-views/LedgerSettingsPage';
 import OrbitSettingsPage from './orbit-views/OrbitSettingsPage';
 import KnitSettingsPage from './knit-views/KnitSettingsPage';
+import BlissSettingsPage from './bliss-views/BlissSettingsPage';
 
 const SettingsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
@@ -17,6 +18,7 @@ const SettingsPage = () => {
   if (fezcodexTheme === 'ledger') return <LedgerSettingsPage />;
   if (fezcodexTheme === 'orbit') return <OrbitSettingsPage />;
   if (fezcodexTheme === 'knit') return <KnitSettingsPage />;
+  if (fezcodexTheme === 'bliss') return <BlissSettingsPage />;
   return <BrutalistSettingsPage />;
 };
 

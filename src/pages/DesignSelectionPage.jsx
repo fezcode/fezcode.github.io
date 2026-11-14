@@ -21,6 +21,7 @@ import Seo from '../components/Seo';
 import GenerativeArt from '../components/GenerativeArt';
 import LuxeArt from '../components/LuxeArt';
 import { KnitText, KnitBand } from '../components/knit';
+import '../styles/Bliss.css';
 
 const DesignSelectionPage = () => {
   const navigate = useNavigate();
@@ -45,7 +46,7 @@ const DesignSelectionPage = () => {
     <div className="min-h-screen bg-[#F5F5F0] text-[#1A1A1A] font-sans selection:bg-[#C0B298] selection:text-black flex flex-col">
       <Seo
         title="Design System | Fezcodex"
-        description="Explore seven Fezcodex themes, from Brutalist to Knit."
+        description="Explore eight Fezcodex themes, from Brutalist to Bliss."
       />
 
       <div className="w-full min-w-0 max-w-[1400px] mx-auto px-6 md:px-12 py-24 flex-1 flex flex-col">
@@ -388,6 +389,62 @@ const DesignSelectionPage = () => {
                   className="text-[#D2B26A] group-hover:text-[#E8C51A] group-hover:translate-x-2 transition-all"
                   size={24}
                 />
+              </div>
+            </motion.div>
+          </button>
+
+          {/* BLISS CARD */}
+          <button
+            id="bliss"
+            aria-label="Activate Bliss theme"
+            type="button"
+            onClick={() => {
+              setFezcodexTheme('bliss');
+              navigate('/');
+            }}
+            className="group block relative text-left"
+            style={{ fontFamily: "Tahoma, 'Noto Sans', Verdana, sans-serif" }}
+          >
+            <motion.div
+              whileHover={{ y: -10 }}
+              className="h-full relative rounded-2xl overflow-hidden p-6 sm:p-10 flex flex-col justify-end min-h-[420px] shadow-[0_30px_60px_-30px_rgba(10,63,208,0.6)]"
+              style={{
+                background:
+                  'linear-gradient(180deg, #1f5fd8 0%, #3f86ec 40%, #a9d3fb 75%)',
+              }}
+            >
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 400 200"
+                preserveAspectRatio="none"
+                className="absolute inset-x-0 bottom-0 w-full h-1/2"
+              >
+                <path d="M0 90 C 80 40, 220 30, 300 70 C 340 90, 370 92, 400 88 L400 200 L0 200 Z" fill="#62c432" />
+                <path d="M0 90 C 80 40, 220 30, 300 70 C 340 90, 370 92, 400 88" fill="none" stroke="#b9f07a" strokeWidth="3" opacity="0.6" />
+              </svg>
+              <div className="bl-window relative z-10">
+                <div className="bl-titlebar">
+                  <h2 className="bl-titlebar-title">Bliss</h2>
+                  <span className="bl-tbtn bl-tbtn-close" aria-hidden="true">
+                    ×
+                  </span>
+                </div>
+                <div className="bl-window-body">
+                  <p className="m-0 text-sm leading-relaxed text-[#1a1a1a]">
+                    The codex as an early-2000s desktop. Glossy blue title
+                    bars, cream windows, a task-pane sidebar and a taskbar,
+                    over a blue sky and a green hill.
+                  </p>
+                  <div className="mt-4 flex justify-between items-center">
+                    <span className="bl-btn bl-btn-primary bl-btn-sm">
+                      Use Bliss
+                    </span>
+                    <ArrowRightIcon
+                      className="text-[#0a3fb8] group-hover:translate-x-2 transition-all"
+                      size={22}
+                    />
+                  </div>
+                </div>
               </div>
             </motion.div>
           </button>

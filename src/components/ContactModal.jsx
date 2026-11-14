@@ -72,6 +72,34 @@ const ContactModal = ({ isOpen, onClose }) => {
     );
   }
 
+  if (fezcodexTheme === 'bliss') {
+    return (
+      <GenericModal isOpen={isOpen} onClose={onClose} title="Say hello">
+        <p className="bl-muted mb-3">A few ways to find Samil.</p>
+        <div className="bl-listview">
+          {(config?.socials || []).map((link) => {
+            const Icon = socialIcons[link.icon] || GlobeIcon;
+            return (
+              <a
+                key={link.id}
+                href={link.url}
+                className="bl-row"
+                target={link.url.startsWith('mailto:') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+              >
+                <Icon size={22} weight="fill" className="shrink-0" />
+                <span className="bl-row-title flex-1 min-w-0">
+                  {link.label}
+                </span>
+                <ArrowUpRightIcon size={16} weight="bold" aria-hidden="true" />
+              </a>
+            );
+          })}
+        </div>
+      </GenericModal>
+    );
+  }
+
   if (fezcodexTheme === 'orbit') {
     return (
       <GenericModal isOpen={isOpen} onClose={onClose} title="Say hello">

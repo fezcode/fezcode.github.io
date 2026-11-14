@@ -11,6 +11,7 @@ import {
 import { Link } from 'react-router-dom';
 import '../styles/Orbit.css';
 import '../styles/Knit.css';
+import '../styles/Bliss.css';
 import { KnitText, KnitIcon, YARN } from './knit';
 
 const Toast = ({
@@ -61,6 +62,86 @@ const Toast = ({
     }, duration);
     return () => clearTimeout(timer);
   }, [id, duration, removeToast]);
+
+  if (theme === 'bliss') {
+    // A notification-area balloon.
+    const Icon =
+      type === 'error'
+        ? WarningCircleIcon
+        : type === 'gold'
+          ? TrophyIcon
+          : type === 'techno'
+            ? TerminalIcon
+            : CheckCircleIcon;
+    const blissLink = 'bl-btn bl-btn-sm';
+    return (
+      <div
+        className="bl-toast bl-balloon w-80 md:w-96 max-w-[calc(100vw-2rem)] mb-4"
+        role={type === 'error' ? 'alert' : 'status'}
+      >
+        <div className="flex items-start gap-3">
+          <Icon
+            size={22}
+            weight="fill"
+            className="shrink-0 mt-0.5"
+            color={type === 'error' ? '#e0502c' : type === 'gold' ? '#d99a0b' : '#1e5fe0'}
+            aria-hidden="true"
+          />
+          <div className="min-w-0 flex-1">
+            <h4 className="m-0 text-sm font-bold">{title}</h4>
+            <p className="text-sm mt-1 mb-0">{message}</p>
+            {links?.length > 0 && (
+              <div className="flex flex-wrap gap-2 mt-3">
+                {links.map((link, i) =>
+                  link.to ? (
+                    <Link
+                      key={i}
+                      to={link.to}
+                      className={blissLink}
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </Link>
+                  ) : link.href ? (
+                    <a
+                      key={i}
+                      href={link.href}
+                      className={blissLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => removeToast(id)}
+                    >
+                      {link.label}
+                    </a>
+                  ) : link.onClick ? (
+                    <button
+                      key={i}
+                      type="button"
+                      className={blissLink}
+                      onClick={() => {
+                        link.onClick();
+                        removeToast(id);
+                      }}
+                    >
+                      {link.label}
+                    </button>
+                  ) : null,
+                )}
+              </div>
+            )}
+          </div>
+          <button
+            type="button"
+            className="bl-tbtn bl-tbtn-close shrink-0"
+            onClick={() => removeToast(id)}
+            aria-label="Dismiss notification"
+          >
+            <XIcon size={12} weight="bold" />
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   if (theme === 'knit') {
     const knitIcon =

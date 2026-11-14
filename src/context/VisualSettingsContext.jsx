@@ -20,6 +20,7 @@ const BLOG_POST_VIEW_MODES = [
   'galley',
   'orbit',
   'knit',
+  'bliss',
 ];
 
 export const useVisualSettings = () => {

@@ -19,6 +19,7 @@ const PALETTE_NAMES = [
   'ledger',
   'orbit',
   'knit',
+  'bliss',
   'dossier',
   'dokument',
   'editorial',
