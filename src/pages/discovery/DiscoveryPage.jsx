@@ -19,22 +19,12 @@ import {
   CircleNotchIcon,
   StarIcon,
   XIcon,
-  GameControllerIcon,
-  FilmSlateIcon,
-  VinylRecordIcon,
-  BooksIcon,
-  TelevisionIcon,
-  ArticleIcon,
-  ForkKnifeIcon,
-  PlayCircleIcon,
-  QuotesIcon,
-  WrenchIcon,
-  GlobeIcon,
-  TicketIcon,
 } from '@phosphor-icons/react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import rehypeRaw from 'rehype-raw';
 import Seo from '../../components/Seo';
+import LogViewSwitch from '../../components/LogViewSwitch';
 import {
   entryPath,
   fetchDiscoveryEntries,
@@ -43,26 +33,27 @@ import {
   loadDiscoveryBody,
 } from './discoveryData';
 import useShelfWindow from './useShelfWindow';
+import CategoryImprint from './CategoryImprint';
+import { GameTray, GameLidInsert } from './GameCaseInterior';
 import './discovery.css';
 
 const PhysicalCover = lazy(() => import('./PhysicalCover'));
 
 const PAGE_SIZE = 24;
 const COVER_TRANSITION = { type: 'spring', stiffness: 180, damping: 26 };
-const MEDIUM_ICONS = {
-  game: GameControllerIcon,
-  movie: FilmSlateIcon,
-  music: VinylRecordIcon,
-  book: BooksIcon,
-  series: TelevisionIcon,
-  article: ArticleIcon,
-  food: ForkKnifeIcon,
-  video: PlayCircleIcon,
-  quote: QuotesIcon,
-  tools: WrenchIcon,
-  websites: GlobeIcon,
-  event: TicketIcon,
-};
+function EntryVideo({ src, title, allow, allowFullScreen, referrerPolicy }) {
+  return (
+    <iframe
+      className="dc-entry-video"
+      src={src}
+      title={title || 'Embedded video'}
+      allow={allow}
+      allowFullScreen={allowFullScreen}
+      referrerPolicy={referrerPolicy}
+      loading="lazy"
+    />
+  );
+}
 const dateLabel = (value) => {
   const date = new Date(value);
   return Number.isNaN(date.getTime())
@@ -95,21 +86,6 @@ function Rating({ value }) {
   );
 }
 
-const CategorySeal = React.memo(function CategorySeal({ category, label }) {
-  const CategoryIcon = MEDIUM_ICONS[category] || BookOpenIcon;
-  return (
-    <span className="dc-spine-category">
-      <span className="dc-category-seal" aria-hidden="true">
-        <CategoryIcon size={16} weight="bold" />
-        <span className="dc-category-name">
-          {category === 'websites' ? 'Web' : label}
-        </span>
-      </span>
-      <span className="sr-only">{label}</span>
-    </span>
-  );
-});
-
 function Artwork({ entry, eager = false, className = '', spine = false }) {
   const primary =
     (spine && entry.spineImage) || entry.cover || entry.fallbackCover;
@@ -136,7 +112,11 @@ function Artwork({ entry, eager = false, className = '', spine = false }) {
           height="880"
           loading={eager ? 'eager' : 'lazy'}
           decoding="async"
-          style={{ objectPosition: entry.imagePosition || 'center' }}
+          style={{
+            objectPosition: entry.imagePosition || 'center',
+            objectFit:
+              !spine && entry.coverFit === 'cover' ? 'cover' : undefined,
+          }}
           onError={() => {
             if (source === primary && primary !== entry.cover && entry.cover)
               setSource(entry.cover);
@@ -179,7 +159,10 @@ const ShelfSpine = React.memo(function ShelfSpine({
       <span className="dc-spine-light" aria-hidden="true" />
       <span className="dc-spine-title">{entry.title}</span>
       {mediaLoaded ? (
-        <CategorySeal category={entry.category} label={entry.categoryLabel} />
+        <CategoryImprint
+          category={entry.category}
+          label={entry.categoryLabel}
+        />
       ) : (
         <span
           className="dc-spine-category dc-spine-category-placeholder"
@@ -192,7 +175,22 @@ const ShelfSpine = React.memo(function ShelfSpine({
 
 function Shelf({ entries, total, openEntry, shelfRef, sentinelRef, loadMore }) {
   const windowed = useShelfWindow(shelfRef, entries.length);
+  const reducedMotion = useReducedMotion();
   const more = entries.length < total;
+  const slide = (direction) => {
+    const shelf = shelfRef.current;
+    if (!shelf) return;
+    const distance = Math.max(240, shelf.clientWidth * 0.75);
+    const move = () =>
+      shelf.scrollBy({
+        left: direction * distance,
+        behavior: reducedMotion ? 'auto' : 'smooth',
+      });
+    if (direction > 0 && windowed.visibleEnd >= entries.length && more) {
+      loadMore();
+      window.requestAnimationFrame(move);
+    } else move();
+  };
   const onKeyDown = (event) => {
     const links = [...(shelfRef.current?.querySelectorAll('.dc-spine') || [])];
     const index = links.indexOf(event.target.closest('.dc-spine'));
@@ -212,6 +210,7 @@ function Shelf({ entries, total, openEntry, shelfRef, sentinelRef, loadMore }) {
   return (
     <section className="dc-shelf-section" aria-label="Discovery shelf">
       <div
+        id="discovery-shelf-scroll"
         className="dc-shelf-scroll"
         ref={shelfRef}
         role="region"
@@ -251,6 +250,28 @@ function Shelf({ entries, total, openEntry, shelfRef, sentinelRef, loadMore }) {
           )}
         </div>
       </div>
+      {windowed.visibleStart > 0 && (
+        <button
+          type="button"
+          className="dc-shelf-edge dc-shelf-edge-left"
+          aria-label="Scroll shelf left"
+          aria-controls="discovery-shelf-scroll"
+          onClick={() => slide(-1)}
+        >
+          <ArrowLeftIcon size={20} aria-hidden="true" />
+        </button>
+      )}
+      {(windowed.visibleEnd < entries.length || more) && (
+        <button
+          type="button"
+          className="dc-shelf-edge dc-shelf-edge-right"
+          aria-label="Scroll shelf right"
+          aria-controls="discovery-shelf-scroll"
+          onClick={() => slide(1)}
+        >
+          <ArrowRightIcon size={20} aria-hidden="true" />
+        </button>
+      )}
       <p className="sr-only" role="status">
         {entries.length} of {total} discoveries, newest first
       </p>
@@ -273,29 +294,38 @@ function OpenCase({ entry, origin, open, reducedMotion }) {
       </div>
       <motion.div
         className="dc-case"
+        style={{ aspectRatio: entry.coverAspect }}
         layoutId={`${origin}-${entry.id}`}
         transition={reducedMotion ? { duration: 0 } : COVER_TRANSITION}
       >
         <div className="dc-case-content">
-          <span className="dc-case-inner-category">{entry.categoryLabel}</span>
-          <div className="dc-case-inner-symbol" aria-hidden="true">
-            {entry.category === 'music'
-              ? '◎'
-              : entry.category === 'quote'
-                ? '“'
-                : '✳'}
-          </div>
-          <h2>{entry.title}</h2>
-          {entry.credit && (
-            <span className="dc-case-inner-credit">{entry.credit}</span>
+          {entry.category === 'game' ? (
+            <GameTray entry={entry} />
+          ) : (
+            <>
+              <span className="dc-case-inner-category">
+                {entry.categoryLabel}
+              </span>
+              <div className="dc-case-inner-symbol" aria-hidden="true">
+                {entry.category === 'music'
+                  ? '◎'
+                  : entry.category === 'quote'
+                    ? '“'
+                    : '✳'}
+              </div>
+              <h2>{entry.title}</h2>
+              {entry.credit && (
+                <span className="dc-case-inner-credit">{entry.credit}</span>
+              )}
+              <p>
+                {entry.description || 'A discovery worth keeping on the shelf.'}
+              </p>
+              <div className="dc-case-inner-footer">
+                <Rating value={entry.rating} />
+                <span>{dateLabel(entry.date)}</span>
+              </div>
+            </>
           )}
-          <p>
-            {entry.description || 'A discovery worth keeping on the shelf.'}
-          </p>
-          <div className="dc-case-inner-footer">
-            <Rating value={entry.rating} />
-            <span>{dateLabel(entry.date)}</span>
-          </div>
         </div>
         <motion.div
           className="dc-case-lid"
@@ -312,15 +342,21 @@ function OpenCase({ entry, origin, open, reducedMotion }) {
             <span className="dc-case-edge" />
           </div>
           <div className="dc-case-lid-back">
-            <span>{entry.categoryLabel}</span>
-            <strong>
-              Some things
-              <br />
-              are worth
-              <br />
-              keeping.
-            </strong>
-            <span>Fezcodex / Discovery</span>
+            {entry.category === 'game' ? (
+              <GameLidInsert entry={entry} />
+            ) : (
+              <>
+                <span>{entry.categoryLabel}</span>
+                <strong>
+                  Some things
+                  <br />
+                  are worth
+                  <br />
+                  keeping.
+                </strong>
+                <span>Fezcodex / Discovery</span>
+              </>
+            )}
           </div>
         </motion.div>
       </motion.div>
@@ -492,20 +528,15 @@ function Showcase({
             <span className="dc-stage-word" aria-hidden="true">
               {entry.categoryLabel}
             </span>
-            <Suspense
-              fallback={
-                <OpenCase
-                  entry={entry}
-                  origin={origin}
-                  open={caseOpen}
-                  reducedMotion={reducedMotion}
-                />
-              }
-            >
-              <PhysicalCover
+            {entry.category === 'music' ? (
+              <OpenCase
                 entry={entry}
+                origin={origin}
                 open={caseOpen}
                 reducedMotion={reducedMotion}
+              />
+            ) : (
+              <Suspense
                 fallback={
                   <OpenCase
                     entry={entry}
@@ -514,8 +545,22 @@ function Showcase({
                     reducedMotion={reducedMotion}
                   />
                 }
-              />
-            </Suspense>
+              >
+                <PhysicalCover
+                  entry={entry}
+                  open={caseOpen}
+                  reducedMotion={reducedMotion}
+                  fallback={
+                    <OpenCase
+                      entry={entry}
+                      origin={origin}
+                      open={caseOpen}
+                      reducedMotion={reducedMotion}
+                    />
+                  }
+                />
+              </Suspense>
+            )}
             <button
               className="dc-cover-control"
               onClick={() => setCaseOpen((value) => !value)}
@@ -605,7 +650,11 @@ function Showcase({
             )}
             {bodyState === 'ready' && (
               <div className="dc-entry-prose">
-                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
+                  components={{ iframe: EntryVideo }}
+                >
                   {body ||
                     entry.description ||
                     'This discovery has no additional notes yet.'}
@@ -782,7 +831,7 @@ export default function DiscoveryPage() {
         if (document.fullscreenElement)
           document.exitFullscreen?.().catch(() => {});
         if (openedFromShelf.current) navigate(-1);
-        else navigate('/discovery', { replace: true });
+        else navigate('/logs', { replace: true });
         openedFromShelf.current = false;
         closeTimer.current = null;
       },
@@ -840,9 +889,22 @@ export default function DiscoveryPage() {
             'A shelf of discoveries. Games, records, films, and books, from newest to oldest.'
           }
           image={selected?.cover}
+          canonicalPath={selected ? entryPath(selected) : '/logs'}
         />
-        <main className="dc-shelf-page" inert={hasSelection ? true : undefined}>
+        <main
+          className="dc-shelf-page dc-shelf-page-with-switch"
+          inert={hasSelection ? true : undefined}
+        >
           <h1 className="sr-only">Discovery shelf</h1>
+          <Link
+            className="dc-shelf-close"
+            to="/"
+            aria-label="Close shelf"
+            title="Back to home"
+          >
+            <XIcon size={22} aria-hidden="true" />
+          </Link>
+          <LogViewSwitch view="shelf" />
           {loading ? (
             <div
               className="dc-shelf-loading"

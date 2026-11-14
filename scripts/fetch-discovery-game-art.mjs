@@ -1,18 +1,19 @@
 // Cache genuine publisher/store artwork locally for discovery shelf spines.
-// Requires network access. This never edits the discovery log metadata.
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+// Run manually: verified image paths and provenance are saved in each log's PIML.
+import { readFileSync, mkdirSync, existsSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 import piml from 'piml';
+import artwork from './lib/log-artwork.cjs';
+import { isPortraitArtwork, steamPortraitUrls } from './lib/steam-artwork.mjs';
+
+const { setLogArtwork } = artwork;
 
 const publicRoot = join(dirname(fileURLToPath(import.meta.url)), '../public');
 const outputRoot = join(publicRoot, 'images/discovery/art/game');
-const manifestPath = join(publicRoot, 'images/discovery/game-art.json');
-const sourcesPath = join(publicRoot, 'images/discovery/game-art.sources.json');
-const entries = piml.parse(
-  readFileSync(join(publicRoot, 'logs/game/game.piml'), 'utf8'),
-).logs;
+const logPath = join(publicRoot, 'logs/game/game.piml');
+const entries = piml.parse(readFileSync(logPath, 'utf8')).logs;
 const steamIds = {
   'resident-evil-requiem': 3764200,
   '007-first-light': 3768760,
@@ -33,14 +34,22 @@ const headers = {
 };
 const request = (url) =>
   fetch(url, { headers, signal: AbortSignal.timeout(20000) });
-const readJson = (path) =>
-  existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : {};
-const manifest = readJson(manifestPath);
-const sources = readJson(sourcesPath);
 const refreshLandscape = process.argv.includes('--refresh-landscape');
+const requestedSlugs = new Set(
+  process.argv
+    .filter((argument) => argument.startsWith('--slug='))
+    .map((argument) => argument.slice('--slug='.length)),
+);
 mkdirSync(outputRoot, { recursive: true });
 
-async function saveImage(entry, url, sourcePage, sourceTitle) {
+function providerFor(page) {
+  if (/steampowered\.com/.test(page || '')) return 'Steam store artwork';
+  if (/nintendo\.com/.test(page || '')) return 'Nintendo store artwork';
+  if (/github\.com/.test(page || '')) return 'Publisher repository artwork';
+  return 'Publisher website artwork';
+}
+
+async function saveImage(entry, url, sourcePage, sourceTitle, existingSource) {
   const response = await request(url);
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   if (!response.headers.get('content-type')?.startsWith('image/'))
@@ -54,6 +63,14 @@ async function saveImage(entry, url, sourcePage, sourceTitle) {
     metadata.height < 100
   )
     throw new Error('Image too small');
+  if (
+    !existingSource &&
+    /steampowered\.com/.test(sourcePage || '') &&
+    !isPortraitArtwork(metadata)
+  )
+    throw new Error(
+      'Store banner rejected: a portrait library cover is required',
+    );
   const file = `${entry.slug}.webp`;
   await sharp(image)
     .rotate()
@@ -65,15 +82,20 @@ async function saveImage(entry, url, sourcePage, sourceTitle) {
     })
     .webp({ quality: 89 })
     .toFile(join(outputRoot, file));
-  manifest[entry.slug] = `/images/discovery/art/game/${file}`;
-  sources[entry.slug] = {
-    title: entry.title,
-    sourceTitle,
-    sourcePage,
-    imageUrl: url,
-    width: metadata.width,
-    height: metadata.height,
-  };
+  // Decode the completed asset before exposing it through the log metadata.
+  await sharp(join(outputRoot, file)).raw().toBuffer();
+  setLogArtwork(logPath, entry.slug, {
+    image: `/images/discovery/art/game/${file}`,
+    imageSource: {
+      ...existingSource,
+      provider: existingSource?.provider || providerFor(sourcePage),
+      page: sourcePage,
+      url,
+      title: sourceTitle,
+      width: metadata.width,
+      height: metadata.height,
+    },
+  });
 }
 
 const decode = (value) =>
@@ -102,16 +124,33 @@ async function officialImages(page) {
 }
 
 async function loadEntry(entry) {
-  const existing = manifest[entry.slug];
+  const existing = typeof entry.image === 'string' ? entry.image : '';
   if (
-    existing &&
+    existing.startsWith('/') &&
+    !existing.startsWith('/images/defaults/') &&
     existsSync(join(publicRoot, existing.slice(1))) &&
     !(
       refreshLandscape &&
-      sources[entry.slug]?.width > sources[entry.slug]?.height
+      existing.startsWith('/images/discovery/art/game/') &&
+      entry.imageSource?.width > entry.imageSource?.height
     )
   )
     return 'cached';
+  // Cache exactly the editor's selected artwork rather than replacing it with
+  // a store edition. Explicit local authored covers are retained above.
+  if (
+    /^https?:\/\//.test(existing) &&
+    !/\/\/(?:i\.ytimg\.com|img\.youtube\.com)\//i.test(existing)
+  ) {
+    await saveImage(
+      entry,
+      existing,
+      entry.imageSource?.page || entry.link || existing,
+      entry.imageSource?.title || entry.title,
+      { provider: 'Authored artwork URL', ...entry.imageSource },
+    );
+    return 'downloaded';
+  }
   const steamId =
     entry.link?.match(/store\.steampowered\.com\/app\/(\d+)/)?.[1] ||
     steamIds[entry.slug];
@@ -176,10 +215,7 @@ async function loadEntry(entry) {
         )
       ).json();
       const assets = itemResponse.response?.store_items?.[0]?.assets;
-      if (assets?.asset_url_format && assets.library_capsule)
-        candidates.push(
-          assets.asset_url_format.replace('{FILENAME}', assets.library_capsule),
-        );
+      candidates.unshift(...steamPortraitUrls(assets));
     } catch {
       /* Legacy Steam asset paths below work for older titles. */
     }
@@ -246,12 +282,15 @@ async function loadEntry(entry) {
   );
 }
 
+const selectedEntries = requestedSlugs.size
+  ? entries.filter((entry) => requestedSlugs.has(entry.slug))
+  : entries;
 const failures = [];
 let cursor = 0;
 await Promise.all(
   Array.from({ length: 4 }, async () => {
-    while (cursor < entries.length) {
-      const entry = entries[cursor++];
+    while (cursor < selectedEntries.length) {
+      const entry = selectedEntries[cursor++];
       try {
         await loadEntry(entry);
       } catch (error) {
@@ -261,15 +300,16 @@ await Promise.all(
     }
   }),
 );
-writeFileSync(
-  manifestPath,
-  `${JSON.stringify(Object.fromEntries(Object.entries(manifest).sort()), null, 2)}\n`,
-);
-writeFileSync(
-  sourcesPath,
-  `${JSON.stringify(Object.fromEntries(Object.entries(sources).sort()), null, 2)}\n`,
-);
+const covered = piml
+  .parse(readFileSync(logPath, 'utf8'))
+  .logs.filter(
+    (entry) =>
+      typeof entry.image === 'string' &&
+      entry.image.startsWith('/') &&
+      !entry.image.startsWith('/images/defaults/') &&
+      existsSync(join(publicRoot, entry.image.slice(1))),
+  ).length;
 console.log(
-  `${Object.keys(manifest).length}/${entries.length} verified game images cached. ${failures.length} unresolved.`,
+  `${covered}/${entries.length} game images cached in log metadata. ${failures.length} unresolved.`,
 );
 if (failures.length) process.exitCode = 1;

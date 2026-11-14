@@ -13,6 +13,7 @@ import PhysicalCover from './PhysicalCover';
 const gpu = vi.hoisted(() => ({
   renderers: [],
   loads: [],
+  contexts: [],
   observers: [],
   frames: new Map(),
   nextFrame: 0,
@@ -100,6 +101,7 @@ function flushFrame(time = 2000) {
 beforeEach(() => {
   gpu.renderers.length = 0;
   gpu.loads.length = 0;
+  gpu.contexts.length = 0;
   gpu.observers.length = 0;
   gpu.frames.clear();
   gpu.nextFrame = 0;
@@ -139,18 +141,22 @@ beforeEach(() => {
     }),
   );
   vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockImplementation(
-    (type) => {
+    function (type) {
       if (type !== '2d') return null;
-      return {
+      const context = {
         fillRect: vi.fn(),
         fillText: vi.fn(),
+        drawImage: vi.fn(),
         beginPath: vi.fn(),
         arc: vi.fn(),
         stroke: vi.fn(),
         fill: vi.fn(),
         measureText: (text) => ({ width: text.length * 16 }),
         createRadialGradient: () => ({ addColorStop: vi.fn() }),
+        createLinearGradient: () => ({ addColorStop: vi.fn() }),
       };
+      gpu.contexts.push({ canvas: this, context });
+      return context;
     },
   );
 });
@@ -238,6 +244,184 @@ describe('physical discovery covers', () => {
       expect(renderer.setSize).toHaveBeenLastCalledWith(390, 490, false);
     },
   );
+
+  it.each([
+    ['game', 460, 215],
+    ['game', 600, 900],
+    ['book', 900, 1800],
+    ['music', 1200, 1200],
+    ['music', 600, 900],
+  ])(
+    'preserves the complete %s artwork at %i × %i without stretching',
+    (category, width, height) => {
+      render(<PhysicalCover entry={{ ...entry, category }} />);
+      const loaded = gpu.loads[0];
+      loaded.texture.image = { width, height };
+      act(() => loaded.onLoad(loaded.texture));
+      flushFrame();
+      expect(gpu.loads).toHaveLength(1);
+      const { canvas, context } = gpu.contexts.find(
+        ({ context }) => context.drawImage.mock.calls.length,
+      );
+      const [image, left, top, drawnWidth, drawnHeight] =
+        context.drawImage.mock.calls[0];
+      // The five-argument draw call uses the entire source, including titles
+      // at its edges. Bounds and aspect checks catch cropped or stretched art.
+      expect(context.drawImage.mock.calls[0]).toHaveLength(5);
+      expect(image).toBe(loaded.texture.image);
+      expect(left).toBeGreaterThanOrEqual(-0.001);
+      expect(top).toBeGreaterThanOrEqual(-0.001);
+      expect(left + drawnWidth).toBeLessThanOrEqual(canvas.width + 0.001);
+      expect(top + drawnHeight).toBeLessThanOrEqual(canvas.height + 0.001);
+      expect(drawnWidth / drawnHeight).toBeCloseTo(width / height, 5);
+      expect(
+        Math.min(
+          Math.abs(drawnWidth - canvas.width),
+          Math.abs(drawnHeight - canvas.height),
+        ),
+      ).toBeLessThan(0.001);
+      expect(gpu.frames.size).toBe(0);
+    },
+  );
+
+  it('crops artwork only when the entry explicitly requests a filled cover', () => {
+    render(
+      <PhysicalCover
+        entry={{ ...entry, coverFit: 'cover', imagePosition: '0% 50%' }}
+      />,
+    );
+    const loaded = gpu.loads[0];
+    loaded.texture.image = { width: 460, height: 215 };
+    act(() => loaded.onLoad(loaded.texture));
+    const { canvas, context } = gpu.contexts.find(
+      ({ context }) => context.drawImage.mock.calls.length,
+    );
+    const [, left, top, width, height] = context.drawImage.mock.calls[0];
+    expect(left).toBeCloseTo(0, 10);
+    expect(top).toBeCloseTo(0, 10);
+    expect(height).toBe(canvas.height);
+    expect(width).toBeGreaterThan(canvas.width);
+    expect(width / height).toBeCloseTo(460 / 215, 5);
+  });
+
+  it('uses the fallback image if a loaded artwork cannot be painted safely', () => {
+    render(<PhysicalCover entry={entry} />);
+    const originalGetContext =
+      HTMLCanvasElement.prototype.getContext.getMockImplementation();
+    vi.spyOn(HTMLCanvasElement.prototype, 'getContext').mockImplementation(
+      function (type) {
+        const context = originalGetContext.call(this, type);
+        context.drawImage.mockImplementationOnce(() => {
+          throw new DOMException('Cross-origin artwork', 'SecurityError');
+        });
+        return context;
+      },
+    );
+    act(() => gpu.loads[0].onLoad(gpu.loads[0].texture));
+    expect(gpu.loads[1].url).toBe(entry.fallbackCover);
+    expect(wrapper()).toHaveAttribute('data-renderer', 'webgl');
+  });
+
+  it('disposes the fitted artwork with the physical scene', () => {
+    const { unmount } = render(<PhysicalCover entry={entry} />);
+    act(() => gpu.loads[0].onLoad(gpu.loads[0].texture));
+    flushFrame();
+    const { canvas } = gpu.contexts.find(
+      ({ context }) => context.drawImage.mock.calls.length,
+    );
+    let fitted;
+    gpu.renderers[0].scene.traverse((object) => {
+      if (object.material?.map?.image === canvas) fitted = object.material.map;
+    });
+    expect(fitted).toBeDefined();
+    const dispose = vi.spyOn(fitted, 'dispose');
+    unmount();
+    expect(dispose).toHaveBeenCalledTimes(1);
+  });
+
+  it('occludes the disc hub behind the closed lid and reveals it when opened', () => {
+    const { rerender } = render(<PhysicalCover entry={entry} reducedMotion />);
+    flushFrame();
+    const renderer = gpu.renderers[0];
+    const [, lid] = renderer.scene.getObjectsByProperty('isGroup', true);
+    const front = lid
+      .getObjectsByProperty('isMesh', true)
+      .find(
+        (object) =>
+          object.geometry?.type === 'PlaneGeometry' && object.position.z > 0,
+      );
+    const hub = renderer.scene
+      .getObjectsByProperty('isMesh', true)
+      .find(
+        (object) =>
+          object.geometry.type === 'CylinderGeometry' &&
+          object.geometry.parameters.radiusTop === 0.068,
+      );
+    const firstSurface = () => {
+      const direction = hub
+        .getWorldPosition(new THREE.Vector3())
+        .sub(renderer.camera.position)
+        .normalize();
+      return new THREE.Raycaster(
+        renderer.camera.position,
+        direction,
+      ).intersectObjects([front, hub], false)[0]?.object;
+    };
+    expect(new THREE.Box3().setFromObject(hub).max.z).toBeLessThan(
+      front.getWorldPosition(new THREE.Vector3()).z - 0.001,
+    );
+    expect(firstSurface()).toBe(front);
+    rerender(<PhysicalCover entry={entry} open reducedMotion />);
+    flushFrame();
+    expect(firstSurface()).toBe(hub);
+  });
+
+  it('reuses game artwork for its cover, printed disc and illustrated notes without extra image requests', () => {
+    const { unmount } = render(
+      <PhysicalCover entry={entry} open reducedMotion />,
+    );
+    const loaded = gpu.loads[0];
+    act(() => loaded.onLoad(loaded.texture));
+    flushFrame();
+    expect(gpu.loads).toHaveLength(1);
+    const scene = gpu.renderers[0].scene;
+    const [, lid] = scene.getObjectsByProperty('isGroup', true);
+    const front = lid
+      .getObjectsByProperty('isMesh', true)
+      .find(
+        (object) =>
+          object.geometry?.type === 'PlaneGeometry' && object.position.z > 0,
+      );
+    const notes = lid
+      .getObjectsByProperty('isMesh', true)
+      .find(
+        (object) =>
+          object.geometry?.type === 'PlaneGeometry' && object.position.z < 0,
+      );
+    const disc = scene
+      .getObjectsByProperty('isMesh', true)
+      .find((object) => object.geometry.type === 'RingGeometry');
+    const textures = [
+      front.material.map,
+      notes.material.map,
+      disc.material.map,
+    ];
+    expect(new Set(textures).size).toBe(3);
+    for (const texture of textures) {
+      const drawing = gpu.contexts.find(
+        ({ canvas, context }) =>
+          canvas === texture.image && context.drawImage.mock.calls.length,
+      );
+      expect(drawing).toBeDefined();
+      expect(drawing.context.drawImage.mock.calls[0][0]).toBe(
+        loaded.texture.image,
+      );
+      expect(texture.colorSpace).toBe(THREE.SRGBColorSpace);
+    }
+    const dispose = textures.map((texture) => vi.spyOn(texture, 'dispose'));
+    unmount();
+    dispose.forEach((spy) => expect(spy).toHaveBeenCalledTimes(1));
+  });
 
   it('tries local fallback artwork and releases the scene if both sources fail', () => {
     const { unmount } = render(

@@ -20,6 +20,7 @@ import { CloudMusicProvider } from './context/CloudMusicContext';
 import { DndProvider } from './context/DndContext';
 import TinyCloudPlayer from './app/apps/CloudMusicPlayer/components/TinyCloudPlayer';
 import { MotionConfig } from 'framer-motion';
+import { isShelfLogLocation } from './utils/discoveryMode';
 
 const DiscoveryPage = lazy(() => import('./pages/discovery/DiscoveryPage'));
 
@@ -33,9 +34,8 @@ const MotionConfigWrapper = ({ children }) => {
 };
 
 function App() {
-  const { pathname } = useLocation();
-  const isDiscoveryPage =
-    pathname === '/discovery' || pathname.startsWith('/discovery/');
+  const location = useLocation();
+  const isDiscoveryPage = isShelfLogLocation(location);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isGenericModalOpen, setIsGenericModalOpen] = useState(false);
@@ -114,6 +114,10 @@ function App() {
                             >
                               {/* One unkeyed route retains the feed while a showcase opens. */}
                               <Routes>
+                                <Route
+                                  path="/logs"
+                                  element={<DiscoveryPage />}
+                                />
                                 <Route
                                   path="/discovery/:category?/:slug?"
                                   element={<DiscoveryPage />}

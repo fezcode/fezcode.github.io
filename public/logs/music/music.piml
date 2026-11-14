@@ -8,7 +8,11 @@
     (slug) hooverphonic-eden
     (title) Eden
     (album) Blue Wonder Power Milk
-    (image) https://i.ytimg.com/vi/bWPOLL_Rr8U/maxresdefault.jpg
+    (image) /images/discovery/art/music/hooverphonic-eden.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/blue-wonder-power-milk/429357998?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music/c9/29/5c/mzi.fymyqpci.jpg/1000x1000bb.jpg
     (description) Hooverphonic's 1998 single from Blue Wonder Power Milk, with Geike Arnaert's voice over still strings and a slow trip-hop beat. A cold song, beautiful because of its distance, and straight to the point at three and a half minutes. The French horn cutting through the strings is the most beautiful thing on the record.
   > (item)
     (category) Music
@@ -16,10 +20,27 @@
     (link) https://open.spotify.com/search/Dawn%20FM%20The%20Weeknd
     (rating) 5
     (slug) the-weeknd-dawn-fm
+    (coverAspect) 9 / 16
+    (coverFit) cover
     (title) Dawn FM (Album)
     (artist) The Weeknd
     (album) Dawn FM
-    (image) https://upload.wikimedia.org/wikipedia/en/b/b9/The_Weeknd_-_Dawn_FM.png
+    (image) /images/discovery/art/music/the-weeknd-dawn-fm-original.webp
+    (imageSource)
+      (provider) Apple Music — original album artwork
+      (page) https://music.apple.com/us/album/dawn-fm/1603164027
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/92/14/e3/9214e352-3322-3708-4903-cf5059c4985f/21UM1IM58861.rgb.jpg/1200x1200bb.jpg
+      (title) Dawn FM — original album cover
+      (width) 1200
+      (height) 1200
+      (alternative)
+        (image) /images/discovery/art/music/the-weeknd-dawn-fm-collectors-02.webp
+        (provider) Cover Art Archive — official Collector’s Edition 02 artwork
+        (page) https://www.republicrecords.com/products/the-weeknd-dawn-fm-collectors-02-2lp
+        (url) https://coverartarchive.org/release/eb46aefa-86ab-4e5b-8d17-e2f081629795/front-1200
+        (title) Dawn FM — Collector’s Edition 02
+        (width) 1200
+        (height) 1198
     (description) The Weeknd's fifth studio album (2022) — a late-night radio broadcast for the drive towards the light, hosted by Jim Carrey, with Quincy Jones telling a story halfway through. Max Martin and Oneohtrix Point Never shape the 80s synth-pop gloss, and "Take My Breath", "Out of Time" and "Less than Zero" are the peaks. An album about death that is the most peaceful thing I have listened to. A masterpiece.
   > (item)
     (category) Music
@@ -30,7 +51,11 @@
     (title) Rüyalarda Buruşmuşuz (Album)
     (artist) Adamlar
     (album) Rüyalarda Buruşmuşuz
-    (image) https://images.genius.com/7e410322f5a95b7f2c1c5bd0a1dc0e1c.1000x1000x1.png
+    (image) /images/discovery/art/music/adamlar-ruyalarda-burusmusuz.webp
+    (imageSource)
+      (provider) Authored album artwork URL
+      (page) https://open.spotify.com/album/1A4oBX00tNGOO7k4jC5HEt
+      (url) https://images.genius.com/7e410322f5a95b7f2c1c5bd0a1dc0e1c.1000x1000x1.png
     (description) Adamlar's second studio album (2016) — nine tracks of Turkish alternative rock with blues-rock swagger, psychedelic drift, and Tolga Akdoğan's wry, wounded lyrics. "Rüyalarda Buruşmuşum" and "Orda Ortada" are the peaks. Thirty-five minutes with nothing wasted.
   > (item)
     (category) Music
@@ -41,6 +66,11 @@
     (title) Trains
     (artist) Porcupine Tree
     (album) In Absentia
+    (image) /images/discovery/art/music/porcupine-tree-trains.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/in-absentia/1770062036?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/56/64/60/5664605d-0cc3-cb53-09f9-fbef934fa30b/802644401669.jpg/1000x1000bb.jpg
     (description) The crown jewel of 'In Absentia' (2002). An acoustic-to-prog-thunder odyssey that earns every minute of its runtime, complete with the most beloved hand-clap section in modern prog rock.
   > (item)
     (category) Music
@@ -50,6 +80,11 @@
     (slug) rococco-kansai-midnight-club-ii
     (title) Rococco
     (artist) Kansai
+    (image) /images/discovery/art/music/rococco-kansai-midnight-club-ii.webp
+    (imageSource)
+      (provider) Authored YouTube video artwork
+      (page) https://www.youtube.com/watch?v=Ulg7bUbvLZU
+      (url) https://i.ytimg.com/vi/Ulg7bUbvLZU/hqdefault.jpg
     (description) The definitive 'Midnight Club II' anthem. A 5/5 masterpiece of atmospheric tech-trance that defined an era of digital speed.
   > (item)
     (category) Music
@@ -59,6 +94,11 @@
     (slug) born-to-die-lana-del-rey
     (title) Born To Die (Album)
     (artist) Lana Del Rey
+    (image) /images/discovery/art/music/born-to-die-lana-del-rey.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/born-to-die/1779781213?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/59/10/66/591066ea-3c85-3dfe-ef82-ffdbbcdfc8b9/12UMGIM00033.rgb.jpg/1000x1000bb.jpg
     (description) A cinematic plunge into "sadcore" pop. Highlights include the sweeping 'Ride' and the bouncy, dangerous 'Diet Mountain Dew'.
   > (item)
     (category) Music
@@ -67,7 +107,11 @@
     (rating) 5
     (slug) dying-light-ost
     (title) Dying Light Original Soundtrack
-    (image)
+    (image) /images/discovery/art/music/dying-light-ost.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Dying_Light
+      (url) https://upload.wikimedia.org/wikipedia/en/c/c0/Dying_Light_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) An atmospheric and melancholic survival horror OST by Pawel Blaszczak, drawing inspiration from 70s and 80s cinema.
     (album) Dying Light OST
     (artist) Pawel Blaszczak
@@ -80,6 +124,11 @@
     (slug) pogo-digitalism
     (title) Pogo
     (album) Idealism
+    (image) /images/discovery/art/music/pogo-digitalism.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/idealism/1732993959?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/9b/8d/71/9b8d7104-325c-0a86-cfa9-dbdfd5703d1c/0602537210381_3000.jpg/1000x1000bb.jpg
     (description) A cornerstone of mid-2000s electro-house, Digitalism's "Pogo" is an energetic, indie-infused anthem that remains a dancefloor staple and a nostalgic trip for FIFA fans.
   > (item)
     (artist) Madvillain (MF DOOM & Madlib)
@@ -90,6 +139,11 @@
     (slug) madvillainy
     (title) Madvillainy
     (album) Madvillainy
+    (image) /images/discovery/art/music/madvillainy.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/madvillainy-instrumentals/41655332?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/18/b4/9a/18b49ad5-6407-7169-27f4-d1c8bcb5504b/s05.nqwebndj.jpg/1000x1000bb.jpg
     (description) Madvillainy is the result of the legendary collaboration between MF DOOM and Madlib. It's a non-linear, sample-heavy masterpiece that redefined independent hip-hop.
   > (item)
     (artist) The Away Days
@@ -100,6 +154,11 @@
     (slug) dreamed-at-dawn
     (title) Dreamed at Dawn
     (album) Dreamed at Dawn
+    (image) /images/discovery/art/music/dreamed-at-dawn.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/tr/album/dreamed-at-dawn/1183752753?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music71/v4/67/ff/eb/67ffeb5f-e3cb-1100-d919-88cf4bc6b345/cover.jpg/1000x1000bb.jpg
     (description) The Away Days' debut album "Dreamed at Dawn" is a masterpiece of Turkish dream pop and shoegaze. It beautifully captures the atmosphere of Istanbul with its shimmering guitars and haunting synths.
   > (item)
     (artist) Gorillaz
@@ -110,6 +169,11 @@
     (slug) gorillaz-stylo
     (title) Stylo
     (album) Plastic Beach
+    (image) /images/discovery/art/music/gorillaz-stylo.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/plastic-beach-deluxe-version/859841880?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7e/69/1f/7e691f10-3cc1-67ec-5dc3-df3d8df68fa7/5099962829359.jpg/1000x1000bb.jpg
     (description) "Stylo" by Gorillaz, a track from their 2010 album "Plastic Beach," features a surprising and memorable appearance by Bruce Willis in its music video. His role adds a unique, high-octane chase element to the animated world of Gorillaz, creating a truly shocking and entertaining experience for viewers.
   > (item)
     (artist) Borislav Slavov
@@ -120,6 +184,11 @@
     (slug) knights-of-honor-soundtrack
     (title) Knights of Honor Soundtrack
     (album) Knights of Honor Soundtrack
+    (image) /images/discovery/art/music/knights-of-honor-soundtrack.webp
+    (imageSource)
+      (provider) Authored YouTube video artwork
+      (page) https://www.youtube.com/watch?v=SJlRgrF-9H0&list=PL657B57BE3ED8F951&index=4
+      (url) https://i.ytimg.com/vi/SJlRgrF-9H0/hqdefault.jpg
     (description) The original soundtrack for the grand strategy game Knights of Honor, composed by Borislav Slavov. A medieval masterpiece that blends traditional acoustic instruments with epic orchestral arrangements.
   > (item)
     (artist) Chris Haigh, Waterflame, Denny Schneidemesser
@@ -130,6 +199,11 @@
     (slug) stick-war-ost
     (title) Stick War Original Soundtrack
     (album) Stick War OST
+    (image) /images/discovery/art/music/stick-war-ost.webp
+    (imageSource)
+      (provider) Authored YouTube video artwork
+      (page) https://www.youtube.com/watch?v=jZ2P4G5J6BY
+      (url) https://i.ytimg.com/vi/jZ2P4G5J6BY/hqdefault.jpg
     (description) The complete original soundtrack for the legendary 2009 Flash game Stick War, featuring iconic tracks by Chris Haigh, Waterflame, and Denny Schneidemesser.
   > (item)
     (artist) Kalandra
@@ -141,6 +215,9 @@
     (title) Kingdom Two Crowns: Norse Lands Soundtrack (Extended)
     (album) Kingdom Two Crowns: Norse Lands Soundtrack (Extended)
     (image) /images/logs/music/kingdom-two-crowns-norse-lands-soundtrack-extended-cover.png
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/music/kingdom-two-crowns-norse-lands-soundtrack-extended-cover.png
     (description) The official soundtrack for the "Norse Lands" DLC of the critically acclaimed strategy game, Kingdom Two Crowns.
   > (item)
     (artist) KIDS SEE GHOSTS (Kanye West & Kid Cudi)
@@ -152,6 +229,9 @@
     (title) KIDS SEE GHOSTS (album)
     (album) KIDS SEE GHOSTS
     (image) /images/logs/music/kids-see-ghosts-cover.png
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/music/kids-see-ghosts-cover.png
     (description) KIDS SEE GHOSTS is the eponymous debut studio album by American hip hop super-duo Kids See Ghosts, composed of Kanye West and Kid Cudi. Released on June 8, 2018, by G.O.O.D. Music and Def Jam Recordings.
   > (item)
     (artist) Benny the Butcher & J. Cole
@@ -162,6 +242,11 @@
     (slug) johnny-ps-caddy
     (title) Johnny P's Caddy
     (album) Tana Talk 4
+    (image) /images/discovery/art/music/johnny-ps-caddy.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/tana-talk-4/1613877272?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/e9/bd/de/e9bdde69-ff3d-49b0-54b6-61e61de62760/194690796425_cover.jpg/1000x1000bb.jpg
     (description) Benny the Butcher & J. Cole's "Johnny P's Caddy" is a lyrical masterclass from 'Tana Talk 4', featuring raw storytelling and J. Cole's acclaimed verse, produced by The Alchemist.
   > (item)
     (artist) EA Sports ft. Various Artist
@@ -173,6 +258,9 @@
     (title) Music from FIFA 99
     (album) FIFA 99 (Soundtrack)
     (image) /images/logs/games/fifa99.jpg
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/games/fifa99.jpg
     (description) Songs from my favorite FIFA game, including Raincry by God Within, Rockafella Skank by Fatboy Slim, Gotta Learn by Danmass. Also a quick memorial, about John Motson... John Motson (1945-2023) was a renowned English football commentator for the BBC, easily recognizable by his distinctive voice and his iconic sheepskin coat. Over his extensive career, he commented on more than 2000 games, which included 10 FIFA World Cups and 29 FA Cup finals. He retired from the BBC in 2018 and was honored with an OBE in 2001 for his outstanding services to sports broadcasting.
   > (item)
     (artist) Kärtsy Hatakka & Kimmo Kajasto
@@ -183,7 +271,11 @@
     (slug) maxs-choice-duty-vs-passion
     (title) Max's Choice: Duty vs. Passion
     (album) Max Payne 2: The Fall of Max Payne (Soundtrack)
-    (image) /images/defaults/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg
+    (image) /images/discovery/art/music/maxs-choice-duty-vs-passion.webp
+    (imageSource)
+      (provider) Authored YouTube video artwork
+      (page) https://www.youtube.com/watch?v=spK_F8zsttI
+      (url) https://i.ytimg.com/vi/spK_F8zsttI/hqdefault.jpg
     (description) A powerful theme song from Max Payne 2 by Finnish composers Kärtsy Hatakka and Kimmo Kajasto. It masterfully evokes the game's dark, noir atmosphere with its melancholic cello, haunting piano, and electronic elements, creating a lasting sense of dread and despair.
   > (item)
     (artist) Dhanush
@@ -195,7 +287,11 @@
     (title) Why This Kolaveri Di
     (album) 3 (Soundtrack)
     (releaseDate) 2011-11-16
-    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (image) /images/discovery/art/music/dhanush-why-this-kolaveri-di.webp
+    (imageSource)
+      (provider) Authored YouTube video artwork
+      (page) https://www.youtube.com/watch?v=Ja168gMpb3o
+      (url) https://i.ytimg.com/vi/Ja168gMpb3o/hqdefault.jpg
     (description) "Why This Kolaveri Di" is a Tamil-English (Tanglish) song by Dhanush about a heartbroken man's unrequited love. It became an internet sensation due2 to its catchy tune, relatable lyrics, and viral spread through social media, with Dhanush's unpolished vocals adding to its charm.
   > (item)
     (artist) Yoo Se Yoon
@@ -208,6 +304,9 @@
     (album) Don't Skip the Interlude
     (releaseDate) 2025-08-29
     (image) /images/logs/music/dont-skip-the-interlude.png
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/music/dont-skip-the-interlude.png
     (description) "Don't Skip the Interlude" by Yoo Se Yoon is a comedic musical track that cleverly contrasts heartfelt lyrics about love with a deliberately long and humorous instrumental interlude. Known for its comedic intent and visual gags during performances, the song's prolonged interlude is central to its entertaining and funny experience.
   > (item)
     (artist) frederic
@@ -219,7 +318,11 @@
     (title) oddloop
     (album) Oddloop
     (releaseDate) 2014-09-23
-    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (image) /images/discovery/art/music/frederic-oddloop.webp
+    (imageSource)
+      (provider) Authored YouTube video artwork
+      (page) https://www.youtube.com/watch?v=PCp2iXA1uLE
+      (url) https://i.ytimg.com/vi/PCp2iXA1uLE/hqdefault.jpg
     (description) "Oddloop" is a popular song by Japanese rock band frederic, formed by twin brothers Kenji and Koji Mihara. Known for its upbeat, disco-funk inspired style and a music video with over 100 million views, the song's title combines "dance" (odoru) with "odd loop." It was released as an EP in 2014, marking their major debut, and was featured as the ending theme for the *Yamada-kun and the Seven Witches* OVA.
   > (item)
     (artist) Morcheeba
@@ -229,7 +332,11 @@
     (rating) 5
     (slug) morcheeba-easier-said-than-done
     (title) Easier Said Than Done
-    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (image) /images/discovery/art/music/morcheeba-easier-said-than-done.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/head-up-high/1444319074?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/6b/6e/d4/6b6ed4bf-dfc8-09d9-76db-71cd0226841c/cover.jpg/1000x1000bb.jpg
     (description) "Easier Said Than Done" is a song by British electronic band Morcheeba, featuring the return of lead singer Skye Edwards. From their commercially successful album "Blood Like Lemonade," the track explores the common human struggle of knowing what to do but finding it difficult to act upon it.
   > (item)
     (artist) Neutral Milk Hotel
@@ -239,7 +346,11 @@
     (rating) 5
     (slug) in-the-aeroplane-over-the-sea
     (title) In the Aeroplane Over the Sea
-    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (image) /images/discovery/art/music/in-the-aeroplane-over-the-sea.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/in-the-aeroplane-over-the-sea/1839077554?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/12/e3/5c/12e35c39-de5c-b501-3ef0-00f19fb3d513/56627.jpg/1000x1000bb.jpg
     (description) "In the Aeroplane Over the Sea" is a highly-rated song by Neutral Milk Hotel.
   > (item)
     (artist) Special Ed
@@ -250,16 +361,24 @@
     (slug) special-ed-neva-go-back
     (title) Neva Go Back
     (album) Revelations
-    (image) /images/defaults/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg
+    (image) /images/discovery/art/music/special-ed-neva-go-back.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/revelations/1239560635?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music117/v4/a4/12/2c/a4122cf3-411a-e38f-0226-2a7f6af3fbf4/886446260600.jpg/1000x1000bb.jpg
     (description) "Neva Go Back" by Special Ed is a hip-hop track from the album "Revelations," known for its evocative lyrics and classic East Coast sound. The song reflects on past experiences and personal growth, urging listeners to move forward and not dwell on previous mistakes or hardships.
   > (item)
     (artist) De La Soul
     (category) Music
     (date) 2025-09-24
-    (link) https://www.youtube.com/watch?v=N63C-30W8k4
+    (link) https://www.youtube.com/watch?v=radJQyaC5kY
     (rating) 5
     (slug) de-la-soul-stakes-is-high
     (title) Stakes Is High
     (album) Stakes Is High
-    (image) /images/defaults/marcela-laskoski-YrtFlrLo2DQ-unsplash.jpg
+    (image) /images/discovery/art/music/de-la-soul-stakes-is-high.webp
+    (imageSource)
+      (provider) Apple Music album artwork
+      (page) https://music.apple.com/us/album/stakes-is-high/1674203676?uo=4
+      (url) https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/af/4d/a5/af4da557-480f-7b38-3cb0-c8811eaabe71/810098506076.png/1000x1000bb.jpg
     (description) "Stakes Is High" is the title track from De La Soul's fourth album, a critically acclaimed record that marked a shift in their sound towards a more mature and introspective style. The song is a powerful commentary on the state of hip-hop and society, calling for a return to authenticity and artistic integrity.

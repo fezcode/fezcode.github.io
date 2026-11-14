@@ -6,7 +6,11 @@
     (rating) 3
     (slug) anatomy-of-a-fall-2023
     (title) Anatomy of a Fall (2023)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/anatomy-of-a-fall-2023.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Anatomy_of_a_Fall
+      (url) https://upload.wikimedia.org/wikipedia/en/8/88/Anatomy_of_a_Fall_%282023%29_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Justine Triet's courtroom drama about a woman accused of killing her husband after he is found dead outside their mountain home. As their son witnesses the trial, the investigation becomes an examination of the couple's marriage and the difficulty of establishing what happened.
     (director) Justine Triet
   > (item)
@@ -16,7 +20,11 @@
     (rating) 3
     (slug) one-battle-after-another-2025
     (title) One Battle After Another (2025)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/one-battle-after-another-2025.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/One_Battle_After_Another
+      (url) https://upload.wikimedia.org/wikipedia/en/5/5d/One_Battle_After_Another.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Watched on HBO Max. Meh. Well made, but never grabbed me.
     (director) Paul Thomas Anderson
   > (item)
@@ -26,7 +34,11 @@
     (rating) 3
     (slug) the-suicide-squad-2021
     (title) The Suicide Squad (2021)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/the-suicide-squad-2021.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/The_Suicide_Squad
+      (url) https://upload.wikimedia.org/wikipedia/en/6/6f/Suicide_Squad.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) James Gunn's do-over of the 2016 film: expendable supervillains dropped on Corto Maltese to destroy a Nazi-era lab. Expected it to be awful, turned out okay. Loud, gory and funny enough to be redeemable, though not great.
     (director) James Gunn
   > (item)
@@ -36,7 +48,11 @@
     (rating) 3
     (slug) we-live-in-time
     (title) We Live in Time (2024)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/we-live-in-time.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/We_Live_in_Time
+      (url) https://upload.wikimedia.org/wikipedia/en/3/32/We_live_in_time_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A tender, nonlinear romantic drama powered by undeniable chemistry between Florence Pugh and Andrew Garfield. While the fractured timeline occasionally softens the emotional gut-punch of its central health crisis, it remains an earnest, poignant, and beautifully acted exploration of love, parenthood, and making peace with the fleeting nature of time.
     (director) John Crowley
   > (item)
@@ -46,7 +62,11 @@
     (rating) 5
     (slug) the-jason-bourne-series
     (title) The Jason Bourne Series (2002–2007)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/the-jason-bourne-series.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/The_Bourne_Identity_(2002_film)
+      (url) https://upload.wikimedia.org/wikipedia/en/4/49/The_Bourne_Identity_%282002%29_US_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) The definitive modern spy action trilogy that redefined kinetic action cinema. Following amnesiac black-ops assassin Jason Bourne as he uncovers the sinister Treadstone and Blackbriar programs across three relentless, masterfully directed films.
     (director) Doug Liman, Paul Greengrass
   > (item)
@@ -56,7 +76,11 @@
     (rating) 3
     (slug) the-sheep-detectives
     (title) The Sheep Detectives (2026)
-    (image)
+    (image) /images/discovery/art/movie/the-sheep-detectives.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/The_Sheep_Detectives
+      (url) https://upload.wikimedia.org/wikipedia/en/8/8f/The_Sheep_Detectives_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A flock of sheep solves the murder of their shepherd. Charming while the premise is doing the work, but underneath it's a conventional inheritance mystery that stops needing sheep once the plot takes over.
     (director) Kyle Balda
   > (item)
@@ -66,7 +90,11 @@
     (rating) 5
     (slug) batman-mask-of-the-phantasm
     (title) Batman: Mask of the Phantasm (1993)
-    (image)
+    (image) /images/discovery/art/movie/batman-mask-of-the-phantasm.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Batman%3A_Mask_of_the_Phantasm
+      (url) https://upload.wikimedia.org/wikipedia/en/e/ea/Batman_mask_of_the_phantasm_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) ""Maybe they already have. Maybe they sent me.""
     (director) Eric Radomski, Bruce Timm
   > (item)
@@ -76,7 +104,11 @@
     (rating) 4
     (slug) black-dynamite-2009
     (title) Black Dynamite
-    (image) 
+    (image) /images/discovery/art/movie/black-dynamite-2009.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Black_Dynamite
+      (url) https://upload.wikimedia.org/wikipedia/en/8/84/Black_dynamite_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A meticulous and hilarious parody of 1970s blaxploitation cinema, filled with intentional technical gaffes and sharp wit.
     (director) Scott Sanders
   > (item)
@@ -86,7 +118,11 @@
     (rating) 4
     (slug) project-hail-mary-2026
     (title) Project Hail Mary (2026)
-    (image) 
+    (image) /images/discovery/art/movie/project-hail-mary-2026.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Project_Hail_Mary_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/3/3b/Project_Hail_Mary_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A breathtaking cinematic adaptation of Andy Weir's sci-fi masterpiece, bringing the solitary struggle of Ryland Grace and the incredible Rocky to the big screen.
     (director) Phil Lord & Christopher Miller
   > (item)
@@ -96,7 +132,11 @@
     (rating) 3
     (slug) vanilla-sky
     (title) Vanilla Sky
-    (image) 
+    (image) /images/discovery/art/movie/vanilla-sky.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Vanilla_Sky
+      (url) https://upload.wikimedia.org/wikipedia/en/2/2d/Vanilla_Sky_poster.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A mind-bending psychological thriller that explores the blurred lines between reality and dreams. While visually striking and ambitious, it occasionally feels overly convoluted.
     (director) Cameron Crowe
   > (item)
@@ -106,7 +146,11 @@
     (rating) 5
     (slug) die-hard
     (title) Die Hard
-    (image) 
+    (image) /images/discovery/art/movie/die-hard.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Die_Hard
+      (url) https://upload.wikimedia.org/wikipedia/en/c/ca/Die_Hard_%281988_film%29_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) The blueprint for the perfect action movie. Grounded, vulnerable, and perfectly paced.
     (director) John McTiernan
   > (item)
@@ -116,7 +160,11 @@
     (rating) 4
     (slug) the-hunt-for-red-october
     (title) The Hunt for Red October
-    (image) 
+    (image) /images/discovery/art/movie/the-hunt-for-red-october.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/The_Hunt_for_Red_October_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/3/36/The_Hunt_for_Red_October_movie_poster.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A masterclass in tension, spatial geometry, and technical authenticity. The zenith of the submarine thriller.
     (director) John McTiernan
   > (item)
@@ -126,7 +174,11 @@
     (rating) 4
     (slug) twinless-2025
     (title) Twinless
-    (image) 
+    (image) /images/discovery/art/movie/twinless-2025.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Twinless_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/7/77/Twinless_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A darkly comedic exploration of grief, following a chronic liar navigating the loss of his twin through a bereavement support group.
     (director) James Sweeney
   > (item)
@@ -136,7 +188,11 @@
     (rating) 3
     (slug) balkanski-spijun-1984
     (title) Balkanski špijun (1984)
-    (image) 
+    (image) /images/discovery/art/movie/balkanski-spijun-1984.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Balkanski_%C5%A1pijun
+      (url) https://upload.wikimedia.org/wikipedia/en/2/27/Balkanski_spijun.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A legendary Yugoslav dark comedy about a paranoid man who becomes convinced his neighbor is a foreign spy, leading to a hilarious yet chilling spiral of surveillance.
     (director) Dušan Kovačević, Božidar Nikolić
   > (item)
@@ -147,6 +203,11 @@
     (rating) 3
     (slug) the-big-lebowski
     (title) The Big Lebowski (1998)
+    (image) /images/discovery/art/movie/the-big-lebowski.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/The_Big_Lebowski
+      (url) https://upload.wikimedia.org/wikipedia/en/3/35/Biglebowskiposter.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Jeffrey "The Dude" Lebowski, a Los Angeles slacker and avid bowler, is mistakenly assaulted and finds himself caught in a complex kidnapping scheme involving a millionaire with the same name. An absurdist take on classic noir.
   > (item)
     (category) Movie
@@ -156,6 +217,11 @@
     (rating) 4
     (slug) eternal-sunshine-of-the-spotless-mind-2004
     (title) Eternal Sunshine of the Spotless Mind (2004)
+    (image) /images/discovery/art/movie/eternal-sunshine-of-the-spotless-mind-2004.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/a/a4/Eternal_Sunshine_of_the_Spotless_Mind.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Eternal Sunshine of the Spotless Mind (2004) is a romantic sci-fi drama directed by Michel Gondry. It follows an estranged couple who erase each other from their memories, only to rediscover their love.
   > (item)
     (category) Movie
@@ -165,6 +231,11 @@
     (rating) 4
     (slug) crash-2004
     (title) Crash (2004)
+    (image) /images/discovery/art/movie/crash-2004.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Crash_(2004_film)
+      (url) https://upload.wikimedia.org/wikipedia/en/d/d0/Crash_ver2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Crash (2004) is a drama film directed by Paul Haggis that explores racial and social tensions in Los Angeles through the interweaving stories of strangers.
   > (item)
     (category) Movie
@@ -174,6 +245,11 @@
     (rating) 5
     (slug) children-of-men-2006
     (title) Children of Men (2006)
+    (image) /images/discovery/art/movie/children-of-men-2006.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Children_of_Men
+      (url) https://upload.wikimedia.org/wikipedia/en/f/fc/Children_of_men_ver4.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) In 2027, in a chaotic world in which women have become somehow infertile, a former activist agrees to help transport a miraculously pregnant woman to a sanctuary at sea. The atmosphere is perfect, the set is superb, and the dystopian setup is consistently brilliant.
   > (item)
     (category) Movie
@@ -183,6 +259,11 @@
     (rating) 3
     (slug) unleashed-2005
     (title) Unleashed (2005)
+    (image) /images/discovery/art/movie/unleashed-2005.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Unleashed_(2005_film)
+      (url) https://upload.wikimedia.org/wikipedia/en/e/ed/Unleashed_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A man raised as a fighting dog by a mobster escapes and starts a new life with a blind piano tuner and his stepdaughter, but his past soon catches up with him.
   > (item)
     (category) Movie
@@ -192,6 +273,11 @@
     (rating) 4
     (slug) mr-and-mrs-smith-2005
     (title) Mr. & Mrs. Smith (2005)
+    (image) /images/discovery/art/movie/mr-and-mrs-smith-2005.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Mr._%26_Mrs._Smith_(2005_film)
+      (url) https://upload.wikimedia.org/wikipedia/en/f/fd/Mr_and_Mrs_Smith_poster.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) A bored married couple is surprised to learn that they are both assassins working for competing agencies, and that they have been assigned to kill each other.
   > (item)
     (category) Movie
@@ -201,7 +287,11 @@
     (rating) 2
     (slug) meet-joe-black-movie
     (title) Meet Joe Black (1998)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/meet-joe-black-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Meet_Joe_Black_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/f/f5/Meet_Joe_Black-_1998.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Meet Joe Black (1998) is a romantic fantasy drama directed by Martin Brest. Death, taking the form of a young man (Brad Pitt), visits a media tycoon (Anthony Hopkins) and asks to be shown life on Earth in exchange for prolonging the tycoon's life.
   > (item)
     (category) Movie
@@ -211,7 +301,11 @@
     (rating) 3
     (slug) jerry-maguire-movie
     (title) Jerry Maguire (1996)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/jerry-maguire-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Jerry_Maguire
+      (url) https://upload.wikimedia.org/wikipedia/en/e/ea/Jerry_Maguire_movie_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Jerry Maguire (1996) is a romantic comedy-drama written and directed by Cameron Crowe. It follows a successful sports agent who has a moral epiphany, gets fired, and attempts to rebuild his career with his one remaining client and a single mother who believes in his vision. Famous for iconic lines and Tom Cruise's charismatic performance.
   > (item)
     (category) Movie
@@ -221,7 +315,11 @@
     (rating) 4
     (slug) tucker-and-dale-vs-evil-2010
     (title) Tucker & Dale vs. Evil (2010)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/tucker-and-dale-vs-evil-2010.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Tucker_%26_Dale_vs._Evil
+      (url) https://upload.wikimedia.org/wikipedia/en/c/cb/Tucker-and-dale-vs-evil.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Tucker & Dale vs. Evil (2010) is a horror comedy that subverts slasher tropes. It follows two well-meaning hillbillies who are mistaken for killers by a group of college students. Celebrated for its clever script, great performances by Alan Tudyk and Tyler Labine, and its perfect blend of gore and humor.
   > (item)
     (category) Movie
@@ -232,6 +330,9 @@
     (slug) taxi-driver-1976
     (title) Taxi Driver (1976)
     (image) /images/logs/movie/taxi-driver-1976.jpg
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/movie/taxi-driver-1976.jpg
     (description) Travis Bickle is a mentally unstable Vietnam War veteran who takes a job as a night-time taxi driver in New York City. Suffering from chronic insomnia and deep loneliness, he becomes increasingly disgusted by the crime and decay he sees on the streets at night. As his mental state deteriorates, he fixates on "saving" a young child prostitute named Iris and plotting an assassination of a presidential candidate, leading to a violent climax where he attempts to wash the "scum" off the streets.
   > (item)
     (category) Movie
@@ -242,6 +343,9 @@
     (slug) caught-stealing-2025
     (title) Caught Stealing (2025)
     (image) /images/logs/movie/caught-stealing.png
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/movie/caught-stealing.png
     (description) Burned-out ex-baseball player Hank Thompson unexpectedly finds himself embroiled in a dangerous struggle for survival amidst the criminal underbelly of 1990s New York City, forced to navigate a treacherous underworld he never imagined.
   > (item)
     (category) Movie
@@ -251,7 +355,11 @@
     (rating) 5
     (slug) lucky-number-slevin-movie
     (title) Lucky Number Slevin (2006)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/lucky-number-slevin-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Lucky_Number_Slevin
+      (url) https://upload.wikimedia.org/wikipedia/en/a/a0/Lucky_Number_Slevin_Theater_Poster.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Lucky Number Slevin (2006) is a neo-noir crime thriller directed by Paul McGuigan. It follows Slevin, who finds himself caught in a war between two rival crime bosses, while also being hunted by a notorious assassin and investigated by a persistent detective. Praised for its intricate plot, witty dialogue, stylish visuals, and surprise twists.
   > (item)
     (category) Movie
@@ -261,7 +369,11 @@
     (rating) 4
     (slug) lock-stock-and-two-smoking-barrels-movie
     (title) Lock, Stock and Two Smoking Barrels (1998)
-    (image) /images/defaults/movie/myke-simon-atsUqIm3wxo-unsplash.jpg
+    (image) /images/discovery/art/movie/lock-stock-and-two-smoking-barrels-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Lock%2C_Stock_and_Two_Smoking_Barrels
+      (url) https://upload.wikimedia.org/wikipedia/en/e/e9/Lock%2C_Stock_and_Two_Smoking_Barrels_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Lock, Stock and Two Smoking Barrels (1998) is a crime comedy film directed by Guy Ritchie. It follows four friends who lose a large sum of money in a rigged card game and must find a way to pay it back within a week, leading them into a series of escalating criminal endeavors. Praised for its stylish direction, witty dialogue, and intricate interlocking plotlines.
   > (item)
     (category) Movie
@@ -271,7 +383,11 @@
     (rating) 4
     (slug) john-wick-chapter-4-movie
     (title) John Wick: Chapter 4 (2023)
-    (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
+    (image) /images/discovery/art/movie/john-wick-chapter-4-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/John_Wick%3A_Chapter_4
+      (url) https://upload.wikimedia.org/wikipedia/en/d/d0/John_Wick_-_Chapter_4_promotional_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) John Wick: Chapter 4 (2023) is an action thriller directed by Chad Stahelski. John Wick uncovers a path to defeating the High Table, but before he can earn his freedom, he must face a new enemy with powerful alliances across the globe. Praised for its groundbreaking action set pieces, epic scale, and a satisfying culmination of the franchise's mythology.
   > (item)
     (category) Movie
@@ -281,7 +397,11 @@
     (rating) 3
     (slug) john-wick-chapter-3-parabellum-movie
     (title) John Wick: Chapter 3 – Parabellum (2019)
-    (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
+    (image) /images/discovery/art/movie/john-wick-chapter-3-parabellum-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/John_Wick%3A_Chapter_3_%E2%80%93_Parabellum
+      (url) https://upload.wikimedia.org/wikipedia/en/9/94/John_Wick_Chapter_3_Parabellum.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) John Wick: Chapter 3 – Parabellum (2019) is an action thriller directed by Chad Stahelski. Picking up directly after Chapter 2, John Wick is excommunicado and on the run in New York City, targeted by the world's most ruthless assassins. Praised for its breathtaking action sequences, further expansion of the intricate world of the High Table, and unwavering commitment to Wick's desperate fight for survival.
   > (item)
     (category) Movie
@@ -291,7 +411,11 @@
     (rating) 3
     (slug) john-wick-chapter-2-movie
     (title) John Wick: Chapter 2 (2017)
-    (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
+    (image) /images/discovery/art/movie/john-wick-chapter-2-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/John_Wick%3A_Chapter_2
+      (url) https://upload.wikimedia.org/wikipedia/en/3/31/John_Wick_Chapter_Two.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) John Wick: Chapter 2 (2017) is an action thriller directed by Chad Stahelski, and the sequel to John Wick. It sees legendary hitman John Wick forced back into the criminal underworld to repay a debt, leading him to Rome and a global network of assassins. Praised for expanding the intricate world-building, escalating the action choreography, and deepening the mythology of the High Table.
   > (item)
     (category) Movie
@@ -301,7 +425,11 @@
     (rating) 5
     (slug) john-wick-chapter-1-movie
     (title) John Wick: Chapter 1 (2014)
-    (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
+    (image) /images/discovery/art/movie/john-wick-chapter-1-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/John_Wick_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/9/98/John_Wick_TeaserPoster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) John Wick: Chapter 1 (2014) is an action thriller directed by Chad Stahelski. It follows a legendary hitman, John Wick, who is forced out of retirement after his car is stolen and his puppy, a final gift from his deceased wife, is killed. Praised for its stylish action choreography, minimalist storytelling, and unique world-building of an assassin underworld.
   > (item)
     (category) Movie
@@ -312,6 +440,9 @@
     (slug) heat-1995-movie
     (title) Heat (1995)
     (image) /images/logs/movie/heat.jpg
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/movie/heat.jpg
     (description) Heat (1995) is a crime drama directed by Michael Mann, featuring the iconic first on-screen pairing of Al Pacino and Robert De Niro. It follows a meticulous professional thief, Neil McCauley, and the obsessive LAPD detective, Vincent Hanna, hunting him. Celebrated for its realistic action sequences, complex characterizations, and atmospheric portrayal of Los Angeles.
   > (item)
     (category) Movie
@@ -321,7 +452,11 @@
     (rating) 5
     (slug) decision-to-leave-2022-movie
     (title) Decision to Leave (2022)
-    (image) /images/defaults/movie/matthew-ball-qqlkmdEd694-unsplash.jpg
+    (image) /images/discovery/art/movie/decision-to-leave-2022-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Decision_to_Leave
+      (url) https://upload.wikimedia.org/wikipedia/en/8/82/Decision_to_Leave_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Decision to Leave (2022) is a romantic mystery film directed by Park Chan-wook. It follows a detective who falls for a mysterious widow while investigating her husband's death. Praised for its intricate plot, stunning visuals, and the director's signature style that blends suspense, romance, and dark humor. Awarded Best Director at Cannes Film Festival.
   > (item)
     (category) Movie
@@ -331,7 +466,11 @@
     (rating) 4
     (slug) blade-1998-movie
     (title) Blade (1998)
-    (image) /images/defaults/movie/jeremy-yap-J39X2xX_8CQ-unsplash.jpg
+    (image) /images/discovery/art/movie/blade-1998-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Blade_(1998_film)
+      (url) https://upload.wikimedia.org/wikipedia/en/1/19/Blade_movie.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Blade (1998) is a superhero horror film based on the Marvel Comics character. Wesley Snipes stars as Eric Brooks, a half-human, half-vampire 'Daywalker' who hunts vampires to protect humanity. Credited with paving the way for the modern superhero film genre with its dark, gritty tone, stylish action, and innovative take on vampire lore.
   > (item)
     (category) Movie
@@ -341,7 +480,11 @@
     (rating) 4
     (slug) 28-weeks-later-movie
     (title) 28 Weeks Later (2007)
-    (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
+    (image) /images/discovery/art/movie/28-weeks-later-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/28_Weeks_Later
+      (url) https://upload.wikimedia.org/wikipedia/en/4/46/28_Weeks_Later_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) 28 Weeks Later (2007) is a post-apocalyptic horror film directed by Juan Carlos Fresnadillo, and a sequel to 28 Days Later. It depicts the attempt to re-establish civilization in London after the Rage virus outbreak, which quickly goes awry. Praised for its intense action, bleak atmosphere, and terrifying portrayal of human nature under duress.
   > (item)
     (category) Movie
@@ -351,7 +494,11 @@
     (rating) 4
     (slug) manchester-by-the-sea-movie
     (title) Manchester By The Sea (2016)
-    (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
+    (image) /images/discovery/art/movie/manchester-by-the-sea-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Manchester_by_the_Sea_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/d/de/Manchester_by_the_Sea.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) Manchester By The Sea (2016) is an American drama film written and directed by Kenneth Lonergan. The film stars Casey Affleck as Lee Chandler, a quiet and emotionally withdrawn handyman living in Boston.
   > (item)
     (category) Movie
@@ -361,7 +508,11 @@
     (rating) 4
     (slug) 28-days-later-movie
     (title) 28 Days Later (2002)
-    (image) /images/defaults/movie/fusion-medical-animation-npjP0dCtoxo-unsplash.jpg
+    (image) /images/discovery/art/movie/28-days-later-movie.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/28_Days_Later
+      (url) https://upload.wikimedia.org/wikipedia/en/e/e4/28_days_later.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) 28 Days Later (2002) is a post-apocalyptic horror film directed by Danny Boyle. It follows a bicycle courier who awakens from a coma to find London deserted after a rapidly spreading 'Rage' virus has turned most of the population into bloodthirsty infected. Credited with revitalizing the zombie genre with its fast-moving infected and stark, unsettling atmosphere.
   > (item)
     (category) Movie
@@ -372,6 +523,9 @@
     (slug) 22-jump-street-movie
     (title) 22 Jump Street (2014)
     (image) /images/logs/movie/ice-cube.jpg
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/movie/ice-cube.jpg
     (description) 22 Jump Street (2014) is an action-comedy film directed by Phil Lord and Christopher Miller, and the sequel to 21 Jump Street. It stars Jonah Hill and Channing Tatum as undercover police officers who this time go undercover in a college to bust a new drug ring. Praised for its self-aware humor, continuation of the comedic chemistry, and clever deconstruction of sequel tropes.
   > (item)
     (category) Movie
@@ -382,6 +536,9 @@
     (slug) 21-jump-street-movie
     (title) 21 Jump Street (2012)
     (image) /images/logs/movie/ice-cube.jpg
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/movie/ice-cube.jpg
     (description) 21 Jump Street (2012) is an action-comedy film directed by Phil Lord and Christopher Miller, based on the TV series. It stars Jonah Hill and Channing Tatum as two incompetent police officers who go undercover as high school students to bust a drug ring. Praised for its unexpected humor, satirical take on high school tropes, and chemistry between the leads.
   > (item)
     (category) Movie
@@ -392,6 +549,9 @@
     (slug) no-country-for-old-men-movie
     (title) No Country for Old Men
     (image) /images/logs/movie/no-country-for-old-men.webp
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/movie/no-country-for-old-men.webp
     (description) No Country for Old Men (2007) is a neo-western thriller directed by the Coen Brothers. Set in 1980 rural Texas, it follows a hunter who stumbles upon a drug deal gone wrong, leading him into a relentless pursuit by a psychopathic killer. Critically acclaimed for its tense atmosphere, philosophical depth, and unflinching portrayal of violence.
   > (item)
     (category) Movie
@@ -402,6 +562,9 @@
     (slug) collateral-2004-movie
     (title) Collateral (2004)
     (image) /images/logs/movie/collateral.jpg
+    (imageSource)
+      (provider) Existing authored image
+      (url) /images/logs/movie/collateral.jpg
     (description) Collateral (2004) is a neo-noir action thriller directed by Michael Mann. It follows a hitman, Vincent (Tom Cruise), who takes a Los Angeles taxi driver, Max (Jamie Foxx), hostage for a night of contract killings. Praised for its intense atmosphere, stunning cinematography of LA nights, and compelling performances from its leads.
   > (item)
     (category) Movie
@@ -411,5 +574,9 @@
     (rating) 4
     (slug) relay-2024
     (title) Relay
-    (image) /images/defaults/adrianna-geo-1rBg5YSi00c-unsplash.jpg
+    (image) /images/discovery/art/movie/relay-2024.webp
+    (imageSource)
+      (provider) Wikipedia article artwork
+      (page) https://en.wikipedia.org/wiki/Relay_(film)
+      (url) https://upload.wikimedia.org/wikipedia/en/f/f9/Relay_2025_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled
     (description) "Relay" is a 2024 movie directed by David Mackenzie about a broker who typically facilitates payoffs between corrupt corporations and blackmailers, but breaks his own rules to protect a new client. Praised for its excellent plot twist, fantastic New York atmosphere, awesome music, and impressive cinematography with a great color palette, it's considered a "vibe movie" despite a polarizing performance by Riz Ahmed.

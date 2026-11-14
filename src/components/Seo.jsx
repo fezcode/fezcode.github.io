@@ -17,12 +17,13 @@ const Seo = ({
   ogImage,
   twitterImage,
   type,
+  canonicalPath,
 }) => {
   const location = useLocation();
 
   if (!title || title === 'Fezcodex' || title === 'fezcodex') return null;
 
-  const currentUrl = BASE_URL + location.pathname;
+  const currentUrl = BASE_URL + (canonicalPath || location.pathname);
   const isAppPath = location.pathname.startsWith('/apps');
   const defaultImage = isAppPath
     ? '/images/asset/ogtitle-apps.png'

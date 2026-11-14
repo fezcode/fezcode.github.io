@@ -22,7 +22,6 @@ afterEach(() => vi.unstubAllGlobals());
 describe('discovery indexes', () => {
   it('keeps healthy categories when one fails and loads no detail notes', async () => {
     const fetchMock = vi.fn(async (url) => {
-      if (url.startsWith('/images/discovery/')) return response({}, 404);
       if (url === '/logs/index.json')
         return response({ categories: ['game', 'book'] });
       if (url === '/logs/book/book.piml') throw new Error('offline');
@@ -48,6 +47,7 @@ describe('discovery indexes', () => {
     expect(fetchMock.mock.calls.some(([url]) => url.endsWith('.txt'))).toBe(
       false,
     );
+    expect(fetchMock).toHaveBeenCalledTimes(3);
   });
 
   it('deduplicates stable identities, rejects unsafe slugs and sorts bad dates last', async () => {
@@ -71,39 +71,40 @@ describe('discovery indexes', () => {
     expect(loaded[0].id).toBe('game/newest');
   });
 
-  it('combines downloaded game and media artwork without replacing authored covers or spine crops', async () => {
-    vi.stubGlobal(
-      'fetch',
-      vi.fn(async (url) => {
-        if (url === '/logs/index.json')
-          return response({ categories: ['game', 'music'] });
-        if (url === '/images/discovery/game-art.json')
-          return response({ 'steam-game': '/images/discovery/art/game.jpg' });
-        if (url === '/images/discovery/media-art.json')
-          return response({
-            'music/album': '/images/discovery/art/album.jpg',
-            'music/authored': '/images/discovery/art/other.jpg',
-          });
-        if (url === '/logs/game/game.piml')
-          return response(
-            item(
-              'steam-game',
-              '2026-11-14',
-              '    (image) /images/defaults/stock.jpg\n',
-            ),
-          );
-        if (url === '/logs/music/music.piml')
-          return response(
-            `${item('album', '2026-11-14', '    (image) https://i.ytimg.com/vi/bWPOLL_Rr8U/maxresdefault.jpg\n    (link) https://www.youtube.com/watch?v=bWPOLL_Rr8U\n')}\n  > (item)\n    (title) Authored\n    (slug) authored\n    (date) 2026-11-13\n    (coverArt) /images/custom/poster.jpg\n    (spineImage) /images/custom/spine.jpg\n    (imagePosition) 50% 20%`,
-          );
-        throw new Error(`Unexpected request ${url}`);
-      }),
-    );
+  it('reads cover references and provenance from PIML without auxiliary artwork requests', async () => {
+    const fetchMock = vi.fn(async (url) => {
+      if (url === '/logs/index.json')
+        return response({ categories: ['game', 'music'] });
+      if (url === '/logs/game/game.piml')
+        return response(
+          item(
+            'steam-game',
+            '2026-11-14',
+            '    (image) /images/discovery/art/game.jpg\n    (imageSource)\n      (provider) Steam\n      (page) https://store.steampowered.com/app/123/\n      (url) https://cdn.example.com/official-cover.jpg\n      (title) Official cover\n      (width) 600\n      (height) 900\n',
+          ),
+        );
+      if (url === '/logs/music/music.piml')
+        return response(
+          `${item('album', '2026-11-14', '    (image) /images/discovery/art/album.jpg\n    (link) https://www.youtube.com/watch?v=bWPOLL_Rr8U\n')}\n  > (item)\n    (title) Authored\n    (slug) authored\n    (date) 2026-11-13\n    (image) /images/discovery/art/other.jpg\n    (coverArt) /images/custom/poster.jpg\n    (spineImage) /images/custom/spine.jpg\n    (imagePosition) 50% 20%`,
+        );
+      throw new Error(`Unexpected request ${url}`);
+    });
+    vi.stubGlobal('fetch', fetchMock);
     const { entries: loaded, failedCategories } = await fetchDiscoveryEntries();
     expect(failedCategories).toEqual([]);
     expect(loaded.find((entry) => entry.id === 'game/steam-game').cover).toBe(
       '/images/discovery/art/game.jpg',
     );
+    expect(
+      loaded.find((entry) => entry.id === 'game/steam-game').imageSource,
+    ).toEqual({
+      provider: 'Steam',
+      page: 'https://store.steampowered.com/app/123/',
+      url: 'https://cdn.example.com/official-cover.jpg',
+      title: 'Official cover',
+      width: 600,
+      height: 900,
+    });
     expect(loaded.find((entry) => entry.id === 'music/album').cover).toBe(
       '/images/discovery/art/album.jpg',
     );
@@ -114,29 +115,38 @@ describe('discovery indexes', () => {
         imagePosition: '50% 20%',
       },
     );
+    expect(fetchMock.mock.calls.map(([url]) => url).sort()).toEqual([
+      '/logs/game/game.piml',
+      '/logs/index.json',
+      '/logs/music/music.piml',
+    ]);
   });
 
-  it('keeps discoveries when optional artwork manifests are missing or malformed', async () => {
+  it('keeps discoveries without an image and does not treat provenance as an artwork override', async () => {
     vi.stubGlobal(
       'fetch',
       vi.fn(async (url) => {
         if (url === '/logs/index.json')
           return response({ categories: ['game'] });
-        if (url === '/images/discovery/game-art.json') return response({}, 404);
-        if (url === '/images/discovery/media-art.json')
-          return {
-            ok: true,
-            json: async () => {
-              throw new Error('HTML fallback');
-            },
-          };
-        return response(item('real-game', '2026-11-14'));
+        if (url === '/logs/game/game.piml')
+          return response(
+            item(
+              'real-game',
+              '2026-11-14',
+              '    (imageSource)\n      (provider) Steam\n      (url) https://cdn.example.com/source-cover.jpg\n',
+            ),
+          );
+        throw new Error(`Unexpected request ${url}`);
       }),
     );
     const { entries: loaded, failedCategories } = await fetchDiscoveryEntries();
     expect(failedCategories).toEqual([]);
     expect(loaded).toHaveLength(1);
     expect(loaded[0].cover).toBe('/images/discovery/covers/game/real-game.svg');
+    expect(loaded[0].imageSource).toEqual({
+      provider: 'Steam',
+      url: 'https://cdn.example.com/source-cover.jpg',
+    });
   });
 
   it('does not turn a cancelled load into a partial empty result', async () => {

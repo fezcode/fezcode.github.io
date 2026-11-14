@@ -114,6 +114,12 @@ async function crawlOne(browser, baseUrl, route) {
       contentSelector = '#react-root .wf-entry .wf-markdown';
     } else if (routePath === '/timeline') {
       contentSelector = '#react-root main .space-y-16 h2';
+    } else if (routePath === '/logs' || routePath === '/discovery') {
+      contentSelector =
+        '#react-root .dc-shelf-scroll .dc-spine, #react-root .dc-shelf-status';
+    } else if (routePath.startsWith('/discovery/')) {
+      contentSelector =
+        '#react-root #dc-showcase-title, #react-root .dc-unavailable h1';
     } else if (routePath.startsWith('/logs/')) {
       contentSelector =
         '#react-root main .knt-prose > *, #react-root main .prose > *, #react-root main .ldg-prose > *, #react-root main .orb-prose > *';

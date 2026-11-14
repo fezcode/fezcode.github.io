@@ -8,18 +8,30 @@ import LedgerLogsPage from './ledger-views/LedgerLogsPage';
 import OrbitLogsPage from './orbit-views/OrbitLogsPage';
 import KnitLogsPage from './knit-views/KnitLogsPage';
 import BlissLogsPage from './bliss-views/BlissLogsPage';
+import LogViewSwitch from '../components/LogViewSwitch';
+
+const CLASSIC_VIEWS = {
+  luxe: LuxeLogsPage,
+  terracotta: TerracottaLogsPage,
+  mist: MistLogsPage,
+  ledger: LedgerLogsPage,
+  orbit: OrbitLogsPage,
+  knit: KnitLogsPage,
+  bliss: BlissLogsPage,
+};
 
 const LogsPage = () => {
   const { fezcodexTheme } = useVisualSettings();
 
-  if (fezcodexTheme === 'luxe') return <LuxeLogsPage />;
-  if (fezcodexTheme === 'terracotta') return <TerracottaLogsPage />;
-  if (fezcodexTheme === 'mist') return <MistLogsPage />;
-  if (fezcodexTheme === 'ledger') return <LedgerLogsPage />;
-  if (fezcodexTheme === 'orbit') return <OrbitLogsPage />;
-  if (fezcodexTheme === 'knit') return <KnitLogsPage />;
-  if (fezcodexTheme === 'bliss') return <BlissLogsPage />;
-  return <BrutalistLogsPage />;
+  const ClassicView = CLASSIC_VIEWS[fezcodexTheme] || BrutalistLogsPage;
+  return (
+    <div className="logs-view-page" data-theme={fezcodexTheme}>
+      <div className="logs-view-controls">
+        <LogViewSwitch view="classic" />
+      </div>
+      <ClassicView />
+    </div>
+  );
 };
 
 export default LogsPage;

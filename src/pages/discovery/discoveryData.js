@@ -171,7 +171,7 @@ const actualImageUrl = (value) => {
   return url && !url.startsWith('/images/defaults/') ? url : '';
 };
 
-export function getEntryCover(entry, artwork = {}) {
+export function getEntryCover(entry) {
   const authored = [
     entry.coverArt,
     entry.cover_art,
@@ -187,14 +187,7 @@ export function getEntryCover(entry, artwork = {}) {
     (url) => !/^https?:\/\/(?:i\.ytimg\.com|img\.youtube\.com)\//i.test(url),
   );
   if (authoredArtwork) return authoredArtwork;
-  const manifest = artwork[`${categoryKey(entry.category)}/${entry.slug}`];
-  const manifestCover = actualImageUrl(
-    typeof manifest === 'string'
-      ? manifest
-      : manifest?.cover || manifest?.image,
-  );
   return (
-    manifestCover ||
     actualImageUrl(entry.spineImage || entry.spine_image) ||
     authored[0] ||
     youtubeCover(entry.link) ||
@@ -206,7 +199,7 @@ export function entryPath(entry) {
   return `/discovery/${encodeURIComponent(categoryKey(entry.category))}/${encodeURIComponent(entry.slug)}`;
 }
 
-function normalizeEntry(raw, category, artwork) {
+function normalizeEntry(raw, category) {
   const slug = text(raw?.slug);
   const title = text(raw?.title);
   if (!title || !safeSegment(slug)) return null;
@@ -242,44 +235,17 @@ function normalizeEntry(raw, category, artwork) {
     imagePosition: text(raw.imagePosition || raw.image_position) || 'center',
   };
   entry.fallbackCover = fallbackCover(entry);
-  entry.cover = getEntryCover(entry, artwork);
+  entry.cover = getEntryCover(entry);
   return entry;
-}
-
-async function fetchArtworkManifest(path, signal) {
-  try {
-    const response = await fetch(path, { signal });
-    if (!response.ok) return {};
-    const manifest = await response.json();
-    return manifest && typeof manifest === 'object' && !Array.isArray(manifest)
-      ? manifest
-      : {};
-  } catch {
-    // Artwork is an optional enhancement. A missing manifest must never hide
-    // the real logs, including on older static deployments and offline caches.
-    return {};
-  }
 }
 
 /** Fetch the small category indexes only. Full notes load when an item opens. */
 export async function fetchDiscoveryEntries({ signal } = {}) {
   throwIfAborted(signal);
-  const [categoryNames, gameArt, mediaArt] = await Promise.all([
-    fetchLogCategories(),
-    fetchArtworkManifest('/images/discovery/game-art.json', signal),
-    fetchArtworkManifest('/images/discovery/media-art.json', signal),
-  ]);
+  const categoryNames = await fetchLogCategories();
   const categories = [...new Set(categoryNames.map(categoryKey))].filter(
     safeSegment,
   );
-  const artwork = {
-    ...Object.fromEntries(
-      Object.entries(gameArt)
-        .filter(([slug]) => safeSegment(slug))
-        .map(([slug, cover]) => [`game/${slug}`, cover]),
-    ),
-    ...mediaArt,
-  };
   throwIfAborted(signal);
   const results = await Promise.allSettled(
     categories.map(async (category) => {
@@ -297,7 +263,7 @@ export async function fetchDiscoveryEntries({ signal } = {}) {
       if (!Array.isArray(items))
         throw new Error(`Invalid ${category} discovery index.`);
       return items
-        .map((entry) => normalizeEntry(entry, category, artwork))
+        .map((entry) => normalizeEntry(entry, category))
         .filter(Boolean);
     }),
   );

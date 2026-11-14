@@ -1,5 +1,15 @@
 (banners)
   > (banner)
+    (id) discovery-shelf-view-launch
+    (type) info
+    (from) 2026-11-14T00:00:00+03:00
+    (to) 2026-11-28T23:59:59+03:00
+    (text) Discovery logs now open on the shelf. Switch between Shelf and Classic views whenever you like.
+    (isActive) true
+    (link) /logs
+    (linkText) Explore the shelf
+
+  > (banner)
     (id) launch-notification
     (type) info
     (from) 2025-12-21T00:00:00Z

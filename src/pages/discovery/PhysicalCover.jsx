@@ -155,25 +155,116 @@ function contactTexture() {
   return new THREE.CanvasTexture(canvas);
 }
 
-function cropArtwork(texture, profile, imagePosition) {
-  const image = texture.image;
-  if (!image?.width || !image?.height) return;
-  const sourceAspect = image.width / image.height;
-  const targetAspect = profile.width / profile.height;
-  const positions = String(imagePosition || '').match(/([\d.]+)%/g) || [];
+function artworkTexture(image, profile, entry) {
+  if (!(image?.width > 0 && image?.height > 0))
+    throw new Error('Artwork has no image dimensions.');
+  const canvas = document.createElement('canvas');
+  canvas.width = 1024;
+  canvas.height = Math.round((canvas.width * profile.height) / profile.width);
+  const context = canvas.getContext('2d');
+  if (!context) throw new Error('Artwork texture unavailable.');
+  // A cover is a printed composition, so preserve its complete image. Wide
+  // artwork gets a quiet matte surround instead of losing its title and edges.
+  context.fillStyle = '#151719';
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.imageSmoothingEnabled = true;
+  context.imageSmoothingQuality = 'high';
+  const crop = entry.coverFit === 'cover';
+  const scale = (crop ? Math.max : Math.min)(
+    canvas.width / image.width,
+    canvas.height / image.height,
+  );
+  const width = image.width * scale;
+  const height = image.height * scale;
+  const positions = crop
+    ? String(entry.imagePosition || '').match(/([\d.]+)%/g) || []
+    : [];
   const x = positions[0]
     ? Math.min(1, Math.max(0, parseFloat(positions[0]) / 100))
     : 0.5;
   const y = positions[1]
     ? Math.min(1, Math.max(0, parseFloat(positions[1]) / 100))
     : 0.5;
-  if (sourceAspect > targetAspect) {
-    texture.repeat.set(targetAspect / sourceAspect, 1);
-    texture.offset.set((1 - texture.repeat.x) * x, 0);
-  } else {
-    texture.repeat.set(1, sourceAspect / targetAspect);
-    texture.offset.set(0, (1 - texture.repeat.y) * (1 - y));
-  }
+  context.drawImage(
+    image,
+    (canvas.width - width) * x,
+    (canvas.height - height) * y,
+    width,
+    height,
+  );
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  return texture;
+}
+
+function gameDiscTexture(image, entry) {
+  const texture = artworkTexture(
+    image,
+    { width: 1, height: 1 },
+    { coverFit: 'cover', imagePosition: '50% 35%' },
+  );
+  const context = texture.image.getContext('2d');
+  const shade = context.createLinearGradient(0, 250, 0, 1000);
+  shade.addColorStop(0, 'rgba(8, 12, 16, 0.05)');
+  shade.addColorStop(0.65, 'rgba(8, 12, 16, 0.7)');
+  shade.addColorStop(1, 'rgba(8, 12, 16, 0.96)');
+  context.fillStyle = shade;
+  context.fillRect(0, 0, 1024, 1024);
+  context.strokeStyle = '#b8c0c6';
+  context.lineWidth = 12;
+  context.beginPath();
+  context.arc(512, 512, 496, 0, Math.PI * 2);
+  context.stroke();
+  context.lineWidth = 3;
+  context.strokeStyle = 'rgba(255, 255, 255, 0.65)';
+  context.beginPath();
+  context.arc(512, 512, 480, 0, Math.PI * 2);
+  context.stroke();
+  context.fillStyle = '#c3cbd0';
+  context.beginPath();
+  context.arc(512, 512, 102, 0, Math.PI * 2);
+  context.fill();
+  context.strokeStyle = '#59656d';
+  context.lineWidth = 6;
+  context.stroke();
+  context.fillStyle = '#f3f0e7';
+  context.textAlign = 'center';
+  context.font = '600 42px Arial, sans-serif';
+  wrapText(context, entry.title, 512, 745, 670, 50, 2);
+  context.font = '500 22px Arial, sans-serif';
+  context.fillText('Fezcodex / Game', 512, 895);
+  texture.needsUpdate = true;
+  return texture;
+}
+
+function gameInsertTexture(image, entry, profile) {
+  const texture = artworkTexture(image, profile, { coverFit: 'contain' });
+  const canvas = texture.image;
+  const context = canvas.getContext('2d');
+  const shade = context.createLinearGradient(0, 300, 0, canvas.height);
+  shade.addColorStop(0, 'rgba(10, 15, 19, 0.12)');
+  shade.addColorStop(0.4, 'rgba(10, 15, 19, 0.78)');
+  shade.addColorStop(0.75, 'rgba(10, 15, 19, 0.96)');
+  context.fillStyle = shade;
+  context.fillRect(0, 0, canvas.width, canvas.height);
+  context.fillStyle = '#b7c3c8';
+  context.font = '500 25px Arial, sans-serif';
+  context.fillText('Field notes', 86, 655);
+  context.fillStyle = '#f3f0e7';
+  context.font = '600 56px Arial, sans-serif';
+  const titleEnd = wrapText(context, entry.title, 86, 745, 850, 66, 3);
+  context.fillStyle = '#c7cdd0';
+  context.font = '400 30px Arial, sans-serif';
+  wrapText(context, entry.description, 86, titleEnd + 33, 840, 43, 6);
+  context.fillStyle = '#f3f0e7';
+  context.font = '600 28px Arial, sans-serif';
+  context.fillText(
+    entry.rating ? `${entry.rating} / 5` : 'A discovery worth keeping',
+    86,
+    canvas.height - 80,
+  );
+  texture.needsUpdate = true;
+  return texture;
 }
 
 function createPhysicalScene(canvas, host, entry, onFailure) {
@@ -189,12 +280,14 @@ function createPhysicalScene(canvas, host, entry, onFailure) {
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(33, 1, 0.1, 40);
   const profile = profileFor(entry.category);
+  const isGame = entry.category === 'game';
   const theme = getCategoryTheme(entry.category);
   const w = profile.width;
   const h = profile.height;
   const d = profile.depth;
   const object = new THREE.Group();
   const lid = new THREE.Group();
+  let gameDiscMaterial;
 
   const remember = (resource) => {
     if (disposed) resource.dispose?.();
@@ -338,11 +431,7 @@ function createPhysicalScene(canvas, host, entry, onFailure) {
 
     const caseMaterial = remember(
       new THREE.MeshPhysicalMaterial({
-        color: profile.paper
-          ? '#d5cfbd'
-          : entry.category === 'game'
-            ? '#20332b'
-            : '#242a30',
+        color: profile.paper ? '#d5cfbd' : isGame ? '#192024' : '#242a30',
         roughness: profile.paper ? 0.72 : 0.26,
         metalness: 0,
         clearcoat: profile.paper ? 0.08 : 1,
@@ -351,7 +440,13 @@ function createPhysicalScene(canvas, host, entry, onFailure) {
       }),
     );
     mesh(new RoundedBoxGeometry(w, h, d, 4, 0.035), caseMaterial);
-    const print = remember(printedTexture(entry, theme, profile));
+    const print = remember(
+      printedTexture(
+        entry,
+        isGame ? { ...theme, paper: '#151b20', ink: '#f0eee7' } : theme,
+        profile,
+      ),
+    );
     const insertMaterial = remember(
       new THREE.MeshPhysicalMaterial({
         map: print,
@@ -361,10 +456,11 @@ function createPhysicalScene(canvas, host, entry, onFailure) {
     );
     const outerMaterial = remember(
       new THREE.MeshPhysicalMaterial({
-        color: '#f3eee3',
-        roughness: profile.paper ? 0.68 : 0.32,
-        clearcoat: profile.paper ? 0.12 : 0.94,
-        clearcoatRoughness: profile.paper ? 0.42 : 0.13,
+        color: '#ffffff',
+        roughness: profile.paper ? 0.68 : 0.56,
+        clearcoat: profile.paper ? 0.08 : 0.24,
+        clearcoatRoughness: profile.paper ? 0.42 : 0.35,
+        envMapIntensity: 0.35,
       }),
     );
 
@@ -398,26 +494,33 @@ function createPhysicalScene(canvas, host, entry, onFailure) {
       const discMaterial = remember(
         new THREE.MeshPhysicalMaterial({
           map: record,
-          roughness: profile.vinyl ? 0.3 : 0.24,
-          metalness: profile.vinyl ? 0.08 : 0.64,
-          clearcoat: 1,
+          roughness: isGame ? 0.55 : profile.vinyl ? 0.3 : 0.24,
+          metalness: isGame ? 0.08 : profile.vinyl ? 0.08 : 0.64,
+          clearcoat: isGame ? 0.18 : 1,
           clearcoatRoughness: 0.13,
-          iridescence: profile.vinyl ? 0 : 0.9,
+          iridescence: isGame || profile.vinyl ? 0 : 0.9,
           iridescenceIOR: 1.35,
         }),
       );
+      if (isGame) gameDiscMaterial = discMaterial;
       const disc = mesh(
         new THREE.RingGeometry(0.07, profile.vinyl ? 0.79 : 0.64, 96),
         discMaterial,
       );
-      disc.position.set(0, profile.vinyl ? 0 : -0.04, d / 2 + 0.045);
+      disc.position.set(0, profile.vinyl ? 0 : -0.04, d / 2 + 0.025);
       const hub = mesh(
-        new THREE.CylinderGeometry(0.068, 0.068, 0.035, 32),
-        trayMaterial,
+        new THREE.CylinderGeometry(0.068, 0.068, 0.024, 32),
+        isGame
+          ? new THREE.MeshStandardMaterial({
+              color: '#aab5bc',
+              metalness: 0.72,
+              roughness: 0.28,
+            })
+          : trayMaterial,
       );
       hub.rotation.x = Math.PI / 2;
       hub.position.copy(disc.position);
-      hub.position.z += 0.012;
+      hub.position.z += 0.006;
       for (const side of [-1, 1]) {
         const clip = mesh(
           new THREE.BoxGeometry(0.07, 0.14, 0.035),
@@ -527,15 +630,37 @@ function createPhysicalScene(canvas, host, entry, onFailure) {
             texture.dispose();
             return;
           }
-          texture.colorSpace = THREE.SRGBColorSpace;
-          texture.anisotropy = Math.min(
-            8,
-            renderer.capabilities?.getMaxAnisotropy?.() || 4,
-          );
-          cropArtwork(texture, profile, entry.imagePosition);
-          outerMaterial.map = texture;
-          outerMaterial.needsUpdate = true;
-          invalidate();
+          try {
+            const fitted = remember(
+              artworkTexture(
+                texture.image,
+                { width: w - 0.03, height: h - 0.035 },
+                entry,
+              ),
+            );
+            fitted.anisotropy = Math.min(
+              8,
+              renderer.capabilities?.getMaxAnisotropy?.() || 4,
+            );
+            outerMaterial.map = fitted;
+            outerMaterial.needsUpdate = true;
+            if (isGame) {
+              insertMaterial.map = remember(
+                gameInsertTexture(texture.image, entry, {
+                  width: w - 0.09,
+                  height: h - 0.11,
+                }),
+              );
+              insertMaterial.needsUpdate = true;
+              gameDiscMaterial.map = remember(
+                gameDiscTexture(texture.image, entry),
+              );
+              gameDiscMaterial.needsUpdate = true;
+            }
+            invalidate();
+          } catch {
+            loadArtwork(index + 1);
+          }
         },
         undefined,
         () => loadArtwork(index + 1),
@@ -626,6 +751,7 @@ export default function PhysicalCover({
     entry.rating,
     entry.date,
     entry.imagePosition,
+    entry.coverFit,
   ]);
 
   useEffect(() => {
@@ -713,7 +839,7 @@ export default function PhysicalCover({
                 : `transform ${open ? 0.95 : 0.3}s cubic-bezier(.2,.7,.2,1)`,
               borderRadius: 7,
               border: '5px solid #262c2c',
-              background: theme.ink,
+              background: '#151719',
               boxShadow: 'inset 1px 0 1px #ffffff70, 4px 6px 15px #0005',
               backfaceVisibility: 'hidden',
               overflow: 'hidden',
@@ -726,8 +852,11 @@ export default function PhysicalCover({
                 style={{
                   width: '100%',
                   height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: entry.imagePosition || 'center',
+                  objectFit: entry.coverFit === 'cover' ? 'cover' : 'contain',
+                  objectPosition:
+                    entry.coverFit === 'cover'
+                      ? entry.imagePosition || 'center'
+                      : 'center',
                   display: 'block',
                 }}
                 onError={() =>

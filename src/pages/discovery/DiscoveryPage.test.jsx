@@ -111,6 +111,8 @@ function mountPage(path = '/discovery') {
   return render(
     <MemoryRouter initialEntries={[path]}>
       <Routes>
+        <Route path="/" element={<p>Home page</p>} />
+        <Route path="/logs" element={<DiscoveryPage />} />
         <Route
           path="/discovery/:category?/:slug?"
           element={<DiscoveryPage />}
@@ -128,6 +130,36 @@ const spineFlags = (region, attribute) =>
   within(region)
     .getAllByRole('link', { hidden: true })
     .filter((link) => link.getAttribute(attribute) === 'true');
+const mockShelfGeometry = (width = 106) => {
+  vi.spyOn(Element.prototype, 'clientWidth', 'get').mockImplementation(
+    function () {
+      return this.classList?.contains('dc-shelf-scroll') ? width : 0;
+    },
+  );
+  vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockImplementation(
+    function () {
+      return this.classList?.contains('dc-spine') ? 48 : 0;
+    },
+  );
+  vi.spyOn(HTMLElement.prototype, 'offsetLeft', 'get').mockImplementation(
+    function () {
+      return this.classList?.contains('dc-spine') ? 40 : 0;
+    },
+  );
+  const computedStyle = window.getComputedStyle.bind(window);
+  vi.spyOn(window, 'getComputedStyle').mockImplementation(
+    (element, ...args) => {
+      const style = computedStyle(element, ...args);
+      if (element.classList?.contains('dc-shelf')) {
+        Object.defineProperty(style, 'columnGap', {
+          value: '5px',
+          configurable: true,
+        });
+      }
+      return style;
+    },
+  );
+};
 // Legacy presentation markers have no semantic query target.
 // Keep this decorative markup check inside one helper.
 /* eslint-disable testing-library/no-node-access */
@@ -161,6 +193,10 @@ const originalScrollIntoView = Object.getOwnPropertyDescriptor(
   HTMLElement.prototype,
   'scrollIntoView',
 );
+const originalScrollBy = Object.getOwnPropertyDescriptor(
+  HTMLElement.prototype,
+  'scrollBy',
+);
 beforeEach(() => {
   fetchDiscoveryEntries.mockResolvedValue(result);
   loadDiscoveryBody.mockResolvedValue(
@@ -185,10 +221,29 @@ afterEach(() => {
       originalScrollIntoView,
     );
   else delete HTMLElement.prototype.scrollIntoView;
+  if (originalScrollBy)
+    Object.defineProperty(HTMLElement.prototype, 'scrollBy', originalScrollBy);
+  else delete HTMLElement.prototype.scrollBy;
   document.body.style.overflow = '';
 });
 
 describe('the shelf-only discovery page', () => {
+  it('provides a close-shelf link back home, kept inert behind an open showcase', async () => {
+    mountPage('/logs');
+    await waitForShelf();
+    const closeShelf = screen.getByRole('link', { name: 'Close shelf' });
+    expect(closeShelf).toHaveAttribute('href', '/');
+    expect(closeShelf).toHaveClass('dc-shelf-close');
+    openEntry('Discovery 01');
+    await screen.findByRole('dialog', { name: 'Discovery 01' });
+    expect(screen.getByRole('main')).toHaveAttribute('inert');
+    await closeDialog();
+    expect(route()).toBe('/logs');
+    expect(screen.getByRole('main')).not.toHaveAttribute('inert');
+    fireEvent.click(closeShelf);
+    expect(route()).toBe('/');
+    expect(screen.getByText('Home page')).toBeInTheDocument();
+  });
   it('renders one mixed-category shelf, newest first, without header, hero, filters, or a collection grid', async () => {
     const view = mountPage('/discovery?type=game&order=oldest');
     await waitForShelf();
@@ -241,7 +296,7 @@ describe('the shelf-only discovery page', () => {
       objectPosition: '30% center',
     });
     expect(
-      within(spine).getByText('Game', { selector: '.dc-category-name' }),
+      within(spine).getByText(/game/i, { selector: '.dc-category-name' }),
     ).toBeInTheDocument();
   });
   it('progressively appends older discoveries in batches without duplicating entries', async () => {
@@ -339,35 +394,7 @@ describe('the shelf-only discovery page', () => {
   });
 
   it('bounds artwork to the measured viewport while preserving all spine links', async () => {
-    vi.spyOn(Element.prototype, 'clientWidth', 'get').mockImplementation(
-      function () {
-        return this.classList?.contains('dc-shelf-scroll') ? 106 : 0;
-      },
-    );
-    vi.spyOn(HTMLElement.prototype, 'offsetWidth', 'get').mockImplementation(
-      function () {
-        return this.classList?.contains('dc-spine') ? 48 : 0;
-      },
-    );
-    vi.spyOn(HTMLElement.prototype, 'offsetLeft', 'get').mockImplementation(
-      function () {
-        return this.classList?.contains('dc-spine') ? 40 : 0;
-      },
-    );
-    const computedStyle = window.getComputedStyle.bind(window);
-    vi.spyOn(window, 'getComputedStyle').mockImplementation(
-      (element, ...args) => {
-        const style = computedStyle(element, ...args);
-        if (element.classList?.contains('dc-shelf')) {
-          Object.defineProperty(style, 'columnGap', {
-            value: '5px',
-            configurable: true,
-          });
-        }
-        return style;
-      },
-    );
-
+    mockShelfGeometry();
     mountPage();
     await waitForShelf();
     const region = shelf();
@@ -401,9 +428,72 @@ describe('the shelf-only discovery page', () => {
     await screen.findByRole('dialog', { name: 'Discovery 25' });
     expect(spineFlags(region, 'data-media-loaded').length).toBeLessThan(24);
   });
+
+  it('slides the shelf with its edge controls and hides the left control when back at the start', async () => {
+    mockShelfGeometry();
+    const scrollBy = vi.fn(function ({ left }) {
+      this.scrollLeft += left;
+      fireEvent.scroll(this);
+    });
+    Object.defineProperty(HTMLElement.prototype, 'scrollBy', {
+      configurable: true,
+      value: scrollBy,
+    });
+    mountPage();
+    await waitForShelf();
+    const region = shelf();
+    expect(
+      screen.queryByRole('button', { name: 'Scroll shelf left' }),
+    ).not.toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: 'Scroll shelf right' }));
+    await waitFor(() => expect(scrollBy).toHaveBeenCalledTimes(1));
+    expect(scrollBy).toHaveBeenLastCalledWith({
+      left: expect.any(Number),
+      behavior: 'auto',
+    });
+    expect(region.scrollLeft).toBeGreaterThan(0);
+    const leftControl = await screen.findByRole('button', {
+      name: 'Scroll shelf left',
+    });
+    fireEvent.click(leftControl);
+    expect(scrollBy).toHaveBeenCalledTimes(2);
+    expect(scrollBy.mock.calls[1][0].left).toBeLessThan(0);
+    expect(region.scrollLeft).toBe(0);
+    await waitFor(() =>
+      expect(
+        screen.queryByRole('button', { name: 'Scroll shelf left' }),
+      ).not.toBeInTheDocument(),
+    );
+  });
 });
 
 describe('opening and returning to the shelf', () => {
+  it('keeps the default logs shelf instance and restores it after a showcase route', async () => {
+    mountPage('/logs');
+    await waitForShelf();
+    fireEvent.click(
+      screen.getByRole('button', { name: 'Load more discoveries' }),
+    );
+    const region = shelf();
+    region.scrollLeft = 1120;
+    const trigger = spines()[34];
+    trigger.focus();
+    fireEvent.click(trigger);
+    await screen.findByRole('dialog', { name: 'Discovery 35' });
+    expect(route()).toBe('/discovery/music/entry-35');
+    region.scrollLeft = 0;
+    await closeDialog();
+    expect(route()).toBe('/logs');
+    expect(shelf()).toBe(region);
+    expect(spines()).toHaveLength(48);
+    // Route DOM removal can precede the passive cleanup that restores the shelf.
+    await waitFor(() => expect(region.scrollLeft).toBe(1120));
+    await waitFor(() => expect(trigger).toHaveFocus());
+    expect(screen.getByRole('link', { name: 'Classic view' })).toHaveAttribute(
+      'href',
+      '/logs?view=classic',
+    );
+  });
   it('restores the horizontal position, loaded segment, and clicked spine focus after closing', async () => {
     mountPage();
     await waitForShelf();
@@ -426,8 +516,8 @@ describe('opening and returning to the shelf', () => {
     await closeDialog();
     expect(route()).toBe('/discovery');
     expect(spines()).toHaveLength(48);
-    expect(region.scrollLeft).toBe(1120);
-    expect(trigger).toHaveFocus();
+    await waitFor(() => expect(region.scrollLeft).toBe(1120));
+    await waitFor(() => expect(trigger).toHaveFocus());
     expect(document.body.style.overflow).toBe('');
   });
   it('browses previous and next chronologically across categories and closes in one step', async () => {
@@ -466,6 +556,32 @@ describe('opening and returning to the shelf', () => {
     expect(
       within(dialog).getByRole('button', { name: 'Close the cover' }),
     ).toHaveAttribute('aria-pressed', 'true');
+  });
+  it('keeps the original music sleeve and booklet instead of the physical case renderer', async () => {
+    mountPage('/discovery/music/entry-02');
+    const dialog = await screen.findByRole('dialog', { name: 'Discovery 02' });
+    expect(within(dialog).getByText(/Some things/)).toHaveTextContent(
+      /Some things\s*are worth\s*keeping\./,
+    );
+    expect(
+      within(dialog).queryByTestId('physical-cover'),
+    ).not.toBeInTheDocument();
+    const closeCover = await within(dialog).findByRole('button', {
+      name: 'Close the cover',
+    });
+    expect(closeCover).toHaveAttribute('aria-pressed', 'true');
+    fireEvent.click(closeCover);
+    const openCover = within(dialog).getByRole('button', {
+      name: 'Open the cover',
+    });
+    expect(openCover).toHaveAttribute('aria-pressed', 'false');
+    fireEvent.click(openCover);
+    expect(
+      within(dialog).getByRole('button', { name: 'Close the cover' }),
+    ).toHaveAttribute('aria-pressed', 'true');
+    expect(
+      within(dialog).queryByTestId('physical-cover'),
+    ).not.toBeInTheDocument();
   });
   it('contains focus in the modal and restores the original body scrolling style on Escape', async () => {
     document.body.style.overflow = 'clip';
@@ -509,7 +625,7 @@ describe('opening and returning to the shelf', () => {
     await waitFor(() =>
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument(),
     );
-    expect(route()).toBe('/discovery');
+    expect(route()).toBe('/logs');
     expect(shelf()).toHaveFocus();
   });
   it('moves loading-dialog focus to the resolved entry without leaving a stale Escape handler', async () => {
@@ -536,12 +652,42 @@ describe('opening and returning to the shelf', () => {
     await waitFor(() =>
       expect(screen.queryByRole('dialog')).not.toBeInTheDocument(),
     );
-    expect(route()).toBe('/discovery');
+    expect(route()).toBe('/logs');
     expect(shelf()).toHaveFocus();
   });
 });
 
 describe('showcase notes and fullscreen', () => {
+  it('renders authored video embeds as responsive lazy players while preserving fenced code', async () => {
+    const embed =
+      '<iframe width="560" height="315" src="https://www.youtube.com/embed/bWPOLL_Rr8U?start=3&amp;rel=0" title="Hooverphonic - Eden (Official Video)" allow="encrypted-media; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    const code = '<iframe src="https://example.com/code-sample"></iframe>';
+    loadDiscoveryBody.mockResolvedValueOnce(
+      '# Watch the video\n\n' + embed + '\n\n```html\n' + code + '\n```',
+    );
+    mountPage('/discovery/game/entry-01');
+    const dialog = await screen.findByRole('dialog', { name: 'Discovery 01' });
+    fireEvent.click(
+      within(dialog).getByRole('button', { name: 'Read the full entry' }),
+    );
+    const player = await within(dialog).findByTitle(
+      'Hooverphonic - Eden (Official Video)',
+    );
+    expect(player.tagName).toBe('IFRAME');
+    expect(player).toHaveAttribute(
+      'src',
+      'https://www.youtube.com/embed/bWPOLL_Rr8U?start=3&rel=0',
+    );
+    expect(player).toHaveClass('dc-entry-video');
+    expect(player).toHaveAttribute('loading', 'lazy');
+    expect(player).toHaveAttribute('allowfullscreen');
+    expect(player).toHaveAttribute(
+      'referrerpolicy',
+      'strict-origin-when-cross-origin',
+    );
+    expect(within(dialog).queryByText(embed)).not.toBeInTheDocument();
+    expect(within(dialog).getByText(code)).toHaveClass('language-html');
+  });
   it('loads the full notes only on request and can retry a failed read', async () => {
     loadDiscoveryBody
       .mockRejectedValueOnce(new Error('offline'))
