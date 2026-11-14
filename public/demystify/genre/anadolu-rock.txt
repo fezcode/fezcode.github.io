@@ -42,3 +42,4 @@ tracks:
  - Ada | Kuytu
  - Kapısı Kapalı | Adamlar
  - Söyle | Seksendört
+ - E Tabi | Adamlar

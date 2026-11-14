@@ -56,6 +56,8 @@ tracks:
  - Even Though | Morcheeba
  - Everybody Loves A Loser | Morcheeba
  - Mezcal Dream - Brecon Remix | Morcheeba, Brecon, Amanda Zamolo
+ - The Spoils | Massive Attack, Hope Sandoval
+ - Eden - Orchestra Version | Hooverphonic
 
 examples:
  - Massive Attack - Unfinished Sympathy (1991) | Orchestral strings over hip-hop vinyl breakbeats

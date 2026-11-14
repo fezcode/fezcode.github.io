@@ -44,3 +44,5 @@ tracks:
  - İsyankar | Mustafa Sandal
  - Uzak | Tarkan
  - Git | Irem
+ - Donmem | Murat Dalkılıç
+ - Yaralı | Bengü

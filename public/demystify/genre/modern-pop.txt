@@ -47,3 +47,5 @@ tracks:
  - Drive | Oh Wonder
  - Counting Stars | OneRepublic
  - Mercy | OneRepublic
+ - Sacrifice | The Weeknd
+ - Take My Breath | The Weeknd

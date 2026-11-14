@@ -32,3 +32,4 @@ tracks:
  - İki Keklik | Orhan Hakalmaz
  - Deniz Üstünde Fener | Selçuk Balcı
  - Sendeki Kaşlar | Hüseyin Turan
+ - Kırmızı Gül Demet Demet | Aysun Gültekin

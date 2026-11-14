@@ -37,3 +37,5 @@ tracks:
  - While My Guitar Gently Weeps - Remastered 2009 | The Beatles
  - Paint It Black | The Rolling Stones
  - Africa | Toto
+ - We Don't Need a Cure | Hardcore Superstar
+ - House of Pain | Faster Pussycat

@@ -28,3 +28,4 @@ prod:
 
 tracks:
  - The Sparrow | Mastodon
+ - Lotus | Soen

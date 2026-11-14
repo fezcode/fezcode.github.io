@@ -51,3 +51,5 @@ tracks:
  - Volcano | Damien Rice
  - On the Frame | Beta Radio
  - Send Me on My Way | Rusted Root
+ - Countryside | The Folks
+ - Mystery of Love | Sufjan Stevens

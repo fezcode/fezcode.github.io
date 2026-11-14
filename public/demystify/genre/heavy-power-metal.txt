@@ -30,3 +30,4 @@ tracks:
  - The Attack of the Dead Men | Sabaton
  - Breaking the Law | Judas Priest
  - Sur | Pentagram
+ - Aces High - 2015 Remaster | Iron Maiden

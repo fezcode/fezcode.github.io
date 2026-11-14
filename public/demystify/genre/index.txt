@@ -45,6 +45,8 @@ tracks:
  - Zero | Electric Guest
  - Come with Me Now | KONGOS
  - Monster | The Automatic
+ - Swimming with the Crocodiles | The Veils
+ - New Slang - 2021 Remaster | The Shins
 
 ===
 id: numetal-postgrunge
@@ -117,6 +119,7 @@ tracks:
  - Time After Time | Cyndi Lauper
  - Fever Fever | Melody Club
  - Spent the Day in Bed | Morrissey
+ - Enjoy the Silence | Depeche Mode
 
 ===
 id: classic-rock-aor
@@ -139,6 +142,8 @@ tracks:
  - While My Guitar Gently Weeps - Remastered 2009 | The Beatles
  - Paint It Black | The Rolling Stones
  - Africa | Toto
+ - We Don't Need a Cure | Hardcore Superstar
+ - House of Pain | Faster Pussycat
 
 ===
 id: extreme-metal
@@ -179,6 +184,7 @@ tracks:
  - A Song For The Lovers | Richard Ashcroft
  - Wake Me When It's Over - Edit | The Cranberries
  - All Over Now - Edit | The Cranberries
+ - Don't Look Back in Anger - Remastered | Oasis
 
 ===
 id: goth-darkwave
@@ -198,6 +204,9 @@ tracks:
  - Lullaby - Remastered | The Cure
  - Heir | Public Memory
  - Delirium | Lacuna Coil
+ - Untitled - Remaster 2024 | Åreknuteknyterne
+ - Commiserations | Society
+ - Boys Don't Cry | The Cure
 
 ===
 id: prog-rock
@@ -284,6 +293,7 @@ tracks:
  - The Attack of the Dead Men | Sabaton
  - Breaking the Law | Judas Priest
  - Sur | Pentagram
+ - Aces High - 2015 Remaster | Iron Maiden
 
 ===
 id: grunge
@@ -312,6 +322,7 @@ freqs: 335.14, 420.08, 526.55
 tracks:
  - Signals | Somali Yacht Club
  - From Roots to Needles | If These Trees Could Talk
+ - Pneumothorax | Blueneck
 
 ===
 id: prog-sludge-metal
@@ -325,6 +336,7 @@ synthType: square
 freqs: 68.94, 86.41, 108.31
 tracks:
  - The Sparrow | Mastodon
+ - Lotus | Soen
 
 ===
 id: boom-bap
@@ -445,6 +457,8 @@ tracks:
  - Fine And Free (feat. Vivian Green) | Guru, Solar, Vivian Green
  - Moment Of Truth | Gang Starr
  - Feel It In The Air | Beanie Sigel, Melissa Jay
+ - WELCOME (feat. Eminem) | IDK, Eminem, J Dilla
+ - Closed Chapter (feat. Mr. Porter) | Black Milk, Denaun | none
 
 ===
 id: confessional-rap
@@ -587,6 +601,8 @@ tracks:
  - Go Get It | T.I.
  - Top Back | T.I.
  - Moonlight | Juice WRLD | none
+ - Get Right Witcha | Migos
+ - Do Ya Thing (feat. Young Dro) | P$C, Young Dro
 
 ===
 id: abstract-underground
@@ -632,6 +648,9 @@ tracks:
  - Shell Dweller (Remastered) [feat. Unorthadox] | SHAHMEN, Unorthadox
  - Potato Salad | Tyler, The Creator, A$AP Rocky
  - E.W.W. | The Doppelgangaz
+ - Ain't Got Time | Bruiser Wolf, Conductor Williams
+ - Get Got | Death Grips | none
+ - Rapp Snitch Knishes | MF DOOM, Mr. Fantastik | none
 
 ===
 id: lofi-jazzhop
@@ -711,6 +730,7 @@ tracks:
  - Sound of Da Police | KRS-One
  - Insane in the Brain | Cypress Hill
  - Watch Out Now | The Beatnuts
+ - Check the Rhime | A Tribe Called Quest
 
 ===
 id: gfunk-westcoast
@@ -768,6 +788,7 @@ tracks:
  - Gheddo (feat. Bushido) | Eko Fresh, Bushido
  - Bombay (feat. Sembem & Sjaak) | CHO, Sem Bem, Sjaak
  - Another Galaxy | Natti
+ - İntro | Sagopa Kajmer
 
 ===
 id: drill-modern
@@ -865,6 +886,7 @@ tracks:
  - Cleopatra | Parra for Cuva, May
  - Swarm | Forest Swords
  - L'APPEL DU VIDE | Lorn
+ - Brujita | Throwing Snow
 
 ===
 id: synthwave
@@ -955,6 +977,8 @@ tracks:
  - Even Though | Morcheeba
  - Everybody Loves A Loser | Morcheeba
  - Mezcal Dream - Brecon Remix | Morcheeba, Brecon, Amanda Zamolo
+ - The Spoils | Massive Attack, Hope Sandoval
+ - Eden - Orchestra Version | Hooverphonic
 
 ===
 id: big-beat
@@ -1061,6 +1085,9 @@ tracks:
  - Delinin Yıldızı | Vega
  - Beş | gripin
  - Sakinleştim | Pinhani
+ - Aşk Nereden Nereye | Gripin | none
+ - Sigara | Şebnem Ferah
+ - Bu Aşk Fazla Sana | Şebnem Ferah
 
 ===
 id: turkish-pop
@@ -1090,6 +1117,8 @@ tracks:
  - İsyankar | Mustafa Sandal
  - Uzak | Tarkan
  - Git | Irem
+ - Donmem | Murat Dalkılıç
+ - Yaralı | Bengü
 
 ===
 id: anadolu-rock
@@ -1117,6 +1146,7 @@ tracks:
  - Ada | Kuytu
  - Kapısı Kapalı | Adamlar
  - Söyle | Seksendört
+ - E Tabi | Adamlar
 
 ===
 id: turku
@@ -1134,6 +1164,7 @@ tracks:
  - İki Keklik | Orhan Hakalmaz
  - Deniz Üstünde Fener | Selçuk Balcı
  - Sendeki Kaşlar | Hüseyin Turan
+ - Kırmızı Gül Demet Demet | Aysun Gültekin
 
 ===
 id: ozgun-protest
@@ -1183,6 +1214,8 @@ tracks:
  - Volcano | Damien Rice
  - On the Frame | Beta Radio
  - Send Me on My Way | Rusted Root
+ - Countryside | The Folks
+ - Mystery of Love | Sufjan Stevens
 
 ===
 id: modern-pop
@@ -1215,6 +1248,8 @@ tracks:
  - Drive | Oh Wonder
  - Counting Stars | OneRepublic
  - Mercy | OneRepublic
+ - Sacrifice | The Weeknd
+ - Take My Breath | The Weeknd
 
 ===
 id: rnb-soul
@@ -1240,6 +1275,8 @@ tracks:
  - Simply Falling | Iyeoka
  - Blue Lights | Jorja Smith
  - Zulu Screams (feat. Maleek Berry & Bibi Bourelly) | GoldLink, Bibi Bourelly, Maleek Berry
+ - Hero | Michael Kiwanuka
+ - Love & Hate | Michael Kiwanuka
 
 ===
 id: art-pop
@@ -1258,6 +1295,7 @@ tracks:
  - Mercy Street | Peter Gabriel
  - Across the Universe - Radio Edit | Fiona Apple
  - Something of an End | My Brightest Diamond
+ - La grenade | Metronomy
 
 ===
 id: classic-soul-funk
@@ -1505,3 +1543,4 @@ tracks:
  - She's Alive | Bremer/McCoy
  - Autumn Leaves | Paul Desmond
  - The Theme from "Black Orpheus" | Paul Desmond
+ - Feelings | Mehmet Güreli | none

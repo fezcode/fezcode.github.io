@@ -38,3 +38,4 @@ tracks:
  - Time After Time | Cyndi Lauper
  - Fever Fever | Melody Club
  - Spent the Day in Bed | Morrissey
+ - Enjoy the Silence | Depeche Mode

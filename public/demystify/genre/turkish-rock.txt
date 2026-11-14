@@ -51,3 +51,6 @@ tracks:
  - Delinin Yıldızı | Vega
  - Beş | gripin
  - Sakinleştim | Pinhani
+ - Aşk Nereden Nereye | Gripin | none
+ - Sigara | Şebnem Ferah
+ - Bu Aşk Fazla Sana | Şebnem Ferah
