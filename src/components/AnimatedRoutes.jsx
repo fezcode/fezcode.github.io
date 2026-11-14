@@ -165,6 +165,10 @@ const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
+// Keep the rest of the site available while this optional app is being added.
+const coralBloomPages = import.meta.glob('../pages/apps/CoralBloomPage.jsx');
+const loadCoralBloom = coralBloomPages['../pages/apps/CoralBloomPage.jsx'];
+const CoralBloomPage = loadCoralBloom ? lazy(loadCoralBloom) : NotFoundPage;
 const EbruPage = lazy(() => import('../pages/apps/EbruPage'));
 const VitrayPage = lazy(() => import('../pages/apps/VitrayPage'));
 const MorphogenesisLabPage = lazy(
@@ -1522,6 +1526,10 @@ const AnimatedRoutes = ({
         <Route
           path="/apps::flora"
           element={<Navigate to="/apps/fractal-flora" replace />}
+        />
+        <Route
+          path="/apps::coral"
+          element={<Navigate to="/apps/coral-bloom" replace />}
         />
         <Route
           path="/apps::aw"
@@ -3275,6 +3283,22 @@ const AnimatedRoutes = ({
             >
               <Suspense fallback={<Loading />}>
                 <FractalFloraPage />
+              </Suspense>
+            </motion.div>
+          }
+        />
+        <Route
+          path="/apps/coral-bloom"
+          element={
+            <motion.div
+              initial="initial"
+              animate="in"
+              exit="out"
+              variants={pageVariants}
+              transition={pageTransition}
+            >
+              <Suspense fallback={<Loading />}>
+                <CoralBloomPage />
               </Suspense>
             </motion.div>
           }

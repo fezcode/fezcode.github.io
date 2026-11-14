@@ -476,12 +476,17 @@
   );
 }
 
-.clockt-page .ckt-product-shot img {
+.clockt-page .ckt-product-shot img,
+.clockt-page .ckt-product-shot video {
   display: block;
   width: 100%;
   height: auto;
   border: 1px solid rgba(195, 213, 180, 0.14);
   border-radius: 5px;
+}
+
+.clockt-page .ckt-product-shot video {
+  background: #0a1118;
 }
 
 .clockt-page .ckt-product-shot figcaption {

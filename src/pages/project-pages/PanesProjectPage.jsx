@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useReducedMotion } from 'framer-motion';
 import {
   useAppConfig,
   useThemeFonts,
@@ -155,6 +156,57 @@ const WindowTop = ({ title, children }) => (
     {children}
   </div>
 );
+
+const WorkspaceVideo = () => {
+  const videoRef = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
+  const shouldAutoplay = prefersReducedMotion === false;
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (shouldAutoplay) {
+      video.play().catch(() => {
+        // Native controls remain available if the browser blocks autoplay.
+      });
+    } else {
+      video.pause();
+    }
+  }, [shouldAutoplay]);
+
+  return (
+    <figure className="ckt-product-shot">
+      <video
+        ref={videoRef}
+        autoPlay={shouldAutoplay}
+        muted
+        loop
+        playsInline
+        controls
+        preload="metadata"
+        poster="/images/projects/clockt/merge-and-drag-poster.webp"
+        width="1600"
+        height="960"
+        aria-label="Clockt demo: merging and dragging terminal tabs"
+      >
+        <source
+          src="/projects/clockt/clockt-merge-and-drag.mp4"
+          type="video/mp4"
+        />
+        <a href="/projects/clockt/clockt-merge-and-drag.mp4">
+          Watch the Clockt demo
+        </a>
+      </video>
+      <figcaption>
+        <span>
+          <span className="ckt-status-dot" /> Merge and rearrange your terminal
+          tabs.
+        </span>
+        <span>Actual clockt recording · Silent loop</span>
+      </figcaption>
+    </figure>
+  );
+};
 
 const SessionDemo = () => {
   const [stage, setStage] = useState(0);
@@ -317,7 +369,6 @@ const PanesProjectPage = () => {
     return <AppMissing background="#071e20" color="#f3efe3" />;
 
   const version = project?.version || cfg.version;
-  const shot = cfg.shots?.[0];
   const documentation = `${cfg.repo}/tree/main/docs`;
   const featureIcons = [
     'session',
@@ -456,27 +507,7 @@ const PanesProjectPage = () => {
               <Icon name="palette" /> 14 built-in themes
             </span>
           </div>
-          {shot && (
-            <figure className="ckt-product-shot">
-              <img
-                src={shot.src}
-                alt={
-                  shot.caption ||
-                  'Clockt terminal with a workspace sidebar, colourful git output, and a plugin status bar'
-                }
-                width="1400"
-                height="880"
-                loading="lazy"
-              />
-              <figcaption>
-                <span>
-                  <span className="ckt-status-dot" /> A real workspace. A real
-                  terminal.
-                </span>
-                <span>VT100 / xterm · 24-bit colour</span>
-              </figcaption>
-            </figure>
-          )}
+          <WorkspaceVideo />
           {cfg.summary?.[1] && (
             <p className="ckt-emulator-note">{cfg.summary[1]}</p>
           )}
