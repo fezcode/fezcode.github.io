@@ -1,0 +1,76 @@
+Sit down to a plate of *kuşbaşı* in Istanbul and you will reach for a spoon, a fork, or a torn piece of bread. Sit down to a steak in London and you will be handed a knife before anything else. At some point I noticed that I almost never need a knife for Turkish food, and almost always need one for Northern European food. So I went digging.
+
+The short version: the observation holds, but the line isn't really "Turkey vs. Europe." It is a line between two table philosophies. In one, **the meat is cut in the kitchen**. In the other, **the meat is cut at the table**.
+
+---
+
+## 1. The Shared Tray
+
+For most of Ottoman history, a meal meant sitting on the floor around a large round tray (*sini*) and eating from shared dishes. There were no individual plates, so there was nothing to cut *on*. Nobody was going to saw at a lamb shoulder in the middle of the communal bowl.
+
+The food had to arrive in bite-sized pieces. The tools were the **spoon**, **bread**, and the **right hand**. The spoon mattered enough that spoon-makers (*kaşıkçılar*) had their own guild, and a good spoon was close to a personal possession. The fork only reached the Ottoman palace in the 19th century, with the Tanzimat-era wave of Westernization, and took well into the 20th century to reach ordinary homes.
+
+<div class="shared-tray-diagram">
+  <img src="/images/posts/the-knife-stays-in-the-kitchen/shared-tray.svg" alt="Shared tray, no personal plate → Nothing to cut on → Food must arrive bite-sized → Spoon, bread, hand → The knife stays in the kitchen" width="640" height="760" />
+</div>
+
+---
+
+## 2. Bread Is a Utensil
+
+Look at how much Turkish food is eaten *with* bread rather than *alongside* it: *dürüm*, *lahmacun* rolled up, *pide*, or just a piece of bread used to scoop a stew and wipe the plate. If bread is your spoon, whatever it picks up has to be small. A whole steak can't be scooped.
+
+---
+
+## 3. Mince, Cubes, and Small Fires
+
+Count how much Turkish meat is minced: *köfte*, *Adana*, *lahmacun*, *mantı*, *içli köfte*, stuffed vegetables, *karnıyarık*. Most of the rest is cubed (*kuşbaşı*, *şiş*), shaved (*döner*), or slow-braised until it falls apart (*güveç*, *tandır*). None of this is an accident. Across much of Anatolia and the Middle East, firewood was expensive, and small pieces cook fast while a whole roast eats fuel for hours. The meat itself was often tough, since the animals that ended up in the pot were usually older sheep, and mincing, marinating, or long braising is exactly how you turn tough mutton into something tender. And meat cut small and mixed with grain, vegetables, or bread simply stretches further, feeding more people with less.
+
+China shows the same logic even more strongly. Food is cut in the kitchen and eaten with chopsticks, partly for the same fuel-economy reasons, and the absence of knives at the table is traditionally traced back to Confucian ideas about keeping the tools of slaughter out of the dining room.
+
+---
+
+## 4. Europe and the Glory of the Big Piece
+
+Medieval Northern and Western Europe had more forest, and so more fuel. Roasting a whole animal or a huge joint was possible, and it was the ultimate display of wealth. Carving was a skilled, high-status job performed at the table, in front of everyone.
+
+Diners also carried **their own knives**, which they used to cut their share and spear it into their mouths. That is how the knife became a table tool in Europe in the first place. It took centuries of etiquette to tame it. Norbert Elias's *The Civilizing Process* traces how the rules piled up: don't point it at anyone, don't put it in your mouth, don't use it on fish. The rounded-tip table knife is part of the same story. Louis XIV is usually credited with banning pointed knives at the table in 1669.
+
+The final step came in the 19th century with *service à la russe*: courses arriving one after another, each plated individually for each guest. That made "a whole piece on your own plate" the default, and a whole piece means a knife. It also lets the dish show off: a steak's cut, marbling, and doneness are only visible if it reaches you intact.
+
+---
+
+## 5. The Exceptions
+
+The pattern is a tendency, not a law, and both sides have plenty of counterexamples.
+
+**Turkish dishes that do want a knife:** lamb shank (*incik*), lamb shoulder, *pirzola*, a whole roast chicken, and arguably *İskender*, which arrives sliced but is usually eaten with a knife and fork today. Even here, the meat is typically cooked until it falls off the bone, or eaten by hand.
+
+**European dishes that don't:** most of Italy, where cutting spaghetti with a knife is close to a crime, plus risotto, soups, French stews like *bourguignon* and *cassoulet*, *paella*, and most tapas. Greek and Balkan cooking, carrying the Ottoman inheritance, sits firmly on the knife-free side.
+
+---
+
+## 6. So Where Is the Line?
+
+It isn't geographic. It comes from how a culture eats and what it can afford.
+
+| | **Cut in the kitchen** | **Cut at the table** |
+|---|---|---|
+| **Plate** | Shared tray | Personal plate |
+| **Tools** | Spoon, bread, hand, chopsticks | Knife and fork |
+| **Fuel** | Scarce, so small pieces | Plentiful, so big roasts |
+| **Meat** | Tough, so minced or braised | Prized, so shown off whole |
+| **Where** | Eastern Mediterranean to China | Northern and Western Europe |
+
+> **Lesson:** Whether you need a knife isn't about manners or sophistication. It is a fossil record of firewood, shared trays, tough sheep, and who got to show off a roast. The kitchen does the cutting where people eat together; the diner does it where everyone gets their own plate.
+
+---
+
+## Sources and Further Reading
+
+- Norbert Elias, *The Civilizing Process* (1939). The classic account of how European table manners, the knife included, were slowly disciplined.
+- Bee Wilson, *Consider the Fork: A History of How We Cook and Eat* (2012). Covers the European table knife, the rounded tip, and the Chinese cleaver-and-chopsticks logic of cutting in the kitchen.
+- Margaret Visser, *The Rituals of Dinner: The Origins, Evolution, Eccentricities, and Meaning of Table Manners* (1991). Carving, cutlery, and service styles including *service à la russe*.
+- Priscilla Mary Işın, *Bountiful Empire: A History of Ottoman Cuisine* (2018). Ottoman kitchens, the tray, and how the palace table changed.
+- Marianna Yerasimos, *500 Years of Ottoman Cuisine* (2005). Recipes and dining customs from the palace to the street.
+- Sami Zubaida and Richard Tapper (eds.), *A Taste of Thyme: Culinary Cultures of the Middle East* (1994). Essays on food, bread, and eating customs across the region.

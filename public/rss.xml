@@ -9,14 +9,24 @@
             <link>https://fezcode.com</link>
         </image>
         <generator>RSS for Node</generator>
-        <lastBuildDate>Sat, 14 Nov 2026 01:40:18 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 14 Nov 2026 14:18:24 GMT</lastBuildDate>
         <atom:link href="https://fezcode.com/rss.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 14 Nov 2026 01:40:16 GMT</pubDate>
+        <pubDate>Sat, 14 Nov 2026 14:18:23 GMT</pubDate>
         <copyright><![CDATA[2026 Ahmed Samil Bulbul]]></copyright>
         <language><![CDATA[en]]></language>
         <managingEditor><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></managingEditor>
         <webMaster><![CDATA[samil.bulbul@gmail.com (Ahmed Samil Bulbul)]]></webMaster>
         <ttl>60</ttl>
+        <item>
+            <title><![CDATA[The Knife Stays in the Kitchen: Why Turkish Food Never Asks for One]]></title>
+            <description><![CDATA[Kuşbaşı needs a spoon, steak needs a knife. On shared trays, bread as a utensil, scarce firewood, tough mutton, and the European roast: why some cuisines cut meat in the kitchen and others at the table....]]></description>
+            <link>https://fezcode.com/blog/the-knife-stays-in-the-kitchen</link>
+            <guid isPermaLink="false">https://fezcode.com/blog/the-knife-stays-in-the-kitchen</guid>
+            <dc:creator><![CDATA[Ahmed Samil Bulbul]]></dc:creator>
+            <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+            <content:encoded><![CDATA[<p>Sit down to a plate of <em>kuşbaşı</em> in Istanbul and you will reach for a spoon, a fork, or a torn piece of bread. Sit down to a steak in London and you will be handed a knife before anything else. At some point I noticed that I almost never need a knife for Turkish food, and almost always need one for Northern European food. So I went digging.</p>
+<p><a href="https://fezcode.com/blog/the-knife-stays-in-the-kitchen">Read more...</a></p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Elitism vs. Intellectualism: When Science Mistakes the Gate for the Work]]></title>
             <description><![CDATA[Intellectualism treats difficulty as friction to be reduced; elitism treats it as a moat. On defensive jargon, the paywall protection racket, and how status games in science actively block discovery....]]></description>

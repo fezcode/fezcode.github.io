@@ -40,6 +40,15 @@ code {
   border-radius: 0.25rem; /* rounded corners */
 }
 
+/* Keep this diagram readable on phones and comfortably sized on desktop. */
+.shared-tray-diagram img[src='/images/posts/the-knife-stays-in-the-kitchen/shared-tray.svg'] {
+  width: 100%;
+  max-width: min(100%, 520px);
+  height: auto;
+  max-height: none;
+  margin-inline: auto;
+}
+
 .prose iframe {
   width: 100%; /* Make iframe responsive */
   max-width: 75%; /* Same as images */
