@@ -1,0 +1,258 @@
+{
+  "007-first-light": {
+    "title": "007 First Light",
+    "sourceTitle": "007 First Light",
+    "sourcePage": "https://store.steampowered.com/app/3768760/",
+    "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3768760/be65391533f072e79699be70ef2d47b7b2ac57ee/header_alt_assets_5.jpg?t=1793979129",
+    "width": 460,
+    "height": 215
+  },
+  "age-of-wonders-4": {
+    "title": "Age of Wonders 4",
+    "sourceTitle": "Age of Wonders 4",
+    "sourcePage": "https://store.steampowered.com/app/1669000/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1669000/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "alan-wake-2": {
+    "title": "Alan Wake 2",
+    "sourceTitle": "Alan Wake 2",
+    "sourcePage": "https://www.alanwake.com/",
+    "imageUrl": "https://www.alanwake.com/wp-content/uploads/2023/05/aw2-standard.png",
+    "width": 1236,
+    "height": 624
+  },
+  "ball-x-pit": {
+    "title": "Ball x Pit",
+    "sourceTitle": "BALL x PIT",
+    "sourcePage": "https://store.steampowered.com/app/2062430/",
+    "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2062430/a157aa8de4bd9070194ddffb27c31636355dca05/header.jpg?t=1794503272",
+    "width": 460,
+    "height": 215
+  },
+  "bandle": {
+    "title": "Bandle",
+    "sourceTitle": "Bandle",
+    "sourcePage": "https://bandle.app/",
+    "imageUrl": "https://bandle.app/og-cover.png",
+    "width": 1200,
+    "height": 630
+  },
+  "bloodlines-2": {
+    "title": "Vampire: The Masquerade - Bloodlines 2",
+    "sourceTitle": "Vampire: The Masquerade® - Bloodlines™ 2",
+    "sourcePage": "https://store.steampowered.com/app/532790/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/532790/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "deus-ex-human-revolution": {
+    "title": "Deus Ex: Human Revolution",
+    "sourceTitle": "Deus Ex: Human Revolution - Director's Cut",
+    "sourcePage": "https://store.steampowered.com/app/238010/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/238010/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "deus-ex-mankind-divided": {
+    "title": "Deus Ex: Mankind Divided",
+    "sourceTitle": "Deus Ex: Mankind Divided",
+    "sourcePage": "https://store.steampowered.com/app/337000/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/337000/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "downwell": {
+    "title": "Downwell",
+    "sourceTitle": "Downwell",
+    "sourcePage": "https://store.steampowered.com/app/360740/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/360740/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "dying-light": {
+    "title": "Dying Light",
+    "sourceTitle": "Dying Light",
+    "sourcePage": "https://store.steampowered.com/app/239140/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/239140/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "fallout-4": {
+    "title": "Fallout 4",
+    "sourceTitle": "Fallout 4",
+    "sourcePage": "https://store.steampowered.com/app/377160/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/377160/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "far-cry-primal": {
+    "title": "Far Cry Primal",
+    "sourceTitle": "Far Cry® Primal",
+    "sourcePage": "https://store.steampowered.com/app/371660/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/371660/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "gears-of-war-e-day": {
+    "title": "Gears of War: E-Day",
+    "sourceTitle": "Gears of War: E-Day",
+    "sourcePage": "https://store.steampowered.com/app/3010850/Gears_of_War_E-Day/",
+    "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3010850/f81b268dd5cb697bb6fc73e718f3a57a70657211/library_capsule_2x.jpg?t=1794241534",
+    "width": 600,
+    "height": 900
+  },
+  "hotline-miami": {
+    "title": "Hotline Miami",
+    "sourceTitle": "Hotline Miami",
+    "sourcePage": "https://store.steampowered.com/app/219150/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/219150/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "kingdoms-of-amalur-reckoning": {
+    "title": "Kingdoms of Amalur: Reckoning",
+    "sourceTitle": "Kingdoms of Amalur: Reckoning™",
+    "sourcePage": "https://store.steampowered.com/app/102500/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/102500/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "lego-batman-legacy-of-the-dark-knight": {
+    "title": "LEGO Batman: Legacy of the Dark Knight",
+    "sourceTitle": "LEGO® Batman™: Legacy of the Dark Knight",
+    "sourcePage": "https://store.steampowered.com/app/2215200/",
+    "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2215200/a07a9a6c0c9c1225f5b260b4f29fe40e6f099f6b/header.jpg?t=1789746326",
+    "width": 460,
+    "height": 215
+  },
+  "loop-hero": {
+    "title": "Loop Hero",
+    "sourceTitle": "Loop Hero",
+    "sourcePage": "https://store.steampowered.com/app/1282730/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1282730/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "mafia-2": {
+    "title": "Mafia II",
+    "sourceTitle": "Mafia II (Classic)",
+    "sourcePage": "https://store.steampowered.com/app/50130/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/50130/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "max-payne-trilogy": {
+    "title": "Max Payne Trilogy",
+    "sourceTitle": "Max Payne",
+    "sourcePage": "https://store.steampowered.com/app/12140/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/12140/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "mirrors-edge-catalyst": {
+    "title": "Mirror's Edge Catalyst",
+    "sourceTitle": "Mirror's Edge™ Catalyst",
+    "sourcePage": "https://store.steampowered.com/app/1233570/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1233570/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "nier-automata-and-replicant": {
+    "title": "Nier Automata & Nier Replicant",
+    "sourceTitle": "NieR:Automata™",
+    "sourcePage": "https://store.steampowered.com/app/524220/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/524220/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "openfront-io": {
+    "title": "OpenFront.io",
+    "sourceTitle": "OpenFront.io",
+    "sourcePage": "https://github.com/openfrontio/OpenFrontIO",
+    "imageUrl": "https://raw.githubusercontent.com/openfrontio/OpenFrontIO/main/proprietary/images/OpenFrontLogo.svg",
+    "width": 1364,
+    "height": 259
+  },
+  "prey-2017": {
+    "title": "Prey (2017)",
+    "sourceTitle": "Prey",
+    "sourcePage": "https://store.steampowered.com/app/480490/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/480490/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "resident-evil-2-remake": {
+    "title": "Resident Evil 2: Remake",
+    "sourceTitle": "Resident Evil 2",
+    "sourcePage": "https://store.steampowered.com/app/883710/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/883710/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "resident-evil-3-remake": {
+    "title": "Resident Evil 3: Remake",
+    "sourceTitle": "Resident Evil 3",
+    "sourcePage": "https://store.steampowered.com/app/952060/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/952060/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "resident-evil-4-remake": {
+    "title": "Resident Evil 4: Remake",
+    "sourceTitle": "Resident Evil 4",
+    "sourcePage": "https://store.steampowered.com/app/2050650/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "resident-evil-requiem": {
+    "title": "Resident Evil Requiem",
+    "sourceTitle": "Resident Evil Requiem",
+    "sourcePage": "https://store.steampowered.com/app/3764200/",
+    "imageUrl": "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3764200/ce5437442768e38eb575f205ab9397d0264017b0/header.jpg?t=1779840172",
+    "width": 460,
+    "height": 215
+  },
+  "saints-row-the-third": {
+    "title": "Saints Row: The Third",
+    "sourceTitle": "Saints Row: The Third",
+    "sourcePage": "https://store.steampowered.com/app/55230/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/55230/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "swat-god": {
+    "title": "Swat God",
+    "sourceTitle": "Swat God",
+    "sourcePage": "https://stranger.itch.io/swat-god",
+    "imageUrl": "https://img.itch.zone/aW1nLzI1MDUzNzI5LnBuZw==/original/ZOY4xM.png",
+    "width": 630,
+    "height": 500
+  },
+  "the-legend-of-zelda-breath-of-the-wild": {
+    "title": "The Legend of Zelda: Breath of the Wild",
+    "sourceTitle": "The Legend of Zelda: Breath of the Wild",
+    "sourcePage": "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/",
+    "imageUrl": "https://assets.nintendo.com/image/upload/store/software/switch/70010000000025/7137262b5a64d921e193653f8aa0b722925abc5680380ca0e18a5cfd91697f58",
+    "width": 1920,
+    "height": 1080
+  },
+  "the-outer-worlds": {
+    "title": "The Outer Worlds",
+    "sourceTitle": "The Outer Worlds",
+    "sourcePage": "https://store.steampowered.com/app/578650/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/578650/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  },
+  "xcom-enemy-unknown": {
+    "title": "XCOM: Enemy Unknown",
+    "sourceTitle": "XCOM: Enemy Unknown",
+    "sourcePage": "https://store.steampowered.com/app/200510/",
+    "imageUrl": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/200510/library_600x900.jpg",
+    "width": 300,
+    "height": 450
+  }
+}

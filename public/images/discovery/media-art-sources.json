@@ -1,0 +1,558 @@
+{
+  "book/albert-camus-the-stranger": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/book/albert-camus-the-stranger.jpg"
+  },
+  "book/osamu-dazai-schoolgirl": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/book/osamu-dazai-schoolgirl.jpg"
+  },
+  "book/the-flowers-of-buffoonery": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/book/osamu-dazai-the-flowers-of-buffoonery.jpg"
+  },
+  "movie/21-jump-street-movie": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/movie/ice-cube.jpg"
+  },
+  "movie/22-jump-street-movie": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/movie/ice-cube.jpg"
+  },
+  "movie/28-days-later-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/28_Days_Later",
+    "image": "https://upload.wikimedia.org/wikipedia/en/e/e4/28_days_later.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/28-weeks-later-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/28_Weeks_Later",
+    "image": "https://upload.wikimedia.org/wikipedia/en/4/46/28_Weeks_Later_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/anatomy-of-a-fall-2023": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Anatomy_of_a_Fall",
+    "image": "https://upload.wikimedia.org/wikipedia/en/8/88/Anatomy_of_a_Fall_%282023%29_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/balkanski-spijun-1984": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Balkanski_%C5%A1pijun",
+    "image": "https://upload.wikimedia.org/wikipedia/en/2/27/Balkanski_spijun.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/batman-mask-of-the-phantasm": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Batman%3A_Mask_of_the_Phantasm",
+    "image": "https://upload.wikimedia.org/wikipedia/en/e/ea/Batman_mask_of_the_phantasm_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/black-dynamite-2009": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Black_Dynamite",
+    "image": "https://upload.wikimedia.org/wikipedia/en/8/84/Black_dynamite_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/blade-1998-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Blade_(1998_film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/1/19/Blade_movie.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/caught-stealing-2025": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/movie/caught-stealing.png"
+  },
+  "movie/children-of-men-2006": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Children_of_Men",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/fc/Children_of_men_ver4.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/collateral-2004-movie": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/movie/collateral.jpg"
+  },
+  "movie/crash-2004": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Crash_(2004_film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/d/d0/Crash_ver2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/decision-to-leave-2022-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Decision_to_Leave",
+    "image": "https://upload.wikimedia.org/wikipedia/en/8/82/Decision_to_Leave_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/die-hard": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Die_Hard",
+    "image": "https://upload.wikimedia.org/wikipedia/en/c/ca/Die_Hard_%281988_film%29_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/eternal-sunshine-of-the-spotless-mind-2004": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Eternal_Sunshine_of_the_Spotless_Mind_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/a/a4/Eternal_Sunshine_of_the_Spotless_Mind.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/heat-1995-movie": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/movie/heat.jpg"
+  },
+  "movie/jerry-maguire-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Jerry_Maguire",
+    "image": "https://upload.wikimedia.org/wikipedia/en/e/ea/Jerry_Maguire_movie_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/john-wick-chapter-1-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/John_Wick_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/98/John_Wick_TeaserPoster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/john-wick-chapter-2-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/John_Wick%3A_Chapter_2",
+    "image": "https://upload.wikimedia.org/wikipedia/en/3/31/John_Wick_Chapter_Two.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/john-wick-chapter-3-parabellum-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/John_Wick%3A_Chapter_3_%E2%80%93_Parabellum",
+    "image": "https://upload.wikimedia.org/wikipedia/en/9/94/John_Wick_Chapter_3_Parabellum.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/john-wick-chapter-4-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/John_Wick%3A_Chapter_4",
+    "image": "https://upload.wikimedia.org/wikipedia/en/d/d0/John_Wick_-_Chapter_4_promotional_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/lock-stock-and-two-smoking-barrels-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Lock%2C_Stock_and_Two_Smoking_Barrels",
+    "image": "https://upload.wikimedia.org/wikipedia/en/e/e9/Lock%2C_Stock_and_Two_Smoking_Barrels_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/lucky-number-slevin-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Lucky_Number_Slevin",
+    "image": "https://upload.wikimedia.org/wikipedia/en/a/a0/Lucky_Number_Slevin_Theater_Poster.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/manchester-by-the-sea-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Manchester_by_the_Sea_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/d/de/Manchester_by_the_Sea.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/meet-joe-black-movie": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Meet_Joe_Black_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/f5/Meet_Joe_Black-_1998.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/mr-and-mrs-smith-2005": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Mr._%26_Mrs._Smith_(2005_film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/fd/Mr_and_Mrs_Smith_poster.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/no-country-for-old-men-movie": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/movie/no-country-for-old-men.webp"
+  },
+  "movie/one-battle-after-another-2025": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/One_Battle_After_Another",
+    "image": "https://upload.wikimedia.org/wikipedia/en/5/5d/One_Battle_After_Another.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/project-hail-mary-2026": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Project_Hail_Mary_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/3/3b/Project_Hail_Mary_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/relay-2024": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Relay_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/f/f9/Relay_2025_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/taxi-driver-1976": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/movie/taxi-driver-1976.jpg"
+  },
+  "movie/the-big-lebowski": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/The_Big_Lebowski",
+    "image": "https://upload.wikimedia.org/wikipedia/en/3/35/Biglebowskiposter.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/the-hunt-for-red-october": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/The_Hunt_for_Red_October_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/3/36/The_Hunt_for_Red_October_movie_poster.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/the-jason-bourne-series": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/The_Bourne_Identity_(2002_film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/4/49/The_Bourne_Identity_%282002%29_US_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/the-sheep-detectives": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/The_Sheep_Detectives",
+    "image": "https://upload.wikimedia.org/wikipedia/en/8/8f/The_Sheep_Detectives_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/the-suicide-squad-2021": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/The_Suicide_Squad",
+    "image": "https://upload.wikimedia.org/wikipedia/en/6/6f/Suicide_Squad.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/tucker-and-dale-vs-evil-2010": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Tucker_%26_Dale_vs._Evil",
+    "image": "https://upload.wikimedia.org/wikipedia/en/c/cb/Tucker-and-dale-vs-evil.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/twinless-2025": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Twinless_(film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/7/77/Twinless_film_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/unleashed-2005": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Unleashed_(2005_film)",
+    "image": "https://upload.wikimedia.org/wikipedia/en/e/ed/Unleashed_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/vanilla-sky": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Vanilla_Sky",
+    "image": "https://upload.wikimedia.org/wikipedia/en/2/2d/Vanilla_Sky_poster.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "movie/we-live-in-time": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/We_Live_in_Time",
+    "image": "https://upload.wikimedia.org/wikipedia/en/3/32/We_live_in_time_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "music/adamlar-ruyalarda-burusmusuz": {
+    "provider": "Authored album artwork URL",
+    "reference": "https://open.spotify.com/album/1A4oBX00tNGOO7k4jC5HEt",
+    "image": "https://images.genius.com/7e410322f5a95b7f2c1c5bd0a1dc0e1c.1000x1000x1.png"
+  },
+  "music/born-to-die-lana-del-rey": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/born-to-die/1779781213?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/59/10/66/591066ea-3c85-3dfe-ef82-ffdbbcdfc8b9/12UMGIM00033.rgb.jpg/1000x1000bb.jpg"
+  },
+  "music/de-la-soul-stakes-is-high": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/stakes-is-high/1674203676?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/af/4d/a5/af4da557-480f-7b38-3cb0-c8811eaabe71/810098506076.png/1000x1000bb.jpg"
+  },
+  "music/dhanush-why-this-kolaveri-di": {
+    "provider": "Authored YouTube video artwork",
+    "reference": "https://www.youtube.com/watch?v=Ja168gMpb3o",
+    "image": "https://i.ytimg.com/vi/Ja168gMpb3o/hqdefault.jpg"
+  },
+  "music/dreamed-at-dawn": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/tr/album/dreamed-at-dawn/1183752753?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music71/v4/67/ff/eb/67ffeb5f-e3cb-1100-d919-88cf4bc6b345/cover.jpg/1000x1000bb.jpg"
+  },
+  "music/dying-light-ost": {
+    "provider": "Wikipedia article artwork",
+    "reference": "https://en.wikipedia.org/wiki/Dying_Light",
+    "image": "https://upload.wikimedia.org/wikipedia/en/c/c0/Dying_Light_cover.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled"
+  },
+  "music/fifa-99-ost": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/games/fifa99.jpg"
+  },
+  "music/frederic-oddloop": {
+    "provider": "Authored YouTube video artwork",
+    "reference": "https://www.youtube.com/watch?v=PCp2iXA1uLE",
+    "image": "https://i.ytimg.com/vi/PCp2iXA1uLE/hqdefault.jpg"
+  },
+  "music/gorillaz-stylo": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/plastic-beach-deluxe-version/859841880?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/7e/69/1f/7e691f10-3cc1-67ec-5dc3-df3d8df68fa7/5099962829359.jpg/1000x1000bb.jpg"
+  },
+  "music/hooverphonic-eden": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/blue-wonder-power-milk/429357998?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music/c9/29/5c/mzi.fymyqpci.jpg/1000x1000bb.jpg"
+  },
+  "music/in-the-aeroplane-over-the-sea": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/in-the-aeroplane-over-the-sea/1839077554?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music221/v4/12/e3/5c/12e35c39-de5c-b501-3ef0-00f19fb3d513/56627.jpg/1000x1000bb.jpg"
+  },
+  "music/johnny-ps-caddy": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/tana-talk-4/1613877272?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music116/v4/e9/bd/de/e9bdde69-ff3d-49b0-54b6-61e61de62760/194690796425_cover.jpg/1000x1000bb.jpg"
+  },
+  "music/kids-see-ghosts": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/music/kids-see-ghosts-cover.png"
+  },
+  "music/kingdom-two-crowns-norse-lands-soundtrack-extended": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/music/kingdom-two-crowns-norse-lands-soundtrack-extended-cover.png"
+  },
+  "music/knights-of-honor-soundtrack": {
+    "provider": "Authored YouTube video artwork",
+    "reference": "https://www.youtube.com/watch?v=SJlRgrF-9H0&list=PL657B57BE3ED8F951&index=4",
+    "image": "https://i.ytimg.com/vi/SJlRgrF-9H0/hqdefault.jpg"
+  },
+  "music/madvillainy": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/madvillainy-instrumentals/41655332?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/18/b4/9a/18b49ad5-6407-7169-27f4-d1c8bcb5504b/s05.nqwebndj.jpg/1000x1000bb.jpg"
+  },
+  "music/maxs-choice-duty-vs-passion": {
+    "provider": "Authored YouTube video artwork",
+    "reference": "https://www.youtube.com/watch?v=spK_F8zsttI",
+    "image": "https://i.ytimg.com/vi/spK_F8zsttI/hqdefault.jpg"
+  },
+  "music/morcheeba-easier-said-than-done": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/head-up-high/1444319074?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music118/v4/6b/6e/d4/6b6ed4bf-dfc8-09d9-76db-71cd0226841c/cover.jpg/1000x1000bb.jpg"
+  },
+  "music/pogo-digitalism": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/idealism/1732993959?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music112/v4/9b/8d/71/9b8d7104-325c-0a86-cfa9-dbdfd5703d1c/0602537210381_3000.jpg/1000x1000bb.jpg"
+  },
+  "music/porcupine-tree-trains": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/in-absentia/1770062036?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/56/64/60/5664605d-0cc3-cb53-09f9-fbef934fa30b/802644401669.jpg/1000x1000bb.jpg"
+  },
+  "music/rococco-kansai-midnight-club-ii": {
+    "provider": "Authored YouTube video artwork",
+    "reference": "https://www.youtube.com/watch?v=Ulg7bUbvLZU",
+    "image": "https://i.ytimg.com/vi/Ulg7bUbvLZU/hqdefault.jpg"
+  },
+  "music/special-ed-neva-go-back": {
+    "provider": "Apple Music album artwork",
+    "reference": "https://music.apple.com/us/album/revelations/1239560635?uo=4",
+    "image": "https://is1-ssl.mzstatic.com/image/thumb/Music117/v4/a4/12/2c/a4122cf3-411a-e38f-0226-2a7f6af3fbf4/886446260600.jpg/1000x1000bb.jpg"
+  },
+  "music/stick-war-ost": {
+    "provider": "Authored YouTube video artwork",
+    "reference": "https://www.youtube.com/watch?v=jZ2P4G5J6BY",
+    "image": "https://i.ytimg.com/vi/jZ2P4G5J6BY/hqdefault.jpg"
+  },
+  "music/the-weeknd-dawn-fm": {
+    "provider": "Authored album artwork URL",
+    "reference": "https://open.spotify.com/search/Dawn%20FM%20The%20Weeknd",
+    "image": "https://upload.wikimedia.org/wikipedia/en/b/b9/The_Weeknd_-_Dawn_FM.png"
+  },
+  "music/yoo-se-yoon-dont-skip-the-interlude": {
+    "provider": "Existing authored image",
+    "image": "/images/logs/music/dont-skip-the-interlude.png"
+  },
+  "series/11-22-63": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/5529/112263",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/63/157675.jpg"
+  },
+  "series/1670-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/72655/1670",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/587/1468938.jpg"
+  },
+  "series/andor-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/52341/andor",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/564/1411766.jpg"
+  },
+  "series/ayak-isleri-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/55623/ayak-isleri",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/322/805814.jpg"
+  },
+  "series/barry-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/11538/barry",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/455/1138151.jpg"
+  },
+  "series/black-bird-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/53147/black-bird",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/501/1254750.jpg"
+  },
+  "series/common-side-effects": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/69327/common-side-effects",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/645/1613396.jpg"
+  },
+  "series/community-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/318/community",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/2/5134.jpg"
+  },
+  "series/fallout-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/49041/fallout",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/599/1499142.jpg"
+  },
+  "series/firefly-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/180/firefly",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/1/2600.jpg"
+  },
+  "series/furia-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/85376/furia",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/583/1459460.jpg"
+  },
+  "series/gravity-falls": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/396/gravity-falls",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/2/6140.jpg"
+  },
+  "series/halt-and-catch-fire-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/191/halt-and-catch-fire",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/1/2798.jpg"
+  },
+  "series/happy-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/21216/happy",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/189/474175.jpg"
+  },
+  "series/harley-quinn-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/33452/harley-quinn",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/547/1368613.jpg"
+  },
+  "series/infinity-train-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/39945/infinity-train",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/301/753819.jpg"
+  },
+  "series/invincible-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/37196/invincible",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/618/1545777.jpg"
+  },
+  "series/justice-league-unlimited-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/505/justice-league-unlimited",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/4/10846.jpg"
+  },
+  "series/lanterns-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/44776/lanterns",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/637/1592971.jpg"
+  },
+  "series/last-man-on-earth-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/620/the-last-man-on-earth",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/127/319518.jpg"
+  },
+  "series/luther-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/670/luther",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/179/448007.jpg"
+  },
+  "series/man-seeking-woman-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/1365/man-seeking-woman",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/46/116897.jpg"
+  },
+  "series/marvels-the-punisher-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/16544/marvels-the-punisher",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/500/1250736.jpg"
+  },
+  "series/midnight-mass-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/42840/midnight-mass",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/354/885283.jpg"
+  },
+  "series/only-murders-in-the-building": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/48830/only-murders-in-the-building",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/586/1466415.jpg"
+  },
+  "series/peacemaker-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/50603/peacemaker",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/586/1466413.jpg"
+  },
+  "series/person-of-interest-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/2/person-of-interest",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/163/407679.jpg"
+  },
+  "series/pluribus-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/86175/pluribus",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/592/1481086.jpg"
+  },
+  "series/rooster-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/88862/rooster",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/616/1540316.jpg"
+  },
+  "series/severance-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/44933/severance",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/548/1371406.jpg"
+  },
+  "series/shogun-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/37336/shogun",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/506/1265637.jpg"
+  },
+  "series/sifir-bir-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/35062/sifir-bir",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/146/367088.jpg"
+  },
+  "series/smiling-friends-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/47182/smiling-friends",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/590/1477120.jpg"
+  },
+  "series/spider-noir-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/77003/spider-noir",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/626/1566111.jpg"
+  },
+  "series/splinter-cell-deathwatch": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/49424/tom-clancys-splinter-cell-deathwatch",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/592/1481328.jpg"
+  },
+  "series/ted-2024-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/55832/ted",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/616/1541133.jpg"
+  },
+  "series/the-bear": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/54198/the-bear",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/629/1574642.jpg"
+  },
+  "series/the-expanse-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/1825/the-expanse",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/445/1114081.jpg"
+  },
+  "series/the-grand-tour": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/17078/the-grand-tour",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/57/143299.jpg"
+  },
+  "series/the-night-of-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/14157/the-night-of",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/62/156270.jpg"
+  },
+  "series/the-orville-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/20263/the-orville",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/445/1113833.jpg"
+  },
+  "series/the-penguin-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/60920/the-penguin",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/536/1340329.jpg"
+  },
+  "series/tokyo-vice-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/42847/tokyo-vice",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/502/1256479.jpg"
+  },
+  "series/true-detective-tv-series": {
+    "provider": "TVmaze show poster",
+    "reference": "https://www.tvmaze.com/shows/5/true-detective",
+    "image": "https://static.tvmaze.com/uploads/images/original_untouched/490/1226764.jpg"
+  }
+}

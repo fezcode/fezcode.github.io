@@ -55,6 +55,10 @@
     (label) Feed
     (content)
       > (item)
+        (label) Discovery gallery
+        (to) /discovery
+        (icon) SquaresFourIcon
+      > (item)
         (label) Demystify
         (to) /demystify
         (icon) MagicWandIcon

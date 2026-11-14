@@ -1,6 +1,21 @@
 (logs)
   > (item)
     (category) Game
+    (date) 2026-11-14T19:26:19+03:00
+    (link) https://store.steampowered.com/app/3010850/Gears_of_War_E-Day/
+    (platform) PC, Xbox Series X/S
+    (rating) 5
+    (slug) gears-of-war-e-day
+    (tags)
+      > action
+      > third-person-shooter
+      > movement
+    (title) Gears of War: E-Day
+    (image) /images/discovery/art/game/gears-of-war-e-day.webp
+    (description) I really loved the way Gears of War: E-Day plays. The gameplay is wonderful, especially the movement and jumping, and the graphics are the best I've ever seen. An easy 5/5.
+
+  > (item)
+    (category) Game
     (date) 2026-08-30
     (link) https://store.steampowered.com/app/371660/Far_Cry_Primal/
     (platform) PC, PlayStation 4, Xbox One

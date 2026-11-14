@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import AnimatedRoutes from './components/AnimatedRoutes';
 import { ToastProvider } from './context/ToastContext';
@@ -20,6 +21,8 @@ import { DndProvider } from './context/DndContext';
 import TinyCloudPlayer from './app/apps/CloudMusicPlayer/components/TinyCloudPlayer';
 import { MotionConfig } from 'framer-motion';
 
+const DiscoveryPage = lazy(() => import('./pages/discovery/DiscoveryPage'));
+
 const MotionConfigWrapper = ({ children }) => {
   const { reduceMotion } = useAnimation();
   return (
@@ -30,6 +33,9 @@ const MotionConfigWrapper = ({ children }) => {
 };
 
 function App() {
+  const { pathname } = useLocation();
+  const isDiscoveryPage =
+    pathname === '/discovery' || pathname.startsWith('/discovery/');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [isGenericModalOpen, setIsGenericModalOpen] = useState(false);
@@ -67,20 +73,58 @@ function App() {
   return (
     <AnimationProvider>
       <MotionConfigWrapper>
-          <ToastProvider>
-            <SiteConfigProvider>
-              <CloudMusicProvider>
-                <DndProvider>
-                  <AchievementProvider>
-                    <AchievementListeners />
-                    <HomepageOrderProvider>
-                      <VisualSettingsProvider>
-                        <DigitalRain isActive={isRainActive} />
-                        <BSOD isActive={isBSODActive} toggleBSOD={toggleBSOD} />
-                        <ScrollToTop />
-                        <TinyCloudPlayer />
-                        <CommandPaletteProvider>
-                          <SidePanelProvider>
+        <ToastProvider>
+          <SiteConfigProvider>
+            <CloudMusicProvider>
+              <DndProvider>
+                <AchievementProvider>
+                  <AchievementListeners />
+                  <HomepageOrderProvider>
+                    <VisualSettingsProvider>
+                      {!isDiscoveryPage && (
+                        <>
+                          <DigitalRain isActive={isRainActive} />
+                          <BSOD
+                            isActive={isBSODActive}
+                            toggleBSOD={toggleBSOD}
+                          />
+                          <ScrollToTop />
+                          <TinyCloudPlayer />
+                        </>
+                      )}
+                      <CommandPaletteProvider>
+                        <SidePanelProvider>
+                          {isDiscoveryPage ? (
+                            <Suspense
+                              fallback={
+                                <div
+                                  role="status"
+                                  style={{
+                                    minHeight: '100dvh',
+                                    display: 'grid',
+                                    placeItems: 'center',
+                                    background: '#111318',
+                                    color: '#eceef2',
+                                    fontFamily: "'Outfit', sans-serif",
+                                  }}
+                                >
+                                  Opening discovery…
+                                </div>
+                              }
+                            >
+                              {/* One unkeyed route retains the feed while a showcase opens. */}
+                              <Routes>
+                                <Route
+                                  path="/discovery/:category?/:slug?"
+                                  element={<DiscoveryPage />}
+                                />
+                                <Route
+                                  path="/discovery/*"
+                                  element={<Navigate to="/discovery" replace />}
+                                />
+                              </Routes>
+                            </Suspense>
+                          ) : (
                             <Layout
                               toggleModal={toggleModal}
                               isSearchVisible={isSearchVisible}
@@ -91,26 +135,31 @@ function App() {
                             >
                               <AnimatedRoutes />
                             </Layout>
-                          </SidePanelProvider>
-                        </CommandPaletteProvider>
-                        <ContactModal
-                          isOpen={isModalOpen}
-                          onClose={toggleModal}
-                        />
-                        <GenericModal
-                          isOpen={isGenericModalOpen}
-                          onClose={closeGenericModal}
-                          title={genericModalContent.title}
-                        >
-                          {genericModalContent.content}
-                        </GenericModal>
-                      </VisualSettingsProvider>
-                    </HomepageOrderProvider>
-                  </AchievementProvider>
-                </DndProvider>
-              </CloudMusicProvider>
-            </SiteConfigProvider>
-          </ToastProvider>
+                          )}
+                        </SidePanelProvider>
+                      </CommandPaletteProvider>
+                      {!isDiscoveryPage && (
+                        <>
+                          <ContactModal
+                            isOpen={isModalOpen}
+                            onClose={toggleModal}
+                          />
+                          <GenericModal
+                            isOpen={isGenericModalOpen}
+                            onClose={closeGenericModal}
+                            title={genericModalContent.title}
+                          >
+                            {genericModalContent.content}
+                          </GenericModal>
+                        </>
+                      )}
+                    </VisualSettingsProvider>
+                  </HomepageOrderProvider>
+                </AchievementProvider>
+              </DndProvider>
+            </CloudMusicProvider>
+          </SiteConfigProvider>
+        </ToastProvider>
       </MotionConfigWrapper>
     </AnimationProvider>
   );

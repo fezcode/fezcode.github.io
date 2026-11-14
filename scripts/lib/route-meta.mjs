@@ -105,6 +105,7 @@ function wordupMeta(routeMap) {
     title: 'Wordup — A living lexicon | Fezcodex',
     description:
       "Invented Turkish and English words for feelings that don't have a name yet. Explore a living lexicon by fezcode.",
+    image: '/images/og/wordup.webp',
     type: 'website',
   });
   const registryPath = join(PUBLIC, 'wordup', 'words.piml');
@@ -115,6 +116,8 @@ function wordupMeta(routeMap) {
     routeMap.set(`/wordup/${word.slug}`, {
       title: `${word.word} — Wordup | Fezcodex`,
       description: word.definition,
+      image:
+        word.ogImage || word.image || `/images/og/wordup/${word.slug}.webp`,
       type: 'article',
     });
   }

@@ -56,6 +56,27 @@ function logsRoutes() {
   return out;
 }
 
+// Gallery showcases use the same registered entries as the discovery feed.
+// Per-entry templates and unrelated text files should not become gallery URLs.
+function discoveryRoutes() {
+  const out = new Set();
+  const root = join(PUBLIC, 'logs');
+  if (!existsSync(root)) return out;
+  for (const category of readdirSync(root, { withFileTypes: true })) {
+    if (!category.isDirectory()) continue;
+    const file = join(root, category.name, `${category.name}.piml`);
+    if (!existsSync(file)) continue;
+    const data = piml.parse(readFileSync(file, 'utf8'));
+    const entries = data.logs || data.items || [];
+    for (const entry of Array.isArray(entries) ? entries : [entries]) {
+      if (entry.category && entry.slug && entry.title) {
+        out.add(`/discovery/${category.name}/${entry.slug}`);
+      }
+    }
+  }
+  return out;
+}
+
 function storyBookRoutes() {
   const out = new Set();
   const files = ['books_en.piml', 'books_tr.piml']
@@ -186,6 +207,7 @@ export function discoverAllRoutes() {
   for (const r of projectRoutes()) all.add(r);
   for (const r of blogRoutes()) all.add(r);
   for (const r of logsRoutes()) all.add(r);
+  for (const r of discoveryRoutes()) all.add(r);
   for (const r of storyBookRoutes()) all.add(r);
   for (const r of demystifyRoutes()) all.add(r);
   for (const r of vocabRoutes()) all.add(r);

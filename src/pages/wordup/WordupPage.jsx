@@ -56,6 +56,7 @@ export default function WordupPage() {
       <Seo
         title="Wordup — A living lexicon | Fezcodex"
         description="Invented Turkish and English words for feelings that don't have a name yet. Explore a living lexicon by fezcode."
+        image="/images/og/wordup.webp"
       />
       <h1 className="wf-sr-only">
         Wordup — a living lexicon of invented words

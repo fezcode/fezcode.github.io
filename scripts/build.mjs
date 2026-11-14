@@ -5,6 +5,12 @@ const FAST = flags.has('--fast');
 const RETRY = flags.has('--retry');
 
 const steps = [
+  // Fast/retry scripts bypass npm's prebuild hook. Existing cards are kept.
+  {
+    name: 'wordup-og-images',
+    cmd: 'node',
+    args: ['scripts/generate-wordup-og.mjs'],
+  },
   { name: 'vite build', cmd: 'vite', args: ['build'] },
   { name: 'post-build', cmd: 'node', args: ['scripts/post-build.mjs'] },
 ];

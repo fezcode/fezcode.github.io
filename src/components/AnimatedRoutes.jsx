@@ -165,10 +165,7 @@ const NotepadPage = lazy(() => import('../pages/apps/NotepadPage'));
 const CozyAppPage = lazy(() => import('../pages/apps/CozyAppPage'));
 const SpirographPage = lazy(() => import('../pages/apps/SpirographPage'));
 const FractalFloraPage = lazy(() => import('../pages/apps/FractalFloraPage'));
-// Keep the rest of the site available while this optional app is being added.
-const coralBloomPages = import.meta.glob('../pages/apps/CoralBloomPage.jsx');
-const loadCoralBloom = coralBloomPages['../pages/apps/CoralBloomPage.jsx'];
-const CoralBloomPage = loadCoralBloom ? lazy(loadCoralBloom) : NotFoundPage;
+const CoralBloomPage = lazy(() => import('../pages/apps/CoralBloomPage'));
 const EbruPage = lazy(() => import('../pages/apps/EbruPage'));
 const VitrayPage = lazy(() => import('../pages/apps/VitrayPage'));
 const MorphogenesisLabPage = lazy(

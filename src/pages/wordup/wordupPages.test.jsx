@@ -20,6 +20,8 @@ const index = `(words)
     (language) tr
     (partOfSpeech) noun
     (definition) The pleasure of doing everything except the thing you meant to do.
+    (ogImage) /images/custom/ertelence-share.webp
+    (image) /images/custom/ertelence-cover.webp
     (roots) ertelemek + eğlence
     (number) 01
   > (word)
@@ -41,6 +43,7 @@ const index = `(words)
     (language) tr
     (partOfSpeech) noun
     (definition) Missing a moment before it has happened.
+    (image) /images/custom/yarinsama-cover.webp
     (roots) yarın + anımsama
     (number) 03
   > (word)
@@ -74,6 +77,22 @@ const showWordup = (path = '/wordup') =>
     </MemoryRouter>,
   );
 
+const expectShareImage = (path) => {
+  const image = 'https://fezcode.com' + path;
+  for (const selector of [
+    'meta[property="og:image"]',
+    'meta[property="og:image:secure_url"]',
+    'meta[name="twitter:image"]',
+  ]) {
+    // SEO metadata is hoisted into the head, outside the reader controls.
+    // eslint-disable-next-line testing-library/no-node-access
+    expect(document.head.querySelector(selector)).toHaveAttribute(
+      'content',
+      image,
+    );
+  }
+};
+
 beforeEach(() => {
   vi.stubGlobal(
     'fetch',
@@ -90,10 +109,38 @@ afterEach(() => {
 });
 
 describe('Wordup reading flow', () => {
+  it('keeps the collection share image while a registered word fails to load', async () => {
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(async (path) =>
+        path === '/wordup/ertelence.txt'
+          ? { ok: false, status: 503 }
+          : {
+              ok: true,
+              text: async () => (path.endsWith('.piml') ? index : tablimbo),
+            },
+      ),
+    );
+    showWordup('/wordup/ertelence');
+    expectShareImage('/images/og/wordup.webp');
+    expect(await screen.findByRole('alert')).toBeVisible();
+    expectShareImage('/images/og/wordup.webp');
+  });
+
+  it.each([
+    ['ertelence', 'ertelence', '/images/custom/ertelence-share.webp'],
+    ['yarinsama', 'yarınsama', '/images/custom/yarinsama-cover.webp'],
+  ])('preserves the authored share image for %s', async (slug, word, image) => {
+    showWordup('/wordup/' + slug);
+    await screen.findByRole('heading', { name: word, level: 1 });
+    expectShareImage(image);
+  });
+
   it('opens a shareable alphabet view with ordered words, working letter anchors and no sculpture', async () => {
     showWordup('/wordup?view=index');
     await screen.findByRole('heading', { name: 'The word index.' });
     await screen.findByRole('link', { name: /pöskürmek/ });
+    expectShareImage('/images/og/wordup.webp');
     expect(screen.getByRole('button', { name: 'A–Z index' })).toHaveAttribute(
       'aria-pressed',
       'true',
@@ -158,6 +205,7 @@ describe('Wordup reading flow', () => {
   it('uses the accented display word as the same sculpture seed on the index and entry', async () => {
     showWordup();
     await screen.findByRole('heading', { name: 'pöskürmek', level: 3 });
+    expectShareImage('/images/og/wordup.webp');
     const word = screen.getByRole('link', { name: /Türkçe.*pöskürmek/ });
     await userEvent.hover(word);
     expect(screen.getByTestId('word-sculpture')).toHaveAttribute(
@@ -166,6 +214,7 @@ describe('Wordup reading flow', () => {
     );
     await userEvent.click(word);
     await screen.findByRole('heading', { name: 'pöskürmek', level: 1 });
+    expectShareImage('/images/og/wordup/poskurmek.webp');
     expect(screen.getByTestId('word-sculpture')).toHaveAttribute(
       'data-seed',
       'pöskürmek',
@@ -332,6 +381,7 @@ describe('Wordup reading flow', () => {
         name: /This one hasn’t been invented/,
       }),
     ).toBeVisible();
+    expectShareImage('/images/og/wordup.webp');
     const back = screen.getByRole('link', { name: 'Back to the words' });
     expect(back).toHaveAttribute('href', '/wordup');
     await userEvent.click(back);

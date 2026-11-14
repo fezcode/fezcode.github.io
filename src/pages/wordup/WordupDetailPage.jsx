@@ -51,6 +51,13 @@ export default function WordupDetailPage() {
           word?.definition ||
           'Made-up words for very real things. A personal language by fezcode.'
         }
+        image={
+          word
+            ? word.ogImage ||
+              word.image ||
+              `/images/og/wordup/${word.slug}.webp`
+            : '/images/og/wordup.webp'
+        }
         type="article"
       />
       {loading ? (

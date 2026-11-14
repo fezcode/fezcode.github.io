@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import * as THREE from 'three';
 import LexicalSculpture from './LexicalSculpture';
+import { createSculptureScene } from './sculptureScene';
 
 const tracked = vi.hoisted(() => ({ renderers: [], environments: [] }));
 vi.mock('three', async (original) => {
@@ -11,8 +12,9 @@ vi.mock('three', async (original) => {
   return {
     ...actual,
     WebGLRenderer: class {
-      constructor() {
-        this.domElement = document.createElement('canvas');
+      constructor(options = {}) {
+        this.options = options;
+        this.domElement = options.canvas || document.createElement('canvas');
         this.setPixelRatio = vi.fn();
         this.setSize = vi.fn();
         this.render = vi.fn();
@@ -107,5 +109,51 @@ describe('seeded sculpture lifecycle', () => {
     view.rerender(<LexicalSculpture seed="a different word" />);
     expect(inspectDecorativeSculpture(view.container).path).not.toBe(first);
     expect(tracked.renderers).toHaveLength(0);
+  });
+
+  it('renders a supplied export canvas at the exact seeded pose and disposes once', () => {
+    const canvas = document.createElement('canvas');
+    const studio = createSculptureScene({
+      seed: 'pöskürmek',
+      canvas,
+      width: 700,
+      height: 630,
+      pixelRatio: 2,
+      preserveDrawingBuffer: true,
+    });
+    expect(studio.renderer.domElement).toBe(canvas);
+    expect(studio.renderer.options.preserveDrawingBuffer).toBe(true);
+    expect(studio.renderer.setPixelRatio).toHaveBeenCalledWith(2);
+    expect(studio.renderer.setSize).toHaveBeenLastCalledWith(700, 630, false);
+    expect(studio.camera.aspect).toBe(700 / 630);
+    expect(studio.camera.position.z).toBe(6.7);
+
+    studio.render(4);
+    expect(studio.sculpture.rotation.y).not.toBe(studio.parameters.pose[1]);
+    studio.render(0);
+    expect(studio.sculpture.rotation.toArray().slice(0, 3)).toEqual(
+      studio.parameters.pose,
+    );
+    expect(studio.sculpture.position.y).toBe(0.04);
+    expect(studio.setSeed('PÖSKÜRMEK')).toBe(false);
+    studio.resize(400, 630);
+    expect(studio.camera.position.z).toBe(8.2);
+
+    studio.dispose();
+    studio.dispose();
+    expect(studio.renderer.dispose).toHaveBeenCalledTimes(1);
+    expect(tracked.environments[0].dispose).toHaveBeenCalledTimes(1);
+    expect(
+      studio.sculpture.getObjectByProperty('isMesh', true),
+    ).toBeUndefined();
+  });
+
+  it('propagates export setup failures and releases the partial renderer', () => {
+    vi.mocked(HTMLCanvasElement.prototype.getContext).mockReturnValueOnce(null);
+    expect(() => createSculptureScene({ seed: 'pöskürmek' })).toThrow(
+      'Studio environment unavailable',
+    );
+    expect(tracked.renderers).toHaveLength(1);
+    expect(tracked.renderers[0].dispose).toHaveBeenCalledTimes(1);
   });
 });

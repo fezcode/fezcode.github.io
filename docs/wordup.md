@@ -35,6 +35,7 @@ All metadata fields are flat, one-line values. Add only information supplied or 
 - `register`, `forms`: intended tone and suggested forms; identify proposed constructions as proposed usage.
 - `example`: one short usage example for the entry header.
 - `related`: comma-separated slugs of other entries that actually exist.
+- `ogImage` (or `image`): optional authored sharing artwork; this takes precedence over the generated word card and is never replaced by the generator.
 
 Additional flat metadata can describe a word without changing its content-file format. Omit unavailable values instead of inventing them.
 
@@ -45,3 +46,22 @@ Write the longer explanation in the `.txt` file using ordinary Markdown. Use dis
 Each sculpture is deterministic: its seed comes from the normalized display word, preserving actual accented characters. Changing the slug, entry number or list order does not change that word's sculpture. No sculpture asset files are needed.
 
 Search and language filters cover the collection and stay selected when switching views. The sculpture view shows six words at a time; hovering or focusing a word updates its preview. The A–Z index at `/wordup?view=index` lists every matching word, grouped by initial letter, with jump links and short meanings. Turkish and mixed collections use Turkish alphabetical order, keeping letters such as Ç, I, İ, Ö, Ş and Ü distinct; the English filter uses English order. Selecting a word in either view opens the same full entry. Rebuild after adding a word so its route appears in the static output.
+
+## Sharing artwork
+
+Wordup's 1200×630 WebP card lives at `public/images/og/wordup.webp`. Each entry has a card at `public/images/og/wordup/<slug>.webp` showing the display word, short meaning and its actual 3D sculpture. Both the page and the card use `sculptureScene.js`; cards capture the deterministic `render(0)` pose with the same geometry, materials and lighting. Instrument Sans is bundled with its SIL license so rendering needs no font service.
+
+These are persisted source assets. **An existing image is preserved unless regeneration is explicitly requested**, even when a definition or renderer changes. Normal startup and all build variants create missing cards only. Authored `ogImage`/`image` overrides are always respected.
+
+```powershell
+# Generate missing cards; preserve all existing artwork.
+node scripts/generate-wordup-og.mjs
+
+# Explicitly replace only the collection card.
+node scripts/generate-wordup-og.mjs --force --index-only
+
+# Explicitly replace only a registered word's card.
+node scripts/generate-wordup-og.mjs --force --slug cancil
+```
+
+While Vite is running, preview exported cards at `/images/og/wordup.webp` or `/images/og/wordup/cancil.webp`. The HTML renderer is served by the generator's isolated temporary Vite server, outside application routing and sitemap discovery. The exported WebP files are served in both development and production, and the same URLs are used by React metadata and the static metadata injector.
